@@ -1,0 +1,374 @@
+$ mise exec -- env RSPRESS_PERSISTENT_CACHE=false bun run --filter @spinon/docs docs:build -- --config /Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/rspress.config.ts
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: error   build failed in 0.99s (node)
+@spinon/docs docs:build: error   build failed in 1.23s (web)
+@spinon/docs docs:build: error   Build errors:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:3:1-125
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:4:1-123
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:5:1-126
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[5:0]
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:    · ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:6:1-124
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[6:0]
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:    · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:  8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:7:1-125
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[7:0]
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:  9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:8:1-123
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[8:0]
+@spinon/docs docs:build:   6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:   7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:     · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:9:1-126
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[9:0]
+@spinon/docs docs:build:   7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:     · ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:  11 │ function _createMdxContent(props) {
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:10:1-124
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[10:0]
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:     · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  11 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  12 │     const _components = {
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:3:1-125
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:4:1-123
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:5:1-126
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[5:0]
+@spinon/docs docs:build:  3 │ import image0 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png";
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:    · ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:6:1-124
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[6:0]
+@spinon/docs docs:build:  4 │ import image1 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png";
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:    · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:  8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:7:1-125
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:    ╭─[7:0]
+@spinon/docs docs:build:  5 │ import image2 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png";
+@spinon/docs docs:build:  6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:  7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:  9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:8:1-123
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[8:0]
+@spinon/docs docs:build:   6 │ import image3 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png";
+@spinon/docs docs:build:   7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:     · ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:9:1-126
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[9:0]
+@spinon/docs docs:build:   7 │ import image4 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png";
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:     · ─────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:  11 │ function _createMdxContent(props) {
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md:10:1-124
+@spinon/docs docs:build:   × Module not found: Can't resolve 'runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25'
+@spinon/docs docs:build:     ╭─[10:0]
+@spinon/docs docs:build:   8 │ import image5 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png";
+@spinon/docs docs:build:   9 │ import image6 from "runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png";
+@spinon/docs docs:build:  10 │ import image7 from "runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png";
+@spinon/docs docs:build:     · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  11 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  12 │     const _components = {
+@spinon/docs docs:build:     ╰────
+@spinon/docs docs:build:   help: Did you mean './runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/c114-direct-mixed-tailnet-selected-root-20261025/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: error   Rspack build failed.
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+@spinon/docs docs:build:     at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36
+@spinon/docs docs:build: Exited with code 1

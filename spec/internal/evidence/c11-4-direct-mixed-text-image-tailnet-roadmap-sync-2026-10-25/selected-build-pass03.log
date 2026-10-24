@@ -1,0 +1,62 @@
+$ mise exec -- env RSPRESS_PERSISTENT_CACHE=false bun run --filter @spinon/docs docs:build -- --config /Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/rspress-pass02.config.ts
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: info    Rendering pages...
+@spinon/docs docs:build: success Pages rendered in 97 ms.
+@spinon/docs docs:build: ready   built in 0.81s (node)
+@spinon/docs docs:build: ready   built in 0.81s (web)
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (web)                                                                                                                                   Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/i.25208e7c92.js                                   0.10 kB     0.09 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/styles.2da0941fcb.js                                    0.47 kB     0.23 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/icon.svg                                                          0.64 kB     0.42 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-8a35bee9b922.89a25f7817.js                  2.7 kB      1.1 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-22143ac20395.50ff2cd862.js                  3.8 kB      1.8 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-5ef9301cefe1.b422d68474.js                  6.1 kB      2.3 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-33a737ae0e82.386efb15c3.js                  9.3 kB      3.1 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-1540c3f0472e.ab3346b60b.js                  9.9 kB      3.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-5ff873aa10d7.b13225040a.js                  15.6 kB     5.3 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-82ac5581e186.b8f017aedf.js                  18.9 kB     5.7 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-da0410b06aaa.80aea00ad3.js                  20.0 kB     6.2 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-cba70a7ef0cd.d807b8d5e7.js                  20.8 kB     5.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/lib-router.1e14e568cb.js                                35.4 kB     12.7 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-c2801b21f038.9f268ed289.js                  40.3 kB     12.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/index.ec66fceb74.js                                     51.7 kB     15.9 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/android-direct-min-content-reversed.9c589c905a.png   63.7 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/css/styles.8d918fd78e.css                                  74.0 kB     14.2 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/android-direct-min-content-forward.62b38adcb5.png    77.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/android-direct-max-content-forward.94c768ca7b.png    89.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/android-direct-max-content-reversed.94c768ca7b.png   89.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/ios-direct-min-content-reversed.1d40e0881e.png       145.9 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/ios-direct-min-content-forward.111dd17d18.png        145.9 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/ios-direct-max-content-forward.a46cdb7e7b.png        146.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/image/ios-direct-max-content-reversed.1cc5934d09.png       146.1 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-04cbcabea10a.cab5897927.js                  177.3 kB    38.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-c4dae6800800.e381e2e9a0.js                  203.5 kB    48.3 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/a.877e354479.js                                         217.1 kB    72.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/lib-react.9cdf8f49ce.js                                 218.4 kB    68.8 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/js/async/route-6c33a3943990.681983ac09.js                  579.4 kB    127.1 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/static/search_index.ko.4dc2c843.json                              653.7 kB    198.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                     Total:   3262.8 kB   1546.9 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: File (node)                                                                                                                                                                            Size        Gzip
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/404.html                                                                                                    8.5 kB      2.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/README.html              22.8 kB     4.5 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/README.html              27.5 kB     6.1 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/plan/c11-4-mixed-direct-text-image-intrinsic-plan-review-20.html                                            27.7 kB     6.5 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/README.html            27.8 kB     5.7 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/pr-diff-review-20.html   28.0 kB     6.3 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/plan/c11-4-mixed-direct-text-image-intrinsic.html                                                           36.2 kB     8.6 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/pr-diff-review-30.html                   37.2 kB     9.5 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/implementation-review-20.html            37.8 kB     9.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.html                              37.9 kB     9.0 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/plan/c11-css-grid.html                                                                                      57.9 kB     15.5 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/plan/c11-4-grid-track-sizing.html                                                                           188.7 kB    41.8 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/internal/0059-c11-grid-layout.html                                                                          214.8 kB    51.4 kB
+@spinon/docs docs:build: ../../build/spinon/c114-direct-mixed-tailnet-selected-site-20261025-pass02/STATUS.html                                                                                                 544.6 kB    128.6 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build:                                                                                                                                                                               Total:   1297.5 kB   305.0 kB
+@spinon/docs docs:build:
+@spinon/docs docs:build: Exited with code 0

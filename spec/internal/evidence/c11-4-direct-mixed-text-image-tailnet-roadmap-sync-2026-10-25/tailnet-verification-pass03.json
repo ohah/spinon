@@ -1,0 +1,3134 @@
+{
+  "selected_route_count": 236,
+  "local_targets_verified": 236,
+  "backups_verified": 10,
+  "remote_targets_verified": 236,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local_targets": [
+    {
+      "path": "404.html",
+      "bytes": 8512,
+      "sha256": "54388db8ff3abef44959afa0b6beaa6841d0cc7aa4fdb1c1477852d0ed383169",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 214780,
+      "sha256": "e85637df28badfb2318346a1deabd7e422d38ba35d82b7d94cdb33c22833ed3c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/artifact-boundary.json",
+      "bytes": 4601,
+      "sha256": "fecb4e17261078d5fbfa79ef1c57ecfb031d0add888bfa6415b542a374d543d5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/fixtureTest-build.log",
+      "bytes": 713,
+      "sha256": "208404ef9deb67b1e8fa7f7a0dc1af3df7e240de8a43d62c5a268bac89661fae",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/product-build.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/symbols-fixtureTest.txt",
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/symbols-product.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/README.html",
+      "bytes": 27796,
+      "sha256": "0aa789ab25565857ced708bcffb5b1061f29d226f599b0057858e21d55b5a637",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/fixtureTest-build.log",
+      "bytes": 186,
+      "sha256": "03aebf8bb47ac980c73211f0eedb022370c9e0ceb98415fc07c71cd4f666b4bd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/product-build.log",
+      "bytes": 62,
+      "sha256": "9ba21e9ae2f9eaebeb075bb454cb4e4f2f949f247ac35e99e04f280f42ea9df4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/symbols-fixtureTest.txt",
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/symbols-product.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/fixtureTest-build.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/product-build.log",
+      "bytes": 62,
+      "sha256": "343c13e7f6f2d320993b573f830525e33b59b3c32656ef426e015b1e30f3fdc2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/symbols-fixtureTest.txt",
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/symbols-product.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/fixtureTest-build.log",
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/product-build.log",
+      "bytes": 62,
+      "sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/symbols-fixtureTest.txt",
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/symbols-product.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/fixtureTest-build.log",
+      "bytes": 62,
+      "sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/product-build.log",
+      "bytes": 62,
+      "sha256": "b1bfdc52d1cea2d4e4c6812dd29fa654959a50500fdd854457dc805c093d389b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/symbols-fixtureTest.txt",
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/symbols-product.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/scan-ffi-archives.py",
+      "bytes": 7019,
+      "sha256": "b0b3d7bd708d0918870822abe105f08bee6cdca3372c70192a2b4e9ef98c3436",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs",
+      "bytes": 25624,
+      "sha256": "c5fb85741d7a1ff4a6fc4ca05cc836b0d0a37e767d71911da4f1b6c719f6cb24",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/implementation-review-20.html",
+      "bytes": 37836,
+      "sha256": "b90fbff5b76396cb2e513429a29aa89b7eadbc7937a78b4b0eb2357b94fc7a9d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-runtime-direct-max-content-reversed.log",
+      "bytes": 14498,
+      "sha256": "b7c97eced3842589184fe12553a1f775da8d8c5284b55d3ac8000f7ab4b56725",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/ffi-focused.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/ffi-focused.log",
+      "bytes": 562,
+      "sha256": "84776dc6d473984022882b9779e2a0856488366f9f8e489c28fdb83a15f94c8a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/manifest.json",
+      "bytes": 660,
+      "sha256": "9985c4645c2e5136956c9e650badee8fc209cbac7b49afe5dd94333a41c19930",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/README.html",
+      "bytes": 22808,
+      "sha256": "fc19cd470e7fe911e0ff3a4b6dd9178efa1de11c96af1c61397cdd3eb3e1e554",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/runtime-focused.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/runtime-focused.log",
+      "bytes": 1028,
+      "sha256": "f59a983b2c0598579a1d4448b1eea9f2fd0d56f4a838b0f2cf8cce857d743eff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/pr-diff-review-30.html",
+      "bytes": 37234,
+      "sha256": "eea913859926897ce47cfe2048a844ffaf39ca4e1c42ec1c5374510317ee166e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-runtime-direct-min-content-forward.log",
+      "bytes": 19379,
+      "sha256": "751a64661fe6fd270e22d829bef0601039e311a50bd62e6c0b00ddaf3c03df49",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-runtime-direct-max-content-reversed-live.log",
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-runtime-direct-max-content-reversed.log",
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-runtime-direct-min-content-forward.log",
+      "bytes": 24553,
+      "sha256": "468b8af2bd7204dee681029e45058fa408f97f772b3e5b21fd23d34e1ca38b29",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-runtime-direct-min-content-forward.log",
+      "bytes": 12994,
+      "sha256": "5f7f144530d3df5913501ed75328a4194c8c10958df4a2387d27da52773a749e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-runtime-direct-min-content-forward.log",
+      "bytes": 24553,
+      "sha256": "468b8af2bd7204dee681029e45058fa408f97f772b3e5b21fd23d34e1ca38b29",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-runtime-direct-min-content-forward.log",
+      "bytes": 19758,
+      "sha256": "ab65e66f0223b644a72afd94596dc54e6b08eef27abe71c9684c15242eeb53f8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-build.log",
+      "bytes": 4539,
+      "sha256": "0f713309bdbcf2cb13682fa2f9dd2f342932e74a1e21b5e734336014211bf301",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-runtime-direct-min-content-forward.log",
+      "bytes": 20458,
+      "sha256": "8c251c34187f892908efd8294533d9ac66bc0f596daab00fa548ed5f20f0054d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-build.log",
+      "bytes": 4358,
+      "sha256": "d31641a7df669b045999e48091aeab11c9ff020d7ddde1effbfa970b8faf08e3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-forward.png",
+      "bytes": 89737,
+      "sha256": "f989955997859fef374521868de33d3ced0c84cab3469cead8a291387951a5c3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-reversed.png",
+      "bytes": 75542,
+      "sha256": "b80d59fe3782b315dcb862e560a5a7c7d317ea4f3df91c47908ed4bb7af4cf03",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-forward.png",
+      "bytes": 106826,
+      "sha256": "9c82aee32eba0e59e123bb0e6dd3c4f92d42c8b263407529641175900f823a22",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-reversed.png",
+      "bytes": 77093,
+      "sha256": "d983ff1c7454ff128210b25d7cbde571cc923cff1bd55dc870abd8a2a004026b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-max-content-forward.log",
+      "bytes": 21050,
+      "sha256": "ef4d8ac93d3e1c47aded3b3c92a4effcf3fc20a434648a40aeda10dd4b21547a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-max-content-reversed.log",
+      "bytes": 20962,
+      "sha256": "55bdb2ac08c1eeafacdaa6a9281ed5e233e2538967180c5b60116af08e665372",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-min-content-forward.log",
+      "bytes": 20456,
+      "sha256": "55d3152e26ea8d753ac1ca7f6080406b12edf72249d43dd4500b3013ec77ecb3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-min-content-reversed.log",
+      "bytes": 20369,
+      "sha256": "5a8290f5a6515728debd27a0592de28f553839696004923b63b351a8b97df892",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-simulator.json",
+      "bytes": 32083,
+      "sha256": "cbde3a848295f30b3ceb860325d36c5e8aa7f5e08ace14a6b6d12972cdf2995e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-build.log",
+      "bytes": 82958,
+      "sha256": "25a03bd5b5d747b8568960299a037a4970b7e5e61cc34316b2d6ffc0eb0f8a02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-forward.png",
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-reversed.png",
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-forward.png",
+      "bytes": 146990,
+      "sha256": "1d99c24d25a1012a3862d212fd9a3fac20ce9cde145559d48f469e1853a4b66c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-reversed.png",
+      "bytes": 146964,
+      "sha256": "f9fcbfa497d03d1f6c79289a0bf205fe63c65895f92ba7a4fd91ab9d6e64c677",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "e726f81f106640dca9aaaaca617a372d5e0cbf25514aaaa09aa6bdb151e745fa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "71d9adf2c6d42c8fed10fb93abaa3797673fee011ff0593d904f003f2106cc34",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "ac175bc3774d98ca96a253e52fb5b4cb95593c745e7e08b4f31e29e528d17367",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "1c0d0171eddefb951e4ebafffbb6c9961c5602328a66019b9355509dce5e7d6b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-max-content-forward.log",
+      "bytes": 9806,
+      "sha256": "460e7392ac2d0169c0f8503d61e867c2e01392a4c4cae14a0169b4ae5780a03a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 9808,
+      "sha256": "3ada709803ac182cb15d906dbe5dd2573079f863e7dd0e177b721955dbe9a814",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-min-content-forward.log",
+      "bytes": 9308,
+      "sha256": "ebc1ec33ff351d8957ccdba7c184d3adf443acdb296df05da95e33c3e77776cd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 9307,
+      "sha256": "cf2fe56227bbd70712244e9cd91e0a69fef47e6a0e68753a2f43570e080fe01e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-simulator.json",
+      "bytes": 31486,
+      "sha256": "1c42cfc09aefe207533871fb3de0bcdd3079881e5d33df9374dfac4453b91aea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-all-scenes-timeout-metadata.json",
+      "bytes": 2113,
+      "sha256": "f4196f96e09bb3ed6ca00924bf9465813a16694703d8ec8bbf5c230cde938be8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-max-content-forward.png",
+      "bytes": 136357,
+      "sha256": "0ce6f219802f1f41ae63149fad17fd7df86ca155121a47f198aeef88cdca9013",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-forward.png",
+      "bytes": 136065,
+      "sha256": "e1ba768d2b6da42a21e6d5f255d36a94a3c77799974060152f94814a4a6c360b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-reversed.png",
+      "bytes": 130722,
+      "sha256": "3b6324b69a5b4cf6bab562c16cc0b9c132b7eb66feefc1c6a45ea5e048f126c8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-forward.log",
+      "bytes": 21045,
+      "sha256": "da9fe325e478c50ac2b734cd6fbec05ded7789ea1fb9aa4323e9d5efcaba28a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-reversed-live.log",
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-reversed.log",
+      "bytes": 14498,
+      "sha256": "b7c97eced3842589184fe12553a1f775da8d8c5284b55d3ac8000f7ab4b56725",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-min-content-forward.log",
+      "bytes": 20923,
+      "sha256": "64f22c8c61775f45d77953b19538584c6cefd63e777a709d5d4eade518a884ff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-min-content-reversed.log",
+      "bytes": 20551,
+      "sha256": "586074528bbaff73b36cae87f083a7fafdd0cb1f949616623fe39a606fee7566",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-health-after-adb-reboot.log",
+      "bytes": 42644,
+      "sha256": "b5722ca643972ceb52f1b9ddc82465c497b762c5f0f5db77d6ff0c4877f3855f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-health-before-reboot.log",
+      "bytes": 291989,
+      "sha256": "1346d3877e46d9868d4284cb3b21973d77801a60eb122432a02525f14363c4d0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-services-before-reboot.txt",
+      "bytes": 5720,
+      "sha256": "e969ae5ac7313f6e1b9759a30b1d5c89253377bbe383cc4acaa09a007d85ee50",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build-after-gutter-filter.log",
+      "bytes": 4538,
+      "sha256": "91d57ea017fe732af60719340b067b09e91556a9bf81add1a49ff2bcd030cea5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build-after-zero-gutter.log",
+      "bytes": 4538,
+      "sha256": "f8a118cc598230e642e7a0a7cdd549fc6b51f015174fb68b1e344dc998036904",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build.log",
+      "bytes": 4358,
+      "sha256": "fcb427872a5af19c9c6135467d7b7f60a28c48517571f4e6a454e9bd09acce6e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-forward.png",
+      "bytes": 101717,
+      "sha256": "f6b0a5d8afa63448dc155ed0c54cc48e092ef1ddfee7b09a26570f073f1a357d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-reversed.png",
+      "bytes": 126692,
+      "sha256": "ca81c20f53d75a7e0433261e94a3a6aa026451d22ce70e99179c68dff639d5da",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-forward.png",
+      "bytes": 127356,
+      "sha256": "f755ab61171eff76cde5df8890bead06f9657125b1a25c36fc355e235a0d8b5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-reversed.png",
+      "bytes": 70414,
+      "sha256": "e225ae340e5aacbb7aafc00cb6f60b7da7002551ed01afb4187786a9e35d459a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-late-draw-after-summary.log",
+      "bytes": 25719,
+      "sha256": "f9fd7458bf381d064795e1ca2104e74b86df1b584755672cf66970be2ca0d8cb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-forward.log",
+      "bytes": 20867,
+      "sha256": "3fdd257c4814281e295d9e62ef839213ff5ebe06ba98820c5751457d253b4993",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-reversed-live.log",
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-reversed.log",
+      "bytes": 20963,
+      "sha256": "de1cb4fee06f11261a4a5a6f6d771e79e76272aa3ae0696ee8c2816f4750f26d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-min-content-forward.log",
+      "bytes": 20459,
+      "sha256": "1ba69f540d7bf3e4eb9189d3a7507f5227d86bcf8b4da65f9aba8e4bd220679d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-min-content-reversed.log",
+      "bytes": 20461,
+      "sha256": "8a3bbf26036f4c03c246bc97c7855290339590f226a04b2a7fabec26f897845b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-simulator.json",
+      "bytes": 31118,
+      "sha256": "bcbf0578d1d2849ff05f085e867e7e16fc0daa2fa77ccd3704d3eb9f3b46979a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-build.log",
+      "bytes": 59412,
+      "sha256": "ffba569b25e2c5ed3ff419972a37569e4e3b92d699263b69d2259414fd668151",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-forward.png",
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-reversed.png",
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-forward.png",
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-reversed.png",
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "6cb92c8b4ddd259e014d7befd96e074de2367672faffcbcd8cb6eb22bf5a8f86",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "d5538c58d859d26e47a5e6c52c326619146e7ae4af030a6f3e26599ff0013db0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "355f9d1479243eaad38e80ebef60b17dabfce9c97e0d2436643f01cadb3f0564",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "91cfd56df369f63efcbd5d233a537830690831e4eb66ed24c52b68081fc03582",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-max-content-forward.log",
+      "bytes": 9806,
+      "sha256": "14062d4b6a9a18316c07d6345640dd8cdce578b8bdf07b463dffd4bb4867ffa2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 9808,
+      "sha256": "8fa5396bf6c7314f5b58e0e5be9a6d050d90b30e7383430280bb2829581afb95",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-min-content-forward.log",
+      "bytes": 9308,
+      "sha256": "848b61acc1e81977d3f0041537bbbea2bd1e8fdf4d3ab91e6c84fdce1ec39675",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 9307,
+      "sha256": "905ffe6ccd245b7ce0a57f15979e17cc9012b790df6be4cf4e15377b08bacc3f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-simulator.json",
+      "bytes": 30997,
+      "sha256": "8d3656a636de403f6a945085e61e5367db77ef944631c8cca049eaca4e0df937",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.html",
+      "bytes": 37898,
+      "sha256": "c013067f02f8d13f903289c5ef0ea70d61497d0c7f9acf7481e2f1288e942f1c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-build.log",
+      "bytes": 4359,
+      "sha256": "77e1213a295e9418b45548a9ed27f265c49ca3642afbd348eed49f2e701d360c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png",
+      "bytes": 76971,
+      "sha256": "0297e4968b1af5d4ba084b3dc1d5e4cc45f21d0235a0d408604cd8fff75d6f02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png",
+      "bytes": 63685,
+      "sha256": "380a9a64312d0eb9fe5b4f1cd07ec73c04e61af9eba40c8fe12d1d5a4d420861",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-max-content-forward.log",
+      "bytes": 20957,
+      "sha256": "bfa63987a3075bebd1bb32351765c828867d69a172a397ed2b54f7a09beea19a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-max-content-reversed.log",
+      "bytes": 20961,
+      "sha256": "f3df9557bfeddb8f396368d4f07a166925085da9686bf2cff9400fdad1094c07",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-min-content-forward.log",
+      "bytes": 20456,
+      "sha256": "2a3788887f6a8b74a4b707e7eeef39dc01ebddfc96eb4788a27101444f0c0e9b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-min-content-reversed.log",
+      "bytes": 20370,
+      "sha256": "1e7290ac882ede1ab75f1ba30bbcf6bf0aeb5b77ee90a6427f640841e11b0165",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-simulator.json",
+      "bytes": 53367,
+      "sha256": "19f67fbddddade35e1ab416888cc301c3ab95278ca4c32622c81a043fdc32021",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-build.log",
+      "bytes": 59408,
+      "sha256": "0f6f414e349134d18469fa609d2220c343037fb52ad60fa2862942e6bb4a6011",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png",
+      "bytes": 146048,
+      "sha256": "66126592757ad462fb1c759f82aeee83a4ba32da7e3336aeb793adfc0a87f79c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png",
+      "bytes": 146091,
+      "sha256": "3b15819f20be093ce3eaed94ea91931665399d93f8b1a63cad0b0d86945399e4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png",
+      "bytes": 145891,
+      "sha256": "3fee43883eecd91e0ea3b6b40fdfb824ed786aaeef2ca9fb46430d65c291de5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png",
+      "bytes": 145851,
+      "sha256": "1b9a7a6874090206073fe4dc5c9c576e9429f31bc12678d2064a09f59b47e85f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-max-content-forward.log",
+      "bytes": 27,
+      "sha256": "52149bf608f75a6321f37ca343f257a4e753b208750caa7507806af15ed39dc0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-max-content-reversed.log",
+      "bytes": 27,
+      "sha256": "8cc98ac3911437698ba4d367090fe6e5f4fdfd2531eea4b92388e01e2709c177",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-min-content-forward.log",
+      "bytes": 27,
+      "sha256": "7367446798412c21b822f998925818cd96848eb33a76cccc20c15d9b116ed576",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-min-content-reversed.log",
+      "bytes": 27,
+      "sha256": "c132d827d89520c92593f29e87136408def40a5344be177b8bc7c479d337f67a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-max-content-forward.log",
+      "bytes": 9790,
+      "sha256": "be60216f7ee7ecd5bd98f25376d3a122c474ecb1299c09562dd3e36667fb8669",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 9792,
+      "sha256": "773492f816cf892b115d178ea6fc1b3c759c2a798073829b946e9dc56d4cbf5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-min-content-forward.log",
+      "bytes": 9292,
+      "sha256": "43075a9a459c32516a46f008752fb3f7af09c90d97ea6af89ff0120f1f2b5675",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 9291,
+      "sha256": "5becbbe284f5935c0eb0dbdc0f93d9c853354770cb70d07fb051b355af74a93a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-simulator.json",
+      "bytes": 53979,
+      "sha256": "864bbd3c492f6839eb6beb728ceb682bb4cfc23a8cc302cd933240f050c6666f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/artifact-scanner-syntax.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/artifact-scanner-syntax.log",
+      "bytes": 25,
+      "sha256": "d7f602f40fc40663d3c76eb2b782faa51acb70b415166a54b42fa5f8deefd8ec",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-manifest-integrity.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-manifest-integrity.log",
+      "bytes": 351,
+      "sha256": "1c911cac2f48a34d5b6da7c33c8690e912285764075b8c2c393a0b43868cc10b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-script-syntax.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-script-syntax.log",
+      "bytes": 125,
+      "sha256": "9cf8ea3ef100c850c81b5810b95f39f6b01a0c50bd5fb490248963a0d0bb142a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/clippy.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/clippy.log",
+      "bytes": 150,
+      "sha256": "0099be8be056ef92669be69a86abd6451e88994bba6f7f8309d1dccddfc1e1e5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ffi-focused.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ffi-focused.log",
+      "bytes": 619,
+      "sha256": "36228718cdfb99fea05fc34263b46b9186cb718badf0e6e7e054a3c6d96d2dd3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fixture-module-boundary.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fixture-module-boundary.log",
+      "bytes": 1378,
+      "sha256": "24a3dc581057714aac4087ddb940b7bd113e413873e41f33d7848973ae6c8999",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fmt.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fmt.log",
+      "bytes": 42,
+      "sha256": "32d8a835d319e69f2b4890b3754a49bdf560137f6bc0950e2ee5a73b5ec2e95d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ios-screenshot-ocr.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ios-screenshot-ocr.log",
+      "bytes": 474,
+      "sha256": "13ea10a6d44b7e613226b0ff214f12aa3ed7d2911ee9bcd7322cc941c3d49e21",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/runtime-focused.exit",
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/runtime-focused.log",
+      "bytes": 1027,
+      "sha256": "c5dd5e16739bc20634e78df20136e66d766e4f7bc07713bd17e76cfd285e060c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verify-ios-screenshot.swift",
+      "bytes": 771,
+      "sha256": "5e9eaf2e96bf9db6f414bede3c7a9de594456bceeb91e7e68395470c3ba74fb8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 61018,
+      "sha256": "eb896a2814505f51fefe6080af0028f75122ba2cd62a6706332816efdebd72b0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-observation.json",
+      "bytes": 3052,
+      "sha256": "4a26b77d8c3655bcd28bef408123356c54af5d9f5b5afb36c685349931b19f2b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/pr-diff-review-20.html",
+      "bytes": 28018,
+      "sha256": "645a1fb654072f0b3c13f5b5b5db22e0809e9c7fbd0a63a2ff0cf25946ff1eb5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/README.html",
+      "bytes": 27541,
+      "sha256": "a991d7265cefc8140b6e8115db3fd68874ac83d03898c9ee760979cdd104cbd8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/validate-precomparison.py",
+      "bytes": 4101,
+      "sha256": "876adffd6101614f742f4bf58d86f7adc4c8fe6583b67370de1a3479a59515c2",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 188671,
+      "sha256": "b37950886e519a022cd66fa97b86014b7961673e62d31614d2e79c4b28f77c2e",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic-plan-review-20.html",
+      "bytes": 27676,
+      "sha256": "144498876ab795b7b78250093dc35f2852cc629dfcacb0b03c0932a2004e5a77",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic.html",
+      "bytes": 36191,
+      "sha256": "221e2fe729aa1fc2e84a519942edb07550db2c72d9cb26278af4770935915c14",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "bytes": 57917,
+      "sha256": "5d136f3027c247d8e1d928796c91581e4dadfd7f82fb408be41aad2fd263c16c",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 306277,
+      "sha256": "1828164569d04bcca5f26dc63d00fa10fa8e87f915e060b69f5bf2606beaf851",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-max-content-forward.94c768ca7b.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-max-content-reversed.94c768ca7b.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-min-content-forward.62b38adcb5.png",
+      "bytes": 76971,
+      "sha256": "0297e4968b1af5d4ba084b3dc1d5e4cc45f21d0235a0d408604cd8fff75d6f02",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-min-content-reversed.9c589c905a.png",
+      "bytes": 63685,
+      "sha256": "380a9a64312d0eb9fe5b4f1cd07ec73c04e61af9eba40c8fe12d1d5a4d420861",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-max-content-forward.a46cdb7e7b.png",
+      "bytes": 146048,
+      "sha256": "66126592757ad462fb1c759f82aeee83a4ba32da7e3336aeb793adfc0a87f79c",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-max-content-reversed.1cc5934d09.png",
+      "bytes": 146091,
+      "sha256": "3b15819f20be093ce3eaed94ea91931665399d93f8b1a63cad0b0d86945399e4",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-min-content-forward.111dd17d18.png",
+      "bytes": 145891,
+      "sha256": "3fee43883eecd91e0ea3b6b40fdfb824ed786aaeef2ca9fb46430d65c291de5d",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-min-content-reversed.1d40e0881e.png",
+      "bytes": 145851,
+      "sha256": "1b9a7a6874090206073fe4dc5c9c576e9429f31bc12678d2064a09f59b47e85f",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.cab5897927.js",
+      "bytes": 177333,
+      "sha256": "1ea21cb3b20067c5b6e8c051ce215ac82c81a0229b0bbaebfa2916911833e28a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-1540c3f0472e.ab3346b60b.js",
+      "bytes": 9912,
+      "sha256": "4ec4de998a0fc08b1a7504468482a13629b31ad0726527b81c58a68f10b15df2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-22143ac20395.50ff2cd862.js",
+      "bytes": 3836,
+      "sha256": "d3d97013264fd38020035d28ddcb3de796fa9f513d471fa3a9056bc56042f721",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-33a737ae0e82.386efb15c3.js",
+      "bytes": 9333,
+      "sha256": "8e93b42a1acde0de235a9d5e34c79838de84bce898846c567af24d6e536d3b21",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5ef9301cefe1.b422d68474.js",
+      "bytes": 6123,
+      "sha256": "b409200de6b06f875c7f6fe99d8a77329d89e161f6256137dcdbc2b64edc8a7a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5ff873aa10d7.b13225040a.js",
+      "bytes": 15637,
+      "sha256": "eeada76152bc74973397d12b0edb488c7389764392bda235a5571abe8adaa61f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.681983ac09.js",
+      "bytes": 579411,
+      "sha256": "d163065132f3c926a19e7593d3752831eecd0bc05711e9ad6b5ba3b3b15c6989",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-82ac5581e186.b8f017aedf.js",
+      "bytes": 18916,
+      "sha256": "239c076be27996101d8edf2f668634b30f075562a4311cfb47af9a0e12554590",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-8a35bee9b922.89a25f7817.js",
+      "bytes": 2669,
+      "sha256": "ed27444ae8cd5bcbf098a285944567468e54ce530de0bad8fba1475db891cc58",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.9f268ed289.js",
+      "bytes": 40278,
+      "sha256": "09768abe95bd7377822dab72e845fc91675809aed617623315d799bcf463963f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e381e2e9a0.js",
+      "bytes": 203468,
+      "sha256": "b237321e561f467bc35c1ec6df4d97b48d48d4b83130e4d18d6ea593991e7af0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-cba70a7ef0cd.d807b8d5e7.js",
+      "bytes": 20754,
+      "sha256": "13e5a720dd5fdb1afa4e308662089af96bb7053834fb6170b24e99cd1b2e5aa7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-da0410b06aaa.80aea00ad3.js",
+      "bytes": 19951,
+      "sha256": "4ee586c87dade89d0f8278f4994c04aa91eccd8376f2e7c40ee31a5d3f1ff9df",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.ec66fceb74.js",
+      "bytes": 51707,
+      "sha256": "b693fa4264b31a9a8fbfc78fbc4c27eb248d3c6c22e3ca75325ec5d7b0769761",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.4dc2c843.json",
+      "bytes": 653682,
+      "sha256": "4dc2c843481670570f13520646d35f12cd60b0d1eeacb3bcd4e81cdac04ecc5b",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 544598,
+      "sha256": "c310c7feeb99970ce123d5d41218601e657ebd61e4972c432ff7da0dee54d66c",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "404.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/404.html",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/internal/0059-c11-grid-layout.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/pr-diff-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/README.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/plan/c11-4-grid-track-sizing.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/plan/c11-4-mixed-direct-text-image-intrinsic-plan-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/plan/c11-4-mixed-direct-text-image-intrinsic.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/plan/c11-css-grid.html",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/roadmap.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-mixed-text-image-tailnet-roadmap-sync-2026-10-25/pass03/STATUS.html",
+      "verified": true
+    }
+  ],
+  "remote_targets": [
+    {
+      "path": "404.html",
+      "http_status": 200,
+      "bytes": 8512,
+      "sha256": "54388db8ff3abef44959afa0b6beaa6841d0cc7aa4fdb1c1477852d0ed383169",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "http_status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 214780,
+      "sha256": "e85637df28badfb2318346a1deabd7e422d38ba35d82b7d94cdb33c22833ed3c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/artifact-boundary.json",
+      "http_status": 200,
+      "bytes": 4601,
+      "sha256": "fecb4e17261078d5fbfa79ef1c57ecfb031d0add888bfa6415b542a374d543d5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/fixtureTest-build.log",
+      "http_status": 200,
+      "bytes": 713,
+      "sha256": "208404ef9deb67b1e8fa7f7a0dc1af3df7e240de8a43d62c5a268bac89661fae",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/product-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/symbols-fixtureTest.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/prior-attempts/legacy-root-outputs/symbols-product.txt",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/README.html",
+      "http_status": 200,
+      "bytes": 27796,
+      "sha256": "0aa789ab25565857ced708bcffb5b1061f29d226f599b0057858e21d55b5a637",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/fixtureTest-build.log",
+      "http_status": 200,
+      "bytes": 186,
+      "sha256": "03aebf8bb47ac980c73211f0eedb022370c9e0ceb98415fc07c71cd4f666b4bd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/product-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "9ba21e9ae2f9eaebeb075bb454cb4e4f2f949f247ac35e99e04f280f42ea9df4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/symbols-fixtureTest.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214149Z-528faa87/symbols-product.txt",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/fixtureTest-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/product-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "343c13e7f6f2d320993b573f830525e33b59b3c32656ef426e015b1e30f3fdc2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/symbols-fixtureTest.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214851Z-28531c60/symbols-product.txt",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/fixtureTest-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "765f1396d07f30f3a451cd3f9d9cad4e83c92c8e0aecf955ffc09061a6cf1e02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/product-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/symbols-fixtureTest.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T214951Z-05dbdf09/symbols-product.txt",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/fixtureTest-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "0b5fe2277fd2b29cc111b76604c482f8ec516047dbc0954657203c5614f4e4db",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/product-build.log",
+      "http_status": 200,
+      "bytes": 62,
+      "sha256": "b1bfdc52d1cea2d4e4c6812dd29fa654959a50500fdd854457dc805c093d389b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/symbols-fixtureTest.txt",
+      "http_status": 200,
+      "bytes": 210,
+      "sha256": "73b66d0711d8484ba698ed0a7eff50ba503fb8468ed9cf9c75a6adac8c721460",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T215434Z-5a1b90ae/symbols-product.txt",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/artifact-boundary/scan-ffi-archives.py",
+      "http_status": 200,
+      "bytes": 7019,
+      "sha256": "b0b3d7bd708d0918870822abe105f08bee6cdca3372c70192a2b4e9ef98c3436",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs",
+      "http_status": 200,
+      "bytes": 25624,
+      "sha256": "c5fb85741d7a1ff4a6fc4ca05cc836b0d0a37e767d71911da4f1b6c719f6cb24",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/implementation-review-20.html",
+      "http_status": 200,
+      "bytes": 37836,
+      "sha256": "b90fbff5b76396cb2e513429a29aa89b7eadbc7937a78b4b0eb2357b94fc7a9d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/isolated-direct-max-content-reversed-timeout/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 14498,
+      "sha256": "b7c97eced3842589184fe12553a1f775da8d8c5284b55d3ac8000f7ab4b56725",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/ffi-focused.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/ffi-focused.log",
+      "http_status": 200,
+      "bytes": 562,
+      "sha256": "84776dc6d473984022882b9779e2a0856488366f9f8e489c28fdb83a15f94c8a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/manifest.json",
+      "http_status": 200,
+      "bytes": 660,
+      "sha256": "9985c4645c2e5136956c9e650badee8fc209cbac7b49afe5dd94333a41c19930",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/README.html",
+      "http_status": 200,
+      "bytes": 22808,
+      "sha256": "fc19cd470e7fe911e0ff3a4b6dd9178efa1de11c96af1c61397cdd3eb3e1e554",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/runtime-focused.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/post-merge-main/runtime-focused.log",
+      "http_status": 200,
+      "bytes": 1028,
+      "sha256": "f59a983b2c0598579a1d4448b1eea9f2fd0d56f4a838b0f2cf8cce857d743eff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 37234,
+      "sha256": "eea913859926897ce47cfe2048a844ffaf39ca4e1c42ec1c5374510317ee166e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-after-gutter-filter-before-retry/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 19379,
+      "sha256": "751a64661fe6fd270e22d829bef0601039e311a50bd62e6c0b00ddaf3c03df49",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-runtime-direct-max-content-reversed-live.log",
+      "http_status": 200,
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-all-scenes-timeout/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-draw-wait-fix/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 24553,
+      "sha256": "468b8af2bd7204dee681029e45058fa408f97f772b3e5b21fd23d34e1ca38b29",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-before-gutter-filter/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 12994,
+      "sha256": "5f7f144530d3df5913501ed75328a4194c8c10958df4a2387d27da52773a749e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-draw-wait-fix/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 24553,
+      "sha256": "468b8af2bd7204dee681029e45058fa408f97f772b3e5b21fd23d34e1ca38b29",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempt-zero-gutter-before-parser-fix/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 19758,
+      "sha256": "ab65e66f0223b644a72afd94596dc54e6b08eef27abe71c9684c15242eeb53f8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-build.log",
+      "http_status": 200,
+      "bytes": 4539,
+      "sha256": "0f713309bdbcf2cb13682fa2f9dd2f342932e74a1e21b5e734336014211bf301",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213724201Z-ac114226/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 20458,
+      "sha256": "8c251c34187f892908efd8294533d9ac66bc0f596daab00fa548ed5f20f0054d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-build.log",
+      "http_status": 200,
+      "bytes": 4358,
+      "sha256": "d31641a7df669b045999e48091aeab11c9ff020d7ddde1effbfa970b8faf08e3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 89737,
+      "sha256": "f989955997859fef374521868de33d3ced0c84cab3469cead8a291387951a5c3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 75542,
+      "sha256": "b80d59fe3782b315dcb862e560a5a7c7d317ea4f3df91c47908ed4bb7af4cf03",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 106826,
+      "sha256": "9c82aee32eba0e59e123bb0e6dd3c4f92d42c8b263407529641175900f823a22",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 77093,
+      "sha256": "d983ff1c7454ff128210b25d7cbde571cc923cff1bd55dc870abd8a2a004026b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 21050,
+      "sha256": "ef4d8ac93d3e1c47aded3b3c92a4effcf3fc20a434648a40aeda10dd4b21547a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20962,
+      "sha256": "55bdb2ac08c1eeafacdaa6a9281ed5e233e2538967180c5b60116af08e665372",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 20456,
+      "sha256": "55d3152e26ea8d753ac1ca7f6080406b12edf72249d43dd4500b3013ec77ecb3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20369,
+      "sha256": "5a8290f5a6515728debd27a0592de28f553839696004923b63b351a8b97df892",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-simulator.json",
+      "http_status": 200,
+      "bytes": 32083,
+      "sha256": "cbde3a848295f30b3ceb860325d36c5e8aa7f5e08ace14a6b6d12972cdf2995e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-build.log",
+      "http_status": 200,
+      "bytes": 82958,
+      "sha256": "25a03bd5b5d747b8568960299a037a4970b7e5e61cc34316b2d6ffc0eb0f8a02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 146990,
+      "sha256": "1d99c24d25a1012a3862d212fd9a3fac20ce9cde145559d48f469e1853a4b66c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 146964,
+      "sha256": "f9fcbfa497d03d1f6c79289a0bf205fe63c65895f92ba7a4fd91ab9d6e64c677",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-install.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "e726f81f106640dca9aaaaca617a372d5e0cbf25514aaaa09aa6bdb151e745fa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "71d9adf2c6d42c8fed10fb93abaa3797673fee011ff0593d904f003f2106cc34",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "ac175bc3774d98ca96a253e52fb5b4cb95593c745e7e08b4f31e29e528d17367",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "1c0d0171eddefb951e4ebafffbb6c9961c5602328a66019b9355509dce5e7d6b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 9806,
+      "sha256": "460e7392ac2d0169c0f8503d61e867c2e01392a4c4cae14a0169b4ae5780a03a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9808,
+      "sha256": "3ada709803ac182cb15d906dbe5dd2573079f863e7dd0e177b721955dbe9a814",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 9308,
+      "sha256": "ebc1ec33ff351d8957ccdba7c184d3adf443acdb296df05da95e33c3e77776cd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9307,
+      "sha256": "cf2fe56227bbd70712244e9cd91e0a69fef47e6a0e68753a2f43570e080fe01e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-simulator.json",
+      "http_status": 200,
+      "bytes": 31486,
+      "sha256": "1c42cfc09aefe207533871fb3de0bcdd3079881e5d33df9374dfac4453b91aea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-all-scenes-timeout-metadata.json",
+      "http_status": 200,
+      "bytes": 2113,
+      "sha256": "f4196f96e09bb3ed6ca00924bf9465813a16694703d8ec8bbf5c230cde938be8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 136357,
+      "sha256": "0ce6f219802f1f41ae63149fad17fd7df86ca155121a47f198aeef88cdca9013",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 136065,
+      "sha256": "e1ba768d2b6da42a21e6d5f255d36a94a3c77799974060152f94814a4a6c360b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 130722,
+      "sha256": "3b6324b69a5b4cf6bab562c16cc0b9c132b7eb66feefc1c6a45ea5e048f126c8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 21045,
+      "sha256": "da9fe325e478c50ac2b734cd6fbec05ded7789ea1fb9aa4323e9d5efcaba28a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-reversed-live.log",
+      "http_status": 200,
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 14498,
+      "sha256": "b7c97eced3842589184fe12553a1f775da8d8c5284b55d3ac8000f7ab4b56725",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 20923,
+      "sha256": "64f22c8c61775f45d77953b19538584c6cefd63e777a709d5d4eade518a884ff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20551,
+      "sha256": "586074528bbaff73b36cae87f083a7fafdd0cb1f949616623fe39a606fee7566",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-health-after-adb-reboot.log",
+      "http_status": 200,
+      "bytes": 42644,
+      "sha256": "b5722ca643972ceb52f1b9ddc82465c497b762c5f0f5db77d6ff0c4877f3855f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-health-before-reboot.log",
+      "http_status": 200,
+      "bytes": 291989,
+      "sha256": "1346d3877e46d9868d4284cb3b21973d77801a60eb122432a02525f14363c4d0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-services-before-reboot.txt",
+      "http_status": 200,
+      "bytes": 5720,
+      "sha256": "e969ae5ac7313f6e1b9759a30b1d5c89253377bbe383cc4acaa09a007d85ee50",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build-after-gutter-filter.log",
+      "http_status": 200,
+      "bytes": 4538,
+      "sha256": "91d57ea017fe732af60719340b067b09e91556a9bf81add1a49ff2bcd030cea5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build-after-zero-gutter.log",
+      "http_status": 200,
+      "bytes": 4538,
+      "sha256": "f8a118cc598230e642e7a0a7cdd549fc6b51f015174fb68b1e344dc998036904",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-build.log",
+      "http_status": 200,
+      "bytes": 4358,
+      "sha256": "fcb427872a5af19c9c6135467d7b7f60a28c48517571f4e6a454e9bd09acce6e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 101717,
+      "sha256": "f6b0a5d8afa63448dc155ed0c54cc48e092ef1ddfee7b09a26570f073f1a357d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 126692,
+      "sha256": "ca81c20f53d75a7e0433261e94a3a6aa026451d22ce70e99179c68dff639d5da",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 127356,
+      "sha256": "f755ab61171eff76cde5df8890bead06f9657125b1a25c36fc355e235a0d8b5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 70414,
+      "sha256": "e225ae340e5aacbb7aafc00cb6f60b7da7002551ed01afb4187786a9e35d459a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-late-draw-after-summary.log",
+      "http_status": 200,
+      "bytes": 25719,
+      "sha256": "f9fd7458bf381d064795e1ca2104e74b86df1b584755672cf66970be2ca0d8cb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 20867,
+      "sha256": "3fdd257c4814281e295d9e62ef839213ff5ebe06ba98820c5751457d253b4993",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-reversed-live.log",
+      "http_status": 200,
+      "bytes": 20641,
+      "sha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20963,
+      "sha256": "de1cb4fee06f11261a4a5a6f6d771e79e76272aa3ae0696ee8c2816f4750f26d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 20459,
+      "sha256": "1ba69f540d7bf3e4eb9189d3a7507f5227d86bcf8b4da65f9aba8e4bd220679d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20461,
+      "sha256": "8a3bbf26036f4c03c246bc97c7855290339590f226a04b2a7fabec26f897845b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-simulator.json",
+      "http_status": 200,
+      "bytes": 31118,
+      "sha256": "bcbf0578d1d2849ff05f085e867e7e16fc0daa2fa77ccd3704d3eb9f3b46979a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-build.log",
+      "http_status": 200,
+      "bytes": 59412,
+      "sha256": "ffba569b25e2c5ed3ff419972a37569e4e3b92d699263b69d2259414fd668151",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-install.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "6cb92c8b4ddd259e014d7befd96e074de2367672faffcbcd8cb6eb22bf5a8f86",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "d5538c58d859d26e47a5e6c52c326619146e7ae4af030a6f3e26599ff0013db0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "355f9d1479243eaad38e80ebef60b17dabfce9c97e0d2436643f01cadb3f0564",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "91cfd56df369f63efcbd5d233a537830690831e4eb66ed24c52b68081fc03582",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 9806,
+      "sha256": "14062d4b6a9a18316c07d6345640dd8cdce578b8bdf07b463dffd4bb4867ffa2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9808,
+      "sha256": "8fa5396bf6c7314f5b58e0e5be9a6d050d90b30e7383430280bb2829581afb95",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 9308,
+      "sha256": "848b61acc1e81977d3f0041537bbbea2bd1e8fdf4d3ab91e6c84fdce1ec39675",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9307,
+      "sha256": "905ffe6ccd245b7ce0a57f15979e17cc9012b790df6be4cf4e15377b08bacc3f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-simulator.json",
+      "http_status": 200,
+      "bytes": 30997,
+      "sha256": "8d3656a636de403f6a945085e61e5367db77ef944631c8cca049eaca4e0df937",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 37898,
+      "sha256": "c013067f02f8d13f903289c5ef0ea70d61497d0c7f9acf7481e2f1288e942f1c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-build.log",
+      "http_status": 200,
+      "bytes": 4359,
+      "sha256": "77e1213a295e9418b45548a9ed27f265c49ca3642afbd348eed49f2e701d360c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 76971,
+      "sha256": "0297e4968b1af5d4ba084b3dc1d5e4cc45f21d0235a0d408604cd8fff75d6f02",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 63685,
+      "sha256": "380a9a64312d0eb9fe5b4f1cd07ec73c04e61af9eba40c8fe12d1d5a4d420861",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 20957,
+      "sha256": "bfa63987a3075bebd1bb32351765c828867d69a172a397ed2b54f7a09beea19a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20961,
+      "sha256": "f3df9557bfeddb8f396368d4f07a166925085da9686bf2cff9400fdad1094c07",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 20456,
+      "sha256": "2a3788887f6a8b74a4b707e7eeef39dc01ebddfc96eb4788a27101444f0c0e9b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 20370,
+      "sha256": "1e7290ac882ede1ab75f1ba30bbcf6bf0aeb5b77ee90a6427f640841e11b0165",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-simulator.json",
+      "http_status": 200,
+      "bytes": 53367,
+      "sha256": "19f67fbddddade35e1ab416888cc301c3ab95278ca4c32622c81a043fdc32021",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-build.log",
+      "http_status": 200,
+      "bytes": 59408,
+      "sha256": "0f6f414e349134d18469fa609d2220c343037fb52ad60fa2862942e6bb4a6011",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png",
+      "http_status": 200,
+      "bytes": 146048,
+      "sha256": "66126592757ad462fb1c759f82aeee83a4ba32da7e3336aeb793adfc0a87f79c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png",
+      "http_status": 200,
+      "bytes": 146091,
+      "sha256": "3b15819f20be093ce3eaed94ea91931665399d93f8b1a63cad0b0d86945399e4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png",
+      "http_status": 200,
+      "bytes": 145891,
+      "sha256": "3fee43883eecd91e0ea3b6b40fdfb824ed786aaeef2ca9fb46430d65c291de5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png",
+      "http_status": 200,
+      "bytes": 145851,
+      "sha256": "1b9a7a6874090206073fe4dc5c9c576e9429f31bc12678d2064a09f59b47e85f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-install.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 27,
+      "sha256": "52149bf608f75a6321f37ca343f257a4e753b208750caa7507806af15ed39dc0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 27,
+      "sha256": "8cc98ac3911437698ba4d367090fe6e5f4fdfd2531eea4b92388e01e2709c177",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 27,
+      "sha256": "7367446798412c21b822f998925818cd96848eb33a76cccc20c15d9b116ed576",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-launch-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 27,
+      "sha256": "c132d827d89520c92593f29e87136408def40a5344be177b8bc7c479d337f67a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-max-content-forward.log",
+      "http_status": 200,
+      "bytes": 9790,
+      "sha256": "be60216f7ee7ecd5bd98f25376d3a122c474ecb1299c09562dd3e36667fb8669",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-max-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9792,
+      "sha256": "773492f816cf892b115d178ea6fc1b3c759c2a798073829b946e9dc56d4cbf5d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-min-content-forward.log",
+      "http_status": 200,
+      "bytes": 9292,
+      "sha256": "43075a9a459c32516a46f008752fb3f7af09c90d97ea6af89ff0120f1f2b5675",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-runtime-direct-min-content-reversed.log",
+      "http_status": 200,
+      "bytes": 9291,
+      "sha256": "5becbbe284f5935c0eb0dbdc0f93d9c853354770cb70d07fb051b355af74a93a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-simulator.json",
+      "http_status": 200,
+      "bytes": 53979,
+      "sha256": "864bbd3c492f6839eb6beb728ceb682bb4cfc23a8cc302cd933240f050c6666f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/artifact-scanner-syntax.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/artifact-scanner-syntax.log",
+      "http_status": 200,
+      "bytes": 25,
+      "sha256": "d7f602f40fc40663d3c76eb2b782faa51acb70b415166a54b42fa5f8deefd8ec",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-manifest-integrity.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-manifest-integrity.log",
+      "http_status": 200,
+      "bytes": 351,
+      "sha256": "1c911cac2f48a34d5b6da7c33c8690e912285764075b8c2c393a0b43868cc10b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-script-syntax.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/capture-script-syntax.log",
+      "http_status": 200,
+      "bytes": 125,
+      "sha256": "9cf8ea3ef100c850c81b5810b95f39f6b01a0c50bd5fb490248963a0d0bb142a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/clippy.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/clippy.log",
+      "http_status": 200,
+      "bytes": 150,
+      "sha256": "0099be8be056ef92669be69a86abd6451e88994bba6f7f8309d1dccddfc1e1e5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ffi-focused.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ffi-focused.log",
+      "http_status": 200,
+      "bytes": 619,
+      "sha256": "36228718cdfb99fea05fc34263b46b9186cb718badf0e6e7e054a3c6d96d2dd3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fixture-module-boundary.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fixture-module-boundary.log",
+      "http_status": 200,
+      "bytes": 1378,
+      "sha256": "24a3dc581057714aac4087ddb940b7bd113e413873e41f33d7848973ae6c8999",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fmt.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/fmt.log",
+      "http_status": 200,
+      "bytes": 42,
+      "sha256": "32d8a835d319e69f2b4890b3754a49bdf560137f6bc0950e2ee5a73b5ec2e95d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ios-screenshot-ocr.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/ios-screenshot-ocr.log",
+      "http_status": 200,
+      "bytes": 474,
+      "sha256": "13ea10a6d44b7e613226b0ff214f12aa3ed7d2911ee9bcd7322cc941c3d49e21",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/runtime-focused.exit",
+      "http_status": 200,
+      "bytes": 2,
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verification/runtime-focused.log",
+      "http_status": 200,
+      "bytes": 1027,
+      "sha256": "c5dd5e16739bc20634e78df20136e66d766e4f7bc07713bd17e76cfd285e060c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verify-ios-screenshot.swift",
+      "http_status": 200,
+      "bytes": 771,
+      "sha256": "5e9eaf2e96bf9db6f414bede3c7a9de594456bceeb91e7e68395470c3ba74fb8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "http_status": 200,
+      "bytes": 61018,
+      "sha256": "eb896a2814505f51fefe6080af0028f75122ba2cd62a6706332816efdebd72b0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 3052,
+      "sha256": "4a26b77d8c3655bcd28bef408123356c54af5d9f5b5afb36c685349931b19f2b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 28018,
+      "sha256": "645a1fb654072f0b3c13f5b5b5db22e0809e9c7fbd0a63a2ff0cf25946ff1eb5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 27541,
+      "sha256": "a991d7265cefc8140b6e8115db3fd68874ac83d03898c9ee760979cdd104cbd8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/validate-precomparison.py",
+      "http_status": 200,
+      "bytes": 4101,
+      "sha256": "876adffd6101614f742f4bf58d86f7adc4c8fe6583b67370de1a3479a59515c2",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "http_status": 200,
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "http_status": 200,
+      "bytes": 188671,
+      "sha256": "b37950886e519a022cd66fa97b86014b7961673e62d31614d2e79c4b28f77c2e",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 27676,
+      "sha256": "144498876ab795b7b78250093dc35f2852cc629dfcacb0b03c0932a2004e5a77",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-mixed-direct-text-image-intrinsic.html",
+      "http_status": 200,
+      "bytes": 36191,
+      "sha256": "221e2fe729aa1fc2e84a519942edb07550db2c72d9cb26278af4770935915c14",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "http_status": 200,
+      "bytes": 57917,
+      "sha256": "5d136f3027c247d8e1d928796c91581e4dadfd7f82fb408be41aad2fd263c16c",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 306277,
+      "sha256": "1828164569d04bcca5f26dc63d00fa10fa8e87f915e060b69f5bf2606beaf851",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http_status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-max-content-forward.94c768ca7b.png",
+      "http_status": 200,
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-max-content-reversed.94c768ca7b.png",
+      "http_status": 200,
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-min-content-forward.62b38adcb5.png",
+      "http_status": 200,
+      "bytes": 76971,
+      "sha256": "0297e4968b1af5d4ba084b3dc1d5e4cc45f21d0235a0d408604cd8fff75d6f02",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-direct-min-content-reversed.9c589c905a.png",
+      "http_status": 200,
+      "bytes": 63685,
+      "sha256": "380a9a64312d0eb9fe5b4f1cd07ec73c04e61af9eba40c8fe12d1d5a4d420861",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-max-content-forward.a46cdb7e7b.png",
+      "http_status": 200,
+      "bytes": 146048,
+      "sha256": "66126592757ad462fb1c759f82aeee83a4ba32da7e3336aeb793adfc0a87f79c",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-max-content-reversed.1cc5934d09.png",
+      "http_status": 200,
+      "bytes": 146091,
+      "sha256": "3b15819f20be093ce3eaed94ea91931665399d93f8b1a63cad0b0d86945399e4",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-min-content-forward.111dd17d18.png",
+      "http_status": 200,
+      "bytes": 145891,
+      "sha256": "3fee43883eecd91e0ea3b6b40fdfb824ed786aaeef2ca9fb46430d65c291de5d",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-direct-min-content-reversed.1d40e0881e.png",
+      "http_status": 200,
+      "bytes": 145851,
+      "sha256": "1b9a7a6874090206073fe4dc5c9c576e9429f31bc12678d2064a09f59b47e85f",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "http_status": 200,
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "http_status": 200,
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.cab5897927.js",
+      "http_status": 200,
+      "bytes": 177333,
+      "sha256": "1ea21cb3b20067c5b6e8c051ce215ac82c81a0229b0bbaebfa2916911833e28a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-1540c3f0472e.ab3346b60b.js",
+      "http_status": 200,
+      "bytes": 9912,
+      "sha256": "4ec4de998a0fc08b1a7504468482a13629b31ad0726527b81c58a68f10b15df2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-22143ac20395.50ff2cd862.js",
+      "http_status": 200,
+      "bytes": 3836,
+      "sha256": "d3d97013264fd38020035d28ddcb3de796fa9f513d471fa3a9056bc56042f721",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-33a737ae0e82.386efb15c3.js",
+      "http_status": 200,
+      "bytes": 9333,
+      "sha256": "8e93b42a1acde0de235a9d5e34c79838de84bce898846c567af24d6e536d3b21",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5ef9301cefe1.b422d68474.js",
+      "http_status": 200,
+      "bytes": 6123,
+      "sha256": "b409200de6b06f875c7f6fe99d8a77329d89e161f6256137dcdbc2b64edc8a7a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5ff873aa10d7.b13225040a.js",
+      "http_status": 200,
+      "bytes": 15637,
+      "sha256": "eeada76152bc74973397d12b0edb488c7389764392bda235a5571abe8adaa61f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.681983ac09.js",
+      "http_status": 200,
+      "bytes": 579411,
+      "sha256": "d163065132f3c926a19e7593d3752831eecd0bc05711e9ad6b5ba3b3b15c6989",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-82ac5581e186.b8f017aedf.js",
+      "http_status": 200,
+      "bytes": 18916,
+      "sha256": "239c076be27996101d8edf2f668634b30f075562a4311cfb47af9a0e12554590",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-8a35bee9b922.89a25f7817.js",
+      "http_status": 200,
+      "bytes": 2669,
+      "sha256": "ed27444ae8cd5bcbf098a285944567468e54ce530de0bad8fba1475db891cc58",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.9f268ed289.js",
+      "http_status": 200,
+      "bytes": 40278,
+      "sha256": "09768abe95bd7377822dab72e845fc91675809aed617623315d799bcf463963f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e381e2e9a0.js",
+      "http_status": 200,
+      "bytes": 203468,
+      "sha256": "b237321e561f467bc35c1ec6df4d97b48d48d4b83130e4d18d6ea593991e7af0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-cba70a7ef0cd.d807b8d5e7.js",
+      "http_status": 200,
+      "bytes": 20754,
+      "sha256": "13e5a720dd5fdb1afa4e308662089af96bb7053834fb6170b24e99cd1b2e5aa7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-da0410b06aaa.80aea00ad3.js",
+      "http_status": 200,
+      "bytes": 19951,
+      "sha256": "4ee586c87dade89d0f8278f4994c04aa91eccd8376f2e7c40ee31a5d3f1ff9df",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.ec66fceb74.js",
+      "http_status": 200,
+      "bytes": 51707,
+      "sha256": "b693fa4264b31a9a8fbfc78fbc4c27eb248d3c6c22e3ca75325ec5d7b0769761",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "http_status": 200,
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "http_status": 200,
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "http_status": 200,
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.4dc2c843.json",
+      "http_status": 200,
+      "bytes": 653682,
+      "sha256": "4dc2c843481670570f13520646d35f12cd60b0d1eeacb3bcd4e81cdac04ecc5b",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 544598,
+      "sha256": "c310c7feeb99970ce123d5d41218601e657ebd61e4972c432ff7da0dee54d66c",
+      "verified": true
+    }
+  ]
+}

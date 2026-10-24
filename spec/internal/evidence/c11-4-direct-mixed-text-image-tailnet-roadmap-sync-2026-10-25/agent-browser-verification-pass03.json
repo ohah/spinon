@@ -1,0 +1,60 @@
+{
+  "browser": "Agent Browser 0.31.1",
+  "terminalBrowserUsed": false,
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "implementationPrVisible": true,
+    "implementationMergeShaVisible": "2c4c278f0facd31ac3e0cc60dce1f27575628b35",
+    "officialCountVisible": "72/213",
+    "checkedRoadmapCheckboxes": 72,
+    "totalRoadmapCheckboxes": 213
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "officialCountVisible": "72/213",
+    "c11CheckboxFound": true,
+    "c11CheckboxChecked": false,
+    "c11CheckboxDisabled": true
+  },
+  "runtimeEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/README.html",
+    "title": "C11.4 direct text + image non-spanning intrinsic contribution - 스피논 문서",
+    "images": 9,
+    "loadedImages": 9,
+    "imageDimensions": [
+      [150, 150],
+      [1080, 2400],
+      [1206, 2622],
+      [1080, 2400],
+      [1206, 2622],
+      [1080, 2400],
+      [1206, 2622],
+      [1080, 2400],
+      [1206, 2622]
+    ],
+    "postMergeSectionVisible": true
+  },
+  "screenshots": [
+    {
+      "path": "roadmap-agent-browser-pass03.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "a715a8364c24c063107ce2c7504ee4bb2a64b74994027d731e861658d01fd6d2"
+    },
+    {
+      "path": "runtime-agent-browser-pass03.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "e6fcae1d846a94a1de0d79e69e72cc23972def9dffada0637dac8405238e7678"
+    }
+  ],
+  "cleanup": {
+    "session": "spinon-c114-roadmap-sync-612",
+    "closed": true,
+    "agentBrowserProcessRemaining": false,
+    "terminalBrowserProcessRemaining": false,
+    "tailnetPreviewServerRestarted": false
+  }
+}

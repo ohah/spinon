@@ -1,0 +1,34 @@
+{
+  "logs": [
+    {
+      "readableLog": "selected-build.log",
+      "rawOutputArchive": "selected-build-pass01-raw.log.gz",
+      "originalBytes": 38096,
+      "originalSha256": "83b3e1b68d1b1db580b75643e30e6a75c30cbe32f66cfcc83607db39b32d3b9a",
+      "rawArchiveSha256": "975821a5570a7e0f9bb5b018844765dcc38f737a683774a4b62ce7adb8f0a9f1",
+      "normalizedBytes": 38078,
+      "normalizedSha256": "e961220e74636b52a888f262b5fb6e13e1cf5dc395fd8dc9017a3651127915de",
+      "normalization": "only trailing spaces and tabs removed from line ends"
+    },
+    {
+      "readableLog": "selected-build-pass02.log",
+      "rawOutputArchive": "selected-build-pass02-raw.log.gz",
+      "originalBytes": 49736,
+      "originalSha256": "d3f86ef0336b92ec2b8047cf2c65299963969af35cb255732d28f825e471cb3e",
+      "rawArchiveSha256": "558a896a7d4dc250ced4fd59d9d08ad8ae6d52b39607ae6f9611b099e23153a8",
+      "normalizedBytes": 49430,
+      "normalizedSha256": "66f78c8dd6f4663a0728e42616363446238a10b321846d5eecba8242a5f0cbc7",
+      "normalization": "only trailing spaces and tabs removed from line ends"
+    },
+    {
+      "readableLog": "selected-build-pass03.log",
+      "rawOutputArchive": "selected-build-pass03-raw.log.gz",
+      "originalBytes": 10276,
+      "originalSha256": "871eed8f87e06e7da4bad4100fbd9ff8f139602cb85fcf3870496057c6d132b3",
+      "rawArchiveSha256": "50d6d024c7c69106a08f3e00ad31c2bc0ea808b952fe681d91f7a80adcef8d43",
+      "normalizedBytes": 10252,
+      "normalizedSha256": "90a74c3fc07c93c615894c0054ec6d67d8ddcbe58e5f481503a819a85be996ec",
+      "normalization": "only trailing spaces and tabs removed from line ends"
+    }
+  ]
+}
