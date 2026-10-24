@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 fixed-repeat and auto-repeat precomparison</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font: 14px/1.4 system-ui, sans-serif;
+      }
+
+      body {
+        margin: 24px;
+        color: #172033;
+        background: #f3f5f8;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 20px;
+      }
+
+      #scenes {
+        display: grid;
+        grid-template-columns: repeat(2, 420px);
+        gap: 16px;
+      }
+
+      .scene {
+        box-sizing: border-box;
+        min-height: 168px;
+        padding: 12px;
+        background: white;
+        border: 1px solid #cbd3df;
+        border-radius: 8px;
+      }
+
+      .row-scene {
+        min-height: 288px;
+      }
+
+      .scene h2 {
+        margin: 0 0 8px;
+        font-size: 13px;
+      }
+
+      .grid {
+        width: 200px;
+        height: 80px;
+        display: grid;
+        grid-auto-rows: 80px;
+        gap: 8px;
+        align-content: start;
+        background:
+          linear-gradient(to right, transparent 0, transparent 100%),
+          repeating-linear-gradient(135deg, #edf1f6 0 4px, #e5eaf1 4px 8px);
+      }
+
+      .row-grid {
+        width: 80px;
+        height: 200px;
+        display: grid;
+        grid-auto-columns: 80px;
+        gap: 8px;
+        align-content: start;
+        background: repeating-linear-gradient(135deg, #edf1f6 0 4px, #e5eaf1 4px 8px);
+      }
+
+      .item {
+        width: 10px;
+        height: 10px;
+        background: #e34c67;
+      }
+
+      #fit-prefix-occupied .item {
+        grid-column: 5 / 6;
+        grid-row: 1;
+      }
+
+      #row-fit-prefix-occupied .item {
+        grid-column: 1;
+        grid-row: 5 / 6;
+      }
+
+      code {
+        display: block;
+        margin-top: 8px;
+        color: #42506a;
+        font: 11px/1.3 ui-monospace, monospace;
+        overflow-wrap: anywhere;
+      }
+
+      output {
+        display: block;
+        margin-top: 4px;
+        color: #154a82;
+        font: 11px/1.3 ui-monospace, monospace;
+        overflow-wrap: anywhere;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>One fixed-repeat group with one auto-repeat</h1>
+    <main id="scenes">
+      <section class="scene">
+        <h2>fixed-repeat prefix · auto-fill · empty</h2>
+        <div
+          class="grid"
+          id="fill-prefix-empty"
+          style="grid-template-columns: repeat(2, 20px 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px"
+        ></div>
+        <code>repeat(2, 20px 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px</code>
+        <output id="result-fill-prefix-empty"></output>
+      </section>
+
+      <section class="scene">
+        <h2>fixed-repeat suffix · auto-fill · empty</h2>
+        <div
+          class="grid"
+          id="fill-suffix-empty"
+          style="grid-template-columns: 16px repeat(auto-fill, minmax(32px, 1fr)) repeat(2, 20px 10px)"
+        ></div>
+        <code>16px repeat(auto-fill, minmax(32px, 1fr)) repeat(2, 20px 10px)</code>
+        <output id="result-fill-suffix-empty"></output>
+      </section>
+
+      <section class="scene">
+        <h2>fixed-repeat prefix · auto-fit · empty</h2>
+        <div
+          class="grid"
+          id="fit-prefix-empty"
+          style="grid-template-columns: repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px"
+        ></div>
+        <code>repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px</code>
+        <output id="result-fit-prefix-empty"></output>
+      </section>
+
+      <section class="scene">
+        <h2>fixed-repeat prefix · auto-fit · first repeat occupied</h2>
+        <div
+          class="grid"
+          id="fit-prefix-occupied"
+          style="grid-template-columns: repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px"
+        >
+          <div class="item"></div>
+        </div>
+        <code>item at grid-column: 5 / 6</code>
+        <output id="result-fit-prefix-occupied"></output>
+      </section>
+
+      <section class="scene row-scene">
+        <h2>row fixed-repeat prefix · auto-fill · empty</h2>
+        <div
+          class="row-grid"
+          id="row-fill-prefix-empty"
+          style="grid-template-rows: repeat(2, 20px 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px"
+        ></div>
+        <code>repeat(2, 20px 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px</code>
+        <output id="result-row-fill-prefix-empty"></output>
+      </section>
+
+      <section class="scene row-scene">
+        <h2>row fixed-repeat suffix · auto-fill · empty</h2>
+        <div
+          class="row-grid"
+          id="row-fill-suffix-empty"
+          style="grid-template-rows: 16px repeat(auto-fill, minmax(32px, 1fr)) repeat(2, 20px 10px)"
+        ></div>
+        <code>16px repeat(auto-fill, minmax(32px, 1fr)) repeat(2, 20px 10px)</code>
+        <output id="result-row-fill-suffix-empty"></output>
+      </section>
+
+      <section class="scene row-scene">
+        <h2>row fixed-repeat prefix · auto-fit · empty</h2>
+        <div
+          class="row-grid"
+          id="row-fit-prefix-empty"
+          style="grid-template-rows: repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px"
+        ></div>
+        <code>repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px</code>
+        <output id="result-row-fit-prefix-empty"></output>
+      </section>
+
+      <section class="scene row-scene">
+        <h2>row fixed-repeat prefix · auto-fit · first repeat occupied</h2>
+        <div
+          class="row-grid"
+          id="row-fit-prefix-occupied"
+          style="grid-template-rows: repeat(2, 20px 10px) repeat(auto-fit, minmax(32px, 1fr)) 16px"
+        >
+          <div class="item"></div>
+        </div>
+        <code>item at grid-row: 5 / 6</code>
+        <output id="result-row-fit-prefix-occupied"></output>
+      </section>
+    </main>
+
+    <script>
+      window.__spinonPrecomparison = Array.from(
+        document.querySelectorAll(".grid, .row-grid"),
+        (grid) => {
+          const root = grid.getBoundingClientRect();
+          const items = Array.from(grid.children, (item) => {
+            const rect = item.getBoundingClientRect();
+            return {
+              x: rect.x - root.x,
+              y: rect.y - root.y,
+              width: rect.width,
+              height: rect.height,
+            };
+          });
+          const style = getComputedStyle(grid);
+          const trackAxis = grid.matches(".row-grid") ? "rows" : "columns";
+          return {
+            id: grid.id,
+            trackAxis,
+            templateColumns: style.gridTemplateColumns,
+            templateRows: style.gridTemplateRows,
+            grid: { x: root.x, y: root.y, width: root.width, height: root.height },
+            items,
+          };
+        },
+      );
+      for (const result of window.__spinonPrecomparison) {
+        const tracks = result.trackAxis === "rows" ? result.templateRows : result.templateColumns;
+        document.getElementById(`result-${result.id}`).textContent =
+          `Chrome used ${result.trackAxis}: ${tracks}`;
+      }
+    </script>
+  </body>
+</html>
