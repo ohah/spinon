@@ -38,6 +38,10 @@ CSS Grid 2025 CRD §7.2.3.1의 auto-track-list 문법은 하나의 auto-repeat�
 
 `fixed_repeat_auto_repeat.rs`의 두-slot 배열을 fallibly-reserved, component-indexed metadata로 교체했다. 3·4·8개 fixed-repeat group, rows·columns, authored order, 10,000/10,001 descriptor 경계, allocation failure와 다음 호출 복구를 cascade에서 확인했다. 새 opt-in runtime scene 두 개는 columns prefix-fill과 rows split-fill을 추가하며 item frame은 `(0,74,10,10)`이다. 변경 crate test, fixture-boundary test, fmt, Clippy와 default/positive-control archive 경계가 통과했다. [양 플랫폼 실행·화면·hash](../spec/internal/evidence/c11-4-unbounded-fixed-repeat-groups-runtime-2026-10-24/README.md).
 
+## PR 병합 상태 · 2026-10-24
+
+구현 [PR #597](https://github.com/ohah/spinon/pull/597)은 `ddea615bf488628bb77059fbe9e46551dfa36400`로 Rebase and merge 됐다. 병합 당시 PR check rollup은 비었고 main required status checks는 설정되지 않았다. 구현은 제한 slice로만 기록하며 C11.4 공식 checkbox와 `72/213`은 유지한다.
+
 ## 남은 범위
 
 named-line metadata merge/collision, fixed-size `minmax()`와 percentage breadth, 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 intrinsic track sizing 전체는 미완료다. 이 제한 profile은 제품 CSS 지원 범위 전체나 공식 완료 항목을 뜻하지 않는다.
