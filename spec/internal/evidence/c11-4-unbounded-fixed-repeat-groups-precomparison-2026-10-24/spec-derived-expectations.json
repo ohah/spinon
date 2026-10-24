@@ -1,0 +1,52 @@
+{
+  "normativeSource": "CSS Grid Layout Module Level 1, 2025 CRD, section 7.2.3.1",
+  "autoRepeatLimitPerTrackList": 1,
+  "maximumAuthoredTrackDescriptors": 10000,
+  "comparisonToleranceCssPx": 0.015625,
+  "scenes": [
+    {
+      "id": "four-prefix-fill",
+      "axis": "columns",
+      "availableAxisCssPx": 320,
+      "fixedRepeatGroups": [
+        { "count": 1, "patternCssPx": [11] },
+        { "count": 2, "patternCssPx": [13] },
+        { "count": 1, "patternCssPx": [17, 19] },
+        { "count": 3, "patternCssPx": [7] }
+      ],
+      "ordinaryTracksCssPx": [5],
+      "gapCssPx": 8,
+      "expandedFixedRepeatTrackCount": 8,
+      "expandedFixedRepeatBreadthCssPx": 94,
+      "fixedAndOrdinaryTrackCount": 9,
+      "minimumSpaceByAutoRepeatCountCssPx": {
+        "formula": "99 + 20*n + 8*(8+n) = 163 + 28*n",
+        "5": 303,
+        "6": 331
+      },
+      "expectedAutoRepeatCount": 5,
+      "expectedTrackBreadthCssPx": 23.4,
+      "chrome156SerializedAutoTrackCssPx": 23.3906
+    },
+    {
+      "id": "four-row-split-fill",
+      "axis": "rows",
+      "availableAxisCssPx": 320,
+      "fixedRepeatGroups": [
+        { "count": 1, "patternCssPx": [11] },
+        { "count": 2, "patternCssPx": [13] },
+        { "count": 1, "patternCssPx": [17, 19] },
+        { "count": 3, "patternCssPx": [7] }
+      ],
+      "ordinaryTracksCssPx": [5],
+      "gapCssPx": 8,
+      "expectedAutoRepeatCount": 5,
+      "chrome156SerializedAutoTrackCssPx": 23.3906,
+      "item": {
+        "gridRow": "5 / 6",
+        "frameCssPx": [0, 74, 10, 10],
+        "startFormulaCssPx": "5 + 11 + 13 + 13 + 4*8 = 74"
+      }
+    }
+  ]
+}
