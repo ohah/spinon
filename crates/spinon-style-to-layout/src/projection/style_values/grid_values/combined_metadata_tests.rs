@@ -13,6 +13,7 @@ fn projection_grid(line_name_bytes: usize, include_area: bool) -> ComputedCssGri
             start: 0,
             end: 1,
             line_names: vec![Vec::new(), Vec::new()],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: vec![vec!["x".repeat(line_name_bytes)], Vec::new()],
@@ -128,6 +129,7 @@ fn combined_metadata_budget_counts_both_auto_repeat_axes() {
         start: 0,
         end: 1,
         line_names: vec![Vec::new(), Vec::new()],
+        fixed_repeat_minmax_track_indices: Vec::new(),
     };
     let line_name_bytes = COMBINED_METADATA_LIMIT - line_and_area_fixed_bytes(2);
     let mut grid = projection_grid(line_name_bytes, true);

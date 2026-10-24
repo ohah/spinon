@@ -82,10 +82,17 @@ pub(super) fn project_grid_layout_with_math(
             "grid-template-columns",
             &grid.columns,
             auto_repeat,
+            &auto_repeat.fixed_repeat_minmax_track_indices,
         )?;
     }
     if let Some(auto_repeat) = &grid.rows_auto_repeat {
-        validate_auto_repeat_neighbor_tracks(node, "grid-template-rows", &grid.rows, auto_repeat)?;
+        validate_auto_repeat_neighbor_tracks(
+            node,
+            "grid-template-rows",
+            &grid.rows,
+            auto_repeat,
+            &auto_repeat.fixed_repeat_minmax_track_indices,
+        )?;
     }
     validate_combined_grid_line_area_metadata(node, grid)?;
     project_grid_layout_with_reservations(
@@ -235,6 +242,7 @@ fn validate_auto_repeat_neighbor_tracks(
     property: &'static str,
     tracks: &[ComputedCssGridTrackSize],
     auto_repeat: &ComputedCssGridAutoRepeat,
+    fixed_repeat_minmax_track_indices: &[usize],
 ) -> Result<(), StyleLayoutError> {
     if auto_repeat.start >= auto_repeat.end || auto_repeat.end > tracks.len() {
         return Err(StyleLayoutError::UnsupportedComputedValue {
@@ -243,28 +251,66 @@ fn validate_auto_repeat_neighbor_tracks(
             value: "auto-repeat fragment 범위가 track 목록을 벗어났습니다".to_owned(),
         });
     }
-    let unsupported = tracks[..auto_repeat.start]
+    let mut previous_provenance_index = None;
+    for &index in fixed_repeat_minmax_track_indices {
+        if index >= tracks.len()
+            || (auto_repeat.start..auto_repeat.end).contains(&index)
+            || previous_provenance_index.is_some_and(|previous| previous >= index)
+            || !is_fixed_minimum_fraction_maximum(&tracks[index])
+        {
+            return Err(StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property,
+                value: "fixed-repeat MinMax provenance가 track 목록과 일치하지 않습니다".to_owned(),
+            });
+        }
+        previous_provenance_index = Some(index);
+    }
+    let unsupported = tracks
         .iter()
-        .chain(&tracks[auto_repeat.end..])
-        .find(|track| !is_supported_auto_repeat_neighbor(track));
+        .enumerate()
+        .filter(|(index, _)| *index < auto_repeat.start || *index >= auto_repeat.end)
+        .find(|(index, track)| {
+            !is_supported_auto_repeat_neighbor(track, *index, fixed_repeat_minmax_track_indices)
+        });
     if unsupported.is_some() {
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property,
-            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage 또는 제한된 signed calc(length + percentage) 형태여야 합니다".to_owned(),
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 또는 제한된 signed calc(length + percentage) 형태여야 합니다".to_owned(),
         });
     }
     Ok(())
 }
 
-fn is_supported_auto_repeat_neighbor(track: &ComputedCssGridTrackSize) -> bool {
+fn is_supported_auto_repeat_neighbor(
+    track: &ComputedCssGridTrackSize,
+    index: usize,
+    fixed_repeat_minmax_track_indices: &[usize],
+) -> bool {
     match track {
         ComputedCssGridTrackSize::LengthPx(value) | ComputedCssGridTrackSize::Percentage(value) => {
             value.is_finite() && *value >= 0.0
         }
+        ComputedCssGridTrackSize::MinMax { .. } => {
+            fixed_repeat_minmax_track_indices
+                .binary_search(&index)
+                .is_ok()
+                && is_fixed_minimum_fraction_maximum(track)
+        }
         ComputedCssGridTrackSize::Calc(value) => is_supported_auto_repeat_neighbor_calc(value),
         _ => false,
     }
+}
+
+fn is_fixed_minimum_fraction_maximum(track: &ComputedCssGridTrackSize) -> bool {
+    matches!(
+        track,
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(min),
+            max: spinon_style::ComputedCssGridTrackBreadth::Fraction(max),
+        } if min.is_finite() && *min >= 0.0 && max.is_finite() && *max >= 0.0
+    )
 }
 
 fn is_supported_auto_repeat_neighbor_calc(value: &ComputedCssMath) -> bool {

@@ -1,0 +1,129 @@
+{
+  "build": {
+    "command": "SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:ios-sim",
+    "exitCode": 0,
+    "sdk": "iphonesimulator26.2",
+    "appExecutable": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "appSha256": "80d4bccbac502f412db33420f37c9b439599dc6c40f6af957bbaac5dfa06dd58",
+    "simulatorMetadataAppSha256": "80d4bccbac502f412db33420f37c9b439599dc6c40f6af957bbaac5dfa06dd58",
+    "appHashMatchesSimulator": true
+  },
+  "installation": {
+    "command": "xcrun simctl install ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+    "runnerSucceeded": true,
+    "installLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/install.log",
+    "installedBundlePath": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data/Containers/Bundle/Application/3D934E38-79D8-44E6-8709-672795856657/SpinonBootstrap.app"
+  },
+  "capture": {
+    "command": "node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs ios-simulator ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D --scene-id=fixed-repeat-minmax-flex-columns-fill,fixed-repeat-minmax-flex-columns-fit,fixed-repeat-minmax-flex-rows-fill,fixed-repeat-minmax-flex-rows-fit,fixed-repeat-minmax-flex-columns-groups,fixed-repeat-minmax-flex-columns-flex-factor-low --run-kind=fixed-repeat-minmax-flex --evidence-group=c11-4-fixed-repeat-minmax-flex-runtime",
+    "evidenceDirectory": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba",
+    "target": "ios-simulator",
+    "simulator": {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+    },
+    "appSha256": "80d4bccbac502f412db33420f37c9b439599dc6c40f6af957bbaac5dfa06dd58",
+    "sceneCount": 6,
+    "allPassed": true,
+    "observations": [
+      {
+        "sceneId": "fixed-repeat-minmax-flex-columns-fill",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 9,
+        "nodeFrames": 9,
+        "columnTrackCount": 8,
+        "rowTrackCount": 1,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-columns-fill.png"
+      },
+      {
+        "sceneId": "fixed-repeat-minmax-flex-columns-fit",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 4,
+        "nodeFrames": 4,
+        "columnTrackCount": 8,
+        "rowTrackCount": 1,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-columns-fit.png"
+      },
+      {
+        "sceneId": "fixed-repeat-minmax-flex-rows-fill",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 6,
+        "nodeFrames": 6,
+        "columnTrackCount": 1,
+        "rowTrackCount": 5,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-rows-fill.png"
+      },
+      {
+        "sceneId": "fixed-repeat-minmax-flex-rows-fit",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 4,
+        "nodeFrames": 4,
+        "columnTrackCount": 1,
+        "rowTrackCount": 5,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-rows-fit.png"
+      },
+      {
+        "sceneId": "fixed-repeat-minmax-flex-columns-groups",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 14,
+        "nodeFrames": 14,
+        "columnTrackCount": 13,
+        "rowTrackCount": 1,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-columns-groups.png"
+      },
+      {
+        "sceneId": "fixed-repeat-minmax-flex-columns-flex-factor-low",
+        "status": 0,
+        "layout": "ready",
+        "boxes": 8,
+        "nodeFrames": 8,
+        "columnTrackCount": 7,
+        "rowTrackCount": 1,
+        "drawPresented": true,
+        "supersededRetries": 0,
+        "screenshot": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/ios-simulator-c114-fixed-repeat-minmax-flex-ios-simulator-20261024T234343852Z-a54267ba/fixed-repeat-minmax-flex-columns-flex-factor-low.png"
+      }
+    ]
+  },
+  "sourceSnapshot": {
+    "appCommit": "d8a9fd96d7de6d7234aca705bde1bff91a3133df",
+    "currentCommit": "d8a9fd96d7de6d7234aca705bde1bff91a3133df",
+    "appTrackedDiffSha256": "5b359b165b5e6a15a8a692bc956d348681bf0f3db8bac18adface66b892cb844",
+    "currentTrackedDiffSha256": "5b359b165b5e6a15a8a692bc956d348681bf0f3db8bac18adface66b892cb844",
+    "trackedDiffMatches": true,
+    "inputFileCount": 26,
+    "inputFileMatches": 26,
+    "mismatches": [],
+    "updatedFixtureTestHash": {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex.rs",
+      "expectedSha256": "93e86d026a90da0a67483fd730ec92584143387d100e97139c720fa264396fb8",
+      "actualSha256": "93e86d026a90da0a67483fd730ec92584143387d100e97139c720fa264396fb8",
+      "matches": true
+    }
+  },
+  "cleanup": {
+    "targetSimulatorAppTerminated": true,
+    "terminationCommand": "xcrun simctl terminate ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap",
+    "targetRunProcessRemaining": false,
+    "agentBrowserLaunched": false,
+    "terminalBrowserLaunched": false,
+    "agentOrTerminalBrowserProcessMatchCount": 0,
+    "otherBootedSimulatorProcessesChanged": false
+  }
+}

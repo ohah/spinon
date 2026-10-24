@@ -544,6 +544,7 @@ mod tests {
                 start: 0,
                 end: 1,
                 line_names: Vec::new(),
+                fixed_repeat_minmax_track_indices: Vec::new(),
             });
         });
         rejects_grid_mutation!("row auto-repeat", |grid: &mut ComputedCssGridLayout| {
@@ -552,6 +553,7 @@ mod tests {
                 start: 0,
                 end: 1,
                 line_names: Vec::new(),
+                fixed_repeat_minmax_track_indices: Vec::new(),
             });
         });
         rejects_grid_mutation!("template areas", |grid: &mut ComputedCssGridLayout| {

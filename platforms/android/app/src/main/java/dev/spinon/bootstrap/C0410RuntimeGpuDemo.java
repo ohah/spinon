@@ -1206,6 +1206,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedNodeFramesMatch(String sceneId, String report) {
+        if (c114FixedRepeatMinmaxFlexRootSize(sceneId) != null) return true;
         String expected = c114ExpectedNodeFrames(sceneId);
         if (expected == null || report.contains(expected)) return true;
         return "calc-neighbor-col-fill-border-box".equals(sceneId)
@@ -1219,6 +1220,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
         if (fixedAutoAreaSize != null) {
             return "width=" + fixedAutoAreaSize[0] + ",height=" + fixedAutoAreaSize[1];
+        }
+        int[] fixedRepeatMinmaxFlexSize = c114FixedRepeatMinmaxFlexRootSize(sceneId);
+        if (fixedRepeatMinmaxFlexSize != null) {
+            return "width=" + fixedRepeatMinmaxFlexSize[0]
+                    + ",height=" + fixedRepeatMinmaxFlexSize[1];
         }
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             if (sceneId.contains("-groups-")) {
@@ -1518,11 +1524,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static int[] c114FixedRepeatMinmaxFlexRootSize(String sceneId) {
+        if ("fixed-repeat-minmax-flex-columns-groups".equals(sceneId)) {
+            return new int[] {300, 120};
+        }
+        return c114FixedRepeatMinmaxFlexBoxCount(sceneId) != 0
+                ? new int[] {200, 120} : null;
+    }
+
+    private static int c114FixedRepeatMinmaxFlexBoxCount(String sceneId) {
+        switch (sceneId) {
+            case "fixed-repeat-minmax-flex-columns-fill": return 9;
+            case "fixed-repeat-minmax-flex-columns-fit": return 4;
+            case "fixed-repeat-minmax-flex-rows-fill": return 6;
+            case "fixed-repeat-minmax-flex-rows-fit": return 4;
+            case "fixed-repeat-minmax-flex-columns-groups": return 14;
+            case "fixed-repeat-minmax-flex-columns-flex-factor-low": return 8;
+            default: return 0;
+        }
+    }
+
     private static String c114ExpectedItemFrame(String sceneId) {
         if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
             return sceneId.startsWith("direct-min-content-")
                     ? "width=50,height=20" : "width=80,height=10";
         }
+        if (c114FixedRepeatMinmaxFlexRootSize(sceneId) != null) return "";
         if (c114IsFixedAutoAreaScene(sceneId)) return "";
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             return sceneId.endsWith("-occupied")
@@ -3035,6 +3062,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             : "1:node=2," + text + ";2:node=4," + image)
                     + "]";
         }
+        if (c114FixedRepeatMinmaxFlexRootSize(sceneId) != null) return null;
         int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
         String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
         int[][] fixedAutoAreaItems = c114FixedAutoAreaItemFrames(sceneId);
@@ -5202,6 +5230,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) return 3;
+        int fixedRepeatMinmaxFlexBoxCount = c114FixedRepeatMinmaxFlexBoxCount(sceneId);
+        if (fixedRepeatMinmaxFlexBoxCount != 0) return fixedRepeatMinmaxFlexBoxCount;
         String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
         if (fixedAutoAreaNames != null) return fixedAutoAreaNames.length + 1;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {

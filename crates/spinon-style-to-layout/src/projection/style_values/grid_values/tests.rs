@@ -4,12 +4,50 @@ use super::{
 };
 use crate::projection::typed_math::CssMathProjector;
 use spinon_core::NodeId;
-use spinon_layout::{GridTrackSize, LayoutError};
+use spinon_layout::{
+    GridTrackMaxSizingFunction, GridTrackMinSizingFunction, GridTrackSize, LayoutError,
+};
 use spinon_style::{
     ComputedCssGridArea, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTemplateAreas, ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth, ComputedCssGridTrackSize,
+    ComputedStyleProfile,
 };
+
+#[test]
+fn track_sizing_projection_preserves_fixed_minimum_fraction_maximum() {
+    let node = NodeId::new(11_119).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::LengthPx(12.0),
+            max: ComputedCssGridTrackBreadth::Fraction(0.5),
+        }],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(20.0)],
+        columns_auto_repeat: None,
+        rows_auto_repeat: None,
+        columns_line_names: vec![Vec::new(), Vec::new()],
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::Auto,
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+
+    assert_eq!(
+        projected.columns,
+        vec![GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::LengthPx(12.0),
+            max: GridTrackMaxSizingFunction::Fraction(0.5),
+        }]
+    );
+}
 
 #[test]
 fn projection_reservation_failure_keeps_node_and_axis_context() {
@@ -147,6 +185,7 @@ fn track_sizing_projects_areas_with_one_auto_repeat_axis_and_preserves_authored_
             start: 0,
             end: 1,
             line_names: vec![Vec::new(), Vec::new()],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -205,6 +244,7 @@ fn auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures() 
             start: 0,
             end: 1,
             line_names: vec![Vec::new(), Vec::new()],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -229,6 +269,7 @@ fn auto_repeat_template_areas_project_two_axes_and_reject_allocation_failures() 
         start: 0,
         end: 1,
         line_names: vec![Vec::new(), Vec::new()],
+        fixed_repeat_minmax_track_indices: Vec::new(),
     });
     let projected = project_grid_layout(
         node,
@@ -612,12 +653,14 @@ fn track_sizing_profile_projects_independent_auto_repeat_modes_on_both_axes() {
             start: 1,
             end: 2,
             line_names: Vec::new(),
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: Some(ComputedCssGridAutoRepeat {
             mode: ComputedCssGridAutoRepeatMode::AutoFit,
             start: 1,
             end: 2,
             line_names: Vec::new(),
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         columns_line_names: Vec::new(),
         rows_line_names: Vec::new(),
@@ -673,6 +716,7 @@ fn track_sizing_profile_projects_auto_repeat_inner_and_component_names() {
             start: 1,
             end: 2,
             line_names: vec![vec!["item-start".into()], vec!["item-end".into()]],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: vec![
@@ -723,6 +767,7 @@ fn track_sizing_profile_keeps_single_axis_auto_repeat_projection() {
             start: 1,
             end: 2,
             line_names: Vec::new(),
+            fixed_repeat_minmax_track_indices: Vec::new(),
         }),
         rows_auto_repeat: None,
         columns_line_names: Vec::new(),
@@ -769,6 +814,7 @@ fn auto_fit_projection_preserves_area_dimensions_beyond_both_repeat_axes() {
             start: 0,
             end: 1,
             line_names: vec![Vec::new(), Vec::new()],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         })
     };
     let grid = ComputedCssGridLayout {

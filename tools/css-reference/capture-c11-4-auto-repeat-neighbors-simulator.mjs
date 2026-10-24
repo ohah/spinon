@@ -233,6 +233,53 @@ function sourceRevision() {
   };
 }
 
+const fixedRepeatMinmaxFlexRunInputPaths = [
+  'crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/snapshot.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_line_names.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs',
+  'crates/spinon-layout/src/grid.rs',
+  'crates/spinon-layout/src/grid_track_sizing_tests.rs',
+  'crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_track_tests.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values/grid_values/combined_metadata_tests.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex_scenes.json',
+  'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+  'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+  'spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/spec-derived-expectations.json',
+  'spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/chrome156-observation.json',
+  'spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/README.md',
+  'spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/chrome156-agent-browser-precomparison.png',
+  'tests/fixtures/css/c11/grid-fixed-repeat-minmax-flex-c114-precomparison.html',
+  'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs',
+];
+
+async function fixedRepeatMinmaxFlexInputHashes() {
+  const uniquePaths = new Set(fixedRepeatMinmaxFlexRunInputPaths);
+  assert.equal(uniquePaths.size, fixedRepeatMinmaxFlexRunInputPaths.length,
+    'fixed-repeat minmax flex 입력 경로 목록에 중복이 있습니다.');
+  return Promise.all(fixedRepeatMinmaxFlexRunInputPaths.map(async (path) => {
+    let bytes;
+    try {
+      bytes = await readFile(resolve(repositoryRoot, path));
+    } catch (error) {
+      throw new Error(`fixed-repeat minmax flex 입력 파일을 읽지 못했습니다 (${path}): ${error.message}`, {
+        cause: error,
+      });
+    }
+    assert.ok(bytes.length > 0, `fixed-repeat minmax flex 입력 파일이 비어 있습니다: ${path}`);
+    return { path, sha256: sha256(bytes) };
+  }));
+}
+
 const scenes = [
   {
     id: 'auto-fill-fixed-neighbors',
@@ -4483,7 +4530,8 @@ async function fixedRepeatAutoRepeatScenes({
       items: scene.items,
     }));
   }));
-  const fixedRepeatFixtures = fixtures.filter(({ id }) => id.startsWith('fixed-repeat-'));
+  const fixedRepeatFixtures = fixtures.filter(({ id }) => id.startsWith('fixed-repeat-')
+    && !id.startsWith('fixed-repeat-minmax-flex-'));
   assert.equal(fixedRepeatFixtures.length, expectedCount,
     `fixed-repeat + auto-repeat runtime matrix는 ${expectedCount} scene이어야 합니다.`);
   const chromeCases = [...(chrome.cases ?? chrome.scenes), ...additionalChrome.flat()];
@@ -4580,6 +4628,91 @@ async function fixedRepeatAutoRepeatScenes({
       },
       gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
       pixelSamples,
+    };
+  });
+}
+
+async function fixedRepeatMinmaxFlexScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex_scenes.json');
+  const expectationsPath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/spec-derived-expectations.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, expectations, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(expectationsPath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 6, 'fixed-repeat minmax flex matrix는 여섯 scene이어야 합니다.');
+  assert.equal(expectations.scenes.length, fixtures.length,
+    'fixed-repeat minmax flex의 독립 기대값 scene 수가 다릅니다.');
+  const oracleById = new Map(expectations.scenes.map((scene) => [scene.id, scene]));
+  assert.match(androidSource,
+    /BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&&\s*sceneId != null\s*&& sceneId\.startsWith\("fixed-repeat-"\)/,
+    'Android fixed-repeat minmax flex scene은 opt-in fixture build에만 허용되어야 합니다.');
+  const iosFixtureBlock = iosSource.match(
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1([\s\S]*?)#endif/,
+  )?.[1];
+  assert.ok(iosFixtureBlock,
+    'iOS fixed-repeat minmax flex scene은 opt-in fixture build에만 컴파일되어야 합니다.');
+
+  return fixtures.map((fixture) => {
+    const {
+      id, oracleId, repeatAxis, expect, items, columnGap, rowGap,
+    } = fixture;
+    assert.ok(id.startsWith('fixed-repeat-minmax-flex-'),
+      `${id}: runtime scene id must keep the fixed-repeat prefix`);
+    assert.ok(iosFixtureBlock.includes(`"${id}"`),
+      `iOS opt-in scene allowlist is missing ${id}.`);
+    const oracle = oracleById.get(oracleId);
+    assert.ok(oracle, `${id}: independent expectation ${oracleId} is missing.`);
+    assert.equal(oracle.axis, repeatAxis, `${id}: repeat axis differs from its oracle.`);
+    assert.equal(Number.parseFloat(columnGap), 4, `${id}: column gutter must remain 4px.`);
+    assert.equal(Number.parseFloat(rowGap), 4, `${id}: row gutter must remain 4px.`);
+    const axis = repeatAxis === 'columns' ? 'Columns' : 'Rows';
+    const offsetIndex = repeatAxis === 'columns' ? 0 : 1;
+    const expectedTracks = expect.tracks[repeatAxis];
+    assert.deepEqual(expectedTracks, oracle.expectedTracks,
+      `${id}: expanded track sizes differ from independent expectations.`);
+    for (const axisKey of ['columns', 'rows']) {
+      assert.equal(expect.collapsed[axisKey].length, expect.tracks[axisKey].length,
+        `${id}: ${axisKey} collapsed track count differs.`);
+    }
+    assert.equal(items.length, expect.items.length, `${id}: fixture item count differs.`);
+    const expectedStarts = oracle.expectedItemStarts;
+    assert.equal(expect.items.length, expectedStarts.length,
+      `${id}: item offset count differs from independent expectations.`);
+    for (const [index, item] of expect.items.entries()) {
+      assert.equal(item.name, items[index].name, `${id}: item ${index} identity differs.`);
+      assert.equal(item.frame[offsetIndex], expectedStarts[index],
+        `${id}: item ${index} offset differs from independent expectations.`);
+    }
+
+    const [rootWidth, rootHeight] = expect.root;
+    assert.equal(expect.root[offsetIndex], oracle.container,
+      `${id}: auto-repeat axis dimension differs from the independent expectation.`);
+    const frames = [`0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight}`];
+    for (const [index, item] of expect.items.entries()) {
+      const [x, y, width, height] = item.frame;
+      frames.push(`${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`);
+    }
+    return {
+      id,
+      oracleId,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      geometryTolerance: 0.02,
     };
   });
 }
@@ -4711,8 +4844,9 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
     'tests/fixtures/css/c11/grid-unbounded-fixed-repeat-auto-repeat-c114-precomparison.html',
   expectedCount: 12,
 }));
+scenes.push(...await fixedRepeatMinmaxFlexScenes());
 scenes.push(...await fixedAutoRepeatAreaScenes());
-assert.equal(scenes.length, 484, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 490, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -4729,6 +4863,10 @@ if (requestedSceneIDs) {
     'C11.4 선택 scene ID가 중복됐습니다.');
   assert.equal(runScenes.length, requestedSceneIDs.length,
     'C11.4 선택 scene ID 중 일부가 없습니다.');
+}
+if (runKind === 'fixed-repeat-minmax-flex') {
+  assert.ok(runScenes.every(({ id }) => id.startsWith('fixed-repeat-minmax-flex-')),
+    'fixed-repeat-minmax-flex run에는 해당 scene만 선택해야 합니다.');
 }
 
 function anonymousGridBorderOverflowScenes() {
@@ -5813,6 +5951,7 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok(log.includes(summary), `${scene.id}: runtime summary가 없습니다.`);
   assert.ok(log.includes(`layout=ready boxes=${scene.boxCount}`),
     `${scene.id}: visible box 수가 예상과 다릅니다.`);
+  const geometryTolerance = scene.geometryTolerance ?? 1 / 64;
   const expectedNodeFramesMatch = parseNodeFrames(scene.nodeFrames, scene.id);
   const actualNodeFrames = log.split(/\r?\n/).flatMap((line) => {
     const marker = 'SPINON_C114_GRID_NODE_FRAME ';
@@ -5826,7 +5965,7 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.equal(actual.order, expected.order, `${scene.id}: node frame ${index} 순서가 다릅니다.`);
     assert.equal(actual.node, expected.node, `${scene.id}: node frame ${index} ID가 다릅니다.`);
     for (const property of ['x', 'y', 'width', 'height']) {
-      assert.ok(Math.abs(actual[property] - expected[property]) <= 1 / 64,
+      assert.ok(Math.abs(actual[property] - expected[property]) <= geometryTolerance,
         `${scene.id}: node ${actual.node} ${property} 예상 ${expected[property]}, 실제 ${actual[property]}`);
     }
   }
@@ -6823,10 +6962,15 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: ${axis} collapsed track 상태가 예상과 다릅니다.`);
     assert.equal(finalTracks.length, expected.tracks.length,
       `${scene.id}: ${axis} track 수가 다릅니다.`);
-    finalTracks.forEach(({ baseSize }, index) => assert.ok(
-      Math.abs(baseSize - expected.tracks[index]) <= 1 / 64,
-      `${scene.id}: ${axis} track ${index + 1} 크기 예상 ${expected.tracks[index]}, 실제 ${baseSize}`,
-    ));
+    finalTracks.forEach(({ baseSize }, index) => {
+      if (scene.geometryTolerance !== undefined && expected.collapsed[index]) {
+        assert.equal(baseSize, 0,
+          `${scene.id}: ${axis} collapsed track ${index + 1} must be exactly zero.`);
+      } else {
+        assert.ok(Math.abs(baseSize - expected.tracks[index]) <= geometryTolerance,
+          `${scene.id}: ${axis} track ${index + 1} 크기 예상 ${expected.tracks[index]}, 실제 ${baseSize}`);
+      }
+    });
     if (scene.axes || scene.id.startsWith('auto-fill-two-track-')
         || scene.id.startsWith('auto-fit-min-') || boundaryGutters) {
       const allGutters = finalStageTracks.filter(({ gutter }) => gutter);
@@ -7063,6 +7207,12 @@ if (process.argv.includes('--list-scenes')) {
   process.exit(0);
 }
 
+const fixedRepeatMinmaxFlexSourceRevision = runKind === 'fixed-repeat-minmax-flex'
+  ? {
+    ...sourceRevision(),
+    fixedRepeatMinmaxFlexInputFiles: await fixedRepeatMinmaxFlexInputHashes(),
+  }
+  : null;
 await mkdir(evidenceDirectory, { recursive: true });
 const observations = [];
 
@@ -7110,7 +7260,7 @@ if (target === 'ios-simulator') {
   }
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
     target, udid: simulatorUDID, name: simulator[0].name, runtime: simulator[0].runtime, appSha256,
-    sourceRevision: sourceRevision(),
+    sourceRevision: fixedRepeatMinmaxFlexSourceRevision ?? sourceRevision(),
   }, null, 2)}\n`);
 } else {
   const { adb, metadata } = currentAndroidDevice();
@@ -7127,7 +7277,7 @@ if (target === 'ios-simulator') {
     '실기기에 설치된 base.apk와 로컬 APK의 SHA-256이 다릅니다.');
   metadata.apkSha256 = localApkSha256;
   metadata.installedApkSha256 = installedApkSha256;
-  metadata.sourceRevision = sourceRevision();
+  metadata.sourceRevision = fixedRepeatMinmaxFlexSourceRevision ?? sourceRevision();
   await writeFile(resolve(evidenceDirectory,
     target === 'android-device' ? 'device.json' : 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   await writeFile(resolve(evidenceDirectory, 'installed-apk-verification.json'), `${JSON.stringify({

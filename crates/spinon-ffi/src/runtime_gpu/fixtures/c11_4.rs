@@ -50,6 +50,8 @@ mod cyclic_percentage_tracks;
 mod cyclic_percentage_two_axis_multitrack;
 #[path = "c11_4/fixed_repeat_auto_repeat.rs"]
 mod fixed_repeat_auto_repeat;
+#[path = "c11_4/fixed_repeat_minmax_flex.rs"]
+mod fixed_repeat_minmax_flex;
 #[path = "c11_4/flex_spanning_text.rs"]
 mod flex_spanning_text;
 #[path = "c11_4/image_multispan.rs"]
@@ -1204,6 +1206,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = fixed_repeat_auto_repeat::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = fixed_repeat_minmax_flex::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = multiple_fixed_repeat_groups::runtime_source(scene_id) {

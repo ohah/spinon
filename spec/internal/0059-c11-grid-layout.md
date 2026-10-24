@@ -471,6 +471,20 @@ Chrome 156 관측과 CSS Grid CRD 기반 독립 기대값을 고정한 9-scene �
 
 기본 `c04-runtime-gpu` Rust static archive에는 새 scene marker 0/11과 C11.4 host symbols가 없고, `c04-runtime-gpu-fixture-test` positive control에는 marker 11/11 및 두 host symbols가 포함된다. 이는 FFI static archive 경계만 확인하며 최종 APK/IPA exclusion을 뜻하지 않는다. Android 실기기/hardware GPU, iOS compositor 이후 pixels, 일반 CSS admission, WPT 및 전체 C11.4는 미검증이다. C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
 
+## C11.4 fixed-repeat `minmax(px, fr)` + auto-repeat · 제한 runtime slice
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 이 opt-in `RuntimeBlockFlexGridTrackSizingV1` slice는 한 explicit track list의 하나의 `auto-fill`/`auto-fit`과 하나 이상의 integer fixed-repeat을 결합할 때 fixed-repeat pattern의 1–2개 track에 finite nonnegative `LengthPx` 또는 `MinMax { min: LengthPx, max: Fraction }`을 허용한다. 두 MinMax operand는 finite·nonnegative여야 한다. 0fr 및 1 미만 factor는 그대로 보존한다. fixed minimum은 auto-repeat 개수 계산에 쓰고 flex maximum은 최종 sizing에 참여한다.
+
+Cascade는 MinMax fixed-repeat 출처의 expanded track index를 fallible reservation 후 `ComputedCssGridAutoRepeat`에 보존하고, style-to-layout은 provenance가 확인된 이웃 track에서만 새 shape를 허용한다. 일반 authored neighbor `minmax(px, fr)`는 기존 지원 범위를 유지해 거부한다. auto-repeat pattern과 기존 LengthPx·percentage·제한 signed-calc neighbor 범위는 그대로다. MinMax provenance 목록이 정렬되지 않았거나, 중복·범위 초과·auto-repeat 내부 index·실제 track shape 불일치가 있으면 node/property 오류로 fail-closed한다.
+
+Taffy 0.15.0은 flexible factor 누적 중 f32 overflow를 검사하지 않는다. Cascade와 layout은 `MAX_COMPUTED_GRID_TRACKS`/`GRID_MAX_TRACKS`까지의 expanded-axis flex-factor sum upper bound를 checked f32 연산으로 Taffy 호출 전에 확인한다. 유효 개별 flex 값이어도 upper bound가 비유한이면 `UnsupportedComputedGridValue` 또는 `InvalidGridTrackList`와 node/property를 보존해 거부한다. CSS 문법 위반은 Stylo parser 경로에 남긴다.
+
+여섯 fixed scene은 CSS Grid Level 1 2025 CRD 독립 계산 및 Chrome 156 관측과 대조했다. 최종 source snapshot을 해시한 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 6/6 node frame·track/collapse·trace·draw/present를 확인했다. FFI fixture 검사는 oracle track·item grid-line·gap·root 크기로 full item rect 네 좌표를 산출하고 fixture expected rect와 1/64 CSS px 이내로 대조한다. 캡처 runner는 runtime frame에 0.02 CSS px를 허용하고 collapsed track은 정확히 0을 요구한다. 이번 scene에는 pixel sample이 없어 PixelCopy/Metal RGBA exact를 주장하지 않는다.
+
+최종 `c04-runtime-gpu` product static archive는 새 scene marker 0/6, C11.4 host ABI string/symbol 0/2이며 unique CSS payload가 없다. `c04-runtime-gpu-fixture-test` positive control은 marker 6/6, host ABI string/symbol 2/2 및 unique `0.5fr/0fr` CSS payload를 포함한다. 이 gate는 Rust static archive 경계로 한정되며 APK/IPA 전체 제외가 아니다. workspace all-target tests, `-D warnings` Clippy, Rust fmt, fixture-module boundary와 focused cascade/projection/layout/FFI/runtime checks가 통과했다. [사전 비교](./evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/README.md) · [실행·화면·source hash·artifact 경계](./evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/implementation-review-20.md) · [계획](../../plan/c11-4-fixed-repeat-minmax-flex.md).
+
+일반 CSS admission, WPT 적합성, 1e38fr overflow의 simulator rejection path, stress/OOM 복구, Android 실기기/hardware GPU, iOS compositor 이후 pixels, APK/IPA 전체 fixture exclusion 및 전체 C11.4는 미검증이다. C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
+
 ## C11.4 direct text + image non-spanning intrinsic contribution · 제한 runtime slice
 
 이 후보는 opt-in `RuntimeBlockFlexGridTrackSizingV1`에서 direct Ahem text leaf와 natural-size PNG replaced image를 같은 column에 각각 span 1로 두고, `min-content`·`max-content` contribution 중 최댓값을 구하는 네 고정 scene만 다룬다. Source order forward/reversed 두 경우를 포함하고 general mixed input rejection과 unsupported CSS fail-closed 계약은 유지한다. 기대값은 Ahem 10px의 `XX XXXXX`에서 min-content 50px·max-content 80px, PNG natural width 24px를 독립 계산했다.

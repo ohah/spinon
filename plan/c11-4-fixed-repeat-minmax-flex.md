@@ -1,5 +1,7 @@
 # C11.4 fixed-repeat `minmax(px, fr)` + auto-repeat 제한 구현 계획
 
+**구현 후보 상태 · 2026-10-25:** 계획 PR #614가 main에 병합된 뒤 구현했다. Cascade→style-to-layout에 fixed-repeat `MinMax(px, fr)` provenance를 보존하고, 일반 authored neighbor의 동일 shape는 거부한다. Stylo·projection·layout·FFI 검증과 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 6/6 runtime matrix, final-source Rust archive boundary를 확인했다. Chrome 156 raw root/item rect를 독립적으로 대조하는 FFI assertion을 포함한다. 실행 근거·화면·hash·남은 한계는 [runtime evidence](../spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/README.md)에 있다. 구현/runtime 20-view review는 완료했다. PR diff 30-view review와 구현 PR은 아직 없다. 이 limited candidate는 C11.4 checkbox와 공식 `72/213`을 완료시키지 않는다.
+
 ## 목표
 
 현재 opt-in Grid profile이 유효한 CSS track shape인 `repeat(2, minmax(12px, 1fr)) repeat(auto-fill, minmax(24px, 1fr))`를 Stylo computed-value projection에서 거부한다. fixed integer repeat의 모든 track이 `LengthPx`여야 한다고 확인하는 두 gate를 좁혀, fixed minimum이 px이고 maximum이 flex fraction인 1–2 track pattern을 보존·layout하는 계획이다.
@@ -57,4 +59,4 @@ Resource regression controls는 component list 10,000/10,001, projection의 `Com
 
 ## 완료 판정과 남은 범위
 
-이 계획은 미승인 구현이나 CSS support claim이 아니다. 코드 변경은 계획 PR이 main에 병합된 뒤에만 시작한다. 계획 PR의 병합은 구현 완료를 뜻하지 않는다. 구현 PR도 C11.4 전체, WPT, 일반 CSS admission, 실기기 GPU 또는 공식 체크리스트 항목을 자동 완료시키지 않는다.
+이 계획 자체는 일반 CSS support claim이 아니다. 구현은 계획 PR #614가 main에 병합된 뒤 시작했고 제한 fixture 후보 검증을 마쳤다. 계획 PR의 병합이나 이 구현 PR의 병합도 C11.4 전체, WPT, 일반 CSS admission, 실기기 GPU 또는 공식 체크리스트 항목을 자동 완료시키지 않는다.

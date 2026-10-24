@@ -232,6 +232,9 @@ pub struct ComputedCssGridAutoRepeat {
     pub end: usize,
     /// 반복 fragment의 각 track 경계에 있는 authored 이름 그룹입니다. 비어 있지 않으면 N+1개입니다.
     pub line_names: Vec<Vec<String>>,
+    /// Fixed-repeat pattern에서 유래한 `minmax(px, fr)` track의 explicit-list index입니다.
+    /// Auto-repeat pattern 자체나 일반 authored neighbor의 index는 포함하지 않습니다.
+    pub fixed_repeat_minmax_track_indices: Vec<usize>,
 }
 
 /// Stylo computed `grid-auto-rows` 값 중 제한 profile이 해석할 수 있는 형태입니다.
