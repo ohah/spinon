@@ -297,6 +297,14 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "col-fit-first", "row-fit-first", "col-fit-empty", "row-fit-empty",
     "col-fill-overflow", "row-fill-overflow", "col-fill-zero-prefix",
     "col-fill-border-box", "row-fill-border-box",
+    "calc-neighbor-col-fill-both", "calc-neighbor-row-fill-both",
+    "calc-neighbor-col-fill-prefix", "calc-neighbor-row-fill-suffix",
+    "calc-neighbor-col-fit-first", "calc-neighbor-col-fit-empty",
+    "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-border-box",
+    "calc-neighbor-col-fill-extra-term", "calc-neighbor-col-fill-negative-term",
+    "calc-neighbor-col-fill-negative-final",
+    "calc-neighbor-col-fill-negative-percentage-term",
+    "calc-neighbor-col-max-content", "calc-neighbor-col-fill-fixed-control",
 
 ]
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
@@ -622,6 +630,93 @@ private let c114PercentageNeighborPixelSceneIDs: Set<String> = [
     "col-fill-border-box", "row-fill-border-box",
 ]
 
+private let c114CalcNeighborPixelSceneIDs: Set<String> = [
+    "calc-neighbor-col-fill-both", "calc-neighbor-row-fill-both",
+    "calc-neighbor-col-fill-prefix", "calc-neighbor-row-fill-suffix",
+    "calc-neighbor-col-fit-first", "calc-neighbor-col-fit-empty",
+    "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-border-box",
+    "calc-neighbor-col-fill-negative-term", "calc-neighbor-col-fill-negative-final",
+    "calc-neighbor-col-fill-fixed-control",
+]
+
+private func c114CalcNeighborRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
+    switch sceneID {
+    case "calc-neighbor-col-fill-both", "calc-neighbor-col-fill-prefix",
+         "calc-neighbor-col-fit-first", "calc-neighbor-col-fit-empty",
+         "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-negative-term",
+         "calc-neighbor-col-fill-negative-final", "calc-neighbor-col-fill-fixed-control":
+        return (240, 10)
+    case "calc-neighbor-row-fill-both", "calc-neighbor-row-fill-suffix":
+        return (10, 240)
+    case "calc-neighbor-col-fill-border-box":
+        return (136, 34)
+    default:
+        return nil
+    }
+}
+
+private func c114CalcNeighborItemFrames(_ sceneID: String) -> [C114PercentageNeighborItemFrame]? {
+    guard c114CalcNeighborRootSize(sceneID) != nil else { return nil }
+    switch sceneID {
+    case "calc-neighbor-col-fit-empty": return []
+    case "calc-neighbor-row-fill-both": return [.init(x: 0, y: 26, width: 2, height: 2)]
+    case "calc-neighbor-row-fill-suffix": return [.init(x: 0, y: 46, width: 2, height: 2)]
+    case "calc-neighbor-col-fit-first", "calc-neighbor-col-fill-fixed-control":
+        return [.init(x: 26, y: 0, width: 2, height: 2)]
+    case "calc-neighbor-col-fill-overflow":
+        return [.init(x: 244, y: 0, width: 2, height: 2)]
+    case "calc-neighbor-col-fill-border-box":
+        return [.init(x: 23.796875, y: 10, width: 2, height: 2)]
+    default:
+        return [.init(x: 0, y: 0, width: 2, height: 2)]
+    }
+}
+
+private func c114CalcNeighborExpectedRejection(_ sceneID: String)
+    -> (code: String, property: String, nodeID: String)? {
+    switch sceneID {
+    case "calc-neighbor-col-fill-extra-term",
+         "calc-neighbor-col-fill-negative-percentage-term":
+        return ("unsupported_computed_value", "grid-template-columns", "1")
+    case "calc-neighbor-col-max-content":
+        return ("invalid_grid_track_list", "grid-template-columns", "1")
+    default:
+        return nil
+    }
+}
+
+private func c114CalcNeighborRootFrame(_ sceneID: String) -> String? {
+    guard let size = c114CalcNeighborRootSize(sceneID) else { return nil }
+    return "width=\(size.width),height=\(size.height)"
+}
+
+private func c114CalcNeighborItemFrame(_ sceneID: String) -> String? {
+    guard let items = c114CalcNeighborItemFrames(sceneID) else { return nil }
+    guard let item = items.first else { return "" }
+    return "width=\(c114PercentageMaximumFrameNumber(item.width)),"
+        + "height=\(c114PercentageMaximumFrameNumber(item.height))"
+}
+
+private func c114CalcNeighborNodeFrames(_ sceneID: String) -> String? {
+    guard let size = c114CalcNeighborRootSize(sceneID),
+          let items = c114CalcNeighborItemFrames(sceneID) else { return nil }
+    let itemFrames = items.enumerated().map { index, item in
+        "\(index + 1):node=\(index + 2),x=\(c114PercentageMaximumFrameNumber(item.x)),"
+            + "y=\(c114PercentageMaximumFrameNumber(item.y)),"
+            + "width=\(c114PercentageMaximumFrameNumber(item.width)),"
+            + "height=\(c114PercentageMaximumFrameNumber(item.height))"
+    }
+    return "node_frames_css_px=[0:node=1,x=0,y=0,width=\(size.width),height=\(size.height)"
+        + (itemFrames.isEmpty ? "" : ";" + itemFrames.joined(separator: ";")) + "]"
+}
+
+private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    guard let expected = c114ExpectedNodeFrames(sceneID) else { return true }
+    if report.contains(expected) { return true }
+    guard sceneID == "calc-neighbor-col-fill-border-box" else { return false }
+    return report.contains(expected.replacingOccurrences(of: "x=23.796875", with: "x=23.8"))
+}
+
 private func c114PercentageNeighborRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
     switch sceneID {
     case "col-fill-both", "col-fill-prefix", "col-fit-first", "col-fit-empty",
@@ -675,6 +770,7 @@ private func c114PercentageNeighborNodeFrames(_ sceneID: String) -> String? {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let calcNeighborFrame = c114CalcNeighborRootFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborRootFrame(sceneID) {
         return percentageNeighborFrame
     }
@@ -903,6 +999,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let calcNeighborFrame = c114CalcNeighborItemFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneID) {
         return percentageNeighborFrame
     }
@@ -2451,6 +2548,9 @@ private func c114ImageTrackPassMatches(
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let calcNeighborFrames = c114CalcNeighborNodeFrames(sceneID) {
+        return calcNeighborFrames
+    }
     if let percentageNeighborFrames = c114PercentageNeighborNodeFrames(sceneID) {
         return percentageNeighborFrames
     }
@@ -3828,6 +3928,9 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if let calcNeighborItems = c114CalcNeighborItemFrames(sceneID) {
+        return calcNeighborItems.count + 1
+    }
     if let percentageNeighborItems = c114PercentageNeighborItemFrames(sceneID) {
         return percentageNeighborItems.count + 1
     }
@@ -4425,9 +4528,50 @@ private struct C111MetalPixelRun {
         return expected
     }
 
+    private static func c114CalcNeighborPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        guard let size = c114CalcNeighborRootSize(sceneID),
+              let items = c114CalcNeighborItemFrames(sceneID) else { return [] }
+        let rootID = "c114-\(sceneID)-grid"
+        var expected: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("\(sceneID)-root-interior", rootID,
+             UInt32(size.width / 2), UInt32(size.height / 2), [238, 242, 255, 255]),
+        ]
+        for (index, item) in items.enumerated() {
+            expected.append((
+                "\(sceneID)-item-\(index + 1)-interior",
+                "c114-\(sceneID)-item-\(index + 1)",
+                UInt32(floor(item.x + item.width / 2)),
+                UInt32(floor(item.y + item.height / 2)),
+                [229, 72, 77, 255]
+            ))
+        }
+        if sceneID == "calc-neighbor-col-fill-overflow" {
+            expected.append(contentsOf: [
+                ("\(sceneID)-root-right-interior", rootID, 239, 5, [238, 242, 255, 255]),
+                ("\(sceneID)-root-exterior", rootID, 240, 5, [0, 0, 0, 255]),
+                ("\(sceneID)-item-overflow", "c114-\(sceneID)-item-1", 244, 1,
+                 [229, 72, 77, 255]),
+            ])
+        }
+        return expected
+    }
+
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if c114CalcNeighborPixelSceneIDs.contains(sceneID) {
+            let expectedSamples = c114CalcNeighborPixelSamples(sceneID: sceneID)
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if c114PercentageMaximumPixelSceneIDs.contains(sceneID) {
             let expectedSamples = c114PercentageMaximumPixelSamples(sceneID: sceneID)
             guard samples.count == expectedSamples.count else { return false }
@@ -8514,6 +8658,24 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         } else if c114GridTrackSizingProbeRequested {
             let report = result ?? "status=-1 missing-report"
+            if let expected = c114CalcNeighborExpectedRejection(c114GridTrackSizingSceneID) {
+                log("SPINON_C114_GRID_REJECTION_DETAIL run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) report=\(report.suffix(1600))")
+                let status = String(report.split(separator: " ", maxSplits: 1).first ?? "status=-1")
+                let code = report.contains(expected.code) ? expected.code : "missing"
+                let property = report.contains("property=Some(\"\(expected.property)\")")
+                    ? expected.property : "missing"
+                let nodeID = report.contains("node=Some(\(expected.nodeID))")
+                    ? expected.nodeID : "missing"
+                let framesAbsent = !report.contains("node_frames_css_px=[")
+                let passed = status == "status=-11" && code == expected.code
+                    && property == expected.property && nodeID == expected.nodeID && framesAbsent
+                log("SPINON_C114_GRID_REJECTION_SUMMARY run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected=\(passed) \(status) code=\(code) property=\(property) node_id=\(nodeID) frames=\(framesAbsent ? "absent" : "present")")
+                guard passed else {
+                    postStatus("실패 · C11.4 calc 이웃 거부 계약 불일치")
+                    return
+                }
+                return
+            }
             if !report.hasPrefix("status=0 ") {
                 log("SPINON_C114_GRID_EVAL_FAILURE_DETAIL run_id=\(c114GridTrackSizingRunID) \(report.suffix(700))")
             }
@@ -8524,7 +8686,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedImageInputs = c114ExpectedImageIntrinsicInputs(
                 c114GridTrackSizingSceneID, report: report)
-            let expectedNodeFramesMatch = expectedNodeFrames.map(report.contains) ?? true
+            let expectedNodeFramesMatch = c114ExpectedNodeFramesMatch(
+                c114GridTrackSizingSceneID, report: report)
             let expectedCrossAxisSpanGroupFramesMatch = c114ExpectedCrossAxisSpanGroupFramesMatch(
                 c114GridTrackSizingSceneID, report: report)
             let expectedTextMultiSpanFramesMatch = c114ExpectedTextMultiSpanFramesMatch(

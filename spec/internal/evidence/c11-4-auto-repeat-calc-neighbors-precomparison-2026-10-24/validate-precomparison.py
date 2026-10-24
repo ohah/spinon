@@ -71,7 +71,7 @@ CASES = {
         "outer_size": 136.0,
     },
     "col-fill-extra-term": {
-        "axis": "columns", "size": 240.0, "prefix": 23.0, "suffix": 0.0,
+        "axis": "columns", "size": 240.0, "prefix": 22.0, "suffix": 0.0,
         "prefix_present": True, "suffix_present": False,
     },
     "col-fill-negative-term": {

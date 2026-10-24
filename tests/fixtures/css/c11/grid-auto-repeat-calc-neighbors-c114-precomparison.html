@@ -21,7 +21,7 @@
       #col-fit-empty { width: 240px; height: 10px; grid-template-columns: calc(10px + 5%) repeat(auto-fit, minmax(40px, 1fr)) calc(4px + 2.5%); grid-template-rows: 10px; }
       #col-fill-overflow { width: 240px; height: 10px; grid-template-columns: calc(80% + 4px) repeat(auto-fill, minmax(40px, 1fr)) calc(30% + 2px); grid-template-rows: 10px; }
       #col-fill-border-box { box-sizing: border-box; width: 136px; height: 34px; padding: 8px; border: 2px solid transparent; grid-template-columns: calc(4px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(3px + 2.5%); grid-template-rows: 10px; }
-      #col-fill-extra-term { width: 240px; height: 10px; grid-template-columns: calc(10px + 5% + 1px) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
+      #col-fill-extra-term { width: 240px; height: 10px; grid-template-columns: calc(10px + 5% + clamp(0px, 0%, 1px)) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
       #col-fill-negative-term { width: 240px; height: 10px; grid-template-columns: calc(-2px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
       #col-fill-negative-final { width: 240px; height: 10px; grid-template-columns: calc(-20px + 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }
       #col-fill-negative-percentage-term { width: 240px; height: 10px; grid-template-columns: calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr)); grid-template-rows: 10px; }

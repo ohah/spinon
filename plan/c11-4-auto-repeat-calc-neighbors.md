@@ -2,11 +2,11 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [percentage neighbor 선행 slice](./c11-4-auto-repeat-percentage-neighbors.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태 · 2026-10-24:** 계획 및 Agent Browser 사전 비교 단계다. CSS/runtime 구현은 시작하지 않았다. C11.4 상위 체크는 미완료이며 공식 집계는 `72/213`이다.
+**상태 · 2026-10-24:** Agent Browser의 Chrome 156 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 현재 미커밋 소스는 cascade에서 representable track shape를 보존하고, `spinon-style-to-layout` projection 경계에서 제한 typed AST를 검사한다. subset 밖 shape는 node/property가 포함된 `UnsupportedComputedValue`로 거부한다. 14-case opt-in FFI fixture와 Android/iOS runner가 연결됐다. focused Rust `auto_repeat` suites는 `spinon-layout` 51/51, `spinon-style` 19/19, `spinon-style-to-layout` 15/15 통과했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 현재 소스의 14-scene matrix가 각각 14/14를 통과했다. 각 플랫폼에서 11 positive scene의 frame·tracks/collapse·trace·draw/present, 3 rejection control의 typed diagnostic 및 frame 부재를 확인했다. PixelCopy와 Metal drawable 표본은 각 24/24 exact이며 overflow scene 표본은 각 5/5 exact다. `InvalidGridTrackList`의 generic `layout_failed` mapping을 실제 AVD에서 찾아 typed `invalid_grid_track_list` code/node/property mapping과 회귀 test를 추가했다. [현재 소스 실행·hash·screens](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-projection-pass03-2026-10-24/README.md) · [초기 capture flag 누락](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-projection-pass01-2026-10-24/README.md) · [runtime error mapping 진단](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-projection-pass02-2026-10-24/README.md). product `c04-runtime-gpu` release FFI archive에서는 14 scene ID와 C11.4 fixture FFI symbol이 없고, `c04-runtime-gpu-fixture-test` positive-control archive에는 14/14 scene ID와 symbol이 있다. 이는 macOS ARM64 static archive feature 경계 근거이며 최종 APK/IPA exclusion을 증명하지 않는다. [artifact 빌드·검사 근거](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-artifact-2026-10-24/README.md). 새 구현/runtime 실패 관점 20개 검토를 별도 기록했다. 다음 gate는 PR 범위를 고정한 뒤 수행할 서로 다른 30개 diff 실패 관점 검토다. C11.4 상위 체크는 미완료이고 공식 집계 `72/213`을 유지한다.
 
 ## 코드 경계와 목적
 
-PR [#580](https://github.com/ohah/spinon/pull/580)은 definite positive content axis에서 유한·0 이상 `LengthPx`/`Percentage` neighbor를 제한 auto-repeat profile에 연결했다. 현재 [Stylo gate](../crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs)의 `is_auto_repeat_neighbor_track`와 [layout gate](../crates/spinon-layout/src/grid.rs)의 `auto_repeat_neighbor_tracks_are_supported`는 `Calc` neighbor를 거부한다. Layout은 percentage에 양의 definite content basis를 요구하고, basis 곱과 aggregate를 표현 범위에서 검사한다. 기존 auto-repeat track 내부의 일부 `calc()` minimum/maximum 지원과 바깥 neighbor 지원은 별도 경계다.
+PR [#580](https://github.com/ohah/spinon/pull/580)은 definite positive content axis에서 유한·0 이상 `LengthPx`/`Percentage` neighbor를 제한 auto-repeat profile에 연결했다. 현재 미커밋 [Stylo gate](../crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs)와 [layout gate](../crates/spinon-layout/src/grid.rs)는 computed `Sum` AST에 정확히 두 항이 있는 calc neighbor를 제한 지원한다. 항은 `LengthPx` 또는 단일 `Negate(LengthPx)` signed term 하나와 유한 0 이상 `Percentage` 하나이며 순서는 양쪽을 허용한다. Layout은 unique calc ID와 같은 node/property binding, definite positive content basis를 요구하고 basis 곱과 aggregate overflow를 검사한다. 기존 auto-repeat track 내부 sizing과 바깥 neighbor의 `calc()`는 별도 경계다.
 
 이 계획은 fragment 앞·뒤에 쓰는 제한 2-term `calc(length + percentage)` 하나 이상을 위 neighbor 입력에 추가한다. 일반적인 CSS math 평가기를 새로 만들지 않고, Stylo가 보존한 `ComputedCssMath::Sum`의 정확히 두 항인 `LengthPx`와 `Percentage` 조합만 쓴다. 합의 항 순서는 어느 쪽이든 허용한다. Length 항은 유한 signed 값이며 Percentage 항은 유한 0 이상 값으로 제한한다. 다만 지정 축 basis에서 최종 계산값은 CSS range 규칙에 맞춰 0 이상으로 clamp한다.
 
@@ -33,27 +33,27 @@ PR [#580](https://github.com/ohah/spinon/pull/580)은 definite positive content 
 | `col-fill-negative-term` | count 5, `[10,42,42,42,42,42]` | signed length term, 최종 10px |
 | `col-fill-negative-final` | count 5, `[0,44,44,44,44,44]` | calc 최종값 음수, 0px clamp |
 | `col-fill-negative-percentage-term` | count 5, `[8,42.4,42.4,42.4,42.4,42.4]` | CSS-valid negative control; negative percentage term은 AST whitelist 밖 |
-| `col-fill-extra-term` | count 4, `[23,50.25,50.25,50.25,50.25]` | CSS-valid negative control; 3-term sum은 whitelist 밖 |
+| `col-fill-extra-term` | count 4, `[22,50.5,50.5,50.5,50.5]` | CSS-valid negative control; `Sum` 안의 nested `clamp()` 항은 whitelist 밖 |
 | `col-max-content` | repeat count 1 | indefinite/cyclic CSS-valid negative control |
 | `col-fill-fixed-control` | count 4, `[22,47,47,47,47,10]` | PR #580 fixed-px neighbor 회귀 |
 
-14 scene 중 11개는 구현 대상, `col-fill-negative-percentage-term`·`col-fill-extra-term`·`col-max-content`는 CSS-valid negative control이다. Negative control 3개는 값이 유효하더라도 이 profile의 typed AST/basis 경계 밖이라 runtime에서 정확한 fail-closed error와 partial output 부재를 검사한다. Chrome CSSOM observation은 control 선언도 CSS-valid임을 보존한다.
+14 scene 중 11개는 구현 대상, `col-fill-negative-percentage-term`·`col-fill-extra-term`·`col-max-content`는 CSS-valid negative control이다. Negative control 3개는 값이 유효하더라도 이 profile의 typed AST/basis 경계 밖이라 runtime에서 정확한 fail-closed error와 partial output 부재를 검사한다. `col-fill-extra-term`은 `calc(10px + 5% + clamp(0px, 0%, 1px))`를 쓴다. Stylo는 호환되는 단순 길이 항끼리 computed typed AST에서 합칠 수 있어 `calc(10px + 5% + 1px)`는 `[LengthPx(11), Percentage(0.05)]`로 정규화된 뒤 whitelist에 들어온다. 정책 경계는 원문 산술 항 개수가 아니라 projected typed AST이며, nested `clamp()`는 그 AST에 남아 거부된다. Chrome CSSOM observation은 control 선언도 CSS-valid임을 보존한다.
 
-## 계획된 구현 경계
+## 구현 진행과 남은 경계
 
-1. Cascade projection에서 top-level repeat neighbor 위치를 보존하고, 기존 px/percentage 값과 새 2-term calc subset을 같은 typed whitelist 경계로 검사한다. Sum 항 수가 2가 아니거나, 지원하지 않는 math variant/차원/식별자가 있으면 구체 CSS property와 authored value를 포함해 거부한다.
-2. Layout에서 axis와 node/property가 일치하는 `LayoutCssMathValue`만 계산한다. Percentage는 definite positive content size에 resolve하고, `length + percentage × basis`는 `f64`로 계산한다. CSS 범위에 따라 음수 결과는 0px로 clamp한다. 결과가 finite하지 않거나 `f32`로 표현할 수 없으면 값을 바꾸지 않고 fail-closed하며, prefix·suffix aggregate가 `f32::MAX`를 넘을 때도 부분 결과를 만들지 않는다.
-3. 계산된 neighbor는 auto-repeat count 산정에만 사용한다. 이미 처리한 repeat fragment 내부 track의 minimum/maximum resolution, auto-fit empty track collapse, actual track sizing 순서와 alignment는 바꾸지 않는다.
-4. `spinon-style`의 typed AST gate, `spinon-layout`의 exact expectation matrix와 overflow/indefinite negative cases, opt-in FFI fixture path의 14 case를 연결한다. 11 positive scene은 geometry/frame/trace를 확인하고 3 negative control은 정확한 error와 partial output 부재를 확인한다. 기본 product FFI artifact에는 fixture symbol/string/payload가 계속 없어야 한다.
-5. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 위 11 positive scene의 frame·used tracks·collapse·layout trace·draw/present와 3 negative control의 fail-closed 결과를 확인한다. `col-fill-overflow`는 suffix track 안의 2×2 item이 root border-box 오른쪽으로 4px 나간 coordinate를 두 플랫폼에서 확인하고, PixelCopy/Metal drawable에서 item 중심(`root.right + 5 CSS px`)의 실제 paint 표본과 root 안·바깥 경계 표본을 각각 대조한다. Screenshot은 root outline, item 위치와 fixture ID가 보이게 남긴다. 표본을 측정하지 못하면 밖으로 그려진다고 주장하지 않는다.
+1. **작업 트리 구현 완료:** Cascade projection은 auto-repeat 앞뒤의 representable track shape를 보존한다. `spinon-style-to-layout`은 top-level repeat neighbor 위치를 확인하고 computed typed AST의 두 항 `LengthPx` 또는 단일 `Negate(LengthPx)` + `Percentage` 조합만 허용한다. 항 순서는 양쪽을 허용하고, Stylo가 단순 길이 항을 정규화한 결과 AST를 기준으로 판정한다. 지원하지 않는 shape는 node/property가 포함된 `UnsupportedComputedValue`로 거부한다.
+2. **작업 트리 구현 완료:** Layout은 고유한 calc ID와 같은 node/property binding을 요구한다. Percentage는 definite positive content size에 resolve하고 `length + percentage × basis` 표현 가능성·aggregate overflow를 확인한다. 기존 resolver가 CSS range clamp를 적용하며 최종 음수는 0px이 된다. 세부 재현 테스트는 `spinon-layout` 3/3 통과했다.
+3. **작업 트리 구현 완료:** calc neighbor는 Taffy의 일반 track 입력으로 전달되며 auto-repeat count에서도 definite basis와 함께 계산된다. 반복 fragment의 sizing·auto-fit 점유 판정·alignment는 변경하지 않았다. 별도로 Taffy의 collapsed auto-fit run은 각 빈 track 뒤 gutter를 접고 run 경계의 shared gutter 하나를 남기도록 바로잡았다. Stylo typed-AST 회귀 테스트는 2/2 통과했다.
+4. **현재 앱 실행 완료:** Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 현재 소스의 11 positive + 3 rejection scene을 각각 14/14로 확인했다. PixelCopy/Metal drawable 표본은 각 24/24 exact다. iOS 표본은 compositor 제출 전이며 Android는 AVD 한정이다.
+5. **artifact 경계 확인 완료:** product와 fixture-test FFI static archive를 각각 release로 빌드하고 scene ID·fixture symbol의 부재/positive control을 확인했다. 근거는 [artifact 기록](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-artifact-2026-10-24/README.md)이다. 최종 Android APK/iOS IPA exclusion은 확인하지 않았다. 일반 CSS admission, WPT, 실기기·hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 범위 밖이다.
 
 ## 오류·실패 조건과 제외 범위
 
 - Indefinite/cyclic percentage basis, non-positive root content size, unresolved axis, missing/mismatched calc ID/node/property, non-finite terms/intermediate/sum, f32 representability overflow는 `LayoutError` 또는 기존 precise cascade error로 거부한다. partial `LayoutOutput`은 만들지 않는다.
-- Percentage term이 negative거나 math tree가 nested/product/min/max/clamp/3-term 이상이면 현재 scope에서 거부한다. CSS 자체가 유효하더라도 이 opt-in Spinon profile은 unsupported 입력을 조용히 0 또는 fixed 값으로 바꾸지 않는다. 최종 계산값이 음수인 지원 shape만 CSS 규범에 따라 0으로 clamp한다.
+- Projected typed AST의 percentage term이 negative거나 length term 이외의 중첩·product/min/max/clamp, 또는 2-term 외 shape이면 현재 scope에서 거부한다. Stylo computed AST에서 호환되는 raw authored sum 항이 합쳐질 수 있으므로 이 경계는 authored 항 수가 아니라 projection 결과에 적용한다. CSS 자체가 유효하더라도 이 opt-in Spinon profile은 unsupported 입력을 조용히 0 또는 fixed 값으로 바꾸지 않는다. 최종 계산값이 음수인 지원 shape만 CSS 규범에 따라 0으로 clamp한다.
 - Intrinsic/flexible neighbor, arbitrary author CSS admission, 복수 auto-repeat, 일반 Taffy percentage resolver 변경, WPT 전체, 실기기/hardware GPU, iOS compositor 이후 픽셀, 전체 C11.4/CSS Grid 적합성은 범위 밖이다.
 - C11.4 checkbox와 공식 `72/213`은 유지한다. Runtime 통과만으로 C11.4 상위 완료를 주장하지 않는다.
 
 ## 구현 전 review gate
 
-계획 자체를 20개의 독립 실패 관점으로 검토하고 계획 문서에 별도 기록을 남긴 뒤에만 제품 코드 구현을 시작한다. 계획 구현/PR에는 별도의 30개 PR diff 적대 검토가 필요하다. 구현 후에는 이 검토를 재사용하지 않고 새 20개 implementation/runtime 관점과 새 30개 PR diff 관점을 작성한다.
+계획 자체의 20개 독립 실패 관점 검토는 완료했다. 현재 구현·simulator 확인·두 FFI archive feature-boundary 검증도 끝났다. 새 구현/runtime 20개 실패 관점 검토를 [별도 기록](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-implementation-review-20-2026-10-24.md)했고 차단 결함은 찾지 못했다. 다음은 PR 준비 후 별도의 서로 다른 30개 diff 실패 관점 검토다.

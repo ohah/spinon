@@ -397,7 +397,7 @@ fn track_sizing_profile_preserves_percentage_auto_repeat_neighbors_on_rows() {
 }
 
 #[test]
-fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
+fn auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes() {
     let template_fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
     );
@@ -411,25 +411,52 @@ fn auto_repeat_rejects_profiles_and_shapes_outside_the_supported_subset() {
         .is_err()
     );
 
-    for style in [
-        "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
-        "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr)) calc(10px + 5%)",
-        "grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr))",
+    for (style, neighbor_index) in [
+        (
+            "grid-template-columns:minmax(10px,20px) repeat(auto-fill,minmax(24px,1fr))",
+            0,
+        ),
+        (
+            "grid-template-columns:20% repeat(auto-fill,minmax(24px,1fr)) calc(10px + 5% + clamp(0px,0%,1px))",
+            2,
+        ),
     ] {
         let fixture = fixture(&format!(
             "display:grid;box-sizing:border-box;width:300px;height:200px;{style};margin:0;padding:0"
         ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_or_else(|error| {
+            panic!("typed neighbor must reach layout projection: {style}: {error:?}")
+        });
+        let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
         assert!(
-            compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-                &fixture.view,
-                &[],
-                viewport(),
-                Default::default(),
-            )
-            .is_err(),
-            "accepted out-of-subset style: {style}"
+            matches!(
+                grid.columns.get(neighbor_index),
+                Some(ComputedCssGridTrackSize::MinMax { .. } | ComputedCssGridTrackSize::Calc(_))
+            ),
+            "expected typed neighbor at index {neighbor_index} in {style}: {:?}",
+            grid.columns
         );
     }
+
+    let unsupported_repeat = fixture(
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
+    );
+    assert!(
+        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &unsupported_repeat.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .is_err(),
+        "nested integer repeat grammar must remain rejected during cascade"
+    );
 
     let one_axis_with_areas = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\";margin:0;padding:0",

@@ -7,7 +7,7 @@ use spinon_layout::{
 use spinon_style::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
     ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridLayout,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridTrackSize, ComputedCssMath, ComputedStyleProfile,
 };
 
 use super::super::typed_math::CssMathProjector;
@@ -75,6 +75,17 @@ pub(super) fn project_grid_layout_with_math(
             });
         }
     }
+    if let Some(auto_repeat) = &grid.columns_auto_repeat {
+        validate_auto_repeat_neighbor_tracks(
+            node,
+            "grid-template-columns",
+            &grid.columns,
+            auto_repeat,
+        )?;
+    }
+    if let Some(auto_repeat) = &grid.rows_auto_repeat {
+        validate_auto_repeat_neighbor_tracks(node, "grid-template-rows", &grid.rows, auto_repeat)?;
+    }
     project_grid_layout_with_reservations(
         node,
         grid,
@@ -105,6 +116,74 @@ fn has_implicit_template_area_line_aliases(grid: &ComputedCssGridLayout) -> bool
             has_area_edge_pair(&grid.columns_line_names, area)
                 && has_area_edge_pair(&grid.rows_line_names, area)
         })
+}
+
+fn validate_auto_repeat_neighbor_tracks(
+    node: NodeId,
+    property: &'static str,
+    tracks: &[ComputedCssGridTrackSize],
+    auto_repeat: &ComputedCssGridAutoRepeat,
+) -> Result<(), StyleLayoutError> {
+    if auto_repeat.start >= auto_repeat.end || auto_repeat.end > tracks.len() {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "auto-repeat fragment 범위가 track 목록을 벗어났습니다".to_owned(),
+        });
+    }
+    let unsupported = tracks[..auto_repeat.start]
+        .iter()
+        .chain(&tracks[auto_repeat.end..])
+        .find(|track| !is_supported_auto_repeat_neighbor(track));
+    if unsupported.is_some() {
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property,
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage 또는 제한된 calc(length + percentage) 형태여야 합니다".to_owned(),
+        });
+    }
+    Ok(())
+}
+
+fn is_supported_auto_repeat_neighbor(track: &ComputedCssGridTrackSize) -> bool {
+    match track {
+        ComputedCssGridTrackSize::LengthPx(value) | ComputedCssGridTrackSize::Percentage(value) => {
+            value.is_finite() && *value >= 0.0
+        }
+        ComputedCssGridTrackSize::Calc(value) => is_supported_auto_repeat_neighbor_calc(value),
+        _ => false,
+    }
+}
+
+fn is_supported_auto_repeat_neighbor_calc(value: &ComputedCssMath) -> bool {
+    let ComputedCssMath::Sum(terms) = value else {
+        return false;
+    };
+    let [first, second] = terms.as_slice() else {
+        return false;
+    };
+    let (length, percentage) = match (first, second) {
+        (length, ComputedCssMath::Percentage(percentage))
+        | (ComputedCssMath::Percentage(percentage), length) => {
+            let Some(length) = signed_auto_repeat_length(length) else {
+                return false;
+            };
+            (length, percentage)
+        }
+        _ => return false,
+    };
+    length.is_finite() && percentage.is_finite() && *percentage >= 0.0
+}
+
+fn signed_auto_repeat_length(value: &ComputedCssMath) -> Option<f32> {
+    match value {
+        ComputedCssMath::LengthPx(length) => Some(*length),
+        ComputedCssMath::Negate(value) => match value.as_ref() {
+            ComputedCssMath::LengthPx(length) => Some(-*length),
+            _ => None,
+        },
+        _ => None,
+    }
 }
 
 #[cfg(test)]
@@ -725,6 +804,10 @@ fn project_track(
 #[cfg(test)]
 #[path = "grid_values/tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_values/auto_repeat_neighbor_tests.rs"]
+mod auto_repeat_neighbor_tests;
 
 #[cfg(test)]
 #[path = "grid_values/auto_track_tests.rs"]

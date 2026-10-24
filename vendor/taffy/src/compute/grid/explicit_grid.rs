@@ -380,18 +380,14 @@ pub(super) fn initialize_grid_tracks(
                                 );
                                 let mut gutter = GridTrack::gutter(gap);
 
-                                // CSS Grid §7.2.3.2 collapses an empty auto-fit track and both
-                                // gutters on its sides, including gutters at the repeat boundary.
+                                // CSS Grid §7.2.3.2 collapses an empty auto-fit track and the
+                                // following gutter. The gutter before the first track in a
+                                // collapsed run remains as the run's single shared boundary gap.
                                 if repeat.count() == RepetitionCount::AutoFit
                                     && !track_has_items(current_track_index)
                                 {
                                     track.collapse();
                                     gutter.collapse();
-                                    if let Some(previous_gutter) = tracks.last_mut() {
-                                        if previous_gutter.kind == GridTrackKind::Gutter {
-                                            previous_gutter.collapse();
-                                        }
-                                    }
                                 }
 
                                 tracks.push(track);

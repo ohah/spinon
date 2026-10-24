@@ -22,22 +22,22 @@
   "specDerivedExpectation": [
     {
       "scene": "col-fit-first",
-      "computedTracksPx": [24, 200, 0, 0, 0, 12],
-      "survivingGuttersPx": 1,
-      "endAlignedItemFrameFromGridBorderPx": [236, 10, 2, 2]
+      "computedTracksPx": [24, 196, 0, 0, 0, 12],
+      "survivingGuttersPx": 2,
+      "endAlignedItemFrameFromGridBorderPx": [232, 10, 2, 2]
     },
     {
       "scene": "row-fit-first",
-      "computedTracksPx": [24, 200, 0, 0, 0, 12],
-      "survivingGuttersPx": 1,
-      "endAlignedItemFrameFromGridBorderPx": [10, 236, 2, 2]
+      "computedTracksPx": [24, 196, 0, 0, 0, 12],
+      "survivingGuttersPx": 2,
+      "endAlignedItemFrameFromGridBorderPx": [10, 232, 2, 2]
     }
   ],
   "suffixItemDiscriminatorCheck": {
     "probe": "A second item was appended in memory at explicit suffix track 6 while the first repeated track stayed occupied.",
     "chromeColumnItemFrameFromGridBorderPx": [238, 10, 2, 2],
     "chromeRowItemFrameFromGridBorderPx": [10, 238, 2, 2],
-    "interpretation": "This coordinate does not reveal whether one or two gutters contributed: spec 200px plus one 4px gutter and Chrome 196px plus two 4px gutters produce the same suffix start. Do not use this probe to claim a surviving Chrome gutter."
+    "interpretation": "The CSS Grid 2025 CRD says the two gutters around each collapsed track coincide. The empty auto-fit run therefore contributes one shared 4px gutter in addition to the prefix/repeat gutter; the 196px track plus two gutters gives the observed suffix start."
   },
   "runtimeScope": "Browser-only diagnostic. The runtime fixture still tests the CSS Grid sizing profile and does not add justify-self or align-self support."
 }

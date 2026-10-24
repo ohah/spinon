@@ -26,18 +26,18 @@
 | `col-fit-empty` | count 4, `[22,0,0,0,0,10]` | 동일 | 대상; 모든 빈 반복 track collapse |
 | `col-fill-overflow` | count 1, `[196,40,74]`, grid overflow 78px | 동일 | 대상; 최소 1회 overflow |
 | `col-fill-border-box` | basis 116, count 2, `[9.8,44.15,44.15,5.9]` | `[9.796875,44.15625,44.15625,5.890625]` | 대상; 1/64px 이내 quantization |
-| `col-fill-extra-term` | count 4, `[23,50.25,50.25,50.25,50.25]` | 동일 | CSS-valid negative control; 3-term sum은 계획된 typed subset 밖 |
+| `col-fill-extra-term` | count 4, `[22,50.5,50.5,50.5,50.5]` | 동일 | CSS-valid negative control; typed `Sum`의 nested `clamp()` 항은 계획 profile 밖 |
 | `col-fill-negative-term` | count 5, `[10,42,42,42,42,42]` | 동일 | 대상; 음수 length term이 있어도 최종 used size 10px |
 | `col-fill-negative-final` | count 5, `[0,44,44,44,44,44]` | 동일 | 대상; 음수 calc 최종값을 0px로 clamp |
 | `col-fill-negative-percentage-term` | count 5, `[8,42.4,42.4,42.4,42.4,42.4]` | `[8,42.390625,42.390625,42.390625,42.390625,42.390625]` | CSS-valid negative control; 음수 percentage AST 항은 계획 profile 밖 |
 | `col-max-content` | indefinite axis이므로 auto-repeat count 1; cyclic used size는 이 slice에서 계산하지 않음 | `[12.296875,40]` | CSS-valid negative control; indefinite/cyclic basis는 계획 밖 |
 | `col-fill-fixed-control` | count 4, `[22,47,47,47,47,10]` | 동일 | 기존 fixed-px 회귀 control |
 
-`col-fill-extra-term`은 CSS-valid 3-term math control, `col-fill-negative-percentage-term`은 CSS-valid 음수 percentage term control, `col-max-content`는 indefinite/cyclic axis control이다. Chrome 156은 각각 `[23,50.25,50.25,50.25,50.25]`, `[8,42.390625,42.390625,42.390625,42.390625,42.390625]`, `[12.296875,40]`을 관찰했다. Chrome track 값은 브라우저 관측이며 규범 계산을 Chrome 값에서 역산하지 않았다. 이 negative control들은 browser CSS 지원 오류가 아니라 Spinon 계획의 좁은 profile 경계다. 실제 runtime이 이 선언을 받으면 현재 계약상 fail-closed해야 한다.
+`col-fill-extra-term`은 CSS-valid nested `clamp()` math control, `col-fill-negative-percentage-term`은 CSS-valid 음수 percentage term control, `col-max-content`는 indefinite/cyclic axis control이다. Chrome 156은 각각 `[22,50.5,50.5,50.5,50.5]`, `[8,42.390625,42.390625,42.390625,42.390625,42.390625]`, `[12.296875,40]`을 관찰했다. Stylo가 호환되는 단순 length 항을 computed typed AST에서 합치므로 raw `calc(10px + 5% + 1px)`는 `[LengthPx(11), Percentage(0.05)]`로 정규화되어 지원 shape가 된다. 이 control은 `clamp()` 항이 AST에 남아 정확히 두 direct term인 length+percentage가 아니므로 profile 경계 밖이다. Chrome track 값은 브라우저 관측이며 규범 계산을 Chrome 값에서 역산하지 않았다. 이 negative control들은 browser CSS 지원 오류가 아니라 Spinon 계획의 좁은 typed-profile 경계다. 실제 runtime이 이 선언을 받으면 현재 계약상 fail-closed해야 한다.
 
 ## 제한과 남은 검증
 
 - 이 비교는 Chrome 156의 단일 macOS ARM64 관측이며 WPT나 Android/iOS 앱 runtime을 포함하지 않는다.
-- 일반 CSS admission, arbitrary `ComputedCssMath` tree, 3-term·곱셈·함수형 math, negative percentage term, intrinsic/flex neighbor, multiple auto-repeat, indefinite/cyclic percentage basis와 전체 Grid 적합성은 구현 범위 밖이다.
+- 일반 CSS admission, arbitrary `ComputedCssMath` tree, nested function/product math term, negative percentage term, intrinsic/flex neighbor, multiple auto-repeat, indefinite/cyclic percentage basis와 전체 Grid 적합성은 구현 범위 밖이다. Raw same-dimension sum 항 개수는 Stylo computed AST canonicalization 뒤 달라질 수 있으므로 whitelist는 투영된 typed AST shape에 적용한다.
 - 양수 definite-axis의 2-term typed sum, 음수 length term, 최종 0px range clamp, 합산·Taffy 표현 overflow gate가 구현 계획이다. CSS cascade AST가 예상 shape와 다르면 해당 값은 조용히 단순화하지 않고 fail-closed하며 범위를 재검토한다.
 - 14 scene의 Chrome output은 plan의 acceptance oracle다. C11.4 전체 체크와 공식 완료 집계 `72/213`은 유지한다.

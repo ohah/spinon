@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [fixed-px 이웃 track slice](../spec/internal/evidence/c11-4-auto-repeat-neighbors-2026-10-20/README.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR #577과 제한 구현 PR #580이 Rebase and merge됐다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개 검토, Android/iOS 13-scene runtime matrix가 통과했다. PR #580 merge SHA는 `33b00d077147ad9f2102af3220daa2c6cf74e2f9`다. 병합 당시 required checks는 설정되지 않았고 GitHub는 check을 보고하지 않았다. C11.4 상위 체크는 미완료이며 공식 완료 수 72/213을 유지한다.
+**상태:** 계획 PR #577과 제한 구현 PR #580은 Rebase and merge됐다. 2026-10-24 후속 재검증에서 collapsed `auto-fit` gutters가 겹쳐 하나의 shared gap을 남기는 규격을 반영해 Taffy source와 expectations를 보정했다. 기존 percentage-neighbor 13-scene matrix는 보정 후 Android API 37 ARM64 AVD에서 13/13 track·frame·trace·draw/present로 재확인했다. 이 기존 percentage-only matrix를 보정 후 iOS에서 재실행하지 않았으며 PixelCopy도 수집하지 않았다. PR #580의 Android/iOS 결과는 보정 전 바이너리 기록으로 보존한다. 새 calc-neighbor candidate의 Android/iOS 14-scene 결과는 [별도 evidence](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-projection-pass03-2026-10-24/README.md)에 있다. C11.4 상위 체크는 미완료이며 공식 완료 수 72/213을 유지한다.
 
 ## 병합된 제한 구현과 남은 결손
 
@@ -18,7 +18,7 @@ CSS Grid Layout Module Level 1, 2025 CRD §7.2.3.2는 definite preferred/max siz
 
 이 slice의 필수 수용값은 CSS Grid Layout Module Level 1, 2025 CRD §7.2.1·§7.2.3.2에서 독립 계산한다. Chrome 156은 같은 입력을 관측하는 호환성 비교값으로 보존하되, 규범값과 다를 때 Chrome 값을 규범 기대값으로 덮어쓰지 않는다. 차이는 browser compatibility 차이로 명시하고 runtime 결과는 규범값과 별도로 보고한다.
 
-`col-fit-first`와 `row-fit-first`는 240px content axis, 24px prefix, 12px suffix, 4px gap, 네 번 반복을 사용한다. 첫 반복 track에만 item을 놓으면 나머지 세 auto-fit track이 collapse한다. collapse된 track 양쪽 gutter도 없어지므로 prefix와 첫 반복 track 사이의 gutter 하나만 남고 첫 반복 track은 `240 - 24 - 12 - 4 = 200px`이다. Chrome 156은 같은 고정 CSS에서 `196px`을 관측했다. 2px item을 해당 track 끝에 정렬한 DOM-only 진단에서는 Chrome이 x/y `232px`, 규범 계산이 x/y `236px`이다. 이는 4px의 Chrome 관측 차이며 원인은 확정하지 않는다. suffix track item의 x/y `238px` 관측만으로는 gutter 차이를 구분할 수 없다. 규범 결과의 한 gutter/200px과 Chrome 관측의 두 gutter/196px이 같은 suffix 시작 좌표를 내기 때문이다.
+`col-fit-first`와 `row-fit-first`는 240px content axis, 24px prefix, 12px suffix, 4px gap, 네 번 반복을 사용한다. 첫 반복 track에만 item을 놓으면 나머지 세 auto-fit track이 collapse한다. CSS Grid 2025 CRD §11.1은 collapsed track 양쪽 gutter가 서로 겹친다고 명시한다. 따라서 prefix와 첫 repeat 사이의 일반 gap 하나와 collapsed run을 대표하는 shared gap 하나가 남고 첫 repeat track은 `240 - 24 - 12 - 2×4 = 196px`이다. Chrome 156 관측도 `[24,196,0,0,0,12]`이며, end-alignment 진단은 양쪽 모두 x/y `232px`이다. suffix track item의 x/y `238px`은 이 계산과도 일치한다. 이전 사전 비교 모델은 collapsed-run shared gap을 누락해 200px로 잘못 계산했으므로 [후속 정정 기록](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/normative-chromium-taffy-audit-2026-10-24.md)을 따른다.
 
 사전 비교 자료에는 독립 계산, Chrome CSSOM 관측, end-alignment 진단을 별도 기록한다. Chromium `main` 소스는 collapsed range를 gap geometry에서 건너뛰는 경로를 보여주지만 Chrome 156 바이너리의 정확한 source revision을 연결하지 않았으므로 구현 원인 증거로 일반화하지 않는다. Chrome 관측의 세부와 한계는 [규범·Chromium·Taffy 대조](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/normative-chromium-taffy-audit-2026-10-24.md)에 둔다.
 
@@ -41,8 +41,8 @@ Acceptance는 scene별 repeat count와 expanded line/track order를 exact로 비
 | row-fill-both | 같은 입력을 240px rows에 적용; [24,46,46,46,46,12] |
 | col-fill-prefix | prefix 12.5%, suffix 없음; 4회, [30,48.5,48.5,48.5,48.5] |
 | row-fill-suffix | prefix 없음, suffix 12.5%; 4회, [48.5,48.5,48.5,48.5,30] |
-| col-fit-first | 양쪽 neighbor, 첫 repeat에 item 배치; count 4, 규범값 [24,200,0,0,0,12], Chrome 관측 [24,196,0,0,0,12] |
-| row-fit-first | rows 축에서 첫 repeat에 item 배치; 규범값 [24,200,0,0,0,12], Chrome 관측 [24,196,0,0,0,12] |
+| col-fit-first | 양쪽 neighbor, 첫 repeat에 item 배치; count 4, 규범·Chrome [24,196,0,0,0,12] |
+| row-fit-first | rows 축에서 첫 repeat에 item 배치; 규범·Chrome [24,196,0,0,0,12] |
 | col-fit-empty | 양쪽 neighbor, item 없음; count 4, [24,0,0,0,0,12] |
 | row-fit-empty | rows 축, item 없음; 같은 track 결과 |
 | col-fill-overflow | prefix 80%, suffix 30%; count 1, [192,40,72] |
@@ -51,11 +51,11 @@ Acceptance는 scene별 repeat count와 expanded line/track order를 exact로 비
 | col-fill-border-box | 136px border-box, 10%/5% neighbors, content basis 116px; count 2, Chrome used values [11.59375,43.296875,43.296875,5.796875] |
 | row-fill-border-box | 같은 border-box 계산을 rows 축에서 확인 |
 
-Runtime fixture는 V8-authored HostDocument → Stylo computed style → typed layout input → Taffy → WGPU scene/draw/present 경로로 13개 scene을 실행한다. Chrome CSSOM track list와 독립 산술을 scene별로 대조한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최신 앱 빌드의 track trace, item frame과 draw/present를 확인한다. PixelCopy와 제출 전 Metal 표본은 선언한 표본 위치에서만 비교하며, 이는 실기기·hardware GPU·iOS compositor 이후 픽셀 일치 근거가 아니다.
+원 PR #580에서 V8-authored HostDocument → Stylo computed style → typed layout input → Taffy → WGPU 경로로 13개 scene을 Android/iOS에서 실행했으나, 그 빌드들은 shared-gutter 보정 전이다. 보정 후 동일 percentage-neighbor matrix는 Android API 37 ARM64 AVD에서 13/13 track·frame·trace·draw/present를 확인했다. [후속 Android 결과](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-post-gutter-fix-pass03-2026-10-24/README.md). 기존 13-scene matrix의 post-fix iOS 실행과 PixelCopy 표본은 없다. 신규 calc-neighbor candidate의 별도 Android/iOS matrix 및 PixelCopy/Metal 표본은 [projection pass03](../spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-projection-pass03-2026-10-24/README.md)에 있다. 실기기·hardware GPU·iOS compositor 이후 pixels는 미검증이다.
 
 ## PR #580 병합 구현 slice · 2026-10-24
 
-PR #580에 병합된 cascade/layout 변경은 definite positive content axis에서 finite·nonnegative percentage neighbor를 받도록 연결됐다. 규범 `col-fit-first` 200px과 Chrome 156 CSSOM 관측 196px은 별도 oracle이다. `spinon-layout` percentage-neighbor 3/3, `spinon-style` auto-repeat 16/16, FFI fixture test 1/1 및 전체 workspace tests가 통과했다. workspace Clippy와 rustfmt도 통과했다.
+PR #580에 병합된 cascade/layout 변경은 definite positive content axis에서 finite·nonnegative percentage neighbor를 받도록 연결됐다. 후속 gutter 보정은 collapsed run의 shared gap을 유지해 `col-fit-first` 규범·Chrome track을 모두 196px로 맞춘다. 기존 workspace/CI 결과는 PR #580 시점의 것으로 남기며, 새 source의 Rust·FFI·simulator 검증은 이 계획에 추가한다.
 
 13개 scene JSON과 opt-in FFI fixture adapter를 추가했고, Android/iOS demo runner의 scene allowlist·frame·pixel expectations 및 simulator capture/boundary route를 연결했다. [FFI adapter](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_percentage_neighbors.rs), [scene matrix](../crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json), [Android runner](../platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java), [iOS runner](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift), [capture tool](../tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs), [fixture boundary validator](../tools/css-reference/fixture-module-boundary.test.mjs)에 있다. API 37 ARM64 Android AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 13/13 scene이 각각 통과했다. Android PixelCopy와 compositor 제출 전 iOS Metal drawable은 각각 15/15 표본 exact이며, 전체 런·hash·제외 범위는 [runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/README.md)에 기록했다. [구현/runtime 실패 관점 20개 검토](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md)를 마쳤다. 독립 PR diff 실패 관점 30개 검토와 PR #580 병합을 마쳤다. Tailnet 공개 미리보기 동기화는 별도 문서 PR 병합 뒤 진행한다.
 

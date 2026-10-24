@@ -692,11 +692,12 @@ fn auto_fit_definite_minimum_uses_same_repeat_count_on_both_axes() {
                 .iter()
                 .find(|track| track.internal_index == internal_index)
                 .unwrap();
-            assert!(
-                gutter.is_collapsed,
-                "{axis} gutter {internal_index} adjacent to empty auto-fit tracks must collapse"
+            let is_collapsed = internal_index != 2;
+            assert_eq!(
+                gutter.is_collapsed, is_collapsed,
+                "{axis} gutter {internal_index} must represent the single leading boundary of the empty auto-fit run"
             );
-            assert_eq!(gutter.base_size, 0.0);
+            assert_eq!(gutter.base_size, if is_collapsed { 0.0 } else { 8.0 });
         }
     }
 }
@@ -1031,6 +1032,9 @@ mod positive_percentage_auto_repeat;
 
 #[path = "grid_track_sizing_tests/percentage_auto_repeat_neighbors.rs"]
 mod percentage_auto_repeat_neighbors;
+
+#[path = "grid_track_sizing_tests/auto_repeat_calc_neighbors.rs"]
+mod auto_repeat_calc_neighbors;
 
 #[path = "grid_track_sizing_tests/zero_percent_auto_repeat_minimum.rs"]
 mod zero_percent_auto_repeat_minimum;

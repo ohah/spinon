@@ -69,6 +69,19 @@ def derive_normative_tracks(case):
         not slots[index][1] and not slots[index + 1][1]
         for index in range(len(slots) - 1)
     )
+    index = 0
+    while index < len(slots):
+        if not slots[index][1]:
+            index += 1
+            continue
+        run_start = index
+        while index + 1 < len(slots) and slots[index + 1][1]:
+            index += 1
+        run_end = index
+        if run_start > 0 and run_end + 1 < len(slots):
+            # Gutters on both sides of a collapsed run coincide, leaving one shared gap.
+            surviving_gutters += 1
+        index += 1
     active_repeats = sum(not value for value in collapsed)
     base_tracks = sum(value for value, _, _ in slots)
     free_space = max(0, content - base_tracks - surviving_gutters * gap)
@@ -144,7 +157,7 @@ for case in expectations["cases"]:
             derived_frame,
         )
 
-assert divergence_ids == ["col-fit-first", "row-fit-first"], divergence_ids
+assert divergence_ids == [], divergence_ids
 
 probe = json.loads((ROOT / "auto-fit-end-alignment-probe-2026-10-24.json").read_text())
 for axis, observed_frame, expected_frame in [
@@ -160,19 +173,19 @@ for axis, observed_frame, expected_frame in [
     ),
 ]:
     chrome_track = 196
-    normative_track = 200
+    normative_track = 196
     start = 2 + 8 + 24 + 4
     item_size = 2
     if axis == "columns":
         calculated_chrome = [start + chrome_track - item_size, 10, 2, 2]
         calculated_normative = [start + normative_track - item_size, 10, 2, 2]
         suffix_chrome = 10 + 24 + 4 + chrome_track + 4
-        suffix_normative = 10 + 24 + 4 + normative_track
+        suffix_normative = 10 + 24 + 4 + normative_track + 4
     else:
         calculated_chrome = [10, start + chrome_track - item_size, 2, 2]
         calculated_normative = [10, start + normative_track - item_size, 2, 2]
         suffix_chrome = 10 + 24 + 4 + chrome_track + 4
-        suffix_normative = 10 + 24 + 4 + normative_track
+        suffix_normative = 10 + 24 + 4 + normative_track + 4
     assert observed_frame == calculated_chrome, (axis, observed_frame, calculated_chrome)
     assert expected_frame == calculated_normative, (
         axis,
@@ -198,7 +211,6 @@ assert probe["suffixItemDiscriminatorCheck"]["chromeRowItemFrameFromGridBorderPx
     2,
 ]
 print(
-    "13/13 normative calculations and Chrome observations verified; "
-    f"browser differences isolated to {', '.join(divergence_ids)}; "
-    "end-alignment and non-discriminating suffix geometry verified"
+    "13/13 normative calculations match Chrome observations; "
+    "collapsed-run shared gutters, end-alignment, and suffix geometry verified"
 )
