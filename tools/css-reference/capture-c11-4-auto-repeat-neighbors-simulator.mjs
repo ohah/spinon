@@ -146,10 +146,15 @@ const isCyclicPercentRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => cyclicPercentSceneIDs.has(sceneID));
 const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
+const isCrossAxisTemplateAreaRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => (
+    sceneID.startsWith('template-area-repeat-cross-axis-')
+  ));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
+  : isCrossAxisTemplateAreaRun ? 'cross-axis-fixed-auto-area'
   : isCyclicPercentRun ? 'cyclic-percent-tracks'
   : isMixedMultiSpanRun ? 'mixed-multispan-contributions'
   : isNestedGridTextMultiSpanRun ? 'nested-grid-text-multispan'
@@ -186,6 +191,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : isCrossAxisTemplateAreaRun
+    ? `spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
     ? `spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-${date}/${target}-${runPrefix}`
   : isCyclicPercentRun
@@ -3334,7 +3341,9 @@ async function templateAreaRepeatScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 29, 'template-area auto-repeat fixture는 29 scene이어야 합니다.');
+  assert.equal(fixtures.length, 40, 'template-area auto-repeat fixture는 40 scene이어야 합니다.');
+  assert.equal(fixtures.filter(({ id }) => id.startsWith('template-area-repeat-cross-axis-')).length, 11,
+    'cross-axis fixed-repeat + auto-repeat fixture는 11 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
     const match = source.match(expression);
     assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
@@ -3346,13 +3355,32 @@ async function templateAreaRepeatScenes() {
   const iosScenes = allowlist(iosSource,
     /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
     'iOS Grid track sizing');
+  const iosCrossAxisScenes = allowlist(iosSource,
+    /c114CrossAxisFixedAutoRepeatAreaSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS cross-axis fixed-repeat + auto-repeat');
+  assert.match(iosSource,
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1\s*private let c114CrossAxisFixedAutoRepeatAreaSceneIDs/,
+    'iOS cross-axis scene IDs must remain behind the fixture-test build flag.');
+  assert.match(androidSource,
+    /if \(sceneId != null && sceneId\.startsWith\(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX\)\)\s*\{\s*return BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&& c114CrossAxisTemplateAreaCanonicalSceneId\(sceneId\) != null;/,
+    'Android cross-axis scene IDs must remain behind the fixture-test build flag.');
 
   return fixtures.map(({ id, expect, rootColor, items: fixtureItems }) => {
-    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
-    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const isCrossAxis = id.startsWith('template-area-repeat-cross-axis-');
+    if (isCrossAxis) {
+      const canonicalID = id.slice('template-area-repeat-cross-axis-'.length);
+      assert.ok(androidSource.includes(`case "${canonicalID}":`),
+        `Android cross-axis scene route is missing ${canonicalID}.`);
+      assert.ok(iosCrossAxisScenes.has(id), `iOS gated allowlist에 ${id}가 없습니다.`);
+      assert.ok(!androidScenes.has(id), `Android base allowlist must not expose ${id}.`);
+      assert.ok(!iosScenes.has(id), `iOS base allowlist must not expose ${id}.`);
+    } else {
+      assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+      assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    }
     const [rootWidth, rootHeight] = expect.root;
     const items = expect.items;
-    if (id.startsWith('template-area-repeat-two-axis-')) {
+    if (id.startsWith('template-area-repeat-two-axis-') || isCrossAxis) {
       const rootNodeId = `c114-${id}-grid`;
       const frameList = items.map(({ name, frame }, index) => {
         const [x, y, width, height] = frame;
@@ -3371,10 +3399,107 @@ async function templateAreaRepeatScenes() {
       const expandedSpan = id.endsWith('-fit-fit-area-span');
       const pixelSamples = [{
         id: `${id}-root-interior`, nodeId: rootNodeId,
-        xCssPx: rootWidth - 2, yCssPx: rootHeight - 2,
-        rgba: expandedSpan ? [229, 72, 77, 255] : rgba(rootColor),
+        xCssPx: rootWidth - 2,
+        yCssPx: rootHeight - 2,
+        rgba: expandedSpan ? [229, 72, 77, 255] : rgba(rootColor ?? '#101820'),
       }];
-      if (id.endsWith('-area-added-both')) {
+      if (isCrossAxis) {
+        assert.ok(rootWidth > 2 && rootHeight > 2,
+          `${id} root background sample must be inside the root.`);
+        assert.ok(items.every(({ frame: [x, y, width, height] }) => (
+          rootWidth - 2 < x || rootWidth - 2 >= x + width
+            || rootHeight - 2 < y || rootHeight - 2 >= y + height)),
+        `${id} root background sample must not overlap an item.`);
+        const overflowAxis = id.endsWith('-fixed-cols-fill-rows-area-adds-two-rows')
+          || id.endsWith('-fixed-cols-fill-rows-area-adds-one-row') ? 'Rows'
+          : id.endsWith('-fixed-rows-fill-cols-area-adds-one-column') ? 'Columns' : null;
+        if (overflowAxis) {
+          const overflowItem = items.find(({ name }) => name === 'hero');
+          assert.ok(overflowItem, `${id} overflow samples require a hero item.`);
+          const [x, y, width, height] = overflowItem.frame;
+          const itemSample = [x + Math.floor(width / 2), y + Math.floor(height / 2)];
+          const beforeItemSample = overflowAxis === 'Rows'
+            ? [itemSample[0], rootHeight]
+            : [rootWidth, itemSample[1]];
+          const afterItemSample = overflowAxis === 'Rows'
+            ? [itemSample[0], y + height]
+            : [x + width, itemSample[1]];
+          assert.ok(
+            itemSample[0] >= rootWidth || itemSample[1] >= rootHeight,
+            `${id} overflow sample must be outside the root.`
+          );
+          assert.ok(
+            itemSample[0] >= x && itemSample[0] < x + width
+              && itemSample[1] >= y && itemSample[1] < y + height,
+            `${id} overflow sample must be inside the hero frame.`
+          );
+          assert.ok(
+            beforeItemSample[0] >= rootWidth || beforeItemSample[1] >= rootHeight,
+            `${id} pre-item sample must be outside the root.`
+          );
+          assert.equal(
+            overflowAxis === 'Rows' ? beforeItemSample[1] : beforeItemSample[0],
+            overflowAxis === 'Rows' ? rootHeight : rootWidth,
+            `${id} pre-item sample must be the first pixel outside the root.`
+          );
+          assert.ok(
+            beforeItemSample[0] < x || beforeItemSample[0] >= x + width
+              || beforeItemSample[1] < y || beforeItemSample[1] >= y + height,
+            `${id} pre-item sample must be outside the hero frame.`
+          );
+          assert.ok(
+            afterItemSample[0] >= x + width || afterItemSample[1] >= y + height,
+            `${id} after-item sample must be outside the hero frame.`
+          );
+          assert.equal(
+            overflowAxis === 'Rows' ? afterItemSample[1] : afterItemSample[0],
+            overflowAxis === 'Rows' ? y + height : x + width,
+            `${id} after-item sample must be the first pixel after the hero frame.`
+          );
+          assert.ok(
+            afterItemSample[0] >= rootWidth || afterItemSample[1] >= rootHeight,
+            `${id} after-item sample must be outside the root.`
+          );
+          const item = fixtureItems.find(({ name }) => name === 'hero');
+          assert.ok(item, `${id} overflow sample requires a hero fixture item.`);
+          pixelSamples.push(
+            {
+              id: `${id}-before-overflow-item`, nodeId: rootNodeId,
+              xCssPx: beforeItemSample[0], yCssPx: beforeItemSample[1], rgba: [0, 0, 0, 255],
+            },
+            {
+              id: `${id}-hero-overflow-outside-root`,
+              nodeId: `c114-${id}-hero`,
+              xCssPx: itemSample[0], yCssPx: itemSample[1], rgba: rgba(item.color),
+            },
+            {
+              id: `${id}-after-overflow-item`, nodeId: rootNodeId,
+              xCssPx: afterItemSample[0], yCssPx: afterItemSample[1], rgba: [0, 0, 0, 255],
+            },
+          );
+        } else {
+          for (const { name, frame } of items) {
+            const [x, y, width, height] = frame;
+            const item = fixtureItems.find(({ name: itemName }) => itemName === name);
+            assert.ok(item, `${id}/${name} fixture item is missing.`);
+            pixelSamples.push({
+              id: `${id}-${name}-interior`, nodeId: `c114-${id}-${name}`,
+              xCssPx: x + Math.floor(width / 2), yCssPx: y + Math.floor(height / 2),
+              rgba: rgba(item.color),
+            });
+          }
+          const furthestX = Math.max(rootWidth,
+            ...items.map(({ frame: [x, , width] }) => x + width));
+          const furthestY = Math.max(rootHeight,
+            ...items.map(({ frame: [, y, , height] }) => y + height));
+          pixelSamples.push({
+            id: `${id}-after-root`, nodeId: rootNodeId,
+            xCssPx: id.includes('-fixed-cols-') ? 10 : furthestX,
+            yCssPx: id.includes('-fixed-cols-') ? furthestY : 10,
+            rgba: [0, 0, 0, 255],
+          });
+        }
+      } else if (id.endsWith('-area-added-both')) {
         pixelSamples.push(
           {
             id: `${id}-hero-overflow-outside-root`,
@@ -4587,7 +4712,7 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
   expectedCount: 12,
 }));
 scenes.push(...await fixedAutoRepeatAreaScenes());
-assert.equal(scenes.length, 473, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 484, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

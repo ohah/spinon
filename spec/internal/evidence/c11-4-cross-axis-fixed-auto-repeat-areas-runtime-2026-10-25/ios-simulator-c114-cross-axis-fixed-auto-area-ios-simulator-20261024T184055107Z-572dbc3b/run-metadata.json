@@ -1,0 +1,46 @@
+{
+  "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1 mise exec -- bun run build:ios-sim",
+  "captureCommand": "node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs ios-simulator B2F23503-85DF-42F8-A3A4-5600DC8D6983 --scene-id=template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short,template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern,template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied,template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area,template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied,template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows,template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row,template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short,template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span,template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area,template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column",
+  "captureStartTrackedDiffSha256": "a333584407cc48415199d3f24bd2e8bb86d978113c9555346ec1a617ca2bc525",
+  "captureRevision": {
+    "commit": "96efeebd9e816110ac981b6c24eecd3e88b620a8",
+    "tree": "0692abb4f20d50f7f96f3be1f9152fa50172cf8e",
+    "trackedDiffSha256": "a333584407cc48415199d3f24bd2e8bb86d978113c9555346ec1a617ca2bc525",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/include/spinon_ffi.h",
+      "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/template_area_auto_repeat_scenes.json",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_template_area_auto_repeat.rs",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/SurfaceViewPixelCapture.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/0001-conformance.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  },
+  "appExecutableSha256": "5a3ed8fbb4c5f6b7afeaf43f3bbd8153439e77ee791801a82c36afe2a88ef4a4",
+  "device": {
+    "name": "iPhone 17 Pro",
+    "udid": "B2F23503-85DF-42F8-A3A4-5600DC8D6983",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "sceneCount": 11,
+  "passedScenes": 11,
+  "drawPresentedScenes": 11,
+  "trackTraceChunks": 56,
+  "nodeFrames": 21,
+  "collapsedTracks": 10,
+  "metalDrawable": {
+    "matchedSceneSummaries": 11,
+    "expectedSamples": 35,
+    "observedSamples": 35,
+    "exactSamples": 35
+  },
+  "scope": "iOS 26.2 Simulator Metal drawable readback before compositor; not device or post-compositor evidence"
+}

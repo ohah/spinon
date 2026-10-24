@@ -443,6 +443,73 @@ fn auto_repeat_template_areas_accept_bare_grid_area_placement_on_both_axes() {
 }
 
 #[test]
+fn cross_axis_fixed_repeat_and_auto_repeat_project_areas_on_either_axis() {
+    let fixed_columns = Fixture::new(
+        "display:grid;box-sizing:border-box;width:44px;height:76px;grid-template-columns:repeat(2,20px);grid-template-rows:repeat(auto-fill,20px);grid-template-areas:'hero .' 'hero .';column-gap:4px;row-gap:4px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+        &[(
+            "hero",
+            "box-sizing:border-box;grid-area:hero;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = fixed_columns.try_compute().unwrap();
+    let hero = output.layout.frames[&fixed_columns.nodes["hero"].id()];
+    assert_eq!(
+        (hero.x, hero.y, hero.width, hero.height),
+        (0.0, 0.0, 20.0, 44.0)
+    );
+
+    let fixed_rows = Fixture::new(
+        "display:grid;box-sizing:border-box;width:76px;height:44px;grid-template-columns:repeat(auto-fill,20px);grid-template-rows:repeat(2,20px);grid-template-areas:'hero hero' '. .';column-gap:4px;row-gap:4px;align-content:start;justify-content:start;margin:0;padding:0;border:0",
+        &[(
+            "hero",
+            "box-sizing:border-box;grid-area:hero;margin:0;padding:0;border:0",
+        )],
+    );
+    let output = fixed_rows.try_compute().unwrap();
+    let hero = output.layout.frames[&fixed_rows.nodes["hero"].id()];
+    assert_eq!(
+        (hero.x, hero.y, hero.width, hero.height),
+        (0.0, 0.0, 44.0, 20.0)
+    );
+}
+
+#[test]
+fn cross_axis_fixed_repeat_rejects_area_dimension_mismatch_during_projection() {
+    let cases = [
+        (
+            "fixed columns with too few area columns",
+            "display:grid;box-sizing:border-box;width:44px;height:76px;grid-template-columns:repeat(2,20px);grid-template-rows:repeat(auto-fill,20px);grid-template-areas:'hero';column-gap:4px;row-gap:4px;margin:0;padding:0;border:0",
+        ),
+        (
+            "fixed columns with too many area columns",
+            "display:grid;box-sizing:border-box;width:44px;height:76px;grid-template-columns:repeat(2,20px);grid-template-rows:repeat(auto-fill,20px);grid-template-areas:'left middle right';column-gap:4px;row-gap:4px;margin:0;padding:0;border:0",
+        ),
+        (
+            "fixed rows with too few area rows",
+            "display:grid;box-sizing:border-box;width:76px;height:44px;grid-template-columns:repeat(auto-fill,20px);grid-template-rows:repeat(2,20px);grid-template-areas:'left right';column-gap:4px;row-gap:4px;margin:0;padding:0;border:0",
+        ),
+        (
+            "fixed rows with too many area rows",
+            "display:grid;box-sizing:border-box;width:76px;height:44px;grid-template-columns:repeat(auto-fill,20px);grid-template-rows:repeat(2,20px);grid-template-areas:'a b' 'c d' 'e f';column-gap:4px;row-gap:4px;margin:0;padding:0;border:0",
+        ),
+    ];
+    for (case, root_style) in cases {
+        let fixture = Fixture::new(root_style, &[]);
+        assert!(
+            matches!(
+                fixture.try_compute(),
+                Err(StyleLayoutError::UnsupportedComputedValue {
+                    node,
+                    property: "grid-template-areas",
+                    ..
+                }) if node == fixture.root.id()
+            ),
+            "{case} must fail on the root during grid-template-areas projection"
+        );
+    }
+}
+
+#[test]
 fn root_grid_max_content_is_scoped_to_the_track_sizing_profile() {
     let grid_style = "display:grid;box-sizing:border-box;width:max-content;height:max-content;grid-template-columns:40px 60px;grid-template-rows:10px 10px;column-gap:10%;row-gap:25%;margin:0;padding:0;border:0";
     let fixture = Fixture::new(grid_style, &[]);

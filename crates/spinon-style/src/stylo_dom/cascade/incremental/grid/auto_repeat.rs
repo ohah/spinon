@@ -259,6 +259,16 @@ pub(super) fn computed_auto_repeat_tracks(
         node,
         property,
     )?;
+    let single_bounded_auto_repeat = list.values.len() == 1
+        && fixed_repeat_group_count == 0
+        && auto_repeat.track_sizes.len() == 1
+        && auto_repeat.track_sizes.iter().all(|size| {
+            matches!(
+                track_size(size, allow_intrinsic_tracks),
+                Some(ComputedCssGridTrackSize::LengthPx(value))
+                    if value.is_finite() && value >= 0.0
+            )
+        });
 
     Ok(ComputedGridTracks {
         tracks,
@@ -270,6 +280,9 @@ pub(super) fn computed_auto_repeat_tracks(
             line_names: repeated_line_names,
         }),
         has_fixed_repeat: fixed_repeat_group_count > 0,
+        fixed_repeat_group_count,
+        single_bounded_fixed_repeat: false,
+        single_bounded_auto_repeat,
     })
 }
 

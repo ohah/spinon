@@ -1,0 +1,21 @@
+{
+  "sceneCount": 11,
+  "observationCount": 11,
+  "drawPresentedCount": 11,
+  "trackTraceChunkTotal": 56,
+  "nodeFrameCount": 21,
+  "collapsedTrackCount": 10,
+  "sceneIDs": [
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column"
+  ]
+}

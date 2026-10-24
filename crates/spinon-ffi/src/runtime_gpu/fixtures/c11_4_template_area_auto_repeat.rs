@@ -22,6 +22,7 @@ root.setAttribute('style', [
   'margin:0', 'padding:0', 'border:0', 'align-content:start', 'justify-content:start',
   `column-gap:${{scene.columnGap}}`, `row-gap:${{scene.rowGap}}`,
   `grid-template-columns:${{scene.columns}}`, `grid-template-rows:${{scene.rows}}`,
+  ...(scene.gridTemplate ? [`grid-template:${{scene.gridTemplate}}`] : []),
   `grid-auto-columns:${{scene.autoColumns ?? 'auto'}}`,
   `grid-auto-rows:${{scene.autoRows ?? 'auto'}}`,
   ...(scene.areas ? [`grid-template-areas:${{scene.areas}}`] : []),
@@ -87,10 +88,105 @@ mod tests {
             "template-area-repeat-two-axis-fit-fit-area-column",
             "template-area-repeat-two-axis-fit-fit-area-row",
         ];
-        assert_eq!(scenes.len(), 29);
+        const CROSS_AXIS_SCENES: [(&str, &[i64], &[i64], usize); 11] = [
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short",
+                &[20, 20],
+                &[20, 20, 20],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern",
+                &[16, 20, 16, 20],
+                &[20, 20],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied",
+                &[20, 20],
+                &[20, 0, 0],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area",
+                &[20, 20],
+                &[0, 0, 0],
+                0,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied",
+                &[20, 20],
+                &[20, 0, 20],
+                2,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows",
+                &[20, 20],
+                &[20, 20, 20, 12, 12],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row",
+                &[20, 20],
+                &[20, 20, 12],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short",
+                &[20, 20, 20],
+                &[20, 20],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span",
+                &[20, 20, 0],
+                &[20, 20],
+                1,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area",
+                &[0, 0, 0],
+                &[20, 20],
+                0,
+            ),
+            (
+                "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column",
+                &[20, 20, 12],
+                &[20, 20],
+                1,
+            ),
+        ];
+        assert_eq!(scenes.len(), 40);
         assert_eq!(ids.len(), scenes.len());
+        assert_eq!(
+            ids.iter()
+                .filter(|scene_id| scene_id.starts_with("template-area-repeat-cross-axis-"))
+                .count(),
+            CROSS_AXIS_SCENES.len()
+        );
         for scene_id in TWO_AXIS_SCENES {
             assert!(ids.contains(scene_id), "missing {scene_id}");
+        }
+        for (scene_id, columns, rows, expected_item_count) in CROSS_AXIS_SCENES {
+            let scene = scenes
+                .iter()
+                .find(|scene| scene["id"] == scene_id)
+                .unwrap_or_else(|| panic!("missing {scene_id}"));
+            assert_eq!(
+                scene["items"].as_array().unwrap().len(),
+                expected_item_count,
+                "{scene_id} item count"
+            );
+            assert_eq!(
+                scene["expect"]["tracks"]["columns"],
+                serde_json::json!(columns),
+                "{scene_id} columns"
+            );
+            assert_eq!(
+                scene["expect"]["tracks"]["rows"],
+                serde_json::json!(rows),
+                "{scene_id} rows"
+            );
         }
         for scene in scenes {
             let scene_id = scene["id"].as_str().unwrap();
@@ -108,6 +204,21 @@ mod tests {
                 let tracks = &expected["tracks"];
                 assert!(tracks["columns"].as_array().is_some(), "{scene_id} columns");
                 assert!(tracks["rows"].as_array().is_some(), "{scene_id} rows");
+            } else if scene_id.starts_with("template-area-repeat-cross-axis-") {
+                let expected_item_count = CROSS_AXIS_SCENES
+                    .iter()
+                    .find(|(expected_scene_id, _, _, _)| *expected_scene_id == scene_id)
+                    .map(|(_, _, _, expected_item_count)| *expected_item_count)
+                    .unwrap_or_else(|| panic!("unlisted cross-axis scene {scene_id}"));
+                assert_eq!(items.len(), expected_item_count, "{scene_id} items");
+                assert!(
+                    expected["tracks"]["columns"].as_array().is_some(),
+                    "{scene_id} columns"
+                );
+                assert!(
+                    expected["tracks"]["rows"].as_array().is_some(),
+                    "{scene_id} rows"
+                );
             } else {
                 assert!(
                     items.len() >= 2,
@@ -120,6 +231,11 @@ mod tests {
                 assert!(source.contains("property.startsWith('grid')"));
                 assert!(source.contains("property.replace(/[A-Z]/g,"));
                 assert!(!source.contains("`grid-${property.replace"));
+            }
+            if scene_id
+                == "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short"
+            {
+                assert!(source.contains("grid-template:"));
             }
             assert!(source.len() < 8 * 1024, "{scene_id} source is too large");
             if scene.get("areas").is_some() {

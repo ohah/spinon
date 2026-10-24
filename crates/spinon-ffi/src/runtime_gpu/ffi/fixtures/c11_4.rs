@@ -48,7 +48,7 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fi
         return ERR_ARGUMENT;
     }
     let scene_id = unsafe { CStr::from_ptr(scene_id) };
-    if scene_id.to_bytes().len() > 64 {
+    if scene_id.to_bytes().len() > 128 {
         return write_host_status(
             ERR_ARGUMENT,
             "C11.4 scene ID가 너무 깁니다".to_owned(),

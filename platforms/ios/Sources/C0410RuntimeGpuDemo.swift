@@ -50,6 +50,23 @@ private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
 #else
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = []
 #endif
+#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = [
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area",
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows",
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span",
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area",
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column",
+]
+#else
+private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = []
+#endif
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -354,8 +371,12 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-both-negative-final",
 ]
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
-    c114GridTrackSizingSceneIDs.contains(sceneID)
+    if sceneID.hasPrefix("template-area-repeat-cross-axis-") {
+        return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
+    }
+    return c114GridTrackSizingSceneIDs.contains(sceneID)
         || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
+        || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
 }
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-forward",
@@ -844,6 +865,19 @@ private struct C114FixedAutoAreaExpectation {
     let collapsedRows: [Bool]
 }
 
+private struct C114CrossAxisFixedAutoRepeatAreaExpectation {
+    let width: Int
+    let height: Int
+    let items: [(name: String, x: Int, y: Int, width: Int, height: Int)]
+    let columnTrackSizes: [Double]
+    let rowTrackSizes: [Double]
+    let collapsedColumns: [Bool]
+    let collapsedRows: [Bool]
+    let autoRepeatAxis: String
+    let autoRepeatCount: Int
+    let autoRepeatTrackIndices: [Int]
+}
+
 private let c114FixedAutoAreaCanonicalSceneIDs: Set<String> = [
     "columns-fill-collision", "columns-fit-empty", "columns-fit-occupied",
     "columns-area-larger", "columns-area-shorter", "rows-fill-collision",
@@ -925,9 +959,74 @@ private func c114FixedAutoAreaExpectation(_ sceneID: String) -> C114FixedAutoAre
     )
 }
 
+private func c114CrossAxisFixedAutoRepeatAreaCanonicalSceneID(_ sceneID: String) -> String? {
+    let prefix = "template-area-repeat-cross-axis-"
+    guard c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID),
+          sceneID.hasPrefix(prefix) else { return nil }
+    return String(sceneID.dropFirst(prefix.count))
+}
+
+private func c114CrossAxisFixedAutoRepeatAreaExpectation(
+    _ sceneID: String
+) -> C114CrossAxisFixedAutoRepeatAreaExpectation? {
+    guard let canonicalSceneID = c114CrossAxisFixedAutoRepeatAreaCanonicalSceneID(sceneID) else {
+        return nil
+    }
+    let values: (width: Int, height: Int,
+        items: [(name: String, x: Int, y: Int, width: Int, height: Int)],
+        columns: [Double], rows: [Double], axis: String, repeatCount: Int,
+        repeatTrackIndices: [Int])
+    switch canonicalSceneID {
+    case "fixed-cols-fill-rows-area-short":
+        values = (44, 76, [("hero", 0, 0, 20, 44)], [20, 20], [20, 20, 20],
+                  "Rows", 3, [0, 1, 2])
+    case "fixed-cols-fill-rows-two-track-pattern":
+        values = (84, 44, [("hero", 0, 0, 16, 44)], [16, 20, 16, 20], [20, 20],
+                  "Rows", 2, [0, 1])
+    case "fixed-cols-fit-rows-one-row-occupied":
+        values = (44, 76, [("hero", 0, 0, 20, 20)], [20, 20], [20, 0, 0],
+                  "Rows", 3, [0, 1, 2])
+    case "fixed-cols-fit-rows-empty-area":
+        values = (44, 76, [], [20, 20], [0, 0, 0], "Rows", 3, [0, 1, 2])
+    case "fixed-cols-fit-rows-middle-collapsed-between-occupied":
+        values = (44, 76, [("first", 0, 0, 20, 20), ("last", 0, 24, 20, 20)],
+                  [20, 20], [20, 0, 20], "Rows", 3, [0, 1, 2])
+    case "fixed-cols-fill-rows-area-adds-two-rows":
+        values = (44, 76, [("hero", 0, 88, 44, 12)], [20, 20], [20, 20, 20, 12, 12],
+                  "Rows", 3, [0, 1, 2])
+    case "fixed-cols-fill-rows-area-adds-one-row":
+        values = (44, 44, [("hero", 0, 48, 44, 12)], [20, 20], [20, 20, 12],
+                  "Rows", 2, [0, 1])
+    case "fixed-rows-fill-cols-shorthand-area-short":
+        values = (76, 44, [("hero", 0, 0, 44, 20)], [20, 20, 20], [20, 20],
+                  "Columns", 3, [0, 1, 2])
+    case "fixed-rows-fit-cols-two-track-span":
+        values = (76, 44, [("hero", 0, 0, 44, 44)], [20, 20, 0], [20, 20],
+                  "Columns", 3, [0, 1, 2])
+    case "fixed-rows-fit-cols-empty-area":
+        values = (76, 44, [], [0, 0, 0], [20, 20], "Columns", 3, [0, 1, 2])
+    case "fixed-rows-fill-cols-area-adds-one-column":
+        values = (44, 44, [("hero", 48, 24, 12, 20)], [20, 20, 12], [20, 20],
+                  "Columns", 2, [0, 1])
+    default:
+        return nil
+    }
+    return C114CrossAxisFixedAutoRepeatAreaExpectation(
+        width: values.width, height: values.height, items: values.items,
+        columnTrackSizes: values.columns, rowTrackSizes: values.rows,
+        collapsedColumns: values.columns.map { $0 == 0 },
+        collapsedRows: values.rows.map { $0 == 0 },
+        autoRepeatAxis: values.axis, autoRepeatCount: values.repeatCount,
+        autoRepeatTrackIndices: values.repeatTrackIndices
+    )
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return "width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"
+    }
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        return "width=\(crossAxisArea.width),height=\(crossAxisArea.height)"
     }
     if sceneID.hasPrefix("fixed-repeat-") {
         if sceneID.contains("-groups-") {
@@ -1170,6 +1269,10 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID),
        let item = fixedAutoArea.items.first {
+        return "width=\(item.width),height=\(item.height)"
+    }
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        guard let item = crossAxisArea.items.first else { return "" }
         return "width=\(item.width),height=\(item.height)"
     }
     if sceneID.hasPrefix("fixed-repeat-") {
@@ -2276,6 +2379,83 @@ private func c114FixedAutoAreaTraceMatches(_ sceneID: String, report: String) ->
     return true
 }
 
+private func c114CrossAxisFixedAutoRepeatAreaTraceMatches(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let expectation = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) else {
+        return false
+    }
+    let checkCollapsedAutoFitGutters = sceneID ==
+        "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area"
+        || sceneID == "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area"
+    let checkMiddleCollapsedAutoFitSharedGutter = sceneID ==
+        "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied"
+    let autoAxisTracks = expectation.autoRepeatAxis == "Columns"
+        ? expectation.columnTrackSizes : expectation.rowTrackSizes
+    guard expectation.autoRepeatTrackIndices == Array(0..<expectation.autoRepeatCount),
+          autoAxisTracks.count >= expectation.autoRepeatCount,
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2 else { return false }
+
+    let expectedPasses: [(axis: String, sizes: [Double], collapsed: [Bool])] = [
+        ("Columns", expectation.columnTrackSizes, expectation.collapsedColumns),
+        ("Rows", expectation.rowTrackSizes, expectation.collapsedRows),
+    ]
+    for (passIndex, expected) in expectedPasses.enumerated() {
+        let pass = passes[passIndex]
+        guard (pass["axis"] as? String) == expected.axis,
+              let stages = pass["stages"] as? [[String: Any]],
+              let finalStage = stages.last,
+              let tracks = finalStage["tracks"] as? [[String: Any]] else { return false }
+        let cssTracks = tracks.filter { ($0["gutter"] as? Bool) == false }
+        let cssTrackPositions = tracks.indices.filter {
+            (tracks[$0]["gutter"] as? Bool) == false
+        }
+        guard cssTracks.count == expected.sizes.count,
+              cssTrackPositions.count == expected.sizes.count,
+              expected.collapsed.count == expected.sizes.count else { return false }
+        for (trackIndex, expectedSize) in expected.sizes.enumerated() {
+            let track = cssTracks[trackIndex]
+            guard let baseSize = track["baseSize"] as? NSNumber,
+                  abs(baseSize.doubleValue - expectedSize) <= 0.0001,
+                  let collapsed = track["collapsed"] as? Bool,
+                  collapsed == expected.collapsed[trackIndex] else { return false }
+        }
+        if checkCollapsedAutoFitGutters && expected.axis == expectation.autoRepeatAxis {
+            for (trackIndex, isCollapsed) in expected.collapsed.enumerated() where isCollapsed {
+                let traceIndex = cssTrackPositions[trackIndex]
+                for gutterIndex in [traceIndex - 1, traceIndex + 1] {
+                    guard tracks.indices.contains(gutterIndex),
+                          (tracks[gutterIndex]["gutter"] as? Bool) == true,
+                          let gutterSize = tracks[gutterIndex]["baseSize"] as? NSNumber,
+                          abs(gutterSize.doubleValue) <= 0.0001 else { return false }
+                }
+            }
+        }
+        if checkMiddleCollapsedAutoFitSharedGutter && expected.axis == expectation.autoRepeatAxis {
+            guard let collapsedTrackIndex = expected.collapsed.firstIndex(of: true),
+                  expected.collapsed.lastIndex(of: true) == collapsedTrackIndex,
+                  cssTrackPositions.indices.contains(collapsedTrackIndex) else { return false }
+            let collapsedTraceIndex = cssTrackPositions[collapsedTrackIndex]
+            guard tracks.indices.contains(collapsedTraceIndex - 1),
+                  tracks.indices.contains(collapsedTraceIndex + 1) else { return false }
+            let precedingGutter = tracks[collapsedTraceIndex - 1]
+            let followingGutter = tracks[collapsedTraceIndex + 1]
+            guard (precedingGutter["gutter"] as? Bool) == true,
+                  (followingGutter["gutter"] as? Bool) == true,
+                  let precedingSize = precedingGutter["baseSize"] as? NSNumber,
+                  let followingSize = followingGutter["baseSize"] as? NSNumber,
+                  abs(precedingSize.doubleValue - 4.0) <= 0.0001,
+                  abs(followingSize.doubleValue) <= 0.0001 else { return false }
+        }
+    }
+    return true
+}
+
 private func c114ImageMultiSpanTraceMatches(
     _ sceneID: String, _ spansAndWidths: [[Int]], diagnostics: [String: Any]
 ) -> Bool {
@@ -2765,6 +2945,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         }
         return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
     }
+    if let crossAxisFrames = c114CrossAxisFixedAutoRepeatAreaNodeFrames(sceneID) {
+        return crossAxisFrames
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         let rowAxis = sceneID.contains("-row-")
         let multipleGroups = sceneID.contains("-groups-")
@@ -3233,6 +3416,9 @@ private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
 }
 
 private func c114TemplateAreaRepeatRootFrame(_ sceneID: String) -> String? {
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        return "width=\(crossAxisArea.width),height=\(crossAxisArea.height)"
+    }
     switch sceneID {
     case "template-area-repeat-two-axis-area-short",
          "template-area-repeat-two-axis-fill-fit",
@@ -3285,6 +3471,9 @@ private func c114TemplateAreaRepeatItemFrame(_ sceneID: String) -> String? {
 }
 
 private func c114TemplateAreaRepeatItemNames(_ sceneID: String) -> [String]? {
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        return crossAxisArea.items.map { $0.name }
+    }
     switch sceneID {
     case "template-area-repeat-two-axis-area-short",
          "template-area-repeat-two-axis-area-added-columns",
@@ -3323,6 +3512,11 @@ private func c114TemplateAreaRepeatItemNames(_ sceneID: String) -> [String]? {
 private func c114TemplateAreaRepeatItemRects(
     _ sceneID: String
 ) -> [(x: UInt32, y: UInt32, width: UInt32, height: UInt32)]? {
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        return crossAxisArea.items.map { item in
+            (UInt32(item.x), UInt32(item.y), UInt32(item.width), UInt32(item.height))
+        }
+    }
     switch sceneID {
     case "template-area-repeat-two-axis-area-short":
         return [(24, 0, 8, 8)]
@@ -3391,15 +3585,104 @@ private func c114TemplateAreaRepeatNodeFrames(_ sceneID: String) -> String? {
     return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
 }
 
+private func c114CrossAxisFixedAutoRepeatAreaNodeFrames(_ sceneID: String) -> String? {
+    guard let expectation = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) else {
+        return nil
+    }
+    var frames = ["0:node=1,x=0,y=0,width=\(expectation.width),height=\(expectation.height)"]
+    for (index, item) in expectation.items.enumerated() {
+        frames.append("\(index + 1):node=\(index + 2),x=\(item.x),y=\(item.y),"
+            + "width=\(item.width),height=\(item.height)")
+    }
+    return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+}
+
+private func c114CrossAxisFixedAutoRepeatAreaPixelSamples(
+    _ sceneID: String
+) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+    guard let canonicalSceneID = c114CrossAxisFixedAutoRepeatAreaCanonicalSceneID(sceneID),
+          let expectation = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) else {
+        return nil
+    }
+    let rootID = "c114-\(sceneID)-grid"
+    let clear = [UInt32(0), 0, 0, 255]
+    let rootBackground = [UInt32(229), 231, 235, 255] // Runtime fixture CSS #e5e7eb
+    let overflowHero = [UInt32(229), 72, 77, 255] // CSS #e5484d
+    switch canonicalSceneID {
+    case "fixed-cols-fill-rows-area-adds-two-rows":
+        guard let hero = expectation.items.first else { return nil }
+        return [
+            ("\(sceneID)-root-interior", rootID,
+             UInt32(expectation.width - 2), UInt32(expectation.height - 2), rootBackground),
+            ("\(sceneID)-before-overflow-item", rootID,
+             UInt32(hero.x + hero.width / 2), UInt32(expectation.height), clear),
+            ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+             UInt32(hero.x + hero.width / 2), UInt32(hero.y + hero.height / 2), overflowHero),
+            ("\(sceneID)-after-overflow-item", rootID,
+             UInt32(hero.x + hero.width / 2), UInt32(hero.y + hero.height), clear),
+        ]
+    case "fixed-cols-fill-rows-area-adds-one-row":
+        guard let hero = expectation.items.first else { return nil }
+        return [
+            ("\(sceneID)-root-interior", rootID,
+             UInt32(expectation.width - 2), UInt32(expectation.height - 2), rootBackground),
+            ("\(sceneID)-before-overflow-item", rootID,
+             UInt32(hero.x + hero.width / 2), UInt32(expectation.height), clear),
+            ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+             UInt32(hero.x + hero.width / 2), UInt32(hero.y + hero.height / 2), overflowHero),
+            ("\(sceneID)-after-overflow-item", rootID,
+             UInt32(hero.x + hero.width / 2), UInt32(hero.y + hero.height), clear),
+        ]
+    case "fixed-rows-fill-cols-area-adds-one-column":
+        guard let hero = expectation.items.first else { return nil }
+        return [
+            ("\(sceneID)-root-interior", rootID,
+             UInt32(expectation.width - 2), UInt32(expectation.height - 2), rootBackground),
+            ("\(sceneID)-before-overflow-item", rootID,
+             UInt32(expectation.width), UInt32(hero.y + hero.height / 2), clear),
+            ("\(sceneID)-hero-overflow-outside-root", "c114-\(sceneID)-hero",
+             UInt32(hero.x + hero.width / 2), UInt32(hero.y + hero.height / 2), overflowHero),
+            ("\(sceneID)-after-overflow-item", rootID,
+             UInt32(hero.x + hero.width), UInt32(hero.y + hero.height / 2), clear),
+        ]
+    default:
+        var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("\(sceneID)-root-interior", rootID,
+             UInt32(expectation.width - 2), UInt32(expectation.height - 2), rootBackground),
+        ]
+        var furthestX = UInt32(expectation.width)
+        var furthestY = UInt32(expectation.height)
+        for item in expectation.items {
+            let color: [UInt32] = item.name == "last"
+                ? [37, 99, 235, 255] : [229, 72, 77, 255]
+            samples.append(("\(sceneID)-\(item.name)-interior",
+                "c114-\(sceneID)-\(item.name)",
+                UInt32(item.x + item.width / 2), UInt32(item.y + item.height / 2), color))
+            furthestX = max(furthestX, UInt32(item.x + item.width))
+            furthestY = max(furthestY, UInt32(item.y + item.height))
+        }
+        let rowAxis = canonicalSceneID.hasPrefix("fixed-cols-")
+        samples.append(("\(sceneID)-after-root", rootID,
+            rowAxis ? 10 : furthestX, rowAxis ? furthestY : 10, clear))
+        return samples
+    }
+}
+
 private func c114TemplateAreaRepeatPixelSamples(
     _ sceneID: String
 ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+    if let crossAxisSamples = c114CrossAxisFixedAutoRepeatAreaPixelSamples(sceneID) {
+        return crossAxisSamples
+    }
     guard c114TemplateAreaRepeatRootFrame(sceneID) != nil,
           let names = c114TemplateAreaRepeatItemNames(sceneID),
           let items = c114TemplateAreaRepeatItemRects(sceneID), names.count == items.count else {
         return nil
     }
     let root: (width: UInt32, height: UInt32)
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        root = (UInt32(crossAxisArea.width), UInt32(crossAxisArea.height))
+    } else {
     switch sceneID {
     case "template-area-repeat-two-axis-area-short",
          "template-area-repeat-two-axis-fill-fit",
@@ -3431,6 +3714,7 @@ private func c114TemplateAreaRepeatPixelSamples(
     case "template-area-repeat-rows-fill": root = (20, 116)
     case "template-area-repeat-rows-area-larger": root = (20, 100)
     default: root = (20, 140)
+    }
     }
     let rootID = "c114-\(sceneID)-grid"
     if sceneID.hasPrefix("template-area-repeat-two-axis-") {
@@ -4188,6 +4472,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return fixedAutoArea.items.count + 1
     }
+    if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
+        return crossAxisArea.items.count + 1
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill") ? 2 : 1
     }
@@ -4909,6 +5196,19 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if c114CrossAxisFixedAutoRepeatAreaCanonicalSceneID(sceneID) != nil {
+            guard let expectedSamples = c114CrossAxisFixedAutoRepeatAreaPixelSamples(sceneID) else {
+                return false
+            }
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = c114FixedAutoAreaPixelSamples(sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
@@ -5701,8 +6001,8 @@ private struct C111MetalPixelRun {
               Set(samples.map(\.id)).count == samples.count,
               Set(samples.map { "\($0.xCssPx),\($0.yCssPx)" }).count == samples.count,
               samples.allSatisfy({ sample in
-                  sample.id.range(of: "^[a-z0-9-]{1,80}$", options: .regularExpression) != nil
-                      && sample.nodeId.range(of: "^[a-zA-Z0-9_-]{1,80}$", options: .regularExpression) != nil
+                  sample.id.range(of: "^[a-z0-9-]{1,128}$", options: .regularExpression) != nil
+                      && sample.nodeId.range(of: "^[a-zA-Z0-9_-]{1,128}$", options: .regularExpression) != nil
                       && sample.xCssPx < 320 && sample.yCssPx < 240
                       && sample.rgba.count == 4 && sample.rgba.allSatisfy({ $0 <= 255 })
               }) else { return nil }
@@ -9087,6 +9387,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ) == nil || c114FixedAutoAreaTraceMatches(
                 c114GridTrackSizingSceneID, report: report
             )
+            let expectedCrossAxisTrackTraceMatches = c114CrossAxisFixedAutoRepeatAreaExpectation(
+                c114GridTrackSizingSceneID
+            ) == nil || c114CrossAxisFixedAutoRepeatAreaTraceMatches(
+                c114GridTrackSizingSceneID, report: report
+            )
             let expectedCrossAxisSpanGroupFramesMatch = c114ExpectedCrossAxisSpanGroupFramesMatch(
                 c114GridTrackSizingSceneID, report: report)
             let expectedTextMultiSpanFramesMatch = c114ExpectedTextMultiSpanFramesMatch(
@@ -9103,11 +9408,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
                   expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch,
-                  expectedFixedAutoAreaTraceMatches,
+                  expectedFixedAutoAreaTraceMatches, expectedCrossAxisTrackTraceMatches,
                   expectedCrossAxisSpanGroupFramesMatch,
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

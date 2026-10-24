@@ -452,9 +452,13 @@ SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_3_2_grid_named_lines_fixtu
 /* C11.3.3 grid-template-areas 장면 host는 앱 fixture-test 빌드에서만 제공합니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture(
     char *output, size_t output_capacity);
-/* C11.4 intrinsic track-sizing 장면 host는 앱 fixture-test 빌드에서만 제공합니다. */
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
+    defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+/* C11.4 고정 track-sizing scene host는 앱 fixture-test 빌드 전용입니다. */
 SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture(
     char *output, size_t output_capacity);
+#endif
 #if defined(SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST) && \
     SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST
 /* C11.1 고정 Grid surface pixel 내부 검증 전용 host입니다. */

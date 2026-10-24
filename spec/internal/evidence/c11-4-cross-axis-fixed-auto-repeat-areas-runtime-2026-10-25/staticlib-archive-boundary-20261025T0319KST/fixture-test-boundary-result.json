@@ -1,0 +1,34 @@
+{
+  "artifact": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/staticlib-archive-boundary-20261025T0319KST/spinon-ffi-c04-runtime-gpu-fixture-test.a",
+  "bytes": 696066136,
+  "sha256": "7b73bdcfebe9843143fbef80394d0907750b5ace1cbd3d6d3a3cced3ce30ce57",
+  "scene_markers_in_archive": {
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-short": true,
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-two-track-pattern": true,
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-one-row-occupied": true,
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area": true,
+    "template-area-repeat-cross-axis-fixed-cols-fit-rows-middle-collapsed-between-occupied": true,
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows": true,
+    "template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-one-row": true,
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-shorthand-area-short": true,
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-two-track-span": true,
+    "template-area-repeat-cross-axis-fixed-rows-fit-cols-empty-area": true,
+    "template-area-repeat-cross-axis-fixed-rows-fill-cols-area-adds-one-column": true
+  },
+  "scene_marker_count": 11,
+  "scene_marker_total": 11,
+  "all_scene_markers_in_archive": true,
+  "payload_markers_in_archive": {
+    "repeat(2,20px) / repeat(auto-fill,20px)": true
+  },
+  "host_symbols": {
+    "_spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": {
+      "defined_by_llvm_nm": true,
+      "symbol_bytes_in_archive": true
+    },
+    "_spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": {
+      "defined_by_llvm_nm": true,
+      "symbol_bytes_in_archive": true
+    }
+  }
+}
