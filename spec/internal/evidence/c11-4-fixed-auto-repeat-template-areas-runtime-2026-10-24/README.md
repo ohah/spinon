@@ -41,4 +41,4 @@
 
 ## 리뷰 상태
 
-계획 검토는 [20개 실패 관점](../../../../plan/c11-4-fixed-auto-repeat-template-areas-plan-review-20.md)과 계획 diff 30개 검토로 선행 완료했다. 구현/runtime 실패 관점 20개 및 PR diff 30개 리뷰에서 확인한 stale plan 문구, Android trace pass 개수, 캡처 evidence 경로, scene별 CSS placement 연결을 수정한 뒤 재검토했다. 결과는 [구현/runtime 20개](./implementation-runtime-review-20.md)와 [PR diff 30개](./pr-diff-review-30.md)에 기록했다. PR 생성·CI·merge는 별도 단계이며, C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
+계획 검토는 [20개 실패 관점](../../../../plan/c11-4-fixed-auto-repeat-template-areas-plan-review-20.md)과 계획 diff 30개 검토로 선행 완료했다. 구현/runtime 실패 관점 20개 및 PR diff 30개 리뷰에서 확인한 stale plan 문구, Android trace pass 개수, 캡처 evidence 경로, scene별 CSS placement 연결을 수정한 뒤 재검토했다. 결과는 [구현/runtime 20개](./implementation-runtime-review-20.md)와 [PR diff 30개](./pr-diff-review-30.md)에 기록했다. 이 제한 runtime 후보는 상위 C11.4 완료를 선언하지 않으며 공식 checkbox와 `72/213`을 유지한다.

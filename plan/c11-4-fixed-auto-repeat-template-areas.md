@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [fixed-repeat named lines](./c11-4-fixed-repeat-line-name-merge.md) · [auto-repeat + areas](./c11-4-auto-repeat-template-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**현재 상태 · 2026-10-25:** 9-scene Chrome 156 precomparison과 CSS Grid 2025 CRD 기반 independent expected values를 고정했고, 계획 실패 관점 20개와 계획 diff 30개 검토를 마쳤다. 제한 구현 후보는 same-axis cascade admission, combined line/area metadata budget, shorthand/axis regressions, Android/iOS fixture adapter와 capture route까지 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 9/9 scene씩 통과했고, area-larger 표면 표본은 각 플랫폼 8/8 exact다. 구현/runtime 실패 관점 20개와 PR diff 30개 재검토를 마쳤으며, PR 생성·CI·merge는 남았다. C11.4 checkbox와 공식 `72/213`은 바꾸지 않는다.
+**현재 상태 · 2026-10-25:** 9-scene Chrome 156 precomparison과 CSS Grid 2025 CRD 기반 independent expected values를 고정했고, 계획 실패 관점 20개와 계획 diff 30개 검토를 마쳤다. 제한 구현 후보는 same-axis cascade admission, combined line/area metadata budget, shorthand/axis regressions, Android/iOS fixture adapter와 capture route까지 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 9/9 scene씩 통과했고, area-larger 표면 표본은 각 플랫폼 8/8 exact다. 구현/runtime 실패 관점 20개와 PR diff 30개 재검토를 마쳤다. 이 제한 slice로 C11.4 checkbox와 공식 `72/213`은 바꾸지 않는다.
 
 ## 이번 slice에서 해결한 결손과 남은 제한
 
