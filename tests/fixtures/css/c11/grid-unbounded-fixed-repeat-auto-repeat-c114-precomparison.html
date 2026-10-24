@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C11.4 multiple fixed-repeat groups precomparison</title>
+    <style>
+      :root {
+        color-scheme: light;
+        font: 14px/1.4 system-ui, sans-serif;
+      }
+
+      body {
+        margin: 24px;
+        color: #172033;
+        background: #f3f5f8;
+      }
+
+      h1 {
+        margin: 0 0 16px;
+        font-size: 20px;
+      }
+
+      #scenes {
+        display: grid;
+        grid-template-columns: 420px;
+        gap: 16px;
+      }
+
+      .scene {
+        box-sizing: border-box;
+        min-height: 150px;
+        padding: 12px;
+        background: white;
+        border: 1px solid #cbd3df;
+        border-radius: 8px;
+      }
+
+      .grid {
+        width: 320px;
+        height: 80px;
+        display: grid;
+        column-gap: 8px;
+        row-gap: 8px;
+        align-content: start;
+        background: repeating-linear-gradient(135deg, #edf1f6 0 4px, #e5eaf1 4px 8px);
+      }
+
+      .row-grid {
+        width: 80px;
+        height: 320px;
+      }
+
+      .item {
+        width: 10px;
+        height: 10px;
+        background: #e34c67;
+      }
+
+      code,
+      output {
+        display: block;
+        margin-top: 8px;
+        color: #42506a;
+        font: 11px/1.3 ui-monospace, monospace;
+        overflow-wrap: anywhere;
+      }
+
+      output {
+        color: #154a82;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Four fixed-repeat groups with one auto-repeat</h1>
+    <main id="scenes">
+      <section class="scene">
+        <h2>four fixed-repeat groups before auto-fill</h2>
+        <div
+          class="grid"
+          id="four-prefix-fill"
+          style="grid-template-columns: repeat(1, 11px) repeat(2, 13px) repeat(1, 17px 19px) repeat(3, 7px) repeat(auto-fill, minmax(20px, 1fr)) 5px"
+        ></div>
+        <code>repeat(1, 11px) repeat(2, 13px) repeat(1, 17px 19px) repeat(3, 7px) repeat(auto-fill, minmax(20px, 1fr)) 5px</code>
+        <output id="result-four-prefix-fill"></output>
+      </section>
+
+      <section class="scene">
+        <h2>four fixed-repeat groups around auto-fill</h2>
+        <div
+          class="grid row-grid"
+          id="four-row-split-fill"
+          style="grid-template-rows: 5px repeat(1, 11px) repeat(2, 13px) repeat(auto-fill, minmax(20px, 1fr)) repeat(1, 17px 19px) repeat(3, 7px)"
+        >
+          <div class="item" style="grid-row: 5 / 6; grid-column: 1"></div>
+        </div>
+        <code>5px repeat(1, 11px) repeat(2, 13px) repeat(auto-fill, minmax(20px, 1fr)) repeat(1, 17px 19px) repeat(3, 7px) · item at grid-row: 5 / 6</code>
+        <output id="result-four-row-split-fill"></output>
+      </section>
+    </main>
+
+    <script>
+      window.__spinonPrecomparison = Array.from(
+        document.querySelectorAll(".grid"),
+        (grid) => {
+          const root = grid.getBoundingClientRect();
+          const items = Array.from(grid.children, (item) => {
+            const rect = item.getBoundingClientRect();
+            return {
+              x: rect.x - root.x,
+              y: rect.y - root.y,
+              width: rect.width,
+              height: rect.height,
+            };
+          });
+          const style = getComputedStyle(grid);
+          const trackAxis = grid.classList.contains("row-grid") ? "rows" : "columns";
+          const tracks = trackAxis === "rows" ? style.gridTemplateRows : style.gridTemplateColumns;
+          const observation = {
+            id: grid.id,
+            trackAxis,
+            authored: grid.style.getPropertyValue(`grid-template-${trackAxis}`),
+            tracks,
+            grid: { x: root.x, y: root.y, width: root.width, height: root.height },
+            items,
+          };
+          document.getElementById(`result-${grid.id}`).textContent =
+            `Chrome used ${trackAxis}: ${tracks}; item frames ${JSON.stringify(items)}`;
+          return observation;
+        },
+      );
+    </script>
+  </body>
+</html>
