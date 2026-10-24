@@ -4,7 +4,7 @@
 
 ## 검토 범위와 실행 여부
 
-최신 작업 트리의 [계획](../../../../plan/c11-4-fixed-auto-repeat-template-areas.md), [공식 상태](../../../STATUS.md), [runtime README](./README.md), cascade/projection/layout 코드와 테스트, Android/iOS fixture adapter, capture 및 저장된 runtime evidence를 대조했다. 별도 [PR diff 30개 리뷰](./pr-diff-review-30.md) 링크도 확인했다. CSS Grid 2025 CRD §7.4는 W3C 원문을 agent-browser로 확인한 뒤 브라우저를 종료했다. 이 리뷰에서는 테스트와 빌드를 실행하지 않았다. README와 저장된 실행 결과에는 Android API 37 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각 9/9 scene, area-larger 표면 표본 각 8/8 일치가 기록되어 있다. 아래 runtime pass 표시는 그 보관된 증거에 대한 확인이며, 이 리뷰에서 재실행했다는 뜻이 아니다.
+최신 작업 트리의 [계획](../../../../plan/c11-4-fixed-auto-repeat-template-areas.md), [공식 상태](../../../STATUS.md), [내부 계약 0059](../../0059-c11-grid-layout.md)의 새 same-axis fixed-repeat + auto-repeat + areas 절, [runtime README](./README.md), cascade/projection/layout 코드와 테스트, Android/iOS fixture adapter, capture 및 저장된 runtime evidence를 대조했다. 계약 절은 plan·코드의 profile 범위, fixed-repeat 제한, shorthand 경계, metadata/expansion budget 및 남은 비지원 범위와 일치한다. 저장된 source capture 이후 앱 코드는 변경되지 않았고, 그 이후 추가된 관련 변경은 내부 계약 문서뿐이다. 계약 숫자 버전은 `0.1.0`이며, 이 제한 후보는 C11.4 완료로 승격되지 않는다. 별도 [PR diff 30개 리뷰](./pr-diff-review-30.md) 링크도 확인했다. CSS Grid 2025 CRD §7.4는 W3C 원문을 agent-browser로 확인한 뒤 브라우저를 종료했다. 이 리뷰에서는 테스트와 빌드를 실행하지 않았다. README와 저장된 실행 결과에는 Android API 37 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각 9/9 scene, area-larger 표면 표본 각 8/8 일치가 기록되어 있다. 아래 runtime pass 표시는 그 보관된 증거에 대한 확인이며, 이 리뷰에서 재실행했다는 뜻이 아니다.
 
 ## 실패 관점 20개
 
@@ -50,4 +50,4 @@
 
 ## 결론
 
-§7.4의 area-string shorthand 제외는 규범 문구에 맞으므로 구현 결손이나 shorthand parity blocker로 보지 않는다. expansion estimate, projection budget, immutable snapshot 제한도 현재 README가 코드와 맞게 한정한다. 이전 1번의 stale plan 문구 및 삭제된 테스트 참조는 수정됐고 현재 계획·STATUS·runtime README의 C11.4 상태, 완료 수와 링크가 서로 맞는다. 항목 2–20은 기존 결론을 유지할 수 있다. C11.4 checkbox는 미완료이고 공식 완료 수는 `72/213`; PR 생성·CI·merge는 남아 있으며, final Android APK/iOS app bundle 전체 fixture exclusion은 미검증이다. 이 문서는 작업 단위 구현/runtime 20개 리뷰다. 별도 PR diff 30개 리뷰와 merge 확인을 대체하지 않는다. 이 재검토에서는 테스트와 빌드를 실행하지 않았다.
+§7.4의 area-string shorthand 제외는 규범 문구에 맞으므로 구현 결손이나 shorthand parity blocker로 보지 않는다. 새 0059 절은 same-axis 제한, 별도 fixed-repeat group 개수 상한 없음, authored component/expanded descriptor 각각 10,000 한도와 CSS parse/admission/projection/layout 오류 경계를 현재 코드와 맞게 기록한다. expansion estimate, projection budget, immutable snapshot 제한도 현재 README가 코드와 맞게 한정한다. 이전 1번의 stale plan 문구 및 삭제된 테스트 참조는 수정됐고 현재 계획·STATUS·runtime README·0059 계약의 C11.4 상태, 완료 수와 링크가 서로 맞는다. 항목 2–20은 기존 결론을 유지할 수 있다. 내부 계약 숫자 버전은 `0.1.0`이다. C11.4 checkbox는 미완료이고 공식 완료 수 `72/213`은 유지된다. 최종 Android APK/iOS app bundle 전체 fixture exclusion은 미검증이다. 이 문서는 작업 단위 구현/runtime 20개 리뷰이며 별도 PR diff 30개 리뷰를 대체하지 않는다. 이번 재검토에서는 테스트와 빌드를 실행하지 않았다.
