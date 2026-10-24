@@ -1,0 +1,76 @@
+{
+  "baseRoot": "build/spinon/c11-4-fixed-repeat-auto-repeat-root-selected",
+  "selectedRoot": "build/spinon/c11-4-fixed-repeat-auto-repeat-root-postmerge-selected",
+  "outputRoot": "build/spinon/c11-4-fixed-repeat-auto-repeat-site-postmerge-selected",
+  "sourceFiles": [
+    "spec/public/roadmap.html",
+    "spec/STATUS.md",
+    "plan/c11-4-auto-repeat-fixed-repeat.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.md"
+  ],
+  "overlays": [
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 290149,
+      "sha256": "9530205e0f8569552e5cd9c39eb0499138f88ebe2d8aa70507d3732a6b83687f"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 290149,
+      "sha256": "9530205e0f8569552e5cd9c39eb0499138f88ebe2d8aa70507d3732a6b83687f"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 420674,
+      "sha256": "264f7bb59896643cd752c0c99adfd4c46f49e3a33f1112ff1c8f0d0bd6dcdeda"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 420674,
+      "sha256": "264f7bb59896643cd752c0c99adfd4c46f49e3a33f1112ff1c8f0d0bd6dcdeda"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "bytes": 11465,
+      "sha256": "732266e6fb9636163c6e99c60358d704b65431ced746a61f3c1e1438dd68063c"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat.md",
+      "bytes": 11465,
+      "sha256": "732266e6fb9636163c6e99c60358d704b65431ced746a61f3c1e1438dd68063c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "bytes": 5569,
+      "sha256": "b2a059fe8d3fb0b814c878cb6bc50e03959fd24437fe7fdc1ca915df3377bb2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "bytes": 5569,
+      "sha256": "b2a059fe8d3fb0b814c878cb6bc50e03959fd24437fe7fdc1ca915df3377bb2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.md",
+      "bytes": 3893,
+      "sha256": "f7c7010d4641ae41e05d7422c80c3207bce5c2430f38a77e9ff65be8fad2a3b9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.md",
+      "bytes": 3893,
+      "sha256": "f7c7010d4641ae41e05d7422c80c3207bce5c2430f38a77e9ff65be8fad2a3b9"
+    }
+  ],
+  "storageMethod": "hardlink prior selected tree; unlink overlay destinations before copying current source bytes",
+  "noDeletes": true
+}

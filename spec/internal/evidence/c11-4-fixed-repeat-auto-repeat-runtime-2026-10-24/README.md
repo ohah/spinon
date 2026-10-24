@@ -1,5 +1,7 @@
 # C11.4 fixed-repeat + auto-repeat 제한 runtime slice
 
+구현 PR [#591](https://github.com/ohah/spinon/pull/591)은 2026-10-24 08:48:30 UTC에 Rebase and merge됐고 merge SHA는 `79a2f3e2ec412d8a039125cf8930b3c633c04b63`다. 병합 당시 PR check rollup은 비어 있었고 main required status checks는 설정되지 않았다. C11.4 전체는 미완료이며 공식 집계 `72/213`을 유지한다. 병합 결과를 반영한 문서 변경은 [로드맵 동기화 실패 관점 검토](roadmap-pr-diff-review-30.md)에 기록한다.
+
 ## 범위
 
 한 track list에 auto-repeat 하나와 양의 정수 fixed-repeat 하나를 함께 둔다. fixed-repeat은 prefix 또는 suffix이며 1–2개의 computed finite nonnegative <code>LengthPx</code> track으로 제한한다. computed AST가 <code>LengthPx</code>로 정규화한 constant absolute <code>calc()</code>와 absolute units는 같은 범위다. CSS percentage, unresolved <code>calc()</code>, intrinsic/flexible track, <code>minmax()</code>, line names, 복수 repeat group, 양축 혼합, template areas는 이 slice에서 거부한다.

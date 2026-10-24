@@ -1,6 +1,6 @@
 # C11.4 · fixed-repeat와 auto-repeat 혼합
 
-**상태:** 계획과 Chrome 사전 비교를 바탕으로 제한 cascade/runtime 구현을 완료했고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 구현 PR 검토·병합은 진행 중이다. 전체 C11.4를 완료 처리하지 않으며 checkbox와 공식 완료 수 `72/213`은 그대로 유지한다. 실행 근거는 [runtime evidence](../spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md)다.
+**상태:** 계획과 Chrome 사전 비교를 바탕으로 제한 cascade/runtime 구현을 완료했고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 구현 PR [#591](https://github.com/ohah/spinon/pull/591)은 2026-10-24 08:48:30 UTC에 Rebase and merge됐고 merge SHA는 `79a2f3e2ec412d8a039125cf8930b3c633c04b63`다. 병합 당시 check rollup은 비어 있었고 main required status checks는 설정되지 않았다. 전체 C11.4를 완료 처리하지 않으며 checkbox와 공식 완료 수 `72/213`은 그대로 유지한다. 실행 근거는 [runtime evidence](../spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md)다.
 
 ## 기존 동작과 결손
 
