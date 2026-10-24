@@ -55,7 +55,7 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn multiple_fixed_repeat_group_matrix_has_ten_bounded_unique_scenes() {
+    fn multiple_fixed_repeat_group_matrix_has_twelve_bounded_unique_scenes() {
         let scenes: Value = serde_json::from_str(SCENES_JSON).unwrap();
         let scenes = scenes.as_array().unwrap();
         let expected_ids = [
@@ -69,6 +69,8 @@ mod tests {
             "fixed-repeat-groups-row-prefix-fill",
             "fixed-repeat-groups-row-split-fit-empty",
             "fixed-repeat-groups-row-prefix-fit-occupied",
+            "fixed-repeat-groups-four-prefix-fill",
+            "fixed-repeat-groups-four-row-split-fill",
         ];
         assert_eq!(scenes.len(), expected_ids.len());
         let ids = scenes

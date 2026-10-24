@@ -444,19 +444,28 @@ fn auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes() {
         );
     }
 
-    let unsupported_repeat = fixture(
-        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,20px) repeat(3,10px) repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
+    let multiple_auto_repeats = fixture(
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr)) repeat(auto-fit,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
     );
+    let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &multiple_auto_repeats.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .expect("Stylo should reject the second auto-repeat declaration during parsing");
     assert!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-            &unsupported_repeat.view,
-            &[],
-            viewport(),
-            Default::default(),
-        )
-        .is_err(),
-        "multiple fixed-repeat groups must remain rejected during cascade"
+        snapshot.elements[0]
+            .grid_layout
+            .as_ref()
+            .is_some_and(|grid| grid.columns.is_empty())
     );
+    assert!(snapshot.diagnostics.iter().any(|diagnostic| {
+        diagnostic
+            .diagnostic
+            .message
+            .contains("grid-template-columns:")
+    }));
 
     let one_axis_with_areas = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;grid-template-areas:\"area\";margin:0;padding:0",

@@ -192,5 +192,45 @@
       "tracks": { "columns": [80], "rows": [20, 20, 10, 10, 10, 186, 0, 0, 0, 0, 16] },
       "collapsed": { "columns": [false], "rows": [false, false, false, false, false, false, true, true, true, true, false] }
     }
+  },
+  {
+    "id": "fixed-repeat-groups-four-prefix-fill",
+    "oracleId": "four-prefix-fill",
+    "width": "320px",
+    "height": "80px",
+    "columns": "repeat(1,11px) repeat(2,13px) repeat(1,17px 19px) repeat(3,7px) repeat(auto-fill,minmax(20px,1fr)) 5px",
+    "rows": "80px",
+    "columnGap": "8px",
+    "rowGap": "8px",
+    "repeatAxis": "columns",
+    "rootColor": "#22c55e",
+    "items": [],
+    "expect": {
+      "root": [320, 80],
+      "items": [],
+      "tracks": { "columns": [11, 13, 13, 17, 19, 7, 7, 7, 23.4, 23.4, 23.4, 23.4, 23.4, 5], "rows": [80] },
+      "collapsed": { "columns": [false, false, false, false, false, false, false, false, false, false, false, false, false, false], "rows": [false] }
+    }
+  },
+  {
+    "id": "fixed-repeat-groups-four-row-split-fill",
+    "oracleId": "four-row-split-fill",
+    "width": "80px",
+    "height": "320px",
+    "columns": "80px",
+    "rows": "5px repeat(1,11px) repeat(2,13px) repeat(auto-fill,minmax(20px,1fr)) repeat(1,17px 19px) repeat(3,7px)",
+    "columnGap": "8px",
+    "rowGap": "8px",
+    "repeatAxis": "rows",
+    "rootColor": "#22c55e",
+    "items": [
+      { "name": "item-1", "color": "#e5484d", "width": "10px", "height": "10px", "placement": { "gridColumn": "1", "gridRow": "5 / 6" } }
+    ],
+    "expect": {
+      "root": [80, 320],
+      "items": [{ "name": "item-1", "frame": [0, 74, 10, 10] }],
+      "tracks": { "columns": [80], "rows": [5, 11, 13, 13, 23.4, 23.4, 23.4, 23.4, 23.4, 17, 19, 7, 7, 7] },
+      "collapsed": { "columns": [false], "rows": [false, false, false, false, false, false, false, false, false, false, false, false, false, false] }
+    }
   }
 ]

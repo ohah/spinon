@@ -1011,6 +1011,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedRootFrame(String sceneId) {
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             if (sceneId.contains("-groups-")) {
+                if (sceneId.endsWith("-four-prefix-fill")) return "width=320,height=80";
                 return sceneId.contains("-row-")
                         ? "width=80,height=320" : "width=320,height=320";
             }
@@ -1308,7 +1309,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
-            return sceneId.endsWith("-occupied") ? "width=10,height=10" : "";
+            return sceneId.endsWith("-occupied")
+                    || sceneId.endsWith("-four-row-split-fill") ? "width=10,height=10" : "";
         }
         String calcNeighborFrame = c114CalcNeighborItemFrame(sceneId);
         if (calcNeighborFrame != null) return calcNeighborFrame;
@@ -2799,11 +2801,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             boolean rowAxis = sceneId.contains("-row-");
             boolean multipleGroups = sceneId.contains("-groups-");
+            boolean fourPrefix = sceneId.endsWith("-four-prefix-fill");
+            boolean fourRowSplit = sceneId.endsWith("-four-row-split-fill");
             String root = multipleGroups
-                    ? (rowAxis ? "width=80,height=320" : "width=320,height=320")
+                    ? (fourPrefix ? "width=320,height=80"
+                            : rowAxis ? "width=80,height=320" : "width=320,height=320")
                     : (rowAxis ? "width=80,height=200" : "width=200,height=80");
-            if (sceneId.endsWith("-occupied")) {
-                String item = rowAxis
+            if (sceneId.endsWith("-occupied") || fourRowSplit) {
+                String item = fourRowSplit
+                        ? "1:node=2,x=0,y=74,width=10,height=10"
+                        : rowAxis
                         ? (multipleGroups
                                 ? "1:node=2,x=0,y=110,width=10,height=10"
                                 : "1:node=2,x=0,y=92,width=10,height=10")
@@ -4430,7 +4437,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
-            return sceneId.endsWith("-occupied") ? 2 : 1;
+            return sceneId.endsWith("-occupied")
+                    || sceneId.endsWith("-four-row-split-fill") ? 2 : 1;
         }
         sceneId = c114BaseNestedGridSceneId(sceneId);
         float[][] calcNeighborItems = c114CalcNeighborItemFrames(sceneId);
@@ -6414,14 +6422,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean multipleGroups = sceneId.contains("-groups-");
         boolean rowAxis = sceneId.contains("-row-");
         boolean occupied = sceneId.endsWith("-occupied");
-        int expectedCount = occupied ? 2 : 1;
+        boolean fourPrefix = sceneId.endsWith("-four-prefix-fill");
+        boolean fourRowSplit = sceneId.endsWith("-four-row-split-fill");
+        boolean hasItem = occupied || fourRowSplit;
+        int expectedCount = hasItem ? 2 : 1;
         if (samples.size() != expectedCount) return false;
         String rootId = "c114-" + sceneId + "-grid";
         String itemId = "c114-" + sceneId + "-item-1";
         int expectedRootX = multipleGroups ? (rowAxis ? 40 : 160) : (rowAxis ? 40 : 100);
         int expectedRootY = multipleGroups ? 160 : (rowAxis ? 100 : 40);
+        if (fourPrefix) expectedRootY = 40;
         int expectedItemX = multipleGroups ? (rowAxis ? 5 : 115) : (rowAxis ? 5 : 97);
         int expectedItemY = multipleGroups ? (rowAxis ? 115 : 5) : (rowAxis ? 97 : 5);
+        if (fourRowSplit) expectedItemY = 79;
         boolean rootFound = false;
         boolean itemFound = false;
         for (SurfaceViewPixelCapture.Sample sample : samples) {
@@ -6430,14 +6443,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || sample.xCssPx != expectedRootX || sample.yCssPx != expectedRootY) return false;
                 rootFound = true;
             } else if (sample.id.equals(sceneId + "-item-1-interior")) {
-                if (!occupied || itemFound || !itemId.equals(sample.targetNodeId)
+                if (!hasItem || itemFound || !itemId.equals(sample.targetNodeId)
                         || sample.xCssPx != expectedItemX || sample.yCssPx != expectedItemY) return false;
                 itemFound = true;
             } else {
                 return false;
             }
         }
-        return rootFound && itemFound == occupied;
+        return rootFound && itemFound == hasItem;
     }
     private static boolean isC1122GridAutoPlacementScene(String sceneId) {
         for (String candidate : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {

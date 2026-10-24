@@ -35,6 +35,8 @@ private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
     "fixed-repeat-groups-row-prefix-fill",
     "fixed-repeat-groups-row-split-fit-empty",
     "fixed-repeat-groups-row-prefix-fit-occupied",
+    "fixed-repeat-groups-four-prefix-fill",
+    "fixed-repeat-groups-four-row-split-fill",
 ]
 #else
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = []
@@ -820,6 +822,7 @@ private func c114PercentageNeighborNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID.hasPrefix("fixed-repeat-") {
         if sceneID.contains("-groups-") {
+            if sceneID.hasSuffix("-four-prefix-fill") { return "width=320,height=80" }
             return sceneID.contains("-row-")
                 ? "width=80,height=320" : "width=320,height=320"
         }
@@ -1057,7 +1060,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID.hasPrefix("fixed-repeat-") {
-        return sceneID.hasSuffix("-occupied") ? "width=10,height=10" : ""
+        return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill")
+            ? "width=10,height=10" : ""
     }
     if let calcNeighborFrame = c114CalcNeighborItemFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneID) {
@@ -2610,11 +2614,16 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if sceneID.hasPrefix("fixed-repeat-") {
         let rowAxis = sceneID.contains("-row-")
         let multipleGroups = sceneID.contains("-groups-")
+        let fourPrefix = sceneID.hasSuffix("-four-prefix-fill")
+        let fourRowSplit = sceneID.hasSuffix("-four-row-split-fill")
         let root = multipleGroups
-            ? (rowAxis ? "width=80,height=320" : "width=320,height=320")
+            ? (fourPrefix ? "width=320,height=80"
+                : rowAxis ? "width=80,height=320" : "width=320,height=320")
             : (rowAxis ? "width=80,height=200" : "width=200,height=80")
-        if sceneID.hasSuffix("-occupied") {
-            let item = rowAxis
+        if sceneID.hasSuffix("-occupied") || fourRowSplit {
+            let item = fourRowSplit
+                ? "1:node=2,x=0,y=74,width=10,height=10"
+                : rowAxis
                 ? (multipleGroups
                     ? "1:node=2,x=0,y=110,width=10,height=10"
                     : "1:node=2,x=0,y=92,width=10,height=10")
@@ -4006,7 +4015,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID.hasPrefix("fixed-repeat-") {
-        return sceneID.hasSuffix("-occupied") ? 2 : 1
+        return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill") ? 2 : 1
     }
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let calcNeighborItems = c114CalcNeighborItemFrames(sceneID) {
@@ -4646,13 +4655,19 @@ private struct C111MetalPixelRun {
             let multipleGroups = sceneID.contains("-groups-")
             let rowAxis = sceneID.contains("-row-")
             let occupied = sceneID.hasSuffix("-occupied")
+            let fourPrefix = sceneID.hasSuffix("-four-prefix-fill")
+            let fourRowSplit = sceneID.hasSuffix("-four-row-split-fill")
             let rootID = "c114-\(sceneID)-grid"
             var expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
                 ("\(sceneID)-root-interior", rootID,
                  multipleGroups ? (rowAxis ? 40 : 160) : (rowAxis ? 40 : 100),
-                 multipleGroups ? 160 : (rowAxis ? 100 : 40), [34, 197, 94, 255]),
+                 fourPrefix ? 40 : (multipleGroups ? 160 : (rowAxis ? 100 : 40)),
+                 [34, 197, 94, 255]),
             ]
-            if occupied {
+            if fourRowSplit {
+                expectedSamples.append(("\(sceneID)-item-1-interior",
+                    "c114-\(sceneID)-item-1", 5, 79, [229, 72, 77, 255]))
+            } else if occupied {
                 expectedSamples.append(("\(sceneID)-item-1-interior",
                     "c114-\(sceneID)-item-1",
                     multipleGroups ? (rowAxis ? 5 : 115) : (rowAxis ? 5 : 97),

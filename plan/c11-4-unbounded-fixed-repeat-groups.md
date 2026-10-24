@@ -1,6 +1,6 @@
 # C11.4 · 두 개 초과 fixed-repeat 그룹과 auto-repeat
 
-**상태:** 계획-only. Chrome 156 사전 관찰과 계획 실패 검토 20개를 고정했다. Spinon 구현과 runtime 검증은 아직 시작하지 않았다. C11.4 공식 checkbox와 `72/213` 집계는 유지한다.
+**상태:** 제한된 구현 slice와 양 플랫폼 simulator runtime 검증을 완료했다. 임의 개수의 positive fixed-repeat group(총 authored descriptor 10,000 이하), 한 auto-repeat, 제한 breadth profile만 opt-in 경로에서 확인했다. C11.4 전체와 공식 checkbox, `72/213` 집계는 미완료·유지 상태다.
 
 ## 현재 동작과 결손
 
@@ -30,12 +30,16 @@ CSS Grid 2025 CRD §7.2.3.1의 auto-track-list 문법은 하나의 auto-repeat�
 1. 이 계획과 별도 20관점 계획 검토를 먼저 완료한다. Chrome observation과 independent expectation JSON이 서로 일치하는지 대조한다.
 2. 두 칸 fixed-repeat 저장소를 fallible, index-addressed dynamic metadata로 바꾼다. valid component 수는 각 그룹이 최소 한 descriptor를 만들고 전체 합이 10,000 이하여야 하는 제한에 맞춘다.
 3. cascade tests에서 기존 한·두 그룹 입력, 3·4·8개 그룹 authored order, auto-repeat 앞/사이/뒤 배치, rows axis, 10,000 통과/10,001 거부, allocation failure와 다음 호출 복구를 검사한다. 두 번째 auto-repeat, named metadata, unsupported breadth와 malformed count는 계속 거부한다.
-4. 기존 10개 C11.4 fixed-repeat runtime scene에 네 그룹 prefix/split 신규 scene을 추가해 총 12개를 만든다. AVD와 iOS Simulator에서 track/frame/trace/draw/present를 확인하고 PixelCopy 및 compositor 전 Metal 표본을 별도로 보고한다.
-5. fixture module/artifact 경계를 확인한다. default product artifact와 opt-in positive control을 분리해 비교하며 static archive 결과를 APK/IPA exclusion으로 확대하지 않는다.
-6. 코드·런타임 변경 후 새 실패 관점 20개를 기록하고, PR diff에는 별도의 20개 적대적 검증을 남긴다. 모든 관련 checks와 실제 merge 결과를 확인한 뒤 0059, STATUS, 공개 roadmap을 갱신한다. C11.4 전체 관문이 남아 있으므로 공식 checkbox와 `72/213`을 유지한다.
+4. 기존 10개 C11.4 fixed-repeat runtime scene에 네 그룹 prefix/split 신규 scene을 추가해 총 12개로 검증했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 track/frame/trace/draw/present가 각각 12/12 통과했고 PixelCopy·compositor 전 Metal 표본은 각 15/15 exact다.
+5. fixture module/artifact 경계를 확인했다. macOS ARM64 debug static archive 기본 구성과 opt-in positive control의 marker·ABI를 분리해 비교했다. 이 결과를 APK/IPA 전체 exclusion으로 확대하지 않는다.
+6. 구현/runtime 실패 관점 20개와 별도의 PR diff 실패 관점 30개를 기록한다. PR checks와 실제 main merge를 확인하고 tailnet preview를 최신 상태로 맞춘다. C11.4 전체 관문이 남아 있으므로 공식 checkbox와 `72/213`을 유지한다.
+
+## 구현/runtime 확인 결과 · 2026-10-24
+
+`fixed_repeat_auto_repeat.rs`의 두-slot 배열을 fallibly-reserved, component-indexed metadata로 교체했다. 3·4·8개 fixed-repeat group, rows·columns, authored order, 10,000/10,001 descriptor 경계, allocation failure와 다음 호출 복구를 cascade에서 확인했다. 새 opt-in runtime scene 두 개는 columns prefix-fill과 rows split-fill을 추가하며 item frame은 `(0,74,10,10)`이다. 변경 crate test, fixture-boundary test, fmt, Clippy와 default/positive-control archive 경계가 통과했다. [양 플랫폼 실행·화면·hash](../spec/internal/evidence/c11-4-unbounded-fixed-repeat-groups-runtime-2026-10-24/README.md).
 
 ## 남은 범위
 
-세 번째 fixed-repeat을 포함한 세션의 현재 구현, named-line merge/collision, fixed-size `minmax()`와 percentage breadth, 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 intrinsic track sizing 전체는 미완료다. 이 계획-only slice 자체는 제품 기능이나 공식 완료 항목이 아니다.
+named-line metadata merge/collision, fixed-size `minmax()`와 percentage breadth, 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 intrinsic track sizing 전체는 미완료다. 이 제한 profile은 제품 CSS 지원 범위 전체나 공식 완료 항목을 뜻하지 않는다.
 
 계획 실패 관점은 [20개 검토](./c11-4-unbounded-fixed-repeat-groups-plan-review-20.md), 변경 파일의 별도 검토는 [계획 PR diff 검토](./c11-4-unbounded-fixed-repeat-groups-pr-diff-review-20.md)에 기록한다.
