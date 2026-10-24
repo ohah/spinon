@@ -1,0 +1,186 @@
+{
+  "copied_image_imports": 30,
+  "copies": [
+    {
+      "source": "public/icon.svg",
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "public/logo.svg",
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "path": "internal/evidence/c11-4-mixed-direct-text-image-intrinsic-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 61018,
+      "sha256": "eb896a2814505f51fefe6080af0028f75122ba2cd62a6706332816efdebd72b0"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-forward.png",
+      "bytes": 89737,
+      "sha256": "f989955997859fef374521868de33d3ced0c84cab3469cead8a291387951a5c3"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-max-content-reversed.png",
+      "bytes": 75542,
+      "sha256": "b80d59fe3782b315dcb862e560a5a7c7d317ea4f3df91c47908ed4bb7af4cf03"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-forward.png",
+      "bytes": 106826,
+      "sha256": "9c82aee32eba0e59e123bb0e6dd3c4f92d42c8b263407529641175900f823a22"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-android-avd-20261024T213807050Z-079d5311/android-direct-min-content-reversed.png",
+      "bytes": 77093,
+      "sha256": "d983ff1c7454ff128210b25d7cbde571cc923cff1bd55dc870abd8a2a004026b"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-forward.png",
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-max-content-reversed.png",
+      "bytes": 147247,
+      "sha256": "5b8cc1d5a2a0e84a4a2222864d697609a9619b20aeb928c0146adb71d8bab2f9"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-forward.png",
+      "bytes": 146990,
+      "sha256": "1d99c24d25a1012a3862d212fd9a3fac20ce9cde145559d48f469e1853a4b66c"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/capture-before-final-run-provenance/c114-direct-mixed-ios-simulator-20261024T213819992Z-e014bedb/ios-direct-min-content-reversed.png",
+      "bytes": 146964,
+      "sha256": "f9fcbfa497d03d1f6c79289a0bf205fe63c65895f92ba7a4fd91ab9d6e64c677"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-max-content-forward.png",
+      "bytes": 136357,
+      "sha256": "0ce6f219802f1f41ae63149fad17fd7df86ca155121a47f198aeef88cdca9013"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-forward.png",
+      "bytes": 136065,
+      "sha256": "e1ba768d2b6da42a21e6d5f255d36a94a3c77799974060152f94814a4a6c360b"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-avd-api37-0-pre-recovery/android-direct-min-content-reversed.png",
+      "bytes": 130722,
+      "sha256": "3b6324b69a5b4cf6bab562c16cc0b9c132b7eb66feefc1c6a45ea5e048f126c8"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-forward.png",
+      "bytes": 101717,
+      "sha256": "f6b0a5d8afa63448dc155ed0c54cc48e092ef1ddfee7b09a26570f073f1a357d"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-max-content-reversed.png",
+      "bytes": 126692,
+      "sha256": "ca81c20f53d75a7e0433261e94a3a6aa026451d22ce70e99179c68dff639d5da"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-forward.png",
+      "bytes": 127356,
+      "sha256": "f755ab61171eff76cde5df8890bead06f9657125b1a25c36fc355e235a0d8b5d"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/android/android-direct-min-content-reversed.png",
+      "bytes": 70414,
+      "sha256": "e225ae340e5aacbb7aafc00cb6f60b7da7002551ed01afb4187786a9e35d459a"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-forward.png",
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-max-content-reversed.png",
+      "bytes": 146118,
+      "sha256": "26a414af89d316dcc9780de29ffa0fc65620483bf6d78604a1e5a40b2d4db4a7"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-forward.png",
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-reversed.png",
+      "bytes": 145886,
+      "sha256": "4a32e707c7aacf5f8009b27d97f3268271b7468fe89fdb685ffe39720e7518df"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-forward.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-max-content-reversed.png",
+      "bytes": 89626,
+      "sha256": "375a0287aca36f01efeb8bff994050324e73bc1127e8d76a303164577cab038e"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-forward.png",
+      "bytes": 76971,
+      "sha256": "0297e4968b1af5d4ba084b3dc1d5e4cc45f21d0235a0d408604cd8fff75d6f02"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-android-avd-20261024T214623162Z-49f60916/android-direct-min-content-reversed.png",
+      "bytes": 63685,
+      "sha256": "380a9a64312d0eb9fe5b4f1cd07ec73c04e61af9eba40c8fe12d1d5a4d420861"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-forward.png",
+      "bytes": 146048,
+      "sha256": "66126592757ad462fb1c759f82aeee83a4ba32da7e3336aeb793adfc0a87f79c"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-max-content-reversed.png",
+      "bytes": 146091,
+      "sha256": "3b15819f20be093ce3eaed94ea91931665399d93f8b1a63cad0b0d86945399e4"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-forward.png",
+      "bytes": 145891,
+      "sha256": "3fee43883eecd91e0ea3b6b40fdfb824ed786aaeef2ca9fb46430d65c291de5d"
+    },
+    {
+      "source": "public/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png",
+      "path": "internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/runs/c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d/ios-direct-min-content-reversed.png",
+      "bytes": 145851,
+      "sha256": "1b9a7a6874090206073fe4dc5c9c576e9429f31bc12678d2064a09f59b47e85f"
+    }
+  ],
+  "no_deletes": true
+}
