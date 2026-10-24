@@ -1,6 +1,6 @@
 # C11.4 · fixed-repeat와 auto-repeat 혼합
 
-**상태:** 계획, Chrome 사전 비교, Stylo computed-AST 경계 보정까지 완료했다. 구현/runtime은 시작 전이다. C11.4 checkbox와 공식 완료 수 `72/213`은 그대로 유지한다.
+**상태:** 계획과 Chrome 사전 비교를 바탕으로 제한 cascade/runtime 구현을 완료했고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 검증을 마쳤다. 구현 PR 검토·병합은 진행 중이다. 전체 C11.4를 완료 처리하지 않으며 checkbox와 공식 완료 수 `72/213`은 그대로 유지한다. 실행 근거는 [runtime evidence](../spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md)다.
 
 ## 기존 동작과 결손
 
@@ -50,7 +50,7 @@ CSS Grid 2025 CRD §7.2.3.1은 같은 track list에 `auto-repeat` 하나와 `<fi
 ## 통과 조건과 별도 검토
 
 - 원 계획은 [실패 관점 검토 20개](./c11-4-auto-repeat-fixed-repeat-plan-review-20.md)를 통과했다. computed AST가 absolute `calc()`의 authored form을 보존하지 않는 발견으로 범위를 수정했고, 그 수정은 별도 [수정 계획 검토 20개](./c11-4-auto-repeat-fixed-repeat-revision-review-20.md)에서 다시 확인했다. 계획 검토 관점은 구현/runtime 검토에서 재사용하지 않는다.
-- 구현 뒤 새 code/runtime 실패 관점 20개를 작성하고, 이 계획 및 기존 Chrome 관찰과 독립적으로 검토한다.
+- 구현/runtime 뒤 새 실패 관점 20개를 이 계획 및 기존 Chrome 관찰과 독립적으로 검토했다. [검토 기록](../spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md).
 - 병합 전 PR diff 전용 실패 관점 30개를 작성한다. 이 계획-only PR은 [계획 PR diff 검토 30개](./c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md)에 기록했다. 구현 PR에는 `spec/STATUS.md`, 내부 계약 `0059`, public roadmap 및 근거 링크를 함께 갱신하고 PR template를 채운다.
 - 기존 CSS Grid/API unrelated tests나 전체 WPT를 이 slice의 성공으로 세지 않는다. 실행한 scoped tests/build/lints와 Android/iOS Simulator 결과만 구분해 보고한다.
 - 모든 단계에서 C11.4 checkbox를 미완료로 두고 공식 완료 수 `72/213`을 유지한다.

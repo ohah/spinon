@@ -110,7 +110,7 @@ test('calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다', asyn
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 440);
+  assert.equal(catalog.sceneCount, 449);
   assert.equal(catalog.selectedSceneCount, 13);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 
@@ -170,7 +170,7 @@ test('음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 440);
+  assert.equal(catalog.sceneCount, 449);
   assert.equal(catalog.selectedSceneCount, 9);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 
@@ -288,7 +288,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
     'zero-percent auto-repeat fixture는 13개다.');
   assert.equal(maximumFixtures.length, 28,
     'percentage auto-repeat maximum fixture는 28개다.');
-  assert.match(captureSource, /assert\.equal\(scenes\.length, 440,/,
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 449,/,
     'C11.4 simulator capture scene count must include percentage-neighbor cases.');
   const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
   assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');
@@ -301,7 +301,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(listScenes.status, 0, listScenes.stderr);
   const captureCatalog = JSON.parse(listScenes.stdout);
-  assert.equal(captureCatalog.sceneCount, 440);
+  assert.equal(captureCatalog.sceneCount, 449);
   const matrixIDs = [...noAreaIDs, ...fixtures.map(({ id }) => id)];
   assert.equal(matrixIDs.length, 41, 'the focused C11.4 matrix must contain 41 scenes.');
   assert.equal(new Set(matrixIDs).size, matrixIDs.length,
@@ -317,7 +317,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCatalogResult.status, 0, selectedCatalogResult.stderr);
   const selectedCatalog = JSON.parse(selectedCatalogResult.stdout);
-  assert.equal(selectedCatalog.sceneCount, 440);
+  assert.equal(selectedCatalog.sceneCount, 449);
   assert.equal(selectedCatalog.selectedSceneCount, 41);
   assert.deepEqual([...selectedCatalog.selectedSceneIDs].sort(), [...matrixIDs].sort(),
     'the simulator selection must resolve to exactly the 41 focused matrix IDs.');
@@ -358,7 +358,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedPercentResult.status, 0, selectedPercentResult.stderr);
   const selectedPercentCatalog = JSON.parse(selectedPercentResult.stdout);
-  assert.equal(selectedPercentCatalog.sceneCount, 440);
+  assert.equal(selectedPercentCatalog.sceneCount, 449);
   assert.equal(selectedPercentCatalog.selectedSceneCount, 16);
   assert.deepEqual([...selectedPercentCatalog.selectedSceneIDs].sort(), [...percentIDs].sort());
   const zeroPercentIDs = zeroPercentFixtures.map(({ id }) => id);
@@ -391,7 +391,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedZeroPercentResult.status, 0, selectedZeroPercentResult.stderr);
   const selectedZeroPercentCatalog = JSON.parse(selectedZeroPercentResult.stdout);
-  assert.equal(selectedZeroPercentCatalog.sceneCount, 440);
+  assert.equal(selectedZeroPercentCatalog.sceneCount, 449);
   assert.equal(selectedZeroPercentCatalog.selectedSceneCount, 13);
   assert.deepEqual([...selectedZeroPercentCatalog.selectedSceneIDs].sort(), [...zeroPercentIDs].sort());
   const maximumIDs = maximumFixtures.map(({ id }) => id);
@@ -419,7 +419,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedMaximumResult.status, 0, selectedMaximumResult.stderr);
   const selectedMaximumCatalog = JSON.parse(selectedMaximumResult.stdout);
-  assert.equal(selectedMaximumCatalog.sceneCount, 440);
+  assert.equal(selectedMaximumCatalog.sceneCount, 449);
   assert.equal(selectedMaximumCatalog.selectedSceneCount, 28);
   assert.deepEqual([...selectedMaximumCatalog.selectedSceneIDs].sort(), [...maximumIDs].sort());
   const neighborIDs = neighborFixtures.map(({ id }) => id);
@@ -459,7 +459,7 @@ test('41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host �
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedNeighborResult.status, 0, selectedNeighborResult.stderr);
   const selectedNeighborCatalog = JSON.parse(selectedNeighborResult.stdout);
-  assert.equal(selectedNeighborCatalog.sceneCount, 440);
+  assert.equal(selectedNeighborCatalog.sceneCount, 449);
   assert.equal(selectedNeighborCatalog.selectedSceneCount, 13);
   assert.deepEqual([...selectedNeighborCatalog.selectedSceneIDs].sort(), [...neighborIDs].sort());
   assert.deepEqual(
@@ -1187,4 +1187,58 @@ test('C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에
     /\$0 != "--spinon-c153-glyph-paint"[\s\S]*\$0 != "--spinon-c153-hostdocument-text-paint"/);
   assert.match(iosDemo,
     /SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST_1[\s\S]*createRuntimeGpuHostWithC15_3HostDocumentTextPaintFixture[\s\S]*hostdocument_text_samples_css_px=/);
+});
+
+test('C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다', async () => {
+  const fixturePath = 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json';
+  const fixtures = JSON.parse(await readFile(resolve(repositoryRoot, fixturePath), 'utf8'));
+  const fixtureIDs = fixtures.map(({ id }) => id);
+  assert.equal(fixtures.length, 9);
+  assert.equal(new Set(fixtureIDs).size, 9, 'runtime scene ID collision');
+  assert.ok(fixtures.every(({ id, oracleId }) => (
+    id.startsWith('fixed-repeat-') && typeof oracleId === 'string'
+  )));
+
+  const capturePath = resolve(repositoryRoot,
+    'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs');
+  const selected = spawnSync(process.execPath, [capturePath, 'android-avd',
+    `--scene-id=${fixtureIDs.join(',')}`, '--run-kind=fixed-repeat', '--list-scenes'],
+  { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(selected.status, 0, selected.stderr);
+  const catalog = JSON.parse(selected.stdout);
+  assert.equal(catalog.sceneCount, 449);
+  assert.equal(catalog.selectedSceneCount, 9);
+  assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
+
+  const [android, ios, runtimeFixtureRoute, runtimeFixtureSource] = await Promise.all([
+    readFile(resolve(repositoryRoot,
+      'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'), 'utf8'),
+    readFile(resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift'), 'utf8'),
+    readFile(resolve(repositoryRoot, 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs'), 'utf8'),
+    readFile(resolve(repositoryRoot,
+      'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_auto_repeat.rs'), 'utf8'),
+  ]);
+  assert.match(android,
+    /BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&&\s*sceneId != null\s*&& sceneId\.startsWith\("fixed-repeat-"\)/);
+  assert.match(android,
+    /isC114FixedRepeatAutoRepeatPixelSamples\(sceneId, samples\)/,
+    'Android C11.4 PixelCopy must validate fixed-repeat sample IDs and coordinates.');
+  assert.match(android,
+    /sampleId\.startsWith\("fixed-repeat-"\)[\s\S]*?new int\[\] \{34, 197, 94\}/,
+    'Android PixelCopy must compare the fixed-repeat green grid background.');
+  assert.match(android,
+    /BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&&\s*pixelMatrixSceneId != null\s*&&\s*pixelMatrixSceneId\.startsWith\("fixed-repeat-"\)/,
+    'Android fixed-repeat pixel samples must remain gated by the opt-in fixture build.');
+  const iosFixtureBlock = ios.match(
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1([\s\S]*?)#endif/,
+  )?.[1];
+  assert.ok(iosFixtureBlock, 'iOS scene IDs must be compiled only for opt-in fixture builds.');
+  assert.match(ios,
+    /sceneID\.hasPrefix\("fixed-repeat-"\)[\s\S]*?\[34, 197, 94, 255\]/,
+    'iOS Metal pixel samples must validate fixed-repeat IDs and expected root color.');
+  for (const id of fixtureIDs) {
+    assert.ok(iosFixtureBlock.includes(`"${id}"`), `iOS opt-in allowlist is missing ${id}`);
+  }
+  assert.ok(runtimeFixtureRoute.includes('fixed_repeat_auto_repeat::runtime_source'));
+  assert.ok(runtimeFixtureSource.includes('auto_repeat_fixed_repeat_scenes.json'));
 });

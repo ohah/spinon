@@ -596,10 +596,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "revision-reuse".equals(sceneId);
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (c114IsFixedRepeatAutoRepeatScene(sceneId)) return true;
         for (String candidate : C114_GRID_TRACK_SIZING_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
         return false;
+    }
+
+    private static boolean c114IsFixedRepeatAutoRepeatScene(String sceneId) {
+        return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                && sceneId != null && sceneId.startsWith("fixed-repeat-");
     }
 
     private static String[] c114NegativeTrackExpectation(String sceneId) {
@@ -1003,6 +1009,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
+            return sceneId.contains("-row-")
+                    ? "width=80,height=200" : "width=200,height=80";
+        }
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String calcNeighborFrame = c114CalcNeighborRootFrame(sceneId);
         if (calcNeighborFrame != null) return calcNeighborFrame;
@@ -1293,6 +1303,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
+            return sceneId.endsWith("-occupied") ? "width=10,height=10" : "";
+        }
         String calcNeighborFrame = c114CalcNeighborItemFrame(sceneId);
         if (calcNeighborFrame != null) return calcNeighborFrame;
         String percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneId);
@@ -2779,6 +2792,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
+            boolean rowAxis = sceneId.contains("-row-");
+            String root = rowAxis ? "width=80,height=200" : "width=200,height=80";
+            if (sceneId.endsWith("-occupied")) {
+                String item = rowAxis
+                        ? "1:node=2,x=0,y=92,width=10,height=10"
+                        : "1:node=2,x=92,y=0,width=10,height=10";
+                return "node_frames_css_px=[0:node=1,x=0,y=0," + root + ";" + item + "]";
+            }
+            return "node_frames_css_px=[0:node=1,x=0,y=0," + root + "]";
+        }
         sceneId = c114BaseNestedGridSceneId(sceneId);
         String calcNeighborFrames = c114CalcNeighborNodeFrames(sceneId);
         if (calcNeighborFrames != null) return calcNeighborFrames;
@@ -4394,6 +4418,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
+            return sceneId.endsWith("-occupied") ? 2 : 1;
+        }
         sceneId = c114BaseNestedGridSceneId(sceneId);
         float[][] calcNeighborItems = c114CalcNeighborItemFrames(sceneId);
         if (calcNeighborItems != null) return calcNeighborItems.length + 1;
@@ -5056,6 +5083,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (isC114FixedRepeatAutoRepeatPixelSamples(sceneId, samples)) return true;
         if (c114CalcNeighborPixelSamplesMatch(sceneId, samples)) return true;
         if (c114PercentageMaximumPixelSamplesMatch(sceneId, samples)) return true;
         if (c114PercentageNeighborPixelSamplesMatch(sceneId, samples)) return true;
@@ -6365,6 +6393,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         return false;
     }
+
+    private static boolean isC114FixedRepeatAutoRepeatPixelSamples(
+            String sceneId,
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                || sceneId == null || !sceneId.startsWith("fixed-repeat-")) return false;
+        boolean rowAxis = sceneId.contains("-row-");
+        boolean occupied = sceneId.endsWith("-occupied");
+        int expectedCount = occupied ? 2 : 1;
+        if (samples.size() != expectedCount) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        String itemId = "c114-" + sceneId + "-item-1";
+        boolean rootFound = false;
+        boolean itemFound = false;
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            if (sample.id.equals(sceneId + "-root-interior")) {
+                if (rootFound || !rootId.equals(sample.targetNodeId)
+                        || sample.xCssPx != (rowAxis ? 40 : 100)
+                        || sample.yCssPx != (rowAxis ? 100 : 40)) return false;
+                rootFound = true;
+            } else if (sample.id.equals(sceneId + "-item-1-interior")) {
+                if (!occupied || itemFound || !itemId.equals(sample.targetNodeId)
+                        || sample.xCssPx != (rowAxis ? 5 : 97)
+                        || sample.yCssPx != (rowAxis ? 97 : 5)) return false;
+                itemFound = true;
+            } else {
+                return false;
+            }
+        }
+        return rootFound && itemFound == occupied;
+    }
     private static boolean isC1122GridAutoPlacementScene(String sceneId) {
         for (String candidate : C1122_GRID_AUTO_PLACEMENT_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
@@ -7106,8 +7166,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         c114GridTrackSizingRunId = c114RunId == null ? "manual" : c114RunId;
         if (c114GridTrackSizingRequested
                 && (!c114GridTrackSizingRunId.matches("[A-Za-z0-9_-]{1,80}")
-                        || !java.util.Arrays.asList(C114_GRID_TRACK_SIZING_SCENE_IDS)
-                                .contains(c114GridTrackSizingSceneId)
+                        || !isC114GridTrackSizingScene(c114GridTrackSizingSceneId)
                         || c1131GridRepeatRequested || c1132GridNamedLinesRequested
                         || c1133GridTemplateAreasRequested || c1123GridAutoPlacementRequested
                         || c1122GridAutoPlacementRequested || c1121GridPlacementRequested
@@ -7216,7 +7275,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId)
                         || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId)
                         || isC114PercentageNeighborPixelSceneId(pixelMatrixSceneId)
-                        || isC114CalcNeighborPixelSceneId(pixelMatrixSceneId))
+                        || isC114CalcNeighborPixelSceneId(pixelMatrixSceneId)
+                        || (BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
+                                && pixelMatrixSceneId != null
+                                && pixelMatrixSceneId.startsWith("fixed-repeat-")))
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -10757,6 +10819,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sampleId) {
+        if (sampleId.startsWith("fixed-repeat-")) {
+            return sampleId.endsWith("-root-interior")
+                    ? new int[] {34, 197, 94} : new int[] {229, 72, 77};
+        }
         int[] calcNeighborPixel = c114CalcNeighborPixelRgb(sampleId);
         if (calcNeighborPixel != null) return calcNeighborPixel;
         int[] percentageNeighborPixel = c114PercentageNeighborPixelRgb(sampleId);

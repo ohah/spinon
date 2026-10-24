@@ -4313,6 +4313,120 @@ async function autoRepeatNegativePercentageNeighborScenes() {
   });
 }
 
+async function fixedRepeatAutoRepeatScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json');
+  const chromePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json');
+  const chromeInputPath = resolve(repositoryRoot,
+    'tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, chrome, chromeInput, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(chromePath, 'utf8').then(JSON.parse),
+    readFile(chromeInputPath, 'utf8'),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 9, 'fixed-repeat + auto-repeat runtime matrix는 9 scene이어야 합니다.');
+  assert.equal(chrome.cases.length, 9, 'Chrome 156 사전 비교는 9 case여야 합니다.');
+  assert.ok(chromeInput.includes('gap: 8px;'), 'Chrome oracle input must keep its fixed 8px gutter.');
+  assert.match(androidSource,
+    /BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&&\s*sceneId != null\s*&& sceneId\.startsWith\("fixed-repeat-"\)/,
+    'Android는 opt-in fixture build에서만 fixed-repeat scene ID를 받아야 합니다.');
+  const iosFixtureBlock = iosSource.match(
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1([\s\S]*?)#endif/,
+  )?.[1];
+  assert.ok(iosFixtureBlock,
+    'iOS fixed-repeat scene ID는 opt-in fixture build에서만 컴파일되어야 합니다.');
+  const chromeById = new Map(chrome.cases.map((scene) => [scene.id, scene]));
+  const close = (actual, expected, label) => {
+    assert.ok(Math.abs(actual - expected) <= 1 / 64,
+      `${label}: ${actual} != ${expected}`);
+  };
+  const colorRgba = (color) => [
+    Number.parseInt(color.slice(1, 3), 16),
+    Number.parseInt(color.slice(3, 5), 16),
+    Number.parseInt(color.slice(5, 7), 16),
+    255,
+  ];
+
+  return fixtures.map((fixture) => {
+    const { id, oracleId, repeatAxis, expect, items, rootColor, columnGap, rowGap } = fixture;
+    const chromeScene = chromeById.get(oracleId);
+    assert.ok(id.startsWith('fixed-repeat-'), `${id}: opt-in scene prefix`);
+    assert.ok(chromeScene, `${id}: Chrome oracle scene ${oracleId} is missing.`);
+    assert.ok(iosFixtureBlock.includes(`"${id}"`),
+      `iOS opt-in scene allowlist is missing ${id}.`);
+    assert.equal(chromeScene.trackAxis, repeatAxis, `${id}: repeat axis`);
+    assert.equal(items.length, expect.items.length, `${id}: expected item count`);
+    assert.equal(chromeScene.items.length, expect.items.length, `${id}: Chrome item count`);
+    const [rootWidth, rootHeight] = expect.root;
+    close(chromeScene.grid.width, rootWidth, `${id}: Chrome root width`);
+    close(chromeScene.grid.height, rootHeight, `${id}: Chrome root height`);
+    const axis = repeatAxis === 'columns' ? 'Columns' : 'Rows';
+    const axisKey = repeatAxis;
+    const chromeTemplate = axis === 'Columns'
+      ? chromeScene.templateColumns : chromeScene.templateRows;
+    const chromeTracks = chromeTemplate.trim().split(/\s+/).map(Number.parseFloat);
+    const expectedTracks = expect.tracks[axisKey];
+    assert.equal(chromeTracks.length, expectedTracks.length, `${id}: Chrome track count`);
+    for (const [index, track] of chromeTracks.entries()) {
+      close(track, expectedTracks[index], `${id}: Chrome track ${index}`);
+    }
+    assert.equal(expect.collapsed.columns.length, expect.tracks.columns.length,
+      `${id}: column collapse count`);
+    assert.equal(expect.collapsed.rows.length, expect.tracks.rows.length,
+      `${id}: row collapse count`);
+    assert.equal(Number.parseFloat(columnGap), 8, `${id}: column gutter`);
+    assert.equal(Number.parseFloat(rowGap), 8, `${id}: row gutter`);
+
+    const rootNodeId = `c114-${id}-grid`;
+    const frames = [`0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight}`];
+    for (const [index, item] of expect.items.entries()) {
+      const [x, y, width, height] = item.frame;
+      const chromeItem = chromeScene.items[index];
+      close(chromeItem.x, x, `${id}: Chrome item ${index} x`);
+      close(chromeItem.y, y, `${id}: Chrome item ${index} y`);
+      close(chromeItem.width, width, `${id}: Chrome item ${index} width`);
+      close(chromeItem.height, height, `${id}: Chrome item ${index} height`);
+      frames.push(`${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`);
+    }
+    const pixelSamples = [{
+      id: `${id}-root-interior`, nodeId: rootNodeId,
+      xCssPx: Math.floor(rootWidth / 2), yCssPx: Math.floor(rootHeight / 2),
+      rgba: colorRgba(rootColor),
+    }];
+    for (const [index, item] of items.entries()) {
+      const [x, y, width, height] = expect.items[index].frame;
+      pixelSamples.push({
+        id: `${id}-${item.name}-interior`, nodeId: `c114-${id}-${item.name}`,
+        xCssPx: Math.floor(x + width / 2), yCssPx: Math.floor(y + height / 2),
+        rgba: colorRgba(item.color),
+      });
+    }
+    return {
+      id,
+      oracleId,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: expect.items.length === 0
+        ? null
+        : `width=${expect.items[0].frame[2]},height=${expect.items[0].frame[3]}`,
+      nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      pixelSamples,
+    };
+  });
+}
+
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
@@ -4322,7 +4436,8 @@ scenes.push(...await autoRepeatPercentageMaximumScenes());
 scenes.push(...await autoRepeatPercentageNeighborScenes());
 scenes.push(...await autoRepeatCalcNeighborScenes());
 scenes.push(...await autoRepeatNegativePercentageNeighborScenes());
-assert.equal(scenes.length, 440, 'C11.4 fixture scene count differs.');
+scenes.push(...await fixedRepeatAutoRepeatScenes());
+assert.equal(scenes.length, 449, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

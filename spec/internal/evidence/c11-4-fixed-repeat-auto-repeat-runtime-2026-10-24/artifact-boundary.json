@@ -1,0 +1,94 @@
+{
+  "sceneIds": [
+    "fixed-repeat-fill-prefix-empty",
+    "fixed-repeat-fill-suffix-empty",
+    "fixed-repeat-fill-prefix-calc-constant",
+    "fixed-repeat-fit-prefix-empty",
+    "fixed-repeat-fit-prefix-occupied",
+    "fixed-repeat-row-fill-prefix-empty",
+    "fixed-repeat-row-fill-suffix-empty",
+    "fixed-repeat-row-fit-prefix-empty",
+    "fixed-repeat-row-fit-prefix-occupied"
+  ],
+  "androidDefaultApk": {
+    "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "2eabb7bc100872ee541d406cfae1687ca4e412ef4d682c1160988bf709579cb2",
+    "bytes": 114231292,
+    "sceneMarkerEntries": {
+      "fixed-repeat-fill-prefix-empty": [],
+      "fixed-repeat-fill-suffix-empty": [],
+      "fixed-repeat-fill-prefix-calc-constant": [],
+      "fixed-repeat-fit-prefix-empty": [],
+      "fixed-repeat-fit-prefix-occupied": [],
+      "fixed-repeat-row-fill-prefix-empty": [],
+      "fixed-repeat-row-fill-suffix-empty": [],
+      "fixed-repeat-row-fit-prefix-empty": [],
+      "fixed-repeat-row-fit-prefix-occupied": []
+    }
+  },
+  "androidOptInApk": {
+    "path": "/tmp/spinon-c11-4-fixed-repeat-positive.apk",
+    "sha256": "8a6b10d62692930ace3114e73f8071935ef62161cc40471fbee5fda573538acc",
+    "bytes": 116148298,
+    "sceneMarkerEntries": {
+      "fixed-repeat-fill-prefix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-fill-suffix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-fill-prefix-calc-constant": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-fit-prefix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-fit-prefix-occupied": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-row-fill-prefix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-row-fill-suffix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-row-fit-prefix-empty": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ],
+      "fixed-repeat-row-fit-prefix-occupied": [
+        "lib/arm64-v8a/libspinon_bootstrap.so"
+      ]
+    }
+  },
+  "iosDefaultAppExecutable": {
+    "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "sha256": "36b996f6eb1842273e1bffdd23ecad58a04e32d72fdf1cffe420320089b3be1b",
+    "sceneMarkerFiles": {
+      "fixed-repeat-fill-prefix-empty": [],
+      "fixed-repeat-fill-suffix-empty": [],
+      "fixed-repeat-fill-prefix-calc-constant": [],
+      "fixed-repeat-fit-prefix-empty": [],
+      "fixed-repeat-fit-prefix-occupied": [],
+      "fixed-repeat-row-fill-prefix-empty": [],
+      "fixed-repeat-row-fill-suffix-empty": [],
+      "fixed-repeat-row-fit-prefix-empty": [],
+      "fixed-repeat-row-fit-prefix-occupied": []
+    }
+  },
+  "iosOptInExecutable": {
+    "path": "/tmp/spinon-c11-4-fixed-repeat-positive-ios",
+    "sha256": "6fbb9c865d5e8b5ba2a6652a8c193e854bacc9a5b36d164dfab402a17353257e",
+    "bytes": 38587648,
+    "sceneMarkersPresent": {
+      "fixed-repeat-fill-prefix-empty": true,
+      "fixed-repeat-fill-suffix-empty": true,
+      "fixed-repeat-fill-prefix-calc-constant": true,
+      "fixed-repeat-fit-prefix-empty": true,
+      "fixed-repeat-fit-prefix-occupied": true,
+      "fixed-repeat-row-fill-prefix-empty": true,
+      "fixed-repeat-row-fill-suffix-empty": true,
+      "fixed-repeat-row-fit-prefix-empty": true,
+      "fixed-repeat-row-fit-prefix-occupied": true
+    }
+  }
+}

@@ -1,0 +1,305 @@
+{
+  "currentHead": "2ec3a3031776a99ee05cd3271b05a5f051ac8bc3",
+  "baseRoot": "build/spinon/roadmap-code-status-sync-20261024-root-pass03-selected",
+  "selectedRoot": "build/spinon/c11-4-fixed-repeat-auto-repeat-root-selected",
+  "outputRoot": "build/spinon/c11-4-fixed-repeat-auto-repeat-site-selected",
+  "sourceFiles": [
+    "spec/public/roadmap.html",
+    "spec/STATUS.md",
+    "plan/c11-4-auto-repeat-fixed-repeat.md",
+    "plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.md",
+    "plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md",
+    "plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md",
+    "plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+    "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+    "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+    "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+    "tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html"
+  ],
+  "overlays": [
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 289988,
+      "sha256": "5b83d5ee73cb16fcedaf9e53f8f880845b6c34dc5dddfda511d06618bbf65548"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 289988,
+      "sha256": "5b83d5ee73cb16fcedaf9e53f8f880845b6c34dc5dddfda511d06618bbf65548"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 418774,
+      "sha256": "431fd428e1d8b5a502f46b01e51dca8fe81c89d9846f0e80b7eb407b9604c74c"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 418774,
+      "sha256": "431fd428e1d8b5a502f46b01e51dca8fe81c89d9846f0e80b7eb407b9604c74c"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "bytes": 11238,
+      "sha256": "8b16e0e77f4f28a5584fcc5bdd1d1b75b748d55d6263bb32865110318df7c6f5"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat.md",
+      "bytes": 11238,
+      "sha256": "8b16e0e77f4f28a5584fcc5bdd1d1b75b748d55d6263bb32865110318df7c6f5"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.md",
+      "bytes": 5499,
+      "sha256": "47c58884fe4d6923b9de547d24c1c4fcee5338bb9d60786384669a0caae5e3f5"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.md",
+      "bytes": 5499,
+      "sha256": "47c58884fe4d6923b9de547d24c1c4fcee5338bb9d60786384669a0caae5e3f5"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md",
+      "bytes": 5258,
+      "sha256": "cdc5eefc342a1dd6d73381584b0292aad43f8cf7adc98efff38c3e79b019a6b6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.md",
+      "bytes": 5258,
+      "sha256": "cdc5eefc342a1dd6d73381584b0292aad43f8cf7adc98efff38c3e79b019a6b6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md",
+      "bytes": 5860,
+      "sha256": "090e0b01576152d51a49992f508a5376c98ee178866b74ef296cbe7c5b8397e6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.md",
+      "bytes": 5860,
+      "sha256": "090e0b01576152d51a49992f508a5376c98ee178866b74ef296cbe7c5b8397e6"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md",
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md",
+      "bytes": 6401,
+      "sha256": "5126eaab9d85f4e86f96e0e82b030e6bdc2ec86391c7e626067c7eef66bc733d"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md",
+      "path": "spec/plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.md",
+      "bytes": 6401,
+      "sha256": "5126eaab9d85f4e86f96e0e82b030e6bdc2ec86391c7e626067c7eef66bc733d"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 124728,
+      "sha256": "86c395181af48d148bef4fbfcb69c472b20548bd54fa310496afbfc1dd7f26dc"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 124728,
+      "sha256": "86c395181af48d148bef4fbfcb69c472b20548bd54fa310496afbfc1dd7f26dc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md",
+      "bytes": 6003,
+      "sha256": "c44927b7e09c6c86d4870ea8dce4918dabc81df3490b405ffa74f479ba3f1ac7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md",
+      "bytes": 6003,
+      "sha256": "c44927b7e09c6c86d4870ea8dce4918dabc81df3490b405ffa74f479ba3f1ac7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 3513,
+      "sha256": "11389692dfd4564255cd652864f8b611f097bcaf93e7823022b4d99f4cdf9677"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 3513,
+      "sha256": "11389692dfd4564255cd652864f8b611f097bcaf93e7823022b4d99f4cdf9677"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+      "bytes": 1815,
+      "sha256": "dea7c545a779aca2e4786b1b43363c769936700e683cbcfb6b090db8301ef5cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+      "bytes": 1815,
+      "sha256": "dea7c545a779aca2e4786b1b43363c769936700e683cbcfb6b090db8301ef5cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+      "path": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 1934,
+      "sha256": "2693484004515ef345dce918466f2dd8cb11789a1227a80305820ae91456e2ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+      "bytes": 1934,
+      "sha256": "2693484004515ef345dce918466f2dd8cb11789a1227a80305820ae91456e2ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "bytes": 5086,
+      "sha256": "2d3f36970d0903cea02663949e35e560635e3a4f33d3777f9963cb366a96f678"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md",
+      "bytes": 5086,
+      "sha256": "2d3f36970d0903cea02663949e35e560635e3a4f33d3777f9963cb366a96f678"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.md",
+      "bytes": 1779,
+      "sha256": "06a396d11240f1deb6f0b1dfeb4d6f2d3933ef6dd7fa3d60f2979aa29d54d7f2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.md",
+      "bytes": 1779,
+      "sha256": "06a396d11240f1deb6f0b1dfeb4d6f2d3933ef6dd7fa3d60f2979aa29d54d7f2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "bytes": 4037,
+      "sha256": "a8fd9bd968bf8a36f4dd8dbe535779e16a98809394e4c2ae38d06952d620a050"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "bytes": 4037,
+      "sha256": "a8fd9bd968bf8a36f4dd8dbe535779e16a98809394e4c2ae38d06952d620a050"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.md",
+      "bytes": 4670,
+      "sha256": "10567f56c78a9829e829637ff69a61a44b3ebe27d69f40f3e343aa00303d72cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.md",
+      "bytes": 4670,
+      "sha256": "10567f56c78a9829e829637ff69a61a44b3ebe27d69f40f3e343aa00303d72cd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md",
+      "bytes": 1167,
+      "sha256": "214c552e85f8adcbaae638f4a87c4f12705746c8c6df0f7706c619c64ee844e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md",
+      "bytes": 1167,
+      "sha256": "214c552e85f8adcbaae638f4a87c4f12705746c8c6df0f7706c619c64ee844e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+      "bytes": 3544,
+      "sha256": "d4e155abc8aaf51ce20a7652be91a49f988a55f26c1c726f4711f80db532bf0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+      "bytes": 3544,
+      "sha256": "d4e155abc8aaf51ce20a7652be91a49f988a55f26c1c726f4711f80db532bf0c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+      "bytes": 14217,
+      "sha256": "65e8878d87f33e0af2668d45fc25fa5a6f91dfcdb3ab3723a9dc9d732db2778e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+      "bytes": 14217,
+      "sha256": "65e8878d87f33e0af2668d45fc25fa5a6f91dfcdb3ab3723a9dc9d732db2778e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+      "bytes": 1786,
+      "sha256": "98b665c91fb316205397b6bd01ce21dd1ff11fcab645bd38b690faf5b5d534eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+      "bytes": 1786,
+      "sha256": "98b665c91fb316205397b6bd01ce21dd1ff11fcab645bd38b690faf5b5d534eb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+      "bytes": 14516,
+      "sha256": "c017ef4e0962c88f3ca3fa218c61070a29f066fab4e2d572d87a3f72a5052aa3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+      "bytes": 14516,
+      "sha256": "c017ef4e0962c88f3ca3fa218c61070a29f066fab4e2d572d87a3f72a5052aa3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+      "path": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+      "bytes": 1616,
+      "sha256": "1d138fd9b04a3192e674b1375a289a534f517a9fdaa7733909baeda01f70d011"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+      "bytes": 1616,
+      "sha256": "1d138fd9b04a3192e674b1375a289a534f517a9fdaa7733909baeda01f70d011"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html",
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html",
+      "bytes": 7635,
+      "sha256": "7b4d4f1f1a6dcebda96ce0f184a4e141fedc92c232d639f198c1071614dcec59"
+    }
+  ],
+  "storageMethod": "hardlink prior selected tree; unlink overlay destinations before copying current source bytes",
+  "noDeletes": true
+}

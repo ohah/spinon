@@ -1,0 +1,287 @@
+{
+  "pass": "pass01",
+  "selected_build_relative": "build/spinon/c11-4-fixed-repeat-auto-repeat-site-selected",
+  "selected_route_count": 27,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01",
+  "source_bytes_total": 7685907,
+  "backup_bytes_total": 4990450,
+  "counts": {
+    "create": 12,
+    "replace": 10,
+    "same": 5
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 955599,
+      "source_sha256": "22b78ffc790680d2c0d2e3481bfef85b6d64cdec62df32aac6023ed5b64de180",
+      "target_exists": true,
+      "previous_bytes": 951081,
+      "previous_sha256": "09a7c842c96f195fcafd9a8450b4d71840ea9232cb92fdcaca4dc58f75cc1e80",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/STATUS.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.html",
+      "status": "replace",
+      "source_bytes": 464634,
+      "source_sha256": "ef859d13d3ce0afe4ef3e7d9540e71c236fb37177fa87880a2f03a77d738d5ce",
+      "target_exists": true,
+      "previous_bytes": 460081,
+      "previous_sha256": "bf2114d3994ead397ee6e1ff8249bad2fbe6d1a7e17d0ea836521c8c9abf4a71",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/plan/c11-4-auto-repeat-fixed-repeat.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.html",
+      "status": "replace",
+      "source_bytes": 455924,
+      "source_sha256": "8956fd47780a8ba80f9e1a4e82d5b23ff3bd6d63a77c110170c3bbf3a1a74a26",
+      "target_exists": true,
+      "previous_bytes": 452167,
+      "previous_sha256": "a6db437ce9b03e84ba8cef3051024d0eeacb4eb3943a36cc0380f5dee15beacf",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/plan/c11-4-auto-repeat-fixed-repeat-plan-review-20.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.html",
+      "status": "replace",
+      "source_bytes": 455819,
+      "source_sha256": "6d4855a528a13c50160c7680cc2ea48f8d765910e2805bc70cb677485d98679c",
+      "target_exists": true,
+      "previous_bytes": 452129,
+      "previous_sha256": "89783b8cb2c0f58897031b43948ca4ac844d6ddca5435859c853c9a60b089687",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/plan/c11-4-auto-repeat-fixed-repeat-revision-review-20.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.html",
+      "status": "replace",
+      "source_bytes": 456995,
+      "source_sha256": "5b76df36443c842ee9dcb3acb3d98f93dcf9de5a40ab7cf0c5d10dddfe33930e",
+      "target_exists": true,
+      "previous_bytes": 453238,
+      "previous_sha256": "6d8d57951014b7425d7b6843914f677f949ae74955cf57272764afcc29de35b1",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/plan/c11-4-auto-repeat-fixed-repeat-revision-pr-diff-review-30.html"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.html",
+      "status": "replace",
+      "source_bytes": 457278,
+      "source_sha256": "9d13f75b285ab950d03eabe1c1e9ccee5ff437789972f575b32cfc2ffa725311",
+      "target_exists": true,
+      "previous_bytes": 453521,
+      "previous_sha256": "dfe5be19e104e7019714607e2a1febfda67e950a5be09035eeeee4859e19f5ff",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/plan/c11-4-auto-repeat-fixed-repeat-pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "source_bytes": 618552,
+      "source_sha256": "c23f2b3a152f3af0286bfb7a5856e8ab18ac2ee51183359e6e1460c78509b011",
+      "target_exists": true,
+      "previous_bytes": 610918,
+      "previous_sha256": "8949e0d258b81170d5ac5980c43aad622a3cc2eb418c0494c61cf8c873178000",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.html",
+      "status": "replace",
+      "source_bytes": 458510,
+      "source_sha256": "cf4f3d1e6493f87f8d788730f2f9bc2f38af3d189a96168d31f88890e58b24de",
+      "target_exists": true,
+      "previous_bytes": 454753,
+      "previous_sha256": "ba7b7510fb41b9fbbde2da1d9c7859f88754b9fda9e98abdcdbfd8f3c97c2e74",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.html",
+      "status": "create",
+      "source_bytes": 456284,
+      "source_sha256": "f62ae1e9185ba0421426184148e84e96939984cab12cf3c8a768d07c31500c28",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/selected-docs-build-scope.html",
+      "status": "create",
+      "source_bytes": 451582,
+      "source_sha256": "4aec624bfbf226fc7d05975a65f0ab2af04cf104782cde0a28d13c59f8555486",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "status": "create",
+      "source_bytes": 460634,
+      "source_sha256": "416062235e468bb6dfbdcee36567e0a79dd5802f7436b9eb634505dfb154d505",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pr-diff-review-30.html",
+      "status": "create",
+      "source_bytes": 462529,
+      "source_sha256": "ea8ec072c82c7868d465cfb0eb7b9d52272332c8e1653ed2a8c4fa07a6e1cfa8",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.html",
+      "status": "create",
+      "source_bytes": 450056,
+      "source_sha256": "c454e50d2e82594ff1c9cbe4c5c1fa7bd589a7fbdb522a801633ce50294d5601",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "source_bytes": 289988,
+      "source_sha256": "5b83d5ee73cb16fcedaf9e53f8f880845b6c34dc5dddfda511d06618bbf65548",
+      "target_exists": true,
+      "previous_bytes": 289073,
+      "previous_sha256": "8f097d55b3e72cb1be9b68013c7a79868bc6078b187b29178dcb54675eb0c20e",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/roadmap.html"
+    },
+    {
+      "path": "STATUS.md",
+      "status": "replace",
+      "source_bytes": 418774,
+      "source_sha256": "431fd428e1d8b5a502f46b01e51dca8fe81c89d9846f0e80b7eb407b9604c74c",
+      "target_exists": true,
+      "previous_bytes": 413489,
+      "previous_sha256": "8889f2f6438a48916c1c9fce9d994c767243afea53322a8165b211c174f22fb4",
+      "backup_path": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass01/STATUS.md"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html",
+      "status": "same",
+      "source_bytes": 7635,
+      "source_sha256": "7b4d4f1f1a6dcebda96ce0f184a4e141fedc92c232d639f198c1071614dcec59",
+      "target_exists": true,
+      "previous_bytes": 7635,
+      "previous_sha256": "7b4d4f1f1a6dcebda96ce0f184a4e141fedc92c232d639f198c1071614dcec59",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json",
+      "status": "same",
+      "source_bytes": 3513,
+      "source_sha256": "11389692dfd4564255cd652864f8b611f097bcaf93e7823022b4d99f4cdf9677",
+      "target_exists": true,
+      "previous_bytes": 3513,
+      "previous_sha256": "11389692dfd4564255cd652864f8b611f097bcaf93e7823022b4d99f4cdf9677",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/stylo-computed-ast-observation.json",
+      "status": "same",
+      "source_bytes": 1815,
+      "source_sha256": "dea7c545a779aca2e4786b1b43363c769936700e683cbcfb6b090db8301ef5cd",
+      "target_exists": true,
+      "previous_bytes": 1815,
+      "previous_sha256": "dea7c545a779aca2e4786b1b43363c769936700e683cbcfb6b090db8301ef5cd",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/SHA256SUMS",
+      "status": "same",
+      "source_bytes": 1934,
+      "source_sha256": "2693484004515ef345dce918466f2dd8cb11789a1227a80305820ae91456e2ec",
+      "target_exists": true,
+      "previous_bytes": 1934,
+      "previous_sha256": "2693484004515ef345dce918466f2dd8cb11789a1227a80305820ae91456e2ec",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-fixed-repeat-auto-repeat.png",
+      "status": "same",
+      "source_bytes": 111509,
+      "source_sha256": "4ef459d0c585668611103ed2cccd5310ee2dec982f7960adedbe083e5270f378",
+      "target_exists": true,
+      "previous_bytes": 111509,
+      "previous_sha256": "4ef459d0c585668611103ed2cccd5310ee2dec982f7960adedbe083e5270f378",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.json",
+      "status": "create",
+      "source_bytes": 3544,
+      "source_sha256": "d4e155abc8aaf51ce20a7652be91a49f988a55f26c1c726f4711f80db532bf0c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/result.json",
+      "status": "create",
+      "source_bytes": 14217,
+      "source_sha256": "65e8878d87f33e0af2668d45fc25fa5a6f91dfcdb3ab3723a9dc9d732db2778e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/simulator.json",
+      "status": "create",
+      "source_bytes": 1786,
+      "source_sha256": "98b665c91fb316205397b6bd01ce21dd1ff11fcab645bd38b690faf5b5d534eb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/result.json",
+      "status": "create",
+      "source_bytes": 14516,
+      "source_sha256": "c017ef4e0962c88f3ca3fa218c61070a29f066fab4e2d572d87a3f72a5052aa3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/simulator.json",
+      "status": "create",
+      "source_bytes": 1616,
+      "source_sha256": "1d138fd9b04a3192e674b1375a289a534f517a9fdaa7733909baeda01f70d011",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/android-avd-c114-fixed-repeat-android-avd-20261024T083023372Z-aaa752b7/fixed-repeat-fit-prefix-occupied.png",
+      "status": "create",
+      "source_bytes": 77944,
+      "source_sha256": "f9b439dc41090692fba216e365f5c7c55ed56fd615ec7fdd620a98835e5eee4d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/ios-simulator-c114-fixed-repeat-ios-simulator-20261024T083117370Z-b1bedf35/fixed-repeat-fit-prefix-occupied.png",
+      "status": "create",
+      "source_bytes": 132720,
+      "source_sha256": "a97c5a49e0cff930499fcc5f0636bcedb39cd9b8535676ce288e4b6ec0fb0801",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ]
+}
