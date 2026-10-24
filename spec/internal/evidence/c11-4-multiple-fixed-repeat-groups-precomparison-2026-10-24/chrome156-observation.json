@@ -1,0 +1,154 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "scenes": [
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 37,
+        "y": 107.1875
+      },
+      "id": "groups-prefix-fill",
+      "items": [],
+      "templateColumns": "20px 20px 10px 10px 10px 30.7969px 30.7969px 30.7969px 30.7969px 30.7969px 16px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 473,
+        "y": 107.1875
+      },
+      "id": "groups-split-fill",
+      "items": [],
+      "templateColumns": "20px 20px 30.7969px 30.7969px 30.7969px 30.7969px 30.7969px 10px 10px 10px 16px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 37,
+        "y": 535.96875
+      },
+      "id": "groups-suffix-fill",
+      "items": [],
+      "templateColumns": "16px 30.7969px 30.7969px 30.7969px 30.7969px 30.7969px 20px 20px 10px 10px 10px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 473,
+        "y": 535.96875
+      },
+      "id": "groups-reversed-fill",
+      "items": [],
+      "templateColumns": "10px 10px 10px 30.7969px 30.7969px 30.7969px 30.7969px 30.7969px 20px 20px 16px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 37,
+        "y": 964.75
+      },
+      "id": "groups-multitrack-fill",
+      "items": [],
+      "templateColumns": "20px 12px 20px 12px 36.5px 36.5px 36.5px 36.5px 10px 10px 10px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 473,
+        "y": 964.75
+      },
+      "id": "groups-prefix-fit-empty",
+      "items": [],
+      "templateColumns": "20px 20px 10px 10px 10px 0px 0px 0px 0px 0px 16px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 320,
+        "x": 37,
+        "y": 1393.53125
+      },
+      "id": "groups-prefix-fit-occupied",
+      "items": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 110,
+          "y": 0
+        }
+      ],
+      "templateColumns": "20px 20px 10px 10px 10px 186px 0px 0px 0px 0px 16px",
+      "templateRows": "320px",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 80,
+        "x": 473,
+        "y": 1393.53125
+      },
+      "id": "row-groups-prefix-fill",
+      "items": [],
+      "templateColumns": "none",
+      "templateRows": "20px 20px 10px 10px 10px 30.7969px 30.7969px 30.7969px 30.7969px 30.7969px 16px",
+      "trackAxis": "rows"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 80,
+        "x": 37,
+        "y": 1822.3125
+      },
+      "id": "row-groups-split-fit-empty",
+      "items": [],
+      "templateColumns": "none",
+      "templateRows": "20px 20px 0px 0px 0px 0px 0px 10px 10px 10px 16px",
+      "trackAxis": "rows"
+    },
+    {
+      "grid": {
+        "height": 320,
+        "width": 80,
+        "x": 473,
+        "y": 1822.3125
+      },
+      "id": "row-groups-prefix-fit-occupied",
+      "items": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 0,
+          "y": 110
+        }
+      ],
+      "templateColumns": "80px",
+      "templateRows": "20px 20px 10px 10px 10px 186px 0px 0px 0px 0px 16px",
+      "trackAxis": "rows"
+    }
+  ],
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
