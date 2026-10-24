@@ -1,0 +1,638 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, sections 7.1, 7.2.3.1-2, 7.3.2",
+  "derivation": {
+    "autoRepeatCountFormula": "n * 20px + (n - 1) * 4px <= definite content size",
+    "countAt44px": 2,
+    "countAt76px": 3,
+    "gapPx": 4,
+    "fixedRepeatTrackPx": 20,
+    "autoRepeatTrackPx": 20,
+    "areaAddedTrackPx": 12,
+    "areaDefinitionDoesNotOccupyAutoFitTracks": true
+  },
+  "scenes": {
+    "fixed-cols-fill-rows-area-short": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        44,
+        76
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": [
+        0,
+        0,
+        20,
+        44
+      ],
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "."
+        ],
+        [
+          "hero",
+          "."
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          20,
+          44
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-cols-fill-rows-two-track-pattern": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 44,
+      "rootSizePx": [
+        84,
+        44
+      ],
+      "fixedRepeatPatternPx": [
+        16,
+        20
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          ".",
+          ".",
+          "."
+        ],
+        [
+          "hero",
+          ".",
+          ".",
+          "."
+        ]
+      ],
+      "columnsPx": [
+        16,
+        20,
+        16,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        4,
+        2
+      ],
+      "autoRepeatCount": 2,
+      "heroFramePx": [
+        0,
+        0,
+        16,
+        44
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          16,
+          44
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ],
+      "autoRepeatTrackIndices": [
+        0,
+        1
+      ]
+    },
+    "fixed-cols-fit-rows-one-row-occupied": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fit",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        44,
+        76
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        0,
+        0
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": [
+        0,
+        0,
+        20,
+        20
+      ],
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "empty"
+        ],
+        [
+          "other",
+          "empty"
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          20,
+          20
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-cols-fit-rows-empty-area": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fit",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        44,
+        76
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        0,
+        0,
+        0
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": null,
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "empty"
+        ],
+        [
+          "other",
+          "empty"
+        ]
+      ],
+      "childFramesPx": {},
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-cols-fit-rows-middle-collapsed-between-occupied": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fit",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        44,
+        76
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        0,
+        20
+      ],
+      "areaDimensionsTracks": [
+        2,
+        3
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": null,
+      "childFramesPx": {
+        "first": [
+          0,
+          0,
+          20,
+          20
+        ],
+        "last": [
+          0,
+          24,
+          20,
+          20
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "first",
+          "."
+        ],
+        [
+          "middle",
+          "."
+        ],
+        [
+          "last",
+          "."
+        ]
+      ],
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-cols-fill-rows-area-adds-two-rows": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        44,
+        76
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        20,
+        12,
+        12
+      ],
+      "areaDimensionsTracks": [
+        2,
+        5
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": [
+        0,
+        88,
+        44,
+        12
+      ],
+      "overflowPx": [
+        0,
+        24
+      ],
+      "areaMatrix": [
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "hero",
+          "hero"
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          88,
+          44,
+          12
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-cols-fill-rows-area-adds-one-row": {
+      "autoRepeatAxis": "rows",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 44,
+      "rootSizePx": [
+        44,
+        44
+      ],
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        12
+      ],
+      "areaDimensionsTracks": [
+        2,
+        3
+      ],
+      "autoRepeatCount": 2,
+      "heroFramePx": [
+        0,
+        48,
+        44,
+        12
+      ],
+      "overflowPx": [
+        0,
+        16
+      ],
+      "areaMatrix": [
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "empty",
+          "empty"
+        ],
+        [
+          "hero",
+          "hero"
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          48,
+          44,
+          12
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1
+      ]
+    },
+    "fixed-rows-fill-cols-shorthand-area-short": {
+      "autoRepeatAxis": "columns",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        76,
+        44
+      ],
+      "columnsPx": [
+        20,
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": [
+        0,
+        0,
+        44,
+        20
+      ],
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "hero"
+        ],
+        [
+          ".",
+          "."
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          44,
+          20
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-rows-fit-cols-two-track-span": {
+      "autoRepeatAxis": "columns",
+      "autoRepeatMode": "auto-fit",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        76,
+        44
+      ],
+      "columnsPx": [
+        20,
+        20,
+        0
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": [
+        0,
+        0,
+        44,
+        44
+      ],
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "hero"
+        ],
+        [
+          "hero",
+          "hero"
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          44,
+          44
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-rows-fit-cols-empty-area": {
+      "autoRepeatAxis": "columns",
+      "autoRepeatMode": "auto-fit",
+      "availableSizePx": 76,
+      "rootSizePx": [
+        76,
+        44
+      ],
+      "columnsPx": [
+        0,
+        0,
+        0
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        2,
+        2
+      ],
+      "autoRepeatCount": 3,
+      "heroFramePx": null,
+      "overflowPx": [
+        0,
+        0
+      ],
+      "areaMatrix": [
+        [
+          "hero",
+          "hero"
+        ],
+        [
+          "hero",
+          "hero"
+        ]
+      ],
+      "childFramesPx": {},
+      "autoRepeatTrackIndices": [
+        0,
+        1,
+        2
+      ]
+    },
+    "fixed-rows-fill-cols-area-adds-one-column": {
+      "autoRepeatAxis": "columns",
+      "autoRepeatMode": "auto-fill",
+      "availableSizePx": 44,
+      "rootSizePx": [
+        44,
+        44
+      ],
+      "columnsPx": [
+        20,
+        20,
+        12
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areaDimensionsTracks": [
+        3,
+        2
+      ],
+      "autoRepeatCount": 2,
+      "heroFramePx": [
+        48,
+        24,
+        12,
+        20
+      ],
+      "overflowPx": [
+        16,
+        0
+      ],
+      "areaMatrix": [
+        [
+          ".",
+          ".",
+          "."
+        ],
+        [
+          ".",
+          ".",
+          "hero"
+        ]
+      ],
+      "childFramesPx": {
+        "hero": [
+          48,
+          24,
+          12,
+          20
+        ]
+      },
+      "autoRepeatTrackIndices": [
+        0,
+        1
+      ]
+    }
+  }
+}

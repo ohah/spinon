@@ -1,0 +1,62 @@
+{
+  "capturedAtUtc": "2026-10-24T17:13:52Z",
+  "host": {
+    "os": "macOS 26.5.1",
+    "build": "25F80",
+    "architecture": "arm64"
+  },
+  "agentBrowser": {
+    "version": "0.31.1",
+    "session": "spinon-c11-cross-axis-precompare-final-20261025",
+    "url": "http://127.0.0.1:48764/tests/fixtures/css/c11/grid-cross-axis-fixed-auto-repeat-template-areas-c114.html"
+  },
+  "browser": {
+    "version": "Chrome/156.0.8078.48",
+    "protocolVersion": "1.3",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "v8Version": "15.6.75.19",
+    "webkitRevision": "d0c02bfad08ec92a6ffcf989e53cd995e6381a4c",
+    "viewport": [
+      1280,
+      633
+    ],
+    "devicePixelRatio": 1
+  },
+  "commands": [
+    "python3 -m http.server 48764 --bind 127.0.0.1 --directory /Users/yoonhb/Documents/workspace/spinon",
+    "agent-browser --session spinon-c11-cross-axis-precompare-final-20261025 open http://127.0.0.1:48764/tests/fixtures/css/c11/grid-cross-axis-fixed-auto-repeat-template-areas-c114.html",
+    "cat spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/capture-observation.js | agent-browser --session spinon-c11-cross-axis-precompare-final-20261025 eval --stdin | python3 -c ... > spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-observation.json",
+    "agent-browser --session spinon-c11-cross-axis-precompare-final-20261025 screenshot --full spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+    "python3 spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/validate-comparison.py",
+    "agent-browser --session spinon-c11-cross-axis-precompare-final-20261025 close",
+    "stop the HTTP server with Ctrl-C",
+    "agent-browser session list --json",
+    "ps -Ao pid=,ppid=,command= | rg 'agent-browser|HeadlessChrome|--headless|--remote-debugging-port'",
+    "lsof -nP -iTCP:48764 -sTCP:LISTEN"
+  ],
+  "cleanup": {
+    "agentBrowserSessionClosed": true,
+    "remainingAgentBrowserSessions": [],
+    "localHttpServerStopped": true,
+    "verification": {
+      "sessionList": "sessions: []",
+      "httpServerListener": false,
+      "agentBrowserOrHeadlessProcessArguments": "no matching process other than the verification shell and rg",
+      "unrelatedGoogleChromeProcess": "left running"
+    },
+    "agentBrowserDaemonStopped": true,
+    "headlessChromeProcessStopped": true,
+    "otherChromeProcessesLeftUntouched": true,
+    "cleanupVerifiedAtUtc": "2026-10-24T17:32:46Z"
+  },
+  "sha256": {
+    "fixture": "a4285dc7752f4fdc9b1b145d47302c149faca259776736db625a4959e3eb6032",
+    "expectedValues": "22e906e50e675b56e35c1a759279edf9f69195c276160afeb377df309e5bef94",
+    "browserObservation": "5c0127a24e9f830fe8f52230fcdbbcb7585ed153036967c416d9988930791b0c",
+    "screenshot": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+    "validator": "65497d089f558c75897c56c7050cd9749e7044834ef03565e733187957e99a7b",
+    "browserCaptureCode": "185f95b09e5d7998d5395346aaf054b56aa7b9235942d6f28b9f657c98ed124c",
+    "comparisonValidation": "29087a8cab40c381fdccc5e8c3aea780ecc0ab765d40495b80dd9afe18296c43",
+    "plan": "47792af5adbba4d3ff430558febff080481e2a774fbb5b1b96efaf8b257e6782"
+  }
+}
