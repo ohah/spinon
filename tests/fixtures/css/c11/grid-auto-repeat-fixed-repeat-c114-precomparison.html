@@ -126,6 +126,17 @@
       </section>
 
       <section class="scene">
+        <h2>absolute calc() fixed track · auto-fill · empty</h2>
+        <div
+          class="grid"
+          id="fill-prefix-calc-constant"
+          style="grid-template-columns: repeat(2, calc(20px) 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px"
+        ></div>
+        <code>repeat(2, calc(20px) 10px) repeat(auto-fill, minmax(32px, 1fr)) 16px</code>
+        <output id="result-fill-prefix-calc-constant"></output>
+      </section>
+
+      <section class="scene">
         <h2>fixed-repeat prefix · auto-fit · empty</h2>
         <div
           class="grid"

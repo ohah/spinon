@@ -4,130 +4,148 @@
     "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
     "os": "macOS 26.5.1 arm64",
     "viewportCssPx": {
-      "width": 1280,
-      "height": 633
+      "height": 633,
+      "width": 1280
     },
     "devicePixelRatio": 1
   },
   "input": {
     "path": "tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html",
-    "sha256": "8b892b911977952677808770b683ce75c99aa72799a33100042051391dc79408"
+    "sha256": "7b4d4f1f1a6dcebda96ce0f184a4e141fedc92c232d639f198c1071614dcec59"
   },
   "cssSupportsPrefixFixedRepeatAndAutoFill": true,
+  "cssSupportsCalcFixedRepeat": true,
   "cases": [
     {
+      "grid": {
+        "height": 80,
+        "width": 200,
+        "x": 37,
+        "y": 107.1875
+      },
       "id": "fill-prefix-empty",
+      "items": [],
       "templateColumns": "20px 10px 20px 10px 38px 38px 16px",
       "templateRows": "none",
-      "grid": {
-        "x": 37,
-        "y": 107.1875,
-        "width": 200,
-        "height": 80
-      },
-      "items": []
+      "trackAxis": "columns"
     },
     {
+      "grid": {
+        "height": 80,
+        "width": 200,
+        "x": 473,
+        "y": 107.1875
+      },
       "id": "fill-suffix-empty",
+      "items": [],
       "templateColumns": "16px 38px 38px 20px 10px 20px 10px",
       "templateRows": "none",
-      "grid": {
-        "x": 473,
-        "y": 107.1875,
-        "width": 200,
-        "height": 80
-      },
-      "items": []
+      "trackAxis": "columns"
     },
     {
+      "grid": {
+        "height": 80,
+        "width": 200,
+        "x": 37,
+        "y": 295.96875
+      },
+      "id": "fill-prefix-calc-constant",
+      "items": [],
+      "templateColumns": "20px 10px 20px 10px 38px 38px 16px",
+      "templateRows": "none",
+      "trackAxis": "columns"
+    },
+    {
+      "grid": {
+        "height": 80,
+        "width": 200,
+        "x": 473,
+        "y": 295.96875
+      },
       "id": "fit-prefix-empty",
+      "items": [],
       "templateColumns": "20px 10px 20px 10px 0px 0px 16px",
       "templateRows": "none",
-      "grid": {
-        "x": 37,
-        "y": 291.96875,
-        "width": 200,
-        "height": 80
-      },
-      "items": []
+      "trackAxis": "columns"
     },
     {
+      "grid": {
+        "height": 80,
+        "width": 200,
+        "x": 37,
+        "y": 484.75
+      },
       "id": "fit-prefix-occupied",
+      "items": [
+        {
+          "height": 10,
+          "width": 10,
+          "x": 92,
+          "y": 0
+        }
+      ],
       "templateColumns": "20px 10px 20px 10px 84px 0px 16px",
       "templateRows": "80px",
-      "grid": {
-        "x": 473,
-        "y": 291.96875,
-        "width": 200,
-        "height": 80
-      },
-      "items": [
-        {
-          "x": 92,
-          "y": 0,
-          "width": 10,
-          "height": 10
-        }
-      ]
+      "trackAxis": "columns"
     },
     {
+      "grid": {
+        "height": 200,
+        "width": 80,
+        "x": 473,
+        "y": 484.75
+      },
       "id": "row-fill-prefix-empty",
-      "trackAxis": "rows",
+      "items": [],
       "templateColumns": "none",
       "templateRows": "20px 10px 20px 10px 38px 38px 16px",
-      "grid": {
-        "x": 37,
-        "y": 484.75,
-        "width": 80,
-        "height": 200
-      },
-      "items": []
+      "trackAxis": "rows"
     },
     {
+      "grid": {
+        "height": 200,
+        "width": 80,
+        "x": 37,
+        "y": 793.53125
+      },
       "id": "row-fill-suffix-empty",
-      "trackAxis": "rows",
+      "items": [],
       "templateColumns": "none",
       "templateRows": "16px 38px 38px 20px 10px 20px 10px",
-      "grid": {
-        "x": 473,
-        "y": 484.75,
-        "width": 80,
-        "height": 200
-      },
-      "items": []
+      "trackAxis": "rows"
     },
     {
+      "grid": {
+        "height": 200,
+        "width": 80,
+        "x": 473,
+        "y": 793.53125
+      },
       "id": "row-fit-prefix-empty",
-      "trackAxis": "rows",
+      "items": [],
       "templateColumns": "none",
       "templateRows": "20px 10px 20px 10px 0px 0px 16px",
-      "grid": {
-        "x": 37,
-        "y": 793.53125,
-        "width": 80,
-        "height": 200
-      },
-      "items": []
+      "trackAxis": "rows"
     },
     {
-      "id": "row-fit-prefix-occupied",
-      "trackAxis": "rows",
-      "templateColumns": "80px",
-      "templateRows": "20px 10px 20px 10px 84px 0px 16px",
       "grid": {
-        "x": 473,
-        "y": 793.53125,
+        "height": 200,
         "width": 80,
-        "height": 200
+        "x": 37,
+        "y": 1102.3125
       },
+      "id": "row-fit-prefix-occupied",
       "items": [
         {
-          "x": 0,
-          "y": 92,
+          "height": 10,
           "width": 10,
-          "height": 10
+          "x": 0,
+          "y": 92
         }
-      ]
+      ],
+      "templateColumns": "80px",
+      "templateRows": "20px 10px 20px 10px 84px 0px 16px",
+      "trackAxis": "rows"
     }
   ]
 }
