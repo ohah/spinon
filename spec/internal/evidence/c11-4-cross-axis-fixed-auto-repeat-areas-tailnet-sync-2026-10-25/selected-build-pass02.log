@@ -1,0 +1,50 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 84 ms.
+ready   built in 0.65s (node)
+ready   built in 0.65s (web)
+
+File (web)                                                                                                                                                                           Size        Gzip   
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/i.25208e7c92.js                                                                       0.10 kB     0.09 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/styles.2da0941fcb.js                                                                        0.47 kB     0.23 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/icon.svg                                                                                              0.64 kB     0.42 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-4b41de5230e1.5ff94a60ea.js                                                      8.7 kB      3.2 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-51ab1095d094.281006880c.js                                                      10.2 kB     3.4 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-f6cb40c81815.bbe6779ee9.js                                                      10.5 kB     3.4 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-679702f95cc8.e5b4c2d3eb.js                                                      11.4 kB     4.3 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-b1a58579b194.7df956b709.js                                                      13.4 kB     4.7 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-5d8db36674b4.78df682f2b.js                                                      13.9 kB     5.2 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-cf0d2d46feb7.92537f11d5.js                                                      17.6 kB     5.5 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-1a0e60ea02b7.2263dddde5.js                                                      25.9 kB     7.2 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/index.a5bf3c388c.js                                                                         35.4 kB     11.7 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/lib-router.1e14e568cb.js                                                                    35.4 kB     12.7 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/css/styles.8d918fd78e.css                                                                      74.0 kB     14.2 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.3dc15c1822.png            77.0 kB  
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.7928c80454.png   77.8 kB  
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.8de1729981.png            132.0 kB 
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.fbb279a716.png   132.2 kB 
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-c4dae6800800.784bc40d42.js                                                      199.4 kB    47.3 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/a.877e354479.js                                                                             217.1 kB    72.0 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/lib-react.9cdf8f49ce.js                                                                     218.4 kB    68.8 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/search_index.ko.e1980361.json                                                                  527.0 kB    160.4 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/static/js/async/route-6c33a3943990.28980bc5f2.js                                                      575.9 kB    126.5 kB
+
+                                                                                                                                                                            Total:   2414.4 kB   970.3 kB
+
+File (node)                                                                                                                                                                                              Size        Gzip   
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/404.html                                                                                                                  8.5 kB      2.6 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html                           25.9 kB     6.5 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html                                                 27.1 kB     6.6 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html   27.2 kB     6.7 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html                                 29.2 kB     7.4 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html                                                         29.5 kB     7.9 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html                      32.2 kB     8.5 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html       32.8 kB     8.6 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/plan/c11-4-cross-axis-fixed-auto-repeat-areas.html                                                                        40.2 kB     10.2 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/internal/0059-c11-grid-layout.html                                                                                        208.7 kB    50.3 kB
+../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02/STATUS.html                                                                                                               539.3 kB    127.8 kB
+
+                                                                                                                                                                                                Total:   1000.4 kB   243.0 kB
+

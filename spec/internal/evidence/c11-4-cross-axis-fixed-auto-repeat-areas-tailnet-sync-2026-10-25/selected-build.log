@@ -1,0 +1,138 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+error   build failed in 0.55s (node)
+error   build failed in 0.69s (web)
+error   Build errors: 
+× [rsbuild:html] Failed to read the favicon file at /Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/public/icon.svg.
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:3:1-176
+  × Module not found: Can't resolve './android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+   · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:4:1-180
+  × Module not found: Can't resolve './ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+   · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:5:1-185
+  × Module not found: Can't resolve './android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[5:0]
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 7 │ function _createMdxContent(props) {
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:6:1-189
+  × Module not found: Can't resolve './ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[6:0]
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 7 │ function _createMdxContent(props) {
+ 8 │     const _components = {
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:3:1-176
+  × Module not found: Can't resolve './android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[3:0]
+ 1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+   · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:4:1-180
+  × Module not found: Can't resolve './ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[4:0]
+ 2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+   · ───────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:5:1-185
+  × Module not found: Can't resolve './android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[5:0]
+ 3 │ import image0 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 7 │ function _createMdxContent(props) {
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+File: ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md:6:1-189
+  × Module not found: Can't resolve './ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25'
+   ╭─[6:0]
+ 4 │ import image1 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png";
+ 5 │ import image2 from "./android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+ 6 │ import image3 from "./ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png";
+   · ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+ 7 │ function _createMdxContent(props) {
+ 8 │     const _components = {
+   ╰────
+Import traces (entry → error):
+  ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+  ./.rspress/runtime/virtual-routes.js
+  ../../build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md ×
+
+error   Rspack build failed.
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+    at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+    at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36

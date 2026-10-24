@@ -1,0 +1,421 @@
+{
+  "remote_origin": "https://macstudio.tailed42f2.ts.net",
+  "remote_path_prefix": "/spinon/",
+  "documentRouteCount": 18,
+  "rspressStaticAssetCount": 25,
+  "distinctPreviewRouteCount": 43,
+  "local_targets_verified": 43,
+  "remote_http_200_and_hash_verified": 43,
+  "historical_replacement_backups_verified": 10,
+  "all_targets_verified": true,
+  "all_backups_verified": true,
+  "no_deletes": true,
+  "targets": [
+    {
+      "path": "roadmap.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 304213,
+      "sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "kind": "document-or-direct-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "kind": "document-or-direct-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 539273,
+      "sha256": "50749185bc20f245ab24b598de07f3df5e023bad03dd5d6afb64e5396cdddc46",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 40180,
+      "sha256": "4ab6c907b1053431160f6b3f2722fe70a5c6c29dafa37279255dd392f548c6b4",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 29455,
+      "sha256": "237f5684539f07151379f7e428233e6c12b5abacf238104473d97b138dfdf9a1",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 27063,
+      "sha256": "dbc48fd07e3fdfe7f6398956183bb827a6388b50afb073d722f9b2336179dac6",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 208690,
+      "sha256": "eb550aeb489f0986a2642a17763581cbb847ab42ceeb54b0a2e0cb555d60e638",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 25869,
+      "sha256": "f5aeeb7630baa2c3a855071399ccd366ea58572baae7927ac90c46ebdf165e66",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 65581,
+      "sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 29226,
+      "sha256": "0b48ce79b58a659bb70eb29b7f47611d3ce7d02abfc5c56094f77ef966cafdd8",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 32787,
+      "sha256": "3e68188374928e5f11d45e4992df4e08bb159c801f0ed63d152a884cfa23f447",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 32185,
+      "sha256": "aa0e04c4fb734065cf1e6ee58f15d222dc415086c58df1e6619834fb480373b6",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html",
+      "kind": "document-or-direct-asset",
+      "bytes": 26856,
+      "sha256": "bf56c9cfc753ab5a79b58621a5585421322a1a913e307546c219c306f3a55bc4",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "kind": "document-or-direct-asset",
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "kind": "rspress-static-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.7928c80454.png",
+      "kind": "rspress-static-asset",
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.fbb279a716.png",
+      "kind": "rspress-static-asset",
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.3dc15c1822.png",
+      "kind": "rspress-static-asset",
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.8de1729981.png",
+      "kind": "rspress-static-asset",
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "kind": "rspress-static-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "kind": "rspress-static-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-1a0e60ea02b7.b25dd3b449.js",
+      "kind": "rspress-static-asset",
+      "bytes": 25862,
+      "sha256": "1327151aa817412f69d5075ed0c1c4e5f20ca089502f44231c915be59300a409",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-4b41de5230e1.169e9edca2.js",
+      "kind": "rspress-static-asset",
+      "bytes": 8741,
+      "sha256": "c899ce6662dbd2b7060681dea6734981f0046e69a7daf13104f6487153eaa0fc",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-51ab1095d094.ff94ea471e.js",
+      "kind": "rspress-static-asset",
+      "bytes": 9333,
+      "sha256": "e14c77bcdc0d3a1fe478c36f9acef38ae0783ede9e9f18400f64241a92ad2ed2",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5d8db36674b4.b0a1e50b9d.js",
+      "kind": "rspress-static-asset",
+      "bytes": 13921,
+      "sha256": "59256a38e3b668a5b163cdce228334b81b92212f877a4f90705ca6ad52f1043e",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-679702f95cc8.7c04330a9c.js",
+      "kind": "rspress-static-asset",
+      "bytes": 11439,
+      "sha256": "473011976ed94ca9cbe571ccf5c0df4132955354f5386e003538b84f9180797f",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.22d983b8fc.js",
+      "kind": "rspress-static-asset",
+      "bytes": 575943,
+      "sha256": "d29a38c2b610bf56a44ec24a2fbc552cce793a25d5d6ba9a609475bd104daf24",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b1a58579b194.9a6a1a0876.js",
+      "kind": "rspress-static-asset",
+      "bytes": 13446,
+      "sha256": "8f207b9ae98c40a43abb7e0465fb9257516ff1d742ee93238e03690bdfff44ec",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.1b14d00836.js",
+      "kind": "rspress-static-asset",
+      "bytes": 199378,
+      "sha256": "28dfd4c7cab889d147ce9c22e86c4360fe0340ef154877bbc3d3958c3a9f77fa",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-cf0d2d46feb7.3ba3560594.js",
+      "kind": "rspress-static-asset",
+      "bytes": 17579,
+      "sha256": "5bb34319619b6a4f3eacb9e60e2d476b4cbe1a2928ad36efa2e1182118dee51e",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f6cb40c81815.f2d813592f.js",
+      "kind": "rspress-static-asset",
+      "bytes": 10514,
+      "sha256": "f503b827a9c2a9bdefebed1ec8b00f925b036e8f4b3d1d1066c5d1b29567ca00",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/index.e04f0a1e49.js",
+      "kind": "rspress-static-asset",
+      "bytes": 35375,
+      "sha256": "f93fc76157e49e2096237d227a4046f13911d672a4fca6496ae0e1ff018d3600",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "kind": "rspress-static-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "kind": "rspress-static-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "rspress-static-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "kind": "rspress-static-asset",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "http_status": 200,
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.48daffd0.json",
+      "kind": "rspress-static-asset",
+      "bytes": 527012,
+      "sha256": "48daffd076d3632684a398a7a8415334c0ff6902c74e5154e342b0708d7c7954",
+      "http_status": 200,
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "STATUS.html",
+      "bytes": 539273,
+      "sha256": "7594a78880e89924ebb11d9bb1da4bc795ac3c54c410bc71fda219ebd743bfa5",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.html",
+      "bytes": 40180,
+      "sha256": "26e0adcb64981dee4e3f2545985cc0ac1dd4a9b86b5ba881273b4508249210a8",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html",
+      "bytes": 29455,
+      "sha256": "f68a659bd6065a618b8229c1f3d2956a30a296ce41a882fb5650c1b3e06f713c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html",
+      "bytes": 27063,
+      "sha256": "8d28c019282ad8cb0e8f34d217a13c9774c5479f76b87310a9b67f847d6b6705",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 208690,
+      "sha256": "47d18bbb148b0e99481fbbc3680b57c8827ff6f8de76fb72ef22b3b62c3eebbb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html",
+      "bytes": 25869,
+      "sha256": "c276cd3fffc1ffe7ad8a2f7d265d4486ce15d9645d7172d0122daf28e95e45bb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html",
+      "bytes": 29226,
+      "sha256": "08583ce7617964a818d92c01a11172aa83e09baac5a8534ca0be7cc41b6bdf97",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 32787,
+      "sha256": "5e6082f1aea514129641c4bafe36e68b3e2e5a78553d6f417b0439e0153a5f2c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html",
+      "bytes": 32185,
+      "sha256": "931d9895c0f704809af36a07c8ce1e6ccc0799b1041233d90f3d4332ed20150c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html",
+      "bytes": 27178,
+      "sha256": "5b0e74191793438544e58051b710469d56470f13d3546cd21f89979b2da0f4aa",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,265 @@
+{
+  "selected_route_count": 18,
+  "local_targets_verified": 18,
+  "backups_verified": 3,
+  "remote_targets_verified": 18,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local_targets": [
+    {
+      "path": "roadmap.html",
+      "bytes": 304213,
+      "sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 539273,
+      "sha256": "7594a78880e89924ebb11d9bb1da4bc795ac3c54c410bc71fda219ebd743bfa5",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.html",
+      "bytes": 40180,
+      "sha256": "26e0adcb64981dee4e3f2545985cc0ac1dd4a9b86b5ba881273b4508249210a8",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html",
+      "bytes": 29455,
+      "sha256": "f68a659bd6065a618b8229c1f3d2956a30a296ce41a882fb5650c1b3e06f713c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html",
+      "bytes": 27063,
+      "sha256": "8d28c019282ad8cb0e8f34d217a13c9774c5479f76b87310a9b67f847d6b6705",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 208690,
+      "sha256": "47d18bbb148b0e99481fbbc3680b57c8827ff6f8de76fb72ef22b3b62c3eebbb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html",
+      "bytes": 25869,
+      "sha256": "c276cd3fffc1ffe7ad8a2f7d265d4486ce15d9645d7172d0122daf28e95e45bb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "bytes": 65581,
+      "sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html",
+      "bytes": 29226,
+      "sha256": "08583ce7617964a818d92c01a11172aa83e09baac5a8534ca0be7cc41b6bdf97",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 32787,
+      "sha256": "5e6082f1aea514129641c4bafe36e68b3e2e5a78553d6f417b0439e0153a5f2c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html",
+      "bytes": 32185,
+      "sha256": "931d9895c0f704809af36a07c8ce1e6ccc0799b1041233d90f3d4332ed20150c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html",
+      "bytes": 27178,
+      "sha256": "5b0e74191793438544e58051b710469d56470f13d3546cd21f89979b2da0f4aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass01/roadmap.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass01/STATUS.html",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass01/internal/0059-c11-grid-layout.html",
+      "verified": true
+    }
+  ],
+  "remote_targets": [
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 304213,
+      "sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78",
+      "verified": true
+    },
+    {
+      "path": "icon.svg",
+      "http_status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "http_status": 200,
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 539273,
+      "sha256": "7594a78880e89924ebb11d9bb1da4bc795ac3c54c410bc71fda219ebd743bfa5",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.html",
+      "http_status": 200,
+      "bytes": 40180,
+      "sha256": "26e0adcb64981dee4e3f2545985cc0ac1dd4a9b86b5ba881273b4508249210a8",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 29455,
+      "sha256": "f68a659bd6065a618b8229c1f3d2956a30a296ce41a882fb5650c1b3e06f713c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 27063,
+      "sha256": "8d28c019282ad8cb0e8f34d217a13c9774c5479f76b87310a9b67f847d6b6705",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 208690,
+      "sha256": "47d18bbb148b0e99481fbbc3680b57c8827ff6f8de76fb72ef22b3b62c3eebbb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 25869,
+      "sha256": "c276cd3fffc1ffe7ad8a2f7d265d4486ce15d9645d7172d0122daf28e95e45bb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "http_status": 200,
+      "bytes": 65581,
+      "sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 29226,
+      "sha256": "08583ce7617964a818d92c01a11172aa83e09baac5a8534ca0be7cc41b6bdf97",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 32787,
+      "sha256": "5e6082f1aea514129641c4bafe36e68b3e2e5a78553d6f417b0439e0153a5f2c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 32185,
+      "sha256": "931d9895c0f704809af36a07c8ce1e6ccc0799b1041233d90f3d4332ed20150c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 27178,
+      "sha256": "5b0e74191793438544e58051b710469d56470f13d3546cd21f89979b2da0f4aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "http_status": 200,
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "http_status": 200,
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "http_status": 200,
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "http_status": 200,
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "verified": true
+    }
+  ]
+}
