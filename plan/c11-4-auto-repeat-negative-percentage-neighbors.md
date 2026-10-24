@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [calc 이웃 선행 구현](./c11-4-auto-repeat-calc-neighbors.md) · [percentage 이웃 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**현재 단계:** 계획 PR [#584](https://github.com/ohah/spinon/pull/584)은 2026-10-24 05:41:39 UTC에 Rebase and merge되어 `411bda24e2525b55d48a6c14ec484aec6ef8e97a`에 병합됐다. 구현 PR [#585](https://github.com/ohah/spinon/pull/585)은 제한 구현·계약·실행 근거와 화면을 포함해 제출했다. exact 2-term signed percentage subset, 신규 9 scene과 회귀 2 scene은 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 11/11 통과했고 PixelCopy/Metal 표본은 각 22/22 exact다. 기본/fixture-test FFI archive 경계도 각각 negative/positive control로 확인했다. C11.4와 공식 완료 집계 `72/213`은 미완료 상태다.
+**현재 단계:** 계획 PR [#584](https://github.com/ohah/spinon/pull/584)은 2026-10-24 05:41:39 UTC에 Rebase and merge되어 `411bda24e2525b55d48a6c14ec484aec6ef8e97a`에 병합됐다. 구현 PR [#585](https://github.com/ohah/spinon/pull/585)은 2026-10-24 06:25:51 UTC에 Rebase and merge되어 `e42b1573e710c0c36e9c507790902d4a35a53121`에 병합됐다. `gh pr checks 585 --required`는 이 브랜치에 보고된 check이 없다고 반환했다. exact 2-term signed percentage subset, 신규 9 scene과 회귀 2 scene은 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 11/11 통과했고 PixelCopy/Metal 표본은 각 22/22 exact다. 기본/fixture-test FFI archive 경계도 각각 negative/positive control로 확인했다. C11.4와 공식 완료 집계 `72/213`은 미완료 상태다.
 
 ## 기존 결손과 목표
 

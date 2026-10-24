@@ -3,10 +3,10 @@
     "/opt/homebrew/opt/llvm@22/bin/llvm-nm"
   ],
   "sourceRevision": "411bda24e2525b55d48a6c14ec484aec6ef8e97a",
-  "sourceDiffSha256": "592dc1708ae26f431c3bb138eb67c29e31d00af23ffba5a8ef913d37a53c294b",
+  "sourceDiffSha256": "0da016e4b91d74ce98e65e284f95bf2b547709f6d4c1dbc102eee0d03f6644ca",
   "sourceManifest": {
     "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/source-manifest.json",
-    "sha256": "93b27385394bea51c9df24a6959f91a0870f23c15b9c570ef7ae2586b94fd505"
+    "sha256": "d4f2775367c4ac8e2874fec00d42e21f017d0a7ed4bd08c136cfdf6e98ae5787"
   },
   "sceneCount": 9,
   "sceneIds": [
