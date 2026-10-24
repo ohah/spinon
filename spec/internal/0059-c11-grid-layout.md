@@ -399,7 +399,9 @@ Vendored Taffy는 repetition count 산정에서 반복 그룹의 각 track contr
 
 전체 C11.4, 일반 CSS admission, WPT, 실기기·hardware GPU 및 compositor 이후 pixel equality는 미검증이다. 내부 계약 숫자 `0.1.0`, C11.4 checkbox 및 공식 `72/213`을 유지한다. [PR diff 실패 관점 30개](./evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/pr-diff-review-30.md).
 
-## C11.4 fixed-repeat + auto-repeat 혼합 · 제한 runtime slice
+## C11.4 fixed-repeat + auto-repeat 혼합 · 단일 fixed-repeat 이전 slice
+
+이 절은 구현 PR #591 시점의 한 fixed-repeat 그룹 profile을 기록한다. 두 fixed-repeat 그룹을 허용하는 후속 profile은 바로 아래 절에 둔다.
 
 이 변경은 기존 `RuntimeBlockFlexGridTrackSizingV1` 경로의 computed track-list adapter에서 한 축, 한 list의 혼합 repeat만 제한적으로 허용한다. 해당 list에는 auto-fill 또는 auto-fit 하나, 양의 integer count인 fixed-repeat 하나, ordinary track을 둘 수 있다. fixed-repeat은 auto-repeat 앞이나 뒤에 놓이고 pattern은 1–2개 track이다. fixed-repeat의 computed 각 breadth는 finite nonnegative `LengthPx`여야 한다. Stylo가 `calc(20px)`이나 absolute unit을 같은 `LengthPx`로 정규화하면 accepted computed value와 동일하게 처리한다. authored spelling은 computed AST에서 복구하지 않는다.
 
@@ -410,3 +412,13 @@ Adapter는 integer-repeat pattern을 authored order로 펼치고 stored track li
 기능 검증은 opt-in C04 runtime GPU fixture-test build에 한정한다. 9개의 고정 Chrome 156 comparison scene에서 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 각각 frame·track/collapse·trace·draw/present 9/9를 통과했다. Android PixelCopy와 compositor 제출 전 iOS Metal drawable 표본은 각각 11/11 RGBA exact다. 기본 Debug APK 및 iOS Simulator app bundle에서 새 scene marker 9개가 모두 없고 opt-in positive controls에는 모두 들어 있음을 확인했다. AVD는 software renderer이며 이 자료는 일반 CSS admission, WPT, Release APK/IPA 제외, Android hardware GPU, iOS real device/compositor 이후 pixels 또는 전체 C11.4를 증명하지 않는다.
 
 실행 상세는 [focused plan](../../plan/c11-4-auto-repeat-fixed-repeat.md), [runtime evidence](./evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.md), [artifact boundary](./evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/artifact-boundary.md) 및 [implementation/runtime review 20](./evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/implementation-runtime-review-20.md)에 있다. 내부 숫자 버전 `0.1.0`과 공식 C11.4 checkbox/`72/213`은 유지한다.
+
+## C11.4 fixed-repeat 두 그룹 + auto-repeat · 제한 runtime slice
+
+후속 `RuntimeBlockFlexGridTrackSizingV1` computed track-list adapter는 단일 axis/list에서 하나의 `auto-fill` 또는 `auto-fit`과 최대 두 integer fixed-repeat group을 authored order로 확장한다. 각 fixed group은 positive integer count와 1–2개의 computed finite nonnegative `LengthPx` pattern을 가져야 한다. 두 fixed group은 auto-repeat 앞, 뒤 또는 auto-repeat 양쪽에 둘 수 있다. 하나의 list에 auto-repeat이 두 개 있거나 fixed-repeat이 세 개 이상이면 node와 `grid-template-*` property를 포함한 unsupported-value 오류로 거부한다.
+
+각 fixed group의 outer/fixed line-name metadata와 auto-repeat 내부 line names는 허용하지 않는다. percentage/unresolved `Calc`, flex·intrinsic breadth, `minmax()` fixed pattern, nested repeat, template areas 결합 및 동시 dual-axis repeat 확장은 이 제한 slice의 지원 범위가 아니다. `checked_mul`/`checked_add`로 계산한 fixed/ordinary authored descriptor 합계는 최대 10,000이며, track·line-group·line-name reservation 실패는 부분 Grid 결과 대신 contextual error로 끝난다. auto-repeat의 realized count, flex sizing, placement와 `auto-fit` collapse는 기존 layout 경로에 맡긴다.
+
+Chrome 156 사전 비교의 열 장면과 CSS Grid 2025 CRD 독립 산술을 기준으로 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 10/10 runtime scene을 확인했다. PixelCopy와 compositor 제출 전 Metal drawable 표본은 각 12/12 exact다. 기본 macOS ARM64 debug FFI archive에는 fixture scene marker와 ABI가 없고 opt-in fixture positive control에만 포함된다. 이것은 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixel 또는 전체 C11.4 지원 선언이 아니다.
+
+세 번째 fixed-repeat, named-line merge, arbitrary CSS admission, WPT, Android hardware GPU, iOS compositor 이후 pixels 및 전체 C11.4는 남는다. 내부 계약 숫자 버전 `0.1.0`과 공식 C11.4 checkbox/`72/213`은 그대로다. [집중 계획](https://github.com/ohah/spinon/blob/main/plan/c11-4-multiple-fixed-repeat-groups.md) · [Chrome 156 사전 비교](./evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.md) · [runtime evidence](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.md) · [implementation/runtime review 20](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.md) · [PR diff review 30](./evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.md).

@@ -7,8 +7,10 @@
 - Fixture: `tests/fixtures/css/c11/grid-multiple-fixed-repeat-auto-repeat-c114-precomparison.html`
 - Browser: Agent Browser 0.31.1, HeadlessChrome 156.0.0.0, macOS 26.5.1 ARM64
 - Viewport: 1280×633 CSS px, DPR 1
-- Observation: [chrome156-observation.json](./chrome156-observation.json)
-- Screen: [full-page PNG](./chrome156-full-page.png)
+- Observation JSON: `chrome156-observation.json`
+- Screen:
+
+![Chrome 156 full-page capture](./chrome156-full-page.png)
 - Pinned normative text: [CSS Grid 2025 CRD §7.2.3.1–§7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#repeat-notation)
 
 ## Results

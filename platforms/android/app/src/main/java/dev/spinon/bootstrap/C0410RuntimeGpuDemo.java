@@ -1010,6 +1010,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedRootFrame(String sceneId) {
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
+            if (sceneId.contains("-groups-")) {
+                return sceneId.contains("-row-")
+                        ? "width=80,height=320" : "width=320,height=320";
+            }
             return sceneId.contains("-row-")
                     ? "width=80,height=200" : "width=200,height=80";
         }
@@ -2794,11 +2798,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114ExpectedNodeFrames(String sceneId) {
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             boolean rowAxis = sceneId.contains("-row-");
-            String root = rowAxis ? "width=80,height=200" : "width=200,height=80";
+            boolean multipleGroups = sceneId.contains("-groups-");
+            String root = multipleGroups
+                    ? (rowAxis ? "width=80,height=320" : "width=320,height=320")
+                    : (rowAxis ? "width=80,height=200" : "width=200,height=80");
             if (sceneId.endsWith("-occupied")) {
                 String item = rowAxis
-                        ? "1:node=2,x=0,y=92,width=10,height=10"
-                        : "1:node=2,x=92,y=0,width=10,height=10";
+                        ? (multipleGroups
+                                ? "1:node=2,x=0,y=110,width=10,height=10"
+                                : "1:node=2,x=0,y=92,width=10,height=10")
+                        : (multipleGroups
+                                ? "1:node=2,x=110,y=0,width=10,height=10"
+                                : "1:node=2,x=92,y=0,width=10,height=10");
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + root + ";" + item + "]";
             }
             return "node_frames_css_px=[0:node=1,x=0,y=0," + root + "]";
@@ -6400,24 +6411,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     ) {
         if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
                 || sceneId == null || !sceneId.startsWith("fixed-repeat-")) return false;
+        boolean multipleGroups = sceneId.contains("-groups-");
         boolean rowAxis = sceneId.contains("-row-");
         boolean occupied = sceneId.endsWith("-occupied");
         int expectedCount = occupied ? 2 : 1;
         if (samples.size() != expectedCount) return false;
         String rootId = "c114-" + sceneId + "-grid";
         String itemId = "c114-" + sceneId + "-item-1";
+        int expectedRootX = multipleGroups ? (rowAxis ? 40 : 160) : (rowAxis ? 40 : 100);
+        int expectedRootY = multipleGroups ? 160 : (rowAxis ? 100 : 40);
+        int expectedItemX = multipleGroups ? (rowAxis ? 5 : 115) : (rowAxis ? 5 : 97);
+        int expectedItemY = multipleGroups ? (rowAxis ? 115 : 5) : (rowAxis ? 97 : 5);
         boolean rootFound = false;
         boolean itemFound = false;
         for (SurfaceViewPixelCapture.Sample sample : samples) {
             if (sample.id.equals(sceneId + "-root-interior")) {
                 if (rootFound || !rootId.equals(sample.targetNodeId)
-                        || sample.xCssPx != (rowAxis ? 40 : 100)
-                        || sample.yCssPx != (rowAxis ? 100 : 40)) return false;
+                        || sample.xCssPx != expectedRootX || sample.yCssPx != expectedRootY) return false;
                 rootFound = true;
             } else if (sample.id.equals(sceneId + "-item-1-interior")) {
                 if (!occupied || itemFound || !itemId.equals(sample.targetNodeId)
-                        || sample.xCssPx != (rowAxis ? 5 : 97)
-                        || sample.yCssPx != (rowAxis ? 97 : 5)) return false;
+                        || sample.xCssPx != expectedItemX || sample.yCssPx != expectedItemY) return false;
                 itemFound = true;
             } else {
                 return false;

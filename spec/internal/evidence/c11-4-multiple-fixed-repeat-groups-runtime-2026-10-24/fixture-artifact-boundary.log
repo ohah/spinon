@@ -1,0 +1,20 @@
+C11.4 two fixed-repeat groups fixture boundary
+Artifact scope: macOS ARM64 debug-profile spinon-ffi static library only.
+Commands:
+  mise exec -- cargo build --locked -p spinon-ffi --lib
+  mise exec -- cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test
+Markers:
+  scene payload: fixed-repeat-groups-prefix-fill
+  fixture ABI: _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture
+
+[default feature set]
+SHA256 4630a936922d286d477adfbece36032e78d26b7202a9c5089449e9425e8a32fa
+scene payload: absent
+fixture ABI: absent
+
+[fixture positive control: c04-runtime-gpu-fixture-test]
+SHA256 b29b7f2541f1a2ca7b6d7866fc4185f244ab15a28c150c2ae610f0408d966a98
+scene payload: present
+fixture ABI: present
+
+This does not measure release APK/IPA dead stripping, final app bundle size, Android hardware GPU behavior, or iOS post-compositor pixels.

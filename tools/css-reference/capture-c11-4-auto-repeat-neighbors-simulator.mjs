@@ -4313,13 +4313,15 @@ async function autoRepeatNegativePercentageNeighborScenes() {
   });
 }
 
-async function fixedRepeatAutoRepeatScenes() {
-  const fixturePath = resolve(repositoryRoot,
-    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json');
-  const chromePath = resolve(repositoryRoot,
-    'spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json');
-  const chromeInputPath = resolve(repositoryRoot,
-    'tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html');
+async function fixedRepeatAutoRepeatScenes({
+  fixtureRelativePath = 'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json',
+  chromeRelativePath = 'spec/internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/chrome156-observation.json',
+  chromeInputRelativePath = 'tests/fixtures/css/c11/grid-auto-repeat-fixed-repeat-c114-precomparison.html',
+  expectedCount = 9,
+} = {}) {
+  const fixturePath = resolve(repositoryRoot, fixtureRelativePath);
+  const chromePath = resolve(repositoryRoot, chromeRelativePath);
+  const chromeInputPath = resolve(repositoryRoot, chromeInputRelativePath);
   const androidPath = resolve(repositoryRoot,
     'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
   const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
@@ -4330,8 +4332,11 @@ async function fixedRepeatAutoRepeatScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 9, 'fixed-repeat + auto-repeat runtime matrix는 9 scene이어야 합니다.');
-  assert.equal(chrome.cases.length, 9, 'Chrome 156 사전 비교는 9 case여야 합니다.');
+  assert.equal(fixtures.length, expectedCount,
+    `fixed-repeat + auto-repeat runtime matrix는 ${expectedCount} scene이어야 합니다.`);
+  const chromeCases = chrome.cases ?? chrome.scenes;
+  assert.equal(chromeCases.length, expectedCount,
+    `Chrome 156 사전 비교는 ${expectedCount} case여야 합니다.`);
   assert.ok(chromeInput.includes('gap: 8px;'), 'Chrome oracle input must keep its fixed 8px gutter.');
   assert.match(androidSource,
     /BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*&&\s*sceneId != null\s*&& sceneId\.startsWith\("fixed-repeat-"\)/,
@@ -4341,7 +4346,7 @@ async function fixedRepeatAutoRepeatScenes() {
   )?.[1];
   assert.ok(iosFixtureBlock,
     'iOS fixed-repeat scene ID는 opt-in fixture build에서만 컴파일되어야 합니다.');
-  const chromeById = new Map(chrome.cases.map((scene) => [scene.id, scene]));
+  const chromeById = new Map(chromeCases.map((scene) => [scene.id, scene]));
   const close = (actual, expected, label) => {
     assert.ok(Math.abs(actual - expected) <= 1 / 64,
       `${label}: ${actual} != ${expected}`);
@@ -4437,7 +4442,16 @@ scenes.push(...await autoRepeatPercentageNeighborScenes());
 scenes.push(...await autoRepeatCalcNeighborScenes());
 scenes.push(...await autoRepeatNegativePercentageNeighborScenes());
 scenes.push(...await fixedRepeatAutoRepeatScenes());
-assert.equal(scenes.length, 449, 'C11.4 fixture scene count differs.');
+scenes.push(...await fixedRepeatAutoRepeatScenes({
+  fixtureRelativePath:
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/multiple_fixed_repeat_groups_scenes.json',
+  chromeRelativePath:
+    'spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-observation.json',
+  chromeInputRelativePath:
+    'tests/fixtures/css/c11/grid-multiple-fixed-repeat-auto-repeat-c114-precomparison.html',
+  expectedCount: 10,
+}));
+assert.equal(scenes.length, 459, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

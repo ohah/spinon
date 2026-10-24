@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-10-24",
+  "browser": "Agent Browser 0.31.1 / Chrome 156.0.8078.48",
+  "tailnet": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "tailscaleBackendState": "Running",
+    "httpStatus": 200,
+    "selectedRoutes": 107,
+    "localHashesVerified": 107,
+    "remoteHttp200AndHashesVerified": 107,
+    "backupsVerified": 4,
+    "deletes": 0
+  },
+  "roadmap": {
+    "session": "spinon-c114-tailnet-pass03",
+    "title": "스피논 구현 로드맵",
+    "checkboxes": 213,
+    "checked": 72,
+    "displayedOfficialCount": "72/213",
+    "containsCurrentTwoFixedRepeatSlice": true,
+    "stableAfterMilliseconds": [0, 2500, 5000]
+  },
+  "contract": {
+    "session": "spinon-c114-tailnet-pass02",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html",
+    "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+    "version": "0.1.0",
+    "containsTwoGroupCurrentProfile": true,
+    "oldSingleGroupHeadingOnly": false
+  },
+  "plan": {
+    "session": "spinon-c114-tailnet-pass02",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-multiple-fixed-repeat-groups.html",
+    "title": "C11.4 · auto-repeat과 fixed-repeat 두 그룹 조합 - 스피논 문서",
+    "containsOfficialCount": "72/213",
+    "contractLinkPresent": true
+  },
+  "agentBrowserSessionsClosed": true,
+  "agentBrowserAndChromeProcessesRemaining": 0
+}

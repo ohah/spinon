@@ -1,0 +1,23 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "b95e1022b8dd48ec2c7ae042de5f2a186420a00f5fc8084e1feb44f3d74dbd72",
+  "sourceRevision": {
+    "commit": "1d5fad7185669f276e62fe905ae5350fb781ac68",
+    "tree": "2119d41e718003ef5d998d073581834bf26dc553",
+    "trackedDiffSha256": "3e6fbf3926cd788485598d19d5ce7dcaf61f25c1fc3ae03b3607ee7b3eda4b7b",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/multiple_fixed_repeat_groups.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/multiple_fixed_repeat_groups_scenes.json",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  }
+}

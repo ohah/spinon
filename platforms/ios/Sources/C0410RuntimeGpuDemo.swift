@@ -25,6 +25,16 @@ private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
     "fixed-repeat-row-fill-suffix-empty",
     "fixed-repeat-row-fit-prefix-empty",
     "fixed-repeat-row-fit-prefix-occupied",
+    "fixed-repeat-groups-prefix-fill",
+    "fixed-repeat-groups-split-fill",
+    "fixed-repeat-groups-suffix-fill",
+    "fixed-repeat-groups-reversed-fill",
+    "fixed-repeat-groups-multitrack-fill",
+    "fixed-repeat-groups-prefix-fit-empty",
+    "fixed-repeat-groups-prefix-fit-occupied",
+    "fixed-repeat-groups-row-prefix-fill",
+    "fixed-repeat-groups-row-split-fit-empty",
+    "fixed-repeat-groups-row-prefix-fit-occupied",
 ]
 #else
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = []
@@ -809,6 +819,10 @@ private func c114PercentageNeighborNodeFrames(_ sceneID: String) -> String? {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID.hasPrefix("fixed-repeat-") {
+        if sceneID.contains("-groups-") {
+            return sceneID.contains("-row-")
+                ? "width=80,height=320" : "width=320,height=320"
+        }
         return sceneID.contains("-row-")
             ? "width=80,height=200" : "width=200,height=80"
     }
@@ -2595,11 +2609,18 @@ private func c114ImageTrackPassMatches(
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if sceneID.hasPrefix("fixed-repeat-") {
         let rowAxis = sceneID.contains("-row-")
-        let root = rowAxis ? "width=80,height=200" : "width=200,height=80"
+        let multipleGroups = sceneID.contains("-groups-")
+        let root = multipleGroups
+            ? (rowAxis ? "width=80,height=320" : "width=320,height=320")
+            : (rowAxis ? "width=80,height=200" : "width=200,height=80")
         if sceneID.hasSuffix("-occupied") {
             let item = rowAxis
-                ? "1:node=2,x=0,y=92,width=10,height=10"
-                : "1:node=2,x=92,y=0,width=10,height=10"
+                ? (multipleGroups
+                    ? "1:node=2,x=0,y=110,width=10,height=10"
+                    : "1:node=2,x=0,y=92,width=10,height=10")
+                : (multipleGroups
+                    ? "1:node=2,x=110,y=0,width=10,height=10"
+                    : "1:node=2,x=92,y=0,width=10,height=10")
             return "node_frames_css_px=[0:node=1,x=0,y=0,\(root);\(item)]"
         }
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(root)]"
@@ -4622,17 +4643,21 @@ private struct C111MetalPixelRun {
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
         if sceneID.hasPrefix("fixed-repeat-") {
+            let multipleGroups = sceneID.contains("-groups-")
             let rowAxis = sceneID.contains("-row-")
             let occupied = sceneID.hasSuffix("-occupied")
             let rootID = "c114-\(sceneID)-grid"
             var expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
                 ("\(sceneID)-root-interior", rootID,
-                 rowAxis ? 40 : 100, rowAxis ? 100 : 40, [34, 197, 94, 255]),
+                 multipleGroups ? (rowAxis ? 40 : 160) : (rowAxis ? 40 : 100),
+                 multipleGroups ? 160 : (rowAxis ? 100 : 40), [34, 197, 94, 255]),
             ]
             if occupied {
                 expectedSamples.append(("\(sceneID)-item-1-interior",
-                    "c114-\(sceneID)-item-1", rowAxis ? 5 : 97,
-                    rowAxis ? 97 : 5, [229, 72, 77, 255]))
+                    "c114-\(sceneID)-item-1",
+                    multipleGroups ? (rowAxis ? 5 : 115) : (rowAxis ? 5 : 97),
+                    multipleGroups ? (rowAxis ? 115 : 5) : (rowAxis ? 97 : 5),
+                    [229, 72, 77, 255]))
             }
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

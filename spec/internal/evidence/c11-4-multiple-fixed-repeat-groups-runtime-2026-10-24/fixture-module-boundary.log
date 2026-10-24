@@ -1,0 +1,19 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (1.1135ms)
+✔ calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 (80.120791ms)
+✔ 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 (74.167584ms)
+✔ 41-scene C11.4 matrix와 양 축 template-area 16 scene이 capture·host 경로에 고정된다 (525.144709ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (23.103791ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.288375ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.48875ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (16.66625ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (4.292208ms)
+✔ C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 (76.448584ms)
+✔ C11.4 multiple fixed-repeat groups 10 scene은 opt-in runtime fixture 경계에 있다 (74.406125ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 917.635792
