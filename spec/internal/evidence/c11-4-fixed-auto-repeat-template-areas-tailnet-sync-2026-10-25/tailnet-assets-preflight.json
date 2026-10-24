@@ -1,0 +1,205 @@
+{
+  "selected_static_route_count": 19,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-fixed-auto-repeat-template-areas-tailnet-sync-2026-10-25/pass02",
+  "source_bytes_total": 2117236,
+  "backup_bytes_total": 0,
+  "counts": {
+    "create": 10,
+    "replace": 0,
+    "same": 9
+  },
+  "files": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.02a04bef88.png",
+      "status": "create",
+      "source_bytes": 133225,
+      "source_sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/image/fixed-auto-area-columns-area-larger.9b02657e20.png",
+      "status": "create",
+      "source_bytes": 77795,
+      "source_sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "status": "same",
+      "source_bytes": 217061,
+      "source_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "target_exists": true,
+      "previous_bytes": 217061,
+      "previous_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "status": "same",
+      "source_bytes": 98,
+      "source_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "target_exists": true,
+      "previous_bytes": 98,
+      "previous_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-109d18bc6ef3.e378b8b420.js",
+      "status": "create",
+      "source_bytes": 12739,
+      "source_sha256": "b173c96c093034959d936dfc427c82f3e3a4bf52e90be4d3b18bdb14bf4edbf0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.bacd84eaf7.js",
+      "status": "create",
+      "source_bytes": 573519,
+      "source_sha256": "6b4f75c171de692cdc1e71c7cf2b64370246339af56c898e564bbadcb040f836",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-938c2d0d3348.b2cdd9105d.js",
+      "status": "create",
+      "source_bytes": 15733,
+      "source_sha256": "3953df3ce20f434bc95a89ac754014cf416f357dd1472811b599923ed80f6532",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c1e40d0dd1d7.6c298cafee.js",
+      "status": "create",
+      "source_bytes": 19319,
+      "source_sha256": "411ade0d904f52c95f18a63fd78ce7a25f0cd86eea77e208fba3ced14d50bf21",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.fa6e2891b1.js",
+      "status": "create",
+      "source_bytes": 194818,
+      "source_sha256": "a252905cc01aadf268aed282f291a7008ec835ef7f15114711ebd9afcc0a7492",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f5d4100ab8a8.435d16339c.js",
+      "status": "create",
+      "source_bytes": 15632,
+      "source_sha256": "de260dc250cea8237dead76775b38ff5f8c3889fbedea88c51e988d04167097c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.d0519311c4.js",
+      "status": "create",
+      "source_bytes": 29505,
+      "source_sha256": "1e1c312919f19bf5dc671d4b380bbe914d8bfc3d88797f990d82ea17d31e00d8",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": "same",
+      "source_bytes": 218366,
+      "source_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "target_exists": true,
+      "previous_bytes": 218366,
+      "previous_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": "same",
+      "source_bytes": 35366,
+      "source_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "target_exists": true,
+      "previous_bytes": 35366,
+      "previous_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "status": "same",
+      "source_bytes": 471,
+      "source_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "target_exists": true,
+      "previous_bytes": 471,
+      "previous_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.9de30340.json",
+      "status": "create",
+      "source_bytes": 497822,
+      "source_sha256": "9de303407061e98617a12cd3b04a411e36f8d182d0cff34840f2ab9ca74e7378",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ],
+  "no_deletes": true
+}

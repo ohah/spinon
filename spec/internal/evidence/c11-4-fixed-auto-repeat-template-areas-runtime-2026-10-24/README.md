@@ -29,6 +29,10 @@
 
 추가 Android 실기기 시도는 [SM-S731N 실행 요약](./android-device-attempt.md)에 기록했다. API 36 / Android 16 / Xclipse 940에서 앱 설치 SHA와 layout trace는 일치했지만, 실행 당시 기기가 Dozing 상태이고 keyguard가 표시되어 SurfaceView가 숨겨졌다. `draw/present` 및 화면 표본을 확인하지 못해 실기기 실행은 통과로 세지 않는다.
 
+## PR 및 병합 상태
+
+구현 PR [#604](https://github.com/ohah/spinon/pull/604)은 2026-10-24T15:51:45Z Rebase and merge됐고 merge SHA는 `912c10bee4e2d88374a2a32689ac37c824b1207d`다. PR check rollup은 비어 있고 main required status checks는 설정되어 있지 않아 CI pass로 표시하지 않는다. 이 slice는 opt-in 제한 후보이며 C11.4 상위 checkbox와 공식 `72/213`은 미완료로 유지한다.
+
 ## Fixture 경계와 한계
 
 - `c04-runtime-gpu` product release static archive에는 신규 scene marker 0/9와 C11.4 fixture symbols 0개가 있다. SHA-256: `0099eef36a8bdd7edc216770f0b99d2d4595edd9fbf866c62271d52d5659026f`.

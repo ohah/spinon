@@ -1,0 +1,73 @@
+{
+  "selectedRoot": "build/spinon/c114-merge-roadmap-20261025-selected-root",
+  "sourceFileCount": 11,
+  "selected": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 429768,
+      "sha256": "22d50f798aed6813d5cdcbfe5abbc3c1bc594f8a2e29d793bd5bcaac513ba8ec"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 300661,
+      "sha256": "01c08ec3430d67cf6daa5c2baffa9953f2112ee28119be6502d7ad08c3092ea2"
+    },
+    {
+      "source": "plan/c11-4-fixed-auto-repeat-template-areas.md",
+      "path": "plan/c11-4-fixed-auto-repeat-template-areas.md",
+      "bytes": 10617,
+      "sha256": "8be3a5791d9e334e4bc503c439c29b9f13cf67718376400e1347c99a34d5e304"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 137908,
+      "sha256": "8c4a15de1327c312a1eb0d4dfd2aa853227e31ac1f3968f5d714bc6ffeac3313"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.md",
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.md",
+      "bytes": 7558,
+      "sha256": "c17ab2f0a44d5a48c007495ae09225d3b98ec233ce13d7d4cedba778d5bc7306"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "bytes": 11246,
+      "sha256": "cd788b9cc4ada5a5e3cbdb6083736426164beb0da909be9c9337ef8c1733b48f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/pr-diff-review-30.md",
+      "bytes": 12621,
+      "sha256": "6d9e1386004b6f1556232ffae667512268c659d2dd10cd42a9d57b062caa52f1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/android-avd-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/android-avd-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "bytes": 77795,
+      "sha256": "4e693b8349985d6941af38a1fb6f48895a78a1e69b9df8d6f847abb42ee220ca"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/ios-simulator-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "path": "internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-25/ios-simulator-final-2026-10-25/fixed-auto-area-columns-area-larger.png",
+      "bytes": 133225,
+      "sha256": "5a9333b9d975a9ead3a28112850017e9b60d2a3282fc36fe7c0e100391a20e0f"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    }
+  ],
+  "noDeletes": true
+}
