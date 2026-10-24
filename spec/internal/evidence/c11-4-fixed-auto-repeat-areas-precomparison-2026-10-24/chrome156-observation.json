@@ -1,0 +1,566 @@
+[
+  {
+    "id": "columns-fill-collision",
+    "columns": "[hero-start] 10px 6px [hero-end hero-start] 10px 6px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end] 10px 10px",
+    "rows": "20px",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      31,
+      93.390625,
+      168,
+      20
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          31,
+          93.390625,
+          44,
+          20
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          31,
+          93.390625,
+          20,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          175,
+          93.390625,
+          24,
+          20
+        ]
+      },
+      {
+        "className": "child probe",
+        "area": "1 / 3 hero-start / 2 / 3 hero-end",
+        "columnStart": "3 hero-start",
+        "columnEnd": "3 hero-end",
+        "rowStart": "1",
+        "rowEnd": "2",
+        "rect": [
+          79,
+          93.390625,
+          20,
+          20
+        ]
+      },
+      {
+        "className": "child negative-probe",
+        "area": "1 / -1 hero-start / 2 / -1 hero-end",
+        "columnStart": "-1 hero-start",
+        "columnEnd": "-1 hero-end",
+        "rowStart": "1",
+        "rowEnd": "2",
+        "rect": [
+          151,
+          93.390625,
+          20,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "columns-fit-empty",
+    "columns": "10px 6px 10px 6px 0px 0px 0px 0px 10px 10px",
+    "rows": "20px",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      433,
+      93.390625,
+      168,
+      20
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          433,
+          93.390625,
+          44,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          481,
+          93.390625,
+          24,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "columns-fit-occupied",
+    "columns": "10px 6px 10px 6px 20px 20px 20px 20px 10px 10px",
+    "rows": "20px",
+    "areas": "\"left left left left hero hero hero hero right right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      835,
+      93.390625,
+      168,
+      20
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          835,
+          93.390625,
+          44,
+          20
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          883,
+          93.390625,
+          92,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          979,
+          93.390625,
+          24,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "columns-area-larger",
+    "columns": "10px 6px 10px 6px 20px 20px 20px 10px 10px 20px",
+    "rows": "20px",
+    "areas": "\"left left left left hero hero hero right right right\"",
+    "autoColumns": "20px",
+    "autoRows": "auto",
+    "root": [
+      31,
+      259.390625,
+      148,
+      20
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          31,
+          259.390625,
+          44,
+          20
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          79,
+          259.390625,
+          68,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          151,
+          259.390625,
+          48,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "columns-area-shorter",
+    "columns": "10px 6px 10px 6px 20px 20px 20px 20px 10px 10px",
+    "rows": "20px",
+    "areas": "\"left left left left hero hero hero right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      433,
+      259.390625,
+      188,
+      20
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          433,
+          259.390625,
+          44,
+          20
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          481,
+          259.390625,
+          68,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          553,
+          259.390625,
+          20,
+          20
+        ]
+      },
+      {
+        "className": "child tail",
+        "area": "1 / -2 / 2 / -1",
+        "columnStart": "-2",
+        "columnEnd": "-1",
+        "rowStart": "1",
+        "rowEnd": "2",
+        "rect": [
+          591,
+          259.390625,
+          10,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rows-fill-collision",
+    "columns": "20px",
+    "rows": "[hero-start] 10px 6px [hero-end hero-start] 10px 6px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end hero-start] 20px [hero-end] 10px 10px",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      835,
+      259.390625,
+      20,
+      168
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          835,
+          259.390625,
+          20,
+          44
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          835,
+          259.390625,
+          20,
+          20
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          835,
+          403.390625,
+          20,
+          24
+        ]
+      },
+      {
+        "className": "child probe",
+        "area": "3 hero-start / 1 / 3 hero-end / 2",
+        "columnStart": "1",
+        "columnEnd": "2",
+        "rowStart": "3 hero-start",
+        "rowEnd": "3 hero-end",
+        "rect": [
+          835,
+          307.390625,
+          20,
+          20
+        ]
+      },
+      {
+        "className": "child negative-probe",
+        "area": "-1 hero-start / 1 / -1 hero-end / 2",
+        "columnStart": "1",
+        "columnEnd": "2",
+        "rowStart": "-1 hero-start",
+        "rowEnd": "-1 hero-end",
+        "rect": [
+          835,
+          379.390625,
+          20,
+          20
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rows-fit-empty",
+    "columns": "20px",
+    "rows": "10px 6px 10px 6px 0px 0px 0px 0px 10px 10px",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      31,
+      491.1875,
+      20,
+      168
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          31,
+          491.1875,
+          20,
+          44
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          31,
+          539.1875,
+          20,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rows-fit-occupied",
+    "columns": "20px",
+    "rows": "10px 6px 10px 6px 20px 20px 20px 20px 10px 10px",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"hero\" \"right\" \"right\"",
+    "autoColumns": "auto",
+    "autoRows": "auto",
+    "root": [
+      433,
+      491.1875,
+      20,
+      168
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          433,
+          491.1875,
+          20,
+          44
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          433,
+          539.1875,
+          20,
+          92
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          433,
+          635.1875,
+          20,
+          24
+        ]
+      }
+    ]
+  },
+  {
+    "id": "rows-area-larger",
+    "columns": "20px",
+    "rows": "10px 6px 10px 6px 20px 20px 20px 10px 10px 20px",
+    "areas": "\"left\" \"left\" \"left\" \"left\" \"hero\" \"hero\" \"hero\" \"right\" \"right\" \"right\"",
+    "autoColumns": "auto",
+    "autoRows": "20px",
+    "root": [
+      835,
+      491.1875,
+      20,
+      148
+    ],
+    "children": [
+      {
+        "className": "child left",
+        "area": "left",
+        "columnStart": "left",
+        "columnEnd": "left",
+        "rowStart": "left",
+        "rowEnd": "left",
+        "rect": [
+          835,
+          491.1875,
+          20,
+          44
+        ]
+      },
+      {
+        "className": "child hero",
+        "area": "hero",
+        "columnStart": "hero",
+        "columnEnd": "hero",
+        "rowStart": "hero",
+        "rowEnd": "hero",
+        "rect": [
+          835,
+          539.1875,
+          20,
+          68
+        ]
+      },
+      {
+        "className": "child right",
+        "area": "right",
+        "columnStart": "right",
+        "columnEnd": "right",
+        "rowStart": "right",
+        "rowEnd": "right",
+        "rect": [
+          835,
+          611.1875,
+          20,
+          48
+        ]
+      }
+    ]
+  }
+]

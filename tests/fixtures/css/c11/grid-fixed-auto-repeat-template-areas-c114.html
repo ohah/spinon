@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 fixed-repeat + auto-repeat + template areas</title>
+  <style>
+    :root { color-scheme: light; font: 12px/1.4 system-ui, sans-serif; }
+    body { margin: 20px; color: #172033; background: #f3f5f8; }
+    h1 { margin: 0 0 12px; font-size: 19px; }
+    #scenes { display: grid; grid-template-columns: repeat(3, 390px); gap: 12px; }
+    .card { min-height: 132px; padding: 10px; border: 1px solid #cbd3df; border-radius: 7px; background: white; }
+    .card h2 { margin: 0 0 7px; font-size: 12px; }
+    .grid {
+      position: relative;
+      display: grid;
+      align-content: start;
+      justify-content: start;
+      gap: 4px;
+      overflow: visible;
+      outline: 1px solid #718096;
+      background: repeating-linear-gradient(135deg, #edf1f6 0 4px, #e5eaf1 4px 8px);
+    }
+    .columns { height: 20px; }
+    .rows { width: 20px; }
+    .child { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+    .left { background: #30a46c; }
+    .hero { background: #e5484d; }
+    .right { background: #7257ff; }
+    .probe { z-index: 1; background: #f59e0b; }
+    .negative-probe { z-index: 2; background: #1793d1; }
+    .tail { background: #1793d1; }
+    .columns-fill-collision {
+      width: 168px;
+      grid-template-columns: repeat(2, [hero-start] 10px 6px [hero-end]) repeat(auto-fill, [hero-start] 20px [hero-end]) repeat(2, 10px);
+      grid-template-rows: 20px;
+      grid-template-areas: "left left left left hero hero hero hero right right";
+    }
+    .columns-fit-empty {
+      width: 168px;
+      grid-template-columns: repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px);
+      grid-template-rows: 20px;
+      grid-template-areas: "left left left left hero hero hero hero right right";
+    }
+    .columns-fit-occupied {
+      width: 168px;
+      grid-template-columns: repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px);
+      grid-template-rows: 20px;
+      grid-template-areas: "left left left left hero hero hero hero right right";
+    }
+    .columns-area-larger {
+      width: 148px;
+      grid-template-columns: repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px);
+      grid-template-rows: 20px;
+      grid-auto-columns: 20px;
+      grid-template-areas: "left left left left hero hero hero right right right";
+    }
+    .columns-area-shorter {
+      width: 188px;
+      grid-template-columns: repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px);
+      grid-template-rows: 20px;
+      grid-template-areas: "left left left left hero hero hero right";
+    }
+    .rows-fill-collision {
+      height: 168px;
+      grid-template-columns: 20px;
+      grid-template-rows: repeat(2, [hero-start] 10px 6px [hero-end]) repeat(auto-fill, [hero-start] 20px [hero-end]) repeat(2, 10px);
+      grid-template-areas: "left" "left" "left" "left" "hero" "hero" "hero" "hero" "right" "right";
+    }
+    .rows-fit-empty {
+      height: 168px;
+      grid-template-columns: 20px;
+      grid-template-rows: repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px);
+      grid-template-areas: "left" "left" "left" "left" "hero" "hero" "hero" "hero" "right" "right";
+    }
+    .rows-fit-occupied {
+      height: 168px;
+      grid-template-columns: 20px;
+      grid-template-rows: repeat(2, 10px 6px) repeat(auto-fit, 20px) repeat(2, 10px);
+      grid-template-areas: "left" "left" "left" "left" "hero" "hero" "hero" "hero" "right" "right";
+    }
+    .rows-area-larger {
+      height: 148px;
+      grid-template-columns: 20px;
+      grid-template-rows: repeat(2, 10px 6px) repeat(auto-fill, 20px) repeat(2, 10px);
+      grid-auto-rows: 20px;
+      grid-template-areas: "left" "left" "left" "left" "hero" "hero" "hero" "right" "right" "right";
+    }
+    .columns-fill-collision .left, .columns-fit-empty .left, .columns-fit-occupied .left,
+    .columns-area-larger .left, .columns-area-shorter .left,
+    .rows-fill-collision .left, .rows-fit-empty .left, .rows-fit-occupied .left,
+    .rows-area-larger .left { grid-area: left; }
+    .columns-fill-collision .hero, .columns-fit-occupied .hero,
+    .columns-area-larger .hero, .columns-area-shorter .hero,
+    .rows-fill-collision .hero, .rows-fit-occupied .hero, .rows-area-larger .hero { grid-area: hero; }
+    .columns-fill-collision .right, .columns-fit-empty .right, .columns-fit-occupied .right,
+    .columns-area-larger .right, .columns-area-shorter .right,
+    .rows-fill-collision .right, .rows-fit-empty .right, .rows-fit-occupied .right,
+    .rows-area-larger .right { grid-area: right; }
+    .columns-fill-collision .probe {
+      grid-row: 1 / 2;
+      grid-column: hero-start 3 / hero-end 3;
+    }
+    .rows-fill-collision .probe {
+      grid-column: 1 / 2;
+      grid-row: hero-start 3 / hero-end 3;
+    }
+    .columns-fill-collision .negative-probe {
+      grid-row: 1 / 2;
+      grid-column: hero-start -1 / hero-end -1;
+    }
+    .rows-fill-collision .negative-probe {
+      grid-column: 1 / 2;
+      grid-row: hero-start -1 / hero-end -1;
+    }
+    .columns-area-shorter .tail { grid-column: -2 / -1; grid-row: 1 / 2; }
+    output { display: block; margin-top: 6px; color: #42506a; font: 10px/1.3 ui-monospace, monospace; }
+    #observation { margin-top: 16px; max-width: 1200px; white-space: pre-wrap; font: 10px/1.3 ui-monospace, monospace; }
+  </style>
+</head>
+<body>
+  <h1>Fixed-repeat + auto-repeat + template-area line aliases</h1>
+  <main id="scenes">
+    <section class="card"><h2>columns · auto-fill · alias collision</h2><div class="grid columns columns-fill-collision" id="columns-fill-collision"><div class="child left"></div><div class="child hero"></div><div class="child right"></div><div class="child probe"></div><div class="child negative-probe"></div></div><output></output></section>
+    <section class="card"><h2>columns · auto-fit · empty repeated area</h2><div class="grid columns columns-fit-empty" id="columns-fit-empty"><div class="child left"></div><div class="child right"></div></div><output></output></section>
+    <section class="card"><h2>columns · auto-fit · occupied area</h2><div class="grid columns columns-fit-occupied" id="columns-fit-occupied"><div class="child left"></div><div class="child hero"></div><div class="child right"></div></div><output></output></section>
+    <section class="card"><h2>columns · area larger than expanded template</h2><div class="grid columns columns-area-larger" id="columns-area-larger"><div class="child left"></div><div class="child hero"></div><div class="child right"></div></div><output></output></section>
+    <section class="card"><h2>columns · area shorter than expanded template</h2><div class="grid columns columns-area-shorter" id="columns-area-shorter"><div class="child left"></div><div class="child hero"></div><div class="child right"></div><div class="child tail"></div></div><output></output></section>
+    <section class="card"><h2>rows · auto-fill · alias collision</h2><div class="grid rows rows-fill-collision" id="rows-fill-collision"><div class="child left"></div><div class="child hero"></div><div class="child right"></div><div class="child probe"></div><div class="child negative-probe"></div></div><output></output></section>
+    <section class="card"><h2>rows · auto-fit · empty repeated area</h2><div class="grid rows rows-fit-empty" id="rows-fit-empty"><div class="child left"></div><div class="child right"></div></div><output></output></section>
+    <section class="card"><h2>rows · auto-fit · occupied area</h2><div class="grid rows rows-fit-occupied" id="rows-fit-occupied"><div class="child left"></div><div class="child hero"></div><div class="child right"></div></div><output></output></section>
+    <section class="card"><h2>rows · area larger than expanded template</h2><div class="grid rows rows-area-larger" id="rows-area-larger"><div class="child left"></div><div class="child hero"></div><div class="child right"></div></div><output></output></section>
+  </main>
+  <pre id="observation"></pre>
+  <script>
+    const rect = element => {
+      const value = element.getBoundingClientRect();
+      return [value.x, value.y, value.width, value.height];
+    };
+    const ids = [
+      'columns-fill-collision', 'columns-fit-empty', 'columns-fit-occupied',
+      'columns-area-larger', 'columns-area-shorter', 'rows-fill-collision',
+      'rows-fit-empty', 'rows-fit-occupied', 'rows-area-larger',
+    ];
+    window.result = ids.map(id => {
+      const root = document.getElementById(id);
+      const style = getComputedStyle(root);
+      return {
+        id,
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        areas: style.gridTemplateAreas,
+        autoColumns: style.gridAutoColumns,
+        autoRows: style.gridAutoRows,
+        root: rect(root),
+        children: Array.from(root.children).map(child => ({
+          className: child.className,
+          area: getComputedStyle(child).gridArea,
+          columnStart: getComputedStyle(child).gridColumnStart,
+          columnEnd: getComputedStyle(child).gridColumnEnd,
+          rowStart: getComputedStyle(child).gridRowStart,
+          rowEnd: getComputedStyle(child).gridRowEnd,
+          rect: rect(child),
+        })),
+      };
+    });
+    document.querySelectorAll('.card').forEach(card => {
+      card.querySelector('output').textContent = `${card.querySelector('.grid').id}: ${card.querySelector('.grid').getBoundingClientRect().width}×${card.querySelector('.grid').getBoundingClientRect().height}`;
+    });
+    document.getElementById('observation').textContent = JSON.stringify(window.result, null, 2);
+  </script>
+</body>
+</html>
