@@ -1,0 +1,102 @@
+{
+  "selected_route_count": 6,
+  "local_targets_verified": 6,
+  "backups_verified": 5,
+  "remote_targets_verified": 6,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local": [
+    {
+      "path": "roadmap.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.html",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "roadmap.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.html",
+      "verified": true
+    }
+  ],
+  "remote": [
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 290149,
+      "sha256": "9530205e0f8569552e5cd9c39eb0499138f88ebe2d8aa70507d3732a6b83687f",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 958698,
+      "sha256": "ce243a5b2505b75e8d197a947dc49667fbe789436b83a95f9c9f50af27becc1f",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "http_status": 200,
+      "bytes": 420674,
+      "sha256": "264f7bb59896643cd752c0c99adfd4c46f49e3a33f1112ff1c8f0d0bd6dcdeda",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.html",
+      "http_status": 200,
+      "bytes": 466126,
+      "sha256": "dccd80588847b472d33ea440d11f84d972a2c6af1d416e33d45941fde7b1fd2f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.html",
+      "http_status": 200,
+      "bytes": 458507,
+      "sha256": "6bfb2a4bd2e9dbeb6623e58d738c934a3bbec70f65a4f7603a18772558d2e0e1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 461031,
+      "sha256": "44cc2d1f75301a0eb543df9727cbfcc5a41ae87c6ef4fdfb877ead7dd370a73b",
+      "verified": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "browser": "Agent Browser",
+  "route": "/spinon/roadmap.html",
+  "rendered_status": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 133개 + ID 없는 하위 체크 2개 · 완료 72/213개",
+  "merge_sha_visible": "79a2f3e2ec412d8a039125cf8930b3c633c04b63",
+  "stale_pr_preparation_text_visible": false,
+  "fixed_repeat_note_visible": true,
+  "selected_tailnet_routes_http_and_sha_verified": 6,
+  "replaced_file_backups_verified": 5,
+  "browser_session_closed": true,
+  "agent_browser_processes_after_close": 0,
+  "no_deletes": true
+}

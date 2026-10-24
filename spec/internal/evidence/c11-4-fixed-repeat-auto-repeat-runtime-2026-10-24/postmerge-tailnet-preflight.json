@@ -1,0 +1,68 @@
+{
+  "selected_route_count": 6,
+  "source_bytes_total": 3055185,
+  "backup_bytes_total": 2585279,
+  "counts": {
+    "create": 1,
+    "replace": 5,
+    "same": 0
+  },
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/pass02",
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "source_bytes": 290149,
+      "source_sha256": "9530205e0f8569552e5cd9c39eb0499138f88ebe2d8aa70507d3732a6b83687f",
+      "target_exists": true,
+      "previous_bytes": 289988,
+      "previous_sha256": "5b83d5ee73cb16fcedaf9e53f8f880845b6c34dc5dddfda511d06618bbf65548"
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 958698,
+      "source_sha256": "ce243a5b2505b75e8d197a947dc49667fbe789436b83a95f9c9f50af27becc1f",
+      "target_exists": true,
+      "previous_bytes": 955599,
+      "previous_sha256": "22b78ffc790680d2c0d2e3481bfef85b6d64cdec62df32aac6023ed5b64de180"
+    },
+    {
+      "path": "STATUS.md",
+      "status": "replace",
+      "source_bytes": 420674,
+      "source_sha256": "264f7bb59896643cd752c0c99adfd4c46f49e3a33f1112ff1c8f0d0bd6dcdeda",
+      "target_exists": true,
+      "previous_bytes": 418774,
+      "previous_sha256": "431fd428e1d8b5a502f46b01e51dca8fe81c89d9846f0e80b7eb407b9604c74c"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-fixed-repeat.html",
+      "status": "replace",
+      "source_bytes": 466126,
+      "source_sha256": "dccd80588847b472d33ea440d11f84d972a2c6af1d416e33d45941fde7b1fd2f",
+      "target_exists": true,
+      "previous_bytes": 464634,
+      "previous_sha256": "ef859d13d3ce0afe4ef3e7d9540e71c236fb37177fa87880a2f03a77d738d5ce"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/README.html",
+      "status": "replace",
+      "source_bytes": 458507,
+      "source_sha256": "6bfb2a4bd2e9dbeb6623e58d738c934a3bbec70f65a4f7603a18772558d2e0e1",
+      "target_exists": true,
+      "previous_bytes": 456284,
+      "previous_sha256": "f62ae1e9185ba0421426184148e84e96939984cab12cf3c8a768d07c31500c28"
+    },
+    {
+      "path": "internal/evidence/c11-4-fixed-repeat-auto-repeat-runtime-2026-10-24/roadmap-pr-diff-review-30.html",
+      "status": "create",
+      "source_bytes": 461031,
+      "source_sha256": "44cc2d1f75301a0eb543df9727cbfcc5a41ae87c6ef4fdfb877ead7dd370a73b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null
+    }
+  ]
+}
