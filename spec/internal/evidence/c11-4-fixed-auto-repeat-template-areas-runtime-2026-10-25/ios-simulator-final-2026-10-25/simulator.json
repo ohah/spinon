@@ -1,0 +1,42 @@
+{
+  "target": "ios-simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "a61812b540082447ff4e92c3bfab30ef7b0648c6158c8293158a7d0ab9ce41eb",
+  "sourceRevision": {
+    "commit": "2d45491bc54fb1c809dc89c1751a08630c685bee",
+    "tree": "9707a29974e18b8620e87892d77e664bd95c4659",
+    "trackedDiffSha256": "b0d127b9f49e4e947958b6fb32e2503a3fa920d95edb38cc98e274013f63b170",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_auto_repeat.rs",
+      "crates/spinon-layout/src/grid_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/combined_metadata_tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+      "plan/c11-4-fixed-auto-repeat-template-areas.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-areas-precomparison-2026-10-24/README.md",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-areas-precomparison-2026-10-24/SHA256SUMS",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-areas-precomparison-2026-10-24/browser-environment.json",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-areas-precomparison-2026-10-24/chrome156-fixed-auto-repeat-areas.png",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/README.md",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/android-app-build-final.log",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/android-native-build-final.log",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/ffi-fixture-archive-build-final.log",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/ffi-fixture-archive-check.json",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/ffi-product-archive-build-final.log",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/ffi-product-archive-check.json",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/fixture-module-boundary-test.log",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/ios-app-build-summary.md",
+      "spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-2026-10-24/workspace-clippy-final.log",
+      "tests/fixtures/css/c11/grid-fixed-auto-repeat-template-areas-c114.html",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ]
+  }
+}

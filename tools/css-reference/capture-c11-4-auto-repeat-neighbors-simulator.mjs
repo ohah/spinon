@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
-import { resolve } from 'node:path';
+import { relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { fileURLToPath } from 'node:url';
 
@@ -62,6 +62,13 @@ const evidenceGroup = process.argv.find((argument) => argument.startsWith('--evi
 const multiSpanSceneIDs = new Set([
   'competing-span2-forward', 'competing-span2-reversed',
   'span2-before-span3', 'span3-before-span2',
+]);
+const fixedAutoAreaSceneIDs = new Set([
+  'fixed-auto-area-columns-fill-collision', 'fixed-auto-area-columns-fit-empty',
+  'fixed-auto-area-columns-fit-occupied', 'fixed-auto-area-columns-area-larger',
+  'fixed-auto-area-columns-area-shorter', 'fixed-auto-area-rows-fill-collision',
+  'fixed-auto-area-rows-fit-empty', 'fixed-auto-area-rows-fit-occupied',
+  'fixed-auto-area-rows-area-larger',
 ]);
 const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
@@ -137,10 +144,13 @@ const isNestedGridDepthAnonymousImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthAnonymousImageSceneIDs.has(sceneID));
 const isCyclicPercentRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => cyclicPercentSceneIDs.has(sceneID));
+const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
 const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
-const runKind = requestedRunKind ?? (isCyclicPercentRun ? 'cyclic-percent-tracks'
+const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
+  : isCyclicPercentRun ? 'cyclic-percent-tracks'
   : isMixedMultiSpanRun ? 'mixed-multispan-contributions'
   : isNestedGridTextMultiSpanRun ? 'nested-grid-text-multispan'
   : isNestedGridDepthAnonymousImageRun ? 'nested-depth-three-anonymous-image'
@@ -176,6 +186,8 @@ const runIDPrefix = `c114-${target}-${runTimestamp}-${runNonce}`;
 const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format(new Date());
 const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
+  : runKind === 'fixed-auto-area'
+    ? `spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-${date}/${target}-${runPrefix}`
   : isCyclicPercentRun
     ? `spec/internal/evidence/c11-4-cyclic-percentage-track-runtime-${date}/${target}-${runPrefix}`
   : isNestedGridTextMultiSpanRun
@@ -4346,7 +4358,8 @@ async function fixedRepeatAutoRepeatScenes({
       items: scene.items,
     }));
   }));
-  assert.equal(fixtures.length, expectedCount,
+  const fixedRepeatFixtures = fixtures.filter(({ id }) => id.startsWith('fixed-repeat-'));
+  assert.equal(fixedRepeatFixtures.length, expectedCount,
     `fixed-repeat + auto-repeat runtime matrix는 ${expectedCount} scene이어야 합니다.`);
   const chromeCases = [...(chrome.cases ?? chrome.scenes), ...additionalChrome.flat()];
   assert.equal(chromeCases.length, expectedCount,
@@ -4372,7 +4385,7 @@ async function fixedRepeatAutoRepeatScenes({
     255,
   ];
 
-  return fixtures.map((fixture) => {
+  return fixedRepeatFixtures.map((fixture) => {
     const { id, oracleId, repeatAxis, expect, items, rootColor, columnGap, rowGap } = fixture;
     const chromeScene = chromeById.get(oracleId);
     assert.ok(id.startsWith('fixed-repeat-'), `${id}: opt-in scene prefix`);
@@ -4446,6 +4459,111 @@ async function fixedRepeatAutoRepeatScenes({
   });
 }
 
+async function fixedAutoRepeatAreaScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_repeat_scenes.json');
+  const chromePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-fixed-auto-repeat-areas-precomparison-2026-10-24/chrome156-observation.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtureJSON, chromeJSON, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(chromePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  const fixtures = fixtureJSON.filter(({ id }) => id.startsWith('fixed-auto-area-'));
+  assert.equal(fixtures.length, 9, 'fixed + auto-repeat + areas runtime matrix must have 9 scenes.');
+  assert.equal(chromeJSON.length, fixtures.length, 'Chrome 156 scene count differs.');
+  assert.match(androidSource, /C114_FIXED_AUTO_AREA_SCENE_IDS/,
+    'Android must gate fixed-auto-area scene IDs in the fixture adapter.');
+  assert.match(androidSource, /c114IsFixedAutoAreaScene\(sceneId\)/,
+    'Android must route the new scene family through its fixture-only adapter.');
+  const iosFixtureBlock = iosSource.match(
+    /#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1([\s\S]*?)#endif/,
+  )?.[1];
+  assert.ok(iosFixtureBlock, 'iOS C11.4 scenes must remain inside the opt-in fixture build.');
+  const chromeById = new Map(chromeJSON.map((scene) => [scene.id, scene]));
+  const close = (actual, expected, label) => assert.ok(Math.abs(actual - expected) <= 1 / 64,
+    `${label}: ${actual} != ${expected}`);
+  const tracksFromCssom = (value) => [...value.matchAll(/([0-9]+(?:\.[0-9]+)?)px/g)]
+    .map((match) => Number(match[1]));
+  const colorRgba = (hex) => [
+    Number.parseInt(hex.slice(1, 3), 16),
+    Number.parseInt(hex.slice(3, 5), 16),
+    Number.parseInt(hex.slice(5, 7), 16),
+    255,
+  ];
+
+  return fixtures.map((fixture) => {
+    const { id, oracleId, repeatAxis, expect, items, areas, rootColor, columnGap, rowGap } = fixture;
+    const chrome = chromeById.get(oracleId);
+    assert.ok(chrome, `${id}: Chrome oracle ${oracleId} is missing.`);
+    assert.ok(iosFixtureBlock.includes(`"${id}"`), `${id}: iOS opt-in allowlist is missing.`);
+    const [rootX, rootY, rootWidth, rootHeight] = chrome.root;
+    close(rootWidth, expect.root[0], `${id}: Chrome root width`);
+    close(rootHeight, expect.root[1], `${id}: Chrome root height`);
+    assert.equal(chrome.areas, areas, `${id}: Chrome grid-template-areas differs.`);
+    for (const axis of ['columns', 'rows']) {
+      const cssTracks = tracksFromCssom(chrome[axis]);
+      const expectedTracks = expect.tracks[axis];
+      assert.equal(cssTracks.length, expectedTracks.length, `${id}: Chrome ${axis} track count`);
+      for (const [index, size] of cssTracks.entries()) {
+        close(size, expectedTracks[index], `${id}: Chrome ${axis} track ${index}`);
+      }
+    }
+    assert.equal(chrome.children.length, expect.items.length, `${id}: Chrome item count`);
+    const frames = [`0:node=1,x=0,y=0,width=${expect.root[0]},height=${expect.root[1]}`];
+    for (const [index, expectedItem] of expect.items.entries()) {
+      const chromeItem = chrome.children[index];
+      assert.ok(chromeItem.className.split(/\s+/).includes(expectedItem.name),
+        `${id}: Chrome item ${index} is not ${expectedItem.name}.`);
+      const [x, y, width, height] = expectedItem.frame;
+      const [actualX, actualY, actualWidth, actualHeight] = chromeItem.rect;
+      for (const [label, actual, expected] of [
+        ['x', actualX - rootX, x], ['y', actualY - rootY, y],
+        ['width', actualWidth, width], ['height', actualHeight, height],
+      ]) close(actual, expected, `${id}: Chrome item ${expectedItem.name} ${label}`);
+      frames.push(`${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`);
+    }
+    const axis = repeatAxis === 'columns' ? 'Columns' : 'Rows';
+    let pixelSamples;
+    if (id.endsWith('-area-larger')) {
+      const rowAxis = repeatAxis === 'rows';
+      const points = [
+        ['root-interior-gap', 118, 10, rootColor],
+        ['item-crosses-root-edge', 147, 10, '#2563eb'],
+        ['overflow-item-outside-root', 160, 10, '#2563eb'],
+        ['clear-outside-item', 171, 10, '#000000'],
+      ];
+      pixelSamples = points.map(([sampleID, x, y, color]) => ({
+        id: sampleID,
+        nodeId: sampleID === 'root-interior-gap' || sampleID === 'clear-outside-item'
+          ? `c114-${id}-grid` : `c114-${id}-right`,
+        xCssPx: rowAxis ? y : x,
+        yCssPx: rowAxis ? x : y,
+        rgba: colorRgba(color),
+      }));
+    }
+    return {
+      id,
+      oracleId,
+      axis,
+      boxCount: expect.items.length + 1,
+      rootFrame: `width=${expect.root[0]},height=${expect.root[1]}`,
+      itemFrame: null,
+      nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      ...(pixelSamples ? { pixelSamples } : {}),
+    };
+  });
+}
+
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
@@ -4468,7 +4586,8 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
     'tests/fixtures/css/c11/grid-unbounded-fixed-repeat-auto-repeat-c114-precomparison.html',
   expectedCount: 12,
 }));
-assert.equal(scenes.length, 464, 'C11.4 fixture scene count differs.');
+scenes.push(...await fixedAutoRepeatAreaScenes());
+assert.equal(scenes.length, 473, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6814,6 +6933,7 @@ if (process.argv.includes('--list-scenes')) {
     sceneIDs: scenes.map(({ id }) => id),
     selectedSceneCount: runScenes.length,
     selectedSceneIDs: runScenes.map(({ id }) => id),
+    evidenceDirectory: relative(repositoryRoot, evidenceDirectory),
   }, null, 2));
   process.exit(0);
 }

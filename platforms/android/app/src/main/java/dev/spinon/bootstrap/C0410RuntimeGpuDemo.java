@@ -533,6 +533,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             {"columns-negative-fixed-root-overflow", "100", "22", "31", "20", "6"},
             {"rows-negative-fixed-root-overflow", "22", "100", "20", "17", "6"},
     };
+    private static final String[] C114_FIXED_AUTO_AREA_SCENE_IDS = {
+            "fixed-auto-area-columns-fill-collision",
+            "fixed-auto-area-columns-fit-empty",
+            "fixed-auto-area-columns-fit-occupied",
+            "fixed-auto-area-columns-area-larger",
+            "fixed-auto-area-columns-area-shorter",
+            "fixed-auto-area-rows-fill-collision",
+            "fixed-auto-area-rows-fit-empty",
+            "fixed-auto-area-rows-fit-occupied",
+            "fixed-auto-area-rows-area-larger",
+    };
     private static final String[] C131_COMPACT_SURFACE_CASE_IDS = {
             "visible", "clip-x", "clip-y", "clip-both", "clip-margin-padding",
             "clip-margin-content", "clip-margin-border", "clip-margin-hidden",
@@ -605,6 +616,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "revision-reuse".equals(sceneId);
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (c114IsFixedAutoAreaScene(sceneId)) return true;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) return true;
         for (String candidate : C114_GRID_TRACK_SIZING_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
@@ -615,6 +627,181 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114IsFixedRepeatAutoRepeatScene(String sceneId) {
         return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
                 && sceneId != null && sceneId.startsWith("fixed-repeat-");
+    }
+
+    private static boolean c114IsFixedAutoAreaScene(String sceneId) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return false;
+        for (String candidate : C114_FIXED_AUTO_AREA_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
+        return false;
+    }
+
+    private static String c114FixedAutoAreaCanonicalSceneId(String sceneId) {
+        if (!c114IsFixedAutoAreaScene(sceneId)) return null;
+        return sceneId.substring("fixed-auto-area-".length());
+    }
+
+    private static int[] c114FixedAutoAreaRootSize(String sceneId) {
+        String canonical = c114FixedAutoAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return null;
+        switch (canonical) {
+            case "columns-fill-collision":
+            case "columns-fit-empty":
+            case "columns-fit-occupied":
+                return new int[] {168, 20};
+            case "columns-area-larger":
+                return new int[] {148, 20};
+            case "columns-area-shorter":
+                return new int[] {188, 20};
+            case "rows-fill-collision":
+            case "rows-fit-empty":
+            case "rows-fit-occupied":
+                return new int[] {20, 168};
+            case "rows-area-larger":
+                return new int[] {20, 148};
+            default:
+                return null;
+        }
+    }
+
+    private static String[] c114FixedAutoAreaItemNames(String sceneId) {
+        String canonical = c114FixedAutoAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return null;
+        switch (canonical) {
+            case "columns-fill-collision":
+            case "rows-fill-collision":
+                return new String[] {"left", "hero", "right", "probe", "negative-probe"};
+            case "columns-fit-empty":
+            case "rows-fit-empty":
+                return new String[] {"left", "right"};
+            case "columns-fit-occupied":
+            case "rows-fit-occupied":
+            case "columns-area-larger":
+            case "rows-area-larger":
+                return new String[] {"left", "hero", "right"};
+            case "columns-area-shorter":
+                return new String[] {"left", "hero", "right", "tail"};
+            default:
+                return null;
+        }
+    }
+
+    private static int[][] c114FixedAutoAreaItemFrames(String sceneId) {
+        String canonical = c114FixedAutoAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return null;
+        switch (canonical) {
+            case "columns-fill-collision":
+                return new int[][] {
+                        {0, 0, 44, 20}, {0, 0, 20, 20}, {144, 0, 24, 20},
+                        {48, 0, 20, 20}, {120, 0, 20, 20},
+                };
+            case "columns-fit-empty":
+                return new int[][] {{0, 0, 44, 20}, {48, 0, 24, 20}};
+            case "columns-fit-occupied":
+                return new int[][] {
+                        {0, 0, 44, 20}, {48, 0, 92, 20}, {144, 0, 24, 20},
+                };
+            case "columns-area-larger":
+                return new int[][] {
+                        {0, 0, 44, 20}, {48, 0, 68, 20}, {120, 0, 48, 20},
+                };
+            case "columns-area-shorter":
+                return new int[][] {
+                        {0, 0, 44, 20}, {48, 0, 68, 20}, {120, 0, 20, 20},
+                        {158, 0, 10, 20},
+                };
+            case "rows-fill-collision":
+                return new int[][] {
+                        {0, 0, 20, 44}, {0, 0, 20, 20}, {0, 144, 20, 24},
+                        {0, 48, 20, 20}, {0, 120, 20, 20},
+                };
+            case "rows-fit-empty":
+                return new int[][] {{0, 0, 20, 44}, {0, 48, 20, 24}};
+            case "rows-fit-occupied":
+                return new int[][] {
+                        {0, 0, 20, 44}, {0, 48, 20, 92}, {0, 144, 20, 24},
+                };
+            case "rows-area-larger":
+                return new int[][] {
+                        {0, 0, 20, 44}, {0, 48, 20, 68}, {0, 120, 20, 48},
+                };
+            default:
+                return null;
+        }
+    }
+
+    private static int[] c114FixedAutoAreaTrackSizes(String sceneId, boolean columns) {
+        String canonical = c114FixedAutoAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return null;
+        boolean rowScene = canonical.startsWith("rows-");
+        if (columns == rowScene) return new int[] {20};
+        if (canonical.endsWith("-fit-empty")) {
+            return new int[] {10, 6, 10, 6, 0, 0, 0, 0, 10, 10};
+        }
+        if (canonical.endsWith("-area-larger")) {
+            return new int[] {10, 6, 10, 6, 20, 20, 20, 10, 10, 20};
+        }
+        return new int[] {10, 6, 10, 6, 20, 20, 20, 20, 10, 10};
+    }
+
+    private static boolean c114FixedAutoAreaTraceMatches(String sceneId, String report) {
+        int diagnosticsMarker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (diagnosticsMarker < 0) return false;
+        String diagnosticsJson = report.substring(
+                diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optInt("grid", -1) != 1
+                    || passes == null || passes.length() != 2) return false;
+            org.json.JSONObject columns = passes.optJSONObject(0);
+            org.json.JSONObject rows = passes.optJSONObject(1);
+            return columns != null && rows != null
+                    && "Columns".equals(columns.optString("axis"))
+                    && "Rows".equals(rows.optString("axis"))
+                    && c114FixedAutoAreaTraceAxisMatches(sceneId, columns, true)
+                    && c114FixedAutoAreaTraceAxisMatches(sceneId, rows, false);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114FixedAutoAreaTraceAxisMatches(
+            String sceneId, org.json.JSONObject pass, boolean columns
+    ) {
+        int[] expectedSizes = c114FixedAutoAreaTrackSizes(sceneId, columns);
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (expectedSizes == null || stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null
+                ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        String canonical = c114FixedAutoAreaCanonicalSceneId(sceneId);
+        if (canonical == null) return false;
+        boolean rowScene = canonical.startsWith("rows-");
+        boolean repeatedAxis = columns ? !rowScene : rowScene;
+        boolean autoFitEmpty = canonical.endsWith("-fit-empty");
+        int trackIndex = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null) return false;
+            if (track.optBoolean("gutter", false)) continue;
+            if (trackIndex >= expectedSizes.length) return false;
+            double actualSize = track.optDouble("baseSize", Double.NaN);
+            boolean expectedCollapsed = autoFitEmpty && repeatedAxis
+                    && trackIndex >= 4 && trackIndex <= 7;
+            if (!Double.isFinite(actualSize)
+                    || Math.abs(actualSize - expectedSizes[trackIndex]) > 0.015625
+                    || track.optBoolean("collapsed", false) != expectedCollapsed) return false;
+            trackIndex++;
+        }
+        return trackIndex == expectedSizes.length;
     }
 
     private static String[] c114NegativeTrackExpectation(String sceneId) {
@@ -1018,6 +1205,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
+        if (fixedAutoAreaSize != null) {
+            return "width=" + fixedAutoAreaSize[0] + ",height=" + fixedAutoAreaSize[1];
+        }
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             if (sceneId.contains("-groups-")) {
                 if (sceneId.endsWith("-four-prefix-fill")) return "width=320,height=80";
@@ -1317,6 +1508,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsFixedAutoAreaScene(sceneId)) return "";
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             return sceneId.endsWith("-occupied")
                     || sceneId.endsWith("-four-row-split-fill") ? "width=10,height=10" : "";
@@ -2807,6 +2999,23 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
+        String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
+        int[][] fixedAutoAreaItems = c114FixedAutoAreaItemFrames(sceneId);
+        if (fixedAutoAreaSize != null) {
+            if (fixedAutoAreaNames == null || fixedAutoAreaItems == null
+                    || fixedAutoAreaNames.length != fixedAutoAreaItems.length) return null;
+            StringBuilder frames = new StringBuilder("node_frames_css_px=[0:node=1,x=0,y=0,width=")
+                    .append(fixedAutoAreaSize[0]).append(",height=")
+                    .append(fixedAutoAreaSize[1]);
+            for (int index = 0; index < fixedAutoAreaItems.length; index++) {
+                int[] item = fixedAutoAreaItems[index];
+                frames.append(';').append(index + 1).append(":node=").append(index + 2)
+                        .append(",x=").append(item[0]).append(",y=").append(item[1])
+                        .append(",width=").append(item[2]).append(",height=").append(item[3]);
+            }
+            return frames.append(']').toString();
+        }
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             boolean rowAxis = sceneId.contains("-row-");
             boolean multipleGroups = sceneId.contains("-groups-");
@@ -4462,6 +4671,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
+        if (fixedAutoAreaNames != null) return fixedAutoAreaNames.length + 1;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             return sceneId.endsWith("-occupied")
                     || sceneId.endsWith("-four-row-split-fill") ? 2 : 1;
@@ -5128,6 +5339,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (c114IsFixedAutoAreaScene(sceneId)) {
+            return c114FixedAutoAreaPixelSamplesMatch(sceneId, samples);
+        }
         if (isC114FixedRepeatAutoRepeatPixelSamples(sceneId, samples)) return true;
         if (c114CalcNeighborPixelSamplesMatch(sceneId, samples)) return true;
         if (c114PercentageMaximumPixelSamplesMatch(sceneId, samples)) return true;
@@ -6445,6 +6659,72 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
 
+    private static boolean c114FixedAutoAreaPixelSamplesMatch(
+            String sceneId, List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        int[] root = c114FixedAutoAreaRootSize(sceneId);
+        if (root == null || samples.size() != 4
+                || !("fixed-auto-area-columns-area-larger".equals(sceneId)
+                        || "fixed-auto-area-rows-area-larger".equals(sceneId))) return false;
+        boolean rowAxis = sceneId.equals("fixed-auto-area-rows-area-larger");
+        int rootGapX = rowAxis ? 10 : 118;
+        int rootGapY = rowAxis ? 118 : 10;
+        int edgeX = rowAxis ? 10 : 147;
+        int edgeY = rowAxis ? 147 : 10;
+        int overflowX = rowAxis ? 10 : 160;
+        int overflowY = rowAxis ? 160 : 10;
+        int clearX = rowAxis ? 10 : 171;
+        int clearY = rowAxis ? 171 : 10;
+        int axisRootSize = rowAxis ? root[1] : root[0];
+        int edgePoint = rowAxis ? edgeY : edgeX;
+        int overflowPoint = rowAxis ? overflowY : overflowX;
+        int clearPoint = rowAxis ? clearY : clearX;
+        int[][] items = c114FixedAutoAreaItemFrames(sceneId);
+        if (axisRootSize != 148 || items == null || items.length != 3) return false;
+        int[] right = items[2];
+        int rightStart = rowAxis ? right[1] : right[0];
+        int rightEnd = rightStart + (rowAxis ? right[3] : right[2]);
+        if (edgePoint < rightStart || edgePoint >= axisRootSize
+                || overflowPoint < axisRootSize || overflowPoint >= rightEnd
+                || clearPoint < rightEnd) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        String rightId = "c114-" + sceneId + "-right";
+        boolean rootGapFound = false;
+        boolean edgeFound = false;
+        boolean overflowFound = false;
+        boolean clearFound = false;
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            // Fixture roots start at viewport (0,0); requestForCssViewport scales this CSS point.
+            if (sample.xCssPx < 0 || sample.xCssPx >= 320
+                    || sample.yCssPx < 0 || sample.yCssPx >= 240) return false;
+            switch (sample.id) {
+                case "root-interior-gap":
+                    if (rootGapFound || !rootId.equals(sample.targetNodeId)
+                            || sample.xCssPx != rootGapX || sample.yCssPx != rootGapY) return false;
+                    rootGapFound = true;
+                    break;
+                case "item-crosses-root-edge":
+                    if (edgeFound || !rightId.equals(sample.targetNodeId)
+                            || sample.xCssPx != edgeX || sample.yCssPx != edgeY) return false;
+                    edgeFound = true;
+                    break;
+                case "overflow-item-outside-root":
+                    if (overflowFound || !rightId.equals(sample.targetNodeId)
+                            || sample.xCssPx != overflowX || sample.yCssPx != overflowY) return false;
+                    overflowFound = true;
+                    break;
+                case "clear-outside-item":
+                    if (clearFound || !rootId.equals(sample.targetNodeId)
+                            || sample.xCssPx != clearX || sample.yCssPx != clearY) return false;
+                    clearFound = true;
+                    break;
+                default:
+                    return false;
+            }
+        }
+        return rootGapFound && edgeFound && overflowFound && clearFound;
+    }
+
     private static boolean isC114FixedRepeatAutoRepeatPixelSamples(
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
@@ -7250,6 +7530,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean pixelMatrixSceneMatches = c114GridTrackSizingRequested
                 ? ((pixelMatrixSceneId != null
                                 && c114TemplateAreaRepeatRootFrame(pixelMatrixSceneId) != null)
+                        || c114IsFixedAutoAreaScene(pixelMatrixSceneId)
                         || "cyclic-percent-column".equals(pixelMatrixSceneId)
                         || "cyclic-percent-row".equals(pixelMatrixSceneId)
                         || "definite-percent-column".equals(pixelMatrixSceneId)
@@ -8556,6 +8837,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String expectedRootFrame = c114ExpectedRootFrame(c114GridTrackSizingSceneId);
             String expectedItemFrame = c114ExpectedItemFrame(c114GridTrackSizingSceneId);
             String expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneId);
+            boolean fixedAutoAreaTraceMatches = !c114IsFixedAutoAreaScene(
+                    c114GridTrackSizingSceneId) || c114FixedAutoAreaTraceMatches(
+                            c114GridTrackSizingSceneId, result);
             boolean c114GridTrackSizingTraceAvailable =
                     logC114GridTrackSizingTraceChunks(c114GridTrackSizingRunId, result);
             boolean c114MultiSpanFramesMatch = c114ExpectedMultiSpanFramesMatch(
@@ -8571,6 +8855,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
                     || !c114ExpectedNodeFramesMatch(c114GridTrackSizingSceneId, result)
+                    || !fixedAutoAreaTraceMatches
                     || !c114CrossAxisSpanGroupFramesMatch
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
@@ -8580,6 +8865,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " expected_root_frame=" + expectedRootFrame
                         + " expected_item_frame=" + expectedItemFrame
                         + " expected_node_frames=" + expectedNodeFrames
+                        + " fixed_auto_area_trace_matches=" + fixedAutoAreaTraceMatches
                         + " cross_axis_span_group_frames_match="
                         + c114CrossAxisSpanGroupFramesMatch
                         + " multi_span_frames_match=" + c114MultiSpanFramesMatch
@@ -10827,7 +11113,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 || c114GridTrackSizingRequested;
                         int[] expected = !verifyExactColor ? null
                                 : c114GridTrackSizingRequested
-                                ? c114GridExpectedRgb(pixel.id)
+                                ? c114GridExpectedRgb(sceneId, pixel.id)
                                 : c11GridExpectedRgb(pixel.id, c1133GridTemplateAreasRequested);
                         boolean exact = !verifyExactColor
                                 || (pixel.red == expected[0] && pixel.green == expected[1]
@@ -10877,7 +11163,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
-    private static int[] c114GridExpectedRgb(String sampleId) {
+    private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        if (c114IsFixedAutoAreaScene(sceneId)) {
+            switch (sampleId) {
+                case "root-interior-gap":
+                    return new int[] {34, 197, 94};
+                case "item-crosses-root-edge":
+                case "overflow-item-outside-root":
+                    return new int[] {37, 99, 235};
+                case "clear-outside-item":
+                    return new int[] {0, 0, 0};
+                default:
+                    return new int[] {0, 0, 0};
+            }
+        }
         if (sampleId.startsWith("fixed-repeat-")) {
             return sampleId.endsWith("-root-interior")
                     ? new int[] {34, 197, 94} : new int[] {229, 72, 77};

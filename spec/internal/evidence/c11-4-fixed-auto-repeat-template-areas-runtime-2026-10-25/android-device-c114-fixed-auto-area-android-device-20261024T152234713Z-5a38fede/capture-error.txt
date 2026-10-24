@@ -1,0 +1,4 @@
+node capture-c11-4-auto-repeat-neighbors-simulator.mjs android-device R5KYB06SMPE --scene-id=<C11.4 9-scene list>
+exit_code=1
+AssertionError [ERR_ASSERTION]: fixed-auto-area-columns-fill-collision: 화면 표시 결과가 없습니다.
+at verifyRuntimeLog (tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:5714:10)
