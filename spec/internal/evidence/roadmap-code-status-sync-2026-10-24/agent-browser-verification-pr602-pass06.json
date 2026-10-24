@@ -1,0 +1,81 @@
+{
+  "pass": "pass06",
+  "verified_at_date": "2026-10-24",
+  "browser": {
+    "automation": "Agent Browser 0.31.1",
+    "engine": "Chrome 156.0.8078.48 Headless",
+    "platform": "macOS ARM64",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1
+  },
+  "pages": [
+    {
+      "route": "/spinon/roadmap.html?sync=plan-pr602-pass06",
+      "title": "스피논 구현 로드맵",
+      "checks": {
+        "official_count_72_of_213_visible": true,
+        "plan_pr_602_entry_visible": true,
+        "plan_entry_says_implementation_not_started": true,
+        "plan_link_resolves_to_fixed_auto_repeat_template_areas": true
+      }
+    },
+    {
+      "route": "/spinon/plan/c11-4-fixed-auto-repeat-template-areas.html?sync=plan-pr602-pass06",
+      "title": "C11.4 · fixed-repeat + auto-repeat + grid-template-areas - 스피논 문서",
+      "checks": {
+        "canonical_heading_visible": true,
+        "implementation_and_verification_steps_visible": true,
+        "precomparison_evidence_link_present": true
+      }
+    },
+    {
+      "route": "/spinon/STATUS.html?sync=plan-pr602-pass06",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checks": {
+        "official_count_72_of_213_visible": true,
+        "C11_top_level_checkbox_unchecked": true,
+        "C11_3_3_template_areas_checkbox_unchecked": true,
+        "C11_4_intrinsic_track_sizing_checkbox_unchecked": true,
+        "plan_link_resolves": true
+      }
+    }
+  ],
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser-pr602-visible-pass06.png",
+    "pixels": [1280, 633],
+    "sha256": "114b3d164e350f4e828e59e1a14c25a33f13266d859ad63bd238a3c72f5df7e7",
+    "description": "Live Tailnet roadmap with the merged plan PR #602 entry visible"
+  },
+  "preview_sync": [
+    {
+      "pass": "pass05",
+      "selected_routes": 36,
+      "remote_http_200_and_hash_verified": 36,
+      "backups_verified": 7,
+      "no_deletes": true
+    },
+    {
+      "pass": "pass06",
+      "selected_routes": 2,
+      "remote_http_200_and_hash_verified": 2,
+      "backups_verified": 2,
+      "no_deletes": true
+    },
+    {
+      "pass": "pass07",
+      "selected_routes": 2,
+      "remote_http_200_and_hash_verified": 2,
+      "backups_verified": 0,
+      "no_deletes": true
+    }
+  ],
+  "cleanup": {
+    "agent_browser_session_closed": true,
+    "agent_browser_and_owned_chrome_processes_remaining": 0,
+    "tailnet_preview_listener_preserved": true
+  },
+  "limits": [
+    "This confirms the documentation preview only, not Spinon app behavior or runtime implementation.",
+    "The official implementation count remains 72/213 and C11 remains incomplete."
+  ]
+}
