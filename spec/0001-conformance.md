@@ -38,7 +38,7 @@ React, Vue, Svelte는 서로 다른 작성 문법과 상태 관리 방식을 가
 비교 모델·fixture가 준비되지 않은 구현 작업은 제품 지원 완료로 판정하지 않는다. 새 기능이나 수정이 이 모델을 바꾸면 입력·기대값·판정 기준도 함께 갱신한다. 기능별 시각·레이아웃 비교의 세부 측정은 [CSS 호환 명세](0008-css-compatibility.md)를 따른다.
 
 2026-10-23 C11.4 auto-repeat fixed `calc()` minimum의 구현 전 판정은 [계획](../plan/c11-4-auto-repeat-calc-minimum.md), [6-scene fixture](../tests/fixtures/css/c11/grid-auto-repeat-calc-minimum-c114.html), [Chrome 156 관찰과 규범 독립 계산](internal/evidence/c11-4-auto-repeat-calc-minimum-precomparison-2026-10-23/README.md)에 고정한다. 적용 범위는 positive finite absolute-length calc가 최소값인 `minmax(calc(),1fr)`이며, percent/zero/intrinsic·일반 CSS admission은 제외한다. 이는 계획 oracle이며 Spinon 구현 결과가 아니다.
-2026-10-24 C11.4 fixed-repeat + auto-repeat 혼합의 구현 전 oracle, 8개 columns/rows scene, 200px axis 계산, Chrome 156 관찰 및 허용 오차는 [계획](../plan/c11-4-auto-repeat-fixed-repeat.md)과 [사전 비교 근거](internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md)에 고정한다. 적용 범위는 한 축의 fixed-repeat group 하나, 직접 nonnegative `px` track 1~2개와 기존 auto-repeat subset이다. 현재 Spinon 지원 결과가 아니며 계획/oracle 단계다.
+2026-10-24 C11.4 fixed-repeat + auto-repeat 혼합의 구현 전 oracle, 9개 columns/rows scene, 200px axis 계산, Chrome 156 관찰 및 허용 오차는 [계획](../plan/c11-4-auto-repeat-fixed-repeat.md)과 [사전 비교 근거](internal/evidence/c11-4-auto-repeat-fixed-repeat-precomparison-2026-10-24/README.md)에 고정한다. Stylo computed AST에서 finite nonnegative `LengthPx`로 정규화되는 1~2개 track을 scope로 삼으며, constant absolute `calc()`도 이 type으로 정규화되면 포함한다. 현재 Spinon 지원 결과가 아니며 계획/oracle 단계다.
 
 C04 runtime CSS→Taffy 작업의 구현 전 oracle, 입력 hash, computed value와 CSS px 좌표 기준은 [runtime style-layout 비교 근거](internal/evidence/css-c04-runtime-style-layout-precomparison-2026-10-09.md)에 고정했다. 이는 Chromium 출력 기준이며 Spinon 구현 결과를 포함하지 않는다.
 

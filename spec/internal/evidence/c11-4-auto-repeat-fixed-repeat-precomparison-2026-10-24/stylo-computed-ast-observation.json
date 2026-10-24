@@ -1,0 +1,51 @@
+{
+  "probe": {
+    "command": "mise exec -- cargo test --locked -p spinon-style auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes -- --nocapture",
+    "test": "stylo_dom::cascade::runtime_grid_tests::template_repeat::auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes",
+    "authored_declaration": "grid-template-columns: repeat(2, calc(20px)) repeat(auto-fill, minmax(24px, 1fr))",
+    "test_result": "passed; the existing adapter still rejected the mixed repeat because it rejects RepeatCount::Number"
+  },
+  "computed": {
+    "serialized_property": "repeat(2, 20px) repeat(auto-fill, minmax(24px, 1fr))",
+    "auto_repeat_index": 1,
+    "outer_line_name_group_count": 3,
+    "values": [
+      {
+        "kind": "TrackRepeat",
+        "count": {
+          "kind": "Number",
+          "value": 2
+        },
+        "line_names": [[], []],
+        "track_sizes": [
+          {
+            "kind": "Breadth",
+            "value": {
+              "kind": "Length",
+              "computed_css_px": 20
+            }
+          }
+        ]
+      },
+      {
+        "kind": "TrackRepeat",
+        "count": "AutoFill",
+        "line_names": [[], []],
+        "track_sizes": [
+          {
+            "kind": "Minmax",
+            "minimum": {
+              "kind": "Length",
+              "computed_css_px": 24
+            },
+            "maximum": {
+              "kind": "Flex",
+              "value": 1
+            }
+          }
+        ]
+      }
+    ]
+  },
+  "decision": "The cascade adapter sees a computed absolute Length value and the property serializer emits 20px; this boundary cannot distinguish authored 20px from calc(20px). Scope the candidate by finite nonnegative computed LengthPx and continue rejecting percentage, unresolved Calc, flex and intrinsic fixed-repeat tracks."
+}
