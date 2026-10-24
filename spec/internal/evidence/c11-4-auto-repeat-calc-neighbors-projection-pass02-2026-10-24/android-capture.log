@@ -1,0 +1,36 @@
+android-avd C11.4 scene 1/14: calc-neighbor-col-fill-both passed
+android-avd C11.4 scene 2/14: calc-neighbor-row-fill-both passed
+android-avd C11.4 scene 3/14: calc-neighbor-col-fill-prefix passed
+android-avd C11.4 scene 4/14: calc-neighbor-row-fill-suffix passed
+android-avd C11.4 scene 5/14: calc-neighbor-col-fit-first passed
+android-avd C11.4 scene 6/14: calc-neighbor-col-fit-empty passed
+android-avd C11.4 scene 7/14: calc-neighbor-col-fill-overflow passed
+android-avd C11.4 scene 8/14: calc-neighbor-col-fill-border-box passed
+android-avd C11.4 scene 9/14: calc-neighbor-col-fill-extra-term passed
+android-avd C11.4 scene 10/14: calc-neighbor-col-fill-negative-term passed
+android-avd C11.4 scene 11/14: calc-neighbor-col-fill-negative-final passed
+android-avd C11.4 scene 12/14: calc-neighbor-col-fill-negative-percentage-term passed
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: calc-neighbor-col-max-content: expected rejection summary is missing or differs.
+10-24 12:59:41.258  5492  5511 I SpinonBootstrap: SPINON_C114_GRID_HOST=session=ready owner_tid=5513 isolate_per_session=1 queue_capacity=64 queue_policy=strict-priority-fifo css_worker_per_session=1 css_worker_ready_us=213 session_startup_us=7111
+10-24 12:59:41.258  5492  5511 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-24 12:59:41.259  5492  5511 I SpinonBootstrap: SPINON_C0410_ENVIRONMENT viewport=320.0x240.0 scale=1.0 dark=false status=0 environment_revision=0 layout=empty boxes=0 generation=1 document_revision=0 render_tree_revision=0 style_revision=0 environment_revision=0 cacheHit=false cascadeRecomputedStyleElements=0 cascadeReusedStyleElements=0 cascadeContextStyleElements=0 node_frames_css_px=[] paint_node_order=[]
+10-24 12:59:41.261  5492  5511 E SpinonBootstrap: SPINON_C114_GRID_EVAL run_id=c114-android-avd-20261024T035916409Z-535bec8a-12 scene_id=calc-neighbor-col-max-content status=-11 seq=1 trace_cookie=1 op=eval status=0 caller_tid=5511 owner_tid=5513 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=303 v8_call_us=684 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=10 render_tree_revision=2 document_nodes=2 document_string_units=726 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=2 document_collection_live_handles=2 document_collection_empty_handles=0 document_collection_last_scan_start_ns=4349825905490 document_collection_last_scan_us=8 document_collection_wrapper_root_buffer_bytes=8 document_collection_reclaimed_node_buffer_bytes=8 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=5 ua_snapshot_submitted=true enqueue_total
+10-24 12:59:41.261  5492  5511 E SpinonBootstrap: SPINON_C114_GRID_EVAL_DETAIL run_id=c114-android-avd-20261024T035916409Z-535bec8a-12 scene_id=calc-neighbor-col-max-content part=1/2 status=-11 seq=1 trace_cookie=1 op=eval status=0 caller_tid=5511 owner_tid=5513 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=303 v8_call_us=684 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=10 render_tree_revision=2 document_nodes=2 document_string_units=726 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=2 document_collection_live_handles=2 document_collection_empty_handles=0 document_collection_last_scan_start_ns=4349825905490 document_collection_last_scan_us=8 document_collection_wrapper_root_buffer_bytes=8 document_collection_reclaimed_n
+10-24 12:59:41.261  5492  5511 E SpinonBootstrap: SPINON_C114_GRID_EVAL_DETAIL run_id=c114-android-avd-20261024T035916409Z-535bec8a-12 scene_id=calc-neighbor-col-max-content part=2/2 ode_buffer_bytes=8 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=5 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=1577 submit_total_us=1580 response_report_append_us=0 CSS runtime 장면 생성 실패: layout_failed node=None property=Some("Taffy 입력 또는 계산에 실패했습니다: 노드 1의 grid-template-columns에 명시 track이 없습니다")
+10-24 12:59:41.261  5492  5511 I SpinonBootstrap: SPINON_C114_GRID_REJECTION_DETAIL run_id=c114-android-avd-20261024T035916409Z-535bec8a-12 scene_id=calc-neighbor-col-max-content report=status=-11 seq=1 trace_cookie=1 op=eval status=0 caller_tid=5511 owner_tid=5513 callback_tid=0 submission_lock_wait_us=0 control_lock_wait_us=0 scheduler_lock_wait_us=0 queue_residence_us=303 v8_call_us=684 cancel_requested=false callback_count=0 created_nodes=0 last_node_id=0 document_revision=10 render_tree_revision=2 document_nodes=2 document_string_units=726 document_collection_scans=1 document_collection_deferred=0 document_collection_scanned_handles=2 document_collection_live_handles=2 document_collection_empty_handles=0 document_collection_last_scan_start_ns=4349825905490 document_collection_last_scan_us=8 document_collection_wrapper_root_buffer_bytes=8 document_collection_reclaimed_node_buffer_bytes=8 document_collection_poisoned=0 document_collection_error=none error=none host_document_changed=true ua_snapshot_clone_us=1 ua_snapshot_submit_us=5 ua_snapshot_submitted=true enqueue_total_us=2 response_wait_us=1577 submit_total_us=1580 response_report_append_us=0 CSS runtime 장면 생성 실패: layout_failed node=None property=Some("Taffy 입력 또는 계산에 실패했습니다: 노드 1의 grid-template-columns에 명시 track이 없습니다")
+10-24 12:59:41.261  5492  5511 I SpinonBootstrap: SPINON_C114_GRID_REJECTION_SUMMARY run_id=c114-android-avd-20261024T035916409Z-535bec8a-12 scene_id=calc-neighbor-col-max-content expected=false status=-11 code=missing property=missing node_id=missing frames=absent
+    at verifyRuntimeLog (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:5264:12)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:6637:25 {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: false,
+  expected: true,
+  operator: '==',
+  diff: 'simple'
+}
+
+Node.js v24.20.0
