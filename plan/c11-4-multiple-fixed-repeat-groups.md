@@ -1,6 +1,6 @@
 # C11.4 · auto-repeat과 fixed-repeat 두 그룹 조합
 
-**상태:** 계획-only. CSS Grid 2025 CRD와 Chrome 156의 10개 사전 비교 장면을 고정했다. Stylo cascade 변경, Spinon layout/runtime 실행 및 앱 simulator 검증은 아직 시작하지 않았다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
+**상태:** 제한 구현과 runtime 검증 완료, PR 준비 중. CSS Grid 2025 CRD와 Chrome 156의 10개 사전 비교 장면을 기준으로 Stylo cascade 변환, opt-in runtime fixture, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator를 검증했다. C11.4 checkbox와 공식 완료 수 `72/213`은 유지한다.
 
 ## 기존 동작과 결손
 
@@ -49,6 +49,14 @@
 6. 전용 opt-in `c04-runtime-gpu-fixture-test`에 scene IDs를 추가하고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 10 scene의 frame·track trace·revision·draw/present를 확인한다. 앱 캡처 표본은 AVD `PixelCopy`와 iOS compositor 제출 전 Metal drawable로 한정한다.
 7. 기본 product artifact에는 scene IDs/symbols/payload가 빠지고 opt-in positive control에는 포함되는지 확인한다. APK/IPA 전체 exclusion, Android hardware GPU, iOS compositor 이후 표면을 이 검사로 주장하지 않는다.
 8. 구현 후 새 20관점 implementation/runtime review를 하고, 별도 30관점 PR diff review 뒤에만 Rebase and merge한다. Main official checkbox와 72/213은 유지한다.
+
+## 2026-10-24 구현 결과
+
+- `computed_auto_repeat_tracks`가 authored order 안의 fixed-repeat 그룹을 최대 두 개까지 수집하고 각각의 computed `LengthPx` pattern을 검사·확장한다. 두 그룹의 합산 descriptor 한도, checked arithmetic, allocation failure/recovery와 rebased auto-repeat start/end를 cascade tests에서 확인했다.
+- 10개 고정 scene은 columns/rows, prefix/split/suffix/reversed group, multitrack pattern, empty/occupied auto-fit을 포함한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 10/10 통과했다. PixelCopy와 compositor 제출 전 Metal drawable은 각 12/12 exact다.
+- 기본과 `c04-runtime-gpu-fixture-test` positive-control macOS ARM64 debug static archive를 비교했다. 새 scene marker와 fixture ABI는 기본 archive에서 빠지고 positive control에 포함된다. 이 결과는 최종 APK/IPA exclusion을 뜻하지 않는다.
+- [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md#c114-fixed-repeat-두-그룹--auto-repeat-제한-runtime-slice) · [구현/runtime 실행 근거](../spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.md) · [Chrome 사전 비교](../spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.md).
+- 세 번째 fixed-repeat, named-line metadata, 일반 CSS admission, WPT, Android 실기기/hardware GPU, iOS compositor 이후 pixels 및 C11.4 전체는 미완료다. 따라서 이번 slice는 공식 checkbox를 변경하지 않는다.
 
 ## 통과 조건과 남은 범위
 

@@ -16,6 +16,13 @@ use super::{
     unsupported_grid_value,
 };
 
+#[derive(Clone, Copy)]
+struct FixedRepeatGroup {
+    index: usize,
+    count: usize,
+    expanded_track_count: usize,
+}
+
 pub(super) fn computed_auto_repeat_tracks(
     list: &TrackList,
     node: NodeId,
@@ -31,7 +38,8 @@ pub(super) fn computed_auto_repeat_tracks(
     }
 
     let mut auto_repeat_index = None;
-    let mut fixed_repeat = None;
+    let mut fixed_repeats = [None; 2];
+    let mut fixed_repeat_group_count = 0;
     let mut auto_repeat_mode = None;
     for (index, value) in list.values.iter().enumerate() {
         let TrackListValue::TrackRepeat(repeat) = value else {
@@ -51,14 +59,19 @@ pub(super) fn computed_auto_repeat_tracks(
                 auto_repeat_mode = Some(ComputedCssGridAutoRepeatMode::AutoFit);
             }
             RepeatCount::Number(count) => {
-                if fixed_repeat.is_some() {
+                if fixed_repeat_group_count == fixed_repeats.len() {
                     return Err(unsupported_grid_value(node, property, serialized));
                 }
                 let count = usize::try_from(count)
                     .ok()
                     .filter(|count| *count > 0)
                     .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-                fixed_repeat = Some((index, count));
+                fixed_repeats[fixed_repeat_group_count] = Some(FixedRepeatGroup {
+                    index,
+                    count,
+                    expanded_track_count: 0,
+                });
+                fixed_repeat_group_count += 1;
             }
         }
     }
@@ -76,32 +89,45 @@ pub(super) fn computed_auto_repeat_tracks(
         return Err(unsupported_grid_value(node, property, serialized));
     }
 
-    let fixed_repeat_track_count = if let Some((fixed_index, count)) = fixed_repeat {
-        let Some(TrackListValue::TrackRepeat(repeat)) = list.values.get(fixed_index) else {
-            return Err(unsupported_grid_value(node, property, serialized));
-        };
-        if repeat.track_sizes.is_empty()
-            || repeat.track_sizes.len() > 2
-            || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
-            || list.line_names.iter().any(|group| !group.is_empty())
-            || repeat.line_names.iter().any(|group| !group.is_empty())
+    let mut fixed_repeat_track_count = 0_usize;
+    if fixed_repeat_group_count > 0 {
+        if list.line_names.iter().any(|group| !group.is_empty())
             || auto_repeat.line_names.iter().any(|group| !group.is_empty())
-            || repeat.track_sizes.iter().any(|size| {
-                !matches!(
-                    track_size(size, allow_intrinsic_tracks),
-                    Some(ComputedCssGridTrackSize::LengthPx(value))
-                        if value.is_finite() && value >= 0.0
-                )
-            })
         {
             return Err(unsupported_grid_value(node, property, serialized));
         }
-        count
-            .checked_mul(repeat.track_sizes.len())
-            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?
-    } else {
-        0
-    };
+        for slot in fixed_repeats.iter_mut().take(fixed_repeat_group_count) {
+            let Some(mut group) = *slot else {
+                return Err(unsupported_grid_value(node, property, serialized));
+            };
+            let Some(TrackListValue::TrackRepeat(repeat)) = list.values.get(group.index) else {
+                return Err(unsupported_grid_value(node, property, serialized));
+            };
+            if repeat.track_sizes.is_empty()
+                || repeat.track_sizes.len() > 2
+                || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
+                || repeat.line_names.iter().any(|group| !group.is_empty())
+                || repeat.track_sizes.iter().any(|size| {
+                    !matches!(
+                        track_size(size, allow_intrinsic_tracks),
+                        Some(ComputedCssGridTrackSize::LengthPx(value))
+                            if value.is_finite() && value >= 0.0
+                    )
+                })
+            {
+                return Err(unsupported_grid_value(node, property, serialized));
+            }
+            group.expanded_track_count = group
+                .count
+                .checked_mul(repeat.track_sizes.len())
+                .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+            fixed_repeat_track_count = fixed_repeat_track_count
+                .checked_add(group.expanded_track_count)
+                .filter(|count| *count <= MAX_COMPUTED_GRID_TRACKS)
+                .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+            *slot = Some(group);
+        }
+    }
 
     let mut total_track_count = 0_usize;
     for (index, value) in list.values.iter().enumerate() {
@@ -111,9 +137,19 @@ pub(super) fn computed_auto_repeat_tracks(
                 repeat.track_sizes.len()
             }
             TrackListValue::TrackRepeat(_)
-                if fixed_repeat.is_some_and(|(fixed, _)| fixed == index) =>
+                if fixed_repeats[..fixed_repeat_group_count]
+                    .iter()
+                    .flatten()
+                    .any(|group| group.index == index) =>
             {
-                fixed_repeat_track_count
+                let Some(group) = fixed_repeats[..fixed_repeat_group_count]
+                    .iter()
+                    .flatten()
+                    .find(|group| group.index == index)
+                else {
+                    return Err(unsupported_grid_value(node, property, serialized));
+                };
+                group.expanded_track_count
             }
             TrackListValue::TrackRepeat(_) => {
                 return Err(unsupported_grid_value(node, property, serialized));
@@ -128,7 +164,7 @@ pub(super) fn computed_auto_repeat_tracks(
     let auto_repeat_inner_bytes =
         line_name_groups_metadata_bytes(auto_repeat.line_names.iter().map(|group| group.iter()))
             .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-    let outer_line_name_count = if fixed_repeat.is_some() {
+    let outer_line_name_count = if fixed_repeat_group_count > 0 {
         total_track_count
             .checked_sub(auto_repeat.track_sizes.len())
             .and_then(|count| count.checked_add(2))
@@ -136,7 +172,7 @@ pub(super) fn computed_auto_repeat_tracks(
     } else {
         list.line_names.len()
     };
-    let outer_line_name_bytes = if fixed_repeat.is_some() {
+    let outer_line_name_bytes = if fixed_repeat_group_count > 0 {
         outer_line_name_count.checked_mul(std::mem::size_of::<Vec<String>>())
     } else {
         line_name_groups_metadata_bytes(list.line_names.iter().map(|group| group.iter()))
@@ -182,14 +218,19 @@ pub(super) fn computed_auto_repeat_tracks(
                 auto_repeat_end = Some(tracks.len());
             }
             TrackListValue::TrackRepeat(repeat)
-                if fixed_repeat.is_some_and(|(fixed_index, _)| fixed_index == index) =>
+                if fixed_repeats[..fixed_repeat_group_count]
+                    .iter()
+                    .flatten()
+                    .any(|group| group.index == index) =>
             {
-                let Some((_, count)) =
-                    fixed_repeat.filter(|(fixed_index, _)| *fixed_index == index)
+                let Some(group) = fixed_repeats[..fixed_repeat_group_count]
+                    .iter()
+                    .flatten()
+                    .find(|group| group.index == index)
                 else {
                     return Err(unsupported_grid_value(node, property, serialized));
                 };
-                for _ in 0..count {
+                for _ in 0..group.count {
                     for size in repeat.track_sizes.iter() {
                         let track = track_size(size, allow_intrinsic_tracks)
                             .filter(|track| {
@@ -210,7 +251,7 @@ pub(super) fn computed_auto_repeat_tracks(
     let (Some(start), Some(end)) = (auto_repeat_start, auto_repeat_end) else {
         return Err(unsupported_grid_value(node, property, serialized));
     };
-    let line_names = if fixed_repeat.is_some() {
+    let line_names = if fixed_repeat_group_count > 0 {
         let mut groups = Vec::new();
         reserve_integer_repeat_vec(
             &mut groups,
@@ -243,6 +284,6 @@ pub(super) fn computed_auto_repeat_tracks(
             end,
             line_names: repeated_line_names,
         }),
-        has_fixed_repeat: fixed_repeat.is_some(),
+        has_fixed_repeat: fixed_repeat_group_count > 0,
     })
 }

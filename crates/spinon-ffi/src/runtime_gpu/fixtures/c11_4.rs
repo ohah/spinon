@@ -58,6 +58,8 @@ mod image_multispan;
 mod implicit_intrinsic_tracks;
 #[path = "c11_4/mixed_multispan.rs"]
 mod mixed_multispan;
+#[path = "c11_4/multiple_fixed_repeat_groups.rs"]
+mod multiple_fixed_repeat_groups;
 #[path = "c11_4/multispan_ordering.rs"]
 mod multispan_ordering;
 #[path = "c11_4/negative_implicit_tracks.rs"]
@@ -1197,6 +1199,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = fixed_repeat_auto_repeat::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = multiple_fixed_repeat_groups::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = auto_repeat_positive_percent_minimum::runtime_source(scene_id) {
