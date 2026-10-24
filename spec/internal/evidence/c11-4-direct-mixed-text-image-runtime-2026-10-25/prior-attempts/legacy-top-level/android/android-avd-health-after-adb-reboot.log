@@ -1,0 +1,303 @@
+--------- beginning of main
+10-25 05:49:11.912  1363  1363 I crash_dump64: performing dump of process 491 (target tid = 491)
+10-25 05:49:11.921  1208  1234 I system_server: libdebuggerd_client: done dumping process 491
+10-25 05:49:11.921   342   342 W tombstoned: skipping tombstone file creation due to intercept
+--------- beginning of kernel
+10-25 05:49:11.924     1     1 I init    : Untracked process (pid: 1363 name: (crash_dump64) ppid: 1 pgrp: 1362 state: Z) exited with status 0
+10-25 05:49:11.924     1     1 I init    : Untracked process (pid: 1363 name: (crash_dump64) ppid: 1 pgrp: 1362 state: Z) did not have an associated service entry and will not be reaped
+--------- beginning of system
+10-25 05:49:11.924  1208  1234 I ActivityManager: Collecting stacks for native pid 428
+10-25 05:49:11.924  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 428 status: -2: Success
+10-25 05:49:11.924  1208  1234 I system_server: libdebuggerd_client: started dumping process 428
+10-25 05:49:11.924   342   342 I tombstoned: registered intercept for pid 428 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.925   428   428 I libc    : Requested dump for pid 428 (statsd)
+10-25 05:49:11.925     1     1 I init    : Untracked process (pid: 1365 name: (surfaceflinger) ppid: 1 pgrp: 1365 state: Z) exited with status 0
+10-25 05:49:11.925     1     1 I init    : Untracked process (pid: 1365 name: (surfaceflinger) ppid: 1 pgrp: 1365 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.929  1368  1368 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.929   342   342 I tombstoned: received crash request for pid 428
+10-25 05:49:11.929   342   342 I tombstoned: found intercept fd 512 for pid 428 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.929  1368  1368 I crash_dump64: performing dump of process 428 (target tid = 428)
+10-25 05:49:11.934  1208  1234 I system_server: libdebuggerd_client: done dumping process 428
+10-25 05:49:11.934   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.936  1208  1234 I ActivityManager: Collecting stacks for native pid 494
+10-25 05:49:11.936  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 494 status: -2: Success
+10-25 05:49:11.937  1208  1234 I system_server: libdebuggerd_client: started dumping process 494
+10-25 05:49:11.937   342   342 I tombstoned: registered intercept for pid 494 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.936     1     1 I init    : Untracked process (pid: 1368 name: (crash_dump64) ppid: 1 pgrp: 1367 state: Z) exited with status 0
+10-25 05:49:11.936     1     1 I init    : Untracked process (pid: 1368 name: (crash_dump64) ppid: 1 pgrp: 1367 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.937     1     1 I init    : Untracked process (pid: 1370 name: (statsd) ppid: 1 pgrp: 1370 state: Z) exited with status 0
+10-25 05:49:11.937     1     1 I init    : Untracked process (pid: 1370 name: (statsd) ppid: 1 pgrp: 1370 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.938   494   494 I libc    : Requested dump for pid 494 (android.hardwar)
+10-25 05:49:11.942  1373  1373 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.943   342   342 I tombstoned: received crash request for pid 494
+10-25 05:49:11.943   342   342 I tombstoned: found intercept fd 512 for pid 494 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.943  1373  1373 I crash_dump64: performing dump of process 494 (target tid = 494)
+10-25 05:49:11.944   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.944  1208  1234 I system_server: libdebuggerd_client: done dumping process 494
+10-25 05:49:11.946  1208  1234 I ActivityManager: Collecting stacks for native pid 495
+10-25 05:49:11.947     1     1 I init    : Untracked process (pid: 1373 name: (crash_dump64) ppid: 1 pgrp: 1372 state: Z) exited with status 0
+10-25 05:49:11.947     1     1 I init    : Untracked process (pid: 1373 name: (crash_dump64) ppid: 1 pgrp: 1372 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.947     1     1 I init    : Untracked process (pid: 1375 name: (android.hardwar) ppid: 1 pgrp: 1375 state: Z) exited with status 0
+10-25 05:49:11.947     1     1 I init    : Untracked process (pid: 1375 name: (android.hardwar) ppid: 1 pgrp: 1375 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.946  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 495 status: -2: Success
+10-25 05:49:11.946  1208  1234 I system_server: libdebuggerd_client: started dumping process 495
+10-25 05:49:11.946   342   342 I tombstoned: registered intercept for pid 495 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.946   495   495 I libc    : Requested dump for pid 495 (android.hardwar)
+10-25 05:49:11.951  1379  1379 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.952   342   342 I tombstoned: received crash request for pid 495
+10-25 05:49:11.952   342   342 I tombstoned: found intercept fd 512 for pid 495 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.952  1379  1379 I crash_dump64: performing dump of process 495 (target tid = 495)
+10-25 05:49:11.954   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.954  1208  1234 I system_server: libdebuggerd_client: done dumping process 495
+10-25 05:49:11.955  1208  1234 I ActivityManager: Collecting stacks for native pid 1139
+10-25 05:49:11.956     1     1 I init    : Untracked process (pid: 1379 name: (crash_dump64) ppid: 1 pgrp: 1377 state: Z) exited with status 0
+10-25 05:49:11.956     1     1 I init    : Untracked process (pid: 1379 name: (crash_dump64) ppid: 1 pgrp: 1377 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.957     1     1 I init    : Untracked process (pid: 1381 name: (android.hardwar) ppid: 1 pgrp: 1381 state: Z) exited with status 0
+10-25 05:49:11.957     1     1 I init    : Untracked process (pid: 1381 name: (android.hardwar) ppid: 1 pgrp: 1381 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.956  1208  1234 I system_server: libdebuggerd_client: started dumping process 1139
+10-25 05:49:11.956   342   342 I tombstoned: registered intercept for pid 1139 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.956  1139  1139 I libc    : Requested dump for pid 1139 (audioserver)
+10-25 05:49:11.965  1384  1384 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.966   342   342 I tombstoned: received crash request for pid 1139
+10-25 05:49:11.966   342   342 I tombstoned: found intercept fd 512 for pid 1139 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.966  1384  1384 I crash_dump64: performing dump of process 1139 (target tid = 1139)
+10-25 05:49:11.972  1208  1234 I system_server: libdebuggerd_client: done dumping process 1139
+10-25 05:49:11.972   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.973  1208  1234 I ActivityManager: Collecting stacks for native pid 436
+10-25 05:49:11.973  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 436 status: -2: Success
+10-25 05:49:11.974  1208  1234 I system_server: libdebuggerd_client: started dumping process 436
+10-25 05:49:11.974   342   342 I tombstoned: registered intercept for pid 436 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.974   436   436 I libc    : Requested dump for pid 436 (camera.provider)
+10-25 05:49:11.975     1     1 I init    : Untracked process (pid: 1384 name: (crash_dump64) ppid: 1 pgrp: 1383 state: Z) exited with status 0
+10-25 05:49:11.975     1     1 I init    : Untracked process (pid: 1384 name: (crash_dump64) ppid: 1 pgrp: 1383 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.975     1     1 I init    : Untracked process (pid: 1386 name: (audioserver) ppid: 1 pgrp: 1386 state: Z) exited with status 0
+10-25 05:49:11.975     1     1 I init    : Untracked process (pid: 1386 name: (audioserver) ppid: 1 pgrp: 1386 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.979   284   284 I servicemanager: Notifying apexservice they don't (previously: do) have clients when we now have no record of a client
+10-25 05:49:11.979   401   401 I libbinder.AidlLazyServiceRegistrar: Process has 0 (of 1 available) client(s) in use after notification apexservice has clients: 0
+10-25 05:49:11.979   401   401 I libbinder.AidlLazyServiceRegistrar: Shutdown prevented by forcePersist override flag.
+10-25 05:49:11.981  1389  1389 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.981   342   342 I tombstoned: received crash request for pid 436
+10-25 05:49:11.981   342   342 I tombstoned: found intercept fd 512 for pid 436 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.982  1389  1389 I crash_dump64: performing dump of process 436 (target tid = 436)
+10-25 05:49:11.984  1208  1234 I system_server: libdebuggerd_client: done dumping process 436
+10-25 05:49:11.984   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.986  1208  1234 I ActivityManager: Collecting stacks for native pid 1140
+10-25 05:49:11.987     1     1 I init    : Untracked process (pid: 1389 name: (crash_dump64) ppid: 1 pgrp: 1388 state: Z) exited with status 0
+10-25 05:49:11.987     1     1 I init    : Untracked process (pid: 1389 name: (crash_dump64) ppid: 1 pgrp: 1388 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.988     1     1 I init    : Untracked process (pid: 1391 name: (camera.provider) ppid: 1 pgrp: 1391 state: Z) exited with status 0
+10-25 05:49:11.988     1     1 I init    : Untracked process (pid: 1391 name: (camera.provider) ppid: 1 pgrp: 1391 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.986  1208  1234 I system_server: libdebuggerd_client: started dumping process 1140
+10-25 05:49:11.986   342   342 I tombstoned: registered intercept for pid 1140 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.986  1140  1140 I libc    : Requested dump for pid 1140 (cameraserver)
+10-25 05:49:11.994  1394  1394 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:11.994   342   342 I tombstoned: received crash request for pid 1140
+10-25 05:49:11.994   342   342 I tombstoned: found intercept fd 512 for pid 1140 and type kDebuggerdNativeBacktrace
+10-25 05:49:11.994  1394  1394 I crash_dump64: performing dump of process 1140 (target tid = 1140)
+10-25 05:49:11.998  1208  1234 I system_server: libdebuggerd_client: done dumping process 1140
+10-25 05:49:11.998   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:11.999  1208  1234 I ActivityManager: Collecting stacks for native pid 437
+10-25 05:49:11.999  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 437 status: -2: Success
+10-25 05:49:11.999  1208  1234 I system_server: libdebuggerd_client: started dumping process 437
+10-25 05:49:12.001     1     1 I init    : Untracked process (pid: 1394 name: (crash_dump64) ppid: 1 pgrp: 1393 state: Z) exited with status 0
+10-25 05:49:12.001     1     1 I init    : Untracked process (pid: 1394 name: (crash_dump64) ppid: 1 pgrp: 1393 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.001     1     1 I init    : Untracked process (pid: 1396 name: (cameraserver) ppid: 1 pgrp: 1396 state: Z) exited with status 0
+10-25 05:49:12.001     1     1 I init    : Untracked process (pid: 1396 name: (cameraserver) ppid: 1 pgrp: 1396 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:11.999   342   342 I tombstoned: registered intercept for pid 437 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.000   437   437 I libc    : Requested dump for pid 437 (android.hardwar)
+10-25 05:49:12.004  1400  1400 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.004   342   342 I tombstoned: received crash request for pid 437
+10-25 05:49:12.004   342   342 I tombstoned: found intercept fd 512 for pid 437 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.004  1400  1400 I crash_dump64: performing dump of process 437 (target tid = 437)
+10-25 05:49:12.005   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.005  1208  1234 I system_server: libdebuggerd_client: done dumping process 437
+10-25 05:49:12.007     1     1 I init    : Untracked process (pid: 1400 name: (crash_dump64) ppid: 1 pgrp: 1399 state: Z) exited with status 0
+10-25 05:49:12.007     1     1 I init    : Untracked process (pid: 1400 name: (crash_dump64) ppid: 1 pgrp: 1399 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.008     1     1 I init    : Untracked process (pid: 1402 name: (android.hardwar) ppid: 1 pgrp: 1402 state: Z) exited with status 0
+10-25 05:49:12.008     1     1 I init    : Untracked process (pid: 1402 name: (android.hardwar) ppid: 1 pgrp: 1402 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.006  1208  1234 I ActivityManager: Collecting stacks for native pid 1141
+10-25 05:49:12.007  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 1141 status: -2: Success
+10-25 05:49:12.007  1208  1234 I system_server: libdebuggerd_client: started dumping process 1141
+10-25 05:49:12.007   342   342 I tombstoned: registered intercept for pid 1141 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.007  1141  1141 I libc    : Requested dump for pid 1141 (mediaserver)
+10-25 05:49:12.014  1405  1405 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.014   342   342 I tombstoned: received crash request for pid 1141
+10-25 05:49:12.014   342   342 I tombstoned: found intercept fd 512 for pid 1141 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.014  1405  1405 I crash_dump64: performing dump of process 1141 (target tid = 1141)
+10-25 05:49:12.016  1208  1234 I system_server: libdebuggerd_client: done dumping process 1141
+10-25 05:49:12.016   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.019     1     1 I init    : Untracked process (pid: 1405 name: (crash_dump64) ppid: 1 pgrp: 1404 state: Z) exited with status 0
+10-25 05:49:12.019     1     1 I init    : Untracked process (pid: 1405 name: (crash_dump64) ppid: 1 pgrp: 1404 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.020     1     1 I init    : Untracked process (pid: 1407 name: (mediaserver) ppid: 1 pgrp: 1407 state: Z) exited with status 0
+10-25 05:49:12.020     1     1 I init    : Untracked process (pid: 1407 name: (mediaserver) ppid: 1 pgrp: 1407 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.019  1208  1234 I ActivityManager: Collecting stacks for native pid 1142
+10-25 05:49:12.019  1208  1234 I system_server: libdebuggerd_client: started dumping process 1142
+10-25 05:49:12.019   342   342 I tombstoned: registered intercept for pid 1142 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.019  1142  1142 I libc    : Requested dump for pid 1142 (binder:1142_3)
+10-25 05:49:12.026  1411  1411 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.026   342   342 I tombstoned: received crash request for pid 1142
+10-25 05:49:12.026   342   342 I tombstoned: found intercept fd 512 for pid 1142 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.026  1411  1411 I crash_dump64: performing dump of process 1142 (target tid = 1142)
+10-25 05:49:12.033  1208  1234 I system_server: libdebuggerd_client: done dumping process 1142
+10-25 05:49:12.033   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.035     1     1 I init    : Untracked process (pid: 1411 name: (crash_dump64) ppid: 1 pgrp: 1410 state: Z) exited with status 0
+10-25 05:49:12.035     1     1 I init    : Untracked process (pid: 1411 name: (crash_dump64) ppid: 1 pgrp: 1410 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.036     1     1 I init    : Untracked process (pid: 1413 name: (binder:1142_3) ppid: 1 pgrp: 1413 state: Z) exited with status 0
+10-25 05:49:12.036     1     1 I init    : Untracked process (pid: 1413 name: (binder:1142_3) ppid: 1 pgrp: 1413 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.035  1208  1234 I ActivityManager: Collecting stacks for native pid 311
+10-25 05:49:12.035  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 311 status: -2: Success
+10-25 05:49:12.035  1208  1234 I system_server: libdebuggerd_client: started dumping process 311
+10-25 05:49:12.035   342   342 I tombstoned: registered intercept for pid 311 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.035   311   311 I libc    : Requested dump for pid 311 (android.system.)
+10-25 05:49:12.040  1416  1416 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.040   342   342 I tombstoned: received crash request for pid 311
+10-25 05:49:12.040   342   342 I tombstoned: found intercept fd 512 for pid 311 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.040  1416  1416 I crash_dump64: performing dump of process 311 (target tid = 311)
+10-25 05:49:12.042  1208  1234 I system_server: libdebuggerd_client: done dumping process 311
+10-25 05:49:12.042   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.043  1208  1234 I ActivityManager: Collecting stacks for native pid 1143
+10-25 05:49:12.043  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 1143 status: -2: Success
+10-25 05:49:12.043  1208  1234 I system_server: libdebuggerd_client: started dumping process 1143
+10-25 05:49:12.043   342   342 I tombstoned: registered intercept for pid 1143 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.044  1143  1143 I libc    : Requested dump for pid 1143 (audio.service)
+10-25 05:49:12.045     1     1 I init    : Untracked process (pid: 1418 name: (android.system.) ppid: 1 pgrp: 1418 state: Z) exited with status 0
+10-25 05:49:12.045     1     1 I init    : Untracked process (pid: 1418 name: (android.system.) ppid: 1 pgrp: 1418 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.045     1     1 I init    : Untracked process (pid: 1416 name: (crash_dump64) ppid: 1 pgrp: 1415 state: Z) exited with status 0
+10-25 05:49:12.045     1     1 I init    : Untracked process (pid: 1416 name: (crash_dump64) ppid: 1 pgrp: 1415 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.048  1421  1421 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.049   342   342 I tombstoned: received crash request for pid 1143
+10-25 05:49:12.049   342   342 I tombstoned: found intercept fd 512 for pid 1143 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.049  1421  1421 I crash_dump64: performing dump of process 1143 (target tid = 1143)
+10-25 05:49:12.051   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.051  1208  1234 I system_server: libdebuggerd_client: done dumping process 1143
+10-25 05:49:12.052  1208  1234 I ActivityManager: Collecting stacks for native pid 440
+10-25 05:49:12.052  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 440 status: -2: Success
+10-25 05:49:12.052  1208  1234 I system_server: libdebuggerd_client: started dumping process 440
+10-25 05:49:12.053   342   342 I tombstoned: registered intercept for pid 440 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.053   440   440 I libc    : Requested dump for pid 440 (android.hardwar)
+10-25 05:49:12.054     1     1 I init    : Untracked process (pid: 1421 name: (crash_dump64) ppid: 1 pgrp: 1420 state: Z) exited with status 0
+10-25 05:49:12.054     1     1 I init    : Untracked process (pid: 1421 name: (crash_dump64) ppid: 1 pgrp: 1420 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.054     1     1 I init    : Untracked process (pid: 1423 name: (audio.service) ppid: 1 pgrp: 1423 state: Z) exited with status 0
+10-25 05:49:12.054     1     1 I init    : Untracked process (pid: 1423 name: (audio.service) ppid: 1 pgrp: 1423 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.057  1426  1426 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.057   342   342 I tombstoned: received crash request for pid 440
+10-25 05:49:12.057   342   342 I tombstoned: found intercept fd 512 for pid 440 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.057  1426  1426 I crash_dump64: performing dump of process 440 (target tid = 440)
+10-25 05:49:12.059  1208  1234 I system_server: libdebuggerd_client: done dumping process 440
+10-25 05:49:12.060   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.061  1208  1234 I ActivityManager: Collecting stacks for native pid 444
+10-25 05:49:12.061  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 444 status: -2: Success
+10-25 05:49:12.061  1208  1234 I system_server: libdebuggerd_client: started dumping process 444
+10-25 05:49:12.061   342   342 I tombstoned: registered intercept for pid 444 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.061   444   444 I libc    : Requested dump for pid 444 (android.hardwar)
+10-25 05:49:12.062     1     1 I init    : Untracked process (pid: 1426 name: (crash_dump64) ppid: 1 pgrp: 1425 state: Z) exited with status 0
+10-25 05:49:12.062     1     1 I init    : Untracked process (pid: 1426 name: (crash_dump64) ppid: 1 pgrp: 1425 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.062     1     1 I init    : Untracked process (pid: 1428 name: (android.hardwar) ppid: 1 pgrp: 1428 state: Z) exited with status 0
+10-25 05:49:12.062     1     1 I init    : Untracked process (pid: 1428 name: (android.hardwar) ppid: 1 pgrp: 1428 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.065  1431  1431 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.065   342   342 I tombstoned: received crash request for pid 444
+10-25 05:49:12.065   342   342 I tombstoned: found intercept fd 512 for pid 444 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.066  1431  1431 I crash_dump64: performing dump of process 444 (target tid = 444)
+10-25 05:49:12.068  1208  1234 I system_server: libdebuggerd_client: done dumping process 444
+10-25 05:49:12.068   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.069  1208  1234 I ActivityManager: Collecting stacks for native pid 445
+10-25 05:49:12.069  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 445 status: -2: Success
+10-25 05:49:12.069  1208  1234 I system_server: libdebuggerd_client: started dumping process 445
+10-25 05:49:12.069   342   342 I tombstoned: registered intercept for pid 445 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.069   445   445 I libc    : Requested dump for pid 445 (android.hardwar)
+10-25 05:49:12.070     1     1 I init    : Untracked process (pid: 1431 name: (crash_dump64) ppid: 1 pgrp: 1430 state: Z) exited with status 0
+10-25 05:49:12.070     1     1 I init    : Untracked process (pid: 1431 name: (crash_dump64) ppid: 1 pgrp: 1430 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.071     1     1 I init    : Untracked process (pid: 1433 name: (android.hardwar) ppid: 1 pgrp: 1433 state: Z) exited with status 0
+10-25 05:49:12.071     1     1 I init    : Untracked process (pid: 1433 name: (android.hardwar) ppid: 1 pgrp: 1433 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.073  1436  1436 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.073   342   342 I tombstoned: received crash request for pid 445
+10-25 05:49:12.073   342   342 I tombstoned: found intercept fd 512 for pid 445 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.073  1436  1436 I crash_dump64: performing dump of process 445 (target tid = 445)
+10-25 05:49:12.075  1208  1234 I system_server: libdebuggerd_client: done dumping process 445
+10-25 05:49:12.075   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.077  1208  1234 I ActivityManager: Collecting stacks for native pid 446
+10-25 05:49:12.077  1208  1234 E android.os.Debug: Failed to get binder state info for pid: 446 status: -2: Success
+10-25 05:49:12.077  1208  1234 I system_server: libdebuggerd_client: started dumping process 446
+10-25 05:49:12.077   342   342 I tombstoned: registered intercept for pid 446 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.077   446   446 I libc    : Requested dump for pid 446 (android.hardwar)
+10-25 05:49:12.078     1     1 I init    : Untracked process (pid: 1436 name: (crash_dump64) ppid: 1 pgrp: 1435 state: Z) exited with status 0
+10-25 05:49:12.078     1     1 I init    : Untracked process (pid: 1436 name: (crash_dump64) ppid: 1 pgrp: 1435 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.078     1     1 I init    : Untracked process (pid: 1438 name: (android.hardwar) ppid: 1 pgrp: 1438 state: Z) exited with status 0
+10-25 05:49:12.078     1     1 I init    : Untracked process (pid: 1438 name: (android.hardwar) ppid: 1 pgrp: 1438 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.081  1441  1441 I crash_dump64: obtaining output fd from tombstoned, type: kDebuggerdNativeBacktrace
+10-25 05:49:12.082   342   342 I tombstoned: received crash request for pid 446
+10-25 05:49:12.082   342   342 I tombstoned: found intercept fd 512 for pid 446 and type kDebuggerdNativeBacktrace
+10-25 05:49:12.082  1441  1441 I crash_dump64: performing dump of process 446 (target tid = 446)
+10-25 05:49:12.084   342   342 W tombstoned: skipping tombstone file creation due to intercept
+10-25 05:49:12.084  1208  1234 I system_server: libdebuggerd_client: done dumping process 446
+10-25 05:49:12.085  1208  1234 I ActivityManager: dumpStackTraces extraPids=[]
+10-25 05:49:12.085  1208  1234 I ActivityManager: Done dumping
+10-25 05:49:12.086     1     1 I init    : Untracked process (pid: 1441 name: (crash_dump64) ppid: 1 pgrp: 1440 state: Z) exited with status 0
+10-25 05:49:12.086     1     1 I init    : Untracked process (pid: 1441 name: (crash_dump64) ppid: 1 pgrp: 1440 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.087     1     1 I init    : Untracked process (pid: 1443 name: (android.hardwar) ppid: 1 pgrp: 1443 state: Z) exited with status 0
+10-25 05:49:12.087     1     1 I init    : Untracked process (pid: 1443 name: (android.hardwar) ppid: 1 pgrp: 1443 state: Z) did not have an associated service entry and will not be reaped
+10-25 05:49:12.369  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:12.371   284  1444 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:12.372   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:12.373     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:12.373  1444  1444 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:12.661  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:12.664   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:12.663   284  1445 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:12.665     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:12.665  1445  1445 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:13.372  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:13.373   284  1446 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:13.375   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:13.375     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:13.375  1446  1446 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:13.666  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:13.667   284  1447 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:13.668   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:13.669     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:13.669  1447  1447 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:14.375  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:14.375   284  1448 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:14.377   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:14.378     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:14.378  1448  1448 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:14.677  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:14.677   284  1449 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:14.679   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:14.680     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:14.680  1449  1449 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:15.376  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:15.376   284  1450 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:15.378   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:15.379     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:15.379  1450  1450 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:15.679  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:15.679   284  1451 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:15.681   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:15.682     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:15.682  1451  1451 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:16.386  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:16.387   284  1452 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:16.389   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:16.389     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:16.389  1452  1452 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:16.684  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:16.685   284  1453 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:16.686   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:16.687     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:16.687  1453  1453 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:17.387  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:17.388   284  1455 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:17.390   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:17.390     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:17.390  1455  1455 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:17.689  1208  1208 W libbinder.ServiceManagerCppClient: Waited one second for SurfaceFlingerAIDL (is service started? Number of threads started in the threadpool: 32. Are binder threads started and available?)
+10-25 05:49:17.692   284   284 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Since 'SurfaceFlingerAIDL' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:17.691   284  1456 W libc    : Unable to set property "ctl.interface_start" to "aidl/SurfaceFlingerAIDL": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:17.693     1     1 E init    : Control message: Could not find 'aidl/SurfaceFlingerAIDL' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:17.693  1456  1456 I servicemanager: Caller(pid=1208,uid=1000,sid=u:r:system_server:s0) Tried to start aidl service SurfaceFlingerAIDL as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:18.398  1139  1139 W libbinder.ServiceManagerCppClient: Waited one second for activity (is service started? Number of threads started in the threadpool: 16. Are binder threads started and available?)
+10-25 05:49:18.400   284   284 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Since 'activity' could not be found trying to start it as a lazy AIDL service. (if it's not configured to be a lazy service, it may be stuck starting or still starting).
+10-25 05:49:18.398   284  1457 W libc    : Unable to set property "ctl.interface_start" to "aidl/activity": PROP_ERROR_HANDLE_CONTROL_MESSAGE (0x20)
+10-25 05:49:18.400     1     1 E init    : Control message: Could not find 'aidl/activity' for ctl.interface_start from pid: 284 (/system/bin/servicemanager)
+10-25 05:49:18.401  1457  1457 I servicemanager: Caller(pid=1139,uid=1041,sid=u:r:audioserver:s0) Tried to start aidl service activity as a lazy service, but was unable to. Usually this happens when a service is not installed, but if the service is intended to be used as a lazy service, then it may be configured incorrectly.
+10-25 05:49:18.522   493   493 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color:export ANDROID_LOG_TAGS=''; exec logcat '-d' '-T' '300' '-v' 'threadtime''

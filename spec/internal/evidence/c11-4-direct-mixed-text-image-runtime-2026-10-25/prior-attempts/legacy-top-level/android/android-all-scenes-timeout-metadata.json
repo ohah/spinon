@@ -1,0 +1,39 @@
+{
+  "target": "android-avd",
+  "serial": "emulator-5558",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "qemu": "1",
+  "apkSha256": "3d9b7570a008f449348ef0e1e01fd545a71f6ce291a6c4763dc208de04afd69f",
+  "installedApkSha256": "3d9b7570a008f449348ef0e1e01fd545a71f6ce291a6c4763dc208de04afd69f",
+  "installedApkPath": "/data/app/~~htL2VfzxAN8QcJdHYiTuTw==/dev.spinon.bootstrap-i_gOMvF1ek0ykUrmFjaHsQ==/base.apk",
+  "sourceRevision": {
+    "commit": "da3c5c6d1f6109fbae3edc38f3811763ec38c354",
+    "tree": "3a6767903c291f7b49057afa3c4770aa4a6fbb47",
+    "trackedDiffSha256": "77e59dd053d096234904ba8e917339f067625aacf57072d9477c3fec48e99660",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs",
+      "plan/c11-4-mixed-direct-text-image-intrinsic.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift"
+    ]
+  },
+  "runPrefix": "c114-direct-mixed-android-avd-20261024T203938178Z-8b74f1c1",
+  "runIDs": [
+    "c114-direct-mixed-android-avd-20261024T203938178Z-8b74f1c1-0",
+    "c114-direct-mixed-android-avd-20261024T203938178Z-8b74f1c1-1",
+    "c114-direct-mixed-android-avd-20261024T203938178Z-8b74f1c1-2",
+    "c114-direct-mixed-android-avd-20261024T203938178Z-8b74f1c1-3"
+  ],
+  "status": "failed",
+  "failedScene": "direct-max-content-reversed",
+  "failure": "AssertionError: draw/present log missing after 150 seconds",
+  "runtimeLog": "android-runtime-direct-max-content-reversed.log",
+  "liveLogSnapshot": "android-runtime-direct-max-content-reversed-live.log",
+  "liveLogSnapshotSha256": "2d3209e1d7c5313cc3d0867077acb50a3d4accccddab6146cec407cbab714bea"
+}

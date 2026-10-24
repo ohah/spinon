@@ -222,6 +222,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse",
     "definite-minmax-calc-mixed-text-image-span-forward",
     "definite-minmax-calc-mixed-text-image-span-reverse",
+    "direct-min-content-forward", "direct-min-content-reversed",
+    "direct-max-content-forward", "direct-max-content-reversed",
     "max-content-forward", "max-content-reverse",
     "definite-forward", "definite-reverse",
     "grid-gap-definite-percent", "grid-gap-cyclic-percent",
@@ -391,6 +393,10 @@ private let c114CyclicMinmaxMixedTextImageSpanSceneIDs: Set<String> = [
     "definite-minmax-calc-mixed-text-image-span-reverse",
     "max-content-forward", "max-content-reverse",
     "definite-forward", "definite-reverse",
+]
+private let c114DirectMixedTextImageIntrinsicSceneIDs: Set<String> = [
+    "direct-min-content-forward", "direct-min-content-reversed",
+    "direct-max-content-forward", "direct-max-content-reversed",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -1021,12 +1027,35 @@ private func c114CrossAxisFixedAutoRepeatAreaExpectation(
     )
 }
 
+private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
+    guard c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) else { return nil }
+    let minContent = sceneID.hasPrefix("direct-min-content-")
+    let reversed = sceneID.hasSuffix("-reversed")
+    let textWidth = minContent ? 50 : 80
+    let textHeight = minContent ? 20 : 10
+    let frames = reversed
+        ? [
+            "0:node=1,x=0,y=0,width=120,height=48",
+            "1:node=2,x=0,y=24,width=24,height=16",
+            "2:node=3,x=0,y=0,width=\(textWidth),height=\(textHeight)",
+        ]
+        : [
+            "0:node=1,x=0,y=0,width=120,height=48",
+            "1:node=2,x=0,y=0,width=\(textWidth),height=\(textHeight)",
+            "2:node=4,x=0,y=24,width=24,height=16",
+        ]
+    return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return "width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"
     }
     if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
         return "width=\(crossAxisArea.width),height=\(crossAxisArea.height)"
+    }
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        return "width=120,height=48"
     }
     if sceneID.hasPrefix("fixed-repeat-") {
         if sceneID.contains("-groups-") {
@@ -1295,6 +1324,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return calcMinimumFrame
     }
     if let namedFrame = c114NamedAutoRepeatItemFrame(sceneID) { return namedFrame }
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        let minContent = sceneID.hasPrefix("direct-min-content-")
+        return minContent ? "width=50,height=20" : "width=80,height=10"
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return "" }
     if c114IsCrossAxisSpanGroupsScene(sceneID)
@@ -1518,8 +1551,56 @@ private func c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(
     return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneID, diagnostics: diagnostics)
 }
 
+private func c114ExpectedDirectMixedTextImageIntrinsicInputs(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          (revision["intrinsicSize"] as? Int) == 1,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 2 else { return false }
+
+    let reversed = sceneID.hasSuffix("-reversed")
+    let textValues: [Double] = [50, 20, 80, 10]
+    let expected: [(node: Int, kind: String)] = reversed
+        ? [(2, "replaced"), (3, "text")]
+        : [(2, "text"), (4, "replaced")]
+    for (index, input) in inputs.enumerated() {
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == expected[index].node,
+              (input["sourceOrder"] as? Int) == index,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == expected[index].kind else { return false }
+
+        if expected[index].kind == "text" {
+            guard (source["fontRegistryRevision"] as? Int) == 1 else { return false }
+            let values = ["minContent", "minContentHeight", "maxContent", "maxContentHeight"]
+                .compactMap { (source[$0] as? NSNumber)?.doubleValue }
+            guard values.count == textValues.count,
+                  zip(values, textValues).allSatisfy({ abs($0.0 - $0.1) <= 0.0001 }) else {
+                return false
+            }
+            guard let textSources = input["textSources"] as? [Any], textSources.isEmpty else {
+                return false
+            }
+        } else {
+            guard let natural = source["natural"] as? [String: Any],
+                  (natural["width"] as? NSNumber)?.doubleValue == 24,
+                  (natural["height"] as? NSNumber)?.doubleValue == 16,
+                  natural.keys.contains("aspectRatio"), natural["aspectRatio"] is NSNull else {
+                return false
+            }
+        }
+    }
+    return c114DirectMixedTextImageTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        return c114ExpectedDirectMixedTextImageIntrinsicInputs(sceneID, report: report)
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
         return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneID, report: report)
     }
@@ -1708,6 +1789,9 @@ private func c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
 }
 
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        return c114ExpectedDirectMixedTextImageIntrinsicInputs(sceneID, report: report)
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
         return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneID, report: report)
     }
@@ -2648,9 +2732,86 @@ private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
     return true
 }
 
+private func c114DirectMixedTextImageTraceMatches(
+    _ sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    guard c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) else { return false }
+    let minContent = sceneID.hasPrefix("direct-min-content-")
+    let reversed = sceneID.hasSuffix("-reversed")
+    let expectedColumn = minContent ? 50.0 : 80.0
+    let expectedColumnContributionKind = minContent ? "MinContent" : "MaxContent"
+    let textNode = reversed ? 3 : 2
+    let imageNode = reversed ? 2 : 4
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          (passes[0]["axis"] as? String) == "Columns",
+          (passes[1]["axis"] as? String) == "Rows" else { return false }
+
+    let expectedTrackSizes = [[expectedColumn], [24.0, 24.0]]
+    for (index, pass) in passes.enumerated() {
+        guard let stages = pass["stages"] as? [[String: Any]],
+              let initialStage = stages.first(where: {
+                  ($0["stage"] as? String) == "Initialize"
+              }),
+              let finalStage = stages.last,
+              stageTrackSizesMatch(
+                  initialStage,
+                  expected: index == 0 ? [0.0] : expectedTrackSizes[index]
+              ),
+              stageTrackSizesMatch(finalStage, expected: expectedTrackSizes[index]) else {
+            return false
+        }
+        if index == 0 && !stages.contains(where: {
+            ($0["stage"] as? String)
+                == "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }"
+        }) {
+            return false
+        }
+    }
+
+    guard let contributions = passes[0]["contributions"] as? [[String: Any]] else {
+        return false
+    }
+    func hasContribution(item: Int, kind: String, value: Double) -> Bool {
+        contributions.contains { contribution in
+            guard (contribution["item"] as? Int) == item,
+                  (contribution["span"] as? Int) == 1,
+                  (contribution["kind"] as? String) == kind,
+                  let actual = contribution["value"] as? NSNumber else { return false }
+            return abs(actual.doubleValue - value) <= 1.0 / 64.0
+        }
+    }
+    return hasContribution(
+        item: textNode, kind: expectedColumnContributionKind, value: expectedColumn
+    ) && hasContribution(item: imageNode, kind: expectedColumnContributionKind, value: 24)
+}
+
+private func stageTrackSizesMatch(_ stage: [String: Any], expected: [Double]) -> Bool {
+    guard let tracks = stage["tracks"] as? [[String: Any]] else { return false }
+    for track in tracks where (track["gutter"] as? Bool) == true {
+        guard let baseSize = track["baseSize"] as? NSNumber,
+              abs(baseSize.doubleValue) <= 0.0001 else { return false }
+    }
+    let activeTracks = tracks.filter {
+        ($0["collapsed"] as? Bool) == false && ($0["gutter"] as? Bool) == false
+    }
+    guard activeTracks.count == expected.count else { return false }
+    for (index, track) in activeTracks.enumerated() {
+        guard let baseSize = track["baseSize"] as? NSNumber,
+              abs(baseSize.doubleValue - expected[index]) <= 0.0001 else { return false }
+    }
+    return true
+}
+
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        return c114DirectMixedTextImageTraceMatches(sceneID, diagnostics: diagnostics)
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
         return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneID, diagnostics: diagnostics)
     }
@@ -2989,6 +3150,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return calcMinimumFrames
     }
     if let namedFrames = c114NamedAutoRepeatNodeFrames(sceneID) { return namedFrames }
+    if let directMixedFrames = c114DirectMixedTextImageNodeFrames(sceneID) {
+        return directMixedFrames
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return nil }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) {
         let intrinsic = sceneID.contains("-intrinsic-")
@@ -3925,6 +4089,9 @@ private func c114NamedAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedCrossAxisSpanGroupFramesMatch(
     _ sceneID: String, report: String
 ) -> Bool {
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
+        return c114ExpectedNodeFramesMatch(sceneID, report: report)
+    }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) {
         return c114ExpectedCyclicMinmaxMixedTextImageSpanFramesMatch(sceneID, report: report)
     }
@@ -4498,6 +4665,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if let calcMinimumCount = c114AutoRepeatCalcMinimumBoxCount(sceneID) {
         return calcMinimumCount
     }
+    if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) { return 3 }
     if c114CyclicMinmaxMixedTextImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114CyclicMinmaxReplacedImageSpanSceneIDs.contains(sceneID) { return 4 }
     if c114IsMixedCrossAxisSpanGroupsScene(sceneID) { return 4 }

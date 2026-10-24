@@ -1,0 +1,3 @@
+$ verify latest Android/iOS capture manifests, source/app hashes, scene log and PNG hashes
+android c114-direct-mixed-android-avd-20261024T214623162Z-49f60916: 4/4; source/build/script/log/PNG hashes and image checks match
+ios c114-direct-mixed-ios-simulator-20261024T214638568Z-954b507d: 4/4; source/build/script/log/PNG hashes and image checks match

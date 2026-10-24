@@ -1,0 +1,7 @@
+$ mise exec -- swift spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verify-ios-screenshot.swift spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/prior-attempts/legacy-top-level/ios/ios-direct-min-content-forward.png
+6:26
+SPINON • C11.4 Grid track sizing
+Intrinsic Grid track sizing → Stylo → Taffy → WGPU
+Metal • 320×240 CSS px
+status=0 layout=ready boxes=3 generation=1
+document_revision=19 environment_revision=1

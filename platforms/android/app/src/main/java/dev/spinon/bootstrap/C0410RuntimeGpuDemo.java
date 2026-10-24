@@ -142,6 +142,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-two-axis-span-text-max-content",
             "definite-minmax-calc-two-axis-span-text-min-content",
             "definite-minmax-calc-two-axis-span-text-max-content",
+            "direct-min-content-forward", "direct-min-content-reversed",
+            "direct-max-content-forward", "direct-max-content-reversed",
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward",
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
             "definite-minmax-calc-cross-axis-span-groups-forward",
@@ -1211,6 +1213,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            return "width=120,height=48";
+        }
         int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
         if (fixedAutoAreaSize != null) {
             return "width=" + fixedAutoAreaSize[0] + ",height=" + fixedAutoAreaSize[1];
@@ -1514,6 +1519,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            return sceneId.startsWith("direct-min-content-")
+                    ? "width=50,height=20" : "width=80,height=10";
+        }
         if (c114IsFixedAutoAreaScene(sceneId)) return "";
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {
             return sceneId.endsWith("-occupied")
@@ -1750,6 +1759,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            return c114ExpectedMixedIntrinsicInputs(sceneId, report);
+        }
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
             return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneId, report);
         }
@@ -2191,6 +2203,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     private static boolean c114ExpectedImageIntrinsicInputs(String sceneId, String report) {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            return c114ExpectedMixedIntrinsicInputs(sceneId, report);
+        }
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
             return c114ExpectedCyclicMinmaxMixedTextImageSpanInputs(sceneId, report);
         }
@@ -2539,6 +2554,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ImageTrackSizingTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            return c114DirectMixedTextImageTraceMatches(sceneId, diagnostics);
+        }
         if (c114IsCyclicMinmaxMixedTextImageSpanScene(sceneId)) {
             return c114CyclicMinmaxMixedTextImageSpanTraceMatches(sceneId, diagnostics);
         }
@@ -3005,6 +3023,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+            boolean reversed = sceneId.endsWith("-reversed");
+            boolean maxContent = sceneId.startsWith("direct-max-content-");
+            String text = "x=0,y=0,width=" + (maxContent ? 80 : 50)
+                    + ",height=" + (maxContent ? 10 : 20);
+            String image = "x=0,y=24,width=24,height=16";
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=48;"
+                    + (reversed
+                            ? "1:node=2," + image + ";2:node=3," + text
+                            : "1:node=2," + text + ";2:node=4," + image)
+                    + "]";
+        }
         int[] fixedAutoAreaSize = c114FixedAutoAreaRootSize(sceneId);
         String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
         int[][] fixedAutoAreaItems = c114FixedAutoAreaItemFrames(sceneId);
@@ -4434,11 +4464,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || "mixed-text-image-span3-before-span2".equals(sceneId);
     }
 
+    private static boolean c114IsDirectMixedTextImageIntrinsicScene(String sceneId) {
+        return "direct-min-content-forward".equals(sceneId)
+                || "direct-min-content-reversed".equals(sceneId)
+                || "direct-max-content-forward".equals(sceneId)
+                || "direct-max-content-reversed".equals(sceneId);
+    }
+
     private static boolean c114ExpectedMixedIntrinsicInputs(String sceneId, String report) {
         int[] nodes;
         String[] kinds;
         int[][] textMetrics;
         switch (sceneId) {
+            case "direct-min-content-forward":
+                nodes = new int[] {2, 4};
+                kinds = new String[] {"text", "replaced"};
+                textMetrics = new int[][] {{50, 20, 80, 10}, null};
+                break;
+            case "direct-min-content-reversed":
+                nodes = new int[] {2, 3};
+                kinds = new String[] {"replaced", "text"};
+                textMetrics = new int[][] {null, {50, 20, 80, 10}};
+                break;
+            case "direct-max-content-forward":
+                nodes = new int[] {2, 4};
+                kinds = new String[] {"text", "replaced"};
+                textMetrics = new int[][] {{50, 20, 80, 10}, null};
+                break;
+            case "direct-max-content-reversed":
+                nodes = new int[] {2, 3};
+                kinds = new String[] {"replaced", "text"};
+                textMetrics = new int[][] {null, {50, 20, 80, 10}};
+                break;
             case "mixed-text-image-span2-forward":
                 nodes = new int[] {2, 4};
                 kinds = new String[] {"text", "replaced"};
@@ -4482,6 +4539,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || input.optInt("sourceOrder", -1) != index || source == null
                         || !kinds[index].equals(source.optString("kind"))) return false;
                 if ("text".equals(kinds[index])) {
+                    if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
+                        org.json.JSONArray textSources = input.optJSONArray("textSources");
+                        if (textSources == null || textSources.length() != 0) return false;
+                    }
                     int[] metrics = textMetrics[index];
                     if (source.optInt("fontRegistryRevision", -1) != 1
                             || source.optDouble("minContent", Double.NaN) != metrics[0]
@@ -4499,10 +4560,105 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
                 }
             }
-            return true;
+            return !c114IsDirectMixedTextImageIntrinsicScene(sceneId)
+                    || c114ImageTrackSizingTraceMatches(sceneId, diagnostics);
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean c114DirectMixedTextImageTraceMatches(
+            String sceneId, org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        boolean maxContent = sceneId.startsWith("direct-max-content-");
+        boolean reversed = sceneId.endsWith("-reversed");
+        int textNode = reversed ? 3 : 2;
+        int imageNode = reversed ? 2 : 4;
+        double expectedColumn = maxContent ? 80.0 : 50.0;
+        String expectedColumnContributionKind = maxContent ? "MaxContent" : "MinContent";
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 1) return false;
+        org.json.JSONObject trace = traces.optJSONObject(0);
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (trace == null || trace.optInt("grid", -1) != 1
+                || passes == null || passes.length() != 2) return false;
+        org.json.JSONObject columns = passes.optJSONObject(0);
+        org.json.JSONObject rows = passes.optJSONObject(1);
+        if (columns == null || rows == null
+                || !"Columns".equals(columns.optString("axis"))
+                || !"Rows".equals(rows.optString("axis"))
+                || !c114DirectMixedTrackPassMatches(columns, new double[] {expectedColumn}, true)
+                || !c114DirectMixedTrackPassMatches(rows, new double[] {24.0, 24.0}, false)) {
+            return false;
+        }
+        org.json.JSONArray columnContributions = columns.optJSONArray("contributions");
+        if (columnContributions == null
+                || !c114DirectMixedContributionMatches(columnContributions, textNode,
+                        expectedColumnContributionKind, expectedColumn)
+                || !c114DirectMixedContributionMatches(columnContributions, imageNode,
+                        expectedColumnContributionKind, 24.0)) return false;
+        return true;
+    }
+
+    private static boolean c114DirectMixedTrackPassMatches(
+            org.json.JSONObject pass, double[] expectedSizes, boolean intrinsicColumn
+    ) throws org.json.JSONException {
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject initialized = null;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        boolean hasSpanOneIntrinsicBatch = false;
+        for (int index = 0; index < stages.length(); index++) {
+            org.json.JSONObject stage = stages.optJSONObject(index);
+            if (stage == null) return false;
+            String name = stage.optString("stage");
+            if ("Initialize".equals(name)) initialized = stage;
+            if ("IntrinsicItemBatch { span: 1, crosses_flexible_track: false }".equals(name)) {
+                hasSpanOneIntrinsicBatch = true;
+            }
+        }
+        double[] initialSizes = intrinsicColumn ? new double[] {0.0} : expectedSizes;
+        return initialized != null && finalStage != null
+                && c114DirectMixedTrackStageSizesMatch(initialized, initialSizes)
+                && c114DirectMixedTrackStageSizesMatch(finalStage, expectedSizes)
+                && (!intrinsicColumn || hasSpanOneIntrinsicBatch);
+    }
+
+    private static boolean c114DirectMixedTrackStageSizesMatch(
+            org.json.JSONObject stage, double[] expectedSizes
+    ) throws org.json.JSONException {
+        org.json.JSONArray tracks = stage.optJSONArray("tracks");
+        if (tracks == null) return false;
+        int observed = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null || !track.has("gutter") || !track.has("collapsed")
+                    || !track.has("baseSize")) return false;
+            double baseSize = track.optDouble("baseSize", Double.NaN);
+            if (track.optBoolean("gutter", false)) {
+                if (!Double.isFinite(baseSize) || Math.abs(baseSize) > 0.0001) return false;
+                continue;
+            }
+            if (track.optBoolean("collapsed", false)) continue;
+            if (observed >= expectedSizes.length || !Double.isFinite(baseSize)
+                    || Math.abs(baseSize - expectedSizes[observed]) > 0.0001) return false;
+            observed++;
+        }
+        return observed == expectedSizes.length;
+    }
+
+    private static boolean c114DirectMixedContributionMatches(
+            org.json.JSONArray contributions, int node, String kind, double expected
+    ) {
+        for (int index = 0; index < contributions.length(); index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            if (contribution != null && contribution.optInt("item", -1) == node
+                    && contribution.optInt("span", -1) == 1
+                    && kind.equals(contribution.optString("kind"))
+                    && Math.abs(contribution.optDouble("value", Double.NaN) - expected)
+                            <= 1.0 / 64.0) return true;
+        }
+        return false;
     }
 
     private static boolean c114ExpectedAnonymousTextMultiImageInputs(
@@ -5045,6 +5201,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) return 3;
         String[] fixedAutoAreaNames = c114FixedAutoAreaItemNames(sceneId);
         if (fixedAutoAreaNames != null) return fixedAutoAreaNames.length + 1;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) {

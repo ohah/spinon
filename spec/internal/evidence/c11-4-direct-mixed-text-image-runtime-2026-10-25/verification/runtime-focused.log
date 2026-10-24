@@ -1,0 +1,20 @@
+$ mise exec -- cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test exposes_four_direct_nonspanning_text_image_intrinsic_scenes
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-09746b924432cd5c)
+
+running 1 test
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_direct_nonspanning_text_image_intrinsic_scenes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 223 filtered out; finished in 0.01s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-ae548a92fafd5578)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-57890ee5758e6768)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

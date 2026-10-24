@@ -1,10 +1,12 @@
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridPlacement, ComputedCssGridTrackSize,
-    ComputedCssMaxSize, ComputedCssSpacingValue, ComputedElementStyle,
+    ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
 };
 
-use super::{Item, ItemKind, RuntimeLayoutFailure, Scene, failure, layout_failure, unsupported};
+use super::{
+    Item, ItemKind, RuntimeLayoutFailure, Scene, SceneGrid, failure, layout_failure, unsupported,
+};
 
 pub(super) fn validate_grid_style(
     style: &ComputedElementStyle,
@@ -26,28 +28,49 @@ pub(super) fn validate_grid_style(
             Some(scene.id.to_owned()),
         )
     })?;
-    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(220.0)
-        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(180.0)
+    let (root_width, root_height, columns, rows) = match scene.grid {
+        SceneGrid::SpanningMultiTrack => (
+            220.0,
+            180.0,
+            vec![ComputedCssGridTrackSize::MinContent; 4],
+            vec![ComputedCssGridTrackSize::LengthPx(60.0); 3],
+        ),
+        SceneGrid::DirectMinContent => (
+            120.0,
+            48.0,
+            vec![ComputedCssGridTrackSize::MinContent],
+            vec![ComputedCssGridTrackSize::LengthPx(24.0); 2],
+        ),
+        SceneGrid::DirectMaxContent => (
+            120.0,
+            48.0,
+            vec![ComputedCssGridTrackSize::MaxContent],
+            vec![ComputedCssGridTrackSize::LengthPx(24.0); 2],
+        ),
+    };
+    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(root_width)
+        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(root_height)
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || style.layout_dimensions.flex_basis != ComputedCssDimension::Auto
+        || style.layout_position != ComputedCssPosition::Static
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
         || !zero_spacing(style.layout_spacing.row_gap)
         || !zero_spacing(style.layout_spacing.column_gap)
         || style.layout_border != Default::default()
-        || grid.columns != vec![ComputedCssGridTrackSize::MinContent; 4]
-        || grid.rows != vec![ComputedCssGridTrackSize::LengthPx(60.0); 3]
+        || grid.columns != columns
+        || grid.rows != rows
         || grid.columns_auto_repeat.is_some()
         || grid.rows_auto_repeat.is_some()
         || grid.template_areas.is_some()
         || grid.auto_flow != ComputedCssGridAutoFlow::Row
         || grid.auto_rows != ComputedCssGridAutoRows::Auto
         || grid.auto_columns != ComputedCssGridAutoColumns::Auto
-        || grid.columns_line_names.len() != 5
-        || grid.rows_line_names.len() != 4
+        || grid.columns_line_names.len() != columns.len() + 1
+        || grid.rows_line_names.len() != rows.len() + 1
         || grid
             .columns_line_names
             .iter()
@@ -57,7 +80,7 @@ pub(super) fn validate_grid_style(
         return Err(unsupported(
             style.node_id,
             scene,
-            "fixed 220x180 4x3 min-content grid required",
+            "scene-specific fixed grid style required",
         ));
     }
     Ok(())
@@ -78,6 +101,9 @@ pub(super) fn validate_item_style(
             && placement.row_end == ComputedCssGridPlacement::Auto
     });
     if !placement
+        || style.layout_position != ComputedCssPosition::Static
+        || !property_is(style, "justify-self", "auto")
+        || !property_is(style, "align-self", "auto")
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
@@ -128,11 +154,14 @@ pub(super) fn validate_item_style(
             }
         }
         ItemKind::Image { height } => {
-            for (name, expected) in [("justify-self", "auto"), ("align-self", "auto")] {
-                require_property(style, name, expected)?;
-            }
+            let height_matches = match height {
+                Some(height) => {
+                    style.layout_dimensions.height == ComputedCssDimension::LengthPx(height)
+                }
+                None => style.layout_dimensions.height == ComputedCssDimension::Auto,
+            };
             if style.layout_dimensions.width != ComputedCssDimension::Auto
-                || style.layout_dimensions.height != ComputedCssDimension::LengthPx(height)
+                || !height_matches
                 || style.layout_aspect_ratio.is_some()
             {
                 return Err(unsupported(
@@ -160,6 +189,10 @@ fn require_property(
             Some(format!("{name}: expected {expected}")),
         ))
     }
+}
+
+fn property_is(style: &ComputedElementStyle, name: &str, expected: &str) -> bool {
+    style.properties.get(name).map(String::as_str) == Some(expected)
 }
 
 fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {

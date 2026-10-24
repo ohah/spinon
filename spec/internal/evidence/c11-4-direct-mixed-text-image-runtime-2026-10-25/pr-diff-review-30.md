@@ -1,0 +1,38 @@
+# C11.4 direct text/image PR diff 검토 — 30개 독립 실패 관점
+
+검토 대상은 `feat/c11-4-direct-mixed-text-image-intrinsic`의 `HEAD da3c5c6d1f6109fbae3edc38f3811763ec38c354` 대비 staged 및 unstaged tracked diff와 C11.4 실행 evidence다. `docs/project-rules.md`와 [집중 계획](../../../../plan/c11-4-mixed-direct-text-image-intrinsic.md)의 요구를 기준으로 보았다. [구현/runtime 20관점 검토](implementation-review-20.md)의 fixture admission, layout assertion과 source/build provenance 항목은 반복하지 않고 문서·캡처·artifact·플랫폼 evidence의 별도 실패 경로를 검토했다. 이 검토에서는 build/test/device capture를 실행하지 않았으며 저장된 파일·manifest·log와 현재 소스만 읽었다. 아래에는 조치 상태 열을 두지 않고 관찰 및 구체적인 실패 경로만 기록한다.
+
+| # | 독립 실패 관점 | 대조 내용 및 실패 경로 |
+|---:|---|---|
+| 1 | 공식 완료 상태가 제한 fixture 실행으로 올라가는가 | `spec/STATUS.md:274`, `spec/internal/0059-c11-grid-layout.md:474`와 README 첫 문단은 C11.4 checkbox와 `72/213`을 유지하고 후보/fixture 범위를 명시한다. 이 네 scene만 통과해 전체 CSS Grid 지원이나 공식 완료로 오인하는 경로는 문서에서 막고 있다. |
+| 2 | 내부 계약 숫자 버전이 범위 추가만으로 바뀌는가 | `spec/internal/0059-c11-grid-layout.md:3,474`는 `0.1.0`을 유지한다. 이번 section 추가가 내부 계약의 호환성 버전 변경으로 해석되지 않는다. |
+| 3 | 실패한 일반 mixed input을 fixture 성공으로 넓혀 해석하는가 | 계획의 상태·제외 범위(`plan/c11-4-mixed-direct-text-image-intrinsic.md:9-11,43-45`)와 실행 README(`README.md:3,53`)는 opt-in fixed-scene 후보만 다루고 일반 author CSS admission·전체 C11.4를 제외한다. |
+| 4 | 기대값이 규범 출처 없이 Chrome 결과를 답으로 삼는가 | 계획 `:15-18`과 README `:7,16`은 CSS Grid 2025 CRD §7.2.1·§11.5 및 입력에서 산출한 값을 기록하고, Chrome 관측은 대조 자료로만 둔다. |
+| 5 | text/image contribution을 합산해 잘못된 track 값을 정하는가 | 고정 입력의 기여는 text 50/80px와 image 24px이고 track 값은 `max(50,24)`/`max(80,24)`로 정리돼 있다(`plan:16-17`, `README:16`). scene별 기댓값 50/80px과 맞는다. |
+| 6 | Chrome 관측이 독립 계산의 입력으로 역유입되는가 | 계획 `:18`과 README `:7`은 Chrome CSSOM/frame을 규범 기대값의 생성 입력으로 사용하지 않았다고 분리하고, 독립 계산 검증기 링크를 둔다. |
+| 7 | min/max 또는 forward/reversed 한 축 조합이 빠지는가 | 계획 `:22-27`과 README `:9-14`는 네 조합을 각각 고정한다. 양 플랫폼 manifest의 `observations`도 같은 네 scene ID를 담는다. |
+| 8 | README의 scene별 이미지·설명과 실행 manifest가 서로 다른 장면을 가리키는가 | README `:30-37`은 scene ID마다 Android/iOS PNG를 명시하고 manifest는 각 네 observation을 기록한다. 이름이 비슷한 다른 historical run의 파일을 wildcard로 현재 증거에 섞지 않는다. |
+| 9 | Android 결과가 잘못된 AVD나 page-size 환경에서 생성되는가 | `capture-direct-mixed.mjs:297-313`은 API 37, ARM64, `sdk_gphone16k_arm64`, 16,384-byte page size 및 QEMU를 확인한다. manifest와 README `:20`은 serial·fingerprint 등 실행 환경을 남긴다. |
+| 10 | iOS 결과가 이름만 같은 다른 simulator model/runtime에서 생성되는가 | `capture-direct-mixed.mjs:415-423,483-492`은 UDID, `iPhone-17-Pro` device type, 이름과 iOS 26.2 runtime을 확인하고 manifest에 기록한다. |
+| 11 | API 37.0 system-service 장애가 정상 실행 pass에 섞이는가 | README `:39`는 Activity/Package service 실패 및 재부팅 기록을 `prior-attempts`로 분리하고 4/4 집계에서 제외한다. 정상 결과는 별도 API 37.2 16 KB AVD run 경로다. |
+| 12 | Android screenshot이 runtime draw 이후 다른 foreground app에서 찍히는가 | `capture-direct-mixed.mjs:369-385`는 scene draw 검증 뒤 `topResumedActivity`가 Spinon package인지 확인하고, 확인한 foreground 정보와 screenshot을 manifest에 연결한다. |
+| 13 | iOS screenshot이 scene draw 이후 SpringBoard/알림 화면을 담아도 자동으로 통과하는가 | 최종 iOS manifest의 네 observation 모두 screenshot OCR text, screenshot/runtime-log hash와 dimensions를 기록하고, manifest는 verifier 경로·hash도 고정한다(`capture-direct-mixed.mjs:440-474,481-492`). OCR은 `SPINON`·`C11.4`·`Grid track sizing` title marker를 확인해 app text가 screenshot에 보이는지 검사한다. 이는 Simulator의 foreground application 상태를 직접 assert하거나 system overlay가 없음을 증명하지 않으며, README `:26`이 이 한계를 명시한다. |
+| 14 | Android screenshot binary가 문자 인코딩을 거쳐 PNG를 손상시키는가 | 최초 캡처 산출물에서는 `encoding:null`이 `?? 'utf8'`로 바뀌어 PNG signature가 아닌 UTF-8 replacement bytes가 기록되는 경로가 관찰됐다. 현재 `command()`는 명시된 null encoding을 보존하고 screenshot에 signature/decode 검사를 적용한다(`capture-direct-mixed.mjs:66-78,101-105,377-385`). 최종 run의 이미지들은 README가 가리키는 8개 파일로 분리되어 있다. |
+| 15 | signature만 있는 잘림/빈 screenshot을 정상 화면으로 취급하는가 | `assertImageDecodes()`는 pixel dimensions를 검사하고 Android/iOS 캡처는 각각 1080×2400 및 1206×2622를 요구한다(`capture-direct-mixed.mjs:107-114,377-384,462-469`). manifest observation에도 dimensions를 둔다. |
+| 16 | capture 뒤 PNG 또는 runtime log를 바꾸어도 manifest가 그대로인가 | 각 scene observation에 screenshot SHA-256과 해당 runtime-log SHA-256을 저장한다(`capture-direct-mixed.mjs:375-385,457-472`). 이미지와 로그가 서로 다른 run에서 바뀌면 manifest 대조에서 드러난다. |
+| 17 | 화면의 layout frame을 글리프/PNG paint 증거로 오해하는가 | README `:28,37`은 `runtime_text_count=0`, `glyph_batch_draw_count=0`, `runtime_image_count=0`, `image_draw_count=0`을 밝혀 screenshot을 배치 참고로 한정한다. |
+| 18 | simulator 증거를 실기기, hardware GPU, compositor 이후 pixel 결과로 넓히는가 | 계획 `:38,45`, README `:20,22,37`은 Android AVD와 iOS Simulator 결과를 분리하고 실기기·hardware GPU·PixelCopy/Metal 이후 pixel 확인이 아니라고 기록한다. |
+| 19 | 재시도나 단일-scene 캡처가 이전 전체 matrix 파일을 덮는가 | `capture-direct-mixed.mjs:49-55`는 매 실행마다 고유 `runs/<runPrefix>`를 사용한다. scene filter(`:16,40-42`)도 별도 run 폴더에 들어가므로 전체 matrix manifest와 섞이지 않는다. |
+| 20 | 빌드·boot·scene 검증 실패가 직전 정상 증거를 지우는가 | 캡처 스크립트는 새 run 경로를 만들고 기존 파일을 이동/삭제하지 않는다(`capture-direct-mixed.mjs:50-55,501-503`). README `:26`은 이전 실행을 보존한다고 적는다. 실패한 실행은 완성 manifest가 없는 별도 디렉터리로 남는다. |
+| 21 | 오래된 timeout/live/late-draw 로그가 현재 pass log로 오인되는가 | 이전 top-level 파일과 API 37.0 자료는 `prior-attempts/legacy-top-level/`로 이동됐고, README `:39`는 모든 historical 디렉터리가 현재 pass가 아니라고 구분한다. 현재 runtime log는 구체 run directory에서 찾는다. |
+| 22 | 공개 evidence에 개발자 home/checkout 절대경로가 노출되는가 | 캡처 로그는 path redaction 및 공백·줄바꿈 정규화를 거친 뒤 저장되고 scanner log와 toolchain path도 정규화한다(`capture-direct-mixed.mjs:85-99`, `scan-ffi-archives.py:69-72,131-148`). 현재 evidence tree 검색에는 사용자 home이나 checkout의 절대경로가 없다. |
+| 23 | focused runtime/FFI test의 0-test 실행을 1/1 성공으로 계산하는가 | README의 재현 명령 로그는 fixture feature를 명시하고 실제 runtime 및 FFI test 각각 1/1 pass와 `.exit` code를 남긴다. 유효한 pass 판단은 이 feature-enabled 실행에만 기반한다. |
+| 24 | fmt, Clippy 또는 fixture module boundary 성공 주장이 원본 결과 없이 남는가 | README `:49-51`은 `fmt.log`, `clippy.log`, `fixture-module-boundary.log` 및 exit 파일을 연결한다. fixture boundary 결과는 12-test로 특정돼 있어 pass 수를 확인할 수 있다. |
+| 25 | capture/scanner 스크립트 문법 오류가 앱 실행 뒤에 발견되는가 | README `:50-51`은 Node capture-script 및 Python artifact-scanner syntax log와 exit code를 보존한다. 이 검토자는 해당 검사들을 재실행하지 않고 저장된 결과만 대조했다. |
+| 26 | product archive에 fixture가 빠졌다는 결론이 positive control 없이 나오는가 | scanner는 `c04-runtime-gpu`에서 4 scene marker, host ABI 및 신규 runtime source symbol 부재를 확인하고, fixture-test feature 대조군에서 marker 4/4와 두 symbol을 요구한다(`artifact-boundary/scan-ffi-archives.py:54-56,110-119`). |
+| 27 | macOS static archive 결과를 Android APK/iOS IPA 전체 제외 결과로 오해하는가 | artifact-boundary README `:3-6,18`은 검증 대상을 macOS ARM64 `spinon-ffi` static archive로 제한하고 APK/IPA·패키지 크기·GPU·compositor는 보증하지 않는다고 명시한다. |
+| 28 | scanner 실패 시 일부 새 로그와 이전 성공 JSON이 혼합되는가 | scanner는 매번 고유 `runs/artifact-boundary-*`에 log/symbol을 기록하고 성공 결과만 임시 JSON에서 `os.replace`한다(`scan-ffi-archives.py:15-20,73-91,152-155`). README와 `reportSemantics`는 top-level JSON이 마지막 성공 scan을 뜻하고 새 실패는 별도 log로 남는다고 밝힌다. |
+| 29 | artifact staged-diff hash가 자기 JSON이나 generated run 출력 때문에 즉시 stale해지는가 | scanner는 `artifact-boundary.json`과 `runs/**`를 digest에서 제외하고 그 경계를 README에 설명한다(`scan-ffi-archives.py:121-142`, `artifact-boundary/README.md:8-10`). 이 review report가 최종 stage에 포함된 뒤에는 해당 PR diff를 반영하도록 scanner manifest를 다시 생성해야 한다. |
+| 30 | PR 본문에서 repository-relative screenshot URL이 깨지거나 본문이 paint를 과장하는가 | 계획 `:38`은 PR에 각 플랫폼 screenshot을 첨부하고 Agent Browser에서 실제 image URL을 열어 보도록 요구한다. 현재 diff에는 PR 본문/업로드 URL이 없으므로 README의 상대 링크만으로 그 관문을 충족했다고 판정할 수 없다. 제출 시 GitHub가 렌더링하는 직접 image attachment를 사용하고 Agent Browser 확인을 별도로 남겨야 한다. |
+
+재검토에서는 Android 17의 `topResumedActivity` assertion, 고유 run directory/atomic report lifecycle, iOS screenshot OCR·크기 검증, 과거 로그 분리, 검증 log 보존, source diff 해시 생성 경계를 반영했다. PR 작성 후 screenshot URL을 Agent Browser에서 확인하고 GitHub required checks, merge, post-merge `main` 검증을 별도로 수행해야 한다.
