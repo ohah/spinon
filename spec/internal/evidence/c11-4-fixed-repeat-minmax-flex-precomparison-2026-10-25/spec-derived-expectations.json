@@ -95,6 +95,7 @@
   "comparison": {
     "chromeObservation": "chrome156-observation.json",
     "usedTrackCssomTolerance": "Chrome reports fractional used sizes at 1/64 CSS px increments; compare exact integer sizes and collapsed zeroes, and accept at most 1/64 CSS px for non-integer sizes",
+    "itemOffsetCssomTolerance": "Compare integer item offsets exactly; fractional item offsets use the same 1/64 CSS px tolerance as fractional used tracks",
     "independentRuntimeTolerance": "0.02 CSS px for f32 layout/frame comparisons"
   },
   "controls": [

@@ -13,7 +13,7 @@ README에 적힌 기대값 JSON hash와 실제 값이 일치한다. 기존 Chrom
 | 2 | auto-repeat count가 사용하는 fixed minimum | `fr` maximum을 definite count 크기로 계산하거나 gutter를 반복 개수에서 한 번 빠뜨려 scene별 반복 수가 달라진다. | CRD §7.2.3.2와 JSON은 fixed px minimum 기준을 사용한다. `28m+28`, `28m+92`, `28m+12` 경계가 각각 관찰 장면의 count 6·7·6을 독립 산출한다. | **COVERED** |
 | 3 | sub-unit factor의 독립 계산 | 구현이 0.5를 1로 정규화해 남는 공간을 전부 쓰거나, base size를 빼는 순서를 잘못 잡아 `columns-flex-factor-low`를 Chrome/규범 기대와 다르게 계산한다. | 관찰과 JSON은 `[16, 24×6]`, 16px unused space를 고정한다. 12px fixed minimum, 6개 24px repeated minimum, 6개 4px gutter 뒤의 flex sizing에서 0fr은 확장하지 않고 0.5fr은 16px이 된다. §7.2.4 partial-fill 의미와 맞는다. | **COVERED** |
 | 4 | 0fr와 Taffy의 초기 hypothetical fraction | `0 × infinity`가 NaN이 되는 첫 pass를 일반 비유한 operand 오류로 처리하거나, 0fr track이 minimum에서 이탈하거나, sizing 반복이 끝나지 않는다. | Taffy `find_size_of_fr()`는 초기 hypothetical 값으로 infinity를 쓰고 restart 횟수를 track 수로 제한한다. 개정 계획은 CSS 유효 입력인 0fr positive scene과 별도의 NaN typed rejection을 나눠 확인한다. | **COVERED** |
-| 5 | Chrome CSSOM 양자화와 규범 수치 비교 | CSSOM `37.328125px`를 산술 기대값 `112/3px`와 exact 대조해 올바른 결과를 실패 처리하거나, 양자화 허용치를 정수·collapsed zero에도 적용한다. | JSON은 비정수 CSSOM에만 1/64px 오차를 허용하고 integer/zero 및 item offset은 exact로 분리한다. `rows-fit` 관찰차는 약 0.00521px로 제한 안에 있다. | **COVERED** |
+| 5 | Chrome CSSOM 양자화와 규범 수치 비교 | CSSOM `37.328125px` 또는 fractional item y offset을 ideal rational과 exact 대조해 올바른 결과를 실패 처리하거나, 양자화 허용치를 정수·collapsed zero에도 적용한다. | JSON은 fractional used track과 fractional item offset에 1/64px 오차를 허용하고 integer/zero는 exact로 분리한다. `rows-fit` 관찰값과 규범 기대는 각각 따로 보존한다. | **COVERED · PR diff에서 item offset 경계 추가 수정** |
 | 6 | Taffy 호출 전 factor aggregate의 축 범위 | 합계 검사가 fixed group만 포함하고 ordinary `fr` 또는 auto-repeat pattern의 최대 가능한 사용 횟수를 빼면, Taffy accumulator가 계산 중 infinity가 될 수 있다. | 계획은 fixed·ordinary factor와 가능한 최대 auto-repeat expansion을 합친 축 단위 upper bound를 명시하고, `0fr`, `0.5fr`, 일반 flex와 auto-repeat factor를 Rust projection 경계에서 고정한다. | **COVERED** |
 | 7 | 개별 finite factor와 aggregate overflow의 차이 | 각 Fraction이 finite라는 이유만으로 `1e38fr` 네 항을 통과시키고, Taffy의 반복 합산에서 f32 infinity 및 잘못된 restart 판정이 발생한다. | Chrome 관찰은 CSS-valid `1e38fr`를 분리하고 JSON은 네 fixed track 합을 Taffy 전에 거부하도록 한다. 이 profile 거부는 문법 invalid 판정이 아니다. | **COVERED** |
 | 8 | auto-repeat pattern의 최대 반복 factor overflow | fixed track factor만 합산해 통과시킨 뒤, 유한한 `1e38fr` auto-repeat pattern이 최대 사용 횟수만큼 Taffy에서 반복되어 aggregate를 infinity로 만든다. | 개정 JSON은 `1fr` fixed track과 `1e38fr` auto-repeat을 별도 control로 둬 최대 feasible expansion 합이 비유한이면 Taffy 전에 거부한다. plan 4단계에도 fixed/auto 각각의 overflow control이 분리됐다. | **COVERED** |
@@ -32,7 +32,13 @@ README에 적힌 기대값 JSON hash와 실제 값이 일치한다. 기존 Chrom
 
 ## 판정
 
-수정된 산술, CSSOM rounding, fixed/auto-repeat 각각의 fail-closed overflow control, 두 단계의 track/resource ceiling, artifact·simulator evidence lifecycle과 parent status는 계획·JSON·README·현재 source에서 일관된다. Taffy projection descriptor 10,000은 auto-repeat 사용 count 10,000과 같은 양이라고 취급하지 않는다. Agent Browser 확인 뒤 세션을 닫고 관련 프로세스가 남지 않았는지 확인하는 단계도 반영됐다. **현재 개정안에서 blocking issue를 찾지 못했다.**
+수정된 산술, CSSOM rounding, fixed/auto-repeat 각각의 fail-closed overflow control, 두 단계의 track/resource ceiling, artifact·simulator evidence lifecycle과 parent status는 계획·JSON·README·현재 source에서 일관된다. Taffy projection descriptor 10,000은 auto-repeat 사용 count 10,000과 같은 양이라고 취급하지 않는다. Agent Browser 확인 뒤 세션을 닫고 관련 프로세스가 남지 않았는지 확인하는 단계도 반영됐다. **개정 계획 관점에서 차단 이슈를 찾지 못했다.**
+
+## PR diff 검토 후 수치 비교 보정
+
+PR #614의 별도 diff 검토는 `rows-fit` item offset `[0, 41.328125, 82.65625]` 관찰과 ideal `[0, 124/3, 248/3]`을 계획의 “모든 item offset exact” 문구가 함께 허용할 수 없음을 찾았다. 계획·JSON·precomparison README를 고쳐 fractional offsets도 1/64 CSS px까지 허용하고 정수 offsets만 exact로 두었다. Chrome 관찰값과 독립 rational 기대값은 분리 상태로 유지한다. 이 수정은 구현 코드 범위를 바꾸지 않는다.
+
+이번 20관점 보고서는 PR diff 보정 전의 개정 계획 SHA-256 `b846c15b772cdc4b63dc4b8a136f1ece8db40427b8b78fdb6efb3b85a7f40df2`를 검토했다. fractional item offset 비교 tolerance를 추가한 최종 계획 SHA-256은 `076d8c3f2afa2363cd7778d3a07939592b6d8556a3062f648fc643cbe7a80e01`이다. 이 후속 변경을 별도 PR diff 관점에서 재확인한 뒤 계획 PR을 병합한다.
 
 ## 기준 링크
 
