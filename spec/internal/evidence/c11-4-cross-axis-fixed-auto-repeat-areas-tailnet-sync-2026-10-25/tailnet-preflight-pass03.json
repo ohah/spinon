@@ -1,0 +1,196 @@
+{
+  "selected_route_count": 18,
+  "selected_build_relative": "build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-pass03",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03",
+  "source_bytes_total": 1781544,
+  "backup_bytes_total": 991906,
+  "counts": {
+    "create": 0,
+    "replace": 10,
+    "same": 8
+  },
+  "files": [
+    {
+      "path": "roadmap.html",
+      "status": "same",
+      "source_bytes": 304213,
+      "source_sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78",
+      "target_exists": true,
+      "previous_bytes": 304213,
+      "previous_sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78",
+      "backup_path": null
+    },
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "source_bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_exists": true,
+      "previous_bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 539273,
+      "source_sha256": "50749185bc20f245ab24b598de07f3df5e023bad03dd5d6afb64e5396cdddc46",
+      "target_exists": true,
+      "previous_bytes": 539273,
+      "previous_sha256": "7594a78880e89924ebb11d9bb1da4bc795ac3c54c410bc71fda219ebd743bfa5",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/STATUS.html"
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.html",
+      "status": "replace",
+      "source_bytes": 40180,
+      "source_sha256": "4ab6c907b1053431160f6b3f2722fe70a5c6c29dafa37279255dd392f548c6b4",
+      "target_exists": true,
+      "previous_bytes": 40180,
+      "previous_sha256": "26e0adcb64981dee4e3f2545985cc0ac1dd4a9b86b5ba881273b4508249210a8",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/plan/c11-4-cross-axis-fixed-auto-repeat-areas.html"
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html",
+      "status": "replace",
+      "source_bytes": 29455,
+      "source_sha256": "237f5684539f07151379f7e428233e6c12b5abacf238104473d97b138dfdf9a1",
+      "target_exists": true,
+      "previous_bytes": 29455,
+      "previous_sha256": "f68a659bd6065a618b8229c1f3d2956a30a296ce41a882fb5650c1b3e06f713c",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.html"
+    },
+    {
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html",
+      "status": "replace",
+      "source_bytes": 27063,
+      "source_sha256": "dbc48fd07e3fdfe7f6398956183bb827a6388b50afb073d722f9b2336179dac6",
+      "target_exists": true,
+      "previous_bytes": 27063,
+      "previous_sha256": "8d28c019282ad8cb0e8f34d217a13c9774c5479f76b87310a9b67f847d6b6705",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.html"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "source_bytes": 208690,
+      "source_sha256": "eb550aeb489f0986a2642a17763581cbb847ab42ceeb54b0a2e0cb555d60e638",
+      "target_exists": true,
+      "previous_bytes": 208690,
+      "previous_sha256": "47d18bbb148b0e99481fbbc3680b57c8827ff6f8de76fb72ef22b3b62c3eebbb",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html",
+      "status": "replace",
+      "source_bytes": 25869,
+      "source_sha256": "f5aeeb7630baa2c3a855071399ccd366ea58572baae7927ac90c46ebdf165e66",
+      "target_exists": true,
+      "previous_bytes": 25869,
+      "previous_sha256": "c276cd3fffc1ffe7ad8a2f7d265d4486ce15d9645d7172d0122daf28e95e45bb",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "status": "same",
+      "source_bytes": 65581,
+      "source_sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+      "target_exists": true,
+      "previous_bytes": 65581,
+      "previous_sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html",
+      "status": "replace",
+      "source_bytes": 29226,
+      "source_sha256": "0b48ce79b58a659bb70eb29b7f47611d3ce7d02abfc5c56094f77ef966cafdd8",
+      "target_exists": true,
+      "previous_bytes": 29226,
+      "previous_sha256": "08583ce7617964a818d92c01a11172aa83e09baac5a8534ca0be7cc41b6bdf97",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "status": "replace",
+      "source_bytes": 32787,
+      "source_sha256": "3e68188374928e5f11d45e4992df4e08bb159c801f0ed63d152a884cfa23f447",
+      "target_exists": true,
+      "previous_bytes": 32787,
+      "previous_sha256": "5e6082f1aea514129641c4bafe36e68b3e2e5a78553d6f417b0439e0153a5f2c",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html",
+      "status": "replace",
+      "source_bytes": 32185,
+      "source_sha256": "aa0e04c4fb734065cf1e6ee58f15d222dc415086c58df1e6619834fb480373b6",
+      "target_exists": true,
+      "previous_bytes": 32185,
+      "previous_sha256": "931d9895c0f704809af36a07c8ce1e6ccc0799b1041233d90f3d4332ed20150c",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html",
+      "status": "replace",
+      "source_bytes": 26856,
+      "source_sha256": "bf56c9cfc753ab5a79b58621a5585421322a1a913e307546c219c306f3a55bc4",
+      "target_exists": true,
+      "previous_bytes": 27178,
+      "previous_sha256": "5b0e74191793438544e58051b710469d56470f13d3546cd21f89979b2da0f4aa",
+      "backup_path": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "status": "same",
+      "source_bytes": 77022,
+      "source_sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "target_exists": true,
+      "previous_bytes": 77022,
+      "previous_sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "status": "same",
+      "source_bytes": 132020,
+      "source_sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "target_exists": true,
+      "previous_bytes": 132020,
+      "previous_sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "status": "same",
+      "source_bytes": 77759,
+      "source_sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "target_exists": true,
+      "previous_bytes": 77759,
+      "previous_sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "status": "same",
+      "source_bytes": 132159,
+      "source_sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "target_exists": true,
+      "previous_bytes": 132159,
+      "previous_sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "backup_path": null
+    }
+  ],
+  "no_deletes": true
+}

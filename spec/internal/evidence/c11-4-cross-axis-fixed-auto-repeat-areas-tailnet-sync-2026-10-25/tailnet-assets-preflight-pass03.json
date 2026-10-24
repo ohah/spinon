@@ -1,0 +1,265 @@
+{
+  "selected_static_route_count": 25,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-cross-axis-fixed-auto-repeat-areas-tailnet-sync-2026-10-25/pass03",
+  "source_bytes_total": 2414661,
+  "backup_bytes_total": 0,
+  "counts": {
+    "create": 12,
+    "replace": 0,
+    "same": 13
+  },
+  "files": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.7928c80454.png",
+      "status": "same",
+      "source_bytes": 77759,
+      "source_sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "target_exists": true,
+      "previous_bytes": 77759,
+      "previous_sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.fbb279a716.png",
+      "status": "same",
+      "source_bytes": 132159,
+      "source_sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "target_exists": true,
+      "previous_bytes": 132159,
+      "previous_sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.3dc15c1822.png",
+      "status": "same",
+      "source_bytes": 77022,
+      "source_sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "target_exists": true,
+      "previous_bytes": 77022,
+      "previous_sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.8de1729981.png",
+      "status": "same",
+      "source_bytes": 132020,
+      "source_sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "target_exists": true,
+      "previous_bytes": 132020,
+      "previous_sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": "same",
+      "source_bytes": 217085,
+      "source_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "target_exists": true,
+      "previous_bytes": 217085,
+      "previous_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": "same",
+      "source_bytes": 100,
+      "source_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "target_exists": true,
+      "previous_bytes": 100,
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-1a0e60ea02b7.b25dd3b449.js",
+      "status": "create",
+      "source_bytes": 25862,
+      "source_sha256": "1327151aa817412f69d5075ed0c1c4e5f20ca089502f44231c915be59300a409",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4b41de5230e1.169e9edca2.js",
+      "status": "create",
+      "source_bytes": 8741,
+      "source_sha256": "c899ce6662dbd2b7060681dea6734981f0046e69a7daf13104f6487153eaa0fc",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-51ab1095d094.ff94ea471e.js",
+      "status": "create",
+      "source_bytes": 9333,
+      "source_sha256": "e14c77bcdc0d3a1fe478c36f9acef38ae0783ede9e9f18400f64241a92ad2ed2",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5d8db36674b4.b0a1e50b9d.js",
+      "status": "create",
+      "source_bytes": 13921,
+      "source_sha256": "59256a38e3b668a5b163cdce228334b81b92212f877a4f90705ca6ad52f1043e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-679702f95cc8.7c04330a9c.js",
+      "status": "create",
+      "source_bytes": 11439,
+      "source_sha256": "473011976ed94ca9cbe571ccf5c0df4132955354f5386e003538b84f9180797f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.22d983b8fc.js",
+      "status": "create",
+      "source_bytes": 575943,
+      "source_sha256": "d29a38c2b610bf56a44ec24a2fbc552cce793a25d5d6ba9a609475bd104daf24",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b1a58579b194.9a6a1a0876.js",
+      "status": "create",
+      "source_bytes": 13446,
+      "source_sha256": "8f207b9ae98c40a43abb7e0465fb9257516ff1d742ee93238e03690bdfff44ec",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.1b14d00836.js",
+      "status": "create",
+      "source_bytes": 199378,
+      "source_sha256": "28dfd4c7cab889d147ce9c22e86c4360fe0340ef154877bbc3d3958c3a9f77fa",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-cf0d2d46feb7.3ba3560594.js",
+      "status": "create",
+      "source_bytes": 17579,
+      "source_sha256": "5bb34319619b6a4f3eacb9e60e2d476b4cbe1a2928ad36efa2e1182118dee51e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f6cb40c81815.f2d813592f.js",
+      "status": "create",
+      "source_bytes": 10514,
+      "source_sha256": "f503b827a9c2a9bdefebed1ec8b00f925b036e8f4b3d1d1066c5d1b29567ca00",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.e04f0a1e49.js",
+      "status": "create",
+      "source_bytes": 35375,
+      "source_sha256": "f93fc76157e49e2096237d227a4046f13911d672a4fca6496ae0e1ff018d3600",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "same",
+      "source_bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_exists": true,
+      "previous_bytes": 218364,
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "same",
+      "source_bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_exists": true,
+      "previous_bytes": 35370,
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": "same",
+      "source_bytes": 472,
+      "source_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "target_exists": true,
+      "previous_bytes": 472,
+      "previous_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.48daffd0.json",
+      "status": "create",
+      "source_bytes": 527012,
+      "source_sha256": "48daffd076d3632684a398a7a8415334c0ff6902c74e5154e342b0708d7c7954",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ],
+  "no_deletes": true
+}

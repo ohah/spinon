@@ -1,0 +1,132 @@
+{
+  "sourceRoot": "build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-site-pass02",
+  "staticRouteCount": 25,
+  "routes": [
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.7928c80454.png",
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4"
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.fbb279a716.png",
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40"
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.3dc15c1822.png",
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0"
+    },
+    {
+      "path": "static/image/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.8de1729981.png",
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-1a0e60ea02b7.2263dddde5.js",
+      "bytes": 25862,
+      "sha256": "e2e03eee6670d3407568c8d647639f1623e62e682416fd2f4e8a910e9ce0aab1"
+    },
+    {
+      "path": "static/js/async/route-4b41de5230e1.5ff94a60ea.js",
+      "bytes": 8740,
+      "sha256": "e09621d24eb61cfafabb88fcc5785937a49f1f737e38bf03f22315d718fee062"
+    },
+    {
+      "path": "static/js/async/route-51ab1095d094.281006880c.js",
+      "bytes": 10190,
+      "sha256": "013a9e026b91ae3636b5ea6144018c3622a911fbf9ec2c2afc7d2936e30cbdea"
+    },
+    {
+      "path": "static/js/async/route-5d8db36674b4.78df682f2b.js",
+      "bytes": 13921,
+      "sha256": "995594f65704a9d7dbf03b8038a029cf9f6398126dceeb7329da998da0266026"
+    },
+    {
+      "path": "static/js/async/route-679702f95cc8.e5b4c2d3eb.js",
+      "bytes": 11439,
+      "sha256": "400debda81630791dc5ce4970e93d9167d5c99614c0c0c355b3a764511501204"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.28980bc5f2.js",
+      "bytes": 575942,
+      "sha256": "9bb004de26bbeb8f64fdf5eec240c8d61e0b935459c2aee232c72853b3ce55c6"
+    },
+    {
+      "path": "static/js/async/route-b1a58579b194.7df956b709.js",
+      "bytes": 13446,
+      "sha256": "ee760e66aea7d9e813144ab3320f307a1f16e9588e25a777ec5b2867914b03c4"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.784bc40d42.js",
+      "bytes": 199379,
+      "sha256": "662d0b7ce2a4c944d2656edfc44efd69f5b2f7fbafc533f32ba4df59e222061d"
+    },
+    {
+      "path": "static/js/async/route-cf0d2d46feb7.92537f11d5.js",
+      "bytes": 17579,
+      "sha256": "23d66a220ab923f52725d58e8741dc58938487fd32b08d8cad760ea138926a0a"
+    },
+    {
+      "path": "static/js/async/route-f6cb40c81815.bbe6779ee9.js",
+      "bytes": 10514,
+      "sha256": "f4a1ae1bd4b739f38f5ea76dd01d963b58ff194658ba1e4bae82d229d528d54a"
+    },
+    {
+      "path": "static/js/index.a5bf3c388c.js",
+      "bytes": 35367,
+      "sha256": "84cf0756820f587d86e2f9bc4cd61a17ae51542f5d27fe1acffca60025d288be"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.e1980361.json",
+      "bytes": 527042,
+      "sha256": "e198036195dede8c2292340b160bff02265be8446743b8655f8888b010acfce1"
+    }
+  ],
+  "noDeletes": true
+}

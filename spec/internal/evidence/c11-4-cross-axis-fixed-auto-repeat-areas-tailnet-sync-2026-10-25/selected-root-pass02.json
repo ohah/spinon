@@ -1,0 +1,115 @@
+{
+  "selectedRoot": "build/spinon/c114-cross-axis-merge-roadmap-20261025-selected-root-pass02",
+  "sourceFileCount": 18,
+  "selected": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 431790,
+      "sha256": "9f6ab88b061d6a42db18697ea32ae97162cd857b487c4240e029a820de281f23"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 304213,
+      "sha256": "2f0649a9a1c97355d879f2ebd98826ab5ffeff64ca3140c3f395b08a3ca3fe78"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.md",
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas.md",
+      "bytes": 14242,
+      "sha256": "1cbdf6fc531a61ca1e64830c788a27b3855e6d5a544d9daf0c5aeb49c2a2a290"
+    },
+    {
+      "source": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.md",
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-review-20.md",
+      "bytes": 7733,
+      "sha256": "b631a09097e5d064a22d6abb99e3d286aab630c09e3ca866c3aa5fd189d1dab3"
+    },
+    {
+      "source": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.md",
+      "path": "plan/c11-4-cross-axis-fixed-auto-repeat-areas-plan-pr-diff-review-20.md",
+      "bytes": 5101,
+      "sha256": "24f2cfa33f39d605f95811212fe7593b2bee6e27cf017c114176aeefc5bb4a83"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 141191,
+      "sha256": "e44936745100d065266cd3a32e6855aa203564ee7b7e10de53ad27875e7775d1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.md",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/README.md",
+      "bytes": 4872,
+      "sha256": "3137d42c426fc83042db49e760cb259d2d4341969bc7fcb904bad7774e72ad37"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-precomparison-2026-10-25/chrome-agent-browser.png",
+      "bytes": 65581,
+      "sha256": "54e243635ece69320d560a9a050b0b678643ce45ff4a040e0720f45750983acd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/README.md",
+      "bytes": 7083,
+      "sha256": "88e0aeafc72c88f2c30daccd3a4e60c5e9368579df92cc7b39eee7e460409532"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 11237,
+      "sha256": "e49985f52a5b3314bac4c51d26fa4ae063baa7b25701eb2baf54097135338185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/pr-diff-review-30.md",
+      "bytes": 10105,
+      "sha256": "5b5448ca8a898caaeb879cd5aec95443aa69ef613dea9f9f000c9fcd40a5c240"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/post-merge-roadmap-pr-diff-review-30.md",
+      "bytes": 5954,
+      "sha256": "ff7388e371331021bc4d4c160bfb0ac7390236a4d4aa95b2a631b2be4b561c40"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "bytes": 77022,
+      "sha256": "e5587d22c5fdd2a36f4e380a1eb59370d2338fa8545129267799405ac9553bc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fit-rows-empty-area.png",
+      "bytes": 132020,
+      "sha256": "729a1b62c6630fb07455abc444108d88b5042e958431f24eca7a337e9ef35613"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/android-avd-c114-cross-axis-fixed-auto-area-android-avd-20261024T184030545Z-2f33a429/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "bytes": 77759,
+      "sha256": "5d95544ae7157f3c1bd9ab0a3fab964aba8b62a717647d7e3589d5db26ee48f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "path": "internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-2026-10-25/ios-simulator-c114-cross-axis-fixed-auto-area-ios-simulator-20261024T184055107Z-572dbc3b/template-area-repeat-cross-axis-fixed-cols-fill-rows-area-adds-two-rows.png",
+      "bytes": 132159,
+      "sha256": "d78e82b3004c225ad3c270ab032a9aea4e3be7708b1994742844eafbf45c8a40"
+    }
+  ],
+  "noDeletes": true
+}

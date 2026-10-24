@@ -2,6 +2,8 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [동일 축 fixed-repeat + auto-repeat + areas](./c11-4-fixed-auto-repeat-template-areas.md) · [양축 auto-repeat + areas](./c11-4-two-axis-template-areas.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
+**상태:** 구현 PR [#607](https://github.com/ohah/spinon/pull/607)은 2026-10-24T19:06:42Z Rebase and merge로 병합됐고 merge SHA는 `2f00c2c95061db635facece5233327f895c99319`다. PR check rollup은 비었고 main required status checks는 설정되어 있지 않았다. 이 제한 fixture는 C11.4 전체 완료가 아니며 공식 집계 `72/213`을 유지한다.
+
 ## 목표와 제한
 
 현재 제한 profile은 동일 track list 안의 fixed-repeat + auto-repeat + areas와 서로 다른 축의 auto-repeat + areas를 각각 지원하지만, fixed-repeat이 있는 축과 auto-repeat이 있는 축이 서로 다르면 cascade에서 거부한다. 이번 slice는 opt-in `RuntimeBlockFlexGridTrackSizingV1`에서 columns 또는 rows 중 한 축의 track list가 정확히 하나의 positive-integer fixed-repeat group으로만 구성되고, 다른 축의 track list가 prefix/suffix 없이 computed finite nonnegative `LengthPx` breadth 하나를 가진 auto-fill/auto-fit group 하나만으로 구성되며, rectangular `grid-template-areas`가 있는 경우를 허용한다. fixed group 내부는 1–2개 computed finite nonnegative `LengthPx` track만 허용한다. Stylo가 절대 `calc()`를 `LengthPx`로 정규화한 경우는 computed boundary에서 허용한다.
