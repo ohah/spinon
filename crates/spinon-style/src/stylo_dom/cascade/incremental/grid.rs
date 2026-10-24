@@ -531,7 +531,6 @@ fn computed_auto_repeat_tracks(
             return Err(unsupported_grid_value(node, property, serialized));
         };
         let track = track_size(size, allow_intrinsic_tracks)
-            .filter(is_auto_repeat_neighbor_track)
             .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
         tracks.push(track);
     }
@@ -549,7 +548,6 @@ fn computed_auto_repeat_tracks(
             return Err(unsupported_grid_value(node, property, serialized));
         };
         let track = track_size(size, allow_intrinsic_tracks)
-            .filter(is_auto_repeat_neighbor_track)
             .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
         tracks.push(track);
     }
@@ -621,15 +619,6 @@ where
         output.push(group);
     }
     Ok(output)
-}
-
-fn is_auto_repeat_neighbor_track(track: &ComputedCssGridTrackSize) -> bool {
-    matches!(
-        track,
-        ComputedCssGridTrackSize::LengthPx(value)
-            | ComputedCssGridTrackSize::Percentage(value)
-            if value.is_finite() && *value >= 0.0
-    )
 }
 
 fn expand_integer_repeats(

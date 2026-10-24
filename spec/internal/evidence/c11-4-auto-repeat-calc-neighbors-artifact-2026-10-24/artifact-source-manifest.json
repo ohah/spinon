@@ -1,0 +1,53 @@
+{
+  "gitHead": "81ad15c7f502c82494bc0f6fdad38ec72307d51d",
+  "trackedSourceDiffSha256": "9c8b91631e1b996631192e42d24f9d7cb08f2830241ad8d78923c283a5444e3b",
+  "trackedSourceFiles": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+    "crates/spinon-layout/src/grid.rs",
+    "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+    "crates/spinon-layout/src/grid_track_sizing_tests/percentage_auto_repeat_neighbors.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs",
+    "vendor/taffy/src/compute/grid/explicit_grid.rs"
+  ],
+  "untrackedSourceFiles": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_calc_neighbor_scenes.json",
+      "sha256": "88dbf7198e80580c898c0a78ac2f63c8504437ac645dcede25b2a8caaa4c9a12"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_calc_neighbors.rs",
+      "sha256": "492d2e305d988db84a7fdbc333801fb3a5bdbb39cedfb9077b7a15eaaeb63d85"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs",
+      "sha256": "88b352aaff7613edf033c6c48dd8a3813214d0c7b42de899fa2008be1cbc8938"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+      "sha256": "192953cc34103681fddeb7931da6a7e9995fcfa834c639b37a50fc6e2f6ba18d"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_neighbor.rs",
+      "sha256": "fbe173b3fbf3b191ffe05b4046404e72c98e17545a164be0e7f2717f6af143e4"
+    }
+  ],
+  "cargoLockSha256": "c49335b6f567e1597dce26b556166f6401550e9b71277ed133635d7dd9ce528a",
+  "rustc": "rustc 1.96.1 (31fca3adb 2026-06-26)",
+  "target": "aarch64-apple-darwin",
+  "buildProfile": "release",
+  "builds": [
+    {
+      "feature": "c04-runtime-gpu",
+      "purpose": "product archive without fixture-test feature"
+    },
+    {
+      "feature": "c04-runtime-gpu-fixture-test",
+      "purpose": "fixture-test positive control"
+    }
+  ]
+}

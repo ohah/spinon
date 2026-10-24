@@ -1208,6 +1208,10 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = super::c11_4_auto_repeat_percentage_neighbors::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+    if let Some(source) = super::c11_4_auto_repeat_calc_neighbors::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = negative_implicit_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }

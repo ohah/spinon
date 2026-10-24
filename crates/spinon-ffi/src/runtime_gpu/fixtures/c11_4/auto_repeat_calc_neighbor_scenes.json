@@ -1,0 +1,1013 @@
+[
+  {
+    "id": "calc-neighbor-col-fill-both",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%)",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          22.0,
+          47.0,
+          47.0,
+          47.0,
+          47.0,
+          10.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-both"
+  },
+  {
+    "id": "calc-neighbor-row-fill-both",
+    "boxSizing": "content-box",
+    "width": "10px",
+    "height": "240px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "10px",
+    "rows": "calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "2"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        10.0,
+        240.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            26.0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          22.0,
+          47.0,
+          47.0,
+          47.0,
+          47.0,
+          10.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "oracleId": "row-fill-both"
+  },
+  {
+    "id": "calc-neighbor-col-fill-prefix",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          22.0,
+          50.5,
+          50.5,
+          50.5,
+          50.5
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-prefix"
+  },
+  {
+    "id": "calc-neighbor-row-fill-suffix",
+    "boxSizing": "content-box",
+    "width": "10px",
+    "height": "240px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "10px",
+    "rows": "repeat(auto-fill, minmax(40px, 1fr)) calc(4px + 2.5%)",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "2"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        10.0,
+        240.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            46.0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          42.0,
+          42.0,
+          42.0,
+          42.0,
+          42.0,
+          10.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    },
+    "oracleId": "row-fill-suffix"
+  },
+  {
+    "id": "calc-neighbor-col-fit-first",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5%) repeat(auto-fit, minmax(40px, 1fr)) calc(4px + 2.5%)",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "2",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            26.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          22.0,
+          200.0,
+          0.0,
+          0.0,
+          0.0,
+          10.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          true,
+          true,
+          true,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fit-first"
+  },
+  {
+    "id": "calc-neighbor-col-fit-empty",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5%) repeat(auto-fit, minmax(40px, 1fr)) calc(4px + 2.5%)",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [],
+      "tracks": {
+        "columns": [
+          22.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          10.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          true,
+          true,
+          true,
+          true,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fit-empty"
+  },
+  {
+    "id": "calc-neighbor-col-fill-overflow",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(80% + 4px) repeat(auto-fill, minmax(40px, 1fr)) calc(30% + 2px)",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "3",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            244.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          196.0,
+          40.0,
+          74.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-overflow"
+  },
+  {
+    "id": "calc-neighbor-col-fill-border-box",
+    "boxSizing": "border-box",
+    "width": "136px",
+    "height": "34px",
+    "border": "2px solid transparent",
+    "padding": "8px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(4px + 5%) repeat(auto-fill, minmax(40px, 1fr)) calc(3px + 2.5%)",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "2",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        136.0,
+        34.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            23.796875,
+            10,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          9.8,
+          44.15,
+          44.15,
+          5.9
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-border-box"
+  },
+  {
+    "id": "calc-neighbor-col-fill-extra-term",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5% + clamp(0px, 0%, 1px)) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          22.0,
+          50.5,
+          50.5,
+          50.5,
+          50.5
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "expectedRejection": {
+      "status": -11,
+      "code": "unsupported_computed_value",
+      "property": "grid-template-columns",
+      "nodeId": 1
+    },
+    "oracleId": "col-fill-extra-term"
+  },
+  {
+    "id": "calc-neighbor-col-fill-negative-term",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(-2px + 5%) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          10.0,
+          42.0,
+          42.0,
+          42.0,
+          42.0,
+          42.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-negative-term"
+  },
+  {
+    "id": "calc-neighbor-col-fill-negative-final",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(-20px + 5%) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          44.0,
+          44.0,
+          44.0,
+          44.0,
+          44.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-negative-final"
+  },
+  {
+    "id": "calc-neighbor-col-fill-negative-percentage-term",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(20px - 5%) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          8.0,
+          42.4,
+          42.4,
+          42.4,
+          42.4,
+          42.4
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "expectedRejection": {
+      "status": -11,
+      "code": "unsupported_computed_value",
+      "property": "grid-template-columns",
+      "nodeId": 1
+    },
+    "oracleId": "col-fill-negative-percentage-term"
+  },
+  {
+    "id": "calc-neighbor-col-max-content",
+    "boxSizing": "content-box",
+    "width": "max-content",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "calc(10px + 5%) repeat(auto-fill, minmax(40px, 1fr))",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "1",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        null,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          12.2969,
+          40.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "expectedRejection": {
+      "status": -11,
+      "code": "invalid_grid_track_list",
+      "property": "grid-template-columns",
+      "nodeId": 1
+    },
+    "oracleId": "col-max-content"
+  },
+  {
+    "id": "calc-neighbor-col-fill-fixed-control",
+    "boxSizing": "content-box",
+    "width": "240px",
+    "height": "10px",
+    "border": "0px solid transparent",
+    "padding": "0px",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "22px repeat(auto-fill, minmax(40px, 1fr)) 10px",
+    "rows": "10px",
+    "columnGap": "4px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#eef2ff",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "2px",
+        "height": "2px",
+        "color": "#e5484d",
+        "placement": {
+          "gridColumn": "2",
+          "gridRow": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        240.0,
+        10.0
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            26.0,
+            0,
+            2,
+            2
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          22.0,
+          47.0,
+          47.0,
+          47.0,
+          47.0,
+          10.0
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    },
+    "oracleId": "col-fill-fixed-control"
+  }
+]

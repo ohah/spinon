@@ -168,7 +168,7 @@ fn definite_percentage_neighbors_match_the_fixed_thirteen_scene_matrix() {
     ];
     let first_fit = [
         (false, 24.0),
-        (false, 200.0),
+        (false, 196.0),
         (true, 0.0),
         (true, 0.0),
         (true, 0.0),

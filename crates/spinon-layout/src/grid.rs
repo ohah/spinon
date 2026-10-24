@@ -827,7 +827,7 @@ fn validate_auto_repeat_axis(
     let prefix = &tracks[..auto_repeat.start];
     let repeat_tracks = &tracks[auto_repeat.start..auto_repeat.end];
     let suffix = &tracks[auto_repeat.end..];
-    if !auto_repeat_neighbor_tracks_are_supported(prefix, suffix, property, context)
+    if !auto_repeat_neighbor_tracks_are_supported(node, prefix, suffix, property, context, css_math)
         || !repeat_tracks.iter().all(|track| {
             auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math)
         })
@@ -1274,47 +1274,120 @@ fn auto_repeat_maximum_calc_is_supported(
 }
 
 fn auto_repeat_neighbor_tracks_are_supported(
+    node: NodeId,
     prefix: &[GridTrackSize],
     suffix: &[GridTrackSize],
-    property: &str,
+    property: &'static str,
     context: AutoRepeatAxisContext<'_>,
+    css_math: &[crate::LayoutCssMathValue],
 ) -> bool {
-    let mut neighbors = prefix.iter().chain(suffix);
+    let neighbors = prefix.iter().chain(suffix);
     let has_percentage = neighbors
         .clone()
-        .any(|track| matches!(track, GridTrackSize::Percentage(_)));
-    if !has_percentage {
-        return neighbors.all(|track| match track {
-            GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
-            _ => false,
-        });
-    }
-
-    if !context.percentage_basis_is_definite {
-        return false;
-    }
-    let Some(basis) = explicit_positive_content_axis(context.style, property) else {
-        return false;
+        .any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Calc(_)));
+    let basis = if has_percentage {
+        if !context.percentage_basis_is_definite {
+            return false;
+        }
+        let Some(basis) = explicit_positive_content_axis(context.style, property) else {
+            return false;
+        };
+        Some(basis)
+    } else {
+        None
+    };
+    let math_property = match property {
+        "grid-template-columns" => LayoutCssMathProperty::GridTemplateColumns,
+        "grid-template-rows" => LayoutCssMathProperty::GridTemplateRows,
+        _ => return false,
     };
     let mut resolved_neighbor_sum = 0.0_f64;
     for track in neighbors {
         let resolved = match track {
-            GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => *value,
+            GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
+                f64::from(*value)
+            }
             GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
-                let resolved = value * basis;
-                if !resolved.is_finite() {
+                let Some(basis) = basis else {
+                    return false;
+                };
+                let resolved = f64::from(*value) * f64::from(basis);
+                if !resolved.is_finite() || resolved > f64::from(f32::MAX) {
                     return false;
                 }
                 resolved
             }
+            GridTrackSize::Calc(id) => {
+                let Some(basis) = basis else {
+                    return false;
+                };
+                let mut matches = css_math.iter().filter(|value| value.id == *id);
+                let Some(value) = matches.next() else {
+                    return false;
+                };
+                if matches.next().is_some()
+                    || value.node_id != node
+                    || value.property != math_property
+                {
+                    return false;
+                }
+                let Some((length, percentage)) = auto_repeat_neighbor_calc_terms(&value.expression)
+                else {
+                    return false;
+                };
+                let raw = f64::from(length) + f64::from(percentage) * f64::from(basis);
+                if !raw.is_finite() || raw.abs() > f64::from(f32::MAX) {
+                    return false;
+                }
+                let Ok(resolved) = value.resolve(basis) else {
+                    return false;
+                };
+                if !resolved.is_finite() || resolved < 0.0 {
+                    return false;
+                }
+                f64::from(resolved)
+            }
             _ => return false,
         };
-        resolved_neighbor_sum += f64::from(resolved);
-        if resolved_neighbor_sum > f64::from(f32::MAX) {
+        let maximum = f64::from(f32::MAX);
+        if !resolved.is_finite()
+            || resolved_neighbor_sum > maximum
+            || resolved > maximum
+            || (resolved_neighbor_sum >= maximum && resolved > 0.0)
+            || (resolved >= maximum && resolved_neighbor_sum > 0.0)
+            || resolved_neighbor_sum + resolved > maximum
+        {
             return false;
         }
+        resolved_neighbor_sum += resolved;
     }
     true
+}
+
+fn auto_repeat_neighbor_calc_terms(expression: &crate::LayoutCssMath) -> Option<(f32, f32)> {
+    let crate::LayoutCssMath::Sum(terms) = expression else {
+        return None;
+    };
+    let [first, second] = terms.as_slice() else {
+        return None;
+    };
+    let (length, percentage) = match (first, second) {
+        (length, crate::LayoutCssMath::Percentage(percentage))
+        | (crate::LayoutCssMath::Percentage(percentage), length) => {
+            let length = match length {
+                crate::LayoutCssMath::LengthPx(length) => *length,
+                crate::LayoutCssMath::Negate(value) => match value.as_ref() {
+                    crate::LayoutCssMath::LengthPx(length) => -*length,
+                    _ => return None,
+                },
+                _ => return None,
+            };
+            (length, *percentage)
+        }
+        _ => return None,
+    };
+    (length.is_finite() && percentage.is_finite() && percentage >= 0.0)
+        .then_some((length, percentage))
 }
 
 fn valid_min_track_sizing_function(value: GridTrackMinSizingFunction) -> bool {

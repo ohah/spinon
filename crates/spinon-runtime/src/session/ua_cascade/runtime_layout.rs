@@ -1183,6 +1183,13 @@ fn layout_failure_from_error(error: StyleLayoutError) -> RuntimeLayoutFailure {
         StyleLayoutError::Layout(LayoutError::InvalidHostDocumentRoot(node)) => {
             layout_failure("invalid_root", Some(node.get()), None)
         }
+        StyleLayoutError::Layout(LayoutError::InvalidGridTrackList { node, property }) => {
+            layout_failure(
+                "invalid_grid_track_list",
+                Some(node.get()),
+                Some(property.to_owned()),
+            )
+        }
         StyleLayoutError::Layout(LayoutError::InvalidGridPlacement {
             node,
             property,
@@ -1332,6 +1339,14 @@ mod tests {
     fn grid_auto_placement_rejections_keep_stable_codes_and_css_properties() {
         let node = NodeId::new(42).unwrap();
         let cases = [
+            (
+                StyleLayoutError::Layout(LayoutError::InvalidGridTrackList {
+                    node,
+                    property: "grid-template-columns",
+                }),
+                "invalid_grid_track_list",
+                "grid-template-columns",
+            ),
             (
                 StyleLayoutError::Layout(LayoutError::UnsupportedGridAutoFlow(node)),
                 "unsupported_grid_auto_flow",

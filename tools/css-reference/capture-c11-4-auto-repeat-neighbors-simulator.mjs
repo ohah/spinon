@@ -3973,6 +3973,201 @@ async function autoRepeatPercentageNeighborScenes() {
   });
 }
 
+async function autoRepeatCalcNeighborScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_calc_neighbor_scenes.json');
+  const expectationPath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-precomparison-2026-10-24/spec-derived-expectations.json');
+  const chromePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-calc-neighbors-precomparison-2026-10-24/chrome156-observation.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, oracle, chrome, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(expectationPath, 'utf8').then(JSON.parse),
+    readFile(chromePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 14, 'calc 이웃 runtime fixture는 14 scene이어야 합니다.');
+  assert.equal(Object.keys(oracle.cases).length, 14, '독립 calc 이웃 판정은 14 case여야 합니다.');
+  assert.equal(chrome.scenes.length, 14, 'Chrome calc 이웃 관측은 14 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+  const chromeById = new Map(chrome.scenes.map((scene) => [scene.id, scene]));
+  const expectedIDs = Object.keys(oracle.cases);
+  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), expectedIDs,
+    'runtime fixture and independent calc expectation order differs.');
+  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), chrome.scenes.map(({ id }) => id),
+    'runtime fixture and Chrome calc observation order differs.');
+  const close = (actual, expected, label) => {
+    assert.ok(Math.abs(actual - expected) <= 1 / 64,
+      `${label}: ${actual} != ${expected}`);
+  };
+  const colorRgba = (color) => [
+    Number.parseInt(color.slice(1, 3), 16),
+    Number.parseInt(color.slice(3, 5), 16),
+    Number.parseInt(color.slice(5, 7), 16),
+    255,
+  ];
+  const lineNumber = (placement) => Number.parseInt(placement ?? '1', 10);
+  const positionAtLine = (tracks, gap, line) => tracks.slice(0, line - 1)
+    .reduce((sum, size) => sum + size, 0) + Math.max(0, line - 1) * gap;
+
+  return fixtures.map((fixture) => {
+    const { id, expect, columnGap, rowGap, items } = fixture;
+    const oracleID = fixture.oracleId;
+    const normative = oracle.cases[oracleID];
+    const chromeScene = chromeById.get(oracleID);
+    assert.ok(normative && chromeScene, `${id}: independent or Chrome observation is missing.`);
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const rejection = fixture.expectedRejection;
+    if (normative.fixtureScope.startsWith('out-of-scope')) {
+      assert.ok(rejection, `${id}: out-of-scope control must have a rejection contract.`);
+      assert.equal(rejection.status, -11, `${id}: rejection status`);
+      assert.equal(rejection.property, 'grid-template-columns', `${id}: rejected property`);
+      assert.equal(rejection.nodeId, 1, `${id}: rejected node`);
+      assert.equal(items.length, 1, `${id}: negative controls keep a visible source item.`);
+      return {
+        id,
+        expectedRejection: rejection,
+        axis: normative.axis === 'columns' ? 'Columns' : 'Rows',
+        boxCount: null,
+        rootFrame: null,
+        itemFrame: null,
+        nodeFrames: null,
+        pixelSamples: null,
+      };
+    }
+
+    assert.equal(rejection, undefined, `${id}: in-scope scene must reach layout and paint.`);
+    const axis = normative.axis === 'columns' ? 'Columns' : 'Rows';
+    const axisKey = axis.toLowerCase();
+    const otherAxis = axis === 'Columns' ? 'Rows' : 'Columns';
+    const [rootWidth, rootHeight] = expect.root;
+    const axisTracks = expect.tracks[axisKey];
+    const expectedTracks = normative.usedTracksCssPx;
+    assert.equal(axisTracks.length, expectedTracks.length, `${id}: independent track count`);
+    for (const [index, track] of expectedTracks.entries()) {
+      close(axisTracks[index], track, `${id}: normative track ${index}`);
+    }
+    assert.deepEqual(expect.collapsed[axisKey], axisTracks.map((_, index) => (
+      id === 'calc-neighbor-col-fit-first' ? index >= 2 && index <= 4
+        : id === 'calc-neighbor-col-fit-empty' ? index >= 1 && index <= 4
+          : false
+    )), `${id}: auto-fit collapse state`);
+    assert.deepEqual(expect.tracks[otherAxis.toLowerCase()], [10], `${id}: cross-axis track`);
+    assert.deepEqual(expect.collapsed[otherAxis.toLowerCase()], [false], `${id}: cross-axis collapse`);
+    assert.equal(items.length, expect.items.length, `${id}: item count`);
+    assert.ok(expect.items.length <= 1, `${id}: this matrix has at most one item.`);
+    assert.equal(fixture.rootColor, '#eef2ff', `${id}: root sample color`);
+
+    const gap = Number.parseFloat(axis === 'Columns' ? columnGap : rowGap);
+    const chromeTracks = chromeScene[axisKey].trim().split(/\s+/)
+      .map((value) => Number.parseFloat(value));
+    assert.equal(chromeTracks.length, expectedTracks.length, `${id}: Chrome track count`);
+    for (const [index, actual] of chromeTracks.entries()) {
+      close(actual, expectedTracks[index], `${id}: Chrome CSSOM track ${index}`);
+    }
+    const chromeGap = Number.parseFloat(axis === 'Columns'
+      ? chromeScene.columnGap : chromeScene.rowGap);
+    close(chromeGap, gap, `${id}: Chrome gap`);
+    close(chromeScene.grid.width, rootWidth, `${id}: Chrome root width`);
+    close(chromeScene.grid.height, rootHeight, `${id}: Chrome root height`);
+    const expectedBasis = normative.definiteContentSize;
+    assert.ok(expectedBasis != null, `${id}: definite used-size basis is missing.`);
+    close(axis === 'Columns' ? rootWidth - (fixture.boxSizing === 'border-box' ? 20 : 0)
+      : rootHeight - (fixture.boxSizing === 'border-box' ? 20 : 0),
+    expectedBasis, `${id}: content-box basis`);
+
+    if (items.length) {
+      const item = items[0];
+      const itemExpected = expect.items[0];
+      const itemColumn = lineNumber(item.placement.gridColumn);
+      const itemRow = lineNumber(item.placement.gridRow);
+      const [borderWidth] = fixture.border.match(/^[\d.]+/)?.map(Number) ?? [0];
+      const padding = Number.parseFloat(fixture.padding);
+      const contentOrigin = fixture.boxSizing === 'border-box'
+        ? borderWidth + padding : 0;
+      const x = contentOrigin + (axis === 'Columns'
+        ? positionAtLine(expect.tracks.columns, Number.parseFloat(columnGap), itemColumn)
+        : (itemColumn - 1) * Number.parseFloat(columnGap));
+      const y = contentOrigin + (axis === 'Rows'
+        ? positionAtLine(expect.tracks.rows, Number.parseFloat(rowGap), itemRow)
+        : (itemRow - 1) * Number.parseFloat(rowGap));
+      close(itemExpected.frame[0], x, `${id}: independently positioned item x`);
+      close(itemExpected.frame[1], y, `${id}: independently positioned item y`);
+      const chromeItem = chromeScene.item;
+      assert.ok(chromeItem, `${id}: Chrome item geometry is missing.`);
+      close(chromeItem.x - chromeScene.grid.x, x, `${id}: Chrome local item x`);
+      close(chromeItem.y - chromeScene.grid.y, y, `${id}: Chrome local item y`);
+      close(chromeItem.width, itemExpected.frame[2], `${id}: Chrome item width`);
+      close(chromeItem.height, itemExpected.frame[3], `${id}: Chrome item height`);
+    } else {
+      assert.equal(chromeScene.item, null, `${id}: Chrome auto-fit empty scene item`);
+    }
+
+    const rootNodeId = `c114-${id}-grid`;
+    const nodeFrames = [
+      `0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight}`,
+      ...expect.items.map(({ frame }, index) => {
+        const [x, y, width, height] = frame;
+        return `${index + 1}:node=${index + 2},x=${x},y=${y},width=${width},height=${height}`;
+      }),
+    ].join(';');
+    const pixelSamples = [
+      {
+        id: `${id}-root-interior`, nodeId: rootNodeId,
+        xCssPx: Math.floor(rootWidth / 2), yCssPx: Math.floor(rootHeight / 2),
+        rgba: colorRgba(fixture.rootColor),
+      },
+      ...expect.items.map(({ name, frame }) => {
+        const [x, y, width, height] = frame;
+        return {
+          id: `${id}-${name}-interior`, nodeId: `c114-${id}-${name}`,
+          xCssPx: Math.floor(x + width / 2), yCssPx: Math.floor(y + height / 2),
+          rgba: colorRgba(items[0].color),
+        };
+      }),
+    ];
+    if (id === 'calc-neighbor-col-fill-overflow') {
+      pixelSamples.push(
+        { id: `${id}-root-right-interior`, nodeId: rootNodeId,
+          xCssPx: rootWidth - 1, yCssPx: 5, rgba: colorRgba(fixture.rootColor) },
+        { id: `${id}-root-exterior`, nodeId: rootNodeId,
+          xCssPx: rootWidth, yCssPx: 5, rgba: [0, 0, 0, 255] },
+        { id: `${id}-item-overflow`, nodeId: `c114-${id}-item-1`,
+          xCssPx: 244, yCssPx: 1, rgba: colorRgba(items[0].color) },
+      );
+    }
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: items.length ? 'width=2,height=2' : null,
+      nodeFrames: `node_frames_css_px=[${nodeFrames}]`,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      pixelSamples,
+    };
+  });
+}
+
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
@@ -3980,7 +4175,8 @@ scenes.push(...await autoRepeatPositivePercentMinimumScenes());
 scenes.push(...await autoRepeatZeroPercentMinimumScenes());
 scenes.push(...await autoRepeatPercentageMaximumScenes());
 scenes.push(...await autoRepeatPercentageNeighborScenes());
-assert.equal(scenes.length, 418, 'C11.4 fixture scene count differs.');
+scenes.push(...await autoRepeatCalcNeighborScenes());
+assert.equal(scenes.length, 432, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5032,6 +5228,8 @@ function waitForLog(readLog, scene, runID) {
   while (Date.now() < deadline) {
     latest = readLog();
     const summary = latest.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
+    const rejectionSummary = latest.includes(
+      `SPINON_C114_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=${scene.id} `);
     const traceComplete = c114TraceChunkState(latest, runID).complete;
     const draw = latest.includes('SPINON_C0410_DRAW')
       && latest.includes(`presented boxes=${scene.boxCount}`);
@@ -5040,6 +5238,7 @@ function waitForLog(readLog, scene, runID) {
         ? latest.includes(`SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`)
         : latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`));
     if ((summary && traceComplete && draw && pixelSummary)
+        || (scene.expectedRejection && rejectionSummary)
         || latest.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
         || latest.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
         || latest.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
@@ -5058,6 +5257,18 @@ function supersededC114Result(log, runID) {
 }
 
 function verifyRuntimeLog(log, scene, runID) {
+  if (scene.expectedRejection) {
+    const { status, code, property, nodeId } = scene.expectedRejection;
+    const expectedSummary = `SPINON_C114_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=${scene.id} `
+      + `expected=true status=${status} code=${code} property=${property} node_id=${nodeId} frames=absent`;
+    assert.ok(log.includes(expectedSummary),
+      `${scene.id}: expected rejection summary is missing or differs.\n${log}`);
+    assert.ok(!log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `),
+      `${scene.id}: rejected scene unexpectedly reached a layout summary.`);
+    assert.ok(!log.includes(`SPINON_C114_GRID_NODE_FRAME run_id=${runID}`),
+      `${scene.id}: rejected scene emitted node frames.`);
+    return { id: scene.id, status: 'expected-rejection', code, property, nodeId };
+  }
   const summary = `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `;
   const assertionError = log.split(/\r?\n/).find((line) =>
     line.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID} `));
@@ -6086,11 +6297,14 @@ function verifyRuntimeLog(log, scene, runID) {
       const internalGutters = allGutters.slice(1, -1);
       assert.equal(internalGutters.length, finalTracks.length - 1,
         `${scene.id}: ${axis} 내부 gap 수가 track 사이 개수와 다릅니다.`);
-      // A collapsed track collapses the gutters on both of its sides.
+      // A collapsed run keeps the preceding gutter as its shared boundary;
+      // gutters within the run and after it collapse.
       internalGutters.forEach(({ baseSize }, index) => {
         const preservedBoundary = (index === 0 && boundaryGutters?.leading)
           || (index === internalGutters.length - 1 && boundaryGutters?.trailing);
-        const expectedSize = preservedBoundary
+        const startsCollapsedRun = !expected.collapsed[index]
+          && expected.collapsed[index + 1];
+        const expectedSize = preservedBoundary || startsCollapsedRun
           ? (scene.gaps?.[axis] ?? 8)
           : expected.collapsed[index] || expected.collapsed[index + 1]
             ? 0 : (scene.gaps?.[axis] ?? 8);
@@ -6342,8 +6556,10 @@ if (target === 'ios-simulator') {
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
     console.log(`${target} C11.4 scene ${index + 1}/${runScenes.length}: ${scene.id} passed`);
-    await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io', simulatorUDID,
-      'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
+    if (!scene.expectedRejection) {
+      await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io', simulatorUDID,
+        'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
+    }
   }
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
     target, udid: simulatorUDID, name: simulator[0].name, runtime: simulator[0].runtime, appSha256,
@@ -6394,6 +6610,8 @@ if (target === 'ios-simulator') {
           .stdout.trim().split(/\s+/)[0]) || null;
         if (pid) log = androidLog(adb, pid);
         const summary = log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
+        const rejectionSummary = log.includes(
+          `SPINON_C114_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=${scene.id} `);
         const traceComplete = c114TraceChunkState(log, runID).complete;
         const draw = log.includes('SPINON_C0410_DRAW')
           && log.includes(`presented boxes=${scene.boxCount}`);
@@ -6402,6 +6620,7 @@ if (target === 'ios-simulator') {
         const pixelError = log.includes(`SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=${runID}`)
           || log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`);
         if ((summary && traceComplete && draw && pixelSummary)
+            || (scene.expectedRejection && rejectionSummary)
             || pixelError
             || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
@@ -6419,10 +6638,12 @@ if (target === 'ios-simulator') {
     observation.supersededRetries = supersededAttempts;
     observations.push(observation);
     console.log(`${target} C11.4 scene ${index + 1}/${runScenes.length}: ${scene.id} passed`);
-    adb(['shell', 'cmd', 'statusbar', 'collapse']);
-    sleep(300);
-    const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
-    await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
+    if (!scene.expectedRejection) {
+      adb(['shell', 'cmd', 'statusbar', 'collapse']);
+      sleep(300);
+      const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
+      await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
+    }
   }
 }
 
