@@ -80,6 +80,15 @@ fn track_sizing_projection_accepts_the_supported_auto_repeat_neighbor_shapes() {
             ComputedCssMath::Negate(Box::new(ComputedCssMath::LengthPx(2.0))),
             0.05,
         ),
+        calc_neighbor(ComputedCssMath::LengthPx(20.0), -0.05),
+        ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+            ComputedCssMath::Negate(Box::new(ComputedCssMath::Percentage(0.05))),
+            ComputedCssMath::LengthPx(20.0),
+        ])),
+        ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+            ComputedCssMath::LengthPx(-2.0),
+            ComputedCssMath::Negate(Box::new(ComputedCssMath::Percentage(0.01))),
+        ])),
     ];
     for neighbor in supported {
         let grid = grid_with_column_neighbors(neighbor.clone(), neighbor);
@@ -97,7 +106,6 @@ fn track_sizing_projection_accepts_the_supported_auto_repeat_neighbor_shapes() {
 fn track_sizing_projection_preserves_css_property_context_for_unsupported_neighbors() {
     let node = NodeId::new(11_132).unwrap();
     let unsupported = [
-        calc_neighbor(ComputedCssMath::LengthPx(10.0), -0.05),
         ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
             ComputedCssMath::LengthPx(10.0),
             ComputedCssMath::Percentage(0.05),
@@ -107,6 +115,14 @@ fn track_sizing_projection_preserves_css_property_context_for_unsupported_neighb
                 max: Box::new(ComputedCssMath::LengthPx(1.0)),
             },
         ])),
+        ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+            ComputedCssMath::LengthPx(10.0),
+            ComputedCssMath::Negate(Box::new(ComputedCssMath::Negate(Box::new(
+                ComputedCssMath::Percentage(0.05),
+            )))),
+        ])),
+        calc_neighbor(ComputedCssMath::LengthPx(f32::NAN), 0.05),
+        calc_neighbor(ComputedCssMath::LengthPx(10.0), f32::INFINITY),
         ComputedCssGridTrackSize::MaxContent,
         ComputedCssGridTrackSize::Fraction(1.0),
         ComputedCssGridTrackSize::MinMax {
@@ -135,7 +151,13 @@ fn track_sizing_projection_preserves_css_property_context_for_unsupported_neighb
         );
     }
 
-    let grid = grid_with_row_neighbor(calc_neighbor(ComputedCssMath::LengthPx(10.0), -0.05));
+    let grid = grid_with_row_neighbor(ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(vec![
+        ComputedCssMath::LengthPx(10.0),
+        ComputedCssMath::Product(vec![
+            ComputedCssMath::Percentage(-0.05),
+            ComputedCssMath::Number(1.0),
+        ]),
+    ])));
     assert!(matches!(
         project_grid_layout(
             node,

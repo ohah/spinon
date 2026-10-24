@@ -103,18 +103,8 @@ fn input(
     }
 
     if occupied {
-        input.nodes[1].style.width =
-            LayoutDimension::Fixed(if axis == LayoutGridTrackSizingAxis::Columns {
-                2.0
-            } else {
-                2.0
-            });
-        input.nodes[1].style.height =
-            LayoutDimension::Fixed(if axis == LayoutGridTrackSizingAxis::Rows {
-                2.0
-            } else {
-                2.0
-            });
+        input.nodes[1].style.width = LayoutDimension::Fixed(2.0);
+        input.nodes[1].style.height = LayoutDimension::Fixed(2.0);
         let line_start = (start + 1) as i32;
         let placement = match axis {
             LayoutGridTrackSizingAxis::Columns => GridItemInput {
@@ -342,6 +332,17 @@ fn calc_neighbor_range_clamps_only_the_final_supported_value() {
             42.0,
         ),
         (sum(-20.0, 0.05, false), 0.0, 44.0),
+        (sum(20.0, -0.05, false), 8.0, 42.4),
+        (
+            LayoutCssMath::Sum(vec![
+                LayoutCssMath::Negate(Box::new(LayoutCssMath::Percentage(0.05))),
+                LayoutCssMath::LengthPx(20.0),
+            ]),
+            8.0,
+            42.4,
+        ),
+        (sum(8.0, -0.05, false), 0.0, 44.0),
+        (sum(-2.0, -0.01, false), 0.0, 44.0),
     ] {
         let input = input(
             LayoutGridTrackSizingAxis::Columns,
@@ -360,10 +361,6 @@ fn calc_neighbor_range_clamps_only_the_final_supported_value() {
 
 #[test]
 fn calc_neighbor_rejects_invalid_shapes_basis_identity_and_overflow() {
-    let negative_percentage = LayoutCssMath::Sum(vec![
-        LayoutCssMath::LengthPx(20.0),
-        LayoutCssMath::Negate(Box::new(LayoutCssMath::Percentage(0.05))),
-    ]);
     let three_terms = LayoutCssMath::Sum(vec![
         LayoutCssMath::LengthPx(10.0),
         LayoutCssMath::Percentage(0.05),
@@ -377,12 +374,18 @@ fn calc_neighbor_rejects_invalid_shapes_basis_identity_and_overflow() {
         LayoutCssMath::LengthPx(10.0),
         LayoutCssMath::Percentage(f32::MAX),
     ]);
+    let nested_percentage_negate = LayoutCssMath::Sum(vec![
+        LayoutCssMath::LengthPx(20.0),
+        LayoutCssMath::Negate(Box::new(LayoutCssMath::Negate(Box::new(
+            LayoutCssMath::Percentage(0.05),
+        )))),
+    ]);
 
     for expression in [
-        negative_percentage,
         three_terms,
         non_finite,
         unrepresentable,
+        nested_percentage_negate,
     ] {
         let input = input(
             LayoutGridTrackSizingAxis::Columns,

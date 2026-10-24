@@ -3990,7 +3990,7 @@ async function autoRepeatCalcNeighborScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 14, 'calc 이웃 runtime fixture는 14 scene이어야 합니다.');
+  assert.equal(fixtures.length, 13, '기존 calc 이웃 runtime fixture는 13 scene이어야 합니다.');
   assert.equal(Object.keys(oracle.cases).length, 14, '독립 calc 이웃 판정은 14 case여야 합니다.');
   assert.equal(chrome.scenes.length, 14, 'Chrome calc 이웃 관측은 14 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
@@ -4005,10 +4005,14 @@ async function autoRepeatCalcNeighborScenes() {
     /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
     'iOS Grid track sizing');
   const chromeById = new Map(chrome.scenes.map((scene) => [scene.id, scene]));
-  const expectedIDs = Object.keys(oracle.cases);
+  const expectedIDs = Object.keys(oracle.cases)
+    .filter((id) => id !== 'col-fill-negative-percentage-term');
+  const currentChromeIDs = chrome.scenes
+    .filter((scene) => scene.id !== 'col-fill-negative-percentage-term')
+    .map(({ id }) => id);
   assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), expectedIDs,
     'runtime fixture and independent calc expectation order differs.');
-  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), chrome.scenes.map(({ id }) => id),
+  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), currentChromeIDs,
     'runtime fixture and Chrome calc observation order differs.');
   const close = (actual, expected, label) => {
     assert.ok(Math.abs(actual - expected) <= 1 / 64,
@@ -4168,6 +4172,147 @@ async function autoRepeatCalcNeighborScenes() {
   });
 }
 
+async function autoRepeatNegativePercentageNeighborScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_percentage_neighbor_scenes.json');
+  const expectationPath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/spec-derived-expectations.json');
+  const chromePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, oracle, chrome, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(expectationPath, 'utf8').then(JSON.parse),
+    readFile(chromePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 9, '음수 percentage calc runtime fixture는 9 scene이어야 합니다.');
+  assert.equal(oracle.sceneCount, 9, '독립 음수 percentage calc 판정은 9 case여야 합니다.');
+  assert.equal(chrome.scenes.length, 9, 'Chrome 음수 percentage calc 관측은 9 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_GRID_TRACK_SIZING_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android Grid track sizing');
+  const iosScenes = allowlist(iosSource,
+    /c114GridTrackSizingSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS Grid track sizing');
+  const oracleById = new Map(oracle.cases.map((scene) => [scene.id, scene]));
+  const chromeById = new Map(chrome.scenes.map((scene) => [scene.id, scene]));
+  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), oracle.cases.map(({ id }) => id),
+    'runtime fixture and independent negative percentage expectations differ.');
+  assert.deepEqual(fixtures.map(({ oracleId }) => oracleId), chrome.scenes.map(({ id }) => id),
+    'runtime fixture and Chrome negative percentage observations differ.');
+  const close = (actual, expected, label) => {
+    assert.ok(Math.abs(actual - expected) <= 1 / 64,
+      `${label}: ${actual} != ${expected}`);
+  };
+  const colorRgba = (color) => [
+    Number.parseInt(color.slice(1, 3), 16),
+    Number.parseInt(color.slice(3, 5), 16),
+    Number.parseInt(color.slice(5, 7), 16),
+    255,
+  ];
+  const positionAtLine = (tracks, gap, line) => tracks.slice(0, line - 1)
+    .reduce((sum, size) => sum + size, 0) + Math.max(0, line - 1) * gap;
+
+  return fixtures.map((fixture) => {
+    const { id, expect, columnGap, rowGap, items } = fixture;
+    const normative = oracleById.get(fixture.oracleId);
+    const chromeScene = chromeById.get(fixture.oracleId);
+    assert.ok(normative && chromeScene, `${id}: independent or Chrome observation is missing.`);
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    assert.equal(fixture.expectedRejection, undefined, `${id}: supported scene must reach layout.`);
+    assert.equal(items.length, 1, `${id}: the fixed matrix has one painted item.`);
+    assert.equal(expect.items.length, 1, `${id}: expected item geometry is missing.`);
+    assert.equal(fixture.rootColor, '#eef2ff', `${id}: root sample color`);
+    assert.equal(items[0].color, '#e5484d', `${id}: item sample color`);
+    const axis = normative.axis === 'columns' ? 'Columns' : 'Rows';
+    const axisKey = axis.toLowerCase();
+    const otherAxis = axis === 'Columns' ? 'Rows' : 'Columns';
+    const [rootWidth, rootHeight] = expect.root;
+    const axisTracks = expect.tracks[axisKey];
+    assert.equal(axisTracks.length, normative.usedTracksCssPx.length, `${id}: track count`);
+    for (const [index, track] of normative.usedTracksCssPx.entries()) {
+      close(axisTracks[index], track, `${id}: independent track ${index}`);
+    }
+    assert.deepEqual(expect.collapsed[axisKey], axisTracks.map((_, index) => (
+      normative.collapsedTrackIndices.includes(index)
+    )), `${id}: auto-fit collapse state`);
+    assert.deepEqual(expect.tracks[otherAxis.toLowerCase()], [10], `${id}: cross-axis track`);
+    assert.deepEqual(expect.collapsed[otherAxis.toLowerCase()], [false], `${id}: cross-axis collapse`);
+    const chromeTracks = chromeScene[axisKey].trim().split(/\s+/)
+      .map((value) => Number.parseFloat(value));
+    assert.equal(chromeTracks.length, axisTracks.length, `${id}: Chrome track count`);
+    for (const [index, actual] of chromeTracks.entries()) {
+      close(actual, axisTracks[index], `${id}: Chrome CSSOM track ${index}`);
+    }
+    const gap = Number.parseFloat(axis === 'Columns' ? columnGap : rowGap);
+    close(Number.parseFloat(axis === 'Columns' ? chromeScene.columnGap : chromeScene.rowGap),
+      gap, `${id}: Chrome gap`);
+    close(chromeScene.grid.width, rootWidth, `${id}: Chrome root width`);
+    close(chromeScene.grid.height, rootHeight, `${id}: Chrome root height`);
+    close(axis === 'Columns' ? rootWidth - (fixture.boxSizing === 'border-box' ? 20 : 0)
+      : rootHeight - (fixture.boxSizing === 'border-box' ? 20 : 0),
+    normative.definiteContentSize, `${id}: content-box basis`);
+
+    const item = items[0];
+    const itemExpected = expect.items[0];
+    const itemColumn = Number.parseInt(item.placement.gridColumn ?? '1', 10);
+    const itemRow = Number.parseInt(item.placement.gridRow ?? '1', 10);
+    const [borderWidth] = fixture.border.match(/^[\d.]+/)?.map(Number) ?? [0];
+    const padding = Number.parseFloat(fixture.padding);
+    const contentOrigin = fixture.boxSizing === 'border-box' ? borderWidth + padding : 0;
+    const x = contentOrigin + (axis === 'Columns'
+      ? positionAtLine(expect.tracks.columns, Number.parseFloat(columnGap), itemColumn)
+      : (itemColumn - 1) * Number.parseFloat(columnGap));
+    const y = contentOrigin + (axis === 'Rows'
+      ? positionAtLine(expect.tracks.rows, Number.parseFloat(rowGap), itemRow)
+      : (itemRow - 1) * Number.parseFloat(rowGap));
+    close(itemExpected.frame[0], x, `${id}: independent item x`);
+    close(itemExpected.frame[1], y, `${id}: independent item y`);
+    close(chromeScene.item.x - chromeScene.grid.x, x, `${id}: Chrome local item x`);
+    close(chromeScene.item.y - chromeScene.grid.y, y, `${id}: Chrome local item y`);
+    close(chromeScene.item.width, itemExpected.frame[2], `${id}: Chrome item width`);
+    close(chromeScene.item.height, itemExpected.frame[3], `${id}: Chrome item height`);
+
+    const rootNodeId = `c114-${id}-grid`;
+    const [itemX, itemY, itemWidth, itemHeight] = itemExpected.frame;
+    return {
+      id,
+      axis,
+      boxCount: 2,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: `width=${itemWidth},height=${itemHeight}`,
+      nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight};1:node=2,x=${itemX},y=${itemY},width=${itemWidth},height=${itemHeight}]`,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      pixelSamples: [
+        {
+          id: `${id}-root-interior`, nodeId: rootNodeId,
+          xCssPx: Math.floor(rootWidth / 2), yCssPx: Math.floor(rootHeight / 2),
+          rgba: colorRgba(fixture.rootColor),
+        },
+        {
+          id: `${id}-item-1-interior`, nodeId: `c114-${id}-item-1`,
+          xCssPx: Math.floor(itemX + itemWidth / 2), yCssPx: Math.floor(itemY + itemHeight / 2),
+          rgba: colorRgba(item.color),
+        },
+      ],
+    };
+  });
+}
+
 scenes.push(...await templateAreaRepeatScenes());
 scenes.push(...await autoRepeatNamedLineScenes());
 scenes.push(...await autoRepeatCalcMinimumScenes());
@@ -4176,7 +4321,8 @@ scenes.push(...await autoRepeatZeroPercentMinimumScenes());
 scenes.push(...await autoRepeatPercentageMaximumScenes());
 scenes.push(...await autoRepeatPercentageNeighborScenes());
 scenes.push(...await autoRepeatCalcNeighborScenes());
-assert.equal(scenes.length, 432, 'C11.4 fixture scene count differs.');
+scenes.push(...await autoRepeatNegativePercentageNeighborScenes());
+assert.equal(scenes.length, 440, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6297,14 +6443,24 @@ function verifyRuntimeLog(log, scene, runID) {
       const internalGutters = allGutters.slice(1, -1);
       assert.equal(internalGutters.length, finalTracks.length - 1,
         `${scene.id}: ${axis} 내부 gap 수가 track 사이 개수와 다릅니다.`);
-      // A collapsed run keeps the preceding gutter as its shared boundary;
-      // gutters within the run and after it collapse.
+      const sharedCollapsedRunGutters = new Set();
+      for (let start = 0; start < expected.collapsed.length;) {
+        if (!expected.collapsed[start]) {
+          start++;
+          continue;
+        }
+        let end = start;
+        while (end + 1 < expected.collapsed.length && expected.collapsed[end + 1]) end++;
+        if (start > 0 && end + 1 < expected.collapsed.length) {
+          sharedCollapsedRunGutters.add(start - 1);
+        }
+        start = end + 1;
+      }
       internalGutters.forEach(({ baseSize }, index) => {
         const preservedBoundary = (index === 0 && boundaryGutters?.leading)
           || (index === internalGutters.length - 1 && boundaryGutters?.trailing);
-        const startsCollapsedRun = !expected.collapsed[index]
-          && expected.collapsed[index + 1];
-        const expectedSize = preservedBoundary || startsCollapsedRun
+        const sharedRunBoundary = sharedCollapsedRunGutters.has(index);
+        const expectedSize = preservedBoundary || sharedRunBoundary
           ? (scene.gaps?.[axis] ?? 8)
           : expected.collapsed[index] || expected.collapsed[index + 1]
             ? 0 : (scene.gaps?.[axis] ?? 8);

@@ -1371,23 +1371,34 @@ fn auto_repeat_neighbor_calc_terms(expression: &crate::LayoutCssMath) -> Option<
     let [first, second] = terms.as_slice() else {
         return None;
     };
-    let (length, percentage) = match (first, second) {
-        (length, crate::LayoutCssMath::Percentage(percentage))
-        | (crate::LayoutCssMath::Percentage(percentage), length) => {
-            let length = match length {
-                crate::LayoutCssMath::LengthPx(length) => *length,
-                crate::LayoutCssMath::Negate(value) => match value.as_ref() {
-                    crate::LayoutCssMath::LengthPx(length) => -*length,
-                    _ => return None,
-                },
-                _ => return None,
-            };
-            (length, *percentage)
-        }
-        _ => return None,
+    let signed_length = |value: &crate::LayoutCssMath| match value {
+        crate::LayoutCssMath::LengthPx(length) => Some(*length),
+        crate::LayoutCssMath::Negate(value) => match value.as_ref() {
+            crate::LayoutCssMath::LengthPx(length) => Some(-*length),
+            _ => None,
+        },
+        _ => None,
     };
-    (length.is_finite() && percentage.is_finite() && percentage >= 0.0)
-        .then_some((length, percentage))
+    let signed_percentage = |value: &crate::LayoutCssMath| match value {
+        crate::LayoutCssMath::Percentage(percentage) => Some(*percentage),
+        crate::LayoutCssMath::Negate(value) => match value.as_ref() {
+            crate::LayoutCssMath::Percentage(percentage) => Some(-*percentage),
+            _ => None,
+        },
+        _ => None,
+    };
+    let (length, percentage) = if let (Some(length), Some(percentage)) =
+        (signed_length(first), signed_percentage(second))
+    {
+        (length, percentage)
+    } else if let (Some(length), Some(percentage)) =
+        (signed_length(second), signed_percentage(first))
+    {
+        (length, percentage)
+    } else {
+        return None;
+    };
+    (length.is_finite() && percentage.is_finite()).then_some((length, percentage))
 }
 
 fn valid_min_track_sizing_function(value: GridTrackMinSizingFunction) -> bool {

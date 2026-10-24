@@ -55,7 +55,7 @@ mod tests {
     use serde_json::Value;
     use std::collections::BTreeSet;
 
-    const EXPECTED_SCENE_IDS: [&str; 14] = [
+    const EXPECTED_SCENE_IDS: [&str; 13] = [
         "calc-neighbor-col-fill-both",
         "calc-neighbor-row-fill-both",
         "calc-neighbor-col-fill-prefix",
@@ -67,7 +67,6 @@ mod tests {
         "calc-neighbor-col-fill-extra-term",
         "calc-neighbor-col-fill-negative-term",
         "calc-neighbor-col-fill-negative-final",
-        "calc-neighbor-col-fill-negative-percentage-term",
         "calc-neighbor-col-max-content",
         "calc-neighbor-col-fill-fixed-control",
     ];
