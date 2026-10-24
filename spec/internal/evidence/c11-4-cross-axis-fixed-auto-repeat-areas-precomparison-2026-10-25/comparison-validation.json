@@ -1,0 +1,35 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": [
+      1280,
+      633
+    ],
+    "devicePixelRatio": 1
+  },
+  "sceneCount": 11,
+  "matchedScenes": [
+    "fixed-cols-fill-rows-area-short",
+    "fixed-cols-fill-rows-two-track-pattern",
+    "fixed-cols-fit-rows-one-row-occupied",
+    "fixed-cols-fit-rows-empty-area",
+    "fixed-cols-fit-rows-middle-collapsed-between-occupied",
+    "fixed-cols-fill-rows-area-adds-two-rows",
+    "fixed-cols-fill-rows-area-adds-one-row",
+    "fixed-rows-fill-cols-shorthand-area-short",
+    "fixed-rows-fit-cols-two-track-span",
+    "fixed-rows-fit-cols-empty-area",
+    "fixed-rows-fill-cols-area-adds-one-column"
+  ],
+  "checks": [
+    "resolved columns and rows",
+    "root content size",
+    "exact named-area matrix and cells",
+    "fixed-axis area and expanded track dimension",
+    "child key set and every child frame",
+    "root overflow geometry",
+    "auto-repeat axis mapping, count formula, indices, and area extension"
+  ],
+  "toleranceCssPx": 0.015625,
+  "result": "PASS: all 11 scenes agree with independent CRD calculations"
+}

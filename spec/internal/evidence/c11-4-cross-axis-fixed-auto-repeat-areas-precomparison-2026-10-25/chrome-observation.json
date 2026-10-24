@@ -1,0 +1,399 @@
+{
+  "browser": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": [
+      1280,
+      633
+    ],
+    "devicePixelRatio": 1
+  },
+  "results": [
+    {
+      "id": "fixed-cols-fill-rows-area-short",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        20
+      ],
+      "areas": "\"hero .\" \"hero .\"",
+      "rootSize": [
+        44,
+        76
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": [
+        0,
+        0,
+        20,
+        44
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          20,
+          44
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-cols-fill-rows-two-track-pattern",
+      "columnsPx": [
+        16,
+        20,
+        16,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areas": "\"hero . . .\" \"hero . . .\"",
+      "rootSize": [
+        84,
+        44
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": [
+        0,
+        0,
+        16,
+        44
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          16,
+          44
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-cols-fit-rows-one-row-occupied",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        0,
+        0
+      ],
+      "areas": "\"hero empty\" \"other empty\"",
+      "rootSize": [
+        44,
+        76
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": [
+        0,
+        0,
+        20,
+        20
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          20,
+          20
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-cols-fit-rows-empty-area",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        0,
+        0,
+        0
+      ],
+      "areas": "\"hero empty\" \"other empty\"",
+      "rootSize": [
+        44,
+        76
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": null,
+      "childFramesPx": {},
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-cols-fit-rows-middle-collapsed-between-occupied",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        0,
+        20
+      ],
+      "areas": "\"first .\" \"middle .\" \"last .\"",
+      "rootSize": [
+        44,
+        76
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": null,
+      "childFramesPx": {
+        "first": [
+          0,
+          0,
+          20,
+          20
+        ],
+        "last": [
+          0,
+          24,
+          20,
+          20
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-cols-fill-rows-area-adds-two-rows",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        20,
+        12,
+        12
+      ],
+      "areas": "\"empty empty\" \"empty empty\" \"empty empty\" \"empty empty\" \"hero hero\"",
+      "rootSize": [
+        44,
+        76
+      ],
+      "autoColumns": "auto",
+      "autoRows": "12px",
+      "heroFramePx": [
+        0,
+        88,
+        44,
+        12
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          88,
+          44,
+          12
+        ]
+      },
+      "overflowPx": [
+        0,
+        24
+      ]
+    },
+    {
+      "id": "fixed-cols-fill-rows-area-adds-one-row",
+      "columnsPx": [
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20,
+        12
+      ],
+      "areas": "\"empty empty\" \"empty empty\" \"hero hero\"",
+      "rootSize": [
+        44,
+        44
+      ],
+      "autoColumns": "auto",
+      "autoRows": "12px",
+      "heroFramePx": [
+        0,
+        48,
+        44,
+        12
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          48,
+          44,
+          12
+        ]
+      },
+      "overflowPx": [
+        0,
+        16
+      ]
+    },
+    {
+      "id": "fixed-rows-fill-cols-shorthand-area-short",
+      "columnsPx": [
+        20,
+        20,
+        20
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areas": "\"hero hero\" \". .\"",
+      "rootSize": [
+        76,
+        44
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": [
+        0,
+        0,
+        44,
+        20
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          44,
+          20
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-rows-fit-cols-two-track-span",
+      "columnsPx": [
+        20,
+        20,
+        0
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areas": "\"hero hero\" \"hero hero\"",
+      "rootSize": [
+        76,
+        44
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": [
+        0,
+        0,
+        44,
+        44
+      ],
+      "childFramesPx": {
+        "hero": [
+          0,
+          0,
+          44,
+          44
+        ]
+      },
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-rows-fit-cols-empty-area",
+      "columnsPx": [
+        0,
+        0,
+        0
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areas": "\"hero hero\" \"hero hero\"",
+      "rootSize": [
+        76,
+        44
+      ],
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "heroFramePx": null,
+      "childFramesPx": {},
+      "overflowPx": [
+        0,
+        0
+      ]
+    },
+    {
+      "id": "fixed-rows-fill-cols-area-adds-one-column",
+      "columnsPx": [
+        20,
+        20,
+        12
+      ],
+      "rowsPx": [
+        20,
+        20
+      ],
+      "areas": "\". . .\" \". . hero\"",
+      "rootSize": [
+        44,
+        44
+      ],
+      "autoColumns": "12px",
+      "autoRows": "auto",
+      "heroFramePx": [
+        48,
+        24,
+        12,
+        20
+      ],
+      "childFramesPx": {
+        "hero": [
+          48,
+          24,
+          12,
+          20
+        ]
+      },
+      "overflowPx": [
+        16,
+        0
+      ]
+    }
+  ]
+}
