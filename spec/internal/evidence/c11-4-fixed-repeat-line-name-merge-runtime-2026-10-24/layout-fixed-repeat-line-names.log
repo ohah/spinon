@@ -1,0 +1,11 @@
+
+running 4 tests
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_names_merge_with_an_ordinary_neighbor_and_auto_repeat ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_auto_fit_named_placement_precedes_empty_track_collapse ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::row_axis_named_lines_expand_with_multiple_fixed_repeats ... ok
+test c11_4_track_sizing_areas_tests::fixed_repeat_line_names::fixed_repeat_named_lines_resolve_across_fixed_and_auto_repeat_seams ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 226 filtered out; finished in 0.00s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)

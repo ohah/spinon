@@ -1,0 +1,23 @@
+
+running 16 tests
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_keeps_outer_component_groups_separate_from_multitrack_auto_repeat_groups ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_line_names::fixed_repeat_named_lines_expand_and_keep_auto_repeat_groups_separate ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_preserves_named_auto_repeat_lines ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_line_names::fixed_repeat_and_ordinary_neighbor_names_merge_in_authored_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixture_rejects_template_areas_without_changing_auto_repeat_area_profile ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_records_stylo_parser_rejection_of_inflexible_fixed_breadths ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixture_is_limited_to_one_auto_repeat_axis ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::three_four_and_eight_fixed_repeat_groups_expand_in_authored_order ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_mixed_profile_rejects_non_px_tracks_and_unsupported_shapes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::four_fixed_repeat_groups_obey_descriptor_limit_without_partial_tracks ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_prefix_and_suffix_expand_in_authored_order_on_both_axes ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::constant_absolute_calc_and_absolute_units_normalize_to_computed_length_px ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::fixed_repeat_allocation_failures_are_contextual_and_recoverable ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_line_names::fixed_repeat_named_line_metadata_allocation_failures_recover ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_auto_repeat::two_fixed_repeat_groups_expand_in_authored_order_and_rebase_auto_repeat ... ok
+test stylo_dom::cascade::runtime_grid_tests::fixed_repeat_line_names::fixed_repeat_named_line_metadata_accepts_exact_budget_and_rejects_one_byte_over ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 206 filtered out; finished in 0.10s
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)

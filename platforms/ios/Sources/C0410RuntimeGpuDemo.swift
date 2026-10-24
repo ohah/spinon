@@ -107,6 +107,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-named-negative", "auto-repeat-named-span",
     "auto-repeat-named-fit", "auto-repeat-named-neighbors",
     "auto-repeat-named-merge", "auto-repeat-named-row",
+    "auto-repeat-named-fixed-repeat-column-fill",
+    "auto-repeat-named-fixed-repeat-column-fit",
+    "auto-repeat-named-fixed-repeat-row-fill",
     "template-area-repeat-columns-fill", "template-area-repeat-columns-fit",
     "template-area-repeat-columns-area-shorter", "template-area-repeat-columns-area-larger",
     "template-area-repeat-columns-line-collision", "template-area-repeat-columns-fit-numeric",
@@ -378,6 +381,9 @@ private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "auto-repeat-named-negative", "auto-repeat-named-span",
     "auto-repeat-named-fit", "auto-repeat-named-neighbors",
     "auto-repeat-named-merge", "auto-repeat-named-row",
+    "auto-repeat-named-fixed-repeat-column-fill",
+    "auto-repeat-named-fixed-repeat-column-fit",
+    "auto-repeat-named-fixed-repeat-row-fill",
     "auto-repeat-named-implicit-positive-missing",
     "auto-repeat-named-implicit-positive-insufficient",
     "auto-repeat-named-implicit-negative-missing",
@@ -3044,6 +3050,11 @@ private func c114NamedAutoRepeatRootFrame(_ sceneID: String) -> String? {
         return "width=120,height=50"
     case "auto-repeat-named-row":
         return "width=100,height=180"
+    case "auto-repeat-named-fixed-repeat-column-fill",
+         "auto-repeat-named-fixed-repeat-column-fit":
+        return "width=300,height=40"
+    case "auto-repeat-named-fixed-repeat-row-fill":
+        return "width=40,height=300"
     case "auto-repeat-named-implicit-positive-missing",
          "auto-repeat-named-implicit-positive-insufficient",
          "auto-repeat-named-implicit-negative-missing",
@@ -3359,6 +3370,11 @@ private func c114NamedAutoRepeatItemFrame(_ sceneID: String) -> String? {
         return "width=80,height=40"
     case "auto-repeat-named-row":
         return "width=100,height=40"
+    case "auto-repeat-named-fixed-repeat-column-fill",
+         "auto-repeat-named-fixed-repeat-column-fit":
+        return "width=24,height=40"
+    case "auto-repeat-named-fixed-repeat-row-fill":
+        return "width=40,height=24"
     case "auto-repeat-named-implicit-positive-missing",
          "auto-repeat-named-implicit-positive-insufficient",
          "auto-repeat-named-implicit-negative-missing",
@@ -3412,6 +3428,13 @@ private func c114NamedAutoRepeatNodeFrames(_ sceneID: String) -> String? {
     case "auto-repeat-named-row":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=180;"
             + "1:node=2,x=0,y=50,width=100,height=40]"
+    case "auto-repeat-named-fixed-repeat-column-fill",
+         "auto-repeat-named-fixed-repeat-column-fit":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=300,height=40;"
+            + "1:node=2,x=96,y=0,width=24,height=40]"
+    case "auto-repeat-named-fixed-repeat-row-fill":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=300;"
+            + "1:node=2,x=0,y=96,width=40,height=24]"
     case "auto-repeat-named-implicit-positive-missing":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
             + "1:node=2,x=220,y=0,width=20,height=10]"
@@ -5221,13 +5244,17 @@ private struct C111MetalPixelRun {
         case "auto-repeat-named-neighbors": frame = (120, 0, 80, 40)
         case "auto-repeat-named-merge": frame = (20, 0, 80, 40)
         case "auto-repeat-named-row": frame = (0, 50, 100, 40)
+        case "auto-repeat-named-fixed-repeat-column-fill",
+             "auto-repeat-named-fixed-repeat-column-fit": frame = (96, 0, 24, 40)
+        case "auto-repeat-named-fixed-repeat-row-fill": frame = (0, 96, 40, 24)
         default: return nil
         }
         let rootID = "c114-\(sceneID)-grid"
         let itemID = "c114-\(sceneID)-item"
         let background: [UInt32] = [226, 232, 240, 255]
         let itemColor: [UInt32] = [57, 165, 219, 255]
-        if sceneID == "auto-repeat-named-row" {
+        if sceneID == "auto-repeat-named-row"
+            || sceneID.hasPrefix("auto-repeat-named-fixed-repeat-row-") {
             return [
                 ("\(sceneID)-before-item", rootID, 20, frame.y - 1, background),
                 ("\(sceneID)-item-start-edge", itemID, 20, frame.y, itemColor),

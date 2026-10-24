@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "results": [
+    {
+      "name": "style-fixed-repeat",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "spinon-style",
+        "fixed_repeat",
+        "--",
+        "--nocapture"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": [
+        "test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 206 filtered out; finished in 0.10s",
+        "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s"
+      ]
+    },
+    {
+      "name": "layout-fixed-repeat-line-names",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "spinon-style-to-layout",
+        "c11_4_track_sizing_areas_tests::fixed_repeat_line_names",
+        "--",
+        "--nocapture"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": [
+        "test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 226 filtered out; finished in 0.00s",
+        "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s"
+      ]
+    },
+    {
+      "name": "ffi-runtime-scenes",
+      "command": [
+        "cargo",
+        "test",
+        "--locked",
+        "-p",
+        "spinon-ffi",
+        "--features",
+        "c04-runtime-gpu-fixture-test",
+        "c11_4_auto_repeat_named_lines::tests::exposes_all_fixed_named_auto_repeat_runtime_scenes",
+        "--",
+        "--nocapture"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": [
+        "test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 119 filtered out; finished in 0.02s",
+        "Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s"
+      ]
+    },
+    {
+      "name": "fixture-module-boundary",
+      "command": [
+        "node",
+        "--test",
+        "tools/css-reference/fixture-module-boundary.test.mjs"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": [
+        "\u2139 tests 11"
+      ]
+    },
+    {
+      "name": "format",
+      "command": [
+        "cargo",
+        "fmt",
+        "--all",
+        "--",
+        "--check"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": []
+    },
+    {
+      "name": "workspace-clippy",
+      "command": [
+        "cargo",
+        "clippy",
+        "--locked",
+        "--workspace",
+        "--all-targets",
+        "--",
+        "-D",
+        "warnings"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": []
+    },
+    {
+      "name": "staged-diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": []
+    },
+    {
+      "name": "worktree-diff-check",
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exitCode": 0,
+      "passed": true,
+      "summary": []
+    }
+  ],
+  "allPassed": true
+}

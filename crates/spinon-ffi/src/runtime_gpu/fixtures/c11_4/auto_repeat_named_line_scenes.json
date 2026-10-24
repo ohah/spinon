@@ -382,5 +382,45 @@
       "collapsed": { "Columns": [false], "Rows": [false, false, false, false, false, true, true, true] },
       "gaps": { "Columns": 0, "Rows": 0 }
     }
+  },
+  {
+    "id": "auto-repeat-named-fixed-repeat-column-fill",
+    "width": "300px", "height": "40px",
+    "columns": "[outer-start] repeat(2,[start] 12px [seam] 8px [join]) [join] repeat(2,[mid] 6px [seam] 6px [mid-end]) [seam] repeat(auto-fill,[seam] 24px [repeat-end]) [repeat-end] repeat(2,[join] 10px [tail]) [outer-end]",
+    "rows": "40px", "columnGap": "4px", "rowGap": "4px",
+    "item": { "columnStart": "seam 5", "columnEnd": "seam 6", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [300, 40], "item": [96, 0, 24, 40],
+      "tracks": { "Columns": [12, 8, 12, 8, 6, 6, 6, 6, 24, 24, 24, 24, 24, 24, 10, 10], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false], "Rows": [false] },
+      "gaps": { "Columns": 4, "Rows": 4 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-fixed-repeat-column-fit",
+    "width": "300px", "height": "40px",
+    "columns": "[outer-start] repeat(2,[start] 12px [seam] 8px [join]) [join] repeat(2,[mid] 6px [seam] 6px [mid-end]) [seam] repeat(auto-fit,[seam] 24px [repeat-end]) [repeat-end] repeat(2,[join] 10px [tail]) [outer-end]",
+    "rows": "40px", "columnGap": "4px", "rowGap": "4px",
+    "item": { "columnStart": "repeat-end 3", "columnEnd": "repeat-end 4", "rowStart": "1", "rowEnd": "2" },
+    "expect": {
+      "root": [300, 40], "item": [96, 0, 24, 40],
+      "tracks": { "Columns": [12, 8, 12, 8, 6, 6, 6, 6, 0, 0, 0, 24, 0, 0, 10, 10], "Rows": [40] },
+      "collapsed": { "Columns": [false, false, false, false, false, false, false, false, true, true, true, false, true, true, false, false], "Rows": [false] },
+      "gaps": { "Columns": 4, "Rows": 4 }
+    }
+  },
+  {
+    "id": "auto-repeat-named-fixed-repeat-row-fill",
+    "width": "40px", "height": "300px",
+    "columns": "40px",
+    "rows": "[outer-start] repeat(2,[start] 12px [seam] 8px [join]) [join] repeat(2,[mid] 6px [seam] 6px [mid-end]) [seam] repeat(auto-fill,[seam] 24px [repeat-end]) [repeat-end] repeat(2,[join] 10px [tail]) [outer-end]",
+    "columnGap": "4px", "rowGap": "4px",
+    "item": { "columnStart": "1", "columnEnd": "2", "rowStart": "seam 5", "rowEnd": "seam 6" },
+    "expect": {
+      "root": [40, 300], "item": [0, 96, 40, 24],
+      "tracks": { "Columns": [40], "Rows": [12, 8, 12, 8, 6, 6, 6, 6, 24, 24, 24, 24, 24, 24, 10, 10] },
+      "collapsed": { "Columns": [false], "Rows": [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false] },
+      "gaps": { "Columns": 4, "Rows": 4 }
+    }
   }
 ]
