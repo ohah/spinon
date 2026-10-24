@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "d8a9fd96d7de6d7234aca705bde1bff91a3133df",
+  "host": [
+    "rustc 1.96.1 (31fca3adb 2026-06-26)",
+    "binary: rustc",
+    "commit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd",
+    "commit-date: 2026-06-26",
+    "host: aarch64-apple-darwin",
+    "release: 1.96.1",
+    "LLVM version: 22.1.2"
+  ],
+  "cargoVersion": "cargo 1.96.1 (356927216 2026-06-26)",
+  "llvmNm": "<rust-sysroot>/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm",
+  "llvmNmVersion": "llvm-nm, compatible with GNU nm",
+  "targetDirectory": "build/spinon/c11-4-fixed-repeat-minmax-flex-artifact-boundary/target",
+  "sceneIds": [
+    "fixed-repeat-minmax-flex-columns-fill",
+    "fixed-repeat-minmax-flex-columns-fit",
+    "fixed-repeat-minmax-flex-rows-fill",
+    "fixed-repeat-minmax-flex-rows-fit",
+    "fixed-repeat-minmax-flex-columns-groups",
+    "fixed-repeat-minmax-flex-columns-flex-factor-low"
+  ],
+  "fixtureHostSymbols": [
+    "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+    "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+  ],
+  "rustRuntimeSourceSymbolSubstring": "fixed_repeat_minmax_flex::runtime_source",
+  "sourceInputSha256": {
+    "crates/spinon-ffi/Cargo.toml": "3d0be02bea4880b4c521f809cfde685ed84e373cd64c1c962b6b3926acd2100a",
+    "crates/spinon-ffi/src/runtime_gpu.rs": "48891dc1d8476b3668fe25a477b27d3b3e9a976f4a993298472d945c1cf7e405",
+    "crates/spinon-ffi/src/runtime_gpu/ffi.rs": "08950bf9999255eab633b7df0fe954fa3a0d0198c90783461551155897ff00c0",
+    "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs": "b3c365bf392316f39e049ac6862e2700075d6d6a537d7f9ee7e7ed0e495a5d58",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures.rs": "dcf13f609efd97bb44cd60275a00c17e6e9a34a827e8794e8fe2b5ee939f6f63",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "eba31e906a568daf252886886e6f766410604029e086e5c8e62346ccb722b262",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex.rs": "cf8fb1981335415f208cd3e984f1db2b99d56cd5701411193fb80ab6611592ac",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex_scenes.json": "cff2f52b229fdecaf66694be0e62a275fb2df36b96eb069681cb03a30031c2f8",
+    "crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_4.rs": "9f4eadc99b5fa9d29ad23f58ff4a302030ce4189fd94c824f5c93b1fb8c2fa6a",
+    "Cargo.lock": "c49335b6f567e1597dce26b556166f6401550e9b71277ed133635d7dd9ce528a"
+  },
+  "runDirectory": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186",
+  "results": {
+    "product": {
+      "feature": "c04-runtime-gpu",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-fixed-repeat-minmax-flex-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "buildLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/product-build.log",
+      "llvmNmLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/product-llvm-nm.log",
+      "matchingSymbolsLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/product-matching-symbols.txt",
+      "archivePath": "build/spinon/c11-4-fixed-repeat-minmax-flex-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 75185984,
+      "archiveSha256": "ae1c608e89d13e2b9725d0c7a147e655053fcb7d8130a1c421854a9afc5e37fe",
+      "sceneMarkerPresence": {
+        "fixed-repeat-minmax-flex-columns-fill": false,
+        "fixed-repeat-minmax-flex-columns-fit": false,
+        "fixed-repeat-minmax-flex-rows-fill": false,
+        "fixed-repeat-minmax-flex-rows-fit": false,
+        "fixed-repeat-minmax-flex-columns-groups": false,
+        "fixed-repeat-minmax-flex-columns-flex-factor-low": false
+      },
+      "fixtureHostTextPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      },
+      "fixtureHostDefinedSymbolPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      },
+      "runtimeSourceDefinedSymbolPresent": false,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": []
+    },
+    "fixture-test": {
+      "feature": "c04-runtime-gpu-fixture-test",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-fixed-repeat-minmax-flex-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test"
+      ],
+      "buildLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/fixture-test-build.log",
+      "llvmNmLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/fixture-test-llvm-nm.log",
+      "matchingSymbolsLog": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261024T232747Z-b0fcf186/fixture-test-matching-symbols.txt",
+      "archivePath": "build/spinon/c11-4-fixed-repeat-minmax-flex-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 78357320,
+      "archiveSha256": "10f790096faf0bb07ff2f780cc71d8ae2cdcedcb1401e5be128961746f5708f1",
+      "sceneMarkerPresence": {
+        "fixed-repeat-minmax-flex-columns-fill": true,
+        "fixed-repeat-minmax-flex-columns-fit": true,
+        "fixed-repeat-minmax-flex-rows-fill": true,
+        "fixed-repeat-minmax-flex-rows-fit": true,
+        "fixed-repeat-minmax-flex-columns-groups": true,
+        "fixed-repeat-minmax-flex-columns-flex-factor-low": true
+      },
+      "fixtureHostTextPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": true,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      },
+      "fixtureHostDefinedSymbolPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": true,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      },
+      "runtimeSourceDefinedSymbolPresent": true,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": [
+        "0000000000003d64 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+        "000000000000691c T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+        "0000000000001ab0 T spinon_ffi::runtime_gpu::fixtures::c11_4::fixed_repeat_minmax_flex::runtime_source::he759f7dce80d3340"
+      ]
+    }
+  },
+  "scope": "Rust spinon-ffi static archives only; no APK/IPA exclusion claim"
+}

@@ -1,0 +1,142 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "80d4bccbac502f412db33420f37c9b439599dc6c40f6af957bbaac5dfa06dd58",
+  "sourceRevision": {
+    "commit": "d8a9fd96d7de6d7234aca705bde1bff91a3133df",
+    "tree": "ad1f87f7d732d4c8985403001266398f795fbb7e",
+    "trackedDiffSha256": "5b359b165b5e6a15a8a692bc956d348681bf0f3db8bac18adface66b892cb844",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_track_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/combined_metadata_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_line_names.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs",
+      "plan/c11-4-fixed-repeat-minmax-flex.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "fixedRepeatMinmaxFlexInputFiles": [
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+        "sha256": "8aaf666f5e7c88e95da42603d9085b986a4475c645dcb17c2ade63a94fe17021"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+        "sha256": "d29b87860404f268b96571358e9fba9e9667f28c9e77c61dd2b776c0a1bf6df3"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs",
+        "sha256": "c7c63830e09f032cb153735f1e53028358cbf4e6815661706a58dfcfb1ca8fd1"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_auto_repeat.rs",
+        "sha256": "1eb218c28d59c6eac5489363dd7591bf71b273c66c1711918ff214679c823f6c"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/fixed_repeat_line_names.rs",
+        "sha256": "4f9513beaff7da37d8ff20ac10790103fb573d3d1e4e0c7af80c689aba4b3951"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/template_repeat.rs",
+        "sha256": "34d692402b2866ba83bf5dd3b96611e2f90892096bf2f31a7d28012a5200baee"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid.rs",
+        "sha256": "b2a1ffd9ad4154cd0b26fdb67556a6b480d548772e415f967f8e48f79f196764"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+        "sha256": "b5b2ea929f0ef61696cb1163f9e51c5a020a7a17a72d7b2c688824cb5c88bc69"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs",
+        "sha256": "652367fe6d288e3572bb42d76bbdc1e15377c6347d4c2e72d498c2cabda7232f"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+        "sha256": "e4ebb7b185b5bbfb86524b44ef5ddc5c106eb65aeffbae74d0e8e41304def765"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+        "sha256": "a7de164463b273bec19caaf182a6a533057e65d66060cadaa2f36c38cc613a45"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_track_tests.rs",
+        "sha256": "7763244d653663f8ad11d4db524868251c34ac2b1ecdfab1f13a1d3cd1b5904f"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/combined_metadata_tests.rs",
+        "sha256": "0927aa7097a701baa11597cc84fe68dd2425eb4dee1bab92bf2a5b85af183e92"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/tests.rs",
+        "sha256": "ddd7c49c78c53099efae10610053e076700c87da233e9166cdb78be6f18f4094"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+        "sha256": "2a099a9ae4edd86df4712326a59e7e75ad812d008554a7b24a9192c680cccdcb"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "sha256": "eba31e906a568daf252886886e6f766410604029e086e5c8e62346ccb722b262"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex.rs",
+        "sha256": "93e86d026a90da0a67483fd730ec92584143387d100e97139c720fa264396fb8"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fixed_repeat_minmax_flex_scenes.json",
+        "sha256": "cff2f52b229fdecaf66694be0e62a275fb2df36b96eb069681cb03a30031c2f8"
+      },
+      {
+        "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "sha256": "1b7e736034ef731a6ed9c167e96e407f757f6d87992cc0df16a4b7053b5a5182"
+      },
+      {
+        "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "sha256": "48aa0809c0382844c5555f839270a769da6d6ea4af59a56469f3988a537974a8"
+      },
+      {
+        "path": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/spec-derived-expectations.json",
+        "sha256": "dc76dc2198b649ff573d38ee26db99918819be417f752ec40f44172c78555acd"
+      },
+      {
+        "path": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/chrome156-observation.json",
+        "sha256": "f26ced2f8e7d73bca0a0e693ca7c36ecd03adacdfbc188765e35d543ba0ab6af"
+      },
+      {
+        "path": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/README.md",
+        "sha256": "d4780bd7c9607a262ce2d2f36c741ec9e54a59c65ad9229d3aec01670a6993a1"
+      },
+      {
+        "path": "spec/internal/evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/chrome156-agent-browser-precomparison.png",
+        "sha256": "aef6a7e5edfc2e0df8f0e2430479f08092ea2171a92f4a2edfb6baeb8b1cac1c"
+      },
+      {
+        "path": "tests/fixtures/css/c11/grid-fixed-repeat-minmax-flex-c114-precomparison.html",
+        "sha256": "f6ce488c13abd922d105273373232170dbfcb996c7d58d1a47998b1b9064ef61"
+      },
+      {
+        "path": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+        "sha256": "44e4c602d46020346a917ae661f516116e25535d8d58f007567d550662bb597c"
+      }
+    ]
+  }
+}

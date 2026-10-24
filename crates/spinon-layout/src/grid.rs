@@ -482,6 +482,20 @@ pub(super) fn validate_grid_layout(
                 &input.css_math,
             )?;
         }
+        if container.placement_mode == GridPlacementMode::TrackSizing {
+            validate_grid_flex_factor_upper_bound(
+                node.id,
+                "grid-template-columns",
+                &container.columns,
+                container.columns_auto_repeat.as_ref(),
+            )?;
+            validate_grid_flex_factor_upper_bound(
+                node.id,
+                "grid-template-rows",
+                &container.rows,
+                container.rows_auto_repeat.as_ref(),
+            )?;
+        }
         if container.placement_mode == GridPlacementMode::SparseRow
             && container.auto_flow != GridAutoFlow::Row
         {
@@ -835,6 +849,74 @@ fn validate_auto_repeat_axis(
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
     Ok(())
+}
+
+/// Taffy sums flexible track factors in `f32` during track sizing. Bound that sum before Taffy
+/// expands an auto-repeat so a valid finite input cannot turn the sum into infinity there.
+fn validate_grid_flex_factor_upper_bound(
+    node: NodeId,
+    property: &'static str,
+    tracks: &[GridTrackSize],
+    auto_repeat: Option<&GridAutoRepeat>,
+) -> Result<(), LayoutError> {
+    let mut factor_sum = 0.0_f32;
+    let mut add_factor = |factor: f32| -> bool {
+        if !factor.is_finite() || factor < 0.0 {
+            return false;
+        }
+        let sum = factor_sum + factor;
+        if !sum.is_finite() {
+            return false;
+        }
+        factor_sum = sum;
+        true
+    };
+
+    let repeated_range = auto_repeat.map(|repeat| repeat.start..repeat.end);
+    for (index, track) in tracks.iter().enumerate() {
+        if repeated_range
+            .as_ref()
+            .is_some_and(|range| range.contains(&index))
+        {
+            continue;
+        }
+        if !add_factor(grid_track_flex_factor(*track)) {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+    }
+
+    if let Some(auto_repeat) = auto_repeat {
+        let Some(pattern) = tracks.get(auto_repeat.start..auto_repeat.end) else {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        };
+        if pattern.is_empty() {
+            return Err(LayoutError::InvalidGridTrackList { node, property });
+        }
+
+        // Taffy preserves all tracks before the auto-repeat and clamps its expanded grid to
+        // GRID_MAX_TRACKS. Count every remaining slot as repeatable; suffix tracks are already
+        // included above, making this an upper bound even when Taffy truncates that suffix.
+        let maximum_repeated_track_count = GRID_MAX_TRACKS.saturating_sub(auto_repeat.start);
+        for repeated_index in 0..maximum_repeated_track_count {
+            let track = pattern[repeated_index % pattern.len()];
+            if !add_factor(grid_track_flex_factor(track)) {
+                return Err(LayoutError::InvalidGridTrackList { node, property });
+            }
+        }
+    }
+
+    Ok(())
+}
+
+fn grid_track_flex_factor(track: GridTrackSize) -> f32 {
+    match track {
+        GridTrackSize::Fraction(factor)
+        | GridTrackSize::MinMax {
+            max: GridTrackMaxSizingFunction::Fraction(factor),
+            ..
+        } => factor,
+        _ => 0.0,
+    }
 }
 
 fn validate_grid_line_metadata(
@@ -1316,6 +1398,12 @@ fn auto_repeat_neighbor_tracks_are_supported(
                     return false;
                 }
                 resolved
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(minimum),
+                max: GridTrackMaxSizingFunction::Fraction(factor),
+            } if minimum.is_finite() && *minimum >= 0.0 && factor.is_finite() && *factor >= 0.0 => {
+                f64::from(*minimum)
             }
             GridTrackSize::Calc(id) => {
                 let Some(basis) = basis else {

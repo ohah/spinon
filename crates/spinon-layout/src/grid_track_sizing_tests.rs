@@ -1038,3 +1038,6 @@ mod auto_repeat_calc_neighbors;
 
 #[path = "grid_track_sizing_tests/zero_percent_auto_repeat_minimum.rs"]
 mod zero_percent_auto_repeat_minimum;
+
+#[path = "grid_track_sizing_tests/flex_factor_bound.rs"]
+mod flex_factor_bound;

@@ -37,6 +37,7 @@ struct ComputedGridTracks {
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub(in crate::stylo_dom::cascade) enum IntegerRepeatReservationSite {
     FixedRepeatGroups,
+    FixedRepeatMinmaxTrackIndices,
     Tracks,
     LineGroups,
     LineNames,

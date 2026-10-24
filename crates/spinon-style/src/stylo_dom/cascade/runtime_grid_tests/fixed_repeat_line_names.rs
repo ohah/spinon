@@ -90,6 +90,35 @@ fn fixed_repeat_and_ordinary_neighbor_names_merge_in_authored_order() {
 }
 
 #[test]
+fn fixed_repeat_minmax_flex_preserves_named_line_seams_and_track_provenance() {
+    let (_, grid) = computed_grid(&style(
+        "[outer-start] repeat(2,[start] minmax(12px,1fr) [seam] 8px [join]) [join] repeat(auto-fill,[seam] 24px [repeat-end]) [repeat-end]",
+    ));
+
+    assert_eq!(
+        grid.columns_auto_repeat
+            .as_ref()
+            .map(|repeat| repeat.fixed_repeat_minmax_track_indices.as_slice()),
+        Some([0, 2].as_slice())
+    );
+    assert_eq!(
+        grid.columns_line_names,
+        groups(&[
+            &["outer-start", "start"],
+            &["seam"],
+            &["join", "start"],
+            &["seam"],
+            &["join", "join"],
+            &["repeat-end"],
+        ])
+    );
+    assert_eq!(
+        grid.columns_auto_repeat.as_ref().unwrap().line_names,
+        groups(&[&["seam"], &["repeat-end"]])
+    );
+}
+
+#[test]
 fn fixed_repeat_named_line_metadata_accepts_exact_budget_and_rejects_one_byte_over() {
     let group_bytes = std::mem::size_of::<Vec<String>>();
     let name_bytes = std::mem::size_of::<String>();
@@ -105,7 +134,7 @@ fn fixed_repeat_named_line_metadata_accepts_exact_budget_and_rejects_one_byte_ov
 
     let exact_name = "n".repeat(exact_name_length);
     let exact = fixture(&style(&format!(
-        "repeat(2,[{exact_name}] 1px) repeat(auto-fill,minmax(32px,1fr))"
+        "repeat(2,[{exact_name}] minmax(1px,1fr)) repeat(auto-fill,minmax(32px,1fr))"
     )));
     let exact_snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         &exact.view,
@@ -129,7 +158,7 @@ fn fixed_repeat_named_line_metadata_accepts_exact_budget_and_rejects_one_byte_ov
 
     let over_name = "n".repeat(exact_name_length + 1);
     let over = fixture(&style(&format!(
-        "repeat(2,[{over_name}] 1px) repeat(auto-fill,minmax(32px,1fr))"
+        "repeat(2,[{over_name}] minmax(1px,1fr)) repeat(auto-fill,minmax(32px,1fr))"
     )));
     assert!(matches!(
         compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -153,10 +182,11 @@ fn fixed_repeat_named_line_metadata_allocation_failures_recover() {
     };
 
     let fixture = fixture(&style(
-        "[outer] repeat(2,[start] 12px [seam] 8px [end]) repeat(auto-fill,[repeat-start] 24px [repeat-end])",
+        "[outer] repeat(2,[start] minmax(12px,1fr) [seam] 8px [end]) repeat(auto-fill,[repeat-start] 24px [repeat-end])",
     ));
     for site in [
         IntegerRepeatReservationSite::FixedRepeatGroups,
+        IntegerRepeatReservationSite::FixedRepeatMinmaxTrackIndices,
         IntegerRepeatReservationSite::Tracks,
         IntegerRepeatReservationSite::LineGroups,
         IntegerRepeatReservationSite::LineNames,

@@ -5,8 +5,8 @@ use style::{
 };
 
 use super::super::super::{
-    ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode, ComputedCssGridTrackSize,
-    CssCascadeError,
+    ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode, ComputedCssGridTrackBreadth,
+    ComputedCssGridTrackSize, CssCascadeError,
 };
 use super::{
     ComputedGridTracks, IntegerRepeatReservationSite, MAX_COMPUTED_GRID_LINE_METADATA_BYTES,
@@ -113,11 +113,9 @@ pub(super) fn computed_auto_repeat_tracks(
                 || repeat.track_sizes.len() > 2
                 || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
                 || repeat.track_sizes.iter().any(|size| {
-                    !matches!(
-                        track_size(size, allow_intrinsic_tracks),
-                        Some(ComputedCssGridTrackSize::LengthPx(value))
-                            if value.is_finite() && value >= 0.0
-                    )
+                    !track_size(size, allow_intrinsic_tracks)
+                        .as_ref()
+                        .is_some_and(fixed_repeat_track_is_supported)
                 })
             {
                 return Err(unsupported_grid_value(node, property, serialized));
@@ -191,6 +189,24 @@ pub(super) fn computed_auto_repeat_tracks(
             tracks.try_reserve_exact(count).map_err(|_| ())
         },
     )?;
+    let fixed_repeat_minmax_track_count = fixed_repeat_minmax_track_count(
+        list,
+        &fixed_repeats,
+        allow_intrinsic_tracks,
+        node,
+        property,
+        serialized,
+    )?;
+    let mut fixed_repeat_minmax_track_indices = Vec::new();
+    if fixed_repeat_minmax_track_count > 0 {
+        reserve_integer_repeat_vec(
+            &mut fixed_repeat_minmax_track_indices,
+            fixed_repeat_minmax_track_count,
+            IntegerRepeatReservationSite::FixedRepeatMinmaxTrackIndices,
+            node,
+            property,
+        )?;
+    }
 
     let mut auto_repeat_start = None;
     let mut auto_repeat_end = None;
@@ -222,11 +238,11 @@ pub(super) fn computed_auto_repeat_tracks(
                 for _ in 0..group.count {
                     for size in repeat.track_sizes.iter() {
                         let track = track_size(size, allow_intrinsic_tracks)
-                            .filter(|track| {
-                                matches!(track, ComputedCssGridTrackSize::LengthPx(value)
-                                    if value.is_finite() && *value >= 0.0)
-                            })
+                            .filter(fixed_repeat_track_is_supported)
                             .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+                        if is_fixed_repeat_minmax_flex(&track) {
+                            fixed_repeat_minmax_track_indices.push(tracks.len());
+                        }
                         tracks.push(track);
                     }
                 }
@@ -237,6 +253,7 @@ pub(super) fn computed_auto_repeat_tracks(
     let (Some(start), Some(end)) = (auto_repeat_start, auto_repeat_end) else {
         return Err(unsupported_grid_value(node, property, serialized));
     };
+    validate_flex_factor_sum_upper_bound(&tracks, start, end, node, property, serialized)?;
     let line_names = if fixed_repeat_group_count > 0 {
         expand_fixed_repeat_line_names(
             list,
@@ -278,12 +295,133 @@ pub(super) fn computed_auto_repeat_tracks(
             start,
             end,
             line_names: repeated_line_names,
+            fixed_repeat_minmax_track_indices,
         }),
         has_fixed_repeat: fixed_repeat_group_count > 0,
         fixed_repeat_group_count,
         single_bounded_fixed_repeat: false,
         single_bounded_auto_repeat,
     })
+}
+
+fn fixed_repeat_track_is_supported(track: &ComputedCssGridTrackSize) -> bool {
+    match track {
+        ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        _ => is_fixed_repeat_minmax_flex(track),
+    }
+}
+
+fn is_fixed_repeat_minmax_flex(track: &ComputedCssGridTrackSize) -> bool {
+    match track {
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::LengthPx(min),
+            max: ComputedCssGridTrackBreadth::Fraction(max),
+        } => min.is_finite() && *min >= 0.0 && max.is_finite() && *max >= 0.0,
+        _ => false,
+    }
+}
+
+fn fixed_repeat_minmax_track_count(
+    list: &TrackList,
+    fixed_repeats: &[Option<FixedRepeatGroup>],
+    allow_intrinsic_tracks: bool,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+) -> Result<usize, CssCascadeError> {
+    let mut total = 0_usize;
+    for (index, value) in list.values.iter().enumerate() {
+        let TrackListValue::TrackRepeat(repeat) = value else {
+            continue;
+        };
+        let Some(group) = fixed_repeats.get(index).and_then(Option::as_ref) else {
+            continue;
+        };
+        let pattern_count = repeat
+            .track_sizes
+            .iter()
+            .filter(|size| {
+                track_size(size, allow_intrinsic_tracks)
+                    .as_ref()
+                    .is_some_and(is_fixed_repeat_minmax_flex)
+            })
+            .count();
+        total = total
+            .checked_add(
+                pattern_count
+                    .checked_mul(group.count)
+                    .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
+            )
+            .filter(|count| *count <= MAX_COMPUTED_GRID_TRACKS)
+            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    }
+    Ok(total)
+}
+
+fn validate_flex_factor_sum_upper_bound(
+    tracks: &[ComputedCssGridTrackSize],
+    auto_repeat_start: usize,
+    auto_repeat_end: usize,
+    node: NodeId,
+    property: &'static str,
+    serialized: &str,
+) -> Result<(), CssCascadeError> {
+    let Some(pattern) = tracks.get(auto_repeat_start..auto_repeat_end) else {
+        return Err(unsupported_grid_value(node, property, serialized));
+    };
+    if pattern.is_empty() {
+        return Err(unsupported_grid_value(node, property, serialized));
+    }
+
+    let mut factor_sum = 0.0_f32;
+    let mut add_factor = |factor: f32| -> bool {
+        if !factor.is_finite() || factor < 0.0 {
+            return false;
+        }
+        let sum = factor_sum + factor;
+        if !sum.is_finite() {
+            return false;
+        }
+        factor_sum = sum;
+        true
+    };
+
+    for (index, track) in tracks.iter().enumerate() {
+        if (auto_repeat_start..auto_repeat_end).contains(&index) {
+            continue;
+        }
+        if !add_factor(computed_grid_track_flex_factor(track)) {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
+    }
+
+    let non_repeated_track_count = tracks
+        .len()
+        .checked_sub(pattern.len())
+        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
+    let maximum_repeated_track_count =
+        MAX_COMPUTED_GRID_TRACKS.saturating_sub(non_repeated_track_count) / pattern.len()
+            * pattern.len();
+    for repeated_index in 0..maximum_repeated_track_count {
+        if !add_factor(computed_grid_track_flex_factor(
+            &pattern[repeated_index % pattern.len()],
+        )) {
+            return Err(unsupported_grid_value(node, property, serialized));
+        }
+    }
+
+    Ok(())
+}
+
+fn computed_grid_track_flex_factor(track: &ComputedCssGridTrackSize) -> f32 {
+    match track {
+        ComputedCssGridTrackSize::Fraction(factor)
+        | ComputedCssGridTrackSize::MinMax {
+            max: ComputedCssGridTrackBreadth::Fraction(factor),
+            ..
+        } => *factor,
+        _ => 0.0,
+    }
 }
 
 fn expanded_fixed_line_name_metadata_bytes(
@@ -486,4 +624,82 @@ fn append_line_names_to_group(
         group.push(owned);
     }
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::{fixed_repeat_track_is_supported, is_fixed_repeat_minmax_flex};
+    use crate::stylo_dom::cascade::{ComputedCssGridTrackBreadth, ComputedCssGridTrackSize};
+
+    #[test]
+    fn fixed_repeat_track_allowlist_accepts_nonnegative_px_and_minmax_flex() {
+        assert!(fixed_repeat_track_is_supported(
+            &ComputedCssGridTrackSize::LengthPx(0.0)
+        ));
+        assert!(fixed_repeat_track_is_supported(
+            &ComputedCssGridTrackSize::LengthPx(20.0)
+        ));
+        for (min, factor) in [(0.0, 0.0), (12.0, 0.5), (12.0, 1.0)] {
+            assert!(fixed_repeat_track_is_supported(
+                &ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(min),
+                    max: ComputedCssGridTrackBreadth::Fraction(factor),
+                }
+            ));
+        }
+    }
+
+    #[test]
+    fn fixed_repeat_track_allowlist_rejects_other_or_invalid_shapes() {
+        for (min, factor) in [(-1.0, 1.0), (12.0, -0.5), (f32::NAN, 1.0), (12.0, f32::NAN)] {
+            assert!(!fixed_repeat_track_is_supported(
+                &ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(min),
+                    max: ComputedCssGridTrackBreadth::Fraction(factor),
+                }
+            ));
+        }
+        for (min, factor) in [(f32::INFINITY, 1.0), (12.0, f32::INFINITY)] {
+            assert!(!fixed_repeat_track_is_supported(
+                &ComputedCssGridTrackSize::MinMax {
+                    min: ComputedCssGridTrackBreadth::LengthPx(min),
+                    max: ComputedCssGridTrackBreadth::Fraction(factor),
+                }
+            ));
+        }
+        assert!(!fixed_repeat_track_is_supported(
+            &ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Percentage(0.2),
+                max: ComputedCssGridTrackBreadth::Fraction(1.0),
+            }
+        ));
+        assert!(!fixed_repeat_track_is_supported(
+            &ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(12.0),
+                max: ComputedCssGridTrackBreadth::LengthPx(24.0),
+            }
+        ));
+    }
+
+    #[test]
+    fn fixed_repeat_minmax_provenance_predicate_rejects_other_shapes() {
+        assert!(is_fixed_repeat_minmax_flex(
+            &ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(12.0),
+                max: ComputedCssGridTrackBreadth::Fraction(0.5),
+            }
+        ));
+        assert!(!is_fixed_repeat_minmax_flex(
+            &ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(12.0),
+                max: ComputedCssGridTrackBreadth::Fraction(-0.5),
+            }
+        ));
+        assert!(!is_fixed_repeat_minmax_flex(
+            &ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Percentage(0.2),
+                max: ComputedCssGridTrackBreadth::Fraction(0.5),
+            }
+        ));
+    }
 }

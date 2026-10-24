@@ -1,0 +1,9 @@
+command: xcrun simctl terminate ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D dev.spinon.bootstrap
+exitCode: 0
+
+post-termination process probe:
+command: xcrun simctl spawn ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D launchctl list | rg -i 'spinon|bootstrap'
+result: no matching process entries
+
+installed app container (app left installed):
+/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data/Containers/Bundle/Application/FB67C029-A958-4B70-987B-5665A3C15EC6/SpinonBootstrap.app

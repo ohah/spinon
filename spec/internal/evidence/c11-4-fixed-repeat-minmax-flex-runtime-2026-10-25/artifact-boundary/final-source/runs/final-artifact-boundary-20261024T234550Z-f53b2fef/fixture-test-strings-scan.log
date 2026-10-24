@@ -1,0 +1,5 @@
+command: /usr/bin/strings -a <ARCHIVE>
+exitCode: 0
+lineCount: 235372
+scannedArchiveBytes: 78357536
+scan: complete stdout consumed before marker filtering

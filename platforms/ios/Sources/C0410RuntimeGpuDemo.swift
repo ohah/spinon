@@ -37,6 +37,12 @@ private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
     "fixed-repeat-groups-row-prefix-fit-occupied",
     "fixed-repeat-groups-four-prefix-fill",
     "fixed-repeat-groups-four-row-split-fill",
+    "fixed-repeat-minmax-flex-columns-fill",
+    "fixed-repeat-minmax-flex-columns-fit",
+    "fixed-repeat-minmax-flex-rows-fill",
+    "fixed-repeat-minmax-flex-rows-fit",
+    "fixed-repeat-minmax-flex-columns-groups",
+    "fixed-repeat-minmax-flex-columns-flex-factor-low",
     "fixed-auto-area-columns-fill-collision",
     "fixed-auto-area-columns-fit-empty",
     "fixed-auto-area-columns-fit-occupied",
@@ -804,6 +810,7 @@ private func c114CalcNeighborNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if c114FixedRepeatMinmaxFlexRootSize(sceneID) != nil { return true }
     guard let expected = c114ExpectedNodeFrames(sceneID) else { return true }
     if report.contains(expected) { return true }
     guard sceneID == "calc-neighbor-col-fill-border-box" else { return false }
@@ -1057,6 +1064,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
         return "width=120,height=48"
     }
+    if let fixedRepeatMinmaxFlex = c114FixedRepeatMinmaxFlexRootSize(sceneID) {
+        return "width=\(fixedRepeatMinmaxFlex.width),height=\(fixedRepeatMinmaxFlex.height)"
+    }
     if sceneID.hasPrefix("fixed-repeat-") {
         if sceneID.contains("-groups-") {
             if sceneID.hasSuffix("-four-prefix-fill") { return "width=320,height=80" }
@@ -1295,6 +1305,35 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     }
 }
 
+private func c114FixedRepeatMinmaxFlexRootSize(
+    _ sceneID: String
+) -> (width: Int, height: Int)? {
+    switch sceneID {
+    case "fixed-repeat-minmax-flex-columns-fill",
+         "fixed-repeat-minmax-flex-columns-fit",
+         "fixed-repeat-minmax-flex-rows-fill",
+         "fixed-repeat-minmax-flex-rows-fit",
+         "fixed-repeat-minmax-flex-columns-flex-factor-low":
+        return (200, 120)
+    case "fixed-repeat-minmax-flex-columns-groups":
+        return (300, 120)
+    default:
+        return nil
+    }
+}
+
+private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
+    switch sceneID {
+    case "fixed-repeat-minmax-flex-columns-fill": return 9
+    case "fixed-repeat-minmax-flex-columns-fit": return 4
+    case "fixed-repeat-minmax-flex-rows-fill": return 6
+    case "fixed-repeat-minmax-flex-rows-fit": return 4
+    case "fixed-repeat-minmax-flex-columns-groups": return 14
+    case "fixed-repeat-minmax-flex-columns-flex-factor-low": return 8
+    default: return nil
+    }
+}
+
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID),
        let item = fixedAutoArea.items.first {
@@ -1304,6 +1343,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         guard let item = crossAxisArea.items.first else { return "" }
         return "width=\(item.width),height=\(item.height)"
     }
+    if c114FixedRepeatMinmaxFlexRootSize(sceneID) != nil { return "" }
     if sceneID.hasPrefix("fixed-repeat-") {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill")
             ? "width=10,height=10" : ""
@@ -3109,6 +3149,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if let crossAxisFrames = c114CrossAxisFixedAutoRepeatAreaNodeFrames(sceneID) {
         return crossAxisFrames
     }
+    if c114FixedRepeatMinmaxFlexRootSize(sceneID) != nil { return nil }
     if sceneID.hasPrefix("fixed-repeat-") {
         let rowAxis = sceneID.contains("-row-")
         let multipleGroups = sceneID.contains("-groups-")
@@ -4641,6 +4682,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     }
     if let crossAxisArea = c114CrossAxisFixedAutoRepeatAreaExpectation(sceneID) {
         return crossAxisArea.items.count + 1
+    }
+    if let fixedRepeatMinmaxFlex = c114FixedRepeatMinmaxFlexBoxCount(sceneID) {
+        return fixedRepeatMinmaxFlex
     }
     if sceneID.hasPrefix("fixed-repeat-") {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill") ? 2 : 1

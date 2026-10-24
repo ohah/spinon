@@ -174,6 +174,7 @@ fn track_sizing_profile_preserves_fixed_minimum_auto_repeat_modes() {
                 start: 0,
                 end: 1,
                 line_names: vec![Vec::new(); 2],
+                fixed_repeat_minmax_track_indices: Vec::new(),
             }),
             "{keyword}"
         );
@@ -209,6 +210,7 @@ fn track_sizing_profile_preserves_independent_auto_repeats_on_both_axes() {
             start: 1,
             end: 2,
             line_names: vec![Vec::new(); 2],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         })
     );
     assert_eq!(
@@ -218,6 +220,7 @@ fn track_sizing_profile_preserves_independent_auto_repeats_on_both_axes() {
             start: 1,
             end: 2,
             line_names: vec![Vec::new(); 2],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         })
     );
     assert_eq!(grid.columns.len(), 3);
@@ -347,6 +350,7 @@ fn track_sizing_profile_preserves_auto_repeat_neighbors_and_fragment_order() {
                 start,
                 end,
                 line_names: vec![Vec::new(); end - start + 1],
+                fixed_repeat_minmax_track_indices: Vec::new(),
             }),
             "{columns}"
         );
@@ -392,6 +396,7 @@ fn track_sizing_profile_preserves_percentage_auto_repeat_neighbors_on_rows() {
             start: 1,
             end: 2,
             line_names: vec![Vec::new(); 2],
+            fixed_repeat_minmax_track_indices: Vec::new(),
         })
     );
 }
