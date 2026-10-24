@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+test grid::track_sizing_tests::auto_repeat_calc_neighbors::calc_neighbor_range_clamps_only_the_final_supported_value ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 263 filtered out; finished in 0.02s

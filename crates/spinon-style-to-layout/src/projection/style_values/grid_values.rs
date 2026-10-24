@@ -139,7 +139,7 @@ fn validate_auto_repeat_neighbor_tracks(
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property,
-            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage 또는 제한된 calc(length + percentage) 형태여야 합니다".to_owned(),
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage 또는 제한된 signed calc(length + percentage) 형태여야 합니다".to_owned(),
         });
     }
     Ok(())
@@ -162,17 +162,20 @@ fn is_supported_auto_repeat_neighbor_calc(value: &ComputedCssMath) -> bool {
     let [first, second] = terms.as_slice() else {
         return false;
     };
-    let (length, percentage) = match (first, second) {
-        (length, ComputedCssMath::Percentage(percentage))
-        | (ComputedCssMath::Percentage(percentage), length) => {
-            let Some(length) = signed_auto_repeat_length(length) else {
-                return false;
-            };
-            (length, percentage)
-        }
-        _ => return false,
+    let (length, percentage) = if let (Some(length), Some(percentage)) = (
+        signed_auto_repeat_length(first),
+        signed_auto_repeat_percentage(second),
+    ) {
+        (length, percentage)
+    } else if let (Some(length), Some(percentage)) = (
+        signed_auto_repeat_length(second),
+        signed_auto_repeat_percentage(first),
+    ) {
+        (length, percentage)
+    } else {
+        return false;
     };
-    length.is_finite() && percentage.is_finite() && *percentage >= 0.0
+    length.is_finite() && percentage.is_finite()
 }
 
 fn signed_auto_repeat_length(value: &ComputedCssMath) -> Option<f32> {
@@ -180,6 +183,17 @@ fn signed_auto_repeat_length(value: &ComputedCssMath) -> Option<f32> {
         ComputedCssMath::LengthPx(length) => Some(*length),
         ComputedCssMath::Negate(value) => match value.as_ref() {
             ComputedCssMath::LengthPx(length) => Some(-*length),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
+fn signed_auto_repeat_percentage(value: &ComputedCssMath) -> Option<f32> {
+    match value {
+        ComputedCssMath::Percentage(percentage) => Some(*percentage),
+        ComputedCssMath::Negate(value) => match value.as_ref() {
+            ComputedCssMath::Percentage(percentage) => Some(-*percentage),
             _ => None,
         },
         _ => None,

@@ -1,0 +1,83 @@
+    Checking smallvec v1.16.2
+    Checking hashbrown v0.17.1
+    Checking once_cell v1.21.4
+    Checking num-traits v0.2.19
+    Checking objc2-core-foundation v0.3.2
+    Checking objc2-foundation v0.3.2
+    Checking memchr v2.8.3
+    Checking read-fonts v0.41.0
+    Checking icu_normalizer v2.3.0
+    Checking parking_lot_core v0.9.12
+    Checking icu_segmenter v2.3.0
+    Checking cssparser v0.38.0
+    Checking taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+    Checking serde_json v1.0.151
+    Checking indexmap v2.14.2
+    Checking euclid v0.22.14
+    Checking app_units v0.7.8
+    Checking num-integer v0.1.47
+    Checking objc2-core-text v0.3.2
+    Checking parking_lot v0.12.5
+    Checking idna_adapter v1.2.2
+    Checking idna v1.1.0
+    Checking string_cache v0.11.0
+    Checking stylo_atoms v0.22.0
+    Checking web_atoms v0.3.0
+    Checking url v2.5.8
+    Checking to_shmem v0.6.0
+    Checking selectors v0.41.0
+    Checking stylo_malloc_size_of v0.22.0
+    Checking stylo_dom v0.22.0
+    Checking stylo_traits v0.22.0
+    Checking stylo v0.22.0
+    Checking skrifa v0.44.0
+    Checking harfrust v0.12.0
+    Checking fontique v0.12.0
+    Checking swash v0.2.10
+    Checking parley_engine v0.12.0
+    Checking parley v0.12.0
+    Checking spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+    Checking spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Checking spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+error: this `if` has identical blocks
+   --> crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs:107:82
+    |
+107 |               LayoutDimension::Fixed(if axis == LayoutGridTrackSizingAxis::Columns {
+    |  __________________________________________________________________________________^
+108 | |                 2.0
+109 | |             } else {
+    | |_____________^
+    |
+note: same as this
+   --> crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs:109:20
+    |
+109 |               } else {
+    |  ____________________^
+110 | |                 2.0
+111 | |             });
+    | |_____________^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#if_same_then_else
+    = note: `-D clippy::if-same-then-else` implied by `-D warnings`
+    = help: to override `-D warnings` add `#[allow(clippy::if_same_then_else)]`
+
+error: this `if` has identical blocks
+   --> crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs:113:79
+    |
+113 |               LayoutDimension::Fixed(if axis == LayoutGridTrackSizingAxis::Rows {
+    |  _______________________________________________________________________________^
+114 | |                 2.0
+115 | |             } else {
+    | |_____________^
+    |
+note: same as this
+   --> crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs:115:20
+    |
+115 |               } else {
+    |  ____________________^
+116 | |                 2.0
+117 | |             });
+    | |_____________^
+    = help: for further information visit https://rust-lang.github.io/rust-clippy/rust-1.96.0/index.html#if_same_then_else
+
+error: could not compile `spinon-layout` (lib test) due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

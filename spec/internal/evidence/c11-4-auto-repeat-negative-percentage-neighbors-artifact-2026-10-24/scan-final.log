@@ -1,0 +1,20 @@
+{
+  "product": {
+    "bytes": 75147056,
+    "sha256": "5286b3979b3686a3640d06a45fbf046588401335ebd10350580efd7faf49df80",
+    "sceneMarkers": 0,
+    "sceneCount": 9,
+    "ffiFixtureSymbolPresent": false,
+    "candidateModuleSymbolRows": 0,
+    "llvmNmExitCode": 0
+  },
+  "fixtureTest": {
+    "bytes": 78267640,
+    "sha256": "549f185831adce554a50be9da53d24456b7dad9752c0cf4289abef25af89ed58",
+    "sceneMarkers": 9,
+    "sceneCount": 9,
+    "ffiFixtureSymbolPresent": true,
+    "candidateModuleSymbolRows": 1,
+    "llvmNmExitCode": 0
+  }
+}

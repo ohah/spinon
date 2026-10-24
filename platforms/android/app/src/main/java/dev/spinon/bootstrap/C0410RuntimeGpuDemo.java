@@ -437,8 +437,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-border-box",
             "calc-neighbor-col-fill-extra-term", "calc-neighbor-col-fill-negative-term",
             "calc-neighbor-col-fill-negative-final",
-            "calc-neighbor-col-fill-negative-percentage-term",
             "calc-neighbor-col-max-content", "calc-neighbor-col-fill-fixed-control",
+            "negative-percentage-col-prefix-positive",
+            "negative-percentage-col-suffix-positive",
+            "negative-percentage-row-prefix-positive",
+            "negative-percentage-row-suffix-positive",
+            "negative-percentage-col-prefix-negative-final",
+            "negative-percentage-row-suffix-negative-final",
+            "negative-percentage-col-border-box",
+            "negative-percentage-col-fit-prefix-item",
+            "negative-percentage-col-both-negative-final",
 
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
@@ -902,11 +910,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "calc-neighbor-col-fill-negative-term":
             case "calc-neighbor-col-fill-negative-final":
             case "calc-neighbor-col-fill-fixed-control":
+            case "negative-percentage-col-prefix-positive":
+            case "negative-percentage-col-suffix-positive":
+            case "negative-percentage-col-prefix-negative-final":
+            case "negative-percentage-col-both-negative-final":
+            case "negative-percentage-col-fit-prefix-item":
                 return new int[] {240, 10};
             case "calc-neighbor-row-fill-both":
             case "calc-neighbor-row-fill-suffix":
+            case "negative-percentage-row-prefix-positive":
+            case "negative-percentage-row-suffix-positive":
+            case "negative-percentage-row-suffix-negative-final":
                 return new int[] {10, 240};
             case "calc-neighbor-col-fill-border-box":
+            case "negative-percentage-col-border-box":
                 return new int[] {136, 34};
             default:
                 return null;
@@ -925,10 +942,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "calc-neighbor-col-fit-first":
             case "calc-neighbor-col-fill-fixed-control":
                 return new float[][] {{26, 0, 2, 2}};
+            case "negative-percentage-col-fit-prefix-item":
+                return new float[][] {{12, 0, 2, 2}};
             case "calc-neighbor-col-fill-overflow":
                 return new float[][] {{244, 0, 2, 2}};
             case "calc-neighbor-col-fill-border-box":
                 return new float[][] {{23.796875f, 10, 2, 2}};
+            case "negative-percentage-col-border-box":
+                return new float[][] {{10, 10, 2, 2}};
             default:
                 return new float[][] {{0, 0, 2, 2}};
         }
@@ -937,7 +958,6 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String[] c114CalcNeighborExpectedRejection(String sceneId) {
         switch (sceneId) {
             case "calc-neighbor-col-fill-extra-term":
-            case "calc-neighbor-col-fill-negative-percentage-term":
                 return new String[] {"unsupported_computed_value", "grid-template-columns", "1"};
             case "calc-neighbor-col-max-content":
                 return new String[] {"invalid_grid_track_list", "grid-template-columns", "1"};
@@ -11020,7 +11040,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114CalcNeighborPixelRgb(String sampleId) {
-        if (!sampleId.startsWith("calc-neighbor-")) return null;
+        if (!sampleId.startsWith("calc-neighbor-")
+                && !sampleId.startsWith("negative-percentage-")) return null;
         if (sampleId.startsWith("calc-neighbor-col-fill-overflow-root-exterior")) {
             return new int[] {0, 0, 0};
         }

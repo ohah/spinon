@@ -1,0 +1,73 @@
+{
+  "llvmNmExecutable": [
+    "/opt/homebrew/opt/llvm@22/bin/llvm-nm"
+  ],
+  "sourceRevision": "411bda24e2525b55d48a6c14ec484aec6ef8e97a",
+  "sourceDiffSha256": "9c3ad9a3ce4aa62f6567e8abbb0e02494f79b5ea3cf27fefab0d77c0c54943e5",
+  "sourceManifest": {
+    "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/source-manifest.json",
+    "sha256": "2cdd49dde5031a25f12e4db87e215d11fd88d9ed896dc77a78c01772e958bcb0"
+  },
+  "sceneCount": 9,
+  "sceneIds": [
+    "negative-percentage-col-prefix-positive",
+    "negative-percentage-col-suffix-positive",
+    "negative-percentage-row-prefix-positive",
+    "negative-percentage-row-suffix-positive",
+    "negative-percentage-col-prefix-negative-final",
+    "negative-percentage-row-suffix-negative-final",
+    "negative-percentage-col-border-box",
+    "negative-percentage-col-fit-prefix-item",
+    "negative-percentage-col-both-negative-final"
+  ],
+  "ffiFixtureSymbol": "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+  "candidateModuleSymbol": "c11_4_auto_repeat_negative_percentage_neighbors",
+  "results": {
+    "product": {
+      "path": "/tmp/spinon-c114-final-archives.iKSwVS/product.a",
+      "bytes": 75147056,
+      "sha256": "5286b3979b3686a3640d06a45fbf046588401335ebd10350580efd7faf49df80",
+      "sceneMarkerPresence": {
+        "negative-percentage-col-prefix-positive": false,
+        "negative-percentage-col-suffix-positive": false,
+        "negative-percentage-row-prefix-positive": false,
+        "negative-percentage-row-suffix-positive": false,
+        "negative-percentage-col-prefix-negative-final": false,
+        "negative-percentage-row-suffix-negative-final": false,
+        "negative-percentage-col-border-box": false,
+        "negative-percentage-col-fit-prefix-item": false,
+        "negative-percentage-col-both-negative-final": false
+      },
+      "allSceneMarkersPresent": false,
+      "anySceneMarkerPresent": false,
+      "ffiFixtureSymbolPresent": false,
+      "candidateModuleSymbolRows": [],
+      "llvmNmExitCode": 0,
+      "llvmNmStderr": "/tmp/spinon-c114-final-archives.iKSwVS/product.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/product.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols"
+    },
+    "fixtureTest": {
+      "path": "/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a",
+      "bytes": 78267640,
+      "sha256": "549f185831adce554a50be9da53d24456b7dad9752c0cf4289abef25af89ed58",
+      "sceneMarkerPresence": {
+        "negative-percentage-col-prefix-positive": true,
+        "negative-percentage-col-suffix-positive": true,
+        "negative-percentage-row-prefix-positive": true,
+        "negative-percentage-row-suffix-positive": true,
+        "negative-percentage-col-prefix-negative-final": true,
+        "negative-percentage-row-suffix-negative-final": true,
+        "negative-percentage-col-border-box": true,
+        "negative-percentage-col-fit-prefix-item": true,
+        "negative-percentage-col-both-negative-final": true
+      },
+      "allSceneMarkersPresent": true,
+      "anySceneMarkerPresent": true,
+      "ffiFixtureSymbolPresent": true,
+      "candidateModuleSymbolRows": [
+        "0000000000000764 T spinon_ffi::runtime_gpu::fixtures::c11_4_auto_repeat_negative_percentage_neighbors::runtime_source::h9de91abeac2e9eef"
+      ],
+      "llvmNmExitCode": 0,
+      "llvmNmStderr": "/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:cfg_if-0d9d6d77ae9bd193.cfg_if.edf119ddab75db36-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:rustc_std_workspace_alloc-d7644d33b12481aa.rustc_std_workspace_alloc.4a6bf8cf9327e754-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:unwind-b439bd6b39ed89d9.unwind.eac6c18a66b71f98-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:rustc_std_workspace_core-01875f5d21777e25.rustc_std_workspace_core.fb1b1b87ab2f5ef-cgu.0.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.227.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.229.rcgu.o: no symbols\n/tmp/spinon-c114-final-archives.iKSwVS/fixture-test.a:compiler_builtins-34805532a092a54e.compiler_builtins.7bd959a46144b143-cgu.230.rcgu.o: no symbols"
+    }
+  }
+}

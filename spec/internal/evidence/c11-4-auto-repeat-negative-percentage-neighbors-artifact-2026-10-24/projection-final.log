@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style_to_layout-c584b73e5f6c0d34)
+
+running 1 test
+test projection::style_values::grid_values::auto_repeat_neighbor_tests::track_sizing_projection_accepts_the_supported_auto_repeat_neighbor_shapes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 225 filtered out; finished in 0.01s

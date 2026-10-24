@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[4]
 EVIDENCE = Path(__file__).resolve().parent
 FIXTURE = ROOT / "tests/fixtures/css/c11/grid-auto-repeat-negative-percentage-neighbors-c114-precomparison.html"
 OBSERVATION = EVIDENCE / "chrome156-observation.json"
+SPEC_DERIVED = EVIDENCE / "spec-derived-expectations.json"
 TOLERANCE = 1 / 64
 
 
@@ -53,6 +54,7 @@ def main() -> None:
     assert all(observation["supports"].values()), "Chrome rejected a CSS-valid calc declaration"
 
     ids = set()
+    cases = []
     for scene in observation["scenes"]:
         scene_id = scene["id"]
         assert scene_id not in ids, f"duplicate scene: {scene_id}"
@@ -67,6 +69,34 @@ def main() -> None:
             )
         assert scene["grid"]["width"] > 0 and scene["grid"]["height"] > 0
         assert scene["columnGap"] == "4px" and scene["rowGap"] == "4px"
+        collapsed_track_indices = []
+        if scene["repeatMode"] == "auto-fit":
+            neighbor_track_index = 0 if scene["neighborSide"] == "prefix" else len(expected) - 1
+            repeated_indices = [index for index in range(len(expected)) if index != neighbor_track_index]
+            collapsed_track_indices = [
+                track_index
+                for repeat_index, track_index in enumerate(repeated_indices)
+                if repeat_index not in scene["occupiedRepeatIndices"]
+            ]
+        cases.append(
+            {
+                "id": scene_id,
+                "axis": axis,
+                "definiteContentSize": scene["basis"],
+                "neighborUsedCssPx": scene["neighborUsed"],
+                "repeatCount": len(expected) - 1,
+                "usedTracksCssPx": expected,
+                "collapsedTrackIndices": collapsed_track_indices,
+                "occupiedRepeatIndices": scene["occupiedRepeatIndices"],
+                "rootFrameCssPx": [scene["grid"]["width"], scene["grid"]["height"]],
+                "itemFrameRelativeToRootCssPx": [
+                    scene["item"]["x"] - scene["grid"]["x"],
+                    scene["item"]["y"] - scene["grid"]["y"],
+                    scene["item"]["width"],
+                    scene["item"]["height"],
+                ],
+            }
+        )
 
     assert ids == {
         "col-prefix-positive",
@@ -79,6 +109,18 @@ def main() -> None:
         "col-fit-prefix-item",
         "col-both-negative-final",
     }
+    SPEC_DERIVED.write_text(
+        json.dumps(
+            {
+                "source": "CSS Grid auto-repeat formula independently evaluated by validate-precomparison.py",
+                "toleranceCssPx": TOLERANCE,
+                "sceneCount": len(cases),
+                "cases": cases,
+            },
+            indent=2,
+        )
+        + "\n"
+    )
     print(f"PASS: {len(ids)}/{len(ids)} Chrome scenes match the independent CSS Grid model within {TOLERANCE:.6f}px")
 
 

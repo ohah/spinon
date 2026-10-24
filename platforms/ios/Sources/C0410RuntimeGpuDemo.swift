@@ -303,8 +303,16 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-border-box",
     "calc-neighbor-col-fill-extra-term", "calc-neighbor-col-fill-negative-term",
     "calc-neighbor-col-fill-negative-final",
-    "calc-neighbor-col-fill-negative-percentage-term",
     "calc-neighbor-col-max-content", "calc-neighbor-col-fill-fixed-control",
+    "negative-percentage-col-prefix-positive",
+    "negative-percentage-col-suffix-positive",
+    "negative-percentage-row-prefix-positive",
+    "negative-percentage-row-suffix-positive",
+    "negative-percentage-col-prefix-negative-final",
+    "negative-percentage-row-suffix-negative-final",
+    "negative-percentage-col-border-box",
+    "negative-percentage-col-fit-prefix-item",
+    "negative-percentage-col-both-negative-final",
 
 ]
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
@@ -637,6 +645,11 @@ private let c114CalcNeighborPixelSceneIDs: Set<String> = [
     "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-border-box",
     "calc-neighbor-col-fill-negative-term", "calc-neighbor-col-fill-negative-final",
     "calc-neighbor-col-fill-fixed-control",
+    "negative-percentage-col-prefix-positive", "negative-percentage-col-suffix-positive",
+    "negative-percentage-row-prefix-positive", "negative-percentage-row-suffix-positive",
+    "negative-percentage-col-prefix-negative-final",
+    "negative-percentage-row-suffix-negative-final", "negative-percentage-col-border-box",
+    "negative-percentage-col-fit-prefix-item", "negative-percentage-col-both-negative-final",
 ]
 
 private func c114CalcNeighborRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
@@ -644,11 +657,16 @@ private func c114CalcNeighborRootSize(_ sceneID: String) -> (width: Int, height:
     case "calc-neighbor-col-fill-both", "calc-neighbor-col-fill-prefix",
          "calc-neighbor-col-fit-first", "calc-neighbor-col-fit-empty",
          "calc-neighbor-col-fill-overflow", "calc-neighbor-col-fill-negative-term",
-         "calc-neighbor-col-fill-negative-final", "calc-neighbor-col-fill-fixed-control":
+         "calc-neighbor-col-fill-negative-final", "calc-neighbor-col-fill-fixed-control",
+         "negative-percentage-col-prefix-positive", "negative-percentage-col-suffix-positive",
+         "negative-percentage-col-prefix-negative-final",
+         "negative-percentage-col-both-negative-final", "negative-percentage-col-fit-prefix-item":
         return (240, 10)
-    case "calc-neighbor-row-fill-both", "calc-neighbor-row-fill-suffix":
+    case "calc-neighbor-row-fill-both", "calc-neighbor-row-fill-suffix",
+         "negative-percentage-row-prefix-positive", "negative-percentage-row-suffix-positive",
+         "negative-percentage-row-suffix-negative-final":
         return (10, 240)
-    case "calc-neighbor-col-fill-border-box":
+    case "calc-neighbor-col-fill-border-box", "negative-percentage-col-border-box":
         return (136, 34)
     default:
         return nil
@@ -663,10 +681,14 @@ private func c114CalcNeighborItemFrames(_ sceneID: String) -> [C114PercentageNei
     case "calc-neighbor-row-fill-suffix": return [.init(x: 0, y: 46, width: 2, height: 2)]
     case "calc-neighbor-col-fit-first", "calc-neighbor-col-fill-fixed-control":
         return [.init(x: 26, y: 0, width: 2, height: 2)]
+    case "negative-percentage-col-fit-prefix-item":
+        return [.init(x: 12, y: 0, width: 2, height: 2)]
     case "calc-neighbor-col-fill-overflow":
         return [.init(x: 244, y: 0, width: 2, height: 2)]
     case "calc-neighbor-col-fill-border-box":
         return [.init(x: 23.796875, y: 10, width: 2, height: 2)]
+    case "negative-percentage-col-border-box":
+        return [.init(x: 10, y: 10, width: 2, height: 2)]
     default:
         return [.init(x: 0, y: 0, width: 2, height: 2)]
     }
@@ -675,8 +697,7 @@ private func c114CalcNeighborItemFrames(_ sceneID: String) -> [C114PercentageNei
 private func c114CalcNeighborExpectedRejection(_ sceneID: String)
     -> (code: String, property: String, nodeID: String)? {
     switch sceneID {
-    case "calc-neighbor-col-fill-extra-term",
-         "calc-neighbor-col-fill-negative-percentage-term":
+    case "calc-neighbor-col-fill-extra-term":
         return ("unsupported_computed_value", "grid-template-columns", "1")
     case "calc-neighbor-col-max-content":
         return ("invalid_grid_track_list", "grid-template-columns", "1")

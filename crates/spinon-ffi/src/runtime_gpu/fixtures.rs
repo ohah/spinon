@@ -36,6 +36,8 @@ pub(crate) mod c11_4_auto_repeat_calc_minimum;
 pub(crate) mod c11_4_auto_repeat_calc_neighbors;
 pub(crate) mod c11_4_auto_repeat_named_lines;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) mod c11_4_auto_repeat_negative_percentage_neighbors;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_auto_repeat_percentage_maximum;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_auto_repeat_percentage_neighbors;

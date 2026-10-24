@@ -1,0 +1,254 @@
+{
+  "source": "CSS Grid auto-repeat formula independently evaluated by validate-precomparison.py",
+  "toleranceCssPx": 0.015625,
+  "sceneCount": 9,
+  "cases": [
+    {
+      "id": "col-prefix-positive",
+      "axis": "columns",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 8,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        8.0,
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        42.4
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        240,
+        10
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "col-suffix-positive",
+      "axis": "columns",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 8,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        8.0
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        240,
+        10
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "row-prefix-positive",
+      "axis": "rows",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 8,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        8.0,
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        42.4
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        10,
+        240
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "row-suffix-positive",
+      "axis": "rows",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 8,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        42.4,
+        8.0
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        10,
+        240
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "col-prefix-negative-final",
+      "axis": "columns",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        0.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        240,
+        10
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "row-suffix-negative-final",
+      "axis": "rows",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        0.0
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        10,
+        240
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "col-border-box",
+      "axis": "columns",
+      "definiteContentSize": 116,
+      "neighborUsedCssPx": 14.2,
+      "repeatCount": 2,
+      "usedTracksCssPx": [
+        14.2,
+        46.9,
+        46.9
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        136,
+        34
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        10,
+        10,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "col-fit-prefix-item",
+      "axis": "columns",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 8,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        8.0,
+        228.0,
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "collapsedTrackIndices": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "occupiedRepeatIndices": [
+        0
+      ],
+      "rootFrameCssPx": [
+        240,
+        10
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        12,
+        0,
+        2,
+        2
+      ]
+    },
+    {
+      "id": "col-both-negative-final",
+      "axis": "columns",
+      "definiteContentSize": 240,
+      "neighborUsedCssPx": 0,
+      "repeatCount": 5,
+      "usedTracksCssPx": [
+        0.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0,
+        44.0
+      ],
+      "collapsedTrackIndices": [],
+      "occupiedRepeatIndices": [],
+      "rootFrameCssPx": [
+        240,
+        10
+      ],
+      "itemFrameRelativeToRootCssPx": [
+        0,
+        0,
+        2,
+        2
+      ]
+    }
+  ]
+}

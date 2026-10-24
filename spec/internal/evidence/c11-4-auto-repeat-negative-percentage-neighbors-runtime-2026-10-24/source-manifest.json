@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": {
+    "commit": "411bda24e2525b55d48a6c14ec484aec6ef8e97a",
+    "tree": "b42e6e11d099b6fc590e1733275e12ec36a55bbb"
+  },
+  "sourceDiffSha256": "9c3ad9a3ce4aa62f6567e8abbb0e02494f79b5ea3cf27fefab0d77c0c54943e5",
+  "sourceDiffPaths": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_calc_neighbor_scenes.json",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_percentage_neighbor_scenes.json",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_calc_neighbors.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_negative_percentage_neighbors.rs",
+    "crates/spinon-layout/src/grid.rs",
+    "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+    "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_neighbor.rs",
+    "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+    "spec/STATUS.md",
+    "spec/internal/0059-c11-grid-layout.md",
+    "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+    "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+    "tools/css-reference/fixture-module-boundary.test.mjs"
+  ],
+  "scopeBoundary": "sourceDiffSha256 hashes git diff --binary HEAD for implementation, fixture, capture, plan, and official contract/status paths; evidence inputs and screenshots have file-level hashes below.",
+  "files": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+      "bytes": 2310,
+      "sha256": "dcf13f609efd97bb44cd60275a00c17e6e9a34a827e8794e8fe2b5ee939f6f63"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "bytes": 98326,
+      "sha256": "82a813d4e405f28aa4b9e065e393947080aba99b9e05cb1259fcca4f6ccaca73"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_calc_neighbor_scenes.json",
+      "bytes": 17695,
+      "sha256": "6b98d08a3bce79eb10f7979f2f29bbaa16cc1eec4bb4ab56d39504dbe5f33550"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_negative_percentage_neighbor_scenes.json",
+      "bytes": 12393,
+      "sha256": "cc17f9513a7a1f3ba964879cca1f81b36b2336f769d785001fdf1223f2894e8c"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_calc_neighbors.rs",
+      "bytes": 5511,
+      "sha256": "ec0f4e3b361fa8b2ac9fe15a6265d02ca88f5ba54d61b872a12e9687ba7b2b19"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_negative_percentage_neighbors.rs",
+      "bytes": 4798,
+      "sha256": "39f40ba3bfd5956828e3857700e36e45ccf107506e6b057f8d7c8458e2343def"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid.rs",
+      "bytes": 55490,
+      "sha256": "480dd86d8030c0e258bf1ee19eb6888e862130d63811147f0dd12cc11808415b"
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs",
+      "bytes": 14053,
+      "sha256": "3133a9b3048167dab641d3ca5bfb74270dc989f017f50ddc896b8ee4e8aa2559"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "bytes": 30403,
+      "sha256": "caf433ebd4ef4c0e907d2ebc8a8e00c84e60259a3f4b883802d50180cecfbc69"
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+      "bytes": 7801,
+      "sha256": "b68f2b08acce96361c474efb508e4313b180b908e53ee0a13c61a7a2b541f9ee"
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_calc_neighbor.rs",
+      "bytes": 7254,
+      "sha256": "f6c904ae5f38b71788129c83982fe21448c49dbaf7d523ee3bd58f8e5f0f2069"
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "bytes": 738174,
+      "sha256": "cd6ebeec18b16a2c5f712bbd360b15d29cdb431c31371e41e7a7cfca9c8b6b29"
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "bytes": 627870,
+      "sha256": "1d00ce7eae15a50570f8e26e1a2b97dfb4a9ea927e78a0c9e8d060d1936fdb0c"
+    },
+    {
+      "path": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "bytes": 325889,
+      "sha256": "c3d6a7b925d153d65f35e748534493592cf4b0a16a2d72a28dd6cd40f871f466"
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "bytes": 69196,
+      "sha256": "62a9fc6859416ff6d61f907371e7f2ff072d586f0c3a37f3f1b6b075787095a3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/validate-precomparison.py",
+      "bytes": 5551,
+      "sha256": "3e0a033ee68b6a991abc93b68583205d1469f987158f2fa2f95c880423507cfa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/spec-derived-expectations.json",
+      "bytes": 4688,
+      "sha256": "3322f38f095172215216c6bad5107d4ad7a13bf00fd1fa046e94e08c96b4b88d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 6670,
+      "sha256": "cd9e1561a250d55a3b52cc1996f7a2b70992275cf6fe8245ba5e03251fd46af3"
+    },
+    {
+      "path": "plan/c11-4-auto-repeat-negative-percentage-neighbors.md",
+      "bytes": 9013,
+      "sha256": "877dad9aa1b5e992438bf5b7bb6aac371d0c129759a4f6f84ba077f505d5ab2d"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 120623,
+      "sha256": "0f69e25d0282bb3cd0903918bfbd17690fb51a0f1b28d9ea4a3a4a9aa224e770"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 415993,
+      "sha256": "74d623b15f194a4d4157828fa2b84222ca9eb87a58f553bcb27f7a91bb321b20"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/README.md",
+      "bytes": 4004,
+      "sha256": "582a98a9e43f1f73607a618b79a881b56a6fb99a43b628499b5ce011cc2e2891"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/implementation-runtime-review-20.md",
+      "bytes": 5667,
+      "sha256": "d7fa7d9ccddc41ad97aba1078ab4c830312597c5e16ead00a8882705683c79ed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/pr-diff-review-30.md",
+      "bytes": 7087,
+      "sha256": "f4b2ad02123459556dbb170ea3eebc7e563130b46ee81c5e92d26af396d2ffbc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/generate-source-manifest.py",
+      "bytes": 6762,
+      "sha256": "4b891e532204bd977aba29aaeca8874f18878e51222b3899b07a9518ad6ebb74"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/README.md",
+      "bytes": 3368,
+      "sha256": "7d90d3260bcb9ad771f208a32483c7cb19d14e73e7fb4276732ee79d4a302ead"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-artifact-2026-10-24/scan-ffi-archives.py",
+      "bytes": 3804,
+      "sha256": "02435b52cde2f49c00fb95ae5714412c69b6e172ccd3ec29081460e40d1fe16c"
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-precomparison-2026-10-24/chrome156-full.png",
+      "bytes": 15197,
+      "sha256": "bb8d80977b0911ff0a4d33b6264374cb4cbcd952f5cbe74afe448ef89545ed89"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/selected-screenshots/android-avd-negative-percentage-col-both-negative-final.png",
+      "bytes": 77384,
+      "sha256": "d4c24998da98f252f0b8f5b009fd3d375838541a5863015301f5194d44fc3e2c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-auto-repeat-negative-percentage-neighbors-runtime-2026-10-24/selected-screenshots/ios-simulator-negative-percentage-col-both-negative-final.png",
+      "bytes": 132857,
+      "sha256": "03c3ceabcceb4caa10dd82ff1d0c295c908909ece6be5708b164eb32188d9a57"
+    }
+  ],
+  "runs": {
+    "android": {
+      "evidenceDirectory": "android-avd-c114-signed-negative-percentage-neighbors-android-avd-20261024T061515084Z-2d9ec1ae",
+      "captureTrackedDiffSha256": "85727ae1f6af69d73a24cc70259d92e7b1dc7efe3861264fd7a31a56e6c3f018",
+      "applicationSha256": "19e626d64a6a6bd7bf76604f2b17dc85ce07483fd84bef7dddffaa41557f847b"
+    },
+    "ios": {
+      "evidenceDirectory": "ios-simulator-c114-signed-negative-percentage-neighbors-ios-simulator-20261024T061454873Z-3c7ad103",
+      "captureTrackedDiffSha256": "85727ae1f6af69d73a24cc70259d92e7b1dc7efe3861264fd7a31a56e6c3f018",
+      "applicationSha256": "3901af4db8fbc021555d1bff86b7d5f8e4e16f8fea97dd593fc00b961ccc821c"
+    }
+  }
+}

@@ -111,13 +111,76 @@ fn track_sizing_profile_accepts_a_subtracted_length_term() {
     }));
 }
 
+fn signed_length(term: &ComputedCssMath) -> Option<f32> {
+    match term {
+        ComputedCssMath::LengthPx(value) => Some(*value),
+        ComputedCssMath::Negate(value) => match value.as_ref() {
+            ComputedCssMath::LengthPx(value) => Some(-*value),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
+fn signed_percentage(term: &ComputedCssMath) -> Option<f32> {
+    match term {
+        ComputedCssMath::Percentage(value) => Some(*value),
+        ComputedCssMath::Negate(value) => match value.as_ref() {
+            ComputedCssMath::Percentage(value) => Some(-*value),
+            _ => None,
+        },
+        _ => None,
+    }
+}
+
 #[test]
-fn track_sizing_profile_preserves_typed_neighbors_for_layout_boundary_rejection() {
-    for neighbor in [
-        "calc(20px - 5%)",
-        "calc(10px + 5% + clamp(0px, 0%, 1px))",
-        "min(20px, 5%)",
+fn track_sizing_profile_preserves_signed_percentage_terms_in_computed_ast() {
+    for (neighbor, expected_length, expected_percentage) in [
+        ("calc(20px - 5%)", 20.0, -0.05),
+        ("calc(5% - 20px)", -20.0, 0.05),
+        ("calc(-2px - 1%)", -2.0, -0.01),
     ] {
+        let fixture = root_grid(&format!(
+            "grid-template-columns:{neighbor} repeat(auto-fill,minmax(40px,1fr));grid-template-rows:12px"
+        ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_or_else(|error| panic!("typed signed calc neighbor {neighbor}: {error:?}"));
+        let grid = snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.root)
+            .unwrap()
+            .grid_layout
+            .as_ref()
+            .unwrap();
+        let ComputedCssGridTrackSize::Calc(ComputedCssMath::Sum(terms)) = &grid.columns[0] else {
+            panic!(
+                "expected typed calc neighbor for {neighbor}, got {:?}",
+                grid.columns[0]
+            );
+        };
+        assert_eq!(terms.len(), 2, "{neighbor}: computed term count");
+        assert_eq!(
+            terms.iter().find_map(signed_length),
+            Some(expected_length),
+            "{neighbor}: signed length {terms:?}"
+        );
+        assert_eq!(
+            terms.iter().find_map(signed_percentage),
+            Some(expected_percentage),
+            "{neighbor}: signed percentage {terms:?}"
+        );
+    }
+}
+
+#[test]
+fn cascade_preserves_unsupported_calc_math_until_projection() {
+    for neighbor in ["calc(10px + 5% + clamp(0px, 0%, 1px))", "min(20px, 5%)"] {
         let fixture = root_grid(&format!(
             "grid-template-columns:{neighbor} repeat(auto-fill,minmax(40px,1fr));grid-template-rows:12px"
         ));

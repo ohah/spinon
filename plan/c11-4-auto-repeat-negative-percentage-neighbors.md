@@ -2,9 +2,9 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [calc 이웃 선행 구현](./c11-4-auto-repeat-calc-neighbors.md) · [percentage 이웃 계약](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**현재 단계:** 계획 및 Chrome 사전 비교만 완료. 이전 [PR #583](https://github.com/ohah/spinon/pull/583)은 2026-10-24 05:04:59 UTC에 Rebase and merge되어 `4faabe77c6b3a9a87fa1e50503649b8fcdc803d7`에 병합됐다. 현재 cascade/projection은 정확히 두 항인 `LengthPx` 또는 단일 `Negate(LengthPx)` + 유한 0 이상 `Percentage`만 auto-repeat neighbor calc로 허용한다. `calc(20px - 5%)`는 CSS-valid이지만 현재 profile의 projection gate에서 거부된다. C11.4와 공식 완료 집계 `72/213`은 미완료 상태다.
+**현재 단계:** 계획 PR [#584](https://github.com/ohah/spinon/pull/584)은 2026-10-24 05:41:39 UTC에 Rebase and merge되어 `411bda24e2525b55d48a6c14ec484aec6ef8e97a`에 병합됐다. 계획에 따른 제한 구현은 완료 후보 상태다. exact 2-term signed percentage subset, 신규 9 scene과 회귀 2 scene은 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 11/11 통과했고 PixelCopy/Metal 표본은 각 22/22 exact다. 기본/fixture-test FFI archive 경계도 각각 negative/positive control로 확인했다. 구현 PR은 이 계획·계약·실행 근거를 함께 제출한다. C11.4와 공식 완료 집계 `72/213`은 미완료 상태다.
 
-## 결손과 목표
+## 기존 결손과 목표
 
 지원 중인 definite-axis calc 이웃은 CSS Values 수학식 중 signed length 항을 보존하지만 signed percentage 항은 거부한다. 그 결과 열·행 auto-repeat 앞뒤의 `calc(length - percentage)`가 CSS Grid `<length-percentage [0,∞]>` 규칙을 만족해도 runtime profile에서 지원되지 않는다.
 
