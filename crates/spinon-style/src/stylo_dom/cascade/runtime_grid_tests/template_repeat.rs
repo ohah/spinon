@@ -445,7 +445,7 @@ fn auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes() {
     }
 
     let unsupported_repeat = fixture(
-        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,20px) repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
+        "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:repeat(2,20px) repeat(3,10px) repeat(auto-fill,minmax(24px,1fr));grid-template-rows:40px;margin:0;padding:0",
     );
     assert!(
         compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
@@ -455,7 +455,7 @@ fn auto_repeat_rejects_profiles_and_preserves_typed_neighbor_shapes() {
             Default::default(),
         )
         .is_err(),
-        "nested integer repeat grammar must remain rejected during cascade"
+        "multiple fixed-repeat groups must remain rejected during cascade"
     );
 
     let one_axis_with_areas = fixture(

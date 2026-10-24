@@ -1,3 +1,6 @@
+#[path = "grid/auto_repeat.rs"]
+mod auto_repeat;
+
 use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
@@ -13,10 +16,9 @@ use style::{
 
 use super::super::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
-    ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
-    ComputedCssGridLayout, ComputedCssGridPlacement, ComputedCssGridTrackBreadth,
-    ComputedCssGridTrackLengthPercentage, ComputedCssGridTrackSize, ComputedCssMath,
-    CssCascadeError,
+    ComputedCssGridAutoRows, ComputedCssGridItemPlacement, ComputedCssGridLayout,
+    ComputedCssGridPlacement, ComputedCssGridTrackBreadth, ComputedCssGridTrackLengthPercentage,
+    ComputedCssGridTrackSize, ComputedCssMath, CssCascadeError,
 };
 
 const MAX_COMPUTED_GRID_TRACKS: usize = 10_000;
@@ -26,6 +28,7 @@ struct ComputedGridTracks {
     tracks: Vec<ComputedCssGridTrackSize>,
     line_names: Vec<Vec<String>>,
     auto_repeat: Option<ComputedCssGridAutoRepeat>,
+    has_fixed_repeat: bool,
 }
 
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
@@ -89,6 +92,7 @@ pub(super) fn computed_grid_layout(
         tracks: columns,
         line_names: columns_line_names,
         auto_repeat: columns_auto_repeat,
+        has_fixed_repeat: columns_has_fixed_repeat,
     } = computed_grid_tracks(
         computed.clone_grid_template_columns(),
         node,
@@ -102,6 +106,7 @@ pub(super) fn computed_grid_layout(
         tracks: rows,
         line_names: rows_line_names,
         auto_repeat: rows_auto_repeat,
+        has_fixed_repeat: rows_has_fixed_repeat,
     } = computed_grid_tracks(
         computed.clone_grid_template_rows(),
         node,
@@ -111,6 +116,26 @@ pub(super) fn computed_grid_layout(
         allow_intrinsic_tracks,
         allow_auto_repeat,
     )?;
+    if (columns_has_fixed_repeat && rows_auto_repeat.is_some())
+        || (rows_has_fixed_repeat && columns_auto_repeat.is_some())
+    {
+        let (property, value) = if columns_has_fixed_repeat {
+            ("grid-template-rows", rows_value)
+        } else {
+            ("grid-template-columns", columns_value)
+        };
+        return Err(unsupported_grid_value(node, property, value));
+    }
+    if template_areas.is_some()
+        && ((columns_has_fixed_repeat && columns_auto_repeat.is_some())
+            || (rows_has_fixed_repeat && rows_auto_repeat.is_some()))
+    {
+        return Err(unsupported_grid_value(
+            node,
+            "grid-template-areas",
+            property_value(properties, "grid-template-areas"),
+        ));
+    }
     if template_areas.is_some()
         && columns_auto_repeat.is_some()
         && rows_auto_repeat.is_some()
@@ -376,6 +401,7 @@ fn computed_grid_tracks(
                 tracks: Vec::new(),
                 line_names: Vec::new(),
                 auto_repeat: None,
+                has_fixed_repeat: false,
             });
         }
         GridTemplateComponent::None
@@ -388,7 +414,7 @@ fn computed_grid_tracks(
         return Err(unsupported_grid_value(node, property, serialized));
     }
     if list.has_auto_repeat() {
-        return computed_auto_repeat_tracks(
+        return auto_repeat::computed_auto_repeat_tracks(
             &list,
             node,
             property,
@@ -429,6 +455,7 @@ fn computed_grid_tracks(
             tracks,
             line_names: Vec::new(),
             auto_repeat: None,
+            has_fixed_repeat: false,
         });
     }
 
@@ -437,130 +464,15 @@ fn computed_grid_tracks(
             tracks,
             line_names,
             auto_repeat: None,
+            has_fixed_repeat: list.values.iter().any(|value| {
+                matches!(
+                    value,
+                    TrackListValue::TrackRepeat(repeat)
+                        if matches!(repeat.count, RepeatCount::Number(_))
+                )
+            }),
         },
     )
-}
-
-fn computed_auto_repeat_tracks(
-    list: &style::values::computed::TrackList,
-    node: NodeId,
-    property: &'static str,
-    serialized: &str,
-    allow_intrinsic_tracks: bool,
-    allow_auto_repeat: bool,
-) -> Result<ComputedGridTracks, CssCascadeError> {
-    let has_valid_outer_line_names =
-        list.values.len().checked_add(1) == Some(list.line_names.len());
-    if !allow_auto_repeat || !has_valid_outer_line_names {
-        return Err(unsupported_grid_value(node, property, serialized));
-    }
-
-    let mut repeat_index = None;
-    let mut mode = None;
-    for (index, value) in list.values.iter().enumerate() {
-        let TrackListValue::TrackRepeat(repeat) = value else {
-            continue;
-        };
-        let current_mode = match repeat.count {
-            RepeatCount::AutoFill => ComputedCssGridAutoRepeatMode::AutoFill,
-            RepeatCount::AutoFit => ComputedCssGridAutoRepeatMode::AutoFit,
-            RepeatCount::Number(_) => {
-                return Err(unsupported_grid_value(node, property, serialized));
-            }
-        };
-        if repeat_index.replace(index).is_some() {
-            return Err(unsupported_grid_value(node, property, serialized));
-        }
-        mode = Some(current_mode);
-    }
-    let (Some(repeat_index), Some(mode)) = (repeat_index, mode) else {
-        return Err(unsupported_grid_value(node, property, serialized));
-    };
-    let Some(TrackListValue::TrackRepeat(repeat)) = list.values.get(repeat_index) else {
-        return Err(unsupported_grid_value(node, property, serialized));
-    };
-    if repeat.track_sizes.is_empty()
-        || repeat.track_sizes.len() > MAX_COMPUTED_GRID_TRACKS
-        || repeat.track_sizes.len().checked_add(1) != Some(repeat.line_names.len())
-        || !allow_intrinsic_tracks
-    {
-        return Err(unsupported_grid_value(node, property, serialized));
-    }
-
-    line_name_groups_metadata_bytes(list.line_names.iter().map(|group| group.iter()))
-        .and_then(|outer| {
-            line_name_groups_metadata_bytes(repeat.line_names.iter().map(|group| group.iter()))
-                .and_then(|inner| outer.checked_add(inner))
-        })
-        .filter(|bytes| *bytes <= MAX_COMPUTED_GRID_LINE_METADATA_BYTES)
-        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-    let outer_line_names = copy_computed_line_name_groups(
-        list.line_names.iter().map(|group| group.iter()),
-        node,
-        property,
-    )?;
-    let repeated_line_names = copy_computed_line_name_groups(
-        repeat.line_names.iter().map(|group| group.iter()),
-        node,
-        property,
-    )?;
-
-    let prefix_count = repeat_index;
-    let repeat_end = prefix_count
-        .checked_add(repeat.track_sizes.len())
-        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-    let suffix_count = list.values.len() - repeat_index - 1;
-    let total_track_count = repeat_end
-        .checked_add(suffix_count)
-        .filter(|count| *count <= MAX_COMPUTED_GRID_TRACKS)
-        .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-    let mut tracks = Vec::new();
-    reserve_computed_tracks(
-        &mut tracks,
-        total_track_count,
-        node,
-        property,
-        |tracks, count| {
-            fail_integer_repeat_reservation_if_requested(IntegerRepeatReservationSite::Tracks)?;
-            tracks.try_reserve_exact(count).map_err(|_| ())
-        },
-    )?;
-
-    for value in list.values.iter().take(prefix_count) {
-        let TrackListValue::TrackSize(size) = value else {
-            return Err(unsupported_grid_value(node, property, serialized));
-        };
-        let track = track_size(size, allow_intrinsic_tracks)
-            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-        tracks.push(track);
-    }
-    for size in repeat.track_sizes.iter() {
-        let track = track_size(size, allow_intrinsic_tracks)
-            .filter(track_size_is_valid)
-            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-        if !auto_repeat_track_has_fixed_minimum(&track) {
-            return Err(unsupported_grid_value(node, property, serialized));
-        }
-        tracks.push(track);
-    }
-    for value in list.values.iter().skip(repeat_index + 1) {
-        let TrackListValue::TrackSize(size) = value else {
-            return Err(unsupported_grid_value(node, property, serialized));
-        };
-        let track = track_size(size, allow_intrinsic_tracks)
-            .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-        tracks.push(track);
-    }
-    Ok(ComputedGridTracks {
-        tracks,
-        line_names: outer_line_names,
-        auto_repeat: Some(ComputedCssGridAutoRepeat {
-            mode,
-            start: prefix_count,
-            end: repeat_end,
-            line_names: repeated_line_names,
-        }),
-    })
 }
 
 fn line_name_groups_metadata_bytes<'a, Groups, Names>(groups: Groups) -> Option<usize>

@@ -14,6 +14,21 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
     "unknown-area-fixed-implicit-tracks",
 ]
+#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
+    "fixed-repeat-fill-prefix-empty",
+    "fixed-repeat-fill-suffix-empty",
+    "fixed-repeat-fill-prefix-calc-constant",
+    "fixed-repeat-fit-prefix-empty",
+    "fixed-repeat-fit-prefix-occupied",
+    "fixed-repeat-row-fill-prefix-empty",
+    "fixed-repeat-row-fill-suffix-empty",
+    "fixed-repeat-row-fit-prefix-empty",
+    "fixed-repeat-row-fit-prefix-occupied",
+]
+#else
+private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = []
+#endif
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -313,8 +328,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-border-box",
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
-
 ]
+private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    c114GridTrackSizingSceneIDs.contains(sceneID)
+        || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
+}
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-forward",
     "cyclic-minmax-replaced-image-span-intrinsic-reverse",
@@ -790,6 +808,10 @@ private func c114PercentageNeighborNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if sceneID.hasPrefix("fixed-repeat-") {
+        return sceneID.contains("-row-")
+            ? "width=80,height=200" : "width=200,height=80"
+    }
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let calcNeighborFrame = c114CalcNeighborRootFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborRootFrame(sceneID) {
@@ -1020,6 +1042,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID.hasPrefix("fixed-repeat-") {
+        return sceneID.hasSuffix("-occupied") ? "width=10,height=10" : ""
+    }
     if let calcNeighborFrame = c114CalcNeighborItemFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneID) {
         return percentageNeighborFrame
@@ -2568,6 +2593,17 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if sceneID.hasPrefix("fixed-repeat-") {
+        let rowAxis = sceneID.contains("-row-")
+        let root = rowAxis ? "width=80,height=200" : "width=200,height=80"
+        if sceneID.hasSuffix("-occupied") {
+            let item = rowAxis
+                ? "1:node=2,x=0,y=92,width=10,height=10"
+                : "1:node=2,x=92,y=0,width=10,height=10"
+            return "node_frames_css_px=[0:node=1,x=0,y=0,\(root);\(item)]"
+        }
+        return "node_frames_css_px=[0:node=1,x=0,y=0,\(root)]"
+    }
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let calcNeighborFrames = c114CalcNeighborNodeFrames(sceneID) {
         return calcNeighborFrames
@@ -3948,6 +3984,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID.hasPrefix("fixed-repeat-") {
+        return sceneID.hasSuffix("-occupied") ? 2 : 1
+    }
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if let calcNeighborItems = c114CalcNeighborItemFrames(sceneID) {
         return calcNeighborItems.count + 1
@@ -4582,6 +4621,28 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if sceneID.hasPrefix("fixed-repeat-") {
+            let rowAxis = sceneID.contains("-row-")
+            let occupied = sceneID.hasSuffix("-occupied")
+            let rootID = "c114-\(sceneID)-grid"
+            var expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("\(sceneID)-root-interior", rootID,
+                 rowAxis ? 40 : 100, rowAxis ? 100 : 40, [34, 197, 94, 255]),
+            ]
+            if occupied {
+                expectedSamples.append(("\(sceneID)-item-1-interior",
+                    "c114-\(sceneID)-item-1", rowAxis ? 5 : 97,
+                    rowAxis ? 97 : 5, [229, 72, 77, 255]))
+            }
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if c114CalcNeighborPixelSceneIDs.contains(sceneID) {
             let expectedSamples = c114CalcNeighborPixelSamples(sceneID: sceneID)
             guard samples.count == expectedSamples.count else { return false }
@@ -5275,7 +5336,7 @@ private struct C111MetalPixelRun {
                 $0.hasPrefix("--spinon-c114-grid-run-id=")
             }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) }
             guard let c114Scene,
-                  c114GridTrackSizingSceneIDs.contains(c114Scene),
+                  c114IsGridTrackSizingScene(c114Scene),
                   c114Scene == sceneID, c114RunID == runID,
                   arguments.contains("--spinon-c114-grid-track-sizing"),
                   !isC1131Repeat, !isC1132NamedLine, !isC1133TemplateAreas,
@@ -7913,7 +7974,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         if c114GridTrackSizingProbeRequested
             && (c114GridTrackSizingRunID.range(
                 of: "^[A-Za-z0-9_-]{1,80}$", options: .regularExpression) == nil
-                || !c114GridTrackSizingSceneIDs.contains(c114GridTrackSizingSceneID)
+                || !c114IsGridTrackSizingScene(c114GridTrackSizingSceneID)
                 || c1131GridRepeatProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c1123GridAutoPlacementProbeRequested
                 || c1122GridAutoPlacementProbeRequested || c1121GridPlacementProbeRequested
