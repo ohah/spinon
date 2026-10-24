@@ -26,7 +26,14 @@ mod style;
 #[derive(Clone, Copy)]
 enum ItemKind {
     Text(&'static str),
-    Image { height: f32 },
+    Image { height: Option<f32> },
+}
+
+#[derive(Clone, Copy, Debug, PartialEq, Eq)]
+enum SceneGrid {
+    SpanningMultiTrack,
+    DirectMinContent,
+    DirectMaxContent,
 }
 
 #[derive(Clone, Copy)]
@@ -42,6 +49,7 @@ struct Item {
 struct Scene {
     id: &'static str,
     items: &'static [Item],
+    grid: SceneGrid,
     #[cfg(test)]
     tracks: &'static [f32],
 }
@@ -55,7 +63,7 @@ const A_FORWARD: Item = Item {
 };
 const B_FORWARD: Item = Item {
     id: "mixed-image-b-forward",
-    kind: ItemKind::Image { height: 48.0 },
+    kind: ItemKind::Image { height: Some(48.0) },
     column_start: 2,
     column_span: 2,
     row: 2,
@@ -101,30 +109,99 @@ const SPAN2_REVERSED: [Item; 2] = [B_REVERSED, A_REVERSED];
 const SPAN2_THEN_SPAN3: [Item; 3] = [A_THREE, B_THREE, C_THREE];
 const SPAN3_THEN_SPAN2: [Item; 3] = [C_THREE_REVERSED, B_THREE_REVERSED, A_THREE_REVERSED];
 
-const SCENES: [Scene; 4] = [
+const fn direct_text_item(id: &'static str) -> Item {
+    Item {
+        id,
+        kind: ItemKind::Text("XX XXXXX"),
+        column_start: 1,
+        column_span: 1,
+        row: 1,
+    }
+}
+
+const fn direct_image_item(id: &'static str) -> Item {
+    Item {
+        id,
+        kind: ItemKind::Image { height: None },
+        column_start: 1,
+        column_span: 1,
+        row: 2,
+    }
+}
+
+const MIN_CONTENT_FORWARD: [Item; 2] = [
+    direct_text_item("c114-direct-min-content-forward-text"),
+    direct_image_item("c114-direct-min-content-forward-image"),
+];
+const MIN_CONTENT_REVERSED: [Item; 2] = [
+    direct_image_item("c114-direct-min-content-reversed-image"),
+    direct_text_item("c114-direct-min-content-reversed-text"),
+];
+const MAX_CONTENT_FORWARD: [Item; 2] = [
+    direct_text_item("c114-direct-max-content-forward-text"),
+    direct_image_item("c114-direct-max-content-forward-image"),
+];
+const MAX_CONTENT_REVERSED: [Item; 2] = [
+    direct_image_item("c114-direct-max-content-reversed-image"),
+    direct_text_item("c114-direct-max-content-reversed-text"),
+];
+
+const SCENES: [Scene; 8] = [
     Scene {
         id: "mixed-text-image-span2-forward",
         items: &SPAN2_FORWARD,
+        grid: SceneGrid::SpanningMultiTrack,
         #[cfg(test)]
         tracks: &[25.0, 36.0, 36.0, 0.0],
     },
     Scene {
         id: "mixed-text-image-span2-reversed",
         items: &SPAN2_REVERSED,
+        grid: SceneGrid::SpanningMultiTrack,
         #[cfg(test)]
         tracks: &[25.0, 36.0, 36.0, 0.0],
     },
     Scene {
         id: "mixed-text-image-span2-before-span3",
         items: &SPAN2_THEN_SPAN3,
+        grid: SceneGrid::SpanningMultiTrack,
         #[cfg(test)]
         tracks: &[158.0 / 3.0, 191.0 / 3.0, 191.0 / 3.0, 0.0],
     },
     Scene {
         id: "mixed-text-image-span3-before-span2",
         items: &SPAN3_THEN_SPAN2,
+        grid: SceneGrid::SpanningMultiTrack,
         #[cfg(test)]
         tracks: &[158.0 / 3.0, 191.0 / 3.0, 191.0 / 3.0, 0.0],
+    },
+    Scene {
+        id: "direct-min-content-forward",
+        items: &MIN_CONTENT_FORWARD,
+        grid: SceneGrid::DirectMinContent,
+        #[cfg(test)]
+        tracks: &[50.0],
+    },
+    Scene {
+        id: "direct-min-content-reversed",
+        items: &MIN_CONTENT_REVERSED,
+        grid: SceneGrid::DirectMinContent,
+        #[cfg(test)]
+        tracks: &[50.0],
+    },
+    Scene {
+        id: "direct-max-content-forward",
+        items: &MAX_CONTENT_FORWARD,
+        grid: SceneGrid::DirectMaxContent,
+        #[cfg(test)]
+        tracks: &[80.0],
+    },
+    Scene {
+        id: "direct-max-content-reversed",
+        items: &MAX_CONTENT_REVERSED,
+        grid: SceneGrid::DirectMaxContent,
+        #[cfg(test)]
+        tracks: &[80.0],
     },
 ];
 
