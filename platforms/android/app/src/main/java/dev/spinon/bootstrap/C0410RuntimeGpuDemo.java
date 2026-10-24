@@ -192,6 +192,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-negative", "auto-repeat-named-span",
             "auto-repeat-named-fit", "auto-repeat-named-neighbors",
             "auto-repeat-named-merge", "auto-repeat-named-row",
+            "auto-repeat-named-fixed-repeat-column-fill",
+            "auto-repeat-named-fixed-repeat-column-fit",
+            "auto-repeat-named-fixed-repeat-row-fill",
             "template-area-repeat-columns-fill", "template-area-repeat-columns-fit",
             "template-area-repeat-columns-area-shorter",
             "template-area-repeat-columns-area-larger",
@@ -341,6 +344,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-negative", "auto-repeat-named-span",
             "auto-repeat-named-fit", "auto-repeat-named-neighbors",
             "auto-repeat-named-merge", "auto-repeat-named-row",
+            "auto-repeat-named-fixed-repeat-column-fill",
+            "auto-repeat-named-fixed-repeat-column-fit",
+            "auto-repeat-named-fixed-repeat-row-fill",
             "auto-repeat-named-implicit-positive-missing",
             "auto-repeat-named-implicit-positive-insufficient",
             "auto-repeat-named-implicit-negative-missing",
@@ -468,6 +474,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-named-negative", "auto-repeat-named-span",
             "auto-repeat-named-fit", "auto-repeat-named-neighbors",
             "auto-repeat-named-merge", "auto-repeat-named-row",
+            "auto-repeat-named-fixed-repeat-column-fill",
+            "auto-repeat-named-fixed-repeat-column-fit",
+            "auto-repeat-named-fixed-repeat-row-fill",
             "auto-repeat-named-implicit-positive-missing",
             "auto-repeat-named-implicit-positive-insufficient",
             "auto-repeat-named-implicit-negative-missing",
@@ -3243,6 +3252,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=120,height=50";
             case "auto-repeat-named-row":
                 return "width=100,height=180";
+            case "auto-repeat-named-fixed-repeat-column-fill":
+            case "auto-repeat-named-fixed-repeat-column-fit":
+                return "width=300,height=40";
+            case "auto-repeat-named-fixed-repeat-row-fill":
+                return "width=40,height=300";
             case "auto-repeat-named-implicit-positive-missing":
             case "auto-repeat-named-implicit-positive-insufficient":
             case "auto-repeat-named-implicit-negative-missing":
@@ -3633,6 +3647,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "width=80,height=40";
             case "auto-repeat-named-row":
                 return "width=100,height=40";
+            case "auto-repeat-named-fixed-repeat-column-fill":
+            case "auto-repeat-named-fixed-repeat-column-fit":
+                return "width=24,height=40";
+            case "auto-repeat-named-fixed-repeat-row-fill":
+                return "width=40,height=24";
             case "auto-repeat-named-implicit-positive-missing":
             case "auto-repeat-named-implicit-positive-insufficient":
             case "auto-repeat-named-implicit-negative-missing":
@@ -3686,6 +3705,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "auto-repeat-named-row":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=180;"
                         + "1:node=2,x=0,y=50,width=100,height=40]";
+            case "auto-repeat-named-fixed-repeat-column-fill":
+            case "auto-repeat-named-fixed-repeat-column-fit":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=300,height=40;"
+                        + "1:node=2,x=96,y=0,width=24,height=40]";
+            case "auto-repeat-named-fixed-repeat-row-fill":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=300;"
+                        + "1:node=2,x=0,y=96,width=40,height=24]";
             case "auto-repeat-named-implicit-positive-missing":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=125,height=20;"
                         + "1:node=2,x=220,y=0,width=20,height=10]";
@@ -5126,6 +5152,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "auto-repeat-named-neighbors": itemX = 120; itemY = 0; itemWidth = 80; itemHeight = 40; break;
                 case "auto-repeat-named-merge": itemX = 20; itemY = 0; itemWidth = 80; itemHeight = 40; break;
                 case "auto-repeat-named-row": itemX = 0; itemY = 50; itemWidth = 100; itemHeight = 40; break;
+                case "auto-repeat-named-fixed-repeat-column-fill":
+                case "auto-repeat-named-fixed-repeat-column-fit":
+                    itemX = 96; itemY = 0; itemWidth = 24; itemHeight = 40; break;
+                case "auto-repeat-named-fixed-repeat-row-fill":
+                    itemX = 0; itemY = 96; itemWidth = 40; itemHeight = 24; break;
                 case "auto-repeat-named-implicit-positive-missing": itemX = 220; itemY = 0; itemWidth = 20; itemHeight = 10; break;
                 case "auto-repeat-named-implicit-positive-insufficient": itemX = 140; itemY = 0; itemWidth = 20; itemHeight = 10; break;
                 case "auto-repeat-named-implicit-negative-missing":
@@ -5152,6 +5183,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             List<String> nodeIds = new ArrayList<>();
             List<int[]> points = new ArrayList<>();
             boolean rowAxis = sceneId.equals("auto-repeat-named-row")
+                    || sceneId.startsWith("auto-repeat-named-fixed-repeat-row-")
                     || sceneId.contains("-implicit-row-");
             if (sceneId.startsWith("auto-repeat-named-implicit-")
                     || sceneId.startsWith("auto-fit-named-implicit-")) {

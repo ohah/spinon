@@ -1,6 +1,6 @@
 # C11.4 · fixed-repeat line names와 auto-repeat 결합
 
-**상태:** 계획-only. [#597](https://github.com/ohah/spinon/pull/597)의 임의 fixed-repeat 그룹 수 slice 위에 fixed/outer/auto line-name metadata를 보존하고 named placement를 연결하는 후속 계획이다. 구현, runtime, 앱 화면, 공식 상태 승격은 아직 하지 않았다.
+**상태:** 구현·runtime 검증을 마친 미병합 후보. [#597](https://github.com/ohah/spinon/pull/597)의 임의 fixed-repeat 그룹 수 slice 위에 fixed/outer/auto line-name metadata를 보존하고 named placement를 연결했다. 최종 PR diff 30관점 검토, GitHub CI/check 상태, merge와 post-merge main 검증은 남아 있다. C11 checkbox와 공식 `72/213`은 그대로다.
 
 ## 현재 동작과 결손
 
@@ -48,3 +48,12 @@
 ## 계획 실패 관점 검토
 
 계획 자체의 독립 20관점 검토는 [`c11-4-fixed-repeat-line-name-merge-plan-review-20.md`](./c11-4-fixed-repeat-line-name-merge-plan-review-20.md)에, 계획 PR 변경분의 별도 30관점 검토는 [PR diff review](../spec/internal/evidence/c11-4-fixed-repeat-line-name-merge-precomparison-2026-10-24/pr-diff-review-30.md)에 기록한다.
+
+## 2026-10-24 구현·runtime 후보 결과
+
+- Cascade fixed-repeat line groups를 authored order로 확장하고 ordinary/fixed/auto-repeat seam의 이름을 병합한다. Auto-repeat inner groups는 별도로 유지한다. Positive/negative named occurrence, named span, rows/columns와 auto-fit placement/collapse는 style-to-layout 4/4를 포함해 통과했다.
+- `spinon-style` 16/16, layout 4/4, FFI scene 1/1, fixture boundary 11/11, formatter와 diff checks가 통과했다. 실행 로그·app hashes·화면은 [runtime evidence](../spec/internal/evidence/c11-4-fixed-repeat-line-name-merge-runtime-2026-10-24/README.md)에 둔다.
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 3/3 scene을 실행했다. PixelCopy 및 compositor 제출 전 Metal 표본은 각 12/12 exact다. AVD 결과는 실기기/hardware GPU 근거가 아니다.
+- Release FFI archive 경계는 기본 marker 0/3·fixture ABI와 candidate Rust symbol 부재, opt-in positive control marker 3/3·두 symbol 존재다. [artifact evidence](../spec/internal/evidence/c11-4-fixed-repeat-line-name-merge-runtime-2026-10-24/artifact-boundary/README.md).
+- 새 구현 실패 관점 20개는 [review](../spec/internal/evidence/c11-4-fixed-repeat-line-name-merge-runtime-2026-10-24/implementation-review-20.md)에 기록했다. 이 결과는 PR diff 30개 검토나 CI/merge를 대신하지 않는다.
+- C11.3.3 template areas follow-up과 C11.4 전체 intrinsic track sizing, WPT/일반 CSS 지원은 계속 미완료다. 이 slice만으로 공식 완료 수를 올리지 않는다.

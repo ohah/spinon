@@ -582,3 +582,5 @@ fn track_sizing_profile_anchors_negative_lines_when_template_is_none() {
 
 #[path = "c11_4_track_sizing_areas_tests/auto_repeat_explicit_neighbors.rs"]
 mod auto_repeat_explicit_neighbors;
+#[path = "c11_4_track_sizing_areas_tests/fixed_repeat_line_names.rs"]
+mod fixed_repeat_line_names;

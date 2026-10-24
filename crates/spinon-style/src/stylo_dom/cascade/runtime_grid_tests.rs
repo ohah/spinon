@@ -163,6 +163,8 @@ mod auto_repeat_calc_neighbor;
 mod auto_repeat_percentage_maximum;
 #[path = "runtime_grid_tests/fixed_repeat_auto_repeat.rs"]
 mod fixed_repeat_auto_repeat;
+#[path = "runtime_grid_tests/fixed_repeat_line_names.rs"]
+mod fixed_repeat_line_names;
 #[path = "runtime_grid_tests/hidden_context.rs"]
 mod hidden_context;
 #[path = "runtime_grid_tests/placement.rs"]

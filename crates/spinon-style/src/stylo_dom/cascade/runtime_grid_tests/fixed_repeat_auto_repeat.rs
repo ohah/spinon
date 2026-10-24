@@ -436,10 +436,8 @@ fn constant_absolute_calc_and_absolute_units_normalize_to_computed_length_px() {
 }
 
 #[test]
-fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_unsupported_shapes() {
+fn fixed_repeat_mixed_profile_rejects_non_px_tracks_and_unsupported_shapes() {
     for columns in [
-        "[outer] repeat(2,20px) repeat(auto-fill,minmax(32px,1fr))",
-        "repeat(2,[fixed] 20px) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,20%) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,calc(20px + 5%)) repeat(auto-fill,minmax(32px,1fr))",
         "repeat(2,minmax(20px,40px)) repeat(auto-fill,minmax(32px,1fr))",
@@ -492,22 +490,14 @@ fn fixed_repeat_mixed_profile_rejects_names_non_px_tracks_and_unsupported_shapes
 }
 
 #[test]
-fn fixed_repeat_mixed_profile_records_stylo_rejection_of_named_auto_repeat_lines() {
+fn fixed_repeat_mixed_profile_preserves_named_auto_repeat_lines() {
     let columns = "repeat(2,20px) repeat(auto-fill,[named] minmax(32px,1fr))";
-    let fixture = fixture(&fixture_style(columns, "200px"));
-    assert!(matches!(
-        compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-            &fixture.view,
-            &[],
-            viewport(),
-            Default::default(),
-        ),
-        Err(crate::CssCascadeError::UnsupportedComputedGridValue {
-            node,
-            property: "grid-template-columns",
-            ..
-        }) if node == fixture.root
-    ));
+    let (_, grid) = computed_grid(&fixture_style(columns, "200px"));
+    assert_eq!(grid.columns_line_names, vec![Vec::<String>::new(); 4]);
+    assert_eq!(
+        grid.columns_auto_repeat.as_ref().unwrap().line_names,
+        vec![vec!["named".to_owned()], Vec::new()]
+    );
 }
 
 #[test]

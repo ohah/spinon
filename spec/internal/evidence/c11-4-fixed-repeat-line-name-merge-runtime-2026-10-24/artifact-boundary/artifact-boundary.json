@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "626dd9e1f220b41c9e878257a4a5c74e833bd7b6",
+  "stagedImplementationDiffSha256": "49bffb910fe7db6ae5447511d7d9eb815dd0b46ab5878bda29e454ea0ef9e378",
+  "sceneIds": [
+    "auto-repeat-named-fixed-repeat-column-fill",
+    "auto-repeat-named-fixed-repeat-column-fit",
+    "auto-repeat-named-fixed-repeat-row-fill"
+  ],
+  "ffiFixtureSymbol": "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+  "rustRuntimeSourceSymbolSubstring": "c11_4_auto_repeat_named_lines::runtime_source",
+  "llvmNmCommand": [
+    "/opt/homebrew/Cellar/llvm@22/22.1.8/bin/llvm-nm"
+  ],
+  "llvmNmVersion": "llvm-nm, compatible with GNU nm",
+  "rustcVersion": "rustc 1.96.1 (31fca3adb 2026-06-26)\nbinary: rustc\ncommit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd\ncommit-date: 2026-06-26\nhost: aarch64-apple-darwin\nrelease: 1.96.1\nLLVM version: 22.1.2",
+  "results": {
+    "product": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "archivePath": "target/release/libspinon_ffi.a",
+      "archiveBytes": 75187192,
+      "archiveSha256": "3be099b3c8c5e09c68ac290cddf201c2718f75ea88e905637202988f5b42b81e",
+      "sceneMarkerPresence": {
+        "auto-repeat-named-fixed-repeat-column-fill": false,
+        "auto-repeat-named-fixed-repeat-column-fit": false,
+        "auto-repeat-named-fixed-repeat-row-fill": false
+      },
+      "allSceneMarkersPresent": false,
+      "anySceneMarkerPresent": false,
+      "fixtureAbiTextPresent": false,
+      "fixtureAbiDefinedSymbolPresent": false,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": []
+    },
+    "fixtureTest": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test"
+      ],
+      "archivePath": "target/release/libspinon_ffi.a",
+      "archiveBytes": 78328832,
+      "archiveSha256": "ce9d399b6c855cd682fa6d0b38d58b1633f560bc85dc29e3854b12188363e1fc",
+      "sceneMarkerPresence": {
+        "auto-repeat-named-fixed-repeat-column-fill": true,
+        "auto-repeat-named-fixed-repeat-column-fit": true,
+        "auto-repeat-named-fixed-repeat-row-fill": true
+      },
+      "allSceneMarkersPresent": true,
+      "anySceneMarkerPresent": true,
+      "fixtureAbiTextPresent": true,
+      "fixtureAbiDefinedSymbolPresent": true,
+      "candidateRustRuntimeSourceSymbolPresent": true,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": [
+        "000000000000030c T spinon_ffi::runtime_gpu::fixtures::c11_4_auto_repeat_named_lines::runtime_source::h504a56c624701c10",
+        "00000000000071d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ]
+    }
+  }
+}

@@ -3216,7 +3216,7 @@ async function autoRepeatNamedLineScenes() {
     readFile(androidPath, 'utf8'),
     readFile(iosPath, 'utf8'),
   ]);
-  assert.equal(fixtures.length, 28, 'named auto-repeat 고정 fixture는 28 scene이어야 합니다.');
+  assert.equal(fixtures.length, 31, 'named auto-repeat 고정 fixture는 31 scene이어야 합니다.');
   const allowlist = (source, expression, label) => {
     const match = source.match(expression);
     assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
@@ -3263,7 +3263,8 @@ async function autoRepeatNamedLineScenes() {
     const itemNodeId = `c114-${id}-item`;
     const background = [226, 232, 240, 255];
     const itemColor = [57, 165, 219, 255];
-    if (id === 'auto-repeat-named-row') {
+    if (id === 'auto-repeat-named-row'
+      || (expect.tracks.Columns.length === 1 && expect.tracks.Rows.length > 1)) {
       scene.pixelSamples = [
         { id: `${id}-before-item`, nodeId: rootNodeId, xCssPx: 20, yCssPx: itemY - 1, rgba: background },
         { id: `${id}-item-start-edge`, nodeId: itemNodeId, xCssPx: 20, yCssPx: itemY, rgba: itemColor },
@@ -4467,7 +4468,7 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
     'tests/fixtures/css/c11/grid-unbounded-fixed-repeat-auto-repeat-c114-precomparison.html',
   expectedCount: 12,
 }));
-assert.equal(scenes.length, 461, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 464, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
