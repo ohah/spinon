@@ -37,3 +37,13 @@ C11.4 상위 공식 checkbox는 그대로 미완료이고 완료 집계는 **72/
 Rspress `2.0.22` 고정 실행 파일로 선택 문서 빌드를 만들고 HTML 페이지와 원시 evidence asset을 포함한 107개 route를 `https://macstudio.tailed42f2.ts.net/spinon/` 미리보기에 동기화했다. 각 route의 로컬·원격 SHA-256과 HTTP 200을 확인했고, 교체된 문서 4개는 이전 파일을 별도 백업에서 같은 SHA-256으로 확인했다. 삭제는 없었다. JSON 보고서는 `selected-build-verification-pass02.json`, `tailnet-preflight-pass02.json`, `tailnet-copy-pass02.json`, `tailnet-verify-pass02.json`이며 선택 문서 빌드 log는 `selected-docs-build-pass03.log`다.
 
 Agent Browser 0.31.1 / Chrome 156에서 로드맵은 213 checkbox 중 72 checked를 세 번 확인했고 DOM에 이번 두-group slice 기록이 표시됐다. 같은 브라우저에서 내부 계약 0059의 current 두-group heading과 `0.1.0`, 계획 페이지의 `72/213`와 계약 링크도 확인했다. 검증 세션을 닫은 뒤 Agent Browser/Chrome 프로세스는 남지 않았다. DOM 확인 JSON: `agent-browser-verification-pass03.json`.
+
+## PR 병합 후 상태·Tailnet 미리보기 동기화 · 2026-10-24
+
+구현 PR [#594](https://github.com/ohah/spinon/pull/594)은 2026-10-24 10:14:36 UTC Rebase and merge로 병합됐다. main merge SHA는 `1339874a04b2bc9866ce6eb6e0172e26dddf56ef`다. PR check rollup은 비었고 main required status check은 설정되지 않았다. `plan/`, `spec/STATUS.md`, 내부 계약 0059 및 공개 roadmap에 병합 결과를 반영했으며 C11.4 상위 checkbox와 공식 `72/213`은 유지했다. 두 fixed-repeat 그룹은 C11.4 intrinsic track sizing 전체를 완료하지 않는다.
+
+Rspress `2.0.22`로 병합 SHA가 포함된 선택 문서 빌드를 만들었다. 기존 dead-link 문제가 있는 전체 문서 대신 이 slice의 문서/evidence에 한정한 build이며, 이 선택 config에서는 dead-link 검사가 비활성화됐다. build log는 `selected-docs-build-pass04.log`다. 선택 route 107개(89개 raw assets, 18개 generated docs pages)의 로컬 hash manifest는 `selected-build-verification-pass04.json`이다.
+
+Tailnet Serve는 `BackendState=Running`, self `100.64.53.81` online이고 `https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`은 HTTP 200과 `Cache-Control: no-cache`를 반환했다. pass04 preflight는 22개 교체, 85개 동일, 0개 신규, 삭제 0개를 예상했다. 22개 교체 경로는 모두 `lsof`로 열려 있지 않은 것을 확인한 뒤 임시 파일과 atomic rename으로 반영했다. 교체 전 파일 22개는 `SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04` 아래 보존했다. 최종 검증은 선택 route 107/107 로컬 SHA-256, backup 22/22 SHA-256, 원격 HTTP 200/hash 107/107을 통과했고 삭제는 없었다. `sync-tailnet-pass04.mjs`와 JSON 보고서 `tailnet-preflight-pass04.json`, `tailnet-copy-pass04.json`, `tailnet-verify-pass04.json`에 절차와 결과를 보존한다.
+
+Agent Browser 0.31.1 / Chrome 156을 새 세션으로 열어 roadmap, 계획, STATUS, 계약 0059를 확인했다. 로드맵 checkbox는 213개 중 72개 checked였고 네 페이지에 PR #594와 merge SHA가 표시됐다. 계약은 `0.1.0`을 유지했다. 확인 뒤 세션을 닫았고 Agent Browser/Chrome 프로세스는 남지 않았다. `agent-browser-verification-pass04.json`에 DOM 판정을 보존한다. [병합 후 roadmap sync PR diff review 30회](./post-merge-roadmap-sync-pr-diff-review-30.md).

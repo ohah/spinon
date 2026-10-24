@@ -1,0 +1,48 @@
+{
+  "verified_at_utc": "2026-10-24T10:20:26Z",
+  "tool": "Agent Browser 0.31.1 / Chrome 156",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "pages": [
+    {
+      "path": "/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "checkboxes": 213,
+      "checked": 72,
+      "hasSlice": true,
+      "hasPr594": true,
+      "hasMergeSha": true
+    },
+    {
+      "path": "/spinon/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "title": "C11.4 · auto-repeat과 fixed-repeat 두 그룹 조합 - 스피논 문서",
+      "hasPr594": true,
+      "hasMergeSha": true,
+      "has72of213": true,
+      "hasMerged": true
+    },
+    {
+      "path": "/spinon/internal/0059-c11-grid-layout.html#c114-fixed-repeat-두-그룹--auto-repeat-제한-runtime-slice",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+      "hasSection": true,
+      "hasContractVersion": "0.1.0",
+      "hasPr594": true,
+      "hasMergeSha": true,
+      "has72of213": true
+    },
+    {
+      "path": "/spinon/STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "hasPr594": true,
+      "hasMergeSha": true,
+      "has72of213": true
+    }
+  ],
+  "tailnet_processes": {
+    "tailscale_backend": "Running",
+    "serve_http_status": 200
+  },
+  "browser_cleanup": {
+    "session_closed": true,
+    "agent_browser_processes_remaining": 0
+  }
+}

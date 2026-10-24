@@ -1,0 +1,1518 @@
+{
+  "pass": "pass04",
+  "selected_route_count": 107,
+  "local_targets_verified": 107,
+  "backups_verified": 22,
+  "remote_targets_verified": 107,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local_targets": [
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-full-page.png",
+      "bytes": 175453,
+      "sha256": "2029d3e72e1ff29dd80575a0d5c366af53bc818aeb8b38b2c66420ac6f053ca0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-observation.json",
+      "bytes": 3784,
+      "sha256": "25d3ff3382082661c41ce84d02dbe146fb08834edd6dcb57f698bcf386083fcf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-multitrack-fill.png",
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fill.png",
+      "bytes": 77346,
+      "sha256": "d48cf823a8c9f5522a392781d75e842081bad20e4fb9061210e9361ae8494f8a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fit-empty.png",
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fit-occupied.png",
+      "bytes": 78122,
+      "sha256": "e9336e77228606cd743e07bbcb74dccc0f1eba6f9df4dd116df4f1194d3af785",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-reversed-fill.png",
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-prefix-fill.png",
+      "bytes": 77384,
+      "sha256": "8ab711d80fb201e188b2e27be8e8c3b42206a79ea0c677334abcb1807e07b398",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-prefix-fit-occupied.png",
+      "bytes": 78132,
+      "sha256": "fa487ca39a3b4da0ea3d0e73623cfcf3db7c5dcb4449b268fc55387ff9d5c5c4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-split-fit-empty.png",
+      "bytes": 77400,
+      "sha256": "9e55c6677e4482194d78f632f6f42f266725349b7251fda0ac5adf17bc2f602b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-split-fill.png",
+      "bytes": 77367,
+      "sha256": "919810e2185b7eef6a7451f03b0f8f7aca1b0c016808476df18ec07d71e7b2e9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-suffix-fill.png",
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "a8e535f05d7ec8930766c7c223013cd1e0f47ac9a2d81fddb27c39ee5bd4d04d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-multitrack-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fit-empty.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fit-occupied.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-reversed-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-prefix-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-split-fit-empty.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-split-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-suffix-fill.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/result.json",
+      "bytes": 19583,
+      "sha256": "942e1df891473da3770fb43cd46fae9c967a39cb2e065c527f07c7554dfe0cda",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-multitrack-fill.log",
+      "bytes": 31148,
+      "sha256": "d446f06a5ffca708145cc3f5f0c46b17b093a596987016c98456a937d9a7b210",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fill.log",
+      "bytes": 31248,
+      "sha256": "75a4af30e62972ac89478a6589b7b90bff36dcb3af6c1e1af5e965f414284446",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fit-empty.log",
+      "bytes": 22383,
+      "sha256": "f7d3469aded098547f8dafc926001c11a6e0efe38aebbf0c6a04a4b46296bf2f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fit-occupied.log",
+      "bytes": 34666,
+      "sha256": "3f021930ada81ddbc39068a52401b1657a5255a04a5f0c74bbee7bebea70c47e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-reversed-fill.log",
+      "bytes": 31646,
+      "sha256": "7bf06c9a2b5f8c5cc7527d9bb83e38e32ff513f1b5f3c6202d2fd98db40b307f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-prefix-fill.log",
+      "bytes": 31279,
+      "sha256": "291b9498dd706c2adfdb4a4084f6b4326bceb0777f0b55813d5c4383e17652f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "bytes": 34712,
+      "sha256": "9375587aa86375fba969da3ad2e23d0d7f119ed88853611e827cb140e7cfaf83",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-split-fit-empty.log",
+      "bytes": 27579,
+      "sha256": "9afacf1d0daea124512c0ed032e36f3242bffbb8ffa5c11bc7534f75f7c107eb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-split-fill.log",
+      "bytes": 31240,
+      "sha256": "0cee1c7386daecbe6e5cf3757d49e5730cd9d8b3ea2824123371c89d88b8e905",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-suffix-fill.log",
+      "bytes": 31626,
+      "sha256": "49f07203c60118d948f424093368cc6672c951bf03c09961f23248b3f6a7b256",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/simulator.json",
+      "bytes": 1408,
+      "sha256": "36c7bc7168fdb5e7d9e47c51458202077be28df35b922671bcfdc3c3f2a8bbf8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-build-with-fixtures.log",
+      "bytes": 4832,
+      "sha256": "b2ba7fa23cafebcba7b9c0a0ec4fe43fe8288f5d359306cacae1352ce4755247",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ffi-fixture-scene-tests.log",
+      "bytes": 932,
+      "sha256": "701eb7a04f02d8cd90810265a65302a31809a88283affb890e0c985c1716d7a5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/fixture-artifact-boundary.log",
+      "bytes": 868,
+      "sha256": "0825f7e34b8723067641663a69f86b3aee16c76e5eff60dc0e56bbd133f109a1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/fixture-module-boundary.log",
+      "bytes": 1190,
+      "sha256": "127fbfd65a21aa49601b2e933083c09c1ba3fd385a8c922704e6020859113f7f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-build-with-pixels.log",
+      "bytes": 65807,
+      "sha256": "31a86a6a06a7ceaca4ef75667309d3294d5f1994f5eb801fa334dc19ce862a38",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-multitrack-fill.png",
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fill.png",
+      "bytes": 130864,
+      "sha256": "08b8d9d66c015b9c10cf92c767e3f2e4f66d9edd20829db4086b2a995fb7287a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fit-empty.png",
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fit-occupied.png",
+      "bytes": 133758,
+      "sha256": "1b4fb262e5960a41f065f886336799f3180185d0f68914b888983e492964376c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-reversed-fill.png",
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-prefix-fill.png",
+      "bytes": 131093,
+      "sha256": "6d253e810739f5906928bef358248cb2657b0510005c9e29de1628c33baaebdf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-prefix-fit-occupied.png",
+      "bytes": 132187,
+      "sha256": "06fbe224aec0df40eece601cbab04573ffc22e4a95812c72b9c3e7d5c3f7537c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-split-fit-empty.png",
+      "bytes": 131118,
+      "sha256": "c9695ae4a2306807d2a7945d8f8dc02c9206c2f35c7d189d156e79ae150a98fc",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-split-fill.png",
+      "bytes": 132510,
+      "sha256": "9d43a9890695a843b516d22dd4a940fecc9fa084acdcfbd50e046d51d571f769",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-suffix-fill.png",
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-multitrack-fill.log",
+      "bytes": 28,
+      "sha256": "ae451a98e2e0bf190f9700e6fc7801ac229ef3d03532bea23944001c087e1df4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fill.log",
+      "bytes": 28,
+      "sha256": "1cb82019d908ab2b07491075cf5f2b9d22f296da3864a10e751b4997c75cb7fe",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fit-empty.log",
+      "bytes": 28,
+      "sha256": "fea3eb45e9cc2d5ea2bae794caf6543b68ad313064f661833f5f60fc3f264dfb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fit-occupied.log",
+      "bytes": 28,
+      "sha256": "bc7ed1799d7c1328cd3f274fcf7e20176bd9840d292c9dd185f8a369169d123f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-reversed-fill.log",
+      "bytes": 28,
+      "sha256": "5b506bcd8677c1c8f537a39feb55eb6ca136e0b5148b617e79b3b400172865a2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-prefix-fill.log",
+      "bytes": 28,
+      "sha256": "3b35789f728caebdeab60cfd41a0edcecfad83f7890e71b52f5a54895cdc771d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "bytes": 28,
+      "sha256": "dd100deaa098c6a21022b40937c2f3df2c4fb82e06ef64e84e6aeee7a698d1d8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-split-fit-empty.log",
+      "bytes": 28,
+      "sha256": "3f308067438839f52d3e4306569d46b11c7bd85455092f30546dcb45d534ac85",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-split-fill.log",
+      "bytes": 28,
+      "sha256": "3465aeb4a4bc9bbe38266aaa445e643217717cac2623f1a352877a71ae480d0d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-suffix-fill.log",
+      "bytes": 28,
+      "sha256": "cac839808dfb42adc65fc54877ce6a62ccb4697b14af1858a5a5976193ab3f3e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/result.json",
+      "bytes": 19907,
+      "sha256": "11ca209511e4bd3bb843412d314fba8e251ca174de02c235ddf0cb417740592f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-multitrack-fill.log",
+      "bytes": 23728,
+      "sha256": "41b88a426509e1ffb7f2c9cd1e09595d2b5c8289e5d67df0ed5e0c6bcab23a7b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fill.log",
+      "bytes": 23847,
+      "sha256": "f29f591f0fd10ccafbe647a7bbd368f97ef25e1a4055883976c4cf640d2f854f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fit-empty.log",
+      "bytes": 13901,
+      "sha256": "9706da1b79fae73e0a6f58ebbe62aa2bdfa94ce48cb9cbe4ecd23a49735770cf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fit-occupied.log",
+      "bytes": 26399,
+      "sha256": "ec8621fbbb610aff5797ff9a9970d31bb3686b1c980c7079255eb069b9049963",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-reversed-fill.log",
+      "bytes": 23856,
+      "sha256": "099fd90aa345b945a1b2999cf0459456b804f647218c0e03dd16b702bf79e9f2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-prefix-fill.log",
+      "bytes": 23861,
+      "sha256": "5fa6ad951e1b5dd1adf6414d3cbe7648ec23ac14b032a95c11c3ad66095b057d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "bytes": 27521,
+      "sha256": "86eae6b3fa43edf707baf2a309ea693cc57e16e2f8424c23d5e67b35840bf33b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-split-fit-empty.log",
+      "bytes": 13912,
+      "sha256": "b453ef5b0ece7c9b3d3ef62bfdc28933fd8b6295115f8e0ac506a75ba79e616e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-split-fill.log",
+      "bytes": 22737,
+      "sha256": "6fb72127cc1a6d53b60bafa4a1e8ca977608a34ed944fc3f1022cfd1c8607735",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-suffix-fill.log",
+      "bytes": 23844,
+      "sha256": "69e3f172a86e4ffce378ffe0376c36f22dc86f9419009a00a7525989f8f9950b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-multitrack-fill.log",
+      "bytes": 310,
+      "sha256": "3ae0c032bdecaad6fa8e70a59f5ad9c49a7dab8d72359ff3c98eefd4d57d0ec7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fill.log",
+      "bytes": 306,
+      "sha256": "1ea60543ae44071421d5efd847558ba4e354e4b5fc0161f0c225cfcb57b4e39f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fit-empty.log",
+      "bytes": 311,
+      "sha256": "a7a5f71be6dfc35e640d2ad6a3f4e30b06c8b67065dd02c074352eb81062e750",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fit-occupied.log",
+      "bytes": 314,
+      "sha256": "39b83ec7b7f927fb383d4be6441344aa31e62bb3aedaeb62d1c464a121b049e2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-reversed-fill.log",
+      "bytes": 308,
+      "sha256": "94843586e0c704ed7624e1e38e4f46df1b2dcce3048cb49d8ff20d032bdc1ef4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-prefix-fill.log",
+      "bytes": 310,
+      "sha256": "1b1f6b5603a55822bc7dcc1bebc26b1ac71193cd622f87bfc62f12b18d23dfdb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "bytes": 318,
+      "sha256": "5c28f52096e3c02bd7ff9fe3f75ea3131e30e522a066b720a194dd9ce0afaea4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-split-fit-empty.log",
+      "bytes": 314,
+      "sha256": "59237c728d058d304af7e86969b2a61c2c99c8c4ccf4cf1018633ed89f9ba042",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-split-fill.log",
+      "bytes": 305,
+      "sha256": "cd6455f8c63937d2ba1f155e626321a7af7e1fe1f503fd984445cbae27bd0fad",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-suffix-fill.log",
+      "bytes": 306,
+      "sha256": "2720a474c38f5d8606d564c57cfd64988b63c5f54c1d364ee0e068f49eb66e3c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/simulator.json",
+      "bytes": 1238,
+      "sha256": "8c87c01ecf5b31b357dfb194e25daae9c8fe860a88a2ae68d7d57fc78123771e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/rustfmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/scoped-clippy.log",
+      "bytes": 592,
+      "sha256": "5813c681c1ed384d2384e642e3d435d559952933b091a4ae4d9dd50f921bfc70",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/style-fixed-repeat-tests.log",
+      "bytes": 2040,
+      "sha256": "96fc652181837abb744c195fb18a7dfb9fe941ffcae9ebe60c3eeaa9f1612fd9",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 292428,
+      "sha256": "04e9c7cf4852ef351209bc4b4c86090cd75a76b30f8e83d5fbc789b9a5bbb919",
+      "verified": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-multiple-fixed-repeat-auto-repeat-c114-precomparison.html",
+      "bytes": 8185,
+      "sha256": "1f7d7a99baab8a261bd2937b39ac96379c167cf6acd0ec8a3e9adab21d962f6f",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 958051,
+      "sha256": "655e3492d16c8beeba7c93679a0a67dedfd5a9973d31155c48d80c42da0e5466",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 959694,
+      "sha256": "7a2621286da5e7e9d3f0db5835d5040c236326b962cf273562f291d31758bd0a",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups.html",
+      "bytes": 462420,
+      "sha256": "0b4e986aaa29323ec943fe89bc41d4f1b0e28adaac8230d38801eecc9d73939d",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "bytes": 462371,
+      "sha256": "8c329b87821f9d4400c3744616ad730c7a4490a5591cd42b645d0dadc7dd2793",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "bytes": 452995,
+      "sha256": "1f46dc3b527a6c0517bb64a5fa3c462031e03b7afc982b3152c5076ec850917f",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "bytes": 452983,
+      "sha256": "7ce99dc720a9843f94a7e0ea063c3f4d7b11d81b8c577005a5c0efeb42b6ae57",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "bytes": 454794,
+      "sha256": "15b8c82df8dea05ad92b38bc8bf2edebf84170a16d39956c8ca82386c2be5e9c",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "bytes": 454804,
+      "sha256": "81178e4d28fd836134803e9ac7bbf89c1847132b8c348b084aa7c2b1f76f5ce5",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 620566,
+      "sha256": "0f9d275bbc9208c389b1cdcd04e51b845be98d8acbf2f91484973c17ef836e4a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 620861,
+      "sha256": "50fb71c6ad225a8006713e77502646a0540fca5232f8d8ac47a37c886341766b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "bytes": 450506,
+      "sha256": "2a6da830c9c29d161a196728af71af3c7c736b0e38bb9cc95db2663e85734bd8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "bytes": 450532,
+      "sha256": "35e414e7d226bfe459943c395564eecdb36cf33f8882c44fa51b140c18e43c42",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "bytes": 457522,
+      "sha256": "fe53698e286b5256cae446e5d351c2f92d5472c627c0b23bf367fdd09d9cd6b1",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "bytes": 457542,
+      "sha256": "4c0195116a35c7b221c2f8e6c3e21332946751c6379e2ad049dca5fb1d99d8df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "bytes": 454872,
+      "sha256": "28a379681c29ecdb836b9d3f58ff2662a2550c9c09bc5257331a3e1b99954943",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "bytes": 454882,
+      "sha256": "d45613bfd583fc2187b7c9d8d4a1d1ecb23fd8f69b8cbae25e6a16a3fd0cd2d1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "bytes": 457477,
+      "sha256": "d7c3d4f1d83a35d16915beb98359f4a6d4cb4a922c38c5f298c19832d45c4e24",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "bytes": 457487,
+      "sha256": "c88813262454fdef544d786f948becbfa9f6f92290d7100f902bba49b92af4ab",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ffi-fixture-scene-tests.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ffi-fixture-scene-tests.log",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-build-with-pixels.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-build-with-pixels.log",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/style-fixed-repeat-tests.log",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/style-fixed-repeat-tests.log",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/roadmap.html",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/STATUS.html",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/STATUS.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/0059-c11-grid-layout.html",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/internal/0059-c11-grid-layout.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-multiple-fixed-repeat-groups-2026-10-24/pass04/spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "verified": true
+    }
+  ],
+  "remote_targets": [
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-full-page.png",
+      "http_status": 200,
+      "bytes": 175453,
+      "sha256": "2029d3e72e1ff29dd80575a0d5c366af53bc818aeb8b38b2c66420ac6f053ca0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 3784,
+      "sha256": "25d3ff3382082661c41ce84d02dbe146fb08834edd6dcb57f698bcf386083fcf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-multitrack-fill.png",
+      "http_status": 200,
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fill.png",
+      "http_status": 200,
+      "bytes": 77346,
+      "sha256": "d48cf823a8c9f5522a392781d75e842081bad20e4fb9061210e9361ae8494f8a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fit-empty.png",
+      "http_status": 200,
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-prefix-fit-occupied.png",
+      "http_status": 200,
+      "bytes": 78122,
+      "sha256": "e9336e77228606cd743e07bbcb74dccc0f1eba6f9df4dd116df4f1194d3af785",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-reversed-fill.png",
+      "http_status": 200,
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-prefix-fill.png",
+      "http_status": 200,
+      "bytes": 77384,
+      "sha256": "8ab711d80fb201e188b2e27be8e8c3b42206a79ea0c677334abcb1807e07b398",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-prefix-fit-occupied.png",
+      "http_status": 200,
+      "bytes": 78132,
+      "sha256": "fa487ca39a3b4da0ea3d0e73623cfcf3db7c5dcb4449b268fc55387ff9d5c5c4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-row-split-fit-empty.png",
+      "http_status": 200,
+      "bytes": 77400,
+      "sha256": "9e55c6677e4482194d78f632f6f42f266725349b7251fda0ac5adf17bc2f602b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-split-fill.png",
+      "http_status": 200,
+      "bytes": 77367,
+      "sha256": "919810e2185b7eef6a7451f03b0f8f7aca1b0c016808476df18ec07d71e7b2e9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/fixed-repeat-groups-suffix-fill.png",
+      "http_status": 200,
+      "bytes": 77379,
+      "sha256": "fd0b5409ed3ba2759c1bc79ca1ef86f97108ed5634842668782e8bc55247dcf7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/install.log",
+      "http_status": 200,
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/installed-apk-verification.json",
+      "http_status": 200,
+      "bytes": 360,
+      "sha256": "a8e535f05d7ec8930766c7c223013cd1e0f47ac9a2d81fddb27c39ee5bd4d04d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-multitrack-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fit-empty.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-reversed-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-row-split-fit-empty.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-split-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/launch-fixed-repeat-groups-suffix-fill.log",
+      "http_status": 200,
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/result.json",
+      "http_status": 200,
+      "bytes": 19583,
+      "sha256": "942e1df891473da3770fb43cd46fae9c967a39cb2e065c527f07c7554dfe0cda",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-multitrack-fill.log",
+      "http_status": 200,
+      "bytes": 31148,
+      "sha256": "d446f06a5ffca708145cc3f5f0c46b17b093a596987016c98456a937d9a7b210",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 31248,
+      "sha256": "75a4af30e62972ac89478a6589b7b90bff36dcb3af6c1e1af5e965f414284446",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fit-empty.log",
+      "http_status": 200,
+      "bytes": 22383,
+      "sha256": "f7d3469aded098547f8dafc926001c11a6e0efe38aebbf0c6a04a4b46296bf2f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 34666,
+      "sha256": "3f021930ada81ddbc39068a52401b1657a5255a04a5f0c74bbee7bebea70c47e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-reversed-fill.log",
+      "http_status": 200,
+      "bytes": 31646,
+      "sha256": "7bf06c9a2b5f8c5cc7527d9bb83e38e32ff513f1b5f3c6202d2fd98db40b307f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 31279,
+      "sha256": "291b9498dd706c2adfdb4a4084f6b4326bceb0777f0b55813d5c4383e17652f0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 34712,
+      "sha256": "9375587aa86375fba969da3ad2e23d0d7f119ed88853611e827cb140e7cfaf83",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-row-split-fit-empty.log",
+      "http_status": 200,
+      "bytes": 27579,
+      "sha256": "9afacf1d0daea124512c0ed032e36f3242bffbb8ffa5c11bc7534f75f7c107eb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-split-fill.log",
+      "http_status": 200,
+      "bytes": 31240,
+      "sha256": "0cee1c7386daecbe6e5cf3757d49e5730cd9d8b3ea2824123371c89d88b8e905",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/runtime-fixed-repeat-groups-suffix-fill.log",
+      "http_status": 200,
+      "bytes": 31626,
+      "sha256": "49f07203c60118d948f424093368cc6672c951bf03c09961f23248b3f6a7b256",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-avd-c114-multiple-fixed-repeat-groups-android-avd-20261024T093457407Z-7887b737/simulator.json",
+      "http_status": 200,
+      "bytes": 1408,
+      "sha256": "36c7bc7168fdb5e7d9e47c51458202077be28df35b922671bcfdc3c3f2a8bbf8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/android-build-with-fixtures.log",
+      "http_status": 200,
+      "bytes": 4832,
+      "sha256": "b2ba7fa23cafebcba7b9c0a0ec4fe43fe8288f5d359306cacae1352ce4755247",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ffi-fixture-scene-tests.log",
+      "http_status": 200,
+      "bytes": 932,
+      "sha256": "701eb7a04f02d8cd90810265a65302a31809a88283affb890e0c985c1716d7a5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/fixture-artifact-boundary.log",
+      "http_status": 200,
+      "bytes": 868,
+      "sha256": "0825f7e34b8723067641663a69f86b3aee16c76e5eff60dc0e56bbd133f109a1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/fixture-module-boundary.log",
+      "http_status": 200,
+      "bytes": 1190,
+      "sha256": "127fbfd65a21aa49601b2e933083c09c1ba3fd385a8c922704e6020859113f7f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-build-with-pixels.log",
+      "http_status": 200,
+      "bytes": 65807,
+      "sha256": "31a86a6a06a7ceaca4ef75667309d3294d5f1994f5eb801fa334dc19ce862a38",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-multitrack-fill.png",
+      "http_status": 200,
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fill.png",
+      "http_status": 200,
+      "bytes": 130864,
+      "sha256": "08b8d9d66c015b9c10cf92c767e3f2e4f66d9edd20829db4086b2a995fb7287a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fit-empty.png",
+      "http_status": 200,
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-prefix-fit-occupied.png",
+      "http_status": 200,
+      "bytes": 133758,
+      "sha256": "1b4fb262e5960a41f065f886336799f3180185d0f68914b888983e492964376c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-reversed-fill.png",
+      "http_status": 200,
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-prefix-fill.png",
+      "http_status": 200,
+      "bytes": 131093,
+      "sha256": "6d253e810739f5906928bef358248cb2657b0510005c9e29de1628c33baaebdf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-prefix-fit-occupied.png",
+      "http_status": 200,
+      "bytes": 132187,
+      "sha256": "06fbe224aec0df40eece601cbab04573ffc22e4a95812c72b9c3e7d5c3f7537c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-row-split-fit-empty.png",
+      "http_status": 200,
+      "bytes": 131118,
+      "sha256": "c9695ae4a2306807d2a7945d8f8dc02c9206c2f35c7d189d156e79ae150a98fc",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-split-fill.png",
+      "http_status": 200,
+      "bytes": 132510,
+      "sha256": "9d43a9890695a843b516d22dd4a940fecc9fa084acdcfbd50e046d51d571f769",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/fixed-repeat-groups-suffix-fill.png",
+      "http_status": 200,
+      "bytes": 132536,
+      "sha256": "fa0f4345a67061b41ff56326a368e2676d9929650d859ee0c190e83a3fdddee3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/install.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-multitrack-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "ae451a98e2e0bf190f9700e6fc7801ac229ef3d03532bea23944001c087e1df4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "1cb82019d908ab2b07491075cf5f2b9d22f296da3864a10e751b4997c75cb7fe",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fit-empty.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "fea3eb45e9cc2d5ea2bae794caf6543b68ad313064f661833f5f60fc3f264dfb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "bc7ed1799d7c1328cd3f274fcf7e20176bd9840d292c9dd185f8a369169d123f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-reversed-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "5b506bcd8677c1c8f537a39feb55eb6ca136e0b5148b617e79b3b400172865a2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "3b35789f728caebdeab60cfd41a0edcecfad83f7890e71b52f5a54895cdc771d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "dd100deaa098c6a21022b40937c2f3df2c4fb82e06ef64e84e6aeee7a698d1d8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-row-split-fit-empty.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "3f308067438839f52d3e4306569d46b11c7bd85455092f30546dcb45d534ac85",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-split-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "3465aeb4a4bc9bbe38266aaa445e643217717cac2623f1a352877a71ae480d0d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/launch-fixed-repeat-groups-suffix-fill.log",
+      "http_status": 200,
+      "bytes": 28,
+      "sha256": "cac839808dfb42adc65fc54877ce6a62ccb4697b14af1858a5a5976193ab3f3e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/result.json",
+      "http_status": 200,
+      "bytes": 19907,
+      "sha256": "11ca209511e4bd3bb843412d314fba8e251ca174de02c235ddf0cb417740592f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-multitrack-fill.log",
+      "http_status": 200,
+      "bytes": 23728,
+      "sha256": "41b88a426509e1ffb7f2c9cd1e09595d2b5c8289e5d67df0ed5e0c6bcab23a7b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 23847,
+      "sha256": "f29f591f0fd10ccafbe647a7bbd368f97ef25e1a4055883976c4cf640d2f854f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fit-empty.log",
+      "http_status": 200,
+      "bytes": 13901,
+      "sha256": "9706da1b79fae73e0a6f58ebbe62aa2bdfa94ce48cb9cbe4ecd23a49735770cf",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 26399,
+      "sha256": "ec8621fbbb610aff5797ff9a9970d31bb3686b1c980c7079255eb069b9049963",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-reversed-fill.log",
+      "http_status": 200,
+      "bytes": 23856,
+      "sha256": "099fd90aa345b945a1b2999cf0459456b804f647218c0e03dd16b702bf79e9f2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 23861,
+      "sha256": "5fa6ad951e1b5dd1adf6414d3cbe7648ec23ac14b032a95c11c3ad66095b057d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 27521,
+      "sha256": "86eae6b3fa43edf707baf2a309ea693cc57e16e2f8424c23d5e67b35840bf33b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-row-split-fit-empty.log",
+      "http_status": 200,
+      "bytes": 13912,
+      "sha256": "b453ef5b0ece7c9b3d3ef62bfdc28933fd8b6295115f8e0ac506a75ba79e616e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-split-fill.log",
+      "http_status": 200,
+      "bytes": 22737,
+      "sha256": "6fb72127cc1a6d53b60bafa4a1e8ca977608a34ed944fc3f1022cfd1c8607735",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/runtime-fixed-repeat-groups-suffix-fill.log",
+      "http_status": 200,
+      "bytes": 23844,
+      "sha256": "69e3f172a86e4ffce378ffe0376c36f22dc86f9419009a00a7525989f8f9950b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-multitrack-fill.log",
+      "http_status": 200,
+      "bytes": 310,
+      "sha256": "3ae0c032bdecaad6fa8e70a59f5ad9c49a7dab8d72359ff3c98eefd4d57d0ec7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 306,
+      "sha256": "1ea60543ae44071421d5efd847558ba4e354e4b5fc0161f0c225cfcb57b4e39f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fit-empty.log",
+      "http_status": 200,
+      "bytes": 311,
+      "sha256": "a7a5f71be6dfc35e640d2ad6a3f4e30b06c8b67065dd02c074352eb81062e750",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 314,
+      "sha256": "39b83ec7b7f927fb383d4be6441344aa31e62bb3aedaeb62d1c464a121b049e2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-reversed-fill.log",
+      "http_status": 200,
+      "bytes": 308,
+      "sha256": "94843586e0c704ed7624e1e38e4f46df1b2dcce3048cb49d8ff20d032bdc1ef4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-prefix-fill.log",
+      "http_status": 200,
+      "bytes": 310,
+      "sha256": "1b1f6b5603a55822bc7dcc1bebc26b1ac71193cd622f87bfc62f12b18d23dfdb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-prefix-fit-occupied.log",
+      "http_status": 200,
+      "bytes": 318,
+      "sha256": "5c28f52096e3c02bd7ff9fe3f75ea3131e30e522a066b720a194dd9ce0afaea4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-row-split-fit-empty.log",
+      "http_status": 200,
+      "bytes": 314,
+      "sha256": "59237c728d058d304af7e86969b2a61c2c99c8c4ccf4cf1018633ed89f9ba042",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-split-fill.log",
+      "http_status": 200,
+      "bytes": 305,
+      "sha256": "cd6455f8c63937d2ba1f155e626321a7af7e1fe1f503fd984445cbae27bd0fad",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/screenshot-fixed-repeat-groups-suffix-fill.log",
+      "http_status": 200,
+      "bytes": 306,
+      "sha256": "2720a474c38f5d8606d564c57cfd64988b63c5f54c1d364ee0e068f49eb66e3c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/ios-simulator-c114-multiple-fixed-repeat-groups-ios-simulator-20261024T093526474Z-973baa9a/simulator.json",
+      "http_status": 200,
+      "bytes": 1238,
+      "sha256": "8c87c01ecf5b31b357dfb194e25daae9c8fe860a88a2ae68d7d57fc78123771e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/rustfmt-check.log",
+      "http_status": 200,
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/scoped-clippy.log",
+      "http_status": 200,
+      "bytes": 592,
+      "sha256": "5813c681c1ed384d2384e642e3d435d559952933b091a4ae4d9dd50f921bfc70",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/style-fixed-repeat-tests.log",
+      "http_status": 200,
+      "bytes": 2040,
+      "sha256": "96fc652181837abb744c195fb18a7dfb9fe941ffcae9ebe60c3eeaa9f1612fd9",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 292428,
+      "sha256": "04e9c7cf4852ef351209bc4b4c86090cd75a76b30f8e83d5fbc789b9a5bbb919",
+      "verified": true
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-multiple-fixed-repeat-auto-repeat-c114-precomparison.html",
+      "http_status": 200,
+      "bytes": 8185,
+      "sha256": "1f7d7a99baab8a261bd2937b39ac96379c167cf6acd0ec8a3e9adab21d962f6f",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 958051,
+      "sha256": "655e3492d16c8beeba7c93679a0a67dedfd5a9973d31155c48d80c42da0e5466",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "http_status": 200,
+      "bytes": 959694,
+      "sha256": "7a2621286da5e7e9d3f0db5835d5040c236326b962cf273562f291d31758bd0a",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups.html",
+      "http_status": 200,
+      "bytes": 462420,
+      "sha256": "0b4e986aaa29323ec943fe89bc41d4f1b0e28adaac8230d38801eecc9d73939d",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups.html",
+      "http_status": 200,
+      "bytes": 462371,
+      "sha256": "8c329b87821f9d4400c3744616ad730c7a4490a5591cd42b645d0dadc7dd2793",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 452995,
+      "sha256": "1f46dc3b527a6c0517bb64a5fa3c462031e03b7afc982b3152c5076ec850917f",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 452983,
+      "sha256": "7ce99dc720a9843f94a7e0ea063c3f4d7b11d81b8c577005a5c0efeb42b6ae57",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 454794,
+      "sha256": "15b8c82df8dea05ad92b38bc8bf2edebf84170a16d39956c8ca82386c2be5e9c",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-multiple-fixed-repeat-groups-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 454804,
+      "sha256": "81178e4d28fd836134803e9ac7bbf89c1847132b8c348b084aa7c2b1f76f5ce5",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 620566,
+      "sha256": "0f9d275bbc9208c389b1cdcd04e51b845be98d8acbf2f91484973c17ef836e4a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 620861,
+      "sha256": "50fb71c6ad225a8006713e77502646a0540fca5232f8d8ac47a37c886341766b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "http_status": 200,
+      "bytes": 450506,
+      "sha256": "2a6da830c9c29d161a196728af71af3c7c736b0e38bb9cc95db2663e85734bd8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-precomparison-2026-10-24/README.html",
+      "http_status": 200,
+      "bytes": 450532,
+      "sha256": "35e414e7d226bfe459943c395564eecdb36cf33f8882c44fa51b140c18e43c42",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "http_status": 200,
+      "bytes": 457522,
+      "sha256": "fe53698e286b5256cae446e5d351c2f92d5472c627c0b23bf367fdd09d9cd6b1",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/README.html",
+      "http_status": 200,
+      "bytes": 457542,
+      "sha256": "4c0195116a35c7b221c2f8e6c3e21332946751c6379e2ad049dca5fb1d99d8df",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 454872,
+      "sha256": "28a379681c29ecdb836b9d3f58ff2662a2550c9c09bc5257331a3e1b99954943",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 454882,
+      "sha256": "d45613bfd583fc2187b7c9d8d4a1d1ecb23fd8f69b8cbae25e6a16a3fd0cd2d1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 457477,
+      "sha256": "d7c3d4f1d83a35d16915beb98359f4a6d4cb4a922c38c5f298c19832d45c4e24",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-multiple-fixed-repeat-groups-runtime-2026-10-24/pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 457487,
+      "sha256": "c88813262454fdef544d786f948becbfa9f6f92290d7100f902bba49b92af4ab",
+      "verified": true
+    }
+  ]
+}
