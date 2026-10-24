@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 direct mixed text and image intrinsic contribution oracle</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 16px;
+      color: #101820;
+      background: #e8edf2;
+      font: 12px/1.4 system-ui, sans-serif;
+    }
+    main {
+      display: grid;
+      grid-template-columns: repeat(2, max-content);
+      gap: 18px;
+      align-items: start;
+    }
+    section { display: grid; gap: 5px; }
+    h2 { margin: 0; font: 600 12px/1.4 system-ui, sans-serif; }
+    .root {
+      display: grid;
+      width: 120px;
+      height: 48px;
+      grid-template-rows: 24px 24px;
+      gap: 0;
+      align-content: start;
+      justify-content: start;
+      align-items: start;
+      justify-items: start;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #101820;
+    }
+    .root.min { grid-template-columns: min-content; }
+    .root.max { grid-template-columns: max-content; }
+    .item {
+      display: block;
+      grid-column: 1;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #e5484d;
+      color: #e5484d;
+    }
+    .text {
+      grid-row: 1;
+      font: 400 10px/10px Ahem, monospace;
+      white-space: normal;
+      word-break: normal;
+      overflow-wrap: normal;
+    }
+    .image {
+      grid-row: 2;
+      width: auto;
+      height: auto;
+      min-width: auto;
+      min-height: auto;
+    }
+    .label { min-height: 17px; }
+  </style>
+</head>
+<body>
+  <main>
+    <section>
+      <h2>min-content-forward</h2>
+      <div class="root min" data-scene="min-content-forward">
+        <div class="item text" data-item="text">XX XXXXX</div>
+        <img class="item image" data-item="image" src="../../resources/c14-1-png-basic.png" alt="">
+      </div>
+    </section>
+    <section>
+      <h2>max-content-forward</h2>
+      <div class="root max" data-scene="max-content-forward">
+        <div class="item text" data-item="text">XX XXXXX</div>
+        <img class="item image" data-item="image" src="../../resources/c14-1-png-basic.png" alt="">
+      </div>
+    </section>
+    <section>
+      <h2>min-content-reversed</h2>
+      <div class="root min" data-scene="min-content-reversed">
+        <img class="item image" data-item="image" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text" data-item="text">XX XXXXX</div>
+      </div>
+    </section>
+    <section>
+      <h2>max-content-reversed</h2>
+      <div class="root max" data-scene="max-content-reversed">
+        <img class="item image" data-item="image" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text" data-item="text">XX XXXXX</div>
+      </div>
+    </section>
+  </main>
+  <pre id="result"></pre>
+  <script>
+    const rect = (node) => {
+      const value = node.getBoundingClientRect();
+      return {x:value.x, y:value.y, width:value.width, height:value.height};
+    };
+    Promise.all([
+      document.fonts.ready,
+      ...Array.from(document.querySelectorAll('img'), (image) => image.decode()),
+    ]).then(async () => {
+      const browserVersion = await navigator.userAgentData.getHighEntropyValues(['uaFullVersion']);
+      const cases = Array.from(document.querySelectorAll('.root'), (root) => ({
+        id:root.dataset.scene,
+        columns:getComputedStyle(root).gridTemplateColumns,
+        rows:getComputedStyle(root).gridTemplateRows,
+        root:rect(root),
+        items:Array.from(root.children, (item) => ({
+          id:item.dataset.item,
+          tag:item.localName,
+          naturalSize:item instanceof HTMLImageElement ? {width:item.naturalWidth,height:item.naturalHeight} : null,
+          frame:rect(item),
+        })),
+      }));
+      window.__C114_MIXED_DIRECT_INTRINSIC__ = {
+        userAgent:navigator.userAgent,
+        userAgentFullVersion:browserVersion.uaFullVersion,
+        platform:navigator.platform,
+        viewport:{width:innerWidth,height:innerHeight},
+        devicePixelRatio,
+        ahemReady:document.fonts.check('10px Ahem'),
+        imageDecodeComplete:Array.from(document.querySelectorAll('img'), (image) => image.complete && image.naturalWidth === 24 && image.naturalHeight === 16).every(Boolean),
+        authoredText:'XX XXXXX',
+        expectedAhemWidths:{minContent:50,maxContent:80},
+        cases,
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_MIXED_DIRECT_INTRINSIC__, null, 2);
+    });
+  </script>
+</body>
+</html>
