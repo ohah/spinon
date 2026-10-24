@@ -1,6 +1,6 @@
 # C11.4 · CSS Grid track sizing 계획
 
-**현재 상태 · 2026-10-24:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+**현재 상태 · 2026-10-25:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
 ## 2026-10-23 definite percentage maximum auto-repeat 계획
 
@@ -409,4 +409,6 @@ Chrome 156 사전 비교의 13 scene을 Android API 37 ARM64 AVD와 iPhone 17/iO
 
 앞뒤 fixed `px` explicit neighbor subset 뒤에, definite positive content axis에서 유한·0 이상 percentage neighbor를 허용하는 제한 계획을 추가했다. Chrome 156 Agent Browser의 13-scene oracle은 양쪽·한쪽 neighbor, auto-fill/auto-fit, 빈 auto-fit, 최소 1회 overflow, 0%, row axis와 border-box content basis를 고정한다. [집중 계획](./c11-4-auto-repeat-percentage-neighbors.md) · [독립 기대값·Chrome 관측](../spec/internal/evidence/c11-4-auto-repeat-percentage-neighbors-precomparison-2026-10-24/README.md) · [계획 실패 관점 20개](./c11-4-auto-repeat-percentage-neighbors-plan-review-20.md).
 
-이 percentage-neighbor slice는 구현 PR [#580](https://github.com/ohah/spinon/pull/580)으로 제한 병합됐다. 현재 cascade/layout은 positive definite content-axis basis에서 유한·0 이상 percentage neighbor를 받으며, 합산·basis overflow는 거부한다. 다음 [calc-neighbor 계획](./c11-4-auto-repeat-calc-neighbors.md)은 이 경계를 2-term typed `length + percentage` subset으로 넓히려는 계획이며 아직 구현되지 않았다. [계획 실패 관점 검토 20개](./c11-4-auto-repeat-calc-neighbors-plan-review-20.md)와 14-scene 사전 비교가 고정됐다. indefinite/cyclic·intrinsic/flex neighbor, arbitrary CSS math/admission, WPT, 실기기·hardware GPU와 전체 C11.4는 미완료다. 공식 집계 `72/213`은 유지한다.
+이 percentage-neighbor slice는 구현 PR [#580](https://github.com/ohah/spinon/pull/580)으로 제한 병합됐다. 후속 calc-neighbor 구현 PR [#583](https://github.com/ohah/spinon/pull/583)은 computed typed AST가 정확히 두 항인 `calc(length + percentage)`에서 signed length와 0 이상 percentage를 지원하고, 2026-10-24T05:04:59Z에 merge SHA `4faabe77c6b3a9a87fa1e50503649b8fcdc803d7`로 병합됐다. signed/negative-percentage follow-up PR [#585](https://github.com/ohah/spinon/pull/585)은 두 항 각각의 직접 값 또는 단일 `Negate`를 허용하고, definite positive content-axis basis에서 최종 합을 nonnegative property range로 clamp한다. 이 PR은 2026-10-24T06:25:51Z에 merge SHA `e42b1573e710c0c36e9c507790902d4a35a53121`로 병합됐다. 두 PR 모두 제한된 auto-repeat neighbor profile이며 일반 CSS math/admission이나 전체 Grid 지원을 뜻하지 않는다.
+
+다음 범위로 일반 text/image intrinsic contribution과 nested/anonymous item을 함께 다루는 matrix 계획이 필요하다. 별도 계획에서 규범 기대·Chrome oracle·fixture 축과 지원 경계를 먼저 고정한 뒤 구현 범위를 정한다. C11.4 checkbox와 공식 집계 `72/213`은 미완료로 유지한다. indefinite/cyclic·intrinsic/flex neighbor, arbitrary CSS math/admission, WPT, 실기기·hardware GPU와 전체 C11.4도 아직 미완료다.

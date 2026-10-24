@@ -1,0 +1,78 @@
+{
+  "browser": {
+    "name": "HeadlessChrome",
+    "version": "156.0.8078.48",
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1,
+    "agent_browser_cli": "0.31.1"
+  },
+  "readiness": {
+    "ahem_font_ready": true,
+    "all_images_decoded": true,
+    "natural_image_css_px": [24, 16]
+  },
+  "input": {
+    "text": "XX XXXXX",
+    "font": "Ahem 10px/10px",
+    "white_space": "normal",
+    "word_break": "normal",
+    "overflow_wrap": "normal",
+    "grid_width_css_px": 120,
+    "rows_css_px": [24, 24],
+    "gap_css_px": 0,
+    "item_span": 1
+  },
+  "independent_expectations": {
+    "text_min_content_css_px": 50,
+    "text_max_content_css_px": 80,
+    "image_min_content_css_px": 24,
+    "image_max_content_css_px": 24,
+    "single_track_min_content_css_px": 50,
+    "single_track_max_content_css_px": 80,
+    "derivation": "Ahem advances 10 CSS px per glyph. The longest unbreakable word has five glyphs; the full text has eight glyphs including its one space. A single non-spanning intrinsic track takes the largest relevant item contribution. The replaced PNG is 24x16 CSS px."
+  },
+  "observations": [
+    {
+      "id": "min-content-forward",
+      "source_order": ["text", "image"],
+      "columns_cssom": "50px",
+      "rows_cssom": "24px 24px",
+      "root_frame_css_px": [16, 37.796875, 120, 48],
+      "text_frame_css_px": [16, 37.796875, 50, 20],
+      "image_frame_css_px": [16, 61.796875, 24, 16]
+    },
+    {
+      "id": "max-content-forward",
+      "source_order": ["text", "image"],
+      "columns_cssom": "80px",
+      "rows_cssom": "24px 24px",
+      "root_frame_css_px": [164.15625, 37.796875, 120, 48],
+      "text_frame_css_px": [164.15625, 37.796875, 80, 10],
+      "image_frame_css_px": [164.15625, 61.796875, 24, 16]
+    },
+    {
+      "id": "min-content-reversed",
+      "source_order": ["image", "text"],
+      "columns_cssom": "50px",
+      "rows_cssom": "24px 24px",
+      "root_frame_css_px": [16, 125.59375, 120, 48],
+      "text_frame_css_px": [16, 125.59375, 50, 20],
+      "image_frame_css_px": [16, 149.59375, 24, 16]
+    },
+    {
+      "id": "max-content-reversed",
+      "source_order": ["image", "text"],
+      "columns_cssom": "80px",
+      "rows_cssom": "24px 24px",
+      "root_frame_css_px": [164.15625, 125.59375, 120, 48],
+      "text_frame_css_px": [164.15625, 125.59375, 80, 10],
+      "image_frame_css_px": [164.15625, 149.59375, 24, 16]
+    }
+  ],
+  "source_fixture": "tests/fixtures/css/c11/grid-mixed-direct-text-image-intrinsic-c114-precomparison.html",
+  "source_fixture_sha256": "eac2bd4aaf7647d3d726cc34d8ac354d63a0a1e3da47a8655c35c999f653a55b",
+  "screenshot": "chrome156-agent-browser.png",
+  "limitation": "Chrome is an observation only. The expected track sizes above are derived separately from CSS Grid intrinsic contribution rules and the fixed Ahem/PNG inputs; this is not Spinon runtime evidence."
+}
