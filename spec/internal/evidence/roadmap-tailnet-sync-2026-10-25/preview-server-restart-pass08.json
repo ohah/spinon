@@ -1,0 +1,21 @@
+{
+  "verifiedAt": "2026-10-25T05:31:15Z",
+  "priorProcess": {
+    "pid": 1180,
+    "action": "SIGTERM",
+    "reason": "stale open read handle detected during pass08 preflight"
+  },
+  "replacementProcess": {
+    "pid": 28040,
+    "command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "listener": "127.0.0.1:8768"
+  },
+  "postRestartCheck": {
+    "pidStillListening": true,
+    "localRoadmapHttpStatus": 200,
+    "tailnetBackend": "Running",
+    "macStudioOnline": true
+  },
+  "tmuxSessionsChanged": false,
+  "evidence": "tailnet-preflight-pass08-corrected.json and live ps/lsof/curl observations"
+}

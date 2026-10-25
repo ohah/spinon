@@ -1,0 +1,883 @@
+{
+  "pass": "pass08",
+  "sourceHead": "f197239b0168e2356f4d0ece03f5d2e4c40278fe",
+  "checkoutHead": "59f2e053839aca37fd01e6e90aac6bd6d0d66402",
+  "originMainHead": "f197239b0168e2356f4d0ece03f5d2e4c40278fe",
+  "sourceTree": "28556f278dd82a1fde00a1e59afdb1d6c7a2267b",
+  "checkoutTree": "6c29f8578c98b9789525ce670c6dbcfc2ae010b4",
+  "excludedUntrackedFiles": [
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2"
+    }
+  ],
+  "originMainTree": "28556f278dd82a1fde00a1e59afdb1d6c7a2267b",
+  "baseSelectedRoot": "build/spinon/roadmap-tailnet-sync-20261025-root-pass07-selected",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-20261025-root-pass08-corrected-selected",
+  "fullOutputRoot": "build/spinon/roadmap-tailnet-sync-20261025-site-pass08-corrected-full",
+  "sourceFiles": 38,
+  "overlayCount": 143,
+  "overlayBytes": 7031926,
+  "storage": "hard-linked pass07 source root plus independent current-main overlays; prior roots remain unchanged",
+  "noDeletes": true,
+  "overlays": [
+    {
+      "source": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df"
+    },
+    {
+      "source": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb"
+    },
+    {
+      "source": "plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32"
+    },
+    {
+      "source": "plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367"
+    }
+  ]
+}

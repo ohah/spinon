@@ -1,0 +1,13 @@
+{
+  "checks": {
+    "hasCompletionCount72of213": true,
+    "hasMergedPr623": true,
+    "hasOrthogonalRowStatus": true
+  },
+  "orthogonalText": "2026-10-25 C11.4 독립 slice 결과 · cyclic percentage × auto-repeat 구현 PR #623 Rebase and merge (2026-10-25T04:35:52Z, merge SHA 56daefe96e8143959bc99a89c7a8c80e7f1cc4ba): exact max-content fixture의 intrinsic pass는 repeat 1회·basis 없음·root 24px이고, final definite pass는 basis 24px·repeat 2회·columns [12,12]px다. 40px definite control은 [20,20]px다. 최종 source SHA c5b8ef75804e39d36a37aa61b82b1f028115fefd를 Android API 37 16 KB AVD와 iPhone 17/iOS 26.2 Simulator에서 target/control 각 2 scene으로 확인했고, frame·trace와 PixelCopy/Metal 표본은 scene별 3/3 exact다. Android AVD는 software renderer이며 iOS Metal drawable은 compositor 제출 전 표본이다. 이 동작은 exact profile 검사를 갖춘 두-scene opt-in fixture feature에 한정한다. Orthogonal direct text/image row의 Chrome 156 [50]/[80]px 기대값은 사전 비교만 통과했다. feasibility 검토에서 `vertical-rl` 축이 현재 Style·text·Taffy layout 경로에 전달되지 않음을 확인해 runtime slice는 별도 writing-mode 작업까지 보류한다. C11.4 checkbox와 공식 72/213은 유지한다. Cyclic 계획 · 병합 구현·Simulator 실행 근거 · Orthogonal 계획 · Chrome 사전 비교 및 feasibility.",
+  "pr623Text": "2026-10-25 C11.4 독립 slice 결과 · cyclic percentage × auto-repeat 구현 PR #623 Rebase and merge (2026-10-25T04:35:52Z, merge SHA 56daefe96e8143959bc99a89c7a8c80e7f1cc4ba): exact max-content fixture의 intrinsic pass는 repeat 1회·basis 없음·root 24px이고, final definite pass는 basis 24px·repeat 2회·columns [12,12]px다. 40px definite control은 [20,20]px다. 최종 source SHA c5b8ef75804e39d36a37aa61b82b1f028115fefd를 Android API 37 16 KB AVD와 iPhone 17/iOS 26.2 Simulator에서 target/control 각 2 scene으로 확인했고, frame·trace와 PixelCopy/Metal 표본은 scene별 3/3 exact다. Android AVD는 software renderer이며 iOS Metal drawable은 compositor 제출 전 표본이다. 이 동작은 exact profile 검사를 갖춘 두-scene opt-in fixture feature에 한정한다. Orthogonal direct text/image row의 Chrome 156 [50]/[80]px 기대값은 사전 비교만 통과했다. feasibility 검토에서 `vertical-rl` 축이 현재 Style·text·Taffy layout 경로에 전달되지 않음을 확인해 runtime slice는 별도 writing-mode 작업까지 보류한다. C11.4 checkbox와 공식 72/213은 유지한다. Cyclic 계획 · 병합 구현·Simulator 실행 근거 · Orthogonal 계획 · Chrome 사전 비교 및 feasibility.",
+  "screenshot": "tailnet-roadmap-agent-browser-pass08-corrected.png",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?verification=pass08-final-screenshot",
+  "verifiedAt": "2026-10-25T05:33:38.127Z"
+}

@@ -1,0 +1,14 @@
+{
+  "verifiedAt": "2026-10-25T05:33:38Z",
+  "session": "spinon_tailnet_pass08_final",
+  "beforeClose": {
+    "active": true,
+    "pid": 47088,
+    "pageCount": 1
+  },
+  "closeCommand": "agent-browser close --all",
+  "afterClose": {
+    "sessions": [],
+    "agentBrowserProcessSearch": "pgrep -fl '[a]gent-browser' returned no matches"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "pass": "pass08-review20-correction",
+  "reason": "exclude one untracked review source that was absent from the pinned origin/main tree",
+  "source": {
+    "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+    "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2",
+    "aliases": 4
+  },
+  "correction_backup_root": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-untracked-review20-correction",
+  "backed_up": 4,
+  "removed_routes": 4,
+  "all_backups_byte_exact": true,
+  "all_local_routes_removed": true,
+  "all_remote_routes_http_404": true,
+  "only_initially_new_paths_removed": true,
+  "routes": [
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "initial_status": "create",
+      "initial_target_exists": false,
+      "bytes": 8133,
+      "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2",
+      "backup_path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "local_removed": true,
+      "remote_http_status": 404,
+      "remote_removed": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "initial_status": "create",
+      "initial_target_exists": false,
+      "bytes": 8133,
+      "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2",
+      "backup_path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "local_removed": true,
+      "remote_http_status": 404,
+      "remote_removed": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "initial_status": "create",
+      "initial_target_exists": false,
+      "bytes": 8133,
+      "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2",
+      "backup_path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "local_removed": true,
+      "remote_http_status": 404,
+      "remote_removed": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "source": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "initial_status": "create",
+      "initial_target_exists": false,
+      "bytes": 8133,
+      "sha256": "5b884466141024373300b95a6bddc85e62ed6ac84e633283d5206a9378d784c2",
+      "backup_path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-20.md",
+      "local_removed": true,
+      "remote_http_status": 404,
+      "remote_removed": true
+    }
+  ]
+}
