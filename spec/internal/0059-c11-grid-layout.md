@@ -483,7 +483,7 @@ Taffy 0.15.0은 flexible factor 누적 중 f32 overflow를 검사하지 않는�
 
 최종 `c04-runtime-gpu` product static archive는 새 scene marker 0/6, C11.4 host ABI string/symbol 0/2이며 unique CSS payload가 없다. `c04-runtime-gpu-fixture-test` positive control은 marker 6/6, host ABI string/symbol 2/2 및 unique `0.5fr/0fr` CSS payload를 포함한다. 이 gate는 Rust static archive 경계로 한정되며 APK/IPA 전체 제외가 아니다. workspace all-target tests, `-D warnings` Clippy, Rust fmt, fixture-module boundary와 focused cascade/projection/layout/FFI/runtime checks가 통과했다. [사전 비교](./evidence/c11-4-fixed-repeat-minmax-flex-precomparison-2026-10-25/README.md) · [실행·화면·source hash·artifact 경계](./evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-fixed-repeat-minmax-flex-runtime-2026-10-25/implementation-review-20.md) · [계획](../../plan/c11-4-fixed-repeat-minmax-flex.md).
 
-일반 CSS admission, WPT 적합성, 1e38fr overflow의 simulator rejection path, stress/OOM 복구, Android 실기기/hardware GPU, iOS compositor 이후 pixels, APK/IPA 전체 fixture exclusion 및 전체 C11.4는 미검증이다. C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
+일반 CSS admission, WPT 적합성, 1e38fr overflow의 simulator rejection path, stress/OOM 복구, Android 실기기/hardware GPU, iOS compositor 이후 pixels, APK/IPA 전체 fixture exclusion 및 전체 C11.4는 미검증이다. 구현 PR [#615](https://github.com/ohah/spinon/pull/615)은 2026-10-25T00:09:36Z Rebase and merge로 병합됐으며 merge SHA는 `0ccec669e5506b6caef53314702c7fb60090e45c`이다. PR check rollup은 비어 있었다. 이 병합은 제한 runtime slice만 통합하며 C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
 
 ## C11.4 direct text + image non-spanning intrinsic contribution · 제한 runtime slice
 
