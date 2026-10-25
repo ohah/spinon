@@ -1,0 +1,17 @@
+{
+  "pass": "pass08",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?verification=pass08",
+  "title": "스피논 구현 로드맵",
+  "browser": "Agent Browser",
+  "dom_checks": {
+    "cyclic_pr_623_merge_record": true,
+    "official_completion_72_of_213": true,
+    "orthogonal_row_status_present": true
+  },
+  "visible_excerpt": "2026-10-25 C11.4 독립 slice 결과 · cyclic percentage × auto-repeat 구현 PR #623 Rebase and merge (2026-10-25T04:35:52Z, merge SHA 56daefe96e8143959bc99a89c7a8c80e7f1cc4ba): ... Orthogonal direct text/image row의 Chrome 156 [50]/[80]px 기대값은 사전 비교만 통과했다. feasibility 검토에서 vertical-rl 축이 현재 Style·text·Taffy layout 경로에 전달되지 않음을 확인해 runtime slice는 별도 writing-mode 작업까지 보류한다. C11.4 checkbox와 공식 72/213은 유지한다.",
+  "screenshot": "tailnet-roadmap-agent-browser-pass08.png",
+  "browser_closed_after_run": true,
+  "agent_browser_sessions_after_close": [],
+  "agent_browser_process_after_close": false,
+  "terminal_browser_used": false
+}
