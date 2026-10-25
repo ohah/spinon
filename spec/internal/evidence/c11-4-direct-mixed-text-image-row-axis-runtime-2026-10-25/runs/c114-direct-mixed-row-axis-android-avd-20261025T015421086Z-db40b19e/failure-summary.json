@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e",
+  "target": "android-avd",
+  "requestedCommand": "node spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs android-avd emulator-5560",
+  "requestedSourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+  "headAtRunStart": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+  "sourceInputPathsWereCleanImmediatelyBeforeRun": true,
+  "device": {
+    "serial": "emulator-5560",
+    "avdName": "spinon_api37_2_presenttime_probe_20261018",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone16k_arm64",
+    "pageSizeBytes": 16384,
+    "physicalDeviceSerialUsed": false
+  },
+  "build": {
+    "command": "mise exec -- bun run build:android",
+    "result": "succeeded",
+    "apk": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "apkSha256": "c161bc14004f05203a0d5d034ef911fdf15a51aef2b54771d2d0973f7f685ec5",
+    "log": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e/android-build.log"
+  },
+  "sceneMatrix": {
+    "requested": [
+      "direct-row-min-content-forward",
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ],
+    "attempted": ["direct-row-min-content-forward"],
+    "passed": [],
+    "completed": 0,
+    "notStarted": [
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ]
+  },
+  "failure": {
+    "kind": "fixture source rejected by CSS property parser; no track trace produced",
+    "detail": "direct-row-min-content-forward: Unsupported property declaration: writing-mode, UnknownProperty; runtime then emitted TRACE_MISSING and GRID_ASSERTION_ERROR with status=-11.",
+    "runtimeLog": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e/android-runtime-direct-row-min-content-forward.log",
+    "runtimeLogSha256": "cae434b29cd94e760ff32e4675cecf486ac9b44571a9130268254864e3c4de29"
+  },
+  "cleanup": {
+    "spinonActivityForceStoppedOnTargetSerial": true,
+    "processRemainedOnTarget": false,
+    "otherAdbSerialsCommanded": []
+  },
+  "finalSimulatorJsonWritten": false,
+  "browserUsed": false
+}

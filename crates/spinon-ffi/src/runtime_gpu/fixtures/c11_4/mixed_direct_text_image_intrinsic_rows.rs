@@ -99,7 +99,7 @@ fn scene_source(scene: Scene) -> String {
 const root = document.createElement('div');
 root.setAttribute('id', {root_id:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:74px;height:auto;margin:0;padding:0;border:0;column-gap:0;row-gap:0;writing-mode:horizontal-tb;direction:ltr;align-items:start;align-content:start;justify-content:start;grid-template-columns:50px 24px;grid-template-rows:{row};background-color:#101820');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:74px;height:auto;margin:0;padding:0;border:0;column-gap:0;row-gap:0;direction:ltr;align-items:start;align-content:start;justify-content:start;grid-template-columns:50px 24px;grid-template-rows:{row};background-color:#101820');
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
 "#
@@ -156,7 +156,8 @@ mod tests {
             assert!(source.len() < 4 * 1024);
             assert!(source.contains("width:74px;height:auto"));
             assert!(source.contains("grid-template-columns:50px 24px"));
-            assert!(source.contains("writing-mode:horizontal-tb;direction:ltr"));
+            assert!(source.contains("row-gap:0;direction:ltr"));
+            assert!(!source.contains("writing-mode:"));
             let expected_row = match scene.track {
                 Track::MinContent => "grid-template-rows:min-content",
                 Track::MaxContent => "grid-template-rows:max-content",

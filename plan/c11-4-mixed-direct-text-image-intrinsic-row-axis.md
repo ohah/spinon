@@ -25,7 +25,7 @@ Chrome Agent Browser `HeadlessChrome/156`의 네 target scene은 [행 축 사전
 고정 입력은 다음과 같다.
 
 - Grid content box `74px × auto`, columns `50px 24px`, row 하나, gap 0, margin/padding/border 0.
-- root style: content width `74px`, auto height, `grid-template-columns:50px 24px`, column/row gap 0, padding/border 0, `writing-mode:horizontal-tb`, `direction:ltr`, `align-items:start`. `grid-template-rows`는 scene별로 한 track `min-content` 또는 `max-content`를 사용한다. Browser fixture는 네 root를 한 페이지에 쌓기 위해 `position:absolute`를 쓰고 `html`/`body` margin을 0으로 둔다. Runtime scene은 normal flow에서 실행하되 root-relative CSS px 좌표를 비교한다.
+- root style: content width `74px`, auto height, `grid-template-columns:50px 24px`, column/row gap 0, padding/border 0, computed `writing-mode:horizontal-tb`, explicit `direction:ltr`, `align-items:start`. `grid-template-rows`는 scene별로 한 track `min-content` 또는 `max-content`를 사용한다. Browser fixture는 네 root를 한 페이지에 쌓기 위해 `position:absolute`를 쓰고 `html`/`body` margin을 0으로 둔다. Runtime scene은 normal flow에서 실행하되 root-relative CSS px 좌표를 비교한다.
 - text item: direct child `<div>` with `display:block`, auto width/height, column 1 / row 1, `justify-self:stretch;align-self:start`; Ahem `10px/10px`, `XX XXXXX`, `white-space:normal`, `word-break:normal`, `overflow-wrap:normal`, margin/padding/border 0.
 - image item: direct child `<img>` with auto width/height, column 2 / row 1, `justify-self:start;align-self:start`; 저장소의 `c14-1-png-basic.png`, natural size `24×16px`, 성공한 decode 이후 측정.
 - 두 item 모두 명시적으로 column 1/2, row 1에 둔다. 정방향/역방향은 DOM source order만 바꾸며 item별 placement는 유지한다.
@@ -41,6 +41,8 @@ Columns가 `50px 24px`로 확정된 뒤 Ahem text의 first word `XX`는 20px이�
 | `direct-row-max-content-reversed` | `max-reversed` | `(0,0) 74×20px` | `[50,24]px` | `[20]px` | `(0,0) 50×20px` | `(50,0) 24×16px` |
 
 Chrome precomparison은 grid root에 absolute `track-probe`도 넣어 single-row track rect를 읽는다. 이 probe는 out-of-flow 측정 장치이며 sizing item이 아니다. Runtime fixture에는 in-flow text/image item 두 개만 둔다.
+
+Chrome reference는 root에 `writing-mode:horizontal-tb`를 명시하지만, `RuntimeBlockFlexGridTrackSizingV1`의 author-property allowlist는 `writing-mode` 선언을 거부한다(`UnknownProperty`). Runtime FFI source는 이 선언을 생략하고 computed initial value `horizontal-tb`를 사용하며 runtime adapter가 그 computed root value를 확인한다. 따라서 이 slice는 horizontal writing mode의 결과를 비교하지만 authored-declaration parity를 주장하지 않으며 vertical writing mode는 범위 밖이다.
 
 Root-relative geometry는 CSS px 기준이며 1/64 CSS px 이내로 일치해야 한다. 행 기여의 최댓값과 source-order 불변성이 목표 불변식이다. 이 fixture에서는 각 track 함수에 해당하는 두 item의 block 기여가 동일하므로 출력도 같아야 한다. 따라서 이 matrix는 min-content와 max-content track 알고리즘을 **구별하지 않는다**.
 
