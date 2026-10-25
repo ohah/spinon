@@ -1,12 +1,12 @@
 # C11.4 span-stage test-only PR #642 diff review · 30관점
 
-**검토 대상:** [PR #642](https://github.com/ohah/spinon/pull/642), head `9e41800f3528555d719d2907074bd445794267bd`, base `a33b245983fae050b66efb9ff259b3fe1132a051`. GitHub `gh pr diff`와 branch-local diff의 파일 목록을 대조했다. 변경된 test 코드, plan/evidence, 구현 검토 20관점·addendum, 갱신된 PR 본문을 읽기 전용으로 확인했다. 이 review 파일 자체는 검토 diff에 포함하지 않았다. 테스트·브라우저·시뮬레이터는 실행하지 않았다.
+**초기 30관점 검토 대상:** [PR #642](https://github.com/ohah/spinon/pull/642), head `9e41800f3528555d719d2907074bd445794267bd`, base `a33b245983fae050b66efb9ff259b3fe1132a051`. GitHub `gh pr diff`와 branch-local diff의 파일 목록을 대조했다. 변경된 test 코드, plan/evidence, 구현 검토 20관점·addendum, 당시 PR 본문을 읽기 전용으로 확인했다. 이 review 파일 자체는 검토 대상에서 제외했다. 테스트·브라우저·시뮬레이터는 실행하지 않았다.
 
 ## 판정
 
-**PASS 28 / PARTIAL 2 / FAIL 0.** sizing assertion과 negative control에서 correctness blocker는 발견하지 못했다. 병합 전 처리할 문서 PARTIAL은 (1) 500행 초과 파일 예외 사유 중 잘못된 private-visibility 주장, (2) 새 implementation evidence README의 깨진 상대경로와 한글 문서 규칙 위반이다. 상세 구현자의 test/fmt/Clippy 결과는 evidence와 PR 본문에 기록된 **보고값**으로만 확인했으며 이번 review에서 재실행하지 않았다.
+**초기 판정 PASS 28 / PARTIAL 2 / FAIL 0. 현재 유효 판정 PASS 30 / PARTIAL 0 / FAIL 0.** 초기 sizing assertion·negative control에서 correctness blocker는 발견하지 못했다. 최초 PARTIAL은 (1) 500행 초과 파일 사유의 부정확한 private-visibility 설명, (2) implementation evidence README의 잘못된 상대경로와 문서 언어 문제였다. PR head `e75dfae5e1e19054f2f47442f5868f071bd9038d`에서 해당 세 세부 지적을 targeted recheck해 모두 해소됨을 확인했다(아래 addendum). 상세 구현자의 test/fmt/Clippy 결과는 evidence와 PR 본문의 **보고값**으로만 확인했으며 재실행하지 않았다.
 
-## PR diff 실패 관점 30개
+## 초기 PR diff 실패 관점 30개
 
 | # | 별도 실패 관점 | 판정 | 확인 내용 |
 |---:|---|:---:|---|
@@ -46,8 +46,21 @@
 - 구현 review20은 처음의 `19 PASS / 1 PARTIAL` 중 boundary gutter collapse flag 관점을 찾았고, addendum는 현재 assertion과 vendored Taffy boundary를 대조해 유효 `20/20 PASS`로 갱신했다. 두 자료의 이전·후속 판정 흐름은 서로 모순되지 않는다.
 - Plan과 implementation evidence는 수치·fixture·검증 범위를 test-only로 한정하며 C11.4 Stage B, C11.4 checkbox와 공식 `72/213`이 미완료임을 유지한다. PR diff에는 `spec/STATUS.md`가 없다.
 - PR 본문은 fixed/invalid controls와 gutter finding/fix를 설명하고, Chrome 155 이미지를 **기존 final-geometry baseline**이라고 표시한다. GitHub contents API에서 해당 b58de5df commit의 PNG 파일 존재를 확인했다. 이미지 render는 browser 사용 금지 범위라 확인하지 않았다.
-- `gh pr view` 기준 라벨은 `area: layout`, `area: testing`, `area: docs`다. Project rules는 type label도 요구하지만 이는 변경 diff가 아닌 PR metadata이므로 위 30관점 점수에는 포함하지 않았다. 병합 전 기존 작업 유형 라벨 하나를 추가할 필요가 있다.
+- 최신 `gh pr view` 기준 라벨은 작업 유형 `chore`와 `area: layout`, `area: testing`, `area: docs`다. 작업 유형 및 변경 영역 라벨 요구를 충족한다.
 
-## 최종 blocker 판정
+## 초기 blocker 판정
 
-Sizing assertions·trace 해석·negative controls에는 구현 correctness blocker를 찾지 못했다. 병합 전에는 #30의 README 링크와 한글 문서 내용을 바로잡아야 한다. #29의 500행 초과 예외는 코드 분할을 강제할 정도의 책임 분리는 보이지 않지만, PR 본문의 private-visibility 근거는 정확히 고쳐야 한다. 이 항목들의 수정 뒤 영향받은 관점을 targeted recheck해야 한다. 본 리뷰는 source/plan/evidence를 수정하지 않았고 테스트·브라우저·시뮬레이터를 실행하지 않았다.
+최초 head에서 sizing assertions·trace 해석·negative controls에 구현 correctness blocker는 없었다. 당시 #29/#30 문서 PARTIAL은 아래 `e75dfae5` targeted recheck에서 해소 여부를 확인했다.
+
+## Targeted recheck addendum · 2026-10-26
+
+재확인 대상은 PR #642의 GitHub head `e75dfae5e1e19054f2f47442f5868f071bd9038d`와 base `a33b245983fae050b66efb9ff259b3fe1132a051`다. `gh pr view`에서 PR은 OPEN/CLEAN이며 head SHA가 해당 commit과 일치했다. 새 diff/body, 구현 evidence README, parent plan entry만 영향을 받은 지적에 한정해 다시 확인했다.
+
+| 초기 지적 | 재확인 결과 |
+|---|---|
+| #29 단일 test 파일 사유가 private visibility/builder 복제를 주장함 | **해소.** 최신 PR 본문은 네 기존 Chrome multi-span case, 같은 HostDocument fixture 및 같은 oracle 책임을 근거로 들며, 독립 경계가 없고 module 연결만 늘어난다고 설명한다. 부정확했던 private visibility 또는 builder 복제 주장은 남아 있지 않다. |
+| #30 evidence 코드 링크가 깨짐 | **해소.** README 링크가 `../../../../crates/spinon-layout/src/grid_multispan_chrome_oracle_tests.rs`로 바뀌었다. evidence 디렉터리 기준 상대경로가 저장소 루트의 파일에 도달하며 target 존재를 확인했다. 같은 README의 구현 review20 및 addendum 상대 링크도 모두 존재한다. |
+| #30 evidence README가 한글 문서 규칙을 어김 | **해소.** README 제목·절·설명 문장은 한글 문장으로 작성되어 있고 영어 설명 문장은 남아 있지 않다. `Internal vector`, `Expected unbounded trace limit` 등 일부 기술 용어는 원어를 유지하지만 설명 문장 자체는 한국어다. |
+| parent plan 및 PR 메타데이터 연결 상태 | **PASS.** `plan/c11-4-grid-track-sizing.md`는 PR #642와 실행 evidence/review 문서를 연결하고 C11.4 Stage B·상위 체크·공식 `72/213`이 미완료라고 유지한다. `spec/STATUS.md`의 C11.4 항목도 unchecked다. PR 본문 역시 Stage B/전체 C11.4 미완료와 `72/213` 유지를 설명한다. 라벨은 `chore`와 세 area 라벨이다. |
+
+따라서 영향받은 세 PARTIAL 세부 지적은 모두 해소되었고 **유효 최종 결과는 PASS 30 / PARTIAL 0 / FAIL 0**이다. 이 addendum 검토는 읽기 전용이다. 테스트·브라우저·시뮬레이터는 실행하지 않았으며, 구현자의 기존 테스트 결과는 보고값으로만 인용한다.
