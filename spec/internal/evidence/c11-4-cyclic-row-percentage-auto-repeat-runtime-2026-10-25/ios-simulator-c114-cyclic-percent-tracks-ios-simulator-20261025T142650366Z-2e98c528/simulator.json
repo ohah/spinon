@@ -1,0 +1,25 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "fc418b05e44dc063e19c3934547b6b98323fa9b142d4f3456496bdc288a896be",
+  "sourceRevision": {
+    "commit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+    "tree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+    "trackedDiffSha256": "e6c7718dc13f9f0c993002ea9542b0ad67daff40f00c06674369a9a99534aa28",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/calc_tree.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs",
+      "vendor/taffy/src/compute/grid/mod.rs"
+    ]
+  }
+}

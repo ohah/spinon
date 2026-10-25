@@ -42,6 +42,8 @@ mod cyclic_minmax_calc_two_axis_spanning_text;
 mod cyclic_minmax_replaced_image_span;
 #[path = "c11_4/cyclic_percentage_auto_repeat.rs"]
 mod cyclic_percentage_auto_repeat;
+#[path = "c11_4/cyclic_percentage_auto_repeat_rows.rs"]
+mod cyclic_percentage_auto_repeat_rows;
 #[path = "c11_4/cyclic_percentage_fit_content.rs"]
 mod cyclic_percentage_fit_content;
 #[path = "c11_4/cyclic_percentage_minmax.rs"]
@@ -1120,6 +1122,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_percentage_auto_repeat::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = cyclic_percentage_auto_repeat_rows::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_percentage_minmax::runtime_source(scene_id) {

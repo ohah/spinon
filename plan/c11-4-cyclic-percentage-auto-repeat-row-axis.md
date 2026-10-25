@@ -4,7 +4,7 @@
 
 **선행 구현:** [열 축 cyclic percentage auto-repeat PR #623](./c11-4-cyclic-percentage-auto-repeat.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)
 
-**상태 · 2026-10-25:** 제안 계획. 아직 runtime 구현·시뮬레이터 검증·C11.4 상태 변경을 하지 않았다. 계획 PR에는 이 문서, 구현 전 fixture, Chrome/규범 evidence 디렉터리 전체, manifest, lifecycle 기록, `spec/0001-conformance.md` 연결을 함께 넣는다. 먼저 계획 실패 관점 20개를 독립 검토하고 계획 PR을 병합한 뒤 구현한다.
+**상태 · 2026-10-25:** 계획 PR #631이 병합되어 구현 중이다. target/control Rust·runtime·FFI fixture, Android/iOS adapter와 API 37 ARM64 AVD·iPhone 17 Pro iOS 26.2 Simulator 실행을 추가했다. 구현/PR 적대 검토와 증거 정리는 진행 중이며, 구현 PR 병합 전까지 C11.4 상태와 공식 완료 수 `72/213`은 그대로 둔다.
 
 ## 목적과 범위
 
@@ -56,13 +56,15 @@ PR #623은 fixed scene의 열 축에서 intrinsic max-content 계산 뒤 cyclic 
 | `target-columns` | columns `[24px]` → `[23px]` | layout exact-scene validator / 같은 오류 |
 | `target-repeat-mode` | `auto-fill` → `auto-fit` | layout exact-scene validator / 같은 오류 |
 | `target-row-gap` | row gap 0px → 1px | layout exact-scene validator / 같은 오류 |
-| `target-alignment` | `align-content:start` → `center` | layout exact-scene validator / 같은 오류 |
+| `target-alignment` | `align-content:start` → `center` | Layout typed-input test: exact-scene validator / `InvalidGridTrackList(grid-template-rows)`. Runtime UA profile: style projection 단계의 `UnsupportedComputedValue(align-content)` |
 | `target-grid-flow` | `grid-auto-flow:row` → `column` | layout exact-scene validator / 같은 오류 |
 | `target-placement` | item row 1 → row 2 | layout exact-scene validator / 같은 오류 |
 | `target-min-height` | item min-height 0px → 1px | layout exact-scene validator / 같은 오류 |
 | `target-inset` | root top padding 0px → 1px | layout exact-scene validator / 같은 오류 |
 | `target-extra-inflow-child` | 두 번째 static in-flow child 추가 | layout scene cardinality / 같은 오류 |
 | `target-browser-marker-as-node` | absolute half-height marker를 runtime node로 추가 | layout scene cardinality/position gate / 같은 오류 |
+
+`target-alignment`의 두 경로는 의도적으로 구분한다. Runtime track-sizing UA profile은 grid container의 `align-content:start`만 허용하므로 CSS mutation은 layout exact-scene validator보다 앞선 style projection에서 거부된다. Layout typed-input mutation은 exact-scene validator가 `grid-template-rows` owner로 실패하는지 직접 확인한다.
 4. `cargo fmt --all -- --check`, focused tests, `cargo clippy --locked --workspace --all-targets -- -D warnings`, fixture module boundary 및 workspace relevant build를 실행한다.
 5. Default/product artifact negative control과 `c11-4-grid-track-sizing-fixture-test` opt-in positive control에서 row scene symbol·문자열·payload의 포함 여부를 비교한다. 정적 library 결과를 APK/IPA 전체 제외로 확대 해석하지 않는다.
 6. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 target/control 각 2 scene을 실행한다. Root/item frames, row tracks, pass별 count/basis, draw/present와 source/build/install hash를 별도로 기록한다. 실기기 GPU, compositor 이후 pixels, glyph paint는 주장하지 않는다.
@@ -94,4 +96,4 @@ PR #623은 fixed scene의 열 축에서 intrinsic max-content 계산 뒤 cyclic 
 
 ## 계획 사전 비교 상태
 
-[사전 비교 자료](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)는 Chrome 156 관측과 독립 계산을 보존한다. 이 계획은 계획 검토/PR 단계이며 runtime 구현·`spec/STATUS.md`·공식 완료 수를 변경하지 않는다.
+[사전 비교 자료](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)는 Chrome 156 관측과 독립 계산을 보존한다. 구현 중에도 이 기대값을 기준으로 사용한다. C11.4 공식 상태와 완료 수는 구현 PR 병합 전까지 변경하지 않는다.

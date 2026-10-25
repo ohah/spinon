@@ -1,0 +1,29 @@
+{
+  "serial": "emulator-5560",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP41.260831.007/16416850:userdebug/dev-keys",
+  "apkSha256": "31bf70c9fd7a1322e1f37f719303f62ccaa8561463627c9f07bbc0a07d066691",
+  "installedApkSha256": "31bf70c9fd7a1322e1f37f719303f62ccaa8561463627c9f07bbc0a07d066691",
+  "sourceRevision": {
+    "commit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+    "tree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+    "trackedDiffSha256": "84ba9308b1730ed4f039e88cd435c446828ef6035aa3aafcbc22b0fb610b9d11",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/calc_tree.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs",
+      "vendor/taffy/src/compute/grid/mod.rs"
+    ]
+  }
+}

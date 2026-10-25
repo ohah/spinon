@@ -293,7 +293,7 @@ impl CalcLayoutTree {
                         .grid_containers
                         .get(&external_id)
                         .is_some_and(|container| {
-                            crate::grid::fixture_cyclic_percentage_auto_repeat_target(
+                            crate::grid::fixture_cyclic_percentage_auto_repeat_trace_scene(
                                 input, source, container,
                             )
                         }),

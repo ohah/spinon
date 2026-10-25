@@ -1,0 +1,28 @@
+{
+  "serial": "emulator-5560",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP41.260831.007/16416850:userdebug/dev-keys",
+  "apkSha256": "774a288dc5cfdd7401874f9dfb438fc731d997fbdf79f7ef0ea6814b3ba2010e",
+  "installedApkSha256": "774a288dc5cfdd7401874f9dfb438fc731d997fbdf79f7ef0ea6814b3ba2010e",
+  "sourceRevision": {
+    "commit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+    "tree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+    "trackedDiffSha256": "fd61b2eea2de891635ae2bf9fdb979509e6d71c7415770e6dd8d06b6ff8b742f",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/calc_tree.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs",
+      "vendor/taffy/src/compute/grid/mod.rs"
+    ]
+  }
+}

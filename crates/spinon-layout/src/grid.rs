@@ -495,7 +495,8 @@ pub(super) fn validate_grid_layout(
                         .get(&node.id)
                         .is_some_and(|axes| axes.height),
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-                    fixture_cyclic_percentage_auto_repeat: false,
+                    fixture_cyclic_percentage_auto_repeat:
+                        fixture_cyclic_percentage_auto_repeat_allowed(input, node, container),
                 },
                 &input.css_math,
             )?;
@@ -828,13 +829,13 @@ struct AutoRepeatAxisContext<'a> {
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-pub(super) fn fixture_cyclic_percentage_auto_repeat_target(
+pub(super) fn fixture_cyclic_percentage_auto_repeat_trace_scene(
     input: &LayoutInput,
     node: &crate::LayoutNode,
     container: &GridContainerInput,
 ) -> bool {
-    // Include the paired definite control in fixture tracing; only the indefinite target takes
-    // the percentage rerun/re-expansion path in Taffy's grid algorithm.
+    // 짝이 되는 definite control도 fixture trace에 포함합니다. Validation에서는
+    // indefinite target만 cyclic-percentage opt-in으로 허용합니다.
     fixture_cyclic_percentage_auto_repeat_scene(input, node, container, true)
 }
 
@@ -844,7 +845,7 @@ fn fixture_cyclic_percentage_auto_repeat_allowed(
     node: &crate::LayoutNode,
     container: &GridContainerInput,
 ) -> bool {
-    fixture_cyclic_percentage_auto_repeat_scene(input, node, container, true)
+    fixture_cyclic_percentage_auto_repeat_scene(input, node, container, false)
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -863,14 +864,31 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
     let Some(item) = input.nodes.iter().find(|candidate| candidate.id == item_id) else {
         return false;
     };
-    let fixture_width = match node.style.width {
-        LayoutDimension::MaxContent => LayoutDimension::MaxContent,
-        LayoutDimension::Fixed(40.0) if allow_definite_control => LayoutDimension::Fixed(40.0),
-        _ => return false,
+    let row_axis = container.rows_auto_repeat.is_some();
+    let (fixture_width, fixture_height) = if row_axis {
+        let height = match node.style.height {
+            LayoutDimension::MaxContent => LayoutDimension::MaxContent,
+            LayoutDimension::Fixed(40.0) if allow_definite_control => LayoutDimension::Fixed(40.0),
+            _ => return false,
+        };
+        (LayoutDimension::Fixed(24.0), height)
+    } else {
+        let width = match node.style.width {
+            LayoutDimension::MaxContent => LayoutDimension::MaxContent,
+            LayoutDimension::Fixed(40.0) if allow_definite_control => LayoutDimension::Fixed(40.0),
+            _ => return false,
+        };
+        (width, LayoutDimension::Auto)
     };
     let expected_root_style = LayoutStyle {
         display: LayoutDisplay::Grid,
+        box_sizing: if row_axis {
+            LayoutBoxSizing::ContentBox
+        } else {
+            LayoutBoxSizing::BorderBox
+        },
         width: fixture_width,
+        height: fixture_height,
         flex_direction: crate::FlexDirection::Row,
         flex_shrink: 1.0,
         align_content: Some(crate::LayoutAlignContent::Position {
@@ -887,17 +905,57 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
         display: LayoutDisplay::Block,
         width: LayoutDimension::Fixed(24.0),
         height: LayoutDimension::Fixed(16.0),
+        min_width: if row_axis {
+            LayoutDimension::Fixed(0.0)
+        } else {
+            LayoutDimension::Auto
+        },
+        min_height: if row_axis {
+            LayoutDimension::Fixed(0.0)
+        } else {
+            LayoutDimension::Auto
+        },
         flex_direction: crate::FlexDirection::Row,
         flex_shrink: 1.0,
         align_content: Some(crate::LayoutAlignContent::Normal),
         ..LayoutStyle::default()
     };
-    let repeat = container.columns_auto_repeat.as_ref();
+    let (tracks, repeat, line_names, other_tracks, other_repeat, other_line_names) = if row_axis {
+        (
+            &container.rows,
+            container.rows_auto_repeat.as_ref(),
+            &container.rows_line_names,
+            &container.columns,
+            container.columns_auto_repeat.as_ref(),
+            &container.columns_line_names,
+        )
+    } else {
+        (
+            &container.columns,
+            container.columns_auto_repeat.as_ref(),
+            &container.columns_line_names,
+            &container.rows,
+            container.rows_auto_repeat.as_ref(),
+            &container.rows_line_names,
+        )
+    };
+    let placement_matches = if row_axis {
+        input.grid_items.len() == 1
+            && input.grid_items.get(&item_id)
+                == Some(&crate::GridItemInput {
+                    row_start: GridPlacementInput::Line(1),
+                    row_end: GridPlacementInput::Auto,
+                    column_start: GridPlacementInput::Line(1),
+                    column_end: GridPlacementInput::Auto,
+                })
+    } else {
+        input.grid_items.is_empty()
+    };
     node.style == expected_root_style
         && container.placement_mode == crate::GridPlacementMode::TrackSizing
-        && container.columns.len() == 1
+        && tracks.len() == 1
         && matches!(
-            container.columns[0],
+            tracks[0],
             GridTrackSize::MinMax {
                 min: GridTrackMinSizingFunction::LengthPx(0.0),
                 max: GridTrackMaxSizingFunction::Percentage(0.5),
@@ -909,17 +967,22 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
                 && repeat.end == 1
                 && repeat.line_names.iter().all(Vec::is_empty)
         })
-        && container.columns_line_names.iter().all(Vec::is_empty)
-        && container.rows == [GridTrackSize::Auto]
-        && container.rows_auto_repeat.is_none()
-        && container.rows_line_names.iter().all(Vec::is_empty)
+        && line_names.iter().all(Vec::is_empty)
+        && other_tracks.as_slice()
+            == if row_axis {
+                &[GridTrackSize::LengthPx(24.0)][..]
+            } else {
+                &[GridTrackSize::Auto][..]
+            }
+        && other_repeat.is_none()
+        && other_line_names.iter().all(Vec::is_empty)
         && container.template_areas.is_none()
         && container.auto_flow == crate::GridAutoFlow::Row
         && container.auto_rows == crate::GridAutoRows::Auto
         && container.auto_columns == crate::GridAutoColumns::Auto
         && item.children.is_empty()
         && item.style == expected_item_style
-        && input.grid_items.is_empty()
+        && placement_matches
         && input.positioning.len() == 2
         && input
             .positioning
@@ -1338,9 +1401,8 @@ fn auto_repeat_maximum_is_supported(
             value.is_finite()
                 && value >= 0.0
                 && (cyclic_percentage_auto_repeat_fixture
-                    || (context.percentage_basis_is_definite
-                        && explicit_positive_content_axis(context.style, property)
-                            .is_some_and(|basis| (value * basis).is_finite())))
+                    || definite_auto_repeat_content_basis(context, property)
+                        .is_some_and(|basis| (value * basis).is_finite()))
         }
         GridTrackMaxSizingFunction::Calc(id) => {
             context.percentage_basis_is_definite
@@ -1353,31 +1415,74 @@ fn auto_repeat_maximum_is_supported(
 }
 
 fn explicit_positive_content_axis(style: &LayoutStyle, property: &str) -> Option<f32> {
-    let (dimension, minimum, maximum, padding_start, padding_end, border_start, border_end) =
-        match property {
-            "grid-template-columns" => (
-                style.width,
-                style.min_width,
-                style.max_width,
-                style.padding.left,
-                style.padding.right,
-                style.border.left,
-                style.border.right,
-            ),
-            "grid-template-rows" => (
-                style.height,
-                style.min_height,
-                style.max_height,
-                style.padding.top,
-                style.padding.bottom,
-                style.border.top,
-                style.border.bottom,
-            ),
-            _ => return None,
-        };
+    let (dimension, minimum, maximum, ..) = content_axis_properties(style, property)?;
     if minimum != LayoutDimension::Fixed(0.0) || maximum != LayoutDimension::Auto {
         return None;
     }
+    fixed_content_axis_size(style, property, dimension)
+}
+
+fn definite_auto_repeat_content_basis(
+    context: AutoRepeatAxisContext<'_>,
+    property: &str,
+) -> Option<f32> {
+    if !context.percentage_basis_is_definite {
+        return None;
+    }
+    let (dimension, minimum, maximum, ..) = content_axis_properties(context.style, property)?;
+    // Auto-repeat count는 definite preferred size를 사용합니다. 초기 `auto` minimum은 명시된
+    // fixed preferred size를 indefinite로 만들지 않습니다. authored clamp는 계속 거부하도록
+    // 기본 min/max 조합으로만 허용합니다.
+    if (minimum != LayoutDimension::Auto && minimum != LayoutDimension::Fixed(0.0))
+        || maximum != LayoutDimension::Auto
+    {
+        return None;
+    }
+    fixed_content_axis_size(context.style, property, dimension)
+}
+
+fn content_axis_properties(
+    style: &LayoutStyle,
+    property: &str,
+) -> Option<(
+    LayoutDimension,
+    LayoutDimension,
+    LayoutDimension,
+    LayoutLengthPercentage,
+    LayoutLengthPercentage,
+    f32,
+    f32,
+)> {
+    match property {
+        "grid-template-columns" => Some((
+            style.width,
+            style.min_width,
+            style.max_width,
+            style.padding.left,
+            style.padding.right,
+            style.border.left,
+            style.border.right,
+        )),
+        "grid-template-rows" => Some((
+            style.height,
+            style.min_height,
+            style.max_height,
+            style.padding.top,
+            style.padding.bottom,
+            style.border.top,
+            style.border.bottom,
+        )),
+        _ => None,
+    }
+}
+
+fn fixed_content_axis_size(
+    style: &LayoutStyle,
+    property: &str,
+    dimension: LayoutDimension,
+) -> Option<f32> {
+    let (_, _, _, padding_start, padding_end, border_start, border_end) =
+        content_axis_properties(style, property)?;
     let LayoutDimension::Fixed(dimension) = dimension else {
         return None;
     };
