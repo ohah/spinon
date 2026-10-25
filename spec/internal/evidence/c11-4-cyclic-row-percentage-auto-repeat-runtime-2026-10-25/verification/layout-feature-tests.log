@@ -1,0 +1,11 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.22s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-466af74e1171adde)
+
+running 4 tests
+test grid::track_sizing_tests::cyclic_percentage_auto_repeat_rows::definite_row_control_with_authored_max_height_stays_fail_closed ... ok
+test grid::track_sizing_tests::cyclic_percentage_auto_repeat_rows::cyclic_percentage_row_scene_mutations_fail_closed_at_grid_template_rows ... ok
+test grid::track_sizing_tests::cyclic_percentage_auto_repeat_rows::definite_40px_row_control_uses_the_general_auto_repeat_path ... ok
+test grid::track_sizing_tests::cyclic_percentage_auto_repeat_rows::cyclic_percentage_auto_repeat_rows_keeps_one_track_across_the_percentage_rerun ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 279 filtered out; finished in 0.00s

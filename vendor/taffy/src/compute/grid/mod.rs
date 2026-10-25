@@ -476,6 +476,8 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         .any(|item| item.participates_in_baseline_alignment());
 
     // Run track sizing algorithm for Inline axis
+    let trace_cyclic_percentage_auto_repeat_columns =
+        cyclic_percentage_auto_repeat_fixture && columns.iter().any(GridTrack::uses_percentage);
     track_sizing_algorithm(
         tree,
         AbstractAxis::Inline,
@@ -496,7 +498,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         has_baseline_aligned_item,
         false,
         track_sizing_pass_context(
-            cyclic_percentage_auto_repeat_fixture,
+            trace_cyclic_percentage_auto_repeat_columns,
             outer_node_size.width.is_some(),
             col_auto_repetition_count,
         ),
@@ -520,6 +522,8 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         .for_each(|item| item.grid_area_size_cache = None);
 
     // Run track sizing algorithm for Block axis
+    let trace_cyclic_percentage_auto_repeat_rows =
+        cyclic_percentage_auto_repeat_fixture && rows.iter().any(GridTrack::uses_percentage);
     track_sizing_algorithm(
         tree,
         AbstractAxis::Block,
@@ -535,7 +539,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         |track: &GridTrack, _, _| Some(track.base_size),
         false, // TODO: Support baseline alignment in the vertical axis
         false,
-        track_sizing_pass_context(false, false, row_auto_repetition_count),
+        track_sizing_pass_context(
+            trace_cyclic_percentage_auto_repeat_rows,
+            outer_node_size.height.is_some(),
+            row_auto_repetition_count,
+        ),
         track_sizing_trace.as_mut(),
     );
     let initial_row_sum = rows.iter().map(|track| track.base_size).sum::<f32>();
@@ -784,7 +792,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             |track: &GridTrack, _, _| Some(track.base_size),
             false, // TODO: Support baseline alignment in the vertical axis
             false,
-            track_sizing_pass_context(false, false, row_auto_repetition_count),
+            track_sizing_pass_context(
+                cyclic_percentage_auto_repeat_fixture && rerun_percentage_row_sizing,
+                true,
+                row_auto_repetition_count,
+            ),
             track_sizing_trace.as_mut(),
         );
     }
@@ -1463,11 +1475,11 @@ pub struct GridTrackSizingPassTrace {
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
-/// Semantic phase labels for the fixed cyclic-percentage auto-repeat fixture.
+/// 고정 cyclic-percentage auto-repeat fixture의 의미 단계입니다.
 pub enum GridTrackSizingFixturePhase {
-    /// The initial indefinite max-content sizing pass.
+    /// 현재 track-sizing 축이 indefinite인 최초 intrinsic-size pass입니다.
     IntrinsicMaxContent,
-    /// The final pass after the content-box width is definite.
+    /// 현재 track-sizing 축의 content-box 크기가 definite가 된 뒤의 최종 pass입니다.
     FinalDefinite,
 }
 

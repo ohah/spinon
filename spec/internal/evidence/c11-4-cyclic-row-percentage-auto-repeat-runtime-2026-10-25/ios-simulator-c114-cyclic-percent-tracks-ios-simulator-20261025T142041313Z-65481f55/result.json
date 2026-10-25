@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-cyclic-percent-tracks-ios-simulator-20261025T142041313Z-65481f55",
+  "sceneCount": 2,
+  "observations": [
+    {
+      "sceneId": "cyclic-max-content-auto-fill-rows",
+      "summary": "2026-10-25 23:20:42.277668+0900  localhost SpinonBootstrap[79944]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T142041313Z-65481f55-0 scene_id=cyclic-max-content-auto-fill-rows expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 8,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-40px-auto-fill-control-rows",
+      "summary": "2026-10-25 23:20:45.510817+0900  localhost SpinonBootstrap[80635]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T142041313Z-65481f55-1 scene_id=definite-40px-auto-fill-control-rows expected_root_frame=width=24,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 7,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

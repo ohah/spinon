@@ -1,0 +1,606 @@
+{
+  "schemaVersion": 1,
+  "status": "implementation candidate; not official C11.4 completion",
+  "capturedAt": "2026-10-25",
+  "repository": {
+    "branch": "feat/c11-4-cyclic-row-percentage-auto-repeat-20261025",
+    "headCommit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+    "headTree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+    "trackedDiffSha256": "84ba9308b1730ed4f039e88cd435c446828ef6035aa3aafcbc22b0fb610b9d11",
+    "taskSourceDigestSha256": "b3bd35e4cc21475f0e79553a6c812fb364b95038770e490ad839660554cda2f2",
+    "taskSourceFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "tracked": true,
+        "sha256": "447f0552f7e42a9b2ad1b6283d0f77351a5e8fab25c019d966e08bd7cefe80a8"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_percentage_auto_repeat_rows.rs",
+        "tracked": false,
+        "sha256": "889ad86d3b1ac5a3919d399ba95a61314d2d1a990bb2cce583489706d97ce66d"
+      },
+      {
+        "path": "crates/spinon-layout/src/calc_tree.rs",
+        "tracked": true,
+        "sha256": "196ae6863f0e748fd586f0d2603b538d81b40f60d4e6478679ef3cd0f377182b"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid.rs",
+        "tracked": true,
+        "sha256": "3e646eaf6f6ef0573b0bbc23ab02ba57506dc66766762fce5489de9f6b8d836a"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+        "tracked": true,
+        "sha256": "72d5acdac30040b04d7b67bb3d8773deab81261e501a5b4cbb9463a510e82dc0"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_track_sizing_tests/cyclic_percentage_auto_repeat_rows.rs",
+        "tracked": false,
+        "sha256": "c83a1bb140beaa42a162f4b1439d7d31fe66d7c083c1d9a90742b8ac203ed0d1"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+        "tracked": true,
+        "sha256": "c142c5c468fccaa4c3d159a5720fead7f498184f42240042573acb8acb3d990b"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/cyclic_percentage_auto_repeat_rows.rs",
+        "tracked": false,
+        "sha256": "a40b2507be271eb975b1c94aa36dbc55bdfba0cf4647b933aa984a3ca084bb2f"
+      },
+      {
+        "path": "plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md",
+        "tracked": true,
+        "sha256": "bc66d9c8e3b47a238ad00462cd1b71499cc459f470c3fed80e9d1dd0eaa7d944"
+      },
+      {
+        "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "tracked": true,
+        "sha256": "b4a4f2450639034954abc34e58c3dc815cc8acb517d7b7870e72aa779d0a8731"
+      },
+      {
+        "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "tracked": true,
+        "sha256": "3704078e3f3fac62fc48a81aab924d62e58b50f80cba5bb64183557bb441bcb9"
+      },
+      {
+        "path": "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+        "tracked": true,
+        "sha256": "67954074a02a939bd9c1ef01bbcf7f652b27f1621b7bb1f282221091b7fb59ee"
+      },
+      {
+        "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+        "tracked": true,
+        "sha256": "5d3fdf503cb5feef14d0e9e2e33bd7eb388769b492621f59b8ad3ca68826da18"
+      },
+      {
+        "path": "vendor/taffy/src/compute/grid/mod.rs",
+        "tracked": true,
+        "sha256": "9c5573b5e3cf56631c2a2697196e3ba85708302f5ff1a8dac16b88af255cd680"
+      }
+    ]
+  },
+  "featureFlags": {
+    "productCore": "c04-runtime-gpu=1",
+    "appHarness": "c04-runtime-gpu-fixture-test=1",
+    "rustTests": "c11-4-grid-track-sizing-fixture-test"
+  },
+  "builds": {
+    "androidApk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "31bf70c9fd7a1322e1f37f719303f62ccaa8561463627c9f07bbc0a07d066691"
+    },
+    "iosSimulatorExecutable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "sha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5"
+    },
+    "iosInfoPlist": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/Info.plist",
+      "sha256": "2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb"
+    },
+    "staticLibraryArtifactBoundary": {
+      "schemaVersion": 1,
+      "scope": "static-library artifact boundary only",
+      "artifacts": {
+        "default": {
+          "path": "/tmp/spinon-c114-default.a",
+          "bytes": 514203560,
+          "sha256": "db48061bbe7a9d22d2936e841a808a5bb57690c78303cde319e9871079d83a36",
+          "rowFixtureSymbolPresent": false,
+          "rowFixtureSceneStringsPresent": {
+            "cyclic-max-content-auto-fill-rows": false,
+            "definite-40px-auto-fill-control-rows": false
+          },
+          "matchingSymbols": []
+        },
+        "fixture": {
+          "path": "/tmp/spinon-c114-fixture.a",
+          "bytes": 699805680,
+          "sha256": "ca79526fae315ccf620a938f8e04621f3e0457e867f6c8a6c736951d789b8919",
+          "rowFixtureSymbolPresent": true,
+          "rowFixtureSceneStringsPresent": {
+            "cyclic-max-content-auto-fill-rows": true,
+            "definite-40px-auto-fill-control-rows": true
+          },
+          "matchingSymbols": [
+            "00000000000003d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+          ]
+        }
+      },
+      "status": "passed"
+    },
+    "iosSimulatorInstalledApp": {
+      "bundleIdentifier": "dev.spinon.bootstrap",
+      "appContainer": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data/Containers/Bundle/Application/D9895463-CC56-4408-B996-6568EF035D70/SpinonBootstrap.app",
+      "bundleTreeSha256": "878cf5317c00acfaaabcc9bc69b349214b6e00e8c9f28864d0c76b6a7943c871",
+      "executableSha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5",
+      "infoPlistSha256": "2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb",
+      "fileCount": 9,
+      "totalFileBytes": 38799324,
+      "matchesBuiltExecutable": true,
+      "matchesBuiltInfoPlist": true
+    }
+  },
+  "simulatorRuns": [
+    {
+      "target": "android-avd",
+      "simulator": {
+        "serial": "emulator-5560",
+        "apiLevel": 37,
+        "abi": "arm64-v8a",
+        "model": "sdk_gphone16k_arm64",
+        "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP41.260831.007/16416850:userdebug/dev-keys"
+      },
+      "sourceRevision": {
+        "commit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+        "tree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+        "trackedDiffSha256": "84ba9308b1730ed4f039e88cd435c446828ef6035aa3aafcbc22b0fb610b9d11",
+        "trackedDirtyPaths": [
+          "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+          "crates/spinon-layout/src/calc_tree.rs",
+          "crates/spinon-layout/src/grid.rs",
+          "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+          "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+          "plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md",
+          "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+          "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+          "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+          "tools/css-reference/fixture-module-boundary.test.mjs",
+          "vendor/taffy/src/compute/grid/mod.rs"
+        ]
+      },
+      "apkSha256": "31bf70c9fd7a1322e1f37f719303f62ccaa8561463627c9f07bbc0a07d066691",
+      "installedApkSha256": "31bf70c9fd7a1322e1f37f719303f62ccaa8561463627c9f07bbc0a07d066691",
+      "observations": [
+        {
+          "sceneId": "cyclic-max-content-auto-fill-rows",
+          "summary": "10-25 23:28:50.251 16500 16517 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261025T142848934Z-bf999679-0 scene_id=cyclic-max-content-auto-fill-rows expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+          "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+          "observedNodeFrames": [
+            {
+              "order": 0,
+              "node": 1,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            {
+              "order": 1,
+              "node": 2,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            }
+          ],
+          "tracks": {
+            "Columns": [
+              {
+                "baseSize": 24,
+                "collapsed": false
+              }
+            ],
+            "Rows": [
+              {
+                "baseSize": 8,
+                "collapsed": false
+              }
+            ]
+          },
+          "trackTraceChunks": 4,
+          "drawPresented": true,
+          "supersededRetries": 0
+        },
+        {
+          "sceneId": "definite-40px-auto-fill-control-rows",
+          "summary": "10-25 23:28:52.879 16602 16622 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261025T142848934Z-bf999679-1 scene_id=definite-40px-auto-fill-control-rows expected_root_frame=width=24,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+          "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;1:node=2,x=0,y=0,width=24,height=16]",
+          "observedNodeFrames": [
+            {
+              "order": 0,
+              "node": 1,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 40
+            },
+            {
+              "order": 1,
+              "node": 2,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            }
+          ],
+          "tracks": {
+            "Columns": [
+              {
+                "baseSize": 24,
+                "collapsed": false
+              }
+            ],
+            "Rows": [
+              {
+                "baseSize": 20,
+                "collapsed": false
+              },
+              {
+                "baseSize": 20,
+                "collapsed": false
+              }
+            ]
+          },
+          "trackTraceChunks": 4,
+          "drawPresented": true,
+          "supersededRetries": 0
+        }
+      ],
+      "files": [
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/cyclic-max-content-auto-fill-rows.png",
+          "bytes": 74816,
+          "sha256": "01a7a20ef0cea3c4e70c9743e0fcac5bd710e69d62cde8a8963377dfbe8bcdea"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/definite-40px-auto-fill-control-rows.png",
+          "bytes": 74835,
+          "sha256": "f2616d7f19d23ae050abdbd426efdd3c1401cc326b6f1e46900b18ed3df337a4"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/install.log",
+          "bytes": 36,
+          "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/installed-apk-verification.json",
+          "bytes": 360,
+          "sha256": "d06ab9152ef20126cd17f0a5bd57a8fd6c60d841063aa13051ae71df80726a4f"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/launch-cyclic-max-content-auto-fill-rows.log",
+          "bytes": 119,
+          "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/launch-definite-40px-auto-fill-control-rows.log",
+          "bytes": 119,
+          "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/result.json",
+          "bytes": 2692,
+          "sha256": "d1b6fadfab574ce3762bc97a7d4dcc9d8c1c4f102ab6d7fe0ad9649b389f0744"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/runtime-cyclic-max-content-auto-fill-rows.log",
+          "bytes": 20580,
+          "sha256": "985a8ede5961c649523de9db89bbdf0d1cadb2f6f27061b254258495a86a646f"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/runtime-definite-40px-auto-fill-control-rows.log",
+          "bytes": 19398,
+          "sha256": "5270e5f2d8e3043c2ee6981a5d69ec8e7e0876bf2f0fca198a670ea6c49ae7c2"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/simulator.json",
+          "bytes": 1394,
+          "sha256": "76d5c9a2d707522a2f24f96c4386f9286748a40fceb05cf79c1791656d62a4ca"
+        }
+      ]
+    },
+    {
+      "target": "ios-simulator",
+      "simulator": {
+        "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "device": "iPhone 17 Pro",
+        "runtime": "iOS 26.2"
+      },
+      "sourceRevision": {
+        "commit": "5166454da31f200e1ac6c9dcdbe61dc0e4389ae2",
+        "tree": "ccf8102249a39e4b2684b399e188c3c45923f7fc",
+        "trackedDiffSha256": "84ba9308b1730ed4f039e88cd435c446828ef6035aa3aafcbc22b0fb610b9d11",
+        "trackedDirtyPaths": [
+          "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+          "crates/spinon-layout/src/calc_tree.rs",
+          "crates/spinon-layout/src/grid.rs",
+          "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+          "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+          "plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md",
+          "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+          "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+          "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+          "tools/css-reference/fixture-module-boundary.test.mjs",
+          "vendor/taffy/src/compute/grid/mod.rs"
+        ]
+      },
+      "apkSha256": null,
+      "installedApkSha256": null,
+      "observations": [
+        {
+          "sceneId": "cyclic-max-content-auto-fill-rows",
+          "summary": "2026-10-25 23:28:49.793545+0900  localhost SpinonBootstrap[8090]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T142848934Z-d81cce94-0 scene_id=cyclic-max-content-auto-fill-rows expected_root_frame=width=24,height=16 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+          "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;1:node=2,x=0,y=0,width=24,height=16]",
+          "observedNodeFrames": [
+            {
+              "order": 0,
+              "node": 1,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            },
+            {
+              "order": 1,
+              "node": 2,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            }
+          ],
+          "tracks": {
+            "Columns": [
+              {
+                "baseSize": 24,
+                "collapsed": false
+              }
+            ],
+            "Rows": [
+              {
+                "baseSize": 8,
+                "collapsed": false
+              }
+            ]
+          },
+          "trackTraceChunks": 8,
+          "drawPresented": true,
+          "supersededRetries": 0
+        },
+        {
+          "sceneId": "definite-40px-auto-fill-control-rows",
+          "summary": "2026-10-25 23:28:51.560808+0900  localhost SpinonBootstrap[8386]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T142848934Z-d81cce94-1 scene_id=definite-40px-auto-fill-control-rows expected_root_frame=width=24,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+          "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;1:node=2,x=0,y=0,width=24,height=16]",
+          "observedNodeFrames": [
+            {
+              "order": 0,
+              "node": 1,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 40
+            },
+            {
+              "order": 1,
+              "node": 2,
+              "x": 0,
+              "y": 0,
+              "width": 24,
+              "height": 16
+            }
+          ],
+          "tracks": {
+            "Columns": [
+              {
+                "baseSize": 24,
+                "collapsed": false
+              }
+            ],
+            "Rows": [
+              {
+                "baseSize": 20,
+                "collapsed": false
+              },
+              {
+                "baseSize": 20,
+                "collapsed": false
+              }
+            ]
+          },
+          "trackTraceChunks": 7,
+          "drawPresented": true,
+          "supersededRetries": 0
+        }
+      ],
+      "files": [
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/cyclic-max-content-auto-fill-rows.png",
+          "bytes": 146178,
+          "sha256": "9371908bcd95df3aac4ac7df016771793abbbd29c335eb4d94e183e62e091bb8"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/definite-40px-auto-fill-control-rows.png",
+          "bytes": 146241,
+          "sha256": "34dc46480edecf79454b152abcb08050f704d99a6e03186af1d8e87f9f43ace4"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/install.log",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/launch-cyclic-max-content-auto-fill-rows.log",
+          "bytes": 27,
+          "sha256": "622177d016f9ba6d5599c6bd846d17d754e559e7379fcebbf479b0cd3597eae1"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/launch-definite-40px-auto-fill-control-rows.log",
+          "bytes": 27,
+          "sha256": "c78ea6ef18dfd31693b154598820d5121c47f80ce601dedf78863b623afd552b"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/result.json",
+          "bytes": 2758,
+          "sha256": "4f4b36838f971dc97f8f9f3741f16d49c652511c09d9aed6ffdff73595d0131a"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/runtime-cyclic-max-content-auto-fill-rows.log",
+          "bytes": 12066,
+          "sha256": "43d71cb81442b8ad7fe3e170c7854e5fd16f375118609ac4c8071cfd6a9d48e6"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/runtime-definite-40px-auto-fill-control-rows.log",
+          "bytes": 10701,
+          "sha256": "202900e784eb8d1f29355bc5e22f8e4d830c50f99eab50fe0d866aee56809913"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/screenshot-cyclic-max-content-auto-fill-rows.log",
+          "bytes": 306,
+          "sha256": "81a91ca728f1407e39d5ebb2d5c2089bbcf26e4833c9d1b61afdaf2df32ead34"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/screenshot-definite-40px-auto-fill-control-rows.log",
+          "bytes": 309,
+          "sha256": "8418418264ebcb6e773e667bc50aa993f5b081eb1f14dd3b4d5447163b776d14"
+        },
+        {
+          "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/simulator.json",
+          "bytes": 1219,
+          "sha256": "24aecbaafc5548a8f7c186f16cbaad4f0b323d0c30e9e3173d83e64942576906"
+        }
+      ],
+      "appSha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5"
+    }
+  ],
+  "verificationFiles": [
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/android-build.log",
+      "bytes": 4613,
+      "sha256": "25eada2f7b0529f3182ca43ce9c5b8facac0df741b47f6e05ccacc7765b3b934"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/artifact-boundary.json",
+      "bytes": 1018,
+      "sha256": "f027786a69229948ff418525e5a4132020eb9a0481ccf22db8a708d0f275558a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/cargo-clippy.log",
+      "bytes": 270,
+      "sha256": "2f04d28267275785704904389c16751bd97f3852b4e83088d86c31b9f1fe6916"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/cargo-fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/default-artifact-build.log",
+      "bytes": 72,
+      "sha256": "fecede7c2157efe2f16c8c8b9dce94b0fb4dd384dca8207046c8bf7636eb0ffe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/evidence-html-links.log",
+      "bytes": 35,
+      "sha256": "b5b549b51ce9d89c48db6ca8576b190117a156ff7a06889df208b4f8bc141ddf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/ffi-feature-tests.log",
+      "bytes": 514,
+      "sha256": "173abdc08facdd1ca76b3a3434c6ef9e193e4f026f241885c15c6fd342777e94"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/ffi-feature-tests.log.raw.gz",
+      "bytes": 359,
+      "sha256": "68fc64709bed680fa9da8b402b97b4688e93c304b5913a5f01f236a464fc3998"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/fixture-artifact-build.log",
+      "bytes": 72,
+      "sha256": "22e0df986057b9ba5be07526ac5fb348862a3dedef42108383cc3e088acbb889"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/fixture-module-boundary.log",
+      "bytes": 1409,
+      "sha256": "6b70cc621799670b603884bf22f2e2f4eea39a25872c9b15330a734daaafc67e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/git-diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/index.html",
+      "bytes": 2501,
+      "sha256": "1430769b2393f0dc248805dbff420d2fa7228c4f07d7213e8d6f8b4d719ea9d0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/ios-build.log",
+      "bytes": 91451,
+      "sha256": "11144d087d6148f386379ea9d681a413e343fe18e578cafab7929338ec031b12"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/ios-build.log.raw.gz",
+      "bytes": 13149,
+      "sha256": "5b71f567cabc8e685a590086511ae89f5d170a2ae61fda82a5bed4985c03497f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/ios-installed-app.json",
+      "bytes": 3023,
+      "sha256": "e6c88668e703bbf23e88f6d95d02e007141329ee6944e28119986e6b40d3754b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/layout-feature-tests.log",
+      "bytes": 941,
+      "sha256": "1b701300b133d9f45ff57ec800de59520df1b8443315936c589a7935237cf25b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/layout-feature-tests.log.raw.gz",
+      "bytes": 438,
+      "sha256": "6be897f292a6f79c6009ac6da97997069557cff50c4012c472f86e16d80d530c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/README.md",
+      "bytes": 2498,
+      "sha256": "900d25220eb1ab5740b57853865d7129226766136db573e855e84611ce45fddc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/runtime-feature-off-tests.log",
+      "bytes": 1170,
+      "sha256": "c5e502285ce603c0cc3753ff90c3e272d8cba68c582ab622c731a36ff1b0226a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/runtime-feature-off-tests.log.raw.gz",
+      "bytes": 498,
+      "sha256": "63a7a76cd39efd5fa38088b21ddc93ebc4a4d48fa15d16d8f124fee581b733a3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/runtime-feature-tests.log",
+      "bytes": 2653,
+      "sha256": "241fb937e3dfc24e76586f4cf4cde73292c2d20a69b3cc880618c10a90cd7900"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/verification/runtime-feature-tests.log.raw.gz",
+      "bytes": 663,
+      "sha256": "8fb3929769469f8464ba70fb10775a1eb4519270431cc41f1e4d28bed0e43027"
+    }
+  ],
+  "scopeLimits": [
+    "Android AVD and iOS Simulator only",
+    "No physical-device GPU claim",
+    "No post-compositor pixel claim",
+    "No WPT suite conformance claim",
+    "C11.4 completion checkbox and 72/213 official count remain unchanged"
+  ]
+}

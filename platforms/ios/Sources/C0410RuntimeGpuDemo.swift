@@ -120,6 +120,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
     "definite-calc-control",
     "cyclic-max-content-auto-fill", "definite-40px-auto-fill-control",
+    "cyclic-max-content-auto-fill-rows", "definite-40px-auto-fill-control-rows",
     "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
     "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
     "columns-percent-calc-fill", "columns-percent-fixed-fill-control",
@@ -1089,6 +1090,8 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
+    if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
+    if sceneID == "definite-40px-auto-fill-control-rows" { return "width=24,height=40" }
     if let height = c114OrthogonalRowHeight(sceneID) {
         return "width=74,height=\(height)"
     }
@@ -1374,7 +1377,9 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-max-content-auto-fill"
-        || sceneID == "definite-40px-auto-fill-control" {
+        || sceneID == "definite-40px-auto-fill-control"
+        || sceneID == "cyclic-max-content-auto-fill-rows"
+        || sceneID == "definite-40px-auto-fill-control-rows" {
         return "width=24,height=16"
     }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID),
@@ -2669,6 +2674,42 @@ private func c114CyclicPercentageAutoRepeatPassMatches(
         }
 }
 
+private func c114CyclicRowPercentageAutoRepeatTraceMatches(
+    _ sceneID: String, report: String
+) -> Bool {
+    let cyclic = sceneID == "cyclic-max-content-auto-fill-rows"
+    let definite = sceneID == "definite-40px-auto-fill-control-rows"
+    if !cyclic && !definite { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]] else { return false }
+
+    let rowPasses = passes.filter { ($0["axis"] as? String) == "Rows" }
+    guard rowPasses.allSatisfy({ $0["phase"] is String }) else { return false }
+    if cyclic {
+        guard rowPasses.count == 2,
+              let intrinsicPhase = rowPasses[0]["phase"] as? String,
+              intrinsicPhase == "IntrinsicMaxContent",
+              let finalPhase = rowPasses[1]["phase"] as? String,
+              finalPhase == "FinalDefinite",
+              let intrinsicSequence = rowPasses[0]["sequence"] as? Int,
+              let finalSequence = rowPasses[1]["sequence"] as? Int,
+              intrinsicSequence >= 0,
+              finalSequence > intrinsicSequence else { return false }
+        return c114CyclicPercentageAutoRepeatPassMatches(
+                rowPasses[0], count: 1, basis: nil, tracks: [16])
+            && c114CyclicPercentageAutoRepeatPassMatches(
+                rowPasses[1], count: 1, basis: 16, tracks: [8])
+    }
+    guard rowPasses.count == 1,
+          let phase = rowPasses[0]["phase"] as? String,
+          phase == "FinalDefinite" else { return false }
+    return c114CyclicPercentageAutoRepeatPassMatches(
+            rowPasses[0], count: 2, basis: 40, tracks: [20, 20])
+}
+
 private func c114FixedAutoAreaTraceMatches(_ sceneID: String, report: String) -> Bool {
     guard let expectation = c114FixedAutoAreaExpectation(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
@@ -3560,6 +3601,14 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     }
     if sceneID == "definite-40px-auto-fill-control" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
+    if sceneID == "cyclic-max-content-auto-fill-rows" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
+    if sceneID == "definite-40px-auto-fill-control-rows" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
     }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
@@ -5102,7 +5151,9 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "cyclic-max-content-auto-fill"
-        || sceneID == "definite-40px-auto-fill-control" { return 2 }
+        || sceneID == "definite-40px-auto-fill-control"
+        || sceneID == "cyclic-max-content-auto-fill-rows"
+        || sceneID == "definite-40px-auto-fill-control-rows" { return 2 }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) { return 3 }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return fixedAutoArea.items.count + 1
@@ -10063,6 +10114,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             )
             let expectedCyclicAutoRepeatTraceMatches =
                 c114CyclicPercentageAutoRepeatTraceMatches(
+                    c114GridTrackSizingSceneID, report: report
+                ) && c114CyclicRowPercentageAutoRepeatTraceMatches(
                     c114GridTrackSizingSceneID, report: report
                 )
             let expectedCrossAxisTrackTraceMatches = c114CrossAxisFixedAutoRepeatAreaExpectation(

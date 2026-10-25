@@ -1,6 +1,5 @@
 use super::*;
 use crate::session::ua_cascade::calculation::compute_request_for_block_flex_grid_placement;
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 use crate::session::ua_cascade::calculation::compute_request_for_block_flex_grid_track_sizing;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 use spinon_core::{
@@ -50,6 +49,9 @@ mod orthogonal_rows;
 
 #[path = "c11_grid_tests/cyclic_percentage_auto_repeat.rs"]
 mod cyclic_percentage_auto_repeat;
+
+#[path = "c11_grid_tests/cyclic_percentage_auto_repeat_rows.rs"]
+mod cyclic_percentage_auto_repeat_rows;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]

@@ -189,6 +189,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "columns-percent-calc-fit", "rows-percent-calc-fill",
             "rows-percent-fixed-fill-control", "rows-percent-calc-fit",
             "cyclic-max-content-auto-fill", "definite-40px-auto-fill-control",
+            "cyclic-max-content-auto-fill-rows", "definite-40px-auto-fill-control-rows",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -829,7 +830,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     ) {
         boolean cyclic = "cyclic-max-content-auto-fill".equals(sceneId);
         boolean definite = "definite-40px-auto-fill-control".equals(sceneId);
-        if (!cyclic && !definite) return true;
+        boolean cyclicRows = "cyclic-max-content-auto-fill-rows".equals(sceneId);
+        boolean definiteRows = "definite-40px-auto-fill-control-rows".equals(sceneId);
+        if (!cyclic && !definite && !cyclicRows && !definiteRows) return true;
         int marker = report.indexOf("grid_track_sizing_diagnostics=");
         if (marker < 0) return false;
         String diagnosticsJson = report.substring(
@@ -843,6 +846,50 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject trace = traces.optJSONObject(0);
             org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
             if (trace == null || trace.optInt("grid", -1) != 1 || passes == null) return false;
+            if (cyclicRows || definiteRows) {
+                List<org.json.JSONObject> rowPasses = new ArrayList<>();
+                for (int index = 0; index < passes.length(); index++) {
+                    org.json.JSONObject pass = passes.optJSONObject(index);
+                    if (pass == null) return false;
+                    if ("Rows".equals(pass.optString("axis"))) rowPasses.add(pass);
+                }
+                if (cyclicRows) {
+                    if (rowPasses.size() != 2) return false;
+                    org.json.JSONObject first = rowPasses.get(0);
+                    org.json.JSONObject second = rowPasses.get(1);
+                    int firstSequence = first.optInt("sequence", -1);
+                    int secondSequence = second.optInt("sequence", -1);
+                    if (!"IntrinsicMaxContent".equals(first.optString("phase"))
+                            || !"FinalDefinite".equals(second.optString("phase"))
+                            || firstSequence < 0 || secondSequence <= firstSequence) {
+                        return false;
+                    }
+                    org.json.JSONObject intrinsic = null;
+                    org.json.JSONObject finalDefinite = null;
+                    for (org.json.JSONObject pass : rowPasses) {
+                        if (pass.isNull("phase")) return false;
+                        String phase = pass.optString("phase");
+                        if ("IntrinsicMaxContent".equals(phase)) {
+                            if (intrinsic != null) return false;
+                            intrinsic = pass;
+                        } else if ("FinalDefinite".equals(phase)) {
+                            if (finalDefinite != null) return false;
+                            finalDefinite = pass;
+                        } else {
+                            return false;
+                        }
+                    }
+                    return c114CyclicAutoRepeatPassMatches(intrinsic, 1, null,
+                                    new double[] {16.0})
+                            && c114CyclicAutoRepeatPassMatches(finalDefinite, 1, 16.0,
+                                    new double[] {8.0});
+                }
+                if (rowPasses.size() != 1) return false;
+                org.json.JSONObject finalDefinite = rowPasses.get(0);
+                return "FinalDefinite".equals(finalDefinite.optString("phase"))
+                        && c114CyclicAutoRepeatPassMatches(finalDefinite, 2, 40.0,
+                                new double[] {20.0, 20.0});
+            }
             org.json.JSONObject intrinsic = null;
             org.json.JSONObject finalDefinite = null;
             int taggedColumnPasses = 0;
@@ -1312,11 +1359,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
-        if ("cyclic-max-content-auto-fill".equals(sceneId)) {
+        if ("cyclic-max-content-auto-fill".equals(sceneId)
+                || "cyclic-max-content-auto-fill-rows".equals(sceneId)) {
             return "width=24,height=16";
         }
         if ("definite-40px-auto-fill-control".equals(sceneId)) {
             return "width=40,height=16";
+        }
+        if ("definite-40px-auto-fill-control-rows".equals(sceneId)) {
+            return "width=24,height=40";
         }
         if (c114IsDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             return "width=74,height=20";
@@ -1657,7 +1708,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         if ("cyclic-max-content-auto-fill".equals(sceneId)
-                || "definite-40px-auto-fill-control".equals(sceneId)) {
+                || "definite-40px-auto-fill-control".equals(sceneId)
+                || "cyclic-max-content-auto-fill-rows".equals(sceneId)
+                || "definite-40px-auto-fill-control-rows".equals(sceneId)) {
             return "width=24,height=16";
         }
         if (c114IsDirectMixedTextImageIntrinsicRowScene(sceneId)) {
@@ -3190,8 +3243,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
                     + "1:node=2,x=0,y=0,width=24,height=16]";
         }
+        if ("cyclic-max-content-auto-fill-rows".equals(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+                    + "1:node=2,x=0,y=0,width=24,height=16]";
+        }
         if ("definite-40px-auto-fill-control".equals(sceneId)) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;"
+                    + "1:node=2,x=0,y=0,width=24,height=16]";
+        }
+        if ("definite-40px-auto-fill-control-rows".equals(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;"
                     + "1:node=2,x=0,y=0,width=24,height=16]";
         }
         if (c114IsDirectMixedTextImageIntrinsicRowScene(sceneId)) {
@@ -5704,7 +5765,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c114ExpectedBoxCount(String sceneId) {
         if ("cyclic-max-content-auto-fill".equals(sceneId)
-                || "definite-40px-auto-fill-control".equals(sceneId)) return 2;
+                || "definite-40px-auto-fill-control".equals(sceneId)
+                || "cyclic-max-content-auto-fill-rows".equals(sceneId)
+                || "definite-40px-auto-fill-control-rows".equals(sceneId)) return 2;
         if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)
                 || c114IsDirectMixedTextImageIntrinsicRowScene(sceneId)
                 || c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) return 3;

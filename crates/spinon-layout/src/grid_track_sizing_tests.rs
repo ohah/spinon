@@ -1030,6 +1030,9 @@ fn auto_repeat_rejects_an_invalid_first_axis_independently() {
 #[path = "grid_track_sizing_tests/positive_percentage_auto_repeat.rs"]
 mod positive_percentage_auto_repeat;
 
+#[path = "grid_track_sizing_tests/cyclic_percentage_auto_repeat_rows.rs"]
+mod cyclic_percentage_auto_repeat_rows;
+
 #[path = "grid_track_sizing_tests/percentage_auto_repeat_neighbors.rs"]
 mod percentage_auto_repeat_neighbors;
 

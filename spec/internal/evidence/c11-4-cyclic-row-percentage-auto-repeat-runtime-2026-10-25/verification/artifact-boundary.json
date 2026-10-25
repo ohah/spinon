@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "scope": "static-library artifact boundary only",
+  "artifacts": {
+    "default": {
+      "path": "/tmp/spinon-c114-default.a",
+      "bytes": 514203560,
+      "sha256": "db48061bbe7a9d22d2936e841a808a5bb57690c78303cde319e9871079d83a36",
+      "rowFixtureSymbolPresent": false,
+      "rowFixtureSceneStringsPresent": {
+        "cyclic-max-content-auto-fill-rows": false,
+        "definite-40px-auto-fill-control-rows": false
+      },
+      "matchingSymbols": []
+    },
+    "fixture": {
+      "path": "/tmp/spinon-c114-fixture.a",
+      "bytes": 699805680,
+      "sha256": "ca79526fae315ccf620a938f8e04621f3e0457e867f6c8a6c736951d789b8919",
+      "rowFixtureSymbolPresent": true,
+      "rowFixtureSceneStringsPresent": {
+        "cyclic-max-content-auto-fill-rows": true,
+        "definite-40px-auto-fill-control-rows": true
+      },
+      "matchingSymbols": [
+        "00000000000003d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ]
+    }
+  },
+  "status": "passed"
+}

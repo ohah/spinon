@@ -13,6 +13,7 @@ const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('-
   ?.slice('--scene-id='.length).split(',').filter(Boolean);
 const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
+  'cyclic-max-content-auto-fill-rows', 'definite-40px-auto-fill-control-rows',
   'cyclic-minmax-column', 'cyclic-minmax-row', 'definite-minmax-column',
   'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
   'cyclic-fit-content-calc-column', 'cyclic-fit-content-calc-row',
@@ -4846,7 +4847,41 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
 }));
 scenes.push(...await fixedRepeatMinmaxFlexScenes());
 scenes.push(...await fixedAutoRepeatAreaScenes());
-assert.equal(scenes.length, 490, 'C11.4 fixture scene count differs.');
+scenes.push(
+  {
+    id: 'cyclic-max-content-auto-fill-rows',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=24,height=16',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [8],
+    collapsed: [false],
+    axes: {
+      Columns: { tracks: [24], collapsed: [false] },
+      Rows: { tracks: [8], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+  },
+  {
+    id: 'definite-40px-auto-fill-control-rows',
+    axis: 'Rows',
+    boxCount: 2,
+    rootFrame: 'width=24,height=40',
+    itemFrame: 'width=24,height=16',
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;'
+      + '1:node=2,x=0,y=0,width=24,height=16]',
+    tracks: [20, 20],
+    collapsed: [false, false],
+    axes: {
+      Columns: { tracks: [24], collapsed: [false] },
+      Rows: { tracks: [20, 20], collapsed: [false, false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+  },
+);
+assert.equal(scenes.length, 492, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

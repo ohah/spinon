@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "simulator": {
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "device": "iPhone 17 Pro",
+    "runtime": "iOS 26.2"
+  },
+  "bundleIdentifier": "dev.spinon.bootstrap",
+  "installedAppContainer": "/Users/yoonhb/Library/Developer/CoreSimulator/Devices/ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D/data/Containers/Bundle/Application/D9895463-CC56-4408-B996-6568EF035D70/SpinonBootstrap.app",
+  "fileCount": 9,
+  "totalFileBytes": 38799324,
+  "installedBundleTreeSha256": "878cf5317c00acfaaabcc9bc69b349214b6e00e8c9f28864d0c76b6a7943c871",
+  "installedExecutableSha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5",
+  "builtExecutableSha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5",
+  "installedInfoPlistSha256": "2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb",
+  "builtInfoPlistSha256": "2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb",
+  "installedEntries": [
+    {
+      "kind": "directory",
+      "path": "_CodeSignature"
+    },
+    {
+      "kind": "file",
+      "path": "_CodeSignature/CodeResources",
+      "bytes": 2991,
+      "sha256": "fb185d82c21128c6fa15ce905b4b9c6659ee0bc12517f1ff5c8503fb086cdf30"
+    },
+    {
+      "kind": "file",
+      "path": "app.js",
+      "bytes": 17591,
+      "sha256": "a0254f51eebd28df0c25c77ab5bd3e53e0a91ec55de0df05e85a01164d643f4c"
+    },
+    {
+      "kind": "file",
+      "path": "index.html",
+      "bytes": 367,
+      "sha256": "e7ecee32a5c5f645cc90ea7bd0c524caaf9da93fd4c780ff9dbb29d0894dd3b9"
+    },
+    {
+      "kind": "file",
+      "path": "Info.plist",
+      "bytes": 790,
+      "sha256": "2be4d8938e5a56cee1be4b6bff24fb5a51c9e9054b14c6bcf4f011ea89c639bb"
+    },
+    {
+      "kind": "file",
+      "path": "PkgInfo",
+      "bytes": 8,
+      "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0"
+    },
+    {
+      "kind": "file",
+      "path": "root-app.js",
+      "bytes": 1650,
+      "sha256": "98f5a7c551d3f4d00ea4a1030506d211fa0e63379241a78ca2151c8923965a08"
+    },
+    {
+      "kind": "file",
+      "path": "root-html-default-rendering.html",
+      "bytes": 1298,
+      "sha256": "38813ca802618bd20bdf3bbb9ed9bc7525c289f48c0928813c855567f9e7df85"
+    },
+    {
+      "kind": "file",
+      "path": "root-html-page-scale-runtime.html",
+      "bytes": 613,
+      "sha256": "3516b552a76777632679ca1554ccceb14c1ac52548f7ddd264a67689fd744829"
+    },
+    {
+      "kind": "file",
+      "path": "SpinonBootstrap",
+      "bytes": 38774016,
+      "sha256": "6350dd0aa2a08112682b07f9acec13e166c6905a4688776ff46972d62ab0a5d5"
+    }
+  ],
+  "matchesBuiltExecutable": true,
+  "matchesBuiltInfoPlist": true,
+  "bundleTreeDigestCanonicalization": "Iterate installedEntries in array order and feed UTF-8 bytes of `${kind}\\0${path}\\0${sha256 ?? target ?? \"\"}\\n` into SHA-256. File sha256 values hash raw file bytes; symlink target values come from readlink; directory entries are included. The installedEntries array is the canonical ordered input."
+}

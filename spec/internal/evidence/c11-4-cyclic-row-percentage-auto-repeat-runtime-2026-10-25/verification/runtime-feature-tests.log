@@ -1,0 +1,31 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.32s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 8 tests
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat_rows::definite_40px_row_control_passes_general_admission ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_repeats_after_intrinsic_sizing ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_trace_rejects_ambiguous_phase ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat_rows::definite_40px_row_control_trace_uses_two_tracks_on_general_path ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat_rows::cyclic_percentage_auto_repeat_rows_preserves_count_and_same_pass_basis ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_definite_control_uses_two_tracks ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_fixture_gate_rejects_neighbor_inputs ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat_rows::cyclic_percentage_row_scene_mutations_fail_closed ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 226 filtered out; finished in 0.05s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-853fd16857d46e65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-9fcc6c82dfa206d8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

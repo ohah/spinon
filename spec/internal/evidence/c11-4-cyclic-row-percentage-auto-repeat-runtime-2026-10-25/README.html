@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 행 cyclic percentage auto-repeat runtime 근거</title>
+  <style>
+    :root { color-scheme: dark; font: 16px/1.55 system-ui, sans-serif; }
+    body { max-width: 1100px; margin: 0 auto; padding: 2rem; background: #0b1020; color: #e7ecf5; }
+    a { color: #7cc7ff; }
+    table { border-collapse: collapse; width: 100%; margin: 1rem 0 2rem; }
+    th, td { border: 1px solid #35415a; padding: .65rem; text-align: left; }
+    th { background: #172238; }
+    .screens { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem; }
+    figure { margin: 0; padding: .75rem; background: #141c2e; border-radius: .5rem; }
+    figure img { display: block; width: 100%; height: auto; border-radius: .25rem; }
+    figcaption { margin-top: .5rem; }
+    code { color: #b5dcff; }
+  </style>
+</head>
+<body>
+  <h1>C11.4 cyclic row percentage auto-repeat</h1>
+  <p><strong>상태:</strong> 구현 후보 검증 자료입니다. 공식 C11.4 완료 표기와 완료 수 <code>72/213</code>은 아직 변경하지 않았습니다.</p>
+  <p>기대값은 저장소의 <code>plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md</code> 및 <code>spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md</code>에 고정했습니다.</p>
+  <table>
+    <thead><tr><th>장면</th><th>Root</th><th>반복 수 / basis</th><th>Rows</th><th>결과</th></tr></thead>
+    <tbody>
+      <tr><td><code>cyclic-max-content-auto-fill-rows</code></td><td>24×16px</td><td>1→1 / null→16px</td><td>[8px]</td><td>통과; item이 track을 8px 넘음</td></tr>
+      <tr><td><code>definite-40px-auto-fill-control-rows</code></td><td>24×40px</td><td>2 / 40px</td><td>[20px, 20px]</td><td>일반 definite 경로 통과</td></tr>
+    </tbody>
+  </table>
+  <p>Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각 target/control 장면이 통과했습니다. Target pass 순서는 <code>IntrinsicMaxContent → FinalDefinite</code>이고 row repeat count는 재확장되지 않습니다.</p>
+  <h2>실행 화면</h2>
+  <div class="screens">
+    <figure><a href="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/cyclic-max-content-auto-fill-rows.png"><img src="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/cyclic-max-content-auto-fill-rows.png" alt="Android AVD target scene"></a><figcaption>Android AVD · target</figcaption></figure>
+    <figure><a href="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/definite-40px-auto-fill-control-rows.png"><img src="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/definite-40px-auto-fill-control-rows.png" alt="Android AVD definite control scene"></a><figcaption>Android AVD · definite control</figcaption></figure>
+    <figure><a href="./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/cyclic-max-content-auto-fill-rows.png"><img src="./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/cyclic-max-content-auto-fill-rows.png" alt="iOS Simulator target scene"></a><figcaption>iPhone 17 Pro Simulator · target</figcaption></figure>
+    <figure><a href="./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/definite-40px-auto-fill-control-rows.png"><img src="./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/definite-40px-auto-fill-control-rows.png" alt="iOS Simulator definite control scene"></a><figcaption>iPhone 17 Pro Simulator · definite control</figcaption></figure>
+  </div>
+  <h2>원본 자료</h2>
+  <ul>
+    <li><a href="./source-revision.json">소스·빌드 연결 manifest</a></li>
+    <li><a href="./SHA256SUMS.txt">증거 SHA-256 목록</a></li>
+    <li><a href="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/result.json">Android 관측 결과</a></li>
+    <li><a href="./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T142848934Z-d81cce94/result.json">iOS 관측 결과</a></li>
+    <li><a href="./verification/ios-installed-app.json">iOS 설치 앱 bundle hash</a></li>
+    <li><a href="./verification/">검증 로그</a></li>
+  </ul>
+  <p>실기기 GPU, compositor 제출 이후 픽셀, WPT 전체 적합성은 이 근거가 증명하지 않습니다. 공식 C11.4 상태와 72/213 완료 수는 구현 PR 병합 전까지 유지합니다.</p>
+</body>
+</html>
