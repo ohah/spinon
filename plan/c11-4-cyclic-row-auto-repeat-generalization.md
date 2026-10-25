@@ -34,7 +34,7 @@ Definite `height:44px` control에서는 25% track이 11px이다. `16 + 2(n+1) + 
 - Row gap은 2px, column gap은 0px다. Root는 content-box `24×max-content` 또는 definite `24×44px`, zero margin/padding/border, start alignment다. CSS에서 미선언된 root `min-height`는 `LayoutStyle.min_height=Auto`여야 한다. Chrome CSSOM의 `0px` 직렬화값을 authored/fixed zero로 읽지 않는다. 다른 축은 fixed `24px` 한 track이다.
 - Runtime input root는 node 1개와 direct child 3개를 가진다. Child 순서는 prefix, primary, secondary다. Prefix item은 border-box `24×8px`, `min-width/min-height:0`, `grid-row:1`, `grid-column:1`로 fixed prefix row를 점유한다. Primary와 secondary는 border-box 각각 `24×24px` 및 `16×16px`, `min-width/min-height:0`, `grid-row:2`, `grid-column:1`로 같은 repeated row를 비-spanning 배치한다. Items는 leaf, zero inset, zero margin/padding/border, static positioning이다. Typed input은 root `children.len()==3`, `grid_items.len()==3`, `positioning.len()==4`를 요구하고 나머지 root/item `LayoutStyle` fields도 allowlisted value와 정확히 비교한다. Browser-only suffix probe는 runtime node가 아니다.
 - Target은 auto-repeat pattern을 한 번 유지한다. Definite control은 일반 auto-repeat layout 경로를 사용하며 cyclic opt-in profile success로 표시하지 않는다. Track trace가 필요한 control diagnostics는 별도 enable한다.
-- 추가 repeat component, multiple cyclic axes, named lines, template areas, spans, auto placement, implicit row, nested/anonymous/replaced item, out-of-flow runtime child, 다른 track grammar·길이·percentage·gap, arbitrary CSS/HTML admission은 거부한다. 정확한 양의 runtime 입력은 위 네 scene뿐이다.
+- 다른 축 auto-repeat 또는 multiple cyclic axes, 추가 repeat component, named lines, template areas, spans, auto placement, implicit row, nested/anonymous/replaced item, out-of-flow runtime child, 다른 track grammar·길이·percentage·gap, arbitrary CSS/HTML admission은 거부한다. 정확한 양의 runtime 입력은 위 네 scene뿐이다.
 - 새 public API, CSS support claim, WPT pass, C11.4/C11 completion claim을 추가하지 않는다. 내부 계약 숫자 `0.1.0`과 공식 완료 수 `72/213`을 유지한다.
 
 ## 코드 소유 경계와 병렬 lane
@@ -55,23 +55,25 @@ Android와 iOS adapter는 서로 다른 파일을 소유하므로 1–3번에서
 2. `spec-derived-expectations.json`과 Chrome observation을 분리해 유지한다. Fixture/evidence SHA-256, Chrome 버전·viewport·DPR와 screenshot을 기록한다.
 3. Layout unit tests는 target의 row pass 두 개를 확인한다: `IntrinsicMaxContent` count 1, null percentage basis, row 순서 `[8,24,8]`; `FinalDefinite` count 1, 44px basis, rows `[8,11,8]`. Trace vector는 양끝 gutter, track 사이 gutter, CSS track을 원본 순서로 기록한다. Intrinsic contribution trace는 root grid node의 repeated-row leaf 두 개를 span 1, `MaxContent` 24px/16px으로 기록한다. 두 max-content scene의 root content box는 44px, suffix 시작은 root-local `y=23px`, suffix 뒤 잔여 공간은 13px이어야 한다. Root-relative 정수 CSS frame은 exact, 분수 track size/좌표는 최대 1/64 CSS px 허용오차를 쓴다. 24px/16px item은 11px track보다 각각 13px/5px 크다.
 4. Definite control은 일반 경로에서 count 2, basis 44px을 사용한다. `auto-fill` rows는 `[8,11,11,8]`이고 suffix는 root-local `y=36px`에서 시작한다. `auto-fit` rows는 `[8,11,0,8]`, zero-based CSS track index 2가 collapsed이며 suffix는 `y=23px`에서 시작한다. `auto-fit` trace 순서는 edge gutter, prefix, prefix/repeat gutter, occupied repeat, 2px shared boundary gutter, collapsed empty repeat, 0px following gutter, suffix, trailing edge gutter다. 모든 `is_gutter`, `is_collapsed`, `base_size` 값을 확인한다. Track과 gutter 합은 31px이고 definite root는 44px이므로 13px의 남는 공간은 `align-content:start`에 따라 suffix 뒤에 둔다.
-5. Fail-closed mutation은 typed layout gate와 runtime style projection을 분리해 검증한다. Typed-input mutation의 owner는 root node의 exact-scene validator이며 반환 오류는 `LayoutError::InvalidGridTrackList { property: "grid-template-rows" }`다. Runtime profile이 computed property를 표현하지 못하는 경우에는 projection에서 먼저 `StyleLayoutError::UnsupportedComputedValue { property }`로 거부한다. 다음 mutation마다 해당 owner와 오류를 확인한다.
+5. Fail-closed mutation은 typed layout gate와 runtime style projection을 분리해 검증한다. Max-content row target에서 exact-scene predicate가 false면 그 predicate 자체가 오류를 만들지는 않는다. Row cyclic percentage를 허용하지 않은 상태로 row-axis validator가 root에 `LayoutError::InvalidGridTrackList { property: "grid-template-rows" }`를 반환하는지 확인한다. 두 축을 모두 cyclic하게 만든 mutation은 column validator가 먼저 실행되므로 `grid-template-columns` 오류를 기대한다. Runtime profile이 computed property를 표현하지 못하면 projection이 먼저 `StyleLayoutError::UnsupportedComputedValue { property }`를 반환한다. 각 mutation은 아래에 적은 target sizing 조건을 사용한다.
 
 | Mutation | 정확한 변형 | 기대 owner와 오류 |
 |---|---|---|
-| Repeat mode | 장면 ID는 유지하고 `auto-fill`과 `auto-fit`을 서로 바꾼 typed input | Root exact-scene validator / `InvalidGridTrackList(grid-template-rows)` |
-| Repeat 범위 | `start=1,end=2`를 다른 index로 변경하거나 track list 길이를 3이 아니게 변경 | 같은 layout 오류 |
-| Repeat 구성 | auto-repeat 주변에 추가 repeat component를 넣음 | 같은 layout 오류 |
-| 고정 이웃 행 | prefix/suffix를 제거·이동하거나 8px 길이를 변경 | 같은 layout 오류 |
-| Cyclic track | `minmax(0px,25%)`의 minimum 또는 percentage를 변경 | 같은 layout 오류 |
-| Gap | row gap 2px 또는 column gap 0px을 변경 | 같은 layout 오류 |
-| Line·area metadata | row named line을 추가하거나 `grid-template-areas`를 추가 | 같은 layout 오류 |
-| Root style | root 크기, `min-height:Auto`, padding, border 또는 typed alignment를 변경 | 같은 layout 오류 |
+| Repeat mode | max-content row target에서 장면 ID는 유지하고 `auto-fill`과 `auto-fit`을 서로 바꾼 typed input | Exact-scene predicate가 false가 되고 row-axis validator / `InvalidGridTrackList(grid-template-rows)` |
+| Repeat 범위 | max-content row target에서 `start=1,end=2`를 다른 index로 바꾸거나 track list 길이를 3이 아니게 변경 | Row-axis validator / 같은 `InvalidGridTrackList(grid-template-rows)` |
+| Repeat 구성 | max-content row target에서 auto-repeat 주변에 추가 repeat component를 넣음 | Row-axis validator / 같은 오류 |
+| Other-axis auto-repeat | max-content row target의 root width `24px`은 유지하고 유효한 `columns_auto_repeat`와 `minmax(0px,25%)` column track을 추가 | `other_repeat.is_none()` 때문에 cyclic row fixture 허용값은 false다. Column은 definite width 경로로 통과하지만 row percentage basis는 indefinite이므로 row-axis validator / `InvalidGridTrackList(grid-template-rows)` |
+| Multiple cyclic axes | root width와 height를 모두 max-content로 바꾸고 row·column 양쪽에 `minmax(0px,25%)` auto-repeat를 설정 | Column 검증이 row보다 먼저 수행된다. Fixture 허용값은 false이고 column basis가 indefinite이므로 column-axis validator / `InvalidGridTrackList(grid-template-columns)` |
+| 고정 이웃 행 | max-content row target에서 prefix/suffix를 제거·이동하거나 8px 길이를 변경 | Row-axis validator / `InvalidGridTrackList(grid-template-rows)` |
+| Cyclic track | max-content row target에서 `minmax(0px,25%)`의 minimum 또는 percentage를 변경 | Row-axis validator / 같은 오류 |
+| Gap | max-content row target의 row gap 2px 또는 column gap 0px을 변경 | Row-axis validator / 같은 오류 |
+| Line·area metadata | max-content row target에 row named line 또는 `grid-template-areas`를 추가 | Row-axis validator / 같은 오류 |
+| Root style | max-content row target의 width `24px→23px`, `min-height:Auto→Fixed(0)`, padding, border 또는 typed alignment를 변경 | Row-axis validator / 같은 오류 |
 | Runtime alignment projection | runtime UA profile에서 computed `align-content:start`를 다른 값으로 변경 | Style projection / `UnsupportedComputedValue(align-content)` |
-| Child cardinality | prefix/primary/secondary 중 하나를 빼거나 direct child 또는 node를 추가 | Root exact-scene validator / 같은 layout 오류 |
-| Child style | child 크기, min-size, margin, padding, border, inset 또는 position을 변경 | 같은 layout 오류 |
-| Placement | row/column 시작선을 바꾸거나 span을 주어 implicit row를 요구 | 같은 layout 오류 |
-| Browser-only probe | browser fixture의 suffix probe를 runtime node로 추가 | Root exact-scene validator / 같은 layout 오류 |
+| Child cardinality | max-content row target에서 prefix/primary/secondary 중 하나를 빼거나 direct child 또는 node를 추가 | Row-axis validator / `InvalidGridTrackList(grid-template-rows)` |
+| Child style | max-content row target의 child 크기, min-size, margin, padding, border, inset 또는 position을 변경 | Row-axis validator / 같은 오류 |
+| Placement | max-content row target의 row/column 시작선을 바꾸거나 span을 주어 implicit row를 요구 | Row-axis validator / 같은 오류 |
+| Browser-only probe | max-content row target의 runtime input에 browser fixture suffix probe를 node로 추가 | Row-axis validator / 같은 오류 |
 
 `min-height:0px`는 typed root의 `LayoutStyle.min_height=Fixed(0)` mutation으로 검사한다. CSS에서 미선언한 root 값은 `LayoutDimension::Auto`다. 기존 50% row와 column target은 회귀 control로 유지한다. 계획 자체의 검토 결과는 [계획 실패 관점 20개 검토 기록](../spec/internal/evidence/c11-4-cyclic-row-auto-repeat-generalization-plan-review-20-2026-10-26.md)에 별도로 남긴다.
 6. Runtime matrix는 네 장면으로 `RuntimeSession` 요청 ID/source revision, root/grid/item frame, 양 축 tracks, pass별 phase/count/basis/track·gutter 순서, draw/present 응답을 검사한다. 두 앱은 같은 source commit으로 build하고 Android/iOS build·install hash는 각각 기록한다. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator를 사용하며 실기기는 범위에 넣지 않는다.
