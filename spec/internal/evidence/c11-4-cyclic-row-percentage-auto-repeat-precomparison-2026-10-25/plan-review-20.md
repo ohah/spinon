@@ -25,6 +25,6 @@
 | 17 | 병렬 lane 경계에 파일 충돌이 없는가? | PASS | layout/Taffy, 별도 tests, FFI scene, Android/iOS 경로를 분리하고 shared dispatcher/report는 단독 소유한다. |
 | 18 | worktree 사용을 불필요하게 강제하지 않는가? | PASS | 비중첩 ownership으로 통합 branch 병렬 편집, 독립 branch 필요 시에만 worktree를 쓴다. |
 | 19 | PR에서 동작 화면을 볼 수 있는가? | PASS | Chrome 사전비교 화면을 plan PR에 연결하고, 구현 PR에는 가능한 simulator screenshot을 첨부한다. |
-| 20 | 공식 상태와 roadmap preview를 근거에 맞춰 갱신하는가? | PASS | 구현 후 STATUS/public HTML/Tailnet을 갱신하되 C11.4 incomplete와 72/213을 유지하고 hash/HTTP로 확인한다. |
+| 20 | 공식 상태와 Tailnet roadmap preview의 source·대상을 재현 가능하게 갱신하는가? | PASS | 구현 후 `spec/STATUS.md`와 `spec/public/roadmap.html`을 갱신하고 C11.4 미완료·72/213을 유지한다. preview root `/Users/yoonhb/Library/Application Support/SpinonPreview`와 공개 route를 적고, 동기화 전 server root를 재확인한 뒤 삭제 없이 backup·file manifest·served HTTP 200/hash를 검증한다. |
 
 계획 검토는 runtime 구현 검토 20개 및 PR diff 검토 30개와 별도다. Plan PR에 명시된 입력, fixture, screenshot, hash manifest가 실제 변경 목록에 들어 있는지 생성 시 재확인한다.
