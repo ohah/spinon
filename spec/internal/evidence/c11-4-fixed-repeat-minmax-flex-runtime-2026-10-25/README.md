@@ -49,6 +49,6 @@ Android build command는 `SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run b
 
 ## 적대 검토와 공식 상태
 
-구현·runtime failure-view review는 [20개 검토](./implementation-review-20.md)에 기록한다. PR 변경분의 별도 30-view review는 PR diff가 고정된 뒤 추가한다.
+구현·runtime failure-view review는 [20개 검토](./implementation-review-20.md)에 기록한다. 별도 PR diff 30-view review는 [검토 결과](./pr-diff-review-30.md)에 기록했으며 제품 코드 차단 결함은 없었다. 검토에서 찾은 공개 roadmap simulator 화면 링크를 final-source run으로 수정했다.
 
 이 limited fixture candidate는 일반 CSS admission, CSS Grid WPT 적합성, 실기기/hardware GPU, 최종 APK/IPA 전체 fixture exclusion, iOS compositor 이후 pixels 또는 전체 C11.4 완료를 뜻하지 않는다. 공식 C11 체크박스와 완료 수 `72/213`은 유지한다. 내부 계약 숫자 버전도 `0.1.0`으로 유지한다.
