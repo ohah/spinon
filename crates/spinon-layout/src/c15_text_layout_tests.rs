@@ -170,7 +170,7 @@ fn grid_text_intrinsic_measurement_records_font_and_layout_revisions() {
 
     assert_eq!(measurement.revision, output.revision);
     assert!(matches!(
-        measurement.source,
+        &measurement.source,
         LayoutIntrinsicMeasurementSource::Text {
             font_registry_revision: revision,
         } if revision.0 == 1

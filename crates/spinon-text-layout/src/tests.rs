@@ -52,6 +52,30 @@ fn paragraph(
     }
 }
 
+fn vertical_paragraph(text: &str) -> ParagraphInput {
+    let mut input = paragraph(
+        text,
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    input.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    input.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    input.style.direction = crate::TextDirection::Ltr;
+    input.style.line_break = crate::LineBreakMode::Normal;
+    input
+}
+
+fn assert_vertical_intrinsic_rejected(engine: &mut TextLayoutEngine, input: &ParagraphInput) {
+    assert!(matches!(
+        engine.intrinsic_logical_sizes(input),
+        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
+            if node == input.node
+    ));
+}
+
 fn close_to(actual: f32, expected: f32) {
     assert!(
         (actual - expected).abs() <= 0.05,
@@ -171,42 +195,92 @@ fn ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles() {
 #[test]
 fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
     let mut engine = engine();
-    let mut input = paragraph(
-        "XX XXXXX",
-        "Ahem",
-        10.0,
-        10.0,
-        WhiteSpaceMode::Normal,
-        WordBreakMode::Normal,
-    );
-    input.style.writing_mode = spinon_core::WritingMode::VerticalRl;
-    input.style.text_orientation = spinon_core::TextOrientation::Mixed;
-    input.style.direction = crate::TextDirection::Ltr;
-    input.style.line_break = crate::LineBreakMode::Normal;
+    let cases = [
+        ("ABC", "ABC", 30.0, 10.0, 30.0, 10.0, vec!["ABC"]),
+        ("A BC", "A BC", 20.0, 20.0, 40.0, 10.0, vec!["A", "BC"]),
+        (
+            "AB CDE F",
+            "AB CDE F",
+            30.0,
+            30.0,
+            80.0,
+            10.0,
+            vec!["AB", "CDE", "F"],
+        ),
+        (
+            "  A   9Z  ",
+            "A 9Z",
+            20.0,
+            20.0,
+            40.0,
+            10.0,
+            vec!["A", "9Z"],
+        ),
+        ("   ", "", 0.0, 0.0, 0.0, 0.0, vec![]),
+    ];
 
+    for (text, normalized, min_inline, min_block, max_inline, max_block, min_lines) in cases {
+        let input = vertical_paragraph(text);
+        let sizes = engine.intrinsic_logical_sizes(&input).unwrap();
+        assert_eq!(sizes.paragraph(), input.node, "source {text:?}");
+        assert_eq!(
+            sizes.font_registry_revision(),
+            engine.font_registry_revision(),
+            "source {text:?}"
+        );
+        assert_eq!(sizes.writing_mode(), spinon_core::WritingMode::VerticalRl);
+        assert_eq!(
+            sizes.text_orientation(),
+            spinon_core::TextOrientation::Mixed
+        );
+        close_to(sizes.min_content().inline_px, min_inline);
+        close_to(sizes.min_content().block_px, min_block);
+        close_to(sizes.max_content().inline_px, max_inline);
+        close_to(sizes.max_content().block_px, max_block);
+
+        let at_min_inline = engine.layout_paragraph(&input, min_inline).unwrap();
+        let repeated_at_min_inline = engine.layout_paragraph(&input, min_inline).unwrap();
+        assert_eq!(at_min_inline, repeated_at_min_inline, "source {text:?}");
+        assert_eq!(at_min_inline.line_break, crate::LineBreakMode::Normal);
+        assert_eq!(at_min_inline.text, normalized);
+        let actual_min_lines = at_min_inline
+            .lines
+            .iter()
+            .map(|line| at_min_inline.text[line.text_range.clone()].trim_matches(' '))
+            .collect::<Vec<_>>();
+        assert_eq!(actual_min_lines, min_lines, "source {text:?}");
+
+        let at_max_inline = engine.layout_paragraph(&input, max_inline).unwrap();
+        let repeated_at_max_inline = engine.layout_paragraph(&input, max_inline).unwrap();
+        assert_eq!(at_max_inline, repeated_at_max_inline, "source {text:?}");
+        assert_eq!(at_max_inline.line_break, crate::LineBreakMode::Normal);
+        assert_eq!(at_max_inline.text, normalized);
+        assert_eq!(
+            at_max_inline.lines.len(),
+            usize::from(!normalized.is_empty())
+        );
+    }
+
+    let input = vertical_paragraph("ABC");
     let sizes = engine.intrinsic_logical_sizes(&input).unwrap();
-    assert_eq!(sizes.paragraph(), input.node);
-    assert_eq!(
-        sizes.font_registry_revision(),
-        engine.font_registry_revision()
-    );
-    assert_eq!(sizes.writing_mode(), spinon_core::WritingMode::VerticalRl);
-    assert_eq!(
-        sizes.text_orientation(),
-        spinon_core::TextOrientation::Mixed
-    );
-    assert_eq!(sizes.min_content().inline_px, 50.0);
-    assert_eq!(sizes.max_content().inline_px, 80.0);
-    assert_eq!(sizes.min_content().block_px, 20.0);
-    assert_eq!(sizes.max_content().block_px, 10.0);
-
     let mut cloned_engine = engine.clone();
     let cloned_sizes = cloned_engine.intrinsic_logical_sizes(&input).unwrap();
     assert!(sizes.uses_same_font_registry_revision(&cloned_sizes));
     assert_eq!(sizes, cloned_sizes);
 
-    let shaped_at_min_inline = engine.layout_paragraph(&input, 50.0).unwrap();
-    assert_eq!(shaped_at_min_inline.lines.len(), 2);
+    let mut independent_engine = TextLayoutEngine::new_without_system_fonts();
+    independent_engine.register_font("Ahem", AHEM).unwrap();
+    independent_engine.register_font("Roboto", ROBOTO).unwrap();
+    let independent_sizes = independent_engine.intrinsic_logical_sizes(&input).unwrap();
+    assert_eq!(
+        sizes.font_registry_revision(),
+        independent_sizes.font_registry_revision()
+    );
+    assert!(!sizes.uses_same_font_registry_revision(&independent_sizes));
+    assert_ne!(sizes, independent_sizes);
+
+    let shaped_at_min_inline = engine.layout_paragraph(&input, 30.0).unwrap();
+    assert_eq!(shaped_at_min_inline.lines.len(), 1);
     assert!(
         shaped_at_min_inline
             .runs
@@ -241,75 +315,93 @@ fn horizontal_logical_intrinsics_preserve_legacy_measurement_axes() {
 }
 
 #[test]
-fn vertical_logical_intrinsics_reject_other_text_or_font_profiles() {
+fn vertical_logical_intrinsics_reject_out_of_profile_text_style_and_topology() {
     let mut engine = engine();
-    let mut other_text = paragraph(
-        "XX XXXXXXX",
-        "Ahem",
-        10.0,
-        10.0,
-        WhiteSpaceMode::Normal,
-        WordBreakMode::Normal,
-    );
-    other_text.style.writing_mode = spinon_core::WritingMode::VerticalRl;
-    other_text.style.text_orientation = spinon_core::TextOrientation::Mixed;
-    other_text.style.direction = crate::TextDirection::Ltr;
-    assert!(matches!(
-        engine.intrinsic_logical_sizes(&other_text),
-        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
-            if node == other_text.node
-    ));
+    for text in ["", "ABC中", "A-BC", "A.BC", "A\tBC", "A\nBC"] {
+        assert_vertical_intrinsic_rejected(&mut engine, &vertical_paragraph(text));
+    }
 
-    let mut other_font = paragraph(
-        "XX XXXXX",
-        "Roboto",
-        10.0,
-        10.0,
-        WhiteSpaceMode::Normal,
-        WordBreakMode::Normal,
-    );
-    other_font.style.writing_mode = spinon_core::WritingMode::VerticalRl;
-    other_font.style.text_orientation = spinon_core::TextOrientation::Mixed;
-    other_font.style.direction = crate::TextDirection::Ltr;
-    assert!(matches!(
-        engine.intrinsic_logical_sizes(&other_font),
-        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
-            if node == other_font.node
-    ));
+    let mut other_font = vertical_paragraph("ABC");
+    other_font.style.font_family = "Roboto".to_owned();
+    assert_vertical_intrinsic_rejected(&mut engine, &other_font);
 
-    let mut rtl = paragraph(
-        "XX XXXXX",
-        "Ahem",
-        10.0,
-        10.0,
-        WhiteSpaceMode::Normal,
-        WordBreakMode::Normal,
-    );
-    rtl.style.writing_mode = spinon_core::WritingMode::VerticalRl;
-    rtl.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    let mut wrong_font_size = vertical_paragraph("ABC");
+    wrong_font_size.style.font_size = 11.0;
+    assert_vertical_intrinsic_rejected(&mut engine, &wrong_font_size);
+
+    let mut wrong_line_height = vertical_paragraph("ABC");
+    wrong_line_height.style.line_height = 11.0;
+    assert_vertical_intrinsic_rejected(&mut engine, &wrong_line_height);
+
+    let mut normal_line_height = vertical_paragraph("ABC");
+    normal_line_height.style.line_height_is_normal = true;
+    assert_vertical_intrinsic_rejected(&mut engine, &normal_line_height);
+
+    let mut wrong_weight = vertical_paragraph("ABC");
+    wrong_weight.style.font_weight = 500.0;
+    assert_vertical_intrinsic_rejected(&mut engine, &wrong_weight);
+
+    let mut wrong_font_style = vertical_paragraph("ABC");
+    wrong_font_style.style.font_style = crate::FontStyleMode::Italic;
+    assert_vertical_intrinsic_rejected(&mut engine, &wrong_font_style);
+
+    let mut no_wrap = vertical_paragraph("ABC");
+    no_wrap.style.white_space = WhiteSpaceMode::NoWrap;
+    assert_vertical_intrinsic_rejected(&mut engine, &no_wrap);
+
+    let mut break_all = vertical_paragraph("ABC");
+    break_all.style.word_break = WordBreakMode::BreakAll;
+    assert_vertical_intrinsic_rejected(&mut engine, &break_all);
+
+    let mut rtl = vertical_paragraph("ABC");
     rtl.style.direction = crate::TextDirection::Rtl;
-    assert!(matches!(
-        engine.intrinsic_logical_sizes(&rtl),
-        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
-            if node == rtl.node
-    ));
+    assert_vertical_intrinsic_rejected(&mut engine, &rtl);
 
-    let mut other_line_break = paragraph(
-        "XX XXXXX",
-        "Ahem",
-        10.0,
-        10.0,
-        WhiteSpaceMode::Normal,
-        WordBreakMode::Normal,
+    let mut strict_line_break = vertical_paragraph("ABC");
+    strict_line_break.style.line_break = crate::LineBreakMode::Strict;
+    assert_vertical_intrinsic_rejected(&mut engine, &strict_line_break);
+
+    let mut no_ligatures = vertical_paragraph("ABC");
+    no_ligatures.style.ligatures = crate::LigatureMode::None;
+    assert_vertical_intrinsic_rejected(&mut engine, &no_ligatures);
+
+    let mut with_inline_ancestor = vertical_paragraph("ABC");
+    with_inline_ancestor.sources[0]
+        .inline_ancestors
+        .push(node(3));
+    assert_vertical_intrinsic_rejected(&mut engine, &with_inline_ancestor);
+
+    let mut with_inline_style = vertical_paragraph("ABC");
+    with_inline_style.inline_styles.insert(
+        node(3),
+        InlineBoxStyle {
+            border: InlineEdges::default(),
+            padding: InlineEdges::default(),
+        },
     );
-    other_line_break.style.writing_mode = spinon_core::WritingMode::VerticalRl;
-    other_line_break.style.text_orientation = spinon_core::TextOrientation::Mixed;
-    other_line_break.style.direction = crate::TextDirection::Ltr;
-    assert!(matches!(
-        engine.intrinsic_logical_sizes(&other_line_break),
-        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
-            if node == other_line_break.node
-    ));
+    assert_vertical_intrinsic_rejected(&mut engine, &with_inline_style);
+
+    let mut with_inline_run_style = vertical_paragraph("ABC");
+    with_inline_run_style.inline_run_styles.insert(
+        node(3),
+        crate::InlineRunStyle {
+            font_family: "Ahem".to_owned(),
+            font_size: 10.0,
+            line_height: 10.0,
+            line_height_is_normal: false,
+            font_weight: 400.0,
+            font_style: crate::FontStyleMode::Normal,
+        },
+    );
+    assert_vertical_intrinsic_rejected(&mut engine, &with_inline_run_style);
+
+    let mut multiple_sources = vertical_paragraph("A");
+    multiple_sources.sources.push(TextSource {
+        node: node(4),
+        inline_ancestors: Vec::new(),
+        text: "BC".to_owned(),
+    });
+    assert_vertical_intrinsic_rejected(&mut engine, &multiple_sources);
 }
 
 #[test]

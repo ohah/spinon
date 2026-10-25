@@ -88,6 +88,8 @@ mod nested_grid_rows;
 mod nested_grid_text_multispan;
 #[path = "c11_4/orthogonal_direct_text_image_intrinsic_rows.rs"]
 mod orthogonal_direct_text_image_intrinsic_rows;
+#[path = "c11_4/orthogonal_text_intrinsic.rs"]
+mod orthogonal_text_intrinsic;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1106,6 +1108,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = orthogonal_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = orthogonal_text_intrinsic::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_replaced_image_span::runtime_source(scene_id) {
@@ -2133,5 +2138,30 @@ mod tests {
             c11_4_grid_track_sizing_runtime_source("direct-orthogonal-row-min-content-unlisted")
                 .is_err()
         );
+    }
+
+    #[test]
+    fn exposes_only_the_ten_fixed_orthogonal_text_intrinsic_targets() {
+        for scene_id in [
+            "single-token-min-content",
+            "single-token-max-content",
+            "two-words-min-content",
+            "two-words-max-content",
+            "three-words-min-content",
+            "three-words-max-content",
+            "collapsed-whitespace-min-content",
+            "collapsed-whitespace-max-content",
+            "spaces-only-min-content",
+            "spaces-only-max-content",
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("line-break:normal"));
+            assert!(source.contains("grid-template-columns:50px 24px"));
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("spaces-only-no-image-min-content").is_err()
+        );
+        assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
     }
 }

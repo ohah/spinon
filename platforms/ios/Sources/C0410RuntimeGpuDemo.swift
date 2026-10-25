@@ -415,6 +415,11 @@ private let c114OrthogonalRowIntrinsicSceneIDs: Set<String> = [
     "direct-orthogonal-row-min-content-reversed",
     "direct-orthogonal-row-max-content-forward",
     "direct-orthogonal-row-max-content-reversed",
+    "single-token-min-content", "single-token-max-content",
+    "two-words-min-content", "two-words-max-content",
+    "three-words-min-content", "three-words-max-content",
+    "collapsed-whitespace-min-content", "collapsed-whitespace-max-content",
+    "spaces-only-min-content", "spaces-only-max-content",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -1683,6 +1688,7 @@ private func c114ExpectedOrthogonalRowIntrinsicInputs(
     _ sceneID: String, report: String
 ) -> Bool {
     guard let expectedHeight = c114OrthogonalRowHeight(sceneID),
+          let expectedSizes = c114OrthogonalTextIntrinsicSizes(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
           (revision["intrinsicSize"] as? Int) == 1,
@@ -1705,10 +1711,10 @@ private func c114ExpectedOrthogonalRowIntrinsicInputs(
 
         if item.kind == "orthogonalText" {
             guard (source["fontRegistryRevision"] as? Int) == 1,
-                  (source["minContentInline"] as? NSNumber)?.doubleValue == 50,
-                  (source["maxContentInline"] as? NSNumber)?.doubleValue == 80,
-                  (source["minContentBlock"] as? NSNumber)?.doubleValue == 20,
-                  (source["maxContentBlock"] as? NSNumber)?.doubleValue == 10,
+                  (source["minContentInline"] as? NSNumber)?.doubleValue == Double(expectedSizes.minInline),
+                  (source["maxContentInline"] as? NSNumber)?.doubleValue == Double(expectedSizes.maxInline),
+                  (source["minContentBlock"] as? NSNumber)?.doubleValue == Double(expectedSizes.minBlock),
+                  (source["maxContentBlock"] as? NSNumber)?.doubleValue == Double(expectedSizes.maxBlock),
                   (source["childWritingMode"] as? String) == "VerticalRl",
                   (source["parentWritingMode"] as? String) == "HorizontalTb",
                   (source["textOrientation"] as? String) == "Mixed",
@@ -3102,7 +3108,8 @@ private func stageTrackShapeMatches(
 private func c114OrthogonalRowTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
-    guard let height = c114OrthogonalRowHeight(sceneID),
+    guard let sizes = c114OrthogonalTextIntrinsicSizes(sceneID),
+          let height = c114OrthogonalRowHeight(sceneID),
           let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
           (traces[0]["grid"] as? Int) == 1,
@@ -3151,9 +3158,9 @@ private func c114OrthogonalRowTraceMatches(
               let actual = contribution["value"] as? NSNumber else { return false }
         let expectedValue: Double
         if item == textNode, kind == "MinContent" {
-            expectedValue = 50
+            expectedValue = Double(sizes.minInline)
         } else if item == textNode, kind == "MaxContent" {
-            expectedValue = 80
+            expectedValue = Double(sizes.maxInline)
         } else if item == imageNode, kind == "MinContent" || kind == "MaxContent" {
             expectedValue = 16
         } else {
@@ -3182,10 +3189,10 @@ private func c114OrthogonalRowTraceMatches(
               guard (measurement["node"] as? Int) == textNode,
                     let source = measurement["source"] as? [String: Any],
                     (source["kind"] as? String) == "orthogonalText",
-                    (source["minContentInline"] as? NSNumber)?.doubleValue == 50,
-                    (source["maxContentInline"] as? NSNumber)?.doubleValue == 80,
-                    (source["minContentBlock"] as? NSNumber)?.doubleValue == 20,
-                    (source["maxContentBlock"] as? NSNumber)?.doubleValue == 10,
+                    (source["minContentInline"] as? NSNumber)?.doubleValue == Double(sizes.minInline),
+                    (source["maxContentInline"] as? NSNumber)?.doubleValue == Double(sizes.maxInline),
+                    (source["minContentBlock"] as? NSNumber)?.doubleValue == Double(sizes.minBlock),
+                    (source["maxContentBlock"] as? NSNumber)?.doubleValue == Double(sizes.maxBlock),
                     (source["childWritingMode"] as? String) == "VerticalRl",
                     (source["parentWritingMode"] as? String) == "HorizontalTb",
                     (source["textOrientation"] as? String) == "Mixed",
@@ -3193,7 +3200,10 @@ private func c114OrthogonalRowTraceMatches(
                     let contentSize = measurement["contentSize"] as? [String: Any] else {
                   return false
               }
-              return (contentSize["height"] as? NSNumber)?.doubleValue == Double(height)
+              let expectedTextSize = sceneID.contains("max-content")
+                  ? sizes.maxInline : sizes.minInline
+              return (contentSize["height"] as? NSNumber)?.doubleValue
+                  == Double(expectedTextSize)
           }) else { return false }
     return true
 }
@@ -3493,8 +3503,33 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114OrthogonalRowHeight(_ sceneID: String) -> Int? {
-    guard c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) else { return nil }
-    return sceneID.contains("min-content") ? 50 : 80
+    guard let sizes = c114OrthogonalTextIntrinsicSizes(sceneID) else { return nil }
+    let textContribution = sceneID.contains("max-content") ? sizes.maxInline : sizes.minInline
+    return max(16, textContribution)
+}
+
+private func c114OrthogonalTextIntrinsicSizes(
+    _ sceneID: String
+) -> (minInline: Int, minBlock: Int, maxInline: Int, maxBlock: Int)? {
+    switch sceneID {
+    case "direct-orthogonal-row-min-content-forward",
+         "direct-orthogonal-row-min-content-reversed",
+         "direct-orthogonal-row-max-content-forward",
+         "direct-orthogonal-row-max-content-reversed":
+        return (50, 20, 80, 10)
+    case "single-token-min-content", "single-token-max-content":
+        return (30, 10, 30, 10)
+    case "two-words-min-content", "two-words-max-content":
+        return (20, 20, 40, 10)
+    case "three-words-min-content", "three-words-max-content":
+        return (30, 30, 80, 10)
+    case "collapsed-whitespace-min-content", "collapsed-whitespace-max-content":
+        return (20, 20, 40, 10)
+    case "spaces-only-min-content", "spaces-only-max-content":
+        return (0, 0, 0, 0)
+    default:
+        return nil
+    }
 }
 
 private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {

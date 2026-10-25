@@ -29,8 +29,9 @@ impl TextLayoutEngine {
     ///
     /// Parley의 실제 shaping 및 line-break 결과를 사용합니다. 반환값은 inline/block 논리축이며
     /// physical width/height로 변환하지 않습니다. `horizontal-tb` 입력은 일반 paragraph를
-    /// 받지만, 현재 `vertical-rl/mixed` 입력은 C11.4의 고정 Ahem `XX XXXXX` intrinsic profile만
-    /// 지원합니다. 다른 vertical 입력은 `UnsupportedVerticalIntrinsicProfile`로 거부하며,
+    /// 받지만, 현재 `vertical-rl/mixed` 입력은 C11.4의 고정 Ahem 10px ASCII 영숫자와
+    /// 일반 공백 intrinsic profile만 지원합니다. 다른 vertical 입력은
+    /// `UnsupportedVerticalIntrinsicProfile`로 거부하며,
     /// 이 profile은 일반 vertical text shaping이나 glyph painting 지원을 뜻하지 않습니다.
     pub fn intrinsic_logical_sizes(
         &mut self,
@@ -241,9 +242,15 @@ impl TextLayoutEngine {
 
 fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
     let style = &input.style;
+    let text = input.sources.first().map(|source| source.text.as_str());
     input.sources.len() == 1
         && input.sources[0].inline_ancestors.is_empty()
-        && input.sources[0].text == "XX XXXXX"
+        && text.is_some_and(|text| {
+            !text.is_empty()
+                && text
+                    .chars()
+                    .all(|character| character == ' ' || character.is_ascii_alphanumeric())
+        })
         && input.inline_styles.is_empty()
         && input.inline_run_styles.is_empty()
         && style.font_family == "Ahem"

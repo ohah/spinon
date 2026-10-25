@@ -12,7 +12,7 @@ use scene::SCENES;
 
 #[test]
 fn orthogonal_direct_text_image_rows_match_all_runtime_scenes() {
-    assert_eq!(SCENES.len(), 4);
+    assert_eq!(SCENES.len(), 14);
     for scene in SCENES {
         assert_runtime_scene(scene);
     }

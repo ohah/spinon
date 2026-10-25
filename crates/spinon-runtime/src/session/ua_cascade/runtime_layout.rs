@@ -100,7 +100,7 @@ impl RuntimeGridTrackSizingDiagnostics {
         let intrinsic_measurements = self
             .intrinsic_measurements
             .iter()
-            .copied()
+            .cloned()
             .map(|mut measurement| {
                 measurement.revision = revision;
                 measurement

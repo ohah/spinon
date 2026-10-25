@@ -150,6 +150,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "direct-orthogonal-row-min-content-reversed",
             "direct-orthogonal-row-max-content-forward",
             "direct-orthogonal-row-max-content-reversed",
+            "single-token-min-content", "single-token-max-content",
+            "two-words-min-content", "two-words-max-content",
+            "three-words-min-content", "three-words-max-content",
+            "collapsed-whitespace-min-content", "collapsed-whitespace-max-content",
+            "spaces-only-min-content", "spaces-only-max-content",
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward",
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
             "definite-minmax-calc-cross-axis-span-groups-forward",
@@ -1318,7 +1323,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             return "width=74,height="
-                    + (sceneId.contains("-max-content-") ? 80 : 50);
+                    + c114OrthogonalRowHeight(sceneId);
         }
         if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
             return "width=120,height=48";
@@ -1660,7 +1665,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             return "width=50,height="
-                    + (sceneId.contains("-max-content-") ? 80 : 50);
+                    + c114OrthogonalRowHeight(sceneId);
         }
         if (c114IsDirectMixedTextImageIntrinsicScene(sceneId)) {
             return sceneId.startsWith("direct-min-content-")
@@ -3201,7 +3206,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             boolean reversed = sceneId.endsWith("-reversed");
-            int height = sceneId.contains("-max-content-") ? 80 : 50;
+            int height = c114OrthogonalRowHeight(sceneId);
             String text = "x=0,y=0,width=50,height=" + height;
             String image = "x=50,y=0,width=24,height=16";
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=74,height=" + height + ";"
@@ -4670,7 +4675,45 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "direct-orthogonal-row-min-content-forward".equals(sceneId)
                 || "direct-orthogonal-row-min-content-reversed".equals(sceneId)
                 || "direct-orthogonal-row-max-content-forward".equals(sceneId)
-                || "direct-orthogonal-row-max-content-reversed".equals(sceneId);
+                || "direct-orthogonal-row-max-content-reversed".equals(sceneId)
+                || c114OrthogonalTextIntrinsicSizes(sceneId) != null;
+    }
+
+    private static boolean c114IsMaxContentScene(String sceneId) {
+        return sceneId.contains("max-content");
+    }
+
+    private static int[] c114OrthogonalTextIntrinsicSizes(String sceneId) {
+        switch (sceneId) {
+            case "direct-orthogonal-row-min-content-forward":
+            case "direct-orthogonal-row-min-content-reversed":
+            case "direct-orthogonal-row-max-content-forward":
+            case "direct-orthogonal-row-max-content-reversed":
+                return new int[] {50, 20, 80, 10};
+            case "single-token-min-content":
+            case "single-token-max-content":
+                return new int[] {30, 10, 30, 10};
+            case "two-words-min-content":
+            case "two-words-max-content":
+                return new int[] {20, 20, 40, 10};
+            case "three-words-min-content":
+            case "three-words-max-content":
+                return new int[] {30, 30, 80, 10};
+            case "collapsed-whitespace-min-content":
+            case "collapsed-whitespace-max-content":
+                return new int[] {20, 20, 40, 10};
+            case "spaces-only-min-content":
+            case "spaces-only-max-content":
+                return new int[] {0, 0, 0, 0};
+            default:
+                return null;
+        }
+    }
+
+    private static int c114OrthogonalRowHeight(String sceneId) {
+        int[] sizes = c114OrthogonalTextIntrinsicSizes(sceneId);
+        if (sizes == null) return 0;
+        return Math.max(16, c114IsMaxContentScene(sceneId) ? sizes[2] : sizes[0]);
     }
 
     private static boolean c114ExpectedMixedIntrinsicInputs(String sceneId, String report) {
@@ -4722,6 +4765,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 kinds = new String[] {"replaced", "orthogonalText"};
                 textMetrics = new int[][] {null, null};
                 break;
+            case "single-token-min-content":
+            case "single-token-max-content":
+            case "two-words-min-content":
+            case "two-words-max-content":
+            case "three-words-min-content":
+            case "three-words-max-content":
+            case "collapsed-whitespace-min-content":
+            case "collapsed-whitespace-max-content":
+            case "spaces-only-min-content":
+            case "spaces-only-max-content":
+                nodes = new int[] {2, 4};
+                kinds = new String[] {"orthogonalText", "replaced"};
+                textMetrics = new int[][] {null, null};
+                break;
             case "mixed-text-image-span2-forward":
                 nodes = new int[] {2, 4};
                 kinds = new String[] {"text", "replaced"};
@@ -4771,7 +4828,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || !kinds[index].equals(source.optString("kind"))) return false;
                 if ("orthogonalText".equals(kinds[index])) {
                     org.json.JSONArray textSources = input.optJSONArray("textSources");
-                    if (!c114OrthogonalTextIntrinsicSourceMatches(source)
+                    if (!c114OrthogonalTextIntrinsicSourceMatches(sceneId, source)
                             || textSources == null || textSources.length() != 0) return false;
                     if (!c114OrthogonalDirectMixedTextImageIntrinsicItemFrameMatches(
                             itemFrames, index, nodes[index], true, sceneId)) return false;
@@ -4819,9 +4876,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         org.json.JSONObject frame = itemFrames.optJSONObject(index);
         if (frame == null || frame.optInt("node", -1) != expectedNode) return false;
         double[] expected = textItem
-                ? new double[] {
-                    0.0, 0.0, 50.0, sceneId.contains("-max-content-") ? 80.0 : 50.0,
-                }
+                ? new double[] {0.0, 0.0, 50.0, c114OrthogonalRowHeight(sceneId)}
                 : new double[] {50.0, 0.0, 24.0, 16.0};
         String[] keys = {"x", "y", "width", "height"};
         for (int component = 0; component < keys.length; component++) {
@@ -4833,14 +4888,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114OrthogonalTextIntrinsicSourceMatches(
-            org.json.JSONObject source
+            String sceneId, org.json.JSONObject source
     ) {
+        int[] sizes = c114OrthogonalTextIntrinsicSizes(sceneId);
+        if (sizes == null) return false;
         return source != null && "orthogonalText".equals(source.optString("kind"))
                 && source.optInt("fontRegistryRevision", -1) == 1
-                && source.optDouble("minContentInline", Double.NaN) == 50.0
-                && source.optDouble("maxContentInline", Double.NaN) == 80.0
-                && source.optDouble("minContentBlock", Double.NaN) == 20.0
-                && source.optDouble("maxContentBlock", Double.NaN) == 10.0
+                && source.optDouble("minContentInline", Double.NaN) == sizes[0]
+                && source.optDouble("maxContentInline", Double.NaN) == sizes[2]
+                && source.optDouble("minContentBlock", Double.NaN) == sizes[1]
+                && source.optDouble("maxContentBlock", Double.NaN) == sizes[3]
                 && "VerticalRl".equals(source.optString("childWritingMode"))
                 && "HorizontalTb".equals(source.optString("parentWritingMode"))
                 && "Mixed".equals(source.optString("textOrientation"));
@@ -4854,7 +4911,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         String diagnosticsJson = report.substring(
                 diagnosticsMarker + "grid_track_sizing_diagnostics=".length());
         int expectedTextNode = sceneId.endsWith("-reversed") ? 3 : 2;
-        double expectedBlockSize = sceneId.contains("-max-content-") ? 80.0 : 50.0;
+        int[] sizes = c114OrthogonalTextIntrinsicSizes(sceneId);
+        if (sizes == null) return false;
+        double expectedBlockSize = c114IsMaxContentScene(sceneId) ? sizes[2] : sizes[0];
         try {
             Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
             if (!(value instanceof org.json.JSONObject)) return false;
@@ -4874,7 +4933,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }
                 textMeasurementCount++;
                 org.json.JSONObject contentSize = measurement.optJSONObject("contentSize");
-                if (!c114OrthogonalTextIntrinsicSourceMatches(source) || contentSize == null) {
+                if (!c114OrthogonalTextIntrinsicSourceMatches(sceneId, source)
+                        || contentSize == null) {
                     return false;
                 }
                 if (Math.abs(contentSize.optDouble("height", Double.NaN)
@@ -4926,11 +4986,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114OrthogonalDirectMixedTextImageIntrinsicRowTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
-        boolean maxContent = sceneId.contains("-max-content-");
+        boolean maxContent = c114IsMaxContentScene(sceneId);
         boolean reversed = sceneId.endsWith("-reversed");
         int textNode = reversed ? 3 : 2;
         int imageNode = reversed ? 2 : 4;
-        double expectedRow = maxContent ? 80.0 : 50.0;
+        int[] sizes = c114OrthogonalTextIntrinsicSizes(sceneId);
+        if (sizes == null) return false;
+        double expectedRow = c114OrthogonalRowHeight(sceneId);
         String expectedKind = maxContent ? "MaxContent" : "MinContent";
         org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
         if (traces == null || traces.length() != 1) return false;
@@ -4962,9 +5024,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String kind = contribution.optString("kind");
             if (item == textNode) {
                 boolean validMinContent = "MinContent".equals(kind)
-                        && Math.abs(actual - 50.0) <= 1.0 / 64.0;
+                        && Math.abs(actual - sizes[0]) <= 1.0 / 64.0;
                 boolean validMaxContent = "MaxContent".equals(kind)
-                        && Math.abs(actual - 80.0) <= 1.0 / 64.0;
+                        && Math.abs(actual - sizes[2]) <= 1.0 / 64.0;
                 if (!validMinContent && !validMaxContent) return false;
                 if (expectedKind.equals(kind)) textContribution = true;
             } else if (item == imageNode) {

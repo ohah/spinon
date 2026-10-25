@@ -66,9 +66,9 @@ pub use revision::{LayoutInputRevision, LayoutSourceRevision};
 pub use spinon_text_layout::{
     FontRegistryRevision, FontStyleMode, GlyphBitmap, GlyphBitmapContent, InlineFragment,
     InlineRunStyle, LigatureMode, LineBreakMode, ParagraphInput, ParagraphStyle,
-    TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot, TextLayoutEngine,
-    TextLayoutSnapshot, TextLine, TextRect, TextRun, TextSource, TextSourceRange, WhiteSpaceMode,
-    WordBreakMode,
+    TextDirection as TextParagraphDirection, TextGlyph, TextGlyphRasterSnapshot,
+    TextIntrinsicLogicalSizes, TextLayoutEngine, TextLayoutSnapshot, TextLine, TextRect, TextRun,
+    TextSource, TextSourceRange, WhiteSpaceMode, WordBreakMode,
 };
 pub use style::{
     AlignmentSafety, ContentAlignmentPosition, FlexDirection, FlexWrap, ItemAlignmentPosition,
