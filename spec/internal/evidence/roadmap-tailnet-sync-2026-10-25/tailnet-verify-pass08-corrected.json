@@ -1,0 +1,3799 @@
+{
+  "pass": "pass08-corrected",
+  "selected_source_head": "f197239b0168e2356f4d0ece03f5d2e4c40278fe",
+  "selected_source_tree": "28556f278dd82a1fde00a1e59afdb1d6c7a2267b",
+  "selected_route_count": 258,
+  "local_targets_verified": 258,
+  "backups_verified": 24,
+  "remote_targets_verified": 258,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_http_200_and_hash_verified": true,
+  "no_deletes": true,
+  "local_targets": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 507934,
+      "sha256": "b8f29188dc924dd779c51e73d7ce9b9817ea97b01bfe66aba3f14bb7c12d7622",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "bytes": 503878,
+      "sha256": "4aebfd2b5fa672154476a657bd5a8c372269080edde3473a35a19ea57a93e670",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 495449,
+      "sha256": "a9518f7972349eb54121007f6cb5244160728fc5ded40b45355b9ad752b2bc8e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "bytes": 501477,
+      "sha256": "990957619e7813686fbbb5a0e1e3e17a384fec9194c46a373c63f87f99e24264",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "bytes": 504616,
+      "sha256": "44c23508ba1aea65b4582bb6987df99eaef7e9fc2139bba168f7e92864411875",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 514206,
+      "sha256": "fc7932ecaa5bacffe36fd254842a049054a8abeb6d64701b172eb642ab250c95",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "bytes": 499108,
+      "sha256": "7de10023d0ba52fc5492dfa99aa57d5c6169dc1afbe57e20d726c19d457f26d0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "bytes": 496167,
+      "sha256": "7acdf793ccdf352b7109430b6279a4d14084c4c34c6b36fcbd2b22ed2c212308",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "bytes": 519475,
+      "sha256": "71d84b0de05feac8f2570832821f10e534276493f9675f55bf5d1a0e9ae032e4",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 657965,
+      "sha256": "2ce0f3a7251ab5a47589c9a12788662cdaec92ba2ac4fe88f3fad72e06b55c3c",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "bytes": 513325,
+      "sha256": "498ce0f8e0937ce4a9614557b49c9cf50c1bda4d36ad910427688e37e4e32c71",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 507949,
+      "sha256": "cedcc488c98aad1780e5f78adfc5da5d2d636ebb7fcdb00ef0244dd80cb3702d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "bytes": 503888,
+      "sha256": "c2971b6d1e66e166927ae6baf620ec6adf1a3ec3828cfbf193f4416f0d845a15",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 495459,
+      "sha256": "c9b9accc92a403e2649ed9f90bfedcd4af33c447bae59deaf94d4389a09166be",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "bytes": 501487,
+      "sha256": "bb219407a252576d18e7e1ecb279152e3d9525cdc57b48a0938e23c98662409a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "bytes": 504639,
+      "sha256": "d4e8ff28cf7d28ca4ddecc009f1c05b42fa7f90b0ba4396bfa91ee950d097025",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 514251,
+      "sha256": "bbb68694d833656ff2366d5abc799f7952aa785ea6acfb4134c51376483fcaf1",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "bytes": 499123,
+      "sha256": "a52946274ebc03a5eacc4a637e394b82f1bccf77b413d2a8ca03b8ebb477e8bb",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "bytes": 496177,
+      "sha256": "c90fbd778a3dd261458a74243f9f6dde0e3fdc85f9020af3d6c0db66eeca52b6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "bytes": 519448,
+      "sha256": "8f73fb414af70f4d7e1bca5c90b1bd37857e7089d4556664c086cc984f07d242",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 657010,
+      "sha256": "05ef81ea700a25b876b285301bb151abc923ae1c00d36dc935b8af524e3ff6c2",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "bytes": 513330,
+      "sha256": "7aa86e54143abf5f925b46b30004d7ef546fa41b53ea46b57bfb379c8633ad01",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 1019261,
+      "sha256": "ef2895423e99f56e9387682f1fee0db802fcc1ef2664641a079e322ef8dadfd1",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-cyclic-screen.374c36224a.png",
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "verified": true
+    },
+    {
+      "path": "static/image/android-definite-control-screen.60facde5d6.png",
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-cyclic-screen.8acadf4a80.png",
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-definite-control-screen.6642fd0009.png",
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.75710a2e90.js",
+      "bytes": 180680,
+      "sha256": "9e3711557881298d058497c95cea2d3e7743f8c6deae65701f87316612e976ce",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-09d1a10288a0.69c955d4f0.js",
+      "bytes": 31955,
+      "sha256": "dd79645c33acecbd69ffcb42d56071960e47cd833cc9495db4e378744a1380b1",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-0dc466434ebb.aed5253e2b.js",
+      "bytes": 19651,
+      "sha256": "c058fa700ed42c57de0336ff577f893b4622976935b24a1f0b266dee3747a3c8",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-14ea0dd0db91.a95fefb812.js",
+      "bytes": 19661,
+      "sha256": "b28477b8e32cff6e7885482ca35baf0ae8c40bd7867bbb37c21dd6904c6ffee6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-3439b61e8d7f.0b629c8288.js",
+      "bytes": 13124,
+      "sha256": "a94ca1027af2d595589f36a58ce0ce8f9527a31e5027fd919e509d6b2285179f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-34d259623baa.a22382f3f9.js",
+      "bytes": 24056,
+      "sha256": "4bcd13e729b7023a705c51a8812e5bace530e762e734a59c704ca974d3551f04",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-47cd8f0cfb83.bbc83a53b8.js",
+      "bytes": 26055,
+      "sha256": "f1cf6d4e8a92d4a3b1207fe0c2b0b02f3bad58c1264e575a7a782ecdf934bee4",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-4ff0e2b640ab.0780c5ab7f.js",
+      "bytes": 17384,
+      "sha256": "59030f8a9a2aa3673217b813981a9ef5f694e7115ec3319f2b59f6441095170a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-57597607142d.765af079d1.js",
+      "bytes": 13131,
+      "sha256": "d095113c80a5d97437836d91e2e0f278cc7124568afd479deb80aef0248c8bbb",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5fbcb195aa84.fe1a3e2f33.js",
+      "bytes": 31937,
+      "sha256": "4a0707baf61a477282581af0cd6a5a67eaecbe2ab8a367405f997fbbd586431a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.6f72a47bbe.js",
+      "bytes": 586850,
+      "sha256": "5fcd7ca5e13e5f5f23643bf46145156ca6b13c032b2c04a6c4ddaa6893f53cfe",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.176183729d.js",
+      "bytes": 587717,
+      "sha256": "f48c619f65b8fe2d517b0b595b26d50e8fdbec8009dfa474f46f6a24b999c13d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-946313b6a685.1a78831858.js",
+      "bytes": 19679,
+      "sha256": "fe8f484abe2aeb73fa591f2b59d702411418dc467972b623620f6215e5fa53f0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-954bfaa0bea8.13903e518b.js",
+      "bytes": 32482,
+      "sha256": "30235fcea0bc31f0864607c5e056cad058b3e8a04fd46b179788bf8b6efab687",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-96ddbde35fca.f65f104083.js",
+      "bytes": 37396,
+      "sha256": "3a843973280c7ba46a4ba16e204aa16f8e53e6a6fd86a0dd2d3f786b25d620c0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a7193b386a72.af3189ea87.js",
+      "bytes": 24069,
+      "sha256": "c3cf87e7f35fd82ad4caa65653f2ef2591c2903cac67b8a700bea21db262b752",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b62554d5654f.2e4ce997ba.js",
+      "bytes": 17397,
+      "sha256": "cbd3fd988a3571eda76b0ea382cd1860c7d603e60e4f869b61ee91eb69089d66",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.7089c53d31.js",
+      "bytes": 180573,
+      "sha256": "b9aed68ec8729825cbc97a2d94accf535733bdcc41702c35448fd720e29e882a",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-dbd376b9d84b.4764252168.js",
+      "bytes": 37385,
+      "sha256": "a3741d5996b2fd6d069145f3eaefcd615c7590f27f7020d0383bfbccd25ef34b",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-e4fc21252b56.58d4434de2.js",
+      "bytes": 12927,
+      "sha256": "8e5f99305799c6ed8c5c1a59c333cd93abad6955bbafee684aac0f8935376c39",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-e84ed68bddf3.d47eadb768.js",
+      "bytes": 12921,
+      "sha256": "770531c13301ef527ba4e997d68a709b86851fbd1b7b1a64d87c503c71613116",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ebff51a03fcd.0fb141dadf.js",
+      "bytes": 19687,
+      "sha256": "e595e741fb3432b37857737c6d5636fc15cdaf9a5d80dc4d1de7ca84de0e0813",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ed5dded83d8d.c869141a43.js",
+      "bytes": 26067,
+      "sha256": "45d0a292e3e43777496b837f9cf8f4059262691d1025d08394cda0d726c09a8f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f6b8f2f556db.7a2f48c241.js",
+      "bytes": 32440,
+      "sha256": "8e01e360ef305dda8519da95900bf509722e5a794cd82e262c40d94bdf78ae4a",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.7d60d390a8.js",
+      "bytes": 1615277,
+      "sha256": "ff30435922873c70b879ff55b5829d85a62c289779b5aef5fdbcbbb6002bf665",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.d1b89531e2.js",
+      "bytes": 473,
+      "sha256": "55c22f8920d663c08c338e6c2a852c87fe3763156d2b5275db6b23a15c23d443",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 1017526,
+      "sha256": "69dce73873c6f314644f6cfda342e1a849fb9fdba6a22da16e87dbd4634ae5f2",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 508785,
+      "sha256": "43cf89bc3f51635460e5c077df237e71fbc6114da92b5eebcef892c6836e5a63",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "bytes": 504729,
+      "sha256": "9b64761539228b37d5136840d76679d47dc39784c3de6db6747c6988e31c3ee4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 496303,
+      "sha256": "e8f34fb8f9a36f22df9e0412d41b4983c404c573aa320d53b806886eac0529ef",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "bytes": 502324,
+      "sha256": "98b9d7354e12d054be5d5fed31daaf24dc4aafffc7fd1595b2a23f6ec324e25f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "bytes": 505467,
+      "sha256": "651a164935ded8bd81a2eed06e67ab65d5e49d31c1a1a169b2f3c7ff5b2671fd",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 515057,
+      "sha256": "d227e561845c6eb606cdc6506eb62e348d10a48da79e069974cc1b79caa8e190",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "bytes": 499959,
+      "sha256": "fd9b8f066d002a11058cc9416eaac7d21c5a09781edcbfaeeb879d5b41bc4328",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "bytes": 497018,
+      "sha256": "f1cb1e113662783ef1a8b547c3b15a1bf721a8915f961d191bb26c50fbd33153",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "bytes": 520326,
+      "sha256": "37454e887d8e4a0f7f25c3b335f9d0c6238ae2416f0ede27ba6c367d7258efa8",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/plan/c11-4-grid-track-sizing.html",
+      "bytes": 658816,
+      "sha256": "c41cea06a3d6971a8f6cd078eb2fd423c07ae46ba5c8b7072cdfa1bd2b826926",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "bytes": 514176,
+      "sha256": "e5a80d9eaf85dd54edea1947f333de949559f7c8e524be9302ece9ad2b3a6491",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 508800,
+      "sha256": "22bc0345d17b0dbefeaacbc9ab56cb45ce04e721f615cac71dd3b801134984a9",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "bytes": 504739,
+      "sha256": "e6c99762f0da9b6110dcbf9ef28fa1f4bfc95c71058cf41d202dc8b7feb91459",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "bytes": 496313,
+      "sha256": "a0092fe4342a6e7758e9db43b978ac6317b162c6a6c250f6aee908448be1ce75",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "bytes": 502334,
+      "sha256": "dbd8bb62700e8074e74f5ea66dc3d6d09803977bf1a6cdc2f537747bf7dc04c6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "bytes": 505490,
+      "sha256": "f6f8708de6317a160c82c1693119751c018d97318ce446ff4c902c7cd1df6422",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "bytes": 515102,
+      "sha256": "d0a4f513d178220b01fe7d735a86f283fa1838c95b52a8464a14c36eab0cf6fc",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "bytes": 499974,
+      "sha256": "ba3cfe3b627f86d6934cde4fe49c51315d701ce632e5b73d89a0dbd9517e15ab",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "bytes": 497028,
+      "sha256": "711b5aaa16ca88dacee9f2607b4a3d68946a394c9947f13bd53e49b0dc68376f",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "bytes": 520299,
+      "sha256": "1a2aa06c4a447d27e5500cd952ee5b3a2dce75dfe08e8a5a69a33206859052d4",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 657861,
+      "sha256": "298a5a3534be6deb58c203fc2f34fdb1b21a1fb91e9b76fe8516837e57f85bae",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "bytes": 514181,
+      "sha256": "e89a65c793b8ad5f608d49fb266c4904707f24cd71734d2568e7867eb4e008c7",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/spec/STATUS.html",
+      "bytes": 1020112,
+      "sha256": "6ed54f05d9bbf85910824faaaf5352522fc1df3aba40df7e2cbd9051219f7794",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-2026-10-25/pass08-corrected/STATUS.html",
+      "bytes": 1018377,
+      "sha256": "4f3e6c4ec3d19871da5614873cd60415903e4f090a1562545222a1b9c12f919e",
+      "verified": true
+    }
+  ],
+  "remote_targets": [
+    {
+      "path": "icon.svg",
+      "http_status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "http_status": 200,
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "http_status": 200,
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "http_status": 200,
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "http_status": 200,
+      "bytes": 507934,
+      "sha256": "b8f29188dc924dd779c51e73d7ce9b9817ea97b01bfe66aba3f14bb7c12d7622",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 503878,
+      "sha256": "4aebfd2b5fa672154476a657bd5a8c372269080edde3473a35a19ea57a93e670",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "http_status": 200,
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "http_status": 200,
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "http_status": 200,
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "http_status": 200,
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "http_status": 200,
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "http_status": 200,
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "http_status": 200,
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "http_status": 200,
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "http_status": 200,
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 495449,
+      "sha256": "a9518f7972349eb54121007f6cb5244160728fc5ded40b45355b9ad752b2bc8e",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "http_status": 200,
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "http_status": 200,
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "http_status": 200,
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "http_status": 200,
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 501477,
+      "sha256": "990957619e7813686fbbb5a0e1e3e17a384fec9194c46a373c63f87f99e24264",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "http_status": 200,
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "http_status": 200,
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 504616,
+      "sha256": "44c23508ba1aea65b4582bb6987df99eaef7e9fc2139bba168f7e92864411875",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "http_status": 200,
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "http_status": 200,
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "http_status": 200,
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "http_status": 200,
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "http_status": 200,
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "http_status": 200,
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "http_status": 200,
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "http_status": 200,
+      "bytes": 514206,
+      "sha256": "fc7932ecaa5bacffe36fd254842a049054a8abeb6d64701b172eb642ab250c95",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 499108,
+      "sha256": "7de10023d0ba52fc5492dfa99aa57d5c6169dc1afbe57e20d726c19d457f26d0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 496167,
+      "sha256": "7acdf793ccdf352b7109430b6279a4d14084c4c34c6b36fcbd2b22ed2c212308",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "http_status": 200,
+      "bytes": 519475,
+      "sha256": "71d84b0de05feac8f2570832821f10e534276493f9675f55bf5d1a0e9ae032e4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "http_status": 200,
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "http_status": 200,
+      "bytes": 657965,
+      "sha256": "2ce0f3a7251ab5a47589c9a12788662cdaec92ba2ac4fe88f3fad72e06b55c3c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "http_status": 200,
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "http_status": 200,
+      "bytes": 513325,
+      "sha256": "498ce0f8e0937ce4a9614557b49c9cf50c1bda4d36ad910427688e37e4e32c71",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "http_status": 200,
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "http_status": 200,
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "http_status": 200,
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "http_status": 200,
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "http_status": 200,
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "http_status": 200,
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "http_status": 200,
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "http_status": 200,
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "http_status": 200,
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "http_status": 200,
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "http_status": 200,
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "http_status": 200,
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "http_status": 200,
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "http_status": 200,
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "http_status": 200,
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "http_status": 200,
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "http_status": 200,
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "http_status": 200,
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "http_status": 200,
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "http_status": 200,
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "http_status": 200,
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "http_status": 200,
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "http_status": 200,
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "http_status": 200,
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "http_status": 200,
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "http_status": 200,
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "http_status": 200,
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "http_status": 200,
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "http_status": 200,
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "http_status": 200,
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "http_status": 200,
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "http_status": 200,
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "http_status": 200,
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "http_status": 200,
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "http_status": 200,
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "http_status": 200,
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "http_status": 200,
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "http_status": 200,
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "http_status": 200,
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "http_status": 200,
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "http_status": 200,
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "http_status": 200,
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "http_status": 200,
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "http_status": 200,
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "http_status": 200,
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "http_status": 200,
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "http_status": 200,
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "http_status": 200,
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "http_status": 200,
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "http_status": 200,
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "http_status": 200,
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "http_status": 200,
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/agent-browser-lifecycle.json",
+      "http_status": 200,
+      "bytes": 744,
+      "sha256": "d4d427b2edcae28003bf9686549013ca6f0cce30ef35b679563656f878b2dd18",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+      "http_status": 200,
+      "bytes": 67592,
+      "sha256": "54f9efab56540c21f3c606c7dd3c4fdf8fe582182a8db114eeac2127318e26f8",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+      "http_status": 200,
+      "bytes": 1325,
+      "sha256": "ed51c996834e05395999d015c042c8fee62cfd891d952fc97e3666a12cb9b596",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/fixture.html",
+      "http_status": 200,
+      "bytes": 3541,
+      "sha256": "98c9aa84a51085493831aa119461068e9d49210f6e541d96502482e9056d3063",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "http_status": 200,
+      "bytes": 507949,
+      "sha256": "cedcc488c98aad1780e5f78adfc5da5d2d636ebb7fcdb00ef0244dd80cb3702d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 16136,
+      "sha256": "2eddd7637e92ef9935c756095a6786cd8c55d574590436ed321352b5896d0139",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 503888,
+      "sha256": "c2971b6d1e66e166927ae6baf620ec6adf1a3ec3828cfbf193f4416f0d845a15",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 10207,
+      "sha256": "2ab5d6eff774e01c61d648871f8992111d73390d8bcb8539ad880708ed82ce74",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/spec-derived-expectations.json",
+      "http_status": 200,
+      "bytes": 5361,
+      "sha256": "31ec4e0d6eb2cd231be42b935674b214416e47a3f125072b6101bbec6d26f93f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-build.log",
+      "http_status": 200,
+      "bytes": 8375,
+      "sha256": "8c0c19590b948fa6e7dff85eb4e48c7691f1aeebef84130bfcb174ac7d948a4a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3290,
+      "sha256": "1bda7b486237415b54c0c2581fbd9adfcc7933736016b52ce1ced17d910434f4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 428,
+      "sha256": "dc05e68b60bbb4f1286d624c04d78ec725e51d75154741a96de5b4f1c0180ce4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 319,
+      "sha256": "8385e727adbbaecbee24e763f8967d18e506a837d61cdfa8cfc0597d95001818",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-cyclic.log",
+      "http_status": 200,
+      "bytes": 269526,
+      "sha256": "bd0f4569868e6831a4e5a6cb6eaa0c9b42974f9e7c3e0610365a386b0701eca9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-pixelcopy.png",
+      "http_status": 200,
+      "bytes": 3301,
+      "sha256": "b9e391f0d6f92f6e0c9b7a4ce4f7bf8fb66596e4d6e5a4c6e9bc76bc8bc0bc94",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 412,
+      "sha256": "a0641dc3ab7b3b9305073c56eb91ced4862637b2881b3d4839420b345e63c453",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 307,
+      "sha256": "4b68df94fcb930d941a97ceb78c369d91b03856ed880d17d3b4015cad5e4d2ce",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/android-definite-control.log",
+      "http_status": 200,
+      "bytes": 228819,
+      "sha256": "e0d8dcb711156ddfcb7c205da5f0ed60a9109b684e2a9d1c1fe5e5138a35d956",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-default-build.log",
+      "http_status": 200,
+      "bytes": 4930,
+      "sha256": "b50c01a32b7b1ef08a2529525e14e9e2d7ac9252f0c85274e5b85fb6939ec928",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-build.log",
+      "http_status": 200,
+      "bytes": 3695,
+      "sha256": "7220c85495da3984bf279d152545c3c5733cde99c71a4e9592ab7743f44d4cef",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/archive-fixture-markers.log",
+      "http_status": 200,
+      "bytes": 1120,
+      "sha256": "5f7863f84995d4b0a02cc6d0a86fb3cbdb8e1f4c23dcc92a5a2d2b1580dbb3ff",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-c11-4-tests.log",
+      "http_status": 200,
+      "bytes": 188,
+      "sha256": "913c5607e85f2c743720e5077be1f018200f84533ed6837d1911b29b01bc2f50",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ffi-clippy.log",
+      "http_status": 200,
+      "bytes": 3429,
+      "sha256": "91f42fe9322957cbd2f5ec0ad76c5676d6b4e07b0ae99cc3ffe18b62d80f1815",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 495459,
+      "sha256": "c9b9accc92a403e2649ed9f90bfedcd4af33c447bae59deaf94d4389a09166be",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md",
+      "http_status": 200,
+      "bytes": 5925,
+      "sha256": "694ba6cb816568ada04a2ba551117cd7b69da788605a4a41f54bb91e163cc051",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-build.log",
+      "http_status": 200,
+      "bytes": 69066,
+      "sha256": "0465bede76c4651441bbb86c5214d442ea4d6b2148af57271d6529e9203c4435",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.base64",
+      "http_status": 200,
+      "bytes": 512,
+      "sha256": "382fb0ff824406c3d290da8ce7b3ec163ced2e4c23c51562ccea53447210502a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-samples.json",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "a14354941b677c710fde495fc102373056b0b2f2ae752c514b94ec6a1fee4b34",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic-screen.png",
+      "http_status": 200,
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-cyclic.log",
+      "http_status": 200,
+      "bytes": 13701,
+      "sha256": "8eff317e3d78f8f76e4518a30e33dd37d95a5398750998737abc691664a2055a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.base64",
+      "http_status": 200,
+      "bytes": 500,
+      "sha256": "f48a23a0f13eec408b82728f0f108bf90a78a6a357d4f563b246dd7cd10bfa5a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-samples.json",
+      "http_status": 200,
+      "bytes": 375,
+      "sha256": "fa4ab50394f7ca6da275c85604ff73e631db4a965694faf3d0fd866fa778643c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control-screen.png",
+      "http_status": 200,
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/ios-definite-control.log",
+      "http_status": 200,
+      "bytes": 10747,
+      "sha256": "5099d35b5b22393ec0ca04ac6267c891f0bf97dc889c6d44d818787777a18648",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.html",
+      "http_status": 200,
+      "bytes": 501487,
+      "sha256": "bb219407a252576d18e7e1ecb279152e3d9525cdc57b48a0938e23c98662409a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr-diff-review-30.md",
+      "http_status": 200,
+      "bytes": 9790,
+      "sha256": "bc43a676e236fb8a2cc3e0d9f080aad29f1aa060cbcdac130a6129a25bd137b0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/merge-roadmap-pr624-cyclic-viewport.png",
+      "http_status": 200,
+      "bytes": 148280,
+      "sha256": "f663471bc89591dd7e08708c8023af3af4b7ec98a8e79bdd3b15ea638d6cf4c9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 4033,
+      "sha256": "818382d51568f314e2a4cfe05daae3bffb3ced6194a5710c3a4826164ffc01b2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 504639,
+      "sha256": "d4e8ff28cf7d28ca4ddecc009f1c05b42fa7f90b0ba4396bfa91ee950d097025",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 9859,
+      "sha256": "70a37f1415666a830ad3b660719c12249a84326b501e854a79595bc5540b1ff7",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-c11-grid-tests.log",
+      "http_status": 200,
+      "bytes": 142,
+      "sha256": "28bc192a755193064e5fe0ed05dc520cf554650090164d919c109e41a8ef4955",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-clippy.log",
+      "http_status": 200,
+      "bytes": 5188,
+      "sha256": "ba34dfe54e68a4dbfeb99b5c9d755991d66f7ccbdba4d752ffb5fe7976878ede",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/runtime-feature-off-control.log",
+      "http_status": 200,
+      "bytes": 115,
+      "sha256": "ab96b4546b3b2b1af6934e5cd75ac34aa108c253cb3798c231fd6525d549215c",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/agent-browser-lifecycle-alignment-recheck.json",
+      "http_status": 200,
+      "bytes": 1396,
+      "sha256": "28834ddff11a15e0698ac0643333d94e28cc14e1bc5ca4d88774de234b2c933e",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+      "http_status": 200,
+      "bytes": 18166,
+      "sha256": "14487410e9000fb78c067c8df80655c57d8396f36e80f6bd1d6e940ed72ed0b6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-agent-browser.png",
+      "http_status": 200,
+      "bytes": 17606,
+      "sha256": "8a7ff6e88e13c3ada5d5947b064ff5352e11098a5c9b60e7cff4854d358418c5",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+      "http_status": 200,
+      "bytes": 32812,
+      "sha256": "87a30a71718e80db40ccb83653f43958866fd6dba47d37506b9f79c1c0a3c10a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "http_status": 200,
+      "bytes": 514251,
+      "sha256": "bbb68694d833656ff2366d5abc799f7952aa785ea6acfb4134c51376483fcaf1",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md",
+      "http_status": 200,
+      "bytes": 19230,
+      "sha256": "f1fd7c694d0697abbdb93e9023b738264da12e1102258bb2827c8a070efac4d9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "http_status": 200,
+      "bytes": 499123,
+      "sha256": "a52946274ebc03a5eacc4a637e394b82f1bccf77b413d2a8ca03b8ebb477e8bb",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md",
+      "http_status": 200,
+      "bytes": 8209,
+      "sha256": "584eda9008911f273431fa5ddca41fc2e5b0babe16af131d14129293b7a83e59",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 496177,
+      "sha256": "c90fbd778a3dd261458a74243f9f6dde0e3fdc85f9020af3d6c0db66eeca52b6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md",
+      "http_status": 200,
+      "bytes": 6547,
+      "sha256": "12a083a6bd3131b8fb446980765824397bb93d1cf3950996200a2d55f6ee459d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "http_status": 200,
+      "bytes": 519448,
+      "sha256": "8f73fb414af70f4d7e1bca5c90b1bd37857e7089d4556664c086cc984f07d242",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "http_status": 200,
+      "bytes": 22044,
+      "sha256": "653f7454987276aa41f84891168825eb59cf5435140e94e3e3301dd1d6ffe6df",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "http_status": 200,
+      "bytes": 657010,
+      "sha256": "05ef81ea700a25b876b285301bb151abc923ae1c00d36dc935b8af524e3ff6c2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "http_status": 200,
+      "bytes": 119031,
+      "sha256": "4f1f401479d861f915c217127f86a5a5bf61855d23c82f6fb3f066a163e95bdb",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "http_status": 200,
+      "bytes": 513330,
+      "sha256": "7aa86e54143abf5f925b46b30004d7ef546fa41b53ea46b57bfb379c8633ad01",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.md",
+      "http_status": 200,
+      "bytes": 19203,
+      "sha256": "c2c854a2ae171c5d3ead62adc84cf1665fc897fcaac4ff69fc059696a80dae32",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "http_status": 200,
+      "bytes": 312778,
+      "sha256": "0c127c33320edd4281c225dd6ad5b2b33b963d76bbc40b822745567f36359367",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "http_status": 200,
+      "bytes": 1019261,
+      "sha256": "ef2895423e99f56e9387682f1fee0db802fcc1ef2664641a079e322ef8dadfd1",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "http_status": 200,
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http_status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/image/android-cyclic-screen.374c36224a.png",
+      "http_status": 200,
+      "bytes": 77138,
+      "sha256": "9979cd1d18164871abdc3e97d21dc5f6875928c245b955aa8adbd43d982abef9",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/image/android-definite-control-screen.60facde5d6.png",
+      "http_status": 200,
+      "bytes": 77570,
+      "sha256": "252647873c74e5bf3700622ad55bc63746ad078b4ec416c5c2a5c879abb1f913",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-cyclic-screen.8acadf4a80.png",
+      "http_status": 200,
+      "bytes": 130883,
+      "sha256": "6f76a1765d09fa75068371ff3f9bee55892c66ed6368c87bfa89edbf0d3e5211",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/image/ios-definite-control-screen.6642fd0009.png",
+      "http_status": 200,
+      "bytes": 130891,
+      "sha256": "39dc04ee1414f60418c039640a3ae9e19ed8bccdbe0e73b9d9bd5f88a3ae4dc6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "http_status": 200,
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.75710a2e90.js",
+      "http_status": 200,
+      "bytes": 180680,
+      "sha256": "9e3711557881298d058497c95cea2d3e7743f8c6deae65701f87316612e976ce",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-09d1a10288a0.69c955d4f0.js",
+      "http_status": 200,
+      "bytes": 31955,
+      "sha256": "dd79645c33acecbd69ffcb42d56071960e47cd833cc9495db4e378744a1380b1",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-0dc466434ebb.aed5253e2b.js",
+      "http_status": 200,
+      "bytes": 19651,
+      "sha256": "c058fa700ed42c57de0336ff577f893b4622976935b24a1f0b266dee3747a3c8",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-14ea0dd0db91.a95fefb812.js",
+      "http_status": 200,
+      "bytes": 19661,
+      "sha256": "b28477b8e32cff6e7885482ca35baf0ae8c40bd7867bbb37c21dd6904c6ffee6",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-3439b61e8d7f.0b629c8288.js",
+      "http_status": 200,
+      "bytes": 13124,
+      "sha256": "a94ca1027af2d595589f36a58ce0ce8f9527a31e5027fd919e509d6b2285179f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-34d259623baa.a22382f3f9.js",
+      "http_status": 200,
+      "bytes": 24056,
+      "sha256": "4bcd13e729b7023a705c51a8812e5bace530e762e734a59c704ca974d3551f04",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-47cd8f0cfb83.bbc83a53b8.js",
+      "http_status": 200,
+      "bytes": 26055,
+      "sha256": "f1cf6d4e8a92d4a3b1207fe0c2b0b02f3bad58c1264e575a7a782ecdf934bee4",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-4ff0e2b640ab.0780c5ab7f.js",
+      "http_status": 200,
+      "bytes": 17384,
+      "sha256": "59030f8a9a2aa3673217b813981a9ef5f694e7115ec3319f2b59f6441095170a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-57597607142d.765af079d1.js",
+      "http_status": 200,
+      "bytes": 13131,
+      "sha256": "d095113c80a5d97437836d91e2e0f278cc7124568afd479deb80aef0248c8bbb",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5fbcb195aa84.fe1a3e2f33.js",
+      "http_status": 200,
+      "bytes": 31937,
+      "sha256": "4a0707baf61a477282581af0cd6a5a67eaecbe2ab8a367405f997fbbd586431a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.6f72a47bbe.js",
+      "http_status": 200,
+      "bytes": 586850,
+      "sha256": "5fcd7ca5e13e5f5f23643bf46145156ca6b13c032b2c04a6c4ddaa6893f53cfe",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.176183729d.js",
+      "http_status": 200,
+      "bytes": 587717,
+      "sha256": "f48c619f65b8fe2d517b0b595b26d50e8fdbec8009dfa474f46f6a24b999c13d",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-946313b6a685.1a78831858.js",
+      "http_status": 200,
+      "bytes": 19679,
+      "sha256": "fe8f484abe2aeb73fa591f2b59d702411418dc467972b623620f6215e5fa53f0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-954bfaa0bea8.13903e518b.js",
+      "http_status": 200,
+      "bytes": 32482,
+      "sha256": "30235fcea0bc31f0864607c5e056cad058b3e8a04fd46b179788bf8b6efab687",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-96ddbde35fca.f65f104083.js",
+      "http_status": 200,
+      "bytes": 37396,
+      "sha256": "3a843973280c7ba46a4ba16e204aa16f8e53e6a6fd86a0dd2d3f786b25d620c0",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a7193b386a72.af3189ea87.js",
+      "http_status": 200,
+      "bytes": 24069,
+      "sha256": "c3cf87e7f35fd82ad4caa65653f2ef2591c2903cac67b8a700bea21db262b752",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b62554d5654f.2e4ce997ba.js",
+      "http_status": 200,
+      "bytes": 17397,
+      "sha256": "cbd3fd988a3571eda76b0ea382cd1860c7d603e60e4f869b61ee91eb69089d66",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.7089c53d31.js",
+      "http_status": 200,
+      "bytes": 180573,
+      "sha256": "b9aed68ec8729825cbc97a2d94accf535733bdcc41702c35448fd720e29e882a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-dbd376b9d84b.4764252168.js",
+      "http_status": 200,
+      "bytes": 37385,
+      "sha256": "a3741d5996b2fd6d069145f3eaefcd615c7590f27f7020d0383bfbccd25ef34b",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-e4fc21252b56.58d4434de2.js",
+      "http_status": 200,
+      "bytes": 12927,
+      "sha256": "8e5f99305799c6ed8c5c1a59c333cd93abad6955bbafee684aac0f8935376c39",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-e84ed68bddf3.d47eadb768.js",
+      "http_status": 200,
+      "bytes": 12921,
+      "sha256": "770531c13301ef527ba4e997d68a709b86851fbd1b7b1a64d87c503c71613116",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ebff51a03fcd.0fb141dadf.js",
+      "http_status": 200,
+      "bytes": 19687,
+      "sha256": "e595e741fb3432b37857737c6d5636fc15cdaf9a5d80dc4d1de7ca84de0e0813",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ed5dded83d8d.c869141a43.js",
+      "http_status": 200,
+      "bytes": 26067,
+      "sha256": "45d0a292e3e43777496b837f9cf8f4059262691d1025d08394cda0d726c09a8f",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f6b8f2f556db.7a2f48c241.js",
+      "http_status": 200,
+      "bytes": 32440,
+      "sha256": "8e01e360ef305dda8519da95900bf509722e5a794cd82e262c40d94bdf78ae4a",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/index.7d60d390a8.js",
+      "http_status": 200,
+      "bytes": 1615277,
+      "sha256": "ff30435922873c70b879ff55b5829d85a62c289779b5aef5fdbcbbb6002bf665",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "http_status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "http_status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.d1b89531e2.js",
+      "http_status": 200,
+      "bytes": 473,
+      "sha256": "55c22f8920d663c08c338e6c2a852c87fe3763156d2b5275db6b23a15c23d443",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 1017526,
+      "sha256": "69dce73873c6f314644f6cfda342e1a849fb9fdba6a22da16e87dbd4634ae5f2",
+      "attempts": 1,
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "http_status": 200,
+      "bytes": 440042,
+      "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b",
+      "attempts": 1,
+      "verified": true
+    }
+  ]
+}
