@@ -12,7 +12,6 @@
   ],
   "baseSelectedOutputRoot": "build/spinon/roadmap-tailnet-sync-20261025-site-pass07-selected-retry02",
   "selectedOutputRoot": "build/spinon/roadmap-tailnet-sync-20261025-site-pass08-corrected-selected",
-  "generatedPageCount": 24,
   "selectedRouteCount": 258,
   "totalBytes": 25913401,
   "markers": [
@@ -1372,5 +1371,8 @@
       "sha256": "f373b35bcebdcd9c4a56bd1cdf244b9274a23688fe4ae432134860facea9ba1b"
     }
   ],
-  "correction": "tracked origin/main sources only; excludes one untracked review artifact and four aliases"
+  "correction": "tracked origin/main sources only; excludes one untracked review artifact and four aliases",
+  "fullBuildHtmlFileCount": 757,
+  "selectedGeneratedRouteCount": 24,
+  "schemaClarification": "Field names were clarified after counting the full build output; selected route hashes and bytes are unchanged."
 }
