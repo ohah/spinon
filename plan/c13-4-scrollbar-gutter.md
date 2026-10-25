@@ -2,9 +2,10 @@
 
 **상태:** 구현 전 계획 · Android/iOS Simulator의 실제 scrollbar mode와 사용자 표시 차이를 확인하기 전에는 구현하지 않는다.
 **공식 상위 항목:** [C13 overflow·scroll·clipping](../spec/STATUS.md#css-구현-체크리스트)
-**선행:** C13.1 typed overflow/clip, C13.2 immutable scroll owner·scrollport·offset snapshot, C13.3 내부 scroll input 경계
+**선행:** C13.1 typed overflow/clip · C13.2 immutable scroll owner·scrollport·offset snapshot은 hard precondition · C13.3 shared snapshot consumer integration regression (C13.3 전체 완료는 요구하지 않음)
 **계약 초안:** [내부 계약 0083](../spec/internal/0083-c13-4-scrollbar-gutter.md)
 **Chrome 관찰:** [2026-10-26 비교와 실행 범위](../spec/internal/evidence/c13-4-scrollbar-precomparison-2026-10-26/README.md)
+**Simulator 관찰 시도:** [Android first-run 차단 및 iOS 미실행](../spec/internal/evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · mode 미관찰
 **계획 실패 관점 검토:** [20개 검토](../spec/internal/evidence/c13-4-scrollbar-plan-review-20-2026-10-26.md)
 
 ## 목표와 중단 조건
@@ -26,6 +27,7 @@ CSS Overflow Level 3의 고정 2025-10-07 Working Draft §4.2에 따르면 class
 - Cascade snapshot은 C13.1/2 overflow 축을 보존하지만 `scrollbar-gutter`와 presentation mode를 아직 전달하지 않는다. 계산 값은 `crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs`에서 수집되고 `crates/spinon-style-to-layout/src/projection/style_values.rs`가 `LayoutStyle`로 projection하는 구조다.
 - `crates/spinon-layout/src/style.rs`의 `LayoutStyle`에는 gutter token이 없다. `crates/spinon-layout/src/taffy_style.rs`는 C13.4 전까지 Taffy scrollbar width를 0으로 둔다. Taffy `Overflow::Scroll`만 `scrollbar_width`를 사용하며 Spinon `auto`는 currently `Overflow::Hidden`으로 보낸다. 이 매핑을 넓히면 automatic minimum size와 Block/Flex/Grid sizing 영향이 있어 별도 회귀 gate가 필요하다.
 - `crates/spinon-style-to-render/src/stacking/scroll/geometry.rs`가 border edge와 scrollable extent로 client/scrollport geometry를 만들고 `crates/spinon-render/src/runtime/scroll.rs`가 그 geometry에서 offsets/range를 확정한다. Gutter를 도입하면 layout client box와 runtime scrollport를 일치시킨 다음 paint clip/hit-test snapshot에 같은 revision으로 전달해야 한다.
+- C13.2의 owner·offset·lifecycle snapshot이 구현의 hard precondition이다. C13.3은 아직 전체 미완료지만, 전체 C13.3 완료를 C13.4 geometry의 선행 조건으로 요구하지 않는다. C13.3 gesture session은 `crates/spinon-render/src/runtime/scroll_gesture_session/geometry.rs`에서 같은 `scrollport_css_px`를 읽으므로 integration regression 대상이며, 이 작업은 C13.3 router/session/queue·Android/iOS adapter를 수정하지 않는다. 따라서 좁은 코드 경계는 cascade/projection/layout/scroll geometry 쪽이고, C13.3의 사용 입력 경계는 소비자다.
 - 위 Rust 경로에 값이 없는 동안 CSS 선언이 cascade에서 읽히거나 Taffy field가 존재한다는 사실만으로 runtime 동작을 주장하지 않는다.
 
 현재 C13.2 불변조건의 no-device baseline으로 `mise exec -- cargo test --locked -p spinon-style-to-render c13_2_scroll_geometry:: -- --nocapture`을 실행해 12/12 통과했다. 이 실행은 `d94f6458`의 Rust 소스 기준이며 새로운 gutter 동작을 검증한 결과가 아니다. C13.4 구현이 진행되면 이 회귀 행렬을 다시 실행하고 추가 positive/negative controls를 별도로 둔다.
@@ -57,6 +59,7 @@ CSS Overflow Level 3의 고정 2025-10-07 Working Draft §4.2에 따르면 class
 | overlay + `stable` / `stable both-edges` | 위 값, clip/hit identity, scroll range | gutter 0, 기존 geometry·scroll state와 exact equality. |
 | `overflow:clip` 및 visible box | owner set, gutter, hit-test | scroll owner가 아니며 gutter가 없다. |
 | nested owner / style revision | ancestor clip, offset, range, stale key | child만 변경되며 sibling·ancestor와 stale query는 C13.2 계약을 지킨다. |
+| C13.3 gesture consumer | 기존 gesture target, owner, CSS px delta routing, scroll revision | 새 scrollport bounds를 읽되 delta chaining/session code는 변경하지 않고 기존 input snapshot과 일치한다. |
 | geometry/mode 없는 negative controls | error code, published snapshot | partial gutter나 이전 snapshot과 새 scroll state가 섞이지 않고 fail-closed한다. |
 
 Chrome geometry의 허용치는 plan fixture에서 CSS px 단위로 고정하고 frame/owner/clip identity는 exact 비교한다. 앱 surface screenshot·pixel 표본은 Android API 37 ARM64 AVD PixelCopy, iOS 지정 Simulator Metal drawable로 따로 기록한다. Simulator UI가 overlay scrollbar를 감춰 surface 차이를 보여주지 못하면 “미관찰/미검증”으로 남기고 구현을 중단한다. 실제 기기, hardware GPU, iOS compositor 이후 출력, 일반 author CSS/WPT는 포함하지 않는다.
