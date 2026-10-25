@@ -1,0 +1,538 @@
+{
+  "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "indexTreeGitHash": "45bb3313f5c126fd724eb54e877f86746107a715",
+  "stagedDiffSha256": "e5c870f07de8345841aca43fee29bba53b50b81c4f4bff27bfe863ff0739224e",
+  "stagedChangedPathListSha256": "d90b2f201a6273f574e72c06b6ab02ac91f5cf47d92b04d98c5743549ba39fba",
+  "sourceFileCount": 88,
+  "sourceFiles": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "indexSha256": "4c493eb2af2e21c38f88e521e662dd73facde7f283214150477d71b45efebc32",
+      "worktreeSha256": "4c493eb2af2e21c38f88e521e662dd73facde7f283214150477d71b45efebc32",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_direct_text_image_intrinsic_rows.rs",
+      "indexSha256": "c73966f789b11b20300d79563d13c6439ca4fb2ff7da112a7a60246662fb2697",
+      "worktreeSha256": "c73966f789b11b20300d79563d13c6439ca4fb2ff7da112a7a60246662fb2697",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "indexSha256": "2a0c724ff73169b383dfaf24af0dc137696fe75716ca993abdfa74fc46d50408",
+      "worktreeSha256": "2a0c724ff73169b383dfaf24af0dc137696fe75716ca993abdfa74fc46d50408",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3.rs",
+      "indexSha256": "bf997c8aeaaeb1d3034008b30a2810faa0c6ccb33223cdd94463ddc93951bb1f",
+      "worktreeSha256": "bf997c8aeaaeb1d3034008b30a2810faa0c6ccb33223cdd94463ddc93951bb1f",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c15_3_hostdocument_text_paint/layout.rs",
+      "indexSha256": "34d0212b8c60ba7ecde6d023f17758adb7c1d772571b75b17c583b77607bb5ca",
+      "worktreeSha256": "34d0212b8c60ba7ecde6d023f17758adb7c1d772571b75b17c583b77607bb5ca",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests.rs",
+      "indexSha256": "22bdc53d34bea51eca64d774744e60c5e7f891a2b3d4a4bc2d5e254418724e1f",
+      "worktreeSha256": "22bdc53d34bea51eca64d774744e60c5e7f891a2b3d4a4bc2d5e254418724e1f",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests/c15_2.rs",
+      "indexSha256": "7fd4ddb9e4c7d24f2d6090628aabfc24cf14b0548fc141110f794391df7dbcf2",
+      "worktreeSha256": "7fd4ddb9e4c7d24f2d6090628aabfc24cf14b0548fc141110f794391df7dbcf2",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests/c15_2b/fixtures.rs",
+      "indexSha256": "e550bf1e33eadb3ecfeaceae2f35631f3b26fa537293496a42b71c83749d0763",
+      "worktreeSha256": "e550bf1e33eadb3ecfeaceae2f35631f3b26fa537293496a42b71c83749d0763",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests/grid_chrome_oracle.rs",
+      "indexSha256": "49c0d36785d113fdd3ec8c5e3c7fe2f2119d36640298b5d91407e0b6f1d2981a",
+      "worktreeSha256": "49c0d36785d113fdd3ec8c5e3c7fe2f2119d36640298b5d91407e0b6f1d2981a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/c15_text_layout_tests/host_document.rs",
+      "indexSha256": "90c520c024cda3978916d7c723c5c9e3cb5ac568c1a7444015e85cff0d839d0e",
+      "worktreeSha256": "90c520c024cda3978916d7c723c5c9e3cb5ac568c1a7444015e85cff0d839d0e",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/calc_tree.rs",
+      "indexSha256": "8ca7cfb7a7f6885af331ce5d935cd47f801f26285cfddfa36d262a8081d655fc",
+      "worktreeSha256": "8ca7cfb7a7f6885af331ce5d935cd47f801f26285cfddfa36d262a8081d655fc",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs",
+      "indexSha256": "fac47f810b042a63458c3e3c61720bb813ff418d3462eb8d8c385b8b869c59f4",
+      "worktreeSha256": "fac47f810b042a63458c3e3c61720bb813ff418d3462eb8d8c385b8b869c59f4",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/calc_tree/text.rs",
+      "indexSha256": "be4a9273d634dc8754b42c48f1596947d0b0a2061fe8d87a611648e42734e0ad",
+      "worktreeSha256": "be4a9273d634dc8754b42c48f1596947d0b0a2061fe8d87a611648e42734e0ad",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_nested_intrinsic_tests.rs",
+      "indexSha256": "6e1992aba6ec7e5cbc4f9ea7e2b5f5f16c75b553a874b23f9b918941c3ba89cd",
+      "worktreeSha256": "6e1992aba6ec7e5cbc4f9ea7e2b5f5f16c75b553a874b23f9b918941c3ba89cd",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_nested_replaced_intrinsic_tests.rs",
+      "indexSha256": "500c8b41f72782b4a3fbe653f312e3baa7194dd2dc9696c50d256454e9c460c9",
+      "worktreeSha256": "500c8b41f72782b4a3fbe653f312e3baa7194dd2dc9696c50d256454e9c460c9",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/grid_text_stretch_tests.rs",
+      "indexSha256": "fcdbee8a36be84d46bb2c4837ad87736fba5f9dc4c00280ea2fe9b33dba8a531",
+      "worktreeSha256": "fcdbee8a36be84d46bb2c4837ad87736fba5f9dc4c00280ea2fe9b33dba8a531",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/host_document_tests/c11_4_anonymous_text.rs",
+      "indexSha256": "c4d7bd493ffd9fced39c5c52463c290f189ffaf679e3ce443983c983d07abbc6",
+      "worktreeSha256": "c4d7bd493ffd9fced39c5c52463c290f189ffaf679e3ce443983c983d07abbc6",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/intrinsic_measurement.rs",
+      "indexSha256": "0a13705b8a0fe4c4b29ebb5d5fa251ccbb6a4672297763ad4723cb22055cffa8",
+      "worktreeSha256": "0a13705b8a0fe4c4b29ebb5d5fa251ccbb6a4672297763ad4723cb22055cffa8",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/intrinsic_size_tests.rs",
+      "indexSha256": "978a74ea0a1f50be416802a56471af2d54e9487ebbbea6d8ab3a04a3f7a8cdf6",
+      "worktreeSha256": "978a74ea0a1f50be416802a56471af2d54e9487ebbbea6d8ab3a04a3f7a8cdf6",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/taffy_style.rs",
+      "indexSha256": "a07a49a86cd4bd02f8db3997d8694a0787ba2cb1e1aec227160d8630075197db",
+      "worktreeSha256": "a07a49a86cd4bd02f8db3997d8694a0787ba2cb1e1aec227160d8630075197db",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-layout/src/taffy_style/tests.rs",
+      "indexSha256": "f40b7909fa7ede74fd018ca73086ba142f41657760cbfcfa612dc652a523beaa",
+      "worktreeSha256": "f40b7909fa7ede74fd018ca73086ba142f41657760cbfcfa612dc652a523beaa",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "indexSha256": "2449d294eeba2216ac27c840c8d9ed8bebdaa7b5750dfd51b6c4e83c99d43ba9",
+      "worktreeSha256": "2449d294eeba2216ac27c840c8d9ed8bebdaa7b5750dfd51b6c4e83c99d43ba9",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "indexSha256": "c2f2bc46bad853026b634254ca531b7a41ad329b01ab20117153aa6422929c8e",
+      "worktreeSha256": "c2f2bc46bad853026b634254ca531b7a41ad329b01ab20117153aa6422929c8e",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs",
+      "indexSha256": "35a9992a016ba216962d59afbc491a0e4bf6f4e4b0d2246ca192cf1069bd46d6",
+      "worktreeSha256": "35a9992a016ba216962d59afbc491a0e4bf6f4e4b0d2246ca192cf1069bd46d6",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "indexSha256": "e2e1e5930ee5b355854c980433cfa5441bacdd1f4524eff40b85cd56bd421bb2",
+      "worktreeSha256": "e2e1e5930ee5b355854c980433cfa5441bacdd1f4524eff40b85cd56bd421bb2",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs",
+      "indexSha256": "9968399833b5f5f1db58c6c15de2c6a368a43890c4c86fef331d2861ca4e43bb",
+      "worktreeSha256": "9968399833b5f5f1db58c6c15de2c6a368a43890c4c86fef331d2861ca4e43bb",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs",
+      "indexSha256": "fadb09090d2d3fd1b8c8e8c97dc5f4ba11addd2c43ac48f48440ceaeac10a488",
+      "worktreeSha256": "fadb09090d2d3fd1b8c8e8c97dc5f4ba11addd2c43ac48f48440ceaeac10a488",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs",
+      "indexSha256": "939356b40bf1a23e6db89f7779a03c2ae5fd7fbe3a22ffc5f815f807aeec8380",
+      "worktreeSha256": "939356b40bf1a23e6db89f7779a03c2ae5fd7fbe3a22ffc5f815f807aeec8380",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_implicit_intrinsic_text.rs",
+      "indexSha256": "179359957de526276e323d843f5d3c72a1a10d35401f2d057c3296a9765ba754",
+      "worktreeSha256": "179359957de526276e323d843f5d3c72a1a10d35401f2d057c3296a9765ba754",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+      "indexSha256": "3ce4a89e702dc578d3cd98330248054627c9e94bc6ce4f96d1cf1a827d46e9cd",
+      "worktreeSha256": "3ce4a89e702dc578d3cd98330248054627c9e94bc6ce4f96d1cf1a827d46e9cd",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs",
+      "indexSha256": "b0c673a9e6178bef8a08848f65eb5e1e6f6fd910ac9888482c753b0767349882",
+      "worktreeSha256": "b0c673a9e6178bef8a08848f65eb5e1e6f6fd910ac9888482c753b0767349882",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/helpers.rs",
+      "indexSha256": "2377c5ba844b2a862c8182ff8eee7578c041b299fb425ebee35d123e7677f0bb",
+      "worktreeSha256": "2377c5ba844b2a862c8182ff8eee7578c041b299fb425ebee35d123e7677f0bb",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs",
+      "indexSha256": "f46f7583c5addb83d28dbcf85f9b28b8053683b5a7325a31bbfc4e345ac12896",
+      "worktreeSha256": "f46f7583c5addb83d28dbcf85f9b28b8053683b5a7325a31bbfc4e345ac12896",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/scene.rs",
+      "indexSha256": "2ab6cf98f27c234adc46d1cf92da0c386b29457806223840810afabb4538355f",
+      "worktreeSha256": "2ab6cf98f27c234adc46d1cf92da0c386b29457806223840810afabb4538355f",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/style.rs",
+      "indexSha256": "4791f1bba51f6fef304f9c7eb718e15ff4aa09ba1f212357b1dab2b02441dee3",
+      "worktreeSha256": "4791f1bba51f6fef304f9c7eb718e15ff4aa09ba1f212357b1dab2b02441dee3",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/validate.rs",
+      "indexSha256": "fa1c937fae2f5cf697215e0e4790831bdbec9801d8a1a58f5e76857e7c7f9d27",
+      "worktreeSha256": "fa1c937fae2f5cf697215e0e4790831bdbec9801d8a1a58f5e76857e7c7f9d27",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_depth_two.rs",
+      "indexSha256": "0539ace7c56b5fc4ace6c8053cff019ff290c6bf6635dcf22e142dcb7f2be623",
+      "worktreeSha256": "0539ace7c56b5fc4ace6c8053cff019ff290c6bf6635dcf22e142dcb7f2be623",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_intrinsic.rs",
+      "indexSha256": "d97aae25a50d2ce9fa2afb4d725a448caf0b5055792eac1b940817ceb4115ee4",
+      "worktreeSha256": "d97aae25a50d2ce9fa2afb4d725a448caf0b5055792eac1b940817ceb4115ee4",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs",
+      "indexSha256": "6b3c9388e346e7dfb50ef250738ed903b8fa31cdff153c5c644e3cda4a742cd0",
+      "worktreeSha256": "6b3c9388e346e7dfb50ef250738ed903b8fa31cdff153c5c644e3cda4a742cd0",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_text_multispan.rs",
+      "indexSha256": "9a9505c302c2bf1f64b4720c1d8ef4f3145726a72a2d6214a9c85963c0293e28",
+      "worktreeSha256": "9a9505c302c2bf1f64b4720c1d8ef4f3145726a72a2d6214a9c85963c0293e28",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+      "indexSha256": "f0cf10ec5dec0ba09c9b0f349073c33234e319e6d39b95fab1329d77b01279d8",
+      "worktreeSha256": "f0cf10ec5dec0ba09c9b0f349073c33234e319e6d39b95fab1329d77b01279d8",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_calc.rs",
+      "indexSha256": "e4382f380219102352133b8e4dc72d64816ea14dfe8f3151e60d892a8a7bbe3a",
+      "worktreeSha256": "e4382f380219102352133b8e4dc72d64816ea14dfe8f3151e60d892a8a7bbe3a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_fit_content_calc.rs",
+      "indexSha256": "29cdabfa4165da462d353ea9c50048c115d4b4bb8129f5e06219023076426b45",
+      "worktreeSha256": "29cdabfa4165da462d353ea9c50048c115d4b4bb8129f5e06219023076426b45",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_minmax_calc_cross_axis_mixed_span_groups.rs",
+      "indexSha256": "c9a3c966ca096e3aa7253e9ce9b253af7bd63bce75e40e9c955a2a848615b749",
+      "worktreeSha256": "c9a3c966ca096e3aa7253e9ce9b253af7bd63bce75e40e9c955a2a848615b749",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_minmax_calc_cross_axis_span_groups.rs",
+      "indexSha256": "3ab58f0e8fb0b6b07fa223ac5895f743b8b5d1c6bd4a53a56a8df7a36cb27fd5",
+      "worktreeSha256": "3ab58f0e8fb0b6b07fa223ac5895f743b8b5d1c6bd4a53a56a8df7a36cb27fd5",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_minmax_two_axis_span_text.rs",
+      "indexSha256": "4f958f4ca1730d7ac3ffda32eb0ec6d9d2cd638413f6a4431b790a1bfc714218",
+      "worktreeSha256": "4f958f4ca1730d7ac3ffda32eb0ec6d9d2cd638413f6a4431b790a1bfc714218",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/cyclic_two_axis_multitrack.rs",
+      "indexSha256": "9b5ab71ad8978e488a827ce81097959dd381c612c185f359d5df653c764af9f5",
+      "worktreeSha256": "9b5ab71ad8978e488a827ce81097959dd381c612c185f359d5df653c764af9f5",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/flex_span.rs",
+      "indexSha256": "6aba18a5a60b75e1e2304eb0f9e5ba42bcaea195efe2b89697a1c6268b5ab0cd",
+      "worktreeSha256": "6aba18a5a60b75e1e2304eb0f9e5ba42bcaea195efe2b89697a1c6268b5ab0cd",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/overlapping_spans.rs",
+      "indexSha256": "01176950165cc38d7ef04f479419ffb3a02a00d7f775c9c9e483742cb27c6c69",
+      "worktreeSha256": "01176950165cc38d7ef04f479419ffb3a02a00d7f775c9c9e483742cb27c6c69",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render/style.rs",
+      "indexSha256": "fafaacd995e665f25f0af12da18832058db8ceded0ad8aaefb018093e469d670",
+      "worktreeSha256": "fafaacd995e665f25f0af12da18832058db8ceded0ad8aaefb018093e469d670",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_text_paint/text.rs",
+      "indexSha256": "cb48ca934b349601c8207c27295df0a1cafe3b005f83c28b9176d757a6eccd4f",
+      "worktreeSha256": "cb48ca934b349601c8207c27295df0a1cafe3b005f83c28b9176d757a6eccd4f",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "indexSha256": "2749e326f7cc22b355a7b08f8824db318d71cd629ef20e601e2cddf7ab877a20",
+      "worktreeSha256": "2749e326f7cc22b355a7b08f8824db318d71cd629ef20e601e2cddf7ab877a20",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/cyclic_percentage_auto_repeat.rs",
+      "indexSha256": "9486369600a930472b18708f0203cf6cbe7b6e77ae3623c543ac4562e420bdda",
+      "worktreeSha256": "9486369600a930472b18708f0203cf6cbe7b6e77ae3623c543ac4562e420bdda",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows.rs",
+      "indexSha256": "a6493422dd3cb09a1badbc96f326fe91ef0aea8ef55c3bf2499d42020407ce59",
+      "worktreeSha256": "a6493422dd3cb09a1badbc96f326fe91ef0aea8ef55c3bf2499d42020407ce59",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/assertions.rs",
+      "indexSha256": "25142b3c776988a1f1b81c9e695d6a6f3765de6fa612738aceee516f387fd7f5",
+      "worktreeSha256": "25142b3c776988a1f1b81c9e695d6a6f3765de6fa612738aceee516f387fd7f5",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/scene.rs",
+      "indexSha256": "f41ecf717057c9b248b473b1d66a278933c7d113bcdb4ca62849bee298dbb69a",
+      "worktreeSha256": "f41ecf717057c9b248b473b1d66a278933c7d113bcdb4ca62849bee298dbb69a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/snapshot.rs",
+      "indexSha256": "91ed840bc161e280e80fe1f32690292962d6dce1b1e8f628f87a133960011f7b",
+      "worktreeSha256": "91ed840bc161e280e80fe1f32690292962d6dce1b1e8f628f87a133960011f7b",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs",
+      "indexSha256": "07adf941c7a11293d1a80647b960bb88b6c47d0c14071049f7b2210a30960a12",
+      "worktreeSha256": "07adf941c7a11293d1a80647b960bb88b6c47d0c14071049f7b2210a30960a12",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_fit_content.rs",
+      "indexSha256": "48e6e5f67e474d6e976556abacd0878897cddf0fb783b625842073b08b4cc696",
+      "worktreeSha256": "48e6e5f67e474d6e976556abacd0878897cddf0fb783b625842073b08b4cc696",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_cross_axis_mixed_span_groups/cases.rs",
+      "indexSha256": "875553cd9c67b1c9f01c276362a81cb2b6d35d4bb46c8de9862afdbc3c8e4167",
+      "worktreeSha256": "875553cd9c67b1c9f01c276362a81cb2b6d35d4bb46c8de9862afdbc3c8e4167",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_cross_axis_span_groups.rs",
+      "indexSha256": "0b7ff609f09eb14778d7e308d22c09d7ac590165c896983af5f4bce15f5bc8be",
+      "worktreeSha256": "0b7ff609f09eb14778d7e308d22c09d7ac590165c896983af5f4bce15f5bc8be",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum.rs",
+      "indexSha256": "edba28ff7b323f08e291f8af28e82c7c1d6f234d897502d7860ddcdd9f9a7a00",
+      "worktreeSha256": "edba28ff7b323f08e291f8af28e82c7c1d6f234d897502d7860ddcdd9f9a7a00",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum_span.rs",
+      "indexSha256": "8120876001deecc2635e0b8bc5d34f8eceecc31593603fd3f9f3cba2ff5f0d95",
+      "worktreeSha256": "8120876001deecc2635e0b8bc5d34f8eceecc31593603fd3f9f3cba2ff5f0d95",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_minimum_two_axis.rs",
+      "indexSha256": "b835912000bf2ed753c208117ccdba73be7c51e71b7c38b227f29197f8c3ca66",
+      "worktreeSha256": "b835912000bf2ed753c208117ccdba73be7c51e71b7c38b227f29197f8c3ca66",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_overlapping_rows.rs",
+      "indexSha256": "c1724e853e220dac603de737e2b7e373f59a211c64b202688fd3e055272e2ade",
+      "worktreeSha256": "c1724e853e220dac603de737e2b7e373f59a211c64b202688fd3e055272e2ade",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_overlapping_spans.rs",
+      "indexSha256": "dc4ab5f796fc838e4bfdacccc3c1d202df0ae7f8ea944ff4163d779b0a458382",
+      "worktreeSha256": "dc4ab5f796fc838e4bfdacccc3c1d202df0ae7f8ea944ff4163d779b0a458382",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_calc_two_axis_spanning_text.rs",
+      "indexSha256": "ca08fa5b455b51d228ed8adaac8809e1cfee28b89fb6e76c8e320f47f8ca0f6d",
+      "worktreeSha256": "ca08fa5b455b51d228ed8adaac8809e1cfee28b89fb6e76c8e320f47f8ca0f6d",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_minmax_mixed_text_image_span/cases.rs",
+      "indexSha256": "aabf781ae0df669cdee3e8be91f07e2b36dc5e51929ee67a774782886f13c308",
+      "worktreeSha256": "aabf781ae0df669cdee3e8be91f07e2b36dc5e51929ee67a774782886f13c308",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs",
+      "indexSha256": "6d23cc36130053e0c0842eca39dcb78cacebfc9ca688d1fd6af2cafdbea5966a",
+      "worktreeSha256": "6d23cc36130053e0c0842eca39dcb78cacebfc9ca688d1fd6af2cafdbea5966a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs",
+      "indexSha256": "f8d1955adc54d11e698e8862a7f2524da5056ecbccb9b9b1dc603805e1e392d9",
+      "worktreeSha256": "f8d1955adc54d11e698e8862a7f2524da5056ecbccb9b9b1dc603805e1e392d9",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/error.rs",
+      "indexSha256": "8d51303c92d323a72bdd9e3a8b43ca395a617be6066ee373b9bd1521e84a6ea2",
+      "worktreeSha256": "8d51303c92d323a72bdd9e3a8b43ca395a617be6066ee373b9bd1521e84a6ea2",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style-to-layout/src/projection.rs",
+      "indexSha256": "315a4e1331b06eba24060dc3db05583e5ba2cdfeff0aae0013e6dce8b4f5800b",
+      "worktreeSha256": "315a4e1331b06eba24060dc3db05583e5ba2cdfeff0aae0013e6dce8b4f5800b",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade.rs",
+      "indexSha256": "c87fc335f9333fba23fae8fb4a3b5e7d127cd7ddb59ac4f1dbab35216ce2b866",
+      "worktreeSha256": "c87fc335f9333fba23fae8fb4a3b5e7d127cd7ddb59ac4f1dbab35216ce2b866",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/device.rs",
+      "indexSha256": "f8c12eca22578d3b3a2782db3793766b00f28ad59e00d1ffaa78e4177329ad97",
+      "worktreeSha256": "f8c12eca22578d3b3a2782db3793766b00f28ad59e00d1ffaa78e4177329ad97",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs",
+      "indexSha256": "e699c5df5ec4cbc226a0968551c386d66d11393c89c63d0498affc44af807593",
+      "worktreeSha256": "e699c5df5ec4cbc226a0968551c386d66d11393c89c63d0498affc44af807593",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs",
+      "indexSha256": "41e5532326f70c3f971dfce3a522ca152d03eb2837fe9bc16954becc4281a1a6",
+      "worktreeSha256": "41e5532326f70c3f971dfce3a522ca152d03eb2837fe9bc16954becc4281a1a6",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid/author_preflight.rs",
+      "indexSha256": "a4dcc6ee5d96a0e85ebab3d6e40033a1a466ee68086c07a954b60a12eff6a489",
+      "worktreeSha256": "a4dcc6ee5d96a0e85ebab3d6e40033a1a466ee68086c07a954b60a12eff6a489",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs",
+      "indexSha256": "8917931a852c910342628f1041a9e9254c1006349ed1958a8be06ed6dbd17490",
+      "worktreeSha256": "8917931a852c910342628f1041a9e9254c1006349ed1958a8be06ed6dbd17490",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/orthogonal_writing_mode.rs",
+      "indexSha256": "32c770c08c6de9ee3ce00d00ecc8acc6952d47ff612b28403b7f1a9f4b974b3f",
+      "worktreeSha256": "32c770c08c6de9ee3ce00d00ecc8acc6952d47ff612b28403b7f1a9f4b974b3f",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs",
+      "indexSha256": "dc73a0e7582583bf6bd59d338d03a954df265fb465dc3d945eb341568099dac8",
+      "worktreeSha256": "dc73a0e7582583bf6bd59d338d03a954df265fb465dc3d945eb341568099dac8",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/engine/intrinsic.rs",
+      "indexSha256": "f2ff826153896205220e1baca8c57e1a24de905419c781fe1224f762407ba525",
+      "worktreeSha256": "f2ff826153896205220e1baca8c57e1a24de905419c781fe1224f762407ba525",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/error.rs",
+      "indexSha256": "d89026bb482f8038201491703c1c453687e50fb7bbc5144d115c6ccc618bb656",
+      "worktreeSha256": "d89026bb482f8038201491703c1c453687e50fb7bbc5144d115c6ccc618bb656",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/lib.rs",
+      "indexSha256": "8f377639236aafb9c0d81bd897d79c54507fe22be70807fc1cfd7145a968386c",
+      "worktreeSha256": "8f377639236aafb9c0d81bd897d79c54507fe22be70807fc1cfd7145a968386c",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/model.rs",
+      "indexSha256": "f3618518f24ad9dbe8eecd2f32bde4d3ba50afcf2a723fa7c46c516ce25a182a",
+      "worktreeSha256": "f3618518f24ad9dbe8eecd2f32bde4d3ba50afcf2a723fa7c46c516ce25a182a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/snapshot.rs",
+      "indexSha256": "7ee0e1ba7cf4a937cd565dd3d6d8dbd6ecf6544263f1c1ab4bed88f27346739a",
+      "worktreeSha256": "7ee0e1ba7cf4a937cd565dd3d6d8dbd6ecf6544263f1c1ab4bed88f27346739a",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/tests.rs",
+      "indexSha256": "8a84c6a8147f51869070b0129f4ead60865913716dd9112282fe65e1c2032487",
+      "worktreeSha256": "8a84c6a8147f51869070b0129f4ead60865913716dd9112282fe65e1c2032487",
+      "matchesIndex": true
+    },
+    {
+      "path": "crates/spinon-text-layout/src/tests/paragraph_style.rs",
+      "indexSha256": "65361e5add4fd594ea2fd9ded1274129bdc28764eb987c105322d99ff49a9aa8",
+      "worktreeSha256": "65361e5add4fd594ea2fd9ded1274129bdc28764eb987c105322d99ff49a9aa8",
+      "matchesIndex": true
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "indexSha256": "77beadff369b8eb1bb1604c34bec967239474ecc9bcb325f6f1ace35601d1654",
+      "worktreeSha256": "77beadff369b8eb1bb1604c34bec967239474ecc9bcb325f6f1ace35601d1654",
+      "matchesIndex": true
+    }
+  ],
+  "sourceSnapshotSha256": "2cae262c3b1cc8bfcb420b84313f53540909c711d834f001d69058dde249ce11"
+}

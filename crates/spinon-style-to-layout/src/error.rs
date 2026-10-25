@@ -45,6 +45,10 @@ pub enum StyleLayoutError {
         property: &'static str,
         value: String,
     },
+    UnsupportedOrthogonalTextProfile {
+        node: NodeId,
+        reason: &'static str,
+    },
     UnsupportedNamedGridLine {
         node: NodeId,
         property: &'static str,
@@ -126,6 +130,10 @@ impl fmt::Display for StyleLayoutError {
                     "노드 {node}의 {property} 값 {value:?}를 layout profile이 지원하지 않습니다"
                 )
             }
+            Self::UnsupportedOrthogonalTextProfile { node, reason } => write!(
+                formatter,
+                "노드 {node}의 orthogonal text profile을 Grid layout에 연결할 수 없습니다: {reason}"
+            ),
             Self::UnsupportedNamedGridLine {
                 node,
                 property,

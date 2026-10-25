@@ -1,0 +1,11 @@
+{
+  "dedicatedTargetUdid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+  "stateBeforeShutdown": "Booted",
+  "stateAfterShutdown": "Shutdown",
+  "otherBootedUdidSetBeforeAndAfter": [
+    "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+    "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+  ],
+  "otherBootedDevicesWereNotShutdown": true,
+  "verifiedAtLocal": "2026-10-25T17:45:58+09:00"
+}

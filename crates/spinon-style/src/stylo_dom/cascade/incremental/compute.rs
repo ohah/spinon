@@ -1,5 +1,9 @@
-use spinon_core::{NodeId, StyleRevision};
-use style::{properties::LonghandId, shared_lock::StylesheetGuards, stylist::Stylist};
+use spinon_core::{NodeId, StyleRevision, TextOrientation, WritingMode};
+use style::{
+    properties::{LonghandId, PropertyDeclarationId},
+    shared_lock::StylesheetGuards,
+    stylist::Stylist,
+};
 use url::Url;
 
 use super::super::{
@@ -65,6 +69,9 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         profile,
         reuse,
     } = request;
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 && reuse.is_some() {
+        return Ok(None);
+    }
     let _preferences = acquire_stylo_preferences(profile);
     initialize_stylo_preferences();
     let reuse_plan = match reuse {
@@ -404,6 +411,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let device = make_device(view.quirks_mode(), viewport);
     let mut stylist = Stylist::new(device, view.quirks_mode());
     let mut elements = Vec::new();
+    let mut writing_styles = Vec::new();
     let mut diagnostics = Vec::new();
     for stylesheet in registry.iter() {
         diagnostics.extend(
@@ -510,6 +518,11 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     viewport,
                     &stylesheet_border_sources,
                 );
+                if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+                    let (writing_mode, text_orientation) =
+                        computed_writing_style(&computed, node_id)?;
+                    writing_styles.push((node_id, writing_mode, text_orientation));
+                }
                 if handle == view.root_handle() && view.root_matches_root_pseudo() {
                     document_root_font_size_css_px = computed_font_size_css_px(&computed);
                     if !document_root_font_size_css_px.is_finite()
@@ -600,8 +613,41 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
             render_tree_revision: view.render_tree_revision(),
             document_root_font_size_css_px,
             elements: elements.into(),
+            writing_styles: writing_styles.into(),
             diagnostics,
         },
         reuse_stats,
     )))
+}
+
+fn computed_writing_style(
+    computed: &style::properties::ComputedValues,
+    node: NodeId,
+) -> Result<(WritingMode, TextOrientation), CssCascadeError> {
+    let writing_mode_css =
+        computed.computed_value_to_string(PropertyDeclarationId::Longhand(LonghandId::WritingMode));
+    let writing_mode = match computed.get_inherited_box().clone_writing_mode() {
+        style::logical_geometry::WritingModeProperty::HorizontalTb => WritingMode::HorizontalTb,
+        style::logical_geometry::WritingModeProperty::VerticalRl => WritingMode::VerticalRl,
+        _ => {
+            return Err(CssCascadeError::UnsupportedComputedWritingMode {
+                node,
+                value: writing_mode_css,
+            });
+        }
+    };
+    let text_orientation_css = computed
+        .computed_value_to_string(PropertyDeclarationId::Longhand(LonghandId::TextOrientation));
+    let text_orientation = match computed.get_inherited_box().clone_text_orientation() {
+        style::properties::longhands::text_orientation::computed_value::T::Mixed => {
+            TextOrientation::Mixed
+        }
+        _ => {
+            return Err(CssCascadeError::UnsupportedComputedTextOrientation {
+                node,
+                value: text_orientation_css,
+            });
+        }
+    };
+    Ok((writing_mode, text_orientation))
 }

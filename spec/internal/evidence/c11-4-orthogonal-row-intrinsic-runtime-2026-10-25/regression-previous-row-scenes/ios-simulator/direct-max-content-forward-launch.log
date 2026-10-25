@@ -1,0 +1,2 @@
+COMMAND: xcrun simctl launch --terminate-running-process 00D4D861-56AA-4552-9181-58D88770EDDA dev.spinon.bootstrap --spinon-c114-grid-track-sizing --spinon-c114-grid-scene=direct-max-content-forward --spinon-c114-grid-run-id=c114reg03
+dev.spinon.bootstrap: 8293

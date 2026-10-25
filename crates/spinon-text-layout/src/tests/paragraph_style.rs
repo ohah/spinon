@@ -6,12 +6,22 @@ use crate::{
 };
 
 #[test]
+fn paragraph_style_default_keeps_the_legacy_horizontal_text_profile() {
+    let style = ParagraphStyle::default();
+
+    assert_eq!(style.writing_mode, spinon_core::WritingMode::HorizontalTb);
+    assert_eq!(style.text_orientation, spinon_core::TextOrientation::Mixed);
+}
+
+#[test]
 fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics() {
     let node = NodeId::new(1).unwrap();
     let source = NodeId::new(2).unwrap();
     let cases = [
         (
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "  ".to_owned(),
                 font_size: 10.0,
                 line_height: 10.0,
@@ -26,6 +36,8 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
         ),
         (
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: 0.0,
                 line_height: 10.0,
@@ -40,6 +52,8 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
         ),
         (
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: f32::INFINITY,
                 line_height: 10.0,
@@ -54,6 +68,8 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
         ),
         (
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: 10.0,
                 line_height: f32::NAN,
@@ -68,6 +84,8 @@ fn paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics
         ),
         (
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: 10.0,
                 line_height: -1.0,

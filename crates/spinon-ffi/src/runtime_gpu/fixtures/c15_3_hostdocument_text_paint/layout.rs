@@ -122,6 +122,8 @@ pub(super) fn layout_fixture(
     let paragraphs = BTreeMap::from([(
         fixture.paragraph.id(),
         ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
             font_size: FONT_SIZE,
             line_height: FONT_SIZE,

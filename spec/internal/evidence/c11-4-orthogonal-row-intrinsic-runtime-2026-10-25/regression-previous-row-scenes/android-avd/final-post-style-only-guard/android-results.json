@@ -1,0 +1,1484 @@
+{
+  "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "indexTreeGitHash": "45bb3313f5c126fd724eb54e877f86746107a715",
+  "sourceSnapshotSha256": "2cae262c3b1cc8bfcb420b84313f53540909c711d834f001d69058dde249ce11",
+  "apkSha256": "cf978a383a3abceeaa99fe37d2f5c202f859193f20a352d4eea67dd0626371af",
+  "observations": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114-final-orth-min-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          50
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        },
+        {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        50.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "bfca3edada3c870ed06e616c6c9b78ea84df02ac02a19ed1052714770df0c160",
+      "runtimeLogSha256": "fc0ef6e722a76aeffb0bc90e27682a5ab77cf76adc1dd772fb7e5dd04bba1df9",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "43eef2af146fbdc062b1312b741b61566151d0a2bf90b4299b78f9d736e308ae",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114-final-orth-min-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          50
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        50.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "c6b69d98cdd867c449a77318790e03bb80a76b69a99d90c03cf1fd758524acc0",
+      "runtimeLogSha256": "bcd1690ae54458f7520ba0b9c5a59c000c8d9a97a81031defdaeae7263d04af0",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "43eef2af146fbdc062b1312b741b61566151d0a2bf90b4299b78f9d736e308ae",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114-final-orth-max-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          80
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        },
+        {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        80.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "traceParts": 5,
+      "traceSha256": "0ccee32239a1add8d94833d99130dd4b08e5f51c2f96ffb2bafc6747f9a6b1c5",
+      "runtimeLogSha256": "27eacecef05b31402e1322a33b96669ff75b5877a499dfb25eded9fd1ce231ff",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "ce95226b48a64f70cbf3ba80f5cf52c91d24ef8119a8e657ac8405f80a922782",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114-final-orth-max-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          80
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        80.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "traceParts": 5,
+      "traceSha256": "b4edd91878d1f14ef61a9f39b0aa57acf1ac2761b22d7da4173396fa5fc2ca70",
+      "runtimeLogSha256": "c68fc280fd5c91aa3591b45ab0f5f4990abf51c46eef735e71cee5742f3df4bd",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "80938f0fe37c1aad28bbbe8a2bedb87a177083e74d20cf9e75793773f16e1e10",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-min-content-forward",
+      "runId": "c114-final-col-min-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 4,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0
+        ],
+        "rows": [
+          24.0,
+          24.0
+        ],
+        "contribution_axis": "Columns",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 24.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        {
+          "node": 4,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0
+      ],
+      "finalRowTrackSizes": [
+        24.0,
+        24.0
+      ],
+      "contributionsAxis": "Columns",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "cb29738ff8d6a6cabca8fd0ce9c5dd415bab3c65bdbf4fb9093315c7d5946984",
+      "runtimeLogSha256": "991a969a6163f20be5259100e4be0c1f400c1897051bc9326a6f19b2ab258cda",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "572838455620f60dde8e16791978b47fda532379c90d8921bb14a6cca120e2bb",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-min-content-reversed",
+      "runId": "c114-final-col-min-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 2,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0
+        ],
+        "rows": [
+          24.0,
+          24.0
+        ],
+        "contribution_axis": "Columns",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 24.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0
+      ],
+      "finalRowTrackSizes": [
+        24.0,
+        24.0
+      ],
+      "contributionsAxis": "Columns",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "85d7ac62d9c6a74a6cb9015a12b811e34ca25779ab9870a6188931afb9370bd7",
+      "runtimeLogSha256": "898b62680dd0970c4d66f6c0f5acb0d1952c345f43ac02adf38281865014f416",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "42fd251ab5577df169475ba0ffc9a052c6e94ee31e60391d5038867e91914df3",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-max-content-forward",
+      "runId": "c114-final-col-max-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        "image": {
+          "node": 4,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          80.0
+        ],
+        "rows": [
+          24.0,
+          24.0
+        ],
+        "contribution_axis": "Columns",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 24.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        {
+          "node": 4,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        80.0
+      ],
+      "finalRowTrackSizes": [
+        24.0,
+        24.0
+      ],
+      "contributionsAxis": "Columns",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "c7be881038de980b4abed4590a607f0da4383b93a27ec7f198a668cace56aa3e",
+      "runtimeLogSha256": "8ea6fb8a1fa2ff9028385f936e6e226371081c5a16e00254bfd71bcc9cc09be6",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "6f76feda518ac7d3dfe999ca3a76ad82b875d8306d408c1b6bf305b5f8be69e1",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-max-content-reversed",
+      "runId": "c114-final-col-max-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        },
+        "image": {
+          "node": 2,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          80.0
+        ],
+        "rows": [
+          24.0,
+          24.0
+        ],
+        "contribution_axis": "Columns",
+        "text_min": 50.0,
+        "text_max": 80.0,
+        "image_contribution": 24.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 48
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 24,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "finalColumnTrackSizes": [
+        80.0
+      ],
+      "finalRowTrackSizes": [
+        24.0,
+        24.0
+      ],
+      "contributionsAxis": "Columns",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "af0d2a27df77037fad996d40968769fa6d5e885b1c427a33e568cc0ab697d15f",
+      "runtimeLogSha256": "f5e870d63958104d80f2b2be5c956e5ea586626b6df6807c3ac3be7cb5a2068b",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "6f76feda518ac7d3dfe999ca3a76ad82b875d8306d408c1b6bf305b5f8be69e1",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-row-min-content-forward",
+      "runId": "c114-final-row-min-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          20
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 20.0,
+        "text_max": 20.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        20.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "27cc0f6a280e2889a9d934550c946ab5f17e3a754b97bc2e825e930def3ede5e",
+      "runtimeLogSha256": "54c35f7af8c2024a340dae53554083068ffa4417f3e4ab75715c8e69e171775c",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "42afbbaf9a9a7d14c44faefe496c31916d90c99270a6e93d94edd5d10d6d032c",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-row-min-content-reversed",
+      "runId": "c114-final-row-min-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          20
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 20.0,
+        "text_max": 20.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        20.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "7fafeda7db9a82592792cc0a86fba63ce03177b00f76f36a7a3cac7283be83ee",
+      "runtimeLogSha256": "cf9e39a792e7de64d07ecb017a201f2ef2f5f6477d14a84b33e9a2bb97dec31f",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "910a0645c90bcea35ce637c7ddf703fd61646653d9199b9b3a5abaf2425b1839",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-row-max-content-forward",
+      "runId": "c114-final-row-max-f",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          20
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 20.0,
+        "text_max": 20.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        20.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "3cd88d931934c3980cb5a267c187578b4b1b5cc87f6e8d031d31dadf1eeb3560",
+      "runtimeLogSha256": "ed341eef32f35ae98f38a3dd3d8d3e7354024413375dab8bd0c323d77d11a84b",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "910a0645c90bcea35ce637c7ddf703fd61646653d9199b9b3a5abaf2425b1839",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    },
+    {
+      "sceneId": "direct-row-max-content-reversed",
+      "runId": "c114-final-row-max-r",
+      "nativeMatcher": "PASS",
+      "draw": "PASS",
+      "boxCount": 3,
+      "expectedFrames": {
+        "root": {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "columns": [
+          50.0,
+          24.0
+        ],
+        "rows": [
+          20
+        ],
+        "contribution_axis": "Rows",
+        "text_min": 20.0,
+        "text_max": 20.0,
+        "image_contribution": 16.0
+      },
+      "observedFrames": [
+        {
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 20
+        },
+        {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 20
+        }
+      ],
+      "finalColumnTrackSizes": [
+        50.0,
+        24.0
+      ],
+      "finalRowTrackSizes": [
+        20.0
+      ],
+      "contributionsAxis": "Rows",
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 20.0
+        }
+      ],
+      "traceParts": 4,
+      "traceSha256": "561bbfb71cedaa29d63343bc934fab1e46b6ad6426fc0ded3b94065b5592c2de",
+      "runtimeLogSha256": "090932d8eded0543f6e51a915ec78d72deb2647a344a2afcdc542e4c98f7d420",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotSha256": "910a0645c90bcea35ce637c7ddf703fd61646653d9199b9b3a5abaf2425b1839",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      }
+    }
+  ]
+}

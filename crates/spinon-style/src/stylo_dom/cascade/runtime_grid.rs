@@ -1,14 +1,21 @@
 use spinon_core::{NodeId, StyleRevision};
 use style::properties::LonghandId;
 
+#[path = "runtime_grid/author_preflight.rs"]
+mod author_preflight;
+pub(super) use author_preflight::{
+    TextOrientationScan, scan_text_orientation_declaration_list, scan_text_orientation_stylesheet,
+};
+
 use super::{
     ComputedStyleProfile, CssCascadeError, CssViewport, StyloDocumentView, compute_cascade,
+    device::enable_orthogonal_writing_mode_preferences,
     runtime_layout::{RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES, runtime_flex_wrap_properties},
     runtime_paint::{
         RUNTIME_BLOCK_POSITIONING_AUTHOR_PROPERTIES, runtime_block_positioning_properties,
     },
 };
-use crate::StylesheetSource;
+use crate::{CssOrigin, StylesheetSource};
 
 /// C11.1에서 혼합 Block/Flex/Grid cascade에 허용하는 CSS 선언입니다.
 pub(super) fn runtime_block_flex_grid_author_properties() -> Vec<&'static str> {
@@ -133,6 +140,7 @@ pub(super) fn runtime_block_flex_grid_track_sizing_author_properties() -> Vec<&'
         "text-align",
         "overflow-wrap",
         "text-transform",
+        "writing-mode",
         "letter-spacing",
         "word-spacing",
         "text-indent",
@@ -161,6 +169,7 @@ pub(super) fn runtime_block_flex_grid_track_sizing_properties() -> Vec<(&'static
         ("overflow-wrap", LonghandId::OverflowWrap),
         ("text-transform", LonghandId::TextTransform),
         ("writing-mode", LonghandId::WritingMode),
+        ("text-orientation", LonghandId::TextOrientation),
         ("letter-spacing", LonghandId::LetterSpacing),
         ("word-spacing", LonghandId::WordSpacing),
         ("text-indent", LonghandId::TextIndent),
@@ -260,8 +269,54 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let profile_view = {
+        let _preferences = enable_orthogonal_writing_mode_preferences();
+        for source in author_stylesheets
+            .iter()
+            .filter(|source| source.origin == CssOrigin::Author)
+        {
+            match scan_text_orientation_stylesheet(&source.css) {
+                TextOrientationScan::Found => {
+                    return Err(CssCascadeError::UnsupportedAuthorCss {
+                        stylesheet_id: source.id.clone(),
+                        feature: "text-orientation".to_owned(),
+                    });
+                }
+                TextOrientationScan::Incomplete => {
+                    return Err(CssCascadeError::UnsupportedAuthorCss {
+                        stylesheet_id: source.id.clone(),
+                        feature:
+                            "C11.4 author-property preflight에서 CSS 전체를 검사하지 못했습니다"
+                                .to_owned(),
+                    });
+                }
+                TextOrientationScan::Clean => {}
+            }
+        }
+        let profile_view = view
+            .rebuilt_with_current_stylo_preferences()
+            .map_err(CssCascadeError::OrthogonalWritingModeViewRebuild)?;
+        let allowed = runtime_block_flex_grid_track_sizing_author_properties();
+        if let Some((node, property)) =
+            super::runtime_layout::first_unsupported_inline_property(&profile_view, |property| {
+                allowed.contains(&property)
+            })
+        {
+            return Err(CssCascadeError::UnsupportedInlineAuthorProperty { node, property });
+        }
+        match first_authored_disabled_inline_property(&profile_view) {
+            Ok(Some((node, property))) => {
+                return Err(CssCascadeError::UnsupportedInlineAuthorProperty { node, property });
+            }
+            Ok(None) => {}
+            Err(node) => {
+                return Err(CssCascadeError::InlineAuthorPropertyPreflightFailed { node });
+            }
+        }
+        profile_view
+    };
     compute_cascade(
-        view,
+        &profile_view,
         author_stylesheets,
         viewport,
         style_revision,
@@ -328,4 +383,28 @@ pub fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
     super::runtime_layout::first_unsupported_inline_property(view, |property| {
         allowed.contains(&property)
     })
+    .or_else(|| {
+        view.inline_style_sources().find_map(|(node, css)| {
+            matches!(
+                scan_text_orientation_declaration_list(css),
+                TextOrientationScan::Found
+            )
+            .then_some((node, "text-orientation".to_owned()))
+        })
+    })
+}
+
+fn first_authored_disabled_inline_property(
+    view: &StyloDocumentView,
+) -> Result<Option<(NodeId, String)>, NodeId> {
+    for (node, css) in view.inline_style_sources() {
+        match scan_text_orientation_declaration_list(css) {
+            TextOrientationScan::Found => {
+                return Ok(Some((node, "text-orientation".to_owned())));
+            }
+            TextOrientationScan::Incomplete => return Err(node),
+            TextOrientationScan::Clean => {}
+        }
+    }
+    Ok(None)
 }

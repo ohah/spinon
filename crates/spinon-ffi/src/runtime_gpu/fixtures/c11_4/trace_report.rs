@@ -1,3 +1,4 @@
+use spinon_core::{TextOrientation, WritingMode};
 use spinon_layout::LayoutSourceRevision;
 use spinon_layout::{
     LayoutGridItemIntrinsicSource, LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource,
@@ -70,6 +71,23 @@ pub(crate) fn grid_track_sizing_trace_report(
                     "kind": "text",
                     "fontRegistryRevision": font_registry_revision.0,
                 }),
+                LayoutIntrinsicMeasurementSource::OrthogonalText {
+                    min_content,
+                    max_content,
+                    child_writing_mode,
+                    parent_writing_mode,
+                    text_orientation,
+                    font_registry_revision,
+                } => orthogonal_text_source_json(OrthogonalTextSourceFields {
+                    min_content_inline: min_content.inline_px,
+                    min_content_block: min_content.block_px,
+                    max_content_inline: max_content.inline_px,
+                    max_content_block: max_content.block_px,
+                    child_writing_mode,
+                    parent_writing_mode,
+                    text_orientation,
+                    font_registry_revision: font_registry_revision.0,
+                }),
                 LayoutIntrinsicMeasurementSource::Replaced { natural } => {
                     serde_json::json!({
                         "kind": "replaced",
@@ -112,6 +130,23 @@ pub(crate) fn grid_track_sizing_trace_report(
                     "minContentHeight": sizes.min_content_height(),
                     "maxContentHeight": sizes.max_content_height(),
                     "fontRegistryRevision": sizes.font_registry_revision().0,
+                }),
+                LayoutGridItemIntrinsicSource::OrthogonalText {
+                    min_content,
+                    max_content,
+                    child_writing_mode,
+                    parent_writing_mode,
+                    text_orientation,
+                    font_registry_revision,
+                } => orthogonal_text_source_json(OrthogonalTextSourceFields {
+                    min_content_inline: min_content.inline_px,
+                    min_content_block: min_content.block_px,
+                    max_content_inline: max_content.inline_px,
+                    max_content_block: max_content.block_px,
+                    child_writing_mode: *child_writing_mode,
+                    parent_writing_mode: *parent_writing_mode,
+                    text_orientation: *text_orientation,
+                    font_registry_revision: font_registry_revision.0,
                 }),
                 LayoutGridItemIntrinsicSource::Replaced { natural } => {
                     serde_json::json!({
@@ -171,6 +206,31 @@ pub(crate) fn grid_track_sizing_trace_report(
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+}
+
+struct OrthogonalTextSourceFields {
+    min_content_inline: f32,
+    min_content_block: f32,
+    max_content_inline: f32,
+    max_content_block: f32,
+    child_writing_mode: WritingMode,
+    parent_writing_mode: WritingMode,
+    text_orientation: TextOrientation,
+    font_registry_revision: u64,
+}
+
+fn orthogonal_text_source_json(fields: OrthogonalTextSourceFields) -> serde_json::Value {
+    serde_json::json!({
+        "kind": "orthogonalText",
+        "minContentInline": fields.min_content_inline,
+        "maxContentInline": fields.max_content_inline,
+        "minContentBlock": fields.min_content_block,
+        "maxContentBlock": fields.max_content_block,
+        "childWritingMode": format!("{:?}", fields.child_writing_mode),
+        "parentWritingMode": format!("{:?}", fields.parent_writing_mode),
+        "textOrientation": format!("{:?}", fields.text_orientation),
+        "fontRegistryRevision": fields.font_registry_revision,
+    })
 }
 
 fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
@@ -237,8 +297,13 @@ fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
 
 #[cfg(test)]
 mod tests {
-    use super::{grid_track_sizing_trace_report, track_trace_json};
-    use spinon_core::{EnvironmentRevision, NodeId, Revision, StyleRevision};
+    use super::{
+        OrthogonalTextSourceFields, grid_track_sizing_trace_report, orthogonal_text_source_json,
+        track_trace_json,
+    };
+    use spinon_core::{
+        EnvironmentRevision, NodeId, Revision, StyleRevision, TextOrientation, WritingMode,
+    };
     use spinon_layout::{
         LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
         LayoutGridTrackSizingContributionTrace, LayoutGridTrackSizingFixturePhase,
@@ -250,6 +315,30 @@ mod tests {
         RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted, RuntimeUaCascadeKey,
     };
     use std::sync::Arc;
+
+    #[test]
+    fn reports_orthogonal_text_logical_intrinsics_and_writing_styles() {
+        let source = orthogonal_text_source_json(OrthogonalTextSourceFields {
+            min_content_inline: 50.0,
+            min_content_block: 20.0,
+            max_content_inline: 80.0,
+            max_content_block: 10.0,
+            child_writing_mode: WritingMode::VerticalRl,
+            parent_writing_mode: WritingMode::HorizontalTb,
+            text_orientation: TextOrientation::Mixed,
+            font_registry_revision: 7,
+        });
+
+        assert_eq!(source["kind"], "orthogonalText");
+        assert_eq!(source["minContentInline"], 50.0);
+        assert_eq!(source["maxContentInline"], 80.0);
+        assert_eq!(source["minContentBlock"], 20.0);
+        assert_eq!(source["maxContentBlock"], 10.0);
+        assert_eq!(source["childWritingMode"], "VerticalRl");
+        assert_eq!(source["parentWritingMode"], "HorizontalTb");
+        assert_eq!(source["textOrientation"], "Mixed");
+        assert_eq!(source["fontRegistryRevision"], 7);
+    }
 
     #[test]
     fn reports_stage_track_state_and_item_contribution_values() {

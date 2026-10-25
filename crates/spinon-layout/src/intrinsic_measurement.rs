@@ -1,5 +1,5 @@
-use spinon_core::NodeId;
-use spinon_text_layout::{FontRegistryRevision, TextIntrinsicInlineSizes};
+use spinon_core::{NodeId, TextOrientation, WritingMode};
+use spinon_text_layout::{FontRegistryRevision, LogicalIntrinsicSize, TextIntrinsicInlineSizes};
 
 use crate::{
     LayoutDimension, LayoutInputRevision, LayoutIntrinsicSize, LayoutLengthPercentage, LayoutStyle,
@@ -47,6 +47,14 @@ pub enum LayoutIntrinsicMeasurementSource {
     Text {
         font_registry_revision: FontRegistryRevision,
     },
+    OrthogonalText {
+        min_content: LogicalIntrinsicSize,
+        max_content: LogicalIntrinsicSize,
+        child_writing_mode: WritingMode,
+        parent_writing_mode: WritingMode,
+        text_orientation: TextOrientation,
+        font_registry_revision: FontRegistryRevision,
+    },
     Replaced {
         natural: LayoutIntrinsicSize,
     },
@@ -55,8 +63,20 @@ pub enum LayoutIntrinsicMeasurementSource {
 /// Grid item leaf에서 계산한 원본 intrinsic content-size 입력입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub enum LayoutGridItemIntrinsicSource {
-    Text { sizes: TextIntrinsicInlineSizes },
-    Replaced { natural: LayoutIntrinsicSize },
+    Text {
+        sizes: TextIntrinsicInlineSizes,
+    },
+    OrthogonalText {
+        min_content: LogicalIntrinsicSize,
+        max_content: LogicalIntrinsicSize,
+        child_writing_mode: WritingMode,
+        parent_writing_mode: WritingMode,
+        text_orientation: TextOrientation,
+        font_registry_revision: FontRegistryRevision,
+    },
+    Replaced {
+        natural: LayoutIntrinsicSize,
+    },
 }
 
 /// Anonymous Grid text item에 들어간 원본 HostDocument text node와 정확한 문자열입니다.
@@ -68,7 +88,10 @@ pub struct LayoutGridItemTextSource {
 
 /// 직접 Grid leaf의 intrinsic sizing 후속 계산에 사용할 원본 입력입니다.
 ///
-/// Text source는 같은 font registry identity/revision의 min/max-content 결과를 보존합니다.
+/// `Text` source는 `TextIntrinsicInlineSizes`를 보존하므로 font registry identity/revision도 유지합니다.
+/// `OrthogonalText` source는 logical min/max 값과 숫자 revision·writing metadata를 보존하지만
+/// font registry token identity는 이 전달 값에 포함하지 않습니다. 이 값은 한 layout tree의
+/// text engine에서 계산되고 원본 node/text와 layout revision이 별도로 전달됩니다.
 /// Replaced source의 natural size는 content-box CSS px이며, 지정 크기·aspect ratio·외곽 edge
 /// 적용은 `item_style`과 함께 다음 contribution 단계에서 결정합니다.
 #[derive(Clone, Debug, PartialEq)]
@@ -190,7 +213,9 @@ impl LayoutGridItemIntrinsicInput {
     /// 원본 source/style에서 CSS Grid 후보 입력을 필요할 때 생성합니다.
     ///
     /// output에 별도 벡터를 만들지 않으므로 layout 계산의 할당·실패 경로는 바뀌지 않습니다.
-    pub fn contribution_input(&self) -> LayoutGridItemIntrinsicContributionInput {
+    pub fn contribution_input(
+        &self,
+    ) -> Result<LayoutGridItemIntrinsicContributionInput, crate::LayoutError> {
         let (min_width, max_width, min_height, max_height) = match &self.source {
             LayoutGridItemIntrinsicSource::Text { sizes } => (
                 Some(sizes.min_content()),
@@ -198,13 +223,45 @@ impl LayoutGridItemIntrinsicInput {
                 Some(sizes.min_content_height()),
                 Some(sizes.max_content_height()),
             ),
+            LayoutGridItemIntrinsicSource::OrthogonalText {
+                min_content,
+                max_content,
+                child_writing_mode,
+                parent_writing_mode,
+                text_orientation,
+                ..
+            } => {
+                if *parent_writing_mode != WritingMode::HorizontalTb
+                    || *child_writing_mode != WritingMode::VerticalRl
+                    || *text_orientation != TextOrientation::Mixed
+                {
+                    return Err(crate::LayoutError::UnsupportedIntrinsicSizing {
+                        node: self.node,
+                        reason: "orthogonal intrinsic contribution requires horizontal-tb parent and vertical-rl/mixed text",
+                    });
+                }
+                if !valid_logical_intrinsic_size(*min_content)
+                    || !valid_logical_intrinsic_size(*max_content)
+                {
+                    return Err(crate::LayoutError::InvalidIntrinsicSize {
+                        node: self.node,
+                        axis: "orthogonal logical",
+                    });
+                }
+                (
+                    Some(min_content.block_px),
+                    Some(max_content.block_px),
+                    Some(min_content.inline_px),
+                    Some(max_content.inline_px),
+                )
+            }
             LayoutGridItemIntrinsicSource::Replaced { natural } => {
                 (natural.width, natural.width, natural.height, natural.height)
             }
         };
         let style = self.item_style;
 
-        LayoutGridItemIntrinsicContributionInput {
+        Ok(LayoutGridItemIntrinsicContributionInput {
             grid_container: self.grid_container,
             node: self.node,
             source_order: self.source_order,
@@ -238,8 +295,15 @@ impl LayoutGridItemIntrinsicInput {
                 border_start: style.border.top,
                 border_end: style.border.bottom,
             },
-        }
+        })
     }
+}
+
+fn valid_logical_intrinsic_size(size: LogicalIntrinsicSize) -> bool {
+    size.inline_px.is_finite()
+        && size.inline_px >= 0.0
+        && size.block_px.is_finite()
+        && size.block_px >= 0.0
 }
 
 /// Grid item의 measure callback 한 번에 대한 source-bound 관찰값입니다.

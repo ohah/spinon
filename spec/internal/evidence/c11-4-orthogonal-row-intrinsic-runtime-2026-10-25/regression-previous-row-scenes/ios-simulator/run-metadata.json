@@ -1,0 +1,2108 @@
+{
+  "appBundle": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+  "appExecutableSha256": "de9a1aa3e8b1ad715d05afc5f753b21c8463365c3c3ef1411d1d7dad91c4864c",
+  "bootedDevicesAtRun": [
+    {
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "name": "iPhone 17 Pro",
+      "state": "Booted",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB"
+    },
+    {
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "name": "iPhone 17 Pro",
+      "state": "Booted",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    },
+    {
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "name": "Spinon-C114-Cyclic-Image-Span",
+      "state": "Booted",
+      "udid": "00D4D861-56AA-4552-9181-58D88770EDDA"
+    }
+  ],
+  "bootedDevicesBefore": [
+    {
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "name": "iPhone 17 Pro",
+      "state": "Booted",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB"
+    },
+    {
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "name": "iPhone 17 Pro",
+      "state": "Booted",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    }
+  ],
+  "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+  "buildLogSha256": "946082fcf3581ee9c95c94b44083f68ee4dc7a87ecd864e3d68a1233859b684d",
+  "generatedAtLocal": "2026-10-25T17:22:30+09:00",
+  "nativeMatcherPassCount": 12,
+  "repositoryHead": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "sceneCount": 12,
+  "scenes": [
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg01"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg01 scene_id=direct-min-content-forward expected_root_frame=width=120,height=48 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8250,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg01",
+      "sceneId": "direct-min-content-forward",
+      "screenshot": {
+        "file": "direct-min-content-forward.png",
+        "sha256": "0565e752781c807a8b10895f033aae8b73cc128d7c09cf373da6ef129a082815"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 24.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-min-content-forward-unified.log",
+        "sha256": "c43ce147e2dafed255525d7bc8c2dc370c0b97134683225b5858de6788d5cd23"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg02"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg02 scene_id=direct-min-content-reversed expected_root_frame=width=120,height=48 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8278,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg02",
+      "sceneId": "direct-min-content-reversed",
+      "screenshot": {
+        "file": "direct-min-content-reversed.png",
+        "sha256": "0565e752781c807a8b10895f033aae8b73cc128d7c09cf373da6ef129a082815"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-min-content-reversed-unified.log",
+        "sha256": "a5df1b22f6d3cd9bf4a83d6c524a6b3d9bf05c6f935f2f1a943d72c2daa71ea6"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg03"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg03 scene_id=direct-max-content-forward expected_root_frame=width=120,height=48 expected_item_frame=width=80,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8293,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg03",
+      "sceneId": "direct-max-content-forward",
+      "screenshot": {
+        "file": "direct-max-content-forward.png",
+        "sha256": "7a9336ffc636264f6b17632e49dd1ebb7850008bb4d68b9e57d881d04d42bac5"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 24.0
+        }
+      ],
+      "text": {
+        "height": 10.0,
+        "node": 2,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-max-content-forward-unified.log",
+        "sha256": "8e8bbe1b9f4cb818584be696a6d24c7fe5279cb5a70936c67093b6d41c151456"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg04"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg04 scene_id=direct-max-content-reversed expected_root_frame=width=120,height=48 expected_item_frame=width=80,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8304,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg04",
+      "sceneId": "direct-max-content-reversed",
+      "screenshot": {
+        "file": "direct-max-content-reversed.png",
+        "sha256": "7a9336ffc636264f6b17632e49dd1ebb7850008bb4d68b9e57d881d04d42bac5"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 24.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "text": {
+        "height": 10.0,
+        "node": 3,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-max-content-reversed-unified.log",
+        "sha256": "c46515a39a28e6b533d831c186b1861155b945c7511096dbd88c1c16ddc76654"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg05"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg05 scene_id=direct-row-min-content-forward expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8370,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg05",
+      "sceneId": "direct-row-min-content-forward",
+      "screenshot": {
+        "file": "direct-row-min-content-forward.png",
+        "sha256": "38f0b4ebb0b281deee16748c225035209d2d2d274b2c5e82e5d4cadd95a359dc"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-row-min-content-forward-unified.log",
+        "sha256": "56d213117b806dfb6c8ae5c467fc8e7c815ce59de18ee1522b8baaae488308e5"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg06"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg06 scene_id=direct-row-min-content-reversed expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8423,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg06",
+      "sceneId": "direct-row-min-content-reversed",
+      "screenshot": {
+        "file": "direct-row-min-content-reversed.png",
+        "sha256": "38f0b4ebb0b281deee16748c225035209d2d2d274b2c5e82e5d4cadd95a359dc"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 20.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-row-min-content-reversed-unified.log",
+        "sha256": "0ee38332f1e5b7753adb4ec227d8e47a668675c56b54f8b4a28dd5dc6b8cb881"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg07"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg07 scene_id=direct-row-max-content-forward expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8589,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg07",
+      "sceneId": "direct-row-max-content-forward",
+      "screenshot": {
+        "file": "direct-row-max-content-forward.png",
+        "sha256": "224c62a4cc51c5b84bf343df08b1d4485e3822b6ce2fe2c4442d465db022c826"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-row-max-content-forward-unified.log",
+        "sha256": "fcd411cee6b5eb91996117cf390578c0beceafd9bdecf9ef82b55326e47cab45"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg08"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg08 scene_id=direct-row-max-content-reversed expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8609,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg08",
+      "sceneId": "direct-row-max-content-reversed",
+      "screenshot": {
+        "file": "direct-row-max-content-reversed.png",
+        "sha256": "224c62a4cc51c5b84bf343df08b1d4485e3822b6ce2fe2c4442d465db022c826"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 20.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 20.0
+        }
+      ],
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-row-max-content-reversed-unified.log",
+        "sha256": "796949a873a2061673cf63337c5476b64c666d967fa1cdd8d7c55dda271d4890"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg09"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg09 scene_id=direct-orthogonal-row-min-content-forward expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8633,
+      "root": {
+        "height": 50.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg09",
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-forward.png",
+        "sha256": "9d90e25026c1287d2f3d393aee244c3f3eb2b7043705cadcb88ab23f3c8ba741"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "text": {
+        "height": 50.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-min-content-forward-unified.log",
+        "sha256": "07771a75e27251d2b3428ee33024ccd64e1aec653e5da39b96cb38c107397a44"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg10"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg10 scene_id=direct-orthogonal-row-min-content-reversed expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8710,
+      "root": {
+        "height": 50.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg10",
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-reversed.png",
+        "sha256": "9d90e25026c1287d2f3d393aee244c3f3eb2b7043705cadcb88ab23f3c8ba741"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MinContent",
+          "node": 3,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "text": {
+        "height": 50.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "traceChunkCount": 8,
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-min-content-reversed-unified.log",
+        "sha256": "4266c20def0690b825941d84dc91fccdfe735b6b736327b3123ed4e4e2e744c1"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg11"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg11 scene_id=direct-orthogonal-row-max-content-forward expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8814,
+      "root": {
+        "height": 80.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg11",
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-forward.png",
+        "sha256": "39eeeb8db7c60998dbf0a9f5178c7970690e8db6436b395e35b15a1ff4803000"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 4,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "text": {
+        "height": 80.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "traceChunkCount": 9,
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-max-content-forward-unified.log",
+        "sha256": "efe210fcae0dcc3310dfc12e68e1d8ecd74f25ae555cea6bcc52f2507d069c88"
+      }
+    },
+    {
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "finalTrackSizes": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "frameSummary": {
+        "count": "3",
+        "marker": "present",
+        "run_id": "c114reg12"
+      },
+      "gridCount": 1,
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "layoutInputRevision": {
+        "environment": 0,
+        "intrinsicSize": 1,
+        "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+        "style": 0
+      },
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114reg12 scene_id=direct-orthogonal-row-max-content-reversed expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "passAxesAndSequence": [
+        {
+          "axis": "Columns",
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1
+        }
+      ],
+      "processId": 8938,
+      "root": {
+        "height": 80.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "runId": "c114reg12",
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-reversed.png",
+        "sha256": "39eeeb8db7c60998dbf0a9f5178c7970690e8db6436b395e35b15a1ff4803000"
+      },
+      "selectedContributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 2,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "kind": "MaxContent",
+          "node": 3,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "text": {
+        "height": 80.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "textIntrinsicSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "traceChunkCount": 9,
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-max-content-reversed-unified.log",
+        "sha256": "c817be07ace79badef72a8a013218efb62a384df031668e13ba2051c2405ce58"
+      }
+    }
+  ],
+  "simulatorAtRun": {
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "isAvailable": true,
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "state": "Booted",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA"
+  },
+  "sourceSha256": "1401a122c4fc3f87c15753134afbf793836a87112d02466ac4df176a4fabad33",
+  "target": {
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "isAvailable": true,
+    "state": "Shutdown"
+  },
+  "xcodeVersion": [
+    "Xcode 26.2",
+    "Build version 17C52"
+  ],
+  "selectedRegressionRunSets": {
+    "previousEightControls": {
+      "validationFile": "previous-eight-scenes-validation.json",
+      "sceneCount": 8,
+      "nativeMatcherPassCount": 8,
+      "sourceManifest": "source-hashes.json"
+    },
+    "finalOrthogonalScenes": {
+      "validationFile": "final-orthogonal-validation.json",
+      "sceneCount": 4,
+      "nativeMatcherPassCount": 4,
+      "sourceManifest": "source-hashes-final-build.json"
+    }
+  },
+  "buildVersions": {
+    "existingEightControls": {
+      "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+      "buildLog": "build.log",
+      "buildLogSha256": "946082fcf3581ee9c95c94b44083f68ee4dc7a87ecd864e3d68a1233859b684d",
+      "sourceManifest": "source-hashes.json",
+      "sourceManifestSha256": "32361ecb24262f4698109d6b7f9680ac0e4d6fd0443798a33cf3e92342835617",
+      "appExecutableSha256": "de9a1aa3e8b1ad715d05afc5f753b21c8463365c3c3ef1411d1d7dad91c4864c",
+      "sceneIds": [
+        "direct-min-content-forward",
+        "direct-min-content-reversed",
+        "direct-max-content-forward",
+        "direct-max-content-reversed",
+        "direct-row-min-content-forward",
+        "direct-row-min-content-reversed",
+        "direct-row-max-content-forward",
+        "direct-row-max-content-reversed"
+      ],
+      "runIds": [
+        "c114reg01",
+        "c114reg02",
+        "c114reg03",
+        "c114reg04",
+        "c114reg05",
+        "c114reg06",
+        "c114reg07",
+        "c114reg08"
+      ]
+    },
+    "intermediateOrthogonalRerun": {
+      "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+      "buildLog": "build-current-orthogonal.log",
+      "buildLogSha256": "d19f681ec5d7c61fbc9bc7de402605d96d64cf7a37cefa41ddd52fc93361ad24",
+      "sourceManifest": "source-hashes-current-build.json",
+      "sourceManifestSha256": "b3c7da0984d1ebbb8c4d89ea3e9205a423342da5c1680f7ab434b8f6bcf9ae92",
+      "appExecutableSha256": "2a343098e9008567bf49093479fa6bfda921d6a1c0fd4cbf86a9dc2252f1e4ba",
+      "runIds": [
+        "c114cur13",
+        "c114cur14",
+        "c114cur15",
+        "c114cur16"
+      ],
+      "sceneIds": [
+        "direct-orthogonal-row-min-content-forward",
+        "direct-orthogonal-row-min-content-reversed",
+        "direct-orthogonal-row-max-content-forward",
+        "direct-orthogonal-row-max-content-reversed"
+      ]
+    },
+    "finalOrthogonalRerun": {
+      "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+      "buildLog": "build-final-orthogonal.log",
+      "buildLogSha256": "9a22d3295e13a1b37b414f6f05c91904f25e6f6bf68ad9c06da771814e4d6c6e",
+      "sourceManifest": "source-hashes-final-build.json",
+      "sourceManifestSha256": "b79c74d3b86087a09a95907124cc12a507a024087975302b31f538f4e2d01a6f",
+      "appExecutableSha256": "7ae420cbaaf542429c6e4e054aee3ea613b6f721375b532b58136c9075ed8189",
+      "sourceManifestUnchangedAfterRun": true,
+      "runIds": [
+        "c114fin17",
+        "c114fin18",
+        "c114fin19",
+        "c114fin20"
+      ],
+      "sceneIds": [
+        "direct-orthogonal-row-min-content-forward",
+        "direct-orthogonal-row-min-content-reversed",
+        "direct-orthogonal-row-max-content-forward",
+        "direct-orthogonal-row-max-content-reversed"
+      ]
+    }
+  },
+  "intermediateOrthogonalReruns": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114cur13",
+      "nativeSummary": "run_id=c114cur13 scene_id=direct-orthogonal-row-min-content-forward expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-min-content-forward-current-unified.log",
+      "screenshot": "direct-orthogonal-row-min-content-forward-current.png",
+      "screenshotSha256": "7f744ea1b2fa72d20aac7973065eda1b499f2fe078435c4a36813539ad8049c1"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114cur14",
+      "nativeSummary": "run_id=c114cur14 scene_id=direct-orthogonal-row-min-content-reversed expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-min-content-reversed-current-unified.log",
+      "screenshot": "direct-orthogonal-row-min-content-reversed-current.png",
+      "screenshotSha256": "907f82674ddc671e6659bce4b83cb18b5a82098e4fa96998890c324dbe1303ca"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114cur15",
+      "nativeSummary": "run_id=c114cur15 scene_id=direct-orthogonal-row-max-content-forward expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-max-content-forward-current-unified.log",
+      "screenshot": "direct-orthogonal-row-max-content-forward-current.png",
+      "screenshotSha256": "4867ea6a71ed873aa7dec2be1474d03376cebe346dbf11a4fbc534aa3a0f085a"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114cur16",
+      "nativeSummary": "run_id=c114cur16 scene_id=direct-orthogonal-row-max-content-reversed expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-max-content-reversed-current-unified.log",
+      "screenshot": "direct-orthogonal-row-max-content-reversed-current.png",
+      "screenshotSha256": "4867ea6a71ed873aa7dec2be1474d03376cebe346dbf11a4fbc534aa3a0f085a"
+    }
+  ],
+  "finalOrthogonalReruns": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114fin17",
+      "traceChunks": 8,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          50
+        ],
+        "2": [
+          0,
+          0,
+          50,
+          50
+        ],
+        "4": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            50.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-forward-final.png",
+        "sha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8",
+        "width": 1206,
+        "height": 2622
+      },
+      "nativeMatcher": "pass",
+      "nativeSummary": "run_id=c114fin17 scene_id=direct-orthogonal-row-min-content-forward expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-min-content-forward-final-unified.log",
+      "unifiedLogSha256": "a42b2fd5e6f03953f3fa28b3cb467642e479cea0e7ec7352b8b3b3f3f68802f9",
+      "launchLog": "direct-orthogonal-row-min-content-forward-final-launch.log",
+      "screenshotLog": "direct-orthogonal-row-min-content-forward-final-screenshot.log",
+      "screenshotSha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114fin18",
+      "traceChunks": 8,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          50
+        ],
+        "3": [
+          0,
+          0,
+          50,
+          50
+        ],
+        "2": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            50.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-reversed-final.png",
+        "sha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8",
+        "width": 1206,
+        "height": 2622
+      },
+      "nativeMatcher": "pass",
+      "nativeSummary": "run_id=c114fin18 scene_id=direct-orthogonal-row-min-content-reversed expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-min-content-reversed-final-unified.log",
+      "unifiedLogSha256": "838d797f83025ae861b1d3835a38bbdb169e4c974211110e1629d94cb8826fb2",
+      "launchLog": "direct-orthogonal-row-min-content-reversed-final-launch.log",
+      "screenshotLog": "direct-orthogonal-row-min-content-reversed-final-screenshot.log",
+      "screenshotSha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114fin19",
+      "traceChunks": 9,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          80
+        ],
+        "2": [
+          0,
+          0,
+          50,
+          80
+        ],
+        "4": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            80.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-forward-final.png",
+        "sha256": "3ec14c56e9ac69cf364203c7bbffcf34898f4c4f16ce2494ee030bb231089c41",
+        "width": 1206,
+        "height": 2622
+      },
+      "nativeMatcher": "pass",
+      "nativeSummary": "run_id=c114fin19 scene_id=direct-orthogonal-row-max-content-forward expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-max-content-forward-final-unified.log",
+      "unifiedLogSha256": "aab8e0bbf876f51eebadcdb61e8b937a4770ab9d2e66f7c91bcd4e2c97cb997a",
+      "launchLog": "direct-orthogonal-row-max-content-forward-final-launch.log",
+      "screenshotLog": "direct-orthogonal-row-max-content-forward-final-screenshot.log",
+      "screenshotSha256": "3ec14c56e9ac69cf364203c7bbffcf34898f4c4f16ce2494ee030bb231089c41"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114fin20",
+      "traceChunks": 9,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          80
+        ],
+        "3": [
+          0,
+          0,
+          50,
+          80
+        ],
+        "2": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            80.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-reversed-final.png",
+        "sha256": "c3d6a6193f04ec960e360dcacbba071bc4ab5a6414291a6523cfc1066765ee2a",
+        "width": 1206,
+        "height": 2622
+      },
+      "nativeMatcher": "pass",
+      "nativeSummary": "run_id=c114fin20 scene_id=direct-orthogonal-row-max-content-reversed expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "unifiedLog": "direct-orthogonal-row-max-content-reversed-final-unified.log",
+      "unifiedLogSha256": "22282f0886ac54764f988002dbb9e88c2051bbdc14eef854f71d3df880f71442",
+      "launchLog": "direct-orthogonal-row-max-content-reversed-final-launch.log",
+      "screenshotLog": "direct-orthogonal-row-max-content-reversed-final-screenshot.log",
+      "screenshotSha256": "c3d6a6193f04ec960e360dcacbba071bc4ab5a6414291a6523cfc1066765ee2a"
+    }
+  ],
+  "sourceHashVersionComparison": "source-hash-version-comparison.json",
+  "sourceHashesAfterFinalRerun": "source-hashes-after-final-rerun.json",
+  "sourceManifestSha256Final": "b79c74d3b86087a09a95907124cc12a507a024087975302b31f538f4e2d01a6f",
+  "finalAppExecutableSha256": "7ae420cbaaf542429c6e4e054aee3ea613b6f721375b532b58136c9075ed8189",
+  "bootedDevicesBeforeFinalShutdown": [
+    {
+      "name": "iPhone 17 Pro",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted"
+    },
+    {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted"
+    },
+    {
+      "name": "Spinon-C114-Cyclic-Image-Span",
+      "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted"
+    }
+  ],
+  "bootedDevicesAfterFinalShutdown": [
+    {
+      "name": "iPhone 17 Pro",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted"
+    },
+    {
+      "name": "iPhone 17 Pro",
+      "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+      "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+      "state": "Booted"
+    }
+  ],
+  "finalSimulatorAtRun": {
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "state": "Booted"
+  },
+  "finalSimulatorAfterCleanup": {
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "state": "Shutdown"
+  }
+}

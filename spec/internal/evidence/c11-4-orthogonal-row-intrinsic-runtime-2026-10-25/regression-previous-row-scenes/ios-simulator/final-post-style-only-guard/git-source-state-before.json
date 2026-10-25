@@ -1,0 +1,12 @@
+{
+  "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "indexTree": "45bb3313f5c126fd724eb54e877f86746107a715",
+  "stagedDiffSha256": "e5c870f07de8345841aca43fee29bba53b50b81c4f4bff27bfe863ff0739224e",
+  "unstagedSourceChanges": [],
+  "untrackedSourcePaths": [],
+  "untrackedNonSourcePaths": [
+    "vendor/taffy/Cargo.lock",
+    "vendor/taffy/target/"
+  ],
+  "note": "The fail-closed guard is in the staged tree. No unstaged or untracked source files exist in the build source directories."
+}

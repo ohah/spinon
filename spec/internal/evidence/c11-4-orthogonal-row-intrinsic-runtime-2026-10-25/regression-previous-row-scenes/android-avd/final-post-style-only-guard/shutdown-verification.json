@@ -1,0 +1,8 @@
+{
+  "shutdownCommand": "adb -s emulator-5570 emu kill",
+  "shutdownReply": "OK: killing emulator, bye bye\nOK",
+  "finalSerialCheck": "error: device 'emulator-5570' not found\nadb_get_state_exit=1",
+  "targetEmulatorPid": "36810",
+  "targetProcessAbsent": true,
+  "otherDevicesQueried": false
+}

@@ -1,0 +1,172 @@
+{
+  "status": "PASS",
+  "sceneCount": 12,
+  "scenes": [
+    {
+      "scene": "direct-orthogonal-row-min-content-forward",
+      "frames": "root 74x50; text 50x50; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        50.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-orthogonal-row-min-content-reversed",
+      "frames": "root 74x50; text 50x50; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        50.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-orthogonal-row-max-content-forward",
+      "frames": "root 74x80; text 50x80; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        80.0
+      ],
+      "contributionCount": 6
+    },
+    {
+      "scene": "direct-orthogonal-row-max-content-reversed",
+      "frames": "root 74x80; text 50x80; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        80.0
+      ],
+      "contributionCount": 6
+    },
+    {
+      "scene": "direct-min-content-forward",
+      "frames": "root 120x48; text 50x20; image 24x16 at 0,24",
+      "columns": [
+        50.0
+      ],
+      "rows": [
+        24.0,
+        24.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-min-content-reversed",
+      "frames": "root 120x48; text 50x20; image 24x16 at 0,24",
+      "columns": [
+        50.0
+      ],
+      "rows": [
+        24.0,
+        24.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-max-content-forward",
+      "frames": "root 120x48; text 80x10; image 24x16 at 0,24",
+      "columns": [
+        80.0
+      ],
+      "rows": [
+        24.0,
+        24.0
+      ],
+      "contributionCount": 6
+    },
+    {
+      "scene": "direct-max-content-reversed",
+      "frames": "root 120x48; text 80x10; image 24x16 at 0,24",
+      "columns": [
+        80.0
+      ],
+      "rows": [
+        24.0,
+        24.0
+      ],
+      "contributionCount": 6
+    },
+    {
+      "scene": "direct-row-min-content-forward",
+      "frames": "root 74x20; text 50x20; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        20.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-row-min-content-reversed",
+      "frames": "root 74x20; text 50x20; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        20.0
+      ],
+      "contributionCount": 4
+    },
+    {
+      "scene": "direct-row-max-content-forward",
+      "frames": "root 74x20; text 50x20; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        20.0
+      ],
+      "contributionCount": 6
+    },
+    {
+      "scene": "direct-row-max-content-reversed",
+      "frames": "root 74x20; text 50x20; image 24x16 at 50,0",
+      "columns": [
+        50.0,
+        24.0
+      ],
+      "rows": [
+        20.0
+      ],
+      "contributionCount": 6
+    }
+  ],
+  "sourceSnapshotSha256": "2cae262c3b1cc8bfcb420b84313f53540909c711d834f001d69058dde249ce11",
+  "indexTreeGitHash": "45bb3313f5c126fd724eb54e877f86746107a715",
+  "apkSha256": "cf978a383a3abceeaa99fe37d2f5c202f859193f20a352d4eea67dd0626371af",
+  "localInstalledApkMatch": true,
+  "screenshotsVerified": 12,
+  "runtimeLogsVerified": 12,
+  "tracesParsed": 12,
+  "avdMetadata": [
+    "avd=spinon_api37_1_compat16k",
+    "serial=emulator-5570",
+    "sdk=37",
+    "release=17",
+    "abi=arm64-v8a",
+    "qemu=1",
+    "page_size=16384",
+    "model=sdk_gphone16k_arm64",
+    "device=emu64a16k",
+    "fingerprint=google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "boot_completed=1",
+    "display_size=Physical size: 1080x2400",
+    "display_density=Physical density: 420"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "buildCommand": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+  "buildResult": "BUILD SUCCEEDED",
+  "buildLog": "build.log",
+  "buildLogSha256": "b418f2b762f34673eb4566fce011c63f23d94394ef53405eb1092cad6f9ab87b",
+  "appBundle": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+  "appExecutableSha256": "ceadb3552b5bb50fcc9a75e813e58c9927f988ed4a10a20315d3c284f3563b93",
+  "xcodeVersion": [
+    "Xcode 26.2",
+    "Build version 17C52"
+  ],
+  "targetSimulator": {
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2"
+  },
+  "sourceSnapshot": {
+    "HEAD": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+    "stagedIndexTree": "45bb3313f5c126fd724eb54e877f86746107a715",
+    "stagedDiffSha256": "e5c870f07de8345841aca43fee29bba53b50b81c4f4bff27bfe863ff0739224e",
+    "sourceManifest": "source-manifest.json",
+    "sourceManifestSha256": "954ef11bb9478de7391a0cc06ec63ccd6455ff43f4792627e5a680c7da94435f",
+    "sourceFileCount": 807,
+    "unchangedThroughBuildAndRun": true
+  },
+  "sceneCount": 12,
+  "nativeMatcherPassCount": 12,
+  "runIds": [
+    "c114sty01",
+    "c114sty02",
+    "c114sty03",
+    "c114sty04",
+    "c114sty05",
+    "c114sty06",
+    "c114sty07",
+    "c114sty08",
+    "c114sty09",
+    "c114sty10",
+    "c114sty11",
+    "c114sty12"
+  ],
+  "createdAtLocal": "2026-10-25T17:45:32+09:00"
+}

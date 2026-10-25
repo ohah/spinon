@@ -68,7 +68,8 @@ fn chrome155_spanning_auto_min_flex_tracks_match_text_contribution_and_frames() 
         .iter()
         .find(|input| input.node == node(2))
         .expect("the spanning text item should retain its intrinsic input")
-        .contribution_input();
+        .contribution_input()
+        .unwrap();
     assert_eq!(intrinsic.width.min_content, Some(200.0));
     assert_eq!(intrinsic.width.max_content, Some(200.0));
 
@@ -399,7 +400,8 @@ fn chrome155_text_track_oracle_cases_match_contributions_traces_and_frames() {
             .iter()
             .find(|input| input.node == node(2))
             .unwrap_or_else(|| panic!("{}: missing text intrinsic input", case.id))
-            .contribution_input();
+            .contribution_input()
+            .unwrap();
         assert_eq!(
             intrinsic.width.min_content,
             Some(case.intrinsic.0),

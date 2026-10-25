@@ -183,7 +183,7 @@ fn grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions() {
             if natural == LayoutIntrinsicSize::new(24.0, 16.0)
     ));
 
-    let contribution = intrinsic_input.contribution_input();
+    let contribution = intrinsic_input.contribution_input().unwrap();
     assert_eq!(contribution.grid_container, root.id());
     assert_eq!(contribution.revision, output.revision);
     assert_eq!(contribution.width.min_content, Some(24.0));

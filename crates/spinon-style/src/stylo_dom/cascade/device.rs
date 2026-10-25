@@ -20,6 +20,9 @@ pub(crate) enum StyloPreferenceGuard {
     Standard {
         _guard: RwLockReadGuard<'static, ()>,
     },
+    OrthogonalWritingMode {
+        _guard: OrthogonalWritingModePreferenceGuard,
+    },
     ScrollGesture {
         _guard: ScrollGesturePreferenceGuard,
     },
@@ -45,15 +48,46 @@ impl Drop for ScrollGesturePreferenceGuard {
     }
 }
 
+pub(crate) struct OrthogonalWritingModePreferenceGuard {
+    _guard: RwLockWriteGuard<'static, ()>,
+    previous_enabled: bool,
+}
+
+impl OrthogonalWritingModePreferenceGuard {
+    fn enter() -> Self {
+        let guard = STYLO_PREFERENCE_LOCK
+            .write()
+            .unwrap_or_else(std::sync::PoisonError::into_inner);
+        let previous_enabled = stylo_static_prefs::pref!("layout.writing-mode.enabled");
+        stylo_static_prefs::set_pref!("layout.writing-mode.enabled", true);
+        Self {
+            _guard: guard,
+            previous_enabled,
+        }
+    }
+}
+
+impl Drop for OrthogonalWritingModePreferenceGuard {
+    fn drop(&mut self) {
+        stylo_static_prefs::set_pref!("layout.writing-mode.enabled", self.previous_enabled);
+    }
+}
+
 pub(super) fn acquire_stylo_preferences(
     profile: super::ComputedStyleProfile,
 ) -> StyloPreferenceGuard {
-    if profile == super::ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 {
-        StyloPreferenceGuard::ScrollGesture {
-            _guard: ScrollGesturePreferenceGuard::enter(),
+    match profile {
+        super::ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 => {
+            StyloPreferenceGuard::ScrollGesture {
+                _guard: ScrollGesturePreferenceGuard::enter(),
+            }
         }
-    } else {
-        acquire_standard_stylo_preferences()
+        super::ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => {
+            StyloPreferenceGuard::OrthogonalWritingMode {
+                _guard: OrthogonalWritingModePreferenceGuard::enter(),
+            }
+        }
+        _ => acquire_standard_stylo_preferences(),
     }
 }
 
@@ -67,6 +101,10 @@ pub(crate) fn acquire_standard_stylo_preferences() -> StyloPreferenceGuard {
 
 pub(super) fn enable_scroll_gesture_preferences() -> ScrollGesturePreferenceGuard {
     ScrollGesturePreferenceGuard::enter()
+}
+
+pub(super) fn enable_orthogonal_writing_mode_preferences() -> OrthogonalWritingModePreferenceGuard {
+    OrthogonalWritingModePreferenceGuard::enter()
 }
 
 /// Stylo preference는 프로세스 전역이므로 파서·cascade 진입마다 사용값을 다시 고정합니다.
@@ -166,5 +204,23 @@ impl Drop for LayoutThreadState {
         if self.entered {
             thread_state::exit(ThreadState::LAYOUT);
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn orthogonal_writing_mode_guard_restores_its_pref_without_enabling_unimplemented() {
+        {
+            let _preferences = OrthogonalWritingModePreferenceGuard::enter();
+            assert!(stylo_static_prefs::pref!("layout.writing-mode.enabled"));
+            assert!(!stylo_static_prefs::pref!("layout.unimplemented"));
+        }
+
+        let _preferences = acquire_standard_stylo_preferences();
+        assert!(!stylo_static_prefs::pref!("layout.writing-mode.enabled"));
+        assert!(!stylo_static_prefs::pref!("layout.unimplemented"));
     }
 }

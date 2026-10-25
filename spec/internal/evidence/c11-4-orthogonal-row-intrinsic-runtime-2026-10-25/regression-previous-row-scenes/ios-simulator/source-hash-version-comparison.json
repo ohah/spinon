@@ -1,0 +1,30 @@
+{
+  "repositoryHead": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "initialBaseline": {
+    "manifestFile": "source-hashes.json",
+    "appExecutableSha256": "de9a1aa3e8b1ad715d05afc5f753b21c8463365c3c3ef1411d1d7dad91c4864c",
+    "manifestSha256": "32361ecb24262f4698109d6b7f9680ac0e4d6fd0443798a33cf3e92342835617"
+  },
+  "intermediateOrthogonalRun": {
+    "manifestFile": "source-hashes-current-build.json",
+    "appExecutableSha256": "2a343098e9008567bf49093479fa6bfda921d6a1c0fd4cbf86a9dc2252f1e4ba",
+    "manifestSha256": "b3c7da0984d1ebbb8c4d89ea3e9205a423342da5c1680f7ab434b8f6bcf9ae92"
+  },
+  "finalOrthogonalRun": {
+    "manifestFile": "source-hashes-final-build.json",
+    "appExecutableSha256": "7ae420cbaaf542429c6e4e054aee3ea613b6f721375b532b58136c9075ed8189",
+    "manifestSha256": "b79c74d3b86087a09a95907124cc12a507a024087975302b31f538f4e2d01a6f"
+  },
+  "initialToFinalChangedFiles": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_direct_text_image_intrinsic_rows.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+    "crates/spinon-layout/src/calc_tree/text.rs",
+    "crates/spinon-layout/src/grid_text_stretch_tests.rs",
+    "crates/spinon-style-to-layout/src/projection.rs"
+  ],
+  "intermediateToFinalChangedFiles": [
+    "crates/spinon-layout/src/grid_text_stretch_tests.rs"
+  ],
+  "afterRunChangedFiles": [],
+  "checkedAtLocal": "2026-10-25T17:20:59+09:00"
+}

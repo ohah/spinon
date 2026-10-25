@@ -1,0 +1,18 @@
+{
+  "builtSourceSha256": "9d02c731d5d72f181b0c8832cb0e6c83009a20dde0187b55636054ab0e62075f",
+  "changedFileCount": 2,
+  "changedFiles": {
+    "crates/spinon-layout/src/calc_tree/text.rs": {
+      "built": "ed99027e85f3431bf05ebbefd163c8631e14afb6bd1e6b93f3150a7e6df84610",
+      "current": "1784af57a68cfc72dc078b373333795775db2d22d5e073d53d8e8e2070eba8a4"
+    },
+    "crates/spinon-style-to-layout/src/projection.rs": {
+      "built": "9864d98dfb593e506d510b328e63287b8ef5aff8ccca12a24fcf7ab7d27e0a16",
+      "current": "dbd9c441fef8608a4c78ec221fc76d321216ef2ea3f93bdbeec9aefdee79739b"
+    }
+  },
+  "checkedAtLocal": "2026-10-25T17:14:14+0900",
+  "currentSourceSha256": "93b4468b4ecf2315344ddaa9a2adea765d16ae7c5fbbbee89a544d2272f6b360",
+  "iosAdapterHashAtBuild": "1401a122c4fc3f87c15753134afbf793836a87112d02466ac4df176a4fabad33",
+  "iosAdapterHashNow": "1401a122c4fc3f87c15753134afbf793836a87112d02466ac4df176a4fabad33"
+}

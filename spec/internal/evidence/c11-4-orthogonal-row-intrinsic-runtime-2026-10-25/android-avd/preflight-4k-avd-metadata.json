@@ -1,0 +1,50 @@
+{
+  "capturedAtUtc": "2026-10-25T07:46:46.387905+00:00",
+  "target": "Android API 37 ARM64 AVD",
+  "serial": "emulator-5570",
+  "emulatorStartCommand": "/Users/yoonhb/Library/Android/sdk/emulator/emulator -avd spinon_api37_0_applied_txn -port 5570 -no-snapshot-load -no-window -no-boot-anim -gpu swiftshader_indirect",
+  "avd": {
+    "avdName": "spinon_api37_0_applied_txn",
+    "apiLevel": "37",
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone64_arm64",
+    "manufacturer": "Google",
+    "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+    "qemu": "1",
+    "openglesVersion": "196609",
+    "eglHardware": "emulation",
+    "pageSizeBytes": 4096,
+    "screenSize": "Physical size: 1080x2400",
+    "screenDensity": "Physical density: 420",
+    "state": "device"
+  },
+  "application": {
+    "packageName": "dev.spinon.bootstrap",
+    "buildCommand": "mise exec -- env SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 bun run build:android",
+    "installedBaseApk": "/data/app/~~QKlLvLM-2PfGKn3T0NokMg==/dev.spinon.bootstrap-v9Y-CkMI9Juc8I28h7rztw==/base.apk",
+    "apkPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "apkSha256": "36c845f424df790ca53ac595b128442f407441eef433e74ab2ed1eb7169ae72e",
+    "installedApkSha256": "36c845f424df790ca53ac595b128442f407441eef433e74ab2ed1eb7169ae72e"
+  },
+  "source": {
+    "gitHead": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+    "gitTree": "1ad2592cdc524e10e8e10c7bee5a110e980357a9",
+    "trackedDiffSha256": "40a2f97537095e39ed25d9ffdd526a6160124e7df53fbfe39309394f7136d7cc",
+    "sha256ByPath": {
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "e57d21aa8710369201eaa53b37dd956bc43e8093dabe98419dc131c867e9d711",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java": "62fb4eaefd6fefb62fca8fe9b7b52febb3294bb6cc71bc56938572a276eba719",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "4c493eb2af2e21c38f88e521e662dd73facde7f283214150477d71b45efebc32",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_direct_text_image_intrinsic_rows.rs": "6e2a142816eb4bc71bf5a902f723fb1cedb8c3fb77715b6046fcae5492f648fe",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "a086565d81340489f17faf3647d9f1ad40a0f6e1b9c9fd2f82508bbbee17d478",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs": "976addf0741182a0f28515a6795c230e97d473e8b0f29a4faea602a205d3c1dc",
+      "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs": "e36f36f509e9cf7ce85f31de4bf4dc1b5ffdd1b4a96271907f23dd9b1fb948d6",
+      "crates/spinon-layout/src/calc_tree/text.rs": "ed99027e85f3431bf05ebbefd163c8631e14afb6bd1e6b93f3150a7e6df84610",
+      "crates/spinon-layout/src/intrinsic_measurement.rs": "0a13705b8a0fe4c4b29ebb5d5fa251ccbb6a4672297763ad4723cb22055cffa8"
+    }
+  },
+  "preCaptureArtifactSha256": {
+    "android-build.log": "d9dbff4530401c69f9e445c6435bc77ec4bf7622f4e1c96d6f67a6529e12e23e",
+    "android-install.log": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+    "emulator-start.log": "d6ddfbf2ec619aea887857ac205a51842b555339acedb7af8e15fa0a8b0b8c4f"
+  }
+}

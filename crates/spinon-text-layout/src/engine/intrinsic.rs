@@ -8,11 +8,12 @@ use parley::{
         TextWrapMode, WhiteSpaceCollapse, WordBreak,
     },
 };
-use spinon_core::NodeId;
+use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 use crate::{
     LigatureMode, LineBreakMode, ParagraphInput, TextDirection, TextIntrinsicInlineSizes,
-    TextLayoutError, WhiteSpaceMode, WordBreakMode, normalize::normalize,
+    TextIntrinsicLogicalSizes, TextLayoutError, WhiteSpaceMode, WordBreakMode,
+    normalize::normalize,
 };
 
 use super::{TextLayoutEngine, inline_boxes};
@@ -24,6 +25,34 @@ pub(super) struct BuiltParleyLayout {
 }
 
 impl TextLayoutEngine {
+    /// 같은 paragraph와 font registry에서 CSS min/max-content logical size를 계산합니다.
+    ///
+    /// Parley의 실제 shaping 및 line-break 결과를 사용합니다. 반환값은 inline/block 논리축이며
+    /// physical width/height로 변환하지 않습니다. `horizontal-tb` 입력은 일반 paragraph를
+    /// 받지만, 현재 `vertical-rl/mixed` 입력은 C11.4의 고정 Ahem `XX XXXXX` intrinsic profile만
+    /// 지원합니다. 다른 vertical 입력은 `UnsupportedVerticalIntrinsicProfile`로 거부하며,
+    /// 이 profile은 일반 vertical text shaping이나 glyph painting 지원을 뜻하지 않습니다.
+    pub fn intrinsic_logical_sizes(
+        &mut self,
+        input: &ParagraphInput,
+    ) -> Result<TextIntrinsicLogicalSizes, TextLayoutError> {
+        // Parley가 반환하는 shaped advance는 inline 축의 크기이고, line-height 합은
+        // line의 block progression입니다. Writing mode에 따른 물리축 교환은 하지 않습니다.
+        // vertical-rl/mixed에서는 ASCII sideways glyph가 이 advance를 inline 축에 사용합니다.
+        match (input.style.writing_mode, input.style.text_orientation) {
+            (WritingMode::HorizontalTb, TextOrientation::Mixed) => {}
+            (WritingMode::VerticalRl, TextOrientation::Mixed)
+                if supports_vertical_intrinsic_profile(input) => {}
+            (WritingMode::VerticalRl, TextOrientation::Mixed) => {
+                return Err(TextLayoutError::UnsupportedVerticalIntrinsicProfile(
+                    input.node,
+                ));
+            }
+        }
+        let sizes = self.intrinsic_inline_sizes(input)?;
+        Ok(sizes.to_logical_sizes(input.style.writing_mode, input.style.text_orientation))
+    }
+
     /// 같은 paragraph와 font registry에서 CSS min-content/max-content inline size를 계산합니다.
     ///
     /// 최종 definite-width snapshot을 만들거나 캐시에 넣지 않습니다. Parley가 같은 입력을
@@ -208,6 +237,26 @@ impl TextLayoutEngine {
             layout,
         })
     }
+}
+
+fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
+    let style = &input.style;
+    input.sources.len() == 1
+        && input.sources[0].inline_ancestors.is_empty()
+        && input.sources[0].text == "XX XXXXX"
+        && input.inline_styles.is_empty()
+        && input.inline_run_styles.is_empty()
+        && style.font_family == "Ahem"
+        && style.font_size == 10.0
+        && style.line_height == 10.0
+        && !style.line_height_is_normal
+        && style.font_weight == 400.0
+        && style.font_style == crate::FontStyleMode::Normal
+        && style.white_space == WhiteSpaceMode::Normal
+        && style.word_break == WordBreakMode::Normal
+        && style.direction == TextDirection::Ltr
+        && style.line_break == LineBreakMode::Normal
+        && style.ligatures == LigatureMode::Normal
 }
 
 fn min_content_inline_advance(

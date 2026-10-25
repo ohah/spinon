@@ -4,8 +4,11 @@ mod style_values;
 mod typed_math;
 use style_values::project_styles;
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_core::TextOrientation;
 use spinon_core::{
     HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision,
+    WritingMode,
 };
 use spinon_layout::{
     LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
@@ -28,7 +31,6 @@ use spinon_style::{
     first_unsupported_runtime_block_flex_grid_inline_property,
     first_unsupported_runtime_block_flex_grid_placement_inline_property,
     first_unsupported_runtime_block_flex_grid_template_inline_property,
-    first_unsupported_runtime_block_flex_grid_track_sizing_inline_property,
 };
 
 use crate::StyleLayoutError;
@@ -246,17 +248,20 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout(
     if view.mount_root_element().handle() != Some(root) {
         return Err(StyleLayoutError::SnapshotMismatch { field: "root" });
     }
-    if let Some((node, property)) =
-        first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(view)
-    {
-        return Err(StyleLayoutError::UnsupportedInlineProperty { node, property });
-    }
-    let computed_styles = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-        view,
-        author_stylesheets,
-        viewport,
-        style_revision,
-    )?;
+    let computed_styles =
+        match compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            view,
+            author_stylesheets,
+            viewport,
+            style_revision,
+        ) {
+            Ok(snapshot) => snapshot,
+            Err(spinon_style::CssCascadeError::UnsupportedInlineAuthorProperty {
+                node,
+                property,
+            }) => return Err(StyleLayoutError::UnsupportedInlineProperty { node, property }),
+            Err(error) => return Err(StyleLayoutError::Cascade(error)),
+        };
     compute_runtime_style_layout(snapshot, root, computed_styles, viewport)
 }
 
@@ -544,6 +549,96 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
             allow_c11_4_replaced_grid_item_align_self_start: false,
         },
     )
+}
+
+fn validate_c11_4_writing_styles_without_text_profile(
+    computed_styles: &ComputedStyleSnapshot,
+) -> Result<(), StyleLayoutError> {
+    for (node, writing_mode, _) in computed_styles.writing_styles.iter() {
+        if *writing_mode == WritingMode::HorizontalTb {
+            continue;
+        }
+        let property = "writing-mode";
+        let value = computed_styles
+            .elements
+            .iter()
+            .find(|element| element.node_id == *node)
+            .and_then(|element| element.properties.get(property))
+            .cloned()
+            .unwrap_or_else(|| format!("{writing_mode:?}"));
+        return Err(StyleLayoutError::UnsupportedComputedValue {
+            node: *node,
+            property,
+            value,
+        });
+    }
+    Ok(())
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn validate_c11_4_orthogonal_text_styles(
+    root: NodeId,
+    computed_styles: &ComputedStyleSnapshot,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+) -> Result<(), StyleLayoutError> {
+    let vertical_paragraphs = paragraph_styles
+        .iter()
+        .filter(|(_, style)| style.writing_mode == WritingMode::VerticalRl)
+        .collect::<Vec<_>>();
+    let expected_vertical_nodes = vertical_paragraphs
+        .iter()
+        .map(|(node, _)| **node)
+        .collect::<BTreeSet<_>>();
+    let computed_vertical_nodes = computed_styles
+        .writing_styles
+        .iter()
+        .filter_map(|(node, mode, _)| (*mode == WritingMode::VerticalRl).then_some(*node))
+        .collect::<BTreeSet<_>>();
+    if expected_vertical_nodes.is_empty() && computed_vertical_nodes.is_empty() {
+        return Ok(());
+    }
+    if expected_vertical_nodes != computed_vertical_nodes {
+        let node = expected_vertical_nodes
+            .symmetric_difference(&computed_vertical_nodes)
+            .next()
+            .copied()
+            .unwrap_or(root);
+        return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
+            node,
+            reason: "computed vertical text nodes must match the paragraph inputs",
+        });
+    }
+    if expected_vertical_nodes.len() != 1 {
+        let node = expected_vertical_nodes
+            .iter()
+            .next()
+            .copied()
+            .unwrap_or(root);
+        return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
+            node,
+            reason: "the fixture accepts exactly one vertical text paragraph",
+        });
+    }
+    if computed_styles.writing_style_for(root)
+        != Some((WritingMode::HorizontalTb, TextOrientation::Mixed))
+    {
+        return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
+            node: root,
+            reason: "root computed writing-mode/text-orientation must be horizontal-tb/mixed",
+        });
+    }
+    for (node, style) in vertical_paragraphs {
+        if style.text_orientation != TextOrientation::Mixed
+            || computed_styles.writing_style_for(*node)
+                != Some((WritingMode::VerticalRl, TextOrientation::Mixed))
+        {
+            return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
+                node: *node,
+                reason: "paragraph and computed writing-mode/text-orientation must both be vertical-rl/mixed",
+            });
+        }
+    }
+    Ok(())
 }
 
 /// C11.4 mixed fixture에서 Ahem paragraph와 replaced-resource snapshot을 함께 연결합니다.
@@ -945,6 +1040,17 @@ fn compute_layout_from_styles_with_text_and_grid_options(
     options: StyleLayoutProjectionOptions,
 ) -> Result<StyleLayoutOutput, StyleLayoutError> {
     assert_matching_revision(snapshot, &computed_styles, computed_styles.profile)?;
+    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        && text_profile.is_none()
+    {
+        validate_c11_4_writing_styles_without_text_profile(&computed_styles)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+        && let Some((paragraph_styles, _, _)) = text_profile
+    {
+        validate_c11_4_orthogonal_text_styles(root.id(), &computed_styles, paragraph_styles)?;
+    }
     if options.reject_cascade_diagnostics
         && let Some(diagnostic) = computed_styles.diagnostics.first().cloned()
     {

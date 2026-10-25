@@ -224,9 +224,21 @@ impl CalcLayoutTree {
             }
             let engine_id = self.engine_ids[&node];
             let calc_node = self.node(engine_id);
-            let source = if self.text_paragraphs.contains_key(&engine_id) {
-                LayoutGridItemIntrinsicSource::Text {
-                    sizes: self.text_intrinsic_inline_sizes(engine_id, node)?,
+            let source = if let Some(paragraph) = self.text_paragraphs.get(&engine_id) {
+                if paragraph.style.writing_mode == spinon_core::WritingMode::VerticalRl {
+                    let sizes = self.text_intrinsic_logical_sizes(engine_id, node)?;
+                    LayoutGridItemIntrinsicSource::OrthogonalText {
+                        min_content: sizes.min_content(),
+                        max_content: sizes.max_content(),
+                        child_writing_mode: sizes.writing_mode(),
+                        parent_writing_mode: spinon_core::WritingMode::HorizontalTb,
+                        text_orientation: sizes.text_orientation(),
+                        font_registry_revision: sizes.font_registry_revision(),
+                    }
+                } else {
+                    LayoutGridItemIntrinsicSource::Text {
+                        sizes: self.text_intrinsic_inline_sizes(engine_id, node)?,
+                    }
                 }
             } else if let Some(replaced) = calc_node.replaced_sizing {
                 LayoutGridItemIntrinsicSource::Replaced {

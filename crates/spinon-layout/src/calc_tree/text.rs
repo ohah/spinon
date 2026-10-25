@@ -1,10 +1,17 @@
 use std::collections::BTreeMap;
 
-use spinon_core::NodeId;
-use spinon_text_layout::{FontRegistryRevision, TextIntrinsicInlineSizes};
+use spinon_core::{NodeId, WritingMode};
+use spinon_text_layout::{
+    FontRegistryRevision, TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes,
+};
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
-use crate::{LayoutError, LayoutInput, LayoutTextFlowSegment, LayoutTextSnapshot};
+use crate::{
+    LayoutError, LayoutInput, LayoutIntrinsicMeasurementSource, LayoutTextFlowSegment,
+    LayoutTextSnapshot,
+};
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use crate::{LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource, LayoutInputRevision};
 
 use super::CalcLayoutTree;
 
@@ -17,6 +24,7 @@ pub(crate) type FinalTextLayouts = (
 pub(super) struct TextMeasureResult {
     pub(super) size: Size<f32>,
     pub(super) font_registry_revision: FontRegistryRevision,
+    pub(super) source: LayoutIntrinsicMeasurementSource,
 }
 
 impl CalcLayoutTree {
@@ -124,19 +132,103 @@ impl CalcLayoutTree {
     pub(super) fn measure_text(
         &self,
         node_id: TaffyNodeId,
-        available_width: AvailableSpace,
+        available_space: Size<AvailableSpace>,
     ) -> Result<TextMeasureResult, LayoutError> {
         let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
             return Ok(TextMeasureResult {
                 size: Size::ZERO,
                 font_registry_revision: FontRegistryRevision::default(),
+                source: LayoutIntrinsicMeasurementSource::Text {
+                    font_registry_revision: FontRegistryRevision::default(),
+                },
             });
         };
         let engine = self
             .text_layout_engine
             .as_ref()
             .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
-        match available_width {
+        if paragraph.style.writing_mode == WritingMode::VerticalRl {
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            {
+                if !matches!(available_space.width, AvailableSpace::Definite(_)) {
+                    return Err(LayoutError::UnsupportedTextParagraph {
+                        node: paragraph.node,
+                        reason: "vertical Grid intrinsic row measurement requires a definite physical width",
+                    });
+                }
+                let intrinsic_axis = match available_space.height {
+                    AvailableSpace::MinContent => Some(true),
+                    AvailableSpace::MaxContent => Some(false),
+                    AvailableSpace::Definite(_) => None,
+                };
+                if let Some(min_content) = intrinsic_axis {
+                    let sizes = self.text_intrinsic_logical_sizes(node_id, paragraph.node)?;
+                    let metadata = self
+                        .grid_item_intrinsic_metadata
+                        .get(&paragraph.node)
+                        .ok_or(LayoutError::UnsupportedTextParagraph {
+                            node: paragraph.node,
+                            reason: "orthogonal intrinsic sizing requires direct Grid item metadata",
+                        })?;
+                    let source = LayoutGridItemIntrinsicSource::OrthogonalText {
+                        min_content: sizes.min_content(),
+                        max_content: sizes.max_content(),
+                        child_writing_mode: sizes.writing_mode(),
+                        parent_writing_mode: WritingMode::HorizontalTb,
+                        text_orientation: sizes.text_orientation(),
+                        font_registry_revision: sizes.font_registry_revision(),
+                    };
+                    let contribution = LayoutGridItemIntrinsicInput {
+                        grid_container: metadata.container,
+                        node: paragraph.node,
+                        source_order: metadata.source_order,
+                        revision: LayoutInputRevision::default(),
+                        source: source.clone(),
+                        text_sources: metadata.text_sources.clone(),
+                        item_style: metadata.style,
+                    }
+                    .contribution_input()?;
+                    let (width, height) = if min_content {
+                        (
+                            contribution.width.min_content,
+                            contribution.height.min_content,
+                        )
+                    } else {
+                        (
+                            contribution.width.max_content,
+                            contribution.height.max_content,
+                        )
+                    };
+                    let width = width.ok_or(LayoutError::UnsupportedTextParagraph {
+                        node: paragraph.node,
+                        reason: "orthogonal intrinsic physical width is missing",
+                    })?;
+                    let height = height.ok_or(LayoutError::UnsupportedTextParagraph {
+                        node: paragraph.node,
+                        reason: "orthogonal intrinsic physical height is missing",
+                    })?;
+                    return Ok(TextMeasureResult {
+                        size: Size { width, height },
+                        font_registry_revision: sizes.font_registry_revision(),
+                        source: LayoutIntrinsicMeasurementSource::OrthogonalText {
+                            min_content: sizes.min_content(),
+                            max_content: sizes.max_content(),
+                            child_writing_mode: sizes.writing_mode(),
+                            parent_writing_mode: WritingMode::HorizontalTb,
+                            text_orientation: sizes.text_orientation(),
+                            font_registry_revision: sizes.font_registry_revision(),
+                        },
+                    });
+                }
+            }
+            #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: paragraph.node,
+                reason: "vertical Grid intrinsic row measurement requires the C11.4 fixture feature",
+            });
+        }
+
+        match available_space.width {
             AvailableSpace::Definite(width) => {
                 let width = normalize_zero(width);
                 let snapshot = engine
@@ -154,12 +246,15 @@ impl CalcLayoutTree {
                         height: snapshot.height,
                     },
                     font_registry_revision: snapshot.font_registry_revision,
+                    source: LayoutIntrinsicMeasurementSource::Text {
+                        font_registry_revision: snapshot.font_registry_revision,
+                    },
                 })
             }
             AvailableSpace::MinContent | AvailableSpace::MaxContent => {
                 let sizes = self.text_intrinsic_inline_sizes(node_id, paragraph.node)?;
                 Ok(TextMeasureResult {
-                    size: match available_width {
+                    size: match available_space.width {
                         AvailableSpace::MinContent => Size {
                             width: sizes.min_content(),
                             height: sizes.min_content_height(),
@@ -173,9 +268,45 @@ impl CalcLayoutTree {
                         }
                     },
                     font_registry_revision: sizes.font_registry_revision(),
+                    source: LayoutIntrinsicMeasurementSource::Text {
+                        font_registry_revision: sizes.font_registry_revision(),
+                    },
                 })
             }
         }
+    }
+
+    pub(super) fn text_intrinsic_logical_sizes(
+        &self,
+        node_id: TaffyNodeId,
+        owner: NodeId,
+    ) -> Result<TextIntrinsicLogicalSizes, LayoutError> {
+        if let Some(sizes) = self
+            .text_intrinsic_logical_layouts
+            .borrow()
+            .get(&node_id)
+            .cloned()
+        {
+            return Ok(sizes);
+        }
+        let Some(paragraph) = self.text_paragraphs.get(&node_id) else {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: owner,
+                reason: "Grid text intrinsic input에 대응하는 paragraph가 없습니다",
+            });
+        };
+        let engine = self
+            .text_layout_engine
+            .as_ref()
+            .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+        let sizes = engine
+            .borrow_mut()
+            .intrinsic_logical_sizes(paragraph)
+            .map_err(LayoutError::TextLayout)?;
+        self.text_intrinsic_logical_layouts
+            .borrow_mut()
+            .insert(node_id, sizes.clone());
+        Ok(sizes)
     }
 
     pub(super) fn text_intrinsic_inline_sizes(
@@ -226,7 +357,7 @@ mod tests {
     use spinon_text_layout::{
         ParagraphInput, ParagraphStyle, TextLayoutEngine, TextSource, WhiteSpaceMode, WordBreakMode,
     };
-    use taffy::{AvailableSpace, NodeId as TaffyNodeId};
+    use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
     use super::super::intrinsic_measurements::GridItemIntrinsicMetadata;
     use super::super::{CalcLayoutTree, Node};
@@ -247,6 +378,8 @@ mod tests {
                 text: "XX XXXXXXX".to_owned(),
             }],
             style: ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: 10.0,
                 line_height: 10.0,
@@ -295,6 +428,7 @@ mod tests {
             text_flow_nodes: BTreeMap::new(),
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
+            text_intrinsic_logical_layouts: RefCell::new(HashMap::new()),
             grid_item_intrinsic_metadata: BTreeMap::from([(
                 spinon_node,
                 GridItemIntrinsicMetadata {
@@ -331,10 +465,22 @@ mod tests {
         assert_eq!(sizes.font_registry_revision().0, 1);
 
         let min_content = tree
-            .measure_text(taffy_node, AvailableSpace::MinContent)
+            .measure_text(
+                taffy_node,
+                Size {
+                    width: AvailableSpace::MinContent,
+                    height: AvailableSpace::MinContent,
+                },
+            )
             .unwrap();
         let max_content = tree
-            .measure_text(taffy_node, AvailableSpace::MaxContent)
+            .measure_text(
+                taffy_node,
+                Size {
+                    width: AvailableSpace::MaxContent,
+                    height: AvailableSpace::MaxContent,
+                },
+            )
             .unwrap();
         assert_eq!(
             (min_content.size.width, min_content.size.height),
@@ -352,7 +498,13 @@ mod tests {
         assert_eq!(tree.text_intrinsic_layouts.borrow().len(), 1);
 
         let definite = tree
-            .measure_text(taffy_node, AvailableSpace::Definite(30.0))
+            .measure_text(
+                taffy_node,
+                Size {
+                    width: AvailableSpace::Definite(30.0),
+                    height: AvailableSpace::Definite(100.0),
+                },
+            )
             .unwrap();
         assert_eq!(definite.size.width, 70.0);
         assert_eq!(

@@ -82,6 +82,8 @@ fn input(width: f32, text: &str, white_space: WhiteSpaceMode) -> LayoutInput {
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
             font_size: 10.0,
             line_height: 10.0,
@@ -287,7 +289,7 @@ fn grid_text_intrinsic_input_preserves_minmax_beyond_definite_callback_trace() {
     );
     assert_eq!(sizes.font_registry_revision().0, 1);
 
-    let contribution = item.contribution_input();
+    let contribution = item.contribution_input().unwrap();
     assert_eq!(contribution.grid_container, node(1));
     assert_eq!(contribution.source_order, 1);
     assert_eq!(contribution.revision, output.revision);

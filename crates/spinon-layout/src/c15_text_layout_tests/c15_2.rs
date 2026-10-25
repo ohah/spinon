@@ -138,6 +138,8 @@ fn paragraph_input(
     let paragraph_styles = BTreeMap::from([(
         fixture.paragraph.id(),
         ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
             font_size: 10.0,
             line_height: 10.0,
@@ -307,6 +309,8 @@ fn inline_depth_above_two_levels_remains_an_explicit_diagnostic() {
     let paragraph_styles = BTreeMap::from([(
         fixture.paragraph.id(),
         ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
             font_size: 10.0,
             line_height: 10.0,

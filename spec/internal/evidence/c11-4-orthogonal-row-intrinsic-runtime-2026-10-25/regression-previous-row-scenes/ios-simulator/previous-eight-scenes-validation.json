@@ -1,0 +1,367 @@
+{
+  "legacySceneCount": 8,
+  "passCount": 8,
+  "errors": [],
+  "scenes": [
+    {
+      "sceneId": "direct-min-content-forward",
+      "runId": "c114reg01",
+      "pass": true,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-min-content-reversed",
+      "runId": "c114reg02",
+      "pass": true,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-max-content-forward",
+      "runId": "c114reg03",
+      "pass": true,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 10.0,
+        "node": 2,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-max-content-reversed",
+      "runId": "c114reg04",
+      "pass": true,
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 10.0,
+        "node": 3,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-row-min-content-forward",
+      "runId": "c114reg05",
+      "pass": true,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-row-min-content-reversed",
+      "runId": "c114reg06",
+      "pass": true,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-row-max-content-forward",
+      "runId": "c114reg07",
+      "pass": true,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    },
+    {
+      "sceneId": "direct-row-max-content-reversed",
+      "runId": "c114reg08",
+      "pass": true,
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "finalTrackSizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "finalTrackSizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunks": 8,
+      "matcher": "pass"
+    }
+  ]
+}

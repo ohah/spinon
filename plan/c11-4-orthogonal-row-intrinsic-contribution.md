@@ -4,7 +4,7 @@
 
 **관련 slice:** [direct text/image 행 축 계획](./c11-4-mixed-direct-text-image-intrinsic-row-axis.md) · [기존 행 축 Chrome 사전 비교](../spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md) · [새 orthogonal 행 축 사전 비교](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md) · [계획 검토 20개 및 후속 조치](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md)
 
-**상태:** Agent Browser의 Chrome 156 사전 관측과 CSS Grid 2025 CRD에 따른 독립 계산이 네 장면에서 일치했다. 예상 row `[50]px`와 `[80]px`가 실제로 갈린다. 이 문서는 제한 runtime fixture 확장을 위한 계획 후보이며 Spinon 구현·Android/iOS 실행 근거가 아니다. 기존 행 축 slice의 `horizontal-tb`/direct block text profile이 허용하지 않는 `vertical-rl` text item을 새 고정 profile로 제안한다. C11.4 checkbox와 공식 완료 `72/213`은 바꾸지 않는다.
+**상태:** 2026-10-25 제한된 opt-in runtime fixture 구현과 Android/iOS Simulator 네 장면 matrix가 완료됐다. Chrome 156 및 CSS Grid 2025 CRD 기반 독립 기대값과 네 장면이 일치한다. 이 결과는 고정 `vertical-rl` text와 natural image profile만 확인하며 public CSS 지원이나 전체 C11.4 완료를 뜻하지 않는다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
 
 ## 목적과 겹침 경계
 
@@ -42,6 +42,16 @@
 
 기존 `c11-4-mixed-direct-text-image-intrinsic-row-axis.md`는 text item과 root의 computed writing mode를 `horizontal-tb`로 고정하고, writing-mode 변경을 제외한다. 현재 runtime matcher `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs`도 root 및 text `writing-mode:horizontal-tb`를 요구한다. 따라서 이 계획의 첫 구현 관문은 author style parsing에서 `vertical-rl`을 받는 것만이 아니라 Stylo→Spinon computed style→Taffy layout까지 orthogonal sizing이 보존되는지 확인하는 것이다. 값이 거부되거나 geometry가 규범·Chrome과 다르면 임의 projection/fallback을 넣지 말고 fixture를 실패 상태로 둔다. production algorithm 변경은 별도 discrepancy evidence가 있을 때만 제안한다.
 
+## 구현 및 검증 결과 (2026-10-25)
+
+- 제한 fixture-test profile에서 고정된 네 scene ID만 허용한다. Style preflight와 Stylo snapshot이 root `horizontal-tb`, text `vertical-rl`, inherited image mode를 보존한다. Logical intrinsic 결과는 text min/max inline `50/80px`, block `20/10px`이며 물리 축 변환 후 row 기여와 root/text 높이는 `50/80px`이다.
+- Taffy adapter는 Grid의 computed `align-items:normal`을 `AlignItems::NORMAL`로 유지한다. 네 scene에서 text는 `50×50/80px`로 stretch되고 replaced image는 natural `24×16px`를 유지한다. Text profile이 없는 style-only entry는 `writing-mode:vertical-rl`을 `UnsupportedComputedValue`로 거부한다. 다른 profile, style, scene, contribution provenance는 fail-closed로 처리한다.
+- Runtime feature suite는 227 passed, 3 ignored, 0 failed였고 `priority_policy_comparison` 3개 및 `s03_node_lifecycle_contract` 16개 통합 테스트도 통과했다. Style→Layout feature suite는 261/261 통과했으며 style-only entry가 text profile 없이 vertical writing mode를 거부하는 regression도 포함한다. 추가 focused 결과는 layout 1/1, Stylo cascade 10/10, FFI trace/scene 3/3이다. `cargo fmt --all -- --check`와 source/doc `git diff --check`도 통과했다.
+- Android API 37 ARM64 16 KB AVD(`spinon_api37_1_compat16k`)와 iPhone 17 Pro / iOS 26.2 Simulator에서 각각 네 scene 모두 matcher, row/column tracks, item/root frames, contribution trace 및 draw/present 결과를 통과했다. 기기별 원본 log·trace·PNG·환경 metadata는 [Android AVD](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/android-avd/README.md)와 [iOS Simulator](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/ios-simulator/README.md)에 보존했다.
+- 화면 캡처는 layout geometry와 surface 제출을 보여준다. Runtime draw telemetry의 image/text/glyph count가 0이므로 실제 이미지 및 글리프 픽셀 페인팅, 실기기, Android hardware GPU, iOS compositor 이후 surface는 검증하지 않았다. 4 KB AVD와 잘못된 run ID 입력은 acceptance에서 제외했다.
+
+이 제한 slice는 C11.4, public CSS support, WPT 전체 또는 완료 집계의 상위 항목을 완료로 바꾸지 않는다. FFI default/product archive와 fixture-test positive control, feature-enabled 및 default workspace Clippy는 통과했다. 세부 결과는 [실행 근거](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/README.md)에 기록한다.
+
 ## 범위 및 fail-closed 경계
 
 후보 fixture-test opt-in 경계는 아래 exact shape만 연다.
@@ -66,11 +76,11 @@
 ## 코드 소유 후보
 
 - **FFI scene source:** 새 `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_direct_text_image_intrinsic_rows.rs`가 네 scene의 고정 IDs, child order, HTML/CSS source, decoder URL을 소유한다. `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs`는 module/dispatcher 연결만 검토한다.
-- **Runtime profile/trace:** 우선 새 `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs`를 후보로 둔다. `orthogonal_rows.rs`의 scene-specific matcher가 root alignment `normal/start/normal/start`와 computed writing mode/direction/typography를 소유한다. 기존 `c11_4_mixed/style.rs`의 `align-items:start` common rule과 기존 #611/#620 scene 동작은 그대로 유지한다. Router가 공통 validator를 호출해야 하면 orthogonal scene만 별도 branch로 분기하고 나머지 scene 기대값은 완화하지 않는다. `tests.rs`에는 contribution axis/kind/revision, item/source/frame matrix가 필요할 때만 한정 수정한다. Shared production layout code는 precomparison/runtime discrepancy가 입증되지 않으면 소유 변경 대상으로 삼지 않는다.
+- **Runtime profile/trace:** 새 `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs`는 router이며 scene table, preparation, style validation, trace validation 및 helper를 `orthogonal_rows/scene.rs`, `prepare.rs`, `style.rs`, `validate.rs`, `helpers.rs`로 나눈다. Runtime test는 `runtime_layout_tests/c11_grid_tests/orthogonal_rows.rs` 아래 scene, assertions, snapshot 모듈로 분리한다. Scene-specific matcher는 root alignment `normal/start/normal/start`와 computed writing mode/direction/typography를 소유한다. 기존 `c11_4_mixed/style.rs`의 horizontal slice `align-items:start` 규칙과 기존 #611/#620 scene 기대값은 그대로 유지한다. Shared production layout code는 precomparison/runtime discrepancy가 입증되지 않으면 소유 변경 대상으로 삼지 않는다.
 - **Host adapter:** `platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java` 및 `platforms/ios/Sources/C0410RuntimeGpuDemo.swift`가 새 scene allowlist와 독립 root/item/track/contribution/trace/draw/present 기대값을 각각 소유한다.
 - **Capture/evidence:** `spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/` 아래 새 capture harness와 Android/iOS 로그·화면·hash를 둔다. 기존 row-axis evidence와 capture를 덮어쓰지 않는다.
 
-**공유 파일 순차 통합 계약:** `c11_4.rs` FFI dispatcher와 두 `C0410RuntimeGpuDemo` adapter는 cyclic percentage auto-repeat sibling이 먼저 자기 scene IDs, allowlist, trace expectations를 등록하고 shared-file integration을 끝낸 뒤 orthogonal-row slice가 최신 통합본에 rebase해 네 scene을 추가한다. Orthogonal slice는 그 전까지 새 `orthogonal_rows.rs`와 독립 scene input/expectation 파일만 소유하며 shared dispatcher/host adapter를 편집하지 않는다. 통합 담당은 기존 #611/#620 8개 row/column scene의 `align-items:start` 결과를 전후 회귀로 확인하고, orthogonal 4개에만 `normal/start/normal/start` 정책을 적용한다. 두 slice는 shared-file 작업을 병렬 편집하지 않는다. 이 순서를 지킬 수 없으면 orthogonal runtime PR은 시작하지 않고 owner conflict를 blocker로 기록한다. 이 계획과 현재 사전 비교는 plan/evidence 경로만 소유한다.
+**공유 파일 순차 통합 결과:** cyclic percentage × auto-repeat PR #623 (`56daefe96e8143959bc99a89c7a8c80e7f1cc4ba`)가 orthogonal 구현 기준 `origin/main`에 포함된 뒤 네 scene을 추가했다. FFI shared dispatcher와 Android/iOS adapter는 각각 단일 소유자가 순차 수정했으며 fixture source/runtime matcher/test는 신규 orthogonal module에 두었다. 검증 당시 staged source snapshot(index tree `45bb3313f5c126fd724eb54e877f86746107a715`)으로 orthogonal 4개와 기존 #611/#620 row/column 회귀 8개를 Android API 37 ARM64 16 KB AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 12/12 재실행했다. Android APK SHA-256은 `cf978a383a3abceeaa99fe37d2f5c202f859193f20a352d4eea67dd0626371af`, iOS app SHA-256은 `ceadb3552b5bb50fcc9a75e813e58c9927f988ed4a10a20315d3c284f3563b93`이다. 상세 hash와 각 scene 결과는 [source comparison evidence](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/regression-previous-row-scenes/README.md), [Android 최종 캡처](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/regression-previous-row-scenes/android-avd/final-post-style-only-guard/README.md), [iOS 최종 캡처](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-runtime-2026-10-25/regression-previous-row-scenes/ios-simulator/final-post-style-only-guard/README.md)에 기록했다. #611/#620의 `align-items:start` 결과는 유지하고 orthogonal 4개에만 `normal/start/normal/start` 정책을 적용한다. Shared file은 이후 slice와 병렬 편집하지 않는다.
 
 ## 계획 리뷰 질문 20개
 

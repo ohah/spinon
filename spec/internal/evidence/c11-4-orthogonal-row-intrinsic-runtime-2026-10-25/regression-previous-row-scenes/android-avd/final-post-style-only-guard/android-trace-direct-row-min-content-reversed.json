@@ -1,0 +1,444 @@
+{
+  "gridItemFrames": [
+    {
+      "height": 16.0,
+      "node": 2,
+      "width": 24.0,
+      "x": 50.0,
+      "y": 0.0
+    },
+    {
+      "height": 20.0,
+      "node": 3,
+      "width": 50.0,
+      "x": 0.0,
+      "y": 0.0
+    }
+  ],
+  "gridItemIntrinsicInputs": [
+    {
+      "grid": 1,
+      "node": 2,
+      "source": {
+        "kind": "replaced",
+        "natural": {
+          "aspectRatio": null,
+          "height": 16.0,
+          "width": 24.0
+        }
+      },
+      "sourceOrder": 0,
+      "textSources": []
+    },
+    {
+      "grid": 1,
+      "node": 3,
+      "source": {
+        "fontRegistryRevision": 1,
+        "kind": "text",
+        "maxContent": 80.0,
+        "maxContentHeight": 10.0,
+        "minContent": 50.0,
+        "minContentHeight": 20.0
+      },
+      "sourceOrder": 1,
+      "textSources": []
+    }
+  ],
+  "intrinsicMeasurements": [
+    {
+      "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MinContent }",
+      "contentSize": {
+        "height": 20.0,
+        "width": 50.0
+      },
+      "knownDimensions": {
+        "height": null,
+        "width": 50.0
+      },
+      "node": 3,
+      "parentSize": {
+        "height": null,
+        "width": 50.0
+      },
+      "source": {
+        "fontRegistryRevision": 1,
+        "kind": "text"
+      }
+    },
+    {
+      "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(24.0), height: Definite(16.0) }",
+      "contentSize": {
+        "height": 16.0,
+        "width": 24.0
+      },
+      "knownDimensions": {
+        "height": null,
+        "width": null
+      },
+      "node": 2,
+      "parentSize": {
+        "height": 20.0,
+        "width": 24.0
+      },
+      "source": {
+        "kind": "replaced",
+        "natural": {
+          "aspectRatio": null,
+          "height": 16.0,
+          "width": 24.0
+        }
+      }
+    },
+    {
+      "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: Definite(20.0) }",
+      "contentSize": {
+        "height": 20.0,
+        "width": 50.0
+      },
+      "knownDimensions": {
+        "height": null,
+        "width": null
+      },
+      "node": 3,
+      "parentSize": {
+        "height": 20.0,
+        "width": 50.0
+      },
+      "source": {
+        "fontRegistryRevision": 1,
+        "kind": "text"
+      }
+    }
+  ],
+  "layoutInputRevision": {
+    "environment": 0,
+    "intrinsicSize": 1,
+    "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+    "style": 0
+  },
+  "trackSizingTraces": [
+    {
+      "grid": 1,
+      "passes": [
+        {
+          "autoRepeatCount": null,
+          "axis": "Columns",
+          "contributions": [],
+          "percentageBasis": null,
+          "phase": null,
+          "sequence": 0,
+          "stages": [
+            {
+              "stage": "Initialize",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 50.0,
+                  "collapsed": false,
+                  "growthLimit": 50.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": false,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                },
+                {
+                  "baseSize": 24.0,
+                  "collapsed": false,
+                  "growthLimit": 24.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 3
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 4
+                }
+              ]
+            },
+            {
+              "stage": "FixedTrackEarlyReturn",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 50.0,
+                  "collapsed": false,
+                  "growthLimit": 50.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": false,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                },
+                {
+                  "baseSize": 24.0,
+                  "collapsed": false,
+                  "growthLimit": 24.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 3
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 4
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "autoRepeatCount": null,
+          "axis": "Rows",
+          "contributions": [
+            {
+              "crossesFlexibleTrack": false,
+              "item": 2,
+              "kind": "MinContent",
+              "minimumSource": null,
+              "span": 1,
+              "value": 16.0
+            },
+            {
+              "crossesFlexibleTrack": false,
+              "item": 2,
+              "kind": "MinContent",
+              "minimumSource": null,
+              "span": 1,
+              "value": 16.0
+            },
+            {
+              "crossesFlexibleTrack": false,
+              "item": 3,
+              "kind": "MinContent",
+              "minimumSource": null,
+              "span": 1,
+              "value": 20.0
+            },
+            {
+              "crossesFlexibleTrack": false,
+              "item": 3,
+              "kind": "MinContent",
+              "minimumSource": null,
+              "span": 1,
+              "value": 20.0
+            }
+          ],
+          "percentageBasis": null,
+          "phase": null,
+          "sequence": 1,
+          "stages": [
+            {
+              "stage": "Initialize",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": false,
+                  "growthLimit": null,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            },
+            {
+              "stage": "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 20.0,
+                  "collapsed": false,
+                  "growthLimit": 20.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            },
+            {
+              "stage": "IntrinsicSizingComplete",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 20.0,
+                  "collapsed": false,
+                  "growthLimit": 20.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            },
+            {
+              "stage": "MaximizeTracks",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 20.0,
+                  "collapsed": false,
+                  "growthLimit": 20.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            },
+            {
+              "stage": "ExpandFlexibleTracks",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 20.0,
+                  "collapsed": false,
+                  "growthLimit": 20.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            },
+            {
+              "stage": "StretchAutoTracks { applied: false }",
+              "tracks": [
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 0
+                },
+                {
+                  "baseSize": 20.0,
+                  "collapsed": false,
+                  "growthLimit": 20.0,
+                  "gutter": false,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 1
+                },
+                {
+                  "baseSize": 0.0,
+                  "collapsed": true,
+                  "growthLimit": 0.0,
+                  "gutter": true,
+                  "infinitelyGrowable": false,
+                  "internalIndex": 2
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

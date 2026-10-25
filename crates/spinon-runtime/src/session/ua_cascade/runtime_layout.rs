@@ -786,7 +786,7 @@ where
             }))
         }
     };
-    Ok(RuntimeLayoutCompleted {
+    let completed = RuntimeLayoutCompleted {
         key: request.key,
         frames: frames.into(),
         render_snapshot,
@@ -794,7 +794,18 @@ where
         cache_hit: false,
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         grid_track_sizing_diagnostics,
-    })
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if let Some(mixed_input) = &c11_4_mixed_input {
+        fixtures::validate_c11_4_orthogonal_rows_output(
+            &request.snapshot,
+            root,
+            &styles,
+            mixed_input.intrinsic_sizes.revision(),
+            &completed,
+        )?;
+    }
+    Ok(completed)
 }
 
 fn validate_root_html_block_paint_tree(

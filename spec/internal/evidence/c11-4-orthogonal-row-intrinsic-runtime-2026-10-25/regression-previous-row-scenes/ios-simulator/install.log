@@ -1,0 +1,4 @@
+COMMAND: xcrun simctl install 00D4D861-56AA-4552-9181-58D88770EDDA build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app
+exit_code=0
+stdout=(empty)
+stderr=(empty)
