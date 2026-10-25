@@ -108,7 +108,7 @@ Focused runtime fixture tests는 fixed-slice 예외가 인접 입력을 허용�
 ## 독립 검토
 
 - [PR diff 20관점 검토](./pr-diff-review-20.md): 20 PASS / 0 PARTIAL / 0 FAIL.
-- Implementation/runtime 20관점 별도 검토: 결과 수신 후 `implementation-runtime-review-20.md`에 보존한다.
+- [Implementation/runtime 20관점 별도 검토](./implementation-runtime-review-20.md): 초기 19 PASS / 1 PARTIAL, evidence provenance 후속 확인 뒤 최종 20 PASS / 0 PARTIAL / 0 FAIL.
 
 ## 정리와 남은 한계
 
