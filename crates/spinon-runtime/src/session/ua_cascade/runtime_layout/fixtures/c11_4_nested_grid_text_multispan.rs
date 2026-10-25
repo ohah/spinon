@@ -175,6 +175,8 @@ pub(super) fn prepare(
         paragraph_styles.insert(
             handle.id(),
             ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
                 font_size: 10.0,
                 line_height: 10.0,

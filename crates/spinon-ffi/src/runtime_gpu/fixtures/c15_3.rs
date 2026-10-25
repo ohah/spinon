@@ -576,6 +576,8 @@ fn rasterize_fixture_text(
             text: fixture.content.to_owned(),
         }],
         style: ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: fixture.font_family.to_owned(),
             font_size: fixture.font_size,
             line_height: fixture.line_height,

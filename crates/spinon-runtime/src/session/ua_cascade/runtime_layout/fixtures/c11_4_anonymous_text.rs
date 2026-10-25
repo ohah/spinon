@@ -364,6 +364,8 @@ fn element_identity(
 
 fn anonymous_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
+        writing_mode: spinon_core::WritingMode::HorizontalTb,
+        text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size: 10.0,
         line_height: 10.0,

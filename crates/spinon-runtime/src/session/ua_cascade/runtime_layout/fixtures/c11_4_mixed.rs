@@ -20,8 +20,12 @@ const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
 #[path = "c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs"]
 mod cyclic_minmax_mixed_text_image_span;
+#[path = "c11_4_mixed/orthogonal_rows.rs"]
+mod orthogonal_rows;
 #[path = "c11_4_mixed/style.rs"]
 mod style;
+
+pub(in crate::session::ua_cascade::runtime_layout) use orthogonal_rows::validate_runtime_output as validate_orthogonal_rows_output;
 
 #[derive(Clone, Copy)]
 enum ItemKind {
@@ -302,6 +306,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::C11_4MixedInput>, RuntimeLayoutFailure> {
+    if let Some(input) = orthogonal_rows::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     if let Some(input) = cyclic_minmax_mixed_text_image_span::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
@@ -483,6 +490,8 @@ fn style_for(
 
 fn ahem_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
+        writing_mode: spinon_core::WritingMode::HorizontalTb,
+        text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size: 10.0,
         line_height: 10.0,

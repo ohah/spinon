@@ -35,6 +35,8 @@ fn paragraph(
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: font_family.to_owned(),
             font_size,
             line_height,
@@ -164,6 +166,150 @@ fn ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles() {
     let nowrap_sizes = engine.intrinsic_inline_sizes(&nowrap).unwrap();
     close_to(nowrap_sizes.min_content(), 100.0);
     close_to(nowrap_sizes.max_content(), 100.0);
+}
+
+#[test]
+fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
+    let mut engine = engine();
+    let mut input = paragraph(
+        "XX XXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    input.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    input.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    input.style.direction = crate::TextDirection::Ltr;
+    input.style.line_break = crate::LineBreakMode::Normal;
+
+    let sizes = engine.intrinsic_logical_sizes(&input).unwrap();
+    assert_eq!(sizes.paragraph(), input.node);
+    assert_eq!(
+        sizes.font_registry_revision(),
+        engine.font_registry_revision()
+    );
+    assert_eq!(sizes.writing_mode(), spinon_core::WritingMode::VerticalRl);
+    assert_eq!(
+        sizes.text_orientation(),
+        spinon_core::TextOrientation::Mixed
+    );
+    assert_eq!(sizes.min_content().inline_px, 50.0);
+    assert_eq!(sizes.max_content().inline_px, 80.0);
+    assert_eq!(sizes.min_content().block_px, 20.0);
+    assert_eq!(sizes.max_content().block_px, 10.0);
+
+    let mut cloned_engine = engine.clone();
+    let cloned_sizes = cloned_engine.intrinsic_logical_sizes(&input).unwrap();
+    assert!(sizes.uses_same_font_registry_revision(&cloned_sizes));
+    assert_eq!(sizes, cloned_sizes);
+
+    let shaped_at_min_inline = engine.layout_paragraph(&input, 50.0).unwrap();
+    assert_eq!(shaped_at_min_inline.lines.len(), 2);
+    assert!(
+        shaped_at_min_inline
+            .runs
+            .iter()
+            .flat_map(|run| &run.glyphs)
+            .all(|glyph| glyph.advance == 10.0)
+    );
+}
+
+#[test]
+fn horizontal_logical_intrinsics_preserve_legacy_measurement_axes() {
+    let mut engine = engine();
+    let input = paragraph(
+        "XX XXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+
+    let legacy = engine.intrinsic_inline_sizes(&input).unwrap();
+    let logical = engine.intrinsic_logical_sizes(&input).unwrap();
+    assert_eq!(
+        logical.writing_mode(),
+        spinon_core::WritingMode::HorizontalTb
+    );
+    assert_eq!(logical.min_content().inline_px, legacy.min_content());
+    assert_eq!(logical.min_content().block_px, legacy.min_content_height());
+    assert_eq!(logical.max_content().inline_px, legacy.max_content());
+    assert_eq!(logical.max_content().block_px, legacy.max_content_height());
+}
+
+#[test]
+fn vertical_logical_intrinsics_reject_other_text_or_font_profiles() {
+    let mut engine = engine();
+    let mut other_text = paragraph(
+        "XX XXXXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    other_text.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    other_text.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    other_text.style.direction = crate::TextDirection::Ltr;
+    assert!(matches!(
+        engine.intrinsic_logical_sizes(&other_text),
+        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
+            if node == other_text.node
+    ));
+
+    let mut other_font = paragraph(
+        "XX XXXXX",
+        "Roboto",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    other_font.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    other_font.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    other_font.style.direction = crate::TextDirection::Ltr;
+    assert!(matches!(
+        engine.intrinsic_logical_sizes(&other_font),
+        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
+            if node == other_font.node
+    ));
+
+    let mut rtl = paragraph(
+        "XX XXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    rtl.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    rtl.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    rtl.style.direction = crate::TextDirection::Rtl;
+    assert!(matches!(
+        engine.intrinsic_logical_sizes(&rtl),
+        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
+            if node == rtl.node
+    ));
+
+    let mut other_line_break = paragraph(
+        "XX XXXXX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    other_line_break.style.writing_mode = spinon_core::WritingMode::VerticalRl;
+    other_line_break.style.text_orientation = spinon_core::TextOrientation::Mixed;
+    other_line_break.style.direction = crate::TextDirection::Ltr;
+    assert!(matches!(
+        engine.intrinsic_logical_sizes(&other_line_break),
+        Err(crate::TextLayoutError::UnsupportedVerticalIntrinsicProfile(node))
+            if node == other_line_break.node
+    ));
 }
 
 #[test]

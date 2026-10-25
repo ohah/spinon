@@ -1,0 +1,277 @@
+   Compiling spinon-style-to-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-layout)
+   Compiling spinon-style-to-render v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.70s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 230 tests
+test host::document::callback_tests::ffi_error_message_truncation_keeps_utf8_and_nul_termination ... ok
+test host::document::callback_tests::namespace_and_attribute_names_reject_unpaired_utf16_before_commit ... ok
+test host::document::callback_tests::ffi_rejects_nonzero_string_length_with_a_null_pointer ... ok
+test host::document::collection_tests::batch_cannot_issue_a_lower_facade_id_after_a_higher_one ... ok
+test host::document::collection_tests::collection_rejects_broken_reverse_indexes_before_removing_core_nodes ... ok
+test host::document::callback_tests::ffi_callback_decodes_utf16_and_writes_a_complete_receipt ... ok
+test host::document::collection_tests::ffi_collection_callback_rejects_invalid_pointers_without_mutating_document ... ok
+test host::document::collection_tests::ffi_collection_callback_reports_capacity_before_rejecting_null_output ... ok
+test host::document::callback_tests::operation_kinds_without_values_do_not_require_non_null_utf16_pointers ... ok
+test host::document::collection_tests::collection_rejects_bad_roots_and_broken_bridge_accounting_before_mutation ... ok
+test host::document::limit_tests::exact_name_limit_is_accepted ... ok
+test host::document::collection_tests::stale_handle_after_collection_fails_closed_and_facade_ids_keep_advancing ... ok
+test host::document::collection_tests::ffi_collection_callback_fails_closed_then_returns_reclaimed_facade_ids ... ok
+test host::document::collection_tests::product_collector_matches_fixed_lifecycle_fixture_and_frees_string_accounting ... ok
+test host::document::lifecycle_contract_tests::s032_resource_budgets_match_the_s033_contract_fixture ... ok
+test host::document::collection_tests::exhausted_facade_id_space_stays_closed_after_collection ... ok
+test host::document::limit_tests::oversized_batches_fail_before_allocating_handles ... ok
+test host::document::collection_tests::failed_creation_burns_reserved_id_and_pending_reservation_is_bounded ... ok
+test host::document::query::tests::invalid_query_does_not_read_or_write_unchecked_buffers ... ok
+test host::document::query::tests::next_id_query_reserves_ids_and_enforces_pending_limit ... ok
+test host::document::query::tests::committed_document_queries_return_utf16_and_stable_external_ids ... ok
+test host::document::tests::independent_bridges_keep_identical_external_ids_isolated ... ok
+test host::document::root_html::tests::rejects_html_parser_profiles_that_cannot_be_mirrored ... ok
+test host::document::root_html::tests::imports_complete_html_document_tree_and_head_metadata_without_render_projection ... ok
+test host::document::root_html::tests::template_contents_do_not_become_visible_host_document_children ... ok
+test host::document::tests::detached_nodes_keep_their_identity_and_can_be_reinserted ... ok
+test host::document::tests::failed_core_commit_cancels_every_new_reservation ... ok
+test host::document::tests::no_op_and_empty_batches_do_not_advance_revisions ... ok
+test host::document::callback_tests::ffi_aggregate_utf16_limit_rejects_before_document_commit ... ok
+test host::document::tests::invalid_external_ids_and_forward_references_leave_every_document_unchanged ... ok
+test host::document::tests::insert_move_remove_and_attribute_operations_keep_final_tree_order ... ok
+test host::document::tests::rejected_last_operation_rolls_back_nodes_handles_and_revisions ... ok
+test host::document::limit_tests::exact_operation_limit_is_accepted ... ok
+test host::document::tests::utf16_text_values_preserve_unpaired_surrogates ... ok
+test host::document::tests::successful_batch_matches_direct_host_document_commit ... ok
+test root_html::environment::tests::initial_scale_changes_layout_viewport_but_not_device_scale ... ok
+test root_html::environment::tests::device_width_metadata_matches_chrome_css_viewport ... ok
+test root_html::environment::tests::color_scheme_tokens_are_case_insensitive_and_reject_unknown_values ... ok
+test root_html::environment::tests::last_viewport_element_matches_pinned_chrome_duplicate_fixture ... ok
+test root_html::environment::tests::document_scheme_does_not_replace_os_prefers_color_scheme ... ok
+test root_html::environment::tests::invalid_first_color_scheme_metadata_falls_back_to_light ... ok
+test root_html::environment::tests::first_color_scheme_element_wins_for_the_duplicate_fixture ... ok
+test root_html::environment::tests::invalid_surface_inputs_fail_before_creating_a_css_viewport ... ok
+test root_html::environment::tests::duplicate_color_scheme_metadata_is_detected_even_when_the_first_value_is_invalid ... ok
+test root_html::environment::tests::root_canvas_scheme_rejects_unknown_computed_values ... ok
+test root_html::environment::tests::opaque_body_background_propagates_when_html_background_is_transparent ... ok
+test root_html::environment::tests::opaque_html_background_precedes_body_background_for_canvas ... ok
+test root_html::environment::tests::mobile_default_matches_chrome_overview_viewport_and_keeps_page_scale_separate ... ok
+test root_html::environment::tests::partial_alpha_is_rejected_only_when_it_is_a_canvas_background_candidate ... ok
+test root_html::environment::tests::narrow_fixed_width_expands_to_the_mobile_screen_width ... ok
+test root_html::environment::tests::root_canvas_scheme_uses_css_precedence_metadata_fallback_and_light_default ... ok
+test host::document::limit_tests::aggregate_utf16_limit_rejects_before_reserving_any_node ... ok
+test root_html::environment::tests::transparent_html_and_body_backgrounds_use_the_selected_scheme_fallback ... ok
+test root_html::environment::tests::only_scheme_overrides_the_native_preference ... ok
+test root_html::environment::tests::scale_two_keeps_layout_viewport_and_reports_smaller_visual_viewport ... ok
+test host::document::limit_tests::exact_utf16_value_limit_is_accepted ... ok
+test root_html::environment::tests::wide_fixed_width_uses_layout_aspect_ratio_and_keeps_visual_viewport_smaller ... ok
+test root_html::tests::html5_document_mode_inserts_html_head_and_body_and_recovers_misnested_markup ... ok
+test root_html::tests::html5_tree_foster_parents_table_text_before_the_table ... ok
+test root_html::tests::html5_tree_keeps_element_attribute_and_text_source_order ... ok
+test session::priority_probe::stream::tests::accepts_new_high_priority_work_before_older_background_work ... ok
+test session::priority_probe::stream::tests::rejects_high_priority_fifo_inversion ... ok
+test session::priority_probe::stream::tests::rejects_callback_execution_on_a_different_owner_thread ... ok
+test session::priority_probe::stream::tests::rejects_a_zero_owner_thread_id ... ok
+test session::priority_probe::stream::tests::rejects_background_work_that_runs_before_later_high_priority_work ... ok
+test session::priority_probe::stream::tests::rejects_gaps_in_high_priority_execution_order ... ok
+test session::priority_probe::stream::tests::rejects_missing_high_priority_work ... ok
+test session::priority_probe::stream::tests::rejects_unexpected_first_execution_order ... ok
+test root_html::environment::tests::supported_scheme_list_selects_the_native_preference ... ok
+test session::tests::bounded_scheduler_selects_priority_then_fifo_and_drains_on_stop ... ok
+test session::shutdown::tests::idle_shutdown_releases_the_runtime_and_rejects_later_calls ... ok
+test host::document::tests::per_field_string_limits_fail_before_node_reservation ... ok
+test session::tests::memory_pressure_levels_reach_the_runtime_and_closed_sessions_reject_them ... ok
+test session::tests::report_exposes_caller_owner_callback_threads_and_timings ... ok
+test session::shutdown::tests::worker_panic_rejects_pending_commands_and_clears_stale_runtime_state ... ok
+test session::tests::persistent_session_keeps_owner_and_callbacks_on_one_worker ... ok
+test session::shutdown::tests::shutdown_cancels_active_eval_rejects_queued_work_and_joins_owner ... ok
+test session::tests::cancel_interrupts_active_call_and_session_accepts_next_call ... ok
+test session::shutdown::tests::submit_and_multiple_close_race_never_leaves_a_caller_waiting ... ok
+test session::tests::root_html_canvas_ignores_unsupported_body_alpha_when_opaque_html_wins ... ok
+test session::tests::root_html_canvas_prefers_opaque_html_background_then_propagates_body_background ... ok
+test session::tests::root_html_canvas_follows_os_only_when_root_css_and_single_meta_allow_it ... ok
+test host::document::collection_tests::reclaimed_node_and_string_quota_can_be_used_again ... ok
+test session::tests::bounded_queue_rejects_overflow_and_drains_after_cancellation ... ok
+test session::tests::root_html_canvas_rejects_duplicate_scheme_metadata_before_publishing_a_color ... ok
+test session::tests::root_html_canvas_propagates_body_color_from_stylesheet_and_custom_property ... ok
+test session::tests::root_html_canvas_treats_zero_alpha_body_background_as_transparent ... ok
+test session::tests::root_html_session_imports_document_before_v8_worker_is_ready ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::author_rule_revealing_style_text_remains_a_layout_error ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::author_style_in_one_host_root_is_available_to_every_root_cascade ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::import_diagnostic_fails_layout_and_gpu_profiles_without_fetching ... ok
+test session::tests::root_html_layout_media_queries_use_layout_height_not_visual_height ... ok
+test session::tests::root_html_canvas_uses_computed_root_scheme_and_exact_chrome_srgb_bytes ... ok
+test session::tests::root_html_canvas_recomputes_body_background_for_prefers_color_scheme ... ok
+test session::ua_cascade::author_stylesheets_edge_tests::stylesheet_text_uses_connected_descendant_order_without_added_separators ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_keeps_connected_dom_order_and_ignores_non_css_style_data_blocks ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_rejects_unpaired_utf16_in_css_text ... ok
+test session::ua_cascade::author_stylesheets_tests::collector_rejects_unsupported_media_svg_style_and_external_stylesheet_links ... ok
+test host::document::limit_tests::ffi_quota_failure_keeps_the_dom_exception_status_and_document_unchanged ... ok
+test session::tests::root_html_environment_projects_viewport_and_os_scheme_into_css_cascade ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_rejects_author_stylesheet_parse_diagnostics_before_layout_or_paint ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::c093_flow_root_is_accepted_from_author_stylesheet ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_omits_style_text_but_still_rejects_visible_text ... ok
+test host::document::limit_tests::replacement_reclaims_old_text_usage_and_document_budget_rolls_back ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::flow_root_still_rejects_unimplemented_display_values ... ok
+test session::ua_cascade::block_formatting_tests::c091_root_auto_margins_are_resolved_inside_the_viewport_containing_block ... ok
+test session::ua_cascade::author_stylesheets_tests::runtime_author_css_matches_pinned_chromium_values_geometry_and_paint ... ok
+test session::ua_cascade::block_paint_tests::block_profile_accepts_hidden_root_and_omits_its_scene ... ok
+test session::ua_cascade::block_paint_tests::block_profile_cascades_supported_author_stylesheet_rules_into_the_scene ... ok
+test session::ua_cascade::author_stylesheets_tests::stylesheet_text_move_detach_and_reinsert_use_the_current_document_order ... ok
+test session::ua_cascade::block_paint_tests::block_profile_does_not_publish_a_scene_after_stylesheet_parse_diagnostics ... ok
+test session::ua_cascade::block_paint_tests::block_profile_matches_chromium_flow_frames_and_paint_order ... ok
+test session::ua_cascade::block_paint_tests::block_profile_propagates_the_requested_style_revision ... ok
+test session::ua_cascade::block_paint_tests::block_profile_preserves_inherited_foreground_and_font_values ... ok
+test session::ua_cascade::block_paint_tests::block_profile_omits_zero_area_boxes_without_turning_layout_into_an_error ... ok
+test session::ua_cascade::cache_benchmark::c05_runtime_result_cache_release_benchmark ... ignored, release-only C05.3 worker latency benchmark
+test session::ua_cascade::block_paint_tests::block_profile_rejects_unsupported_author_stylesheet_properties ... ok
+test session::ua_cascade::block_formatting_tests::c091_profile_rejects_other_formatting_models_and_unimplemented_positioning ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_partial_alpha_without_publishing_a_scene ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_flex_display_and_unsupported_inline_properties ... ok
+test session::tests::session_executes_pending_commands_by_priority_and_fifo ... ok
+test session::ua_cascade::cache_tests::cache_key_tests::cache_key_uses_exact_viewport_bits_and_all_media_inputs ... ok
+test session::ua_cascade::block_paint_tests::block_profile_rejects_visible_text_and_omits_hidden_text ... ok
+test session::ua_cascade::incremental_benchmark::c05_runtime_incremental_restyle_release_benchmark ... ignored, release-only C05.4 full-vs-incremental runtime benchmark
+test session::ua_cascade::cache_tests::an_empty_connected_scene_can_reuse_after_detached_document_mutation ... ok
+test session::ua_cascade::cache_tests::failed_layout_is_never_cached ... ok
+test session::ua_cascade::cache_tests::an_error_result_does_not_become_a_reusable_cache_entry ... ok
+test session::ua_cascade::invalidation_runtime_tests::pending_requests_keep_the_earliest_contiguous_baseline_and_reject_gaps ... ok
+test session::ua_cascade::invalidation_runtime_tests::runtime_calculation_reuses_only_the_changed_inline_style_subtree ... ok
+test session::tests::root_html_canvas_fails_closed_for_partial_alpha_and_background_images ... ok
+test session::ua_cascade::invalidation_runtime_tests::connected_author_stylesheet_forces_full_cascade_after_inline_style_change ... ok
+test session::ua_cascade::invalidation_tests::a_text_mutation_and_an_unavailable_baseline_force_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::a_style_change_dirties_only_the_changed_element_subtree ... ok
+test session::ua_cascade::invalidation_tests::ambiguous_html_style_attributes_force_a_full_recalculation ... ok
+test session::ua_cascade::cache_tests::viewport_media_generation_and_float_bits_are_part_of_the_cache_key ... ok
+test session::ua_cascade::invalidation_runtime_tests::removing_inline_style_reuses_only_the_changed_subtree_and_matches_full_cascade ... ok
+test session::ua_cascade::invalidation_tests::changing_tree_order_forces_a_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::detached_revision_changes_can_be_composed_without_retaining_the_first_snapshot ... ok
+test session::ua_cascade::invalidation_tests::detached_mutation_does_not_dirty_the_connected_style_tree ... ok
+test session::ua_cascade::invalidation_tests::html_style_name_case_change_with_same_value_is_unstyled_equivalent ... ok
+test session::ua_cascade::invalidation_tests::non_style_attribute_change_forces_a_full_recalculation ... ok
+test session::ua_cascade::invalidation_tests::overlapping_style_changes_keep_only_the_outer_dirty_root ... ok
+test session::ua_cascade::invalidation_tests::separate_changed_branches_keep_separate_dirty_roots ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_grid_fixture_rejects_typography_and_track_profile_mutations ... ok
+test session::ua_cascade::registered_properties_tests::c0410_runtime_gpu_profile_rejects_registered_properties ... ok
+test session::ua_cascade::registered_properties_tests::registered_property_in_one_host_root_applies_to_every_root_cascade ... ok
+test session::ua_cascade::cache_tests::a_stale_in_flight_result_does_not_seed_the_cache ... ok
+test session::ua_cascade::registered_properties_tests::host_document_styles_feed_registered_properties_into_taffy_and_wgpu ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_block_separator_requires_auto_grid_placement ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_fixture_cases_are_unique ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::cyclic_minmax_replaced_span::tests::fixes_four_scene_ids_and_reverse_order_by_item_identity ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::image_matrix_has_unique_ids_and_bounded_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::cyclic_minmax_mixed_text_image_span::tests::exposes_only_eight_fixed_source_order_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::multispan::tests::exposes_four_order_independent_direct_image_multispan_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_direct_nonspanning_text_image_intrinsic_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_fixed_mixed_text_image_intrinsic_row_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_non_html_namespace_for_allowlisted_grid_root ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_fixed_mixed_text_image_multispan_scenes_and_tracks ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_nested_grid_depth_three_anonymous_image::tests::scene_matrix_is_four_unique_depth_three_ordered_intrinsic_inputs ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_calc::tests::exposes_only_four_fixed_cyclic_calc_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_fit_content_calc::tests::exposes_fixed_cyclic_calc_track_scenes_by_function ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_mixed_span_groups::tests::allowlists_only_eight_three_item_mixed_span_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_span_groups::tests::exposes_only_four_fixed_cross_axis_span_group_scenes ... ok
+test session::ua_cascade::invalidation_runtime_tests::worker_publishes_subtree_metrics_only_for_latest_style_revision ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_nested_grid_intrinsic::tests::text_profile_requires_all_intrinsic_sizing_properties ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_two_axis_span_text::tests::exposes_only_the_four_two_axis_span_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_two_axis_multitrack::tests::exposes_only_the_four_fixed_two_axis_multitrack_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::overlapping_spans::tests::exposes_only_fixed_overlapping_cyclic_calc_span_scenes ... ok
+test session::ua_cascade::runtime_layout::tests::grid_auto_placement_rejections_keep_stable_codes_and_css_properties ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::tests::fixed_text_matrix_has_thirteen_unique_direct_leaf_cases ... ok
+test session::ua_cascade::runtime_layout::tests::runtime_frames_reject_non_finite_coordinates_and_negative_sizes ... ok
+test session::ua_cascade::runtime_layout::tests::render_snapshot_failure_keeps_node_and_unsupported_property_diagnostic ... ok
+test session::ua_cascade::tests::elapsed_microseconds_rounds_sub_microsecond_durations_up ... ok
+test session::ua_cascade::tests::identical_environment_keeps_revision_and_does_not_clear_completed_result ... ok
+test session::ua_cascade::tests::inline_style_attribute_overrides_ua_and_preserves_parser_diagnostics ... ok
+test session::ua_cascade::cache_tests::detached_only_changes_reuse_and_rekey_the_immutable_runtime_result ... ok
+test session::ua_cascade::tests::all_host_root_elements_are_computed_as_independent_roots ... ok
+test session::ua_cascade::tests::invalid_environment_preserves_the_last_valid_revision_and_result ... ok
+test session::ua_cascade::tests::no_environment_means_no_implicit_desktop_calculation ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_explicit_grid_placement_publishes_line_and_span_frames ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_overlapping_items_keep_dom_order_in_paint_snapshot ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c1121_runtime_profile_rejects_mixed_auto_placement ... ok
+test session::ua_cascade::tests::custom_properties_tests::runtime_recalculates_custom_property_inheritance_after_update_move_detach_and_reinsert ... ok
+test session::ua_cascade::tests::cascade_snapshot_wait_times_out_without_reusing_an_older_completion ... ok
+test session::ua_cascade::block_formatting_flow_root_tests::c093_flow_root_matches_pinned_chromium_for_all_cases_and_dpr_values ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c114_min_content_image_contributes_decoded_natural_size_to_grid_layout ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c114_spanning_auto_min_flex_text_keeps_tracks_at_half_width ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c114_min_content_text_contributes_measured_intrinsic_sizes_to_grid_layout ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c114_image_fixture_rejects_unpinned_image_source_without_zero_fallback ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c11_grid_profile_publishes_taffy_frames_and_ordered_paint_boxes ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_repeats_after_intrinsic_sizing ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::border_overflow::two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_orders ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_definite_control_uses_two_tracks ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_trace_rejects_ambiguous_phase ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_image::c114_anonymous_text_and_default_inline_image_share_one_revision_and_track_pass ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::c114_anonymous_text_and_two_or_three_images_share_one_revision_and_track_pass ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::c114_direct_text_items_preserve_multispan_intrinsic_contributions_and_order ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_implicit_rows::nested_grid_positive_implicit_rows_contribute_to_outer_rows_at_runtime ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::mixed::c114_mixed_text_image_inputs_share_one_revision_and_span_sizing_pass ... ok
+test session::ua_cascade::block_formatting_tests::c091_block_flow_and_containing_block_match_pinned_chromium_for_all_cases ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_intrinsic::c114_nested_grid_items_keep_inner_text_sources_and_parent_contributions ... ok
+test session::ua_cascade::registered_properties_tests::registration_rebuilds_after_style_text_update_move_and_detach ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_depth_two::c114_nested_grid_depth_rejects_unlisted_and_malformed_topologies ... ok
+test session::ua_cascade::tests::runtime_layout_tests::depth_tests::configured_runtime_worker_lays_out_the_maximum_supported_runtime_mount_depth ... ignored, 1024-depth runtime-worker stack validation runs in the optimized profile
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_rows::c114_nested_grid_text_and_image_contribute_to_outer_rows ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_replaced_item::c114_nested_grid_text_and_replaced_item_share_intrinsic_layout_revision ... ok
+test session::ua_cascade::tests::runtime_layout_tests::direct_text_root_fails_the_whole_request_instead_of_returning_partial_roots ... ok
+test session::ua_cascade::tests::runtime_layout_tests::opacity_groups_are_preserved_without_changing_alpha_zero_hit_testing ... ok
+test session::ua_cascade::tests::runtime_layout_tests::recoverable_inline_parse_diagnostics_do_not_discard_layout ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c13_1_float_boundary_tests::c131_float_formatting_comparison_cases_fail_closed ... ok
+test session::ua_cascade::tests::runtime_layout_tests::stale_completion_cannot_replace_a_newer_requested_key ... ok
+test session::ua_cascade::tests::runtime_layout_tests::runtime_layout_frames_follow_dom_order_not_node_id_order ... ok
+test session::ua_cascade::tests::runtime_layout_tests::runtime_gpu_profile_keeps_background_paint_out_of_the_legacy_layout_contract ... ok
+test session::ua_cascade::tests::worker_failure_is_terminal_for_environment_updates_but_not_session_state ... ok
+test session::ua_cascade::tests::worker_panic_is_caught_and_transitions_the_latest_request_to_failed ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c13_1_unsupported_effects_tests::c131_clip_radius_and_transform_fail_closed ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_text_multispan::c114_nested_grid_text_multispan_matches_independent_track_and_frame_expectations ... ok
+test session::ua_cascade::tests::runtime_layout_tests::text_inside_element_fails_layout_without_discarding_computed_style ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::cyclic_percentage_auto_repeat::c114_cyclic_percentage_auto_repeat_fixture_gate_rejects_neighbor_inputs ... ok
+test session::ua_cascade::tests::runtime_layout_tests::unsupported_layout_style_does_not_fail_the_ua_cascade_snapshot ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::orthogonal_rows::orthogonal_direct_text_image_rows_match_all_runtime_scenes ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_text_multispan::c114_nested_grid_text_multispan_rejects_unlisted_and_malformed_inputs ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::nested_grid_depth_two::c114_nested_grid_depth_three_preserves_leaf_intrinsics_at_each_parent ... ok
+test session::ua_cascade::block_formatting_tests::c092_margin_collapse_matches_pinned_chromium_for_all_cases ... ok
+test session::tests::c04_12_root_html_default_runtime_ignores_unsupported_styles_in_hidden_subtree ... ok
+test session::tests::c04_12_root_html_default_runtime_paints_computed_block_and_inline_text ... ok
+test session::ua_cascade::tests::runtime_layout_tests::depth_tests::over_limit_runtime_tree_fails_before_cascade_and_worker_recovers_on_shallow_revision ... ok
+test host::document::limit_tests::runtime_document_grows_past_the_former_node_limit_and_collects_all ... ok
+test host::document::collection_tests::ffi_collection_callback_accepts_more_than_the_former_root_limit_and_retries_output ... ok
+test root_html::tests::html5_tree_rejects_quirks_mode_and_source_or_tree_budgets ... ok
+
+test result: ok. 227 passed; 0 failed; 3 ignored; 0 measured; 0 filtered out; finished in 0.75s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-853fd16857d46e65)
+
+running 3 tests
+test weighted_round_robin_skips_empty_classes_and_keeps_its_cycle_position ... ok
+test aging_with_an_interval_longer_than_the_horizon_is_a_starvation_negative_control ... ok
+test compares_starvation_and_service_shares_under_identical_sustained_arrivals ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-9fcc6c82dfa206d8)
+
+running 16 tests
+test facade_ids_are_monotonic_even_when_a_reserved_creation_fails ... ok
+test s032_resource_budgets_match_the_contract_fixture ... ok
+test external_root_token_exhaustion_does_not_wrap_or_reuse_a_token ... ok
+test failed_node_or_wrapper_preparation_publishes_no_partial_create ... ok
+test invalid_external_root_defers_the_entire_collection ... ok
+test exhausted_facade_id_space_stays_closed_after_its_last_node_is_swept ... ok
+test failed_sweep_preserves_nodes_weak_registry_roots_and_accounting ... ok
+test reset_handle_can_be_replaced_before_the_next_safe_point ... ok
+test owner_mismatch_non_safe_point_and_scan_failure_preserve_state ... ok
+test external_root_keeps_component_after_wrapper_reset_until_lease_release ... ok
+test tree_fixture_expectations_match_the_contract_oracle ... ok
+test live_weak_wrapper_keeps_its_canonical_identity_and_component ... ok
+test malformed_parent_graphs_and_registry_entries_defer_without_mutation ... ok
+test detached_nodes_and_strings_remain_resident_until_successful_scan_and_sweep ... ok
+test external_root_capacity_applies_backpressure_without_reusing_tokens ... ok
+test external_root_limit_defers_before_marking ... ok
+
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+   Doc-tests spinon_runtime
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

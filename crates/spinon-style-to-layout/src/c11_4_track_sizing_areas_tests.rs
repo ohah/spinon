@@ -59,6 +59,9 @@ mod cyclic_minmax_replaced_image_span;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs"]
 mod cyclic_two_axis_multitrack;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs"]
+mod orthogonal_writing_mode;
 
 struct Fixture {
     document: HostDocument,
@@ -319,6 +322,24 @@ fn ratio_constraint_styles() -> (&'static str, &'static str) {
         "display:grid;box-sizing:border-box;width:40px;height:20px;grid-template-columns:minmax(0,1fr);grid-template-rows:20px;align-items:start;align-content:start;justify-content:start;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
         "display:block;box-sizing:border-box;width:auto;height:8px;aspect-ratio:3/2;max-height:4px;margin:0;padding:0;border:0",
     )
+}
+
+#[test]
+fn track_sizing_maps_pref_disabled_inline_author_property_error() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:74px;height:auto;grid-template-columns:50px 24px;grid-template-rows:min-content;column-gap:0;row-gap:0;margin:0;padding:0;border:0;text-orientation:upright",
+        &[(
+            "item",
+            "display:block;width:24px;height:16px;margin:0;padding:0;border:0",
+        )],
+    );
+
+    let error = fixture.try_compute().unwrap_err();
+    assert!(matches!(
+        error,
+        StyleLayoutError::UnsupportedInlineProperty { node, property }
+            if node == fixture.root.id() && property == "text-orientation"
+    ));
 }
 
 #[test]

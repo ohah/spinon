@@ -1,0 +1,884 @@
+{
+  "schema": "spinon.c11-4.orthogonal-row-intrinsic.ios-simulator.v1",
+  "generatedAtKst": "2026-10-25T16:55:30.007441+09:00",
+  "repository": {
+    "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+    "sourceFile": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+    "sourceSha256": "1401a122c4fc3f87c15753134afbf793836a87112d02466ac4df176a4fabad33",
+    "builtExecutableSha256": "93161fd43910a2da61b39ed80a1dc65d5f484ec6e0b15a9174d0a8cdd9aed9d8"
+  },
+  "build": {
+    "command": "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+    "result": "** BUILD SUCCEEDED **",
+    "xcodeVersion": [
+      "Xcode 26.2",
+      "Build version 17C52"
+    ],
+    "app": {
+      "bundleIdentifier": "dev.spinon.bootstrap",
+      "shortVersion": "0.1.0",
+      "buildVersion": "1",
+      "minimumOSVersion": "18.0"
+    },
+    "appExecutable": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "buildLog": {
+      "file": "build.log",
+      "sha256": "5d5b1d1e43fe52b79c151920d9f4de7fd76169af3913c9905f8238bcf6dde2f0"
+    },
+    "installCommand": "xcrun simctl install 00D4D861-56AA-4552-9181-58D88770EDDA build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app",
+    "installExitCode": 0,
+    "installLog": {
+      "file": "install.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "note": "simctl install succeeded with no stdout"
+    },
+    "fixtureFeature": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": 1,
+      "SPINON_ENABLE_C04_RUNTIME_GPU": 1
+    }
+  },
+  "simulator": {
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "runtimeIdentifier": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+    "runtimeVersion": "iOS 26.2",
+    "stateBefore": "Shutdown",
+    "stateAtRun": "Booted",
+    "stateAfter": "Shutdown",
+    "bootedOtherDevicesBefore": [
+      {
+        "name": "iPhone 17 Pro",
+        "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+        "state": "Booted",
+        "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+      },
+      {
+        "name": "iPhone 17 Pro",
+        "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "state": "Booted",
+        "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+      }
+    ],
+    "bootedOtherDevicesAfter": [
+      {
+        "name": "iPhone 17 Pro",
+        "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+        "state": "Booted",
+        "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+      },
+      {
+        "name": "iPhone 17 Pro",
+        "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "state": "Booted",
+        "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro"
+      }
+    ],
+    "deviceInventoryFiles": [
+      "simulator-before.json",
+      "simulator-at-run.json",
+      "simulator-after.json"
+    ],
+    "screenshotsAreSimulatorDisplayCaptures": true
+  },
+  "scenes": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114-orth-ios-min-forward-r2",
+      "processId": 55889,
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114-orth-ios-min-forward-r2 scene_id=direct-orthogonal-row-min-content-forward expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "frames": {
+        "summary": "run_id=c114-orth-ios-min-forward-r2 count=3 marker=present",
+        "nodeFramesCssPx": [
+          "0:node=1,x=0,y=0,width=74,height=50",
+          "1:node=2,x=0,y=0,width=50,height=50",
+          "2:node=4,x=50,y=0,width=24,height=16"
+        ],
+        "gridItemFrames": [
+          {
+            "height": 50.0,
+            "node": 2,
+            "width": 50.0,
+            "x": 0.0,
+            "y": 0.0
+          },
+          {
+            "height": 16.0,
+            "node": 4,
+            "width": 24.0,
+            "x": 50.0,
+            "y": 0.0
+          }
+        ],
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      },
+      "trace": {
+        "chunkCount": 8,
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 1,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+          "style": 0
+        },
+        "gridCount": 1,
+        "passAxesAndSequence": [
+          {
+            "axis": "Columns",
+            "sequence": 0
+          },
+          {
+            "axis": "Rows",
+            "sequence": 1
+          }
+        ],
+        "finalColumnSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowSizes": [
+          50.0
+        ],
+        "rowContributions": [
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 4,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 4,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          }
+        ],
+        "orthogonalTextMeasurements": [
+          {
+            "node": 2,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MinContent }",
+            "contentSize": {
+              "height": 50.0,
+              "width": 20.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          }
+        ],
+        "gridItemIntrinsicInputs": [
+          {
+            "grid": 1,
+            "node": 2,
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            },
+            "sourceOrder": 0,
+            "textSources": []
+          },
+          {
+            "grid": 1,
+            "node": 4,
+            "source": {
+              "kind": "replaced",
+              "natural": {
+                "aspectRatio": null,
+                "height": 16.0,
+                "width": 24.0
+              }
+            },
+            "sourceOrder": 1,
+            "textSources": []
+          }
+        ]
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-forward.png",
+        "sha256": "3402ac2370b1804d8f7a116ff9c916452b4cb2bdbd071b081a686872e3c9925b",
+        "pixels": {
+          "width": 1206,
+          "height": 2622
+        }
+      },
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-min-content-forward-unified.log",
+        "sha256": "2c7afcb7f16d9177c7dea7bf4119e2830be65420c3c950403aa8c6de6572a01a"
+      },
+      "launchLog": {
+        "file": "direct-orthogonal-row-min-content-forward-launch.log",
+        "sha256": "fcab14f027076d6a2d26a34b0207556f902560119753f72ff5bb51de15874631"
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114-orth-ios-min-reversed-final",
+      "processId": 61029,
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114-orth-ios-min-reversed-final scene_id=direct-orthogonal-row-min-content-reversed expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "frames": {
+        "summary": "run_id=c114-orth-ios-min-reversed-final count=3 marker=present",
+        "nodeFramesCssPx": [
+          "0:node=1,x=0,y=0,width=74,height=50",
+          "1:node=2,x=50,y=0,width=24,height=16",
+          "2:node=3,x=0,y=0,width=50,height=50"
+        ],
+        "gridItemFrames": [
+          {
+            "height": 16.0,
+            "node": 2,
+            "width": 24.0,
+            "x": 50.0,
+            "y": 0.0
+          },
+          {
+            "height": 50.0,
+            "node": 3,
+            "width": 50.0,
+            "x": 0.0,
+            "y": 0.0
+          }
+        ],
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 50
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 50
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      },
+      "trace": {
+        "chunkCount": 8,
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 1,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+          "style": 0
+        },
+        "gridCount": 1,
+        "passAxesAndSequence": [
+          {
+            "axis": "Columns",
+            "sequence": 0
+          },
+          {
+            "axis": "Rows",
+            "sequence": 1
+          }
+        ],
+        "finalColumnSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowSizes": [
+          50.0
+        ],
+        "rowContributions": [
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 3,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 3,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          }
+        ],
+        "orthogonalTextMeasurements": [
+          {
+            "node": 3,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MinContent }",
+            "contentSize": {
+              "height": 50.0,
+              "width": 20.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          }
+        ],
+        "gridItemIntrinsicInputs": [
+          {
+            "grid": 1,
+            "node": 2,
+            "source": {
+              "kind": "replaced",
+              "natural": {
+                "aspectRatio": null,
+                "height": 16.0,
+                "width": 24.0
+              }
+            },
+            "sourceOrder": 0,
+            "textSources": []
+          },
+          {
+            "grid": 1,
+            "node": 3,
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            },
+            "sourceOrder": 1,
+            "textSources": []
+          }
+        ]
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-reversed.png",
+        "sha256": "45c8a9962bdc6fbba07bb5376968afc381678d1225c24cf79abf9782b104ff1b",
+        "pixels": {
+          "width": 1206,
+          "height": 2622
+        }
+      },
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-min-content-reversed-unified.log",
+        "sha256": "250fb2694cd3e0495d87f15d83d96a4a32246bf641dfc21ccc9528c81f46e821"
+      },
+      "launchLog": {
+        "file": "direct-orthogonal-row-min-content-reversed-launch.log",
+        "sha256": "5be7b09dc7c6b05c8afa1428f178910f21c6fe97476ecc0f39d591898564dbd8"
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114-orth-ios-max-forward",
+      "processId": 57711,
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114-orth-ios-max-forward scene_id=direct-orthogonal-row-max-content-forward expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "frames": {
+        "summary": "run_id=c114-orth-ios-max-forward count=3 marker=present",
+        "nodeFramesCssPx": [
+          "0:node=1,x=0,y=0,width=74,height=80",
+          "1:node=2,x=0,y=0,width=50,height=80",
+          "2:node=4,x=50,y=0,width=24,height=16"
+        ],
+        "gridItemFrames": [
+          {
+            "height": 80.0,
+            "node": 2,
+            "width": 50.0,
+            "x": 0.0,
+            "y": 0.0
+          },
+          {
+            "height": 16.0,
+            "node": 4,
+            "width": 24.0,
+            "x": 50.0,
+            "y": 0.0
+          }
+        ],
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        "text": {
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        },
+        "image": {
+          "node": 4,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      },
+      "trace": {
+        "chunkCount": 9,
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 1,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+          "style": 0
+        },
+        "gridCount": 1,
+        "passAxesAndSequence": [
+          {
+            "axis": "Columns",
+            "sequence": 0
+          },
+          {
+            "axis": "Rows",
+            "sequence": 1
+          }
+        ],
+        "finalColumnSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowSizes": [
+          80.0
+        ],
+        "rowContributions": [
+          {
+            "node": 2,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 80.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 80.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 4,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 4,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 4,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          }
+        ],
+        "orthogonalTextMeasurements": [
+          {
+            "node": 2,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MaxContent }",
+            "contentSize": {
+              "height": 80.0,
+              "width": 10.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          },
+          {
+            "node": 2,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MinContent }",
+            "contentSize": {
+              "height": 50.0,
+              "width": 20.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          }
+        ],
+        "gridItemIntrinsicInputs": [
+          {
+            "grid": 1,
+            "node": 2,
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            },
+            "sourceOrder": 0,
+            "textSources": []
+          },
+          {
+            "grid": 1,
+            "node": 4,
+            "source": {
+              "kind": "replaced",
+              "natural": {
+                "aspectRatio": null,
+                "height": 16.0,
+                "width": 24.0
+              }
+            },
+            "sourceOrder": 1,
+            "textSources": []
+          }
+        ]
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-forward.png",
+        "sha256": "bff887ab5daae65ad79c3156be602a63b27d164c6f4a682697bb31fdf9ae23bb",
+        "pixels": {
+          "width": 1206,
+          "height": 2622
+        }
+      },
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-max-content-forward-unified.log",
+        "sha256": "67df02f9970828ee32b505e9c0b7cb3733a9b668c600793b2c0b167a1ecfc2c0"
+      },
+      "launchLog": {
+        "file": "direct-orthogonal-row-max-content-forward-launch.log",
+        "sha256": "4b37241b5e3326d763d3bf01b147aa570d415b43d4d1c29f6c4c8d3ba8569604"
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114-orth-ios-max-reversed",
+      "processId": 58233,
+      "nativeMatcher": {
+        "status": "pass",
+        "summary": "run_id=c114-orth-ios-max-reversed scene_id=direct-orthogonal-row-max-content-reversed expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0"
+      },
+      "frames": {
+        "summary": "run_id=c114-orth-ios-max-reversed count=3 marker=present",
+        "nodeFramesCssPx": [
+          "0:node=1,x=0,y=0,width=74,height=80",
+          "1:node=2,x=50,y=0,width=24,height=16",
+          "2:node=3,x=0,y=0,width=50,height=80"
+        ],
+        "gridItemFrames": [
+          {
+            "height": 16.0,
+            "node": 2,
+            "width": 24.0,
+            "x": 50.0,
+            "y": 0.0
+          },
+          {
+            "height": 80.0,
+            "node": 3,
+            "width": 50.0,
+            "x": 0.0,
+            "y": 0.0
+          }
+        ],
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 80
+        },
+        "text": {
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 80
+        },
+        "image": {
+          "node": 2,
+          "x": 50,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      },
+      "trace": {
+        "chunkCount": 9,
+        "layoutInputRevision": {
+          "environment": 0,
+          "intrinsicSize": 1,
+          "source": "HostDocument { generation: DocumentGeneration(1), document: DocumentRevision(19), render_tree: RenderTreeRevision(3) }",
+          "style": 0
+        },
+        "gridCount": 1,
+        "passAxesAndSequence": [
+          {
+            "axis": "Columns",
+            "sequence": 0
+          },
+          {
+            "axis": "Rows",
+            "sequence": 1
+          }
+        ],
+        "finalColumnSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowSizes": [
+          80.0
+        ],
+        "rowContributions": [
+          {
+            "node": 2,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 2,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 16.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 3,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 80.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 3,
+            "kind": "MinContent",
+            "span": 1,
+            "value": 50.0,
+            "crossesFlexibleTrack": false
+          },
+          {
+            "node": 3,
+            "kind": "MaxContent",
+            "span": 1,
+            "value": 80.0,
+            "crossesFlexibleTrack": false
+          }
+        ],
+        "orthogonalTextMeasurements": [
+          {
+            "node": 3,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MaxContent }",
+            "contentSize": {
+              "height": 80.0,
+              "width": 10.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          },
+          {
+            "node": 3,
+            "availableSpace": "LayoutIntrinsicMeasureAvailableSpace { width: Definite(50.0), height: MinContent }",
+            "contentSize": {
+              "height": 50.0,
+              "width": 20.0
+            },
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            }
+          }
+        ],
+        "gridItemIntrinsicInputs": [
+          {
+            "grid": 1,
+            "node": 2,
+            "source": {
+              "kind": "replaced",
+              "natural": {
+                "aspectRatio": null,
+                "height": 16.0,
+                "width": 24.0
+              }
+            },
+            "sourceOrder": 0,
+            "textSources": []
+          },
+          {
+            "grid": 1,
+            "node": 3,
+            "source": {
+              "childWritingMode": "VerticalRl",
+              "fontRegistryRevision": 1,
+              "kind": "orthogonalText",
+              "maxContentBlock": 10.0,
+              "maxContentInline": 80.0,
+              "minContentBlock": 20.0,
+              "minContentInline": 50.0,
+              "parentWritingMode": "HorizontalTb",
+              "textOrientation": "Mixed"
+            },
+            "sourceOrder": 1,
+            "textSources": []
+          }
+        ]
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-reversed.png",
+        "sha256": "f552b1f6dccbeb22c588fc1ccb8ecbc2b6f2416c49fdaa36b629a38cdf7b2a30",
+        "pixels": {
+          "width": 1206,
+          "height": 2622
+        }
+      },
+      "unifiedLog": {
+        "file": "direct-orthogonal-row-max-content-reversed-unified.log",
+        "sha256": "dc1bfae19bd9f2357ac31f9fa95f4e7b2e91f21b38b09019e7f3c6adb550bb02"
+      },
+      "launchLog": {
+        "file": "direct-orthogonal-row-max-content-reversed-launch.log",
+        "sha256": "a2059e42a8fc074dbacf58f080c3faac5a97bc8dd18f568c799e16004bd0a5b6"
+      }
+    }
+  ],
+  "cleanup": {
+    "shutdownCommand": "xcrun simctl shutdown 00D4D861-56AA-4552-9181-58D88770EDDA",
+    "shutdownCompletedUtc": "2026-10-25T07:54:24Z",
+    "otherBootedSimulatorsWereStopped": false,
+    "agentBrowserProcessFoundAfterRun": false,
+    "terminalBrowserUsed": false
+  },
+  "paintScope": "Draw telemetry reports status=0 presented boxes=3 and a 960x720 surface. runtime_image_count, image_draw_count, runtime_text_count, and glyph_batch_draw_count are all 0; these captures evidence geometry/layout submission, not image or glyph pixel painting."
+}

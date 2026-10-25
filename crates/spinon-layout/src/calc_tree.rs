@@ -6,7 +6,8 @@ use std::{
 
 use spinon_core::NodeId as SpinonNodeId;
 use spinon_text_layout::{
-    ParagraphInput, TextIntrinsicInlineSizes, TextLayoutEngine, TextLayoutSnapshot,
+    ParagraphInput, TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutEngine,
+    TextLayoutSnapshot,
 };
 use taffy::{
     AvailableSpace, BlockContext, Cache, CacheTree, DetailedLayoutInfo, Display, Layout,
@@ -94,6 +95,7 @@ pub(super) struct CalcLayoutTree {
     text_flow_nodes: BTreeMap<SpinonNodeId, Vec<(usize, TaffyNodeId)>>,
     text_layouts: RefCell<HashMap<TaffyNodeId, BTreeMap<u32, TextLayoutSnapshot>>>,
     text_intrinsic_layouts: RefCell<HashMap<TaffyNodeId, TextIntrinsicInlineSizes>>,
+    text_intrinsic_logical_layouts: RefCell<HashMap<TaffyNodeId, TextIntrinsicLogicalSizes>>,
     grid_item_intrinsic_metadata: BTreeMap<SpinonNodeId, GridItemIntrinsicMetadata>,
     record_intrinsic_measurements: bool,
     intrinsic_measurements: RefCell<Vec<crate::LayoutIntrinsicMeasurement>>,
@@ -373,6 +375,7 @@ impl CalcLayoutTree {
             text_flow_nodes,
             text_layouts: RefCell::new(HashMap::new()),
             text_intrinsic_layouts: RefCell::new(HashMap::new()),
+            text_intrinsic_logical_layouts: RefCell::new(HashMap::new()),
             grid_item_intrinsic_metadata,
             record_intrinsic_measurements: !flow_only,
             intrinsic_measurements: RefCell::new(Vec::new()),
@@ -715,15 +718,12 @@ impl CalcLayoutTree {
                         |value, basis| tree.resolve_calc_value(value, basis),
                         |known_dimensions, available_space| {
                             if tree.text_paragraphs.contains_key(&node_id) {
-                                match tree.measure_text(node_id, available_space.width) {
+                                match tree.measure_text(node_id, available_space) {
                                     Ok(measured) => {
                                         if inherent_size {
                                             tree.record_intrinsic_measurement(
                                                 node_id,
-                                                LayoutIntrinsicMeasurementSource::Text {
-                                                    font_registry_revision: measured
-                                                        .font_registry_revision,
-                                                },
+                                                measured.source,
                                                 available_space,
                                                 known_dimensions,
                                                 parent_size,

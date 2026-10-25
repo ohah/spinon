@@ -1,0 +1,448 @@
+{
+  "serial": "emulator-5570",
+  "avdName": "spinon_api37_1_compat16k",
+  "runIds": [
+    "c114-orth-min-f",
+    "c114-orth-min-r",
+    "c114-orth-max-f",
+    "c114-orth-max-r"
+  ],
+  "observations": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114-orth-min-f",
+      "nativeMatcher": "PASS (summary emitted; no assertion/argument error)",
+      "layout": "ready",
+      "boxCount": 3,
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 74,
+        "height": 50
+      },
+      "expectedTextFrame": {
+        "node": 2,
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 50
+      },
+      "expectedImageFrame": {
+        "node": 4,
+        "x": 50,
+        "y": 0,
+        "width": 24,
+        "height": 16
+      },
+      "observedNodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=50",
+        "1:node=2,x=0,y=0,width=50,height=50",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "draw": "PASS (SPINON_C0410_DRAW status=0 presented boxes=3)",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{186148800 u0 dev.spinon.bootstrap/.MainActivity t4014}",
+      "tracePath": "android-trace-direct-orthogonal-row-min-content-forward.json",
+      "traceSha256": "bfca3edada3c870ed06e616c6c9b78ea84df02ac02a19ed1052714770df0c160",
+      "runtimeLogPath": "android-runtime-direct-orthogonal-row-min-content-forward-matcher-final.log",
+      "runtimeLogSha256": "e1619360e320352c1c698e7319c4b94d876e03f406d2bec8ee0b314b567d0ccc",
+      "launchLogPath": "android-launch-direct-orthogonal-row-min-content-forward-matcher-final.log",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotPath": "android-direct-orthogonal-row-min-content-forward.png",
+      "screenshotSha256": "a5e943d1cd3bf83c53b5ff6d1cb1990df0485deb13580f7ce9a2b0dc2855638d",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "traceValidation": {
+        "inputOrder": [
+          {
+            "node": 2,
+            "kind": "orthogonalText"
+          },
+          {
+            "node": 4,
+            "kind": "replaced"
+          }
+        ],
+        "intrinsicMeasurementCount": 1,
+        "finalColumnTrackSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowTrackSizes": [
+          50.0
+        ],
+        "rowContributionCount": 4,
+        "rowContributions": [
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 4,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 4,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          }
+        ]
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114-orth-min-r",
+      "nativeMatcher": "PASS (summary emitted; no assertion/argument error)",
+      "layout": "ready",
+      "boxCount": 3,
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 74,
+        "height": 50
+      },
+      "expectedTextFrame": {
+        "node": 3,
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 50
+      },
+      "expectedImageFrame": {
+        "node": 2,
+        "x": 50,
+        "y": 0,
+        "width": 24,
+        "height": 16
+      },
+      "observedNodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=50",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=50"
+      ],
+      "draw": "PASS (SPINON_C0410_DRAW status=0 presented boxes=3)",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{57466360 u0 dev.spinon.bootstrap/.MainActivity t4015}",
+      "tracePath": "android-trace-direct-orthogonal-row-min-content-reversed.json",
+      "traceSha256": "c6b69d98cdd867c449a77318790e03bb80a76b69a99d90c03cf1fd758524acc0",
+      "runtimeLogPath": "android-runtime-direct-orthogonal-row-min-content-reversed-matcher-final.log",
+      "runtimeLogSha256": "c11bba44f36d8306053075a570b03d35583a776a185b6c97d0be73d494bfaec0",
+      "launchLogPath": "android-launch-direct-orthogonal-row-min-content-reversed-matcher-final.log",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotPath": "android-direct-orthogonal-row-min-content-reversed.png",
+      "screenshotSha256": "f9b0586582d10c75cb3ee29d1c5fab9f769a1d97a6820f4612045353eebbf10e",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "traceValidation": {
+        "inputOrder": [
+          {
+            "node": 2,
+            "kind": "replaced"
+          },
+          {
+            "node": 3,
+            "kind": "orthogonalText"
+          }
+        ],
+        "intrinsicMeasurementCount": 1,
+        "finalColumnTrackSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowTrackSizes": [
+          50.0
+        ],
+        "rowContributionCount": 4,
+        "rowContributions": [
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 3,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 3,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          }
+        ]
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114-orth-max-f",
+      "nativeMatcher": "PASS (summary emitted; no assertion/argument error)",
+      "layout": "ready",
+      "boxCount": 3,
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 74,
+        "height": 80
+      },
+      "expectedTextFrame": {
+        "node": 2,
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 80
+      },
+      "expectedImageFrame": {
+        "node": 4,
+        "x": 50,
+        "y": 0,
+        "width": 24,
+        "height": 16
+      },
+      "observedNodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=80",
+        "1:node=2,x=0,y=0,width=50,height=80",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "draw": "PASS (SPINON_C0410_DRAW status=0 presented boxes=3)",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{119844240 u0 dev.spinon.bootstrap/.MainActivity t4016}",
+      "tracePath": "android-trace-direct-orthogonal-row-max-content-forward.json",
+      "traceSha256": "0ccee32239a1add8d94833d99130dd4b08e5f51c2f96ffb2bafc6747f9a6b1c5",
+      "runtimeLogPath": "android-runtime-direct-orthogonal-row-max-content-forward-matcher-final.log",
+      "runtimeLogSha256": "180ef50cff2f65526ea59e523dad09d164557d054adca45d37b2bc892e46d9e4",
+      "launchLogPath": "android-launch-direct-orthogonal-row-max-content-forward-matcher-final.log",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotPath": "android-direct-orthogonal-row-max-content-forward.png",
+      "screenshotSha256": "c723bf239923bde2bf4357755ae801dc6ad22623af090f4fdacafe47da8d48d8",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "traceValidation": {
+        "inputOrder": [
+          {
+            "node": 2,
+            "kind": "orthogonalText"
+          },
+          {
+            "node": 4,
+            "kind": "replaced"
+          }
+        ],
+        "intrinsicMeasurementCount": 2,
+        "finalColumnTrackSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowTrackSizes": [
+          80.0
+        ],
+        "rowContributionCount": 6,
+        "rowContributions": [
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 80.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 80.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 4,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 4,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 4,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          }
+        ]
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114-orth-max-r",
+      "nativeMatcher": "PASS (summary emitted; no assertion/argument error)",
+      "layout": "ready",
+      "boxCount": 3,
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 74,
+        "height": 80
+      },
+      "expectedTextFrame": {
+        "node": 3,
+        "x": 0,
+        "y": 0,
+        "width": 50,
+        "height": 80
+      },
+      "expectedImageFrame": {
+        "node": 2,
+        "x": 50,
+        "y": 0,
+        "width": 24,
+        "height": 16
+      },
+      "observedNodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=80",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=80"
+      ],
+      "draw": "PASS (SPINON_C0410_DRAW status=0 presented boxes=3)",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{85624264 u0 dev.spinon.bootstrap/.MainActivity t4017}",
+      "tracePath": "android-trace-direct-orthogonal-row-max-content-reversed.json",
+      "traceSha256": "b4edd91878d1f14ef61a9f39b0aa57acf1ac2761b22d7da4173396fa5fc2ca70",
+      "runtimeLogPath": "android-runtime-direct-orthogonal-row-max-content-reversed-matcher-final.log",
+      "runtimeLogSha256": "6e503efd298f8d355d608e09d05dcfe4da3685854bcfbd6fb7cc4191d9567e55",
+      "launchLogPath": "android-launch-direct-orthogonal-row-max-content-reversed-matcher-final.log",
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "screenshotPath": "android-direct-orthogonal-row-max-content-reversed.png",
+      "screenshotSha256": "f39ba19a7c58453eeb354cf7740a2ebd27afb6ebbd9fca636a9db6bc03741636",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "traceValidation": {
+        "inputOrder": [
+          {
+            "node": 2,
+            "kind": "replaced"
+          },
+          {
+            "node": 3,
+            "kind": "orthogonalText"
+          }
+        ],
+        "intrinsicMeasurementCount": 2,
+        "finalColumnTrackSizes": [
+          50.0,
+          24.0
+        ],
+        "finalRowTrackSizes": [
+          80.0
+        ],
+        "rowContributionCount": 6,
+        "rowContributions": [
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 2,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 16.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 3,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 80.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 3,
+            "kind": "MinContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 50.0
+          },
+          {
+            "crossesFlexibleTrack": false,
+            "item": 3,
+            "kind": "MaxContent",
+            "minimumSource": null,
+            "span": 1,
+            "value": 80.0
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -167,6 +167,8 @@ mod fixed_repeat_auto_repeat;
 mod fixed_repeat_line_names;
 #[path = "runtime_grid_tests/hidden_context.rs"]
 mod hidden_context;
+#[path = "runtime_grid_tests/orthogonal_writing_mode.rs"]
+mod orthogonal_writing_mode;
 #[path = "runtime_grid_tests/placement.rs"]
 mod placement;
 #[path = "runtime_grid_tests/template_areas.rs"]

@@ -16,6 +16,8 @@ pub(super) fn paragraph_style(
     style: &ComputedElementStyle,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     Ok(ParagraphStyle {
+        writing_mode: spinon_core::WritingMode::HorizontalTb,
+        text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size: style.font_size_css_px,
         font_weight: 400.0,

@@ -1,0 +1,433 @@
+{
+  "errors": [],
+  "scenes": [
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114fin17",
+      "traceChunks": 8,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          50
+        ],
+        "2": [
+          0,
+          0,
+          50,
+          50
+        ],
+        "4": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            50.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-forward-final.png",
+        "sha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8",
+        "width": 1206,
+        "height": 2622
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114fin18",
+      "traceChunks": 8,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          50
+        ],
+        "3": [
+          0,
+          0,
+          50,
+          50
+        ],
+        "2": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            50.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-reversed-final.png",
+        "sha256": "a4ef99f36112a7a717c615668d44e347a3ee31a47bac809f189103d5452a1fc8",
+        "width": 1206,
+        "height": 2622
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114fin19",
+      "traceChunks": 9,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          80
+        ],
+        "2": [
+          0,
+          0,
+          50,
+          80
+        ],
+        "4": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            80.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 4,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-forward-final.png",
+        "sha256": "3ec14c56e9ac69cf364203c7bbffcf34898f4c4f16ce2494ee030bb231089c41",
+        "width": 1206,
+        "height": 2622
+      }
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114fin20",
+      "traceChunks": 9,
+      "rootAndItems": {
+        "1": [
+          0,
+          0,
+          74,
+          80
+        ],
+        "3": [
+          0,
+          0,
+          50,
+          80
+        ],
+        "2": [
+          50,
+          0,
+          24,
+          16
+        ]
+      },
+      "tracks": [
+        {
+          "axis": "Columns",
+          "sequence": 0,
+          "sizes": [
+            50.0,
+            24.0
+          ]
+        },
+        {
+          "axis": "Rows",
+          "sequence": 1,
+          "sizes": [
+            80.0
+          ]
+        }
+      ],
+      "contributions": [
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 2,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 16.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MinContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 50.0
+        },
+        {
+          "crossesFlexibleTrack": false,
+          "item": 3,
+          "kind": "MaxContent",
+          "minimumSource": null,
+          "span": 1,
+          "value": 80.0
+        }
+      ],
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "draw": [
+        "generation=1",
+        "status=0",
+        "presented",
+        "boxes=3"
+      ],
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-reversed-final.png",
+        "sha256": "c3d6a6193f04ec960e360dcacbba071bc4ab5a6414291a6523cfc1066765ee2a",
+        "width": 1206,
+        "height": 2622
+      }
+    }
+  ]
+}

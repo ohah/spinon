@@ -1,0 +1,745 @@
+{
+  "sceneCount": 12,
+  "passCount": 12,
+  "errors": [],
+  "sourceSnapshot": {
+    "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+    "indexTree": "45bb3313f5c126fd724eb54e877f86746107a715",
+    "stagedDiffSha256": "e5c870f07de8345841aca43fee29bba53b50b81c4f4bff27bfe863ff0739224e",
+    "sourceManifestSha256": "954ef11bb9478de7391a0cc06ec63ccd6455ff43f4792627e5a680c7da94435f",
+    "fileCount": 807,
+    "changedFiles": {},
+    "unchanged": true,
+    "checkedAtLocal": "2026-10-25T17:44:58+09:00"
+  },
+  "scenes": [
+    {
+      "sceneId": "direct-min-content-forward",
+      "runId": "c114sty01",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty01 scene_id=direct-min-content-forward expected_root_frame=width=120,height=48 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-min-content-forward-trace.json",
+      "unifiedLog": "direct-min-content-forward-unified.log",
+      "unifiedLogSha256": "8d6d4161aff3c1b7be90582f0fdd5470b5d67993c8d579686017ab5c5d6986e9",
+      "screenshot": {
+        "file": "direct-min-content-forward.png",
+        "sha256": "4ce4bcf8d7c346a579c668637416c487484ddf5e3bda34d81831fdecc3ad70a9",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-min-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-min-content-reversed",
+      "runId": "c114sty02",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty02 scene_id=direct-min-content-reversed expected_root_frame=width=120,height=48 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-min-content-reversed-trace.json",
+      "unifiedLog": "direct-min-content-reversed-unified.log",
+      "unifiedLogSha256": "f68668d64281d1b83f737eaba7068747e099765bd92d59531b85c204616f87b8",
+      "screenshot": {
+        "file": "direct-min-content-reversed.png",
+        "sha256": "72f96ce5d94f8e849073f5d9f66e9d6375e28b6e4cec41058789e39991fafb48",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-min-content-reversed-launch.log"
+    },
+    {
+      "sceneId": "direct-max-content-forward",
+      "runId": "c114sty03",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty03 scene_id=direct-max-content-forward expected_root_frame=width=120,height=48 expected_item_frame=width=80,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 10.0,
+        "node": 2,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-max-content-forward-trace.json",
+      "unifiedLog": "direct-max-content-forward-unified.log",
+      "unifiedLogSha256": "74c98a61856e33064e5887869664c34005a000027d3beee3479cf2c4fa17c565",
+      "screenshot": {
+        "file": "direct-max-content-forward.png",
+        "sha256": "40d0beb8422ae6a06926865e28242f60d96003f3e4db57c55a3ca955b6ae5316",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-max-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-max-content-reversed",
+      "runId": "c114sty04",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty04 scene_id=direct-max-content-reversed expected_root_frame=width=120,height=48 expected_item_frame=width=80,height=10 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 48.0,
+        "node": 1,
+        "width": 120.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 10.0,
+        "node": 3,
+        "width": 80.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 0.0,
+        "y": 24.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            80.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            24.0,
+            24.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-max-content-reversed-trace.json",
+      "unifiedLog": "direct-max-content-reversed-unified.log",
+      "unifiedLogSha256": "acf0538f8c0f2418d1cb3d9f68d6df347924bdea342101fedf9301ee5a45b514",
+      "screenshot": {
+        "file": "direct-max-content-reversed.png",
+        "sha256": "40d0beb8422ae6a06926865e28242f60d96003f3e4db57c55a3ca955b6ae5316",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=120x48 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-max-content-reversed-launch.log"
+    },
+    {
+      "sceneId": "direct-row-min-content-forward",
+      "runId": "c114sty05",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty05 scene_id=direct-row-min-content-forward expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-row-min-content-forward-trace.json",
+      "unifiedLog": "direct-row-min-content-forward-unified.log",
+      "unifiedLogSha256": "291e30c9b85113a727087aebe169fe6f5d635e61fb3fead1d760e8f58fc572fc",
+      "screenshot": {
+        "file": "direct-row-min-content-forward.png",
+        "sha256": "6daf695b40c2d5eb7fe60bf7a9019a7c20d0ed0e13544a1ba41e0c9d9c5953c8",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-row-min-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-row-min-content-reversed",
+      "runId": "c114sty06",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty06 scene_id=direct-row-min-content-reversed expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-row-min-content-reversed-trace.json",
+      "unifiedLog": "direct-row-min-content-reversed-unified.log",
+      "unifiedLogSha256": "ffafa227d3fb05e23fc604dfaa9a5b1315d8d35245c5a0daaf1dc193cac0ec80",
+      "screenshot": {
+        "file": "direct-row-min-content-reversed.png",
+        "sha256": "6daf695b40c2d5eb7fe60bf7a9019a7c20d0ed0e13544a1ba41e0c9d9c5953c8",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-row-min-content-reversed-launch.log"
+    },
+    {
+      "sceneId": "direct-row-max-content-forward",
+      "runId": "c114sty07",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty07 scene_id=direct-row-max-content-forward expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-row-max-content-forward-trace.json",
+      "unifiedLog": "direct-row-max-content-forward-unified.log",
+      "unifiedLogSha256": "02837ca76fae7153b436533b39042e6a26ffb8d3d521284e1faf7d365b1d5d33",
+      "screenshot": {
+        "file": "direct-row-max-content-forward.png",
+        "sha256": "6daf695b40c2d5eb7fe60bf7a9019a7c20d0ed0e13544a1ba41e0c9d9c5953c8",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-row-max-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-row-max-content-reversed",
+      "runId": "c114sty08",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty08 scene_id=direct-row-max-content-reversed expected_root_frame=width=74,height=20 expected_item_frame=width=50,height=20 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 20.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 20.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            20.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-row-max-content-reversed-trace.json",
+      "unifiedLog": "direct-row-max-content-reversed-unified.log",
+      "unifiedLogSha256": "66254f82d2dcbe51b1dc9fe60322d430c44ed705422527a37551a5c0f78d9b32",
+      "screenshot": {
+        "file": "direct-row-max-content-reversed.png",
+        "sha256": "6daf695b40c2d5eb7fe60bf7a9019a7c20d0ed0e13544a1ba41e0c9d9c5953c8",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x20 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "processId": null,
+      "launchLog": "direct-row-max-content-reversed-launch.log"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-forward",
+      "runId": "c114sty09",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty09 scene_id=direct-orthogonal-row-min-content-forward expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 50.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 50.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            50.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-orthogonal-row-min-content-forward-trace.json",
+      "unifiedLog": "direct-orthogonal-row-min-content-forward-unified.log",
+      "unifiedLogSha256": "ae21d96b7931ed9bb796f5235251b4168baaa1ef149924326ed19080c1b484a8",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-forward.png",
+        "sha256": "5328f55ff7cd021bbfafe1046f0d2decdbe1770132344c82924d101d7c07dbd9",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "processId": null,
+      "launchLog": "direct-orthogonal-row-min-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-min-content-reversed",
+      "runId": "c114sty10",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty10 scene_id=direct-orthogonal-row-min-content-reversed expected_root_frame=width=74,height=50 expected_item_frame=width=50,height=50 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 50.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 50.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            50.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 8,
+      "traceFile": "direct-orthogonal-row-min-content-reversed-trace.json",
+      "unifiedLog": "direct-orthogonal-row-min-content-reversed-unified.log",
+      "unifiedLogSha256": "b98d6bb575bf15cd676b7f144892f0837f611ad3733edcd9326dfaac63fbca6d",
+      "screenshot": {
+        "file": "direct-orthogonal-row-min-content-reversed.png",
+        "sha256": "5328f55ff7cd021bbfafe1046f0d2decdbe1770132344c82924d101d7c07dbd9",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x50 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "processId": null,
+      "launchLog": "direct-orthogonal-row-min-content-reversed-launch.log"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-forward",
+      "runId": "c114sty11",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty11 scene_id=direct-orthogonal-row-max-content-forward expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 80.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 80.0,
+        "node": 2,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 4,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            80.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 9,
+      "traceFile": "direct-orthogonal-row-max-content-forward-trace.json",
+      "unifiedLog": "direct-orthogonal-row-max-content-forward-unified.log",
+      "unifiedLogSha256": "8708ab2071db57463836242a5b090dbacf99b6cfd95ae2cd2143ee124d2e4227",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-forward.png",
+        "sha256": "5de084cb58589d70ff386bfda2fe2ff5369707285d0da035ffc7a5df6acaabdd",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "processId": null,
+      "launchLog": "direct-orthogonal-row-max-content-forward-launch.log"
+    },
+    {
+      "sceneId": "direct-orthogonal-row-max-content-reversed",
+      "runId": "c114sty12",
+      "nativeMatcher": "pass",
+      "summary": "run_id=c114sty12 scene_id=direct-orthogonal-row-max-content-reversed expected_root_frame=width=74,height=80 expected_item_frame=width=50,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=19 environment_revision=0",
+      "root": {
+        "height": 80.0,
+        "node": 1,
+        "width": 74.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "text": {
+        "height": 80.0,
+        "node": 3,
+        "width": 50.0,
+        "x": 0.0,
+        "y": 0.0
+      },
+      "image": {
+        "height": 16.0,
+        "node": 2,
+        "width": 24.0,
+        "x": 50.0,
+        "y": 0.0
+      },
+      "finalTracks": [
+        {
+          "axis": "Columns",
+          "sizes": [
+            50.0,
+            24.0
+          ],
+          "sequence": 0
+        },
+        {
+          "axis": "Rows",
+          "sizes": [
+            80.0
+          ],
+          "sequence": 1
+        }
+      ],
+      "traceChunkCount": 9,
+      "traceFile": "direct-orthogonal-row-max-content-reversed-trace.json",
+      "unifiedLog": "direct-orthogonal-row-max-content-reversed-unified.log",
+      "unifiedLogSha256": "3b5f3ed051256d0febd52c7268c22c80f8b66842e63427fdec869066528ec78d",
+      "screenshot": {
+        "file": "direct-orthogonal-row-max-content-reversed.png",
+        "sha256": "5de084cb58589d70ff386bfda2fe2ff5369707285d0da035ffc7a5df6acaabdd",
+        "width": 1206,
+        "height": 2622
+      },
+      "draw": "generation=1 status=0 presented boxes=3 environment_revision=1 document_revision=19 render_tree_revision=3 style_revision=0 scroll_state_revision=0 scroll_offsets=[] generation=1 viewport_css_px=320x240 surface_texture=960x720 root_css_px=74x80 runtime_image_count=0 image_draw_count=0 runtime_text_count=0 glyph_batch_draw_count=0",
+      "orthogonalTextSource": {
+        "childWritingMode": "VerticalRl",
+        "fontRegistryRevision": 1,
+        "kind": "orthogonalText",
+        "maxContentBlock": 10.0,
+        "maxContentInline": 80.0,
+        "minContentBlock": 20.0,
+        "minContentInline": 50.0,
+        "parentWritingMode": "HorizontalTb",
+        "textOrientation": "Mixed"
+      },
+      "processId": null,
+      "launchLog": "direct-orthogonal-row-max-content-reversed-launch.log"
+    }
+  ]
+}

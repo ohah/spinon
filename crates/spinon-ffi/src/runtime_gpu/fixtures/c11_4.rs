@@ -86,6 +86,8 @@ mod nested_grid_replaced_item;
 mod nested_grid_rows;
 #[path = "c11_4/nested_grid_text_multispan.rs"]
 mod nested_grid_text_multispan;
+#[path = "c11_4/orthogonal_direct_text_image_intrinsic_rows.rs"]
+mod orthogonal_direct_text_image_intrinsic_rows;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1103,6 +1105,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     if let Some(source) = mixed_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
+    if let Some(source) = orthogonal_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = cyclic_minmax_replaced_image_span::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -2109,5 +2114,24 @@ mod tests {
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
         }
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
+    }
+
+    #[test]
+    fn exposes_the_four_orthogonal_row_scenes_through_the_runtime_dispatcher() {
+        for scene_id in [
+            "direct-orthogonal-row-min-content-forward",
+            "direct-orthogonal-row-min-content-reversed",
+            "direct-orthogonal-row-max-content-forward",
+            "direct-orthogonal-row-max-content-reversed",
+        ] {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("align-items:normal;align-content:start"));
+            assert!(source.contains("grid-template-columns:50px 24px"));
+        }
+        assert!(
+            c11_4_grid_track_sizing_runtime_source("direct-orthogonal-row-min-content-unlisted")
+                .is_err()
+        );
     }
 }

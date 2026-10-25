@@ -77,6 +77,7 @@ fn rejects_non_html_namespace_for_allowlisted_grid_root() {
         render_tree_revision: snapshot.render_tree_revision(),
         document_root_font_size_css_px: 16.0,
         elements: Arc::from([]),
+        writing_styles: Arc::from([]),
         diagnostics: Vec::new(),
     };
 

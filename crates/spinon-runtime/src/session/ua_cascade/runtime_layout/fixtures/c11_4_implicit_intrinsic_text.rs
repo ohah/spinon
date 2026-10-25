@@ -430,6 +430,8 @@ fn unsupported_scene(node_id: NodeId, scene_id: &str, reason: &str) -> RuntimeLa
 
 fn ahem_paragraph_style(font_size: f32) -> ParagraphStyle {
     ParagraphStyle {
+        writing_mode: spinon_core::WritingMode::HorizontalTb,
+        text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size,
         line_height: font_size,

@@ -1,6 +1,6 @@
 use std::{ops::Range, sync::Arc};
 
-use spinon_core::NodeId;
+use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 use crate::{FontStyleMode, LigatureMode, LineBreakMode, TextDirection};
 
@@ -143,6 +143,88 @@ pub struct TextIntrinsicInlineSizes {
     max_content_height: f32,
 }
 
+/// Writing mode의 inline/block 축에서 측정한 CSS px intrinsic 크기입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct LogicalIntrinsicSize {
+    pub inline_px: f32,
+    pub block_px: f32,
+}
+
+/// 같은 paragraph와 font registry에서 계산한 논리축 min/max-content 크기입니다.
+#[derive(Clone, Debug)]
+pub struct TextIntrinsicLogicalSizes {
+    paragraph: NodeId,
+    font_registry_revision: FontRegistryRevision,
+    font_registry_token: FontRegistryToken,
+    writing_mode: WritingMode,
+    text_orientation: TextOrientation,
+    min_content: LogicalIntrinsicSize,
+    max_content: LogicalIntrinsicSize,
+}
+
+impl TextIntrinsicLogicalSizes {
+    pub(crate) fn new(
+        paragraph: NodeId,
+        font_registry_revision: FontRegistryRevision,
+        font_registry_token: FontRegistryToken,
+        writing_mode: WritingMode,
+        text_orientation: TextOrientation,
+        min_content: LogicalIntrinsicSize,
+        max_content: LogicalIntrinsicSize,
+    ) -> Self {
+        Self {
+            paragraph,
+            font_registry_revision,
+            font_registry_token,
+            writing_mode,
+            text_orientation,
+            min_content,
+            max_content,
+        }
+    }
+
+    pub const fn paragraph(&self) -> NodeId {
+        self.paragraph
+    }
+
+    pub const fn font_registry_revision(&self) -> FontRegistryRevision {
+        self.font_registry_revision
+    }
+
+    pub const fn writing_mode(&self) -> WritingMode {
+        self.writing_mode
+    }
+
+    pub const fn text_orientation(&self) -> TextOrientation {
+        self.text_orientation
+    }
+
+    /// 두 결과가 같은 font registry의 같은 revision에서 계산됐는지 비교합니다.
+    pub fn uses_same_font_registry_revision(&self, other: &Self) -> bool {
+        self.font_registry_revision == other.font_registry_revision
+            && self.font_registry_token.matches(&other.font_registry_token)
+    }
+
+    pub const fn min_content(&self) -> LogicalIntrinsicSize {
+        self.min_content
+    }
+
+    pub const fn max_content(&self) -> LogicalIntrinsicSize {
+        self.max_content
+    }
+}
+
+impl PartialEq for TextIntrinsicLogicalSizes {
+    fn eq(&self, other: &Self) -> bool {
+        self.paragraph == other.paragraph
+            && self.uses_same_font_registry_revision(other)
+            && self.writing_mode == other.writing_mode
+            && self.text_orientation == other.text_orientation
+            && self.min_content == other.min_content
+            && self.max_content == other.max_content
+    }
+}
+
 impl TextIntrinsicInlineSizes {
     pub(crate) fn new(
         paragraph: NodeId,
@@ -192,6 +274,28 @@ impl TextIntrinsicInlineSizes {
 
     pub const fn max_content_height(&self) -> f32 {
         self.max_content_height
+    }
+
+    pub(crate) fn to_logical_sizes(
+        &self,
+        writing_mode: WritingMode,
+        text_orientation: TextOrientation,
+    ) -> TextIntrinsicLogicalSizes {
+        TextIntrinsicLogicalSizes::new(
+            self.paragraph,
+            self.font_registry_revision,
+            self.font_registry_token.clone(),
+            writing_mode,
+            text_orientation,
+            LogicalIntrinsicSize {
+                inline_px: self.min_content,
+                block_px: self.min_content_height,
+            },
+            LogicalIntrinsicSize {
+                inline_px: self.max_content,
+                block_px: self.max_content_height,
+            },
+        )
     }
 }
 

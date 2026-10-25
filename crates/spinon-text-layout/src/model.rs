@@ -1,4 +1,4 @@
-use spinon_core::NodeId;
+use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 /// 제한된 inline span의 CSS px 면별 크기입니다.
 #[derive(Clone, Copy, Debug, Default, PartialEq)]
@@ -133,6 +133,10 @@ pub struct ParagraphStyle {
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
     pub direction: TextDirection,
+    /// Paragraph의 computed writing mode입니다. Glyph rotation/painting은 담당하지 않습니다.
+    pub writing_mode: WritingMode,
+    /// Paragraph의 computed text orientation입니다. Glyph rotation/painting은 담당하지 않습니다.
+    pub text_orientation: TextOrientation,
     pub line_break: LineBreakMode,
     pub ligatures: LigatureMode,
 }
@@ -171,6 +175,8 @@ impl Default for ParagraphStyle {
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
             direction: TextDirection::Auto,
+            writing_mode: WritingMode::HorizontalTb,
+            text_orientation: TextOrientation::Mixed,
             line_break: LineBreakMode::default(),
             ligatures: LigatureMode::default(),
         }

@@ -276,7 +276,17 @@ fn c114_cyclic_percentage_auto_repeat_fixture_gate_rejects_neighbor_inputs() {
             root_style_extra,
             false,
         );
-        let calculation = compute_request_for_block_flex_grid_track_sizing(&probe.request).unwrap();
+        let calculation = match compute_request_for_block_flex_grid_track_sizing(&probe.request) {
+            Ok(calculation) => calculation,
+            Err(error) if expected_error == "unsupported_inline_property" => {
+                assert!(
+                    error.contains(&format!("노드 {}의 inline overflow", probe.root_id)),
+                    "overflow preflight 오류는 노드와 속성을 보존해야 합니다: {error}"
+                );
+                continue;
+            }
+            Err(error) => panic!("unexpected cascade error for {root_style_extra}: {error}"),
+        };
         let error = calculation.layout.unwrap_err();
         assert_eq!(error.code, expected_error, "{root_style_extra}");
     }

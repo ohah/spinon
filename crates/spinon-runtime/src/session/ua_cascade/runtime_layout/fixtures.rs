@@ -107,6 +107,9 @@ pub(super) struct C11_4NestedAnonymousImageInput {
 pub(super) use c11_4_mixed::prepare as prepare_c11_4_mixed;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_mixed::validate_orthogonal_rows_output as validate_c11_4_orthogonal_rows_output;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_nested_grid_replaced_item::prepare as prepare_c11_4_nested_grid_replaced_item;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

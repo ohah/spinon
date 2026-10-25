@@ -256,6 +256,17 @@ pub enum CssCascadeError {
         id: String,
     },
     StyloViewRebuild(crate::stylo_dom::StyloDomError),
+    /// C11.4 writing-mode preference 아래의 Stylo view 재구성에 실패했습니다.
+    OrthogonalWritingModeViewRebuild(crate::stylo_dom::StyloDomError),
+    /// C11.4 inline preflight에서 track-sizing profile 밖 속성을 찾았습니다.
+    UnsupportedInlineAuthorProperty {
+        node: NodeId,
+        property: String,
+    },
+    /// C11.4 inline declaration preflight에서 CSS 입력 전체를 검사하지 못했습니다.
+    InlineAuthorPropertyPreflightFailed {
+        node: NodeId,
+    },
     UnsupportedAuthorCss {
         stylesheet_id: String,
         feature: String,
@@ -304,6 +315,16 @@ pub enum CssCascadeError {
     UnsupportedComputedGridValue {
         node: NodeId,
         property: &'static str,
+        value: String,
+    },
+    /// C11.4에서 제한된 typed snapshot으로 변환할 수 없는 computed `writing-mode`입니다.
+    UnsupportedComputedWritingMode {
+        node: NodeId,
+        value: String,
+    },
+    /// C11.4에서 제한된 typed snapshot으로 변환할 수 없는 computed `text-orientation`입니다.
+    UnsupportedComputedTextOrientation {
+        node: NodeId,
         value: String,
     },
     /// computed Grid track·line-name·area 목록의 저장 공간을 예약하지 못했습니다.
@@ -373,6 +394,18 @@ impl fmt::Display for CssCascadeError {
                     "C13.3 profile용 Stylo view를 다시 만들 수 없습니다: {error}"
                 )
             }
+            Self::OrthogonalWritingModeViewRebuild(error) => write!(
+                formatter,
+                "C11.4 profile용 Stylo view를 다시 만들 수 없습니다: {error}"
+            ),
+            Self::UnsupportedInlineAuthorProperty { node, property } => write!(
+                formatter,
+                "노드 {node}의 inline {property} 속성은 C11.4 track-sizing profile에서 지원하지 않습니다"
+            ),
+            Self::InlineAuthorPropertyPreflightFailed { node } => write!(
+                formatter,
+                "노드 {node}의 inline CSS를 C11.4 author-property preflight에서 완전히 검사하지 못했습니다"
+            ),
             Self::UnsupportedAuthorCss {
                 stylesheet_id,
                 feature,
@@ -443,6 +476,14 @@ impl fmt::Display for CssCascadeError {
             } => write!(
                 formatter,
                 "노드 {node}의 Grid 속성 {property} 값 {value:?}를 현재 explicit-track profile로 표현할 수 없습니다"
+            ),
+            Self::UnsupportedComputedWritingMode { node, value } => write!(
+                formatter,
+                "노드 {node}의 computed writing-mode 값 {value:?}는 C11.4 track-sizing profile에서 지원하지 않습니다"
+            ),
+            Self::UnsupportedComputedTextOrientation { node, value } => write!(
+                formatter,
+                "노드 {node}의 computed text-orientation 값 {value:?}는 C11.4 track-sizing profile에서 지원하지 않습니다"
             ),
             Self::GridAllocationFailure { node, property } => write!(
                 formatter,

@@ -23,6 +23,9 @@ use crate::{
 
 #[path = "taffy_style/grid.rs"]
 mod grid;
+#[cfg(test)]
+#[path = "taffy_style/tests.rs"]
+mod tests;
 
 pub(super) struct GridTaffyStyleInput<'a> {
     pub(super) container: Option<&'a GridContainerInput>,
@@ -391,7 +394,8 @@ fn to_taffy_item_alignment_keyword(position: ItemAlignmentPosition) -> AlignItem
 
 fn to_taffy_align_items(value: LayoutAlignItems) -> AlignItems {
     match value {
-        LayoutAlignItems::Normal | LayoutAlignItems::Stretch => AlignItems::STRETCH,
+        LayoutAlignItems::Normal => AlignItems::NORMAL,
+        LayoutAlignItems::Stretch => AlignItems::STRETCH,
         LayoutAlignItems::FlexStart => AlignItems::FLEX_START,
         LayoutAlignItems::FlexEnd => AlignItems::FLEX_END,
         LayoutAlignItems::Center => AlignItems::CENTER,

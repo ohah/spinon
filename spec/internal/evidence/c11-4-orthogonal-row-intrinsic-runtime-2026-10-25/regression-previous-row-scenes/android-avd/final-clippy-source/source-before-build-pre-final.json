@@ -1,0 +1,30 @@
+{
+  "head": "d37ee6ea8c985ab27eb32770491c8998dcbf756c",
+  "trackedDiffSha256": "b4d598453846c62f8825ab8d03ff7ff3c35171c6d92db388f311b7acc68682f7",
+  "files": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "4c493eb2af2e21c38f88e521e662dd73facde7f283214150477d71b45efebc32",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "2a0c724ff73169b383dfaf24af0dc137696fe75716ca993abdfa74fc46d50408",
+    "crates/spinon-layout/src/taffy_style.rs": "a07a49a86cd4bd02f8db3997d8694a0787ba2cb1e1aec227160d8630075197db",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs": "03fdbd8f4554965fad306ec75f70809e36335ebf74b69202acfe6c8f6d0622a4",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "3ce4a89e702dc578d3cd98330248054627c9e94bc6ce4f96d1cf1a827d46e9cd",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "f0cf10ec5dec0ba09c9b0f349073c33234e319e6d39b95fab1329d77b01279d8",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs": "41e5532326f70c3f971dfce3a522ca152d03eb2837fe9bc16954becc4281a1a6",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid/author_preflight.rs": "a4dcc6ee5d96a0e85ebab3d6e40033a1a466ee68086c07a954b60a12eff6a489",
+    "crates/spinon-text-layout/src/lib.rs": "8f377639236aafb9c0d81bd897d79c54507fe22be70807fc1cfd7145a968386c",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "77beadff369b8eb1bb1604c34bec967239474ecc9bcb325f6f1ace35601d1654",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java": "62fb4eaefd6fefb62fca8fe9b7b52febb3294bb6cc71bc56938572a276eba719"
+  },
+  "sourceHash": "606fa5ea591ecb8c8723c8c7582c5c508bc2b43399462848f4de50b17ab733f3",
+  "changedFromEightSceneSnapshot": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": {
+      "previous": "a086565d81340489f17faf3647d9f1ad40a0f6e1b9c9fd2f82508bbbee17d478",
+      "current": "2a0c724ff73169b383dfaf24af0dc137696fe75716ca993abdfa74fc46d50408"
+    }
+  },
+  "additionalSourceFiles": {
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs": "41e5532326f70c3f971dfce3a522ca152d03eb2837fe9bc16954becc4281a1a6",
+    "crates/spinon-style/src/stylo_dom/cascade/runtime_grid/author_preflight.rs": "a4dcc6ee5d96a0e85ebab3d6e40033a1a466ee68086c07a954b60a12eff6a489",
+    "crates/spinon-text-layout/src/lib.rs": "8f377639236aafb9c0d81bd897d79c54507fe22be70807fc1cfd7145a968386c"
+  },
+  "eightSceneSnapshotSha256": "8cabd84801f4e6a8fb5908e91921c3f6a5491292c4bfbdf49d1d01a0d69eaf74"
+}

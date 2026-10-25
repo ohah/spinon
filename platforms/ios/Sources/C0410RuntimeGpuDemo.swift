@@ -386,6 +386,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
     }
     return c114GridTrackSizingSceneIDs.contains(sceneID)
+        || c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID)
         || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
         || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
 }
@@ -408,6 +409,12 @@ private let c114DirectMixedTextImageIntrinsicSceneIDs: Set<String> = [
     "direct-max-content-forward", "direct-max-content-reversed",
     "direct-row-min-content-forward", "direct-row-min-content-reversed",
     "direct-row-max-content-forward", "direct-row-max-content-reversed",
+]
+private let c114OrthogonalRowIntrinsicSceneIDs: Set<String> = [
+    "direct-orthogonal-row-min-content-forward",
+    "direct-orthogonal-row-min-content-reversed",
+    "direct-orthogonal-row-max-content-forward",
+    "direct-orthogonal-row-max-content-reversed",
 ]
 private let c114AutoRepeatNegativeLineSceneIDs: Set<String> = [
     "columns-fill-one-leading", "columns-fill-two-repetitions",
@@ -1077,6 +1084,9 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
+    if let height = c114OrthogonalRowHeight(sceneID) {
+        return "width=74,height=\(height)"
+    }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return "width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"
     }
@@ -1375,6 +1385,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return sceneID.hasSuffix("-occupied") || sceneID.hasSuffix("-four-row-split-fill")
             ? "width=10,height=10" : ""
     }
+    if let height = c114OrthogonalRowHeight(sceneID) {
+        return "width=50,height=\(height)"
+    }
     if let calcNeighborFrame = c114CalcNeighborItemFrame(sceneID) { return calcNeighborFrame }
     if let percentageNeighborFrame = c114PercentageNeighborItemFrame(sceneID) {
         return percentageNeighborFrame
@@ -1666,8 +1679,89 @@ private func c114ExpectedDirectMixedTextImageIntrinsicInputs(
     return c114DirectMixedTextImageTraceMatches(sceneID, diagnostics: diagnostics)
 }
 
+private func c114ExpectedOrthogonalRowIntrinsicInputs(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let expectedHeight = c114OrthogonalRowHeight(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          (revision["intrinsicSize"] as? Int) == 1,
+          let sourceRevision = revision["source"] as? String,
+          sourceRevision.hasPrefix("HostDocument {"),
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 2 else { return false }
+
+    let reversed = sceneID.hasSuffix("-reversed")
+    let expected: [(node: Int, sourceOrder: Int, kind: String)] = reversed
+        ? [(2, 0, "replaced"), (3, 1, "orthogonalText")]
+        : [(2, 0, "orthogonalText"), (4, 1, "replaced")]
+    for (index, input) in inputs.enumerated() {
+        let item = expected[index]
+        guard (input["grid"] as? Int) == 1,
+              (input["node"] as? Int) == item.node,
+              (input["sourceOrder"] as? Int) == item.sourceOrder,
+              let source = input["source"] as? [String: Any],
+              (source["kind"] as? String) == item.kind else { return false }
+
+        if item.kind == "orthogonalText" {
+            guard (source["fontRegistryRevision"] as? Int) == 1,
+                  (source["minContentInline"] as? NSNumber)?.doubleValue == 50,
+                  (source["maxContentInline"] as? NSNumber)?.doubleValue == 80,
+                  (source["minContentBlock"] as? NSNumber)?.doubleValue == 20,
+                  (source["maxContentBlock"] as? NSNumber)?.doubleValue == 10,
+                  (source["childWritingMode"] as? String) == "VerticalRl",
+                  (source["parentWritingMode"] as? String) == "HorizontalTb",
+                  (source["textOrientation"] as? String) == "Mixed",
+                  let textSources = input["textSources"] as? [Any], textSources.isEmpty else {
+                return false
+            }
+        } else {
+            guard let natural = source["natural"] as? [String: Any],
+                  (natural["width"] as? NSNumber)?.doubleValue == 24,
+                  (natural["height"] as? NSNumber)?.doubleValue == 16,
+                  natural.keys.contains("aspectRatio"), natural["aspectRatio"] is NSNull else {
+                return false
+            }
+        }
+    }
+
+    return c114OrthogonalRowFramesMatch(
+        sceneID, diagnostics: diagnostics, expectedHeight: Double(expectedHeight)
+    ) && c114OrthogonalRowTraceMatches(sceneID, diagnostics: diagnostics)
+}
+
+private func c114OrthogonalRowFramesMatch(
+    _ sceneID: String, diagnostics: [String: Any], expectedHeight: Double
+) -> Bool {
+    let reversed = sceneID.hasSuffix("-reversed")
+    let textNode = reversed ? 3 : 2
+    let imageNode = reversed ? 2 : 4
+    guard let frames = diagnostics["gridItemFrames"] as? [[String: Any]],
+          frames.count == 2 else { return false }
+    var frameByNode: [Int: [String: Any]] = [:]
+    for frame in frames {
+        guard let node = frame["node"] as? Int,
+              frameByNode[node] == nil else { return false }
+        frameByNode[node] = frame
+    }
+    guard let text = frameByNode[textNode],
+          (text["x"] as? NSNumber)?.doubleValue == 0,
+          (text["y"] as? NSNumber)?.doubleValue == 0,
+          (text["width"] as? NSNumber)?.doubleValue == 50,
+          (text["height"] as? NSNumber)?.doubleValue == expectedHeight,
+          let image = frameByNode[imageNode],
+          (image["x"] as? NSNumber)?.doubleValue == 50,
+          (image["y"] as? NSNumber)?.doubleValue == 0,
+          (image["width"] as? NSNumber)?.doubleValue == 24,
+          (image["height"] as? NSNumber)?.doubleValue == 16 else { return false }
+    return true
+}
+
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
+        return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
+    }
     if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
         return c114ExpectedDirectMixedTextImageIntrinsicInputs(sceneID, report: report)
     }
@@ -1859,6 +1953,9 @@ private func c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
 }
 
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+    if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
+        return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
+    }
     if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
         return c114ExpectedDirectMixedTextImageIntrinsicInputs(sceneID, report: report)
     }
@@ -3002,9 +3099,111 @@ private func stageTrackShapeMatches(
     return nonGutterCount == expectedNonGutterTracks
 }
 
+private func c114OrthogonalRowTraceMatches(
+    _ sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    guard let height = c114OrthogonalRowHeight(sceneID),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          (passes[0]["axis"] as? String) == "Columns",
+          (passes[1]["axis"] as? String) == "Rows",
+          let columnSequence = passes[0]["sequence"] as? Int,
+          let rowSequence = passes[1]["sequence"] as? Int,
+          columnSequence < rowSequence else { return false }
+
+    for (index, pass) in passes.enumerated() {
+        let expectedTracks = index == 0 ? [50.0, 24.0] : [Double(height)]
+        let initialTracks = index == 0 ? [50.0, 24.0] : [0.0]
+        guard let stages = pass["stages"] as? [[String: Any]],
+              let initial = stages.first(where: { ($0["stage"] as? String) == "Initialize" }),
+              let final = stages.last,
+              stageTrackSizesMatch(
+                initial, expected: initialTracks, requireExactNonGutterTracks: true
+              ),
+              stageTrackSizesMatch(
+                final, expected: expectedTracks, requireExactNonGutterTracks: true
+              ),
+              stages.allSatisfy({ stageTrackShapeMatches(
+                $0, expectedNonGutterTracks: expectedTracks.count
+              ) }) else { return false }
+        if index == 1 && !stages.contains(where: {
+            ($0["stage"] as? String)
+                == "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }"
+        }) {
+            return false
+        }
+    }
+
+    let reversed = sceneID.hasSuffix("-reversed")
+    let textNode = reversed ? 3 : 2
+    let imageNode = reversed ? 2 : 4
+    let contributionKind = sceneID.contains("min-content") ? "MinContent" : "MaxContent"
+    guard let rowContributions = passes[1]["contributions"] as? [[String: Any]],
+          !rowContributions.isEmpty else {
+        return false
+    }
+    func isExpectedRowContribution(_ contribution: [String: Any]) -> Bool {
+        guard let item = contribution["item"] as? Int,
+              let kind = contribution["kind"] as? String,
+              let actual = contribution["value"] as? NSNumber else { return false }
+        let expectedValue: Double
+        if item == textNode, kind == "MinContent" {
+            expectedValue = 50
+        } else if item == textNode, kind == "MaxContent" {
+            expectedValue = 80
+        } else if item == imageNode, kind == "MinContent" || kind == "MaxContent" {
+            expectedValue = 16
+        } else {
+            return false
+        }
+        guard (contribution["span"] as? Int) == 1,
+              (contribution["crossesFlexibleTrack"] as? Bool) == false else {
+            return false
+        }
+        return abs(actual.doubleValue - expectedValue) <= 0.0001
+    }
+    guard rowContributions.allSatisfy(isExpectedRowContribution),
+          rowContributions.contains(where: {
+              ($0["item"] as? Int) == textNode
+                  && ($0["kind"] as? String) == contributionKind
+          }),
+          rowContributions.contains(where: {
+              ($0["item"] as? Int) == imageNode
+                  && ($0["kind"] as? String) == contributionKind
+          }) else {
+        return false
+    }
+
+    guard let measurements = diagnostics["intrinsicMeasurements"] as? [[String: Any]],
+          measurements.contains(where: { measurement in
+              guard (measurement["node"] as? Int) == textNode,
+                    let source = measurement["source"] as? [String: Any],
+                    (source["kind"] as? String) == "orthogonalText",
+                    (source["minContentInline"] as? NSNumber)?.doubleValue == 50,
+                    (source["maxContentInline"] as? NSNumber)?.doubleValue == 80,
+                    (source["minContentBlock"] as? NSNumber)?.doubleValue == 20,
+                    (source["maxContentBlock"] as? NSNumber)?.doubleValue == 10,
+                    (source["childWritingMode"] as? String) == "VerticalRl",
+                    (source["parentWritingMode"] as? String) == "HorizontalTb",
+                    (source["textOrientation"] as? String) == "Mixed",
+                    (source["fontRegistryRevision"] as? Int) == 1,
+                    let contentSize = measurement["contentSize"] as? [String: Any] else {
+                  return false
+              }
+              return (contentSize["height"] as? NSNumber)?.doubleValue == Double(height)
+          }) else { return false }
+    return true
+}
+
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
+    if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
+        return c114OrthogonalRowTraceMatches(sceneID, diagnostics: diagnostics)
+    }
     if c114DirectMixedTextImageIntrinsicSceneIDs.contains(sceneID) {
         return c114DirectMixedTextImageTraceMatches(sceneID, diagnostics: diagnostics)
     }
@@ -3293,7 +3492,33 @@ private func c114ImageTrackPassMatches(
     }
 }
 
+private func c114OrthogonalRowHeight(_ sceneID: String) -> Int? {
+    guard c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) else { return nil }
+    return sceneID.contains("min-content") ? 50 : 80
+}
+
+private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {
+    guard let height = c114OrthogonalRowHeight(sceneID) else { return nil }
+    let reversed = sceneID.hasSuffix("-reversed")
+    let textNode = reversed ? 3 : 2
+    let imageNode = reversed ? 2 : 4
+    let childFrames = reversed
+        ? [
+            "1:node=\(imageNode),x=50,y=0,width=24,height=16",
+            "2:node=\(textNode),x=0,y=0,width=50,height=\(height)",
+        ]
+        : [
+            "1:node=\(textNode),x=0,y=0,width=50,height=\(height)",
+            "2:node=\(imageNode),x=50,y=0,width=24,height=16",
+        ]
+    return "node_frames_css_px=[0:node=1,x=0,y=0,width=74,height=\(height);"
+        + childFrames.joined(separator: ";") + "]"
+}
+
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let orthogonalFrames = c114OrthogonalRowNodeFrames(sceneID) {
+        return orthogonalFrames
+    }
     if sceneID == "cyclic-max-content-auto-fill" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
@@ -4843,6 +5068,7 @@ private func c114GapNodeFrames(
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "cyclic-max-content-auto-fill"
         || sceneID == "definite-40px-auto-fill-control" { return 2 }
+    if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) { return 3 }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return fixedAutoArea.items.count + 1
     }

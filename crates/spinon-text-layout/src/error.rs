@@ -35,6 +35,7 @@ pub enum TextLayoutError {
     },
     RasterAllocationFailed(NodeId),
     InvalidGlyphLayout(NodeId),
+    UnsupportedVerticalIntrinsicProfile(NodeId),
     MissingGlyphCoverage {
         paragraph: NodeId,
         text_range: Range<usize>,
@@ -131,6 +132,10 @@ impl fmt::Display for TextLayoutError {
                     "paragraph {node}의 shaping glyph, font metrics 또는 line geometry가 유효하지 않습니다"
                 )
             }
+            Self::UnsupportedVerticalIntrinsicProfile(node) => write!(
+                formatter,
+                "paragraph {node}의 vertical intrinsic 입력이 고정 Ahem profile과 일치하지 않습니다"
+            ),
             Self::MissingGlyphCoverage {
                 paragraph,
                 text_range,

@@ -3,7 +3,7 @@ use std::sync::Arc;
 
 use spinon_core::{
     DocumentGeneration, DocumentRevision, EnvironmentRevision, NodeId, RenderTreeRevision,
-    StyleRevision,
+    StyleRevision, TextOrientation, WritingMode,
 };
 
 use crate::{ComputedBackgroundPaint, ComputedCssColor, CssParseDiagnostic, OpaqueCssSrgb};
@@ -583,7 +583,21 @@ pub struct ComputedStyleSnapshot {
     /// Stylo document root의 computed font-size CSS px입니다. synthetic HTML root도 포함합니다.
     pub document_root_font_size_css_px: f32,
     pub elements: Arc<[ComputedElementStyle]>,
+    /// C11.4 track-sizing profile에서 source node와 함께 보존한 typed writing 값입니다.
+    /// 다른 profile에서는 비어 있습니다.
+    pub writing_styles: Arc<[(NodeId, WritingMode, TextOrientation)]>,
     pub diagnostics: Vec<CascadeDiagnostic>,
+}
+
+impl ComputedStyleSnapshot {
+    /// 지정한 node의 C11.4 typed writing 값을 반환합니다.
+    pub fn writing_style_for(&self, node_id: NodeId) -> Option<(WritingMode, TextOrientation)> {
+        self.writing_styles
+            .iter()
+            .find_map(|(source_node, mode, orientation)| {
+                (*source_node == node_id).then_some((*mode, *orientation))
+            })
+    }
 }
 
 /// computed-style snapshot을 만든 whitelist profile입니다.

@@ -44,6 +44,10 @@ mod nested_grid_rows;
 #[path = "c11_grid_tests/nested_grid_implicit_rows.rs"]
 mod nested_grid_implicit_rows;
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/orthogonal_rows.rs"]
+mod orthogonal_rows;
+
 #[path = "c11_grid_tests/cyclic_percentage_auto_repeat.rs"]
 mod cyclic_percentage_auto_repeat;
 
