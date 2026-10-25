@@ -5,7 +5,7 @@
 **선행:** C13.1 typed overflow/clip · C13.2 immutable scroll owner·scrollport·offset snapshot은 hard precondition · C13.3 shared snapshot consumer integration regression (C13.3 전체 완료는 요구하지 않음)
 **계약 초안:** [내부 계약 0083](../spec/internal/0083-c13-4-scrollbar-gutter.md)
 **Chrome 관찰:** [2026-10-26 비교와 실행 범위](../spec/internal/evidence/c13-4-scrollbar-precomparison-2026-10-26/README.md)
-**Simulator 관찰 시도:** [Android first-run 차단 및 iOS 미실행](../spec/internal/evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · mode 미관찰
+**Simulator 관찰:** [iOS Safari zero-gutter geometry와 Android Chrome first-run blocker](../spec/internal/evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · iOS UI mode 직접 관찰과 Android 결과 미확인
 **계획 실패 관점 검토:** [20개 검토](../spec/internal/evidence/c13-4-scrollbar-plan-review-20-2026-10-26.md)
 
 ## 목표와 중단 조건

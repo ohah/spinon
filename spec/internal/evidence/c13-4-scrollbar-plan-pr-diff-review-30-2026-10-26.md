@@ -1,6 +1,6 @@
 # C13.4 scrollbar 계획 PR 변경 실패 관점 검토 30개 · 2026-10-26
 
-**대상 변경:** C13.4 첫 계획, 내부 계약 draft 0083, 내부 명세 index와 C13 단계 링크, Chrome 156 관찰, Simulator first-run blocker 및 계획/PR review 기록
+**대상 변경:** C13.4 첫 계획, 내부 계약 draft 0083, 내부 명세 index와 C13 단계 링크, Chrome 156 관찰, iOS Safari geometry / Android first-run blocker 및 계획/PR review 기록
 **범위:** 계획·계약·근거 문서만 변경했다. Rust 구현 코드는 포함하지 않는다.
 
 | # | PR 변경에서 확인한 실패 경로 | 검토 결과 |
@@ -13,12 +13,12 @@
 | 6 | 미완성 계획을 지원 계약으로 취급 | 0083 상태를 `0.1.0-draft`, 제품 지원 선언 아님으로 표시한다. |
 | 7 | CSS Overflow 원본을 wrong draft로 인용 | 고정 2025-10-07 WD §4.2 anchor를 명시했다. |
 | 8 | stable이 scrollbar 자체를 표시한다고 해석 | gutter와 scrollbar visibility가 별개라는 규칙을 기록했다. |
-| 9 | overlay scrollbar가 gutter를 소비한다고 계획 | overlay geometry는 0이며 시뮬레이터로 확인하도록 gate를 둔다. |
+| 9 | overlay scrollbar가 gutter를 소비한다고 계획 또는 iOS no-gutter geometry를 direct UI-mode proof로 과장 | Safari CSS geometry는 `auto`/`stable`/`both-edges` exact equality지만 transient indicator는 캡처되지 않았다고 제한했다. |
 | 10 | classic UA 폭을 상수로 가정 | used width는 platform/browser 환경 값으로 둔다. |
 | 11 | Chrome 156 결과를 repository pinned 155와 합침 | 156 관찰은 버전별 보조 자료이고 pinned 155 결과가 아니라고 제한했다. |
 | 12 | `155.0.8059.85`를 `155.0.8059.40`과 동일시 | exact patch mismatch와 설치 framework 목록을 분리해 썼다. |
 | 13 | screenshot에서 native bars가 숨겨진데 visible이라 기술 | browser run에 `--hide-scrollbars false`가 있고 screenshot에 tracks가 보인다. |
-| 14 | screenshot과 입력 fixture provenance mismatch | structured JSON의 input/screenshot SHA-256을 현재 파일과 대조했다. |
+| 14 | screenshot과 입력 fixture provenance mismatch 또는 Simulator DOM metric 해석을 재현할 수 없음 | Chrome input/screenshot hash와 iOS fixture/result screenshot hashes를 구조화 결과에 고정했다. |
 | 15 | scrollport의 outer border-box가 변함 | border-box를 고정하고 client/scrollport 내부만 영향받는다고 명시한다. |
 | 16 | `stable both-edges`가 첫 gutter만 예약 | 반대 inline edge에도 같은 폭을 두는 표본을 포함한다. |
 | 17 | `overflow:auto` 확장을 간단히 추가해 min-size 회귀 | 현재 Taffy mapping 위험을 기록하고 첫 slice에서 auto를 제외한다. |
@@ -34,6 +34,6 @@
 | 27 | scrollbar width/color, thumb drag가 은근히 완료됨 | 해당 기능은 범위 밖이며 구현 code도 없다. |
 | 28 | overlay UI가 안 보여도 custom scrollbar를 만들어 pass | 실제 AVD/iOS 표시 gate를 통과하기 전 구현하지 않는다고 명시했다. |
 | 29 | Rust 12/12 기존 테스트를 C13.4 구현 통과로 보고 | 명령은 C13.2 baseline이며 gutter 동작은 시험하지 않았다고 기록했다. |
-| 30 | plan-only PR에 implementation review/test/platform proof가 완료된 것처럼 표시하거나 Chrome first-run을 Simulator proof로 오해 | plan review 20과 PR diff 30만 기록한다. Android first-run blocker와 iOS 미실행은 별도 증거로 남기며 implementation review와 mode validation은 pending이다. |
+| 30 | plan-only PR에 implementation review/test/platform proof가 완료된 것처럼 표시하거나 Safari geometry를 Spinon implementation으로 오해 | plan review 20과 PR diff 30만 기록한다. Android first-run blocker, iOS Safari-only geometry 및 미관찰 transient mode를 분리하며 implementation review와 product validation은 pending이다. |
 
-**결론:** 이 PR의 문서 상태와 근거 경계는 일관된다. 새 runtime behavior를 주장하지 않는다. 현재 Android/iOS mode는 아직 확인되지 않았다. 이후 overlay가 확인되면 user-visible classic gutter 구현을 추가하지 않고 no-gutter geometry 결론만 남긴다.
+**결론:** 이 PR의 문서 상태와 근거 경계는 일관된다. 새 runtime behavior를 주장하지 않는다. iOS Safari의 zero-gutter geometry는 Spinon 구현 동작이나 transient UI mode 증거가 아니며 Android는 first-run에서 막혀 있다. 추가 platform evidence 전에는 구현하지 않는다.

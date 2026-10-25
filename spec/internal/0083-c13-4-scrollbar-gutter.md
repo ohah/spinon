@@ -4,7 +4,7 @@
 - **제품 CSS 지원 선언:** 아님
 - **계획:** [C13.4 첫 조각 · stable gutter](../../plan/c13-4-scrollbar-gutter.md)
 - **비교 기준:** [Chrome 관찰과 범위 제한](evidence/c13-4-scrollbar-precomparison-2026-10-26/README.md)
-- **Simulator 관찰 시도:** [Android Chrome first-run 차단 / iOS 미실행](evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · scrollbar mode 미관찰
+- **Simulator 관찰:** [iOS Safari zero-gutter geometry, Android Chrome first-run 차단](evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · iOS transient UI mode 직접 미관찰, Android 미확인
 
 ## 계약 목표
 
