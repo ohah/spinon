@@ -1,0 +1,169 @@
+{
+  "pass": "pass08",
+  "checked_replacement_targets": 27,
+  "all_replacements_closed": true,
+  "targets": [
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "public/roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/plan-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-cyclic-percentage-auto-repeat.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-orthogonal-row-intrinsic-contribution.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    }
+  ]
+}
