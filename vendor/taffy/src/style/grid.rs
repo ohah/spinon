@@ -279,6 +279,13 @@ pub trait GridContainerStyle: CoreStyle {
         false
     }
 
+    /// Whether this container opts into the fixed C11.4 cyclic-percentage fixture behavior.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    #[inline(always)]
+    fn cyclic_percentage_auto_repeat_fixture_enabled(&self) -> bool {
+        false
+    }
+
     /// Get a grid item's row or column placement depending on the axis passed
     #[inline(always)]
     fn grid_template_tracks(&self, axis: AbsoluteAxis) -> Option<Self::TemplateTrackList<'_>> {

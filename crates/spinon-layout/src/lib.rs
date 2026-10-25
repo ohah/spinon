@@ -40,6 +40,8 @@ pub const MAX_LAYOUT_TREE_DEPTH: usize = 1_024;
 
 pub use css_math::{LayoutCalcId, LayoutCssMath, LayoutCssMathProperty, LayoutCssMathValue};
 pub use error::LayoutError;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use grid::LayoutGridTrackSizingFixturePhase;
 pub use grid::{
     GRID_MAX_TRACKS, GridAutoColumns, GridAutoFlow, GridAutoRepeat, GridAutoRepeatMode,
     GridAutoRows, GridAutoTrackSize, GridContainerInput, GridPlacementMode, GridTemplateAreaInput,

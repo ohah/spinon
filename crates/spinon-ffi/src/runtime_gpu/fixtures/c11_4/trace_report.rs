@@ -221,6 +221,9 @@ fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
             serde_json::json!({
                 "sequence": pass.sequence,
                 "axis": format!("{:?}", pass.axis),
+                "phase": pass.fixture_phase.map(|phase| format!("{:?}", phase)),
+                "autoRepeatCount": pass.fixture_auto_repeat_count,
+                "percentageBasis": pass.fixture_percentage_basis,
                 "stages": stages,
                 "contributions": contributions,
             })
@@ -235,14 +238,18 @@ fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
 #[cfg(test)]
 mod tests {
     use super::{grid_track_sizing_trace_report, track_trace_json};
-    use spinon_core::{NodeId, StyleRevision};
+    use spinon_core::{EnvironmentRevision, NodeId, Revision, StyleRevision};
     use spinon_layout::{
         LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
-        LayoutGridTrackSizingContributionTrace, LayoutGridTrackSizingPassTrace,
-        LayoutGridTrackSizingStageKind, LayoutGridTrackSizingStageTrace,
-        LayoutGridTrackSizingTrace, LayoutGridTrackSizingTrackState,
+        LayoutGridTrackSizingContributionTrace, LayoutGridTrackSizingFixturePhase,
+        LayoutGridTrackSizingPassTrace, LayoutGridTrackSizingStageKind,
+        LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace,
+        LayoutGridTrackSizingTrackState, LayoutInputRevision, LayoutSourceRevision,
     };
-    use spinon_runtime::{RuntimeLayoutCompleted, RuntimeUaCascadeKey};
+    use spinon_runtime::{
+        RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted, RuntimeUaCascadeKey,
+    };
+    use std::sync::Arc;
 
     #[test]
     fn reports_stage_track_state_and_item_contribution_values() {
@@ -270,12 +277,18 @@ mod tests {
                     value: 16.0,
                     minimum_source: None,
                 }],
+                fixture_phase: Some(LayoutGridTrackSizingFixturePhase::FinalDefinite),
+                fixture_auto_repeat_count: Some(2),
+                fixture_percentage_basis: Some(24.0),
             }],
         };
 
         let json = track_trace_json(&trace);
         assert_eq!(json["grid"], 7);
         assert_eq!(json["passes"][0]["axis"], "Columns");
+        assert_eq!(json["passes"][0]["phase"], "FinalDefinite");
+        assert_eq!(json["passes"][0]["autoRepeatCount"], 2);
+        assert_eq!(json["passes"][0]["percentageBasis"], 24.0);
         assert_eq!(json["passes"][0]["stages"][0]["stage"], "Initialize");
         assert_eq!(
             json["passes"][0]["stages"][0]["tracks"][0]["baseSize"],
@@ -306,10 +319,47 @@ mod tests {
             grid_track_sizing_diagnostics: None,
         };
 
-        assert!(
-            grid_track_sizing_trace_report(&completed)
-                .unwrap_err()
-                .contains("diagnostic snapshot")
+        assert_eq!(
+            grid_track_sizing_trace_report(&completed).unwrap_err(),
+            "C11.4 layout diagnostic snapshot이 없습니다"
+        );
+    }
+
+    #[test]
+    fn rejects_grid_track_sizing_diagnostics_from_a_different_runtime_revision() {
+        let diagnostics = RuntimeGridTrackSizingDiagnostics {
+            revision: LayoutInputRevision::new(
+                LayoutSourceRevision::Tree(Revision::default()),
+                StyleRevision::INITIAL,
+                EnvironmentRevision::INITIAL,
+            ),
+            intrinsic_measurements: Arc::from([]),
+            item_inputs: Arc::from([]),
+            item_frames: Arc::from([]),
+            traces: vec![LayoutGridTrackSizingTrace {
+                node: NodeId::new(7).unwrap(),
+                passes: Vec::new(),
+            }]
+            .into(),
+        };
+        let completed = RuntimeLayoutCompleted {
+            key: RuntimeUaCascadeKey {
+                generation: 1,
+                document_revision: 2,
+                render_tree_revision: 2,
+                style_revision: StyleRevision::INITIAL,
+                environment_revision: 0,
+            },
+            frames: Vec::new().into(),
+            render_snapshot: None,
+            projection_duration_us: 0,
+            cache_hit: false,
+            grid_track_sizing_diagnostics: Some(Arc::new(diagnostics)),
+        };
+
+        assert_eq!(
+            grid_track_sizing_trace_report(&completed).unwrap_err(),
+            "C11.4 trace revision이 완료된 runtime key와 다릅니다"
         );
     }
 }

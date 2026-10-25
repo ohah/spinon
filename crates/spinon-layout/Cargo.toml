@@ -5,7 +5,7 @@ edition = "2024"
 publish = false
 
 [features]
-c11-4-grid-track-sizing-fixture-test = []
+c11-4-grid-track-sizing-fixture-test = ["taffy/c11-4-grid-track-sizing-fixture-test"]
 
 [dependencies]
 spinon-core = { path = "../spinon-core" }

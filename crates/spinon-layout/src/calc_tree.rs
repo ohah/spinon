@@ -286,6 +286,15 @@ impl CalcLayoutTree {
                         .get(&external_id)
                         .map(Vec::as_slice),
                     item: normalized_grid.item_placements.get(&external_id),
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_cyclic_percentage_auto_repeat: input
+                        .grid_containers
+                        .get(&external_id)
+                        .is_some_and(|container| {
+                            crate::grid::fixture_cyclic_percentage_auto_repeat_target(
+                                input, source, container,
+                            )
+                        }),
                 },
             )?;
             let order = u32::try_from(position).map_err(|_| LayoutError::TooManyNodes)?;
@@ -314,6 +323,8 @@ impl CalcLayoutTree {
                     expanded_rows: None,
                     expanded_columns: None,
                     item: None,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_cyclic_percentage_auto_repeat: false,
                 },
             )?;
             if usize::from(engine_id) != nodes.len() {
@@ -577,6 +588,19 @@ impl CalcLayoutTree {
                     },
                     stages,
                     contributions,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_phase: pass.fixture_phase.map(|phase| match phase {
+                        taffy::compute::detailed_info::GridTrackSizingFixturePhase::IntrinsicMaxContent => {
+                            crate::LayoutGridTrackSizingFixturePhase::IntrinsicMaxContent
+                        }
+                        taffy::compute::detailed_info::GridTrackSizingFixturePhase::FinalDefinite => {
+                            crate::LayoutGridTrackSizingFixturePhase::FinalDefinite
+                        }
+                    }),
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_auto_repeat_count: pass.fixture_auto_repeat_count,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_percentage_basis: pass.fixture_percentage_basis,
                 });
             }
             traces.push(crate::LayoutGridTrackSizingTrace {

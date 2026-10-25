@@ -44,6 +44,9 @@ mod nested_grid_rows;
 #[path = "c11_grid_tests/nested_grid_implicit_rows.rs"]
 mod nested_grid_implicit_rows;
 
+#[path = "c11_grid_tests/cyclic_percentage_auto_repeat.rs"]
+mod cyclic_percentage_auto_repeat;
+
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]
 fn c114_min_content_text_contributes_measured_intrinsic_sizes_to_grid_layout() {

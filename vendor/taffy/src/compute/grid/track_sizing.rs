@@ -355,15 +355,15 @@ pub(super) fn track_sizing_algorithm<Tree: LayoutPartialTree>(
     get_track_size_estimate: fn(&GridTrack, Option<f32>, &Tree) -> Option<f32>,
     has_baseline_aligned_item: bool,
     preserve_existing_base_sizes: bool,
+    fixture_trace_context: super::GridTrackSizingPassContextOption,
     mut trace: Option<&mut GridTrackSizingTrace>,
 ) {
-    if let Some(trace) = trace.as_deref_mut() {
-        trace.begin_pass(axis);
-    }
-
     // 11.4 Initialise Track sizes
     // Initialize each track’s base size and growth limit.
     let percentage_basis = inner_node_size.get(axis).or(axis_min_size);
+    if let Some(trace) = trace.as_deref_mut() {
+        trace.begin_pass(axis, fixture_trace_context, percentage_basis);
+    }
     let axis_inner_node_size = inner_node_size.get(axis);
     initialize_track_sizes(
         tree,

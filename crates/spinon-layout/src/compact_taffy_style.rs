@@ -75,6 +75,8 @@ pub(super) struct CompactTaffyStyle {
     grid_auto_columns: Vec<TrackSizingFunction>,
     grid_auto_flow: GridAutoFlow,
     track_sizing_trace_enabled: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    fixture_cyclic_percentage_auto_repeat_enabled: bool,
     grid_row: Line<GridPlacement<String>>,
     grid_column: Line<GridPlacement<String>>,
 }
@@ -94,6 +96,11 @@ impl CompactTaffyStyle {
 
     pub(super) fn set_track_sizing_trace_enabled(&mut self, enabled: bool) {
         self.track_sizing_trace_enabled = enabled;
+    }
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) fn set_fixture_cyclic_percentage_auto_repeat_enabled(&mut self, enabled: bool) {
+        self.fixture_cyclic_percentage_auto_repeat_enabled = enabled;
     }
 
     pub(super) fn set_grid_template_areas(
@@ -186,6 +193,8 @@ impl From<taffy::Style> for CompactTaffyStyle {
             grid_auto_columns: style.grid_auto_columns,
             grid_auto_flow: style.grid_auto_flow,
             track_sizing_trace_enabled: false,
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            fixture_cyclic_percentage_auto_repeat_enabled: false,
             grid_row: Line {
                 start: GridPlacement::Auto,
                 end: GridPlacement::Auto,
@@ -431,6 +440,11 @@ impl GridContainerStyle for CompactTaffyStyle {
 
     fn track_sizing_trace_enabled(&self) -> bool {
         self.track_sizing_trace_enabled
+    }
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    fn cyclic_percentage_auto_repeat_fixture_enabled(&self) -> bool {
+        self.fixture_cyclic_percentage_auto_repeat_enabled
     }
 }
 
