@@ -3,7 +3,7 @@ use spinon_layout::LayoutSourceRevision;
 use spinon_layout::{
     LayoutGridItemIntrinsicSource, LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource,
 };
-use spinon_runtime::RuntimeLayoutCompleted;
+use spinon_runtime::{RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted};
 
 pub(crate) fn grid_track_sizing_trace_report(
     completed: &RuntimeLayoutCompleted,
@@ -45,6 +45,7 @@ pub(crate) fn grid_track_sizing_trace_report(
     {
         return Err("C11.4 intrinsic input revision이 trace revision과 다릅니다".to_owned());
     }
+    validate_orthogonal_registry_identity(diagnostics)?;
     let item_frame_by_node = diagnostics
         .item_frames
         .iter()
@@ -64,7 +65,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         .intrinsic_measurements
         .iter()
         .map(|measurement| {
-            let source = match measurement.source {
+            let source = match &measurement.source {
                 LayoutIntrinsicMeasurementSource::Text {
                     font_registry_revision,
                 } => serde_json::json!({
@@ -78,14 +79,15 @@ pub(crate) fn grid_track_sizing_trace_report(
                     parent_writing_mode,
                     text_orientation,
                     font_registry_revision,
+                    font_registry_identity: _,
                 } => orthogonal_text_source_json(OrthogonalTextSourceFields {
                     min_content_inline: min_content.inline_px,
                     min_content_block: min_content.block_px,
                     max_content_inline: max_content.inline_px,
                     max_content_block: max_content.block_px,
-                    child_writing_mode,
-                    parent_writing_mode,
-                    text_orientation,
+                    child_writing_mode: *child_writing_mode,
+                    parent_writing_mode: *parent_writing_mode,
+                    text_orientation: *text_orientation,
                     font_registry_revision: font_registry_revision.0,
                 }),
                 LayoutIntrinsicMeasurementSource::Replaced { natural } => {
@@ -138,6 +140,7 @@ pub(crate) fn grid_track_sizing_trace_report(
                     parent_writing_mode,
                     text_orientation,
                     font_registry_revision,
+                    font_registry_identity: _,
                 } => orthogonal_text_source_json(OrthogonalTextSourceFields {
                     min_content_inline: min_content.inline_px,
                     min_content_block: min_content.block_px,
@@ -206,6 +209,91 @@ pub(crate) fn grid_track_sizing_trace_report(
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+}
+
+fn validate_orthogonal_registry_identity(
+    diagnostics: &RuntimeGridTrackSizingDiagnostics,
+) -> Result<(), String> {
+    let first_registry_identity =
+        diagnostics
+            .intrinsic_measurements
+            .iter()
+            .find_map(|measurement| match &measurement.source {
+                LayoutIntrinsicMeasurementSource::OrthogonalText {
+                    font_registry_identity,
+                    ..
+                } => Some(font_registry_identity),
+                _ => None,
+            });
+    for measurement in diagnostics.intrinsic_measurements.iter() {
+        let LayoutIntrinsicMeasurementSource::OrthogonalText {
+            min_content,
+            max_content,
+            child_writing_mode,
+            parent_writing_mode,
+            text_orientation,
+            font_registry_revision,
+            font_registry_identity,
+        } = &measurement.source
+        else {
+            continue;
+        };
+        if font_registry_identity.paragraph() != measurement.node
+            || font_registry_identity.font_registry_revision() != *font_registry_revision
+            || font_registry_identity.writing_mode() != *child_writing_mode
+            || font_registry_identity.text_orientation() != *text_orientation
+            || font_registry_identity.min_content() != *min_content
+            || font_registry_identity.max_content() != *max_content
+            || *parent_writing_mode != WritingMode::HorizontalTb
+        {
+            return Err(
+                "C11.4 orthogonal measure의 논리 입력과 font registry identity가 다릅니다"
+                    .to_owned(),
+            );
+        }
+        if first_registry_identity.is_some_and(|identity| {
+            !identity.uses_same_font_registry_revision(font_registry_identity)
+        }) {
+            return Err(
+                "C11.4 orthogonal measure가 서로 다른 font registry token을 사용합니다".to_owned(),
+            );
+        }
+        let item = diagnostics
+            .item_inputs
+            .iter()
+            .find(|item| item.node == measurement.node)
+            .ok_or_else(|| {
+                "C11.4 orthogonal measure에 대응하는 item input이 없습니다".to_owned()
+            })?;
+        let LayoutGridItemIntrinsicSource::OrthogonalText {
+            font_registry_identity: item_identity,
+            ..
+        } = &item.source
+        else {
+            return Err("C11.4 orthogonal measure의 item source가 text가 아닙니다".to_owned());
+        };
+        if !font_registry_identity.uses_same_font_registry_revision(item_identity) {
+            return Err(
+                "C11.4 orthogonal measure와 item input의 font registry token이 다릅니다".to_owned(),
+            );
+        }
+        let contribution = item
+            .contribution_input()
+            .map_err(|error| format!("C11.4 orthogonal contribution input 오류: {error}"))?;
+        let LayoutGridItemIntrinsicSource::OrthogonalText {
+            font_registry_identity: contribution_identity,
+            ..
+        } = &contribution.source
+        else {
+            return Err("C11.4 orthogonal contribution source가 text가 아닙니다".to_owned());
+        };
+        if !font_registry_identity.uses_same_font_registry_revision(contribution_identity) {
+            return Err(
+                "C11.4 orthogonal contribution에서 font registry token이 바뀌었습니다".to_owned(),
+            );
+        }
+    }
+    Ok(())
 }
 
 struct OrthogonalTextSourceFields {
@@ -305,16 +393,24 @@ mod tests {
         EnvironmentRevision, NodeId, Revision, StyleRevision, TextOrientation, WritingMode,
     };
     use spinon_layout::{
+        FontStyleMode, LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
         LayoutGridTrackSizingAxis, LayoutGridTrackSizingContributionKind,
         LayoutGridTrackSizingContributionTrace, LayoutGridTrackSizingFixturePhase,
         LayoutGridTrackSizingPassTrace, LayoutGridTrackSizingStageKind,
         LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace,
-        LayoutGridTrackSizingTrackState, LayoutInputRevision, LayoutSourceRevision,
+        LayoutGridTrackSizingTrackState, LayoutInputRevision, LayoutIntrinsicMeasureAvailableSpace,
+        LayoutIntrinsicMeasureKnownDimensions, LayoutIntrinsicMeasureParentSize,
+        LayoutIntrinsicMeasureSize, LayoutIntrinsicMeasureSpace, LayoutIntrinsicMeasurement,
+        LayoutIntrinsicMeasurementSource, LayoutSourceRevision, LayoutStyle, LigatureMode,
+        LineBreakMode, ParagraphInput, ParagraphStyle, TextIntrinsicLogicalSizes, TextLayoutEngine,
+        TextParagraphDirection, TextSource, WhiteSpaceMode, WordBreakMode,
     };
     use spinon_runtime::{
         RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted, RuntimeUaCascadeKey,
     };
     use std::sync::Arc;
+
+    const AHEM: &[u8] = include_bytes!("../../../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
     #[test]
     fn reports_orthogonal_text_logical_intrinsics_and_writing_styles() {
@@ -338,6 +434,115 @@ mod tests {
         assert_eq!(source["parentWritingMode"], "HorizontalTb");
         assert_eq!(source["textOrientation"], "Mixed");
         assert_eq!(source["fontRegistryRevision"], 7);
+        assert!(source.get("fontRegistryIdentity").is_none());
+    }
+
+    #[test]
+    fn rejects_equal_revision_but_different_orthogonal_registry_tokens() {
+        let node = NodeId::new(2).unwrap();
+        let primary = orthogonal_text_identity(node);
+        let independent = orthogonal_text_identity(node);
+        assert_eq!(
+            primary.font_registry_revision(),
+            independent.font_registry_revision()
+        );
+        assert!(!primary.uses_same_font_registry_revision(&independent));
+
+        let diagnostics = |item_identity: &TextIntrinsicLogicalSizes| {
+            let revision = LayoutInputRevision::default();
+            let item_input = LayoutGridItemIntrinsicInput {
+                grid_container: NodeId::new(1).unwrap(),
+                node,
+                source_order: 0,
+                revision,
+                source: orthogonal_item_source(item_identity),
+                text_sources: Vec::new(),
+                item_style: LayoutStyle::default(),
+            };
+            let measurement = LayoutIntrinsicMeasurement {
+                node,
+                revision,
+                source: orthogonal_measurement_source(&primary),
+                item_style: LayoutStyle::default(),
+                available_space: LayoutIntrinsicMeasureAvailableSpace {
+                    width: LayoutIntrinsicMeasureSpace::Definite(50.0),
+                    height: LayoutIntrinsicMeasureSpace::MinContent,
+                },
+                known_dimensions: LayoutIntrinsicMeasureKnownDimensions::default(),
+                parent_size: LayoutIntrinsicMeasureParentSize::default(),
+                content_size: LayoutIntrinsicMeasureSize::default(),
+            };
+            RuntimeGridTrackSizingDiagnostics {
+                revision,
+                intrinsic_measurements: vec![measurement].into(),
+                item_inputs: vec![item_input].into(),
+                item_frames: Arc::from([]),
+                traces: Arc::from([]),
+            }
+        };
+
+        assert!(super::validate_orthogonal_registry_identity(&diagnostics(&primary)).is_ok());
+        assert!(super::validate_orthogonal_registry_identity(&diagnostics(&independent)).is_err());
+    }
+
+    fn orthogonal_text_identity(node: NodeId) -> TextIntrinsicLogicalSizes {
+        let mut engine = TextLayoutEngine::new_without_system_fonts();
+        engine.register_font("Ahem", AHEM).unwrap();
+        engine
+            .intrinsic_logical_sizes(&ParagraphInput {
+                node,
+                sources: vec![TextSource {
+                    node: NodeId::new(3).unwrap(),
+                    inline_ancestors: Vec::new(),
+                    text: "AB CDE F".to_owned(),
+                }],
+                style: ParagraphStyle {
+                    writing_mode: WritingMode::VerticalRl,
+                    text_orientation: TextOrientation::Mixed,
+                    font_family: "Ahem".to_owned(),
+                    font_size: 10.0,
+                    line_height: 10.0,
+                    font_weight: 400.0,
+                    font_style: FontStyleMode::Normal,
+                    white_space: WhiteSpaceMode::Normal,
+                    word_break: WordBreakMode::Normal,
+                    direction: TextParagraphDirection::Ltr,
+                    line_break: LineBreakMode::Normal,
+                    ligatures: LigatureMode::Normal,
+                    ..ParagraphStyle::default()
+                },
+                inline_styles: Default::default(),
+                inline_run_styles: Default::default(),
+            })
+            .unwrap()
+    }
+
+    fn orthogonal_item_source(
+        identity: &TextIntrinsicLogicalSizes,
+    ) -> LayoutGridItemIntrinsicSource {
+        LayoutGridItemIntrinsicSource::OrthogonalText {
+            min_content: identity.min_content(),
+            max_content: identity.max_content(),
+            child_writing_mode: identity.writing_mode(),
+            parent_writing_mode: WritingMode::HorizontalTb,
+            text_orientation: identity.text_orientation(),
+            font_registry_revision: identity.font_registry_revision(),
+            font_registry_identity: identity.clone(),
+        }
+    }
+
+    fn orthogonal_measurement_source(
+        identity: &TextIntrinsicLogicalSizes,
+    ) -> LayoutIntrinsicMeasurementSource {
+        LayoutIntrinsicMeasurementSource::OrthogonalText {
+            min_content: identity.min_content(),
+            max_content: identity.max_content(),
+            child_writing_mode: identity.writing_mode(),
+            parent_writing_mode: WritingMode::HorizontalTb,
+            text_orientation: identity.text_orientation(),
+            font_registry_revision: identity.font_registry_revision(),
+            font_registry_identity: identity.clone(),
+        }
     }
 
     #[test]

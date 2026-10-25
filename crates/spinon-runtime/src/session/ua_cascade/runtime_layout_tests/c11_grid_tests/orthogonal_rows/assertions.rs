@@ -99,12 +99,13 @@ pub(super) fn assert_runtime_scene(scene: Scene) {
         parent_writing_mode,
         text_orientation,
         font_registry_revision,
+        font_registry_identity,
     } = &text_input.source
     else {
         panic!("{}: expected orthogonal text source", scene.id);
     };
-    assert_logical_size(*min_content, (50.0, 20.0), scene);
-    assert_logical_size(*max_content, (80.0, 10.0), scene);
+    assert_logical_size(*min_content, scene.min_logical(), scene);
+    assert_logical_size(*max_content, scene.max_logical(), scene);
     assert_eq!(*child_writing_mode, WritingMode::VerticalRl, "{}", scene.id);
     assert_eq!(
         *parent_writing_mode,
@@ -118,13 +119,19 @@ pub(super) fn assert_runtime_scene(scene: Scene) {
         "{}: unexpected font registry revision in item source: {:#?}",
         scene.id, text_input.source
     );
+    assert_eq!(
+        font_registry_identity.font_registry_revision(),
+        *font_registry_revision,
+        "{}: item identity/revision mismatch",
+        scene.id
+    );
     let physical = text_input
         .contribution_input()
         .unwrap_or_else(|error| panic!("{}: contribution input: {error:?}", scene.id));
-    assert_optional_near(physical.width.min_content, 20.0, scene);
-    assert_optional_near(physical.width.max_content, 10.0, scene);
-    assert_optional_near(physical.height.min_content, 50.0, scene);
-    assert_optional_near(physical.height.max_content, 80.0, scene);
+    assert_optional_near(physical.width.min_content, scene.min_logical().1, scene);
+    assert_optional_near(physical.width.max_content, scene.max_logical().1, scene);
+    assert_optional_near(physical.height.min_content, scene.min_logical().0, scene);
+    assert_optional_near(physical.height.max_content, scene.max_logical().0, scene);
 
     let image_input = diagnostics
         .item_inputs
@@ -150,7 +157,7 @@ pub(super) fn assert_runtime_scene(scene: Scene) {
         .iter()
         .filter(|measurement| {
             matches!(
-                measurement.source,
+                &measurement.source,
                 LayoutIntrinsicMeasurementSource::OrthogonalText { .. }
             )
         })
@@ -162,9 +169,11 @@ pub(super) fn assert_runtime_scene(scene: Scene) {
     );
     assert!(
         orthogonal_measurements.iter().all(|measurement| {
+            let expected_min = scene.min_logical();
+            let expected_max = scene.max_logical();
             measurement.revision == diagnostics.revision
                 && matches!(
-                    measurement.source,
+                    &measurement.source,
                     LayoutIntrinsicMeasurementSource::OrthogonalText {
                         min_content,
                         max_content,
@@ -172,11 +181,14 @@ pub(super) fn assert_runtime_scene(scene: Scene) {
                         parent_writing_mode: WritingMode::HorizontalTb,
                         text_orientation: TextOrientation::Mixed,
                         font_registry_revision: measured_font_revision,
-                    } if near(min_content.inline_px, 50.0)
-                        && near(min_content.block_px, 20.0)
-                        && near(max_content.inline_px, 80.0)
-                        && near(max_content.block_px, 10.0)
-                        && measured_font_revision == *font_registry_revision
+                        font_registry_identity: measured_registry_identity,
+                    } if near(min_content.inline_px, expected_min.0)
+                        && near(min_content.block_px, expected_min.1)
+                        && near(max_content.inline_px, expected_max.0)
+                        && near(max_content.block_px, expected_max.1)
+                        && *measured_font_revision == *font_registry_revision
+                        && *measured_font_revision == measured_registry_identity.font_registry_revision()
+                        && font_registry_identity.uses_same_font_registry_revision(measured_registry_identity)
                 )
         }),
         "{}: orthogonal measurement provenance mismatch; all measurements: {text_measurements:#?}",
@@ -217,8 +229,12 @@ fn assert_track_diagnostics(
     assert!(!last_rows.contributions.is_empty(), "{}", scene.id);
     for contribution in &last_rows.contributions {
         let expected = match (contribution.item, contribution.kind) {
-            (node, LayoutGridTrackSizingContributionKind::MinContent) if node == text => 50.0,
-            (node, LayoutGridTrackSizingContributionKind::MaxContent) if node == text => 80.0,
+            (node, LayoutGridTrackSizingContributionKind::MinContent) if node == text => {
+                scene.inline_contribution(true)
+            }
+            (node, LayoutGridTrackSizingContributionKind::MaxContent) if node == text => {
+                scene.inline_contribution(false)
+            }
             (node, LayoutGridTrackSizingContributionKind::MinContent)
             | (node, LayoutGridTrackSizingContributionKind::MaxContent)
                 if node == image =>

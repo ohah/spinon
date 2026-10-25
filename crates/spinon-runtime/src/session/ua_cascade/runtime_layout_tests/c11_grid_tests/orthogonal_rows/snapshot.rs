@@ -5,7 +5,8 @@ use super::scene::Scene;
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const PNG_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 const ROOT_STYLE_PREFIX: &str = "box-sizing:border-box;display:grid;width:74px;height:auto;margin:0;padding:0;border:0;column-gap:0;row-gap:0;direction:ltr;writing-mode:horizontal-tb;align-items:normal;align-content:start;justify-items:normal;justify-content:start;grid-template-columns:50px 24px;grid-template-rows:";
-const TEXT_STYLE: &str = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:1 / span 1;grid-row:1;writing-mode:vertical-rl;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d;color:#fff";
+const TEXT_STYLE_PREFIX: &str = "box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:1 / span 1;grid-row:1;writing-mode:vertical-rl;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:";
+const TEXT_STYLE_SUFFIX: &str = ";text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d;color:#fff";
 const IMAGE_STYLE: &str = "box-sizing:border-box;display:block;width:auto;height:auto;min-width:auto;min-height:auto;margin:0;padding:0;border:0;grid-column:2 / span 1;grid-row:1;background-color:#2864dc";
 
 pub(super) fn orthogonal_snapshot(
@@ -48,7 +49,15 @@ pub(super) fn orthogonal_snapshot(
         if kind {
             create_element(&mut batch, text, "div", &text_id(scene));
             set_attribute(&mut batch, text, "data-node", "");
-            set_attribute(&mut batch, text, "style", TEXT_STYLE);
+            set_attribute(
+                &mut batch,
+                text,
+                "style",
+                &format!(
+                    "{TEXT_STYLE_PREFIX}{}{TEXT_STYLE_SUFFIX}",
+                    scene.line_break_value()
+                ),
+            );
             batch.push(DocumentOperation::InsertBefore {
                 parent: HostParent::Node(root),
                 node: text,
@@ -56,7 +65,7 @@ pub(super) fn orthogonal_snapshot(
             });
             batch.push(DocumentOperation::CreateText {
                 node: text_leaf,
-                data: "XX XXXXX".into(),
+                data: scene.content().into(),
             });
             batch.push(DocumentOperation::InsertBefore {
                 parent: HostParent::Node(text),
@@ -81,15 +90,27 @@ pub(super) fn orthogonal_snapshot(
 }
 
 fn root_id(scene: Scene) -> String {
-    format!("c114-orthogonal-{}-grid", scene.stem())
+    if scene.is_generalized_target() {
+        format!("c114-orthogonal-text-{}-grid", scene.stem())
+    } else {
+        format!("c114-orthogonal-{}-grid", scene.stem())
+    }
 }
 
 fn text_id(scene: Scene) -> String {
-    format!("c114-orthogonal-{}-text", scene.stem())
+    if scene.is_generalized_target() {
+        format!("c114-orthogonal-text-{}-text", scene.stem())
+    } else {
+        format!("c114-orthogonal-{}-text", scene.stem())
+    }
 }
 
 fn image_id(scene: Scene) -> String {
-    format!("c114-orthogonal-{}-image", scene.stem())
+    if scene.is_generalized_target() {
+        format!("c114-orthogonal-text-{}-image", scene.stem())
+    } else {
+        format!("c114-orthogonal-{}-image", scene.stem())
+    }
 }
 
 fn create_element(batch: &mut DocumentChangeBatch, node: HostNodeHandle, tag: &str, id: &str) {

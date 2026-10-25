@@ -234,6 +234,7 @@ impl CalcLayoutTree {
                         parent_writing_mode: spinon_core::WritingMode::HorizontalTb,
                         text_orientation: sizes.text_orientation(),
                         font_registry_revision: sizes.font_registry_revision(),
+                        font_registry_identity: sizes.clone(),
                     }
                 } else {
                     LayoutGridItemIntrinsicSource::Text {

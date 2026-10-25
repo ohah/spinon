@@ -1,5 +1,7 @@
 use spinon_core::{NodeId, TextOrientation, WritingMode};
-use spinon_text_layout::{FontRegistryRevision, LogicalIntrinsicSize, TextIntrinsicInlineSizes};
+use spinon_text_layout::{
+    FontRegistryRevision, LogicalIntrinsicSize, TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes,
+};
 
 use crate::{
     LayoutDimension, LayoutInputRevision, LayoutIntrinsicSize, LayoutLengthPercentage, LayoutStyle,
@@ -42,7 +44,7 @@ pub struct LayoutIntrinsicMeasureSize {
 }
 
 /// Intrinsic measurement의 원본 입력입니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub enum LayoutIntrinsicMeasurementSource {
     Text {
         font_registry_revision: FontRegistryRevision,
@@ -54,6 +56,9 @@ pub enum LayoutIntrinsicMeasurementSource {
         parent_writing_mode: WritingMode,
         text_orientation: TextOrientation,
         font_registry_revision: FontRegistryRevision,
+        /// Opaque registry identity is retained with the logical sizes so equal numeric
+        /// revisions from independent text engines cannot be mistaken for the same source.
+        font_registry_identity: TextIntrinsicLogicalSizes,
     },
     Replaced {
         natural: LayoutIntrinsicSize,
@@ -73,6 +78,8 @@ pub enum LayoutGridItemIntrinsicSource {
         parent_writing_mode: WritingMode,
         text_orientation: TextOrientation,
         font_registry_revision: FontRegistryRevision,
+        /// Keeps the text-layout registry token attached through item/contribution input clones.
+        font_registry_identity: TextIntrinsicLogicalSizes,
     },
     Replaced {
         natural: LayoutIntrinsicSize,
@@ -89,9 +96,8 @@ pub struct LayoutGridItemTextSource {
 /// 직접 Grid leaf의 intrinsic sizing 후속 계산에 사용할 원본 입력입니다.
 ///
 /// `Text` source는 `TextIntrinsicInlineSizes`를 보존하므로 font registry identity/revision도 유지합니다.
-/// `OrthogonalText` source는 logical min/max 값과 숫자 revision·writing metadata를 보존하지만
-/// font registry token identity는 이 전달 값에 포함하지 않습니다. 이 값은 한 layout tree의
-/// text engine에서 계산되고 원본 node/text와 layout revision이 별도로 전달됩니다.
+/// `OrthogonalText` source는 logical min/max 값, numeric revision, opaque font registry identity,
+/// writing metadata를 함께 보존합니다. Identity token은 `TextIntrinsicLogicalSizes` 안에 감춰집니다.
 /// Replaced source의 natural size는 content-box CSS px이며, 지정 크기·aspect ratio·외곽 edge
 /// 적용은 `item_style`과 함께 다음 contribution 단계에서 결정합니다.
 #[derive(Clone, Debug, PartialEq)]
@@ -194,7 +200,7 @@ fn fixed_padding(value: LayoutLengthPercentage, node: NodeId) -> Result<f32, cra
 /// CSS Grid contribution 계산용 direct-leaf 입력을 같은 layout source에 결속합니다.
 ///
 /// `width`와 `height`는 현재 제한 profile의 물리 축입니다. `source`는 text font registry
-/// revision 또는 replaced natural metadata를 보존합니다. 전체 `item_style`도 함께 보존해
+/// revision/identity 또는 replaced natural metadata를 보존합니다. 전체 `item_style`도 함께 보존해
 /// aspect ratio, overflow, order처럼 축 후보와 함께 해석할 값을 잃지 않습니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct LayoutGridItemIntrinsicContributionInput {
@@ -229,15 +235,23 @@ impl LayoutGridItemIntrinsicInput {
                 child_writing_mode,
                 parent_writing_mode,
                 text_orientation,
+                font_registry_revision,
+                font_registry_identity,
                 ..
             } => {
                 if *parent_writing_mode != WritingMode::HorizontalTb
                     || *child_writing_mode != WritingMode::VerticalRl
                     || *text_orientation != TextOrientation::Mixed
+                    || font_registry_identity.paragraph() != self.node
+                    || font_registry_identity.font_registry_revision() != *font_registry_revision
+                    || font_registry_identity.writing_mode() != *child_writing_mode
+                    || font_registry_identity.text_orientation() != *text_orientation
+                    || font_registry_identity.min_content() != *min_content
+                    || font_registry_identity.max_content() != *max_content
                 {
                     return Err(crate::LayoutError::UnsupportedIntrinsicSizing {
                         node: self.node,
-                        reason: "orthogonal intrinsic contribution requires horizontal-tb parent and vertical-rl/mixed text",
+                        reason: "orthogonal intrinsic contribution requires matching logical-size/font identity metadata and horizontal-tb parent with vertical-rl/mixed text",
                     });
                 }
                 if !valid_logical_intrinsic_size(*min_content)
@@ -248,12 +262,7 @@ impl LayoutGridItemIntrinsicInput {
                         axis: "orthogonal logical",
                     });
                 }
-                (
-                    Some(min_content.block_px),
-                    Some(max_content.block_px),
-                    Some(min_content.inline_px),
-                    Some(max_content.inline_px),
-                )
+                vertical_rl_logical_intrinsics_to_physical(*min_content, *max_content)
             }
             LayoutGridItemIntrinsicSource::Replaced { natural } => {
                 (natural.width, natural.width, natural.height, natural.height)
@@ -306,11 +315,26 @@ fn valid_logical_intrinsic_size(size: LogicalIntrinsicSize) -> bool {
         && size.block_px >= 0.0
 }
 
+/// Horizontal-tb parent rows map to the vertical-rl child's logical inline axis.
+/// The child's logical block axis maps to physical width; its inline axis maps to physical height.
+fn vertical_rl_logical_intrinsics_to_physical(
+    min_content: LogicalIntrinsicSize,
+    max_content: LogicalIntrinsicSize,
+) -> (Option<f32>, Option<f32>, Option<f32>, Option<f32>) {
+    (
+        Some(min_content.block_px),
+        Some(max_content.block_px),
+        Some(min_content.inline_px),
+        Some(max_content.inline_px),
+    )
+}
+
 /// Grid item의 measure callback 한 번에 대한 source-bound 관찰값입니다.
 ///
 /// `revision`은 paragraph/style/document/environment와 replaced-resource 입력을 함께 묶습니다.
-/// Text source는 추가로 font registry revision을 보존합니다.
-#[derive(Clone, Copy, Debug, PartialEq)]
+/// Text source는 추가로 font registry revision을 보존하고, orthogonal text는 opaque registry
+/// identity도 함께 유지합니다.
+#[derive(Clone, Debug, PartialEq)]
 pub struct LayoutIntrinsicMeasurement {
     pub node: NodeId,
     pub revision: LayoutInputRevision,

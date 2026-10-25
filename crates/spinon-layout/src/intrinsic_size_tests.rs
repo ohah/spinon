@@ -158,10 +158,10 @@ fn grid_image_intrinsic_measurement_keeps_style_source_and_both_revisions() {
     assert_eq!(measure.revision, output.revision);
     assert_eq!(measure.revision.intrinsic_size(), snapshot.revision());
     assert!(matches!(
-        measure.source,
+        &measure.source,
         crate::LayoutIntrinsicMeasurementSource::Replaced {
             natural,
-        } if natural == LayoutIntrinsicSize::new(24.0, 16.0)
+        } if *natural == LayoutIntrinsicSize::new(24.0, 16.0)
     ));
     assert_eq!(measure.item_style, image_style);
     assert_eq!(

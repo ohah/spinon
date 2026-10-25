@@ -10,6 +10,8 @@ use spinon_core::{
     HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId, StyleRevision,
     WritingMode,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_layout::LineBreakMode;
 use spinon_layout::{
     LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
     LayoutIntrinsicSizeSnapshot, LayoutOutput, LayoutSourceRevision, LayoutStyle, ParagraphStyle,
@@ -635,6 +637,20 @@ fn validate_c11_4_orthogonal_text_styles(
             return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
                 node: *node,
                 reason: "paragraph and computed writing-mode/text-orientation must both be vertical-rl/mixed",
+            });
+        }
+        let computed_line_break = computed_styles
+            .elements
+            .iter()
+            .find(|element| element.node_id == *node)
+            .and_then(|element| element.properties.get("line-break"))
+            .map(String::as_str);
+        if style.line_break != LineBreakMode::Normal
+            || !matches!(computed_line_break, Some("normal" | "auto"))
+        {
+            return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
+                node: *node,
+                reason: "paragraph line-break must be normal and computed line-break must be the supported normal or legacy auto value",
             });
         }
     }

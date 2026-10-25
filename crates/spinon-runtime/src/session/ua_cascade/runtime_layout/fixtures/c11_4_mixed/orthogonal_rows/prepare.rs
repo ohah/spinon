@@ -21,8 +21,6 @@ use super::helpers::{fail, unsupported};
 use super::scene::{ItemKind, scene_for_root_id};
 use super::style::{validate_grid_style, validate_item_style};
 
-const AHEM_TEXT: &str = "XX XXXXX";
-
 pub(in crate::session::ua_cascade::runtime_layout::fixtures::c11_4_mixed) fn prepare(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
@@ -81,7 +79,7 @@ pub(in crate::session::ua_cascade::runtime_layout::fixtures::c11_4_mixed) fn pre
                     HostNodeKind::Text(value) => Some(value.to_string_lossy()),
                     HostNodeKind::Element(_) => None,
                 });
-                if actual.as_deref() != Some(AHEM_TEXT)
+                if actual.as_deref() != Some(scene.content())
                     || snapshot.parent(leaf) != Some(HostParent::Node(*handle))
                 {
                     return Err(unsupported(leaf.id(), "fixed Ahem text differs"));

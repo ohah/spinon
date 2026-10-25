@@ -107,6 +107,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_runtime_output(
     }
 
     let mut text_font_revision = None;
+    let mut text_font_identity = None;
     for (source_order, (input, expected)) in diagnostics
         .item_inputs
         .iter()
@@ -154,17 +155,21 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_runtime_output(
                     parent_writing_mode,
                     text_orientation,
                     font_registry_revision,
+                    font_registry_identity,
                 },
                 ItemKind::Text,
             ) => {
+                let expected_min_content = scene.min_content();
+                let expected_max_content = scene.max_content();
                 if *child_writing_mode != WritingMode::VerticalRl
                     || *parent_writing_mode != WritingMode::HorizontalTb
                     || *text_orientation != TextOrientation::Mixed
                     || font_registry_revision.0 != 1
-                    || !near(min_content.inline_px, 50.0)
-                    || !near(min_content.block_px, 20.0)
-                    || !near(max_content.inline_px, 80.0)
-                    || !near(max_content.block_px, 10.0)
+                    || font_registry_identity.font_registry_revision() != *font_registry_revision
+                    || !near(min_content.inline_px, expected_min_content.0)
+                    || !near(min_content.block_px, expected_min_content.1)
+                    || !near(max_content.inline_px, expected_max_content.0)
+                    || !near(max_content.block_px, expected_max_content.1)
                 {
                     return Err(fail(
                         "c114_orthogonal_logical_intrinsic_mismatch",
@@ -173,13 +178,14 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_runtime_output(
                     ));
                 }
                 text_font_revision = Some(*font_registry_revision);
+                text_font_identity = Some(font_registry_identity.clone());
                 let physical = input.contribution_input().map_err(|error| {
                     fail("c114_orthogonal_contribution_input", input.node, error)
                 })?;
-                if !option_near(physical.width.min_content, 20.0)
-                    || !option_near(physical.width.max_content, 10.0)
-                    || !option_near(physical.height.min_content, 50.0)
-                    || !option_near(physical.height.max_content, 80.0)
+                if !option_near(physical.width.min_content, expected_min_content.1)
+                    || !option_near(physical.width.max_content, expected_max_content.1)
+                    || !option_near(physical.height.min_content, expected_min_content.0)
+                    || !option_near(physical.height.max_content, expected_max_content.0)
                 {
                     return Err(fail(
                         "c114_orthogonal_row_contribution_mismatch",
@@ -213,15 +219,17 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_runtime_output(
         .filter(|measurement| measurement.node == text)
         .filter(|measurement| {
             matches!(
-                measurement.source,
+                &measurement.source,
                 LayoutIntrinsicMeasurementSource::OrthogonalText { .. }
             )
         })
         .collect::<Vec<_>>();
     if orthogonal_text_measurements.is_empty()
         || orthogonal_text_measurements.iter().any(|measurement| {
+            let expected_min_content = scene.min_content();
+            let expected_max_content = scene.max_content();
             !matches!(
-                measurement.source,
+                &measurement.source,
                 LayoutIntrinsicMeasurementSource::OrthogonalText {
                     min_content,
                     max_content,
@@ -229,11 +237,21 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_runtime_output(
                     parent_writing_mode: WritingMode::HorizontalTb,
                     text_orientation: TextOrientation::Mixed,
                     font_registry_revision,
-                } if near(min_content.inline_px, 50.0)
-                    && near(min_content.block_px, 20.0)
-                    && near(max_content.inline_px, 80.0)
-                    && near(max_content.block_px, 10.0)
-                    && Some(font_registry_revision) == text_font_revision
+                    font_registry_identity,
+                } if near(min_content.inline_px, expected_min_content.0)
+                    && near(min_content.block_px, expected_min_content.1)
+                    && near(max_content.inline_px, expected_max_content.0)
+                    && near(max_content.block_px, expected_max_content.1)
+                    && Some(*font_registry_revision) == text_font_revision
+                    && font_registry_identity.font_registry_revision() == *font_registry_revision
+                    && font_registry_identity.paragraph() == measurement.node
+                    && font_registry_identity.writing_mode() == WritingMode::VerticalRl
+                    && font_registry_identity.text_orientation() == TextOrientation::Mixed
+                    && font_registry_identity.min_content() == *min_content
+                    && font_registry_identity.max_content() == *max_content
+                    && text_font_identity.as_ref().is_some_and(|identity| {
+                        identity.uses_same_font_registry_revision(font_registry_identity)
+                    })
             )
         })
     {
@@ -294,8 +312,12 @@ fn validate_track_trace(
     let mut image_selected_contribution_seen = false;
     for contribution in &last_row.contributions {
         let expected = match (contribution.item, contribution.kind) {
-            (node, LayoutGridTrackSizingContributionKind::MinContent) if node == text => 50.0,
-            (node, LayoutGridTrackSizingContributionKind::MaxContent) if node == text => 80.0,
+            (node, LayoutGridTrackSizingContributionKind::MinContent) if node == text => {
+                scene.min_content().0
+            }
+            (node, LayoutGridTrackSizingContributionKind::MaxContent) if node == text => {
+                scene.max_content().0
+            }
             (node, LayoutGridTrackSizingContributionKind::MinContent)
             | (node, LayoutGridTrackSizingContributionKind::MaxContent)
                 if node == image =>

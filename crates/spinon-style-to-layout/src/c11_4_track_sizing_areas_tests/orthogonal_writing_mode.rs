@@ -46,12 +46,137 @@ fn style_only_track_sizing_rejects_vertical_writing_without_text_input() {
 
 #[test]
 fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input() {
-    for (row_track, expected_height, reversed) in [
-        ("min-content", 50.0, false),
-        ("min-content", 50.0, true),
-        ("max-content", 80.0, false),
-        ("max-content", 80.0, true),
-    ] {
+    let cases = [
+        (
+            "XX XXXXX",
+            "min-content",
+            (50.0, 20.0),
+            (80.0, 10.0),
+            50.0,
+            "auto",
+            false,
+        ),
+        (
+            "XX XXXXX",
+            "min-content",
+            (50.0, 20.0),
+            (80.0, 10.0),
+            50.0,
+            "auto",
+            true,
+        ),
+        (
+            "XX XXXXX",
+            "max-content",
+            (50.0, 20.0),
+            (80.0, 10.0),
+            80.0,
+            "auto",
+            false,
+        ),
+        (
+            "XX XXXXX",
+            "max-content",
+            (50.0, 20.0),
+            (80.0, 10.0),
+            80.0,
+            "auto",
+            true,
+        ),
+        (
+            "ABC",
+            "min-content",
+            (30.0, 10.0),
+            (30.0, 10.0),
+            30.0,
+            "normal",
+            false,
+        ),
+        (
+            "ABC",
+            "max-content",
+            (30.0, 10.0),
+            (30.0, 10.0),
+            30.0,
+            "normal",
+            false,
+        ),
+        (
+            "A BC",
+            "min-content",
+            (20.0, 20.0),
+            (40.0, 10.0),
+            20.0,
+            "normal",
+            false,
+        ),
+        (
+            "A BC",
+            "max-content",
+            (20.0, 20.0),
+            (40.0, 10.0),
+            40.0,
+            "normal",
+            false,
+        ),
+        (
+            "AB CDE F",
+            "min-content",
+            (30.0, 30.0),
+            (80.0, 10.0),
+            30.0,
+            "normal",
+            false,
+        ),
+        (
+            "AB CDE F",
+            "max-content",
+            (30.0, 30.0),
+            (80.0, 10.0),
+            80.0,
+            "normal",
+            false,
+        ),
+        (
+            "  A   9Z  ",
+            "min-content",
+            (20.0, 20.0),
+            (40.0, 10.0),
+            20.0,
+            "normal",
+            false,
+        ),
+        (
+            "  A   9Z  ",
+            "max-content",
+            (20.0, 20.0),
+            (40.0, 10.0),
+            40.0,
+            "normal",
+            false,
+        ),
+        (
+            "   ",
+            "min-content",
+            (0.0, 0.0),
+            (0.0, 0.0),
+            16.0,
+            "normal",
+            false,
+        ),
+        (
+            "   ",
+            "max-content",
+            (0.0, 0.0),
+            (0.0, 0.0),
+            16.0,
+            "normal",
+            false,
+        ),
+    ];
+    for (content, row_track, expected_min, expected_max, expected_height, line_break, reversed) in
+        cases
+    {
         let mut document = HostDocument::new().unwrap();
         let root = document.reserve_node_handle().unwrap();
         let item = document.reserve_node_handle().unwrap();
@@ -83,7 +208,9 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
             item,
             HostParent::Node(root),
             "text",
-            "display:block;box-sizing:border-box;width:auto;height:auto;grid-column:1;grid-row:1;direction:ltr;writing-mode:vertical-rl;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;margin:0;padding:0;border:0",
+            &format!(
+                "display:block;box-sizing:border-box;width:auto;height:auto;grid-column:1;grid-row:1;direction:ltr;writing-mode:vertical-rl;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;line-break:{line_break};text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;margin:0;padding:0;border:0"
+            ),
         );
         if !reversed {
             append_element_with_tag(
@@ -103,7 +230,7 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
         batch
             .push(DocumentOperation::CreateText {
                 node: text,
-                data: "XX XXXXX".to_owned().into(),
+                data: content.to_owned().into(),
             })
             .push(DocumentOperation::InsertBefore {
                 parent: HostParent::Node(item),
@@ -167,7 +294,7 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
             (item.id(), "text-wrap-mode", "wrap"),
             (item.id(), "word-break", "normal"),
             (item.id(), "overflow-wrap", "normal"),
-            (item.id(), "line-break", "auto"),
+            (item.id(), "line-break", line_break),
             (item.id(), "text-align", "start"),
             (item.id(), "text-transform", "none"),
             (item.id(), "letter-spacing", "normal"),
@@ -256,20 +383,44 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
             ),
             (50.0, 0.0, 24.0, 16.0)
         );
-        assert!(
-            output
-                .layout
-                .intrinsic_measurements
-                .iter()
-                .any(|measurement| {
-                    measurement.node == item.id()
-                        && measurement.content_size.height == expected_height
-                        && matches!(
-                            measurement.source,
-                            LayoutIntrinsicMeasurementSource::OrthogonalText { .. }
-                        )
-                })
-        );
+        let selected_inline = if row_track == "min-content" {
+            expected_min.0
+        } else {
+            expected_max.0
+        };
+        let measurement = output
+            .layout
+            .intrinsic_measurements
+            .iter()
+            .find(|measurement| {
+                measurement.node == item.id()
+                    && matches!(
+                        &measurement.source,
+                        LayoutIntrinsicMeasurementSource::OrthogonalText { .. }
+                    )
+            })
+            .expect("orthogonal text measurement source must be retained");
+        assert_eq!(measurement.content_size.height, selected_inline);
+        let LayoutIntrinsicMeasurementSource::OrthogonalText {
+            min_content,
+            max_content,
+            child_writing_mode,
+            parent_writing_mode,
+            text_orientation,
+            font_registry_identity,
+            ..
+        } = &measurement.source
+        else {
+            unreachable!("the selected measurement must preserve orthogonal logical sizes");
+        };
+        assert_eq!((min_content.inline_px, min_content.block_px), expected_min);
+        assert_eq!((max_content.inline_px, max_content.block_px), expected_max);
+        assert_eq!(*child_writing_mode, WritingMode::VerticalRl);
+        assert_eq!(*parent_writing_mode, WritingMode::HorizontalTb);
+        assert_eq!(*text_orientation, TextOrientation::Mixed);
+        assert_eq!(font_registry_identity.paragraph(), item.id());
+        assert_eq!(font_registry_identity.min_content(), *min_content);
+        assert_eq!(font_registry_identity.max_content(), *max_content);
         let item_input = output
             .layout
             .grid_item_intrinsic_inputs
@@ -280,11 +431,25 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
             &item_input.source,
             LayoutGridItemIntrinsicSource::OrthogonalText { .. }
         ));
+        let LayoutGridItemIntrinsicSource::OrthogonalText {
+            font_registry_revision,
+            font_registry_identity: item_registry_identity,
+            ..
+        } = &item_input.source
+        else {
+            unreachable!("the selected item source must retain its registry identity");
+        };
+        assert_eq!(
+            font_registry_identity.font_registry_revision(),
+            *font_registry_revision
+        );
+        assert_eq!(item_registry_identity.paragraph(), item.id());
+        assert!(font_registry_identity.uses_same_font_registry_revision(item_registry_identity));
         let physical = item_input.contribution_input().unwrap();
-        assert_eq!(physical.width.min_content, Some(20.0));
-        assert_eq!(physical.width.max_content, Some(10.0));
-        assert_eq!(physical.height.min_content, Some(50.0));
-        assert_eq!(physical.height.max_content, Some(80.0));
+        assert_eq!(physical.width.min_content, Some(expected_min.1));
+        assert_eq!(physical.width.max_content, Some(expected_max.1));
+        assert_eq!(physical.height.min_content, Some(expected_min.0));
+        assert_eq!(physical.height.max_content, Some(expected_max.0));
         let image_input = output
             .layout
             .grid_item_intrinsic_inputs
@@ -320,7 +485,7 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
             .flat_map(|pass| pass.contributions.iter())
             .collect::<Vec<_>>();
         assert!(row_contributions.iter().any(|contribution| {
-            contribution.item == item.id() && (contribution.value - expected_height).abs() <= 0.05
+            contribution.item == item.id() && (contribution.value - selected_inline).abs() <= 0.05
         }));
         assert!(row_contributions.iter().any(|contribution| {
             contribution.item == image.id() && (contribution.value - 16.0).abs() <= 0.05

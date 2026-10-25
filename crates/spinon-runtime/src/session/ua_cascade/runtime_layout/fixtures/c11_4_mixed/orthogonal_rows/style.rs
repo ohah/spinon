@@ -137,7 +137,7 @@ pub(super) fn validate_item_style(
                 ("white-space-collapse", "collapse"),
                 ("text-wrap-mode", "wrap"),
                 ("word-break", "normal"),
-                ("line-break", "auto"),
+                ("line-break", scene.line_break_value()),
                 ("text-align", "start"),
                 ("overflow-wrap", "normal"),
                 ("text-transform", "none"),

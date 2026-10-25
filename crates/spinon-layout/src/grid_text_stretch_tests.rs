@@ -134,10 +134,31 @@ fn grid_stretched_auto_height_text_box_may_exceed_paragraph_line_box() {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]
 fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
-    for (row_track, expected_height) in [
-        (GridTrackSize::MinContent, 50.0),
-        (GridTrackSize::MaxContent, 80.0),
-    ] {
+    let cases = [
+        ("XX XXXXX", true, (50.0, 20.0), (80.0, 10.0)),
+        ("XX XXXXX", false, (50.0, 20.0), (80.0, 10.0)),
+        ("ABC", true, (30.0, 10.0), (30.0, 10.0)),
+        ("ABC", false, (30.0, 10.0), (30.0, 10.0)),
+        ("A BC", true, (20.0, 20.0), (40.0, 10.0)),
+        ("A BC", false, (20.0, 20.0), (40.0, 10.0)),
+        ("AB CDE F", true, (30.0, 30.0), (80.0, 10.0)),
+        ("AB CDE F", false, (30.0, 30.0), (80.0, 10.0)),
+        ("  A   9Z  ", true, (20.0, 20.0), (40.0, 10.0)),
+        ("  A   9Z  ", false, (20.0, 20.0), (40.0, 10.0)),
+        ("   ", true, (0.0, 0.0), (0.0, 0.0)),
+        ("   ", false, (0.0, 0.0), (0.0, 0.0)),
+    ];
+    for (content, min_content_track, expected_min, expected_max) in cases {
+        let row_track = if min_content_track {
+            GridTrackSize::MinContent
+        } else {
+            GridTrackSize::MaxContent
+        };
+        let expected_height = if min_content_track {
+            expected_min.0
+        } else {
+            expected_max.0
+        };
         let mut tree = Tree::new();
         let mut batch = ChangeBatch::new(tree.revision());
         batch
@@ -183,6 +204,27 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
                 },
             ),
         ]);
+        let paragraph_input = ParagraphInput {
+            node: node(2),
+            sources: vec![TextSource {
+                node: node(3),
+                inline_ancestors: Vec::new(),
+                text: content.to_owned(),
+            }],
+            style: ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::VerticalRl,
+                text_orientation: spinon_core::TextOrientation::Mixed,
+                font_family: "Ahem".to_owned(),
+                font_size: 10.0,
+                line_height: 10.0,
+                white_space: WhiteSpaceMode::Normal,
+                direction: spinon_text_layout::TextDirection::Ltr,
+                line_break: spinon_text_layout::LineBreakMode::Normal,
+                ..ParagraphStyle::default()
+            },
+            inline_styles: BTreeMap::new(),
+            inline_run_styles: BTreeMap::new(),
+        };
         let input = LayoutInput::from_tree(
             &tree,
             Viewport {
@@ -214,27 +256,7 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
                 },
             )]),
         )
-        .with_text_paragraphs([ParagraphInput {
-            node: node(2),
-            sources: vec![TextSource {
-                node: node(3),
-                inline_ancestors: Vec::new(),
-                text: "XX XXXXX".to_owned(),
-            }],
-            style: ParagraphStyle {
-                writing_mode: spinon_core::WritingMode::VerticalRl,
-                text_orientation: spinon_core::TextOrientation::Mixed,
-                font_family: "Ahem".to_owned(),
-                font_size: 10.0,
-                line_height: 10.0,
-                white_space: WhiteSpaceMode::Normal,
-                direction: spinon_text_layout::TextDirection::Ltr,
-                line_break: spinon_text_layout::LineBreakMode::Normal,
-                ..ParagraphStyle::default()
-            },
-            inline_styles: BTreeMap::new(),
-            inline_run_styles: BTreeMap::new(),
-        }])
+        .with_text_paragraphs([paragraph_input.clone()])
         .unwrap();
         let mut text_engine = TextLayoutEngine::new_without_system_fonts();
         text_engine.register_font("Ahem", AHEM).unwrap();
@@ -256,7 +278,7 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
                 measurement.node == node(2)
                     && measurement.content_size.height == expected_height
                     && matches!(
-                        measurement.source,
+                        &measurement.source,
                         crate::LayoutIntrinsicMeasurementSource::OrthogonalText { .. }
                     )
             })
@@ -267,16 +289,28 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
             child_writing_mode,
             parent_writing_mode,
             text_orientation,
+            font_registry_identity,
             ..
-        } = measurement.source
+        } = &measurement.source
         else {
             unreachable!("the selected trace must be orthogonal text");
         };
-        assert_eq!(min_content.inline_px, 50.0);
-        assert_eq!(max_content.inline_px, 80.0);
-        assert_eq!(child_writing_mode, spinon_core::WritingMode::VerticalRl);
-        assert_eq!(parent_writing_mode, spinon_core::WritingMode::HorizontalTb);
-        assert_eq!(text_orientation, spinon_core::TextOrientation::Mixed);
+        assert_eq!((min_content.inline_px, min_content.block_px), expected_min);
+        assert_eq!((max_content.inline_px, max_content.block_px), expected_max);
+        assert_eq!(*child_writing_mode, spinon_core::WritingMode::VerticalRl);
+        assert_eq!(*parent_writing_mode, spinon_core::WritingMode::HorizontalTb);
+        assert_eq!(*text_orientation, spinon_core::TextOrientation::Mixed);
+        assert_eq!(font_registry_identity.paragraph(), node(2));
+        assert_eq!(
+            font_registry_identity.writing_mode(),
+            spinon_core::WritingMode::VerticalRl
+        );
+        assert_eq!(
+            font_registry_identity.text_orientation(),
+            spinon_core::TextOrientation::Mixed
+        );
+        assert_eq!(font_registry_identity.min_content(), *min_content);
+        assert_eq!(font_registry_identity.max_content(), *max_content);
 
         let item_input = output
             .grid_item_intrinsic_inputs
@@ -284,14 +318,61 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
             .find(|input| input.node == node(2))
             .expect("post-layout source input should be retained");
         assert!(matches!(
-            item_input.source,
+            &item_input.source,
             crate::LayoutGridItemIntrinsicSource::OrthogonalText { .. }
         ));
+        let crate::LayoutGridItemIntrinsicSource::OrthogonalText {
+            font_registry_identity: item_registry_identity,
+            font_registry_revision,
+            ..
+        } = &item_input.source
+        else {
+            unreachable!("the selected item source must retain its registry identity");
+        };
+        assert_eq!(
+            font_registry_identity.font_registry_revision(),
+            *font_registry_revision
+        );
+        assert_eq!(item_registry_identity.paragraph(), node(2));
+        let item_min = item_registry_identity.min_content();
+        let item_max = item_registry_identity.max_content();
+        assert_eq!((item_min.inline_px, item_min.block_px), expected_min);
+        assert_eq!((item_max.inline_px, item_max.block_px), expected_max);
+        assert!(font_registry_identity.uses_same_font_registry_revision(item_registry_identity));
+        if content == "XX XXXXX" && min_content_track {
+            let mut independent_engine = TextLayoutEngine::new_without_system_fonts();
+            independent_engine.register_font("Ahem", AHEM).unwrap();
+            let independent_sizes = independent_engine
+                .intrinsic_logical_sizes(&paragraph_input)
+                .unwrap();
+            assert_eq!(
+                font_registry_identity.font_registry_revision(),
+                independent_sizes.font_registry_revision(),
+                "independent engines start at the same numeric font revision"
+            );
+            assert!(
+                !font_registry_identity.uses_same_font_registry_revision(&independent_sizes),
+                "independent registry token must stay distinguishable at equal revision"
+            );
+        }
         let physical = item_input.contribution_input().unwrap();
-        assert_eq!(physical.width.min_content, Some(20.0));
-        assert_eq!(physical.width.max_content, Some(10.0));
-        assert_eq!(physical.height.min_content, Some(50.0));
-        assert_eq!(physical.height.max_content, Some(80.0));
+        assert_eq!(physical.width.min_content, Some(expected_min.1));
+        assert_eq!(physical.width.max_content, Some(expected_max.1));
+        assert_eq!(physical.height.min_content, Some(expected_min.0));
+        assert_eq!(physical.height.max_content, Some(expected_max.0));
+        if content == "XX XXXXX" && min_content_track {
+            let mut mismatched_identity_input = item_input.clone();
+            let crate::LayoutGridItemIntrinsicSource::OrthogonalText { min_content, .. } =
+                &mut mismatched_identity_input.source
+            else {
+                unreachable!("the selected item source must be orthogonal text");
+            };
+            min_content.inline_px += 1.0;
+            assert!(matches!(
+                mismatched_identity_input.contribution_input(),
+                Err(crate::LayoutError::UnsupportedIntrinsicSizing { .. })
+            ));
+        }
     }
 }
 

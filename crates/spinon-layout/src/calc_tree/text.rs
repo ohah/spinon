@@ -20,7 +20,7 @@ pub(crate) type FinalTextLayouts = (
     BTreeMap<NodeId, Vec<LayoutTextFlowSegment>>,
 );
 
-#[derive(Clone, Copy, Debug, PartialEq)]
+#[derive(Clone, Debug, PartialEq)]
 pub(super) struct TextMeasureResult {
     pub(super) size: Size<f32>,
     pub(super) font_registry_revision: FontRegistryRevision,
@@ -157,6 +157,8 @@ impl CalcLayoutTree {
                     });
                 }
                 let intrinsic_axis = match available_space.height {
+                    // The admitted parent Grid is horizontal-tb, so a row probe is the
+                    // vertical-rl paragraph's logical inline min/max-content query.
                     AvailableSpace::MinContent => Some(true),
                     AvailableSpace::MaxContent => Some(false),
                     AvailableSpace::Definite(_) => None,
@@ -177,6 +179,7 @@ impl CalcLayoutTree {
                         parent_writing_mode: WritingMode::HorizontalTb,
                         text_orientation: sizes.text_orientation(),
                         font_registry_revision: sizes.font_registry_revision(),
+                        font_registry_identity: sizes.clone(),
                     };
                     let contribution = LayoutGridItemIntrinsicInput {
                         grid_container: metadata.container,
@@ -217,6 +220,7 @@ impl CalcLayoutTree {
                             parent_writing_mode: WritingMode::HorizontalTb,
                             text_orientation: sizes.text_orientation(),
                             font_registry_revision: sizes.font_registry_revision(),
+                            font_registry_identity: sizes.clone(),
                         },
                     });
                 }
