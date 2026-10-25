@@ -1,5 +1,7 @@
 # C13.4 Simulator 관찰 · 2026-10-26
 
+**iOS Safari 관찰 PR diff 검토:** [실패 관점 30개](../c13-4-scrollbar-ios-safari-pr-diff-review-30-2026-10-26.md)
+
 ## 결과
 
 Android는 관찰하지 못했다. iOS Safari에서 fixture와 geometry를 읽었으며, `stable`과 `stable both-edges` 모두 `auto`와 동일한 zero-additional-gutter geometry였다. 이는 overlay/no-gutter 동작과 일치하지만, 캡처에서 활성 native indicator가 보이지 않아 transient UI mode 자체를 직접 관찰한 결과는 아니다. 상세 값과 hash는 [구조화 결과](ios-safari-result.json)에 기록했다.
