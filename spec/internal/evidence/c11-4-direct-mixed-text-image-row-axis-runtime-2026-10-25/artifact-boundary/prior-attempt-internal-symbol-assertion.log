@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "<REPO>/spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/scan-ffi-archives.py", line 119, in <module>
+    assert results["fixtureTest"]["candidateRustRuntimeSourceSymbolPresent"]
+AssertionError

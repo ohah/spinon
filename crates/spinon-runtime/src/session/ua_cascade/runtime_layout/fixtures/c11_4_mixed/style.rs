@@ -21,6 +21,13 @@ pub(super) fn validate_grid_style(
     ] {
         require_property(style, name, expected)?;
     }
+    if matches!(
+        scene.grid,
+        SceneGrid::DirectMinContentRow | SceneGrid::DirectMaxContentRow
+    ) {
+        require_property(style, "direction", "ltr")?;
+        require_property(style, "writing-mode", "horizontal-tb")?;
+    }
     let grid = style.grid_layout.as_ref().ok_or_else(|| {
         failure(
             "missing_c114_mixed_grid_layout",
@@ -30,26 +37,44 @@ pub(super) fn validate_grid_style(
     })?;
     let (root_width, root_height, columns, rows) = match scene.grid {
         SceneGrid::SpanningMultiTrack => (
-            220.0,
-            180.0,
+            ComputedCssDimension::LengthPx(220.0),
+            ComputedCssDimension::LengthPx(180.0),
             vec![ComputedCssGridTrackSize::MinContent; 4],
             vec![ComputedCssGridTrackSize::LengthPx(60.0); 3],
         ),
         SceneGrid::DirectMinContent => (
-            120.0,
-            48.0,
+            ComputedCssDimension::LengthPx(120.0),
+            ComputedCssDimension::LengthPx(48.0),
             vec![ComputedCssGridTrackSize::MinContent],
             vec![ComputedCssGridTrackSize::LengthPx(24.0); 2],
         ),
         SceneGrid::DirectMaxContent => (
-            120.0,
-            48.0,
+            ComputedCssDimension::LengthPx(120.0),
+            ComputedCssDimension::LengthPx(48.0),
             vec![ComputedCssGridTrackSize::MaxContent],
             vec![ComputedCssGridTrackSize::LengthPx(24.0); 2],
         ),
+        SceneGrid::DirectMinContentRow => (
+            ComputedCssDimension::LengthPx(74.0),
+            ComputedCssDimension::Auto,
+            vec![
+                ComputedCssGridTrackSize::LengthPx(50.0),
+                ComputedCssGridTrackSize::LengthPx(24.0),
+            ],
+            vec![ComputedCssGridTrackSize::MinContent],
+        ),
+        SceneGrid::DirectMaxContentRow => (
+            ComputedCssDimension::LengthPx(74.0),
+            ComputedCssDimension::Auto,
+            vec![
+                ComputedCssGridTrackSize::LengthPx(50.0),
+                ComputedCssGridTrackSize::LengthPx(24.0),
+            ],
+            vec![ComputedCssGridTrackSize::MaxContent],
+        ),
     };
-    if style.layout_dimensions.width != ComputedCssDimension::LengthPx(root_width)
-        || style.layout_dimensions.height != ComputedCssDimension::LengthPx(root_height)
+    if style.layout_dimensions.width != root_width
+        || style.layout_dimensions.height != root_height
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
@@ -100,10 +125,19 @@ pub(super) fn validate_item_style(
             && placement.row_start == ComputedCssGridPlacement::Line(item.row)
             && placement.row_end == ComputedCssGridPlacement::Auto
     });
+    let (justify_self, align_self) = match scene.grid {
+        SceneGrid::DirectMinContentRow | SceneGrid::DirectMaxContentRow => match item.kind {
+            ItemKind::Text(_) => ("stretch", "start"),
+            ItemKind::Image { .. } => ("start", "start"),
+        },
+        SceneGrid::SpanningMultiTrack
+        | SceneGrid::DirectMinContent
+        | SceneGrid::DirectMaxContent => ("auto", "auto"),
+    };
     if !placement
         || style.layout_position != ComputedCssPosition::Static
-        || !property_is(style, "justify-self", "auto")
-        || !property_is(style, "align-self", "auto")
+        || !property_is(style, "justify-self", justify_self)
+        || !property_is(style, "align-self", align_self)
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None

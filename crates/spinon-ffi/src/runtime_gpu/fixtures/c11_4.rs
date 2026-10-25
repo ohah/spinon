@@ -60,6 +60,8 @@ mod image_multispan;
 mod implicit_intrinsic_tracks;
 #[path = "c11_4/mixed_direct_text_image_intrinsic.rs"]
 mod mixed_direct_text_image_intrinsic;
+#[path = "c11_4/mixed_direct_text_image_intrinsic_rows.rs"]
+mod mixed_direct_text_image_intrinsic_rows;
 #[path = "c11_4/mixed_multispan.rs"]
 mod mixed_multispan;
 #[path = "c11_4/multiple_fixed_repeat_groups.rs"]
@@ -1094,6 +1096,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
     if let Some(source) = mixed_direct_text_image_intrinsic::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = mixed_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_replaced_image_span::runtime_source(scene_id) {
