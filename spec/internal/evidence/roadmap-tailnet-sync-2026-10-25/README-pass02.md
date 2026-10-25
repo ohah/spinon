@@ -18,4 +18,4 @@
 
 이 동기화 PR의 별도 실패 관점 30개 검토는 [PR diff review](pr-diff-review-30-pass02.md)에 기록했다.
 
-확인 후 Agent Browser 세션을 닫았으며 `pgrep -l agent-browser`에 프로세스가 남지 않았다. Tailnet은 온라인이고 `127.0.0.1:8768` preview listener는 계속 동작한다.
+PR #618 본문에서도 raw screenshot link를 Agent Browser로 열어 1280×633 이미지가 실제 로드되는지 확인했다. 잘못 입력한 첫 SHA는 404였고, 실제 HEAD `d87b6eda7b00f8a6c771fa32b9686c7c1dbf4dfd`로 고친 뒤 로드에 성공했다. 확인 후 Agent Browser 세션을 닫았으며 `pgrep -l agent-browser`에 프로세스가 남지 않았다. Tailnet은 온라인이고 `127.0.0.1:8768` preview listener는 계속 동작한다.
