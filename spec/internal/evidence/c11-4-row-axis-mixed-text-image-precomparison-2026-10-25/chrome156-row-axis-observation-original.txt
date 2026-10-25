@@ -1,0 +1,271 @@
+{
+  "browser": {
+    "language": "ko-KR",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "userAgentData": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156"
+      }
+    ]
+  },
+  "cases": [
+    {
+      "columnGap": "0px",
+      "gap": "0px",
+      "gridTemplateColumns": "50px 24px",
+      "gridTemplateRows": "20px",
+      "id": "min-forward",
+      "imageNaturalSize": {
+        "complete": true,
+        "height": 16,
+        "width": 24
+      },
+      "imageRect": {
+        "bottom": 16,
+        "height": 16,
+        "left": 50,
+        "right": 74,
+        "top": 0,
+        "width": 24,
+        "x": 50,
+        "y": 0
+      },
+      "rootRect": {
+        "bottom": 20,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 0,
+        "width": 74,
+        "x": 0,
+        "y": 0
+      },
+      "rowGap": "0px",
+      "sourceOrder": [
+        "text",
+        "image"
+      ],
+      "textFontFamily": "Ahem",
+      "textRect": {
+        "bottom": 20,
+        "height": 20,
+        "left": 0,
+        "right": 50,
+        "top": 0,
+        "width": 50,
+        "x": 0,
+        "y": 0
+      },
+      "trackRect": {
+        "bottom": 20,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 0,
+        "width": 74,
+        "x": 0,
+        "y": 0
+      },
+      "writingMode": "horizontal-tb"
+    },
+    {
+      "columnGap": "0px",
+      "gap": "0px",
+      "gridTemplateColumns": "50px 24px",
+      "gridTemplateRows": "20px",
+      "id": "min-reversed",
+      "imageNaturalSize": {
+        "complete": true,
+        "height": 16,
+        "width": 24
+      },
+      "imageRect": {
+        "bottom": 76,
+        "height": 16,
+        "left": 50,
+        "right": 74,
+        "top": 60,
+        "width": 24,
+        "x": 50,
+        "y": 60
+      },
+      "rootRect": {
+        "bottom": 80,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 60,
+        "width": 74,
+        "x": 0,
+        "y": 60
+      },
+      "rowGap": "0px",
+      "sourceOrder": [
+        "image",
+        "text"
+      ],
+      "textFontFamily": "Ahem",
+      "textRect": {
+        "bottom": 80,
+        "height": 20,
+        "left": 0,
+        "right": 50,
+        "top": 60,
+        "width": 50,
+        "x": 0,
+        "y": 60
+      },
+      "trackRect": {
+        "bottom": 80,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 60,
+        "width": 74,
+        "x": 0,
+        "y": 60
+      },
+      "writingMode": "horizontal-tb"
+    },
+    {
+      "columnGap": "0px",
+      "gap": "0px",
+      "gridTemplateColumns": "50px 24px",
+      "gridTemplateRows": "20px",
+      "id": "max-forward",
+      "imageNaturalSize": {
+        "complete": true,
+        "height": 16,
+        "width": 24
+      },
+      "imageRect": {
+        "bottom": 136,
+        "height": 16,
+        "left": 50,
+        "right": 74,
+        "top": 120,
+        "width": 24,
+        "x": 50,
+        "y": 120
+      },
+      "rootRect": {
+        "bottom": 140,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 120,
+        "width": 74,
+        "x": 0,
+        "y": 120
+      },
+      "rowGap": "0px",
+      "sourceOrder": [
+        "text",
+        "image"
+      ],
+      "textFontFamily": "Ahem",
+      "textRect": {
+        "bottom": 140,
+        "height": 20,
+        "left": 0,
+        "right": 50,
+        "top": 120,
+        "width": 50,
+        "x": 0,
+        "y": 120
+      },
+      "trackRect": {
+        "bottom": 140,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 120,
+        "width": 74,
+        "x": 0,
+        "y": 120
+      },
+      "writingMode": "horizontal-tb"
+    },
+    {
+      "columnGap": "0px",
+      "gap": "0px",
+      "gridTemplateColumns": "50px 24px",
+      "gridTemplateRows": "20px",
+      "id": "max-reversed",
+      "imageNaturalSize": {
+        "complete": true,
+        "height": 16,
+        "width": 24
+      },
+      "imageRect": {
+        "bottom": 196,
+        "height": 16,
+        "left": 50,
+        "right": 74,
+        "top": 180,
+        "width": 24,
+        "x": 50,
+        "y": 180
+      },
+      "rootRect": {
+        "bottom": 200,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 180,
+        "width": 74,
+        "x": 0,
+        "y": 180
+      },
+      "rowGap": "0px",
+      "sourceOrder": [
+        "image",
+        "text"
+      ],
+      "textFontFamily": "Ahem",
+      "textRect": {
+        "bottom": 200,
+        "height": 20,
+        "left": 0,
+        "right": 50,
+        "top": 180,
+        "width": 50,
+        "x": 0,
+        "y": 180
+      },
+      "trackRect": {
+        "bottom": 200,
+        "height": 20,
+        "left": 0,
+        "right": 74,
+        "top": 180,
+        "width": 74,
+        "x": 0,
+        "y": 180
+      },
+      "writingMode": "horizontal-tb"
+    }
+  ],
+  "fonts": {
+    "canvasTextWidth10pxAhem": 80,
+    "checkAhem": true,
+    "faces": [
+      {
+        "family": "Ahem",
+        "status": "loaded",
+        "style": "normal",
+        "weight": "100 900"
+      }
+    ],
+    "status": "loaded"
+  }
+}
