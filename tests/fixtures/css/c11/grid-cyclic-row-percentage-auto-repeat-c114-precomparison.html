@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 cyclic percentage auto-repeat row-axis precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 32px;
+      color: #101820;
+      background: #f4f6f8;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    main {
+      display: flex;
+      align-items: flex-start;
+      gap: 40px;
+    }
+    figure { margin: 0; }
+    figcaption { margin-bottom: 8px; font-weight: 600; }
+    .grid {
+      position: relative;
+      display: grid;
+      width: 24px;
+      box-sizing: content-box;
+      grid-template-columns: 24px;
+      column-gap: 0;
+      row-gap: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      align-content: start;
+      justify-content: start;
+      background: #b9d8e8;
+    }
+    #cyclic { height: max-content; }
+    #control { height: 40px; }
+    .item {
+      grid-column: 1;
+      grid-row: 1;
+      width: 24px;
+      height: 16px;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #e5484d;
+    }
+    .half-height-marker {
+      position: absolute;
+      z-index: 1;
+      inset-inline: 0;
+      top: 50%;
+      height: 1px;
+      background: #173f8a;
+      pointer-events: none;
+    }
+    .note { margin-top: 8px; max-width: 260px; }
+  </style>
+</head>
+<body>
+  <main>
+    <figure>
+      <figcaption>Indefinite max-content block size</figcaption>
+      <div id="cyclic" class="grid" data-scene-id="cyclic-max-content-auto-fill-rows"
+           style="grid-template-rows: repeat(auto-fill, minmax(0px, 50%))">
+        <div id="cyclic-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">One fixed 24 × 16px in-flow item. The blue line is an absolute, out-of-flow half-height marker.</div>
+    </figure>
+    <figure>
+      <figcaption>Definite 40px block size control</figcaption>
+      <div id="control" class="grid" data-scene-id="definite-40px-auto-fill-control-rows"
+           style="grid-template-rows: repeat(auto-fill, minmax(0px, 50%))">
+        <div id="control-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">Same tracks and item with height:40px. The marker is out of flow.</div>
+    </figure>
+  </main>
+</body>
+</html>

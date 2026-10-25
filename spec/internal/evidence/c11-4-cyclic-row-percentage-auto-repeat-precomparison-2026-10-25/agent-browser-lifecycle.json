@@ -1,0 +1,31 @@
+{
+  "namespace": "spinon_c114_row_axis_20261025",
+  "session": "c114-row-axis-20261025",
+  "agentBrowserVersion": "0.31.1",
+  "closedAtUtc": "2026-10-25T13:12:31Z",
+  "beforeClose": {
+    "active": true,
+    "sessionList": [
+      "c114-row-axis-20261025"
+    ],
+    "agentBrowserBackgroundPid": 63234,
+    "chromePid": 63237,
+    "chromeCommand": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome --remote-debugging-port=0 --no-first-run --no-default-browser-check --disable-background-networking --disable-backgrounding-occluded-windows --disable-component-update --disable-default-apps --disable-hang-monitor --disable-popup-blocking --disable-prompt-on-repost --disable-sync --enable-features=NetworkService,NetworkServiceInProcess --metrics-recording-only --password-store=basic --use-mock-keychain --headless=new --hide-scrollbars --enable-unsafe-swiftshader --user-data-dir=/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-a2998e4e-f56c-4333-b0a4-b44dd38945b8 --window-size=1280,720"
+  },
+  "closeCommand": "agent-browser --namespace spinon_c114_row_axis_20261025 --session c114-row-axis-20261025 --json close",
+  "closeResult": {
+    "success": true,
+    "closed": true,
+    "exitCode": 0
+  },
+  "afterClose": {
+    "sessionList": [],
+    "checkedPids": [
+      63234,
+      63237
+    ],
+    "psPidCheckExitCode": 1,
+    "namespaceProcessScan": "No matching Agent Browser daemon, unique namespace, or Chrome profile process remained; scan output contained only the ps/rg verifier itself."
+  },
+  "scope": "Only the task-owned Agent Browser session/namespace was closed. No other session was closed."
+}

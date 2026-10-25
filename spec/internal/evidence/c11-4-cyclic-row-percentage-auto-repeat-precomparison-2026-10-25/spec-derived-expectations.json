@@ -1,0 +1,224 @@
+{
+  "evidenceKind": "precomparison-only",
+  "notSpinonRuntimeEvidence": true,
+  "sourceRevision": "6ac7cb1a7ea2826f29905eb2caa71080ed85e4a9",
+  "branch": "plan/c11-4-cyclic-percentage-auto-repeat-row-axis-20261025",
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-cyclic-row-percentage-auto-repeat-c114-precomparison.html",
+    "sha256": "fe753b810e9d03dfb7c7386196583934027b1a0c07f9eaa9dbde6aa2fecde027"
+  },
+  "specReferences": [
+    {
+      "title": "CSS Grid Layout Module Level 1, 2025 CRD, section 7.2.1",
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+      "rule": "Cyclic percentages in track sizes are treated as auto while computing intrinsic grid container size, then resolved against the resulting grid container size."
+    },
+    {
+      "title": "CSS Grid Layout Module Level 1, 2025 CRD, section 7.2.3.2",
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat",
+      "rule": "auto-fill uses a definite preferred/max size to find the largest fitting repetition count; otherwise it uses a definite minimum size if available, with a positive repetition count, or repeats only once."
+    },
+    {
+      "title": "CSS Grid Layout Module Level 1, 2025 CRD, section 11",
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-overview",
+      "rule": "Find grid container size with cyclic percentages treated as auto, then run grid sizing with percentages resolved against that resulting size."
+    },
+    {
+      "title": "CSS Box Sizing Module Level 3, section 2",
+      "url": "https://www.w3.org/TR/css-sizing-3/#definite",
+      "rule": "Intrinsic sizing keywords such as max-content are indefinite."
+    }
+  ],
+  "scenarios": [
+    {
+      "id": "cyclic-max-content-auto-fill-rows",
+      "canonicalObservationSceneSha256": "1840d5558351d8ea66bde3283681cc4414bf3b7dece75d7e106dabf58b10f774",
+      "input": {
+        "height": "max-content",
+        "gridTemplateRows": "repeat(auto-fill, minmax(0px, 50%))",
+        "rootContentWidthPx": 24,
+        "itemContentSizePx": {
+          "width": 24,
+          "height": 16
+        },
+        "inFlowItems": 1,
+        "rowGapPx": 0
+      },
+      "specDerived": {
+        "autoRepeatCount": 1,
+        "intrinsicRootContentHeightPx": 16,
+        "finalPercentageBasisPx": 16,
+        "finalTrackSizesPx": [
+          8
+        ],
+        "rootContentBoxPx": {
+          "width": 24,
+          "height": 16
+        },
+        "itemFrameRelativeToRootPx": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "itemOverflowsTrackBlockExtentPx": 8,
+        "repeatReexpansionAfterPercentageResolution": false
+      }
+    },
+    {
+      "id": "definite-40px-auto-fill-control-rows",
+      "canonicalObservationSceneSha256": "8fccc8e618ec79d87a0d2f4c4de29d05125c31c2e93b800933ff86b03c6440bb",
+      "input": {
+        "height": "40px",
+        "gridTemplateRows": "repeat(auto-fill, minmax(0px, 50%))",
+        "rootContentWidthPx": 24,
+        "itemContentSizePx": {
+          "width": 24,
+          "height": 16
+        },
+        "inFlowItems": 1,
+        "rowGapPx": 0
+      },
+      "specDerived": {
+        "autoRepeatCount": 2,
+        "percentageMaximumPx": 20,
+        "finalTrackSizesPx": [
+          20,
+          20
+        ],
+        "rootContentBoxPx": {
+          "width": 24,
+          "height": 40
+        },
+        "itemFrameRelativeToRootPx": {
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      }
+    }
+  ],
+  "chromeObservation": {
+    "rawOutputPath": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/chrome156-observation.json",
+    "rawOutputSha256": "eb0266838a532b461399b5b264b3b0b152a4409f38debcaed5c3378e0429db0b",
+    "screenshotPath": "spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/chrome156-agent-browser.png",
+    "screenshotSha256": "b06f58a88e530af90914cae2e83952631dc3b354697d1b24fb3d0a7b3a6571ff",
+    "capturedAt": "2026-10-25T13:06:06.333Z",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633,
+      "devicePixelRatio": 1
+    },
+    "cssSupports": {
+      "rowAutoRepeatSyntax": true,
+      "maxContentHeight": true
+    },
+    "scenes": [
+      {
+        "id": "cyclic-max-content-auto-fill-rows",
+        "computed": {
+          "width": "24px",
+          "height": "16px",
+          "boxSizing": "content-box",
+          "gridTemplateColumns": "24px",
+          "gridTemplateRows": "8px",
+          "rowGap": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none"
+        },
+        "rootRect": {
+          "x": 32,
+          "y": 59.59375,
+          "width": 24,
+          "height": 16,
+          "top": 59.59375,
+          "right": 56,
+          "bottom": 75.59375,
+          "left": 32
+        },
+        "itemRect": {
+          "x": 32,
+          "y": 59.59375,
+          "width": 24,
+          "height": 16,
+          "top": 59.59375,
+          "right": 56,
+          "bottom": 75.59375,
+          "left": 32
+        },
+        "halfHeightMarkerRect": {
+          "x": 32,
+          "y": 67.59375,
+          "width": 24,
+          "height": 1,
+          "top": 67.59375,
+          "right": 56,
+          "bottom": 68.59375,
+          "left": 32
+        },
+        "scrollExtentPx": {
+          "width": 24,
+          "height": 16
+        },
+        "directInFlowChildCount": 1
+      },
+      {
+        "id": "definite-40px-auto-fill-control-rows",
+        "computed": {
+          "width": "24px",
+          "height": "40px",
+          "boxSizing": "content-box",
+          "gridTemplateColumns": "24px",
+          "gridTemplateRows": "20px 20px",
+          "rowGap": "0px",
+          "minHeight": "0px",
+          "maxHeight": "none"
+        },
+        "rootRect": {
+          "x": 332,
+          "y": 59.59375,
+          "width": 24,
+          "height": 40,
+          "top": 59.59375,
+          "right": 356,
+          "bottom": 99.59375,
+          "left": 332
+        },
+        "itemRect": {
+          "x": 332,
+          "y": 59.59375,
+          "width": 24,
+          "height": 16,
+          "top": 59.59375,
+          "right": 356,
+          "bottom": 75.59375,
+          "left": 332
+        },
+        "halfHeightMarkerRect": {
+          "x": 332,
+          "y": 79.59375,
+          "width": 24,
+          "height": 1,
+          "top": 79.59375,
+          "right": 356,
+          "bottom": 80.59375,
+          "left": 332
+        },
+        "scrollExtentPx": {
+          "width": 24,
+          "height": 40
+        },
+        "directInFlowChildCount": 1
+      }
+    ]
+  },
+  "conclusion": {
+    "hypothesis": "re-expand cyclic max-content auto-fill rows from one intrinsic row to two 8px rows after resolving 50% against 16px root height",
+    "independentExpectation": "one 8px row after percentage resolution; root remains 16px high and the fixed 16px item extends 8px beyond that row track",
+    "chrome156": "one 8px row, root 16px high, item 16px high",
+    "result": "hypothesis falsified; Chrome matches the independent CSS Grid 2025 CRD calculation; no row re-expansion implementation acceptance",
+    "remainingRuntimeGap": "the max-content row target is not admitted by the current opt-in fixture validator and has no recorded Spinon runtime or simulator run; the definite row control's general validation and axis-level Rust tests already exist"
+  }
+}
