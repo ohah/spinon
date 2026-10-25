@@ -38,3 +38,7 @@
 ## 결과
 
 차단 결함은 발견하지 않았다. 로컬 preview 620/620, 백업 27/27, Tailnet HTTP 200 및 SHA 620/620이 확인됐다. Agent Browser 시각 검증을 마쳤고 해당 세션을 종료했다. 제품 테스트는 실행하지 않았다.
+
+## PR 본문 이미지 후속 확인
+
+PR #618 본문의 첫 raw image URL은 커밋 SHA 오기로 404였다. Git의 실제 `HEAD`를 대조해 URL을 수정하고, 새 Agent Browser 세션에서 PR 본문 이미지를 다시 확인했다. 이미지 `complete`는 true이며 natural size는 1280×633이다. 최종 URL은 `d87b6eda7b00f8a6c771fa32b9686c7c1dbf4dfd`에 고정되어 있다. 수정 전후 화면 검증 세션을 모두 종료했다.
