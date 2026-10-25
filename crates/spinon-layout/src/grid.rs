@@ -2,6 +2,9 @@ use std::collections::BTreeMap;
 
 use spinon_core::NodeId;
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+mod cyclic_percentage_auto_repeat_rows;
+
 use crate::grid_placement::normalize_grid_layout;
 use crate::{
     GridPlacementInput, LayoutBoxSizing, LayoutCssMath, LayoutCssMathProperty, LayoutDimension,
@@ -855,6 +858,14 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
     container: &GridContainerInput,
     allow_definite_control: bool,
 ) -> bool {
+    if cyclic_percentage_auto_repeat_rows::fixture_cyclic_percentage_auto_repeat_generalized_rows_scene(
+        input,
+        node,
+        container,
+        allow_definite_control,
+    ) {
+        return true;
+    }
     if input.root != node.id || input.nodes.len() != 2 || node.children.len() != 1 {
         return false;
     }

@@ -14,6 +14,10 @@ const requestedSceneIDs = process.argv.find((argument) => argument.startsWith('-
 const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-column', 'cyclic-percent-row', 'definite-percent-column',
   'cyclic-max-content-auto-fill-rows', 'definite-40px-auto-fill-control-rows',
+  'cyclic-max-content-auto-fill-prefix-suffix',
+  'cyclic-max-content-auto-fit-prefix-suffix',
+  'definite-44px-auto-fill-prefix-suffix-control',
+  'definite-44px-auto-fit-prefix-suffix-control',
   'cyclic-minmax-column', 'cyclic-minmax-row', 'definite-minmax-column',
   'cyclic-fit-content-column', 'cyclic-fit-content-row', 'definite-fit-content-column',
   'cyclic-fit-content-calc-column', 'cyclic-fit-content-calc-row',
@@ -55,6 +59,12 @@ const cyclicPercentSceneIDs = new Set([
   'cyclic-percent-rows-multitrack', 'definite-percent-two-axis-multitrack',
   'cyclic-calc-column', 'cyclic-calc-row', 'cyclic-calc-two-axis',
   'definite-calc-control',
+]);
+const generalizedCyclicRowSceneIDs = new Set([
+  'cyclic-max-content-auto-fill-prefix-suffix',
+  'cyclic-max-content-auto-fit-prefix-suffix',
+  'definite-44px-auto-fill-prefix-suffix-control',
+  'definite-44px-auto-fit-prefix-suffix-control',
 ]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
@@ -145,6 +155,8 @@ const isNestedGridDepthAnonymousImageRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => nestedGridDepthAnonymousImageSceneIDs.has(sceneID));
 const isCyclicPercentRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => cyclicPercentSceneIDs.has(sceneID));
+const isGeneralizedCyclicRowRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => generalizedCyclicRowSceneIDs.has(sceneID));
 const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
 const isCrossAxisTemplateAreaRun = requestedSceneIDs?.length > 0
@@ -196,6 +208,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
     ? `spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-${date}/${target}-${runPrefix}`
+  : isGeneralizedCyclicRowRun
+    ? `spec/internal/evidence/c11-4-cyclic-row-auto-repeat-generalization-runtime-${date}/${target}-${runPrefix}`
   : isCyclicPercentRun
     ? `spec/internal/evidence/c11-4-cyclic-percentage-track-runtime-${date}/${target}-${runPrefix}`
   : isNestedGridTextMultiSpanRun
@@ -4847,6 +4861,37 @@ scenes.push(...await fixedRepeatAutoRepeatScenes({
 }));
 scenes.push(...await fixedRepeatMinmaxFlexScenes());
 scenes.push(...await fixedAutoRepeatAreaScenes());
+const generalizedCyclicRowSamples = (sceneId) => [
+  { id: 'generalized-prefix', nodeId: `c114-${sceneId}-prefix`,
+    xCssPx: 12, yCssPx: 4, rgba: [47, 158, 68, 255] },
+  { id: 'generalized-secondary-overlap', nodeId: `c114-${sceneId}-secondary`,
+    xCssPx: 8, yCssPx: 15, rgba: [240, 140, 0, 255] },
+  { id: 'generalized-primary-overlap', nodeId: `c114-${sceneId}-primary`,
+    xCssPx: 20, yCssPx: 15, rgba: [229, 72, 77, 255] },
+  { id: 'generalized-primary-overflow', nodeId: `c114-${sceneId}-primary`,
+    xCssPx: 20, yCssPx: 33, rgba: [229, 72, 77, 255] },
+  { id: 'generalized-root-background', nodeId: `c114-${sceneId}-grid`,
+    xCssPx: 20, yCssPx: 40, rgba: [16, 24, 32, 255] },
+];
+const generalizedCyclicRowScene = (id, rows, collapsed) => ({
+  id,
+  axis: 'Rows',
+  boxCount: 4,
+  rootFrame: 'width=24,height=44',
+  itemFrame: 'width=24,height=24',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;'
+    + '1:node=2,x=0,y=0,width=24,height=8;'
+    + '2:node=3,x=0,y=10,width=24,height=24;'
+    + '3:node=4,x=0,y=10,width=16,height=16]',
+  tracks: rows,
+  collapsed,
+  axes: {
+    Columns: { tracks: [24], collapsed: [false] },
+    Rows: { tracks: rows, collapsed },
+  },
+  gaps: { Columns: 0, Rows: 2 },
+  pixelSamples: generalizedCyclicRowSamples(id),
+});
 scenes.push(
   {
     id: 'cyclic-max-content-auto-fill-rows',
@@ -4880,8 +4925,22 @@ scenes.push(
     },
     gaps: { Columns: 0, Rows: 0 },
   },
+  generalizedCyclicRowScene(
+    'cyclic-max-content-auto-fill-prefix-suffix', [8, 11, 8], [false, false, false],
+  ),
+  generalizedCyclicRowScene(
+    'cyclic-max-content-auto-fit-prefix-suffix', [8, 11, 8], [false, false, false],
+  ),
+  generalizedCyclicRowScene(
+    'definite-44px-auto-fill-prefix-suffix-control',
+    [8, 11, 11, 8], [false, false, false, false],
+  ),
+  generalizedCyclicRowScene(
+    'definite-44px-auto-fit-prefix-suffix-control',
+    [8, 11, 0, 8], [false, false, true, false],
+  ),
 );
-assert.equal(scenes.length, 492, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 496, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

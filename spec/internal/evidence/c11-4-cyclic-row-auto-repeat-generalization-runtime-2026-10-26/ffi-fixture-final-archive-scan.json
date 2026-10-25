@@ -1,0 +1,16 @@
+{
+  "archive": "target/debug/libspinon_ffi.a",
+  "archiveSha256": "8cc621fd7068a5acec1c7107321b487352cf882d0cf9ec818ec526ea25bc57a3",
+  "rustc": "1.96.1 aarch64-apple-darwin",
+  "symbols": [
+    "0000000000000000 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+    "00000000000003d4 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ],
+  "sceneStrings": [
+    "cyclic-max-content-auto-fill-prefix-suffix",
+    "cyclic-max-content-auto-fit-prefix-suffix",
+    "definite-44px-auto-fill-prefix-suffix-control",
+    "definite-44px-auto-fit-prefix-suffix-control"
+  ],
+  "sceneStringCount": 4
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "deviceName": "iPhone 17 Pro",
+  "bundleIdentifier": "dev.spinon.bootstrap",
+  "executable": "SpinonBootstrap",
+  "buildAppExecutableSha256": "99be8687d3f23b70dae8630437ae1dbb7ab71ff16c7ded9891452e9c71425d05",
+  "installedAppExecutableSha256": "99be8687d3f23b70dae8630437ae1dbb7ab71ff16c7ded9891452e9c71425d05",
+  "matched": true,
+  "verifiedWith": "xcrun simctl get_app_container <udid> dev.spinon.bootstrap app; SHA-256 of SpinonBootstrap",
+  "installedAppBundlePath": "SpinonBootstrap.app/SpinonBootstrap"
+}

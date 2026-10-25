@@ -1,0 +1,274 @@
+ios-simulator C11.4 scene 1/4: cyclic-max-content-auto-fill-prefix-suffix passed
+ios-simulator C11.4 scene 2/4: cyclic-max-content-auto-fit-prefix-suffix passed
+ios-simulator C11.4 scene 3/4: definite-44px-auto-fill-prefix-suffix-control passed
+ios-simulator C11.4 scene 4/4: definite-44px-auto-fit-prefix-suffix-control passed
+{
+  "evidenceDirectory": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-cyclic-row-auto-repeat-generalization-runtime-2026-10-26/ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T182411249Z-0b566316",
+  "target": "ios-simulator",
+  "observations": [
+    {
+      "sceneId": "cyclic-max-content-auto-fill-prefix-suffix",
+      "summary": "2026-10-26 03:24:12.029248+0900  localhost SpinonBootstrap[42317]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T182411249Z-0b566316-0 scene_id=cyclic-max-content-auto-fill-prefix-suffix expected_root_frame=width=24,height=44 expected_item_frame=width=24,height=24 status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;1:node=2,x=0,y=0,width=24,height=8;2:node=3,x=0,y=10,width=24,height=24;3:node=4,x=0,y=10,width=16,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 44
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 8
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 10,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 0,
+          "y": 10,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 11,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "cyclic-max-content-auto-fit-prefix-suffix",
+      "summary": "2026-10-26 03:24:14.420637+0900  localhost SpinonBootstrap[42387]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T182411249Z-0b566316-1 scene_id=cyclic-max-content-auto-fit-prefix-suffix expected_root_frame=width=24,height=44 expected_item_frame=width=24,height=24 status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;1:node=2,x=0,y=0,width=24,height=8;2:node=3,x=0,y=10,width=24,height=24;3:node=4,x=0,y=10,width=16,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 44
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 8
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 10,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 0,
+          "y": 10,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 11,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-44px-auto-fill-prefix-suffix-control",
+      "summary": "2026-10-26 03:24:16.983656+0900  localhost SpinonBootstrap[42792]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T182411249Z-0b566316-2 scene_id=definite-44px-auto-fill-prefix-suffix-control expected_root_frame=width=24,height=44 expected_item_frame=width=24,height=24 status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;1:node=2,x=0,y=0,width=24,height=8;2:node=3,x=0,y=10,width=24,height=24;3:node=4,x=0,y=10,width=16,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 44
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 8
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 10,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 0,
+          "y": 10,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 11,
+            "collapsed": false
+          },
+          {
+            "baseSize": 11,
+            "collapsed": false
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "definite-44px-auto-fit-prefix-suffix-control",
+      "summary": "2026-10-26 03:24:18.385367+0900  localhost SpinonBootstrap[43103]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261025T182411249Z-0b566316-3 scene_id=definite-44px-auto-fit-prefix-suffix-control expected_root_frame=width=24,height=44 expected_item_frame=width=24,height=24 status=0 layout=ready boxes=4 generation=1 document_revision=20 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;1:node=2,x=0,y=0,width=24,height=8;2:node=3,x=0,y=10,width=24,height=24;3:node=4,x=0,y=10,width=16,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 44
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 8
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 10,
+          "width": 24,
+          "height": 24
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 0,
+          "y": 10,
+          "width": 16,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 8,
+            "collapsed": false
+          },
+          {
+            "baseSize": 11,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 8,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
