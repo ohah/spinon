@@ -111,7 +111,7 @@ const nodeIds = [{root_id:?}];
                 r#"const item{index} = document.createElement('div');
 item{index}.setAttribute('id', {item_id:?});
 item{index}.setAttribute('data-node', '');
-item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:{column} / span 1;grid-row:1;justify-self:stretch;align-self:start;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d;color:#e5484d');
+item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:{column} / span 1;grid-row:1;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d;color:#e5484d');
 item{index}.appendChild(document.createTextNode('XX XXXXX'));
 "#,
                 item_id = item.id,
@@ -123,7 +123,7 @@ item{index}.setAttribute('id', {item_id:?});
 item{index}.setAttribute('data-node', '');
 item{index}.setAttribute('src', 'https://spinon.invalid/c14-1-png-basic.png');
 item{index}.setAttribute('alt', '');
-item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;min-width:auto;min-height:auto;margin:0;padding:0;border:0;grid-column:{column} / span 1;grid-row:1;justify-self:start;align-self:start;background-color:#e5484d');
+item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;min-width:auto;min-height:auto;margin:0;padding:0;border:0;grid-column:{column} / span 1;grid-row:1;background-color:#e5484d');
 "#,
                 item_id = item.id,
                 column = item.column,
@@ -164,8 +164,8 @@ mod tests {
             };
             assert!(source.contains(expected_row));
             assert_eq!(source.matches("grid-row:1").count(), 2);
-            assert!(source.contains("justify-self:stretch;align-self:start"));
-            assert!(source.contains("justify-self:start;align-self:start"));
+            assert!(!source.contains("justify-self:"));
+            assert!(!source.contains("align-self:"));
             assert!(source.contains("XX XXXXX"));
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
             assert!(source.contains(&format!("sceneId:{:?}", scene.id)));
