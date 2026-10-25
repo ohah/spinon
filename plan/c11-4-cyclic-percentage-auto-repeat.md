@@ -6,11 +6,11 @@
 
 **사전 비교:** [규범 기대·Agent Browser 관측·화면](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md)
 
-**상태:** 고정 입력과 독립 기대값을 정리했다. `width:max-content` target은 intrinsic sizing pass에서 auto-repeat을 한 번 계산하고, 결과 `24px` basis로 최종 layout pass를 할 때 두 번 계산한다. CSS Grid 2025 CRD와 Chrome 156 최종 track 관측은 `[12px,12px]`에서 일치한다. 이 기록은 계획과 Chrome 사전 비교이며 Spinon 구현이나 runtime 결과가 아니다.
+**상태 · 2026-10-25:** 이 계획의 fixed cyclic target/control은 제한 runtime slice로 구현해 구현 PR [#623](https://github.com/ohah/spinon/pull/623)에 병합했다(merge SHA `56daefe96e8143959bc99a89c7a8c80e7f1cc4ba`, source SHA `c5b8ef75804e39d36a37aa61b82b1f028115fefd`). Android API 37 16 KB AVD와 iPhone 17/iOS 26.2 Simulator에서 target/control frame, phase/count/basis/track trace와 PixelCopy/Metal sample이 모두 통과했다(AVD software renderer, iOS Metal drawable은 compositor 제출 전 표본). [구현·simulator·artifact 근거](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md) · [implementation/runtime review 20개](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/implementation-runtime-review-20.md) · [PR diff review 20개](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/pr-diff-review-20.md). 구현 범위는 exact two-scene opt-in fixture feature이며 일반 CSS admission, release APK/IPA fixture exclusion 또는 C11.4 전체 완료를 뜻하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
 ## 목적과 범위
 
-현재 제한 profile에는 cyclic percentage track sizing과 definite-axis auto-repeat이 각각 별도 fixed-scene slice로 존재하지만, intrinsic max-content sizing에서 auto-repeat count를 구한 뒤 percentage track을 최종 layout하는 조합은 고정 runtime scene이 없다. 이 계획은 columns 축에서 다음 두 pass를 하나의 allowlisted scene으로 확인한다.
+계획 작성 당시 제한 profile에는 cyclic percentage track sizing과 definite-axis auto-repeat이 각각 별도 fixed-scene slice로 존재했지만, intrinsic max-content sizing에서 auto-repeat count를 구한 뒤 percentage track을 최종 layout하는 조합은 고정 runtime scene이 없었다. 병합된 implementation은 columns 축에서 다음 두 pass를 하나의 allowlisted scene으로 확인한다.
 
 1. intrinsic `max-content` sizing에서 `max-content` width는 indefinite다. cyclic percentage breadth는 intrinsic sizing 계산에서 `auto`처럼 처리되고 auto-repeat은 한 번 확장된다.
 2. 이 pass가 구한 `24px` content width로 grid를 최종 layout한다. 이때 width는 definite basis이고 `50%` breadth는 `12px`이다. Auto-repeat count를 이 pass에서 다시 계산하면 반복 수 2, used columns `[12px,12px]`가 된다.
@@ -39,11 +39,13 @@
 
 위 독립 계산과 Chrome 156 관측을 구분한 machine-readable 자료, 원본 입력·화면·hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-precomparison-2026-10-25/README.md)에 있다. Chrome 156 CSSOM은 max-content target에서 `12px 12px`, control에서 `20px 20px`를 보였다. 이 final CSSOM은 intrinsic pass 최초 count를 보여주지 않으므로 그 단계 경계는 Spinon runtime trace에서 직접 확인한다.
 
-## 구현 진입 관문: pass trace feasibility
+## 구현 진입 관문과 결과: pass trace feasibility
 
-현재 trace는 일부 단계 관측에 재사용할 수 있지만 요구된 pass provenance를 아직 표현하지 않는다. `crates/spinon-layout/src/grid.rs`의 `LayoutGridTrackSizingPassTrace`는 `sequence`, `axis`, `stages`, `contributions`를 보유하고, `vendor/taffy/src/compute/grid/track_sizing.rs`는 축별 track-sizing 실행을 순서대로 기록한다. `crates/spinon-layout/src/taffy_style.rs`는 `TrackSizing` profile의 non-flow pass에서 이를 켜며, `RuntimeGridTrackSizingDiagnostics`는 `c11-4-grid-track-sizing-fixture-test` feature에서 보존된다. `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs`는 sequence/axis/stage/contribution을 직렬화한다. 그러나 현재 API/보고서는 intrinsic max-content 대 final definite라는 semantic phase, phase별 auto-repeat expanded count, percentage basis를 직접 저장하지 않는다. `sequence`나 stage track 수만 보고 phase를 추정하지 않는다.
+계획 당시 trace는 일부 단계 관측에 재사용할 수 있었지만 요구된 pass provenance를 표현하지 않았다. `crates/spinon-layout/src/grid.rs`의 `LayoutGridTrackSizingPassTrace`는 `sequence`, `axis`, `stages`, `contributions`를 보유하고, `vendor/taffy/src/compute/grid/track_sizing.rs`는 축별 track-sizing 실행을 순서대로 기록했다. `crates/spinon-layout/src/taffy_style.rs`는 `TrackSizing` profile의 non-flow pass에서 이를 켰으며, `RuntimeGridTrackSizingDiagnostics`는 `c11-4-grid-track-sizing-fixture-test` feature에서 보존됐다. 구현은 이 opt-in 경계에 semantic phase, auto-repeat count, percentage basis를 실제 Taffy sizing callsite에서 capture하도록 연결했다. 상세 실행은 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md)에 있다.
 
-첫 구현 관문은 각 target scene을 실제 runtime style/layout 경로에 넣은 focused fixture-test probe다. `LayoutOutput`의 pass 목록과 완료 revision에 묶인 `RuntimeGridTrackSizingDiagnostics`가 둘의 sizing phase를 각각 실제로 보존하는지 확인한다. 현재 field로 semantic phase/count/basis를 손실 없이 증명하지 못하면, **코드 소유 영역의 opt-in trace hook만 추가**한다. Hook은 `c11-4-grid-track-sizing-fixture-test` 경계에서 actual sizing callsite가 `intrinsic-max-content` 또는 `final-definite`임을 부여하고, 해당 pass의 expanded repeat count와 percentage basis를 실제 사용값에서 캡처해 runtime diagnostics와 FFI report로 전달해야 한다. 기본/제품 artifact에는 trace ABI·payload를 넣지 않는다. Runtime 경로에 서로 식별 가능한 두 phase가 없거나 callsite에서 phase/count/basis를 신뢰성 있게 관찰할 수 없으면 첫 관문에서 중단하고 blocking layer와 근거를 보고한다. sequence 순서를 phase label로 간주하거나 추정값을 넣어 다음 구현 단계로 진행하지 않는다.
+계획 acceptance의 첫 관문은 target scene을 runtime style/layout 경로에 넣어 `LayoutOutput`과 완료 revision에 묶인 `RuntimeGridTrackSizingDiagnostics`에서 두 sizing phase를 구분하는 것이었다. 기존 field로 phase/count/basis를 증명할 수 없어 `c11-4-grid-track-sizing-fixture-test` 전용 hook을 actual Taffy sizing callsite에 추가했다. `intrinsic-max-content`/`final-definite` phase, 해당 pass의 auto-repeat count와 percentage basis가 runtime diagnostics 및 FFI report까지 보존되며, feature 없는 기본 artifact에는 이 trace ABI·payload가 들어가지 않는다. acceptance 결과는 [runtime evidence](../spec/internal/evidence/c11-4-cyclic-percentage-auto-repeat-runtime-2026-10-25/README.md)에 있다.
+
+첫 pass의 count 1/basis 없음과 final pass의 count 2/basis 24px, 그리고 definite 40px control의 count 2/basis 40px를 재구성 값이 아닌 실제 trace에서 확인했다. sequence 순서를 phase label로 추정하지 않고 semantic phase를 직접 기록한다. 이 gate는 통과했다.
 
 ## 고정 입력과 acceptance
 
@@ -51,10 +53,10 @@
 - Runtime scene `definite-40px-auto-fill-control`: 같은 columns pattern과 item을 쓰고 root width만 definite `40px`로 고정한다. Control도 min/max width를 별도로 author하지 않으며 target과 같은 초기값만 허용한다.
 - Browser 사전비교 HTML에는 각 grid 아래 화면 경계 표시용 `position:absolute` `.boundary` span이 하나 있다. 이것은 screenshot 관측 보조이며 Grid §6에 따라 out-of-flow라 sizing item이 아니다. Browser IDs `cyclic`/`definite`는 runtime IDs `cyclic-max-content-auto-fill`/`definite-40px-auto-fill-control`에 매핑된다. `.boundary`는 runtime HTML/scene, `nodeIds`, FFI payload 및 runtime child validator에 넣지 않으며 runtime fixture의 grid item은 오직 한 개다.
 - Scene별로 document/style/environment revision, computed track AST, intrinsic-pass/final-pass identity, auto-repeat count, percentage basis, expanded used columns, row tracks, root/item frames와 Columns→Rows trace를 대조한다.
-- 첫 구현 관문에서 runtime API가 기존 trace로 요구값을 증명하는지 확인한다. 부족하면 위에 지정한 fixture-test opt-in 계측으로만 보완한다. 의미가 부여된 두 pass, count와 basis를 기록할 수 없으면 구현 acceptance/test/platform gates에 진입하지 않고 중단한다.
+- 첫 구현 관문은 통과했다. Runtime API가 기존 trace만으로는 요구값을 증명할 수 없어 위의 fixture-test opt-in 계측을 추가했으며, 의미가 부여된 두 pass, count와 basis를 기록했다.
 - Target에서 첫 pass count 1, max-content content width 24px, 최종 definite basis 24px, 최종 pass count 2 및 columns `[12,12]px`가 각각 관찰되어야 한다. Final-pass count를 보이지 않는 하나의 최종 CSSOM 값이나 scene count만으로 대체하지 않는다.
 - Definite control은 count 2, columns `[20,20]px`, root 40×16px, item 24×16px여야 한다. Track list order는 정확히 일치하고 geometry는 1/64 CSS px 안에 있어야 한다.
-- 현재 Taffy/Spinon 경로가 두 pass를 이미 일치시키면 runtime 알고리즘 수정 대신 opt-in fixture, regression assertion과 evidence만 추가한다. Pass별 auto-repeat 재계산이 누락되거나 count/track 값이 독립 계산과 다를 때만 차이를 좁혀 최소 변경을 계획한다.
+- 계획 당시 acceptance는 기존 경로가 두 pass를 이미 일치시키면 fixture/assertion만 추가하고, 재계산 결함이 관찰될 때만 알고리즘을 바꾸는 것이었다. Target에서 intrinsic pass의 1-track 24px 결과가 final definite pass에 재사용되어야 했고, count가 다시 계산되지 않아 Taffy re-expansion을 exact fixture feature에 한정해 추가했다.
 
 ## 오류와 fail-closed 경계
 
