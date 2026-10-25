@@ -4,6 +4,7 @@ mod error;
 mod id;
 mod scheduler;
 mod tree;
+mod writing;
 
 pub use batch::{Change, ChangeBatch, CommitReceipt, Operation};
 pub use document::{
@@ -19,3 +20,4 @@ pub use id::{
 };
 pub use scheduler::{PriorityQueue, TaskPriority};
 pub use tree::{Node, Tree};
+pub use writing::{TextOrientation, WritingMode};
