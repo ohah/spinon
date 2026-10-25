@@ -2,8 +2,8 @@
 
 - 대상: `plan/c11-4-orthogonal-writing-mode-prerequisite.md` 초안 및 보완본.
 - 초기 검토 방법: 이전 초안, 당시 소스, orthogonal 사전 비교를 읽었다. 빌드·테스트·브라우저·시뮬레이터는 실행하지 않았다.
-- 최종 재검토 기준: PR #626, base `f197239b0168e2356f4d0ece03f5d2e4c40278fe`, head `0264282927a0b826f7e737a6f0727a3242ed0d1b`. 최종 대상 계획 파일 blob은 `f16d35b03b4a1cc552f87ffbde8b32b38d38a048`이다.
-- 최종 재검토 방법: 위 head의 계획을 현재 소스, spec, fixture evidence와 대조했다. 빌드·테스트·브라우저·시뮬레이터는 실행하지 않았다.
+- 최종 재검토 기준: PR #626, base `f197239b0168e2356f4d0ece03f5d2e4c40278fe`, 계획 원문 검토 head `c19af8e81f4e569cbffd42a925b6153eaccfbbc4`. 계획 파일 blob은 `f0615bb452f4b2d6cbfd3f4e330f3ef55011cdd6`이다.
+- 최종 재검토 방법: 위 계획 blob을 현재 소스, W3C CSS spec, fixture evidence 및 `spinon-runtime`의 실제 literal 목록과 대조했다. runtime에서는 22개 literal/21개 파일(생산 경로 2, C11.4 fixture 20)을 확인했다. 빌드·테스트·브라우저·시뮬레이터는 실행하지 않았다.
 - 초기 판정 표의 실제 합계는 **12 PASS / 8 PARTIAL / 0 FAIL**이다. 당시 초안의 `13/7` 요약은 합산 오류였다. 표는 초기 초안에 대한 역사 기록이며 현재 계획의 최종 판정으로 사용하지 않는다.
 - 최종 독립 재검토: **20 PASS / 0 PARTIAL / 0 FAIL**. 이 결과는 계획 준비도만 판정하며 코드 구현·Taffy feasibility·C11.4 완료를 의미하지 않는다.
 
@@ -45,25 +45,25 @@
 
 | # | 실패 관점 | 판정 | 현재 head의 줄별 근거 |
 |---:|---|---|---|
-| 1 | 제안 범위가 기존 C11.4 orthogonal 후보의 scene이나 지원 범위를 바꾸는가 | PASS | 계획 23–30, 96–104행은 네 exact scene, 제외 범위와 미완료 상태를 고정한다. 사전비교 README 14–37행에는 입력과 네 scene geometry가 기록되어 있다. |
-| 2 | 차단 경로 설명이 실제 Stylo→text/layout 코드와 어긋나는가 | PASS | 계획 13–19행을 `runtime_grid.rs:147–168`, `spinon-layout/src/style.rs:334–371`, `spinon-text-layout/src/model.rs:126–138`, `spinon-layout/src/intrinsic_measurement.rs:193–243`과 대조했다. |
+| 1 | 제안 범위가 기존 C11.4 orthogonal 후보의 scene이나 지원 범위를 바꾸는가 | PASS | 계획 23–30, 98–106행은 네 exact scene과 실패 경계, 아직 미완료인 상태를 고정한다. 사전비교 README 14–37행에는 입력과 네 scene geometry가 기록되어 있다. |
+| 2 | 차단 경로 설명이 실제 Stylo→text/layout 코드와 어긋나는가 | PASS | 계획 13–17행을 `runtime_grid.rs:147–168`, `spinon-layout/src/style.rs:334–371`, `spinon-text-layout/src/model.rs:126–138`, `spinon-layout/src/intrinsic_measurement.rs:193–243`과 대조했다. |
 | 3 | `spinon-core` 공통 타입 owner가 dependency DAG와 맞지 않는가 | PASS | 계획 16, 34, 42행의 shared dependency 근거는 `spinon-style/Cargo.toml:12`, `spinon-text-layout/Cargo.toml:11`, `spinon-layout/Cargo.toml:11–12`과 일치한다. |
-| 4 | 지원 variant·기본값·누락 및 unsupported 의미가 모호한가 | PASS | 계획 38–40, 48, 56, 64, 96행이 허용 enum, enum `Default` 금지, 구분된 오류, paragraph 기본값, 누락 시 fail-closed를 명시한다. |
+| 4 | 지원 variant·기본값·누락 및 unsupported 의미가 모호한가 | PASS | 계획 38–40, 48, 56, 64, 98행이 허용 enum, enum `Default` 금지, 구분된 오류, paragraph 기본값과 누락 시 fail-closed를 명시한다. |
 | 5 | writing-mode·text-orientation의 computed/inherited 계약이 불분명한가 | PASS | 계획 36–39, 55–56행이 root/text/image의 computed 값, inherited `mixed`, CSS initial/inheritance와 incomplete snapshot을 구분한다. W3C 명세 링크는 계획 36행에 있다. |
-| 6 | Stylo authored 문자열을 typed computed style로 잘못 운반하는가 | PASS | 계획 55–57행은 Stylo computed values를 공통 enum으로 변환하고 node identity 및 `computed_style_revision`에 묶는다. 현재 snapshot 구조는 `snapshot.rs:501–529`에 있다. |
-| 7 | 1A/1B 병렬 file boundary가 겹치거나 shared enum을 동시에 바꾸는가 | PASS | 계획 48, 52–57, 61–72, 112–113행은 공통 타입 단독 선행, lane별 소유 범위, literal migration 경계 및 후속 순차 통합을 정한다. |
-| 8 | layout으로 보낼 exact carrier와 field owner가 지정되지 않았는가 | PASS | 계획 76–78행은 `spinon-layout/src/intrinsic_measurement.rs`의 `LayoutGridItemIntrinsicSource::OrthogonalText` field, 각 field의 타입, `LayoutGridItemIntrinsicInput.source`/`LayoutGridItemIntrinsicContributionInput.source` 보존 위치와 conversion owner를 지정한다. |
-| 9 | `ParagraphStyle::default()`와 모든 기존 literal 호출부 migration이 빠지는가 | PASS | 계획 64, 68, 112행은 `HorizontalTb`/`Mixed` 기본값, C11.4 missing snapshot의 오류, compile-time literal migration과 허용 crate를 명시한다. 기존 모델/default는 `model.rs:126–178`에 있다. |
-| 10 | Ahem 50/80을 측정 결과 대신 입력으로 넣을 수 있는가 | PASS | 계획 65–66, 99행은 실제 shaping/break evidence와 비주입을 요구한다. 사전비교 README 28–37, 51–55행은 독립 수치 산출과 자산 hash를 기록한다. |
-| 11 | logical inline contribution을 parent 물리 row/column으로 바꾸는 축이 틀리는가 | PASS | 계획 78–80, 99행은 단일 매핑과 최종 frame 기대를 명시한다. 사전비교 README 26–37행은 orthogonal 축 관계와 네 scene의 geometry를 기록한다. |
-| 12 | `LayoutInput::transpose()`만으로 per-item orthogonal support를 주장하는가 | PASS | 계획 17, 80, 84–88행은 transpose만으로 지원을 주장하지 않고 실제 feasibility 및 중단 조건을 둔다. Vendored Taffy의 horizontal-tb 전제는 `vendor/taffy/src/compute/grid/alignment.rs:148–149`에 있다. |
-| 13 | unsupported/missing 입력이 fallback·예상값·부분 결과로 성공 처리되는가 | PASS | 계획 38–39, 56, 80, 96–99행은 오류 경계와 fallback, expected injection, partial output 금지를 명시한다. |
-| 14 | Taffy generic algorithm 수정이 필요해도 계획 범위가 확장되는가 | PASS | 계획 82–88행은 generic Grid/global axis 변경이 필요할 때 이 계획을 중지하고 상위 설계와 별도 검토를 요구한다. |
-| 15 | 기존 #611/#620 horizontal regression을 놓치는가 | PASS | 계획 30, 76, 100행은 #611 column 네 scene과 #620 horizontal row 네 scene의 전후 gate 및 별도 12-scene 보고를 고정한다. |
-| 16 | style/text/layout/trace revision이 서로 다른 입력 epoch로 합쳐지는가 | PASS | 계획 57, 76, 78, 80, 92, 99행은 `computed_style_revision`, `LayoutInputRevision`, `FontRegistryRevision`, layout/trace provenance를 연결한다. |
-| 17 | typed values가 다른 profile이나 public CSS 지원으로 새어 나가는가 | PASS | 계획 38–40, 56, 97행은 C11.4 opt-in profile에만 값을 허용하고 다른 profile 및 public CSS admission을 배제한다. |
-| 18 | fixture ABI·payload 조건을 이미 검증한 product artifact 결과처럼 표현하는가 | PASS | 계획 101행은 기본/product artifact와 opt-in positive control의 미래 acceptance를 분리하고 archive 결과를 APK/IPA 전체 제외 증거로 확대하지 못하게 한다. |
-| 19 | Android/iOS 수용 행렬이나 simulator 실행이 이미 완료된 것처럼 읽히는가 | PASS | 계획 92, 98–102행은 gate 이후의 미래 runtime matrix와 플랫폼 한계를 명시하며 unit 결과와 runtime proof를 분리한다. |
-| 20 | 계획 성공이 C11.4 완료 수나 내부 숫자 버전을 올리는가 | PASS | 계획 40, 104행은 공개 API 및 계약 변경이 없고 공식 C11.4 미완료, `72/213`, 내부 계약 `0.1.0`을 유지한다고 명시한다. |
+| 6 | Stylo authored 문자열을 typed computed style로 잘못 운반하는가 | PASS | 계획 55–57행은 Stylo computed values를 공통 enum으로 변환하고 node identity 및 같은 computed-style epoch에 묶는다. 현재 node 값은 `snapshot.rs:501–529`, 해당 요소 목록과 공유 `StyleRevision`은 `snapshot.rs:576–587`에 있다. |
+| 7 | 1A/1B 병렬 file boundary가 겹치거나 shared enum을 동시에 바꾸는가 | PASS | 계획 48, 52–57, 63–74, 70, 100, 114행은 공통 타입 단독 선행, 1A style 경계, 1B의 기존 literal migration 경계(runtime 22 literal/21 files 포함), 이후 순차 단계와 owner 충돌 시 중단을 정한다. |
+| 8 | layout으로 보낼 exact carrier와 field owner가 지정되지 않았는가 | PASS | 계획 78–80행은 `spinon-layout/src/intrinsic_measurement.rs`의 `LayoutGridItemIntrinsicSource::OrthogonalText` 여섯 필드, size·mode/orientation 타입, 두 intrinsic input의 `.source` 보존, `LayoutInputRevision` 결합과 `contribution_input()` 단일 축 변환 owner를 지정한다. 기존 revision type은 `intrinsic_measurement.rs:2,44–60,75–84`에 있다. |
+| 9 | `ParagraphStyle::default()`와 모든 기존 literal 호출부 migration이 빠지는가 | PASS | 계획 64–70, 100, 114행은 default의 `HorizontalTb`/`Mixed`, C11.4 missing snapshot 거부, 네 consumer crate migration, runtime 22 literal/21 files, production 두 경로의 horizontal gate와 20 fixture regression을 분리해 명시한다. 현재 runtime에는 `..ParagraphStyle::default()`를 쓰는 literal도 있으므로 line 100의 22개 명시 필드 점검이 compile-only 확인을 보완한다. Production guards는 `root_html_default_render/style.rs:14–16,45–95`, `root_html_text_paint.rs:78–80`, `root_html_text_paint/tree.rs:330–369`에 있고 기존 모델/default는 `spinon-text-layout/src/model.rs:126–178`에 있다. |
+| 10 | Ahem 50/80을 측정 결과 대신 입력으로 넣을 수 있는가 | PASS | 계획 67–68, 101행은 실제 shaping/break evidence와 상수 비주입을 요구한다. 사전비교 README 28–37, 51–55행은 독립 수치 산출과 자산 hash를 기록한다. |
+| 11 | logical inline contribution을 parent 물리 row/column으로 바꾸는 축이 틀리는가 | PASS | 계획 80–82, 101행은 단일 매핑과 최종 frame 기대를 명시한다. 사전비교 README 26–37행은 orthogonal 축 관계와 네 scene geometry를 기록한다. |
+| 12 | `LayoutInput::transpose()`만으로 per-item orthogonal support를 주장하는가 | PASS | 계획 17, 82, 86–90행은 transpose만으로 지원을 주장하지 않고 실제 feasibility 및 중단 조건을 둔다. Taffy의 horizontal-tb 전제는 `vendor/taffy/src/compute/grid/alignment.rs:148–149`에 있다. |
+| 13 | unsupported/missing 입력이 fallback·예상값·부분 결과로 성공 처리되는가 | PASS | 계획 38–39, 56, 82, 98–101행은 오류 경계와 fallback, expected injection, partial output 금지를 명시한다. |
+| 14 | Taffy generic algorithm 수정이 필요해도 계획 범위가 확장되는가 | PASS | 계획 84–90행은 generic Grid/global axis 변경이 필요할 때 이 계획을 중지하고 상위 설계와 별도 검토를 요구한다. |
+| 15 | 기존 #611/#620 horizontal regression을 놓치는가 | PASS | 계획 30, 78, 102행은 #611 column 네 scene과 #620 horizontal row 네 scene의 전후 gate 및 별도 12-scene 보고를 고정한다. |
+| 16 | style/text/layout/trace revision이 서로 다른 입력 epoch로 합쳐지는가 | PASS | 계획 57, 78, 80, 82, 94, 101행은 computed-style epoch, `LayoutInputRevision`, `FontRegistryRevision`, layout/trace provenance를 연결한다. 현재 snapshot의 `StyleRevision`은 `snapshot.rs:576–587`, layout revision의 style/source/environment/intrinsic components는 `crates/spinon-layout/src/revision.rs:25–32`에 있다. |
+| 17 | typed values가 다른 profile이나 public CSS 지원으로 새어 나가는가 | PASS | 계획 38–40, 56, 99–100, 103행은 C11.4 opt-in profile에만 typed values를 허용하고 다른 profile 및 public CSS admission을 배제한다. |
+| 18 | fixture ABI·payload 조건을 이미 검증한 product artifact 결과처럼 표현하는가 | PASS | 계획 103행은 기본/product artifact와 opt-in positive control의 미래 acceptance를 분리하고 archive 결과를 APK/IPA 전체 제외 근거로 확대하지 못하게 한다. project rule은 `docs/project-rules.md:35–37`이다. |
+| 19 | Android/iOS 수용 행렬이나 simulator 실행이 이미 완료된 것처럼 읽히는가 | PASS | 계획 92, 100–104행은 gate 뒤의 미래 runtime matrix, 별도 1B/Step 3, 플랫폼 한계를 명시하며 unit 결과와 runtime proof를 분리한다. |
+| 20 | 계획 성공이 C11.4 완료 수나 내부 숫자 버전을 올리는가 | PASS | 계획 40, 53, 106행은 공개 지원 범위를 넓히지 않고 공식 C11.4 미완료, `72/213`, 내부 계약 `0.1.0`을 유지한다고 명시한다. |
 
 최종 판정은 **20 PASS / 0 PARTIAL / 0 FAIL**이다. 초기 12/8 표는 보완 전 초안의 역사 기록으로 남기고 최종 판정에는 포함하지 않는다. 이 재검토는 계획 준비도만 확인했으며, 구현·Taffy feasibility gate·C11.4 완료를 뜻하지 않는다. 다음 구현 전제는 이 계획 PR의 검토·병합과 0단계 `spinon-core` 공통 타입 계약이다.
