@@ -111,7 +111,7 @@ test('calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다', asyn
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 492);
+  assert.equal(catalog.sceneCount, 496);
   assert.equal(catalog.selectedSceneCount, 13);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 
@@ -171,7 +171,7 @@ test('음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 492);
+  assert.equal(catalog.sceneCount, 496);
   assert.equal(catalog.selectedSceneCount, 9);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 
@@ -291,7 +291,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
     'zero-percent auto-repeat fixture는 13개다.');
   assert.equal(maximumFixtures.length, 28,
     'percentage auto-repeat maximum fixture는 28개다.');
-  assert.match(captureSource, /assert\.equal\(scenes\.length, 492,/,
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 496,/,
     'C11.4 simulator capture scene count must include percentage-neighbor cases.');
   const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
   assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');
@@ -310,7 +310,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(listScenes.status, 0, listScenes.stderr);
   const captureCatalog = JSON.parse(listScenes.stdout);
-  assert.equal(captureCatalog.sceneCount, 492);
+  assert.equal(captureCatalog.sceneCount, 496);
   const matrixIDs = [...noAreaIDs, ...priorTemplateAreaIDs];
   assert.equal(matrixIDs.length, 41, 'the focused C11.4 matrix must contain 41 scenes.');
   assert.equal(new Set(matrixIDs).size, matrixIDs.length,
@@ -326,7 +326,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCatalogResult.status, 0, selectedCatalogResult.stderr);
   const selectedCatalog = JSON.parse(selectedCatalogResult.stdout);
-  assert.equal(selectedCatalog.sceneCount, 492);
+  assert.equal(selectedCatalog.sceneCount, 496);
   assert.equal(selectedCatalog.selectedSceneCount, 41);
   assert.deepEqual([...selectedCatalog.selectedSceneIDs].sort(), [...matrixIDs].sort(),
     'the simulator selection must resolve to exactly the 41 focused matrix IDs.');
@@ -339,7 +339,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedCrossAxisResult.status, 0, selectedCrossAxisResult.stderr);
   const selectedCrossAxis = JSON.parse(selectedCrossAxisResult.stdout);
-  assert.equal(selectedCrossAxis.sceneCount, 492);
+  assert.equal(selectedCrossAxis.sceneCount, 496);
   assert.equal(selectedCrossAxis.selectedSceneCount, 11);
   assert.deepEqual([...selectedCrossAxis.selectedSceneIDs].sort(),
     crossAxisFixtures.map(({ id }) => id).sort(),
@@ -396,7 +396,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedPercentResult.status, 0, selectedPercentResult.stderr);
   const selectedPercentCatalog = JSON.parse(selectedPercentResult.stdout);
-  assert.equal(selectedPercentCatalog.sceneCount, 492);
+  assert.equal(selectedPercentCatalog.sceneCount, 496);
   assert.equal(selectedPercentCatalog.selectedSceneCount, 16);
   assert.deepEqual([...selectedPercentCatalog.selectedSceneIDs].sort(), [...percentIDs].sort());
   const zeroPercentIDs = zeroPercentFixtures.map(({ id }) => id);
@@ -429,7 +429,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedZeroPercentResult.status, 0, selectedZeroPercentResult.stderr);
   const selectedZeroPercentCatalog = JSON.parse(selectedZeroPercentResult.stdout);
-  assert.equal(selectedZeroPercentCatalog.sceneCount, 492);
+  assert.equal(selectedZeroPercentCatalog.sceneCount, 496);
   assert.equal(selectedZeroPercentCatalog.selectedSceneCount, 13);
   assert.deepEqual([...selectedZeroPercentCatalog.selectedSceneIDs].sort(), [...zeroPercentIDs].sort());
   const maximumIDs = maximumFixtures.map(({ id }) => id);
@@ -457,7 +457,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedMaximumResult.status, 0, selectedMaximumResult.stderr);
   const selectedMaximumCatalog = JSON.parse(selectedMaximumResult.stdout);
-  assert.equal(selectedMaximumCatalog.sceneCount, 492);
+  assert.equal(selectedMaximumCatalog.sceneCount, 496);
   assert.equal(selectedMaximumCatalog.selectedSceneCount, 28);
   assert.deepEqual([...selectedMaximumCatalog.selectedSceneIDs].sort(), [...maximumIDs].sort());
   const neighborIDs = neighborFixtures.map(({ id }) => id);
@@ -497,7 +497,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
   ], { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selectedNeighborResult.status, 0, selectedNeighborResult.stderr);
   const selectedNeighborCatalog = JSON.parse(selectedNeighborResult.stdout);
-  assert.equal(selectedNeighborCatalog.sceneCount, 492);
+  assert.equal(selectedNeighborCatalog.sceneCount, 496);
   assert.equal(selectedNeighborCatalog.selectedSceneCount, 13);
   assert.deepEqual([...selectedNeighborCatalog.selectedSceneIDs].sort(), [...neighborIDs].sort());
   assert.deepEqual(
@@ -675,8 +675,10 @@ test('C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fix
   const capture = await readFile(resolve(repositoryRoot,
     'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs'), 'utf8');
   const sceneIDs = [
-    'cyclic-max-content-auto-fill-rows',
-    'definite-40px-auto-fill-control-rows',
+    'cyclic-max-content-auto-fill-prefix-suffix',
+    'cyclic-max-content-auto-fit-prefix-suffix',
+    'definite-44px-auto-fill-prefix-suffix-control',
+    'definite-44px-auto-fit-prefix-suffix-control',
   ];
   assert.match(runtimeGpu,
     /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
@@ -685,16 +687,41 @@ test('C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fix
   assert.match(c114Dispatcher,
     /cyclic_percentage_auto_repeat_rows::runtime_source\(scene_id\)/);
   for (const sceneID of sceneIDs) {
-    assert.ok(fixtureSource.includes(`'${sceneID}'`), `FFI fixture is missing ${sceneID}`);
+    assert.ok(fixtureSource.includes(`"${sceneID}"`), `FFI fixture is missing ${sceneID}`);
     assert.ok(android.includes(`"${sceneID}"`), `Android scene route is missing ${sceneID}`);
     assert.ok(ios.includes(`"${sceneID}"`), `iOS scene route is missing ${sceneID}`);
     assert.ok(capture.includes(`'${sceneID}'`), `simulator capture route is missing ${sceneID}`);
   }
-  assert.ok(fixtureSource.includes('height:max-content;'));
-  assert.ok(fixtureSource.includes('height:40px;'));
-  assert.ok(!fixtureSource.includes('height:max-content;min-height:0'));
-  assert.ok(android.includes('c114CyclicPercentageAutoRepeatTraceMatches'));
-  assert.ok(ios.includes('c114CyclicRowPercentageAutoRepeatTraceMatches'));
+  for (const token of ['"max-content"', '"44px"', '"auto-fill"', '"auto-fit"',
+    'row-gap:2px', 'height:{root_height};grid-template-columns:24px;grid-template-rows:',
+    'width:24px;height:24px', 'width:16px;height:16px']) {
+    assert.ok(fixtureSource.includes(token), `FFI generalized row profile is missing ${token}`);
+  }
+  assert.ok(!fixtureSource.includes('height:{root_height};min-height:'),
+    'root min-height must remain the typed Auto initial value.');
+  for (const sampleID of [
+    'generalized-prefix', 'generalized-secondary-overlap',
+    'generalized-primary-overlap', 'generalized-primary-overflow',
+    'generalized-root-background',
+  ]) {
+    assert.ok(android.includes(`"${sampleID}"`), `Android pixel sample is missing ${sampleID}`);
+    assert.ok(ios.includes(`"${sampleID}"`), `iOS pixel sample is missing ${sampleID}`);
+    assert.ok(capture.includes(`'${sampleID}'`), `simulator pixel sample is missing ${sampleID}`);
+  }
+  const capturePath = resolve(repositoryRoot,
+    'tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs');
+  const selected = spawnSync(process.execPath, [capturePath, 'android-avd',
+    `--scene-id=${sceneIDs.join(',')}`, '--list-scenes'],
+  { cwd: repositoryRoot, encoding: 'utf8' });
+  assert.equal(selected.status, 0, selected.stderr);
+  const catalog = JSON.parse(selected.stdout);
+  assert.equal(catalog.sceneCount, 496);
+  assert.equal(catalog.selectedSceneCount, 4);
+  assert.deepEqual(catalog.selectedSceneIDs, sceneIDs);
+  assert.match(catalog.evidenceDirectory,
+    /^spec\/internal\/evidence\/c11-4-cyclic-row-auto-repeat-generalization-runtime-\d{4}-\d{2}-\d{2}\/android-avd-/);
+  assert.ok(android.includes('c114GeneralizedCyclicRowTraceMatches'));
+  assert.ok(ios.includes('c114GeneralizedCyclicRowAutoRepeatTraceMatches'));
 });
 
 test('작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다', async () => {
@@ -1344,7 +1371,7 @@ test('C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계�
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 492);
+  assert.equal(catalog.sceneCount, 496);
   assert.equal(catalog.selectedSceneCount, 9);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 
@@ -1406,7 +1433,7 @@ test('C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixtur
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 492);
+  assert.equal(catalog.sceneCount, 496);
   assert.equal(catalog.selectedSceneCount, 9);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
   assert.match(catalog.evidenceDirectory,
@@ -1461,7 +1488,7 @@ test('C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경�
   { cwd: repositoryRoot, encoding: 'utf8' });
   assert.equal(selected.status, 0, selected.stderr);
   const catalog = JSON.parse(selected.stdout);
-  assert.equal(catalog.sceneCount, 492);
+  assert.equal(catalog.sceneCount, 496);
   assert.equal(catalog.selectedSceneCount, 12);
   assert.deepEqual(catalog.selectedSceneIDs, fixtureIDs);
 

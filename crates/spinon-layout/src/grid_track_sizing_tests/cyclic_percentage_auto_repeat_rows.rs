@@ -389,3 +389,6 @@ fn cyclic_percentage_row_target_remains_rejected_without_fixture_feature() {
         "fixture feature disabled",
     );
 }
+
+#[path = "cyclic_percentage_auto_repeat_rows/generalized.rs"]
+mod generalized;

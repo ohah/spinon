@@ -1,5 +1,8 @@
 use super::*;
 
+#[path = "cyclic_percentage_auto_repeat_rows/generalized.rs"]
+mod generalized;
+
 #[derive(Clone, Copy)]
 struct SceneOptions {
     root_width: &'static str,

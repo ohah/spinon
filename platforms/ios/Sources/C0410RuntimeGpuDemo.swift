@@ -73,6 +73,12 @@ private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = [
 #else
 private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = []
 #endif
+private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
+    "cyclic-max-content-auto-fill-prefix-suffix",
+    "cyclic-max-content-auto-fit-prefix-suffix",
+    "definite-44px-auto-fill-prefix-suffix-control",
+    "definite-44px-auto-fit-prefix-suffix-control",
+]
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -121,6 +127,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-calc-control",
     "cyclic-max-content-auto-fill", "definite-40px-auto-fill-control",
     "cyclic-max-content-auto-fill-rows", "definite-40px-auto-fill-control-rows",
+    "cyclic-max-content-auto-fill-prefix-suffix",
+    "cyclic-max-content-auto-fit-prefix-suffix",
+    "definite-44px-auto-fill-prefix-suffix-control",
+    "definite-44px-auto-fit-prefix-suffix-control",
     "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
     "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
     "columns-percent-calc-fill", "columns-percent-fixed-fill-control",
@@ -1092,6 +1102,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
     if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control-rows" { return "width=24,height=40" }
+    if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+        return "width=24,height=44"
+    }
     if let height = c114OrthogonalRowHeight(sceneID) {
         return "width=74,height=\(height)"
     }
@@ -1376,6 +1389,9 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+        return "width=24,height=24"
+    }
     if sceneID == "cyclic-max-content-auto-fill"
         || sceneID == "definite-40px-auto-fill-control"
         || sceneID == "cyclic-max-content-auto-fill-rows"
@@ -2677,6 +2693,9 @@ private func c114CyclicPercentageAutoRepeatPassMatches(
 private func c114CyclicRowPercentageAutoRepeatTraceMatches(
     _ sceneID: String, report: String
 ) -> Bool {
+    if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+        return c114GeneralizedCyclicRowAutoRepeatTraceMatches(sceneID, report: report)
+    }
     let cyclic = sceneID == "cyclic-max-content-auto-fill-rows"
     let definite = sceneID == "definite-40px-auto-fill-control-rows"
     if !cyclic && !definite { return true }
@@ -2708,6 +2727,124 @@ private func c114CyclicRowPercentageAutoRepeatTraceMatches(
           phase == "FinalDefinite" else { return false }
     return c114CyclicPercentageAutoRepeatPassMatches(
             rowPasses[0], count: 2, basis: 40, tracks: [20, 20])
+}
+
+private func c114GeneralizedCyclicRowAutoRepeatTraceMatches(
+    _ sceneID: String, report: String
+) -> Bool {
+    let maxContent = sceneID == "cyclic-max-content-auto-fill-prefix-suffix"
+        || sceneID == "cyclic-max-content-auto-fit-prefix-suffix"
+    let autoFit = sceneID == "cyclic-max-content-auto-fit-prefix-suffix"
+        || sceneID == "definite-44px-auto-fit-prefix-suffix-control"
+    guard maxContent || sceneID == "definite-44px-auto-fill-prefix-suffix-control"
+        || sceneID == "definite-44px-auto-fit-prefix-suffix-control",
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]] else { return false }
+    guard passes.allSatisfy({ pass in
+        guard let axis = pass["axis"] as? String else { return false }
+        return axis == "Columns" || axis == "Rows"
+    }) else { return false }
+
+    let columnPasses = passes.filter { ($0["axis"] as? String) == "Columns" }
+    guard columnPasses.count == 1,
+          let columnPass = columnPasses.first,
+          (columnPass["sequence"] as? Int) == 0,
+          columnPass["phase"] is NSNull,
+          columnPass["autoRepeatCount"] is NSNull,
+          columnPass["percentageBasis"] is NSNull,
+          let columnStages = columnPass["stages"] as? [[String: Any]],
+          let finalColumnStage = columnStages.last,
+          (finalColumnStage["stage"] as? String) == "FixedTrackEarlyReturn",
+          c114GeneralizedCyclicTrackStatesMatch(
+            columnPass,
+            expected: [
+                (true, true, 0.0), (false, false, 24.0), (true, true, 0.0),
+            ]
+          ) else { return false }
+
+    let rowPasses = passes.filter { ($0["axis"] as? String) == "Rows" }
+    let edge = (true, true, 0.0)
+    let prefix = (false, false, 8.0)
+    let gap = (true, false, 2.0)
+    let suffix = (false, false, 8.0)
+    let repeated = (false, false, 11.0)
+    let intrinsicTracks = [edge, prefix, gap, (false, false, 24.0), gap, suffix, edge]
+
+    if maxContent {
+        guard rowPasses.count == 2,
+              (rowPasses[0]["phase"] as? String) == "IntrinsicMaxContent",
+              (rowPasses[1]["phase"] as? String) == "FinalDefinite",
+              let intrinsicSequence = rowPasses[0]["sequence"] as? Int,
+              let finalSequence = rowPasses[1]["sequence"] as? Int,
+              finalSequence > intrinsicSequence,
+              c114CyclicPercentageAutoRepeatPassMatches(
+                rowPasses[0], count: 1, basis: nil, tracks: [8, 24, 8]),
+              c114GeneralizedCyclicTrackStatesMatch(rowPasses[0], expected: intrinsicTracks),
+              c114GeneralizedCyclicRowIntrinsicContributionsMatch(rowPasses[0]),
+              c114CyclicPercentageAutoRepeatPassMatches(
+                rowPasses[1], count: 1, basis: 44, tracks: [8, 11, 8]) else { return false }
+        return c114GeneralizedCyclicTrackStatesMatch(
+            rowPasses[1], expected: [edge, prefix, gap, repeated, gap, suffix, edge])
+    }
+
+    guard rowPasses.count == 1,
+          (rowPasses[0]["phase"] as? String) == "FinalDefinite" else { return false }
+    if autoFit {
+        return c114CyclicPercentageAutoRepeatPassMatches(
+            rowPasses[0], count: 2, basis: 44, tracks: [8, 11, 8])
+            && c114GeneralizedCyclicTrackStatesMatch(
+                rowPasses[0],
+                expected: [
+                    edge, prefix, gap, repeated, gap, (false, true, 0.0),
+                    (true, true, 0.0), suffix, edge,
+                ]
+            )
+    }
+    return c114CyclicPercentageAutoRepeatPassMatches(
+        rowPasses[0], count: 2, basis: 44, tracks: [8, 11, 11, 8])
+        && c114GeneralizedCyclicTrackStatesMatch(
+            rowPasses[0],
+            expected: [edge, prefix, gap, repeated, gap, repeated, gap, suffix, edge]
+        )
+}
+
+private func c114GeneralizedCyclicTrackStatesMatch(
+    _ pass: [String: Any], expected: [(Bool, Bool, Double)]
+) -> Bool {
+    guard let stages = pass["stages"] as? [[String: Any]],
+          let finalStage = stages.last,
+          let tracks = finalStage["tracks"] as? [[String: Any]],
+          tracks.count == expected.count else { return false }
+    for index in expected.indices {
+        let track = tracks[index]
+        let state = expected[index]
+        guard (track["internalIndex"] as? Int) == index,
+              (track["gutter"] as? Bool) == state.0,
+              (track["collapsed"] as? Bool) == state.1,
+              let baseSize = (track["baseSize"] as? NSNumber)?.doubleValue,
+              abs(baseSize - state.2) <= 0.015625 else { return false }
+    }
+    return true
+}
+
+private func c114GeneralizedCyclicRowIntrinsicContributionsMatch(
+    _ pass: [String: Any]
+) -> Bool {
+    guard let contributions = pass["contributions"] as? [[String: Any]],
+          contributions.count == 2 else { return false }
+    for (nodeID, expectedValue) in [(3, 24.0), (4, 16.0)] {
+        guard let contribution = contributions.first(where: {
+            ($0["item"] as? Int) == nodeID
+        }),
+              (contribution["kind"] as? String) == "MaxContent",
+              (contribution["span"] as? Int) == 1,
+              let value = (contribution["value"] as? NSNumber)?.doubleValue,
+              abs(value - expectedValue) <= 0.015625 else { return false }
+    }
+    return true
 }
 
 private func c114FixedAutoAreaTraceMatches(_ sceneID: String, report: String) -> Bool {
@@ -3610,6 +3747,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if sceneID == "definite-40px-auto-fill-control-rows" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
+    if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
+            + "1:node=2,x=0,y=0,width=24,height=8;"
+            + "2:node=3,x=0,y=10,width=24,height=24;"
+            + "3:node=4,x=0,y=10,width=16,height=16]"
     }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         var frames = ["0:node=1,x=0,y=0,width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"]
@@ -5150,6 +5293,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
         || sceneID == "definite-40px-auto-fill-control"
         || sceneID == "cyclic-max-content-auto-fill-rows"
@@ -5886,6 +6030,19 @@ private struct C111MetalPixelRun {
     private static func c114CyclicPercentageAutoRepeatPixelSamples(
         _ sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+            let rootID = "c114-\(sceneID)-grid"
+            let prefixID = "c114-\(sceneID)-prefix"
+            let primaryID = "c114-\(sceneID)-primary"
+            let secondaryID = "c114-\(sceneID)-secondary"
+            return [
+                ("generalized-prefix", prefixID, 12, 4, [47, 158, 68, 255]),
+                ("generalized-secondary-overlap", secondaryID, 8, 15, [240, 140, 0, 255]),
+                ("generalized-primary-overlap", primaryID, 20, 15, [229, 72, 77, 255]),
+                ("generalized-primary-overflow", primaryID, 20, 33, [229, 72, 77, 255]),
+                ("generalized-root-background", rootID, 20, 40, [16, 24, 32, 255]),
+            ]
+        }
         switch sceneID {
         case "cyclic-max-content-auto-fill":
             let rootID = "c114-cyclic-max-content-auto-fill-grid"

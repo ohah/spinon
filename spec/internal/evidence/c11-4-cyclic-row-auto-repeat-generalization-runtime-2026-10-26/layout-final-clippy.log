@@ -1,0 +1,30 @@
+    Checking stable_deref_trait v1.2.1
+    Checking smallvec v1.16.2
+    Checking bytemuck v1.25.2
+    Checking serde v1.0.229
+    Checking zerofrom v0.1.8
+    Checking yoke v0.8.3
+    Checking taffy v0.15.0 (/Users/yoonhb/Documents/workspace/spinon/vendor/taffy)
+    Checking font-types v0.12.7
+    Checking zerovec v0.11.8
+    Checking zerotrie v0.2.5
+    Checking read-fonts v0.41.0
+    Checking tinystr v0.8.4
+    Checking potential_utf v0.1.6
+    Checking icu_collections v2.3.0
+    Checking icu_locale_core v2.3.0
+    Checking icu_provider v2.3.1
+    Checking icu_locale_fallback v2.3.0
+    Checking icu_properties v2.3.0
+    Checking icu_normalizer v2.3.0
+    Checking icu_segmenter v2.3.0
+    Checking parley_data v0.12.0
+    Checking skrifa v0.44.0
+    Checking harfrust v0.12.0
+    Checking fontique v0.12.0
+    Checking swash v0.2.10
+    Checking parley_engine v0.12.0
+    Checking parley v0.12.0
+    Checking spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+    Checking spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 6.79s

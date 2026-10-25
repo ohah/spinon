@@ -190,6 +190,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "rows-percent-fixed-fill-control", "rows-percent-calc-fit",
             "cyclic-max-content-auto-fill", "definite-40px-auto-fill-control",
             "cyclic-max-content-auto-fill-rows", "definite-40px-auto-fill-control-rows",
+            "cyclic-max-content-auto-fill-prefix-suffix",
+            "cyclic-max-content-auto-fit-prefix-suffix",
+            "definite-44px-auto-fill-prefix-suffix-control",
+            "definite-44px-auto-fit-prefix-suffix-control",
             "cyclic-percent-two-axis-multitrack", "cyclic-percent-columns-multitrack",
             "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
             "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
@@ -832,6 +836,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean definite = "definite-40px-auto-fill-control".equals(sceneId);
         boolean cyclicRows = "cyclic-max-content-auto-fill-rows".equals(sceneId);
         boolean definiteRows = "definite-40px-auto-fill-control-rows".equals(sceneId);
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            return c114GeneralizedCyclicRowTraceMatches(sceneId, report);
+        }
         if (!cyclic && !definite && !cyclicRows && !definiteRows) return true;
         int marker = report.indexOf("grid_track_sizing_diagnostics=");
         if (marker < 0) return false;
@@ -919,6 +926,197 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean isC114GeneralizedCyclicRowScene(String sceneId) {
+        return "cyclic-max-content-auto-fill-prefix-suffix".equals(sceneId)
+                || "cyclic-max-content-auto-fit-prefix-suffix".equals(sceneId)
+                || "definite-44px-auto-fill-prefix-suffix-control".equals(sceneId)
+                || "definite-44px-auto-fit-prefix-suffix-control".equals(sceneId);
+    }
+
+    private static boolean c114GeneralizedCyclicRowTraceMatches(
+            String sceneId, String report
+    ) {
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        String diagnosticsJson = report.substring(
+                marker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object value = new org.json.JSONTokener(diagnosticsJson).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optInt("grid", -1) != 1 || passes == null) return false;
+
+            List<org.json.JSONObject> rowPasses = new ArrayList<>();
+            List<org.json.JSONObject> columnPasses = new ArrayList<>();
+            for (int index = 0; index < passes.length(); index++) {
+                org.json.JSONObject pass = passes.optJSONObject(index);
+                if (pass == null) return false;
+                String axis = pass.optString("axis");
+                if ("Rows".equals(axis)) {
+                    rowPasses.add(pass);
+                } else if ("Columns".equals(axis)) {
+                    columnPasses.add(pass);
+                } else {
+                    return false;
+                }
+            }
+            if (columnPasses.size() != 1
+                    || !c114GeneralizedColumnPassMatches(columnPasses.get(0))) return false;
+
+            boolean maxContent = sceneId.startsWith("cyclic-max-content-");
+            boolean autoFit = sceneId.contains("auto-fit");
+            if (maxContent) {
+                if (rowPasses.size() != 2) return false;
+                org.json.JSONObject intrinsic = rowPasses.get(0);
+                org.json.JSONObject finalDefinite = rowPasses.get(1);
+                int firstSequence = intrinsic.optInt("sequence", -1);
+                int secondSequence = finalDefinite.optInt("sequence", -1);
+                return firstSequence >= 0 && secondSequence > firstSequence
+                        && c114GeneralizedRowPassMatches(intrinsic, "IntrinsicMaxContent",
+                                1, null,
+                                new double[] {0.0, 8.0, 2.0, 24.0, 2.0, 8.0, 0.0},
+                                new boolean[] {true, false, true, false, true, false, true},
+                                new boolean[] {true, false, false, false, false, false, true})
+                        && c114GeneralizedRowIntrinsicContributionsMatch(intrinsic)
+                        && c114GeneralizedRowPassMatches(finalDefinite, "FinalDefinite",
+                                1, 44.0,
+                                new double[] {0.0, 8.0, 2.0, 11.0, 2.0, 8.0, 0.0},
+                                new boolean[] {true, false, true, false, true, false, true},
+                                new boolean[] {true, false, false, false, false, false, true});
+            }
+
+            if (rowPasses.size() != 1) return false;
+            org.json.JSONObject finalDefinite = rowPasses.get(0);
+            if (autoFit) {
+                return c114GeneralizedRowPassMatches(finalDefinite, "FinalDefinite", 2, 44.0,
+                        new double[] {0.0, 8.0, 2.0, 11.0, 2.0, 0.0, 0.0, 8.0, 0.0},
+                        new boolean[] {true, false, true, false, true, false, true, false, true},
+                        new boolean[] {true, false, false, false, false, true, true, false, true});
+            }
+            return c114GeneralizedRowPassMatches(finalDefinite, "FinalDefinite", 2, 44.0,
+                    new double[] {0.0, 8.0, 2.0, 11.0, 2.0, 11.0, 2.0, 8.0, 0.0},
+                    new boolean[] {true, false, true, false, true, false, true, false, true},
+                    new boolean[] {true, false, false, false, false, false, false, false, true});
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114GeneralizedRowPassMatches(
+            org.json.JSONObject pass,
+            String expectedPhase,
+            int expectedCount,
+            Double expectedBasis,
+            double[] expectedSizes,
+            boolean[] expectedGutters,
+            boolean[] expectedCollapsed
+    ) {
+        if (pass == null || !"Rows".equals(pass.optString("axis"))
+                || !expectedPhase.equals(pass.optString("phase"))
+                || pass.optInt("autoRepeatCount", -1) != expectedCount
+                || expectedSizes.length != expectedGutters.length
+                || expectedSizes.length != expectedCollapsed.length) return false;
+        if (expectedBasis == null) {
+            if (!pass.has("percentageBasis") || !pass.isNull("percentageBasis")) return false;
+        } else {
+            double basis = pass.optDouble("percentageBasis", Double.NaN);
+            if (!Double.isFinite(basis) || Math.abs(basis - expectedBasis) > 0.0001) {
+                return false;
+            }
+        }
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null || tracks.length() != expectedSizes.length) return false;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null || track.optInt("internalIndex", -1) != index
+                    || !c114GeneralizedTraceBooleanMatches(
+                            track, "gutter", expectedGutters[index])
+                    || !c114GeneralizedTraceBooleanMatches(
+                            track, "collapsed", expectedCollapsed[index])) {
+                return false;
+            }
+            double size = track.optDouble("baseSize", Double.NaN);
+            if (!Double.isFinite(size) || Math.abs(size - expectedSizes[index]) > 0.0001) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean c114GeneralizedColumnPassMatches(org.json.JSONObject pass) {
+        if (pass == null || !"Columns".equals(pass.optString("axis"))
+                || !pass.has("phase") || !pass.isNull("phase")
+                || !pass.has("autoRepeatCount") || !pass.isNull("autoRepeatCount")
+                || !pass.has("percentageBasis") || !pass.isNull("percentageBasis")
+                || pass.optInt("sequence", -1) != 0) return false;
+
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() == 0) return false;
+        org.json.JSONObject finalStage = stages.optJSONObject(stages.length() - 1);
+        if (finalStage == null
+                || !"FixedTrackEarlyReturn".equals(finalStage.optString("stage"))) return false;
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        if (tracks == null || tracks.length() != 3) return false;
+        double[] expectedSizes = {0.0, 24.0, 0.0};
+        boolean[] expectedGutters = {true, false, true};
+        boolean[] expectedCollapsed = {true, false, true};
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null || track.optInt("internalIndex", -1) != index
+                    || !c114GeneralizedTraceBooleanMatches(
+                            track, "gutter", expectedGutters[index])
+                    || !c114GeneralizedTraceBooleanMatches(
+                            track, "collapsed", expectedCollapsed[index])) return false;
+            double size = track.optDouble("baseSize", Double.NaN);
+            if (!Double.isFinite(size) || Math.abs(size - expectedSizes[index]) > 0.0001) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    private static boolean c114GeneralizedTraceBooleanMatches(
+            org.json.JSONObject object, String field, boolean expected
+    ) {
+        Object value = object.opt(field);
+        return value instanceof Boolean && ((Boolean) value).booleanValue() == expected;
+    }
+
+    private static boolean c114GeneralizedRowIntrinsicContributionsMatch(
+            org.json.JSONObject pass
+    ) {
+        org.json.JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null || contributions.length() != 2) return false;
+        for (int index = 0; index < 2; index++) {
+            int expectedItem = index == 0 ? 3 : 4;
+            double expectedValue = index == 0 ? 24.0 : 16.0;
+            boolean found = false;
+            for (int contributionIndex = 0;
+                    contributionIndex < contributions.length(); contributionIndex++) {
+                org.json.JSONObject contribution = contributions.optJSONObject(contributionIndex);
+                if (contribution == null) return false;
+                if (contribution.optInt("item", -1) != expectedItem) continue;
+                double value = contribution.optDouble("value", Double.NaN);
+                if (!"MaxContent".equals(contribution.optString("kind"))
+                        || contribution.optInt("span", -1) != 1
+                        || !Double.isFinite(value) || Math.abs(value - expectedValue) > 0.015625) {
+                    return false;
+                }
+                found = true;
+                break;
+            }
+            if (!found) return false;
+        }
+        return true;
     }
 
     private static boolean c114CyclicAutoRepeatPassMatches(
@@ -1359,6 +1557,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            return "width=24,height=44";
+        }
         if ("cyclic-max-content-auto-fill".equals(sceneId)
                 || "cyclic-max-content-auto-fill-rows".equals(sceneId)) {
             return "width=24,height=16";
@@ -1707,6 +1908,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            return "width=24,height=24";
+        }
         if ("cyclic-max-content-auto-fill".equals(sceneId)
                 || "definite-40px-auto-fill-control".equals(sceneId)
                 || "cyclic-max-content-auto-fill-rows".equals(sceneId)
@@ -3239,6 +3443,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
+                    + "1:node=2,x=0,y=0,width=24,height=8;"
+                    + "2:node=3,x=0,y=10,width=24,height=24;"
+                    + "3:node=4,x=0,y=10,width=16,height=16]";
+        }
         if ("cyclic-max-content-auto-fill".equals(sceneId)) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
                     + "1:node=2,x=0,y=0,width=24,height=16]";
@@ -5764,6 +5974,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) return 4;
         if ("cyclic-max-content-auto-fill".equals(sceneId)
                 || "definite-40px-auto-fill-control".equals(sceneId)
                 || "cyclic-max-content-auto-fill-rows".equals(sceneId)
@@ -6441,6 +6652,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            String prefixId = "c114-" + sceneId + "-prefix";
+            String primaryId = "c114-" + sceneId + "-primary";
+            String secondaryId = "c114-" + sceneId + "-secondary";
+            String rootId = "c114-" + sceneId + "-grid";
+            String[] expectedIds = {
+                "generalized-prefix", "generalized-secondary-overlap",
+                "generalized-primary-overlap", "generalized-primary-overflow",
+                "generalized-root-background"
+            };
+            String[] expectedTargets = {prefixId, secondaryId, primaryId, primaryId, rootId};
+            double[][] expectedPoints = {
+                {12.0, 4.0}, {8.0, 15.0}, {20.0, 15.0}, {20.0, 33.0}, {20.0, 40.0}
+            };
+            if (samples.size() != expectedIds.length) return false;
+            boolean[] found = new boolean[expectedIds.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = -1;
+                for (int candidate = 0; candidate < expectedIds.length; candidate++) {
+                    if (expectedIds[candidate].equals(sample.id)) {
+                        index = candidate;
+                        break;
+                    }
+                }
+                if (index < 0 || found[index]
+                        || !expectedTargets[index].equals(sample.targetNodeId)
+                        || sample.xCssPx != expectedPoints[index][0]
+                        || sample.yCssPx != expectedPoints[index][1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         if ("cyclic-max-content-auto-fill".equals(sceneId)
                 || "definite-40px-auto-fill-control".equals(sceneId)) {
             boolean cyclic = "cyclic-max-content-auto-fill".equals(sceneId);
@@ -8727,6 +8971,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "definite-calc-control".equals(pixelMatrixSceneId)
                         || "cyclic-max-content-auto-fill".equals(pixelMatrixSceneId)
                         || "definite-40px-auto-fill-control".equals(pixelMatrixSceneId)
+                        || isC114GeneralizedCyclicRowScene(pixelMatrixSceneId)
                         || "auto-fill-overflow-neighbors".equals(pixelMatrixSceneId)
                         || c114IsAutoRepeatNegativeLineScene(pixelMatrixSceneId)
                         || "columns-fill-negative-positive-cycle".equals(pixelMatrixSceneId)
@@ -12311,6 +12556,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        if (isC114GeneralizedCyclicRowScene(sceneId)) {
+            switch (sampleId) {
+                case "generalized-prefix": return new int[] {47, 158, 68};
+                case "generalized-secondary-overlap": return new int[] {240, 140, 0};
+                case "generalized-primary-overlap":
+                case "generalized-primary-overflow":
+                    return new int[] {229, 72, 77};
+                case "generalized-root-background": return new int[] {16, 24, 32};
+                default: return new int[] {0, 0, 0};
+            }
+        }
         if ("cyclic-max-content-auto-fill".equals(sceneId)) {
             return sampleId.equals("cyclic-root-after-edge")
                     ? new int[] {0, 0, 0} : new int[] {229, 72, 77};
