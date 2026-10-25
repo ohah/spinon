@@ -9,6 +9,15 @@ struct Probe {
 }
 
 fn request_for_grid(width: &str, columns: &str, extra_child: bool) -> Probe {
+    request_for_grid_with_root_style(width, columns, "", extra_child)
+}
+
+fn request_for_grid_with_root_style(
+    width: &str,
+    columns: &str,
+    root_style_extra: &str,
+    extra_child: bool,
+) -> Probe {
     const HTML: &str = "http://www.w3.org/1999/xhtml";
     let mut document = HostDocument::new().unwrap();
     let root = document.reserve_node_handle().unwrap();
@@ -22,7 +31,7 @@ fn request_for_grid(width: &str, columns: &str, extra_child: bool) -> Probe {
             "c114-cyclic-max-content-auto-fill-grid",
             HostParent::Root,
             format!(
-                "box-sizing:border-box;display:grid;width:{width};grid-template-columns:{columns};grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0;align-content:start;justify-content:start"
+                "box-sizing:border-box;display:grid;width:{width};grid-template-columns:{columns};grid-template-rows:auto;column-gap:0;row-gap:0;margin:0;padding:0;border:0;align-content:start;justify-content:start;{root_style_extra}"
             ),
         ),
         (
@@ -254,6 +263,22 @@ fn c114_cyclic_percentage_auto_repeat_fixture_gate_rejects_neighbor_inputs() {
             error.code, "invalid_grid_track_list",
             "{columns}; extra={extra_child}"
         );
+    }
+    for (root_style_extra, expected_error) in [
+        ("height:7px", "invalid_grid_track_list"),
+        ("overflow:hidden", "unsupported_inline_property"),
+        ("aspect-ratio:2", "invalid_grid_track_list"),
+        ("direction:rtl", "invalid_grid_track_list"),
+    ] {
+        let probe = request_for_grid_with_root_style(
+            "max-content",
+            "repeat(auto-fill,minmax(0px,50%))",
+            root_style_extra,
+            false,
+        );
+        let calculation = compute_request_for_block_flex_grid_track_sizing(&probe.request).unwrap();
+        let error = calculation.layout.unwrap_err();
+        assert_eq!(error.code, expected_error, "{root_style_extra}");
     }
 }
 
