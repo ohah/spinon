@@ -1,0 +1,156 @@
+{
+  "capture_source": "Agent Browser eval stdout from the first C12.5 fixture run",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "device_pixel_ratio": 1
+  },
+  "fixture": "tests/fixtures/css/c12/position-sticky.html",
+  "samples": [
+    {
+      "name": "initial",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 0,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 118, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 118, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "outer-24-inner-0",
+      "outer_scroll_top": 24,
+      "inner_scroll_top": 0,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 50, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 94, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 94, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-20",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 20,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 98, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 98, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-36",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 36,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 82, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 90, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-48",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 48,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 70, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 90, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-96",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 96,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": 22, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 90, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-128",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 128,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": -10, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 90, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-160",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 160,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": -42, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 90, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    },
+    {
+      "name": "inner-212",
+      "outer_scroll_top": 0,
+      "inner_scroll_top": 212,
+      "outer": { "x": 16, "y": 16, "width": 328, "height": 228 },
+      "inner": { "x": 26, "y": 74, "width": 260, "height": 148 },
+      "section": { "x": 34, "y": -94, "width": 224, "height": 176 },
+      "sticky": { "x": 34, "y": 54, "width": 180, "height": 28 },
+      "inner_client_top": 2,
+      "inner_client_height": 144
+    }
+  ],
+  "parent_content_edge_variant": {
+    "capture_source": "Dedicated Agent Browser session opened the standalone parent content-edge fixture in HeadlessChrome 156",
+    "fixture": "tests/fixtures/css/c12/position-sticky-parent-content-edge.html",
+    "fixture_sha256": "5a00b8a86ca7a2e301cec1c646a603aa0a5627ae08d8873b8d9a750dc333a141",
+    "outer_scroll_top": 0,
+    "inner_scroll_top": 212,
+    "section": {
+      "border_box_top": -94,
+      "border_box_bottom": 82,
+      "border_box_height": 176,
+      "content_edge_bottom": 68
+    },
+    "sticky": {
+      "top": 40,
+      "bottom": 68,
+      "height": 28
+    },
+    "section_after": {
+      "top": 82,
+      "bottom": 214,
+      "background": "rgb(204, 221, 238)"
+    },
+    "pixel_and_hit_test": {
+      "samples": [
+        {
+          "point_css_px": [200, 78],
+          "element_from_point": "section",
+          "computed_background": "rgb(245, 245, 245)",
+          "screenshot_rgba": [245, 245, 245, 255]
+        },
+        {
+          "point_css_px": [240, 100],
+          "element_from_point": "section-after",
+          "computed_background": "rgb(204, 221, 238)",
+          "screenshot_rgba": [204, 221, 238, 255]
+        }
+      ],
+      "screenshot": "chrome156-parent-content-edge.png",
+      "screenshot_sha256": "16a6e256b15a68bf8dce745c0243b312bd295c78bd585ae2440cabfb9c2c4f61"
+    },
+    "notes": [
+      "The parent content edge, not its border-box bottom, clamps the sticky box.",
+      "Both screenshot pixel colors were decoded directly from the captured Agent Browser PNG."
+    ]
+  }
+}

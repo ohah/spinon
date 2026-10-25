@@ -1,0 +1,16 @@
+2026-10-25 20:01:37 UTC
+List of devices attached
+R5KYB06SMPE            device usb:0-1 product:r13sksx model:SM_S731N device:r13s transport_id:11
+emulator-5560          device product:sdk_gphone16k_arm64 model:sdk_gphone16k_arm64 device:emu64a16k transport_id:2
+
+1
+37
+17
+arm64-v8a
+google/sdk_gphone16k_arm64/emu64a16k:17/CP41.260831.007/16416850:userdebug/dev-keys
+Physical size: 1080x2400
+Physical density: 420
+package:/data/app/~~tpBRvylfiDmieRWXBeRrJg==/dev.spinon.bootstrap-ITdYO8yatzvs9Ryq1S388A==/base.apk
+    topResumedActivity=ActivityRecord{205203775 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t1294}
+  mCurrentFocus=Window{a0db27d u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity}
+  mFocusedApp=ActivityRecord{205203775 u0 com.android.chrome/org.chromium.chrome.browser.firstrun.FirstRunActivity t1294}

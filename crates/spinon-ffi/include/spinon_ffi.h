@@ -294,6 +294,20 @@ int32_t spinon_runtime_gpu_host_request_c13_2_surface_pixels_for_test(
     char *output, size_t output_capacity);
 #endif
 
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
+/* C12.5 constrained sticky runtime fixture host; opt-in validation build only. */
+SpinonRuntimeGpuHost *spinon_runtime_gpu_host_new_c12_5_sticky_fixture(
+    char *output, size_t output_capacity);
+int32_t spinon_runtime_gpu_host_eval_c12_5_sticky_fixture(
+    SpinonRuntimeGpuHost *host, uint64_t layout_timeout_millis,
+    char *output, size_t output_capacity);
+/* 다음 C12.5 draw report에 포함할 고정 2개 Metal color 표본을 예약합니다. */
+int32_t spinon_runtime_gpu_host_request_c12_5_surface_pixels_for_test(
+    SpinonRuntimeGpuHost *host, const uint32_t *sample_xy, size_t sample_count,
+    char *output, size_t output_capacity);
+#endif
+
 #if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST
 /* C18.1 고정 PNG의 image paint·overflow surface 검증용 fixture-test host입니다. */

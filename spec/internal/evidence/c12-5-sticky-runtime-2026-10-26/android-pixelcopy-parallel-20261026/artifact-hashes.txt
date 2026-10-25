@@ -1,0 +1,7 @@
+APK local build SHA-256: 51233bf737d7f7f2d2c6e2a7f33e5e39c10ac95198f303c9f33cab220525cacc
+APK installed on emulator and read back with `adb -s emulator-5560 pull` SHA-256: 51233bf737d7f7f2d2c6e2a7f33e5e39c10ac95198f303c9f33cab220525cacc
+Native ARM64 build output SHA-256 (unstripped): dca1cef5f08d4699152fc2bc96da5d67d0115fd676d250ef16222aea187a2815
+APK-packaged native library SHA-256 (stripped): 7bf577984345066d2120208bcdfb1bee44b7fce18ea33a45fd3c20cbef8a4656
+PixelCopy surface PNG SHA-256: 6d18731f191e8af5e444b9721c226a7737a3df90d6ed7373d28abeda5cb1c064
+Full-screen screenshot SHA-256: 609893c49ddf66c4e6299c58105aad7459d9f534c6a9a91d60f8c8c796e5cffd
+The pulled APK copy was removed after hashing because it duplicated the 144 MiB build artifact; `apk-pull.txt` records the successful emulator readback.

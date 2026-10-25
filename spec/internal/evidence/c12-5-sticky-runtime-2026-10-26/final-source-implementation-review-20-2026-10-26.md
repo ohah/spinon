@@ -1,0 +1,46 @@
+# C12.5 최종 source 20관점 구현·런타임 재검토 · 2026-10-26
+
+## 범위와 source fingerprint
+
+기준 commit은 `d94f645843fca7ca431a3c51fc3519cced9109c0`이다. 변경 source/config/fixture 35개를 읽기 전용으로 검토했다. 이전 post-fix review의 source hash `5dbd898c…` 이후 product source 변경은 `platforms/ios/Sources/C0410RuntimeGpuDemo.swift:13335`의 redundant conditional cast 제거뿐이다. 앞선 `JSONSerialization` guard에서 `values`는 이미 `[[String: Any]]`이므로 `values[index]`는 dictionary 타입이고 변경은 검증 동작을 바꾸지 않는다. x/y NSNumber 확인과 RGBA channel count 확인은 그대로 남아 있다.
+
+fingerprint는 source/config/fixture 변경 파일을 경로 정렬한 다음 `경로 + NUL + 파일 길이(8-byte big-endian) + 파일 bytes`를 이어 SHA-256으로 계산했다. `DerivedData/`, build output, plan/docs, `spec/`와 evidence는 제외했다.
+
+```text
+source/config/fixture count: 35
+source-only SHA-256: c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308
+base: d94f645843fca7ca431a3c51fc3519cced9109c0
+```
+
+검토 중 hash는 안정적으로 유지됐다. 이 검토에서 source를 수정하거나 빌드·테스트·시뮬레이터를 실행하지 않았다. 아래 runtime 결과는 저장된 evidence를 읽어 대조했다.
+
+## 20개 실패 관점
+
+| # | 실패 관점 | 확인 위치 | 최종 source 판정 및 남은 범위 |
+| ---: | --- | --- | --- |
+| 1 | padding/border를 무시해 sticky가 containing block 밖으로 나가는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:220-257`; `crates/spinon-render/src/runtime/scroll.rs:418-435` | **수정 반영.** border-box bottom 82에서 bottom padding12와 border2를 빼 content bottom68을 구하고, sticky 높이28을 빼 top40을 만든다. Chrome 관찰 `[40,68]`, 저장된 Rust runtime report 및 iOS/Android logs와 일치한다. |
+| 2 | 이전 top54 예측과 새 top40이 14px 차이 나는 경계가 fixture에서 재현되는가 | `tests/fixtures/css/c12/position-sticky-parent-content-edge.html:29-42`; `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:183-212` | 부모 `padding-bottom:12px; border-bottom:2px`, inner212에서 Chrome content bottom68/top40이다. 이전 border-box clamp top54는 14px 아래다. 저장된 최종 iOS/Android runtime logs는 border bottom82/content bottom68/sticky top40을 기록한다. |
+| 3 | border와 padding 중 하나를 빼먹거나 두 번 빼는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:288-305`; `crates/spinon-render/src/runtime/scroll.rs:418-426` | `content_edge_inset`은 각 값을 한 번 더해 보존하고 runtime은 bottom 합계를 한 번 뺀다. 부모 style의 12+2px과 Chrome 14px 차이가 맞는다. |
+| 4 | top edge 값이 content-height 유효성에서 빠져 잘못된 크기의 parent를 받는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:230-257`; `crates/spinon-render/src/runtime/scroll.rs:422-435` | top inset도 usable content height에서 뺀다. 현재 oracle variant는 bottom edge만 14px 변경하므로 top border/padding 비대칭은 별도 observation/sample이 없다. |
+| 5 | invalid parent edge가 runtime clamp에 NaN/음수로 들어가는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:288-305`; `crates/spinon-render/src/runtime/scroll.rs:111-125` | border, padding, 합계를 finite·nonnegative로 검증하고 실패 시 거부한다. 유효하지 않은 edge를 성공 snapshot으로 만드는 경로는 보이지 않는다. |
+| 6 | content box가 sticky보다 작은데 lower bound가 역전되는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:242-257`; `crates/spinon-render/src/runtime/scroll.rs:422-435` | content height가 양수이고 sticky 높이가 content/scrollport를 넘지 않는지 사전 및 runtime에 검사한다. 현재 edge variant의 content height는 162px이고 sticky는28px이다. |
+| 7 | parent frame을 content-box로 오해해 edge를 두 번 적용하는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:213-244`; [edge fixture](../../../../tests/fixtures/css/c12/position-sticky-parent-content-edge.html:6-35) | 수식은 layout `frames`가 border box라는 기존 renderer 계약에 기대며 used border/padding edge를 별도로 뺀다. Chrome border-box fixture와 현재 evidence는 일치한다. 별도 `box-sizing:content-box` parent oracle는 없어 그 sizing 조합으로 비교 범위를 넓히면 추가 확인이 필요하다. |
+| 8 | style mutation 뒤 zero-edge layout snapshot을 재사용하는가 | `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:129-148` | parent style을 바꾼 뒤 layout-ready를 확인하고 새 C13.2 snapshot을 읽는다. 변형 뒤 새 geometry sequence가 실행된 결과가 저장돼 있다. |
+| 9 | parent content edge가 nested ancestor scroll offset을 잘못 적용하는가 | `crates/spinon-style-to-render/src/stacking/sticky.rs:259-280`; `crates/spinon-render/src/runtime/scroll.rs:413-426` | parent scroll ancestors를 저장하고 그 y 합을 content bottom에서 뺀다. 기존 fixture는 outer와 inner를 각각 이동한다. 변형 variant에서 outer와 inner를 동시에 nonzero로 두는 조합은 직접 sample하지 않아 추가 regression control로 남는다. |
+| 10 | parent bottom inset이 nearest scrollport top threshold를 밀어버리는가 | `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:150-185`; `crates/spinon-render/src/runtime/scroll.rs:405-426` | scrollport threshold는 owner y+padding-top+top inset으로 별도 유지한다. 저장된 변형 run은 inner36/160에서 top90, inner212에서 top40을 기록한다. |
+| 11 | content-edge clamp가 scrollport paint/hit clip을 무시하는가 | `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:214-223`; `crates/spinon-render/src/runtime/scroll.rs:440-452` | 최종 sticky box top40–68은 scrollport clip 시작76보다 위에 있고 `(200,42)`는 clip 밖, `(200,78)`은 안이다. runtime summary는 clip/hit pass를 기록한다. |
+| 12 | sticky 아래 `(200,78)`이 sticky hit target이나 red paint로 남는가 | `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:200-212`; `crates/spinon-render/src/runtime_tests.rs:851-868` | 최종 sticky bottom68이므로 CSS point `(200,78)`은 section, RGBA `(245,245,245,255)`다. Rust hit test와 Android PixelCopy/iOS Metal evidence 모두 이 영역을 기록한다. |
+| 13 | `(240,100)`이 section-after가 아니라 부모 배경으로 판정되는가 | `crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs:203-212`; `crates/spinon-render/src/runtime_tests.rs:869-890` | section border bottom82 다음 section-after가 시작한다. point `(240,100)`은 section-after, RGBA `(204,221,238,255)`다. Chrome·저장된 두 플랫폼 sample이 일치한다. |
+| 14 | Android PixelCopy CSS center가 다른 surface 위치를 가리키는가 | `platforms/android/app/src/c12_5_sticky_fixture_test/java/dev/spinon/bootstrap/C125StickyFixtureCaptureAdapter.java:19-21,84-105`; `platforms/android/app/src/main/java/dev/spinon/bootstrap/SurfaceViewPixelCapture.java:288-300` | surface945×683에서 scaleX2.625/scaleY2.626923. floor center 좌표는 `(200,78)→(526,206)`, `(240,100)→(631,264)`이며 manifest/PNG validation과 일치한다. |
+| 15 | Android surface 색 sample이 기존 sticky-red case를 새 boundary case로 오인하는가 | `platforms/android/app/src/c12_5_sticky_fixture_test/java/dev/spinon/bootstrap/C125StickyFixtureCaptureAdapter.java:84-125`; [PixelCopy manifest](./android-content-edge-pixelgate-20261026/manifest.json) | 새 IDs는 `section-at-content-edge`와 `section-after`; 기대 색은 각각 `(245,245,245,255)`, `(204,221,238,255)`다. manifest는 2/2 exact를 기록한다. Android target source subset hash는 run 이후 변경되지 않았고 전체 hash 차이는 iOS 전용 cast cleanup이다. |
+| 16 | iOS Metal sample 좌표/색이 새 parent edge variant와 어긋나는가 | `platforms/ios/Sources/C0410RuntimeGpuDemo.swift:5642-5648,13247-13268`; `ios-content-edge-metal-final-2026-10-26.log` | 1080×780 drawable의 3× scale에서 CSS `(200,78)→(601,235)`, `(240,100)→(721,301)`이다. final log는 같은 coordinates 및 두 expected RGBA가 2/2 exact라고 기록한다. |
+| 17 | 최종 pixel gate가 sticky의 visible red paint를 독립 증명하는가 | Android adapter `C125StickyFixtureCaptureAdapter.java:19-21`; iOS `C0410RuntimeGpuDemo.swift:5642-5648` | 새 gate는 inner212 final boundary의 section/section-after만 읽는다. top40–68 sticky는 clip top76보다 위여서 final surface의 sticky-red sample은 없다. 이 gate는 14px spill을 검출하지만 inner36의 visible pinned sticky paint는 pixel로 검증하지 않는다. |
+| 18 | iOS `NSNumber` JSON validation이 malformed fractional values를 정수로 잘라 통과시키는가 | `platforms/ios/Sources/C0410RuntimeGpuDemo.swift:13324-13347` | 이번 cast 제거는 `values[index]`의 dictionary type과 동등한 guard를 제거했을 뿐 sample contents guard는 유지한다. `uint32Value`는 여전히 fractional values를 truncate할 수 있으나 native report는 u32/정수 RGBA만 직렬화한다. 수정 후 2/2 evidence와 별개인 저위험 parser hardening 항목이다. |
+| 19 | iOS drawable 축 배율이 다르면 valid sample에도 false failure가 나는가 | `platforms/ios/Sources/C0410RuntimeGpuDemo.swift:13247-13268`; `platforms/android/app/src/c12_5_sticky_fixture_test/java/dev/spinon/bootstrap/C125StickyFixtureCaptureAdapter.java:42-51` | iOS는 `abs(scaleX-scaleY)<1e-6`를 요구하고 Android는 .01 허용오차를 쓴다. 지정 iPhone 17 Pro의 3× drawable은 정확히 같아 통과했지만 fractional/non-square drawable은 iOS에서 거부될 수 있다. |
+| 20 | asynchronous PixelCopy가 오래된 draw identity를 쓰거나 stale callback에서 terminal status를 잃는가 | `platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java:12218-12237`; adapter `C125StickyFixtureCaptureAdapter.java:72-76` | surface/renderer generation·size·host sequence는 검사하지만 callback 시점 scroll revision은 별도로 확인하지 않는다. stale callback은 one-shot capture 후 status 없이 반환한다. 고정 fixture run에서는 2/2 pass였으며 이번 evidence에서 race는 재현되지 않았다. |
+
+## 최종 판정과 evidence 경계
+
+최종 source delta에서 새 blocking defect는 발견하지 못했다. content-edge 수식, 14px Chrome 경계, runtime clip/hit 결과, Android/iOS CSS sample 좌표·RGBA는 저장된 final output과 맞는다. residual risks는 top edge/`content-box`/동시 outer+inner scroll 조합의 추가 oracle coverage, final surface에서 sticky-red paint 표본 부재, iOS 축 배율 조건, iOS integer JSON parsing, Android stale callback lifecycle이다.
+
+Android manifest는 `current_whole_source_sha256`을 최종 `c31f9f…`로 기록하고, capture 당시 `5dbd89…` 이후 변경은 iOS 전용이며 Android target subset은 unchanged라고 명시한다. iOS의 canonical `ios-content-edge-metal-manifest-2026-10-26.json`도 최종 source hash `c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308`로 갱신됐고, final runtime log hash 및 built/installed app hash를 연결한다. 그 manifest의 2개 sample은 Metal log의 `(601,235)` / `(721,301)` RGBA와 일치한다. 이전 `5dbd89…` capture manifest는 `ios-content-edge-metal-pre-cast-cleanup-manifest-2026-10-26.json`으로 분리되고 `superseded`로 표시돼 있어 최종 evidence identity 불일치는 해소됐다.

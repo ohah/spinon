@@ -656,6 +656,8 @@ pub(super) fn project_styles(
                         || snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                         || snapshot.profile
                             == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                    cfg!(feature = "c12-5-sticky-fixture-test")
+                        && snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1,
                 )?,
             );
         }

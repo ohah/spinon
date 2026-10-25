@@ -84,6 +84,85 @@ pub struct RuntimeScrollClipLayer {
     scroll_ancestors: Arc<[NodeId]>,
 }
 
+/// C12.5 제한 top-only sticky box의 immutable scroll constraint입니다.
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeStickyConstraint {
+    owner: NodeId,
+    containing_block_frame_css_px: CssRect,
+    containing_block_scroll_ancestors: Arc<[NodeId]>,
+    containing_block_content_top_inset_css_px: f32,
+    containing_block_content_bottom_inset_css_px: f32,
+    padding_top_css_px: f32,
+    top_inset_css_px: f32,
+}
+
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+impl RuntimeStickyConstraint {
+    pub fn new(
+        owner: NodeId,
+        containing_block_frame_css_px: CssRect,
+        containing_block_scroll_ancestors: Vec<NodeId>,
+        containing_block_content_top_inset_css_px: f32,
+        containing_block_content_bottom_inset_css_px: f32,
+        padding_top_css_px: f32,
+        top_inset_css_px: f32,
+    ) -> Result<Self, RuntimeRenderError> {
+        let content_vertical_inset = containing_block_content_top_inset_css_px
+            + containing_block_content_bottom_inset_css_px;
+        if !containing_block_content_top_inset_css_px.is_finite()
+            || containing_block_content_top_inset_css_px < 0.0
+            || !containing_block_content_bottom_inset_css_px.is_finite()
+            || containing_block_content_bottom_inset_css_px < 0.0
+            || !content_vertical_inset.is_finite()
+            || content_vertical_inset >= containing_block_frame_css_px.height()
+            || !padding_top_css_px.is_finite()
+            || padding_top_css_px < 0.0
+            || !top_inset_css_px.is_finite()
+            || top_inset_css_px < 0.0
+        {
+            return Err(RuntimeRenderError::InvalidScrollState);
+        }
+        Ok(Self {
+            owner,
+            containing_block_frame_css_px,
+            containing_block_scroll_ancestors: containing_block_scroll_ancestors.into(),
+            containing_block_content_top_inset_css_px,
+            containing_block_content_bottom_inset_css_px,
+            padding_top_css_px,
+            top_inset_css_px,
+        })
+    }
+
+    pub const fn owner(&self) -> NodeId {
+        self.owner
+    }
+
+    pub const fn containing_block_frame_css_px(&self) -> CssRect {
+        self.containing_block_frame_css_px
+    }
+
+    pub fn containing_block_scroll_ancestors(&self) -> &[NodeId] {
+        &self.containing_block_scroll_ancestors
+    }
+
+    pub const fn containing_block_content_top_inset_css_px(&self) -> f32 {
+        self.containing_block_content_top_inset_css_px
+    }
+
+    pub const fn containing_block_content_bottom_inset_css_px(&self) -> f32 {
+        self.containing_block_content_bottom_inset_css_px
+    }
+
+    pub const fn padding_top_css_px(&self) -> f32 {
+        self.padding_top_css_px
+    }
+
+    pub const fn top_inset_css_px(&self) -> f32 {
+        self.top_inset_css_px
+    }
+}
+
 impl RuntimeScrollClipLayer {
     pub fn new(
         paint_clip_css_px: CssClip,
@@ -116,6 +195,8 @@ pub struct RuntimeScrollRenderMetadata {
     base_frame_css_px: CssRect,
     scroll_ancestors: Arc<[NodeId]>,
     clip_layers: Arc<[RuntimeScrollClipLayer]>,
+    #[cfg(feature = "c12-5-sticky-fixture-test")]
+    sticky_constraint: Option<RuntimeStickyConstraint>,
     #[cfg(feature = "c13-3-gesture-fixture-test")]
     touch_action_chain: Arc<[RuntimeTouchAction]>,
 }
@@ -130,6 +211,8 @@ impl RuntimeScrollRenderMetadata {
             base_frame_css_px,
             scroll_ancestors: scroll_ancestors.into(),
             clip_layers: clip_layers.into(),
+            #[cfg(feature = "c12-5-sticky-fixture-test")]
+            sticky_constraint: None,
             #[cfg(feature = "c13-3-gesture-fixture-test")]
             touch_action_chain: Arc::from([]),
         }
@@ -152,6 +235,17 @@ impl RuntimeScrollRenderMetadata {
 
     pub fn clip_layers(&self) -> &[RuntimeScrollClipLayer] {
         &self.clip_layers
+    }
+
+    #[cfg(feature = "c12-5-sticky-fixture-test")]
+    pub const fn sticky_constraint(&self) -> Option<&RuntimeStickyConstraint> {
+        self.sticky_constraint.as_ref()
+    }
+
+    #[cfg(feature = "c12-5-sticky-fixture-test")]
+    pub fn with_sticky_constraint(mut self, sticky_constraint: RuntimeStickyConstraint) -> Self {
+        self.sticky_constraint = Some(sticky_constraint);
+        self
     }
 
     #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -292,6 +386,57 @@ pub(super) fn apply_scroll_state(
             base_frame.height(),
         )
         .map_err(|_| RuntimeRenderError::InvalidScrollState)?;
+        #[cfg(feature = "c12-5-sticky-fixture-test")]
+        let mut frame = frame;
+        #[cfg(feature = "c12-5-sticky-fixture-test")]
+        if let Some(sticky) = metadata.sticky_constraint() {
+            let nearest_owner_index = metadata
+                .scroll_ancestors()
+                .iter()
+                .position(|owner| *owner == sticky.owner())
+                .ok_or(RuntimeRenderError::InvalidScrollState)?;
+            let owner = scroll_containers
+                .iter()
+                .find(|container| container.owner() == sticky.owner())
+                .ok_or(RuntimeRenderError::InvalidScrollState)?;
+            if owner.max_offset_y_css_px() <= 0.0 {
+                return Err(RuntimeRenderError::InvalidScrollState);
+            }
+            let (_farther_x, farther_y) = scroll_offset_sum(
+                &metadata.scroll_ancestors()[nearest_owner_index + 1..],
+                &offsets,
+            )?;
+            let scrollport = owner.scrollport_css_px();
+            let sticky_threshold = scrollport.y() - farther_y
+                + sticky.padding_top_css_px()
+                + sticky.top_inset_css_px();
+            let (containing_block_x, containing_block_y) =
+                scroll_offset_sum(sticky.containing_block_scroll_ancestors(), &offsets)?;
+            if !containing_block_x.is_finite() {
+                return Err(RuntimeRenderError::InvalidScrollState);
+            }
+            let containing_block = sticky.containing_block_frame_css_px();
+            let containing_block_bottom = containing_block.y() + containing_block.height()
+                - sticky.containing_block_content_bottom_inset_css_px()
+                - containing_block_y;
+            let containing_block_content_height = containing_block.height()
+                - sticky.containing_block_content_top_inset_css_px()
+                - sticky.containing_block_content_bottom_inset_css_px();
+            let max_sticky_top = containing_block_bottom - frame.height();
+            let sticky_top = (frame.y().max(sticky_threshold)).min(max_sticky_top);
+            if !sticky_threshold.is_finite()
+                || !containing_block_bottom.is_finite()
+                || !containing_block_content_height.is_finite()
+                || containing_block_content_height <= 0.0
+                || frame.height() > containing_block_content_height
+                || !max_sticky_top.is_finite()
+                || !sticky_top.is_finite()
+            {
+                return Err(RuntimeRenderError::InvalidScrollState);
+            }
+            frame = CssRect::new(frame.x(), sticky_top, frame.width(), frame.height())
+                .map_err(|_| RuntimeRenderError::InvalidScrollState)?;
+        }
         let mut paint_clip = CssClip::unconstrained();
         let mut hit_test_clip = CssClip::unconstrained();
         for layer in metadata.clip_layers() {

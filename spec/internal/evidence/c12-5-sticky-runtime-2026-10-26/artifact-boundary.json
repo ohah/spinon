@@ -1,0 +1,27 @@
+{
+  "positive_build": {
+    "command": "cargo build --locked -p spinon-ffi --lib --features c12-5-sticky-fixture-test",
+    "artifact": "target/debug/libspinon_ffi.a",
+    "size_bytes": 703268728,
+    "sha256": "1f0562fadb1b3e4acb72b7b2c84a01c32eb8fa3c5343997762f9d73df960d7e8",
+    "symbols_present": [
+      "_spinon_runtime_gpu_host_new_c12_5_sticky_fixture",
+      "_spinon_runtime_gpu_host_eval_c12_5_sticky_fixture",
+      "_spinon_runtime_gpu_host_request_c12_5_surface_pixels_for_test"
+    ],
+    "fixture_payload_strings_present": true
+  },
+  "default_build": {
+    "command": "cargo build --locked -p spinon-ffi --lib --no-default-features --release",
+    "artifact": "target/release/libspinon_ffi.a",
+    "size_bytes": 60191816,
+    "sha256": "7d9891c4e71802f6897652207c0ff33f01431ee4651a38a2d9e07b4eb6120d1e",
+    "symbols_absent": [
+      "_spinon_runtime_gpu_host_new_c12_5_sticky_fixture",
+      "_spinon_runtime_gpu_host_eval_c12_5_sticky_fixture",
+      "_spinon_runtime_gpu_host_request_c12_5_surface_pixels_for_test"
+    ],
+    "fixture_marker_and_payload_strings_absent": true,
+    "scan_note": "Rust toolchain llvm-nm confirms all three C12.5 FFI symbols in the opt-in archive and none in the default archive. strings confirms C12.5 fixture payload strings in the opt-in archive and none in the default archive. The generic text c12-5-sticky in unrelated paths is not treated as a fixture marker."
+  }
+}

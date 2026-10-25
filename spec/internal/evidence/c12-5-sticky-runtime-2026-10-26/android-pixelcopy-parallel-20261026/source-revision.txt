@@ -1,0 +1,71 @@
+source_root=/private/tmp/spinon-c12-5-sticky-20261026
+branch=feat/c12-5-sticky-20261026
+HEAD=d94f645843fca7ca431a3c51fc3519cced9109c0
+tracked_diff_sha256=e24e8c016864733713418fbadb6318a54f3bafe9ca096bbe447f4590dbbb2a52
+git_status:
+ M crates/spinon-ffi/Cargo.toml
+ M crates/spinon-ffi/include/spinon_ffi.h
+ M crates/spinon-ffi/src/runtime_gpu/ffi/fixtures.rs
+ M crates/spinon-ffi/src/runtime_gpu/fixtures.rs
+ M crates/spinon-ffi/src/runtime_gpu/fixtures/c13_2_scroll_host.rs
+ M crates/spinon-ffi/src/runtime_gpu/fixtures/host.rs
+ M crates/spinon-render/Cargo.toml
+ M crates/spinon-render/src/lib.rs
+ M crates/spinon-render/src/runtime.rs
+ M crates/spinon-render/src/runtime/scroll.rs
+ M crates/spinon-render/src/runtime_tests.rs
+ M crates/spinon-runtime/Cargo.toml
+ M crates/spinon-style-to-layout/Cargo.toml
+ M crates/spinon-style-to-layout/src/projection/style_values.rs
+ M crates/spinon-style-to-layout/src/projection/style_values/positioning_values.rs
+ M crates/spinon-style-to-render/Cargo.toml
+ M crates/spinon-style-to-render/src/stacking.rs
+ M plan/c12-positioning.md
+ M platforms/android/app/build.gradle.kts
+ M platforms/android/app/src/main/cpp/spinon_jni.cc
+ M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
+ M platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java
+ M platforms/ios/Sources/AppDelegate.swift
+ M platforms/ios/Sources/C0410RuntimeGpuDemo.swift
+ M platforms/ios/Sources/SpinonRunner.h
+ M platforms/ios/Sources/SpinonRunner.mm
+ M platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj
+ M spec/STATUS.md
+ M spec/internal/README.md
+ M tools/build-android.sh
+ M tools/build-ios-native.sh
+?? DerivedData/
+?? crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c12_5_sticky.rs
+?? crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs
+?? crates/spinon-style-to-render/src/stacking/sticky.rs
+?? plan/c12-5-sticky-positioning.md
+?? platforms/android/app/src/c12_5_sticky_fixture_test/
+?? spec/internal/0082-c12-5-sticky-positioning.md
+?? spec/internal/evidence/c12-5-sticky-plan-review-20-2026-10-26.md
+?? spec/internal/evidence/c12-5-sticky-precomparison-2026-10-26/
+?? spec/internal/evidence/c12-5-sticky-runtime-2026-10-26/
+?? tests/fixtures/css/c12/position-sticky.html
+?? tests/fixtures/css/c12/runtime-sticky-positioning-c12-5.js
+source_and_artifact_hashes:
+422d35a0d676e0e986c7ee50f7b61b400a2aa6122e2308efe4a83bca999d0c35  platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java
+d6b51381d0f273435038f9c043d526bdb0dcc961da92621490ea2a0d277126f9  platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
+c4588c959bd47a6a8cfd7fc3af27165b3477be999e0eeb93776d854297cf6d36  platforms/android/app/src/main/cpp/spinon_jni.cc
+ece634d0819d7fb25bc264b6fb97af931882e42f38f450333ba06d169ed82165  platforms/android/app/src/c12_5_sticky_fixture_test/java/dev/spinon/bootstrap/C125StickyFixtureCaptureAdapter.java
+1b1a5a1e44dab20bb0840e817b47abd1227f5b3805c186841973899fb4719a12  platforms/android/app/src/main/java/dev/spinon/bootstrap/SurfaceViewPixelCapture.java
+dea6501573ef888c62598fd8883ab7f5cf22acde789dc7721e4139194a9c13bc  platforms/android/app/build.gradle.kts
+065596e4ea4c7df6e5182608c478a4c6436a0fc750d55320cb71754a82ef21df  tools/build-android-app.sh
+3c9c24686c164452c466c3722491a65fbc04e49955b7afba1a598bff5775143f  crates/spinon-style-to-render/src/stacking/sticky.rs
+37de65660f112747441fcea50ec6ee223c857ccb6a9c5e969c9f03e4365e2117  crates/spinon-style-to-render/src/stacking.rs
+3e4aa88f6c02de3ce19a49931d9d602df69b2cff75d31750a196a1deaf07d68e  crates/spinon-style-to-layout/src/projection/style_values/positioning_values.rs
+bb5f5102fee3dc566fb4dcdd83148b1e72104cec442b5ca74795b893a4a0a863  crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c12_5_sticky.rs
+f9b783cfa6e9200707d7c4539b3c0af362887c9ebf17614fec810f3e3262d9a7  crates/spinon-ffi/src/runtime_gpu/fixtures/c12_5_sticky_host.rs
+9b41d3fa3fcae300337a67be568b9eb71ba26828cbcca380434c9797b177be8e  tests/fixtures/css/c12/position-sticky.html
+713b9136d6d48c6a88339619eb30b2e69cb17ace5f38b2c0e9bcb23cc64683d7  spec/internal/evidence/c12-5-sticky-precomparison-2026-10-26/chrome156-color-observation.json
+51233bf737d7f7f2d2c6e2a7f33e5e39c10ac95198f303c9f33cab220525cacc  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+dca1cef5f08d4699152fc2bc96da5d67d0115fd676d250ef16222aea187a2815  build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so
+7bf577984345066d2120208bcdfb1bee44b7fce18ea33a45fd3c20cbef8a4656  platforms/android/app/build/intermediates/stripped_native_libs/debug/stripDebugDebugSymbols/out/lib/arm64-v8a/libspinon_bootstrap.so
+c05c1a5bda747d4cbe88d46e58725677af03e4f5093928050c4e5f4554a713c2  spec/internal/evidence/c12-5-sticky-runtime-2026-10-26/android-build-pixel-gate.log
+timestamps:
+2026-10-26 04:56:59 +0900 platforms/android/app/build/outputs/apk/debug/app-debug.apk
+2026-10-26 04:48:37 +0900 platforms/android/app/src/c12_5_sticky_fixture_test/java/dev/spinon/bootstrap/C125StickyFixtureCaptureAdapter.java
+2026-10-26 04:48:42 +0900 platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java

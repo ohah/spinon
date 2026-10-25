@@ -56,6 +56,14 @@
 + (uint64_t)createRuntimeGpuHostWithC13_1OverflowClipBorderFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_1StackingDescendantClipFixture;
 + (uint64_t)createRuntimeGpuHostWithC13_2ScrollFixture;
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC12_5StickyFixture;
++ (NSString *)evalRuntimeGpuC12_5StickyFixture:(uint64_t)handle;
++ (NSString *)requestRuntimeGpuC12_5SurfacePixels:(uint64_t)handle
+                                            sampleXY:(const uint32_t *)sampleXY
+                                         sampleCount:(NSUInteger)sampleCount;
+#endif
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture;
 #if defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \
     SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST

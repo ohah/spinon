@@ -5,6 +5,11 @@ edition = "2024"
 publish = false
 
 [features]
+c12-5-sticky-fixture-test = [
+    "spinon-render/c12-5-sticky-fixture-test",
+    "spinon-style-to-layout/c12-5-sticky-fixture-test",
+    "spinon-style-to-render/c12-5-sticky-fixture-test",
+]
 c12-4-worker-stack-residency-test = []
 c13-1-overflow-clip-worker-test = ["spinon-style-to-render/c13-1-overflow-clip-worker-test"]
 c13-3-gesture-fixture-test = ["spinon-style-to-render/c13-3-gesture-fixture-test"]

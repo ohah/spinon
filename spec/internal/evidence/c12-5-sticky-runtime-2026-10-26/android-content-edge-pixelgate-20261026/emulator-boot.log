@@ -1,0 +1,1265 @@
+INFO         | Android emulator version 37.2.12.0 (build_id 16428233) (CL:N/A)
+INFO         | Graphics backend: gfxstream
+DEBUG   | Current emulator version 37.2.12 is the same as the required version 37.2.12.
+INFO         | Deleting /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/bootcompleted.ini done
+INFO         | Found AVD name 'spinon_api37_2_presenttime_probe_20261018'
+INFO         | Found AVD target architecture: arm64
+INFO         | argv[0]: '/Users/yoonhb/Library/Android/sdk/emulator/emulator'; program directory: '/Users/yoonhb/Library/Android/sdk/emulator'
+INFO         | Found systemPath /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a/
+DEBUG   | autoconfig: -skin 1080x2400
+DEBUG   | autoconfig: -skindir (null)
+DEBUG   | init, loading /Users/yoonhb/Library/Android/sdk/emulator/lib/advancedFeatures.ini
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: GLPipeChecksum = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceANGLE = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceSwiftshader = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: HYPERV = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: HVF = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: KVM = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: FastSnapshotV1 = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ScreenRecording = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VirtualScene = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VideoPlayback = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: GenericSnapshotsUI = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: WindowsOnDemandSnapshotLoad = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: WindowsHypervisorPlatform = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: LocationUiV2 = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: SnapshotAdb = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: QuickbootFileBacked = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: OnDemandSnapshotLoad = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: Vulkan = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: IpDisconnectOnLoad = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: HasSharedSlotsHostMemoryAllocator = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: CarVHalTable = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanSnapshots = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: DynamicMediaProfile = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: CarVhalReplay = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: NoDelayCloseColorBuffer = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: NoDeviceFrame = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VirtioGpuNativeSync = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanShaderFloat16Int8 = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: CarRotary = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: TvRemote = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: GuestUsesAngle = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VirtioGpuFenceContexts = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: AsyncComposeSupport = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanAstcLdrEmulation = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanYcbcrEmulation = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: NetsimWebUi = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: NetsimCliUi = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: WiFiPacketStream = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanAllocateDeviceMemoryOnly = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanAllocateHostMemory = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: QtRawKeyboardInput = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: BypassVulkanDeviceFeatureOverrides = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanDebugUtils = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanCommandBufferCheckpoints = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanVirtualQueue = on
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanRobustness = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceLavapipe = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceLavapipeForSoftwareRendering = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceGpuHost = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: ForceGpuSoftware = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: NetsimX = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanProtectedMemoryEmulation = off
+DEBUG   | FeatureControl::initHostFeatureAndParseDefault: VulkanUseDedicatedAhbMemoryType = on
+INFO         | Guest usage of host flag 'VulkanVirtualQueue' will be ignored.
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GrallocSync = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GrallocSync (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: EncryptUserData = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: EncryptUserData (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: IntelPerformanceMonitoringUnit = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: IntelPerformanceMonitoringUnit (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLAsyncSwap = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLAsyncSwap (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLDMA = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLDMA (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLDMA2 = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLDirectMem = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLDirectMem (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLESDynamicVersion = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GLESDynamicVersion (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Wifi = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: PlayStoreImage = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: LogcatPipe = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: LogcatPipe (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: SystemAsRoot = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: KernelDeviceTreeBlobSupport = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DynamicPartition = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DynamicPartition (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: RefCountPipe = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: RefCountPipe (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HostComposition = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HostComposition (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: WifiConfigurable = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioInput = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioInput (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: MultiDisplay = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: MultiDisplay (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanNullOptionalStrings = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanNullOptionalStrings (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: YUV420888toNV21 = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: YUVCache = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: YUVCache (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: KeycodeForwarding = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanIgnoredHandles = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanIgnoredHandles (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioGpuNext = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Mac80211hwsimUserspaceManaged = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Mac80211hwsimUserspaceManaged (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HardwareDecoder = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HardwareDecoder (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioWifi = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioWifi (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: ModemSimulator = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: ModemSimulator (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioMouse = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtconsoleLogcat = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtconsoleLogcat (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioVsockPipe = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioVsockPipe (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanQueueSubmitWithCommands = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanQueueSubmitWithCommands (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanBatchedDescriptorSetUpdate = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VulkanBatchedDescriptorSetUpdate (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Minigbm = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GnssGrpcV1 = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AndroidbootProps = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AndroidbootProps2 = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AndroidbootProps2 (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceSkinOverlay = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceSkinOverlay (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: BluetoothEmulation (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceStateOnBoot = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceStateOnBoot (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HWCMultiConfigs = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: HWCMultiConfigs (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioSndCard = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioSndCard (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioTablet = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VsockSnapshotLoadFixed_b231345789 = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DownloadableSnapshot = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: SupportPixelFold = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: SupportPixelFold (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceKeyboardHasAssistKey = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DeviceKeyboardHasAssistKey (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Uwb = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Uwb (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: GuestAngle = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AndroidVirtualizationFramework = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AndroidVirtualizationFramework (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: XrModeUI = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: VirtioDualModeMouse = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: DualModeMouseDisplayHostCursor = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: AllAppsForHomeTray = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: MicrophoneToggleUI = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: QemuCameraSensorOrientation = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: QemuCameraSensorOrientation (guest) = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: XrDimming = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: XrHandAndEyePointers = on
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: Nfc = off
+DEBUG   | FeatureControl::initGuestFeatureAndParseDefault: XrStatusLed = on
+DEBUG   | FeatureControl::setIfNotOverridenOrGuestDisabled: GLESDynamicVersion is changed to enabled
+DEBUG   | Server flags enabled GLESDynamicVersion
+DEBUG   | Downloading new feature patterns.
+DEBUG   | autoconfig: -kernel /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//kernel-ranchu
+DEBUG   | Target arch = 'arm64'
+DEBUG   | Auto-detect: Kernel image requires new device naming scheme.
+DEBUG   | Auto-detect: Kernel does not support YAFFS2 partitions.
+DEBUG   | autoconfig: -ramdisk /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//ramdisk.img
+DEBUG   | Using initial system image: /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//system.img
+DEBUG   | Using initial vendor image: /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//vendor.img
+DEBUG   | autoconfig: -data /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/userdata-qemu.img
+DEBUG   | autoconfig: -initdata (null)
+DEBUG   | autoconfig: -cache /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/cache.img
+DEBUG   | INFO: ignore sdcard for arm at api level >= 30
+INFO         | Increasing RAM size to 4096MB
+DEBUG   | VM heap size 228MB is below hardware specified minimum of 576MB,setting it to that value
+DEBUG   | System image is read only
+DEBUG   | Found 2 DNS servers:
+DEBUG   | 	100.100.100.100
+DEBUG   | 	fd7a:115c:a1e0::53
+INFO         | Guest GLES Driver: Auto (ext controls)
+DEBUG   | FeatureControl::setIfNotOverriden: ForceSwiftshader is changed to enabled
+DEBUG   | emuglConfig_init: gpu_mode_requested: swiftshader, no_window: 1
+
+DEBUG   | Crash dump message: 'emuglConfig_init: gpu_mode_requested: swiftshader, no_window: 1'
+INFO         | emuglConfig_init: vulkan_mode_selected:swiftshader gles_mode_selected:swangle
+DEBUG   | setCurrentRenderer: swangle swiftshader gles:Angle Indirect vulkan:Swiftshader Indirect
+DEBUG   | emuglConfig_init: GPU emulation enabled using Vulkan:'swiftshader' GLES:'swangle' modes
+
+DEBUG   | Crash dump message: 'emuglConfig_init: GPU emulation enabled using Vulkan:'swiftshader' GLES:'swangle' modes'
+DEBUG   | Crash dump message: 'Deciding if GLDirectMem/Vulkan should be enabled. Selected GLES renderer: Angle Indirect Selected Vulkan renderer: Swiftshader Indirect API level: 37 '
+DEBUG   | Crash dump message: 'Enabling Vulkan'
+DEBUG   | FeatureControl::setIfNotOverriden: Vulkan is changed to enabled
+DEBUG   | FeatureControl::setIfNotOverriden: GLDirectMem is changed to enabled
+DEBUG   | Crash dump message: 'Enabling GLDirectMem'
+DEBUG   | GPU emulation enabled using Vulkan:'swiftshader' GLES:'swangle' modes
+DEBUG   | Adding to the library search path: /Users/yoonhb/Library/Android/sdk/emulator/lib64/gles_swangle
+
+INFO         | Checking system compatibility:
+INFO         |   Checking: hasSufficientDiskSpace
+INFO         |      Ok: Disk space requirements to run avd: `spinon_api37_2_presenttime_probe_20261018` are met
+INFO         |   Checking: hasSufficientHwGpu
+INFO         |      Ok: Hardware GPU compatibility checks are not required
+INFO         |   Checking: hasSufficientSystem
+INFO         |      Ok: System requirements to run avd: `spinon_api37_2_presenttime_probe_20261018` are met
+DEBUG   | Starting hostapd main loop.
+DEBUG   | found magic skin width=1080 height=2400 bpp=32
+
+DEBUG   | FeatureControl::setIfNotOverriden: QuickbootFileBacked is changed to disabled
+DEBUG   | Requested console port 5560: Inferring adb port 5561.
+DEBUG   | CPU Acceleration: working
+DEBUG   | CPU Acceleration status: Hypervisor.Framework OS X Version 26.5
+DEBUG   | handleCpuAcceleration: feature check for hvf
+DEBUG   | FeatureControl::setIfNotOverriden: VsockSnapshotLoadFixed_b231345789 is changed to enabled
+DEBUG   | Uwb requested by user
+DEBUG   | Bluetooth requested by guest
+DEBUG   | started modem simulator host server at port: 55645
+DEBUG   |  no root specified: 
+DEBUG   | Path:/Users/yoonhb/Library/Android/sdk/platform-tools/adb protocol version: 41
+DEBUG   | Path:/opt/homebrew/bin/adb protocol version: 41
+DEBUG   | Found: 2 adb executables
+DEBUG   | Adb: /Users/yoonhb/Library/Android/sdk/platform-tools/adb
+DEBUG   | Adb: /opt/homebrew/bin/adb
+DEBUG   | Path:/Users/yoonhb/Library/Android/sdk/platform-tools/adb protocol version: 41
+DEBUG   | Path:/opt/homebrew/bin/adb protocol version: 41
+DEBUG   | emulator_window_framebuffer_create: 1080x2400
+
+INFO         | Storing crashdata in: /tmp/android-yoonhb/emu-crash-37.2.12.db, detection is enabled for process: 10751
+INFO         | Initializing gfxstream backend
+INFO         | startOpenglesRendererImpl: gpu info
+INFO         | 
+DEBUG   | gfxstreamFeature:GlPipeChecksum = 1
+DEBUG   | gfxstreamFeature:Vulkan = 1
+DEBUG   | gfxstreamFeature:HasSharedSlotsHostMemoryAllocator = 1
+DEBUG   | gfxstreamFeature:VulkanSnapshots = 0
+DEBUG   | gfxstreamFeature:NoDelayCloseColorBuffer = 0
+DEBUG   | gfxstreamFeature:VirtioGpuNativeSync = 0
+DEBUG   | gfxstreamFeature:VulkanShaderFloat16Int8 = 1
+DEBUG   | gfxstreamFeature:NativeTextureDecompression = 0
+DEBUG   | gfxstreamFeature:VulkanNativeSwapchain = 0
+DEBUG   | gfxstreamFeature:VirtioGpuFenceContexts = 0
+DEBUG   | gfxstreamFeature:AsyncComposeSupport = 0
+DEBUG   | gfxstreamFeature:ExternalBlob = 0
+DEBUG   | gfxstreamFeature:SystemBlob = 0
+DEBUG   | gfxstreamFeature:GrallocSync = 0
+DEBUG   | gfxstreamFeature:GlAsyncSwap = 1
+DEBUG   | gfxstreamFeature:GlDma = 1
+DEBUG   | gfxstreamFeature:GlDma2 = 0
+DEBUG   | gfxstreamFeature:GlDirectMem = 1
+DEBUG   | gfxstreamFeature:GlesDynamicVersion = 1
+DEBUG   | gfxstreamFeature:RefCountPipe = 1
+DEBUG   | gfxstreamFeature:HostComposition = 1
+DEBUG   | gfxstreamFeature:VulkanNullOptionalStrings = 1
+DEBUG   | gfxstreamFeature:Yuv420888ToNv21 = 0
+DEBUG   | gfxstreamFeature:YuvCache = 1
+DEBUG   | gfxstreamFeature:VulkanIgnoredHandles = 1
+DEBUG   | gfxstreamFeature:VirtioGpuNext = 0
+DEBUG   | gfxstreamFeature:VulkanQueueSubmitWithCommands = 1
+DEBUG   | gfxstreamFeature:VulkanBatchedDescriptorSetUpdate = 0
+DEBUG   | gfxstreamFeature:Minigbm = 0
+DEBUG   | gfxstreamFeature:HwcMultiConfigs = 1
+DEBUG   | gfxstreamFeature:VulkanAllocateDeviceMemoryOnly = 0
+DEBUG   | gfxstreamFeature:VulkanAllocateHostMemory = 0
+DEBUG   | gfxstreamFeature:GuestVulkanOnly = 0
+DEBUG   | gfxstreamFeature:BypassVulkanDeviceFeatureOverrides = 0
+DEBUG   | gfxstreamFeature:VulkanDebugUtils = 0
+DEBUG   | gfxstreamFeature:VulkanCommandBufferCheckpoints = 0
+DEBUG   | gfxstreamFeature:VulkanVirtualQueue = 1
+DEBUG   | gfxstreamFeature:VulkanRobustness = 0
+DEBUG   | gfxstreamFeature:VulkanProtectedMemoryEmulation = 0
+DEBUG   | gfxstreamFeature:VulkanUseDedicatedAhbMemoryType = 1
+INFO         | Vulkan 1.4 is not supported for the guest and won't be enabled
+DEBUG   | RenderWindow: CMD_INITIALIZE w=1080 h=2400
+DEBUG   | FrameBuffer::initialize()
+DEBUG   | Creating Framebuffer: 1080x2400, useSubWindow=1
+DEBUG   | create display 0
+DEBUG   | setDisplayPose 0 x 0 y 0 w 1080 h 2400 dpi 0
+INFO         | initIcdPaths: ICD set to 'swiftshader', using Swiftshader ICD
+INFO         | Setting ICD filenames for the loader = /Users/yoonhb/Library/Android/sdk/emulator/lib64/vulkan/vk_swiftshader_icd.json
+VERBOSE | Enabling error messages from vulkan loader
+INFO         | SharedLibrary::open for [/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]
+VERBOSE | SharedLibrary::open for [/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib]: not found in map, open for the first time
+VERBOSE | SharedLibrary::open for [/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib] (posix): begin
+VERBOSE | SharedLibrary::open for [/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib] (posix,darwin): call dlopen
+VERBOSE | SharedLibrary::open succeeded for [/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib].
+INFO         | Added library: /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/lib64/vulkan/libvulkan.dylib
+INFO         | Enabling Vulkan portability.
+DEBUG   | Global loader has instance version = 1.4.344
+DEBUG   | global loader has vkEnumerateInstanceVersion returning >= 1.1.
+DEBUG   | Creating an instance, asking for version 1.1.0 ...
+DEBUG   | Found 1 Vulkan physical device(s).
+DEBUG   | Considering Vulkan physical device 0 : SwiftShader Device (LLVM 10.0.0)
+DEBUG   | VK_EXT_external_memory_metal not found, bailing.
+DEBUG   | Graphics queue family index: 0
+DEBUG   | Compute queue family index: 0
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8G8B8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8G8B8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R5G6B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A1R5G5B5_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16G16B16A16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16G16B16_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B8G8R8A8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_B4G4R4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R4G4B4A4_UNORM_PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R8_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_R16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UINT_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2R10G10B10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_A2B10G10R10_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ETC2_R8G8B8A8_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_ASTC_4x4_UNORM_BLOCK VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8R8_2PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8R8_2PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G8_B8_R8_3PLANE_422_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_LINEAR VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_COLOR_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Supported: VK_FORMAT_D16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D16_UNORM VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Not Supported: VK_FORMAT_X8_D24_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_X8_D24_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_X8_D24_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_X8_D24_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_X8_D24_UNORM_PACK32 VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Not Supported: VK_FORMAT_D24_UNORM_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_D24_UNORM_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT
+DEBUG   | Not Supported: VK_FORMAT_D24_UNORM_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT
+DEBUG   | Not Supported: VK_FORMAT_D24_UNORM_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT
+DEBUG   | Not Supported: VK_FORMAT_D24_UNORM_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_DEPTH_STENCIL_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_INPUT_ATTACHMENT_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_SAMPLED_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_SRC_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+DEBUG   | Supported: VK_FORMAT_D32_SFLOAT_S8_UINT VK_IMAGE_TYPE_2D VK_IMAGE_TILING_OPTIMAL VK_IMAGE_USAGE_TRANSFER_DST_BIT, supportsExternalMemory? 1, requiresDedicated? 0
+INFO         | Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0
+DEBUG   | Crash dump message: 'Selecting Vulkan device: SwiftShader Device (LLVM 10.0.0), Version: 1.3.0'
+INFO         | Using Vulkan externalMemoryMode: OpaqueFd for VkEmulation
+DEBUG   | VkEmulation deviceInfo:
+DEBUG   |     hasGraphicsQueueFamily = true
+DEBUG   |     hasComputeQueueFamily = true
+DEBUG   |     externalMemoryMode = OpaqueFd
+DEBUG   |     supportsExternalMemoryImport = true
+DEBUG   |     supportsExternalMemoryExport = true
+DEBUG   |     supportsDmaBuf = false
+DEBUG   |     supportsDriverProperties = true
+DEBUG   |     supportsExternalMemoryHostProps = false
+DEBUG   |     hasSamplerYcbcrConversionExtension = true
+DEBUG   |     supportsSamplerYcbcrConversion = true
+DEBUG   |     glInteropSupported = false
+DEBUG   |     hasNvidiaDeviceDiagnosticCheckpointsExtension = false
+DEBUG   |     supportsNvidiaDeviceDiagnosticCheckpoints = false
+DEBUG   |     supportsPrivateData = true
+DEBUG   | Crash dump message: 'VkEmulation deviceInfo: 
+hasGraphicsQueueFamily = 1
+hasComputeQueueFamily = 1
+externalMemoryMode = OpaqueFd
+supportsExternalMemoryImport = 1
+supportsExternalMemoryExport = 1
+supportsDriverProperties = 1
+supportsExternalMemoryHostProps = 0
+hasSamplerYcbcrConversionExtension = 1
+supportsSamplerYcbcrConversion = 1
+glInteropSupported = 0
+hasNvidiaDeviceDiagnosticCheckpointsExtension = 0
+supportsNvidiaDeviceDiagnosticCheckpoints = 0
+supportsPrivateData = 1
+'
+DEBUG   | Vulkan logical device created and extension functions obtained.
+DEBUG   | Vulkan device queue obtained.
+VERBOSE | create: selected memory type index = 0, propertyFlags = 15, heapIndex = 0
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G8_B8R8_2PLANE_420_UNORM
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G8_B8R8_2PLANE_420_UNORM
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G8_B8_R8_3PLANE_420_UNORM
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G10X6_B10X6R10X6_2PLANE_420_UNORM_3PACK16
+VERBOSE | Creating YCbCr sampler for VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16
+INFO         | Format VK_FORMAT_G10X6_B10X6R10X6_2PLANE_422_UNORM_3PACK16 does not support YCbCr sampler conversion
+VERBOSE | YcbcrSamplerPool::init: format P210 not supported for prepopulation
+VERBOSE | Vulkan global emulation state successfully initialized.
+DEBUG   | Crash dump message: 'Vulkan emulation initialized'
+VERBOSE | SharedLibrary::open for [libGLESv2.dylib]: not found in map, open for the first time
+VERBOSE | SharedLibrary::open for [libGLESv2.dylib] (posix): begin
+VERBOSE | SharedLibrary::open for [libGLESv2.dylib] (posix,darwin): call dlopen
+VERBOSE | SharedLibrary::open succeeded for [libGLESv2.dylib].
+VERBOSE | SharedLibrary::open for [libEGL.dylib]: not found in map, open for the first time
+VERBOSE | SharedLibrary::open for [libEGL.dylib] (posix): begin
+VERBOSE | SharedLibrary::open for [libEGL.dylib] (posix,darwin): call dlopen
+VERBOSE | SharedLibrary::open succeeded for [libEGL.dylib].
+WARNING: loader_scanned_icd_add: Driver /Users/yoonhb/Library/Android/sdk/emulator/lib64/gles_angle/././libvk_swiftshader.dylib says it supports interface version 3 but still exports core entrypoints (Policy #LDP_DRIVER_6)
+WARNING: loader_scanned_icd_add: Driver /Users/yoonhb/Library/Android/sdk/emulator/lib64/gles_angle/././libvk_swiftshader.dylib says it supports interface version 3 but still exports core entrypoints (Policy #LDP_DRIVER_6)
+WARNING: loader_scanned_icd_add: Driver /Users/yoonhb/Library/Android/sdk/emulator/lib64/gles_angle/././libvk_swiftshader.dylib says it supports interface version 3 but still exports core entrypoints (Policy #LDP_DRIVER_6)
+WARNING: loader_scanned_icd_add: Driver /Users/yoonhb/Library/Android/sdk/emulator/lib64/gles_angle/././libvk_swiftshader.dylib says it supports interface version 3 but still exports core entrypoints (Policy #LDP_DRIVER_6)
+VERBOSE | EglOsEglDisplay: client exts: [EGL_ANGLE_surface_orientation EGL_KHR_create_context EGL_KHR_image EGL_KHR_image_base EGL_EXT_image_gl_colorspace EGL_KHR_gl_colorspace EGL_KHR_gl_texture_2D_image EGL_KHR_gl_texture_cubemap_image EGL_KHR_gl_renderbuffer_image EGL_KHR_get_all_proc_addresses EGL_KHR_fence_sync EGL_KHR_wait_sync EGL_ANGLE_create_context_webgl_compatibility EGL_CHROMIUM_create_context_bind_generates_resource EGL_KHR_swap_buffers_with_damage EGL_EXT_pixel_format_float EGL_KHR_surfaceless_context EGL_ANGLE_display_texture_share_group EGL_ANGLE_display_semaphore_share_group EGL_ANGLE_create_context_client_arrays EGL_ANGLE_program_cache_control EGL_ANGLE_robust_resource_initialization EGL_ANGLE_create_context_extensions_enabled EGL_ANDROID_blob_cache EGL_ANDROID_recordable EGL_ANGLE_create_context_backwards_compatible EGL_KHR_no_config_context EGL_IMG_context_priority EGL_KHR_create_context_no_error EGL_KHR_reusable_sync EGL_EXT_buffer_age EGL_KHR_mutable_render_buffer EGL_ANGLE_create_surface_swap_interval EGL_ANGLE_vulkan_image ]
+DEBUG   | call eglInitialize
+VERBOSE | queryConfigs: num configs: 16
+DEBUG   | Create: Maximum Vulkan API version will be limited
+DEBUG   | vk icd software rendering, disable interop
+DEBUG   | glvk interop final: 0
+INFO         | Initializing VkEmulation features:
+INFO         |     glInteropSupported: false
+INFO         |     useDeferredCommands: true
+INFO         |     createResourceWithRequirements: true
+INFO         |     useVulkanComposition: false
+INFO         |     useVulkanNativeSwapchain: false
+INFO         |     enable guestRenderDoc: false
+INFO         |     ASTC LDR emulation mode: Gpu
+INFO         |     enable ETC2 emulation: true
+INFO         |     enable Ycbcr emulation: false
+INFO         |     guestVulkanOnly: false
+INFO         |     useDedicatedAllocations: false
+INFO         |     guestVulkanMaxApiVersion: 1.3.0
+INFO         |     enableProtectedMemoryEmulation: false
+DEBUG   | ColorBuffer 4294967295, 64x64, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16384, type: 0, props: 15 / 1]
+DEBUG   | Representative ColorBuffer memory type using host memory type index 0 and guest memory type index :1
+DEBUG   | Performing composition using CompositorGl.
+INFO         | Graphics Adapter Vendor Google (Google Inc. (Google))
+INFO         | Graphics Adapter Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0))
+INFO         | Graphics API Version OpenGL ES 3.0 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))
+INFO         | Graphics API Extensions GL_OES_EGL_sync GL_OES_EGL_image GL_OES_EGL_image_external GL_OES_depth24 GL_OES_depth32 GL_OES_element_index_uint GL_OES_texture_float GL_OES_texture_float_linear GL_OES_compressed_paletted_texture GL_OES_compressed_ETC1_RGB8_texture GL_OES_depth_texture GL_OES_texture_half_float GL_OES_texture_half_float_linear GL_OES_packed_depth_stencil GL_OES_vertex_half_float GL_OES_standard_derivatives GL_OES_texture_npot GL_OES_rgb8_rgba8 GL_OVR_multiview2 GL_EXT_color_buffer_float GL_EXT_color_buffer_half_float GL_EXT_texture_format_BGRA8888 GL_APPLE_texture_format_BGRA8888 GL_EXT_draw_buffers_indexed GL_EXT_clip_cull_distance 
+INFO         | Graphics Device Extensions N/A
+INFO         | Disabling sparse binding feature support
+DEBUG   | Renderer initialized successfully
+VERBOSE | Created RenderThread. Active RenderThreads: 1
+INFO         | Setting vsync to 60 hz
+DEBUG   | CMD_SET_VSYNC_HZ
+DEBUG   | INFO: ignore sdcard for arm at api level >= 30
+INFO         | Sending adb public key [QAAAAMd+WngJHeMWOPiXWaV7/K44/+5WdRhno6LNEFgKbJLSCQDbU9OK9hm2ZJ089mavkhZ3fYzsts4Vhhsq6tF4ErXvVHriHpvNjqtINEK6WJHVLW8Dnb5PyIMczfpsfpH1xsIyjHAYi5XSSLfT7bWNiD7ehYsoN80gpE1tyYWgJ1C8POn4pYqfAQhCytJfN3gELKdQSVXNZmf/u2mLjFYTQNG97Y0fWwE+yQbHm6c/WsU/Ee6Rxn0s8cZ13sF6deb0OCRgOVdDnUzq9dP3t3ReqzqxxZasnxlEFLyBVjJs7HrEOthXws81Fh1aPZcYkYwGwiwRweC7vibj1CdJ+azXlzyLJkKci8F1hQ1U0bGwJz+6bpaN84T4mg7jdm+46nT3ZIuFelJYknIp5U3HIF++l1p8c3T08Ys2iQs/r69pmYmkaeGkUBm61f0YDonNBEEdDxfMkED9JzHy96H9qfxiSYzDXcwFztFtxmOg1ogwvfMAfdxCTgzGe0tkYF/Y4HZLAEw6W7sWQ1RT6YmmQwvTs7nbJ8FO2CPJhyGcJ2VyLrA5JbX8r2gMFb8MFcNTcKlqEPHij22CdypP4sxL/COtuTphEEnrYJh31e1YN6tNo01afTqEG3Nf4VaFrVW/LPhJjMgAgdzc6voWvHmo9gYkiLUt2BeKLjfTP3uT19ELyAM1szM1UgEAAQA= yoonhb@unknown]
+INFO         | Userspace boot properties:
+INFO         |   androidboot.boot_devices=a003600.virtio_mmio
+INFO         |   androidboot.dalvik.vm.heapsize=576m
+INFO         |   androidboot.debug.hwui.renderer=skiagl
+INFO         |   androidboot.hardware=ranchu
+INFO         |   androidboot.hardware.gltransport=pipe
+INFO         |   androidboot.hardware.vulkan=ranchu
+INFO         |   androidboot.logcat=*:V
+INFO         |   androidboot.opengles.version=196609
+INFO         |   androidboot.qemu=1
+INFO         |   androidboot.qemu.adb.pubkey=QAAAAMd+WngJHeMWOPiXWaV7/K44/+5WdRhno6LNEFgKbJLSCQDbU9OK9hm2ZJ089mavkhZ3fYzsts4Vhhsq6tF4ErXvVHriHpvNjqtINEK6WJHVLW8Dnb5PyIMczfpsfpH1xsIyjHAYi5XSSLfT7bWNiD7ehYsoN80gpE1tyYWgJ1C8POn4pYqfAQhCytJfN3gELKdQSVXNZmf/u2mLjFYTQNG97Y0fWwE+yQbHm6c/WsU/Ee6Rxn0s8cZ13sF6deb0OCRgOVdDnUzq9dP3t3ReqzqxxZasnxlEFLyBVjJs7HrEOthXws81Fh1aPZcYkYwGwiwRweC7vibj1CdJ+azXlzyLJkKci8F1hQ1U0bGwJz+6bpaN84T4mg7jdm+46nT3ZIuFelJYknIp5U3HIF++l1p8c3T08Ys2iQs/r69pmYmkaeGkUBm61f0YDonNBEEdDxfMkED9JzHy96H9qfxiSYzDXcwFztFtxmOg1ogwvfMAfdxCTgzGe0tkYF/Y4HZLAEw6W7sWQ1RT6YmmQwvTs7nbJ8FO2CPJhyGcJ2VyLrA5JbX8r2gMFb8MFcNTcKlqEPHij22CdypP4sxL/COtuTphEEnrYJh31e1YN6tNo01afTqEG3Nf4VaFrVW/LPhJjMgAgdzc6voWvHmo9gYkiLUt2BeKLjfTP3uT19ELyAM1szM1UgEAAQA= yoonhb@unknown
+INFO         |   androidboot.qemu.avd_name=spinon_api37_2_presenttime_probe_20261018
+INFO         |   androidboot.qemu.camera_hq_edge_processing=0
+INFO         |   androidboot.qemu.camera_protocol_ver=1
+INFO         |   androidboot.qemu.cpuvulkan.version=4210688
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval=800
+INFO         |   androidboot.qemu.gltransport.name=pipe
+INFO         |   androidboot.qemu.hwcodec.avcdec=2
+INFO         |   androidboot.qemu.hwcodec.hevcdec=2
+INFO         |   androidboot.qemu.hwcodec.vpxdec=2
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout=2147483647
+INFO         |   androidboot.qemu.skin=1080x2400
+INFO         |   androidboot.qemu.virtiowifi=1
+INFO         |   androidboot.qemu.vsync=60
+INFO         |   androidboot.serialno=EMULATOR37X2X12X0
+INFO         |   androidboot.vbmeta.digest=287fadba211e83815503c513612e4d559bca92a5b06efb14a68e30907e87e2d4
+INFO         |   androidboot.vbmeta.hash_alg=sha256
+INFO         |   androidboot.vbmeta.size=6848
+INFO         |   androidboot.veritymode=enforcing
+INFO         | Android bootconfig:
+INFO         |   androidboot.boot_devices="a003600.virtio_mmio"
+INFO         |   androidboot.dalvik.vm.heapsize="576m"
+INFO         |   androidboot.debug.hwui.renderer="skiagl"
+INFO         |   androidboot.hardware="ranchu"
+INFO         |   androidboot.hardware.gltransport="pipe"
+INFO         |   androidboot.hardware.vulkan="ranchu"
+INFO         |   androidboot.logcat="*:V"
+INFO         |   androidboot.opengles.version="196609"
+INFO         |   androidboot.qemu="1"
+INFO         |   androidboot.qemu.adb.pubkey="QAAAAMd+WngJHeMWOPiXWaV7/K44/+5WdRhno6LNEFgKbJLSCQDbU9OK9hm2ZJ089mavkhZ3fYzsts4Vhhsq6tF4ErXvVHriHpvNjqtINEK6WJHVLW8Dnb5PyIMczfpsfpH1xsIyjHAYi5XSSLfT7bWNiD7ehYsoN80gpE1tyYWgJ1C8POn4pYqfAQhCytJfN3gELKdQSVXNZmf/u2mLjFYTQNG97Y0fWwE+yQbHm6c/WsU/Ee6Rxn0s8cZ13sF6deb0OCRgOVdDnUzq9dP3t3ReqzqxxZasnxlEFLyBVjJs7HrEOthXws81Fh1aPZcYkYwGwiwRweC7vibj1CdJ+azXlzyLJkKci8F1hQ1U0bGwJz+6bpaN84T4mg7jdm+46nT3ZIuFelJYknIp5U3HIF++l1p8c3T08Ys2iQs/r69pmYmkaeGkUBm61f0YDonNBEEdDxfMkED9JzHy96H9qfxiSYzDXcwFztFtxmOg1ogwvfMAfdxCTgzGe0tkYF/Y4HZLAEw6W7sWQ1RT6YmmQwvTs7nbJ8FO2CPJhyGcJ2VyLrA5JbX8r2gMFb8MFcNTcKlqEPHij22CdypP4sxL/COtuTphEEnrYJh31e1YN6tNo01afTqEG3Nf4VaFrVW/LPhJjMgAgdzc6voWvHmo9gYkiLUt2BeKLjfTP3uT19ELyAM1szM1UgEAAQA= yoonhb@unknown"
+INFO         |   androidboot.qemu.avd_name="spinon_api37_2_presenttime_probe_20261018"
+INFO         |   androidboot.qemu.camera_hq_edge_processing="0"
+INFO         |   androidboot.qemu.camera_protocol_ver="1"
+INFO         |   androidboot.qemu.cpuvulkan.version="4210688"
+INFO         |   androidboot.qemu.gltransport.drawFlushInterval="800"
+INFO         |   androidboot.qemu.gltransport.name="pipe"
+INFO         |   androidboot.qemu.hwcodec.avcdec="2"
+INFO         |   androidboot.qemu.hwcodec.hevcdec="2"
+INFO         |   androidboot.qemu.hwcodec.vpxdec="2"
+INFO         |   androidboot.qemu.settings.system.screen_off_timeout="2147483647"
+INFO         |   androidboot.qemu.skin="1080x2400"
+INFO         |   androidboot.qemu.virtiowifi="1"
+INFO         |   androidboot.qemu.vsync="60"
+INFO         |   androidboot.serialno="EMULATOR37X2X12X0"
+INFO         |   androidboot.vbmeta.digest="287fadba211e83815503c513612e4d559bca92a5b06efb14a68e30907e87e2d4"
+INFO         |   androidboot.vbmeta.hash_alg="sha256"
+INFO         |   androidboot.vbmeta.size="6848"
+INFO         |   androidboot.veritymode="enforcing"
+DEBUG   | Exited a loader RenderThread @0xaa4c48000
+DEBUG   | Found 2 DNS servers:
+DEBUG   | 	100.100.100.100
+DEBUG   | 	fd7a:115c:a1e0::53
+INFO         | Content of hardware configuration file:
+INFO         | 	hw.cpu.arch = arm64
+INFO         | 	hw.cpu.ncore = 4
+INFO         | 	hw.ramSize = 4096
+INFO         | 	hw.screen = multi-touch
+INFO         | 	hw.mainKeys = false
+INFO         | 	hw.touchpad0 = false
+INFO         | 	hw.touchpad0.width = 600
+INFO         | 	hw.touchpad0.height = 400
+INFO         | 	hw.trackBall = false
+INFO         | 	hw.keyboard = false
+INFO         | 	hw.keyboard.lid = true
+INFO         | 	hw.keyboard.charmap = qwerty2
+INFO         | 	hw.dPad = false
+INFO         | 	hw.rotaryInput = false
+INFO         | 	hw.gsmModem = true
+INFO         | 	hw.gps = true
+INFO         | 	hw.battery = true
+INFO         | 	hw.accelerometer = true
+INFO         | 	hw.accelerometer_uncalibrated = true
+INFO         | 	hw.gyroscope = true
+INFO         | 	hw.audioInput = true
+INFO         | 	hw.audioOutput = true
+INFO         | 	hw.sdCard = true
+INFO         | 	disk.cachePartition = true
+INFO         | 	disk.cachePartition.path = /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/cache.img
+INFO         | 	disk.cachePartition.size = 66m
+INFO         | 	test.quitAfterBootTimeOut = -1
+INFO         | 	test.delayAdbTillBootComplete = 0
+INFO         | 	test.monitorAdb = 0
+INFO         | 	hw.lcd.width = 1080
+INFO         | 	hw.lcd.height = 2400
+INFO         | 	hw.lcd.depth = 32
+INFO         | 	hw.lcd.circular = false
+INFO         | 	hw.lcd.density = 420
+INFO         | 	hw.lcd.transparent = false
+INFO         | 	hw.lcd.backlight = true
+INFO         | 	hw.lcd.vsync = 60
+INFO         | 	hw.gltransport = pipe
+INFO         | 	hw.gltransport.asg.writeBufferSize = 1048576
+INFO         | 	hw.gltransport.asg.writeStepSize = 4096
+INFO         | 	hw.gltransport.asg.dataRingSize = 32768
+INFO         | 	hw.gltransport.drawFlushInterval = 800
+INFO         | 	hw.displayRegion.0.1.xOffset = -1
+INFO         | 	hw.displayRegion.0.1.yOffset = -1
+INFO         | 	hw.displayRegion.0.1.width = 0
+INFO         | 	hw.displayRegion.0.1.height = 0
+INFO         | 	hw.displayRegion.0.2.xOffset = -1
+INFO         | 	hw.displayRegion.0.2.yOffset = -1
+INFO         | 	hw.displayRegion.0.2.width = 0
+INFO         | 	hw.displayRegion.0.2.height = 0
+INFO         | 	hw.displayRegion.0.3.xOffset = -1
+INFO         | 	hw.displayRegion.0.3.yOffset = -1
+INFO         | 	hw.displayRegion.0.3.width = 0
+INFO         | 	hw.displayRegion.0.3.height = 0
+INFO         | 	hw.display1.width = 0
+INFO         | 	hw.display1.height = 0
+INFO         | 	hw.display1.density = 0
+INFO         | 	hw.display1.xOffset = -1
+INFO         | 	hw.display1.yOffset = -1
+INFO         | 	hw.display1.flag = 0
+INFO         | 	hw.display2.width = 0
+INFO         | 	hw.display2.height = 0
+INFO         | 	hw.display2.density = 0
+INFO         | 	hw.display2.xOffset = -1
+INFO         | 	hw.display2.yOffset = -1
+INFO         | 	hw.display2.flag = 0
+INFO         | 	hw.display3.width = 0
+INFO         | 	hw.display3.height = 0
+INFO         | 	hw.display3.density = 0
+INFO         | 	hw.display3.xOffset = -1
+INFO         | 	hw.display3.yOffset = -1
+INFO         | 	hw.display3.flag = 0
+INFO         | 	hw.multi_display_window = false
+INFO         | 	hw.hotplug_multi_display = false
+INFO         | 	hw.gpu.enabled = true
+INFO         | 	hw.gpu.mode = swiftshader
+INFO         | 	hw.initialOrientation = portrait
+INFO         | 	hw.camera.back = emulated
+INFO         | 	hw.camera.back.orientation = 90
+INFO         | 	hw.camera.front = none
+INFO         | 	hw.camera.front.orientation = 90
+INFO         | 	vm.heapSize = 576
+INFO         | 	hw.sensors.light = true
+INFO         | 	hw.sensors.pressure = true
+INFO         | 	hw.sensors.humidity = true
+INFO         | 	hw.sensors.proximity = true
+INFO         | 	hw.sensors.magnetic_field = true
+INFO         | 	hw.sensors.magnetic_field_uncalibrated = true
+INFO         | 	hw.sensors.gyroscope_uncalibrated = true
+INFO         | 	hw.sensors.orientation = true
+INFO         | 	hw.sensors.temperature = true
+INFO         | 	hw.sensors.rgbclight = false
+INFO         | 	hw.sensor.hinge = false
+INFO         | 	hw.sensor.hinge.count = 0
+INFO         | 	hw.sensor.hinge.type = 0
+INFO         | 	hw.sensor.hinge.sub_type = 0
+INFO         | 	hw.sensor.hinge.resizable.config = 1
+INFO         | 	hw.sensor.hinge.fold_to_displayRegion.0.1_at_posture = 1
+INFO         | 	hw.sensor.roll = false
+INFO         | 	hw.sensor.roll.count = 0
+INFO         | 	hw.sensor.roll.resize_to_displayRegion.0.1_at_posture = 6
+INFO         | 	hw.sensor.roll.resize_to_displayRegion.0.2_at_posture = 6
+INFO         | 	hw.sensor.roll.resize_to_displayRegion.0.3_at_posture = 6
+INFO         | 	hw.sensors.heart_rate = false
+INFO         | 	hw.sensors.wrist_tilt = false
+INFO         | 	hw.sensors.heading = false
+INFO         | 	hw.useext4 = true
+INFO         | 	hw.device.name = pixel_6
+INFO         | 	kernel.path = /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//kernel-ranchu
+INFO         | 	kernel.newDeviceNaming = yes
+INFO         | 	kernel.supportsYaffs2 = no
+INFO         | 	disk.ramdisk.path = /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//ramdisk.img
+INFO         | 	disk.systemPartition.initPath = /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//system.img
+INFO         | 	disk.systemPartition.size = 8203m
+INFO         | 	disk.vendorPartition.initPath = /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//vendor.img
+INFO         | 	disk.vendorPartition.size = 800m
+INFO         | 	disk.dataPartition.path = /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/userdata-qemu.img
+INFO         | 	disk.dataPartition.size = 10g
+INFO         | 	disk.encryptionKeyPartition.path = /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/encryptionkey.img
+INFO         | 	PlayStore.enabled = false
+INFO         | 	avd.name = spinon_api37_2_presenttime_probe_20261018
+INFO         | 	avd.id = spinon_api37_2_presenttime_probe_20261018
+INFO         | 	fastboot.forceColdBoot = false
+INFO         | 	userdata.useQcow2 = true
+INFO         | 	firstboot.bootFromDownloadableSnapshot = true
+INFO         | 	firstboot.bootFromLocalSnapshot = true
+INFO         | 	firstboot.saveToLocalSnapshot = true
+INFO         | 	android.sdk.root = /Users/yoonhb/Library/Android/sdk
+INFO         | 	android.avd.home = /Users/yoonhb/.android/avd
+INFO         | 	environment.width = 0
+INFO         | 	environment.height = 0
+INFO         | .
+INFO         | QEMU options list:
+INFO         | 	 argv[00] = "/Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless"
+INFO         | 	 argv[01] = "-dns-server"
+INFO         | 	 argv[02] = "100.100.100.100,fd7a:115c:a1e0::53"
+INFO         | 	 argv[03] = "-no-audio"
+INFO         | 	 argv[04] = "-serial"
+INFO         | 	 argv[05] = "null"
+INFO         | 	 argv[06] = "-android-ports"
+INFO         | 	 argv[07] = "5560,5561"
+INFO         | 	 argv[08] = "-cpu"
+INFO         | 	 argv[09] = "cortex-a53"
+INFO         | 	 argv[10] = "-machine"
+INFO         | 	 argv[11] = "type=virt"
+INFO         | 	 argv[12] = "-enable-hvf"
+INFO         | 	 argv[13] = "-smp"
+INFO         | 	 argv[14] = "cores=4"
+INFO         | 	 argv[15] = "-m"
+INFO         | 	 argv[16] = "4096"
+INFO         | 	 argv[17] = "-lcd-density"
+INFO         | 	 argv[18] = "420"
+INFO         | 	 argv[19] = "-nodefaults"
+INFO         | 	 argv[20] = "-kernel"
+INFO         | 	 argv[21] = "/Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//kernel-ranchu"
+INFO         | 	 argv[22] = "-initrd"
+INFO         | 	 argv[23] = "/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/initrd"
+INFO         | 	 argv[24] = "-drive"
+INFO         | 	 argv[25] = "index=0,id=vendor,if=none,file=/Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//vendor.img,read-only"
+INFO         | 	 argv[26] = "-device"
+INFO         | 	 argv[27] = "virtio-blk-device,drive=vendor"
+INFO         | 	 argv[28] = "-drive"
+INFO         | 	 argv[29] = "index=1,id=encrypt,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO         | 	 argv[30] = "-device"
+INFO         | 	 argv[31] = "virtio-blk-device,drive=encrypt"
+INFO         | 	 argv[32] = "-drive"
+INFO         | 	 argv[33] = "index=2,id=userdata,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO         | 	 argv[34] = "-device"
+INFO         | 	 argv[35] = "virtio-blk-device,drive=userdata"
+INFO         | 	 argv[36] = "-drive"
+INFO         | 	 argv[37] = "index=3,id=cache,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576"
+INFO         | 	 argv[38] = "-device"
+INFO         | 	 argv[39] = "virtio-blk-device,drive=cache"
+INFO         | 	 argv[40] = "-drive"
+INFO         | 	 argv[41] = "index=4,id=system,if=none,file=/Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//system.img,read-only"
+INFO         | 	 argv[42] = "-device"
+INFO         | 	 argv[43] = "virtio-blk-device,drive=system"
+INFO         | 	 argv[44] = "-netdev"
+INFO         | 	 argv[45] = "user,id=mynet"
+INFO         | 	 argv[46] = "-device"
+INFO         | 	 argv[47] = "virtio-net-device,netdev=mynet"
+INFO         | 	 argv[48] = "-chardev"
+INFO         | 	 argv[49] = "null,id=forhvc0"
+INFO         | 	 argv[50] = "-chardev"
+INFO         | 	 argv[51] = "null,id=forhvc1"
+INFO         | 	 argv[52] = "-device"
+INFO         | 	 argv[53] = "virtio-serial-pci,ioeventfd=off"
+INFO         | 	 argv[54] = "-device"
+INFO         | 	 argv[55] = "virtconsole,chardev=forhvc0"
+INFO         | 	 argv[56] = "-device"
+INFO         | 	 argv[57] = "virtconsole,chardev=forhvc1"
+INFO         | 	 argv[58] = "-chardev"
+INFO         | 	 argv[59] = "netsim,id=uwb"
+INFO         | 	 argv[60] = "-device"
+INFO         | 	 argv[61] = "virtconsole,chardev=uwb,name=uwb"
+INFO         | 	 argv[62] = "-chardev"
+INFO         | 	 argv[63] = "netsim,id=bluetooth"
+INFO         | 	 argv[64] = "-device"
+INFO         | 	 argv[65] = "virtserialport,chardev=bluetooth,name=bluetooth"
+INFO         | 	 argv[66] = "-device"
+INFO         | 	 argv[67] = "virtio-serial,ioeventfd=off"
+INFO         | 	 argv[68] = "-chardev"
+INFO         | 	 argv[69] = "socket,port=55644,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem"
+INFO         | 	 argv[70] = "-device"
+INFO         | 	 argv[71] = "virtserialport,chardev=modem,name=modem"
+INFO         | 	 argv[72] = "-device"
+INFO         | 	 argv[73] = "virtio-rng-device"
+INFO         | 	 argv[74] = "-show-cursor"
+INFO         | 	 argv[75] = "-device"
+INFO         | 	 argv[76] = "virtio_input_multi_touch_pci_1"
+INFO         | 	 argv[77] = "-device"
+INFO         | 	 argv[78] = "virtio_input_multi_touch_pci_2"
+INFO         | 	 argv[79] = "-device"
+INFO         | 	 argv[80] = "virtio_input_multi_touch_pci_3"
+INFO         | 	 argv[81] = "-device"
+INFO         | 	 argv[82] = "virtio_input_multi_touch_pci_4"
+INFO         | 	 argv[83] = "-device"
+INFO         | 	 argv[84] = "virtio_input_multi_touch_pci_5"
+INFO         | 	 argv[85] = "-device"
+INFO         | 	 argv[86] = "virtio_input_multi_touch_pci_6"
+INFO         | 	 argv[87] = "-device"
+INFO         | 	 argv[88] = "virtio_input_multi_touch_pci_7"
+INFO         | 	 argv[89] = "-device"
+INFO         | 	 argv[90] = "virtio_input_multi_touch_pci_8"
+INFO         | 	 argv[91] = "-device"
+INFO         | 	 argv[92] = "virtio_input_multi_touch_pci_9"
+INFO         | 	 argv[93] = "-device"
+INFO         | 	 argv[94] = "virtio_input_multi_touch_pci_10"
+INFO         | 	 argv[95] = "-device"
+INFO         | 	 argv[96] = "virtio_input_multi_touch_pci_11"
+INFO         | 	 argv[97] = "-netdev"
+INFO         | 	 argv[98] = "user,id=virtio-wifi,dhcpstart=10.0.2.16"
+INFO         | 	 argv[99] = "-device"
+INFO         | 	 argv[100] = "virtio-wifi-pci,netdev=virtio-wifi"
+INFO         | 	 argv[101] = "-device"
+INFO         | 	 argv[102] = "virtio-vsock-pci,guest-cid=77"
+INFO         | 	 argv[103] = "-L"
+INFO         | 	 argv[104] = "/Users/yoonhb/Library/Android/sdk/emulator/lib/pc-bios"
+INFO         | 	 argv[105] = "-soundhw"
+INFO         | 	 argv[106] = "virtio-snd-pci"
+INFO         | 	 argv[107] = "-append"
+INFO         | 	 argv[108] = "8250.nr_uarts=1 no_timer_check keep_bootcon earlyprintk=ttyAMA0 console=0 ndns=2 loop.max_part=7 printk.devkmsg=on bootconfig"
+INFO         | 	 argv[109] = "-android-hw"
+INFO         | 	 argv[110] = "/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/hardware-qemu.ini"
+INFO         | Concatenated QEMU options: /Users/yoonhb/Library/Android/sdk/emulator/qemu/darwin-aarch64/qemu-system-aarch64-headless -dns-server 100.100.100.100,fd7a:115c:a1e0::53 -no-audio -serial null -android-ports 5560,5561 -cpu cortex-a53 -machine type=virt -enable-hvf -smp cores=4 -m 4096 -lcd-density 420 -nodefaults -kernel /Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//kernel-ranchu -initrd /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/initrd -drive index=0,id=vendor,if=none,file=/Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//vendor.img,read-only -device virtio-blk-device,drive=vendor -drive index=1,id=encrypt,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/encryptionkey.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-device,drive=encrypt -drive index=2,id=userdata,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/userdata-qemu.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-device,drive=userdata -drive index=3,id=cache,if=none,file=/Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/cache.img.qcow2,overlap-check=none,cache=unsafe,l2-cache-size=1048576 -device virtio-blk-device,drive=cache -drive index=4,id=system,if=none,file=/Users/yoonhb/Library/Android/sdk/system-images/android-37.2/google_apis_ps16k/arm64-v8a//system.img,read-only -device virtio-blk-device,drive=system -netdev user,id=mynet -device virtio-net-device,netdev=mynet -chardev null,id=forhvc0 -chardev null,id=forhvc1 -device virtio-serial-pci,ioeventfd=off -device virtconsole,chardev=forhvc0 -device virtconsole,chardev=forhvc1 -chardev netsim,id=uwb -device virtconsole,chardev=uwb,name=uwb -chardev netsim,id=bluetooth -device virtserialport,chardev=bluetooth,name=bluetooth -device virtio-serial,ioeventfd=off -chardev socket,port=55644,host=::1,nowait,nodelay,reconnect=10,ipv6,id=modem -device virtserialport,chardev=modem,name=modem -device virtio-rng-device -show-cursor -device virtio_input_multi_touch_pci_1 -device virtio_input_multi_touch_pci_2 -device virtio_input_multi_touch_pci_3 -device virtio_input_multi_touch_pci_4 -device virtio_input_multi_touch_pci_5 -device virtio_input_multi_touch_pci_6 -device virtio_input_multi_touch_pci_7 -device virtio_input_multi_touch_pci_8 -device virtio_input_multi_touch_pci_9 -device virtio_input_multi_touch_pci_10 -device virtio_input_multi_touch_pci_11 -netdev user,id=virtio-wifi,dhcpstart=10.0.2.16 -device virtio-wifi-pci,netdev=virtio-wifi -device virtio-vsock-pci,guest-cid=77 -L /Users/yoonhb/Library/Android/sdk/emulator/lib/pc-bios -soundhw virtio-snd-pci -append '8250.nr_uarts=1 no_timer_check keep_bootcon earlyprintk=ttyAMA0 console=0 ndns=2 loop.max_part=7 printk.devkmsg=on bootconfig' -android-hw /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/hardware-qemu.ini
+DEBUG   | Android qemu version 37.2.12.0 (build_id 16428233) (CL:N/A)
+DEBUG   | Starting QEMU main loop
+DEBUG   | registered 'boot-properties' qemud service
+DEBUG   | Adding boot property: 'ro.opengles.version' = '196609'
+DEBUG   | Adding boot property: 'qemu.sf.fake_camera' = 'back'
+DEBUG   | Adding boot property: 'dalvik.vm.heapsize' = '576m'
+DEBUG   | Adding boot property: 'qemu.hw.mainkeys' = '0'
+DEBUG   | Adding boot property: 'qemu.sf.lcd_density' = '420'
+DEBUG   | goldfish_events.have-dpad: false
+DEBUG   | goldfish_events.have-trackball: false
+DEBUG   | goldfish_events.have-camera: true
+DEBUG   | goldfish_events.have-keyboard: false
+DEBUG   | goldfish_events.have-lidswitch: true
+DEBUG   | goldfish_events.have-tabletmode: false
+DEBUG   | goldfish_events.have-touch: false
+DEBUG   | goldfish_events.have-multitouch: false
+DEBUG   | Adding boot property: 'net.wifi_mac_prefix' = '5560'
+INFO         | Monitoring duration of emulator setup.
+DEBUG   | Adding boot property: 'qemu.timezone' = 'Asia/Seoul'
+DEBUG   | android_hw_fingerprint_init: fingerprint qemud listen service initialized
+INFO         | Activated packet streamer for uwb emulation
+INFO         | Activated packet streamer for bluetooth emulation
+INFO         | Successfully initialized netsim WiFi
+DEBUG   | emulator_window_fb_rotate
+DEBUG   | CMD_SET_DISPLAY_CONFIGS
+INFO         | Setting display: 0 configuration to: 1080x2400, dpi: 420x420 
+DEBUG   | CMD_SET_DISPLAY_ACTIVE_CONFIG
+DEBUG   | setDisplayPose 0 x 0 y 0 w 1080 h 2400 dpi 0
+INFO         | setDisplayActiveConfig: id:0, 1080x2400
+DEBUG   | Adjusting window size by 0.38x for hw_lcd_density
+DEBUG   | adisplay_init: Creating skin display surface 1080x2400
+DEBUG   | Sending CMD_REPAINT to reposting thread
+DEBUG   | Sending CMD_REPAINT to reposting thread
+DEBUG   | Sending CMD_REPAINT to reposting thread
+DEBUG   | Reposting thread dequeueing a CMD_REPAINT
+DEBUG   | config multidisplay with config.ini 0x0 0x0 0x0
+DEBUG   | Reposting framebuffer.
+DEBUG   | No repost: no last posted color buffer
+DEBUG   | Reposting thread dequeueing a CMD_REPAINT
+DEBUG   | Reposting framebuffer.
+DEBUG   | No repost: no last posted color buffer
+DEBUG   | Reposting thread dequeueing a CMD_REPAINT
+DEBUG   | Reposting framebuffer.
+DEBUG   | No repost: no last posted color buffer
+DEBUG   | ver_initialize: Setting search paths with 2 entries
+INFO         | emulatorSetupEnvironment: Environment scene is not required
+DEBUG   | added one RIL client
+DEBUG   | Crash info: sessionId=
+DEBUG   | Crash info: ro.build.fingerprint=google/generic_system_google/generic:17/CP41.260831.007/16416850:userdebug/dev-keys
+DEBUG   | Crash info: avd_space=15697809408
+DEBUG   | Crash info: free_ram=33165
+DEBUG   | Crash info: hw.gpu.enabled=no
+DEBUG   | Crash info: cpu_cores=16
+DEBUG   | Crash info: PlayStore.enabled=no
+DEBUG   | Crash info: hw.ramSize=2G
+DEBUG   | Crash info: hw.lcd.width=1080
+DEBUG   | Crash info: hw.sensor.hinge=no
+DEBUG   | Crash info: hw.cpu.ncore=4
+DEBUG   | Crash info: hw.gpu.mode=auto
+DEBUG   | Crash info: hw.lcd.height=2400
+DEBUG   | Crash info: disk.dataPartition.size=10G
+USER_INFO    | Emulator is performing a full startup. This may take upto two minutes, or more.
+DEBUG   | Using the same userId as Android Studio for metrics. id=3ef5baad-75c8-40bc-8d3e-e23834d3db3e
+VERBOSE | Created RenderThread. Active RenderThreads: 2
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 1
+DEBUG   | Started new RenderThread (total 1) @0xaa195ee00
+VERBOSE | Created RenderThread. Active RenderThreads: 2
+DEBUG   | Started new RenderThread (total 2) @0xaa195ec00
+DEBUG   | ColorBuffer 3, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 3
+DEBUG   | Started new RenderThread (total 3) @0xaa195f000
+VERBOSE | Created RenderThread. Active RenderThreads: 4
+DEBUG   | Started new RenderThread (total 4) @0xaa195f200
+DEBUG   | setDisplayPose 0 x -1 y -1 w 1080 h 2400 dpi 420
+DEBUG   | ColorBuffer 4, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 5, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 6, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 5
+DEBUG   | Started new RenderThread (total 5) @0xaa195f400
+DEBUG   | ColorBuffer 7, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 8, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 9, 384x384, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 589824, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 10, 384x384, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 589824, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 6
+DEBUG   | Started new RenderThread (total 6) @0xaa13d0800
+VERBOSE | Created RenderThread. Active RenderThreads: 7
+DEBUG   | Started new RenderThread (total 7) @0xaa13d1000
+VERBOSE | Created RenderThread. Active RenderThreads: 8
+DEBUG   | Started new RenderThread (total 8) @0xaa13d0400
+DEBUG   | ColorBuffer 12, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 14, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 17, 384x384, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 589824, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 18, 384x384, VK_FORMAT_R16G16B16A16_SFLOAT, Memory [size: 1179648, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 19, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | _hwFingerprint_connect: connect finger print listen is called
+DEBUG   | got message from guest system fingerprint HAL
+VERBOSE | Created RenderThread. Active RenderThreads: 9
+DEBUG   | Started new RenderThread (total 9) @0xaa13d0e00
+VERBOSE | Created RenderThread. Active RenderThreads: 10
+DEBUG   | Started new RenderThread (total 10) @0xaa13d1c00
+DEBUG   | ColorBuffer 22, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 23, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 25, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 26, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 27, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 29, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 30, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 11
+DEBUG   | Started new RenderThread (total 11) @0xaa195fc00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d1000
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d0400
+DEBUG   | ColorBuffer 31, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 12
+DEBUG   | Exited a RenderThread @0xaa13d1000
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 11
+DEBUG   | Exited a RenderThread @0xaa13d0400
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 10
+DEBUG   | Started new RenderThread (total 10) @0xaa4c48000
+DEBUG   | ColorBuffer 32, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 35, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 36, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 38, 922x1024, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 3776512, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 40, 922x1024, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 3776512, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 41, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 43, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 44, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 45, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 46, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+INFO         | Boot completed in 15900 ms
+INFO         | Increasing screen off timeout, logcat buffer size to 2M.
+DEBUG   | Enable overlay packages with name ending in pixel_6
+DEBUG   | ColorBuffer 48, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 49, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 50, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 52, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 11
+DEBUG   | Started new RenderThread (total 11) @0xaa13d1000
+DEBUG   | ColorBuffer 53, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 55, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 56, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 12
+DEBUG   | Started new RenderThread (total 12) @0xaa13d0200
+DEBUG   | ColorBuffer 58, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 13
+DEBUG   | Started new RenderThread (total 13) @0xaa13d1e00
+DEBUG   | ColorBuffer 60, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 63, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 14
+DEBUG   | Started new RenderThread (total 14) @0xaa13d2800
+DEBUG   | ColorBuffer 64, 284x10, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 11360, type: 0, props: 15 / 1]
+VERBOSE | glReadPixels seems OK for tex(internal:0x8058 fmt:0x1908 type:0x1401) read(fmt:0x1908 type:0x1401).
+DEBUG   | Registering pipe service multidisplay
+DEBUG   | MultiDisplayPipe created 0xa9e5c80e0
+DEBUG   | MultiDisplayPipe recevied QUERY
+DEBUG   | MultiDisplayPipe send add id 0 width 1080 height 2400 dpi 420 flag 0
+DEBUG   | ColorBuffer 67, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 69, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 70, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 71, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 73, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 15
+DEBUG   | Started new RenderThread (total 15) @0xaa13d1800
+DEBUG   | ColorBuffer 74, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 75, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 76, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 77, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 78, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 80, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 81, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 82, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 84, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 85, 1080x128, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 552960, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 86, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 87, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | pattern string for overlay package = com.[^[]+.pixel_6
+DEBUG   | overlay package=com.android.internal.emulation.pixel_6
+DEBUG   | overlay package=com.android.internal.emulation.pixel_6
+DEBUG   | overlay package=com.android.internal.emulation.pixel_6
+DEBUG   | overlay package=com.android.systemui.emulation.pixel_6
+DEBUG   | overlay package=com.android.systemui.emulation.pixel_6
+DEBUG   | overlay package=com.android.systemui.emulation.pixel_6
+DEBUG   | ColorBuffer 89, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 90, 540x1200, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 2592000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 16
+DEBUG   | Started new RenderThread (total 16) @0xaa13d3800
+DEBUG   | ColorBuffer 93, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 17
+DEBUG   | Started new RenderThread (total 17) @0xaa13d2600
+DEBUG   | ColorBuffer 94, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 97, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 98, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 99, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 100, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 101, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 102, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 103, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 104, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 105, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 106, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 107, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 109, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 110, 1080x63, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 276480, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 111, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 112, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 114, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 115, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 116, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 117, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 118, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 119, 173x173, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 121104, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 18
+DEBUG   | Started new RenderThread (total 18) @0xaa13d2a00
+DEBUG   | ColorBuffer 122, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 19
+DEBUG   | Started new RenderThread (total 19) @0xaa13d2c00
+DEBUG   | ColorBuffer 125, 2x2, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 20
+DEBUG   | Started new RenderThread (total 20) @0xaa13d0600
+DEBUG   | ColorBuffer 128, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 21
+DEBUG   | Started new RenderThread (total 21) @0xaa195fa00
+DEBUG   | ColorBuffer 131, 32x32, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 4096, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d2a00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d2c00
+DEBUG   | ColorBuffer 132, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 134, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 135, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 22
+DEBUG   | Exited a RenderThread @0xaa13d2a00
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 21
+DEBUG   | Exited a RenderThread @0xaa13d2c00
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 20
+DEBUG   | Started new RenderThread (total 20) @0xaa195fe00
+VERBOSE | Created RenderThread. Active RenderThreads: 21
+DEBUG   | Started new RenderThread (total 21) @0xaa195f800
+DEBUG   | ColorBuffer 138, 1x1, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 16, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 139, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Created RenderThread. Active RenderThreads: 22
+DEBUG   | Started new RenderThread (total 22) @0xaa13d2c00
+DEBUG   | ColorBuffer 141, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+VERBOSE | Not enabling VVL for wgpu wgpu-hal
+INFO         | Created VkInstance:0xaa6a31800 for application:'wgpu' engine:'wgpu-hal'.
+DEBUG   | Registering VkInstance 0xaa6a31800 name dev.spinon.bootstrap, total is 1
+../../third_party/SwiftShader/src/Vulkan/VkPhysicalDevice.cpp:649 WARNING: UNSUPPORTED: curExtension->sType: 1000163000
+../../third_party/SwiftShader/src/Vulkan/libVulkan.cpp:1129 WARNING: UNSUPPORTED: pCreateInfo->pNext sType = 1000163000
+INFO         | Created VkDevice:0xa99574010 for application:'wgpu' instance:0xaa6a31800. ASTC emulation:on CPU decoding:off. Protected memory:off
+DEBUG   | ColorBuffer 142, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 143, 945x683, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 2588256, type: 0, props: 15 / 1]
+DEBUG   | Create a new command buffer for queue transfer for a total of 1 transfer command buffers
+DEBUG   | ColorBuffer 144, 945x683, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 2588256, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 145, 945x683, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 2588256, type: 0, props: 15 / 1]
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d1e00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d3800
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d2c00
+DEBUG   | Waiting for exit signal RenderThread @0xaa195f800
+DEBUG   | Waiting for exit signal RenderThread @0xaa195fe00
+DEBUG   | ColorBuffer 146, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 148, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | ColorBuffer 149, 1080x2400, VK_FORMAT_R8G8B8A8_UNORM, Memory [size: 10368000, type: 0, props: 15 / 1]
+DEBUG   | Emulator killed by console kill command.
+
+INFO         | Wait for emulator (pid 10751) 20 seconds to shutdown gracefully before kill;you can set environment variable ANDROID_EMULATOR_WAIT_TIME_BEFORE_KILL(in seconds) to change the default value (20 seconds)
+
+USER_INFO    | Snapshots have been disabled by the user, save request is ignored.
+INFO         | Saving snapshot 'default_boot' took 0 ms
+INFO         | Destroyed VkDevice:0xa99574010
+INFO         | Destroyed VkInstance:0xaa6a31800 for application:'wgpu' engine:'wgpu-hal'.
+DEBUG   | Unregistering VkInstance 0xaa6a31800, total is 0
+VERBOSE | destroyInstanceObjects: Global boxed handles count = 97
+WARNING      | Emulator client has not yet been configured.. Call configure me first!
+DEBUG   | Done with QEMU main loop
+DEBUG   | Uninitializing VirtualSceneManager
+INFO         | removeAll
+DEBUG   | Waiting for exit signal RenderThread @0xaa195ee00
+DEBUG   | Waiting for exit signal RenderThread @0xaa195ec00
+DEBUG   | Waiting for exit signal RenderThread @0xaa4c48000
+DEBUG   | Waiting for exit signal RenderThread @0xaa195f200
+DEBUG   | Waiting for exit signal RenderThread @0xaa195fa00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d0e00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d2800
+DEBUG   | Waiting for exit signal RenderThread @0xaa195f400
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d1000
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d2600
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d1c00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d0800
+DEBUG   | Waiting for exit signal RenderThread @0xaa195fc00
+DEBUG   | Waiting for exit signal RenderThread @0xaa195f000
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d0200
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d1800
+DEBUG   | Exited a RenderThread @0xaa195ee00
+DEBUG   | Waiting for exit signal RenderThread @0xaa13d0600
+DEBUG   | Exited a RenderThread @0xaa195ec00
+DEBUG   | Exited a RenderThread @0xaa195f000
+DEBUG   | Exited a RenderThread @0xaa195f200
+DEBUG   | Exited a RenderThread @0xaa195f400
+DEBUG   | Exited a RenderThread @0xaa13d0800
+DEBUG   | Exited a RenderThread @0xaa13d0e00
+DEBUG   | Exited a RenderThread @0xaa13d1c00
+DEBUG   | Exited a RenderThread @0xaa195fc00
+DEBUG   | Exited a RenderThread @0xaa4c48000
+DEBUG   | Exited a RenderThread @0xaa13d1000
+DEBUG   | Exited a RenderThread @0xaa13d0200
+DEBUG   | Exited a RenderThread @0xaa13d1e00
+DEBUG   | Exited a RenderThread @0xaa13d2800
+DEBUG   | Exited a RenderThread @0xaa13d1800
+DEBUG   | Exited a RenderThread @0xaa13d3800
+DEBUG   | Exited a RenderThread @0xaa13d2600
+DEBUG   | Exited a RenderThread @0xaa13d0600
+DEBUG   | Exited a RenderThread @0xaa195fa00
+DEBUG   | Exited a RenderThread @0xaa195fe00
+DEBUG   | Exited a RenderThread @0xaa195f800
+DEBUG   | Exited a RenderThread @0xaa13d2c00
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 21
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 20
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 19
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 18
+VERBOSE | Destroyed RenderThread. Active RenderThreads: 17
+DEBUG   | User configuration saved to /Users/yoonhb/.android/avd/../avd/spinon_api37_2_presenttime_probe_20261018.avd/emulator-user.ini
+DEBUG   | sending STOP to modem simulator host server
+DEBUG   | received exit request from parent process
+DEBUG   | waiting for monitor thread to join
+DEBUG   | requested to exit now
+WARNING      | Netsim Wifi dns:///localhost:55653 is gone due to Stream removed (CANCELLED)
+INFO         | ipv6:%5B::1%5D:55653: Got goaway [2] err=UNAVAILABLE:GOAWAY received; Error code: 2; Debug Text: Cancelling all calls {http2_error:2}

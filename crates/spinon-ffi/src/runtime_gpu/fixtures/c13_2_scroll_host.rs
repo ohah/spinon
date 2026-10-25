@@ -427,7 +427,9 @@ impl RuntimeGpuHost {
         ))
     }
 
-    fn c13_2_current_snapshot(&self) -> Result<RuntimeRenderSnapshot, (i32, String)> {
+    pub(in crate::runtime_gpu) fn c13_2_current_snapshot(
+        &self,
+    ) -> Result<RuntimeRenderSnapshot, (i32, String)> {
         let _operation = lock(&self.operation);
         let (_, current) = self.presentation.lock_current();
         current

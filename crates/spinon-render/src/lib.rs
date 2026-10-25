@@ -8,6 +8,8 @@ use spinon_core::{
 };
 
 mod runtime;
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+pub use runtime::RuntimeStickyConstraint;
 pub use runtime::{
     CssAxisClip, CssClip, RuntimeBorder, RuntimeBorderSide, RuntimeConfirmedFrame,
     RuntimeConfirmedFrameError, RuntimeConfirmedFrameRegistry, RuntimeFrameId, RuntimeGestureAxes,

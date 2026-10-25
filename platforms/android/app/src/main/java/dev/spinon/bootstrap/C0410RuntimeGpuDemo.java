@@ -8220,6 +8220,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native long nativeCreateC131OverflowClipBorderHost();
     private static native long nativeCreateC131StackingDescendantClipHost();
     private static native long nativeCreateC132ScrollHost();
+    private static native long nativeCreateC125StickyHost();
     private static native long nativeCreateC133GestureHost(int scenarioId);
     private static native long nativeCreateC11GridHost();
     private static native long nativeCreateC1121GridPlacementHost();
@@ -8263,6 +8264,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static native byte[] nativeEvalC131OverflowClipBorderFixture(long host);
     private static native byte[] nativeEvalC131StackingDescendantClipFixture(long host);
     private static native byte[] nativeEvalC132ScrollFixture(long host);
+    private static native byte[] nativeEvalC125StickyFixture(long host);
     private static native byte[] nativeEvalC133GestureFixture(long host);
     private static native byte[] nativeApplyC133StyleInvalidation(long host);
     private static native byte[] nativeEnqueueC133Gesture(
@@ -8553,7 +8555,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private final boolean imagePaintProbeRequested;
     private boolean imagePaintSurfaceCaptureStarted;
     private final boolean c132ScrollFixtureRequested;
+    private final boolean c125StickyFixtureRequested;
     private final String c132SurfacePixelRunId;
+    private final String c125StickySurfacePixelRunId;
     private final boolean c133GestureFixtureRequested;
     private final boolean c133TapProbeRequested;
     private final boolean c133WheelProbeRequested;
@@ -8602,6 +8606,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private boolean c153SurfaceCaptureStarted;
     private boolean c132SurfacePixelCaptureStarted;
     private volatile boolean c132ScrollAssertionsPassed;
+    private boolean c125StickySurfacePixelCaptureStarted;
+    private volatile boolean c125StickyAssertionsPassed;
     private volatile boolean c133GestureFixtureReady;
     private volatile boolean c133GestureInitialDrawReady;
     private volatile boolean c133WheelProbeStarted;
@@ -8760,6 +8766,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && activity.getIntent().getBooleanExtra("spinon_c181_image_paint", false);
         c132ScrollFixtureRequested = activity.getIntent()
                 .getBooleanExtra("spinon_c132_scroll_fixture", false);
+        c125StickyFixtureRequested = BuildConfig.SPINON_C125_STICKY_FIXTURE_TEST
+                && activity.getIntent().getBooleanExtra("spinon_c125_sticky_fixture", false);
+        c125StickySurfacePixelRunId = c125StickyFixtureRequested
+                ? Long.toHexString(SystemClock.elapsedRealtimeNanos()) : "";
         String requestedC132RunId = activity.getIntent()
                 .getStringExtra("spinon_c132_surface_pixel_run_id");
         c132SurfacePixelRunId = c132ScrollFixtureRequested
@@ -9094,6 +9104,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || c131BorderStripProbeRequested
                 || c192BoxPaintOpacityProbeRequested
                 || c153GlyphPaintProbeRequested
+                || c125StickyFixtureRequested
                 || c132ScrollFixtureRequested
                 || c133GestureFixtureRequested
                 || c123FixedPositionProbeRequested
@@ -9156,6 +9167,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "SPINON · C11.2.2 Grid"
                 : c1121GridPlacementRequested
                 ? "SPINON · C11.2.1 Grid"
+                : c125StickyFixtureRequested
+                ? "SPINON · C12.5 sticky positioning"
                 : c132ScrollFixtureRequested
                 ? "SPINON · C13.2 scroll state"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
@@ -9260,6 +9273,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "visible/clip/hidden stacking descendant · 18 Chrome hit/color 표본 · WGPU · 540×128 CSS px"
                 : c132ScrollFixtureRequested
                 ? "V8 scroll owner·offset·paint/hit → WGPU · 5 PixelCopy 표본 · 400×240 CSS px"
+                : c125StickyFixtureRequested
+                ? "V8 → Stylo → Block/Taffy → sticky·scroll snapshot·paint/hit · 360×260 CSS px"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested
                         ? "비동기 PNG 요청 정체성 · pending/failure resource 제거 · D source 복구 · 6 PixelCopy 표본 · 224×88 CSS px"
@@ -9389,6 +9404,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "C13.1 paint/hit border-strip Chrome oracle WGPU 장면"
                 : c132ScrollFixtureRequested
                 ? "C13.2 scroll owner·offset·paint/hit WGPU 장면"
+                : c125StickyFixtureRequested
+                ? "C12.5 nested scrollport sticky WGPU scene"
                 : BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested
                         ? "C18.4 비동기 PNG 교체·decode 실패·복구 WGPU 장면"
@@ -9474,6 +9491,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131BorderStripProbeRequested ? 400
                 : c153HostDocumentTextPaintProbeRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                : c125StickyFixtureRequested ? 360
                 : c132ScrollFixtureRequested ? 400
                 : c133GestureFixtureRequested ? 400
                 : fixedSizeCssFixtureRequested ? 320 : 301;
@@ -9484,6 +9502,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131CompactSurfaceMatrixProbeRequested ? 100
                 : c131BorderStripProbeRequested ? 160
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
+                : c125StickyFixtureRequested ? 260
                 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = rootHtmlApplicationRequested
                 ? new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
@@ -9589,6 +9608,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && !c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
                 && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
+                && !c125StickyFixtureRequested
                 && !c133GestureFixtureRequested) {
             enqueueRuntime(this::initializeRuntime);
         }
@@ -9685,6 +9705,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + (c131BorderStripProbeRequested ? 1 : 0)
                 + (c192BoxPaintOpacityProbeRequested ? 1 : 0)
                 + (c153GlyphPaintProbeRequested ? 1 : 0)
+                + (c125StickyFixtureRequested ? 1 : 0)
                 + (c132ScrollFixtureRequested ? 1 : 0)
                 + (c133GestureFixtureRequested ? 1 : 0)
                 + (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested ? 1 : 0);
@@ -9713,6 +9734,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? imageAsyncReplacementProbeRequested ? "spinon_c184_async_image"
                         : imageObjectFitPositionProbeRequested ? "spinon_c183_object_fit_position"
                         : imageAlphaProbeRequested ? "spinon_c182_alpha_image" : "spinon_c181_image_paint"
+                : c125StickyFixtureRequested
+                ? "spinon_c125_sticky_fixture"
                 : c132ScrollFixtureRequested
                 ? "spinon_c132_scroll_fixture"
                 : c131StackingDescendantClipProbeRequested
@@ -9866,6 +9889,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 : "dev.spinon.bootstrap.ImagePaintFixtureNativeAdapter",
                         "createHost",
                         new Class<?>[0])
+                : c125StickyFixtureRequested
+                ? nativeCreateC125StickyHost()
                 : c132ScrollFixtureRequested
                 ? nativeCreateC132ScrollHost()
                 : c131StackingDescendantClipProbeRequested
@@ -9914,7 +9939,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested
                             || imageObjectFitPositionProbeRequested ? 224 : 80
                     : c153HostDocumentTextPaintProbeRequested ? 320
-                    : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                : c125StickyFixtureRequested ? 360
                     : c131StackingDescendantClipProbeRequested ? 540
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
@@ -9927,7 +9953,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             heightCssPx = BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST
                     && imagePaintProbeRequested ? imageAsyncReplacementProbeRequested ? 88
                             : imageObjectFitPositionProbeRequested ? 72 : 40
-                    : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
+                : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
+                : c125StickyFixtureRequested ? 260
                     : c131StackingDescendantClipProbeRequested ? 128
                     : c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
@@ -9940,6 +9967,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             dark = darkMode;
         }
         float environmentScale = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+                || c125StickyFixtureRequested
                 || rootHtmlTextPaintProbeRequested
                 || c123FixedPositionProbeRequested || c1131GridRepeatRequested
                 || c1132GridNamedLinesRequested || c1133GridTemplateAreasRequested
@@ -10023,6 +10051,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 : "dev.spinon.bootstrap.ImagePaintFixtureNativeAdapter",
                         "evalFixture",
                         new Class<?>[] {long.class}, host))
+                : c125StickyFixtureRequested
+                ? decode(nativeEvalC125StickyFixture(host))
                 : c132ScrollFixtureRequested
                 ? decode(nativeEvalC132ScrollFixture(host))
                 : c131StackingDescendantClipProbeRequested
@@ -10393,6 +10423,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             Log.i(TAG, "SPINON_ROOT_HTML_DEFAULT_APP_BOOT status=pass root_app_marker=ready "
                     + runtimeStatusSummary(result));
         }
+        if (c125StickyFixtureRequested) {
+            boolean c125StickyPassed = result.startsWith("status=0 ")
+                    && result.contains("\"status\":\"passed\"")
+                    && result.contains("\"case\":\"c12-5-top-only-nested-scrollport-content-edge\"")
+                    && result.contains("\"initial\":118.0")
+                    && result.contains("\"inner_36\":90.0")
+                    && result.contains("\"inner_212\":54.0")
+                    && result.contains("\"parent_content_edge_inner_212\":40.0")
+                    && result.contains("\"pixel_200_78_hit\":\"section\"")
+                    && result.contains("\"pixel_240_100_hit\":\"section-after\"")
+                    && result.contains("\"reverse_zero\":118.0")
+                    && result.contains("\"clip_and_hit_test\":\"passed\"");
+            if (!c125StickyPassed) {
+                Log.e(TAG, "SPINON_C125_STICKY_SUMMARY status=error " + result);
+                postStatus("실패 · C12.5 sticky geometry·scroll owner·clip/hit 결과 불일치");
+                return;
+            }
+            Log.i(TAG, "SPINON_C125_STICKY_SUMMARY status=passed viewport=360x260 "
+                    + "initial=118 outer24=94 inner20=98 pinned36=90 pinned160=90 "
+                    + "section_borderbox_end212=54 parent_content_edge_end212=40 "
+                    + "pixel_200_78=section pixel_240_100=section-after "
+                    + "reverse_zero=118 clip_hit=passed");
+            c125StickyAssertionsPassed = true;
+        }
         if (c132ScrollFixtureRequested) {
             boolean c132ScrollPassed = result.contains("c13_2_scroll_fixture=passed")
                     && result.contains("border_escape_outside_parent=true")
@@ -10506,7 +10560,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         : imageObjectFitPositionProbeRequested ? "SPINON_C183_OBJECT_FIT_POSITION_EVAL "
                         : imageAlphaProbeRequested ? "SPINON_C182_ALPHA_IMAGE_EVAL "
                         : "SPINON_C181_IMAGE_PAINT_EVAL " : c133GestureFixtureRequested
-                ? "SPINON_C133_EVAL " : c132ScrollFixtureRequested
+                ? "SPINON_C133_EVAL " : c125StickyFixtureRequested
+                ? "SPINON_C125_STICKY_EVAL " : c132ScrollFixtureRequested
                 ? "SPINON_C132_SCROLL_EVAL " : c131StackingDescendantClipProbeRequested
                 ? "SPINON_C131_STACKING_CLIP_EVAL_RUN run_id="
                         + c131StackingDescendantClipRunId + " "
@@ -12151,6 +12206,47 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 });
     }
 
+    private void requestC125StickySurfaceCapture(
+            long renderer,
+            long generation,
+            String drawReport
+    ) {
+        final int width;
+        final int height;
+        final long presentationSequence;
+        synchronized (stateLock) {
+            if (closing || c125StickySurfacePixelCaptureStarted
+                    || !c125StickyAssertionsPassed || !surfaceAvailable
+                    || surfaceGeneration != generation || rendererHandle != renderer
+                    || rendererGeneration != generation) {
+                return;
+            }
+            c125StickySurfacePixelCaptureStarted = true;
+            width = surfaceWidth;
+            height = surfaceHeight;
+            presentationSequence = hostPresentationSequence;
+        }
+        java.util.function.BooleanSupplier sourceIsCurrent = () -> {
+            synchronized (stateLock) {
+                return !closing && surfaceAvailable && surfaceGeneration == generation
+                        && rendererHandle == renderer && rendererGeneration == generation
+                        && surfaceWidth == width && surfaceHeight == height
+                        && hostPresentationSequence == presentationSequence;
+            }
+        };
+        java.util.function.Consumer<String> status = this::postStatus;
+        try {
+            invokeC125StickyCaptureAdapter(
+                    "request", surfaceView, activity, width, height,
+                    c125StickySurfacePixelRunId, drawReport, generation, presentationSequence,
+                    mainHandler, runtimeQueue, sourceIsCurrent, status);
+        } catch (IllegalStateException error) {
+            Log.e(TAG, "SPINON_C125_PIXELCOPY status=error run_id="
+                    + c125StickySurfacePixelRunId + " reason=" + error.getMessage());
+            postStatus("실패 · C12.5 PixelCopy adapter 호출 오류");
+        }
+    }
+
     private static int c132SurfacePixelCssX(String id) {
         switch (id) {
             case "visible-escape": return 150;
@@ -12950,6 +13046,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && !c121PositioningProbeRequested && !c122AbsoluteBlockProbeRequested
                 && !c123FixedPositionProbeRequested && !c124StackingProbeRequested
                 && !c1133GridTemplateAreasRequested && !c132ScrollFixtureRequested
+                && !c125StickyFixtureRequested
                 && !c133GestureFixtureRequested) return;
         synchronized (stateLock) {
             if (closing || hostHandle != 0 || runtimeInitializationQueued
@@ -13769,6 +13866,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } else if (c132ScrollFixtureRequested) {
             requestC132VisibleOverflowSurfaceCapture(renderer, generation, result);
         }
+        if (c125StickyFixtureRequested && c125StickyAssertionsPassed) {
+            requestC125StickySurfaceCapture(renderer, generation, result);
+        }
         if (failureProbeRequested && !failureProbeStarted) {
             failureProbeStarted = true;
             runFailureRecoveryProbe(renderer, result);
@@ -14133,6 +14233,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 + " png=" + output.getAbsolutePath() + " sha256=" + result.sha256);
         if (!passed) postStatus("실패 · C15.3 HostDocument text overflow PixelCopy 표본 불일치");
         else postStatus("통과 · C15.3 HostDocument text overflow PixelCopy · 6/6");
+    }
+
+    // C12.5 캡처 어댑터는 C12.5 fixture-test source set에서만 포함합니다.
+    private static Object invokeC125StickyCaptureAdapter(String methodName, Object... arguments) {
+        try {
+            Class<?> adapter = Class.forName(
+                    "dev.spinon.bootstrap.C125StickyFixtureCaptureAdapter");
+            for (java.lang.reflect.Method method : adapter.getDeclaredMethods()) {
+                if (!method.getName().equals(methodName)
+                        || method.getParameterCount() != arguments.length) continue;
+                method.setAccessible(true);
+                return method.invoke(null, arguments);
+            }
+            throw new IllegalStateException("C12.5 adapter method not found: " + methodName);
+        } catch (ReflectiveOperationException | SecurityException error) {
+            throw new IllegalStateException("C12.5 adapter invocation failed: " + methodName,
+                    error);
+        }
     }
 
     // C19.2 캡처 어댑터는 fixture-test source set에만 있으므로 기본 앱에서 직접 참조하지 않는다.

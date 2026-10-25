@@ -1,0 +1,91 @@
+{
+  "classification": "confirmed Chrome boundary defect; content-edge clamp verified by source-bound Android PixelCopy and iOS Metal gates",
+  "current_whole_source_sha256": "c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308",
+  "repro_html": "tests/fixtures/css/c12/position-sticky-parent-content-edge.html",
+  "base_fixture": "tests/fixtures/css/c12/position-sticky.html",
+  "fixture_sha256": "5a00b8a86ca7a2e301cec1c646a603aa0a5627ae08d8873b8d9a750dc333a141",
+  "css_delta": {
+    "parent": "#section",
+    "padding_bottom_css_px": 12,
+    "border_bottom_css_px": 2,
+    "box_sizing": "border-box"
+  },
+  "oracle": {
+    "browser": "HeadlessChrome 156 through Agent Browser",
+    "observation_performed_by": "root agent; session closed after observation",
+    "scroll_top": {
+      "outer": 0,
+      "inner": 212
+    },
+    "section_border_box": {
+      "top": -94,
+      "bottom": 82,
+      "height": 176
+    },
+    "section_content_edge_bottom": 68,
+    "sticky_border_box": {
+      "top": 40,
+      "bottom": 68,
+      "height": 28
+    },
+    "section_after_border_box": {
+      "top": 82,
+      "bottom": 214,
+      "background": "rgb(204, 221, 238)"
+    },
+    "samples": [
+      {
+        "point_css_px": [200, 78],
+        "element_from_point": "section",
+        "rgba": [245, 245, 245, 255]
+      },
+      {
+        "point_css_px": [240, 100],
+        "element_from_point": "section-after",
+        "rgba": [204, 221, 238, 255]
+      }
+    ],
+    "screenshot_sha256": "16a6e256b15a68bf8dce745c0243b312bd295c78bd585ae2440cabfb9c2c4f61"
+  },
+  "prior_source_assessment": {
+    "parent_is_allowed": true,
+    "reason": "C12.5 preflight requires a static/relative Block parent but does not reject parent padding or border.",
+    "current_constraint_input": "parent LayoutFrame border box",
+    "current_lower_bound_formula": "parent_frame.bottom - sticky_border_box.height",
+    "current_predicted_sticky_top": 54,
+    "chrome_expected_sticky_top": 40,
+    "predicted_delta_css_px": 14,
+    "status": "source-formula inference before fix; variant had not yet run in Spinon at the time"
+  },
+  "implemented_fix": {
+    "constraint_bottom_formula": "parent_border_box.bottom - parent_border_bottom - parent_padding_bottom - ancestor_scroll_y",
+    "fail_closed": "rejects missing, negative, non-finite, inverted, or too-small content box geometry",
+    "source_runtime_pixel_and_hit_test": {
+      "status": "passed",
+      "android_capture_source_sha256": "5dbd898cddc5c496dea7b729b532dafd7af94b72132ccc08b3a244f253191e3d",
+      "android_current_target_source_sha256": "d72a396378a7460ba274150d4d90c7418e5d0353c94779b7f0dbbed2fd21c7a9",
+      "ios_final_source_sha256": "c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308",
+      "android": "android-content-edge-pixelgate-20261026/manifest.json",
+      "ios": "ios-content-edge-metal-manifest-2026-10-26.json",
+      "expected": "inner=212; sticky top=40; (200,78) section RGBA 245,245,245,255; (240,100) section-after RGBA 204,221,238,255",
+      "result": "Android PixelCopy 2/2 exact; iOS Metal drawable 2/2 exact; Rust content-edge frame, paint, hit-test and clip regression passed"
+    }
+  },
+  "normative_basis": [
+    {
+      "source": "https://www.w3.org/TR/2025/WD-css-position-3-20251007/",
+      "section": "3.4 Sticky positioning",
+      "rule": "A sticky box is positioned relative to its nearest scrollport and shifted only insofar as its position box remains contained in its containing block; its containing block is defined by its formatting context."
+    },
+    {
+      "source": "https://www.w3.org/TR/CSS2/visudet.html",
+      "section": "10.1 Definition of containing block",
+      "rule": "For relative/static boxes, the containing block is formed by the content edge of the nearest block container ancestor."
+    }
+  ],
+  "limits": [
+    "Chrome screenshot pixels are direct Agent Browser samples; geometry and elementFromPoint were evaluated from the same fixture state.",
+    "The Rust and mobile runtime gates pass only for the fixed opt-in profile and source fingerprint recorded above; they are not general CSS compatibility evidence.",
+    "AVD software rendering and iOS Simulator Metal readback do not establish physical hardware, post-compositor, or scanout output."
+  ]
+}

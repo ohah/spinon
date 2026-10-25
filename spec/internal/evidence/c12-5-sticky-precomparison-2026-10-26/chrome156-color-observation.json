@@ -1,0 +1,38 @@
+{
+  "capture_source": "Agent Browser CSS-pixel viewport screenshot, sampled with Pillow",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "agent_browser_version": "0.31.1",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "device_pixel_ratio": 1
+  },
+  "fixture": "tests/fixtures/css/c12/position-sticky.html",
+  "scroll": {
+    "outer_scroll_top": 0,
+    "inner_scroll_top": 212
+  },
+  "screenshot": {
+    "path": "chrome156-inner212.png",
+    "sha256": "0bdb99defb5ca46b3333a52b1d8d734ab72625005f33452757bebafd8ad24d98",
+    "pixel_size": [1280, 633]
+  },
+  "samples": [
+    {
+      "id": "sticky-visible-at-containing-block-end",
+      "css_x": 200,
+      "css_y": 78,
+      "element_at_point": "sticky",
+      "computed_background": "rgb(219, 51, 68)",
+      "rgba": [219, 51, 68, 255]
+    },
+    {
+      "id": "section-adjacent-to-sticky",
+      "css_x": 240,
+      "css_y": 78,
+      "element_at_point": "section",
+      "computed_background": "rgb(245, 245, 245)",
+      "rgba": [245, 245, 245, 255]
+    }
+  ]
+}

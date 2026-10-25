@@ -118,6 +118,15 @@ impl RuntimeGpuHost {
         Ok((host, report))
     }
 
+    #[cfg(feature = "c12-5-sticky-fixture-test")]
+    pub(in crate::runtime_gpu) fn new_c12_5_sticky_fixture() -> Result<(Self, String), String> {
+        let (session, report) = RuntimeSession::new_runtime_gpu_block_flex_overflow_clip_fixture()?;
+        let mut host = Self::from_session_with_frame_report(session);
+        host.include_paint_order_report = true;
+        host.surface_pixel_readback_test = true;
+        Ok((host, report))
+    }
+
     #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
     pub(in crate::runtime_gpu) fn new_c13_1_overflow_clip_fixture() -> Result<(Self, String), String>
     {

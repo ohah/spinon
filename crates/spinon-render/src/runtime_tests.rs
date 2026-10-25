@@ -628,6 +628,362 @@ fn runtime_nested_scroll_offsets_move_inner_clip_with_outer_scroll_only() {
     );
 }
 
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+#[test]
+fn c12_5_top_sticky_tracks_nearest_scrollport_and_containing_block() {
+    let outer = NodeId::new(72).unwrap();
+    let inner = NodeId::new(73).unwrap();
+    let section = NodeId::new(74).unwrap();
+    let sticky = NodeId::new(75).unwrap();
+    let outer_state = super::RuntimeScrollContainer::new(
+        outer,
+        CssRect::new(16.0, 16.0, 324.0, 224.0).unwrap(),
+        560.0,
+        560.0,
+        0.0,
+        0.0,
+    )
+    .unwrap();
+    let inner_state = super::RuntimeScrollContainer::new(
+        inner,
+        CssRect::new(76.0, 76.0, 256.0, 144.0).unwrap(),
+        360.0,
+        360.0,
+        0.0,
+        0.0,
+    )
+    .unwrap()
+    .with_parent(Some(outer));
+    let metadata = super::RuntimeScrollRenderMetadata::new(
+        CssRect::new(64.0, 118.0, 180.0, 28.0).unwrap(),
+        vec![inner, outer],
+        Vec::new(),
+    )
+    .with_sticky_constraint(
+        super::RuntimeStickyConstraint::new(
+            inner,
+            CssRect::new(64.0, 118.0, 224.0, 176.0).unwrap(),
+            vec![inner, outer],
+            0.0,
+            0.0,
+            6.0,
+            8.0,
+        )
+        .unwrap(),
+    );
+    let initial = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(360.0, 260.0).unwrap(),
+        vec![RuntimeRenderBox::new(
+            sticky,
+            metadata.base_frame_css_px(),
+            RuntimePaint::None,
+            0,
+        )],
+        vec![outer_state, inner_state],
+        vec![metadata],
+    )
+    .unwrap();
+    assert_eq!(initial.boxes()[0].frame_css_px().y(), 118.0);
+
+    let outer_moved = initial
+        .with_scroll_offsets(initial.key().scroll_state_revision(), &[(outer, 0.0, 24.0)])
+        .unwrap();
+    assert_eq!(outer_moved.boxes()[0].frame_css_px().y(), 94.0);
+
+    let inner_before_threshold = outer_moved
+        .with_scroll_offsets(
+            outer_moved.key().scroll_state_revision(),
+            &[(outer, 0.0, 0.0), (inner, 0.0, 20.0)],
+        )
+        .unwrap();
+    assert_eq!(inner_before_threshold.boxes()[0].frame_css_px().y(), 98.0);
+
+    let inner_pinned = inner_before_threshold
+        .with_scroll_offsets(
+            inner_before_threshold.key().scroll_state_revision(),
+            &[(inner, 0.0, 36.0)],
+        )
+        .unwrap();
+    assert_eq!(inner_pinned.boxes()[0].frame_css_px().y(), 90.0);
+
+    let inner_pinned_later = inner_pinned
+        .with_scroll_offsets(
+            inner_pinned.key().scroll_state_revision(),
+            &[(inner, 0.0, 160.0)],
+        )
+        .unwrap();
+    assert_eq!(inner_pinned_later.boxes()[0].frame_css_px().y(), 90.0);
+
+    let section_end = inner_pinned_later
+        .with_scroll_offsets(
+            inner_pinned_later.key().scroll_state_revision(),
+            &[(inner, 0.0, 212.0)],
+        )
+        .unwrap();
+    assert_eq!(section_end.boxes()[0].frame_css_px().y(), 54.0);
+    assert_eq!(
+        section_end
+            .hit_test_css_point(70.0, 55.0)
+            .map(|render_box| render_box.node_id()),
+        Some(sticky)
+    );
+    assert_eq!(
+        section_end.key().scroll_state_revision().get(),
+        initial.key().scroll_state_revision().get() + 5
+    );
+    assert_ne!(section, sticky);
+}
+
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+#[test]
+fn c12_5_parent_padding_and_border_clamp_to_content_edge_and_hit_test_section() {
+    let outer = NodeId::new(92).unwrap();
+    let inner = NodeId::new(93).unwrap();
+    let section = NodeId::new(94).unwrap();
+    let sticky = NodeId::new(95).unwrap();
+    let section_after = NodeId::new(96).unwrap();
+    let outer_state = super::RuntimeScrollContainer::new(
+        outer,
+        CssRect::new(16.0, 16.0, 324.0, 224.0).unwrap(),
+        560.0,
+        560.0,
+        0.0,
+        0.0,
+    )
+    .unwrap();
+    let inner_state = super::RuntimeScrollContainer::new(
+        inner,
+        CssRect::new(76.0, 76.0, 256.0, 144.0).unwrap(),
+        360.0,
+        360.0,
+        0.0,
+        0.0,
+    )
+    .unwrap()
+    .with_parent(Some(outer));
+    let section_frame = CssRect::new(34.0, 118.0, 224.0, 176.0).unwrap();
+    let sticky_frame = CssRect::new(34.0, 118.0, 180.0, 28.0).unwrap();
+    let section_after_frame = CssRect::new(34.0, 294.0, 224.0, 132.0).unwrap();
+    let inner_clip = CssClip::unconstrained().with_y(CssAxisClip::new(76.0, 220.0).unwrap());
+    let clip_layers = || {
+        vec![super::RuntimeScrollClipLayer::new(
+            inner_clip,
+            inner_clip,
+            vec![outer],
+        )]
+    };
+    let section_metadata =
+        super::RuntimeScrollRenderMetadata::new(section_frame, vec![inner, outer], clip_layers());
+    let sticky_metadata =
+        super::RuntimeScrollRenderMetadata::new(sticky_frame, vec![inner, outer], clip_layers())
+            .with_sticky_constraint(
+                super::RuntimeStickyConstraint::new(
+                    inner,
+                    section_frame,
+                    vec![inner, outer],
+                    0.0,
+                    14.0,
+                    6.0,
+                    8.0,
+                )
+                .unwrap(),
+            );
+    let section_after_metadata = super::RuntimeScrollRenderMetadata::new(
+        section_after_frame,
+        vec![inner, outer],
+        clip_layers(),
+    );
+    let initial = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(360.0, 260.0).unwrap(),
+        vec![
+            RuntimeRenderBox::new(
+                section,
+                section_frame,
+                RuntimePaint::Opaque(OpaqueCssSrgb::new(245, 245, 245)),
+                0,
+            )
+            .with_hit_test_order(0),
+            RuntimeRenderBox::new(sticky, sticky_frame, RuntimePaint::None, 1)
+                .with_hit_test_order(1),
+            RuntimeRenderBox::new(
+                section_after,
+                section_after_frame,
+                RuntimePaint::Opaque(OpaqueCssSrgb::new(204, 221, 238)),
+                2,
+            )
+            .with_hit_test_order(2),
+        ],
+        vec![outer_state, inner_state],
+        vec![section_metadata, sticky_metadata, section_after_metadata],
+    )
+    .unwrap();
+
+    let outer_moved = initial
+        .with_scroll_offsets(initial.key().scroll_state_revision(), &[(outer, 0.0, 24.0)])
+        .unwrap();
+    let inner_before_threshold = outer_moved
+        .with_scroll_offsets(
+            outer_moved.key().scroll_state_revision(),
+            &[(outer, 0.0, 0.0), (inner, 0.0, 20.0)],
+        )
+        .unwrap();
+    let inner_pinned = inner_before_threshold
+        .with_scroll_offsets(
+            inner_before_threshold.key().scroll_state_revision(),
+            &[(inner, 0.0, 36.0)],
+        )
+        .unwrap();
+    let inner_pinned_later = inner_pinned
+        .with_scroll_offsets(
+            inner_pinned.key().scroll_state_revision(),
+            &[(inner, 0.0, 160.0)],
+        )
+        .unwrap();
+    let section_end = inner_pinned_later
+        .with_scroll_offsets(
+            inner_pinned_later.key().scroll_state_revision(),
+            &[(inner, 0.0, 212.0)],
+        )
+        .unwrap();
+
+    assert_eq!(
+        section_end
+            .boxes()
+            .iter()
+            .find(|render_box| render_box.node_id() == sticky)
+            .unwrap()
+            .frame_css_px()
+            .y(),
+        40.0
+    );
+    let section_box = section_end
+        .hit_test_css_point(200.0, 78.0)
+        .expect("pixel sample below the sticky box belongs to the section");
+    assert_eq!(section_box.node_id(), section);
+    assert_eq!(
+        section_box.paint(),
+        RuntimePaint::Opaque(OpaqueCssSrgb::new(245, 245, 245))
+    );
+    let section_after_box = section_end
+        .hit_test_css_point(240.0, 100.0)
+        .expect("pixel sample after the parent content edge belongs to section-after");
+    assert_eq!(section_after_box.node_id(), section_after);
+    assert_eq!(
+        section_after_box.paint(),
+        RuntimePaint::Opaque(OpaqueCssSrgb::new(204, 221, 238))
+    );
+    assert!(section_end.hit_test_css_point(200.0, 42.0).is_none());
+    let section_box = section_end
+        .boxes()
+        .iter()
+        .find(|render_box| render_box.node_id() == section)
+        .unwrap();
+    assert_eq!(
+        section_box.frame_css_px().y() + section_box.frame_css_px().height(),
+        82.0
+    );
+    assert_eq!(
+        section_end.key().scroll_state_revision().get(),
+        initial.key().scroll_state_revision().get() + 5
+    );
+}
+
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+#[test]
+fn c12_5_rejects_missing_or_zero_range_scroll_owner_and_stale_revision() {
+    let owner = NodeId::new(82).unwrap();
+    let sticky = NodeId::new(83).unwrap();
+    let port = CssRect::new(0.0, 0.0, 100.0, 60.0).unwrap();
+    let base = CssRect::new(10.0, 20.0, 20.0, 10.0).unwrap();
+    assert!(
+        super::RuntimeStickyConstraint::new(
+            owner,
+            CssRect::new(0.0, 20.0, 100.0, 120.0).unwrap(),
+            vec![owner],
+            f32::NAN,
+            0.0,
+            4.0,
+            8.0,
+        )
+        .is_err()
+    );
+    assert!(
+        super::RuntimeStickyConstraint::new(
+            owner,
+            CssRect::new(0.0, 20.0, 100.0, 120.0).unwrap(),
+            vec![owner],
+            80.0,
+            41.0,
+            4.0,
+            8.0,
+        )
+        .is_err()
+    );
+    let constraint = || {
+        super::RuntimeStickyConstraint::new(
+            owner,
+            CssRect::new(0.0, 20.0, 100.0, 120.0).unwrap(),
+            vec![owner],
+            0.0,
+            0.0,
+            4.0,
+            8.0,
+        )
+        .unwrap()
+    };
+    let metadata = || {
+        super::RuntimeScrollRenderMetadata::new(base, vec![owner], Vec::new())
+            .with_sticky_constraint(constraint())
+    };
+    let missing = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(200.0, 100.0).unwrap(),
+        vec![RuntimeRenderBox::new(sticky, base, RuntimePaint::None, 0)],
+        Vec::new(),
+        vec![metadata()],
+    );
+    assert!(matches!(
+        missing,
+        Err(super::RuntimeRenderError::InvalidScrollState)
+    ));
+
+    let zero_range =
+        super::RuntimeScrollContainer::new(owner, port, 100.0, 60.0, 0.0, 0.0).unwrap();
+    let no_range = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(200.0, 100.0).unwrap(),
+        vec![RuntimeRenderBox::new(sticky, base, RuntimePaint::None, 0)],
+        vec![zero_range],
+        vec![metadata()],
+    );
+    assert!(matches!(
+        no_range,
+        Err(super::RuntimeRenderError::InvalidScrollState)
+    ));
+
+    let positive_range =
+        super::RuntimeScrollContainer::new(owner, port, 100.0, 120.0, 0.0, 0.0).unwrap();
+    let snapshot = super::RuntimeRenderSnapshot::new_with_scroll_metadata(
+        key(),
+        CssSize::new(200.0, 100.0).unwrap(),
+        vec![RuntimeRenderBox::new(sticky, base, RuntimePaint::None, 0)],
+        vec![positive_range],
+        vec![metadata()],
+    )
+    .unwrap();
+    let next_revision = snapshot
+        .key()
+        .scroll_state_revision()
+        .checked_next()
+        .unwrap();
+    assert!(matches!(
+        snapshot.with_scroll_offsets(next_revision, &[(owner, 0.0, 12.0)]),
+        Err(super::RuntimeRenderError::StaleScrollRevision)
+    ));
+}
+
 #[test]
 fn runtime_hit_test_applies_axis_clips_and_uses_half_open_edges() {
     let node = NodeId::new(40).unwrap();

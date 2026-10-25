@@ -110,6 +110,15 @@ require(spinonC132ScrollFixtureTestValue == "0" || spinonC132ScrollFixtureTestVa
 require(spinonC132ScrollFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
     "C13.2 scroll fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
 }
+val spinonC125StickyFixtureTest =
+    providers.environmentVariable("SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST").orElse("0")
+val spinonC125StickyFixtureTestValue = spinonC125StickyFixtureTest.get()
+require(spinonC125StickyFixtureTestValue == "0" || spinonC125StickyFixtureTestValue == "1") {
+    "SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST는 0 또는 1이어야 합니다."
+}
+require(spinonC125StickyFixtureTestValue != "1" || spinonC04RuntimeGpuValue == "1") {
+    "C12.5 sticky fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다."
+}
 val spinonC133GestureFixtureTest =
     providers.environmentVariable("SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST").orElse("0")
 val spinonC133GestureFixtureTestValue = spinonC133GestureFixtureTest.get()
@@ -207,6 +216,7 @@ val spinonC04RuntimeGpuFixtureTriggerFlags = listOf(
         .orElse("0").get(),
     spinonC131OverflowClipFixtureTestValue,
     spinonC132ScrollFixtureTestValue,
+    spinonC125StickyFixtureTestValue,
     spinonC133GestureFixtureTestValue,
     spinonC141AppFixtureTestValue,
     spinonC142AppFixtureTestValue,
@@ -263,6 +273,7 @@ val prepareSpinonBootstrap by tasks.registering(Exec::class) {
         spinonC131OverflowClipFixtureTestValue,
     )
     environment("SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST", spinonC132ScrollFixtureTestValue)
+    environment("SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST", spinonC125StickyFixtureTestValue)
     environment("SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST", spinonC133GestureFixtureTestValue)
     environment("SPINON_ENABLE_C14_1_APP_FIXTURE_TEST", spinonC141AppFixtureTestValue)
     environment("SPINON_ENABLE_C14_2_APP_FIXTURE_TEST", spinonC142AppFixtureTestValue)
@@ -365,6 +376,11 @@ android {
         )
         buildConfigField(
             "boolean",
+            "SPINON_C125_STICKY_FIXTURE_TEST",
+            (spinonC125StickyFixtureTestValue == "1").toString(),
+        )
+        buildConfigField(
+            "boolean",
             "SPINON_C133_GESTURE_FIXTURE_TEST",
             (spinonC133GestureFixtureTestValue == "1").toString(),
         )
@@ -429,6 +445,9 @@ android {
         jniLibs.srcDir(repoRoot.resolve("build/spinon/android/jniLibs"))
         if (spinonC133GestureFixtureTestValue == "1") {
             java.srcDir("src/c13_3_gesture_fixture_test/java")
+        }
+        if (spinonC125StickyFixtureTestValue == "1") {
+            java.srcDir("src/c12_5_sticky_fixture_test/java")
         }
         if (spinonC0412RootHtmlFixtureTestValue == "1") {
             java.srcDir("src/c04_12_root_html_fixture_test/java")

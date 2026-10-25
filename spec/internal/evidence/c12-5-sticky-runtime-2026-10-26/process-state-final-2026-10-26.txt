@@ -1,0 +1,15 @@
+ADB devices after C12.5 AVD release:
+List of devices attached
+<physical-Samsung-serial-redacted>            device usb:0-1 product:r13sksx model:SM_S731N device:r13s transport_id:11
+
+
+Booted iOS simulators after C12.5 release:
+== Devices ==
+-- iOS 26.2 --
+    iPhone 17 Pro (9DCCE836-7659-4914-B6C1-13F54BFFA9DB) (Booted) 
+
+Agent Browser sessions:
+{"success":true,"data":{"sessions":[]}}
+
+Matching build/app/emulator/browser host processes:
+none
