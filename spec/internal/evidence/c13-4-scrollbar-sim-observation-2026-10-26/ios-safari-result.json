@@ -1,0 +1,60 @@
+{
+  "simulator": {
+    "name": "iPhone 17 Pro",
+    "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "iOS 26.2"
+  },
+  "browser": "Version/26.2 Mobile/15E148 Safari/604.1",
+  "userAgent": "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.2 Mobile/15E148 Safari/604.1",
+  "viewportCssPx": [402, 714],
+  "supportsScrollbarGutterStable": true,
+  "scrollbarIndicatorVisibleInCapture": false,
+  "cases": {
+    "auto": {
+      "computedGutter": "auto",
+      "overflow": ["scroll", "scroll"],
+      "clientCssPx": [216, 126],
+      "offsetCssPx": [220, 130],
+      "scrollCssPx": [380, 280],
+      "frameCssPx": [91, 56, 220, 130]
+    },
+    "stable": {
+      "computedGutter": "stable",
+      "overflow": ["scroll", "scroll"],
+      "clientCssPx": [216, 126],
+      "offsetCssPx": [220, 130],
+      "scrollCssPx": [380, 280],
+      "frameCssPx": [91, 191, 220, 130]
+    },
+    "stableBothEdges": {
+      "computedGutter": "stable both-edges",
+      "overflow": ["scroll", "scroll"],
+      "clientCssPx": [216, 126],
+      "offsetCssPx": [220, 130],
+      "scrollCssPx": [380, 280],
+      "frameCssPx": [91, 326, 220, 130]
+    },
+    "clipNegativeControl": {
+      "computedGutter": "auto",
+      "overflow": ["clip", "clip"],
+      "clientCssPx": [216, 44],
+      "offsetCssPx": [220, 48],
+      "scrollCssPx": [380, 90],
+      "frameCssPx": [91, 461, 220, 48]
+    }
+  },
+  "interpretation": "Observed stable and both-edges produce zero additional gutter and exact equality with auto geometry. This is consistent with overlay/no-gutter behavior, but the screenshot does not directly show an active transient scrollbar indicator.",
+  "artifactSha256": {
+    "fixtureHtml": "5ae19c4fd97f3f0aaf3a1cebdb6c3fd239b564bc046f9c216235861aa6d6e11f",
+    "beforeScreenshot": "0eb82b9e6c06d84186f094b0477863cb2449de797f623832f209225c05e53cb1",
+    "initialLoadingScreenshot": "d54a8a0a92a6fb3b299c505708d3cab9f759d45cdb8702fa7eb168493e7781b9",
+    "resultScreenshot": "d762f225f8b23b7ced26384ea78fc9f30bf5e0d9614c38523a72e5dea26545cf",
+    "afterSpinonScreenshot": "8f90c2e014cfcdf059ae68baba9571656c9a1de69c8e8d58d06ddfc76a0b430f"
+  },
+  "limitations": [
+    "Android Chrome 149 FirstRunActivity still blocks Android mode observation",
+    "The iOS result is Safari browser behavior on Simulator, not Spinon implementation behavior",
+    "No direct interaction-time native scrollbar capture or compositor-after proof",
+    "No C13.4 product implementation was started"
+  ]
+}
