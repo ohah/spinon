@@ -73,6 +73,14 @@ function walk(relativeDirectory) {
   return files;
 }
 
+function countHtmlFiles(directory) {
+  return fs.readdirSync(directory, { withFileTypes: true }).reduce((count, entry) => {
+    const child = path.join(directory, entry.name);
+    if (entry.isDirectory()) return count + countHtmlFiles(child);
+    return count + Number(entry.isFile() && path.extname(entry.name) === '.html');
+  }, 0);
+}
+
 function hardlinkTree(source, target) {
   fs.mkdirSync(target, { recursive: true });
   for (const entry of fs.readdirSync(source, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name))) {
@@ -95,9 +103,13 @@ for (const { source, routes } of rawFiles) {
   for (const route of routes) sources.set(route, absolute);
 }
 for (const file of ['spec/internal/evidence/c11-4-parallel-next-slices-plan-pr-diff-review-20.md']) {
+  assert.ok(trackedMainSources.has(file), 'raw source is absent from origin/main: ' + file);
+  const absolute = path.join(repositoryRoot, file);
+  const mainBytes = execFileSync('git', ['show', sourceHead + ':' + file], { cwd: repositoryRoot });
+  assert.deepEqual(fs.readFileSync(absolute), mainBytes, 'raw source differs from origin/main: ' + file);
   const withoutSpec = file.slice('spec/'.length);
   for (const route of [file, withoutSpec, `public/${withoutSpec}`, `public/${file}`]) {
-    sources.set(route, path.join(repositoryRoot, file));
+    sources.set(route, absolute);
   }
 }
 for (const directory of rawDirectories) {
@@ -178,7 +190,8 @@ const report = {
   excludedUntrackedFiles: rootManifest.excludedUntrackedFiles,
   baseSelectedOutputRoot: path.relative(repositoryRoot, baseRoot),
   selectedOutputRoot: path.relative(repositoryRoot, selectedRoot),
-  generatedPageCount: generatedRoutes.length,
+  fullBuildHtmlFileCount: countHtmlFiles(fullRoot),
+  selectedGeneratedRouteCount: generatedRoutes.length,
   selectedRouteCount: selectedRoutes.length,
   totalBytes: selectedRoutes.reduce((sum, entry) => sum + entry.bytes, 0),
   markers,

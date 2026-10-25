@@ -4,7 +4,7 @@
 
 ## 선택 build와 route
 
-- 수정된 Rspress selected build는 24개 생성 페이지를 만들었다. config는 dead-link/image 검사를 끄므로 전체 `docs:build` 통과를 뜻하지 않는다. 저장한 build log는 표 정렬용 trailing whitespace만 정리했다. [build log](rspress-build-pass08-corrected.log)
+- 수정된 Rspress output에는 HTML 파일 757개가 생성됐다. Tailnet stage는 이 가운데 생성된 24개 HTML route를 골라 base/raw route와 합쳐 258개 route를 반영했다. Manifest의 `selectedGeneratedRouteCount`는 전체 페이지 수가 아니라 이 선택 route 수다. config는 dead-link/image 검사를 끄므로 전체 `docs:build` 통과를 뜻하지 않는다. 저장한 build log는 표 정렬용 trailing whitespace만 정리했다. [build log](rspress-build-pass08-corrected.log)
 - pass07 선택 source root를 hardlink한 뒤 `origin/main`에 추적되는 STATUS, roadmap, C11.4 계획과 cyclic runtime evidence만 overlay했다. 예비 review 파일 `merge-roadmap-pr-diff-review-20.md`와 그 별칭 네 개는 [source manifest](selected-root-pass08-corrected.json)에 hash와 함께 제외 기록이 있다.
 - 최종 선택 root에는 258 routes, 25,913,401 bytes가 있다. Route별 크기/SHA-256은 [수정 selected build manifest](selected-build-verification-pass08-corrected.json)에 있다. 선택 script는 각 원본 파일이 pinned `origin/main`에 있고 로컬 bytes와 일치하는지 확인한다.
 - 최초 pass08의 262-route source/build/preflight/sync/verify manifests는 검토 과정의 history로 보존했으며 현재 결과의 증거로 사용하지 않는다. 수정 결과가 최종 기준이다.
