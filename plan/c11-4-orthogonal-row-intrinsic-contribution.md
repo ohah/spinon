@@ -4,7 +4,7 @@
 
 **관련 slice:** [direct text/image 행 축 계획](./c11-4-mixed-direct-text-image-intrinsic-row-axis.md) · [기존 행 축 Chrome 사전 비교](../spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md) · [새 orthogonal 행 축 사전 비교](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md) · [계획 검토 20개 및 후속 조치](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/plan-review-20.md)
 
-**상태:** 2026-10-25 제한된 opt-in runtime fixture 구현과 Android/iOS Simulator 네 장면 matrix가 완료됐다. Chrome 156 및 CSS Grid 2025 CRD 기반 독립 기대값과 네 장면이 일치한다. 이 결과는 고정 `vertical-rl` text와 natural image profile만 확인하며 public CSS 지원이나 전체 C11.4 완료를 뜻하지 않는다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
+**상태:** [PR #627](https://github.com/ohah/spinon/pull/627)은 2026-10-25T09:08:33Z에 Rebase and merge됐다(merge SHA `f14184a7364fcfa40859efb8ee52962de23f4487`). 제한된 opt-in runtime fixture의 Android/iOS Simulator 네 장면 matrix는 Chrome 156 및 CSS Grid 2025 CRD 기반 독립 기대값과 일치했다. Runtime draw telemetry의 image/text/glyph count가 0이므로 실제 Ahem glyph와 PNG pixel 페인팅은 검증하지 않았다. 기본/opt-in 비교는 static FFI archive 경계만 확인했으며 최종 release APK/IPA 전체에서 fixture ABI/payload가 제외된다는 근거가 아니다. 이 결과는 고정 `vertical-rl` text와 natural image profile만 확인하며 public CSS 지원이나 전체 C11.4 완료를 뜻하지 않는다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
 
 ## 목적과 겹침 경계
 

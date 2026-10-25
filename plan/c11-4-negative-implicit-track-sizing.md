@@ -2,9 +2,11 @@
 
 **상위 원본:** [C11 상태 대장](../spec/STATUS.md#c11-css-grid) · [C11.4 전체 track sizing 계획](./c11-4-grid-track-sizing.md) · [양의 implicit track 구현 계획과 PR #375](./c11-4-positive-implicit-track-sizing.md) · [CSS Grid Layout §7.1, §7.5–§7.6, §8.3, §8.5](https://www.w3.org/TR/css-grid/#implicit-grids) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 검토 후 제한 구현 후보를 검증 중이다. W3C 규범에서 독립적으로 계산한 33개 case를 Agent Browser HeadlessChrome 155와 비교했다. SHA-256이 포함된 입력·관찰·기대값·화면은 [사전 비교 자료](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-precomparison-2026-10-20/README.md)에 있다. 이 후보만으로 C11.4 상태나 완료 수를 올리지 않는다.
+**상태:** 제한 음수 implicit track 구현 [PR #379](https://github.com/ohah/spinon/pull/379)은 2026-10-20T07:41:31Z에 Rebase and merge됐다(merge SHA `99a2d408385a03591088a44005cb7b35aaf69cb3`). Auto-repeat 결합 후속 [PR #385](https://github.com/ohah/spinon/pull/385)은 2026-10-20T10:13:19Z에 Rebase and merge됐다(merge SHA `078f5708a5c13d956150b311d392490cc4faa311`). #379는 두 플랫폼에서 106/106 scene, #385는 기존 106개에 18개를 더한 124/124 scene을 확인했다. 제한된 `RuntimeBlockFlexGridTrackSizingV1` 범위의 근거이며, 전체 auto-repeat 문법·WPT·실기기·hardware GPU·iOS compositor 이후 표면 검증은 포함하지 않는다. C11.4는 미완료이고 공식 완료 수 `72/213`은 그대로다. 병합 결과와 실행 근거는 [공식 상태 대장](../spec/STATUS.md#c11-css-grid) 및 [실행 근거](../spec/internal/evidence/c11-4-negative-implicit-track-sizing-2026-10-20/README.md)를 따른다.
 
-## 확인된 현재 경계
+## PR #379 구현 전 경계
+
+다음은 PR #379 구현 전 기준 코드의 경계 기록이다. 현재 제한 구현 결과는 위 상태와 아래 완료 판정, 공식 상태 대장 및 실행 근거를 따른다.
 
 - `RuntimeBlockFlexGridTrackSizingV1`은 양의 implicit track과 typed `grid-auto-rows`·`grid-auto-columns` 목록을 처리한다. #375의 다음 미완료 경계는 explicit grid 앞의 negative implicit track이다.
 - `AxisPlacement.start`는 `Option<usize>`이고 `resolve_axis`는 TrackSizing에서 positive implicit line만 허용한다. explicit grid 밖의 음수 line은 `explicit_line`에서 거부된다.
@@ -40,7 +42,9 @@
 - 두 100px root overflow case의 마지막 item은 Chrome 기준 root 오른쪽으로 172 CSS px, 아래쪽으로 108 CSS px 벗어난다. screenshot과 DOMRect에서 root border 기준 좌표를 보존한다.
 - 실행 시 fixture/hash/oracle을 먼저 재검증한다. 구현이 기대와 다르면 차이를 좁혀 숨기지 말고 규범 입력, 기존 converter, 재현·환경과 함께 기록한다.
 
-## 구현 및 검증 순서
+## PR #379 당시 구현 및 검증 순서
+
+다음은 PR #379 작업 전에 계획한 실행 순서의 기록이며 현재 진행할 체크리스트가 아니다. 실제 구현·검증 결과와 남은 한계는 위 상태, 아래 완료 판정 및 공식 상태 대장을 따른다.
 
 1. 이 계획을 구현과 별개인 실패 관점 20개로 검토하고, 발견 사항을 계획·oracle·합격 기준에 반영한다.
 2. 계획 PR을 현재 `main`에 `Rebase and merge`한 뒤 기본 `spinon` checkout에서 구현 branch로 전환한다. 동시 작업의 실제 파일 충돌이 확인된 경우에만 별도 worktree를 사용하고, 순차 작업에서는 새 worktree를 만들지 않는다. merge commit을 확인한다.
@@ -56,4 +60,4 @@
 
 ## 이 조각의 완료 판정
 
-33/33 Chrome oracle, 독립 expectation validator, Rust/style/layout·cap·allocation·profile 회귀, 기본/opt-in artifact 경계, Android 106/106과 iOS 106/106 Simulator scene, 양 플랫폼 root interior/edge background와 root 바깥 item/tail surface sample, trace/draw/present, 구현 실패 관점 20개 review와 PR diff 30개 review가 이 signed negative-origin PR #379 slice의 근거다. total-track 10,000 cap의 checked extent arithmetic은 경계 단위 시험으로 검증한다. 전체 Taffy trace는 더 낮은 수에서도 100,000 track-state 예산으로 fail-closed할 수 있어 10,000-track layout 성공을 약속하지 않는다. auto-repeat과 negative origin의 제한 결합은 후속 [PR #385](./c11-4-auto-repeat-negative-lines.md)에서 별도 확인했다. CSS border stroke, WPT full suite, nested/anonymous/out-of-flow, 실기기, hardware GPU와 iOS compositor-after는 미완료다.
+33/33 Chrome oracle, 독립 expectation validator, Rust/style/layout·cap·allocation·profile 회귀, 기본/opt-in artifact 경계, Android/iOS 106/106 Simulator scene, 양 플랫폼 root interior/edge background와 root 바깥 item/tail surface sample, trace/draw/present, 구현 실패 관점 20개 review와 PR diff 30개 review가 PR #379의 근거다. PR #385는 별도 18-case oracle을 기존 106 IDs와 결합해 양 플랫폼 124/124 scene 및 세 overflow scene의 각 5/5 PixelCopy/Metal 표본을 확인했다. total-track 10,000 cap의 checked extent arithmetic은 경계 단위 시험으로 검증한다. 전체 Taffy trace는 더 낮은 수에서도 100,000 track-state 예산으로 fail-closed할 수 있어 10,000-track layout 성공을 약속하지 않는다. CSS border stroke, 전체 auto-repeat 문법, WPT full suite, nested/anonymous/out-of-flow, 실기기, hardware GPU와 iOS compositor-after는 미완료다. 이 두 제한 slice는 C11.4 완료 판정이 아니며 공식 완료 수 `72/213`을 변경하지 않는다.
