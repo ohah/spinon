@@ -8,7 +8,14 @@
   },
   "closeCommand": "agent-browser close --all",
   "afterClose": {
-    "sessions": [],
-    "agentBrowserProcessSearch": "pgrep -fl '[a]gent-browser' returned no matches"
+    "sessionList": {
+      "success": true,
+      "sessions": []
+    },
+    "processSearch": {
+      "command": "pgrep -fl '[a]gent-browser'",
+      "matches": [],
+      "noMatchingProcesses": true
+    }
   }
 }
