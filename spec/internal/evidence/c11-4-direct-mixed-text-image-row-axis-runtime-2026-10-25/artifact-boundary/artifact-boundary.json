@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
   "reportSemantics": "Last successful scan; a later failed attempt leaves this report unchanged.",
-  "runDirectory": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015811Z-328d755b",
-  "sourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
-  "stagedDiffSha256": "8dd4625b1d15588df4d056bd8ee5f4559ff5a15589be119bfce2ac7bf4348ed2",
+  "runDirectory": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T021308Z-410dbb46",
+  "sourceRevision": "0af34026039f11c8f354856b34bdef12f8fd7878",
+  "stagedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
   "stagedDiffExcludedGeneratedPaths": [
     "artifact-boundary.json",
     "runs/**"
@@ -41,8 +41,8 @@
         "--features",
         "c04-runtime-gpu"
       ],
-      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015811Z-328d755b/product-build.log",
-      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015811Z-328d755b/symbols-product.txt",
+      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T021308Z-410dbb46/product-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T021308Z-410dbb46/symbols-product.txt",
       "archivePath": "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target/release/libspinon_ffi.a",
       "archiveBytes": 75190888,
       "archiveSha256": "31571769b42aa332e9d0b774c7f24b540e9588436a2eed38bd4d14fada1fb87b",
@@ -78,11 +78,11 @@
         "--features",
         "c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test"
       ],
-      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015811Z-328d755b/fixtureTest-build.log",
-      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015811Z-328d755b/symbols-fixtureTest.txt",
+      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T021308Z-410dbb46/fixtureTest-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T021308Z-410dbb46/symbols-fixtureTest.txt",
       "archivePath": "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target/release/libspinon_ffi.a",
-      "archiveBytes": 78436280,
-      "archiveSha256": "b359182311baebf26b8ce757b730236ac479558be8cc5297f9324db629dcd8c1",
+      "archiveBytes": 78436120,
+      "archiveSha256": "12728e6b57c17d1bcb156ce7be27dd63712e7a037d0d5b4f7ebc824f09241c21",
       "sceneMarkerPresence": {
         "direct-row-min-content-forward": true,
         "direct-row-min-content-reversed": true,

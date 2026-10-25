@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-direct-mixed-row-axis-android-avd-20261025T020129572Z-32d210b8",
+  "target": "android-avd",
+  "requestedCommand": "node spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs android-avd emulator-5560",
+  "requestedSourceRevision": "a23917cfd0e867ed2d437912d0abf9c8a996fb6b",
+  "headAtRunStart": "a23917cfd0e867ed2d437912d0abf9c8a996fb6b",
+  "headTree": "176432bb98a1c5b37ee596f68150add4c6eec7a5",
+  "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "trackedDirtyPaths": [],
+  "sourceInputPaths": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift"
+  ],
+  "sourceFileSha256": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "b4ee171c552344c7d6978169fb5771e0d795315090c20e07b3207f44b92793a8",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs": "74fa50f357d99f3f70741a4d546c7cfd1884e5c300f24264a7c5e7144cc3ea56",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "a5c942d95399cb4e858142efa18838275e86d9461f65ffb6f4e7a57759a50f48",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "a2efa4d3bdfc6842a868023ae74b4f03738d0cb1b59e1c3ec144465854dd6703",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs": "03fdbd8f4554965fad306ec75f70809e36335ebf74b69202acfe6c8f6d0622a4",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "ad8460cabf103cecb3e16449d5c6cd413fa4c37e7e4ddece05805161ed71f118",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "096881294da576b5eaf1e354f88b1067df79ca30a240b3d5ac20ed40d1e0ae39",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "c9724a02a0fc1e7400bb55cd9908a52b481e32010df4a7528c77584d89704124"
+  },
+  "sourceFilesSha256": "3380c4720a378087990f7697f4d1532ecc2df3866d46ab608a0c0fff1ce692bf",
+  "hashCaptureNote": "The harness built successfully and checked source stability, then aborted at the first scene before writing android-simulator.json. These input hashes were captured immediately after the failed run from the clean tracked checkout at the same HEAD.",
+  "device": {
+    "serial": "emulator-5560",
+    "avdName": "spinon_api37_2_presenttime_probe_20261018",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone16k_arm64",
+    "pageSizeBytes": 16384,
+    "physicalDeviceSerialUsed": false
+  },
+  "build": {
+    "command": "mise exec -- bun run build:android",
+    "result": "succeeded",
+    "apk": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "apkSha256": "0757f8399f04a3e791965fb67d8f9ab00b22b32ee3d6c75f1d357fb070c41e7e",
+    "installedBaseApkSha256": "0757f8399f04a3e791965fb67d8f9ab00b22b32ee3d6c75f1d357fb070c41e7e",
+    "log": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-android-avd-20261025T020129572Z-32d210b8/android-build.log",
+    "logSha256": "db5bab31f1a165db2ba22efa158ab8334b6a96efd515ca15fb162161a9c63139"
+  },
+  "captureScriptSha256": "200d58bda153613cf0e9f397b13a04c6f7dd665259426163006341a228b90c84",
+  "sceneMatrix": {
+    "requested": [
+      "direct-row-min-content-forward",
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ],
+    "attempted": [
+      "direct-row-min-content-forward"
+    ],
+    "passed": [],
+    "completed": 0,
+    "notStarted": [
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ]
+  },
+  "failure": {
+    "kind": "runtime rejected computed CSS value; no track trace produced",
+    "detail": "direct-row-min-content-forward: unsupported_computed_value node=Some(2) property=Some(\"align-self\"); runtime emitted TRACE_MISSING and GRID_ASSERTION_ERROR with status=-11.",
+    "runtimeLog": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-android-avd-20261025T020129572Z-32d210b8/android-runtime-direct-row-min-content-forward.log",
+    "runtimeLogSha256": "4ff55890523c857c97e86217ea286cbec6565e595e9e0b3a5d1d10107aa19f81",
+    "assertion": "direct-row-min-content-forward: 앱 실행기 프레임/trace 검증 실패"
+  },
+  "artifacts": {
+    "logs": {
+      "android-build.log": "db5bab31f1a165db2ba22efa158ab8334b6a96efd515ca15fb162161a9c63139",
+      "android-install.log": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "android-launch-direct-row-min-content-forward.log": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "android-runtime-direct-row-min-content-forward-attempt0.log": "4ff55890523c857c97e86217ea286cbec6565e595e9e0b3a5d1d10107aa19f81",
+      "android-runtime-direct-row-min-content-forward.log": "4ff55890523c857c97e86217ea286cbec6565e595e9e0b3a5d1d10107aa19f81"
+    },
+    "screenshots": [],
+    "otherSceneRuntimeLogs": []
+  },
+  "cleanup": {
+    "forceStopCommand": "adb -s emulator-5560 shell am force-stop dev.spinon.bootstrap",
+    "forceStopExitCode": 0,
+    "processRemainedOnTarget": false,
+    "topResumedActivity": "com.google.android.apps.nexuslauncher/.NexusLauncherActivity",
+    "otherAdbSerialsCommanded": []
+  },
+  "finalSimulatorJsonWritten": false,
+  "browserUsed": false
+}

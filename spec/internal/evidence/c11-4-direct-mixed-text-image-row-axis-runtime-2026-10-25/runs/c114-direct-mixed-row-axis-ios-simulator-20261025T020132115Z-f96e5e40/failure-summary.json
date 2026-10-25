@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40",
+  "requestedCommand": "node spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs ios-simulator 00D4D861-56AA-4552-9181-58D88770EDDA",
+  "sourceRevision": {
+    "commit": "a23917cfd0e867ed2d437912d0abf9c8a996fb6b",
+    "tree": "176432bb98a1c5b37ee596f68150add4c6eec7a5",
+    "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "sourceInputSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "b4ee171c552344c7d6978169fb5771e0d795315090c20e07b3207f44b92793a8",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs": "74fa50f357d99f3f70741a4d546c7cfd1884e5c300f24264a7c5e7144cc3ea56",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "a5c942d95399cb4e858142efa18838275e86d9461f65ffb6f4e7a57759a50f48",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "a2efa4d3bdfc6842a868023ae74b4f03738d0cb1b59e1c3ec144465854dd6703",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs": "03fdbd8f4554965fad306ec75f70809e36335ebf74b69202acfe6c8f6d0622a4",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "ad8460cabf103cecb3e16449d5c6cd413fa4c37e7e4ddece05805161ed71f118",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "096881294da576b5eaf1e354f88b1067df79ca30a240b3d5ac20ed40d1e0ae39",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "c9724a02a0fc1e7400bb55cd9908a52b481e32010df4a7528c77584d89704124"
+    }
+  },
+  "simulator": {
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "runtime": "iOS 26.2",
+    "initialState": "Shutdown",
+    "finalState": "Shutdown",
+    "otherInitiallyBooted": [
+      "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    ],
+    "otherBootedAfter": [
+      "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    ]
+  },
+  "build": {
+    "command": "mise exec -- bun run build:ios-sim",
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": "1"
+    },
+    "status": "succeeded",
+    "artifactPath": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "artifactSha256": "184d68ae87ebefa70d7272c95310fbf21b587a1790723f9bfd80514ffd721d0f",
+    "log": {
+      "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40/ios-build.log",
+      "bytes": 59468,
+      "sha256": "f6770e50a8585a7eb5b7daf7758fae0d2e81f0ccd004e9d017733a8b14e5d42b"
+    }
+  },
+  "scenes": {
+    "requested": [
+      "direct-row-min-content-forward",
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ],
+    "attempted": [
+      "direct-row-min-content-forward"
+    ],
+    "passed": [],
+    "remainingNotStarted": [
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ]
+  },
+  "failure": {
+    "summary": "First scene failed in runtime fixture evaluation: unsupported_computed_value for node 2 property align-self; trace missing; app emitted grid assertion status=-11.",
+    "runtimeLog": {
+      "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40/ios-runtime-direct-row-min-content-forward.log",
+      "bytes": 3959,
+      "sha256": "a2376fc5512fe3c730cd1c5dd3fa6e91a6117eda75b73e98974f099bd2677961"
+    },
+    "launchLog": {
+      "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40/ios-launch-direct-row-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "90d1431790964c789677eb6c50275b44b0194b8e63112c6c80f444efe021c94a"
+    }
+  },
+  "installLog": {
+    "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40/ios-install.log",
+    "bytes": 0,
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "harnessCleanup": "finally shut down only the target simulator it booted; post-run state verified Shutdown",
+  "finalSimulatorJsonWritten": false,
+  "browserUsed": false
+}
