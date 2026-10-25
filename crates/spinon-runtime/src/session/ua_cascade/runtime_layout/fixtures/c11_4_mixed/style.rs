@@ -27,6 +27,7 @@ pub(super) fn validate_grid_style(
     ) {
         require_property(style, "direction", "ltr")?;
         require_property(style, "writing-mode", "horizontal-tb")?;
+        require_property(style, "justify-items", "normal")?;
     }
     let grid = style.grid_layout.as_ref().ok_or_else(|| {
         failure(
