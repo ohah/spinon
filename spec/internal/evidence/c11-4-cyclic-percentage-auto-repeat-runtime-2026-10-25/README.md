@@ -69,6 +69,8 @@ Focused runtime fixture tests는 fixed-slice 예외가 인접 입력을 허용�
 
 ## Android AVD 결과
 
+Android 픽셀은 API 37 AVD의 software renderer에서 PixelCopy로 읽었다. iOS 픽셀은 아래와 같이 Metal drawable을 OS compositor에 제출하기 전에 읽었다. 이 결과는 hardware GPU 또는 compositor 이후 화면의 pixel 동등성을 증명하지 않는다.
+
 - AVD: `spinon_api37_1_compat16k`, Android 17 / API 37, 1080×2400, density 420
 - 최종 serial: `emulator-5570`
 - 앱은 위 revision의 Android debug APK에서 실행했다.
