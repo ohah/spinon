@@ -1,0 +1,575 @@
+{
+  "schemaVersion": 1,
+  "basis": "CSS Grid Layout Module Level 1, 2025 CRD; CSS Sizing Level 3 §2",
+  "browserObservationUsedToDeriveExpectations": false,
+  "profile": {
+    "axis": "rows",
+    "frameCoordinateSpace": "root-content-box-relative CSS px",
+    "fractionalValueTolerance": "1/64 CSS px; integer frames are exact",
+    "rootContentWidthPx": 24,
+    "prefixTrackPx": 8,
+    "suffixTrackPx": 8,
+    "rowGapPx": 2,
+    "repeatPattern": "minmax(0px, 25%)",
+    "repeatedRowItems": [
+      {
+        "widthPx": 24,
+        "heightPx": 24
+      },
+      {
+        "widthPx": 16,
+        "heightPx": 16
+      }
+    ],
+    "prefixRowItems": [
+      {
+        "widthPx": 24,
+        "heightPx": 8
+      }
+    ],
+    "inFlowItemContributionRule": "overlapping non-spanning items contribute the maximum item block size to the occupied repeated row",
+    "rowAutoRepeatRange": {
+      "start": 1,
+      "end": 2,
+      "semantics": "half-open track-list indices"
+    },
+    "rootMinHeightTyped": "Auto (CSS property not authored)",
+    "browserOnlySuffixProbe": {
+      "inFlowInBrowserFixture": true,
+      "inRuntimeInput": false,
+      "sizePx": [
+        24,
+        1
+      ]
+    },
+    "traceTrackStateOrder": [
+      "leading edge gutter",
+      "prefix track",
+      "prefix/repeat gutter",
+      "repeated track 1",
+      "repeat boundary gutter",
+      "repeated track 2 when count is 2",
+      "gutter after repeated track 2",
+      "suffix track",
+      "trailing edge gutter"
+    ]
+  },
+  "derivedValues": {
+    "maxRepeatedRowContributionPx": 24,
+    "cyclicIntrinsicBasisPx": "8 + 24 + 8 + 2*2 = 44",
+    "finalPercentageTrackPx": "44 * 0.25 = 11",
+    "definiteRepeatCount": "largest n where 8 + 8 + 11*n + 2*(n+1) <= 44; n = 2",
+    "autoFitSharedBoundary": "collapsed run gutters overlap to one 2px shared boundary gap; the following gutter is 0px"
+  },
+  "scenes": [
+    {
+      "sceneId": "cyclic-max-content-auto-fill-prefix-suffix",
+      "height": "max-content",
+      "autoRepeat": "auto-fill",
+      "initialRepeatCount": 1,
+      "finalRepeatCount": 1,
+      "percentageBasisPx": 44,
+      "intrinsicRowsPx": [
+        8,
+        24,
+        8
+      ],
+      "usedRowsPx": [
+        8,
+        11,
+        8
+      ],
+      "collapsedTrackIndexesZeroBased": [],
+      "rootContentBoxPx": [
+        24,
+        44
+      ],
+      "prefixItemFramePx": [
+        0,
+        0,
+        24,
+        8
+      ],
+      "repeatedRowItemFramesPx": [
+        [
+          0,
+          10,
+          24,
+          24
+        ],
+        [
+          0,
+          10,
+          16,
+          16
+        ]
+      ],
+      "browserDirectInFlowChildCount": 4,
+      "runtimeSizingDirectChildCount": 3,
+      "suffixProbeSizePx": [
+        24,
+        1
+      ],
+      "suffixStartRootLocalYPx": 23,
+      "intrinsicTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 24,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-suffix",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ],
+      "finalTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 11,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-suffix",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ],
+      "intrinsicContributions": [
+        {
+          "itemRole": "primary",
+          "kind": "MaxContent",
+          "span": 1,
+          "valuePx": 24
+        },
+        {
+          "itemRole": "secondary",
+          "kind": "MaxContent",
+          "span": 1,
+          "valuePx": 16
+        }
+      ]
+    },
+    {
+      "sceneId": "cyclic-max-content-auto-fit-prefix-suffix",
+      "height": "max-content",
+      "autoRepeat": "auto-fit",
+      "initialRepeatCount": 1,
+      "finalRepeatCount": 1,
+      "percentageBasisPx": 44,
+      "intrinsicRowsPx": [
+        8,
+        24,
+        8
+      ],
+      "usedRowsPx": [
+        8,
+        11,
+        8
+      ],
+      "collapsedTrackIndexesZeroBased": [],
+      "rootContentBoxPx": [
+        24,
+        44
+      ],
+      "prefixItemFramePx": [
+        0,
+        0,
+        24,
+        8
+      ],
+      "repeatedRowItemFramesPx": [
+        [
+          0,
+          10,
+          24,
+          24
+        ],
+        [
+          0,
+          10,
+          16,
+          16
+        ]
+      ],
+      "browserDirectInFlowChildCount": 4,
+      "runtimeSizingDirectChildCount": 3,
+      "suffixProbeSizePx": [
+        24,
+        1
+      ],
+      "suffixStartRootLocalYPx": 23,
+      "intrinsicTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 24,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-suffix",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ],
+      "finalTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 11,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-suffix",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ],
+      "intrinsicContributions": [
+        {
+          "itemRole": "primary",
+          "kind": "MaxContent",
+          "span": 1,
+          "valuePx": 24
+        },
+        {
+          "itemRole": "secondary",
+          "kind": "MaxContent",
+          "span": 1,
+          "valuePx": 16
+        }
+      ]
+    },
+    {
+      "sceneId": "definite-44px-auto-fill-prefix-suffix-control",
+      "height": 44,
+      "autoRepeat": "auto-fill",
+      "initialRepeatCount": 2,
+      "finalRepeatCount": 2,
+      "percentageBasisPx": 44,
+      "intrinsicRowsPx": null,
+      "usedRowsPx": [
+        8,
+        11,
+        11,
+        8
+      ],
+      "collapsedTrackIndexesZeroBased": [],
+      "rootContentBoxPx": [
+        24,
+        44
+      ],
+      "prefixItemFramePx": [
+        0,
+        0,
+        24,
+        8
+      ],
+      "repeatedRowItemFramesPx": [
+        [
+          0,
+          10,
+          24,
+          24
+        ],
+        [
+          0,
+          10,
+          16,
+          16
+        ]
+      ],
+      "browserDirectInFlowChildCount": 4,
+      "runtimeSizingDirectChildCount": 3,
+      "suffixProbeSizePx": [
+        24,
+        1
+      ],
+      "suffixStartRootLocalYPx": 36,
+      "finalTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 11,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-boundary",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-2",
+          "baseSizePx": 11,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "repeat-suffix",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ]
+    },
+    {
+      "sceneId": "definite-44px-auto-fit-prefix-suffix-control",
+      "height": 44,
+      "autoRepeat": "auto-fit",
+      "initialRepeatCount": 2,
+      "finalRepeatCount": 2,
+      "percentageBasisPx": 44,
+      "intrinsicRowsPx": null,
+      "usedRowsPx": [
+        8,
+        11,
+        0,
+        8
+      ],
+      "collapsedTrackIndexesZeroBased": [
+        2
+      ],
+      "rootContentBoxPx": [
+        24,
+        44
+      ],
+      "prefixItemFramePx": [
+        0,
+        0,
+        24,
+        8
+      ],
+      "repeatedRowItemFramesPx": [
+        [
+          0,
+          10,
+          24,
+          24
+        ],
+        [
+          0,
+          10,
+          16,
+          16
+        ]
+      ],
+      "browserDirectInFlowChildCount": 4,
+      "runtimeSizingDirectChildCount": 3,
+      "suffixProbeSizePx": [
+        24,
+        1
+      ],
+      "suffixStartRootLocalYPx": 23,
+      "collapsedRunGutters": {
+        "sharedBoundaryPx": 2,
+        "afterCollapsedRepeatPx": 0
+      },
+      "finalTrackStates": [
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "prefix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "prefix-repeat",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-1",
+          "baseSizePx": 11,
+          "collapsed": false
+        },
+        {
+          "kind": "gutter",
+          "role": "shared-boundary",
+          "baseSizePx": 2,
+          "collapsed": false
+        },
+        {
+          "kind": "cssTrack",
+          "role": "repeated-2",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "gutter",
+          "role": "after-collapsed-repeat",
+          "baseSizePx": 0,
+          "collapsed": true
+        },
+        {
+          "kind": "cssTrack",
+          "role": "suffix",
+          "baseSizePx": 8,
+          "collapsed": false
+        },
+        {
+          "kind": "edgeGutter",
+          "baseSizePx": 0,
+          "collapsed": true
+        }
+      ]
+    }
+  ],
+  "rejectedHypothesis": {
+    "claim": "For the separate 40px-item, 50% max-content fixture without prefix/suffix/gaps, the row repeat count becomes 2 after resolving the percentage maximum.",
+    "expectedObservation": "not supported; the expected two 20px rows are observed as one 20px row",
+    "comparisonLimit": "The row result does not determine the separate column fixture; percentage, neighbors, gaps, and item dimensions differ. A cross-axis causal claim needs a separate normative comparison."
+  }
+}

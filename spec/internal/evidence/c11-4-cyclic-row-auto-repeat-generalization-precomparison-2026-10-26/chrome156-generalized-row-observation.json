@@ -1,0 +1,326 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "cssSupports": {
+    "autoFill": true,
+    "autoFit": true
+  },
+  "observations": [
+    {
+      "authoredRows": "8px repeat(auto-fill, minmax(0px, 25%)) 8px",
+      "candidateBoundaryRect": {
+        "bottom": 73.59375,
+        "height": 1,
+        "left": 24,
+        "right": 48,
+        "top": 72.59375,
+        "width": 24,
+        "x": 24,
+        "y": 72.59375
+      },
+      "computed": {
+        "boxSizing": "content-box",
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "8px 11px 8px",
+        "height": "44px",
+        "maxHeight": "none",
+        "minHeight": "0px",
+        "rowGap": "2px",
+        "width": "24px"
+      },
+      "directInFlowChildCount": 4,
+      "id": "cyclic-fill",
+      "itemRect": {
+        "bottom": 85.59375,
+        "height": 24,
+        "left": 24,
+        "right": 48,
+        "top": 61.59375,
+        "width": 24,
+        "x": 24,
+        "y": 61.59375
+      },
+      "prefixItemRect": {
+        "bottom": 59.59375,
+        "height": 8,
+        "left": 24,
+        "right": 48,
+        "top": 51.59375,
+        "width": 24,
+        "x": 24,
+        "y": 51.59375
+      },
+      "rootRect": {
+        "bottom": 95.59375,
+        "height": 44,
+        "left": 24,
+        "right": 48,
+        "top": 51.59375,
+        "width": 24,
+        "x": 24,
+        "y": 51.59375
+      },
+      "sceneId": "cyclic-max-content-auto-fill-prefix-suffix",
+      "secondaryItemRect": {
+        "bottom": 77.59375,
+        "height": 16,
+        "left": 24,
+        "right": 40,
+        "top": 61.59375,
+        "width": 16,
+        "x": 24,
+        "y": 61.59375
+      },
+      "suffixProbeRect": {
+        "x": 24,
+        "y": 74.59375,
+        "width": 24,
+        "height": 1,
+        "top": 74.59375,
+        "right": 48,
+        "bottom": 75.59375,
+        "left": 24
+      },
+      "suffixStartRootRelativeY": 23.0,
+      "runtimeSizedChildCount": 3
+    },
+    {
+      "authoredRows": "8px repeat(auto-fit, minmax(0px, 25%)) 8px",
+      "candidateBoundaryRect": {
+        "bottom": 73.59375,
+        "height": 1,
+        "left": 316,
+        "right": 340,
+        "top": 72.59375,
+        "width": 24,
+        "x": 316,
+        "y": 72.59375
+      },
+      "computed": {
+        "boxSizing": "content-box",
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "8px 11px 8px",
+        "height": "44px",
+        "maxHeight": "none",
+        "minHeight": "0px",
+        "rowGap": "2px",
+        "width": "24px"
+      },
+      "directInFlowChildCount": 4,
+      "id": "cyclic-fit",
+      "itemRect": {
+        "bottom": 85.59375,
+        "height": 24,
+        "left": 316,
+        "right": 340,
+        "top": 61.59375,
+        "width": 24,
+        "x": 316,
+        "y": 61.59375
+      },
+      "prefixItemRect": {
+        "bottom": 59.59375,
+        "height": 8,
+        "left": 316,
+        "right": 340,
+        "top": 51.59375,
+        "width": 24,
+        "x": 316,
+        "y": 51.59375
+      },
+      "rootRect": {
+        "bottom": 95.59375,
+        "height": 44,
+        "left": 316,
+        "right": 340,
+        "top": 51.59375,
+        "width": 24,
+        "x": 316,
+        "y": 51.59375
+      },
+      "sceneId": "cyclic-max-content-auto-fit-prefix-suffix",
+      "secondaryItemRect": {
+        "bottom": 77.59375,
+        "height": 16,
+        "left": 316,
+        "right": 332,
+        "top": 61.59375,
+        "width": 16,
+        "x": 316,
+        "y": 61.59375
+      },
+      "suffixProbeRect": {
+        "x": 316,
+        "y": 74.59375,
+        "width": 24,
+        "height": 1,
+        "top": 74.59375,
+        "right": 340,
+        "bottom": 75.59375,
+        "left": 316
+      },
+      "suffixStartRootRelativeY": 23.0,
+      "runtimeSizedChildCount": 3
+    },
+    {
+      "authoredRows": "8px repeat(auto-fill, minmax(0px, 25%)) 8px",
+      "candidateBoundaryRect": {
+        "bottom": 73.59375,
+        "height": 1,
+        "left": 608,
+        "right": 632,
+        "top": 72.59375,
+        "width": 24,
+        "x": 608,
+        "y": 72.59375
+      },
+      "computed": {
+        "boxSizing": "content-box",
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "8px 11px 11px 8px",
+        "height": "44px",
+        "maxHeight": "none",
+        "minHeight": "0px",
+        "rowGap": "2px",
+        "width": "24px"
+      },
+      "directInFlowChildCount": 4,
+      "id": "control-fill",
+      "itemRect": {
+        "bottom": 85.59375,
+        "height": 24,
+        "left": 608,
+        "right": 632,
+        "top": 61.59375,
+        "width": 24,
+        "x": 608,
+        "y": 61.59375
+      },
+      "prefixItemRect": {
+        "bottom": 59.59375,
+        "height": 8,
+        "left": 608,
+        "right": 632,
+        "top": 51.59375,
+        "width": 24,
+        "x": 608,
+        "y": 51.59375
+      },
+      "rootRect": {
+        "bottom": 95.59375,
+        "height": 44,
+        "left": 608,
+        "right": 632,
+        "top": 51.59375,
+        "width": 24,
+        "x": 608,
+        "y": 51.59375
+      },
+      "sceneId": "definite-44px-auto-fill-prefix-suffix-control",
+      "secondaryItemRect": {
+        "bottom": 77.59375,
+        "height": 16,
+        "left": 608,
+        "right": 624,
+        "top": 61.59375,
+        "width": 16,
+        "x": 608,
+        "y": 61.59375
+      },
+      "suffixProbeRect": {
+        "x": 608,
+        "y": 87.59375,
+        "width": 24,
+        "height": 1,
+        "top": 87.59375,
+        "right": 632,
+        "bottom": 88.59375,
+        "left": 608
+      },
+      "suffixStartRootRelativeY": 36.0,
+      "runtimeSizedChildCount": 3
+    },
+    {
+      "authoredRows": "8px repeat(auto-fit, minmax(0px, 25%)) 8px",
+      "candidateBoundaryRect": {
+        "bottom": 73.59375,
+        "height": 1,
+        "left": 900,
+        "right": 924,
+        "top": 72.59375,
+        "width": 24,
+        "x": 900,
+        "y": 72.59375
+      },
+      "computed": {
+        "boxSizing": "content-box",
+        "gridTemplateColumns": "24px",
+        "gridTemplateRows": "8px 11px 0px 8px",
+        "height": "44px",
+        "maxHeight": "none",
+        "minHeight": "0px",
+        "rowGap": "2px",
+        "width": "24px"
+      },
+      "directInFlowChildCount": 4,
+      "id": "control-fit",
+      "itemRect": {
+        "bottom": 85.59375,
+        "height": 24,
+        "left": 900,
+        "right": 924,
+        "top": 61.59375,
+        "width": 24,
+        "x": 900,
+        "y": 61.59375
+      },
+      "prefixItemRect": {
+        "bottom": 59.59375,
+        "height": 8,
+        "left": 900,
+        "right": 924,
+        "top": 51.59375,
+        "width": 24,
+        "x": 900,
+        "y": 51.59375
+      },
+      "rootRect": {
+        "bottom": 95.59375,
+        "height": 44,
+        "left": 900,
+        "right": 924,
+        "top": 51.59375,
+        "width": 24,
+        "x": 900,
+        "y": 51.59375
+      },
+      "sceneId": "definite-44px-auto-fit-prefix-suffix-control",
+      "secondaryItemRect": {
+        "bottom": 77.59375,
+        "height": 16,
+        "left": 900,
+        "right": 916,
+        "top": 61.59375,
+        "width": 16,
+        "x": 900,
+        "y": 61.59375
+      },
+      "suffixProbeRect": {
+        "x": 900,
+        "y": 74.59375,
+        "width": 24,
+        "height": 1,
+        "top": 74.59375,
+        "right": 924,
+        "bottom": 75.59375,
+        "left": 900
+      },
+      "suffixStartRootRelativeY": 23.0,
+      "runtimeSizedChildCount": 3
+    }
+  ],
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 row-axis cyclic auto-repeat re-expansion precomparison</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 24px;
+      color: #101820;
+      background: #f4f6f8;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    main {
+      display: flex;
+      align-items: flex-start;
+      gap: 32px;
+      flex-wrap: wrap;
+    }
+    figure { margin: 0; }
+    figcaption { margin-bottom: 8px; font-weight: 600; }
+    .grid {
+      position: relative;
+      display: grid;
+      width: 24px;
+      box-sizing: content-box;
+      grid-template-columns: 24px;
+      column-gap: 0;
+      row-gap: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      align-content: start;
+      justify-content: start;
+      background: #b9d8e8;
+    }
+    .max-content { height: max-content; }
+    .definite { height: 40px; }
+    .item {
+      grid-column: 1;
+      grid-row: 1;
+      width: 24px;
+      height: 40px;
+      min-width: 0;
+      min-height: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #e5484d;
+    }
+    .half-height-marker {
+      position: absolute;
+      z-index: 1;
+      inset-inline: 0;
+      top: 50%;
+      height: 1px;
+      background: #173f8a;
+      pointer-events: none;
+    }
+    .note { margin-top: 8px; max-width: 260px; }
+  </style>
+</head>
+<body>
+  <main>
+    <figure>
+      <figcaption>max-content / auto-fill</figcaption>
+      <div id="cyclic-fill" class="grid max-content" data-scene-id="cyclic-max-content-auto-fill-row-reexpand"
+           style="grid-template-rows: repeat(auto-fill, minmax(0px, 50%))">
+        <div id="cyclic-fill-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">One in-flow 24 × 40px item establishes a 40px max-content block size.</div>
+    </figure>
+    <figure>
+      <figcaption>max-content / auto-fit</figcaption>
+      <div id="cyclic-fit" class="grid max-content" data-scene-id="cyclic-max-content-auto-fit-row-reexpand"
+           style="grid-template-rows: repeat(auto-fit, minmax(0px, 50%))">
+        <div id="cyclic-fit-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">The second repeated row is empty and should collapse under auto-fit.</div>
+    </figure>
+    <figure>
+      <figcaption>40px definite / auto-fill control</figcaption>
+      <div id="control-fill" class="grid definite" data-scene-id="definite-40px-auto-fill-row-reexpand-control"
+           style="grid-template-rows: repeat(auto-fill, minmax(0px, 50%))">
+        <div id="control-fill-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">Same item and tracks with a definite 40px block size.</div>
+    </figure>
+    <figure>
+      <figcaption>40px definite / auto-fit control</figcaption>
+      <div id="control-fit" class="grid definite" data-scene-id="definite-40px-auto-fit-row-reexpand-control"
+           style="grid-template-rows: repeat(auto-fit, minmax(0px, 50%))">
+        <div id="control-fit-item" class="item"></div>
+        <span class="half-height-marker" aria-hidden="true"></span>
+      </div>
+      <div class="note">The definite control isolates auto-fit empty-track collapse.</div>
+    </figure>
+  </main>
+  <script>
+    const ids = ['cyclic-fill', 'cyclic-fit', 'control-fill', 'control-fit'];
+    window.c114Observation = ids.map((id) => {
+      const root = document.getElementById(id);
+      const item = root.querySelector('.item');
+      const marker = root.querySelector('.half-height-marker');
+      const style = getComputedStyle(root);
+      const rect = (element) => {
+        const { x, y, width, height, top, right, bottom, left } = element.getBoundingClientRect();
+        return { x, y, width, height, top, right, bottom, left };
+      };
+      return {
+        id,
+        sceneId: root.dataset.sceneId,
+        authoredRows: root.style.gridTemplateRows,
+        computed: {
+          width: style.width,
+          height: style.height,
+          boxSizing: style.boxSizing,
+          gridTemplateColumns: style.gridTemplateColumns,
+          gridTemplateRows: style.gridTemplateRows,
+          rowGap: style.rowGap,
+          minHeight: style.minHeight,
+          maxHeight: style.maxHeight,
+        },
+        rootRect: rect(root),
+        itemRect: rect(item),
+        markerRect: rect(marker),
+        directInFlowChildCount: Array.from(root.children).filter((child) => getComputedStyle(child).position === 'static').length,
+      };
+    });
+  </script>
+</body>
+</html>
