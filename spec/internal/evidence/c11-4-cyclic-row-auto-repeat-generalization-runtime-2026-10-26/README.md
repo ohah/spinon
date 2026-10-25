@@ -39,6 +39,7 @@ Android PixelCopy는 scene당 5개 RGBA 표본, 총 **20/20 exact**다. iOS Simu
 
 - [Android AVD · max-content auto-fill](./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T182325255Z-dd43faa6/cyclic-max-content-auto-fill-prefix-suffix.png)
 - [iOS Simulator · max-content auto-fill](./ios-simulator-c114-cyclic-percent-tracks-ios-simulator-20261025T182411249Z-0b566316/cyclic-max-content-auto-fill-prefix-suffix.png)
+- [PR #635 inline screenshot render check](./pr-635-image-render-check.json)
 
 ## 검증과 fixture artifact 경계
 
