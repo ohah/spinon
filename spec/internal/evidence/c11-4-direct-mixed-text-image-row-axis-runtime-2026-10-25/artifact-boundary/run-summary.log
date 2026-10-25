@@ -1,0 +1,18 @@
+{
+  "product": {
+    "archiveBytes": 75190888,
+    "archiveSha256": "31571769b42aa332e9d0b774c7f24b540e9588436a2eed38bd4d14fada1fb87b",
+    "sceneMarkers": 0,
+    "sceneCount": 4,
+    "fixtureAbiDefinedSymbolPresent": false,
+    "candidateRustRuntimeSourceSymbolPresent": false
+  },
+  "fixtureTest": {
+    "archiveBytes": 78436304,
+    "archiveSha256": "f131d12d46d37d4c19adea449b75c8c6f62600990f26d4d7d06aca8c1604db04",
+    "sceneMarkers": 4,
+    "sceneCount": 4,
+    "fixtureAbiDefinedSymbolPresent": true,
+    "candidateRustRuntimeSourceSymbolPresent": false
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schemaVersion": 1,
+  "reportSemantics": "Last successful scan; a later failed attempt leaves this report unchanged.",
+  "runDirectory": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015232Z-4628ce31",
+  "sourceRevision": "dde1a4b1c345e88db47b0ed213bb39d006eff9ef",
+  "stagedDiffSha256": "712ac65c7477734aaeb79cb4aada243efc69ffc9dda0751144f399261db79304",
+  "stagedDiffExcludedGeneratedPaths": [
+    "artifact-boundary.json",
+    "runs/**"
+  ],
+  "sceneIds": [
+    "direct-row-min-content-forward",
+    "direct-row-min-content-reversed",
+    "direct-row-max-content-forward",
+    "direct-row-max-content-reversed"
+  ],
+  "ffiFixtureSymbol": "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+  "rustRuntimeSourceSymbolSubstring": "mixed_direct_text_image_intrinsic_rows::runtime_source",
+  "targetDirectory": "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target",
+  "llvmNmCommand": [
+    "<rust-sysroot>/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm"
+  ],
+  "llvmNmVersion": "llvm-nm, compatible with GNU nm",
+  "rustcVersion": "rustc 1.96.1 (31fca3adb 2026-06-26)\nbinary: rustc\ncommit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd\ncommit-date: 2026-06-26\nhost: aarch64-apple-darwin\nrelease: 1.96.1\nLLVM version: 22.1.2",
+  "results": {
+    "product": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015232Z-4628ce31/product-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015232Z-4628ce31/symbols-product.txt",
+      "archivePath": "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 75190888,
+      "archiveSha256": "31571769b42aa332e9d0b774c7f24b540e9588436a2eed38bd4d14fada1fb87b",
+      "sceneMarkerPresence": {
+        "direct-row-min-content-forward": false,
+        "direct-row-min-content-reversed": false,
+        "direct-row-max-content-forward": false,
+        "direct-row-max-content-reversed": false
+      },
+      "allSceneMarkersPresent": false,
+      "anySceneMarkerPresent": false,
+      "fixtureAbiTextPresent": false,
+      "fixtureAbiDefinedSymbolPresent": false,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": []
+    },
+    "fixtureTest": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015232Z-4628ce31/fixtureTest-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/artifact-boundary/runs/artifact-boundary-20261025T015232Z-4628ce31/symbols-fixtureTest.txt",
+      "archivePath": "build/spinon/c11-4-direct-mixed-row-axis-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 78436304,
+      "archiveSha256": "f131d12d46d37d4c19adea449b75c8c6f62600990f26d4d7d06aca8c1604db04",
+      "sceneMarkerPresence": {
+        "direct-row-min-content-forward": true,
+        "direct-row-min-content-reversed": true,
+        "direct-row-max-content-forward": true,
+        "direct-row-max-content-reversed": true
+      },
+      "allSceneMarkersPresent": true,
+      "anySceneMarkerPresent": true,
+      "fixtureAbiTextPresent": true,
+      "fixtureAbiDefinedSymbolPresent": true,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": [
+        "0000000000005208 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ]
+    }
+  }
+}
