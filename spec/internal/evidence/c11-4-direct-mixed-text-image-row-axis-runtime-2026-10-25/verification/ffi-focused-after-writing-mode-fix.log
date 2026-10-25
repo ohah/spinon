@@ -1,0 +1,12 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.95s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-f822121069dc3a19)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::mixed_direct_text_image_intrinsic_rows::tests::exposes_only_four_direct_mixed_intrinsic_row_scenes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 123 filtered out; finished in 0.00s

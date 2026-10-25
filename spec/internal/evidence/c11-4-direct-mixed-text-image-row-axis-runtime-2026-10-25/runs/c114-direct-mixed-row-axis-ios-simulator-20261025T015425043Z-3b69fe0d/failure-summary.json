@@ -1,0 +1,87 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d",
+  "target": "ios-simulator",
+  "requestedCommand": "node spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs ios-simulator 00D4D861-56AA-4552-9181-58D88770EDDA",
+  "requestedSourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+  "headAtRunStart": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+  "sourceInputPathsWereCleanImmediatelyBeforeRun": true,
+  "simulator": {
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "name": "Spinon-C114-Cyclic-Image-Span",
+    "runtime": "iOS 26.2",
+    "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+    "initialState": "Shutdown",
+    "finalState": "Shutdown",
+    "otherDevicesBootedBeforeAndAfter": [
+      "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D"
+    ]
+  },
+  "build": {
+    "command": "mise exec -- bun run build:ios-sim",
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": "1"
+    },
+    "result": "succeeded",
+    "appExecutable": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "appSha256": "f044c9ceb1cd496127fe90eada2e5a99a83ba84c39d1a77eae5557d41df6926a",
+    "log": {
+      "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/ios-build.log",
+      "bytes": 97863,
+      "sha256": "308babc1c1f29ff80da8029e6fc9877658a1ba6a8cd4a35e4efa0c6700bcba58"
+    }
+  },
+  "sceneMatrix": {
+    "requested": [
+      "direct-row-min-content-forward",
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ],
+    "attempted": [
+      "direct-row-min-content-forward"
+    ],
+    "passed": [],
+    "completed": 0,
+    "notStarted": [
+      "direct-row-min-content-reversed",
+      "direct-row-max-content-forward",
+      "direct-row-max-content-reversed"
+    ]
+  },
+  "failure": {
+    "kind": "fixture source rejected by CSS property parser; no track trace produced",
+    "detail": "direct-row-min-content-forward: Unsupported property declaration: writing-mode, UnknownProperty; runtime then emitted TRACE_MISSING and GRID_ASSERTION_ERROR with status=-11.",
+    "logs": {
+      "ios-install.log": {
+        "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/ios-install.log",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "ios-launch-direct-row-min-content-forward.log": {
+        "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/ios-launch-direct-row-min-content-forward.log",
+        "bytes": 27,
+        "sha256": "624a52fcbb4345055e89b47e5b1fb268dedf786fd0d797de2efbec5da58549e7"
+      },
+      "ios-runtime-direct-row-min-content-forward.log": {
+        "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/ios-runtime-direct-row-min-content-forward.log",
+        "bytes": 3953,
+        "sha256": "cf856b42b957694ce56569fb045727fad6183869c756478a8981c4bd87de39e0"
+      }
+    }
+  },
+  "harnessCleanup": {
+    "targetSimulatorShutdownByHarness": true,
+    "shutdownScope": "target UDID only"
+  },
+  "sourceChangesObservedAfterRun": [
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs",
+    "plan/c11-4-mixed-direct-text-image-intrinsic-row-axis.md"
+  ],
+  "currentTrackedDiffSha256": "8dd4625b1d15588df4d056bd8ee5f4559ff5a15589be119bfce2ac7bf4348ed2",
+  "finalSimulatorJsonWritten": false,
+  "browserUsed": false
+}

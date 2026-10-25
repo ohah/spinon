@@ -1,0 +1,55 @@
+{
+  "schemaVersion": 1,
+  "testedSourceRevision": {
+    "baseCommit": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+    "trackedPatchSha256": "8dd4625b1d15588df4d056bd8ee5f4559ff5a15589be119bfce2ac7bf4348ed2"
+  },
+  "postWritingModeFixSourceChange": "The row FFI source no longer authors writing-mode; the computed root default remains checked.",
+  "checks": [
+    {
+      "command": "cargo fmt --all -- --check",
+      "exitCode": 0,
+      "log": "fmt-after-writing-mode-fix.log"
+    },
+    {
+      "command": "cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test exposes_four_fixed_mixed_text_image_intrinsic_row_scenes",
+      "exitCode": 0,
+      "passed": 1,
+      "log": "runtime-focused-after-writing-mode-fix.log"
+    },
+    {
+      "command": "cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test exposes_only_four_direct_mixed_intrinsic_row_scenes",
+      "exitCode": 0,
+      "passed": 1,
+      "log": "ffi-focused-after-writing-mode-fix.log"
+    },
+    {
+      "command": "cargo clippy --locked -p spinon-runtime --all-targets --features c11-4-grid-track-sizing-fixture-test -- -D warnings",
+      "exitCode": 0,
+      "log": "runtime-clippy-after-writing-mode-fix.log"
+    },
+    {
+      "command": "cargo clippy --locked -p spinon-ffi --all-targets --features c04-runtime-gpu-fixture-test -- -D warnings",
+      "exitCode": 0,
+      "log": "ffi-clippy-after-writing-mode-fix.log"
+    }
+  ],
+  "artifactBoundary": "../artifact-boundary/artifact-boundary.json",
+  "simulatorAttempts": {
+    "android": {
+      "sourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+      "passed": 0,
+      "requested": 4,
+      "failure": "Explicit writing-mode declaration rejected as UnknownProperty.",
+      "run": "../runs/c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e/failure-summary.json"
+    },
+    "ios": {
+      "sourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
+      "passed": 0,
+      "requested": 4,
+      "failure": "Explicit writing-mode declaration rejected as UnknownProperty.",
+      "run": "../runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/failure-summary.json"
+    }
+  },
+  "postFixAndroidIosMatrix": "pending"
+}
