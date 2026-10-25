@@ -8,7 +8,7 @@
 |---:|---|---|---|
 | 1 | plan PR에서 모든 근거 fixture·evidence를 원격에서 열 수 있는가? | PASS, PR 구성 시 파일 목록 재확인 | 계획은 fixture, 전체 evidence directory, manifest, lifecycle 및 conformance 연결을 같은 PR에 포함하도록 한다. |
 | 2 | 규범 근거와 Chrome 결과를 분리했는가? | PASS | CSS Grid 2025 CRD §7.2.1/§7.2.3.2/§11 및 CSS Sizing §2를 독립 계산 기준으로 둔다. |
-| 3 | max-content block size가 auto-repeat count 시점에서 indefinite임을 다루는가? | PASS | 기대 count는 최초 1회이며 min track이 definite 0px이다. |
+| 3 | max-content block size가 auto-repeat count 시점에서 indefinite임을 다루는가? | PASS | `max-content`는 indefinite이고 root `min-height:auto`도 definite minimum size가 아니므로 Grid §7.2.3.2에 따라 count는 1회다. |
 | 4 | cyclic percentage가 intrinsic 계산 중 auto처럼 동작하는가? | PASS | 16px intrinsic height를 얻은 뒤 final percentage basis로 사용한다. |
 | 5 | final percentage 해소 후 count를 잘못 재확장하지 않는가? | PASS | Taffy row rerun은 기존 count를 재사용하고 expected count는 1→1이다. |
 | 6 | definite control의 count/track 산술이 독립적인가? | PASS | 40px / 50% = 20px, 두 row `[20,20]`이다. |
@@ -18,8 +18,8 @@
 | 10 | hash가 관측·기대값·입력 파일을 묶는가? | PASS | fixture, README, raw JSON, screenshot, expectation JSON, lifecycle을 SHA-256 manifest로 관리한다. |
 | 11 | opt-in target gate가 이외 typed style/placement를 거부하는가? | PASS | root/item LayoutStyle, GridContainerInput, tracks, flow, placement, geometry, children의 exact 값과 mutation controls를 고정했다. |
 | 12 | definite control이 일반 경로와 fixture gate로 혼동되지 않는가? | PASS | 일반 definite-axis admission과 opt-in trace activation을 분리한다. |
-| 13 | row의 semantic phase 이름과 의미가 분명한가? | PASS | `IntrinsicMaxContent`/`FinalDefinite` 이름 및 축 중립적 basis 설명을 적었다. |
-| 14 | trace axis와 같은 pass provenance가 runtime 출력에 맞는가? | PASS | Taffy `AbstractAxis::Block` → `LayoutGridTrackSizingAxis::Rows`; phase/count/basis/track snapshot을 동일 pass에서 검사한다. |
+| 13 | row의 semantic phase와 root `min-height` 초기값, percentage basis provenance가 분명한가? | PASS | fixture는 `min-height`를 선언하지 않으며 CSS 초기 `auto`를 typed `LayoutDimension::Auto`로 요구한다. Chrome CSSOM의 관측 `0px`를 authored fixed zero로 쓰지 않고 첫 basis `null`과 재실행 `16px`을 구분한다. |
+| 14 | trace axis와 같은 pass provenance가 runtime 출력에 맞는가? | PASS | Taffy `AbstractAxis::Block` → `LayoutGridTrackSizingAxis::Rows`; phase/count/basis/track snapshot을 동일 pass에서 검사한다. `Auto` typed min-height에서는 `axis_min_size` fallback이 없어 기존 `percentageBasis`가 null→16px을 구분한다. |
 | 15 | fail-closed mutation에 입력·owner·typed error가 있는가? | PASS | 11개 구체 mutation과 `InvalidGridTrackList { property: "grid-template-rows" }`를 표에 고정했다. |
 | 16 | 새 일반 row algorithm 대신 검증된 rerun을 재사용하는가? | PASS | indefinite parent + percentage-row rerun을 재사용하고 row re-expansion은 추가하지 않는다. |
 | 17 | 병렬 lane 경계에 파일 충돌이 없는가? | PASS | layout/Taffy, 별도 tests, FFI scene, Android/iOS 경로를 분리하고 shared dispatcher/report는 단독 소유한다. |

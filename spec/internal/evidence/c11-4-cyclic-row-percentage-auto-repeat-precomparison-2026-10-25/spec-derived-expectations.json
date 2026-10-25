@@ -35,6 +35,11 @@
       "canonicalObservationSceneSha256": "1840d5558351d8ea66bde3283681cc4414bf3b7dece75d7e106dabf58b10f774",
       "input": {
         "height": "max-content",
+        "minHeight": {
+          "authored": "not specified",
+          "cssInitialValue": "auto",
+          "expectedTypedLayoutDimension": "Auto"
+        },
         "gridTemplateRows": "repeat(auto-fill, minmax(0px, 50%))",
         "rootContentWidthPx": 24,
         "itemContentSizePx": {
@@ -70,6 +75,11 @@
       "canonicalObservationSceneSha256": "8fccc8e618ec79d87a0d2f4c4de29d05125c31c2e93b800933ff86b03c6440bb",
       "input": {
         "height": "40px",
+        "minHeight": {
+          "authored": "not specified",
+          "cssInitialValue": "auto",
+          "expectedTypedLayoutDimension": "Auto"
+        },
         "gridTemplateRows": "repeat(auto-fill, minmax(0px, 50%))",
         "rootContentWidthPx": 24,
         "itemContentSizePx": {
