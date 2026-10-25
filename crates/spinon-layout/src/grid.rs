@@ -863,25 +863,37 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
     let Some(item) = input.nodes.iter().find(|candidate| candidate.id == item_id) else {
         return false;
     };
-    let zero_edges = crate::LayoutEdges {
-        top: crate::LayoutLengthPercentage::ZERO,
-        right: crate::LayoutLengthPercentage::ZERO,
-        bottom: crate::LayoutLengthPercentage::ZERO,
-        left: crate::LayoutLengthPercentage::ZERO,
+    let fixture_width = match node.style.width {
+        LayoutDimension::MaxContent => LayoutDimension::MaxContent,
+        LayoutDimension::Fixed(40.0) if allow_definite_control => LayoutDimension::Fixed(40.0),
+        _ => return false,
     };
-    let zero_border = crate::LayoutBorder::default();
-    let zero_gap = crate::LayoutGap::default();
+    let expected_root_style = LayoutStyle {
+        display: LayoutDisplay::Grid,
+        width: fixture_width,
+        flex_direction: crate::FlexDirection::Row,
+        flex_shrink: 1.0,
+        align_content: Some(crate::LayoutAlignContent::Position {
+            position: crate::ContentAlignmentPosition::Start,
+            safety: None,
+        }),
+        justify_content: crate::LayoutJustifyContent::Position {
+            position: crate::JustifyContentPosition::Start,
+            safety: None,
+        },
+        ..LayoutStyle::default()
+    };
+    let expected_item_style = LayoutStyle {
+        display: LayoutDisplay::Block,
+        width: LayoutDimension::Fixed(24.0),
+        height: LayoutDimension::Fixed(16.0),
+        flex_direction: crate::FlexDirection::Row,
+        flex_shrink: 1.0,
+        align_content: Some(crate::LayoutAlignContent::Normal),
+        ..LayoutStyle::default()
+    };
     let repeat = container.columns_auto_repeat.as_ref();
-    let permitted_width = node.style.width == LayoutDimension::MaxContent
-        || (allow_definite_control && node.style.width == LayoutDimension::Fixed(40.0));
-    node.style.display == LayoutDisplay::Grid
-        && permitted_width
-        && node.style.min_width == LayoutDimension::Auto
-        && node.style.max_width == LayoutDimension::Auto
-        && node.style.margin == zero_edges
-        && node.style.padding == zero_edges
-        && node.style.border == zero_border
-        && node.style.gap == zero_gap
+    node.style == expected_root_style
         && container.placement_mode == crate::GridPlacementMode::TrackSizing
         && container.columns.len() == 1
         && matches!(
@@ -906,13 +918,7 @@ fn fixture_cyclic_percentage_auto_repeat_scene(
         && container.auto_rows == crate::GridAutoRows::Auto
         && container.auto_columns == crate::GridAutoColumns::Auto
         && item.children.is_empty()
-        && item.style.display == LayoutDisplay::Block
-        && item.style.width == LayoutDimension::Fixed(24.0)
-        && item.style.height == LayoutDimension::Fixed(16.0)
-        && item.style.margin == zero_edges
-        && item.style.padding == zero_edges
-        && item.style.border == zero_border
-        && item.style.gap == zero_gap
+        && item.style == expected_item_style
         && input.grid_items.is_empty()
         && input.positioning.len() == 2
         && input
