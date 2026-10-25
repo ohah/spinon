@@ -126,13 +126,11 @@ pub(super) fn validate_item_style(
             && placement.row_end == ComputedCssGridPlacement::Auto
     });
     let (justify_self, align_self) = match scene.grid {
-        SceneGrid::DirectMinContentRow | SceneGrid::DirectMaxContentRow => match item.kind {
-            ItemKind::Text(_) => ("stretch", "start"),
-            ItemKind::Image { .. } => ("start", "start"),
-        },
         SceneGrid::SpanningMultiTrack
         | SceneGrid::DirectMinContent
-        | SceneGrid::DirectMaxContent => ("auto", "auto"),
+        | SceneGrid::DirectMaxContent
+        | SceneGrid::DirectMinContentRow
+        | SceneGrid::DirectMaxContentRow => ("auto", "auto"),
     };
     if !placement
         || style.layout_position != ComputedCssPosition::Static
