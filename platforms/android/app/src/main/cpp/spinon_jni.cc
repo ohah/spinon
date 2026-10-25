@@ -663,6 +663,29 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC132ScrollHost(
 }
 
 extern "C" JNIEXPORT jlong JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC125StickyHost(
+    JNIEnv *, jclass) {
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_5_sticky_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    __android_log_print(ANDROID_LOG_ERROR, kTag,
+                        "SPINON_C125_HOST_ERROR=%s", output.data());
+    return 0;
+  }
+  __android_log_print(ANDROID_LOG_INFO, kTag,
+                      "SPINON_C125_HOST=%s", output.data());
+  return static_cast<jlong>(reinterpret_cast<uintptr_t>(host));
+#else
+  __android_log_print(ANDROID_LOG_ERROR, kTag,
+                      "SPINON_C125_DISABLED fixture-test feature is off");
+  return 0;
+#endif
+}
+
+extern "C" JNIEXPORT jlong JNICALL
 Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeCreateC133GestureHost(
     JNIEnv *, jclass, jint scenario_id) {
 #if defined(SPINON_ENABLE_C133_GESTURE_FIXTURE_TEST) && \
@@ -1474,6 +1497,30 @@ Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC132ScrollFixture(
   return ToByteArray(env, report);
 #else
   return ToByteArray(env, "status=-1 C13.2 fixture-test feature is off");
+#endif
+}
+
+extern "C" JNIEXPORT jbyteArray JNICALL
+Java_dev_spinon_bootstrap_C0410RuntimeGpuDemo_nativeEvalC125StickyFixture(
+    JNIEnv *env, jclass, jlong host_handle) {
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(host_handle));
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_5_sticky_fixture(
+      host, 10000, output.data(), output.size());
+  const std::string report = "status=" + std::to_string(status) + " " + output.data();
+  constexpr size_t kLogChunkSize = 900;
+  for (size_t offset = 0, part = 0; offset < report.size(); offset += kLogChunkSize, ++part) {
+    const size_t length = std::min(kLogChunkSize, report.size() - offset);
+    __android_log_print(status == 0 ? ANDROID_LOG_INFO : ANDROID_LOG_ERROR,
+                        kTag, "SPINON_C125_EVAL part=%zu %.*s", part,
+                        static_cast<int>(length), report.data() + offset);
+  }
+  return ToByteArray(env, report);
+#else
+  return ToByteArray(env, "status=-1 C12.5 fixture-test feature is off");
 #endif
 }
 

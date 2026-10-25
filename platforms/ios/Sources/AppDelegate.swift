@@ -61,6 +61,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             || arguments.contains("--spinon-c131-stacking-descendant-clip")
             || arguments.contains("--spinon-c131-overflow-clip")
             || arguments.contains("--spinon-c131-overflow-clip-border")
+            || arguments.contains("--spinon-c125-sticky")
             || arguments.contains("--spinon-c132-scroll")
             || arguments.contains("--spinon-c133-scroll-gesture")
             || arguments.contains("--spinon-c133-tap-probe")

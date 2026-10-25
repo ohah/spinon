@@ -31,6 +31,8 @@ pub use presented_frame_registry::{
     RuntimeFrameId, RuntimePresentationToken, RuntimeSurfaceGeneration,
 };
 
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+pub use scroll::RuntimeStickyConstraint;
 pub use scroll::{
     RuntimeOverscrollBehavior, RuntimeScrollClipLayer, RuntimeScrollContainer,
     RuntimeScrollInputPolicy, RuntimeScrollRenderMetadata,

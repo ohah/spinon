@@ -5,6 +5,7 @@ edition = "2024"
 publish = false
 
 [features]
+c12-5-sticky-fixture-test = []
 c13-3-gesture-fixture-test = []
 
 [dependencies]

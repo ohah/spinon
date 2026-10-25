@@ -24,6 +24,8 @@ mod deep_graph_tests;
 mod overflow_clip;
 mod reserve;
 pub(crate) mod scroll;
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+mod sticky;
 #[cfg(test)]
 mod tests;
 
@@ -149,6 +151,8 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
     let mut visited = BTreeSet::new();
     let mut next_tree_order = 0_u64;
     let mut visible_node_count = 0_usize;
+    #[cfg(feature = "c12-5-sticky-fixture-test")]
+    let mut sticky_node_count = 0_usize;
     let mut pending = Vec::new();
     reserve.reserve(&mut pending, 1, "document traversal")?;
     pending.push(PendingNode {
@@ -212,12 +216,38 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                 .checked_add(1)
                 .ok_or(StyleRenderError::PaintOrderOverflow)?;
             let position = style.layout_position;
-            if position == ComputedCssPosition::Sticky {
+            if position == ComputedCssPosition::Sticky
+                && (!cfg!(feature = "c12-5-sticky-fixture-test")
+                    || styles.profile != ComputedStyleProfile::RuntimeBlockFlexOverflowClipV1)
+            {
                 return Err(StyleRenderError::UnsupportedComputedValue {
                     node: node.id(),
                     property: "position",
                     value: "sticky".to_owned(),
                 });
+            }
+            #[cfg(feature = "c12-5-sticky-fixture-test")]
+            if position == ComputedCssPosition::Sticky {
+                sticky_node_count = sticky_node_count
+                    .checked_add(1)
+                    .ok_or(StyleRenderError::PaintOrderOverflow)?;
+                if sticky_node_count > 1 {
+                    return Err(StyleRenderError::UnsupportedComputedValue {
+                        node: node.id(),
+                        property: "position",
+                        value: "multiple sticky boxes are outside C12.5".to_owned(),
+                    });
+                }
+                if document
+                    .children(work.handle)
+                    .is_some_and(|mut children| children.next().is_some())
+                {
+                    return Err(StyleRenderError::UnsupportedComputedValue {
+                        node: node.id(),
+                        property: "position",
+                        value: "sticky box must be a leaf".to_owned(),
+                    });
+                }
             }
             let is_flex_item = work.parent_is_flex
                 && !matches!(
@@ -469,7 +499,22 @@ fn build_runtime_render_snapshot_with_scroll_state_and_reserve<R: FallibleReserv
                 .with_hit_test_clip(hit_test_clip),
         );
         let metadata =
-            RuntimeScrollRenderMetadata::new(frame_css_px, scroll_ancestors, clip_layers);
+            RuntimeScrollRenderMetadata::new(frame_css_px, scroll_ancestors.clone(), clip_layers);
+        #[cfg(feature = "c12-5-sticky-fixture-test")]
+        let metadata = if style.layout_position == ComputedCssPosition::Sticky {
+            let context = sticky::StickyLayoutContext {
+                parent_by_node: &parent_by_node,
+                styles: &styles_by_node,
+                output,
+                scroll_containers: &scroll_containers,
+                scroll_offsets: &scroll_offsets,
+                scroll_ancestors: &scroll_ancestors,
+            };
+            let constraint = sticky::sticky_constraint_for_node(node_id, style, &context, reserve)?;
+            metadata.with_sticky_constraint(constraint)
+        } else {
+            metadata
+        };
         #[cfg(feature = "c13-3-gesture-fixture-test")]
         let metadata = if styles.profile == ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1 {
             metadata.with_touch_action_chain(touch_action_chain_for_node(
@@ -623,6 +668,7 @@ fn stacking_context_level(
         ComputedCssPosition::Fixed => Ok(Some(integer.unwrap_or(0))),
         ComputedCssPosition::Relative | ComputedCssPosition::Absolute => Ok(integer),
         ComputedCssPosition::Static if is_flex_item => Ok(integer),
-        ComputedCssPosition::Static | ComputedCssPosition::Sticky => Ok(None),
+        ComputedCssPosition::Sticky => Ok(Some(integer.unwrap_or(0))),
+        ComputedCssPosition::Static => Ok(None),
     }
 }

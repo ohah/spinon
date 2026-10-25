@@ -172,6 +172,13 @@ case "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" in
     exit 2
     ;;
 esac
+case "${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0}" in
+  0|1) ;;
+  *)
+    echo "SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST는 0 또는 1이어야 합니다." >&2
+    exit 2
+    ;;
+esac
 case "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" in
   0|1) ;;
   *)
@@ -227,6 +234,11 @@ fi
 if [[ "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" == "1" \
       && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
   echo "C13.2 scroll fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
+  exit 2
+fi
+if [[ "${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0}" == "1" \
+      && "${SPINON_ENABLE_C04_RUNTIME_GPU:-0}" != "1" ]]; then
+  echo "C12.5 sticky fixture는 C04.10 runtime GPU fixture와 함께 켜야 합니다." >&2
   exit 2
 fi
 if [[ "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" == "1" \
@@ -290,6 +302,7 @@ for fixture_flag in \
   "${SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST:-0}" \
   "${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" \
+  "${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0}" \
   "${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0}" \
@@ -357,6 +370,9 @@ fi
 if [[ "${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c13-2-scroll-fixture-test
 fi
+if [[ "${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0}" == "1" ]]; then
+  append_ffi_feature c12-5-sticky-fixture-test
+fi
 if [[ "${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0}" == "1" ]]; then
   append_ffi_feature c13-3-gesture-fixture-test
 fi
@@ -402,7 +418,7 @@ fi
 if [[ "${SPINON_ENABLE_C124_WORKER_STACK_RESIDENCY_TEST:-0}" == "1" ]]; then
   append_ffi_feature c12-4-worker-stack-residency-test
 fi
-echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c04_12_root_html_block_paint_fixture=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0} c15_3_wgpu_glyph_paint_fixture=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
+echo "SPINON_IOS_NATIVE_FEATURES ffi=${ffi_features:-none} c04_12_root_html_block_paint_fixture=${SPINON_ENABLE_C04_12_ROOT_HTML_BLOCK_PAINT_FIXTURE_TEST:-0} c11_grid_cpp=${c11_grid_surface_pixel_cpp_flag} c13_1_fixture=${SPINON_ENABLE_C13_1_OVERFLOW_CLIP_FIXTURE_TEST:-0} c13_2_fixture=${SPINON_ENABLE_C13_2_SCROLL_FIXTURE_TEST:-0} c12_5_sticky_fixture=${SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST:-0} c13_3_fixture=${SPINON_ENABLE_C13_3_GESTURE_FIXTURE_TEST:-0} c14_1_app_fixture=${SPINON_ENABLE_C14_1_APP_FIXTURE_TEST:-0} c14_2_app_fixture=${SPINON_ENABLE_C14_2_APP_FIXTURE_TEST:-0} c14_3_app_fixture=${SPINON_ENABLE_C14_3_APP_FIXTURE_TEST:-0} c18_1_image_paint_fixture=${SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST:-0} c18_2_alpha_image_fixture=${SPINON_ENABLE_C18_2_ALPHA_IMAGE_COMPOSITING_FIXTURE_TEST:-0} c18_3_object_fit_position_fixture=${SPINON_ENABLE_C18_3_OBJECT_FIT_POSITION_FIXTURE_TEST:-0} c18_4_async_image_fixture=${SPINON_ENABLE_C18_4_ASYNC_IMAGE_FIXTURE_TEST:-0} c19_2_box_paint_opacity_fixture=${SPINON_ENABLE_C19_2_BOX_PAINT_OPACITY_FIXTURE_TEST:-0} c15_3_wgpu_glyph_paint_fixture=${SPINON_ENABLE_C15_3_WGPU_GLYPH_PAINT_FIXTURE_TEST:-0}"
 
 case "$platform_name" in
   iphonesimulator)

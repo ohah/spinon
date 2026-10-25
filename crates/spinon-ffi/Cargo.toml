@@ -37,7 +37,18 @@ c12-4-metal-surface-readback-test = ["c04-runtime-gpu-fixture-test"]
 c11-grid-metal-surface-pixels-test = ["c04-runtime-gpu-fixture-test"]
 c12-4-worker-stack-residency-test = ["c04-runtime-gpu-fixture-test", "spinon-runtime/c12-4-worker-stack-residency-test"]
 c13-1-overflow-clip-fixture-test = ["c04-runtime-gpu-fixture-test", "dep:sha2"]
-c13-2-scroll-fixture-test = ["c04-runtime-gpu-fixture-test", "dep:spinon-core"]
+c13-2-scroll-fixture-test = [
+    "c04-runtime-gpu-fixture-test",
+    "dep:spinon-core",
+    "spinon-runtime/c19-2-box-paint-opacity-fixture-test",
+]
+c12-5-sticky-fixture-test = [
+    "c04-runtime-gpu-fixture-test",
+    "c13-2-scroll-fixture-test",
+    "dep:spinon-core",
+    "dep:spinon-layout",
+    "spinon-runtime/c12-5-sticky-fixture-test",
+]
 c13-3-gesture-fixture-test = [
     "c04-runtime-gpu-fixture-test",
     "dep:spinon-core",

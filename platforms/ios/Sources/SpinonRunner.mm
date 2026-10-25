@@ -1065,6 +1065,46 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
 #endif
 }
 
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
++ (uint64_t)createRuntimeGpuHostWithC12_5StickyFixture {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+  std::array<char, 1024> output{};
+  SpinonRuntimeGpuHost *host = spinon_runtime_gpu_host_new_c12_5_sticky_fixture(
+      output.data(), output.size());
+  if (host == nullptr) {
+    os_log_error(OS_LOG_DEFAULT, "SPINON_C125_HOST_ERROR=%{public}s", output.data());
+    return 0;
+  }
+  os_log(OS_LOG_DEFAULT, "SPINON_C125_HOST=%{public}s", output.data());
+  return static_cast<uint64_t>(reinterpret_cast<uintptr_t>(host));
+#else
+  os_log_error(OS_LOG_DEFAULT,
+               "SPINON_C125_DISABLED enable C04 runtime GPU fixture and C12.5 fixture test");
+  return 0;
+#endif
+}
+
++ (NSString *)evalRuntimeGpuC12_5StickyFixture:(uint64_t)handle {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
+    SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 32768> output{};
+  const int32_t status = spinon_runtime_gpu_host_eval_c12_5_sticky_fixture(
+      host, 10000, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C125_EVAL", report);
+  return report;
+#else
+  (void)handle;
+  return @"status=-90 feature-disabled";
+#endif
+}
+#endif
+
 + (uint64_t)createRuntimeGpuHostWithC13_2SurfacePixelReadbackFixture {
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST) && \
     SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST && \
@@ -2407,6 +2447,30 @@ NSUInteger C131LogHitTestSamples(NSString *report, NSUInteger expectedCount,
   return @"status=-90 feature-disabled";
 #endif
 }
+
+#if defined(SPINON_ENABLE_C125_STICKY_FIXTURE_TEST) && \
+    SPINON_ENABLE_C125_STICKY_FIXTURE_TEST
++ (NSString *)requestRuntimeGpuC12_5SurfacePixels:(uint64_t)handle
+                                            sampleXY:(const uint32_t *)sampleXY
+                                         sampleCount:(NSUInteger)sampleCount {
+#if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU
+  auto *host = reinterpret_cast<SpinonRuntimeGpuHost *>(
+      static_cast<uintptr_t>(handle));
+  std::array<char, 1024> output{};
+  const int32_t status = spinon_runtime_gpu_host_request_c12_5_surface_pixels_for_test(
+      host, sampleXY, sampleCount, output.data(), output.size());
+  NSString *report = C0410Report(status, output);
+  C0410LogReport(status == 0 ? OS_LOG_TYPE_INFO : OS_LOG_TYPE_ERROR,
+                 "SPINON_C125_METAL_PIXEL_REQUEST", report);
+  return report;
+#else
+  (void)handle;
+  (void)sampleXY;
+  (void)sampleCount;
+  return @"status=-90 feature-disabled";
+#endif
+}
+#endif
 
 #if defined(SPINON_ENABLE_C04_RUNTIME_GPU) && SPINON_ENABLE_C04_RUNTIME_GPU && \
     defined(SPINON_ENABLE_C18_1_IMAGE_PAINT_FIXTURE_TEST) && \

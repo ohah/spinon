@@ -20,6 +20,8 @@ mod c11_3_2;
 mod c11_3_3;
 mod c11_4;
 mod c12;
+#[cfg(feature = "c12-5-sticky-fixture-test")]
+mod c12_5_sticky;
 #[cfg(feature = "c13-1-overflow-clip-fixture-test")]
 mod c13_1;
 #[cfg(feature = "c13-2-scroll-fixture-test")]

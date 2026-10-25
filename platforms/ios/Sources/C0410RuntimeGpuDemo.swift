@@ -5631,6 +5631,24 @@ private struct C132MetalPixelSample {
     let rgba: [UInt32]
 }
 
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+private struct C125MetalPixelSample {
+    let id: String
+    let xCssPx: UInt32
+    let yCssPx: UInt32
+    let rgba: [UInt32]
+}
+
+private enum C125MetalPixelRun {
+    static let fixedSamples = [
+        C125MetalPixelSample(id: "section-at-content-edge", xCssPx: 200, yCssPx: 78,
+                             rgba: [245, 245, 245, 255]),
+        C125MetalPixelSample(id: "section-after", xCssPx: 240, yCssPx: 100,
+                             rgba: [204, 221, 238, 255]),
+    ]
+}
+#endif
+
 private struct C132MetalPixelRun {
     let runID: String
     let samples: [C132MetalPixelSample]
@@ -7473,6 +7491,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
     private let c153GlyphPaintProbeRequested = false
 #endif
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+    private let c125StickyFixtureRequested = ProcessInfo.processInfo.arguments
+        .contains("--spinon-c125-sticky")
+#else
+    private let c125StickyFixtureRequested = false
+#endif
     private let c132ScrollFixtureRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c132-scroll")
     private let c192BoxPaintOpacityArgumentRequested = ProcessInfo.processInfo.arguments
@@ -7565,6 +7589,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c132MetalPixelRequestPresentationSequence: UInt64?
     private var c132MetalPixelRequestDrawableSize = CGSize.zero
     private var c132MetalPixelRequestFormat = ""
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+    private var c125StickyGeometryAssertionsPassed = false
+    private var c125MetalPixelRequestIssued = false
+    private var c125MetalPixelReadbackFinished = false
+    private var c125MetalPixelRequestGeneration: UInt64?
+    private var c125MetalPixelRequestPresentationSequence: UInt64?
+    private var c125MetalPixelRequestDrawableSize = CGSize.zero
+    private var c125MetalPixelRequestFormat = ""
+#endif
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
     private var imagePaintMetalPixelRequestIssued = false
     private var imagePaintMetalPixelReadbackFinished = false
@@ -7641,6 +7674,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     }
     private var fixedSizeCssFixtureRequested: Bool {
         let selected = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+            || c125StickyFixtureRequested
             || c131CompactSurfaceMatrixRouteRequested || c131OverflowClipProbeRequested
             || c131StackingDescendantClipProbeRequested || c131BorderStripProbeRequested
             || c132ScrollFixtureRequested
@@ -7699,6 +7733,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "SPINON · C13.1 paint/hit border"
             : c131OverflowClipProbeRequested
             ? "SPINON · C13.1 overflow: clip"
+            : c125StickyFixtureRequested
+            ? "SPINON · C12.5 sticky positioning"
             : c132ScrollFixtureRequested
             ? "SPINON · C13.2 scroll state"
             : c133WheelProbeRequested
@@ -7814,6 +7850,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? "static/absolute clip border-strip hit oracle → WGPU Metal · 400×160 CSS px"
             : c131OverflowClipProbeRequested
             ? "V8 overflow: clip·clip margin·positioned escape → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+            : c125StickyFixtureRequested
+            ? "V8 → Stylo → Block/Taffy → sticky·scroll snapshot·paint/hit · 360×260 CSS px"
             : c132ScrollFixtureRequested
             ? "V8 scroll owner·offset·paint/hit → Stylo → Taffy → WGPU Metal · 400×240 CSS px"
             : c133WheelProbeRequested
@@ -8163,6 +8201,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
+                : c125StickyFixtureRequested ? 360
                 : c131StackingDescendantClipProbeRequested ? 540
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                 ? 360 : c131CompactSurfaceMatrixRouteRequested ? 300
@@ -8178,6 +8217,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 800 : c131CompactSurfaceMatrixRouteRequested ? 100
                 : c131BorderStripProbeRequested ? 160
                 : c131StackingDescendantClipProbeRequested ? 128
+                : c125StickyFixtureRequested ? 260
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : fixedSizeCssFixtureRequested ? 240 : 100
         )
@@ -9372,6 +9412,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c131CompactSurfaceMatrixProbeRequested,
             c131CompactHitIdentityGridProbeRequested,
             c131BorderStripProbeRequested,
+            c125StickyFixtureRequested,
             c132ScrollFixtureRequested,
             c133GestureFixtureRequested,
         ]
@@ -9409,6 +9450,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                    && $0 != "--spinon-c131-compact-metal-pixel-centers"
                    && $0 != "--spinon-c131-full-physical-metal-pixels"
                    && $0 != "--spinon-c131-overflow-clip-border"
+                   && $0 != "--spinon-c125-sticky"
                    && $0 != "--spinon-c132-scroll"
                    && $0 != "--spinon-c192-box-paint-opacity"
                    && $0 != "--spinon-c153-glyph-paint"
@@ -9601,7 +9643,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
 #else
         let c153Host: UInt64? = nil
 #endif
-        if let c153Host {
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+        let c125Host: UInt64? = c125StickyFixtureRequested
+            ? SpinonRunner.createRuntimeGpuHostWithC12_5StickyFixture() : nil
+#else
+        let c125Host: UInt64? = nil
+#endif
+        if let c125Host {
+            handle = c125Host
+        } else if let c153Host {
             handle = c153Host
         } else if let imagePaintHost {
             handle = imagePaintHost
@@ -9739,10 +9789,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
             : c153HostDocumentTextPaintArgumentRequested ? 320
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
-                ? 360 : c131StackingDescendantClipProbeRequested
+                ? 360 : c125StickyFixtureRequested ? 360
+                : c131StackingDescendantClipProbeRequested
                 ? 540 : c131CompactSurfaceMatrixRouteRequested
             ? 300 : c131BorderStripProbeRequested
-            ? 400 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
+            ? 400 : c125StickyFixtureRequested ? 360
+            : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400 : c131OverflowClipProbeRequested
             ? 320 : c122AbsoluteBlockProbeRequested
             || c123FixedPositionProbeRequested
             || c1122GridAutoPlacementProbeRequested
@@ -9752,7 +9804,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let viewportHeight: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested ? 88
             : imageObjectFitPositionProbeRequested ? 72 : 40
-            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240 : c131StackingDescendantClipProbeRequested
+            : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
+            : c125StickyFixtureRequested ? 260 : c131StackingDescendantClipProbeRequested
             ? 128 : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
             ? 160 : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240 : c131OverflowClipProbeRequested
@@ -9769,6 +9822,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : rootHtmlBlockPaintProbeRequested || rootHtmlDefaultRenderRequested
                 ? environmentInputs.scale
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
+                || c125StickyFixtureRequested
                 || c123FixedPositionProbeRequested || c1132GridNamedLinesProbeRequested
                 || c1133GridTemplateAreasProbeRequested || c114GridTrackSizingProbeRequested
                 || c132ScrollFixtureRequested
@@ -9914,6 +9968,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipBorderFixture(handle)
         } else if c131OverflowClipProbeRequested {
             result = SpinonRunner.evalRuntimeGpuC13_1OverflowClipFixture(handle)
+        } else if c125StickyFixtureRequested {
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+            result = SpinonRunner.evalRuntimeGpuC12_5StickyFixture(handle)
+#else
+            result = nil
+#endif
         } else if c132ScrollFixtureRequested {
             result = SpinonRunner.evalRuntimeGpuC13_2ScrollFixture(handle)
         } else if c133GestureFixtureRequested {
@@ -10083,6 +10143,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C11.3.2 implicit named line 거부 계약 불일치")
                 return
             }
+        }
+        if c125StickyFixtureRequested {
+            let report = result ?? "status=-1 missing-report"
+            let passed = report.hasPrefix("status=0 ")
+                && report.contains("\"status\":\"passed\"")
+                && report.contains("\"case\":\"c12-5-top-only-nested-scrollport-content-edge\"")
+                && report.contains("\"initial\":118.0")
+                && report.contains("\"outer_24\":94.0")
+                && report.contains("\"inner_20\":98.0")
+                && report.contains("\"inner_36\":90.0")
+                && report.contains("\"inner_160\":90.0")
+                && report.contains("\"inner_212\":54.0")
+                && report.contains("\"parent_content_edge_inner_212\":40.0")
+                && report.contains("\"pixel_200_78_hit\":\"section\"")
+                && report.contains("\"pixel_240_100_hit\":\"section-after\"")
+                && report.contains("\"reverse_zero\":118.0")
+                && report.contains("\"clip_and_hit_test\":\"passed\"")
+            log("SPINON_C125_STICKY_EVAL_RUN \(runtimeStatusSummary(report))")
+            guard passed else {
+                postStatus("실패 · C12.5 sticky geometry·scroll owner·clip/hit 결과 불일치")
+                return
+            }
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+            stateLock.lock()
+            c125StickyGeometryAssertionsPassed = true
+            stateLock.unlock()
+#endif
+            log("SPINON_C125_STICKY_SUMMARY status=passed viewport=360x260 initial=118 "
+                + "outer24=94 inner20=98 pinned36=90 pinned160=90 "
+                + "section_borderbox_end212=54 parent_content_edge_end212=40 "
+                + "pixel_200_78=section pixel_240_100=section-after "
+                + "reverse_zero=118 clip_hit=passed")
         }
         if c132ScrollFixtureRequested {
             let report = result ?? "status=-1 missing-report"
@@ -11136,6 +11228,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         sequence = presentationSequence
         handle = hostHandle
         let fixedCssScaleRoute = c153GlyphPaintProbeRequested
+            || c125StickyFixtureRequested
             || c123FixedPositionProbeRequested
             || c1132GridNamedLinesProbeRequested || c1133GridTemplateAreasProbeRequested
             || c132ScrollFixtureRequested || c133GestureFixtureRequested
@@ -11143,11 +11236,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested ? 320
                 : c153HostDocumentTextPaintArgumentRequested ? 320
-                : c153GlyphPaintProbeRequested ? 360 : viewportWidthCssPx,
+                : c153GlyphPaintProbeRequested || c125StickyFixtureRequested
+                    ? 360 : viewportWidthCssPx,
             rootHtmlBlockPaintProbeRequested || rootHtmlTextPaintProbeRequested
                 || rootHtmlDefaultRenderRequested
                 || c153GlyphPaintProbeRequested
-                ? 240 : viewportHeightCssPx,
+                ? 240 : c125StickyFixtureRequested ? 260 : viewportHeightCssPx,
             rootHtmlTextPaintProbeRequested ? 1
                 : rootHtmlBlockPaintProbeRequested ? displayScale
                 : fixedCssScaleRoute ? 1 : displayScale, darkMode
@@ -12367,6 +12461,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 surfaceGeneration: generation
             )
         }
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+        if c125StickyFixtureRequested && c125StickyGeometryAssertionsPassed
+            && !c125MetalPixelRequestIssued && !c125MetalPixelReadbackFinished {
+            try requestC125StickyMetalPixelReadback(handle: handle, generation: generation)
+        }
+#endif
 #if SPINON_ENABLE_C18_IMAGE_PAINT_FIXTURE_TEST_1
         if imagePaintProbeRequested && !imagePaintMetalPixelRequestIssued
             && !imagePaintMetalPixelReadbackFinished {
@@ -12661,6 +12761,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 surfaceGeneration: generation
             )
         }
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+        if c125StickyFixtureRequested && c125MetalPixelRequestIssued
+            && !c125MetalPixelReadbackFinished {
+            try verifyC125StickyMetalPixelReadback(
+                result: result ?? "",
+                surfaceGeneration: generation
+            )
+        }
+#endif
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelReadbackFinished {
             try verifyC111MetalPixelReadback(
                 result: result ?? "",
@@ -13108,6 +13217,146 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 "C19.2 Metal 표본 검증 실패: \(error)"
             )
         }
+    }
+#endif
+
+#if SPINON_ENABLE_C12_5_STICKY_FIXTURE_TEST_1
+    private func requestC125StickyMetalPixelReadback(
+        handle: UInt64,
+        generation: UInt64
+    ) throws {
+        stateLock.lock()
+        let geometryPassed = c125StickyGeometryAssertionsPassed
+        let sequence = presentationSequence
+        let viewportWidth = viewportWidthCssPx
+        let viewportHeight = viewportHeightCssPx
+        let drawableSize = c111MetalDrawableSize
+        let format = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard geometryPassed else { return }
+        guard viewportWidth == 360, viewportHeight == 260,
+              drawableSize.width > 0, drawableSize.height > 0, !format.isEmpty,
+              let width = UInt32(exactly: drawableSize.width),
+              let height = UInt32(exactly: drawableSize.height) else {
+            c125MetalPixelReadbackFinished = true
+            log("SPINON_C125_METAL_PIXEL_ERROR stage=surface-size viewport=\(viewportWidth)x\(viewportHeight) drawable=\(drawableSize.width)x\(drawableSize.height)")
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C12.5 viewport 또는 Metal drawable 크기가 올바르지 않습니다"
+            )
+        }
+        let scaleX = Float(width) / 360.0
+        let scaleY = Float(height) / 260.0
+        guard scaleX.isFinite, scaleY.isFinite, scaleX > 0,
+              abs(scaleX - scaleY) < 0.000001 else {
+            c125MetalPixelReadbackFinished = true
+            log("SPINON_C125_METAL_PIXEL_ERROR stage=surface-scale scale_x=\(scaleX) scale_y=\(scaleY)")
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C12.5 Metal drawable의 가로·세로 scale이 다릅니다"
+            )
+        }
+        var coordinates: [UInt32] = []
+        coordinates.reserveCapacity(C125MetalPixelRun.fixedSamples.count * 2)
+        for sample in C125MetalPixelRun.fixedSamples {
+            let x = floor((Float(sample.xCssPx) + 0.5) * scaleX)
+            let y = floor((Float(sample.yCssPx) + 0.5) * scaleY)
+            guard x >= 0, y >= 0, x < Float(width), y < Float(height) else {
+                c125MetalPixelReadbackFinished = true
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C12.5 고정 Metal 표본이 drawable 밖입니다: \(sample.id)"
+                )
+            }
+            coordinates.append(UInt32(x))
+            coordinates.append(UInt32(y))
+        }
+        let request = coordinates.withUnsafeBufferPointer { buffer in
+            SpinonRunner.requestRuntimeGpuC12_5SurfacePixels(
+                handle,
+                sampleXY: buffer.baseAddress,
+                sampleCount: UInt(C125MetalPixelRun.fixedSamples.count)
+            )
+        } ?? "status=-1 missing-request-report"
+        guard request.hasPrefix("status=0 ") else {
+            c125MetalPixelReadbackFinished = true
+            log("SPINON_C125_METAL_PIXEL_ERROR stage=request report=\(request)")
+            throw C0410LatestTaskLaneError.operationFailed(request)
+        }
+        c125MetalPixelRequestIssued = true
+        c125MetalPixelRequestGeneration = generation
+        c125MetalPixelRequestPresentationSequence = sequence
+        c125MetalPixelRequestDrawableSize = drawableSize
+        c125MetalPixelRequestFormat = format
+        log("SPINON_C125_METAL_PIXEL_REQUESTED pid=\(ProcessInfo.processInfo.processIdentifier) surface_generation=\(generation) presentation_sequence=\(sequence) viewport=360x260 drawable=\(width)x\(height) format=\(format) samples=\(C125MetalPixelRun.fixedSamples.count)")
+    }
+
+    private func verifyC125StickyMetalPixelReadback(
+        result: String,
+        surfaceGeneration: UInt64
+    ) throws {
+        func failure(_ stage: String, _ detail: String) -> C0410LatestTaskLaneError {
+            c125MetalPixelReadbackFinished = true
+            log("SPINON_C125_METAL_PIXEL_ERROR stage=\(stage) detail=\(detail)")
+            return .operationFailed("C12.5 Metal 표본 \(stage): \(detail)")
+        }
+        guard c125MetalPixelRequestGeneration == surfaceGeneration,
+              let sequence = c125MetalPixelRequestPresentationSequence,
+              isCurrentPresentation(generation: surfaceGeneration, sequence: sequence) else {
+            throw failure("stale-presentation", "surface generation 또는 presentation sequence가 바뀌었습니다")
+        }
+        let surface = reportField(result, "surface_texture=")
+            .split(separator: "x").compactMap { UInt32($0) }
+        guard let requestedWidth = UInt32(exactly: c125MetalPixelRequestDrawableSize.width),
+              let requestedHeight = UInt32(exactly: c125MetalPixelRequestDrawableSize.height) else {
+            throw failure("drawable-size", "저장한 Metal drawable 크기가 정수가 아닙니다")
+        }
+        stateLock.lock()
+        let currentFormat = rendererSurfaceFormat ?? ""
+        stateLock.unlock()
+        guard surface.count == 2,
+              surface[0] == requestedWidth,
+              surface[1] == requestedHeight,
+              c125MetalPixelRequestFormat == currentFormat,
+              reportField(result, "boxes=") == "13",
+              reportField(result, "viewport_css_px=") == "360x260",
+              reportField(result, "scroll_state_revision=") == "5",
+              result.contains("scroll_offsets=[0,0;0,0;0,0;0,212]") else {
+            throw failure("draw-identity", "boxes·viewport·scroll revision·offset·drawable·format이 고정 fixture와 다릅니다")
+        }
+        guard let encoded = reportField(result, "surface_pixel_samples_json=").data(using: .utf8),
+              let values = try? JSONSerialization.jsonObject(with: encoded) as? [[String: Any]],
+              values.count == C125MetalPixelRun.fixedSamples.count else {
+            throw failure("sample-count", "draw report의 Metal 표본이 두 개가 아닙니다")
+        }
+        let width = Float(surface[0])
+        let height = Float(surface[1])
+        let scaleX = width / 360.0
+        let scaleY = height / 260.0
+        var matched = 0
+        for (index, sample) in C125MetalPixelRun.fixedSamples.enumerated() {
+            let value = values[index]
+            guard let xNumber = value["x"] as? NSNumber,
+                  let yNumber = value["y"] as? NSNumber,
+                  let channels = value["rgba"] as? [NSNumber], channels.count == 4 else {
+                throw failure("sample-shape", "Metal 표본 JSON 형태가 올바르지 않습니다: \(sample.id)")
+            }
+            let x = xNumber.uint32Value
+            let y = yNumber.uint32Value
+            let rgba = channels.map(\.uint32Value)
+            let expectedX = UInt32(floor((Float(sample.xCssPx) + 0.5) * scaleX))
+            let expectedY = UInt32(floor((Float(sample.yCssPx) + 0.5) * scaleY))
+            let exact = x == expectedX && y == expectedY && rgba == sample.rgba
+            if exact { matched += 1 }
+            log("SPINON_C125_METAL_PIXEL_SAMPLE pid=\(ProcessInfo.processInfo.processIdentifier) surface_generation=\(surfaceGeneration) presentation_sequence=\(sequence) sample=\(sample.id) x=\(x) y=\(y) rgba=\(rgba.map(String.init).joined(separator: ",")) expected=\(sample.rgba.map(String.init).joined(separator: ",")) exact=\(exact)")
+        }
+        c125MetalPixelReadbackFinished = true
+        let passed = matched == C125MetalPixelRun.fixedSamples.count
+        log("SPINON_C125_METAL_PIXEL_SUMMARY status=\(passed ? "matched" : "mismatch") pid=\(ProcessInfo.processInfo.processIdentifier) surface_generation=\(surfaceGeneration) presentation_sequence=\(sequence) scroll_state_revision=5 viewport=360x260 drawable=\(surface[0])x\(surface[1]) format=\(c125MetalPixelRequestFormat) expected_samples=\(C125MetalPixelRun.fixedSamples.count) observed_samples=\(values.count) matched_samples=\(matched) renderer=metal-drawable-before-compositor")
+        guard passed else {
+            postStatus("실패 · C12.5 iOS Simulator Metal 표본 불일치")
+            throw C0410LatestTaskLaneError.operationFailed(
+                "C12.5 Metal drawable 표본이 고정 Chrome RGBA와 다릅니다"
+            )
+        }
+        postStatus("C12.5 iOS Simulator Metal 표본 통과 · 2/2")
     }
 #endif
 

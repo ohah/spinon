@@ -1,0 +1,66 @@
+{
+  "capture": {
+    "platform": "iOS Simulator",
+    "device_name": "iPhone 17 Pro",
+    "device_uuid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "iOS 26.2 (23C54)",
+    "bundle_identifier": "dev.spinon.bootstrap",
+    "process_id": 37373,
+    "surface_generation": 1,
+    "presentation_sequence": 6,
+    "scroll_state_revision": 5,
+    "scroll_offsets": [0, 0, 0, 212],
+    "viewport_css_px": [360, 260],
+    "drawable_px": [1080, 780],
+    "pixel_format": "Bgra8Unorm",
+    "readback_scope": "Metal drawable before compositor; no compositor-after-submit or hardware GPU claim"
+  },
+  "identity": {
+    "source_sha256": "58fd45af27bb2a91e851775e7efa0379770b159946485af7df19805e803376e3",
+    "source_hash_method": "SHA-256 over sorted changed source/config/fixture files, encoding each as path + NUL + 8-byte big-endian length + file bytes; generated build and evidence files excluded",
+    "source_file_count": 33,
+    "app_executable": "DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "app_sha256": "3bb44f3ff14954b2e7c5e48aa3345a472484cd605348c0580797ecf773804141",
+    "installed_app_executable_sha256": "3bb44f3ff14954b2e7c5e48aa3345a472484cd605348c0580797ecf773804141",
+    "v8_revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf"
+  },
+  "chrome_reference": {
+    "user_agent": "HeadlessChrome/156.0.0.0",
+    "observation": "../c12-5-sticky-precomparison-2026-10-26/chrome156-color-observation.json",
+    "screenshot_sha256": "0bdb99defb5ca46b3333a52b1d8d734ab72625005f33452757bebafd8ad24d98"
+  },
+  "samples": [
+    {
+      "id": "sticky-visible",
+      "css_coordinate": [200, 78],
+      "metal_drawable_coordinate": [601, 235],
+      "chrome_rgba": [219, 51, 68, 255],
+      "ios_rgba": [219, 51, 68, 255],
+      "exact_match": true
+    },
+    {
+      "id": "section-adjacent",
+      "css_coordinate": [240, 78],
+      "metal_drawable_coordinate": [721, 235],
+      "chrome_rgba": [245, 245, 245, 255],
+      "ios_rgba": [245, 245, 245, 255],
+      "exact_match": true
+    }
+  ],
+  "summary": {
+    "status": "matched",
+    "expected_samples": 2,
+    "observed_samples": 2,
+    "matched_samples": 2
+  },
+  "evidence_files": {
+    "runtime_log": "ios-c12-5-pixelgate-runtime.log",
+    "screenshot": "ios-c12-5-pixelgate.png",
+    "build_log": "ios-simulator-build-pixel-gate.log"
+  },
+  "prior_failed_launch_attempt": {
+    "log": "ios-first-launch-route-miss.log",
+    "screenshot": "ios-first-launch-route-miss.png",
+    "classification": "Failed routing attempt; not C12.5 evidence and excluded from this capture"
+  }
+}

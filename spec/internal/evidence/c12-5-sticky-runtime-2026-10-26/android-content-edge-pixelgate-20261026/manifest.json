@@ -1,0 +1,97 @@
+{
+  "capture": {
+    "platform": "Android API 37.2 ARM64 AVD",
+    "avd": "spinon_api37_2_presenttime_probe_20261018",
+    "device": "emulator-5560",
+    "model": "sdk_gphone16k_arm64",
+    "api_level": 37,
+    "android_release": "17",
+    "abi": "arm64-v8a",
+    "page_size_bytes": 16384,
+    "renderer": "Vulkan Goldfish GFXStream (SwiftShader Device, LLVM 10.0.0)",
+    "package": "dev.spinon.bootstrap",
+    "activity": "dev.spinon.bootstrap/.MainActivity",
+    "process_id": 3932,
+    "run_id": "96932dd07",
+    "surface_generation": 2,
+    "presentation_sequence": 0,
+    "draw_generation": 1,
+    "scroll_state_revision": 5,
+    "scroll_offsets": [0, 0, 0, 212],
+    "viewport_css_px": [360, 260],
+    "pixelcopy_surface_px": [945, 683],
+    "pixelcopy_scale": [2.625, 2.626923076923077],
+    "readback_scope": "Android PixelCopy of the app SurfaceView; no physical device or post-compositor scanout claim",
+    "avd_released": true,
+    "release_evidence": "adb-devices-after-redacted.txt"
+  },
+  "identity": {
+    "base_revision": "d94f645843fca7ca431a3c51fc3519cced9109c0",
+    "capture_source_sha256": "5dbd898cddc5c496dea7b729b532dafd7af94b72132ccc08b3a244f253191e3d",
+    "current_whole_source_sha256": "c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308",
+    "source_file_count": 35,
+    "source_hash_method": "SHA-256 over sorted changed source/config/fixture files, encoding each as path + NUL + 8-byte big-endian length + file bytes; generated build and evidence files excluded",
+    "android_target_source_sha256": "d72a396378a7460ba274150d4d90c7418e5d0353c94779b7f0dbbed2fd21c7a9",
+    "android_target_source_file_count": 29,
+    "android_target_source_scope": "crates/, platforms/android/, tests/fixtures/, and tools/build-android.sh; unchanged after this PixelCopy capture",
+    "source_change_after_android_capture": "Only platforms/ios/Sources/C0410RuntimeGpuDemo.swift changed: removed a redundant conditional cast in the Metal sample reader. Android target source subset and installed APK/native artifacts are unchanged.",
+    "apk": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "apk_sha256": "c25bdb06ce6ad6cbed9b9634ade38c830187a3e8939593cf8cea3d4dc5786cf3",
+    "apk_size_bytes": 151423050,
+    "installed_base_apk_sha256": "c25bdb06ce6ad6cbed9b9634ade38c830187a3e8939593cf8cea3d4dc5786cf3",
+    "native_build_input": "build/spinon/android/jniLibs/arm64-v8a/libspinon_bootstrap.so",
+    "native_build_input_sha256": "363d4bf86a3abed11a538b8c96ac8dc1335210cec1ee3760af8ba5df8244e60d",
+    "native_embedded_arm64_sha256": "8d67dec0ac15c0017f7249685a215ad3d2e496b890015cc53b4651809b7437b3",
+    "v8_revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf"
+  },
+  "chrome_reference": {
+    "user_agent": "HeadlessChrome/156.0.0.0",
+    "observation": "../../c12-5-sticky-precomparison-2026-10-26/chrome156-observation.json",
+    "screenshot_sha256": "16a6e256b15a68bf8dce745c0243b312bd295c78bd585ae2440cabfb9c2c4f61"
+  },
+  "runtime": {
+    "status": "passed",
+    "case": "c12-5-top-only-nested-scrollport-content-edge",
+    "section_border_bottom_css_px": 82,
+    "section_content_bottom_css_px": 68,
+    "sticky_top_css_px": 40,
+    "pixel_200_78_hit": "section",
+    "pixel_240_100_hit": "section-after",
+    "clip_and_hit_test": "passed"
+  },
+  "samples": [
+    {
+      "id": "section-at-content-edge",
+      "css_coordinate": [200, 78],
+      "pixelcopy_coordinate": [526, 206],
+      "expected_hit_target": "section",
+      "chrome_rgba": [245, 245, 245, 255],
+      "android_rgba": [245, 245, 245, 255],
+      "exact_match": true
+    },
+    {
+      "id": "section-after",
+      "css_coordinate": [240, 100],
+      "pixelcopy_coordinate": [631, 264],
+      "expected_hit_target": "section-after",
+      "chrome_rgba": [204, 221, 238, 255],
+      "android_rgba": [204, 221, 238, 255],
+      "exact_match": true
+    }
+  ],
+  "summary": {
+    "status": "matched",
+    "expected_samples": 2,
+    "observed_samples": 2,
+    "matched_samples": 2,
+    "pixelcopy_png_sha256": "193a35a2e3c20c032c922b3bf7c3add4d4a101fb209e6fae3e7b27e257307381"
+  },
+  "evidence_files": {
+    "runtime_log": "android-runtime-pixelcopy.log",
+    "runtime_log_sha256": "a88ef578be478d5e1d644757f77d906bc47ca9166f16f92208da69f377c03c11",
+    "build_log": "android-build-content-edge.log",
+    "build_log_sha256": "c696d630460de6d6fac8e3ec1aa06f2ebf8752e6551f9acbf53aba5cca2f18e0",
+    "launch_result": "android-launch.txt",
+    "pixelcopy_png": "pixelcopy.png"
+  }
+}

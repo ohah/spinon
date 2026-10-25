@@ -5,6 +5,7 @@ edition = "2024"
 publish = false
 
 [features]
+c12-5-sticky-fixture-test = []
 c04-12-root-html-text-paint-fixture-test = []
 c11-4-grid-track-sizing-fixture-test = ["spinon-layout/c11-4-grid-track-sizing-fixture-test"]
 

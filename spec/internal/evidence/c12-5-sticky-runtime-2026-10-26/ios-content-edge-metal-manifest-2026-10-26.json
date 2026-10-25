@@ -1,0 +1,88 @@
+{
+  "capture": {
+    "platform": "iOS Simulator",
+    "device_name": "iPhone 17 Pro",
+    "device_uuid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+    "runtime": "iOS 26.2 (23C54)",
+    "bundle_identifier": "dev.spinon.bootstrap",
+    "process_id": 43715,
+    "surface_generation": 1,
+    "presentation_sequence": 7,
+    "scroll_state_revision": 5,
+    "scroll_offsets": [0, 0, 0, 212],
+    "viewport_css_px": [360, 260],
+    "drawable_px": [1080, 780],
+    "pixel_format": "Bgra8Unorm",
+    "readback_scope": "Metal drawable before compositor submission; no compositor-after-submit, hardware GPU, or scanout claim",
+    "app_terminated_after_capture": true,
+    "device_shutdown_after_capture": true,
+    "device_state_evidence": "ios-simulator-release-final-2026-10-26.txt"
+  },
+  "identity": {
+    "base_revision": "d94f645843fca7ca431a3c51fc3519cced9109c0",
+    "source_sha256": "c31f9f5351f0431db1f75f746faeb411afc4378d4cfe433ffc2be815bf75a308",
+    "source_file_count": 35,
+    "source_hash_method": "SHA-256 over sorted changed source/config/fixture files, encoding each as path + NUL + 8-byte big-endian length + file bytes; generated build and evidence files excluded",
+    "source_change_from_prior_capture": "Removed redundant values[index] as? [String: Any] conditional cast from the C125 Metal sample reader; behavior unchanged.",
+    "app_executable": "DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "app_sha256": "4b77055e541db8adbaa9d75004150a91946469e18dbf68e839656a4bc25b181b",
+    "installed_app_executable_sha256": "4b77055e541db8adbaa9d75004150a91946469e18dbf68e839656a4bc25b181b",
+    "v8_revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf"
+  },
+  "chrome_reference": {
+    "user_agent": "HeadlessChrome/156.0.0.0",
+    "observation": "../c12-5-sticky-precomparison-2026-10-26/chrome156-observation.json",
+    "screenshot_sha256": "16a6e256b15a68bf8dce745c0243b312bd295c78bd585ae2440cabfb9c2c4f61"
+  },
+  "runtime": {
+    "status": "passed",
+    "case": "c12-5-top-only-nested-scrollport-content-edge",
+    "section_border_bottom_css_px": 82,
+    "section_content_bottom_css_px": 68,
+    "sticky_top_css_px": 40,
+    "pixel_200_78_hit": "section",
+    "pixel_240_100_hit": "section-after",
+    "clip_and_hit_test": "passed"
+  },
+  "samples": [
+    {
+      "id": "section-at-content-edge",
+      "css_coordinate": [200, 78],
+      "metal_drawable_coordinate": [601, 235],
+      "expected_hit_target": "section",
+      "chrome_rgba": [245, 245, 245, 255],
+      "ios_rgba": [245, 245, 245, 255],
+      "exact_match": true
+    },
+    {
+      "id": "section-after",
+      "css_coordinate": [240, 100],
+      "metal_drawable_coordinate": [721, 301],
+      "expected_hit_target": "section-after",
+      "chrome_rgba": [204, 221, 238, 255],
+      "ios_rgba": [204, 221, 238, 255],
+      "exact_match": true
+    }
+  ],
+  "summary": {
+    "status": "matched",
+    "expected_samples": 2,
+    "observed_samples": 2,
+    "matched_samples": 2
+  },
+  "evidence_files": {
+    "runtime_log": "ios-content-edge-metal-final-2026-10-26.log",
+    "runtime_log_sha256": "e4a07ac2f36506ee9af894385a0946d8689c83e45713b6e53a397222e90168f6",
+    "simulator_screenshot": "ios-content-edge-metal-final-2026-10-26.png",
+    "simulator_screenshot_sha256": "30d6fd27206ae8ba39ed870a4b2356847961352c4ac1e1626ae577772a77b6b6",
+    "build_log": "ios-content-edge-metal-build-final-2026-10-26.log",
+    "build_log_sha256": "a433d0bb5d0bcb56e840bbda47faa1abdd583a595836f5e2315a699411843fc1",
+    "launch_result": "ios-content-edge-launch-final-2026-10-26.txt",
+    "launch_result_sha256": "12860db7215365103fb5cc61511658dc134957a741bef32d1d50cad31370340c",
+    "prior_failed_route_attempt": {
+      "log": "ios-first-launch-route-miss.log",
+      "screenshot": "ios-first-launch-route-miss.png",
+      "classification": "failed routing attempt; not C12.5 evidence and excluded from this capture"
+    }
+  }
+}
