@@ -52,8 +52,11 @@
 공통 타입이 병합된 뒤 `spinon-style` owner가 아래 파일 경계 안에서 C11.4 profile의 computed value를 typed snapshot에 보존한다.
 
 - 소유 후보: `crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs`, `snapshot.rs`, `incremental/`의 C11.4 경로 및 `runtime_grid_tests/`의 새 테스트 파일.
+- C11.4 track-sizing source admission과 computed-value 수집은 분리한다. Exact fixture의 authored `writing-mode: vertical-rl`을 통과시키기 위해 `runtime_block_flex_grid_track_sizing_author_properties()`에 `"writing-mode"`만 추가한다. `"text-orientation"`은 fixture가 authored declaration 없이 CSS initial/inheritance의 `mixed`를 검증하므로 author allowlist에 추가하지 않는다. 이 admission 변경은 `RuntimeBlockFlexGridTrackSizingV1`에만 적용하고 다른 Grid/Block/Flex profile은 바꾸지 않는다.
+- C11.4 computed-value 목록 `runtime_block_flex_grid_track_sizing_properties()`는 `LonghandId::WritingMode`를 유지하고 `LonghandId::TextOrientation`도 포함해야 한다. 두 computed longhand를 Stylo 최종값에서 `spinon-core`의 typed `WritingMode`/`TextOrientation`으로 변환해 C11.4 snapshot에 함께 보존한다. 현재 `writing-mode`의 raw computed string 보존만으로 typed snapshot 요구를 충족한 것으로 보지 않는다.
 - `writing-mode`와 `text-orientation`의 최종 Stylo computed value를 공통 enum으로 변환한다. Root `HorizontalTb`/`Mixed`, text item `VerticalRl`/`Mixed`, inherited image `HorizontalTb`/`Mixed`만 이 fixture profile에서 허용한다. `text-orientation`을 text child에서 따로 author하지 않아도 computed `Mixed`가 부모로부터 상속되어야 한다.
 - CSS source가 유효하지만 property가 선언되지 않은 경우에는 Stylo computed value가 상속/initial semantics에 따라 생성된다. C11.4 snapshot에서 property 자체 또는 typed field가 빠지면 incomplete-style 오류다. Unknown/unsupported computed keyword는 unsupported-style 오류다. 다른 Grid profile의 값 수집, 성공·오류 동작 및 snapshot revision 의미는 바꾸지 않는다.
+- 1A cascade regression gate는 exact fixture의 `writing-mode: vertical-rl`이 C11.4 track-sizing author allowlist에서만 허용되고, authored `text-orientation`은 계속 거부되며, declaration이 없는 `text-orientation`은 Stylo computed `mixed`로 snapshot에 도달하는지 확인한다. 다른 profile의 author allowlist와 computed snapshot 결과는 기존 판정을 유지한다.
 - 산출물은 source node identity와 같은 `computed_style_revision`에 묶인 typed value다. 이 lane은 LayoutStyle, ParagraphStyle, Taffy 또는 runtime fixture 파일을 수정하지 않는다.
 
 ### 1B. text-layout logical intrinsic input
