@@ -1,18 +1,18 @@
 # PR #624 C11.4 상태·roadmap 동기화 변경 검토 30개
 
-- 검토 대상: `origin/main...065ddf9ade798ab7ead66b872ee3e00996b277de`의 정확한 PR diff
+- 검토 대상: `origin/main...aa0d952bd572e64a8d9faf34b2469df47bd22d96`의 정확한 PR diff
 - GitHub PR: [#624](https://github.com/ohah/spinon/pull/624), base `main`, head `docs/c11-4-cyclic-auto-repeat-merge-status`
-- 변경 범위: 5개 문서/evidence 파일, 21 insertions / 12 deletions
+- 변경 범위: 문서 5개, 검토 matrix 1개, Agent Browser screenshot 1개 등 7개 파일; 67 insertions / 12 deletions 및 148,280-byte PNG
 - 구현 PR 대조: #623은 `MERGED`, merge SHA `56daefe96e8143959bc99a89c7a8c80e7f1cc4ba`, merged at `2026-10-25T04:35:52Z`; source SHA `c5b8ef75804e39d36a37aa61b82b1f028115fefd`는 PR #623 head `5c6e24fc2ec5d1303418cd15f00fc6e4cb51947c`의 ancestor
-- 현재 PR metadata: labels `documentation`, `area: docs`; merge state `CLEAN`; GitHub check rollup은 비어 있고 main required status checks도 설정되지 않음
-- 판정: **27 PASS / 3 PARTIAL / 0 FAIL**
-- 검토는 문서, Git/GitHub metadata 및 기존 evidence 읽기에 한정했다. 테스트·빌드·브라우저·시뮬레이터를 실행하지 않았다.
+- 현재 PR metadata: head `aa0d952bd572e64a8d9faf34b2469df47bd22d96`; labels `documentation`, `area: docs`; merge state `CLEAN`; GitHub check rollup은 비어 있고 main required status checks도 설정되지 않음. PR 본문이 두 검사 상태를 공개한다.
+- 판정: **30 PASS / 0 PARTIAL / 0 FAIL**
+- 이 re-review에서는 문서, Git/GitHub metadata와 첨부된 PNG를 확인했다. 테스트·빌드·브라우저·시뮬레이터는 실행하지 않았다. PR 본문은 Agent Browser로 branch의 local `spec/public/roadmap.html`을 열어 캡처했다고 밝힌다.
 
 | # | 실패 관점 | 판정 | 심각도 | 근거와 결과 |
 |---:|---|---|---|---|
-| 1 | PR이 C11.4 상태 동기화 밖의 소스 변경을 섞는가 | PASS | — | `git diff origin/main...065ddf9`는 계획 두 개, `spec/STATUS.md`, cyclic runtime README, 공개 roadmap HTML의 5개 문서 파일만 바꾼다. 제품 코드나 simulator 결과 파일은 수정하지 않았다. |
-| 2 | 검토 기준이 PR의 실제 head와 다른가 | PASS | — | GitHub PR #624 `headRefOid`와 대상 commit은 모두 `065ddf9ade798ab7ead66b872ee3e00996b277de`다. |
-| 3 | `origin/main...HEAD` 검토 범위가 비어 있거나 로컬 미커밋 diff만 반영하는가 | PASS | — | PR head는 `origin/main`의 `56daefe96e8143959bc99a89c7a8c80e7f1cc4ba` 뒤에 있고, 정확한 PR diff는 5개 파일·21 insertions·12 deletions다. `git diff --check origin/main...065ddf9`도 오류가 없다. |
+| 1 | PR이 C11.4 상태 동기화 밖의 소스 변경을 섞는가 | PASS | — | `git diff origin/main...aa0d952b`는 계획 두 개, `spec/STATUS.md`, cyclic runtime README, 공개 roadmap HTML, 이 검토 matrix, 그리고 matrix/roadmap screenshot만 바꾼다. 제품 코드나 simulator 실행 결과는 수정하지 않았다. |
+| 2 | 검토 기준이 PR의 실제 head와 다른가 | PASS | — | GitHub PR #624 `headRefOid`와 대상 commit은 모두 `aa0d952bd572e64a8d9faf34b2469df47bd22d96`다. |
+| 3 | `origin/main...HEAD` 검토 범위가 비어 있거나 로컬 미커밋 diff만 반영하는가 | PASS | — | PR head는 `origin/main`의 `56daefe96e8143959bc99a89c7a8c80e7f1cc4ba` 뒤에 있고, 정확한 PR diff는 7개 파일·67 insertions·12 deletions 및 PNG 1개다. `git diff --check origin/main...aa0d952b`도 오류가 없다. |
 | 4 | 문서가 구현 PR #623의 병합 여부를 잘못 말하는가 | PASS | — | GitHub metadata의 #623 상태는 `MERGED`; grid plan, cyclic plan, STATUS와 roadmap은 이를 병합 결과로 기록한다. |
 | 5 | merge SHA나 병합 시각이 잘못 기록되는가 | PASS | — | GitHub `mergeCommit.oid`는 `56daefe96e8143959bc99a89c7a8c80e7f1cc4ba`, `mergedAt`은 `2026-10-25T04:35:52Z`; 계획·STATUS·roadmap 표기와 같다. |
 | 6 | 검증 source SHA가 실제 PR #623 구현 계보 밖에 있는가 | PASS | — | `c5b8ef75804e39d36a37aa61b82b1f028115fefd`는 Git object이고 #623 head `5c6e24fc2ec5d1303418cd15f00fc6e4cb51947c`의 ancestor다. README도 이 값을 구현 revision으로 지정한다. |
@@ -37,10 +37,10 @@
 | 25 | orthogonal blocker가 현재 구현 경계와 맞지 않거나 원인을 과장하는가 | PASS | — | orthogonal plan은 Stylo 문자열 보존 뒤 `LayoutStyle`·`ParagraphStyle` typed writing-mode와 Taffy 수평 전제의 경계를 구분한다. 새로운 문서는 이를 지원 완료로 말하지 않는다. |
 | 26 | PR #623 runtime evidence나 orthogonal precomparison 링크가 존재하지 않는가 | PASS | — | 링크 대상 runtime README, implementation/runtime review, PR diff review, cyclic precomparison, orthogonal plan 및 precomparison README가 저장소에 있다. |
 | 27 | 공식 상태와 공개 roadmap이 서로 다른 결과를 표시하는가 | PASS | — | 둘 다 #623 merged, `[12,12]` target, AVD/Metal sample 한계, orthogonal blocker, C11.4 미완료·72/213을 적는다. |
-| 28 | 전체 docs build 실패가 이 PR의 변경 성공으로 숨겨지거나 baseline으로 단정되는가 | PARTIAL | P2 | PR 본문은 전체 `docs:build`가 dead-link 검사로 실패했다고 밝히며 원인을 PR 변경만으로 돌리지 않는다. 다만 이번 diff에서 수정된 roadmap/evidence 페이지의 선택 빌드나 실제 route 렌더링은 아직 확인되지 않았다. 병합 전 선택 페이지 빌드 또는 Tailnet/Agent Browser 화면 증거를 추가할 수 있다. |
-| 29 | GitHub CI/필수 검사 상태가 통과라고 과장되거나 숨겨지는가 | PARTIAL | P2 | `gh pr checks 624`는 “no checks reported”, main required checks 조회는 404 “Required status checks not enabled”다. PR 본문은 CI 통과라고 주장하지 않지만 이 상태도 따로 적지 않았다. merge 근거에 이 경계를 덧붙이면 확인 상태가 완전해진다. |
-| 30 | 변경된 공개 roadmap 화면이 가능한데도 PR 본문에 화면 증거가 빠지는가 | PARTIAL | P2 | PR #624는 `spec/public/roadmap.html` 내용을 바꾸지만 PR 본문에는 screenshot이 없다. roadmap 페이지는 Agent Browser로 화면 캡처할 수 있으므로 갱신 페이지 캡처를 PR에 연결하는 후속이 남는다. |
+| 28 | 전체 docs build 실패가 이 PR의 성공으로 숨겨지거나 저장소 baseline이라고 단정되는가 | PASS | — | PR 본문은 전체 `docs:build`의 저장소 전역 dead-link 실패를 밝히고 PR diff만의 원인이라고 단정하지 않는다. Local HTML screenshot은 standalone roadmap 원본의 화면을 보여주며 Rspress build 성공이나 Tailnet 배포 결과로 확대하지 않는다. |
+| 29 | GitHub CI/필수 검사 상태가 통과라고 과장되거나 빠지는가 | PASS | — | `gh pr checks 624`는 “no checks reported”, main required checks 조회는 404 “Required status checks not enabled”다. PR 본문 검증 절은 두 상태를 그대로 공개하며 CI 통과라고 주장하지 않는다. |
+| 30 | 변경된 공개 roadmap 화면이 가능한데도 PR 본문에 화면 증거가 빠지는가 | PASS | — | PR 본문에는 branch의 local `spec/public/roadmap.html`을 Agent Browser에서 열어 캡처한 PNG가 연결됐다. 이미지에 #623 merge 결과, `72/213`, orthogonal blocker가 보인다. 이 화면은 Tailnet preview 확인을 대신하지 않는다. |
 
 ## 조치 전 판정
 
-제품 문서 범위, #623 결과, C11.4 미완료 상태 및 근거 한계는 일치한다. PR #624의 문서 diff 자체에서 FAIL은 찾지 못했다. 세 PARTIAL은 선택 페이지 렌더 확인, GitHub check 상태 기재, 공개 roadmap screenshot 첨부와 관련된다.
+제품 문서 범위, #623 결과, C11.4 미완료 상태와 검증 한계는 일치한다. 이전 검토의 세 PARTIAL은 각각 build 상태의 명시와 local roadmap 화면 확인, GitHub check 설정의 PR 본문 공개, screenshot 첨부로 해소됐다. 전체 Rspress `docs:build`는 여전히 dead-link 검사에서 실패했으며, Tailnet remote preview는 이 PR 화면 근거의 범위가 아니다. 이 PR diff에서 FAIL은 찾지 못했다.
