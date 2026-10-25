@@ -2,7 +2,7 @@
 
 ## 검토 기준과 변경 경로
 
-검토 범위는 `origin/main...HEAD`이며, base는 `66b74744f33f35567b21709dd38cb5658460bb98`, 최종 HEAD는 `f5d415974eeff46c61f665568c598133deab999b`다. diff에는 아래 11개 경로가 있고 제품 코드 변경은 없다.
+30개 failure view는 `origin/main...f5d415974eeff46c61f665568c598133deab999b`의 11개 substantive 경로를 대상으로 수행했다. base는 `66b74744f33f35567b21709dd38cb5658460bb98`다. 이후 현재 HEAD `fdbade4fa23ef8452b398e2ecc342521a65cc800`에서 확인한 `f5d41597..HEAD` delta는 계획 검토 기록의 B2 종결 문구 변경과 이 review artifact 추가뿐이다. 따라서 현재 `origin/main...HEAD`에는 11개 substantive 경로와 이 self-excluded review artifact가 있다. `fdbade4f`에서는 계획 검토의 B2 종결 문구만 보충 확인했으며, 이 review artifact 자체는 적대 검토 대상에서 제외했다. 아래 목록은 30개 view에서 검토한 f5 시점의 11개 substantive 경로이며 제품 코드 변경은 없다.
 
 1. `plan/c11-4-mixed-direct-text-image-intrinsic-row-axis.md`
 2. `plan/c11-4-mixed-direct-text-image-intrinsic-row-axis-plan-review-20.md`
@@ -16,7 +16,7 @@
 10. `spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/pr619-row-axis-image-agent-browser.png`
 11. `spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/pr619-row-axis-image-verification.json`
 
-기존 수정 검토의 30개 failure view를 모두 다시 확인하고 B1/B2 수정 및 현재 diff를 대조했다. 테스트, 빌드, 브라우저 세션은 실행하지 않았다. 보존된 screenshot은 파일 뷰어로 확인했고, 커밋된 JSON/hash/link와 worktree의 HTML 원본을 읽기 전용으로 검증했다.
+기존 30개 failure view를 f5 시점의 diff에서 각각 다시 확인하고 B1/B2 상태를 대조했다. 이어 fdbade4f의 plan-review B2 closure delta만 확인해 f5 당시 기록의 stale membership 문구가 최신 종결 문구로 교체됐음을 검증했다. 이 추가 확인은 30개 view를 fdbade4f diff 전체에 다시 실행한 것으로 계산하지 않는다. 테스트, 빌드, 브라우저 세션은 실행하지 않았다. 보존된 screenshot은 파일 뷰어로 확인했고, 커밋된 JSON/hash/link와 worktree의 HTML 원본을 읽기 전용으로 검증했다.
 
 ## 관점별 결과
 
@@ -49,15 +49,15 @@
 | 25 | Screenshot 화면이 geometry/범위 주장과 어긋나거나 pixel equality로 과장되는가 | 통과. 저장된 1280×633 화면에서 네 scene layout을 볼 수 있으며 README는 이를 배치 참고로 제한한다 (`spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md:10,37`). glyph/PNG pixel equality는 주장하지 않는다. |
 | 26 | 관측 JSON을 실제 사용한 HTML input과 연결할 수 있는가 | 부분 통과. JSON origin은 `/tmp/spinon-c11-row-axis-chrome-oracle.html`; 검토 시 해당 파일 hash는 tracked fixture hash `ab34be0125b128a1d47f0a1cc703b67e31435f3f16a48f293d9d198b94acd12a`와 같았지만 JSON에 input hash 자체는 없다. N2로 기록한다. |
 | 27 | Agent Browser session/process cleanup 주장이 보존 evidence로 independently verifiable한가 | 부분 통과. README는 session close와 해당 PID/profile 미존재를 기록하지만 종료 stdout/process inventory 원본은 포함하지 않는다 (`spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md:48-50`). N3로 기록한다. |
-| 28 | PR 본문 screenshot의 링크, tracked membership, 크기·visibility가 확인되는가 | 통과. PR PNG/JSON 둘 다 HEAD tree와 11-file diff에 있다. 두 SHA가 README와 일치하고 JSON은 URL #619, `complete=true`, natural `1280×633`, rendered `782×387`, `visibleInViewport=true`, `.js-comment-body.markdown-body` 내부를 기록한다 (`spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md:52-64`). 저장된 PR screenshot에서도 comment body의 image가 보인다. |
+| 28 | PR 본문 screenshot의 링크, tracked membership, 크기·visibility가 확인되는가 | 통과. PR PNG/JSON 둘 다 f5 snapshot의 HEAD tree와 11-file diff에 있다. 두 SHA가 README와 일치하고 JSON은 URL #619, `complete=true`, natural `1280×633`, rendered `782×387`, `visibleInViewport=true`, `.js-comment-body.markdown-body` 내부를 기록한다 (`spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md:52-64`). 저장된 PR screenshot에서도 comment body의 image가 보인다. |
 | 29 | 새 scene이 실제 simulator host adapter·capture gate에 연결되는가 | 통과. B1 수정으로 Java/Swift adapters의 allowlist, per-scene frames/tracks/contributions/trace 기대값 및 새 row-only capture/evidence 경로가 plan gate와 file ownership에 구체화됐다 (`plan/c11-4-mixed-direct-text-image-intrinsic-row-axis.md:59-63,70-78`). |
-| 30 | 이전 20-view plan review 수정 기록이 현재 PR status와 모순되는가 | 통과. 수정 기록은 B1 소유권 변경을 설명하며, B2에 대해서는 commit `f5d41597`에서 두 이미지 파일이 commit tree에 포함되고 README hashes와 일치함을 명시한다 (`plan/c11-4-mixed-direct-text-image-intrinsic-row-axis-plan-review-20.md:30-31`). |
+| 30 | 이전 20-view plan review 수정 기록이 현재 PR status와 모순되는가 | f5 기준 문제를 후속 수정으로 종결. f5의 plan-review line 31은 PR tree에 이미 포함된 B2 PNG/JSON을 “untracked”라고 잘못 적었다. `fdbade4f`의 closure update가 commit `f5d41597`에서 두 파일이 tree에 포함되고 README hashes와 일치함을 명시하며 모순을 해소했다. 이 마지막 closure 문구만 fdbade4f에서 별도로 재확인했다 (`plan/c11-4-mixed-direct-text-image-intrinsic-row-axis-plan-review-20.md:30-31`). |
 
 ## 최종 판정 및 notes
 
 ### Blocking findings
 
-없음. 이전 blocker B1은 adapter/capture ownership이 계획 gate와 file boundary에 들어가 해소됐다. B2 PNG/JSON도 HEAD tree에 포함되고 README hash table과 일치한다.
+없음. 이전 blocker B1은 adapter/capture ownership이 계획 gate와 file boundary에 들어가 해소됐다. f5 시점 plan-review의 B2 membership 문구 모순은 fdbade4f의 closure update에서 바로잡혔으며, PNG/JSON은 HEAD tree에 포함되고 README hash table과 일치한다.
 
 ### Non-blocking notes
 
