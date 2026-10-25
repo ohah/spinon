@@ -12,9 +12,11 @@
 - Screenshot: [`chrome156-agent-browser.png`](./chrome156-agent-browser.png), PNG `1280×633`, SHA-256 `b06f58a88e530af90914cae2e83952631dc3b354697d1b24fb3d0a7b3a6571ff`.
 - `CSS.supports()` returned `true` for the row auto-repeat declaration and `height: max-content`; `document.fonts.status` was `loaded` (the fixture uses a fixed-size empty block, not text metrics).
 
+Fixture는 root `min-height`를 선언하지 않는다. CSS Box Sizing Level 3의 초기값은 `auto`이며, Chrome 원본 관측의 `getComputedStyle().minHeight === "0px"`는 브라우저가 직렬화한 CSSOM 결과로 그대로 보존한다. 이 관측을 authored `0px` 또는 Spinon typed `Fixed(0)` 입력으로 해석하지 않는다. 구현 계획의 root typed 값은 `LayoutDimension::Auto`다.
+
 ## 독립 규범 계산과 Chrome 결과
 
-기준은 [CSS Grid Layout Module Level 1, 2025 CRD §7.2.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes), [§7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat), [§11](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-overview), [CSS Sizing Level 3 §2](https://www.w3.org/TR/css-sizing-3/#definite)다. CSS Sizing은 `max-content` intrinsic keyword를 indefinite size로 정의한다. Grid §7.2.3.2에 따라 max-content preferred height로 repeat count를 계산할 수 없으며, 이 입력의 initial `min-height: 0`이 적용되더라도 최소 한 번 반복하므로 count는 1이다. Grid §7.2.1과 §11은 cyclic track percentage를 grid container intrinsic size 계산 중 `auto`처럼 취급하고, container 크기를 얻은 뒤 그 크기를 percentage basis로 사용한다.
+기준은 [CSS Grid Layout Module Level 1, 2025 CRD §7.2.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes), [§7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat), [§11](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-overview), [CSS Sizing Level 3 §2](https://www.w3.org/TR/css-sizing-3/#definite), [§3.1.2](https://www.w3.org/TR/css-sizing-3/#min-width-min-height)다. CSS Sizing은 `max-content` intrinsic keyword를 indefinite size로 정의하고, `min-height` 초기값은 `auto`로 둔다. 따라서 이 입력의 root에는 authored definite minimum size가 없다. Grid §7.2.3.2에 따라 definite preferred/maximum size와 definite minimum size가 모두 없으므로 auto-repeat count는 1회다. Grid §7.2.1과 §11은 cyclic track percentage를 grid container intrinsic size 계산 중 `auto`처럼 취급하고, container 크기를 얻은 뒤 그 크기를 percentage basis로 사용한다.
 
 | Scene | 독립 기대값 | Chrome 156 관측 | 비교 |
 | --- | --- | --- | --- |
