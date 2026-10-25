@@ -23,7 +23,7 @@
 | 16 | RTL/vertical writing mode에서 inline edge가 반대 | 첫 profile을 horizontal-tb/LTR로 제한하고 edge 판정 불능은 거부한다. |
 | 17 | Taffy `Overflow::Scroll` 예약이 flex/grid auto-minimum에 회귀 | 초기 Block-only profile 이후 다른 formatting context를 별도 plan/review로 둔다. |
 | 18 | width/color의 style 입력을 gutter geometry와 섞어 대량 변경됨 | `scrollbar-width/color`와 scrollbar renderer/interaction은 후속으로 명시 제외한다. |
-| 19 | mobile overlay bar가 안 보이자 테스트가 bar가 있는 것처럼 pass 처리하거나 Chrome first-run을 mode evidence로 과장 | Android Chrome은 first-run에서 중단했고 iOS Safari는 열지 않았다. AVD/iOS mode 미관찰로 기록하며 구현 gate는 닫혀 있다. |
-| 20 | Sim output이 CSS 의미가 아니라 host compositor 차이를 보여줌 | geometry, hit identity, Android PixelCopy, iOS drawable 증거를 구분하며 compositor 이후/실기기는 미검증으로 남긴다. |
+| 19 | mobile overlay bar가 안 보이자 테스트가 bar가 있는 것처럼 pass 처리하거나 Chrome first-run을 mode evidence로 과장 | Android Chrome은 first-run에서 중단했다. iOS Safari는 stable/both-edges zero-gutter geometry를 보였지만 indicator mode는 직접 보이지 않아 구현 gate는 닫혀 있다. |
+| 20 | Simulator output이 CSS 의미가 아니라 host compositor 차이를 보여줌 | iOS screenshot과 DOM metrics를 함께 남기되 compositor 이후/실기기 및 gesture-time indicator는 미검증으로 구분한다. |
 
 **검토 후 상태:** plan review 20/20 작성. 구현 review 및 PR delta review는 구현 코드/PR이 없으므로 아직 실행하지 않았다. AVD/iOS 실행 슬롯이 확보되면 mode 판정을 끝낸다. Overlay-only 결론이면 runtime code 없이 이 결과를 종료 근거로 남긴다.
