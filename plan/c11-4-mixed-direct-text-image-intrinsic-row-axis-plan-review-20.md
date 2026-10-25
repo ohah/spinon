@@ -19,8 +19,15 @@
 15. **DOM reverse가 item의 column을 바꿀 수 있음** — reverse는 source order만 바꾸고 class-bound explicit placements를 유지한다.
 16. **gap이나 box edges가 20px/74px을 오염시킬 수 있음** — row/column gap, margins, padding, border를 모두 0으로 고정한다.
 17. **정렬의 stretch가 기대 item frame을 바꿀 수 있음** — 두 item의 block alignment를 start로 두며 text inline size는 stretch로 definite 50px column과 맞춘다. image는 start-aligned natural size를 유지한다.
-18. **Chrome 관찰을 규범 계산으로 승격할 수 있음** — 새 Chrome 156 row-axis 4-scene observation은 독립 CSS 계산과 별도 표기한다. Browser-only absolute `track-probe`는 out-of-flow measurement helper이며 sizing item이 아니다. Chrome 결과가 CSS 규범을 결정하지 않으며 geometry가 다르면 구현 전 원인을 조사하도록 둔다.
-19. **하나의 고정 scene 성공을 일반 HTML 지원으로 확대할 수 있음** — 전용 opt-in IDs, fail-closed 입력, simulator evidence 제한과 C11.4 미완료를 기록한다.
+18. **Chrome 관찰을 규범 계산으로 승격할 수 있음** — 새 Chrome 156 row-axis 4-scene observation은 독립 CSS 계산과 별도 표기한다. Browser-only absolute `track-probe`는 out-of-flow measurement helper이며 sizing item이 아니다. Chrome 결과가 CSS 규범을 결정하지 않으며 geometry가 다르면 구현 전 원인을 조사하도록 둔다. PR 본문 이미지 확인 자료는 README에서 별도 링크/hash로 연결한다.
+19. **하나의 고정 scene 성공을 일반 HTML 지원으로 확대할 수 있음** — 전용 opt-in IDs, Android Java/iOS Swift scene allowlists, scene별 frame/track/trace assertion owner와 별도 row capture/evidence 경로를 계획한다. 입력은 fail-closed로 유지하고 simulator evidence와 C11.4 미완료를 구분한다.
 20. **계획 검토를 구현/runtime 또는 PR diff 검토에 재사용할 수 있음** — 각 단계에서 새 관점 검토를 별도로 요구하고, 공식 완료 `72/213`을 변경하지 않는다.
 
-검토 결과 계획에 반영할 누락은 없었다. 특히 `min-content`와 `max-content` row 결과가 모두 20px인 사실, text item의 element topology, Chrome 관측과 runtime 검증의 증거 경계를 계획에 명시했다.
+1차 계획 검토 시점에는 누락을 찾지 못했다. 이후 PR diff 검토에서 host adapter 및 capture ownership 누락이 확인되어 아래 수정 기록에 반영했다.
+
+## 계획 검토 수정 기록 · PR #619 diff feedback
+
+- **B1 수정:** 계획의 구현 gate와 파일 경계에 Android `platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java`, iOS `platforms/ios/Sources/C0410RuntimeGpuDemo.swift`의 scene allowlist, root/item frame, column/row track, intrinsic contribution 및 trace 기대값 책임을 명시했다. 기존 #611 capture script/evidence는 재사용하지 않고, `spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs`와 그 디렉터리의 run evidence를 새 경로로 사용한다. **관점 19와 20을 수정 후 다시 읽어 확인했다:** host adapter와 capture gate가 모두 구현 완료 조건에 연결되고 일반 CSS 지원을 확대하지 않는다.
+- **B2 확인:** precomparison README에는 `pr619-row-axis-image-agent-browser.png` 및 `pr619-row-axis-image-verification.json` 링크와 SHA-256이 있다. 실제 파일 hash도 각각 `f770eed5db65c25743981419237bc0a61539352ccada9007783b0da057796d65` 및 `8977ba0bd7a3aa9ae8febfbea1444388d9ebb34230d14f3c26817512eb2f1049`로 README와 일치한다. **관점 18과 20을 수정 후 다시 확인했다:** README 경로/hash는 유효하지만 두 파일은 현재 untracked라 아직 PR tree에 포함되지 않았다. 이 수정 기록은 staged/PR membership을 주장하지 않는다.
+
+검토 종료 시점의 계획은 `min-content`/`max-content` 기대값이 모두 20px이라는 한계, direct `<div>` text item topology, Chrome-vs-runtime evidence 경계를 유지한다. 수정 계획 review는 implementation/runtime review 또는 PR diff review를 대체하지 않는다.
