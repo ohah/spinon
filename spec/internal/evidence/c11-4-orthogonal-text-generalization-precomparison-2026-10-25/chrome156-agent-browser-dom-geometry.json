@@ -1,0 +1,548 @@
+{
+  "fontLoaded": true,
+  "fontStatus": "loaded",
+  "scenes": [
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 30,
+        "width": 74,
+        "x": 20,
+        "y": 36
+      },
+      "id": "single-token-min-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 36
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "30px",
+      "text": "ABC",
+      "textRect": {
+        "height": 30,
+        "width": 50,
+        "x": 20,
+        "y": 36
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 30,
+        "width": 74,
+        "x": 20,
+        "y": 128
+      },
+      "id": "single-token-max-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 128
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "30px",
+      "text": "ABC",
+      "textRect": {
+        "height": 30,
+        "width": 50,
+        "x": 20,
+        "y": 128
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 20,
+        "width": 74,
+        "x": 20,
+        "y": 220
+      },
+      "id": "two-words-min-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 220
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "20px",
+      "text": "A BC",
+      "textRect": {
+        "height": 20,
+        "width": 50,
+        "x": 20,
+        "y": 220
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 40,
+        "width": 74,
+        "x": 20,
+        "y": 312
+      },
+      "id": "two-words-max-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 312
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "40px",
+      "text": "A BC",
+      "textRect": {
+        "height": 40,
+        "width": 50,
+        "x": 20,
+        "y": 312
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 30,
+        "width": 74,
+        "x": 20,
+        "y": 404
+      },
+      "id": "three-words-min-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 404
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "30px",
+      "text": "AB CDE F",
+      "textRect": {
+        "height": 30,
+        "width": 50,
+        "x": 20,
+        "y": 404
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 80,
+        "width": 74,
+        "x": 20,
+        "y": 496
+      },
+      "id": "three-words-max-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 496
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "80px",
+      "text": "AB CDE F",
+      "textRect": {
+        "height": 80,
+        "width": 50,
+        "x": 20,
+        "y": 496
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 20,
+        "width": 74,
+        "x": 20,
+        "y": 588
+      },
+      "id": "collapsed-whitespace-min-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 588
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "20px",
+      "text": "  A   9Z  ",
+      "textRect": {
+        "height": 20,
+        "width": 50,
+        "x": 20,
+        "y": 588
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 40,
+        "width": 74,
+        "x": 20,
+        "y": 680
+      },
+      "id": "collapsed-whitespace-max-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 680
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "40px",
+      "text": "  A   9Z  ",
+      "textRect": {
+        "height": 40,
+        "width": 50,
+        "x": 20,
+        "y": 680
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 16,
+        "width": 74,
+        "x": 20,
+        "y": 772
+      },
+      "id": "spaces-only-min-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 772
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "16px",
+      "text": "   ",
+      "textRect": {
+        "height": 16,
+        "width": 50,
+        "x": 20,
+        "y": 772
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 16,
+        "width": 74,
+        "x": 20,
+        "y": 864
+      },
+      "id": "spaces-only-max-content",
+      "imageComplete": true,
+      "imageRect": {
+        "height": 16,
+        "width": 24,
+        "x": 70,
+        "y": 864
+      },
+      "natural": {
+        "height": 16,
+        "width": 24
+      },
+      "rows": "16px",
+      "text": "   ",
+      "textRect": {
+        "height": 16,
+        "width": 50,
+        "x": 20,
+        "y": 864
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 0,
+        "width": 74,
+        "x": 20,
+        "y": 956
+      },
+      "id": "spaces-only-no-image-min-content",
+      "imageComplete": null,
+      "imageRect": null,
+      "natural": null,
+      "rows": "0px",
+      "text": "   ",
+      "textRect": {
+        "height": 0,
+        "width": 50,
+        "x": 20,
+        "y": 956
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    },
+    {
+      "columns": "50px 24px",
+      "grid": {
+        "height": 0,
+        "width": 74,
+        "x": 20,
+        "y": 1048
+      },
+      "id": "spaces-only-no-image-max-content",
+      "imageComplete": null,
+      "imageRect": null,
+      "natural": null,
+      "rows": "0px",
+      "text": "   ",
+      "textRect": {
+        "height": 0,
+        "width": 50,
+        "x": 20,
+        "y": 1048
+      },
+      "textStyle": {
+        "direction": "ltr",
+        "fontFamily": "Ahem",
+        "fontSize": "10px",
+        "fontStyle": "normal",
+        "fontVariantLigatures": "normal",
+        "fontWeight": "400",
+        "lineBreak": "normal",
+        "lineHeight": "10px",
+        "overflowWrap": "normal",
+        "textOrientation": "mixed",
+        "textWrapMode": "wrap",
+        "whiteSpace": "normal",
+        "whiteSpaceCollapse": "collapse",
+        "wordBreak": "normal",
+        "writingMode": "vertical-rl"
+      }
+    }
+  ],
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

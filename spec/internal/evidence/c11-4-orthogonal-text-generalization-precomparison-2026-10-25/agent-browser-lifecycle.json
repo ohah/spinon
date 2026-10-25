@@ -1,0 +1,15 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "session": "c114og5",
+  "namespace": "c114og5",
+  "closeCommands": [
+    "agent-browser --session c114og5 --namespace c114og5 close --all",
+    "agent-browser close --all"
+  ],
+  "closeResults": [
+    "Closed session: c114og5",
+    "Closed session: default"
+  ],
+  "processScanAfterClose": [],
+  "userChromeTouched": false
+}
