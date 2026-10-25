@@ -1,55 +1,171 @@
 {
-  "schemaVersion": 1,
-  "testedSourceRevision": {
-    "baseCommit": "3ece14e23e82c66bab93939836295fef8e1b09d0",
-    "trackedPatchSha256": "8dd4625b1d15588df4d056bd8ee5f4559ff5a15589be119bfce2ac7bf4348ed2"
+  "schemaVersion": 2,
+  "finalSourceRevision": {
+    "commit": "0af34026039f11c8f354856b34bdef12f8fd7878",
+    "tree": "b927942e35b5257a132bea2f326c80d972793172",
+    "sourceInputCount": 9,
+    "sourceFilesSha256": "7e1d93fc5705a633026d401e613f93e7360cf99c0e6dcfdeed518f7f9652b1fb"
   },
-  "postWritingModeFixSourceChange": "The row FFI source no longer authors writing-mode; the computed root default remains checked.",
-  "checks": [
+  "sourceCorrections": [
     {
-      "command": "cargo fmt --all -- --check",
-      "exitCode": 0,
-      "log": "fmt-after-writing-mode-fix.log"
+      "commit": "d83cb2b157227c296ff53dfcc7b42034df34a580",
+      "change": "Removed unsupported authored self-alignment from row text/image fixture and asserted computed auto/auto."
     },
     {
+      "commit": "0af34026039f11c8f354856b34bdef12f8fd7878",
+      "change": "Added explicit row-root computed justify-items:normal assertion; root also requires align-items:start."
+    }
+  ],
+  "checks": [
+    {
+      "name": "runtime focused test",
       "command": "cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test exposes_four_fixed_mixed_text_image_intrinsic_row_scenes",
       "exitCode": 0,
       "passed": 1,
-      "log": "runtime-focused-after-writing-mode-fix.log"
+      "log": "runtime-focused-final-0af.log"
     },
     {
+      "name": "FFI focused test",
       "command": "cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test exposes_only_four_direct_mixed_intrinsic_row_scenes",
       "exitCode": 0,
       "passed": 1,
-      "log": "ffi-focused-after-writing-mode-fix.log"
+      "log": "ffi-focused-final-0af.log"
     },
     {
+      "name": "runtime all-target Clippy",
       "command": "cargo clippy --locked -p spinon-runtime --all-targets --features c11-4-grid-track-sizing-fixture-test -- -D warnings",
       "exitCode": 0,
-      "log": "runtime-clippy-after-writing-mode-fix.log"
+      "log": "runtime-clippy-final-0af.log"
     },
     {
+      "name": "FFI all-target Clippy",
       "command": "cargo clippy --locked -p spinon-ffi --all-targets --features c04-runtime-gpu-fixture-test -- -D warnings",
       "exitCode": 0,
-      "log": "ffi-clippy-after-writing-mode-fix.log"
+      "log": "ffi-clippy-final-0af.log"
+    },
+    {
+      "name": "rustfmt check",
+      "command": "cargo fmt --all -- --check",
+      "exitCode": 0,
+      "log": "fmt-final-0af.log"
     }
   ],
-  "artifactBoundary": "../artifact-boundary/artifact-boundary.json",
-  "simulatorAttempts": {
-    "android": {
+  "artifactBoundary": {
+    "report": "../artifact-boundary/artifact-boundary.json",
+    "run": "artifact-boundary-20261025T021308Z-410dbb46",
+    "sourceRevision": "0af34026039f11c8f354856b34bdef12f8fd7878",
+    "product": {
+      "archiveSha256": "31571769b42aa332e9d0b774c7f24b540e9588436a2eed38bd4d14fada1fb87b",
+      "sceneMarkers": "0/4",
+      "fixtureAbi": false
+    },
+    "fixtureTest": {
+      "archiveSha256": "12728e6b57c17d1bcb156ce7be27dd63712e7a037d0d5b4f7ebc824f09241c21",
+      "sceneMarkers": "4/4",
+      "fixtureAbi": true
+    },
+    "limitation": "Rust static archive only; does not prove final Android APK/iOS app bundle fixture exclusion."
+  },
+  "historicalSimulatorFailures": [
+    {
       "sourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
-      "passed": 0,
+      "platforms": {
+        "android": "0/4",
+        "ios": "0/4"
+      },
+      "cause": "The row root authored writing-mode:horizontal-tb, rejected by the runtime author allowlist as UnknownProperty.",
+      "androidRun": "../runs/c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e/failure-summary.json",
+      "iosRun": "../runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/failure-summary.json"
+    },
+    {
+      "sourceRevision": "a23917cfd0e867ed2d437912d0abf9c8a996fb6b",
+      "platforms": {
+        "android": "0/4",
+        "ios": "0/4"
+      },
+      "cause": "The row text item authored align-self:start; the computed projection rejected the unsupported Grid item value before trace creation.",
+      "androidRun": "../runs/c114-direct-mixed-row-axis-android-avd-20261025T020129572Z-32d210b8/failure-summary.json",
+      "iosRun": "../runs/c114-direct-mixed-row-axis-ios-simulator-20261025T020132115Z-f96e5e40/failure-summary.json"
+    }
+  ],
+  "finalSimulatorMatrix": {
+    "sourceRevision": "0af34026039f11c8f354856b34bdef12f8fd7878",
+    "expectedGeometry": {
+      "root": "74x20 CSS px",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "text": "x=0,y=0,width=50,height=20 CSS px",
+      "naturalImage": "x=50,y=0,width=24,height=16 CSS px"
+    },
+    "android": {
+      "target": "API 37 ARM64 16 KB AVD emulator-5560",
+      "passed": 4,
       "requested": 4,
-      "failure": "Explicit writing-mode declaration rejected as UnknownProperty.",
-      "run": "../runs/c114-direct-mixed-row-axis-android-avd-20261025T015421086Z-db40b19e/failure-summary.json"
+      "apkSha256": "f42340d6e9648a674e99de0f6e841ad3608f1998d662ea8c43e61ff6b941202b",
+      "installedApkSha256": "f42340d6e9648a674e99de0f6e841ad3608f1998d662ea8c43e61ff6b941202b",
+      "manifest": "../runs/c114-direct-mixed-row-axis-android-avd-20261025T021332021Z-d0cb6eb7/android-simulator.json",
+      "manifestSha256": "14534c652dbef52bf088e65f43d150b3a37c0a4bdb4acfd85061b66b4267434a",
+      "postRun": "Spinon stopped; no app PID; foreground Nexus Launcher."
     },
     "ios": {
-      "sourceRevision": "3ece14e23e82c66bab93939836295fef8e1b09d0",
-      "passed": 0,
+      "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+      "passed": 4,
       "requested": 4,
-      "failure": "Explicit writing-mode declaration rejected as UnknownProperty.",
-      "run": "../runs/c114-direct-mixed-row-axis-ios-simulator-20261025T015425043Z-3b69fe0d/failure-summary.json"
+      "appSha256": "e6fea42023aee30e632b4454b53dfd6d905c37a4be8bd4c3ccb2038e0beeea92",
+      "manifest": "../runs/c114-direct-mixed-row-axis-ios-simulator-20261025T021336446Z-00e16757/ios-simulator.json",
+      "manifestSha256": "3a786afdc67c851c4c94189d75bea40a58438dd8db0aff8ffda850b8a73ff6fa",
+      "postRun": "Target simulator Shutdown; other booted simulators unchanged.",
+      "provenanceNote": "Tracked diff hash differs between build provenance and final sourceRevision; three dirty evidence docs are listed in both snapshots and all nine source-file hashes match."
     }
   },
-  "postFixAndroidIosMatrix": "pending"
+  "sharedMatcherRegressionMatrix": {
+    "sourceRevision": "0af34026039f11c8f354856b34bdef12f8fd7878",
+    "scenes": [
+      "direct-min-content-forward",
+      "direct-min-content-reversed",
+      "direct-max-content-forward",
+      "direct-max-content-reversed"
+    ],
+    "android": {
+      "target": "API 37 ARM64 16 KB AVD emulator-5560",
+      "passed": 4,
+      "requested": 4,
+      "manifest": "../runs/c114-direct-mixed-column-regression-android-avd-20261025T022319630Z-adc546c2/android-simulator.json",
+      "manifestSha256": "5c498e7c66251c9d5ce68939c40148b86cd96613bd9f2d5d2241f18b867926c9",
+      "sourceFilesSha256": "387f7c73a5b1f2d07aab44ed2566fa85180f2a71b2bb07db74f360c305ca6fcf",
+      "appSha256": "f42340d6e9648a674e99de0f6e841ad3608f1998d662ea8c43e61ff6b941202b"
+    },
+    "ios": {
+      "target": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "passed": 4,
+      "requested": 4,
+      "manifest": "../regression/runs/c114-direct-mixed-ios-simulator-20261025T022325437Z-aec18e56/ios-simulator.json",
+      "manifestSha256": "fee8440a92a3b389b70e61ef5a8fdb2f13598537e438248a95ddd801b399ffbf",
+      "sourceFilesSha256": "387f7c73a5b1f2d07aab44ed2566fa85180f2a71b2bb07db74f360c305ca6fcf",
+      "appSha256": "3171e01449b831fa49b2eac5a72b9acc75e31ef31ede6a31b4b83283555ba354"
+    },
+    "expected": {
+      "minContent": "columns [50], rows [24,24], root 120x48, text 50x20, natural image 24x16",
+      "maxContent": "columns [80], rows [24,24], root 120x48, text 80x10, natural image 24x16"
+    },
+    "checks": [
+      "source order",
+      "item frames",
+      "intrinsic contributions",
+      "track trace",
+      "draw/present boxes=3"
+    ],
+    "limitation": "Layout and box placement only; not pixel equality, physical-device, hardware-GPU, or compositor proof."
+  },
+  "screenshotLimit": "Simulator screenshots show box/layout status only; glyph/PNG texel or compositor pixel equality was not measured.",
+  "officialStatus": {
+    "c11_4Complete": false,
+    "officialCompletionCount": "72/213"
+  }
 }

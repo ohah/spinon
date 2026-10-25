@@ -1,0 +1,72 @@
+{
+  "capturedAt": "2026-10-25T02:12:55.050Z",
+  "scenes": [
+    {
+      "id": "min-forward",
+      "image": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      },
+      "root": {
+        "alignItems": "start",
+        "justifyItems": "normal"
+      },
+      "text": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      }
+    },
+    {
+      "id": "min-reversed",
+      "image": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      },
+      "root": {
+        "alignItems": "start",
+        "justifyItems": "normal"
+      },
+      "text": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      }
+    },
+    {
+      "id": "max-forward",
+      "image": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      },
+      "root": {
+        "alignItems": "start",
+        "justifyItems": "normal"
+      },
+      "text": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      }
+    },
+    {
+      "id": "max-reversed",
+      "image": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      },
+      "root": {
+        "alignItems": "start",
+        "justifyItems": "normal"
+      },
+      "text": {
+        "alignSelf": "auto",
+        "justifySelf": "auto"
+      }
+    }
+  ],
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/chrome156-row-axis-default-alignment-fixture.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
