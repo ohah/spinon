@@ -1,18 +1,21 @@
 $ mise exec -- cargo build --locked --release --no-default-features -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test
 sourceSnapshotBefore:
 {
-  "head": "0c7c34b8f956a6b063a180ec68942fd0d1c8798f",
-  "implementationDiffSha256": "26cff5b6335feca9476017b62c336c6081f1a1b5228435ab590e8d0e96656010",
-  "implementationFiles": {
-    "crates/spinon-text-layout/src/engine/intrinsic.rs": "d5659ee7cf10ab2554fc2f244c59b1ba9ac5378694061449962b9a6d5cda83d7",
-    "crates/spinon-text-layout/src/tests.rs": "c9726ff86aea0239fcf038a116f68b9ce23c60e10cc1e5177116c5a24bcd48e7",
-    "crates/spinon-style-to-layout/src/projection.rs": "bd151e94373f87eff50782475ea16523994d763c63a6b5a0a0bad97af302492f",
-    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs": "64b7fe63beb49787970708ea3f2bcbee9bca27cfcd33be81b3b962871274121d",
-    "crates/spinon-layout/src/intrinsic_measurement.rs": "8568e29b5450a732c224f8a5e886a387624004e3d9ea84b50a1f85e60c055111",
-    "crates/spinon-layout/src/calc_tree/text.rs": "bf387d67bcb0c64def8e23bb7efbcc9bdc3c768797e7b7cfab5be521ef7dd092",
+  "head": "8f825a10ce51403a7838fe564c0253483be24b16",
+  "candidateBaseHead": "0c7c34b8f956a6b063a180ec68942fd0d1c8798f",
+  "candidateDiffSha256": "d3912cbe66106f5848ce99dd7aa25733284422be1c4fc5d06b1aa33cab295f79",
+  "candidateSourceFiles": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "7161f672dda040ca61dbd85df0f71fa07ba987451d8e16f9078b4daa609a54e4",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs": "9db0ec3bfbfb5e72bdb3c6f9f4d44220b2be8ce55c024bdb06c21e924bc95fb6",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "b22642b82706cea95dc633f096d91da2274307f0949988a0bb3d12695d252558",
+    "crates/spinon-layout/src/c15_text_layout_tests.rs": "514891ce6d4e8cb01dcea64de5d2d66d886c283d9250edcaaf3855215484e617",
     "crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs": "2d1d88bb3546ae51fcf462b6fed4f90fbb3f910b79849601da8b989d965149a4",
+    "crates/spinon-layout/src/calc_tree/text.rs": "bf387d67bcb0c64def8e23bb7efbcc9bdc3c768797e7b7cfab5be521ef7dd092",
     "crates/spinon-layout/src/grid_text_stretch_tests.rs": "c652bfd330c9a233256b52cb705777d9ee5a09c0c66c8c275bf5495351d0fbe1",
-    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs": "b0c673a9e6178bef8a08848f65eb5e1e6f6fd910ac9888482c753b0767349882",
+    "crates/spinon-layout/src/intrinsic_measurement.rs": "8568e29b5450a732c224f8a5e886a387624004e3d9ea84b50a1f85e60c055111",
+    "crates/spinon-layout/src/intrinsic_size_tests.rs": "9c00e7e4c50043e57cf7200721acaf51fb8d8fede681cc4db05b94544d118268",
+    "crates/spinon-layout/src/lib.rs": "c3b5e24a0562583a2899402dfad2b099dbbee0020b3acc2d0ae7a86c2a601649",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "5637a100777403691b8b0b01ea05e409df33eafe2c5c305edfd0384d3c105e6a",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "c2e5b92cd070a1e946b7830b491a8c5cf090fa88bd591aaf7f8bae3636bb1c41",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/scene.rs": "5ca8fe6b0fadea02633cf51200ca8aef51bbe644d12b10a46166b6437f260193",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/style.rs": "a40c009c1751ef90e8264f9c107fdc00e46eaf828ce59f09889b9db995962c8d",
@@ -21,30 +24,34 @@ sourceSnapshotBefore:
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/assertions.rs": "09378d5340617fb9089c067891153dfdb6af89ce40b27773a9a372d9f1ea47bf",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/scene.rs": "f2ad12ddc2bca558ad1f4a577f8df100d11810ec2f1123c87db73ecbdd67cb47",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/snapshot.rs": "05f5f65ceef042d9d7834f8c374c266e1dc37a359deb11f1d4fc9744d601634c",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "7161f672dda040ca61dbd85df0f71fa07ba987451d8e16f9078b4daa609a54e4",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs": "9db0ec3bfbfb5e72bdb3c6f9f4d44220b2be8ce55c024bdb06c21e924bc95fb6",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "b22642b82706cea95dc633f096d91da2274307f0949988a0bb3d12695d252558",
+    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs": "64b7fe63beb49787970708ea3f2bcbee9bca27cfcd33be81b3b962871274121d",
+    "crates/spinon-style-to-layout/src/projection.rs": "bd151e94373f87eff50782475ea16523994d763c63a6b5a0a0bad97af302492f",
+    "crates/spinon-text-layout/src/engine/intrinsic.rs": "d5659ee7cf10ab2554fc2f244c59b1ba9ac5378694061449962b9a6d5cda83d7",
+    "crates/spinon-text-layout/src/tests.rs": "c9726ff86aea0239fcf038a116f68b9ce23c60e10cc1e5177116c5a24bcd48e7",
     "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "05cc7663ef6edfaa90ea0768687b7ce266c88f204b7aa5b70c43a169aa38f8d5",
     "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "d3d7aba96858f4a926ffad014b5f130e3b0d29b757fe580134d6209af210c90c"
   },
-  "implementationFilesSha256": "b505d00b10e143279053e58102028fd200d74593f8873552c49f056f51fd6b42"
+  "candidateSourceFilesSha256": "82fccfc0f54eabfc6444fc33424b05cde2e315134c5611328e04bd4eaac92eeb"
 }
 buildOutput:
-    Finished `release` profile [optimized] target(s) in 0.11s
+    Finished `release` profile [optimized] target(s) in 0.09s
 sourceSnapshotAfter:
 {
-  "head": "0c7c34b8f956a6b063a180ec68942fd0d1c8798f",
-  "implementationDiffSha256": "26cff5b6335feca9476017b62c336c6081f1a1b5228435ab590e8d0e96656010",
-  "implementationFiles": {
-    "crates/spinon-text-layout/src/engine/intrinsic.rs": "d5659ee7cf10ab2554fc2f244c59b1ba9ac5378694061449962b9a6d5cda83d7",
-    "crates/spinon-text-layout/src/tests.rs": "c9726ff86aea0239fcf038a116f68b9ce23c60e10cc1e5177116c5a24bcd48e7",
-    "crates/spinon-style-to-layout/src/projection.rs": "bd151e94373f87eff50782475ea16523994d763c63a6b5a0a0bad97af302492f",
-    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs": "64b7fe63beb49787970708ea3f2bcbee9bca27cfcd33be81b3b962871274121d",
-    "crates/spinon-layout/src/intrinsic_measurement.rs": "8568e29b5450a732c224f8a5e886a387624004e3d9ea84b50a1f85e60c055111",
-    "crates/spinon-layout/src/calc_tree/text.rs": "bf387d67bcb0c64def8e23bb7efbcc9bdc3c768797e7b7cfab5be521ef7dd092",
+  "head": "8f825a10ce51403a7838fe564c0253483be24b16",
+  "candidateBaseHead": "0c7c34b8f956a6b063a180ec68942fd0d1c8798f",
+  "candidateDiffSha256": "d3912cbe66106f5848ce99dd7aa25733284422be1c4fc5d06b1aa33cab295f79",
+  "candidateSourceFiles": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "7161f672dda040ca61dbd85df0f71fa07ba987451d8e16f9078b4daa609a54e4",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs": "9db0ec3bfbfb5e72bdb3c6f9f4d44220b2be8ce55c024bdb06c21e924bc95fb6",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "b22642b82706cea95dc633f096d91da2274307f0949988a0bb3d12695d252558",
+    "crates/spinon-layout/src/c15_text_layout_tests.rs": "514891ce6d4e8cb01dcea64de5d2d66d886c283d9250edcaaf3855215484e617",
     "crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs": "2d1d88bb3546ae51fcf462b6fed4f90fbb3f910b79849601da8b989d965149a4",
+    "crates/spinon-layout/src/calc_tree/text.rs": "bf387d67bcb0c64def8e23bb7efbcc9bdc3c768797e7b7cfab5be521ef7dd092",
     "crates/spinon-layout/src/grid_text_stretch_tests.rs": "c652bfd330c9a233256b52cb705777d9ee5a09c0c66c8c275bf5495351d0fbe1",
-    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs": "b0c673a9e6178bef8a08848f65eb5e1e6f6fd910ac9888482c753b0767349882",
+    "crates/spinon-layout/src/intrinsic_measurement.rs": "8568e29b5450a732c224f8a5e886a387624004e3d9ea84b50a1f85e60c055111",
+    "crates/spinon-layout/src/intrinsic_size_tests.rs": "9c00e7e4c50043e57cf7200721acaf51fb8d8fede681cc4db05b94544d118268",
+    "crates/spinon-layout/src/lib.rs": "c3b5e24a0562583a2899402dfad2b099dbbee0020b3acc2d0ae7a86c2a601649",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "5637a100777403691b8b0b01ea05e409df33eafe2c5c305edfd0384d3c105e6a",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "c2e5b92cd070a1e946b7830b491a8c5cf090fa88bd591aaf7f8bae3636bb1c41",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/scene.rs": "5ca8fe6b0fadea02633cf51200ca8aef51bbe644d12b10a46166b6437f260193",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/style.rs": "a40c009c1751ef90e8264f9c107fdc00e46eaf828ce59f09889b9db995962c8d",
@@ -53,12 +60,13 @@ sourceSnapshotAfter:
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/assertions.rs": "09378d5340617fb9089c067891153dfdb6af89ce40b27773a9a372d9f1ea47bf",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/scene.rs": "f2ad12ddc2bca558ad1f4a577f8df100d11810ec2f1123c87db73ecbdd67cb47",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/snapshot.rs": "05f5f65ceef042d9d7834f8c374c266e1dc37a359deb11f1d4fc9744d601634c",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "7161f672dda040ca61dbd85df0f71fa07ba987451d8e16f9078b4daa609a54e4",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs": "9db0ec3bfbfb5e72bdb3c6f9f4d44220b2be8ce55c024bdb06c21e924bc95fb6",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "b22642b82706cea95dc633f096d91da2274307f0949988a0bb3d12695d252558",
+    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs": "64b7fe63beb49787970708ea3f2bcbee9bca27cfcd33be81b3b962871274121d",
+    "crates/spinon-style-to-layout/src/projection.rs": "bd151e94373f87eff50782475ea16523994d763c63a6b5a0a0bad97af302492f",
+    "crates/spinon-text-layout/src/engine/intrinsic.rs": "d5659ee7cf10ab2554fc2f244c59b1ba9ac5378694061449962b9a6d5cda83d7",
+    "crates/spinon-text-layout/src/tests.rs": "c9726ff86aea0239fcf038a116f68b9ce23c60e10cc1e5177116c5a24bcd48e7",
     "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "05cc7663ef6edfaa90ea0768687b7ce266c88f204b7aa5b70c43a169aa38f8d5",
     "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "d3d7aba96858f4a926ffad014b5f130e3b0d29b757fe580134d6209af210c90c"
   },
-  "implementationFilesSha256": "b505d00b10e143279053e58102028fd200d74593f8873552c49f056f51fd6b42"
+  "candidateSourceFilesSha256": "82fccfc0f54eabfc6444fc33424b05cde2e315134c5611328e04bd4eaac92eeb"
 }
 sourceSnapshotsMatch=True

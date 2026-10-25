@@ -33,13 +33,15 @@ def sha256(data: bytes) -> str:
 
 def implementation_paths() -> tuple[str, ...]:
     matrix = json.loads(MATRIX_METADATA.read_text(encoding="utf-8"))
-    paths = tuple(matrix["source"]["implementationFiles"].keys())
-    if len(paths) != 22:
-        raise RuntimeError(f"matrix metadata must define the frozen 22 implementation paths; found {len(paths)}")
+    paths = tuple(matrix["source"]["candidateSourceFiles"].keys())
+    if len(paths) != 25:
+        raise RuntimeError(f"matrix metadata must define all 25 changed candidate source paths; found {len(paths)}")
     return paths
 
 
 def source_snapshot(paths: tuple[str, ...]) -> dict:
+    matrix = json.loads(MATRIX_METADATA.read_text(encoding="utf-8"))
+    base_head = matrix["source"]["candidateBaseHead"]
     files = {}
     for relative in paths:
         path = ROOT / relative
@@ -47,15 +49,34 @@ def source_snapshot(paths: tuple[str, ...]) -> dict:
             raise RuntimeError(f"missing implementation source: {relative}")
         files[relative] = sha256(path.read_bytes())
     head = subprocess.check_output(["git", "rev-parse", "HEAD"], cwd=ROOT, text=True).strip()
-    diff = subprocess.run(["git", "diff", "--binary", head, "--", *paths], cwd=ROOT,
+    changed_paths = subprocess.check_output(
+        ["git", "diff", "--name-only", base_head, head, "--", "crates", "platforms"],
+        cwd=ROOT, text=True,
+    ).splitlines()
+    if set(changed_paths) != set(paths):
+        missing = sorted(set(changed_paths) - set(paths))
+        extra = sorted(set(paths) - set(changed_paths))
+        raise RuntimeError(f"candidate source path inventory changed; missing={missing}, extra={extra}")
+    diff = subprocess.run(["git", "diff", "--binary", base_head, head, "--", *paths], cwd=ROOT,
                           stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
     if diff.returncode:
-        raise RuntimeError(f"git diff --binary {head} -- <implementation paths> failed: {diff.stderr}")
+        raise RuntimeError(f"git diff --binary {base_head}..{head} -- <candidate source paths> failed: {diff.stderr}")
+    for diff_args in (
+        ["git", "diff", "--cached", "--binary", head, "--", *paths],
+        ["git", "diff", "--binary", head, "--", *paths],
+    ):
+        pending = subprocess.run(diff_args, cwd=ROOT, stdout=subprocess.PIPE,
+                                 stderr=subprocess.PIPE, text=True)
+        if pending.returncode:
+            raise RuntimeError(f"{' '.join(diff_args[:5])} failed: {pending.stderr}")
+        if pending.stdout:
+            raise RuntimeError("candidate source paths have staged or unstaged changes")
     return {
         "head": head,
-        "implementationDiffSha256": sha256(diff.stdout.encode()),
-        "implementationFiles": files,
-        "implementationFilesSha256": sha256(json.dumps(files, sort_keys=True).encode()),
+        "candidateBaseHead": base_head,
+        "candidateDiffSha256": sha256(diff.stdout.encode()),
+        "candidateSourceFiles": files,
+        "candidateSourceFilesSha256": sha256(json.dumps(files, sort_keys=True).encode()),
     }
 
 
@@ -165,7 +186,7 @@ def main() -> None:
         "sourceSnapshot": baseline_snapshot,
         "sourceSnapshotChecks": source_snapshot_checks,
         "implementationPathListSource": str(MATRIX_METADATA.relative_to(ROOT)),
-        "sourceSnapshotScope": "Compiled implementation sources only. implementationDiffSha256 is git diff --binary HEAD restricted to the 22 implementation paths; evidence/docs are intentionally excluded. All 22 on-disk file contents, including untracked files, are covered by per-file and aggregate SHA-256 values.",
+        "sourceSnapshotScope": "The candidate diff and per-file hashes cover all 25 changed source paths under crates/ and platforms/: production Rust, test-only Rust, and Android/iOS fixture drivers. This is a complete changed-source inventory, not a claim that every path is linked into both static archives. Evidence/docs paths are excluded.",
         "llvmNm": str(LLVM_NM),
         "llvmNmVersion": llvm_nm_version,
         "fixtureFfiSymbol": FIXTURE_SYMBOL,
@@ -182,11 +203,12 @@ def main() -> None:
     readme = [
         "# C11.4 static archive boundary scan",
         "",
-        f"Source revision (HEAD): `{baseline_snapshot['head']}`",
-        f"Implementation diff SHA-256: `{baseline_snapshot['implementationDiffSha256']}`",
-        f"Implementation files: {len(baseline_snapshot['implementationFiles'])}",
-        f"Implementation aggregate SHA-256: `{baseline_snapshot['implementationFilesSha256']}`",
-        "Source scope: the binary diff is limited to the 22 compiled implementation paths; evidence/docs changes are intentionally excluded. Every on-disk implementation file is hashed directly, including untracked files.",
+        f"Candidate source HEAD: `{baseline_snapshot['head']}`",
+        f"Candidate base HEAD: `{baseline_snapshot['candidateBaseHead']}`",
+        f"Candidate source diff SHA-256: `{baseline_snapshot['candidateDiffSha256']}`",
+        f"Changed candidate source paths: {len(baseline_snapshot['candidateSourceFiles'])}",
+        f"Candidate source aggregate SHA-256: `{baseline_snapshot['candidateSourceFilesSha256']}`",
+        "Source scope: the candidate diff and per-file hashes cover all 25 changed paths under `crates/` and `platforms/`, including production Rust, test-only Rust, and Android/iOS fixture drivers. This is not a claim that every path is linked into both archives. Evidence/docs changes are excluded.",
         f"Build source snapshots matched before/after both archives: `{all(check['matches'] for check in source_snapshot_checks.values())}`",
         f"Command: `python3 {Path(__file__).relative_to(ROOT)}`",
         f"Scanner: `{report['llvmNmVersion']}`",
@@ -219,7 +241,7 @@ def main() -> None:
         *([f"fixture FFI export: {FIXTURE_SYMBOL}"] if results["fixtureTest"]["fixtureFfiSymbolPresent"] else []),
         "```",
         "",
-        f"Full 22-path per-file source snapshot and all four before/after captures are in `scan-results.json`; each build log records its full before/after snapshots.",
+        f"Full 25-path changed-source snapshot and all four before/after captures are in `scan-results.json`; each build log records its full before/after snapshots.",
         "",
         "Scope: macOS ARM64 `spinon-ffi` static archives only. This scan does not inspect APK/IPA bundles or device state.",
         "",
@@ -234,9 +256,9 @@ def main() -> None:
                       for label, value in results.items()}, indent=2))
     print(json.dumps({
         "sourceHead": baseline_snapshot["head"],
-        "implementationDiffSha256": baseline_snapshot["implementationDiffSha256"],
-        "implementationFileCount": len(baseline_snapshot["implementationFiles"]),
-        "implementationFilesSha256": baseline_snapshot["implementationFilesSha256"],
+        "candidateDiffSha256": baseline_snapshot["candidateDiffSha256"],
+        "candidateSourceFileCount": len(baseline_snapshot["candidateSourceFiles"]),
+        "candidateSourceFilesSha256": baseline_snapshot["candidateSourceFilesSha256"],
         "sourceSnapshotsMatch": all(check["matches"] for check in source_snapshot_checks.values()),
     }, indent=2))
 

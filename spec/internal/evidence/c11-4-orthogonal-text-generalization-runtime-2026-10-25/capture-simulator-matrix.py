@@ -25,6 +25,7 @@ ANDROID_APK = ROOT / "platforms/android/app/build/outputs/apk/debug/app-debug.ap
 IOS_APP = ROOT / "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app"
 IOS_EXECUTABLE = IOS_APP / "SpinonBootstrap"
 BUNDLE_ID = "dev.spinon.bootstrap"
+SOURCE_BASE_HEAD = "0c7c34b8f956a6b063a180ec68942fd0d1c8798f"
 
 TARGET_ROWS = {
     "single-token-min-content": ("ABC", 30.0, 10.0, 30.0, 10.0, 30.0),
@@ -60,15 +61,17 @@ SCENES = {**TARGET_ROWS, **LEGACY_ROWS}
 assert len(TARGET_ROWS) == 10 and len(LEGACY_ROWS) == 12 and len(SCENES) == 22
 
 SOURCE_FILES = [
-    "crates/spinon-text-layout/src/engine/intrinsic.rs",
-    "crates/spinon-text-layout/src/tests.rs",
-    "crates/spinon-style-to-layout/src/projection.rs",
-    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs",
-    "crates/spinon-layout/src/intrinsic_measurement.rs",
-    "crates/spinon-layout/src/calc_tree/text.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+    "crates/spinon-layout/src/c15_text_layout_tests.rs",
     "crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs",
+    "crates/spinon-layout/src/calc_tree/text.rs",
     "crates/spinon-layout/src/grid_text_stretch_tests.rs",
-    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs",
+    "crates/spinon-layout/src/intrinsic_measurement.rs",
+    "crates/spinon-layout/src/intrinsic_size_tests.rs",
+    "crates/spinon-layout/src/lib.rs",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/scene.rs",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/style.rs",
@@ -77,12 +80,14 @@ SOURCE_FILES = [
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/assertions.rs",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/scene.rs",
     "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/snapshot.rs",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/orthogonal_text_intrinsic.rs",
-    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+    "crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs",
+    "crates/spinon-style-to-layout/src/projection.rs",
+    "crates/spinon-text-layout/src/engine/intrinsic.rs",
+    "crates/spinon-text-layout/src/tests.rs",
     "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
     "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
 ]
+assert len(SOURCE_FILES) == 25
 
 
 def sha256(data: bytes) -> str:
@@ -110,14 +115,27 @@ def source_snapshot() -> dict:
         if not path.is_file():
             raise RuntimeError(f"missing implementation source: {relative}")
         files[relative] = sha256(path.read_bytes())
-    implementation_diff = command(
-        "git", "diff", "--binary", "HEAD", "--", *SOURCE_FILES
+    head = command("git", "rev-parse", "HEAD").strip()
+    changed_paths = set(command(
+        "git", "diff", "--name-only", SOURCE_BASE_HEAD, head, "--", "crates", "platforms"
+    ).splitlines())
+    if changed_paths != set(SOURCE_FILES):
+        missing = sorted(changed_paths - set(SOURCE_FILES))
+        extra = sorted(set(SOURCE_FILES) - changed_paths)
+        raise RuntimeError(f"candidate source path inventory changed; missing={missing}, extra={extra}")
+    candidate_diff = command(
+        "git", "diff", "--binary", SOURCE_BASE_HEAD, head, "--", *SOURCE_FILES
     ).encode()
+    staged_diff = command("git", "diff", "--cached", "--binary", head, "--", *SOURCE_FILES).encode()
+    working_tree_diff = command("git", "diff", "--binary", head, "--", *SOURCE_FILES).encode()
+    if staged_diff or working_tree_diff:
+        raise RuntimeError("candidate source files have staged or unstaged changes")
     return {
-        "head": command("git", "rev-parse", "HEAD").strip(),
-        "implementationDiffSha256": sha256(implementation_diff),
-        "implementationFiles": files,
-        "implementationFilesSha256": sha256(json.dumps(files, sort_keys=True).encode()),
+        "head": head,
+        "candidateBaseHead": SOURCE_BASE_HEAD,
+        "candidateDiffSha256": sha256(candidate_diff),
+        "candidateSourceFiles": files,
+        "candidateSourceFilesSha256": sha256(json.dumps(files, sort_keys=True).encode()),
     }
 
 
@@ -452,8 +470,14 @@ def verify_existing_matrix() -> None:
     metadata_path = OUT / "matrix-metadata.json"
     metadata = json.loads(metadata_path.read_text(encoding="utf-8"))
     source = source_snapshot()
-    if metadata.get("source") != source or metadata.get("finalSource") != source:
-        raise RuntimeError("saved simulator matrix source snapshots do not match the current implementation")
+    captured_source = metadata.get("source", {})
+    final_source = metadata.get("finalSource", {})
+    for label, snapshot in (("source", captured_source), ("finalSource", final_source)):
+        if (snapshot.get("candidateBaseHead") != source["candidateBaseHead"]
+                or snapshot.get("candidateDiffSha256") != source["candidateDiffSha256"]
+                or snapshot.get("candidateSourceFiles") != source["candidateSourceFiles"]
+                or snapshot.get("candidateSourceFilesSha256") != source["candidateSourceFilesSha256"]):
+            raise RuntimeError(f"saved simulator matrix {label} candidate source identity does not match current files")
     if not metadata.get("runIdPrefix"):
         raise RuntimeError("saved simulator matrix has no unique run ID prefix")
     if sha256(ANDROID_APK.read_bytes()) != metadata.get("androidApkSha256"):
@@ -500,9 +524,16 @@ def verify_existing_matrix() -> None:
             })
         print(f"PASS verified saved {platform_key} matrix: {len(observations)}/{len(SCENES)}")
 
-    metadata["runtimeEvidenceReverifiedAtUtc"] = dt.datetime.now(dt.timezone.utc).isoformat()
+    metadata["currentSourceVerification"] = {
+        "head": source["head"],
+        "candidateBaseHead": source["candidateBaseHead"],
+        "candidateDiffSha256": source["candidateDiffSha256"],
+        "candidateSourceFilesSha256": source["candidateSourceFilesSha256"],
+        "verifiedAtUtc": dt.datetime.now(dt.timezone.utc).isoformat(),
+    }
+    metadata["runtimeEvidenceReverifiedAtUtc"] = metadata["currentSourceVerification"]["verifiedAtUtc"]
     metadata_path.write_text(json.dumps(metadata, indent=2) + "\n", encoding="utf-8")
-    print("PASS source, unique run IDs, process-bound frames/draws, stable screenshot hashes")
+    print("PASS 25 changed source paths, app hashes, unique run IDs, process-bound frames/draws, stable screenshot hashes")
 
 
 def main() -> None:

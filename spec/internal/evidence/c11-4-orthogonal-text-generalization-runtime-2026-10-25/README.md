@@ -27,7 +27,7 @@ SPINON_IOS_SIMULATOR_UDID=9DCCE836-7659-4914-B6C1-13F54BFFA9DB \
 python3 spec/internal/evidence/c11-4-orthogonal-text-generalization-runtime-2026-10-25/capture-simulator-matrix.py
 ```
 
-저장된 결과를 다시 묶어 검증하려면 `python3 spec/internal/evidence/c11-4-orthogonal-text-generalization-runtime-2026-10-25/capture-simulator-matrix.py --verify-existing`을 실행한다. 현재 구현 source snapshot, 두 앱 hash, 고유 run ID, 로그의 frame/draw 귀속, 보존 PNG hash를 검사하고 장면별 metadata를 갱신한다.
+저장된 결과를 다시 묶어 검증하려면 `python3 spec/internal/evidence/c11-4-orthogonal-text-generalization-runtime-2026-10-25/capture-simulator-matrix.py --verify-existing`을 실행한다. PR의 `crates/`·`platforms/` 변경 25개 경로와 파일별·집계 hash, 두 앱 hash, 고유 run ID, 로그의 frame/draw 귀속, 보존 PNG hash를 검사하고 현재 검증 HEAD를 별도 기록한다. 캡처 당시 처음 사용한 22개 경로 snapshot은 `originalPartialSourceSnapshots`에 보존한다.
 
 ## 구현·빌드·회귀 검증
 
@@ -38,7 +38,9 @@ python3 spec/internal/evidence/c11-4-orthogonal-text-generalization-runtime-2026
 - Android fixture app은 `SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android`로 빌드했다.
 - iOS Simulator fixture app은 같은 feature 환경에서 `mise exec -- bun run build:ios-sim`으로 빌드했다. Xcode 결과는 `BUILD SUCCEEDED`였다.
 
-최종 source snapshot의 Git HEAD는 `0c7c34b8f956a6b063a180ec68942fd0d1c8798f`이며, 구현 파일 집합 SHA-256은 `b505d00b10e143279053e58102028fd200d74593f8873552c49f056f51fd6b42`다. 장면 실행의 `source`와 `finalSource` snapshot은 일치한다.
+캡처 당시 source 목록에서 PR의 변경 경로 네 개가 빠진 점을 PR 검토에서 발견했다. 캡처 harness는 25개 변경 경로를 빠짐없이 검사하도록 수정했고, `--verify-existing`는 저장된 scene 로그·PNG·앱 hash를 다시 검사한다. 원래 22개 snapshot은 변환 이력을 위해 보존하고, 현재 full source snapshot 및 검증 시점 HEAD는 별도로 기록한다. archive boundary도 동일한 25개 변경 경로 snapshot으로 다시 빌드해 제품/fixture 양성·음성 대조를 갱신한다. 이 경로 집합에는 production Rust, test-only Rust, Android/iOS fixture driver가 포함되며 모두가 양 archive에 링크된다는 뜻은 아니다.
+
+수정 후 fixture feature를 켠 Android와 iOS Simulator 앱을 각각 다시 빌드했다. APK SHA-256 `a56d26808e2befb156c081257fd43909b938a1dd3816d71c6b3396ffe14ddd55`와 iOS executable SHA-256 `42b78b0ef3c39d59da0e500441449ad1994bf1c935b86f8e61948d51019d1631`은 기존 matrix 기록과 정확히 일치한다. 그래서 기존 44개 장면의 화면·로그는 같은 앱 바이너리 기준으로 유지하고 시뮬레이터 장면은 다시 실행하지 않았다.
 
 ## 입력 계약과 발견 사항
 
