@@ -1,0 +1,90 @@
+{
+  "reason": "Rspress image imports from the C11.3.3 evidence page require three sibling PNG assets",
+  "entries": [
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "route": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3343,
+      "sha256": "d177234adf5a2ec22e90e966ea4b03483c433db2398beb3ed8b74ee9e5351d59",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "route": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3343,
+      "sha256": "d177234adf5a2ec22e90e966ea4b03483c433db2398beb3ed8b74ee9e5351d59",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "route": "public/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3343,
+      "sha256": "d177234adf5a2ec22e90e966ea4b03483c433db2398beb3ed8b74ee9e5351d59",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "route": "public/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-avd-c1133-matrix-20261020T150911869Z-7abbeeff/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3343,
+      "sha256": "d177234adf5a2ec22e90e966ea4b03483c433db2398beb3ed8b74ee9e5351d59",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "route": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3987,
+      "sha256": "bc6eb945fb1601a0f419aa5e503a930bd8f64e56b35fde90734e9f2213845c39",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "route": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3987,
+      "sha256": "bc6eb945fb1601a0f419aa5e503a930bd8f64e56b35fde90734e9f2213845c39",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "route": "public/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3987,
+      "sha256": "bc6eb945fb1601a0f419aa5e503a930bd8f64e56b35fde90734e9f2213845c39",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "route": "public/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/android-physical-c1133-matrix-20261020T152039508Z-5886c27a/unknown-area-overflow-pixelcopy.png",
+      "bytes": 3987,
+      "sha256": "bc6eb945fb1601a0f419aa5e503a930bd8f64e56b35fde90734e9f2213845c39",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "route": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "bytes": 131166,
+      "sha256": "6ff0c6709d4f0b27a87d7163b52568afdc405405cecad77dce69ff0f0ee54d49",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "route": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "bytes": 131166,
+      "sha256": "6ff0c6709d4f0b27a87d7163b52568afdc405405cecad77dce69ff0f0ee54d49",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "route": "public/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "bytes": 131166,
+      "sha256": "6ff0c6709d4f0b27a87d7163b52568afdc405405cecad77dce69ff0f0ee54d49",
+      "linked": true
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "route": "public/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-21/ios-simulator-c1133-ios-matrix-20261020T151033155Z-4d6bf988/ios-unknown-area-overflow-screen.png",
+      "bytes": 131166,
+      "sha256": "6ff0c6709d4f0b27a87d7163b52568afdc405405cecad77dce69ff0f0ee54d49",
+      "linked": true
+    }
+  ],
+  "noDeletes": true
+}
