@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 cyclic percentage with auto-repeat</title>
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      padding: 24px;
+      color: #172033;
+      background: #f5f7fb;
+      font: 14px/1.45 system-ui, sans-serif;
+    }
+    h1 { margin: 0 0 20px; font-size: 20px; }
+    .case { margin: 0 0 34px; }
+    .label { margin: 0 0 8px; font-weight: 650; }
+    .grid {
+      position: relative;
+      display: grid;
+      grid-template-rows: auto;
+      gap: 0;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #bfdbfe;
+    }
+    #cyclic { width: max-content; grid-template-columns: repeat(auto-fill, minmax(0px, 50%)); }
+    #definite { width: 40px; grid-template-columns: repeat(auto-fill, minmax(0px, 50%)); }
+    .item {
+      width: 24px;
+      height: 16px;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #ef4444;
+    }
+    .boundary {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      width: 0;
+      height: 16px;
+      border-right: 2px solid #0f172a;
+      pointer-events: none;
+    }
+    #cyclic .boundary { left: 12px; }
+    #definite .boundary { left: 20px; }
+    pre {
+      margin: 20px 0 0;
+      padding: 12px;
+      max-width: 920px;
+      overflow: auto;
+      color: #dbeafe;
+      background: #172033;
+      font: 11px/1.4 ui-monospace, monospace;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+    }
+  </style>
+</head>
+<body>
+  <h1>C11.4: indefinite max-content axis and cyclic percentage auto-repeat</h1>
+
+  <section class="case">
+    <p class="label">Target: width:max-content, auto-fill repeat count, then cyclic 50% maximum</p>
+    <div class="grid" id="cyclic">
+      <div class="item" id="cyclic-item"></div>
+      <span class="boundary" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <section class="case">
+    <p class="label">Definite control: width:40px, same auto-fill pattern</p>
+    <div class="grid" id="definite">
+      <div class="item" id="definite-item"></div>
+      <span class="boundary" aria-hidden="true"></span>
+    </div>
+  </section>
+
+  <pre id="observation" aria-label="Browser geometry observation"></pre>
+  <script>
+    function rect(element) {
+      const r = element.getBoundingClientRect();
+      return { x: r.x, y: r.y, width: r.width, height: r.height, right: r.right, bottom: r.bottom };
+    }
+    function capture() {
+      const ids = ["cyclic", "definite"];
+      return {
+        userAgent: navigator.userAgent,
+        viewport: { width: innerWidth, height: innerHeight, devicePixelRatio },
+        autoRepeatSyntaxAccepted: CSS.supports("grid-template-columns", "repeat(auto-fill, minmax(0px, 50%))"),
+        scenes: ids.map(id => {
+          const grid = document.getElementById(id);
+          const style = getComputedStyle(grid);
+          return {
+            id,
+            authoredWidth: id === "cyclic" ? "max-content" : "40px",
+            authoredColumns: "repeat(auto-fill, minmax(0px, 50%))",
+            computedColumns: style.gridTemplateColumns,
+            computedRows: style.gridTemplateRows,
+            grid: rect(grid),
+            item: rect(document.getElementById(id + "-item"))
+          };
+        })
+      };
+    }
+    window.c114Observation = capture();
+    document.getElementById("observation").textContent = JSON.stringify(window.c114Observation, null, 2);
+  </script>
+</body>
+</html>

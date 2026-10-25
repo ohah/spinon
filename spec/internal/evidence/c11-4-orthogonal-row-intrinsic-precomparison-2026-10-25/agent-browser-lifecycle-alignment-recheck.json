@@ -1,0 +1,34 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "namespace": "c114oa25",
+  "session": "oa25a",
+  "target": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/chrome156-orthogonal-row-fixture.html",
+  "capture": {
+    "browser": "HeadlessChrome/156.0.0.0",
+    "viewport": { "width": 1280, "height": 633, "devicePixelRatio": 1 },
+    "computedStyleSource": "DOM getComputedStyle captured by Agent Browser eval after document.fonts.ready and all image decode promises resolved",
+    "observationFile": "chrome156-orthogonal-row-agent-browser-dom-geometry.json",
+    "screenshotFile": "chrome156-orthogonal-row-agent-browser.png"
+  },
+  "beforeClose": {
+    "active": true,
+    "controllerPid": 14890,
+    "chromePid": 14920,
+    "chromeProfile": "/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-86aa0e0f-cf04-477f-95b6-dd76a5c70f6a",
+    "pageCount": 1,
+    "socketDir": "/Users/yoonhb/.agent-browser/namespaces/c114oa25/run"
+  },
+  "close": {
+    "command": "agent-browser --namespace c114oa25 close --all",
+    "output": "Closed session: oa25a"
+  },
+  "afterClose": {
+    "sessionList": [],
+    "sessionInfoActive": false,
+    "sessionInfoPid": null,
+    "controllerPidAlive": false,
+    "chromePidAlive": false,
+    "profileExists": false,
+    "profileProcessSearchMatchesOnlyInspectionShell": true
+  }
+}
