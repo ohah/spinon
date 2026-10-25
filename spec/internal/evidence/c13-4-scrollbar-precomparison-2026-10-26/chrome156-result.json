@@ -1,0 +1,100 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "browser": "HeadlessChrome/156.0.0.0",
+  "platform": "macOS arm64",
+  "devicePixelRatio": 1,
+  "launchOption": "--hide-scrollbars false",
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 720
+  },
+  "inputSha256": "f1dfe7bb691a0ad07220e37193f7db7ab4d838985a2f5daf3e12c9f4f058cbc1",
+  "screenshotSha256": "587bff3f20d95f7c0cf1d7108ddd9736845f754c29945da40eb67b9956dae930",
+  "cases": {
+    "auto": {
+      "scrollbarGutter": "auto",
+      "scrollbarWidth": "auto",
+      "client": [
+        201,
+        111
+      ],
+      "offset": [
+        220,
+        130
+      ],
+      "scroll": [
+        380,
+        280
+      ]
+    },
+    "stable": {
+      "scrollbarGutter": "stable",
+      "scrollbarWidth": "auto",
+      "client": [
+        201,
+        111
+      ],
+      "offset": [
+        220,
+        130
+      ],
+      "scroll": [
+        380,
+        280
+      ]
+    },
+    "both": {
+      "scrollbarGutter": "stable both-edges",
+      "scrollbarWidth": "auto",
+      "client": [
+        186,
+        111
+      ],
+      "offset": [
+        220,
+        130
+      ],
+      "scroll": [
+        380,
+        280
+      ]
+    },
+    "thin": {
+      "scrollbarGutter": "auto",
+      "scrollbarWidth": "thin",
+      "client": [
+        205,
+        115
+      ],
+      "offset": [
+        220,
+        130
+      ],
+      "scroll": [
+        380,
+        280
+      ]
+    },
+    "none": {
+      "scrollbarGutter": "auto",
+      "scrollbarWidth": "none",
+      "client": [
+        216,
+        126
+      ],
+      "offset": [
+        220,
+        130
+      ],
+      "scroll": [
+        380,
+        280
+      ]
+    }
+  },
+  "limitations": [
+    "Chrome 156 is not the pinned Chrome 155 oracle",
+    "Desktop mode only; Android/iOS target mode not yet observed",
+    "No Spinon implementation or mobile visual support claim"
+  ]
+}

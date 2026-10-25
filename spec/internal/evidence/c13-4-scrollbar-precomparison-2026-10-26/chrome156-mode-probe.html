@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><title>C13.4 scrollbar oracle probe</title><style>
+html { margin:0; } body { font:14px sans-serif; margin:0; padding:12px; }
+.row { display:flex; gap:12px; margin:10px 0; }
+.box { box-sizing:border-box; width:220px; height:130px; border:2px solid #333; overflow:auto; }
+.stable { scrollbar-gutter:stable; }
+.both { scrollbar-gutter:stable both-edges; }
+.thin { scrollbar-width:thin; }
+.none { scrollbar-width:none; }
+.content { width:380px; height:280px; background:linear-gradient(90deg,#f44,#44f); }
+</style><h1>C13.4 scrollbar mode probe</h1><div class="row">
+<div id="auto" class="box"><div class="content"></div></div>
+<div id="stable" class="box stable"><div class="content"></div></div>
+<div id="both" class="box both"><div class="content"></div></div>
+</div><div class="row">
+<div id="thin" class="box thin"><div class="content"></div></div>
+<div id="none" class="box none"><div class="content"></div></div>
+</div><script>
+window.c13Report = Object.fromEntries(['auto','stable','both','thin','none'].map(id=>{
+ const e=document.getElementById(id), s=getComputedStyle(e), r=e.getBoundingClientRect();
+ return [id,{clientWidth:e.clientWidth,clientHeight:e.clientHeight,offsetWidth:e.offsetWidth,offsetHeight:e.offsetHeight,scrollWidth:e.scrollWidth,scrollHeight:e.scrollHeight,scrollbarGutter:s.scrollbarGutter,scrollbarWidth:s.scrollbarWidth,scrollbarColor:s.scrollbarColor,rect:{x:r.x,y:r.y,width:r.width,height:r.height}}]
+}));
+</script>
