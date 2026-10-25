@@ -2,9 +2,9 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [orthogonal text/image row 계획](./c11-4-orthogonal-row-intrinsic-contribution.md) · [#611 direct text/image column 계획](./c11-4-mixed-direct-text-image-intrinsic.md) · [#620 direct text/image row 계획](./c11-4-mixed-direct-text-image-intrinsic-row-axis.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 초안. 기존 orthogonal row 계획의 feasibility gate에서 멈춘 뒤 확인한 공통 차단 경로를 제한된 선행 작업으로 나눈다. 이 문서는 구현 승인이나 Taffy 변경 승인이 아니다. 계획 실패 관점 20개 검토, 독립 기대값 및 소유 파일을 확정하고 계획 PR을 병합하기 전에는 코드를 수정하지 않는다.
+**상태:** 대체됨 (2026-10-25). 공통 writing-mode 타입과 제한 orthogonal row runtime 경로는 [PR #627](https://github.com/ohah/spinon/pull/627)에서 구현·병합됐다. 이 문서는 현재 선행 조건이 아니며, 남은 Ahem 입력 guard 확장은 [후속 계획](./c11-4-orthogonal-text-intrinsic-generalization.md)에서 추적한다.
 
-## 목적과 현재 차단 경로
+## 초안 작성 당시의 차단 경로
 
 기존 orthogonal row 계획은 horizontal Grid 안의 direct `vertical-rl` text와 natural PNG 네 장면에서 min-content/max-content row `[50]`/`[80]px`를 비교한다. Chrome 156 사전 비교와 CSS Grid 2025 CRD 독립 계산은 일치하지만 Spinon runtime 결과는 아직 없다. [원본 입력·기대값·화면](../spec/internal/evidence/c11-4-orthogonal-row-intrinsic-precomparison-2026-10-25/README.md)
 
