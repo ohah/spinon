@@ -48,7 +48,7 @@
 
 19. **기본 feature를 켜서 fixture layout을 제품으로 노출했는가 — PASS, 제한 해석.** 새 layout profile 모듈은 `grid.rs:5–6`에서 `c11-4-grid-track-sizing-fixture-test`로 감싸고 FFI module boundary test `:683–688`는 FFI fixture dispatcher의 feature gate를 확인한다. archive negative/positive control은 README `:54–55`에 있다. 이 판정은 Rust static archive 범위에 한정되고, 앱 adapter에 들어간 ID/검사 코드까지 APK/IPA에서 제거된다는 판정은 아니다.
 
-20. **README/PR 본문이 화면을 inline으로 보여주는가 — POST-CREATE.** README는 대표 PNG 파일로 연결한다. PR 본문에는 Android/iOS PNG를 `![alt](raw-image-url)`로 embed할 계획이며, 생성 뒤 Agent Browser에서 렌더링을 확인해야 이 항목을 닫는다.
+20. **README/PR 본문이 화면을 inline으로 보여주는가 — PASS.** PR #635 본문에 네 장면의 Android/iOS PNG 8개를 embed했다. Agent Browser에서 각 `<img>`가 `complete=true`이고 Android 1080×2400, iOS 1206×2622 natural size로 로드됨을 확인했다. 결과는 `pr-635-image-render-check.json`에 기록했다.
 
 21. **pixel 결과가 border stroke 또는 root 바깥 overflow까지 입증하는가 — PASS, 범위 명시.** README `:16`과 계획 `:89`는 다섯 표본이 root 안의 overlap/track overflow를 다루며 border도 root 밖도 확인하지 않는다고 적는다. 따라서 색 표본을 사용자가 이전에 문제 제기한 border/outside 영역 테스트로 확대하지 않는다.
 
@@ -75,6 +75,6 @@
 ## 결론
 
 - **차단 결함:** 없음. 최신 Android/iOS 실행은 모두 4/4 scene, scene당 pixel 표본 5/5로 통과했다. 설치 앱 hash, screenshot manifest, 빌드·집중 검증 로그와 scan report가 index에 포함됐다.
-- **남은 확인:** #20은 PR 본문 생성 뒤 Agent Browser에서 이미지 렌더를 확인해야 닫힌다. #26은 제한 profile 외의 일부 child box-decoration/repeat 조합을 별도 mutation으로 추가할 수 있는 비차단 coverage gap이다.
+- **남은 확인:** #26은 제한 profile 외의 일부 child box-decoration/repeat 조합을 별도 mutation으로 추가할 수 있는 비차단 coverage gap이다.
 - **병합 후 별도 작업:** 24–25번. 공식 C11.4 checkbox 및 `72/213`은 그대로 두고 내부 계약·STATUS·public roadmap과 Tailnet 미리보기를 실제 병합 변경 범위에 맞춰 동기화한다.
 - 검토 수행에서는 시뮬레이터를 다시 실행하거나 테스트·빌드를 돌리지 않았다. 최종에 `git diff --check`와 staged diff whitespace check를 별도로 실행한다.
