@@ -29,6 +29,8 @@ pub(super) struct GridTaffyStyleInput<'a> {
     pub(super) expanded_rows: Option<&'a [GridTrackSize]>,
     pub(super) expanded_columns: Option<&'a [GridTrackSize]>,
     pub(super) item: Option<&'a GridItemInput>,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) fixture_cyclic_percentage_auto_repeat: bool,
 }
 
 pub(super) fn to_taffy_style(
@@ -341,6 +343,10 @@ pub(super) fn to_taffy_style(
             container.placement_mode == crate::GridPlacementMode::TrackSizing
         });
     compact.set_track_sizing_trace_enabled(trace_enabled);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    compact.set_fixture_cyclic_percentage_auto_repeat_enabled(
+        grid_input.fixture_cyclic_percentage_auto_repeat,
+    );
     if let Some(item) = grid_input.item {
         compact.set_grid_item_placement(
             grid::taffy_grid_placement_line(node, "grid-row-start", &item.row_start)?,

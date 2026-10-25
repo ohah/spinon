@@ -1666,6 +1666,12 @@ impl<T: GridContainerStyle> GridContainerStyle for &'_ T {
     fn track_sizing_trace_enabled(&self) -> bool {
         (*self).track_sizing_trace_enabled()
     }
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    #[inline(always)]
+    fn cyclic_percentage_auto_repeat_fixture_enabled(&self) -> bool {
+        (*self).cyclic_percentage_auto_repeat_fixture_enabled()
+    }
 }
 
 #[cfg(feature = "grid")]

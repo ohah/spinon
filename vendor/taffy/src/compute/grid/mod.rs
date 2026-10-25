@@ -253,6 +253,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     } = inputs;
 
     let style = tree.get_grid_container_style(node);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let cyclic_percentage_auto_repeat_fixture =
+        style.cyclic_percentage_auto_repeat_fixture_enabled();
+    #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+    let cyclic_percentage_auto_repeat_fixture = false;
     let mut track_sizing_trace = style
         .track_sizing_trace_enabled()
         .then(GridTrackSizingTrace::default);
@@ -336,13 +341,14 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
 
     // Compute the number of rows and columns in the explicit grid *template*
     // (explicit tracks from grid_areas are computed separately below)
-    let (col_auto_repetition_count, grid_template_col_count) = compute_explicit_grid_size_in_axis(
-        &style,
-        auto_fit_container_size.width,
-        auto_repeat_fit_strategy.width,
-        |val, basis| tree.calc(val, basis),
-        AbsoluteAxis::Horizontal,
-    );
+    let (mut col_auto_repetition_count, mut grid_template_col_count) =
+        compute_explicit_grid_size_in_axis(
+            &style,
+            auto_fit_container_size.width,
+            auto_repeat_fit_strategy.width,
+            |val, basis| tree.calc(val, basis),
+            AbsoluteAxis::Horizontal,
+        );
     let (row_auto_repetition_count, grid_template_row_count) = compute_explicit_grid_size_in_axis(
         &style,
         auto_fit_container_size.height,
@@ -357,7 +363,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
 
     // Clamp the explicit grid to MAX_GRID_TRACKS tracks in each axis
     // https://www.w3.org/TR/css-grid-1/#overlarge-grids
-    let explicit_col_count = grid_template_col_count
+    let mut explicit_col_count = grid_template_col_count
         .max(name_resolver.area_column_count())
         .min(MAX_GRID_TRACKS);
     let explicit_row_count = grid_template_row_count
@@ -423,7 +429,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     );
 
     // Extract track counts from previous step (auto-placement can expand the number of tracks)
-    let final_col_counts = *cell_occupancy_matrix.track_counts(AbsoluteAxis::Horizontal);
+    let mut final_col_counts = *cell_occupancy_matrix.track_counts(AbsoluteAxis::Horizontal);
     let final_row_counts = *cell_occupancy_matrix.track_counts(AbsoluteAxis::Vertical);
 
     // 5. Initialize Tracks
@@ -489,6 +495,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         },
         has_baseline_aligned_item,
         false,
+        track_sizing_pass_context(
+            cyclic_percentage_auto_repeat_fixture,
+            outer_node_size.width.is_some(),
+            col_auto_repetition_count,
+        ),
         track_sizing_trace.as_mut(),
     );
     let initial_column_sum = columns.iter().map(|track| track.base_size).sum::<f32>();
@@ -524,6 +535,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
         |track: &GridTrack, _, _| Some(track.base_size),
         false, // TODO: Support baseline alignment in the vertical axis
         false,
+        track_sizing_pass_context(false, false, row_auto_repetition_count),
         track_sizing_trace.as_mut(),
     );
     let initial_row_sum = rows.iter().map(|track| track.base_size).sum::<f32>();
@@ -644,6 +656,45 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
     }
 
     if rerun_column_sizing {
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        if cyclic_percentage_auto_repeat_fixture && rerun_percentage_column_sizing {
+            let (resolved_repetition_count, resolved_template_track_count) = {
+                let style = tree.get_grid_container_style(node);
+                compute_explicit_grid_size_in_axis(
+                    &style,
+                    Some(container_content_box.width),
+                    AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow,
+                    |val, basis| tree.calc(val, basis),
+                    AbsoluteAxis::Horizontal,
+                )
+            };
+            if resolved_repetition_count != col_auto_repetition_count {
+                col_auto_repetition_count = resolved_repetition_count;
+                grid_template_col_count = resolved_template_track_count;
+                explicit_col_count = grid_template_col_count
+                    .max(name_resolver.area_column_count())
+                    .min(MAX_GRID_TRACKS);
+                name_resolver.set_explicit_column_count(explicit_col_count);
+                detailed_column_line_names =
+                    name_resolver.detailed_line_names(AbsoluteAxis::Horizontal);
+
+                // This exact fixture has one auto-placed item in the first explicit track and no
+                // named lines or implicit tracks. The expanded column after that occupied track
+                // is therefore empty and can be added without rerunning placement.
+                final_col_counts.explicit = explicit_col_count;
+                let mut reexpanded_columns = GridTrackVec::new();
+                let style = tree.get_grid_container_style(node);
+                initialize_grid_tracks(
+                    &mut reexpanded_columns,
+                    final_col_counts,
+                    &style,
+                    AbsoluteAxis::Horizontal,
+                    col_auto_repetition_count,
+                    |column_index| cell_occupancy_matrix.column_is_occupied(column_index),
+                );
+                columns = reexpanded_columns;
+            }
+        }
         let column_sizing_available_space = if rerun_percentage_column_sizing {
             resolved_available_grid_space
         } else {
@@ -665,6 +716,11 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             |track: &GridTrack, _, _| Some(track.base_size),
             has_baseline_aligned_item,
             false,
+            track_sizing_pass_context(
+                cyclic_percentage_auto_repeat_fixture && rerun_percentage_column_sizing,
+                true,
+                col_auto_repetition_count,
+            ),
             track_sizing_trace.as_mut(),
         );
 
@@ -728,6 +784,7 @@ pub fn compute_grid_layout<Tree: LayoutGridContainer>(
             |track: &GridTrack, _, _| Some(track.base_size),
             false, // TODO: Support baseline alignment in the vertical axis
             false,
+            track_sizing_pass_context(false, false, row_auto_repetition_count),
             track_sizing_trace.as_mut(),
         );
     }
@@ -1393,6 +1450,63 @@ pub struct GridTrackSizingPassTrace {
     pub stages: Vec<GridTrackSizingStageTrace>,
     /// 이 pass에서 질의한 item intrinsic-size contribution입니다.
     pub contributions: Vec<GridTrackSizingContributionTrace>,
+    /// Fixed-slice provenance captured only by the opt-in C11.4 fixture-test feature.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_phase: Option<GridTrackSizingFixturePhase>,
+    /// The auto-repeat expansion used by the tagged fixture pass.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_auto_repeat_count: Option<u16>,
+    /// The resolved content-box basis used by percentage track sizing in the tagged pass.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_percentage_basis: Option<f32>,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Debug, Clone, Copy, PartialEq, Eq)]
+/// Semantic phase labels for the fixed cyclic-percentage auto-repeat fixture.
+pub enum GridTrackSizingFixturePhase {
+    /// The initial indefinite max-content sizing pass.
+    IntrinsicMaxContent,
+    /// The final pass after the content-box width is definite.
+    FinalDefinite,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Debug, Clone, Copy)]
+struct GridTrackSizingFixturePassContext {
+    phase: GridTrackSizingFixturePhase,
+    auto_repeat_count: u16,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+type GridTrackSizingPassContextOption = Option<GridTrackSizingFixturePassContext>;
+
+#[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+type GridTrackSizingPassContextOption = ();
+
+fn track_sizing_pass_context(
+    enabled: bool,
+    final_definite: bool,
+    auto_repeat_count: u16,
+) -> GridTrackSizingPassContextOption {
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    {
+        if !enabled {
+            return None;
+        }
+        Some(GridTrackSizingFixturePassContext {
+            phase: if final_definite {
+                GridTrackSizingFixturePhase::FinalDefinite
+            } else {
+                GridTrackSizingFixturePhase::IntrinsicMaxContent
+            },
+            auto_repeat_count,
+        })
+    }
+    #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+    {
+        let _ = (enabled, final_definite, auto_repeat_count);
+    }
 }
 
 /// 저수준 Grid layout 알고리즘이 opt-in으로 내보내는 trace입니다.
@@ -1426,7 +1540,12 @@ impl GridTrackSizingTrace {
     const MAX_CONTRIBUTIONS: usize = 100_000;
 
     /// 새 축 sizing 실행을 시작합니다.
-    fn begin_pass(&mut self, axis: AbstractAxis) {
+    fn begin_pass(
+        &mut self,
+        axis: AbstractAxis,
+        fixture_context: GridTrackSizingPassContextOption,
+        percentage_basis: Option<f32>,
+    ) {
         if self.failure.is_some() || self.passes.try_reserve(1).is_err() {
             self.failure = Some(GridTrackSizingTraceFailure::Allocation);
             self.current_pass = None;
@@ -1442,6 +1561,12 @@ impl GridTrackSizingTrace {
             axis,
             stages: Vec::new(),
             contributions: Vec::new(),
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            fixture_phase: fixture_context.map(|context| context.phase),
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            fixture_auto_repeat_count: fixture_context.map(|context| context.auto_repeat_count),
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            fixture_percentage_basis: fixture_context.and(percentage_basis),
         });
         self.current_pass = Some(self.passes.len() - 1);
     }

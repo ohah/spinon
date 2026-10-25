@@ -271,6 +271,8 @@ mod tests {
                 expanded_rows: None,
                 expanded_columns: None,
                 item: None,
+                #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                fixture_cyclic_percentage_auto_repeat: false,
             },
         )
         .unwrap();

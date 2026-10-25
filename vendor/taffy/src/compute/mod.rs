@@ -571,6 +571,8 @@ pub fn compute_hidden_layout(
 
 /// A module for unified re-exports of detailed layout info structs, used by low level API
 pub mod detailed_info {
+    #[cfg(all(feature = "grid", feature = "c11-4-grid-track-sizing-fixture-test"))]
+    pub use super::grid::GridTrackSizingFixturePhase;
     #[cfg(feature = "grid")]
     pub use super::grid::{
         DetailedGridInfo, DetailedGridItemsInfo, DetailedGridTracksInfo, GridLineNames,

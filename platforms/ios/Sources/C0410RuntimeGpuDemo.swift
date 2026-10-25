@@ -119,6 +119,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-rows-multitrack", "definite-percent-two-axis-multitrack",
     "cyclic-calc-column", "cyclic-calc-row", "cyclic-calc-two-axis",
     "definite-calc-control",
+    "cyclic-max-content-auto-fill", "definite-40px-auto-fill-control",
     "columns-calc-fill", "columns-fixed-fill-control", "columns-calc-fit",
     "rows-calc-fill", "rows-fixed-fill-control", "rows-calc-fit",
     "columns-percent-calc-fill", "columns-percent-fixed-fill-control",
@@ -1074,6 +1075,8 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
+    if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return "width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"
     }
@@ -1355,6 +1358,10 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID == "cyclic-max-content-auto-fill"
+        || sceneID == "definite-40px-auto-fill-control" {
+        return "width=24,height=16"
+    }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID),
        let item = fixedAutoArea.items.first {
         return "width=\(item.width),height=\(item.height)"
@@ -2493,6 +2500,72 @@ private func c114GridTrackSizingDiagnostics(_ report: String) -> [String: Any]? 
     return diagnostics
 }
 
+private func c114CyclicPercentageAutoRepeatTraceMatches(
+    _ sceneID: String, report: String
+) -> Bool {
+    let cyclic = sceneID == "cyclic-max-content-auto-fill"
+    let definite = sceneID == "definite-40px-auto-fill-control"
+    if !cyclic && !definite { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]] else { return false }
+    var intrinsic: [String: Any]?
+    var finalDefinite: [String: Any]?
+    var taggedColumnPasses = 0
+    var sawRows = false
+    for pass in passes {
+        guard let axis = pass["axis"] as? String else { return false }
+        if axis == "Rows" { sawRows = true }
+        guard axis == "Columns", let phase = pass["phase"] as? String else { continue }
+        taggedColumnPasses += 1
+        if phase == "IntrinsicMaxContent" { intrinsic = pass }
+        if phase == "FinalDefinite" { finalDefinite = pass }
+    }
+    guard sawRows else { return false }
+    if cyclic {
+        return taggedColumnPasses == 2
+            && c114CyclicPercentageAutoRepeatPassMatches(
+                intrinsic, count: 1, basis: nil, tracks: [24])
+            && c114CyclicPercentageAutoRepeatPassMatches(
+                finalDefinite, count: 2, basis: 24, tracks: [12, 12])
+    }
+    return taggedColumnPasses == 1
+        && c114CyclicPercentageAutoRepeatPassMatches(
+            finalDefinite, count: 2, basis: 40, tracks: [20, 20])
+}
+
+private func c114CyclicPercentageAutoRepeatPassMatches(
+    _ pass: [String: Any]?, count: Int, basis: Double?, tracks expectedTracks: [Double]
+) -> Bool {
+    guard let pass,
+          (pass["autoRepeatCount"] as? Int) == count else { return false }
+    if let basis {
+        guard let observed = (pass["percentageBasis"] as? NSNumber)?.doubleValue,
+              abs(observed - basis) <= 0.0001 else { return false }
+    } else if !(pass["percentageBasis"] is NSNull) {
+        return false
+    }
+    guard let stages = pass["stages"] as? [[String: Any]],
+          let finalStage = stages.last,
+          let allTracks = finalStage["tracks"] as? [[String: Any]] else { return false }
+    var usedTracks: [Double] = []
+    for track in allTracks {
+        guard let gutter = track["gutter"] as? Bool,
+              let collapsed = track["collapsed"] as? Bool else { return false }
+        if gutter || collapsed { continue }
+        guard let baseSize = (track["baseSize"] as? NSNumber)?.doubleValue else {
+            return false
+        }
+        usedTracks.append(baseSize)
+    }
+    return usedTracks.count == expectedTracks.count
+        && zip(usedTracks, expectedTracks).allSatisfy { pair in
+            abs(pair.0 - pair.1) <= 0.015625
+        }
+}
+
 private func c114FixedAutoAreaTraceMatches(_ sceneID: String, report: String) -> Bool {
     guard let expectation = c114FixedAutoAreaExpectation(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
@@ -3221,6 +3294,14 @@ private func c114ImageTrackPassMatches(
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if sceneID == "cyclic-max-content-auto-fill" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
+    if sceneID == "definite-40px-auto-fill-control" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         var frames = ["0:node=1,x=0,y=0,width=\(fixedAutoArea.width),height=\(fixedAutoArea.height)"]
         for (index, item) in fixedAutoArea.items.enumerated() {
@@ -4760,6 +4841,8 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if sceneID == "cyclic-max-content-auto-fill"
+        || sceneID == "definite-40px-auto-fill-control" { return 2 }
     if let fixedAutoArea = c114FixedAutoAreaExpectation(sceneID) {
         return fixedAutoArea.items.count + 1
     }
@@ -5488,9 +5571,44 @@ private struct C111MetalPixelRun {
         return expected
     }
 
+    private static func c114CyclicPercentageAutoRepeatPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        switch sceneID {
+        case "cyclic-max-content-auto-fill":
+            let rootID = "c114-cyclic-max-content-auto-fill-grid"
+            let itemID = "c114-cyclic-max-content-auto-fill-item"
+            return [
+                ("cyclic-item-first-track", itemID, 5, 8, [229, 72, 77, 255]),
+                ("cyclic-item-second-track", itemID, 18, 8, [229, 72, 77, 255]),
+                ("cyclic-root-after-edge", rootID, 24, 8, [0, 0, 0, 255]),
+            ]
+        case "definite-40px-auto-fill-control":
+            let rootID = "c114-definite-40px-auto-fill-grid"
+            let itemID = "c114-definite-40px-auto-fill-item"
+            return [
+                ("definite-item-first-track", itemID, 19, 8, [229, 72, 77, 255]),
+                ("definite-item-overflow", itemID, 22, 8, [229, 72, 77, 255]),
+                ("definite-root-background", rootID, 24, 8, [16, 24, 32, 255]),
+            ]
+        default:
+            return nil
+        }
+    }
+
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = c114CyclicPercentageAutoRepeatPixelSamples(sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if c114CrossAxisFixedAutoRepeatAreaCanonicalSceneID(sceneID) != nil {
             guard let expectedSamples = c114CrossAxisFixedAutoRepeatAreaPixelSamples(sceneID) else {
                 return false
@@ -9682,6 +9800,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ) == nil || c114FixedAutoAreaTraceMatches(
                 c114GridTrackSizingSceneID, report: report
             )
+            let expectedCyclicAutoRepeatTraceMatches =
+                c114CyclicPercentageAutoRepeatTraceMatches(
+                    c114GridTrackSizingSceneID, report: report
+                )
             let expectedCrossAxisTrackTraceMatches = c114CrossAxisFixedAutoRepeatAreaExpectation(
                 c114GridTrackSizingSceneID
             ) == nil || c114CrossAxisFixedAutoRepeatAreaTraceMatches(
@@ -9704,10 +9826,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
                   expectedImageInputs, expectedNodeFramesMatch,
                   expectedFixedAutoAreaTraceMatches, expectedCrossAxisTrackTraceMatches,
+                  expectedCyclicAutoRepeatTraceMatches,
                   expectedCrossAxisSpanGroupFramesMatch,
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

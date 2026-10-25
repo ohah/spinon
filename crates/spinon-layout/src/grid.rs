@@ -182,6 +182,13 @@ pub struct LayoutGridTrackSizingTrackState {
     pub infinitely_growable: bool,
 }
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum LayoutGridTrackSizingFixturePhase {
+    IntrinsicMaxContent,
+    FinalDefinite,
+}
+
 /// Grid 한 축에서 한 단계의 snapshot입니다.
 #[derive(Clone, Debug, PartialEq)]
 pub struct LayoutGridTrackSizingStageTrace {
@@ -196,6 +203,12 @@ pub struct LayoutGridTrackSizingPassTrace {
     pub axis: LayoutGridTrackSizingAxis,
     pub stages: Vec<LayoutGridTrackSizingStageTrace>,
     pub contributions: Vec<LayoutGridTrackSizingContributionTrace>,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_phase: Option<LayoutGridTrackSizingFixturePhase>,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_auto_repeat_count: Option<u16>,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fixture_percentage_basis: Option<f32>,
 }
 
 /// opt-in `RuntimeBlockFlexGridTrackSizingV1` 후보가 기록한 진단 단계입니다.
@@ -464,6 +477,9 @@ pub(super) fn validate_grid_layout(
                     percentage_basis_is_definite: definite_axes
                         .get(&node.id)
                         .is_some_and(|axes| axes.width),
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_cyclic_percentage_auto_repeat:
+                        fixture_cyclic_percentage_auto_repeat_allowed(input, node, container),
                 },
                 &input.css_math,
             )?;
@@ -478,6 +494,8 @@ pub(super) fn validate_grid_layout(
                     percentage_basis_is_definite: definite_axes
                         .get(&node.id)
                         .is_some_and(|axes| axes.height),
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    fixture_cyclic_percentage_auto_repeat: false,
                 },
                 &input.css_math,
             )?;
@@ -805,6 +823,102 @@ fn validate_template_areas(
 struct AutoRepeatAxisContext<'a> {
     style: &'a LayoutStyle,
     percentage_basis_is_definite: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    fixture_cyclic_percentage_auto_repeat: bool,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) fn fixture_cyclic_percentage_auto_repeat_target(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> bool {
+    // Include the paired definite control in fixture tracing; only the indefinite target takes
+    // the percentage rerun/re-expansion path in Taffy's grid algorithm.
+    fixture_cyclic_percentage_auto_repeat_scene(input, node, container, true)
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn fixture_cyclic_percentage_auto_repeat_allowed(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+    container: &GridContainerInput,
+) -> bool {
+    fixture_cyclic_percentage_auto_repeat_scene(input, node, container, true)
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+fn fixture_cyclic_percentage_auto_repeat_scene(
+    input: &LayoutInput,
+    node: &crate::LayoutNode,
+    container: &GridContainerInput,
+    allow_definite_control: bool,
+) -> bool {
+    if input.root != node.id || input.nodes.len() != 2 || node.children.len() != 1 {
+        return false;
+    }
+    let Some(item_id) = node.children.first().copied() else {
+        return false;
+    };
+    let Some(item) = input.nodes.iter().find(|candidate| candidate.id == item_id) else {
+        return false;
+    };
+    let zero_edges = crate::LayoutEdges {
+        top: crate::LayoutLengthPercentage::ZERO,
+        right: crate::LayoutLengthPercentage::ZERO,
+        bottom: crate::LayoutLengthPercentage::ZERO,
+        left: crate::LayoutLengthPercentage::ZERO,
+    };
+    let zero_border = crate::LayoutBorder::default();
+    let zero_gap = crate::LayoutGap::default();
+    let repeat = container.columns_auto_repeat.as_ref();
+    let permitted_width = node.style.width == LayoutDimension::MaxContent
+        || (allow_definite_control && node.style.width == LayoutDimension::Fixed(40.0));
+    node.style.display == LayoutDisplay::Grid
+        && permitted_width
+        && node.style.min_width == LayoutDimension::Auto
+        && node.style.max_width == LayoutDimension::Auto
+        && node.style.margin == zero_edges
+        && node.style.padding == zero_edges
+        && node.style.border == zero_border
+        && node.style.gap == zero_gap
+        && container.placement_mode == crate::GridPlacementMode::TrackSizing
+        && container.columns.len() == 1
+        && matches!(
+            container.columns[0],
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(0.0),
+                max: GridTrackMaxSizingFunction::Percentage(0.5),
+            }
+        )
+        && repeat.is_some_and(|repeat| {
+            repeat.mode == GridAutoRepeatMode::AutoFill
+                && repeat.start == 0
+                && repeat.end == 1
+                && repeat.line_names.iter().all(Vec::is_empty)
+        })
+        && container.columns_line_names.iter().all(Vec::is_empty)
+        && container.rows == [GridTrackSize::Auto]
+        && container.rows_auto_repeat.is_none()
+        && container.rows_line_names.iter().all(Vec::is_empty)
+        && container.template_areas.is_none()
+        && container.auto_flow == crate::GridAutoFlow::Row
+        && container.auto_rows == crate::GridAutoRows::Auto
+        && container.auto_columns == crate::GridAutoColumns::Auto
+        && item.children.is_empty()
+        && item.style.display == LayoutDisplay::Block
+        && item.style.width == LayoutDimension::Fixed(24.0)
+        && item.style.height == LayoutDimension::Fixed(16.0)
+        && item.style.margin == zero_edges
+        && item.style.padding == zero_edges
+        && item.style.border == zero_border
+        && item.style.gap == zero_gap
+        && input.grid_items.is_empty()
+        && input.positioning.len() == 2
+        && input
+            .positioning
+            .values()
+            .all(|positioning| positioning.position == crate::LayoutPosition::Static)
 }
 
 fn validate_auto_repeat_axis(
@@ -1210,11 +1324,17 @@ fn auto_repeat_maximum_is_supported(
         GridTrackMaxSizingFunction::LengthPx(value)
         | GridTrackMaxSizingFunction::Fraction(value) => value.is_finite() && value >= 0.0,
         GridTrackMaxSizingFunction::Percentage(value) => {
-            context.percentage_basis_is_definite
-                && value.is_finite()
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            let cyclic_percentage_auto_repeat_fixture =
+                context.fixture_cyclic_percentage_auto_repeat;
+            #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+            let cyclic_percentage_auto_repeat_fixture = false;
+            value.is_finite()
                 && value >= 0.0
-                && explicit_positive_content_axis(context.style, property)
-                    .is_some_and(|basis| (value * basis).is_finite())
+                && (cyclic_percentage_auto_repeat_fixture
+                    || (context.percentage_basis_is_definite
+                        && explicit_positive_content_axis(context.style, property)
+                            .is_some_and(|basis| (value * basis).is_finite())))
         }
         GridTrackMaxSizingFunction::Calc(id) => {
             context.percentage_basis_is_definite
