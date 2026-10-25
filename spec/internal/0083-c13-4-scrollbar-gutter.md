@@ -4,6 +4,7 @@
 - **제품 CSS 지원 선언:** 아님
 - **계획:** [C13.4 첫 조각 · stable gutter](../../plan/c13-4-scrollbar-gutter.md)
 - **비교 기준:** [Chrome 관찰과 범위 제한](evidence/c13-4-scrollbar-precomparison-2026-10-26/README.md)
+- **Simulator 관찰 시도:** [Android Chrome first-run 차단 / iOS 미실행](evidence/c13-4-scrollbar-sim-observation-2026-10-26/README.md) · scrollbar mode 미관찰
 
 ## 계약 목표
 
@@ -29,6 +30,8 @@
 고정된 mode와 gutter token으로 계산한 reservation은 descendant layout, `scrollport_css_px`, scrollable extent/range, clip, paint와 hit-test에서 같은 revision으로 관찰되어야 한다. outer border-box는 유지한다. 새 scroll range가 이전 CSS px offset을 포함하면 offset을 보존하고, 범위를 벗어나면 기존 C13.2 clamp/reset 규칙을 적용한다. style/geometry/mode 변경 중 일부만 새 snapshot으로 게시할 수 없다.
 
 Overlay mode의 성공은 0 gutter와 C13.2 기존 state/geometry의 exact equality다. Classic mode positive control은 지정 platform에서 실제 사용자 표시/기하 효과를 확인한 다음에만 구현 관문을 열 수 있다. 플랫폼에서 변화가 보이지 않으면 임의 scrollbar나 gutter UI를 만들지 않는다.
+
+C13.2의 immutable scroll snapshot은 구현의 hard precondition이다. C13.3 전체 완료는 선행 조건이 아니다. 다만 C13.3 gesture session도 해당 scrollport와 range를 소비하므로 integration regression 대상으로 삼고, router/session/queue 및 Android/iOS input adapter 코드는 이 geometry slice에서 변경하지 않는다.
 
 ## 구현 상태
 

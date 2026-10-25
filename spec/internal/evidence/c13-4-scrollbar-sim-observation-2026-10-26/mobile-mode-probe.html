@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>C13.4 scrollbar platform observation</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; }
+  body { background: #f4f5f8; color: #161a22; font: 12px/1.35 -apple-system, BlinkMacSystemFont, sans-serif; }
+  main { padding: 8px 12px 0; }
+  h1 { margin: 0 0 4px; font-size: 17px; }
+  p { margin: 0 0 6px; }
+  .sample { width: 220px; height: 130px; margin: 5px auto; border: 2px solid #182848; background: #fff; overflow: scroll; }
+  .sample.stable { scrollbar-gutter: stable; }
+  .sample.both { scrollbar-gutter: stable both-edges; }
+  .content { width: 380px; height: 280px; background: linear-gradient(135deg,#c7e6ff 0 49%,#e8d8ff 50% 100%); }
+  .clip { width: 220px; height: 48px; overflow: clip; margin: 5px auto; border: 2px solid #8c2230; background: white; }
+  .clip .content { height: 90px; }
+  #result { position: fixed; inset: auto 6px 4px; margin: 0; padding: 4px; background: #101620; color: #bbf2d3; font: 8px/1.25 ui-monospace, monospace; white-space: pre-wrap; overflow-wrap: anywhere; }
+</style>
+</head>
+<body>
+<main>
+  <h1>C13.4 scrollbar mode</h1>
+  <p>Scroll boxes: 220×130 border-box, 2px border, 380×280 content.</p>
+  <div id="auto" class="sample"><div class="content"></div></div>
+  <div id="stable" class="sample stable"><div class="content"></div></div>
+  <div id="both" class="sample both"><div class="content"></div></div>
+  <div id="clip" class="clip"><div class="content"></div></div>
+</main>
+<pre id="result">measuring…</pre>
+<script>
+const ids = ['auto', 'stable', 'both', 'clip'];
+const result = document.querySelector('#result');
+function sample(id) {
+  const e = document.getElementById(id), r = e.getBoundingClientRect(), s = getComputedStyle(e);
+  return `${id}: gutter=${s.scrollbarGutter}; overflow=${s.overflowX}/${s.overflowY}; client=${e.clientWidth}x${e.clientHeight}; offset=${e.offsetWidth}x${e.offsetHeight}; scroll=${e.scrollWidth}x${e.scrollHeight}; frame=${Math.round(r.x)},${Math.round(r.y)},${Math.round(r.width)},${Math.round(r.height)}`;
+}
+requestAnimationFrame(() => requestAnimationFrame(() => {
+  result.textContent = `ua=${navigator.userAgent}\nviewport=${innerWidth}x${innerHeight}; supports=${CSS.supports('scrollbar-gutter','stable')}\n` + ids.map(sample).join('\n');
+  document.body.dataset.ready = 'true';
+  // A real overflow position causes transient native scrollbar indicators to be eligible to appear.
+  for (const id of ['auto', 'stable', 'both']) {
+    const e = document.getElementById(id);
+    e.scrollTop = 24;
+    e.scrollLeft = 24;
+  }
+}));
+</script>
+</body>
+</html>
