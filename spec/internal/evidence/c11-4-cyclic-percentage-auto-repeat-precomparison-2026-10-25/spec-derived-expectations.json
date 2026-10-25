@@ -1,0 +1,98 @@
+{
+  "status": "independent-css-grid-2025-crd-expectation",
+  "sources": [
+    {
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat",
+      "sections": ["7.2.3.1", "7.2.3.2"],
+      "usedFor": "auto-repeat grammar and repetition count"
+    },
+    {
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#track-sizes",
+      "sections": ["7.2.1"],
+      "usedFor": "cyclic percentage track sizing"
+    },
+    {
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-grid-sizing",
+      "sections": ["11.1"],
+      "usedFor": "intrinsic sizing pass followed by final layout"
+    },
+    {
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing",
+      "sections": ["11.2", "11.5", "11.6"],
+      "usedFor": "initialize the single minmax(0px, auto) track, use the fixed item's max-content contribution as its intrinsic growth limit, then maximize the track"
+    },
+    {
+      "url": "https://www.w3.org/TR/css-sizing-3/#definite",
+      "sections": ["2"],
+      "usedFor": "max-content is an indefinite size"
+    }
+  ],
+  "fixedInputs": {
+    "writingMode": "horizontal-tb",
+    "axis": "columns / inline axis",
+    "trackList": "repeat(auto-fill, minmax(0px, 50%))",
+    "gaps": 0,
+    "rootPadding": 0,
+    "rootBorder": 0,
+    "item": {"width": "24px", "height": "16px", "margin": 0, "padding": 0, "border": 0},
+    "autoRepeatPatternGrammar": "minmax(<fixed-breadth 0px>, <track-breadth 50%>) is a <fixed-size>; the authored auto-repeat pattern is valid",
+    "itemMaxContentContribution": "The sole item's fixed 24px preferred inline size is independent of available inline size, so its max-content contribution is 24px.",
+    "intrinsicTrackSizing": "One repeated track becomes minmax(0px, auto) for intrinsic sizing. Its fixed minimum initializes the base at 0px; the intrinsic auto maximum receives the item's 24px max-content contribution as its growth limit; max-content maximization grows the only track from 0px to 24px. With no gutter or neighboring track, the grid max-content inline size is 24px.",
+    "browserOnlyObserver": "The browser HTML has one absolute-positioned .boundary span per grid as a screenshot marker. It is out of flow and is excluded from the runtime document, node IDs, and fixture child allowlist; each runtime scene contains one in-flow item only."
+  },
+  "sceneIdMapping": {
+    "browserToRuntime": {
+      "cyclic": "cyclic-max-content-auto-fill",
+      "definite": "definite-40px-auto-fill-control"
+    },
+    "runtimeInputBoundary": "Browser-only absolute .boundary spans are not runtime fixture nodes."
+  },
+  "independentDerivation": [
+    {
+      "step": 1,
+      "rule": "CSS Sizing 3 defines an intrinsic sizing keyword such as max-content as indefinite. Applying CSS Grid 7.2.3.2 during the intrinsic sizing pass therefore selects exactly one repetition.",
+      "result": {"phase": "intrinsic max-content sizing", "repeatCount": 1}
+    },
+    {
+      "step": 2,
+      "rule": "During intrinsic grid sizing, the single repeated cyclic percentage track is minmax(0px, auto). The fixed 0px minimum initializes its base size at 0px. The sole item's fixed 24px preferred inline size is independent of available inline size, so its max-content contribution is 24px; the intrinsic auto maximum's growth limit incorporates that contribution. CSS Grid 11.5–11.6 max-content track maximization grows the only track from 0px to 24px. With no gutter or neighboring track, the max-content grid content width is 24px.",
+      "result": {"phase": "intrinsic max-content sizing", "singleTrackStartPx": 0, "itemMaxContentContributionPx": 24, "singleTrackMaxContentPx": 24, "maxContentGridWidth": 24}
+    },
+    {
+      "step": 3,
+      "rule": "CSS Grid 11.1 lays out an indefinite grid under an intrinsic constraint and then lays it out for real with the resulting size. In that final pass, the resulting 24px grid size is definite. Applying §7.2.3.2 to that pass gives two repetitions; each percentage maximum is 50% of 24px, or 12px.",
+      "result": {"phase": "final definite layout", "repeatCount": 2, "usedColumns": [12, 12], "usedRows": [16]}
+    },
+    {
+      "step": 4,
+      "rule": "The definite control has a 40px content width. The repeat sizing maximum is 50% of 40px (20px), so two repetitions fit exactly and a third would overflow.",
+      "result": {"phase": "final definite layout", "repeatCount": 2, "usedColumns": [20, 20]}
+    }
+  ],
+  "expectedScenes": [
+    {
+      "id": "cyclic-max-content-auto-fill",
+      "browserObservationId": "cyclic",
+      "authoredWidth": "max-content",
+      "repeatCountByPass": {"intrinsicMaxContent": 1, "finalDefinite": 2},
+      "columnsPx": [12, 12],
+      "rowsPx": [16],
+      "root": {"x": 0, "y": 0, "width": 24, "height": 16},
+      "item": {"x": 0, "y": 0, "width": 24, "height": 16},
+      "itemOverflowBeyondFirstTrackPx": 12
+    },
+    {
+      "id": "definite-40px-auto-fill-control",
+      "browserObservationId": "definite",
+      "authoredWidth": "40px",
+      "repeatCount": 2,
+      "columnsPx": [20, 20],
+      "rowsPx": [16],
+      "root": {"x": 0, "y": 0, "width": 40, "height": 16},
+      "item": {"x": 0, "y": 0, "width": 24, "height": 16},
+      "itemOverflowBeyondFirstTrackPx": 4
+    }
+  ],
+  "toleranceCssPx": 0.015625,
+  "browserObservationIsNormative": false
+}

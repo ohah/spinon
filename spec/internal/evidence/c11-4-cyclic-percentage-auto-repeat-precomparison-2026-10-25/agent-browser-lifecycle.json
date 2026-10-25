@@ -1,0 +1,28 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "priorSessionCleanup": {
+    "session": "c11-4-cyclic-percentage-auto-repeat-20261025",
+    "namespace": "default",
+    "closeOutput": "Browser closed"
+  },
+  "namespace": "c114_cyclic",
+  "session": "c114-cyclic-auto-repeat-20261025",
+  "beforeClose": {
+    "sessionInfo": {
+      "active": true,
+      "pid": 56187,
+      "pageCount": 1,
+      "socketDir": "/Users/yoonhb/.agent-browser/namespaces/c114_cyclic/run"
+    }
+  },
+  "close": {
+    "command": "agent-browser --namespace c114_cyclic close --all",
+    "output": "No active sessions"
+  },
+  "afterClose": {
+    "sessionInfo": {"active": false, "pid": null},
+    "sessionList": [],
+    "matchingProcesses": [],
+    "profileOpenHandles": []
+  }
+}
