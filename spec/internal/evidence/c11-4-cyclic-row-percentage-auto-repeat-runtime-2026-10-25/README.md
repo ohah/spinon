@@ -1,6 +1,6 @@
 # C11.4 cyclic row percentage auto-repeat runtime evidence
 
-**상태:** 구현 후보 검증 자료. `spec/STATUS.md`의 C11.4 완료 표기와 공식 완료 수 `72/213`은 아직 변경하지 않았다. 이 두 장면의 통과는 전체 Grid track sizing이나 일반 CSS 지원 완료를 뜻하지 않는다.
+**상태:** 구현 PR [#632](https://github.com/ohah/spinon/pull/632)이 2026-10-25T14:56:09Z Rebase and merge로 병합됐다(merge SHA 64739104e4be3e06f95c60b94a5eb1f87a4e78b0). 이 두-scene 제한 slice는 전체 Grid track sizing이나 일반 CSS 지원 완료를 뜻하지 않는다. C11.4 checkbox와 공식 완료 수 72/213은 유지한다.
 
 ## 판정 기준과 관측값
 
@@ -12,6 +12,8 @@
 | `definite-40px-auto-fill-control-rows` | 24×40px | `2`, `40px` | `[20px, 20px]` | 통과. 일반 definite-axis 경로를 사용한다. |
 
 양 플랫폼에서 root/item frame, row track trace, draw/present 완료가 확인됐다. Target row pass는 `IntrinsicMaxContent → FinalDefinite` 순서이며 count는 재확장되지 않았다. Control은 단일 `FinalDefinite` row pass다.
+
+이 두 scene은 capture script에 `pixelSamples`가 없어 PixelCopy/Metal surface pixel capture를 실행하지 않았다. 아래 스크린샷은 scene 배치 확인용이며 pixel equality 근거가 아니다.
 
 ## 시뮬레이터 캡처
 
@@ -44,4 +46,4 @@ node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs ios-s
 
 ## 범위 한계
 
-Android 근거는 API 37 ARM64 16 KB 가상 기기 `emulator-5560`이고 iOS 근거는 iPhone 17 Pro / iOS 26.2 Simulator다. 실기기 GPU, compositor 제출 이후 픽셀, WPT 전체 적합성은 확인하지 않았다. Failed capture 재시도 폴더는 보존되어 있으며, 최신 성공 run만 위에 연결했다. C11.4 공식 상태와 완료 수는 구현 PR이 병합되기 전까지 바꾸지 않는다.
+Android 근거는 API 37 ARM64 16 KB 가상 기기 `emulator-5560`이고 iOS 근거는 iPhone 17 Pro / iOS 26.2 Simulator다. 실기기 GPU, compositor 제출 이후 픽셀, WPT 전체 적합성은 확인하지 않았다. Failed capture 재시도 폴더는 보존되어 있으며, 최신 성공 run만 위에 연결했다. C11.4 공식 완료 상태와 완료 수 72/213은 이 제한 slice로 승격하지 않는다.

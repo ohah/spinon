@@ -20,7 +20,7 @@
 </head>
 <body>
   <h1>C11.4 cyclic row percentage auto-repeat</h1>
-  <p><strong>상태:</strong> 구현 후보 검증 자료입니다. 공식 C11.4 완료 표기와 완료 수 <code>72/213</code>은 아직 변경하지 않았습니다.</p>
+  <p><strong>상태:</strong> 구현 PR <a href="https://github.com/ohah/spinon/pull/632">#632</a>이 2026-10-25T14:56:09Z Rebase and merge로 병합됐습니다(merge SHA <code>64739104e4be3e06f95c60b94a5eb1f87a4e78b0</code>). 이 두-scene 제한 slice는 전체 Grid track sizing이나 일반 CSS 지원 완료를 뜻하지 않습니다. C11.4 checkbox와 공식 완료 수 <code>72/213</code>은 유지합니다.</p>
   <p>기대값은 저장소의 <code>plan/c11-4-cyclic-percentage-auto-repeat-row-axis.md</code> 및 <code>spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md</code>에 고정했습니다.</p>
   <table>
     <thead><tr><th>장면</th><th>Root</th><th>반복 수 / basis</th><th>Rows</th><th>결과</th></tr></thead>
@@ -30,6 +30,7 @@
     </tbody>
   </table>
   <p>Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 각 target/control 장면이 통과했습니다. Target pass 순서는 <code>IntrinsicMaxContent → FinalDefinite</code>이고 row repeat count는 재확장되지 않습니다.</p>
+  <p>이 두 장면은 capture script에 <code>pixelSamples</code>가 없어 PixelCopy/Metal surface pixel capture를 실행하지 않았습니다. 아래 스크린샷은 scene 배치 확인용이며 pixel equality 근거가 아닙니다.</p>
   <h2>실행 화면</h2>
   <div class="screens">
     <figure><a href="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/cyclic-max-content-auto-fill-rows.png"><img src="./android-avd-c114-cyclic-percent-tracks-android-avd-20261025T142848934Z-bf999679/cyclic-max-content-auto-fill-rows.png" alt="Android AVD target scene"></a><figcaption>Android AVD · target</figcaption></figure>
@@ -46,6 +47,6 @@
     <li><a href="./verification/ios-installed-app.json">iOS 설치 앱 bundle hash</a></li>
     <li><a href="./verification/">검증 로그</a></li>
   </ul>
-  <p>실기기 GPU, compositor 제출 이후 픽셀, WPT 전체 적합성은 이 근거가 증명하지 않습니다. 공식 C11.4 상태와 72/213 완료 수는 구현 PR 병합 전까지 유지합니다.</p>
+  <p>실기기 GPU, compositor 제출 이후 픽셀, WPT 전체 적합성은 이 근거가 증명하지 않습니다. C11.4 공식 완료 상태와 72/213 집계는 이 제한 slice로 승격하지 않습니다.</p>
 </body>
 </html>

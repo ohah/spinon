@@ -4,7 +4,7 @@
 
 **선행 구현:** [열 축 cyclic percentage auto-repeat PR #623](./c11-4-cyclic-percentage-auto-repeat.md) · [사전 비교](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)
 
-**상태 · 2026-10-25:** 계획 PR #631이 병합되어 구현 중이다. target/control Rust·runtime·FFI fixture, Android/iOS adapter와 API 37 ARM64 AVD·iPhone 17 Pro iOS 26.2 Simulator 실행을 추가했다. 구현/PR 적대 검토와 증거 정리는 진행 중이며, 구현 PR 병합 전까지 C11.4 상태와 공식 완료 수 `72/213`은 그대로 둔다.
+**상태 · 2026-10-25:** 계획 PR #631과 구현 PR [#632](https://github.com/ohah/spinon/pull/632)이 Rebase and merge됐다(2026-10-25T14:56:09Z, merge SHA 64739104e4be3e06f95c60b94a5eb1f87a4e78b0). 두-scene runtime fixture와 Android API 37 ARM64 16 KB AVD·iPhone 17 Pro/iOS 26.2 Simulator 근거는 [실행 증거](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-runtime-2026-10-25/README.md)에 있다. 이 제한 slice는 C11.4 완료 판정을 바꾸지 않으며 공식 완료 수 72/213을 유지한다.
 
 ## 목적과 범위
 
@@ -96,4 +96,4 @@ PR #623은 fixed scene의 열 축에서 intrinsic max-content 계산 뒤 cyclic 
 
 ## 계획 사전 비교 상태
 
-[사전 비교 자료](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)는 Chrome 156 관측과 독립 계산을 보존한다. 구현 중에도 이 기대값을 기준으로 사용한다. C11.4 공식 상태와 완료 수는 구현 PR 병합 전까지 변경하지 않는다.
+[사전 비교 자료](../spec/internal/evidence/c11-4-cyclic-row-percentage-auto-repeat-precomparison-2026-10-25/README.md)는 Chrome 156 관측과 독립 계산을 보존한다. 구현 당시 이 기대값을 기준으로 사용했다. 구현 PR #632 병합 뒤에도 이 제한 slice는 C11.4 전체 완료 판정을 바꾸지 않으므로 공식 상태와 완료 수 `72/213`은 유지한다.
