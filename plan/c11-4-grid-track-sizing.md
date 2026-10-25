@@ -1,6 +1,10 @@
 # C11.4 · CSS Grid track sizing 계획
 
-**현재 상태 · 2026-10-25:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+**현재 상태 · 2026-10-26:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+
+## 2026-10-26 overlapping span group 중간 track snapshot 계획
+
+Stage B에서 빠진 span batch별 base/growth-limit 검증을 기존 four-case span-2/span-3 input에 독립 CSS Grid §11.5.1/§11.6 산술을 대조하는 pure Rust test slice로 계획했다. [세부 계획](./c11-4-span-stage-oracle.md) · [독립 유리수 기대값과 JSON](../spec/internal/evidence/c11-4-span-stage-oracle-precomparison-2026-10-26/README.md) · [최종 계획 review 20개](./c11-4-span-stage-oracle-plan-review-pass03-20-2026-10-26.md) · [계획 PR diff review 30개](./c11-4-span-stage-oracle-plan-pr-diff-review-30-2026-10-26.md). Taffy trace에서 `None`이 모든 non-finite growth limit을 나타내므로 내부 `+∞`와 NaN/`-∞`를 구별하지 않는다는 한계를 기록한다. **후속 구현 PR의 변경 대상**은 test assertion 한 파일이며 CSS/runtime/app/platform 동작은 바꾸지 않는다. 계획 PR diff 30관점 검토 뒤 별도 구현 slice로 진행한다. C11.4 Stage B, 상위 checkbox 및 공식 `72/213`은 계속 미완료다.
 
 ## 2026-10-23 definite percentage maximum auto-repeat 계획
 
