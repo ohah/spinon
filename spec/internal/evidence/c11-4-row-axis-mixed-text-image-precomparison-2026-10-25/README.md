@@ -48,3 +48,17 @@ Raw page coordinates place the four roots at y=`0`, `60`, `120`, and `180`; tabl
 ## Agent Browser 정리
 
 재관측에 사용한 `c11-row-axis-mixed-20261025` session을 캡처 뒤 닫았다. 종료 후 Agent Browser는 `No active sessions`를 반환했고, 해당 session의 Agent Browser PID `28882`, Headless Chrome PID `28885`, Crashpad PID `28887` 및 고유 임시 profile 경로에 해당하는 프로세스가 남지 않았다. 실행 전부터 존재하던 일반 Google Chrome/Crashpad PID `440`/`864`는 건드리지 않았다.
+
+## PR #619 본문 이미지 확인
+
+2026-10-25에 새 Agent Browser session으로 [PR #619](https://github.com/ohah/spinon/pull/619)을 열었다. 본문에 포함된 `Chrome 156 Agent Browser row-axis fixture` 이미지는 `complete=true`, intrinsic size `1280×633px`로 로드됐다. PR 본문 폭에 맞춘 화면 표시 크기는 `782×387 CSS px`였고, viewport `1280×633`에서 `visibility:visible`, `opacity:1`, 화면 교차 확인 `true`였다. 이미지 DOM은 `.js-comment-body.markdown-body` 안에 있다.
+
+- [PR 본문에서 보이는 Agent Browser 화면](./pr619-row-axis-image-agent-browser.png)
+- [이미지 DOM·크기·표시 확인 JSON](./pr619-row-axis-image-verification.json)
+
+확인에 쓴 `pr619-row-axis-image-20261025` session은 종료했다. 종료 뒤 `agent-browser session list`는 `No active sessions`를 반환했고, Agent Browser PID `47889`와 그 session의 Headless Chrome/임시 profile 프로세스는 남지 않았다. 기존에 실행 중이던 일반 Google Chrome PID `440` 및 Crashpad PID `864`는 그대로 두었다.
+
+| PR 확인 파일 | SHA-256 |
+| --- | --- |
+| `pr619-row-axis-image-verification.json` | `8977ba0bd7a3aa9ae8febfbea1444388d9ebb34230d14f3c26817512eb2f1049` |
+| `pr619-row-axis-image-agent-browser.png` | `f770eed5db65c25743981419237bc0a61539352ccada9007783b0da057796d65` |

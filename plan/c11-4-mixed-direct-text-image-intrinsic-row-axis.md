@@ -56,13 +56,25 @@ Root-relative geometry는 CSS px 기준이며 1/64 CSS px 이내로 일치해야
 1. 전용 scene ID를 기존 `RuntimeBlockFlexGridTrackSizingV1` opt-in fixture matrix에만 추가한다. #611의 네 fixed-row scenes와 일반 mixed-input rejection은 유지한다.
 2. Runtime adapter는 root identity, `horizontal-tb`, root box, 고정 columns, intrinsic row 함수, 0인 edges/gaps, 정확한 direct child 수·순서·tag·text·source, image decode/natural size와 placement를 검증한다. 알 수 없거나 변형된 입력은 부분 결과 없이 명시적으로 거부한다.
 3. Rust/runtime 검증에서 scene별 child source order, item identity, image intrinsic revision, text source, row/column contributions, row/column trace, track list와 root/item frames를 각각 비교한다. `MinContent`/`MaxContent` row 기대값은 규범상 모두 20px이며 두 함수 사이의 차이를 assertion하지 않는다.
-4. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 네 scene을 실행해 row/column tracks, frames, complete trace, draw/present, app/installed artifact hashes를 기록한다. Screenshot은 box 배치 참고 자료로만 쓰며 glyph/PNG texel equality, Android 실기기, hardware GPU, iOS compositor 이후 pixels를 입증한다고 쓰지 않는다.
-5. Focused Rust/runtime/FFI tests, formatter, 관련 Clippy, fixture-module boundary, 기본/product negative-control과 opt-in positive-control static artifacts, Android/iOS fixture app builds를 수행한다. 수행하지 않은 gate는 미검증으로 남긴다.
-6. 구현/runtime 변경에는 기존 계획 검토와 별개인 새 실패 관점 20개를 작성하고, 실제 PR diff에는 프로젝트 규칙에 따른 독립 실패 관점 30개를 별도 작성한다. 해당 plan review를 구현 검토로 재사용하지 않는다.
-7. 관련 문서와 내부 progress log에는 제한 fixture 상태만 기록한다. 전체 C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
+4. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator gate는 각 host adapter에 새 scene ID를 연결한 뒤 실행한다.
+   - `platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java`는 `C114_GRID_TRACK_SIZING_SCENE_IDS` allowlist와 scene-specific root/item frame, column/row track, intrinsic contribution 및 `Columns`→`Rows` trace 기대값을 소유한다. 네 `direct-row-*` ID를 추가하고 root `74×20px`, text `(0,0) 50×20px`, image `(50,0) 24×16px`, columns `[50,24]px`, row `[20]px`를 각각 검증한다.
+   - `platforms/ios/Sources/C0410RuntimeGpuDemo.swift`는 C11.4 scene ID sets/allowlist 및 node frames, root/track 기대값과 intrinsic trace 검증을 소유한다. 동일한 네 ID·frame·track·trace 조건을 Android 결과와 별도로 확인한다.
+   - 두 adapter에서 item identity/source order, text와 image의 row-axis contribution kind/revision, column/row stage completeness, draw/present 조건도 scene별로 검사한다. 두 Simulator의 결과를 하나의 성공 수로 합쳐 누락을 숨기지 않는다.
+5. 기존 #611의 `spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs`는 이전 네 column scene만 고정하므로 수정하거나 재사용하지 않는다. row slice 전용 `spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/capture-direct-mixed-row-axis.mjs`를 만들고, 새 README 및 Android/iOS run output·screenshots·app/source/artifact hashes를 그 새 evidence directory에만 저장한다. 이 경로는 기존 #611 runtime evidence를 덮어쓰지 않는다. 각 scene에서 `[50,24]` columns, `[20]` row, `74×20` root, 두 item frame, complete Columns/Rows trace 및 draw/present를 확인한다. Screenshot은 box 배치 참고 자료로만 쓰며 glyph/PNG texel equality, Android 실기기, hardware GPU, iOS compositor 이후 pixels를 입증한다고 쓰지 않는다.
+6. Focused Rust/runtime/FFI tests, formatter, 관련 Clippy, fixture-module boundary, 기본/product negative-control과 opt-in positive-control static artifacts, Android/iOS fixture app builds를 수행한다. 수행하지 않은 gate는 미검증으로 남긴다.
+7. 구현/runtime 변경에는 기존 계획 검토와 별개인 새 실패 관점 20개를 작성하고, 실제 PR diff에는 프로젝트 규칙에 따른 독립 실패 관점 30개를 별도 작성한다. 해당 plan review를 구현 검토로 재사용하지 않는다.
+8. 관련 문서와 내부 progress log에는 제한 fixture 상태만 기록한다. 전체 C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
 
 ## 파일 경계와 병렬성
 
-예상 구현 소유 영역은 #611의 direct mixed runtime adapter 및 validation/tests (`crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs`, `c11_4_mixed/style.rs`, `c11_4_mixed/tests.rs`)과 direct mixed FFI scene module (`crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs`)이다. Chrome input·observation·화면은 별도 evidence 경로에 이미 기록했다. 중앙 scene router/catalog(`crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs`)은 등록이 필요한 경우만 최소 수정한다. 현재 경로는 공유 Taffy layout projection을 감싼 fixture allowlist이므로 이 정확한 scene에서 불일치가 관찰되지 않으면 공용 track sizing algorithm을 바꾸지 않는다.
+예상 구현 소유 영역은 다음과 같다.
+
+- **Rust runtime adapter와 회귀:** `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs`, `c11_4_mixed/style.rs`, `c11_4_mixed/tests.rs`가 exact root/style/child/placement allowlist, per-scene expected values 및 contribution source/revision/frame assertions를 담당한다.
+- **FFI scene input:** 새 `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs`가 네 row scene의 IDs/source order/CSS를 보존한다. 필요한 경우 `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs`에서 module/dispatcher만 연결하며 기존 #611 column scene output을 바꾸지 않는다.
+- **Android host adapter:** `platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java`가 scene allowlist와 scene별 root/item frame, column/row track, intrinsic input 및 track-sizing trace expectations를 소유한다.
+- **iOS host adapter:** `platforms/ios/Sources/C0410RuntimeGpuDemo.swift`가 scene allowlist와 scene별 node frame, root/track, intrinsic input 및 trace expectations를 소유한다.
+- **Capture와 evidence:** 별도 `spec/internal/evidence/c11-4-direct-mixed-text-image-row-axis-runtime-2026-10-25/` 아래 row-only capture harness, README, per-platform run output/screenshots/hash가 들어간다. 이전 #611 `capture-direct-mixed.mjs`와 runtime evidence는 변경하지 않는다.
+
+Chrome input·observation·화면은 [row-axis precomparison evidence](../spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/README.md)에 기록했다. 현재 경로는 공유 Taffy layout projection을 감싼 fixture allowlist이므로 이 정확한 scene에서 불일치가 관찰되지 않으면 공용 track sizing algorithm을 바꾸지 않는다.
 
 병합된 PR #615의 fixed-repeat `minmax()`/flex candidate는 별도 fixture module과 repeat/projection 경로를 사용한다. 이 계획은 고정 column declarations만 써 repeat expansion과 분리된다. 다만 중앙 scene routing, shared evidence summaries 또는 병행 중인 C11.4 문서는 공통 수정 지점이 될 수 있으므로 구현 branch를 나누기 전에 해당 파일의 ownership을 조정한다.
