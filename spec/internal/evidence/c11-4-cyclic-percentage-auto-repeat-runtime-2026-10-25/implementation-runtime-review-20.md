@@ -2,7 +2,8 @@
 
 - 검토 대상 source revision: `c5b8ef75804e39d36a37aa61b82b1f028115fefd`
 - 방식: 별도 reviewer의 read-only source 및 evidence 검토
-- 초기 결과: **19 PASS / 1 PARTIAL / 0 FAIL**
+- 초기 결과: 19 PASS / 1 PARTIAL / 0 FAIL.
+- Follow-up 이후 최종 결과: **20 PASS / 0 PARTIAL / 0 FAIL**.
 - 검토 중 빌드, 테스트, simulator, browser 실행: 없음
 - PARTIAL은 동작 문제가 아닌 evidence provenance/persistence 문제 (#20)다. Review response와 후속 증거 고정 내용은 아래 follow-up에 연결한다.
 
@@ -31,7 +32,7 @@
 
 ## Follow-up: #20 evidence provenance
 
-초기 review에서 #20이 요구한 점은 README/캡처/log/build hash를 고정된 source revision에 영구적으로 연결하는 것이었다. 이를 위해 본 디렉터리에 README, 4장 simulator screenshot, 원본 log/sample 자료와 APK/iOS executable/static archive SHA를 추가했다. 리뷰 재확인 결과를 아래에 덧붙인다.
+초기 review에서 #20은 README/캡처/log/build hash를 고정된 source revision에 영구적으로 연결하는 근거가 미흡하다고 판정했다. Evidence commit `ea06d8ff86729d582b4821554cf87d22170aefc0`에 README, 4장 simulator screenshot, 원본 log/sample 자료와 APK/iOS executable/static archive SHA를 추가했다. 독립 reviewer가 해당 commit을 재검토해 #20을 PASS로 변경했다.
 
-- 후속 reviewer 확인: (대기 중)
-- 판정/근거: (대기 중)
+- 후속 판정: **PASS — #20 해소**.
+- reviewer는 evidence commit의 parent가 정확한 source commit `c5b8ef75804e39d36a37aa61b82b1f028115fefd`임을 확인했고, README의 full SHA 및 Android/iOS executable SHA-256이 빌드 출력 재계산값과 일치함을 확인했다. 31개 evidence 파일이 commit tree에 포함되고 worktree clean이었으며, four run IDs, logs, pixel samples, archive markers/hash/size도 README와 맞았다. Reviewer는 read-only로 확인했으며 추가 테스트·빌드·시뮬레이터 실행은 하지 않았다.
