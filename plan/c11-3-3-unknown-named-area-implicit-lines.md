@@ -1,6 +1,6 @@
 # C11.3.3 · 존재하지 않는 이름의 암시적 Grid 라인·트랙
 
-**상태:** 제한 구현 후보 진행 중. 계획 검토 20/20 통과 뒤 구현·시뮬레이터 검증을 수행했으며, PR/merge 전이다. 이 문서와 fixture는 공개 CSS 지원 선언이나 C11.3.3 완료 근거가 아니다.
+**상태:** 제한 구현 후보 [PR #393](https://github.com/ohah/spinon/pull/393)은 2026-10-20T15:47:50Z Rebase and merge됐으며 merge SHA는 `12dc2669814c4d5e7d0e2aa59d5196fdab98bb68`이다. 필수 checks는 보고되지 않았고 PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 계획 검토와 구현·시뮬레이터 검증은 기록되어 있지만, 이 문서와 fixture는 공개 CSS 지원 선언이나 C11.3.3 완료 근거가 아니다.
 **상위:** [C11.3 template areas 계획](./c11-3-template-repeat-named-lines-areas.md) · [C11 상태 대장](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 **규범:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §8.3](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#line-placement), §7.5, §8.3.1
 
@@ -73,4 +73,4 @@ Pinned Chrome capture가 완료되면 각 항목에 근거와 PASS/PARTIAL을 �
 
 마지막 코드 변경 뒤 Android API 37 ARM64 AVD 행렬 `c1133-matrix-20261020T150911869Z-7abbeeff`, Android 16/API 36 Samsung SM-S731N 실기기 행렬 `c1133-matrix-20261020T152039508Z-5886c27a`, iPhone 17 Pro/iOS 26.2 Simulator 행렬 `c1133-ios-matrix-20261020T151033155Z-4d6bf988`가 각각 26 scene·65 node, 19 success·5 cascade fallback·2 expected rejection, 61 visible frame, geometry 오차 0 CSS px로 통과했다. 별도 root-overflow case의 3개 frame geometry와 표면 RGBA sample은 세 실행에서 각각 3/3 exact다. SM-S731N renderer는 ANGLE/Xclipse 940/Vulkan 1.3.279였다. 실행 hash, 화면과 플랫폼 경계는 [후속 근거](../spec/internal/evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/README.md)에 있다.
 
-현재 `origin/main` 기준 로컬 전체 Rust workspace 1,193 passed·4 ignored, focused CSS reference 24/24, C11.3.3 fixture FFI 4/4, Clippy, rustfmt와 matrix generator check가 통과했다. Full `bun run test`는 기존 C04, C11.3.2, C13.3 source expectation 네 개에서 중단되며 CSS-reference test 이후 benchmark step은 실행되지 않았다. 계획은 구현 후보를 검토하고 있으며 PR/merge 전이다. 공식 C11.3.3/C11 상태는 미완료로 유지한다.
+PR #393의 병합 전 후보 snapshot에서 로컬 Rust workspace는 1,193 passed·4 ignored, focused CSS reference 24/24, C11.3.3 fixture FFI 4/4였고 Clippy, rustfmt와 matrix generator check도 통과했다. Full `bun run test`는 당시 기존 C04, C11.3.2, C13.3 source expectation 네 개에서 중단되어 CSS-reference test 이후 benchmark step은 실행되지 않았다. 이 결과는 병합 전 해당 snapshot에 한정된다. PR #393 병합 뒤에도 제한 범위만 구현됐으므로 공식 C11.3.3/C11 상태는 미완료로 유지한다.
