@@ -67,7 +67,7 @@ PR #623은 fixed scene의 열 축에서 intrinsic max-content 계산 뒤 cyclic 
 5. Default/product artifact negative control과 `c11-4-grid-track-sizing-fixture-test` opt-in positive control에서 row scene symbol·문자열·payload의 포함 여부를 비교한다. 정적 library 결과를 APK/IPA 전체 제외로 확대 해석하지 않는다.
 6. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 target/control 각 2 scene을 실행한다. Root/item frames, row tracks, pass별 count/basis, draw/present와 source/build/install hash를 별도로 기록한다. 실기기 GPU, compositor 이후 pixels, glyph paint는 주장하지 않는다.
 7. 구현/runtime 변경은 새 실패 관점 20개, 실제 PR diff는 독립 실패 관점 30개로 검토한다. PR 본문에 가능한 simulator 동작 화면을 evidence 경로로 첨부하고, spec, fixture, evidence, 구현 한계와 공식 상태 유지 근거를 연결한다.
-8. 구현 merge 후 `spec/STATUS.md`와 [공개 roadmap HTML](../spec/public/roadmap.html)을 실제 구현 근거와 같이 갱신한다. C11.4 checkbox와 공식 수 `72/213`을 유지한다. 해당 산출물을 Tailnet preview와 동기화하고 SHA-256 manifest·HTTP/hash 결과를 검증한다. Agent Browser로 화면을 확인한 후 해당 세션·프로세스만 종료한다.
+8. 구현 merge 후 공식 상태 원본 [`spec/STATUS.md`](../spec/STATUS.md)와 공개 페이지 원본 [`spec/public/roadmap.html`](../spec/public/roadmap.html)을 실제 구현 근거와 같이 갱신한다. C11.4 checkbox와 공식 수 `72/213`은 유지한다. 저장소 lockfile 기준으로 선택 Rspress 출력을 만들고 Tailnet preview와 동기화한다. 알려진 preview root는 `/Users/yoonhb/Library/Application Support/SpinonPreview`, 공개 route는 [`https://macstudio.tailed42f2.ts.net/spinon/roadmap.html`](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html)이다. 동기화 직전에 preview server의 실제 root/config를 다시 확인하고, 삭제 없이 선택 파일을 갱신하며 교체 전 파일은 작업별 backup에 보존한다. 선택 출력 파일별 path·byte count·SHA-256 manifest를 만들고 local 및 served 응답의 HTTP 200·byte count·SHA-256을 대조한다. Agent Browser에서 공개 roadmap과 새 evidence 화면을 확인한 뒤 해당 세션·프로세스만 종료한다.
 
 ## 계획 실패 관점 20개
 
