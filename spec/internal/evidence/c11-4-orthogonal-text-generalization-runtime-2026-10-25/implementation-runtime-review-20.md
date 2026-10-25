@@ -31,25 +31,52 @@ C11.4 직교 텍스트 intrinsic 일반화 계획, 현재 구현 diff, 시뮬레
 | 19 | PASS | FFI fixture module은 fixture-test feature에서만 컴파일된다. 정적 archive 비교에서 기본 archive에는 대상 ID, C11.4 DOM prefix, fixture FFI export가 없고 fixture-test archive에는 포함 대조가 있다. 보고서도 검사를 macOS ARM64 static archive에 한정하며 APK/IPA로 확대 해석하지 않는다. | `crates/spinon-ffi/src/runtime_gpu.rs:29-30`; `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs:91-103`; `artifact-boundary/README.md:11-29` |
 | 20 | **초기 검토: FAIL — 증거 출처 결속** | 최초 artifact-boundary 보고서는 `sourceHead`만 기록하고 수정 중인 후보의 working-tree/diff 또는 implementation-file hash를 기록하지 않았다. 따라서 archive hash와 fixture 경계 결과는 관찰값이지만, 당시에는 제출 patch와 정확히 연결된 결과라고 확인할 수 없었다. 코드 결함은 아니다. 최초 FAIL은 당시 판정을 보존한다. **2026-10-25 후속 재검토에서 해소 여부를 다시 판정한다.** | 2026-10-25 최초 검토 판정. 이 문서의 이 항목에 당시 결함을 보존하고, 아래에 재생성 scan 결과를 별도로 기록한다. |
 
-## 2026-10-25 후속 재검토: #20 증거 출처 결속 FAIL 해소
+## 2026-10-25 이전 부분 범위 재검토 기록 (후속 감사로 대체됨)
 
-재생성된 산출물 경계 검사에서 빌드 전후 소스 snapshot이 product archive와 fixture-test archive 모두에서 같고, 지정된 후보 snapshot과도 일치하는 것을 확인했다. `implementationDiffSha256`은 컴파일되는 소스 경로 22개에 한정한 binary diff의 SHA-256이다. 문서와 증거 파일은 이 diff에서 제외한다. 이 값과 별도로 22개 경로 각각의 현재 파일 내용 hash를 기록하고 aggregate hash를 계산했으며, 새로 추가된 untracked FFI 소스도 포함한다. 전후 snapshot과 두 archive hash는 `artifact-boundary/README.md:3-14`, `artifact-boundary/scan-results.json:2-29,31-150,156,164-207`, `artifact-boundary/product-build.log:2-64`, `artifact-boundary/fixture-test-build.log:2-64`에서 대조된다.
+당시에는 아래 22개 경로 집합에 한정해 archive source snapshot을 보강했고, 이 범위에서만 before/after가 일치했다. 이후 PR 전체 `crates/`·`platforms/` 변경 경로는 25개이며, 앞선 집합이 네 변경 경로를 빠뜨리고 미변경 경로 하나를 포함한 사실이 확인됐다. 따라서 이 이전 PASS는 22개 경로 부분 검사만 설명하며 PR 전체 source provenance의 결속 증거로 사용할 수 없다. 당시 기록과 hash는 감사 이력으로 보존한다. 전체 25개 경로의 최종 판정은 아래 최신 재검토 항목을 따른다.
 
-| 결속 항목 | 재검토 결과 |
+| 이전 부분 snapshot 항목 | 당시 기록 |
 |---|---|
-| Git HEAD | `0c7c34b8f956a6b063a180ec68942fd0d1c8798f` |
-| 컴파일 소스 22개 경로에 한정한 implementation diff SHA-256 | `26cff5b6335feca9476017b62c336c6081f1a1b5228435ab590e8d0e96656010` |
-| 경로별 파일 hash 및 aggregate SHA-256 | 컴파일 소스 경로 22개를 각각 hash; 문서·증거 제외, untracked FFI 소스 포함; aggregate `b505d00b10e143279053e58102028fd200d74593f8873552c49f056f51fd6b42` |
-| 소스 snapshot 비교 | product와 fixture-test 각각 before = after = 기준 snapshot; 두 검사 모두 `True` |
+| pre-commit Git HEAD | `0c7c34b8f956a6b063a180ec68942fd0d1c8798f` |
+| 부분 22-path diff SHA-256 | `26cff5b6335feca9476017b62c336c6081f1a1b5228435ab590e8d0e96656010` |
+| 부분 경로 aggregate SHA-256 | `b505d00b10e143279053e58102028fd200d74593f8873552c49f056f51fd6b42` |
+| 부분 집합 내 archive snapshot | product와 fixture-test 각각 before = after; 당시 두 검사 모두 `True` |
 | product archive SHA-256 | `0eb62fd8e73253e5f0cacb50777efea04a90aa6ed29616bdb8414885344d0d07` |
 | fixture-test archive SHA-256 | `240aa82b4d00a003654476261cb40e392843a0da143612c0072f1d4675fac024` |
 
-product archive에는 대상 ID 0/10, 고유 DOM prefix 없음, fixture FFI symbol 없음이 유지되고, fixture-test archive에는 대상 ID 10/10과 fixture FFI symbol이 있다. 기록된 두 archive hash와 전후 snapshot은 재생성된 `artifact-boundary/README.md`, `scan-results.json`, `product-build.log`, `fixture-test-build.log`에서 서로 확인된다.
+이전 보고서는 22개를 “컴파일되는 소스 경로”라고 과장했다. 해당 목록은 전체 변경 inventory가 아니었고 두 test-only 파일도 포함하지 않았다. 이전 archive scan은 해당 제한 경로 집합 안의 marker 결과만 기록했다. 최신 전체 경로 재검토와 archive 재생성은 아래에 따로 기록하며, 정적 archive 범위를 APK/IPA로 확대하지 않는다.
 
-**후속 판정:** #20은 PASS로 변경한다. 최초 검토의 FAIL은 당시 상태를 보존하기 위해 위 표에 남겼다. 현재 static archive 결과는 후보 소스 snapshot에 결속되어 있다. 이 결과의 범위는 macOS ARM64 `spinon-ffi` static archive이며 APK/IPA 검증을 뜻하지 않는다.
-
-## 최종 판정
+## 초기 20개 구현·런타임 검토 요약 (전체 소스 재검토 전)
 
 - **구현·런타임 코드:** 검토한 서로 다른 20개 관점에서 PR을 막을 결함을 찾지 못했다.
-- **증거:** 최초 #20 증거 출처 결속 FAIL은 소스 결속 archive scan 재생성으로 해소됐다.
+- **증거:** 당시 #20 증거 출처 결속 FAIL은 22개 경로 subset에서만 보완된 것으로 판정했다. 후속 감사에서 전체 PR 변경 경로에는 불완전한 범위임을 찾아 이 부분 판정을 대체했으며, 전체 25개 경로 결속 결과는 아래 최신 재검토에 기록한다.
 - **실행 범위:** 이 검토자는 테스트나 빌드를 실행하지 않았다. 시뮬레이터와 archive 결과는 저장된 증거를 대조했다.
+
+## 2026-10-25 후속 재검토: 전체 25개 변경 경로 및 정적 archive
+
+### 먼저 기록한 부분 범위 결함
+
+앞선 22개 경로 snapshot은 PR의 전체 소스 변경 목록이 아니었다. 기준 HEAD `0c7c34b8f956a6b063a180ec68942fd0d1c8798f`와 PR HEAD `8f825a10ce51403a7838fe564c0253483be24b16`의 `crates/`·`platforms/` 변경 경로를 다시 비교한 결과 25개였다. 앞선 목록은 `crates/spinon-layout/src/c15_text_layout_tests.rs`, `crates/spinon-layout/src/intrinsic_size_tests.rs`, `crates/spinon-layout/src/lib.rs`, `crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs`를 빠뜨렸고, 변경되지 않은 `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows.rs`를 포함했다. 따라서 직전 22개 경로 scan은 그 경로들에 한정한 결과였고, PR 전체 source inventory의 결속 증거로는 불완전했다. 최초 #20 provenance FAIL과 직전 22개 경로 snapshot은 지우지 않았으며 `matrix-metadata.json`의 `originalPartialSourceSnapshots`에 그대로 보존했다.
+
+### 수정된 전체 경로 검토
+
+현재 capture harness와 archive scanner는 기준 commit부터 candidate HEAD까지 `crates/`·`platforms/`에서 바뀐 경로 집합이 고정된 25개 경로 집합과 정확히 같아야 통과한다. 두 gate 모두 candidate 경로의 staged 및 unstaged diff가 남아 있으면 중단한다. 현재 candidate 경로는 clean이며, source 파일별 hash·aggregate·diff hash를 독립적으로 다시 계산해 저장 snapshot과 대조했다. 누락됐던 `c15_text_layout_tests.rs`와 `intrinsic_size_tests.rs`는 변경 inventory와 파일 hash에 포함했다. `lib.rs`에서 두 모듈은 `#[cfg(test)]` 아래 선언되므로 이 두 파일을 정적 archive에 링크되는 파일이라고 주장하지 않는다.
+
+| 결속 항목 | 재검토 결과 |
+|---|---|
+| 기준 HEAD / candidate HEAD | `0c7c34b8f956a6b063a180ec68942fd0d1c8798f` / `8f825a10ce51403a7838fe564c0253483be24b16` |
+| 전체 candidate diff SHA-256 | `d3912cbe66106f5848ce99dd7aa25733284422be1c4fc5d06b1aa33cab295f79` |
+| 전체 경로 수 / 파일별 hash aggregate | 25개 변경 경로 / `82fccfc0f54eabfc6444fc33424b05cde2e315134c5611328e04bd4eaac92eeb` |
+| 경로 목록 및 현재 파일 내용 | commit의 `crates/`·`platforms/` 변경 경로와 정확히 일치; 25개 파일 hash 일치; staged·unstaged candidate 변경 없음 |
+| product archive 전후 source snapshot | 기준 snapshot과 before/after 모두 일치; `True` |
+| fixture-test archive 전후 source snapshot | 기준 snapshot과 before/after 모두 일치; `True` |
+| product archive | `0eb62fd8e73253e5f0cacb50777efea04a90aa6ed29616bdb8414885344d0d07`; scene ID 0/10, fixture/module symbol 없음, `candidateModuleSymbolRows` 0행 |
+| fixture-test archive | `240aa82b4d00a003654476261cb40e392843a0da143612c0072f1d4675fac024`; scene ID 10/10, fixture FFI symbol과 module symbol 1행 존재 |
+
+`scan-results.json`의 source snapshot은 `matrix-metadata.json`의 전체 25개 경로 snapshot과 동일하다. 두 archive build log는 각각 전체 25개 경로의 before/after hash를 기록하고 snapshot 일치를 `True`로 표시한다. 양쪽 archive 파일의 실제 SHA-256도 scan 결과와 일치하고 `llvm-nm`은 두 archive에서 exit 0이다. 제품 archive의 negative control에는 scene ID, 고유 DOM prefix/template parts, fixture FFI export, candidate module symbol 행이 없고, fixture-test positive control에는 열 개 scene ID와 fixture symbol들이 나타난다. 스캔 범위는 macOS ARM64 `spinon-ffi` static archive다. APK/IPA 전체에서 fixture가 제외됐다는 증거로 해석하지 않는다.
+
+시뮬레이터 증거는 기존 파일을 다시 실행하지 않고 대조했다. metadata의 Android·iOS 결과는 각각 22/22이며, 모든 row에 서로 다른 scene/run/process ID, 정확히 세 개의 process-bound grid node frame, scene-bound draw와 2개 연속 동일 screenshot sample이 기록돼 있다. 44개 scene의 runtime log, launch log, PNG hash가 metadata와 일치한다. Android APK와 iOS executable을 다시 빌드한 결과 hash도 보존된 matrix hash와 같으며, metadata의 `simulatorScenesRerun`은 `false`다.
+
+근거: `capture-simulator-matrix.py:63-90,111-138,468-535`; `crates/spinon-layout/src/lib.rs:28-30,660-662`; `matrix-metadata.json:1-36,3473-3610`; `README.md:30,41-43`; `artifact-boundary/build-and-scan.py:34-73,140-180`; `artifact-boundary/scan-results.json:2-36,169-276`; `artifact-boundary/product-build.log:2-72`; `artifact-boundary/fixture-test-build.log:2-72`; `artifact-boundary/README.md:1-30`.
+
+**최종 후속 판정:** 전체 25개 경로 source inventory 및 그 범위로 재생성된 정적 archive 증거는 PASS다. 앞선 22개 경로 판정은 부분 범위였다는 finding을 보존하고, 이를 전체 PR source 결속의 증거로 사용하지 않는다. 최초 #20의 provenance FAIL도 기록에서 지우지 않는다. 이 검토자는 테스트·빌드·시뮬레이터를 실행하지 않았고 저장된 snapshot, 로그, 산출물과 hash만 읽어 대조했다.
