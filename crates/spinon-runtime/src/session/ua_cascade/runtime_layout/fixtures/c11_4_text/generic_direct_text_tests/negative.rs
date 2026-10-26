@@ -57,6 +57,15 @@ fn collector_rejects_ambiguous_sources_and_three_or_more_candidates() {
             "unsupported_c114_text_source",
         ),
         (
+            "root image mixed with two direct text items",
+            vec![
+                item("a", "item", vec![NodeSpec::text("A")]),
+                item("b", "item", vec![NodeSpec::text("B")]),
+                element(HTML, "img", Some("image"), None, None, vec![]),
+            ],
+            "unsupported_c114_text_source",
+        ),
+        (
             "foreign namespace item",
             vec![
                 element(
