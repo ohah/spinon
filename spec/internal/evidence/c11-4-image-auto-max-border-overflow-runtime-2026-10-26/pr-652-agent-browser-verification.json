@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "pullRequest": "https://github.com/ohah/spinon/pull/652",
+  "checkedAtUtc": "2026-10-26T06:52:15Z",
+  "agentBrowserSession": "spinon-c11-4-pr-652",
+  "pageScreenshot": "pr-652-agent-browser.png",
+  "pageScreenshotSha256": "2e09b6a4581917fa787f197b51f675be808302ae7da84a8682fed7939cb2cc6b",
+  "pageScreenshotDimensions": [
+    1280,
+    5352
+  ],
+  "renderedImages": [
+    {
+      "alt": "iOS Simulator의 C11.4 테두리 밖 overflow",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/plan/c11-4-image-auto-max-border-overflow-20261026/spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-2026-10-26/ios-simulator-c114-image-auto-max-border-overflow-ios-simulator-20261026T061945593Z-ec40c8ba/image-auto-max-mixed-tracks-border-overflow.png",
+      "loaded": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    },
+    {
+      "alt": "Android API 37 AVD의 C11.4 테두리 밖 overflow",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/plan/c11-4-image-auto-max-border-overflow-20261026/spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-2026-10-26/android-avd-c114-image-auto-max-border-overflow-android-avd-20261026T063238848Z-970016a2/image-auto-max-mixed-tracks-border-overflow.png",
+      "loaded": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    }
+  ],
+  "sessionClose": {
+    "closedAtUtc": "2026-10-26T06:52:40Z",
+    "command": "agent-browser --session spinon-c11-4-pr-652 close",
+    "result": "Browser closed",
+    "activeSessionsAfterClose": 0,
+    "sessionScopedProcessAfterClose": false
+  }
+}
