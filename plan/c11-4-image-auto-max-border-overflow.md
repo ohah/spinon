@@ -1,11 +1,12 @@
 # C11.4 · direct PNG auto/max mixed track의 테두리 밖 overflow
 
-**상태:** 구현 전 계획 · C11.4 및 공식 `72/213`은 미완료로 유지한다.
+**상태:** 제한 scene 구현 준비 · app surface 표본 oracle 교정 검토 대기 · C11.4 및 공식 `72/213`은 미완료로 유지한다.
 **기준 source:** `origin/main` `29449e4f794e53255909b58ed8fb2fd4995dd5d2`에서 분기했다.
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 **기존 제한 slice:** [direct PNG auto/max mixed-track](./c11-4-image-auto-max-mixed-track.md)
 **사전 비교:** [Chrome geometry·overflow·surface 표본](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-precomparison-2026-10-26/README.md)
 **계획 적대 검토:** [20관점 검토 결과](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-plan-review-2026-10-26/plan-review-20.md) · 구현은 이 보고서의 PASS 이후에만 시작한다.
+**app surface oracle 교정:** [별도 20관점 계획 교정 검토](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-plan-correction-review-2026-10-26/plan-correction-review-20.md) · C9 재빌드 및 실패 scene 재실행은 새 계획 SHA에 대한 PASS 이후에만 한다.
 
 ## 목적과 범위
 
@@ -14,6 +15,8 @@
 새 scene은 `image-auto-max-mixed-tracks-border-overflow` 하나다. `24×16` 고정 PNG, `minmax(auto,max-content) 17px` columns, 5px column gap, auto row, `12×40` border-box root, 네 방향 1px root border를 사용한다. root content width는 10px이다. 규범 기대값은 columns `[24,17]px`, row `[16]px`, root border-box `(0,0,12,40)`, image box `(1,1,24,16)`이다. Image는 오른쪽 border edge `x=12`에서 바깥으로 13 CSS px 이어진다. 이 장면은 overflow 결과와 경계 위치를 검사하며 overflow 속성을 새로 허용하지 않는다.
 
 이번 runtime fixture가 image texel을 그린다고 주장하지 않는다. 기존 image adapter는 intrinsic size를 layout에 전달하고, 앱 fixture의 image background color(`rgb(229,72,77)`)를 item box marker로 표시한다. 따라서 browser oracle의 PNG texel 표본과 앱의 box-background 표본을 별도 결과로 기록한다. 앱에서 `image_draw_count=0` 또는 동등한 image-paint 부재 marker가 유지되는지 확인하고, 그 값을 image paint 성공으로 오해하지 않는다.
+
+앱 surface의 root 바깥 영역은 Chrome 문서의 body background와 다른 paint layer다. C11.4 fixture는 `root_html_default_render=false` 경로를 사용하고, 공용 runtime GPU renderer는 그 경로에서 surface clear를 opaque black `[0,0,0,255]`로 지정한다. 따라서 앱의 `(26.5,8.5)` 표본은 CSS root/body background가 아니라 surface clear `[0,0,0,255]`를 기대한다. Chrome HTML screenshot에서 같은 좌표의 body background `[16,24,32,255]`는 계속 browser oracle로 보존한다. 제품 renderer의 clear 동작은 이번 fixture에서 변경하지 않으며, fixture-level 전체 surface backdrop 설정 API도 추가하지 않는다.
 
 ## 고정 입력과 독립 규범 기대값
 
@@ -42,7 +45,7 @@ Chrome의 image `overflow-x/y=clip/clip`은 metadata로 기록한다. 이는 ima
 - `crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/cases.rs`에 root width 12, border 1, 기존 auto/max + fixed neighbor track을 갖는 case 하나를 추가한다. 기존 `ImageCase.grid_border`를 사용하고 일반 image/CSS adapter의 admission을 넓히지 않는다.
 - `crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs`에 같은 root/item ID와 style을 가진 scene 하나를 추가한다. 기존 `ImageSceneWithRowGap`처럼 root border를 구체적으로 고정하고 fixture count·source checks를 갱신한다.
 - Android/iOS `C0410RuntimeGpuDemo`의 scene ID, intrinsic result, trace, root/item frame matcher에 같은 scene을 추가한다. 기대 track trace는 기존 mixed-track scene과 같고 root/item frame만 border-box 크기와 좌표를 반영한다.
-- Simulator fixture runner에 CSS pixel-center 표본을 추가한다. Chrome의 PNG texel과 다른 앱 box marker를 정확히 구분하며, 각 surface의 device-pixel scale, surface origin, pixel format 및 source/app hash를 함께 고정한다. 앱 표본의 CSS pixel center 기대값은 `(12.5,8.5)`의 item background `[229,72,77,255]`, `(26.5,8.5)`의 root 배경 `[16,24,32,255]`, `(0.5,30.5)` 및 `(11.5,30.5)`의 border `[34,197,94,255]`다. Runner 인수는 정수 index `[12,8]`, `[26,8]`, `[0,30]`, `[11,30]`로 각각 전달하고 center를 `index + 0.5`로 계산한 다음 `floor((origin + center) * scale)` 순서로 surface pixel에 매핑한다. 이 fixture의 origin은 Android/iOS 모두 `[0,0]`이다. 색은 포맷/scale이 확인된 내부 표본에서 exact 비교한다.
+- Simulator fixture runner에 CSS pixel-center 표본을 추가한다. Chrome의 PNG texel과 다른 앱 box marker 및 surface clear를 정확히 구분하며, 각 surface의 device-pixel scale, surface origin, pixel format 및 source/app hash를 함께 고정한다. 앱 표본의 CSS pixel center 기대값은 `(12.5,8.5)`의 item background `[229,72,77,255]`, `(26.5,8.5)`의 root 바깥 surface clear `[0,0,0,255]`, `(0.5,30.5)` 및 `(11.5,30.5)`의 border `[34,197,94,255]`다. Chrome body background 표본은 별도로 `[16,24,32,255]`를 유지한다. Runner 인수는 정수 index `[12,8]`, `[26,8]`, `[0,30]`, `[11,30]`로 각각 전달하고 center를 `index + 0.5`로 계산한 다음 `floor((origin + center) * scale)` 순서로 surface pixel에 매핑한다. 이 fixture의 origin은 Android/iOS 모두 `[0,0]`이다. 색은 포맷/scale이 확인된 내부 표본에서 exact 비교한다.
 - Rust production track sizing algorithm, general CSS cascade/overflow projection, image decoder/paint path에는 변경을 계획하지 않는다. 규범 geometry가 main의 기존 algorithm 결과와 다르면 fixture를 기대값에 맞춰 수정하지 말고 구현을 멈춰 root와 원인을 분리한다.
 
 ## 실패 제어와 원자성
@@ -53,7 +56,7 @@ Chrome의 image `overflow-x/y=clip/clip`은 metadata로 기록한다. 이는 ima
 - root border를 0으로 제거하거나 content-box로 바꾸는 mutation은 scene expectation에 맞지 않아야 한다.
 - item을 명시 배치하거나 span, nested child, second image, extra direct child를 추가하면 기존 image adapter guard가 거부해야 한다.
 - 기본/product profile에서는 신규 scene ID·fixture marker·fixture-only ABI가 빠지고 opt-in positive control에서는 포함돼야 한다.
-- border 바깥 표본을 `#101820`으로 돌려보내는 clip-to-root 변이, item red background를 제거하는 paint 변이, left/right sample 좌표를 한 pixel 옮기는 변이는 전용 pixel gate를 실패해야 한다.
+- root 바깥 표본은 app surface clear 검정 `[0,0,0,255]`이어야 한다. 이를 root clipping/background `[16,24,32,255]`로 바꾸는 변이, item red background를 제거하는 paint 변이, left/right sample 좌표를 한 pixel 옮기는 변이는 전용 pixel gate를 실패해야 한다. Chrome의 body background `[16,24,32,255]`는 HTML oracle에서만 기대한다.
 
 이 slice는 Android/iOS simulator의 고정 fixture evidence만 추가한다. PNG texel paint, 다른 image asset·size·format, 일반 CSS `overflow` 동작, 실제 app의 image texture, 전체 표면 parity 및 arbitrary content는 대상이 아니다.
 
@@ -62,10 +65,10 @@ Chrome의 image `overflow-x/y=clip/clip`은 metadata로 기록한다. 이는 ima
 1. 구현 전 이 계획의 별도 20관점 검토를 통과하고 계획 source/commit SHA를 고정한다.
 2. Runtime image adapter focused tests, C11.4 FFI source/scene tests, strict Android/iOS intrinsic-input·trace·frame matcher, Rust formatting/Clippy 및 fixture artifact boundary를 확인한다. 실행하지 않은 검사는 결과에 포함하지 않는다.
 3. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 새 scene과 기존 `image-auto-max-mixed-tracks` control을 각각 실행한다. Capture tool이 앱을 force-stop/terminate하면 실행 전에 현재 기기/앱 session을 확인하고 조율한다. Physical device는 연결하거나 사용하지 않는다.
-4. 앱 최신 source hash, APK/app executable hash, install identity, CSS frame·trace, draw/present, surface origin/format, 네 개의 고정 pixel 표본과 screenshots를 기록한다. 표본은 item box, root 바깥 배경, 좌측 border, 우측 border다. Screenshot은 해당 simulator 화면 증거이고 iOS Metal 표본은 compositor 제출 전, Android는 API 37 AVD software-render path임을 명시한다.
+4. 앱 최신 source hash, APK/app executable hash, install identity, CSS frame·trace, draw/present, surface origin/format, 네 개의 고정 pixel 표본과 screenshots를 기록한다. 표본은 item box, root 바깥 surface clear, 좌측 border, 우측 border다. Chrome body background `[16,24,32,255]`는 browser oracle 값으로 별도 기록한다. Screenshot은 해당 simulator 화면 증거이고 iOS Metal 표본은 compositor 제출 전, Android는 API 37 AVD software-render path임을 명시한다.
 5. 구현/runtime 변경을 계획 검토와 별개의 20관점으로 다시 공격한다. 모든 PR diff는 별도 실패 경로 30관점 검토를 거친다. PR 본문에 Android와 iOS screenshot을 raw Markdown image로 삽입해 실제 화면이 본문에 나타나게 한다. 본문 링크를 전용 Agent Browser session에서 열어 각 이미지의 완료 로드·실제 렌더를 확인하고, 확인 뒤 그 session/browser process를 닫는다.
 6. `spec/STATUS.md`와 공개 roadmap에는 이 제한 scene 및 근거만 연결한다. C11.4/C11 checkbox와 공식 `72/213`을 변경하지 않는다. 제품 지원 범위 또는 전체 intrinsic sizing 완료로 해석될 수 있는 문구를 쓰지 않는다.
 
 ## 성공 기준과 제외
 
-성공은 Chrome geometry/frame, CSS Grid 규범 산술, Android/iOS opt-in fixture frame·trace가 위 고정값에 맞고, 앱 표면에서 item box marker가 root right-border를 넘어 보이며 별도 border/background 표본도 기대 색인 것이다. 이는 overflow/clip 제품 기능 완료, PNG image texture paint, WPT, hardware GPU, physical device, iOS compositor 이후 화면, C11.4 전체 완료를 뜻하지 않는다. 공식 checkbox와 완료 수는 `72/213`으로 유지한다.
+성공은 Chrome geometry/frame, CSS Grid 규범 산술, Android/iOS opt-in fixture frame·trace가 위 고정값에 맞고, 앱 표면에서 item box marker가 root right-border를 넘어 보이며 별도 border와 surface-clear 표본도 기대 색인 것이다. Chrome body background `[16,24,32,255]`와 app surface clear `[0,0,0,255]`는 서로 다른 계층의 표본이다. 이는 overflow/clip 제품 기능 완료, PNG image texture paint, WPT, hardware GPU, physical device, iOS compositor 이후 화면, C11.4 전체 완료를 뜻하지 않는다. 공식 checkbox와 완료 수는 `72/213`으로 유지한다.
