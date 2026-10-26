@@ -79,15 +79,22 @@ Image adapter가 고정 `IMAGE_URL`을 `ImageRequest::from_document(...).decode(
 
 | 변이 입력 | 예상 error boundary 및 code/detail | atomicity 기대 |
 | --- | --- | --- |
-| Columns를 `minmax(min-content,max-content) 17px`로 교체 | `validate_grid_style`; `unsupported_c114_image_case`, `track functions` | image decode/snapshot 이전 거부; frame·trace 없음 |
-| Root width/height, border, gap, row list 또는 alignment 변경 | `validate_grid_style`; `unsupported_c114_image_case`, `container box geometry` 또는 `track functions` | image decode/snapshot 이전 거부; frame·trace 없음 |
+| Columns의 `minmax(auto,max-content)`를 `minmax(min-content,max-content)`로 교체 | `validate_grid_style`; `unsupported_c114_image_case`, `track functions` | image decode/snapshot 이전 거부; frame·trace 없음 |
+| Fixed neighbor `17px`를 `18px`로 변경 | `validate_grid_style`; `unsupported_c114_image_case`, `track functions` | image decode/snapshot 이전 거부; frame·trace 없음 |
+| Root width/height, border 또는 gap 변경 | `validate_grid_style`; `unsupported_c114_image_case`, `container box geometry` | image decode/snapshot 이전 거부; frame·trace 없음 |
+| Row track breadth `auto`를 `1px`로 변경 (list length는 유지) | `validate_grid_style`; `unsupported_c114_image_case`, `track functions` | image decode/snapshot 이전 거부; frame·trace 없음 |
+| `align-items`, `align-content`, `justify-content` 변경 | `validate_grid_style`의 `require_property`; `unsupported_c114_image_style`, 해당 property의 `expected start` detail | image decode/snapshot 이전 거부; frame·trace 없음 |
 | Item placement 명시 또는 span 추가 | `validate_item_style`; `unsupported_c114_image_case`, `replaced item box or placement` | image decode/snapshot 이전 거부; frame·trace 없음 |
-| 다른 root/item ID, extra direct child, nested/second/non-leaf image | `prepare` topology/source gate; `unsupported_c114_image_fixture_root` 또는 `unsupported_c114_image_case` (`one direct HTML img required`, `image tag or id mismatch`, `replaced leaf required`) | style validation와 image request 이전 거부; snapshot·frame·trace 없음 |
-| Fixed PNG `src` 불일치 | `prepare` source gate; `unsupported_c114_image_case`, `fixed PNG source required` | decode와 snapshot 이전 거부; frame·trace 없음 |
-| PNG bytes decode 실패 | `ImageRequest::decode`; `c114_image_decode` | resource snapshot이 만들어지지 않음; frame·trace 없음 |
-| Decode 완료 이미지 natural size가 `24×16`이 아님 | resource dimension gate; `c114_image_metadata_mismatch` | 임시 `ImageResourceSnapshot`은 내부에서 만들 수 있지만 intrinsic-size snapshot 또는 `C11_4ImageInput`을 반환하지 않음; frame·trace 없음 |
-| Stale/foreign completion revision 또는 document generation | `ImageResourceSnapshot::new`; `c114_image_resource_snapshot` | 생성된 snapshot을 게시하지 않음; intrinsic-size snapshot·frame·trace 없음 |
-| C11.4 typed track profile 외 profile | profile gate; `c114_image_profile_mismatch` | subtree scan/resource 단계 전에 거부; 모든 snapshot·frame·trace 없음 |
+| Unknown root ID `wrong-root-id` | `prepare` root allowlist; `unsupported_c114_image_fixture_root`, detail은 입력 ID | topology/style/resource 단계 전에 거부 |
+| Wrong item ID | `prepare` topology/source gate; `unsupported_c114_image_case`, `image tag or id mismatch` | style validation와 image request 이전 거부 |
+| Fixed PNG `src` 불일치 | `prepare` source gate; `unsupported_c114_image_case`, `fixed PNG source required` | decode와 snapshot 이전 거부 |
+| Extra direct child, nested/second image, non-leaf image | `prepare` topology gate; `unsupported_c114_image_case`, `one direct HTML img required` / `replaced leaf required` | 계획된 변형이지만 이 slice의 새 test에서는 미실행; inherited gate 후속으로 남김 |
+| PNG bytes decode 실패 | `ImageRequest::decode`; `c114_image_decode` | shared decoder의 malformed-input coverage는 [`decode_tests.rs`](../crates/spinon-image/src/decode_tests.rs#L121)에 있으나, 이 adapter의 error translation은 이 slice에서 미실행 |
+| Decode 완료 이미지 natural size가 `24×16`이 아님 | resource dimension gate; `c114_image_metadata_mismatch` | 이 slice에서 adapter error translation 미실행; `PNG`는 고정 compile-time fixture |
+| Stale/foreign completion revision 또는 document generation | `ImageResourceSnapshot::new`; `c114_image_resource_snapshot` | shared snapshot identity rejection은 [`snapshot_tests.rs`](../crates/spinon-image/src/snapshot/snapshot_tests.rs#L158)와 [`snapshot_tests.rs`](../crates/spinon-image/src/snapshot/snapshot_tests.rs#L331)에 있으나, 이 adapter branch는 이 slice에서 미실행 |
+| C11.4 typed track profile 외 profile | profile gate; `c114_image_profile_mismatch` | subtree scan/resource 단계 전에 거부하지만 이 slice의 새 test에서는 미실행 |
+
+2026-10-26 구현 거부 검증은 [fail-closed evidence](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/fail-closed-controls/README.md)에 기록한다. 새 scene의 직접 validator 테스트는 계획된 track/geometry/alignment/placement 변이의 error code/detail을 확인한다. 별도 `prepare()` 단위 테스트는 allowlisted HTML tree와 style snapshot을 전달해 잘못된 root width가 `C11_4ImageInput`을 반환하지 않음을 확인한다. Unknown root, non-HTML namespace, wrong item ID, wrong source도 `prepare()` 실행 테스트에 포함한다. 이 단위 테스트들은 downstream frame·track trace의 부재나 image resource allocation atomicity를 관측하지 않는다. Extra/nested topology, dimension/profile 및 adapter error-translation 행은 이 slice에서 실행하지 않은 inherited-gate follow-up이며, lower-level PNG decode/snapshot tests를 adapter branch 통과 증거로 취급하지 않는다.
 
 ## 구현 전·후 검증 게이트
 
@@ -111,4 +118,7 @@ Image adapter가 고정 `IMAGE_URL`을 `ImageRequest::from_document(...).decode(
 - [Chrome 사전 비교와 독립 기대값](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/README.md)
 - [규범 입력/수치 JSON](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/spec-derived-expectations.json)
 - [Chrome input fixture](../tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html)
+- [Fail-closed 변형 테스트와 범위 한계](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/fail-closed-controls/README.md)
+- [기본/opt-in FFI archive artifact 경계](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/feature-boundary/README.md)
+- [PR simulator image link 및 browser 종료 확인](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/pr-image-link-check-2026-10-26.json)
 - [상위 C11.4 계획](./c11-4-grid-track-sizing.md)
