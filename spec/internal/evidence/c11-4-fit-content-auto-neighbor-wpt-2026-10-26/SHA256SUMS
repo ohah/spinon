@@ -1,4 +1,4 @@
-ac749acef7a16309656260a0cba58baa2e3fccab054a92b8972aae3e3b44a941  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md
+44c0cb010b5fcb2e48161e763bb54f3784a6ea1c6d83a80f7525872a258d5b59  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md
 a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt
 2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png
 94661cba796faf73990c9683739b61e1726bcdd7af2fb9569aebb136443e592a  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json
@@ -6,6 +6,7 @@ a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e  spec/internal/
 d2e35be5f7049a988602eda4a5f8508b39433b20abb34f43ddd8e71d586cfdda  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json
 e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt
 66d7160cdb2e3901c54950541897feeb6ad06014fb43636fd488805116ce93af  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md
+4f931684a64a956a8f9730a7ad1d35cdee0d378a8fcf15b9b807936cda0cfe84  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md
 ea78dd2d5323a6e549c79088fe418622d854f0eecf9bb64edd085af490a5708a  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json
 34a94aedd4e94a0c64d956e65cb6de48995942aa0937c27c96921d68f16da611  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt
 26276e654654d3bbd34d0287cc272eb9fae8c74097e47e576f980d2947b9ab5d  spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json
