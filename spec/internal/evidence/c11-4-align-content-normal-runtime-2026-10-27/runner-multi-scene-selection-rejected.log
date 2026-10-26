@@ -1,0 +1,25 @@
+node:internal/modules/run_main:107
+    triggerUncaughtException(
+    ^
+
+AssertionError [ERR_ASSERTION]: align-content-normal-equal-auto-rows는 해당 scene 하나만 선택해야 합니다.
++ actual - expected
+
+  [
+    'align-content-normal-equal-auto-rows',
++   'auto-fixed-width-item'
+  ]
+
+    at file:///private/tmp/spinon-c11-4-align-content-normal-runtime-impl-20261027/tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs:175:10
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {
+  generatedMessage: false,
+  code: 'ERR_ASSERTION',
+  actual: [ 'align-content-normal-equal-auto-rows', 'auto-fixed-width-item' ],
+  expected: [ 'align-content-normal-equal-auto-rows' ],
+  operator: 'deepStrictEqual',
+  diff: 'simple'
+}
+
+Node.js v26.7.0

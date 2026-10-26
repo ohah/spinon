@@ -1,0 +1,17 @@
+{
+  "profile": "android-debug-c04-runtime-gpu-fixture-test-and-c11-grid-pixel-matrix-enabled",
+  "apk": {
+    "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "6f0963c546c89e5854b9453c8daecef809412d81c75d346255f74a2c5456817b",
+    "sizeBytes": 149293130
+  },
+  "nativeLibrary": {
+    "path": "lib/arm64-v8a/libspinon_bootstrap.so",
+    "sha256": "d9c9e4615c34c9b2e580149aac085951d12a27657da37b8f08ddefcd6b4af87f",
+    "sizeBytes": 75281624,
+    "containsNewSceneSource": true,
+    "containsC11_4FixtureCreateAndEvalSymbols": true
+  },
+  "hostDexContainsNewSceneId": true,
+  "scope": "Fixture-test positive control. Android pixel samples use the app's PixelCopy path; this scan does not claim whole-package fixture exclusion or hardware-GPU behavior."
+}

@@ -86,6 +86,7 @@ const fixedAutoAreaSceneIDs = new Set([
   'fixed-auto-area-rows-area-larger',
 ]);
 const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
+const equalAutoRowsSceneIDs = new Set(['align-content-normal-equal-auto-rows']);
 const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
   'text-span2-before-span3', 'text-span3-before-span2',
@@ -168,6 +169,16 @@ const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
 const isFitContentAutoNeighborRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoNeighborSceneIDs.has(sceneID));
+const equalAutoRowsSceneID = 'align-content-normal-equal-auto-rows';
+if (requestedSceneIDs?.includes(equalAutoRowsSceneID)
+    || requestedRunKind === equalAutoRowsSceneID) {
+  assert.deepEqual(requestedSceneIDs, [equalAutoRowsSceneID],
+    'align-content-normal-equal-auto-rows는 해당 scene 하나만 선택해야 합니다.');
+  assert.ok(!requestedRunKind || requestedRunKind === equalAutoRowsSceneID,
+    'align-content-normal-equal-auto-rows에 다른 run-kind를 지정할 수 없습니다.');
+}
+const isEqualAutoRowsRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => equalAutoRowsSceneIDs.has(sceneID));
 const isCrossAxisTemplateAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => (
     sceneID.startsWith('template-area-repeat-cross-axis-')
@@ -177,6 +188,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
   : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
+  : isEqualAutoRowsRun ? 'align-content-normal-equal-auto-rows'
   : isImageAutoMaxBorderOverflowRun ? 'image-auto-max-border-overflow'
   : isCrossAxisTemplateAreaRun ? 'cross-axis-fixed-auto-area'
   : isCyclicPercentRun ? 'cyclic-percent-tracks'
@@ -5047,7 +5059,37 @@ scenes.push({
       xCssPx: 60, yCssPx: 20, rgba: [0, 0, 0, 255] },
   ],
 });
-assert.equal(scenes.length, 499, 'C11.4 fixture scene count differs.');
+scenes.push({
+  id: 'align-content-normal-equal-auto-rows',
+  axis: 'Rows',
+  axes: {
+    Rows: { tracks: [32.5, 42.5, 5], collapsed: [false, false, false] },
+  },
+  gaps: { Rows: 10 },
+  boxCount: 4,
+  rootFrame: 'width=160,height=100',
+  itemFrame: 'width=160,height=10',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=160,height=100;'
+    + '1:node=2,x=0,y=0,width=160,height=10;'
+    + '2:node=3,x=0,y=42.5,width=160,height=20;'
+    + '3:node=4,x=0,y=95,width=160,height=5]',
+  geometryTolerance: 1e-4,
+  requiresStrictPresentationIdentity: true,
+  equalAutoRowsStretch: true,
+  pixelSamples: [
+    { id: 'equal-auto-rows-first-row', nodeId: 'c114-align-content-normal-item-first',
+      xCssPx: 80, yCssPx: 5, rgba: [229, 72, 77, 255] },
+    { id: 'equal-auto-rows-first-gutter', nodeId: 'c114-align-content-normal-grid',
+      xCssPx: 80, yCssPx: 37, rgba: [16, 24, 32, 255] },
+    { id: 'equal-auto-rows-second-row', nodeId: 'c114-align-content-normal-item-second',
+      xCssPx: 80, yCssPx: 52, rgba: [58, 134, 255, 255] },
+    { id: 'equal-auto-rows-fixed-row', nodeId: 'c114-align-content-normal-item-fixed',
+      xCssPx: 80, yCssPx: 97, rgba: [6, 214, 160, 255] },
+    { id: 'equal-auto-rows-outside-root', nodeId: 'c114-align-content-normal-grid',
+      xCssPx: 160, yCssPx: 5, rgba: [0, 0, 0, 255] },
+  ],
+});
+assert.equal(scenes.length, 500, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6664,6 +6706,82 @@ function verifyRuntimeLog(log, scene, runID) {
               : scene.nestedGridTextMultiSpan.gridNodes[0]))
     : diagnostics.trackSizingTraces[0];
   assert.ok(axisTrace, `${scene.id}: expected track-sizing Grid trace가 없습니다.`);
+  if (scene.equalAutoRowsStretch) {
+    assert.equal(diagnostics.trackSizingTraces.length, 1,
+      `${scene.id}: expected exactly one Grid trace`);
+    assert.equal(axisTrace.grid, 1, `${scene.id}: Grid trace must belong to root node 1`);
+    assert.equal(axisTrace.passes.length, 2, `${scene.id}: expected Columns and Rows passes`);
+    assert.equal(axisTrace.passes[0].axis, 'Columns', `${scene.id}: first pass must be Columns`);
+    assert.equal(axisTrace.passes[1].axis, 'Rows', `${scene.id}: second pass must be Rows`);
+    const rowPasses = axisTrace.passes.filter((pass) => pass.axis === 'Rows');
+    assert.equal(rowPasses.length, 1, `${scene.id}: expected exactly one Rows pass`);
+    const rowPass = rowPasses[0];
+    const expectedStageNames = [
+      'Initialize',
+      'IntrinsicItemBatch { span: 1, crosses_flexible_track: false }',
+      'IntrinsicSizingComplete',
+      'MaximizeTracks',
+      'ExpandFlexibleTracks',
+      'StretchAutoTracks { applied: true }',
+    ];
+    assert.equal(rowPass.stages.length, expectedStageNames.length,
+      `${scene.id}: unexpected Rows sizing stage count`);
+    const stageIndexes = expectedStageNames.map((name) => {
+      const matches = rowPass.stages.flatMap((entry, index) => (
+        entry.stage === name ? [index] : []
+      ));
+      assert.equal(matches.length, 1,
+        `${scene.id}: Rows ${name} stage count expected 1, got ${matches.length}`);
+      return matches[0];
+    });
+    assert.ok(stageIndexes.every((index, position) => (
+      position === 0 || index > stageIndexes[position - 1]
+    )), `${scene.id}: Rows sizing stages are out of order`);
+    const rowBases = (stage, expected, stageName) => {
+      assert.equal(stage.tracks.length, 7,
+        `${scene.id}: ${stageName} expected 7 row/gutter entries`);
+      const expectedSizes = [0, expected[0], 10, expected[1], 10, expected[2], 0];
+      stage.tracks.forEach((track, index) => {
+        assert.equal(track.internalIndex, index,
+          `${scene.id}: ${stageName} track ${index} has a mismatched internalIndex`);
+        assert.equal(track.gutter, index % 2 === 0,
+          `${scene.id}: ${stageName} track ${index} gutter identity`);
+        assert.equal(track.collapsed, index === 0 || index === 6,
+          `${scene.id}: ${stageName} track ${index} collapsed edge identity`);
+        assert.ok(Math.abs(track.baseSize - expectedSizes[index]) <= 1e-4,
+          `${scene.id}: ${stageName} track ${index} expected ${expectedSizes[index]}, got ${track.baseSize}`);
+      });
+      return stage.tracks.filter(({ gutter }) => !gutter).map(({ baseSize }) => baseSize);
+    };
+    for (const [stageIndex, stageName] of expectedStageNames.entries()) {
+      if (stageIndex === expectedStageNames.length - 1) break;
+      const stage = rowPass.stages[stageIndexes[stageIndex]];
+      const expected = stageIndex === 0 ? [0, 0, 5] : [10, 20, 5];
+      const actual = rowBases(stage, expected, stageName);
+      assert.equal(actual.length, 3, `${scene.id}: ${stageName} row count`);
+      actual.forEach((size, index) => {
+        assert.ok(Math.abs(size - expected[index]) <= 1e-4,
+          `${scene.id}: ${stageName} row ${index + 1} base expected ${expected[index]}, got ${size}`);
+      });
+    }
+    const stretchStage = rowPass.stages[stageIndexes.at(-1)];
+    assert.equal(rowPass.stages.at(-1), stretchStage,
+      `${scene.id}: StretchAutoTracks must be the final Rows stage`);
+    const finalTracks = stretchStage.tracks;
+    const finalBases = rowBases(stretchStage, [32.5, 42.5, 5], 'StretchAutoTracks');
+    assert.equal(finalBases.length, 3, `${scene.id}: final row count`);
+    finalBases.forEach((size, index) => {
+      assert.ok(Math.abs(size - [32.5, 42.5, 5][index]) <= 1e-4,
+        `${scene.id}: final row ${index + 1} expected ${[32.5, 42.5, 5][index]}, got ${size}`);
+    });
+    const allGutters = finalTracks.filter(({ gutter }) => gutter);
+    const internalGutters = allGutters.slice(1, -1);
+    assert.equal(internalGutters.length, 2, `${scene.id}: expected two internal row gutters`);
+    internalGutters.forEach(({ baseSize }, index) => {
+      assert.ok(Math.abs(baseSize - 10) <= 1e-4,
+        `${scene.id}: internal row gutter ${index + 1} expected 10, got ${baseSize}`);
+    });
+  }
   if (scene.replacedCyclicMinmaxImageSpan) {
     verifyCyclicMinmaxReplacedImageSpanTrace(scene, axisTrace);
   }
@@ -7437,12 +7555,21 @@ if (target === 'ios-simulator') {
   if (isImageAutoMaxBorderOverflowRun) {
     assert.equal(simulatorModelIdentifier, 'iPhone18,1',
       `iPhone 17 Pro simulator가 아닙니다: ${simulator[0].name}/${simulatorModelIdentifier}`);
+  } else if (isEqualAutoRowsRun) {
+    assert.equal(simulatorModelIdentifier, 'iPhone18,1',
+      `iPhone 17 Pro simulator가 아닙니다: ${simulator[0].name}/${simulatorModelIdentifier}`);
   } else {
     assert.ok(['iPhone 17', 'iPhone 17 Pro'].includes(simulator[0].name),
       `지원하지 않는 iOS 시뮬레이터 모델입니다: ${simulator[0].name}`);
   }
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
+  const installedAppPath = command('xcrun', [
+    'simctl', 'get_app_container', simulatorUDID, packageName, 'app',
+  ]).stdout.trim();
+  const installedAppSha256 = sha256(await readFile(resolve(installedAppPath, 'SpinonBootstrap')));
+  assert.equal(installedAppSha256, appSha256,
+    '시뮬레이터에 설치된 app executable과 빌드 executable의 SHA-256이 다릅니다.');
   for (const [index, scene] of runScenes.entries()) {
     let runID = `${runIDPrefix}-${index}`;
     let log = '';
@@ -7476,7 +7603,8 @@ if (target === 'ios-simulator') {
   }
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
     target, udid: simulatorUDID, name: simulator[0].name,
-    modelIdentifier: simulatorModelIdentifier, runtime: simulator[0].runtime, appSha256,
+    modelIdentifier: simulatorModelIdentifier, runtime: simulator[0].runtime,
+    appSha256, installedAppSha256,
     sourceRevision: fixedRepeatMinmaxFlexSourceRevision ?? sourceRevision(),
   }, null, 2)}\n`);
 } else {

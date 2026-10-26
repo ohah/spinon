@@ -1,0 +1,16 @@
+{
+  "profile": "c04-runtime-gpu-fixture-test",
+  "archive": "target/debug/libspinon_ffi.rlib",
+  "sizeBytes": 26686024,
+  "sha256": "780832787818d2643b297b4030ae9bc2095ebcf4e6324b5fb602d1407efcc729",
+  "contains": {
+    "sceneId": true,
+    "nodeId": true,
+    "ffiCreateSymbol": true,
+    "ffiEvalSymbol": true
+  },
+  "exports": {
+    "ffiCreateSymbol": true,
+    "ffiEvalSymbol": true
+  }
+}

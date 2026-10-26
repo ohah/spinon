@@ -1,0 +1,35 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "39f8266be63eb5a7db6347c7f4e8d99d0d7b8307dd2b18b533630b449f35c422",
+  "installedAppSha256": "39f8266be63eb5a7db6347c7f4e8d99d0d7b8307dd2b18b533630b449f35c422",
+  "sourceRevision": {
+    "commit": "77531e7fee663a260dcbbfb68660516eab7d803b",
+    "tree": "3e150d327e95c8585dbbee6ff3813aa43dd3af84",
+    "trackedDiffSha256": "fd6bae681ec0f2a396560f2dd00d480d8e739d49d06d48a52b3551170665ba37",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "plan/c11-4-align-content-normal-runtime.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.md",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-normal-auto-track-rows.png",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-observation.json",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/expected.json",
+      "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/input.json",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-align-content-normal-runtime.html",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/align_content_normal_equal_auto_rows.rs",
+        "sha256": "508c303b4c9c65fd4ef619cbd6d42a6a3b33093e9fc5f26c39af9de4efcb7baf"
+      }
+    ],
+    "sourceSnapshotSha256": "6dad44949c47193fdbfa0a3d7b8909786be74d3d729734f720086212e86f4246"
+  }
+}

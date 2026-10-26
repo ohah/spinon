@@ -1,0 +1,18 @@
+{
+  "profile": "ios-simulator-debug-c04-runtime-gpu-with-c11-4-fixture-test-disabled",
+  "rustArchive": {
+    "path": "build/spinon/iphonesimulator/libspinon_ffi.a",
+    "sha256": "91330d6f70d2d79b486b232879f275af2afe5149887fe2a658e0d516c9e8bc46",
+    "sizeBytes": 65296744,
+    "containsNewSceneId": false,
+    "containsC11_4FixtureFfiSymbolStrings": false
+  },
+  "simulatorAppExecutable": {
+    "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "sha256": "ba17ece1656701b35f24a12cd968d147e2e7e78171b79fa406d773a217d561f1",
+    "containsNewSceneId": true,
+    "containsC11_4FixtureFfiSymbolStrings": false
+  },
+  "scope": "The default Rust FFI archive excludes this fixture scene and entry point. The simulator host executable retains the scene ID as host metadata. A broad final-app exclusion claim is not made.",
+  "symbolScanNote": "Xcode's nm could not parse Rust LLVM 22.1.2 bitcode (Unknown attribute kind); fixture symbol strings were checked with strings instead."
+}

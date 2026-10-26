@@ -1,0 +1,18 @@
+{
+  "profile": "ios-simulator-debug-c04-runtime-gpu-fixture-test-and-c11-grid-pixel-matrix-enabled",
+  "rustArchive": {
+    "path": "build/spinon/iphonesimulator/libspinon_ffi.a",
+    "sha256": "a55544d544088292beea2a8264ea20f84004a05e835d5f16c25150e0b259f6a9",
+    "sizeBytes": 68687432,
+    "containsNewSceneId": true,
+    "containsC11_4FixtureCreateAndEvalSymbols": true
+  },
+  "simulatorAppExecutable": {
+    "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "sha256": "39f8266be63eb5a7db6347c7f4e8d99d0d7b8307dd2b18b533630b449f35c422",
+    "containsNewSceneId": true,
+    "containsC11_4FixtureCreateAndEvalSymbolStrings": true
+  },
+  "scope": "Fixture-test positive control. The simulator app executable and native archive both contain the opt-in fixture. This does not claim that a distribution IPA excludes all host metadata or fixture bytes.",
+  "symbolScanNote": "Rust archive and app executable were inspected with strings. Xcode nm cannot parse this Rust LLVM 22.1.2 bitcode archive (Unknown attribute kind), as recorded in ios-default-app-scan.json."
+}
