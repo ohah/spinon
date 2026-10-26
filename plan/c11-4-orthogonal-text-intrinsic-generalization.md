@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 직교 text/image slice](./c11-4-orthogonal-row-intrinsic-contribution.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획 PR #629 병합됨. 제한 구현 후보의 Android/iOS Simulator 각 22/22 실행, source-bound static archive 기본·fixture-test 양성/음성 대조, 구현/runtime 실패 관점 검토 20개가 끝났다. 이 후보는 공개 CSS 지원이나 C11.4 전체 완료를 의미하지 않으며, C11.4와 공식 완료 수 `72/213`은 그대로다. PR 상태는 실제 변경 PR에서 확인한다.
+**상태:** 계획 PR #629 병합됨. 제한 구현 PR [#630](https://github.com/ohah/spinon/pull/630)은 2026-10-25에 Rebase and merge로 병합됐고 merge SHA는 `6ac7cb1a7ea2826f29905eb2caa71080ed85e4a9`다. Android/iOS Simulator 각 22/22 실행, source-bound static archive 기본·fixture-test 양성/음성 대조, 구현/runtime 실패 관점 검토 20개가 끝났다. 이 제한 fixture는 공개 CSS 지원이나 C11.4 전체 완료를 의미하지 않으며, C11.4와 공식 완료 수 `72/213`은 그대로다.
 
 PR #627은 `vertical-rl` Ahem intrinsic 입력을 특정 문자열 `XX XXXXX` 하나로 제한했다. 이 계획은 같은 안전한 shaping profile 안에서 alphanumeric word sequence와 collapsible U+0020을 여러 길이로 허용하고, logical min/max contribution을 Chrome 156 및 독립 계산과 대조한다. 공개 CSS 지원, 전체 vertical text shaping, C11.4 완료는 선언하지 않는다.
 

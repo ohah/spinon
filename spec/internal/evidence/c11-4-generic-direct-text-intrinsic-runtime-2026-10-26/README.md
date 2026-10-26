@@ -8,24 +8,25 @@ The six-scene Rust collector tests cover a wider HostDocument fixture set. Andro
 
 ## Build and simulator result
 
-Run ID: `c114-generic-direct-text-20261026T023012Z-12741e45-pass01`
+Run ID: `c114-generic-direct-text-20261026T031719Z-708bee0c-pass02`
 
-- Android V8 and iOS Simulator V8 were rebuilt from the pinned local V8 source checkout. Archive SHA-256: Android `e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813`; iOS `7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815`.
-- Android fixture-test Debug APK build passed with `c04_runtime_gpu_fixture_test=1`. APK SHA-256: `c46439a58b4a7f5ee3e287def55874f61a17cb7f451552116504200d81401773`.
-- iOS Simulator fixture-test Debug app build succeeded with the same fixture route enabled. App executable SHA-256: `bfa5400c9c87474c44e5bfab757202191b7632616a5e989cdf09bb97a46b3df3`.
+- The app builds used the clean, pinned V8 source checkout at `/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8`, commit `7b50b62cb18f28617959e8452e2cd18195b38bcf`. Existing archive SHA-256 values: Android `e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813`; iOS `7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815`. This worktree has no local V8 checkout, so both app builds passed `SPINON_V8_DIR` explicitly; no checkout synchronization was run.
+- Android fixture-test Debug APK build passed with `c04_runtime_gpu_fixture_test=1`. APK SHA-256: `d4d36fb0391c905570f13ab90ed13c9b5c16451f662f3a7a558a19bb9e4617cd`.
+- iOS Simulator fixture-test Debug app build succeeded with the same fixture route enabled. App executable SHA-256: `4f6fd64fd1f00f56cc5cfef4d9f4b6fcecffea141f68aea694bba6bfb46b2388`.
+- Both app artifacts were built from source commit `708bee0cae9b16872ab3a4d5da9d2f67dc8e29bd`. Current Java and Swift matcher SHA-256 values are `c702dd18f3803e1a6a17d81e4ad28c7dc350dcc22ec3daf679e5ade3b79e2346` and `f061c7bed7644729f9679aa010dff95d69efa112ec1f6e79ef25d83578a530ea`.
 - Android API 37 ARM64 AVD (`spinon_api37_1_compat16k`) passed `status=0`, `layout=ready`, `boxes=3`, expected node frames and intrinsic/track trace, and `SPINON_C0410_DRAW status=0 presented boxes=3`.
 - iPhone 17 Pro / iOS 26.2 Simulator passed the same layout, frame, trace and draw/present assertions.
 - The runner stopped the app on both platforms after capture. The Android package process was absent afterward; the iOS Simulator launch services had no remaining SpinonBootstrap process.
 
 ## Screenshots
 
-![Android API 37 AVD: generic-root-normal layout and surface](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/android-avd/screenshot.png)
+![Android API 37 AVD: generic-root-normal layout and surface](./runs/c114-generic-direct-text-20261026T031719Z-708bee0c-pass02/android-avd/screenshot.png)
 
-Android screenshot: 1080×2400, SHA-256 `61026041f6f2743fe6cefe72804b64cde15bef2dd00a479950710ae373338b0f`.
+Android screenshot: 1080×2400, SHA-256 `4d35f936a25ae96b8483adc518ceeb72d3692b5532a9c6260ea18cc7b739fb23`.
 
-![iPhone 17 Pro Simulator: generic-root-normal layout and surface](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/ios-simulator/screenshot.png)
+![iPhone 17 Pro Simulator: generic-root-normal layout and surface](./runs/c114-generic-direct-text-20261026T031719Z-708bee0c-pass02/ios-simulator/screenshot.png)
 
-iOS screenshot: 1206×2622, SHA-256 `ec1f791bb08643105acdf68f370b8f31d04c5105f507ef5fbfa6b5504edae50e`.
+iOS screenshot: 1206×2622, SHA-256 `1905f806d7c8d02045d5e57c219f2154cbd41e9c745cd167415147814b7205f4`.
 
 ## Runtime trace values
 
@@ -42,15 +43,13 @@ These contribution values and track gutters describe Spinon's emitted runtime tr
 
 ## Validation artifacts
 
-- [Full simulator matrix log](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/simulator-matrix.log)
-- [Android build/runtime logs](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/android-avd/)
-- [iOS successful build/runtime logs](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/ios-simulator/)
+- [Full simulator matrix log](./runs/c114-generic-direct-text-20261026T031719Z-708bee0c-pass02/simulator-matrix.log)
+- [Android build/runtime logs](./runs/c114-generic-direct-text-20261026T031719Z-708bee0c-pass02/android-avd/)
+- [iOS successful build/runtime logs](./runs/c114-generic-direct-text-20261026T031719Z-708bee0c-pass02/ios-simulator/)
 - [Focused Rust test](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/rust-focused-test-final.log): 9 passed
 - [Focused FFI source test](./runs/c114-generic-direct-text-20261026T023012Z-12741e45-pass01/ffi-focused-test-final.log): 1 passed
-- V8 build logs are under the same run's `v8/android/` and `v8/ios/` directories.
+- Original pinned V8 build logs are under the earlier pass01 run's `v8/android/` and `v8/ios/` directories; pass02 reused those pinned archives.
 
-The `android-avd-early/`, `android-avd-corrected-early/`, and `android-avd-refined-early/` directories retain diagnostic attempts. The final pass is in `android-avd/` and `ios-simulator/`. The first run caught invalid `max-*` CSS; the next caught matcher expectations that did not reflect runtime trace output. Both issues were corrected before the final matrix.
+The `android-avd-early/`, `android-avd-corrected-early/`, and `android-avd-refined-early/` directories in pass01 retain diagnostic attempts. Pass02's initial Android build without `SPINON_V8_DIR` is preserved at `android-avd-early/build-missing-v8-dir.log`; it stopped because this feature worktree has no local V8 checkout. The successful pass02 app builds used the pinned external checkout above, and the simulator matrix ran from the committed source revision. Pass01 is retained as earlier evidence; it is not deleted.
 
-This saved run built the Java matcher SHA-256 `e4653bffedd0714936d4f026b9ed66fb17f89d69cd5453fd331398e9cec35f1b` (source mtime 12:03:54; Android APK/build log 12:04:16; runtime log 12:04:25) and iOS matcher SHA-256 `2007028254b6e67fe5cfa1a6595941369eff2956dc55af8220819899d9707692` (source mtime 11:56:13; successful build 11:57:06; runtime log 12:04:28). Later axis-specific matcher updates changed the current Java and Swift sources to `c702dd18f3803e1a6a17d81e4ad28c7dc350dcc22ec3daf679e5ade3b79e2346` and `f061c7bed7644729f9679aa010dff95d69efa112ec1f6e79ef25d83578a530ea`; those source revisions are not covered by this saved run. The post-commit matrix rerun will verify them and record commit-bound provenance.
-
-No simulator snapshots or evidence PNGs were deleted. The final `source-head.txt` is refreshed after the reviewed implementation is committed and the same matrix runner is repeated against that commit.
+The pass02 `source-head.txt` records commit `708bee0cae9b16872ab3a4d5da9d2f67dc8e29bd`. No simulator snapshots or evidence PNGs were deleted.

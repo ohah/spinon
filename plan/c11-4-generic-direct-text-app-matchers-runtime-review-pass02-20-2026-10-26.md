@@ -70,3 +70,11 @@ Read-only targeted recheck of the axis-specific `availableSpace` matcher update:
 ### 2026-10-26 12:15 KST — exact width-MaxContent set recheck
 
 The follow-up matcher edit now enforces width MaxContent exactly `{4}` on both platforms: Java rejects node 2 or missing node 4 (`C0410RuntimeGpuDemo.java:2462`), and Swift compares the set to `Set([4])` (`C0410RuntimeGpuDemo.swift:3127-3130`). The saved full trace has width MaxContent nodes `{4}`, so the code matches the observed expectation; width MinContent and both height sets remain exact as recorded above. Runtime validation remains pending until the implementation is committed and rebuilt with a fresh Android/iOS matrix. No build or test was run for this recheck.
+
+### 2026-10-26 12:23 KST — commit and pass02 evidence reconciliation
+
+This supersedes the preceding pending-runtime and stale-hash notes. Commit `708bee0cae9b16872ab3a4d5da9d2f67dc8e29bd` contains both exact-set guards; the pass02 `source-head.txt` records that same commit. The current README's matcher, APK, iOS executable, V8 archive, and screenshot SHA-256 values were checked against their files and match. The earlier P1 README-hash finding is resolved.
+
+The Android and iOS build logs report success. Source timestamps precede their builds, and those builds precede the pass02 runtime logs: Android source/build/runtime at 12:15:32 / 12:18:38 / 12:20:23 KST; iOS at 12:15:32 / 12:19:37 / 12:20:25 KST. The simulator matrix reports pass on Android API 37 ARM64 and iPhone 17 Pro / iOS 26.2. Android has one full trace group and iOS has two; each reconstructed trace reports exactly width MinContent `{2,4}`, width MaxContent `{4}`, height MinContent `{2,4}`, and height MaxContent `{2,4}`. Both runtime summaries are `status=0`, `layout=ready`, `boxes=3`; draw/present succeeds and no C11.4 assertion error appears. Both platforms report `runtime_text_count=0` and `glyph_batch_draw_count=0`, consistent with the README's no-glyph-paint claim.
+
+The scoped non-blocking gaps from pass02 remain: both diagnostics parsers can ignore trailing data after a valid object, and Android validates final-stage track shape without the pass-sequence/stage-metadata checks that iOS performs. No source edits, builds, or tests were performed for this reconciliation.
