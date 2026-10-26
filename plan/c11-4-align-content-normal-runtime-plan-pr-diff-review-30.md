@@ -1,15 +1,15 @@
 # C11.4 · `align-content: normal` 런타임 계획 PR diff 적대 검토 30관점
 
-**검토 대상:** staged plan PR payload 10개 파일 — 런타임 계획, 독립 계획 검토 20관점, 상위 계획 갱신, Agent Browser 사전 비교 fixture/evidence/checksums. 이 30관점 기록은 별도 리뷰 artifact다.<br>
+**검토 대상:** plan/evidence payload 10개 파일(런타임 계획, 독립 계획 검토 20관점, 상위 계획 갱신, Agent Browser 사전 비교 fixture/evidence/checksums)과 이 30관점 리뷰 artifact 1개, 현재 PR diff 총 11개 파일.<br>
 **기준 소스:** `origin/main` `18bb75f295e472c567e554c41e30ec4534940cb6`<br>
-**검토 방식:** 최종 staged diff와 연결된 저장소 문서를 정적으로 대조했다. build/test/browser는 실행하지 않았다. staged diff whitespace 검사와 SHA256SUMS 6개 대상의 실제 bytes를 확인했다.<br>
-**결론:** **29 PASS / 1 PARTIAL / 0 FAIL**. 최신 plan/evidence 수정 후 #5와 #25를 재검토해 해소했다. 남은 PARTIAL #30은 아직 생성하지 않은 plan PR의 본문/라벨 검토다.
+**검토 방식:** 최종 staged diff와 연결된 저장소 문서를 정적으로 대조했다. PR #668의 live 상태·본문·라벨은 GitHub CLI와 Agent Browser로 확인하고 screenshot 이미지가 화면에 로드되는지 확인했다. staged diff whitespace 검사와 SHA256SUMS 6개 대상의 실제 bytes를 확인했다. build/test는 실행하지 않았다.<br>
+**결론:** **30 PASS / 0 PARTIAL / 0 FAIL**. 최신 plan/evidence 수정 후 #5와 #25를 재검토해 해소했고, PR #668 생성 후 #30의 body/labels/image/state 확인을 완료했다.
 
 ## 30개의 독립 실패 관점
 
 | # | 관점 | 판정 | 근거 및 판단 |
 |---:|---|---|---|
-| 1 | plan PR에 제품 코드가 섞였는가 | PASS | staged 10개는 계획·검토·상위 계획·CSS 비교 fixture/evidence뿐이다. Rust, FFI, Android/iOS host 변경은 없다. 구현은 계획 병합 뒤로 둔다. |
+| 1 | plan PR에 제품 코드가 섞였는가 | PASS | live PR diff 11개는 plan/evidence payload 10개와 이 리뷰 artifact 1개다. 모두 계획·검토·상위 계획·CSS 비교 fixture/evidence 또는 리뷰 기록이며 Rust, FFI, Android/iOS host 제품 코드 변경은 없다. 구현은 계획 병합 뒤로 둔다. |
 | 2 | 20관점 계획 검토와 PR diff 검토를 같은 절차로 셌는가 | PASS | 독립 계획 검토 문서는 20개의 계획 실패 경로를 기록한다. 이 30관점 표는 staged 파일 교차관계, 증거·메타데이터·PR handoff를 따로 본다. 계획 20관점 결론을 PR diff PASS로 재사용하지 않는다. |
 | 3 | 사전 비교를 Spinon 구현 결과로 표시하는가 | PASS | 계획과 README는 Chrome 비교 단계에서 Spinon runtime 및 WPT harness를 실행하지 않았다고 구분한다. 계획 검토나 Chrome 화면은 구현 통과 근거로 표시되지 않는다. |
 | 4 | 계획 전용 PR이 공식 상태를 앞당기는가 | PASS | `spec/STATUS.md`는 staged되지 않았다. 신규 계획·상위 계획 갱신 모두 C11.4 미완료와 공식 `72/213` 유지로 제한한다. |
@@ -38,9 +38,9 @@
 | 27 | checksum이 실제 staged artifact 전체를 덮지 않는가 | PASS | manifest는 HTML fixture, input/expected/observation JSON, PNG, README 여섯 파일을 포함하고 변경 대상 모두를 찾는다. manifest 자신을 제외한 관례적 구조다. |
 | 28 | checksum 선언이 파일 bytes와 맞지 않는가 | PASS | `shasum -a 256 -c`에서 SHA256SUMS 6/6이 OK였고, staged diff whitespace 검사도 통과했다. |
 | 29 | Agent Browser 정리 요구가 계획/증거에서 누락되는가 | PASS | Chrome observation JSON은 닫은 Agent Browser session ID, 종료 뒤 `session_info_active_after_close:false`, `active_session_count_after_close:0`을 기록하고 README도 같은 cleanup 결과를 연결한다. 이 근거는 해당 Agent Browser session에 한정한다. |
-| 30 | PR presentation 요구와 이미지 URL의 불변성이 성립하는가 | PARTIAL | 계획 43행은 full commit SHA를 쓰는 immutable raw image URL을 요구하므로 URL 지적은 해소됐다. 이 staged branch에는 아직 GitHub PR이 없어 실제 body와 labels를 검토할 수 없다. PR 작성 시 저장소 필수 작업 유형·주요 영역 라벨과 PR 양식의 상태 ID/근거/남은 범위를 확인하고, PR 생성 뒤 body/labels를 별도로 검토해야 한다. 이 외부 metadata 확인만 pending이다. |
+| 30 | PR presentation 요구와 이미지 URL의 불변성이 성립하는가 | PASS | live PR [#668](https://github.com/ohah/spinon/pull/668)은 OPEN, non-draft, mergeStateStatus=CLEAN이고 미병합이다. labels는 `planning`, `area: layout`, `area: docs`이며 본문에 변경 항목, C11.4/72·213 상태, 근거·API 미변경 사유·남은 범위와 완료된 검토 결과가 있다. 본문의 PNG URL은 head SHA `a5921deb873d3598a487535b0bfed2ef1dfc3078`에 고정된 raw URL이다. Agent Browser에서 해당 `<img>`의 `complete=true`, `naturalWidth=160`, `naturalHeight=100`, `visible=true`를 확인했다. 본문은 검토 횟수 대신 검토한 범위와 결론을 서술하고, 30관점 artifact를 PR branch의 최신 파일로 연결한다. 현재 PR은 checks 0이며 CI 통과 증거로 취급하지 않는다. |
 
-## 조치가 필요한 항목
+## 재검토 후 상태
 
-- **PARTIAL #30:** full-SHA raw image URL은 확인했다. 실제 PR body와 labels는 PR 생성 후 저장소 PR 양식·필수 라벨 규칙에 맞춰 확인한다.
-- 이 report와 plan PR payload를 포함한 최종 cached diff에 `git diff --cached --check`를 실행했다. SHA256SUMS 여섯 항목과 JSON 문서 세 개도 재검증했다. build/test/browser는 실행하지 않았다.
+- PR #668 body를 계획·PR diff 검토의 실질 결과, C11.4 및 완료 집계 경계, 근거, 남은 범위와 동기화했고 최신 30관점 report 링크를 확인했다.
+- 수정한 report를 포함한 staged diff에 `git diff --cached --check`를 실행했다. SHA256SUMS 여섯 항목과 JSON 문서 세 개는 기존 precomparison 검토에서 검증된 그대로이며 이번 live-PR 재검토에서는 다시 빌드·테스트하지 않았다. Agent Browser PR 확인 세션을 닫았고 `session list`에는 활성 세션이 없다.
