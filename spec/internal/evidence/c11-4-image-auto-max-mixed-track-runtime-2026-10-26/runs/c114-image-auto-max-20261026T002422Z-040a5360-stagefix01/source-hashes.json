@@ -1,0 +1,37 @@
+{
+  "run_id": "c114-image-auto-max-20261026T002422Z-040a5360-stagefix01",
+  "source_head": "040a5360be92f73e141797aa7dcd4ef00ab24942",
+  "tracked_worktree_diff_sha256": "447c37a07c84c63951792e5ad10b53c5378781140940aa5c4d31e1ab2712440a",
+  "source_and_expectation_file_sha256": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "ebdbcfb952e2897b30fa54f0b25c26320b0b028290a984680bf36b2a1f0b9141",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image.rs": "a4af2c92d14f11b0d28d3233ce11669e26ea3091d1d03493f241d2663b6e4727",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/cases.rs": "92943ddd7e6df61742a506b930e18ade4964591d6b406f8fb593acc4d62d5c5f",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs": "26368a0c894fe7867ca22132f1e83ed5b5c8ff5fbf246b555d58ae32041c65a4",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "1a57f3113184b37f95a40360201d1d85dc78ba8d1184e163a28741e1d2c31cce",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "d186517f5673c7a264a206b6a212031d43c324e4f8f73e339676c1dacd604c1b",
+    "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "plan/c11-4-image-auto-max-mixed-track.md": "b47093021462eacbad9f13e1a4ad5ae86fc24e0c4ccfc399d74292da2dc5a013",
+    "plan/c11-4-grid-track-sizing.md": "5b9a27969ef7aff58a9d36f30e5780dfe4dabad5e2e7a11bdf543784e3fbec5b",
+    "plan/c11-4-image-auto-max-mixed-track-trace-stage-derivation-review-2026-10-26.md": "4d2ba5ba1679374da7c0b1e6a5eb0c8770f925473c0cd9c539f577c064db6503",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/spec-derived-expectations.json": "428b5a479bbc5b99b8f2600cc26555f825dc20bebb827e242f3af5ed20b777f8",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh": "e42f20b80be9176003eb83f468a22e2d1af164995e3cdc4498cdd5fd63b0cc2c"
+  },
+  "feature_build_flags": {
+    "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1"
+  },
+  "build_artifacts": {
+    "android_apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "35b114666be4a347225f895cc8e06f579522a345d0572e77e95cce3861df6d54"
+    },
+    "ios_app_executable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "sha256": "39c49b4aa5c59bea50a367ccbd8b2b6f44ee8c56ee8c68f6d5047adba2eab0aa"
+    }
+  },
+  "commands": {
+    "android_build": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android",
+    "ios_build": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+    "simulator_run": "SPINON_C114_RUN_ID=c114-image-auto-max-20261026T002422Z-040a5360-stagefix01 bash spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh"
+  }
+}

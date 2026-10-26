@@ -1,0 +1,56 @@
+{
+  "capture_provenance": {
+    "agent_browser_session": "spinon-c114-img-stageb-review04-20261026",
+    "source_commit": "a33b245983fae050b66efb9ff259b3fe1132a051",
+    "fixture_path": "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html",
+    "fixture_sha256": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "observation_path": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/chrome-agent-browser-observation.json",
+    "observation_sha256": "82c020de9cb5768d4ca15670b0a79d29fd746899e4a71b67eb56d78ebce635f4",
+    "screenshot_path": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/chrome-agent-browser.png",
+    "screenshot_sha256": "4182f752a1f9f20e8530c9e166683eed6c916eaacecb2bcff1faf7d3c36625eb"
+  },
+  "architecture": "arm",
+  "bitness": "64",
+  "brands": [
+    {
+      "brand": "Not:A-Brand",
+      "version": "8"
+    },
+    {
+      "brand": "Chromium",
+      "version": "156"
+    },
+    {
+      "brand": "Google Chrome",
+      "version": "156"
+    }
+  ],
+  "fullVersionList": [
+    {
+      "brand": "Not:A-Brand",
+      "version": "8.0.0.0"
+    },
+    {
+      "brand": "Chromium",
+      "version": "156.0.8078.48"
+    },
+    {
+      "brand": "Google Chrome",
+      "version": "156.0.8078.48"
+    }
+  ],
+  "mobile": false,
+  "platform": "macOS",
+  "platformVersion": "26.5.1",
+  "session_cleanup": {
+    "session": "spinon-c114-img-stageb-review04-20261026",
+    "session_info_after_close": {
+      "active": false,
+      "pid": null
+    },
+    "active_session_list_after_close": [],
+    "dedicated_chrome_user_data_dir": "/var/folders/51/mr5cjhg13v324f1vgg9m237c0000gn/T/agent-browser-chrome-c35a8bf8-e838-4f74-84a3-915b2fb96f8a",
+    "matching_dedicated_chrome_or_crashpad_processes_after_close": 0,
+    "unrelated_user_and_hwpjs_sessions_preserved": true
+  }
+}

@@ -579,6 +579,13 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
             Track::MinMaxMinMax,
         ) => true,
         (
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::Auto,
+                max: ComputedCssGridTrackBreadth::MaxContent,
+            },
+            Track::MinMaxAutoMaxContent,
+        ) => true,
+        (
             ComputedCssGridTrackSize::FitContent(ComputedCssGridTrackLengthPercentage::LengthPx(
                 actual,
             )),
@@ -624,6 +631,9 @@ fn track_matches(actual: &ComputedCssGridTrackSize, expected: Track) -> bool {
             approximately(*actual, 20.0)
         }
         (ComputedCssGridTrackSize::LengthPx(actual), Track::Length4) => approximately(*actual, 4.0),
+        (ComputedCssGridTrackSize::LengthPx(actual), Track::Length17) => {
+            approximately(*actual, 17.0)
+        }
         _ => false,
     }
 }

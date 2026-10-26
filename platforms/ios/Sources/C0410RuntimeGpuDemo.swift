@@ -224,6 +224,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "fit-content-below-minimum", "fit-content-above-intrinsic",
     "fit-content-percent", "fixed-small-track-overflow",
     "spanning-min-content-items", "min-content-row-image",
+    "image-auto-max-mixed-tracks",
     "column-auto-natural-ratio", "column-target-max-width-clamp",
     "row-target-max-height-clamp", "column-opposite-min-over-max",
     "column-border-box-transfer", "column-content-box-transfer",
@@ -1098,6 +1099,7 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
     if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
@@ -1389,6 +1391,7 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if sceneID == "image-auto-max-mixed-tracks" { return "width=24,height=16" }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
         return "width=24,height=24"
     }
@@ -2030,6 +2033,7 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
         "fit-content-below-minimum", "fit-content-above-intrinsic",
         "fit-content-percent", "fixed-small-track-overflow",
         "spanning-min-content-items", "min-content-row-image",
+        "image-auto-max-mixed-tracks",
         "column-auto-natural-ratio", "column-target-max-width-clamp",
         "row-target-max-height-clamp",
         "column-opposite-min-over-max", "column-border-box-transfer",
@@ -3389,6 +3393,9 @@ private func c114OrthogonalRowTraceMatches(
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
+    if sceneID == "image-auto-max-mixed-tracks" {
+        return c114ImageAutoMaxMixedTrackTraceMatches(diagnostics)
+    }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
         return c114OrthogonalRowTraceMatches(sceneID, diagnostics: diagnostics)
     }
@@ -3617,6 +3624,116 @@ private func c114CyclicMinmaxReplacedImageSpanTraceMatches(
     return true
 }
 
+private func c114ImageAutoMaxMixedTrackTraceMatches(
+    _ diagnostics: [String: Any]
+) -> Bool {
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? Int) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2 else { return false }
+
+    let expectedAxes = ["Columns", "Rows"]
+    let expectedGutters = [
+        [true, false, true, false, true],
+        [true, false, true],
+    ]
+    let expectedCollapsed = [
+        [true, false, false, false, true],
+        [true, false, true],
+    ]
+    let expectedBaseSizes: [[[Double]]] = [
+        [
+            [0, 0, 5, 17, 0],
+            [0, 24, 5, 17, 0],
+            [0, 24, 5, 17, 0],
+            [0, 24, 5, 17, 0],
+            [0, 24, 5, 17, 0],
+            [0, 24, 5, 17, 0],
+        ],
+        [
+            [0, 0, 0],
+            [0, 16, 0],
+            [0, 16, 0],
+            [0, 16, 0],
+            [0, 16, 0],
+            [0, 16, 0],
+        ],
+    ]
+    let stageNames = [
+        "Initialize",
+        "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+        "IntrinsicSizingComplete", "MaximizeTracks", "ExpandFlexibleTracks",
+        "StretchAutoTracks { applied: false }",
+    ]
+    let expectedMinimumSource = "AutomaticMinimum { spans_auto_min_track: true, "
+        + "spans_multiple_tracks: false, spans_flexible_max_track: false, "
+        + "content_based: true, is_compressible_replaced: true, "
+        + "fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }"
+
+    for passIndex in passes.indices {
+        let pass = passes[passIndex]
+        guard (pass["axis"] as? String) == expectedAxes[passIndex],
+              let stages = pass["stages"] as? [[String: Any]],
+              stages.count == stageNames.count,
+              let contributions = pass["contributions"] as? [[String: Any]],
+              contributions.count == 3 else { return false }
+
+        let expectedContribution = passIndex == 0 ? 24.0 : 16.0
+        let expectedKinds = ["Minimum", "MinContent", "MaxContent"]
+        for contributionIndex in expectedKinds.indices {
+            let contribution = contributions[contributionIndex]
+            guard (contribution["item"] as? Int) == 2,
+                  (contribution["span"] as? Int) == 1,
+                  (contribution["crossesFlexibleTrack"] as? Bool) == false,
+                  (contribution["kind"] as? String) == expectedKinds[contributionIndex],
+                  let value = contribution["value"] as? NSNumber,
+                  abs(value.doubleValue - expectedContribution) <= 0.0001 else {
+                return false
+            }
+            if contributionIndex == 0 {
+                guard (contribution["minimumSource"] as? String) == expectedMinimumSource else {
+                    return false
+                }
+            } else if !(contribution["minimumSource"] is NSNull) {
+                return false
+            }
+        }
+
+        for stageIndex in stages.indices {
+            let stage = stages[stageIndex]
+            guard (stage["stage"] as? String) == stageNames[stageIndex],
+                  let tracks = stage["tracks"] as? [[String: Any]],
+                  tracks.count == expectedGutters[passIndex].count,
+                  tracks.count == expectedBaseSizes[passIndex][stageIndex].count else {
+                return false
+            }
+            for trackIndex in tracks.indices {
+                let track = tracks[trackIndex]
+                let expectedBase = expectedBaseSizes[passIndex][stageIndex][trackIndex]
+                guard (track["internalIndex"] as? Int) == trackIndex,
+                      (track["gutter"] as? Bool) == expectedGutters[passIndex][trackIndex],
+                      (track["collapsed"] as? Bool) == expectedCollapsed[passIndex][trackIndex],
+                      (track["infinitelyGrowable"] as? Bool) == false,
+                      let baseSize = track["baseSize"] as? NSNumber,
+                      abs(baseSize.doubleValue - expectedBase) <= 0.0001 else {
+                    return false
+                }
+                let expectsUnboundedProjection = stageIndex == 0 && trackIndex == 1
+                if expectsUnboundedProjection {
+                    guard track["growthLimit"] is NSNull else { return false }
+                } else {
+                    guard let growthLimit = track["growthLimit"] as? NSNumber,
+                          abs(growthLimit.doubleValue - expectedBase) <= 0.0001 else {
+                        return false
+                    }
+                }
+            }
+        }
+    }
+    return true
+}
+
 private func c114FixedGutterSuggestionTraceMatches(
     _ sceneID: String, passes: [[String: Any]]
 ) -> Bool {
@@ -3729,6 +3846,10 @@ private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if sceneID == "image-auto-max-mixed-tracks" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
+            + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
     if let orthogonalFrames = c114OrthogonalRowNodeFrames(sceneID) {
         return orthogonalFrames
     }
@@ -4175,6 +4296,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "fit-content-below-minimum", "fit-content-above-intrinsic",
          "fit-content-percent", "fixed-small-track-overflow",
          "spanning-min-content-items", "min-content-row-image",
+         "image-auto-max-mixed-tracks",
          "column-auto-natural-ratio", "column-target-max-width-clamp",
          "row-target-max-height-clamp", "column-opposite-min-over-max",
          "column-border-box-transfer", "column-content-box-transfer",

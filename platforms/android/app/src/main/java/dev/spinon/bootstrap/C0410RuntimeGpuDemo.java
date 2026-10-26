@@ -280,6 +280,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "fit-content-below-minimum", "fit-content-above-intrinsic",
             "fit-content-percent", "fixed-small-track-overflow",
             "spanning-min-content-items", "min-content-row-image",
+            "image-auto-max-mixed-tracks",
             "competing-span2-forward", "competing-span2-reversed",
             "span2-before-span3", "span3-before-span2",
             "text-span2-forward", "text-span2-reversed",
@@ -1557,6 +1558,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if ("image-auto-max-mixed-tracks".equals(sceneId)) {
+            return "width=100,height=40";
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             return "width=24,height=44";
         }
@@ -1908,6 +1912,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if ("image-auto-max-mixed-tracks".equals(sceneId)) {
+            return "width=24,height=16";
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             return "width=24,height=24";
         }
@@ -2650,6 +2657,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "fixed-small-track-overflow":
             case "spanning-min-content-items":
             case "min-content-row-image":
+            case "image-auto-max-mixed-tracks":
             case "column-auto-natural-ratio":
             case "column-target-max-width-clamp":
             case "row-target-max-height-clamp":
@@ -2967,6 +2975,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ImageTrackSizingTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
+        if ("image-auto-max-mixed-tracks".equals(sceneId)) {
+            return c114ImageAutoMaxMixedTrackTraceMatches(diagnostics);
+        }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             return c114OrthogonalDirectMixedTextImageIntrinsicRowTraceMatches(
                     sceneId, diagnostics);
@@ -3370,6 +3381,120 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return observed == expectedSizes.length;
         }
         return false;
+    }
+
+    private static boolean c114ImageAutoMaxMixedTrackTraceMatches(
+            org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        if (traces == null || traces.length() != 1) return false;
+        org.json.JSONObject trace = traces.optJSONObject(0);
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (trace == null || trace.optInt("grid", -1) != 1
+                || passes == null || passes.length() != 2) return false;
+        String[] axes = {"Columns", "Rows"};
+        boolean[][] gutters = {
+            {true, false, true, false, true},
+            {true, false, true}
+        };
+        boolean[][] collapsed = {
+            {true, false, false, false, true},
+            {true, false, true}
+        };
+        double[][][] expectedBases = {
+            {
+                {0.0, 0.0, 5.0, 17.0, 0.0},
+                {0.0, 24.0, 5.0, 17.0, 0.0},
+                {0.0, 24.0, 5.0, 17.0, 0.0},
+                {0.0, 24.0, 5.0, 17.0, 0.0},
+                {0.0, 24.0, 5.0, 17.0, 0.0},
+                {0.0, 24.0, 5.0, 17.0, 0.0}
+            },
+            {
+                {0.0, 0.0, 0.0},
+                {0.0, 16.0, 0.0},
+                {0.0, 16.0, 0.0},
+                {0.0, 16.0, 0.0},
+                {0.0, 16.0, 0.0},
+                {0.0, 16.0, 0.0}
+            }
+        };
+        String[] stageNames = {
+            "Initialize", "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+            "IntrinsicSizingComplete", "MaximizeTracks", "ExpandFlexibleTracks",
+            "StretchAutoTracks { applied: false }"
+        };
+        String expectedMinimumSource = "AutomaticMinimum { spans_auto_min_track: true, "
+                + "spans_multiple_tracks: false, spans_flexible_max_track: false, "
+                + "content_based: true, is_compressible_replaced: true, "
+                + "fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }";
+
+        for (int passIndex = 0; passIndex < passes.length(); passIndex++) {
+            org.json.JSONObject pass = passes.optJSONObject(passIndex);
+            if (pass == null || !axes[passIndex].equals(pass.optString("axis"))) return false;
+            org.json.JSONArray stages = pass.optJSONArray("stages");
+            org.json.JSONArray contributions = pass.optJSONArray("contributions");
+            if (stages == null || stages.length() != stageNames.length
+                    || contributions == null || contributions.length() != 3) return false;
+
+            double expectedContribution = passIndex == 0 ? 24.0 : 16.0;
+            String[] kinds = {"Minimum", "MinContent", "MaxContent"};
+            for (int contributionIndex = 0; contributionIndex < kinds.length;
+                    contributionIndex++) {
+                org.json.JSONObject contribution = contributions.optJSONObject(contributionIndex);
+                if (contribution == null || contribution.optInt("item", -1) != 2
+                        || contribution.optInt("span", -1) != 1
+                        || contribution.optBoolean("crossesFlexibleTrack", true)
+                        || !kinds[contributionIndex].equals(contribution.optString("kind"))
+                        || Math.abs(contribution.optDouble("value", Double.NaN)
+                                - expectedContribution) > 0.0001) return false;
+                if (contributionIndex == 0) {
+                    if (!expectedMinimumSource.equals(contribution.optString("minimumSource"))) {
+                        return false;
+                    }
+                } else if (!contribution.isNull("minimumSource")) {
+                    return false;
+                }
+            }
+
+            for (int stageIndex = 0; stageIndex < stageNames.length; stageIndex++) {
+                org.json.JSONObject stage = stages.optJSONObject(stageIndex);
+                org.json.JSONArray tracks = stage == null ? null : stage.optJSONArray("tracks");
+                if (stage == null || !stageNames[stageIndex].equals(stage.optString("stage"))
+                        || tracks == null
+                        || tracks.length() != gutters[passIndex].length
+                        || tracks.length() != expectedBases[passIndex][stageIndex].length) {
+                    return false;
+                }
+                for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
+                    org.json.JSONObject track = tracks.optJSONObject(trackIndex);
+                    if (track == null || track.optInt("internalIndex", -1) != trackIndex
+                            || !(track.opt("gutter") instanceof Boolean)
+                            || !(track.opt("collapsed") instanceof Boolean)
+                            || !(track.opt("infinitelyGrowable") instanceof Boolean)
+                            || !track.has("baseSize")
+                            || !(track.opt("baseSize") instanceof Number)
+                            || !track.has("growthLimit")
+                            || track.optBoolean("gutter", !gutters[passIndex][trackIndex])
+                                    != gutters[passIndex][trackIndex]
+                            || track.optBoolean("collapsed", !collapsed[passIndex][trackIndex])
+                                    != collapsed[passIndex][trackIndex]
+                            || track.optBoolean("infinitelyGrowable", true)) return false;
+                    double expectedBase = expectedBases[passIndex][stageIndex][trackIndex];
+                    if (Math.abs(track.optDouble("baseSize", Double.NaN) - expectedBase)
+                            > 0.0001) return false;
+                    boolean expectedNonFiniteProjection = stageIndex == 0 && trackIndex == 1;
+                    if (expectedNonFiniteProjection) {
+                        if (!track.isNull("growthLimit")) return false;
+                    } else if (!(track.opt("growthLimit") instanceof Number)
+                            || Math.abs(track.optDouble("growthLimit", Double.NaN) - expectedBase)
+                                    > 0.0001) {
+                        return false;
+                    }
+                }
+            }
+        }
+        return true;
     }
 
     private static boolean c114FixedGutterSuggestionTraceMatches(
@@ -3928,6 +4053,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "fixed-small-track-overflow":
             case "spanning-min-content-items":
             case "min-content-row-image":
+            case "image-auto-max-mixed-tracks":
             case "column-auto-natural-ratio":
             case "column-target-max-width-clamp":
             case "row-target-max-height-clamp":

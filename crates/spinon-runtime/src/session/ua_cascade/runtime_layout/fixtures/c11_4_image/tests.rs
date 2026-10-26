@@ -8,7 +8,25 @@ use std::sync::Arc;
 
 #[test]
 fn image_matrix_has_unique_ids_and_bounded_geometry() {
-    assert_eq!(IMAGE_CASES.len(), 20);
+    assert_eq!(IMAGE_CASES.len(), 21);
+    let mixed_track_case = IMAGE_CASES
+        .iter()
+        .find(|case| case.scene_id == "image-auto-max-mixed-tracks")
+        .expect("the image auto/max mixed-track case is registered");
+    assert_eq!(mixed_track_case.root_id, "c114-image-auto-max-mixed-grid");
+    assert_eq!(mixed_track_case.item_id, "c114-image-auto-max-mixed-item");
+    assert_eq!(mixed_track_case.columns.len(), 2);
+    assert!(matches!(
+        mixed_track_case.columns[0],
+        super::Track::MinMaxAutoMaxContent
+    ));
+    assert!(matches!(
+        mixed_track_case.columns[1],
+        super::Track::Length17
+    ));
+    assert_eq!(mixed_track_case.rows.len(), 1);
+    assert_eq!(mixed_track_case.column_gap, 5.0);
+    assert!(matches!(mixed_track_case.placement, super::Placement::Auto));
     for (index, case) in IMAGE_CASES.iter().enumerate() {
         assert!(
             IMAGE_CASES[..index]

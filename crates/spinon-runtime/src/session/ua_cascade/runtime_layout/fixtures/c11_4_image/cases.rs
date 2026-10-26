@@ -14,6 +14,8 @@ pub(super) enum Track {
     Length4,
     MinMaxAuto3,
     MinContent,
+    MinMaxAutoMaxContent,
+    Length17,
 }
 
 #[derive(Clone, Copy, Debug)]
@@ -55,7 +57,21 @@ pub(super) struct ImageCase {
     pub(super) sizing: ImageSizing,
 }
 
-pub(super) const IMAGE_CASES: [ImageCase; 20] = [
+pub(super) const IMAGE_CASES: [ImageCase; 21] = [
+    ImageCase {
+        scene_id: "image-auto-max-mixed-tracks",
+        root_id: "c114-image-auto-max-mixed-grid",
+        item_id: "c114-image-auto-max-mixed-item",
+        grid_width: 100.0,
+        grid_height: 40.0,
+        columns: &[Track::MinMaxAutoMaxContent, Track::Length17],
+        rows: &[Track::Auto],
+        column_gap: 5.0,
+        row_gap: 0.0,
+        grid_border: 0.0,
+        placement: Placement::Auto,
+        sizing: ImageSizing::Intrinsic,
+    },
     ImageCase {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
