@@ -1,0 +1,31 @@
+{
+  "openHandleCount": 3,
+  "records": [
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "currentBytes": 73952,
+      "currentSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "selectedBytes": 73952,
+      "selectedSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "exactMatch": true
+    },
+    {
+      "route": "static/js/lib-react.382571d6aa.js",
+      "currentBytes": 218368,
+      "currentSha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "selectedBytes": 218368,
+      "selectedSha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "exactMatch": true
+    },
+    {
+      "route": "static/js/styles.8438d8f3e2.js",
+      "currentBytes": 476,
+      "currentSha256": "605b2617140e8657bf49a030f4a933dcdc7f18d57139b2cf3de2cde0465da8d7",
+      "selectedBytes": 476,
+      "selectedSha256": "605b2617140e8657bf49a030f4a933dcdc7f18d57139b2cf3de2cde0465da8d7",
+      "exactMatch": true
+    }
+  ],
+  "noOverwriteRequired": true,
+  "reason": "모든 열린 target은 선택 build와 byte-exact로 동일하므로 copy 단계에서 건너뛴다."
+}

@@ -1,0 +1,1874 @@
+{
+  "pass": "pass01",
+  "sourceHead": "fb3f1e5a307c9678d6b70af017858fe7e03f435a",
+  "sourceTree": "3e7c6e643d501a70e53aae1780729c1c25c81898",
+  "checkoutHead": "fb3f1e5a307c9678d6b70af017858fe7e03f435a",
+  "checkoutTree": "3e7c6e643d501a70e53aae1780729c1c25c81898",
+  "baseRoot": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-20261025-root-pass08-corrected-selected",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr666-20261027-root-pass01-selected",
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-pr666-20261027-site-pass01-selected",
+  "sourceDirectories": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "spec/internal/0059-c11-grid-layout.md",
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+    "plan/c11-4-fit-content-auto-neighbor-wpt.md",
+    "plan/c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md",
+    "plan/c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27",
+    "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27",
+    "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26",
+    "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27",
+    "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27"
+  ],
+  "trackedSourceCount": 80,
+  "overlayCount": 307,
+  "overlayBytes": 6291567,
+  "hardlinkBasePolicy": "이전 selected root는 읽기 전용 입력이다. 새 selected root에서 교체 전 overlay 파일은 unlink 후 재작성하므로 base inode 내용은 바뀌지 않는다.",
+  "noDeletes": true,
+  "overlays": [
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md",
+      "path": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md",
+      "bytes": 11467,
+      "sha256": "abd058da42c20dbef7b012c90c541e43061da73d87baea2456ed680d215a50d3"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md",
+      "path": "spec/plan/c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md",
+      "bytes": 11467,
+      "sha256": "abd058da42c20dbef7b012c90c541e43061da73d87baea2456ed680d215a50d3"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md",
+      "path": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md",
+      "bytes": 22690,
+      "sha256": "cbb3da73d06d097be4acf58ac488e35f8ac33dc06fdb3bab9068af199c91d917"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md",
+      "path": "spec/plan/c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md",
+      "bytes": 22690,
+      "sha256": "cbb3da73d06d097be4acf58ac488e35f8ac33dc06fdb3bab9068af199c91d917"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "path": "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "bytes": 10139,
+      "sha256": "49222a45a78335ec1267ed16450d7c423db6c92c32e47e63f49914fdf4c00ffe"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "path": "spec/plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "bytes": 10139,
+      "sha256": "49222a45a78335ec1267ed16450d7c423db6c92c32e47e63f49914fdf4c00ffe"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-wpt.md",
+      "path": "plan/c11-4-fit-content-auto-neighbor-wpt.md",
+      "bytes": 11203,
+      "sha256": "30e4f2b1b72f66f48334c2f4ca40afae3fe21006004ede4837c7ded10a71f5eb"
+    },
+    {
+      "source": "plan/c11-4-fit-content-auto-neighbor-wpt.md",
+      "path": "spec/plan/c11-4-fit-content-auto-neighbor-wpt.md",
+      "bytes": 11203,
+      "sha256": "30e4f2b1b72f66f48334c2f4ca40afae3fe21006004ede4837c7ded10a71f5eb"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 135487,
+      "sha256": "4c2637618d07fd626745f89ed7076fd9f4741884713bda9c8bd1ef0e321d5b03"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 135487,
+      "sha256": "4c2637618d07fd626745f89ed7076fd9f4741884713bda9c8bd1ef0e321d5b03"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 454443,
+      "sha256": "aba99fc51446ba6595a978b7cda27abf283a49c6a38d803015d434df7a4b546c"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 454443,
+      "sha256": "aba99fc51446ba6595a978b7cda27abf283a49c6a38d803015d434df7a4b546c"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 170662,
+      "sha256": "8e0eddc112774aa543823a55a425f477c5bda4ac0fedceaf89f9a666cce00ab8"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 170662,
+      "sha256": "8e0eddc112774aa543823a55a425f477c5bda4ac0fedceaf89f9a666cce00ab8"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 170662,
+      "sha256": "8e0eddc112774aa543823a55a425f477c5bda4ac0fedceaf89f9a666cce00ab8"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 170662,
+      "sha256": "8e0eddc112774aa543823a55a425f477c5bda4ac0fedceaf89f9a666cce00ab8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "bytes": 5756,
+      "sha256": "cd9229956a1e2863dea882ea078201b4bf90b6fa4a36c55ee4226ff8dd434197"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "bytes": 5756,
+      "sha256": "cd9229956a1e2863dea882ea078201b4bf90b6fa4a36c55ee4226ff8dd434197"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "bytes": 5756,
+      "sha256": "cd9229956a1e2863dea882ea078201b4bf90b6fa4a36c55ee4226ff8dd434197"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md",
+      "bytes": 5756,
+      "sha256": "cd9229956a1e2863dea882ea078201b4bf90b6fa4a36c55ee4226ff8dd434197"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "bytes": 78305,
+      "sha256": "35b3d269a54e01f7019215f74c4aa6ccbec6f62c6afaf83527c30e1366f5ad7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "bytes": 78305,
+      "sha256": "35b3d269a54e01f7019215f74c4aa6ccbec6f62c6afaf83527c30e1366f5ad7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "bytes": 78305,
+      "sha256": "35b3d269a54e01f7019215f74c4aa6ccbec6f62c6afaf83527c30e1366f5ad7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png",
+      "bytes": 78305,
+      "sha256": "35b3d269a54e01f7019215f74c4aa6ccbec6f62c6afaf83527c30e1366f5ad7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "45320d9001825f8e562e7259b858a2d54541017184cab77dfe51936c5e184234"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "45320d9001825f8e562e7259b858a2d54541017184cab77dfe51936c5e184234"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "45320d9001825f8e562e7259b858a2d54541017184cab77dfe51936c5e184234"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "45320d9001825f8e562e7259b858a2d54541017184cab77dfe51936c5e184234"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "bytes": 1869,
+      "sha256": "172dd33069aef23fb619f9b73f8cb5348cb56c4e94625b73275194702580714d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "bytes": 1869,
+      "sha256": "172dd33069aef23fb619f9b73f8cb5348cb56c4e94625b73275194702580714d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "bytes": 1869,
+      "sha256": "172dd33069aef23fb619f9b73f8cb5348cb56c4e94625b73275194702580714d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/result.json",
+      "bytes": 1869,
+      "sha256": "172dd33069aef23fb619f9b73f8cb5348cb56c4e94625b73275194702580714d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 26381,
+      "sha256": "7523df8f635b603dfe9227928d9d19ec9e7e3b676e7b08c2eef212dcfcf8a335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 26381,
+      "sha256": "7523df8f635b603dfe9227928d9d19ec9e7e3b676e7b08c2eef212dcfcf8a335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 26381,
+      "sha256": "7523df8f635b603dfe9227928d9d19ec9e7e3b676e7b08c2eef212dcfcf8a335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 26381,
+      "sha256": "7523df8f635b603dfe9227928d9d19ec9e7e3b676e7b08c2eef212dcfcf8a335"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "bytes": 2210,
+      "sha256": "294dc2ed860d293b2ce28e5d1b32de7bdb118532366049d3303c2891153eb47a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "bytes": 2210,
+      "sha256": "294dc2ed860d293b2ce28e5d1b32de7bdb118532366049d3303c2891153eb47a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "bytes": 2210,
+      "sha256": "294dc2ed860d293b2ce28e5d1b32de7bdb118532366049d3303c2891153eb47a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/simulator.json",
+      "bytes": 2210,
+      "sha256": "294dc2ed860d293b2ce28e5d1b32de7bdb118532366049d3303c2891153eb47a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "bytes": 4412,
+      "sha256": "dc9678caf7c31273ab3c0a942d64a59b1b101c88dc048cefb21e44ed88ef29f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "bytes": 4412,
+      "sha256": "dc9678caf7c31273ab3c0a942d64a59b1b101c88dc048cefb21e44ed88ef29f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "bytes": 4412,
+      "sha256": "dc9678caf7c31273ab3c0a942d64a59b1b101c88dc048cefb21e44ed88ef29f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build-pass5.log",
+      "bytes": 4412,
+      "sha256": "dc9678caf7c31273ab3c0a942d64a59b1b101c88dc048cefb21e44ed88ef29f5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "bytes": 4623,
+      "sha256": "7fa6228db65164d2cd891d996595de9e2e6b0974d34a595f8e6d8d588062d80f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "bytes": 4623,
+      "sha256": "7fa6228db65164d2cd891d996595de9e2e6b0974d34a595f8e6d8d588062d80f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "bytes": 4623,
+      "sha256": "7fa6228db65164d2cd891d996595de9e2e6b0974d34a595f8e6d8d588062d80f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/android-build.log",
+      "bytes": 4623,
+      "sha256": "7fa6228db65164d2cd891d996595de9e2e6b0974d34a595f8e6d8d588062d80f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "bytes": 1508,
+      "sha256": "f90b7359d504d2d4fa938457aba5638eb7de17a359944310957ee8376938651a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "bytes": 1508,
+      "sha256": "f90b7359d504d2d4fa938457aba5638eb7de17a359944310957ee8376938651a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "bytes": 1508,
+      "sha256": "f90b7359d504d2d4fa938457aba5638eb7de17a359944310957ee8376938651a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/README.md",
+      "bytes": 1508,
+      "sha256": "f90b7359d504d2d4fa938457aba5638eb7de17a359944310957ee8376938651a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "bytes": 315,
+      "sha256": "6e97f1bad5d926c6e86a0938db3bfb1af533c090b0a8bf3e6160b957920c0d5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "bytes": 315,
+      "sha256": "6e97f1bad5d926c6e86a0938db3bfb1af533c090b0a8bf3e6160b957920c0d5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "bytes": 315,
+      "sha256": "6e97f1bad5d926c6e86a0938db3bfb1af533c090b0a8bf3e6160b957920c0d5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-artifacts.sha256",
+      "bytes": 315,
+      "sha256": "6e97f1bad5d926c6e86a0938db3bfb1af533c090b0a8bf3e6160b957920c0d5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "bytes": 7792,
+      "sha256": "f70950b1e291e19d5c84492813d3c55e6b9879804fd1b71eaae0446b14911787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "bytes": 7792,
+      "sha256": "f70950b1e291e19d5c84492813d3c55e6b9879804fd1b71eaae0446b14911787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "bytes": 7792,
+      "sha256": "f70950b1e291e19d5c84492813d3c55e6b9879804fd1b71eaae0446b14911787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-build.log",
+      "bytes": 7792,
+      "sha256": "f70950b1e291e19d5c84492813d3c55e6b9879804fd1b71eaae0446b14911787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "bytes": 645,
+      "sha256": "15ba331db1c1781293986ba7ee28aeccb8e305061168e2c86eb435a12183f3a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "bytes": 645,
+      "sha256": "15ba331db1c1781293986ba7ee28aeccb8e305061168e2c86eb435a12183f3a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "bytes": 645,
+      "sha256": "15ba331db1c1781293986ba7ee28aeccb8e305061168e2c86eb435a12183f3a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/core-symbol-string-scan.txt",
+      "bytes": 645,
+      "sha256": "15ba331db1c1781293986ba7ee28aeccb8e305061168e2c86eb435a12183f3a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "bytes": 173,
+      "sha256": "6f9df897c9feb4491416e288552b46914af171fb322787135f4b3cb7d4a44d29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "bytes": 173,
+      "sha256": "6f9df897c9feb4491416e288552b46914af171fb322787135f4b3cb7d4a44d29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "bytes": 173,
+      "sha256": "6f9df897c9feb4491416e288552b46914af171fb322787135f4b3cb7d4a44d29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-artifact.sha256",
+      "bytes": 173,
+      "sha256": "6f9df897c9feb4491416e288552b46914af171fb322787135f4b3cb7d4a44d29"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "bytes": 6890,
+      "sha256": "c44d688d272c12dcb57a0f20526f03dc5d8908c725fedc28dba8e152ea453cbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "bytes": 6890,
+      "sha256": "c44d688d272c12dcb57a0f20526f03dc5d8908c725fedc28dba8e152ea453cbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "bytes": 6890,
+      "sha256": "c44d688d272c12dcb57a0f20526f03dc5d8908c725fedc28dba8e152ea453cbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build-initial-warning.log",
+      "bytes": 6890,
+      "sha256": "c44d688d272c12dcb57a0f20526f03dc5d8908c725fedc28dba8e152ea453cbb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "bytes": 572,
+      "sha256": "bd417e82d743ecc38bcc2fd62ce6e00e4953e6a18cfc1671e30ffc4adb4836c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "bytes": 572,
+      "sha256": "bd417e82d743ecc38bcc2fd62ce6e00e4953e6a18cfc1671e30ffc4adb4836c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "bytes": 572,
+      "sha256": "bd417e82d743ecc38bcc2fd62ce6e00e4953e6a18cfc1671e30ffc4adb4836c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-build.log",
+      "bytes": 572,
+      "sha256": "bd417e82d743ecc38bcc2fd62ce6e00e4953e6a18cfc1671e30ffc4adb4836c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "bytes": 266,
+      "sha256": "3d09bad0f42d84cf6ffbb0a6a71359f5a6a2c3006256b7f145659211b2475ab7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "bytes": 266,
+      "sha256": "3d09bad0f42d84cf6ffbb0a6a71359f5a6a2c3006256b7f145659211b2475ab7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "bytes": 266,
+      "sha256": "3d09bad0f42d84cf6ffbb0a6a71359f5a6a2c3006256b7f145659211b2475ab7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/default-symbol-string-scan.txt",
+      "bytes": 266,
+      "sha256": "3d09bad0f42d84cf6ffbb0a6a71359f5a6a2c3006256b7f145659211b2475ab7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "bytes": 321,
+      "sha256": "3918f9e515f47095c610a6e5b5791a82dec80ec686cb3d19df1ad713adce2aa5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "bytes": 321,
+      "sha256": "3918f9e515f47095c610a6e5b5791a82dec80ec686cb3d19df1ad713adce2aa5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "bytes": 321,
+      "sha256": "3918f9e515f47095c610a6e5b5791a82dec80ec686cb3d19df1ad713adce2aa5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-artifacts.sha256",
+      "bytes": 321,
+      "sha256": "3918f9e515f47095c610a6e5b5791a82dec80ec686cb3d19df1ad713adce2aa5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "bytes": 8144,
+      "sha256": "325ab902f0fc1985edf2ce62c4fa13a5f51c40b9265605c9a49c365f2030abf8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "bytes": 8144,
+      "sha256": "325ab902f0fc1985edf2ce62c4fa13a5f51c40b9265605c9a49c365f2030abf8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "bytes": 8144,
+      "sha256": "325ab902f0fc1985edf2ce62c4fa13a5f51c40b9265605c9a49c365f2030abf8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-build.log",
+      "bytes": 8144,
+      "sha256": "325ab902f0fc1985edf2ce62c4fa13a5f51c40b9265605c9a49c365f2030abf8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "bytes": 657,
+      "sha256": "a73bbaeb7e2931bdf7ad4eb285f9db952318491bb05485ee3acdb830396aabc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "bytes": 657,
+      "sha256": "a73bbaeb7e2931bdf7ad4eb285f9db952318491bb05485ee3acdb830396aabc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "bytes": 657,
+      "sha256": "a73bbaeb7e2931bdf7ad4eb285f9db952318491bb05485ee3acdb830396aabc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/artifact-boundary/fixture-test-symbol-string-scan.txt",
+      "bytes": 657,
+      "sha256": "a73bbaeb7e2931bdf7ad4eb285f9db952318491bb05485ee3acdb830396aabc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "bytes": 906,
+      "sha256": "8e250a143c978884829883a2f874a3d89e4e8ebc8fad2eb3e2e6a1232730f2c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "bytes": 906,
+      "sha256": "8e250a143c978884829883a2f874a3d89e4e8ebc8fad2eb3e2e6a1232730f2c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "bytes": 906,
+      "sha256": "8e250a143c978884829883a2f874a3d89e4e8ebc8fad2eb3e2e6a1232730f2c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/fixture-clippy.log",
+      "bytes": 906,
+      "sha256": "8e250a143c978884829883a2f874a3d89e4e8ebc8fad2eb3e2e6a1232730f2c8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "bytes": 400,
+      "sha256": "8e526b46c845643fd3fe72b8aedb934bcddfbde22c86ae616c53afcb915e882b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "bytes": 400,
+      "sha256": "8e526b46c845643fd3fe72b8aedb934bcddfbde22c86ae616c53afcb915e882b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "bytes": 400,
+      "sha256": "8e526b46c845643fd3fe72b8aedb934bcddfbde22c86ae616c53afcb915e882b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-ffi-test.log",
+      "bytes": 400,
+      "sha256": "8e526b46c845643fd3fe72b8aedb934bcddfbde22c86ae616c53afcb915e882b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "bytes": 612,
+      "sha256": "5a180e6d0588e32bdd301f7ccec061ba5ad3bbe61e0b240a8fe9ed9b29b3a142"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "bytes": 612,
+      "sha256": "5a180e6d0588e32bdd301f7ccec061ba5ad3bbe61e0b240a8fe9ed9b29b3a142"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "bytes": 612,
+      "sha256": "5a180e6d0588e32bdd301f7ccec061ba5ad3bbe61e0b240a8fe9ed9b29b3a142"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-layout-test.log",
+      "bytes": 612,
+      "sha256": "5a180e6d0588e32bdd301f7ccec061ba5ad3bbe61e0b240a8fe9ed9b29b3a142"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "bytes": 845,
+      "sha256": "51a4dd233de5332e019d6f2ccfc7bf2f2407814ce9c821c11f77ef3c1774ce67"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "bytes": 845,
+      "sha256": "51a4dd233de5332e019d6f2ccfc7bf2f2407814ce9c821c11f77ef3c1774ce67"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "bytes": 845,
+      "sha256": "51a4dd233de5332e019d6f2ccfc7bf2f2407814ce9c821c11f77ef3c1774ce67"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-revision-provenance-test.log",
+      "bytes": 845,
+      "sha256": "51a4dd233de5332e019d6f2ccfc7bf2f2407814ce9c821c11f77ef3c1774ce67"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "bytes": 1431,
+      "sha256": "f898fd959146fbcdead1f94580ce5d8f46401ae7f5a97298332fd44e512373fc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "bytes": 1431,
+      "sha256": "f898fd959146fbcdead1f94580ce5d8f46401ae7f5a97298332fd44e512373fc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "bytes": 1431,
+      "sha256": "f898fd959146fbcdead1f94580ce5d8f46401ae7f5a97298332fd44e512373fc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/focused-runtime-tests.log",
+      "bytes": 1431,
+      "sha256": "f898fd959146fbcdead1f94580ce5d8f46401ae7f5a97298332fd44e512373fc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "bytes": 10051,
+      "sha256": "2219d470c08c015780a1c78cd1fee4083f169f74f4ffa9b481502c33d8b62bad"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "bytes": 10051,
+      "sha256": "2219d470c08c015780a1c78cd1fee4083f169f74f4ffa9b481502c33d8b62bad"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "bytes": 10051,
+      "sha256": "2219d470c08c015780a1c78cd1fee4083f169f74f4ffa9b481502c33d8b62bad"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md",
+      "bytes": 10051,
+      "sha256": "2219d470c08c015780a1c78cd1fee4083f169f74f4ffa9b481502c33d8b62bad"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "bytes": 111857,
+      "sha256": "2ebad5194ad17078ea2dcead2a76c32ed9105f4504aa7edf01ef1532b6e60ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "bytes": 111857,
+      "sha256": "2ebad5194ad17078ea2dcead2a76c32ed9105f4504aa7edf01ef1532b6e60ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "bytes": 111857,
+      "sha256": "2ebad5194ad17078ea2dcead2a76c32ed9105f4504aa7edf01ef1532b6e60ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build-pass5.log",
+      "bytes": 111857,
+      "sha256": "2ebad5194ad17078ea2dcead2a76c32ed9105f4504aa7edf01ef1532b6e60ae9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "bytes": 94695,
+      "sha256": "dbe0f46906db08537987d8a1414938a4575f274d05b0479599834be610778b21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "bytes": 94695,
+      "sha256": "dbe0f46906db08537987d8a1414938a4575f274d05b0479599834be610778b21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "bytes": 94695,
+      "sha256": "dbe0f46906db08537987d8a1414938a4575f274d05b0479599834be610778b21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-build.log",
+      "bytes": 94695,
+      "sha256": "dbe0f46906db08537987d8a1414938a4575f274d05b0479599834be610778b21"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "bytes": 133210,
+      "sha256": "d4d94e106634755cabd3dd204de3e241ec47a336f96127cf15ef36dee19fb51f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "bytes": 133210,
+      "sha256": "d4d94e106634755cabd3dd204de3e241ec47a336f96127cf15ef36dee19fb51f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "bytes": 133210,
+      "sha256": "d4d94e106634755cabd3dd204de3e241ec47a336f96127cf15ef36dee19fb51f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png",
+      "bytes": 133210,
+      "sha256": "d4d94e106634755cabd3dd204de3e241ec47a336f96127cf15ef36dee19fb51f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 28,
+      "sha256": "31f28ef573171aef3c504824d0c0719bffdd5c96d3f8c99b3dd8d7f0cfc8967d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 28,
+      "sha256": "31f28ef573171aef3c504824d0c0719bffdd5c96d3f8c99b3dd8d7f0cfc8967d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 28,
+      "sha256": "31f28ef573171aef3c504824d0c0719bffdd5c96d3f8c99b3dd8d7f0cfc8967d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/launch-fit-content-auto-neighbor-wpt.log",
+      "bytes": 28,
+      "sha256": "31f28ef573171aef3c504824d0c0719bffdd5c96d3f8c99b3dd8d7f0cfc8967d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "bytes": 1906,
+      "sha256": "6fb256a23a83e4680ee59750df759411e6e3e540c746fe09561c736b65ba4316"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "bytes": 1906,
+      "sha256": "6fb256a23a83e4680ee59750df759411e6e3e540c746fe09561c736b65ba4316"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "bytes": 1906,
+      "sha256": "6fb256a23a83e4680ee59750df759411e6e3e540c746fe09561c736b65ba4316"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/result.json",
+      "bytes": 1906,
+      "sha256": "6fb256a23a83e4680ee59750df759411e6e3e540c746fe09561c736b65ba4316"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 16725,
+      "sha256": "0dc8ea9cc96e74450a839fd6826fc12af914fb726676cc805eed8893880a260a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 16725,
+      "sha256": "0dc8ea9cc96e74450a839fd6826fc12af914fb726676cc805eed8893880a260a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 16725,
+      "sha256": "0dc8ea9cc96e74450a839fd6826fc12af914fb726676cc805eed8893880a260a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/runtime-fit-content-auto-neighbor-wpt.log",
+      "bytes": 16725,
+      "sha256": "0dc8ea9cc96e74450a839fd6826fc12af914fb726676cc805eed8893880a260a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "bytes": 317,
+      "sha256": "d532a675dbcda046d1039544b479aa769c7fbba4b70d55ea3563312bad21abc5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "bytes": 317,
+      "sha256": "d532a675dbcda046d1039544b479aa769c7fbba4b70d55ea3563312bad21abc5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "bytes": 317,
+      "sha256": "d532a675dbcda046d1039544b479aa769c7fbba4b70d55ea3563312bad21abc5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/screenshot-fit-content-auto-neighbor-wpt.log",
+      "bytes": 317,
+      "sha256": "d532a675dbcda046d1039544b479aa769c7fbba4b70d55ea3563312bad21abc5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "bytes": 2070,
+      "sha256": "0c154df1f652104c3504b9d1db288f077df47ce84caf6a59df6bc584d4c5831d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "bytes": 2070,
+      "sha256": "0c154df1f652104c3504b9d1db288f077df47ce84caf6a59df6bc584d4c5831d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "bytes": 2070,
+      "sha256": "0c154df1f652104c3504b9d1db288f077df47ce84caf6a59df6bc584d4c5831d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/simulator.json",
+      "bytes": 2070,
+      "sha256": "0c154df1f652104c3504b9d1db288f077df47ce84caf6a59df6bc584d4c5831d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "bytes": 12850,
+      "sha256": "a36af8787c6e09d7a0d68b753eb1c978908428bad297daecaaebcb9f92d4fb26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "bytes": 12850,
+      "sha256": "a36af8787c6e09d7a0d68b753eb1c978908428bad297daecaaebcb9f92d4fb26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "bytes": 12850,
+      "sha256": "a36af8787c6e09d7a0d68b753eb1c978908428bad297daecaaebcb9f92d4fb26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md",
+      "bytes": 12850,
+      "sha256": "a36af8787c6e09d7a0d68b753eb1c978908428bad297daecaaebcb9f92d4fb26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "bytes": 3240,
+      "sha256": "104ca788273f341fdac8f8a1d94d55d9d8e16fb1daa4dc7f56fe140ee21e0eb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "bytes": 3240,
+      "sha256": "104ca788273f341fdac8f8a1d94d55d9d8e16fb1daa4dc7f56fe140ee21e0eb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "bytes": 3240,
+      "sha256": "104ca788273f341fdac8f8a1d94d55d9d8e16fb1daa4dc7f56fe140ee21e0eb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/source-revision.json",
+      "bytes": 3240,
+      "sha256": "104ca788273f341fdac8f8a1d94d55d9d8e16fb1daa4dc7f56fe140ee21e0eb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "bytes": 6780,
+      "sha256": "1559631bc9c7db4ce6e23f917e4b09e607ce8b300ffef0864fa9b551c877dda1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "bytes": 6780,
+      "sha256": "1559631bc9c7db4ce6e23f917e4b09e607ce8b300ffef0864fa9b551c877dda1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "bytes": 6780,
+      "sha256": "1559631bc9c7db4ce6e23f917e4b09e607ce8b300ffef0864fa9b551c877dda1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/workspace-clippy.log",
+      "bytes": 6780,
+      "sha256": "1559631bc9c7db4ce6e23f917e4b09e607ce8b300ffef0864fa9b551c877dda1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "bytes": 3483,
+      "sha256": "d2786af78e55ebe894c77eb854c4a567d0481403b8021c3f530126527f051187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "bytes": 3483,
+      "sha256": "d2786af78e55ebe894c77eb854c4a567d0481403b8021c3f530126527f051187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "bytes": 3483,
+      "sha256": "d2786af78e55ebe894c77eb854c4a567d0481403b8021c3f530126527f051187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "bytes": 3483,
+      "sha256": "d2786af78e55ebe894c77eb854c4a567d0481403b8021c3f530126527f051187"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "bytes": 756,
+      "sha256": "2e0bdec5b1bd6cc7f77a0c27c7fcfd2b2a6857864cbe5482e15b42c9dbacb8ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "bytes": 756,
+      "sha256": "2e0bdec5b1bd6cc7f77a0c27c7fcfd2b2a6857864cbe5482e15b42c9dbacb8ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "bytes": 756,
+      "sha256": "2e0bdec5b1bd6cc7f77a0c27c7fcfd2b2a6857864cbe5482e15b42c9dbacb8ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "bytes": 756,
+      "sha256": "2e0bdec5b1bd6cc7f77a0c27c7fcfd2b2a6857864cbe5482e15b42c9dbacb8ea"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "bytes": 457,
+      "sha256": "64688c2a707da8d7b0af5a0dfe92f345928bf1d4e80eae93fd457aa12e4bd8f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "bytes": 457,
+      "sha256": "64688c2a707da8d7b0af5a0dfe92f345928bf1d4e80eae93fd457aa12e4bd8f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "bytes": 457,
+      "sha256": "64688c2a707da8d7b0af5a0dfe92f345928bf1d4e80eae93fd457aa12e4bd8f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/browser-cleanup.json",
+      "bytes": 457,
+      "sha256": "64688c2a707da8d7b0af5a0dfe92f345928bf1d4e80eae93fd457aa12e4bd8f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "bytes": 63043,
+      "sha256": "cad9624bc782cdd512ea3fe40378d4a5cd47ad369c9563641e9710a3062e4232"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "bytes": 63043,
+      "sha256": "cad9624bc782cdd512ea3fe40378d4a5cd47ad369c9563641e9710a3062e4232"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "bytes": 63043,
+      "sha256": "cad9624bc782cdd512ea3fe40378d4a5cd47ad369c9563641e9710a3062e4232"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor-target.png",
+      "bytes": 63043,
+      "sha256": "cad9624bc782cdd512ea3fe40378d4a5cd47ad369c9563641e9710a3062e4232"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-fit-content-auto-neighbor.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "bytes": 793,
+      "sha256": "aa7887048be00dd06f5ab058189a393acae9e115d24d692ffd0ed1bb6e10566b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "bytes": 793,
+      "sha256": "aa7887048be00dd06f5ab058189a393acae9e115d24d692ffd0ed1bb6e10566b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "bytes": 793,
+      "sha256": "aa7887048be00dd06f5ab058189a393acae9e115d24d692ffd0ed1bb6e10566b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/chrome-wpt-live-observation.raw.json",
+      "bytes": 793,
+      "sha256": "aa7887048be00dd06f5ab058189a393acae9e115d24d692ffd0ed1bb6e10566b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "bytes": 5264,
+      "sha256": "8782183764354cfd0b901924d3a4ef1322e8bc24a19b46d7fc7b5f130296ff20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "bytes": 5264,
+      "sha256": "8782183764354cfd0b901924d3a4ef1322e8bc24a19b46d7fc7b5f130296ff20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "bytes": 5264,
+      "sha256": "8782183764354cfd0b901924d3a4ef1322e8bc24a19b46d7fc7b5f130296ff20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/expected.json",
+      "bytes": 5264,
+      "sha256": "8782183764354cfd0b901924d3a4ef1322e8bc24a19b46d7fc7b5f130296ff20"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "bytes": 488,
+      "sha256": "f39549d02da85fde3d2d9e8cc3663948a000ae1589309194d623cba76f92da42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "bytes": 488,
+      "sha256": "f39549d02da85fde3d2d9e8cc3663948a000ae1589309194d623cba76f92da42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "bytes": 488,
+      "sha256": "f39549d02da85fde3d2d9e8cc3663948a000ae1589309194d623cba76f92da42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json",
+      "bytes": 488,
+      "sha256": "f39549d02da85fde3d2d9e8cc3663948a000ae1589309194d623cba76f92da42"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "bytes": 10036,
+      "sha256": "a9c0159196d1499a23977dfc3416e8c3263f6d1688a28d2f109be0d4077c80ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "bytes": 10036,
+      "sha256": "a9c0159196d1499a23977dfc3416e8c3263f6d1688a28d2f109be0d4077c80ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "bytes": 10036,
+      "sha256": "a9c0159196d1499a23977dfc3416e8c3263f6d1688a28d2f109be0d4077c80ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "bytes": 10036,
+      "sha256": "a9c0159196d1499a23977dfc3416e8c3263f6d1688a28d2f109be0d4077c80ac"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "bytes": 3436,
+      "sha256": "a1eb8dae41ffabe5ee5cad0b83bbe5b1df7f6a6745e8a04469fccbecc2f268e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "bytes": 3436,
+      "sha256": "a1eb8dae41ffabe5ee5cad0b83bbe5b1df7f6a6745e8a04469fccbecc2f268e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "bytes": 3436,
+      "sha256": "a1eb8dae41ffabe5ee5cad0b83bbe5b1df7f6a6745e8a04469fccbecc2f268e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+      "bytes": 3436,
+      "sha256": "a1eb8dae41ffabe5ee5cad0b83bbe5b1df7f6a6745e8a04469fccbecc2f268e7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/agent-browser-cli-version.txt",
+      "bytes": 21,
+      "sha256": "a9652358da443145b61b7c72250bbba17aa12189631d97f0bd8d935734423f8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "bytes": 62247,
+      "sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "bytes": 62247,
+      "sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "bytes": 62247,
+      "sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+      "bytes": 62247,
+      "sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "bytes": 1497,
+      "sha256": "94661cba796faf73990c9683739b61e1726bcdd7af2fb9569aebb136443e592a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "bytes": 1497,
+      "sha256": "94661cba796faf73990c9683739b61e1726bcdd7af2fb9569aebb136443e592a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "bytes": 1497,
+      "sha256": "94661cba796faf73990c9683739b61e1726bcdd7af2fb9569aebb136443e592a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-observation.raw.json",
+      "bytes": 1497,
+      "sha256": "94661cba796faf73990c9683739b61e1726bcdd7af2fb9569aebb136443e592a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "bytes": 3167,
+      "sha256": "7cc4cdc2b37916b21b0a5e747085553acfe2725345c75610f3dcd883d92495c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "bytes": 3167,
+      "sha256": "7cc4cdc2b37916b21b0a5e747085553acfe2725345c75610f3dcd883d92495c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "bytes": 3167,
+      "sha256": "7cc4cdc2b37916b21b0a5e747085553acfe2725345c75610f3dcd883d92495c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json",
+      "bytes": 3167,
+      "sha256": "7cc4cdc2b37916b21b0a5e747085553acfe2725345c75610f3dcd883d92495c3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "bytes": 2468,
+      "sha256": "d2e35be5f7049a988602eda4a5f8508b39433b20abb34f43ddd8e71d586cfdda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "bytes": 2468,
+      "sha256": "d2e35be5f7049a988602eda4a5f8508b39433b20abb34f43ddd8e71d586cfdda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "bytes": 2468,
+      "sha256": "d2e35be5f7049a988602eda4a5f8508b39433b20abb34f43ddd8e71d586cfdda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/expected.json",
+      "bytes": 2468,
+      "sha256": "d2e35be5f7049a988602eda4a5f8508b39433b20abb34f43ddd8e71d586cfdda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "bytes": 3669,
+      "sha256": "517d8eea375eeadfe458de66bb6a3cb6c6403afac22951f12ca373532eda6b89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "bytes": 3669,
+      "sha256": "517d8eea375eeadfe458de66bb6a3cb6c6403afac22951f12ca373532eda6b89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "bytes": 3669,
+      "sha256": "517d8eea375eeadfe458de66bb6a3cb6c6403afac22951f12ca373532eda6b89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md",
+      "bytes": 3669,
+      "sha256": "517d8eea375eeadfe458de66bb6a3cb6c6403afac22951f12ca373532eda6b89"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "bytes": 1015,
+      "sha256": "45858c8a0d2119c88ab8909f6bfcdc0c410ea77c9dc3ff9bbe8e427fe4dbb307"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "bytes": 1015,
+      "sha256": "45858c8a0d2119c88ab8909f6bfcdc0c410ea77c9dc3ff9bbe8e427fe4dbb307"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "bytes": 1015,
+      "sha256": "45858c8a0d2119c88ab8909f6bfcdc0c410ea77c9dc3ff9bbe8e427fe4dbb307"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-body-image-check.json",
+      "bytes": 1015,
+      "sha256": "45858c8a0d2119c88ab8909f6bfcdc0c410ea77c9dc3ff9bbe8e427fe4dbb307"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "bytes": 5857,
+      "sha256": "e5aa6594ba577a4f52f7c9ae8090c198cc2d1d8af76b388dc4354dd64a38731e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "bytes": 5857,
+      "sha256": "e5aa6594ba577a4f52f7c9ae8090c198cc2d1d8af76b388dc4354dd64a38731e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "bytes": 5857,
+      "sha256": "e5aa6594ba577a4f52f7c9ae8090c198cc2d1d8af76b388dc4354dd64a38731e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-pr-diff-review-30.md",
+      "bytes": 5857,
+      "sha256": "e5aa6594ba577a4f52f7c9ae8090c198cc2d1d8af76b388dc4354dd64a38731e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "bytes": 4750,
+      "sha256": "e43a59a10980cfa36d6f205926977c8458b087c1693dcbb372f48b786fa807e1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "bytes": 4750,
+      "sha256": "e43a59a10980cfa36d6f205926977c8458b087c1693dcbb372f48b786fa807e1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "bytes": 4750,
+      "sha256": "e43a59a10980cfa36d6f205926977c8458b087c1693dcbb372f48b786fa807e1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md",
+      "bytes": 4750,
+      "sha256": "e43a59a10980cfa36d6f205926977c8458b087c1693dcbb372f48b786fa807e1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "bytes": 1611,
+      "sha256": "ea78dd2d5323a6e549c79088fe418622d854f0eecf9bb64edd085af490a5708a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "bytes": 1611,
+      "sha256": "ea78dd2d5323a6e549c79088fe418622d854f0eecf9bb64edd085af490a5708a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "bytes": 1611,
+      "sha256": "ea78dd2d5323a6e549c79088fe418622d854f0eecf9bb64edd085af490a5708a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-source.json",
+      "bytes": 1611,
+      "sha256": "ea78dd2d5323a6e549c79088fe418622d854f0eecf9bb64edd085af490a5708a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "bytes": 394,
+      "sha256": "34a94aedd4e94a0c64d956e65cb6de48995942aa0937c27c96921d68f16da611"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "bytes": 394,
+      "sha256": "34a94aedd4e94a0c64d956e65cb6de48995942aa0937c27c96921d68f16da611"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "bytes": 394,
+      "sha256": "34a94aedd4e94a0c64d956e65cb6de48995942aa0937c27c96921d68f16da611"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+      "bytes": 394,
+      "sha256": "34a94aedd4e94a0c64d956e65cb6de48995942aa0937c27c96921d68f16da611"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "bytes": 2233,
+      "sha256": "26276e654654d3bbd34d0287cc272eb9fae8c74097e47e576f980d2947b9ab5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "bytes": 2233,
+      "sha256": "26276e654654d3bbd34d0287cc272eb9fae8c74097e47e576f980d2947b9ab5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "bytes": 2233,
+      "sha256": "26276e654654d3bbd34d0287cc272eb9fae8c74097e47e576f980d2947b9ab5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/link-hash-check-summary.json",
+      "bytes": 2233,
+      "sha256": "26276e654654d3bbd34d0287cc272eb9fae8c74097e47e576f980d2947b9ab5d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "bytes": 5639,
+      "sha256": "b0e7a5048d07392d34f46f0905f9e60f7488a0f7bcb65f398bb41cb1276632bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "bytes": 5639,
+      "sha256": "b0e7a5048d07392d34f46f0905f9e60f7488a0f7bcb65f398bb41cb1276632bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "bytes": 5639,
+      "sha256": "b0e7a5048d07392d34f46f0905f9e60f7488a0f7bcb65f398bb41cb1276632bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md",
+      "bytes": 5639,
+      "sha256": "b0e7a5048d07392d34f46f0905f9e60f7488a0f7bcb65f398bb41cb1276632bf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "bytes": 1902,
+      "sha256": "a2066c98a5d9a6dce75d84171e42903bc6a989d94304ac90dee18db61ca243b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "bytes": 1902,
+      "sha256": "a2066c98a5d9a6dce75d84171e42903bc6a989d94304ac90dee18db61ca243b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "bytes": 1902,
+      "sha256": "a2066c98a5d9a6dce75d84171e42903bc6a989d94304ac90dee18db61ca243b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-body-image-url-check.json",
+      "bytes": 1902,
+      "sha256": "a2066c98a5d9a6dce75d84171e42903bc6a989d94304ac90dee18db61ca243b2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "bytes": 10012,
+      "sha256": "166b077e87cacffa0079a76141bc4e2aef6600a5341b3e561673bdb309462f10"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "bytes": 10012,
+      "sha256": "166b077e87cacffa0079a76141bc4e2aef6600a5341b3e561673bdb309462f10"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "bytes": 10012,
+      "sha256": "166b077e87cacffa0079a76141bc4e2aef6600a5341b3e561673bdb309462f10"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md",
+      "bytes": 10012,
+      "sha256": "166b077e87cacffa0079a76141bc4e2aef6600a5341b3e561673bdb309462f10"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "bytes": 1927,
+      "sha256": "baf81270f0f8f918cb901975063d40058d35b599f195976c8f9684a158d5bbcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "bytes": 1927,
+      "sha256": "baf81270f0f8f918cb901975063d40058d35b599f195976c8f9684a158d5bbcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "bytes": 1927,
+      "sha256": "baf81270f0f8f918cb901975063d40058d35b599f195976c8f9684a158d5bbcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/precomparison.html",
+      "bytes": 1927,
+      "sha256": "baf81270f0f8f918cb901975063d40058d35b599f195976c8f9684a158d5bbcf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "bytes": 1380,
+      "sha256": "d9f115d3f5d9127175cd1f13842ad556771e849daf7424108dfb4184890ac117"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "bytes": 1380,
+      "sha256": "d9f115d3f5d9127175cd1f13842ad556771e849daf7424108dfb4184890ac117"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "bytes": 1380,
+      "sha256": "d9f115d3f5d9127175cd1f13842ad556771e849daf7424108dfb4184890ac117"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/source-pins.json",
+      "bytes": 1380,
+      "sha256": "d9f115d3f5d9127175cd1f13842ad556771e849daf7424108dfb4184890ac117"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "bytes": 804,
+      "sha256": "5bd21878db20e33d1691125fe03dcf6215d7d6c68207981b6d9b70e91141eb0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "bytes": 804,
+      "sha256": "5bd21878db20e33d1691125fe03dcf6215d7d6c68207981b6d9b70e91141eb0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "bytes": 804,
+      "sha256": "5bd21878db20e33d1691125fe03dcf6215d7d6c68207981b6d9b70e91141eb0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-chrome156-observation.raw.json",
+      "bytes": 804,
+      "sha256": "5bd21878db20e33d1691125fe03dcf6215d7d6c68207981b6d9b70e91141eb0b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "bytes": 237,
+      "sha256": "894173e17907bf276a363ed0097e3489574db9089115d43391f8697e7637fc41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "path": "internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "bytes": 237,
+      "sha256": "894173e17907bf276a363ed0097e3489574db9089115d43391f8697e7637fc41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "bytes": 237,
+      "sha256": "894173e17907bf276a363ed0097e3489574db9089115d43391f8697e7637fc41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/wpt-source-network-requests.raw.txt",
+      "bytes": 237,
+      "sha256": "894173e17907bf276a363ed0097e3489574db9089115d43391f8697e7637fc41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9021,
+      "sha256": "8b9601d59ccd405ada25919d636fa3fea41968a4e8b7aa9a3ba607a213121c07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9021,
+      "sha256": "8b9601d59ccd405ada25919d636fa3fea41968a4e8b7aa9a3ba607a213121c07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9021,
+      "sha256": "8b9601d59ccd405ada25919d636fa3fea41968a4e8b7aa9a3ba607a213121c07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-pr664-public-roadmap-update-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9021,
+      "sha256": "8b9601d59ccd405ada25919d636fa3fea41968a4e8b7aa9a3ba607a213121c07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9840,
+      "sha256": "fd8233956f44a1ff291c54e868d7d77d162b03286cbe3034ad9b440352db5f51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9840,
+      "sha256": "fd8233956f44a1ff291c54e868d7d77d162b03286cbe3034ad9b440352db5f51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9840,
+      "sha256": "fd8233956f44a1ff291c54e868d7d77d162b03286cbe3034ad9b440352db5f51"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-rspress-relative-image-path-fix-2026-10-27/pr-diff-review-30.md",
+      "bytes": 9840,
+      "sha256": "fd8233956f44a1ff291c54e868d7d77d162b03286cbe3034ad9b440352db5f51"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 328327,
+      "sha256": "0fe80b8a6fb00d4d0ab8c32efb936f3d9438eb26d6a07151fd51c3d5181fad78"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 328327,
+      "sha256": "0fe80b8a6fb00d4d0ab8c32efb936f3d9438eb26d6a07151fd51c3d5181fad78"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 328327,
+      "sha256": "0fe80b8a6fb00d4d0ab8c32efb936f3d9438eb26d6a07151fd51c3d5181fad78"
+    }
+  ]
+}

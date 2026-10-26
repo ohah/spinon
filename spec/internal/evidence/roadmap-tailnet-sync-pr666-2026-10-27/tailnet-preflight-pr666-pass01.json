@@ -1,0 +1,32 @@
+{
+  "sourceHead": "fb3f1e5a307c9678d6b70af017858fe7e03f435a",
+  "sourceTree": "3e7c6e643d501a70e53aae1780729c1c25c81898",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewServerPid": 28040,
+  "previewServerCommand": "28040     1 /Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "previewListenSocket": [
+    "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+  ],
+  "tailscaleBackendState": "Running",
+  "tailscaleSelfOnline": true,
+  "tailscaleSelfHostName": "윤형배의 Mac Studio",
+  "selectedRouteCount": 253,
+  "existingTargetCount": 51,
+  "missingTargetCount": 202,
+  "targetFilesWithOpenHandles": 3,
+  "existingRoadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "existingRoadmapHttpStatus": 200,
+  "existingRoadmapBytes": 326210,
+  "existingRoadmapSha256": "20007c2d0d8ec9fb7edae7485a77e06430cbc85295fd16b93e89e18dcfb6c674",
+  "backupRootPlanned": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr666-2026-10-27/pass01",
+  "noDeletesPlanned": true,
+  "openHandleCount": 3,
+  "openHandleTargetsByteExact": true,
+  "openHandleRoutes": [
+    "static/css/styles.8d918fd78e.css",
+    "static/js/lib-react.382571d6aa.js",
+    "static/js/styles.8438d8f3e2.js"
+  ],
+  "openHandleRoutesWillBeSkipped": true,
+  "noPreviewTargetWritesPerformed": true
+}

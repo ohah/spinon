@@ -1,0 +1,64 @@
+{
+  "capturedAt": "2026-10-26T20:07:30.160Z",
+  "browser": "Agent Browser",
+  "agentBrowserVersion": "0.31.1",
+  "usedTerminalBrowser": false,
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "status": "HTTP 200; C11.4 paragraph for PR #664 present; official count 72/213; C11.4 remains incomplete.",
+    "detailPlanUrl": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-fit-content-auto-neighbor-runtime.html",
+    "paragraphText": "2026-10-27 C11.4 fit-content(40px) 옆 auto implicit row · 구현 PR #664 Rebase and merge (2026-10-26T19:22:09Z, merge SHA bc681ad039081c6bce6dd59594a2e8353d1300eb): 고정 scene 하나를 opt-in app fixture에 연결했다. CSS Grid 2025 CRD와 Chrome 156 사전 oracle의 expected Rows [10,290]px을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 frame·track trace·draw/presentation까지 확인했고, PixelCopy와 제출 전 Metal drawable 표본은 각각 5/5 exact다. AVD는 software renderer이며 iOS 결과는 compositor 이전이다. mutation별 양 플랫폼 앱 negative matrix, 일반 CSS admission, Spinon WPT, 실기기/hardware GPU 및 iOS compositor 이후 pixels는 검증하지 않았다. 구현/runtime 검토는 19 PASS / 1 PARTIAL, PR diff 검토는 29 PASS / 1 PARTIAL이다. C11.4는 미완료이고 공식 완료 집계 72/213을 유지한다.",
+    "screenshot": {
+      "path": "tailnet-roadmap-agent-browser-pass02.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "62561ca111275c5e0f05681514888aaa11cc4155f8450e35eddbec139f1ecd0a"
+    }
+  },
+  "plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-fit-content-auto-neighbor-runtime.html",
+    "title": "C11.4 · fit-content 옆 auto implicit row 앱 런타임 계획 - 스피논 문서",
+    "expectedRowsPresent": true
+  },
+  "runtimeEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.html",
+    "title": "C11.4 fit-content() 옆 auto implicit row runtime slice - 스피논 문서",
+    "captureTimeManifestNotePresent": true,
+    "images": [
+      {
+        "alt": "Android API 37 ARM64 AVD의 C11.4 fit-content와 이웃 auto 행 실행 화면",
+        "complete": true,
+        "width": 1080,
+        "height": 2400,
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/fit-content-auto-neighbor-wpt.f1b96bb90d.png"
+      },
+      {
+        "alt": "iOS Simulator의 C11.4 fit-content와 이웃 auto 행 및 5/5 Metal 표본 결과",
+        "complete": true,
+        "width": 1206,
+        "height": 2622,
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/fit-content-auto-neighbor-wpt.ffa167036e.png"
+      }
+    ]
+  },
+  "precomparisonEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.html",
+    "images": [
+      {
+        "alt": "Chrome 156 upstream WPT의 전체 13개 assertion 결과",
+        "complete": true,
+        "width": 1280,
+        "height": 633,
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/chrome-wpt-live-fit-content-auto-neighbor.5b7c74b333.png"
+      },
+      {
+        "alt": "대상 fit-content/auto assertion과 computed row 결과",
+        "complete": true,
+        "width": 1280,
+        "height": 633,
+        "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/chrome-wpt-live-fit-content-auto-neighbor-target.c775b4b35d.png"
+      }
+    ]
+  }
+}
