@@ -34,6 +34,7 @@ Root independently passed the plan correction at SHA-1 `30922642f0bd8c6763742457
 - Both the `image-auto-max-mixed-tracks` control and `image-auto-max-mixed-tracks-border-overflow` scene passed. The latter returned root `12×40`, item `(1,1,24,16)`, columns `[24,17]`, row `[16]`, and `image_draw_count=0`.
 - Metal drawable samples matched 4/4 exactly: item marker `[229,72,77,255]`, outside-root surface clear `[0,0,0,255]`, and left/right borders `[34,197,94,255]`. This readback occurs before compositor submission.
 - The captured iPhone screenshot is [`image-auto-max-mixed-tracks-border-overflow.png`](./ios-simulator-c114-image-auto-max-border-overflow-ios-simulator-20261026T061945593Z-ec40c8ba/image-auto-max-mixed-tracks-border-overflow.png), SHA-256 `70c9cb5de7307db194a2e4938063e696c6e20c9f2cbb1e72dfda8ab0def63ada`.
+- 세 Xcode 텍스트 로그는 diff 검사를 통과하도록 줄 끝 공백과 EOF의 여분 빈 줄만 정리했다. 명령과 진단 출력은 유지했다.
 
 ## Android API 37 AVD rerun
 
@@ -47,3 +48,10 @@ Root independently passed the plan correction at SHA-1 `30922642f0bd8c6763742457
 - PR #652 embeds both platform screenshots using the pushed branch's raw image URLs. Agent Browser loaded them at their native dimensions and displayed them in the PR body; [render/close verification](./pr-652-agent-browser-verification.json) and [page screenshot](./pr-652-agent-browser.png) are preserved.
 
 The original iOS `3/4` mismatch remains preserved as the oracle correction history. Corrected runtime captures now pass on both iOS Simulator and Android API 37 AVD; these results do not establish physical-device behavior. The official C11.4 status and `72/213` count remain unchanged.
+
+## 좁은 Rust 검증
+
+- Runtime fixture module은 `mise exec -- cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test c11_4_image::tests`로 7/7 통과했다. 로그는 [`rust-runtime-focused-20261026.log`](./rust-runtime-focused-20261026.log)에 있다.
+- FFI scene source 검사는 `mise exec -- cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test exposes_only_bounded_intrinsic_track_sizing_scenes`로 1/1 통과했다. 로그는 [`ffi-source-focused-20261026.log`](./ffi-source-focused-20261026.log)에 있다.
+- `mise exec -- cargo fmt --all -- --check`가 통과했다. `c11-4-grid-track-sizing-fixture-test`를 켠 runtime Clippy와 `c04-runtime-gpu-fixture-test`를 켠 FFI Clippy도 `-D warnings`로 통과했다. 로그는 [`rust-runtime-clippy-20261026.log`](./rust-runtime-clippy-20261026.log), [`ffi-clippy-20261026.log`](./ffi-clippy-20261026.log)다.
+- 최초 구현 검토의 `9/9` 기록은 당시 focused set 결과로 보존했다. 아래 재실행은 더 좁은 7/7 모듈 filter라 별도 결과이며 서로 합산하지 않는다.
