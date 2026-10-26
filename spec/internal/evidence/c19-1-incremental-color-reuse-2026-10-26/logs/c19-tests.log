@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 4 tests
+test opaque_css_srgb::tests::c19_runtime_paint_preserves_partial_alpha_and_mapped_srgb ... ok
+test stylo_dom::cascade::runtime_layout_tests::c19_1_color::c19_runtime_mount_inherits_color_from_synthetic_body ... ok
+test stylo_dom::cascade::incremental_tests::c19_computed_color_incremental_reuse_matches_full_cascade ... ok
+test stylo_dom::cascade::runtime_layout_tests::c19_1_color::c19_computed_color_compares_pinned_chromium_srgb_output ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 240 filtered out; finished in 0.01s

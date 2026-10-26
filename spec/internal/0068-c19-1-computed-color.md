@@ -2,7 +2,7 @@
 
 **계약 버전:** `0.1.0` 고정
 
-**상태:** 내부 Rust cascade profile; GPU paint와 공개 CSS/DOM API에는 연결하지 않음
+**상태:** 내부 Rust cascade profile; `color`·`background-color` carrier 전용 직렬화, GPU paint와 공개 CSS/DOM API에는 연결하지 않음
 
 **상위 계획:** [C19 기본 페인트 속성](https://github.com/ohah/spinon/blob/main/plan/c19-basic-paint-attributes.md)
 
@@ -23,6 +23,8 @@
 - unit test는 missing component/alpha 보존, non-finite source 거부, mutation된 gamut-mapped 범위 거부, Display-P3 out-of-gamut 입력의 CSS Color 4 Local MINDE 결과, Chrome compatibility용 sRGB surface 변환을 분리해 확인한다. runtime mount의 body 상속 사전 실패는 `c19-runtime-body-inheritance-before-fix.log`에 보존했다. [Chrome precomparison](./evidence/c19-1-computed-color-precomparison-2026-10-16/README.md) · [호환성 차이 분류](./evidence/c19-1-computed-color-compatibility-triage-2026-10-16.md)
 - Agent Browser screenshot은 기준 Chrome fixture의 화면 증거다. 이 profile은 실제 Android/iOS surface, GPU compositing, alpha blend/group opacity, text glyph, hit-test, contrast, OS system-color parity를 증명하지 않는다.
 
-C19 incremental reuse API는 현재 이 profile을 지원하지 않아 `None`을 반환하고 호출자가 전체 cascade로 돌아가야 한다.
+profile은 computed `color`와 `background-color` 두 Longhand만 `properties`에 직렬화한다. typed `computed_color`·`computed_background_color` carrier가 색 출처와 변환 결과의 기준이며 legacy `background_color`·`background_paint`는 계속 `None`이다. author declaration 허용 목록과 CSS 계산은 이 출력 목록과 별개로 유지한다.
+
+C19 incremental reuse API는 같은 `C19ComputedColorV1` profile·viewport/media environment·document generation을 유지하고 이전 document snapshot보다 새 문서 revision을 계산할 때 이 profile을 지원한다. `dirty_root_ids`에 전달한 inline-style dirty subtree는 다시 cascade하고 필요한 상위 context를 계산한 뒤, 영향을 받지 않는 이전 직렬화 출력을 재사용한다. 이 API가 받는 author stylesheet는 비어 있어야 하며, 이전 profile/viewport/generation 불일치, 유효하지 않은 dirty root, `style_revision`이 같거나 바로 다음 값이 아닌 경우에는 `None`을 반환한다. 호출자는 해당 경우 전체 cascade로 fallback해야 한다. 이 reuse 경로도 GPU/paint를 구현하지 않는다.
 
 이 계약은 C19.1 carrier 경계에만 적용한다. C19 전체는 C15/C16 text painter, GPU paint, hit-test와 contrast 통합 전에는 완료되지 않는다.

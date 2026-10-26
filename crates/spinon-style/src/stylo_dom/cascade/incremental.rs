@@ -167,6 +167,9 @@ pub struct RuntimeCascadeReuseStats {
 fn runtime_properties_for_profile(
     profile: ComputedStyleProfile,
 ) -> Option<Vec<(&'static str, LonghandId)>> {
+    if profile == ComputedStyleProfile::C19ComputedColorV1 {
+        return Some(runtime_paint::c19_computed_color_properties());
+    }
     if profile == ComputedStyleProfile::RuntimeBlockPaintV1 {
         return Some(runtime_paint::runtime_block_paint_properties());
     }
