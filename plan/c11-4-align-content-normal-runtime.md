@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 사전 비교와 계획 검토를 마쳤고 계획 PR [#668](https://github.com/ohah/spinon/pull/668)은 `77531e7`로 병합했다. 제한 fixture 구현·runtime 20관점 검토·구현 PR diff 30관점 검토를 마쳤고, 최종 runner로 Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 한 장면씩 다시 통과했다. 증거는 [런타임 기록](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 있다. 구현 PR의 CI·병합은 남았다. 이는 새 CSS 지원 완료나 C11.4 승격을 뜻하지 않으며, 공식 C11.4 checkbox와 완료 집계 `72/213`은 유지한다.
+**상태:** 사전 비교와 계획 검토를 마쳤고 계획 PR [#668](https://github.com/ohah/spinon/pull/668)은 `77531e7`로 병합했다. 제한 fixture 구현·runtime 20관점 검토·구현 PR diff 30관점 검토를 마쳤으며 Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 한 장면을 통과했다. 구현 PR [#669](https://github.com/ohah/spinon/pull/669)은 2026-10-26T22:28:31Z Rebase and merge됐고 merge SHA는 `3e46d12c1b5df26a0c06507defe3826e2f8b4fdb`다. PR의 GitHub check rollup은 비었고 main에는 required status checks가 설정돼 있지 않아 CI 통과로 보지 않는다. 증거는 [런타임 기록](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 있다. 이는 새 CSS 지원 완료나 C11.4 승격을 뜻하지 않으며, 공식 C11.4 checkbox와 완료 집계 `72/213`은 유지한다.
 
 ## 목적
 
@@ -40,7 +40,7 @@
 3. 완료 — 고정 scene과 두 host matcher를 추가했다. fixture allowlist Rust test `1/1`, `cargo fmt --all -- --check`, workspace Clippy `--all-targets -- -D warnings`, runner `node --check`, `git diff --check`가 통과했다. 기본/fixture artifact negative·positive control과 설치본 identity는 [런타임 증거](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 기록했다.
 4. 완료 — Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 1개 scene을 통과했다. geometry·trace·draw/presentation과 다섯 surface 표본은 [런타임 증거](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 기록했다. Chrome 사전 비교는 Agent Browser로 확인하고 session을 종료했다.
 5. 완료 — 계획 검토와 별도인 구현/runtime 20관점 검토 20/20, 구현 PR diff 30관점 검토 30/30을 마쳤다. 복수 scene 선택 우회는 수정 후 음성 CLI와 두 플랫폼 재실행으로 영향 관점을 다시 확인했다. 결과는 [20관점 검토](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/implementation-review-20.md), [PR diff 검토](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/pr-diff-review-30.md)에 있다.
-6. 진행 — 검증·증거·리뷰 체크를 마쳤다. PR 본문에 full commit SHA 기반 raw simulator screenshot을 넣고 Agent Browser에서 표시를 확인한다. PR은 Rebase and merge하며, 빈 GitHub check rollup은 통과로 보고하지 않는다.
+6. 완료 — 구현 PR [#669](https://github.com/ohah/spinon/pull/669)을 Rebase and merge했다(2026-10-26T22:28:31Z, merge SHA `3e46d12c1b5df26a0c06507defe3826e2f8b4fdb`). PR 본문은 full commit SHA 기반 Android/iOS raw simulator screenshot 두 개를 연결했고 Agent Browser에서 실제 이미지 로드를 확인했다(Android `1080×2400`, iOS `1206×2622`). 확인 뒤 Agent Browser session과 daemon을 종료했다. GitHub check rollup은 비었고 main required status checks는 설정되지 않았으므로 CI 통과로 기록하지 않는다.
 
 ## 검증 경계
 
