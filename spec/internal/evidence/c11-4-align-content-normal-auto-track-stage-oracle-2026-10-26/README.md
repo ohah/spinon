@@ -16,12 +16,12 @@
 
 | 명령 | 결과 |
 | --- | --- |
-| `cargo test --locked -p spinon-layout css_grid_2025_align_content_normal_stretches_auto_tracks_equally` | PASS, 1 passed, 0 failed, 276 filtered out |
+| `cargo test --locked -p spinon-layout css_grid_2025_align_content_normal_stretches_auto_tracks_equally` | PASS, 1 passed, 0 failed, 276 filtered out; [원본 출력](./focused-test.log.raw.gz) |
 | `cargo test --locked -p spinon-layout grid_stretch_auto_tracks_oracle_tests` | PASS, 2 passed, 0 failed, 275 filtered out; 새 `normal` 테스트와 기존 `stretch`/`start` 대조군이 포함됐다. [원본 출력](./grid-stretch-auto-tracks-test.log.raw.gz) |
-| `cargo fmt --all -- --check` | PASS (formatter 적용 뒤 재검사) |
-| `cargo clippy --locked --workspace --all-targets -- -D warnings` | PASS |
+| `cargo fmt --all -- --check` | PASS (formatter 적용 뒤 재검사; [원본 출력](./fmt-check.log.raw.gz)) |
+| `cargo clippy --locked --workspace --all-targets -- -D warnings` | PASS; [원본 출력](./clippy.log.raw.gz) |
 | `git diff --check` | PASS |
 
-재현 환경의 Rust/Cargo 버전은 [`toolchain.txt`](./toolchain.txt)에 기록했다. 통합된 두 테스트의 원본 stdout은 [`grid-stretch-auto-tracks-test.log.raw.gz`](./grid-stretch-auto-tracks-test.log.raw.gz)에 보존했다.
+재현 환경의 Rust/Cargo 버전은 [`toolchain.txt`](./toolchain.txt)에 기록했다. 명령 exit code와 압축 로그 SHA-256은 [`validation-results.json`](./validation-results.json)에 기록했다.
 
 변경은 `#[cfg(test)]` Rust 단위 테스트뿐이므로 Android/iOS app build와 simulator capture는 이 slice의 검증 대상이 아니다. 이 근거는 일반 CSS parsing/cascade, 앱 렌더링, Chrome/WPT 또는 전체 C11.4를 입증하지 않는다. C11.4 공식 체크박스와 완료 집계 `72/213`은 미완료로 유지한다. 별도 구현 실패 관점 [20개 검토는 PASS](./implementation-review-20.md); 구현 PR diff 30관점 검토는 진행 예정이다.

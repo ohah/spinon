@@ -1,0 +1,40 @@
+{
+  "implementation_commit": "31c7874a4675bd9182c83aab2bc711a93ced9c34",
+  "toolchain": {
+    "rustc": "1.96.1 (31fca3adb 2026-06-26)",
+    "cargo": "1.96.1 (356927216 2026-06-26)",
+    "host": "aarch64-apple-darwin"
+  },
+  "commands": [
+    {
+      "command": "cargo test --locked -p spinon-layout css_grid_2025_align_content_normal_stretches_auto_tracks_equally",
+      "exit_code": 0,
+      "summary": "1 passed, 0 failed, 276 filtered out",
+      "stdout_gzip": "focused-test.log.raw.gz",
+      "stdout_gzip_sha256": "237a7b846071434269c24308322293b62dc8369bb93bfbc38ae9b07045185074"
+    },
+    {
+      "command": "cargo test --locked -p spinon-layout grid_stretch_auto_tracks_oracle_tests",
+      "exit_code": 0,
+      "summary": "2 passed, 0 failed, 275 filtered out",
+      "stdout_gzip": "grid-stretch-auto-tracks-test.log.raw.gz",
+      "stdout_gzip_sha256": "5660cea96db53f940ac90cdd4f67c30508f232a1f91aa6f91734b4c65ceb9a5b"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "exit_code": 0,
+      "stdout_gzip": "fmt-check.log.raw.gz",
+      "stdout_gzip_sha256": "f61f27bd17de546264aa58f40f3aafaac7021e0ef69c17f6b1b4cd7664a037ec"
+    },
+    {
+      "command": "cargo clippy --locked --workspace --all-targets -- -D warnings",
+      "exit_code": 0,
+      "stdout_gzip": "clippy.log.raw.gz",
+      "stdout_gzip_sha256": "c2b952101fba98e2f7a577a54b689c1fcf62fb76728cb7d0e9aea3d8c49b33cb"
+    },
+    {
+      "command": "git diff --check",
+      "exit_code": 0
+    }
+  ]
+}
