@@ -1,0 +1,9 @@
+   Compiling taffy v0.15.0 (/private/tmp/spinon-tailnet-c11-4-fit-content-sync-20261026/vendor/taffy)
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-tailnet-c11-4-fit-content-sync-20261026/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 7.41s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-466af74e1171adde)
+
+running 1 test
+test grid_fit_content_auto_neighbor_oracle_tests::css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 289 filtered out; finished in 0.00s

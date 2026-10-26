@@ -52,6 +52,11 @@ mod cyclic_percentage_minmax;
 mod cyclic_percentage_tracks;
 #[path = "c11_4/cyclic_percentage_two_axis_multitrack.rs"]
 mod cyclic_percentage_two_axis_multitrack;
+#[path = "c11_4/fit_content_auto_neighbor.rs"]
+mod fit_content_auto_neighbor;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/fit_content_auto_neighbor_report.rs"]
+mod fit_content_auto_neighbor_report;
 #[path = "c11_4/fixed_repeat_auto_repeat.rs"]
 mod fixed_repeat_auto_repeat;
 #[path = "c11_4/fixed_repeat_minmax_flex.rs"]
@@ -1135,6 +1140,9 @@ const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageScen
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = fit_content_auto_neighbor::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }

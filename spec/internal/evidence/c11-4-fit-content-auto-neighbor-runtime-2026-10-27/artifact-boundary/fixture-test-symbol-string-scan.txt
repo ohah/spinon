@@ -1,0 +1,10 @@
+artifact=/tmp/spinon-c114-fit-content-auto-neighbor-boundary-fixture/debug/deps/libspinon_ffi-00c27cb82a2080a4.rlib
+sha256=01b01b5af51331258d974753d411fed3110f7763f10781f26bb8730eda5fec3c
+fit-content-auto-neighbor-wpt: PRESENT
+c114-fit-content-auto-neighbor-grid: PRESENT
+spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture: PRESENT
+artifact=/tmp/spinon-c114-fit-content-auto-neighbor-boundary-fixture/debug/libspinon_ffi.a
+sha256=3d52dd4aa50fdbca06db35b2a2ae5e4d61cfba0985c44a13f2e0c687045d7829
+fit-content-auto-neighbor-wpt: PRESENT
+c114-fit-content-auto-neighbor-grid: PRESENT
+spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture: PRESENT

@@ -130,6 +130,12 @@ impl LayoutInput {
         &self.nodes
     }
 
+    /// C11.4 fixture에서 Taffy 직전의 typed Grid container 입력을 관찰합니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fn grid_containers(&self) -> &BTreeMap<NodeId, GridContainerInput> {
+        &self.grid_containers
+    }
+
     /// Stylo에서 보존한 계산식을 노드·속성 식별자와 함께 이 레이아웃 입력에 연결합니다.
     pub fn with_css_math(mut self, values: Vec<LayoutCssMathValue>) -> Self {
         self.css_math = values;

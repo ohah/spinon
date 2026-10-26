@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972",
+  "sceneCount": 1,
+  "observations": [
+    {
+      "sceneId": "fit-content-auto-neighbor-wpt",
+      "summary": "10-27 04:05:41.998 13893 13912 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261026T190540661Z-27b72972-0 scene_id=fit-content-auto-neighbor-wpt expected_root_frame=width=60,height=300 expected_item_frame=width=60,height=10 status=0 layout=ready boxes=5 generation=1 document_revision=25 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;1:node=2,x=0,y=0,width=60,height=10;2:node=3,x=0,y=0,width=60,height=10;3:node=4,x=0,y=10,width=60,height=290;4:node=5,x=0,y=10,width=60,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 300
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 10
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 0,
+          "y": 10,
+          "width": 60,
+          "height": 290
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 0,
+          "y": 10,
+          "width": 60,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 10,
+          "collapsed": false
+        },
+        {
+          "baseSize": 290,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
