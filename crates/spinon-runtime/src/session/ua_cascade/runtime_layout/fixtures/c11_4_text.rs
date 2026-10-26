@@ -33,6 +33,8 @@ mod cyclic_minmax_two_axis_span_text;
 mod cyclic_two_axis_multitrack;
 #[path = "c11_4_text/flex_span.rs"]
 mod flex_span;
+#[path = "c11_4_text/generic_direct_text.rs"]
+mod generic_direct_text;
 #[path = "c11_4_text/overlapping_spans.rs"]
 mod overlapping_spans;
 use cases::{TEXT_CASES, TextCase, TextDimension, TextTrack};
@@ -121,6 +123,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_calc::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = generic_direct_text::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
 
@@ -1088,3 +1093,7 @@ mod tests {
         assert!(TEXT_CASES.iter().any(|case| case.max_width == Some(40.0)));
     }
 }
+
+#[cfg(test)]
+#[path = "c11_4_text/generic_direct_text_tests.rs"]
+mod generic_direct_text_tests;

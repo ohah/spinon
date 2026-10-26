@@ -1,0 +1,3 @@
+# Android early runtime check after trace-aligned matcher correction
+
+This targeted Android run passed after correcting the CSS input and matcher against the observed runtime trace. The app emitted the expected generic scene summary, root/item frames, intrinsic text inputs, Columns/Rows contribution trace and final track states; `SPINON_C0410_DRAW` reported `status=0 presented boxes=3` on the API 37 ARM64 emulator. Screenshot size is 1080×2400. `runtime_text_count=0` and `glyph_batch_draw_count=0`, so this proves layout and surface presentation, not glyph painting. The final two-platform evidence is recorded separately under `android-avd/` and `ios-simulator/`.

@@ -1,5 +1,6 @@
 import CoreFoundation
 import CryptoKit
+import CoreFoundation
 import MetalKit
 import UIKit
 
@@ -80,6 +81,11 @@ private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
     "definite-44px-auto-fill-prefix-suffix-control",
     "definite-44px-auto-fit-prefix-suffix-control",
 ]
+#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+private let c114GenericDirectTextSceneIDs: Set<String> = ["generic-root-normal"]
+#else
+private let c114GenericDirectTextSceneIDs: Set<String> = []
+#endif
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -395,6 +401,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-both-negative-final",
 ]
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
     if sceneID.hasPrefix("template-area-repeat-cross-axis-") {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
     }
@@ -1101,6 +1108,7 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
+    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=100,height=20" }
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
     if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
@@ -1393,6 +1401,7 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "image-auto-max-mixed-tracks" { return "width=24,height=16" }
+    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=20,height=20" }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
         return "width=24,height=24"
     }
@@ -1790,6 +1799,9 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114GenericDirectTextSceneIDs.contains(sceneID) {
+        return c114GenericDirectTextIntrinsicInputsMatch(report: report)
+    }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
         return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
     }
@@ -3047,6 +3059,212 @@ private func c114ImageMultiSpanTracksMatch(
         && zip(sizes, expected).allSatisfy { abs($0.0 - $0.1) <= 0.0001 }
 }
 
+private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let revisionSource = c114GenericJSONString(revision["source"]),
+          revisionSource.hasPrefix("HostDocument"),
+          let styleRevision = c114GenericJSONInteger(revision["style"]),
+          styleRevision >= 0,
+          let environmentRevision = c114GenericJSONInteger(revision["environment"]),
+          environmentRevision >= 0,
+          let intrinsicSizeRevision = c114GenericJSONInteger(revision["intrinsicSize"]),
+          intrinsicSizeRevision >= 0,
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 2 else { return false }
+    let expectedNodes = [2, 4]
+    for (index, input) in inputs.enumerated() {
+        guard c114GenericJSONInteger(input["grid"]) == 1,
+              c114GenericJSONInteger(input["node"]) == expectedNodes[index],
+              c114GenericJSONInteger(input["sourceOrder"]) == index,
+              let textSources = input["textSources"] as? [[String: Any]],
+              textSources.isEmpty,
+              let source = input["source"] as? [String: Any],
+              c114GenericJSONString(source["kind"]) == "text",
+              c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+              c114GenericJSONNear(source["minContent"], expected: 20, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(
+                source["minContentHeight"], expected: 20, tolerance: 1.0 / 64.0
+              ),
+              c114GenericJSONNear(source["maxContent"], expected: 40, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(
+                source["maxContentHeight"], expected: 10, tolerance: 1.0 / 64.0
+              ) else {
+            return false
+        }
+    }
+    guard let measurements = diagnostics["intrinsicMeasurements"] as? [[String: Any]],
+          !measurements.isEmpty else { return false }
+    var minContentWidthNodes = Set<Int>()
+    var maxContentWidthNodes = Set<Int>()
+    var minContentHeightNodes = Set<Int>()
+    var maxContentHeightNodes = Set<Int>()
+    for measurement in measurements {
+        guard let node = c114GenericJSONInteger(measurement["node"]),
+              expectedNodes.contains(node),
+              let source = measurement["source"] as? [String: Any],
+              c114GenericJSONString(source["kind"]) == "text",
+              c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+              let availableSpace = c114GenericJSONString(measurement["availableSpace"]),
+              let contentSize = measurement["contentSize"] as? [String: Any],
+              let measuredWidth = c114GenericJSONFiniteNumber(contentSize["width"]),
+              measuredWidth >= 0,
+              let measuredHeight = c114GenericJSONFiniteNumber(contentSize["height"]),
+              measuredHeight >= 0 else { return false }
+        if availableSpace.contains("width: MinContent") {
+            minContentWidthNodes.insert(node)
+        }
+        if availableSpace.contains("width: MaxContent") {
+            maxContentWidthNodes.insert(node)
+        }
+        if availableSpace.contains("height: MinContent") {
+            minContentHeightNodes.insert(node)
+        }
+        if availableSpace.contains("height: MaxContent") {
+            maxContentHeightNodes.insert(node)
+        }
+    }
+    guard minContentWidthNodes == Set(expectedNodes),
+          maxContentWidthNodes == Set([4]),
+          minContentHeightNodes == Set(expectedNodes),
+          maxContentHeightNodes == Set(expectedNodes) else { return false }
+    return c114GenericDirectTextTraceMatches(diagnostics: diagnostics)
+}
+
+private func c114GenericJSONInteger(_ value: Any?) -> Int? {
+    guard let number = value as? NSNumber,
+          CFGetTypeID(number) != CFBooleanGetTypeID() else { return nil }
+    let numeric = number.doubleValue
+    guard numeric.isFinite, let integer = Int(exactly: numeric) else { return nil }
+    return integer
+}
+
+private func c114GenericJSONFiniteNumber(_ value: Any?) -> Double? {
+    guard let number = value as? NSNumber,
+          CFGetTypeID(number) != CFBooleanGetTypeID() else { return nil }
+    let numeric = number.doubleValue
+    return numeric.isFinite ? numeric : nil
+}
+
+private func c114GenericJSONString(_ value: Any?) -> String? {
+    value as? String
+}
+
+private func c114GenericJSONBoolean(_ value: Any?) -> Bool? {
+    guard let number = value as? NSNumber,
+          CFGetTypeID(number) == CFBooleanGetTypeID() else { return nil }
+    return number.boolValue
+}
+
+private func c114GenericJSONNear(
+    _ value: Any?, expected: Double, tolerance: Double
+) -> Bool {
+    guard let observed = c114GenericJSONFiniteNumber(value) else { return false }
+    return abs(observed - expected) <= tolerance
+}
+
+private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bool {
+    guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          c114GenericJSONInteger(traces[0]["grid"]) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          passes.enumerated().allSatisfy({ index, pass in
+              c114GenericJSONInteger(pass["sequence"]) == index
+                  && pass["phase"] is NSNull
+                  && pass["autoRepeatCount"] is NSNull
+                  && pass["percentageBasis"] is NSNull
+          }),
+          c114GenericJSONString(passes[0]["axis"]) == "Columns",
+          c114GenericJSONString(passes[1]["axis"]) == "Rows",
+          c114GenericTrackSizesMatch(passes[0], expected: [20, 40], gap: 10),
+          c114GenericTrackSizesMatch(passes[1], expected: [20], gap: 0) else { return false }
+    let expectedColumns: [(item: Int, kind: String, value: Double)] = [
+        (2, "MinContent", 20), (4, "MinContent", 20), (4, "MaxContent", 40),
+    ]
+    let expectedRows: [(item: Int, kind: String, value: Double)] = [
+        (2, "Minimum", 20), (2, "MinContent", 20), (2, "MaxContent", 20),
+        (4, "Minimum", 10), (4, "MinContent", 10), (4, "MaxContent", 10),
+    ]
+    return c114GenericDirectTextContributionsMatch(
+        passes[0], expected: expectedColumns, allowIdenticalDuplicates: true
+    ) && c114GenericDirectTextContributionsMatch(
+        passes[1], expected: expectedRows, allowIdenticalDuplicates: true
+    )
+}
+
+private func c114GenericTrackSizesMatch(
+    _ pass: [String: Any], expected: [Double], gap: Double
+) -> Bool {
+    guard let stages = pass["stages"] as? [[String: Any]], !stages.isEmpty else { return false }
+    let stageNames = stages.map({ c114GenericJSONString($0["stage"]) })
+    guard stageNames.allSatisfy({ $0 != nil }) else { return false }
+    let names = stageNames.compactMap { $0 }
+    let nonBatchStages = names.filter { !$0.hasPrefix("IntrinsicItemBatch") }
+    guard nonBatchStages.count == 5,
+          nonBatchStages[0] == "Initialize",
+          nonBatchStages[1] == "IntrinsicSizingComplete",
+          nonBatchStages[2] == "MaximizeTracks",
+          nonBatchStages[3] == "ExpandFlexibleTracks",
+          nonBatchStages[4].hasPrefix("StretchAutoTracks"),
+          stages[0]["stage"] as? String == "Initialize",
+          names.contains(where: { $0.hasPrefix("IntrinsicItemBatch") }),
+          names.last?.hasPrefix("StretchAutoTracks") == true else { return false }
+
+    let expectedTrackCount = expected.count * 2 + 1
+    for (stageIndex, stage) in stages.enumerated() {
+        guard let tracks = stage["tracks"] as? [[String: Any]],
+              tracks.count == expectedTrackCount else { return false }
+        var contentTrackIndex = 0
+        for (index, track) in tracks.enumerated() {
+            let isExpectedGutter = index % 2 == 0
+            let isOuterGutter = index == 0 || index == tracks.count - 1
+            let isExpectedCollapsed = isExpectedGutter && (gap == 0 || isOuterGutter)
+            guard c114GenericJSONInteger(track["internalIndex"]) == index,
+                  c114GenericJSONBoolean(track["gutter"]) == isExpectedGutter,
+                  c114GenericJSONBoolean(track["collapsed"]) == isExpectedCollapsed,
+                  c114GenericJSONBoolean(track["infinitelyGrowable"]) != nil,
+                  let size = c114GenericJSONFiniteNumber(track["baseSize"]) else { return false }
+            if isExpectedGutter {
+                let expectedGutterSize = isExpectedCollapsed ? 0 : gap
+                guard abs(size - expectedGutterSize) <= 0.0001 else { return false }
+            } else {
+                guard contentTrackIndex < expected.count else { return false }
+                if stageIndex == stages.count - 1 {
+                    guard abs(size - expected[contentTrackIndex]) <= 0.0001 else { return false }
+                }
+                contentTrackIndex += 1
+            }
+        }
+        guard contentTrackIndex == expected.count else { return false }
+    }
+    return true
+}
+
+private func c114GenericDirectTextContributionsMatch(
+    _ pass: [String: Any], expected: [(item: Int, kind: String, value: Double)],
+    allowIdenticalDuplicates: Bool
+) -> Bool {
+    guard let contributions = pass["contributions"] as? [[String: Any]],
+          contributions.count >= expected.count,
+          allowIdenticalDuplicates || contributions.count == expected.count else { return false }
+    var observed = Array(repeating: false, count: expected.count)
+    for contribution in contributions {
+        guard let item = c114GenericJSONInteger(contribution["item"]),
+              c114GenericJSONInteger(contribution["span"]) == 1,
+              let kind = c114GenericJSONString(contribution["kind"]),
+              c114GenericJSONBoolean(contribution["crossesFlexibleTrack"]) == false,
+              let value = c114GenericJSONFiniteNumber(contribution["value"]) else { return false }
+        guard let match = expected.indices.first(where: { index in
+            expected[index].item == item
+                && expected[index].kind == kind
+                && abs(value - expected[index].value) <= 1.0 / 64.0
+        }), allowIdenticalDuplicates || !observed[match] else { return false }
+        observed[match] = true
+    }
+    return observed.allSatisfy { $0 }
+}
+
 private func c114CyclicMinmaxMixedTextImageSpanTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
@@ -3896,6 +4114,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if sceneID == "image-auto-max-mixed-tracks" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
+    }
+    if c114GenericDirectTextSceneIDs.contains(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
+            + "1:node=2,x=0,y=0,width=20,height=20;"
+            + "2:node=4,x=30,y=0,width=40,height=10]"
     }
     if let orthogonalFrames = c114OrthogonalRowNodeFrames(sceneID) {
         return orthogonalFrames
@@ -5462,6 +5685,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
         || sceneID == "definite-40px-auto-fill-control"
