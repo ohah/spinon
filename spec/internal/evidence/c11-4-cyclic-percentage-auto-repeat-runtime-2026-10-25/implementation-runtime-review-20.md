@@ -3,11 +3,11 @@
 - 검토 대상 source revision: `c5b8ef75804e39d36a37aa61b82b1f028115fefd`
 - 방식: 별도 reviewer의 read-only source 및 evidence 검토
 - 초기 결과: 19 PASS / 1 PARTIAL / 0 FAIL.
-- Follow-up 이후 최종 결과: **20 PASS / 0 PARTIAL / 0 FAIL**.
+- Evidence provenance follow-up 이후 최종 결과: **20 PASS / 0 PARTIAL / 0 FAIL**.
 - 검토 중 빌드, 테스트, simulator, browser 실행: 없음
-- PARTIAL은 동작 문제가 아닌 evidence provenance/persistence 문제 (#20)다. Review response와 후속 증거 고정 내용은 아래 follow-up에 연결한다.
+- 초기 PARTIAL은 동작 문제가 아닌 evidence provenance/persistence 문제 (#20)였으며, 아래 follow-up에서 해소 근거를 기록한다.
 
-| # | 독립 실패 관점 | 초기 판정 | 관찰 근거 |
+| # | 독립 실패 관점 | 최종 판정 | 관찰 근거 |
 |---:|---|---|---|
 | 1 | Default product admission이 바뀌지 않는가 | PASS | Fixture exception 및 Taffy provenance fields는 `c11-4-grid-track-sizing-fixture-test` cfg로 보호 (`crates/spinon-layout/Cargo.toml:7-8`, `grid.rs:826-838`, `vendor/taffy/src/compute/grid/mod.rs:255-260`). Default archive에는 marker가 없음. |
 | 2 | Root cyclic exception이 전체 style equality로 제한되는가 | PASS | root `LayoutStyle` 전체 equality 검사 (`crates/spinon-layout/src/grid.rs:871-896`); height/aspect/direction 변형 거부. |
@@ -28,11 +28,14 @@
 | 17 | Focused validations가 있는가 | PASS | runtime grid 25/25, feature-off 1/1, FFI C11.4 72/72, runtime/FFI clippy 통과 로그. |
 | 18 | Android adapter가 phase/count/basis/tracks와 frame을 fail-closed 검증하는가 | PASS | adapter matcher/acceptance assertions 및 target/control frame/trace log 확인 (`C0410RuntimeGpuDemo.java:815-899`, Android logs). |
 | 19 | iOS adapter가 동일 acceptance를 적용하는가 | PASS | Swift matcher/assertion 및 target/control frame/trace log 확인 (`C0410RuntimeGpuDemo.swift:2505-2568`, iOS logs). |
-| 20 | Simulator pixel 증거와 source SHA가 durable하게 연결되는가 | PARTIAL | 네 target/control run의 Android PixelCopy/iOS Metal 각각 3/3 match 및 screenshot은 확인. 당시 evidence 폴더가 untracked이고 README가 없어 캡처/build hash와 full source SHA의 durable link가 없었음. |
+| 20 | Simulator pixel 증거와 source SHA가 durable하게 연결되는가 | PASS | Evidence commit `ea06d8ff86729d582b4821554cf87d22170aefc0`의 parent는 target source SHA `c5b8ef75804e39d36a37aa61b82b1f028115fefd`다. README는 full SHA, 네 run ID, APK/iOS executable SHA와 archive SHA·크기·marker 결과를 함께 기록한다 (`README.md:3-10,41-59,70-106`). 후속 독립 reviewer는 당시 보유한 Android APK와 iOS executable에서 SHA를 재계산해 README 값과 일치함을 확인했다. 두 앱 바이너리 자체는 evidence commit tree에 없으므로, 현재 commit만으로 이 두 앱 SHA를 다시 계산할 수 있다고 주장하지 않는다. README, build/runtime logs, sample JSON/base64, PixelCopy·Simulator 캡처, archive logs, review files 31개는 evidence commit tree에 포함되고 worktree도 clean이었다. |
 
 ## Follow-up: #20 evidence provenance
 
-초기 review에서 #20은 README/캡처/log/build hash를 고정된 source revision에 영구적으로 연결하는 근거가 미흡하다고 판정했다. Evidence commit `ea06d8ff86729d582b4821554cf87d22170aefc0`에 README, 4장 simulator screenshot, 원본 log/sample 자료와 APK/iOS executable/static archive SHA를 추가했다. 독립 reviewer가 해당 commit을 재검토해 #20을 PASS로 변경했다.
+초기 review에서 #20은 README/캡처/log/build hash를 고정된 source revision에 영구적으로 연결하는 근거가 미흡하다고 판정했다. Evidence commit `ea06d8ff86729d582b4821554cf87d22170aefc0`에 README, 4장 simulator screenshot, 원본 log/sample 자료와 APK/iOS executable/static archive SHA를 추가했다. 별도 reviewer는 해당 commit parent와 source SHA의 일치, 당시 보유했던 앱 산출물의 재계산 SHA, 저장된 simulator·archive 자료를 read-only로 확인해 #20을 PASS로 변경했다.
 
 - 후속 판정: **PASS — #20 해소**.
-- reviewer는 evidence commit의 parent가 정확한 source commit `c5b8ef75804e39d36a37aa61b82b1f028115fefd`임을 확인했고, README의 full SHA 및 Android/iOS executable SHA-256이 빌드 출력 재계산값과 일치함을 확인했다. 31개 evidence 파일이 commit tree에 포함되고 worktree clean이었으며, four run IDs, logs, pixel samples, archive markers/hash/size도 README와 맞았다. Reviewer는 read-only로 확인했으며 추가 테스트·빌드·시뮬레이터 실행은 하지 않았다.
+- 검증한 네 run ID는 `cyclic-android-c5b8ef75`, `definite-android-c5b8ef75`, `cyclic-ios-c5b8ef75`, `definite-ios-c5b8ef75`이며, 각각 README의 full source SHA prefix와 일치하고 원본 로그에서 trace/frame/pixel acceptance를 확인할 수 있다. Android PixelCopy 및 iOS Metal target/control samples는 각 3/3 matched다.
+- Android debug APK와 iOS Simulator executable의 바이트는 evidence commit에 저장되지 않았다. Commit에서 재확인할 수 있는 것은 README에 고정한 digest와 연결된 run/log/sample/screenshot이며, 앱 digest 재계산은 후속 reviewer가 당시 보유한 빌드 산출물로 수행한 역사적 확인이다. 이 기록은 바이너리 자체의 보존·재생성을 주장하지 않는다.
+- Default static archive는 SHA `2369089af5a46cc7ead1009ec807bda36e9359550d6f0babccf7b4a1d4f3f30a`, 60,233,880 bytes, `fixture_markers=absent`; positive fixture archive는 SHA `479209a7250109b7bad8bb85984069981a94fb30ac6d9c44e5bf06d0d06722a2`, 78,356,464 bytes이며 cyclic target/control symbol과 payload marker가 존재한다. 둘 다 README와 committed logs로 대조했다. Static archive 결과를 release APK/IPA 제외 증거로 확대하지 않는 README 한계도 유지되어 있다.
+- Review는 read-only였으며 추가 테스트·빌드·시뮬레이터·브라우저 실행은 하지 않았다.
