@@ -1,0 +1,17 @@
+{
+  "syncToolHead": "280812cc999b87238a5f7d1d99a512a17dd571aa",
+  "tailscaleBackendState": "Running",
+  "selfHostName": "윤형배의 Mac Studio",
+  "selfTailscaleIPs": [
+    "100.64.53.81",
+    "fd7a:115c:a1e0::312d:3552"
+  ],
+  "previewPid": 28040,
+  "previewListen": "127.0.0.1:8768",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "localRoadmapUrl": "http://127.0.0.1:8768/spinon/roadmap.html",
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 330595,
+  "localRoadmapSha256": "9bcd739242e70bcdee76d550d42c1d13b5b188b8c55c679d4e12cc09ef94d7b8",
+  "serverRestarted": false
+}
