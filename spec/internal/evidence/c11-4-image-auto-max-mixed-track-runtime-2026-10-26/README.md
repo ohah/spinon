@@ -1,62 +1,60 @@
-# C11.4 mixed image intrinsic track runtime evidence
+# C11.4 이미지 혼합 intrinsic track 실행 근거
 
-이 evidence는 `image-auto-max-mixed-tracks` direct-PNG fixture의 runtime/build/시뮬레이터 기록이다. CSS 기대값은 [독립 규범 기대 JSON](../c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/spec-derived-expectations.json)과 [child plan](../../../../plan/c11-4-image-auto-max-mixed-track.md)에 정의한다. Simulator 결과로 규범 기대값을 역산하지 않는다.
+이 기록은 `image-auto-max-mixed-tracks` opt-in fixture의 단계별 trace와 앱 경로를 다룬다. 규범 기대값은 [CSS Grid 2025 CRD 기반 사전 비교](../c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/README.md), 구현 범위는 [child plan](../../../../plan/c11-4-image-auto-max-mixed-track.md)에 고정했다. Simulator 출력에서 기대값을 역산하지 않는다.
 
-## Stage contract
+## 최신 strict-matcher 재검증 · source `cac4e339`
 
-CSS Grid §11.4의 `Initialize`에서 intrinsic max track growth limit은 규범상 `+∞`로 초기화된다. Trace serializer는 모든 non-finite 값을 `None`/JSON `null`로 projection하므로 그 `null`은 non-finite projection만 확인하며 내부 값이 `+∞`라는 증거가 아니다. 이 case의 span-1 max-content maximum은 §11.5에서 image contribution으로 resolve된다. Taffy는 growth-limit batch update 뒤에 `IntrinsicItemBatch` stage를 기록하므로 여기부터 expected growth limit은 column `Some(24px)`, row `Some(16px)`이다.
+PR #643의 strict JSON trace 및 intrinsic-input matcher를 포함한 최신 Android/iOS 앱을 다시 빌드하고, 같은 run ID `c114-image-auto-max-20261026T020007Z-cac4e339-final05`로 Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 실행했다. 두 플랫폼의 frame·intrinsic-input·trace·draw/present matcher가 각각 통과했다.
 
-Taffy `GridTrackVec` raw vector는 CSS track과 grid line slot을 교차 보관해 `N` CSS track에 `2N+1` entries가 있다. Expected raw values는 다음과 같다. 각 pair는 `baseSize/growthLimit`; 모든 slot의 `infinitelyGrowable=false`다.
-
-| Axis/stage | Raw slot mapping | Expected `baseSize/growthLimit` |
+| Gate | 최신 결과 | 근거 |
 | --- | --- | --- |
-| Columns / Initialize | `[leading sentinel, col0, gutter, col1, trailing sentinel]` | `[0/0, 0/null, 5/5, 17/17, 0/0]` |
-| Columns / IntrinsicItemBatch and later stages | same 5 slots | `[0/0, 24/24, 5/5, 17/17, 0/0]` |
-| Rows / Initialize | `[leading sentinel, row0, trailing sentinel]` | `[0/0, 0/null, 0/0]` |
-| Rows / IntrinsicItemBatch and later stages | same 3 slots | `[0/0, 16/16, 0/0]` |
+| Android V8 archive | 10 jobs, `1,743/1,743` 완료; SHA-256 `e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813` | [build log](./runs/c114-image-auto-max-20261026T011348Z-7a7aa224-final02/android-avd/v8-build-final-j10.log) |
+| Android 앱 빌드 | `BUILD SUCCESSFUL`, `c04-runtime-gpu-fixture-test=1`; APK SHA-256 `8ce94e5ea7f2671b1adc4dd8f48c8dcc7ca1a78268040b8f5bd3bd4daed1d8fe` | [Gradle build log](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/android-avd/build.log) |
+| Android API 37 AVD | `status=0`, `layout=ready`, `boxes=2`; root `100×40`, item `24×16`; intrinsic input·trace·draw/present 통과 | [runtime log](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/android-avd/runtime.log) |
+| Android 화면 | 1080×2400 PNG, SHA-256 `75f9a8a3ee0de33ef55b0923486db60c9e08749f814820b68433bc0124c09302` | [최신 source 캡처](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/android-avd/screenshot.png) · [대표 화면](./c11-4-image-auto-max-mixed-track-android-api37-arm64.png) |
+| iOS Simulator 앱 빌드 | `BUILD SUCCEEDED`, `c04-runtime-gpu-fixture-test=1`; 실행 파일 SHA-256 `32439c776aaabb5a3e8caa87c87c4e6bb321f1a4c6a775295293789dc19bd04f` | [Xcode build log](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/ios-simulator/build.log) |
+| iPhone 17 Pro / iOS 26.2 Simulator | `status=0`, `layout=ready`, `boxes=2`; root `100×40`, item `24×16`; intrinsic input·trace·draw/present 통과 | [runtime log](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/ios-simulator/runtime.log) |
+| iOS 화면 | 1206×2622 PNG, SHA-256 `a907274e7f99bd79031e674d1b46c4fd64fcd2c9c3617b47e078c2b287f93bbb` | [최신 source 캡처](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/ios-simulator/screenshot.png) · [대표 화면](./c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png) |
+| iOS용 V8 archive | 완료; SHA-256 `7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815` | [build log](./runs/c114-image-auto-max-20261026T011348Z-7a7aa224-final02/ios-simulator/v8-build.log) |
 
-Leading/trailing sentinels are `gutter=true, collapsed=true`, with zero base and growth. The actual inter-column gutter is internal index 2, `gutter=true, collapsed=false`, with `5/5`. CSS track slots are not collapsed. All finite matcher comparisons use `0.0001px` tolerance. This slice does not assert overflow behavior, image paint/readback, or public CSS admission.
+첫 build 시도는 isolated worktree 안에서 `depot_tools/gn`과 플랫폼 archive를 찾지 못해 실패했다. 고정 V8 revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`의 checkout은 사용자 main worktree에 있었고 변경 없이 유지됐다. iOS와 Android archive는 공유 checkout의 각 platform output에서 만들었다. Android 6-job 시도는 1,232/2,975 작업 뒤 10-job 재개를 위해 중단했으며, 완료 object를 재사용해 1,743개 작업으로 마쳤다. Android archive는 179M이고 SHA-256은 `e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813`이다. 최초 실패와 중단 log는 별도로 보존했다.
 
-## Preserved pre-correction candidate run (failed)
+Android와 iOS의 draw log 모두 `runtime_image_count=0`, `image_draw_count=0`이다. 이 결과는 PNG의 natural `24×16` intrinsic input, Grid frame/track trace, surface presentation을 확인하며 PNG decode·raster paint 또는 pixel equality는 확인하지 않는다. 화면의 빨간 사각형은 fixture의 img background color다.
 
-Run ID `c114-image-auto-max-20261026T000220Z-040a5360` is retained without rewriting its raw files. Android API 37 ARM64 AVD and iPhone 17 Pro/iOS 26.2 Simulator both reported a ready layout and root/image frames, and the runtime intrinsic input reported a 24×16 PNG plus the full `AutomaticMinimum` source flags. The old native matcher failed because it expected the former reduced trace arrays and `null` growth through the `IntrinsicItemBatch` stage. Both runs therefore remain failed candidate checks; they do not pass the updated contract.
+![Android API 37 ARM64 AVD](./c11-4-image-auto-max-mixed-track-android-api37-arm64.png)
 
-Raw files:
+![iPhone 17 Pro / iOS 26.2 Simulator](./c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png)
 
-- Android runtime: [`android-avd/runtime.log`](./runs/c114-image-auto-max-20261026T000220Z-040a5360/android-avd/runtime.log)
-- iOS runtime: [`ios-simulator/runtime.log`](./runs/c114-image-auto-max-20261026T000220Z-040a5360/ios-simulator/runtime.log)
-- Run source and device metadata are in the same run directory.
+## trace 판정 기준
 
-The Android log has `SPINON_C0410_DRAW status=0 presented boxes=2`, which proves a surface submission was presented; it also reports `runtime_image_count=0` and `image_draw_count=0`. It does not prove image paint. No screenshots were captured for this failed run. The separate corrected run below is the simulator gate result; do not treat these failed logs as that run.
+CSS Grid §11.4의 `Initialize`에서 intrinsic max track growth limit은 규범상 `+∞`로 초기화된다. Serializer는 모든 non-finite 값을 `None`/JSON `null`로 내보낸다. 따라서 초기 `null`은 projection을 확인할 뿐 내부 값이 `+∞`라는 증거가 아니다. 이 span-1 max-content contribution은 §11.5의 `IntrinsicItemBatch` 뒤에 열 `24px`, 행 `16px`으로 resolve된다.
 
-## Corrected candidate rerun
+Taffy `GridTrackVec`은 CSS track과 grid-line slot을 교차 저장하므로 `N` CSS track에 raw entry `2N+1`개가 있다. 각 값은 `baseSize/growthLimit`이다.
 
-Updated stage contract review passed before this run. Run ID: `c114-image-auto-max-20261026T002422Z-040a5360-stagefix01`; source worktree HEAD: `040a5360be92f73e141797aa7dcd4ef00ab24942` plus uncommitted candidate changes. The original failed run above remains unchanged.
-
-Build and focused checks:
-
-| Check | Command/result | Evidence |
+| Axis/stage | raw slot | 기대값 |
 | --- | --- | --- |
-| Formatting | `mise exec -- cargo fmt --all -- --check` — pass | terminal result: exit 0 |
-| Runtime focused tests | `mise exec -- cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test c11_4_image -- --nocapture` — `4 passed` | terminal result: exit 0 |
-| FFI focused test | `mise exec -- cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test c11_4::tests::exposes_only_bounded_intrinsic_track_sizing_scenes -- --nocapture` — `1 passed` | terminal result: exit 0 |
-| Android feature build | `SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android` — `BUILD SUCCESSFUL` | [build log](./android-build-stage-corrected.log); APK SHA-256 `35b114666be4a347225f895cc8e06f579522a345d0572e77e95cce3861df6d54` |
-| iOS feature build | `SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim` — `BUILD SUCCEEDED` | [build log](./ios-build-stage-corrected.log); app executable SHA-256 `39c49b4aa5c59bea50a367ccbd8b2b6f44ee8c56ee8c68f6d5047adba2eab0aa` |
+| Columns / Initialize | sentinel, col0, gutter, col1, sentinel | `[0/0, 0/null, 5/5, 17/17, 0/0]` |
+| Columns / IntrinsicItemBatch 이후 | 같은 5 slots | `[0/0, 24/24, 5/5, 17/17, 0/0]` |
+| Rows / Initialize | sentinel, row0, sentinel | `[0/0, 0/null, 0/0]` |
+| Rows / IntrinsicItemBatch 이후 | 같은 3 slots | `[0/0, 16/16, 0/0]` |
 
-Simulator result matrix:
+양 끝 sentinel은 `gutter=true, collapsed=true`, 내부 실제 5px gutter는 `gutter=true, collapsed=false`다. CSS track은 접히지 않으며 전체 slot의 `infinitelyGrowable=false`를 확인한다. 유한 수 비교 허용 오차는 `0.0001px`다.
 
-| Check | Android API 37 ARM64 AVD | iPhone 17 Pro / iOS 26.2 Simulator |
-| --- | --- | --- |
-| Runtime matcher | `status=0`, `layout=ready`, `boxes=2`; `SPINON_C114_GRID_SUMMARY` emitted | `status=0`, `layout=ready`, `boxes=2`; `SPINON_C114_GRID_SUMMARY` emitted |
-| Root/item frames | root `100×40`, image `(0,0,24,16)` | root `100×40`, image `(0,0,24,16)` |
-| Intrinsic input | PNG natural `24×16`, intrinsic revision `1`; `AutomaticMinimum` all flags and three `None` fields match | same |
-| Trace | 5 column slots / 3 row slots; sentinel, gutter, collapsed and infinitely-growable flags match all 6 stages | same |
-| Draw/present | `status=0 presented boxes=2`, surface `840×630` | `status=0 presented boxes=2`, surface `960×720` |
-| Image-paint limitation | `runtime_image_count=0`, `image_draw_count=0` | `runtime_image_count=0`, `image_draw_count=0` |
-| Screenshot | 1080×2400, SHA-256 `c5975c085ed04f203b50380fb83783fd7f001f36be293d8667d7d891a0f141ea` | 1206×2622, SHA-256 `5e8cf86c936c73c19988e60ed5be20052e841824564401a60c7f12d2be64ea8f` |
+## 보존한 이전 실행
 
-Raw install/launch/runtime/trace/draw/terminate logs and screenshots are in [the run directory](./runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/). Standalone representative images are [Android](./c11-4-image-auto-max-mixed-track-android-api37-arm64.png) and [iOS](./c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png). The runtime trace confirms `Initialize` has a null projection only for the active intrinsic track slot; `IntrinsicItemBatch` and later stages have finite 24px/16px growth values. Boundary sentinels remain `0/0`, the real column gutter remains `5/5`, and all `infinitelyGrowable` flags are false.
+- [수정 전 실패 후보 `c114-image-auto-max-20261026T000220Z-040a5360`](./runs/c114-image-auto-max-20261026T000220Z-040a5360/): 두 simulator가 layout/frame과 24×16 PNG intrinsic input은 냈으나 native matcher가 이전 trace 배열을 기대해 실패했다. 통과 근거가 아니다.
+- [trace 단계 수정 후 후보 `c114-image-auto-max-20261026T002422Z-040a5360-stagefix01`](./runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/): Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 frame·6-stage trace·draw/present matcher가 각각 1/1 통과했다. 이 실행은 strict JSON hardening 전 코드다. source `e4570a04`의 실행이며 최신 `cac4e339` matcher 검증을 대신하지 않는다.
+- 이전 후보의 APK SHA-256 `35b114666be4a347225f895cc8e06f579522a345d0572e77e95cce3861df6d54`, iOS 실행 파일 SHA-256 `39c49b4aa5c59bea50a367cc8b2b6f44ee8c56ee8c68f6d5047adba2eab0aa`; 원본 및 화면 hash는 [manifest](./stage-corrected-sha256sums.txt)에 있다.
 
-Build, runtime-log, screenshot, and app-binary SHA-256 values are in [the hash manifest](./stage-corrected-sha256sums.txt); changed source/fixture hashes and the local tracked-diff digest are in [the source manifest](./runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/source-hashes.json). The independent trace correction is recorded in [the derivation review](../../../../plan/c11-4-image-auto-max-mixed-track-trace-stage-derivation-review-2026-10-26.md).
+## 독립 검사와 artifact 경계
 
-Both app processes were force-stopped/terminated after capture and verified absent. The AVD and Simulator remain booted. Screenshots show the app's submitted grid scene; they do not prove PNG raster paint or pixels because both draw markers report zero runtime image draws. No pixel readback, hardware device, public CSS admission, overflow behavior, PR image-link check, PR, commit, or merge is claimed. No Agent Browser was used in this simulator rerun.
+- fail-closed source/style/prepare 입력 검사: [기록과 원본 log](./fail-closed-controls/README.md). Runtime focused tests **8 passed**, Clippy와 `cargo fmt --check` 통과. Direct validator error와 `prepare()` 거부를 확인하며 downstream frame/trace/resource 부재를 관측했다고 주장하지 않는다.
+- default/product와 opt-in fixture-test `spinon-ffi` release archive 비교: [artifact 경계](./feature-boundary/README.md). 정적 archive 결과이며 APK/IPA 전체 fixture 제외를 증명하지 않는다.
+- PR #643의 기존 화면 링크를 Agent Browser에서 확인했다. URL은 branch ref 대신 immutable commit `e4570a04`를 가리키며 Android 1080×2400, iOS 1206×2622로 로드됐다. [검사 JSON](./pr-image-link-check-2026-10-26.json). `spinon-pr643` browser session 종료 후 `active=false`, `pid=null`, 해당 session process 없음도 확인했다. 다른 HWPJS Agent Browser sessions는 이 작업에 속하지 않아 그대로 뒀다. 최신 simulator 캡처를 PR에 올린 후 링크를 새 evidence commit으로 갱신해 다시 확인한다.
+
+final05 source, V8 revision, app/archive/screenshot SHA-256 목록은 [run manifest](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json)에 있다.
+Xcode `build.log`는 줄 끝 공백만 제거한 읽기용 사본이고, 동일 run의 `build.raw.log.gz`가 원본 출력이다. Simulator device-list의 표 끝 공백도 정리했다.
+
+## 범위 제한
+
+이 slice는 overflow 동작, PNG raster paint/readback, pixel equality, 일반 CSS admission, WPT, 실기기, hardware GPU를 검증하지 않는다. Android/iOS 최신 source 재검증과 merge 검토가 끝나도 전체 C11.4 Stage A/B 또는 상위 완료를 뜻하지 않는다. 공식 완료 수는 `72/213`으로 유지한다.

@@ -1,0 +1,83 @@
+{
+  "run_id": "c114-image-auto-max-20261026T020007Z-cac4e339-final05",
+  "source_head": "cac4e33950aa55e8bb8e7ec1f81bf790316ba7ac",
+  "v8_revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "feature_build_flags": {
+    "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1"
+  },
+  "source_and_expectation_file_sha256": {
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs": "4e64a61afc2c000d430b62fc0fa97979b15c2a826b2f3d72048984d55572b704",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "77a167f5dcafaed6df4fa5df10046ea0d8c98a67d126daed234a1b0f0fea3260",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "604d624e0c1c589680a13a0a21273ab6c3df5bd194277f8f76b6743ef994a82c",
+    "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "plan/c11-4-image-auto-max-mixed-track.md": "c735faceabc5d019dc9f5a82736c1605afbf268df6a44439a6973488d10faa25",
+    "plan/c11-4-grid-track-sizing.md": "5b9a27969ef7aff58a9d36f30e5780dfe4dabad5e2e7a11bdf543784e3fbec5b",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/spec-derived-expectations.json": "428b5a479bbc5b99b8f2600cc26555f825dc20bebb827e242f3af5ed20b777f8",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh": "e42f20b80be9176003eb83f468a22e2d1af164995e3cdc4498cdd5fd63b0cc2c",
+    "tools/v8/v8-revision.txt": "ac0ba8f10b5243253c9565217fb301304dacbcefd1003fb79bd652ce2a44813c"
+  },
+  "build_artifacts": {
+    "android_v8_archive": {
+      "path": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-android-mac/obj/libv8_monolith.a",
+      "owner_checkout": "/Users/yoonhb/Documents/workspace/spinon",
+      "sha256": "e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813"
+    },
+    "ios_v8_archive": {
+      "path": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a",
+      "owner_checkout": "/Users/yoonhb/Documents/workspace/spinon",
+      "sha256": "7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815"
+    },
+    "android_apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "8ce94e5ea7f2671b1adc4dd8f48c8dcc7ca1a78268040b8f5bd3bd4daed1d8fe"
+    },
+    "ios_app_executable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "sha256": "32439c776aaabb5a3e8caa87c87c4e6bb321f1a4c6a775295293789dc19bd04f"
+    },
+    "android_screenshot": {
+      "path": "android-avd/screenshot.png",
+      "dimensions": "1080x2400",
+      "sha256": "75f9a8a3ee0de33ef55b0923486db60c9e08749f814820b68433bc0124c09302"
+    },
+    "ios_screenshot": {
+      "path": "ios-simulator/screenshot.png",
+      "dimensions": "1206x2622",
+      "sha256": "a907274e7f99bd79031e674d1b46c4fd64fcd2c9c3617b47e078c2b287f93bbb"
+    }
+  },
+  "runtime": {
+    "android": {
+      "device": "spinon_api37_1_compat16k",
+      "api": 37,
+      "abi": "arm64-v8a",
+      "summary_status": 0,
+      "root_css_px": "100x40",
+      "item_css_px": "24x16",
+      "draw_status": 0,
+      "runtime_image_count": 0,
+      "image_draw_count": 0,
+      "log": "android-avd/runtime.log"
+    },
+    "ios": {
+      "device": "iPhone 17 Pro / iOS 26.2 Simulator",
+      "summary_status": 0,
+      "root_css_px": "100x40",
+      "item_css_px": "24x16",
+      "draw_status": 0,
+      "runtime_image_count": 0,
+      "image_draw_count": 0,
+      "log": "ios-simulator/runtime.log"
+    }
+  },
+  "commands": {
+    "android_build": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android",
+    "ios_build": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:ios-sim",
+    "simulator_run": "SPINON_C114_RUN_ID=c114-image-auto-max-20261026T020007Z-cac4e339-final05 bash spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh"
+  },
+  "limits": [
+    "The intrinsic PNG dimensions feed layout, but runtime_image_count=0 and image_draw_count=0 on both platforms, so PNG paint and pixel equality are not proven.",
+    "Android is a software-rendered API 37 ARM64 AVD; iOS evidence is from Simulator.",
+    "No WPT, physical-device, hardware-GPU, overflow-pixel, or post-compositor pixel-equality claim."
+  ]
+}
