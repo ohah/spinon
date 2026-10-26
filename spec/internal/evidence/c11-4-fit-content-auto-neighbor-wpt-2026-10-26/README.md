@@ -17,18 +17,21 @@
 
 ## CSS Grid 2025 CRD에서 계산한 독립 기대값
 
-규범 기준은 [CSS Grid Layout Module Level 2, 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto), [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)다. §12.2는 `fit-content()` track의 min sizing function을 `auto`로, max sizing function을 `max-content`로 정의한다. §6.6은 computed overflow가 scrollable하지 않고 축에서 `auto` min sizing function을 가진 track 하나 이상을 span하는 item에 content-based automatic minimum을 적용한다. WPT의 direct wrapper들은 기본 `overflow:visible`이고 각각 한 implicit row를 span하므로 조건을 만족한다. 각 nested 10px child가 content size suggestion 및 minimum contribution을 10px로 정하며, §11.4–§11.5의 auto-min track base는 각각 10px이다.
+규범 기준은 [CSS Grid Layout Module Level 2, 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto), [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.4](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-init), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-grow-tracks), [§12.7](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-flex-tracks), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)다. §12.2는 `fit-content()` track의 min sizing function을 `auto`로, max sizing function을 `max-content`로 정의한다. §6.6은 computed overflow가 scrollable하지 않고 축에서 `auto` min sizing function을 가진 track 하나 이상을 span하는 item에 content-based automatic minimum을 적용한다. WPT의 direct wrapper들은 기본 `overflow:visible`이고 각각 한 implicit row를 span하므로 조건을 만족한다. 각 nested 10px child가 content size suggestion 및 minimum contribution을 10px로 정하며, §12.4는 두 auto min track base를 0px로 초기화한다. definite sizing의 §12.5에서 각 single-span item의 10px minimum contribution이 base를 `[10,10]px`로 올린다.
 
 §12.5의 단일-span fit-content maximum은 max-content contribution을 argument로 clamp한다. 그러므로 첫 track growth limit은 `min(10,40)=10px`이다. WPT가 연결한 §12.8은 해당 축의 content-distribution이 `normal` 또는 `stretch`이고 free space가 양수이며 definite일 때 `auto` max track sizing function을 가진 track만 확장한다고 설명한다. 첫 track의 max function은 `max-content`여서 stretch 대상이 아니며, 두 번째 `auto` track만 확장된다.
 
-고정 입력에는 row gap, border, padding이 없다. definite content height `300px`에서 두 초기 base `[10, 10]px`를 빼면 양수 definite free space는 `280px`이다. 둘째 row만 대상이므로 최종 row bases는 `[10, 290]px`이다.
+§12.5에서 growth limits는 `[10,10]px`이다. §12.6 `Maximize Tracks`는 두 base가 growth limit에 도달했으므로 바꾸지 않으며 §12.7 `Expand Flexible Tracks`도 flexible track이 없어 bases를 `[10,10]px`로 둔다. 고정 입력에는 row gap, border, padding이 없으므로 §12.8 직전 positive definite free space는 `300 - 10 - 10 = 280px`이다. 둘째 row만 이를 받아 최종 row bases는 `[10, 290]px`이다.
 
 ```text
 definite inner block size       = 300px
-pre-stretch bases               = 10px + 10px
+§12.4 initial bases             = [0px, 0px]
+§12.5 minimum contributions     = [10px, 10px]
+§12.5 growth limits              = [10px, 10px]
+§12.6 / §12.7 bases             = [10px, 10px]
 row gaps / border / padding     = 0px
-positive definite free space   = 300 - 10 - 10 = 280px
-eligible auto-max tracks       = 1
+§12.8 positive definite space    = 300 - 10 - 10 = 280px
+eligible auto-max tracks       = [1]
 final used row tracks           = [10px, 10px + 280px] = [10px, 290px]
 ```
 
@@ -55,6 +58,6 @@ Agent Browser에서 pinned WPT 원본 파일도 `file://`로 열어 선택된 DO
 - `precomparison.html` SHA-256: 아래 `SHA256SUMS` 참조
 - screenshot SHA-256: 아래 `SHA256SUMS` 참조
 - WPT upstream file은 이 저장소 안으로 복사·수정하지 않았다. hash는 pinned read-only checkout 파일을 직접 계산했다.
-- 새 계획·evidence의 로컬 링크와 고정 WPT source hash를 확인한다. 전체 저장소 `mise exec -- bun run docs:build`는 RSPress `2.0.22`에서 exit 1이며, 선택하지 않은 기존 evidence 페이지들의 905 dead-link 진단으로 끝났다. 새 precomparison README에는 별도 dead-link 진단이 없었다. 상세는 `docs-build-summary.json`에 기록한다. 이는 전체 문서 링크 또는 build 통과가 아니다.
+- 새 계획·evidence의 로컬 링크와 고정 WPT source hash를 확인한다. 전체 저장소 `mise exec -- bun run docs:build`는 RSPress `2.0.22`에서 exit 1이다. 최신 원시 로그에는 다른 기존 페이지의 dead-link 오류가 있으며, 새 계획/evidence 파일의 진단은 없다. 이전 시도에서 이 README에 추가한 JSON Markdown 링크가 dead link로 잡혀 inline code로 고쳤고 재빌드에서 닫았다. 상세 로그 경계는 `docs-build-summary.json`에 기록한다. 이는 전체 문서 링크 또는 build 통과가 아니다.
 - Android/iOS, runtime fixture, product style admission, full WPT runner, browser matrix, native paint는 범위 밖이다.
 - 공식 C11.4 상태와 완료 집계 `72/213`은 바꾸지 않는다.

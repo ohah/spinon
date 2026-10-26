@@ -39,5 +39,14 @@
     "unique_evidence_files_in_import_traces": 542,
     "new_evidence_file_diagnostics": 0,
     "result": "The full-root build still fails on dead-link diagnostics in other existing evidence pages. After converting the PR image-check JSON reference to inline code, the new plan/evidence pages have no dead-link diagnostics. This is not a docs build pass."
+  },
+  "latest_recheck_after_section_number_correction": {
+    "command": "mise exec -- bun run docs:build",
+    "exit_code": 1,
+    "raw_log": "/tmp/spinon-fit-content-auto-neighbor-docs-build-section-number-fix-20261026.log",
+    "dead_link_error_blocks_in_raw_log": 781,
+    "unique_evidence_files_in_import_traces": 570,
+    "new_evidence_file_diagnostics": 0,
+    "result": "This run fails only on dead-link diagnostics traced to other existing evidence files. No newly added plan/evidence page appears in the dead-link traces. The full documentation build does not pass."
   }
 }

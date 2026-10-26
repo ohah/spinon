@@ -12,25 +12,28 @@
 
 ## 목적과 경계
 
-기존 C11.4 pure Rust oracle은 `align-content:normal`에서 모두 `auto`인 row와 고정 row가 함께 있을 때의 §11.8 stage를 확인한다. 기존 fit-content oracle은 cap/floor, percent/calc, text/image contribution을 별도 입력으로 확인하지만, `fit-content()` row가 `auto` row와 나란히 있을 때 definite free space를 어느 track이 받는지 직접 검사하지 않는다. 이 계획은 WPT `fit-content-track-sizing.html`의 마지막 assertion 하나를 별도 test-only slice로 추가한다.
+기존 C11.4 pure Rust oracle은 `align-content:normal`에서 모두 `auto`인 row와 고정 row가 함께 있을 때의 `StretchAutoTracks` stage를 확인한다. 기존 fit-content oracle은 cap/floor, percent/calc, text/image contribution을 별도 입력으로 확인하지만, `fit-content()` row가 `auto` row와 나란히 있을 때 definite free space를 어느 track이 받는지 직접 검사하지 않는다. 이 계획은 WPT `fit-content-track-sizing.html`의 마지막 assertion 하나를 별도 test-only slice로 추가한다.
 
-범위는 `grid-auto-rows: fit-content(40px) auto`, definite 300px block size, 10px 높이 content가 있는 두 item, 기본 `align-content: normal`이다. 40px cap의 growth limit이 아니라 `auto` 인접 track의 §11.8 stretch eligibility를 검증한다. WPT 파일 안의 다른 cap/floor, percentage/calc, spanning, zoom, implicit column 및 단독 auto-row assertion은 포함하지 않는다.
+범위는 `grid-auto-rows: fit-content(40px) auto`, definite 300px block size, 10px 높이 content가 있는 두 item, 기본 `align-content: normal`이다. 40px cap의 growth limit이 아니라 `auto` 인접 track의 CSS Grid Level 2 2025 CRD §12.8 stretch eligibility를 검증한다. WPT 파일 안의 다른 cap/floor, percentage/calc, spanning, zoom, implicit column 및 단독 auto-row assertion은 포함하지 않는다.
 
 ## 고정 출처와 규범 기대값
 
 WPT checkout은 revision `c999c58338ee1d223df5ad62e48be1202ced0d37`이고, source file SHA-256은 `828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736`다. [원본 lines 130–132](https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/grid-definition/fit-content-track-sizing.html#L130-L132)는 `autoRowAndFitContentRow`의 `grid-auto-rows: fit-content(40px) auto`에 대해 `10px 290px`을 단언한다.
 
-독립 기대값은 [CSS Grid Layout Module Level 2, 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto), [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)에서 도출한다. §12.2는 `fit-content()` track의 min sizing function을 `auto`로, max sizing function을 `max-content`로 정의한다. §6.6에 따라 computed overflow가 scrollable하지 않고 축에서 min sizing function이 `auto`인 track 하나 이상을 span하는 item의 automatic minimum은 content-based다. WPT wrapper의 기본 overflow는 `visible`이고 각 item은 한 implicit row만 span한다. 따라서 두 nested 10px child가 item의 content size suggestion과 minimum contribution을 각각 10px로 만든다. §11.4–§11.5 algorithm에서 이 기여가 두 track의 initial auto-min bases `[10,10]px`를 정한다. §12.5에서 첫 fit-content track의 max-content growth limit은 `min(10,40)=10px`이다. §12.8의 stretch eligibility에서는 fit-content max function이 `auto`가 아니므로 제외되고 두 번째 `auto` row만 대상이다.
+독립 기대값은 [CSS Grid Layout Module Level 2, 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto), [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.4](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-init), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-grow-tracks), [§12.7](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-flex-tracks), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)에서 도출한다. §12.2는 `fit-content()` track의 min sizing function을 `auto`로, max sizing function을 `max-content`로 정의한다. §6.6에 따라 computed overflow가 scrollable하지 않고 축에서 min sizing function이 `auto`인 track 하나 이상을 span하는 item의 automatic minimum은 content-based다. WPT wrapper의 기본 overflow는 `visible`이고 각 item은 한 implicit row만 span한다. 따라서 두 nested 10px child가 item의 content size suggestion과 minimum contribution을 각각 10px로 만든다. §12.4는 두 auto min track base를 0px로 초기화한다. definite sizing의 §12.5에서 각 single-span item의 10px minimum contribution이 base를 `[10,10]px`로 올린다. §12.5에서 두 track의 max-content growth limits는 `[10,10]px`이며, 첫 fit-content track은 argument로 `min(10,40)=10px`에 clamp된다. §12.8의 stretch eligibility에서는 fit-content max function이 `auto`가 아니므로 제외되고 두 번째 `auto` row만 대상이다.
 
-row gap, padding, border가 0이므로 definite content height `300px`에서 bases `[10,10]px`를 빼면 양수 definite free space는 `280px`이다. 둘째 row만 이를 받아 최종 bases는 `[10,290]px`가 된다.
+§12.6 `Maximize Tracks`에서 두 base가 각자 10px growth limit에 도달해 그대로 `[10,10]px`다. flexible track은 없어 §12.7 뒤에도 bases는 `[10,10]px`다. row gap, padding, border가 0이므로 §12.8 직전 free space는 `300 - 10 - 10 = 280px`; 둘째 `auto` row만 이를 받아 최종 bases `[10,290]px`가 된다.
 
 ```text
 grid content height                   = 300px
-pre-stretch row bases                 = [10px, 10px]
+§12.4 initial bases                 = [0px, 0px]
+§12.5 minimum contributions          = [10px, 10px]
+§12.5 growth limits                   = [10px, 10px]
+§12.6 / §12.7 bases                   = [10px, 10px]
 row-gap + padding + border            = 0px
-remaining positive definite space    = 300 - 10 - 10 = 280px
+§12.8 positive definite free space    = 300 - 10 - 10 = 280px
 stretch-eligible row indexes          = [1]
-expected post-stage row bases         = [10px, 290px]
+expected §12.8 post-stage bases        = [10px, 290px]
 expected stage                        = StretchAutoTracks { applied: true }
 ```
 
@@ -45,8 +48,8 @@ expected stage                        = StretchAutoTracks { applied: true }
 - `GridContainerInput.rows`는 빈 목록으로 두고 `auto_rows = GridAutoRows::TrackList([FitContent(40px), Auto])`로 implicit rows를 만든다.
 - `columns = [LengthPx(60)]`, root width 60px, height 300px, zero row/column gap, zero padding/border, `LayoutAlignContent::Normal`, `TrackSizing` profile이다.
 - direct grid item은 두 개이며 각 item height는 auto, 자식 block height는 10px fixed다. 이는 WPT의 auto-height wrapper 안 10px nested block 구조와 contribution/stretch frame을 구분한다.
-- row pass에서 `IntrinsicSizingComplete → MaximizeTracks → ExpandFlexibleTracks → StretchAutoTracks`의 순서를 확인한다. `StretchAutoTracks`는 정확히 한 번 있고 `applied:true`여야 한다.
-- stage 직전 CSS row bases `[10,10]px`, stage 뒤 `[10,290]px`를 검사한다. gutter/collapsed sentinel은 CSS track 수에서 제외하고 별도 `is_gutter`/`is_collapsed` 조건을 검사한다.
+- layout trace가 root grid node에 귀속되고 row pass가 정확히 하나인지 확인한다. 그 pass에서 `IntrinsicSizingComplete → MaximizeTracks → ExpandFlexibleTracks → StretchAutoTracks` 순서를 확인하고, `StretchAutoTracks`는 한 번만 있으며 `applied:true`여야 한다.
+- `IntrinsicSizingComplete`, `MaximizeTracks`, `ExpandFlexibleTracks`의 CSS row bases가 각각 `[10,10]px`인지 확인한다. `StretchAutoTracks` 뒤에는 `[10,290]px`인지 확인한다. gutter/collapsed sentinel은 CSS track 수에서 제외하고 별도 `is_gutter`/`is_collapsed` 조건을 검사한다.
 - root 및 두 item/nested item frame을 위의 독립 기대값과 `1e-4 CSS px` 절대 허용치로 비교한다. WPT CSSOM 문자열 expectation은 `10px 290px`이다.
 
 현재 `GridAutoRows::TrackList`와 `FitContent`/`Auto` typed track 표현은 `TrackSizing` profile에 존재한다. 구현 전에 adapter가 두 순서의 실제 implicit tracks를 만들고 CSS order를 보존하는지 테스트 대상에서 확인한다. 실패하면 기대값을 바꾸지 말고 입력 mapping 또는 알고리즘 경계를 다시 검토한다.

@@ -5,7 +5,10 @@
     "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
     "local_checkout": "/Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source",
     "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
-    "selected_assertion_lines": [130, 132],
+    "selected_assertion_lines": [
+      130,
+      132
+    ],
     "selected_case_id": "autoRowAndFitContentRow",
     "expected_grid_template_rows": "10px 290px"
   },
@@ -16,7 +19,10 @@
       "automatic_minimum_size": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto",
       "track_sizing_terminology": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms",
       "resolve_intrinsic_track_sizes": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content",
-      "stretch_auto_tracks": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch"
+      "stretch_auto_tracks": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch",
+      "initialize_track_sizes": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-init",
+      "maximize_tracks": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-grow-tracks",
+      "expand_flexible_tracks": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-flex-tracks"
     }
   }
 }
