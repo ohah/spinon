@@ -1,6 +1,6 @@
 # C11.4 · `align-content: normal` 자동 트랙 늘림 단계 oracle
 
-**상태:** 계획 자체 검토 PASS 20/20, 계획 PR [#655](https://github.com/ohah/spinon/pull/655) diff 검토 PASS 30/30 후 `fb1704f950ce29097c482f16d7ec4401b0009493`에 병합됐다. 구현 커밋 `31c7874a4675bd9182c83aab2bc711a93ced9c34`에서 테스트를 추가했고 계획한 focused test, 대조군 test, fmt, Clippy 검증이 통과했다. 별도 구현 검토 [PASS 20/20](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/implementation-review-20.md)이며, 구현 PR diff 30개 검토가 남았다. [구현·실행 근거](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/README.md). C11.4와 공식 완료 집계 `72/213`은 미완료로 유지한다.
+**상태:** 계획 자체 검토 PASS 20/20, 계획 PR [#655](https://github.com/ohah/spinon/pull/655) diff 검토 PASS 30/30 후 `fb1704f950ce29097c482f16d7ec4401b0009493`에 병합됐다. 구현 커밋 `31c7874a4675bd9182c83aab2bc711a93ced9c34`에서 테스트를 추가했고 계획한 focused test, 대조군 test, fmt, Clippy 검증이 통과했다. 별도 구현 검토 [PASS 20/20](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/implementation-review-20.md), 구현 PR diff 검토 [PASS 30/30](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md)이며 대상 head `dcd8e83024c0380bd4e63046d2d4b183070641cb`에서 merge 대기 중이다. [구현·실행 근거](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/README.md). C11.4와 공식 완료 집계 `72/213`은 미완료로 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
