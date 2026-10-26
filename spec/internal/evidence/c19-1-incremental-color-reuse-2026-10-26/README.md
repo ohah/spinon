@@ -13,6 +13,7 @@ legacy `background_color` 및 `background_paint`는 계속 `None`이다. author 
 - 계획 실패 관점 검토: [20개 계획 검토](./plan-review-20.md).
 - 검토한 Rust source patch SHA-256: `3bef4bc6237df85228456722183e23b69c373e85bf310266feda93fcd876e1ce`.
 - 구현 실패 관점 검토: [20개 구현 검토](./implementation-review-20.md).
+- PR diff 적대 검토: [30개 PR 검토](./pr-diff-review-30.md).
 - C19 공식 체크 상태와 집계는 바꾸지 않았다. 이 결과는 C19.1 incremental 재사용 조각만 설명한다.
 
 ## 검증
