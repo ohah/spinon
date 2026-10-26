@@ -1,0 +1,52 @@
+{
+  "capturedAtUtc": "2026-10-26T22:48:25Z",
+  "agentBrowser": "0.31.1",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "session": "spinon-pr669-roadmap-sync",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "viewport": { "width": 1440, "height": 1100 },
+    "latestC114Note": "#669 Rebase and merge",
+    "mergeShaVisible": "3e46d12c1b5df26a0c06507defe3826e2f8b4fdb",
+    "officialCountVisible": "72/213",
+    "c114CheckboxUnchecked": true,
+    "links": [
+      "/spinon/plan/c11-4-align-content-normal-runtime.html",
+      "/spinon/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.html",
+      "/spinon/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/implementation-review-20.html",
+      "/spinon/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/pr-diff-review-30.html",
+      "/spinon/internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/pr-diff-review-30.html",
+      "/spinon/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/align-content-normal-equal-auto-rows.png",
+      "/spinon/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/align-content-normal-equal-auto-rows.png"
+    ]
+  },
+  "focusedPlan": {
+    "title": "C11.4 · align-content: normal 3행 auto-track stretch 앱 런타임 계획 - 스피논 문서",
+    "mergeShaVisible": true,
+    "emptyChecksDescribedAsNotCiPass": true,
+    "officialCountVisible": true,
+    "screenshotDimensionsVisible": true
+  },
+  "runtimeEvidence": {
+    "title": "C11.4 · align-content: normal 3행 auto-track stretch 런타임 증거 - 스피논 문서",
+    "expectedRowsVisible": "[32.5, 42.5, 5]px",
+    "androidAndIosSectionsVisible": true,
+    "finalAndroidAndIosScreenshotLinksPresent": true
+  },
+  "screenshots": {
+    "android": { "loaded": true, "width": 1080, "height": 2400 },
+    "ios": { "loaded": true, "width": 1206, "height": 2622 }
+  },
+  "review": {
+    "title": "PR #669 이후 로드맵/Tailnet 문서 변경 30관점 검토 - 스피논 문서",
+    "distinctRows": 30
+  },
+  "roadmapScreenshot": {
+    "path": "tailnet-roadmap-agent-browser-pass01.png",
+    "width": 1440,
+    "height": 1100,
+    "sha256": "ca882fe8d90763489728eb19dfb58c886b5779647281616757f14233247a8c4a"
+  },
+  "browserProcessBeforeCleanup": { "pid": 80486, "active": true }
+}

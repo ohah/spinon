@@ -1,0 +1,1580 @@
+{
+  "sourceHead": "f6d93e4e56bd8a7094435ecfd1872727d1410d70",
+  "sourceTree": "10670a96e4a610003ef6c637c0e961b7a2ded040",
+  "siteRoot": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02",
+  "stageRoot": "build/spinon/roadmap-tailnet-sync-pr669-20261027-stage-pass02",
+  "generatedPageCount": 14,
+  "routeCount": 224,
+  "totalBytes": 7745182,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/icon.svg",
+      "kind": "generated-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page",
+      "bytes": 254450,
+      "sha256": "8aeebc8c1629bdc31e9dd12c154efecd8575c718adba0376fa101d5eada0b29a"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "296364c57f69b34ee286eebf124aa65675c578c8ffe6a1ccc810609238d64109"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 14678,
+      "sha256": "20f2de6a57dc7229a607d471bc88615dfad76bb32c0f76da48c33f5f3050cee7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1782,
+      "sha256": "20830e9a790c67089f429fe98bfae8bdfdb76b6be3374f6df34c1520ec78a0f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 78764,
+      "sha256": "142bec064f76226ae31d0ef20350f5978e88aa44818c129ff3d1ae935892c6dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "e3a49029117f55c8b64df68db86f1e0ea63e77f869ab9a8bd2c092b202df60d6"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "26eb37f5015af2512491dd35f74b484603616e761cbe785178096d6b97a76659"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26461,
+      "sha256": "3c5556ca995cbf650604b9b65740344edc8c0460857fb7affe3300c82ed21bd0"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1782,
+      "sha256": "53493676c22a0c258ad36cd8b2fcf57eeb9f73a41da6165938e35b850a71c9df"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 78459,
+      "sha256": "d7ea16212e662a802c0c97603f7e603d2edef318756583dd7d1513ff9bffa867"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "476a5c10c14b3bc6be908b76b68c4a041fa4dc24345ea21167daeef63f3d82ab"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "a359f1f88ee023467de5d9f30e613b40bbaf134de26ac6da08f5bd7ae6826630"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26367,
+      "sha256": "8ac680c04caa48ee35bcff3b8ee053e4d9630898486f7c263152479f31b45a94"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2017,
+      "sha256": "ed7906c9cd314246301b198583c299bff9499fa446f60100c328f2a7e2600bb2"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 77828,
+      "sha256": "f2ee5796d98354e951c2d602e69dbd15e9d2eeb626227a443a0f048871eafa2c"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "3b7640d52b25a482aab34682f95777a5ac4e19f9cad3c71ecea3a8b49984ee4c"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "2993df062a7695175806cf2ff4ff5b03bbea1d6e068d1466fde682a463508137"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 25987,
+      "sha256": "680ebd719930c489d888de2d6f6686327eef923138dd4eef9e6428f0ebfb9035"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2120,
+      "sha256": "df5c20978e4dead8ceb4f671986ab2e90750b583a9c39e87a93cd20bcd2c24a5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 77537,
+      "sha256": "990e933bad0c46ddf283ffb63b9e421a3231fdf5d37d5533ad2ade7917193a96"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "9e4dfef40e11cf432f6f45e7073c93e627d48b9782ce0e5b47cf12f8732e4211"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "6a2454a9bf3727abfbd4a72a7fc1f6dd382ac5f7022d8f1a3822c09fbb601e24"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26366,
+      "sha256": "38e017e03d3e315298dc1843c666c4880fb8f7068b067cbfb51532693beaac82"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2120,
+      "sha256": "1e28fd89882156a77c4d86af337704739a9bdf331cfee5343d7aca5f26d39611"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-first-attempt-unsupported-justify-content.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-first-attempt-unsupported-justify-content.log",
+      "kind": "source-asset",
+      "bytes": 915,
+      "sha256": "8bd64d239106a560a845fdba42fa314b3db4c22ac30d013b061944ba96c72f20"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-default-apk-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-default-apk-scan.json",
+      "kind": "source-asset",
+      "bytes": 519,
+      "sha256": "31189563f8a675227e3693d4c1906f14af865baf15c080c513e77dae59d524bf"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-apk-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-apk-scan.json",
+      "kind": "source-asset",
+      "bytes": 789,
+      "sha256": "c49ffe4a141278939aa686eaf10b347ba102735edf6918d2088755e2d88b8489"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build-rerun.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build-rerun.log",
+      "kind": "source-asset",
+      "bytes": 4698,
+      "sha256": "9576316110bed132aecadd5ebdb4c3222cda83071f44ae69c73c0b10d6ab36e0"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build.log",
+      "kind": "source-asset",
+      "bytes": 4787,
+      "sha256": "c3b31d1998f625e1ea51a15bc4691e84c228172e10d84db814d7fa078f3dd90b"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-product-build.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-product-build.log",
+      "kind": "source-asset",
+      "bytes": 14885,
+      "sha256": "42b52f41562a3c13a5fb1b478bce2908eccd7e2e0a445cd3e3495aeca501ee88"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/default-ffi-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/default-ffi-scan.json",
+      "kind": "source-asset",
+      "bytes": 377,
+      "sha256": "35b159fc74f75a7a59bfeaba13da77afe13b3e62a2c2fff77eb4c83421bcb784"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/fixture-ffi-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/fixture-ffi-scan.json",
+      "kind": "source-asset",
+      "bytes": 393,
+      "sha256": "3c3e373de20539790e4cdb957d5fd01525d11078ed7f487ca402c154e1244fd5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-default-app-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-default-app-scan.json",
+      "kind": "source-asset",
+      "bytes": 1039,
+      "sha256": "4f4796b118a5274414a19f9bf3d557c0b0a9d20c2fa7b0bb28c59651baa79b3b"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-archive-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-archive-scan.json",
+      "kind": "source-asset",
+      "bytes": 1128,
+      "sha256": "02e4ba197c4f367b96ca1cbdde7ff790e871bfde36ab69857b9b8f8ec1f56227"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-final.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-final.log.gz",
+      "kind": "source-asset",
+      "bytes": 13463,
+      "sha256": "c8416f8f40867bdc3738bdb539d0dc058c6749cb4b9172497f4df53c6dbc99a3"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-rerun.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-rerun.log.gz",
+      "kind": "source-asset",
+      "bytes": 13465,
+      "sha256": "7c99111547bc6bf0ef3e5c7907a64f5d55af6a751579dec799462010c76fa141"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build.log.gz",
+      "kind": "source-asset",
+      "bytes": 17381,
+      "sha256": "9598fcb49a30dfd6f8aef033579e9e49a5779d7d31f460e9d452f4f0a0bdd83a"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-product-build.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-product-build.log.gz",
+      "kind": "source-asset",
+      "bytes": 19843,
+      "sha256": "95f9daaf1a3fb4051a5319a997886f221a3ce1026c9f49a449d43a6c5c5c0ab0"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "a5e3b767e4da696edd26c4dcf023cd5ef8bb89794c7f3df4095831d6e82fb330"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 5599,
+      "sha256": "0dd738c13ccb88bbd4bfa75f331025ac16a79c770f66305c2d0ee0f153c09d05"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1471,
+      "sha256": "8627684657fec830e41fcf4d3b56b8fb6afe080627de7757de42b2dffd02a819"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/implementation-review-20.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/implementation-review-20.html",
+      "kind": "generated-page",
+      "bytes": 32480,
+      "sha256": "4a743432d8d01957627d0c368aa9cd9210c1d532dcbdc300de299d55701eda98"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131162,
+      "sha256": "8c4fe19af324558927afe12426d979ee9b7bfb4b14f790f8de217452ecf6282f"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "fbd481ff4ddbc4b558594d957ad6f13182a4c345eb0c19bf955dbc3843a675f8"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "d72605d254d9c83734ae599e08ee016ece1e65d4d6e71ccb6b925d0188837846"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17778,
+      "sha256": "5fb9ca3fa456ba1ff9623d33ca46da0cb350d95141f5eab7c739cfd154e7d40d"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "e2b35b6842a230726fe4e22aae12c0f78c59399805c37fa13fef1d3e78e314aa"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1642,
+      "sha256": "7f005ef0d66ff9707f34ced8c5d2546d050a23c335f3f3be89a9a325dd458ef5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131629,
+      "sha256": "0a00efe544855d7f23c645846aa0f8a784b419a1896eb81d3b498fddc320743c"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "e001105c87599c53fb30870913a192396bc76efdf410e0131fe7592f34aa3c9e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "29429d0204b717b272a1835f5c3d014ae699e155013937f672e84b4a4f2ac69d"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17778,
+      "sha256": "8d9e1e18db934ff3a1804ac057b8951e90b8bb3f81b16c2ec56ef1866bb1f0cb"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "b0347a599755305ef9a9040094c7c2936a5e5baaa12bcbf8c8a7dd8f691f110f"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1642,
+      "sha256": "3352b90227c8db67153eb53d4796945770507b1779a45e2a8fb751d992686d9c"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131738,
+      "sha256": "6f82d0cd8c063c29b6513d00917e484f109b5f58353d4f3bf98ef1ddc364fadc"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "d2a90b68720e5615405923b277af61103533220ba9e158abf78071875209b6b3"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "c55411a955ac3747a5e31afa704849d7ea4c3d0ac9793f6c7b0a31c75937edd3"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 16383,
+      "sha256": "c24ae02478365e13a5b466be630f84c7af7001df49192f8e012085a44888a68a"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "8d958fcbbd4ce0758c27ae47c403dee939a407037e1ef88276e8c0f2b3a3eb77"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1969,
+      "sha256": "9c9291d822bc5d9f982d76d162346f4493ccb094708a46a7f2fdfaeffeb19a4a"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 129566,
+      "sha256": "2e773910624d060365d9952bdfd79dce7249768c620adc1d851feb80785c0db6"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "5b8424c96752f6fcaa024193fe9c85111716f8cd449b1aca20ef2196ffdfc79d"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "04e30b4a49f1bee43cb0c13d565e283d0918c3f897aa5153209f62acf506aded"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17485,
+      "sha256": "f57b36e81ab9e00c711045e594a49a928b1376d4b2ef215ac17e1c957e88953e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "81e08da8a4a768c384c8149ad19fa36f2f42887a2860c6f58099cceb5b77e1cd"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2072,
+      "sha256": "d9fed97ba9455aeb3c4babba69cbff380859420e2c15fccfa622f3d5ea2545d6"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 130357,
+      "sha256": "4d33a49376212f166cedf37ad01ef0bac314f4007883865c624d7c6cd99cb900"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "45773db561a3fa918f434b0683cdcfd554acd8a7d237fc173cad6cd14b38b37f"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "79d025118290949ac7cc5a0ec99f1428ddee336a22b01f485aedd292004e303c"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17485,
+      "sha256": "0f00fbfdb3eb64d01ab49d4f8bcbeacd2fdfbbca2fbd1ef38f55eefc0c15a12a"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "8616003c380b43297342a297fdf77ecb4a4b30c18647cbbd8fddec48800bf7b5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2072,
+      "sha256": "af4869c4e06517bb43d7eedba1014a15ddda2493783ff6631e9580eb5fe78a76"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/pr-diff-review-30.html",
+      "kind": "generated-page",
+      "bytes": 35667,
+      "sha256": "1f849849825db65603020d846b47d6cddf70b19aa616a3f2afc1380611447674"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.html",
+      "kind": "generated-page",
+      "bytes": 35782,
+      "sha256": "560a78c5467d2c20372cb782f76bcb10455c56d19b0ea5a39db08b7477d6318e"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-multi-scene-selection-rejected.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-multi-scene-selection-rejected.log",
+      "kind": "source-asset",
+      "bytes": 913,
+      "sha256": "5d6e79bdb532bf738acf4117be73a8e5c4d485ef05792951bf6b9ef875cc2d00"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-run-kind-without-scene-rejected.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-run-kind-without-scene-rejected.log",
+      "kind": "source-asset",
+      "bytes": 838,
+      "sha256": "b90782bf213b329a46bba65ce1d8b19339e350263799332d8d36bb487f71d71d"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-normal-auto-track-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-normal-auto-track-rows.png",
+      "kind": "source-asset",
+      "bytes": 854,
+      "sha256": "7cc4bc76798ba6c8acb43ecf98b5688049e94173363017772ee0515e73171cb5"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-observation.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-observation.json",
+      "kind": "source-asset",
+      "bytes": 2079,
+      "sha256": "7938ce59b21e6a7c09df8a668156e9d886f5a9021394b963d5b6ef159fb94ee0"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/expected.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/expected.json",
+      "kind": "source-asset",
+      "bytes": 2212,
+      "sha256": "ffc5b619c404a0d3b78fded30056ecb70d14e65bc7ef32a6badea440c59e7c11"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/input.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/input.json",
+      "kind": "source-asset",
+      "bytes": 823,
+      "sha256": "6642ad857f0e73b09ff1f457195190f02a40961b748a83247f62834fe90459ff"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.html",
+      "kind": "generated-page",
+      "bytes": 32185,
+      "sha256": "843f1a46609c075d26c7f2789c0132d22db4d956ada659fc0854400ea143ac48"
+    },
+    {
+      "path": "internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "kind": "source-asset",
+      "bytes": 990,
+      "sha256": "b6921fbbd5fffffbec1162fef670caec7733139a7b4f31c5f83a81b41b315062"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/pr-diff-review-30.html",
+      "kind": "generated-page",
+      "bytes": 34318,
+      "sha256": "d9a8ecb1ab80eae3f079d0b8da1af96c770ca59c92df4893db016f3fdbd4edfe"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/README.html",
+      "kind": "generated-page",
+      "bytes": 29462,
+      "sha256": "1fa9dddbdd83baef18fcee2be6ac731e15aa6e31c70972ca47ffab96f6a19a1b"
+    },
+    {
+      "path": "logo.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/logo.svg",
+      "kind": "generated-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-align-content-normal-runtime.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/plan/c11-4-align-content-normal-runtime.html",
+      "kind": "generated-page",
+      "bytes": 40283,
+      "sha256": "d943ec43bbbd43fb915d03efde510e32895643f8153cee2ddf43280a6616b145"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/plan/c11-4-grid-track-sizing.html",
+      "kind": "generated-page",
+      "bytes": 221841,
+      "sha256": "197025faf0cd2551ce8eaffa5ae480b486e071eefdde92741c51b7b82790fece"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/roadmap.html",
+      "kind": "generated-page",
+      "bytes": 330595,
+      "sha256": "9bcd739242e70bcdee76d550d42c1d13b5b188b8c55c679d4e12cc09ef94d7b8"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page",
+      "bytes": 254908,
+      "sha256": "78fd112ae78b8c94de5f5f035ae34744b47af87919b037d7055358311e1aac25"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "296364c57f69b34ee286eebf124aa65675c578c8ffe6a1ccc810609238d64109"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 14678,
+      "sha256": "20f2de6a57dc7229a607d471bc88615dfad76bb32c0f76da48c33f5f3050cee7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T214700247Z-4f35f201/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1782,
+      "sha256": "20830e9a790c67089f429fe98bfae8bdfdb76b6be3374f6df34c1520ec78a0f5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 78764,
+      "sha256": "142bec064f76226ae31d0ef20350f5978e88aa44818c129ff3d1ae935892c6dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "e3a49029117f55c8b64df68db86f1e0ea63e77f869ab9a8bd2c092b202df60d6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "26eb37f5015af2512491dd35f74b484603616e761cbe785178096d6b97a76659"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26461,
+      "sha256": "3c5556ca995cbf650604b9b65740344edc8c0460857fb7affe3300c82ed21bd0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T215326659Z-87acf934/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1782,
+      "sha256": "53493676c22a0c258ad36cd8b2fcf57eeb9f73a41da6165938e35b850a71c9df"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 78459,
+      "sha256": "d7ea16212e662a802c0c97603f7e603d2edef318756583dd7d1513ff9bffa867"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "476a5c10c14b3bc6be908b76b68c4a041fa4dc24345ea21167daeef63f3d82ab"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "a359f1f88ee023467de5d9f30e613b40bbaf134de26ac6da08f5bd7ae6826630"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26367,
+      "sha256": "8ac680c04caa48ee35bcff3b8ee053e4d9630898486f7c263152479f31b45a94"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T220630305Z-cdcdab06/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2017,
+      "sha256": "ed7906c9cd314246301b198583c299bff9499fa446f60100c328f2a7e2600bb2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 77828,
+      "sha256": "f2ee5796d98354e951c2d602e69dbd15e9d2eeb626227a443a0f048871eafa2c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "3b7640d52b25a482aab34682f95777a5ac4e19f9cad3c71ecea3a8b49984ee4c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "2993df062a7695175806cf2ff4ff5b03bbea1d6e068d1466fde682a463508137"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 25987,
+      "sha256": "680ebd719930c489d888de2d6f6686327eef923138dd4eef9e6428f0ebfb9035"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T221632730Z-9f6e6f7c/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2120,
+      "sha256": "df5c20978e4dead8ceb4f671986ab2e90750b583a9c39e87a93cd20bcd2c24a5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 77537,
+      "sha256": "990e933bad0c46ddf283ffb63b9e421a3231fdf5d37d5533ad2ade7917193a96"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "9e4dfef40e11cf432f6f45e7073c93e627d48b9782ce0e5b47cf12f8732e4211"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/result.json",
+      "kind": "source-asset",
+      "bytes": 1833,
+      "sha256": "6a2454a9bf3727abfbd4a72a7fc1f6dd382ac5f7022d8f1a3822c09fbb601e24"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 26366,
+      "sha256": "38e017e03d3e315298dc1843c666c4880fb8f7068b067cbfb51532693beaac82"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T222150868Z-94e8b191/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2120,
+      "sha256": "1e28fd89882156a77c4d86af337704739a9bdf331cfee5343d7aca5f26d39611"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-first-attempt-unsupported-justify-content.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/android-first-attempt-unsupported-justify-content.log",
+      "kind": "source-asset",
+      "bytes": 915,
+      "sha256": "8bd64d239106a560a845fdba42fa314b3db4c22ac30d013b061944ba96c72f20"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-default-apk-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-default-apk-scan.json",
+      "kind": "source-asset",
+      "bytes": 519,
+      "sha256": "31189563f8a675227e3693d4c1906f14af865baf15c080c513e77dae59d524bf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-apk-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-apk-scan.json",
+      "kind": "source-asset",
+      "bytes": 789,
+      "sha256": "c49ffe4a141278939aa686eaf10b347ba102735edf6918d2088755e2d88b8489"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build-rerun.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build-rerun.log",
+      "kind": "source-asset",
+      "bytes": 4698,
+      "sha256": "9576316110bed132aecadd5ebdb4c3222cda83071f44ae69c73c0b10d6ab36e0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-fixture-build.log",
+      "kind": "source-asset",
+      "bytes": 4787,
+      "sha256": "c3b31d1998f625e1ea51a15bc4691e84c228172e10d84db814d7fa078f3dd90b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-product-build.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/android-product-build.log",
+      "kind": "source-asset",
+      "bytes": 14885,
+      "sha256": "42b52f41562a3c13a5fb1b478bce2908eccd7e2e0a445cd3e3495aeca501ee88"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/default-ffi-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/default-ffi-scan.json",
+      "kind": "source-asset",
+      "bytes": 377,
+      "sha256": "35b159fc74f75a7a59bfeaba13da77afe13b3e62a2c2fff77eb4c83421bcb784"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/fixture-ffi-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/fixture-ffi-scan.json",
+      "kind": "source-asset",
+      "bytes": 393,
+      "sha256": "3c3e373de20539790e4cdb957d5fd01525d11078ed7f487ca402c154e1244fd5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-default-app-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-default-app-scan.json",
+      "kind": "source-asset",
+      "bytes": 1039,
+      "sha256": "4f4796b118a5274414a19f9bf3d557c0b0a9d20c2fa7b0bb28c59651baa79b3b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-archive-scan.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-archive-scan.json",
+      "kind": "source-asset",
+      "bytes": 1128,
+      "sha256": "02e4ba197c4f367b96ca1cbdde7ff790e871bfde36ab69857b9b8f8ec1f56227"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-final.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-final.log.gz",
+      "kind": "source-asset",
+      "bytes": 13463,
+      "sha256": "c8416f8f40867bdc3738bdb539d0dc058c6749cb4b9172497f4df53c6dbc99a3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-rerun.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build-rerun.log.gz",
+      "kind": "source-asset",
+      "bytes": 13465,
+      "sha256": "7c99111547bc6bf0ef3e5c7907a64f5d55af6a751579dec799462010c76fa141"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-fixture-build.log.gz",
+      "kind": "source-asset",
+      "bytes": 17381,
+      "sha256": "9598fcb49a30dfd6f8aef033579e9e49a5779d7d31f460e9d452f4f0a0bdd83a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-product-build.log.gz",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/artifact-boundary/ios-product-build.log.gz",
+      "kind": "source-asset",
+      "bytes": 19843,
+      "sha256": "95f9daaf1a3fb4051a5319a997886f221a3ce1026c9f49a449d43a6c5c5c0ab0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/install.log",
+      "kind": "source-asset",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/installed-apk-verification.json",
+      "kind": "source-asset",
+      "bytes": 360,
+      "sha256": "a5e3b767e4da696edd26c4dcf023cd5ef8bb89794c7f3df4095831d6e82fb330"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 5599,
+      "sha256": "0dd738c13ccb88bbd4bfa75f331025ac16a79c770f66305c2d0ee0f153c09d05"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/failed-attempt-flex-start/android-avd-c114-align-content-normal-equal-auto-rows-android-avd-20261026T213721842Z-547a708a/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1471,
+      "sha256": "8627684657fec830e41fcf4d3b56b8fb6afe080627de7757de42b2dffd02a819"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131162,
+      "sha256": "8c4fe19af324558927afe12426d979ee9b7bfb4b14f790f8de217452ecf6282f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "fbd481ff4ddbc4b558594d957ad6f13182a4c345eb0c19bf955dbc3843a675f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "d72605d254d9c83734ae599e08ee016ece1e65d4d6e71ccb6b925d0188837846"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17778,
+      "sha256": "5fb9ca3fa456ba1ff9623d33ca46da0cb350d95141f5eab7c739cfd154e7d40d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "e2b35b6842a230726fe4e22aae12c0f78c59399805c37fa13fef1d3e78e314aa"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215503808Z-999af8b8/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1642,
+      "sha256": "7f005ef0d66ff9707f34ced8c5d2546d050a23c335f3f3be89a9a325dd458ef5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131629,
+      "sha256": "0a00efe544855d7f23c645846aa0f8a784b419a1896eb81d3b498fddc320743c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "e001105c87599c53fb30870913a192396bc76efdf410e0131fe7592f34aa3c9e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "29429d0204b717b272a1835f5c3d014ae699e155013937f672e84b4a4f2ac69d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17778,
+      "sha256": "8d9e1e18db934ff3a1804ac057b8951e90b8bb3f81b16c2ec56ef1866bb1f0cb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "b0347a599755305ef9a9040094c7c2936a5e5baaa12bcbf8c8a7dd8f691f110f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T215712260Z-17da28c2/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1642,
+      "sha256": "3352b90227c8db67153eb53d4796945770507b1779a45e2a8fb751d992686d9c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 131738,
+      "sha256": "6f82d0cd8c063c29b6513d00917e484f109b5f58353d4f3bf98ef1ddc364fadc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "d2a90b68720e5615405923b277af61103533220ba9e158abf78071875209b6b3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "c55411a955ac3747a5e31afa704849d7ea4c3d0ac9793f6c7b0a31c75937edd3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 16383,
+      "sha256": "c24ae02478365e13a5b466be630f84c7af7001df49192f8e012085a44888a68a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "8d958fcbbd4ce0758c27ae47c403dee939a407037e1ef88276e8c0f2b3a3eb77"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T220639145Z-5acd3bbf/simulator.json",
+      "kind": "source-asset",
+      "bytes": 1969,
+      "sha256": "9c9291d822bc5d9f982d76d162346f4493ccb094708a46a7f2fdfaeffeb19a4a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 129566,
+      "sha256": "2e773910624d060365d9952bdfd79dce7249768c620adc1d851feb80785c0db6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "5b8424c96752f6fcaa024193fe9c85111716f8cd449b1aca20ef2196ffdfc79d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "04e30b4a49f1bee43cb0c13d565e283d0918c3f897aa5153209f62acf506aded"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17485,
+      "sha256": "f57b36e81ab9e00c711045e594a49a928b1376d4b2ef215ac17e1c957e88953e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "81e08da8a4a768c384c8149ad19fa36f2f42887a2860c6f58099cceb5b77e1cd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T221709971Z-4b87f01b/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2072,
+      "sha256": "d9fed97ba9455aeb3c4babba69cbff380859420e2c15fccfa622f3d5ea2545d6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/align-content-normal-equal-auto-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/align-content-normal-equal-auto-rows.png",
+      "kind": "source-asset",
+      "bytes": 130357,
+      "sha256": "4d33a49376212f166cedf37ad01ef0bac314f4007883865c624d7c6cd99cb900"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/install.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/install.log",
+      "kind": "source-asset",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/launch-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/launch-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 28,
+      "sha256": "45773db561a3fa918f434b0683cdcfd554acd8a7d237fc173cad6cd14b38b37f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/result.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/result.json",
+      "kind": "source-asset",
+      "bytes": 1889,
+      "sha256": "79d025118290949ac7cc5a0ec99f1428ddee336a22b01f485aedd292004e303c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/runtime-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/runtime-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 17485,
+      "sha256": "0f00fbfdb3eb64d01ab49d4f8bcbeacd2fdfbbca2fbd1ef38f55eefc0c15a12a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/screenshot-align-content-normal-equal-auto-rows.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/screenshot-align-content-normal-equal-auto-rows.log",
+      "kind": "source-asset",
+      "bytes": 339,
+      "sha256": "8616003c380b43297342a297fdf77ecb4a4b30c18647cbbd8fddec48800bf7b5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/ios-simulator-c114-align-content-normal-equal-auto-rows-ios-simulator-20261026T222207272Z-dce6182a/simulator.json",
+      "kind": "source-asset",
+      "bytes": 2072,
+      "sha256": "af4869c4e06517bb43d7eedba1014a15ddda2493783ff6631e9580eb5fe78a76"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-multi-scene-selection-rejected.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-multi-scene-selection-rejected.log",
+      "kind": "source-asset",
+      "bytes": 913,
+      "sha256": "5d6e79bdb532bf738acf4117be73a8e5c4d485ef05792951bf6b9ef875cc2d00"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-run-kind-without-scene-rejected.log",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/runner-run-kind-without-scene-rejected.log",
+      "kind": "source-asset",
+      "bytes": 838,
+      "sha256": "b90782bf213b329a46bba65ce1d8b19339e350263799332d8d36bb487f71d71d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-normal-auto-track-rows.png",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-normal-auto-track-rows.png",
+      "kind": "source-asset",
+      "bytes": 854,
+      "sha256": "7cc4bc76798ba6c8acb43ecf98b5688049e94173363017772ee0515e73171cb5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-observation.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/chrome156-observation.json",
+      "kind": "source-asset",
+      "bytes": 2079,
+      "sha256": "7938ce59b21e6a7c09df8a668156e9d886f5a9021394b963d5b6ef159fb94ee0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/expected.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/expected.json",
+      "kind": "source-asset",
+      "bytes": 2212,
+      "sha256": "ffc5b619c404a0d3b78fded30056ecb70d14e65bc7ef32a6badea440c59e7c11"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/input.json",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/input.json",
+      "kind": "source-asset",
+      "bytes": 823,
+      "sha256": "6642ad857f0e73b09ff1f457195190f02a40961b748a83247f62834fe90459ff"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.html",
+      "kind": "generated-page",
+      "bytes": 32110,
+      "sha256": "cd43cefe81c0807d1d933ac581f1f854e0618f21cbdccfc726c76758fe79888a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "source": "spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "kind": "source-asset",
+      "bytes": 990,
+      "sha256": "b6921fbbd5fffffbec1162fef670caec7733139a7b4f31c5f83a81b41b315062"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/spec/STATUS.html",
+      "kind": "generated-page",
+      "bytes": 571679,
+      "sha256": "d88bb593769149d65ff83c69a9e9cb8600ef23fff564572183f8ff2ea2eaa428"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/css/styles.8d918fd78e.css",
+      "kind": "generated-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/6.cb8b86b995.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/6.cb8b86b995.js",
+      "kind": "generated-asset",
+      "bytes": 217066,
+      "sha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.beffaa20e8.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-04cbcabea10a.beffaa20e8.js",
+      "kind": "generated-asset",
+      "bytes": 207691,
+      "sha256": "9555b08c760108a90133440cd9777617d7ff711a95d04a9b83974399c84752cc"
+    },
+    {
+      "path": "static/js/async/route-2600e582365b.ce26da0512.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-2600e582365b.ce26da0512.js",
+      "kind": "generated-asset",
+      "bytes": 13169,
+      "sha256": "6c67c93151fde0cc72a2c3b84a3bcb95bff05172041fb469abe02348d7eece29"
+    },
+    {
+      "path": "static/js/async/route-2fc3592132f9.abf6e72e34.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-2fc3592132f9.abf6e72e34.js",
+      "kind": "generated-asset",
+      "bytes": 16824,
+      "sha256": "bf37efd0933c7ecdeac79b519a8a890652ad96cf855809d5aef73d22c624a32a"
+    },
+    {
+      "path": "static/js/async/route-3f5b4bb5bf07.fb14f745f5.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-3f5b4bb5bf07.fb14f745f5.js",
+      "kind": "generated-asset",
+      "bytes": 9809,
+      "sha256": "e362c16ee3e8f8af5a9dcc3e2ed23c4c335d337595c4a5d7f19a784903a1bbde"
+    },
+    {
+      "path": "static/js/async/route-5fdb9355f0cd.f417b61752.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-5fdb9355f0cd.f417b61752.js",
+      "kind": "generated-asset",
+      "bytes": 5536,
+      "sha256": "263c3d62fa0c3330109f1315ef73912a7b3290d2e7683628d30853e963b35a85"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.d8d656fece.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-6c33a3943990.d8d656fece.js",
+      "kind": "generated-asset",
+      "bytes": 605123,
+      "sha256": "4d6bca7cd9c0e45ab66cae997e8a1c62c418bb209ed0c8e6a979c23bc5677157"
+    },
+    {
+      "path": "static/js/async/route-6cb6ba938e14.9876741571.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-6cb6ba938e14.9876741571.js",
+      "kind": "generated-asset",
+      "bytes": 9801,
+      "sha256": "dd69c833b775dbc385dbac7b8a6d1155ee229ca5d47fdf6a421c45906d4d8169"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.8eff5e3784.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-739571cd2ae5.8eff5e3784.js",
+      "kind": "generated-asset",
+      "bytes": 244113,
+      "sha256": "ecc34253c58f0b252afac627e0bc45f67bdd32f1a0374065467f330e07c9b1b9"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.8e3d4f97c8.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-7ce2535ac56d.8e3d4f97c8.js",
+      "kind": "generated-asset",
+      "bytes": 605184,
+      "sha256": "72f47c8e96519987b1959111e66e4f9b578be70c3683764be3a7f69c1ed1588a"
+    },
+    {
+      "path": "static/js/async/route-b9559b9159c4.afaee25e8b.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-b9559b9159c4.afaee25e8b.js",
+      "kind": "generated-asset",
+      "bytes": 14468,
+      "sha256": "da43815f15ca81c38e2c076c19af8965ae96a85e75617fe1fa8a7ade6248c8e0"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.fd0a5ae5a5.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-c4dae6800800.fd0a5ae5a5.js",
+      "kind": "generated-asset",
+      "bytes": 244089,
+      "sha256": "333b21c843068698466f3b0c3f9f267592a7d93ce1e9d2fb9831c145671ce053"
+    },
+    {
+      "path": "static/js/async/route-c671e5caf77b.d79d210dce.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-c671e5caf77b.d79d210dce.js",
+      "kind": "generated-asset",
+      "bytes": 12827,
+      "sha256": "3b442d6d9f500202227587a31e3b84db6c9f6ff5e3fbf49b8fb1bf5e163bf81f"
+    },
+    {
+      "path": "static/js/async/route-e1d359bebb17.59c332474c.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/async/route-e1d359bebb17.59c332474c.js",
+      "kind": "generated-asset",
+      "bytes": 10596,
+      "sha256": "e6ed8879d64da0a9dbf80ef5a0eacd59673a1bbb1147ebe0ca2597201a504633"
+    },
+    {
+      "path": "static/js/index.98ef741fbf.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/index.98ef741fbf.js",
+      "kind": "generated-asset",
+      "bytes": 72211,
+      "sha256": "c8c056460d8315f54ae657d1e90cb477f3c10f47bf76c72e90fd395d41b884f8"
+    },
+    {
+      "path": "static/js/lib-react.382571d6aa.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/lib-react.382571d6aa.js",
+      "kind": "generated-asset",
+      "bytes": 218368,
+      "sha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af"
+    },
+    {
+      "path": "static/js/lib-router.f115cf67cf.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/lib-router.f115cf67cf.js",
+      "kind": "generated-asset",
+      "bytes": 35367,
+      "sha256": "c04d61b751534bfb3112504d05783d2e56edd1ddd52fd0b9a126d8216855007d"
+    },
+    {
+      "path": "static/js/styles.6b76c4bafc.js",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/static/js/styles.6b76c4bafc.js",
+      "kind": "generated-asset",
+      "bytes": 474,
+      "sha256": "4a266752409d958cea2738e5912cc5b24c4114553ef0e066040606c080ac31eb"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02/STATUS.html",
+      "kind": "generated-page",
+      "bytes": 571085,
+      "sha256": "26316f09b7e0217307f24f3c9073fe7dd3a14bd4a16618295fa2c698f4de42b0"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-track-sizing-c114-align-content-normal-runtime.html",
+      "source": "tests/fixtures/css/c11/grid-track-sizing-c114-align-content-normal-runtime.html",
+      "kind": "source-asset",
+      "bytes": 2085,
+      "sha256": "e8ed95a55729e016cc25ba01eaba56fa0b783e3bc16280c068407b97b5018698"
+    }
+  ]
+}
