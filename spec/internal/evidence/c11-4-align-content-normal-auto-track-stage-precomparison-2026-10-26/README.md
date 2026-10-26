@@ -28,4 +28,4 @@ Direct children은 각자의 고정 height를 유지한다. 최종 row starts에
 
 병합된 `align-content:stretch` positive 입력은 같은 규범 기대값을 사용하고, `align-content:start` control은 stage 미적용 및 rows `[10,20,5]px`를 유지한다. 새 `normal` 입력은 이 구현 결과를 oracle로 가져오지 않고 위 독립 계산과 직접 비교한다.
 
-현재 Rust style projection은 `LayoutAlignContent::Normal`을 Taffy `AlignContent::STRETCH`로 보낸다. 이 사전 비교는 그 경로의 단위 검증을 제안할 뿐이며, 일반 author CSS cascade, 플랫폼 runtime, browser rendering, WPT 또는 전체 CSS Grid 적합성을 주장하지 않는다. 계획 검토가 PASS되기 전까지 구현은 시작하지 않는다.
+현재 Rust style projection은 `LayoutAlignContent::Normal`을 Taffy `AlignContent::STRETCH`로 보낸다. 이 사전 비교는 그 경로의 단위 검증을 제안할 뿐이며, 일반 author CSS cascade, 플랫폼 runtime, browser rendering, WPT 또는 전체 CSS Grid 적합성을 주장하지 않는다. 계획 자체 검토는 PASS 20/20이다. 계획 PR diff 검토·병합 전까지 구현은 시작하지 않는다.
