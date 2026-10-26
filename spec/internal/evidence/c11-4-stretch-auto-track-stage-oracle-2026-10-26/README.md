@@ -1,34 +1,34 @@
 # C11.4 §11.8 auto-track stretch stage oracle
 
-## Scope
+## 범위
 
-This evidence covers one test-only `spinon-layout` slice. It verifies the `StretchAutoTracks` snapshot exposed by the existing trace. It does not change track sizing, style projection, FFI, or Android/iOS adapters.
+기존 trace가 노출하는 `StretchAutoTracks` snapshot을 검사하는 `spinon-layout` 테스트 전용 작업이다. track sizing, style projection, FFI, Android/iOS adapter는 변경하지 않는다.
 
-The normative rule is [CSS Grid Layout Module Level 1, 2025 CRD §11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-stretch): with `normal` or `stretch` content distribution, remaining positive definite free space is divided equally among tracks whose maximum sizing function is `auto`.
+규범 기준은 [CSS Grid Layout Module Level 1, 2025 CRD §11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-stretch)이다. `normal` 또는 `stretch` content distribution에서는 남은 양의 definite free space를 max sizing function이 `auto`인 track에 균등하게 배분한다.
 
-## Fixed input and expected values
+## 고정 입력과 기대값
 
-- Root and viewport: `20×100px`, `RootSizingPolicy::Match`, zero border/padding.
-- Columns: `[20px]`; rows: `[auto, auto, 5px]`; row gap: `10px`; grid placement mode: `TrackSizing`.
-- Three direct children have fixed block sizes `[10,20,5]px` in DOM/row order.
-- Before §11.8, row bases are `[10,20,5]px`; two internal gaps use `20px`. Remaining free space is `100 - 35 - 20 = 45px`.
-- `align-content:stretch` divides `45px` between the two auto-max rows. The expected stage rows are `[32.5,42.5,5]px`, with gap bases `[0,10,10,0]px` including the two collapsed boundary gutters. The fixed third row stays `5px`; all row tracks and gaps occupy `100px`.
-- Stretch child frames are `(0,0,20,10)`, `(0,42.5,20,20)`, `(0,95,20,5)`.
-- `align-content:start` is a negative control: `StretchAutoTracks { applied:false }`, rows `[10,20,5]px`, `45px` unused, and child y positions `[0,20,50]`.
+- Root와 viewport는 `20×100px`, `RootSizingPolicy::Match`, border/padding `0`이다.
+- Columns는 `[20px]`, rows는 `[auto, auto, 5px]`, row gap은 `10px`, placement mode는 `TrackSizing`이다.
+- DOM 순서대로 한 행에 하나씩 배치한 direct child의 고정 높이는 `[10,20,5]px`이다.
+- §11.8 이전 row base는 `[10,20,5]px`이고 내부 gutter 두 개의 합은 `20px`이다. 남은 공간은 `100 - 35 - 20 = 45px`이다.
+- `align-content:stretch`에서는 `45px`을 두 auto-max row에 나눠 각각 `22.5px` 성장시킨다. 기대 row는 `[32.5,42.5,5]px`이고 마지막 fixed row는 `5px`를 유지한다. row와 gutter 합은 `100px`이다.
+- Stretch child frame은 `(0,0,20,10)`, `(0,42.5,20,20)`, `(0,95,20,5)`이다.
+- `align-content:start` 대조군은 `StretchAutoTracks { applied:false }`, rows `[10,20,5]px`, 남는 공간 `45px`, child y `[0,20,50]`을 기대한다.
 
-The reference is the rule and arithmetic above, not a Taffy output used as an oracle. The test inspects the `Rows` pass and checks `IntrinsicSizingComplete → MaximizeTracks → ExpandFlexibleTracks → StretchAutoTracks` order, pre-stretch snapshots, stretch result, gutter sizes, root frame, and child frames.
+기대값은 규범과 위 산술에서 독립 도출했다. Taffy 출력값을 기대값으로 사용하지 않는다. 테스트는 `Rows` pass에서 `IntrinsicSizingComplete → MaximizeTracks → ExpandFlexibleTracks → StretchAutoTracks` 순서를 확인하고, pre-stretch snapshot·최종 track·gutter·root frame·child frame을 검사한다.
 
-## Verification
+## 검증 결과
 
-| Check | Result |
+| 검사 | 결과 |
 | --- | --- |
-| `mise exec -- cargo test --locked -p spinon-layout css_grid_2025_stretch_auto_tracks_distributes_definite_free_space_equally` | 1/1 passed |
-| `mise exec -- cargo fmt --all -- --check` | passed |
-| `mise exec -- cargo clippy --locked -p spinon-layout --all-targets -- -D warnings` | passed |
-| `git diff --check` | passed |
+| `mise exec -- cargo test --locked -p spinon-layout css_grid_2025_stretch_auto_tracks_distributes_definite_free_space_equally` | 1/1 통과 |
+| `mise exec -- cargo fmt --all -- --check` | 통과 |
+| `mise exec -- cargo clippy --locked -p spinon-layout --all-targets -- -D warnings` | 통과 |
+| `git diff --check` | 통과 |
 
-Raw command output is in [focused-test.log](./focused-test.log), [fmt-check.log](./fmt-check.log), and [clippy.log](./clippy.log). The first focused-test attempt exposed a missing `LayoutEngine` trait import in the new test; the import was added and the final rerun passed.
+원본 명령 출력은 [focused-test.log](./focused-test.log), [fmt-check.log](./fmt-check.log), [clippy.log](./clippy.log)에 있다. 첫 focused test 실행에서 새 test의 `LayoutEngine` trait import가 빠져 compile이 실패했다. import를 추가한 뒤 재실행해 통과했다.
 
-The plan and implementation each passed a separate 20-view review: [plan review](../../../../plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md) and [implementation review](./implementation-review-20.md). The separate PR diff review is still pending.
+계획과 구현은 각각 별도 20관점 검토에서 PASS 20/20을 받았다: [계획 검토](../../../../plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md), [구현 검토](./implementation-review-20.md). PR diff 30관점 검토는 진행 중이다.
 
-No app/runtime production path changed, so Android/iOS app builds and simulator captures were not part of this test-only gate. This does not establish browser or platform parity, WPT conformance, or C11.4 completion. The official checkbox and `72/213` count remain unchanged.
+변경 범위는 Rust test뿐이므로 앱 동작을 검증하는 Android/iOS build와 simulator capture는 수행하지 않았다. 브라우저·플랫폼 parity, WPT 적합성 또는 C11.4 완료를 주장하지 않는다. 공식 C11.4 checkbox와 `72/213` 완료 수는 유지한다.
