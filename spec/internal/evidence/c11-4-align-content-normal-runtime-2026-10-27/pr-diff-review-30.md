@@ -35,4 +35,4 @@
 | 29 | default/fixture artifact 또는 evidence checksum이 반대로 기록되는가 | **통과** — default/positive-control scan, 설치 hash 및 6개 사전 비교 SHA-256을 확인했다. static scan 범위 제한도 분명히 적었다. |
 | 30 | 제한 fixture가 공식 C11.4 완료로 표시되거나 검증 한계를 감추는가 | **통과** — `spec/STATUS.md`의 공식 C11.4 checkbox와 `72/213`을 바꾸지 않았고, 실기기·WPT·일반 CSS admission·전체 C11.4 미검증을 기록한다. |
 
-**결과:** 최종 diff 30/30 통과, 미해결 blocker 없음. PR 본문과 GitHub에서 raw screenshot 표시 여부는 PR 생성 후 Agent Browser로 별도 확인한다. 확인 뒤 해당 브라우저 세션과 process를 종료한다.
+**결과:** 최종 diff 30/30 통과, 미해결 blocker 없음. PR 본문에 커밋 SHA 고정 raw screenshot 두 개를 연결했고, PR 생성 후 Agent Browser에서 두 이미지가 모두 로드되는 것을 확인했다(Android `1080×2400`, iOS `1206×2622`). Agent Browser 세션과 daemon은 확인 뒤 종료했다.
