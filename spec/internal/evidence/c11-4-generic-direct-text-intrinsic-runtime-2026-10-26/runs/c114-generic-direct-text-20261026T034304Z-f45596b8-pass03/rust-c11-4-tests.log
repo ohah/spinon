@@ -1,0 +1,41 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.07s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 34 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_block_separator_requires_auto_grid_placement ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::image_matrix_has_unique_ids_and_bounded_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::multispan::tests::exposes_four_order_independent_direct_image_multispan_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::cyclic_minmax_replaced_span::tests::fixes_four_scene_ids_and_reverse_order_by_item_identity ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_fixture_cases_are_unique ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::cyclic_minmax_mixed_text_image_span::tests::exposes_only_eight_fixed_source_order_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_direct_nonspanning_text_image_intrinsic_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_fixed_mixed_text_image_multispan_scenes_and_tracks ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_nested_grid_depth_three_anonymous_image::tests::scene_matrix_is_four_unique_depth_three_ordered_intrinsic_inputs ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_explicit_placement_and_span_for_auto_max_mixed_image ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_mixed::tests::exposes_four_fixed_mixed_text_image_intrinsic_row_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_calc::tests::exposes_only_four_fixed_cyclic_calc_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_fit_content_calc::tests::exposes_fixed_cyclic_calc_track_scenes_by_function ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_unsupported_auto_max_mixed_track_and_root_variants ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_mixed_span_groups::tests::allowlists_only_eight_three_item_mixed_span_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_span_groups::tests::exposes_only_four_fixed_cross_axis_span_group_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_two_axis_span_text::tests::exposes_only_the_four_two_axis_span_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::prepare_rejects_invalid_auto_max_root_geometry_before_image_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_non_html_namespace_for_allowlisted_grid_root ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_two_axis_multitrack::tests::exposes_only_the_four_fixed_two_axis_multitrack_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_wrong_item_id_and_source_before_computed_style_lookup ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_nested_grid_intrinsic::tests::text_profile_requires_all_intrinsic_sizing_properties ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_grid_fixture_rejects_typography_and_track_profile_mutations ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::tests::fixed_text_matrix_has_thirteen_unique_direct_leaf_cases ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::overlapping_spans::tests::exposes_only_fixed_overlapping_cyclic_calc_span_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::independent_font_registry_token_is_not_equated_by_numeric_revision ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::two_candidates_allow_a_non_text_block_sibling_without_adding_text_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::hyphens_inline_declaration_is_reported_as_a_stylo_unknown_property ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::inline_unsupported_properties_fail_before_snapshot_or_layout_creation ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::stale_computed_snapshot_cannot_be_used_for_another_host_document ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_leaves_non_grid_and_legacy_one_item_shapes_for_existing_fallback ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::positive::generic_collector_matches_six_scene_computed_style_intrinsic_and_c15_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_ambiguous_sources_and_three_or_more_candidates ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_computed_item_styles_outside_the_fixed_profile ... ok
+
+test result: ok. 34 passed; 0 failed; 0 ignored; 0 measured; 215 filtered out; finished in 0.06s
+
