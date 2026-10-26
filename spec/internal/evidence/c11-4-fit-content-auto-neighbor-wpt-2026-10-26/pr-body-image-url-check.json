@@ -1,20 +1,29 @@
 {
   "pr": 661,
-  "checked_at_utc": "2026-10-26T13:21:26Z",
-  "checked_pr_head": "50ca7f96dc1593b356cd96bf5c65cedf7eebce0c",
-  "image_url": "https://raw.githubusercontent.com/ohah/spinon/50ca7f96dc1593b356cd96bf5c65cedf7eebce0c/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
-  "url_kind": "immutable commit permalink; independent of source branch deletion and synthetic pull merge ref",
+  "checked_at_utc": "2026-10-26T13:25:48Z",
+  "checked_pr_head": "f0cb550ff0bea4e3a2558f3a38b8ef3e73707a85",
+  "base": "d48d31698842866241dcb3317c6f8ff1ee068d1c",
+  "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/f0cb550ff0bea4e3a2558f3a38b8ef3e73707a85/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+  "url_kind": "immutable commit permalink; does not depend on the deletable branch name or synthetic merge ref",
   "asset_path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
   "asset_sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18",
-  "agent_browser": {
-    "cli_version": "0.31.1",
-    "browser": "Headless Chrome 156.0.8078.48",
+  "direct_url_check": {
+    "agent_browser": "0.31.1 with Headless Chrome 156.0.8078.48",
     "navigation_response_status": 200,
     "document_title": "chrome156-fit-content-auto-neighbor.png (1280×1000)",
     "image_complete": true,
     "natural_width_px": 1280,
     "natural_height_px": 1000
   },
-  "pr_body_rendering_verified": false,
-  "limitation": "This initial check verifies the immutable image URL itself. The PR body will be updated to use it and then checked in Agent Browser separately."
+  "pr_body_render_check": {
+    "url": "https://github.com/ohah/spinon/pull/661",
+    "page_title": "plan(c11-4): fit-content 옆 auto implicit 행 단일 WPT 계획 by ohah · Pull Request #661 · ohah/spinon · GitHub",
+    "image_source_matches_body_image_url": true,
+    "image_complete": true,
+    "image_visible": true,
+    "natural_width_px": 1280,
+    "natural_height_px": 1000,
+    "status": "rendered in the GitHub PR body"
+  },
+  "merge_ref_note": "The body uses an immutable content commit URL; no /merge ref or source branch is part of the image URL."
 }
