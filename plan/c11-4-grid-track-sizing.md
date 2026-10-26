@@ -443,3 +443,7 @@ PR #611과 #620은 direct text/image의 열 축과 가로 writing-mode 행 축�
 ### 2026-10-26 PR review finding closure
 
 PR [#645](https://github.com/ohah/spinon/pull/645)의 원래 diff 30관점 검토는 PASS 21 / PARTIAL 8 / FAIL 1을 기록했다. FAIL은 두 direct text item과 함께 있는 Grid 직속 `<img>`를 generic collector가 놓치는 경계였다. Fix commit `f45596b8b0b8a4d35807028bac30314a5dceaaab`는 root subtree의 HTML image를 collector가 거부하게 하고, 두 text item과 root image가 함께 있는 Rust regression을 추가했다. 기존 빈 HTML block sibling 허용 test는 유지했다. 최신 commit의 generic 9/9, C11.4 34/34, C11.4 runtime 19/19, FFI source test 1/1, fmt, targeted Clippy 및 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 재검증은 [runtime evidence](../spec/internal/evidence/c11-4-generic-direct-text-intrinsic-runtime-2026-10-26/README.md)에 있다. 수정 코드와 pass03 결과의 fresh 20관점 리뷰는 [PASS, blocker 0](./c11-4-generic-direct-text-image-mix-fix-implementation-review-20-2026-10-26.md)이다. 원래 PR diff review의 다른 PARTIAL은 고정 fixture 범위에서 앱 route·legacy fallback·일부 style/trace control을 완전히 다루지 않는 한계이며 제품 완료를 뜻하지 않는다. 최종 수정 diff 30관점 검토가 끝날 때까지 C11.4 체크와 공식 `72/213`을 유지한다.
+
+### 2026-10-26 image-mix review recheck closure
+
+원래 30관점 검토에서 찾은 FAIL은 fix commit `f45596b8`에서 닫았고, affected-view recheck [addendum](../spec/internal/evidence/c11-4-generic-direct-text-intrinsic-runtime-2026-10-26/pr-diff-review-30-fix-recheck.md)은 PASS 4 / PARTIAL 3 / FAIL 0이다. 남은 PARTIAL은 namespace/tag decoy와 offending `NodeId`를 직접 assert하는 추가 test, 그리고 collector의 `None` 이후 legacy fallback 전체 route 미실행이다. 이 범위는 제한 fixture로 명시하며 C11.4를 완료 처리하지 않는다. 공식 `72/213`을 유지한다.
