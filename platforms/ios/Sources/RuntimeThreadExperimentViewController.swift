@@ -409,10 +409,27 @@ final class RuntimeThreadExperimentViewController: UIViewController {
             let expectedLargeWrappers = baselineWrapperHandles
                 + self.lifecycleLargeRegistryNodeCount
             var largeRegistryScanSamplesUs = [Int]()
+            #if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
+            var largeRegistryScanSampleRecords = [String]()
+            var largeRegistryScanObservabilityPassed = true
+            #endif
             var largeRegistryRepeatedScansPassed = true
-            for _ in 0..<self.lifecycleLargeRegistryScanSamples {
+            for sample in 0..<self.lifecycleLargeRegistryScanSamples {
                 let scanReport = SpinonRunner.evalRuntimeSession(handle, source: "") ?? "응답 없음"
                 let scanUs = self.integerField("document_collection_last_scan_us", in: scanReport)
+                #if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
+                let sequence = self.integerField("seq", in: scanReport)
+                let traceCookie = self.integerField("trace_cookie", in: scanReport)
+                let ownerTid = self.integerField("owner_tid", in: scanReport)
+                let scanStartNs = self.integerField(
+                    "document_collection_last_scan_start_ns", in: scanReport)
+                largeRegistryScanSampleRecords.append(
+                    "scan_sample_index=\(sample + 1),seq=\(sequence),trace_cookie=\(traceCookie),owner_tid=\(ownerTid),scan_start_ns=\(scanStartNs),scan_wall_us=\(scanUs)"
+                )
+                largeRegistryScanObservabilityPassed = largeRegistryScanObservabilityPassed
+                    && sequence >= 0 && traceCookie >= 0 && ownerTid > 0
+                    && scanStartNs >= 0 && scanUs >= 0
+                #endif
                 let samplePassed = scanReport.hasPrefix("status=0 ")
                     && self.collectionIsHealthy(scanReport)
                     && self.integerField("document_nodes", in: scanReport) == expectedLargeNodes
@@ -428,6 +445,10 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 }
                 largeRegistryScanSamplesUs.append(scanUs)
             }
+            #if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
+            largeRegistryScanObservabilityPassed = largeRegistryScanObservabilityPassed
+                && largeRegistryScanSampleRecords.count == self.lifecycleLargeRegistryScanSamples
+            #endif
             let largeSetupScanUs = self.integerField(
                 "document_collection_last_scan_us", in: largeSetup)
             let largeSetupRootBufferBytes = self.integerField(
@@ -517,6 +538,9 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("callback 교체 후 해제·기준선 복귀 · \(callbackClosureReleased ? "통과" : "실패")")
                 self.appendReport("16,385개 wrapper 유지 · \(largeRegistryRetained ? "통과" : "실패") · nodes=\(self.integerField("document_nodes", in: largeSetup)) wrappers=\(self.integerField("document_collection_live_handles", in: largeSetup)) scan=\(largeSetupScanUs)µs root-buffer=\(largeSetupRootBufferBytes)B")
                 self.appendReport("16,385개 wrapper 재scan · \(largeRegistryRepeatedScansPassed ? "통과" : "실패") · 표본 \(largeRegistryScanSamplesUs.count)회 · scan-us=\(largeRegistryScanSamplesUs.map(String.init).joined(separator: ","))")
+                #if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
+                self.appendReport("S03_SCAN_OBSERVABILITY status=\(largeRegistryScanObservabilityPassed ? "PASS" : "FAIL") sample_records=\(largeRegistryScanSampleRecords.joined(separator: ";"))")
+                #endif
                 self.appendReport("16,385개 wrapper 해제 · \(largeRegistryReleased ? "통과" : "실패") · empty=\(largeEmptyWrappers) reclaimed-buffer=\(largeReclaimedNodeBufferBytes)B")
                 self.appendReport("반복 수명 회수 · \(repeatedBaseline ? "통과" : "실패") · \(baselineReturnRounds)/6회 · 회차당 32쌍 · 최대 빈 wrapper \(maximumEmptyWrappers)")
                 self.appendReport("DOM 자원 최종 기준선 · nodes=\(finalNodes) strings=\(finalStringUnits) wrappers=\(self.integerField("document_collection_scanned_handles", in: finalReport))")

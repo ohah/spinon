@@ -2014,10 +2014,32 @@ public final class MainActivity extends Activity {
             long expectedLargeWrappers = baselineWrapperHandles
                     + LIFECYCLE_LARGE_REGISTRY_NODES;
             StringBuilder largeRegistryScanSamplesUs = new StringBuilder();
+            StringBuilder largeRegistryScanSampleRecords = new StringBuilder();
+            int largeRegistryScanSampleRecordCount = 0;
+            boolean largeRegistryScanObservabilityPassed = true;
             boolean largeRegistryRepeatedScansPassed = true;
             for (int sample = 0; sample < LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES; sample++) {
                 String scanReport = decode(nativeSessionEval(handle, new byte[0]));
                 long scanUs = reportLongField(scanReport, "document_collection_last_scan_us");
+                if (BuildConfig.SPINON_S03_DOM_GC_FIXTURE) {
+                    long sequence = reportLongField(scanReport, "seq");
+                    long traceCookie = reportLongField(scanReport, "trace_cookie");
+                    long ownerTid = reportLongField(scanReport, "owner_tid");
+                    long scanStartNs = reportLongField(
+                            scanReport, "document_collection_last_scan_start_ns");
+                    if (largeRegistryScanSampleRecords.length() > 0) {
+                        largeRegistryScanSampleRecords.append(';');
+                    }
+                    largeRegistryScanSampleRecords.append("scan_sample_index=").append(sample + 1)
+                            .append(",seq=").append(sequence)
+                            .append(",trace_cookie=").append(traceCookie)
+                            .append(",owner_tid=").append(ownerTid)
+                            .append(",scan_start_ns=").append(scanStartNs)
+                            .append(",scan_wall_us=").append(scanUs);
+                    largeRegistryScanSampleRecordCount += 1;
+                    largeRegistryScanObservabilityPassed &= sequence >= 0 && traceCookie >= 0
+                            && ownerTid > 0 && scanStartNs >= 0 && scanUs >= 0;
+                }
                 boolean samplePassed = scanReport.startsWith("status=0 ")
                         && reportHasHealthyCollection(scanReport)
                         && reportLongField(scanReport, "document_nodes") == expectedLargeNodes
@@ -2035,6 +2057,16 @@ public final class MainActivity extends Activity {
                     largeRegistryScanSamplesUs.append(',');
                 }
                 largeRegistryScanSamplesUs.append(scanUs);
+            }
+            String scanObservabilitySummary = "";
+            if (BuildConfig.SPINON_S03_DOM_GC_FIXTURE) {
+                largeRegistryScanObservabilityPassed = largeRegistryScanObservabilityPassed
+                        && largeRegistryScanSampleRecordCount
+                                == LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES;
+                scanObservabilitySummary = " large_registry_scan_observability="
+                        + (largeRegistryScanObservabilityPassed ? "PASS" : "FAIL")
+                        + " large_registry_scan_sample_records="
+                        + largeRegistryScanSampleRecords;
             }
             long largeSetupScanUs = reportLongField(
                     largeSetup, "document_collection_last_scan_us");
@@ -2145,6 +2177,7 @@ public final class MainActivity extends Activity {
                     + " large_registry_scan_us=" + largeSetupScanUs
                     + " large_registry_scan_samples=" + LIFECYCLE_LARGE_REGISTRY_SCAN_SAMPLES
                     + " large_registry_scan_samples_us=" + largeRegistryScanSamplesUs
+                    + scanObservabilitySummary
                     + " large_registry_root_buffer_bytes=" + largeSetupRootBufferBytes
                     + " large_registry_reclaimed_buffer_bytes=" + largeReclaimedNodeBufferBytes
                     + " initial_baseline_return=" + (initialBaselineReturned ? "PASS" : "FAIL")
