@@ -1,0 +1,37 @@
+{
+  "target": "ios-simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "10657b3358b29ce8e69802f3fb12e4d5881be9960bdad1fe9da4dd12617bec20",
+  "sourceRevision": {
+    "commit": "5ef1234b8e1884434540b55df7de760e5eca88a3",
+    "tree": "e6656ac920e4d5f8cb95edfe312c7fac42d28730",
+    "trackedDiffSha256": "e44880c589101dbf5bf595698bc87c351acd21750b8b2dc4f60a65e30cad6dfb",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_neighbor.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_neighbor_report.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-layout/src/lib.rs",
+      "crates/spinon-runtime/src/lib.rs",
+      "crates/spinon-runtime/src/session.rs",
+      "crates/spinon-runtime/src/session/ua_cascade.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_auto_neighbor.rs",
+      "crates/spinon-style-to-layout/src/projection.rs",
+      "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ],
+    "untrackedFiles": [],
+    "sourceSnapshotSha256": "524c99fbf2fc227a5d0f8c6e653a66cefc11f5e2fcef325715e4b2b7dce350c0"
+  }
+}

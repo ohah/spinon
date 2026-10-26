@@ -92,6 +92,16 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub item_inputs: Arc<[spinon_layout::LayoutGridItemIntrinsicInput]>,
     pub item_frames: Arc<[(spinon_core::NodeId, LayoutFrame)]>,
     pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
+    pub fit_content_auto_neighbor: Option<RuntimeC11_4FitContentAutoNeighborObservation>,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4FitContentAutoNeighborObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub node_ids: [spinon_core::NodeId; 5],
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -123,6 +133,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             item_inputs,
             item_frames: Arc::clone(&self.item_frames),
             traces: Arc::clone(&self.traces),
+            fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
         }
     }
 }
@@ -469,6 +480,13 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_auto_neighbor_node_ids =
+        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
+            fixtures::prepare_c11_4_fit_content_auto_neighbor(&request.snapshot, root, &styles)?
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
         && c11_4_image_input.is_some()
@@ -678,6 +696,18 @@ where
         }
     }
     .map_err(layout_failure_from_error)?;
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let fit_content_auto_neighbor_observation =
+        if let Some(node_ids) = c11_4_fit_content_auto_neighbor_node_ids {
+            Some(fixtures::c11_4_fit_content_auto_neighbor_observation(
+                root,
+                &output.computed_styles,
+                &output.grid_container_inputs,
+                node_ids,
+            )?)
+        } else {
+            None
+        };
     let frames = runtime_frames(&request.snapshot, root, &styles, &output.layout)?;
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let anonymous_grid_text_item_frames =
@@ -783,6 +813,7 @@ where
                 item_inputs: item_inputs.into(),
                 item_frames: item_frames.into(),
                 traces: traces.into(),
+                fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
             }))
         }
     };
@@ -795,6 +826,10 @@ where
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         grid_track_sizing_diagnostics,
     };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_fit_content_auto_neighbor_node_ids.is_some() {
+        fixtures::validate_c11_4_fit_content_auto_neighbor_output(&completed)?;
+    }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if let Some(mixed_input) = &c11_4_mixed_input {
         fixtures::validate_c11_4_orthogonal_rows_output(
@@ -1296,6 +1331,74 @@ mod tests {
     use spinon_layout::{LayoutError, LayoutFrame};
     use spinon_style_to_layout::StyleLayoutError;
     use spinon_style_to_render::StyleRenderError;
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    #[test]
+    fn rekeying_grid_diagnostics_preserves_computed_style_provenance() {
+        use super::{
+            RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
+        };
+        use spinon_core::{
+            DocumentRevision, EnvironmentRevision, RenderTreeRevision, StyleRevision,
+        };
+        use spinon_layout::{GridContainerInput, LayoutInputRevision, LayoutSourceRevision};
+        use spinon_style::{ComputedStyleProfile, ComputedStyleSnapshot, CssViewport};
+        use std::sync::Arc;
+
+        let document = spinon_core::HostDocument::new().unwrap();
+        let document = document.snapshot();
+        let root = NodeId::new(1).unwrap();
+        let style_snapshot = ComputedStyleSnapshot {
+            profile: ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+            viewport: CssViewport::C04_FIXTURE,
+            style_revision: StyleRevision::INITIAL,
+            generation: document.generation(),
+            document_revision: document.document_revision(),
+            render_tree_revision: document.render_tree_revision(),
+            document_root_font_size_css_px: 16.0,
+            elements: Arc::from([]),
+            writing_styles: Arc::from([]),
+            diagnostics: Vec::new(),
+        };
+        let source = LayoutSourceRevision::HostDocument {
+            generation: document.generation(),
+            document: document.document_revision(),
+            render_tree: document.render_tree_revision(),
+        };
+        let original_revision =
+            LayoutInputRevision::new(source, StyleRevision::INITIAL, EnvironmentRevision::INITIAL);
+        let diagnostics = RuntimeGridTrackSizingDiagnostics {
+            revision: original_revision,
+            intrinsic_measurements: Arc::from([]),
+            item_inputs: Arc::from([]),
+            item_frames: Arc::from([]),
+            traces: Arc::from([]),
+            fit_content_auto_neighbor: Some(RuntimeC11_4FitContentAutoNeighborObservation {
+                style_snapshot: style_snapshot.clone(),
+                grid_root: root,
+                grid_container_input: GridContainerInput::default(),
+                node_ids: [root; 5],
+            }),
+        };
+        let rekeyed_revision = LayoutInputRevision::new(
+            LayoutSourceRevision::HostDocument {
+                generation: document.generation(),
+                document: DocumentRevision::default(),
+                render_tree: RenderTreeRevision::default(),
+            },
+            StyleRevision::INITIAL.checked_next().unwrap(),
+            EnvironmentRevision::INITIAL,
+        );
+
+        let rekeyed = diagnostics.with_revision(rekeyed_revision);
+        let observation = rekeyed.fit_content_auto_neighbor.unwrap();
+        assert_eq!(observation.style_snapshot, style_snapshot);
+        assert_eq!(
+            observation.style_snapshot.style_revision,
+            StyleRevision::INITIAL
+        );
+        assert_eq!(rekeyed.revision, rekeyed_revision);
+    }
 
     #[test]
     fn runtime_frames_reject_non_finite_coordinates_and_negative_sizes() {

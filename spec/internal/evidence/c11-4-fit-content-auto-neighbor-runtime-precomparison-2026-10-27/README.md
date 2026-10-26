@@ -16,10 +16,11 @@ PR #662는 `grid-auto-rows: fit-content(40px) auto`의 독립 기대값과 Rust 
 
 Agent Browser 0.31.1로 `https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html`을 열어 upstream WPT testharness의 13개 assertion이 모두 Pass인 것을 확인했다. 대상 root의 computed `grid-template-rows`는 `10px 290px`, height는 `300px`이었다. Agent Browser가 browser fetch로 얻은 live source SHA-256은 고정 checkout의 SHA-256과 일치했다.
 
-- [전체 WPT 결과](chrome-wpt-live-fit-content-auto-neighbor.png)
-- [대상 assertion과 결과](chrome-wpt-live-fit-content-auto-neighbor-target.png)
-- [원시 Agent Browser 관찰](chrome-wpt-live-observation.raw.json)
-- [고정 출처](source-pins.json) · [독립 기대값](expected.json)
+![Chrome 156 upstream WPT의 전체 13개 assertion 결과](chrome-wpt-live-fit-content-auto-neighbor.png)
+
+![대상 fit-content/auto assertion과 computed row 결과](chrome-wpt-live-fit-content-auto-neighbor-target.png)
+
+원시 Agent Browser 관찰: `chrome-wpt-live-observation.raw.json` · 고정 출처: `source-pins.json` · 독립 기대값: `expected.json`.
 
 Chrome은 보조 관찰이며 기대값을 Chrome 출력에서 역으로 만들지 않았다. upstream WPT testharness를 Chrome에서 실행한 기록은 Spinon WPT runner/conformance 결과가 아니다.
 

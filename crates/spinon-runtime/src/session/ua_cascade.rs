@@ -68,9 +68,11 @@ use calculation::{
     compute_request_for_root_html, compute_request_for_runtime_gpu,
 };
 use environment::RuntimeCssEnvironment;
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-pub use runtime_layout::RuntimeGridTrackSizingDiagnostics;
 use runtime_layout::layout_failure;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use runtime_layout::{
+    RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
+};
 pub use runtime_layout::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
     RuntimeLayoutState,

@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [공식 상태 대장](../spec/STATUS.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 단계. PR #662의 Rust-only oracle을 Android/iOS opt-in app fixture로 잇는다. 구현, Spinon runtime pass, 일반 CSS admission이나 C11.4 완료를 선언하지 않는다.
+**상태:** 이 계획의 단일 Android/iOS opt-in app fixture 조각을 구현했다. 일반 CSS admission·Spinon WPT 적합성·전체 C11.4 완료를 선언하지 않는다. 공식 상태 checkbox와 `72/213`은 유지한다.
 
 ## 목표
 
@@ -47,6 +47,7 @@ Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator 각각에서 최�
 - 계획 문서/입력/규범 산술의 [20관점 검토](./c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md)는 PASS 20/20이다. 계획 PR diff는 프로젝트 필수 규칙에 따라 별도 [30관점 검토](./c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md)를 거친다. 두 검토는 서로 다른 관점을 사용한다.
 - 계획 병합 후 구현은 새 branch에서 시작한다. 실제 source와 focused Rust/FFI tests, Android AVD 및 iOS Simulator 증거를 수집한다. `cargo build --locked -p spinon-ffi --lib`, `cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu`, `cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test` 세 artifact를 각각 만든다. 기본 runtime 및 `c04-runtime-gpu` 제품 artifact에는 C11.4 fixture ABI/scene string/payload가 없고, fixture-test artifact에는 있어야 한다. `llvm-nm`·문자열 검사 또는 동등한 검증으로 exclusion/positive control을 남긴다. 제품 코드 영향이 생기면 영향 범위 테스트와 internal contract 0059를 갱신한다.
 - 구현·앱 동작은 계획 검토와 다른 새 관점 20개로 검토하고, 구현 PR 변경 자체도 별도 30개 PR-diff review를 거친다. 결함 수정 뒤 영향을 받은 관점은 재실행한다.
+- 최종 source 구현/runtime 검토는 [20개 실패 관점 보고서](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md)에 기록한다. 구현 PR의 diff 검토는 이 계획 검토 및 구현 검토와 별도로 수행한다.
 - GitHub check rollup이 비면 CI 통과라고 기록하지 않는다. 병합은 Rebase and merge다. Tailnet preview를 갱신하면 서버 응답 hash와 Agent Browser 화면도 확인하고 Agent Browser/전용 Chrome process를 닫는다. Terminal Browser는 사용하지 않는다.
 
 ## 범위 밖

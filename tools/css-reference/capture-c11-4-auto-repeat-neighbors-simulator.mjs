@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import { createHash, randomUUID } from 'node:crypto';
+import { readFileSync } from 'node:fs';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { relative, resolve } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -84,6 +85,7 @@ const fixedAutoAreaSceneIDs = new Set([
   'fixed-auto-area-rows-fit-empty', 'fixed-auto-area-rows-fit-occupied',
   'fixed-auto-area-rows-area-larger',
 ]);
+const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
 const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
   'text-span2-before-span3', 'text-span3-before-span2',
@@ -164,6 +166,8 @@ const isImageAutoMaxBorderOverflowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => imageAutoMaxBorderOverflowSceneIDs.has(sceneID));
 const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
+const isFitContentAutoNeighborRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => fitContentAutoNeighborSceneIDs.has(sceneID));
 const isCrossAxisTemplateAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => (
     sceneID.startsWith('template-area-repeat-cross-axis-')
@@ -172,6 +176,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
+  : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
   : isImageAutoMaxBorderOverflowRun ? 'image-auto-max-border-overflow'
   : isCrossAxisTemplateAreaRun ? 'cross-axis-fixed-auto-area'
   : isCyclicPercentRun ? 'cyclic-percent-tracks'
@@ -212,6 +217,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
   : isCrossAxisTemplateAreaRun
     ? `spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-${date}/${target}-${runPrefix}`
+  : isFitContentAutoNeighborRun
+    ? `spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-${date}/${target}-${runPrefix}`
   : isImageAutoMaxBorderOverflowRun
     ? `spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
@@ -246,13 +253,31 @@ function sourceRevision() {
   const commit = command('git', ['rev-parse', 'HEAD']).stdout.trim();
   const tree = command('git', ['rev-parse', 'HEAD^{tree}']).stdout.trim();
   const trackedDiff = command('git', ['diff', '--binary', 'HEAD']).stdout;
-  const dirtyPaths = command('git', ['diff', '--name-only', 'HEAD']).stdout
+  const trackedDirtyPaths = command('git', ['diff', '--name-only', 'HEAD']).stdout
     .split(/\r?\n/).filter(Boolean);
+  const untrackedDirtyPaths = command('git', [
+    'ls-files', '--others', '--exclude-standard',
+  ]).stdout.split(/\r?\n/).filter((path) => path
+    && !path.startsWith('spec/internal/evidence/')
+    && !path.startsWith('build/'));
+  const untrackedFiles = untrackedDirtyPaths.map((path) => ({
+    path,
+    sha256: sha256(readFileSync(resolve(repositoryRoot, path))),
+  }));
+  const trackedDiffSha256 = sha256(trackedDiff);
+  const sourceSnapshotSha256 = sha256(JSON.stringify({
+    commit,
+    tree,
+    trackedDiffSha256,
+    untrackedFiles,
+  }));
   return {
     commit,
     tree,
-    trackedDiffSha256: sha256(trackedDiff),
-    trackedDirtyPaths: dirtyPaths,
+    trackedDiffSha256,
+    trackedDirtyPaths,
+    untrackedFiles,
+    sourceSnapshotSha256,
   };
 }
 
@@ -4990,7 +5015,39 @@ scenes.push({
       xCssPx: 11, yCssPx: 30, rgba: [34, 197, 94, 255] },
   ],
 });
-assert.equal(scenes.length, 498, 'C11.4 fixture scene count differs.');
+scenes.push({
+  id: 'fit-content-auto-neighbor-wpt',
+  axis: 'Rows',
+  boxCount: 5,
+  rootFrame: 'width=60,height=300',
+  itemFrame: 'width=60,height=10',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;'
+    + '1:node=2,x=0,y=0,width=60,height=10;'
+    + '2:node=3,x=0,y=0,width=60,height=10;'
+    + '3:node=4,x=0,y=10,width=60,height=290;'
+    + '4:node=5,x=0,y=10,width=60,height=10]',
+  tracks: [10, 290],
+  collapsed: [false, false],
+  requiresStrictPresentationIdentity: true,
+  pixelSamples: [
+    { id: 'fit-content-first-row-child',
+      nodeId: 'c114-fit-content-auto-neighbor-fit-child',
+      xCssPx: 30, yCssPx: 5, rgba: [255, 209, 102, 255] },
+    { id: 'auto-neighbor-row-child',
+      nodeId: 'c114-fit-content-auto-neighbor-auto-child',
+      xCssPx: 30, yCssPx: 15, rgba: [6, 214, 160, 255] },
+    { id: 'auto-neighbor-row-fill-top',
+      nodeId: 'c114-fit-content-auto-neighbor-auto-item',
+      xCssPx: 30, yCssPx: 20, rgba: [58, 134, 255, 255] },
+    { id: 'auto-neighbor-row-fill-bottom',
+      nodeId: 'c114-fit-content-auto-neighbor-auto-item',
+      xCssPx: 30, yCssPx: 230, rgba: [58, 134, 255, 255] },
+    { id: 'grid-root-right-edge-outside',
+      nodeId: 'c114-fit-content-auto-neighbor-grid',
+      xCssPx: 60, yCssPx: 20, rgba: [0, 0, 0, 255] },
+  ],
+});
+assert.equal(scenes.length, 499, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6122,6 +6179,13 @@ function verifyRuntimeLog(log, scene, runID) {
   assert.ok(log.includes('SPINON_C0410_DRAW')
     && log.includes(`presented boxes=${scene.boxCount}`),
     `${scene.id}: 화면 표시 결과가 없습니다.`);
+  if (scene.requiresStrictPresentationIdentity) {
+    assert.ok(log.includes(`SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=${runID} `)
+      && log.includes('strict_matches=true'),
+    `${scene.id}: surface 환경 revision이 strict validation을 통과하지 않았습니다.`);
+    assert.ok(log.includes(`SPINON_C114_GRID_PRESENTATION_MATCH run_id=${runID} matched=true `),
+      `${scene.id}: draw revision이 surface 환경 revision과 일치하지 않습니다.`);
+  }
   if (scene.runtimeImageCount !== undefined) {
     assert.ok(log.split(/\r?\n/).some((line) => line.includes('SPINON_C0410_DRAW')
       && line.includes(`runtime_image_count=${scene.runtimeImageCount} image_draw_count=${scene.runtimeImageCount}`)),

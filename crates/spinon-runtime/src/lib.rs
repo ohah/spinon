@@ -10,8 +10,6 @@ pub use root_html::RootHtmlEnvironmentSnapshot;
 pub const ROOT_HTML_SOURCE_MAX_BYTES: usize = 1_048_576;
 
 pub use bootstrap::{BootstrapSmokeError, run_bootstrap_smoke};
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-pub use session::RuntimeGridTrackSizingDiagnostics;
 #[cfg(any(target_os = "android", target_os = "ios", test))]
 pub use session::run_priority_fairness_probe;
 pub use session::{
@@ -20,4 +18,8 @@ pub use session::{
     RuntimeLayoutState, RuntimeSession, RuntimeUaCascadeCompleted, RuntimeUaCascadeError,
     RuntimeUaCascadeKey, RuntimeUaCascadeRoot, RuntimeUaCascadeSnapshot, RuntimeUaCascadeState,
     TaskPriority, run_priority_probe, run_shutdown_probe,
+};
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use session::{
+    RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
 };

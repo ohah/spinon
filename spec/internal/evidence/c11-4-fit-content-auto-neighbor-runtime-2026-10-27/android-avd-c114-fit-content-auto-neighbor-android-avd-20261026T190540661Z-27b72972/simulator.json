@@ -1,0 +1,40 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "apkSha256": "9b37c7480fdb7c590c0e242434f3bf627a24aaa065e5cd1312feeeeee107a7ff",
+  "installedApkSha256": "9b37c7480fdb7c590c0e242434f3bf627a24aaa065e5cd1312feeeeee107a7ff",
+  "sourceRevision": {
+    "commit": "5ef1234b8e1884434540b55df7de760e5eca88a3",
+    "tree": "e6656ac920e4d5f8cb95edfe312c7fac42d28730",
+    "trackedDiffSha256": "e44880c589101dbf5bf595698bc87c351acd21750b8b2dc4f60a65e30cad6dfb",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_neighbor.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_neighbor_report.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-layout/src/lib.rs",
+      "crates/spinon-runtime/src/lib.rs",
+      "crates/spinon-runtime/src/session.rs",
+      "crates/spinon-runtime/src/session/ua_cascade.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_auto_neighbor.rs",
+      "crates/spinon-style-to-layout/src/projection.rs",
+      "plan/c11-4-fit-content-auto-neighbor-runtime.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/SHA256SUMS",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ],
+    "untrackedFiles": [],
+    "sourceSnapshotSha256": "524c99fbf2fc227a5d0f8c6e653a66cefc11f5e2fcef325715e4b2b7dce350c0"
+  }
+}

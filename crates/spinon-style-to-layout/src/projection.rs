@@ -11,6 +11,8 @@ use spinon_core::{
     WritingMode,
 };
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_layout::GridContainerInput;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 use spinon_layout::LineBreakMode;
 use spinon_layout::{
     LayoutDisplay, LayoutEdges, LayoutEngine, LayoutError, LayoutFrame, LayoutInput,
@@ -54,6 +56,9 @@ mod validation;
 pub struct StyleLayoutOutput {
     pub computed_styles: ComputedStyleSnapshot,
     pub layout: LayoutOutput,
+    /// C11.4 fixture에서 Taffy에 전달한 실제 typed Grid container 입력입니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub grid_container_inputs: BTreeMap<NodeId, GridContainerInput>,
 }
 
 /// C11.1 inline CSS preflight, Stylo cascade, typed Grid projection과 Taffy layout을 연결합니다.
@@ -1321,6 +1326,8 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         .with_css_math(projected.css_math)
         .with_positioning(positioning)
         .with_grid_layout(grid_containers, grid_items);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let grid_container_inputs = input.grid_containers().clone();
     let mut layout = match (text_profile, intrinsic_sizes) {
         (Some((_, _, text_engine)), Some(intrinsic_sizes)) => {
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -1380,6 +1387,8 @@ fn compute_layout_from_styles_with_text_and_grid_options(
     Ok(StyleLayoutOutput {
         computed_styles,
         layout,
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        grid_container_inputs,
     })
 }
 

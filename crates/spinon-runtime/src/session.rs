@@ -38,9 +38,11 @@ use report::{OperationReport, operation_report};
 use scheduler::{EnqueueError, TaskScheduler};
 pub use shutdown::run_shutdown_probe;
 use trace::{TraceSection, finish_reply_handoff};
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-pub use ua_cascade::RuntimeGridTrackSizingDiagnostics;
 use ua_cascade::RuntimeUaCascadeCoordinator;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use ua_cascade::{
+    RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
+};
 pub use ua_cascade::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,
     RuntimeLayoutState, RuntimeUaCascadeCompleted, RuntimeUaCascadeError, RuntimeUaCascadeKey,
