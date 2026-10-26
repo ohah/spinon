@@ -1,6 +1,6 @@
 # C11.4 · direct PNG auto/max mixed track의 테두리 밖 overflow
 
-**현재 상태 (2026-10-26):** 제한 scene 구현과 iOS Simulator·Android API 37 AVD runtime gate 통과 · PR diff 검토/병합 대기 · C11.4 전체와 공식 `72/213`은 미완료로 유지한다.
+**현재 상태 (2026-10-26):** 제한 scene 구현과 iOS Simulator·Android API 37 AVD runtime gate를 통과했고 [구현 PR #652](https://github.com/ohah/spinon/pull/652)는 2026-10-26T07:12:38Z Rebase and merge로 병합됐다 (merge SHA `baa55101a5557edbc547ccd4208db7f1906f5760`). C11.4 전체와 공식 `72/213`은 미완료로 유지한다.
 **승인된 계획 scope:** oracle 교정 계획 blob `30922642f0bd8c6763742457699222f20010723e` · 이 진행 표시는 기존 scope와 판정 기준을 바꾸지 않는다.
 **기준 source:** `origin/main` `29449e4f794e53255909b58ed8fb2fd4995dd5d2`에서 분기했다.
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
@@ -8,6 +8,7 @@
 **사전 비교:** [Chrome geometry·overflow·surface 표본](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-precomparison-2026-10-26/README.md)
 **계획 적대 검토:** [20관점 검토 결과](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-plan-review-2026-10-26/plan-review-20.md) · 구현은 이 보고서의 PASS 이후에만 시작한다.
 **app surface oracle 교정:** [별도 20관점 계획 교정 검토](../spec/internal/evidence/c11-4-image-auto-max-border-overflow-plan-correction-review-2026-10-26/plan-correction-review-20.md) · 승인된 correction plan 기준으로 iOS Simulator 및 Android AVD 재실행을 통과했다.
+**병합 후 문서 동기화 검토:** [30개 적대 관점](../spec/internal/evidence/c11-4-pr652-postmerge-status-roadmap-2026-10-26/pr-diff-review-30.md)
 
 ## 목적과 범위
 
