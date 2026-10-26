@@ -1,0 +1,19 @@
+{
+  "session": "spinon-c114-image-auto-max-border-overflow-20261026",
+  "version": "0.31.1",
+  "closeCommand": "agent-browser --session spinon-c114-image-auto-max-border-overflow-20261026 close",
+  "closeCommandResult": "Browser closed",
+  "postCloseSessionInfo": {
+    "reportedPid": 98080,
+    "pageCount": 0,
+    "browserLaunched": false
+  },
+  "followUpProcessCheck": {
+    "reportedPidExists": false,
+    "dedicatedChromeProcessMatches": 0
+  },
+  "unrelatedProcessPreserved": {
+    "pid": 3348,
+    "reason": "No evidence connected this shared agent-browser daemon to the dedicated task session."
+  }
+}
