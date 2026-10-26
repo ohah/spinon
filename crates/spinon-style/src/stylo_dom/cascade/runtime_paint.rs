@@ -296,6 +296,13 @@ pub(super) fn runtime_block_paint_properties() -> Vec<(&'static str, LonghandId)
     properties
 }
 
+pub(super) fn c19_computed_color_properties() -> Vec<(&'static str, LonghandId)> {
+    vec![
+        ("background-color", LonghandId::BackgroundColor),
+        ("color", LonghandId::Color),
+    ]
+}
+
 pub(super) fn runtime_root_html_block_paint_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_block_paint_properties();
     properties.push(("color-scheme", LonghandId::ColorScheme));
@@ -564,7 +571,7 @@ pub fn compute_c19_computed_color_cascade_with_stylesheets(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
-    let properties = runtime_block_paint_properties();
+    let properties = c19_computed_color_properties();
     compute_cascade(
         view,
         author_stylesheets,
