@@ -1,0 +1,472 @@
+{
+  "standard": "CSS Grid Layout Module Level 1, 2025 CRD \u00a7\u00a711.5.1, 11.6",
+  "axis": "Rows",
+  "track_count": 4,
+  "available_block_size_px": 220,
+  "results": [
+    {
+      "id": "span2-forward",
+      "source_order": [
+        "A",
+        "B"
+      ],
+      "row_contributions_px": {
+        "A": 80,
+        "B": 120
+      },
+      "normative_batch_order": [
+        "span2"
+      ],
+      "initialize": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "intrinsic_batch_stages": [
+        {
+          "stage": "IntrinsicItemBatch(span=2, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "A",
+              "span": 2,
+              "height_contribution_px": 80,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 80,
+              "equal_increase_per_affected_row_px": 40
+            },
+            {
+              "item": "B",
+              "span": 2,
+              "height_contribution_px": 120,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 120,
+              "equal_increase_per_affected_row_px": 60
+            }
+          ],
+          "planned_increases_px": [
+            40,
+            60,
+            60,
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            40,
+            60,
+            60,
+            null
+          ]
+        }
+      ],
+      "intrinsic_sizing_complete": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          40,
+          60,
+          60,
+          0
+        ]
+      },
+      "maximize_tracks_stage": {
+        "available_block_size_px": 220,
+        "row_sizes_px": [
+          40,
+          60,
+          60,
+          0
+        ],
+        "growth_limits_px": [
+          40,
+          60,
+          60,
+          0
+        ],
+        "remaining_free_space_px": 60
+      }
+    },
+    {
+      "id": "span2-reversed",
+      "source_order": [
+        "B",
+        "A"
+      ],
+      "row_contributions_px": {
+        "B": 120,
+        "A": 80
+      },
+      "normative_batch_order": [
+        "span2"
+      ],
+      "initialize": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "intrinsic_batch_stages": [
+        {
+          "stage": "IntrinsicItemBatch(span=2, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "B",
+              "span": 2,
+              "height_contribution_px": 120,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 120,
+              "equal_increase_per_affected_row_px": 60
+            },
+            {
+              "item": "A",
+              "span": 2,
+              "height_contribution_px": 80,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 80,
+              "equal_increase_per_affected_row_px": 40
+            }
+          ],
+          "planned_increases_px": [
+            40,
+            60,
+            60,
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            40,
+            60,
+            60,
+            null
+          ]
+        }
+      ],
+      "intrinsic_sizing_complete": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          40,
+          60,
+          60,
+          0
+        ]
+      },
+      "maximize_tracks_stage": {
+        "available_block_size_px": 220,
+        "row_sizes_px": [
+          40,
+          60,
+          60,
+          0
+        ],
+        "growth_limits_px": [
+          40,
+          60,
+          60,
+          0
+        ],
+        "remaining_free_space_px": 60
+      }
+    },
+    {
+      "id": "span2-before-span3",
+      "source_order": [
+        "A",
+        "B",
+        "C"
+      ],
+      "row_contributions_px": {
+        "A": 80,
+        "B": 120,
+        "C": 200
+      },
+      "normative_batch_order": [
+        "span2",
+        "span3"
+      ],
+      "initialize": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "intrinsic_batch_stages": [
+        {
+          "stage": "IntrinsicItemBatch(span=2, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "A",
+              "span": 2,
+              "height_contribution_px": 80,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 80,
+              "equal_increase_per_affected_row_px": 40
+            },
+            {
+              "item": "B",
+              "span": 2,
+              "height_contribution_px": 120,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 120,
+              "equal_increase_per_affected_row_px": 60
+            }
+          ],
+          "planned_increases_px": [
+            40,
+            60,
+            60,
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            40,
+            60,
+            60,
+            null
+          ]
+        },
+        {
+          "stage": "IntrinsicItemBatch(span=3, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "C",
+              "span": 3,
+              "height_contribution_px": 200,
+              "current_spanned_growth_sum_px": 160,
+              "space_to_distribute_px": 40,
+              "equal_increase_per_affected_row_px": "40/3"
+            }
+          ],
+          "planned_increases_px": [
+            "40/3",
+            "40/3",
+            "40/3",
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            "160/3",
+            "220/3",
+            "220/3",
+            null
+          ]
+        }
+      ],
+      "intrinsic_sizing_complete": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ]
+      },
+      "maximize_tracks_stage": {
+        "available_block_size_px": 220,
+        "row_sizes_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ],
+        "growth_limits_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ],
+        "remaining_free_space_px": 20
+      }
+    },
+    {
+      "id": "span3-before-span2",
+      "source_order": [
+        "C",
+        "B",
+        "A"
+      ],
+      "row_contributions_px": {
+        "C": 200,
+        "B": 120,
+        "A": 80
+      },
+      "normative_batch_order": [
+        "span2",
+        "span3"
+      ],
+      "initialize": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "intrinsic_batch_stages": [
+        {
+          "stage": "IntrinsicItemBatch(span=2, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "B",
+              "span": 2,
+              "height_contribution_px": 120,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 120,
+              "equal_increase_per_affected_row_px": 60
+            },
+            {
+              "item": "A",
+              "span": 2,
+              "height_contribution_px": 80,
+              "current_spanned_growth_sum_px": 0,
+              "space_to_distribute_px": 80,
+              "equal_increase_per_affected_row_px": 40
+            }
+          ],
+          "planned_increases_px": [
+            40,
+            60,
+            60,
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            40,
+            60,
+            60,
+            null
+          ]
+        },
+        {
+          "stage": "IntrinsicItemBatch(span=3, crosses_flexible_track=false)",
+          "items": [
+            {
+              "item": "C",
+              "span": 3,
+              "height_contribution_px": 200,
+              "current_spanned_growth_sum_px": 160,
+              "space_to_distribute_px": 40,
+              "equal_increase_per_affected_row_px": "40/3"
+            }
+          ],
+          "planned_increases_px": [
+            "40/3",
+            "40/3",
+            "40/3",
+            0
+          ],
+          "base_sizes_px": [
+            0,
+            0,
+            0,
+            0
+          ],
+          "growth_limits_px": [
+            "160/3",
+            "220/3",
+            "220/3",
+            null
+          ]
+        }
+      ],
+      "intrinsic_sizing_complete": {
+        "base_sizes_px": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "growth_limits_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ]
+      },
+      "maximize_tracks_stage": {
+        "available_block_size_px": 220,
+        "row_sizes_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ],
+        "growth_limits_px": [
+          "160/3",
+          "220/3",
+          "220/3",
+          0
+        ],
+        "remaining_free_space_px": 20
+      }
+    }
+  ]
+}

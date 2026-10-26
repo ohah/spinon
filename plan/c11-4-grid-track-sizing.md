@@ -2,13 +2,17 @@
 
 **현재 상태 · 2026-10-27:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
-## 2026-10-27 §11.8 normal 3행 균등 stretch 앱 런타임 계획
+## 2026-10-27 fit-content 옆 auto implicit row 앱 runtime slice · PR #664 병합
 
-병합된 Rust oracle의 두 auto row 균등 성장을 기존 C11.4 opt-in Android/iOS 앱 경로에서 확인하는 [후속 계획](./c11-4-align-content-normal-runtime.md)을 작성했다. 기존 fit-content-auto-neighbor-wpt 앱 fixture도 align-content:normal과 auto-track stretch를 검증하지만 auto row가 하나인 별도 입력이므로 이번 계획은 중복된 normal support claim이 아니라 [10,20,5] → [32.5,42.5,5]의 정확한 3행 stage/geometry 연결만 다룬다. Agent Browser 0.31.1 / HeadlessChrome 156 사전 비교는 [고정 입력·기대값·관찰·원본 화면](../spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.md)에 있다. 계획 자체 20관점 및 계획 PR diff 30관점 검토 후 별도 구현 slice로 진행한다. C11.4 checkbox와 공식 72/213은 변경하지 않는다.
+PR #662의 test-only oracle을 C11.4 opt-in CSS→app 경로에 연결한 구현 PR [#664](https://github.com/ohah/spinon/pull/664)은 2026-10-26T19:22:09Z Rebase and merge로 병합됐다(merge SHA `bc681ad039081c6bce6dd59594a2e8353d1300eb`). 고정 입력은 `grid-auto-rows: fit-content(40px) auto`, 기대 Rows는 `[10,290]px`다. Chrome upstream WPT testharness 13/13 및 CSS Grid 독립 계산을 분리하고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 app frame/track trace/draw·present와 PixelCopy/Metal 표본 5/5를 확인했다. 실행·범위는 [계획](./c11-4-fit-content-auto-neighbor-runtime.md)과 [runtime evidence](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md)에 있다. 이는 Spinon WPT pass나 production root `ParsedRootHtml`·color-scheme/media-query parity를 뜻하지 않는다. C11.4 checkbox와 공식 `72/213`은 유지한다.
 
-## 2026-10-27 fit-content 옆 auto implicit row 앱 런타임 계획
+## 2026-10-27 §11.8 normal 3행 균등 stretch 앱 런타임 slice · PR #669 병합
 
-PR #662의 test-only oracle을 기존 C11.4 opt-in CSS→app 경로로 연결하는 후속 계획이다. Pinned WPT assertion은 `grid-auto-rows: fit-content(40px) auto`에서 기대 rows `[10px, 290px]`를 고정한다. Chrome upstream WPT testharness 13/13 Pass와 규범 독립 계산은 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md)에 있다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 source revision의 computed style→typed input→frame·track trace·draw/present를 확인할 계획이다. 이는 upstream WPT Chrome 실행이며 Spinon WPT pass가 아니다. 현재 test-scene HostDocument 경로는 production root HTML의 `ParsedRootHtml`·color-scheme/media-query parity를 검증하지 않는다. [후속 계획](./c11-4-fit-content-auto-neighbor-runtime.md) · [계획 실패 관점 20개](./c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md). C11.4 checkbox와 공식 `72/213`은 변경하지 않는다.
+기존 Rust oracle의 3행 `[auto,auto,5px]` stretch를 opt-in Android/iOS 앱 fixture에서 확인한 구현 PR [#669](https://github.com/ohah/spinon/pull/669)은 2026-10-26T22:28:31Z Rebase and merge로 병합됐다(merge SHA `3e46d12c1b5df26a0c06507defe3826e2f8b4fdb`). `160×100px` root, 10px row gap과 `[10,20,5]` initial rows에서 기대 final rows는 `[32.5,42.5,5]px`다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 1 scene의 Rows trace, frames, draw/present 및 5 surface samples를 확인했다. Chrome 사전 비교와 실행 한계는 [계획](./c11-4-align-content-normal-runtime.md), [사전 비교](../spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.md), [runtime evidence](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 있다. 이 제한 fixture는 CSS admission이나 C11.4 전체 완료를 뜻하지 않으며 C11.4 checkbox와 공식 `72/213`은 유지한다.
+
+## 2026-10-27 row-axis overlapping-span stage snapshot 계획
+
+기존 #642 span-stage oracle은 겹친 span-2/3 item의 중간 snapshots를 Columns pass에서만 검사한다. 상위 Stage B는 두 축 모두를 요구하고 trace는 Rows pass를 이미 보존하므로, 앱·플랫폼·product 코드 없이 row axis만 추가 검사하는 [후속 계획](./c11-4-row-axis-span-stage-oracle.md)을 세웠다. Chrome 156 final rows와 §11.5.1/§11.6의 exact rational 기대값은 [사전 비교](../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md)에 분리했다. 계획 단계이며 구현 결과나 공식 완료 증거가 아니다. C11.4 checkbox와 `72/213`은 유지한다.
 
 ## 2026-10-26 `align-content:normal` §11.8 stage oracle 계획
 

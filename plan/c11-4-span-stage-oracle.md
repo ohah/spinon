@@ -51,4 +51,4 @@ Span-2-only cases는 `Initialize`, span-2 이후 `[40,60,60,∞]`, `IntrinsicSiz
 
 Forward/reversed input에서 initialization, span batch order, batch별 base/growth snapshot, completion 및 span-2/span-2+3 maximize state가 독립 §11.5.1/§11.6 계산에 맞고 existing Chrome quantized final geometry/item frame regressions가 유지되어야 한다. Finite comparator, fixed-track early-return, malformed placement와 non-flex batch-count controls도 통과해야 한다. Focused Rust checks, 새 implementation/runtime review20 및 PR diff review30 이후 이 **overlapping span-stage test slice**만 완료로 보고한다.
 
-이 slice는 다른 max/min track function, multi-span의 모든 경쟁 조합, row axis, flex/automatic-minimum sizing matrix, intrinsic text/image assembly, CSS cascade, runtime output 및 WPT를 닫지 않는다. 따라서 C11.4 Stage B와 공식 `72/213`은 미완료로 유지한다.
+이 slice는 다른 max/min track function, multi-span의 모든 경쟁 조합, row axis, flex/automatic-minimum sizing matrix, intrinsic text/image assembly, CSS cascade, runtime output 및 WPT를 닫지 않는다. Row-axis stage snapshots는 별도 [후속 계획](./c11-4-row-axis-span-stage-oracle.md)으로 추적한다. 따라서 C11.4 Stage B와 공식 `72/213`은 미완료로 유지한다.
