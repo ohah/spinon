@@ -1,0 +1,41 @@
+{
+  "grid": {
+    "border": "1px",
+    "clientWidth": 10,
+    "columns": "24px 17px",
+    "rect": {
+      "bottom": 40,
+      "height": 40,
+      "right": 12,
+      "width": 12,
+      "x": 0,
+      "y": 0
+    },
+    "rows": "16px",
+    "scrollWidth": 24
+  },
+  "image": {
+    "naturalHeight": 16,
+    "naturalWidth": 24,
+    "overflow": [
+      "clip",
+      "clip"
+    ],
+    "rect": {
+      "bottom": 17,
+      "height": 16,
+      "right": 25,
+      "width": 24,
+      "x": 1,
+      "y": 1
+    }
+  },
+  "imageLoaded": true,
+  "outsideBorderHit": "image",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 48,
+    "width": 64
+  }
+}

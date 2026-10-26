@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>C11.4 image auto/max mixed track border overflow</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-width: 64px;
+        min-height: 48px;
+        background: #101820;
+      }
+
+      #grid {
+        box-sizing: border-box;
+        display: grid;
+        width: 12px;
+        height: 40px;
+        margin: 0;
+        padding: 0;
+        border: 1px solid #22c55e;
+        grid-template-columns: minmax(auto, max-content) 17px;
+        grid-template-rows: auto;
+        column-gap: 5px;
+        row-gap: 0;
+        align-items: start;
+        align-content: start;
+        justify-content: start;
+        background: #101820;
+      }
+
+      #image {
+        display: block;
+        width: auto;
+        height: auto;
+        margin: 0;
+        padding: 0;
+        border: 0;
+        background: #e5484d;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="grid"><img id="image" src="../../resources/c14-1-png-basic.png" alt=""></div>
+    <script>
+      window.c114BorderOverflowObservation = () => {
+        const grid = document.querySelector('#grid');
+        const image = document.querySelector('#image');
+        const gridStyle = getComputedStyle(grid);
+        const imageStyle = getComputedStyle(image);
+        const rect = (element) => {
+          const { x, y, width, height, right, bottom } = element.getBoundingClientRect();
+          return { x, y, width, height, right, bottom };
+        };
+        return {
+          userAgent: navigator.userAgent,
+          viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+          grid: {
+            rect: rect(grid),
+            border: gridStyle.borderTopWidth,
+            columns: gridStyle.gridTemplateColumns,
+            rows: gridStyle.gridTemplateRows,
+            clientWidth: grid.clientWidth,
+            scrollWidth: grid.scrollWidth,
+          },
+          image: {
+            rect: rect(image),
+            naturalWidth: image.naturalWidth,
+            naturalHeight: image.naturalHeight,
+            overflow: [imageStyle.overflowX, imageStyle.overflowY],
+          },
+          outsideBorderHit: document.elementFromPoint(12.5, 8)?.id ?? null,
+          imageLoaded: image.complete && image.naturalWidth === 24 && image.naturalHeight === 16,
+        };
+      };
+    </script>
+  </body>
+</html>

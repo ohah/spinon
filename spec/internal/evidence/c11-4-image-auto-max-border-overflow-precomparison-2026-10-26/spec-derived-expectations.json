@@ -1,0 +1,142 @@
+{
+  "source": {
+    "baseCommit": "29449e4f794e53255909b58ed8fb2fd4995dd5d2",
+    "fixture": "tests/fixtures/css/c11/grid-image-auto-max-border-overflow-c114-precomparison.html",
+    "asset": {
+      "path": "tests/fixtures/resources/c14-1-png-basic.png",
+      "width": 24,
+      "height": 16,
+      "format": "RGBA8 PNG",
+      "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+    },
+    "specifications": [
+      "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto",
+      "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-content",
+      "https://www.w3.org/TR/css-sizing-3/#box-sizing-property",
+      "https://www.w3.org/TR/2023/CRD-css-images-3-20231218/#natural-dimensions"
+    ]
+  },
+  "input": {
+    "root": {
+      "boxSizing": "border-box",
+      "borderBox": [12, 40],
+      "border": 1,
+      "padding": 0,
+      "background": "#101820"
+    },
+    "tracks": {
+      "columns": ["minmax(auto,max-content)", "17px"],
+      "rows": ["auto"],
+      "columnGap": 5,
+      "rowGap": 0,
+      "justifyContent": "start",
+      "alignContent": "start",
+      "alignItems": "start"
+    },
+    "item": {
+      "kind": "direct HTML img",
+      "width": "auto",
+      "height": "auto",
+      "placement": "auto in first column",
+      "authoredOverflow": null,
+      "itemBoxBackground": "#e5484d"
+    }
+  },
+  "normativeDerivation": {
+    "rootContentBox": [10, 38],
+    "autoMinimumConditions": {
+      "computedOverflowScrollable": false,
+      "spansAutoMinTrack": true,
+      "spansMoreThanOneTrack": false
+    },
+    "replacedItemNaturalSize": [24, 16],
+    "columnAutoMinimumContribution": 24,
+    "columnMaxContentContribution": 24,
+    "rowAutoMinimumContribution": 16,
+    "columns": [24, 17],
+    "columnGap": 5,
+    "tracksPlusGutter": 46,
+    "contentWidthDeficit": 36,
+    "rows": [16],
+    "rootBorderBoxFrame": [0, 0, 12, 40],
+    "imageFrame": [1, 1, 24, 16],
+    "rootBorderRight": 12,
+    "imageRight": 25,
+    "imageExtentPastRootRightBorder": 13
+  },
+  "chromeObservation": {
+    "browser": "Chrome for Testing / Chromium",
+    "version": "156.0.8078.48",
+    "os": "macOS 26.5.1 ARM64",
+    "agentBrowserVersion": "0.31.1",
+    "viewport": [64, 48],
+    "deviceScaleFactor": 1,
+    "rootRect": [0, 0, 12, 40],
+    "rootClientWidth": 10,
+    "gridTemplateColumns": [24, 17],
+    "gridTemplateRows": [16],
+    "itemNaturalSize": [24, 16],
+    "itemRect": [1, 1, 24, 16],
+    "itemOverflow": ["clip", "clip"],
+    "elementFromPoint": {
+      "point": [12.5, 8],
+      "target": "image"
+    },
+    "scrollWidth": 24,
+    "screenshotPixelsRgba8": [
+      {
+        "point": [12, 8],
+        "region": "outside root border, inside PNG image",
+        "rgba": [255, 255, 64, 255],
+        "assetLocalPoint": [11, 7]
+      },
+      {
+        "point": [26, 8],
+        "region": "outside root and image",
+        "rgba": [16, 24, 32, 255]
+      },
+      {
+        "point": [0, 30],
+        "region": "left root border away from item",
+        "rgba": [34, 197, 94, 255]
+      },
+      {
+        "point": [11, 30],
+        "region": "right root border away from item",
+        "rgba": [34, 197, 94, 255]
+      }
+    ]
+  },
+  "runtimeSurfaceExpectation": {
+    "note": "The C11.4 app fixture does not draw PNG texels; it paints the img element's background as a box marker. Compare occupancy and each app surface color to this fixture expectation, not to browser PNG pixels.",
+    "pointsCss": [
+      {
+        "point": [12.5, 8.5],
+        "region": "item box beyond root right border",
+        "rgba": [229, 72, 77, 255]
+      },
+      {
+        "point": [26.5, 8.5],
+        "region": "outside item/root",
+        "rgba": [16, 24, 32, 255]
+      },
+      {
+        "point": [0.5, 30.5],
+        "region": "left root border",
+        "rgba": [34, 197, 94, 255]
+      },
+      {
+        "point": [11.5, 30.5],
+        "region": "right root border away from item",
+        "rgba": [34, 197, 94, 255]
+      }
+    ]
+  },
+  "scopeLimits": [
+    "No image texel painting claim",
+    "No generic CSS overflow/clip support claim",
+    "No arbitrary image or CSS admission",
+    "No physical-device, hardware-GPU, or post-compositor iOS claim",
+    "No WPT or full C11.4/C11 completion claim"
+  ]
+}
