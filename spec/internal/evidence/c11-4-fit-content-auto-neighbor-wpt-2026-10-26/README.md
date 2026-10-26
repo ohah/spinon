@@ -53,6 +53,10 @@ Agent Browser에서 pinned WPT 원본 파일도 `file://`로 열어 선택된 DO
 
 새 입력은 explicit row 목록을 비워 두고 `auto_rows=TrackList([FitContent(40px), Auto])`를 사용해 두 실제 implicit row를 만든다. Root는 60px columns, 60px width, definite height 300px, `align-content:normal`, zero gaps/padding/border다. 각 direct grid item은 auto height이며 내부 child만 10px fixed height라서 content contribution과 stretch된 item frame을 구분한다. 이 변경은 stage trace와 frames를 pure Rust에서 검사할 계획이며 C11.4 지원 범위를 넓히지 않는다.
 
+## 구현/runtime 실패 관점 검토
+
+구현/runtime 실패 관점 20개 검토는 [implementation-review-20.md](./implementation-review-20.md)에 기록했다. 최종 판정은 20 PASS / 0 PARTIAL / 0 FAIL이다.
+
 ## 해시와 범위
 
 - `precomparison.html` SHA-256: 아래 `SHA256SUMS` 참조
