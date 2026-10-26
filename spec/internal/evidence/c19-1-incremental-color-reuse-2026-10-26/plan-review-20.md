@@ -1,6 +1,6 @@
 # C19.1 incremental color reuse 계획 실패 관점 20개
 
-검토한 계획 blob은 `plan/c19-1-incremental-color-reuse.md`의 Git blob SHA `03f33eab69fec417827dcf4e08ad3c113b6edf58`다. 기준 source는 `29449e4f794e53255909b58ed8fb2fd4995dd5d2`이다. 구현은 이 검토 뒤 시작한다.
+검토한 계획 blob은 `plan/c19-1-incremental-color-reuse.md`의 Git blob SHA `7fcac2d4656cc9e6286c47a259cdb5d5a2bdfe3c`다. 기준 source는 `29449e4f794e53255909b58ed8fb2fd4995dd5d2`이다. 구현은 이 재검토 뒤 시작한다.
 
 | # | 독립 실패 관점 | 계획에 둔 방어 또는 판정 |
 |---:|---|---|
@@ -23,6 +23,6 @@
 | 17 | root-html synthetic wrapper 의미를 fragment fixture로 과장 | 범위는 고정 fragment child view로 명시하고 wrapper 동작 주장을 하지 않는다. |
 | 18 | C19.1 incremental cache 지원을 paint 지원으로 오해 | paint, GPU, hit-test, WCAG, public API 제외를 계획/계약에 적는다. |
 | 19 | 색상 경로가 달라져 Chrome/Stylo 불일치를 재분류 | 전체 cascade equivalence만 검사하고 기존 color oracle은 바꾸지 않는다. |
-| 20 | 테스트 통과를 C19.1 또는 C19 완료로 표시 | STATUS/roadmap/완료 체크는 변경하지 않고 제한 경계를 기록한다. |
+| 20 | 근거 링크를 추가하면서 C19 상태를 실수로 완료 처리하거나 공식 수를 올림 | `spec/STATUS.md` C19 설명에는 제한 구현 evidence 링크만 추가하고 checkbox 미완료 및 `72/213`을 유지한다. roadmap은 수정하지 않는다. |
 
-**검토 판정:** 구현을 진행할 수 있다. 이 계획은 기존 incremental API의 거부 조건을 보존하는 C19.1 내부 snapshot reuse에 한정된다.
+**검토 판정:** 구현을 진행할 수 있다. updated plan blob을 기준으로 20개 관점을 재확인했다. 이 계획은 기존 incremental API의 거부 조건을 보존하는 C19.1 내부 snapshot reuse와 STATUS 설명의 제한된 evidence 링크 갱신에 한정된다.
