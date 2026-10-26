@@ -1,6 +1,6 @@
 # C11.4 · `fit-content()` 옆 `auto` implicit row WPT slice 계획
 
-**상태:** 계획 자체 실패 관점 검토 결과와 PR diff 검토 결과는 각각 별도 evidence 보고서에 기록한다. 이 PR은 계획·사전비교 문서만 추가하며 구현은 시작하지 않는다. C11.4와 공식 완료 집계 `72/213`은 변경하지 않는다.
+**상태:** 계획 PR [#661](https://github.com/ohah/spinon/pull/661)은 `4f6b38a4e6528667a0079df88a69bbfc909b86e8`로 병합됐다. 계획 실패 관점 20개와 계획 PR diff 30개는 별도 evidence에 기록돼 있다. 이 계획의 순수 Rust oracle 구현은 격리 worktree에서 완료했으며, 별도 구현/runtime 20-view 검토를 PR 생성 전에 진행한다. C11.4와 공식 완료 집계 `72/213`은 변경하지 않는다.
 
 **기준:** PR 생성 시 최신 `origin/main` `d48d31698842866241dcb3317c6f8ff1ee068d1c`.
 
@@ -39,7 +39,7 @@ expected stage                        = StretchAutoTracks { applied: true }
 
 단위 테스트의 root width는 유일한 60px column과 같은 60px로 고정해 block-axis만 검사한다. WPT 원본은 block-level Grid의 inline width를 지정하지 않아 containing block 폭을 사용한다. 이 차이는 row sizing 입력에 영향을 주지 않는다. frame oracle은 root `(0,0,60,300)`, 첫 item `(0,0,60,10)`, 둘째 item `(0,10,60,290)`, 두 nested content box `(0,0,60,10)` 및 `(0,10,60,10)`이다. Taffy/Spinon 결과를 보고 기대값을 조정하지 않는다.
 
-## 제안 test 경계
+## 테스트 경계
 
 새 pure Rust 단위 테스트 파일은 `crates/spinon-layout/src/grid_fit_content_auto_neighbor_oracle_tests.rs`다. 테스트 이름은 `css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row`로 제안한다. 이를 `crates/spinon-layout/src/lib.rs`에서 `#[cfg(test)] mod grid_fit_content_auto_neighbor_oracle_tests;` 한 줄로 등록한다. 기존 `grid_stretch_auto_tracks_oracle_tests.rs`는 수정하지 않는다. 그 파일은 균등 stretch의 `[auto, auto, fixed]`와 normal control을 이미 소유하므로, 새 파일은 fit-content/auto 혼합의 WPT 대응 입력과 trace를 소유한다.
 
@@ -52,15 +52,15 @@ expected stage                        = StretchAutoTracks { applied: true }
 - `IntrinsicSizingComplete`, `MaximizeTracks`, `ExpandFlexibleTracks`의 CSS row bases가 각각 `[10,10]px`인지 확인한다. `StretchAutoTracks` 뒤에는 `[10,290]px`인지 확인한다. gutter/collapsed sentinel은 CSS track 수에서 제외하고 별도 `is_gutter`/`is_collapsed` 조건을 검사한다.
 - root 및 두 item/nested item frame을 위의 독립 기대값과 `1e-4 CSS px` 절대 허용치로 비교한다. WPT CSSOM 문자열 expectation은 `10px 290px`이다.
 
-현재 `GridAutoRows::TrackList`와 `FitContent`/`Auto` typed track 표현은 `TrackSizing` profile에 존재한다. 구현 전에 adapter가 두 순서의 실제 implicit tracks를 만들고 CSS order를 보존하는지 테스트 대상에서 확인한다. 실패하면 기대값을 바꾸지 말고 입력 mapping 또는 알고리즘 경계를 다시 검토한다.
+현재 `GridAutoRows::TrackList`와 `FitContent`/`Auto` typed track 표현은 `TrackSizing` profile에 존재한다. 구현 테스트는 explicit `rows=[]`에서 두 실제 implicit row를 만들고 입력 pattern의 CSS 순서를 보존하는지 확인한다. 이 조건이나 규범 기대값에 어긋나면 기대값을 바꾸지 말고 입력 mapping 또는 알고리즘 경계를 다시 검토한다. 구현 관측은 [implementation-observations.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-observations.md)에 기록한다.
 
 ## 사전 비교와 검토 게이트
 
 Chrome 156 Agent Browser에서 WPT 원본 selected DOM 및 같은 row-axis 입력을 관찰했다. 두 경우 모두 `gridTemplateRows="10px 290px"`, item heights `[10,290]`을 반환했다. WPT original source는 `file://`로 열었기 때문에 `/resources/testharness.js`가 `file:///resources/testharness.js`로 resolve되어 WPT testharness는 실행되지 않았다. 이는 CSSOM/frame precomparison이며 WPT PASS가 아니다. 환경·raw output·screenshot/hash는 [사전비교 evidence](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md)에 고정한다.
 
-계획 자체의 적대적 검토 20개와 이 계획 PR diff 적대 검토 30개는 서로 다른 기록으로 수행한다. 계획 20개 결과는 [plan-review-20.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md)에 기록한다. 계획 PR diff 30개는 별도 [pr-diff-review-30.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md)에 기록하며, plan review 표를 재사용하지 않는다. 구현은 계획 PR 병합 뒤 최신 main에서 새 브랜치를 만들고, 이 계획 review와 다른 실패 관점의 새 20개 runtime/code review를 완료한 뒤에만 시작한다.
+계획 자체의 적대적 검토 20개와 계획 PR diff 적대 검토 30개는 서로 다른 기록으로 수행했다. 계획 20개 결과는 [plan-review-20.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md)에, 계획 PR diff 30개는 별도 [pr-diff-review-30.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md)에 기록돼 있다. 구현 후에는 이들과 다른 실패 관점으로 새 20개 runtime/code review를 수행하며, 해당 review가 끝나기 전에는 implementation PR을 만들지 않는다.
 
-문서 내부 링크·WPT source hash 검증과 RSPress `docs:build`를 계획 PR에서 확인한다. 이 문서 작업은 제품 소스, runtime fixture, 내부 API 계약, `spec/STATUS.md`, C11.4 완료 체크를 변경하지 않는다. CI 결과가 비어 있으면 통과로 쓰지 않는다.
+계획 PR에서는 문서 내부 링크·WPT source hash를 확인하고 RSPress `docs:build` 결과를 [docs-build-summary.json](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json)에 남겼다. 당시 문서 PR은 제품 소스, runtime fixture, 내부 API 계약, `spec/STATUS.md`, C11.4 완료 체크를 변경하지 않았다. 이 구현 slice는 순수 Rust test 파일과 `#[cfg(test)]` module 등록만 추가하며 생산 알고리즘, runtime fixture, 내부 API 계약, `spec/STATUS.md`, C11.4 완료 체크는 변경하지 않는다. CI 결과가 비어 있으면 통과로 쓰지 않는다.
 
 ## 남은 범위
 

@@ -1,8 +1,8 @@
 {
   "case_id": "fit-content-auto-neighbor-row",
-  "status": "plan-only oracle; not a Spinon result",
+  "status": "independently derived oracle; Spinon unit-test result is recorded separately",
   "input": {
-    "test_harness_root_width_px": 60,
+    "spinon_unit_test_root_width_px": 60,
     "explicit_columns_px": [60],
     "explicit_rows": [],
     "implicit_rows_pattern": ["fit-content(40px)", "auto"],
@@ -49,7 +49,7 @@
   ],
   "limitations": [
     "Expected values are independently derived and are not copied from Taffy or Spinon output.",
-    "No Spinon test or implementation has run.",
+    "The focused Spinon unit-test observation is recorded separately and is not a WPT testharness result.",
     "The WPT assertion was not executed by the WPT testharness in the Agent Browser file URL session."
   ]
 }
