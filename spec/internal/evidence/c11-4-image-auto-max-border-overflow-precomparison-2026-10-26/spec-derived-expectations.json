@@ -113,7 +113,9 @@
     ]
   },
   "runtimeSurfaceExpectation": {
-    "note": "The C11.4 app fixture does not draw PNG texels; it paints the img element's background as a box marker. Compare occupancy and each app surface color to this fixture expectation, not to browser PNG pixels.",
+    "note": "The C11.4 app fixture does not draw PNG texels; it paints the img element's background as a box marker. Compare occupancy and each app surface color to this fixture expectation, not to browser PNG pixels. The outside-root app sample reads the common runtime surface clear, not the Chrome document body's CSS background.",
+    "outsideRootAppSurfaceClearRgba": [0, 0, 0, 255],
+    "chromeDocumentBodyBackgroundRgba": [16, 24, 32, 255],
     "coordinateMapping": {
       "cssPixelCenterFromRunnerIndex": "index + 0.5",
       "surfaceIndexFromRunnerIndex": "floor((originCssPx + index + 0.5) * scale)",
@@ -131,8 +133,8 @@
       {
         "runnerPixelIndex": [26, 8],
         "cssPixelCenter": [26.5, 8.5],
-        "region": "outside item/root",
-        "rgba": [16, 24, 32, 255]
+        "region": "outside item/root; app surface clear, not CSS body background",
+        "rgba": [0, 0, 0, 255]
       },
       {
         "runnerPixelIndex": [0, 30],
