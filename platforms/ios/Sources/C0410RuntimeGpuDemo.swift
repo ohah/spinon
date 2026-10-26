@@ -1,3 +1,4 @@
+import CoreFoundation
 import CryptoKit
 import MetalKit
 import UIKit
@@ -3627,9 +3628,34 @@ private func c114CyclicMinmaxReplacedImageSpanTraceMatches(
 private func c114ImageAutoMaxMixedTrackTraceMatches(
     _ diagnostics: [String: Any]
 ) -> Bool {
+    func numberMatches(_ value: Any?, expected: Double) -> Bool {
+        guard let number = value as? NSNumber,
+              CFGetTypeID(number) != CFBooleanGetTypeID(),
+              number.doubleValue.isFinite else { return false }
+        return abs(number.doubleValue - expected) <= 0.0001
+    }
+
+    func integerMatches(_ value: Any?, expected: Int) -> Bool {
+        guard let number = value as? NSNumber,
+              CFGetTypeID(number) != CFBooleanGetTypeID(),
+              number.doubleValue.isFinite else { return false }
+        return number.doubleValue == Double(expected)
+    }
+
+    func booleanMatches(_ value: Any?, expected: Bool) -> Bool {
+        guard let number = value as? NSNumber,
+              CFGetTypeID(number) == CFBooleanGetTypeID() else { return false }
+        return number.boolValue == expected
+    }
+
+    func stringMatches(_ value: Any?, expected: String) -> Bool {
+        guard let string = value as? String else { return false }
+        return string == expected
+    }
+
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
-          (traces[0]["grid"] as? Int) == 1,
+          integerMatches(traces[0]["grid"], expected: 1),
           let passes = traces[0]["passes"] as? [[String: Any]],
           passes.count == 2 else { return false }
 
@@ -3673,7 +3699,7 @@ private func c114ImageAutoMaxMixedTrackTraceMatches(
 
     for passIndex in passes.indices {
         let pass = passes[passIndex]
-        guard (pass["axis"] as? String) == expectedAxes[passIndex],
+        guard stringMatches(pass["axis"], expected: expectedAxes[passIndex]),
               let stages = pass["stages"] as? [[String: Any]],
               stages.count == stageNames.count,
               let contributions = pass["contributions"] as? [[String: Any]],
@@ -3683,16 +3709,17 @@ private func c114ImageAutoMaxMixedTrackTraceMatches(
         let expectedKinds = ["Minimum", "MinContent", "MaxContent"]
         for contributionIndex in expectedKinds.indices {
             let contribution = contributions[contributionIndex]
-            guard (contribution["item"] as? Int) == 2,
-                  (contribution["span"] as? Int) == 1,
-                  (contribution["crossesFlexibleTrack"] as? Bool) == false,
-                  (contribution["kind"] as? String) == expectedKinds[contributionIndex],
-                  let value = contribution["value"] as? NSNumber,
-                  abs(value.doubleValue - expectedContribution) <= 0.0001 else {
+            guard integerMatches(contribution["item"], expected: 2),
+                  integerMatches(contribution["span"], expected: 1),
+                  booleanMatches(contribution["crossesFlexibleTrack"], expected: false),
+                  stringMatches(contribution["kind"], expected: expectedKinds[contributionIndex]),
+                  numberMatches(contribution["value"], expected: expectedContribution) else {
                 return false
             }
             if contributionIndex == 0 {
-                guard (contribution["minimumSource"] as? String) == expectedMinimumSource else {
+                guard stringMatches(
+                    contribution["minimumSource"], expected: expectedMinimumSource
+                ) else {
                     return false
                 }
             } else if !(contribution["minimumSource"] is NSNull) {
@@ -3702,7 +3729,7 @@ private func c114ImageAutoMaxMixedTrackTraceMatches(
 
         for stageIndex in stages.indices {
             let stage = stages[stageIndex]
-            guard (stage["stage"] as? String) == stageNames[stageIndex],
+            guard stringMatches(stage["stage"], expected: stageNames[stageIndex]),
                   let tracks = stage["tracks"] as? [[String: Any]],
                   tracks.count == expectedGutters[passIndex].count,
                   tracks.count == expectedBaseSizes[passIndex][stageIndex].count else {
@@ -3711,20 +3738,22 @@ private func c114ImageAutoMaxMixedTrackTraceMatches(
             for trackIndex in tracks.indices {
                 let track = tracks[trackIndex]
                 let expectedBase = expectedBaseSizes[passIndex][stageIndex][trackIndex]
-                guard (track["internalIndex"] as? Int) == trackIndex,
-                      (track["gutter"] as? Bool) == expectedGutters[passIndex][trackIndex],
-                      (track["collapsed"] as? Bool) == expectedCollapsed[passIndex][trackIndex],
-                      (track["infinitelyGrowable"] as? Bool) == false,
-                      let baseSize = track["baseSize"] as? NSNumber,
-                      abs(baseSize.doubleValue - expectedBase) <= 0.0001 else {
+                guard integerMatches(track["internalIndex"], expected: trackIndex),
+                      booleanMatches(
+                        track["gutter"], expected: expectedGutters[passIndex][trackIndex]
+                      ),
+                      booleanMatches(
+                        track["collapsed"], expected: expectedCollapsed[passIndex][trackIndex]
+                      ),
+                      booleanMatches(track["infinitelyGrowable"], expected: false),
+                      numberMatches(track["baseSize"], expected: expectedBase) else {
                     return false
                 }
                 let expectsUnboundedProjection = stageIndex == 0 && trackIndex == 1
                 if expectsUnboundedProjection {
                     guard track["growthLimit"] is NSNull else { return false }
                 } else {
-                    guard let growthLimit = track["growthLimit"] as? NSNumber,
-                          abs(growthLimit.doubleValue - expectedBase) <= 0.0001 else {
+                    guard numberMatches(track["growthLimit"], expected: expectedBase) else {
                         return false
                     }
                 }

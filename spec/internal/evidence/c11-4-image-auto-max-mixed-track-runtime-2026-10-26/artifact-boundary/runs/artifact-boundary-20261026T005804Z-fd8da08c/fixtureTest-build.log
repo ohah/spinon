@@ -1,0 +1,16 @@
+   Compiling simd-adler32 v0.3.10
+   Compiling adler2 v2.0.1
+   Compiling crc32fast v1.5.2
+   Compiling taffy v0.15.0 (<REPO>/vendor/taffy)
+   Compiling miniz_oxide v0.9.1
+   Compiling fdeflate v0.3.7
+   Compiling miniz_oxide v0.8.9
+   Compiling flate2 v1.1.10
+   Compiling png v0.18.1
+   Compiling spinon-layout v0.1.0 (<REPO>/crates/spinon-layout)
+   Compiling spinon-style-to-layout v0.1.0 (<REPO>/crates/spinon-style-to-layout)
+   Compiling spinon-image v0.1.0 (<REPO>/crates/spinon-image)
+   Compiling spinon-style-to-render v0.1.0 (<REPO>/crates/spinon-style-to-render)
+   Compiling spinon-runtime v0.1.0 (<REPO>/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (<REPO>/crates/spinon-ffi)
+    Finished `release` profile [optimized] target(s) in 7.03s

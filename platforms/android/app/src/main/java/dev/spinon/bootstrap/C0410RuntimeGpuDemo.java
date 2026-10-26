@@ -3390,7 +3390,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (traces == null || traces.length() != 1) return false;
         org.json.JSONObject trace = traces.optJSONObject(0);
         org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
-        if (trace == null || trace.optInt("grid", -1) != 1
+        if (trace == null || !c114ImageInteger(trace.opt("grid"), 1)
                 || passes == null || passes.length() != 2) return false;
         String[] axes = {"Columns", "Rows"};
         boolean[][] gutters = {
@@ -3431,7 +3431,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
         for (int passIndex = 0; passIndex < passes.length(); passIndex++) {
             org.json.JSONObject pass = passes.optJSONObject(passIndex);
-            if (pass == null || !axes[passIndex].equals(pass.optString("axis"))) return false;
+            if (pass == null || !c114ImageString(pass.opt("axis"), axes[passIndex])) return false;
             org.json.JSONArray stages = pass.optJSONArray("stages");
             org.json.JSONArray contributions = pass.optJSONArray("contributions");
             if (stages == null || stages.length() != stageNames.length
@@ -3442,17 +3442,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             for (int contributionIndex = 0; contributionIndex < kinds.length;
                     contributionIndex++) {
                 org.json.JSONObject contribution = contributions.optJSONObject(contributionIndex);
-                if (contribution == null || contribution.optInt("item", -1) != 2
-                        || contribution.optInt("span", -1) != 1
-                        || contribution.optBoolean("crossesFlexibleTrack", true)
-                        || !kinds[contributionIndex].equals(contribution.optString("kind"))
-                        || Math.abs(contribution.optDouble("value", Double.NaN)
-                                - expectedContribution) > 0.0001) return false;
+                if (contribution == null
+                        || !c114ImageInteger(contribution.opt("item"), 2)
+                        || !c114ImageInteger(contribution.opt("span"), 1)
+                        || !c114ImageBoolean(contribution.opt("crossesFlexibleTrack"), false)
+                        || !c114ImageString(contribution.opt("kind"), kinds[contributionIndex])
+                        || !c114ImageFiniteNear(
+                                contribution.opt("value"), expectedContribution)) return false;
                 if (contributionIndex == 0) {
-                    if (!expectedMinimumSource.equals(contribution.optString("minimumSource"))) {
+                    if (!c114ImageString(
+                            contribution.opt("minimumSource"), expectedMinimumSource)) {
                         return false;
                     }
-                } else if (!contribution.isNull("minimumSource")) {
+                } else if (!contribution.has("minimumSource")
+                        || !contribution.isNull("minimumSource")) {
                     return false;
                 }
             }
@@ -3460,7 +3463,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             for (int stageIndex = 0; stageIndex < stageNames.length; stageIndex++) {
                 org.json.JSONObject stage = stages.optJSONObject(stageIndex);
                 org.json.JSONArray tracks = stage == null ? null : stage.optJSONArray("tracks");
-                if (stage == null || !stageNames[stageIndex].equals(stage.optString("stage"))
+                if (stage == null || !c114ImageString(stage.opt("stage"), stageNames[stageIndex])
                         || tracks == null
                         || tracks.length() != gutters[passIndex].length
                         || tracks.length() != expectedBases[passIndex][stageIndex].length) {
@@ -3468,33 +3471,46 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }
                 for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
                     org.json.JSONObject track = tracks.optJSONObject(trackIndex);
-                    if (track == null || track.optInt("internalIndex", -1) != trackIndex
-                            || !(track.opt("gutter") instanceof Boolean)
-                            || !(track.opt("collapsed") instanceof Boolean)
-                            || !(track.opt("infinitelyGrowable") instanceof Boolean)
-                            || !track.has("baseSize")
-                            || !(track.opt("baseSize") instanceof Number)
-                            || !track.has("growthLimit")
-                            || track.optBoolean("gutter", !gutters[passIndex][trackIndex])
-                                    != gutters[passIndex][trackIndex]
-                            || track.optBoolean("collapsed", !collapsed[passIndex][trackIndex])
-                                    != collapsed[passIndex][trackIndex]
-                            || track.optBoolean("infinitelyGrowable", true)) return false;
+                    if (track == null
+                            || !c114ImageInteger(track.opt("internalIndex"), trackIndex)
+                            || !c114ImageBoolean(
+                                    track.opt("gutter"), gutters[passIndex][trackIndex])
+                            || !c114ImageBoolean(
+                                    track.opt("collapsed"), collapsed[passIndex][trackIndex])
+                            || !c114ImageBoolean(track.opt("infinitelyGrowable"), false)
+                            || !track.has("growthLimit")) return false;
                     double expectedBase = expectedBases[passIndex][stageIndex][trackIndex];
-                    if (Math.abs(track.optDouble("baseSize", Double.NaN) - expectedBase)
-                            > 0.0001) return false;
+                    if (!c114ImageFiniteNear(track.opt("baseSize"), expectedBase)) return false;
                     boolean expectedNonFiniteProjection = stageIndex == 0 && trackIndex == 1;
                     if (expectedNonFiniteProjection) {
                         if (!track.isNull("growthLimit")) return false;
-                    } else if (!(track.opt("growthLimit") instanceof Number)
-                            || Math.abs(track.optDouble("growthLimit", Double.NaN) - expectedBase)
-                                    > 0.0001) {
+                    } else if (!c114ImageFiniteNear(track.opt("growthLimit"), expectedBase)) {
                         return false;
                     }
                 }
             }
         }
         return true;
+    }
+
+    private static boolean c114ImageInteger(Object actual, int expected) {
+        if (!(actual instanceof Number)) return false;
+        double value = ((Number) actual).doubleValue();
+        return Double.isFinite(value) && value == expected;
+    }
+
+    private static boolean c114ImageBoolean(Object actual, boolean expected) {
+        return actual instanceof Boolean && ((Boolean) actual) == expected;
+    }
+
+    private static boolean c114ImageString(Object actual, String expected) {
+        return actual instanceof String && expected.equals(actual);
+    }
+
+    private static boolean c114ImageFiniteNear(Object actual, double expected) {
+        if (!(actual instanceof Number)) return false;
+        double value = ((Number) actual).doubleValue();
+        return Double.isFinite(value) && Math.abs(value - expected) <= 0.0001;
     }
 
     private static boolean c114FixedGutterSuggestionTraceMatches(

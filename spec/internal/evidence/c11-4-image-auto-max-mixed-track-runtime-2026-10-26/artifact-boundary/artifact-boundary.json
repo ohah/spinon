@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 1,
+  "sourceRevision": "e4570a04f1f8d0595836e3f35d7fa6a88b7c8b83",
+  "runDirectory": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0",
+  "targetDirectory": "build/spinon/c11-4-image-auto-max-artifact-boundary/target",
+  "llvmNmCommand": [
+    "<rust-sysroot>/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm"
+  ],
+  "llvmNmVersion": "llvm-nm, compatible with GNU nm",
+  "rustcVersion": "rustc 1.96.1 (31fca3adb 2026-06-26)\nbinary: rustc\ncommit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd\ncommit-date: 2026-06-26\nhost: aarch64-apple-darwin\nrelease: 1.96.1\nLLVM version: 22.1.2",
+  "sceneMarkers": [
+    "image-auto-max-mixed-tracks",
+    "c114-image-auto-max-mixed-grid",
+    "c114-image-auto-max-mixed-item",
+    "minmax(auto, max-content) 17px",
+    "https://spinon.invalid/c14-1-png-basic.png"
+  ],
+  "fixtureAbiSymbols": [
+    "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+    "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+  ],
+  "sharedImageFixtureAssetNote": "The PNG is a shared pre-existing fixture resource referenced by other opt-in scenes; its archive presence does not attribute it uniquely to this new scene.",
+  "results": {
+    "product": {
+      "features": "c04-runtime-gpu",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-image-auto-max-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/product-build.log",
+      "archivePath": "build/spinon/c11-4-image-auto-max-artifact-boundary/target/artifact-boundary-copies/libspinon_ffi-product.a",
+      "archiveBytes": 75135352,
+      "archiveSha256": "0411b4a4d8005265612acded45c41b14f7aa9fcc6ceb3df9b9df2d16485a4abc",
+      "sceneMarkerPresence": {
+        "image-auto-max-mixed-tracks": false,
+        "c114-image-auto-max-mixed-grid": false,
+        "c114-image-auto-max-mixed-item": false,
+        "minmax(auto, max-content) 17px": false,
+        "https://spinon.invalid/c14-1-png-basic.png": false
+      },
+      "allSceneMarkersPresent": false,
+      "anySceneMarkerPresent": false,
+      "fixtureAbiTextPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      },
+      "anyFixtureAbiTextPresent": false,
+      "fixtureAbiDefinedSymbols": [],
+      "fixtureAbiDefinedSymbolPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": false
+      },
+      "allFixtureAbiSymbolsDefined": false,
+      "sharedImageFixtureAsset": {
+        "path": "tests/fixtures/resources/c14-1-png-basic.png",
+        "bytes": 97,
+        "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+        "exactBytesPresent": false
+      },
+      "stringsMatchesPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/fixture-markers-product.txt",
+      "llvmNmMatchesPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/fixture-ffi-symbols-product.txt"
+    },
+    "fixtureTest": {
+      "features": "c04-runtime-gpu-fixture-test",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-image-auto-max-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/fixtureTest-build.log",
+      "archivePath": "build/spinon/c11-4-image-auto-max-artifact-boundary/target/artifact-boundary-copies/libspinon_ffi-fixtureTest.a",
+      "archiveBytes": 78492488,
+      "archiveSha256": "c90612c1785fb6299a23c0a26416eacdeeff607b26465520f9438e2aaf7025da",
+      "sceneMarkerPresence": {
+        "image-auto-max-mixed-tracks": true,
+        "c114-image-auto-max-mixed-grid": true,
+        "c114-image-auto-max-mixed-item": true,
+        "minmax(auto, max-content) 17px": true,
+        "https://spinon.invalid/c14-1-png-basic.png": true
+      },
+      "allSceneMarkersPresent": true,
+      "anySceneMarkerPresent": true,
+      "fixtureAbiTextPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": true,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      },
+      "anyFixtureAbiTextPresent": true,
+      "fixtureAbiDefinedSymbols": [
+        "0000000000003e94 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+        "0000000000006608 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ],
+      "fixtureAbiDefinedSymbolPresence": {
+        "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": true,
+        "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture": true
+      },
+      "allFixtureAbiSymbolsDefined": true,
+      "sharedImageFixtureAsset": {
+        "path": "tests/fixtures/resources/c14-1-png-basic.png",
+        "bytes": 97,
+        "sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+        "exactBytesPresent": true
+      },
+      "stringsMatchesPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/fixture-markers-fixtureTest.txt",
+      "llvmNmMatchesPath": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/artifact-boundary/runs/artifact-boundary-20261026T005842Z-4b4b1ea0/fixture-ffi-symbols-fixtureTest.txt"
+    }
+  },
+  "productNegativeControlPassed": true,
+  "fixturePositiveControlPassed": true,
+  "scopeNote": "This checks the Rust spinon-ffi release static archive only, not complete APK or IPA exclusion."
+}

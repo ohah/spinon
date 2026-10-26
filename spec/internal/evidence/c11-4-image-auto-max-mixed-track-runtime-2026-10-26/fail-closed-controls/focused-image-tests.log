@@ -1,0 +1,28 @@
+   Compiling spinon-runtime v0.1.0 (/private/tmp/spinon-c11-4-image-auto-max-preplan-20261026/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 1.65s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 8 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::image_matrix_has_unique_ids_and_bounded_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::multispan::tests::exposes_four_order_independent_direct_image_multispan_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::cyclic_minmax_replaced_span::tests::fixes_four_scene_ids_and_reverse_order_by_item_identity ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_explicit_placement_and_span_for_auto_max_mixed_image ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_non_html_namespace_for_allowlisted_grid_root ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::prepare_rejects_invalid_auto_max_root_geometry_before_image_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_wrong_item_id_and_source_before_computed_style_lookup ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_image::tests::rejects_unsupported_auto_max_mixed_track_and_root_variants ... ok
+
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 232 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-853fd16857d46e65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-9fcc6c82dfa206d8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

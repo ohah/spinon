@@ -1,0 +1,41 @@
+{
+  "pr": "https://github.com/ohah/spinon/pull/643",
+  "checked_at_utc": "2026-10-26T01:00:11Z",
+  "tool": "agent-browser",
+  "session": "spinon-pr643",
+  "commands": [
+    "agent-browser --session spinon-pr643 open https://github.com/ohah/spinon/pull/643",
+    "agent-browser --session spinon-pr643 snapshot -i",
+    "agent-browser --session spinon-pr643 eval 'Array.from(document.querySelectorAll(\".comment-body img\")).map(i => ({alt:i.alt,src:i.currentSrc,complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight}))'",
+    "agent-browser --session spinon-pr643 close",
+    "agent-browser --session spinon-pr643 session info --json",
+    "ps -axo pid,ppid,command | rg -i 'agent-browser|spinon-pr643|\\.agent-browser'"
+  ],
+  "images": [
+    {
+      "alt": "Android API 37 ARM64 AVD, layout/presentation only",
+      "src": "https://github.com/ohah/spinon/blob/plan/c11-4-image-auto-max-mixed-track-20261026/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png?raw=true",
+      "complete": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iPhone 17 Pro, iOS 26.2 Simulator, layout/presentation only",
+      "src": "https://github.com/ohah/spinon/blob/plan/c11-4-image-auto-max-mixed-track-20261026/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png?raw=true",
+      "complete": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "session_after_close": {
+    "active": false,
+    "pid": null,
+    "session": "spinon-pr643"
+  },
+  "matching_processes_after_close": [],
+  "result": "pass",
+  "limits": [
+    "Image resources loaded at their expected intrinsic dimensions in the rendered PR body.",
+    "This link check is not a PNG paint or pixel-equality check for the simulator scene."
+  ]
+}
