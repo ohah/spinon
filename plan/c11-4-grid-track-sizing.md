@@ -2,6 +2,10 @@
 
 **현재 상태 · 2026-10-27:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
+## 2026-10-27 §11.8 normal 3행 균등 stretch 앱 런타임 계획
+
+병합된 Rust oracle의 두 auto row 균등 성장을 기존 C11.4 opt-in Android/iOS 앱 경로에서 확인하는 [후속 계획](./c11-4-align-content-normal-runtime.md)을 작성했다. 기존 fit-content-auto-neighbor-wpt 앱 fixture도 align-content:normal과 auto-track stretch를 검증하지만 auto row가 하나인 별도 입력이므로 이번 계획은 중복된 normal support claim이 아니라 [10,20,5] → [32.5,42.5,5]의 정확한 3행 stage/geometry 연결만 다룬다. Agent Browser 0.31.1 / HeadlessChrome 156 사전 비교는 [고정 입력·기대값·관찰·원본 화면](../spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.md)에 있다. 계획 자체 20관점 및 계획 PR diff 30관점 검토 후 별도 구현 slice로 진행한다. C11.4 checkbox와 공식 72/213은 변경하지 않는다.
+
 ## 2026-10-27 fit-content 옆 auto implicit row 앱 런타임 계획
 
 PR #662의 test-only oracle을 기존 C11.4 opt-in CSS→app 경로로 연결하는 후속 계획이다. Pinned WPT assertion은 `grid-auto-rows: fit-content(40px) auto`에서 기대 rows `[10px, 290px]`를 고정한다. Chrome upstream WPT testharness 13/13 Pass와 규범 독립 계산은 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/README.md)에 있다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 동일 source revision의 computed style→typed input→frame·track trace·draw/present를 확인할 계획이다. 이는 upstream WPT Chrome 실행이며 Spinon WPT pass가 아니다. 현재 test-scene HostDocument 경로는 production root HTML의 `ParsedRootHtml`·color-scheme/media-query parity를 검증하지 않는다. [후속 계획](./c11-4-fit-content-auto-neighbor-runtime.md) · [계획 실패 관점 20개](./c11-4-fit-content-auto-neighbor-runtime-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-fit-content-auto-neighbor-runtime-plan-pr-diff-review-30.md). C11.4 checkbox와 공식 `72/213`은 변경하지 않는다.
