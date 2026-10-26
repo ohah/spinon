@@ -1,0 +1,58 @@
+{
+  "run_id": "c114-image-auto-max-20261026T014907Z-7a7aa224-final04",
+  "source_head": "7a7aa2240be7cc56c0516592ba41df74d04920af",
+  "v8_revision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+  "feature_build_flags": {
+    "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1"
+  },
+  "source_and_expectation_file_sha256": {
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs": "4e64a61afc2c000d430b62fc0fa97979b15c2a826b2f3d72048984d55572b704",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "738efa81baaa0e08b5d54b5cb89159254728e3e6eb59bab5b42238388c0ab058",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "4518aedf46ee847580256908e51a61889762f2c30e92d0b6764c926d962867ad",
+    "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "plan/c11-4-image-auto-max-mixed-track.md": "c735faceabc5d019dc9f5a82736c1605afbf268df6a44439a6973488d10faa25",
+    "plan/c11-4-grid-track-sizing.md": "5b9a27969ef7aff58a9d36f30e5780dfe4dabad5e2e7a11bdf543784e3fbec5b",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/spec-derived-expectations.json": "428b5a479bbc5b99b8f2600cc26555f825dc20bebb827e242f3af5ed20b777f8",
+    "spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh": "e42f20b80be9176003eb83f468a22e2d1af164995e3cdc4498cdd5fd63b0cc2c",
+    "tools/v8/v8-revision.txt": "ac0ba8f10b5243253c9565217fb301304dacbcefd1003fb79bd652ce2a44813c"
+  },
+  "build_artifacts": {
+    "android_v8_archive": {
+      "path": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-android-mac/obj/libv8_monolith.a",
+      "owner_checkout": "/Users/yoonhb/Documents/workspace/spinon",
+      "sha256": "e0288be05fdedd7b5bed945dc446f7ec7dc11454034d0efc3dfe297d32cd7813"
+    },
+    "ios_v8_archive": {
+      "path": "/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8/out/boson-ios-sim/obj/libv8_monolith.a",
+      "owner_checkout": "/Users/yoonhb/Documents/workspace/spinon",
+      "sha256": "7a3e24607ea7b419d3fd858c35c094a566660f9d3112015487fa010d99e99815"
+    },
+    "android_apk": {
+      "path": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+      "sha256": "abb48458f51d6f3d00865da2169b0499dbd731d4363ef7f538cf02c2d53f88d4"
+    },
+    "ios_app_executable": {
+      "path": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+      "sha256": "2742bc6046ff3a3b56e20df585e133fa70789b0fb43e66a1c60650ddf29bccd2"
+    },
+    "android_screenshot": {
+      "path": "android-avd/screenshot.png",
+      "dimensions": "1080x2400",
+      "sha256": "d4a488d7d560932df9d2023b9ea195b6cf1fd1f7195528963f6bdb329acb575b"
+    },
+    "ios_screenshot": {
+      "path": "ios-simulator/screenshot.png",
+      "dimensions": "1206x2622",
+      "sha256": "92cd03d3ffe88468d07757052522e3d2f71eb5d01025a1716ef7f55758d3d70f"
+    }
+  },
+  "commands": {
+    "android_build": "SPINON_V8_DIR=/Users/yoonhb/Documents/workspace/spinon/build/v8-source/v8 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 mise exec -- bun run build:android",
+    "simulator_run": "SPINON_C114_RUN_ID=c114-image-auto-max-20261026T014907Z-7a7aa224-final04 bash spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/run-simulator-matrix.sh"
+  },
+  "limits": [
+    "runtime_image_count=0 and image_draw_count=0 on Android and iOS; this proves intrinsic sizing input and layout trace, not PNG paint",
+    "Android is an API 37 ARM64 AVD using software rendering; iOS evidence is from Simulator",
+    "No WPT, physical-device, hardware-GPU, overflow-pixel, or post-compositor pixel-equality claim"
+  ]
+}

@@ -1,0 +1,2 @@
+ANDROID_NDK_HOME/ROOT가 고정 버전과 달라 무시하고 SDK의 NDK 27.1.12297006 을 사용합니다.
+tools/v8/build-android-macos.sh: line 57: gn: command not found
