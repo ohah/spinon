@@ -2683,18 +2683,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject diagnostics = (org.json.JSONObject) value;
             org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
             org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
-            if (revision == null || revision.optInt("intrinsicSize", 0) != 1
+            if (revision == null || !c114ImageInteger(revision.opt("intrinsicSize"), 1)
                     || inputs == null || inputs.length() != 1) return false;
             org.json.JSONObject input = inputs.optJSONObject(0);
-            if (input == null || input.optInt("grid", -1) != 1
-                    || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
+            if (input == null || !c114ImageInteger(input.opt("grid"), 1)
+                    || !c114ImageInteger(input.opt("node"), 2)
+                    || !c114ImageInteger(input.opt("sourceOrder"), 0)) {
                 return false;
             }
             org.json.JSONObject source = input.optJSONObject("source");
             org.json.JSONObject natural = source == null ? null : source.optJSONObject("natural");
-            return source != null && "replaced".equals(source.optString("kind"))
-                    && natural != null && natural.optDouble("width", Double.NaN) == 24.0
-                    && natural.optDouble("height", Double.NaN) == 16.0
+            return source != null && c114ImageString(source.opt("kind"), "replaced")
+                    && natural != null
+                    && c114ImageFiniteNear(natural.opt("width"), 24.0)
+                    && c114ImageFiniteNear(natural.opt("height"), 16.0)
                     && c114ImageTrackSizingTraceMatches(sceneId, diagnostics);
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
