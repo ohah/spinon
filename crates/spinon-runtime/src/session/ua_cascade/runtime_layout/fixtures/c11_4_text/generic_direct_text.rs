@@ -46,10 +46,12 @@ pub(super) fn prepare(
                     "anonymous direct Grid text is unsupported",
                 ));
             }
-            HostNodeKind::Element(_) if subtree_has_meaningful_text(snapshot, child)? => {
-                candidates.push(child);
+            HostNodeKind::Element(_) => {
+                if subtree_has_meaningful_text(snapshot, child)? {
+                    candidates.push(child);
+                }
             }
-            HostNodeKind::Element(_) | HostNodeKind::Text(_) => {}
+            HostNodeKind::Text(_) => {}
         }
     }
 
@@ -61,6 +63,12 @@ pub(super) fn prepare(
         return Err(source_failure(
             candidates[2].id(),
             "more than two direct text-item candidates",
+        ));
+    }
+    if let Some(image) = first_html_image(snapshot, root)? {
+        return Err(source_failure(
+            image.id(),
+            "replaced image content is unsupported in the generic text profile",
         ));
     }
 
@@ -294,6 +302,30 @@ fn subtree_has_meaningful_text(
         }
     }
     Ok(false)
+}
+
+fn first_html_image(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> Result<Option<HostNodeHandle>, RuntimeLayoutFailure> {
+    let mut pending = vec![root];
+    while let Some(handle) = pending.pop() {
+        let node = snapshot
+            .node(handle)
+            .ok_or_else(|| source_failure(handle.id(), "missing image subtree node"))?;
+        if let HostNodeKind::Element(element) = node.kind()
+            && element.namespace() == HTML_NAMESPACE
+            && element.local_name() == "img"
+        {
+            return Ok(Some(handle));
+        }
+        pending.extend(
+            snapshot
+                .children(handle)
+                .ok_or_else(|| source_failure(handle.id(), "missing image subtree children"))?,
+        );
+    }
+    Ok(None)
 }
 
 fn paragraph_style_for(
