@@ -1,0 +1,14 @@
+{
+  "pass": "pass01",
+  "session_id": "spinon-tailnet-roadmap-847b6352db73",
+  "session_created_after": "No active sessions",
+  "verified_pages": [
+    "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+    "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-stretch-auto-track-stage-oracle.html"
+  ],
+  "close_command": "agent-browser close --all",
+  "active_sessions_after_close": [],
+  "agent_browser_processes_after_close": [],
+  "terminal_browser_used": false
+}
