@@ -16,7 +16,7 @@
 
 기준은 [CSS Grid Layout Module Level 1, 2025 CRD §11.8](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-stretch)이다. 해당 단계는 관련 축의 content-distribution 값이 `normal` 또는 `stretch`일 때 남은 양의 definite free space를 `auto` max track sizing function을 가진 track에 균등하게 나눈다.
 
-행 축 입력은 root `20×100px`, rows `[auto, auto, 5px]`, `row-gap:10px`, direct child heights `[10,20,5]px`, `align-content:normal`, `justify-content:start`, border/padding `0`이다. Root height와 viewport height는 모두 definite `100px`이고, placement mode는 stage trace를 요청하는 `TrackSizing`이다.
+행 축 입력은 root `20×100px`, rows `[auto, auto, 5px]`, `row-gap:10px`, direct child heights `[10,20,5]px`, `align-content:normal`, `justify-content:flex-start`, border/padding `0`이다. 이는 기존 `input` helper의 `LayoutJustifyContent::FlexStart`와 일치한다. Root height와 viewport height는 모두 definite `100px`이고, placement mode는 stage trace를 요청하는 `TrackSizing`이다.
 
 `IntrinsicSizingComplete`, `MaximizeTracks`, `ExpandFlexibleTracks` 뒤의 독립 track bases는 `[10,20,5]px`이다. 두 내부 gutter는 각 `10px`이므로 §11.8 이전 free space는 다음과 같다.
 
