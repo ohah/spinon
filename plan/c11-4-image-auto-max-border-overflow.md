@@ -62,7 +62,7 @@ Chrome의 image `overflow-x/y=clip/clip`은 metadata로 기록한다. 이는 ima
 1. 구현 전 이 계획의 별도 20관점 검토를 통과하고 계획 source/commit SHA를 고정한다.
 2. Runtime image adapter focused tests, C11.4 FFI source/scene tests, strict Android/iOS intrinsic-input·trace·frame matcher, Rust formatting/Clippy 및 fixture artifact boundary를 확인한다. 실행하지 않은 검사는 결과에 포함하지 않는다.
 3. Android API 37 ARM64 AVD와 iPhone 17 Pro / iOS 26.2 Simulator에서 새 scene과 기존 `image-auto-max-mixed-tracks` control을 각각 실행한다. Capture tool이 앱을 force-stop/terminate하면 실행 전에 현재 기기/앱 session을 확인하고 조율한다. Physical device는 연결하거나 사용하지 않는다.
-4. 앱 최신 source hash, APK/app executable hash, install identity, CSS frame·trace, draw/present, surface origin/format, 다섯 표본과 screenshots를 기록한다. Screenshot은 해당 simulator 화면 증거이고 iOS Metal 표본은 compositor 제출 전, Android는 API 37 AVD software-render path임을 명시한다.
+4. 앱 최신 source hash, APK/app executable hash, install identity, CSS frame·trace, draw/present, surface origin/format, 네 개의 고정 pixel 표본과 screenshots를 기록한다. 표본은 item box, root 바깥 배경, 좌측 border, 우측 border다. Screenshot은 해당 simulator 화면 증거이고 iOS Metal 표본은 compositor 제출 전, Android는 API 37 AVD software-render path임을 명시한다.
 5. 구현/runtime 변경을 계획 검토와 별개의 20관점으로 다시 공격한다. 모든 PR diff는 별도 실패 경로 30관점 검토를 거친다. PR 본문에 Android와 iOS screenshot을 raw Markdown image로 삽입해 실제 화면이 본문에 나타나게 한다. 본문 링크를 전용 Agent Browser session에서 열어 각 이미지의 완료 로드·실제 렌더를 확인하고, 확인 뒤 그 session/browser process를 닫는다.
 6. `spec/STATUS.md`와 공개 roadmap에는 이 제한 scene 및 근거만 연결한다. C11.4/C11 checkbox와 공식 `72/213`을 변경하지 않는다. 제품 지원 범위 또는 전체 intrinsic sizing 완료로 해석될 수 있는 문구를 쓰지 않는다.
 
