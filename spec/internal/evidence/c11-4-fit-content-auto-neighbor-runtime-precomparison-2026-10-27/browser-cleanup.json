@@ -1,0 +1,8 @@
+{
+  "agent_browser_version": "0.31.1",
+  "session": "spinon-c114-fit-content-runtime-plan-20261027",
+  "closed": true,
+  "dedicated_agent_browser_or_remote_debug_chrome_processes_after_close": 0,
+  "process_query": "ps -eo pid,ppid,etime,command | rg '[a]gent-browser-darwin|[G]oogle Chrome --remote-debugging-port=0'",
+  "note": "The first immediate process scan raced with CLI shutdown; a later scan after command completion found no matching process."
+}

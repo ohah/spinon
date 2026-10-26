@@ -1,0 +1,167 @@
+{
+  "case_id": "fit-content-auto-neighbor-row-runtime",
+  "status": "independently derived oracle; no Spinon runtime result is included in this plan evidence",
+  "source_shape": {
+    "display": "grid",
+    "grid_inline_size_px": 60,
+    "grid_block_size_px": 300,
+    "explicit_columns_px": [
+      60
+    ],
+    "explicit_rows": [],
+    "implicit_rows": [
+      "fit-content(40px)",
+      "auto"
+    ],
+    "row_gap_px": 0,
+    "padding_px": 0,
+    "border_px": 0,
+    "align_content": "normal",
+    "direct_grid_item_count": 2,
+    "each_item_child_block_size_px": 10
+  },
+  "css_grid_2025_crd_derivation": {
+    "fit_content_track_functions": {
+      "min": "auto",
+      "max": "max-content"
+    },
+    "item_minimum_contributions_px": [
+      10,
+      10
+    ],
+    "fit_content_max_content_growth_limit_px": 10,
+    "fit_content_argument_px": 40,
+    "pre_stretch_track_bases_px": [
+      10,
+      10
+    ],
+    "positive_free_space_before_stretch_px": 280,
+    "stretch_eligible_track_indexes": [
+      1
+    ],
+    "stage": "StretchAutoTracks { applied: true }",
+    "final_track_sizes_px": [
+      10,
+      290
+    ]
+  },
+  "expected_runtime": {
+    "computed_rows_from_trace_px": [
+      10,
+      290
+    ],
+    "grid_border_box_px": [
+      60,
+      300
+    ],
+    "item_border_box_heights_px": [
+      10,
+      290
+    ],
+    "child_block_heights_px": [
+      10,
+      10
+    ],
+    "frames_css_px": {
+      "grid": [
+        0,
+        0,
+        60,
+        300
+      ],
+      "fit_content_item": [
+        0,
+        0,
+        60,
+        10
+      ],
+      "fit_content_child": [
+        0,
+        0,
+        60,
+        10
+      ],
+      "auto_item": [
+        0,
+        10,
+        60,
+        290
+      ],
+      "auto_child": [
+        0,
+        10,
+        60,
+        10
+      ]
+    }
+  },
+  "normative_basis": [
+    "CSS Grid Layout Module Level 1 2025 CRD §6.6",
+    "CSS Grid Layout Module Level 1 2025 CRD §11.5",
+    "CSS Grid Layout Module Level 1 2025 CRD §11.8",
+    "CSS Grid Layout Module Level 1 2025 CRD §12.2 and §12.4–§12.8"
+  ],
+  "comparison_rules": {
+    "track_sizes_and_integer_frames": "exact CSS px values read directly from pre-render LayoutOutput and grid trace; no scale or DPR conversion",
+    "selected_root_and_child_revision": "all measurements must bind to the same source/style/environment revision",
+    "trace": "one row pass; intrinsic, maximize, flexible-expansion, then stretch; only auto track stretches",
+    "failures": "missing/duplicate trace, partial frames, stale revision, rejected source, no draw/present are failures",
+    "frame_source_and_units": "LayoutOutput LayoutFrame and grid trace values before surface/device-pixel transform; values are CSS px and require no DPR conversion.",
+    "trace_cardinality": "one root grid trace, exactly one Columns pass and one Rows pass; the Rows pass has each required stage exactly once in normative order."
+  },
+  "deviations_from_upstream_fixture": [
+    "The runtime root width is fixed at 60px for deterministic frames; upstream leaves the grid inline size auto. Both retain one 60px explicit column, no inline text contribution, zero row gap, and the same definite 300px block size. The plan compares only the block-axis sizing targeted by the assertion.",
+    "Diagnostic item background colors may be added for screenshots; they must not add border, padding, min/max constraints, text, or size-affecting styles."
+  ],
+  "limits": [
+    "Upstream WPT testharness output is Chrome-only corroboration and is not a Spinon WPT pass.",
+    "The runtime candidate remains opt-in fixture coverage and does not enable general author CSS admission.",
+    "C11.4 and official completion count remain incomplete and unchanged."
+  ],
+  "runtime_identity": {
+    "scene_id": "fit-content-auto-neighbor-wpt",
+    "root_id": "c114-fit-content-auto-neighbor-grid",
+    "node_ids_in_tree_order": [
+      "c114-fit-content-auto-neighbor-grid",
+      "c114-fit-content-auto-neighbor-fit-item",
+      "c114-fit-content-auto-neighbor-fit-child",
+      "c114-fit-content-auto-neighbor-auto-item",
+      "c114-fit-content-auto-neighbor-auto-child"
+    ],
+    "computed_style": {
+      "profile": "ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1",
+      "display": "grid",
+      "width_px": 60,
+      "height_px": 300,
+      "explicit_rows": [],
+      "auto_rows": [
+        "fit-content(40px)",
+        "auto"
+      ],
+      "align_content": "normal",
+      "auto_flow": "row",
+      "row_gap_px": 0
+    },
+    "grid_container_input": {
+      "placement_mode": "GridPlacementMode::TrackSizing",
+      "explicit_rows": [],
+      "auto_rows": {
+        "variant": "GridAutoRows::TrackList",
+        "tracks": [
+          {
+            "variant": "GridTrackSize::FitContent",
+            "value": "GridTrackLengthPercentage::LengthPx(40)"
+          },
+          {
+            "variant": "GridTrackSize::Auto"
+          }
+        ]
+      }
+    }
+  },
+  "negative_controls": [
+    "Unknown scene ID produces no source.",
+    "Altered grid-auto-rows order/value or an extra explicit row does not satisfy the positive matcher.",
+    "Missing or extra item/child, duplicate identity, or stale revision is rejected with no partial positive result."
+  ]
+}
