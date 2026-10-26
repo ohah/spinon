@@ -127,6 +127,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "area-track-count-mismatch";
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
+    private static final String C114_GENERIC_DIRECT_TEXT_SCENE_ID = "generic-root-normal";
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
             "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -638,6 +639,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "revision-reuse".equals(sceneId);
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (sceneId != null && sceneId.startsWith(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
                     && c114CrossAxisTemplateAreaCanonicalSceneId(sceneId) != null;
@@ -1561,6 +1565,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("image-auto-max-mixed-tracks".equals(sceneId)) {
             return "width=100,height=40";
         }
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+            return "width=100,height=20";
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             return "width=24,height=44";
         }
@@ -1915,6 +1922,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("image-auto-max-mixed-tracks".equals(sceneId)) {
             return "width=24,height=16";
         }
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+            return "width=20,height=20";
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             return "width=24,height=24";
         }
@@ -2172,6 +2182,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+            return c114GenericDirectTextIntrinsicInputsMatch(report);
+        }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
             return c114ExpectedMixedIntrinsicInputs(sceneId, report)
                     && c114OrthogonalTextIntrinsicMeasurementMatches(sceneId, report);
@@ -2351,6 +2364,250 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean c114GenericDirectTextIntrinsicInputsMatch(String report) {
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        String json = report.substring(marker + "grid_track_sizing_diagnostics=".length());
+        try {
+            Object parsed = new org.json.JSONTokener(json).nextValue();
+            if (!(parsed instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) parsed;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            String revisionSource = c114GenericJsonString(revision, "source");
+            Integer styleRevision = c114GenericJsonInteger(revision, "style");
+            Integer environmentRevision = c114GenericJsonInteger(revision, "environment");
+            if (revision == null
+                    || revisionSource == null || revisionSource.isEmpty()
+                    || !revisionSource.startsWith("HostDocument")
+                    || styleRevision == null || styleRevision < 0
+                    || environmentRevision == null || environmentRevision < 0
+                    || c114GenericJsonInteger(revision, "intrinsicSize") == null
+                    || c114GenericJsonInteger(revision, "intrinsicSize") < 0
+                    || inputs == null || inputs.length() != 2) return false;
+            int[][] expectedMetrics = {{20, 20, 40, 10}, {20, 20, 40, 10}};
+            int[] expectedNodes = {2, 4};
+            for (int index = 0; index < inputs.length(); index++) {
+                org.json.JSONObject input = inputs.optJSONObject(index);
+                org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                org.json.JSONArray textSources = input == null
+                        ? null : input.optJSONArray("textSources");
+                int[] metrics = expectedMetrics[index];
+                if (input == null
+                        || !Integer.valueOf(1).equals(c114GenericJsonInteger(input, "grid"))
+                        || !Integer.valueOf(expectedNodes[index]).equals(
+                                c114GenericJsonInteger(input, "node"))
+                        || !Integer.valueOf(index).equals(
+                                c114GenericJsonInteger(input, "sourceOrder"))
+                        || textSources == null || textSources.length() != 0 || source == null
+                        || !"text".equals(c114GenericJsonString(source, "kind"))
+                        || !Integer.valueOf(1).equals(
+                                c114GenericJsonInteger(source, "fontRegistryRevision"))
+                        || !c114GenericJsonNear(source, "minContent", metrics[0], 1.0 / 64.0)
+                        || !c114GenericJsonNear(
+                                source, "minContentHeight", metrics[1], 1.0 / 64.0)
+                        || !c114GenericJsonNear(source, "maxContent", metrics[2], 1.0 / 64.0)
+                        || !c114GenericJsonNear(
+                                source, "maxContentHeight", metrics[3], 1.0 / 64.0)) {
+                    return false;
+                }
+            }
+            org.json.JSONArray measurements = diagnostics.optJSONArray("intrinsicMeasurements");
+            if (measurements == null || measurements.length() == 0) return false;
+            boolean[] minContentWidthNodes = new boolean[expectedNodes.length];
+            boolean[] maxContentWidthNodes = new boolean[expectedNodes.length];
+            boolean[] minContentHeightNodes = new boolean[expectedNodes.length];
+            boolean[] maxContentHeightNodes = new boolean[expectedNodes.length];
+            for (int index = 0; index < measurements.length(); index++) {
+                org.json.JSONObject measurement = measurements.optJSONObject(index);
+                org.json.JSONObject source = measurement == null
+                        ? null : measurement.optJSONObject("source");
+                Integer node = measurement == null
+                        ? null : c114GenericJsonInteger(measurement, "node");
+                int expectedIndex = node == null ? -1 : node == 2 ? 0 : node == 4 ? 1 : -1;
+                String availableSpace = c114GenericJsonString(measurement, "availableSpace");
+                org.json.JSONObject contentSize = measurement == null
+                        ? null : measurement.optJSONObject("contentSize");
+                Double measuredWidth = c114GenericJsonFiniteNumber(contentSize, "width");
+                Double measuredHeight = c114GenericJsonFiniteNumber(contentSize, "height");
+                if (expectedIndex < 0 || source == null
+                        || !"text".equals(c114GenericJsonString(source, "kind"))
+                        || !Integer.valueOf(1).equals(
+                                c114GenericJsonInteger(source, "fontRegistryRevision"))
+                        || availableSpace == null
+                        || measuredWidth == null || measuredWidth < 0.0
+                        || measuredHeight == null || measuredHeight < 0.0) {
+                    return false;
+                }
+                if (availableSpace.contains("width: MinContent")) {
+                    minContentWidthNodes[expectedIndex] = true;
+                }
+                if (availableSpace.contains("width: MaxContent")) {
+                    maxContentWidthNodes[expectedIndex] = true;
+                }
+                if (availableSpace.contains("height: MinContent")) {
+                    minContentHeightNodes[expectedIndex] = true;
+                }
+                if (availableSpace.contains("height: MaxContent")) {
+                    maxContentHeightNodes[expectedIndex] = true;
+                }
+            }
+            for (int index = 0; index < expectedNodes.length; index++) {
+                if (!minContentWidthNodes[index]
+                        || !minContentHeightNodes[index]
+                        || !maxContentHeightNodes[index]) return false;
+            }
+            if (maxContentWidthNodes[0] || !maxContentWidthNodes[1]) return false;
+            return c114GenericDirectTextTraceMatches(diagnostics);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static Integer c114GenericJsonInteger(org.json.JSONObject object, String key) {
+        Object value = object == null ? null : object.opt(key);
+        if (!(value instanceof Number) || value instanceof Boolean) return null;
+        double numeric = ((Number) value).doubleValue();
+        if (!Double.isFinite(numeric) || numeric != Math.rint(numeric)
+                || numeric < Integer.MIN_VALUE || numeric > Integer.MAX_VALUE) return null;
+        int integer = (int) numeric;
+        return (double) integer == numeric ? integer : null;
+    }
+
+    private static Double c114GenericJsonFiniteNumber(org.json.JSONObject object, String key) {
+        Object value = object == null ? null : object.opt(key);
+        if (!(value instanceof Number) || value instanceof Boolean) return null;
+        double numeric = ((Number) value).doubleValue();
+        return Double.isFinite(numeric) ? numeric : null;
+    }
+
+    private static String c114GenericJsonString(org.json.JSONObject object, String key) {
+        Object value = object == null ? null : object.opt(key);
+        return value instanceof String ? (String) value : null;
+    }
+
+    private static Boolean c114GenericJsonBoolean(org.json.JSONObject object, String key) {
+        Object value = object == null ? null : object.opt(key);
+        return value instanceof Boolean ? (Boolean) value : null;
+    }
+
+    private static boolean c114GenericJsonNear(
+            org.json.JSONObject object, String key, double expected, double tolerance
+    ) {
+        Double observed = c114GenericJsonFiniteNumber(object, key);
+        return observed != null && Math.abs(observed - expected) <= tolerance;
+    }
+
+    private static boolean c114GenericDirectTextTraceMatches(
+            org.json.JSONObject diagnostics
+    ) throws org.json.JSONException {
+        org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+        org.json.JSONObject trace = traces == null || traces.length() != 1
+                ? null : traces.optJSONObject(0);
+        org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+        if (trace == null || !Integer.valueOf(1).equals(
+                    c114GenericJsonInteger(trace, "grid"))
+                || passes == null || passes.length() != 2) return false;
+        org.json.JSONObject columns = passes.optJSONObject(0);
+        org.json.JSONObject rows = passes.optJSONObject(1);
+        if (columns == null || rows == null
+                || !"Columns".equals(c114GenericJsonString(columns, "axis"))
+                || !"Rows".equals(c114GenericJsonString(rows, "axis"))
+                || !c114GenericTrackSizesMatch(columns, new double[] {20.0, 40.0}, 10.0)
+                || !c114GenericTrackSizesMatch(rows, new double[] {20.0}, 0.0)) return false;
+        return c114GenericDirectTextContributionsMatch(
+                columns,
+                new int[] {2, 4, 4},
+                new String[] {"MinContent", "MinContent", "MaxContent"},
+                new double[] {20.0, 20.0, 40.0},
+                true)
+                && c114GenericDirectTextContributionsMatch(
+                        rows,
+                        new int[] {2, 2, 2, 4, 4, 4},
+                        new String[] {
+                            "Minimum", "MinContent", "MaxContent",
+                            "Minimum", "MinContent", "MaxContent"
+                        },
+                        new double[] {20.0, 20.0, 20.0, 10.0, 10.0, 10.0},
+                        true);
+    }
+
+    private static boolean c114GenericTrackSizesMatch(
+            org.json.JSONObject pass, double[] expectedSizes, double gap
+    ) {
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        org.json.JSONObject finalStage = stages == null || stages.length() == 0
+                ? null : stages.optJSONObject(stages.length() - 1);
+        org.json.JSONArray tracks = finalStage == null ? null : finalStage.optJSONArray("tracks");
+        int expectedTrackCount = expectedSizes.length * 2 + 1;
+        if (tracks == null || tracks.length() != expectedTrackCount) return false;
+        int observedCount = 0;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            Boolean gutter = c114GenericJsonBoolean(track, "gutter");
+            Boolean collapsed = c114GenericJsonBoolean(track, "collapsed");
+            Boolean infinitelyGrowable = c114GenericJsonBoolean(track, "infinitelyGrowable");
+            Integer internalIndex = c114GenericJsonInteger(track, "internalIndex");
+            if (track == null || gutter == null || collapsed == null
+                    || internalIndex == null || internalIndex != index
+                    || infinitelyGrowable == null) return false;
+            boolean expectedGutter = index % 2 == 0;
+            boolean outerGutter = index == 0 || index == tracks.length() - 1;
+            boolean expectedCollapsed = expectedGutter && (gap == 0.0 || outerGutter);
+            if (gutter != expectedGutter || collapsed != expectedCollapsed) return false;
+            Double baseSize = c114GenericJsonFiniteNumber(track, "baseSize");
+            if (expectedGutter) {
+                double expectedGutterSize = expectedCollapsed ? 0.0 : gap;
+                if (baseSize == null
+                        || Math.abs(baseSize - expectedGutterSize) > 0.0001) return false;
+                continue;
+            }
+            if (baseSize == null || observedCount >= expectedSizes.length
+                    || Math.abs(baseSize - expectedSizes[observedCount]) > 0.0001) return false;
+            observedCount++;
+        }
+        return observedCount == expectedSizes.length;
+    }
+
+    private static boolean c114GenericDirectTextContributionsMatch(
+            org.json.JSONObject pass, int[] expectedItems,
+            String[] expectedKinds, double[] expectedValues,
+            boolean allowIdenticalDuplicates
+    ) throws org.json.JSONException {
+        org.json.JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null || expectedItems.length != expectedKinds.length
+                || expectedItems.length != expectedValues.length) return false;
+        boolean[] observed = new boolean[expectedItems.length];
+        for (int index = 0; index < contributions.length(); index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            Integer item = c114GenericJsonInteger(contribution, "item");
+            Integer span = c114GenericJsonInteger(contribution, "span");
+            String kind = c114GenericJsonString(contribution, "kind");
+            Boolean crossesFlexibleTrack = c114GenericJsonBoolean(
+                    contribution, "crossesFlexibleTrack");
+            Double value = c114GenericJsonFiniteNumber(contribution, "value");
+            if (item == null || span == null || span != 1 || kind == null
+                    || crossesFlexibleTrack == null || crossesFlexibleTrack
+                    || value == null) return false;
+            int matched = -1;
+            for (int expectedIndex = 0; expectedIndex < expectedItems.length; expectedIndex++) {
+                if (item == expectedItems[expectedIndex]
+                        && kind.equals(expectedKinds[expectedIndex])
+                        && Math.abs(value - expectedValues[expectedIndex]) <= 1.0 / 64.0) {
+                    matched = expectedIndex;
+                    break;
+                }
+            }
+            if (matched < 0) return false;
+            if (observed[matched] && !allowIdenticalDuplicates) return false;
+            observed[matched] = true;
+        }
+        for (boolean present : observed) {
+            if (!present) return false;
+        }
+        return true;
     }
 
     private static boolean c114ExpectedCrossAxisSpanGroupIntrinsicInputs(
@@ -3586,6 +3843,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
+                    + "1:node=2,x=0,y=0,width=20,height=20;"
+                    + "2:node=4,x=30,y=0,width=40,height=10]";
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
                     + "1:node=2,x=0,y=0,width=24,height=8;"
@@ -6118,6 +6380,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) return 3;
         if (isC114GeneralizedCyclicRowScene(sceneId)) return 4;
         if ("cyclic-max-content-auto-fill".equals(sceneId)
                 || "definite-40px-auto-fill-control".equals(sceneId)

@@ -1,0 +1,26 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+@font-face { font-family: Ahem; src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; }
+html, body { margin: 0; padding: 0; }
+.scene { display: grid; width: 100px; grid-template-columns: min-content max-content; grid-template-rows: auto; column-gap: 10px; align-items: start; font-family: Ahem; font-size: 10px; line-height: 10px; font-weight: 400; color: #000; margin-bottom: 10px; }
+.item { font: inherit; white-space: normal; word-break: normal; overflow-wrap: normal; }
+.fixed > :nth-child(1) { grid-column: 1; }
+.fixed > :nth-child(2) { grid-column: 2; }
+.nowrap .item { white-space: nowrap; }
+.break-all .item, .item.break-all { word-break: break-all; }
+</style>
+<div id="normal" class="scene fixed"><div class="item">A BC</div><div class="item">A BC</div></div>
+<div id="nowrap" class="scene fixed nowrap"><div class="item">A BC</div><div class="item">A BC</div></div>
+<div id="break-all" class="scene fixed break-all"><div class="item">ABCD</div><div class="item">ABCD</div></div>
+<div id="grid-9x" class="scene fixed"><div id="item-zeta" class="item">A BCD</div><div id="item-3" class="item">A BCD</div></div>
+<div id="grid-ws" class="scene fixed"><div class="item"> A  BC </div><div class="item"> A  BC </div></div>
+<div id="grid-reorder" class="scene">
+  <div id="item-z" class="item">A BC</div>
+  <div id="item-a" class="item break-all">ABCD</div>
+</div>
+<script>
+const reordered = document.getElementById("grid-reorder");
+reordered.insertBefore(document.getElementById("item-a"), document.getElementById("item-z"));
+</script>

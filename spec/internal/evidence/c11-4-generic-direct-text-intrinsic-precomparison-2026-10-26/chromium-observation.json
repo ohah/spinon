@@ -1,0 +1,697 @@
+{
+  "ahemFontCheck": true,
+  "devicePixelRatio": 1,
+  "fontStatus": "loaded",
+  "scenes": [
+    {
+      "childOrder": [
+        null,
+        null
+      ],
+      "grid": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 0
+      },
+      "id": "normal",
+      "items": [
+        {
+          "id": null,
+          "rect": {
+            "height": 20,
+            "width": 20,
+            "x": 0,
+            "y": 0
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BC",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 10
+            }
+          ]
+        },
+        {
+          "id": null,
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 30,
+            "y": 0
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BC",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 30,
+              "y": 0
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        20,
+        40
+      ]
+    },
+    {
+      "childOrder": [
+        null,
+        null
+      ],
+      "grid": {
+        "height": 10,
+        "width": 100,
+        "x": 0,
+        "y": 30
+      },
+      "id": "nowrap",
+      "items": [
+        {
+          "id": null,
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 0,
+            "y": 30
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "nowrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BC",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 0,
+              "y": 30
+            }
+          ]
+        },
+        {
+          "id": null,
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 50,
+            "y": 30
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "nowrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BC",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 50,
+              "y": 30
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        40,
+        40
+      ]
+    },
+    {
+      "childOrder": [
+        null,
+        null
+      ],
+      "grid": {
+        "height": 40,
+        "width": 100,
+        "x": 0,
+        "y": 50
+      },
+      "id": "break-all",
+      "items": [
+        {
+          "id": null,
+          "rect": {
+            "height": 40,
+            "width": 10,
+            "x": 0,
+            "y": 50
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "break-all",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "ABCD",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 50
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 60
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 70
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 80
+            }
+          ]
+        },
+        {
+          "id": null,
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 20,
+            "y": 50
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "break-all",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "ABCD",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 20,
+              "y": 50
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        10,
+        40
+      ]
+    },
+    {
+      "childOrder": [
+        "item-zeta",
+        "item-3"
+      ],
+      "grid": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 100
+      },
+      "id": "grid-9x",
+      "items": [
+        {
+          "id": "item-zeta",
+          "rect": {
+            "height": 20,
+            "width": 30,
+            "x": 0,
+            "y": 100
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BCD",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 100
+            },
+            {
+              "height": 10,
+              "width": 30,
+              "x": 0,
+              "y": 110
+            }
+          ]
+        },
+        {
+          "id": "item-3",
+          "rect": {
+            "height": 10,
+            "width": 50,
+            "x": 40,
+            "y": 100
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BCD",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 50,
+              "x": 40,
+              "y": 100
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        30,
+        50
+      ]
+    },
+    {
+      "childOrder": [
+        null,
+        null
+      ],
+      "grid": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 130
+      },
+      "id": "grid-ws",
+      "items": [
+        {
+          "id": null,
+          "rect": {
+            "height": 20,
+            "width": 20,
+            "x": 0,
+            "y": 130
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": " A  BC ",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 130
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 140
+            }
+          ]
+        },
+        {
+          "id": null,
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 30,
+            "y": 130
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": " A  BC ",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 30,
+              "y": 130
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        20,
+        40
+      ]
+    },
+    {
+      "childOrder": [
+        "item-a",
+        "item-z"
+      ],
+      "grid": {
+        "height": 40,
+        "width": 100,
+        "x": 0,
+        "y": 160
+      },
+      "id": "grid-reorder",
+      "items": [
+        {
+          "id": "item-a",
+          "rect": {
+            "height": 40,
+            "width": 10,
+            "x": 0,
+            "y": 160
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "break-all",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "ABCD",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 160
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 170
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 180
+            },
+            {
+              "height": 10,
+              "width": 10,
+              "x": 0,
+              "y": 190
+            }
+          ]
+        },
+        {
+          "id": "item-z",
+          "rect": {
+            "height": 10,
+            "width": 40,
+            "x": 20,
+            "y": 160
+          },
+          "style": {
+            "direction": "ltr",
+            "display": "block",
+            "font": "10px / 10px Ahem",
+            "fontFamily": "Ahem",
+            "fontSize": "10px",
+            "fontStyle": "normal",
+            "fontVariantLigatures": "normal",
+            "fontWeight": "400",
+            "letterSpacing": "normal",
+            "lineBreak": "auto",
+            "lineHeight": "10px",
+            "overflowWrap": "normal",
+            "position": "static",
+            "textAlign": "start",
+            "textIndent": "0px",
+            "textOrientation": "mixed",
+            "textTransform": "none",
+            "textWrapMode": "wrap",
+            "visibility": "visible",
+            "whiteSpaceCollapse": "collapse",
+            "wordBreak": "normal",
+            "wordSpacing": "0px",
+            "writingMode": "horizontal-tb"
+          },
+          "text": "A BC",
+          "textRects": [
+            {
+              "height": 10,
+              "width": 40,
+              "x": 20,
+              "y": 160
+            }
+          ]
+        }
+      ],
+      "tracks": [
+        10,
+        40
+      ]
+    }
+  ],
+  "url": "http://127.0.0.1:8765/spec/internal/evidence/c11-4-generic-direct-text-intrinsic-precomparison-2026-10-26/fixture.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportCssPx": {
+    "height": 633,
+    "width": 1280
+  }
+}

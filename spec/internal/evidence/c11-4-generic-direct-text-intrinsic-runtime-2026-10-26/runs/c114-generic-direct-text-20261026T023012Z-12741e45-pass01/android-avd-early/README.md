@@ -1,0 +1,3 @@
+# Android early run before CSS input correction
+
+This is a retained diagnostic run, not a passing runtime result. The first Android launch rejected the scene before layout because the fixture authored invalid `max-width:auto` (and `max-height:auto`) values. The runtime logged `Unsupported property declaration: 'max-width:auto;'` and the scene summary was unsuccessful. The in-progress polling command was stopped after the failure was inspected; its exit 130 is not a product test result. The FFI scene now spells out the computed-unbounded max sizes as `max-width:none;max-height:none`. A fresh build and full Android/iOS simulator run are required for the pass record under `android-avd/` and `ios-simulator/`.

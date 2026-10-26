@@ -58,6 +58,8 @@ mod fixed_repeat_auto_repeat;
 mod fixed_repeat_minmax_flex;
 #[path = "c11_4/flex_spanning_text.rs"]
 mod flex_spanning_text;
+#[path = "c11_4/generic_direct_text.rs"]
+mod generic_direct_text;
 #[path = "c11_4/image_multispan.rs"]
 mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
@@ -1115,6 +1117,9 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = generic_direct_text::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
     if let Some(source) = mixed_direct_text_image_intrinsic::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
