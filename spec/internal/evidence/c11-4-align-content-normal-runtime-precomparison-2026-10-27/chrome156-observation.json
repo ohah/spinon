@@ -1,0 +1,40 @@
+{
+  "browser": {
+    "tool": "Agent Browser",
+    "tool_version": "0.31.1",
+    "chrome_version": "156.0.8078.48",
+    "chrome_revision": "d0c02bfad08ec92a6ffcf989e53cd995e6381a4c",
+    "operating_system": {
+      "name": "macOS",
+      "version": "26.5.1",
+      "build": "25F80",
+      "architecture": "arm64"
+    },
+    "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "wpt_runner": false
+  },
+  "cleanup": {
+    "session": "spinon-c114-normal-runtime-20261027",
+    "session_info_active_after_close": false,
+    "active_session_count_after_close": 0
+  },
+  "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-align-content-normal-runtime.html",
+  "viewport_css_px": {"width": 160, "height": 100},
+  "device_pixel_ratio": 1,
+  "observation": {
+    "alignContent": "normal",
+    "justifyContent": "flex-start",
+    "gridTemplateRows": "32.5px 42.5px 5px",
+    "root": {"x": 0, "y": 0, "width": 160, "height": 100},
+    "children": [
+      {"x": 0, "y": 0, "width": 160, "height": 10},
+      {"x": 0, "y": 42.5, "width": 160, "height": 20},
+      {"x": 0, "y": 95, "width": 160, "height": 5}
+    ]
+  },
+  "screenshot": {
+    "file": "chrome156-normal-auto-track-rows.png",
+    "pixel_width": 160,
+    "pixel_height": 100
+  }
+}
