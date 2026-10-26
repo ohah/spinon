@@ -1,0 +1,17 @@
+node:fs:1411
+  const result = binding.mkdir(
+                         ^
+
+Error: ENOENT: no such file or directory, mkdir '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr669-2026-10-27/pass01'
+    at Object.mkdirSync (node:fs:1411:26)
+    at file:///private/tmp/spinon-c11-4-pr669-roadmap-sync-20261027/spec/internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/sync-selected-routes.mjs:84:4
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  errno: -2,
+  code: 'ENOENT',
+  syscall: 'mkdir',
+  path: '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr669-2026-10-27/pass01'
+}
+
+Node.js v24.20.0
+
+The write did not begin: backup-root creation failed before the route copy loop.
