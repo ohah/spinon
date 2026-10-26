@@ -57,6 +57,10 @@ Agent Browser에서 pinned WPT 원본 파일도 `file://`로 열어 선택된 DO
 
 구현/runtime 실패 관점 20개 검토는 [implementation-review-20.md](./implementation-review-20.md)에 기록했다. 최종 판정은 20 PASS / 0 PARTIAL / 0 FAIL이다.
 
+## 구현 PR diff 검토
+
+구현 PR #662 diff의 30개 실패 관점 검토는 [implementation-pr-diff-review-30.md](./implementation-pr-diff-review-30.md)에 기록했다. 최종 판정은 30 PASS / 0 PARTIAL / 0 FAIL이다. #662 PR 본문 이미지 URL과 Agent Browser 렌더는 [implementation-pr-body-image-check.json](./implementation-pr-body-image-check.json)에 별도로 고정했다.
+
 ## 해시와 범위
 
 - `precomparison.html` SHA-256: 아래 `SHA256SUMS` 참조
