@@ -7,6 +7,8 @@
 
 **후속 상태:** 이 문서는 Android build/AVD runtime 이전의 고정된 구현 검토 기록이다. 이후 PixelCopy scene allowlist 보완과 API 37 AVD 실행은 [별도 검토](./android-pixelcopy-scene-allowlist-review-20.md) 및 [runtime README](../c11-4-image-auto-max-border-overflow-runtime-2026-10-26/README.md)에 기록했다. 아래 미검증 항목은 당시 검토 범위를 가리킨다.
 
+**후속 테스트 (2026-10-26):** 이 검토의 `9/9`는 초기 구현 검토 시점의 focused set 결과다. 이후 재실행한 더 좁은 `c11_4_image::tests` 모듈은 7/7, FFI `exposes_only_bounded_intrinsic_track_sizing_scenes`는 1/1 통과했다. 최신 로그와 formatter/Clippy 결과는 [runtime evidence README](../c11-4-image-auto-max-border-overflow-runtime-2026-10-26/README.md)에 연결했다. 두 결과를 합산하지 않는다.
+
 | # | 독립 실패 관점 | 대조 및 판정 |
 |---:|---|---|
 | 1 | 새 fixture가 기본/product feature에 들어가 사용자 표면을 넓힘 | C11.4 image case는 기존 `c11-4-grid-track-sizing-fixture-test` 경계 안이고 FFI adapter는 `c04-runtime-gpu-fixture-test` 경계 안이다. 새 production layout 경로는 추가하지 않았다. 정적 PASS. |
@@ -15,7 +17,7 @@
 | 4 | 고정 PNG의 자연 크기 대신 authored 크기나 다른 자산 사용 | 새 `ImageCase`는 기존 direct PNG `ImageSizing::Intrinsic` 경로를 사용한다. FFI source도 기존 `c14-1-png-basic.png` URL을 쓰고 authored width/height 없이 생성한다. Runtime focused test PASS; 앱 실행 여부는 미검증. |
 | 5 | border-box root에서 border를 빼지 않아 content width가 바뀜 | case geometry는 12×40, 네 방향 border 1px이며 `box-sizing:border-box` validator를 유지한다. 계획 산술은 content width 10px이다. 정적 PASS. |
 | 6 | track/gap/row 차이 때문에 overflow 기하가 달라짐 | 새 case와 FFI scene은 `minmax(auto,max-content) 17px`, `auto`, column gap 5, row gap 0으로 고정한다. Runner는 columns `[24,17]`, row `[16]` 및 frame `(1,1,24,16)`을 기대한다. 정적 PASS; 실기하 결과는 iOS/Android capture 전. |
-| 7 | 기존 root style 검증 helper 변경이 border 없는 control을 깨뜨림 | `mixed_root_style`은 `case.grid_border`를 사용한다. 기존 control은 0px이고 신규 case만 1px이다. Runtime image focused test 9/9 PASS. |
+| 7 | 기존 root style 검증 helper 변경이 border 없는 control을 깨뜨림 | `mixed_root_style`은 `case.grid_border`를 사용한다. 기존 control은 0px이고 신규 case만 1px이다. 초기 구현 검토 시점의 focused runtime set 9/9 PASS. |
 | 8 | root border가 없거나 content-box인데 신규 case가 성공 처리됨 | 신규 test는 정상 1px border를 수락하고 border 제거와 content-box mutation을 각각 거부하는지 확인한다. PASS. |
 | 9 | 명시 배치, 두 번째 자식 또는 다른 asset이 auto-placement 기대를 바꿈 | 신규 입력은 `Placement::Auto`와 intrinsic image sizing을 사용하며 기존 prepare guard가 direct single `<img>` 및 asset identity를 확인한다. 신규 test의 case shape assertions PASS; 기존 guard tests도 focused suite에서 PASS. |
 | 10 | product sizing algorithm을 고쳐 이 fixture에만 맞춤 | Rust production sizing algorithm 변경은 없다. Scene은 기존 image auto/max mixed-track adapter와 trace를 재사용한다. 변경 범위 PASS. |

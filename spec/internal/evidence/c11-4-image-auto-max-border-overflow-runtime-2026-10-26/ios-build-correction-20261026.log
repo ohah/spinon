@@ -245,7 +245,7 @@ PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /tmp/spinon-c11-4-image
     export FIXED_FILES_DIR\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/FixedFiles
     export FRAMEWORKS_FOLDER_PATH\=SpinonBootstrap.app/Frameworks
     export FRAMEWORK_FLAG_PREFIX\=-framework
-    export FRAMEWORK_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\ 
+    export FRAMEWORK_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\
     export FRAMEWORK_VERSION\=A
     export FULL_PRODUCT_NAME\=SpinonBootstrap.app
     export FUSE_BUILD_PHASES\=YES
@@ -332,7 +332,7 @@ PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /tmp/spinon-c11-4-image
     export LIBRARY_FLAG_NOSPACE\=YES
     export LIBRARY_FLAG_PREFIX\=-l
     export LIBRARY_KEXT_INSTALL_PATH\=/Library/Extensions
-    export LIBRARY_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\ 
+    export LIBRARY_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\
     export LINKER_DISPLAYS_MANGLED_NAMES\=NO
     export LINK_FILE_LIST_normal_arm64\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/Objects-normal/arm64/SpinonBootstrap.LinkFileList
     export LINK_OBJC_RUNTIME\=YES
@@ -438,7 +438,7 @@ PhaseScriptExecution Prepare\ Rust,\ V8\ and\ JavaScript /tmp/spinon-c11-4-image
     export RESCHEDULE_INDEPENDENT_HEADERS_PHASES\=YES
     export REZ_COLLECTOR_DIR\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/ResourceManagerResources
     export REZ_OBJECTS_DIR\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Intermediates.noindex/SpinonBootstrap.build/Debug-iphonesimulator/SpinonBootstrap.build/ResourceManagerResources/Objects
-    export REZ_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\ 
+    export REZ_SEARCH_PATHS\=/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator\
     export RUNTIME_EXCEPTION_ALLOW_DYLD_ENVIRONMENT_VARIABLES\=NO
     export RUNTIME_EXCEPTION_ALLOW_JIT\=NO
     export RUNTIME_EXCEPTION_ALLOW_UNSIGNED_EXECUTABLE_MEMORY\=NO
