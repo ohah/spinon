@@ -2,7 +2,7 @@
 
 ## 범위
 
-이 자료는 `fit-content-track-sizing.html`의 마지막 assertion 하나만 다음 계획에 고정한다. definite block-size가 300px인 Grid에서 implicit row pattern `fit-content(40px) auto`를 사용하고, 각 row의 직접 자식 안에 10px 높이 block을 둔다. 필요한 결과는 row track `[10px, 290px]`이며, 옆의 `auto` row만 남은 공간을 받는다. 계획과 이 사전 관측은 구현이나 Spinon/WPT 적합성 통과를 뜻하지 않는다.
+이 자료는 `fit-content-track-sizing.html`의 마지막 assertion 하나를 고정한 사전비교 근거다. definite block-size가 300px인 Grid에서 implicit row pattern `fit-content(40px) auto`를 사용하고, 각 row의 직접 자식 안에 10px 높이 block을 둔다. 독립 기대값은 row track `[10px, 290px]`이며 옆의 `auto` row만 남은 공간을 받는다. 순수 Rust 구현 테스트 관측은 [implementation-observations.md](./implementation-observations.md)에 별도로 기록한다. 이 테스트는 전체 Spinon/CSS 지원이나 WPT 적합성 통과를 뜻하지 않는다.
 
 ## WPT 입력 고정
 

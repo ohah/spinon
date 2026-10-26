@@ -1,0 +1,30 @@
+{
+  "worktree_base_commit": "4f6b38a4e6528667a0079df88a69bbfc909b86e8",
+  "worktree_base_role": "clean origin/main plan-merge commit; does not itself contain the implementation test",
+  "branch": "feat/c11-4-fit-content-auto-neighbor-oracle-20261026",
+  "implementation_commit": null,
+  "source_snapshot": {
+    "test_source": {
+      "path": "crates/spinon-layout/src/grid_fit_content_auto_neighbor_oracle_tests.rs",
+      "sha256": "a62fa0db9007a328258aa94d64693acc3e00458345de00eff682c44c202c5d60"
+    },
+    "module_registration_file": {
+      "path": "crates/spinon-layout/src/lib.rs",
+      "sha256": "ad937241b5b2ff99a66d9e1fe7d27c57432d7898d3273739e1b8ad34dbe526a6"
+    },
+    "module_registration_diff": {
+      "path": "crates/spinon-layout/src/lib.rs against worktree_base_commit",
+      "sha256": "9fe8da4b382e5fcdc51667ecad5f48f69aa3b91a35deecc9f0dc48bb1474524d"
+    },
+    "cargo_lock_git_blob_at_base": "70b1a60ce1438d7305b84b99f763072b7c62e6fa"
+  },
+  "verification": {
+    "test_command": "cargo test --locked -p spinon-layout css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row",
+    "test_output_path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-test.raw.txt",
+    "test_result": "1 passed; 0 failed",
+    "format_command": "cargo fmt --all -- --check",
+    "format_output_path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-format.raw.txt",
+    "format_exit_code": 0,
+    "source_relation": "The focused test was rerun after recording these source hashes; no Rust source edits followed."
+  }
+}
