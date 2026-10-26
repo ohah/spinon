@@ -1,7 +1,7 @@
 {
   "pr": 661,
-  "checked_at_utc": "2026-10-26T13:56:04Z",
-  "checked_pr_head": "2143feb57f659096f6ec9f6184d701a96f7afd6a",
+  "checked_at_utc": "2026-10-26T14:14:24Z",
+  "checked_pr_head": "2b715cf0ae159f22332e0483680ccd7bcd283a86",
   "base": "d48d31698842866241dcb3317c6f8ff1ee068d1c",
   "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/e172d501bec0a4de97f573d6e237632a4334bc52/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
   "url_kind": "immutable commit permalink; independent of deletable branch and synthetic merge ref",
@@ -24,9 +24,9 @@
     "natural_height_px": 1000,
     "body_uses_level_2_crd_sections": "§6.6/§12.2/§12.4–§12.8",
     "body_contains_old_level_1_algorithm_numbers": false,
-    "status": "Agent Browser에서 GitHub PR 본문에 표시되고, immutable raw URL GET 200 확인",
-    "checked_pr_head": "2143feb57f659096f6ec9f6184d701a96f7afd6a",
-    "evidence_links_commit": "2143feb57f659096f6ec9f6184d701a96f7afd6a"
+    "status": "Agent Browser에서 2b715cf0 현재 GitHub PR 본문에 표시됨; immutable raw URL GET 200",
+    "checked_pr_head": "2b715cf0ae159f22332e0483680ccd7bcd283a86",
+    "evidence_links_commit": "2b715cf0ae159f22332e0483680ccd7bcd283a86"
   },
   "merge_ref_note": "The checked body URL is a content-addressed commit URL, not a source branch path or /merge synthetic ref. This checks the image URL and PR render; no merge or post-merge deployment was performed."
 }
