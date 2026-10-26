@@ -185,6 +185,8 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 이 목록은 고정 출처와 추후 실행 후보이며, Spinon이 이미 실행했거나 통과했다는 뜻이 아니다. 구현 시 각 upstream test의 `testharness` assertion, helper/reference 의존성, 적용 가능한 runtime profile을 먼저 확인한다. 일부 WPT를 실행한 결과를 전체 CSS Grid 적합성으로 확대하지 않는다.
 
+먼저 독립 구현 가능한 한 case로 [`fit-content-track-sizing.html`의 `fit-content(40px)`·인접 `auto` implicit row assertion](./c11-4-fit-content-auto-neighbor-wpt.md)을 계획한다. CSS Grid 2025 CRD §12.8의 expected rows는 `[10px, 290px]`; 계획과 Chrome 사전 관측은 WPT testharness pass나 구현 완료가 아니다. 다른 assertion과 C11.4 공식 상태는 그대로 둔다.
+
 ## Rust·앱 검증과 증거 경계
 
 1. `spinon-style` computed track projection과 `spinon-style-to-layout` normalization: computed value, property/node, track-list ordering, named line boundary, auto-repeat shape, invalid input을 검사한다.

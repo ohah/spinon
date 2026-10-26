@@ -1,0 +1,79 @@
+{
+  "dpr": 1,
+  "highEntropy": {
+    "architecture": "arm",
+    "bitness": "64",
+    "brands": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156"
+      }
+    ],
+    "fullVersionList": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8.0.0.0"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156.0.8078.48"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156.0.8078.48"
+      }
+    ],
+    "mobile": false,
+    "model": "",
+    "platform": "macOS",
+    "platformVersion": "26.5.1"
+  },
+  "observation": {
+    "alignContent": "normal",
+    "autoInner": {
+      "height": 10,
+      "width": 60,
+      "x": 8,
+      "y": 94.1875
+    },
+    "autoItem": {
+      "height": 290,
+      "width": 60,
+      "x": 8,
+      "y": 94.1875
+    },
+    "fitInner": {
+      "height": 10,
+      "width": 60,
+      "x": 8,
+      "y": 84.1875
+    },
+    "fitItem": {
+      "height": 10,
+      "width": 60,
+      "x": 8,
+      "y": 84.1875
+    },
+    "grid": {
+      "height": 300,
+      "width": 1264,
+      "x": 8,
+      "y": 84.1875
+    },
+    "gridTemplateRows": "10px 290px"
+  },
+  "platform": "MacIntel",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 1000,
+    "width": 1280
+  }
+}

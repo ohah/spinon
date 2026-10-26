@@ -1,0 +1,25 @@
+{
+  "local_markdown_link_check": {
+    "checked_documents": [
+      "plan/c11-4-fit-content-auto-neighbor-wpt.md",
+      "plan/c11-4-grid-track-sizing.md (new selected-slice link only)",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md",
+      "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md"
+    ],
+    "checked_relative_markdown_links": 12,
+    "checked_parent_plan_addition": true,
+    "broken_new_links": 0
+  },
+  "source_hash_check": {
+    "wpt_checkout_revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "wpt_path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "expected_sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "observed_sha256_matches": true
+  },
+  "local_artifact_hash_check": {
+    "manifest": "SHA256SUMS",
+    "verification_command": "shasum -a 256 -c spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
+    "result": "manifest generated and verified; each listed local artifact hash matched"
+  },
+  "full_docs_build": "see docs-build-summary.json; full-root build exits 1 on unrelated dead-link diagnostics"
+}
