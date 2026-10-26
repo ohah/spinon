@@ -22,13 +22,15 @@
 
 Android AVD:
 
-![Android API 37 ARM64 AVD의 C11.4 fit-content와 이웃 auto 행 실행 화면](android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png)
+![Android API 37 ARM64 AVD의 C11.4 fit-content와 이웃 auto 행 실행 화면](./android-avd-c114-fit-content-auto-neighbor-android-avd-20261026T190540661Z-27b72972/fit-content-auto-neighbor-wpt.png)
 
 iPhone 17 Pro / iOS 26.2 Simulator:
 
-![iOS Simulator의 C11.4 fit-content와 이웃 auto 행 및 5/5 Metal 표본 결과](ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png)
+![iOS Simulator의 C11.4 fit-content와 이웃 auto 행 및 5/5 Metal 표본 결과](./ios-simulator-c114-fit-content-auto-neighbor-ios-simulator-20261026T190530681Z-85dd0569/fit-content-auto-neighbor-wpt.png)
 
 화면은 시각 자료다. geometry는 runtime `LayoutOutput`의 CSS-pixel frame, track sizing은 단계 trace, 색은 각 플랫폼 surface readback log에서 별도로 확인한다.
+
+Rspress 문서 번들은 로컬 Markdown 이미지를 모듈 경로로 해석하므로 상대 이미지 경로는 `./`로 시작해야 한다. `source-revision.json`의 source snapshot은 캡처 당시 app/runtime 입력을 기록한다. 이 후속 URL 문서 수정은 앱, simulator 실행 또는 캡처 pixel을 바꾸지 않는다.
 
 ## 재현·원본 근거
 
