@@ -2,6 +2,10 @@
 
 **현재 상태 · 2026-10-26:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
+## 2026-10-26 `align-content:normal` §11.8 stage oracle 계획
+
+기존 test-only `StretchAutoTracks` oracle의 `stretch` positive와 `start` 대조군에 같은 geometry의 `normal` positive control을 더할 계획을 세웠다. CSS Grid 2025 CRD §11.8은 관련 축의 content distribution이 `normal` 또는 `stretch`이면 남은 양의 definite free space를 `auto` max track sizing function을 가진 행에 균등 배분한다. [세부 계획](./c11-4-align-content-normal-auto-track-stage-oracle.md) · [고정 입력·독립 기대값](../spec/internal/evidence/c11-4-align-content-normal-auto-track-stage-precomparison-2026-10-26/README.md). 계획 검토 전이므로 구현은 시작하지 않았고 C11.4 checkbox와 공식 `72/213`은 유지한다.
+
 ## 2026-10-26 auto track stretch stage oracle slice
 
 Rust trace의 `StretchAutoTracks { applied }` stage를 직접 검사하는 [테스트 전용 계획](./c11-4-stretch-auto-track-stage-oracle.md)을 CSS Grid 2025 CRD §11.8에 맞춰 구현했다. `[auto, auto, 5px]`, 두 `10px` row-gap, `100px` definite block-size 입력과 `align-content:start` 대조군의 independent oracle을 [실행 근거](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md)에 기록했다. focused Rust test 1/1, fmt, `spinon-layout` all-target Clippy가 통과했다. 계획 검토와 [구현 검토 20개](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md)는 모두 PASS 20/20이다. [PR #653 diff 검토 30개](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md)는 PASS 30/30이며 PR의 CI status rollup은 비어 있다. C11.4 checkbox와 공식 `72/213`은 유지한다.
