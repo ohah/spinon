@@ -1,8 +1,8 @@
 # C11.4 · `fit-content()` 옆 `auto` implicit row WPT slice 계획
 
-**상태:** 계획 PR [#661](https://github.com/ohah/spinon/pull/661)은 `4f6b38a4e6528667a0079df88a69bbfc909b86e8`로 병합됐다. 계획 실패 관점 20개와 계획 PR diff 30개는 별도 evidence에 기록돼 있다. 이 계획의 순수 Rust oracle 구현은 격리 worktree에서 완료했으며, 별도 구현/runtime 20-view 검토를 PR 생성 전에 진행한다. C11.4와 공식 완료 집계 `72/213`은 변경하지 않는다.
+**상태:** 계획 PR [#661](https://github.com/ohah/spinon/pull/661)은 `4f6b38a4e6528667a0079df88a69bbfc909b86e8`로 병합됐다. 순수 Rust oracle 테스트 구현은 [PR #662](https://github.com/ohah/spinon/pull/662)에 담겼고, 독립 implementation/runtime 20-view는 20 PASS / 0 PARTIAL / 0 FAIL로 기록됐다. C11.4와 공식 완료 집계 `72/213`은 미완료 상태로 유지한다.
 
-**기준:** PR 생성 시 최신 `origin/main` `d48d31698842866241dcb3317c6f8ff1ee068d1c`.
+**기준:** 계획 PR #661 생성 시 최신 `origin/main` `d48d31698842866241dcb3317c6f8ff1ee068d1c`. 구현 PR #662의 base는 계획 merge commit `4f6b38a4e6528667a0079df88a69bbfc909b86e8`이다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -58,10 +58,10 @@ expected stage                        = StretchAutoTracks { applied: true }
 
 Chrome 156 Agent Browser에서 WPT 원본 selected DOM 및 같은 row-axis 입력을 관찰했다. 두 경우 모두 `gridTemplateRows="10px 290px"`, item heights `[10,290]`을 반환했다. WPT original source는 `file://`로 열었기 때문에 `/resources/testharness.js`가 `file:///resources/testharness.js`로 resolve되어 WPT testharness는 실행되지 않았다. 이는 CSSOM/frame precomparison이며 WPT PASS가 아니다. 환경·raw output·screenshot/hash는 [사전비교 evidence](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/README.md)에 고정한다.
 
-계획 자체의 적대적 검토 20개와 계획 PR diff 적대 검토 30개는 서로 다른 기록으로 수행했다. 계획 20개 결과는 [plan-review-20.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md)에, 계획 PR diff 30개는 별도 [pr-diff-review-30.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md)에 기록돼 있다. 구현 후에는 이들과 다른 실패 관점으로 새 20개 runtime/code review를 수행하며, 해당 review가 끝나기 전에는 implementation PR을 만들지 않는다.
+계획 자체의 적대적 검토 20개와 계획 PR diff 적대 검토 30개는 서로 다른 기록으로 수행했다. 계획 20개 결과는 [plan-review-20.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/plan-review-20.md)에, 계획 PR diff 30개는 별도 [pr-diff-review-30.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/pr-diff-review-30.md)에 기록돼 있다. 독립 implementation/runtime 20-view는 [implementation-review-20.md](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/implementation-review-20.md)에 기록했고 최종 판정은 20 PASS / 0 PARTIAL / 0 FAIL이다. 구현 PR diff 적대 검토 30개는 이 review와 별도 gate로 두고 기록한다.
 
 계획 PR에서는 문서 내부 링크·WPT source hash를 확인하고 RSPress `docs:build` 결과를 [docs-build-summary.json](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/docs-build-summary.json)에 남겼다. 당시 문서 PR은 제품 소스, runtime fixture, 내부 API 계약, `spec/STATUS.md`, C11.4 완료 체크를 변경하지 않았다. 이 구현 slice는 순수 Rust test 파일과 `#[cfg(test)]` module 등록만 추가하며 생산 알고리즘, runtime fixture, 내부 API 계약, `spec/STATUS.md`, C11.4 완료 체크는 변경하지 않는다. CI 결과가 비어 있으면 통과로 쓰지 않는다.
 
 ## 남은 범위
 
-다른 fit-content caps/floors, intrinsic text/image contribution matrix, spanning item, percent/calc/cyclic basis, auto-repeat, orthogonal writing mode, gutters, negative/overflow spans, axes cross-product, runtime adapter, Android/iOS, rendering/surface sample, WPT harness integration, 전체 C11.4 및 공개 CSS 지원은 미검증·계획 범위 밖이다. 이 한 case를 계획하거나 나중에 구현해도 C11.4 전체 완료 또는 공식 `72/213` 집계를 변경하지 않는다.
+다른 fit-content caps/floors, intrinsic text/image contribution matrix, spanning item, percent/calc/cyclic basis, auto-repeat, orthogonal writing mode, gutters, negative/overflow spans, axes cross-product, runtime adapter, Android/iOS, rendering/surface sample, WPT harness integration, 전체 C11.4 및 공개 CSS 지원은 미검증·계획 범위 밖이다. 이 한 case의 계획·구현 결과가 C11.4 전체 완료 또는 공식 `72/213` 집계를 변경하지 않는다.
