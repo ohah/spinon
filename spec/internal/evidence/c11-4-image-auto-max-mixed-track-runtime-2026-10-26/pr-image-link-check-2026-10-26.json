@@ -1,33 +1,31 @@
 {
   "pr": "https://github.com/ohah/spinon/pull/643",
-  "checked_at_utc": "2026-10-26T02:10:32Z",
-  "pr_head_commit": "9b3101dca186ee55016b2023c9610186b4df9ecb",
+  "checked_at_utc": "2026-10-26T02:18:46Z",
+  "pr_head_commit": "51b0cca1bf63935f4e9d02f74cead3ad2cbab386",
   "simulator_source_commit": "cac4e33950aa55e8bb8e7ec1f81bf790316ba7ac",
   "tool": "agent-browser",
-  "session": "spinon-pr643-final05-3bd9bb4c052c",
+  "session": "spinon-pr643-body-verification-20261026",
   "commands": [
     "agent-browser skills get core",
-    "agent-browser session id --scope worktree --prefix spinon-pr643-final05",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c open https://github.com/ohah/spinon/pull/643",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c wait --load networkidle",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c snapshot -i --json",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c eval 'Array.from(document.querySelectorAll(\".comment-body img\")).map(i => ({alt:i.alt,src:i.currentSrc,complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight}))'",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c close",
-    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c session info --json",
-    "agent-browser session list --json",
+    "agent-browser --session spinon-pr643-body-verification-20261026 open https://github.com/ohah/spinon/pull/643",
+    "agent-browser --session spinon-pr643-body-verification-20261026 wait --load networkidle",
+    "agent-browser --session spinon-pr643-body-verification-20261026 eval --stdin (decode PR body images and report natural dimensions)",
+    "agent-browser --session spinon-pr643-body-verification-20261026 close",
+    "agent-browser --session spinon-pr643-body-verification-20261026 session info --json",
+    "agent-browser session list",
     "ps -axo pid,ppid,comm,args | awk '$3 ~ /agent-browser/ {print}'"
   ],
   "images": [
     {
       "alt": "Android API 37 ARM64 AVD, 1080×2400, layout/presentation only",
-      "src": "https://github.com/ohah/spinon/blob/9b3101dca186ee55016b2023c9610186b4df9ecb/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png?raw=true",
+      "src": "https://github.com/ohah/spinon/blob/51b0cca1bf63935f4e9d02f74cead3ad2cbab386/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png?raw=true",
       "complete": true,
       "naturalWidth": 1080,
       "naturalHeight": 2400
     },
     {
       "alt": "iPhone 17 Pro, iOS 26.2 Simulator, 1206×2622, layout/presentation only",
-      "src": "https://github.com/ohah/spinon/blob/9b3101dca186ee55016b2023c9610186b4df9ecb/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png?raw=true",
+      "src": "https://github.com/ohah/spinon/blob/51b0cca1bf63935f4e9d02f74cead3ad2cbab386/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png?raw=true",
       "complete": true,
       "naturalWidth": 1206,
       "naturalHeight": 2622
@@ -36,10 +34,10 @@
   "session_after_close": {
     "active": false,
     "pid": null,
-    "session": "spinon-pr643-final05-3bd9bb4c052c"
+    "session": "spinon-pr643-body-verification-20261026"
   },
   "remaining_agent_browser_sessions": [
-    "hwpjs-display-cache-20261026"
+    "arendt-webhwp-followup-021701267060"
   ],
   "matching_agent_browser_processes_after_close": [],
   "result": "pass",
