@@ -66,6 +66,9 @@ const generalizedCyclicRowSceneIDs = new Set([
   'definite-44px-auto-fill-prefix-suffix-control',
   'definite-44px-auto-fit-prefix-suffix-control',
 ]);
+const imageAutoMaxBorderOverflowSceneIDs = new Set([
+  'image-auto-max-mixed-tracks', 'image-auto-max-mixed-tracks-border-overflow',
+]);
 const requestedRunKind = process.argv.find((argument) => argument.startsWith('--run-kind='))
   ?.slice('--run-kind='.length);
 const evidenceGroup = process.argv.find((argument) => argument.startsWith('--evidence-group='))
@@ -157,6 +160,8 @@ const isCyclicPercentRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => cyclicPercentSceneIDs.has(sceneID));
 const isGeneralizedCyclicRowRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => generalizedCyclicRowSceneIDs.has(sceneID));
+const isImageAutoMaxBorderOverflowRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => imageAutoMaxBorderOverflowSceneIDs.has(sceneID));
 const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
 const isCrossAxisTemplateAreaRun = requestedSceneIDs?.length > 0
@@ -167,6 +172,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
+  : isImageAutoMaxBorderOverflowRun ? 'image-auto-max-border-overflow'
   : isCrossAxisTemplateAreaRun ? 'cross-axis-fixed-auto-area'
   : isCyclicPercentRun ? 'cyclic-percent-tracks'
   : isMixedMultiSpanRun ? 'mixed-multispan-contributions'
@@ -206,6 +212,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
   ? `spec/internal/evidence/${evidenceGroup}-${date}/${target}-${runPrefix}`
   : isCrossAxisTemplateAreaRun
     ? `spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-${date}/${target}-${runPrefix}`
+  : isImageAutoMaxBorderOverflowRun
+    ? `spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
     ? `spec/internal/evidence/c11-4-fixed-auto-repeat-template-areas-runtime-${date}/${target}-${runPrefix}`
   : isGeneralizedCyclicRowRun
@@ -4940,7 +4948,49 @@ scenes.push(
     [8, 11, 0, 8], [false, false, true, false],
   ),
 );
-assert.equal(scenes.length, 496, 'C11.4 fixture scene count differs.');
+scenes.push({
+  id: 'image-auto-max-mixed-tracks',
+  axis: 'Both',
+  boxCount: 2,
+  rootFrame: 'width=100,height=40',
+  itemFrame: 'width=24,height=16',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;'
+    + '1:node=2,x=0,y=0,width=24,height=16]',
+  axes: {
+    Columns: { tracks: [24, 17], collapsed: [false, false] },
+    Rows: { tracks: [16], collapsed: [false] },
+  },
+  gaps: { Columns: 5, Rows: 0 },
+});
+scenes.push({
+  id: 'image-auto-max-mixed-tracks-border-overflow',
+  axis: 'Both',
+  boxCount: 2,
+  rootFrame: 'width=12,height=40',
+  itemFrame: 'width=24,height=16',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=12,height=40;'
+    + '1:node=2,x=1,y=1,width=24,height=16]',
+  axes: {
+    Columns: { tracks: [24, 17], collapsed: [false, false] },
+    Rows: { tracks: [16], collapsed: [false] },
+  },
+  gaps: { Columns: 5, Rows: 0 },
+  pixelSamples: [
+    { id: 'image-auto-max-overflow-item-box',
+      nodeId: 'c114-image-auto-max-border-overflow-item',
+      xCssPx: 12, yCssPx: 8, rgba: [229, 72, 77, 255] },
+    { id: 'image-auto-max-outside-root',
+      nodeId: 'c114-image-auto-max-border-overflow-grid',
+      xCssPx: 26, yCssPx: 8, rgba: [0, 0, 0, 255] },
+    { id: 'image-auto-max-left-border',
+      nodeId: 'c114-image-auto-max-border-overflow-grid',
+      xCssPx: 0, yCssPx: 30, rgba: [34, 197, 94, 255] },
+    { id: 'image-auto-max-right-border',
+      nodeId: 'c114-image-auto-max-border-overflow-grid',
+      xCssPx: 11, yCssPx: 30, rgba: [34, 197, 94, 255] },
+  ],
+});
+assert.equal(scenes.length, 498, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -7317,8 +7367,16 @@ if (target === 'ios-simulator') {
     .map((device) => ({ ...device, runtime })));
   assert.equal(simulator.length, 1, `Booted iOS Simulator를 찾지 못했습니다: ${simulatorUDID}`);
   assert.match(simulator[0].runtime, /iOS-26-2$/);
-  assert.ok(['iPhone 17', 'iPhone 17 Pro'].includes(simulator[0].name),
-    `지원하지 않는 iOS 시뮬레이터 모델입니다: ${simulator[0].name}`);
+  const simulatorModelIdentifier = command('xcrun', [
+    'simctl', 'getenv', simulatorUDID, 'SIMULATOR_MODEL_IDENTIFIER',
+  ]).stdout.trim();
+  if (isImageAutoMaxBorderOverflowRun) {
+    assert.equal(simulatorModelIdentifier, 'iPhone18,1',
+      `iPhone 17 Pro simulator가 아닙니다: ${simulator[0].name}/${simulatorModelIdentifier}`);
+  } else {
+    assert.ok(['iPhone 17', 'iPhone 17 Pro'].includes(simulator[0].name),
+      `지원하지 않는 iOS 시뮬레이터 모델입니다: ${simulator[0].name}`);
+  }
   await saveLog('install.log', command('xcrun', ['simctl', 'install', simulatorUDID, appPath]));
   const appSha256 = sha256(await readFile(resolve(appPath, 'SpinonBootstrap')));
   for (const [index, scene] of runScenes.entries()) {
@@ -7353,7 +7411,8 @@ if (target === 'ios-simulator') {
     }
   }
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify({
-    target, udid: simulatorUDID, name: simulator[0].name, runtime: simulator[0].runtime, appSha256,
+    target, udid: simulatorUDID, name: simulator[0].name,
+    modelIdentifier: simulatorModelIdentifier, runtime: simulator[0].runtime, appSha256,
     sourceRevision: fixedRepeatMinmaxFlexSourceRevision ?? sourceRevision(),
   }, null, 2)}\n`);
 } else {

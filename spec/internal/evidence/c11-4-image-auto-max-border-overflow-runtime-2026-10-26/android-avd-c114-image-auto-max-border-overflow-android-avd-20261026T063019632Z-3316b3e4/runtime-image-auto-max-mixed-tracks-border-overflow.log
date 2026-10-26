@@ -1,0 +1,4 @@
+10-26 15:30:23.217  4247  4247 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error run_id=c114-android-avd-20261026T063019632Z-3316b3e4-1 scene=image-auto-max-mixed-tracks-border-overflow reason=scene-index-mismatch
+10-26 15:30:23.226  4247  4269 E SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX status=error reason=scene-index-mismatch
+10-26 15:30:23.469  4247  4247 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+10-26 15:30:23.469  4247  4247 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true

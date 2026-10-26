@@ -1,0 +1,22 @@
+{
+  "target": "ios-simulator",
+  "udid": "C9CD3A32-14FB-4013-A16D-4A029370DA3F",
+  "name": "Spinon-S03-Pilot-20261026",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "5ba470a7664714c792318ade97225ed7f1a6ce898d94210c5ee59573d245ab87",
+  "sourceRevision": {
+    "commit": "eb7d2d416b899ca6c98ee1bbafec8dce953f5fdf",
+    "tree": "903a773e02bc5da325131841fad5fe67dab54415",
+    "trackedDiffSha256": "b567e40741532a654b8e22fdaaa9a0dc1e22c44812b53f53c7c7f8975fa5b272",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/cases.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-2026-10-26/README.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ]
+  }
+}

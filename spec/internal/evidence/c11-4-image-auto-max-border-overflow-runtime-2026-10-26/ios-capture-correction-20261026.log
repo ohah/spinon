@@ -1,0 +1,96 @@
+ios-simulator C11.4 scene 1/2: image-auto-max-mixed-tracks passed
+ios-simulator C11.4 scene 2/2: image-auto-max-mixed-tracks-border-overflow passed
+{
+  "evidenceDirectory": "/private/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-2026-10-26/ios-simulator-c114-image-auto-max-border-overflow-ios-simulator-20261026T061945593Z-ec40c8ba",
+  "target": "ios-simulator",
+  "observations": [
+    {
+      "sceneId": "image-auto-max-mixed-tracks",
+      "summary": "2026-10-26 15:19:46.941661+0900  localhost SpinonBootstrap[96303]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261026T061945593Z-ec40c8ba-0 scene_id=image-auto-max-mixed-tracks expected_root_frame=width=100,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;1:node=2,x=0,y=0,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 17,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 11,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "image-auto-max-mixed-tracks-border-overflow",
+      "summary": "2026-10-26 15:19:49.738315+0900  localhost SpinonBootstrap[96325]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261026T061945593Z-ec40c8ba-1 scene_id=image-auto-max-mixed-tracks-border-overflow expected_root_frame=width=12,height=40 expected_item_frame=width=24,height=16 status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=12,height=40;1:node=2,x=1,y=1,width=24,height=16]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 1,
+          "y": 1,
+          "width": 24,
+          "height": 16
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 24,
+            "collapsed": false
+          },
+          {
+            "baseSize": 17,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 16,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 11,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}
