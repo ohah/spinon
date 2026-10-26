@@ -50,4 +50,6 @@ iOS 캡처는 1206×2622이며 SHA-256은 `a7b38f7a12f89040962c0bc64fa731d4693ba
 - [원래 PR 30관점 검토](./pr-diff-review-30.md)는 image sibling collector 경계를 발견했고, [수정 관점 재확인](./pr-diff-review-30-fix-recheck.md)은 PASS 4 / PARTIAL 3 / FAIL 0을 기록했다. 남은 PARTIAL은 직접 고정하지 않은 decoy NodeId/namespace test와 collector 밖 fallback 경계다.
 - 기존 고정 V8 빌드 로그는 pass01의 `v8/android/`, `v8/ios/` 아래에 있다. pass02 및 pass03은 같은 고정 archive를 사용했다. pass01/pass02 evidence와 모든 기존 PNG는 유지했다. pass02의 V8 경로 누락 진단 로그도 삭제하지 않았다.
 
+PR [#645](https://github.com/ohah/spinon/pull/645)는 2026-10-26T03:57:10Z Rebase and merge로 병합됐고 merge SHA는 `28696fbfef552892f851113ed8e0d84c638edad5`다. 병합 당시 GitHub check rollup은 비었고 main required status checks는 설정되지 않았다. 이 병합 정보는 아래 simulator 실행 결과의 추가 검증을 뜻하지 않는다.
+
 pass03에서 collector가 추가로 HTML `<img>` 혼합 입력을 fail-closed 하도록 수정했다. 회귀 test는 기존 빈 HTML block sibling 허용 동작을 유지하면서 두 text item과 root image sibling이 함께 있는 입력을 거부한다. C11.4 전체 완료, 일반 CSS admission, Release APK/IPA fixture exclusion, WPT 또는 glyph paint는 이 실행의 범위 밖이다.
