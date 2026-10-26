@@ -17,9 +17,11 @@
 
 ## CSS Grid 2025 CRD에서 계산한 독립 기대값
 
-규범 기준은 [CSS Grid Layout Module Level 2, 2025 CRD §12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)다. WPT가 연결한 §12.8은 해당 축의 content-distribution이 `normal` 또는 `stretch`이고 free space가 양수이며 definite일 때, `auto` max track sizing function을 가진 track만 확장한다고 설명한다. §12.2의 track sizing 용어는 `fit-content()`의 max function을 일반 `auto`와 구별하고, §12.5의 fit-content maximum은 max-content growth limit을 argument로 clamp한다.
+규범 기준은 [CSS Grid Layout Module Level 2, 2025 CRD §6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto), [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms), [§12.5](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content), [§12.8](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch)다. §12.2는 `fit-content()` track의 min sizing function을 `auto`로, max sizing function을 `max-content`로 정의한다. §6.6은 computed overflow가 scrollable하지 않고 축에서 `auto` min sizing function을 가진 track 하나 이상을 span하는 item에 content-based automatic minimum을 적용한다. WPT의 direct wrapper들은 기본 `overflow:visible`이고 각각 한 implicit row를 span하므로 조건을 만족한다. 각 nested 10px child가 content size suggestion 및 minimum contribution을 10px로 정하며, §11.4–§11.5의 auto-min track base는 각각 10px이다.
 
-고정 입력에는 row gap, border, padding이 없다. 첫 row item의 minimum/max-content contribution과 둘째 row의 기여는 각각 nested 10px block에서 10px이다. 따라서 초기 row bases는 `[10, 10]px`다. 첫 fit-content track의 max-content growth limit은 `min(10, 40) = 10px`이고, 그 max function은 §12.8의 `auto` eligibility에 해당하지 않는다. 둘째 `auto` row의 max track sizing function은 `auto`이므로 stretch 단계에서만 대상이 된다.
+§12.5의 단일-span fit-content maximum은 max-content contribution을 argument로 clamp한다. 그러므로 첫 track growth limit은 `min(10,40)=10px`이다. WPT가 연결한 §12.8은 해당 축의 content-distribution이 `normal` 또는 `stretch`이고 free space가 양수이며 definite일 때 `auto` max track sizing function을 가진 track만 확장한다고 설명한다. 첫 track의 max function은 `max-content`여서 stretch 대상이 아니며, 두 번째 `auto` track만 확장된다.
+
+고정 입력에는 row gap, border, padding이 없다. definite content height `300px`에서 두 초기 base `[10, 10]px`를 빼면 양수 definite free space는 `280px`이다. 둘째 row만 대상이므로 최종 row bases는 `[10, 290]px`이다.
 
 ```text
 definite inner block size       = 300px

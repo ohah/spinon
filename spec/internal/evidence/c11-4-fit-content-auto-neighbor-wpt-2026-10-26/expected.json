@@ -15,6 +15,8 @@
     "each_nested_content_height_px": 10
   },
   "css_grid_2025_crd_derivation": {
+    "automatic_minimum_size_rule": "각 direct item은 scrollable overflow가 아니고 auto min sizing function인 track 하나를 span하므로 CSS Grid §6.6의 content-based automatic minimum 조건을 만족한다. nested 10px content가 minimum contribution 10px을 만든다.",
+    "fit_content_track_functions": {"min": "auto", "max": "max-content"},
     "pre_stretch_track_bases_px": [10, 10],
     "fit_content_max_content_growth_limit_px": 10,
     "fit_content_argument_px": 40,
@@ -32,6 +34,8 @@
     "auto_inner": [0, 10, 60, 10]
   },
   "normative_basis": [
+    "CSS Grid Layout Module Level 2 2025 CRD §6.6",
+    "CSS Grid Layout Module Level 2 2025 CRD §11.4–§11.5",
     "CSS Grid Layout Module Level 2 2025 CRD §12.2",
     "CSS Grid Layout Module Level 2 2025 CRD §12.5",
     "CSS Grid Layout Module Level 2 2025 CRD §12.8"

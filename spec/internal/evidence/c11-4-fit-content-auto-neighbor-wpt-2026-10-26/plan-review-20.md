@@ -28,3 +28,9 @@
 | 20 | file URL CSSOM 관측을 WPT PASS로 과장 | testharness resource request 실패와 WPT 미실행 경계를 보고서에 명시한다. | PASS |
 
 검토 중 수정이 필요했던 차단 결함은 없었다. PR diff 검토는 이 표와 독립된 30관점 보고서에서 수행한다.
+
+## §6.6 automatic minimum 근거 재확인
+
+기존 view #10은 automatic minimum floor를 확인했지만, PR review 중 계획 문구가 조건을 정확히 적지 않았음을 발견해 이 관점을 보완했다. CSS Grid Level 2 2025 CRD의 [§6.6](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto)은 computed overflow가 non-scrollable이고 item이 해당 축에서 `auto` min track sizing function을 가진 track 하나 이상을 span할 때 content-based automatic minimum을 적용한다. [§12.2](https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms)는 `fit-content()`의 min track sizing function이 `auto`, max function이 `max-content`라고 정한다. 고정 WPT source의 두 direct wrapper는 기본 `overflow:visible`이고 각자 한 implicit row만 span한다. 각 nested child의 fixed block-size가 10px이며 wrapper에 지정·전달 크기 제안은 없으므로 content size suggestion 및 minimum contribution은 10px이다. 두 track은 §11.4–§11.5에 따라 base 10px에서 시작한다.
+
+이 재확인으로 view #10은 PASS다. 대상은 독립적인 규범 기대값과 입력 조건이며 Chrome 관측이나 Spinon/Taffy 출력으로부터 유도하지 않았다. 나머지 계획 관점 판정은 바뀌지 않는다.
