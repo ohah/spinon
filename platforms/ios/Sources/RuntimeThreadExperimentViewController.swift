@@ -539,7 +539,13 @@ final class RuntimeThreadExperimentViewController: UIViewController {
                 self.appendReport("16,385개 wrapper 유지 · \(largeRegistryRetained ? "통과" : "실패") · nodes=\(self.integerField("document_nodes", in: largeSetup)) wrappers=\(self.integerField("document_collection_live_handles", in: largeSetup)) scan=\(largeSetupScanUs)µs root-buffer=\(largeSetupRootBufferBytes)B")
                 self.appendReport("16,385개 wrapper 재scan · \(largeRegistryRepeatedScansPassed ? "통과" : "실패") · 표본 \(largeRegistryScanSamplesUs.count)회 · scan-us=\(largeRegistryScanSamplesUs.map(String.init).joined(separator: ","))")
                 #if SPINON_ENABLE_S03_DOM_GC_FIXTURE_1
-                self.appendReport("S03_SCAN_OBSERVABILITY status=\(largeRegistryScanObservabilityPassed ? "PASS" : "FAIL") sample_records=\(largeRegistryScanSampleRecords.joined(separator: ";"))")
+                let scanSampleCount = largeRegistryScanSampleRecords.count
+                let scanObservabilityPassed = largeRegistryScanObservabilityPassed
+                    && scanSampleCount == self.lifecycleLargeRegistryScanSamples
+                self.appendReport("S03_SCAN_OBSERVABILITY status=\(scanObservabilityPassed ? "PASS" : "FAIL") sample_count=\(scanSampleCount)")
+                for sampleRecord in largeRegistryScanSampleRecords {
+                    self.appendReport("S03_SCAN_OBSERVABILITY_SAMPLE \(sampleRecord)")
+                }
                 #endif
                 self.appendReport("16,385개 wrapper 해제 · \(largeRegistryReleased ? "통과" : "실패") · empty=\(largeEmptyWrappers) reclaimed-buffer=\(largeReclaimedNodeBufferBytes)B")
                 self.appendReport("반복 수명 회수 · \(repeatedBaseline ? "통과" : "실패") · \(baselineReturnRounds)/6회 · 회차당 32쌍 · 최대 빈 wrapper \(maximumEmptyWrappers)")

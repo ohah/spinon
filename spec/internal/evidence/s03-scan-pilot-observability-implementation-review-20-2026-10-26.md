@@ -1,11 +1,11 @@
 # S03.3 pilot observability · 구현 후 독립 20관점 검토
 
-**검토 대상:** `af6b323c` 이후 Android/iOS fixture 출력 및 S03 simulator runner 변경
+**검토 대상:** `af6b323c` 이후 Android/iOS fixture 출력, S03 simulator runner와 iOS C9 재검증 후속 수정
 **비교 모델:** [구현 전 pilot 모델](./s03-scan-pilot-observability-precomparison-2026-10-26/README.md)
 **선행 계획:** [pilot observability slice](../../../plan/s03-3-pilot-scan-observability.md)
 **계획 SHA-256:** `f0a86deca3ae7990a730c720c034c53f712df35d5973e10bebb6e93a6ea423da`
-**검토 코드 diff SHA-256:** `8fb7825478ac12d1c7cbb5dcc936ab5a9318f290aae8f5f38ff5a84efcfe5326`
-**검토 범위:** 실제 변경 코드·verification runner·기본 및 opt-in app artifact. 시뮬레이터 실행은 의도적으로 하지 않아 runtime log의 실제 표본 값은 아직 관찰하지 않았다.
+**검토 코드 diff SHA-256:** `ab628193529a3cdecee77fd145d61865f03b8de68c8fe1b0a67f63e0831490bd`
+**검토 범위:** 실제 변경 코드·verification runner·기본 및 opt-in app artifact, iOS task-owned clone의 초기 runtime 출력. 초기 캡처에서 앱 화면은 10개 표본을 보였지만 aggregate OSLog 이벤트에는 9개만 남았고, verifier EXIT trap이 실패 코드를 덮는 경로가 확인되어 이 후속 수정을 검토했다. 수정 후 iOS clone 재실행은 아직 남아 있으며 Android runtime은 host disk 용량 부족으로 미검증이다.
 
 계획 단계 검토와 별도로 구현 diff를 다시 읽고 아래의 독립 실패 경로를 확인했다. 발견한 누락은 구현 후 검토를 닫기 전에 보완했다.
 
@@ -20,18 +20,18 @@
 | 7 | TID 정의 | caller/callback ID를 scan owner ID로 잘못 기록할 수 있는가? | report의 `owner_tid`를 직접 읽고 callback/caller 필드로 대체하지 않는다. Android/iOS 구현은 actor의 V8 owner safe-point와 같은 thread 경로를 유지한다. OS runnable-state 관측은 주장하지 않는다. |
 | 8 | monotonic clock 상관 | `steady_clock` 시작값을 OS trace timestamp 또는 wall clock으로 합칠 수 있는가? | 기존 `document_collection_last_scan_start_ns`를 동일 값으로 남기고 `scan_start_ns` 이름/문서에 clock domain 제한을 적었다. scheduler trace 미지원은 명시한다. |
 | 9 | sample-to-operation join | 10회 표본이 다른 eval의 timer/TID와 섞일 수 있는가? | 같은 report에서 `seq`, `trace_cookie`, `owner_tid`, 시작 시각, duration을 읽어 sample index와 한 tuple로 기록한다. |
-| 10 | 중도 실패와 count | 앞선 sample이 실패했는데 계획된 상수 10을 실제 표본 수처럼 표시할 수 있는가? | Android 실제 record count 및 iOS array count를 10과 대조한다. 반복 성공 조건은 기존 fixture가 계속 검사하고 runner는 실제 출력된 `scan_sample_index` 수를 확인한다. |
+| 10 | 중도 실패와 count | 앞선 sample이 실패했는데 계획된 상수 10을 실제 표본 수처럼 표시할 수 있는가? | iOS observability status가 실제 array count와 기존 반복 횟수의 일치도 검사한다. verifier helper는 marker 개수만 세지 않고 1..10 순서·중복 여부를 확인한다. positive 10개와 negative 9개 synthetic case에서 negative가 exit 1로 끝나는 self-test를 추가했다. |
 | 11 | 누락/파싱 실패 | 필드 누락이 0처럼 보여 완전한 관측으로 처리되는가? | Java/Swift 기존 parse helper의 `-1` sentinel을 그대로 검사한다. owner TID는 양수, 다른 숫자는 음수 sentinel이 아니어야 metadata PASS가 된다. 추가로 manifest 장치/tool 식별 정보가 비면 runner가 실패하도록 guard를 넣었다. |
 | 12 | correctness와 metadata 결합 | 자료 수집 실패가 생존집합 correctness PASS로 위장되거나 반대로 algorithm 결과를 바꾸는가? | 앱의 기존 `dom_gc` PASS 계산은 변경하지 않았다. `scan_observability`는 별도 결과이고 simulator runner가 별도로 요구한다. 회수 경로는 변경하지 않았다. |
 | 13 | record delimiter/parser | sample field 내 임의 문자열이 구분자를 깨뜨리는가? | tuple에는 report에서 추출한 정수만 두고 comma/semicolon을 구분자로 사용한다. report 문자열 전체나 사용자 입력은 기록하지 않는다. |
-| 14 | Android log truncation | 10 tuple이 logcat 한 줄 한도를 넘어 뒤쪽이 잘릴 수 있는가? | tuple 길이는 정수 6개로 bounded되어 기존 10개 time 목록에 비례하는 작은 증가만 만든다. runner는 marker뿐 아니라 `scan_sample_index` 10개를 요구한다. |
-| 15 | iOS OSLog 누락 | `appendReport` 화면 값이 runner가 읽는 unified log에 나오지 않는가? | `appendReport`는 기존 `SPINON_R06_IOS` logger를 사용하며 runner가 같은 predicate로 수집한다. 별도 logger/category를 만들지 않았다. simulator 실행으로 최종 캡처를 확인하지 않은 점은 남은 제한이다. |
+| 14 | Android log truncation | 10 tuple이 logcat 한 줄 한도를 넘어 뒤쪽이 잘릴 수 있는가? | tuple은 정수 6개로 제한한다. simulator runtime은 host disk 문제로 아직 관찰하지 못했으며, verifier는 실제 capture에서 1..10이 모두 연속하는지 확인하도록 강화했다. |
+| 15 | iOS OSLog 한 이벤트 크기 | 화면의 10개 값 중 unified log 이벤트의 끝 부분이 잘려 표본이 빠질 수 있는가? | 초기 C9 실행에서 화면은 sample 1..10을 보였지만 aggregate OSLog event는 1..9만 포함했다. status/count 요약을 짧게 유지하고 tuple마다 별도 `appendReport` event를 쓰도록 수정했다. 수정 뒤 C9 재실행으로 최종 통과 여부를 확인한다. |
 | 16 | source dirty 상태 | output 생성물이 dirty source/hash로 오인되어 manifest가 재귀적으로 달라지는가? | commit/diff/untracked digest 계산을 output dir 생성보다 앞에 둔다. tracked diff와 untracked 파일 digest를 분리하고 `source_dirty`를 함께 쓴다. |
 | 17 | artifact tree hashing | iOS `.app`의 상대 경로·symlink·실행 모드가 빠져 artifact fingerprint가 약해지는가? | app 디렉터리 내부 상대경로를 정렬해 file content+mode 및 symlink target을 합산한다. Android APK는 단일 파일 SHA-256, 두 플랫폼 build log도 따로 hash한다. |
-| 18 | manifest 덮어쓰기/누락 | 반복 실행이 이전 결과를 덮거나 선택한 device/tool 식별 없이 실행되는가? | 기존 고유 output-dir 존재 거부를 유지한다. AVD model/release/API/ABI, iOS device row, Xcode/adb/mise/Bun 값이 비면 생성 전에 중단한다. |
-| 19 | 빌드와 장치 경계 | build 확인 중 root worktree V8 cache를 오염시키거나 booted simulator에 설치/실행하는가? | 고정 V8 checkout/artifact를 read-only source로 지정해 새 worktree의 outputs에만 build했다. V8 checkout status는 깨끗하다. 앱 build는 generic Simulator target이며 install/launch하지 않았다. |
-| 20 | 근거 범위/성능 오인 | build 성공만으로 runtime record, scheduler, CPU, 성능 개선 또는 S03.3 완료를 주장할 수 있는가? | 기본/fixture build와 string boundary만 확인했다. 실 runtime sample·CPU·scheduler·effect threshold·N·tail·physical device·long-loop·allocation failure·listener cycle은 미검증으로 남기며 STATUS/roadmap를 변경하지 않는다. |
+| 18 | verifier exit status | 실패 gate가 EXIT cleanup에 가려 전체 verifier가 성공 코드 0을 반환할 수 있는가? | `cleanup`은 진입 시 기존 `$?`를 보존하고 종료한다. synthetic 9-record case는 helper의 실패뿐 아니라 `fail`과 EXIT trap을 거쳐 exit 1이 되는지 확인한다. |
+| 19 | 빌드와 장치 경계 | build 확인 중 root worktree V8 cache를 오염시키거나 booted simulator에 설치/실행하는가? | 고정 V8 checkout/artifact를 read-only source로 지정해 새 worktree output에서 build한다. iOS runtime은 task-owned C9 clone만 대상으로 하고 다른 booted iPhone/AVD는 건드리지 않는다. |
+| 20 | 근거 범위/성능 오인 | build/runtime 결과로 CPU, scheduler, 효과 기준, 또는 S03.3 완료를 주장할 수 있는가? | iOS 재실행 전까지 runtime metadata는 미완료이고 Android runtime은 host disk 부족으로 미검증이다. CPU/scheduler/effect threshold/N/tail/physical-device/long-loop/allocation failure/listener cycle은 미정이며 STATUS/roadmap는 수정하지 않는다. |
 
 ## 검토 결과
 
-구현 범위는 계획과 일치하고 현재 diff에서 수정이 필요한 결함은 남기지 않았다. `bash -n` 및 `git diff --check`, Android/iOS Debug 기본·S03 opt-in build, 기본 artifact marker 부재와 opt-in marker 존재를 확인했다. `tools/verify-s03-dom-lifecycle-simulators.sh`는 Android logcat clear/force-stop과 iOS install/terminate를 하므로 booted AVD·Simulator 세션을 보존하기 위해 실행하지 않았다. 이에 따라 실제 10개 tuple 생성/로그 수집은 이 PR에서 입증하지 않는다.
+계획의 fixture-only 표본 tuple과 run provenance 범위는 유지한다. 초기 iOS C9 캡처에서 화면 표본은 1..10이었지만 하나의 unified log event는 9개까지만 전달했고, 그 9개 gate failure의 exit 1이 빈 stream cleanup trap에서 0으로 덮이는 경로를 확인해 분리 출력, ordered-index 검사, exit-status 보존으로 수정했다. verifier self-test는 10개 positive control을 받고 synthetic 9개 negative control을 exit 1로 거부했다. `bash -n` 및 `git diff --check`도 통과했다. 최종 iOS rebuild/runtime 확인은 남아 있고 Android runtime은 새 AVD userdata가 요구한 약 7.37 GB가 현재 host free space보다 커 실행하지 않았다. 캐시/스냅샷/AVD 정리는 하지 않았으며, 이 단계에서 성능·CPU·scheduler·S03.3 완료를 주장하지 않는다.

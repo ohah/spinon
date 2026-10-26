@@ -13,6 +13,92 @@ fail() {
   exit 1
 }
 
+cleanup() {
+  local exit_status=$?
+  if [[ -n "$ios_stream_pid" ]]; then
+    kill "$ios_stream_pid" 2>/dev/null || true
+    wait "$ios_stream_pid" 2>/dev/null || true
+  fi
+  return "$exit_status"
+}
+trap cleanup EXIT
+
+scan_sample_sequence_is_complete() {
+  local log_path="$1"
+  local sample_marker
+  local sample_index
+  local expected_index
+  local sample_indices=()
+
+  [[ -r "$log_path" ]] || return 1
+  while IFS= read -r sample_marker; do
+    sample_index="${sample_marker#scan_sample_index=}"
+    [[ "$sample_index" =~ ^[0-9]+$ ]] || return 1
+    sample_indices+=("$sample_index")
+  done < <(rg -o 'scan_sample_index=[0-9]+' "$log_path" || true)
+
+  if [[ "${#sample_indices[@]}" -ne 10 ]]; then
+    printf 'scan sample metadata count=%s expected=10\n' "${#sample_indices[@]}" >&2
+    return 1
+  fi
+  for expected_index in {1..10}; do
+    if [[ "${sample_indices[$((expected_index - 1))]}" != "$expected_index" ]]; then
+      printf 'scan sample metadata index at position %s is %s expected=%s\n' \
+        "$expected_index" "${sample_indices[$((expected_index - 1))]}" "$expected_index" >&2
+      return 1
+    fi
+  done
+}
+
+run_scan_sample_gate_self_test() {
+  local test_dir
+  local sample_index
+  local negative_control_status=0
+  test_dir="$(mktemp -d)"
+  for sample_index in {1..10}; do
+    printf 'scan_sample_index=%s,seq=%s\n' "$sample_index" "$sample_index"
+  done > "$test_dir/ten-records.log"
+  scan_sample_sequence_is_complete "$test_dir/ten-records.log" || {
+    rm -rf "$test_dir"
+    printf 'scan sample gate rejected the 10-record positive control\n' >&2
+    return 1
+  }
+  for sample_index in {1..9}; do
+    printf 'scan_sample_index=%s,seq=%s\n' "$sample_index" "$sample_index"
+  done > "$test_dir/nine-records.log"
+  if (
+    trap cleanup EXIT
+    scan_sample_sequence_is_complete "$test_dir/nine-records.log" \
+      || fail "synthetic 9-record negative control"
+  ) 2> "$test_dir/nine-negative-control.log"; then
+    rm -rf "$test_dir"
+    printf 'scan sample verifier returned zero for the 9-record negative control\n' >&2
+    return 1
+  else
+    negative_control_status=$?
+  fi
+  if [[ "$negative_control_status" -ne 1 ]] \
+      || ! rg -Fq 'scan sample metadata count=9 expected=10' "$test_dir/nine-negative-control.log" \
+      || ! rg -Fq '실패: synthetic 9-record negative control' "$test_dir/nine-negative-control.log"; then
+    rm -rf "$test_dir"
+    printf 'scan sample negative control failed with unexpected exit=%s\n' \
+      "$negative_control_status" >&2
+    return 1
+  fi
+  rm -rf "$test_dir"
+  printf 'scan sample gate self-test passed: 10 accepted; 9 rejected with exit=%s\n' \
+    "$negative_control_status"
+}
+
+if [[ "${SPINON_S03_VERIFY_SCAN_GATE_SELF_TEST:-0}" == "1" ]]; then
+  command -v rg >/dev/null 2>&1 || {
+    printf 'ripgrep is required for the scan sample gate self-test\n' >&2
+    exit 1
+  }
+  run_scan_sample_gate_self_test
+  exit $?
+fi
+
 hash_bundle_tree() {
   local bundle_dir="$1"
   (
@@ -31,14 +117,6 @@ hash_bundle_tree() {
 hash_file() {
   shasum -a 256 "$1" | awk '{print $1}'
 }
-
-cleanup() {
-  if [[ -n "$ios_stream_pid" ]]; then
-    kill "$ios_stream_pid" 2>/dev/null || true
-    wait "$ios_stream_pid" 2>/dev/null || true
-  fi
-}
-trap cleanup EXIT
 
 [[ "$(uname -s)" == "Darwin" ]] || fail "Android와 iOS 시뮬레이터가 있는 macOS에서 실행해야 합니다"
 command -v mise >/dev/null 2>&1 || fail "mise를 찾을 수 없습니다"
@@ -186,9 +264,8 @@ rg -Fq 'large_registry_scan_samples_us=' "$result_dir/android.log" \
   || fail "Android 대량 registry 재scan 표본이 없습니다"
 rg -Fq 'large_registry_scan_observability=PASS' "$result_dir/android.log" \
   || fail "Android scan TID·clock 표본 metadata가 완전하지 않습니다"
-android_scan_sample_count="$(rg -o 'scan_sample_index=' "$result_dir/android.log" | wc -l | tr -d '[:space:]')"
-[[ "$android_scan_sample_count" == "10" ]] \
-  || fail "Android scan metadata 표본 수가 10개가 아닙니다: $android_scan_sample_count"
+scan_sample_sequence_is_complete "$result_dir/android.log" \
+  || fail "Android scan metadata가 순서대로 10개 모두 기록되지 않았습니다"
 rg -Fq 'initial_baseline_return=PASS' "$result_dir/android.log" \
   || fail "Android 초기 root fixture 뒤 자원 기준선 복귀 결과가 없습니다"
 rg -Fq 'repeated_baseline=PASS' "$result_dir/android.log" \
@@ -255,9 +332,8 @@ rg -Fq '16,385개 wrapper 재scan · 통과 · 표본 10회' "$result_dir/ios-st
   || fail "iOS 대량 registry 재scan 10회 결과가 없습니다"
 rg -Fq 'S03_SCAN_OBSERVABILITY status=PASS' "$result_dir/ios-stream.log" \
   || fail "iOS scan TID·clock 표본 metadata가 완전하지 않습니다"
-ios_scan_sample_count="$(rg -o 'scan_sample_index=' "$result_dir/ios-stream.log" | wc -l | tr -d '[:space:]')"
-[[ "$ios_scan_sample_count" == "10" ]] \
-  || fail "iOS scan metadata 표본 수가 10개가 아닙니다: $ios_scan_sample_count"
+scan_sample_sequence_is_complete "$result_dir/ios-stream.log" \
+  || fail "iOS scan metadata가 순서대로 10개 모두 기록되지 않았습니다"
 rg -Fq '16,385개 wrapper 해제 · 통과 · empty=16385' "$result_dir/ios-stream.log" \
   || fail "iOS 16,385개 V8 wrapper 회수 결과가 없습니다"
 rg -Fq '반복 수명 회수 · 통과 · 6/6회' "$result_dir/ios-stream.log" \
