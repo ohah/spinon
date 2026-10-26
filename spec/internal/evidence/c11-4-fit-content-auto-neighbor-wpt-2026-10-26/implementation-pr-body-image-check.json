@@ -1,0 +1,21 @@
+{
+  "pull_request": "https://github.com/ohah/spinon/pull/662",
+  "reviewed_head": "f0dd896ab7c670f8caf7e837b447c16742fd03c0",
+  "image_url": "https://raw.githubusercontent.com/ohah/spinon/4f6b38a4e6528667a0079df88a69bbfc909b86e8/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+  "raw_http": {
+    "status": 200,
+    "bytes": 62247,
+    "sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18"
+  },
+  "agent_browser": {
+    "version": "0.31.1",
+    "page": "https://github.com/ohah/spinon/pull/662",
+    "image_complete": true,
+    "image_width": 1280,
+    "image_height": 1000,
+    "session_closed": true,
+    "dedicated_browser_processes_after_close": 0
+  },
+  "caption_scope": "Chrome 156 CSSOM/frame precomparison; WPT testharness was not executed; not a Spinon product runtime screenshot",
+  "existing_pr_body_image_url_check_scope": "The existing pr-body-image-url-check.json records PR #661 and was not reused for PR #662"
+}
