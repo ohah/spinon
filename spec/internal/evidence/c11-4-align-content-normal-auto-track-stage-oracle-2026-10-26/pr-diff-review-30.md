@@ -50,4 +50,8 @@
 
 세 문서는 동일하게 그 원래 head의 PASS 30/30과 merge 대기를 기록한다. C11.4 공식 완료 상태는 미완료, 집계는 `72/213`이며 `spec/STATUS.md`는 이 delta에서 변경되지 않았다. 계획·evidence의 PR diff report 링크는 저장소 안의 [동일 보고서](./pr-diff-review-30.md)를 가리키고, PR 본문도 원래 검토 head와 `a183e2a7` 상태 delta를 명시한다.
 
-이 재확인 시점의 GitHub `statusCheckRollup`은 비어 있고 merge state는 `CLEAN`이다. 문서와 PR 본문은 GitHub checks 미보고 및 merge 대기와 일치한다. 테스트·브라우저·시뮬레이터는 실행하지 않았다.
+이 재확인 시점의 GitHub `statusCheckRollup`은 비어 있고 merge state는 `CLEAN`이었다. 테스트·브라우저·시뮬레이터는 실행하지 않았다.
+
+## 병합 후 상태 동기화
+
+PR [#656](https://github.com/ohah/spinon/pull/656)은 2026-10-26T09:52:34Z Rebase and merge로 병합됐다. 최종 PR head는 `988ac28af933fa9a2ffbcea01f0d8e76880547be`, merge commit은 `0991a8a6d5f05dba240cec90fad4f3539c938c05`이다. 병합 후 GitHub `statusCheckRollup`은 비어 있었다. 이는 CI 통과로 해석하지 않는다. 구현은 test-only oracle이며 C11.4 공식 체크박스와 `72/213` 완료 집계는 미완료로 유지한다. `spec/STATUS.md`와 공개 로드맵에는 이 경계를 반영했다.
