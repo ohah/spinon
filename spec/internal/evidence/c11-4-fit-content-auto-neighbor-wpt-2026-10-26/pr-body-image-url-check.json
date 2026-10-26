@@ -1,10 +1,10 @@
 {
   "pr": 661,
-  "checked_at_utc": "2026-10-26T13:25:48Z",
-  "checked_pr_head": "f0cb550ff0bea4e3a2558f3a38b8ef3e73707a85",
+  "checked_at_utc": "2026-10-26T13:47:31Z",
+  "checked_pr_head": "c2317b2a2f73adc8d5c5a2ef78f62bcd66310848",
   "base": "d48d31698842866241dcb3317c6f8ff1ee068d1c",
-  "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/f0cb550ff0bea4e3a2558f3a38b8ef3e73707a85/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
-  "url_kind": "immutable commit permalink; does not depend on the deletable branch name or synthetic merge ref",
+  "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/c2317b2a2f73adc8d5c5a2ef78f62bcd66310848/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+  "url_kind": "immutable commit permalink; independent of deletable branch and synthetic merge ref",
   "asset_path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
   "asset_sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18",
   "direct_url_check": {
@@ -23,7 +23,9 @@
     "image_visible": true,
     "natural_width_px": 1280,
     "natural_height_px": 1000,
+    "body_uses_level_2_crd_sections": "§6.6/§12.2/§12.4–§12.8",
+    "body_contains_old_level_1_algorithm_numbers": false,
     "status": "rendered in the GitHub PR body"
   },
-  "merge_ref_note": "The body uses an immutable content commit URL; no /merge ref or source branch is part of the image URL."
+  "merge_ref_note": "The checked body URL is a content-addressed commit URL, not a source branch path or /merge synthetic ref. This checks the image URL and PR render; no merge or post-merge deployment was performed."
 }
