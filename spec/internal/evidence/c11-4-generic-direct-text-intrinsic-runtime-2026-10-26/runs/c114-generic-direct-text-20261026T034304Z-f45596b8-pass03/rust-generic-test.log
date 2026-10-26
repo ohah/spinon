@@ -1,0 +1,16 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 9 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::hyphens_inline_declaration_is_reported_as_a_stylo_unknown_property ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::two_candidates_allow_a_non_text_block_sibling_without_adding_text_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::stale_computed_snapshot_cannot_be_used_for_another_host_document ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::inline_unsupported_properties_fail_before_snapshot_or_layout_creation ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::independent_font_registry_token_is_not_equated_by_numeric_revision ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_leaves_non_grid_and_legacy_one_item_shapes_for_existing_fallback ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::positive::generic_collector_matches_six_scene_computed_style_intrinsic_and_c15_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_ambiguous_sources_and_three_or_more_candidates ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_computed_item_styles_outside_the_fixed_profile ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 240 filtered out; finished in 0.06s
+
