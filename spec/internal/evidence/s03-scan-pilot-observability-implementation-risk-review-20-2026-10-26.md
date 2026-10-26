@@ -2,7 +2,8 @@
 
 **검토 대상:** [pilot observability slice 계획](../../../../plan/s03-3-pilot-scan-observability.md)
 **검토 시점 source:** `origin/main` `8247a12b`
-**계획 SHA-256:** `f0a86deca3ae7990a730c720c034c53f712df35d5973e10bebb6e93a6ea423da`
+**구현 전 계획 SHA-256:** `f0a86deca3ae7990a730c720c034c53f712df35d5973e10bebb6e93a6ea423da`
+**실행 경계 갱신 SHA-256:** `cc074e3cbc93f7bf357b975da6ea1222549306bd5c1165472a3f30bfc02bd77f` (PR 전 iOS clone 실행은 output 검증만, formal baseline은 병합 후)
 **범위:** 계획 문서만 검토했다. 이 시점까지 Android/iOS source, verification script, Rust/C++ 제품 코드는 수정하지 않았다.
 
 각 관점은 독립 실패 경로 하나를 다룬다. 이 기록은 계획 단계 리뷰이며 구현 후 review나 PR diff review로 재사용하지 않는다.

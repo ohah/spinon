@@ -1,6 +1,6 @@
 # S03.3 · pilot baseline observability slice
 
-**상태:** 구현 전 계획 · fixture-only 진단 기록
+**상태:** 구현 slice 계획 · fixture-only 관측 (S03.3 완료와 별개)
 **상위 비용 분석:** [registry scan 비용 귀속 계획](./s03-3-scan-cost-attribution.md)
 **비교 기준:** `origin/main` `8247a12b` · 내부 계약 [0021](../spec/internal/0021-s03-dom-node-lifecycle.md)
 **구현 전 비교 모델:** [pilot scan observability](../spec/internal/evidence/s03-scan-pilot-observability-precomparison-2026-10-26/README.md)
@@ -64,4 +64,4 @@ manifest는 run 디렉터리의 산출물이며 저장소 문서 상태를 갱�
 
 ## 선행 작업과 다음 단계
 
-비교 정의와 성능 판정 유보는 [S03.3 비용 분석 계획](./s03-3-scan-cost-attribution.md)의 선행 조건을 따른다. 이 계측 PR이 병합된 뒤에만 동일 instrumentation revision을 기준으로 기존 AVD·Simulator harness를 실행해 pilot raw log와 manifest를 수집할 수 있다. 그 자료를 본 뒤 effect threshold, tail 허용치, 통계 N, release profile, scheduler trace 지원 및 장기 반복 예산을 별도로 확정한다. 해당 결정 없이 최적화 구현을 시작하거나 성능 개선을 주장하지 않는다.
+비교 정의와 성능 판정 유보는 [S03.3 비용 분석 계획](./s03-3-scan-cost-attribution.md)의 선행 조건을 따른다. 이번 PR 전 C9 clone 실행은 fixture 출력 경로와 metadata completeness만 확인하며 formal pilot baseline이나 Android matrix 검증으로 보지 않는다. 이 계측 PR이 병합된 뒤에만 동일 instrumentation revision을 기준으로 프로젝트의 AVD·Simulator harness를 실행해 formal pilot raw log와 manifest를 수집한다. 그 자료를 본 뒤 effect threshold, tail 허용치, 통계 N, release profile, scheduler trace 지원 및 장기 반복 예산을 별도로 확정한다. 해당 결정 없이 최적화 구현을 시작하거나 성능 개선을 주장하지 않는다.
