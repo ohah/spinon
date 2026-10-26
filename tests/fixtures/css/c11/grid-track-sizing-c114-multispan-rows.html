@@ -1,0 +1,57 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 row-axis overlapping span stage oracle</title>
+<style>
+  * { box-sizing: content-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 14px/1.4 sans-serif; color: #202124; background: #fff; }
+  .case { display: flex; align-items: flex-start; gap: 16px; margin: 0 0 20px; }
+  .label { width: 220px; }
+  .grid {
+    display: grid;
+    width: 220px;
+    height: 220px;
+    grid-template-columns: 220px;
+    grid-template-rows: repeat(4, minmax(0px, max-content));
+    column-gap: 0;
+    row-gap: 0;
+    justify-content: start;
+    align-content: start;
+    background: #f2f4f8;
+  }
+  .item { width: 220px; margin: 0; padding: 0; border: 0; color: #101828; }
+  .a { background: rgba(0, 110, 220, .45); }
+  .b { background: rgba(230, 90, 30, .45); }
+  .c { background: rgba(40, 160, 90, .45); }
+</style>
+<div class="case" data-case="span2-forward">
+  <p class="label">span2-forward: A 80px rows 1–2; B 120px rows 2–3</p>
+  <div class="grid" id="span2-forward">
+    <div class="item a" id="span2-forward-a" style="height:80px;grid-row:1 / 3;grid-column:1 / 2"></div>
+    <div class="item b" id="span2-forward-b" style="height:120px;grid-row:2 / 4;grid-column:1 / 2"></div>
+  </div>
+</div>
+<div class="case" data-case="span2-reversed">
+  <p class="label">span2-reversed: DOM order B, A</p>
+  <div class="grid" id="span2-reversed">
+    <div class="item b" id="span2-reversed-b" style="height:120px;grid-row:2 / 4;grid-column:1 / 2"></div>
+    <div class="item a" id="span2-reversed-a" style="height:80px;grid-row:1 / 3;grid-column:1 / 2"></div>
+  </div>
+</div>
+<div class="case" data-case="span2-before-span3">
+  <p class="label">span2-before-span3: DOM order A, B, C</p>
+  <div class="grid" id="span2-before-span3">
+    <div class="item a" id="span2-before-span3-a" style="height:80px;grid-row:1 / 3;grid-column:1 / 2"></div>
+    <div class="item b" id="span2-before-span3-b" style="height:120px;grid-row:2 / 4;grid-column:1 / 2"></div>
+    <div class="item c" id="span2-before-span3-c" style="height:200px;grid-row:1 / 4;grid-column:1 / 2"></div>
+  </div>
+</div>
+<div class="case" data-case="span3-before-span2">
+  <p class="label">span3-before-span2: DOM order C, B, A</p>
+  <div class="grid" id="span3-before-span2">
+    <div class="item c" id="span3-before-span2-c" style="height:200px;grid-row:1 / 4;grid-column:1 / 2"></div>
+    <div class="item b" id="span3-before-span2-b" style="height:120px;grid-row:2 / 4;grid-column:1 / 2"></div>
+    <div class="item a" id="span3-before-span2-a" style="height:80px;grid-row:1 / 3;grid-column:1 / 2"></div>
+  </div>
+</div>
