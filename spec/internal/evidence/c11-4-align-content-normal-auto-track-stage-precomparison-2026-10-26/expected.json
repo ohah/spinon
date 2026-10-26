@@ -1,0 +1,52 @@
+{
+  "oracle": "CSS Grid Layout Module Level 1, 2025 CRD, section 11.8",
+  "derivation": {
+    "pre_stretch_rows_css_px": [10, 20, 5],
+    "auto_max_track_indices": [0, 1],
+    "fixed_track_indices": [2],
+    "internal_gutters_css_px": [10, 10],
+    "positive_definite_free_space_css_px": 45,
+    "free_space_per_auto_track_css_px": 22.5
+  },
+  "expected_stages": [
+    {
+      "stage": "IntrinsicSizingComplete",
+      "row_bases_css_px": [10, 20, 5]
+    },
+    {
+      "stage": "MaximizeTracks",
+      "row_bases_css_px": [10, 20, 5]
+    },
+    {
+      "stage": "ExpandFlexibleTracks",
+      "row_bases_css_px": [10, 20, 5]
+    },
+    {
+      "stage": "StretchAutoTracks",
+      "applied": true,
+      "row_bases_css_px": [32.5, 42.5, 5],
+      "remaining_row_space_css_px": 0
+    }
+  ],
+  "frames_css_px": {
+    "root": {"x": 0, "y": 0, "width": 20, "height": 100},
+    "children": [
+      {"order": 0, "x": 0, "y": 0, "width": 20, "height": 10},
+      {"order": 1, "x": 0, "y": 42.5, "width": 20, "height": 20},
+      {"order": 2, "x": 0, "y": 95, "width": 20, "height": 5}
+    ]
+  },
+  "comparison_controls": {
+    "stretch": {
+      "applied": true,
+      "row_bases_css_px": [32.5, 42.5, 5],
+      "child_y_css_px": [0, 42.5, 95]
+    },
+    "start": {
+      "applied": false,
+      "row_bases_css_px": [10, 20, 5],
+      "child_y_css_px": [0, 20, 50]
+    }
+  },
+  "float_tolerance_css_px": 0.0001
+}

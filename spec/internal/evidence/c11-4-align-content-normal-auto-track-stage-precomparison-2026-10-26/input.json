@@ -1,0 +1,31 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, section 11.8",
+  "axis": "rows",
+  "root": {
+    "width_css_px": 20,
+    "height_css_px": 100,
+    "border_css_px": 0,
+    "padding_css_px": 0,
+    "sizing_policy": "match"
+  },
+  "viewport": {
+    "width_css_px": 20,
+    "height_css_px": 100
+  },
+  "alignment": {
+    "align_content": "normal",
+    "justify_content": "start"
+  },
+  "grid": {
+    "columns": ["20px"],
+    "rows": ["auto", "auto", "5px"],
+    "row_gap_css_px": 10,
+    "column_gap_css_px": 0,
+    "placement_mode": "track-sizing"
+  },
+  "direct_children": [
+    {"order": 0, "row": 0, "height_css_px": 10, "width_css_px": 20},
+    {"order": 1, "row": 1, "height_css_px": 20, "width_css_px": 20},
+    {"order": 2, "row": 2, "height_css_px": 5, "width_css_px": 20}
+  ]
+}
