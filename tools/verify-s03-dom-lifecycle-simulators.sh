@@ -13,6 +13,25 @@ fail() {
   exit 1
 }
 
+hash_bundle_tree() {
+  local bundle_dir="$1"
+  (
+    cd "$bundle_dir"
+    {
+      find . -type f -exec sh -c 'for path do
+        mode="$(stat -f "%Sp" "$path")"
+        digest="$(shasum -a 256 "$path")"
+        printf "file %s %s %s\n" "$mode" "${digest%% *}" "$path"
+      done' sh {} +
+      find . -type l -exec sh -c 'for path do printf "symlink %s -> %s\n" "$path" "$(readlink "$path")"; done' sh {} +
+    } | LC_ALL=C sort | shasum -a 256 | awk '{print $1}'
+  )
+}
+
+hash_file() {
+  shasum -a 256 "$1" | awk '{print $1}'
+}
+
 cleanup() {
   if [[ -n "$ios_stream_pid" ]]; then
     kill "$ios_stream_pid" 2>/dev/null || true
@@ -59,11 +78,56 @@ else
   ios_udid="${ios_simulators[0]}"
 fi
 
+source_commit="$(git -C "$repo_root" rev-parse HEAD)"
+source_branch="$(git -C "$repo_root" branch --show-current)"
+source_dirty=false
+if [[ -n "$(git -C "$repo_root" status --porcelain --untracked-files=all)" ]]; then
+  source_dirty=true
+fi
+tracked_diff_sha256="$(git -C "$repo_root" diff --binary HEAD | shasum -a 256 | awk '{print $1}')"
+untracked_source_sha256="$(git -C "$repo_root" ls-files --others --exclude-standard -z \
+  | xargs -0 shasum -a 256 | LC_ALL=C sort | shasum -a 256 | awk '{print $1}')"
+android_model="$(adb -s "$android_serial" shell getprop ro.product.model | tr -d '\r')"
+android_release="$(adb -s "$android_serial" shell getprop ro.build.version.release | tr -d '\r')"
+android_api="$(adb -s "$android_serial" shell getprop ro.build.version.sdk | tr -d '\r')"
+android_abi="$(adb -s "$android_serial" shell getprop ro.product.cpu.abi | tr -d '\r')"
+ios_device_line="$(printf '%s\n' "$booted_ios" | rg -F "($ios_udid) (Booted)" | head -n 1 || true)"
+host_xcode_version="$(xcodebuild -version | tr '\n' ' ' | sed 's/[[:space:]]*$//')"
+host_adb_version="$(adb version | head -n 1)"
+host_mise_version="$(mise --version | head -n 1)"
+host_bun_version="$(mise exec -- bun --version)"
+android_ndk_version="$(cat "$repo_root/tools/android-ndk-version.txt")"
+[[ -n "$android_model" && -n "$android_release" && "$android_api" =~ ^[0-9]+$ \
+    && -n "$android_abi" ]] || fail "Android AVD의 모델·OS·API·ABI 정보를 모두 읽지 못했습니다"
+[[ -n "$ios_device_line" ]] || fail "iOS Simulator 식별 정보를 읽지 못했습니다"
+[[ -n "$host_xcode_version" && -n "$host_adb_version" \
+    && -n "$host_mise_version" && -n "$host_bun_version" ]] \
+  || fail "host build tool 버전을 모두 읽지 못했습니다"
 [[ ! -e "$result_dir" ]] || fail "기존 검증 결과를 덮어쓰지 않도록 새 결과 폴더를 지정해야 합니다"
 mkdir -p "$result_dir"
 printf 'V8 revision=%s\nAndroid serial=%s\niOS simulator=%s\n' \
   "$(cat "$repo_root/tools/v8/v8-revision.txt")" "$android_serial" "$ios_udid" \
   > "$result_dir/environment.txt"
+{
+  printf 'run_id=%s\n' "$run_id"
+  printf 'captured_at_utc=%s\n' "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+  printf 'repository_root=%s\nresult_dir=%s\n' "$repo_root" "$result_dir"
+  printf 'source_commit=%s\nsource_branch=%s\nsource_dirty=%s\n' \
+    "$source_commit" "$source_branch" "$source_dirty"
+  printf 'tracked_diff_sha256=%s\nuntracked_source_sha256=%s\n' \
+    "$tracked_diff_sha256" "$untracked_source_sha256"
+  printf 'v8_revision=%s\nfixture_flag=SPINON_ENABLE_S03_DOM_GC_FIXTURE=1\n' \
+    "$(cat "$repo_root/tools/v8/v8-revision.txt")"
+  printf 'android_build_task=build:android\nandroid_build_configuration=assembleDebug\nandroid_ndk_version=%s\n' \
+    "$android_ndk_version"
+  printf 'android_serial=%s\nandroid_model=%s\nandroid_release=%s\nandroid_api=%s\nandroid_abi=%s\n' \
+    "$android_serial" "$android_model" "$android_release" "$android_api" "$android_abi"
+  printf 'ios_build_task=build:ios-sim\nios_build_configuration=Debug-iphonesimulator\n'
+  printf 'ios_udid=%s\nios_device=%s\n' "$ios_udid" "$ios_device_line"
+  printf 'host_macos=%s\nhost_xcode=%s\nhost_adb=%s\nhost_mise=%s\nhost_bun=%s\n' \
+    "$(sw_vers -productVersion)" "$host_xcode_version" "$host_adb_version" \
+    "$host_mise_version" "$host_bun_version"
+} > "$result_dir/run-manifest.txt"
 
 printf 'Android 에뮬레이터 앱을 빌드합니다.\n'
 if ! SPINON_ENABLE_S03_DOM_GC_FIXTURE=1 mise exec -- bun run build:android \
@@ -73,6 +137,12 @@ if ! SPINON_ENABLE_S03_DOM_GC_FIXTURE=1 mise exec -- bun run build:android \
 fi
 android_apk="$repo_root/platforms/android/app/build/outputs/apk/debug/app-debug.apk"
 [[ -f "$android_apk" ]] || fail "Android APK가 없습니다: $android_apk"
+{
+  printf 'android_apk_path=platforms/android/app/build/outputs/apk/debug/app-debug.apk\n'
+  printf 'android_apk_sha256=%s\n' "$(hash_file "$android_apk")"
+  printf 'android_build_log_path=android-build.log\n'
+  printf 'android_build_log_sha256=%s\n' "$(hash_file "$result_dir/android-build.log")"
+} >> "$result_dir/run-manifest.txt"
 adb -s "$android_serial" install -r "$android_apk" > "$result_dir/android-install.txt"
 adb -s "$android_serial" logcat -c
 adb -s "$android_serial" shell am force-stop "$android_package"
@@ -114,6 +184,11 @@ rg -Fq 'large_registry_scan_samples=10' "$result_dir/android.log" \
   || fail "Android 대량 registry 재scan 10회 결과가 없습니다"
 rg -Fq 'large_registry_scan_samples_us=' "$result_dir/android.log" \
   || fail "Android 대량 registry 재scan 표본이 없습니다"
+rg -Fq 'large_registry_scan_observability=PASS' "$result_dir/android.log" \
+  || fail "Android scan TID·clock 표본 metadata가 완전하지 않습니다"
+android_scan_sample_count="$(rg -o 'scan_sample_index=' "$result_dir/android.log" | wc -l | tr -d '[:space:]')"
+[[ "$android_scan_sample_count" == "10" ]] \
+  || fail "Android scan metadata 표본 수가 10개가 아닙니다: $android_scan_sample_count"
 rg -Fq 'initial_baseline_return=PASS' "$result_dir/android.log" \
   || fail "Android 초기 root fixture 뒤 자원 기준선 복귀 결과가 없습니다"
 rg -Fq 'repeated_baseline=PASS' "$result_dir/android.log" \
@@ -135,6 +210,12 @@ if ! SPINON_ENABLE_S03_DOM_GC_FIXTURE=1 mise exec -- bun run build:ios-sim \
 fi
 ios_app="$repo_root/build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app"
 [[ -d "$ios_app" ]] || fail "iOS 앱이 없습니다: $ios_app"
+{
+  printf 'ios_app_bundle_path=build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app\n'
+  printf 'ios_app_bundle_tree_sha256=%s\n' "$(hash_bundle_tree "$ios_app")"
+  printf 'ios_build_log_path=ios-build.log\n'
+  printf 'ios_build_log_sha256=%s\n' "$(hash_file "$result_dir/ios-build.log")"
+} >> "$result_dir/run-manifest.txt"
 xcrun simctl install "$ios_udid" "$ios_app"
 xcrun simctl spawn "$ios_udid" log stream --style compact \
   --predicate 'process == "SpinonBootstrap" AND eventMessage CONTAINS[c] "SPINON_R06_IOS"' \
@@ -172,6 +253,11 @@ rg -Fq '16,385개 wrapper 유지 · 통과' "$result_dir/ios-stream.log" \
   || fail "iOS 16,385개 V8 wrapper 유지 결과가 없습니다"
 rg -Fq '16,385개 wrapper 재scan · 통과 · 표본 10회' "$result_dir/ios-stream.log" \
   || fail "iOS 대량 registry 재scan 10회 결과가 없습니다"
+rg -Fq 'S03_SCAN_OBSERVABILITY status=PASS' "$result_dir/ios-stream.log" \
+  || fail "iOS scan TID·clock 표본 metadata가 완전하지 않습니다"
+ios_scan_sample_count="$(rg -o 'scan_sample_index=' "$result_dir/ios-stream.log" | wc -l | tr -d '[:space:]')"
+[[ "$ios_scan_sample_count" == "10" ]] \
+  || fail "iOS scan metadata 표본 수가 10개가 아닙니다: $ios_scan_sample_count"
 rg -Fq '16,385개 wrapper 해제 · 통과 · empty=16385' "$result_dir/ios-stream.log" \
   || fail "iOS 16,385개 V8 wrapper 회수 결과가 없습니다"
 rg -Fq '반복 수명 회수 · 통과 · 6/6회' "$result_dir/ios-stream.log" \
