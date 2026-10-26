@@ -1,7 +1,7 @@
 # C11.4 image auto/max border overflow 계획 적대 검토 20개
 
 **검토 대상 계획 blob:** `plan/c11-4-image-auto-max-border-overflow.md`  
-**계획 blob SHA-1:** `bc53ca19396e0212b9064b5f5a14f4450d4d4cc0`  
+**계획 blob SHA-1:** `956e6b591816ea3b05fadfc308f1db10cc4dc6f1`  
 **기준 source:** `29449e4f794e53255909b58ed8fb2fd4995dd5d2`  
 **비교 자료:** [Chrome·규범 사전 비교](../c11-4-image-auto-max-border-overflow-precomparison-2026-10-26/README.md)  
 **검토 시점:** 구현 전. 이 검토는 코드나 simulator runtime 결과를 확인하지 않는다.
@@ -22,13 +22,13 @@
 | 12 | track 정렬이 overflow를 분산해 image 시작 좌표가 달라짐 | `justify-content:start`을 고정한다. 첫 track과 image는 content 시작점인 `(1,1)`에서 출발한다. |
 | 13 | grid의 overflow/clip 값을 새 CSS admission과 혼동 | 일반 overflow support를 추가하지 않는다. root 바깥 item marker가 보이지 않으면 이 slice에서 clip 정책을 고치지 않고 원인을 별도 분리한다. |
 | 14 | root right edge와 item right edge의 차이를 잘못 산출 | root border-box 오른쪽 `x=12`, image 오른쪽 `x=25`이므로 item은 13 CSS px 밖으로 이어진다. |
-| 15 | border 표본이 image 또는 다른 border paint와 겹쳐 색 비교가 모호 | 좌우 1px border는 `y=30.5`에서, item overflow는 `x=12.5/y=8.5`에서, 바깥 배경은 `x=26.5/y=8.5`에서 읽는다. |
+| 15 | border 표본이 image 또는 다른 border paint와 겹치거나 runner index를 center로 해석 | CSS pixel centers는 `(12.5,8.5)`, `(26.5,8.5)`, `(0.5,30.5)`, `(11.5,30.5)`이다. 기존 API에는 integer indexes `[12,8]`, `[26,8]`, `[0,30]`, `[11,30]`를 전달하고 center는 index+0.5로 계산한다. |
 | 16 | Chrome PNG texel과 앱의 image box background marker를 동일한 이미지 paint로 오해 | 브라우저의 PNG texel `[255,255,64,255]`과 앱 item box `[229,72,77,255]`를 다른 oracle로 둔다. image draw가 없다는 표지를 그대로 기록하고 texture paint를 주장하지 않는다. |
-| 17 | CSS pixel point를 Android/iOS surface pixel로 직접 사용해 좌표가 틀림 | 각 캡처에 device scale, surface origin, pixel format 및 source/app hash를 기록하고 내부 표본만 비교한다. |
+| 17 | CSS pixel point를 Android/iOS surface pixel로 직접 사용하거나 scale/origin을 두 번 적용 | `originCssPx`를 더하고 `floor((originCssPx + index + 0.5) * scale)`로 device-pixel index를 구한다. 이 fixture의 origin은 `(0,0)`이며 iOS drawable scale도 같은 center convention을 쓴다. 각 캡처에는 실제 scale, origin, pixel format 및 source/app hash를 기록한다. |
 | 18 | 새 scene이 기본 제품 artifact에 노출되거나 실패 뒤 부분 결과를 성공으로 보고 | opt-in fixture 경계와 feature-off negative control을 검사한다. 변경·validator 오류 뒤 frame/trace/draw/present/sample 성공 표지를 내지 않는 fail-closed 조건을 명시한다. |
 | 19 | 시뮬레이터 실행이 사용 중인 앱/세션을 종료하거나 플랫폼 근거를 과장 | 기존 기기에서 runner가 install/force-stop/terminate할지 먼저 확인하고 조율한다. 물리 기기는 사용하지 않으며 Android AVD software path와 iOS pre-compositor readback 한계를 기록한다. |
 | 20 | 제한 scene이 C11.4 전체 지원으로 표시되거나 PR screenshot이 잘못된 링크로 사라짐 | C11.4 checkbox와 `72/213`을 유지한다. PR 본문에 실제 raw Markdown screenshots를 넣고 Agent Browser에서 렌더를 확인한 뒤 task-owned browser process를 종료한다. |
 
 ## 검토 결과
 
-**계획 판정: PASS — 구현 진행 가능.** 계획은 단일 opt-in scene, 규범 산술, Chrome geometry/pixel 관측, 앱 box marker의 별도 의미, 실패 시 중단 경계, simulator 안전 및 C11.4 미완료 상태를 고정한다. CSS Grid 2025 CRD §§6.6/11.5와 CSS Box Alignment §6.1은 Agent Browser로 원문을 대조했다. 계획된 Android/iOS simulator run과 실제 앱 표면 결과는 구현 후 별도 증거로 남아야 하며 이 검토는 이를 통과한 것으로 간주하지 않는다.
+**계획 판정: PASS — 구현 진행 가능.** 최종 plan blob에 대해 20개 관점을 다시 확인했다. 계획은 단일 opt-in scene, 규범 산술, Chrome geometry/pixel 관측, app API의 zero-based index→CSS center→surface index 변환, 앱 box marker의 별도 의미, 실패 시 중단 경계, simulator 안전 및 C11.4 미완료 상태를 고정한다. CSS Grid 2025 CRD §§6.6/11.5와 CSS Box Alignment §6.1은 Agent Browser로 원문을 대조했다. 계획된 Android/iOS simulator run과 실제 앱 표면 결과는 구현 후 별도 증거로 남아야 하며 이 검토는 이를 통과한 것으로 간주하지 않는다.
