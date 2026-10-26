@@ -1,9 +1,9 @@
 {
   "pr": 661,
-  "checked_at_utc": "2026-10-26T13:47:31Z",
-  "checked_pr_head": "c2317b2a2f73adc8d5c5a2ef78f62bcd66310848",
+  "checked_at_utc": "2026-10-26T13:50:52Z",
+  "checked_pr_head": "e172d501bec0a4de97f573d6e237632a4334bc52",
   "base": "d48d31698842866241dcb3317c6f8ff1ee068d1c",
-  "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/c2317b2a2f73adc8d5c5a2ef78f62bcd66310848/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
+  "body_image_url": "https://raw.githubusercontent.com/ohah/spinon/e172d501bec0a4de97f573d6e237632a4334bc52/spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
   "url_kind": "immutable commit permalink; independent of deletable branch and synthetic merge ref",
   "asset_path": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/chrome156-fit-content-auto-neighbor.png",
   "asset_sha256": "2f45d8577bea5273d4071a5a1e355f7bb9b9729ae895204a6ec098d40e3e6e18",
@@ -17,7 +17,6 @@
   },
   "pr_body_render_check": {
     "url": "https://github.com/ohah/spinon/pull/661",
-    "page_title": "plan(c11-4): fit-content 옆 auto implicit 행 단일 WPT 계획 by ohah · Pull Request #661 · ohah/spinon · GitHub",
     "image_source_matches_body_image_url": true,
     "image_complete": true,
     "image_visible": true,
