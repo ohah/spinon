@@ -50,7 +50,7 @@ Taffy `GridTrackVec`은 CSS track과 grid-line slot을 교차 저장하므로 `N
 
 - fail-closed source/style/prepare 입력 검사: [기록과 원본 log](./fail-closed-controls/README.md). Runtime focused tests **8 passed**, Clippy와 `cargo fmt --check` 통과. Direct validator error와 `prepare()` 거부를 확인하며 downstream frame/trace/resource 부재를 관측했다고 주장하지 않는다.
 - default/product와 opt-in fixture-test `spinon-ffi` release archive 비교: [artifact 경계](./feature-boundary/README.md). 정적 archive 결과이며 APK/IPA 전체 fixture 제외를 증명하지 않는다.
-- PR #643의 기존 화면 링크를 Agent Browser에서 확인했다. URL은 branch ref 대신 immutable commit `e4570a04`를 가리키며 Android 1080×2400, iOS 1206×2622로 로드됐다. [검사 JSON](./pr-image-link-check-2026-10-26.json). `spinon-pr643` browser session 종료 후 `active=false`, `pid=null`, 해당 session process 없음도 확인했다. 다른 HWPJS Agent Browser sessions는 이 작업에 속하지 않아 그대로 뒀다. 최신 simulator 캡처를 PR에 올린 후 링크를 새 evidence commit으로 갱신해 다시 확인한다.
+- PR #643 본문의 final05 화면 링크를 Agent Browser에서 확인했다. 두 URL은 immutable evidence commit `9b3101dca186ee55016b2023c9610186b4df9ecb`을 가리키고 Android `1080×2400`, iOS `1206×2622`로 `complete=true` 렌더됐다. 전용 `spinon-pr643-final05-3bd9bb4c052c` session 종료 후 `active=false`, `pid=null`, agent-browser process match 0개다. 남아 있던 `hwpjs-display-cache-20261026` 사용자 session은 건드리지 않았다. [검사 JSON](./pr-image-link-check-2026-10-26.json). 이는 링크 로드 확인이며 PNG paint나 pixel equality 증거가 아니다.
 
 final05 source, V8 revision, app/archive/screenshot SHA-256 목록은 [run manifest](./runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json)에 있다.
 Xcode `build.log`는 줄 끝 공백만 제거한 읽기용 사본이고, 동일 run의 `build.raw.log.gz`가 원본 출력이다. Simulator device-list의 표 끝 공백도 정리했다.

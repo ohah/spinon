@@ -2,7 +2,7 @@
 
 **검토 대상:** `cac4e33950aa55e8bb8e7ec1f81bf790316ba7ac` · Android API 37 ARM64 AVD 및 iPhone 17 Pro / iOS 26.2 Simulator run `c114-image-auto-max-20261026T020007Z-cac4e339-final05`.
 
-**판정:** 구현/runtime blocker 없음. `source`와 intrinsic input의 JSON 검사도 양 플랫폼에서 strict number/string type 및 finite 값 검사로 바뀌었고, 최신 앱 빌드와 runtime matcher가 모두 통과했다. 다만 malformed JSON type을 넣는 native matcher negative test는 실행되지 않았으며, 최신 PR screenshot 링크의 Agent Browser 재검증도 이 run에 포함되지 않았다.
+**판정:** 구현/runtime blocker 없음. `source`와 intrinsic input의 JSON 검사도 양 플랫폼에서 strict number/string type 및 finite 값 검사로 바뀌었고, 최신 앱 빌드와 runtime matcher가 모두 통과했다. PR head `9b3101dca186ee55016b2023c9610186b4df9ecb`에서 Agent Browser로 final05 스크린샷 두 링크가 정상 로드되는 것도 확인했다. 다만 malformed JSON type을 넣는 native matcher negative test는 실행되지 않았다.
 
 | # | 실패 관점 | 판정 | 확인 결과 |
 | --- | --- | --- | --- |
@@ -25,7 +25,7 @@
 | 17 | Android intrinsic-input JSON raw type | 통과 | revision, grid/node/sourceOrder는 integer matcher, natural width/height는 finite-number matcher, source kind는 string matcher를 사용한다. [intrinsic matcher](../platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java#L2676) |
 | 18 | iOS intrinsic-input JSON raw type | 통과 | 같은 필드에 CFNumber 기반 integer/finite 검사와 exact string 검사 적용을 확인했다. `aspectRatio`는 고정 contract가 아니라 이 검사 대상이 아니다. [intrinsic matcher](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift#L1986) · [호출부](../platforms/ios/Sources/C0410RuntimeGpuDemo.swift#L2115) |
 | 19 | Final-source build·simulator evidence | 통과, paint 제외 | Android `BUILD SUCCESSFUL`, iOS `BUILD SUCCEEDED`; final05에서 두 플랫폼 모두 `status=0`, root `100×40`, item `24×16`, trace와 draw/present가 통과했다. screenshots와 app/archive hashes는 manifest와 일치한다. [run README](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/README.md#L5) · [manifest](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json) |
-| 20 | Malformed JSON mutation test 및 PR image link | 부분 확인 | native matcher에 문자열 수·불리언 대체·NaN/Infinity를 주입하는 negative test/runtime 실행은 찾지 못했다. 최신 PR screenshot URL도 아직 final05 run의 immutable evidence commit을 가리키지 않으며, 현재 link-check 기록은 `e4570a04` 캡처다. source blocker는 아니지만 JSON fail-closed regression과 최신 PR image 표시를 각각 검증할 잔여 작업이다. [link-check JSON](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/pr-image-link-check-2026-10-26.json#L18) |
+| 20 | Malformed JSON mutation test 및 PR image link | 부분 확인 | native matcher에 문자열 수·불리언 대체·NaN/Infinity를 주입하는 negative test/runtime 실행은 찾지 못했다. PR head `9b3101dca186ee55016b2023c9610186b4df9ecb`에서 Android `1080×2400`, iOS `1206×2622` final05 이미지가 모두 `complete=true`로 로드됐고, Agent Browser 세션은 종료되어 `active=false`, `pid=null`, 일치 프로세스 0개다. JSON fail-closed negative test 부재만 잔여 검증 제한이다. [link-check JSON](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/pr-image-link-check-2026-10-26.json#L20) |
 
 ## Runtime 한계와 병합 범위
 
