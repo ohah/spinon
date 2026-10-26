@@ -1,0 +1,22 @@
+{
+  "sourceHead": "fb3f1e5a307c9678d6b70af017858fe7e03f435a",
+  "sourceTree": "3e7c6e643d501a70e53aae1780729c1c25c81898",
+  "rspressVersion": "2.0.22",
+  "command": "RSPRESS_PERSISTENT_CACHE=false ./packages/docs/node_modules/.bin/rspress build --config spec/internal/evidence/roadmap-tailnet-sync-pr666-2026-10-27/rspress-pr666-pass01-selected.config.ts",
+  "exitCode": 0,
+  "pagesRenderedInMs": 11149,
+  "generatedHtmlCount": 791,
+  "selectedPublicationRouteCount": 253,
+  "selectedPublicationBytes": 32309889,
+  "configScope": {
+    "cleanDistPath": true,
+    "checkDeadLinks": false,
+    "checkDeadImages": false
+  },
+  "interpretation": "선택한 문서 root를 위한 Rspress build 성공이다. 전체 저장소 docs build, 전체 링크/image 검증 또는 앱 동작 검증은 아니다.",
+  "rawLog": "rspress-build-selected-pr666-pass01.log.raw.gz",
+  "rawLogCompressedSha256": "45e2bdfe7758f96edab10c333b66d5f538fa67ff329b403036dcf976ace50797",
+  "rawLogUncompressedSha256": "80cacdb62f690a6b1b92c2c8519f48190e6615af1b9e2d40eb0748d82a3b7c1f",
+  "generatedOutputSize": "412057.0 kB",
+  "generatedOutputGzipSize": "22545.8 kB"
+}
