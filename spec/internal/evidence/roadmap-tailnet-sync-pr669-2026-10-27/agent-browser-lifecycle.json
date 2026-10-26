@@ -1,0 +1,23 @@
+{
+  "capturedAtUtc": "2026-10-26T22:52:09Z",
+  "session": "spinon-pr669-roadmap-sync",
+  "prImage": {
+    "url": "https://github.com/ohah/spinon/pull/670",
+    "source": "https://raw.githubusercontent.com/ohah/spinon/9d7f2d2135efcb7ef65f6e1136229e88649508d9/spec/internal/evidence/roadmap-tailnet-sync-pr669-2026-10-27/tailnet-roadmap-agent-browser-pass01.png",
+    "complete": true,
+    "naturalWidth": 1440,
+    "naturalHeight": 1100
+  },
+  "close": {
+    "command": "agent-browser --session spinon-pr669-roadmap-sync close",
+    "result": "Browser closed"
+  },
+  "postClose": {
+    "sessionInfo": {
+      "active": false,
+      "pid": null
+    },
+    "sessions": [],
+    "matchingAgentBrowserProcesses": []
+  }
+}

@@ -18,7 +18,7 @@ PR [#669](https://github.com/ohah/spinon/pull/669)이 병합된 뒤 공개 로�
 
 ## Agent Browser 확인
 
-터미널 브라우저를 사용하지 않고 Agent Browser로 Tailnet 로드맵 화면과 #669 계획·근거 링크를 확인한다. 관찰 JSON, 화면 캡처, 종료 확인은 각각 `tailnet-agent-browser-observation.json`, `tailnet-roadmap-agent-browser-pass01.png`, `agent-browser-lifecycle.json`에 둔다.
+터미널 브라우저를 사용하지 않고 Agent Browser로 Tailnet 로드맵 화면과 #669 계획·근거 링크를 확인한다. 관찰 JSON과 화면 캡처는 각각 `tailnet-agent-browser-observation.json`, `tailnet-roadmap-agent-browser-pass01.png`에 둔다. PR #670 본문에서 커밋 고정 raw 이미지가 `1440×1100`으로 로드됐고, 브라우저 세션 및 프로세스 종료 확인은 `agent-browser-lifecycle.json`에 기록한다.
 
 ## 범위
 
