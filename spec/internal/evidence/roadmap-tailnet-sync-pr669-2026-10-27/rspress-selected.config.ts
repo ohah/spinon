@@ -6,8 +6,8 @@ const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 
 export default {
   ...baseConfig,
-  root: path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-root'),
-  outDir: path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-site'),
+  root: path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-root-pass02'),
+  outDir: path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-site-pass02'),
   builderConfig: {
     ...baseConfig.builderConfig,
     output: { ...baseConfig.builderConfig?.output, cleanDistPath: true },

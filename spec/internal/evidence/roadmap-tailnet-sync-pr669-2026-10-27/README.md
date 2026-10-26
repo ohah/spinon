@@ -12,6 +12,8 @@ PR [#669](https://github.com/ohah/spinon/pull/669)이 병합된 뒤 공개 로�
 
 선택 route build는 `rspress-selected.config.ts`와 `prepare-selected-root.mjs`를 사용한다. 전체 `docs:build`나 GitHub Pages 배포를 주장하지 않는다. 생성 route, raw evidence asset, byte 수와 SHA-256은 `selected-build.json`에 기록한다.
 
+첫 build 시도는 선택 root에 Rspress favicon `public/icon.svg`가 없어 실패했다. 이 실패는 `rspress-build-failure-pass01.log`와 `selected-source-pass01.json`에 보존했고, 다음 selected-root mapping에 `icon.svg`와 `logo.svg`를 포함해 재시도했다.
+
 미리보기 사전 상태는 `preflight.json`, 선택 대상 파일에 열린 handle이 있었는지는 `target-open-handles.json`, 교체 전 백업과 쓰기 결과는 `tailnet-copy.json`, 제공 URL에서 받은 응답 본문 hash는 `tailnet-verify.json`에 기록한다. 기존 파일은 교체 전에 별도 backup root에 byte-exact로 보존하고 파일 삭제는 하지 않는다. 이미 같은 hash인 route는 다시 쓰지 않는다.
 
 ## Agent Browser 확인

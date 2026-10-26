@@ -7,7 +7,7 @@ import { fileURLToPath } from 'node:url';
 
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
-const selectedRoot = path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-root');
+const selectedRoot = path.join(repositoryRoot, 'build/spinon/roadmap-tailnet-sync-pr669-20261027-root-pass02');
 const manifestPath = path.join(evidenceDirectory, 'selected-source.json');
 const sourceHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const treeHash = execFileSync('git', ['rev-parse', 'HEAD^{tree}'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
@@ -17,6 +17,8 @@ assert.ok(!fs.existsSync(manifestPath), `refusing to replace ${manifestPath}`);
 
 const mappings = [
   ['spec/public/roadmap.html', 'public/roadmap.html'],
+  ['spec/public/icon.svg', 'public/icon.svg'],
+  ['spec/public/logo.svg', 'public/logo.svg'],
   ['spec/STATUS.md', 'STATUS.md'],
   ['spec/STATUS.md', 'spec/STATUS.md'],
   ['plan/c11-4-align-content-normal-runtime.md', 'plan/c11-4-align-content-normal-runtime.md'],

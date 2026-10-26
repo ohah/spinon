@@ -1,0 +1,9 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+error   build failed in 1.14s (web)
+ready   built in 1.14s (node)
+error   Build error:
+× [rsbuild:html] Failed to read the favicon file at /private/tmp/spinon-c11-4-pr669-roadmap-sync-20261027/build/spinon/roadmap-tailnet-sync-pr669-20261027-root/public/icon.svg.
+
+error   Rspack build failed.
