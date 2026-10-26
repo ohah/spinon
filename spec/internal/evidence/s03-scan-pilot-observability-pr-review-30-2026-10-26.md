@@ -1,7 +1,7 @@
 # S03.3 pilot observability · PR diff 별도 30관점 검토
 
 **기준 base:** `origin/main` `a1c29489`
-**검토 범위:** base 대비 7개 구현/계획/기존 review 파일 전체와 이 30-view 기록 파일
+**검토 범위:** base 대비 8개 구현/계획/review/evidence 파일(시뮬레이터 캡처 포함)과 이 30-view 기록 파일, 총 9개 PR 파일
 **최종 slice 계획 SHA-256:** `cc074e3cbc93f7bf357b975da6ea1222549306bd5c1165472a3f30bfc02bd77f`
 **구현 코드 diff SHA-256:** `ab628193529a3cdecee77fd145d61865f03b8de68c8fe1b0a67f63e0831490bd`
 **구현 후 20관점 review:** [별도 기록](./s03-scan-pilot-observability-implementation-review-20-2026-10-26.md)
@@ -39,8 +39,8 @@
 | 27 | manifest 환경 identity | 다른 V8·build task·OS toolchain·device로 실행한 결과를 같은 run처럼 취급하는가? | pinned V8 revision, fixture flag, platform task/config, macOS/Xcode/adb/mise/Bun, Android model/API/ABI 및 iOS UDID를 기록하고 필수 값이 비면 중단한다. |
 | 28 | artifact hash | iOS bundle symlink/mode나 APK/build log가 source manifest에서 빠지는가? | Android APK SHA와 build log SHA, iOS app tree 파일/mode/symlink digest와 build log SHA를 기록한다. 이 hash를 release parity로 확대하지 않는다. |
 | 29 | 실패 종료 코드 | 표본 gate 실패 뒤 EXIT trap이 전체 runner 종료 코드 1을 0으로 덮는가? | `cleanup`은 진입 때 `$?`를 저장해 반환한다. 9-record self-test는 `fail`과 trap 이후 exit 1인지 검사한다. |
-| 30 | 증거·남은 범위 | iOS 단일 clone PASS를 Android/실기기/성능 또는 전체 S03.3 검증으로 확대하는가? | clean tested commit의 iOS clone에서 10/10 및 manifest를 확인했다. Android는 7,372.80 MB userdata 요구와 host 4.0 GiB free로 실행하지 않았고 S03.3·성능 완료를 주장하지 않는다. PR에는 iOS fixture 화면과 Android 미검증 사유를 분리한다. |
+| 30 | 증거·남은 범위 | iOS 단일 clone PASS를 Android/실기기/성능 또는 전체 S03.3 검증으로 확대하는가? | clean tested commit의 iOS clone에서 10/10 및 manifest를 확인했다. 첨부한 C9 화면에는 10개 중 마지막 표본 8–10의 새 metadata tuple(seq, cookie, owner TID, monotonic start, wall time)이 보인다. Android는 7,372.80 MB userdata 요구와 host 4.0 GiB free로 실행하지 않았고 S03.3·성능 완료를 주장하지 않는다. PR 본문은 iOS 화면과 Android 미검증 사유를 분리한다. |
 
 ## 결론
 
-초기 실제 iOS 로그에서 확인한 OSLog truncation과 실패 exit-code masking은 수정 후 다시 검증했다. verifier self-test, iOS opt-in simulator build/runtime, 10개 표본 sequence와 source/build manifest는 확인했다. Android runtime 근거는 없으며 PR 본문에 그 제한을 명시한다. 변경 범위와 리뷰 자료를 다시 대조했을 때 PR 개설을 막는 추가 결함은 남지 않았다. 병합은 하지 않는다.
+초기 실제 iOS 로그에서 확인한 OSLog truncation과 실패 exit-code masking은 수정 후 다시 검증했다. verifier self-test, iOS opt-in simulator build/runtime, 10개 표본 sequence와 source/build manifest는 확인했다. Android runtime 근거는 없으며 PR 본문에 그 제한을 명시한다. 첨부 PNG는 C9 화면에서 새 표본 metadata가 실제 표시되는 부분(8–10)을 보여 주며, 전체 10/10 판정은 별도 manifest/log 근거로 한정한다. 변경 범위와 리뷰 자료를 다시 대조했을 때 PR 개설을 막는 추가 결함은 남지 않았다. 병합은 하지 않는다.
