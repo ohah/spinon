@@ -1983,6 +1983,25 @@ private func c114ExpectedMixedCrossAxisSpanGroupIntrinsicInputs(
     return true
 }
 
+private func c114StrictJSONIntegerMatches(_ value: Any?, expected: Int) -> Bool {
+    guard let number = value as? NSNumber,
+          CFGetTypeID(number) == CFNumberGetTypeID(),
+          number.doubleValue.isFinite else { return false }
+    return number.doubleValue == Double(expected)
+}
+
+private func c114StrictJSONFiniteNumberMatches(_ value: Any?, expected: Double) -> Bool {
+    guard let number = value as? NSNumber,
+          CFGetTypeID(number) == CFNumberGetTypeID(),
+          number.doubleValue.isFinite else { return false }
+    return abs(number.doubleValue - expected) <= 0.0001
+}
+
+private func c114StrictJSONStringMatches(_ value: Any?, expected: String) -> Bool {
+    guard let string = value as? String else { return false }
+    return string == expected
+}
+
 private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
         return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
@@ -2079,19 +2098,18 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
           let data = String(jsonText[..<endIndex]).data(using: .utf8),
           let diagnostics = (try? JSONSerialization.jsonObject(with: data)) as? [String: Any],
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
-          let intrinsicRevision = revision["intrinsicSize"] as? Int,
-          intrinsicRevision == 1,
+          c114StrictJSONIntegerMatches(revision["intrinsicSize"], expected: 1),
           let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
           inputs.count == 1,
           let input = inputs.first,
-          let grid = input["grid"] as? Int, grid == 1,
-          let node = input["node"] as? Int, node == 2,
-          let sourceOrder = input["sourceOrder"] as? Int, sourceOrder == 0,
+          c114StrictJSONIntegerMatches(input["grid"], expected: 1),
+          c114StrictJSONIntegerMatches(input["node"], expected: 2),
+          c114StrictJSONIntegerMatches(input["sourceOrder"], expected: 0),
           let source = input["source"] as? [String: Any],
-          let kind = source["kind"] as? String, kind == "replaced",
+          c114StrictJSONStringMatches(source["kind"], expected: "replaced"),
           let natural = source["natural"] as? [String: Any],
-          let width = natural["width"] as? NSNumber, width.doubleValue == 24,
-          let height = natural["height"] as? NSNumber, height.doubleValue == 16 else {
+          c114StrictJSONFiniteNumberMatches(natural["width"], expected: 24),
+          c114StrictJSONFiniteNumberMatches(natural["height"], expected: 16) else {
         return false
     }
     return c114ImageTrackSizingTraceMatches(sceneID, diagnostics: diagnostics)
