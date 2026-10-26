@@ -19,13 +19,22 @@
   "local_artifact_hash_check": {
     "manifest": "SHA256SUMS",
     "verification_command": "shasum -a 256 -c spec/internal/evidence/c11-4-fit-content-auto-neighbor-wpt-2026-10-26/SHA256SUMS",
-    "result": "All evidence files except the manifest itself are listed; final verification is recorded after this update."
+    "result": "All 14 local evidence files are listed and hash verification is recorded after this update; SHA256SUMS does not hash itself."
   },
   "full_docs_build": "See docs-build-summary.json. Latest full-root build exits 1 on existing dead-link diagnostics; new plan/evidence pages have no dead-link diagnostics after the JSON path was changed to inline code.",
   "official_source_check": {
     "source": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto",
     "agent_browser": "Chrome 156.0.8078.48 via Agent Browser CLI 0.31.1",
-    "checked_rule": "Non-scrollable computed overflow plus spanning at least one auto-min track yields content-based automatic minimum; §12.2 assigns fit-content() min sizing function auto and max sizing function max-content."
+    "checked_rule": "Non-scrollable computed overflow plus spanning at least one auto-min track yields content-based automatic minimum; §12.2 assigns fit-content() min sizing function auto and max sizing function max-content.",
+    "checked_sections": [
+      "§6.6",
+      "§12.2",
+      "§12.4",
+      "§12.5",
+      "§12.6",
+      "§12.7",
+      "§12.8"
+    ]
   },
   "pr_body_image_check": {
     "evidence_file": "pr-body-image-url-check.json",
