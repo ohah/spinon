@@ -1,0 +1,866 @@
+{
+  "schema": "spinon.c11-4.image-auto-max-mixed-track-precomparison.v1",
+  "status": "independent expectation fixed before any Spinon runtime execution",
+  "source_commit": "a33b245983fae050b66efb9ff259b3fe1132a051",
+  "fixture": {
+    "html": "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html",
+    "html_sha256": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "png": "tests/fixtures/resources/c14-1-png-basic.png",
+    "png_sha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2",
+    "png_bytes": 97,
+    "natural_size_css_px": {
+      "width": 24,
+      "height": 16
+    }
+  },
+  "normative_sources": [
+    {
+      "title": "CSS Grid Layout Module Level 1, 26 March 2025 CRD",
+      "url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+      "sections": [
+        "6.6",
+        "7.2.1",
+        "10.5",
+        "11.3",
+        "11.4",
+        "11.5",
+        "11.6"
+      ]
+    },
+    {
+      "title": "CSS Box Sizing Module Level 3, 4 September 2026 Working Draft",
+      "url": "https://www.w3.org/TR/2026/WD-css-sizing-3-20260904/",
+      "sections": [
+        "2.2",
+        "5.1",
+        "5.2"
+      ]
+    },
+    {
+      "title": "CSS Images Module Level 3, 18 December 2023 Candidate Recommendation Draft",
+      "url": "https://www.w3.org/TR/2023/CRD-css-images-3-20231218/",
+      "publication_date": "2023-12-18",
+      "retrieved_date": "2026-10-26",
+      "retrieved_raw_html_bytes": 353703,
+      "retrieved_raw_html_sha256": "74eb4b475aa0845a50ebedb4bbb3ba7bf3966f975817d1c5cf8e3d512f53447e",
+      "sections": [
+        "4.1",
+        "4.3.1"
+      ]
+    }
+  ],
+  "input": {
+    "root_id": "c114-image-auto-max-mixed-grid",
+    "item_id": "c114-image-auto-max-mixed-item",
+    "grid": {
+      "display": "grid",
+      "border_box_css_px": {
+        "width": 100,
+        "height": 40
+      },
+      "padding_border_margin_css_px": 0,
+      "columns": [
+        "minmax(auto, max-content)",
+        "17px"
+      ],
+      "rows": [
+        "auto"
+      ],
+      "column_gap_css_px": 5,
+      "row_gap_css_px": 0,
+      "justify_content": "start",
+      "align_content": "start",
+      "align_items": "start"
+    },
+    "image": {
+      "placement": "automatic; one direct grid item in column 1, row 1",
+      "width": "auto",
+      "height": "auto",
+      "overflow_declaration": "none",
+      "overflow_behavior_scope": "out of scope; CSSOM records browser UA behavior only",
+      "margin_padding_border_css_px": 0,
+      "natural_size_css_px": {
+        "width": 24,
+        "height": 16
+      }
+    }
+  },
+  "independent_derivation": {
+    "grid_item_minimum_contribution_inline_css_px": 24,
+    "grid_item_min_content_contribution_inline_css_px": 24,
+    "grid_item_max_content_contribution_inline_css_px": 24,
+    "track_initialization": {
+      "intrinsic_auto_min_track_base_css_px": 0,
+      "intrinsic_max_content_growth_limit": "positive infinity",
+      "fixed_track_base_css_px": 17,
+      "fixed_track_growth_limit_css_px": 17
+    },
+    "after_single_span_item_resolution": {
+      "non_gutter_column_base_sizes_css_px": [
+        24,
+        17
+      ],
+      "non_gutter_column_growth_limits_css_px": [
+        24,
+        17
+      ],
+      "gutter_css_px": 5
+    },
+    "remaining_inline_free_space_css_px": 54,
+    "remaining_inline_free_space_alignment": "trailing because justify-content:start",
+    "expected_used_tracks_css_px": {
+      "columns_non_gutter": [
+        24,
+        17
+      ],
+      "rows_non_gutter": [
+        16
+      ]
+    },
+    "expected_frames_css_px": {
+      "grid": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 40
+      },
+      "image": {
+        "x": 0,
+        "y": 0,
+        "width": 24,
+        "height": 16
+      }
+    },
+    "automatic_minimum_source": {
+      "kind": "AutomaticMinimum",
+      "spans_auto_min_track": true,
+      "spans_multiple_tracks": false,
+      "spans_flexible_max_track": false,
+      "content_based": true,
+      "is_compressible_replaced": true,
+      "fixed_track_sum": null,
+      "fixed_gutter_sum": null,
+      "fixed_track_limit": null
+    },
+    "expected_trace": {
+      "scope": "one selected definite final pass per axis; acceptance prediction only",
+      "normative_unbounded_growth_limit": "CSS Grid §11.4 initializes the intrinsic max growth limit to positive infinity. For this span-1 max-content maximum, §11.5 resolves that limit to the item's max-content contribution before the post-batch IntrinsicItemBatch trace record.",
+      "trace_projection_semantics": {
+        "non_finite_values": "Taffy maps all non-finite values (+∞/−∞/NaN) to None/null.",
+        "null_assertion": "An expected null checks only that projection; it does not prove an internal +∞.",
+        "finite_assertion": "Expected finite stages require Some(finite) within tolerance."
+      },
+      "all_track_states": {
+        "infinitely_growable": false,
+        "slot_states": "collapsed=true only for leading/trailing boundary-line sentinels; collapsed=false for CSS tracks and the actual inter-column gutter"
+      },
+      "passes": [
+        {
+          "axis": "Columns",
+          "contributions": [
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "Minimum",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 24,
+              "minimum_source": {
+                "kind": "AutomaticMinimum",
+                "spans_auto_min_track": true,
+                "spans_multiple_tracks": false,
+                "spans_flexible_max_track": false,
+                "content_based": true,
+                "is_compressible_replaced": true,
+                "fixed_track_sum": null,
+                "fixed_gutter_sum": null,
+                "fixed_track_limit": null
+              }
+            },
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "MinContent",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 24,
+              "minimum_source": null
+            },
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "MaxContent",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 24,
+              "minimum_source": null
+            }
+          ],
+          "stages": [
+            {
+              "stage_kind": "Initialize",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": null
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "IntrinsicItemBatch",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 24,
+                  "growth_limit_css_px": 24
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "IntrinsicSizingComplete",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 24,
+                  "growth_limit_css_px": 24
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "MaximizeTracks",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 24,
+                  "growth_limit_css_px": 24
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "ExpandFlexibleTracks",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 24,
+                  "growth_limit_css_px": 24
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "StretchAutoTracks",
+              "applied": false,
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS column track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 24,
+                  "growth_limit_css_px": 24
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "inter-column gutter",
+                  "is_gutter": true,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 5,
+                  "growth_limit_css_px": 5
+                },
+                {
+                  "internal_index": 3,
+                  "slot_role": "CSS column track 1",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 17,
+                  "growth_limit_css_px": 17
+                },
+                {
+                  "internal_index": 4,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "axis": "Rows",
+          "contributions": [
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "Minimum",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 16,
+              "minimum_source": {
+                "kind": "AutomaticMinimum",
+                "spans_auto_min_track": true,
+                "spans_multiple_tracks": false,
+                "spans_flexible_max_track": false,
+                "content_based": true,
+                "is_compressible_replaced": true,
+                "fixed_track_sum": null,
+                "fixed_gutter_sum": null,
+                "fixed_track_limit": null
+              }
+            },
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "MinContent",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 16,
+              "minimum_source": null
+            },
+            {
+              "item_id": "c114-image-auto-max-mixed-item",
+              "kind": "MaxContent",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "value_css_px": 16,
+              "minimum_source": null
+            }
+          ],
+          "stages": [
+            {
+              "stage_kind": "Initialize",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": null
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "IntrinsicItemBatch",
+              "span": 1,
+              "crosses_flexible_track": false,
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 16,
+                  "growth_limit_css_px": 16
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "IntrinsicSizingComplete",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 16,
+                  "growth_limit_css_px": 16
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "MaximizeTracks",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 16,
+                  "growth_limit_css_px": 16
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "ExpandFlexibleTracks",
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 16,
+                  "growth_limit_css_px": 16
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            },
+            {
+              "stage_kind": "StretchAutoTracks",
+              "applied": false,
+              "tracks": [
+                {
+                  "internal_index": 0,
+                  "slot_role": "leading boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                },
+                {
+                  "internal_index": 1,
+                  "slot_role": "CSS row track 0",
+                  "is_gutter": false,
+                  "is_collapsed": false,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 16,
+                  "growth_limit_css_px": 16
+                },
+                {
+                  "internal_index": 2,
+                  "slot_role": "trailing boundary-line sentinel",
+                  "is_gutter": true,
+                  "is_collapsed": true,
+                  "infinitely_growable": false,
+                  "base_size_css_px": 0,
+                  "growth_limit_css_px": 0
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "track_vector_model": {
+        "source": "vendor/taffy/src/compute/grid/types/grid_track_counts.rs",
+        "storage": "GridTrackVec stores grid lines and CSS tracks in one interleaved vector; N CSS tracks produce 2N+1 entries.",
+        "columns": [
+          {
+            "internal_index": 0,
+            "role": "leading boundary-line sentinel",
+            "is_gutter": true,
+            "is_collapsed": true
+          },
+          {
+            "internal_index": 1,
+            "role": "CSS column track 0",
+            "is_gutter": false,
+            "is_collapsed": false
+          },
+          {
+            "internal_index": 2,
+            "role": "inter-column gutter",
+            "is_gutter": true,
+            "is_collapsed": false
+          },
+          {
+            "internal_index": 3,
+            "role": "CSS column track 1",
+            "is_gutter": false,
+            "is_collapsed": false
+          },
+          {
+            "internal_index": 4,
+            "role": "trailing boundary-line sentinel",
+            "is_gutter": true,
+            "is_collapsed": true
+          }
+        ],
+        "rows": [
+          {
+            "internal_index": 0,
+            "role": "leading boundary-line sentinel",
+            "is_gutter": true,
+            "is_collapsed": true
+          },
+          {
+            "internal_index": 1,
+            "role": "CSS row track 0",
+            "is_gutter": false,
+            "is_collapsed": false
+          },
+          {
+            "internal_index": 2,
+            "role": "trailing boundary-line sentinel",
+            "is_gutter": true,
+            "is_collapsed": true
+          }
+        ],
+        "sentinel_sizes_css_px": {
+          "base_size": 0,
+          "growth_limit": 0
+        },
+        "internal_inter_column_gutter_css_px": {
+          "base_size": 5,
+          "growth_limit": 5
+        }
+      },
+      "stage_emission_contract": {
+        "initialize": "Initial intrinsic growth limits are non-finite under CSS Grid §11.4. Taffy projection is null; it does not identify the internal non-finite value.",
+        "intrinsic_item_batch": "Taffy records this stage after its batch updates growth limits (track_sizing.rs around lines 1225-1263). CSS Grid §11.5 resolves this span-1 max-content maximum to the contribution, so image column and row growth limits are finite 24px and 16px here.",
+        "intrinsic_sizing_complete": "All expected CSS track growth limits remain finite; collapsed sentinels remain zero-sized.",
+        "later_stages": "MaximizeTracks, ExpandFlexibleTracks, and StretchAutoTracks preserve the finite sizes; StretchAutoTracks applied=false."
+      }
+    }
+  },
+  "browser_observation": {
+    "agent_browser_session": "spinon-c114-img-stageb-review04-20261026",
+    "metadata": "chrome-agent-browser-metadata.json",
+    "observation": "chrome-agent-browser-observation.json",
+    "screenshot": "chrome-agent-browser.png",
+    "fixture_sha256": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "observation_sha256": "82c020de9cb5768d4ca15670b0a79d29fd746899e4a71b67eb56d78ebce635f4",
+    "metadata_sha256": "5043ffde790fbbc68669394761c1ed6a08574e794b905fc62ca4e81448f1bb90",
+    "screenshot_sha256": "4182f752a1f9f20e8530c9e166683eed6c916eaacecb2bcff1faf7d3c36625eb",
+    "observed_computed_overflow_x_y": [
+      "clip",
+      "clip"
+    ],
+    "overflow_scope": "Chrome CSSOM observation only; no Spinon overflow behavior expected",
+    "expected_match": true
+  },
+  "spinon_runtime": {
+    "status": "candidate run evidence is recorded separately; the first pre-correction Android and iOS candidate checks failed the old trace matcher and are not passing evidence",
+    "expected_intrinsic_revision_source": "same HostDocument generation/document/render-tree revision as the image request",
+    "expected_contribution": {
+      "axis": "Columns",
+      "span": 1,
+      "minimum_css_px": 24,
+      "min_content_css_px": 24,
+      "max_content_css_px": 24
+    },
+    "overflow_scope": "out of scope; do not assert app computed value, projection, clipping, scrolling, or overflow paint behavior",
+    "expected_minimum_source": {
+      "kind": "AutomaticMinimum",
+      "spans_auto_min_track": true,
+      "spans_multiple_tracks": false,
+      "spans_flexible_max_track": false,
+      "content_based": true,
+      "is_compressible_replaced": true,
+      "fixed_track_sum": null,
+      "fixed_gutter_sum": null,
+      "fixed_track_limit": null
+    },
+    "expected_trace_pointer": "/independent_derivation/expected_trace",
+    "expected_final_non_gutter_tracks_css_px": {
+      "columns": [
+        24,
+        17
+      ],
+      "rows": [
+        16
+      ]
+    },
+    "expected_root_relative_image_frame_css_px": {
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 16
+    }
+  }
+}

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 direct PNG in mixed fixed/intrinsic tracks</title>
+  <style>
+    html,
+    body {
+      margin: 0;
+    }
+
+    #c114-image-auto-max-mixed-grid {
+      display: grid;
+      width: 100px;
+      height: 40px;
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      grid-template-columns: minmax(auto, max-content) 17px;
+      grid-template-rows: auto;
+      column-gap: 5px;
+      row-gap: 0;
+      align-items: start;
+      align-content: start;
+      justify-content: start;
+      background: #e6e9ed;
+    }
+
+    #c114-image-auto-max-mixed-item {
+      box-sizing: border-box;
+      display: block;
+      width: auto;
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background-color: #e5484d;
+      outline: 1px solid #ba2432;
+    }
+  </style>
+</head>
+<body>
+  <div id="c114-image-auto-max-mixed-grid"><img id="c114-image-auto-max-mixed-item" src="../../resources/c14-1-png-basic.png" alt=""></div>
+  <pre id="observation">waiting for image decode</pre>
+  <script>
+    const rect = (element) => {
+      const value = element.getBoundingClientRect();
+      return {
+        x: value.x,
+        y: value.y,
+        width: value.width,
+        height: value.height,
+        right: value.right,
+        bottom: value.bottom,
+      };
+    };
+
+    const styleRule = (selector) => {
+      for (const sheet of document.styleSheets) {
+        for (const rule of sheet.cssRules) {
+          if (rule.selectorText === selector) return rule.style.cssText;
+        }
+      }
+      return null;
+    };
+
+    const image = document.querySelector("#c114-image-auto-max-mixed-item");
+    const capture = () => {
+      const grid = document.querySelector("#c114-image-auto-max-mixed-grid");
+      const gridStyle = getComputedStyle(grid);
+      const imageStyle = getComputedStyle(image);
+      return {
+        userAgent: navigator.userAgent,
+        devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        authored: {
+          gridRule: styleRule("#c114-image-auto-max-mixed-grid"),
+          imageRule: styleRule("#c114-image-auto-max-mixed-item"),
+        },
+        naturalImage: {
+          width: image.naturalWidth,
+          height: image.naturalHeight,
+          complete: image.complete,
+        },
+        computed: {
+          grid: {
+            display: gridStyle.display,
+            width: gridStyle.width,
+            height: gridStyle.height,
+            boxSizing: gridStyle.boxSizing,
+            position: gridStyle.position,
+            overflowX: gridStyle.overflowX,
+            overflowY: gridStyle.overflowY,
+            gridTemplateColumns: gridStyle.gridTemplateColumns,
+            gridTemplateRows: gridStyle.gridTemplateRows,
+            gridAutoColumns: gridStyle.gridAutoColumns,
+            gridAutoRows: gridStyle.gridAutoRows,
+            gridAutoFlow: gridStyle.gridAutoFlow,
+            columnGap: gridStyle.columnGap,
+            rowGap: gridStyle.rowGap,
+            justifyContent: gridStyle.justifyContent,
+            alignContent: gridStyle.alignContent,
+            alignItems: gridStyle.alignItems,
+          },
+          image: {
+            display: imageStyle.display,
+            overflowX: imageStyle.overflowX,
+            overflowY: imageStyle.overflowY,
+            width: imageStyle.width,
+            height: imageStyle.height,
+            minWidth: imageStyle.minWidth,
+            minHeight: imageStyle.minHeight,
+            maxWidth: imageStyle.maxWidth,
+            maxHeight: imageStyle.maxHeight,
+            boxSizing: imageStyle.boxSizing,
+            position: imageStyle.position,
+            aspectRatio: imageStyle.aspectRatio,
+            gridColumnStart: imageStyle.gridColumnStart,
+            gridColumnEnd: imageStyle.gridColumnEnd,
+            gridRowStart: imageStyle.gridRowStart,
+            gridRowEnd: imageStyle.gridRowEnd,
+            justifySelf: imageStyle.justifySelf,
+            alignSelf: imageStyle.alignSelf,
+            margin: imageStyle.margin,
+            padding: imageStyle.padding,
+            borderTopWidth: imageStyle.borderTopWidth,
+            borderRightWidth: imageStyle.borderRightWidth,
+            borderBottomWidth: imageStyle.borderBottomWidth,
+            borderLeftWidth: imageStyle.borderLeftWidth,
+          },
+        },
+        rects: { grid: rect(grid), image: rect(image) },
+        overflow: {
+          scrollWidth: document.documentElement.scrollWidth,
+          scrollHeight: document.documentElement.scrollHeight,
+        },
+      };
+    };
+
+    image.decode().then(() => {
+      window.captureFixtureObservation = capture;
+      window.fixtureObservation = capture();
+      document.querySelector("#observation").textContent = JSON.stringify(window.fixtureObservation, null, 2);
+      window.fixtureReady = true;
+    }).catch((error) => {
+      document.querySelector("#observation").textContent = String(error);
+      window.fixtureReady = false;
+    });
+  </script>
+</body>
+</html>

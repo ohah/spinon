@@ -1,0 +1,94 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewport": {
+    "width": 320,
+    "height": 80
+  },
+  "authored": {
+    "gridRule": "display: grid; width: 100px; height: 40px; box-sizing: border-box; margin: 0px; padding: 0px; border: 0px; grid-template-columns: minmax(auto, max-content) 17px; grid-template-rows: auto; gap: 0px 5px; align-items: start; place-content: start; background: rgb(230, 233, 237);",
+    "imageRule": "box-sizing: border-box; display: block; width: auto; height: auto; margin: 0px; padding: 0px; border: 0px; background-color: rgb(229, 72, 77); outline: rgb(186, 36, 50) solid 1px;"
+  },
+  "naturalImage": {
+    "width": 24,
+    "height": 16,
+    "complete": true
+  },
+  "computed": {
+    "grid": {
+      "display": "grid",
+      "width": "100px",
+      "height": "40px",
+      "boxSizing": "border-box",
+      "position": "static",
+      "overflowX": "visible",
+      "overflowY": "visible",
+      "gridTemplateColumns": "24px 17px",
+      "gridTemplateRows": "16px",
+      "gridAutoColumns": "auto",
+      "gridAutoRows": "auto",
+      "gridAutoFlow": "row",
+      "columnGap": "5px",
+      "rowGap": "0px",
+      "justifyContent": "start",
+      "alignContent": "start",
+      "alignItems": "start"
+    },
+    "image": {
+      "display": "block",
+      "overflowX": "clip",
+      "overflowY": "clip",
+      "width": "24px",
+      "height": "16px",
+      "minWidth": "auto",
+      "minHeight": "auto",
+      "maxWidth": "none",
+      "maxHeight": "none",
+      "boxSizing": "border-box",
+      "position": "static",
+      "aspectRatio": "auto",
+      "gridColumnStart": "auto",
+      "gridColumnEnd": "auto",
+      "gridRowStart": "auto",
+      "gridRowEnd": "auto",
+      "justifySelf": "auto",
+      "alignSelf": "auto",
+      "margin": "0px",
+      "padding": "0px",
+      "borderTopWidth": "0px",
+      "borderRightWidth": "0px",
+      "borderBottomWidth": "0px",
+      "borderLeftWidth": "0px"
+    }
+  },
+  "rects": {
+    "grid": {
+      "x": 0,
+      "y": 0,
+      "width": 100,
+      "height": 40,
+      "right": 100,
+      "bottom": 40
+    },
+    "image": {
+      "x": 0,
+      "y": 0,
+      "width": 24,
+      "height": 16,
+      "right": 24,
+      "bottom": 16
+    }
+  },
+  "overflow": {
+    "scrollWidth": 2301,
+    "scrollHeight": 1356
+  },
+  "capture_provenance": {
+    "agent_browser_session": "spinon-c114-img-stageb-review04-20261026",
+    "source_commit": "a33b245983fae050b66efb9ff259b3fe1132a051",
+    "fixture_path": "tests/fixtures/css/c11/grid-image-auto-max-mixed-track-c114-precomparison.html",
+    "fixture_sha256": "e3b6edfe8452d3674a9e905de10ddd96774b192ac73c4b3c46a5a42606c92c2b",
+    "screenshot_path": "spec/internal/evidence/c11-4-image-auto-max-mixed-track-precomparison-2026-10-26/chrome-agent-browser.png",
+    "screenshot_sha256": "4182f752a1f9f20e8530c9e166683eed6c916eaacecb2bcff1faf7d3c36625eb"
+  }
+}

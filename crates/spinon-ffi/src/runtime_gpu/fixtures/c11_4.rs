@@ -837,7 +837,19 @@ struct ImageScene {
     item_style: &'static str,
 }
 
-const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 18] = [
+const C11_4_IMAGE_TRACK_SCENES: [ImageScene; 19] = [
+    ImageScene {
+        scene_id: "image-auto-max-mixed-tracks",
+        root_id: "c114-image-auto-max-mixed-grid",
+        item_id: "c114-image-auto-max-mixed-item",
+        width: 100,
+        height: 40,
+        columns: "minmax(auto, max-content) 17px",
+        rows: "auto",
+        column_gap: 5,
+        item_placement: "",
+        item_style: "",
+    },
     ImageScene {
         scene_id: "auto-image-definite",
         root_id: "c114-auto-image-grid",
@@ -2003,7 +2015,7 @@ mod tests {
     fn exposes_only_bounded_intrinsic_track_sizing_scenes() {
         assert_eq!(C11_4_GRID_TRACK_SIZING_SCENES.len(), 20);
         assert_eq!(C11_4_AUTO_REPEAT_NEIGHBOR_SCENES.len(), 30);
-        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 18);
+        assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 19);
         assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
         assert_eq!(C11_4_PERCENTAGE_GAP_SCENES.len(), 6);
         assert_eq!(
@@ -2033,6 +2045,17 @@ mod tests {
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
             assert!(source.contains(&format!("sceneId:{:?}", scene.scene_id)));
         }
+        let mixed_track_source =
+            c11_4_grid_track_sizing_runtime_source("image-auto-max-mixed-tracks").unwrap();
+        assert!(mixed_track_source.contains("c114-image-auto-max-mixed-grid"));
+        assert!(mixed_track_source.contains("c114-image-auto-max-mixed-item"));
+        assert!(mixed_track_source.contains("width:100px;height:40px"));
+        assert!(
+            mixed_track_source.contains("grid-template-columns:minmax(auto, max-content) 17px")
+        );
+        assert!(mixed_track_source.contains("column-gap:5px;row-gap:0px"));
+        assert!(mixed_track_source.contains("width:auto;height:auto"));
+        assert!(!mixed_track_source.contains("overflow"));
         for scene in C11_4_IMAGE_FIXED_GUTTER_SCENES {
             let source = c11_4_grid_track_sizing_runtime_source(scene.scene.scene_id).unwrap();
             assert!(source.len() < 4 * 1024);

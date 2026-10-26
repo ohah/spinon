@@ -1,0 +1,16 @@
+c9ffbf0347b1c82777d1ba0d3a3453706d0c3168d0f05b3f9901909452cd5539  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/android-build-stage-corrected.log
+de22ef6693d9d59e78aeca017a5e8f386c26e9530d94cd2b0deb1214e5aa6701  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/ios-build-stage-corrected.log
+3f08cb833f5c29f32680d5dea7923296cbf6e0b67d8488319a1252c5bf6a7a8e  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/simulator-matrix-stage-corrected.log
+c5975c085ed04f203b50380fb83783fd7f001f36be293d8667d7d891a0f141ea  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png
+5e8cf86c936c73c19988e60ed5be20052e841824564401a60c7f12d2be64ea8f  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png
+c9ffbf0347b1c82777d1ba0d3a3453706d0c3168d0f05b3f9901909452cd5539  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/android-avd/build.log
+de22ef6693d9d59e78aeca017a5e8f386c26e9530d94cd2b0deb1214e5aa6701  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/ios-simulator/build.log
+b5ce8c82d3ef2801f9aca40580a7690662c4f6f3df6488b2de370a6989a885a5  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/android-avd/runtime.log
+fa39eca265f66df4c7d9b8362ff34544b98554bf123f77116cd63ec3ef64d01c  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/ios-simulator/runtime.log
+c5975c085ed04f203b50380fb83783fd7f001f36be293d8667d7d891a0f141ea  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/android-avd/screenshot.png
+5e8cf86c936c73c19988e60ed5be20052e841824564401a60c7f12d2be64ea8f  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/ios-simulator/screenshot.png
+1ee25f78cc537f904a870fe1777f199f89260701a7d42bd2c30144b3c43a67bd  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T000220Z-040a5360/android-avd/runtime.log
+1973451d632360ecf7f5732c77de203db48d7afa67a1e6f17eceeea685cc9e9d  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T000220Z-040a5360/ios-simulator/runtime.log
+76bc6fcdacfb416a5dda254eb9f53b5da77f65138d5a127ce4f8ca892611a7db  spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T002422Z-040a5360-stagefix01/source-hashes.json
+35b114666be4a347225f895cc8e06f579522a345d0572e77e95cce3861df6d54  platforms/android/app/build/outputs/apk/debug/app-debug.apk
+39c49b4aa5c59bea50a367ccbd8b2b6f44ee8c56ee8c68f6d5047adba2eab0aa  build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap
