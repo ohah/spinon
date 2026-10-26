@@ -1,0 +1,31 @@
+{
+  "existingRouteCount": 210,
+  "openHandleCount": 4,
+  "openRoutes": [
+    {
+      "command": "node",
+      "path": "logo.svg",
+      "currentSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "nextSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "command": "node",
+      "path": "static/css/styles.8d918fd78e.css",
+      "currentSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "nextSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.382571d6aa.js",
+      "currentSha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af",
+      "nextSha256": "5fe15e21cdbe74f3bc28adc7de37ee0c3a94d960dae748da5584f73ea000d8af"
+    },
+    {
+      "command": "node",
+      "path": "static/js/6.cb8b86b995.js",
+      "currentSha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131",
+      "nextSha256": "04ff176de0ff37821fb18c8f9dbabb13c380c882d6f6b76145ae1cdd5f72c131"
+    }
+  ],
+  "result": "no changed open target"
+}
