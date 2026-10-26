@@ -355,3 +355,66 @@ fn css_grid_2025_stretch_auto_tracks_distributes_definite_free_space_equally() {
         );
     }
 }
+
+#[test]
+fn css_grid_2025_align_content_normal_stretches_auto_tracks_equally() {
+    let output = TaffyLayoutEngine
+        .compute(&input(LayoutAlignContent::Normal))
+        .unwrap();
+    let rows = rows_pass(&output);
+    let (stretch_stage, _) = assert_stage_order(rows);
+    assert_eq!(
+        stretch_stage.stage,
+        LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: true }
+    );
+
+    for (stage, label) in [
+        (
+            unique_stage(
+                rows,
+                |stage| stage == LayoutGridTrackSizingStageKind::IntrinsicSizingComplete,
+                "IntrinsicSizingComplete",
+            )
+            .0,
+            "normal intrinsic complete",
+        ),
+        (
+            unique_stage(
+                rows,
+                |stage| stage == LayoutGridTrackSizingStageKind::MaximizeTracks,
+                "MaximizeTracks",
+            )
+            .0,
+            "normal maximize tracks",
+        ),
+        (
+            unique_stage(
+                rows,
+                |stage| stage == LayoutGridTrackSizingStageKind::ExpandFlexibleTracks,
+                "ExpandFlexibleTracks",
+            )
+            .0,
+            "normal flexible tracks",
+        ),
+    ] {
+        assert_css_track_bases(stage, &[10.0, 20.0, 5.0], label);
+    }
+    assert_css_track_bases(stretch_stage, &[32.5, 42.5, 5.0], "normal stage");
+    close(
+        unused_row_space(stretch_stage),
+        0.0,
+        "normal remaining space",
+    );
+
+    assert_frame(
+        id(1),
+        &output.frames[&id(1)],
+        0.0,
+        0.0,
+        ROOT_SIZE.0,
+        ROOT_SIZE.1,
+    );
+    for (node, y, height) in [(id(2), 0.0, 10.0), (id(3), 42.5, 20.0), (id(4), 95.0, 5.0)] {
+        assert_frame(node, &output.frames[&node], 0.0, y, ROOT_SIZE.0, height);
+    }
+}
