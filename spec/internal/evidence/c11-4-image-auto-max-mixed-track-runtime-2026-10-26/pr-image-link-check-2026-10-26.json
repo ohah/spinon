@@ -1,27 +1,33 @@
 {
   "pr": "https://github.com/ohah/spinon/pull/643",
-  "checked_at_utc": "2026-10-26T01:00:11Z",
+  "checked_at_utc": "2026-10-26T02:10:32Z",
+  "pr_head_commit": "9b3101dca186ee55016b2023c9610186b4df9ecb",
+  "simulator_source_commit": "cac4e33950aa55e8bb8e7ec1f81bf790316ba7ac",
   "tool": "agent-browser",
-  "session": "spinon-pr643",
+  "session": "spinon-pr643-final05-3bd9bb4c052c",
   "commands": [
-    "agent-browser --session spinon-pr643 open https://github.com/ohah/spinon/pull/643",
-    "agent-browser --session spinon-pr643 snapshot -i",
-    "agent-browser --session spinon-pr643 eval 'Array.from(document.querySelectorAll(\".comment-body img\")).map(i => ({alt:i.alt,src:i.currentSrc,complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight}))'",
-    "agent-browser --session spinon-pr643 close",
-    "agent-browser --session spinon-pr643 session info --json",
-    "ps -axo pid,ppid,command | rg -i 'agent-browser|spinon-pr643|\\.agent-browser'"
+    "agent-browser skills get core",
+    "agent-browser session id --scope worktree --prefix spinon-pr643-final05",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c open https://github.com/ohah/spinon/pull/643",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c wait --load networkidle",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c snapshot -i --json",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c eval 'Array.from(document.querySelectorAll(\".comment-body img\")).map(i => ({alt:i.alt,src:i.currentSrc,complete:i.complete,naturalWidth:i.naturalWidth,naturalHeight:i.naturalHeight}))'",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c close",
+    "agent-browser --session spinon-pr643-final05-3bd9bb4c052c session info --json",
+    "agent-browser session list --json",
+    "ps -axo pid,ppid,comm,args | awk '$3 ~ /agent-browser/ {print}'"
   ],
   "images": [
     {
-      "alt": "Android API 37 ARM64 AVD, layout/presentation only",
-      "src": "https://github.com/ohah/spinon/blob/plan/c11-4-image-auto-max-mixed-track-20261026/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png?raw=true",
+      "alt": "Android API 37 ARM64 AVD, 1080×2400, layout/presentation only",
+      "src": "https://github.com/ohah/spinon/blob/9b3101dca186ee55016b2023c9610186b4df9ecb/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-android-api37-arm64.png?raw=true",
       "complete": true,
       "naturalWidth": 1080,
       "naturalHeight": 2400
     },
     {
-      "alt": "iPhone 17 Pro, iOS 26.2 Simulator, layout/presentation only",
-      "src": "https://github.com/ohah/spinon/blob/plan/c11-4-image-auto-max-mixed-track-20261026/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png?raw=true",
+      "alt": "iPhone 17 Pro, iOS 26.2 Simulator, 1206×2622, layout/presentation only",
+      "src": "https://github.com/ohah/spinon/blob/9b3101dca186ee55016b2023c9610186b4df9ecb/spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/c11-4-image-auto-max-mixed-track-ios-26.2-simulator.png?raw=true",
       "complete": true,
       "naturalWidth": 1206,
       "naturalHeight": 2622
@@ -30,12 +36,15 @@
   "session_after_close": {
     "active": false,
     "pid": null,
-    "session": "spinon-pr643"
+    "session": "spinon-pr643-final05-3bd9bb4c052c"
   },
-  "matching_processes_after_close": [],
+  "remaining_agent_browser_sessions": [
+    "hwpjs-display-cache-20261026"
+  ],
+  "matching_agent_browser_processes_after_close": [],
   "result": "pass",
   "limits": [
-    "Image resources loaded at their expected intrinsic dimensions in the rendered PR body.",
-    "This link check is not a PNG paint or pixel-equality check for the simulator scene."
+    "The PR body rendered both immutable final05 screenshot links at their expected natural dimensions.",
+    "This link check does not prove PNG paint or pixel equality; final05 runtime logs record runtime_image_count=0 and image_draw_count=0."
   ]
 }

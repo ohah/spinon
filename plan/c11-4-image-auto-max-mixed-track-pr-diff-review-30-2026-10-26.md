@@ -4,10 +4,10 @@
 
 - 검토한 GitHub PR: [#643](https://github.com/ohah/spinon/pull/643)
 - 검토 대상 base: `040a5360be92f73e141797aa7dcd4ef00ab24942`
-- 검토 대상 GitHub head: `cac4e33950aa55e8bb8e7ec1f81bf790316ba7ac`
+- 검토 대상 GitHub head: `9b3101dca186ee55016b2023c9610186b4df9ecb`
 - PR 상태: open, mergeable. `gh pr checks`는 보고된 check가 없었다. CI 통과로 해석하지 않았다.
-- 별도 source-bound 앱 검증은 현재 head `cac4e339`에서 수행한 Android API 37 ARM64 AVD / iPhone 17 Pro iOS 26.2 Simulator의 `final05`까지 대조했다. manifest는 [source-hashes.json](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json)이다. 소스, APK, iOS 실행 파일 및 screenshot SHA-256을 실제 파일과 다시 비교했고, 두 화면을 직접 열어 상태 overlay를 확인했다. 이 실행 자료와 대표 이미지는 아직 GitHub에 push되지 않은 local candidate다.
-- 판정: **24 PASS / 6 PARTIAL / 0 FAIL**. 구현 코드에서 확인된 차단 결함은 없다. final05 자료를 commit/push하고 PR 본문 및 screenshot URL을 그 증거에 맞게 갱신한 뒤 새 URL의 Agent Browser 확인을 끝내기 전에는 PR evidence gate가 닫히지 않는다.
+- 별도 source-bound 앱 검증은 소스 `cac4e339`에서 수행한 Android API 37 ARM64 AVD / iPhone 17 Pro iOS 26.2 Simulator의 `final05`까지 대조했다. manifest는 [source-hashes.json](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json)이다. 소스, APK, iOS 실행 파일 및 screenshot SHA-256을 실제 파일과 비교했고, 두 화면을 직접 열어 상태 overlay를 확인했다. 실행 자료와 대표 이미지는 GitHub head `9b3101dca186ee55016b2023c9610186b4df9ecb`에 게시됐고, PR 본문의 immutable screenshot 링크도 Agent Browser에서 확인했다.
+- 판정: **26 PASS / 4 PARTIAL / 0 FAIL**. 구현 코드에서 확인된 차단 결함은 없다. PR 본문과 최종 화면 publication 확인은 완료했다. GitHub check는 보고되지 않아 CI 통과를 주장하지 않는다.
 
 ## 30개 서로 다른 실패 경로·불변 조건
 
@@ -37,16 +37,16 @@
 | 22 | fixture ABI/payload가 기본 product FFI archive로 새어 나오는가 | artifact scanner의 `c04-runtime-gpu` negative control은 source `e4570a04`에서 scene marker 0/5, fixture ABI 0/2를 기록한다. 이후 변경은 test/platform/docs이며 Rust product scene source는 바뀌지 않았다. | PASS |
 | 23 | positive control이 고장나도 negative archive 검사만으로 통과 처리되는가 | `c04-runtime-gpu-fixture-test` positive control은 marker 5/5와 정의 ABI 2/2를 확인한다. | PASS |
 | 24 | static archive 결과를 APK/IPA 전체 fixture exclusion으로 확대 해석하는가 | [artifact README](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/feature-boundary/README.md)는 검사 범위를 `spinon-ffi` static archive로 제한하고 shared PNG payload를 새 scene 단독 산출물로 귀속하지 않는다. | PASS |
-| 25 | Android JSON parser의 coercion, 누락/null, NaN/Infinity가 정상 trace처럼 통과하는가 | 새 matcher는 Number/Boolean/String 원형, finite numeric, 정확한 integer, 필수 key와 null을 fail-closed 확인한다. final04 정상 runtime trace도 통과했다. 다만 malformed-field mutation을 실제 주입하는 별도 테스트는 없다. | PARTIAL |
-| 26 | iOS Foundation `NSNumber`가 Boolean을 숫자로 통과시키거나 finite/integer 비교를 우회하는가 | `CoreFoundation` type ID로 `CFBoolean`과 number를 분리하고 finite/exact integer 검사를 한다. final04 정상 runtime trace는 통과했지만 malformed JSON mutation은 직접 시험하지 않았다. | PARTIAL |
+| 25 | Android JSON parser의 coercion, 누락/null, NaN/Infinity가 정상 trace처럼 통과하는가 | 새 matcher는 Number/Boolean/String 원형, finite numeric, 정확한 integer, 필수 key와 null을 fail-closed 확인한다. final05 정상 runtime trace도 통과했다. 다만 malformed-field mutation을 실제 주입하는 별도 테스트는 없다. | PARTIAL |
+| 26 | iOS Foundation `NSNumber`가 Boolean을 숫자로 통과시키거나 finite/integer 비교를 우회하는가 | `CoreFoundation` type ID로 `CFBoolean`과 number를 분리하고 finite/exact integer 검사를 한다. final05 정상 runtime trace는 통과했지만 malformed JSON mutation은 직접 시험하지 않았다. | PARTIAL |
 | 27 | 최신 strict matcher와 실행 artifact/source revision이 서로 다른 빌드에서 섞이는가 | final05 [source manifest](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/runs/c114-image-auto-max-20261026T020007Z-cac4e339-final05/source-hashes.json)는 정확한 source head `cac4e339`, Java/Swift/test/expectation hashes, V8 revision, APK 및 iOS executable hashes를 연결한다. 원본 파일과 app/screenshot hashes를 독립 비교했고 양쪽 앱 run이 모두 통과했다. | PASS |
 | 28 | simulator screenshot을 PNG raster paint/pixel equality 또는 hardware/compositor 이후 출력으로 오해하는가 | final05 screenshot을 직접 열어 status overlay와 scene을 확인했다. 두 runtime log 모두 `runtime_image_count=0`, `image_draw_count=0`; 계획·README·PR alt text는 layout/presentation 범위로 제한한다. 빨간 사각형은 img의 CSS background다. | PASS |
-| 29 | PR screenshot 링크가 현재 PR 본문에서 실제 로드되지 않거나 Agent Browser를 남기는가 | 기존 [Agent Browser evidence](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/pr-image-link-check-2026-10-26.json)는 immutable `e4570a04` URL 두 개가 로드됐고 close 후 session inactive/pid null/process list empty임을 증명한다. 최신 final05 대표 이미지의 immutable URL은 아직 PR에 올라가 있지 않아 Agent Browser에서 확인되지 않았다. | PARTIAL |
-| 30 | 현재 remote PR metadata, local evidence, CI 상태가 서로 다른데 merge-ready라고 표시되는가 | remote head는 `cac4e339`지만 remote 본문은 Android rerun pending 문구, iOS `final03` 및 e457 screenshot URL을 유지한다. final05 README/screenshots/source hashes는 로컬 candidate다. `gh pr checks`에 보고된 check도 없다. 새 evidence를 push하고 본문·URL을 갱신한 뒤 Agent Browser 재확인이 필요하다. | PARTIAL |
+| 29 | PR screenshot 링크가 현재 PR 본문에서 실제 로드되지 않거나 Agent Browser를 남기는가 | 최신 [Agent Browser evidence](../spec/internal/evidence/c11-4-image-auto-max-mixed-track-runtime-2026-10-26/pr-image-link-check-2026-10-26.json)는 현재 head `9b3101dca186ee55016b2023c9610186b4df9ecb`에 고정된 두 final05 URL이 `complete=true`로 Android 1080×2400, iOS 1206×2622에 로드됐음을 기록한다. 전용 session은 `active=false`, `pid=null`이고 matching browser process는 없다. | PASS |
+| 30 | 현재 remote PR metadata, local evidence, CI 상태가 서로 다른데 merge-ready라고 표시되는가 | PR head `9b3101dca186ee55016b2023c9610186b4df9ecb`의 본문이 final05 결과와 같은 immutable commit의 두 screenshot URL을 가리키고, 공개 evidence README/hash도 이를 설명한다. PR은 open/mergeable이다. `gh pr checks`에는 check가 없으므로 CI 통과를 주장하지 않는다. | PASS |
 
 ## 후속 및 차단 범위
 
-- **차단:** final05 source/app/hash/evidence를 PR에 push하고, PR 본문 Android/iOS 결과와 screenshot 링크를 같은 immutable evidence commit으로 갱신한 뒤 Agent Browser에서 새 두 URL을 확인하고 세션·전용 프로세스 종료 증거를 갱신해야 한다. 현재 remote PR 본문은 그 갱신을 반영하지 않는다.
+- **Publication/link gate:** 완료. final05 evidence와 PR 본문이 commit `9b3101dca186ee55016b2023c9610186b4df9ecb`에 고정됐고, Agent Browser 이미지 로드 및 전용 session/process cleanup을 확인했다.
 - **비차단 한계:** malformed JSON mutation test, `prepare()` 이후의 downstream atomicity 관측, 새 adapter의 decode/dimension/stale/profile rejection 실행은 범위의 PARTIAL이다. 이 제한은 계획/evidence에 적혀 있으며 현재 positive fixture 경로에서 재현된 결함은 아니다.
 - GitHub check rollup은 비어 있으므로 CI 성공을 주장하지 않는다. PR은 open/mergeable로 확인했으며 merge는 수행하지 않았다.
-- PR diff 전체에 포함된 raw build log 일부에는 원본 stdout의 trailing whitespace/마지막 blank line이 있다. 이는 `git diff --check` 경고의 출처이며 runtime evidence는 변경하지 않았다.
+- Build log 정리 범위는 문서화돼 있다. 원본 Xcode stdout은 sibling `build.raw.log.gz`로 보존하고 읽기용 `build.log`에서만 trailing whitespace와 terminal blank line을 정리했다. 관련 non-log diff는 `git diff --check`를 통과했으며, 로그 서식은 미해결 검토 항목이 아니다.
