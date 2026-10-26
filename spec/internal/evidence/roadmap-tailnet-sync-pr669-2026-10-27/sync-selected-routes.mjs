@@ -11,6 +11,7 @@ const previewRoot = '/Users/yoonhb/Library/Application Support/SpinonPreview';
 const backupRoot = '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr669-2026-10-27/pass01';
 const remoteBase = 'https://macstudio.tailed42f2.ts.net/spinon/';
 const build = JSON.parse(fs.readFileSync(path.join(evidenceDirectory, 'selected-build.json'), 'utf8'));
+const syncToolHead = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const targetsReport = path.join(evidenceDirectory, 'target-open-handles.json');
 const preflightReport = path.join(evidenceDirectory, 'preflight.json');
 const copyReportPath = path.join(evidenceDirectory, 'tailnet-copy.json');
@@ -32,6 +33,7 @@ const preflightResponse = await fetch('http://127.0.0.1:8768/spinon/roadmap.html
 const preflightBytes = Buffer.from(await preflightResponse.arrayBuffer());
 assert.equal(preflightResponse.status, 200, 'existing local roadmap must be served before sync');
 const preflight = {
+  syncToolHead,
   tailscaleBackendState: status.BackendState,
   selfHostName: status.Self?.HostName ?? null,
   selfTailscaleIPs: status.Self?.TailscaleIPs ?? [],
@@ -81,6 +83,17 @@ for (const [relative, record] of openRoutes) {
 }
 fs.writeFileSync(targetsReport, `${JSON.stringify({ existingRouteCount: existing.length, openHandleCount: openRoutes.size, openRoutes: [...openRoutes.values()], result: 'no changed open target' }, null, 2)}\n`, { flag: 'wx' });
 
+const backupTaskRoot = path.dirname(backupRoot);
+const backupParent = path.dirname(backupTaskRoot);
+const backupParentStat = fs.lstatSync(backupParent);
+assert.ok(backupParentStat.isDirectory() && !backupParentStat.isSymbolicLink(), `unsafe backup parent: ${backupParent}`);
+try {
+  const taskStat = fs.lstatSync(backupTaskRoot);
+  assert.ok(taskStat.isDirectory() && !taskStat.isSymbolicLink(), `unsafe backup task root: ${backupTaskRoot}`);
+} catch (error) {
+  if (error.code !== 'ENOENT') throw error;
+  fs.mkdirSync(backupTaskRoot, { recursive: false });
+}
 fs.mkdirSync(backupRoot, { recursive: false });
 const created = [];
 const replaced = [];
@@ -117,6 +130,7 @@ for (const item of targets) {
 }
 
 const copyReport = {
+  syncToolHead,
   sourceHead: build.sourceHead,
   sourceTree: build.sourceTree,
   previewRoot,
@@ -144,6 +158,7 @@ for (const route of routes) {
   verified.push({ path: route.path, status: response.status, bytes: bytes.length, sha256: route.sha256 });
 }
 const verifyReport = {
+  syncToolHead,
   sourceHead: build.sourceHead,
   previewRoot,
   remoteBase,
