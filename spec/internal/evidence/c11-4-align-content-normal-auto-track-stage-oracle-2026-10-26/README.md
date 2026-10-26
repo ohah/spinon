@@ -24,4 +24,4 @@
 
 재현 환경의 Rust/Cargo 버전은 [`toolchain.txt`](./toolchain.txt)에 기록했다. 명령 exit code와 압축 로그 SHA-256은 [`validation-results.json`](./validation-results.json)에 기록했다.
 
-변경은 `#[cfg(test)]` Rust 단위 테스트뿐이므로 Android/iOS app build와 simulator capture는 이 slice의 검증 대상이 아니다. 이 근거는 일반 CSS parsing/cascade, 앱 렌더링, Chrome/WPT 또는 전체 C11.4를 입증하지 않는다. C11.4 공식 체크박스와 완료 집계 `72/213`은 미완료로 유지한다. 별도 구현 실패 관점 [20개 검토는 PASS](./implementation-review-20.md), 구현 PR diff [30개 검토도 PASS](./pr-diff-review-30.md)이며 대상 head `dcd8e83024c0380bd4e63046d2d4b183070641cb`에서 merge 대기 중이다.
+변경은 `#[cfg(test)]` Rust 단위 테스트뿐이므로 Android/iOS app build와 simulator capture는 이 slice의 검증 대상이 아니다. 이 근거는 일반 CSS parsing/cascade, 앱 렌더링, Chrome/WPT 또는 전체 C11.4를 입증하지 않는다. 별도 구현 실패 관점 [20개 검토는 PASS](./implementation-review-20.md), 구현 PR diff [30개 검토도 PASS](./pr-diff-review-30.md)를 거쳐 구현 PR [#656](https://github.com/ohah/spinon/pull/656)은 2026-10-26T09:52:34Z Rebase and merge됐다. 최종 PR head는 `988ac28af933fa9a2ffbcea01f0d8e76880547be`, merge commit은 `0991a8a6d5f05dba240cec90fad4f3539c938c05`이다. GitHub `statusCheckRollup`은 비어 있어 CI 통과를 뜻하지 않는다. C11.4 공식 체크박스와 완료 집계 `72/213`은 미완료로 유지한다.
