@@ -12,5 +12,14 @@
     "new_precomparison_readme_diagnostic_groups": 0,
     "result": "The full spec-root build stopped on dead links in other existing evidence pages. The new precomparison README emitted no dead-link diagnostic after its artifact references were converted to inline text and the screenshot was embedded as an image."
   },
-  "scope": "This build result does not claim a complete documentation-site build or full-root link pass. The failed raw output was retained outside the repository at /tmp/spinon-fit-content-auto-neighbor-docs-build-20261026.log."
+  "scope": "This build result does not claim a complete documentation-site build or full-root link pass. The failed raw output was retained outside the repository at /tmp/spinon-fit-content-auto-neighbor-docs-build-20261026.log.",
+  "latest_recheck_after_spec_evidence_update": {
+    "command": "mise exec -- bun run docs:build",
+    "exit_code": 1,
+    "raw_log": "/tmp/spinon-fit-content-auto-neighbor-docs-build-recheck-20261026.log",
+    "dead_link_error_blocks_in_raw_log": 781,
+    "unique_existing_evidence_files_in_import_traces": 570,
+    "mentions_of_new_precomparison_readme": 0,
+    "result": "The full-root documentation build still fails on existing dead-link diagnostics in other evidence pages. The updated plan, precomparison README, and plan review did not appear in the diagnostic file traces; this is not a docs build pass."
+  }
 }

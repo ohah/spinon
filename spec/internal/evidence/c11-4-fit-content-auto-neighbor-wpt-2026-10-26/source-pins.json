@@ -13,6 +13,7 @@
     "title": "CSS Grid Layout Module Level 2",
     "snapshot_date": "2025-03-26",
     "sections": {
+      "automatic_minimum_size": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#min-size-auto",
       "track_sizing_terminology": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-terms",
       "resolve_intrinsic_track_sizes": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-content",
       "stretch_auto_tracks": "https://www.w3.org/TR/2025/CRD-css-grid-2-20250326/#algo-stretch"
