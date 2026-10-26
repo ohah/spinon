@@ -3,7 +3,8 @@
 **검토 대상:** `af6b323c` 이후 Android/iOS fixture 출력, S03 simulator runner와 iOS C9 재검증 후속 수정
 **비교 모델:** [구현 전 pilot 모델](./s03-scan-pilot-observability-precomparison-2026-10-26/README.md)
 **선행 계획:** [pilot observability slice](../../../plan/s03-3-pilot-scan-observability.md)
-**계획 SHA-256:** `f0a86deca3ae7990a730c720c034c53f712df35d5973e10bebb6e93a6ea423da`
+**구현 전 계획 SHA-256:** `f0a86deca3ae7990a730c720c034c53f712df35d5973e10bebb6e93a6ea423da`
+**최종 계획 SHA-256:** `cc074e3cbc93f7bf357b975da6ea1222549306bd5c1165472a3f30bfc02bd77f`
 **검토 코드 diff SHA-256:** `ab628193529a3cdecee77fd145d61865f03b8de68c8fe1b0a67f63e0831490bd`
 **검토 범위:** 실제 변경 코드·verification runner·기본 및 opt-in app artifact와 task-owned iOS clone runtime. 초기 캡처에서 앱 화면은 10개 표본을 보였지만 aggregate OSLog 이벤트에는 9개만 남았고 verifier EXIT trap이 실패 코드를 덮었다. 요약/표본별 event 분리, 정확한 순서 검사, exit-status 보존을 적용한 뒤 같은 clone에서 clean commit을 재빌드해 표본 1..10을 확인했다. Android runtime은 host disk 용량 부족으로 미검증이다.
 
@@ -14,7 +15,7 @@
 | 1 | Android 기본 artifact 격리 | default `BuildConfig`에서 계측 문자열이나 formatter가 제품/debug 기본 경로에 남는가? | `SPINON_S03_DOM_GC_FIXTURE=false` 빌드의 DEX에서 `scan_sample_index`와 observability marker가 없음을 확인했다. 새 출력은 생성 BuildConfig 상수의 true branch 안에 둔다. |
 | 2 | Android opt-in positive control | fixture flag를 켜도 Java 컴파일러가 output block을 제거하는가? | S03=true 빌드의 `BuildConfig`가 true이고 APK DEX에 sample index/records/observability key가 있음을 확인했다. |
 | 3 | iOS compile-condition 격리 | S03=false 빌드에 Swift 문자열/파싱 코드가 포함되는가? | `_0` build의 `.app` executable에서 sample marker가 없음을 확인했다. 새 Swift 블록은 `SPINON_ENABLE_S03_DOM_GC_FIXTURE_1` 조건으로 제한했다. |
-| 4 | iOS opt-in positive control | S03=true에서 조건부 Swift block이 빠지거나 심볼이 연결되지 않는가? | `_1` Simulator build가 성공했고 `.app` executable에 `scan_sample_index`, `S03_SCAN_OBSERVABILITY`, `sample_records`가 있다. |
+| 4 | iOS opt-in positive control | S03=true에서 조건부 Swift block이 빠지거나 심볼이 연결되지 않는가? | `_1` Simulator build가 성공했고 `.app` executable에 `scan_sample_index`, `S03_SCAN_OBSERVABILITY`, `S03_SCAN_OBSERVABILITY_SAMPLE`가 있다. |
 | 5 | 기존 시간 출처 | 새 출력이 별도 타이머를 더하거나 기존 duration 의미를 바꾸는가? | 두 플랫폼은 report의 기존 `document_collection_last_scan_us` 값을 그대로 사용한다. C++ timer와 report struct를 바꾸지 않았다. |
 | 6 | wall interval 경계 | `scan_wall_us`가 Rust phase나 pure CPU time으로 오해될 수 있는가? | field를 전체 safe-point collector wall-duration alias로 기록하고, 계획/precomparison에서 포함 단계와 CPU/scheduler 구분을 명시한다. |
 | 7 | TID 정의 | caller/callback ID를 scan owner ID로 잘못 기록할 수 있는가? | report의 `owner_tid`를 직접 읽고 callback/caller 필드로 대체하지 않는다. Android/iOS 구현은 actor의 V8 owner safe-point와 같은 thread 경로를 유지한다. OS runnable-state 관측은 주장하지 않는다. |
