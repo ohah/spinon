@@ -1,5 +1,7 @@
 # C11.4 일반 direct text 앱 matcher 제한 검토
 
+**Historical scope:** This targeted pass reviews an earlier matcher revision. Its file hashes and Rows expectations do not describe the current source. Use the later [pass02 20-view review and reconciliation](./c11-4-generic-direct-text-app-matchers-runtime-review-pass02-20-2026-10-26.md) for current matcher/runtime evidence.
+
 ## 검토 범위
 
 이 recheck는 `generic-root-normal`의 Android/iOS C0410 intrinsic/trace matcher와 계획된 행 축 contribution contract만 정적으로 다시 읽었다. 요청에 따라 build, test, formatter, simulator, Agent Browser는 실행하지 않았다. 이 문서는 런타임 pass나 앱 artifact 증거가 아니다.
