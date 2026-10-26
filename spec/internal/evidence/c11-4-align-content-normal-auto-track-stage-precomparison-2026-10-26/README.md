@@ -28,4 +28,4 @@ Direct children은 각자의 고정 height를 유지한다. 최종 row starts에
 
 병합된 `align-content:stretch` positive 입력은 같은 규범 기대값을 사용하고, `align-content:start` control은 stage 미적용 및 rows `[10,20,5]px`를 유지한다. 새 `normal` 입력은 이 구현 결과를 oracle로 가져오지 않고 위 독립 계산과 직접 비교한다.
 
-현재 Rust style projection은 `LayoutAlignContent::Normal`을 Taffy `AlignContent::STRETCH`로 보낸다. 이 사전 비교는 그 경로의 단위 검증을 제안할 뿐이며, 일반 author CSS cascade, 플랫폼 runtime, browser rendering, WPT 또는 전체 CSS Grid 적합성을 주장하지 않는다. 계획 자체 검토는 PASS 20/20이다. 계획 PR diff 검토·병합 전까지 구현은 시작하지 않는다.
+현재 Rust style projection은 `LayoutAlignContent::Normal`을 Taffy `AlignContent::STRETCH`로 보낸다. 계획 자체 검토 PASS 20/20과 계획 PR [#655](https://github.com/ohah/spinon/pull/655) diff 검토 PASS 30/30을 거쳐 계획이 `fb1704f950ce29097c482f16d7ec4401b0009493`에 병합됐다. 구현은 별도 Rust test commit `31c7874a4675bd9182c83aab2bc711a93ced9c34`에서 시작됐고 [실행 근거](../c11-4-align-content-normal-auto-track-stage-oracle-2026-10-26/README.md)에 기록했다. 이 사전 비교와 구현은 일반 author CSS cascade, 플랫폼 runtime, browser rendering, WPT 또는 전체 CSS Grid 적합성을 주장하지 않으며, C11.4와 공식 `72/213`은 미완료로 유지한다.
