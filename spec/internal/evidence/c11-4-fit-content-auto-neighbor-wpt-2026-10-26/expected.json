@@ -1,0 +1,44 @@
+{
+  "case_id": "fit-content-auto-neighbor-row",
+  "status": "plan-only oracle; not a Spinon result",
+  "input": {
+    "test_harness_root_width_px": 60,
+    "explicit_columns_px": [60],
+    "explicit_rows": [],
+    "implicit_rows_pattern": ["fit-content(40px)", "auto"],
+    "definite_grid_content_height_px": 300,
+    "row_gap_px": 0,
+    "padding_px": 0,
+    "border_px": 0,
+    "align_content": "normal",
+    "direct_grid_item_count": 2,
+    "each_nested_content_height_px": 10
+  },
+  "css_grid_2025_crd_derivation": {
+    "pre_stretch_track_bases_px": [10, 10],
+    "fit_content_max_content_growth_limit_px": 10,
+    "fit_content_argument_px": 40,
+    "positive_definite_free_space_px": 280,
+    "stretch_eligible_track_indexes": [1],
+    "stage": "StretchAutoTracks { applied: true }",
+    "final_track_bases_px": [10, 290],
+    "grid_template_rows_serialization": "10px 290px"
+  },
+  "expected_frames_px": {
+    "grid": [0, 0, 60, 300],
+    "fit_content_item": [0, 0, 60, 10],
+    "fit_content_inner": [0, 0, 60, 10],
+    "auto_item": [0, 10, 60, 290],
+    "auto_inner": [0, 10, 60, 10]
+  },
+  "normative_basis": [
+    "CSS Grid Layout Module Level 2 2025 CRD §12.2",
+    "CSS Grid Layout Module Level 2 2025 CRD §12.5",
+    "CSS Grid Layout Module Level 2 2025 CRD §12.8"
+  ],
+  "limitations": [
+    "Expected values are independently derived and are not copied from Taffy or Spinon output.",
+    "No Spinon test or implementation has run.",
+    "The WPT assertion was not executed by the WPT testharness in the Agent Browser file URL session."
+  ]
+}

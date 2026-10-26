@@ -1,0 +1,16 @@
+{
+  "command": "mise exec -- bun run docs:build",
+  "rspress_version": "2.0.22",
+  "dependency_setup": {
+    "command": "mise exec -- bun install --frozen-lockfile",
+    "exit_code": 0,
+    "installed_packages": 209
+  },
+  "build": {
+    "exit_code": 1,
+    "dead_link_diagnostic_groups": 905,
+    "new_precomparison_readme_diagnostic_groups": 0,
+    "result": "The full spec-root build stopped on dead links in other existing evidence pages. The new precomparison README emitted no dead-link diagnostic after its artifact references were converted to inline text and the screenshot was embedded as an image."
+  },
+  "scope": "This build result does not claim a complete documentation-site build or full-root link pass. The failed raw output was retained outside the repository at /tmp/spinon-fit-content-auto-neighbor-docs-build-20261026.log."
+}

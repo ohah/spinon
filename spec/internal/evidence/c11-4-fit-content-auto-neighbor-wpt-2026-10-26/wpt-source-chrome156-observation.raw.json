@@ -1,0 +1,42 @@
+{
+  "alignContent": "normal",
+  "grid": {
+    "height": 300,
+    "width": 1264,
+    "x": 8,
+    "y": 3908
+  },
+  "gridTemplateRows": "10px 290px",
+  "items": [
+    {
+      "inner": {
+        "height": 10,
+        "width": 60,
+        "x": 8,
+        "y": 3908
+      },
+      "rect": {
+        "height": 10,
+        "width": 60,
+        "x": 8,
+        "y": 3908
+      }
+    },
+    {
+      "inner": {
+        "height": 10,
+        "width": 60,
+        "x": 8,
+        "y": 3918
+      },
+      "rect": {
+        "height": 290,
+        "width": 60,
+        "x": 8,
+        "y": 3918
+      }
+    }
+  ],
+  "title": "CSS Grid Layout Test: fit-content() track sizing",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/build/wpt-c124-source/css/css-grid/grid-definition/fit-content-track-sizing.html"
+}

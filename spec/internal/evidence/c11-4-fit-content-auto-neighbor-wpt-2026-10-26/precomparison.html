@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 fit-content() 옆 auto 행 사전 관측</title>
+<style>
+  body { margin: 8px; color: #172033; font: 16px/1.45 system-ui, sans-serif; }
+  h1 { margin: 0 0 6px; font-size: 20px; }
+  p { margin: 0 0 18px; }
+  .sample { display: block; }
+  .grid {
+    display: grid;
+    grid-template-columns: 60px;
+    grid-auto-rows: fit-content(40px) auto;
+    height: 300px;
+    outline: 1px solid #334155;
+  }
+  .fit-item { background: #dbeafe; }
+  .auto-item { background: #dcfce7; }
+  .inner { width: 60px; height: 10px; }
+  .fit-item .inner { background: #2563eb; }
+  .auto-item .inner { background: #16a34a; }
+  pre { margin: 12px 0 0; white-space: pre-wrap; font: 13px/1.45 ui-monospace, monospace; }
+</style>
+<h1>fit-content(40px) 옆 auto implicit row</h1>
+<p>WPT 단일 assertion 입력 · definite grid 60 × 300 CSS px · 기본 align-content: normal</p>
+<div class="sample">
+  <div class="grid" id="grid">
+    <div class="fit-item" id="fitItem"><div class="inner" id="fitInner"></div></div>
+    <div class="auto-item" id="autoItem"><div class="inner" id="autoInner"></div></div>
+  </div>
+  <pre id="result">측정 중…</pre>
+</div>
+<script>
+  const rect = (element) => {
+    const { x, y, width, height } = element.getBoundingClientRect();
+    return { x, y, width, height };
+  };
+  const grid = document.querySelector('#grid');
+  const observation = {
+    gridTemplateRows: getComputedStyle(grid).gridTemplateRows,
+    alignContent: getComputedStyle(grid).alignContent,
+    grid: rect(grid),
+    fitItem: rect(document.querySelector('#fitItem')),
+    fitInner: rect(document.querySelector('#fitInner')),
+    autoItem: rect(document.querySelector('#autoItem')),
+    autoInner: rect(document.querySelector('#autoInner')),
+  };
+  document.querySelector('#result').textContent = JSON.stringify(observation, null, 2);
+  window.__c114Observation = observation;
+</script>
