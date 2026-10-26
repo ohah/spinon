@@ -71,6 +71,7 @@
     "agentBrowserVersion": "0.31.1",
     "viewport": [64, 48],
     "deviceScaleFactor": 1,
+    "screenshotCoordinateConvention": "screenshotPixelsRgba8.pixelIndex is a zero-based bitmap pixel index; its CSS pixel center is index + 0.5. DOM elementFromPoint uses a CSS point directly.",
     "rootRect": [0, 0, 12, 40],
     "rootClientWidth": 10,
     "gridTemplateColumns": [24, 17],
@@ -79,29 +80,33 @@
     "itemRect": [1, 1, 24, 16],
     "itemOverflow": ["clip", "clip"],
     "elementFromPoint": {
-      "point": [12.5, 8],
+      "cssPoint": [12.5, 8],
       "target": "image"
     },
     "scrollWidth": 24,
     "screenshotPixelsRgba8": [
       {
-        "point": [12, 8],
+        "pixelIndex": [12, 8],
+        "cssPixelCenter": [12.5, 8.5],
         "region": "outside root border, inside PNG image",
         "rgba": [255, 255, 64, 255],
         "assetLocalPoint": [11, 7]
       },
       {
-        "point": [26, 8],
+        "pixelIndex": [26, 8],
+        "cssPixelCenter": [26.5, 8.5],
         "region": "outside root and image",
         "rgba": [16, 24, 32, 255]
       },
       {
-        "point": [0, 30],
+        "pixelIndex": [0, 30],
+        "cssPixelCenter": [0.5, 30.5],
         "region": "left root border away from item",
         "rgba": [34, 197, 94, 255]
       },
       {
-        "point": [11, 30],
+        "pixelIndex": [11, 30],
+        "cssPixelCenter": [11.5, 30.5],
         "region": "right root border away from item",
         "rgba": [34, 197, 94, 255]
       }
@@ -109,24 +114,35 @@
   },
   "runtimeSurfaceExpectation": {
     "note": "The C11.4 app fixture does not draw PNG texels; it paints the img element's background as a box marker. Compare occupancy and each app surface color to this fixture expectation, not to browser PNG pixels.",
-    "pointsCss": [
+    "coordinateMapping": {
+      "cssPixelCenterFromRunnerIndex": "index + 0.5",
+      "surfaceIndexFromRunnerIndex": "floor((originCssPx + index + 0.5) * scale)",
+      "originCssPx": [0, 0],
+      "scale": "surface pixel dimensions divided by the 320x240 CSS viewport; validate x/y scales agree",
+      "runnerSampleCoordinatesAreIntegerIndices": true
+    },
+    "samples": [
       {
-        "point": [12.5, 8.5],
+        "runnerPixelIndex": [12, 8],
+        "cssPixelCenter": [12.5, 8.5],
         "region": "item box beyond root right border",
         "rgba": [229, 72, 77, 255]
       },
       {
-        "point": [26.5, 8.5],
+        "runnerPixelIndex": [26, 8],
+        "cssPixelCenter": [26.5, 8.5],
         "region": "outside item/root",
         "rgba": [16, 24, 32, 255]
       },
       {
-        "point": [0.5, 30.5],
+        "runnerPixelIndex": [0, 30],
+        "cssPixelCenter": [0.5, 30.5],
         "region": "left root border",
         "rgba": [34, 197, 94, 255]
       },
       {
-        "point": [11.5, 30.5],
+        "runnerPixelIndex": [11, 30],
+        "cssPixelCenter": [11.5, 30.5],
         "region": "right root border away from item",
         "rgba": [34, 197, 94, 255]
       }
