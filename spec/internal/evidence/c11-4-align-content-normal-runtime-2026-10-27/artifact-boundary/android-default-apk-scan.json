@@ -1,0 +1,15 @@
+{
+  "profile": "android-debug-c04-runtime-gpu-with-c11-4-fixture-test-disabled",
+  "apkSha256": "a850f0afcdf95ea039125762ab48e99547b9219dfada65ab57c97c29764571f4",
+  "apkSizeBytes": 74000100,
+  "nativeLibraries": {
+    "lib/arm64-v8a/libspinon_bootstrap.so": {
+      "containsNewSceneId": false,
+      "containsC11_4FixtureFfiSymbols": false
+    }
+  },
+  "dexFilesContainNewHostSceneId": [
+    "classes2.dex"
+  ],
+  "scope": "Native FFI payload/symbol boundary only; debug Java host metadata is reported separately."
+}

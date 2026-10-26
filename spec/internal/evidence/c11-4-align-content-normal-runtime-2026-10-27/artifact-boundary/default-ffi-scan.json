@@ -1,0 +1,16 @@
+{
+  "profile": "default",
+  "archive": "target/debug/libspinon_ffi.rlib",
+  "sizeBytes": 2685896,
+  "sha256": "17440e0b134a73592d7d27709ccf31029bcc1036d19aaaf120bd5a883be9f2bc",
+  "contains": {
+    "sceneId": false,
+    "nodeId": false,
+    "ffiCreateSymbol": false,
+    "ffiEvalSymbol": false
+  },
+  "exports": {
+    "ffiCreateSymbol": false,
+    "ffiEvalSymbol": false
+  }
+}

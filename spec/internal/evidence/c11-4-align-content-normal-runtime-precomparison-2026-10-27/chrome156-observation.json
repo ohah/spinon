@@ -14,27 +14,37 @@
     "wpt_runner": false
   },
   "cleanup": {
-    "session": "spinon-c114-normal-runtime-20261027",
+    "session": "spinon-c114-normal-runtime-20261027-final",
     "session_info_active_after_close": false,
     "active_session_count_after_close": 0
   },
   "fixture": "tests/fixtures/css/c11/grid-track-sizing-c114-align-content-normal-runtime.html",
-  "viewport_css_px": {"width": 160, "height": 100},
+  "viewport_css_px": {"width": 320, "height": 240},
   "device_pixel_ratio": 1,
   "observation": {
     "alignContent": "normal",
-    "justifyContent": "flex-start",
+    "justifyContent": "start",
     "gridTemplateRows": "32.5px 42.5px 5px",
+    "rootBackground": "rgb(16, 24, 32)",
+    "outsideRootBackground": "rgb(0, 0, 0)",
     "root": {"x": 0, "y": 0, "width": 160, "height": 100},
     "children": [
       {"x": 0, "y": 0, "width": 160, "height": 10},
       {"x": 0, "y": 42.5, "width": 160, "height": 20},
       {"x": 0, "y": 95, "width": 160, "height": 5}
+    ],
+    "sampled_pixels": [
+      {"id": "equal-auto-rows-first-row", "x": 80, "y": 5, "element": "item-0", "rgba": [229, 72, 77, 255]},
+      {"id": "equal-auto-rows-first-gutter", "x": 80, "y": 37, "element": "grid", "rgba": [16, 24, 32, 255]},
+      {"id": "equal-auto-rows-second-row", "x": 80, "y": 52, "element": "item-1", "rgba": [58, 134, 255, 255]},
+      {"id": "equal-auto-rows-fixed-row", "x": 80, "y": 97, "element": "item-2", "rgba": [6, 214, 160, 255]},
+      {"id": "equal-auto-rows-outside-root", "x": 160, "y": 5, "element": "BODY", "rgba": [0, 0, 0, 255]}
     ]
   },
   "screenshot": {
     "file": "chrome156-normal-auto-track-rows.png",
-    "pixel_width": 160,
-    "pixel_height": 100
+    "pixel_width": 320,
+    "pixel_height": 240,
+    "sha256": "7cc4bc76798ba6c8acb43ecf98b5688049e94173363017772ee0515e73171cb5"
   }
 }

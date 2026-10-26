@@ -9,6 +9,8 @@
     "free_space_per_auto_track_css_px": 22.5
   },
   "expected_stages": [
+    {"stage": "Initialize", "row_bases_css_px": [0, 0, 5]},
+    {"stage": "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }", "row_bases_css_px": [10, 20, 5]},
     {"stage": "IntrinsicSizingComplete", "row_bases_css_px": [10, 20, 5]},
     {"stage": "MaximizeTracks", "row_bases_css_px": [10, 20, 5]},
     {"stage": "ExpandFlexibleTracks", "row_bases_css_px": [10, 20, 5]},
@@ -27,6 +29,13 @@
       {"order": 2, "x": 0, "y": 95, "width": 160, "height": 5}
     ]
   },
+  "sampled_pixels": [
+    {"id": "equal-auto-rows-first-row", "x_css_px": 80, "y_css_px": 5, "rgba": [229, 72, 77, 255]},
+    {"id": "equal-auto-rows-first-gutter", "x_css_px": 80, "y_css_px": 37, "rgba": [16, 24, 32, 255]},
+    {"id": "equal-auto-rows-second-row", "x_css_px": 80, "y_css_px": 52, "rgba": [58, 134, 255, 255]},
+    {"id": "equal-auto-rows-fixed-row", "x_css_px": 80, "y_css_px": 97, "rgba": [6, 214, 160, 255]},
+    {"id": "equal-auto-rows-outside-root", "x_css_px": 160, "y_css_px": 5, "rgba": [0, 0, 0, 255]}
+  ],
   "comparison_controls": {
     "start": {
       "applied": false,

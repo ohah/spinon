@@ -1,5 +1,7 @@
 use std::borrow::Cow;
 
+#[path = "c11_4/align_content_normal_equal_auto_rows.rs"]
+mod align_content_normal_equal_auto_rows;
 #[path = "c11_4/anonymous_grid_border_overflow.rs"]
 mod anonymous_grid_border_overflow;
 #[path = "c11_4/anonymous_grid_border_overflow_paint.rs"]
@@ -1140,6 +1142,9 @@ const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageScen
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = align_content_normal_equal_auto_rows::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
     if let Some(source) = fit_content_auto_neighbor::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }

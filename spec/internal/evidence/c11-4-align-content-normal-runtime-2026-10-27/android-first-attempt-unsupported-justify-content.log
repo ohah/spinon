@@ -1,0 +1,7 @@
+Command: mise exec -- node tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs android-avd emulator-5554 --scene-id=align-content-normal-equal-auto-rows --run-kind=align-content-normal-equal-auto-rows --evidence-group=c11-4-align-content-normal-runtime-2026-10-27
+
+Result: failed before layout/presentation. The host reported:
+
+SPINON_C114_GRID_ASSERTION_ERROR run_id=c114-android-avd-20261026T213721842Z-547a708a-0 scene_id=align-content-normal-equal-auto-rows equal_auto_rows_trace_matches=false report=status=-11 ... error=none ... CSS runtime 장면 생성 실패: unsupported_computed_value node=Some(1) property=Some("justify-content")
+
+The scene specified `justify-content:flex-start`. The runtime rejected this computed property while creating the scene. The fixture and Chrome precomparison were changed to `justify-content:start`; this failed attempt is retained as diagnostic evidence.

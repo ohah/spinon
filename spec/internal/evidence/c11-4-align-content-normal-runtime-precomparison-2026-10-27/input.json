@@ -9,12 +9,12 @@
     "sizing_policy": "match"
   },
   "viewport": {
-    "width_css_px": 160,
-    "height_css_px": 100
+    "width_css_px": 320,
+    "height_css_px": 240
   },
   "alignment": {
     "align_content": "normal",
-    "justify_content": "flex-start"
+    "justify_content": "start"
   },
   "grid": {
     "columns": ["160px"],
