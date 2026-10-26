@@ -24,4 +24,4 @@
 
 재현 환경의 Rust/Cargo 버전은 [`toolchain.txt`](./toolchain.txt)에 기록했다. 명령 exit code와 압축 로그 SHA-256은 [`validation-results.json`](./validation-results.json)에 기록했다.
 
-변경은 `#[cfg(test)]` Rust 단위 테스트뿐이므로 Android/iOS app build와 simulator capture는 이 slice의 검증 대상이 아니다. 이 근거는 일반 CSS parsing/cascade, 앱 렌더링, Chrome/WPT 또는 전체 C11.4를 입증하지 않는다. C11.4 공식 체크박스와 완료 집계 `72/213`은 미완료로 유지한다. 별도 구현 실패 관점 [20개 검토는 PASS](./implementation-review-20.md); 구현 PR diff 30관점 검토는 진행 예정이다.
+변경은 `#[cfg(test)]` Rust 단위 테스트뿐이므로 Android/iOS app build와 simulator capture는 이 slice의 검증 대상이 아니다. 이 근거는 일반 CSS parsing/cascade, 앱 렌더링, Chrome/WPT 또는 전체 C11.4를 입증하지 않는다. C11.4 공식 체크박스와 완료 집계 `72/213`은 미완료로 유지한다. 별도 구현 실패 관점 [20개 검토는 PASS](./implementation-review-20.md), 구현 PR diff [30개 검토도 PASS](./pr-diff-review-30.md)이며 대상 head `dcd8e83024c0380bd4e63046d2d4b183070641cb`에서 merge 대기 중이다.
