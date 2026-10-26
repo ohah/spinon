@@ -1,13 +1,13 @@
 {
   "schemaVersion": 1,
   "pullRequest": "https://github.com/ohah/spinon/pull/652",
-  "checkedAtUtc": "2026-10-26T06:52:15Z",
-  "agentBrowserSession": "spinon-c11-4-pr-652",
+  "checkedAtUtc": "2026-10-26T07:09:15Z",
+  "agentBrowserSession": "spinon-c11-4-pr-652-final",
   "pageScreenshot": "pr-652-agent-browser.png",
-  "pageScreenshotSha256": "2e09b6a4581917fa787f197b51f675be808302ae7da84a8682fed7939cb2cc6b",
+  "pageScreenshotSha256": "d752cfabaedd7aa19a6a2e4a2995caef0e56f3b3dd3f8031f2a1727c86105e00",
   "pageScreenshotDimensions": [
     1280,
-    5352
+    5543
   ],
   "renderedImages": [
     {
@@ -26,8 +26,8 @@
     }
   ],
   "sessionClose": {
-    "closedAtUtc": "2026-10-26T06:52:40Z",
-    "command": "agent-browser --session spinon-c11-4-pr-652 close",
+    "closedAtUtc": "2026-10-26T07:09:15Z",
+    "command": "agent-browser --session spinon-c11-4-pr-652-final close",
     "result": "Browser closed",
     "activeSessionsAfterClose": 0,
     "sessionScopedProcessAfterClose": false
