@@ -5,6 +5,8 @@
 - 최종 판정: **20 PASS / 0 PARTIAL / 0 FAIL**
 - 검토 방식: 독립 코드·규범·근거 검토. 구현 코드는 수정하지 않았다.
 
+이 20-view 기록 시점의 evidence manifest에는 19개 항목이 있었다. 이후 PR diff review와 본문 이미지 확인 기록을 추가해 현재 manifest는 21개 항목이다. 현재 21개 항목은 모두 SHA 검증된다.
+
 초기 20-view에서 동작 관련 18개는 통과했고, 두 근거 항목은 PARTIAL이었다. 구현 소스 해시와 등록 diff를 고정하고, WPT root와 Spinon unit-test root의 폭 필드를 분리했으며, `cargo fmt` 무출력 결과를 manifest에 포함했다. 아래 최종 판정은 이 수정 뒤의 관련 근거 재검토를 반영한다.
 
 | # | 실패 관점 | 최종 확인 |

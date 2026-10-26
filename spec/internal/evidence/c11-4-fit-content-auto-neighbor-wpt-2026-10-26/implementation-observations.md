@@ -15,7 +15,7 @@
 
 `cargo test --locked -p spinon-layout css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row`가 기록된 source SHA와 동일한 Rust source에서 `1 passed, 0 failed`로 끝났다. stdout 원본은 [`implementation-test.raw.txt`](./implementation-test.raw.txt)에 있다. `cargo fmt --all -- --check`도 해당 최종 코드에서 exit 0으로 끝났으며 stdout/stderr 원본은 [`implementation-format.raw.txt`](./implementation-format.raw.txt)에 보존했다. 이후 implementation source는 변경하지 않았다.
 
-독립 기대값 JSON의 `spinon_unit_test_root_width_px`는 WPT가 containing block 폭을 쓰는 것과 구분해 Spinon 단위 테스트의 60px root 폭을 가리킨다. 기존 precomparison 근거와 새 구현 관측을 포함해 evidence 디렉터리의 `SHA256SUMS` manifest 19개 항목 모두 `shasum -a 256 -c`에서 일치했다.
+독립 기대값 JSON의 `spinon_unit_test_root_width_px`는 WPT가 containing block 폭을 쓰는 것과 구분해 Spinon 단위 테스트의 60px root 폭을 가리킨다. 기존 precomparison 근거와 새 구현 관측을 포함해 evidence 디렉터리의 `SHA256SUMS` manifest 21개 항목 모두 `shasum -a 256 -c`에서 일치했다.
 
 통과한 test assertions는 다음 경계를 확인한다.
 
