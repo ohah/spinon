@@ -143,7 +143,7 @@ Lynx는 main thread와 background thread에 별도 JavaScript runtime을 둔다.
 - Android·iOS probe는 각 실행의 `document_collection_error`, poisoned 상태와 scanned/live/empty handle 계수를 검사한다. sticky callback 오류, poisoned runtime, 일관되지 않은 계수는 JS eval이 성공해도 전체 probe 실패다.
 - 세션 종료 중 자동 reset된 weak handle, pending host callback, 다른 세션 handle, Rust panic·할당 실패가 다른 노드나 세션을 손상하지 않는다.
 
-S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증, 비용 특성화와 실패 주입이 필요하다. Rust HostDocument·FFI collector와 실제 V8 registry에서 각각 16,385개 입력을 확인했다. Android·iOS의 대량 실행은 16,394개 live wrapper scan, 결과 vector 재확장, 16,385개 sweep과 기준선 복귀를 통과했다. 재시작 7회와 같은 Isolate의 빈 평가 재scan 10회도 실행했으며, [반복 관측 근거](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)에 높은 wall-time과 큰 편차를 기록했다. 이는 완성된 성능 벤치마크가 아니며 CPU time과 스케줄링 지연, release 빌드, 실기기를 분리 측정해야 한다. allocation failure 주입, 비용 특성화, 실기기, listener/external root는 남아 상위 S03.3과 J10은 미완료다.
+S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++ weak handle owner safe-point 연결, Android·iOS의 실제 V8 실행, 반복 resource/closure/shutdown 검증, 비용 특성화와 실패 주입이 필요하다. Rust HostDocument·FFI collector와 실제 V8 registry에서 각각 16,385개 입력을 확인했다. Android·iOS의 대량 실행은 16,394개 live wrapper scan, 결과 vector 재확장, 16,385개 sweep과 기준선 복귀를 통과했다. 재시작 7회와 같은 Isolate의 빈 평가 재scan 10회도 실행했으며, [반복 관측 근거](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)에 높은 wall-time과 큰 편차를 기록했다. 이는 완성된 성능 벤치마크가 아니며 CPU time과 스케줄링 지연, release 빌드, 실기기를 분리 측정해야 한다. 비용 귀속·비교·최적화 후보는 [전용 계획](./s03-3-scan-cost-attribution.md)과 [구현 전 비교 기준](../spec/internal/evidence/s03-scan-cost-attribution-precomparison-2026-10-26/README.md)을 따른다. allocation failure 주입, 비용 특성화, 실기기, listener/external root는 남아 상위 S03.3과 J10은 미완료다.
 
 ## 구현 단계 체크리스트
 
@@ -155,7 +155,7 @@ S03.3 완료에는 Rust core/bridge 실패 경로 fixture, Rust·Bun 검증, C++
 - [x] Android·iOS에서 element·text 32쌍을 만들고 분리·회수하는 시나리오를 6회 실행해 node·UTF-16 string unit·live weak wrapper baseline 복귀와 `scanned = live + empty`를 확인한다. [실행 근거](../spec/internal/evidence/s03-repeat-lifecycle-2026-10-05.md)
 - [x] Rust HostDocument와 C ABI collector가 16,385개 노드·root를 수용하고, 작은 출력 buffer에 대한 무변경 응답 뒤 재시도 성공·전체 회수를 확인한다.
 - [x] Android·iOS 실제 V8에서 16,384개 초과 wrapper 생성·scan·sweep과 C++ root/result vector 동적 확장, `WeakRef` 해제, 자원 기준선 복귀를 검증하고 10회 동일 Isolate 재scan 및 7회 재시작 표본을 기록한다. [대량 실행](../spec/internal/evidence/s03-dynamic-wrapper-registry-2026-10-05.md) · [반복 scan 관측과 한계](../spec/internal/evidence/s03-dynamic-registry-repeat-measurements-2026-10-05.md)
-- [ ] 큰 wall-time 편차의 원인을 CPU time·스케줄러 지연·release 빌드와 분리하고, scan 비용을 줄이는 후보를 같은 생존집합 oracle로 비교한다.
+- [ ] [전용 비용 분석 계획](./s03-3-scan-cost-attribution.md)에 따라 큰 wall-time 편차의 원인을 CPU time·스케줄러 지연·release 빌드와 분리하고, scan 비용을 줄이는 후보를 같은 생존집합 oracle로 비교한다.
 - [ ] C++ 동적 buffer 할당 실패 주입, V8 heap/RSS, 장기 반복과 실기기를 검증한다.
 - [x] Android·iOS 시뮬레이터에서 활성 eval 취소, 대기·종료 뒤 호출 거부, 반복 close와 worker join을 검증한다. [실행 근거](../spec/internal/evidence/s03-shutdown-2026-10-05.md)
 - [ ] DOM EventTarget listener와 cross-heap closure cycle은 J12 명세와 구현에서 별도로 해결한다.
