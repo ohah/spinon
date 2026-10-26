@@ -28,6 +28,6 @@
 | 17 | 남은 공간이 fit-content row에 배정될 수 있음 | stretch 뒤 bases `[10,290]`으로 두 번째 auto row만 커졌음을 확인한다. PASS |
 | 18 | gutter sentinel을 CSS track으로 셀 수 있음 | 두 track과 세 zero-size gutter를 구분하며 양 끝 gutter만 collapsed인지 검사한다. PASS |
 | 19 | trace는 맞지만 frame이 다를 수 있음 | root, 두 wrapper, 두 nested content의 다섯 frame을 `1e-4 CSS px` 허용치로 검사한다. PASS |
-| 20 | test-only 결과를 제품·플랫폼 지원으로 넓혀 쓸 수 있음 | production 코드와 API는 그대로다. stdout, fmt 결과, 18개 manifest entry와 source hashes를 확인했고 WPT/runtime/platform 미검증 경계가 명시돼 있다. PASS |
+| 20 | test-only 결과를 제품·플랫폼 지원으로 넓혀 쓸 수 있음 | production 코드와 API는 그대로다. stdout, fmt 결과, 19개 manifest entry와 source hashes를 확인했고 WPT/runtime/platform 미검증 경계가 명시돼 있다. PASS |
 
 구현 관측은 [implementation-observations.md](./implementation-observations.md), 독립 기대값은 [expected.json](./expected.json), 소스 provenance는 [implementation-source.json](./implementation-source.json)에 있다. `spec/STATUS.md`는 바뀌지 않았으며 C11.4 미완료와 공식 `72/213`이 유지된다.

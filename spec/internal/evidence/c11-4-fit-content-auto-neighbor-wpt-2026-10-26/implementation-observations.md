@@ -15,7 +15,7 @@
 
 `cargo test --locked -p spinon-layout css_grid_2025_fit_content_row_leaves_space_for_neighbor_auto_row`가 기록된 source SHA와 동일한 Rust source에서 `1 passed, 0 failed`로 끝났다. stdout 원본은 [`implementation-test.raw.txt`](./implementation-test.raw.txt)에 있다. `cargo fmt --all -- --check`도 해당 최종 코드에서 exit 0으로 끝났으며 stdout/stderr 원본은 [`implementation-format.raw.txt`](./implementation-format.raw.txt)에 보존했다. 이후 implementation source는 변경하지 않았다.
 
-독립 기대값 JSON의 `spinon_unit_test_root_width_px`는 WPT가 containing block 폭을 쓰는 것과 구분해 Spinon 단위 테스트의 60px root 폭을 가리킨다. 기존 precomparison 근거와 새 구현 관측을 포함해 evidence 디렉터리의 `SHA256SUMS` manifest 18개 항목 모두 `shasum -a 256 -c`에서 일치했다.
+독립 기대값 JSON의 `spinon_unit_test_root_width_px`는 WPT가 containing block 폭을 쓰는 것과 구분해 Spinon 단위 테스트의 60px root 폭을 가리킨다. 기존 precomparison 근거와 새 구현 관측을 포함해 evidence 디렉터리의 `SHA256SUMS` manifest 19개 항목 모두 `shasum -a 256 -c`에서 일치했다.
 
 통과한 test assertions는 다음 경계를 확인한다.
 
@@ -26,4 +26,4 @@
 - 두 CSS rows 사이와 양 끝의 gutter 세 항목을 track과 구별한다. 경계 gutter만 collapsed sentinel이고 세 gutter base는 모두 0px이다.
 - root `(0,0,60,300)`, 첫 direct item `(0,0,60,10)`, 두 번째 `(0,10,60,290)`, nested content frames `(0,0,60,10)` 및 `(0,10,60,10)`을 각각 `1e-4 CSS px` 허용치로 검사한다.
 
-이는 고정된 CSS Grid 2025 CRD/WPT 기대값과 대조하는 단일 Rust 단위 테스트다. WPT testharness, 전체 CSS 적합성, public CSS admission, Android/iOS, simulator, browser runtime은 실행하거나 검증하지 않았다. 전체 C11.4는 미완료이고 `spec/STATUS.md`와 공식 완료 집계 `72/213`은 바꾸지 않았다. 구현 PR을 만들기 전, 계획 20-view와 독립된 새 implementation/runtime 20-view가 남아 있다.
+이는 고정된 CSS Grid 2025 CRD/WPT 기대값과 대조하는 단일 Rust 단위 테스트다. WPT testharness, 전체 CSS 적합성, public CSS admission, Android/iOS, simulator, browser runtime은 실행하거나 검증하지 않았다. 전체 C11.4는 미완료이고 `spec/STATUS.md`와 공식 완료 집계 `72/213`은 바꾸지 않았다. 계획과 분리한 implementation/runtime 20-view는 [implementation-review-20.md](./implementation-review-20.md)에 기록했으며 최종 판정은 20 PASS / 0 PARTIAL / 0 FAIL이다. implementation PR diff review는 이 검토와 별도 gate다.
