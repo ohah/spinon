@@ -5,6 +5,8 @@
 **계획 blob SHA-1:** `ac08230270d78971c561fc9f7001d2ded0019082` · [계획 20관점 검토](../c11-4-image-auto-max-border-overflow-plan-review-2026-10-26/plan-review-20.md)<br>
 **검토 경계:** 정적 코드와 focused Rust test. simulator 동작은 이 판정에 포함하지 않는다.
 
+**후속 상태:** 이 문서는 Android build/AVD runtime 이전의 고정된 구현 검토 기록이다. 이후 PixelCopy scene allowlist 보완과 API 37 AVD 실행은 [별도 검토](./android-pixelcopy-scene-allowlist-review-20.md) 및 [runtime README](../c11-4-image-auto-max-border-overflow-runtime-2026-10-26/README.md)에 기록했다. 아래 미검증 항목은 당시 검토 범위를 가리킨다.
+
 | # | 독립 실패 관점 | 대조 및 판정 |
 |---:|---|---|
 | 1 | 새 fixture가 기본/product feature에 들어가 사용자 표면을 넓힘 | C11.4 image case는 기존 `c11-4-grid-track-sizing-fixture-test` 경계 안이고 FFI adapter는 `c04-runtime-gpu-fixture-test` 경계 안이다. 새 production layout 경로는 추가하지 않았다. 정적 PASS. |

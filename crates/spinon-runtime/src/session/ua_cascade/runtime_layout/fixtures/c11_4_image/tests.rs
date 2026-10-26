@@ -17,7 +17,7 @@ use std::sync::Arc;
 
 #[test]
 fn image_matrix_has_unique_ids_and_bounded_geometry() {
-    assert_eq!(IMAGE_CASES.len(), 21);
+    assert_eq!(IMAGE_CASES.len(), 22);
     let mixed_track_case = IMAGE_CASES
         .iter()
         .find(|case| case.scene_id == "image-auto-max-mixed-tracks")
@@ -50,6 +50,44 @@ fn image_matrix_has_unique_ids_and_bounded_geometry() {
         assert!(case.row_gap.is_finite() && case.row_gap >= 0.0);
         assert!(case.grid_border.is_finite() && case.grid_border >= 0.0);
     }
+}
+
+#[test]
+fn border_overflow_case_is_fixed_and_rejects_borderless_or_content_box_roots() {
+    let case = border_overflow_case();
+    assert_eq!(case.root_id, "c114-image-auto-max-border-overflow-grid");
+    assert_eq!(case.item_id, "c114-image-auto-max-border-overflow-item");
+    assert_eq!(case.grid_width, 12.0);
+    assert_eq!(case.grid_height, 40.0);
+    assert_eq!(case.grid_border, 1.0);
+    assert_eq!(case.column_gap, 5.0);
+    assert_eq!(case.row_gap, 0.0);
+    assert!(matches!(case.placement, super::Placement::Auto));
+    assert!(matches!(case.sizing, super::ImageSizing::Intrinsic));
+    assert!(matches!(case.columns[0], Track::MinMaxAutoMaxContent));
+    assert!(matches!(case.columns[1], Track::Length17));
+    assert_eq!(case.rows.len(), 1);
+    assert!(matches!(case.rows[0], Track::Auto));
+
+    let mut style = mixed_root_style(case);
+    assert!(validate_grid_style(&style, case).is_ok());
+
+    style.layout_border = ComputedLayoutBorder::default();
+    assert_failure(
+        validate_grid_style(&style, case),
+        "unsupported_c114_image_case",
+        "container box geometry",
+    );
+
+    let mut style = mixed_root_style(case);
+    style
+        .properties
+        .insert("box-sizing".to_owned(), "content-box".to_owned());
+    assert_failure(
+        validate_grid_style(&style, case),
+        "unsupported_c114_image_style",
+        "box-sizing expected border-box",
+    );
 }
 
 #[test]
@@ -166,6 +204,13 @@ fn mixed_track_case() -> &'static ImageCase {
         .expect("the auto/max mixed-track scene is registered")
 }
 
+fn border_overflow_case() -> &'static ImageCase {
+    IMAGE_CASES
+        .iter()
+        .find(|case| case.scene_id == "image-auto-max-mixed-tracks-border-overflow")
+        .expect("the auto/max border-overflow scene is registered")
+}
+
 fn mixed_root_style(case: &ImageCase) -> ComputedElementStyle {
     let properties = BTreeMap::from([
         ("display".to_owned(), "grid".to_owned()),
@@ -198,7 +243,12 @@ fn mixed_root_style(case: &ImageCase) -> ComputedElementStyle {
             flex_basis: ComputedCssDimension::Auto,
         },
         spacing(0.0, 0.0, case.row_gap, case.column_gap),
-        ComputedLayoutBorder::default(),
+        ComputedLayoutBorder {
+            top: case.grid_border,
+            right: case.grid_border,
+            bottom: case.grid_border,
+            left: case.grid_border,
+        },
         Some(grid_layout),
         None,
     )

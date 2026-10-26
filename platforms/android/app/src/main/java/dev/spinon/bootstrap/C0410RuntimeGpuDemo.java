@@ -282,6 +282,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "fit-content-percent", "fixed-small-track-overflow",
             "spanning-min-content-items", "min-content-row-image",
             "image-auto-max-mixed-tracks",
+            "image-auto-max-mixed-tracks-border-overflow",
             "competing-span2-forward", "competing-span2-reversed",
             "span2-before-span3", "span3-before-span2",
             "text-span2-forward", "text-span2-reversed",
@@ -1565,6 +1566,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("image-auto-max-mixed-tracks".equals(sceneId)) {
             return "width=100,height=40";
         }
+        if ("image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
+            return "width=12,height=40";
+        }
         if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
             return "width=100,height=20";
         }
@@ -1919,7 +1923,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
-        if ("image-auto-max-mixed-tracks".equals(sceneId)) {
+        if ("image-auto-max-mixed-tracks".equals(sceneId)
+                || "image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
             return "width=24,height=16";
         }
         if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
@@ -2915,6 +2920,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "spanning-min-content-items":
             case "min-content-row-image":
             case "image-auto-max-mixed-tracks":
+            case "image-auto-max-mixed-tracks-border-overflow":
             case "column-auto-natural-ratio":
             case "column-target-max-width-clamp":
             case "row-target-max-height-clamp":
@@ -3234,7 +3240,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114ImageTrackSizingTraceMatches(
             String sceneId, org.json.JSONObject diagnostics
     ) throws org.json.JSONException {
-        if ("image-auto-max-mixed-tracks".equals(sceneId)) {
+        if ("image-auto-max-mixed-tracks".equals(sceneId)
+                || "image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
             return c114ImageAutoMaxMixedTrackTraceMatches(diagnostics);
         }
         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
@@ -4334,6 +4341,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "spanning-min-content-items":
             case "min-content-row-image":
             case "image-auto-max-mixed-tracks":
+            case "image-auto-max-mixed-tracks-border-overflow":
             case "column-auto-natural-ratio":
             case "column-target-max-width-clamp":
             case "row-target-max-height-clamp":
@@ -4345,7 +4353,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "column-transfer-input-capped-by-fixed-row-span":
             case "fixed-gutter-column-suggestion-clamp":
             case "fixed-gutter-row-suggestion-clamp":
-                String imageXy = sceneId.startsWith("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,";
+                String imageXy = sceneId.startsWith("fixed-gutter-")
+                        || "image-auto-max-mixed-tracks-border-overflow".equals(sceneId)
+                        ? "x=1,y=1," : "x=0,y=0,";
                 return "node_frames_css_px=[0:node=1,x=0,y=0," + c114ExpectedRootFrame(sceneId)
                         + ";1:node=2," + imageXy + c114ExpectedItemFrame(sceneId) + "]";
             default:
@@ -7059,6 +7069,34 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if ("image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
+            String rootId = "c114-image-auto-max-border-overflow-grid";
+            String itemId = "c114-image-auto-max-border-overflow-item";
+            String[] expectedIds = {
+                "image-auto-max-overflow-item-box", "image-auto-max-outside-root",
+                "image-auto-max-left-border", "image-auto-max-right-border"
+            };
+            String[] expectedTargets = {itemId, rootId, rootId, rootId};
+            int[][] expectedIndices = {{12, 8}, {26, 8}, {0, 30}, {11, 30}};
+            if (samples.size() != expectedIds.length) return false;
+            boolean[] found = new boolean[expectedIds.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = -1;
+                for (int candidate = 0; candidate < expectedIds.length; candidate++) {
+                    if (expectedIds[candidate].equals(sample.id)) {
+                        index = candidate;
+                        break;
+                    }
+                }
+                if (index < 0 || found[index]
+                        || !expectedTargets[index].equals(sample.targetNodeId)
+                        || sample.xCssPx != expectedIndices[index][0]
+                        || sample.yCssPx != expectedIndices[index][1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             String prefixId = "c114-" + sceneId + "-prefix";
             String primaryId = "c114-" + sceneId + "-primary";
@@ -9404,6 +9442,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "fixed-gutter-row-suggestion-clamp".equals(pixelMatrixSceneId)
                         || c114IsCyclicMinmaxMixedTextImageSpanScene(pixelMatrixSceneId)
                         || c114IsCyclicMinmaxReplacedImageSpanScene(pixelMatrixSceneId)
+                        || "image-auto-max-mixed-tracks".equals(pixelMatrixSceneId)
+                        || "image-auto-max-mixed-tracks-border-overflow".equals(pixelMatrixSceneId)
                         || c114IsImageMultiSpanScene(pixelMatrixSceneId)
                         || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
                         || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
@@ -13059,6 +13099,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        if ("image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
+            switch (sampleId) {
+                case "image-auto-max-overflow-item-box": return new int[] {229, 72, 77};
+                case "image-auto-max-outside-root": return new int[] {0, 0, 0};
+                case "image-auto-max-left-border":
+                case "image-auto-max-right-border": return new int[] {34, 197, 94};
+                default: return new int[] {0, 0, 0};
+            }
+        }
         if (isC114GeneralizedCyclicRowScene(sceneId)) {
             switch (sampleId) {
                 case "generalized-prefix": return new int[] {47, 158, 68};

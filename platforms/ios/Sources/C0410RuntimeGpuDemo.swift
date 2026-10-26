@@ -232,6 +232,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "fit-content-percent", "fixed-small-track-overflow",
     "spanning-min-content-items", "min-content-row-image",
     "image-auto-max-mixed-tracks",
+    "image-auto-max-mixed-tracks-border-overflow",
     "column-auto-natural-ratio", "column-target-max-width-clamp",
     "row-target-max-height-clamp", "column-opposite-min-over-max",
     "column-border-box-transfer", "column-content-box-transfer",
@@ -1108,6 +1109,9 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
+    if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
+        return "width=12,height=40"
+    }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=100,height=20" }
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
@@ -1400,7 +1404,10 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
-    if sceneID == "image-auto-max-mixed-tracks" { return "width=24,height=16" }
+    if sceneID == "image-auto-max-mixed-tracks"
+        || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
+        return "width=24,height=16"
+    }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=20,height=20" }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
         return "width=24,height=24"
@@ -2065,7 +2072,7 @@ private func c114ExpectedImageIntrinsicInputs(_ sceneID: String, report: String)
         "fit-content-below-minimum", "fit-content-above-intrinsic",
         "fit-content-percent", "fixed-small-track-overflow",
         "spanning-min-content-items", "min-content-row-image",
-        "image-auto-max-mixed-tracks",
+        "image-auto-max-mixed-tracks", "image-auto-max-mixed-tracks-border-overflow",
         "column-auto-natural-ratio", "column-target-max-width-clamp",
         "row-target-max-height-clamp",
         "column-opposite-min-over-max", "column-border-box-transfer",
@@ -3630,7 +3637,8 @@ private func c114OrthogonalRowTraceMatches(
 private func c114ImageTrackSizingTraceMatches(
     _ sceneID: String, diagnostics: [String: Any]
 ) -> Bool {
-    if sceneID == "image-auto-max-mixed-tracks" {
+    if sceneID == "image-auto-max-mixed-tracks"
+        || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return c114ImageAutoMaxMixedTrackTraceMatches(diagnostics)
     }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
@@ -4566,7 +4574,7 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "fit-content-below-minimum", "fit-content-above-intrinsic",
          "fit-content-percent", "fixed-small-track-overflow",
          "spanning-min-content-items", "min-content-row-image",
-         "image-auto-max-mixed-tracks",
+         "image-auto-max-mixed-tracks", "image-auto-max-mixed-tracks-border-overflow",
          "column-auto-natural-ratio", "column-target-max-width-clamp",
          "row-target-max-height-clamp", "column-opposite-min-over-max",
          "column-border-box-transfer", "column-content-box-transfer",
@@ -4575,7 +4583,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "column-transfer-input-capped-by-fixed-row-span",
          "fixed-gutter-column-suggestion-clamp",
          "fixed-gutter-row-suggestion-clamp":
-        let itemOrigin = sceneID.hasPrefix("fixed-gutter-") ? "x=1,y=1," : "x=0,y=0,"
+        let itemOrigin = sceneID.hasPrefix("fixed-gutter-")
+            || sceneID == "image-auto-max-mixed-tracks-border-overflow"
+            ? "x=1,y=1," : "x=0,y=0,"
         return "node_frames_css_px=[0:node=1,x=0,y=0,\(c114ExpectedRootFrame(sceneID));"
             + "1:node=2,\(itemOrigin)\(c114ExpectedItemFrame(sceneID))]"
     default:
@@ -6438,6 +6448,20 @@ private struct C111MetalPixelRun {
         return expected
     }
 
+    private static func c114ImageBorderOverflowPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        guard sceneID == "image-auto-max-mixed-tracks-border-overflow" else { return nil }
+        let rootID = "c114-image-auto-max-border-overflow-grid"
+        let itemID = "c114-image-auto-max-border-overflow-item"
+        return [
+            ("image-auto-max-overflow-item-box", itemID, 12, 8, [229, 72, 77, 255]),
+            ("image-auto-max-outside-root", rootID, 26, 8, [0, 0, 0, 255]),
+            ("image-auto-max-left-border", rootID, 0, 30, [34, 197, 94, 255]),
+            ("image-auto-max-right-border", rootID, 11, 30, [34, 197, 94, 255]),
+        ]
+    }
+
     private static func c114CyclicPercentageAutoRepeatPixelSamples(
         _ sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
@@ -6479,6 +6503,16 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = c114ImageBorderOverflowPixelSamples(sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = c114CyclicPercentageAutoRepeatPixelSamples(sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

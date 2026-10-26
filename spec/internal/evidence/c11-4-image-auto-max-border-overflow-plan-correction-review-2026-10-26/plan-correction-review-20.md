@@ -7,6 +7,8 @@
 **원래 계획 검토:** [초기 20관점 PASS](../c11-4-image-auto-max-border-overflow-plan-review-2026-10-26/plan-review-20.md)<br>
 **검토 결과:** 이 변경 범위는 outside-root app sample의 계층 오라클만 교정한다. 아래 20개 확인 결과, 기존 geometry/track/sample mapping과 product renderer 동작을 바꾸지 않는다. 코드 gate 및 C9 재실행은 이 새 계획 blob에 대한 root PASS가 난 뒤 허용한다.
 
+**후속 상태:** 아래 항목은 계획 교정 검토 당시의 판정이다. 승인 후 iOS Simulator와 Android API 37 AVD 재실행을 완료했고, 결과는 [runtime evidence](../c11-4-image-auto-max-border-overflow-runtime-2026-10-26/README.md)에 기록했다.
+
 | # | 적대적으로 확인한 실패 가능성 | 판정 및 근거 |
 |---:|---|---|
 | 1 | 계획 SHA가 새 outside-root 기대값 수정 이후의 blob을 가리키지 않음 | SHA-1 `30922642f0bd8c6763742457699222f20010723e`를 대상 계획의 정확한 blob에서 고정했다. |

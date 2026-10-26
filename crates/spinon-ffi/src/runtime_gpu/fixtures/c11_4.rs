@@ -1114,6 +1114,24 @@ const C11_4_IMAGE_FIXED_GUTTER_SCENES: [ImageSceneWithRowGap; 2] = [
     },
 ];
 
+const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageSceneWithRowGap {
+    scene: ImageScene {
+        scene_id: "image-auto-max-mixed-tracks-border-overflow",
+        root_id: "c114-image-auto-max-border-overflow-grid",
+        item_id: "c114-image-auto-max-border-overflow-item",
+        width: 12,
+        height: 40,
+        columns: "minmax(auto, max-content) 17px",
+        rows: "auto",
+        column_gap: 5,
+        item_placement: "",
+        item_style: "",
+    },
+    row_gap: 0,
+    grid_border: 1,
+    grid_background: "#101820",
+}];
+
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
@@ -1325,6 +1343,17 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
             scene.grid_background,
         )));
     }
+    if let Some(scene) = C11_4_IMAGE_BORDER_OVERFLOW_SCENES
+        .iter()
+        .find(|scene| scene.scene.scene_id == scene_id)
+    {
+        return Ok(Cow::Owned(image_scene_source_with_row_gap(
+            scene.scene,
+            scene.row_gap,
+            scene.grid_border,
+            scene.grid_background,
+        )));
+    }
     Err(format!("알 수 없는 C11.4 scene ID: {scene_id}"))
 }
 
@@ -1377,7 +1406,8 @@ return {{ sceneId:{:?}, rootId:{:?}, nodeIds:[{:?}, {:?}] }};
 mod tests {
     use super::{
         C11_4_AUTO_REPEAT_NEIGHBOR_SCENES, C11_4_GRID_TRACK_SIZING_SCENES,
-        C11_4_IMAGE_FIXED_GUTTER_SCENES, C11_4_IMAGE_TRACK_SCENES, C11_4_PERCENTAGE_GAP_SCENES,
+        C11_4_IMAGE_BORDER_OVERFLOW_SCENES, C11_4_IMAGE_FIXED_GUTTER_SCENES,
+        C11_4_IMAGE_TRACK_SCENES, C11_4_PERCENTAGE_GAP_SCENES,
         c11_4_grid_track_sizing_runtime_source,
     };
 
@@ -2022,6 +2052,7 @@ mod tests {
         assert_eq!(C11_4_AUTO_REPEAT_NEIGHBOR_SCENES.len(), 30);
         assert_eq!(C11_4_IMAGE_TRACK_SCENES.len(), 19);
         assert_eq!(C11_4_IMAGE_FIXED_GUTTER_SCENES.len(), 2);
+        assert_eq!(C11_4_IMAGE_BORDER_OVERFLOW_SCENES.len(), 1);
         assert_eq!(C11_4_PERCENTAGE_GAP_SCENES.len(), 6);
         assert_eq!(
             C11_4_GRID_TRACK_SIZING_SCENES
@@ -2072,6 +2103,17 @@ mod tests {
                 source.contains("grid-column:1 / span 2") || source.contains("grid-row:1 / span 2")
             );
         }
+        let border_overflow =
+            c11_4_grid_track_sizing_runtime_source("image-auto-max-mixed-tracks-border-overflow")
+                .unwrap();
+        assert!(border_overflow.contains("c114-image-auto-max-border-overflow-grid"));
+        assert!(border_overflow.contains("c114-image-auto-max-border-overflow-item"));
+        assert!(border_overflow.contains("width:12px;height:40px"));
+        assert!(border_overflow.contains("border:1px solid #22c55e"));
+        assert!(border_overflow.contains("background-color:#101820"));
+        assert!(border_overflow.contains("grid-template-columns:minmax(auto, max-content) 17px"));
+        assert!(border_overflow.contains("column-gap:5px;row-gap:0px"));
+        assert!(!border_overflow.contains("overflow:"));
         for scene in C11_4_PERCENTAGE_GAP_SCENES {
             let source = c11_4_grid_track_sizing_runtime_source(scene.scene_id).unwrap();
             assert!(source.len() < 4 * 1024);

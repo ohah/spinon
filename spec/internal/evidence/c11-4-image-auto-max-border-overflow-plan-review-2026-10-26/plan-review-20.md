@@ -3,7 +3,7 @@
 **검토 대상 계획 blob:** `plan/c11-4-image-auto-max-border-overflow.md`<br>
 **계획 blob SHA-1:** `ac08230270d78971c561fc9f7001d2ded0019082`<br>
 **기준 source:** `29449e4f794e53255909b58ed8fb2fd4995dd5d2`<br>
-**비교 자료:** [Chrome·규범 사전 비교](../c11-4-image-auto-max-border-overflow-precomparison-2026-10-26/README.md)  
+**비교 자료:** [Chrome·규범 사전 비교](../c11-4-image-auto-max-border-overflow-precomparison-2026-10-26/README.md)<br>
 **검토 시점:** 구현 전. 이 검토는 코드나 simulator runtime 결과를 확인하지 않는다.
 
 | # | 독립 실패 관점 | 계획의 방어 또는 판정 |
