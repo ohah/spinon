@@ -19,13 +19,14 @@
 - 새 incremental snapshot의 모든 요소 및 diagnostics가 같은 현재 문서에 대한 full C19.1 cascade와 정확히 같은지 검사한다. 특히 source color space, component, missing flags, alpha, `converted_srgb`, `gamut_mapped_srgb`, computed background carrier를 비교한다.
 - 기존 API guard를 보존한다. profile 불일치, viewport/environment 불일치, 문서 generation/ revision 경계 위반, 범위 밖 `style_revision`, author stylesheet 입력은 재사용을 거부해 호출자가 full cascade로 돌아가게 한다.
 - cascade 색 계산, gamut mapping, system color palette, paint output, WCAG 계산, hit-test, DOM/CSS 공개 API, simulator 및 GPU 동작은 바꾸지 않는다.
-- `spec/STATUS.md`, 공개 roadmap, C19 완료 판정은 바꾸지 않는다. 작업은 C19.1 cascade cache 경계의 내부 동작만 다룬다.
+- `spec/STATUS.md`의 C19 설명에는 구현 근거 링크만 추가한다. C19 checkbox와 공식 완료 수 `72/213`, 공개 roadmap 및 완료 판정은 바꾸지 않는다. 작업은 C19.1 cascade cache 경계의 내부 동작만 다룬다.
 
 ## 변경 예정 파일
 
 - `crates/spinon-style/src/stylo_dom/cascade/incremental.rs`: C19.1 profile에 기존 property 목록 연결.
 - `crates/spinon-style/src/stylo_dom/cascade/incremental_tests.rs`: dirty subtree, context ancestor, sibling 재사용, full cascade 동등성 및 거부 guard 회귀를 추가.
 - `spec/internal/0068-c19-1-computed-color.md`: C19.1 incremental reuse의 입력 전제와 full cascade fallback 조건 기록.
+- `spec/STATUS.md`: C19 설명에 이 제한 구현의 근거 링크 추가, 체크와 공식 완료 수는 유지.
 - `spec/internal/evidence/c19-1-incremental-color-reuse-2026-10-26/`: 비교 기준, 구현 관점 검토와 실행 결과.
 
 ## 검증 계획
