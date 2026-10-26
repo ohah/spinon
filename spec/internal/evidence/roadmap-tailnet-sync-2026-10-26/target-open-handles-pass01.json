@@ -1,0 +1,97 @@
+{
+  "pass": "pass01",
+  "checked_replacement_targets": 15,
+  "all_replacements_closed": true,
+  "targets": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "public/roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    }
+  ]
+}

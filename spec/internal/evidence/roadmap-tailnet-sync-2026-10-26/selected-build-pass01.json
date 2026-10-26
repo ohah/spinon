@@ -1,0 +1,449 @@
+{
+  "pass": "pass01",
+  "sourceHead": "fb2671fbc81a65d686f8eae2c069cc86298cfdb7",
+  "sourceTree": "50de6ebd3bccf9580f878dc17256196b651d96db",
+  "fullBuildRoot": "build/spinon/roadmap-tailnet-sync-20261026-site-pass01-selected",
+  "selectedOutputRoot": "build/spinon/roadmap-tailnet-sync-20261026-publication-pass01-selected",
+  "generatedRouteCount": 16,
+  "selectedRouteCount": 78,
+  "totalBytes": 17184337,
+  "markers": [
+    [
+      "roadmap.html",
+      [
+        "72/213",
+        "C11.4"
+      ]
+    ],
+    [
+      "STATUS.md",
+      [
+        "C11.4",
+        "72/213"
+      ]
+    ],
+    [
+      "plan/c11-4-grid-track-sizing.html",
+      [
+        "PASS 30/30",
+        "72/213"
+      ]
+    ],
+    [
+      "plan/c11-4-stretch-auto-track-stage-oracle.html",
+      [
+        "definite",
+        "45px",
+        "PASS 30/30"
+      ]
+    ],
+    [
+      "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.html",
+      [
+        "1/1",
+        "PASS 30/30",
+        "72/213"
+      ]
+    ],
+    [
+      "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.html",
+      [
+        "PASS",
+        "9cdf9657"
+      ]
+    ]
+  ],
+  "noDeletes": true,
+  "selectedRoutes": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 718669,
+      "sha256": "bad2220a6868153a58aae06b7a434e2300baa030b5940081def2c23d3fc5ed58"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.html",
+      "bytes": 502636,
+      "sha256": "4617eb2a49875e3037ddb19e13f7b36124e3fcc1af8e539db3f3ba04c29e79a6"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.html",
+      "bytes": 512875,
+      "sha256": "248ff46cf4732ecba47cacd5af3efaef018948d376909a4b26399f48e5867412"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.html",
+      "bytes": 496706,
+      "sha256": "3d8d3353c278847a5faaac2f170a898a3f293f6a08be3dcf063ee3fe9bc843cc"
+    },
+    {
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 680287,
+      "sha256": "7eb139526676559f1c595e96b91a415d11d4c04c8d3568c113921893309a20d9"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 130297,
+      "sha256": "ede5bb231c5a5742d2a9d692ae0e9fcfa13041e06427697c8cf76bc64d72b5fc"
+    },
+    {
+      "path": "plan/c11-4-stretch-auto-track-stage-oracle.html",
+      "bytes": 502004,
+      "sha256": "719d991e767d59e795f5aca03303e080e2f88d888a99734102e5d234a991e6b9"
+    },
+    {
+      "path": "plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "bytes": 6736,
+      "sha256": "e349699ae761ca60001fe12f0556d5a2bfcea6bbed8945e05f720355ea62a889"
+    },
+    {
+      "path": "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.html",
+      "bytes": 505523,
+      "sha256": "e5de8c48d59e128e40db0c5d3c1676d2a5ff6c56c7974eb540bc44fd0b27e042"
+    },
+    {
+      "path": "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "bytes": 4911,
+      "sha256": "f9ad364fe5dea29f538967e91be1943150c0e68073ed04b66f0ec688c44ea780"
+    },
+    {
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 719019,
+      "sha256": "0648262bff952e208d76401b7c06b85ac880390f80bf64d46614873ba887321c"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.html",
+      "bytes": 502646,
+      "sha256": "9a4ea18600030d890a8ec8380e8ec04a47d3dcd0b25286c20659c27a6d68f43c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.html",
+      "bytes": 512885,
+      "sha256": "2c43224213f2d34833f9dfe389094a739a189af10763b36f7b501f3324a3347d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.html",
+      "bytes": 496724,
+      "sha256": "ef70153d4faebb705ec3977a52ba91a470af89b63f6563bc455dbeb593f320d5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 679316,
+      "sha256": "c7aee95c79727a3c90958b519c8c2042e416c24fe742c5dbc143d642bdcf763c"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 130297,
+      "sha256": "ede5bb231c5a5742d2a9d692ae0e9fcfa13041e06427697c8cf76bc64d72b5fc"
+    },
+    {
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-oracle.html",
+      "bytes": 501970,
+      "sha256": "48682ea129ca80bf6f2231fc5f44a7d4106c3e0b7a3a2e4224e228b054aad1aa"
+    },
+    {
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "bytes": 6736,
+      "sha256": "e349699ae761ca60001fe12f0556d5a2bfcea6bbed8945e05f720355ea62a889"
+    },
+    {
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.html",
+      "bytes": 505563,
+      "sha256": "b3a1da0ad6a3b8a3413314cc8e86322478fb723b10f378693e3481e7f0afe4d4"
+    },
+    {
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "bytes": 4911,
+      "sha256": "f9ad364fe5dea29f538967e91be1943150c0e68073ed04b66f0ec688c44ea780"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 1037668,
+      "sha256": "226f9dad7da2ff557fa1b7544e28fbac1a191a19ff09cef667910258ff0b732a"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 451631,
+      "sha256": "8eb0fc8e4d95a3ab28cdd02a4b5935cf93526752d3a7ed5208891e5535d74484"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.35d9a9b293.js",
+      "bytes": 217086,
+      "sha256": "29b0abd89ebcfffa2dbe9d5695eae104d94aba13737321cefc16f9abce8ae2f7"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.47ee96c7a9.js",
+      "bytes": 198081,
+      "sha256": "95adaf859823645294799f34770678dcf26060c50cf280ee25ecd254804ae47a"
+    },
+    {
+      "path": "static/js/async/route-18fa5d1de96d.7561233c2c.js",
+      "bytes": 7586,
+      "sha256": "c8f5c696076ff4da176c410b4ee52630e15b8280af36007d7bf5ec8119fa2e08"
+    },
+    {
+      "path": "static/js/async/route-3e895545197f.3dbd055830.js",
+      "bytes": 7577,
+      "sha256": "5ae89ff39f9f6c2c0163904768784bc72bd309ba753904cdb6f16d0b10926a12"
+    },
+    {
+      "path": "static/js/async/route-48a74c488805.2e7f7cab5d.js",
+      "bytes": 12519,
+      "sha256": "ea4f06ff25722e12d9ff206d1738221ab44222ffed5451231bb2f15e199d4d99"
+    },
+    {
+      "path": "static/js/async/route-620b1c6ebc5c.bf4f92060e.js",
+      "bytes": 12507,
+      "sha256": "5ba0f48778024cb84ba77b97e45ebc046675c168bdeb7b48ecc67b4d5cf89f5f"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.d1e204527d.js",
+      "bytes": 601711,
+      "sha256": "521ea93293675d3ec54b29c602bb7f844f37b769d48a98d22b19e7f6abed3507"
+    },
+    {
+      "path": "static/js/async/route-6c7d03b2233f.82b87d6646.js",
+      "bytes": 8295,
+      "sha256": "ce0a0404325269cff40df7b511a849dc158b947f369df40cf1a6606830001fd2"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.55557db312.js",
+      "bytes": 240658,
+      "sha256": "0ed6511028618e4d88de9d2341ae85205e418ab3af0522c3f97621da018448f1"
+    },
+    {
+      "path": "static/js/async/route-7b6c7c9c017f.231014fbe0.js",
+      "bytes": 12627,
+      "sha256": "728c3f08f590f5f917e13eed84cc37803d88d3afdbd0b93370c997dff57b244a"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.1557801ea5.js",
+      "bytes": 602573,
+      "sha256": "591f5c35ac2ac76dd4315d99c0c5e70b603c91b90423f24bed22adf0d2a29655"
+    },
+    {
+      "path": "static/js/async/route-824a35fd7c8d.43ca8ff70d.js",
+      "bytes": 12633,
+      "sha256": "8264e00fdae59c635da555a51e61bb57bbe3dd607801b64b5d09fb498b2bb9ae"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.8c6fa1706f.js",
+      "bytes": 197979,
+      "sha256": "43cddf86a26ee4125300e3389e22bf7db27318e14988689ddb4760d98dfb33e1"
+    },
+    {
+      "path": "static/js/async/route-bdfde5f4c2f3.ff4b24ea30.js",
+      "bytes": 8287,
+      "sha256": "486375297d5639c8e981f02b6ba30a8cd73ed16bcf4c645d8ea1858e72d150fa"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.748aa51638.js",
+      "bytes": 240464,
+      "sha256": "3d1a86aeba6c9dfc46e6399678abe7beb95ffe52389c53c795240073baaaea53"
+    },
+    {
+      "path": "static/js/async/route-c7c8871636ae.6b29fd82ec.js",
+      "bytes": 9466,
+      "sha256": "406b01669dbb813ca832d0cd37d8bad0e37003b5b7e87b0210fb84c328f82b1c"
+    },
+    {
+      "path": "static/js/async/route-ee658ff29636.016986fe3d.js",
+      "bytes": 9478,
+      "sha256": "a67060510ec02539322e45554b30372931f1f586964d3d797b592cc4be1bc5d8"
+    },
+    {
+      "path": "static/js/index.ffddf464e9.js",
+      "bytes": 1657672,
+      "sha256": "936d1d24c705894e65267055b0eb7d35813d3485c35380cb67295934224301a1"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/styles.d1b89531e2.js",
+      "bytes": 473,
+      "sha256": "55c22f8920d663c08c338e6c2a852c87fe3763156d2b5275db6b23a15c23d443"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 1035938,
+      "sha256": "e9c02e22eaef19caf3dbaa05d44899362dae7fe602c115c0881142dce8fff14a"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 451631,
+      "sha256": "8eb0fc8e4d95a3ab28cdd02a4b5935cf93526752d3a7ed5208891e5535d74484"
+    }
+  ]
+}

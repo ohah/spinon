@@ -1,0 +1,264 @@
+{
+  "pass": "pass01",
+  "sourceHead": "fb2671fbc81a65d686f8eae2c069cc86298cfdb7",
+  "sourceTree": "50de6ebd3bccf9580f878dc17256196b651d96db",
+  "checkoutHead": "4c43a5d8208b63b2fd9b4c0b69b039e7920a12d9",
+  "checkoutTree": "50de6ebd3bccf9580f878dc17256196b651d96db",
+  "baseRoot": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-20261025-root-pass08-corrected-selected",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-20261026-root-pass01-selected",
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-20261026-site-pass01-selected",
+  "sourceFiles": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "spec/internal/0059-c11-grid-layout.md",
+    "plan/c11-4-grid-track-sizing.md",
+    "plan/c11-4-stretch-auto-track-stage-oracle.md",
+    "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+    "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md"
+  ],
+  "overlayCount": 39,
+  "overlayBytes": 2887914,
+  "baseStorage": "이전 pass08-corrected root의 읽기 전용 hardlink 복사본이며 overlay는 새 경로만 교체한다",
+  "noDeletes": true,
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 451631,
+      "sha256": "8eb0fc8e4d95a3ab28cdd02a4b5935cf93526752d3a7ed5208891e5535d74484"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 451631,
+      "sha256": "8eb0fc8e4d95a3ab28cdd02a4b5935cf93526752d3a7ed5208891e5535d74484"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 323068,
+      "sha256": "1110cfcd8da84ae1538e0c7ab27bf299240809dee033681e03655550928efbed"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 167905,
+      "sha256": "0ac8bab9fb463abb8fc671e0458a3b9bf30a90829bb1f7ce40d896911d0c49c1"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 130297,
+      "sha256": "ede5bb231c5a5742d2a9d692ae0e9fcfa13041e06427697c8cf76bc64d72b5fc"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 130297,
+      "sha256": "ede5bb231c5a5742d2a9d692ae0e9fcfa13041e06427697c8cf76bc64d72b5fc"
+    },
+    {
+      "source": "plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "path": "plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "bytes": 6736,
+      "sha256": "e349699ae761ca60001fe12f0556d5a2bfcea6bbed8945e05f720355ea62a889"
+    },
+    {
+      "source": "plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-oracle.md",
+      "bytes": 6736,
+      "sha256": "e349699ae761ca60001fe12f0556d5a2bfcea6bbed8945e05f720355ea62a889"
+    },
+    {
+      "source": "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "path": "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "bytes": 4911,
+      "sha256": "f9ad364fe5dea29f538967e91be1943150c0e68073ed04b66f0ec688c44ea780"
+    },
+    {
+      "source": "plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "path": "spec/plan/c11-4-stretch-auto-track-stage-plan-review-20-2026-10-26.md",
+      "bytes": 4911,
+      "sha256": "f9ad364fe5dea29f538967e91be1943150c0e68073ed04b66f0ec688c44ea780"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md",
+      "bytes": 3180,
+      "sha256": "c1727fdbe1db5558e9322a69d8f7f53c3ab02d3168e7f4f84d23703cc6549496"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/focused-test.log",
+      "bytes": 519,
+      "sha256": "abc9694a3ce92c7eb7ae2c7ec8d56a0fa5c6254afa29d3c9d5e7e2f648a064bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/clippy.log",
+      "bytes": 195,
+      "sha256": "c5501e05d0f99ecd945d4b0e85b28eeaaa352760aa55194858e48a7dd85463e6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md",
+      "bytes": 3899,
+      "sha256": "9a9f9cc1c34ddf0d99b113a2ccecfb552e5cbae66edbdad92335b821a3519ecd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "path": "public/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/pr-diff-review-30.md",
+      "bytes": 7192,
+      "sha256": "ca0b9003856415980884936cb59550f9074863c3fae245d3ee16ad5f6655e6a1"
+    }
+  ]
+}
