@@ -40,6 +40,8 @@ Agent Browser CLI `0.31.1`의 전용 세션에서 Headless Chrome `156.0.8078.48
 
 ![Chrome 156 Agent Browser에서 본 fit-content row 옆 auto row 사전 관측](./chrome156-fit-content-auto-neighbor.png)
 
+PR 본문 screenshot URL은 삭제 가능한 branch ref 대신 immutable commit permalink를 사용한다. URL과 PR 본문 렌더 확인 기록은 `pr-body-image-url-check.json`에 있으며 Agent Browser HTTP 200, 1280×1000 이미지 load, PR 본문 표시를 기록한다.
+
 Agent Browser에서 pinned WPT 원본 파일도 `file://`로 열어 선택된 DOM의 CSSOM/frame을 읽었다. 그 결과 `gridTemplateRows="10px 290px"`, 두 item의 높이는 `10px`, `290px`이었다. 원본 DOM 출력은 `wpt-source-chrome156-observation.raw.json`에 보존했다. 하지만 WPT의 `/resources/testharness.js` 및 `/resources/testharnessreport.js`는 `file:///resources/...`로 해석되어 이 페이지에서 로드되지 않았다. 요청은 `wpt-source-network-requests.raw.txt`에 남겼다. 따라서 이 관측은 브라우저의 선택 DOM CSSOM/frame 기록이며 **testharness 실행이나 WPT PASS가 아니다**. C11.4 계획에서도 Spinon WPT 적합성은 미검증으로 둔다.
 
 ## 기존 코드와 제안 테스트 경계

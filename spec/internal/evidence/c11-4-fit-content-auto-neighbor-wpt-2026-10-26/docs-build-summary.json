@@ -21,5 +21,23 @@
     "unique_existing_evidence_files_in_import_traces": 570,
     "mentions_of_new_precomparison_readme": 0,
     "result": "The full-root documentation build still fails on existing dead-link diagnostics in other evidence pages. The updated plan, precomparison README, and plan review did not appear in the diagnostic file traces; this is not a docs build pass."
+  },
+  "attempts": [
+    {
+      "command": "mise exec -- bun run docs:build",
+      "exit_code": 1,
+      "raw_log": "/tmp/spinon-fit-content-auto-neighbor-docs-build-final-pre-review-20261026.log",
+      "finding": "A new dead link appeared after the PR image-check JSON was linked as Markdown: ./pr-body-image-url-check.json resolved to a nonexistent .json.html route.",
+      "correction": "Replaced that relative Markdown link with inline code; the artifact remains named in the README."
+    }
+  ],
+  "latest_recheck_after_inline_code_correction": {
+    "command": "mise exec -- bun run docs:build",
+    "exit_code": 1,
+    "raw_log": "/tmp/spinon-fit-content-auto-neighbor-docs-build-after-inline-fix-20261026.log",
+    "dead_link_error_blocks_in_raw_log": 743,
+    "unique_evidence_files_in_import_traces": 542,
+    "new_evidence_file_diagnostics": 0,
+    "result": "The full-root build still fails on dead-link diagnostics in other existing evidence pages. After converting the PR image-check JSON reference to inline code, the new plan/evidence pages have no dead-link diagnostics. This is not a docs build pass."
   }
 }
