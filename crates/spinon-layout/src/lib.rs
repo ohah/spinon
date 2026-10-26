@@ -658,6 +658,8 @@ mod grid_nested_intrinsic_tests;
 #[path = "grid_nested_replaced_intrinsic_tests.rs"]
 mod grid_nested_replaced_intrinsic_tests;
 #[cfg(test)]
+mod grid_stretch_auto_tracks_oracle_tests;
+#[cfg(test)]
 #[path = "intrinsic_size_tests.rs"]
 mod intrinsic_size_tests;
 #[cfg(test)]

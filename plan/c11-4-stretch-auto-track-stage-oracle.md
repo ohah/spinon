@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 전 계획 후보. CSS Grid 2025 CRD §11.8의 auto-track stretch 결과를 독립 계산으로 고정하고 Rust trace snapshot에서 확인한다. 계획 실패 관점 20개 검토가 끝나기 전에는 구현하지 않는다. 생산 코드, FFI, 플랫폼 host, 공식 완료 상태는 변경하지 않는다.
+**상태:** 테스트 전용 구현과 새 실패 관점 20개 검토를 완료했다. 계획 검토는 PASS 20/20, 구현 검토는 PASS 20/20이다. focused Rust test 1/1, `cargo fmt`와 `spinon-layout` all-target Clippy `-D warnings`가 통과했다. PR diff 30관점 검토와 병합은 남아 있다. [실행 근거](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md). 생산 코드, FFI, 플랫폼 host, 공식 완료 상태는 변경하지 않는다.
 
 ## 목적과 경계
 
@@ -42,6 +42,8 @@ Negative root frame은 `(0,0,20,100)`이고 child frames는 `(0,0,20,10)`, `(0,2
 2. 구현 뒤 전용 Rust test, `cargo fmt --all -- --check`, `spinon-layout` targeted Clippy `-D warnings`, `git diff --check`를 실행하고 각 결과를 로그로 보존한다. 실행하지 않은 wider workspace checks는 통과로 보고하지 않는다.
 3. 계획과 다른 새로운 관점의 구현/runtime 검토 20개를 완료하고, PR diff는 별도 30관점으로 확인한 뒤 Rebase and merge한다.
 4. 변경은 `spec/STATUS.md`의 C11.4 checkbox나 공식 완료 집계 `72/213`을 올리지 않는다. C11.4 전체 지원, WPT 적합성 및 플랫폼 runtime parity를 주장하지 않는다.
+
+Focused test와 formatter/Clippy 결과 및 [구현 검토 20개](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/implementation-review-20.md)는 [실행 근거](../spec/internal/evidence/c11-4-stretch-auto-track-stage-oracle-2026-10-26/README.md)에 연결한다. PR diff 검토와 병합은 아직 남아 있다.
 
 ## 남은 범위
 

@@ -1,0 +1,8 @@
+   Compiling spinon-layout v0.1.0 (/private/tmp/spinon-c11-4-image-auto-max-border-overflow-20261026/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 2.91s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 1 test
+test grid_stretch_auto_tracks_oracle_tests::css_grid_2025_stretch_auto_tracks_distributes_definite_free_space_equally ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 275 filtered out; finished in 0.00s
