@@ -14,7 +14,7 @@
   },
   "alignment": {
     "align_content": "normal",
-    "justify_content": "start"
+    "justify_content": "flex-start"
   },
   "grid": {
     "columns": ["20px"],

@@ -10,7 +10,7 @@
 
 - Root 및 viewport: definite `20×100px`, `RootSizingPolicy::Match`, border/padding `0`.
 - Grid: 한 개의 `20px` column, rows `[auto, auto, 5px]`, `row-gap:10px`, `column-gap:0`.
-- Alignment: `align-content:normal`, `justify-content:start`.
+- Alignment: `align-content:normal`, `justify-content:flex-start` (`LayoutJustifyContent::FlexStart`, 기존 `input` helper와 동일).
 - Items: DOM 순서대로 한 행에 하나씩 놓인 direct block child 세 개, definite heights `[10,20,5]px`, width `20px`.
 - Stage trace: `GridPlacementMode::TrackSizing`.
 
