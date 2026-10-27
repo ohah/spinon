@@ -43,12 +43,29 @@ pub(crate) fn grid_track_sizing_trace_report(
             .item_inputs
             .iter()
             .any(|input| input.revision != diagnostics.revision)
-        || diagnostics
+        || diagnostics.item_text_layouts.iter().any(|text_layout| {
+            !text_layout_revision_matches(text_layout.revision, diagnostics.revision)
+        })
+    {
+        let measurement_revisions = diagnostics
+            .intrinsic_measurements
+            .iter()
+            .map(|measurement| measurement.revision)
+            .collect::<Vec<_>>();
+        let item_revisions = diagnostics
+            .item_inputs
+            .iter()
+            .map(|input| input.revision)
+            .collect::<Vec<_>>();
+        let text_layout_revisions = diagnostics
             .item_text_layouts
             .iter()
-            .any(|text_layout| text_layout.revision != diagnostics.revision)
-    {
-        return Err("C11.4 intrinsic input revision이 trace revision과 다릅니다".to_owned());
+            .map(|text_layout| text_layout.revision)
+            .collect::<Vec<_>>();
+        return Err(format!(
+            "C11.4 intrinsic input revision이 trace revision과 다릅니다: trace={:?}, measurements={measurement_revisions:?}, items={item_revisions:?}, text_layouts={text_layout_revisions:?}",
+            diagnostics.revision
+        ));
     }
     validate_orthogonal_registry_identity(diagnostics)?;
     let item_frame_by_node = diagnostics
@@ -251,6 +268,15 @@ pub(crate) fn grid_track_sizing_trace_report(
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+}
+
+fn text_layout_revision_matches(
+    text_layout: spinon_layout::LayoutInputRevision,
+    diagnostics: spinon_layout::LayoutInputRevision,
+) -> bool {
+    text_layout.source() == diagnostics.source()
+        && text_layout.style() == diagnostics.style()
+        && text_layout.environment() == diagnostics.environment()
 }
 
 fn axis_contribution_json(
@@ -554,10 +580,11 @@ fn resolved_axis_json(
 mod tests {
     use super::{
         OrthogonalTextSourceFields, grid_track_sizing_trace_report, orthogonal_text_source_json,
-        track_trace_json,
+        text_layout_revision_matches, track_trace_json,
     };
     use spinon_core::{
-        EnvironmentRevision, NodeId, Revision, StyleRevision, TextOrientation, WritingMode,
+        EnvironmentRevision, IntrinsicSizeRevision, NodeId, Revision, StyleRevision,
+        TextOrientation, WritingMode,
     };
     use spinon_layout::{
         FontStyleMode, LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
@@ -578,6 +605,41 @@ mod tests {
     use std::sync::Arc;
 
     const AHEM: &[u8] = include_bytes!("../../../../../../tests/fixtures/resources/c15/Ahem.ttf");
+
+    #[test]
+    fn text_layout_revision_ignores_only_replaced_intrinsic_size_revision() {
+        let source = LayoutSourceRevision::Tree(Revision::default());
+        let text_revision =
+            LayoutInputRevision::new(source, StyleRevision::INITIAL, EnvironmentRevision::INITIAL);
+        let mixed_trace_revision = text_revision
+            .with_intrinsic_size_revision(IntrinsicSizeRevision::INITIAL.checked_next().unwrap());
+        assert!(text_layout_revision_matches(
+            text_revision,
+            mixed_trace_revision
+        ));
+
+        let changed_style_revision = LayoutInputRevision::new(
+            source,
+            StyleRevision::INITIAL.checked_next().unwrap(),
+            EnvironmentRevision::INITIAL,
+        )
+        .with_intrinsic_size_revision(IntrinsicSizeRevision::INITIAL.checked_next().unwrap());
+        assert!(!text_layout_revision_matches(
+            text_revision,
+            changed_style_revision
+        ));
+
+        let changed_environment_revision = LayoutInputRevision::new(
+            source,
+            StyleRevision::INITIAL,
+            EnvironmentRevision::INITIAL.checked_next().unwrap(),
+        )
+        .with_intrinsic_size_revision(IntrinsicSizeRevision::INITIAL.checked_next().unwrap());
+        assert!(!text_layout_revision_matches(
+            text_revision,
+            changed_environment_revision
+        ));
+    }
 
     #[test]
     fn reports_orthogonal_text_logical_intrinsics_and_writing_styles() {

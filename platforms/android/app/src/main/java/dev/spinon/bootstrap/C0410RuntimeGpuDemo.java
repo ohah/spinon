@@ -273,6 +273,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "definite-minmax-calc-two-axis-span-text-max-content",
             "direct-min-content-forward", "direct-min-content-reversed",
             "direct-max-content-forward", "direct-max-content-reversed",
+            "direct-min-content-generic-forward", "direct-min-content-generic-reversed",
+            "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
             "direct-row-min-content-forward", "direct-row-min-content-reversed",
             "direct-row-max-content-forward", "direct-row-max-content-reversed",
             "direct-orthogonal-row-min-content-forward",
@@ -6686,7 +6688,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "direct-min-content-forward".equals(sceneId)
                 || "direct-min-content-reversed".equals(sceneId)
                 || "direct-max-content-forward".equals(sceneId)
-                || "direct-max-content-reversed".equals(sceneId);
+                || "direct-max-content-reversed".equals(sceneId)
+                || "direct-min-content-generic-forward".equals(sceneId)
+                || "direct-min-content-generic-reversed".equals(sceneId)
+                || "direct-max-content-generic-forward".equals(sceneId)
+                || "direct-max-content-generic-reversed".equals(sceneId);
     }
 
     private static boolean c114IsDirectMixedTextImageIntrinsicRowScene(String sceneId) {
@@ -6747,21 +6753,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[][] textMetrics;
         switch (sceneId) {
             case "direct-min-content-forward":
+            case "direct-min-content-generic-forward":
                 nodes = new int[] {2, 4};
                 kinds = new String[] {"text", "replaced"};
                 textMetrics = new int[][] {{50, 20, 80, 10}, null};
                 break;
             case "direct-min-content-reversed":
+            case "direct-min-content-generic-reversed":
                 nodes = new int[] {2, 3};
                 kinds = new String[] {"replaced", "text"};
                 textMetrics = new int[][] {null, {50, 20, 80, 10}};
                 break;
             case "direct-max-content-forward":
+            case "direct-max-content-generic-forward":
                 nodes = new int[] {2, 4};
                 kinds = new String[] {"text", "replaced"};
                 textMetrics = new int[][] {{50, 20, 80, 10}, null};
                 break;
             case "direct-max-content-reversed":
+            case "direct-max-content-generic-reversed":
                 nodes = new int[] {2, 3};
                 kinds = new String[] {"replaced", "text"};
                 textMetrics = new int[][] {null, {50, 20, 80, 10}};

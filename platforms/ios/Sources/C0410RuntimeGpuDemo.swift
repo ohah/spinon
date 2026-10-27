@@ -395,6 +395,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "definite-minmax-calc-mixed-text-image-span-reverse",
     "direct-min-content-forward", "direct-min-content-reversed",
     "direct-max-content-forward", "direct-max-content-reversed",
+    "direct-min-content-generic-forward", "direct-min-content-generic-reversed",
+    "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
     "direct-row-min-content-forward", "direct-row-min-content-reversed",
     "direct-row-max-content-forward", "direct-row-max-content-reversed",
     "max-content-forward", "max-content-reverse",
@@ -595,6 +597,8 @@ private let c114CyclicMinmaxMixedTextImageSpanSceneIDs: Set<String> = [
 private let c114DirectMixedTextImageIntrinsicSceneIDs: Set<String> = [
     "direct-min-content-forward", "direct-min-content-reversed",
     "direct-max-content-forward", "direct-max-content-reversed",
+    "direct-min-content-generic-forward", "direct-min-content-generic-reversed",
+    "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
     "direct-row-min-content-forward", "direct-row-min-content-reversed",
     "direct-row-max-content-forward", "direct-row-max-content-reversed",
 ]

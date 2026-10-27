@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [direct text/image fixed-scene slice](./c11-4-mixed-direct-text-image-intrinsic.md) · [generic direct-text collector](./c11-4-generic-direct-text-intrinsic-input.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획. 현재 mixed adapter는 span, direct column, direct row scene을 고정 root/item ID로 dispatch한다. 이 계획은 그중 네 direct column 입력과 같은 제한 HTML/CSS를 새로운 HostNode ID로 구성해도 opt-in fixture adapter가 source와 computed style로 혼합 입력을 식별하고 fail-closed하는지 확인한다. 제품 CSS admission을 넓히거나 C11.4 완료를 뜻하지 않는다.
+**상태:** 제한 opt-in runtime fixture 구현 및 Android/iOS Simulator 검증 완료. 현재 mixed adapter는 span, direct column, direct row scene을 고정 root/item ID로 dispatch한다. 이 slice는 그중 네 direct column 입력과 같은 제한 HTML/CSS를 새로운 HostNode ID로 구성해도 opt-in fixture adapter가 source와 computed style로 혼합 입력을 식별하고 fail-closed하는지 확인했다. 제품 CSS admission이나 C11.4 완료를 뜻하지 않는다. [구현·실행·화면 근거](../spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md).
 
 ## 확인된 경계와 목표
 
@@ -44,7 +44,7 @@ Adapter와 추가 FFI scene route는 `c11-4-grid-track-sizing-fixture-test` feat
 3. 새 root/item ID를 사용하는 네 order/track 장면의 Rust positive test를 추가한다. text 변경, image source 오류/누락, nested/non-leaf source, 추가 child, track/placement/box edge 불일치, profile 불일치, stale snapshot/style revision을 거부하는 negative control도 추가한다. 거부 경로가 partial mixed input을 반환하지 않는지 확인한다. legacy one-item fallback과 두 text item + image 거부가 유지되는 직접 regression test도 보존한다.
 4. 서로 다른 route ID와 HostNode ID를 갖는 opt-in FFI runtime route 네 개를 추가하고 Android/iOS strict matcher에 연결한다. source order, node identity, image natural-size input, text intrinsic input, 단일 revision의 축별 trace, track, frame, draw/present marker를 비교한다. 화면 캡처만으로 glyph 또는 PNG pixel 결과를 주장하지 않는다.
 5. focused Rust/FFI 검사, formatter, 필요한 feature-specific lint, 기본/fixture artifact 경계 검사를 실행하고 네 scene을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 실행한다. 정확한 source commit, APK/app bundle hash, log, screenshot을 기록하고 직접 실행한 앱 process만 종료한다.
-6. 서로 다른 실패 관점 20개의 새로운 구현/runtime 검토와 별도의 실제 PR diff 20관점 검토를 완료한다. blocker를 수정하면 영향받은 관점을 재검토한다. 가능한 경우 대표 Android/iOS screenshot을 PR 본문에 넣고 Agent Browser로 각 이미지가 열리는지 확인한 뒤 이번에 연 Agent Browser session/process를 종료한다. Terminal Browser는 사용하지 않는다.
+6. 서로 다른 실패 관점 20개의 새로운 구현/runtime 검토와 별도의 실제 PR diff 30관점 검토를 완료한다. blocker를 수정하면 영향받은 관점을 재검토한다. 가능한 경우 대표 Android/iOS screenshot을 PR 본문에 넣고 Agent Browser로 각 이미지가 열리는지 확인한 뒤 이번에 연 Agent Browser session/process를 종료한다. Terminal Browser는 사용하지 않는다.
 7. PR checks와 merge 상태를 다시 확인한다. GitHub check rollup이 비어 있으면 CI 통과로 기록하지 않는다. Rebase and merge한 뒤 실제 merge SHA에 맞춰 `spec/STATUS.md`, 공개 roadmap과 evidence를 조정한다. C11.4 checkbox는 미완료로 두고 공식 완료 수 `72/213`을 유지한다.
 
 ## 명시적 제외
@@ -55,3 +55,5 @@ Adapter와 추가 FFI scene route는 `c11-4-grid-track-sizing-fixture-test` feat
 
 - 구현 전 서로 다른 실패 관점 20개: [계획 검토](./c11-4-generic-mixed-direct-text-image-intrinsic-plan-review-20.md).
 - 계획 PR의 실제 변경 diff 검토 20개: [PR diff 검토](./c11-4-generic-mixed-direct-text-image-intrinsic-plan-pr-diff-review-20.md).
+- 최종 구현/runtime 실패 관점 20개: [구현/runtime review](../spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/implementation-runtime-review-20.md).
+- 최종 구현 PR diff 실패 관점 30개: [PR diff review](../spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/pr-diff-review-30.md).
