@@ -1,0 +1,18 @@
+{
+  "session": "spinon-roadmap-pr718-20261028",
+  "closeCommandResults": [
+    "Browser closed",
+    "Browser closed"
+  ],
+  "sessionListAfterClose": {
+    "success": true,
+    "data": {
+      "sessions": []
+    }
+  },
+  "reportedPidAfterClose": 58992,
+  "reportedPidStillRunning": false,
+  "agentBrowserSessionProcessesFound": [],
+  "chromeRemoteDebuggingProcessesFound": [],
+  "conclusion": "isolated browser session closed; no browser process remained"
+}

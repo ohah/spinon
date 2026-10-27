@@ -1,0 +1,67 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 147 ms.
+ready   built in 1.39s (node)
+ready   built in 1.39s (web)
+
+File (web)                                                                                               Size        Gzip
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-a48746cae70c.c0a74acca6.js   0.92 kB     0.52 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-f52984fef6d6.fd57694b49.js   6.2 kB      2.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-f437a1c3354c.bbb2c62b7b.js   6.2 kB      2.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-e6094756cc84.94a9e05a3f.js   9.5 kB      3.0 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-6efd9d39987e.4301e6d5ee.js   9.5 kB      3.0 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-393b5eebf0fb.2c5bd3ee97.js   10.9 kB     3.3 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-651201ab5186.ab8c94fbf2.js   10.9 kB     3.3 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-60344a57c28d.03b280414c.js   11.1 kB     3.5 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-a769d8c65e5f.ba7ad1182a.js   11.1 kB     3.5 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-5c39decdb6d7.1c2a2faefa.js   11.4 kB     3.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-347937ac41f7.a18bf1b15e.js   11.4 kB     3.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-ed9186ad4ada.390e042681.js   12.4 kB     3.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-334343ea6d19.aecabe45d5.js   12.5 kB     3.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-b24f089da099.860cff637b.js   13.0 kB     3.8 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-0f33b47bd3fe.9a97b2469a.js   13.0 kB     3.8 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-fbd7fc86a3db.174353fa9f.js   16.4 kB     5.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-d479c22635e3.0f09ded8aa.js   16.4 kB     5.3 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/index.33f66978cf.js                      68.3 kB     13.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-04cbcabea10a.8aefa05e6e.js   230.2 kB    49.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-b7ce154f07b0.7316b2ff56.js   230.2 kB    49.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-6c33a3943990.c90e2dfd93.js   634.3 kB    138.3 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/js/async/route-7ce2535ac56d.2e4cd307da.js   634.3 kB    138.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/static/search_index.ko.db71895a.json               1070.1 kB   322.8 kB
+
+                                                                                                Total:   3596.3 kB   937.2 kB
+
+File (node)                                                                                                                                                               Size        Gzip
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/404.html                                                                                                            8.5 kB      2.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/index.html                                                                                                          25.8 kB     4.0 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.html                                     31.3 kB     5.7 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.html                                31.4 kB     5.7 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.html                   33.4 kB     6.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.html              33.4 kB     6.4 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.html        34.1 kB     6.7 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.html   34.1 kB     6.7 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/plan/c11-4-flex-stage-oracle-plan-review-20.html                                                                    34.7 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/plan/c11-4-flex-stage-oracle-plan-review-20.html                                                               34.7 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.html                          35.1 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.html                     35.1 kB     6.9 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/plan/c11-4-flex-stage-oracle-pr-diff-review-30.html                                                                 35.9 kB     7.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/plan/c11-4-flex-stage-oracle-pr-diff-review-30.html                                                            35.9 kB     7.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.html                                      36.7 kB     7.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.html                                 36.7 kB     7.2 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/plan/c11-4-flex-stage-oracle.html                                                                              41.5 kB     8.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/plan/c11-4-flex-stage-oracle.html                                                                                   41.5 kB     8.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/plan/c11-4-grid-track-sizing.html                                                                              245.1 kB    52.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/plan/c11-4-grid-track-sizing.html                                                                                   245.2 kB    52.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/STATUS.html                                                                                                         599.3 kB    139.6 kB
+build/spinon/roadmap-tailnet-sync-pr718-site-selected/spec/STATUS.html                                                                                                    599.8 kB    139.7 kB
+
+                                                                                                                                                                 Total:   2289.3 kB   502.3 kB
