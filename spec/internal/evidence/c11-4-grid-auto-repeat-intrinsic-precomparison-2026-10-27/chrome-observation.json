@@ -1,0 +1,734 @@
+{
+  "title": "CSS Grid: auto repeat computation for intrinsic sizes.",
+  "url": "http://127.0.0.1:8769/css/css-grid/grid-definition/grid-auto-repeat-intrinsic-001.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "harnessText": "Summary\n\nHarness status: OK\n\nRerun\n\nFound 8 tests\n\n8 Pass\nDetails\nResult\tTest Name\tMessage\nPass\t.grid 1\t\nAsserts run\n\nPass\t.grid 2\t\nAsserts run\n\nPass\t.grid 3\t\nAsserts run\n\nPass\t.grid 4\t\nAsserts run\n\nPass\t.grid 5\t\nAsserts run\n\nPass\t.grid 6\t\nAsserts run\n\nPass\t.grid 7\t\nAsserts run\n\nPass\t.grid 8\t\nAsserts run",
+  "gridCount": 8,
+  "rows": [
+    {
+      "case": 1,
+      "className": "grid gridAutoFillFixed paddingTop max-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 8,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "20px 20px 20px 40px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 40,
+            "y": 0
+          },
+          "observed": {
+            "x": 40,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 40,
+            "height": 5,
+            "x": 60,
+            "y": 0
+          },
+          "observed": {
+            "x": 60,
+            "y": 0,
+            "width": 40,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 2,
+      "className": "grid gridAutoFillFixed paddingTop min-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 42,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "20px 20px 20px 40px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 40,
+            "y": 0
+          },
+          "observed": {
+            "x": 40,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 40,
+            "height": 5,
+            "x": 60,
+            "y": 0
+          },
+          "observed": {
+            "x": 60,
+            "y": 0,
+            "width": 40,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 3,
+      "className": "grid gridAutoFillAuto paddingTop max-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 76,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "10px 10px 10px 10px 60px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 10,
+            "y": 0
+          },
+          "observed": {
+            "x": 10,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 30,
+            "y": 0
+          },
+          "observed": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 4,
+      "className": "grid gridAutoFillAuto paddingTop min-content",
+      "expectedRootWidth": 74,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 110,
+        "width": 74,
+        "height": 34
+      },
+      "computedColumns": "10px 60px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 60,
+            "height": 5,
+            "x": 10,
+            "y": 0
+          },
+          "observed": {
+            "x": 10,
+            "y": 0,
+            "width": 60,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 0,
+            "height": 5,
+            "x": 70,
+            "y": 0
+          },
+          "observed": {
+            "x": 70,
+            "y": 0,
+            "width": 0,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 70,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 70,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 5,
+      "className": "grid gridAutoFitFixed paddingTop max-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 144,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "20px 20px 20px 40px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 40,
+            "y": 0
+          },
+          "observed": {
+            "x": 40,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 40,
+            "height": 5,
+            "x": 60,
+            "y": 0
+          },
+          "observed": {
+            "x": 60,
+            "y": 0,
+            "width": 40,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 6,
+      "className": "grid gridAutoFitFixed paddingTop min-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 178,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "20px 20px 20px 40px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 20,
+            "height": 5,
+            "x": 40,
+            "y": 0
+          },
+          "observed": {
+            "x": 40,
+            "y": 0,
+            "width": 20,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 40,
+            "height": 5,
+            "x": 60,
+            "y": 0
+          },
+          "observed": {
+            "x": 60,
+            "y": 0,
+            "width": 40,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 7,
+      "className": "grid gridAutoFitAuto paddingTop max-content",
+      "expectedRootWidth": 104,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 212,
+        "width": 104,
+        "height": 34
+      },
+      "computedColumns": "10px 10px 10px 10px 60px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 10,
+            "y": 0
+          },
+          "observed": {
+            "x": 10,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 20,
+            "y": 0
+          },
+          "observed": {
+            "x": 20,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 30,
+            "y": 0
+          },
+          "observed": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        }
+      ]
+    },
+    {
+      "case": 8,
+      "className": "grid gridAutoFitAuto paddingTop min-content",
+      "expectedRootWidth": 74,
+      "expectedRootHeight": 34,
+      "observedRoot": {
+        "x": 8,
+        "y": 246,
+        "width": 74,
+        "height": 34
+      },
+      "computedColumns": "10px 60px",
+      "children": [
+        {
+          "className": "item",
+          "expected": {
+            "width": 100,
+            "height": 20,
+            "x": 0,
+            "y": 10
+          },
+          "observed": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 20
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 10,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 60,
+            "height": 5,
+            "x": 10,
+            "y": 0
+          },
+          "observed": {
+            "x": 10,
+            "y": 0,
+            "width": 60,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 0,
+            "height": 5,
+            "x": 70,
+            "y": 0
+          },
+          "observed": {
+            "x": 70,
+            "y": 0,
+            "width": 0,
+            "height": 5
+          }
+        },
+        {
+          "className": "abs",
+          "expected": {
+            "width": 70,
+            "height": 5,
+            "x": 0,
+            "y": 0
+          },
+          "observed": {
+            "x": 0,
+            "y": 0,
+            "width": 70,
+            "height": 5
+          }
+        }
+      ]
+    }
+  ]
+}

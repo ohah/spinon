@@ -196,7 +196,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 | `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, auto row 및 implicit column |
 | `grid-layout-auto-tracks.html` | auto track의 item contribution과 intrinsic sizing 상호작용 |
 | `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | intrinsic inline-size 변경 시 반복 수 및 auto-fit 재배치 |
-| `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size에서 auto-fill/auto-fit 반복 재계산 |
+| `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size에서 auto-fill/auto-fit 반복 재계산 ([집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
 | `grid-auto-fit-columns-001.html` | definite auto-fit, minmax/fixed repeat, line names, repeat 전·후의 fixed tracks |
 
 이 목록은 고정 출처와 추후 실행 후보이며, Spinon이 이미 실행했거나 통과했다는 뜻이 아니다. 구현 시 각 upstream test의 `testharness` assertion, helper/reference 의존성, 적용 가능한 runtime profile을 먼저 확인한다. 일부 WPT를 실행한 결과를 전체 CSS Grid 적합성으로 확대하지 않는다.
