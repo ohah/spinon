@@ -1,6 +1,6 @@
 # C11.4 · CSS Grid track sizing 계획
 
-**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 최근 제한 slices [#673](https://github.com/ohah/spinon/pull/673), [#683](https://github.com/ohah/spinon/pull/683), [#688](https://github.com/ohah/spinon/pull/688), [#691](https://github.com/ohah/spinon/pull/691), [#695](https://github.com/ohah/spinon/pull/695), [#699](https://github.com/ohah/spinon/pull/699)가 각각 병합됐으며, 아래 기록에서 test-only와 app runtime의 별도 범위·한계를 구분한다. 이 slices는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 최근 제한 slices [#673](https://github.com/ohah/spinon/pull/673), [#683](https://github.com/ohah/spinon/pull/683), [#688](https://github.com/ohah/spinon/pull/688), [#691](https://github.com/ohah/spinon/pull/691), [#695](https://github.com/ohah/spinon/pull/695), [#699](https://github.com/ohah/spinon/pull/699), [#706](https://github.com/ohah/spinon/pull/706)가 각각 병합됐으며, 아래 기록에서 test-only와 app runtime의 별도 범위·한계를 구분한다. 이 slices는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
 ## 2026-10-28 definite `min-height` 아래 fit-content row runtime slice · PR #699 병합
 
