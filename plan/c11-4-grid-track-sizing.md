@@ -197,11 +197,13 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 | `grid-layout-auto-tracks.html` | auto track의 item contribution과 intrinsic sizing 상호작용 |
 | `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | intrinsic inline-size 변경 시 반복 수 및 auto-fit 재배치 |
 | `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size에서 auto-fill/auto-fit 반복 재계산 ([집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
-| `grid-auto-fit-columns-001.html` | definite auto-fit, minmax/fixed repeat, line names, repeat 전·후의 fixed tracks |
+| `grid-auto-fit-columns-001.html` | definite auto-fit, minmax/fixed repeat, line names, repeat 전·후의 fixed tracks ([전체 35-scene 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [Chrome/WPT 사전 비교](../spec/internal/evidence/c11-4-grid-auto-fit-columns-precomparison-2026-10-27/README.md)) |
 
 이 목록은 고정 출처와 추후 실행 후보이며, Spinon이 이미 실행했거나 통과했다는 뜻이 아니다. 구현 시 각 upstream test의 `testharness` assertion, helper/reference 의존성, 적용 가능한 runtime profile을 먼저 확인한다. 일부 WPT를 실행한 결과를 전체 CSS Grid 적합성으로 확대하지 않는다.
 
-먼저 독립 구현 가능한 한 case로 [`fit-content-track-sizing.html`의 `fit-content(40px)`·인접 `auto` implicit row assertion](./c11-4-fit-content-auto-neighbor-wpt.md)을 계획한다. CSS Grid 2025 CRD §6.6/§12.2/§12.4–§12.8에서 독립 도출한 expected rows는 `[10px, 290px]`; 계획과 Chrome 사전 관측은 WPT testharness pass나 구현 완료가 아니다. 다른 assertion과 C11.4 공식 상태는 그대로 둔다.
+2026-10-27 전체 `grid-auto-fit-columns-001.html` source harness 35/35 Chrome observation을 기록했다. 이는 Spinon runtime 실행이 아니며 35개 전부를 별도 [고정 scene 계획](./c11-4-grid-auto-fit-columns-wpt.md)으로 연결한다.
+
+별도 독립 후보로 [`fit-content-track-sizing.html`의 `fit-content(40px)`·인접 `auto` implicit row assertion](./c11-4-fit-content-auto-neighbor-wpt.md)을 계획했다. CSS Grid 2025 CRD §6.6/§12.2/§12.4–§12.8에서 독립 도출한 expected rows는 `[10px, 290px]`; 계획과 Chrome 사전 관측은 WPT testharness pass나 구현 완료가 아니다. 현재 다음 전체 WPT slice는 35-scene [`grid-auto-fit-columns-001.html` 계획](./c11-4-grid-auto-fit-columns-wpt.md)이며 더 작은 대체 입력으로 범위를 줄이지 않는다. C11.4 공식 상태는 그대로 미완료다.
 
 ## Rust·앱 검증과 증거 경계
 
@@ -442,7 +444,7 @@ PR #515의 3-column × 2-row, span-2/2/3 direct Ahem text topology를 max-conten
 
 Stylo cascade와 layout preflight에서 finite `Percentage(0)` minimum을 기존 supported-maximum 및 definite-positive-content-axis gate 안에 허용하고, vendored Taffy auto-repeat count 계산에서만 반복 track마다 UA 1px floor를 적용했다. 실제 zero minimum, flex sizing, explicit subpixel neighbors와 auto-fit collapse는 유지한다. `calc(0px + 0%)`가 Stylo에서 typed `Percentage(0)`으로 정규화되면 같은 경로를 타며 새 calc evaluator는 추가하지 않는다.
 
-Chrome 156 사전 비교의 13 scene을 Android API 37 ARM64 AVD와 iPhone 17/iOS 26.2 Simulator에서 각각 13/13 통과했다. node frame, used tracks, collapse, 전체 trace chunks와 draw/present를 확인했다. Workspace tests, Clippy `-D warnings`, fmt, fixture boundary 7/7 및 default/opt-in static archive marker 경계도 확인했다. PixelCopy/Metal pixel equality, 실기기와 hardware GPU는 검사하지 않았다. [계획](./c11-4-auto-repeat-zero-percent-minimum.md) · [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md) · [Android/iOS runtime·화면·검사 한계](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/implementation-review-20.md) · [PR 변경 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/pr-diff-review-30.md).
+Chrome 156 사전 비교의 13 scene을 Android API 37 ARM64 AVD와 iPhone 17/iOS 26.2 Simulator에서 각각 13/13 통과했다. node frame, used tracks, collapse, 전체 trace chunks와 draw/present를 확인했다. Workspace tests, Clippy `-D warnings`, fmt, fixture boundary 7/7 및 default/opt-in static archive marker 경계도 확인했다. PixelCopy/Metal pixel equality, 실기기와 hardware GPU는 검사하지 않았다. [계획](./c11-4-auto-repeat-zero-percent-minimum.md) · [Chrome 156 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-precomparison-2026-10-24/README.md) · [Android/iOS runtime·화면·검사 한계](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/implementation-runtime-review-20.md) · [PR 변경 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-runtime-2026-10-24/pr-diff-review-30.md).
 
 구현 PR [#573](https://github.com/ohah/spinon/pull/573)은 2026-10-23T17:19:38Z Rebase and merge됐고 SHA는 `a97324c1b208e1f9ab58de96e0d9885164365532`다. 병합 시 GitHub check rollup은 비어 있었고 `main` required status checks는 설정되어 있지 않았다. C11.4 상위 체크는 미완료이며 공식 완료 수 `72/213`을 유지한다. 이 계획 로그의 요약 누락은 [roadmap 동기화 PR diff 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-zero-percent-minimum-tailnet-sync-2026-10-24/roadmap-plan-sync-pr-diff-review-20.md)로 확인한다.
 
