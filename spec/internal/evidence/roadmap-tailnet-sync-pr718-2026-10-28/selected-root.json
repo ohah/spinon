@@ -1,0 +1,292 @@
+{
+  "sourceHead": "ad0106b6b1a6160bb601b4a407c377c8046e9415",
+  "sourceTree": "61655f2266bb62ea0d80e6f6d3aba7902e2ce1c7",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr718-root-selected",
+  "sourceCount": 21,
+  "routeCount": 43,
+  "totalBytes": 2511731,
+  "sources": [
+    "crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs",
+    "plan/c11-4-flex-stage-oracle-plan-review-20.md",
+    "plan/c11-4-flex-stage-oracle-pr-diff-review-30.md",
+    "plan/c11-4-flex-stage-oracle.md",
+    "plan/c11-4-grid-track-sizing.md",
+    "spec/STATUS.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/clippy.log",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/fmt-check.log",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/focused-test.log",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.md",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/agent-browser-observation.json",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/chrome-flex-stage.png",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/derive_expected.py",
+    "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json",
+    "spec/public/icon.svg",
+    "spec/public/logo.svg",
+    "spec/public/roadmap.html"
+  ],
+  "staged": [
+    {
+      "source": "crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs",
+      "path": "crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs",
+      "bytes": 18067,
+      "sha256": "5e81ba84ff2f812c98be874dbe1ab4da037e8f8784e13142eca53e40fb38b3b4"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle-plan-review-20.md",
+      "path": "plan/c11-4-flex-stage-oracle-plan-review-20.md",
+      "bytes": 5235,
+      "sha256": "cbbf66977a0e786fc9f59e3ae6cf1cdbc805d16d625e0f536d48ec6b1dd47fcc"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle-plan-review-20.md",
+      "path": "spec/plan/c11-4-flex-stage-oracle-plan-review-20.md",
+      "bytes": 5235,
+      "sha256": "cbbf66977a0e786fc9f59e3ae6cf1cdbc805d16d625e0f536d48ec6b1dd47fcc"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle-pr-diff-review-30.md",
+      "path": "plan/c11-4-flex-stage-oracle-pr-diff-review-30.md",
+      "bytes": 6238,
+      "sha256": "0b5001d8608ed581eb1d2d41f133cacba6b4b0dab8cf4e0cce830237c1c5b6e3"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle-pr-diff-review-30.md",
+      "path": "spec/plan/c11-4-flex-stage-oracle-pr-diff-review-30.md",
+      "bytes": 6238,
+      "sha256": "0b5001d8608ed581eb1d2d41f133cacba6b4b0dab8cf4e0cce830237c1c5b6e3"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle.md",
+      "path": "plan/c11-4-flex-stage-oracle.md",
+      "bytes": 9246,
+      "sha256": "d3fd7da40245584f925d9a31191e03404e2cf0359b2fcc5c746177fe709890b9"
+    },
+    {
+      "source": "plan/c11-4-flex-stage-oracle.md",
+      "path": "spec/plan/c11-4-flex-stage-oracle.md",
+      "bytes": 9246,
+      "sha256": "d3fd7da40245584f925d9a31191e03404e2cf0359b2fcc5c746177fe709890b9"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 150202,
+      "sha256": "4ea560328d5eed2171294fca5834021c14853c09d4b8f1e0b5ebcbfe88063532"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 150202,
+      "sha256": "4ea560328d5eed2171294fca5834021c14853c09d4b8f1e0b5ebcbfe88063532"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 477229,
+      "sha256": "0a54c99c449cef95924274ca743d2254720bbebedfebe48e27dee123418c0f01"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 477229,
+      "sha256": "0a54c99c449cef95924274ca743d2254720bbebedfebe48e27dee123418c0f01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md",
+      "bytes": 2580,
+      "sha256": "811aeb2134633fd272fbc1441843a831aaade714ff94397bb65f6b2aca0487d7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md",
+      "bytes": 2580,
+      "sha256": "811aeb2134633fd272fbc1441843a831aaade714ff94397bb65f6b2aca0487d7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/clippy.log",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/clippy.log",
+      "bytes": 72,
+      "sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/clippy.log",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/clippy.log",
+      "bytes": 72,
+      "sha256": "59639588a6f1826f129cbcd121edc07279dab94786f5fa5bde6b3439b2e845cc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/fmt-check.log",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/fmt-check.log",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/fmt-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/focused-test.log",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/focused-test.log",
+      "bytes": 383,
+      "sha256": "73635f43c779b66f90684933a9ba595e608e03ad89c6a2ed19165e53891e6be1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/focused-test.log",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/focused-test.log",
+      "bytes": 383,
+      "sha256": "73635f43c779b66f90684933a9ba595e608e03ad89c6a2ed19165e53891e6be1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md",
+      "bytes": 4405,
+      "sha256": "68e6876f94bd67a8777d49326672046fbd8fe2c10cddb23311b9ade420ec8c4f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md",
+      "bytes": 4405,
+      "sha256": "68e6876f94bd67a8777d49326672046fbd8fe2c10cddb23311b9ade420ec8c4f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.md",
+      "bytes": 5151,
+      "sha256": "06def9834d9bd700e84235a0109821c90a7fabbc52990c025b4511f2e1f3b14d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.md",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.md",
+      "bytes": 5151,
+      "sha256": "06def9834d9bd700e84235a0109821c90a7fabbc52990c025b4511f2e1f3b14d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md",
+      "bytes": 5612,
+      "sha256": "fcee9ac35ff9149bc4d757a3f361b748f637ba83b9ee23f79294383039518f19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md",
+      "bytes": 5612,
+      "sha256": "fcee9ac35ff9149bc4d757a3f361b748f637ba83b9ee23f79294383039518f19"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.md",
+      "bytes": 4251,
+      "sha256": "b19def404191969413f367bc4d105e82e3863ccfcae49c78130c18cfbf82bc68"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.md",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.md",
+      "bytes": 4251,
+      "sha256": "b19def404191969413f367bc4d105e82e3863ccfcae49c78130c18cfbf82bc68"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/agent-browser-observation.json",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/agent-browser-observation.json",
+      "bytes": 2130,
+      "sha256": "c09e90138ef4e4697f219e19efa118c97a02c9fa54a6c1cbba0bf465551d5a1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/agent-browser-observation.json",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/agent-browser-observation.json",
+      "bytes": 2130,
+      "sha256": "c09e90138ef4e4697f219e19efa118c97a02c9fa54a6c1cbba0bf465551d5a1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/chrome-flex-stage.png",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/chrome-flex-stage.png",
+      "bytes": 33369,
+      "sha256": "682e486c638076a8e16b6911c61bb02d81c5911e1323901e43fb29d4e7634962"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/chrome-flex-stage.png",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/chrome-flex-stage.png",
+      "bytes": 33369,
+      "sha256": "682e486c638076a8e16b6911c61bb02d81c5911e1323901e43fb29d4e7634962"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/derive_expected.py",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/derive_expected.py",
+      "bytes": 4182,
+      "sha256": "d7b3dac83055bd0e4ee2ea6418721a25045199767d05b25e973027683f3bcc5b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/derive_expected.py",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/derive_expected.py",
+      "bytes": 4182,
+      "sha256": "d7b3dac83055bd0e4ee2ea6418721a25045199767d05b25e973027683f3bcc5b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json",
+      "path": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json",
+      "bytes": 2807,
+      "sha256": "07bedf1b3366ef9252cc80eb123c44a14dab50d876c24f398441f3baa9529000"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json",
+      "path": "internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json",
+      "bytes": 2807,
+      "sha256": "07bedf1b3366ef9252cc80eb123c44a14dab50d876c24f398441f3baa9529000"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 354999,
+      "sha256": "f0d259f4a9324bbb3e41a9a69ce3c22b766a000edad1a656809a2d9b854f9010"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 354999,
+      "sha256": "f0d259f4a9324bbb3e41a9a69ce3c22b766a000edad1a656809a2d9b854f9010"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 354999,
+      "sha256": "f0d259f4a9324bbb3e41a9a69ce3c22b766a000edad1a656809a2d9b854f9010"
+    },
+    {
+      "source": "generated:index.md",
+      "path": "index.md",
+      "bytes": 71,
+      "sha256": "4ff314085bfac0390e429258f64862ba84f8e02f0b7af21034363ad2285a3f39"
+    }
+  ],
+  "fullDocsLinkValidation": false
+}

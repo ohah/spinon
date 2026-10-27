@@ -1,0 +1,9 @@
+{
+  "excerpt": "스피논\n0.1.0-draft\n검색\n⌘K\nSpinon 문서 미리보기\ninternal\nevidence\nc11-4-flex-stage-oracle-implementation-2026-10-28\nC11.4 §11.7 flexible track expansion 구현 · 실패 관점 검토 20개\nC11.4 §11.7 병합 후 상태·로드맵 변경 검토 30개\nC11.4 §11.7 flexible track expansion 구현 PR · 변경분 검토 30개\nC11.4 §11.7 flexible track expansion test-only 구현 근거\nc11-4-flex-stage-oracle-precomparison-2026-10-28\nC11.4 §11.7 flexible track expansion 사전 비교\nplan\nC11.4 §11.7 flexible track expansion 계획 · 실패 관점 검토 20개\nC11.4 §11.7 flexible track expansion 계획 PR · 변경분 검토 30개\nC11.4 · flexible track expansion stage 독립 검증 계획\nC11.4 · CSS Grid track sizing 계획\nspec\ninternal\nevidence\nc11-4-flex-stage-oracle-implementation-2026-10-28\nC11.4 §11.7 flexible track expansion 구현 · 실패 관점 검토 20개\nC11.4 §11.7 병합 후 상태·로드맵 변경 검토 30개\nC11.4 §11.7 flexible track expansion 구현 PR · 변경분 검토 30개\nC11.4 §11.7 flexible track expansion test-only 구현 근거\nc11-4-flex-stage-oracle-precomparison-2026-10-28\nC11.4 §11.7 flexible track expansion 사전 비교\nplan\nC11.4 §11.7 flexible track expansion 계획 · 실패 관점 검토 20개\nC11.4 §11.7 flexible track expansion 계획 PR · 변경분 검토 30개\nC11.4 · flexible track expansion stage 독립 검증 계획\nC11.4 · CSS Grid track sizing 계획\n스피논 구현 상태와 API 명세 대장\n스피논 구현 상태와 API 명세 대장\n#\nC11.4 · flexible track expansion stage 독립 검증 계획\n\n상위: C11.4 Grid track sizing · 내부 계약 0059 · 공식 상태\n\n사전 비교: CSS Grid 2025 CRD 유리수 기대값과 Chrome 156 관측 · 기대값 JSON · Agent Browser 화면\n\n계획 검토: 실패 관점 20개 · 계획 PR 변경분 검토 30개\n\n구현 검토: test/runtime 경계 실패 관점 20개 · 구현 PR 변경분 검토 30개\n\n상태 · 2026-10-28: 계획 PR #716이 Rebase and merge됐다. pure Rust test-only ExpandFlexibleTracks assertion 한 건을 구현한 PR #717은 2026-10-27T21:58:5",
+  "has717": true,
+  "hasMergeSha": true,
+  "hasOfficialCount": true,
+  "hasPendingText": false,
+  "title": "C11.4 · flexible track expansion stage 독립 검증 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-flex-stage-oracle.html"
+}

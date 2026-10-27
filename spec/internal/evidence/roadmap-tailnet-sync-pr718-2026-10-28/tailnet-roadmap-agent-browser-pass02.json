@@ -1,0 +1,42 @@
+{
+  "found": true,
+  "links": [
+    {
+      "href": "https://github.com/ohah/spinon/pull/717",
+      "text": "PR #717 Rebase and merge"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-flex-stage-oracle.html",
+      "text": "집중 계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/README.html",
+      "text": "CSS Grid 기대값·Chrome 사전 비교"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.html",
+      "text": "구현 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.html",
+      "text": "구현 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.html",
+      "text": "PR diff 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/post-merge-status-roadmap-review-30.html",
+      "text": "병합 후 상태·로드맵 검토 30개"
+    }
+  ],
+  "rect": {
+    "bottom": 357.03125,
+    "top": 275.46875
+  },
+  "scrollY": 28338,
+  "text": "2026-10-28 C11.4 §11.7 ExpandFlexibleTracks test-only slice · 구현 PR #717 Rebase and merge (2026-10-27T21:58:53Z, merge SHA c29482aa8fc3ac39cdc342eae138c3ad10a59683): 네 definite empty-grid 입력에서 1fr:2fr 분배, 최소 크기 동결 후 재계산, factor 합계 1 미만의 1 처리와 0fr base floor를 pure Rust trace test로 검증했다. Focused test 1/1, `cargo fmt --all -- --check`, package all-targets Clippy가 통과했다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 앱 runtime·WPT·Android/iOS simulator는 검증하지 않았다. C11.4는 미완료이고 공식 72/213을 유지한다. 집중 계획 · CSS Grid 기대값·Chrome 사전 비교 · 구현 근거 · 구현 검토 20개 · PR diff 검토 30개 · 병합 후 상태·로드맵 검토 30개.",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?verify=pr718-pass02",
+  "visible": true
+}
