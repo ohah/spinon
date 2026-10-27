@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use spinon_layout::{ParagraphInput, TextSource};
 
 use super::super::{TEXT_CASES, TextCase, TextDimension, TextTrack, generic_direct_text};
-use super::test_fixture::{NodeSpec, cascade, custom_fixture, direct_text, item};
+use super::test_fixture::{Fixture, NodeSpec, cascade, custom_fixture, direct_text, item};
 
 #[test]
 fn all_one_item_text_cases_reach_the_legacy_fallback_with_ahem_intrinsics() {
@@ -200,6 +200,109 @@ fn all_one_item_text_cases_reach_the_legacy_fallback_with_ahem_intrinsics() {
             case.scene_id
         );
     }
+}
+
+#[test]
+fn legacy_fallback_rejects_unknown_identity_topology_and_style() {
+    let case = &TEXT_CASES[0];
+    let stylesheet = legacy_stylesheet(case);
+
+    expect_legacy_error(
+        custom_fixture(
+            "unknown-legacy-root",
+            "scene",
+            vec![item(
+                case.item_id,
+                "item",
+                vec![NodeSpec::text(case.content)],
+            )],
+            None,
+        ),
+        &stylesheet,
+        "unsupported_c114_text_fixture_root",
+        "unknown root ID",
+    );
+    expect_legacy_error(
+        custom_fixture(
+            case.root_id,
+            "scene",
+            vec![item(
+                case.item_id,
+                "item",
+                vec![NodeSpec::text("changed source")],
+            )],
+            None,
+        ),
+        &stylesheet,
+        "unsupported_c114_text_fixture_case",
+        "changed source text",
+    );
+    expect_legacy_error(
+        custom_fixture(
+            case.root_id,
+            "scene",
+            vec![item(
+                "unknown-legacy-item",
+                "item",
+                vec![NodeSpec::text(case.content)],
+            )],
+            None,
+        ),
+        &stylesheet,
+        "unsupported_c114_text_fixture_case",
+        "unknown item ID",
+    );
+    expect_legacy_error(
+        custom_fixture(
+            case.root_id,
+            "scene",
+            vec![
+                item(case.item_id, "item", vec![NodeSpec::text(case.content)]),
+                item("unlisted-empty-sibling", "item", Vec::new()),
+            ],
+            None,
+        ),
+        &stylesheet,
+        "invalid_c114_text_grid_owner",
+        "extra direct grid item",
+    );
+
+    let wrong_track_stylesheet = stylesheet.replace(
+        "grid-template-columns: auto;",
+        "grid-template-columns: min-content;",
+    );
+    assert_ne!(wrong_track_stylesheet, stylesheet);
+    expect_legacy_error(
+        custom_fixture(
+            case.root_id,
+            "scene",
+            vec![item(
+                case.item_id,
+                "item",
+                vec![NodeSpec::text(case.content)],
+            )],
+            None,
+        ),
+        &wrong_track_stylesheet,
+        "unsupported_c114_text_grid_style",
+        "wrong typed Grid track",
+    );
+}
+
+fn expect_legacy_error(fixture: Fixture, css: &str, expected_code: &str, label: &str) {
+    let computed = cascade(&fixture.view, css);
+    assert!(
+        generic_direct_text::prepare(&fixture.snapshot, fixture.root, &computed)
+            .unwrap_or_else(|error| panic!("{label}: generic collector failed: {error:?}"))
+            .is_none(),
+        "{label}: generic collector should leave a one-item legacy shape untouched"
+    );
+    let error = match super::super::prepare(&fixture.snapshot, fixture.root, &computed) {
+        Err(error) => error,
+        Ok(Some(_)) => panic!("{label}: unsupported legacy input unexpectedly succeeded"),
+        Ok(None) => panic!("{label}: unsupported legacy input was silently ignored"),
+    };
+    assert_eq!(error.code, expected_code, "{label}");
 }
 
 fn legacy_stylesheet(case: &TextCase) -> String {
