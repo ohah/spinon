@@ -1,5 +1,8 @@
 use std::collections::BTreeMap;
 
+mod expected;
+
+use serde_json::Value;
 use spinon_core::{EnvironmentRevision, HostNodeHandle, StyleRevision};
 
 use crate::grid_placement::{GridItemInput, GridPlacementInput};
@@ -11,11 +14,15 @@ use crate::{
     LayoutJustifyContent, LayoutStyle, TaffyLayoutEngine, Viewport,
 };
 
-use super::{assert_span_stage_snapshots, multi_span_document};
+use super::{assert_span_stage_snapshots_with_expectation, multi_span_document};
+use expected::{assert_expected_scene_registry, row_axis_expectation};
 
 const ROOT_SIZE: f32 = 220.0;
 const TRACE_TOLERANCE: f32 = 1.0e-4;
 const CHROME_TOLERANCE: f32 = 1.0 / 64.0;
+const ROW_AXIS_EXPECTED_JSON: &str = include_str!(
+    "../../../../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json"
+);
 
 #[derive(Clone, Copy)]
 struct RowAxisItem {
@@ -175,7 +182,8 @@ fn row_axis_input(
     (input, root, items)
 }
 
-fn run_case(case: &ChromeRowAxisCase, owner: u64) -> RowAxisObservation {
+fn run_case(case: &ChromeRowAxisCase, expected_json: &Value, owner: u64) -> RowAxisObservation {
+    let expected = row_axis_expectation(expected_json, case);
     let (input, root, items) = row_axis_input(case, owner);
     let output = TaffyLayoutEngine
         .compute(&input)
@@ -258,11 +266,11 @@ fn run_case(case: &ChromeRowAxisCase, owner: u64) -> RowAxisObservation {
         })
         .collect::<Vec<_>>();
     assert_eq!(
-        observed_spans, case.expected_span_batches,
+        observed_spans, expected.span_batches,
         "{}: row-axis span batch order",
         case.id
     );
-    assert_span_stage_snapshots(row_pass, case.id, case.expected_span_batches);
+    assert_span_stage_snapshots_with_expectation(row_pass, case.id, &expected);
     assert_contributions(row_pass, case, &items);
     assert_frame(
         output.frames[&root.id()],
@@ -445,11 +453,15 @@ fn assert_source_order_equivalent(
 
 #[test]
 fn chrome156_row_axis_multi_span_stages_match_normative_oracle_and_source_order() {
-    let span2_forward = run_case(&CASES[0], 1_660);
-    let span2_reversed = run_case(&CASES[1], 1_661);
+    let expected_json: Value = serde_json::from_str(ROW_AXIS_EXPECTED_JSON)
+        .unwrap_or_else(|error| panic!("row-axis expected.json: {error}"));
+    assert_expected_scene_registry(&expected_json);
+
+    let span2_forward = run_case(&CASES[0], &expected_json, 1_660);
+    let span2_reversed = run_case(&CASES[1], &expected_json, 1_661);
     assert_source_order_equivalent(&span2_forward, &span2_reversed, "span-2");
 
-    let span23_forward = run_case(&CASES[2], 1_662);
-    let span23_reversed = run_case(&CASES[3], 1_663);
+    let span23_forward = run_case(&CASES[2], &expected_json, 1_662);
+    let span23_reversed = run_case(&CASES[3], &expected_json, 1_663);
     assert_source_order_equivalent(&span23_forward, &span23_reversed, "span-2/3");
 }

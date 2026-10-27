@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.39s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 6 tests
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::rational_values_are_finite_and_malformed_values_are_rejected ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::stage_arrays_require_exactly_four_tracks ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::expected::tests::span_labels_require_canonical_positive_decimal_form ... ok
+test grid_multispan_chrome_oracle_tests::span_stage_trace_has_fixed_track_and_invalid_placement_negative_controls ... ok
+test grid_multispan_chrome_oracle_tests::row_axis::chrome156_row_axis_multi_span_stages_match_normative_oracle_and_source_order ... ok
+test grid_multispan_chrome_oracle_tests::chrome155_multi_span_contributions_are_independent_of_item_source_order ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 276 filtered out; finished in 0.02s
