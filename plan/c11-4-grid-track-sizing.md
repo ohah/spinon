@@ -2,6 +2,10 @@
 
 **현재 상태 · 2026-10-27:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
+## 2026-10-27 auto-repeat intrinsic-size 변화 재계산 계획
+
+WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 8단계 변화를 같은 HostDocument·node identity·증가하는 document/style revision으로 처리하는 opt-in runtime fixture를 계획했다. Chrome/WPT oracle과 독립 기대값, 고정 source hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-grid-change-intrinsic-auto-repeat-precomparison-2026-10-27/README.md)에 있다. [집중 계획](./c11-4-auto-repeat-intrinsic-recompute.md)과 [계획 실패 관점 20개](./c11-4-auto-repeat-intrinsic-recompute-plan-review-20.md)를 참조한다. 계획 단계이며 C11.4 체크와 공식 `72/213`은 유지한다.
+
 ## 2026-10-27 fit-content 옆 auto implicit row 앱 runtime slice · PR #664 병합
 
 PR #662의 test-only oracle을 C11.4 opt-in CSS→app 경로에 연결한 구현 PR [#664](https://github.com/ohah/spinon/pull/664)은 2026-10-26T19:22:09Z Rebase and merge로 병합됐다(merge SHA `bc681ad039081c6bce6dd59594a2e8353d1300eb`). 고정 입력은 `grid-auto-rows: fit-content(40px) auto`, 기대 Rows는 `[10,290]px`다. Chrome upstream WPT testharness 13/13 및 CSS Grid 독립 계산을 분리하고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 app frame/track trace/draw·present와 PixelCopy/Metal 표본 5/5를 확인했다. 실행·범위는 [계획](./c11-4-fit-content-auto-neighbor-runtime.md)과 [runtime evidence](../spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/README.md)에 있다. 이는 Spinon WPT pass나 production root `ParsedRootHtml`·color-scheme/media-query parity를 뜻하지 않는다. C11.4 checkbox와 공식 `72/213`은 유지한다.

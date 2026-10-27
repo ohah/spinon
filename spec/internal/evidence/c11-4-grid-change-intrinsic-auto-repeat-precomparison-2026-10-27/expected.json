@@ -1,0 +1,19 @@
+{
+  "source": {
+    "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/grid-change-intrinsic-size-with-auto-repeat-tracks-001.html",
+    "sha256": "b61b3b92114e58f2a7f3e563ed886e6ea39f20925b84b6defa7e111d7730420d"
+  },
+  "browser": "HeadlessChrome/156",
+  "toleranceCssPx": 0.015625,
+  "states": [
+    {"id":"max-content-100","sizing":"max-content","itemWidth":100,"rootContent":[100,30],"rootBorderBox":[104,44],"repeatCount":3,"columns":[20,20,20,40],"item":[0,10,100,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,20,5],"a4":[60,0,40,5]}},
+    {"id":"max-content-80","sizing":"max-content","itemWidth":80,"rootContent":[80,30],"rootBorderBox":[84,44],"repeatCount":2,"columns":[20,20,40],"item":[0,10,80,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,40,5],"a4":[80,0,0,5]}},
+    {"id":"max-content-15","sizing":"max-content","itemWidth":15,"rootContent":[60,30],"rootBorderBox":[64,44],"repeatCount":1,"columns":[20,40],"item":[0,10,15,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,40,5],"a3":[60,0,0,5],"a4":[0,0,60,5]}},
+    {"id":"max-content-120","sizing":"max-content","itemWidth":120,"rootContent":[120,30],"rootBorderBox":[124,44],"repeatCount":4,"columns":[20,20,20,20,40],"item":[0,10,120,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,20,5],"a4":[60,0,20,5]}},
+    {"id":"min-content-100","sizing":"min-content","itemWidth":100,"rootContent":[100,30],"rootBorderBox":[104,44],"repeatCount":3,"columns":[20,20,20,40],"item":[0,10,100,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,20,5],"a4":[60,0,40,5]}},
+    {"id":"min-content-80","sizing":"min-content","itemWidth":80,"rootContent":[80,30],"rootBorderBox":[84,44],"repeatCount":2,"columns":[20,20,40],"item":[0,10,80,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,40,5],"a4":[80,0,0,5]}},
+    {"id":"min-content-15","sizing":"min-content","itemWidth":15,"rootContent":[30,30],"rootBorderBox":[34,44],"repeatCount":1,"columns":[20,10],"item":[0,10,15,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,10,5],"a3":[30,0,0,5],"a4":[0,0,30,5]}},
+    {"id":"min-content-120","sizing":"min-content","itemWidth":120,"rootContent":[120,30],"rootBorderBox":[124,44],"repeatCount":4,"columns":[20,20,20,20,40],"item":[0,10,120,30],"probes":{"a1":[0,0,20,5],"a2":[20,0,20,5],"a3":[40,0,20,5],"a4":[60,0,20,5]}}
+  ]
+}
