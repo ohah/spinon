@@ -1,0 +1,82 @@
+{
+  "case_id": "fit-content-min-height-wpt",
+  "status": "independently derived oracle; no Spinon runtime result is included",
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "dom_lines": [27, 27],
+    "assertion_lines": [87, 88]
+  },
+  "input": {
+    "display": "grid",
+    "inline_size_px": 60,
+    "block_size": "auto",
+    "min_block_size_px": 300,
+    "explicit_columns_px": [60],
+    "explicit_rows": [],
+    "implicit_rows": ["fit-content(40px)"],
+    "row_gap_px": 0,
+    "column_gap_px": 0,
+    "padding_px": 0,
+    "border_px": 0,
+    "align_content": "normal",
+    "direct_grid_item_count": 1,
+    "item_block_size": "auto",
+    "item_min_block_size": "auto",
+    "item_overflow": "visible",
+    "nested_child_block_size_px": 10
+  },
+  "css_grid_2025_crd_derivation": {
+    "fit_content_min_track_function": "auto",
+    "fit_content_max_track_function_for_stretch_eligibility": "max-content",
+    "initial_row_base_px": 0,
+    "item_minimum_contribution_px": 10,
+    "row_base_after_intrinsic_sizing_px": 10,
+    "item_max_content_contribution_px": 10,
+    "fit_content_argument_px": 40,
+    "row_growth_limit_px": 10,
+    "min_height_used_for_indefinite_free_space_px": 300,
+    "positive_free_space_before_stretch_px": 290,
+    "stretch_eligible_row_indexes": [],
+    "row_base_before_stretch_px": 10,
+    "row_base_after_stretch_px": 10,
+    "final_row_sizes_px": [10],
+    "root_used_block_size_px": 300
+  },
+  "expected_runtime": {
+    "computed_grid_template_rows": "10px",
+    "grid_border_box_px": [60, 300],
+    "item_border_box_px": [60, 10],
+    "child_border_box_px": [60, 10],
+    "frames_css_px": {
+      "grid": [0, 0, 60, 300],
+      "item": [0, 0, 60, 10],
+      "child": [0, 0, 60, 10]
+    },
+    "trace": {
+      "row_track_count": 1,
+      "row_sizes_px": [10],
+      "align_content_stage": "StretchAutoTracks { applied: true }",
+      "row_bases_before_and_after_stretch_px": [10]
+    }
+  },
+  "comparison_rules": {
+    "track_sizes_and_integer_frames": "exact CSS px values from pre-render LayoutOutput and Grid trace; no DPR or surface transform",
+    "revision_identity": "computed style, typed Grid input, trace, and frames must share the same source/style/environment revision",
+    "failures": "missing or duplicate trace, wrong height/min-height, changed row pattern, stale revision, partial frames, rejected intended source, or empty draw/present"
+  },
+  "browser_observation": {
+    "browser": "Agent Browser / Chrome",
+    "date": "2026-10-28",
+    "upstream_harness": "13 tests found, 13 pass, min-height assertion pass",
+    "live_source_hash_rechecked_today": false,
+    "prior_pinned_live_source_hash_match": "spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-precomparison-2026-10-27/source-pins.json"
+  },
+  "limits": [
+    "Upstream Chrome WPT result is not a Spinon WPT result.",
+    "The runtime route is an opt-in fixture, not general author CSS admission.",
+    "No change to the C11.4 completion checkbox or official 72/213 count is proposed."
+  ]
+}

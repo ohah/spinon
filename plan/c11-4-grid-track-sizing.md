@@ -2,6 +2,10 @@
 
 **현재 상태 · 2026-10-27:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 아래 날짜별 기록의 `74/207`, `77/213` 등은 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
+## 2026-10-28 definite `min-height` 아래 fit-content row 계획
+
+Pinned WPT `fit-content-track-sizing.html` 두 번째 assertion에서 `height:auto; min-height:300px`인 Grid의 유일한 `fit-content(40px)` implicit row가 `10px`에 머무는 입력을 별도 계획했다. CSS Grid 2025 CRD §11.8은 definite `min-height`를 stretch 단계의 free-space 계산에 사용하지만, fit-content의 max sizing function은 auto가 아니므로 해당 track은 확장되지 않는다. [집중 계획](./c11-4-fit-content-min-height-wpt.md) · [독립 기대값과 Agent Browser 사전 비교](../spec/internal/evidence/c11-4-fit-content-min-height-precomparison-2026-10-28/README.md) · [계획 검토 20개](./c11-4-fit-content-min-height-plan-review-20.md) · [계획 PR diff 검토 20개](./c11-4-fit-content-min-height-pr-diff-review-20.md). 구현 계획 PR 단계이며 C11.4 checkbox와 공식 `72/213`은 유지한다.
+
 ## 2026-10-27 auto-repeat intrinsic-size 변화 재계산 계획
 
 WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 8단계 변화를 같은 HostDocument·node identity·증가하는 document/style revision으로 처리하는 opt-in runtime fixture를 계획했다. Chrome/WPT oracle과 독립 기대값, 고정 source hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-grid-change-intrinsic-auto-repeat-precomparison-2026-10-27/README.md)에 있다. [집중 계획](./c11-4-auto-repeat-intrinsic-recompute.md)과 [계획 실패 관점 20개](./c11-4-auto-repeat-intrinsic-recompute-plan-review-20.md)를 참조한다. 계획 단계이며 C11.4 체크와 공식 `72/213`은 유지한다.
