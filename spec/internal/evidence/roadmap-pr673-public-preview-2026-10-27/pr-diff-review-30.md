@@ -4,13 +4,13 @@
 
 ## 집계
 
-**29 PASS / 1 PARTIAL / 0 FAIL.** PARTIAL은 PR #674 본문이 아직 존재하지 않아 미리보기 이미지가 실제로 첨부됐는지 확인하지 못한 항목이다. source 변경·merge 기록·수치·local screenshot provenance에는 merge blocker가 없다. PR 생성 후 image attachment를 확인해 관점 30을 갱신한다.
+**30 PASS / 0 PARTIAL / 0 FAIL.** 초기 검토 시에는 PR #674 본문 이미지 확인이 대기였으나, PR 생성 뒤 Agent Browser에서 이미지가 정상 로드되는 것을 확인했다.
 
 | # | 실패 관점 | 판정 | 근거 |
 |---:|---|---|---|
 | 1 | 기준 revision | PASS | 변경 base `83653cd02835d05bbdf455888dde7cc78f28dfa6`는 #673 merge SHA와 같다. |
 | 2 | 변경 범위 격리 | PASS | STATUS, public roadmap, local preview evidence만 바꾼다. |
-| 3 | staged diff 완전성 | PASS | 일곱 파일이 stage됐고 unstaged diff가 없으며 `git diff --cached --check`가 통과했다. |
+| 3 | staged diff 완전성 | PASS | PR 초기 7개 경로에 post-create verification JSON 경로 1개를 더해 전체 8개가 됐다. follow-up commit은 기존 3개 파일 수정과 새 JSON 추가로 구성되고, 4개 staged file의 cached diff check가 통과한 뒤 push됐다. |
 | 4 | C11.4 공식 checkbox | PASS | `spec/STATUS.md`에서 미완료로 유지한다. |
 | 5 | 공식 완료 집계 | PASS | STATUS와 public roadmap 모두 `72/213`을 유지한다. |
 | 6 | PR #673 병합 상태 | PASS | GitHub PR 상태는 MERGED다. |
@@ -37,9 +37,9 @@
 | 27 | public roadmap 배치·내용 | PASS | #673 기록이 앞선 #671 계획 뒤에 추가되고 완료 수는 유지된다. |
 | 28 | screenshot 내용 | PASS | 이미지에는 새 #673 roadmap 항목이 보이며 1280×633 local screenshot이다. |
 | 29 | screenshot provenance/hash | PASS | Agent Browser, local URL, `live_tailnet:false`, source/image hashes가 기록되고 3 artifact checksum이 통과했다. |
-| 30 | PR 본문 screenshot attachment | PARTIAL | PR #674 생성 전이라 본문 첨부를 조회할 수 없다. 생성 후 링크 로드 및 이미지 크기를 확인해 갱신한다. |
+| 30 | PR 본문 screenshot attachment | PASS | PR #674 본문에서 이미지가 `complete=true`, 1280×633으로 로드됐다. raw URL·alt text와 browser 종료 결과는 [pr-body-verification.json](./pr-body-verification.json)에 기록했다. |
 
 ## 생성 후 재검토
 
-- 관점 30은 PR #674를 만든 뒤 Agent Browser에서 본문 이미지가 로드되는지 확인한다.
+- 관점 30은 PR #674 생성 뒤 Agent Browser에서 본문 이미지 로드를 확인해 PASS로 갱신했다.
 - 이 screenshot은 문서 PR worktree의 local preview다. Tailnet live route는 PR merge 후 별도 검증한다.
