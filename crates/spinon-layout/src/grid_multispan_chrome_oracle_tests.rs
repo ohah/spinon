@@ -15,6 +15,8 @@ use crate::{
 
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 
+mod row_axis;
+
 #[derive(Clone, Copy)]
 struct MultiSpanItem {
     width: f32,
@@ -237,7 +239,7 @@ fn run_multi_span_case(case: &ChromeMultiSpanCase, owner: u64) {
         );
     }
 
-    assert_span_stage_snapshots(column_pass, case);
+    assert_span_stage_snapshots(column_pass, case.id, case.expected_span_batches);
     let observed_contributions = column_pass
         .contributions
         .iter()
@@ -398,20 +400,43 @@ fn assert_stage_snapshot(
 
 fn assert_span_stage_snapshots(
     pass: &crate::LayoutGridTrackSizingPassTrace,
-    case: &ChromeMultiSpanCase,
+    case_id: &str,
+    expected_span_batches: &[u16],
 ) {
+    let mut expected_stages = vec![LayoutGridTrackSizingStageKind::Initialize];
+    expected_stages.extend(expected_span_batches.iter().map(|span| {
+        LayoutGridTrackSizingStageKind::IntrinsicItemBatch {
+            span: *span,
+            crosses_flexible_track: false,
+        }
+    }));
+    expected_stages.extend([
+        LayoutGridTrackSizingStageKind::IntrinsicSizingComplete,
+        LayoutGridTrackSizingStageKind::MaximizeTracks,
+        LayoutGridTrackSizingStageKind::ExpandFlexibleTracks,
+        LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: false },
+    ]);
+    assert_eq!(
+        pass.stages
+            .iter()
+            .map(|stage| stage.stage)
+            .collect::<Vec<_>>(),
+        expected_stages,
+        "{case_id}: complete stage sequence"
+    );
+
     let (initialize, initialize_index) = unique_stage(
         pass,
         |kind| *kind == LayoutGridTrackSizingStageKind::Initialize,
-        case.id,
+        case_id,
         "Initialize",
     );
     let zeros = [0.0; 4];
     let unbounded = [None; 4];
-    assert_stage_snapshot(initialize, &zeros, &unbounded, case.id, "Initialize");
+    assert_stage_snapshot(initialize, &zeros, &unbounded, case_id, "Initialize");
 
     let mut ordered_indices = vec![initialize_index];
-    for span in case.expected_span_batches {
+    for span in expected_span_batches {
         let (batch, index) = unique_stage(
             pass,
             |kind| {
@@ -421,7 +446,7 @@ fn assert_span_stage_snapshots(
                         crosses_flexible_track: false,
                     }
             },
-            case.id,
+            case_id,
             &format!("non-flex span-{span} batch"),
         );
         ordered_indices.push(index);
@@ -436,21 +461,21 @@ fn assert_span_stage_snapshots(
                 ],
                 "span-3 batch",
             ),
-            _ => panic!("{}: unexpected batch span {span}", case.id),
+            _ => panic!("{}: unexpected batch span {span}", case_id),
         };
-        assert_stage_snapshot(batch, &zeros, &expected_growth, case.id, label);
+        assert_stage_snapshot(batch, &zeros, &expected_growth, case_id, label);
     }
 
     let (complete, complete_index) = unique_stage(
         pass,
         |kind| *kind == LayoutGridTrackSizingStageKind::IntrinsicSizingComplete,
-        case.id,
+        case_id,
         "IntrinsicSizingComplete",
     );
     let (maximize, maximize_index) = unique_stage(
         pass,
         |kind| *kind == LayoutGridTrackSizingStageKind::MaximizeTracks,
-        case.id,
+        case_id,
         "MaximizeTracks",
     );
     ordered_indices.extend([complete_index, maximize_index]);
@@ -458,28 +483,27 @@ fn assert_span_stage_snapshots(
         ordered_indices
             .windows(2)
             .all(|indices| indices[0] < indices[1]),
-        "{}: Initialize, span batches, IntrinsicSizingComplete, and MaximizeTracks are out of order",
-        case.id
+        "{case_id}: Initialize, span batches, IntrinsicSizingComplete, and MaximizeTracks are out of order",
     );
 
-    let (expected_final_sizes, expected_remaining_space) = match case.expected_span_batches {
+    let (expected_final_sizes, expected_remaining_space) = match expected_span_batches {
         [2] => ([40.0, 60.0, 60.0, 0.0], 60.0),
         [2, 3] => ([160.0 / 3.0, 220.0 / 3.0, 220.0 / 3.0, 0.0], 20.0),
-        _ => panic!("{}: unexpected planned span batch sequence", case.id),
+        _ => panic!("{case_id}: unexpected planned span batch sequence"),
     };
     let expected_final_growth = expected_final_sizes.map(Some);
     assert_stage_snapshot(
         complete,
         &zeros,
         &expected_final_growth,
-        case.id,
+        case_id,
         "IntrinsicSizingComplete",
     );
     assert_stage_snapshot(
         maximize,
         &expected_final_sizes,
         &expected_final_growth,
-        case.id,
+        case_id,
         "MaximizeTracks",
     );
     let observed_remaining_space = 220.0
@@ -491,8 +515,7 @@ fn assert_span_stage_snapshots(
     assert!(
         observed_remaining_space.is_finite()
             && (observed_remaining_space - expected_remaining_space).abs() <= 1.0e-4,
-        "{}: MaximizeTracks remaining free space expected {expected_remaining_space}, got {observed_remaining_space}",
-        case.id
+        "{case_id}: MaximizeTracks remaining free space expected {expected_remaining_space}, got {observed_remaining_space}",
     );
 }
 

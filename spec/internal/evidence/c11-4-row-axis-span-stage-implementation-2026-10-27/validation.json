@@ -1,0 +1,28 @@
+{
+  "base_commit": "ba19d61a4c622becd35922ea300e608f7f702fad",
+  "branch": "feat/c11-4-row-axis-span-stage-oracle-20261027",
+  "source_sha256": {
+    "crates/spinon-layout/src/grid_multispan_chrome_oracle_tests.rs": "bc6bc0717d8c550d29eb175021b40184684a5902dbdde5ceb9f8732cd3449203",
+    "crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis.rs": "3b1f40156bd798a2d30644a56639cf5f3fb67671340e6793d2f01ea5861037d1"
+  },
+  "commands": [
+    {
+      "command": "cargo test --locked -p spinon-layout grid_multispan_chrome_oracle_tests",
+      "result": "passed",
+      "summary": "3 passed; 0 failed; 276 filtered out"
+    },
+    {
+      "command": "cargo fmt --all -- --check",
+      "result": "passed"
+    },
+    {
+      "command": "cargo clippy --locked -p spinon-layout --all-targets -- -D warnings",
+      "result": "passed"
+    },
+    {
+      "command": "git diff --cached --check",
+      "result": "passed for all 9 intended files, including new files and the PR diff review"
+    }
+  ],
+  "iteration_note": "A first exact-stage assertion omitted the existing trailing ExpandFlexibleTracks and StretchAutoTracks { applied: false } trace stages. The focused test exposed the mismatch; the expected complete sequence was corrected and the final focused run passed."
+}
