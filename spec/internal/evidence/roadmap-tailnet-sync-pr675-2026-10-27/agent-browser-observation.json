@@ -1,0 +1,27 @@
+{
+  "session": "spinon-c114-tailnet-verify",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "pageTitle": "스피논 구현 로드맵",
+  "visibleChecks": {
+    "pr675Card": true,
+    "mergeSha": "96a392d32f69fae6453aecd897aa6d77c8b4aced",
+    "officialCount72of213": true,
+    "c11_4Incomplete": true
+  },
+  "screenshot": {
+    "path": "spec/internal/evidence/roadmap-tailnet-sync-pr675-2026-10-27/tailnet-roadmap-pr675-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "bytes": 188249,
+    "sha256": "c791e27db33757449bc56a510c7ee4dcb3158b0e0795c07bdc1f85e9ac948fb4"
+  },
+  "sessionClosed": true,
+  "ownAgentBrowserAndChromeProcessesAbsentAfterClose": true,
+  "verification": "Tailnet page was loaded after the sync and inspected before this record was written",
+  "otherSessionWasTargeted": false,
+  "finalProcessCheck": {
+    "verificationAgentBrowserAndChromeAbsent": true,
+    "temporaryLocalPreviewListener8769Absent": true,
+    "existingTailnetPreviewServerPid28040StillRunning": true
+  }
+}
