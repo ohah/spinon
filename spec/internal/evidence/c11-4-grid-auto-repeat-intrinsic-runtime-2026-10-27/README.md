@@ -32,4 +32,5 @@
 ## 변경 검토
 
 - [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)는 layout·runtime 오류 경로와 최종 simulator 실행을 다룬다.
-- [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)는 별도 관점으로 변경 파일 간 계약·artifact·evidence·로드맵을 대조했다. PR remote screenshot 렌더링과 GitHub check 상태는 PR 생성 뒤 확인한다.
+- [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)는 별도 관점으로 변경 파일 간 계약·artifact·evidence·로드맵을 대조했다. 구현 PR [#691](https://github.com/ohah/spinon/pull/691)에서 Agent Browser가 Android 1080×2400 및 iOS 1206×2622 screenshot을 실제로 불러온 것을 확인했다.
+- `gh pr checks 691`은 “no checks reported”다. `main` branch protection의 required status checks는 `null`, required approval count는 `0`이다. 이를 CI 통과나 독립 승인으로 표시하지 않는다.

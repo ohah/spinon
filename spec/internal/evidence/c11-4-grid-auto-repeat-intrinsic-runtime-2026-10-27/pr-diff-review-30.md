@@ -27,7 +27,7 @@
 | 21 | Android와 iOS가 다른 root/item/probe geometry를 성공으로 판정함 | 통과. 두 adapter의 8개 상태 표와 전체 node frame이 같은 oracle 기대값을 사용하며 최종 결과 JSON은 모든 scene의 frame·track을 보존한다. |
 | 22 | 0-width 마지막 probe가 box count나 paint sample에 포함됨 | 통과. runner의 box count는 양수 폭 probe만 세고, 표면 sample은 overflow 두 scene만 가지며 node frame에는 0-width probe가 남는다. |
 | 23 | overflow sample이 border·item 바깥 control과 관계없는 점을 읽음 | 통과. oracle `surfaceChecks`에서 x/y를 가져오고 Android PixelCopy와 iOS Metal 기대 sample이 border, overflow item, past-item 순서로 3개씩 일치한다. |
-| 24 | PR screenshots가 다른 run의 화면이거나 artifact 경로가 깨짐 | 통과. README 링크는 최종 Android run `T101029...`와 iOS run `T101156...`의 `fill-auto-min` PNG를 가리킨다. PR 게시 뒤 Agent Browser로 원격 렌더링을 별도 확인한다. |
+| 24 | PR screenshots가 다른 run의 화면이거나 artifact 경로가 깨짐 | 통과. README 링크는 최종 Android run `T101029...`와 iOS run `T101156...`의 `fill-auto-min` PNG를 가리킨다. Agent Browser에서 PR #691 원격 이미지를 읽어 Android 1080×2400, iOS 1206×2622의 `complete=true`와 유효한 intrinsic size를 확인했다. |
 | 25 | 앱 실행 결과가 로컬 binary만 가리키고 설치된 앱은 다른 빌드임 | 통과. 두 `simulator.json`에서 로컬·설치 APK/app hash가 각각 일치하고 동일 source snapshot hash와 dirty input 경로를 기록한다. |
 | 26 | 결과 JSON이 일부 scene만 담거나 실패 retry를 성공에 섞음 | 통과. 두 최종 `result.json`은 8 scene 각각의 frame/track/trace chunk, `drawPresented=true`, retry 0을 보존한다. |
 | 27 | 앱 trace와 capture verifier의 최종 track 단계가 서로 다름 | 통과. 양 플랫폼 matcher와 runner verifier 모두 `StretchAutoTracks` 마지막 stage의 track 목록을 확인한다. |
@@ -35,4 +35,4 @@
 | 29 | static archive 근거를 APK/IPA 전체 fixture exclusion으로 확대함 | 통과. 계획·README·feature-boundary·내부 계약 모두 검사 범위를 macOS ARM64 `.rlib`로 한정하고 앱 bundle 전체 exclusion은 확인하지 않았다고 쓴다. |
 | 30 | 로드맵이 제한 slice를 완료 항목으로 세거나 공식 수치를 조용히 변경함 | 통과. C11.4 checkbox는 `[ ]`, 공식 `72/213`은 그대로며 새 STATUS 항목도 전체 WPT·제품 지원을 주장하지 않는다. |
 
-검토에서 PR을 막는 미해결 코드·계약 결함은 찾지 못했다. 로컬 staged diff에는 Android가 캡처한 두 원본 runtime log 행 끝의 공백만 `git diff --cached --check` 경고로 나타난다. 로그를 보존하기 위해 원문을 편집하지 않았고 나머지 소스·문서 diff는 whitespace 검사에서 깨끗하다. GitHub PR의 screenshot 렌더링과 CI/check 상태는 PR을 만든 뒤 별도 확인해야 한다.
+검토에서 PR을 막는 미해결 코드·계약 결함은 찾지 못했다. 로컬 staged diff에는 Android가 캡처한 두 원본 runtime log 행 끝의 공백만 `git diff --cached --check` 경고로 나타난다. 로그를 보존하기 위해 원문을 편집하지 않았고 나머지 소스·문서 diff는 whitespace 검사에서 깨끗하다. PR #691은 열려 있으며 screenshot 렌더링은 Agent Browser로 확인했다. GitHub check rollup은 비어 있고 main required status check 및 approval은 설정되지 않아 CI 통과나 독립 승인을 주장하지 않는다.
