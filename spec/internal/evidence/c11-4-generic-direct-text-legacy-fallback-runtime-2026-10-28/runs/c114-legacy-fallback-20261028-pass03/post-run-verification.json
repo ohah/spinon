@@ -1,0 +1,23 @@
+{
+  "run_id": "c114-legacy-fallback-20261028-pass03",
+  "platforms": {
+    "android-avd": {
+      "scenes": 13,
+      "passed": 13,
+      "trace_chunks": 92,
+      "draw_reports_after_exact_scene_summary": 26,
+      "runtime_text_count": 0,
+      "glyph_batch_draw_count": 0,
+      "screenshot_bytes": 77599
+    },
+    "ios-simulator": {
+      "scenes": 13,
+      "passed": 13,
+      "trace_chunks": 175,
+      "draw_reports_after_exact_scene_summary": 13,
+      "runtime_text_count": 0,
+      "glyph_batch_draw_count": 0,
+      "screenshot_bytes": 144711
+    }
+  }
+}
