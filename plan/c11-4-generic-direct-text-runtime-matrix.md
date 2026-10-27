@@ -63,3 +63,4 @@
 ## 검토 기록
 
 - 계획 독립 실패 관점 20개: [검토 보고서](./c11-4-generic-direct-text-runtime-matrix-plan-review-20.md).
+- 계획 PR 변경 검토 20개: [PR diff 검토 보고서](./c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md).
