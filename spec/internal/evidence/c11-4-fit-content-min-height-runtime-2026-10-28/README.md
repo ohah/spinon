@@ -45,6 +45,7 @@ Rows trace의 `StretchAutoTracks { applied: true }`는 정렬 단계가 실행�
 - Android 기본 및 fixture-test 앱 빌드, iOS 기본 및 fixture-test 앱 빌드 통과.
 - 제품 `c04-runtime-gpu` FFI archive에서는 C11.4 fixture symbol과 scene marker가 없고, `c04-runtime-gpu-fixture-test` positive control에는 둘 다 있음을 확인했다.
 - `cargo fmt --all -- --check` 및 `git diff --check` 통과.
+- 검토 기록: [구현/runtime 경계 검토](./implementation-review-20.md), [PR diff 검토](./pr-diff-review-30.md). 실제 실행 근거, 코드 경계만 확인한 항목, fault injection을 하지 않은 항목을 구분했다.
 - `docs:build`는 exit 1로 끝났고 repository 내 976개 문서에서 dead link가 보고됐다. 내부 계약 0059는 기존 계획/evidence 링크 때문에 목록에 있지만, 이번 min-height slice의 계획·evidence 경로는 오류 목록에 없었다. 전체 빌드 로그는 실행 환경의 `/tmp`에만 남아 저장소에 포함하지 않았다.
 
 이 실행은 계획 PR #698에서 고정한 expected JSON과 CSS Grid 2025 CRD 계산을 검증했다. upstream Chrome WPT 결과와 Spinon simulator 결과는 서로 다른 근거다.
