@@ -1,0 +1,337 @@
+{
+  "pass": "pass01",
+  "sourceHead": "0ba3f14c8d696f34660269a262ee82b9981b9008",
+  "sourceTree": "3396de1a81daa90c4bd8fa1096d48aaa5c2682a5",
+  "baseRoot": "/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-20261025-root-pass08-corrected-selected",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-20261027-root-pass01-selected",
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-20261027-site-pass01-selected",
+  "sourceFiles": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "plan/c11-4-generic-direct-text-runtime-matrix.md",
+    "plan/c11-4-generic-direct-text-runtime-matrix-plan-review-20.md",
+    "plan/c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+    "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+    "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt"
+  ],
+  "overlayCount": 51,
+  "overlayBytes": 2964625,
+  "baseStorage": "2026-10-25 pass08 선택 root의 hardlink 복사본이며 overlay 시 새 경로의 파일만 교체한다",
+  "noDeletes": true,
+  "overlays": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 461460,
+      "sha256": "fc7de23add5e2a7561d99ed67ebd1679b5c0c7c3106ac04396a5c14c7e3f184b"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 461460,
+      "sha256": "fc7de23add5e2a7561d99ed67ebd1679b5c0c7c3106ac04396a5c14c7e3f184b"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 339147,
+      "sha256": "366f29dc3269aa3e20c6add4b23d766de9b663f426dc04299d210717dfd01917"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 339147,
+      "sha256": "366f29dc3269aa3e20c6add4b23d766de9b663f426dc04299d210717dfd01917"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 339147,
+      "sha256": "366f29dc3269aa3e20c6add4b23d766de9b663f426dc04299d210717dfd01917"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix.md",
+      "path": "plan/c11-4-generic-direct-text-runtime-matrix.md",
+      "bytes": 10721,
+      "sha256": "ddff1f70f2b0732a04d917ec8aba787e3d0b57a64df2c1d0b489f6acc690f979"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix.md",
+      "path": "spec/plan/c11-4-generic-direct-text-runtime-matrix.md",
+      "bytes": 10721,
+      "sha256": "ddff1f70f2b0732a04d917ec8aba787e3d0b57a64df2c1d0b489f6acc690f979"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix-plan-review-20.md",
+      "path": "plan/c11-4-generic-direct-text-runtime-matrix-plan-review-20.md",
+      "bytes": 4962,
+      "sha256": "b141f681bb66f810102e60c327950e1c7a3b3196304fd5c3efb514fd569a9118"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix-plan-review-20.md",
+      "path": "spec/plan/c11-4-generic-direct-text-runtime-matrix-plan-review-20.md",
+      "bytes": 4962,
+      "sha256": "b141f681bb66f810102e60c327950e1c7a3b3196304fd5c3efb514fd569a9118"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md",
+      "path": "plan/c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md",
+      "bytes": 4863,
+      "sha256": "433eea75f283d0d7a096302302a2d7fc6d632c5ca707a68db6e23a47d063e782"
+    },
+    {
+      "source": "plan/c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md",
+      "path": "spec/plan/c11-4-generic-direct-text-runtime-matrix-pr-diff-review-20.md",
+      "bytes": 4863,
+      "sha256": "433eea75f283d0d7a096302302a2d7fc6d632c5ca707a68db6e23a47d063e782"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "bytes": 4309,
+      "sha256": "6f274b00498216e1ca4dc076f640f92f54c78df07af83db2eba830f0dbfcba6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "bytes": 4309,
+      "sha256": "6f274b00498216e1ca4dc076f640f92f54c78df07af83db2eba830f0dbfcba6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "bytes": 4309,
+      "sha256": "6f274b00498216e1ca4dc076f640f92f54c78df07af83db2eba830f0dbfcba6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.md",
+      "bytes": 4309,
+      "sha256": "6f274b00498216e1ca4dc076f640f92f54c78df07af83db2eba830f0dbfcba6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "bytes": 5410,
+      "sha256": "b066d4461f943bd96ea3b052f1bdaf3d3ae565aadb96dc0d762c8d122416dbff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "bytes": 5410,
+      "sha256": "b066d4461f943bd96ea3b052f1bdaf3d3ae565aadb96dc0d762c8d122416dbff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "bytes": 5410,
+      "sha256": "b066d4461f943bd96ea3b052f1bdaf3d3ae565aadb96dc0d762c8d122416dbff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.md",
+      "bytes": 5410,
+      "sha256": "b066d4461f943bd96ea3b052f1bdaf3d3ae565aadb96dc0d762c8d122416dbff"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "bytes": 5410,
+      "sha256": "1a9bf083a053a25a0ec446e6c021e6653df25604f2d0051d8b3dc8bf35987882"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "bytes": 5410,
+      "sha256": "1a9bf083a053a25a0ec446e6c021e6653df25604f2d0051d8b3dc8bf35987882"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "bytes": 5410,
+      "sha256": "1a9bf083a053a25a0ec446e6c021e6653df25604f2d0051d8b3dc8bf35987882"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.md",
+      "bytes": 5410,
+      "sha256": "1a9bf083a053a25a0ec446e6c021e6653df25604f2d0051d8b3dc8bf35987882"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "bytes": 3964,
+      "sha256": "8bd26e41560f90714f065e6211848fa8dae5cdc78177f3defc05bf4cbcdc7a4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "bytes": 3964,
+      "sha256": "8bd26e41560f90714f065e6211848fa8dae5cdc78177f3defc05bf4cbcdc7a4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "bytes": 3964,
+      "sha256": "8bd26e41560f90714f065e6211848fa8dae5cdc78177f3defc05bf4cbcdc7a4b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.md",
+      "bytes": 3964,
+      "sha256": "8bd26e41560f90714f065e6211848fa8dae5cdc78177f3defc05bf4cbcdc7a4b"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "bytes": 4759,
+      "sha256": "ae0a690fe372803be309d52fcef04a55ccb2d08d81cd4688ea4ccb9ae08046f3"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "path": "internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "bytes": 4759,
+      "sha256": "ae0a690fe372803be309d52fcef04a55ccb2d08d81cd4688ea4ccb9ae08046f3"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "path": "public/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "bytes": 4759,
+      "sha256": "ae0a690fe372803be309d52fcef04a55ccb2d08d81cd4688ea4ccb9ae08046f3"
+    },
+    {
+      "source": "spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "path": "public/spec/internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.md",
+      "bytes": 4759,
+      "sha256": "ae0a690fe372803be309d52fcef04a55ccb2d08d81cd4688ea4ccb9ae08046f3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "bytes": 77144,
+      "sha256": "b94f2c7fac6d2babee09312ec3828dbad99fa25d72283098831e7b60e7b08f2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "bytes": 77144,
+      "sha256": "b94f2c7fac6d2babee09312ec3828dbad99fa25d72283098831e7b60e7b08f2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "bytes": 77144,
+      "sha256": "b94f2c7fac6d2babee09312ec3828dbad99fa25d72283098831e7b60e7b08f2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "bytes": 77144,
+      "sha256": "b94f2c7fac6d2babee09312ec3828dbad99fa25d72283098831e7b60e7b08f2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "bytes": 517,
+      "sha256": "18ae09de243989cd72cf561e0a9797ccfa4c87a886b8b712e1a979c92c0240cf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "bytes": 517,
+      "sha256": "18ae09de243989cd72cf561e0a9797ccfa4c87a886b8b712e1a979c92c0240cf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "bytes": 517,
+      "sha256": "18ae09de243989cd72cf561e0a9797ccfa4c87a886b8b712e1a979c92c0240cf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "bytes": 517,
+      "sha256": "18ae09de243989cd72cf561e0a9797ccfa4c87a886b8b712e1a979c92c0240cf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "bytes": 143661,
+      "sha256": "89ca01bf6b6f946471bf044944ef9e8c5930b1004ac5b8215923a4cb1a3c2a2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "bytes": 143661,
+      "sha256": "89ca01bf6b6f946471bf044944ef9e8c5930b1004ac5b8215923a4cb1a3c2a2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "bytes": 143661,
+      "sha256": "89ca01bf6b6f946471bf044944ef9e8c5930b1004ac5b8215923a4cb1a3c2a2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "bytes": 143661,
+      "sha256": "89ca01bf6b6f946471bf044944ef9e8c5930b1004ac5b8215923a4cb1a3c2a2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "bytes": 493,
+      "sha256": "56d64c078ab2e0b2f2a55111781a1d34132ffecfcc4e0235f931b135e87ac22b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "bytes": 493,
+      "sha256": "56d64c078ab2e0b2f2a55111781a1d34132ffecfcc4e0235f931b135e87ac22b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "bytes": 493,
+      "sha256": "56d64c078ab2e0b2f2a55111781a1d34132ffecfcc4e0235f931b135e87ac22b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "bytes": 493,
+      "sha256": "56d64c078ab2e0b2f2a55111781a1d34132ffecfcc4e0235f931b135e87ac22b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "path": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "bytes": 126,
+      "sha256": "1febe2ed587f06fe4c79afb3473c4b230f6fd4b343841ad2e8f25256b2d8271c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "bytes": 126,
+      "sha256": "1febe2ed587f06fe4c79afb3473c4b230f6fd4b343841ad2e8f25256b2d8271c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "path": "public/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "bytes": 126,
+      "sha256": "1febe2ed587f06fe4c79afb3473c4b230f6fd4b343841ad2e8f25256b2d8271c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "path": "public/spec/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/validation/archive-boundary/result.txt",
+      "bytes": 126,
+      "sha256": "1febe2ed587f06fe4c79afb3473c4b230f6fd4b343841ad2e8f25256b2d8271c"
+    }
+  ]
+}

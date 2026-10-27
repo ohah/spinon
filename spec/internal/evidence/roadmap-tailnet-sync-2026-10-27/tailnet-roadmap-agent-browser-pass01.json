@@ -1,0 +1,49 @@
+{
+  "directTextLinks": [
+    {
+      "href": "https://github.com/ohah/spinon/pull/679",
+      "text": "#679 Rebase and merge"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-generic-direct-text-runtime-matrix.html",
+      "text": "계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.html",
+      "text": "실행 근거"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.html",
+      "text": "구현/runtime 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.html",
+      "text": "PR diff 검토 20개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "text": "Android 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "text": "iOS 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+      "text": "공식 상태"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.html",
+      "text": "병합 후 상태/로드맵 검토 20개"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/679",
+      "text": "PR #679"
+    }
+  ],
+  "directTextRecord": "2026-10-27 C11.4 direct element-text intrinsic · 6-scene app matrix PR #679 Rebase and merge (2026-10-27T03:24:44Z, merge SHA 093a2adfa846f0ad0e7218074d34821f1825d771): normal control과 nowrap, break-all, content variation, collapsible whitespace, item-specific style/order 여섯 장면을 opt-in V8·generic collector 경로에서 실행했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 6/6 scene의 typed input, source/style/revision, line geometry, Columns/Rows contribution, node frame, draw/present가 통과했다. 기본 Rust FFI archive에는 새 route ID가 없고 opt-in fixture archive에는 포함된다. 대표 화면은 layout box와 surface만 보이며 runtime_text_count=0, glyph_batch_draw_count=0이다. 일반 CSS admission, glyph paint, WPT, 실기기·Android hardware GPU, iOS compositor 이후 pixel, APK/IPA 전체 fixture 제외는 검증하지 않았다. PR check rollup은 비었고 main required status checks는 설정되어 있지 않았다. C11.4와 C11은 미완료이며 공식 72/213은 유지한다. 계획 · 실행 근거 · 구현/runtime 검토 20개 · PR diff 검토 20개 · Android 화면 · iOS 화면 · 공식 상태 · 병합 후 상태/로드맵 검토 20개 · PR #679",
+  "directTextRecordFound": true,
+  "officialCount72of213": true,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=roadmap-20261027-pass01"
+}
