@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "sourceHead": "7ccdc231715b37f1800c2edbaa81ed291351693e",
+  "sourceTree": "2988b92d0b15fbf238941ed20b770851b1d46427",
+  "rspressVersion": "2.0.22",
+  "buildLog": "rspress-image-resolution-build.log",
+  "selectedRootManifest": "rspress-image-resolution-source.json",
+  "selectedReadmeRoutes": [
+    "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html",
+    "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html"
+  ],
+  "assets": [
+    {
+      "readmeRoute": "/spinon/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html",
+      "alt": "Android API 37 ARM64 16 KB AVD의 weighted-columns scene",
+      "publishedSrc": "/spinon/static/image/android-weighted-columns.5876f19b65.png",
+      "outputExists": true,
+      "sourcePath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png",
+      "sourceSha256": "3049aaab1bd99b5d186baaf747f70947d0e3e416e53202073eb57088579b4cfa",
+      "publishedSha256": "3049aaab1bd99b5d186baaf747f70947d0e3e416e53202073eb57088579b4cfa"
+    },
+    {
+      "readmeRoute": "/spinon/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html",
+      "alt": "iPhone 17 Pro / iOS 26.2 Simulator의 weighted-columns scene",
+      "publishedSrc": "/spinon/static/image/ios-weighted-columns.794454e277.png",
+      "outputExists": true,
+      "sourcePath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png",
+      "sourceSha256": "154e179ce400b386f855ec8c547a0580b3aba0b4a2bd8622d42bfa82ebf23257",
+      "publishedSha256": "154e179ce400b386f855ec8c547a0580b3aba0b4a2bd8622d42bfa82ebf23257"
+    },
+    {
+      "readmeRoute": "/spinon/spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html",
+      "alt": "Android API 37 ARM64 16 KB AVD의 weighted-columns scene",
+      "publishedSrc": "/spinon/static/image/android-weighted-columns.5876f19b65.png",
+      "outputExists": true,
+      "sourcePath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png",
+      "sourceSha256": "3049aaab1bd99b5d186baaf747f70947d0e3e416e53202073eb57088579b4cfa",
+      "publishedSha256": "3049aaab1bd99b5d186baaf747f70947d0e3e416e53202073eb57088579b4cfa"
+    },
+    {
+      "readmeRoute": "/spinon/spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.html",
+      "alt": "iPhone 17 Pro / iOS 26.2 Simulator의 weighted-columns scene",
+      "publishedSrc": "/spinon/static/image/ios-weighted-columns.794454e277.png",
+      "outputExists": true,
+      "sourcePath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png",
+      "sourceSha256": "154e179ce400b386f855ec8c547a0580b3aba0b4a2bd8622d42bfa82ebf23257",
+      "publishedSha256": "154e179ce400b386f855ec8c547a0580b3aba0b4a2bd8622d42bfa82ebf23257"
+    }
+  ],
+  "allAssetsResolve": true,
+  "allAssetHashesMatchSource": true
+}
