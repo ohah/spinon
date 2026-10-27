@@ -82,10 +82,127 @@ private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
     "definite-44px-auto-fit-prefix-suffix-control",
 ]
 #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
-private let c114GenericDirectTextSceneIDs: Set<String> = ["generic-root-normal"]
+private let c114GenericDirectTextSceneIDs: Set<String> = [
+    "generic-root-normal", "generic-root-nowrap", "generic-root-break-all",
+    "generic-root-content-variation", "generic-root-whitespace", "generic-root-reorder",
+]
 #else
 private let c114GenericDirectTextSceneIDs: Set<String> = []
 #endif
+
+private struct C114GenericDirectTextItemExpectation {
+    let node: Int
+    let x: Double
+    let width: Double
+    let height: Double
+    let minContent: Double
+    let maxContent: Double
+    let minContentHeight: Double
+    let maxContentHeight: Double
+    let rawText: String
+    let layoutText: String
+    let whiteSpace: String
+    let wordBreak: String
+    let lineAdvances: [Double]
+}
+
+private struct C114GenericDirectTextSceneExpectation {
+    let rootHeight: Double
+    let columns: [Double]
+    let items: [C114GenericDirectTextItemExpectation]
+}
+
+private func c114GenericTextItem(
+    node: Int, x: Double, width: Double, height: Double,
+    minContent: Double, maxContent: Double,
+    minContentHeight: Double, maxContentHeight: Double,
+    rawText: String, layoutText: String, whiteSpace: String, wordBreak: String,
+    lineAdvances: [Double]
+) -> C114GenericDirectTextItemExpectation {
+    C114GenericDirectTextItemExpectation(
+        node: node, x: x, width: width, height: height,
+        minContent: minContent, maxContent: maxContent,
+        minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
+        rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
+        wordBreak: wordBreak, lineAdvances: lineAdvances
+    )
+}
+
+private func c114GenericDirectTextExpectation(
+    _ sceneID: String
+) -> C114GenericDirectTextSceneExpectation? {
+    switch sceneID {
+    case "generic-root-normal":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [20, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 20, height: 20,
+                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
+                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [10, 20]),
+            c114GenericTextItem(node: 4, x: 30, width: 40, height: 10,
+                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
+                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    case "generic-root-nowrap":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 10, columns: [40, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 40, height: 10,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A BC", layoutText: "A BC", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+            c114GenericTextItem(node: 4, x: 50, width: 40, height: 10,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A BC", layoutText: "A BC", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    case "generic-root-break-all":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [10, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 10, height: 40,
+                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
+                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
+                lineAdvances: [10, 10, 10, 10]),
+            c114GenericTextItem(node: 4, x: 20, width: 40, height: 10,
+                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
+                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
+                lineAdvances: [40]),
+        ])
+    case "generic-root-content-variation":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [30, 50], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 30, height: 20,
+                minContent: 30, maxContent: 50, minContentHeight: 20, maxContentHeight: 10,
+                rawText: "A BCD", layoutText: "A BCD", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [10, 30]),
+            c114GenericTextItem(node: 4, x: 40, width: 50, height: 10,
+                minContent: 30, maxContent: 50, minContentHeight: 20, maxContentHeight: 10,
+                rawText: "A BCD", layoutText: "A BCD", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [50]),
+        ])
+    case "generic-root-whitespace":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [20, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 20, height: 20,
+                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
+                rawText: " A  BC ", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [10, 20]),
+            c114GenericTextItem(node: 4, x: 30, width: 40, height: 10,
+                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
+                rawText: " A  BC ", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    case "generic-root-reorder":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [10, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 10, height: 40,
+                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
+                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
+                lineAdvances: [10, 10, 10, 10]),
+            c114GenericTextItem(node: 4, x: 20, width: 40, height: 10,
+                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
+                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    default:
+        return nil
+    }
+}
+
 private let c114RowAxisSpanStageSceneIDs: Set<String> = [
     "row-axis-span2-forward", "row-axis-span2-reversed",
     "row-axis-span2-before-span3", "row-axis-span3-before-span2",
@@ -1218,7 +1335,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=12,height=40"
     }
-    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=100,height=20" }
+    if let genericText = c114GenericDirectTextExpectation(sceneID) {
+        return "width=100,height=\(c114GenericFrameNumber(genericText.rootHeight))"
+    }
     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
     if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
@@ -1522,7 +1641,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=24,height=16"
     }
-    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=20,height=20" }
+    if let genericText = c114GenericDirectTextExpectation(sceneID),
+       let first = genericText.items.first {
+        return "width=\(c114GenericFrameNumber(first.width)),height=\(c114GenericFrameNumber(first.height))"
+    }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
         return "width=24,height=24"
     }
@@ -1921,7 +2043,7 @@ private func c114OrthogonalRowFramesMatch(
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
     if c114GenericDirectTextSceneIDs.contains(sceneID) {
-        return c114GenericDirectTextIntrinsicInputsMatch(report: report)
+        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
         return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
@@ -3421,8 +3543,11 @@ private func c114ImageMultiSpanTracksMatch(
         && zip(sizes, expected).allSatisfy { abs($0.0 - $0.1) <= 0.0001 }
 }
 
-private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
-    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+private func c114GenericDirectTextIntrinsicInputsMatch(
+    sceneID: String, report: String
+) -> Bool {
+    guard let scene = c114GenericDirectTextExpectation(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
           let revisionSource = c114GenericJSONString(revision["source"]),
           revisionSource.hasPrefix("HostDocument"),
@@ -3434,8 +3559,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
           intrinsicSizeRevision >= 0,
           let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
           inputs.count == 2 else { return false }
-    let expectedNodes = [2, 4]
+    let expectedNodes = scene.items.map(\.node)
     for (index, input) in inputs.enumerated() {
+        let expected = scene.items[index]
         guard c114GenericJSONInteger(input["grid"]) == 1,
               c114GenericJSONInteger(input["node"]) == expectedNodes[index],
               c114GenericJSONInteger(input["sourceOrder"]) == index,
@@ -3444,14 +3570,23 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
               let source = input["source"] as? [String: Any],
               c114GenericJSONString(source["kind"]) == "text",
               c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
-              c114GenericJSONNear(source["minContent"], expected: 20, tolerance: 1.0 / 64.0),
               c114GenericJSONNear(
-                source["minContentHeight"], expected: 20, tolerance: 1.0 / 64.0
+                source["minContent"], expected: expected.minContent, tolerance: 1.0 / 64.0
               ),
-              c114GenericJSONNear(source["maxContent"], expected: 40, tolerance: 1.0 / 64.0),
               c114GenericJSONNear(
-                source["maxContentHeight"], expected: 10, tolerance: 1.0 / 64.0
-              ) else {
+                source["minContentHeight"],
+                expected: expected.minContentHeight,
+                tolerance: 1.0 / 64.0
+              ),
+              c114GenericJSONNear(
+                source["maxContent"], expected: expected.maxContent, tolerance: 1.0 / 64.0
+              ),
+              c114GenericJSONNear(
+                source["maxContentHeight"],
+                expected: expected.maxContentHeight,
+                tolerance: 1.0 / 64.0
+              ),
+              c114GenericContributionInputMatches(input, expected) else {
             return false
         }
     }
@@ -3487,10 +3622,107 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
         }
     }
     guard minContentWidthNodes == Set(expectedNodes),
-          maxContentWidthNodes == Set([4]),
+          maxContentWidthNodes == Set([expectedNodes[1]]),
           minContentHeightNodes == Set(expectedNodes),
           maxContentHeightNodes == Set(expectedNodes) else { return false }
-    return c114GenericDirectTextTraceMatches(diagnostics: diagnostics)
+    return c114GenericDirectTextTextLayoutsMatch(
+        scene: scene, diagnostics: diagnostics, layoutRevision: revision
+    ) && c114GenericDirectTextTraceMatches(sceneID: sceneID, diagnostics: diagnostics)
+}
+
+private func c114GenericContributionInputMatches(
+    _ input: [String: Any], _ expected: C114GenericDirectTextItemExpectation
+) -> Bool {
+    guard let contribution = input["contributionInput"] as? [String: Any] else { return false }
+    return c114GenericAxisContributionMatches(
+        contribution["width"], minContent: expected.minContent, maxContent: expected.maxContent
+    ) && c114GenericAxisContributionMatches(
+        contribution["height"],
+        minContent: expected.minContentHeight,
+        maxContent: expected.maxContentHeight
+    )
+}
+
+private func c114GenericAxisContributionMatches(
+    _ value: Any?, minContent: Double, maxContent: Double
+) -> Bool {
+    guard let axis = value as? [String: Any],
+          let preferredSize = axis["preferredSize"] as? [String: Any],
+          let minSize = axis["minSize"] as? [String: Any],
+          let maxSize = axis["maxSize"] as? [String: Any] else { return false }
+    return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONString(preferredSize["kind"]) == "auto"
+        && c114GenericJSONString(minSize["kind"]) == "auto"
+        && c114GenericJSONString(maxSize["kind"]) == "auto"
+        && c114GenericZeroLength(axis["marginStart"])
+        && c114GenericZeroLength(axis["marginEnd"])
+        && c114GenericZeroLength(axis["paddingStart"])
+        && c114GenericZeroLength(axis["paddingEnd"])
+        && c114GenericJSONNear(axis["borderStart"], expected: 0, tolerance: 0.0001)
+        && c114GenericJSONNear(axis["borderEnd"], expected: 0, tolerance: 0.0001)
+}
+
+private func c114GenericZeroLength(_ value: Any?) -> Bool {
+    guard let length = value as? [String: Any] else { return false }
+    return c114GenericJSONString(length["kind"]) == "length"
+        && c114GenericJSONNear(length["cssPx"], expected: 0, tolerance: 0.0001)
+}
+
+private func c114GenericDirectTextTextLayoutsMatch(
+    scene: C114GenericDirectTextSceneExpectation,
+    diagnostics: [String: Any],
+    layoutRevision: [String: Any]
+) -> Bool {
+    guard let layouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]],
+          layouts.count == scene.items.count else { return false }
+    for (index, expected) in scene.items.enumerated() {
+        let layout = layouts[index]
+        guard c114GenericJSONInteger(layout["node"]) == expected.node,
+              c114GenericJSONInteger(layout["layoutParagraph"]) == expected.node,
+              let revision = layout["revision"] as? [String: Any],
+              c114GenericJSONString(revision["source"]) == c114GenericJSONString(layoutRevision["source"]),
+              c114GenericJSONInteger(revision["style"]) == c114GenericJSONInteger(layoutRevision["style"]),
+              c114GenericJSONInteger(revision["environment"]) == c114GenericJSONInteger(layoutRevision["environment"]),
+              c114GenericJSONInteger(revision["intrinsicSize"]) == c114GenericJSONInteger(layoutRevision["intrinsicSize"]),
+              let sources = layout["sources"] as? [[String: Any]], sources.count == 1,
+              let sourceNode = c114GenericJSONInteger(sources[0]["node"]),
+              sourceNode == expected.node + 1,
+              c114GenericJSONString(sources[0]["text"]) == expected.rawText,
+              let inlineAncestors = sources[0]["inlineAncestors"] as? [Any],
+              inlineAncestors.isEmpty,
+              c114GenericJSONString(layout["text"]) == expected.layoutText,
+              c114GenericJSONInteger(layout["fontRegistryRevision"]) == 1,
+              c114GenericJSONNear(layout["availableWidth"], expected: expected.width, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(layout["width"], expected: expected.width, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(layout["height"], expected: expected.height, tolerance: 1.0 / 64.0),
+              let style = layout["paragraphStyle"] as? [String: Any],
+              c114GenericJSONString(style["fontFamily"]) == "Ahem",
+              c114GenericJSONNear(style["fontSize"], expected: 10, tolerance: 0),
+              c114GenericJSONNear(style["lineHeight"], expected: 10, tolerance: 0),
+              style["lineHeightIsNormal"] as? Bool == false,
+              c114GenericJSONNear(style["fontWeight"], expected: 400, tolerance: 0),
+              c114GenericJSONString(style["fontStyle"]) == "Normal",
+              c114GenericJSONString(style["whiteSpace"]) == expected.whiteSpace,
+              c114GenericJSONString(style["wordBreak"]) == expected.wordBreak,
+              c114GenericJSONString(style["direction"]) == "Ltr",
+              c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
+              c114GenericJSONString(style["textOrientation"]) == "Mixed",
+              c114GenericJSONString(style["lineBreak"]) == "Strict",
+              c114GenericJSONString(style["ligatures"]) == "Normal",
+              let lines = layout["lines"] as? [[String: Any]],
+              lines.count == expected.lineAdvances.count else { return false }
+        for (lineIndex, line) in lines.enumerated() {
+            guard c114GenericJSONNear(
+                    line["advance"], expected: expected.lineAdvances[lineIndex], tolerance: 1.0 / 64.0
+                  ),
+                  c114GenericJSONNear(line["lineTop"], expected: Double(lineIndex) * 10, tolerance: 1.0 / 64.0),
+                  c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: 1.0 / 64.0) else {
+                return false
+            }
+        }
+    }
+    return true
 }
 
 private func c114GenericJSONInteger(_ value: Any?) -> Int? {
@@ -3706,7 +3938,10 @@ private func c114RowAxisSpanContributionsMatch(
     return true
 }
 
-private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bool {
+private func c114GenericDirectTextTraceMatches(
+    sceneID: String, diagnostics: [String: Any]
+) -> Bool {
+    guard let scene = c114GenericDirectTextExpectation(sceneID) else { return false }
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
           c114GenericJSONInteger(traces[0]["grid"]) == 1,
@@ -3720,14 +3955,24 @@ private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bo
           }),
           c114GenericJSONString(passes[0]["axis"]) == "Columns",
           c114GenericJSONString(passes[1]["axis"]) == "Rows",
-          c114GenericTrackSizesMatch(passes[0], expected: [20, 40], gap: 10),
-          c114GenericTrackSizesMatch(passes[1], expected: [20], gap: 0) else { return false }
+          c114GenericTrackSizesMatch(passes[0], expected: scene.columns, gap: 10),
+          c114GenericTrackSizesMatch(passes[1], expected: [scene.rootHeight], gap: 0) else {
+        return false
+    }
+    let first = scene.items[0]
+    let second = scene.items[1]
     let expectedColumns: [(item: Int, kind: String, value: Double)] = [
-        (2, "MinContent", 20), (4, "MinContent", 20), (4, "MaxContent", 40),
+        (first.node, "MinContent", first.minContent),
+        (second.node, "MinContent", second.minContent),
+        (second.node, "MaxContent", second.maxContent),
     ]
     let expectedRows: [(item: Int, kind: String, value: Double)] = [
-        (2, "Minimum", 20), (2, "MinContent", 20), (2, "MaxContent", 20),
-        (4, "Minimum", 10), (4, "MinContent", 10), (4, "MaxContent", 10),
+        (first.node, "Minimum", first.height),
+        (first.node, "MinContent", first.height),
+        (first.node, "MaxContent", first.height),
+        (second.node, "Minimum", second.height),
+        (second.node, "MinContent", second.height),
+        (second.node, "MaxContent", second.height),
     ]
     return c114GenericDirectTextContributionsMatch(
         passes[0], expected: expectedColumns, allowIdenticalDuplicates: true
@@ -4654,6 +4899,10 @@ private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {
         + childFrames.joined(separator: ";") + "]"
 }
 
+private func c114GenericFrameNumber(_ value: Double) -> String {
+    value == Double(Int(value)) ? String(Int(value)) : String(value)
+}
+
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     if let rowAxisSpanFrames = c114RowAxisSpanExpectedNodeFrames(sceneID) {
         return rowAxisSpanFrames
@@ -4675,10 +4924,14 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
     }
-    if c114GenericDirectTextSceneIDs.contains(sceneID) {
-        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
-            + "1:node=2,x=0,y=0,width=20,height=20;"
-            + "2:node=4,x=30,y=0,width=40,height=10]"
+    if let genericText = c114GenericDirectTextExpectation(sceneID) {
+        var frames = ["0:node=1,x=0,y=0,width=100,height=\(c114GenericFrameNumber(genericText.rootHeight))"]
+        for (index, item) in genericText.items.enumerated() {
+            frames.append("\(index + 1):node=\(item.node),x=\(c114GenericFrameNumber(item.x)),"
+                + "y=0,width=\(c114GenericFrameNumber(item.width)),"
+                + "height=\(c114GenericFrameNumber(item.height))")
+        }
+        return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
     }
     if let orthogonalFrames = c114OrthogonalRowNodeFrames(sceneID) {
         return orthogonalFrames

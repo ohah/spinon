@@ -2,6 +2,8 @@ use super::{
     RuntimeUaCascadeHandle, RuntimeUaCascadeKey, State, WorkRequest, elapsed_microseconds, lock,
 };
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle};
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_layout::LayoutTextSnapshot;
 use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
 use spinon_render::RuntimeRenderSnapshot;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
@@ -90,6 +92,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub revision: spinon_layout::LayoutInputRevision,
     pub intrinsic_measurements: Arc<[spinon_layout::LayoutIntrinsicMeasurement]>,
     pub item_inputs: Arc<[spinon_layout::LayoutGridItemIntrinsicInput]>,
+    pub item_text_layouts: Arc<[LayoutTextSnapshot]>,
     pub item_frames: Arc<[(spinon_core::NodeId, LayoutFrame)]>,
     pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
     pub fit_content_auto_neighbor: Option<RuntimeC11_4FitContentAutoNeighborObservation>,
@@ -127,10 +130,21 @@ impl RuntimeGridTrackSizingDiagnostics {
             })
             .collect::<Vec<_>>()
             .into();
+        let item_text_layouts = self
+            .item_text_layouts
+            .iter()
+            .cloned()
+            .map(|mut text_layout| {
+                text_layout.revision = revision;
+                text_layout
+            })
+            .collect::<Vec<_>>()
+            .into();
         Self {
             revision,
             intrinsic_measurements,
             item_inputs,
+            item_text_layouts,
             item_frames: Arc::clone(&self.item_frames),
             traces: Arc::clone(&self.traces),
             fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
@@ -807,10 +821,15 @@ where
                         })
                 })
                 .collect::<Result<Vec<_>, _>>()?;
+            let item_text_layouts = item_inputs
+                .iter()
+                .filter_map(|input| output.layout.text_layouts.get(&input.node).cloned())
+                .collect::<Vec<_>>();
             Some(Arc::new(RuntimeGridTrackSizingDiagnostics {
                 revision: output.layout.revision,
                 intrinsic_measurements: intrinsic_measurements.into(),
                 item_inputs: item_inputs.into(),
+                item_text_layouts: item_text_layouts.into(),
                 item_frames: item_frames.into(),
                 traces: traces.into(),
                 fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
@@ -1371,6 +1390,7 @@ mod tests {
             revision: original_revision,
             intrinsic_measurements: Arc::from([]),
             item_inputs: Arc::from([]),
+            item_text_layouts: Arc::from([]),
             item_frames: Arc::from([]),
             traces: Arc::from([]),
             fit_content_auto_neighbor: Some(RuntimeC11_4FitContentAutoNeighborObservation {

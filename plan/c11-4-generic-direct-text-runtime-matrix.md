@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [direct element-text 입력 계획](./c11-4-generic-direct-text-intrinsic-input.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획·독립 실패 관점 검토 단계. 기존 6개 Chrome/Ahem positive 중 `generic-root-normal` 한 장면만 Android/iOS 앱 경로에서 확인했다. 이 계획은 나머지 5개 고정 positive를 같은 opt-in generic collector와 intrinsic text helper 경로로 연결한다. 일반 CSS text admission, 글리프 paint, 전체 Stage A 또는 C11.4 완료를 뜻하지 않는다. 공식 완료 `72/213` 및 C11 체크박스는 유지한다.
+**상태:** 구현·시뮬레이터 검증 완료, implementation/runtime 20관점 및 PR diff 20관점 검토 완료; PR 생성·병합과 병합 후 상태/로드맵 sync 대기. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 여섯 장면이 각각 6/6 통과했다. 이 근거는 여섯 고정 positive를 같은 opt-in generic collector와 intrinsic text helper 경로로 확인한다. 일반 CSS text admission, 글리프 paint, 전체 Stage A 또는 C11.4 완료를 뜻하지 않는다. 공식 완료 `72/213` 및 C11 체크박스는 유지한다.
 
 ## 목적과 결손
 

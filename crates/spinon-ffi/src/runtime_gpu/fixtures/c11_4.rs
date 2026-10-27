@@ -1151,7 +1151,7 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {
-        return Ok(Cow::Borrowed(source));
+        return Ok(Cow::Owned(source));
     }
     if let Some(source) = mixed_direct_text_image_intrinsic::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
