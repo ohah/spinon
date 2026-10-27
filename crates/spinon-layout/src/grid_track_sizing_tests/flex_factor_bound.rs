@@ -272,3 +272,227 @@ fn fixed_minimum_flex_maximum_neighbors_size_auto_repeat_on_both_axes() {
         assert!(tracks.iter().all(|(collapsed, _)| !collapsed), "{axis:?}");
     }
 }
+
+const FLEXIBLE_TRACK_EXPANSION_EXPECTED_JSON: &str = include_str!(
+    "../../../../spec/internal/evidence/c11-4-flex-stage-oracle-precomparison-2026-10-28/expected.json"
+);
+const FLEXIBLE_TRACK_EXPANSION_TOLERANCE: f32 = 1.0e-4;
+
+fn flexible_expansion_json_rational(value: &serde_json::Value, label: &str) -> f32 {
+    let (numerator, denominator) = match value {
+        serde_json::Value::Number(number) => (number.as_i64().expect("integer JSON number"), 1),
+        serde_json::Value::String(text) => {
+            let (numerator, denominator) = text.split_once('/').unwrap_or((text, "1"));
+            (
+                numerator.parse::<i64>().expect("rational numerator"),
+                denominator.parse::<i64>().expect("rational denominator"),
+            )
+        }
+        _ => panic!("{label}: expected integer or rational, got {value}"),
+    };
+    assert!(denominator > 0, "{label}: denominator must be positive");
+    let value = (numerator as f64 / denominator as f64) as f32;
+    assert!(value.is_finite(), "{label}: rational is not finite as f32");
+    value
+}
+
+fn assert_flexible_expansion_close(actual: f32, expected: f32, label: &str) {
+    assert!(
+        actual.is_finite()
+            && expected.is_finite()
+            && (actual - expected).abs() <= FLEXIBLE_TRACK_EXPANSION_TOLERANCE,
+        "{label}: expected {expected} CSS px, got {actual} CSS px"
+    );
+}
+
+fn flexible_expansion_input(
+    case: &serde_json::Value,
+) -> (crate::LayoutInput, LayoutGridTrackSizingAxis, f32) {
+    let case_id = case["id"].as_str().expect("case id string");
+    let axis_name = case["axis"].as_str().expect("case axis string");
+    let axis = if axis_name == "columns" {
+        LayoutGridTrackSizingAxis::Columns
+    } else {
+        assert_eq!(axis_name, "rows", "{case_id}: unsupported axis");
+        LayoutGridTrackSizingAxis::Rows
+    };
+    let px = |key| flexible_expansion_json_rational(&case[key], case_id);
+    let [available, opposite, gap_px] = ["available_size_px", "opposite_size_px", "gap_px"].map(px);
+    assert_eq!((available, opposite, gap_px), (200.0, 120.0, 10.0));
+
+    let axis_tracks = case["tracks"]
+        .as_array()
+        .expect("tracks array")
+        .iter()
+        .map(|track| {
+            let base = flexible_expansion_json_rational(&track["base_size_px"], case_id);
+            let factor = (!track["flex_factor"].is_null())
+                .then(|| flexible_expansion_json_rational(&track["flex_factor"], case_id));
+            let descriptor = factor.map_or_else(
+                || format!("{base}px"),
+                |f| format!("minmax({base}px, {f}fr)"),
+            );
+            assert_eq!(track["css"].as_str(), Some(descriptor.as_str()));
+            factor.map_or_else(
+                || GridTrackSize::LengthPx(base),
+                |f| minmax_px_flex(base, f),
+            )
+        })
+        .collect::<Vec<_>>();
+    let (columns, rows, width, height) = match axis {
+        LayoutGridTrackSizingAxis::Columns => (
+            axis_tracks,
+            vec![GridTrackSize::LengthPx(opposite)],
+            available,
+            opposite,
+        ),
+        LayoutGridTrackSizingAxis::Rows => (
+            vec![GridTrackSize::LengthPx(opposite)],
+            axis_tracks,
+            opposite,
+            available,
+        ),
+    };
+    let mut gap = LayoutGap::default();
+    match axis {
+        LayoutGridTrackSizingAxis::Columns => {
+            gap.column = crate::LayoutLengthPercentage::length(gap_px);
+        }
+        LayoutGridTrackSizingAxis::Rows => {
+            gap.row = crate::LayoutLengthPercentage::length(gap_px);
+        }
+    }
+    let mut input = grid_input(columns, rows, 0, gap);
+    input.nodes[0].style.width = LayoutDimension::Fixed(width);
+    input.nodes[0].style.height = LayoutDimension::Fixed(height);
+    input.viewport = Viewport { width, height };
+    set_track_sizing_profile(&mut input);
+    (input, axis, gap_px)
+}
+
+#[test]
+fn flexible_track_expansion_stage_matches_css_grid_oracle() {
+    let oracle: serde_json::Value =
+        serde_json::from_str(FLEXIBLE_TRACK_EXPANSION_EXPECTED_JSON).expect("valid oracle JSON");
+    assert_eq!(oracle["stage"].as_str(), Some("ExpandFlexibleTracks"));
+    let case_array = oracle["cases"].as_array().expect("oracle cases array");
+    let cases = case_array
+        .iter()
+        .map(|case| (case["id"].as_str().expect("case id string"), case))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    let case_ids = [
+        ("weighted-columns", "columns"),
+        ("frozen-row", "rows"),
+        ("subunit-columns", "columns"),
+        ("zero-fr-row", "rows"),
+    ];
+    assert_eq!(cases.len(), case_ids.len(), "exact oracle case set");
+    assert_eq!(case_array.len(), cases.len(), "unique oracle case ids");
+
+    for (case_id, expected_axis) in case_ids {
+        let case = cases
+            .get(case_id)
+            .unwrap_or_else(|| panic!("missing case {case_id}"));
+        assert_eq!(
+            case["axis"].as_str(),
+            Some(expected_axis),
+            "{case_id}: axis"
+        );
+        let (input, axis, gap_px) = flexible_expansion_input(case);
+        assert!(
+            input.nodes.len() == 1 && input.grid_items.is_empty(),
+            "{case_id}: empty grid input"
+        );
+        let tracks = case["tracks"].as_array().expect("tracks array");
+        assert_eq!(tracks.len(), 2, "{case_id}: two CSS tracks");
+        let expected = case["expected_track_bases_px"]
+            .as_array()
+            .expect("expected track bases")
+            .iter()
+            .map(|value| flexible_expansion_json_rational(value, case_id))
+            .collect::<Vec<_>>();
+        assert_eq!(expected.len(), tracks.len(), "{case_id}: CSS track count");
+
+        let output = TaffyLayoutEngine
+            .compute(&input)
+            .unwrap_or_else(|error| panic!("{case_id}: layout failed: {error:?}"));
+        assert_eq!(
+            output.grid_track_sizing_traces.len(),
+            1,
+            "{case_id}: root trace"
+        );
+        let trace = &output.grid_track_sizing_traces[0];
+        assert_eq!(trace.node, id(1), "{case_id}: trace owner");
+        let mut passes = trace.passes.iter().filter(|pass| pass.axis == axis);
+        let pass = passes
+            .next()
+            .unwrap_or_else(|| panic!("{case_id}: missing {axis:?} pass"));
+        assert!(
+            passes.next().is_none(),
+            "{case_id}: duplicate {axis:?} pass"
+        );
+
+        let position = |target| pass.stages.iter().position(|stage| stage.stage == target);
+        let maximize = position(LayoutGridTrackSizingStageKind::MaximizeTracks)
+            .unwrap_or_else(|| panic!("{case_id}: missing MaximizeTracks"));
+        let expand = position(LayoutGridTrackSizingStageKind::ExpandFlexibleTracks)
+            .unwrap_or_else(|| panic!("{case_id}: missing ExpandFlexibleTracks"));
+        assert_eq!(
+            pass.stages
+                .iter()
+                .filter(|stage| stage.stage == LayoutGridTrackSizingStageKind::ExpandFlexibleTracks)
+                .count(),
+            1,
+            "{case_id}: unique ExpandFlexibleTracks"
+        );
+        let stretch = pass
+            .stages
+            .iter()
+            .position(|stage| {
+                matches!(
+                    stage.stage,
+                    LayoutGridTrackSizingStageKind::StretchAutoTracks { .. }
+                )
+            })
+            .unwrap_or_else(|| panic!("{case_id}: missing StretchAutoTracks"));
+        assert!(
+            maximize < expand && expand < stretch,
+            "{case_id}: stage order"
+        );
+
+        let stage = &pass.stages[expand];
+        assert_eq!(stage.tracks.len(), tracks.len() * 2 + 1);
+        let mut css_tracks = Vec::new();
+        for (index, track) in stage.tracks.iter().enumerate() {
+            let boundary = index == 0 || index + 1 == stage.tracks.len();
+            assert!(track.base_size.is_finite(), "{case_id}: entry {index}");
+            assert_eq!(
+                track.is_gutter,
+                index % 2 == 0,
+                "{case_id}: entry {index} kind"
+            );
+            assert_eq!(
+                track.is_collapsed,
+                boundary && track.is_gutter,
+                "{case_id}: sentinel {index}"
+            );
+            if track.is_gutter {
+                assert_flexible_expansion_close(
+                    track.base_size,
+                    if boundary { 0.0 } else { gap_px },
+                    &format!("{case_id}: gutter {index}"),
+                );
+            } else {
+                css_tracks.push(track);
+            }
+        }
+        assert_eq!(css_tracks.len(), expected.len(), "{case_id}: CSS tracks");
+        for (index, (actual, expected)) in css_tracks.iter().zip(expected).enumerate() {
+            assert_flexible_expansion_close(
+                actual.base_size,
+                expected,
+                &format!("{case_id}: track {index}"),
+            );
+        }
+    }
+}

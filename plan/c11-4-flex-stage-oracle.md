@@ -6,7 +6,9 @@
 
 **계획 검토:** [실패 관점 20개](./c11-4-flex-stage-oracle-plan-review-20.md) · [계획 PR 변경분 검토 30개](./c11-4-flex-stage-oracle-pr-diff-review-30.md)
 
-**상태 · 2026-10-28:** 계획 PR 준비 중이며 implementation은 시작하지 않았다. 이 계획은 pure Rust test-only `ExpandFlexibleTracks` stage assertion 한 건만 추가한다. CSS Grid production algorithm, runtime, FFI, app, 명세 및 공식 완료 집계는 바꾸지 않는다. C11.4 checkbox와 `72/213`은 미완료로 둔다.
+**구현 검토:** [test/runtime 경계 실패 관점 20개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md) · [구현 PR 변경분 검토 30개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md)
+
+**상태 · 2026-10-28:** 계획 PR [#716](https://github.com/ohah/spinon/pull/716)이 Rebase and merge됐다. 그 다음 단계로 pure Rust test-only `ExpandFlexibleTracks` assertion 한 건을 구현했고, focused test·fmt·Clippy와 구현 20관점 및 diff 30관점 검토가 끝나 PR 생성과 병합을 준비 중이다. CSS Grid production algorithm, runtime, FFI, app, 명세 및 공식 완료 집계는 바꾸지 않는다. C11.4 checkbox와 `72/213`은 미완료로 둔다. [구현 근거와 로그](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md)
 
 ## 확인한 결손
 
@@ -33,7 +35,7 @@
 
 ## 구현 범위와 대조군
 
-- 유일한 Rust 변경은 `crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs`의 test-only case/input helper와 assertion이다. 기대값 source는 checked-in `expected.json`이며 test가 `include_str!`로 이를 읽어 네 case ID의 정확한 집합과 유일성, axis, target/opposite available size, target-axis gap, track descriptor와 rational base sizes를 실제 typed input 및 trace와 비교한다. Gap은 지정 축에만 설정하고 반대 축 gap은 0으로 둔다. 정수와 `numerator/denominator` 형식만 읽고 denominator가 양수인지, 결과가 finite `f32`인지 확인한 뒤 tolerance를 적용한다. test-only `serde_json` dependency가 이미 쓰이는 경로를 재사용하며 Cargo manifest와 production source를 바꾸지 않는다.
+- 유일한 Rust 변경은 `crates/spinon-layout/src/grid_track_sizing_tests/flex_factor_bound.rs`의 test-only case/input helper와 assertion이다. Test가 `include_str!`로 checked-in `expected.json`을 읽고 네 case ID의 정확한 집합과 유일성, 고정 axis와 200/120/10px sizing 값을 요구한다. JSON의 track base/factor로 실제 typed `GridTrackSize` input을 만들고 CSS descriptor와 일치하는지 확인한 뒤, 각 rational expected base를 trace와 비교한다. Gap은 지정 축에만 설정하고 반대 축 gap은 0으로 둔다. 정수와 `numerator/denominator` 형식만 읽고 denominator가 양수인지, 결과가 finite `f32`인지 확인한 뒤 tolerance를 적용한다. test-only `serde_json` dependency가 이미 쓰이는 경로를 재사용하며 Cargo manifest와 production source를 바꾸지 않는다.
 - Case는 track factor가 `Fraction`이고 fixed minimum은 `LengthPx`인 `GridTrackSize::MinMax`로 만든다. 각 root/viewport의 width·height를 일치시켜 대상 axis에 indefinite input이 섞이지 않게 한다. `grid_input`에 item을 만들지 않아 contribution/span 동작을 섞지 않는다.
 - 각 `LayoutOutput`은 root trace 하나, 해당 axis pass 정확히 하나, `MaximizeTracks` 다음·`StretchAutoTracks` 전의 고유 `ExpandFlexibleTracks` stage를 가져야 한다. CSS track 수, finite base size, 각 track·gap·boundary gutter 순서와 collapsed sentinel을 확인한다. CSS track 선택은 vector 위치나 `internal_index`를 고정하지 않고 trace flags로 한다.
 - 기존 `zero_and_sub_one_flex_factors_remain_valid_on_both_axes`, overflow-without-repeat 및 auto-repeat-ceiling controls는 유지한다. 새 test는 finite 0.5/0 factor가 수용되어야 하는 입력만 추가한다. 거부 path나 부분 `LayoutOutput` semantics는 바꾸지 않는다.
@@ -41,9 +43,9 @@
 
 ## 계획·구현·PR 검토 게이트
 
-1. 계획 자체를 서로 다른 실패 관점 20개로 검토하고, 계획 PR diff를 별도의 30관점으로 검토한 뒤 계획을 Rebase and merge한다.
-2. 구현은 위 한 Rust test-only 파일에만 추가한다. `cargo test --locked -p spinon-layout flexible_track_expansion_stage`, `cargo fmt --all -- --check`, `cargo clippy --locked -p spinon-layout --all-targets -- -D warnings`, `git diff --check`를 실행하고 결과를 보존한다. `derive_expected.py`를 다시 실행해 `expected.json`이 바뀌지 않는지 확인한다.
-3. 구현 후 새 관점의 test/runtime 경계 검토 20개와 별도 PR diff 검토 30개를 수행한다. 결함 수정 뒤 영향을 받은 관점을 다시 본다.
+1. 계획 자체의 실패 관점 20개와 계획 PR diff의 30개 검토를 마쳤다. 계획 PR #716은 Rebase and merge됐다.
+2. 구현은 위 한 Rust test-only 파일에만 추가했다. focused test 1/1, `cargo fmt --all -- --check`, package all-targets Clippy와 `git diff --check`가 통과했다. 실행 결과는 [구현 근거](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md)에 보존했고 `derive_expected.py` 재실행 뒤 `expected.json`은 변하지 않았다.
+3. 구현 실패 관점 검토 20개와 별도 구현 PR diff 30관점 검토를 마쳤다. 결함 수정 뒤 영향받은 관점을 다시 확인했다.
 4. 이 slice는 test-only 확인이다. Simulator/app/runtime 검증이 없음을 명시하고 C11.4 단계 전체나 지원 기능으로 확대하지 않는다. `spec/STATUS.md` C11.4 checkbox와 공식 `72/213`은 그대로 둔다.
 
 ## 완료 뒤에도 남는 범위
