@@ -2,8 +2,7 @@
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 진행 중. 이전에 확인한 `auto-repeat + typed implicit track list`는 PR #391에서 이미 병합됐으므로 이번 범위에 포함하지 않는다. 이 작업은 WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 같은 Grid를 연속 변경하는 경우만 다룬다. 첫 runtime 회귀는 WPT의 trailing `minmax(min-content, 40px)`를 style projection에서 거부했다. 아래의 범위 보정은 이 한 가지 WPT 입력 형태만 허용하고 나머지 intrinsic neighbor grammar는 계속 제외한다. C11.4 체크와 공식 `72/213`은 그대로 둔다.
-
+**상태:** 이 제한 slice는 PR [#683](https://github.com/ohah/spinon/pull/683)으로 2026-10-27T05:54:04Z Rebase and merge됐다(merge SHA `83df2c59dd63d83b53ff68f8a4717e0fae5b841e`). C11.4 체크와 공식 `72/213`은 미완료로 유지한다. 이전에 확인한 `auto-repeat + typed implicit track list`는 PR #391에서 이미 병합됐으므로 이번 범위에 포함하지 않는다. 이 작업은 WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 같은 Grid를 연속 변경하는 경우만 다룬다. 첫 runtime 회귀는 WPT의 trailing `minmax(min-content, 40px)`를 style projection에서 거부했다. 아래의 범위 보정은 이 한 가지 WPT 입력 형태만 허용하고 나머지 intrinsic neighbor grammar는 계속 제외한다.
 ## 문제와 목표
 
 고정된 auto-repeat track 입력을 한 번 계산하는 검증은 grid item의 intrinsic contribution이 바뀌었을 때 repeat count와 위치가 다시 계산되는지 증명하지 않는다. WPT는 같은 문서에서 item 폭을 `100px → 80px → 15px → 120px`로 바꾸고, Grid의 intrinsic width를 `max-content`에서 `min-content`로 바꾼 뒤 네 폭을 다시 적용한다. 각 변경은 auto-repeat 개수, track 폭, Grid item 및 absolute-positioned probe의 geometry를 다시 검사한다.
@@ -57,7 +56,7 @@ HostDocument mutation 경로에서 revision을 명시적으로 진행하거나 �
 - runtime sequence 검사와 두 simulator matrix가 같은 source revision의 고정 8개 기대값을 기록한다. 두 simulator의 여덟 scene은 각각 독립 입력이며 document mutation proof로 세지 않는다. 구현 범위 밖 플랫폼과 전체 conformance는 별도로 남긴다.
 - 구현 뒤 새로운 20개 failure perspective 검토, PR 변경분에 서로 다른 30개 관점 검토를 통과한다.
 
-## 구현 후보 실행 결과 · 2026-10-27
+## 구현·병합 결과 · 2026-10-27
 
 하나의 `HostDocument`를 사용하는 Rust runtime sequence가 8/8 상태에서 같은 generation과 handles, 증가한 document/render-tree/style revision, dirty-root invalidation, expected final used tracks 및 item/probe frames를 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 독립 scene matrix도 각각 8/8이며 모든 결과에 `drawPresented=true`와 track trace가 있다. 앱 실행은 document mutation 증거로 세지 않는다.
 
@@ -65,4 +64,4 @@ HostDocument mutation 경로에서 revision을 명시적으로 진행하거나 �
 - [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-auto-repeat-intrinsic-recompute-runtime-2026-10-27/implementation-runtime-review-20.md)
 - [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-auto-repeat-intrinsic-recompute-runtime-2026-10-27/pr-diff-review-30.md)
 
-초기 absolute-probe rejection, zero-width painted-box expectation 오류, WPT 밖 item-width admission을 기록해 수정했다. 마지막 scope 수정 뒤 layout negative-control test, fixture-feature Clippy, Android/iOS rebuild와 양쪽 8-scene capture를 다시 통과했다. 전체 WPT·일반 CSS admission·실기기·hardware GPU·iOS compositor 이후 pixels는 검증하지 않았다. **이 계획의 제한 slice는 PR 검토 대상이지만 C11.4 전체는 미완료이며, `spec/STATUS.md` checkbox와 공식 `72/213` 집계는 그대로 둔다.**
+초기 absolute-probe rejection, zero-width painted-box expectation 오류, WPT 밖 item-width admission을 기록해 수정했다. 마지막 scope 수정 뒤 layout negative-control test, fixture-feature Clippy, Android/iOS rebuild와 양쪽 8-scene capture를 다시 통과했다. 전체 WPT·일반 CSS admission·실기기·hardware GPU·iOS compositor 이후 pixels는 검증하지 않았다. **이 계획의 제한 slice는 PR #683으로 병합됐지만 C11.4 전체는 미완료이며, `spec/STATUS.md` checkbox와 공식 `72/213` 집계는 그대로 둔다.**
