@@ -5089,7 +5089,46 @@ scenes.push({
       xCssPx: 160, yCssPx: 5, rgba: [0, 0, 0, 255] },
   ],
 });
-assert.equal(scenes.length, 500, 'C11.4 fixture scene count differs.');
+function intrinsicAutoRepeatRecomputeScenes() {
+  const expected = JSON.parse(readFileSync(resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-grid-change-intrinsic-auto-repeat-precomparison-2026-10-27/expected.json'), 'utf8'));
+  assert.equal(expected.states.length, 8, 'C11.4 intrinsic auto-repeat oracle must have eight states.');
+  return expected.states.map((state) => {
+    const frames = [
+      `0:node=1,x=0,y=0,width=${state.rootBorderBox[0]},height=${state.rootBorderBox[1]}`,
+      `1:node=2,x=${state.item[0] + 2},y=${state.item[1] + 2},width=${state.item[2]},height=${state.item[3]}`,
+      ...['a1', 'a2', 'a3', 'a4'].map((probe, index) => {
+        const [x, y, width, height] = state.probes[probe];
+        return `${index + 2}:node=${index + 3},x=${x + 2},y=${y + 2},width=${width},height=${height}`;
+      }),
+    ];
+    const tracks = state.columns;
+    return {
+      id: `intrinsic-auto-repeat-${state.id}`,
+      axis: 'Columns',
+      boxCount: 2 + ['a1', 'a2', 'a3', 'a4']
+        .filter((probe) => state.probes[probe][2] > 0).length,
+      rootFrame: `width=${state.rootBorderBox[0]},height=${state.rootBorderBox[1]}`,
+      itemFrame: `width=${state.item[2]},height=${state.item[3]}`,
+      nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+      axes: {
+        Columns: { tracks, collapsed: tracks.map(() => false) },
+      },
+      gaps: { Columns: 0 },
+      geometryTolerance: 1 / 64,
+      intrinsicAutoRepeatRecompute: {
+        repeatCount: state.repeatCount,
+        suffixTrackCount: 1,
+        usedColumns: tracks,
+      },
+    };
+  });
+}
+
+scenes.push(...intrinsicAutoRepeatRecomputeScenes());
+assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRepeatRecompute).length,
+  8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
+assert.equal(scenes.length, 508, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -7329,6 +7368,21 @@ function verifyRuntimeLog(log, scene, runID) {
       });
     }
     tracksByAxis[axis] = finalTracks.map(({ baseSize, collapsed }) => ({ baseSize, collapsed }));
+  }
+  if (scene.intrinsicAutoRepeatRecompute) {
+    const expected = scene.intrinsicAutoRepeatRecompute;
+    const columns = tracksByAxis.Columns.map(({ baseSize }) => baseSize);
+    assert.equal(columns.length, expected.repeatCount + expected.suffixTrackCount,
+      `${scene.id}: auto-repeat count must be derived after excluding the single suffix track`);
+    assert.deepEqual(columns.map((size) => Math.round(size * 64) / 64),
+      expected.usedColumns.map((size) => Math.round(size * 64) / 64),
+      `${scene.id}: final used columns differ from the WPT expectations`);
+    const contributionItems = new Set(axisTrace.passes.flatMap((pass) => pass.contributions)
+      .map(({ item }) => item));
+    assert.ok(contributionItems.has(2),
+      `${scene.id}: the in-flow spanning item must be present in track-sizing contributions`);
+    assert.ok([...contributionItems].every((item) => item === 2),
+      `${scene.id}: absolute probes must not contribute to track sizing`);
   }
   if (scene.columnSizingFeedsRows) {
     const columnPassIndex = axisTrace.passes.findLastIndex((pass) => pass.axis === 'Columns');

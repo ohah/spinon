@@ -15,6 +15,13 @@ fn repeated_track() -> ComputedCssGridTrackSize {
     }
 }
 
+fn min_content_with_fixed_maximum(maximum: f32) -> ComputedCssGridTrackSize {
+    ComputedCssGridTrackSize::MinMax {
+        min: ComputedCssGridTrackBreadth::MinContent,
+        max: ComputedCssGridTrackBreadth::LengthPx(maximum),
+    }
+}
+
 fn grid_with_column_neighbors(
     prefix: ComputedCssGridTrackSize,
     suffix: ComputedCssGridTrackSize,
@@ -148,6 +155,97 @@ fn track_sizing_projection_accepts_fixed_minimum_flex_maximum_neighbors_on_both_
     .unwrap();
     assert_eq!(rows.rows[0], expected);
     assert_eq!(rows.rows[2], expected);
+}
+
+#[test]
+fn track_sizing_projection_accepts_only_the_single_trailing_column_auto_fill_intrinsic_neighbor() {
+    let node = NodeId::new(11_137).unwrap();
+    let neighbor = min_content_with_fixed_maximum(40.0);
+    let grid = grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor);
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap();
+    assert_eq!(
+        projected.columns[2],
+        GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::MinContent,
+            max: GridTrackMaxSizingFunction::LengthPx(40.0),
+        }
+    );
+}
+
+#[test]
+fn track_sizing_projection_rejects_intrinsic_neighbor_outside_the_wpt_column_auto_fill_suffix() {
+    let node = NodeId::new(11_138).unwrap();
+    let neighbor = min_content_with_fixed_maximum(40.0);
+    let mut multiple_suffix_tracks =
+        grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor.clone());
+    multiple_suffix_tracks
+        .columns
+        .push(ComputedCssGridTrackSize::LengthPx(4.0));
+
+    let mut auto_fit =
+        grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor.clone());
+    auto_fit.columns_auto_repeat.as_mut().unwrap().mode = ComputedCssGridAutoRepeatMode::AutoFit;
+
+    let invalid_maximums = [
+        min_content_with_fixed_maximum(-1.0),
+        min_content_with_fixed_maximum(f32::INFINITY),
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::MaxContent,
+            max: ComputedCssGridTrackBreadth::LengthPx(40.0),
+        },
+        ComputedCssGridTrackSize::MinMax {
+            min: ComputedCssGridTrackBreadth::Auto,
+            max: ComputedCssGridTrackBreadth::LengthPx(40.0),
+        },
+    ];
+    let mut cases = vec![
+        (
+            "intrinsic prefix",
+            grid_with_column_neighbors(neighbor.clone(), ComputedCssGridTrackSize::LengthPx(8.0)),
+            "grid-template-columns",
+        ),
+        (
+            "multiple suffix tracks",
+            multiple_suffix_tracks,
+            "grid-template-columns",
+        ),
+        ("auto-fit suffix", auto_fit, "grid-template-columns"),
+        (
+            "row-axis suffix",
+            grid_with_row_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor),
+            "grid-template-rows",
+        ),
+    ];
+    for invalid in invalid_maximums {
+        cases.push((
+            "invalid intrinsic minimum or maximum",
+            grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), invalid),
+            "grid-template-columns",
+        ));
+    }
+
+    for (case, grid, property) in cases {
+        assert!(
+            matches!(
+                project_grid_layout(
+                    node,
+                    &grid,
+                    ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                ),
+                Err(StyleLayoutError::UnsupportedComputedValue {
+                    node: error_node,
+                    property: error_property,
+                    ..
+                }) if error_node == node && error_property == property
+            ),
+            "{case} must retain node and property context"
+        );
+    }
 }
 
 #[test]

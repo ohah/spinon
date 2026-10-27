@@ -3,6 +3,9 @@ use std::collections::BTreeMap;
 use spinon_core::NodeId;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "grid/c114_absolute_auto_repeat_probes.rs"]
+mod c114_absolute_auto_repeat_probes;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 mod cyclic_percentage_auto_repeat_rows;
 
 use crate::grid_placement::normalize_grid_layout;
@@ -569,6 +572,18 @@ pub(super) fn validate_grid_layout(
             .children
             .iter()
             .any(|child| normalized_grid.item_placements.contains_key(child));
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        let supports_c114_absolute_probe_matrix =
+            c114_absolute_auto_repeat_probes::supports_wpt_probe_matrix(
+                input,
+                node,
+                container,
+                &normalized_grid,
+                &hidden,
+                index,
+            );
+        #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
+        let supports_c114_absolute_probe_matrix = false;
         let mut item_count = 0usize;
         for &child_id in &node.children {
             let child = &input.nodes[index[&child_id]];
@@ -578,11 +593,17 @@ pub(super) fn validate_grid_layout(
             if child.style.order != 0 {
                 return Err(LayoutError::UnsupportedGridOrder(child_id));
             }
-            if input
+            let positioned = input
                 .positioning
                 .get(&child_id)
-                .is_some_and(|value| value.position != LayoutPosition::Static)
-            {
+                .copied()
+                .unwrap_or_default();
+            if positioned.position != LayoutPosition::Static {
+                if positioned.position == LayoutPosition::Absolute
+                    && supports_c114_absolute_probe_matrix
+                {
+                    continue;
+                }
                 return Err(LayoutError::UnsupportedGridPositionedItem(child_id));
             }
             let c14_3_replaced_item = c14_3_fixed_track_context
@@ -1035,10 +1056,17 @@ fn validate_auto_repeat_axis(
     let prefix = &tracks[..auto_repeat.start];
     let repeat_tracks = &tracks[auto_repeat.start..auto_repeat.end];
     let suffix = &tracks[auto_repeat.end..];
-    if !auto_repeat_neighbor_tracks_are_supported(node, prefix, suffix, property, context, css_math)
-        || !repeat_tracks.iter().all(|track| {
-            auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math)
-        })
+    if !auto_repeat_neighbor_tracks_are_supported(
+        node,
+        prefix,
+        suffix,
+        property,
+        auto_repeat.mode,
+        context,
+        css_math,
+    ) || !repeat_tracks
+        .iter()
+        .all(|track| auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math))
     {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
@@ -1602,6 +1630,7 @@ fn auto_repeat_neighbor_tracks_are_supported(
     prefix: &[GridTrackSize],
     suffix: &[GridTrackSize],
     property: &'static str,
+    mode: GridAutoRepeatMode,
     context: AutoRepeatAxisContext<'_>,
     css_math: &[crate::LayoutCssMathValue],
 ) -> bool {
@@ -1626,10 +1655,22 @@ fn auto_repeat_neighbor_tracks_are_supported(
         _ => return false,
     };
     let mut resolved_neighbor_sum = 0.0_f64;
-    for track in neighbors {
+    for (neighbor_index, track) in neighbors.enumerate() {
         let resolved = match track {
             GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
                 f64::from(*value)
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::MinContent,
+                max: GridTrackMaxSizingFunction::LengthPx(maximum),
+            } if property == "grid-template-columns"
+                && mode == GridAutoRepeatMode::AutoFill
+                && suffix.len() == 1
+                && neighbor_index == prefix.len()
+                && maximum.is_finite()
+                && *maximum >= 0.0 =>
+            {
+                f64::from(*maximum)
             }
             GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
                 let Some(basis) = basis else {

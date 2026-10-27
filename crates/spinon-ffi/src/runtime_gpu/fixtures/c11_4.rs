@@ -71,6 +71,8 @@ mod generic_direct_text;
 mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
 mod implicit_intrinsic_tracks;
+#[path = "c11_4/intrinsic_auto_repeat_recompute.rs"]
+mod intrinsic_auto_repeat_recompute;
 #[path = "c11_4/mixed_direct_text_image_intrinsic.rs"]
 mod mixed_direct_text_image_intrinsic;
 #[path = "c11_4/mixed_direct_text_image_intrinsic_rows.rs"]
@@ -1239,6 +1241,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = image_multispan::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = intrinsic_auto_repeat_recompute::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = text_multispan::runtime_source(scene_id) {

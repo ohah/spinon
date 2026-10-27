@@ -609,6 +609,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "negative-percentage-col-border-box",
             "negative-percentage-col-fit-prefix-item",
             "negative-percentage-col-both-negative-final",
+            "intrinsic-auto-repeat-max-content-100",
+            "intrinsic-auto-repeat-max-content-80",
+            "intrinsic-auto-repeat-max-content-15",
+            "intrinsic-auto-repeat-max-content-120",
+            "intrinsic-auto-repeat-min-content-100",
+            "intrinsic-auto-repeat-min-content-80",
+            "intrinsic-auto-repeat-min-content-15",
+            "intrinsic-auto-repeat-min-content-120",
 
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
@@ -2129,7 +2137,48 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && report.contains(expected.replace("x=23.796875", "x=23.8"));
     }
 
+    private static int[] c114IntrinsicAutoRepeatState(String sceneId) {
+        switch (sceneId) {
+            case "intrinsic-auto-repeat-max-content-100":
+            case "intrinsic-auto-repeat-min-content-100":
+                return new int[] {104, 44, 100, 0, 20, 20, 20, 40, 20, 60, 40};
+            case "intrinsic-auto-repeat-max-content-80":
+            case "intrinsic-auto-repeat-min-content-80":
+                return new int[] {84, 44, 80, 0, 20, 20, 20, 40, 40, 80, 0};
+            case "intrinsic-auto-repeat-max-content-15":
+                return new int[] {64, 44, 15, 0, 20, 20, 40, 60, 0, 0, 60};
+            case "intrinsic-auto-repeat-min-content-15":
+                return new int[] {34, 44, 15, 0, 20, 20, 10, 30, 0, 0, 30};
+            case "intrinsic-auto-repeat-max-content-120":
+            case "intrinsic-auto-repeat-min-content-120":
+                return new int[] {124, 44, 120, 0, 20, 20, 20, 40, 20, 60, 20};
+            default:
+                return null;
+        }
+    }
+
+    private static String c114IntrinsicAutoRepeatNodeFrames(String sceneId) {
+        int[] state = c114IntrinsicAutoRepeatState(sceneId);
+        if (state == null) return null;
+        StringBuilder frames = new StringBuilder("node_frames_css_px=[")
+                .append("0:node=1,x=0,y=0,width=").append(state[0])
+                .append(",height=").append(state[1])
+                .append(";1:node=2,x=2,y=12,width=").append(state[2])
+                .append(",height=30");
+        for (int index = 0; index < 4; index++) {
+            frames.append(';').append(index + 2).append(":node=").append(index + 3)
+                    .append(",x=").append(state[3 + index * 2] + 2)
+                    .append(",y=2,width=").append(state[4 + index * 2])
+                    .append(",height=5");
+        }
+        return frames.append(']').toString();
+    }
+
     private static String c114ExpectedRootFrame(String sceneId) {
+        int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
+        if (intrinsicAutoRepeat != null) {
+            return "width=" + intrinsicAutoRepeat[0] + ",height=" + intrinsicAutoRepeat[1];
+        }
         if (C114RowAxisSpanStage.isScene(sceneId)) return "width=220,height=220";
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
             return "width=160,height=100";
@@ -2499,6 +2548,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
+        if (intrinsicAutoRepeat != null) {
+            return "width=" + intrinsicAutoRepeat[2] + ",height=30";
+        }
         if (C114RowAxisSpanStage.isScene(sceneId)) {
             return "width=220,height=" + C114RowAxisSpanStage.firstItemHeight(sceneId);
         }
@@ -4597,6 +4650,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        String intrinsicAutoRepeatFrames = c114IntrinsicAutoRepeatNodeFrames(sceneId);
+        if (intrinsicAutoRepeatFrames != null) return intrinsicAutoRepeatFrames;
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=160,height=100;"
                     + "1:node=2,x=0,y=0,width=160,height=10;"
@@ -7161,6 +7216,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
+        if (intrinsicAutoRepeat != null) {
+            int boxCount = 2;
+            for (int index = 4; index <= 10; index += 2) {
+                if (intrinsicAutoRepeat[index] > 0) boxCount++;
+            }
+            return boxCount;
+        }
         if (C114RowAxisSpanStage.isScene(sceneId)) {
             return C114RowAxisSpanStage.itemCount(sceneId) + 1;
         }

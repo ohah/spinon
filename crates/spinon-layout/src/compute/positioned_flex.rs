@@ -60,6 +60,20 @@ pub(super) fn absolute_static_position_adjustments(
             }
             continue;
         }
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        if let Some(&source_parent) = source_parents.get(&id)
+            && input.nodes[index[&source_parent]].style.display == crate::LayoutDisplay::Grid
+            && input
+                .grid_containers
+                .get(&source_parent)
+                .is_some_and(|container| {
+                    container.placement_mode == crate::GridPlacementMode::TrackSizing
+                })
+        {
+            // Taffy resolves Grid abspos children from their grid area. Reapplying a flow-only
+            // static position would replace that grid-area result.
+            continue;
+        }
         let owner_delta = match owners[&id] {
             crate::PositionedContainingBlockOwner::Viewport => (0.0, 0.0),
             crate::PositionedContainingBlockOwner::Node(owner) => {

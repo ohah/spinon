@@ -547,6 +547,14 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt",
+    "intrinsic-auto-repeat-max-content-100",
+    "intrinsic-auto-repeat-max-content-80",
+    "intrinsic-auto-repeat-max-content-15",
+    "intrinsic-auto-repeat-max-content-120",
+    "intrinsic-auto-repeat-min-content-100",
+    "intrinsic-auto-repeat-min-content-80",
+    "intrinsic-auto-repeat-min-content-15",
+    "intrinsic-auto-repeat-min-content-120",
 ]
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
@@ -1325,7 +1333,40 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
     return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
 }
 
+private func c114IntrinsicAutoRepeatState(_ sceneID: String) -> [Int]? {
+    switch sceneID {
+    case "intrinsic-auto-repeat-max-content-100", "intrinsic-auto-repeat-min-content-100":
+        return [104, 44, 100, 0, 20, 20, 20, 40, 20, 60, 40]
+    case "intrinsic-auto-repeat-max-content-80", "intrinsic-auto-repeat-min-content-80":
+        return [84, 44, 80, 0, 20, 20, 20, 40, 40, 80, 0]
+    case "intrinsic-auto-repeat-max-content-15":
+        return [64, 44, 15, 0, 20, 20, 40, 60, 0, 0, 60]
+    case "intrinsic-auto-repeat-min-content-15":
+        return [34, 44, 15, 0, 20, 20, 10, 30, 0, 0, 30]
+    case "intrinsic-auto-repeat-max-content-120", "intrinsic-auto-repeat-min-content-120":
+        return [124, 44, 120, 0, 20, 20, 20, 40, 20, 60, 20]
+    default:
+        return nil
+    }
+}
+
+private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
+    guard let state = c114IntrinsicAutoRepeatState(sceneID) else { return nil }
+    var frames = [
+        "0:node=1,x=0,y=0,width=\(state[0]),height=\(state[1])",
+        "1:node=2,x=2,y=12,width=\(state[2]),height=30",
+    ]
+    for index in 0..<4 {
+        frames.append("\(index + 2):node=\(index + 3),x=\(state[3 + index * 2] + 2),"
+            + "y=2,width=\(state[4 + index * 2]),height=5")
+    }
+    return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+}
+
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let state = c114IntrinsicAutoRepeatState(sceneID) {
+        return "width=\(state[0]),height=\(state[1])"
+    }
     if c114RowAxisSpanStageSceneIDs.contains(sceneID) { return "width=220,height=220" }
     if sceneID == "align-content-normal-equal-auto-rows" {
         return "width=160,height=100"
@@ -1629,6 +1670,9 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let state = c114IntrinsicAutoRepeatState(sceneID) {
+        return "width=\(state[2]),height=30"
+    }
     if let scene = c114RowAxisSpanSceneExpectation(sceneID),
        let first = scene.sourceItems.first {
         return "width=220,height=\(c114RowAxisSpanFrameNumber(first.blockSize))"
@@ -4904,6 +4948,9 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let intrinsicAutoRepeatFrames = c114IntrinsicAutoRepeatNodeFrames(sceneID) {
+        return intrinsicAutoRepeatFrames
+    }
     if let rowAxisSpanFrames = c114RowAxisSpanExpectedNodeFrames(sceneID) {
         return rowAxisSpanFrames
     }
@@ -6500,6 +6547,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneID) {
+        return 2 + [4, 6, 8, 10].filter { intrinsicAutoRepeat[$0] > 0 }.count
+    }
     if let rowAxisSpanFrames = c114RowAxisSpanFrameExpectations(sceneID) {
         return rowAxisSpanFrames.count
     }
