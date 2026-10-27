@@ -1,6 +1,6 @@
 # C11.4 · `min-height` 아래 `fit-content()` 행 WPT slice 계획
 
-**상태:** 계획 PR #698은 병합됐다. opt-in 구현 후보가 같은 체크아웃에서 진행 중이며, 2026-10-28 기준 Rust oracle과 Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행은 통과했다([runtime evidence](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/README.md)). 구현 적대 검토, 최종 PR 검토와 병합이 남았다. 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않으며 공식 완료 수 `72/213`과 C11.4 체크 상태는 유지한다.
+**상태:** 계획 PR #698은 병합됐고, 제한 opt-in 구현 PR [#699](https://github.com/ohah/spinon/pull/699)은 2026-10-27T16:47:03Z Rebase and merge됐다(merge SHA `d31201de4a46fca406791fcb5d7143ce1eb65f50`). Rust oracle 5/5, runtime adapter 1/1, FFI allowlist 1/1, fixture-module boundary 15/15을 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 root `60×300px`, implicit row/item/child `10px`, draw/presentation과 각 플랫폼 3 pixel samples가 통과했다([runtime evidence](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/README.md)). PR status check은 보고되지 않아 CI 통과로 간주하지 않는다. [구현/runtime 경계 검토](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/implementation-review-20.md)와 [PR diff 검토](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/pr-diff-review-30.md)를 연결했다. 이 제한 slice는 일반 CSS 지원 또는 C11.4 전체 완료를 뜻하지 않으며 공식 완료 수 `72/213`과 C11.4 체크 상태는 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
