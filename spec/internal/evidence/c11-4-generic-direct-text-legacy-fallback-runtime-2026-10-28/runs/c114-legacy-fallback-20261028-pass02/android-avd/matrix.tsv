@@ -1,0 +1,13 @@
+PASS	auto-text-max-content	c114-legacy-fallback-20261028-pass02-android-0
+PASS	min-content-text-normal	c114-legacy-fallback-20261028-pass02-android-1
+PASS	max-content-text-normal	c114-legacy-fallback-20261028-pass02-android-2
+PASS	fit-content-text-minimum	c114-legacy-fallback-20261028-pass02-android-3
+PASS	fit-content-calc-limit	c114-legacy-fallback-20261028-pass02-android-4
+PASS	min-content-text-edge	c114-legacy-fallback-20261028-pass02-android-5
+PASS	min-content-text-min-width	c114-legacy-fallback-20261028-pass02-android-6
+PASS	min-content-text-max-width	c114-legacy-fallback-20261028-pass02-android-7
+PASS	min-content-text-break-all	c114-legacy-fallback-20261028-pass02-android-8
+PASS	min-content-text-nowrap	c114-legacy-fallback-20261028-pass02-android-9
+PASS	cyclic-fit-content-column	c114-legacy-fallback-20261028-pass02-android-10
+PASS	cyclic-fit-content-row	c114-legacy-fallback-20261028-pass02-android-11
+PASS	definite-fit-content-column	c114-legacy-fallback-20261028-pass02-android-12

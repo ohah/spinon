@@ -1,0 +1,39 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.52s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-396d43288578abe7)
+
+running 20 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_span_groups::tests::exposes_only_four_fixed_cross_axis_span_group_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_two_axis_span_text::tests::exposes_only_the_four_two_axis_span_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_minmax_calc_cross_axis_mixed_span_groups::tests::allowlists_only_eight_three_item_mixed_span_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_calc::tests::exposes_only_four_fixed_cyclic_calc_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_two_axis_multitrack::tests::exposes_only_the_four_fixed_two_axis_multitrack_text_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::cyclic_fit_content_calc::tests::exposes_fixed_cyclic_calc_track_scenes_by_function ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::overlapping_spans::tests::exposes_only_fixed_overlapping_cyclic_calc_span_scenes ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::tests::fixed_text_matrix_has_thirteen_unique_direct_leaf_cases ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_leaves_non_grid_shapes_for_existing_fallback ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_reports_the_exact_html_image_node ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::two_candidates_allow_a_non_text_block_sibling_without_adding_text_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::stale_computed_snapshot_cannot_be_used_for_another_host_document ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::inline_unsupported_properties_fail_before_snapshot_or_layout_creation ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::hyphens_inline_declaration_is_reported_as_a_stylo_unknown_property ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::independent_font_registry_token_is_not_equated_by_numeric_revision ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_ignores_non_html_img_and_html_image_decoys ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_ambiguous_sources_and_three_or_more_candidates ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::positive::generic_collector_matches_six_scene_computed_style_intrinsic_and_c15_geometry ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::legacy_fallback::all_one_item_text_cases_reach_the_legacy_fallback_with_ahem_intrinsics ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::negative::collector_rejects_computed_item_styles_outside_the_fixed_profile ... ok
+
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 240 filtered out; finished in 0.12s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-853fd16857d46e65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-9fcc6c82dfa206d8)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+

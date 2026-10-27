@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [generic direct-text collector](./c11-4-generic-direct-text-intrinsic-input.md) · [6-scene app matrix](./c11-4-generic-direct-text-runtime-matrix.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태 · 2026-10-28:** 새 런타임 실행은 하지 않았다. 기존 `TEXT_CASES`의 13개 one-item scene은 FFI registry와 Android/iOS matcher에 이미 등록되어 있다. PR #704가 `TEXT_CASES[0]` 하나에 대해 generic collector의 `None` 이후 `c11_4_text::prepare` 전체 dispatch 결과를 Rust에서 확인했지만, 나머지 legacy case 각각의 collector-to-layout 경로와 13개 Android/iOS app matrix는 아직 source-bound 결과가 없다. 이 계획은 그 범위만 검증한다. 공식 C11.4 checkbox와 `72/213`은 유지한다.
+**상태 · 2026-10-28:** 계획 PR #705 병합 뒤 같은 checkout에서 순차적으로 검증했다. `TEXT_CASES` 13개 모두 generic collector 및 선행 specialized adapters가 `None`을 반환하고, full `c11_4_text::prepare`가 legacy fallback으로 Ahem intrinsic input을 준비하는지 확인했다. Unknown root/item ID, 변경 text, extra direct item, 잘못된 typed track은 별도 negative test에서 거부된다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 각각 13/13 scene을 통과했다. 상세한 화면·로그·source hash는 [runtime evidence](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/README.md)에 있다. Product behavior는 바꾸지 않았고 C11.4 checkbox와 공식 `72/213`은 유지한다.
 
 ## 목표와 범위
 
@@ -53,6 +53,15 @@ Generic direct-text collector가 아직의 제한 계약대로 one-item legacy s
 ## 명시적 제외
 
 이 matrix는 현재 고정된 13개 legacy text case만 검증한다. 임의 HTML/text source, `TEXT_CASES` ID 기반 fallback을 일반화하는 변경, direct-text generic positive 6개, anonymous/nested/mixed image text, 일반 CSS admission, WPT pass, glyph paint, physical device, Android hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 범위 밖이다. 성공해도 C11.4 checkbox나 공식 `72/213`을 올리지 않는다.
+
+## 실행 결과 · 2026-10-28
+
+- `spinon-runtime` C11.4 text focused tests는 negative controls 추가 뒤 21/21 passed; `cargo fmt --all -- --check`와 feature-specific Clippy도 통과했다.
+- Strict workspace Clippy는 수정하지 않은 `c11_4_grid_layout_auto_tracks/validation.rs:329`의 `clippy::type_complexity` warning으로 실패했다. 그 한 warning을 허용한 `spinon-runtime` feature-specific all-target Clippy는 통과했다.
+- Fixture-test Android/iOS builds는 모두 성공했다. pass03은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 실행했다. 현재 run ID의 scene summary 뒤 draw/present가 오는 것까지 확인했다.
+- pass01의 3-box 기대값 오류는 runner 문제로 기록하고 수정했다. pass03은 stale iOS draw가 current scene 성공으로 계산되지 않도록 보강한 뒤 다시 전체 실행했다.
+- App runtime source commit은 `5df6da56`; 그 뒤 `7af1322f`는 Rust negative test만 추가했으며 app runtime source는 바꾸지 않았다. Screenshots는 layout box/surface만 보이고 glyph paint는 입증하지 않는다.
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/implementation-runtime-review-20.md)를 기록했다. PR diff 검토와 PR merge state는 이후 PR 단계에서 추가한다.
 
 ## 근거
 
