@@ -2,7 +2,7 @@
 
 **검토 시점:** 2026-10-28
 
-**대상:** PR #706 병합 정보와 기존 13-scene partial 결과를 `STATUS.md`, 집중 계획, 상위 계획, evidence 및 공개 roadmap에 반영하는 문서 변경
+**대상:** [PR #707](https://github.com/ohah/spinon/pull/707), PR #706 병합 정보와 기존 13-scene partial 결과를 `STATUS.md`, 집중 계획, 상위 계획, evidence 및 공개 roadmap에 반영하는 문서 변경
 
 **비교 기준:** 실제 GitHub PR 상태·merge SHA와 `origin/main`의 공식 집계 및 C11.4 checkbox
 
