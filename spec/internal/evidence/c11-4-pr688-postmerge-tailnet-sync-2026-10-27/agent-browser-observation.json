@@ -1,0 +1,33 @@
+{
+  "browser": "Agent Browser",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "scrollY": 27482
+  },
+  "heroCardCount": 42,
+  "pr688CardVisible": true,
+  "mergeShaVisible": "0b434e16ac66d0a742057e6e1e5749151bd3e08f",
+  "officialCompletionCountVisible": "72/213",
+  "cardBounds": {
+    "top": 265.3125,
+    "bottom": 367.265625
+  },
+  "cardLinks": [
+    "https://github.com/ohah/spinon/pull/688",
+    "https://github.com/ohah/spinon/blob/0b434e16ac66d0a742057e6e1e5749151bd3e08f/plan/c11-4-grid-layout-auto-tracks-wpt.md",
+    "https://github.com/ohah/spinon/blob/0b434e16ac66d0a742057e6e1e5749151bd3e08f/spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md",
+    "https://github.com/ohah/spinon/blob/0b434e16ac66d0a742057e6e1e5749151bd3e08f/spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/pr-diff-review-30.md",
+    "https://raw.githubusercontent.com/ohah/spinon/0b434e16ac66d0a742057e6e1e5749151bd3e08f/spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/android-api37-arm64-avd-c114-auto-tracks.png",
+    "https://raw.githubusercontent.com/ohah/spinon/0b434e16ac66d0a742057e6e1e5749151bd3e08f/spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/ios-26.2-iphone17pro-c114-auto-tracks.png",
+    "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#c11-css-grid"
+  ],
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "fc2ea2e3d5575c3690d709cbd4b313d2b465792ffe1444baf681239f630f3564"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "session": "spinon-pr688-roadmap",
+  "commands": [
+    "agent-browser --session spinon-pr688-roadmap close",
+    "agent-browser close --all"
+  ],
+  "closeReportedSuccess": true,
+  "postCloseProcessCheck": "ps -axo pid=,comm= | rg -i 'agent-browser|agentbrowser|chrome.*testing|chromium'",
+  "agentBrowserProcessesRemaining": [],
+  "dedicatedChromeOrChromiumProcessesRemaining": []
+}
