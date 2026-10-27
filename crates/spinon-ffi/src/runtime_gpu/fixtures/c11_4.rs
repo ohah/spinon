@@ -67,6 +67,11 @@ mod fixed_repeat_minmax_flex;
 mod flex_spanning_text;
 #[path = "c11_4/generic_direct_text.rs"]
 mod generic_direct_text;
+#[path = "c11_4/grid_layout_auto_tracks.rs"]
+mod grid_layout_auto_tracks;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/grid_layout_auto_tracks_report.rs"]
+mod grid_layout_auto_tracks_report;
 #[path = "c11_4/image_multispan.rs"]
 mod image_multispan;
 #[path = "c11_4/implicit_intrinsic_tracks.rs"]
@@ -1146,6 +1151,9 @@ const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageScen
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = grid_layout_auto_tracks::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = align_content_normal_equal_auto_rows::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }

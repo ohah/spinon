@@ -377,6 +377,186 @@ fn track_sizing_places_column_locked_item_on_positive_implicit_column() {
 }
 
 #[test]
+fn track_sizing_combines_explicit_auto_and_positive_implicit_tracks_with_text() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(100.0)],
+        vec![GridTrackSize::Auto],
+        3,
+        LayoutGap::default(),
+    );
+    input.viewport = crate::Viewport {
+        width: 100.0,
+        height: 200.0,
+    };
+    input.root_sizing = crate::RootSizingPolicy::ResolveWithin;
+    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.height = LayoutDimension::Auto;
+    for item in &mut input.nodes[1..] {
+        item.style.width = LayoutDimension::Auto;
+        item.style.height = LayoutDimension::Auto;
+    }
+
+    let root = id(1);
+    let a = id(2);
+    let b = id(3);
+    let c = id(4);
+    let b_content = id(5);
+    input.nodes[0].children = vec![a, b, c];
+    input.nodes[2].children = vec![b_content];
+    input.nodes.push(LayoutNode {
+        id: b_content,
+        children: Vec::new(),
+        style: LayoutStyle {
+            display: LayoutDisplay::Block,
+            width: LayoutDimension::Fixed(50.0),
+            height: LayoutDimension::Auto,
+            ..LayoutStyle::default()
+        },
+    });
+
+    let container = input.grid_containers.get_mut(&root).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    container.auto_rows = crate::GridAutoRows::Auto;
+    container.auto_columns = crate::GridAutoColumns::Auto;
+    input.grid_items = BTreeMap::from([
+        (
+            a,
+            GridItemInput {
+                row_start: GridPlacementInput::Line(1),
+                row_end: GridPlacementInput::Line(2),
+                column_start: GridPlacementInput::Line(1),
+                column_end: GridPlacementInput::Line(2),
+            },
+        ),
+        (
+            b,
+            GridItemInput {
+                row_start: GridPlacementInput::Line(1),
+                row_end: GridPlacementInput::Line(2),
+                column_start: GridPlacementInput::Line(2),
+                column_end: GridPlacementInput::Line(3),
+            },
+        ),
+        (
+            c,
+            GridItemInput {
+                row_start: GridPlacementInput::Line(2),
+                row_end: GridPlacementInput::Line(3),
+                column_start: GridPlacementInput::Line(1),
+                column_end: GridPlacementInput::Line(2),
+            },
+        ),
+    ]);
+
+    let paragraph = |owner, source| crate::ParagraphInput {
+        node: owner,
+        sources: vec![crate::TextSource {
+            node: source,
+            inline_ancestors: Vec::new(),
+            text: "\u{00a0}".to_owned(),
+        }],
+        style: crate::ParagraphStyle {
+            writing_mode: spinon_core::WritingMode::HorizontalTb,
+            text_orientation: spinon_core::TextOrientation::Mixed,
+            font_family: "Ahem".to_owned(),
+            font_size: 10.0,
+            line_height: 10.0,
+            white_space: crate::WhiteSpaceMode::Normal,
+            ..crate::ParagraphStyle::default()
+        },
+        inline_styles: BTreeMap::new(),
+        inline_run_styles: BTreeMap::new(),
+    };
+    let input = input
+        .with_text_paragraphs([
+            paragraph(a, id(20)),
+            paragraph(b_content, id(21)),
+            paragraph(c, id(22)),
+        ])
+        .unwrap();
+    let mut text_engine = crate::TextLayoutEngine::new_without_system_fonts();
+    text_engine
+        .register_font(
+            "Ahem",
+            include_bytes!("../../../tests/fixtures/resources/c15/Ahem.ttf"),
+        )
+        .unwrap();
+
+    let output = TaffyLayoutEngine
+        .compute_with_text_layout_engine(&input, &text_engine)
+        .unwrap();
+
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Columns),
+        [100.0, 50.0]
+    );
+    assert_eq!(
+        final_axis_track_sizes(&output, LayoutGridTrackSizingAxis::Rows),
+        [10.0, 10.0]
+    );
+    assert_eq!(
+        (output.frames[&root].width, output.frames[&root].height),
+        (100.0, 20.0)
+    );
+    assert_eq!(
+        (
+            output.frames[&a].x,
+            output.frames[&a].y,
+            output.frames[&a].width,
+            output.frames[&a].height,
+        ),
+        (0.0, 0.0, 100.0, 10.0)
+    );
+    assert_eq!(
+        (
+            output.frames[&b].x,
+            output.frames[&b].y,
+            output.frames[&b].width,
+            output.frames[&b].height,
+        ),
+        (100.0, 0.0, 50.0, 10.0)
+    );
+    assert_eq!(
+        (
+            output.frames[&c].x,
+            output.frames[&c].y,
+            output.frames[&c].width,
+            output.frames[&c].height,
+        ),
+        (0.0, 10.0, 100.0, 10.0)
+    );
+    assert_eq!(
+        (
+            output.frames[&b_content].x,
+            output.frames[&b_content].y,
+            output.frames[&b_content].width,
+            output.frames[&b_content].height,
+        ),
+        (100.0, 0.0, 50.0, 10.0)
+    );
+
+    let row_pass = output.grid_track_sizing_traces[0]
+        .passes
+        .iter()
+        .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Rows)
+        .unwrap();
+    assert_eq!(
+        row_pass
+            .contributions
+            .iter()
+            .filter(|contribution| contribution.kind
+                == crate::LayoutGridTrackSizingContributionKind::Minimum)
+            .map(|contribution| contribution.item)
+            .collect::<Vec<_>>(),
+        [a, b, c]
+    );
+    assert!(row_pass.contributions.iter().all(|contribution| {
+        contribution.kind != crate::LayoutGridTrackSizingContributionKind::Minimum
+            || contribution.value == 10.0
+    }));
+}
+
+#[test]
 fn track_sizing_keeps_auto_track_pattern_aligned_across_explicit_boundary_spans() {
     let mut input = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],

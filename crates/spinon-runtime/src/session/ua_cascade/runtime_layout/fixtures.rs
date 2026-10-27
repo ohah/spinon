@@ -40,6 +40,10 @@ mod c11_4_nested_grid_rows;
 mod c11_4_fit_content_auto_neighbor;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_grid_layout_auto_tracks.rs"]
+mod c11_4_grid_layout_auto_tracks;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_nested_grid_implicit_rows.rs"]
 mod c11_4_nested_grid_implicit_rows;
 
@@ -68,6 +72,7 @@ mod c11_4_anonymous_text_multi_image;
 mod c11_4_anonymous_grid_border_overflow;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone)]
 pub(super) struct C11_4TextInput {
     pub(super) paragraph_styles: BTreeMap<NodeId, ParagraphStyle>,
     pub(super) engine: TextLayoutEngine,
@@ -136,4 +141,11 @@ pub(super) use c11_4_fit_content_auto_neighbor::{
     observation as c11_4_fit_content_auto_neighbor_observation,
     prepare as prepare_c11_4_fit_content_auto_neighbor,
     validate_output as validate_c11_4_fit_content_auto_neighbor_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_grid_layout_auto_tracks::{
+    observation as c11_4_grid_layout_auto_tracks_observation,
+    prepare as prepare_c11_4_grid_layout_auto_tracks,
+    validate_output as validate_c11_4_grid_layout_auto_tracks_output,
 };
