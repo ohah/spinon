@@ -6,6 +6,8 @@
 
 이 변경은 테스트와 실행 근거 보강이다. 제품 layout 코드, FFI 장면 등록, Android/iOS matcher는 수정하지 않았다. 일반 CSS admission, C11.4 완료, glyph paint 또는 전체 WPT 통과를 주장하지 않는다. 공식 C11.4 checkbox는 미완료이고 집계 `72/213`은 그대로다.
 
+구현 PR [#706](https://github.com/ohah/spinon/pull/706)이 열려 있다. 확인 시점 GitHub status check rollup은 비어 있어 CI 통과로 기록하지 않는다.
+
 ## 검증
 
 - Rust `c11_4_text::` focused tests: 21/21 통과. `all_one_item_text_cases_reach_the_legacy_fallback_with_ahem_intrinsics`가 13개 장면을 순회한다. 별도 negative test는 unknown root/item ID, 변경된 text, 추가 direct item, 잘못된 typed Grid track을 generic collector 뒤 legacy dispatcher가 거부하는지 검사한다. [첫 결과 로그](build/runtime-c11-4-text-tests.log) · [negative control 추가 후 재검증](build/runtime-c11-4-text-tests-recheck.log)

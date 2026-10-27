@@ -27,9 +27,9 @@
 | 16 | Ahem font가 등록되지 않아 intrinsic 기대값이 다른 환경에서 성립하는가 | PASS | dispatcher가 반환한 engine으로 case paragraph intrinsic을 재측정한다. 등록 누락·family 오류는 test 실패다. |
 | 17 | normal, break-all, nowrap, lowercase cyclic 입력의 min/max-content 폭이 틀리는가 | PASS | 13 scene별 고정 기대값과 C11.4 text focused tests 21/21 결과를 확인한다. |
 | 18 | Android/iOS FFI 또는 matcher에서 scene ID가 빠져 다른 fixture를 실행하는가 | PASS | FFI source, Android matcher, iOS matcher의 ID가 각각 13/13이고 pass03 matrix도 양 플랫폼 13/13이다. |
-| 19 | 이전 iOS trace/draw가 현재 scene 결과로 오인되는가 | PASS | pass03 runner가 정확한 run-ID summary 뒤 draw/present를 요구하고 사후 검증에서 13개 scene 순서를 확인한다. |
+| 19 | 이전 iOS trace/draw가 현재 scene 결과로 오인되는가 | PARTIAL | pass03은 현재 run-ID의 summary·trace 뒤 draw/present를 확인한다. 다만 draw line 자체에는 run ID가 없고 summary와의 순서 및 scene별 terminate/launch 경계로 연관 짓는다. |
 | 20 | box screenshot을 glyph paint 또는 최종 화면 pixel로 과장하는가 | PARTIAL | `runtime_text_count=0`, `glyph_batch_draw_count=0`이다. 화면은 layout/surface 확인용이며 glyph paint·iOS compositor 이후 pixel은 범위 밖이다. |
 
 ## 결론
 
-차단 결함은 없다. 13개 one-item scene 모두 specialized adapter와 generic collector를 거쳐 기존 `TEXT_CASES` full-dispatch 경로로 준비된다. 다섯 fail-closed negative control, Ahem intrinsic input 및 Android/iOS app matcher 결과가 pass03 evidence에 남았다. 첫 runner 시도는 generic 3-box 기대값을 재사용해 2-box legacy scene을 거부했다. 제품 matcher는 `status=0`이었고, runner를 2-box 및 현재 run summary 뒤 draw/present 조건으로 고친 다음 pass03에서 다시 실행했다. 두 PARTIAL은 CSS test input의 독립성 및 glyph paint 제외를 나타내며 계획 범위에 기록했다.
+차단 결함은 없다. 13개 one-item scene 모두 specialized adapter와 generic collector를 거쳐 기존 `TEXT_CASES` full-dispatch 경로로 준비된다. 다섯 fail-closed negative control, Ahem intrinsic input 및 Android/iOS app matcher 결과가 pass03 evidence에 남았다. 첫 runner 시도는 generic 3-box 기대값을 재사용해 2-box legacy scene을 거부했다. 제품 matcher는 `status=0`이었고, runner를 2-box 및 현재 run summary 뒤 draw/present 조건으로 고친 다음 pass03에서 다시 실행했다. 세 PARTIAL은 CSS test input의 독립성, draw event의 run-ID 부재, glyph paint 제외를 나타내며 계획 범위에 기록했다.
