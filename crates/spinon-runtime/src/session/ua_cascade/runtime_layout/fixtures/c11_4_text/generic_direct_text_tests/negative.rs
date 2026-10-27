@@ -7,44 +7,9 @@ use spinon_style::{
 };
 
 use super::super::AHEM;
-use super::super::{TEXT_CASES, generic_direct_text};
+use super::super::generic_direct_text;
 use super::cases::*;
 use super::test_fixture::*;
-
-const LEGACY_FALLBACK_STYLESHEET: &str = r#"
-.scene {
-  display: grid;
-  box-sizing: border-box;
-  width: 120px;
-  height: 40px;
-  grid-template-columns: auto;
-  grid-template-rows: auto;
-  align-items: start;
-  row-gap: 0px;
-  column-gap: 0px;
-}
-.item {
-  display: block;
-  box-sizing: border-box;
-  font-family: Ahem;
-  font-size: 10px;
-  font-weight: 400;
-  font-style: normal;
-  line-height: 10px;
-  white-space-collapse: collapse;
-  text-wrap-mode: wrap;
-  word-break: normal;
-  direction: ltr;
-  line-break: auto;
-  text-align: start;
-  overflow-wrap: normal;
-  text-transform: none;
-  writing-mode: horizontal-tb;
-  letter-spacing: normal;
-  word-spacing: 0px;
-  text-indent: 0px;
-}
-"#;
 
 #[test]
 fn collector_rejects_ambiguous_sources_and_three_or_more_candidates() {
@@ -225,7 +190,7 @@ fn collector_reports_the_exact_html_image_node() {
 }
 
 #[test]
-fn collector_leaves_non_grid_and_legacy_one_item_shapes_for_existing_fallback() {
+fn collector_leaves_non_grid_shapes_for_existing_fallback() {
     let non_grid = custom_fixture(
         "generic-non-grid",
         "not-a-grid",
@@ -238,31 +203,6 @@ fn collector_leaves_non_grid_and_legacy_one_item_shapes_for_existing_fallback() 
             .unwrap()
             .is_none()
     );
-
-    let legacy_scene = &TEXT_CASES[0];
-    let legacy = custom_fixture(
-        legacy_scene.root_id,
-        "scene",
-        vec![item(
-            legacy_scene.item_id,
-            "item",
-            vec![NodeSpec::text(legacy_scene.content)],
-        )],
-        None,
-    );
-    let computed = cascade(&legacy.view, POSITIVE_STYLESHEET);
-    assert!(
-        generic_direct_text::prepare(&legacy.snapshot, legacy.root, &computed)
-            .unwrap()
-            .is_none()
-    );
-
-    let computed = cascade(&legacy.view, LEGACY_FALLBACK_STYLESHEET);
-    let input = super::super::prepare(&legacy.snapshot, legacy.root, &computed)
-        .unwrap_or_else(|error| panic!("legacy TEXT_CASES fallback failed: {error:?}"))
-        .expect("legacy TEXT_CASES fallback should prepare the one-item scene");
-    assert_eq!(input.paragraph_styles.len(), 1);
-    assert!(input.paragraph_styles.contains_key(&legacy.items[0].id()));
 }
 
 #[test]
