@@ -1,6 +1,6 @@
 # C11.4 · WPT `grid-auto-repeat-intrinsic-001.html` 제한 runtime slice
 
-**상태:** 계획 PR [#690](https://github.com/ohah/spinon/pull/690)이 병합됐다. 제한된 8-scene runtime 구현과 두 simulator 실행, 구현/runtime 실패 관점 검토 20개, 별도 PR diff 실패 관점 검토 30개를 마쳤다. [구현 PR #691](https://github.com/ohah/spinon/pull/691)은 열려 있다. Agent Browser에서 두 실행 화면의 원격 렌더링을 확인했다. PR check rollup은 비어 있고 main에는 required review/status check가 없어 CI 통과로 취급하지 않는다. `Rebase and merge`는 남아 있다. 이 문서는 WPT harness의 Spinon 통과나 C11.4 전체 완료를 주장하지 않는다.
+**상태:** 계획 PR [#690](https://github.com/ohah/spinon/pull/690)과 구현 PR [#691](https://github.com/ohah/spinon/pull/691)이 모두 병합됐다. 구현 PR은 2026-10-27T10:30:12Z `Rebase and merge`됐고 최종 merge SHA는 `8993e3f5f28f13ab707018dda52f8f619d2b8bb4`다. 제한된 8-scene runtime 구현과 두 simulator 실행, 구현/runtime 실패 관점 검토 20개, 별도 PR diff 실패 관점 검토 30개를 마쳤다. Agent Browser에서 두 실행 화면의 원격 렌더링을 확인했다. PR check rollup은 비어 있고 main에는 required review/status check가 없어 CI 통과나 독립 승인을 주장하지 않는다. 이 문서는 WPT harness의 Spinon 통과나 C11.4 전체 완료를 주장하지 않는다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -57,7 +57,7 @@ Cases 4 and 8 deliberately place the 100px item in a 70px content box. Relative 
 - 기본 `spinon-ffi` `.rlib`에서 새 fixture symbol이 빠지고 `c04-runtime-gpu-fixture-test` opt-in positive control에만 포함된다. APK/IPA 전체 fixture 배제는 검사하지 않았다. [artifact 경계 근거](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/feature-boundary.md)
 - 구현/runtime 실패 관점 검토 20개를 마쳤다. 검토 중 Android/iOS trace matcher가 stretch 전 track을 검사하던 점과 Android malformed stage null 처리 결함을 발견해 수정하고 두 플랫폼 전체 8 scene을 다시 실행했다. [구현/runtime 검토](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/implementation-runtime-review-20.md)
 - 변경 파일 간 계약·artifact·증거·로드맵을 대상으로 별도 PR diff 실패 관점 30개를 검토했고 차단 결함은 찾지 못했다. 원본 Android runtime log 두 행 끝의 공백은 로그 보존을 위해 유지했다. [PR diff 검토](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/pr-diff-review-30.md)
-- PR #691이 열려 있고 두 screenshot의 원격 렌더링을 확인했다. GitHub check rollup은 비어 있으며 required review/status check는 설정되지 않았다. `Rebase and merge`는 남아 있다. 병합 전까지 이 상태를 확정 완료로 취급하지 않는다.
+- PR #691은 `Rebase and merge`됐다(2026-10-27T10:30:12Z, 최종 merge SHA `8993e3f5f28f13ab707018dda52f8f619d2b8bb4`). check rollup은 비어 있고 required review/status check는 설정되지 않아 CI 통과나 독립 승인을 주장하지 않는다. 제한된 WPT fixture만 병합됐으며 C11.4 전체는 완료되지 않았다.
 
 ## 통과 기준과 미완료 범위
 
