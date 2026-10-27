@@ -1,0 +1,58 @@
+{
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/grid-layout-auto-tracks.html",
+    "sha256": "37b73eb2a4234fcc7901a6a3ea3f42415c4e941969e76a9187ea373d2c28d698",
+    "reference_path": "css/css-grid/reference/grid-layout-auto-tracks-ref.html",
+    "reference_sha256": "b32809afab70e070b4913855e60e461c1e14ce191a535e872c50cf5db8070294",
+    "test_kind": "reftest"
+  },
+  "chrome_156_original": {
+    "version": "HeadlessChrome 156.0.0.0",
+    "viewport_css_px": [1280, 633],
+    "device_pixel_ratio": 1,
+    "computed_columns_css_px": [100, 50],
+    "computed_rows_css_px": [19, 19],
+    "root_border_box_css_px": [0, 60, 100, 38],
+    "item_border_boxes_css_px": {
+      "a": [0, 60, 100, 19],
+      "b": [100, 60, 50, 19],
+      "c": [0, 79, 100, 19]
+    },
+    "source_and_reference_screenshot_sha256_equal": true
+  },
+  "ahem_adaptation": {
+    "fixture": "tests/fixtures/css/c11/grid-layout-auto-tracks-c114-precomparison.html",
+    "sha256": "a1c50d04455e0feb5c2e1980730fafb8dbf2822c923cf975d9ec893e4605eafa",
+    "font": "Ahem 10px/10px",
+    "chrome_version": "HeadlessChrome 156.0.0.0",
+    "font_loaded": true,
+    "computed_columns_css_px": [100, 50],
+    "computed_rows_css_px": [10, 10],
+    "root_border_box_css_px": [0, 0, 100, 20],
+    "item_border_boxes_css_px": {
+      "a": [0, 0, 100, 10],
+      "b": [100, 0, 50, 10],
+      "b_content": [100, 0, 50, 10],
+      "c": [0, 10, 100, 10]
+    },
+    "outside_root_samples": {
+      "x125_y5": "item-b-content",
+      "x149_y5": "item-b-content",
+      "x150_y5": ""
+    }
+  },
+  "normative_expected": {
+    "ahem_item_line_height_css_px": 10,
+    "computed_columns_css_px": [100, 50],
+    "computed_rows_css_px": [10, 10],
+    "root_border_box_css_px": [0, 0, 100, 20],
+    "item_border_boxes_css_px": {
+      "a": [0, 0, 100, 10],
+      "b": [100, 0, 50, 10],
+      "c": [0, 10, 100, 10]
+    },
+    "implicit_positive_column_overflow_css_px": 50
+  }
+}
