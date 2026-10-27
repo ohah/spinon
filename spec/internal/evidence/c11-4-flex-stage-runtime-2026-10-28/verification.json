@@ -1,0 +1,406 @@
+{
+  "expectedSceneIds": [
+    "weighted-columns",
+    "frozen-row",
+    "subunit-columns",
+    "zero-fr-row"
+  ],
+  "platformMatcherTables": "matched",
+  "negativeControls": [
+    "duplicate scene ID",
+    "duplicate JSON key",
+    "missing axis",
+    "Initialize after MaximizeTracks",
+    "missing Expand stage",
+    "non-finite track",
+    "wrong frame"
+  ],
+  "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b": [
+    {
+      "sceneId": "weighted-columns",
+      "runID": "c114-flex-stage-android-avd-20261027T225654572Z-2745705b-0",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 200.0,
+          "height": 120.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 63.333332,
+          "height": 120.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 73.33333,
+          "y": 0.0,
+          "width": 126.66667,
+          "height": 120.0
+        }
+      ],
+      "traceChunks": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        63.33333206176758,
+        126.66666412353516
+      ],
+      "remainingSpaceCssPx": 3.814697265625e-06,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "3049aaab1bd99b5d186baaf747f70947d0e3e416e53202073eb57088579b4cfa"
+      }
+    },
+    {
+      "sceneId": "frozen-row",
+      "runID": "c114-flex-stage-android-avd-20261027T225654572Z-2745705b-1",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 200.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 120.0,
+          "height": 110.0
+        }
+      ],
+      "traceChunks": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        110.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-frozen-row.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "558ce53ac2997d639da070d8f3bd2c9ee9a9ef57c16a0bb00eb163a3c9a3870b"
+      }
+    },
+    {
+      "sceneId": "subunit-columns",
+      "runID": "c114-flex-stage-android-avd-20261027T225654572Z-2745705b-2",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 200.0,
+          "height": 120.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 85.0,
+          "height": 120.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 95.0,
+          "y": 0.0,
+          "width": 20.0,
+          "height": 120.0
+        }
+      ],
+      "traceChunks": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        85.0,
+        20.0
+      ],
+      "remainingSpaceCssPx": 85.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-subunit-columns.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "dd52337b4588187657ae6af0bd3b1172aa255549e76f2995dcf1d180a09b5b2a"
+      }
+    },
+    {
+      "sceneId": "zero-fr-row",
+      "runID": "c114-flex-stage-android-avd-20261027T225654572Z-2745705b-3",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 200.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 24.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0.0,
+          "y": 34.0,
+          "width": 120.0,
+          "height": 166.0
+        }
+      ],
+      "traceChunks": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        24.0,
+        166.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-zero-fr-row.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "040a2f7cceaf1b0b270cf116571f3f096764753477eab925c76848b268bd97e2"
+      }
+    }
+  ],
+  "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435": [
+    {
+      "sceneId": "weighted-columns",
+      "runID": "c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435-0",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 200.0,
+          "height": 120.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 63.333332,
+          "height": 120.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 73.33333,
+          "y": 0.0,
+          "width": 126.66667,
+          "height": 120.0
+        }
+      ],
+      "traceChunks": 7,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        63.33333206176758,
+        126.66666412353516
+      ],
+      "remainingSpaceCssPx": 3.814697265625e-06,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "154e179ce400b386f855ec8c547a0580b3aba0b4a2bd8622d42bfa82ebf23257"
+      }
+    },
+    {
+      "sceneId": "frozen-row",
+      "runID": "c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435-1",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 200.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 120.0,
+          "height": 110.0
+        }
+      ],
+      "traceChunks": 7,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        110.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-frozen-row.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "5dfbae59afe4632c7fa94ef0b1427921b0cfe91bc4a564789cb8614afd2a8979"
+      }
+    },
+    {
+      "sceneId": "subunit-columns",
+      "runID": "c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435-2",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 200.0,
+          "height": 120.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 85.0,
+          "height": 120.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 95.0,
+          "y": 0.0,
+          "width": 20.0,
+          "height": 120.0
+        }
+      ],
+      "traceChunks": 8,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        85.0,
+        20.0
+      ],
+      "remainingSpaceCssPx": 85.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-subunit-columns.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "6ef5fe6e8a3cab393a9eb780848bce77e96216b85d3654a57e5b4571f886e9a0"
+      }
+    },
+    {
+      "sceneId": "zero-fr-row",
+      "runID": "c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435-3",
+      "status": "passed",
+      "boxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 200.0
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 24.0
+        },
+        {
+          "index": 2,
+          "node": 3,
+          "x": 0.0,
+          "y": 34.0,
+          "width": 120.0,
+          "height": 166.0
+        }
+      ],
+      "traceChunks": 7,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        24.0,
+        166.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-zero-fr-row.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "f477a837ccebdbf1f97219ac26b6533daf428f213d52f5f074c1804fbe813b25"
+      }
+    }
+  ]
+}

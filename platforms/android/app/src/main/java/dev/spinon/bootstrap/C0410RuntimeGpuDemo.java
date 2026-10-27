@@ -293,6 +293,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward",
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
             "definite-minmax-calc-cross-axis-span-groups-forward",
+            "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
             "definite-minmax-calc-cross-axis-span-groups-reverse",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
@@ -2573,6 +2574,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
             return C114GridAutoFitColumnsWpt.nodeFramesMatch(sceneId, report);
         }
+        if (C114FlexStage.isScene(sceneId)) {
+            return C114FlexStage.nodeFramesMatch(sceneId, report);
+        }
         if (C114RowAxisSpanStage.isScene(sceneId)) {
             return C114RowAxisSpanStage.nodeFramesMatch(sceneId, report);
         }
@@ -2659,6 +2663,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
             return C114GridAutoFitColumnsWpt.expectedRootFrame(sceneId);
         }
+        if (C114FlexStage.isScene(sceneId)) return C114FlexStage.expectedRootFrame(sceneId);
         int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
         if (intrinsicWpt != null) {
             return "width=" + intrinsicWpt[0] + ",height=" + intrinsicWpt[1];
@@ -3043,6 +3048,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static String c114ExpectedItemFrame(String sceneId) {
         if (C114GridAutoFitColumnsWpt.isScene(sceneId)) return "";
+        if (C114FlexStage.isScene(sceneId)) return "";
         if (c114GridAutoRepeatIntrinsicWptState(sceneId) != null) {
             return "width=100,height=20";
         }
@@ -7753,6 +7759,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
             return C114GridAutoFitColumnsWpt.expectedBoxCount(sceneId);
         }
+        if (C114FlexStage.isScene(sceneId)) return C114FlexStage.itemCount(sceneId) + 1;
         int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
         if (intrinsicWpt != null) {
             int boxCount = 2;
@@ -12289,6 +12296,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             boolean rowAxisSpanStageTraceMatches = !C114RowAxisSpanStage.isScene(
                     c114GridTrackSizingSceneId)
                     || C114RowAxisSpanStage.traceMatches(c114GridTrackSizingSceneId, result);
+            boolean flexStageTraceMatches = !C114FlexStage.isScene(c114GridTrackSizingSceneId)
+                    || C114FlexStage.traceMatches(c114GridTrackSizingSceneId, result);
             if (!result.startsWith("status=0 ") || !result.contains(
                     "layout=ready boxes=" + c114ExpectedBoxCount(c114GridTrackSizingSceneId))
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
@@ -12307,7 +12316,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
                     || !c114ImageIntrinsicInputsMatch
-                    || !rowAxisSpanStageTraceMatches) {
+                    || !rowAxisSpanStageTraceMatches
+                    || !flexStageTraceMatches) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame
@@ -12335,6 +12345,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " image_intrinsic_inputs_match=" + c114ImageIntrinsicInputsMatch
                         + " node_frames_match=" + expectedNodeFramesMatch
                         + " row_axis_span_stage_trace_matches=" + rowAxisSpanStageTraceMatches
+                        + " flex_stage_trace_matches=" + flexStageTraceMatches
                         + " report=" + result);
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;

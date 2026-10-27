@@ -55,3 +55,7 @@ scene ID, axis, 200px definite sizing axis, 120px opposite axis, 10px target-axi
 ## 제외 사항
 
 이 slice는 intrinsic contribution이 양수인 Grid item, span, automatic minimum sizing, indefinite free space, percentage/calc gap, repeat, 일반 CSS parsing/admission, 실기기, Android hardware GPU, iOS compositor 제출 뒤의 pixel 또는 C11.4 전체 algorithm을 검증하지 않는다. `spec/STATUS.md`에서 C11.4를 완료 처리하거나 공식 `72/213`을 변경하지 않는다.
+
+## 검증 결과 · 2026-10-28
+
+Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 네 scene을 각각 4/4 통과했다. `weighted-columns`, `frozen-row`, `subunit-columns`, `zero-fr-row` 모두 target `ExpandFlexibleTracks` base, 10px gap topology, root-relative node frame, presented marker를 확인했다. [최종 로그와 screenshot](../spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md), [독립 verifier 출력](../spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/verification.json), [FFI static archive 결과](../spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/artifact-boundary.json)를 연결했다. FFI fixture test는 147 passed / 0 failed / 2 ignored였고 패키지 자체 Clippy와 rustfmt도 통과했다. 의존성까지 포함한 Clippy 실행은 변경하지 않은 `spinon-runtime`의 기존 `type_complexity` warning에서 중단됐으며, 실행 범위와 미지원 항목은 evidence README에 기록했다. C11.4 checkbox와 공식 `72/213`은 유지한다.
