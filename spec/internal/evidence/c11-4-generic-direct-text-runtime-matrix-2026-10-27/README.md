@@ -30,6 +30,10 @@ The earlier pass01 run is retained separately. Its first three Android controls 
 
 Reports: [implementation/runtime review, 20 perspectives](implementation-runtime-review-20.md) · [PR diff review, 20 perspectives](pr-diff-review-20.md).
 
+## Merge record
+
+Implementation PR [#679](https://github.com/ohah/spinon/pull/679) was Rebase and merge on 2026-10-27T03:24:44Z. Its merge SHA is 093a2adfa846f0ad0e7218074d34821f1825d771; its tree matches the tested PR head source commit ed4afbda. The GitHub check rollup was empty and main required status checks were not enabled. Official C11.4/C11 completion remains unchanged at 72/213. The post-merge docs received a separate [20-perspective status/roadmap review](post-merge-status-roadmap-review-20.md).
+
 ## Reproduce the simulator matrix
 
 Build both opt-in apps with SPINON_ENABLE_C04_RUNTIME_GPU=1 and SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1, then run:
