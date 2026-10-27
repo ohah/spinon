@@ -1,0 +1,56 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto tracks WPT shape precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url("../../resources/c15/Ahem.ttf") format("truetype");
+}
+html, body { margin: 0; padding: 0; }
+body { font: 10px/10px Ahem; }
+#wpt-auto-grid {
+  display: grid;
+  width: 100px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+  grid-template-columns: 100px;
+  grid-template-rows: auto;
+  grid-auto-columns: auto;
+  grid-auto-rows: auto;
+  grid-auto-flow: row;
+  align-items: start;
+  align-content: normal;
+  justify-items: normal;
+  justify-content: normal;
+  direction: ltr;
+  writing-mode: horizontal-tb;
+  background: #eeeeee;
+}
+.item {
+  display: block;
+  width: auto;
+  height: auto;
+  min-width: auto;
+  max-width: none;
+  min-height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  background: #e5484d;
+  color: #e5484d;
+}
+#item-a { grid-column: 1; grid-row: 1; }
+#item-b { grid-column: 2; grid-row: 1; background: #facc15; color: #facc15; }
+#item-c { grid-column: 1; grid-row: 2; background: #3b82f6; color: #3b82f6; }
+#item-b-content { width: 50px; }
+</style>
+<div id="wpt-auto-grid">
+  <div class="item" id="item-a">&nbsp;</div>
+  <div class="item" id="item-b"><div id="item-b-content">&nbsp;</div></div>
+  <div class="item" id="item-c">&nbsp;</div>
+</div>
