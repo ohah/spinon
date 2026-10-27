@@ -1,0 +1,14 @@
+{
+  "captured_date": "2026-10-27",
+  "captured_with": "Agent Browser 0.31.1",
+  "local_preview_url": "http://127.0.0.1:8769/spinon/roadmap.html",
+  "live_tailnet": false,
+  "source_base_commit": "83653cd02835d05bbdf455888dde7cc78f28dfa6",
+  "source_file": "spec/public/roadmap.html",
+  "source_file_sha256": "47f5c3429e08773ce5caa0824618f26e93e7dfd49a6dafce181e52ca4a5383b0",
+  "image_file": "roadmap-pr673-public-row-axis-20261027.png",
+  "image_sha256": "81629f3b46566c8e29e3f9e6b63f9f9ca3c93d4091d3352fa729ba9294d01d55",
+  "image_width": 1280,
+  "image_height": 633,
+  "visible_note": "C11.4 row-axis span stage test-only PR #673, merge SHA 83653cd02835d05bbdf455888dde7cc78f28dfa6, official count 72/213"
+}
