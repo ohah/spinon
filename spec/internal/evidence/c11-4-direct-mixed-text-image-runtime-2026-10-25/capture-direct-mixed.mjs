@@ -10,15 +10,19 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../../.
 const target = process.argv[2];
 const serialOrUDID = process.argv[3];
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  '사용법: node capture-direct-mixed.mjs android-avd <ADB serial> [scene ID] | ios-simulator <UDID> [scene ID]');
+  '사용법: node capture-direct-mixed.mjs android-avd <ADB serial> [scene IDs] | ios-simulator <UDID> [scene IDs]');
 assert.ok(serialOrUDID, 'Android AVD serial 또는 iOS Simulator UDID가 필요합니다.');
 
-const sceneFilter = process.argv[4];
+const sceneFilter = process.argv[4]?.split(',').filter(Boolean);
 const allScenes = [
   { id: 'direct-min-content-forward', maxContent: false, reversed: false },
   { id: 'direct-min-content-reversed', maxContent: false, reversed: true },
   { id: 'direct-max-content-forward', maxContent: true, reversed: false },
   { id: 'direct-max-content-reversed', maxContent: true, reversed: true },
+  { id: 'direct-min-content-generic-forward', maxContent: false, reversed: false },
+  { id: 'direct-min-content-generic-reversed', maxContent: false, reversed: true },
+  { id: 'direct-max-content-generic-forward', maxContent: true, reversed: false },
+  { id: 'direct-max-content-generic-reversed', maxContent: true, reversed: true },
 ].map((scene) => ({
   ...scene,
   column: scene.maxContent ? 80 : 50,
@@ -37,9 +41,13 @@ const allScenes = [
       '2:node=4,x=0,y=24,width=24,height=16',
     ],
 }));
-assert.ok(!sceneFilter || allScenes.some(({ id }) => id === sceneFilter),
-  `알 수 없는 C11.4 mixed scene: ${sceneFilter}`);
-const scenes = sceneFilter ? allScenes.filter(({ id }) => id === sceneFilter) : allScenes;
+assert.ok(!sceneFilter || sceneFilter.every((id) => allScenes.some((scene) => scene.id === id)),
+  `알 수 없는 C11.4 mixed scene: ${sceneFilter?.join(',')}`);
+const scenes = sceneFilter ? allScenes.filter(({ id }) => sceneFilter.includes(id)) : allScenes;
+const screenshotFilter = process.env.SPINON_C114_SCREENSHOT_SCENES?.split(',').filter(Boolean);
+assert.ok(!screenshotFilter || screenshotFilter.every((id) => scenes.some((scene) => scene.id === id)),
+  `스크린샷 대상에 선택되지 않은 scene이 있습니다: ${screenshotFilter?.join(',')}`);
+const shouldCaptureScreenshot = (scene) => !screenshotFilter || screenshotFilter.includes(scene.id);
 
 const packageName = 'dev.spinon.bootstrap';
 const bundlePath = resolve(repositoryRoot,
@@ -49,14 +57,20 @@ const apkPath = resolve(repositoryRoot,
 const captureScriptPath = fileURLToPath(import.meta.url);
 const timestamp = new Date().toISOString().replaceAll(/[^0-9TZ]/g, '');
 const runToken = randomUUID().slice(0, 8);
-const evidenceRoot = dirname(captureScriptPath);
-const iosScreenshotVerifierPath = resolve(evidenceRoot, 'verify-ios-screenshot.swift');
+const evidenceRoot = process.env.SPINON_C114_EVIDENCE_ROOT
+  ? resolve(repositoryRoot, process.env.SPINON_C114_EVIDENCE_ROOT)
+  : dirname(captureScriptPath);
+const iosScreenshotVerifierPath = resolve(dirname(captureScriptPath), 'verify-ios-screenshot.swift');
 const runPrefix = `c114-direct-mixed-${target}-${timestamp}-${runToken}`;
 const evidenceDirectory = resolve(evidenceRoot, 'runs', runPrefix);
 const sourceInputPaths = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_intrinsic.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
@@ -374,15 +388,17 @@ async function runAndroid() {
       observation.foregroundActivity = topResumedActivity.trim();
       const runtimeLogPath = resolve(evidenceDirectory, `android-runtime-${scene.id}.log`);
       observation.runtimeLogSha256 = sha256(await readFile(runtimeLogPath));
-      const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
-      assertPngSignature(screenshot, `Android screenshot ${scene.id}`);
-      const screenshotPath = resolve(evidenceDirectory, `android-${scene.id}.png`);
-      await writeFile(screenshotPath, screenshot);
-      observation.screenshotPixels = assertImageDecodes(screenshotPath, {
-        width: 1080,
-        height: 2400,
-      });
-      observation.screenshotSha256 = sha256(screenshot);
+      if (shouldCaptureScreenshot(scene)) {
+        const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
+        assertPngSignature(screenshot, `Android screenshot ${scene.id}`);
+        const screenshotPath = resolve(evidenceDirectory, `android-${scene.id}.png`);
+        await writeFile(screenshotPath, screenshot);
+        observation.screenshotPixels = assertImageDecodes(screenshotPath, {
+          width: 1080,
+          height: 2400,
+        });
+        observation.screenshotSha256 = sha256(screenshot);
+      }
       observations.push(observation);
       console.log(`Android AVD ${scene.id}: PASS`);
     }
@@ -393,6 +409,7 @@ async function runAndroid() {
       'Android capture script changed during the run.');
     metadata.apkSha256 = localApkSha256;
     metadata.installedApkSha256 = installedApkSha256;
+    metadata.screenshotScenes = screenshotFilter ?? scenes.map(({ id }) => id);
     metadata.sourceRevision = finalSource;
     await writeFile(resolve(evidenceDirectory, 'android-simulator.json'),
       `${JSON.stringify({ ...metadata, observations }, null, 2)}\n`);
@@ -417,7 +434,6 @@ async function runIOS() {
       .filter(({ udid, state }) => udid === serialOrUDID && state === 'Booted')
       .map((device) => ({ ...device, runtime })));
     assert.equal(simulator.length, 1);
-    assert.equal(simulator[0].name, 'Spinon-C114-Cyclic-Image-Span');
     assert.equal(simulator[0].deviceTypeIdentifier,
       'com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro');
     assert.match(simulator[0].runtime, /iOS-26-2$/);
@@ -459,17 +475,19 @@ async function runIOS() {
       await writeFile(runtimeLogPath, runtimeLog);
       const observation = verifyScene(runtimeLog, scene, runID);
       observation.runtimeLogSha256 = sha256(await readFile(runtimeLogPath));
-      const screenshotPath = resolve(evidenceDirectory, `ios-${scene.id}.png`);
-      command('xcrun', ['simctl', 'io', serialOrUDID, 'screenshot', screenshotPath]);
-      const screenshot = await readFile(screenshotPath);
-      assertPngSignature(screenshot, `iOS screenshot ${scene.id}`);
-      observation.screenshotPixels = assertImageDecodes(screenshotPath, {
-        width: 1206,
-        height: 2622,
-      });
-      observation.screenshotOcrText = command('mise', ['exec', '--', 'swift',
-        iosScreenshotVerifierPath, screenshotPath], { timeout: 120_000 }).stdout.trim();
-      observation.screenshotSha256 = sha256(screenshot);
+      if (shouldCaptureScreenshot(scene)) {
+        const screenshotPath = resolve(evidenceDirectory, `ios-${scene.id}.png`);
+        command('xcrun', ['simctl', 'io', serialOrUDID, 'screenshot', screenshotPath]);
+        const screenshot = await readFile(screenshotPath);
+        assertPngSignature(screenshot, `iOS screenshot ${scene.id}`);
+        observation.screenshotPixels = assertImageDecodes(screenshotPath, {
+          width: 1206,
+          height: 2622,
+        });
+        observation.screenshotOcrText = command('mise', ['exec', '--', 'swift',
+          iosScreenshotVerifierPath, screenshotPath], { timeout: 120_000 }).stdout.trim();
+        observation.screenshotSha256 = sha256(screenshot);
+      }
       observations.push(observation);
       console.log(`iOS Simulator ${scene.id}: PASS`);
     }
@@ -484,6 +502,7 @@ async function runIOS() {
       `${JSON.stringify({
         target, udid: serialOrUDID, name: simulator[0].name, runtime: simulator[0].runtime,
         deviceTypeIdentifier: simulator[0].deviceTypeIdentifier,
+        screenshotScenes: screenshotFilter ?? scenes.map(({ id }) => id),
         appSha256, buildProvenance,
         screenshotVerifier: {
           path: iosScreenshotVerifierPath.slice(repositoryRoot.length + 1),
@@ -492,6 +511,7 @@ async function runIOS() {
         sourceRevision: finalSource, observations,
       }, null, 2)}\n`);
   } finally {
+    command('xcrun', ['simctl', 'terminate', serialOrUDID, packageName], { allowFailure: true });
     if (bootedByThisRun) {
       command('xcrun', ['simctl', 'shutdown', serialOrUDID], { allowFailure: true });
     }

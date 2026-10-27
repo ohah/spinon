@@ -20,6 +20,8 @@ const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
 #[path = "c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs"]
 mod cyclic_minmax_mixed_text_image_span;
+#[path = "c11_4_mixed/generic_direct_text_image.rs"]
+mod generic_direct_text_image;
 #[path = "c11_4_mixed/orthogonal_rows.rs"]
 mod orthogonal_rows;
 #[path = "c11_4_mixed/style.rs"]
@@ -313,14 +315,12 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     let (namespace, tag, root_id) = element_identity(snapshot, root)?;
-    let Some(scene_id) = root_id
+    let scene = root_id
         .strip_prefix("c114-")
         .and_then(|id| id.strip_suffix("-grid"))
-    else {
-        return Ok(None);
-    };
-    let Some(scene) = SCENES.iter().find(|scene| scene.id == scene_id).copied() else {
-        return Ok(None);
+        .and_then(|scene_id| SCENES.iter().find(|scene| scene.id == scene_id).copied());
+    let Some(scene) = scene else {
+        return generic_direct_text_image::prepare(snapshot, root, styles);
     };
     if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
         return Err(failure("c114_mixed_profile_mismatch", root.id(), None));
