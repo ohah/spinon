@@ -1,0 +1,44 @@
+{
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-pr710-2026-10-28/pass01",
+  "backupCount": 7,
+  "backupBytes": 3176637,
+  "allSizesMatch": true,
+  "allHashesMatch": true,
+  "backups": [
+    {
+      "path": "public/roadmap.html",
+      "bytes": 349761,
+      "sha256": "2066af38758cbb6a02f235be2affc7c7f28819406e5d5882f9ac818e5b65ead7"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 349761,
+      "sha256": "2066af38758cbb6a02f235be2affc7c7f28819406e5d5882f9ac818e5b65ead7"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 349761,
+      "sha256": "2066af38758cbb6a02f235be2affc7c7f28819406e5d5882f9ac818e5b65ead7"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 591518,
+      "sha256": "f0e901df345a5a246c80b96958de32accc6a7c3ddc07aa44dd6fea5bb08e3bda"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 472413,
+      "sha256": "d3e057421c4613e1981febe4607d432244842088c8011e91dea7bf63486001f9"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 591010,
+      "sha256": "ae16a5ad961b4d3702c95dc2cccbf888e5479ad699ad2401151b8533a49d033d"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 472413,
+      "sha256": "d3e057421c4613e1981febe4607d432244842088c8011e91dea7bf63486001f9"
+    }
+  ]
+}
