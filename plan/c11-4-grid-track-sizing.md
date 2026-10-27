@@ -487,3 +487,7 @@ PR [#645](https://github.com/ohah/spinon/pull/645)의 원래 diff 30관점 검�
 ## 2026-10-28 generic direct-text residual review closure
 
 이전 PARTIAL 세 건을 test-only 후속 [PR #704](https://github.com/ohah/spinon/pull/704)와 [evidence](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/README.md)로 닫는다. HTML namespace와 tag 이름을 구분한 decoy를 여러 child 위치에서 검사하고, 거부된 HTML `<img>`의 exact `NodeId`, 그리고 실제 `TEXT_CASES` dispatcher의 one-item legacy fallback 결과를 고정했다. [PR diff 적대 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/pr-diff-review-20.md)는 제품/runtime 변경이 없고 C11.4 전체나 app route를 검증하지 않았음을 확인한다. 공식 checkbox와 `72/213`은 유지한다.
+
+### 2026-10-28 direct-text legacy fallback 13-scene runtime 계획
+
+기존 `TEXT_CASES` 13개 one-item scene은 FFI source와 양 플랫폼 matcher에 이미 있지만, generic collector `None` 이후 전체 legacy dispatcher를 case별로 실행한 근거는 첫 case 하나뿐이다. [후속 계획](./c11-4-generic-direct-text-legacy-fallback-runtime.md)은 13개 full-dispatch Rust assertion과 Android/iOS 13-scene runtime matrix를 고정한다. 기존 Chrome 155/156 입력 및 기대값을 재사용하며 새 브라우저 oracle은 만들지 않는다. 계획 독립 검토 20개와 [계획 PR 변경 검토 20개](./c11-4-generic-direct-text-legacy-fallback-runtime-plan-pr-diff-review-20.md)를 연결한다. 런타임 구현은 계획 PR 병합 뒤 시작하며 C11.4 checkbox와 공식 `72/213`은 그대로 유지한다.
