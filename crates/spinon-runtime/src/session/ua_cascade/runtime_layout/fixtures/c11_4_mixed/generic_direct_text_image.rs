@@ -262,7 +262,7 @@ pub(super) fn prepare(
     }))
 }
 
-fn has_mixed_signature(
+pub(super) fn has_mixed_signature(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
 ) -> Result<bool, RuntimeLayoutFailure> {
@@ -313,7 +313,7 @@ fn subtree_has_meaningful_text(
     Ok(false)
 }
 
-fn validate_snapshot_revision(
+pub(super) fn validate_snapshot_revision(
     snapshot: &HostDocumentSnapshot,
     root: NodeId,
     styles: &ComputedStyleSnapshot,
@@ -350,7 +350,7 @@ fn scene_for(
     }
 }
 
-fn require_property(
+pub(super) fn require_property(
     style: &ComputedElementStyle,
     node: NodeId,
     name: &str,

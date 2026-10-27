@@ -27,10 +27,10 @@ CSS Grid 2025 CRD §11.5의 non-spanning intrinsic track sizing은 해당 intrin
 별도 fixture adapter는 C11.4 fixture-test route 안에서 다음 조건만 허용한다.
 
 - Root는 HTML `div` Grid이며 새로운 HostNode root ID를 사용한다. 선택이나 기대값에 root/item ID allowlist를 쓰지 않는다.
-- Root width는 `74px`, height는 `auto`, margin/padding/border/gap은 0, `horizontal-tb`, LTR, `align-items:start`다. Root의 `align-content`, `justify-items`, `justify-content`는 oracle fixture처럼 authored declaration을 추가하지 않아 computed initial value `normal`을 유지한다. Runtime root는 normal flow에 둔다.
+- Root width는 `74px`, height는 `auto`, computed `box-sizing`은 oracle처럼 초기값 `content-box`, margin/padding/border/gap은 0, `horizontal-tb`, LTR, `align-items:start`다. Root의 `align-content`, `justify-items`, `justify-content`는 oracle fixture처럼 authored declaration을 추가하지 않아 computed initial value `normal`을 유지한다. Runtime root는 normal flow에 둔다.
 - Columns는 `50px 24px`; rows는 단일 `min-content` 또는 단일 `max-content` track이다.
 - Direct element child는 정확히 둘이다. 하나는 text node `XX XXXXX` 하나만 가진 HTML `div`, 나머지는 저장소 PNG를 natural size `24×16px`로 decode한 leaf HTML `img`다. 둘 다 row 1에 놓이며 text는 column 1, image는 column 2에 놓인다.
-- Text profile은 Ahem 10px/10px, weight 400, normal whitespace/wrapping, horizontal-tb LTR이다. Image의 width/height는 auto이고 aspect-ratio override가 없다. Item box edges는 0이며 computed self-alignment는 `auto`다.
+- Text profile은 Ahem 10px/10px, weight 400, normal whitespace/wrapping, horizontal-tb LTR이다. Text와 image item의 computed `box-sizing`도 초기값 `content-box`다. Image의 width/height는 auto이고 aspect-ratio override가 없다. Item box edges는 0이며 computed self-alignment는 `auto`다.
 - Forward/reversed input은 두 sizing child의 DOM 순서만 다르다. 동일한 item identity, placement 및 기대 frame을 유지한다.
 - HTML oracle의 absolute `.track-probe`는 track rect를 읽는 측정 도구다. Runtime HostDocument에는 이를 넣지 않으며 out-of-flow child를 contribution 또는 scene item으로 세지 않는다.
 

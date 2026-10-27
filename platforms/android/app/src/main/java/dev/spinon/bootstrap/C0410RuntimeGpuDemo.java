@@ -277,6 +277,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
             "direct-row-min-content-forward", "direct-row-min-content-reversed",
             "direct-row-max-content-forward", "direct-row-max-content-reversed",
+            "direct-row-min-content-generic-forward",
+            "direct-row-min-content-generic-reversed",
+            "direct-row-max-content-generic-forward",
+            "direct-row-max-content-generic-reversed",
             "direct-orthogonal-row-min-content-forward",
             "direct-orthogonal-row-min-content-reversed",
             "direct-orthogonal-row-max-content-forward",
@@ -6699,7 +6703,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "direct-row-min-content-forward".equals(sceneId)
                 || "direct-row-min-content-reversed".equals(sceneId)
                 || "direct-row-max-content-forward".equals(sceneId)
-                || "direct-row-max-content-reversed".equals(sceneId);
+                || "direct-row-max-content-reversed".equals(sceneId)
+                || "direct-row-min-content-generic-forward".equals(sceneId)
+                || "direct-row-min-content-generic-reversed".equals(sceneId)
+                || "direct-row-max-content-generic-forward".equals(sceneId)
+                || "direct-row-max-content-generic-reversed".equals(sceneId);
     }
 
     private static boolean c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(String sceneId) {
@@ -6778,12 +6786,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 break;
             case "direct-row-min-content-forward":
             case "direct-row-max-content-forward":
+            case "direct-row-min-content-generic-forward":
+            case "direct-row-max-content-generic-forward":
                 nodes = new int[] {2, 4};
                 kinds = new String[] {"text", "replaced"};
                 textMetrics = new int[][] {{50, 20, 80, 10}, null};
                 break;
             case "direct-row-min-content-reversed":
             case "direct-row-max-content-reversed":
+            case "direct-row-min-content-generic-reversed":
+            case "direct-row-max-content-generic-reversed":
                 nodes = new int[] {2, 3};
                 kinds = new String[] {"replaced", "text"};
                 textMetrics = new int[][] {null, {50, 20, 80, 10}};

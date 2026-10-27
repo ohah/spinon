@@ -22,6 +22,8 @@ const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 mod cyclic_minmax_mixed_text_image_span;
 #[path = "c11_4_mixed/generic_direct_text_image.rs"]
 mod generic_direct_text_image;
+#[path = "c11_4_mixed/generic_direct_text_image_row_axis.rs"]
+mod generic_direct_text_image_row_axis;
 #[path = "c11_4_mixed/orthogonal_rows.rs"]
 mod orthogonal_rows;
 #[path = "c11_4_mixed/style.rs"]
@@ -42,6 +44,8 @@ enum SceneGrid {
     DirectMaxContent,
     DirectMinContentRow,
     DirectMaxContentRow,
+    GenericDirectMinContentRow,
+    GenericDirectMaxContentRow,
 }
 
 #[derive(Clone, Copy)]
@@ -320,6 +324,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         .and_then(|id| id.strip_suffix("-grid"))
         .and_then(|scene_id| SCENES.iter().find(|scene| scene.id == scene_id).copied());
     let Some(scene) = scene else {
+        if let Some(input) = generic_direct_text_image_row_axis::prepare(snapshot, root, styles)? {
+            return Ok(Some(input));
+        }
         return generic_direct_text_image::prepare(snapshot, root, styles);
     };
     if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {

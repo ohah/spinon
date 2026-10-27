@@ -74,6 +74,8 @@ mod flex_spanning_text;
 mod generic_direct_text;
 #[path = "c11_4/generic_mixed_direct_text_image_intrinsic.rs"]
 mod generic_mixed_direct_text_image_intrinsic;
+#[path = "c11_4/generic_mixed_direct_text_image_row_axis.rs"]
+mod generic_mixed_direct_text_image_row_axis;
 #[path = "c11_4/grid_auto_fit_columns_wpt.rs"]
 mod grid_auto_fit_columns_wpt;
 #[path = "c11_4/grid_auto_repeat_intrinsic_wpt.rs"]
@@ -1184,6 +1186,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = mixed_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = generic_mixed_direct_text_image_row_axis::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = orthogonal_direct_text_image_intrinsic_rows::runtime_source(scene_id) {
