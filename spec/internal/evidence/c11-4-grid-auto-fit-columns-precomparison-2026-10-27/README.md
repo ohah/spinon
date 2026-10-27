@@ -14,6 +14,10 @@ Agent Browser `0.31.1`의 HeadlessChrome `156.0.0.0`, viewport `1280×633` CSS p
 
 이 자료는 Chrome에서 고정 WPT를 실행한 결과다. Chrome 통과는 Spinon 적합성이나 앱 동작을 뜻하지 않는다. `gridTemplateColumns`는 Chrome 관측이고 CSS 규범 기대값으로 역산하지 않는다. Item frame의 독립 기대값은 Chrome 결과가 아니라 WPT source의 data attributes다. WPT helper는 각 offset/size 차이가 1 CSS px 이상일 때 실패시키므로 구현 acceptance에서는 정수 expected frame을 별도로 비교해 더 엄격한 경계를 사용한다.
 
+## Runtime adapter 입력 투영
+
+scene table은 WPT의 `grid.css`, 문서 class rule, direct item의 inline placement를 원문 hash 확인 뒤 고정 입력으로 투영한다. Android API 37 ARM64에서 scene 01을 실행하자 V8/DOM 경로 뒤 CSS cascade가 실패했다. WPT의 `background: cyan`이 지원되지 않는 `background-position-x`를 만들기 때문이다. 대상 문서는 단색 `cyan`/ `green`만 지정하므로 adapter가 이 두 shorthand를 동일 색의 `background-color`로 제한 정규화한다. 일반 CSS admission은 변경하지 않는다. 오류 원본은 [첫 Android 실행 로그](../c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-grid-auto-fit-01-pass1.log)에 보존한다. 이 투영을 전체 WPT runner 실행으로 확대 해석하지 않는다.
+
 ## 고정된 알고리즘 경계
 
 - Auto-repeat은 definite repeat size와 gap을 포함해 content box 안에 들어가는 양의 최대 반복 수를 고른다. 양쪽 sizing function이 definite이면 max를 min보다 낮지 않게 본다.

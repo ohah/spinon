@@ -1,0 +1,14 @@
+{
+  "platform": "iPhone 17 Pro / iOS 26.2 Simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "sceneId": "grid-auto-fit-columns-36",
+  "runId": "c114-reject-ios-20261027",
+  "pid": 44219,
+  "startedUtc": "2026-10-27T14:04:40.952315+00:00",
+  "launchOutput": "dev.spinon.bootstrap: 44219\n",
+  "rejectedBeforeRuntime": true,
+  "runtimeMarkersObserved": false,
+  "rejectionMarker": "SPINON_C114_GRID_ARGUMENT_ERROR rejected=true",
+  "log": "c114-reject-ios-20261027.log",
+  "appTerminatedAfterRun": true
+}

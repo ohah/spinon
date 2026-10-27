@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태 · 2026-10-27:** 고정 WPT 원문의 Chrome 156 harness 35/35 결과와 root/item 관측, WPT-authored frame 기대값을 [사전 비교 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-precomparison-2026-10-27/README.md)에 보존했다. 이는 Chrome 결과이며 Spinon 구현 결과가 아니다. C11.4 상위 체크와 공식 `72/213`은 그대로 미완료로 둔다.
+**상태 · 2026-10-27:** 고정 WPT 원문의 Chrome 156 harness 35/35 결과와 root/item 관측, WPT-authored frame 기대값은 [사전 비교 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-precomparison-2026-10-27/README.md)에 보존했다. 추가로 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 35/35 scene 및 실제 draw/present가 각각 통과했고, 여섯 overflow scene의 PixelCopy와 compositor 제출 전 Metal 표본은 각각 24/24 exact다. 기본/opt-in macOS ARM64 FFI static archive 경계, focused Rust/FFI·fixture-boundary checks, fmt, workspace Clippy 및 두 simulator build도 통과했다. [runtime 근거와 화면](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/README.md) · [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/implementation-runtime-review-20.md). PR은 아직 생성되지 않았고, Agent Browser 이미지 로드 확인 및 별도 PR diff 검토·PR check 상태·병합 후 roadmap/Tailnet 동기화가 남아 있다. Chrome 결과는 기준 브라우저일 뿐 Spinon pass가 아니다. 공식 C11.4 상위 체크와 `72/213`은 그대로 미완료다.
 
 ## 확인한 결손
 
@@ -19,6 +19,7 @@
 - WPT helper는 item의 offset/size 오차가 1 CSS px 이상이면 실패시킨다. 구현 검증은 정수 expected frame에 더 엄격한 `0.02 CSS px` 허용 오차를 적용하고, repeat count·line occurrence·collapse·scene 수·surface RGBA는 정확히 대조한다.
 - Chrome CSSOM의 used `gridTemplateColumns`는 browser observation으로 보존하며 규범 기대값과 혼동하지 않는다. case 7, 8, 11, 14, 19의 CSSOM에는 overflow placement가 만든 implicit `157px` column이 들어가므로 explicit repeated-track count와 분리한다. 앱 matcher는 WPT frames와 별도로 used tracks, 독립 repeat count, expanded line-name occurrence, stage arrays와 gutter/collapse flags를 검사한다.
 - Root CSS `width`는 200px content box이며 border 2px는 바깥에 그린다. case 2의 좌우 padding 13px은 content box의 원점을 이동시키고 외곽 border box를 230px로 넓히지만 200px content 폭을 174px로 줄이지 않는다. `30%` track basis와 repeat count는 200px이고 item offset 13px·폭 180px은 Chrome 관측 및 WPT 기대값으로 따로 고정한다. gap scenes는 20px column gap을 쓰며, 모든 case에서 `grid-auto-columns:157px`, `grid-auto-rows:25px`, `justify-content:start`, root/item defaults를 고정한다. case 32의 `2em`은 이 WPT browser 환경의 16px inherited font basis에 대해 used 32px로 관측했다.
+- Runtime adapter는 고정 WPT stylesheet를 scene별 inline style로 투영한다. WPT item의 `background: cyan/green` shorthand가 Android 첫 실행에서 unsupported `background-position-x`를 만들어 cascade에서 거부됨을 확인했다. 두 색 선언은 image·position·clip 등 추가 효과가 없는 단색 배경이므로 adapter가 동등한 `background-color: cyan/green`으로 정규화한다. 일반 CSS parser의 지원 범위는 넓히지 않는다. 원문과 normalized adapter의 hash 및 실패 log는 구현 근거에 둔다.
 - 규범 출처는 CSS Grid 2025 CRD §§7.2.3.1–7.2.4, §§8.3–8.5, §11.7이다. definite repeat count와 gap, max/min floor, item placement 뒤 auto-fit empty 판정, occupied span, 인접 gutter collapse, repeated line-name merge, numeric/named placement, flex leftover distribution을 별도 invariant로 기록한다.
 
 ## 전체 35-scene 범위

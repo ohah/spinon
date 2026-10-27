@@ -230,6 +230,79 @@ fn positive_percentage_auto_repeat_matches_fixed_controls_on_both_axes() {
 }
 
 #[test]
+fn definite_percentage_tracks_repeat_to_fill_and_auto_fit_collapses_empty_tracks() {
+    for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+        let mut input = input_with_track(
+            LayoutGridTrackSizingAxis::Columns,
+            mode,
+            LayoutBoxSizing::ContentBox,
+            GridTrackMinSizingFunction::LengthPx(0.0),
+        );
+        input.grid_containers.get_mut(&id(1)).unwrap().columns[0] = GridTrackSize::Percentage(0.3);
+
+        let output = TaffyLayoutEngine.compute(&input).unwrap();
+        let tracks = initial_tracks(&input, LayoutGridTrackSizingAxis::Columns);
+        assert_eq!(tracks.len(), 3, "{mode:?} repeat count");
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        {
+            let trace = output
+                .grid_track_sizing_traces
+                .iter()
+                .find(|trace| trace.node == id(1))
+                .unwrap();
+            let column_pass = trace
+                .passes
+                .iter()
+                .find(|pass| pass.axis == LayoutGridTrackSizingAxis::Columns)
+                .unwrap();
+            assert_eq!(
+                column_pass.auto_repeat_count,
+                Some(3),
+                "{mode:?} trace count"
+            );
+        }
+        assert_eq!(
+            tracks.iter().filter(|(collapsed, _)| *collapsed).count(),
+            if mode == GridAutoRepeatMode::AutoFill {
+                0
+            } else {
+                2
+            },
+            "{mode:?} collapsed tracks"
+        );
+        assert_eq!(output.frames[&id(2)].width, 36.0, "{mode:?} item width");
+    }
+}
+
+#[test]
+fn percentage_auto_repeat_requires_a_definite_positive_content_axis() {
+    let mut input = input_with_track(
+        LayoutGridTrackSizingAxis::Columns,
+        GridAutoRepeatMode::AutoFill,
+        LayoutBoxSizing::ContentBox,
+        GridTrackMinSizingFunction::LengthPx(0.0),
+    );
+    input.nodes[0].style.width = LayoutDimension::Auto;
+    input.root_sizing = RootSizingPolicy::ResolveWithin;
+    input.grid_containers.get_mut(&id(1)).unwrap().columns[0] = GridTrackSize::Percentage(0.3);
+
+    let error = TaffyLayoutEngine.compute(&input).unwrap_err();
+    assert!(
+        matches!(
+            error,
+            crate::LayoutError::InvalidGridTrack {
+                node,
+                property: "grid-template-columns"
+            } | crate::LayoutError::InvalidGridTrackList {
+                node,
+                property: "grid-template-columns"
+            } if node == id(1)
+        ),
+        "unexpected indefinite percentage auto-repeat result: {error:?}"
+    );
+}
+
+#[test]
 fn percentage_minimum_with_fixed_maximum_keeps_auto_repeat_count() {
     let mut input = input_with_track(
         LayoutGridTrackSizingAxis::Columns,

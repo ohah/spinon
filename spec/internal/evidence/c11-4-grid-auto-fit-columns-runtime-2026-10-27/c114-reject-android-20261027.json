@@ -1,0 +1,13 @@
+{
+  "platform": "Android API 37 ARM64 AVD",
+  "serial": "emulator-5554",
+  "sceneId": "grid-auto-fit-columns-36",
+  "runId": "c114-reject-android-20261027",
+  "startedUtc": "2026-10-27T14:03:51.013270+00:00",
+  "launchOutput": "Starting: Intent { cmp=dev.spinon.bootstrap/.MainActivity (has extras) }\nStatus: ok\nLaunchState: COLD\nActivity: dev.spinon.bootstrap/.MainActivity\nTotalTime: 850\nWaitTime: 938\nComplete\n",
+  "rejectedBeforeRuntime": true,
+  "runtimeMarkersObserved": false,
+  "log": "c114-reject-android-20261027.log",
+  "rejectionMarker": "SPINON_C114_GRID_ARGUMENT_ERROR rejected=true",
+  "note": "The Android host displayed the argument rejection; no C11.4 eval, trace, summary, or presentation marker followed."
+}

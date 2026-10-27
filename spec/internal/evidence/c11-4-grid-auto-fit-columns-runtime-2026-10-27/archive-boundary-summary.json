@@ -1,0 +1,78 @@
+{
+  "observedUtc": "2026-10-27T14:10:09Z",
+  "branchHead": "e37e0764483022d8587d832f4f384fbc5d4f8c0c",
+  "sourceManifestSha256": "7a3d3f321a1260d9fff2e1b6e9c4edecf6c2871330719e996c27dc9911be5518",
+  "archive": "target/debug/libspinon_ffi.a",
+  "product": {
+    "features": [
+      "c04-runtime-gpu"
+    ],
+    "buildLog": "product-archive-build.log",
+    "archiveSha256": "eb53a0350bf45280314b54e4430aa41212488695fd439f684dabc2fe163b89bd",
+    "archiveBytes": 661645072,
+    "symbolTool": "/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm -g --defined-only",
+    "stringTool": "strings (UTF-8 decode with replacement; streamed scan)",
+    "fixtureSymbols": [],
+    "sceneMarkerCount": 0,
+    "sceneMarkers": [],
+    "expectedReportMarkerPresent": false,
+    "symbolScan": "product-archive-symbols.txt"
+  },
+  "fixture": {
+    "features": [
+      "c04-runtime-gpu-fixture-test"
+    ],
+    "buildLog": "fixture-archive-build.log",
+    "archiveSha256": "a20eb41edc19e6d380d089eb8e6289e79d729d0bcde043626137b2907d3a982b",
+    "archiveBytes": 709153264,
+    "symbolTool": "/Users/yoonhb/.rustup/toolchains/1.96.1-aarch64-apple-darwin/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm -g --defined-only",
+    "stringTool": "strings (UTF-8 decode with replacement; streamed scan)",
+    "fixtureSymbols": [
+      "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+      "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+    ],
+    "sceneMarkerCount": 35,
+    "sceneMarkers": [
+      "grid-auto-fit-columns-01",
+      "grid-auto-fit-columns-02",
+      "grid-auto-fit-columns-03",
+      "grid-auto-fit-columns-04",
+      "grid-auto-fit-columns-05",
+      "grid-auto-fit-columns-06",
+      "grid-auto-fit-columns-07",
+      "grid-auto-fit-columns-08",
+      "grid-auto-fit-columns-09",
+      "grid-auto-fit-columns-10",
+      "grid-auto-fit-columns-11",
+      "grid-auto-fit-columns-12",
+      "grid-auto-fit-columns-13",
+      "grid-auto-fit-columns-14",
+      "grid-auto-fit-columns-15",
+      "grid-auto-fit-columns-16",
+      "grid-auto-fit-columns-17",
+      "grid-auto-fit-columns-18",
+      "grid-auto-fit-columns-19",
+      "grid-auto-fit-columns-20",
+      "grid-auto-fit-columns-21",
+      "grid-auto-fit-columns-22",
+      "grid-auto-fit-columns-23",
+      "grid-auto-fit-columns-24",
+      "grid-auto-fit-columns-25",
+      "grid-auto-fit-columns-26",
+      "grid-auto-fit-columns-27",
+      "grid-auto-fit-columns-28",
+      "grid-auto-fit-columns-29",
+      "grid-auto-fit-columns-30",
+      "grid-auto-fit-columns-31",
+      "grid-auto-fit-columns-32",
+      "grid-auto-fit-columns-33",
+      "grid-auto-fit-columns-34",
+      "grid-auto-fit-columns-35"
+    ],
+    "expectedReportMarkerPresent": true,
+    "symbolScan": "fixture-archive-symbols.txt"
+  },
+  "productBoundaryPassed": true,
+  "fixturePositiveControlPassed": true,
+  "scope": "macOS ARM64 static FFI archive only; app bundles and release artifacts are not covered"
+}

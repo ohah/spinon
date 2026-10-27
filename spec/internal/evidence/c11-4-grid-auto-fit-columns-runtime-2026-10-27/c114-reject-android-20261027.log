@@ -1,0 +1,2 @@
+10-27 23:03:50.624   521   521 I adbd    : adbd service requested 'shell,v2,TERM=tmux-256color,raw:am start -W -n dev.spinon.bootstrap/.MainActivity --ez spinon_c114_grid_track_sizing true --es spinon_c114_grid_scene grid-auto-fit-columns-36 --es spinon_c114_grid_run_id c114-reject-android-20261027'
+10-27 23:03:50.889 11588 11588 E SpinonBootstrap: SPINON_C114_GRID_ARGUMENT_ERROR rejected=true

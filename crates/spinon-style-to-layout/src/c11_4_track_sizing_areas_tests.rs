@@ -668,6 +668,74 @@ fn track_sizing_profile_anchors_negative_lines_when_template_is_none() {
     ));
 }
 
+#[test]
+fn auto_fit_wpt_accepts_multiple_percent_neighbors_and_named_implicit_lines() {
+    let scenes = [
+        (
+            "multiple percentage prefixes",
+            "display:grid;background-color:grey;border:2px solid magenta;width:200px;position:relative;justify-content:start;grid-auto-columns:157px;grid-auto-rows:25px;grid-template-columns:10px [foo] 20% [bar] repeat(auto-fit,[autofoo] 35px);column-gap:20px",
+            "background-color:cyan;grid-column:notPresent / 3 autofoo",
+            269.0,
+            157.0,
+        ),
+        (
+            "percentage neighbors and repeated names",
+            "display:grid;background-color:grey;border:2px solid magenta;width:200px;position:relative;justify-content:start;grid-auto-columns:157px;grid-auto-rows:25px;grid-template-columns:[start] 20px [foo] 50% repeat(auto-fit,[bar] 20px [start foo]) [foo] 10% [end bar];column-gap:20px",
+            "background-color:cyan;grid-column:foo / bar 2",
+            42.0,
+            180.0,
+        ),
+    ];
+    for (name, root_style, item_style, expected_x, expected_width) in scenes {
+        let fixture = Fixture::new(root_style, &[("wpt-item", item_style)]);
+        let output = fixture
+            .try_compute()
+            .unwrap_or_else(|error| panic!("{name} must reach layout: {error:?}"));
+        let frame = output.layout.frames[&fixture.nodes["wpt-item"].id()];
+        assert_eq!(frame.x, expected_x, "{name} x");
+        assert_eq!(frame.y, 2.0, "{name} y");
+        assert_eq!(frame.width, expected_width, "{name} width");
+        assert_eq!(frame.height, 25.0, "{name} height");
+    }
+}
+
+#[test]
+fn auto_fit_wpt_resolves_percentage_minmax_suffix_neighbors() {
+    let root_style = "display:grid;background-color:grey;border:2px solid magenta;width:200px;position:relative;justify-content:start;grid-auto-columns:157px;grid-auto-rows:25px;grid-template-columns:[start] repeat(2,50px [a]) [middle] repeat(auto-fit,[autofoo] 15px [autobar]) minmax(5%,10%) [end]";
+    let gap_root_style = format!("{root_style};grid-column-gap:20px");
+    let scenes = [
+        ("grid-column:1 / span 8", 2.0, 195.0),
+        ("grid-column:a / autobar 2", 52.0, 80.0),
+        ("grid-column:autofoo / end", 102.0, 95.0),
+    ];
+    for (item_style, expected_x, expected_width) in scenes {
+        let fixture = Fixture::new(root_style, &[("wpt-item", item_style)]);
+        let output = fixture.try_compute().unwrap_or_else(|error| {
+            panic!("percentage minmax neighbor must resolve: {item_style}: {error:?}")
+        });
+        let frame = output.layout.frames[&fixture.nodes["wpt-item"].id()];
+        assert_eq!(frame.x, expected_x, "{item_style} x");
+        assert_eq!(frame.y, 2.0, "{item_style} y");
+        assert_eq!(frame.width, expected_width, "{item_style} width");
+        assert_eq!(frame.height, 25.0, "{item_style} height");
+    }
+
+    for (item_style, expected_x, expected_width) in [
+        ("grid-column:1 / span 4", 2.0, 195.0),
+        ("grid-column:autobar / -1", 142.0, 20.0),
+    ] {
+        let fixture = Fixture::new(&gap_root_style, &[("wpt-item", item_style)]);
+        let output = fixture.try_compute().unwrap_or_else(|error| {
+            panic!("gapped percentage minmax neighbor must resolve: {item_style}: {error:?}")
+        });
+        let frame = output.layout.frames[&fixture.nodes["wpt-item"].id()];
+        assert_eq!(frame.x, expected_x, "{item_style} x");
+        assert_eq!(frame.y, 2.0, "{item_style} y");
+        assert_eq!(frame.width, expected_width, "{item_style} width");
+        assert_eq!(frame.height, 25.0, "{item_style} height");
+    }
+}
+
 #[path = "c11_4_track_sizing_areas_tests/auto_repeat_explicit_neighbors.rs"]
 mod auto_repeat_explicit_neighbors;
 #[path = "c11_4_track_sizing_areas_tests/fixed_repeat_line_names.rs"]

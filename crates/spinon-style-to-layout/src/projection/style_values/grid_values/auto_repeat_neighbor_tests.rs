@@ -258,31 +258,87 @@ fn track_sizing_projection_rejects_intrinsic_neighbor_outside_the_wpt_column_aut
 }
 
 #[test]
-fn track_sizing_projection_rejects_minmax_authored_neighbors_without_fixed_repeat_provenance() {
+fn track_sizing_projection_accepts_fixed_minimum_flexible_maximum_neighbors_without_repeat_provenance()
+ {
     let node = NodeId::new(11_136).unwrap();
     let neighbor = ComputedCssGridTrackSize::MinMax {
         min: ComputedCssGridTrackBreadth::LengthPx(12.0),
         max: ComputedCssGridTrackBreadth::Fraction(0.5),
     };
-    for grid in [
+    let expected = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::LengthPx(12.0),
+        max: GridTrackMaxSizingFunction::Fraction(0.5),
+    };
+    let grids = [
         grid_with_column_neighbors(neighbor.clone(), ComputedCssGridTrackSize::LengthPx(4.0)),
         grid_with_row_neighbors(neighbor, ComputedCssGridTrackSize::LengthPx(4.0)),
-    ] {
-        let error = project_grid_layout(
+    ];
+    for (axis, grid) in ["columns", "rows"].into_iter().zip(grids) {
+        let projected = project_grid_layout(
             node,
             &grid,
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
         )
-        .unwrap_err();
-        assert!(matches!(
-            error,
-            StyleLayoutError::UnsupportedComputedValue {
-                node: error_node,
-                property: "grid-template-columns" | "grid-template-rows",
-                ..
-            } if error_node == node
-        ));
+        .unwrap_or_else(|error| panic!("fixed minimum is definite on {axis}: {error:?}"));
+        let track = if axis == "columns" {
+            projected.columns[0]
+        } else {
+            projected.rows[0]
+        };
+        assert_eq!(track, expected);
     }
+}
+
+#[test]
+fn track_sizing_projection_accepts_fixed_sizing_functions_after_auto_repeat() {
+    let node = NodeId::new(11_140).unwrap();
+    let grid = ComputedCssGridLayout {
+        columns: vec![
+            ComputedCssGridTrackSize::LengthPx(30.0),
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(60.0),
+                max: ComputedCssGridTrackBreadth::LengthPx(80.0),
+            },
+            ComputedCssGridTrackSize::MinMax {
+                min: ComputedCssGridTrackBreadth::LengthPx(45.0),
+                max: ComputedCssGridTrackBreadth::MaxContent,
+            },
+        ],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
+        columns_auto_repeat: Some(ComputedCssGridAutoRepeat {
+            mode: ComputedCssGridAutoRepeatMode::AutoFit,
+            start: 0,
+            end: 1,
+            line_names: vec![Vec::new(), Vec::new()],
+            fixed_repeat_minmax_track_indices: Vec::new(),
+        }),
+        rows_auto_repeat: None,
+        columns_line_names: Vec::new(),
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::Auto,
+        auto_columns: ComputedCssGridAutoColumns::Auto,
+    };
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap_or_else(|error| panic!("finite and fixed-minimum neighbors: {error:?}"));
+    assert_eq!(
+        projected.columns[1..],
+        [
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(60.0),
+                max: GridTrackMaxSizingFunction::LengthPx(80.0),
+            },
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(45.0),
+                max: GridTrackMaxSizingFunction::MaxContent,
+            },
+        ]
+    );
 }
 
 #[test]
@@ -399,10 +455,6 @@ fn track_sizing_projection_preserves_css_property_context_for_unsupported_neighb
         calc_neighbor(ComputedCssMath::LengthPx(10.0), f32::INFINITY),
         ComputedCssGridTrackSize::MaxContent,
         ComputedCssGridTrackSize::Fraction(1.0),
-        ComputedCssGridTrackSize::MinMax {
-            min: ComputedCssGridTrackBreadth::LengthPx(10.0),
-            max: ComputedCssGridTrackBreadth::LengthPx(20.0),
-        },
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Percentage(0.2),
             max: ComputedCssGridTrackBreadth::Fraction(1.0),

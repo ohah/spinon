@@ -521,7 +521,7 @@ fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
                 "sequence": pass.sequence,
                 "axis": format!("{:?}", pass.axis),
                 "phase": pass.fixture_phase.map(|phase| format!("{:?}", phase)),
-                "autoRepeatCount": pass.fixture_auto_repeat_count,
+                "autoRepeatCount": pass.auto_repeat_count.or(pass.fixture_auto_repeat_count),
                 "percentageBasis": pass.fixture_percentage_basis,
                 "stages": stages,
                 "contributions": contributions,
@@ -530,7 +530,21 @@ fn track_trace_json(trace: &LayoutGridTrackSizingTrace) -> serde_json::Value {
         .collect::<Vec<_>>();
     serde_json::json!({
         "grid": trace.node.get(),
+        "usedColumns": resolved_axis_json(&trace.used_columns),
+        "usedRows": resolved_axis_json(&trace.used_rows),
         "passes": passes,
+    })
+}
+
+fn resolved_axis_json(
+    axis: &spinon_layout::LayoutGridTrackSizingResolvedAxis,
+) -> serde_json::Value {
+    serde_json::json!({
+        "usedTrackList": axis.used_track_list,
+        "explicitTrackCount": axis.explicit_track_count,
+        "negativeImplicitTrackCount": axis.negative_implicit_track_count,
+        "positiveImplicitTrackCount": axis.positive_implicit_track_count,
+        "collapsedTrackIndices": axis.collapsed_track_indices,
     })
 }
 
@@ -727,8 +741,11 @@ mod tests {
                 }],
                 fixture_phase: Some(LayoutGridTrackSizingFixturePhase::FinalDefinite),
                 fixture_auto_repeat_count: Some(2),
+                auto_repeat_count: Some(2),
                 fixture_percentage_basis: Some(24.0),
             }],
+            used_columns: Default::default(),
+            used_rows: Default::default(),
         };
 
         let json = track_trace_json(&trace);
@@ -748,6 +765,8 @@ mod tests {
         );
         assert_eq!(json["passes"][0]["contributions"][0]["item"], 8);
         assert_eq!(json["passes"][0]["contributions"][0]["value"], 16.0);
+        assert_eq!(json["usedColumns"]["usedTrackList"], "");
+        assert_eq!(json["usedRows"]["explicitTrackCount"], 0);
     }
 
     #[test]
@@ -788,6 +807,8 @@ mod tests {
             traces: vec![LayoutGridTrackSizingTrace {
                 node: NodeId::new(7).unwrap(),
                 passes: Vec::new(),
+                used_columns: Default::default(),
+                used_rows: Default::default(),
             }]
             .into(),
             fit_content_auto_neighbor: None,

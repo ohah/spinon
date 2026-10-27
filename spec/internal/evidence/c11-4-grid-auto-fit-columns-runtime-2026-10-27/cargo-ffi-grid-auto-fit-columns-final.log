@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.16s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-9925826259548421)
+
+running 3 tests
+test runtime_gpu::fixtures::c11_4::grid_auto_fit_columns_wpt::tests::emits_independent_geometry_and_repeat_count_expectations_for_each_scene ... ok
+test runtime_gpu::fixtures::c11_4::grid_auto_fit_columns_wpt::tests::preserves_authored_track_lists_placement_and_wpt_geometry ... ok
+test runtime_gpu::fixtures::c11_4::grid_auto_fit_columns_wpt::tests::registers_all_and_only_the_pinned_wpt_roots_and_direct_items ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 140 filtered out; finished in 0.13s

@@ -1,0 +1,725 @@
+{
+  "runStamp": "20261027T141243Z",
+  "sourceSha256": "cd67f3dc58741663dbfc257b44e760673df4b9c452eedb3011acb673c693b98b",
+  "sceneIndices": [
+    7,
+    8,
+    11,
+    14,
+    19,
+    31
+  ],
+  "perSceneSampleContract": [
+    "border",
+    "overflowing item fill",
+    "background immediately after item",
+    "separate outside control"
+  ],
+  "android": {
+    "platform": "Android API 37 ARM64 AVD",
+    "passedScenes": 6,
+    "observations": [
+      {
+        "sceneId": "grid-auto-fit-columns-07",
+        "runId": "c114-surface-android-20261027T141243Z-07",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-07-border",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-07-item-1",
+            "xCssPx": 230,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 360,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:12:45.693 13499 13519 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-07 scene=grid-auto-fit-columns-07 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-07-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-08",
+        "runId": "c114-surface-android-20261027T141243Z-08",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-08-border",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-08-item-1",
+            "xCssPx": 230,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 260,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:12:48.645 13588 13608 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-08 scene=grid-auto-fit-columns-08 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-08-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-11",
+        "runId": "c114-surface-android-20261027T141243Z-11",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-11-border",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-11-item-1",
+            "xCssPx": 250,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 350,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:12:51.864 13657 13677 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-11 scene=grid-auto-fit-columns-11 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-11-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-14",
+        "runId": "c114-surface-android-20261027T141243Z-14",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-14-border",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-14-item-1",
+            "xCssPx": 300,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 427,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:12:55.108 13728 13748 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-14 scene=grid-auto-fit-columns-14 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-14-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-19",
+        "runId": "c114-surface-android-20261027T141243Z-19",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-19-border",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-19-item-1",
+            "xCssPx": 250,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 305,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:12:58.897 13801 13822 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-19 scene=grid-auto-fit-columns-19 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-19-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-31",
+        "runId": "c114-surface-android-20261027T141243Z-31",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-31-border",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-31-item-1",
+            "xCssPx": 210,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 223,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "10-27 23:13:01.231 13874 13895 I SpinonBootstrap: SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=c114-surface-android-20261027T141243Z-31 scene=grid-auto-fit-columns-31 generation=2 expected_samples=4 observed_samples=4 matched_samples=4",
+        "pixelCopyImage": "android-overflow-31-20261027T141243Z-pixelcopy.png",
+        "apkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac",
+        "installedApkSha256": "32eefcfb7ca300d96927c6faae9c248b9b3e31292fc09e0e8dff427ef8e275ac"
+      }
+    ]
+  },
+  "ios": {
+    "platform": "iPhone 17 Pro iOS 26.2 Simulator",
+    "passedScenes": 6,
+    "observations": [
+      {
+        "sceneId": "grid-auto-fit-columns-07",
+        "runId": "c114-surface-ios-20261027T141243Z-07",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-07-border",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-07-item-1",
+            "xCssPx": 230,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 360,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-07-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-07-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:03.273890+0900  localhost SpinonBootstrap[61459]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-07 pid=61459 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-07 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-07-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-08",
+        "runId": "c114-surface-ios-20261027T141243Z-08",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-08-border",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-08-item-1",
+            "xCssPx": 230,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 260,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-08-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-08-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:04.959944+0900  localhost SpinonBootstrap[61735]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-08 pid=61735 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-08 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-08-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-11",
+        "runId": "c114-surface-ios-20261027T141243Z-11",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-11-border",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-11-item-1",
+            "xCssPx": 250,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 350,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-11-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-11-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:06.531352+0900  localhost SpinonBootstrap[61988]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-11 pid=61988 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-11 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-11-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-14",
+        "runId": "c114-surface-ios-20261027T141243Z-14",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-14-border",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-14-item-1",
+            "xCssPx": 300,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 427,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-14-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-14-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:08.083241+0900  localhost SpinonBootstrap[62240]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-14 pid=62240 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-14 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-14-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-19",
+        "runId": "c114-surface-ios-20261027T141243Z-19",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-19-border",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-19-item-1",
+            "xCssPx": 250,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 305,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-19-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-19-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:09.666122+0900  localhost SpinonBootstrap[62632]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-19 pid=62632 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-19 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-19-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      },
+      {
+        "sceneId": "grid-auto-fit-columns-31",
+        "runId": "c114-surface-ios-20261027T141243Z-31",
+        "samples": [
+          {
+            "id": "grid-auto-fit-columns-31-border",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 100,
+            "yCssPx": 28,
+            "rgba": [
+              255,
+              0,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-overflow-item",
+            "nodeId": "c114-grid-auto-fit-wpt-31-item-1",
+            "xCssPx": 210,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              255,
+              255,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-item-end-background",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 223,
+            "yCssPx": 10,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          },
+          {
+            "id": "grid-auto-fit-columns-31-control-background",
+            "nodeId": "c114-grid-auto-fit-wpt-31-root",
+            "xCssPx": 470,
+            "yCssPx": 200,
+            "rgba": [
+              0,
+              0,
+              0,
+              255
+            ]
+          }
+        ],
+        "pixelSummary": "2026-10-27 23:13:11.255631+0900  localhost SpinonBootstrap[62907]: (Foundation) SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=c114-surface-ios-20261027T141243Z-31 pid=62907 surface_generation=1 document_revision=10 render_tree_revision=2 environment_revision=1 scene=grid-auto-fit-columns-31 drawable=1440x720 scale_x=3.0 scale_y=3.0 expected_samples=4 observed_samples=4 matched_samples=4",
+        "simulatorScreenshot": "ios-overflow-31-20261027T141243Z-simulator.png",
+        "appExecutableSha256": "716dc2238d6a5b4faf73bf92c993b3922aa6298ac3a56e6b87c744e2813bd927"
+      }
+    ]
+  },
+  "limitations": [
+    "Android values are PixelCopy from the SurfaceView.",
+    "iOS values are WGPU Metal drawable readback before compositor submission.",
+    "The overflow-only rendering viewport is 480x240 CSS px; ordinary 35-scene runs remain 320x240."
+  ]
+}

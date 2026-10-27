@@ -789,6 +789,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "revision-reuse".equals(sceneId);
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (c114IsGenericDirectTextScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -2421,6 +2424,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedNodeFramesMatch(String sceneId, String report) {
+        if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
+            return C114GridAutoFitColumnsWpt.nodeFramesMatch(sceneId, report);
+        }
         if (C114RowAxisSpanStage.isScene(sceneId)) {
             return C114RowAxisSpanStage.nodeFramesMatch(sceneId, report);
         }
@@ -2504,6 +2510,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
+            return C114GridAutoFitColumnsWpt.expectedRootFrame(sceneId);
+        }
         int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
         if (intrinsicWpt != null) {
             return "width=" + intrinsicWpt[0] + ",height=" + intrinsicWpt[1];
@@ -2884,6 +2893,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (C114GridAutoFitColumnsWpt.isScene(sceneId)) return "";
         if (c114GridAutoRepeatIntrinsicWptState(sceneId) != null) {
             return "width=100,height=20";
         }
@@ -7567,6 +7577,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (C114GridAutoFitColumnsWpt.isScene(sceneId)) {
+            return C114GridAutoFitColumnsWpt.expectedBoxCount(sceneId);
+        }
         int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
         if (intrinsicWpt != null) {
             int boxCount = 2;
@@ -8264,10 +8277,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return c114CalcNeighborRootSize(sceneId) != null;
     }
 
+    private boolean c114AutoFitOverflowPixelMatrixRequested() {
+        return c114GridTrackSizingRequested
+                && !c11GridPixelMatrixRunId.isEmpty()
+                && C114GridAutoFitColumnsWpt.surfacePixelSamples(c114GridTrackSizingSceneId) != null;
+    }
+
     private static boolean isC114GridTrackSizingPixelSamples(
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneId) != null) {
+            return C114GridAutoFitColumnsWpt.surfacePixelSamplesMatch(sceneId, samples);
+        }
         if ("auto-repeat-intrinsic-fill-auto-min".equals(sceneId)
                 || "auto-repeat-intrinsic-fit-auto-min".equals(sceneId)) {
             String rootId = "c114-" + sceneId + "-grid";
@@ -10765,6 +10787,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c114IsImageMultiSpanScene(pixelMatrixSceneId)
                         || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
                         || c114GridAutoRepeatIntrinsicWptColumns(pixelMatrixSceneId) != null
+                        || C114GridAutoFitColumnsWpt.surfacePixelSamples(pixelMatrixSceneId) != null
                         || "fit-content-auto-neighbor-wpt".equals(pixelMatrixSceneId)
                         || "grid-layout-auto-tracks-c114-wpt".equals(pixelMatrixSceneId)
                         || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
@@ -10817,7 +10840,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     byte[] decoded = android.util.Base64.decode(pixelMatrixEncodedSamples,
                             android.util.Base64.URL_SAFE | android.util.Base64.NO_WRAP);
                     pixelMatrixSamples = parseC11GridPixelMatrixSamples(
-                            new String(decoded, StandardCharsets.UTF_8));
+                            new String(decoded, StandardCharsets.UTF_8),
+                            C114GridAutoFitColumnsWpt.surfacePixelSamples(pixelMatrixSceneId) != null
+                                    ? 480 : 320);
                     if (pixelMatrixSamples.isEmpty()) pixelMatrixConfigError = "empty-samples";
                     else if (c1131GridRepeatRequested
                             && !isC1131GridRepeatPixelSamples(pixelMatrixSamples)) {
@@ -11061,7 +11086,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131OverflowClipProbeRequested
                 ? "overflow clip·clip margin·positioned escape → WGPU"
                 : c114GridTrackSizingRequested
-                ? "V8 intrinsic Grid track sizing → Stylo → Taffy → WGPU · 320×240 CSS px"
+                ? "V8 intrinsic Grid track sizing → Stylo → Taffy → WGPU · "
+                        + (c114AutoFitOverflowPixelMatrixRequested() ? "480" : "320")
+                        + "×240 CSS px"
                 : c1133GridTemplateAreasRequested
                 ? "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
@@ -11714,8 +11741,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     : c131CompactSurfaceMatrixProbeRequested ? 300
                     : c131BorderStripProbeRequested ? 400
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 400
-                    : c114GridTrackSizingRequested || c1133GridTemplateAreasRequested
-                    || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 320
+                    : c114GridTrackSizingRequested
+                    ? c114AutoFitOverflowPixelMatrixRequested() ? 480 : 320
+                    : c1133GridTemplateAreasRequested || c1132GridNamedLinesRequested
+                    || c1131GridRepeatRequested ? 320
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
                     || c1122GridAutoPlacementRequested || c1123GridAutoPlacementRequested
                     ? 360 : fixedSizeCssFixtureRequested ? 320 : cssViewportWidthLocked();
@@ -12026,6 +12055,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     c114CyclicPercentageAutoRepeatTraceMatches(c114GridTrackSizingSceneId, result);
             boolean gridAutoRepeatIntrinsicWptTraceMatches =
                     c114GridAutoRepeatIntrinsicWptTraceMatches(c114GridTrackSizingSceneId, result);
+            boolean gridAutoFitColumnsWptTraceMatches =
+                    C114GridAutoFitColumnsWpt.traceMatches(c114GridTrackSizingSceneId, result);
             boolean crossAxisTemplateAreaTraceMatches =
                     c114CrossAxisTemplateAreaTraceMatches(c114GridTrackSizingSceneId, result);
             boolean fitContentAutoNeighborTraceMatches =
@@ -12058,6 +12089,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !fixedAutoAreaTraceMatches
                     || !cyclicAutoRepeatTraceMatches
                     || !gridAutoRepeatIntrinsicWptTraceMatches
+                    || !gridAutoFitColumnsWptTraceMatches
                     || !crossAxisTemplateAreaTraceMatches
                     || !fitContentAutoNeighborTraceMatches
                     || !gridLayoutAutoTracksTraceMatches
@@ -12076,6 +12108,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " cyclic_auto_repeat_trace_matches=" + cyclicAutoRepeatTraceMatches
                         + " grid_auto_repeat_intrinsic_wpt_trace_matches="
                         + gridAutoRepeatIntrinsicWptTraceMatches
+                        + " grid_auto_fit_columns_wpt_trace_matches="
+                        + gridAutoFitColumnsWptTraceMatches
                         + " cross_axis_template_area_trace_matches="
                         + crossAxisTemplateAreaTraceMatches
                         + " fit_content_auto_neighbor_trace_matches="
@@ -14188,7 +14222,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static List<SurfaceViewPixelCapture.Sample> parseC11GridPixelMatrixSamples(
-            String json
+            String json, int viewportWidthCssPx
     ) throws Exception {
         JSONArray records = new JSONArray(json);
         if (records.length() < 1 || records.length() > 64) return List.of();
@@ -14216,7 +14250,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             double y = yNumber.doubleValue();
             if (!id.matches("[a-z0-9-]{1,128}") || !Double.isFinite(x) || !Double.isFinite(y)
                     || x != Math.rint(x) || y != Math.rint(y)
-                    || x < 0 || x >= 320 || y < 0 || y >= 240
+                    || x < 0 || x >= viewportWidthCssPx || y < 0 || y >= 240
                     || !ids.add(id) || !coordinates.add((int) x + "," + (int) y)) {
                 return List.of();
             }
@@ -14335,7 +14369,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c1123GridAutoPlacementRequested ? "c1123-grid-surface-pixel-matrix"
                 : c1122GridAutoPlacementRequested
                 ? "c1122-grid-surface-pixel-matrix" : "c11-grid-surface-pixel-matrix";
-        final int viewportWidthCssPx = 320;
+        final int viewportWidthCssPx = C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneId) != null
+                ? 480 : 320;
         final int viewportHeightCssPx = 240;
         double scaleX = width / (double) viewportWidthCssPx;
         double scaleY = height / (double) viewportHeightCssPx;
@@ -14449,6 +14484,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        int[] autoFitColumnsColor = C114GridAutoFitColumnsWpt.expectedSurfacePixelRgb(
+                sceneId, sampleId);
+        if (autoFitColumnsColor != null) return autoFitColumnsColor;
         if ("auto-repeat-intrinsic-fill-auto-min".equals(sceneId)
                 || "auto-repeat-intrinsic-fit-auto-min".equals(sceneId)) {
             if (sampleId.endsWith("-right-border")
@@ -15513,6 +15551,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c131CompactSurfaceMatrixProbeRequested) return 300.0f;
         if (c131BorderStripProbeRequested) return 400.0f;
         if (c132ScrollFixtureRequested || c133GestureFixtureRequested) return 400.0f;
+        if (c114AutoFitOverflowPixelMatrixRequested()) return 480.0f;
+        if (c114GridTrackSizingRequested) return 320.0f;
         if (fixedSizeCssFixtureRequested) return 320.0f;
         return surfaceWidth > 0 ? (float) surfaceWidth / density : 301.0f;
     }
