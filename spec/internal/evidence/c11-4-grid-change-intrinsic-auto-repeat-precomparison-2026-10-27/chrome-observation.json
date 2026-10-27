@@ -1,0 +1,392 @@
+{
+  "sourceUrl": "http://127.0.0.1:54983/css/css-grid/grid-definition/grid-change-intrinsic-size-with-auto-repeat-tracks-001.html",
+  "states": [
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 20,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 40,
+          "x": 60,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 100,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 104,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "100px"
+      },
+      "itemWidth": "100px",
+      "sizing": "max-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 40,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 0,
+          "x": 80,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 80,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 84,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "80px"
+      },
+      "itemWidth": "80px",
+      "sizing": "max-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 40,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 0,
+          "x": 60,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 60,
+          "x": 0,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 15,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 64,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "60px"
+      },
+      "itemWidth": "15px",
+      "sizing": "max-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 20,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 20,
+          "x": 60,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 120,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 124,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "120px"
+      },
+      "itemWidth": "120px",
+      "sizing": "max-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 20,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 40,
+          "x": 60,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 100,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 104,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "100px"
+      },
+      "itemWidth": "100px",
+      "sizing": "min-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 40,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 0,
+          "x": 80,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 80,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 84,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "80px"
+      },
+      "itemWidth": "80px",
+      "sizing": "min-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 10,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 0,
+          "x": 30,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 15,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 10px",
+        "frame": {
+          "height": 44,
+          "width": 34,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "30px"
+      },
+      "itemWidth": "15px",
+      "sizing": "min-content"
+    },
+    {
+      "frames": {
+        "a1": {
+          "height": 5,
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        "a2": {
+          "height": 5,
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        "a3": {
+          "height": 5,
+          "width": 20,
+          "x": 40,
+          "y": 0
+        },
+        "a4": {
+          "height": 5,
+          "width": 20,
+          "x": 60,
+          "y": 0
+        },
+        "item": {
+          "height": 30,
+          "width": 120,
+          "x": 0,
+          "y": 10
+        }
+      },
+      "grid": {
+        "columns": "20px 20px 20px 20px 40px",
+        "frame": {
+          "height": 44,
+          "width": 124,
+          "x": -2,
+          "y": -2
+        },
+        "height": "30px",
+        "rows": "30px",
+        "width": "120px"
+      },
+      "itemWidth": "120px",
+      "sizing": "min-content"
+    }
+  ],
+  "title": "CSS Grid: auto-repeat tracks and intrinsic sizes.",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "wptHarness": "Summary\n\nHarness status: OK\n\nRerun\n\nFound 8 tests\n\n8 Pass\nDetails\nResult\tTest Name\tMessage\nPass\t.grid 1\t\nAsserts run\n\nPass\t.grid 2\t\nAsserts run\n\nPass\t.grid 3\t\nAsserts run\n\nPass\t.grid 4\t\nAsserts run\n\nPass\t.grid 5\t\nAsserts run\n\nPass\t.grid 6\t\nAsserts run\n\nPass\t.grid 7\t\nAsserts run\n\nPass\t.grid 8\t\nAsserts run"
+}

@@ -1,0 +1,23 @@
+{
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "test": {
+      "path": "css/css-grid/grid-definition/grid-change-intrinsic-size-with-auto-repeat-tracks-001.html",
+      "sha256": "b61b3b92114e58f2a7f3e563ed886e6ea39f20925b84b6defa7e111d7730420d"
+    },
+    "dependencies": {
+      "css/support/grid.css": "b2f35862e7b8fa9dcae8f4f8d25add78d93f3e7993e08a4337030a4dd2d4425e",
+      "css/support/width-keyword-classes.css": "7e92c960802ecb7df9f8153168ed43062fa4dd8e573198d4f28e7128c4e0530f",
+      "resources/testharness.js": "7a108d7cfa98ac413ddb38f82fd509fb2037dfcc25ccf466567520cbb6bdf1fa",
+      "resources/testharnessreport.js": "3777176fc736b0a78cf7617b9613b220f635daae7536ec7ebb99c61dbb525aae",
+      "resources/check-layout-th.js": "b15666105c99548df947b3b9182e78cbadc2871e53f51e26c7c7aa27cf0bef1c"
+    }
+  },
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "chromeBinaryObserved": "156.0.8078.48",
+    "viewport": [1280, 720],
+    "deviceScaleFactor": 1
+  }
+}
