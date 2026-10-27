@@ -12,7 +12,7 @@
 | 4 | special adapter가 먼저 intercept하여 `TEXT_CASES` 분기를 실제로 타지 않을 수 있음 | 각 이전 specialized adapter의 `None`, generic collector의 `None`, legacy resolver의 `Some`, full dispatcher output 일치를 case별로 확인하도록 계획을 구체화했다. PASS |
 | 5 | Chrome의 document y 좌표를 app-local 좌표로 오해함 | Acceptance 표는 모든 item을 root-local `(0,0)`으로 기록한다. PASS |
 | 6 | Chrome 관찰값을 independent normative expectation으로 순환 사용함 | CSS Grid/Ahem 기대값과 Chrome raw observation을 별도 파일로 유지하며 Chrome을 reference observation으로만 쓴다. PASS |
-| 7 | cyclic 3 scene의 별도 fixture/hash가 틀린 source를 가리킴 | 별도 Chrome 156 observation과 spec-derived JSON 경로를 함께 지정했다. PASS |
+| 7 | cyclic 3 scene의 별도 fixture/hash가 틀린 source를 가리킴 | 별도 Chrome 156 observation과 README에 기록된 independent expectations를 함께 대조한다. PASS |
 | 8 | row/column arrays와 CSS used track count를 잘못 대응함 | 각 13 scene의 최종 content track list와 axis별 matcher를 대조하고 serialized trace는 runtime 결과로 별도 남긴다. PASS |
 | 9 | Ahem font loading/revision이 다르지만 같은 수치로 통과함 | Runtime input에서 Ahem registry revision과 raw text source를 확인하도록 요구한다. PASS |
 | 10 | `fit-content(%)` cyclic case의 expected basis 또는 content-size behavior가 빠짐 | cyclic scene은 원 계획의 별도 oracle/JSON을 재사용하고 기존 app matcher의 pass trace를 확인한다. PASS |

@@ -6,6 +6,7 @@
 - 계획 자체 실패 관점 검토: [`c11-4-generic-direct-text-legacy-fallback-runtime-plan-review-20.md`](./c11-4-generic-direct-text-legacy-fallback-runtime-plan-review-20.md)
 - 상위 인덱스: [`c11-4-grid-track-sizing.md`](./c11-4-grid-track-sizing.md)
 - 범위: 고정된 13개 `TEXT_CASES`의 legacy fallback Rust dispatch와 Android/iOS app runtime evidence 계획. 구현·시뮬레이터 실행은 하지 않았다.
+- 원격 PR #705: base `6442775e38d89d8583ea7e24e827cdbbbc9bb04c`, 최초 확인 head `a6ceffb9036fd1b8a12392be8201d88efca8ff8e`; PR은 open/mergeable이고 status-check rollup은 비어 있다. CI pass로 보지 않았다.
 
 ## 서로 다른 변경 실패 경로
 
@@ -20,11 +21,11 @@
 | 7 | mutation/control에서 다른 root/item/text가 allowlist에 섞임 | 계획은 unknown/변형 identity의 partial success를 거부하고 legacy IDs를 고정한다. PASS |
 | 8 | Chrome page y offset이 native root-local y로 사용됨 | 모든 expected item frame은 root-local `(0,0)`으로 정규화돼 있다. PASS |
 | 9 | 10개 기본 case의 expected geometry가 원본 Chrome 근거와 불일치함 | Chrome 155 observation의 columns, rows와 root/item sizes를 대조했다. PASS |
-| 10 | 세 cyclic case의 expected geometry가 Chrome 156 observation과 불일치함 | cyclic precomparison의 scene list와 dimensions를 대조했다. PASS |
+| 10 | 세 cyclic case의 expected geometry가 Chrome 156 observation과 불일치함 | cyclic precomparison README의 scene list·독립 계산 및 raw observation dimensions를 대조했다. PASS |
 | 11 | Chrome 관찰이 규범 기대값 또는 Spinon 결과로 오해됨 | 계획에서 Chrome을 기준 관찰로만 분류하고 CSS Grid/Ahem 계산과 분리한다. PASS |
 | 12 | Ahem font 또는 raw text source revision이 달라 input이 바뀜 | full dispatch gate가 Ahem intrinsic values/revision과 text source를 검사한다. PASS |
 | 13 | box edge/min-width/max-width/word-break case가 다른 track contribution으로 처리됨 | edge·min-width·max-width·break-all case를 고유 행으로 고정하고 typed input과 frame을 비교한다. PASS |
-| 14 | `fit-content(calc())` 또는 cyclic percentage basis가 누락됨 | 기존 precomparison JSON과 computed basis/trace matcher를 재사용하도록 계획한다. PASS |
+| 14 | `fit-content(calc())` 또는 cyclic percentage basis가 누락됨 | 기존 precomparison README/observation과 computed basis/trace matcher를 재사용하도록 계획한다. PASS |
 | 15 | Android matrix만 통과하거나 iOS만 통과해도 전체로 보고됨 | 각 플랫폼 독립 13/13 및 동일 source commit을 요구한다. PASS |
 | 16 | duplicate/missing scene, stale trace 또는 revision mismatch가 matcher에서 통과함 | 정확한 scene set/count와 same-scene revision tuple, trace/frame rejection 조건이 적혀 있다. PASS |
 | 17 | layout/draw 제출을 glyph raster 또는 pixel parity로 과장함 | glyph paint와 surface equality는 명시적 제외이며 telemetry가 0이면 보고하지 않는다. PASS |
@@ -34,4 +35,4 @@
 
 ## 판정
 
-계획 변경 diff에서 범위 중복, input identity, expected geometry, runtime gate와 status claim을 대조했다. 구현이나 simulator를 실행한 것으로 표시하지 않는다. **PASS 20 / PARTIAL 0 / FAIL 0.**
+계획 변경 diff에서 범위 중복, input identity, expected geometry, runtime gate와 status claim을 대조했다. 최초 원격 diff 재검토 중 cyclic precomparison에 실제로 없는 expectations JSON을 가리키는 review 문장을 발견해 README/observation으로 수정했다. 수정된 row 7·10·14와 계획 source 링크를 다시 대조했으며, 구현이나 simulator를 실행한 것으로 표시하지 않는다. **PASS 20 / PARTIAL 0 / FAIL 0.**
