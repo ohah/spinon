@@ -32,7 +32,9 @@
 | 26 | `height:auto; min-height:300px` assertion을 #664와 합친다 | 두 번째 assertion은 별도의 PR #699 slice이며 parent plan에서 분리돼 있다. **통과** |
 | 27 | 두 fit-content assertion의 기대 행 크기를 뒤섞는다 | #664의 `[10px,290px]`와 #699의 단일 `10px` 행을 각각 구분했다. **통과** |
 | 28 | limited fixtures를 일반 CSS admission 또는 전체 WPT 통과로 넓힌다 | 상위 계획과 각 child plan은 해당 범위를 명시적으로 미완료로 둔다. **통과** |
-| 29 | `grid-layout-auto-tracks.html`을 이미 구현된 것처럼 기록한다 | 이를 남은 계획 후보로만 두고 구현 상태는 주장하지 않는다. **통과** |
+| 29 | `grid-layout-auto-tracks.html`에 이미 제한 구현 PR이 있는데도 미구현 후보로 남긴다 | 후속 audit에서 제한 normalized-scene PR [#688](https://github.com/ohah/spinon/pull/688), merge SHA `0b434e16ac66d0a742057e6e1e5749151bd3e08f`를 확인했다. 이전 검토의 후보 판정은 틀려 이번 문서 수정으로 정정한다. **정정 · PR #702** |
 | 30 | 변경 때문에 공식 상태표나 완료 수가 바뀐다 | `spec/STATUS.md` C11.4 checkbox는 unchecked이고 공식 집계 `72/213`으로 유지된다. **통과** |
 
 이 문서 변경은 상위 계획의 기존 상태 설명만 최신 병합 기록에 맞췄다. 전체 WPT 실행이나 C11.4 완료를 주장하지 않는다.
+
+**사후 정정 · 2026-10-28:** PR #701 검토의 29번은 `grid-layout-auto-tracks.html`에 대한 기존 제한 구현 PR #688을 놓쳤다. 현재 PR #702는 parent roadmap과 이 기록을 함께 정정한다. 이 정정도 전체 WPT 또는 C11.4 완료를 뜻하지 않는다.
