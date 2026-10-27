@@ -1,6 +1,6 @@
 # C11.4 `grid-auto-fit-columns-001.html` 구현 PR #695 diff 적대 검토 32개
 
-검토 대상은 PR #695의 `main...feat/c11-4-grid-auto-fit-columns-wpt-runtime-20261027` 실제 diff, head `d4e9cd7e37a973fd68360d8ac29f801df18416a8` 및 연결된 고정 WPT/runtime 근거다. 각 행은 서로 다른 입력·계산·native host·증거 실패 경로 하나를 다룬다. 기존 20개 implementation/runtime review와 별도로 수행했다.
+검토 대상은 PR #695의 구현 diff (`main` base `e37e0764483022d8587d832f4f384fbc5d4f8c0c`부터 implementation commit `d4e9cd7e37a973fd68360d8ac29f801df18416a8`까지)와 연결된 고정 WPT/runtime 근거다. final PR head `6fa3b18d64c1773c4661879614f17c9af5714032`의 후속 문서 commit은 이 review와 상태 문구만 추가했으며 32행 수, local links, `git diff --check`를 별도로 확인했다. 각 행은 서로 다른 입력·계산·native host·증거 실패 경로 하나를 다룬다. 기존 20개 implementation/runtime review와 별도로 수행했다.
 
 | # | 실패 가설 | diff에서 확인한 근거·결과 |
 |---:|---|---|
@@ -37,4 +37,4 @@
 | 31 | root border 밖 item 위치를 geometry나 screenshot만으로 주장한다. | 여섯 overflow scene 각각에서 border magenta, border 밖 cyan item, item 끝 다음 배경, 별도 control을 surface에서 표본화한다. Android PixelCopy와 iOS drawable 각각 24/24 exact다. |
 | 32 | PR 이미지 링크가 깨졌거나, 테스트·고정 WPT slice를 공식 C11.4 완료로 읽게 된다. | Agent Browser에서 PR #695의 두 `<img>`가 `complete=true`와 natural size Android 1080×2400/iOS 1206×2622인 것을 확인하고 세션·프로세스를 종료했다. 문서와 본문은 C11.4 미완료, 공식 `72/213` 유지, checks 미보고 상태를 적는다. |
 
-**구현 PR diff 적대 검토:** 서로 다른 실패 가설 32개를 PR #695 실제 diff와 연결 증거에 대조했다. 이 범위에서 미해결 코드 결함은 찾지 못했다. 다만 GitHub `gh pr checks 695`는 `no checks reported`를 반환했으므로 CI pass로 해석하지 않는다. 기존 20개 implementation/runtime review와 이 PR diff review는 계획 PR #694의 리뷰 기록과 구분한다.
+**구현 PR diff 적대 검토:** 서로 다른 실패 가설 32개를 PR #695 실제 diff와 연결 증거에 대조했다. 이 범위에서 미해결 코드 결함은 찾지 못했다. PR #695는 Rebase and merge로 `d6dd9fd15d2897804142e6bb119149a633952a9b`에 병합됐다. GitHub `gh pr checks 695`는 병합 전 `no checks reported`를 반환했으므로 CI pass로 해석하지 않는다. 기존 20개 implementation/runtime review와 이 PR diff review는 계획 PR #694의 리뷰 기록과 구분한다.
