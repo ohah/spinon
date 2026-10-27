@@ -1,5 +1,7 @@
 # C11.4 generic direct-text review closure
 
+이 변경은 test-only PR [#704](https://github.com/ohah/spinon/pull/704)에 연결된다.
+
 ## 범위
 
 PR #645의 후속 diff 검토 addendum에서 남긴 세 가지 PARTIAL을 고정 fixture tests로 닫는다.
