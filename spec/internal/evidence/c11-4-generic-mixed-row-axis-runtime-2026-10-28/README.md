@@ -34,6 +34,10 @@ The sequential simulator runner is [run-simulator-matrix.sh](run-simulator-matri
 - [Implementation/runtime review — 20 distinct failure perspectives](implementation-runtime-review-20.md).
 - [PR diff review — 30 distinct failure perspectives](pr-diff-review-30.md).
 
+## Pull request state
+
+Implementation PR [#713](https://github.com/ohah/spinon/pull/713) was merged with Rebase and merge at `2026-10-27T21:00:41Z`; merge SHA: `679b8d51bc3b4edc2cbd1c4f5921e3b73a12dabe`. Its GitHub status-check rollup was empty, so no CI pass is claimed. The main branch protection response reported zero required approving reviews and did not include configured required status checks. See the captured [merge state](pr-713-merge-state.json), [branch protection](main-branch-protection.json), and [`gh pr checks` output](pr-713-checks.txt).
+
 ## Completion state
 
-C11.4 remains incomplete. No official checkbox is promoted and `72/213` remains unchanged. Add the merge SHA and status-check observation here after the implementation PR is merged.
+C11.4 remains incomplete. No official checkbox is promoted and `72/213` remains unchanged. The merge state above is limited to PR #713 and does not change the official completion count.
