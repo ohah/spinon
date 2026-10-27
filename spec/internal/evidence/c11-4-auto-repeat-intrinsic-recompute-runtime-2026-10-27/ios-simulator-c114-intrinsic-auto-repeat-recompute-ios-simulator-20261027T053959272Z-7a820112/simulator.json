@@ -1,0 +1,53 @@
+{
+  "target": "ios-simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "eb67aca7a231964159818760c84b7290eb624695bcf7c3cb45a0e27ddff05aa4",
+  "installedAppSha256": "eb67aca7a231964159818760c84b7290eb624695bcf7c3cb45a0e27ddff05aa4",
+  "sourceRevision": {
+    "commit": "8eca593bc7020d5554e42713d42d06372c5eca33",
+    "tree": "bba90211701724cd9ee5f7b40c58609fb1c50baf",
+    "trackedDiffSha256": "188293122bda38e6154ea8e6e7c53b56ebb53e851044dbbdc5feaa244d339421",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/compute/positioned_flex.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+      "plan/c11-4-auto-repeat-intrinsic-recompute.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/intrinsic_auto_repeat_recompute.rs",
+        "sha256": "875613dddf4ec7349bc7b5dfdbe27680967c7d710add79724c52659d11f31370"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid/c114_absolute_auto_repeat_probes.rs",
+        "sha256": "a0dbfc94630a7d3c08992251e0c6cd79591826ba51d1bdbf968994b8382e820e"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/grid_change_intrinsic_auto_repeat.rs",
+        "sha256": "7454492efd45a7cbc98c1c3466457e974275150fc9428e6bae19fde879be9262"
+      },
+      {
+        "path": "plan/c11-4-auto-repeat-intrinsic-probes-amendment-review-20-2026-10-27.md",
+        "sha256": "51cabbaf3964940dd2ea2f571c858014c086042bde6ed1a742298ddc00982ba4"
+      },
+      {
+        "path": "plan/c11-4-auto-repeat-intrinsic-recompute-amendment-review-20-2026-10-27.md",
+        "sha256": "354999af832d6dc96dfe4ae5de454814cd22754cef5b4827ef66d08e625b53d3"
+      },
+      {
+        "path": "wpt-grid-change-intrinsic-initial.png",
+        "sha256": "9edb18f5505d02ce3a7b9e4f5bc0bc7978728ed69376303b4b256a70db9e0872"
+      }
+    ],
+    "sourceSnapshotSha256": "0ffdb3460c594bfc232cdabad6d81baf942a89ce18ca08f644c6101e28fc09b2"
+  }
+}

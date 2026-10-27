@@ -54,6 +54,10 @@ mod cyclic_percentage_auto_repeat;
 mod cyclic_percentage_auto_repeat_rows;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/grid_change_intrinsic_auto_repeat.rs"]
+mod grid_change_intrinsic_auto_repeat;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[test]
 fn c114_min_content_text_contributes_measured_intrinsic_sizes_to_grid_layout() {
     let (snapshot, root, item) = c114_text_grid_snapshot();

@@ -271,13 +271,21 @@ fn validate_auto_repeat_neighbor_tracks(
         .enumerate()
         .filter(|(index, _)| *index < auto_repeat.start || *index >= auto_repeat.end)
         .find(|(index, track)| {
-            !is_supported_auto_repeat_neighbor(track, *index, fixed_repeat_minmax_track_indices)
+            !is_supported_auto_repeat_neighbor(
+                track,
+                *index,
+                property == "grid-template-columns"
+                    && auto_repeat.mode == spinon_style::ComputedCssGridAutoRepeatMode::AutoFill
+                    && auto_repeat.end.checked_add(1) == Some(tracks.len())
+                    && *index == auto_repeat.end,
+                fixed_repeat_minmax_track_indices,
+            )
         });
     if unsupported.is_some() {
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property,
-            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 또는 제한된 signed calc(length + percentage) 형태여야 합니다".to_owned(),
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 제한된 signed calc(length + percentage), 또는 열 auto-fill의 단일 trailing minmax(min-content, px) 형태여야 합니다".to_owned(),
         });
     }
     Ok(())
@@ -286,12 +294,17 @@ fn validate_auto_repeat_neighbor_tracks(
 fn is_supported_auto_repeat_neighbor(
     track: &ComputedCssGridTrackSize,
     index: usize,
+    allow_intrinsic_trailing: bool,
     fixed_repeat_minmax_track_indices: &[usize],
 ) -> bool {
     match track {
         ComputedCssGridTrackSize::LengthPx(value) | ComputedCssGridTrackSize::Percentage(value) => {
             value.is_finite() && *value >= 0.0
         }
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::MinContent,
+            max: spinon_style::ComputedCssGridTrackBreadth::LengthPx(maximum),
+        } if allow_intrinsic_trailing => maximum.is_finite() && *maximum >= 0.0,
         ComputedCssGridTrackSize::MinMax { .. } => {
             fixed_repeat_minmax_track_indices
                 .binary_search(&index)
