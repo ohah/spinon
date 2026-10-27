@@ -618,6 +618,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "intrinsic-auto-repeat-min-content-80",
             "intrinsic-auto-repeat-min-content-15",
             "intrinsic-auto-repeat-min-content-120",
+            "auto-repeat-intrinsic-fill-fixed-max",
+            "auto-repeat-intrinsic-fill-fixed-min",
+            "auto-repeat-intrinsic-fill-auto-max",
+            "auto-repeat-intrinsic-fill-auto-min",
+            "auto-repeat-intrinsic-fit-fixed-max",
+            "auto-repeat-intrinsic-fit-fixed-min",
+            "auto-repeat-intrinsic-fit-auto-max",
+            "auto-repeat-intrinsic-fit-auto-min",
 
     };
     private static final String[] C114_AUTO_REPEAT_NEGATIVE_LINE_SCENE_IDS = {
@@ -1168,6 +1176,132 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static double[] c114GridAutoRepeatIntrinsicWptColumns(String sceneId) {
+        switch (sceneId) {
+            case "auto-repeat-intrinsic-fill-fixed-max":
+            case "auto-repeat-intrinsic-fill-fixed-min":
+            case "auto-repeat-intrinsic-fit-fixed-max":
+            case "auto-repeat-intrinsic-fit-fixed-min":
+                return new double[] {20, 20, 20, 40};
+            case "auto-repeat-intrinsic-fill-auto-max":
+            case "auto-repeat-intrinsic-fit-auto-max":
+                return new double[] {10, 10, 10, 10, 60};
+            case "auto-repeat-intrinsic-fill-auto-min":
+            case "auto-repeat-intrinsic-fit-auto-min":
+                return new double[] {10, 60};
+            default:
+                return null;
+        }
+    }
+
+    private static boolean c114GridAutoRepeatIntrinsicWptTraceMatches(
+            String sceneId, String report
+    ) {
+        double[] expectedColumns = c114GridAutoRepeatIntrinsicWptColumns(sceneId);
+        if (expectedColumns == null) return true;
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+            org.json.JSONObject trace = traces == null || traces.length() != 1
+                    ? null : traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            if (trace == null || trace.optLong("grid", -1) != 1
+                    || passes == null || passes.length() != 2) return false;
+            org.json.JSONObject columns = passes.optJSONObject(0);
+            org.json.JSONObject rows = passes.optJSONObject(1);
+            String[] columnKinds = sceneId.contains("-auto-")
+                    ? new String[] {"Minimum", "MinContent", "MaxContent"}
+                    : new String[] {"Minimum", "MinContent"};
+            return c114GridAutoRepeatIntrinsicWptPassMatches(
+                    columns, "Columns", 0, expectedColumns, 100.0,
+                    expectedColumns.length, columnKinds)
+                    && c114GridAutoRepeatIntrinsicWptPassMatches(
+                            rows, "Rows", 1, new double[] {20}, 20.0,
+                            1, new String[] {"Minimum", "MinContent", "MinContent", "MaxContent"});
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114GridAutoRepeatIntrinsicWptPassMatches(
+            org.json.JSONObject pass,
+            String expectedAxis,
+            int expectedSequence,
+            double[] expectedTracks,
+            double expectedContributionValue,
+            int expectedContributionSpan,
+            String[] expectedKinds
+    ) {
+        if (pass == null || !expectedAxis.equals(pass.optString("axis"))
+                || pass.optInt("sequence", -1) != expectedSequence
+                || !pass.has("phase") || !pass.isNull("phase")
+                || !pass.has("autoRepeatCount") || !pass.isNull("autoRepeatCount")
+                || !pass.has("percentageBasis") || !pass.isNull("percentageBasis")) return false;
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        if (stages == null || stages.length() != 6) return false;
+        org.json.JSONObject[] stageValues = new org.json.JSONObject[stages.length()];
+        for (int index = 0; index < stages.length(); index++) {
+            stageValues[index] = stages.optJSONObject(index);
+            if (stageValues[index] == null) return false;
+        }
+        String intrinsicStage = stageValues[1].optString("stage").replaceFirst(
+                "^IntrinsicItemBatch \\{\\s*", "IntrinsicItemBatch { ");
+        String stretchStage = stageValues[5].optString("stage");
+        if (!"Initialize".equals(stageValues[0].optString("stage"))
+                || !("IntrinsicItemBatch { span: " + expectedContributionSpan
+                        + ", crosses_flexible_track: false }").equals(intrinsicStage)
+                || !"IntrinsicSizingComplete".equals(stageValues[2].optString("stage"))
+                || !"MaximizeTracks".equals(stageValues[3].optString("stage"))
+                || !"ExpandFlexibleTracks".equals(stageValues[4].optString("stage"))
+                || !("StretchAutoTracks { applied: true }".equals(stretchStage)
+                        || "StretchAutoTracks { applied: false }".equals(stretchStage))) {
+            return false;
+        }
+        org.json.JSONArray tracks = stageValues[5].optJSONArray("tracks");
+        if (tracks == null || tracks.length() != expectedTracks.length * 2 + 1) return false;
+        for (int index = 0; index < tracks.length(); index++) {
+            org.json.JSONObject track = tracks.optJSONObject(index);
+            if (track == null || track.optInt("internalIndex", -1) != index) return false;
+            boolean gutter = index % 2 == 0;
+            boolean collapsed = gutter && (index == 0 || index == tracks.length() - 1);
+            if (!(track.opt("gutter") instanceof Boolean)
+                    || track.optBoolean("gutter") != gutter
+                    || !(track.opt("collapsed") instanceof Boolean)
+                    || track.optBoolean("collapsed") != collapsed) return false;
+            double expectedSize = gutter ? 0.0 : expectedTracks[index / 2];
+            double actualSize = track.optDouble("baseSize", Double.NaN);
+            if (!Double.isFinite(actualSize) || Math.abs(actualSize - expectedSize) > 0.0001) {
+                return false;
+            }
+        }
+        org.json.JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null || contributions.length() != expectedKinds.length) return false;
+        List<String> remainingKinds = new ArrayList<>(java.util.Arrays.asList(expectedKinds));
+        for (int index = 0; index < contributions.length(); index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            if (contribution == null || contribution.optInt("item", -1) != 2
+                    || contribution.optInt("span", -1) != expectedContributionSpan
+                    || c114BooleanJson(contribution, "crossesFlexibleTrack") != Boolean.FALSE) {
+                return false;
+            }
+            double value = contribution.optDouble("value", Double.NaN);
+            if (!Double.isFinite(value)
+                    || Math.abs(value - expectedContributionValue) > 0.0001) return false;
+            if (!remainingKinds.remove(contribution.optString("kind"))) return false;
+        }
+        return remainingKinds.isEmpty();
+    }
+
+    private static Boolean c114BooleanJson(org.json.JSONObject object, String field) {
+        Object value = object.opt(field);
+        return value instanceof Boolean ? (Boolean) value : null;
     }
 
     private static boolean c114GridLayoutAutoTracksPassMatches(
@@ -2317,6 +2451,41 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
+    private static int[] c114GridAutoRepeatIntrinsicWptState(String sceneId) {
+        switch (sceneId) {
+            case "auto-repeat-intrinsic-fill-fixed-max":
+            case "auto-repeat-intrinsic-fill-fixed-min":
+            case "auto-repeat-intrinsic-fit-fixed-max":
+            case "auto-repeat-intrinsic-fit-fixed-min":
+                return new int[] {104, 34, 100, 0, 20, 20, 20, 40, 20, 60, 40};
+            case "auto-repeat-intrinsic-fill-auto-max":
+            case "auto-repeat-intrinsic-fit-auto-max":
+                return new int[] {104, 34, 100, 0, 10, 10, 10, 20, 10, 30, 10};
+            case "auto-repeat-intrinsic-fill-auto-min":
+            case "auto-repeat-intrinsic-fit-auto-min":
+                return new int[] {74, 34, 100, 0, 10, 10, 60, 70, 0, 0, 70};
+            default:
+                return null;
+        }
+    }
+
+    private static String c114GridAutoRepeatIntrinsicWptNodeFrames(String sceneId) {
+        int[] state = c114GridAutoRepeatIntrinsicWptState(sceneId);
+        if (state == null) return null;
+        StringBuilder frames = new StringBuilder("node_frames_css_px=[")
+                .append("0:node=1,x=0,y=0,width=").append(state[0])
+                .append(",height=").append(state[1])
+                .append(";1:node=2,x=2,y=12,width=").append(state[2])
+                .append(",height=20");
+        for (int index = 0; index < 4; index++) {
+            frames.append(';').append(index + 2).append(":node=").append(index + 3)
+                    .append(",x=").append(state[3 + index * 2] + 2)
+                    .append(",y=2,width=").append(state[4 + index * 2])
+                    .append(",height=5");
+        }
+        return frames.append(']').toString();
+    }
+
     private static String c114IntrinsicAutoRepeatNodeFrames(String sceneId) {
         int[] state = c114IntrinsicAutoRepeatState(sceneId);
         if (state == null) return null;
@@ -2335,6 +2504,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
+        if (intrinsicWpt != null) {
+            return "width=" + intrinsicWpt[0] + ",height=" + intrinsicWpt[1];
+        }
         int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
         if (intrinsicAutoRepeat != null) {
             return "width=" + intrinsicAutoRepeat[0] + ",height=" + intrinsicAutoRepeat[1];
@@ -2711,6 +2884,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (c114GridAutoRepeatIntrinsicWptState(sceneId) != null) {
+            return "width=100,height=20";
+        }
         int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
         if (intrinsicAutoRepeat != null) {
             return "width=" + intrinsicAutoRepeat[2] + ",height=30";
@@ -4816,6 +4992,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        String intrinsicWptFrames = c114GridAutoRepeatIntrinsicWptNodeFrames(sceneId);
+        if (intrinsicWptFrames != null) return intrinsicWptFrames;
         String intrinsicAutoRepeatFrames = c114IntrinsicAutoRepeatNodeFrames(sceneId);
         if (intrinsicAutoRepeatFrames != null) return intrinsicAutoRepeatFrames;
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
@@ -7389,6 +7567,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        int[] intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneId);
+        if (intrinsicWpt != null) {
+            int boxCount = 2;
+            for (int index = 4; index <= 10; index += 2) {
+                if (intrinsicWpt[index] > 0) boxCount++;
+            }
+            return boxCount;
+        }
         int[] intrinsicAutoRepeat = c114IntrinsicAutoRepeatState(sceneId);
         if (intrinsicAutoRepeat != null) {
             int boxCount = 2;
@@ -8082,6 +8268,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if ("auto-repeat-intrinsic-fill-auto-min".equals(sceneId)
+                || "auto-repeat-intrinsic-fit-auto-min".equals(sceneId)) {
+            String rootId = "c114-" + sceneId + "-grid";
+            String[] expectedIds = {
+                sceneId + "-right-border", sceneId + "-overflow-item", sceneId + "-past-item"
+            };
+            int[][] expectedPoints = {{73, 20}, {84, 20}, {103, 20}};
+            if (samples.size() != expectedIds.length) return false;
+            boolean[] found = new boolean[expectedIds.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = -1;
+                for (int candidate = 0; candidate < expectedIds.length; candidate++) {
+                    if (expectedIds[candidate].equals(sample.id)) index = candidate;
+                }
+                if (index < 0 || found[index] || !rootId.equals(sample.targetNodeId)
+                        || sample.xCssPx != expectedPoints[index][0]
+                        || sample.yCssPx != expectedPoints[index][1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
             String[] expectedIds = {
                 "equal-auto-rows-first-row", "equal-auto-rows-first-gutter",
@@ -10556,6 +10764,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "image-auto-max-mixed-tracks-border-overflow".equals(pixelMatrixSceneId)
                         || c114IsImageMultiSpanScene(pixelMatrixSceneId)
                         || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
+                        || c114GridAutoRepeatIntrinsicWptColumns(pixelMatrixSceneId) != null
                         || "fit-content-auto-neighbor-wpt".equals(pixelMatrixSceneId)
                         || "grid-layout-auto-tracks-c114-wpt".equals(pixelMatrixSceneId)
                         || "grid-gap-definite-percent".equals(pixelMatrixSceneId)
@@ -11815,6 +12024,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             c114GridTrackSizingSceneId, result);
             boolean cyclicAutoRepeatTraceMatches =
                     c114CyclicPercentageAutoRepeatTraceMatches(c114GridTrackSizingSceneId, result);
+            boolean gridAutoRepeatIntrinsicWptTraceMatches =
+                    c114GridAutoRepeatIntrinsicWptTraceMatches(c114GridTrackSizingSceneId, result);
             boolean crossAxisTemplateAreaTraceMatches =
                     c114CrossAxisTemplateAreaTraceMatches(c114GridTrackSizingSceneId, result);
             boolean fitContentAutoNeighborTraceMatches =
@@ -11846,6 +12057,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !expectedNodeFramesMatch
                     || !fixedAutoAreaTraceMatches
                     || !cyclicAutoRepeatTraceMatches
+                    || !gridAutoRepeatIntrinsicWptTraceMatches
                     || !crossAxisTemplateAreaTraceMatches
                     || !fitContentAutoNeighborTraceMatches
                     || !gridLayoutAutoTracksTraceMatches
@@ -11862,6 +12074,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " expected_node_frames=" + expectedNodeFrames
                         + " fixed_auto_area_trace_matches=" + fixedAutoAreaTraceMatches
                         + " cyclic_auto_repeat_trace_matches=" + cyclicAutoRepeatTraceMatches
+                        + " grid_auto_repeat_intrinsic_wpt_trace_matches="
+                        + gridAutoRepeatIntrinsicWptTraceMatches
                         + " cross_axis_template_area_trace_matches="
                         + crossAxisTemplateAreaTraceMatches
                         + " fit_content_auto_neighbor_trace_matches="
@@ -14235,6 +14449,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        if ("auto-repeat-intrinsic-fill-auto-min".equals(sceneId)
+                || "auto-repeat-intrinsic-fit-auto-min".equals(sceneId)) {
+            if (sampleId.endsWith("-right-border")
+                    || sampleId.endsWith("-overflow-item")) {
+                return new int[] {0, 255, 255};
+            }
+            if (sampleId.endsWith("-past-item")) return new int[] {0, 0, 0};
+        }
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
             switch (sampleId) {
                 case "equal-auto-rows-first-row": return new int[] {229, 72, 77};

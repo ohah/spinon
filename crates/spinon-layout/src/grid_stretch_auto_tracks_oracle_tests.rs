@@ -82,6 +82,7 @@ fn input(align_content: LayoutAlignContent) -> LayoutInput {
                 columns_line_names: Vec::new(),
                 rows_line_names: Vec::new(),
                 template_areas: None,
+                justify_items: Default::default(),
                 auto_flow: GridAutoFlow::Row,
                 auto_rows: Default::default(),
                 auto_columns: Default::default(),

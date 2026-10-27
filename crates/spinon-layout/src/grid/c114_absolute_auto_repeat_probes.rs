@@ -353,6 +353,7 @@ mod tests {
             columns_line_names: vec![Vec::new(), Vec::new(), Vec::new()],
             rows_line_names: Vec::new(),
             template_areas: None,
+            justify_items: Default::default(),
             auto_flow: crate::GridAutoFlow::Row,
             auto_rows: crate::GridAutoRows::Auto,
             auto_columns: crate::GridAutoColumns::LengthPx(20.0),

@@ -1,6 +1,6 @@
 # C11.4 · WPT `grid-auto-repeat-intrinsic-001.html` 제한 runtime slice
 
-**상태:** 계획 단계. 구현 전 비교와 계획 실패 관점 검토를 마친 뒤 별도 계획 PR로 병합한다. 이 문서는 구현 완료나 WPT 적합성을 주장하지 않는다.
+**상태:** 계획 PR [#690](https://github.com/ohah/spinon/pull/690)이 병합됐다. 제한된 8-scene runtime 구현과 두 simulator 실행, 구현/runtime 실패 관점 검토 20개, 별도 PR diff 실패 관점 검토 30개를 마쳤다. 구현 PR 생성·검토·병합은 남아 있다. 이 문서는 WPT harness의 Spinon 통과나 C11.4 전체 완료를 주장하지 않는다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -49,7 +49,15 @@ Cases 4 and 8 deliberately place the 100px item in a 70px content box. Relative 
 5. Runtime V8-authored `HostDocument` fixture를 고정 8개 scene ID로 연결한다. Scene lookup과 root/style/node topology가 정확히 맞는 경우만 처리한다. 다른 scene·CSS·placement는 계산 전에 거부하고 부분 layout 또는 trace를 성공 결과로 반환하지 않는다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 source revision으로 8/8 scene을 각각 실행한다. 각 scene에서 installed app/build hash, root 및 child frames, columns trace, draw/present와 screenshot을 보존한다. Cases 4/8은 PixelCopy와 Metal drawable에서 border, border 밖 cyan item, item 바깥 background negative control을 각각 sample한다. App scene matrix는 WPT runner 통과나 iOS compositor 이후 화면을 증명하지 않는다.
 7. 기본 product `spinon-layout`/`spinon-ffi` archive와 opt-in positive-control archive를 대조해 새로운 fixture module·symbol·marker·scene payload의 경계를 검사한다. 이 검사는 static archive 범위이며 APK/IPA 전체 fixture exclusion을 주장하지 않는다.
-8. 구현 완료 뒤 새로운 실패 관점 20개, 각 PR 변경분에 이 문서·이전 review 표와 다른 적대 관점 20개를 기록한다. 결함을 발견하면 수정 후 해당 관점을 다시 확인한다. 계획 PR과 구현 PR은 각각 별도로 review한다. 변경 결과는 `Rebase and merge`로 반영하고, C11.4 checkbox와 공식 `72/213`은 그대로 둔다.
+8. 구현 완료 뒤 새로운 실패 관점 20개, 구현 PR 변경분에 앞선 검토와 다른 적대 관점 30개를 기록한다. 결함을 발견하면 수정 후 해당 관점을 다시 확인한다. 계획 PR과 구현 PR은 각각 별도로 review한다. 변경 결과는 `Rebase and merge`로 반영하고, C11.4 checkbox와 공식 `72/213`은 그대로 둔다.
+
+## 구현·실행 상태 (2026-10-27)
+
+- Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 소스 8/8 scene씩 통과했다. 양쪽 모두 final track, node frame, 두 축 trace, draw/present가 맞았다. overflow 두 장면의 Android PixelCopy와 iOS compositor 제출 전 Metal 표본은 각각 3/3 RGBA exact다. [최종 실행 근거](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/README.md)
+- 기본 `spinon-ffi` `.rlib`에서 새 fixture symbol이 빠지고 `c04-runtime-gpu-fixture-test` opt-in positive control에만 포함된다. APK/IPA 전체 fixture 배제는 검사하지 않았다. [artifact 경계 근거](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/feature-boundary.md)
+- 구현/runtime 실패 관점 검토 20개를 마쳤다. 검토 중 Android/iOS trace matcher가 stretch 전 track을 검사하던 점과 Android malformed stage null 처리 결함을 발견해 수정하고 두 플랫폼 전체 8 scene을 다시 실행했다. [구현/runtime 검토](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/implementation-runtime-review-20.md)
+- 변경 파일 간 계약·artifact·증거·로드맵을 대상으로 별도 PR diff 실패 관점 30개를 검토했고 차단 결함은 찾지 못했다. 원본 Android runtime log 두 행 끝의 공백은 로그 보존을 위해 유지했다. [PR diff 검토](../spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-runtime-2026-10-27/pr-diff-review-30.md)
+- 구현 PR 생성, 원격 screenshot 렌더링, required review/check 상태 및 `Rebase and merge`는 남아 있다. 병합 전까지 이 상태를 확정 완료로 취급하지 않는다.
 
 ## 통과 기준과 미완료 범위
 
@@ -57,6 +65,6 @@ Cases 4 and 8 deliberately place the 100px item in a 70px content box. Relative 
 - Projection/layout/runtime 모두 8/8 expected tracks, root/item/probe geometry, contribution 제외 규칙을 통과하며, error·unknown route·잘못된 scene shape negative control도 통과한다.
 - Android/iOS Simulator에서 각각 8/8 scene을 검사하고, cases 4/8의 border 바깥 paint와 item 경계 negative control을 PixelCopy/Metal sample로 판정한다.
 - 새 fixture는 기본 product artifact에서 제외되고 opt-in positive control에서만 포함된다.
-- 구현/runtime review 20개와 별도 PR diff review 20개에서 해결되지 않은 차단 결함이 없다.
+- 구현/runtime review 20개와 별도 PR diff review 30개에서 해결되지 않은 차단 결함이 없다.
 
 이는 이 고정 test의 제한된 fixture route다. 일반 CSS author admission, WPT runner에서의 Spinon 통과, 모든 `auto-fit`/`auto-fill` 입력, 다른 intrinsic breadth, arbitrary absolute placement, 전체 CSS Grid 또는 C11.4 완료를 의미하지 않는다. 호출 가능한 public API를 추가하지 않으며 내부 계약 숫자 버전 `0.1.0`, C11.4 checkbox, 공식 `72/213`을 변경하지 않는다.

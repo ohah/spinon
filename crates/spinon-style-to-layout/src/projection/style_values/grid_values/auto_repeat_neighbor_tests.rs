@@ -22,6 +22,13 @@ fn min_content_with_fixed_maximum(maximum: f32) -> ComputedCssGridTrackSize {
     }
 }
 
+fn fixed_minimum_auto_maximum(minimum: f32) -> ComputedCssGridTrackSize {
+    ComputedCssGridTrackSize::MinMax {
+        min: ComputedCssGridTrackBreadth::LengthPx(minimum),
+        max: ComputedCssGridTrackBreadth::Auto,
+    }
+}
+
 fn grid_with_column_neighbors(
     prefix: ComputedCssGridTrackSize,
     suffix: ComputedCssGridTrackSize,
@@ -158,23 +165,30 @@ fn track_sizing_projection_accepts_fixed_minimum_flex_maximum_neighbors_on_both_
 }
 
 #[test]
-fn track_sizing_projection_accepts_only_the_single_trailing_column_auto_fill_intrinsic_neighbor() {
+fn track_sizing_projection_accepts_only_the_single_trailing_column_intrinsic_neighbor() {
     let node = NodeId::new(11_137).unwrap();
     let neighbor = min_content_with_fixed_maximum(40.0);
-    let grid = grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor);
-    let projected = project_grid_layout(
-        node,
-        &grid,
-        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
-    )
-    .unwrap();
-    assert_eq!(
-        projected.columns[2],
-        GridTrackSize::MinMax {
-            min: GridTrackMinSizingFunction::MinContent,
-            max: GridTrackMaxSizingFunction::LengthPx(40.0),
-        }
-    );
+    for mode in [
+        ComputedCssGridAutoRepeatMode::AutoFill,
+        ComputedCssGridAutoRepeatMode::AutoFit,
+    ] {
+        let mut grid =
+            grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor.clone());
+        grid.columns_auto_repeat.as_mut().unwrap().mode = mode;
+        let projected = project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+        )
+        .unwrap_or_else(|error| panic!("supported trailing {mode:?} neighbor: {error:?}"));
+        assert_eq!(
+            projected.columns[2],
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::MinContent,
+                max: GridTrackMaxSizingFunction::LengthPx(40.0),
+            }
+        );
+    }
 }
 
 #[test]
@@ -186,10 +200,6 @@ fn track_sizing_projection_rejects_intrinsic_neighbor_outside_the_wpt_column_aut
     multiple_suffix_tracks
         .columns
         .push(ComputedCssGridTrackSize::LengthPx(4.0));
-
-    let mut auto_fit =
-        grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor.clone());
-    auto_fit.columns_auto_repeat.as_mut().unwrap().mode = ComputedCssGridAutoRepeatMode::AutoFit;
 
     let invalid_maximums = [
         min_content_with_fixed_maximum(-1.0),
@@ -214,7 +224,6 @@ fn track_sizing_projection_rejects_intrinsic_neighbor_outside_the_wpt_column_aut
             multiple_suffix_tracks,
             "grid-template-columns",
         ),
-        ("auto-fit suffix", auto_fit, "grid-template-columns"),
         (
             "row-axis suffix",
             grid_with_row_neighbors(ComputedCssGridTrackSize::LengthPx(8.0), neighbor),
@@ -273,6 +282,97 @@ fn track_sizing_projection_rejects_minmax_authored_neighbors_without_fixed_repea
                 ..
             } if error_node == node
         ));
+    }
+}
+
+#[test]
+fn track_sizing_projection_accepts_only_a_single_trailing_column_minmax_length_auto_neighbor() {
+    let node = NodeId::new(11_139).unwrap();
+    let neighbor = fixed_minimum_auto_maximum(60.0);
+    let expected = GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::LengthPx(60.0),
+        max: GridTrackMaxSizingFunction::Auto,
+    };
+
+    for mode in [
+        ComputedCssGridAutoRepeatMode::AutoFill,
+        ComputedCssGridAutoRepeatMode::AutoFit,
+    ] {
+        let mut grid =
+            grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(10.0), neighbor.clone());
+        grid.columns_auto_repeat.as_mut().unwrap().mode = mode;
+        let projected = project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+        )
+        .unwrap_or_else(|error| panic!("supported trailing {mode:?} neighbor: {error:?}"));
+        assert_eq!(projected.columns[2], expected);
+    }
+
+    let mut multiple_suffix_tracks =
+        grid_with_column_neighbors(ComputedCssGridTrackSize::LengthPx(10.0), neighbor.clone());
+    multiple_suffix_tracks
+        .columns
+        .push(ComputedCssGridTrackSize::LengthPx(4.0));
+
+    let invalid = [
+        (
+            "prefix",
+            grid_with_column_neighbors(neighbor.clone(), ComputedCssGridTrackSize::LengthPx(10.0)),
+            "grid-template-columns",
+        ),
+        (
+            "multiple suffix tracks",
+            multiple_suffix_tracks,
+            "grid-template-columns",
+        ),
+        (
+            "row axis",
+            grid_with_row_neighbors(ComputedCssGridTrackSize::LengthPx(10.0), neighbor.clone()),
+            "grid-template-rows",
+        ),
+        (
+            "negative minimum",
+            grid_with_column_neighbors(
+                ComputedCssGridTrackSize::LengthPx(10.0),
+                fixed_minimum_auto_maximum(-1.0),
+            ),
+            "grid-template-columns",
+        ),
+        (
+            "non-finite minimum",
+            grid_with_column_neighbors(
+                ComputedCssGridTrackSize::LengthPx(10.0),
+                fixed_minimum_auto_maximum(f32::INFINITY),
+            ),
+            "grid-template-columns",
+        ),
+        (
+            "NaN minimum",
+            grid_with_column_neighbors(
+                ComputedCssGridTrackSize::LengthPx(10.0),
+                fixed_minimum_auto_maximum(f32::NAN),
+            ),
+            "grid-template-columns",
+        ),
+    ];
+    for (case, grid, property) in invalid {
+        assert!(
+            matches!(
+                project_grid_layout(
+                    node,
+                    &grid,
+                    ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                ),
+                Err(StyleLayoutError::UnsupportedComputedValue {
+                    node: error_node,
+                    property: error_property,
+                    ..
+                }) if error_node == node && error_property == property
+            ),
+            "{case} must fail with node and property context"
+        );
     }
 }
 

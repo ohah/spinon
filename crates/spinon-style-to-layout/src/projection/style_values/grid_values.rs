@@ -2,7 +2,7 @@ use spinon_core::NodeId;
 use spinon_layout::{
     GridAutoColumns, GridAutoFlow, GridAutoRepeat, GridAutoRows, GridContainerInput,
     GridPlacementMode, GridTrackLengthPercentage, GridTrackMaxSizingFunction,
-    GridTrackMinSizingFunction, GridTrackSize, LayoutCssMathProperty,
+    GridTrackMinSizingFunction, GridTrackSize, LayoutAlignItems, LayoutCssMathProperty,
 };
 use spinon_style::{
     ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
@@ -271,13 +271,14 @@ fn validate_auto_repeat_neighbor_tracks(
         .enumerate()
         .filter(|(index, _)| *index < auto_repeat.start || *index >= auto_repeat.end)
         .find(|(index, track)| {
+            let single_trailing_column_neighbor = property == "grid-template-columns"
+                && auto_repeat.end.checked_add(1) == Some(tracks.len())
+                && *index == auto_repeat.end;
             !is_supported_auto_repeat_neighbor(
                 track,
                 *index,
-                property == "grid-template-columns"
-                    && auto_repeat.mode == spinon_style::ComputedCssGridAutoRepeatMode::AutoFill
-                    && auto_repeat.end.checked_add(1) == Some(tracks.len())
-                    && *index == auto_repeat.end,
+                single_trailing_column_neighbor,
+                single_trailing_column_neighbor,
                 fixed_repeat_minmax_track_indices,
             )
         });
@@ -285,7 +286,7 @@ fn validate_auto_repeat_neighbor_tracks(
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property,
-            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 제한된 signed calc(length + percentage), 또는 열 auto-fill의 단일 trailing minmax(min-content, px) 형태여야 합니다".to_owned(),
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 제한된 signed calc(length + percentage), 열 auto-repeat의 단일 trailing minmax(min-content, px) 또는 minmax(px, auto) 형태여야 합니다".to_owned(),
         });
     }
     Ok(())
@@ -295,6 +296,7 @@ fn is_supported_auto_repeat_neighbor(
     track: &ComputedCssGridTrackSize,
     index: usize,
     allow_intrinsic_trailing: bool,
+    allow_fixed_minimum_auto_trailing: bool,
     fixed_repeat_minmax_track_indices: &[usize],
 ) -> bool {
     match track {
@@ -305,6 +307,10 @@ fn is_supported_auto_repeat_neighbor(
             min: spinon_style::ComputedCssGridTrackBreadth::MinContent,
             max: spinon_style::ComputedCssGridTrackBreadth::LengthPx(maximum),
         } if allow_intrinsic_trailing => maximum.is_finite() && *maximum >= 0.0,
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(minimum),
+            max: spinon_style::ComputedCssGridTrackBreadth::Auto,
+        } if allow_fixed_minimum_auto_trailing => minimum.is_finite() && *minimum >= 0.0,
         ComputedCssGridTrackSize::MinMax { .. } => {
             fixed_repeat_minmax_track_indices
                 .binary_search(&index)
@@ -499,6 +505,7 @@ fn project_grid_layout_with_reservations(
         columns_line_names,
         rows_line_names,
         template_areas,
+        justify_items: LayoutAlignItems::Normal,
         auto_flow: match grid.auto_flow {
             ComputedCssGridAutoFlow::Row => GridAutoFlow::Row,
             ComputedCssGridAutoFlow::Column => GridAutoFlow::Column,

@@ -617,10 +617,13 @@ pub(super) fn project_styles(
                 }
             })?;
             grid_styles.insert(node, grid);
-            grid_containers.insert(
-                node,
-                project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?,
-            );
+            let mut container =
+                project_grid_layout_with_math(node, grid, snapshot.profile, &mut math)?;
+            if snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+                container.justify_items =
+                    parse_runtime_align_items(node, required(element, "justify-items")?, true)?;
+            }
+            grid_containers.insert(node, container);
         }
         if supports_positioning(snapshot.profile) {
             positioning.insert(
@@ -826,6 +829,10 @@ fn reject_grid_alignment(
         if let Some(value) = element.properties.get(property)
             && value != initial
             && !(is_grid_container && property == "align-items" && value == "start")
+            && !(is_grid_container
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && property == "justify-items"
+                && value == "start")
             && !(is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && matches!(property, "align-content" | "justify-content")

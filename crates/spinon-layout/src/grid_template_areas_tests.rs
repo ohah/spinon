@@ -29,6 +29,7 @@ fn valid_container() -> GridContainerInput {
                 column_end: 1,
             }],
         }),
+        justify_items: Default::default(),
         auto_flow: GridAutoFlow::Row,
         auto_rows: GridAutoRows::Auto,
         auto_columns: GridAutoColumns::Auto,

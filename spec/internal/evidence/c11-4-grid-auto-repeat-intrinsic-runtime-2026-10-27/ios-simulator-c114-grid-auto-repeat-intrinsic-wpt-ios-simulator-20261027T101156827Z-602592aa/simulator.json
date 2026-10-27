@@ -1,0 +1,52 @@
+{
+  "target": "ios-simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "c907247430573613b90cdff44648ca71acd5ce80528dc3d4cebdb93560d3466e",
+  "installedAppSha256": "c907247430573613b90cdff44648ca71acd5ce80528dc3d4cebdb93560d3466e",
+  "sourceRevision": {
+    "commit": "5196e78c6dcf48907771c73c269f0cfb9d7bbfc1",
+    "tree": "1c453f83af3941923acbd011e1b314a6009c5b9a",
+    "trackedDiffSha256": "93ec4b32ec063c85cf15c828cbb8789ec4fe1e53692b0cad628dbfc714b42724",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid/c114_absolute_auto_repeat_probes.rs",
+      "crates/spinon-layout/src/grid_auto_placement/dense_column_tests.rs",
+      "crates/spinon-layout/src/grid_auto_placement/track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_auto_placement_tests.rs",
+      "crates/spinon-layout/src/grid_auto_track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_stretch_auto_tracks_oracle_tests.rs",
+      "crates/spinon-layout/src/grid_template_areas_tests.rs",
+      "crates/spinon-layout/src/grid_tests.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_calc_neighbors.rs",
+      "crates/spinon-layout/src/style.rs",
+      "crates/spinon-layout/src/taffy_style.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_neighbor_tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_auto_repeat_intrinsic_wpt.rs",
+        "sha256": "e8b0d2470ed8c16e92559debd715d009c2b0e5c6a5faf2b17716a48fbea7919e"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid/c114_grid_auto_repeat_intrinsic_wpt.rs",
+        "sha256": "e53a361e12b316fb4a8786426776eed821b51d6d6491d3acdd1ce1fceb71371f"
+      },
+      {
+        "path": "wpt-grid-change-intrinsic-initial.png",
+        "sha256": "9edb18f5505d02ce3a7b9e4f5bc0bc7978728ed69376303b4b256a70db9e0872"
+      }
+    ],
+    "sourceSnapshotSha256": "64702f168a84f31fd3061aac12b13b54456aa50a37f206d77e0ea3313c77cb14"
+  }
+}
