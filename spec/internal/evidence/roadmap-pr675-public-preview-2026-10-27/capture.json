@@ -1,0 +1,20 @@
+{
+  "captureKind": "local static public-roadmap preview",
+  "sourceRevision": "96a392d32f69fae6453aecd897aa6d77c8b4aced",
+  "sourcePath": "spec/public/roadmap.html",
+  "sourceUrl": "http://127.0.0.1:8769/roadmap.html",
+  "pageTitle": "스피논 구현 로드맵",
+  "matchedCard": "C11.4 row-axis overlapping-span app-runtime fixture PR #675",
+  "sourceBytes": 336731,
+  "sourceSha256": "4a721943e14fb742459925f0eadbdff4c57d0f312282042ce9a1ed09f8f8b9a7",
+  "imagePath": "spec/internal/evidence/roadmap-pr675-public-preview-2026-10-27/roadmap-pr675-public-row-axis-20261027.png",
+  "imageWidth": 1280,
+  "imageHeight": 633,
+  "imageBytes": 188249,
+  "imageSha256": "c791e27db33757449bc56a510c7ee4dcb3158b0e0795c07bdc1f85e9ac948fb4",
+  "limits": [
+    "Local Agent Browser preview only; not Tailnet live-route verification",
+    "No docs-site build was run",
+    "C11 and C11.4 remain incomplete; official count stays 72/213"
+  ]
+}
