@@ -12,13 +12,38 @@ pub(super) fn validate_grid_style(
     style: &ComputedElementStyle,
     scene: Scene,
 ) -> Result<(), RuntimeLayoutFailure> {
-    for (name, expected) in [
+    let generic_row = matches!(
+        scene.grid,
+        SceneGrid::GenericDirectMinContentRow | SceneGrid::GenericDirectMaxContentRow
+    );
+    let mut required_properties = vec![
         ("display", "grid"),
-        ("box-sizing", "border-box"),
+        (
+            "box-sizing",
+            if generic_row {
+                "content-box"
+            } else {
+                "border-box"
+            },
+        ),
         ("align-items", "start"),
-        ("align-content", "start"),
-        ("justify-content", "start"),
-    ] {
+        (
+            "align-content",
+            if generic_row { "normal" } else { "start" },
+        ),
+        (
+            "justify-content",
+            if generic_row { "normal" } else { "start" },
+        ),
+    ];
+    if generic_row {
+        required_properties.extend([
+            ("direction", "ltr"),
+            ("writing-mode", "horizontal-tb"),
+            ("justify-items", "normal"),
+        ]);
+    }
+    for (name, expected) in required_properties {
         require_property(style, name, expected)?;
     }
     if matches!(
@@ -55,7 +80,7 @@ pub(super) fn validate_grid_style(
             vec![ComputedCssGridTrackSize::MaxContent],
             vec![ComputedCssGridTrackSize::LengthPx(24.0); 2],
         ),
-        SceneGrid::DirectMinContentRow => (
+        SceneGrid::DirectMinContentRow | SceneGrid::GenericDirectMinContentRow => (
             ComputedCssDimension::LengthPx(74.0),
             ComputedCssDimension::Auto,
             vec![
@@ -64,7 +89,7 @@ pub(super) fn validate_grid_style(
             ],
             vec![ComputedCssGridTrackSize::MinContent],
         ),
-        SceneGrid::DirectMaxContentRow => (
+        SceneGrid::DirectMaxContentRow | SceneGrid::GenericDirectMaxContentRow => (
             ComputedCssDimension::LengthPx(74.0),
             ComputedCssDimension::Auto,
             vec![
@@ -117,9 +142,16 @@ pub(super) fn validate_item_style(
     scene: Scene,
     item: Item,
 ) -> Result<(), RuntimeLayoutFailure> {
-    for (name, expected) in [("display", "block"), ("box-sizing", "border-box")] {
-        require_property(style, name, expected)?;
-    }
+    require_property(style, "display", "block")?;
+    let expected_box_sizing = if matches!(
+        scene.grid,
+        SceneGrid::GenericDirectMinContentRow | SceneGrid::GenericDirectMaxContentRow
+    ) {
+        "content-box"
+    } else {
+        "border-box"
+    };
+    require_property(style, "box-sizing", expected_box_sizing)?;
     let placement = style.grid_item_placement.as_ref().is_some_and(|placement| {
         placement.column_start == ComputedCssGridPlacement::Line(item.column_start)
             && placement.column_end == ComputedCssGridPlacement::Span(item.column_span)
@@ -131,7 +163,9 @@ pub(super) fn validate_item_style(
         | SceneGrid::DirectMinContent
         | SceneGrid::DirectMaxContent
         | SceneGrid::DirectMinContentRow
-        | SceneGrid::DirectMaxContentRow => ("auto", "auto"),
+        | SceneGrid::DirectMaxContentRow
+        | SceneGrid::GenericDirectMinContentRow
+        | SceneGrid::GenericDirectMaxContentRow => ("auto", "auto"),
     };
     if !placement
         || style.layout_position != ComputedCssPosition::Static

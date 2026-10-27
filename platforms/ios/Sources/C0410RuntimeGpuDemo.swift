@@ -399,6 +399,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
     "direct-row-min-content-forward", "direct-row-min-content-reversed",
     "direct-row-max-content-forward", "direct-row-max-content-reversed",
+    "direct-row-min-content-generic-forward", "direct-row-min-content-generic-reversed",
+    "direct-row-max-content-generic-forward", "direct-row-max-content-generic-reversed",
     "max-content-forward", "max-content-reverse",
     "definite-forward", "definite-reverse",
     "grid-gap-definite-percent", "grid-gap-cyclic-percent",
@@ -601,6 +603,8 @@ private let c114DirectMixedTextImageIntrinsicSceneIDs: Set<String> = [
     "direct-max-content-generic-forward", "direct-max-content-generic-reversed",
     "direct-row-min-content-forward", "direct-row-min-content-reversed",
     "direct-row-max-content-forward", "direct-row-max-content-reversed",
+    "direct-row-min-content-generic-forward", "direct-row-min-content-generic-reversed",
+    "direct-row-max-content-generic-forward", "direct-row-max-content-generic-reversed",
 ]
 private let c114OrthogonalRowIntrinsicSceneIDs: Set<String> = [
     "direct-orthogonal-row-min-content-forward",
