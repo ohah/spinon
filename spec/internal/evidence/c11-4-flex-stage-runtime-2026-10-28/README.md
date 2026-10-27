@@ -25,6 +25,8 @@
 
 ## 대표 화면
 
+RSPress 2.0.22 선택 빌드에서도 두 screenshot이 생성 페이지의 asset으로 해석되는지 확인했다. [이미지 경로 검증 근거](./rspress-image-resolution-2026-10-28.md)와 [machine-readable 결과](./rspress-image-resolution-2026-10-28.json)를 참조한다.
+
 ![Android API 37 ARM64 16 KB AVD의 weighted-columns scene](./runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png)
 
 ![iPhone 17 Pro / iOS 26.2 Simulator의 weighted-columns scene](./runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png)
