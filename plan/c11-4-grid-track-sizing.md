@@ -12,7 +12,7 @@ PR #662의 test-only oracle을 C11.4 opt-in CSS→app 경로에 연결한 구현
 
 ## 2026-10-27 row-axis overlapping-span stage snapshot 계획
 
-기존 #642 span-stage oracle은 겹친 span-2/3 item의 중간 snapshots를 Columns pass에서만 검사한다. 상위 Stage B는 두 축 모두를 요구하고 trace는 Rows pass를 이미 보존하므로, 앱·플랫폼·product 코드 없이 row axis만 추가 검사하는 [후속 계획](./c11-4-row-axis-span-stage-oracle.md)을 세웠다. Chrome 156 final rows와 §11.5.1/§11.6의 exact rational 기대값은 [사전 비교](../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md)에 분리했다. 계획 단계이며 구현 결과나 공식 완료 증거가 아니다. C11.4 checkbox와 `72/213`은 유지한다.
+기존 #642 span-stage oracle은 겹친 span-2/3 item의 중간 snapshots를 Columns pass에서만 검사한다. [후속 test-only slice](./c11-4-row-axis-span-stage-oracle.md)는 네 고정 row 입력의 `Rows` stage snapshots, fixed Columns 대조군, source order별 geometry를 직접 검사한다. focused Rust test 3/3, fmt와 spinon-layout all-target Clippy가 통과했으며 [실행·검토 근거](../spec/internal/evidence/c11-4-row-axis-span-stage-implementation-2026-10-27/README.md)에 범위를 기록했다. 이는 Stage B 전체·앱 runtime·일반 CSS admission의 증거가 아니며 C11.4 checkbox와 공식 `72/213`은 유지한다.
 
 ## 2026-10-26 `align-content:normal` §11.8 stage oracle 계획
 
