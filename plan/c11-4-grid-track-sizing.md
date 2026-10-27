@@ -1,6 +1,6 @@
 # C11.4 · CSS Grid track sizing 계획
 
-**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 제한 opt-in slices [#683](https://github.com/ohah/spinon/pull/683), [#688](https://github.com/ohah/spinon/pull/688), [#691](https://github.com/ohah/spinon/pull/691), [#695](https://github.com/ohah/spinon/pull/695), [#699](https://github.com/ohah/spinon/pull/699)가 각각 병합됐으며, 아래 기록에서 별도 WPT 입력·실행 범위·한계를 구분한다. 이 slices는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 최근 제한 slices [#673](https://github.com/ohah/spinon/pull/673), [#683](https://github.com/ohah/spinon/pull/683), [#688](https://github.com/ohah/spinon/pull/688), [#691](https://github.com/ohah/spinon/pull/691), [#695](https://github.com/ohah/spinon/pull/695), [#699](https://github.com/ohah/spinon/pull/699)가 각각 병합됐으며, 아래 기록에서 test-only와 app runtime의 별도 범위·한계를 구분한다. 이 slices는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
 ## 2026-10-28 definite `min-height` 아래 fit-content row runtime slice · PR #699 병합
 
@@ -18,9 +18,9 @@ PR #662의 test-only oracle을 C11.4 opt-in CSS→app 경로에 연결한 구현
 
 기존 Rust oracle의 3행 `[auto,auto,5px]` stretch를 opt-in Android/iOS 앱 fixture에서 확인한 구현 PR [#669](https://github.com/ohah/spinon/pull/669)은 2026-10-26T22:28:31Z Rebase and merge로 병합됐다(merge SHA `3e46d12c1b5df26a0c06507defe3826e2f8b4fdb`). `160×100px` root, 10px row gap과 `[10,20,5]` initial rows에서 기대 final rows는 `[32.5,42.5,5]px`다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 1 scene의 Rows trace, frames, draw/present 및 5 surface samples를 확인했다. Chrome 사전 비교와 실행 한계는 [계획](./c11-4-align-content-normal-runtime.md), [사전 비교](../spec/internal/evidence/c11-4-align-content-normal-runtime-precomparison-2026-10-27/README.md), [runtime evidence](../spec/internal/evidence/c11-4-align-content-normal-runtime-2026-10-27/README.md)에 있다. 이 제한 fixture는 CSS admission이나 C11.4 전체 완료를 뜻하지 않으며 C11.4 checkbox와 공식 `72/213`은 유지한다.
 
-## 2026-10-27 row-axis overlapping-span stage snapshot 계획
+## 2026-10-27 row-axis overlapping-span stage snapshot test-only slice · PR #673 병합
 
-기존 #642 span-stage oracle은 겹친 span-2/3 item의 중간 snapshots를 Columns pass에서만 검사한다. [후속 test-only slice](./c11-4-row-axis-span-stage-oracle.md)는 네 고정 row 입력의 `Rows` stage snapshots, fixed Columns 대조군, source order별 geometry를 직접 검사한다. focused Rust test 3/3, fmt와 spinon-layout all-target Clippy가 통과했으며 [실행·검토 근거](../spec/internal/evidence/c11-4-row-axis-span-stage-implementation-2026-10-27/README.md)에 범위를 기록했다. 이는 Stage B 전체·앱 runtime·일반 CSS admission의 증거가 아니며 C11.4 checkbox와 공식 `72/213`은 유지한다.
+기존 #642 span-stage oracle이 Columns pass만 검사하던 범위를 보완해, 네 고정 row input의 `Rows` stage snapshots와 source-order geometry, fixed Columns 대조군을 확인하는 test-only Rust slice를 추가했다. Focused Rust test 3/3, fmt와 spinon-layout all-target Clippy가 통과했다. 구현 review는 19 PASS / 1 PARTIAL이며 reference JSON과 일부 test constant가 자동 생성으로 묶이지 않은 한계를 남긴다. PR [#673](https://github.com/ohah/spinon/pull/673)은 2026-10-27T00:34:44Z Rebase and merge됐다(merge SHA `83653cd02835d05bbdf455888dde7cc78f28dfa6`). GitHub check rollup은 비어 있어 CI 통과로 보지 않는다. [후속 test-only slice 계획](./c11-4-row-axis-span-stage-oracle.md) · [실행·한계](../spec/internal/evidence/c11-4-row-axis-span-stage-implementation-2026-10-27/README.md) · [구현/runtime 검토](../spec/internal/evidence/c11-4-row-axis-span-stage-implementation-2026-10-27/implementation-review-20.md) · [PR diff 검토](../spec/internal/evidence/c11-4-row-axis-span-stage-implementation-2026-10-27/pr-diff-review-30.md). 이는 C11.4 Stage B 전체, app runtime이나 일반 CSS admission의 증거가 아니며 상위 C11.4 checkbox와 `72/213`은 미완료다.
 
 ## 2026-10-26 `align-content:normal` §11.8 stage oracle 계획
 
