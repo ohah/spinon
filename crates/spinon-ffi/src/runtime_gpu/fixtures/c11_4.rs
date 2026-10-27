@@ -67,6 +67,8 @@ mod fixed_repeat_minmax_flex;
 mod flex_spanning_text;
 #[path = "c11_4/generic_direct_text.rs"]
 mod generic_direct_text;
+#[path = "c11_4/grid_auto_repeat_intrinsic_wpt.rs"]
+mod grid_auto_repeat_intrinsic_wpt;
 #[path = "c11_4/grid_layout_auto_tracks.rs"]
 mod grid_layout_auto_tracks;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
@@ -1252,6 +1254,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = intrinsic_auto_repeat_recompute::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = grid_auto_repeat_intrinsic_wpt::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = text_multispan::runtime_source(scene_id) {

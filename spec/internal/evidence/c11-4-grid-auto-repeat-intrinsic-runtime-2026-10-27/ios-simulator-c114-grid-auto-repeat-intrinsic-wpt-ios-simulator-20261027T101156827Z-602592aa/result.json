@@ -1,0 +1,624 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-grid-auto-repeat-intrinsic-wpt-ios-simulator-20261027T101156827Z-602592aa",
+  "sceneCount": 8,
+  "observations": [
+    {
+      "sceneId": "auto-repeat-intrinsic-fill-fixed-max",
+      "summary": "2026-10-27 19:11:57.892989+0900  localhost SpinonBootstrap[29308]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-0 scene_id=auto-repeat-intrinsic-fill-fixed-max expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=20,height=5;3:node=4,x=22,y=2,width=20,height=5;4:node=5,x=42,y=2,width=20,height=5;5:node=6,x=62,y=2,width=40,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 22,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 42,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 62,
+          "y": 2,
+          "width": 40,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fill-fixed-min",
+      "summary": "2026-10-27 19:11:59.408654+0900  localhost SpinonBootstrap[29335]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-1 scene_id=auto-repeat-intrinsic-fill-fixed-min expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=20,height=5;3:node=4,x=22,y=2,width=20,height=5;4:node=5,x=42,y=2,width=20,height=5;5:node=6,x=62,y=2,width=40,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 22,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 42,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 62,
+          "y": 2,
+          "width": 40,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fill-auto-max",
+      "summary": "2026-10-27 19:12:00.661946+0900  localhost SpinonBootstrap[29398]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-2 scene_id=auto-repeat-intrinsic-fill-auto-max expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=10,height=5;3:node=4,x=12,y=2,width=10,height=5;4:node=5,x=22,y=2,width=10,height=5;5:node=6,x=32,y=2,width=10,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 12,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 22,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 32,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fill-auto-min",
+      "summary": "2026-10-27 19:12:01.920176+0900  localhost SpinonBootstrap[29498]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-3 scene_id=auto-repeat-intrinsic-fill-auto-min expected_root_frame=width=74,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=5 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=74,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=10,height=5;3:node=4,x=12,y=2,width=60,height=5;4:node=5,x=72,y=2,width=0,height=5;5:node=6,x=2,y=2,width=70,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 12,
+          "y": 2,
+          "width": 60,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 72,
+          "y": 2,
+          "width": 0,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 2,
+          "y": 2,
+          "width": 70,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fit-fixed-max",
+      "summary": "2026-10-27 19:12:03.159830+0900  localhost SpinonBootstrap[29547]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-4 scene_id=auto-repeat-intrinsic-fit-fixed-max expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=20,height=5;3:node=4,x=22,y=2,width=20,height=5;4:node=5,x=42,y=2,width=20,height=5;5:node=6,x=62,y=2,width=40,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 22,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 42,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 62,
+          "y": 2,
+          "width": 40,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fit-fixed-min",
+      "summary": "2026-10-27 19:12:04.474661+0900  localhost SpinonBootstrap[29617]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-5 scene_id=auto-repeat-intrinsic-fit-fixed-min expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=20,height=5;3:node=4,x=22,y=2,width=20,height=5;4:node=5,x=42,y=2,width=20,height=5;5:node=6,x=62,y=2,width=40,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 22,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 42,
+          "y": 2,
+          "width": 20,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 62,
+          "y": 2,
+          "width": 40,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fit-auto-max",
+      "summary": "2026-10-27 19:12:05.784091+0900  localhost SpinonBootstrap[29654]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-6 scene_id=auto-repeat-intrinsic-fit-auto-max expected_root_frame=width=104,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=6 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=104,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=10,height=5;3:node=4,x=12,y=2,width=10,height=5;4:node=5,x=22,y=2,width=10,height=5;5:node=6,x=32,y=2,width=10,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 104,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 12,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 22,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 32,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "auto-repeat-intrinsic-fit-auto-min",
+      "summary": "2026-10-27 19:12:07.200741+0900  localhost SpinonBootstrap[29743]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261027T101156827Z-602592aa-7 scene_id=auto-repeat-intrinsic-fit-auto-min expected_root_frame=width=74,height=34 expected_item_frame=width=100,height=20 status=0 layout=ready boxes=5 generation=1 document_revision=30 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=74,height=34;1:node=2,x=2,y=12,width=100,height=20;2:node=3,x=2,y=2,width=10,height=5;3:node=4,x=12,y=2,width=60,height=5;4:node=5,x=72,y=2,width=0,height=5;5:node=6,x=2,y=2,width=70,height=5]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 74,
+          "height": 34
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 2,
+          "y": 12,
+          "width": 100,
+          "height": 20
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 2,
+          "y": 2,
+          "width": 10,
+          "height": 5
+        },
+        {
+          "order": 3,
+          "node": 4,
+          "x": 12,
+          "y": 2,
+          "width": 60,
+          "height": 5
+        },
+        {
+          "order": 4,
+          "node": 5,
+          "x": 72,
+          "y": 2,
+          "width": 0,
+          "height": 5
+        },
+        {
+          "order": 5,
+          "node": 6,
+          "x": 2,
+          "y": 2,
+          "width": 70,
+          "height": 5
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          },
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

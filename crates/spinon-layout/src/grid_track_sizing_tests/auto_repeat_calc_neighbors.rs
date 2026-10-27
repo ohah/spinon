@@ -11,6 +11,8 @@ use crate::{
 enum Neighbor {
     Px(f32),
     Calc(LayoutCssMath),
+    MinMaxLengthAuto(f32),
+    MinMaxMinContentLength(f32),
 }
 
 fn input(
@@ -29,6 +31,14 @@ fn input(
     let mut next_calc_id = 7_100;
     let mut to_track = |neighbor: Neighbor| match neighbor {
         Neighbor::Px(value) => GridTrackSize::LengthPx(value),
+        Neighbor::MinMaxLengthAuto(value) => GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::LengthPx(value),
+            max: GridTrackMaxSizingFunction::Auto,
+        },
+        Neighbor::MinMaxMinContentLength(value) => GridTrackSize::MinMax {
+            min: GridTrackMinSizingFunction::MinContent,
+            max: GridTrackMaxSizingFunction::LengthPx(value),
+        },
         Neighbor::Calc(expression) => {
             let calc_id = LayoutCalcId(next_calc_id);
             next_calc_id += 1;
@@ -190,6 +200,19 @@ fn assert_rejected(input: &LayoutInput, property: &'static str) {
     );
 }
 
+fn assert_invalid_track_rejected(input: &LayoutInput, property: &'static str) {
+    let result = TaffyLayoutEngine.compute(input);
+    assert!(
+        matches!(
+            &result,
+            Err(crate::LayoutError::InvalidGridTrack { node, property: actual })
+                | Err(crate::LayoutError::InvalidGridTrackList { node, property: actual })
+                if *node == id(1) && *actual == property
+        ),
+        "expected invalid track rejection for {property}, got {result:?}"
+    );
+}
+
 fn assert_binding_mismatch(input: &LayoutInput) {
     assert!(matches!(
         TaffyLayoutEngine.compute(input),
@@ -287,6 +310,100 @@ fn two_term_calc_neighbors_size_and_collapse_on_both_axes() {
             (false, 10.0),
         ],
     );
+}
+
+#[test]
+fn single_trailing_column_minmax_length_auto_neighbor_is_bounded_to_grid_track_sizing() {
+    for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+        let input = input(
+            LayoutGridTrackSizingAxis::Columns,
+            None,
+            Some(Neighbor::MinMaxLengthAuto(60.0)),
+            mode,
+            false,
+            false,
+        );
+        let tracks = final_tracks(&input, LayoutGridTrackSizingAxis::Columns);
+        let (collapsed, base_size) = tracks.last().copied().unwrap();
+        assert!(!collapsed);
+        assert!((base_size - 60.0).abs() <= 1.0 / 64.0);
+    }
+
+    let prefix = input(
+        LayoutGridTrackSizingAxis::Columns,
+        Some(Neighbor::MinMaxLengthAuto(60.0)),
+        None,
+        GridAutoRepeatMode::AutoFill,
+        false,
+        false,
+    );
+    assert_rejected(&prefix, "grid-template-columns");
+
+    let mut multiple_suffix_tracks = input(
+        LayoutGridTrackSizingAxis::Columns,
+        None,
+        Some(Neighbor::MinMaxLengthAuto(60.0)),
+        GridAutoRepeatMode::AutoFill,
+        false,
+        false,
+    );
+    multiple_suffix_tracks
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .columns
+        .push(GridTrackSize::LengthPx(4.0));
+    assert_rejected(&multiple_suffix_tracks, "grid-template-columns");
+
+    let row_axis = input(
+        LayoutGridTrackSizingAxis::Rows,
+        None,
+        Some(Neighbor::MinMaxLengthAuto(60.0)),
+        GridAutoRepeatMode::AutoFill,
+        false,
+        false,
+    );
+    assert_rejected(&row_axis, "grid-template-rows");
+
+    for minimum in [-1.0, f32::INFINITY, f32::NAN] {
+        let invalid_minimum = input(
+            LayoutGridTrackSizingAxis::Columns,
+            None,
+            Some(Neighbor::MinMaxLengthAuto(minimum)),
+            GridAutoRepeatMode::AutoFill,
+            false,
+            false,
+        );
+        assert_invalid_track_rejected(&invalid_minimum, "grid-template-columns");
+    }
+}
+
+#[test]
+fn single_trailing_column_mincontent_fixed_maximum_neighbor_accepts_auto_fill_and_fit() {
+    for mode in [GridAutoRepeatMode::AutoFill, GridAutoRepeatMode::AutoFit] {
+        let input = input(
+            LayoutGridTrackSizingAxis::Columns,
+            None,
+            Some(Neighbor::MinMaxMinContentLength(40.0)),
+            mode,
+            false,
+            false,
+        );
+        let tracks = final_tracks(&input, LayoutGridTrackSizingAxis::Columns);
+        let (collapsed, base_size) = tracks.last().copied().unwrap();
+        assert!(!collapsed);
+        assert!((base_size - 40.0).abs() <= 1.0 / 64.0);
+    }
+
+    let row_axis = input(
+        LayoutGridTrackSizingAxis::Rows,
+        None,
+        Some(Neighbor::MinMaxMinContentLength(40.0)),
+        GridAutoRepeatMode::AutoFit,
+        false,
+        false,
+    );
+    assert_rejected(&row_axis, "grid-template-rows");
 }
 
 #[test]

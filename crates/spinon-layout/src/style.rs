@@ -156,9 +156,10 @@ pub enum JustifyContentPosition {
     Right,
 }
 
-/// Flex item의 교차축 정렬입니다. `Normal`은 computed keyword를 유지합니다.
-#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+/// item 정렬입니다. `Normal`은 computed keyword를 유지합니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum LayoutAlignItems {
+    #[default]
     Normal,
     Stretch,
     FlexStart,

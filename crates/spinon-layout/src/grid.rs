@@ -6,6 +6,9 @@ use spinon_core::NodeId;
 #[path = "grid/c114_absolute_auto_repeat_probes.rs"]
 mod c114_absolute_auto_repeat_probes;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "grid/c114_grid_auto_repeat_intrinsic_wpt.rs"]
+mod c114_grid_auto_repeat_intrinsic_wpt;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 mod cyclic_percentage_auto_repeat_rows;
 
 use crate::grid_placement::normalize_grid_layout;
@@ -289,6 +292,8 @@ pub struct GridContainerInput {
     pub rows_line_names: Vec<Vec<String>>,
     /// auto-repeat과 `grid-template-areas`를 함께 쓸 때만 전달합니다.
     pub template_areas: Option<GridTemplateAreasInput>,
+    /// Grid item의 inline 축 기본 정렬입니다.
+    pub justify_items: crate::LayoutAlignItems,
     pub auto_flow: GridAutoFlow,
     pub auto_rows: GridAutoRows,
     pub auto_columns: GridAutoColumns,
@@ -575,6 +580,13 @@ pub(super) fn validate_grid_layout(
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let supports_c114_absolute_probe_matrix =
             c114_absolute_auto_repeat_probes::supports_wpt_probe_matrix(
+                input,
+                node,
+                container,
+                &normalized_grid,
+                &hidden,
+                index,
+            ) || c114_grid_auto_repeat_intrinsic_wpt::supports_wpt_probe_matrix(
                 input,
                 node,
                 container,
@@ -1664,13 +1676,27 @@ fn auto_repeat_neighbor_tracks_are_supported(
                 min: GridTrackMinSizingFunction::MinContent,
                 max: GridTrackMaxSizingFunction::LengthPx(maximum),
             } if property == "grid-template-columns"
-                && mode == GridAutoRepeatMode::AutoFill
+                && matches!(
+                    mode,
+                    GridAutoRepeatMode::AutoFill | GridAutoRepeatMode::AutoFit
+                )
                 && suffix.len() == 1
                 && neighbor_index == prefix.len()
                 && maximum.is_finite()
                 && *maximum >= 0.0 =>
             {
                 f64::from(*maximum)
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(minimum),
+                max: GridTrackMaxSizingFunction::Auto,
+            } if property == "grid-template-columns"
+                && suffix.len() == 1
+                && neighbor_index == prefix.len()
+                && minimum.is_finite()
+                && *minimum >= 0.0 =>
+            {
+                f64::from(*minimum)
             }
             GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
                 let Some(basis) = basis else {

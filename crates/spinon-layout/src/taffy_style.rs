@@ -278,6 +278,10 @@ pub(super) fn to_taffy_style(
             .align_content
             .map(to_taffy_align_content)
             .unwrap_or(AlignContent::NORMAL),
+        justify_items: grid_input
+            .container
+            .map(|container| to_taffy_align_items(container.justify_items))
+            .unwrap_or(AlignItems::NORMAL),
         justify_self: item_is_replaced.then_some(AlignSelf::START),
         justify_content: to_taffy_justify_content(
             style.justify_content,

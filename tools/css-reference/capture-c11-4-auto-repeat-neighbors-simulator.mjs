@@ -5125,10 +5125,65 @@ function intrinsicAutoRepeatRecomputeScenes() {
   });
 }
 
+function gridAutoRepeatIntrinsicWptScenes() {
+  const expected = JSON.parse(readFileSync(resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-grid-auto-repeat-intrinsic-precomparison-2026-10-27/expected.json'), 'utf8'));
+  assert.equal(expected.cases.length, 8, 'grid-auto-repeat-intrinsic WPT oracle must have eight cases.');
+  return expected.cases.map((state) => {
+    const probeFrames = state.probeFramesPaddingEdgePx;
+    const frames = [
+      `0:node=1,x=0,y=0,width=${state.rootBorderBoxPx[0]},height=${state.rootBorderBoxPx[1]}`,
+      `1:node=2,x=${state.itemFramePaddingEdgePx[0] + 2},y=${state.itemFramePaddingEdgePx[1] + 2},width=${state.itemFramePaddingEdgePx[2]},height=${state.itemFramePaddingEdgePx[3]}`,
+      ...probeFrames.map(([x, y, width, height], index) => (
+        `${index + 2}:node=${index + 3},x=${x + 2},y=${y + 2},width=${width},height=${height}`
+      )),
+    ];
+    const overflowing = Boolean(state.surfaceChecks);
+    const rootNodeId = `c114-${state.sceneId}-grid`;
+    const pixelSamples = overflowing ? [
+      { id: `${state.sceneId}-right-border`, nodeId: rootNodeId,
+        xCssPx: state.surfaceChecks.borderRightPixelIndex,
+        yCssPx: state.surfaceChecks.sampleYRelativeToRootBorderBox, rgba: [0, 255, 255, 255] },
+      { id: `${state.sceneId}-overflow-item`, nodeId: rootNodeId,
+        xCssPx: state.surfaceChecks.overflowItemPixelIndex,
+        yCssPx: state.surfaceChecks.sampleYRelativeToRootBorderBox, rgba: [0, 255, 255, 255] },
+      { id: `${state.sceneId}-past-item`, nodeId: rootNodeId,
+        xCssPx: state.surfaceChecks.pastItemPixelIndex,
+        yCssPx: state.surfaceChecks.sampleYRelativeToRootBorderBox, rgba: [0, 0, 0, 255] },
+    ] : undefined;
+    return {
+      id: state.sceneId,
+      axis: 'Columns',
+      boxCount: 2 + probeFrames.filter(([, , width]) => width > 0).length,
+      rootFrame: `width=${state.rootBorderBoxPx[0]},height=${state.rootBorderBoxPx[1]}`,
+      itemFrame: `width=${state.itemFramePaddingEdgePx[2]},height=${state.itemFramePaddingEdgePx[3]}`,
+      nodeFrames: `node_frames_css_px=[${frames.join(';')}]`,
+      axes: {
+        Columns: { tracks: state.usedColumnsPx, collapsed: state.usedColumnsPx.map(() => false) },
+      },
+      gaps: { Columns: 0 },
+      geometryTolerance: 1 / 64,
+      gridAutoRepeatIntrinsicWpt: {
+        repeatCount: state.repeatCount,
+        suffixTrackCount: 1,
+        usedColumns: state.usedColumnsPx,
+        columnContributionSpan: state.usedColumnsPx.length,
+        columnContributionKinds: state.trailingTrack === 'minmax(60px,auto)'
+          ? ['Minimum', 'MinContent', 'MaxContent']
+          : ['Minimum', 'MinContent'],
+      },
+      ...(pixelSamples ? { pixelSamples } : {}),
+    };
+  });
+}
+
 scenes.push(...intrinsicAutoRepeatRecomputeScenes());
+scenes.push(...gridAutoRepeatIntrinsicWptScenes());
 assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRepeatRecompute).length,
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
-assert.equal(scenes.length, 508, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
+  8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
+assert.equal(scenes.length, 516, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -7383,6 +7438,69 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: the in-flow spanning item must be present in track-sizing contributions`);
     assert.ok([...contributionItems].every((item) => item === 2),
       `${scene.id}: absolute probes must not contribute to track sizing`);
+  }
+  if (scene.gridAutoRepeatIntrinsicWpt) {
+    const expected = scene.gridAutoRepeatIntrinsicWpt;
+    assert.equal(diagnostics.trackSizingTraces.length, 1,
+      `${scene.id}: exactly one root Grid trace is required`);
+    assert.equal(axisTrace.grid, 1, `${scene.id}: track trace must belong to root node 1`);
+    assert.equal(axisTrace.passes.length, 2,
+      `${scene.id}: Columns and Rows must each have one sizing pass`);
+    const [columns, rows] = axisTrace.passes;
+    assert.deepEqual(axisTrace.passes.map(({ axis }) => axis), ['Columns', 'Rows'],
+      `${scene.id}: track sizing axis order differs`);
+    for (const [pass, sequence, axis, tracks, span, kinds, value] of [
+      [columns, 0, 'Columns', expected.usedColumns, expected.columnContributionSpan,
+        expected.columnContributionKinds, 100],
+      [rows, 1, 'Rows', [20], 1,
+        ['Minimum', 'MinContent', 'MinContent', 'MaxContent'], 20],
+    ]) {
+      assert.equal(pass.sequence, sequence, `${scene.id}: ${axis} pass sequence differs`);
+      assert.equal(pass.phase, null, `${scene.id}: ${axis} pass must not carry a cyclic phase`);
+      assert.equal(pass.autoRepeatCount, null,
+        `${scene.id}: ${axis} must not expose cyclic auto-repeat metadata`);
+      assert.equal(pass.percentageBasis, null,
+        `${scene.id}: ${axis} must not carry percentage-cycle metadata`);
+      const expectedStages = [
+        'Initialize',
+        `IntrinsicItemBatch { span: ${span}, crosses_flexible_track: false }`,
+        'IntrinsicSizingComplete',
+        'MaximizeTracks',
+        'ExpandFlexibleTracks',
+      ];
+      assert.deepEqual(pass.stages.map(({ stage }) => stage
+        .replace(/^IntrinsicItemBatch \{\s*/, 'IntrinsicItemBatch { '))
+        .slice(0, expectedStages.length),
+        expectedStages, `${scene.id}: ${axis} sizing stage sequence differs`);
+      assert.equal(pass.stages.length, 6, `${scene.id}: ${axis} sizing stage count differs`);
+      assert.match(pass.stages[5].stage, /^StretchAutoTracks \{ applied: (?:true|false) \}$/,
+        `${scene.id}: ${axis} auto-track stretch stage is malformed`);
+      const finalTracks = pass.stages.at(-1).tracks.filter(({ gutter }) => !gutter);
+      assert.deepEqual(finalTracks.map(({ baseSize, collapsed }) => ({ baseSize, collapsed })),
+        tracks.map((baseSize) => ({ baseSize, collapsed: false })),
+        `${scene.id}: ${axis} final trace tracks differ`);
+      const contributions = pass.contributions.map(({ item, kind, span: contributionSpan, value: contributionValue }) => ({
+        item, kind, span: contributionSpan, value: contributionValue,
+      }));
+      assert.equal(contributions.length, kinds.length,
+        `${scene.id}: ${axis} contribution count differs`);
+      const remainingKinds = [...kinds];
+      for (const contribution of contributions) {
+        assert.equal(contribution.item, 2,
+          `${scene.id}: absolute probes must not contribute to ${axis} sizing`);
+        assert.equal(contribution.span, span,
+          `${scene.id}: ${axis} contribution span differs`);
+        assert.equal(contribution.value, value,
+          `${scene.id}: ${axis} contribution value differs`);
+        const kindIndex = remainingKinds.indexOf(contribution.kind);
+        assert.notEqual(kindIndex, -1,
+          `${scene.id}: unexpected ${axis} contribution kind ${contribution.kind}`);
+        remainingKinds.splice(kindIndex, 1);
+      }
+      assert.deepEqual(remainingKinds, [], `${scene.id}: ${axis} contribution kinds are incomplete`);
+    }
+    assert.equal(tracksByAxis.Columns.length, expected.repeatCount + expected.suffixTrackCount,
+      `${scene.id}: repeat count must be derived after excluding its one suffix track`);
   }
   if (scene.columnSizingFeedsRows) {
     const columnPassIndex = axisTrace.passes.findLastIndex((pass) => pass.axis === 'Columns');
