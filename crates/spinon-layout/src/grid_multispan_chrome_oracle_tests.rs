@@ -16,6 +16,9 @@ use crate::{
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 
 mod row_axis;
+mod span_stage;
+
+use span_stage::{assert_span_stage_snapshots, assert_span_stage_snapshots_with_expectation};
 
 #[derive(Clone, Copy)]
 struct MultiSpanItem {
@@ -298,225 +301,21 @@ fn run_multi_span_case(case: &ChromeMultiSpanCase, owner: u64) {
     }
 }
 
-fn unique_stage<'a>(
-    pass: &'a crate::LayoutGridTrackSizingPassTrace,
-    predicate: impl Fn(&LayoutGridTrackSizingStageKind) -> bool,
-    case: &str,
-    label: &str,
-) -> (&'a crate::LayoutGridTrackSizingStageTrace, usize) {
-    let matching = pass
-        .stages
-        .iter()
-        .enumerate()
-        .filter(|(_, stage)| predicate(&stage.stage))
-        .collect::<Vec<_>>();
-    assert_eq!(matching.len(), 1, "{case}: exactly one {label} stage");
-    let (index, stage) = matching[0];
-    (stage, index)
+#[derive(Clone, Debug)]
+struct StageSnapshotExpectation {
+    base_sizes: [f32; 4],
+    growth_limits: [Option<f32>; 4],
 }
 
-fn assert_stage_snapshot(
-    stage: &crate::LayoutGridTrackSizingStageTrace,
-    expected_base_sizes: &[f32],
-    expected_growth_limits: &[Option<f32>],
-    case: &str,
-    label: &str,
-) {
-    assert_eq!(
-        expected_base_sizes.len(),
-        expected_growth_limits.len(),
-        "{case}: {label} expected vector lengths"
-    );
-    assert_eq!(
-        stage.tracks.len(),
-        expected_base_sizes.len() * 2 + 1,
-        "{case}: {label} should alternate gutters and CSS tracks with boundary gutters"
-    );
-    for (index, track) in stage.tracks.iter().enumerate() {
-        let is_boundary_gutter = (index == 0 || index + 1 == stage.tracks.len()) && index % 2 == 0;
-        assert_eq!(
-            track.is_gutter,
-            index % 2 == 0,
-            "{case}: {label} track entry {index} gutter pattern"
-        );
-        assert_eq!(
-            track.is_collapsed, is_boundary_gutter,
-            "{case}: {label} track entry {index} collapsed flag"
-        );
-    }
-    let css_tracks = stage
-        .tracks
-        .iter()
-        .filter(|track| !track.is_gutter && !track.is_collapsed)
-        .collect::<Vec<_>>();
-    assert_eq!(
-        css_tracks.len(),
-        expected_base_sizes.len(),
-        "{case}: {label} CSS track count"
-    );
-    for (index, (track, expected_base)) in css_tracks.iter().zip(expected_base_sizes).enumerate() {
-        assert!(
-            track.base_size.is_finite(),
-            "{case}: {label} base_sizes[{index}] is not finite: {}",
-            track.base_size
-        );
-        assert!(
-            (track.base_size - expected_base).abs() <= 1.0e-4,
-            "{case}: {label} base_sizes[{index}] expected {expected_base}, got {}",
-            track.base_size
-        );
-        match (expected_growth_limits[index], track.growth_limit) {
-            // Taffy's trace serializer encodes every non-finite limit as None. This
-            // checks that projection only; it does not distinguish +infinity from NaN/-infinity.
-            (None, None) => {}
-            (Some(expected), Some(actual)) => {
-                assert!(
-                    actual.is_finite(),
-                    "{case}: {label} growth_limits[{index}] is not finite: {actual}"
-                );
-                assert!(
-                    (actual - expected).abs() <= 1.0e-4,
-                    "{case}: {label} growth_limits[{index}] expected {expected}, got {actual}"
-                );
-            }
-            (expected, actual) => panic!(
-                "{case}: {label} growth_limits[{index}] expected {expected:?}, got {actual:?}"
-            ),
-        }
-    }
-    for (index, gutter) in stage
-        .tracks
-        .iter()
-        .filter(|track| track.is_gutter)
-        .enumerate()
-    {
-        assert!(
-            gutter.base_size.is_finite() && gutter.base_size.abs() <= 1.0e-4,
-            "{case}: {label} zero-gap gutter {index} expected 0, got {}",
-            gutter.base_size
-        );
-    }
-}
-
-fn assert_span_stage_snapshots(
-    pass: &crate::LayoutGridTrackSizingPassTrace,
-    case_id: &str,
-    expected_span_batches: &[u16],
-) {
-    let mut expected_stages = vec![LayoutGridTrackSizingStageKind::Initialize];
-    expected_stages.extend(expected_span_batches.iter().map(|span| {
-        LayoutGridTrackSizingStageKind::IntrinsicItemBatch {
-            span: *span,
-            crosses_flexible_track: false,
-        }
-    }));
-    expected_stages.extend([
-        LayoutGridTrackSizingStageKind::IntrinsicSizingComplete,
-        LayoutGridTrackSizingStageKind::MaximizeTracks,
-        LayoutGridTrackSizingStageKind::ExpandFlexibleTracks,
-        LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: false },
-    ]);
-    assert_eq!(
-        pass.stages
-            .iter()
-            .map(|stage| stage.stage)
-            .collect::<Vec<_>>(),
-        expected_stages,
-        "{case_id}: complete stage sequence"
-    );
-
-    let (initialize, initialize_index) = unique_stage(
-        pass,
-        |kind| *kind == LayoutGridTrackSizingStageKind::Initialize,
-        case_id,
-        "Initialize",
-    );
-    let zeros = [0.0; 4];
-    let unbounded = [None; 4];
-    assert_stage_snapshot(initialize, &zeros, &unbounded, case_id, "Initialize");
-
-    let mut ordered_indices = vec![initialize_index];
-    for span in expected_span_batches {
-        let (batch, index) = unique_stage(
-            pass,
-            |kind| {
-                *kind
-                    == LayoutGridTrackSizingStageKind::IntrinsicItemBatch {
-                        span: *span,
-                        crosses_flexible_track: false,
-                    }
-            },
-            case_id,
-            &format!("non-flex span-{span} batch"),
-        );
-        ordered_indices.push(index);
-        let (expected_growth, label) = match *span {
-            2 => ([Some(40.0), Some(60.0), Some(60.0), None], "span-2 batch"),
-            3 => (
-                [
-                    Some(160.0 / 3.0),
-                    Some(220.0 / 3.0),
-                    Some(220.0 / 3.0),
-                    None,
-                ],
-                "span-3 batch",
-            ),
-            _ => panic!("{}: unexpected batch span {span}", case_id),
-        };
-        assert_stage_snapshot(batch, &zeros, &expected_growth, case_id, label);
-    }
-
-    let (complete, complete_index) = unique_stage(
-        pass,
-        |kind| *kind == LayoutGridTrackSizingStageKind::IntrinsicSizingComplete,
-        case_id,
-        "IntrinsicSizingComplete",
-    );
-    let (maximize, maximize_index) = unique_stage(
-        pass,
-        |kind| *kind == LayoutGridTrackSizingStageKind::MaximizeTracks,
-        case_id,
-        "MaximizeTracks",
-    );
-    ordered_indices.extend([complete_index, maximize_index]);
-    assert!(
-        ordered_indices
-            .windows(2)
-            .all(|indices| indices[0] < indices[1]),
-        "{case_id}: Initialize, span batches, IntrinsicSizingComplete, and MaximizeTracks are out of order",
-    );
-
-    let (expected_final_sizes, expected_remaining_space) = match expected_span_batches {
-        [2] => ([40.0, 60.0, 60.0, 0.0], 60.0),
-        [2, 3] => ([160.0 / 3.0, 220.0 / 3.0, 220.0 / 3.0, 0.0], 20.0),
-        _ => panic!("{case_id}: unexpected planned span batch sequence"),
-    };
-    let expected_final_growth = expected_final_sizes.map(Some);
-    assert_stage_snapshot(
-        complete,
-        &zeros,
-        &expected_final_growth,
-        case_id,
-        "IntrinsicSizingComplete",
-    );
-    assert_stage_snapshot(
-        maximize,
-        &expected_final_sizes,
-        &expected_final_growth,
-        case_id,
-        "MaximizeTracks",
-    );
-    let observed_remaining_space = 220.0
-        - maximize
-            .tracks
-            .iter()
-            .map(|track| track.base_size)
-            .sum::<f32>();
-    assert!(
-        observed_remaining_space.is_finite()
-            && (observed_remaining_space - expected_remaining_space).abs() <= 1.0e-4,
-        "{case_id}: MaximizeTracks remaining free space expected {expected_remaining_space}, got {observed_remaining_space}",
-    );
+#[derive(Clone, Debug)]
+struct SpanStageExpectation {
+    span_batches: Vec<u16>,
+    initialize: StageSnapshotExpectation,
+    intrinsic_batches: Vec<StageSnapshotExpectation>,
+    intrinsic_sizing_complete: StageSnapshotExpectation,
+    maximize_tracks: StageSnapshotExpectation,
+    available_block_size_px: f32,
+    remaining_free_space_px: f32,
 }
 
 fn assert_chrome_close(actual: f32, expected: f32, case: &str, property: &str) {

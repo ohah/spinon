@@ -63,9 +63,15 @@ PR #673의 구현/runtime 검토와 PR diff 검토는 현재 Rust stage 상수�
 - `RowAxisItem`의 HTML row placement와 Chrome final frame 값은 runtime input·독립 Chrome geometry control이다. 규범 기대값 JSON에 없는 이 값들을 JSON과 연결했다고 주장하지 않는다.
 - 기존 Columns test는 기존 기대값을 유지한다. 새 parser/matcher는 네 Rows case에서 기대값 JSON과 불일치한 입력, 누락·중복 scene, 잘못된 array 길이, 미지원 rational 값이면 case와 field를 드러내는 test assertion failure를 내야 한다.
 - 이 순수 Rust test-only 보강은 앱 경로를 바꾸지 않으므로 Android/iOS simulator 실행은 acceptance에 추가하지 않는다. C11.4 상태와 공식 `72/213`은 바꾸지 않는다.
-- 구현 후 이 보강 계획과 JSON 소비 경계는 새 실패 관점 20개로 검토하고, 구현/runtime도 별도의 새 20개 관점, 구현 PR diff는 30개 관점으로 검토한다.
+- 구현/runtime는 계획 검토와 분리해 새 실패 관점 20개로 확인하고, 구현 PR diff도 별도의 30개 관점으로 검토한다.
 
 후속 보강 계획 검토 20개: [독립 검토 기록](./c11-4-row-axis-span-stage-json-sync-plan-review-20-2026-10-27.md).
+
+### 구현 결과 · 2026-10-27
+
+test-only stage matcher가 [독립 기대값 JSON](../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json)을 읽도록 연결했다. 네 scene의 정확한 ID/순서, source order, contribution, batch order/label, Initialize/batch/IntrinsicSizingComplete/MaximizeTracks arrays와 남은 공간을 검사한다. 공유 stage matcher는 [span_stage.rs](../crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/span_stage.rs), JSON parser와 malformed-input tests는 [row_axis/expected.rs](../crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs)에 있다.
+
+관련 test 6개, `cargo fmt --all -- --check`, 대상 crate all-target Clippy 및 `git diff --check`를 통과했다. 구현 실패 관점 검토는 20 PASS / 0 PARTIAL이며 [구현 근거와 원본 로그](../spec/internal/evidence/c11-4-row-axis-span-stage-json-sync-implementation-2026-10-27/README.md)에 보존했다. 구현 PR의 별도 30관점 검토, CI, 병합은 아직 남아 있다. 이 후속은 제품 기능 완료가 아니며 C11.4 공식 체크와 `72/213`은 미완료다.
 
 이 test-only slice는 track-sizing product algorithm, CSS admission, 앱 runtime, FFI를 바꾸지 않는다. 행 축의 네 고정 입력에서 기존 trace를 확인한 결과이며, 상위 Stage B의 나머지 stages/inputs, Stage C/D 및 전체 CSS Grid 적합성을 완료하지 않는다. C11.4 체크와 공식 `72/213`은 미완료다.
 
