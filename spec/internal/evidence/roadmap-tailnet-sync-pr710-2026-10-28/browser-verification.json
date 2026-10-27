@@ -1,0 +1,61 @@
+{
+  "method": "Agent Browser CLI",
+  "session": "spinon-tailnet-pr710-20261028",
+  "date": "2026-10-28",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "pr710EntryFound": true,
+    "mergeSha": "58cca2afa6086a6e4b8517ecd1d5d5a4012c6a94",
+    "officialCount": "72/213",
+    "c114Incomplete": true,
+    "ciClaimedAsPassing": false,
+    "links": [
+      "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-generic-mixed-direct-text-image-intrinsic.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8"
+    ]
+  },
+  "plan": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-generic-mixed-direct-text-image-intrinsic.html",
+    "title": "C11.4 · generic direct mixed text/image intrinsic runtime - 스피논 문서",
+    "pr710": true,
+    "mergeSha": true,
+    "c114Incomplete": true,
+    "officialCount": "72/213"
+  },
+  "runtimeEvidence": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.html",
+    "title": "C11.4 generic mixed text and image runtime · 2026-10-28 - 스피논 문서",
+    "androidMatrix": "8/8",
+    "iosMatrix": "8/8",
+    "officialCount": "72/213",
+    "c114Incomplete": true
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "officialCount": "72/213",
+    "c114Incomplete": true
+  },
+  "images": [
+    {
+      "platform": "Android",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "loaded": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "platform": "iOS",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "loaded": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "screenshot": "tailnet-roadmap-pr710-agent-browser.png",
+  "note": "An initial manually assembled Android image URL omitted the runs path and returned 404. The actual href extracted from the roadmap was then opened successfully; both roadmap image links resolve and load."
+}

@@ -1,0 +1,2353 @@
+{
+  "pass": "pass01",
+  "sourceHead": "610fa07c42d6bcacd3aa419f552c19aac9d08f89",
+  "sourceTree": "9fb7e0c52f481f39c7d96bbc7ebe49c1d974bc01",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr710-20261028-root",
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-pr710-20261028-site",
+  "sourceCount": 194,
+  "routeCount": 390,
+  "stagedBytes": 8452188,
+  "staged": [
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-pr-diff-review-20.md",
+      "path": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-pr-diff-review-20.md",
+      "bytes": 4721,
+      "sha256": "4409f1ad618fb22a8e6306c4705f0a00031051237364bfd7f2a8478d85abe28e"
+    },
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-pr-diff-review-20.md",
+      "path": "spec/plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-pr-diff-review-20.md",
+      "bytes": 4721,
+      "sha256": "4409f1ad618fb22a8e6306c4705f0a00031051237364bfd7f2a8478d85abe28e"
+    },
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-review-20.md",
+      "path": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-review-20.md",
+      "bytes": 5076,
+      "sha256": "d9f4fcda85f167a703558952cd13cfe26dafa5233c794b94422833deec729770"
+    },
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-review-20.md",
+      "path": "spec/plan/c11-4-generic-mixed-direct-text-image-intrinsic-plan-review-20.md",
+      "bytes": 5076,
+      "sha256": "d9f4fcda85f167a703558952cd13cfe26dafa5233c794b94422833deec729770"
+    },
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic.md",
+      "path": "plan/c11-4-generic-mixed-direct-text-image-intrinsic.md",
+      "bytes": 9675,
+      "sha256": "e16ce72084cb1e19c84e549cded055bcbe01a190ec3a193a092e69a2e2da7d25"
+    },
+    {
+      "source": "plan/c11-4-generic-mixed-direct-text-image-intrinsic.md",
+      "path": "spec/plan/c11-4-generic-mixed-direct-text-image-intrinsic.md",
+      "bytes": 9675,
+      "sha256": "e16ce72084cb1e19c84e549cded055bcbe01a190ec3a193a092e69a2e2da7d25"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 474136,
+      "sha256": "7e5727e749ce129071be2c949c97db96937bf84bb8da1d03ee9cc274f00ee73c"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 474136,
+      "sha256": "7e5727e749ce129071be2c949c97db96937bf84bb8da1d03ee9cc274f00ee73c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md",
+      "bytes": 5249,
+      "sha256": "a09dba0ec41c111e920f492868b8bae38b4099af37891b79cc2d984c388d7762"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md",
+      "bytes": 5249,
+      "sha256": "a09dba0ec41c111e920f492868b8bae38b4099af37891b79cc2d984c388d7762"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/implementation-runtime-review-20.md",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/implementation-runtime-review-20.md",
+      "bytes": 5596,
+      "sha256": "8235cd122649a3d8a9359458a639fa912debe526249a93b4d26758fe0ba6f38a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/implementation-runtime-review-20.md",
+      "bytes": 5596,
+      "sha256": "8235cd122649a3d8a9359458a639fa912debe526249a93b4d26758fe0ba6f38a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/pr-diff-review-30.md",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/pr-diff-review-30.md",
+      "bytes": 7672,
+      "sha256": "f503f273d306428a09d525eba59003ccac398a3de220605a0b0ae48e8700ccda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/pr-diff-review-30.md",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/pr-diff-review-30.md",
+      "bytes": 7672,
+      "sha256": "f503f273d306428a09d525eba59003ccac398a3de220605a0b0ae48e8700ccda"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/run-simulator-matrix.sh",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/run-simulator-matrix.sh",
+      "bytes": 881,
+      "sha256": "da725aa30e4ba21ee852c6026f65357766cef62fe7cab378db5fcb1a6e02acbc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/run-simulator-matrix.sh",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/run-simulator-matrix.sh",
+      "bytes": 881,
+      "sha256": "da725aa30e4ba21ee852c6026f65357766cef62fe7cab378db5fcb1a6e02acbc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-build.log",
+      "bytes": 4659,
+      "sha256": "fb5099a1b95393df140b470dacf21593f076b86d23ef63634d63f94624c32cc8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-build.log",
+      "bytes": 4659,
+      "sha256": "fb5099a1b95393df140b470dacf21593f076b86d23ef63634d63f94624c32cc8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward-attempt0.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward-attempt0.log",
+      "bytes": 5781,
+      "sha256": "947d85afd26187403911f7258fc86b92e4275ad671fd2dd70af236bde351209e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward-attempt0.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward-attempt0.log",
+      "bytes": 5781,
+      "sha256": "947d85afd26187403911f7258fc86b92e4275ad671fd2dd70af236bde351209e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward.log",
+      "bytes": 5781,
+      "sha256": "947d85afd26187403911f7258fc86b92e4275ad671fd2dd70af236bde351209e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192741449Z-7e5386b8/android-runtime-direct-min-content-forward.log",
+      "bytes": 5781,
+      "sha256": "947d85afd26187403911f7258fc86b92e4275ad671fd2dd70af236bde351209e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-build.log",
+      "bytes": 4386,
+      "sha256": "56ecdce78989e01b08108336b6eec697274a88a5e23d8825254ffe22dfd3e486"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-build.log",
+      "bytes": 4386,
+      "sha256": "56ecdce78989e01b08108336b6eec697274a88a5e23d8825254ffe22dfd3e486"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "bytes": 5813,
+      "sha256": "b42b1b9e3bae59f13b5f9baaf88bbe629ab35570e73f5e6a35361274861ee961"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "bytes": 5813,
+      "sha256": "b42b1b9e3bae59f13b5f9baaf88bbe629ab35570e73f5e6a35361274861ee961"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 5813,
+      "sha256": "b42b1b9e3bae59f13b5f9baaf88bbe629ab35570e73f5e6a35361274861ee961"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T192909806Z-32a5bc14/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 5813,
+      "sha256": "b42b1b9e3bae59f13b5f9baaf88bbe629ab35570e73f5e6a35361274861ee961"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-build.log",
+      "bytes": 4390,
+      "sha256": "3648a5c0a767c3709d13bb70d07996e9089d46d4b2fd7b45c0c7f8bf52d92389"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-build.log",
+      "bytes": 4390,
+      "sha256": "3648a5c0a767c3709d13bb70d07996e9089d46d4b2fd7b45c0c7f8bf52d92389"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "bytes": 10092,
+      "sha256": "925bd644a601627c3486abb46e55f22ec6eaa06438f5667644f28ff0c5009065"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward-attempt0.log",
+      "bytes": 10092,
+      "sha256": "925bd644a601627c3486abb46e55f22ec6eaa06438f5667644f28ff0c5009065"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 10092,
+      "sha256": "925bd644a601627c3486abb46e55f22ec6eaa06438f5667644f28ff0c5009065"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193039147Z-e30ac511/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 10092,
+      "sha256": "925bd644a601627c3486abb46e55f22ec6eaa06438f5667644f28ff0c5009065"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-build.log",
+      "bytes": 4389,
+      "sha256": "34744216330a258c39707bf0e29fc8fbe44845e675dd6721de31f501e0f076f8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-build.log",
+      "bytes": 4389,
+      "sha256": "34744216330a258c39707bf0e29fc8fbe44845e675dd6721de31f501e0f076f8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-direct-min-content-generic-forward.png",
+      "bytes": 75063,
+      "sha256": "a6711bfda2e35221762de050e15bd2396de684f6df1db3a85f58cd49db19f5e3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-direct-min-content-generic-forward.png",
+      "bytes": 75063,
+      "sha256": "a6711bfda2e35221762de050e15bd2396de684f6df1db3a85f58cd49db19f5e3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23607,
+      "sha256": "e0e10340921a14260cb83527536e660bc6e0e05e47b9e8b3321284e874aafeed"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23607,
+      "sha256": "e0e10340921a14260cb83527536e660bc6e0e05e47b9e8b3321284e874aafeed"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-simulator.json",
+      "bytes": 7707,
+      "sha256": "c194772e1412e8c7b0945b30d58df9589f7d8cd57b5d5acdccf825b7e7daf1b9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193248000Z-403737ec/android-simulator.json",
+      "bytes": 7707,
+      "sha256": "c194772e1412e8c7b0945b30d58df9589f7d8cd57b5d5acdccf825b7e7daf1b9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-build.log",
+      "bytes": 4386,
+      "sha256": "e0f168135e729773a32580d2e853407db589d53669e1070b9a75b1d18728c3d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-build.log",
+      "bytes": 4386,
+      "sha256": "e0f168135e729773a32580d2e853407db589d53669e1070b9a75b1d18728c3d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-forward.png",
+      "bytes": 77576,
+      "sha256": "c6729fb368a0b9be2f7193cbee5388620106be4e21550be69a41232e99dc0cbe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-forward.png",
+      "bytes": 77576,
+      "sha256": "c6729fb368a0b9be2f7193cbee5388620106be4e21550be69a41232e99dc0cbe"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-generic-forward.png",
+      "bytes": 77761,
+      "sha256": "9159b831783a346ee50c04fa3b021fa6d2865b9f9acd2e4164081f0ecf6480b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-direct-min-content-generic-forward.png",
+      "bytes": 77761,
+      "sha256": "9159b831783a346ee50c04fa3b021fa6d2865b9f9acd2e4164081f0ecf6480b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-forward.log",
+      "bytes": 24013,
+      "sha256": "deb08ea45ab43d88e8eb1c3700e75dd80515e0327f09c37dc74bbb0a86b1eb6a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-forward.log",
+      "bytes": 24013,
+      "sha256": "deb08ea45ab43d88e8eb1c3700e75dd80515e0327f09c37dc74bbb0a86b1eb6a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24056,
+      "sha256": "51cfe98c955a3e5142eb0e3d2c8084cadc4982e366d9bce2479313b6c973652e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24056,
+      "sha256": "51cfe98c955a3e5142eb0e3d2c8084cadc4982e366d9bce2479313b6c973652e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24059,
+      "sha256": "92c2fdeb7c1693a7e120844c95e0b405136980addf325260691709d9fb3d175d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24059,
+      "sha256": "92c2fdeb7c1693a7e120844c95e0b405136980addf325260691709d9fb3d175d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24112,
+      "sha256": "66355eddec0699d27cb9bdbd6b71d82baa56ad4e7245dc776e13fbdf87186750"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24112,
+      "sha256": "66355eddec0699d27cb9bdbd6b71d82baa56ad4e7245dc776e13fbdf87186750"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-forward.log",
+      "bytes": 23566,
+      "sha256": "45cc3420c9323282bb57fb55f07740840bcaed6b3b390b97724426d12c504267"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-forward.log",
+      "bytes": 23566,
+      "sha256": "45cc3420c9323282bb57fb55f07740840bcaed6b3b390b97724426d12c504267"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23604,
+      "sha256": "a85a49613d16ab206130b9a1467e0b7e8b11023fa9eb77001bda00c6fdcfc9df"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23604,
+      "sha256": "a85a49613d16ab206130b9a1467e0b7e8b11023fa9eb77001bda00c6fdcfc9df"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23611,
+      "sha256": "bcb1dc7334ce3174e029d244af1bb64a898260d9f60d9949452e1ab980a7959a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23611,
+      "sha256": "bcb1dc7334ce3174e029d244af1bb64a898260d9f60d9949452e1ab980a7959a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23951,
+      "sha256": "7e81350f9fcfc2b6054a53e71fc6640273b4aabe6412c84bcf35292c38d64e9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23951,
+      "sha256": "7e81350f9fcfc2b6054a53e71fc6640273b4aabe6412c84bcf35292c38d64e9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-simulator.json",
+      "bytes": 12813,
+      "sha256": "e027ffe99e28c643fe4ebf397e03aead85b304dfea496500f1bd78cc7c66e48e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T193343511Z-ac9963e4/android-simulator.json",
+      "bytes": 12813,
+      "sha256": "e027ffe99e28c643fe4ebf397e03aead85b304dfea496500f1bd78cc7c66e48e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-build.log",
+      "bytes": 4445,
+      "sha256": "3747c2df990a4507108b2f8fd8d6a3ec0b4d0a5f89017d2d6f14487b45d3c654"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-build.log",
+      "bytes": 4445,
+      "sha256": "3747c2df990a4507108b2f8fd8d6a3ec0b4d0a5f89017d2d6f14487b45d3c654"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-forward.png",
+      "bytes": 74503,
+      "sha256": "67734d2b79da95f326f882bbc2a0c99c88b3d145ec7636f6a4a9a8c726e2be33"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-forward.png",
+      "bytes": 74503,
+      "sha256": "67734d2b79da95f326f882bbc2a0c99c88b3d145ec7636f6a4a9a8c726e2be33"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-generic-forward.png",
+      "bytes": 77472,
+      "sha256": "4ea55c66dff91c13815fa4f7130cb688feac9910485d9924b02d148eae6091bb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-direct-min-content-generic-forward.png",
+      "bytes": 77472,
+      "sha256": "4ea55c66dff91c13815fa4f7130cb688feac9910485d9924b02d148eae6091bb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-forward.log",
+      "bytes": 29191,
+      "sha256": "234e2127d77d61140c1188869b0ec41f9d8bc7bc27d5ef5bf465d3633bb0f301"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-forward.log",
+      "bytes": 29191,
+      "sha256": "234e2127d77d61140c1188869b0ec41f9d8bc7bc27d5ef5bf465d3633bb0f301"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24433,
+      "sha256": "fc2ae11b33cf2fd2d2cd7b09edb5930f7436531bace3ee88afb8d932656bbf07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24433,
+      "sha256": "fc2ae11b33cf2fd2d2cd7b09edb5930f7436531bace3ee88afb8d932656bbf07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24058,
+      "sha256": "c45c9d016891df230547ccba3a5aee1685212f787776611ba1b2cd27556a8b59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24058,
+      "sha256": "c45c9d016891df230547ccba3a5aee1685212f787776611ba1b2cd27556a8b59"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24399,
+      "sha256": "e50a3ed4366a7c71227a416177dfb00affc2ada6d9686dcb535bc46ac5660db8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24399,
+      "sha256": "e50a3ed4366a7c71227a416177dfb00affc2ada6d9686dcb535bc46ac5660db8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-forward.log",
+      "bytes": 23946,
+      "sha256": "6225a70a17ed335fd2638bfad60593ea7bd75b0b4c3d8f62c4c84c5d7e726e8f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-forward.log",
+      "bytes": 23946,
+      "sha256": "6225a70a17ed335fd2638bfad60593ea7bd75b0b4c3d8f62c4c84c5d7e726e8f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23608,
+      "sha256": "d78c60834254ef88bbcd9551820ad324a2e36b512ef2253540e711bc29620cb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23608,
+      "sha256": "d78c60834254ef88bbcd9551820ad324a2e36b512ef2253540e711bc29620cb8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23610,
+      "sha256": "33af8655cb19e295e1d9cf9e80cd43e65e4c211e919b1c85368288a556c71400"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23610,
+      "sha256": "33af8655cb19e295e1d9cf9e80cd43e65e4c211e919b1c85368288a556c71400"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23570,
+      "sha256": "4e092461e805f8ab9947481fa8d09194c718689d1c531b8ae2bfdc90baa98c90"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23570,
+      "sha256": "4e092461e805f8ab9947481fa8d09194c718689d1c531b8ae2bfdc90baa98c90"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-simulator.json",
+      "bytes": 12816,
+      "sha256": "e50193941b3dbedf500aa08d48724349ff6dfa3e53447c233c6716b68a412441"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194154304Z-5f9a7401/android-simulator.json",
+      "bytes": 12816,
+      "sha256": "e50193941b3dbedf500aa08d48724349ff6dfa3e53447c233c6716b68a412441"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-build.log",
+      "bytes": 4387,
+      "sha256": "e0d572bb45c2f521778db15d2ade0012757e78682eda618eab4cb1a09b33cb01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-build.log",
+      "bytes": 4387,
+      "sha256": "e0d572bb45c2f521778db15d2ade0012757e78682eda618eab4cb1a09b33cb01"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-forward.png",
+      "bytes": 77662,
+      "sha256": "12acec9a24355fb879d91482e973f09df810ad428c1ac66c39c750e100a064a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-forward.png",
+      "bytes": 77662,
+      "sha256": "12acec9a24355fb879d91482e973f09df810ad428c1ac66c39c750e100a064a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-generic-forward.png",
+      "bytes": 77662,
+      "sha256": "12acec9a24355fb879d91482e973f09df810ad428c1ac66c39c750e100a064a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-direct-min-content-generic-forward.png",
+      "bytes": 77662,
+      "sha256": "12acec9a24355fb879d91482e973f09df810ad428c1ac66c39c750e100a064a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-forward.log",
+      "bytes": 24393,
+      "sha256": "d7761c78069afb6322d1aac352ec5ed07befb8daadc2e03c2f72423017893112"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-forward.log",
+      "bytes": 24393,
+      "sha256": "d7761c78069afb6322d1aac352ec5ed07befb8daadc2e03c2f72423017893112"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24055,
+      "sha256": "e79a70acfc99c6f8031b1b93fb5372196e1bb53231b3e2db5ee54b7ad1a7f65c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24055,
+      "sha256": "e79a70acfc99c6f8031b1b93fb5372196e1bb53231b3e2db5ee54b7ad1a7f65c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24061,
+      "sha256": "2f9d95e3d59bca7061ed4601297f5080e6f2a655d51dfae89e0759847fcf5e69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24061,
+      "sha256": "2f9d95e3d59bca7061ed4601297f5080e6f2a655d51dfae89e0759847fcf5e69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24398,
+      "sha256": "4f005e94539dad5474df714ae65e66f83ad5235392648f57e99149c7ae773b40"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-max-content-reversed.log",
+      "bytes": 24398,
+      "sha256": "4f005e94539dad5474df714ae65e66f83ad5235392648f57e99149c7ae773b40"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-forward.log",
+      "bytes": 23564,
+      "sha256": "8683fe564229beb39bc9f3fe3e96f3a588f5f335cc6f7f813012e34a264a0e2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-forward.log",
+      "bytes": 23564,
+      "sha256": "8683fe564229beb39bc9f3fe3e96f3a588f5f335cc6f7f813012e34a264a0e2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23605,
+      "sha256": "4cbc35b582546f5c89ad9110ae275efbec3990ca26f498f0bdeca5ac6443610d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23605,
+      "sha256": "4cbc35b582546f5c89ad9110ae275efbec3990ca26f498f0bdeca5ac6443610d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23611,
+      "sha256": "db32df579f4c8ec61404cc4396fe1a0a6250994632554b26bab67076b52e25c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23611,
+      "sha256": "db32df579f4c8ec61404cc4396fe1a0a6250994632554b26bab67076b52e25c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23569,
+      "sha256": "624ab5aa258fe150bdafa8494eaf9b01d79ea5df369d591afb6aac597e97abc1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23569,
+      "sha256": "624ab5aa258fe150bdafa8494eaf9b01d79ea5df369d591afb6aac597e97abc1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-simulator.json",
+      "bytes": 11830,
+      "sha256": "8b91dee411627ab452279e5d960286b427e8bb60f07663c3a13c7f463639ba7f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T194604869Z-018afc34/android-simulator.json",
+      "bytes": 11830,
+      "sha256": "8b91dee411627ab452279e5d960286b427e8bb60f07663c3a13c7f463639ba7f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-build.log",
+      "bytes": 4479,
+      "sha256": "3f23026cc4157dbb94016b3d84c13809508cca0d363e0bb702a454c8e23561a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-build.log",
+      "bytes": 4479,
+      "sha256": "3f23026cc4157dbb94016b3d84c13809508cca0d363e0bb702a454c8e23561a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-forward.png",
+      "bytes": 126037,
+      "sha256": "84d25ad10e4c640d31f7cba5da8faba6d6fb969ad2df73992d75dfe5a53ae96a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-forward.png",
+      "bytes": 126037,
+      "sha256": "84d25ad10e4c640d31f7cba5da8faba6d6fb969ad2df73992d75dfe5a53ae96a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "bytes": 77341,
+      "sha256": "d14023fa0b340be95257036e743bc7e94eb81fc3651490dff1f9144f24ccc427"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-direct-min-content-generic-forward.png",
+      "bytes": 77341,
+      "sha256": "d14023fa0b340be95257036e743bc7e94eb81fc3651490dff1f9144f24ccc427"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-max-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-forward.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-generic-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-launch-direct-min-content-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-forward.log",
+      "bytes": 24015,
+      "sha256": "ccfcf01cccf879d3bc290f7af915b3d3fcab6ac5115bdbd32076cb70c982ad50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-forward.log",
+      "bytes": 24015,
+      "sha256": "ccfcf01cccf879d3bc290f7af915b3d3fcab6ac5115bdbd32076cb70c982ad50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24056,
+      "sha256": "19a06357f08bd106a2079f62d4a2d00aec052ab891bfa4e9a8a5600ff8b3dec3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-forward.log",
+      "bytes": 24056,
+      "sha256": "19a06357f08bd106a2079f62d4a2d00aec052ab891bfa4e9a8a5600ff8b3dec3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24062,
+      "sha256": "d5c5c574feea9226b721789884912797067a07f659481dd48cd6b3724d0b3a7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 24062,
+      "sha256": "d5c5c574feea9226b721789884912797067a07f659481dd48cd6b3724d0b3a7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-reversed.log",
+      "bytes": 29196,
+      "sha256": "4172708a63945d5adf402501dd5f8d898659fd5eb0deb9a73c538b7ef13ea809"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-max-content-reversed.log",
+      "bytes": 29196,
+      "sha256": "4172708a63945d5adf402501dd5f8d898659fd5eb0deb9a73c538b7ef13ea809"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-forward.log",
+      "bytes": 23943,
+      "sha256": "1544236e8c3d187b897eef652a0eae2cdf6584c000754d28589c2168b457e0aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-forward.log",
+      "bytes": 23943,
+      "sha256": "1544236e8c3d187b897eef652a0eae2cdf6584c000754d28589c2168b457e0aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23984,
+      "sha256": "a0bcb96558b752a7b3aa48fe4adf0c0eaa4d330437afc2bbd8669611c3c776ee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-forward.log",
+      "bytes": 23984,
+      "sha256": "a0bcb96558b752a7b3aa48fe4adf0c0eaa4d330437afc2bbd8669611c3c776ee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23612,
+      "sha256": "55430df98c5e285c9e3dd43fab0248bb7e6d30ef1b82d738daec38136f216778"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 23612,
+      "sha256": "55430df98c5e285c9e3dd43fab0248bb7e6d30ef1b82d738daec38136f216778"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23569,
+      "sha256": "7b444fa90376c2e2af22b82c4b8f85ff8bfa7e70f7df90f5ab10c2e532fa7f3c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-runtime-direct-min-content-reversed.log",
+      "bytes": 23569,
+      "sha256": "7b444fa90376c2e2af22b82c4b8f85ff8bfa7e70f7df90f5ab10c2e532fa7f3c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-simulator.json",
+      "bytes": 11829,
+      "sha256": "9c9669a7bfad1b96aaff7f41283f63b014e2e183f17efb02d122fab522f71b7e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-android-avd-20261027T195056521Z-a13fe581/android-simulator.json",
+      "bytes": 11829,
+      "sha256": "9c9669a7bfad1b96aaff7f41283f63b014e2e183f17efb02d122fab522f71b7e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193413105Z-d6bdf4f3/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193413105Z-d6bdf4f3/ios-build.log",
+      "bytes": 98510,
+      "sha256": "2b434197020e497a86db776cb06103df5f24e1d4f48d0c52942b3d57d3327689"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193413105Z-d6bdf4f3/ios-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193413105Z-d6bdf4f3/ios-build.log",
+      "bytes": 98510,
+      "sha256": "2b434197020e497a86db776cb06103df5f24e1d4f48d0c52942b3d57d3327689"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-build.log",
+      "bytes": 59573,
+      "sha256": "3d2117116d1ba002c5fa95d3ff445d30980273ede5e6ea84d6d3959bea7ae7e8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-build.log",
+      "bytes": 59573,
+      "sha256": "3d2117116d1ba002c5fa95d3ff445d30980273ede5e6ea84d6d3959bea7ae7e8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-forward.png",
+      "bytes": 146147,
+      "sha256": "1fc1ab53a0866ac5350b62ae8074b5500eb4aed966c3110c0e9200a18a4d47bd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-forward.png",
+      "bytes": 146147,
+      "sha256": "1fc1ab53a0866ac5350b62ae8074b5500eb4aed966c3110c0e9200a18a4d47bd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-generic-forward.png",
+      "bytes": 146478,
+      "sha256": "a16d7a82b150c833e6ee9cd1efb314e3de58d0a62816f04e72e405496682d6c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-direct-min-content-generic-forward.png",
+      "bytes": 146478,
+      "sha256": "a16d7a82b150c833e6ee9cd1efb314e3de58d0a62816f04e72e405496682d6c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "359f4b444c1234d7a697635743d7a570dcb06aa7d0200c89e44f49f3ee1accb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "359f4b444c1234d7a697635743d7a570dcb06aa7d0200c89e44f49f3ee1accb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "9db204317607918b63eb5991f196f0e9e0494cc9bd1373fbdaa5e201b3266876"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "9db204317607918b63eb5991f196f0e9e0494cc9bd1373fbdaa5e201b3266876"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "ce275938b579eb7f386b816013138cb549e3d07affd5f89fdd51111289fe8a41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "ce275938b579eb7f386b816013138cb549e3d07affd5f89fdd51111289fe8a41"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "96860c4169bcddcdda09c5c10ec6b999980e5fc4ca3cb0c43599ece775987982"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "96860c4169bcddcdda09c5c10ec6b999980e5fc4ca3cb0c43599ece775987982"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "ae084daa9594715702073310a2e913d79028741c2b9144e8fff71b027f5e7f0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "ae084daa9594715702073310a2e913d79028741c2b9144e8fff71b027f5e7f0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "58ebeec3ccc37853bb66195dc7dae505122616adad2ba02ef1b79b517730bc06"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "58ebeec3ccc37853bb66195dc7dae505122616adad2ba02ef1b79b517730bc06"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "6e241ac315f09a16c817176d0b9ba8b4c096e3be054a1382497146f9639c1c9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "6e241ac315f09a16c817176d0b9ba8b4c096e3be054a1382497146f9639c1c9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "f36c2a2e217e3aaa5170a7109ffbdf55df2f7f78f187ca8b22975501c6c83d26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "f36c2a2e217e3aaa5170a7109ffbdf55df2f7f78f187ca8b22975501c6c83d26"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "7a60c7e844630dbbe6b6d9c662c011a8b719f843b7ceff1e4cf93fc01d3147a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "7a60c7e844630dbbe6b6d9c662c011a8b719f843b7ceff1e4cf93fc01d3147a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "bca4cfe5cec6665d09c3af072a40bec9ba87f707d9a9eb57f227cb7466f619c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "bca4cfe5cec6665d09c3af072a40bec9ba87f707d9a9eb57f227cb7466f619c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "041d3c9bec14bac8cdd4bd5159f359c7c6a389cfc115f56ae854558b03edd02f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "041d3c9bec14bac8cdd4bd5159f359c7c6a389cfc115f56ae854558b03edd02f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "171c6642124474198ead86f6f6b4c12682ffd05ef3d71ee40ea3fd4cc94adc58"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "171c6642124474198ead86f6f6b4c12682ffd05ef3d71ee40ea3fd4cc94adc58"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "7717e82f93a059677f1369da4e172aa97edefffdddbcee6b25cfefa4e1ef212c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "7717e82f93a059677f1369da4e172aa97edefffdddbcee6b25cfefa4e1ef212c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "8a11bcdb75d0cf4dee7593bc1037e34d71534915889df668ee417767e7b05fba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "8a11bcdb75d0cf4dee7593bc1037e34d71534915889df668ee417767e7b05fba"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12612,
+      "sha256": "c2261b8fb3d6cf2ac0c09f8ef7ee4c66b888782d74d9c76f30caba6a1cd7cb86"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12612,
+      "sha256": "c2261b8fb3d6cf2ac0c09f8ef7ee4c66b888782d74d9c76f30caba6a1cd7cb86"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "d47a78583f0d97a4cb2d473f3b1a78f5132e65bf6799411812caade83e84a039"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "d47a78583f0d97a4cb2d473f3b1a78f5132e65bf6799411812caade83e84a039"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-simulator.json",
+      "bytes": 12474,
+      "sha256": "c8aea00aca3da2d8510d048d7216cc4cb1c8eaf386d1213008809228438a3c27"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-simulator.json",
+      "bytes": 12474,
+      "sha256": "c8aea00aca3da2d8510d048d7216cc4cb1c8eaf386d1213008809228438a3c27"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-build.log",
+      "bytes": 59631,
+      "sha256": "f2cb743bfb820c121daae0a4ca0c0301956a8b6361a0586876ea84ab606d66c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-build.log",
+      "bytes": 59631,
+      "sha256": "f2cb743bfb820c121daae0a4ca0c0301956a8b6361a0586876ea84ab606d66c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-forward.png",
+      "bytes": 144694,
+      "sha256": "4e1f5ecf7dd4b2bd805d6aa6332a36b4d267a89acbe491a2a5f4ca44258adde9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-forward.png",
+      "bytes": 144694,
+      "sha256": "4e1f5ecf7dd4b2bd805d6aa6332a36b4d267a89acbe491a2a5f4ca44258adde9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-generic-forward.png",
+      "bytes": 144694,
+      "sha256": "4e1f5ecf7dd4b2bd805d6aa6332a36b4d267a89acbe491a2a5f4ca44258adde9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-direct-min-content-generic-forward.png",
+      "bytes": 144694,
+      "sha256": "4e1f5ecf7dd4b2bd805d6aa6332a36b4d267a89acbe491a2a5f4ca44258adde9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "33e43d20b05636e50d3cb01e2624ce964d2475e887775ae703fd3cdf8df2589a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "33e43d20b05636e50d3cb01e2624ce964d2475e887775ae703fd3cdf8df2589a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "dc88adbd9d117419226a65768e65de8fb792383cc0d26f53839a440b253de280"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "dc88adbd9d117419226a65768e65de8fb792383cc0d26f53839a440b253de280"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "21bef750cce0bdb965b895a5c8b644b3705bf6065f60db8b346da8f1b0a0bf23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "21bef750cce0bdb965b895a5c8b644b3705bf6065f60db8b346da8f1b0a0bf23"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "a430abbbb2a00e0fa838661f07cccac269d225d86a1ac59e60a5377270115656"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "a430abbbb2a00e0fa838661f07cccac269d225d86a1ac59e60a5377270115656"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "a0d8dd11b581013de09cf9c083a1d00f3bdcfb668ff7a7511e7b4962f028fb0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "a0d8dd11b581013de09cf9c083a1d00f3bdcfb668ff7a7511e7b4962f028fb0a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "1877375e89fbce78b32a14b530296c6b4462b1f9a4d61b3cc421dbbf124ce571"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "1877375e89fbce78b32a14b530296c6b4462b1f9a4d61b3cc421dbbf124ce571"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "94cd8a6fc2e75a74cbed4b0bd18ee455deb449a38db043ca82d889ca7175490c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "94cd8a6fc2e75a74cbed4b0bd18ee455deb449a38db043ca82d889ca7175490c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "85028dddf55271404d0ea9336fc159d134fbe8a7948c0c930474f8269929e467"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "85028dddf55271404d0ea9336fc159d134fbe8a7948c0c930474f8269929e467"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "f8f0cbd103cf7e1bf0689d8a6f6a4fc96daafc1d6a963a152435f780490ca095"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "f8f0cbd103cf7e1bf0689d8a6f6a4fc96daafc1d6a963a152435f780490ca095"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "2cdeea8aa0e11fa6437b07f2780a18c034783dd128587aad1aff0311f1a60952"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "2cdeea8aa0e11fa6437b07f2780a18c034783dd128587aad1aff0311f1a60952"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "cc9240fba9192d512d69af579f97174b59ec8a8ce55f38e0b2a3dd20e87b55a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "cc9240fba9192d512d69af579f97174b59ec8a8ce55f38e0b2a3dd20e87b55a8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "2e6e8476c24c7383bf9ae8df7b02efc06a47230f951a0692a684b52cca758e9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "2e6e8476c24c7383bf9ae8df7b02efc06a47230f951a0692a684b52cca758e9c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "d91230f33f3f54f3e6840ccd7adb256e95372a638ae912ddba5b080c01782840"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "d91230f33f3f54f3e6840ccd7adb256e95372a638ae912ddba5b080c01782840"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "51433d30547a0ac55ae2e75674329d186b5258c47ff6e56d36f5cafeac1ac3ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "51433d30547a0ac55ae2e75674329d186b5258c47ff6e56d36f5cafeac1ac3ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12611,
+      "sha256": "ea0f8d7098f5cc1693ba2bb398085ddb4767b9ef8f1c20c152444609fcd71be8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12611,
+      "sha256": "ea0f8d7098f5cc1693ba2bb398085ddb4767b9ef8f1c20c152444609fcd71be8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "6fb64a72354a43357be30b2feb3d9b949be866d23abecd3875fe13962a485579"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "6fb64a72354a43357be30b2feb3d9b949be866d23abecd3875fe13962a485579"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-simulator.json",
+      "bytes": 11488,
+      "sha256": "88d51c6ac4a3026133f9b1e36d4a82a301660a0b010900e8e5e80b4d72074233"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T194636806Z-5e80a94e/ios-simulator.json",
+      "bytes": 11488,
+      "sha256": "88d51c6ac4a3026133f9b1e36d4a82a301660a0b010900e8e5e80b4d72074233"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-build.log",
+      "bytes": 59697,
+      "sha256": "3f377b6a82fd64f4306dbf048c4a0106ac0e9797c78c60d3fce643460e6c81c1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-build.log",
+      "bytes": 59697,
+      "sha256": "3f377b6a82fd64f4306dbf048c4a0106ac0e9797c78c60d3fce643460e6c81c1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-forward.png",
+      "bytes": 145890,
+      "sha256": "852ccbd5c10d59ea72a28e8482efef6cc8b48e608353c1190819662f9f5db43d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-forward.png",
+      "bytes": 145890,
+      "sha256": "852ccbd5c10d59ea72a28e8482efef6cc8b48e608353c1190819662f9f5db43d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "bytes": 145946,
+      "sha256": "f2307e82d39b659c0ce19c646efbea14cdf90563068714d0a88742923fe6f493"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-direct-min-content-generic-forward.png",
+      "bytes": 145946,
+      "sha256": "f2307e82d39b659c0ce19c646efbea14cdf90563068714d0a88742923fe6f493"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-install.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-install.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "2929a0027f9657b1d614b2a4f6276b8cfcc5e06924b1c49a8564c1c786e558f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-forward.log",
+      "bytes": 28,
+      "sha256": "2929a0027f9657b1d614b2a4f6276b8cfcc5e06924b1c49a8564c1c786e558f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "797424832e3c94c517b07d473d6a3b05d0339e61942fc3604b83f5103df5e1a5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "797424832e3c94c517b07d473d6a3b05d0339e61942fc3604b83f5103df5e1a5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "c7ddca17f666faeb299f4d0e5636c2fe91c0695b288ef4e04755ee7e263ca222"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "c7ddca17f666faeb299f4d0e5636c2fe91c0695b288ef4e04755ee7e263ca222"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "be15233e4fe857480a2298b9fa36241b11acd7364f21c86512b3c63b65c4e3ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-max-content-reversed.log",
+      "bytes": 28,
+      "sha256": "be15233e4fe857480a2298b9fa36241b11acd7364f21c86512b3c63b65c4e3ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "1affb2a91b73210ea8553ae5f713358acd82e4fcfc9bbb4a225ec79d50785bdf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-forward.log",
+      "bytes": 28,
+      "sha256": "1affb2a91b73210ea8553ae5f713358acd82e4fcfc9bbb4a225ec79d50785bdf"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "e2d11c17111c7bf9e4a85c8b9a8f4af7942665e91162159d83982a94bfa79321"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-forward.log",
+      "bytes": 28,
+      "sha256": "e2d11c17111c7bf9e4a85c8b9a8f4af7942665e91162159d83982a94bfa79321"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "dbfa0070d0a0d25aecb6ca37ffedcef7ea6d02f5083a9d9ea84cafaebd5479de"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-generic-reversed.log",
+      "bytes": 28,
+      "sha256": "dbfa0070d0a0d25aecb6ca37ffedcef7ea6d02f5083a9d9ea84cafaebd5479de"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "3c922083dd0b05403525235d4d9a254a3b296b67a34007c3652afc3d820fd658"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-launch-direct-min-content-reversed.log",
+      "bytes": 28,
+      "sha256": "3c922083dd0b05403525235d4d9a254a3b296b67a34007c3652afc3d820fd658"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "2b65f10260fb057f9b55547053120d598165c0105e1b8e29f4e550814654f787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-forward.log",
+      "bytes": 13235,
+      "sha256": "2b65f10260fb057f9b55547053120d598165c0105e1b8e29f4e550814654f787"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "d38dc0afdfb6fccd89e6720993ce0352873d4c84d99af251ed6871d501827e2b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-forward.log",
+      "bytes": 13251,
+      "sha256": "d38dc0afdfb6fccd89e6720993ce0352873d4c84d99af251ed6871d501827e2b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "072cea72dbb987e6da3bb3a77b963fc7f527a11d8ff2519f7c6751a275c8e29a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-generic-reversed.log",
+      "bytes": 13253,
+      "sha256": "072cea72dbb987e6da3bb3a77b963fc7f527a11d8ff2519f7c6751a275c8e29a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "f7e7334a3646b4ec5bf31dbff71e1c1e5c960da366382470d6431c8814179fee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-max-content-reversed.log",
+      "bytes": 13237,
+      "sha256": "f7e7334a3646b4ec5bf31dbff71e1c1e5c960da366382470d6431c8814179fee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "4be48b3cec6652960e68240f8bbc49c3fbbf650d0ae1cbcd4798e7a9af785099"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-forward.log",
+      "bytes": 12596,
+      "sha256": "4be48b3cec6652960e68240f8bbc49c3fbbf650d0ae1cbcd4798e7a9af785099"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "4f6349b4319e9260e010622f78697ee6c2d667a824b3c22537c9871ccbd97a9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-forward.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-forward.log",
+      "bytes": 12609,
+      "sha256": "4f6349b4319e9260e010622f78697ee6c2d667a824b3c22537c9871ccbd97a9e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12611,
+      "sha256": "d16212107d588ee52adebc1e09e2a43ac2a02f4d8201f31bfd366e5e525c7a50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-generic-reversed.log",
+      "bytes": 12611,
+      "sha256": "d16212107d588ee52adebc1e09e2a43ac2a02f4d8201f31bfd366e5e525c7a50"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-reversed.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "5f830d57c1bd3c2fd6c1a72417399b87a9f8df7255a060d0f9fa4eee0b51f664"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-reversed.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-runtime-direct-min-content-reversed.log",
+      "bytes": 12595,
+      "sha256": "5f830d57c1bd3c2fd6c1a72417399b87a9f8df7255a060d0f9fa4eee0b51f664"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-simulator.json",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-simulator.json",
+      "bytes": 11488,
+      "sha256": "4e14b5eda737dd8b5267d04b9629f7cf3120cb605004fdde37de8dab289eeae0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-simulator.json",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T195138657Z-f58e345a/ios-simulator.json",
+      "bytes": 11488,
+      "sha256": "4e14b5eda737dd8b5267d04b9629f7cf3120cb605004fdde37de8dab289eeae0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-archive.sha256",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-archive.sha256",
+      "bytes": 136,
+      "sha256": "e8873f2f6ae196aa8c1161642e048e96c473083ebb910e6bd345c4a94a5f5539"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-archive.sha256",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-archive.sha256",
+      "bytes": 136,
+      "sha256": "e8873f2f6ae196aa8c1161642e048e96c473083ebb910e6bd345c4a94a5f5539"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-build.log",
+      "bytes": 72,
+      "sha256": "4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-build.log",
+      "bytes": 72,
+      "sha256": "4cf86278c1e6d659943a46a3d7e3da429ac15be90f0f17742e24ef85228e7d3e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-route-string.txt",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-route-string.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-route-string.txt",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/default-route-string.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-archive.sha256",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-archive.sha256",
+      "bytes": 136,
+      "sha256": "cc05cf63e14e84d037fa48bd3b666118ce80538ed7555e0cd568ceac00d2f741"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-archive.sha256",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-archive.sha256",
+      "bytes": 136,
+      "sha256": "cc05cf63e14e84d037fa48bd3b666118ce80538ed7555e0cd568ceac00d2f741"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-build.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-build.log",
+      "bytes": 164,
+      "sha256": "5b7438a4845b3af127292d6fcc6472875e4ae4c247e3e1f99e931ca1426c4df0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-build.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-build.log",
+      "bytes": 164,
+      "sha256": "5b7438a4845b3af127292d6fcc6472875e4ae4c247e3e1f99e931ca1426c4df0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-route-string.txt",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-route-string.txt",
+      "bytes": 581,
+      "sha256": "35cd3bf5bb87df2b113f564d0dd57f21709433106bde14b1b8ddffd7a7af7901"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-route-string.txt",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/fixture-route-string.txt",
+      "bytes": 581,
+      "sha256": "35cd3bf5bb87df2b113f564d0dd57f21709433106bde14b1b8ddffd7a7af7901"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/result.txt",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/result.txt",
+      "bytes": 271,
+      "sha256": "0ca536add11c052efb2c6af228c45c96c113dd06d1dee36d6173119888342c17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/result.txt",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/archive-boundary/result.txt",
+      "bytes": 271,
+      "sha256": "0ca536add11c052efb2c6af228c45c96c113dd06d1dee36d6173119888342c17"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/clippy.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/clippy.log",
+      "bytes": 72,
+      "sha256": "9d892c5778d0c975f64a671e66ea5a753502353da3addd1dfdf3825225e406a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/clippy.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/clippy.log",
+      "bytes": 72,
+      "sha256": "9d892c5778d0c975f64a671e66ea5a753502353da3addd1dfdf3825225e406a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-revision-test.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-revision-test.log",
+      "bytes": 490,
+      "sha256": "ace0d7c3e673f6c2551ad6e336f23e2bcce277f3c726bf0a0d60ba9d45261375"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-revision-test.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-revision-test.log",
+      "bytes": 490,
+      "sha256": "ace0d7c3e673f6c2551ad6e336f23e2bcce277f3c726bf0a0d60ba9d45261375"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-tests.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-tests.log",
+      "bytes": 405,
+      "sha256": "321535e1b317e592faf5e6a1320529f14d02c47c0655873e40fb9774eb68f531"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-tests.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-tests.log",
+      "bytes": 405,
+      "sha256": "321535e1b317e592faf5e6a1320529f14d02c47c0655873e40fb9774eb68f531"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-trace-report-tests.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-trace-report-tests.log",
+      "bytes": 1013,
+      "sha256": "e31deefe0883449ce7a43cae399f083d08047153f7f8cb1c8e9738a5505c5a5c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-trace-report-tests.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/ffi-trace-report-tests.log",
+      "bytes": 1013,
+      "sha256": "e31deefe0883449ce7a43cae399f083d08047153f7f8cb1c8e9738a5505c5a5c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/fmt.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/fmt.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/fmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/runtime-tests.log",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/runtime-tests.log",
+      "bytes": 1505,
+      "sha256": "1445910ec550003797c62a336bd00976f4c04acd1f1134eccf693f70b6408949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/runtime-tests.log",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/validation/runtime-tests.log",
+      "bytes": 1505,
+      "sha256": "1445910ec550003797c62a336bd00976f4c04acd1f1134eccf693f70b6408949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/verify-archive-boundary.sh",
+      "path": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/verify-archive-boundary.sh",
+      "bytes": 1603,
+      "sha256": "c243f2d55ccf6f4366a14929b9799269f6b6030291ffafe75fc81ffdd3707f0d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/verify-archive-boundary.sh",
+      "path": "internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/verify-archive-boundary.sh",
+      "bytes": 1603,
+      "sha256": "c243f2d55ccf6f4366a14929b9799269f6b6030291ffafe75fc81ffdd3707f0d"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 351487,
+      "sha256": "6f6e5580fb83905819aa33798a11d008d6da6f17e7b93a677db971246057af59"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 351487,
+      "sha256": "6f6e5580fb83905819aa33798a11d008d6da6f17e7b93a677db971246057af59"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "spec/public/roadmap.html",
+      "bytes": 351487,
+      "sha256": "6f6e5580fb83905819aa33798a11d008d6da6f17e7b93a677db971246057af59"
+    },
+    {
+      "source": "generated:index.md",
+      "path": "index.md",
+      "bytes": 71,
+      "sha256": "4ff314085bfac0390e429258f64862ba84f8e02f0b7af21034363ad2285a3f39"
+    }
+  ],
+  "fullDocsLinkValidation": false
+}
