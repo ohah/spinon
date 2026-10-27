@@ -6,7 +6,7 @@
 
 이 변경은 테스트와 실행 근거 보강이다. 제품 layout 코드, FFI 장면 등록, Android/iOS matcher는 수정하지 않았다. 일반 CSS admission, C11.4 완료, glyph paint 또는 전체 WPT 통과를 주장하지 않는다. 공식 C11.4 checkbox는 미완료이고 집계 `72/213`은 그대로다.
 
-구현 PR [#706](https://github.com/ohah/spinon/pull/706)이 열려 있다. 확인 시점 GitHub status check rollup은 비어 있어 CI 통과로 기록하지 않는다.
+구현 PR [#706](https://github.com/ohah/spinon/pull/706)은 2026-10-27T18:17:27Z Rebase and merge됐고 merge SHA는 `440359c89593047aae5ab8914573568a5a037568`이다. 병합 시 GitHub status check rollup은 비어 있어 CI 통과로 기록하지 않았다. [병합 상태 동기화 PR diff 검토 30개](merge-sync-pr-review-30.md)
 
 ## 검증
 
