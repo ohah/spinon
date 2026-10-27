@@ -16,9 +16,9 @@
 | `cargo test --locked -p spinon-layout grid_multispan_chrome_oracle_tests` | 통과, 6 tests | [focused-tests.log](./focused-tests.log) |
 | `cargo fmt --all -- --check` | 통과 | [format-check.log](./format-check.log) |
 | `cargo clippy --locked -p spinon-layout --all-targets -- -D warnings` | 통과 | [clippy.log](./clippy.log) |
-| `git diff --check` | 통과 | [diff-check.log](./diff-check.log) |
+| `git diff --check --cached` | 통과 | [diff-check.log](./diff-check.log) |
 
-검증 기준 commit은 [validation-base.txt](./validation-base.txt)에, 수정 Rust 파일과 기대 JSON의 SHA-256은 [source-sha256.txt](./source-sha256.txt)에 기록했다. 구현 실패 관점 검토 20개는 [implementation-review-20.md](./implementation-review-20.md)에 있다. PR 전체 diff에 대한 별도 30관점 검토와 GitHub CI는 아직 진행하지 않았다.
+검증 기준 commit은 [validation-base.txt](./validation-base.txt)에, 수정 Rust 파일과 기대 JSON의 SHA-256은 [source-sha256.txt](./source-sha256.txt)에 기록했다. 구현 실패 관점 검토 20개는 [implementation-review-20.md](./implementation-review-20.md)에 있다. [PR #685](https://github.com/ohah/spinon/pull/685) 전체 diff 검토는 [30 PASS / 0 PARTIAL](./pr-diff-review-30.md)이다. PR 상태 조회 시 GitHub check rollup은 비어 있었으며 이를 CI 통과로 간주하지 않았다. 병합은 아직 확인되지 않았다.
 
 ## 한계
 
