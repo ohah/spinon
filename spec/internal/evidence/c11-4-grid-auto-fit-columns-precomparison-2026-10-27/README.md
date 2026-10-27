@@ -26,4 +26,4 @@ Agent Browser `0.31.1`의 HeadlessChrome `156.0.0.0`, viewport `1280×633` CSS p
 
 반복 횟수는 WPT index 1–35 순서로 `[6, 3, 6, 6, 6, 6, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 2, 1, 1, 1, 5, 5, 5, 1, 1, 3, 3, 3, 1, 1, 1, 2, 1, 3, 3]`이다. Chrome CSSOM은 반복 횟수 oracle이 아닌 별도 cross-check다. 최종 used list에는 overflow placement가 만든 implicit columns가 포함된다(case 7, 8, 11, 14, 19); 이를 explicit repeat count로 세지 않는다.
 
-`repeat-count-expected.json` SHA-256: `44c5b4fc79b30c941800516ba54f414b1a453930b212ef5bf7cef286ef5f21a9`.
+`repeat-count-expected.json` SHA-256: `b21913bda7c84d3ea804533b1eb58da2eb36dac0cb1f1d4791686871ee0a2cd0`.

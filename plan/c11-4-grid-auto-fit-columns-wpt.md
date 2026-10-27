@@ -56,4 +56,5 @@
 ## 검토 기록
 
 - [계획 독립 실패 관점 20개](./c11-4-grid-auto-fit-columns-wpt-plan-review-20.md).
+- [계획 PR diff 적대 검토 20개](./c11-4-grid-auto-fit-columns-wpt-pr-diff-review-20.md).
 - [Chrome/WPT 사전 비교와 입력 hash](../spec/internal/evidence/c11-4-grid-auto-fit-columns-precomparison-2026-10-27/README.md).

@@ -12,7 +12,7 @@
 | 6 | definite max가 min보다 작을 때 max 그대로 count를 계산하는가? | case 4의 `minmax(30px,13px)`와 case 5의 `minmax(30px,6.5%)`는 CRD의 max-floor-by-min 규칙으로 30px을 사용한다. case 3은 13px min보다 큰 30px max를 사용한다. | 통과 |
 | 7 | prefix/suffix 또는 fixed `repeat(2,…)`를 한 track이나 무시된 항목으로 세는가? | case 9–14의 prefix `[10,40]`, case 21–25의 fixed prefix `[50,50]`, suffix sizing은 JSON에서 track별로 저장한다. fixed repeat는 두 track으로 확장되어 계산된다. | 통과 |
 | 8 | multi-track pattern이나 반복 경계 gutter를 빠뜨리는가? | case 32–33은 2-track pattern `[32,20]`이다. case 32의 gap은 0px, case 33은 20px이며 두 경우 모두 pattern 내부와 copy 사이의 모든 gap을 각각 계산한다. 분수 기반 `required_size`는 track 전체 개수에서 gap 수를 센다. | 통과 |
-| 9 | `2em` 크기를 입력 환경과 무관하게 임의로 32px로 박는가? | source authored value는 `2em`; Chrome CSSOM의 case 32–33 used list에서 두 track이 32px로 관측됐다. plan은 16px inherited WPT font baseline을 fixture 입력 조건으로 고정하도록 요구한다. | 통과 |
+| 9 | `2em` 크기를 입력 환경과 무관하게 임의로 32px로 박는가? | source authored value는 `2em`; Chrome CSSOM에서 case 32의 비어 있지 않은 2em track은 32px다. case 33의 해당 track은 auto-fit으로 collapse되므로 em basis를 추론하는 데 쓰지 않는다. plan은 case 32의 16px inherited WPT font basis를 fixture 입력으로 고정한다. | 통과 |
 | 10 | auto-repeat count의 flexible sizing과 최종 `fr` 크기를 혼동하는가? | case 34–35의 `minmax(50px,1fr)`는 repeat count에는 definite 50px minimum을 사용하고, 최종 flex sizing은 별도 stage로 검사한다. | 통과 |
 | 11 | auto-fit을 placement 전에 collapse하거나 spanning item이 차지한 track도 빈 것으로 처리하는가? | 전체 35 scene에서 count 이후 item placement, span occupancy, 그 뒤 empty-track 및 인접 gutter collapse 순서를 별도 matcher 불변식으로 요구한다. | 통과 |
 | 12 | 반복 경계의 adjacent line-name groups를 합치지 않거나 중복 occurrence를 잃는가? | repeated pattern line names, fixed neighbors 및 repeated `start`/`foo`/`bar` names를 각 expanded line index와 occurrence별로 보존·대조하도록 계획에 넣었다. | 통과 |
