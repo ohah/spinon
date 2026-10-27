@@ -1,0 +1,110 @@
+{
+  "cases": [
+    {
+      "gap": "10px",
+      "id": "weighted-columns",
+      "items": [
+        {
+          "height": 120,
+          "width": 63.328125,
+          "x": 27,
+          "y": 117.984375
+        },
+        {
+          "height": 120,
+          "width": 126.671875,
+          "x": 100.328125,
+          "y": 117.984375
+        }
+      ],
+      "root": {
+        "height": 120,
+        "width": 200,
+        "x": 27,
+        "y": 117.984375
+      },
+      "trackList": "63.3281px 126.672px"
+    },
+    {
+      "gap": "10px",
+      "id": "frozen-row",
+      "items": [
+        {
+          "height": 80,
+          "width": 120,
+          "x": 430.625,
+          "y": 117.984375
+        },
+        {
+          "height": 110,
+          "width": 120,
+          "x": 430.625,
+          "y": 207.984375
+        }
+      ],
+      "root": {
+        "height": 200,
+        "width": 120,
+        "x": 430.625,
+        "y": 117.984375
+      },
+      "trackList": "80px 110px"
+    },
+    {
+      "gap": "10px",
+      "id": "subunit-columns",
+      "items": [
+        {
+          "height": 120,
+          "width": 85,
+          "x": 27,
+          "y": 408.96875
+        },
+        {
+          "height": 120,
+          "width": 20,
+          "x": 122,
+          "y": 408.96875
+        }
+      ],
+      "root": {
+        "height": 120,
+        "width": 200,
+        "x": 27,
+        "y": 408.96875
+      },
+      "trackList": "85px 20px"
+    },
+    {
+      "gap": "10px",
+      "id": "zero-fr-row",
+      "items": [
+        {
+          "height": 24,
+          "width": 120,
+          "x": 430.625,
+          "y": 408.96875
+        },
+        {
+          "height": 166,
+          "width": 120,
+          "x": 430.625,
+          "y": 442.96875
+        }
+      ],
+      "root": {
+        "height": 200,
+        "width": 120,
+        "x": 430.625,
+        "y": 408.96875
+      },
+      "trackList": "24px 166px"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

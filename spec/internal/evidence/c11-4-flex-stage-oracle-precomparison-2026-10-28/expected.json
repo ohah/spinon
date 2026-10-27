@@ -1,0 +1,128 @@
+{
+  "standard": "CSS Grid Layout Module Level 1, 2025 CRD, §§11.7–11.7.1",
+  "standard_url": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-flex-tracks",
+  "stage": "ExpandFlexibleTracks",
+  "method": "exact Fraction implementation of the §11.7 definite-space flex fraction and freeze loop",
+  "cases": [
+    {
+      "id": "weighted-columns",
+      "axis": "columns",
+      "available_size_px": 200,
+      "opposite_size_px": 120,
+      "gap_px": 10,
+      "tracks": [
+        {
+          "css": "minmax(0px, 1fr)",
+          "base_size_px": 0,
+          "flex_factor": "1"
+        },
+        {
+          "css": "minmax(0px, 2fr)",
+          "base_size_px": 0,
+          "flex_factor": "2"
+        }
+      ],
+      "fr_fractions_px": [
+        "190/3"
+      ],
+      "inflexible_track_indices": [],
+      "expected_track_bases_px": [
+        "190/3",
+        "380/3"
+      ],
+      "remaining_space_px": "0"
+    },
+    {
+      "id": "frozen-row",
+      "axis": "rows",
+      "available_size_px": 200,
+      "opposite_size_px": 120,
+      "gap_px": 10,
+      "tracks": [
+        {
+          "css": "minmax(80px, 1fr)",
+          "base_size_px": 80,
+          "flex_factor": "1"
+        },
+        {
+          "css": "minmax(0px, 2fr)",
+          "base_size_px": 0,
+          "flex_factor": "2"
+        }
+      ],
+      "fr_fractions_px": [
+        "190/3",
+        "55"
+      ],
+      "inflexible_track_indices": [
+        0
+      ],
+      "expected_track_bases_px": [
+        "80",
+        "110"
+      ],
+      "remaining_space_px": "0"
+    },
+    {
+      "id": "subunit-columns",
+      "axis": "columns",
+      "available_size_px": 200,
+      "opposite_size_px": 120,
+      "gap_px": 10,
+      "tracks": [
+        {
+          "css": "minmax(0px, 0.5fr)",
+          "base_size_px": 0,
+          "flex_factor": "1/2"
+        },
+        {
+          "css": "20px",
+          "base_size_px": 20,
+          "flex_factor": null
+        }
+      ],
+      "fr_fractions_px": [
+        "170"
+      ],
+      "inflexible_track_indices": [
+        1
+      ],
+      "expected_track_bases_px": [
+        "85",
+        "20"
+      ],
+      "remaining_space_px": "85"
+    },
+    {
+      "id": "zero-fr-row",
+      "axis": "rows",
+      "available_size_px": 200,
+      "opposite_size_px": 120,
+      "gap_px": 10,
+      "tracks": [
+        {
+          "css": "minmax(24px, 0fr)",
+          "base_size_px": 24,
+          "flex_factor": "0"
+        },
+        {
+          "css": "minmax(0px, 1fr)",
+          "base_size_px": 0,
+          "flex_factor": "1"
+        }
+      ],
+      "fr_fractions_px": [
+        "190",
+        "166"
+      ],
+      "inflexible_track_indices": [
+        0
+      ],
+      "expected_track_bases_px": [
+        "24",
+        "166"
+      ],
+      "remaining_space_px": "0"
+    }
+  ]
+}
