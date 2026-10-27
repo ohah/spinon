@@ -8,7 +8,7 @@
 
 **구현 검토:** [test/runtime 경계 실패 관점 20개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md) · [구현 PR 변경분 검토 30개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/pr-diff-review-30.md)
 
-**상태 · 2026-10-28:** 계획 PR [#716](https://github.com/ohah/spinon/pull/716)이 Rebase and merge됐다. 그 다음 단계로 pure Rust test-only `ExpandFlexibleTracks` assertion 한 건을 구현했고, focused test·fmt·Clippy와 구현 20관점 및 diff 30관점 검토가 끝나 PR 생성과 병합을 준비 중이다. CSS Grid production algorithm, runtime, FFI, app, 명세 및 공식 완료 집계는 바꾸지 않는다. C11.4 checkbox와 `72/213`은 미완료로 둔다. [구현 근거와 로그](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md)
+**상태 · 2026-10-28:** 계획 PR [#716](https://github.com/ohah/spinon/pull/716)이 Rebase and merge됐다. pure Rust test-only `ExpandFlexibleTracks` assertion 한 건을 구현한 PR [#717](https://github.com/ohah/spinon/pull/717)은 2026-10-27T21:58:53Z에 Rebase and merge됐다(merge SHA `c29482aa8fc3ac39cdc342eae138c3ad10a59683`). focused test·fmt·Clippy와 구현 20관점 및 PR diff 30관점 검토를 마쳤다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. CSS Grid production algorithm, runtime, FFI, app, 명세 및 공식 완료 집계는 바꾸지 않는다. C11.4 checkbox와 `72/213`은 미완료로 둔다. [구현 근거와 로그](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/README.md) · [구현 실패 관점 검토 20개](../spec/internal/evidence/c11-4-flex-stage-oracle-implementation-2026-10-28/implementation-review-20.md) · [병합 후 상태·로드맵 검토 30개](${review})
 
 ## 확인한 결손
 

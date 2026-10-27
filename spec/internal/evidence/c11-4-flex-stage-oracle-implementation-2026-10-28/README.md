@@ -21,4 +21,4 @@
 
 ## 한계와 상태
 
-이 검증은 고정 네 test input의 Rust trace만 확인한다. HTML/CSS admission, WPT, item contribution/span, intrinsic sizing, app runtime, Android/iOS simulator, 화면 pixel equality와 hardware device는 확인하지 않았다. C11.4는 미완료이며 공식 `72/213`을 유지한다.
+이 검증은 고정 네 test input의 Rust trace만 확인한다. HTML/CSS admission, WPT, item contribution/span, intrinsic sizing, app runtime, Android/iOS simulator, 화면 pixel equality와 hardware device는 확인하지 않았다. C11.4는 미완료이며 공식 `72/213`을 유지한다. 구현 PR [#717](https://github.com/ohah/spinon/pull/717)은 2026-10-27T21:58:53Z에 Rebase and merge됐고 merge SHA는 `c29482aa8fc3ac39cdc342eae138c3ad10a59683`다. 병합 당시 GitHub check rollup은 비어 있어 CI 결과는 미보고 상태다.
