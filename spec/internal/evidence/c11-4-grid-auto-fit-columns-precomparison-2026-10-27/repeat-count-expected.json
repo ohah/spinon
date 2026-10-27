@@ -1,0 +1,847 @@
+{
+  "sourceWptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+  "sourceGeometrySha256": "11410caa92c400b653ac781ef7f1103c871cebb108c52b75f2e8308b2531ba63",
+  "sourceCssSha256": "b2f35862e7b8fa9dcae8f4f8d25add78d93f3e7993e08a4337030a4dd2d4425e",
+  "normativeReference": "CSS Grid Layout Module Level 1 2025 CRD §7.2.3.2",
+  "method": "Use each definite repeated track max sizing function, or its definite min when the max is indefinite; floor a definite max by the min; include fixed prefix/suffix tracks and every inter-track gap. Choose the largest positive count that fits the definite 200px grid-container content box, falling back to one if no positive count fits.",
+  "percentRepeatNote": "Case 2 has a definite 200px content box and 13px inline padding on each side. Padding shifts the grid content box origin and enlarges the border box; it does not subtract from the declared 200px content-box width. Thus 30% resolves to 60px, three repeats fit, and the source-authored full-span item is 180px wide.",
+  "emResolutionNote": "Case 32 uses 2em; the pinned Chrome CSSOM observation resolves each such track to 32px, which fixes the WPT UA font-size baseline used by this fixture.",
+  "cases": [
+    {
+      "wptIndex": 1,
+      "sceneId": "grid-auto-fit-columns-01",
+      "rootClass": "grid gridOnlyAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 6,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 2,
+      "sceneId": "grid-auto-fit-columns-02",
+      "rootClass": "grid gridPercentAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fit, 30% [autobar])",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "60"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "240",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 3,
+      "sceneId": "grid-auto-fit-columns-03",
+      "rootClass": "grid gridMinMaxAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fill, minmax(13px, 30px))",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 6,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 4,
+      "sceneId": "grid-auto-fit-columns-04",
+      "rootClass": "grid gridMaxMinAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fill, minmax(30px, 13px))",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 6,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 5,
+      "sceneId": "grid-auto-fit-columns-05",
+      "rootClass": "grid gridMaxMinPercentAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fill, minmax(30px, 6.5%))",
+      "axis": "columns",
+      "repeatMode": "auto-fill",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 6,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 6,
+      "sceneId": "grid-auto-fit-columns-06",
+      "rootClass": "grid gridOnlyAutoRepeat",
+      "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 6,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 7,
+      "sceneId": "grid-auto-fit-columns-07",
+      "rootClass": "grid gridOnlyAutoRepeat gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "230",
+      "expectedRepeatCount": 4,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 8,
+      "sceneId": "grid-auto-fit-columns-08",
+      "rootClass": "grid gridOnlyAutoRepeat gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "230",
+      "expectedRepeatCount": 4,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 9,
+      "sceneId": "grid-auto-fit-columns-09",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "190",
+      "requiredSizeAtNextCountPx": "225",
+      "expectedRepeatCount": 4,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 10,
+      "sceneId": "grid-auto-fit-columns-10",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "190",
+      "requiredSizeAtNextCountPx": "225",
+      "expectedRepeatCount": 4,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 11,
+      "sceneId": "grid-auto-fit-columns-11",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "190",
+      "requiredSizeAtNextCountPx": "225",
+      "expectedRepeatCount": 4,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 12,
+      "sceneId": "grid-auto-fit-columns-12",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "235",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 13,
+      "sceneId": "grid-auto-fit-columns-13",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "235",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 14,
+      "sceneId": "grid-auto-fit-columns-14",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "10",
+        "40"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "35"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "180",
+      "requiredSizeAtNextCountPx": "235",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 15,
+      "sceneId": "grid-auto-fit-columns-15",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "185",
+      "requiredSizeAtNextCountPx": "215",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 16,
+      "sceneId": "grid-auto-fit-columns-16",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "185",
+      "requiredSizeAtNextCountPx": "215",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 17,
+      "sceneId": "grid-auto-fit-columns-17",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "185",
+      "requiredSizeAtNextCountPx": "215",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 18,
+      "sceneId": "grid-auto-fit-columns-18",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "245",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 19,
+      "sceneId": "grid-auto-fit-columns-19",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "245",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 20,
+      "sceneId": "grid-auto-fit-columns-20",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "30"
+      ],
+      "suffixTrackCount": 2,
+      "suffixCountSizesPx": [
+        "80",
+        "45"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "245",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 21,
+      "sceneId": "grid-auto-fit-columns-21",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "50",
+        "50"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "15"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 5,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 22,
+      "sceneId": "grid-auto-fit-columns-22",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "50",
+        "50"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "15"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 5,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 23,
+      "sceneId": "grid-auto-fit-columns-23",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "50",
+        "50"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "15"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "210",
+      "expectedRepeatCount": 5,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 24,
+      "sceneId": "grid-auto-fit-columns-24",
+      "rootClass": "grid gridAutoRepeatAndFixed gap",
+      "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "50",
+        "50"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "15"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "230",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 25,
+      "sceneId": "grid-auto-fit-columns-25",
+      "rootClass": "grid gridAutoRepeatAndFixed gap",
+      "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "50",
+        "50"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "15"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "195",
+      "requiredSizeAtNextCountPx": "230",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 26,
+      "sceneId": "grid-auto-fit-columns-26",
+      "rootClass": "grid gridMultipleNames",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "200",
+      "requiredSizeAtNextCountPx": "220",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 27,
+      "sceneId": "grid-auto-fit-columns-27",
+      "rootClass": "grid gridMultipleNames",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "200",
+      "requiredSizeAtNextCountPx": "220",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 28,
+      "sceneId": "grid-auto-fit-columns-28",
+      "rootClass": "grid gridMultipleNames",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "200",
+      "requiredSizeAtNextCountPx": "220",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 29,
+      "sceneId": "grid-auto-fit-columns-29",
+      "rootClass": "grid gridMultipleNames gap",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "220",
+      "requiredSizeAtNextCountPx": "260",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": true
+    },
+    {
+      "wptIndex": 30,
+      "sceneId": "grid-auto-fit-columns-30",
+      "rootClass": "grid gridMultipleNames gap",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "220",
+      "requiredSizeAtNextCountPx": "260",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": true
+    },
+    {
+      "wptIndex": 31,
+      "sceneId": "grid-auto-fit-columns-31",
+      "rootClass": "grid gridMultipleNames gap",
+      "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 2,
+      "prefixCountSizesPx": [
+        "20",
+        "100"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "20"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "220",
+      "requiredSizeAtNextCountPx": "260",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": true
+    },
+    {
+      "wptIndex": 32,
+      "sceneId": "grid-auto-fit-columns-32",
+      "rootClass": "grid gridMultipleTracks",
+      "authoredGridTemplateColumns": "[start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 1,
+      "prefixCountSizesPx": [
+        "20"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "32",
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "75"
+      ],
+      "columnGapPx": 0,
+      "requiredSizeAtSelectedCountPx": "199",
+      "requiredSizeAtNextCountPx": "251",
+      "expectedRepeatCount": 2,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 33,
+      "sceneId": "grid-auto-fit-columns-33",
+      "rootClass": "grid gridMultipleTracks gap",
+      "authoredGridTemplateColumns": "[start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last]",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 1,
+      "prefixCountSizesPx": [
+        "20"
+      ],
+      "repeatedPatternCountSizesPx": [
+        "32",
+        "20"
+      ],
+      "suffixTrackCount": 1,
+      "suffixCountSizesPx": [
+        "75"
+      ],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "207",
+      "requiredSizeAtNextCountPx": "299",
+      "expectedRepeatCount": 1,
+      "forcedOneWhenNoPositiveCountFits": true
+    },
+    {
+      "wptIndex": 34,
+      "sceneId": "grid-auto-fit-columns-34",
+      "rootClass": "grid gridMinMaxFixedFlex gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, minmax(50px, 1fr))",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "50"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "190",
+      "requiredSizeAtNextCountPx": "260",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    },
+    {
+      "wptIndex": 35,
+      "sceneId": "grid-auto-fit-columns-35",
+      "rootClass": "grid gridMinMaxFixedFlex gap",
+      "authoredGridTemplateColumns": "repeat(auto-fit, minmax(50px, 1fr))",
+      "axis": "columns",
+      "repeatMode": "auto-fit",
+      "definiteContentBasisPx": "200",
+      "prefixTrackCount": 0,
+      "prefixCountSizesPx": [],
+      "repeatedPatternCountSizesPx": [
+        "50"
+      ],
+      "suffixTrackCount": 0,
+      "suffixCountSizesPx": [],
+      "columnGapPx": 20,
+      "requiredSizeAtSelectedCountPx": "190",
+      "requiredSizeAtNextCountPx": "260",
+      "expectedRepeatCount": 3,
+      "forcedOneWhenNoPositiveCountFits": false
+    }
+  ]
+}

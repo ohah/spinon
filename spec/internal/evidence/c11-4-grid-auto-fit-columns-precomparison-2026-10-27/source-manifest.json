@@ -1,0 +1,25 @@
+{
+  "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+  "files": [
+    {
+      "path": "css/css-grid/grid-definition/grid-auto-fit-columns-001.html",
+      "sha256": "11410caa92c400b653ac781ef7f1103c871cebb108c52b75f2e8308b2531ba63"
+    },
+    {
+      "path": "css/support/grid.css",
+      "sha256": "b2f35862e7b8fa9dcae8f4f8d25add78d93f3e7993e08a4337030a4dd2d4425e"
+    },
+    {
+      "path": "resources/check-layout-th.js",
+      "sha256": "b15666105c99548df947b3b9182e78cbadc2871e53f51e26c7c7aa27cf0bef1c"
+    },
+    {
+      "path": "resources/testharness.js",
+      "sha256": "7a108d7cfa98ac413ddb38f82fd509fb2037dfcc25ccf466567520cbb6bdf1fa"
+    },
+    {
+      "path": "resources/testharnessreport.js",
+      "sha256": "3777176fc736b0a78cf7617b9613b220f635daae7536ec7ebb99c61dbb525aae"
+    }
+  ]
+}

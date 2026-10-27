@@ -1,0 +1,2239 @@
+{
+  "harnessText": "Summary\n\nHarness status: OK\n\nRerun\n\nFound 35 tests\n\n35 Pass\nDetails\nResult\tTest Name\tMessage\nPass\t.grid 1\t\nAsserts run\n\nPass\t.grid 2\t\nAsserts run\n\nPass\t.grid 3\t\nAsserts run\n\nPass\t.grid 4\t\nAsserts run\n\nPass\t.grid 5\t\nAsserts run\n\nPass\t.grid 6\t\nAsserts run\n\nPass\t.grid 7\t\nAsserts run\n\nPass\t.grid 8\t\nAsserts run\n\nPass\t.grid 9\t\nAsserts run\n\nPass\t.grid 10\t\nAsserts run\n\nPass\t.grid 11\t\nAsserts run\n\nPass\t.grid 12\t\nAsserts run\n\nPass\t.grid 13\t\nAsserts run\n\nPass\t.grid 14\t\nAsserts run\n\nPass\t.grid 15\t\nAsserts run\n\nPass\t.grid 16\t\nAsserts run\n\nPass\t.grid 17\t\nAsserts run\n\nPass\t.grid 18\t\nAsserts run\n\nPass\t.grid 19\t\nAsserts run\n\nPass\t.grid 20\t\nAsserts run\n\nPass\t.grid 21\t\nAsserts run\n\nPass\t.grid 22\t\nAsserts run\n\nPass\t.grid 23\t\nAsserts run\n\nPass\t.grid 24\t\nAsserts run\n\nPass\t.grid 25\t\nAsserts run\n\nPass\t.grid 26\t\nAsserts run\n\nPass\t.grid 27\t\nAsserts run\n\nPass\t.grid 28\t\nAsserts run\n\nPass\t.grid 29\t\nAsserts run\n\nPass\t.grid 30\t\nAsserts run\n\nPass\t.grid 31\t\nAsserts run\n\nPass\t.grid 32\t\nAsserts run\n\nPass\t.grid 33\t\nAsserts run\n\nPass\t.grid 34\t\nAsserts run\n\nPass\t.grid 35\t\nAsserts run",
+  "metadata": {
+    "platform": "MacIntel",
+    "url": "http://127.0.0.1:4177/css/css-grid/grid-definition/grid-auto-fit-columns-001.html",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+      "dpr": 1,
+      "height": 633,
+      "width": 1280
+    }
+  },
+  "roots": [
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2301.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridOnlyAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2299.625
+      },
+      "index": 1,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 13,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 23,
+              "y": 2330.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "13",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridPercentAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 230,
+        "x": 8,
+        "y": 2328.625
+      },
+      "index": 2,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "60px [autobar] 60px [autobar] 60px [autobar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "13px",
+          "0px",
+          "13px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2359.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMinMaxAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2357.625
+      },
+      "index": 3,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2388.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMaxMinAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2386.625
+      },
+      "index": 4,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2417.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMaxMinPercentAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2415.625
+      },
+      "index": 5,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2446.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 6 autobar",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridOnlyAutoRepeat",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2444.625
+      },
+      "index": 6,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 357,
+            "rect": {
+              "height": 25,
+              "width": 357,
+              "x": 10,
+              "y": 2475.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "357",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 5",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridOnlyAutoRepeat gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2473.625
+      },
+      "index": 7,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 157px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 257,
+            "rect": {
+              "height": 25,
+              "width": 257,
+              "x": 10,
+              "y": 2504.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "257",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 3",
+            "columnStart": "2 autobar",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridOnlyAutoRepeat gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2502.625
+      },
+      "index": 8,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "0px [autobar] 0px [autobar] 30px [autobar] 30px [autobar] 157px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 190,
+            "rect": {
+              "height": 25,
+              "width": 190,
+              "x": 10,
+              "y": 2533.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "190",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 6",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2531.625
+      },
+      "index": 9,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px [autofoo] 35px [autofoo] 35px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 10,
+            "offsetTop": 0,
+            "offsetWidth": 40,
+            "rect": {
+              "height": 25,
+              "width": 40,
+              "x": 20,
+              "y": 2562.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "40",
+            "x": "10",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "autofoo",
+            "columnStart": "foo",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2560.625
+      },
+      "index": 10,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 0px [autofoo] 0px [autofoo] 0px [autofoo] 0px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 50,
+            "offsetTop": 0,
+            "offsetWidth": 297,
+            "rect": {
+              "height": 25,
+              "width": 297,
+              "x": 60,
+              "y": 2591.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "297",
+            "x": "50",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "5 autofoo",
+            "columnStart": "bar",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2589.625
+      },
+      "index": 11,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px [autofoo] 35px [autofoo] 35px 157px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 10,
+              "y": 2620.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 4",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2618.625
+      },
+      "index": 12,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 125,
+            "rect": {
+              "height": 25,
+              "width": 125,
+              "x": 10,
+              "y": 2649.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "125",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "2 autofoo",
+            "columnStart": "span 3",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2647.625
+      },
+      "index": 13,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 0px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 267,
+            "offsetTop": 0,
+            "offsetWidth": 157,
+            "rect": {
+              "height": 25,
+              "width": 157,
+              "x": 277,
+              "y": 2678.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "157",
+            "x": "267",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "3 autofoo",
+            "columnStart": "notPresent",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedBefore gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2676.625
+      },
+      "index": 14,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 0px [autofoo] 0px 157px 157px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 185,
+            "rect": {
+              "height": 25,
+              "width": 185,
+              "x": 10,
+              "y": 2707.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "185",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 4",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2705.625
+      },
+      "index": 15,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 30px [last first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 60,
+            "rect": {
+              "height": 25,
+              "width": 60,
+              "x": 10,
+              "y": 2736.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "60",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "2 last",
+            "columnStart": "first",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2734.625
+      },
+      "index": 16,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 30px [last first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 80,
+            "rect": {
+              "height": 25,
+              "width": 80,
+              "x": 10,
+              "y": 2765.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "80",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "foo",
+            "columnStart": "2 last",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2763.625
+      },
+      "index": 17,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 0px [last first] 0px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 195,
+            "rect": {
+              "height": 25,
+              "width": 195,
+              "x": 10,
+              "y": 2794.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "195",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 3",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2792.625
+      },
+      "index": 18,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 80,
+            "offsetTop": 0,
+            "offsetWidth": 222,
+            "rect": {
+              "height": 25,
+              "width": 222,
+              "x": 90,
+              "y": 2823.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "222",
+            "x": "80",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span bar",
+            "columnStart": "3",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2821.625
+      },
+      "index": 19,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 0px [last foo] 60px [bar] 45px 157px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 30,
+            "rect": {
+              "height": 25,
+              "width": 30,
+              "x": 10,
+              "y": 2852.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "30",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "foo",
+            "columnStart": "first",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixedAfter gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2850.625
+      },
+      "index": 20,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 195,
+            "rect": {
+              "height": 25,
+              "width": 195,
+              "x": 10,
+              "y": 2881.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "195",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 8",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixed",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2879.625
+      },
+      "index": 21,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 50,
+            "offsetTop": 0,
+            "offsetWidth": 80,
+            "rect": {
+              "height": 25,
+              "width": 80,
+              "x": 60,
+              "y": 2910.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "80",
+            "x": "50",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "2 autobar",
+            "columnStart": "a",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixed",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2908.625
+      },
+      "index": 22,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 0px [autobar autofoo] 0px [autobar autofoo] 0px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 100,
+            "offsetTop": 0,
+            "offsetWidth": 95,
+            "rect": {
+              "height": 25,
+              "width": 95,
+              "x": 110,
+              "y": 2939.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "95",
+            "x": "100",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "end",
+            "columnStart": "autofoo",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixed",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2937.625
+      },
+      "index": 23,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 195,
+            "rect": {
+              "height": 25,
+              "width": 195,
+              "x": 10,
+              "y": 2968.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "195",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 4",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixed gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2966.625
+      },
+      "index": 24,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 140,
+            "offsetTop": 0,
+            "offsetWidth": 20,
+            "rect": {
+              "height": 25,
+              "width": 20,
+              "x": 150,
+              "y": 2997.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "20",
+            "x": "140",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "autobar",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridAutoRepeatAndFixed gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 2995.625
+      },
+      "index": 25,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 0px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 200,
+            "rect": {
+              "height": 25,
+              "width": 200,
+              "x": 10,
+              "y": 3026.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "200",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3024.625
+      },
+      "index": 26,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo bar] 20px [start foo bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 120,
+            "offsetTop": 0,
+            "offsetWidth": 40,
+            "rect": {
+              "height": 25,
+              "width": 40,
+              "x": 130,
+              "y": 3055.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "40",
+            "x": "120",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "4 bar",
+            "columnStart": "3 foo",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3053.625
+      },
+      "index": 27,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 0px [start foo bar] 0px [start foo bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 20,
+            "offsetTop": 0,
+            "offsetWidth": 140,
+            "rect": {
+              "height": 25,
+              "width": 140,
+              "x": 30,
+              "y": 3084.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "140",
+            "x": "20",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "span 2 start",
+            "columnStart": "-6",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3082.625
+      },
+      "index": 28,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo bar] 20px [start foo bar] 0px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 40,
+            "offsetTop": 0,
+            "offsetWidth": 140,
+            "rect": {
+              "height": 25,
+              "width": 140,
+              "x": 50,
+              "y": 3113.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "140",
+            "x": "40",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-2",
+            "columnStart": "-4",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3111.625
+      },
+      "index": 29,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 160,
+            "offsetTop": 0,
+            "offsetWidth": 20,
+            "rect": {
+              "height": 25,
+              "width": 20,
+              "x": 170,
+              "y": 3142.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "20",
+            "x": "160",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "2 foo",
+            "columnStart": "bar",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3140.625
+      },
+      "index": 30,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 40,
+            "offsetTop": 0,
+            "offsetWidth": 180,
+            "rect": {
+              "height": 25,
+              "width": 180,
+              "x": 50,
+              "y": 3171.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "180",
+            "x": "40",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "2 bar",
+            "columnStart": "foo",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleNames gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3169.625
+      },
+      "index": 31,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 52,
+            "offsetTop": 0,
+            "offsetWidth": 148,
+            "rect": {
+              "height": 25,
+              "width": 148,
+              "x": 62,
+              "y": 3200.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "148",
+            "x": "52",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "last",
+            "columnStart": "e",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        },
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 25,
+            "offsetWidth": 52,
+            "rect": {
+              "height": 25,
+              "width": 52,
+              "x": 10,
+              "y": 3225.625
+            }
+          },
+          "backgroundColor": "rgb(0, 128, 0)",
+          "expected": {
+            "height": "25",
+            "width": "52",
+            "x": "0",
+            "y": "25"
+          },
+          "placement": {
+            "columnEnd": "b",
+            "columnStart": "start",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleTracks",
+      "frame": {
+        "height": 54,
+        "width": 204,
+        "x": 8,
+        "y": 3198.625
+      },
+      "index": 32,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "normal",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [a] 32px [b c] 0px [d a] 0px [b c] 0px [d e] 148px [last]",
+        "gridTemplateRows": "25px 25px",
+        "height": "50px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 40,
+            "offsetTop": 0,
+            "offsetWidth": 160,
+            "rect": {
+              "height": 25,
+              "width": 160,
+              "x": 50,
+              "y": 3254.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "160",
+            "x": "40",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "-1",
+            "columnStart": "c",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMultipleTracks gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3252.625
+      },
+      "index": 33,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "[start] 20px [a] 0px [b c] 20px [d e] 120px [last]",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 200,
+            "rect": {
+              "height": 25,
+              "width": 200,
+              "x": 10,
+              "y": 3283.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "200",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "auto",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMinMaxFixedFlex gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3281.625
+      },
+      "index": 34,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "200px 0px 0px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    },
+    {
+      "children": [
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 0,
+            "offsetTop": 0,
+            "offsetWidth": 90,
+            "rect": {
+              "height": 25,
+              "width": 90,
+              "x": 10,
+              "y": 3312.625
+            }
+          },
+          "backgroundColor": "rgb(0, 255, 255)",
+          "expected": {
+            "height": "25",
+            "width": "90",
+            "x": "0",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "auto",
+            "columnStart": "1",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        },
+        {
+          "actual": {
+            "offsetHeight": 25,
+            "offsetLeft": 110,
+            "offsetTop": 0,
+            "offsetWidth": 90,
+            "rect": {
+              "height": 25,
+              "width": 90,
+              "x": 120,
+              "y": 3312.625
+            }
+          },
+          "backgroundColor": "rgb(0, 128, 0)",
+          "expected": {
+            "height": "25",
+            "width": "90",
+            "x": "110",
+            "y": "0"
+          },
+          "placement": {
+            "columnEnd": "auto",
+            "columnStart": "2",
+            "rowEnd": "auto",
+            "rowStart": "auto"
+          }
+        }
+      ],
+      "className": "grid gridMinMaxFixedFlex gap",
+      "frame": {
+        "height": 29,
+        "width": 204,
+        "x": 8,
+        "y": 3310.625
+      },
+      "index": 35,
+      "style": {
+        "border": [
+          "2px",
+          "2px",
+          "2px",
+          "2px"
+        ],
+        "columnGap": "20px",
+        "gridAutoColumns": "157px",
+        "gridAutoRows": "25px",
+        "gridTemplateColumns": "90px 90px 0px",
+        "gridTemplateRows": "25px",
+        "height": "25px",
+        "justifyContent": "start",
+        "padding": [
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "rowGap": "normal",
+        "width": "200px"
+      }
+    }
+  ]
+}

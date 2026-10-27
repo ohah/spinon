@@ -1,0 +1,698 @@
+{
+  "source": {
+    "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/grid-auto-fit-columns-001.html",
+    "sha256": "11410caa92c400b653ac781ef7f1103c871cebb108c52b75f2e8308b2531ba63"
+  },
+  "caseCount": 35,
+  "itemCount": 37,
+  "assertions": [
+    {
+      "wptIndex": 1,
+      "sceneId": "grid-auto-fit-columns-01",
+      "rootId": "",
+      "rootClass": "grid gridOnlyAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 2,
+      "sceneId": "grid-auto-fit-columns-02",
+      "rootId": "",
+      "rootClass": "grid gridPercentAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 13.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 3,
+      "sceneId": "grid-auto-fit-columns-03",
+      "rootId": "",
+      "rootClass": "grid gridMinMaxAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 4,
+      "sceneId": "grid-auto-fit-columns-04",
+      "rootId": "",
+      "rootClass": "grid gridMaxMinAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 5,
+      "sceneId": "grid-auto-fit-columns-05",
+      "rootId": "",
+      "rootClass": "grid gridMaxMinPercentAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 6,
+      "sceneId": "grid-auto-fit-columns-06",
+      "rootId": "",
+      "rootClass": "grid gridOnlyAutoRepeat",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 6 autobar",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 7,
+      "sceneId": "grid-auto-fit-columns-07",
+      "rootId": "",
+      "rootClass": "grid gridOnlyAutoRepeat gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 5",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 357.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 8,
+      "sceneId": "grid-auto-fit-columns-08",
+      "rootId": "",
+      "rootClass": "grid gridOnlyAutoRepeat gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: autobar 2 / span 3",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 257.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 9,
+      "sceneId": "grid-auto-fit-columns-09",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 6",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 190.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 10,
+      "sceneId": "grid-auto-fit-columns-10",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: foo / autofoo",
+          "expected": {
+            "offsetLeftPx": 10.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 40.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 11,
+      "sceneId": "grid-auto-fit-columns-11",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: bar / 5 autofoo",
+          "expected": {
+            "offsetLeftPx": 50.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 297.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 12,
+      "sceneId": "grid-auto-fit-columns-12",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 4",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 13,
+      "sceneId": "grid-auto-fit-columns-13",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: span 3 / 2 autofoo",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 125.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 14,
+      "sceneId": "grid-auto-fit-columns-14",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: notPresent / 3 autofoo",
+          "expected": {
+            "offsetLeftPx": 267.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 157.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 15,
+      "sceneId": "grid-auto-fit-columns-15",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 4",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 185.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 16,
+      "sceneId": "grid-auto-fit-columns-16",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: first / last 2",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 60.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 17,
+      "sceneId": "grid-auto-fit-columns-17",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: last 2 / foo",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 80.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 18,
+      "sceneId": "grid-auto-fit-columns-18",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 3",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 195.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 19,
+      "sceneId": "grid-auto-fit-columns-19",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 3 / span 1 bar",
+          "expected": {
+            "offsetLeftPx": 80.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 222.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 20,
+      "sceneId": "grid-auto-fit-columns-20",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: first / foo",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 30.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 21,
+      "sceneId": "grid-auto-fit-columns-21",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 8",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 195.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 22,
+      "sceneId": "grid-auto-fit-columns-22",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: a / autobar 2",
+          "expected": {
+            "offsetLeftPx": 50.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 80.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 23,
+      "sceneId": "grid-auto-fit-columns-23",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixed",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: autofoo / end",
+          "expected": {
+            "offsetLeftPx": 100.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 95.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 24,
+      "sceneId": "grid-auto-fit-columns-24",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixed gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / span 4",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 195.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 25,
+      "sceneId": "grid-auto-fit-columns-25",
+      "rootId": "",
+      "rootClass": "grid gridAutoRepeatAndFixed gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: autobar / -1",
+          "expected": {
+            "offsetLeftPx": 140.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 20.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 26,
+      "sceneId": "grid-auto-fit-columns-26",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: 1 / -1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 200.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 27,
+      "sceneId": "grid-auto-fit-columns-27",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: foo 3 / 4 bar",
+          "expected": {
+            "offsetLeftPx": 120.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 40.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 28,
+      "sceneId": "grid-auto-fit-columns-28",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: -6 / span 2 start",
+          "expected": {
+            "offsetLeftPx": 20.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 140.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 29,
+      "sceneId": "grid-auto-fit-columns-29",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: -4 / -2",
+          "expected": {
+            "offsetLeftPx": 40.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 140.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 30,
+      "sceneId": "grid-auto-fit-columns-30",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: bar / foo 2",
+          "expected": {
+            "offsetLeftPx": 160.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 20.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 31,
+      "sceneId": "grid-auto-fit-columns-31",
+      "rootId": "",
+      "rootClass": "grid gridMultipleNames gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: foo / bar 2",
+          "expected": {
+            "offsetLeftPx": 40.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 180.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 32,
+      "sceneId": "grid-auto-fit-columns-32",
+      "rootId": "",
+      "rootClass": "grid gridMultipleTracks",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: e / last;",
+          "expected": {
+            "offsetLeftPx": 52.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 148.0,
+            "offsetHeightPx": 25.0
+          }
+        },
+        {
+          "itemIndex": 2,
+          "class": "item",
+          "style": "grid-column: start / b;",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 25.0,
+            "offsetWidthPx": 52.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 33,
+      "sceneId": "grid-auto-fit-columns-33",
+      "rootId": "",
+      "rootClass": "grid gridMultipleTracks gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column: c / -1;",
+          "expected": {
+            "offsetLeftPx": 40.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 160.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 34,
+      "sceneId": "grid-auto-fit-columns-34",
+      "rootId": "",
+      "rootClass": "grid gridMinMaxFixedFlex gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column-start: 1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 200.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 35,
+      "sceneId": "grid-auto-fit-columns-35",
+      "rootId": "",
+      "rootClass": "grid gridMinMaxFixedFlex gap",
+      "items": [
+        {
+          "itemIndex": 1,
+          "class": "item",
+          "style": "grid-column-start: 1",
+          "expected": {
+            "offsetLeftPx": 0.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 90.0,
+            "offsetHeightPx": 25.0
+          }
+        },
+        {
+          "itemIndex": 2,
+          "class": "item",
+          "style": "grid-column-start: 2",
+          "expected": {
+            "offsetLeftPx": 110.0,
+            "offsetTopPx": 0.0,
+            "offsetWidthPx": 90.0,
+            "offsetHeightPx": 25.0
+          }
+        }
+      ]
+    }
+  ]
+}
