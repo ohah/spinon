@@ -1,6 +1,6 @@
 # C11.4 `grid-auto-fit-columns-001.html` runtime 근거
 
-**현재 상태:** 구현 후보 검증 중. 공식 C11.4 완료 체크와 로드맵 `72/213`은 변경하지 않았다. 실행 당시 HEAD는 `e37e0764483022d8587d832f4f384fbc5d4f8c0c`이며, 이 작업 트리의 변경은 아직 PR에 병합되지 않았다.
+**병합 상태:** 실행 당시 base HEAD는 `e37e0764483022d8587d832f4f384fbc5d4f8c0c`였고, 이 문서의 opt-in source 변경은 PR #695 implementation commit `d4e9cd7e37a973fd68360d8ac29f801df18416a8`에 포함되어 merge SHA `d6dd9fd15d2897804142e6bb119149a633952a9b`로 병합됐다. 공식 C11.4 완료 체크와 `72/213`은 유지한다. GitHub status check은 보고되지 않았다.
 
 ## Android·iOS 35개 scene
 
