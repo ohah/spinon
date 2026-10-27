@@ -1,6 +1,6 @@
-# C11.4 generic direct-text review closure · PR diff review 20
+# C11.4 generic direct-text review closure · PR #704 diff review 20
 
-검토 대상은 fixture-test 전용 변경, 테스트 근거, 연결된 계획 기록이다. 각 항목은 다른 실패 경로 또는 주장 경계를 점검한다.
+검토 대상은 PR #704의 fixture-test 전용 변경, 테스트 근거, 연결된 계획 기록, PR 본문과 라벨이다. 각 항목은 다른 실패 경로 또는 주장 경계를 점검한다.
 
 | # | 공격 관점 | 판정과 근거 |
 |---:|---|---|

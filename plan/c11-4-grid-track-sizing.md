@@ -486,4 +486,4 @@ PR [#645](https://github.com/ohah/spinon/pull/645)의 원래 diff 30관점 검�
 
 ## 2026-10-28 generic direct-text residual review closure
 
-이전 PARTIAL 세 건을 [test-only 후속 evidence](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/README.md)로 닫는다. HTML namespace와 tag 이름을 구분한 decoy를 여러 child 위치에서 검사하고, 거부된 HTML `<img>`의 exact `NodeId`, 그리고 실제 `TEXT_CASES` dispatcher의 one-item legacy fallback 결과를 고정했다. [PR diff 적대 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/pr-diff-review-20.md)는 제품/runtime 변경이 없고 C11.4 전체나 app route를 검증하지 않았음을 확인한다. 공식 checkbox와 `72/213`은 유지한다.
+이전 PARTIAL 세 건을 test-only 후속 [PR #704](https://github.com/ohah/spinon/pull/704)와 [evidence](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/README.md)로 닫는다. HTML namespace와 tag 이름을 구분한 decoy를 여러 child 위치에서 검사하고, 거부된 HTML `<img>`의 exact `NodeId`, 그리고 실제 `TEXT_CASES` dispatcher의 one-item legacy fallback 결과를 고정했다. [PR diff 적대 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/pr-diff-review-20.md)는 제품/runtime 변경이 없고 C11.4 전체나 app route를 검증하지 않았음을 확인한다. 공식 checkbox와 `72/213`은 유지한다.

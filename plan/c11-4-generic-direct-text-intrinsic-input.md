@@ -169,8 +169,8 @@ PR [#645](https://github.com/ohah/spinon/pull/645)의 원래 diff 30관점 검�
 
 이 profile은 `ParagraphStyle`의 ligature mode를 `Normal`로 고정하지만 현재 computed-style collector는 authored CSS `font-variant-ligatures`를 별도 수집·거부하지 않는다. 고정 Ahem scenes의 ASCII 대문자/U+0020 입력으로 일반 ligature override 지원이나 거부를 주장하지 않는다.
 
-## 2026-10-28 PR #645 residual review closure
+## 2026-10-28 PR #704 · PR #645 review finding follow-up
 
 PR #645의 focused fix recheck에 남아 있던 세 PARTIAL을 test-only 후속에서 닫았다. SVG namespace의 local name `img`와 HTML `image` tag를 root child의 앞·가운데·뒤에 각각 배치해 decoy 무시와 두 text-item의 정확한 NodeId ownership을 확인한다. 실제 root HTML `<img>` 거부는 오류 code와 image node ID를 exact 비교한다. Legacy `TEXT_CASES[0]` 입력은 generic collector의 `None` 이후 전체 `c11_4_text::prepare` dispatcher를 호출해 fallback input 및 paragraph owner까지 확인한다.
 
-Fixture-test feature의 generic direct-text tests는 11/11, formatter와 diff whitespace 검사는 통과했다. 기본 targeted Clippy는 변경과 무관한 `c11_4_grid_layout_auto_tracks/validation.rs:329`의 `clippy::type-complexity`를 거부했다. 그 lint만 허용한 동일 package/feature Clippy는 통과했다. 제품 code, app route, 내부 계약과 공개 support는 바꾸지 않았고 Android/iOS runtime이나 screenshot은 실행하지 않았다. [실행 범위·한계](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/README.md) · [PR diff 실패 관점 20개](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/pr-diff-review-20.md). C11.4 checkbox는 미완료이며 공식 `72/213`을 유지한다.
+Fixture-test feature의 generic direct-text tests는 11/11, formatter와 diff whitespace 검사는 통과했다. 기본 targeted Clippy는 변경과 무관한 `c11_4_grid_layout_auto_tracks/validation.rs:329`의 `clippy::type-complexity`를 거부했다. 그 lint만 허용한 동일 package/feature Clippy는 통과했다. 제품 code, app route, 내부 계약과 공개 support는 바꾸지 않았고 Android/iOS runtime이나 screenshot은 실행하지 않았다. test-only follow-up [PR #704](https://github.com/ohah/spinon/pull/704), [실행 범위·한계](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/README.md) · [PR diff 실패 관점 20개](../spec/internal/evidence/c11-4-generic-direct-text-review-closure-2026-10-28/pr-diff-review-20.md). C11.4 checkbox는 미완료이며 공식 `72/213`을 유지한다.
