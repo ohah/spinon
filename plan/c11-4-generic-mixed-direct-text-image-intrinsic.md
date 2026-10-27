@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [direct text/image fixed-scene slice](./c11-4-mixed-direct-text-image-intrinsic.md) · [generic direct-text collector](./c11-4-generic-direct-text-intrinsic-input.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 제한 opt-in runtime fixture 구현 및 Android/iOS Simulator 검증 완료. 현재 mixed adapter는 span, direct column, direct row scene을 고정 root/item ID로 dispatch한다. 이 slice는 그중 네 direct column 입력과 같은 제한 HTML/CSS를 새로운 HostNode ID로 구성해도 opt-in fixture adapter가 source와 computed style로 혼합 입력을 식별하고 fail-closed하는지 확인했다. 제품 CSS admission이나 C11.4 완료를 뜻하지 않는다. [구현·실행·화면 근거](../spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md).
+**상태:** 제한 opt-in runtime fixture 구현 및 Android/iOS Simulator 검증 완료. 현재 mixed adapter는 span, direct column, direct row scene을 고정 root/item ID로 dispatch한다. 이 slice는 그중 네 direct column 입력과 같은 제한 HTML/CSS를 새로운 HostNode ID로 구성해도 opt-in fixture adapter가 source와 computed style로 혼합 입력을 식별하고 fail-closed하는지 확인했다. 제품 CSS admission이나 C11.4 완료를 뜻하지 않는다. 구현 PR [#710](https://github.com/ohah/spinon/pull/710)은 2026-10-27T20:00:08Z Rebase and merge로 병합됐고 merge SHA는 `58cca2afa6086a6e4b8517ecd1d5d5a4012c6a94`다. PR check rollup은 비었으며 main required status checks도 설정되어 있지 않아 CI 통과로 세지 않는다. [구현·실행·화면 근거](../spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/README.md).
 
 ## 확인된 경계와 목표
 
