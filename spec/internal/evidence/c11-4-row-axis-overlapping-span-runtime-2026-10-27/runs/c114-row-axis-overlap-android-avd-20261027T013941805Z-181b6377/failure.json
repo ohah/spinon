@@ -1,0 +1,13 @@
+{
+  "complete": false,
+  "target": "android-avd",
+  "runPrefix": "c114-row-axis-overlap-android-avd-20261027T013941805Z-181b6377",
+  "generatedAtUtc": "2026-10-27T01:41:04.040Z",
+  "selectedScenes": [
+    "row-axis-span2-forward",
+    "row-axis-span2-reversed",
+    "row-axis-span2-before-span3",
+    "row-axis-span3-before-span2"
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: row-axis-span2-forward: native scene assertion 실패\n    at verifyScene (file:///private/tmp/spinon-c11-4-pr674-tailnet-sync-20261027/spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/capture-row-axis-overlapping-spans.mjs:452:10)\n    at runAndroid (file:///private/tmp/spinon-c11-4-pr674-tailnet-sync-20261027/spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/capture-row-axis-overlapping-spans.mjs:608:27)\n    at async file:///private/tmp/spinon-c11-4-pr674-tailnet-sync-20261027/spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/capture-row-axis-overlapping-spans.mjs:837:33"
+}

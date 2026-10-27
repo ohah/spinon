@@ -101,6 +101,8 @@ mod nested_grid_text_multispan;
 mod orthogonal_direct_text_image_intrinsic_rows;
 #[path = "c11_4/orthogonal_text_intrinsic.rs"]
 mod orthogonal_text_intrinsic;
+#[path = "c11_4/row_axis_overlapping_spans.rs"]
+mod row_axis_overlapping_spans;
 #[path = "c11_4/text_multispan.rs"]
 mod text_multispan;
 
@@ -1161,6 +1163,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = orthogonal_text_intrinsic::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = row_axis_overlapping_spans::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = cyclic_minmax_replaced_image_span::runtime_source(scene_id) {

@@ -86,6 +86,32 @@ private let c114GenericDirectTextSceneIDs: Set<String> = ["generic-root-normal"]
 #else
 private let c114GenericDirectTextSceneIDs: Set<String> = []
 #endif
+private let c114RowAxisSpanStageSceneIDs: Set<String> = [
+    "row-axis-span2-forward", "row-axis-span2-reversed",
+    "row-axis-span2-before-span3", "row-axis-span3-before-span2",
+]
+
+private struct C114RowAxisSpanItemExpectation {
+    let node: Int
+    let span: Int
+    let blockSize: Double
+    let y: Double
+}
+
+private struct C114RowAxisSpanSceneExpectation {
+    let spans: [Int]
+    let sourceItems: [C114RowAxisSpanItemExpectation]
+}
+
+private struct C114RowAxisSpanFrameExpectation {
+    let index: Int
+    let node: Int
+    let x: Double
+    let y: Double
+    let width: Double
+    let height: Double
+}
+
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -300,6 +326,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "typed-auto-fit-empty", "typed-auto-fit-gutter",
     "competing-span2-forward", "competing-span2-reversed",
     "span2-before-span3", "span3-before-span2",
+    "row-axis-span2-forward", "row-axis-span2-reversed",
+    "row-axis-span2-before-span3", "row-axis-span3-before-span2",
     "text-span2-forward", "text-span2-reversed",
     "text-span2-before-span3", "text-span3-before-span2",
     "image-span2-forward", "image-span2-reversed",
@@ -849,7 +877,78 @@ private func c114CalcNeighborNodeFrames(_ sceneID: String) -> String? {
         + (itemFrames.isEmpty ? "" : ";" + itemFrames.joined(separator: ";")) + "]"
 }
 
+private func c114RowAxisSpanSceneExpectation(
+    _ sceneID: String
+) -> C114RowAxisSpanSceneExpectation? {
+    switch sceneID {
+    case "row-axis-span2-forward":
+        return C114RowAxisSpanSceneExpectation(spans: [2], sourceItems: [
+            C114RowAxisSpanItemExpectation(node: 2, span: 2, blockSize: 80, y: 0),
+            C114RowAxisSpanItemExpectation(node: 3, span: 2, blockSize: 120, y: 40),
+        ])
+    case "row-axis-span2-reversed":
+        return C114RowAxisSpanSceneExpectation(spans: [2], sourceItems: [
+            C114RowAxisSpanItemExpectation(node: 2, span: 2, blockSize: 120, y: 40),
+            C114RowAxisSpanItemExpectation(node: 3, span: 2, blockSize: 80, y: 0),
+        ])
+    case "row-axis-span2-before-span3":
+        return C114RowAxisSpanSceneExpectation(spans: [2, 3], sourceItems: [
+            C114RowAxisSpanItemExpectation(node: 2, span: 2, blockSize: 80, y: 0),
+            C114RowAxisSpanItemExpectation(
+                node: 3, span: 2, blockSize: 120, y: 53.328125
+            ),
+            C114RowAxisSpanItemExpectation(node: 4, span: 3, blockSize: 200, y: 0),
+        ])
+    case "row-axis-span3-before-span2":
+        return C114RowAxisSpanSceneExpectation(spans: [2, 3], sourceItems: [
+            C114RowAxisSpanItemExpectation(node: 2, span: 3, blockSize: 200, y: 0),
+            C114RowAxisSpanItemExpectation(
+                node: 3, span: 2, blockSize: 120, y: 53.328125
+            ),
+            C114RowAxisSpanItemExpectation(node: 4, span: 2, blockSize: 80, y: 0),
+        ])
+    default:
+        return nil
+    }
+}
+
+private func c114RowAxisSpanFrameExpectations(
+    _ sceneID: String
+) -> [C114RowAxisSpanFrameExpectation]? {
+    guard let scene = c114RowAxisSpanSceneExpectation(sceneID) else { return nil }
+    return [C114RowAxisSpanFrameExpectation(
+        index: 0, node: 1, x: 0, y: 0, width: 220, height: 220
+    )] + scene.sourceItems.enumerated().map { offset, item in
+        C114RowAxisSpanFrameExpectation(
+            index: offset + 1,
+            node: item.node,
+            x: 0,
+            y: item.y,
+            width: 220,
+            height: item.blockSize
+        )
+    }
+}
+
+private func c114RowAxisSpanFrameNumber(_ value: Double) -> String {
+    value == Double(Int(value)) ? String(Int(value)) : String(value)
+}
+
+private func c114RowAxisSpanExpectedNodeFrames(_ sceneID: String) -> String? {
+    guard let frames = c114RowAxisSpanFrameExpectations(sceneID) else { return nil }
+    let entries = frames.map { frame in
+        "\(frame.index):node=\(frame.node),x=\(c114RowAxisSpanFrameNumber(frame.x)),"
+            + "y=\(c114RowAxisSpanFrameNumber(frame.y)),"
+            + "width=\(c114RowAxisSpanFrameNumber(frame.width)),"
+            + "height=\(c114RowAxisSpanFrameNumber(frame.height))"
+    }
+    return "node_frames_css_px=[\(entries.joined(separator: ";"))]"
+}
+
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if c114RowAxisSpanStageSceneIDs.contains(sceneID) {
+        return c114RowAxisSpanNodeFramesMatch(sceneID, report: report)
+    }
     if c114FixedRepeatMinmaxFlexRootSize(sceneID) != nil { return true }
     guard let expected = c114ExpectedNodeFrames(sceneID) else { return true }
     if report.contains(expected) { return true }
@@ -1110,6 +1209,7 @@ private func c114DirectMixedTextImageNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if c114RowAxisSpanStageSceneIDs.contains(sceneID) { return "width=220,height=220" }
     if sceneID == "align-content-normal-equal-auto-rows" {
         return "width=160,height=100"
     }
@@ -1410,6 +1510,10 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let scene = c114RowAxisSpanSceneExpectation(sceneID),
+       let first = scene.sourceItems.first {
+        return "width=220,height=\(c114RowAxisSpanFrameNumber(first.blockSize))"
+    }
     if sceneID == "align-content-normal-equal-auto-rows" {
         return "width=160,height=10"
     }
@@ -3421,6 +3525,187 @@ private func c114GenericJSONNear(
     return abs(observed - expected) <= tolerance
 }
 
+private func c114RowAxisSpanNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    guard let expected = c114RowAxisSpanFrameExpectations(sceneID) else { return false }
+    let marker = "node_frames_css_px=["
+    guard report.components(separatedBy: marker).count == 2,
+          let markerRange = report.range(of: marker),
+          let closing = report[markerRange.upperBound...].firstIndex(of: "]") else {
+        return false
+    }
+    let observed = report[markerRange.upperBound..<closing]
+        .split(separator: ";", omittingEmptySubsequences: false)
+    guard observed.count == expected.count else { return false }
+
+    for (actualText, expectedFrame) in zip(observed, expected) {
+        guard let actual = c114RowAxisSpanParseNodeFrame(actualText),
+              actual.index == expectedFrame.index,
+              actual.node == expectedFrame.node,
+              abs(actual.x - expectedFrame.x) <= 1.0 / 64.0,
+              abs(actual.y - expectedFrame.y) <= 1.0 / 64.0,
+              abs(actual.width - expectedFrame.width) <= 1.0 / 64.0,
+              abs(actual.height - expectedFrame.height) <= 1.0 / 64.0 else {
+            return false
+        }
+    }
+    return true
+}
+
+private func c114RowAxisSpanParseNodeFrame(
+    _ source: Substring
+) -> C114RowAxisSpanFrameExpectation? {
+    guard let colon = source.firstIndex(of: ":"),
+          let index = Int(source[..<colon]) else { return nil }
+    let fields = source[source.index(after: colon)...]
+        .split(separator: ",", omittingEmptySubsequences: false)
+    guard fields.count == 5 else { return nil }
+
+    var values: [String: String] = [:]
+    for field in fields {
+        let pair = field.split(separator: "=", maxSplits: 1, omittingEmptySubsequences: false)
+        guard pair.count == 2 else { return nil }
+        let key = String(pair[0])
+        guard ["node", "x", "y", "width", "height"].contains(key),
+              values[key] == nil else { return nil }
+        values[key] = String(pair[1])
+    }
+    guard values.count == 5,
+          let node = values["node"].flatMap({ Int($0) }),
+          let x = values["x"].flatMap({ Double($0) }), x.isFinite,
+          let y = values["y"].flatMap({ Double($0) }), y.isFinite,
+          let width = values["width"].flatMap({ Double($0) }), width.isFinite,
+          let height = values["height"].flatMap({ Double($0) }), height.isFinite else {
+        return nil
+    }
+    return C114RowAxisSpanFrameExpectation(
+        index: index, node: node, x: x, y: y, width: width, height: height
+    )
+}
+
+private func c114RowAxisSpanTraceMatches(_ sceneID: String, report: String) -> Bool {
+    guard let scene = c114RowAxisSpanSceneExpectation(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          c114GenericJSONInteger(traces[0]["grid"]) == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2 else { return false }
+
+    let expectedAxes = ["Columns", "Rows"]
+    guard passes.enumerated().allSatisfy({ index, pass in
+        c114GenericJSONInteger(pass["sequence"]) == index
+            && c114GenericJSONString(pass["axis"]) == expectedAxes[index]
+    }) else { return false }
+
+    let columns = passes[0]
+    guard let columnStages = columns["stages"] as? [[String: Any]],
+          columnStages.count == 2,
+          c114GenericJSONString(columnStages[0]["stage"]) == "Initialize",
+          c114GenericJSONString(columnStages[1]["stage"]) == "FixedTrackEarlyReturn",
+          columnStages.allSatisfy({ c114RowAxisSpanTrackSnapshotMatches(
+            $0, baseSizes: [220], growthLimits: [220]
+          ) }),
+          let columnContributions = columns["contributions"] as? [[String: Any]],
+          columnContributions.isEmpty else { return false }
+
+    let rows = passes[1]
+    guard let rowStages = rows["stages"] as? [[String: Any]] else { return false }
+    let finalSizes: [Double] = scene.spans == [2]
+        ? [40, 60, 60, 0]
+        : [160.0 / 3.0, 220.0 / 3.0, 220.0 / 3.0, 0]
+    let finalGrowthLimits: [Double?] = finalSizes.map { Optional($0) }
+    var expectedStages: [(name: String, baseSizes: [Double], growthLimits: [Double?])] = [
+        ("Initialize", [0, 0, 0, 0], [nil, nil, nil, nil]),
+    ]
+    for span in scene.spans {
+        switch span {
+        case 2:
+            expectedStages.append((
+                "IntrinsicItemBatch { span: 2, crosses_flexible_track: false }",
+                [0, 0, 0, 0], [40, 60, 60, nil]
+            ))
+        case 3:
+            expectedStages.append((
+                "IntrinsicItemBatch { span: 3, crosses_flexible_track: false }",
+                [0, 0, 0, 0], [160.0 / 3.0, 220.0 / 3.0, 220.0 / 3.0, nil]
+            ))
+        default:
+            return false
+        }
+    }
+    expectedStages.append(("IntrinsicSizingComplete", [0, 0, 0, 0], finalGrowthLimits))
+    expectedStages.append(("MaximizeTracks", finalSizes, finalGrowthLimits))
+    expectedStages.append(("ExpandFlexibleTracks", finalSizes, finalGrowthLimits))
+    expectedStages.append(("StretchAutoTracks { applied: false }", finalSizes, finalGrowthLimits))
+    guard rowStages.count == expectedStages.count else { return false }
+    for (actual, expected) in zip(rowStages, expectedStages) {
+        guard c114GenericJSONString(actual["stage"]) == expected.name,
+              c114RowAxisSpanTrackSnapshotMatches(
+                actual, baseSizes: expected.baseSizes, growthLimits: expected.growthLimits
+              ) else { return false }
+    }
+    return c114RowAxisSpanContributionsMatch(rows, scene: scene)
+}
+
+private func c114RowAxisSpanTrackSnapshotMatches(
+    _ stage: [String: Any], baseSizes: [Double], growthLimits: [Double?]
+) -> Bool {
+    guard baseSizes.count == growthLimits.count,
+          let tracks = stage["tracks"] as? [[String: Any]],
+          tracks.count == baseSizes.count * 2 + 1 else { return false }
+    var cssTrackIndex = 0
+    for (index, track) in tracks.enumerated() {
+        let gutter = index.isMultiple(of: 2)
+        let boundaryGutter = gutter && (index == 0 || index == tracks.count - 1)
+        guard c114GenericJSONInteger(track["internalIndex"]) == index,
+              c114GenericJSONBoolean(track["gutter"]) == gutter,
+              c114GenericJSONBoolean(track["collapsed"]) == boundaryGutter else { return false }
+        let expectedBase = gutter ? 0 : baseSizes[cssTrackIndex]
+        guard c114GenericJSONNear(track["baseSize"], expected: expectedBase, tolerance: 0.0001)
+        else { return false }
+        if gutter {
+            guard c114GenericJSONNear(
+                track["growthLimit"], expected: 0, tolerance: 0.0001
+            ) else { return false }
+        } else {
+            if let expectedLimit = growthLimits[cssTrackIndex] {
+                guard c114GenericJSONNear(
+                    track["growthLimit"], expected: expectedLimit, tolerance: 0.0001
+                ) else { return false }
+            } else if !(track["growthLimit"] is NSNull) {
+                return false
+            }
+            cssTrackIndex += 1
+        }
+    }
+    return cssTrackIndex == baseSizes.count
+}
+
+private func c114RowAxisSpanContributionsMatch(
+    _ pass: [String: Any], scene: C114RowAxisSpanSceneExpectation
+) -> Bool {
+    guard let contributions = pass["contributions"] as? [[String: Any]] else { return false }
+    var expected: [(item: Int, kind: String, span: Int, value: Double)] = []
+    for span in scene.spans {
+        for kind in ["Minimum", "MinContent", "MaxContent"] {
+            for item in scene.sourceItems where item.span == span {
+                expected.append((item.node, kind, span, item.blockSize))
+            }
+        }
+    }
+    guard contributions.count == expected.count else { return false }
+    for (actual, expected) in zip(contributions, expected) {
+        guard c114GenericJSONInteger(actual["item"]) == expected.item,
+              c114GenericJSONInteger(actual["span"]) == expected.span,
+              c114GenericJSONString(actual["kind"]) == expected.kind,
+              c114GenericJSONBoolean(actual["crossesFlexibleTrack"]) == false,
+              c114GenericJSONNear(
+                actual["value"], expected: expected.value, tolerance: 0.0001
+              ) else { return false }
+    }
+    return true
+}
+
 private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bool {
     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
           traces.count == 1,
@@ -4370,6 +4655,9 @@ private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let rowAxisSpanFrames = c114RowAxisSpanExpectedNodeFrames(sceneID) {
+        return rowAxisSpanFrames
+    }
     if sceneID == "align-content-normal-equal-auto-rows" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=160,height=100;"
             + "1:node=2,x=0,y=0,width=160,height=10;"
@@ -5959,6 +6247,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let rowAxisSpanFrames = c114RowAxisSpanFrameExpectations(sceneID) {
+        return rowAxisSpanFrames.count
+    }
     if sceneID == "align-content-normal-equal-auto-rows" { return 4 }
     if sceneID == "fit-content-auto-neighbor-wpt" { return 5 }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
@@ -11188,6 +11479,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedEqualAutoRowsMatches = c114AlignContentNormalEqualAutoRowsMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedRowAxisSpanStageMatches = c114RowAxisSpanStageSceneIDs.contains(
+                c114GridTrackSizingSceneID
+            ) ? c114RowAxisSpanTraceMatches(c114GridTrackSizingSceneID, report: report) : true
             let expectedRootFrameMatches = rootFrame.isEmpty || report.contains(rootFrame)
             let expectedItemFrameMatches = itemFrame.isEmpty || report.contains(itemFrame)
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
@@ -11202,8 +11496,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch,
                   expectedFitContentAutoNeighborMatches,
-                  expectedEqualAutoRowsMatches else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) report=\(report)")
+                  expectedEqualAutoRowsMatches,
+                  expectedRowAxisSpanStageMatches else {
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

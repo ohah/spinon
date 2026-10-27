@@ -287,6 +287,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "image-auto-max-mixed-tracks-border-overflow",
             "competing-span2-forward", "competing-span2-reversed",
             "span2-before-span3", "span3-before-span2",
+            "row-axis-span2-forward", "row-axis-span2-reversed",
+            "row-axis-span2-before-span3", "row-axis-span3-before-span2",
             "text-span2-forward", "text-span2-reversed",
             "text-span2-before-span3", "text-span3-before-span2",
             "image-span2-forward", "image-span2-reversed",
@@ -1989,6 +1991,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114ExpectedNodeFramesMatch(String sceneId, String report) {
+        if (C114RowAxisSpanStage.isScene(sceneId)) {
+            return C114RowAxisSpanStage.nodeFramesMatch(sceneId, report);
+        }
         if (c114FixedRepeatMinmaxFlexRootSize(sceneId) != null) return true;
         String expected = c114ExpectedNodeFrames(sceneId);
         if (expected == null || report.contains(expected)) return true;
@@ -1997,6 +2002,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (C114RowAxisSpanStage.isScene(sceneId)) return "width=220,height=220";
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) {
             return "width=160,height=100";
         }
@@ -2363,6 +2369,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (C114RowAxisSpanStage.isScene(sceneId)) {
+            return "width=220,height=" + C114RowAxisSpanStage.firstItemHeight(sceneId);
+        }
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) return "";
         if ("fit-content-auto-neighbor-wpt".equals(sceneId)) {
             return "width=60,height=10";
@@ -6847,6 +6856,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (C114RowAxisSpanStage.isScene(sceneId)) {
+            return C114RowAxisSpanStage.itemCount(sceneId) + 1;
+        }
         if ("align-content-normal-equal-auto-rows".equals(sceneId)) return 4;
         if ("fit-content-auto-neighbor-wpt".equals(sceneId)) return 5;
         if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) return 3;
@@ -11252,11 +11264,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     c114GridTrackSizingSceneId, result);
             boolean c114ImageIntrinsicInputsMatch = c114ExpectedImageIntrinsicInputs(
                     c114GridTrackSizingSceneId, result);
+            boolean expectedNodeFramesMatch = c114ExpectedNodeFramesMatch(
+                    c114GridTrackSizingSceneId, result);
+            boolean rowAxisSpanStageTraceMatches = !C114RowAxisSpanStage.isScene(
+                    c114GridTrackSizingSceneId)
+                    || C114RowAxisSpanStage.traceMatches(c114GridTrackSizingSceneId, result);
             if (!result.startsWith("status=0 ") || !result.contains(
                     "layout=ready boxes=" + c114ExpectedBoxCount(c114GridTrackSizingSceneId))
                     || (!expectedRootFrame.isEmpty() && !result.contains(expectedRootFrame))
                     || (!expectedItemFrame.isEmpty() && !result.contains(expectedItemFrame))
-                    || !c114ExpectedNodeFramesMatch(c114GridTrackSizingSceneId, result)
+                    || !expectedNodeFramesMatch
                     || !fixedAutoAreaTraceMatches
                     || !cyclicAutoRepeatTraceMatches
                     || !crossAxisTemplateAreaTraceMatches
@@ -11265,7 +11282,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114CrossAxisSpanGroupFramesMatch
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
-                    || !c114ImageIntrinsicInputsMatch) {
+                    || !c114ImageIntrinsicInputsMatch
+                    || !rowAxisSpanStageTraceMatches) {
                 Log.e(TAG, "SPINON_C114_GRID_ASSERTION_ERROR run_id="
                         + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
                         + " expected_root_frame=" + expectedRootFrame
@@ -11283,6 +11301,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + " multi_span_frames_match=" + c114MultiSpanFramesMatch
                         + " text_intrinsic_inputs_match=" + c114TextIntrinsicInputsMatch
                         + " image_intrinsic_inputs_match=" + c114ImageIntrinsicInputsMatch
+                        + " node_frames_match=" + expectedNodeFramesMatch
+                        + " row_axis_span_stage_trace_matches=" + rowAxisSpanStageTraceMatches
                         + " report=" + result);
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치");
                 return;

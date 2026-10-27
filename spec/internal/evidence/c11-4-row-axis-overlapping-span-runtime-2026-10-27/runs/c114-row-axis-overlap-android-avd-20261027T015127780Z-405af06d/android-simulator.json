@@ -1,0 +1,252 @@
+{
+  "complete": true,
+  "target": "android-avd",
+  "runPrefix": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d",
+  "generatedAtUtc": "2026-10-27T01:51:46.241Z",
+  "device": {
+    "serial": "emulator-5554",
+    "avdName": "spinon_api37_1_compat16k",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone16k_arm64",
+    "pageSizeBytes": 16384,
+    "qemu": "1",
+    "screenSize": "Physical size: 1080x2400",
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys"
+  },
+  "apkSha256": "f89d059e6a1f3b5c0c853549ee380308174bed48f7332df3ecb5f41442b1b126",
+  "installedApkSha256": "f89d059e6a1f3b5c0c853549ee380308174bed48f7332df3ecb5f41442b1b126",
+  "build": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "bun",
+      "run",
+      "build:android"
+    ],
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_V8_DIR": "<shared build/v8-source/v8>"
+    },
+    "v8": {
+      "checkout": "<shared build/v8-source/v8>",
+      "requiredRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "actualRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "cleanBeforeBuild": true,
+      "cleanAfterBuild": true
+    },
+    "source": {
+      "commit": "2aaf205f8ba62cf758f8c94f3d9f93333887b77f",
+      "tree": "131e8b300a2d7396b36768f5e2fcef67eeae9407",
+      "trackedDiffSha256": "5bf4e62d2979127d1724601c9d69645769e696954c4569cab2db3168c435d1b2",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md"
+      ],
+      "sourceFileSha256": {
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "2676f01015f2ad663032aa77e4ded9304d45dbfec932cb1b617d6431bf9b2f78",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/row_axis_overlapping_spans.rs": "894b4b69a536d350ba58cefefb9169b16335c3c11a8b569a5d9f0e60b993dfde",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "62b97657ca76172ab787d095ec3f1edbabf132a088bdc81ed60ecbc566c28ca8",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114RowAxisSpanStage.java": "98b125a191a25751a1929c2850dd6074b28dd19487376df0911ed82f0b63ecfb",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "376562af65d5629da8f5d05d99a3950d38602f0589cf188d057b257503b17515",
+        "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json": "41f36065a616783d3534010c9f7df18d721650d367d68f9a14f58e614e5f0cc8",
+        "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md": "c83b6ed2e0f946e74ca82f064a7e44b99e3436b3e63d4655913ce8aa2778b5b1",
+        "tests/fixtures/css/c11/grid-track-sizing-c114-multispan-rows.html": "dd8cbbc9a63fefbf24dad5c78890bfff6161c5fd6ff0ddb947597ec5a4e8e76e"
+      },
+      "sourceFilesSha256": "835b53fa75b8f74752e324a895af11d1830ad83a98141c53611b63f18ae5777e"
+    },
+    "captureScriptSha256": "7f6117a4d29469492ba7739880f9b8ede6703770b5cab8af6cafd52fe892bcd2",
+    "artifactPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "artifactSha256": "f89d059e6a1f3b5c0c853549ee380308174bed48f7332df3ecb5f41442b1b126",
+    "buildLogPath": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/runs/c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d/android-build.log",
+    "buildLogSha256": "22944889c58bf551dd681f5d24ccfccfb6184878ec95f8b2cb46b3dae0c8d0da"
+  },
+  "sourceRevisionAfter": {
+    "commit": "2aaf205f8ba62cf758f8c94f3d9f93333887b77f",
+    "tree": "131e8b300a2d7396b36768f5e2fcef67eeae9407",
+    "trackedDiffSha256": "5bf4e62d2979127d1724601c9d69645769e696954c4569cab2db3168c435d1b2",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md"
+    ],
+    "sourceFileSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "2676f01015f2ad663032aa77e4ded9304d45dbfec932cb1b617d6431bf9b2f78",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/row_axis_overlapping_spans.rs": "894b4b69a536d350ba58cefefb9169b16335c3c11a8b569a5d9f0e60b993dfde",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "62b97657ca76172ab787d095ec3f1edbabf132a088bdc81ed60ecbc566c28ca8",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114RowAxisSpanStage.java": "98b125a191a25751a1929c2850dd6074b28dd19487376df0911ed82f0b63ecfb",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "376562af65d5629da8f5d05d99a3950d38602f0589cf188d057b257503b17515",
+      "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json": "41f36065a616783d3534010c9f7df18d721650d367d68f9a14f58e614e5f0cc8",
+      "spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/README.md": "c83b6ed2e0f946e74ca82f064a7e44b99e3436b3e63d4655913ce8aa2778b5b1",
+      "tests/fixtures/css/c11/grid-track-sizing-c114-multispan-rows.html": "dd8cbbc9a63fefbf24dad5c78890bfff6161c5fd6ff0ddb947597ec5a4e8e76e"
+    },
+    "sourceFilesSha256": "835b53fa75b8f74752e324a895af11d1830ad83a98141c53611b63f18ae5777e"
+  },
+  "rejectedRoutes": [
+    {
+      "label": "unknown-scene",
+      "sceneId": "row-axis-span2-unlisted",
+      "additionalSelectorArguments": [],
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-rejected-unknown-scene",
+      "pid": 18742,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "9e959442abd231b5604416961e26e115d15b627bb6f1083c1dc8fdfe9c7d4fdf",
+      "rejected": true
+    },
+    {
+      "label": "conflicting-c1121-profile",
+      "sceneId": "row-axis-span2-forward",
+      "additionalSelectorArguments": [
+        "--ez",
+        "spinon_c1121_grid_placement",
+        "true"
+      ],
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-rejected-conflicting-c1121-profile",
+      "pid": 18812,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "cf0924ac33eb54e4b683b7787df90933c16cd48ef7da59cc2dc812675d97a76a",
+      "rejected": true
+    }
+  ],
+  "observations": [
+    {
+      "sceneId": "row-axis-span2-forward",
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-0",
+      "status": "passed",
+      "boxCount": 3,
+      "rowTracks": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=220,height=220",
+        "1:node=2,x=0,y=0,width=220,height=80",
+        "2:node=3,x=0,y=40,width=220,height=120"
+      ],
+      "contributions": 6,
+      "traceChunks": 6,
+      "presented": true,
+      "pid": 18852,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "28b4bdf97fcd4a2f20e58168d4284fc2bfcc410e3c78fa9805f578faa7ecdf4f",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{185422399 u0 dev.spinon.bootstrap/.MainActivity t4098}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/runs/c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d/android-row-axis-span2-forward.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "61cd90573609ef02b9842ec5c063e2245c73dee91ce863d658a582c00c8746f4"
+      }
+    },
+    {
+      "sceneId": "row-axis-span2-reversed",
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-1",
+      "status": "passed",
+      "boxCount": 3,
+      "rowTracks": [
+        40,
+        60,
+        60,
+        0
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=220,height=220",
+        "1:node=2,x=0,y=40,width=220,height=120",
+        "2:node=3,x=0,y=0,width=220,height=80"
+      ],
+      "contributions": 6,
+      "traceChunks": 6,
+      "presented": true,
+      "pid": 18923,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "bcabdcb14dd136ead1a9aa4fa1f4aaa5dcd4b27199629feeab404216de15482e",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{52484295 u0 dev.spinon.bootstrap/.MainActivity t4099}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/runs/c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d/android-row-axis-span2-reversed.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "61cd90573609ef02b9842ec5c063e2245c73dee91ce863d658a582c00c8746f4"
+      }
+    },
+    {
+      "sceneId": "row-axis-span2-before-span3",
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-2",
+      "status": "passed",
+      "boxCount": 4,
+      "rowTracks": [
+        53.333333333333336,
+        73.33333333333333,
+        73.33333333333333,
+        0
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=220,height=220",
+        "1:node=2,x=0,y=0,width=220,height=80",
+        "2:node=3,x=0,y=53.333332,width=220,height=120",
+        "3:node=4,x=0,y=0,width=220,height=200"
+      ],
+      "contributions": 9,
+      "traceChunks": 7,
+      "presented": true,
+      "pid": 18989,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "0e19b8610634b8c2fd908d467c414556ae15ddbd1d3e16fa784c3b219e53077e",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{1836030 u0 dev.spinon.bootstrap/.MainActivity t4100}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/runs/c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d/android-row-axis-span2-before-span3.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "66ac432bc74a674f352f97154c4c9ca758b18875a3b528d856109754e662b6bd"
+      }
+    },
+    {
+      "sceneId": "row-axis-span3-before-span2",
+      "runID": "c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d-3",
+      "status": "passed",
+      "boxCount": 4,
+      "rowTracks": [
+        53.333333333333336,
+        73.33333333333333,
+        73.33333333333333,
+        0
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=220,height=220",
+        "1:node=2,x=0,y=0,width=220,height=200",
+        "2:node=3,x=0,y=53.333332,width=220,height=120",
+        "3:node=4,x=0,y=0,width=220,height=80"
+      ],
+      "contributions": 9,
+      "traceChunks": 7,
+      "presented": true,
+      "pid": 19062,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "f04c87ff175baf98bb366ce0101660a6285151a09e6a924bb1cb21bb25bba639",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{177177720 u0 dev.spinon.bootstrap/.MainActivity t4101}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/runs/c114-row-axis-overlap-android-avd-20261027T015127780Z-405af06d/android-row-axis-span3-before-span2.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "1774167ee6262deb73798e82537cfd74764fa8e34df92511c21e8ce9d1c5a94d"
+      }
+    }
+  ],
+  "cleanup": {
+    "action": "force-stop Spinon only",
+    "avdRemainsBooted": true
+  }
+}
