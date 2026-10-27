@@ -53,6 +53,20 @@ Chrome의 `gridTemplateRows` CSSOM 문자열은 소수 넷째 자리까지 직�
 5. focused Rust test, `cargo fmt --all -- --check`, 대상 crate Clippy를 실행한다. 새 product/runtime 코드가 없어 simulator/artifact 결과는 주장하지 않는다.
 6. 구현 직후 새로운 실패 관점 20개로 test 변경을 hostile review하고, 별도 새 30관점으로 구현 PR diff를 검토한다. 이 row-axis 표는 이전 column-axis review 재사용이 아니다. 발견된 수정은 영향을 받는 관점에서 다시 확인한다.
 
+## 2026-10-27 후속 보강 계획: 독립 기대값 JSON을 test matcher에 연결
+
+PR #673의 구현/runtime 검토와 PR diff 검토는 현재 Rust stage 상수와 checked-in `expected.json`의 값이 일치하지만, 양쪽 자료가 기계적으로 연결되지 않는 PARTIAL을 남겼다. 이 보강은 [독립 기대값 JSON](../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json)을 행 축 test의 stage oracle로 직접 읽어 같은 값을 다시 정의하는 drift 경로를 없앤다. HTML, Chrome 관측과 독립 규범 계산은 변경하지 않는다.
+
+- `#[cfg(test)]` 안에서 기존 `serde_json` dev dependency와 `include_str!`를 사용한다. 제품 module, FFI, fixture feature나 새 dependency는 추가하지 않는다.
+- JSON의 axis, track 수, definite block-size, 정확한 네 scene ID, source order, item height contribution, span batch order, Initialize/batch/IntrinsicSizingComplete/MaximizeTracks의 base·growth arrays와 남은 공간을 검증 및 runtime matcher 입력에 사용한다.
+- 유한 stage 값은 JSON 숫자와 `"160/3"` 같은 유리수 문자열을 허용 오차 `1e-4 CSS px`로 비교한다. JSON `null` growth limit은 기존 trace처럼 non-finite 표시로 유지하고 실제 `+∞`라고 세분해 주장하지 않는다.
+- `RowAxisItem`의 HTML row placement와 Chrome final frame 값은 runtime input·독립 Chrome geometry control이다. 규범 기대값 JSON에 없는 이 값들을 JSON과 연결했다고 주장하지 않는다.
+- 기존 Columns test는 기존 기대값을 유지한다. 새 parser/matcher는 네 Rows case에서 기대값 JSON과 불일치한 입력, 누락·중복 scene, 잘못된 array 길이, 미지원 rational 값이면 case와 field를 드러내는 test assertion failure를 내야 한다.
+- 이 순수 Rust test-only 보강은 앱 경로를 바꾸지 않으므로 Android/iOS simulator 실행은 acceptance에 추가하지 않는다. C11.4 상태와 공식 `72/213`은 바꾸지 않는다.
+- 구현 후 이 보강 계획과 JSON 소비 경계는 새 실패 관점 20개로 검토하고, 구현/runtime도 별도의 새 20개 관점, 구현 PR diff는 30개 관점으로 검토한다.
+
+후속 보강 계획 검토 20개: [독립 검토 기록](./c11-4-row-axis-span-stage-json-sync-plan-review-20-2026-10-27.md).
+
 이 test-only slice는 track-sizing product algorithm, CSS admission, 앱 runtime, FFI를 바꾸지 않는다. 행 축의 네 고정 입력에서 기존 trace를 확인한 결과이며, 상위 Stage B의 나머지 stages/inputs, Stage C/D 및 전체 CSS Grid 적합성을 완료하지 않는다. C11.4 체크와 공식 `72/213`은 미완료다.
 
 ## 검토 기록
