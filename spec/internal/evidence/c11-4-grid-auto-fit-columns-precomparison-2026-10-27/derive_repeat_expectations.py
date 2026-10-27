@@ -231,7 +231,7 @@ def main() -> None:
         "normativeReference": "CSS Grid Layout Module Level 1 2025 CRD §7.2.3.2",
         "method": "Use each definite repeated track max sizing function, or its definite min when the max is indefinite; floor a definite max by the min; include fixed prefix/suffix tracks and every inter-track gap. Choose the largest positive count that fits the definite 200px grid-container content box, falling back to one if no positive count fits.",
         "percentRepeatNote": "Case 2 has a definite 200px content box and 13px inline padding on each side. Padding shifts the grid content box origin and enlarges the border box; it does not subtract from the declared 200px content-box width. Thus 30% resolves to 60px, three repeats fit, and the source-authored full-span item is 180px wide.",
-        "emResolutionNote": "Case 32 uses 2em; the pinned Chrome CSSOM observation resolves each such track to 32px, which fixes the WPT UA font-size baseline used by this fixture.",
+        "emResolutionNote": "Case 32 uses 2em; its non-collapsed repeated track is 32px in the pinned Chrome CSSOM observation, fixing the 16px inherited WPT font-size basis for this fixture. The corresponding case 33 track collapses under auto-fit and is not used to infer the em basis.",
         "cases": cases,
     }
     print(json.dumps(result, indent=2, ensure_ascii=False) + "\n", end="")
