@@ -18,7 +18,7 @@
 | `cargo clippy --locked -p spinon-layout --all-targets -- -D warnings` | 통과 | [clippy.log](./clippy.log) |
 | `git diff --check --cached` | 통과 | [diff-check.log](./diff-check.log) |
 
-검증 기준 commit은 [validation-base.txt](./validation-base.txt)에, 수정 Rust 파일과 기대 JSON의 SHA-256은 [source-sha256.txt](./source-sha256.txt)에 기록했다. 구현 실패 관점 검토 20개는 [implementation-review-20.md](./implementation-review-20.md)에 있다. [PR #685](https://github.com/ohah/spinon/pull/685) 전체 diff 검토는 [30 PASS / 0 PARTIAL](./pr-diff-review-30.md)이다. PR 상태 조회 시 GitHub check rollup은 비어 있었으며 이를 CI 통과로 간주하지 않았다. 병합은 아직 확인되지 않았다.
+검증 기준 commit은 [validation-base.txt](./validation-base.txt)에, 수정 Rust 파일과 기대 JSON의 SHA-256은 [source-sha256.txt](./source-sha256.txt)에 기록했다. 구현 실패 관점 검토 20개는 [implementation-review-20.md](./implementation-review-20.md)에 있다. [PR #685](https://github.com/ohah/spinon/pull/685) 전체 diff 검토는 [30 PASS / 0 PARTIAL](./pr-diff-review-30.md)이다. PR check rollup은 비어 있었고 main required status checks도 설정되어 있지 않았다. PR #685는 2026-10-27T06:47:54Z Rebase and merge됐으며 merge SHA는 `c66dbf6344f596859707b3cca7811846a64493fb`다. 이 병합 상태 문서는 [30관점으로 대조](./postmerge-sync-review-30.md)했다.
 
 ## 한계
 
