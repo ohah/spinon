@@ -6,7 +6,7 @@
 
 **사전 비교:** [Chrome 156 관측과 독립 기대값](../spec/internal/evidence/c11-4-generic-mixed-row-axis-precomparison-2026-10-28/README.md) · [현재 Agent Browser 관측](../spec/internal/evidence/c11-4-generic-mixed-row-axis-precomparison-2026-10-28/agent-browser-observation-2026-10-28.json) · [고정 기대값](../spec/internal/evidence/c11-4-generic-mixed-row-axis-precomparison-2026-10-28/expected.json)
 
-**상태:** 계획 candidate. 이 row-axis 입력의 fixed-ID runtime 검증은 완료됐지만, 새 HostNode ID를 쓰는 generic mixed row adapter 계획은 이전에 없었다. 이 문서는 계획만 세운다. C11.4 상위 체크와 공식 `72/213`을 변경하지 않는다.
+**상태:** 구현 검증 완료, 구현 PR 검토 대기. Fixed-ID row slice 이후 새 HostNode ID를 쓰는 generic mixed row adapter를 추가했다. Android/iOS Simulator 각 16/16 scene과 feature-gated runtime/FFI 검증을 마쳤지만, 이 제한 slice는 C11.4 완료를 뜻하지 않는다. 상위 체크와 공식 `72/213`은 유지한다. [실행 근거](../spec/internal/evidence/c11-4-generic-mixed-row-axis-runtime-2026-10-28/README.md), [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-generic-mixed-row-axis-runtime-2026-10-28/implementation-runtime-review-20.md), [PR diff 검토 30개](../spec/internal/evidence/c11-4-generic-mixed-row-axis-runtime-2026-10-28/pr-diff-review-30.md).
 
 ## 목적과 검증 범위
 
