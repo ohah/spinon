@@ -1,14 +1,14 @@
 # C11.4 · CSS Grid track sizing 계획
 
-**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. `min-height` 아래 `fit-content()` 행의 제한 opt-in runtime slice는 [PR #699](https://github.com/ohah/spinon/pull/699)로 병합됐으며, 아래 기록에 실행 범위와 한계를 적었다. 이 slice는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
+**현재 상태 · 2026-10-28:** 활성 lane은 C11.4이고 상위 체크는 미완료다. 공식 집계는 `72/213`이다. 제한 opt-in slices [#683](https://github.com/ohah/spinon/pull/683), [#691](https://github.com/ohah/spinon/pull/691), [#695](https://github.com/ohah/spinon/pull/695), [#699](https://github.com/ohah/spinon/pull/699)가 각각 병합됐으며, 아래 기록에서 별도 WPT 입력·실행 범위·한계를 구분한다. 이 slices는 일반 CSS admission이나 C11.4 전체 완료로 승격하지 않는다. 아래 날짜별 기록의 다른 집계는 각 기록 시점의 스냅샷이며 현재 집계가 아니다. [코드·로드맵 재대조](../spec/internal/evidence/c11-4-code-roadmap-sync-2026-10-24/README.md).
 
 ## 2026-10-28 definite `min-height` 아래 fit-content row runtime slice · PR #699 병합
 
 Pinned WPT `fit-content-track-sizing.html` 두 번째 assertion을 위해 `height:auto; min-height:300px`인 Grid의 유일한 `fit-content(40px)` implicit row가 `10px`에 머무는 opt-in slice를 구현했다. PR [#699](https://github.com/ohah/spinon/pull/699)은 2026-10-27T16:47:03Z에 Rebase and merge됐다(merge SHA `d31201de4a46fca406791fcb5d7143ce1eb65f50`). Rust oracle·runtime adapter·FFI allowlist와 fixture-module boundary 검사를 통과했고, Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 root `60×300px`, row/item/child `10px`, draw/presentation, 플랫폼별 3 pixel samples를 확인했다. GitHub status check은 보고되지 않아 CI 통과로 간주하지 않는다. [집중 계획](./c11-4-fit-content-min-height-wpt.md) · [독립 기대값과 Agent Browser 사전 비교](../spec/internal/evidence/c11-4-fit-content-min-height-precomparison-2026-10-28/README.md) · [runtime 근거](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/README.md) · [구현/runtime 경계 검토](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/implementation-review-20.md) · [PR diff 검토](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/pr-diff-review-30.md) · [계획 검토 20개](./c11-4-fit-content-min-height-plan-review-20.md) · [계획 PR diff 검토 20개](./c11-4-fit-content-min-height-pr-diff-review-20.md). 일반 CSS admission, 전체 WPT와 C11.4는 여전히 미완료이며 상위 checkbox와 공식 `72/213`은 유지한다.
 
-## 2026-10-27 auto-repeat intrinsic-size 변화 재계산 계획
+## 2026-10-27 auto-repeat intrinsic-size 변화 재계산 runtime slice · PR #683 병합
 
-WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 8단계 변화를 같은 HostDocument·node identity·증가하는 document/style revision으로 처리하는 opt-in runtime fixture를 계획했다. Chrome/WPT oracle과 독립 기대값, 고정 source hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-grid-change-intrinsic-auto-repeat-precomparison-2026-10-27/README.md)에 있다. [집중 계획](./c11-4-auto-repeat-intrinsic-recompute.md)과 [계획 실패 관점 20개](./c11-4-auto-repeat-intrinsic-recompute-plan-review-20.md)를 참조한다. 계획 단계이며 C11.4 체크와 공식 `72/213`은 유지한다.
+WPT `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html`의 8단계 변화를 같은 `HostDocument`와 여섯 node handle로 순서대로 처리하는 opt-in runtime fixture를 구현했다. Rust sequence는 generation 유지, document/render-tree/style revision 진행, dirty-root invalidation, 최종 tracks와 item/probe geometry를 8/8 확인했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 각 8/8 고정 scene을 통과했다. 앱 scene은 같은 문서 안의 mutation sequence 증거로 세지 않는다. PR [#683](https://github.com/ohah/spinon/pull/683)은 2026-10-27T05:54:04Z Rebase and merge됐다(merge SHA `83df2c59dd63d83b53ff68f8a4717e0fae5b841e`). GitHub check rollup은 비어 있어 CI 통과로 간주하지 않는다. [집중 계획](./c11-4-auto-repeat-intrinsic-recompute.md) · [사전 비교](../spec/internal/evidence/c11-4-grid-change-intrinsic-auto-repeat-precomparison-2026-10-27/README.md) · [runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-intrinsic-recompute-runtime-2026-10-27/README.md) · [구현/runtime 검토](../spec/internal/evidence/c11-4-auto-repeat-intrinsic-recompute-runtime-2026-10-27/implementation-runtime-review-20.md) · [PR diff 검토](../spec/internal/evidence/c11-4-auto-repeat-intrinsic-recompute-runtime-2026-10-27/pr-diff-review-30.md). 일반 CSS admission, 전체 WPT와 C11.4는 미완료이며 checkbox와 공식 `72/213`은 유지한다.
 
 ## 2026-10-27 fit-content 옆 auto implicit row 앱 runtime slice · PR #664 병합
 
@@ -199,15 +199,15 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 | --- | --- |
 | `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, auto row 및 implicit column |
 | `grid-layout-auto-tracks.html` | auto track의 item contribution과 intrinsic sizing 상호작용 |
-| `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | intrinsic inline-size 변경 시 반복 수 및 auto-fit 재배치 |
-| `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size에서 auto-fill/auto-fit 반복 재계산 ([집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
-| `grid-auto-fit-columns-001.html` | definite auto-fit, minmax/fixed repeat, line names, repeat 전·후의 fixed tracks ([전체 35-scene 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [Chrome/WPT 사전 비교](../spec/internal/evidence/c11-4-grid-auto-fit-columns-precomparison-2026-10-27/README.md)) |
+| `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | 같은 `HostDocument`에서 intrinsic inline-size를 바꾼 8단계 재계산 (제한 runtime PR [#683](https://github.com/ohah/spinon/pull/683) 병합) |
+| `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size의 auto-fill/auto-fit 8-scene 행렬 (제한 runtime PR [#691](https://github.com/ohah/spinon/pull/691) 병합 · [집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
+| `grid-auto-fit-columns-001.html` | definite auto-fit, minmax/fixed repeat, line names, repeat 전·후의 fixed tracks (35-scene 제한 runtime PR [#695](https://github.com/ohah/spinon/pull/695) 병합 · [집중 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [실행 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/README.md)) |
 
-이 목록은 고정 출처와 추후 실행 후보이며, Spinon이 이미 실행했거나 통과했다는 뜻이 아니다. 구현 시 각 upstream test의 `testharness` assertion, helper/reference 의존성, 적용 가능한 runtime profile을 먼저 확인한다. 일부 WPT를 실행한 결과를 전체 CSS Grid 적합성으로 확대하지 않는다.
+이 목록은 pinned source별 계획·제한 runtime 구현 상태를 연결한다. 일부 행의 제한 fixture 구현은 해당 WPT 파일 전체나 WPT harness의 Spinon 통과를 뜻하지 않는다. 남은 후보는 upstream assertion, helper/reference 의존성, 기존 runtime profile을 확인한 뒤 별도 계획한다. 일부 WPT 결과를 전체 CSS Grid 적합성으로 확대하지 않는다.
 
-2026-10-27 전체 `grid-auto-fit-columns-001.html` source harness 35/35 Chrome observation을 기록했다. 이는 Spinon runtime 실행이 아니며 35개 전부를 별도 [고정 scene 계획](./c11-4-grid-auto-fit-columns-wpt.md)으로 연결한다.
+2026-10-27 `grid-auto-fit-columns-001.html`의 Chrome source harness는 35/35였다. 이후 PR #695의 제한 runtime fixture도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 35/35 scene을 확인했고, 여섯 overflow scene의 PixelCopy 및 compositor 제출 전 Metal 표본은 각 24/24 exact였다. 두 결과는 구분된 근거이며 WPT harness의 Spinon pass가 아니다. [고정 scene 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [runtime 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/README.md).
 
-별도 독립 후보로 [`fit-content-track-sizing.html`의 `fit-content(40px)`·인접 `auto` implicit row assertion](./c11-4-fit-content-auto-neighbor-wpt.md)을 계획했다. CSS Grid 2025 CRD §6.6/§12.2/§12.4–§12.8에서 독립 도출한 expected rows는 `[10px, 290px]`; 계획과 Chrome 사전 관측은 WPT testharness pass나 구현 완료가 아니다. 현재 다음 전체 WPT slice는 35-scene [`grid-auto-fit-columns-001.html` 계획](./c11-4-grid-auto-fit-columns-wpt.md)이며 더 작은 대체 입력으로 범위를 줄이지 않는다. C11.4 공식 상태는 그대로 미완료다.
+`fit-content-track-sizing.html`의 마지막 `fit-content(40px) auto` assertion은 [PR #664](https://github.com/ohah/spinon/pull/664)의 제한 runtime slice로, 두 번째 `height:auto; min-height:300px` assertion은 PR #699로 각각 구현했다. 이들은 서로 다른 고정 입력이며 전체 WPT 실행은 아니다. 위 목록의 남은 후보 중 `grid-layout-auto-tracks.html`은 auto track과 item contribution 상호작용을 계획할 수 있지만, 아직 이 문서에서 구현 완료로 기록하지 않는다. 전체 C11.4와 공식 상태는 미완료다.
 
 ## Rust·앱 검증과 증거 경계
 
