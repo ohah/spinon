@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [generic direct-text collector](./c11-4-generic-direct-text-intrinsic-input.md) · [6-scene app matrix](./c11-4-generic-direct-text-runtime-matrix.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태 · 2026-10-28:** 계획 PR #705 병합 뒤 같은 checkout에서 순차적으로 검증했다. `TEXT_CASES` 13개 모두 generic collector 및 선행 specialized adapters가 `None`을 반환하고, full `c11_4_text::prepare`가 legacy fallback으로 Ahem intrinsic input을 준비하는지 확인했다. Unknown root/item ID, 변경 text, extra direct item, 잘못된 typed track은 별도 negative test에서 거부된다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 각각 13/13 scene을 통과했다. 상세한 화면·로그·source hash는 [runtime evidence](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/README.md)에 있다. 구현 PR [#706](https://github.com/ohah/spinon/pull/706)은 열려 있으며 확인 시점 GitHub check rollup은 비어 있다. Product behavior는 바꾸지 않았고 C11.4 checkbox와 공식 `72/213`은 유지한다.
+**상태 · 2026-10-28:** 계획 PR #705 병합 뒤 같은 checkout에서 순차적으로 검증했다. `TEXT_CASES` 13개 모두 generic collector 및 선행 specialized adapters가 `None`을 반환하고, full `c11_4_text::prepare`가 legacy fallback으로 Ahem intrinsic input을 준비하는지 확인했다. Unknown root/item ID, 변경 text, extra direct item, 잘못된 typed track은 별도 negative test에서 거부된다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator는 각각 13/13 scene을 통과했다. 상세한 화면·로그·source hash는 [runtime evidence](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/README.md)에 있다. 구현 PR [#706](https://github.com/ohah/spinon/pull/706)은 2026-10-27T18:17:27Z Rebase and merge됐고 merge SHA는 `440359c89593047aae5ab8914573568a5a037568`이다. 병합 시 GitHub check rollup은 비어 있어 CI 통과로 기록하지 않는다. Product behavior는 바꾸지 않았고 C11.4 checkbox와 공식 `72/213`은 유지한다.
 
 ## 목표와 범위
 
@@ -61,7 +61,7 @@ Generic direct-text collector가 아직의 제한 계약대로 one-item legacy s
 - Fixture-test Android/iOS builds는 모두 성공했다. pass03은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 13/13 실행했다. 현재 run ID의 scene summary 뒤 draw/present가 오는 것까지 확인했다.
 - pass01의 3-box 기대값 오류는 runner 문제로 기록하고 수정했다. pass03은 stale iOS draw가 current scene 성공으로 계산되지 않도록 보강한 뒤 다시 전체 실행했다.
 - App runtime source commit은 `5df6da56`; 그 뒤 `7af1322f`는 Rust negative test만 추가했으며 app runtime source는 바꾸지 않았다. Screenshots는 layout box/surface만 보이고 glyph paint는 입증하지 않는다.
-- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/pr-diff-review-30.md)를 기록했다. 구현 PR [#706](https://github.com/ohah/spinon/pull/706)이 열려 있으며 확인 시점 GitHub check rollup은 비어 있다.
+- [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-generic-direct-text-legacy-fallback-runtime-2026-10-28/pr-diff-review-30.md)를 기록했다. 구현 PR [#706](https://github.com/ohah/spinon/pull/706)은 Rebase and merge됐다.
 
 ## 근거
 
