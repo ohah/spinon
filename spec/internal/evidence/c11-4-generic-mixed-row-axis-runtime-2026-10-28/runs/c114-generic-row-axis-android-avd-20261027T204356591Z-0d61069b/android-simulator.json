@@ -1,0 +1,454 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "avdName": "spinon_api37_1_compat16k",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "pageSizeBytes": 16384,
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "qemu": "1",
+  "buildProvenance": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "bun",
+      "run",
+      "build:android"
+    ],
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": "1"
+    },
+    "source": {
+      "commit": "0c89ffcd5043ce093bac8e4a1dfadeac062ff3c1",
+      "tree": "c529b9006e573f81263bd6565ffe5dfa32952174",
+      "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "trackedDirtyPaths": [],
+      "sourceFileSha256": {
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "29cac88d9a62add21458b134bb1d01508b457d6abd0e8cc129c31e1ed8d1afe1",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "2999a0d19cbe2cf180cc465289184a7ef29804019be015455737737204376935",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs": "68546ca37aa6ab3604ad78b5ba0fd2ee24c8eeba80f37ece2dda608412e35334",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs": "2f10c393c40563b23dde98130a93e334349e6966c085c3784521a9b3c6927ae0",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_intrinsic.rs": "5c9bf3a4a680a25dd7325b566831428bcf2140913ddd296fa29dd64230a8b570",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_row_axis.rs": "b83f7ec0f0776dd3180764dd062120f9a96db740c525738cc605d79da038da74",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "457369ddb195fb012d8510297d8a4d052a65586f331a4d2bfb91651d9a8e95f4",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "eacd51301eb74be89ba65a34e1565f685e69785f81e271f2ac3bf601650f4fb9",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "9781aa23a28f505fe144592ccf4e1d831e653949725abd966c3de7fd152c08fb",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis/fixture.rs": "c53ef95ca296004559db5bbc2d05c0bb98f3f15dce755547ec36dc6e1eee3e5f",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis/tests.rs": "dbea9fad68e2922b2b204e723a7628013f0cc0d8b96881fb9b20abaa5dfd6b49",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/tests.rs": "54351f73cd858098115e41b5c03496aac82e273aca9a7ffc089f50789ff5fa20",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "6e3a54d5441f8abc4fd9b2c3fa54ce4612cdc7682192c7a3cb76b2e6aba57ea6",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "585600f3285dc9f351f08ac0e29923aa2285be2301ac111b2c9013251be5b440",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "0a8b826912fbf2a3bdd65f0ab49afdca8d9c5874bced4224a8f99abad2dd8fcd"
+      },
+      "sourceFilesSha256": "633dac5eb81044b06cb11bfcfbf217c9a82e7247d4b9131669b4ccfa4cc5fed4"
+    },
+    "captureScript": {
+      "path": "spec/internal/evidence/c11-4-generic-mixed-row-axis-runtime-2026-10-28/capture-generic-row-axis.mjs",
+      "sha256": "f2fd13e343367017f32d5d7e957a1c698cd7bd46007571bbb653365c94af565d"
+    },
+    "artifactPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "artifactSha256": "99d0b947494d7fe5b0258d51b9599108b7371001f06ac1144ad6fccc90174f86",
+    "buildLogPath": "spec/internal/evidence/c11-4-generic-mixed-row-axis-runtime-2026-10-28/runs/c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b/android-build.log",
+    "buildLogSha256": "6c0c433e17624f8b39c1becd0d833e1ed1bed7bf44a1b064ea0327ea1f6e1c40"
+  },
+  "apkSha256": "99d0b947494d7fe5b0258d51b9599108b7371001f06ac1144ad6fccc90174f86",
+  "installedApkSha256": "99d0b947494d7fe5b0258d51b9599108b7371001f06ac1144ad6fccc90174f86",
+  "screenshotScenes": [
+    "direct-row-min-content-generic-forward",
+    "direct-row-max-content-generic-reversed"
+  ],
+  "sourceRevision": {
+    "commit": "0c89ffcd5043ce093bac8e4a1dfadeac062ff3c1",
+    "tree": "c529b9006e573f81263bd6565ffe5dfa32952174",
+    "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trackedDirtyPaths": [],
+    "sourceFileSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "29cac88d9a62add21458b134bb1d01508b457d6abd0e8cc129c31e1ed8d1afe1",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "2999a0d19cbe2cf180cc465289184a7ef29804019be015455737737204376935",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs": "68546ca37aa6ab3604ad78b5ba0fd2ee24c8eeba80f37ece2dda608412e35334",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic_rows.rs": "2f10c393c40563b23dde98130a93e334349e6966c085c3784521a9b3c6927ae0",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_intrinsic.rs": "5c9bf3a4a680a25dd7325b566831428bcf2140913ddd296fa29dd64230a8b570",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_row_axis.rs": "b83f7ec0f0776dd3180764dd062120f9a96db740c525738cc605d79da038da74",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "457369ddb195fb012d8510297d8a4d052a65586f331a4d2bfb91651d9a8e95f4",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "eacd51301eb74be89ba65a34e1565f685e69785f81e271f2ac3bf601650f4fb9",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "9781aa23a28f505fe144592ccf4e1d831e653949725abd966c3de7fd152c08fb",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis/fixture.rs": "c53ef95ca296004559db5bbc2d05c0bb98f3f15dce755547ec36dc6e1eee3e5f",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis/tests.rs": "dbea9fad68e2922b2b204e723a7628013f0cc0d8b96881fb9b20abaa5dfd6b49",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/tests.rs": "54351f73cd858098115e41b5c03496aac82e273aca9a7ffc089f50789ff5fa20",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "6e3a54d5441f8abc4fd9b2c3fa54ce4612cdc7682192c7a3cb76b2e6aba57ea6",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "585600f3285dc9f351f08ac0e29923aa2285be2301ac111b2c9013251be5b440",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "0a8b826912fbf2a3bdd65f0ab49afdca8d9c5874bced4224a8f99abad2dd8fcd"
+    },
+    "sourceFilesSha256": "633dac5eb81044b06cb11bfcfbf217c9a82e7247d4b9131669b4ccfa4cc5fed4"
+  },
+  "observations": [
+    {
+      "sceneId": "direct-min-content-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-0",
+      "columns": [
+        50
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{166033167 u0 dev.spinon.bootstrap/.MainActivity t4506}",
+      "runtimeLogSha256": "404d1e1d2d32486f091066e3709779828b407bb0ca821eaf0a399b929e6faabb"
+    },
+    {
+      "sceneId": "direct-max-content-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-1",
+      "columns": [
+        80
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=80,height=10",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{260362351 u0 dev.spinon.bootstrap/.MainActivity t4507}",
+      "runtimeLogSha256": "eab7b77b2d51015ae453c5d4260c15624d22496fe10f01c1014d676fbdf8fed9"
+    },
+    {
+      "sceneId": "direct-row-min-content-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-2",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{99142457 u0 dev.spinon.bootstrap/.MainActivity t4508}",
+      "runtimeLogSha256": "490788f481ae8a84aa3b0a23e78e7186785400eabd89fb64e50360f57fc3ebae"
+    },
+    {
+      "sceneId": "direct-row-max-content-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-3",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{87546185 u0 dev.spinon.bootstrap/.MainActivity t4509}",
+      "runtimeLogSha256": "ffc1227ac0010783eab1c07995ef04e447d9f1e4c7ba77583a3841c061f2b405"
+    },
+    {
+      "sceneId": "direct-min-content-generic-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-4",
+      "columns": [
+        50
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{116286219 u0 dev.spinon.bootstrap/.MainActivity t4510}",
+      "runtimeLogSha256": "5636c889c61ba13947b3b677133d5b256d444e5d7cdc134cf80b52487b6ce776"
+    },
+    {
+      "sceneId": "direct-max-content-generic-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-5",
+      "columns": [
+        80
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=80,height=10",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{34988100 u0 dev.spinon.bootstrap/.MainActivity t4511}",
+      "runtimeLogSha256": "a6130f8f38dffa95a08a5ee8e9804e937d6bfbfb5496ade3f8223170c8718e0e"
+    },
+    {
+      "sceneId": "direct-row-min-content-generic-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-6",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{157035265 u0 dev.spinon.bootstrap/.MainActivity t4512}",
+      "runtimeLogSha256": "887fbb63da491c8d9ca74bd8722254dcadd2b748b6d2f6f852534edaa4fa7ee3",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "screenshotSha256": "41800a137fe5964e0767a480fe064d48e75712d1164b8aa749e284ca0e2e9839"
+    },
+    {
+      "sceneId": "direct-row-max-content-generic-forward",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-7",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=50,y=0,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{172352228 u0 dev.spinon.bootstrap/.MainActivity t4513}",
+      "runtimeLogSha256": "0c1ca3e995f7d6f5799b05bdbc9cf99e887dbc30c0fc7abdce56c206ad5d612e"
+    },
+    {
+      "sceneId": "direct-min-content-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-8",
+      "columns": [
+        50
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{265061572 u0 dev.spinon.bootstrap/.MainActivity t4514}",
+      "runtimeLogSha256": "bb5d76a664ff9daa07e89986884da8dc63bae7bceab5f17f2f05ee68c42a2d36"
+    },
+    {
+      "sceneId": "direct-max-content-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-9",
+      "columns": [
+        80
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=80,height=10"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{263313792 u0 dev.spinon.bootstrap/.MainActivity t4515}",
+      "runtimeLogSha256": "ab1b07fcea3d3a99fce9f7b117c745e2a81568d138514c4f84fdbcdbe7d23b1b"
+    },
+    {
+      "sceneId": "direct-row-min-content-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-10",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{169376283 u0 dev.spinon.bootstrap/.MainActivity t4516}",
+      "runtimeLogSha256": "4a9034ac942e4e830d1b0a361b7e7b231403f9d8bb24f79ef70662566f950f2e"
+    },
+    {
+      "sceneId": "direct-row-max-content-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-11",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{244181858 u0 dev.spinon.bootstrap/.MainActivity t4517}",
+      "runtimeLogSha256": "5f42cb14c74f7fab80193db09d7d9db10c1a80f2820f756d24c1364ae124f087"
+    },
+    {
+      "sceneId": "direct-min-content-generic-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-12",
+      "columns": [
+        50
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{19807962 u0 dev.spinon.bootstrap/.MainActivity t4518}",
+      "runtimeLogSha256": "c0dbda06bc95f4e84a5e835f2006fdee07755343118cf641aeb43271174df877"
+    },
+    {
+      "sceneId": "direct-max-content-generic-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-13",
+      "columns": [
+        80
+      ],
+      "rows": [
+        24,
+        24
+      ],
+      "intrinsicSizingAxis": "column",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=80,height=10"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{98424909 u0 dev.spinon.bootstrap/.MainActivity t4519}",
+      "runtimeLogSha256": "a9b0a9fbf92f5d707866e95d962d7fa05c9ea318ebf1279b30d54052eeef7e3a"
+    },
+    {
+      "sceneId": "direct-row-min-content-generic-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-14",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{21442548 u0 dev.spinon.bootstrap/.MainActivity t4520}",
+      "runtimeLogSha256": "f68e07471eeeddd9993e90afff3ea4774cb73bca6c82ca31da1d5edae68aca7d"
+    },
+    {
+      "sceneId": "direct-row-max-content-generic-reversed",
+      "runID": "c114-generic-row-axis-android-avd-20261027T204356591Z-0d61069b-15",
+      "columns": [
+        50,
+        24
+      ],
+      "rows": [
+        20
+      ],
+      "intrinsicSizingAxis": "row",
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=74,height=20",
+        "1:node=2,x=50,y=0,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 6,
+      "drawPresented": true,
+      "foregroundActivity": "topResumedActivity=ActivityRecord{244252145 u0 dev.spinon.bootstrap/.MainActivity t4521}",
+      "runtimeLogSha256": "1a3bef32976091416e901ee76a10243189c31749b65e0f7a84b695270be91ebf",
+      "screenshotPixels": {
+        "width": 1080,
+        "height": 2400
+      },
+      "screenshotSha256": "a815692b1b3d145e8bb0d0c0aebcb2bd4a7a9b1d28498a0da44dd84a676f336e"
+    }
+  ]
+}

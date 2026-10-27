@@ -1,0 +1,3 @@
+PASS: all four generic mixed row-axis scene IDs are absent from the default spinon-ffi archive
+PASS: all four generic mixed row-axis scene IDs are present in the opt-in c04-runtime-gpu-fixture-test archive
+Scope: Rust static archive only; this does not establish fixture exclusion from release APK or IPA bundles.
