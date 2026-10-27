@@ -1,0 +1,30 @@
+{
+  "sourceHead": "d298fd61aca3afe795623d4356010c3c2003fb92",
+  "sourcePath": "spec/public/roadmap.html",
+  "sourceBytes": 336731,
+  "sourceSha256": "4a721943e14fb742459925f0eadbdff4c57d0f312282042ce9a1ed09f8f8b9a7",
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr675-2026-10-27/pass01/roadmap.html",
+  "backupBytes": 333951,
+  "backupSha256": "47f5c3429e08773ce5caa0824618f26e93e7dfd49a6dafce181e52ca4a5383b0",
+  "replacement": "same-directory atomic rename after byte-exact backup",
+  "replacedRoutes": [
+    "roadmap.html"
+  ],
+  "otherRoutesChanged": false,
+  "filesDeleted": false,
+  "previewServerRestarted": false,
+  "persistentReadHandle": "preview server retains one read descriptor to the old inode; no client TCP connection was active; each GET re-stats and opens the route by pathname",
+  "localRouteAfter": {
+    "status": 200,
+    "bytes": 336731,
+    "sha256": "4a721943e14fb742459925f0eadbdff4c57d0f312282042ce9a1ed09f8f8b9a7"
+  },
+  "tailnetRouteAfter": {
+    "status": 200,
+    "bytes": 336731,
+    "sha256": "4a721943e14fb742459925f0eadbdff4c57d0f312282042ce9a1ed09f8f8b9a7"
+  },
+  "allRoutesHttp200": true,
+  "allRouteHashesMatch": true
+}
