@@ -1,12 +1,12 @@
 {
   "pass": "pass01",
-  "sourceHead": "7ccdc231715b37f1800c2edbaa81ed291351693e",
-  "sourceTree": "2988b92d0b15fbf238941ed20b770851b1d46427",
-  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr721-20261028-imagefix-pass04-root",
-  "outputRoot": "build/spinon/roadmap-tailnet-sync-pr721-20261028-imagefix-pass04-site",
-  "sourceCount": 73,
-  "routeCount": 146,
-  "stagedBytes": 5242125,
+  "sourceHead": "5d2ec5a5f2fbf4afd5d6bbec06353ad17d2e105b",
+  "sourceTree": "9ed72d4666b3a3efa3bf4ebfe1c15a4bb35eaa22",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr721-20261028-imagefix-pass05-root",
+  "outputRoot": "build/spinon/roadmap-tailnet-sync-pr721-20261028-imagefix-pass05-site",
+  "sourceCount": 78,
+  "routeCount": 156,
+  "stagedBytes": 5401071,
   "staged": [
     {
       "source": "plan/c11-4-flex-stage-oracle.md",
@@ -143,14 +143,14 @@
     {
       "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md",
       "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md",
-      "bytes": 5992,
-      "sha256": "daa87ae530f873e8ac75b286f9dfee972a0ea6ff55f8a14da653c639160963df"
+      "bytes": 6276,
+      "sha256": "95782aaff8db07cb3f682d152703d39c31404886053d92999c5b495988d3f0a0"
     },
     {
       "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md",
       "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md",
-      "bytes": 5992,
-      "sha256": "daa87ae530f873e8ac75b286f9dfee972a0ea6ff55f8a14da653c639160963df"
+      "bytes": 6276,
+      "sha256": "95782aaff8db07cb3f682d152703d39c31404886053d92999c5b495988d3f0a0"
     },
     {
       "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/artifact-boundary.json",
@@ -259,6 +259,66 @@
       "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/pr-diff-review-30.md",
       "bytes": 8119,
       "sha256": "911b0aea94e4f980422a40b750c27e23020b31c5296d64b40ff246e4b92e250d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-path-review-30.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-path-review-30.md",
+      "bytes": 6095,
+      "sha256": "915b279efb2c5cc0316b57632b8e34ffebbc4a27ee84e9b73885426aa7fa0c39"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-path-review-30.md",
+      "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-path-review-30.md",
+      "bytes": 6095,
+      "sha256": "915b279efb2c5cc0316b57632b8e34ffebbc4a27ee84e9b73885426aa7fa0c39"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.json",
+      "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.json",
+      "bytes": 3177,
+      "sha256": "716516b41b1e254b9cfd4a39550c054322b9a87179d6e5524a55340ef5083dc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.json",
+      "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.json",
+      "bytes": 3177,
+      "sha256": "716516b41b1e254b9cfd4a39550c054322b9a87179d6e5524a55340ef5083dc0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.md",
+      "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.md",
+      "bytes": 1231,
+      "sha256": "886cd8c544cd4b485fdd9eb54a621a9392d2d455916875d3c1a2d48486c7d10b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.md",
+      "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-2026-10-28.md",
+      "bytes": 1231,
+      "sha256": "886cd8c544cd4b485fdd9eb54a621a9392d2d455916875d3c1a2d48486c7d10b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-build.log",
+      "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-build.log",
+      "bytes": 10690,
+      "sha256": "4b28e7928969e4a75aca85ee540c9d2e4a3dd20b7c2d9c456f674fb2e2d861f7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-build.log",
+      "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-build.log",
+      "bytes": 10690,
+      "sha256": "4b28e7928969e4a75aca85ee540c9d2e4a3dd20b7c2d9c456f674fb2e2d861f7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-source.json",
+      "path": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-source.json",
+      "bytes": 57996,
+      "sha256": "08ec0978f2deb07699116965579c36c518483de2e06356b612b0afa4ddf943fc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-source.json",
+      "path": "internal/evidence/c11-4-flex-stage-runtime-2026-10-28/rspress-image-resolution-source.json",
+      "bytes": 57996,
+      "sha256": "08ec0978f2deb07699116965579c36c518483de2e06356b612b0afa4ddf943fc"
     },
     {
       "source": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-build.log",
