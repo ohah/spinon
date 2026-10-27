@@ -566,6 +566,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-intrinsic-fit-auto-min",
 ]
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
+    #endif
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
     if sceneID.hasPrefix("template-area-repeat-cross-axis-") {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
@@ -1080,6 +1083,9 @@ private func c114RowAxisSpanExpectedNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if C114GridAutoFitColumnsWpt.isScene(sceneID) {
+        return C114GridAutoFitColumnsWpt.nodeFramesMatch(sceneID: sceneID, report: report)
+    }
     if c114RowAxisSpanStageSceneIDs.contains(sceneID) {
         return c114RowAxisSpanNodeFramesMatch(sceneID, report: report)
     }
@@ -1400,6 +1406,7 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let frame = C114GridAutoFitColumnsWpt.expectedRootFrame(sceneID) { return frame }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
         return "width=\(intrinsicWpt[0]),height=\(intrinsicWpt[1])"
     }
@@ -1710,6 +1717,7 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if C114GridAutoFitColumnsWpt.isScene(sceneID) { return "" }
     if c114GridAutoRepeatIntrinsicWptState(sceneID) != nil {
         return "width=100,height=20"
     }
@@ -6840,6 +6848,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
         return 2 + [4, 6, 8, 10].filter { intrinsicWpt[$0] > 0 }.count
     }
@@ -7673,6 +7682,16 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneID: sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = c114GridAutoRepeatIntrinsicWptPixelSamples(sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
@@ -8558,6 +8577,10 @@ private struct C111MetalPixelRun {
             guard let c1121Scene, c1121PixelSceneIDs.contains(c1121Scene),
                   c1121Scene == sceneID else { return nil }
         }
+        let c114PixelSceneHasSurfaceSamples = c114Scene.map {
+            C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneID: $0) != nil
+        } ?? false
+        let c114PixelViewportWidth: UInt32 = c114PixelSceneHasSurfaceSamples ? 480 : 320
         guard (8...128).contains(runID.count),
               runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }),
               (1...16_384).contains(encoded.count),
@@ -8569,7 +8592,7 @@ private struct C111MetalPixelRun {
               samples.allSatisfy({ sample in
                   sample.id.range(of: "^[a-z0-9-]{1,128}$", options: .regularExpression) != nil
                       && sample.nodeId.range(of: "^[a-zA-Z0-9_-]{1,128}$", options: .regularExpression) != nil
-                      && sample.xCssPx < 320 && sample.yCssPx < 240
+                      && sample.xCssPx < c114PixelViewportWidth && sample.yCssPx < 240
                       && sample.rgba.count == 4 && sample.rgba.allSatisfy({ $0 <= 255 })
               }) else { return nil }
         if isC1131Repeat && !hasFixedC1131RepeatSamples(samples) { return nil }
@@ -8958,6 +8981,14 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         ProcessInfo.processInfo.arguments.first(where: {
             $0.hasPrefix("--spinon-c114-grid-run-id=")
         }).map { String($0.dropFirst("--spinon-c114-grid-run-id=".count)) } ?? "manual"
+    }
+    private var c114OverflowPixelReadbackViewportWidth: Float {
+        guard let pixelRun = c111MetalPixelRun,
+              pixelRun.markerPrefix == "C114",
+              C114GridAutoFitColumnsWpt.surfacePixelSamples(
+                sceneID: c114GridTrackSizingSceneID
+              ) != nil else { return 320 }
+        return 480
     }
     private var c11GridMetalPixelStatusName: String {
         c114GridTrackSizingProbeRequested ? "C11.4"
@@ -9531,7 +9562,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c114GridTrackSizingProbeRequested
-            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×240 CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -9869,7 +9900,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         view.addSubview(statusLabel)
 
         let canvasWidth = canvasView.widthAnchor.constraint(
-            equalToConstant: imagePaintProbeRequested
+            equalToConstant: c114OverflowPixelReadbackViewportWidth > 320 ? 480
+                : imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested || imageObjectFitPositionProbeRequested ? 224 : 80
                 : c153HostDocumentTextPaintArgumentRequested ? 320
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 360
@@ -9882,7 +9914,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 ? 400 : fixedSizeCssFixtureRequested ? 320 : 301
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
-            equalToConstant: imagePaintProbeRequested
+            equalToConstant: c114OverflowPixelReadbackViewportWidth > 320 ? 240
+                : imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested ? 88
                 : imageObjectFitPositionProbeRequested ? 72 : 40
                 : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -9985,7 +10018,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         super.viewDidLayoutSubviews()
         let scale = view.window?.screen.scale ?? UIScreen.main.scale
         let viewportSize = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
-            ? CGSize(width: 360, height: 800) : canvasView.bounds.size
+            ? CGSize(width: 360, height: 800)
+            : c114OverflowPixelReadbackViewportWidth > 320
+                ? CGSize(width: 480, height: 240) : canvasView.bounds.size
         guard viewportSize.width > 0, viewportSize.height > 0 else { return }
         stateLock.lock()
         let scaleChanged = displayScale != Float(scale)
@@ -11535,7 +11570,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             || c1122GridAutoPlacementProbeRequested
             || c1123GridAutoPlacementProbeRequested
             ? 360 : c114GridTrackSizingProbeRequested || c1131GridRepeatProbeRequested
-                || fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
+                ? c114GridTrackSizingProbeRequested
+                    ? c114OverflowPixelReadbackViewportWidth : 320
+                : fixedSizeCssFixtureRequested ? 320 : environmentInputs.width
         let viewportHeight: Float = imagePaintProbeRequested
             ? imageAsyncReplacementProbeRequested ? 88
             : imageObjectFitPositionProbeRequested ? 72 : 40
@@ -12106,6 +12143,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridAutoRepeatIntrinsicWptTraceMatches(
                     c114GridTrackSizingSceneID, report: report
                 )
+            let expectedGridAutoFitColumnsWptTraceMatches =
+                C114GridAutoFitColumnsWpt.traceMatches(
+                    sceneID: c114GridTrackSizingSceneID, report: report
+                )
             let expectedCrossAxisTrackTraceMatches = c114CrossAxisFixedAutoRepeatAreaExpectation(
                 c114GridTrackSizingSceneID
             ) == nil || c114CrossAxisFixedAutoRepeatAreaTraceMatches(
@@ -12139,6 +12180,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedFixedAutoAreaTraceMatches, expectedCrossAxisTrackTraceMatches,
                   expectedCyclicAutoRepeatTraceMatches,
                   expectedGridAutoRepeatIntrinsicWptTraceMatches,
+                  expectedGridAutoFitColumnsWptTraceMatches,
                   expectedCrossAxisSpanGroupFramesMatch,
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch,
@@ -12146,7 +12188,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedGridLayoutAutoTracksMatches,
                   expectedEqualAutoRowsMatches,
                   expectedRowAxisSpanStageMatches else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
+                logC114GridNodeFrames(report)
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
@@ -14163,12 +14206,15 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         if let pixelRun = c111MetalPixelRun, !c111MetalPixelRequestIssued {
             let pixelMarker = "SPINON_\(pixelRun.markerPrefix)_METAL_PIXEL"
+            let expectedViewportWidth: Float = C114GridAutoFitColumnsWpt.surfacePixelSamples(
+                sceneID: pixelRun.sceneID
+            ) == nil ? 320 : 480
             stateLock.lock()
             let drawableSize = c111MetalDrawableSize
             let viewportWidth = viewportWidthCssPx
             let viewportHeight = viewportHeightCssPx
             stateLock.unlock()
-            guard viewportWidth == 320, viewportHeight == 240,
+            guard viewportWidth == expectedViewportWidth, viewportHeight == 240,
                   drawableSize.width > 0, drawableSize.height > 0 else {
                 let detail = "C11 Metal pixel viewport/drawable이 준비되지 않았습니다"
                 log("\(pixelMarker)_ERROR run_id=\(pixelRun.runID) stage=surface-size")
@@ -15394,7 +15440,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard surface.count == 2, surface[0] > 0, surface[1] > 0 else {
             throw failure("surface-size", "WGPU draw report에 실제 surface 크기가 없습니다")
         }
-        let viewport = (width: UInt32(320), height: UInt32(240))
+        let expectedViewportWidth: UInt32 = C114GridAutoFitColumnsWpt.surfacePixelSamples(
+            sceneID: run.sceneID
+        ) == nil ? 320 : 480
+        let viewport = (width: expectedViewportWidth, height: UInt32(240))
         stateLock.lock()
         let drawableSize = c111MetalDrawableSize
         let viewportWidth = UInt32(viewportWidthCssPx)

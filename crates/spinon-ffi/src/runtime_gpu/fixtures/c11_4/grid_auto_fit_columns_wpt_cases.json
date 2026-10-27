@@ -1,0 +1,2466 @@
+{
+  "source": {
+    "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/grid-auto-fit-columns-001.html",
+    "sha256": "11410caa92c400b653ac781ef7f1103c871cebb108c52b75f2e8308b2531ba63"
+  },
+  "caseCount": 35,
+  "itemCount": 37,
+  "scenes": [
+    {
+      "wptIndex": 1,
+      "sceneId": "grid-auto-fit-columns-01",
+      "rootId": "c114-grid-auto-fit-wpt-01-root",
+      "rootClasses": [
+        "grid",
+        "gridOnlyAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, 30px [autobar])",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 1,
+        "sceneId": "grid-auto-fit-columns-01",
+        "rootClass": "grid gridOnlyAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 6,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-01-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 2,
+      "sceneId": "grid-auto-fit-columns-02",
+      "rootId": "c114-grid-auto-fit-wpt-02-root",
+      "rootClasses": [
+        "grid",
+        "gridPercentAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, 30% [autobar]);padding: 0 13px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 230,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 2,
+        "sceneId": "grid-auto-fit-columns-02",
+        "rootClass": "grid gridPercentAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fit, 30% [autobar])",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "60"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "240",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "60px [autobar] 60px [autobar] 60px [autobar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-02-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 13,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 3,
+      "sceneId": "grid-auto-fit-columns-03",
+      "rootId": "c114-grid-auto-fit-wpt-03-root",
+      "rootClasses": [
+        "grid",
+        "gridMinMaxAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fill, minmax(13px, 30px))",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 3,
+        "sceneId": "grid-auto-fit-columns-03",
+        "rootClass": "grid gridMinMaxAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fill, minmax(13px, 30px))",
+        "axis": "columns",
+        "repeatMode": "auto-fill",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 6,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-03-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 4,
+      "sceneId": "grid-auto-fit-columns-04",
+      "rootId": "c114-grid-auto-fit-wpt-04-root",
+      "rootClasses": [
+        "grid",
+        "gridMaxMinAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fill, minmax(30px, 13px))",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 4,
+        "sceneId": "grid-auto-fit-columns-04",
+        "rootClass": "grid gridMaxMinAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fill, minmax(30px, 13px))",
+        "axis": "columns",
+        "repeatMode": "auto-fill",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 6,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-04-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 5,
+      "sceneId": "grid-auto-fit-columns-05",
+      "rootId": "c114-grid-auto-fit-wpt-05-root",
+      "rootClasses": [
+        "grid",
+        "gridMaxMinPercentAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fill, minmax(30px, 6.5%))",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 5,
+        "sceneId": "grid-auto-fit-columns-05",
+        "rootClass": "grid gridMaxMinPercentAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fill, minmax(30px, 6.5%))",
+        "axis": "columns",
+        "repeatMode": "auto-fill",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 6,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px 30px 30px 30px 30px 30px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-05-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 6,
+      "sceneId": "grid-auto-fit-columns-06",
+      "rootId": "c114-grid-auto-fit-wpt-06-root",
+      "rootClasses": [
+        "grid",
+        "gridOnlyAutoRepeat"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, 30px [autobar])",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 6,
+        "sceneId": "grid-auto-fit-columns-06",
+        "rootClass": "grid gridOnlyAutoRepeat",
+        "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 6,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-06-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 6 autobar",
+          "authoredStyle": "grid-column: 1 / span 6 autobar",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 7,
+      "sceneId": "grid-auto-fit-columns-07",
+      "rootId": "c114-grid-auto-fit-wpt-07-root",
+      "rootClasses": [
+        "grid",
+        "gridOnlyAutoRepeat",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, 30px [autobar]);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 7,
+        "sceneId": "grid-auto-fit-columns-07",
+        "rootClass": "grid gridOnlyAutoRepeat gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "230",
+        "expectedRepeatCount": 4,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "30px [autobar] 30px [autobar] 30px [autobar] 30px [autobar] 157px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 1,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-07-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 5",
+          "authoredStyle": "grid-column: 1 / span 5",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 357,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 8,
+      "sceneId": "grid-auto-fit-columns-08",
+      "rootId": "c114-grid-auto-fit-wpt-08-root",
+      "rootClasses": [
+        "grid",
+        "gridOnlyAutoRepeat",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, 30px [autobar]);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 8,
+        "sceneId": "grid-auto-fit-columns-08",
+        "rootClass": "grid gridOnlyAutoRepeat gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, 30px [autobar])",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "230",
+        "expectedRepeatCount": 4,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "0px [autobar] 0px [autobar] 30px [autobar] 30px [autobar] 157px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 1,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-08-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: autobar 2 / span 3",
+          "authoredStyle": "grid-column: autobar 2 / span 3",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 257,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 9,
+      "sceneId": "grid-auto-fit-columns-09",
+      "rootId": "c114-grid-auto-fit-wpt-09-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 9,
+        "sceneId": "grid-auto-fit-columns-09",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "190",
+        "requiredSizeAtNextCountPx": "225",
+        "expectedRepeatCount": 4,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px [autofoo] 35px [autofoo] 35px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-09-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 6",
+          "authoredStyle": "grid-column: 1 / span 6",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 190,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 10,
+      "sceneId": "grid-auto-fit-columns-10",
+      "rootId": "c114-grid-auto-fit-wpt-10-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 10,
+        "sceneId": "grid-auto-fit-columns-10",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "190",
+        "requiredSizeAtNextCountPx": "225",
+        "expectedRepeatCount": 4,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 0px [autofoo] 0px [autofoo] 0px [autofoo] 0px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-10-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: foo / autofoo",
+          "authoredStyle": "grid-column: foo / autofoo",
+          "expected": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 11,
+      "sceneId": "grid-auto-fit-columns-11",
+      "rootId": "c114-grid-auto-fit-wpt-11-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 11,
+        "sceneId": "grid-auto-fit-columns-11",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "190",
+        "requiredSizeAtNextCountPx": "225",
+        "expectedRepeatCount": 4,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px [autofoo] 35px [autofoo] 35px 157px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 1,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-11-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: bar / 5 autofoo",
+          "authoredStyle": "grid-column: bar / 5 autofoo",
+          "expected": {
+            "x": 50,
+            "y": 0,
+            "width": 297,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 12,
+      "sceneId": "grid-auto-fit-columns-12",
+      "rootId": "c114-grid-auto-fit-wpt-12-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 12,
+        "sceneId": "grid-auto-fit-columns-12",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "235",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 35px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-12-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 4",
+          "authoredStyle": "grid-column: 1 / span 4",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 13,
+      "sceneId": "grid-auto-fit-columns-13",
+      "rootId": "c114-grid-auto-fit-wpt-13-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 13,
+        "sceneId": "grid-auto-fit-columns-13",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "235",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 35px [autofoo] 0px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-13-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: span 3 / 2 autofoo",
+          "authoredStyle": "grid-column: span 3 / 2 autofoo",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 125,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 14,
+      "sceneId": "grid-auto-fit-columns-14",
+      "rootId": "c114-grid-auto-fit-wpt-14-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedBefore",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: 10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 14,
+        "sceneId": "grid-auto-fit-columns-14",
+        "rootClass": "grid gridAutoRepeatAndFixedBefore gap",
+        "authoredGridTemplateColumns": "10px [foo] 20% [bar] repeat(auto-fit, [autofoo] 35px)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "10",
+          "40"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "35"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "180",
+        "requiredSizeAtNextCountPx": "235",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "10px [foo] 40px [bar autofoo] 0px [autofoo] 0px 157px 157px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 2,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-14-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: notPresent / 3 autofoo",
+          "authoredStyle": "grid-column: notPresent / 3 autofoo",
+          "expected": {
+            "x": 267,
+            "y": 0,
+            "width": 157,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 15,
+      "sceneId": "grid-auto-fit-columns-15",
+      "rootId": "c114-grid-auto-fit-wpt-15-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 15,
+        "sceneId": "grid-auto-fit-columns-15",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "185",
+        "requiredSizeAtNextCountPx": "215",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 30px [last first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-15-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 4",
+          "authoredStyle": "grid-column: 1 / span 4",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 185,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 16,
+      "sceneId": "grid-auto-fit-columns-16",
+      "rootId": "c114-grid-auto-fit-wpt-16-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 16,
+        "sceneId": "grid-auto-fit-columns-16",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "185",
+        "requiredSizeAtNextCountPx": "215",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 30px [last first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-16-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: first / last 2",
+          "authoredStyle": "grid-column: first / last 2",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 60,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 17,
+      "sceneId": "grid-auto-fit-columns-17",
+      "rootId": "c114-grid-auto-fit-wpt-17-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 17,
+        "sceneId": "grid-auto-fit-columns-17",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "185",
+        "requiredSizeAtNextCountPx": "215",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 0px [last first] 0px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-17-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: last 2 / foo",
+          "authoredStyle": "grid-column: last 2 / foo",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 18,
+      "sceneId": "grid-auto-fit-columns-18",
+      "rootId": "c114-grid-auto-fit-wpt-18-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 18,
+        "sceneId": "grid-auto-fit-columns-18",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "245",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-18-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 3",
+          "authoredStyle": "grid-column: 1 / span 3",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 195,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 19,
+      "sceneId": "grid-auto-fit-columns-19",
+      "rootId": "c114-grid-auto-fit-wpt-19-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 19,
+        "sceneId": "grid-auto-fit-columns-19",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "245",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 0px [last foo] 60px [bar] 45px 157px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 1,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-19-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 3 / span 1 bar",
+          "authoredStyle": "grid-column: 3 / span 1 bar",
+          "expected": {
+            "x": 80,
+            "y": 0,
+            "width": 222,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 20,
+      "sceneId": "grid-auto-fit-columns-20",
+      "rootId": "c114-grid-auto-fit-wpt-20-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixedAfter",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content);grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 20,
+        "sceneId": "grid-auto-fit-columns-20",
+        "rootClass": "grid gridAutoRepeatAndFixedAfter gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, [first] 30px [last]) [foo] minmax(60px, 80px) [bar] minmax(45px, max-content)",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "30"
+        ],
+        "suffixTrackCount": 2,
+        "suffixCountSizesPx": [
+          "80",
+          "45"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "245",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[first] 30px [last foo] 80px [bar] 45px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-20-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: first / foo",
+          "authoredStyle": "grid-column: first / foo",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 21,
+      "sceneId": "grid-auto-fit-columns-21",
+      "rootId": "c114-grid-auto-fit-wpt-21-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixed"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 21,
+        "sceneId": "grid-auto-fit-columns-21",
+        "rootClass": "grid gridAutoRepeatAndFixed",
+        "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "50",
+          "50"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "15"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 5,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 8,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-21-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 8",
+          "authoredStyle": "grid-column: 1 / span 8",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 195,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 22,
+      "sceneId": "grid-auto-fit-columns-22",
+      "rootId": "c114-grid-auto-fit-wpt-22-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixed"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 22,
+        "sceneId": "grid-auto-fit-columns-22",
+        "rootClass": "grid gridAutoRepeatAndFixed",
+        "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "50",
+          "50"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "15"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 5,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 0px [autobar autofoo] 0px [autobar autofoo] 0px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 8,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-22-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: a / autobar 2",
+          "authoredStyle": "grid-column: a / autobar 2",
+          "expected": {
+            "x": 50,
+            "y": 0,
+            "width": 80,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 23,
+      "sceneId": "grid-auto-fit-columns-23",
+      "rootId": "c114-grid-auto-fit-wpt-23-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixed"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 23,
+        "sceneId": "grid-auto-fit-columns-23",
+        "rootClass": "grid gridAutoRepeatAndFixed",
+        "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "50",
+          "50"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "15"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "210",
+        "expectedRepeatCount": 5,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 8,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-23-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: autofoo / end",
+          "authoredStyle": "grid-column: autofoo / end",
+          "expected": {
+            "x": 100,
+            "y": 0,
+            "width": 95,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 24,
+      "sceneId": "grid-auto-fit-columns-24",
+      "rootId": "c114-grid-auto-fit-wpt-24-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixed",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 24,
+        "sceneId": "grid-auto-fit-columns-24",
+        "rootClass": "grid gridAutoRepeatAndFixed gap",
+        "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "50",
+          "50"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "15"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "230",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 15px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-24-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / span 4",
+          "authoredStyle": "grid-column: 1 / span 4",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 195,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 25,
+      "sceneId": "grid-auto-fit-columns-25",
+      "rootId": "c114-grid-auto-fit-wpt-25-root",
+      "rootClasses": [
+        "grid",
+        "gridAutoRepeatAndFixed",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 25,
+        "sceneId": "grid-auto-fit-columns-25",
+        "rootClass": "grid gridAutoRepeatAndFixed gap",
+        "authoredGridTemplateColumns": "[start] repeat(2, 50px [a]) [middle] repeat(auto-fit, [autofoo] 15px [autobar]) minmax(5%, 10%) [end]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "50",
+          "50"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "15"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "195",
+        "requiredSizeAtNextCountPx": "230",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 50px [a] 50px [a middle autofoo] 0px [autobar] 20px [end]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-25-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: autobar / -1",
+          "authoredStyle": "grid-column: autobar / -1",
+          "expected": {
+            "x": 140,
+            "y": 0,
+            "width": 20,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 26,
+      "sceneId": "grid-auto-fit-columns-26",
+      "rootId": "c114-grid-auto-fit-wpt-26-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 26,
+        "sceneId": "grid-auto-fit-columns-26",
+        "rootClass": "grid gridMultipleNames",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "200",
+        "requiredSizeAtNextCountPx": "220",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo bar] 20px [start foo bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-26-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: 1 / -1",
+          "authoredStyle": "grid-column: 1 / -1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 200,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 27,
+      "sceneId": "grid-auto-fit-columns-27",
+      "rootId": "c114-grid-auto-fit-wpt-27-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 27,
+        "sceneId": "grid-auto-fit-columns-27",
+        "rootClass": "grid gridMultipleNames",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "200",
+        "requiredSizeAtNextCountPx": "220",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 0px [start foo bar] 0px [start foo bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-27-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: foo 3 / 4 bar",
+          "authoredStyle": "grid-column: foo 3 / 4 bar",
+          "expected": {
+            "x": 120,
+            "y": 0,
+            "width": 40,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 28,
+      "sceneId": "grid-auto-fit-columns-28",
+      "rootId": "c114-grid-auto-fit-wpt-28-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 28,
+        "sceneId": "grid-auto-fit-columns-28",
+        "rootClass": "grid gridMultipleNames",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "200",
+        "requiredSizeAtNextCountPx": "220",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo bar] 20px [start foo bar] 0px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-28-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: -6 / span 2 start",
+          "authoredStyle": "grid-column: -6 / span 2 start",
+          "expected": {
+            "x": 20,
+            "y": 0,
+            "width": 140,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 29,
+      "sceneId": "grid-auto-fit-columns-29",
+      "rootId": "c114-grid-auto-fit-wpt-29-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 29,
+        "sceneId": "grid-auto-fit-columns-29",
+        "rootClass": "grid gridMultipleNames gap",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "220",
+        "requiredSizeAtNextCountPx": "260",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": true
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-29-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: -4 / -2",
+          "authoredStyle": "grid-column: -4 / -2",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 140,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 30,
+      "sceneId": "grid-auto-fit-columns-30",
+      "rootId": "c114-grid-auto-fit-wpt-30-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 30,
+        "sceneId": "grid-auto-fit-columns-30",
+        "rootClass": "grid gridMultipleNames gap",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "220",
+        "requiredSizeAtNextCountPx": "260",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": true
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-30-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: bar / foo 2",
+          "authoredStyle": "grid-column: bar / foo 2",
+          "expected": {
+            "x": 160,
+            "y": 0,
+            "width": 20,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 31,
+      "sceneId": "grid-auto-fit-columns-31",
+      "rootId": "c114-grid-auto-fit-wpt-31-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleNames",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 31,
+        "sceneId": "grid-auto-fit-columns-31",
+        "rootClass": "grid gridMultipleNames gap",
+        "authoredGridTemplateColumns": "[start] 20px [foo] 50% repeat(auto-fit, [bar] 20px [start foo]) [foo] 10% [end bar]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 2,
+        "prefixCountSizesPx": [
+          "20",
+          "100"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "20"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "220",
+        "requiredSizeAtNextCountPx": "260",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": true
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [foo] 100px [bar] 20px [start foo foo] 20px [end bar]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-31-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: foo / bar 2",
+          "authoredStyle": "grid-column: foo / bar 2",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 180,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 32,
+      "sceneId": "grid-auto-fit-columns-32",
+      "rootId": "c114-grid-auto-fit-wpt-32-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleTracks"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last]",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 54
+      },
+      "repeatExpectation": {
+        "wptIndex": 32,
+        "sceneId": "grid-auto-fit-columns-32",
+        "rootClass": "grid gridMultipleTracks",
+        "authoredGridTemplateColumns": "[start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 1,
+        "prefixCountSizesPx": [
+          "20"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "32",
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "75"
+        ],
+        "columnGapPx": 0,
+        "requiredSizeAtSelectedCountPx": "199",
+        "requiredSizeAtNextCountPx": "251",
+        "expectedRepeatCount": 2,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [a] 32px [b c] 0px [d a] 0px [b c] 0px [d e] 148px [last]",
+        "gridTemplateRows": "25px 25px",
+        "columnGap": "normal",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 6,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 2
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-32-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: e / last",
+          "authoredStyle": "grid-column: e / last;",
+          "expected": {
+            "x": 52,
+            "y": 0,
+            "width": 148,
+            "height": 25
+          }
+        },
+        {
+          "id": "c114-grid-auto-fit-wpt-32-item-2",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;background-color: green;grid-column: start / b",
+          "authoredStyle": "grid-column: start / b;",
+          "expected": {
+            "x": 0,
+            "y": 25,
+            "width": 52,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 33,
+      "sceneId": "grid-auto-fit-columns-33",
+      "rootId": "c114-grid-auto-fit-wpt-33-root",
+      "rootClasses": [
+        "grid",
+        "gridMultipleTracks",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: [start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last];grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 33,
+        "sceneId": "grid-auto-fit-columns-33",
+        "rootClass": "grid gridMultipleTracks gap",
+        "authoredGridTemplateColumns": "[start] 20px repeat(auto-fit, [a] 2em [b c] 10% [d]) [e] minmax(75px, 1fr) [last]",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 1,
+        "prefixCountSizesPx": [
+          "20"
+        ],
+        "repeatedPatternCountSizesPx": [
+          "32",
+          "20"
+        ],
+        "suffixTrackCount": 1,
+        "suffixCountSizesPx": [
+          "75"
+        ],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "207",
+        "requiredSizeAtNextCountPx": "299",
+        "expectedRepeatCount": 1,
+        "forcedOneWhenNoPositiveCountFits": true
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "[start] 20px [a] 0px [b c] 20px [d e] 120px [last]",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 4,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-33-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column: c / -1",
+          "authoredStyle": "grid-column: c / -1;",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 160,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 34,
+      "sceneId": "grid-auto-fit-columns-34",
+      "rootId": "c114-grid-auto-fit-wpt-34-root",
+      "rootClasses": [
+        "grid",
+        "gridMinMaxFixedFlex",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 34,
+        "sceneId": "grid-auto-fit-columns-34",
+        "rootClass": "grid gridMinMaxFixedFlex gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, minmax(50px, 1fr))",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "50"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "190",
+        "requiredSizeAtNextCountPx": "260",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "200px 0px 0px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-34-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column-start: 1",
+          "authoredStyle": "grid-column-start: 1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 200,
+            "height": 25
+          }
+        }
+      ]
+    },
+    {
+      "wptIndex": 35,
+      "sceneId": "grid-auto-fit-columns-35",
+      "rootId": "c114-grid-auto-fit-wpt-35-root",
+      "rootClasses": [
+        "grid",
+        "gridMinMaxFixedFlex",
+        "gap"
+      ],
+      "rootStyle": "display: grid;background-color: grey;border: 2px solid magenta;width: 200px;position: relative;justify-content: start;grid-auto-columns: 157px;grid-auto-rows: 25px;grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));grid-column-gap: 20px",
+      "expectedRootFrame": {
+        "x": 0,
+        "y": 0,
+        "width": 204,
+        "height": 29
+      },
+      "repeatExpectation": {
+        "wptIndex": 35,
+        "sceneId": "grid-auto-fit-columns-35",
+        "rootClass": "grid gridMinMaxFixedFlex gap",
+        "authoredGridTemplateColumns": "repeat(auto-fit, minmax(50px, 1fr))",
+        "axis": "columns",
+        "repeatMode": "auto-fit",
+        "definiteContentBasisPx": "200",
+        "prefixTrackCount": 0,
+        "prefixCountSizesPx": [],
+        "repeatedPatternCountSizesPx": [
+          "50"
+        ],
+        "suffixTrackCount": 0,
+        "suffixCountSizesPx": [],
+        "columnGapPx": 20,
+        "requiredSizeAtSelectedCountPx": "190",
+        "requiredSizeAtNextCountPx": "260",
+        "expectedRepeatCount": 3,
+        "forcedOneWhenNoPositiveCountFits": false
+      },
+      "usedTrackObservation": {
+        "source": "Chrome 156 CSSOM observation; not a normative expectation",
+        "gridTemplateColumns": "90px 90px 0px",
+        "gridTemplateRows": "25px",
+        "columnGap": "20px",
+        "rowGap": "normal",
+        "explicitColumnTrackCount": 3,
+        "negativeImplicitColumnTrackCount": 0,
+        "positiveImplicitColumnTrackCount": 0,
+        "explicitRowTrackCount": 0,
+        "negativeImplicitRowTrackCount": 0,
+        "positiveImplicitRowTrackCount": 1
+      },
+      "items": [
+        {
+          "id": "c114-grid-auto-fit-wpt-35-item-1",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;grid-column-start: 1",
+          "authoredStyle": "grid-column-start: 1",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 90,
+            "height": 25
+          }
+        },
+        {
+          "id": "c114-grid-auto-fit-wpt-35-item-2",
+          "classes": [
+            "item"
+          ],
+          "style": "background-color: cyan;background-color: green;grid-column-start: 2",
+          "authoredStyle": "grid-column-start: 2",
+          "expected": {
+            "x": 110,
+            "y": 0,
+            "width": 90,
+            "height": 25
+          }
+        }
+      ]
+    }
+  ]
+}

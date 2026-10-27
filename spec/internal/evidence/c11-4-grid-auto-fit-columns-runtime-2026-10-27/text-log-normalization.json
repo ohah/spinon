@@ -1,0 +1,82 @@
+{
+  "files": [
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-07-20261027T134138Z-mismatch.log",
+      "source_sha256": "5df2647ec02cd86bd156d63d3d3c930959655a1153b7572432a24cdf74b69023",
+      "committed_sha256": "1ad094808695bc96abfe9865d1b4ba892dcd054eadc277192a4991a096bd456b",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-07-20261027T141243Z.log",
+      "source_sha256": "0c8c075a3d79619db8d0bb2da7f9ce81faa3193905179c7321f3a5678f3683e7",
+      "committed_sha256": "3d489c295f78974b070a59b9681b2a765f9d11f19396689049b26d403cebab0f",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-08-20261027T141243Z.log",
+      "source_sha256": "d0310210ff62e7e4da1a408defb796ccecc82a775a4670592b464bb83ed1209a",
+      "committed_sha256": "3c4689ce02dd5d80c07f576328e40e892784b1c260bcaa84830db62312cff158",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-11-20261027T141243Z.log",
+      "source_sha256": "f4f4627867eaa2a7a87631ae8016e16b750b7b5cd8d2a8628149e4fda1d8f5d9",
+      "committed_sha256": "84011c406aeaff314cd1fa191fc3b004db316bc666bb31f97625e8d6c854fc3b",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-14-20261027T141243Z.log",
+      "source_sha256": "fcc1dafd4c239f85b4c49192514cf7e231f812d04c207a70e2d9fcb0a5124dd3",
+      "committed_sha256": "b343f834e9119e0ac0dc4bf4bd958e1b1bf3bcd62b5959edda1fd12879624911",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-19-20261027T141243Z.log",
+      "source_sha256": "83975facc47f8822eb0c8d1b9267b85c9bf40eca02f7d86b16b77d01fc7dfba3",
+      "committed_sha256": "927de232428bba5de54a880115ad75acde74c2b7c3e3e2556d7871def3da7cf0",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/android-overflow-31-20261027T141243Z.log",
+      "source_sha256": "d7f4d3e0eeb36a3dbecf01103160cc26bdcf31c2fafe33f26b94d793f3ee8ba0",
+      "committed_sha256": "0f0d8d4891f2ed08dbbe67f5ee5681b4a5b3bd06a37740c53a72e888c84bdd26",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/cargo-ffi-c114-pixel-argument-rejection-final.log",
+      "source_sha256": "6286d125df013e2aac70333aad3a552bfd38f633852de4c70dbf6b06be3beef8",
+      "committed_sha256": "3e6f660bc5d893d5c348a05a3ad7c3290408e57aee0f0441adf5f5adc56757a1",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/cargo-ffi-c114-rejection-final.log",
+      "source_sha256": "26c47e84999c5066a94c5d0b33d2ec243d9c4fbe4acbc0119944a0ccecf86b36",
+      "committed_sha256": "ec7ff19d7f068eab6e99f8e7f833bd50d46011fd62cee2d3a97f91aea97ce208",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/cargo-ffi-grid-auto-fit-columns-final.log",
+      "source_sha256": "bbdca18cd32eeb40340d64e7830753fec9f9f88332c7b00e3aeb6dac4da2dded",
+      "committed_sha256": "67d97c0a103a556c03ec185bdc8e155938196c0e0aa12dedcd1f942ecc197afe",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/cargo-spinon-layout-tests-final.log",
+      "source_sha256": "5a5a325d33f2340573202b7892a2207c37d58e178205214d7e25da8bb1908650",
+      "committed_sha256": "0729b4f0f915d1b1fb870eabaa336991ec6bf3741bff15e9c67dcd576a20f53b",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/cargo-style-to-layout-tests-final.log",
+      "source_sha256": "b1904f25904688f9991c1ba8f66e3f6d57881349c96ee523419d5dd3c34dc411",
+      "committed_sha256": "e4b2a4bc0e13294d702e3099d6b034ca7f77ed10f44b45d9beb65578fb404698",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/ios-simulator-build-final.log",
+      "source_sha256": "2766f8db85e759cefb26c7bbfc0fd6228fa19b8bf605bfdae49fab936fd374de",
+      "committed_sha256": "928874bed9839fc2267a291dc1f79b41a58922b420929743682566e67b5a509f",
+      "normalization": "line endings converted to LF; trailing spaces/tabs and empty lines at EOF removed"
+    }
+  ]
+}

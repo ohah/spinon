@@ -989,6 +989,9 @@ fn track_size_is_valid(track: &ComputedCssGridTrackSize) -> bool {
 fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool {
     match track {
         ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        // A percentage is a definite auto-repeat sizing function when its grid axis has a
+        // definite content size. The layout boundary validates that basis before Taffy runs.
+        ComputedCssGridTrackSize::Percentage(value) => value.is_finite() && *value >= 0.0,
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::LengthPx(value),
             max,

@@ -1,0 +1,37 @@
+bun test v1.4.2 (744846f84)
+
+tools/css-reference/fixture-module-boundary.test.mjs:
+(pass) fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 [8.25ms]
+(pass) calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 [90.61ms]
+(pass) 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 [67.00ms]
+(pass) 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 [449.71ms]
+(pass) CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 [10.56ms]
+(pass) 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 [2.87ms]
+(pass) C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 [53.21ms]
+(pass) 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 [2.56ms]
+(pass) 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 [16.90ms]
+(pass) C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 [4.02ms]
+(pass) C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 [54.00ms]
+(pass) C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 [99.67ms]
+(pass) C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 [56.56ms]
+(pass) C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 [59.07ms]
+
+build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-final/tools/css-reference/fixture-module-boundary.test.mjs:
+(pass) fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 [0.42ms]
+(pass) CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 [9.89ms]
+(pass) 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 [1.12ms]
+(pass) 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 [1.35ms]
+(pass) 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 [16.50ms]
+(pass) C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 [2.71ms]
+
+build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial/tools/css-reference/fixture-module-boundary.test.mjs:
+(pass) fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 [0.36ms]
+(pass) CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 [13.89ms]
+(pass) 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 [0.79ms]
+(pass) 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 [1.49ms]
+(pass) 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 [13.71ms]
+(pass) C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 [3.82ms]
+
+ 26 pass
+ 0 fail
+Ran 26 tests across 3 files. [38.52s]

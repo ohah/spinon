@@ -49,8 +49,8 @@ pub use grid::{
     GridTrackMinSizingFunction, GridTrackSize, LayoutGridTrackSizingAxis,
     LayoutGridTrackSizingContributionKind, LayoutGridTrackSizingContributionTrace,
     LayoutGridTrackSizingMinimumContributionSource, LayoutGridTrackSizingPassTrace,
-    LayoutGridTrackSizingStageKind, LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace,
-    LayoutGridTrackSizingTrackState,
+    LayoutGridTrackSizingResolvedAxis, LayoutGridTrackSizingStageKind,
+    LayoutGridTrackSizingStageTrace, LayoutGridTrackSizingTrace, LayoutGridTrackSizingTrackState,
 };
 pub use grid_placement::{GridItemInput, GridPlacementInput};
 pub use host_document::HostTextStyleProfile;

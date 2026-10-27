@@ -286,7 +286,7 @@ fn validate_auto_repeat_neighbor_tracks(
         return Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property,
-            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed-repeat provenance가 있는 minmax(px, fr), 제한된 signed calc(length + percentage), 열 auto-repeat의 단일 trailing minmax(min-content, px) 또는 minmax(px, auto) 형태여야 합니다".to_owned(),
+            value: "auto-repeat 주변 track은 유한한 0 이상 length/percentage, fixed minimum이 있는 minmax, 제한된 signed calc(length + percentage), 열 auto-repeat의 단일 trailing minmax(min-content, px) 형태여야 합니다".to_owned(),
         });
     }
     Ok(())
@@ -307,10 +307,26 @@ fn is_supported_auto_repeat_neighbor(
             min: spinon_style::ComputedCssGridTrackBreadth::MinContent,
             max: spinon_style::ComputedCssGridTrackBreadth::LengthPx(maximum),
         } if allow_intrinsic_trailing => maximum.is_finite() && *maximum >= 0.0,
+        ComputedCssGridTrackSize::MinMax { min, max }
+            if is_fixed_nonnegative_grid_track_breadth(min)
+                && is_fixed_nonnegative_grid_track_breadth(max) =>
+        {
+            true
+        }
         ComputedCssGridTrackSize::MinMax {
-            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(minimum),
+            min:
+                spinon_style::ComputedCssGridTrackBreadth::LengthPx(minimum)
+                | spinon_style::ComputedCssGridTrackBreadth::Percentage(minimum),
             max: spinon_style::ComputedCssGridTrackBreadth::Auto,
         } if allow_fixed_minimum_auto_trailing => minimum.is_finite() && *minimum >= 0.0,
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(minimum),
+            max: spinon_style::ComputedCssGridTrackBreadth::MaxContent,
+        } => minimum.is_finite() && *minimum >= 0.0,
+        ComputedCssGridTrackSize::MinMax {
+            min: spinon_style::ComputedCssGridTrackBreadth::LengthPx(minimum),
+            max: spinon_style::ComputedCssGridTrackBreadth::Fraction(factor),
+        } => minimum.is_finite() && *minimum >= 0.0 && factor.is_finite() && *factor >= 0.0,
         ComputedCssGridTrackSize::MinMax { .. } => {
             fixed_repeat_minmax_track_indices
                 .binary_search(&index)
@@ -318,6 +334,18 @@ fn is_supported_auto_repeat_neighbor(
                 && is_fixed_minimum_fraction_maximum(track)
         }
         ComputedCssGridTrackSize::Calc(value) => is_supported_auto_repeat_neighbor_calc(value),
+        _ => false,
+    }
+}
+
+fn is_fixed_nonnegative_grid_track_breadth(
+    breadth: &spinon_style::ComputedCssGridTrackBreadth,
+) -> bool {
+    match breadth {
+        spinon_style::ComputedCssGridTrackBreadth::LengthPx(value)
+        | spinon_style::ComputedCssGridTrackBreadth::Percentage(value) => {
+            value.is_finite() && *value >= 0.0
+        }
         _ => false,
     }
 }

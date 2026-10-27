@@ -217,6 +217,8 @@ pub struct LayoutGridTrackSizingPassTrace {
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub fixture_auto_repeat_count: Option<u16>,
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub auto_repeat_count: Option<u16>,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub fixture_percentage_basis: Option<f32>,
 }
 
@@ -225,6 +227,18 @@ pub struct LayoutGridTrackSizingPassTrace {
 pub struct LayoutGridTrackSizingTrace {
     pub node: NodeId,
     pub passes: Vec<LayoutGridTrackSizingPassTrace>,
+    pub used_columns: LayoutGridTrackSizingResolvedAxis,
+    pub used_rows: LayoutGridTrackSizingResolvedAxis,
+}
+
+/// Layout 완료 후의 resolved track list와 explicit/implicit track 경계입니다.
+#[derive(Clone, Debug, Default, PartialEq)]
+pub struct LayoutGridTrackSizingResolvedAxis {
+    pub used_track_list: String,
+    pub explicit_track_count: u16,
+    pub negative_implicit_track_count: u16,
+    pub positive_implicit_track_count: u16,
+    pub collapsed_track_indices: Vec<usize>,
 }
 
 /// CSS Grid auto-placement 방향입니다. C11.1은 기본 row만 계산합니다.
@@ -1068,7 +1082,7 @@ fn validate_auto_repeat_axis(
     let prefix = &tracks[..auto_repeat.start];
     let repeat_tracks = &tracks[auto_repeat.start..auto_repeat.end];
     let suffix = &tracks[auto_repeat.end..];
-    if !auto_repeat_neighbor_tracks_are_supported(
+    let neighbors_supported = auto_repeat_neighbor_tracks_are_supported(
         node,
         prefix,
         suffix,
@@ -1076,10 +1090,11 @@ fn validate_auto_repeat_axis(
         auto_repeat.mode,
         context,
         css_math,
-    ) || !repeat_tracks
+    );
+    let repeat_tracks_supported = repeat_tracks
         .iter()
-        .all(|track| auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math))
-    {
+        .all(|track| auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math));
+    if !neighbors_supported || !repeat_tracks_supported {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
     Ok(())
@@ -1403,6 +1418,12 @@ fn auto_repeat_track_has_fixed_minimum(
 ) -> bool {
     match track {
         GridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
+        GridTrackSize::Percentage(value) => {
+            value.is_finite()
+                && *value >= 0.0
+                && definite_auto_repeat_content_basis(context, property)
+                    .is_some_and(|basis| (value * basis).is_finite())
+        }
         GridTrackSize::MinMax {
             min: GridTrackMinSizingFunction::LengthPx(value),
             max,
@@ -1468,6 +1489,16 @@ fn auto_repeat_maximum_is_supported(
 fn explicit_positive_content_axis(style: &LayoutStyle, property: &str) -> Option<f32> {
     let (dimension, minimum, maximum, ..) = content_axis_properties(style, property)?;
     if minimum != LayoutDimension::Fixed(0.0) || maximum != LayoutDimension::Auto {
+        return None;
+    }
+    fixed_content_axis_size(style, property, dimension)
+}
+
+fn explicit_positive_neighbor_content_axis(style: &LayoutStyle, property: &str) -> Option<f32> {
+    let (dimension, minimum, maximum, ..) = content_axis_properties(style, property)?;
+    if !matches!(minimum, LayoutDimension::Fixed(0.0) | LayoutDimension::Auto)
+        || maximum != LayoutDimension::Auto
+    {
         return None;
     }
     fixed_content_axis_size(style, property, dimension)
@@ -1647,14 +1678,19 @@ fn auto_repeat_neighbor_tracks_are_supported(
     css_math: &[crate::LayoutCssMathValue],
 ) -> bool {
     let neighbors = prefix.iter().chain(suffix);
-    let has_percentage = neighbors
-        .clone()
-        .any(|track| matches!(track, GridTrackSize::Percentage(_) | GridTrackSize::Calc(_)));
+    let has_percentage = neighbors.clone().any(|track| match track {
+        GridTrackSize::Percentage(_) | GridTrackSize::Calc(_) => true,
+        GridTrackSize::MinMax { min, max } => {
+            matches!(min, GridTrackMinSizingFunction::Percentage(_))
+                || matches!(max, GridTrackMaxSizingFunction::Percentage(_))
+        }
+        _ => false,
+    });
     let basis = if has_percentage {
         if !context.percentage_basis_is_definite {
             return false;
         }
-        let Some(basis) = explicit_positive_content_axis(context.style, property) else {
+        let Some(basis) = explicit_positive_neighbor_content_axis(context.style, property) else {
             return false;
         };
         Some(basis)
@@ -1671,6 +1707,30 @@ fn auto_repeat_neighbor_tracks_are_supported(
         let resolved = match track {
             GridTrackSize::LengthPx(value) if value.is_finite() && *value >= 0.0 => {
                 f64::from(*value)
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(minimum),
+                max: GridTrackMaxSizingFunction::LengthPx(maximum),
+            } if minimum.is_finite()
+                && *minimum >= 0.0
+                && maximum.is_finite()
+                && *maximum >= 0.0 =>
+            {
+                f64::from(minimum.max(*maximum))
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::LengthPx(minimum),
+                max: GridTrackMaxSizingFunction::MaxContent,
+            } if minimum.is_finite() && *minimum >= 0.0 => f64::from(*minimum),
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::Percentage(minimum),
+                max: GridTrackMaxSizingFunction::MaxContent,
+            } => {
+                let Some(minimum) = resolved_auto_repeat_neighbor_percentage(*minimum, basis)
+                else {
+                    return false;
+                };
+                minimum
             }
             GridTrackSize::MinMax {
                 min: GridTrackMinSizingFunction::MinContent,
@@ -1698,6 +1758,19 @@ fn auto_repeat_neighbor_tracks_are_supported(
             {
                 f64::from(*minimum)
             }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::Percentage(minimum),
+                max: GridTrackMaxSizingFunction::Auto,
+            } if property == "grid-template-columns"
+                && suffix.len() == 1
+                && neighbor_index == prefix.len() =>
+            {
+                let Some(minimum) = resolved_auto_repeat_neighbor_percentage(*minimum, basis)
+                else {
+                    return false;
+                };
+                minimum
+            }
             GridTrackSize::Percentage(value) if value.is_finite() && *value >= 0.0 => {
                 let Some(basis) = basis else {
                     return false;
@@ -1713,6 +1786,35 @@ fn auto_repeat_neighbor_tracks_are_supported(
                 max: GridTrackMaxSizingFunction::Fraction(factor),
             } if minimum.is_finite() && *minimum >= 0.0 && factor.is_finite() && *factor >= 0.0 => {
                 f64::from(*minimum)
+            }
+            GridTrackSize::MinMax {
+                min: GridTrackMinSizingFunction::Percentage(minimum),
+                max: GridTrackMaxSizingFunction::Fraction(factor),
+            } if factor.is_finite() && *factor >= 0.0 => {
+                let Some(minimum) = resolved_auto_repeat_neighbor_percentage(*minimum, basis)
+                else {
+                    return false;
+                };
+                minimum
+            }
+            GridTrackSize::MinMax { min, max }
+                if matches!(
+                    min,
+                    GridTrackMinSizingFunction::LengthPx(_)
+                        | GridTrackMinSizingFunction::Percentage(_)
+                ) && matches!(
+                    max,
+                    GridTrackMaxSizingFunction::LengthPx(_)
+                        | GridTrackMaxSizingFunction::Percentage(_)
+                ) =>
+            {
+                let Some(minimum) = resolved_auto_repeat_neighbor_minimum(*min, basis) else {
+                    return false;
+                };
+                let Some(maximum) = resolved_auto_repeat_neighbor_maximum(*max, basis) else {
+                    return false;
+                };
+                minimum.max(maximum)
             }
             GridTrackSize::Calc(id) => {
                 let Some(basis) = basis else {
@@ -1759,6 +1861,45 @@ fn auto_repeat_neighbor_tracks_are_supported(
         resolved_neighbor_sum += resolved;
     }
     true
+}
+
+fn resolved_auto_repeat_neighbor_percentage(value: f32, basis: Option<f32>) -> Option<f64> {
+    if !value.is_finite() || value < 0.0 {
+        return None;
+    }
+    let basis = basis?;
+    let resolved = f64::from(value) * f64::from(basis);
+    (resolved.is_finite() && resolved <= f64::from(f32::MAX)).then_some(resolved)
+}
+
+fn resolved_auto_repeat_neighbor_minimum(
+    value: GridTrackMinSizingFunction,
+    basis: Option<f32>,
+) -> Option<f64> {
+    match value {
+        GridTrackMinSizingFunction::LengthPx(value) if value.is_finite() && value >= 0.0 => {
+            Some(f64::from(value))
+        }
+        GridTrackMinSizingFunction::Percentage(value) => {
+            resolved_auto_repeat_neighbor_percentage(value, basis)
+        }
+        _ => None,
+    }
+}
+
+fn resolved_auto_repeat_neighbor_maximum(
+    value: GridTrackMaxSizingFunction,
+    basis: Option<f32>,
+) -> Option<f64> {
+    match value {
+        GridTrackMaxSizingFunction::LengthPx(value) if value.is_finite() && value >= 0.0 => {
+            Some(f64::from(value))
+        }
+        GridTrackMaxSizingFunction::Percentage(value) => {
+            resolved_auto_repeat_neighbor_percentage(value, basis)
+        }
+        _ => None,
+    }
 }
 
 fn auto_repeat_neighbor_calc_terms(expression: &crate::LayoutCssMath) -> Option<(f32, f32)> {

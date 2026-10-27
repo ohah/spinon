@@ -1,5 +1,6 @@
 use super::super::super::{
-    RuntimeGpuHost, SpinonRuntimeGpuHost, c11_4_grid_track_sizing_runtime_source, raw_host,
+    RuntimeGpuHost, SpinonRuntimeGpuHost, c11_4_grid_auto_fit_columns_wpt_expected_report,
+    c11_4_grid_track_sizing_runtime_source, raw_host,
 };
 use super::super::{ERR_ARGUMENT, write_host_status};
 use std::ffi::{CStr, c_char};
@@ -72,7 +73,14 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fi
         return ERR_ARGUMENT;
     };
     match host.eval(source.as_ref(), layout_timeout_millis) {
-        Ok(report) => write_host_status(0, report, output, output_capacity),
+        Ok(report) => {
+            let report = c11_4_grid_auto_fit_columns_wpt_expected_report(scene_id)
+                .map(|expected| {
+                    format!("{report} c11_4_grid_auto_fit_columns_wpt_expected={expected}")
+                })
+                .unwrap_or(report);
+            write_host_status(0, report, output, output_capacity)
+        }
         Err((status, report)) => write_host_status(status, report, output, output_capacity),
     }
 }

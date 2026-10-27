@@ -1468,6 +1468,9 @@ pub struct GridTrackSizingPassTrace {
     /// The auto-repeat expansion used by the tagged fixture pass.
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub fixture_auto_repeat_count: Option<u16>,
+    /// The auto-repeat expansion used by this axis, when it contains auto-repeat.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub auto_repeat_count: Option<u16>,
     /// The resolved content-box basis used by percentage track sizing in the tagged pass.
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub fixture_percentage_basis: Option<f32>,
@@ -1486,8 +1489,9 @@ pub enum GridTrackSizingFixturePhase {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Debug, Clone, Copy)]
 struct GridTrackSizingFixturePassContext {
-    phase: GridTrackSizingFixturePhase,
-    auto_repeat_count: u16,
+    phase: Option<GridTrackSizingFixturePhase>,
+    fixture_auto_repeat_count: Option<u16>,
+    auto_repeat_count: Option<u16>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -1503,16 +1507,17 @@ fn track_sizing_pass_context(
 ) -> GridTrackSizingPassContextOption {
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     {
-        if !enabled {
+        if !enabled && auto_repeat_count == 0 {
             return None;
         }
         Some(GridTrackSizingFixturePassContext {
-            phase: if final_definite {
+            phase: enabled.then_some(if final_definite {
                 GridTrackSizingFixturePhase::FinalDefinite
             } else {
                 GridTrackSizingFixturePhase::IntrinsicMaxContent
-            },
-            auto_repeat_count,
+            }),
+            fixture_auto_repeat_count: enabled.then_some(auto_repeat_count),
+            auto_repeat_count: (auto_repeat_count > 0).then_some(auto_repeat_count),
         })
     }
     #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
@@ -1574,9 +1579,12 @@ impl GridTrackSizingTrace {
             stages: Vec::new(),
             contributions: Vec::new(),
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-            fixture_phase: fixture_context.map(|context| context.phase),
+            fixture_phase: fixture_context.and_then(|context| context.phase),
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-            fixture_auto_repeat_count: fixture_context.map(|context| context.auto_repeat_count),
+            fixture_auto_repeat_count: fixture_context
+                .and_then(|context| context.fixture_auto_repeat_count),
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            auto_repeat_count: fixture_context.and_then(|context| context.auto_repeat_count),
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
             fixture_percentage_basis: fixture_context.and(percentage_basis),
         });

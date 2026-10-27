@@ -1,0 +1,50 @@
+bun test v1.4.2 (744846f84)
+
+tools/css-reference/c11-ios-build-flags.test.mjs:
+(pass) mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 [519.09ms]
+(pass) C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 [318.14ms]
+(pass) C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 [9.29ms]
+(pass) Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 [10.17ms]
+(pass) iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 [165.13ms]
+(pass) 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 [19.66ms]
+(pass) iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 [9.87ms]
+(pass) Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 [1.30ms]
+(pass) C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 [5.27ms]
+(pass) UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 [160.51ms]
+(pass) C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 [0.81ms]
+(pass) Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 [1.17ms]
+(pass) C04 runtime core만으로는 fixture ABI를 노출하지 않는다 [210.60ms]
+
+build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-final/tools/css-reference/c11-ios-build-flags.test.mjs:
+(pass) mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 [387.68ms]
+(pass) C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 [307.51ms]
+(pass) C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 [7.15ms]
+(pass) Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 [8.41ms]
+(pass) iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 [153.96ms]
+(pass) 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 [24.87ms]
+(pass) iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 [9.74ms]
+(pass) Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 [0.88ms]
+(pass) C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 [3.66ms]
+(pass) UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 [161.11ms]
+(pass) C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 [0.60ms]
+(pass) Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 [0.74ms]
+(pass) C04 runtime core만으로는 fixture ABI를 노출하지 않는다 [90.59ms]
+
+build/spinon/c11-4-cyclic-minmax-calc-overlapping-spans-tailnet-root-pass26-initial/tools/css-reference/c11-ios-build-flags.test.mjs:
+(pass) mise 유무와 관계없이 iOS simulator 빌드 인자로 Grid pixel 기능을 전달한다 [307.64ms]
+(pass) C18.2 iOS fixture는 C04 GPU와 공유 C18.1 readback 기반을 함께 켠다 [322.30ms]
+(pass) C18.2 iOS fixture는 C04 GPU fixture 없이 빌드를 시작하지 않는다 [8.55ms]
+(pass) Grid pixel 검증은 C04 GPU fixture 없이 빌드를 시작하지 않는다 [8.47ms]
+(pass) iOS simulator 스크립트는 누락된 Grid pixel flag를 기본 비활성화로 전달한다 [158.00ms]
+(pass) 두 iOS 빌드 스크립트는 잘못된 Grid pixel flag를 거부한다 [22.16ms]
+(pass) iOS native build도 C04 GPU fixture 없이 Grid pixel feature를 거부한다 [9.89ms]
+(pass) Grid pixel 빌드 설정을 iOS native Rust feature와 C++ define으로 연결한다 [0.85ms]
+(pass) C04 GPU 핵심과 fixture 검증 feature를 분리하고 앱 검증 빌드에서만 둘 다 켠다 [3.52ms]
+(pass) UA cascade fixture probe는 기본 off이고 명시한 경우에만 Rust와 네이티브 경계를 켠다 [153.23ms]
+(pass) C11 iOS pixel 캡처는 출력 플래그 순서와 무관하게 기능 값을 확인한다 [0.57ms]
+(pass) Android와 iOS UA probe 호출은 opt-in feature gate 안에만 둔다 [0.77ms]
+(pass) C04 runtime core만으로는 fixture ABI를 노출하지 않는다 [90.03ms]
+
+ 39 pass
+ 0 fail
+Ran 39 tests across 3 files. [41.15s]

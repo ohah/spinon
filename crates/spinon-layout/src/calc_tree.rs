@@ -603,12 +603,40 @@ impl CalcLayoutTree {
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     fixture_auto_repeat_count: pass.fixture_auto_repeat_count,
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    auto_repeat_count: pass.auto_repeat_count,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                     fixture_percentage_basis: pass.fixture_percentage_basis,
                 });
             }
+            let used_columns = crate::LayoutGridTrackSizingResolvedAxis {
+                used_track_list: grid_info.columns.to_track_list_string(1.0),
+                explicit_track_count: grid_info.columns.explicit_tracks,
+                negative_implicit_track_count: grid_info.columns.negative_implicit_tracks,
+                positive_implicit_track_count: grid_info.columns.positive_implicit_tracks,
+                collapsed_track_indices: grid_info
+                    .columns
+                    .collapsed_tracks
+                    .iter()
+                    .flat_map(|range| range.clone())
+                    .collect(),
+            };
+            let used_rows = crate::LayoutGridTrackSizingResolvedAxis {
+                used_track_list: grid_info.rows.to_track_list_string(1.0),
+                explicit_track_count: grid_info.rows.explicit_tracks,
+                negative_implicit_track_count: grid_info.rows.negative_implicit_tracks,
+                positive_implicit_track_count: grid_info.rows.positive_implicit_tracks,
+                collapsed_track_indices: grid_info
+                    .rows
+                    .collapsed_tracks
+                    .iter()
+                    .flat_map(|range| range.clone())
+                    .collect(),
+            };
             traces.push(crate::LayoutGridTrackSizingTrace {
                 node: spinon_node,
                 passes,
+                used_columns,
+                used_rows,
             });
         }
         Ok(traces)
