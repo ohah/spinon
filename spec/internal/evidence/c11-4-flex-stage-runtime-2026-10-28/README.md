@@ -25,9 +25,9 @@
 
 ## 대표 화면
 
-![Android API 37 ARM64 16 KB AVD의 weighted-columns scene](runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png)
+![Android API 37 ARM64 16 KB AVD의 weighted-columns scene](./runs/c114-flex-stage-android-avd-20261027T225654572Z-2745705b/android-weighted-columns.png)
 
-![iPhone 17 Pro / iOS 26.2 Simulator의 weighted-columns scene](runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png)
+![iPhone 17 Pro / iOS 26.2 Simulator의 weighted-columns scene](./runs/c114-flex-stage-ios-simulator-20261027T224932984Z-8e6b2435/ios-weighted-columns.png)
 
 스크린샷은 렌더된 배치를 보여준다. Pixel equality 또는 compositor 제출 뒤 readback을 뜻하지 않는다.
 
