@@ -1,0 +1,251 @@
+{
+  "target": "ios-simulator",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+  "screenshotScenes": [
+    "direct-min-content-forward",
+    "direct-min-content-generic-forward"
+  ],
+  "appSha256": "e420a399faa187fe3558fdc4f35849aae28bbf041385be0c7d43cef16d307726",
+  "buildProvenance": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "bun",
+      "run",
+      "build:ios-sim"
+    ],
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": "1"
+    },
+    "source": {
+      "commit": "66c2fcda5c2165f0d62d662710d94b14511ea369",
+      "tree": "eb9ec0e3208914f80aa69f225e051d26092f1ce9",
+      "trackedDiffSha256": "688e5964e21b9703682ac047b641c1d0342099e5d0ef537c39af7554adf8d7d7",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs"
+      ],
+      "sourceFileSha256": {
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "84e8565c411506424a7c2f46c64d43d12abe1a7e0e4b7e3ce9835c33906b310f",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "2999a0d19cbe2cf180cc465289184a7ef29804019be015455737737204376935",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs": "68546ca37aa6ab3604ad78b5ba0fd2ee24c8eeba80f37ece2dda608412e35334",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_intrinsic.rs": "5c9bf3a4a680a25dd7325b566831428bcf2140913ddd296fa29dd64230a8b570",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "26389f5327287e283996328862ac8fd2d1c374c274c01a54196fa96027caa946",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "14826b026307d56abcfdcc4abc043809bfdc126be8a32badd816eba7ff434736",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/tests.rs": "c09bb4e39542e60acdfd6c487fdf67c7cd55e252096f4061598cc18e6b384ddc",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "57faa229dd76eae75e22ff0a31c06ec8f2bf105daddb69088a7a2c026bd04098",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "2e976d3598f8d9e95f4ffc1e243d74b1610c127861f9906a338ed09c34567d91",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "cbb2435733ead2bbbd35b0fc0fa410d70f1391fc17256d98ac7ac31134b87eb4"
+      },
+      "sourceFilesSha256": "0ef6a36c189c3e9b44849cd54300991a036398a58cc31cf4a677a2e3a663aa30"
+    },
+    "captureScript": {
+      "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs",
+      "sha256": "b4133d2f68274b12cc035728bb9940b9ed9cf8145173841af9a471914801409d"
+    },
+    "artifactPath": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "artifactSha256": "e420a399faa187fe3558fdc4f35849aae28bbf041385be0c7d43cef16d307726",
+    "buildLogPath": "spec/internal/evidence/c11-4-generic-mixed-text-image-runtime-2026-10-28/runs/c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea/ios-build.log",
+    "buildLogSha256": "3d2117116d1ba002c5fa95d3ff445d30980273ede5e6ea84d6d3959bea7ae7e8"
+  },
+  "screenshotVerifier": {
+    "path": "spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/verify-ios-screenshot.swift",
+    "sha256": "5e9eaf2e96bf9db6f414bede3c7a9de594456bceeb91e7e68395470c3ba74fb8"
+  },
+  "sourceRevision": {
+    "commit": "66c2fcda5c2165f0d62d662710d94b14511ea369",
+    "tree": "eb9ec0e3208914f80aa69f225e051d26092f1ce9",
+    "trackedDiffSha256": "688e5964e21b9703682ac047b641c1d0342099e5d0ef537c39af7554adf8d7d7",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/evidence/c11-4-direct-mixed-text-image-runtime-2026-10-25/capture-direct-mixed.mjs"
+    ],
+    "sourceFileSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "84e8565c411506424a7c2f46c64d43d12abe1a7e0e4b7e3ce9835c33906b310f",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "2999a0d19cbe2cf180cc465289184a7ef29804019be015455737737204376935",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/mixed_direct_text_image_intrinsic.rs": "68546ca37aa6ab3604ad78b5ba0fd2ee24c8eeba80f37ece2dda608412e35334",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_mixed_direct_text_image_intrinsic.rs": "5c9bf3a4a680a25dd7325b566831428bcf2140913ddd296fa29dd64230a8b570",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "26389f5327287e283996328862ac8fd2d1c374c274c01a54196fa96027caa946",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "14826b026307d56abcfdcc4abc043809bfdc126be8a32badd816eba7ff434736",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/tests.rs": "c09bb4e39542e60acdfd6c487fdf67c7cd55e252096f4061598cc18e6b384ddc",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/style.rs": "57faa229dd76eae75e22ff0a31c06ec8f2bf105daddb69088a7a2c026bd04098",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/tests.rs": "446b12423151a68be352d0fe92063db15a8dcaf4c710d79f66b9622411b27bb5",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "2e976d3598f8d9e95f4ffc1e243d74b1610c127861f9906a338ed09c34567d91",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "cbb2435733ead2bbbd35b0fc0fa410d70f1391fc17256d98ac7ac31134b87eb4"
+    },
+    "sourceFilesSha256": "0ef6a36c189c3e9b44849cd54300991a036398a58cc31cf4a677a2e3a663aa30"
+  },
+  "observations": [
+    {
+      "sceneId": "direct-min-content-forward",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-0",
+      "columnTrack": 50,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 11,
+      "drawPresented": true,
+      "runtimeLogSha256": "7717e82f93a059677f1369da4e172aa97edefffdddbcee6b25cfefa4e1ef212c",
+      "screenshotPixels": {
+        "width": 1206,
+        "height": 2622
+      },
+      "screenshotOcrText": "4:35\nSPINON • C11.4 Grid track sizing\nIntrinsic Grid track sizing → Stylo → Taffy → WGPU\nMetal • 320×240 CSS px\nstatus=0 layout=ready boxes=3 generation=1\ndocument_revision=19 environment_revision=1",
+      "screenshotSha256": "1fc1ab53a0866ac5350b62ae8074b5500eb4aed966c3110c0e9200a18a4d47bd"
+    },
+    {
+      "sceneId": "direct-min-content-reversed",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-1",
+      "columnTrack": 50,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 11,
+      "drawPresented": true,
+      "runtimeLogSha256": "d47a78583f0d97a4cb2d473f3b1a78f5132e65bf6799411812caade83e84a039"
+    },
+    {
+      "sceneId": "direct-max-content-forward",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-2",
+      "columnTrack": 80,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=80,height=10",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 12,
+      "drawPresented": true,
+      "runtimeLogSha256": "7a60c7e844630dbbe6b6d9c662c011a8b719f843b7ceff1e4cf93fc01d3147a0"
+    },
+    {
+      "sceneId": "direct-max-content-reversed",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-3",
+      "columnTrack": 80,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=80,height=10"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 12,
+      "drawPresented": true,
+      "runtimeLogSha256": "171c6642124474198ead86f6f6b4c12682ffd05ef3d71ee40ea3fd4cc94adc58"
+    },
+    {
+      "sceneId": "direct-min-content-generic-forward",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-4",
+      "columnTrack": 50,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=50,height=20",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 11,
+      "drawPresented": true,
+      "runtimeLogSha256": "8a11bcdb75d0cf4dee7593bc1037e34d71534915889df668ee417767e7b05fba",
+      "screenshotPixels": {
+        "width": 1206,
+        "height": 2622
+      },
+      "screenshotOcrText": "4:36\nSPINON • C11.4 Grid track sizing\nIntrinsic Grid track sizing → Stylo → Taffy → WGPU\nMetal • 320×240 CSS px\nstatus=0 layout=ready boxes=3 generation=1\ndocument_revision=19 environment_revision=1",
+      "screenshotSha256": "a16d7a82b150c833e6ee9cd1efb314e3de58d0a62816f04e72e405496682d6c4"
+    },
+    {
+      "sceneId": "direct-min-content-generic-reversed",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-5",
+      "columnTrack": 50,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=50,height=20"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 11,
+      "drawPresented": true,
+      "runtimeLogSha256": "c2261b8fb3d6cf2ac0c09f8ef7ee4c66b888782d74d9c76f30caba6a1cd7cb86"
+    },
+    {
+      "sceneId": "direct-max-content-generic-forward",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-6",
+      "columnTrack": 80,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=0,width=80,height=10",
+        "2:node=4,x=0,y=24,width=24,height=16"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 12,
+      "drawPresented": true,
+      "runtimeLogSha256": "bca4cfe5cec6665d09c3af072a40bec9ba87f707d9a9eb57f227cb7466f619c7"
+    },
+    {
+      "sceneId": "direct-max-content-generic-reversed",
+      "runID": "c114-direct-mixed-ios-simulator-20261027T193531173Z-4f7e9cea-7",
+      "columnTrack": 80,
+      "rowTracks": [
+        24,
+        24
+      ],
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=48",
+        "1:node=2,x=0,y=24,width=24,height=16",
+        "2:node=3,x=0,y=0,width=80,height=10"
+      ],
+      "intrinsicRevision": 1,
+      "traceChunks": 12,
+      "drawPresented": true,
+      "runtimeLogSha256": "041d3c9bec14bac8cdd4bd5159f359c7c6a389cfc115f56ae854558b03edd02f"
+    }
+  ]
+}

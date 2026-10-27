@@ -1,0 +1,3 @@
+PASS: generic mixed text-image route absent from the default spinon-ffi archive
+PASS: generic mixed text-image route present in the opt-in c04-runtime-gpu-fixture-test archive
+Scope: Rust static archive only; this does not establish release APK or IPA fixture exclusion.
