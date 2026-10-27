@@ -597,6 +597,7 @@ mod tests {
             contributions: Vec::new(),
             fixture_phase: None,
             fixture_auto_repeat_count: None,
+            auto_repeat_count: None,
             fixture_percentage_basis: None,
         };
         assert!(validate_rows_pass(&pass).is_ok());

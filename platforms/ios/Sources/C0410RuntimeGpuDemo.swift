@@ -546,7 +546,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-border-box",
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
-    "fit-content-auto-neighbor-wpt",
+    "fit-content-auto-neighbor-wpt", "fit-content-min-height-wpt",
     "grid-layout-auto-tracks-c114-wpt",
     "intrinsic-auto-repeat-max-content-100",
     "intrinsic-auto-repeat-max-content-80",
@@ -1418,6 +1418,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=160,height=100"
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=300" }
+    if sceneID == "fit-content-min-height-wpt" { return "width=60,height=300" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=20" }
     if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
     if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
@@ -1732,6 +1733,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=160,height=10"
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=10" }
+    if sceneID == "fit-content-min-height-wpt" { return "width=60,height=10" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=10" }
     if sceneID == "image-auto-max-mixed-tracks"
         || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
@@ -3178,6 +3180,86 @@ private func c114FitContentAutoNeighborMatches(
           (passes[1]["axis"] as? String) == "Rows",
           c114FitContentRowSizingStagesMatch(passes[1]) else {
         return false
+    }
+    return true
+}
+
+private func c114FitContentMinHeightMatches(_ sceneID: String, report: String) -> Bool {
+    guard sceneID == "fit-content-min-height-wpt" else { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let source = revision["source"] as? String,
+          let revisionStyle = revision["style"] as? NSNumber,
+          let revisionEnvironment = revision["environment"] as? NSNumber,
+          let observation = diagnostics["fitContentMinHeight"] as? [String: Any],
+          observation["sceneId"] as? String == sceneID,
+          observation["frameSource"] as? String == "pre-render LayoutOutput CSS px",
+          let style = observation["styleSnapshot"] as? [String: Any],
+          style["profile"] as? String == "RuntimeBlockFlexGridTrackSizingV1",
+          let generation = style["generation"] as? NSNumber,
+          let document = style["documentRevision"] as? NSNumber,
+          let renderTree = style["renderTreeRevision"] as? NSNumber,
+          let styleRevision = style["styleRevision"] as? NSNumber,
+          let environment = style["environmentRevision"] as? NSNumber,
+          generation.int64Value > 0, document.int64Value > 0, renderTree.int64Value > 0,
+          styleRevision.int64Value >= 0,
+          styleRevision.int64Value == revisionStyle.int64Value,
+          environment.int64Value >= 0,
+          environment.int64Value == revisionEnvironment.int64Value,
+          c114FitContentAutoNeighborReportField(report, "generation=") == String(generation.int64Value),
+          c114FitContentAutoNeighborReportField(report, "document_revision=") == String(document.int64Value),
+          c114FitContentAutoNeighborReportField(report, "render_tree_revision=") == String(renderTree.int64Value),
+          c114FitContentAutoNeighborReportField(report, "style_revision=") == String(styleRevision.int64Value),
+          c114FitContentAutoNeighborReportField(report, "environment_revision=") == String(environment.int64Value),
+          source.contains("generation: DocumentGeneration(\(generation.int64Value))"),
+          source.contains("document: DocumentRevision(\(document.int64Value))"),
+          source.contains("render_tree: RenderTreeRevision(\(renderTree.int64Value))"),
+          let properties = style["computedProperties"] as? [String: Any],
+          properties["display"] as? String == "grid",
+          properties["width"] as? String == "LengthPx(60.0)",
+          properties["height"] as? String == "Auto",
+          properties["minHeight"] as? String == "LengthPx(300.0)",
+          properties["gridTemplateColumns"] as? String == "60px",
+          properties["gridTemplateRows"] as? String == "none",
+          properties["gridAutoRows"] as? String == "fit-content(40px)",
+          properties["alignContent"] as? String == "normal",
+          let input = observation["layoutInputGridContainer"] as? [String: Any],
+          input["columns"] as? String == "[LengthPx(60.0)]",
+          input["explicitRows"] as? String == "[]",
+          input["autoRows"] as? String == "TrackList([FitContent(LengthPx(40.0))])",
+          input["autoFlow"] as? String == "Row",
+          input["placementMode"] as? String == "TrackSizing",
+          let nodeIDs = observation["nodeIds"] as? [String: Any],
+          nodeIDs.count == 3,
+          let root = nodeIDs["root"] as? NSNumber,
+          let item = nodeIDs["item"] as? NSNumber,
+          let child = nodeIDs["child"] as? NSNumber,
+          [root, item, child].map(\.int64Value) == [1, 2, 3],
+          (style["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          (input["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          let frames = observation["framesCssPx"] as? [String: Any],
+          frames.count == 3,
+          c114FitContentFrameMatches(frames["root"], x: 0, y: 0, width: 60, height: 300),
+          c114FitContentFrameMatches(frames["item"], x: 0, y: 0, width: 60, height: 10),
+          c114FitContentFrameMatches(frames["child"], x: 0, y: 0, width: 60, height: 10),
+          let rowStages = observation["rowSizingStages"] as? [[String: Any]] else {
+        return false
+    }
+
+    let expectedStages = [
+        "Initialize",
+        "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+        "IntrinsicSizingComplete", "MaximizeTracks", "ExpandFlexibleTracks",
+        "StretchAutoTracks { applied: true }",
+    ]
+    guard rowStages.count == expectedStages.count else { return false }
+    for (index, expected) in expectedStages.enumerated() {
+        guard rowStages[index]["stage"] as? String == expected,
+              let bases = rowStages[index]["baseSizesCssPx"] as? [NSNumber],
+              bases.count == 1,
+              abs(bases[0].doubleValue - (index == 0 ? 0 : 10)) <= 0.000001 else {
+            return false
+        }
     }
     return true
 }
@@ -5261,6 +5343,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "3:node=4,x=0,y=10,width=60,height=290;"
             + "4:node=5,x=0,y=10,width=60,height=10]"
     }
+    if sceneID == "fit-content-min-height-wpt" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
+            + "1:node=2,x=0,y=0,width=60,height=10;"
+            + "2:node=3,x=0,y=0,width=60,height=10]"
+    }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
             + "1:node=2,x=0,y=0,width=100,height=10;"
@@ -6861,6 +6948,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "align-content-normal-equal-auto-rows" { return 4 }
     if sceneID == "fit-content-auto-neighbor-wpt"
         || sceneID == "grid-layout-auto-tracks-c114-wpt" { return 5 }
+    if sceneID == "fit-content-min-height-wpt" { return 3 }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
@@ -7767,6 +7855,23 @@ private struct C111MetalPixelRun {
                 ("auto-neighbor-row-fill-top", autoItemID, 30, 20, [58, 134, 255, 255]),
                 ("auto-neighbor-row-fill-bottom", autoItemID, 30, 230, [58, 134, 255, 255]),
                 ("grid-root-right-edge-outside", rootID, 60, 20, [0, 0, 0, 255]),
+            ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
+        if sceneID == "fit-content-min-height-wpt" {
+            let rootID = "c114-fit-content-min-height-grid"
+            let childID = "c114-fit-content-min-height-child"
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("fit-content-min-height-child", childID, 30, 5, [255, 209, 102, 255]),
+                ("fit-content-min-height-root-background", rootID, 30, 15, [23, 33, 43, 255]),
+                ("fit-content-min-height-outside-root", rootID, 60, 15, [0, 0, 0, 255]),
             ]
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
@@ -8795,6 +8900,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c114FitContentAutoNeighborExpectedPresentationIdentity: String?
     private var c114FitContentAutoNeighborExpectedSurfaceGeneration: UInt64?
     private var c114FitContentAutoNeighborExpectedSequence: UInt64?
+    private var c114FitContentMinHeightExpectedPresentationIdentity: String?
+    private var c114FitContentMinHeightExpectedSurfaceGeneration: UInt64?
+    private var c114FitContentMinHeightExpectedSequence: UInt64?
     private var c114AlignContentNormalEqualAutoRowsExpectedPresentationIdentity: String?
     private var c114AlignContentNormalEqualAutoRowsExpectedSurfaceGeneration: UInt64?
     private var c114AlignContentNormalEqualAutoRowsExpectedSequence: UInt64?
@@ -10175,6 +10283,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
               (UInt64(values[1]) ?? 0) > 0,
               (UInt64(values[2]) ?? 0) > 0 else { return nil }
         return values.joined(separator: "/")
+    }
+
+    private func c114FitContentMinHeightPresentationIdentity(
+        _ report: String, drawReport: Bool
+    ) -> String? {
+        let rootFrameField = drawReport ? "root_css_px=" : "root_frame_css_px="
+        let viewportField = drawReport ? "viewport_css_px=" : "render_viewport_css_px="
+        guard report.hasPrefix("status=0 "),
+              c114FitContentAutoNeighborReportField(report, "boxes=") == "3",
+              c114FitContentAutoNeighborReportField(report, rootFrameField) == "60x300",
+              c114FitContentAutoNeighborReportField(report, viewportField) == "320x240",
+              drawReport
+                ? (report.contains("presented boxes=3 ")
+                    && c114AlignContentNormalEqualAutoRowsPositiveSize(
+                        c114FitContentAutoNeighborReportField(report, "surface_texture=")))
+                : c114FitContentAutoNeighborReportField(report, "layout=") == "ready" else {
+            return nil
+        }
+        let fields = [
+            "generation=", "document_revision=", "render_tree_revision=",
+            "style_revision=", "environment_revision="
+        ]
+        let values = fields.map { c114FitContentAutoNeighborReportField(report, $0) }
+        guard values.allSatisfy({ UInt64($0) != nil }),
+              (UInt64(values[0]) ?? 0) > 0,
+              (UInt64(values[1]) ?? 0) > 0,
+              (UInt64(values[2]) ?? 0) > 0 else { return nil }
+        return "60x300/320x240/" + values.joined(separator: "/")
     }
 
     private func c114AlignContentNormalEqualAutoRowsPresentationIdentity(
@@ -12162,6 +12298,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedFitContentAutoNeighborMatches = c114FitContentAutoNeighborMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedFitContentMinHeightMatches = c114FitContentMinHeightMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedGridLayoutAutoTracksMatches = c114GridLayoutAutoTracksMatches(
                 c114GridTrackSizingSceneID, report: report)
             let expectedEqualAutoRowsMatches = c114AlignContentNormalEqualAutoRowsMatches(
@@ -12185,6 +12323,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch,
                   expectedFitContentAutoNeighborMatches,
+                  expectedFitContentMinHeightMatches,
                   expectedGridLayoutAutoTracksMatches,
                   expectedEqualAutoRowsMatches,
                   expectedRowAxisSpanStageMatches else {
@@ -13126,6 +13265,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c114FitContentAutoNeighborExpectedPresentationIdentity = identity
             c114FitContentAutoNeighborExpectedSurfaceGeneration = generation
             c114FitContentAutoNeighborExpectedSequence = sequence
+            stateLock.unlock()
+            log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114GridTrackSizingSceneID == "fit-content-min-height-wpt" {
+            let environmentReport = report ?? ""
+            guard c114FitContentMinHeightMatches(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  c114ExpectedNodeFramesMatch(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  let identity = c114FitContentMinHeightPresentationIdentity(
+                    environmentReport, drawReport: false) else {
+                stateLock.lock()
+                c114FitContentMinHeightExpectedPresentationIdentity = nil
+                c114FitContentMinHeightExpectedSurfaceGeneration = nil
+                c114FitContentMinHeightExpectedSequence = nil
+                stateLock.unlock()
+                log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=false report=\(environmentReport)")
+                postStatus("실패 · C11.4 min-height fit-content surface 환경이 기준 trace와 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 min-height fit-content environment layout/revision 검증 실패"
+                )
+            }
+            stateLock.lock()
+            guard !closing && surfaceGeneration == generation
+                && presentationSequence == sequence else {
+                stateLock.unlock()
+                return
+            }
+            c114FitContentMinHeightExpectedPresentationIdentity = identity
+            c114FitContentMinHeightExpectedSurfaceGeneration = generation
+            c114FitContentMinHeightExpectedSequence = sequence
             stateLock.unlock()
             log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
         }
@@ -14467,6 +14638,29 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C11.4 draw revision이 검증된 surface 환경과 다릅니다")
                 throw C0410LatestTaskLaneError.operationFailed(
                     "C11.4 draw identity가 surface environment와 일치하지 않습니다"
+                )
+            }
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114GridTrackSizingSceneID == "fit-content-min-height-wpt" {
+            let actualIdentity = result.flatMap {
+                c114FitContentMinHeightPresentationIdentity($0, drawReport: true)
+            }
+            stateLock.lock()
+            let expectedIdentity = c114FitContentMinHeightExpectedPresentationIdentity
+            let expectedSurfaceGeneration = c114FitContentMinHeightExpectedSurfaceGeneration
+            let expectedSequence = c114FitContentMinHeightExpectedSequence
+            let currentSequence = presentationSequence
+            stateLock.unlock()
+            let matched = actualIdentity != nil
+                && actualIdentity == expectedIdentity
+                && expectedSurfaceGeneration == generation
+                && expectedSequence == currentSequence
+            log("SPINON_C114_GRID_PRESENTATION_MATCH run_id=\(c114GridTrackSizingRunID) matched=\(matched) surface_generation=\(generation) sequence=\(currentSequence) expected_identity=\(expectedIdentity ?? "missing") actual_identity=\(actualIdentity ?? "missing")")
+            guard matched else {
+                postStatus("실패 · C11.4 min-height fit-content draw revision이 surface 환경과 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 min-height fit-content draw identity가 surface environment와 일치하지 않습니다"
                 )
             }
         }

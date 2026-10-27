@@ -86,6 +86,7 @@ const fixedAutoAreaSceneIDs = new Set([
   'fixed-auto-area-rows-area-larger',
 ]);
 const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
+const fitContentMinHeightSceneIDs = new Set(['fit-content-min-height-wpt']);
 const equalAutoRowsSceneIDs = new Set(['align-content-normal-equal-auto-rows']);
 const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
@@ -169,6 +170,8 @@ const isFixedAutoAreaRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fixedAutoAreaSceneIDs.has(sceneID));
 const isFitContentAutoNeighborRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoNeighborSceneIDs.has(sceneID));
+const isFitContentMinHeightRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => fitContentMinHeightSceneIDs.has(sceneID));
 const equalAutoRowsSceneID = 'align-content-normal-equal-auto-rows';
 if (requestedSceneIDs?.includes(equalAutoRowsSceneID)
     || requestedRunKind === equalAutoRowsSceneID) {
@@ -188,6 +191,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
   : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
+  : isFitContentMinHeightRun ? 'fit-content-min-height'
   : isEqualAutoRowsRun ? 'align-content-normal-equal-auto-rows'
   : isImageAutoMaxBorderOverflowRun ? 'image-auto-max-border-overflow'
   : isCrossAxisTemplateAreaRun ? 'cross-axis-fixed-auto-area'
@@ -231,6 +235,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-cross-axis-fixed-auto-repeat-areas-runtime-${date}/${target}-${runPrefix}`
   : isFitContentAutoNeighborRun
     ? `spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-${date}/${target}-${runPrefix}`
+  : isFitContentMinHeightRun
+    ? `spec/internal/evidence/c11-4-fit-content-min-height-runtime-${date}/${target}-${runPrefix}`
   : isImageAutoMaxBorderOverflowRun
     ? `spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
@@ -5060,6 +5066,36 @@ scenes.push({
   ],
 });
 scenes.push({
+  id: 'fit-content-min-height-wpt',
+  axis: 'Rows',
+  boxCount: 3,
+  rootFrame: 'width=60,height=300',
+  itemFrame: 'width=60,height=10',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;'
+    + '1:node=2,x=0,y=0,width=60,height=10;'
+    + '2:node=3,x=0,y=0,width=60,height=10]',
+  tracks: [10],
+  collapsed: [false],
+  requiresStrictPresentationIdentity: true,
+  fitContentMinHeight: {
+    rootNode: 1,
+    itemNode: 2,
+    childNode: 3,
+    rowBaseSize: 10,
+  },
+  pixelSamples: [
+    { id: 'fit-content-min-height-child',
+      nodeId: 'c114-fit-content-min-height-child',
+      xCssPx: 30, yCssPx: 5, rgba: [255, 209, 102, 255] },
+    { id: 'fit-content-min-height-root-background',
+      nodeId: 'c114-fit-content-min-height-grid',
+      xCssPx: 30, yCssPx: 15, rgba: [23, 33, 43, 255] },
+    { id: 'fit-content-min-height-outside-root',
+      nodeId: 'c114-fit-content-min-height-grid',
+      xCssPx: 60, yCssPx: 15, rgba: [0, 0, 0, 255] },
+  ],
+});
+scenes.push({
   id: 'align-content-normal-equal-auto-rows',
   axis: 'Rows',
   axes: {
@@ -5183,7 +5219,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 516, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 517, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6331,6 +6367,66 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceState.parts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
+  if (scene.fitContentMinHeight) {
+    const expected = scene.fitContentMinHeight;
+    const observation = diagnostics.fitContentMinHeight;
+    assert.ok(observation, `${scene.id}: min-height fixture observation is missing`);
+    assert.equal(observation.sceneId, scene.id);
+    assert.equal(observation.frameSource, 'pre-render LayoutOutput CSS px');
+    const style = observation.styleSnapshot;
+    assert.equal(style.profile, 'RuntimeBlockFlexGridTrackSizingV1');
+    assert.equal(style.rootNode, expected.rootNode);
+    assert.ok(Number.isInteger(style.generation) && style.generation > 0);
+    assert.ok(Number.isInteger(style.documentRevision) && style.documentRevision > 0);
+    assert.ok(Number.isInteger(style.renderTreeRevision) && style.renderTreeRevision > 0);
+    assert.ok(Number.isInteger(style.styleRevision) && style.styleRevision >= 0);
+    assert.ok(Number.isInteger(style.environmentRevision) && style.environmentRevision >= 0);
+    assert.equal(style.styleRevision, diagnostics.layoutInputRevision.style);
+    assert.equal(style.environmentRevision, diagnostics.layoutInputRevision.environment);
+    assert.deepEqual(style.computedProperties, {
+      display: 'grid',
+      width: 'LengthPx(60.0)',
+      height: 'Auto',
+      minHeight: 'LengthPx(300.0)',
+      gridTemplateColumns: '60px',
+      gridTemplateRows: 'none',
+      gridAutoRows: 'fit-content(40px)',
+      alignContent: 'normal',
+    });
+    assert.ok(typeof style.typedGridStyle === 'string' && style.typedGridStyle.length > 0,
+      `${scene.id}: typed computed Grid style is missing`);
+    assert.deepEqual(observation.layoutInputGridContainer, {
+      rootNode: expected.rootNode,
+      columns: '[LengthPx(60.0)]',
+      explicitRows: '[]',
+      autoRows: 'TrackList([FitContent(LengthPx(40.0))])',
+      autoFlow: 'Row',
+      placementMode: 'TrackSizing',
+    });
+    assert.deepEqual(observation.nodeIds, {
+      root: expected.rootNode,
+      item: expected.itemNode,
+      child: expected.childNode,
+    });
+    assert.deepEqual(observation.framesCssPx, {
+      root: { x: 0, y: 0, width: 60, height: 300 },
+      item: { x: 0, y: 0, width: 60, height: 10 },
+      child: { x: 0, y: 0, width: 60, height: 10 },
+    });
+    const expectedStages = [
+      'Initialize',
+      'IntrinsicItemBatch { span: 1, crosses_flexible_track: false }',
+      'IntrinsicSizingComplete', 'MaximizeTracks', 'ExpandFlexibleTracks',
+      'StretchAutoTracks { applied: true }',
+    ];
+    assert.deepEqual(observation.rowSizingStages.map(({ stage }) => stage), expectedStages,
+      `${scene.id}: row sizing stages are missing, duplicated, or out of order`);
+    for (const stage of observation.rowSizingStages) {
+      const expectedBase = stage.stage === 'Initialize' ? 0 : expected.rowBaseSize;
+      assert.deepEqual(stage.baseSizesCssPx, [expectedBase],
+        `${scene.id}: fit-content row size changed at ${stage.stage}`);
+    }
+  }
   if (scene.nestedGridIntrinsic) {
     const expected = scene.nestedGridIntrinsic;
     const actualInputs = (diagnostics.gridItemIntrinsicInputs ?? []).map((input) => ({

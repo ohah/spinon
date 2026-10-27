@@ -40,6 +40,10 @@ mod c11_4_nested_grid_rows;
 mod c11_4_fit_content_auto_neighbor;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_fit_content_min_height.rs"]
+mod c11_4_fit_content_min_height;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_grid_layout_auto_tracks.rs"]
 mod c11_4_grid_layout_auto_tracks;
 
@@ -141,6 +145,13 @@ pub(super) use c11_4_fit_content_auto_neighbor::{
     observation as c11_4_fit_content_auto_neighbor_observation,
     prepare as prepare_c11_4_fit_content_auto_neighbor,
     validate_output as validate_c11_4_fit_content_auto_neighbor_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_fit_content_min_height::{
+    observation as c11_4_fit_content_min_height_observation,
+    prepare as prepare_c11_4_fit_content_min_height,
+    validate_output as validate_c11_4_fit_content_min_height_output,
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
