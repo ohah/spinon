@@ -1,0 +1,14 @@
+{
+  "source": "spec/public/roadmap.html",
+  "url": "http://127.0.0.1:8767/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "browser": "HeadlessChrome/156.0.0.0",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "deviceScaleFactor": 1
+  },
+  "screenshot": "roadmap-pr671-public-row-axis-20261027.png",
+  "screenshotSha256": "8d16d7ed4af9d2aa8c1115bc254424add39d1cf22c1d11f175a647d7294ee4cc",
+  "visibleText": "2026-10-27 C11.4 겹치는 행 span의 §11.5 단계별 기여 · 계획 PR #671 Rebase and merge; C11.4 미완료; 공식 완료 집계 72/213"
+}
