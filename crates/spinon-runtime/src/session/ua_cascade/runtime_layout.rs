@@ -96,6 +96,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub item_frames: Arc<[(spinon_core::NodeId, LayoutFrame)]>,
     pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
     pub fit_content_auto_neighbor: Option<RuntimeC11_4FitContentAutoNeighborObservation>,
+    pub fit_content_min_height: Option<RuntimeC11_4FitContentMinHeightObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
 }
 
@@ -106,6 +107,15 @@ pub struct RuntimeC11_4FitContentAutoNeighborObservation {
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
     pub node_ids: [spinon_core::NodeId; 5],
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4FitContentMinHeightObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub node_ids: [spinon_core::NodeId; 3],
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -158,6 +168,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             item_frames: Arc::clone(&self.item_frames),
             traces: Arc::clone(&self.traces),
             fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
+            fit_content_min_height: self.fit_content_min_height.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
         }
     }
@@ -527,6 +538,13 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_min_height_node_ids =
+        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
+            fixtures::prepare_c11_4_fit_content_min_height(&request.snapshot, root, &styles)?
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
         && c11_4_image_input.is_some()
@@ -749,6 +767,18 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let fit_content_min_height_observation =
+        if let Some(node_ids) = c11_4_fit_content_min_height_node_ids {
+            Some(fixtures::c11_4_fit_content_min_height_observation(
+                root,
+                &output.computed_styles,
+                &output.grid_container_inputs,
+                node_ids,
+            )?)
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let grid_layout_auto_tracks_observation =
         if let Some(input) = &c11_4_grid_layout_auto_tracks_input {
             Some(fixtures::c11_4_grid_layout_auto_tracks_observation(
@@ -871,6 +901,7 @@ where
                 item_frames: item_frames.into(),
                 traces: traces.into(),
                 fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
+                fit_content_min_height: fit_content_min_height_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
             }))
         }
@@ -887,6 +918,10 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_auto_neighbor_node_ids.is_some() {
         fixtures::validate_c11_4_fit_content_auto_neighbor_output(&completed)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_fit_content_min_height_node_ids.is_some() {
+        fixtures::validate_c11_4_fit_content_min_height_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_grid_layout_auto_tracks_input.is_some() {
@@ -1442,6 +1477,7 @@ mod tests {
                 grid_container_input: GridContainerInput::default(),
                 node_ids: [root; 5],
             }),
+            fit_content_min_height: None,
             grid_layout_auto_tracks: None,
         };
         let rekeyed_revision = LayoutInputRevision::new(

@@ -652,6 +652,8 @@ mod grid_cyclic_percentage_gap_tests;
 #[cfg(test)]
 mod grid_fit_content_auto_neighbor_oracle_tests;
 #[cfg(test)]
+mod grid_fit_content_min_height_oracle_tests;
+#[cfg(test)]
 mod grid_image_ratio_fixed_gutter_tests;
 #[cfg(test)]
 mod grid_image_ratio_oracle_tests;

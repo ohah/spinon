@@ -776,23 +776,35 @@ fn indefinite_track_sizing_height_is_bounded(
     node: &crate::LayoutNode,
     container: &GridContainerInput,
 ) -> bool {
+    let has_definite_min_height = matches!(
+        node.style.min_height,
+        crate::LayoutDimension::Fixed(value) if value.is_finite() && value >= 0.0
+    );
     node.style.height == crate::LayoutDimension::Auto
-        && node.style.min_height == crate::LayoutDimension::Auto
+        && (node.style.min_height == crate::LayoutDimension::Auto || has_definite_min_height)
         && node.style.max_height == crate::LayoutDimension::Auto
         && container.rows_auto_repeat.is_none()
-        && container.rows.iter().all(track_is_indefinite_height_safe)
+        && container
+            .rows
+            .iter()
+            .all(|track| track_is_indefinite_height_safe(track, has_definite_min_height))
         && match &container.auto_rows {
             GridAutoRows::Auto | GridAutoRows::LengthPx(_) => true,
-            GridAutoRows::TrackList(tracks) => tracks.iter().all(track_is_indefinite_height_safe),
+            GridAutoRows::TrackList(tracks) => tracks
+                .iter()
+                .all(|track| track_is_indefinite_height_safe(track, has_definite_min_height)),
         }
 }
 
-fn track_is_indefinite_height_safe(track: &GridTrackSize) -> bool {
+fn track_is_indefinite_height_safe(track: &GridTrackSize, has_definite_min_height: bool) -> bool {
     match track {
         GridTrackSize::LengthPx(_)
         | GridTrackSize::Auto
         | GridTrackSize::MinContent
         | GridTrackSize::MaxContent => true,
+        GridTrackSize::FitContent(GridTrackLengthPercentage::LengthPx(limit)) => {
+            has_definite_min_height && limit.is_finite() && *limit >= 0.0
+        }
         GridTrackSize::MinMax { min, max } => {
             matches!(
                 min,

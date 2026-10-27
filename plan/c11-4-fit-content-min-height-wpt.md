@@ -1,6 +1,6 @@
 # C11.4 · `min-height` 아래 `fit-content()` 행 WPT slice 계획
 
-**상태:** 계획만 추가한다. 이 계획과 이후 opt-in fixture 구현은 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않는다. 공식 완료 수 `72/213`과 C11.4 체크 상태를 바꾸지 않는다.
+**상태:** 계획 PR #698은 병합됐다. opt-in 구현 후보가 같은 체크아웃에서 진행 중이며, 2026-10-28 기준 Rust oracle과 Android API 37 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행은 통과했다([runtime evidence](../spec/internal/evidence/c11-4-fit-content-min-height-runtime-2026-10-28/README.md)). 구현 적대 검토, 최종 PR 검토와 병합이 남았다. 일반 CSS 지원 또는 C11.4 완료를 뜻하지 않으며 공식 완료 수 `72/213`과 C11.4 체크 상태는 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -59,7 +59,7 @@ item and child block size         = 10px
 4. 정확한 CSS-px frames는 root `[0,0,60,300]`, item `[0,0,60,10]`, child `[0,0,60,10]`; row track은 `[10]`이다. Columns/Rows pass가 각 하나여야 하며 Rows의 `StretchAutoTracks { applied:true }` 전후 base가 모두 `[10]`이어야 한다. Unknown scene ID는 source를 반환하지 않고, 잘못된 root identity·추가/누락 node·변형된 style은 기대된 거부로 처리한다. 누락·중복·stale trace, partial frame, intended fixture source의 거부 및 빈 draw/present는 실패다.
 5. Surface screenshot은 보조 시각 자료다. 표본을 추가하면 item 안 10px 영역과 10px 아래의 root 배경을 CSS-to-device 좌표 변환을 기록해 따로 비교한다. Simulator 결과는 실기기/hardware GPU 결과로 확대하지 않는다.
 6. 기본/product FFI archive에는 fixture marker·symbol·payload가 없고 fixture-test positive control에는 있어야 한다. `cargo fmt`, 관련 focused Rust/FFI 검증, artifact boundary, Android/iOS simulator build·실행을 기록한다.
-7. 구현 전 plans review 20개, 구현/runtime review의 새 실패 관점 20개, 각 PR diff 20개를 서로 다른 기준으로 수행한다. 결함 수정 뒤 영향을 받은 항목을 다시 확인한다.
+7. 구현 전 plans review 20개, 구현/runtime review의 새 실패 관점 20개, 구현 PR diff는 서로 다른 실패 관점 30개로 검토한다. 결함 수정 뒤 영향을 받은 항목을 다시 확인한다.
 
 ## 남은 범위
 

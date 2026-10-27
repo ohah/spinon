@@ -571,6 +571,18 @@ Chrome 156 upstream WPT oracle와 CSS Grid 2025 CRD 계산에서 기대 Rows는 
 
 기본 `spinon-ffi`와 `c04-runtime-gpu` macOS ARM64 static artifact에서는 scene ID·전용 DOM prefix·C11.4 fixture FFI export가 없고 `c04-runtime-gpu-fixture-test` positive control에는 있다. 이는 Android APK/iOS IPA 전체나 release artifact에서 fixture가 제외됨을 증명하지 않는다. 일반 CSS/Grid 조합, 전체 WPT, 실기기/hardware GPU 및 iOS compositor 이후 pixels는 검증 범위가 아니다. C11.4 checkbox와 공식 완료 `72/213`은 미완료로 유지한다. [구현 계획](../../plan/c11-4-fit-content-auto-neighbor-runtime.md) · [WPT 대상 범위](../../plan/c11-4-fit-content-auto-neighbor-wpt.md) · [구현/runtime 검토 20개](./evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/implementation-review-20.md) · [PR diff 검토 30개](./evidence/c11-4-fit-content-auto-neighbor-runtime-2026-10-27/pr-diff-review-30.md).
 
+## C11.4 `min-height` 아래 `fit-content()` implicit row · 제한 runtime slice
+
+내부 계약 숫자 버전은 `0.1.0`이다. 이 항목은 `c04-runtime-gpu-fixture-test` 경계 안의 `fit-content-min-height-wpt` 한 scene과 `RuntimeBlockFlexGridTrackSizingV1` computed-style profile에만 적용한다. 입력은 `height:auto; min-height:300px`, 폭 `60px`, explicit columns `[60px]`, explicit rows 없음, `grid-auto-rows:fit-content(40px)`, gap 0, `align-content:normal`인 Grid와 nested child `height:10px`를 가진 direct item 하나다. 공개 API, 일반 CSS admission, 임의 Grid tree는 추가하지 않는다.
+
+Grid layout oracle는 이 fixed-length `fit-content()` row에 대해 auto height의 definite basis를 제한적으로 허용한다. 유한하고 0 이상인 fixed `min-height`가 필요하며 percentage/calc `fit-content()` limit, min-height가 없는 경우, 잘못된 dimension/track 값은 계속 거부한다. 이 입력에서 used root height는 `300px`, 단일 implicit row와 item/child block size는 각각 `10px`이다. `align-content:normal`의 `StretchAutoTracks { applied:true }` 단계는 실행되지만 fit-content row는 stretch 대상이 아니므로 단계 전체에서 row base는 초기 `0px` 이후 `[10px]`을 유지한다.
+
+Fixture adapter는 HTML `div`와 root/item/child ID·parent 관계, computed style set, typed `GridContainerInput`, layout key와 style snapshot revision, root/item/child frame을 검사한다. Columns·Rows pass는 각각 하나여야 하고 row sizing trace는 정확히 여섯 단계(`Initialize`, 단일 `IntrinsicItemBatch`, `IntrinsicSizingComplete`, `MaximizeTracks`, `ExpandFlexibleTracks`, 적용된 `StretchAutoTracks`)와 대응하는 row base를 가져야 한다. 값이 다르거나 trace/frame이 stale·누락·중복되면 fixture 결과를 반환하지 않는다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 root `[0,0,60,300]`, item/child `[0,0,60,10]`, row `[10]`, 같은 environment/draw revision을 확인했다. Child, root 배경, root 바깥 PixelCopy/Metal 표본은 각 3/3 exact다. Android는 SwiftShader software rendering이고 iOS Metal readback은 compositor 제출 전이다. 기본 `c04-runtime-gpu` FFI archive에는 fixture symbol·scene marker가 없고 fixture-test archive에는 positive control이 있다. 결과와 hash는 [runtime evidence](./evidence/c11-4-fit-content-min-height-runtime-2026-10-28/README.md)에 기록한다.
+
+이 제한 slice는 전체 WPT, 전체 C11.4, 실기기/hardware GPU, Android APK/iOS IPA release artifact 제외, iOS compositor 이후 결과를 증명하지 않는다. 공식 C11.4 checkbox와 `72/213`은 미완료로 유지한다. 집중 계획은 `plan/c11-4-fit-content-min-height-wpt.md`에 있다. [구현/runtime 실패 관점 20개](./evidence/c11-4-fit-content-min-height-runtime-2026-10-28/implementation-review-20.md) · 구현 PR diff 검토는 PR에 별도 기록한다.
+
 ## C11.4 row-axis overlapping spans · 제한 app-runtime fixture
 
 이 profile은 `c04-runtime-gpu-fixture-test` opt-in harness의 네 고정 scene `row-axis-span2-forward`, `row-axis-span2-reversed`, `row-axis-span2-before-span3`, `row-axis-span3-before-span2`만 허용한다. Root는 `220×220px`, Columns `220px`, Rows `repeat(4,minmax(0,max-content))`, gap 0, `align-content:start`다. 각 빈 고정 높이 direct `div`는 `grid-column:1 / 2`와 장면별 explicit `grid-row`를 갖는다. 고정 column을 생략하면 겹치는 row placement가 implicit column을 만들 수 있어 이 fixture contract에서 허용하지 않는다.
