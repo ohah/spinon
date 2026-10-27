@@ -1,6 +1,6 @@
 # C11.4 · WPT `grid-layout-auto-tracks.html` 제한 runtime slice
 
-**상태:** 계획·사전 oracle 고정. 구현 전이다. 이 범위는 고정된 WPT track/placement topology를 기존 C11.4 opt-in runtime 경로에 연결하며 CSS Grid 일반 지원이나 C11.4 완료를 뜻하지 않는다.
+**상태:** 고정 WPT 장면의 제한 runtime 구현 후보를 추가하고 Android/iOS Simulator, archive 경계, 구현/runtime review를 확인했다. PR 병합 전 후보이며 CSS Grid 일반 지원이나 C11.4 완료를 뜻하지 않는다. [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md).
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 

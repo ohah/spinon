@@ -230,6 +230,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         .collect::<Vec<_>>();
     let fit_content_auto_neighbor =
         super::fit_content_auto_neighbor_report::report_json(completed)?;
+    let grid_layout_auto_tracks = super::grid_layout_auto_tracks_report::report_json(completed)?;
     let report = serde_json::json!({
         "layoutInputRevision": {
             "source": format!("{:?}", diagnostics.revision.source()),
@@ -243,6 +244,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         "gridItemFrames": item_frames,
         "trackSizingTraces": traces,
         "fitContentAutoNeighbor": fit_content_auto_neighbor,
+        "gridLayoutAutoTracks": grid_layout_auto_tracks,
     });
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
@@ -629,6 +631,7 @@ mod tests {
                 item_frames: Arc::from([]),
                 traces: Arc::from([]),
                 fit_content_auto_neighbor: None,
+                grid_layout_auto_tracks: None,
             }
         };
 
@@ -788,6 +791,7 @@ mod tests {
             }]
             .into(),
             fit_content_auto_neighbor: None,
+            grid_layout_auto_tracks: None,
         };
         let completed = RuntimeLayoutCompleted {
             key: RuntimeUaCascadeKey {

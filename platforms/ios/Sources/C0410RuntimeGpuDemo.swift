@@ -547,6 +547,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt",
+    "grid-layout-auto-tracks-c114-wpt",
     "intrinsic-auto-repeat-max-content-100",
     "intrinsic-auto-repeat-max-content-80",
     "intrinsic-auto-repeat-max-content-15",
@@ -1372,6 +1373,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         return "width=160,height=100"
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=300" }
+    if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=20" }
     if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
     if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=12,height=40"
@@ -1681,6 +1683,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=160,height=10"
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=10" }
+    if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=10" }
     if sceneID == "image-auto-max-mixed-tracks"
         || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=24,height=16"
@@ -3029,6 +3032,146 @@ private func c114FitContentAutoNeighborMatches(
         return false
     }
     return true
+}
+
+private func c114GridLayoutAutoTracksMatches(_ sceneID: String, report: String) -> Bool {
+    guard sceneID == "grid-layout-auto-tracks-c114-wpt" else { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let observation = diagnostics["gridLayoutAutoTracks"] as? [String: Any],
+          observation["sceneId"] as? String == sceneID,
+          observation["frameSource"] as? String == "pre-render LayoutOutput CSS px",
+          let style = observation["styleSnapshot"] as? [String: Any],
+          style["profile"] as? String == "RuntimeBlockFlexGridTrackSizingV1",
+          let generation = style["generation"] as? NSNumber,
+          let document = style["documentRevision"] as? NSNumber,
+          let renderTree = style["renderTreeRevision"] as? NSNumber,
+          let styleRevision = style["styleRevision"] as? NSNumber,
+          let environment = style["environmentRevision"] as? NSNumber,
+          let revisionStyle = revision["style"] as? NSNumber,
+          let revisionEnvironment = revision["environment"] as? NSNumber,
+          let source = revision["source"] as? String,
+          generation.int64Value > 0, document.int64Value > 0, renderTree.int64Value > 0,
+          styleRevision.int64Value >= 0,
+          styleRevision.int64Value == revisionStyle.int64Value,
+          environment.int64Value == revisionEnvironment.int64Value,
+          source.contains("generation: DocumentGeneration(\(generation.int64Value))"),
+          source.contains("document: DocumentRevision(\(document.int64Value))"),
+          source.contains("render_tree: RenderTreeRevision(\(renderTree.int64Value))"),
+          c114FitContentAutoNeighborReportField(report, "generation=") == String(generation.int64Value),
+          c114FitContentAutoNeighborReportField(report, "document_revision=") == String(document.int64Value),
+          c114FitContentAutoNeighborReportField(report, "render_tree_revision=") == String(renderTree.int64Value),
+          c114FitContentAutoNeighborReportField(report, "style_revision=") == String(styleRevision.int64Value),
+          c114FitContentAutoNeighborReportField(report, "environment_revision=") == String(environment.int64Value),
+          let properties = style["computedProperties"] as? [String: Any],
+          properties["display"] as? String == "grid",
+          properties["width"] as? String == "LengthPx(100.0)",
+          properties["height"] as? String == "Auto",
+          properties["gridTemplateColumns"] as? String == "100px",
+          properties["gridTemplateRows"] as? String == "auto",
+          properties["gridAutoColumns"] as? String == "auto",
+          properties["gridAutoRows"] as? String == "auto",
+          properties["gridAutoFlow"] as? String == "row",
+          properties["alignItems"] as? String == "start",
+          properties["direction"] as? String == "ltr",
+          properties["writingMode"] as? String == "horizontal-tb",
+          let input = observation["layoutInputGridContainer"] as? [String: Any],
+          input["columns"] as? String == "[LengthPx(100.0)]",
+          input["explicitRows"] as? String == "[Auto]",
+          input["autoColumns"] as? String == "Auto",
+          input["autoRows"] as? String == "Auto",
+          input["autoFlow"] as? String == "Row",
+          input["placementMode"] as? String == "TrackSizing",
+          let ids = observation["nodeIds"] as? [String: Any],
+          ids.count == 5,
+          let root = ids["root"] as? NSNumber,
+          let a = ids["a"] as? NSNumber,
+          let b = ids["b"] as? NSNumber,
+          let bContent = ids["bContent"] as? NSNumber,
+          let c = ids["c"] as? NSNumber,
+          [root, a, b, bContent, c].map(\.int64Value) == [1, 2, 4, 5, 7],
+          (style["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          (input["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          let frames = observation["framesCssPx"] as? [String: Any],
+          frames.count == 5,
+          c114FitContentFrameMatches(frames["root"], x: 0, y: 0, width: 100, height: 20),
+          c114FitContentFrameMatches(frames["a"], x: 0, y: 0, width: 100, height: 10),
+          c114FitContentFrameMatches(frames["b"], x: 100, y: 0, width: 50, height: 10),
+          c114FitContentFrameMatches(frames["bContent"], x: 100, y: 0, width: 50, height: 10),
+          c114FitContentFrameMatches(frames["c"], x: 0, y: 10, width: 100, height: 10),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? NSNumber)?.int64Value == root.int64Value,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          passes[0]["axis"] as? String == "Columns",
+          passes[1]["axis"] as? String == "Rows",
+          c114GridLayoutAutoTracksPassMatches(passes[0], expected: [100, 50]),
+          c114GridLayoutAutoTracksPassMatches(passes[1], expected: [10, 10]),
+          c114GridLayoutAutoTracksMinimumMatches(passes[0], expected: [4: 50]),
+          c114GridLayoutAutoTracksMinimumMatches(passes[1], expected: [2: 10, 4: 10, 7: 10]) else {
+        return false
+    }
+    return true
+}
+
+private func c114GridLayoutAutoTracksPassMatches(
+    _ pass: [String: Any], expected: [Double]
+) -> Bool {
+    guard let stages = pass["stages"] as? [[String: Any]], !stages.isEmpty else { return false }
+    let required = ["IntrinsicSizingComplete", "MaximizeTracks", "ExpandFlexibleTracks"]
+    var previous = -1
+    for name in required {
+        let matches = stages.enumerated().filter { $0.element["stage"] as? String == name }
+        guard matches.count == 1,
+              matches[0].offset > previous,
+              c114GridLayoutAutoTracksBasesMatch(matches[0].element, expected: expected) else {
+            return false
+        }
+        previous = matches[0].offset
+    }
+    let stretch = stages.enumerated().filter {
+        ($0.element["stage"] as? String)?.hasPrefix("StretchAutoTracks") == true
+    }
+    guard stretch.count == 1,
+          stretch[0].offset == stages.count - 1,
+          c114GridLayoutAutoTracksBasesMatch(stretch[0].element, expected: expected) else {
+        return false
+    }
+    return true
+}
+
+private func c114GridLayoutAutoTracksBasesMatch(
+    _ stage: [String: Any], expected: [Double]
+) -> Bool {
+    guard let tracks = stage["tracks"] as? [[String: Any]] else { return false }
+    let visible = tracks.filter {
+        ($0["gutter"] as? Bool) != true && ($0["collapsed"] as? Bool) != true
+    }
+    guard visible.count == expected.count else { return false }
+    return zip(visible, expected).allSatisfy { track, size in
+        guard let base = track["baseSize"] as? NSNumber else { return false }
+        return abs(base.doubleValue - size) <= 0.000001
+    }
+}
+
+private func c114GridLayoutAutoTracksMinimumMatches(
+    _ pass: [String: Any], expected: [Int64: Double]
+) -> Bool {
+    guard let contributions = pass["contributions"] as? [[String: Any]] else { return false }
+    var found: [Int64: Double] = [:]
+    var minimumCount = 0
+    for contribution in contributions where contribution["kind"] as? String == "Minimum" {
+        guard let item = contribution["item"] as? NSNumber,
+              let value = contribution["value"] as? NSNumber else { return false }
+        minimumCount += 1
+        found[item.int64Value] = value.doubleValue
+    }
+    return minimumCount == expected.count && found.count == expected.count
+        && expected.allSatisfy { item, value in
+        guard let actual = found[item] else { return false }
+        return abs(actual - value) <= 0.000001
+    }
 }
 
 private func c114AlignContentNormalEqualAutoRowsMatches(
@@ -4967,6 +5110,13 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "3:node=4,x=0,y=10,width=60,height=290;"
             + "4:node=5,x=0,y=10,width=60,height=10]"
     }
+    if sceneID == "grid-layout-auto-tracks-c114-wpt" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
+            + "1:node=2,x=0,y=0,width=100,height=10;"
+            + "2:node=4,x=100,y=0,width=50,height=10;"
+            + "3:node=5,x=100,y=0,width=50,height=10;"
+            + "4:node=7,x=0,y=10,width=100,height=10]"
+    }
     if sceneID == "image-auto-max-mixed-tracks" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
@@ -6554,7 +6704,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         return rowAxisSpanFrames.count
     }
     if sceneID == "align-content-normal-equal-auto-rows" { return 4 }
-    if sceneID == "fit-content-auto-neighbor-wpt" { return 5 }
+    if sceneID == "fit-content-auto-neighbor-wpt"
+        || sceneID == "grid-layout-auto-tracks-c114-wpt" { return 5 }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
@@ -7428,6 +7579,23 @@ private struct C111MetalPixelRun {
                 ("auto-neighbor-row-fill-top", autoItemID, 30, 20, [58, 134, 255, 255]),
                 ("auto-neighbor-row-fill-bottom", autoItemID, 30, 230, [58, 134, 255, 255]),
                 ("grid-root-right-edge-outside", rootID, 60, 20, [0, 0, 0, 255]),
+            ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
+        if sceneID == "grid-layout-auto-tracks-c114-wpt" {
+            let rootID = "c114-grid-layout-auto-tracks-grid"
+            let contentID = "c114-grid-layout-auto-tracks-b-content"
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("implicit-column-content-first", contentID, 125, 5, [6, 214, 160, 255]),
+                ("implicit-column-content-edge", contentID, 149, 5, [6, 214, 160, 255]),
+                ("implicit-column-end-outside-root", rootID, 150, 5, [0, 0, 0, 255]),
             ]
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
@@ -11780,6 +11948,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedFitContentAutoNeighborMatches = c114FitContentAutoNeighborMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedGridLayoutAutoTracksMatches = c114GridLayoutAutoTracksMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedEqualAutoRowsMatches = c114AlignContentNormalEqualAutoRowsMatches(
                 c114GridTrackSizingSceneID, report: report)
             let expectedRowAxisSpanStageMatches = c114RowAxisSpanStageSceneIDs.contains(
@@ -11799,9 +11969,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch,
                   expectedFitContentAutoNeighborMatches,
+                  expectedGridLayoutAutoTracksMatches,
                   expectedEqualAutoRowsMatches,
                   expectedRowAxisSpanStageMatches else {
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
