@@ -1,0 +1,49 @@
+{
+  "pass": "pass01",
+  "checked_replacement_targets": 7,
+  "all_replacements_closed": true,
+  "targets": [
+    {
+      "path": "public/roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "spec/STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.html",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    },
+    {
+      "path": "STATUS.md",
+      "open": false,
+      "lsof_status": 1,
+      "output": ""
+    }
+  ]
+}

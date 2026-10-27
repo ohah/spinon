@@ -1,0 +1,81 @@
+{
+  "pass": "pass02",
+  "sourceHead": "0ba3f14c8d696f34660269a262ee82b9981b9008",
+  "sourceTree": "3396de1a81daa90c4bd8fa1096d48aaa5c2682a5",
+  "scope": "C11.4 direct-text roadmap record and its selected evidence pages/screens only",
+  "roadmapDirectTextLinkCount": 8,
+  "expectedDirectTextRoutes": [
+    "/spinon/plan/c11-4-generic-direct-text-runtime-matrix.html",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.html",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.html",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.html",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+    "/spinon/STATUS.html#css-구현-체크리스트",
+    "/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.html"
+  ],
+  "allExpectedRoutesPublished": true,
+  "checkedSelectedRouteCount": 12,
+  "selectedRoutes": [
+    {
+      "path": "roadmap.html",
+      "bytes": 339147,
+      "sha256": "366f29dc3269aa3e20c6add4b23d766de9b663f426dc04299d210717dfd01917"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 1051318,
+      "sha256": "938ada7f2015813787f9ddc9ac5bf3175bbec5e0f2ddde466c017110c6429194"
+    },
+    {
+      "path": "plan/c11-4-generic-direct-text-runtime-matrix.html",
+      "bytes": 511883,
+      "sha256": "82cde27da59b79508c4d8b3684625c3126645b9d68a658ebecb8fe0dabb65292"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/README.html",
+      "bytes": 503776,
+      "sha256": "a17b6ddfc05a3c71ac4001137405b9f446d85cf0a0cde23ad63de9be18dba850"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/implementation-runtime-review-20.html",
+      "bytes": 502568,
+      "sha256": "8913f93465d379dfb5244801b81d0d259a22d83778c21a7b2b3ff20526925df8"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/pr-diff-review-20.html",
+      "bytes": 502954,
+      "sha256": "36a5a7ae37116f62aeb54ca46e58baaa056a1fb7115cdf108e72cbed2f8658d4"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/post-merge-status-roadmap-review-20.html",
+      "bytes": 501664,
+      "sha256": "4e0a2f3ed9de4dc661db23fa3dc006e5d5a6b4a8aaf84b45d6dbe747cf5f8908"
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-2026-10-27/status-roadmap-pr-diff-review-30.html",
+      "bytes": 502580,
+      "sha256": "eda2f9b6cf3d7ddb9b4332a0db5575b34db13051d4761b9600dcbc4da495994b"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png",
+      "bytes": 77144,
+      "sha256": "b94f2c7fac6d2babee09312ec3828dbad99fa25d72283098831e7b60e7b08f2e"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png",
+      "bytes": 143661,
+      "sha256": "89ca01bf6b6f946471bf044944ef9e8c5930b1004ac5b8215923a4cb1a3c2a2d"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/matrix.tsv",
+      "bytes": 517,
+      "sha256": "18ae09de243989cd72cf561e0a9797ccfa4c87a886b8b712e1a979c92c0240cf"
+    },
+    {
+      "path": "internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/matrix.tsv",
+      "bytes": 493,
+      "sha256": "56d64c078ab2e0b2f2a55111781a1d34132ffecfcc4e0235f931b135e87ac22b"
+    }
+  ]
+}

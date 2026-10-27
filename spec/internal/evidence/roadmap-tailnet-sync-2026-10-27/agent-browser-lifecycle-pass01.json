@@ -1,0 +1,31 @@
+{
+  "pass": "pass01",
+  "tool": "Agent Browser CLI 0.31.1",
+  "terminal_browser_used": false,
+  "session_id": "spinon-c114-review-273954f6b636",
+  "verified_pages": [
+    "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=roadmap-20261027-pass01",
+    "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-generic-direct-text-runtime-matrix.html?sync=roadmap-20261027-pass01",
+    "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/android-avd/screenshot.png?sync=roadmap-20261027-pass01",
+    "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-generic-direct-text-runtime-matrix-2026-10-27/runs/c114-direct-text-matrix-20261027T031021Z-pass02/ios-simulator/screenshot.png?sync=roadmap-20261027-pass01"
+  ],
+  "close_command": "agent-browser --session spinon-c114-review-273954f6b636 close",
+  "close_command_exit_code": 0,
+  "close_result": "Browser closed",
+  "process_cleanup": {
+    "first_close_left_instance_process": true,
+    "identified_agent_browser_pid": 11109,
+    "identified_chrome_process_group": 11110,
+    "termination_signal": "SIGTERM",
+    "termination_exit_code": 0,
+    "session_info_after_close": {
+      "active": false,
+      "pid": null,
+      "runtime": null
+    },
+    "session_list_after_close": [],
+    "agent_browser_process_search_after_close": "no agent-browser-darwin-arm64 process found",
+    "chrome_process_group_search_after_close": "no process in group 11110",
+    "unrelated_browser_processes_terminated": false
+  }
+}
