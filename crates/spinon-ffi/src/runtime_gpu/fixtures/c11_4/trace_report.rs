@@ -1,7 +1,8 @@
 use spinon_core::{TextOrientation, WritingMode};
 use spinon_layout::LayoutSourceRevision;
 use spinon_layout::{
-    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource,
+    LayoutGridItemIntrinsicAxisContributionInput, LayoutGridItemIntrinsicSource,
+    LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource, LayoutTextSnapshot,
 };
 use spinon_runtime::{RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted};
 
@@ -42,6 +43,10 @@ pub(crate) fn grid_track_sizing_trace_report(
             .item_inputs
             .iter()
             .any(|input| input.revision != diagnostics.revision)
+        || diagnostics
+            .item_text_layouts
+            .iter()
+            .any(|text_layout| text_layout.revision != diagnostics.revision)
     {
         return Err("C11.4 intrinsic input revision이 trace revision과 다릅니다".to_owned());
     }
@@ -59,6 +64,19 @@ pub(crate) fn grid_track_sizing_trace_report(
             .any(|input| !item_frame_by_node.contains_key(&input.node))
     {
         return Err("C11.4 Grid item frame 집합이 intrinsic input과 다릅니다".to_owned());
+    }
+    let item_text_layout_by_node = diagnostics
+        .item_text_layouts
+        .iter()
+        .map(|text_layout| (text_layout.input.node, text_layout))
+        .collect::<std::collections::BTreeMap<_, _>>();
+    if item_text_layout_by_node.len() != diagnostics.item_text_layouts.len()
+        || diagnostics.item_text_layouts.iter().any(|text_layout| {
+            text_layout.input.node != text_layout.layout.paragraph
+                || !item_frame_by_node.contains_key(&text_layout.input.node)
+        })
+    {
+        return Err("C11.4 Grid item text layout 소유자 집합이 올바르지 않습니다".to_owned());
     }
 
     let measurements = diagnostics
@@ -124,6 +142,16 @@ pub(crate) fn grid_track_sizing_trace_report(
         .item_inputs
         .iter()
         .map(|input| {
+            let contribution_input = input
+                .contribution_input()
+                .ok()
+                .map(|contribution| {
+                    serde_json::json!({
+                        "width": axis_contribution_json(contribution.width),
+                        "height": axis_contribution_json(contribution.height),
+                    })
+                })
+                .unwrap_or(serde_json::Value::Null);
             let source = match &input.source {
                 LayoutGridItemIntrinsicSource::Text { sizes } => serde_json::json!({
                     "kind": "text",
@@ -173,8 +201,14 @@ pub(crate) fn grid_track_sizing_trace_report(
                         "text": source.text,
                     })
                 }).collect::<Vec<_>>(),
+                "contributionInput": contribution_input,
             })
         })
+        .collect::<Vec<_>>();
+    let item_text_layouts = diagnostics
+        .item_text_layouts
+        .iter()
+        .map(item_text_layout_json)
         .collect::<Vec<_>>();
     let item_frames = diagnostics
         .item_frames
@@ -205,6 +239,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         },
         "intrinsicMeasurements": measurements,
         "gridItemIntrinsicInputs": item_inputs,
+        "gridItemTextLayouts": item_text_layouts,
         "gridItemFrames": item_frames,
         "trackSizingTraces": traces,
         "fitContentAutoNeighbor": fit_content_auto_neighbor,
@@ -212,6 +247,117 @@ pub(crate) fn grid_track_sizing_trace_report(
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+}
+
+fn axis_contribution_json(
+    input: LayoutGridItemIntrinsicAxisContributionInput,
+) -> serde_json::Value {
+    serde_json::json!({
+        "minContent": input.min_content,
+        "maxContent": input.max_content,
+        "preferredSize": layout_dimension_json(input.preferred_size),
+        "minSize": layout_dimension_json(input.min_size),
+        "maxSize": layout_dimension_json(input.max_size),
+        "marginStart": layout_length_percentage_json(input.margin_start),
+        "marginEnd": layout_length_percentage_json(input.margin_end),
+        "paddingStart": layout_length_percentage_json(input.padding_start),
+        "paddingEnd": layout_length_percentage_json(input.padding_end),
+        "borderStart": input.border_start,
+        "borderEnd": input.border_end,
+    })
+}
+
+fn layout_dimension_json(value: spinon_layout::LayoutDimension) -> serde_json::Value {
+    match value {
+        spinon_layout::LayoutDimension::Auto => serde_json::json!({ "kind": "auto" }),
+        spinon_layout::LayoutDimension::Fixed(css_px) => {
+            serde_json::json!({ "kind": "fixed", "cssPx": css_px })
+        }
+        spinon_layout::LayoutDimension::Percent(fraction) => {
+            serde_json::json!({ "kind": "percent", "fraction": fraction })
+        }
+        spinon_layout::LayoutDimension::CyclicMinContentPercent(fraction) => {
+            serde_json::json!({ "kind": "cyclicMinContentPercent", "fraction": fraction })
+        }
+        spinon_layout::LayoutDimension::MinContent => {
+            serde_json::json!({ "kind": "minContent" })
+        }
+        spinon_layout::LayoutDimension::MaxContent => {
+            serde_json::json!({ "kind": "maxContent" })
+        }
+        spinon_layout::LayoutDimension::FitContent => {
+            serde_json::json!({ "kind": "fitContent" })
+        }
+        spinon_layout::LayoutDimension::Calc(id) => {
+            serde_json::json!({ "kind": "calc", "id": format!("{id:?}") })
+        }
+    }
+}
+
+fn layout_length_percentage_json(
+    value: spinon_layout::LayoutLengthPercentage,
+) -> serde_json::Value {
+    match value {
+        spinon_layout::LayoutLengthPercentage::Auto => serde_json::json!({ "kind": "auto" }),
+        spinon_layout::LayoutLengthPercentage::LengthPx(css_px) => {
+            serde_json::json!({ "kind": "length", "cssPx": css_px })
+        }
+        spinon_layout::LayoutLengthPercentage::Percentage(fraction) => {
+            serde_json::json!({ "kind": "percent", "fraction": fraction })
+        }
+        spinon_layout::LayoutLengthPercentage::Calc(id) => {
+            serde_json::json!({ "kind": "calc", "id": format!("{id:?}") })
+        }
+    }
+}
+
+fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
+    let style = &snapshot.input.style;
+    serde_json::json!({
+        "node": snapshot.input.node.get(),
+        "layoutParagraph": snapshot.layout.paragraph.get(),
+        "revision": {
+            "source": format!("{:?}", snapshot.revision.source()),
+            "style": snapshot.revision.style().get(),
+            "environment": snapshot.revision.environment().get(),
+            "intrinsicSize": snapshot.revision.intrinsic_size().get(),
+        },
+        "sources": snapshot.input.sources.iter().map(|source| {
+            serde_json::json!({
+                "node": source.node.get(),
+                "text": source.text,
+                "inlineAncestors": source.inline_ancestors.iter()
+                    .map(|ancestor| ancestor.get()).collect::<Vec<_>>(),
+            })
+        }).collect::<Vec<_>>(),
+        "text": snapshot.layout.text,
+        "paragraphStyle": {
+            "fontFamily": style.font_family,
+            "fontSize": style.font_size,
+            "lineHeight": style.line_height,
+            "lineHeightIsNormal": style.line_height_is_normal,
+            "fontWeight": style.font_weight,
+            "fontStyle": format!("{:?}", style.font_style),
+            "whiteSpace": format!("{:?}", style.white_space),
+            "wordBreak": format!("{:?}", style.word_break),
+            "direction": format!("{:?}", style.direction),
+            "writingMode": format!("{:?}", style.writing_mode),
+            "textOrientation": format!("{:?}", style.text_orientation),
+            "lineBreak": format!("{:?}", style.line_break),
+            "ligatures": format!("{:?}", style.ligatures),
+        },
+        "fontRegistryRevision": snapshot.layout.font_registry_revision.0,
+        "availableWidth": snapshot.layout.available_width,
+        "width": snapshot.layout.width,
+        "height": snapshot.layout.height,
+        "lines": snapshot.layout.lines.iter().map(|line| {
+            serde_json::json!({
+                "advance": line.advance,
+                "lineTop": line.line_top,
+                "lineHeight": line.line_height,
+            })
+        }).collect::<Vec<_>>(),
+    })
 }
 
 fn validate_orthogonal_registry_identity(
@@ -479,6 +625,7 @@ mod tests {
                 revision,
                 intrinsic_measurements: vec![measurement].into(),
                 item_inputs: vec![item_input].into(),
+                item_text_layouts: Arc::from([]),
                 item_frames: Arc::from([]),
                 traces: Arc::from([]),
                 fit_content_auto_neighbor: None,
@@ -633,6 +780,7 @@ mod tests {
             ),
             intrinsic_measurements: Arc::from([]),
             item_inputs: Arc::from([]),
+            item_text_layouts: Arc::from([]),
             item_frames: Arc::from([]),
             traces: vec![LayoutGridTrackSizingTrace {
                 node: NodeId::new(7).unwrap(),

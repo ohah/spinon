@@ -1,0 +1,1473 @@
+diff --git a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs
+index 373cabc0..90f02766 100644
+--- a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs
++++ b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs
+@@ -1151,7 +1151,7 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
+         return Ok(Cow::Borrowed(source));
+     }
+     if let Some(source) = generic_direct_text::runtime_source(scene_id) {
+-        return Ok(Cow::Borrowed(source));
++        return Ok(Cow::Owned(source));
+     }
+     if let Some(source) = mixed_direct_text_image_intrinsic::runtime_source(scene_id) {
+         return Ok(Cow::Owned(source));
+diff --git a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_direct_text.rs b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_direct_text.rs
+index 5cf2b420..e59f8df7 100644
+--- a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_direct_text.rs
++++ b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_direct_text.rs
+@@ -1,58 +1,234 @@
+-const SCENE_ID: &str = "generic-root-normal";
++#[derive(Clone, Copy)]
++struct Item {
++    id: &'static str,
++    class: &'static str,
++    text: &'static str,
++    text_wrap_mode: &'static str,
++    word_break: &'static str,
++}
++
++#[derive(Clone, Copy)]
++struct Scene {
++    route_id: &'static str,
++    root_id: &'static str,
++    root_class: &'static str,
++    items: [Item; 2],
++}
+ 
+-const SOURCE: &str = r#"(() => {
++const SCENES: [Scene; 6] = [
++    Scene {
++        route_id: "generic-root-normal",
++        root_id: "generic-root-normal",
++        root_class: "scene",
++        items: [
++            Item {
++                id: "generic-normal-a",
++                class: "item",
++                text: "A BC",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++            Item {
++                id: "generic-normal-b",
++                class: "item",
++                text: "A BC",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++        ],
++    },
++    Scene {
++        route_id: "generic-root-nowrap",
++        root_id: "generic-root-nowrap",
++        root_class: "scene nowrap",
++        items: [
++            Item {
++                id: "generic-nowrap-a",
++                class: "item",
++                text: "A BC",
++                text_wrap_mode: "nowrap",
++                word_break: "normal",
++            },
++            Item {
++                id: "generic-nowrap-b",
++                class: "item",
++                text: "A BC",
++                text_wrap_mode: "nowrap",
++                word_break: "normal",
++            },
++        ],
++    },
++    Scene {
++        route_id: "generic-root-break-all",
++        root_id: "generic-root-break-all",
++        root_class: "scene break-all",
++        items: [
++            Item {
++                id: "generic-break-a",
++                class: "item",
++                text: "ABCD",
++                text_wrap_mode: "wrap",
++                word_break: "break-all",
++            },
++            Item {
++                id: "generic-break-b",
++                class: "item",
++                text: "ABCD",
++                text_wrap_mode: "wrap",
++                word_break: "break-all",
++            },
++        ],
++    },
++    Scene {
++        route_id: "generic-root-content-variation",
++        root_id: "grid-9x",
++        root_class: "scene",
++        items: [
++            Item {
++                id: "item-zeta",
++                class: "item",
++                text: "A BCD",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++            Item {
++                id: "item-3",
++                class: "item",
++                text: "A BCD",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++        ],
++    },
++    Scene {
++        route_id: "generic-root-whitespace",
++        root_id: "generic-root-whitespace",
++        root_class: "scene",
++        items: [
++            Item {
++                id: "generic-ws-a",
++                class: "item",
++                text: " A  BC ",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++            Item {
++                id: "generic-ws-b",
++                class: "item",
++                text: " A  BC ",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++        ],
++    },
++    Scene {
++        route_id: "generic-root-reorder",
++        root_id: "grid-reorder",
++        root_class: "scene",
++        items: [
++            Item {
++                id: "item-a",
++                class: "item break-all",
++                text: "ABCD",
++                text_wrap_mode: "wrap",
++                word_break: "break-all",
++            },
++            Item {
++                id: "item-z",
++                class: "item",
++                text: "A BC",
++                text_wrap_mode: "wrap",
++                word_break: "normal",
++            },
++        ],
++    },
++];
++
++pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
++    let scene = SCENES.iter().find(|scene| scene.route_id == scene_id)?;
++    let [first, second] = scene.items;
++    Some(format!(
++        r#"(() => {{
+ const root = document.createElement('div');
+-root.setAttribute('id', 'generic-root-normal');
++root.setAttribute('id', '{}');
+ root.setAttribute('data-node', '');
+-root.setAttribute('class', 'scene');
++root.setAttribute('class', '{}');
+ root.setAttribute('style', 'box-sizing:border-box;display:grid;position:static;width:100px;height:auto;margin:0;padding:0;border:0;grid-template-columns:min-content max-content;grid-template-rows:auto;grid-auto-flow:row;column-gap:10px;row-gap:0;align-items:start;font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;background-color:#101820');
+ document.appendChild(root);
+ const first = document.createElement('div');
+-first.setAttribute('id', 'generic-normal-a');
++first.setAttribute('id', '{}');
+ first.setAttribute('data-node', '');
+-first.setAttribute('class', 'item');
+-first.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:normal;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;overflow-wrap:normal;background-color:#e5484d;color:#e5484d');
+-first.appendChild(document.createTextNode('A BC'));
++first.setAttribute('class', '{}');
++first.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:normal;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:{};word-break:{};overflow-wrap:normal;background-color:#e5484d;color:#e5484d');
++first.appendChild(document.createTextNode('{}'));
+ root.appendChild(first);
+ const second = document.createElement('div');
+-second.setAttribute('id', 'generic-normal-b');
++second.setAttribute('id', '{}');
+ second.setAttribute('data-node', '');
+-second.setAttribute('class', 'item');
+-second.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:normal;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;overflow-wrap:normal;background-color:#e5484d;color:#e5484d');
+-second.appendChild(document.createTextNode('A BC'));
++second.setAttribute('class', '{}');
++second.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:normal;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:{};word-break:{};overflow-wrap:normal;background-color:#e5484d;color:#e5484d');
++second.appendChild(document.createTextNode('{}'));
+ root.appendChild(second);
+-return { sceneId:'generic-root-normal', rootId:'generic-root-normal', nodeIds:['generic-root-normal', 'generic-normal-a', 'generic-normal-b'] };
+-})()"#;
+-
+-pub(crate) fn runtime_source(scene_id: &str) -> Option<&'static str> {
+-    (scene_id == SCENE_ID).then_some(SOURCE)
++return {{ sceneId:'{}', rootId:'{}', nodeIds:['{}', '{}', '{}'] }};
++}})()"#,
++        scene.root_id,
++        scene.root_class,
++        first.id,
++        first.class,
++        first.text_wrap_mode,
++        first.word_break,
++        first.text,
++        second.id,
++        second.class,
++        second.text_wrap_mode,
++        second.word_break,
++        second.text,
++        scene.route_id,
++        scene.root_id,
++        scene.root_id,
++        first.id,
++        second.id,
++    ))
+ }
+ 
+ #[cfg(test)]
+ mod tests {
+-    use super::runtime_source;
++    use super::{SCENES, runtime_source};
+ 
+     #[test]
+-    fn exposes_only_the_canonical_generic_direct_text_scene() {
+-        let source = runtime_source("generic-root-normal").expect("canonical text scene");
+-        assert!(source.len() < 4 * 1024);
+-        assert!(source.contains("sceneId:'generic-root-normal'"));
+-        assert!(source.contains("rootId:'generic-root-normal'"));
+-        assert!(source.contains("generic-normal-a"));
+-        assert!(source.contains("generic-normal-b"));
+-        assert!(source.contains("grid-template-columns:min-content max-content"));
+-        assert!(source.contains("column-gap:10px"));
++    fn exposes_the_six_canonical_generic_direct_text_scenes_only() {
++        assert_eq!(SCENES.len(), 6);
++        for scene in SCENES {
++            let source = runtime_source(scene.route_id).expect("registered text scene");
++            assert!(source.len() < 4 * 1024, "{}", scene.route_id);
++            assert!(source.contains(&format!("sceneId:'{}'", scene.route_id)));
++            assert!(source.contains(&format!("rootId:'{}'", scene.root_id)));
++            assert!(source.contains(&format!("setAttribute('id', '{}')", scene.root_id)));
++            assert!(source.contains("grid-template-columns:min-content max-content"));
++            assert!(source.contains("column-gap:10px"));
++            assert_eq!(source.matches("document.createElement('div')").count(), 3);
++            assert_eq!(source.matches("document.createTextNode('").count(), 2);
++            assert_eq!(
++                source
++                    .matches("max-width:none;min-height:auto;max-height:none")
++                    .count(),
++                2
++            );
++        }
++
++        let whitespace = runtime_source("generic-root-whitespace").unwrap();
+         assert_eq!(
+-            source
+-                .matches("max-width:none;min-height:auto;max-height:none")
++            whitespace
++                .matches("document.createTextNode(' A  BC ')")
+                 .count(),
+             2
+         );
+-        assert!(!source.contains("align-content:start"));
+-        assert!(!source.contains("justify-content:start"));
+-        assert_eq!(source.matches("document.createElement('div')").count(), 3);
+-        assert_eq!(source.matches("document.createTextNode('A BC')").count(), 2);
+-        assert!(runtime_source("generic-root-nowrap").is_none());
+-        assert!(runtime_source("generic-root-break-all").is_none());
++        let reorder = runtime_source("generic-root-reorder").unwrap();
++        assert!(reorder.contains("setAttribute('class', 'item break-all')"));
++        assert!(reorder.contains("text-wrap-mode:wrap;word-break:break-all"));
++        assert!(reorder.contains("document.createTextNode('A BC')"));
++        let nowrap = runtime_source("generic-root-nowrap").unwrap();
++        assert_eq!(nowrap.matches("text-wrap-mode:nowrap").count(), 2);
++        assert!(runtime_source("unknown-generic-text-scene").is_none());
+     }
+ }
+diff --git a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs
+index c45b12e3..7ea9836e 100644
+--- a/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs
++++ b/crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs
+@@ -1,7 +1,8 @@
+ use spinon_core::{TextOrientation, WritingMode};
+ use spinon_layout::LayoutSourceRevision;
+ use spinon_layout::{
+-    LayoutGridItemIntrinsicSource, LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource,
++    LayoutGridItemIntrinsicAxisContributionInput, LayoutGridItemIntrinsicSource,
++    LayoutGridTrackSizingTrace, LayoutIntrinsicMeasurementSource, LayoutTextSnapshot,
+ };
+ use spinon_runtime::{RuntimeGridTrackSizingDiagnostics, RuntimeLayoutCompleted};
+ 
+@@ -42,6 +43,10 @@ pub(crate) fn grid_track_sizing_trace_report(
+             .item_inputs
+             .iter()
+             .any(|input| input.revision != diagnostics.revision)
++        || diagnostics
++            .item_text_layouts
++            .iter()
++            .any(|text_layout| text_layout.revision != diagnostics.revision)
+     {
+         return Err("C11.4 intrinsic input revision이 trace revision과 다릅니다".to_owned());
+     }
+@@ -60,6 +65,19 @@ pub(crate) fn grid_track_sizing_trace_report(
+     {
+         return Err("C11.4 Grid item frame 집합이 intrinsic input과 다릅니다".to_owned());
+     }
++    let item_text_layout_by_node = diagnostics
++        .item_text_layouts
++        .iter()
++        .map(|text_layout| (text_layout.input.node, text_layout))
++        .collect::<std::collections::BTreeMap<_, _>>();
++    if item_text_layout_by_node.len() != diagnostics.item_text_layouts.len()
++        || diagnostics.item_text_layouts.iter().any(|text_layout| {
++            text_layout.input.node != text_layout.layout.paragraph
++                || !item_frame_by_node.contains_key(&text_layout.input.node)
++        })
++    {
++        return Err("C11.4 Grid item text layout 소유자 집합이 올바르지 않습니다".to_owned());
++    }
+ 
+     let measurements = diagnostics
+         .intrinsic_measurements
+@@ -124,6 +142,16 @@ pub(crate) fn grid_track_sizing_trace_report(
+         .item_inputs
+         .iter()
+         .map(|input| {
++            let contribution_input = input
++                .contribution_input()
++                .ok()
++                .map(|contribution| {
++                    serde_json::json!({
++                        "width": axis_contribution_json(contribution.width),
++                        "height": axis_contribution_json(contribution.height),
++                    })
++                })
++                .unwrap_or(serde_json::Value::Null);
+             let source = match &input.source {
+                 LayoutGridItemIntrinsicSource::Text { sizes } => serde_json::json!({
+                     "kind": "text",
+@@ -173,9 +201,15 @@ pub(crate) fn grid_track_sizing_trace_report(
+                         "text": source.text,
+                     })
+                 }).collect::<Vec<_>>(),
++                "contributionInput": contribution_input,
+             })
+         })
+         .collect::<Vec<_>>();
++    let item_text_layouts = diagnostics
++        .item_text_layouts
++        .iter()
++        .map(item_text_layout_json)
++        .collect::<Vec<_>>();
+     let item_frames = diagnostics
+         .item_frames
+         .iter()
+@@ -205,6 +239,7 @@ pub(crate) fn grid_track_sizing_trace_report(
+         },
+         "intrinsicMeasurements": measurements,
+         "gridItemIntrinsicInputs": item_inputs,
++        "gridItemTextLayouts": item_text_layouts,
+         "gridItemFrames": item_frames,
+         "trackSizingTraces": traces,
+         "fitContentAutoNeighbor": fit_content_auto_neighbor,
+@@ -214,6 +249,117 @@ pub(crate) fn grid_track_sizing_trace_report(
+         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+ }
+ 
++fn axis_contribution_json(
++    input: LayoutGridItemIntrinsicAxisContributionInput,
++) -> serde_json::Value {
++    serde_json::json!({
++        "minContent": input.min_content,
++        "maxContent": input.max_content,
++        "preferredSize": layout_dimension_json(input.preferred_size),
++        "minSize": layout_dimension_json(input.min_size),
++        "maxSize": layout_dimension_json(input.max_size),
++        "marginStart": layout_length_percentage_json(input.margin_start),
++        "marginEnd": layout_length_percentage_json(input.margin_end),
++        "paddingStart": layout_length_percentage_json(input.padding_start),
++        "paddingEnd": layout_length_percentage_json(input.padding_end),
++        "borderStart": input.border_start,
++        "borderEnd": input.border_end,
++    })
++}
++
++fn layout_dimension_json(value: spinon_layout::LayoutDimension) -> serde_json::Value {
++    match value {
++        spinon_layout::LayoutDimension::Auto => serde_json::json!({ "kind": "auto" }),
++        spinon_layout::LayoutDimension::Fixed(css_px) => {
++            serde_json::json!({ "kind": "fixed", "cssPx": css_px })
++        }
++        spinon_layout::LayoutDimension::Percent(fraction) => {
++            serde_json::json!({ "kind": "percent", "fraction": fraction })
++        }
++        spinon_layout::LayoutDimension::CyclicMinContentPercent(fraction) => {
++            serde_json::json!({ "kind": "cyclicMinContentPercent", "fraction": fraction })
++        }
++        spinon_layout::LayoutDimension::MinContent => {
++            serde_json::json!({ "kind": "minContent" })
++        }
++        spinon_layout::LayoutDimension::MaxContent => {
++            serde_json::json!({ "kind": "maxContent" })
++        }
++        spinon_layout::LayoutDimension::FitContent => {
++            serde_json::json!({ "kind": "fitContent" })
++        }
++        spinon_layout::LayoutDimension::Calc(id) => {
++            serde_json::json!({ "kind": "calc", "id": format!("{id:?}") })
++        }
++    }
++}
++
++fn layout_length_percentage_json(
++    value: spinon_layout::LayoutLengthPercentage,
++) -> serde_json::Value {
++    match value {
++        spinon_layout::LayoutLengthPercentage::Auto => serde_json::json!({ "kind": "auto" }),
++        spinon_layout::LayoutLengthPercentage::LengthPx(css_px) => {
++            serde_json::json!({ "kind": "length", "cssPx": css_px })
++        }
++        spinon_layout::LayoutLengthPercentage::Percentage(fraction) => {
++            serde_json::json!({ "kind": "percent", "fraction": fraction })
++        }
++        spinon_layout::LayoutLengthPercentage::Calc(id) => {
++            serde_json::json!({ "kind": "calc", "id": format!("{id:?}") })
++        }
++    }
++}
++
++fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
++    let style = &snapshot.input.style;
++    serde_json::json!({
++        "node": snapshot.input.node.get(),
++        "layoutParagraph": snapshot.layout.paragraph.get(),
++        "revision": {
++            "source": format!("{:?}", snapshot.revision.source()),
++            "style": snapshot.revision.style().get(),
++            "environment": snapshot.revision.environment().get(),
++            "intrinsicSize": snapshot.revision.intrinsic_size().get(),
++        },
++        "sources": snapshot.input.sources.iter().map(|source| {
++            serde_json::json!({
++                "node": source.node.get(),
++                "text": source.text,
++                "inlineAncestors": source.inline_ancestors.iter()
++                    .map(|ancestor| ancestor.get()).collect::<Vec<_>>(),
++            })
++        }).collect::<Vec<_>>(),
++        "text": snapshot.layout.text,
++        "paragraphStyle": {
++            "fontFamily": style.font_family,
++            "fontSize": style.font_size,
++            "lineHeight": style.line_height,
++            "lineHeightIsNormal": style.line_height_is_normal,
++            "fontWeight": style.font_weight,
++            "fontStyle": format!("{:?}", style.font_style),
++            "whiteSpace": format!("{:?}", style.white_space),
++            "wordBreak": format!("{:?}", style.word_break),
++            "direction": format!("{:?}", style.direction),
++            "writingMode": format!("{:?}", style.writing_mode),
++            "textOrientation": format!("{:?}", style.text_orientation),
++            "lineBreak": format!("{:?}", style.line_break),
++            "ligatures": format!("{:?}", style.ligatures),
++        },
++        "fontRegistryRevision": snapshot.layout.font_registry_revision.0,
++        "availableWidth": snapshot.layout.available_width,
++        "width": snapshot.layout.width,
++        "height": snapshot.layout.height,
++        "lines": snapshot.layout.lines.iter().map(|line| {
++            serde_json::json!({
++                "advance": line.advance,
++                "lineTop": line.line_top,
++                "lineHeight": line.line_height,
++            })
++        }).collect::<Vec<_>>(),
++    })
++}
++
+ fn validate_orthogonal_registry_identity(
+     diagnostics: &RuntimeGridTrackSizingDiagnostics,
+ ) -> Result<(), String> {
+@@ -479,6 +625,7 @@ mod tests {
+                 revision,
+                 intrinsic_measurements: vec![measurement].into(),
+                 item_inputs: vec![item_input].into(),
++                item_text_layouts: Arc::from([]),
+                 item_frames: Arc::from([]),
+                 traces: Arc::from([]),
+                 fit_content_auto_neighbor: None,
+@@ -633,6 +780,7 @@ mod tests {
+             ),
+             intrinsic_measurements: Arc::from([]),
+             item_inputs: Arc::from([]),
++            item_text_layouts: Arc::from([]),
+             item_frames: Arc::from([]),
+             traces: vec![LayoutGridTrackSizingTrace {
+                 node: NodeId::new(7).unwrap(),
+diff --git a/crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs b/crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs
+index 57eebbb4..dfe077e1 100644
+--- a/crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs
++++ b/crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs
+@@ -2,6 +2,8 @@ use super::{
+     RuntimeUaCascadeHandle, RuntimeUaCascadeKey, State, WorkRequest, elapsed_microseconds, lock,
+ };
+ use spinon_core::{HostDocumentSnapshot, HostNodeHandle};
++#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
++use spinon_layout::LayoutTextSnapshot;
+ use spinon_layout::{LayoutError, LayoutFrame, LayoutOutput};
+ use spinon_render::RuntimeRenderSnapshot;
+ #[cfg(feature = "c13-3-gesture-fixture-test")]
+@@ -90,6 +92,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
+     pub revision: spinon_layout::LayoutInputRevision,
+     pub intrinsic_measurements: Arc<[spinon_layout::LayoutIntrinsicMeasurement]>,
+     pub item_inputs: Arc<[spinon_layout::LayoutGridItemIntrinsicInput]>,
++    pub item_text_layouts: Arc<[LayoutTextSnapshot]>,
+     pub item_frames: Arc<[(spinon_core::NodeId, LayoutFrame)]>,
+     pub traces: Arc<[spinon_layout::LayoutGridTrackSizingTrace]>,
+     pub fit_content_auto_neighbor: Option<RuntimeC11_4FitContentAutoNeighborObservation>,
+@@ -127,10 +130,21 @@ impl RuntimeGridTrackSizingDiagnostics {
+             })
+             .collect::<Vec<_>>()
+             .into();
++        let item_text_layouts = self
++            .item_text_layouts
++            .iter()
++            .cloned()
++            .map(|mut text_layout| {
++                text_layout.revision = revision;
++                text_layout
++            })
++            .collect::<Vec<_>>()
++            .into();
+         Self {
+             revision,
+             intrinsic_measurements,
+             item_inputs,
++            item_text_layouts,
+             item_frames: Arc::clone(&self.item_frames),
+             traces: Arc::clone(&self.traces),
+             fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
+@@ -807,10 +821,15 @@ where
+                         })
+                 })
+                 .collect::<Result<Vec<_>, _>>()?;
++            let item_text_layouts = item_inputs
++                .iter()
++                .filter_map(|input| output.layout.text_layouts.get(&input.node).cloned())
++                .collect::<Vec<_>>();
+             Some(Arc::new(RuntimeGridTrackSizingDiagnostics {
+                 revision: output.layout.revision,
+                 intrinsic_measurements: intrinsic_measurements.into(),
+                 item_inputs: item_inputs.into(),
++                item_text_layouts: item_text_layouts.into(),
+                 item_frames: item_frames.into(),
+                 traces: traces.into(),
+                 fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
+@@ -1371,6 +1390,7 @@ mod tests {
+             revision: original_revision,
+             intrinsic_measurements: Arc::from([]),
+             item_inputs: Arc::from([]),
++            item_text_layouts: Arc::from([]),
+             item_frames: Arc::from([]),
+             traces: Arc::from([]),
+             fit_content_auto_neighbor: Some(RuntimeC11_4FitContentAutoNeighborObservation {
+diff --git a/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java b/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
+index e965d777..502f8790 100644
+--- a/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
++++ b/platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java
+@@ -42,6 +42,7 @@ import java.util.HashSet;
+ import java.util.Iterator;
+ import java.util.List;
+ import java.util.Map;
++import java.util.Objects;
+ import java.util.Set;
+ import java.util.concurrent.CountDownLatch;
+ import java.util.concurrent.ExecutorService;
+@@ -127,7 +128,134 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+             "area-track-count-mismatch";
+     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
+             "template-area-repeat-cross-axis-";
+-    private static final String C114_GENERIC_DIRECT_TEXT_SCENE_ID = "generic-root-normal";
++    private static final String[] C114_GENERIC_DIRECT_TEXT_SCENE_IDS = {
++            "generic-root-normal",
++            "generic-root-nowrap",
++            "generic-root-break-all",
++            "generic-root-content-variation",
++            "generic-root-whitespace",
++            "generic-root-reorder",
++    };
++    private static final class C114GenericDirectTextItemExpectation {
++        final int node;
++        final double x;
++        final double width;
++        final double height;
++        final double minContent;
++        final double maxContent;
++        final double minContentHeight;
++        final double maxContentHeight;
++        final String rawText;
++        final String layoutText;
++        final String whiteSpace;
++        final String wordBreak;
++        final double[] lineAdvances;
++
++        C114GenericDirectTextItemExpectation(
++                int node, double x, double width, double height,
++                double minContent, double maxContent,
++                double minContentHeight, double maxContentHeight,
++                String rawText, String layoutText, String whiteSpace, String wordBreak,
++                double[] lineAdvances
++        ) {
++            this.node = node;
++            this.x = x;
++            this.width = width;
++            this.height = height;
++            this.minContent = minContent;
++            this.maxContent = maxContent;
++            this.minContentHeight = minContentHeight;
++            this.maxContentHeight = maxContentHeight;
++            this.rawText = rawText;
++            this.layoutText = layoutText;
++            this.whiteSpace = whiteSpace;
++            this.wordBreak = wordBreak;
++            this.lineAdvances = lineAdvances;
++        }
++    }
++
++    private static final class C114GenericDirectTextSceneExpectation {
++        final double rootHeight;
++        final double[] columns;
++        final C114GenericDirectTextItemExpectation[] items;
++
++        C114GenericDirectTextSceneExpectation(
++                double rootHeight, double[] columns,
++                C114GenericDirectTextItemExpectation first,
++                C114GenericDirectTextItemExpectation second
++        ) {
++            this.rootHeight = rootHeight;
++            this.columns = columns;
++            this.items = new C114GenericDirectTextItemExpectation[] {first, second};
++        }
++    }
++
++    private static C114GenericDirectTextItemExpectation c114GenericTextItem(
++            int node, double x, double width, double height,
++            double minContent, double maxContent,
++            double minContentHeight, double maxContentHeight,
++            String rawText, String layoutText, String whiteSpace, String wordBreak,
++            double... lineAdvances
++    ) {
++        return new C114GenericDirectTextItemExpectation(
++                node, x, width, height, minContent, maxContent,
++                minContentHeight, maxContentHeight, rawText, layoutText,
++                whiteSpace, wordBreak, lineAdvances);
++    }
++
++    private static boolean c114IsGenericDirectTextScene(String sceneId) {
++        if (sceneId == null) return false;
++        for (String candidate : C114_GENERIC_DIRECT_TEXT_SCENE_IDS) {
++            if (candidate.equals(sceneId)) return true;
++        }
++        return false;
++    }
++
++    private static C114GenericDirectTextSceneExpectation c114GenericDirectTextExpectation(
++            String sceneId
++    ) {
++        if (sceneId == null) return null;
++        switch (sceneId) {
++            case "generic-root-normal":
++                return new C114GenericDirectTextSceneExpectation(20, new double[] {20, 40},
++                        c114GenericTextItem(2, 0, 20, 20, 20, 40, 20, 10,
++                                "A BC", "A BC", "Normal", "Normal", 10, 20),
++                        c114GenericTextItem(4, 30, 40, 10, 20, 40, 20, 10,
++                                "A BC", "A BC", "Normal", "Normal", 40));
++            case "generic-root-nowrap":
++                return new C114GenericDirectTextSceneExpectation(10, new double[] {40, 40},
++                        c114GenericTextItem(2, 0, 40, 10, 40, 40, 10, 10,
++                                "A BC", "A BC", "NoWrap", "Normal", 40),
++                        c114GenericTextItem(4, 50, 40, 10, 40, 40, 10, 10,
++                                "A BC", "A BC", "NoWrap", "Normal", 40));
++            case "generic-root-break-all":
++                return new C114GenericDirectTextSceneExpectation(40, new double[] {10, 40},
++                        c114GenericTextItem(2, 0, 10, 40, 10, 40, 40, 10,
++                                "ABCD", "ABCD", "Normal", "BreakAll", 10, 10, 10, 10),
++                        c114GenericTextItem(4, 20, 40, 10, 10, 40, 40, 10,
++                                "ABCD", "ABCD", "Normal", "BreakAll", 40));
++            case "generic-root-content-variation":
++                return new C114GenericDirectTextSceneExpectation(20, new double[] {30, 50},
++                        c114GenericTextItem(2, 0, 30, 20, 30, 50, 20, 10,
++                                "A BCD", "A BCD", "Normal", "Normal", 10, 30),
++                        c114GenericTextItem(4, 40, 50, 10, 30, 50, 20, 10,
++                                "A BCD", "A BCD", "Normal", "Normal", 50));
++            case "generic-root-whitespace":
++                return new C114GenericDirectTextSceneExpectation(20, new double[] {20, 40},
++                        c114GenericTextItem(2, 0, 20, 20, 20, 40, 20, 10,
++                                " A  BC ", "A BC", "Normal", "Normal", 10, 20),
++                        c114GenericTextItem(4, 30, 40, 10, 20, 40, 20, 10,
++                                " A  BC ", "A BC", "Normal", "Normal", 40));
++            case "generic-root-reorder":
++                return new C114GenericDirectTextSceneExpectation(40, new double[] {10, 40},
++                        c114GenericTextItem(2, 0, 10, 40, 10, 40, 40, 10,
++                                "ABCD", "ABCD", "Normal", "BreakAll", 10, 10, 10, 10),
++                        c114GenericTextItem(4, 20, 40, 10, 20, 40, 20, 10,
++                                "A BC", "A BC", "Normal", "Normal", 40));
++            default:
++                return null;
++        }
++    }
+     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
+             "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
+             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
+@@ -644,7 +772,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         return "revision-reuse".equals(sceneId);
+     }
+     static boolean isC114GridTrackSizingScene(String sceneId) {
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
++        if (c114IsGenericDirectTextScene(sceneId)) {
+             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+         }
+         if (sceneId != null && sceneId.startsWith(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX)) {
+@@ -2015,8 +2143,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         if ("image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
+             return "width=12,height=40";
+         }
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+-            return "width=100,height=20";
++        C114GenericDirectTextSceneExpectation genericText =
++                c114GenericDirectTextExpectation(sceneId);
++        if (genericText != null) {
++            return "width=100,height=" + c114GenericFrameNumber(genericText.rootHeight);
+         }
+         if (isC114GeneralizedCyclicRowScene(sceneId)) {
+             return "width=24,height=44";
+@@ -2380,8 +2510,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                 || "image-auto-max-mixed-tracks-border-overflow".equals(sceneId)) {
+             return "width=24,height=16";
+         }
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+-            return "width=20,height=20";
++        C114GenericDirectTextSceneExpectation genericText =
++                c114GenericDirectTextExpectation(sceneId);
++        if (genericText != null) {
++            C114GenericDirectTextItemExpectation first = genericText.items[0];
++            return "width=" + c114GenericFrameNumber(first.width)
++                    + ",height=" + c114GenericFrameNumber(first.height);
+         }
+         if (isC114GeneralizedCyclicRowScene(sceneId)) {
+             return "width=24,height=24";
+@@ -2640,8 +2774,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+ 
+     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
+         sceneId = c114BaseNestedGridSceneId(sceneId);
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+-            return c114GenericDirectTextIntrinsicInputsMatch(report);
++        if (c114IsGenericDirectTextScene(sceneId)) {
++            return c114GenericDirectTextIntrinsicInputsMatch(sceneId, report);
+         }
+         if (c114IsOrthogonalDirectMixedTextImageIntrinsicRowScene(sceneId)) {
+             return c114ExpectedMixedIntrinsicInputs(sceneId, report)
+@@ -2824,7 +2958,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         }
+     }
+ 
+-    private static boolean c114GenericDirectTextIntrinsicInputsMatch(String report) {
++    private static boolean c114GenericDirectTextIntrinsicInputsMatch(
++            String sceneId, String report
++    ) {
++        C114GenericDirectTextSceneExpectation scene =
++                c114GenericDirectTextExpectation(sceneId);
++        if (scene == null) return false;
+         int marker = report.indexOf("grid_track_sizing_diagnostics=");
+         if (marker < 0) return false;
+         String json = report.substring(marker + "grid_track_sizing_diagnostics=".length());
+@@ -2845,14 +2984,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                     || c114GenericJsonInteger(revision, "intrinsicSize") == null
+                     || c114GenericJsonInteger(revision, "intrinsicSize") < 0
+                     || inputs == null || inputs.length() != 2) return false;
+-            int[][] expectedMetrics = {{20, 20, 40, 10}, {20, 20, 40, 10}};
+-            int[] expectedNodes = {2, 4};
++            int[] expectedNodes = {scene.items[0].node, scene.items[1].node};
+             for (int index = 0; index < inputs.length(); index++) {
+                 org.json.JSONObject input = inputs.optJSONObject(index);
+                 org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+                 org.json.JSONArray textSources = input == null
+                         ? null : input.optJSONArray("textSources");
+-                int[] metrics = expectedMetrics[index];
++                C114GenericDirectTextItemExpectation expected = scene.items[index];
+                 if (input == null
+                         || !Integer.valueOf(1).equals(c114GenericJsonInteger(input, "grid"))
+                         || !Integer.valueOf(expectedNodes[index]).equals(
+@@ -2863,12 +3001,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                         || !"text".equals(c114GenericJsonString(source, "kind"))
+                         || !Integer.valueOf(1).equals(
+                                 c114GenericJsonInteger(source, "fontRegistryRevision"))
+-                        || !c114GenericJsonNear(source, "minContent", metrics[0], 1.0 / 64.0)
+                         || !c114GenericJsonNear(
+-                                source, "minContentHeight", metrics[1], 1.0 / 64.0)
+-                        || !c114GenericJsonNear(source, "maxContent", metrics[2], 1.0 / 64.0)
++                                source, "minContent", expected.minContent, 1.0 / 64.0)
++                        || !c114GenericJsonNear(
++                                source, "minContentHeight", expected.minContentHeight, 1.0 / 64.0)
+                         || !c114GenericJsonNear(
+-                                source, "maxContentHeight", metrics[3], 1.0 / 64.0)) {
++                                source, "maxContent", expected.maxContent, 1.0 / 64.0)
++                        || !c114GenericJsonNear(
++                                source, "maxContentHeight", expected.maxContentHeight, 1.0 / 64.0)
++                        || !c114GenericContributionInputMatches(input, expected)) {
+                     return false;
+                 }
+             }
+@@ -2884,7 +3025,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                         ? null : measurement.optJSONObject("source");
+                 Integer node = measurement == null
+                         ? null : c114GenericJsonInteger(measurement, "node");
+-                int expectedIndex = node == null ? -1 : node == 2 ? 0 : node == 4 ? 1 : -1;
++                int expectedIndex = node == null ? -1
++                        : node == expectedNodes[0] ? 0
++                        : node == expectedNodes[1] ? 1 : -1;
+                 String availableSpace = c114GenericJsonString(measurement, "availableSpace");
+                 org.json.JSONObject contentSize = measurement == null
+                         ? null : measurement.optJSONObject("contentSize");
+@@ -2918,12 +3061,145 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                         || !maxContentHeightNodes[index]) return false;
+             }
+             if (maxContentWidthNodes[0] || !maxContentWidthNodes[1]) return false;
+-            return c114GenericDirectTextTraceMatches(diagnostics);
++            return c114GenericDirectTextTextLayoutsMatch(scene, diagnostics, revision)
++                    && c114GenericDirectTextTraceMatches(sceneId, diagnostics);
+         } catch (org.json.JSONException | ClassCastException error) {
+             return false;
+         }
+     }
+ 
++    private static boolean c114GenericContributionInputMatches(
++            org.json.JSONObject input, C114GenericDirectTextItemExpectation expected
++    ) {
++        org.json.JSONObject contribution = input.optJSONObject("contributionInput");
++        org.json.JSONObject width = contribution == null
++                ? null : contribution.optJSONObject("width");
++        org.json.JSONObject height = contribution == null
++                ? null : contribution.optJSONObject("height");
++        return c114GenericAxisContributionMatches(
++                width, expected.minContent, expected.maxContent)
++                && c114GenericAxisContributionMatches(
++                        height, expected.minContentHeight, expected.maxContentHeight);
++    }
++
++    private static boolean c114GenericAxisContributionMatches(
++            org.json.JSONObject axis, double minContent, double maxContent
++    ) {
++        return axis != null
++                && c114GenericJsonNear(axis, "minContent", minContent, 1.0 / 64.0)
++                && c114GenericJsonNear(axis, "maxContent", maxContent, 1.0 / 64.0)
++                && c114GenericAutoDimension(axis.optJSONObject("preferredSize"))
++                && c114GenericAutoDimension(axis.optJSONObject("minSize"))
++                && c114GenericAutoDimension(axis.optJSONObject("maxSize"))
++                && c114GenericZeroLength(axis.optJSONObject("marginStart"))
++                && c114GenericZeroLength(axis.optJSONObject("marginEnd"))
++                && c114GenericZeroLength(axis.optJSONObject("paddingStart"))
++                && c114GenericZeroLength(axis.optJSONObject("paddingEnd"))
++                && c114GenericJsonNear(axis, "borderStart", 0, 0.0001)
++                && c114GenericJsonNear(axis, "borderEnd", 0, 0.0001);
++    }
++
++    private static boolean c114GenericAutoDimension(org.json.JSONObject dimension) {
++        return dimension != null && "auto".equals(c114GenericJsonString(dimension, "kind"));
++    }
++
++    private static boolean c114GenericZeroLength(org.json.JSONObject length) {
++        return length != null
++                && "length".equals(c114GenericJsonString(length, "kind"))
++                && c114GenericJsonNear(length, "cssPx", 0, 0.0001);
++    }
++
++    private static boolean c114GenericDirectTextTextLayoutsMatch(
++            C114GenericDirectTextSceneExpectation scene,
++            org.json.JSONObject diagnostics,
++            org.json.JSONObject layoutRevision
++    ) {
++        org.json.JSONArray layouts = diagnostics.optJSONArray("gridItemTextLayouts");
++        if (layouts == null || layouts.length() != scene.items.length) return false;
++        for (int index = 0; index < layouts.length(); index++) {
++            C114GenericDirectTextItemExpectation expected = scene.items[index];
++            org.json.JSONObject layout = layouts.optJSONObject(index);
++            org.json.JSONObject revision = layout == null
++                    ? null : layout.optJSONObject("revision");
++            org.json.JSONArray sources = layout == null
++                    ? null : layout.optJSONArray("sources");
++            org.json.JSONObject paragraph = layout == null
++                    ? null : layout.optJSONObject("paragraphStyle");
++            org.json.JSONArray lines = layout == null
++                    ? null : layout.optJSONArray("lines");
++            if (layout == null
++                    || !Integer.valueOf(expected.node).equals(
++                            c114GenericJsonInteger(layout, "node"))
++                    || !Integer.valueOf(expected.node).equals(
++                            c114GenericJsonInteger(layout, "layoutParagraph"))
++                    || !c114GenericTextLayoutRevisionMatches(revision, layoutRevision)
++                    || sources == null || sources.length() != 1
++                    || !c114GenericJsonNear(
++                            layout, "fontRegistryRevision", 1, 0)
++                    || !c114GenericJsonNear(layout, "availableWidth", expected.width, 1.0 / 64.0)
++                    || !c114GenericJsonNear(layout, "width", expected.width, 1.0 / 64.0)
++                    || !c114GenericJsonNear(layout, "height", expected.height, 1.0 / 64.0)
++                    || !expected.layoutText.equals(c114GenericJsonString(layout, "text"))
++                    || !c114GenericParagraphStyleMatches(paragraph, expected)
++                    || lines == null || lines.length() != expected.lineAdvances.length) {
++                return false;
++            }
++            org.json.JSONObject source = sources.optJSONObject(0);
++            org.json.JSONArray inlineAncestors = source == null
++                    ? null : source.optJSONArray("inlineAncestors");
++            if (source == null || inlineAncestors == null || inlineAncestors.length() != 0
++                    || !Integer.valueOf(expected.node + 1).equals(
++                            c114GenericJsonInteger(source, "node"))
++                    || !expected.rawText.equals(c114GenericJsonString(source, "text"))) {
++                return false;
++            }
++            for (int lineIndex = 0; lineIndex < lines.length(); lineIndex++) {
++                org.json.JSONObject line = lines.optJSONObject(lineIndex);
++                if (!c114GenericJsonNear(
++                            line, "advance", expected.lineAdvances[lineIndex], 1.0 / 64.0)
++                        || !c114GenericJsonNear(line, "lineTop", lineIndex * 10.0, 1.0 / 64.0)
++                        || !c114GenericJsonNear(line, "lineHeight", 10, 1.0 / 64.0)) {
++                    return false;
++                }
++            }
++        }
++        return true;
++    }
++
++    private static boolean c114GenericTextLayoutRevisionMatches(
++            org.json.JSONObject observed, org.json.JSONObject expected
++    ) {
++        if (observed == null || expected == null) return false;
++        String observedSource = c114GenericJsonString(observed, "source");
++        String expectedSource = c114GenericJsonString(expected, "source");
++        return observedSource != null && observedSource.equals(expectedSource)
++                && Objects.equals(c114GenericJsonInteger(observed, "style"),
++                        c114GenericJsonInteger(expected, "style"))
++                && Objects.equals(c114GenericJsonInteger(observed, "environment"),
++                        c114GenericJsonInteger(expected, "environment"))
++                && Objects.equals(c114GenericJsonInteger(observed, "intrinsicSize"),
++                        c114GenericJsonInteger(expected, "intrinsicSize"));
++    }
++
++    private static boolean c114GenericParagraphStyleMatches(
++            org.json.JSONObject style, C114GenericDirectTextItemExpectation expected
++    ) {
++        return style != null
++                && "Ahem".equals(c114GenericJsonString(style, "fontFamily"))
++                && c114GenericJsonNear(style, "fontSize", 10, 0)
++                && c114GenericJsonNear(style, "lineHeight", 10, 0)
++                && Boolean.FALSE.equals(c114GenericJsonBoolean(style, "lineHeightIsNormal"))
++                && c114GenericJsonNear(style, "fontWeight", 400, 0)
++                && "Normal".equals(c114GenericJsonString(style, "fontStyle"))
++                && expected.whiteSpace.equals(c114GenericJsonString(style, "whiteSpace"))
++                && expected.wordBreak.equals(c114GenericJsonString(style, "wordBreak"))
++                && "Ltr".equals(c114GenericJsonString(style, "direction"))
++                && "HorizontalTb".equals(c114GenericJsonString(style, "writingMode"))
++                && "Mixed".equals(c114GenericJsonString(style, "textOrientation"))
++                && "Strict".equals(c114GenericJsonString(style, "lineBreak"))
++                && "Normal".equals(c114GenericJsonString(style, "ligatures"));
++    }
++
+     private static Integer c114GenericJsonInteger(org.json.JSONObject object, String key) {
+         Object value = object == null ? null : object.opt(key);
+         if (!(value instanceof Number) || value instanceof Boolean) return null;
+@@ -2958,9 +3234,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         return observed != null && Math.abs(observed - expected) <= tolerance;
+     }
+ 
++    private static String c114GenericFrameNumber(double value) {
++        return value == Math.rint(value)
++                ? Long.toString((long) value) : Double.toString(value);
++    }
++
+     private static boolean c114GenericDirectTextTraceMatches(
+-            org.json.JSONObject diagnostics
++            String sceneId, org.json.JSONObject diagnostics
+     ) throws org.json.JSONException {
++        C114GenericDirectTextSceneExpectation scene =
++                c114GenericDirectTextExpectation(sceneId);
++        if (scene == null) return false;
+         org.json.JSONArray traces = diagnostics.optJSONArray("trackSizingTraces");
+         org.json.JSONObject trace = traces == null || traces.length() != 1
+                 ? null : traces.optJSONObject(0);
+@@ -2973,22 +3257,32 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         if (columns == null || rows == null
+                 || !"Columns".equals(c114GenericJsonString(columns, "axis"))
+                 || !"Rows".equals(c114GenericJsonString(rows, "axis"))
+-                || !c114GenericTrackSizesMatch(columns, new double[] {20.0, 40.0}, 10.0)
+-                || !c114GenericTrackSizesMatch(rows, new double[] {20.0}, 0.0)) return false;
++                || !c114GenericTrackSizesMatch(columns, scene.columns, 10.0)
++                || !c114GenericTrackSizesMatch(rows, new double[] {scene.rootHeight}, 0.0)) {
++            return false;
++        }
++        C114GenericDirectTextItemExpectation first = scene.items[0];
++        C114GenericDirectTextItemExpectation second = scene.items[1];
+         return c114GenericDirectTextContributionsMatch(
+                 columns,
+-                new int[] {2, 4, 4},
++                new int[] {first.node, second.node, second.node},
+                 new String[] {"MinContent", "MinContent", "MaxContent"},
+-                new double[] {20.0, 20.0, 40.0},
++                new double[] {first.minContent, second.minContent, second.maxContent},
+                 true)
+                 && c114GenericDirectTextContributionsMatch(
+                         rows,
+-                        new int[] {2, 2, 2, 4, 4, 4},
++                        new int[] {
++                            first.node, first.node, first.node,
++                            second.node, second.node, second.node
++                        },
+                         new String[] {
+                             "Minimum", "MinContent", "MaxContent",
+                             "Minimum", "MinContent", "MaxContent"
+                         },
+-                        new double[] {20.0, 20.0, 20.0, 10.0, 10.0, 10.0},
++                        new double[] {
++                            first.height, first.height, first.height,
++                            second.height, second.height, second.height
++                        },
+                         true);
+     }
+ 
+@@ -4316,10 +4610,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+                     + "3:node=4,x=0,y=10,width=60,height=290;"
+                     + "4:node=5,x=0,y=10,width=60,height=10]";
+         }
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) {
+-            return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
+-                    + "1:node=2,x=0,y=0,width=20,height=20;"
+-                    + "2:node=4,x=30,y=0,width=40,height=10]";
++        C114GenericDirectTextSceneExpectation genericText =
++                c114GenericDirectTextExpectation(sceneId);
++        if (genericText != null) {
++            StringBuilder frames = new StringBuilder("node_frames_css_px=[")
++                    .append("0:node=1,x=0,y=0,width=100,height=")
++                    .append(c114GenericFrameNumber(genericText.rootHeight));
++            for (int index = 0; index < genericText.items.length; index++) {
++                C114GenericDirectTextItemExpectation item = genericText.items[index];
++                frames.append(';').append(index + 1)
++                        .append(":node=").append(item.node)
++                        .append(",x=").append(c114GenericFrameNumber(item.x))
++                        .append(",y=0,width=").append(c114GenericFrameNumber(item.width))
++                        .append(",height=").append(c114GenericFrameNumber(item.height));
++            }
++            return frames.append(']').toString();
+         }
+         if (isC114GeneralizedCyclicRowScene(sceneId)) {
+             return "node_frames_css_px=[0:node=1,x=0,y=0,width=24,height=44;"
+@@ -6861,7 +7166,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
+         }
+         if ("align-content-normal-equal-auto-rows".equals(sceneId)) return 4;
+         if ("fit-content-auto-neighbor-wpt".equals(sceneId)) return 5;
+-        if (C114_GENERIC_DIRECT_TEXT_SCENE_ID.equals(sceneId)) return 3;
++        if (c114IsGenericDirectTextScene(sceneId)) return 3;
+         if (isC114GeneralizedCyclicRowScene(sceneId)) return 4;
+         if ("cyclic-max-content-auto-fill".equals(sceneId)
+                 || "definite-40px-auto-fill-control".equals(sceneId)
+diff --git a/platforms/ios/Sources/C0410RuntimeGpuDemo.swift b/platforms/ios/Sources/C0410RuntimeGpuDemo.swift
+index 5de97dda..51cce356 100644
+--- a/platforms/ios/Sources/C0410RuntimeGpuDemo.swift
++++ b/platforms/ios/Sources/C0410RuntimeGpuDemo.swift
+@@ -82,10 +82,127 @@ private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
+     "definite-44px-auto-fit-prefix-suffix-control",
+ ]
+ #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+-private let c114GenericDirectTextSceneIDs: Set<String> = ["generic-root-normal"]
++private let c114GenericDirectTextSceneIDs: Set<String> = [
++    "generic-root-normal", "generic-root-nowrap", "generic-root-break-all",
++    "generic-root-content-variation", "generic-root-whitespace", "generic-root-reorder",
++]
+ #else
+ private let c114GenericDirectTextSceneIDs: Set<String> = []
+ #endif
++
++private struct C114GenericDirectTextItemExpectation {
++    let node: Int
++    let x: Double
++    let width: Double
++    let height: Double
++    let minContent: Double
++    let maxContent: Double
++    let minContentHeight: Double
++    let maxContentHeight: Double
++    let rawText: String
++    let layoutText: String
++    let whiteSpace: String
++    let wordBreak: String
++    let lineAdvances: [Double]
++}
++
++private struct C114GenericDirectTextSceneExpectation {
++    let rootHeight: Double
++    let columns: [Double]
++    let items: [C114GenericDirectTextItemExpectation]
++}
++
++private func c114GenericTextItem(
++    node: Int, x: Double, width: Double, height: Double,
++    minContent: Double, maxContent: Double,
++    minContentHeight: Double, maxContentHeight: Double,
++    rawText: String, layoutText: String, whiteSpace: String, wordBreak: String,
++    lineAdvances: [Double]
++) -> C114GenericDirectTextItemExpectation {
++    C114GenericDirectTextItemExpectation(
++        node: node, x: x, width: width, height: height,
++        minContent: minContent, maxContent: maxContent,
++        minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
++        rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
++        wordBreak: wordBreak, lineAdvances: lineAdvances
++    )
++}
++
++private func c114GenericDirectTextExpectation(
++    _ sceneID: String
++) -> C114GenericDirectTextSceneExpectation? {
++    switch sceneID {
++    case "generic-root-normal":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [20, 40], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 20, height: 20,
++                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
++                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [10, 20]),
++            c114GenericTextItem(node: 4, x: 30, width: 40, height: 10,
++                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
++                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [40]),
++        ])
++    case "generic-root-nowrap":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 10, columns: [40, 40], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 40, height: 10,
++                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
++                rawText: "A BC", layoutText: "A BC", whiteSpace: "NoWrap", wordBreak: "Normal",
++                lineAdvances: [40]),
++            c114GenericTextItem(node: 4, x: 50, width: 40, height: 10,
++                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
++                rawText: "A BC", layoutText: "A BC", whiteSpace: "NoWrap", wordBreak: "Normal",
++                lineAdvances: [40]),
++        ])
++    case "generic-root-break-all":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [10, 40], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 10, height: 40,
++                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
++                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
++                lineAdvances: [10, 10, 10, 10]),
++            c114GenericTextItem(node: 4, x: 20, width: 40, height: 10,
++                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
++                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
++                lineAdvances: [40]),
++        ])
++    case "generic-root-content-variation":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [30, 50], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 30, height: 20,
++                minContent: 30, maxContent: 50, minContentHeight: 20, maxContentHeight: 10,
++                rawText: "A BCD", layoutText: "A BCD", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [10, 30]),
++            c114GenericTextItem(node: 4, x: 40, width: 50, height: 10,
++                minContent: 30, maxContent: 50, minContentHeight: 20, maxContentHeight: 10,
++                rawText: "A BCD", layoutText: "A BCD", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [50]),
++        ])
++    case "generic-root-whitespace":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [20, 40], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 20, height: 20,
++                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
++                rawText: " A  BC ", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [10, 20]),
++            c114GenericTextItem(node: 4, x: 30, width: 40, height: 10,
++                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
++                rawText: " A  BC ", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [40]),
++        ])
++    case "generic-root-reorder":
++        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [10, 40], items: [
++            c114GenericTextItem(node: 2, x: 0, width: 10, height: 40,
++                minContent: 10, maxContent: 40, minContentHeight: 40, maxContentHeight: 10,
++                rawText: "ABCD", layoutText: "ABCD", whiteSpace: "Normal", wordBreak: "BreakAll",
++                lineAdvances: [10, 10, 10, 10]),
++            c114GenericTextItem(node: 4, x: 20, width: 40, height: 10,
++                minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
++                rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
++                lineAdvances: [40]),
++        ])
++    default:
++        return nil
++    }
++}
++
+ private let c114RowAxisSpanStageSceneIDs: Set<String> = [
+     "row-axis-span2-forward", "row-axis-span2-reversed",
+     "row-axis-span2-before-span3", "row-axis-span3-before-span2",
+@@ -1218,7 +1335,9 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+     if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
+         return "width=12,height=40"
+     }
+-    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=100,height=20" }
++    if let genericText = c114GenericDirectTextExpectation(sceneID) {
++        return "width=100,height=\(c114GenericFrameNumber(genericText.rootHeight))"
++    }
+     if sceneID == "cyclic-max-content-auto-fill" { return "width=24,height=16" }
+     if sceneID == "definite-40px-auto-fill-control" { return "width=40,height=16" }
+     if sceneID == "cyclic-max-content-auto-fill-rows" { return "width=24,height=16" }
+@@ -1522,7 +1641,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+         || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
+         return "width=24,height=16"
+     }
+-    if c114GenericDirectTextSceneIDs.contains(sceneID) { return "width=20,height=20" }
++    if let genericText = c114GenericDirectTextExpectation(sceneID),
++       let first = genericText.items.first {
++        return "width=\(c114GenericFrameNumber(first.width)),height=\(c114GenericFrameNumber(first.height))"
++    }
+     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) {
+         return "width=24,height=24"
+     }
+@@ -1921,7 +2043,7 @@ private func c114OrthogonalRowFramesMatch(
+ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
+     let sceneID = c114BaseNestedGridSceneID(sceneID)
+     if c114GenericDirectTextSceneIDs.contains(sceneID) {
+-        return c114GenericDirectTextIntrinsicInputsMatch(report: report)
++        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
+     }
+     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
+         return c114ExpectedOrthogonalRowIntrinsicInputs(sceneID, report: report)
+@@ -3421,8 +3543,11 @@ private func c114ImageMultiSpanTracksMatch(
+         && zip(sizes, expected).allSatisfy { abs($0.0 - $0.1) <= 0.0001 }
+ }
+ 
+-private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
+-    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
++private func c114GenericDirectTextIntrinsicInputsMatch(
++    sceneID: String, report: String
++) -> Bool {
++    guard let scene = c114GenericDirectTextExpectation(sceneID),
++          let diagnostics = c114GridTrackSizingDiagnostics(report),
+           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+           let revisionSource = c114GenericJSONString(revision["source"]),
+           revisionSource.hasPrefix("HostDocument"),
+@@ -3434,8 +3559,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
+           intrinsicSizeRevision >= 0,
+           let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+           inputs.count == 2 else { return false }
+-    let expectedNodes = [2, 4]
++    let expectedNodes = scene.items.map(\.node)
+     for (index, input) in inputs.enumerated() {
++        let expected = scene.items[index]
+         guard c114GenericJSONInteger(input["grid"]) == 1,
+               c114GenericJSONInteger(input["node"]) == expectedNodes[index],
+               c114GenericJSONInteger(input["sourceOrder"]) == index,
+@@ -3444,14 +3570,23 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
+               let source = input["source"] as? [String: Any],
+               c114GenericJSONString(source["kind"]) == "text",
+               c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+-              c114GenericJSONNear(source["minContent"], expected: 20, tolerance: 1.0 / 64.0),
+               c114GenericJSONNear(
+-                source["minContentHeight"], expected: 20, tolerance: 1.0 / 64.0
++                source["minContent"], expected: expected.minContent, tolerance: 1.0 / 64.0
+               ),
+-              c114GenericJSONNear(source["maxContent"], expected: 40, tolerance: 1.0 / 64.0),
+               c114GenericJSONNear(
+-                source["maxContentHeight"], expected: 10, tolerance: 1.0 / 64.0
+-              ) else {
++                source["minContentHeight"],
++                expected: expected.minContentHeight,
++                tolerance: 1.0 / 64.0
++              ),
++              c114GenericJSONNear(
++                source["maxContent"], expected: expected.maxContent, tolerance: 1.0 / 64.0
++              ),
++              c114GenericJSONNear(
++                source["maxContentHeight"],
++                expected: expected.maxContentHeight,
++                tolerance: 1.0 / 64.0
++              ),
++              c114GenericContributionInputMatches(input, expected) else {
+             return false
+         }
+     }
+@@ -3487,10 +3622,107 @@ private func c114GenericDirectTextIntrinsicInputsMatch(report: String) -> Bool {
+         }
+     }
+     guard minContentWidthNodes == Set(expectedNodes),
+-          maxContentWidthNodes == Set([4]),
++          maxContentWidthNodes == Set([expectedNodes[1]]),
+           minContentHeightNodes == Set(expectedNodes),
+           maxContentHeightNodes == Set(expectedNodes) else { return false }
+-    return c114GenericDirectTextTraceMatches(diagnostics: diagnostics)
++    return c114GenericDirectTextTextLayoutsMatch(
++        scene: scene, diagnostics: diagnostics, layoutRevision: revision
++    ) && c114GenericDirectTextTraceMatches(sceneID: sceneID, diagnostics: diagnostics)
++}
++
++private func c114GenericContributionInputMatches(
++    _ input: [String: Any], _ expected: C114GenericDirectTextItemExpectation
++) -> Bool {
++    guard let contribution = input["contributionInput"] as? [String: Any] else { return false }
++    return c114GenericAxisContributionMatches(
++        contribution["width"], minContent: expected.minContent, maxContent: expected.maxContent
++    ) && c114GenericAxisContributionMatches(
++        contribution["height"],
++        minContent: expected.minContentHeight,
++        maxContent: expected.maxContentHeight
++    )
++}
++
++private func c114GenericAxisContributionMatches(
++    _ value: Any?, minContent: Double, maxContent: Double
++) -> Bool {
++    guard let axis = value as? [String: Any],
++          let preferredSize = axis["preferredSize"] as? [String: Any],
++          let minSize = axis["minSize"] as? [String: Any],
++          let maxSize = axis["maxSize"] as? [String: Any] else { return false }
++    return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: 1.0 / 64.0)
++        && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: 1.0 / 64.0)
++        && c114GenericJSONString(preferredSize["kind"]) == "auto"
++        && c114GenericJSONString(minSize["kind"]) == "auto"
++        && c114GenericJSONString(maxSize["kind"]) == "auto"
++        && c114GenericZeroLength(axis["marginStart"])
++        && c114GenericZeroLength(axis["marginEnd"])
++        && c114GenericZeroLength(axis["paddingStart"])
++        && c114GenericZeroLength(axis["paddingEnd"])
++        && c114GenericJSONNear(axis["borderStart"], expected: 0, tolerance: 0.0001)
++        && c114GenericJSONNear(axis["borderEnd"], expected: 0, tolerance: 0.0001)
++}
++
++private func c114GenericZeroLength(_ value: Any?) -> Bool {
++    guard let length = value as? [String: Any] else { return false }
++    return c114GenericJSONString(length["kind"]) == "length"
++        && c114GenericJSONNear(length["cssPx"], expected: 0, tolerance: 0.0001)
++}
++
++private func c114GenericDirectTextTextLayoutsMatch(
++    scene: C114GenericDirectTextSceneExpectation,
++    diagnostics: [String: Any],
++    layoutRevision: [String: Any]
++) -> Bool {
++    guard let layouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]],
++          layouts.count == scene.items.count else { return false }
++    for (index, expected) in scene.items.enumerated() {
++        let layout = layouts[index]
++        guard c114GenericJSONInteger(layout["node"]) == expected.node,
++              c114GenericJSONInteger(layout["layoutParagraph"]) == expected.node,
++              let revision = layout["revision"] as? [String: Any],
++              c114GenericJSONString(revision["source"]) == c114GenericJSONString(layoutRevision["source"]),
++              c114GenericJSONInteger(revision["style"]) == c114GenericJSONInteger(layoutRevision["style"]),
++              c114GenericJSONInteger(revision["environment"]) == c114GenericJSONInteger(layoutRevision["environment"]),
++              c114GenericJSONInteger(revision["intrinsicSize"]) == c114GenericJSONInteger(layoutRevision["intrinsicSize"]),
++              let sources = layout["sources"] as? [[String: Any]], sources.count == 1,
++              let sourceNode = c114GenericJSONInteger(sources[0]["node"]),
++              sourceNode == expected.node + 1,
++              c114GenericJSONString(sources[0]["text"]) == expected.rawText,
++              let inlineAncestors = sources[0]["inlineAncestors"] as? [Any],
++              inlineAncestors.isEmpty,
++              c114GenericJSONString(layout["text"]) == expected.layoutText,
++              c114GenericJSONInteger(layout["fontRegistryRevision"]) == 1,
++              c114GenericJSONNear(layout["availableWidth"], expected: expected.width, tolerance: 1.0 / 64.0),
++              c114GenericJSONNear(layout["width"], expected: expected.width, tolerance: 1.0 / 64.0),
++              c114GenericJSONNear(layout["height"], expected: expected.height, tolerance: 1.0 / 64.0),
++              let style = layout["paragraphStyle"] as? [String: Any],
++              c114GenericJSONString(style["fontFamily"]) == "Ahem",
++              c114GenericJSONNear(style["fontSize"], expected: 10, tolerance: 0),
++              c114GenericJSONNear(style["lineHeight"], expected: 10, tolerance: 0),
++              style["lineHeightIsNormal"] as? Bool == false,
++              c114GenericJSONNear(style["fontWeight"], expected: 400, tolerance: 0),
++              c114GenericJSONString(style["fontStyle"]) == "Normal",
++              c114GenericJSONString(style["whiteSpace"]) == expected.whiteSpace,
++              c114GenericJSONString(style["wordBreak"]) == expected.wordBreak,
++              c114GenericJSONString(style["direction"]) == "Ltr",
++              c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
++              c114GenericJSONString(style["textOrientation"]) == "Mixed",
++              c114GenericJSONString(style["lineBreak"]) == "Strict",
++              c114GenericJSONString(style["ligatures"]) == "Normal",
++              let lines = layout["lines"] as? [[String: Any]],
++              lines.count == expected.lineAdvances.count else { return false }
++        for (lineIndex, line) in lines.enumerated() {
++            guard c114GenericJSONNear(
++                    line["advance"], expected: expected.lineAdvances[lineIndex], tolerance: 1.0 / 64.0
++                  ),
++                  c114GenericJSONNear(line["lineTop"], expected: Double(lineIndex) * 10, tolerance: 1.0 / 64.0),
++                  c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: 1.0 / 64.0) else {
++                return false
++            }
++        }
++    }
++    return true
+ }
+ 
+ private func c114GenericJSONInteger(_ value: Any?) -> Int? {
+@@ -3706,7 +3938,10 @@ private func c114RowAxisSpanContributionsMatch(
+     return true
+ }
+ 
+-private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bool {
++private func c114GenericDirectTextTraceMatches(
++    sceneID: String, diagnostics: [String: Any]
++) -> Bool {
++    guard let scene = c114GenericDirectTextExpectation(sceneID) else { return false }
+     guard let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+           traces.count == 1,
+           c114GenericJSONInteger(traces[0]["grid"]) == 1,
+@@ -3720,14 +3955,24 @@ private func c114GenericDirectTextTraceMatches(diagnostics: [String: Any]) -> Bo
+           }),
+           c114GenericJSONString(passes[0]["axis"]) == "Columns",
+           c114GenericJSONString(passes[1]["axis"]) == "Rows",
+-          c114GenericTrackSizesMatch(passes[0], expected: [20, 40], gap: 10),
+-          c114GenericTrackSizesMatch(passes[1], expected: [20], gap: 0) else { return false }
++          c114GenericTrackSizesMatch(passes[0], expected: scene.columns, gap: 10),
++          c114GenericTrackSizesMatch(passes[1], expected: [scene.rootHeight], gap: 0) else {
++        return false
++    }
++    let first = scene.items[0]
++    let second = scene.items[1]
+     let expectedColumns: [(item: Int, kind: String, value: Double)] = [
+-        (2, "MinContent", 20), (4, "MinContent", 20), (4, "MaxContent", 40),
++        (first.node, "MinContent", first.minContent),
++        (second.node, "MinContent", second.minContent),
++        (second.node, "MaxContent", second.maxContent),
+     ]
+     let expectedRows: [(item: Int, kind: String, value: Double)] = [
+-        (2, "Minimum", 20), (2, "MinContent", 20), (2, "MaxContent", 20),
+-        (4, "Minimum", 10), (4, "MinContent", 10), (4, "MaxContent", 10),
++        (first.node, "Minimum", first.height),
++        (first.node, "MinContent", first.height),
++        (first.node, "MaxContent", first.height),
++        (second.node, "Minimum", second.height),
++        (second.node, "MinContent", second.height),
++        (second.node, "MaxContent", second.height),
+     ]
+     return c114GenericDirectTextContributionsMatch(
+         passes[0], expected: expectedColumns, allowIdenticalDuplicates: true
+@@ -4654,6 +4899,10 @@ private func c114OrthogonalRowNodeFrames(_ sceneID: String) -> String? {
+         + childFrames.joined(separator: ";") + "]"
+ }
+ 
++private func c114GenericFrameNumber(_ value: Double) -> String {
++    value == Double(Int(value)) ? String(Int(value)) : String(value)
++}
++
+ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+     if let rowAxisSpanFrames = c114RowAxisSpanExpectedNodeFrames(sceneID) {
+         return rowAxisSpanFrames
+@@ -4675,10 +4924,14 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
+             + "1:node=2,x=0,y=0,width=24,height=16]"
+     }
+-    if c114GenericDirectTextSceneIDs.contains(sceneID) {
+-        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20;"
+-            + "1:node=2,x=0,y=0,width=20,height=20;"
+-            + "2:node=4,x=30,y=0,width=40,height=10]"
++    if let genericText = c114GenericDirectTextExpectation(sceneID) {
++        var frames = ["0:node=1,x=0,y=0,width=100,height=\(c114GenericFrameNumber(genericText.rootHeight))"]
++        for (index, item) in genericText.items.enumerated() {
++            frames.append("\(index + 1):node=\(item.node),x=\(c114GenericFrameNumber(item.x)),"
++                + "y=0,width=\(c114GenericFrameNumber(item.width)),"
++                + "height=\(c114GenericFrameNumber(item.height))")
++        }
++        return "node_frames_css_px=[\(frames.joined(separator: ";"))]"
+     }
+     if let orthogonalFrames = c114OrthogonalRowNodeFrames(sceneID) {
+         return orthogonalFrames
