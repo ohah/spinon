@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "scope": "macOS ARM64 spinon-ffi static archive only",
+  "createdAtUtc": "2026-10-27T22:49:04.349517+00:00",
+  "sourceSha256BeforeAndAfter": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "6f62da7d2f263b9f3b8976e3cb7f5d07e3454f7088ba96c8262c011a0e3e7002",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/flex_track_expansion.rs": "fe8d6d4e0f721f2fcf07696ed076008d126a65a85455761cd34f7a15294170b1"
+  },
+  "sceneIds": [
+    "weighted-columns",
+    "frozen-row",
+    "subunit-columns",
+    "zero-fr-row"
+  ],
+  "fixtureAbiSymbol": "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+  "rustRuntimeSourceSymbolSubstring": "flex_track_expansion::runtime_source",
+  "targetDirectory": "build/spinon/c11-4-flex-stage-runtime-archive-target",
+  "results": {
+    "product": {
+      "features": "c04-runtime-gpu",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-flex-stage-runtime-archive-target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/runs/flex-stage-archive-20261027T224903Z-113f2de0/product-build.log",
+      "archivePath": "build/spinon/c11-4-flex-stage-runtime-archive-target/release/libspinon_ffi.a",
+      "archiveBytes": 75142896,
+      "archiveSha256": "49c31a0725d689e1cd283517b9be664d6365315ba31374d582a5dd75fd47928f",
+      "sceneMarkerPresence": {
+        "weighted-columns": false,
+        "frozen-row": false,
+        "subunit-columns": false,
+        "zero-fr-row": false
+      },
+      "fixtureAbiTextPresent": false,
+      "fixtureAbiDefinedSymbolPresent": false,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "symbolsPath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/runs/flex-stage-archive-20261027T224903Z-113f2de0/product-symbols.txt",
+      "matchingDefinedSymbols": [],
+      "llvmNmVersion": "llvm-nm, compatible with GNU nm"
+    },
+    "fixtureTest": {
+      "features": "c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test",
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-flex-stage-runtime-archive-target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/runs/flex-stage-archive-20261027T224903Z-113f2de0/fixture-test-build.log",
+      "archivePath": "build/spinon/c11-4-flex-stage-runtime-archive-target/release/libspinon_ffi.a",
+      "archiveBytes": 79463768,
+      "archiveSha256": "7ec9f416657ce72feb2497a5ca4ae0814180e8db387aa4c370f0202d79f1d04e",
+      "sceneMarkerPresence": {
+        "weighted-columns": true,
+        "frozen-row": true,
+        "subunit-columns": true,
+        "zero-fr-row": true
+      },
+      "fixtureAbiTextPresent": true,
+      "fixtureAbiDefinedSymbolPresent": true,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "symbolsPath": "spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/artifact-boundary/runs/flex-stage-archive-20261027T224903Z-113f2de0/fixture-test-symbols.txt",
+      "matchingDefinedSymbols": [
+        "0000000000008bf0 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ],
+      "llvmNmVersion": "llvm-nm, compatible with GNU nm"
+    }
+  },
+  "limitations": [
+    "이 결과는 APK, iOS app/IPA 또는 release bundle 전체의 fixture exclusion을 증명하지 않습니다.",
+    "정적 spinon-ffi archive의 scene 문자열과 fixture 심볼 경계만 검사합니다.",
+    "최적화 archive에서 내부 Rust runtime_source 심볼은 inline·제거될 수 있어 참고값으로만 기록합니다."
+  ]
+}

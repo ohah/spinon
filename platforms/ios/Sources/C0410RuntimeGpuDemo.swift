@@ -248,6 +248,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-forward",
     "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
     "definite-minmax-calc-cross-axis-span-groups-forward",
+    "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
     "definite-minmax-calc-cross-axis-span-groups-reverse",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
@@ -1094,6 +1095,9 @@ private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> B
     if C114GridAutoFitColumnsWpt.isScene(sceneID) {
         return C114GridAutoFitColumnsWpt.nodeFramesMatch(sceneID: sceneID, report: report)
     }
+    if C114FlexStage.isScene(sceneID) {
+        return C114FlexStage.nodeFramesMatch(sceneID, report: report)
+    }
     if c114RowAxisSpanStageSceneIDs.contains(sceneID) {
         return c114RowAxisSpanNodeFramesMatch(sceneID, report: report)
     }
@@ -1415,6 +1419,7 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if let frame = C114GridAutoFitColumnsWpt.expectedRootFrame(sceneID) { return frame }
+    if let frame = C114FlexStage.expectedRootFrame(sceneID) { return frame }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
         return "width=\(intrinsicWpt[0]),height=\(intrinsicWpt[1])"
     }
@@ -1727,6 +1732,7 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return "" }
+    if C114FlexStage.isScene(sceneID) { return "" }
     if c114GridAutoRepeatIntrinsicWptState(sceneID) != nil {
         return "width=100,height=20"
     }
@@ -6944,6 +6950,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
+    if C114FlexStage.isScene(sceneID) { return 3 }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
         return 2 + [4, 6, 8, 10].filter { intrinsicWpt[$0] > 0 }.count
     }
@@ -12315,6 +12322,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedRowAxisSpanStageMatches = c114RowAxisSpanStageSceneIDs.contains(
                 c114GridTrackSizingSceneID
             ) ? c114RowAxisSpanTraceMatches(c114GridTrackSizingSceneID, report: report) : true
+            let expectedFlexStageMatches = C114FlexStage.isScene(c114GridTrackSizingSceneID)
+                ? C114FlexStage.traceMatches(c114GridTrackSizingSceneID, report: report) : true
             let expectedRootFrameMatches = rootFrame.isEmpty || report.contains(rootFrame)
             let expectedItemFrameMatches = itemFrame.isEmpty || report.contains(itemFrame)
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
@@ -12334,9 +12343,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedFitContentMinHeightMatches,
                   expectedGridLayoutAutoTracksMatches,
                   expectedEqualAutoRowsMatches,
-                  expectedRowAxisSpanStageMatches else {
+                  expectedRowAxisSpanStageMatches,
+                  expectedFlexStageMatches else {
                 logC114GridNodeFrames(report)
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

@@ -70,6 +70,8 @@ mod fixed_repeat_auto_repeat;
 mod fixed_repeat_minmax_flex;
 #[path = "c11_4/flex_spanning_text.rs"]
 mod flex_spanning_text;
+#[path = "c11_4/flex_track_expansion.rs"]
+mod flex_track_expansion;
 #[path = "c11_4/generic_direct_text.rs"]
 mod generic_direct_text;
 #[path = "c11_4/generic_mixed_direct_text_image_intrinsic.rs"]
@@ -1164,6 +1166,9 @@ const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageScen
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = flex_track_expansion::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = grid_layout_auto_tracks::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
@@ -2301,5 +2306,28 @@ mod tests {
             c11_4_grid_track_sizing_runtime_source("spaces-only-no-image-min-content").is_err()
         );
         assert!(c11_4_grid_track_sizing_runtime_source("unknown;throw 1").is_err());
+    }
+
+    #[test]
+    fn exposes_only_the_four_flexible_track_scenes_through_the_runtime_dispatcher() {
+        let scene_ids = [
+            "weighted-columns",
+            "frozen-row",
+            "subunit-columns",
+            "zero-fr-row",
+        ];
+        for scene_id in scene_ids {
+            let source = c11_4_grid_track_sizing_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:{scene_id:?}")));
+            assert!(source.contains("min-width:0;min-height:0"));
+            assert_eq!(source.matches("document.createElement('div')").count(), 3);
+        }
+        for unknown in [
+            "weighted-columns-unlisted",
+            "unknown-flex-scene",
+            "unknown;throw 1",
+        ] {
+            assert!(c11_4_grid_track_sizing_runtime_source(unknown).is_err());
+        }
     }
 }

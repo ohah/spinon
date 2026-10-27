@@ -8,7 +8,7 @@
 
 ## 2026-10-28 §11.7 앱 runtime 후속 계획
 
-PR #717은 네 fixed flexible-track 입력의 pure Rust stage를 확인했지만 앱 fixture·플랫폼 runtime 경로는 실행하지 않았다. [후속 계획](./c11-4-flex-stage-runtime.md)은 같은 expected JSON 및 Chrome 156 관측을 기준으로 네 scene을 기존 opt-in C11.4 runtime 경로와 Android/iOS Simulator에서 확인한다. 이 계획은 Rust oracle의 독립성을 유지하며 CSS sizing algorithm, 일반 CSS admission 또는 공식 완료 집계를 바꾸지 않는다. 계획 실패 관점 20개 검토는 [별도 기록](./c11-4-flex-stage-runtime-plan-review-20.md)에 있다. 구현 PR은 아직 만들지 않았다.
+PR #717의 네 fixed flexible-track pure Rust stage를 기존 opt-in C11.4 app fixture까지 이어 검증했다. [후속 slice 계획](./c11-4-flex-stage-runtime.md)에서 고정한 Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 각각 네 scene의 `ExpandFlexibleTracks`, root·marker frame, draw/present를 모두 통과했다. [실행 근거](../spec/internal/evidence/c11-4-flex-stage-runtime-2026-10-28/README.md)에는 trace, screenshot, hash, negative route, independent verifier, product/fixture archive 경계를 기록했다. Rust oracle는 그대로 두고 CSS sizing algorithm과 일반 CSS admission은 바꾸지 않았다. 계획 실패 관점 20개 검토는 [별도 기록](./c11-4-flex-stage-runtime-plan-review-20.md)에 있다. C11.4와 공식 완료 `72/213`은 계속 미완료다.
 
 ## 2026-10-28 definite `min-height` 아래 fit-content row runtime slice · PR #699 병합
 
