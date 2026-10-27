@@ -1,0 +1,70 @@
+{
+  "method": "Agent Browser CLI",
+  "agentBrowserVersion": "0.31.1",
+  "session": "spinon-c114-generic-row-20261028",
+  "capturedDate": "2026-10-28",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/chrome156-row-axis-default-alignment-fixture.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": { "width": 1280, "height": 633, "deviceScaleFactor": 1 },
+  "ahemLoaded": true,
+  "sceneCount": 4,
+  "allImagesDecoded": true,
+  "naturalImageSize": [24, 16],
+  "computedAlignment": {
+    "rootAlignItems": "start",
+    "rootJustifyItems": "normal",
+    "itemAlignSelf": "auto",
+    "itemJustifySelf": "auto"
+  },
+  "scenes": [
+    {
+      "id": "min-forward",
+      "rowTrackFunction": "min-content",
+      "columns": [50, 24],
+      "rows": [20],
+      "rootPageFrame": [0, 0, 74, 20],
+      "textRootRelativeFrame": [0, 0, 50, 20],
+      "imageRootRelativeFrame": [50, 0, 24, 16],
+      "sizingChildOrder": ["text", "image"],
+      "absoluteTrackProbeIsOutOfFlow": true
+    },
+    {
+      "id": "min-reversed",
+      "rowTrackFunction": "min-content",
+      "columns": [50, 24],
+      "rows": [20],
+      "rootPageFrame": [0, 60, 74, 20],
+      "textRootRelativeFrame": [0, 0, 50, 20],
+      "imageRootRelativeFrame": [50, 0, 24, 16],
+      "sizingChildOrder": ["image", "text"],
+      "absoluteTrackProbeIsOutOfFlow": true
+    },
+    {
+      "id": "max-forward",
+      "rowTrackFunction": "max-content",
+      "columns": [50, 24],
+      "rows": [20],
+      "rootPageFrame": [0, 120, 74, 20],
+      "textRootRelativeFrame": [0, 0, 50, 20],
+      "imageRootRelativeFrame": [50, 0, 24, 16],
+      "sizingChildOrder": ["text", "image"],
+      "absoluteTrackProbeIsOutOfFlow": true
+    },
+    {
+      "id": "max-reversed",
+      "rowTrackFunction": "max-content",
+      "columns": [50, 24],
+      "rows": [20],
+      "rootPageFrame": [0, 180, 74, 20],
+      "textRootRelativeFrame": [0, 0, 50, 20],
+      "imageRootRelativeFrame": [50, 0, 24, 16],
+      "sizingChildOrder": ["image", "text"],
+      "absoluteTrackProbeIsOutOfFlow": true
+    }
+  ],
+  "sourceFixture": "../c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/chrome156-row-axis-default-alignment-fixture.html",
+  "sourceFixtureSha256": "ea2dad9dda66b4d46e889750672d30b0a79e529995cc4d13a2f7a604dadb5122",
+  "reusedScreenshot": "../c11-4-row-axis-mixed-text-image-precomparison-2026-10-25/chrome156-row-axis-default-alignment-agent-browser.png",
+  "reusedScreenshotSha256": "e8a09fd96ec58d81039634b90db3b1bfd1b33cd6a357c2a9c4f9223f265ed923",
+  "browserClosed": true
+}

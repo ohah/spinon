@@ -1,0 +1,62 @@
+{
+  "basis": {
+    "columnsPx": [50, 24],
+    "rootWidthPx": 74,
+    "gapPx": 0,
+    "text": "XX XXXXX",
+    "fontFamily": "Ahem",
+    "fontSizePx": 10,
+    "lineHeightPx": 10,
+    "naturalImagePx": [24, 16]
+  },
+  "derivation": {
+    "textInlineSizePx": 50,
+    "textLineBoxes": 2,
+    "textBlockContributionPx": 20,
+    "imageBlockContributionPx": 16,
+    "rowTrackPx": "max(20, 16) = 20"
+  },
+  "scenes": [
+    {
+      "id": "min-forward",
+      "rowTrackFunction": "min-content",
+      "sizingChildOrder": ["text", "image"],
+      "columnsPx": [50, 24],
+      "rowsPx": [20],
+      "rootFrame": [0, 0, 74, 20],
+      "textFrame": [0, 0, 50, 20],
+      "imageFrame": [50, 0, 24, 16]
+    },
+    {
+      "id": "min-reversed",
+      "rowTrackFunction": "min-content",
+      "sizingChildOrder": ["image", "text"],
+      "columnsPx": [50, 24],
+      "rowsPx": [20],
+      "rootFrame": [0, 0, 74, 20],
+      "textFrame": [0, 0, 50, 20],
+      "imageFrame": [50, 0, 24, 16]
+    },
+    {
+      "id": "max-forward",
+      "rowTrackFunction": "max-content",
+      "sizingChildOrder": ["text", "image"],
+      "columnsPx": [50, 24],
+      "rowsPx": [20],
+      "rootFrame": [0, 0, 74, 20],
+      "textFrame": [0, 0, 50, 20],
+      "imageFrame": [50, 0, 24, 16]
+    },
+    {
+      "id": "max-reversed",
+      "rowTrackFunction": "max-content",
+      "sizingChildOrder": ["image", "text"],
+      "columnsPx": [50, 24],
+      "rowsPx": [20],
+      "rootFrame": [0, 0, 74, 20],
+      "textFrame": [0, 0, 50, 20],
+      "imageFrame": [50, 0, 24, 16]
+    }
+  ],
+  "limitation": "min-content and max-content row cases share the same 20px expectation; these cases do not distinguish those algorithms"
+}
