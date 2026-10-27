@@ -1,6 +1,6 @@
 # C11.4 · WPT `grid-layout-auto-tracks.html` 제한 runtime slice
 
-**상태:** 고정 WPT 장면의 제한 runtime 구현 후보를 추가하고 Android/iOS Simulator, archive 경계, 구현/runtime review를 확인했다. [PR #688](https://github.com/ohah/spinon/pull/688) 병합 전 후보이며 CSS Grid 일반 지원이나 C11.4 완료를 뜻하지 않는다. [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md).
+**상태:** 고정 WPT 장면의 제한 runtime 구현을 PR #688로 병합했고 Android/iOS Simulator, archive 경계, 구현/runtime review를 확인했다. PR은 2026-10-27T08:19:30Z Rebase and merge됐으며 merge commit SHA는 `0b434e16ac66d0a742057e6e1e5749151bd3e08f`다. GitHub check rollup은 비었고 main required status checks는 설정되지 않았다. CSS Grid 일반 지원이나 C11.4 완료를 뜻하지 않으며 C11.4 checkbox와 공식 `72/213`은 유지한다. [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md).
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 

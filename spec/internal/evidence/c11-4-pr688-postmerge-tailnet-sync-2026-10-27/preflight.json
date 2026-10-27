@@ -1,0 +1,33 @@
+{
+  "sourcePath": "spec/public/roadmap.html",
+  "sourceBytes": 343893,
+  "sourceSha256": "2a3c75b4e77318f3828beb9be72131217f80f792f96a9eaed116fb6b06f3f425",
+  "tailscaleBackendState": "Running",
+  "tailnetHostName": "윤형배의 Mac Studio",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewPid": 28040,
+  "previewServerRestarted": false,
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "targetWasRegularFile": true,
+  "previousBytes": 341512,
+  "previousSha256": "74f084cd679efbd0f480c5a72806d7f8fdfbd3f886577aa6e0d19d3ab4e93728",
+  "targetReadHandles": [],
+  "activeClientConnections": 0,
+  "localRouteBefore": {
+    "status": 200,
+    "bytes": 341512,
+    "sha256": "74f084cd679efbd0f480c5a72806d7f8fdfbd3f886577aa6e0d19d3ab4e93728"
+  },
+  "tailnetRouteBefore": {
+    "status": 200,
+    "bytes": 341512,
+    "sha256": "74f084cd679efbd0f480c5a72806d7f8fdfbd3f886577aa6e0d19d3ab4e93728"
+  },
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-pr688-postmerge-tailnet-sync-2026-10-27/pass01",
+  "backupRootWasAbsent": true,
+  "selectedRouteCount": 1,
+  "sourceBaseHead": "0b434e16ac66d0a742057e6e1e5749151bd3e08f",
+  "sourceWorkingTreePaths": [
+    "spec/public/roadmap.html"
+  ]
+}
