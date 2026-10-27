@@ -35,4 +35,4 @@
 | 29 | static archive 근거를 APK/IPA 전체 fixture exclusion으로 확대함 | 통과. 계획·README·feature-boundary·내부 계약 모두 검사 범위를 macOS ARM64 `.rlib`로 한정하고 앱 bundle 전체 exclusion은 확인하지 않았다고 쓴다. |
 | 30 | 로드맵이 제한 slice를 완료 항목으로 세거나 공식 수치를 조용히 변경함 | 통과. C11.4 checkbox는 `[ ]`, 공식 `72/213`은 그대로며 새 STATUS 항목도 전체 WPT·제품 지원을 주장하지 않는다. |
 
-검토에서 PR을 막는 미해결 코드·계약 결함은 찾지 못했다. 로컬 staged diff에는 Android가 캡처한 두 원본 runtime log 행 끝의 공백만 `git diff --cached --check` 경고로 나타난다. 로그를 보존하기 위해 원문을 편집하지 않았고 나머지 소스·문서 diff는 whitespace 검사에서 깨끗하다. PR #691은 열려 있으며 screenshot 렌더링은 Agent Browser로 확인했다. GitHub check rollup은 비어 있고 main required status check 및 approval은 설정되지 않아 CI 통과나 독립 승인을 주장하지 않는다.
+검토에서 PR을 막는 미해결 코드·계약 결함은 찾지 못했다. 로컬 staged diff에는 Android가 캡처한 두 원본 runtime log 행 끝의 공백만 `git diff --cached --check` 경고로 나타난다. 로그를 보존하기 위해 원문을 편집하지 않았고 나머지 소스·문서 diff는 whitespace 검사에서 깨끗하다. PR #691은 2026-10-27T10:30:12Z Rebase and merge됐고 최종 merge SHA는 `8993e3f5f28f13ab707018dda52f8f619d2b8bb4`다. Screenshot 렌더링은 Agent Browser로 확인했다. GitHub check rollup은 비어 있고 main required status check 및 approval은 설정되지 않아 CI 통과나 독립 승인을 주장하지 않는다.

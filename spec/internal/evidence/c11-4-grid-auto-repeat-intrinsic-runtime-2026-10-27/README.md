@@ -33,4 +33,6 @@
 
 - [구현/runtime 실패 관점 검토 20개](implementation-runtime-review-20.md)는 layout·runtime 오류 경로와 최종 simulator 실행을 다룬다.
 - [PR diff 실패 관점 검토 30개](pr-diff-review-30.md)는 별도 관점으로 변경 파일 간 계약·artifact·evidence·로드맵을 대조했다. 구현 PR [#691](https://github.com/ohah/spinon/pull/691)에서 Agent Browser가 Android 1080×2400 및 iOS 1206×2622 screenshot을 실제로 불러온 것을 확인했다.
-- `gh pr checks 691`은 “no checks reported”다. `main` branch protection의 required status checks는 `null`, required approval count는 `0`이다. 이를 CI 통과나 독립 승인으로 표시하지 않는다.
+- [병합 후 상태·로드맵 검토 30개](post-merge-status-roadmap-review-30.md)는 PR #691 병합 시각·SHA, CI 보고 범위와 미완료 집계를 다시 대조한다.
+- 구현 PR [#691](https://github.com/ohah/spinon/pull/691)은 2026-10-27T10:30:12Z `Rebase and merge`로 병합됐다. 최종 main merge SHA는 `8993e3f5f28f13ab707018dda52f8f619d2b8bb4`다.
+- 병합 시 `gh pr checks 691`은 “no checks reported”였고 `main` branch protection의 required status checks는 `null`, required approval count는 `0`이었다. 이를 CI 통과나 독립 승인으로 표시하지 않는다.
