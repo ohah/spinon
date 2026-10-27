@@ -1,0 +1,12 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-9925826259548421)
+
+running 6 tests
+test runtime_gpu::fixtures::c11_4::trace_report::tests::text_layout_revision_ignores_only_replaced_intrinsic_size_revision ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::rejects_missing_grid_track_sizing_diagnostics ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::rejects_grid_track_sizing_diagnostics_from_a_different_runtime_revision ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::reports_orthogonal_text_logical_intrinsics_and_writing_styles ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::reports_stage_track_state_and_item_contribution_values ... ok
+test runtime_gpu::fixtures::c11_4::trace_report::tests::rejects_equal_revision_but_different_orthogonal_registry_tokens ... ok
+
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 140 filtered out; finished in 0.02s
