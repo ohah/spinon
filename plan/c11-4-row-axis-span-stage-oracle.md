@@ -71,7 +71,7 @@ PR #673의 구현/runtime 검토와 PR diff 검토는 현재 Rust stage 상수�
 
 test-only stage matcher가 [독립 기대값 JSON](../spec/internal/evidence/c11-4-row-axis-span-stage-precomparison-2026-10-27/expected.json)을 읽도록 연결했다. 네 scene의 정확한 ID/순서, source order, contribution, batch order/label, Initialize/batch/IntrinsicSizingComplete/MaximizeTracks arrays와 남은 공간을 검사한다. 공유 stage matcher는 [span_stage.rs](../crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/span_stage.rs), JSON parser와 malformed-input tests는 [row_axis/expected.rs](../crates/spinon-layout/src/grid_multispan_chrome_oracle_tests/row_axis/expected.rs)에 있다.
 
-관련 test 6개, `cargo fmt --all -- --check`, 대상 crate all-target Clippy 및 `git diff --check`를 통과했다. 구현 실패 관점 검토는 20 PASS / 0 PARTIAL이며 [구현 근거와 원본 로그](../spec/internal/evidence/c11-4-row-axis-span-stage-json-sync-implementation-2026-10-27/README.md)에 보존했다. 구현 PR의 별도 30관점 검토, CI, 병합은 아직 남아 있다. 이 후속은 제품 기능 완료가 아니며 C11.4 공식 체크와 `72/213`은 미완료다.
+관련 test 6개, `cargo fmt --all -- --check`, 대상 crate all-target Clippy 및 `git diff --check`를 통과했다. 구현 실패 관점 검토는 20 PASS / 0 PARTIAL이다. [PR #685](https://github.com/ohah/spinon/pull/685) 변경 검토도 30 PASS / 0 PARTIAL이다. PR 상태 조회 당시 GitHub check rollup은 비어 있었고 병합은 아직 확인되지 않았다. [구현 근거와 원본 로그](../spec/internal/evidence/c11-4-row-axis-span-stage-json-sync-implementation-2026-10-27/README.md)에 보존했다. 이 후속은 제품 기능 완료가 아니며 C11.4 공식 체크와 `72/213`은 미완료다.
 
 이 test-only slice는 track-sizing product algorithm, CSS admission, 앱 runtime, FFI를 바꾸지 않는다. 행 축의 네 고정 입력에서 기존 trace를 확인한 결과이며, 상위 Stage B의 나머지 stages/inputs, Stage C/D 및 전체 CSS Grid 적합성을 완료하지 않는다. C11.4 체크와 공식 `72/213`은 미완료다.
 
