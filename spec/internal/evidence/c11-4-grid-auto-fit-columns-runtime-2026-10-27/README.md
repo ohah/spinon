@@ -54,7 +54,7 @@ macOS ARM64에서 동일한 `target/debug/libspinon_ffi.a`를 두 feature 조합
 
 ## 구현/runtime 실패 관점 검토
 
-서로 다른 구현 실패 경로 20개와 근거는 [implementation/runtime review](implementation-runtime-review-20.md)에 기록했다. PR 최종 diff 검토는 변경 확정과 PR 생성 후 별도 문서로 진행한다.
+서로 다른 구현 실패 경로 20개와 근거는 [implementation/runtime review](implementation-runtime-review-20.md)에, PR #695 실제 diff의 별도 실패 가설 32개 대조는 [PR diff review](pr-diff-review-32.md)에 기록했다. GitHub는 이 관찰 시점에 status check을 보고하지 않았다.
 
 ## 범위
 
