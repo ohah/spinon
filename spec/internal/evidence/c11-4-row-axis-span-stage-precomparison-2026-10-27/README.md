@@ -4,7 +4,7 @@
 
 ## 규범 입력
 
-네 장면은 각각 `220×220px` Grid, `grid-template-columns: 220px`, `grid-template-rows: repeat(4, minmax(0px, max-content))`, 0px row/column gap, `align-content:start`를 쓴다. Items는 빈 HTML `div`로 만들고 220px 너비, 고정 높이, 명시 `grid-row`만 둔다. 이는 기존 Rust `HostDocument` builder의 empty `div` 구조와 맞춘다.
+네 장면은 각각 `220×220px` Grid, `grid-template-columns: 220px`, `grid-template-rows: repeat(4, minmax(0px, max-content))`, 0px row/column gap, `align-content:start`를 쓴다. Items는 빈 HTML `div`로 만들고 220px 너비, 고정 높이, `grid-column:1 / 2`, 명시 `grid-row`를 둔다. 겹치는 row placement에서 고정 column을 생략하면 implicit column을 만들 수 있으므로 oracle HTML과 runtime builder 양쪽에서 이를 명시한다.
 
 - A: 높이 80px, rows 1–2 (`grid-row: 1 / 3`).
 - B: 높이 120px, rows 2–3 (`grid-row: 2 / 4`). A와 B는 row 2를 겹쳐 span-2 동시 batch에서 겹치는 track의 planned increase를 검증한다.

@@ -1,0 +1,106 @@
+{
+  "schemaVersion": 1,
+  "reportSemantics": "Archive hashes, marker counts, and symbols are from the full release scan in runDirectory. After that scan documentation, review files, and scanner report metadata/source code changed; Rust/Java/Swift inputs stayed unchanged. The staged diff SHA-256 was refreshed without rebuilding to avoid overlapping the active disk cleanup.",
+  "runDirectory": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/artifact-boundary/runs/artifact-boundary-20261027T020346Z-e39b6713",
+  "stagedDiffSha256": "004596d54614187aff5380a40d5d785fd9dee78a3e2399356906e955d7cfd79f",
+  "stagedDiffExcludedGeneratedPaths": [
+    "artifact-boundary.json",
+    "runs/**"
+  ],
+  "sceneIds": [
+    "row-axis-span2-forward",
+    "row-axis-span2-reversed",
+    "row-axis-span2-before-span3",
+    "row-axis-span3-before-span2"
+  ],
+  "ffiFixtureSymbol": "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+  "rustRuntimeSourceSymbolSubstring": "row_axis_overlapping_spans::runtime_source",
+  "targetDirectory": "build/spinon/c11-4-row-axis-overlapping-span-artifact-boundary/target",
+  "llvmNmCommand": [
+    "<rust-sysroot>/lib/rustlib/aarch64-apple-darwin/bin/llvm-nm"
+  ],
+  "llvmNmVersion": "llvm-nm, compatible with GNU nm",
+  "rustcVersion": "rustc 1.96.1 (31fca3adb 2026-06-26)\nbinary: rustc\ncommit-hash: 31fca3adb283cc9dfd56b49cdee9a96eb9c96ffd\ncommit-date: 2026-06-26\nhost: aarch64-apple-darwin\nrelease: 1.96.1\nLLVM version: 22.1.2",
+  "results": {
+    "product": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-row-axis-overlapping-span-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/artifact-boundary/runs/artifact-boundary-20261027T020346Z-e39b6713/product-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/artifact-boundary/runs/artifact-boundary-20261027T020346Z-e39b6713/symbols-product.txt",
+      "archivePath": "build/spinon/c11-4-row-axis-overlapping-span-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 75138808,
+      "archiveSha256": "7dd43b80990c9874732f141f1d060b2cd88c92935bdae088f63f237e86bded4e",
+      "sceneMarkerPresence": {
+        "row-axis-span2-forward": false,
+        "row-axis-span2-reversed": false,
+        "row-axis-span2-before-span3": false,
+        "row-axis-span3-before-span2": false
+      },
+      "allSceneMarkersPresent": false,
+      "anySceneMarkerPresent": false,
+      "fixtureAbiTextPresent": false,
+      "fixtureAbiDefinedSymbolPresent": false,
+      "candidateRustRuntimeSourceSymbolPresent": false,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": []
+    },
+    "fixtureTest": {
+      "command": [
+        "mise",
+        "exec",
+        "--",
+        "cargo",
+        "build",
+        "--locked",
+        "--release",
+        "--no-default-features",
+        "--target-dir",
+        "build/spinon/c11-4-row-axis-overlapping-span-artifact-boundary/target",
+        "-p",
+        "spinon-ffi",
+        "--lib",
+        "--features",
+        "c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test"
+      ],
+      "buildLogPath": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/artifact-boundary/runs/artifact-boundary-20261027T020346Z-e39b6713/fixtureTest-build.log",
+      "symbolsPath": "spec/internal/evidence/c11-4-row-axis-overlapping-span-runtime-2026-10-27/artifact-boundary/runs/artifact-boundary-20261027T020346Z-e39b6713/symbols-fixtureTest.txt",
+      "archivePath": "build/spinon/c11-4-row-axis-overlapping-span-artifact-boundary/target/release/libspinon_ffi.a",
+      "archiveBytes": 78841264,
+      "archiveSha256": "72a6521a5fb61c25e856a0b642525535bc2ded36dc1ec72a1f266cf076df5bc8",
+      "sceneMarkerPresence": {
+        "row-axis-span2-forward": true,
+        "row-axis-span2-reversed": true,
+        "row-axis-span2-before-span3": true,
+        "row-axis-span3-before-span2": true
+      },
+      "allSceneMarkersPresent": true,
+      "anySceneMarkerPresent": true,
+      "fixtureAbiTextPresent": true,
+      "fixtureAbiDefinedSymbolPresent": true,
+      "candidateRustRuntimeSourceSymbolPresent": true,
+      "llvmNmExitCode": 0,
+      "matchingDefinedSymbols": [
+        "00000000000004c0 T spinon_ffi::runtime_gpu::fixtures::c11_4::row_axis_overlapping_spans::runtime_source::h80b720d6d0d5f9a0",
+        "0000000000006568 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+      ]
+    }
+  },
+  "baseRevision": "2aaf205f8ba62cf758f8c94f3d9f93333887b77f",
+  "sourceRevisionSemantics": "baseRevision plus staged diff SHA-256; generated report and run logs are excluded",
+  "scannerSourceSha256": "2291e31454c16e89abce1cf7df53613ede454fe868630bb0cfca9cffa1273560"
+}
