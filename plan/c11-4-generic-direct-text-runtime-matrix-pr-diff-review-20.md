@@ -1,8 +1,8 @@
 # C11.4 direct-text app matrix 계획 PR 변경 검토 20관점
 
 - 대상: [PR #678](https://github.com/ohah/spinon/pull/678)
-- 검토된 원격 diff: base `8b5a3f9a0cbb664b479bf70aa78dc398baa71de8`, head `b6d58a38a01b485966f583c01995d814f50a29c0`
-- 변경 파일 4개: 계획, 계획 검토, `spec/STATUS.md`, `spec/public/roadmap.html`
+- 검토 기준: PR base `8b5a3f9a0cbb664b479bf70aa78dc398baa71de8`. 최초 네 파일 검토 시 원격 head는 `b6d58a38a01b485966f583c01995d814f50a29c0`였고, 이후 review report와 계획 내 링크만 추가했다.
+- 최종 원격 diff는 계획, 두 review, `spec/STATUS.md`, `spec/public/roadmap.html`의 5개 경로다. STATUS/roadmap substantive content는 최초 검토 이후 바뀌지 않았다.
 - 결과: **PASS 20 / PARTIAL 0 / FAIL 0**
 - 이 review는 PR 통합·상태 동기화를 대조한다. 새 build/test/browser 실행은 없으며 CI 통과를 주장하지 않는다.
 
@@ -32,3 +32,7 @@
 ## 관찰한 제한
 
 main에는 required status check context가 보이지 않고 GitHub PR check rollup도 비어 있다. 이 PR은 코드 실행을 포함하지 않으므로 merge 여부와 관계없이 build/test/CI 통과 근거가 되지 않는다.
+
+## 최종 원격 diff 재확인
+
+review report와 그 링크가 추가된 뒤 PR #678의 diff를 다시 가져와 5개 경로, 현재 base/head, 라벨, mergeability와 빈 check rollup을 확인했다. 이 후속 변경은 review artifact와 plan 내 link만 추가하며 앞서 검토한 STATUS·roadmap 결과는 그대로다. 20개 통합 관점은 최종 diff에서 PASS 상태를 유지했다.
