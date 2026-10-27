@@ -1,0 +1,84 @@
+{
+  "observedDate": "2026-10-27",
+  "sourceHead": "d019db91d9f592af99d9cfed22bcd1b1600f1445",
+  "sourcePath": "spec/public/roadmap.html",
+  "sourceBytes": 347943,
+  "sourceSha256": "7f8091cb06785e7c93c4c86fe17c2156a904251c7e01b24e8fe9599dc654ce64",
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "replacement": "same-directory atomic rename after byte-exact backup",
+  "replacedRoutes": [
+    "/spinon/roadmap.html"
+  ],
+  "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr696-2026-10-27/pass01/roadmap.html",
+  "backupBytes": 346098,
+  "backupSha256": "aa46929adb6856c3a45ed7aa04f493563917fbcf25d05f39f6ee9f9ecd1c8cd8",
+  "otherRoutesChanged": false,
+  "filesDeleted": false,
+  "previewProcess": {
+    "pidBefore": 28040,
+    "pidAfter": 28040,
+    "command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "restarted": false,
+    "tailscaleBackendState": "Running"
+  },
+  "firstPostSyncAttempt": {
+    "roadmapFileInstalled": true,
+    "localAndTailnetHttpChecks": "Both returned HTTP 200 and matched the merged source hash before the script exited.",
+    "commandExit": 1,
+    "failure": "The script's 3-second listener-only poll saw a short-lived established loopback HTTP connection and timed out. The failure was in the final lsof quiescence assertion, after file replacement and route hash checks."
+  },
+  "procedureFollowupEdit": {
+    "editedAfterFirstAttempt": true,
+    "changes": [
+      "send Connection: close on route checks",
+      "increase bounded listener-only polling from 3 seconds to 15 seconds",
+      "leave final SHA256SUMS generation to the post-capture evidence step"
+    ],
+    "rerunAgainstAlreadySyncedTarget": false
+  },
+  "followupVerification": {
+    "localRoute": {
+      "status": 200,
+      "bytes": 347943,
+      "sha256": "7f8091cb06785e7c93c4c86fe17c2156a904251c7e01b24e8fe9599dc654ce64",
+      "matchesMergedSource": true
+    },
+    "tailnetRoute": {
+      "status": 200,
+      "bytes": 347943,
+      "sha256": "7f8091cb06785e7c93c4c86fe17c2156a904251c7e01b24e8fe9599dc654ce64",
+      "matchesMergedSource": true
+    },
+    "previewListenerOnlyAfterRequests": true,
+    "previewPidUnchanged": true
+  },
+  "agentBrowser": {
+    "version": "0.31.1",
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "checks": [
+      "72/213 is present",
+      "C11.4는 미완료 is present",
+      "PR #695 entry and merge SHA are rendered"
+    ],
+    "screenshots": [
+      {
+        "file": "tailnet-roadmap-count-agent-browser.png",
+        "width": 1200,
+        "height": 829
+      },
+      {
+        "file": "tailnet-roadmap-pr695-agent-browser.png",
+        "width": 1200,
+        "height": 829
+      }
+    ],
+    "sessionClosed": true,
+    "agentBrowserProcessesAfterClose": 0
+  },
+  "scopeLimits": [
+    "Only the roadmap.html preview target was replaced.",
+    "No full documentation build or Pages deployment was performed.",
+    "This sync does not change official C11.4 completion or the 72/213 total."
+  ]
+}
