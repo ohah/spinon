@@ -70,6 +70,12 @@ PR #729 당시 GitHub check rollup은 비어 있었고 strict targeted Clippy는
 
 검증 follow-up PR [#732](https://github.com/ohah/spinon/pull/732)은 텍스트, direct-child 수·순서, root/item style, track 함수·factor·fixed neighbor, 축, stale revision과 profile 변조 50개를 dispatcher 단위에서 두 축으로 거부하는 test-only 변경으로 2026-10-28T02:35:51Z에 Rebase and merge됐다(merge SHA `9e9355369a48e5fa6bbed25a76954dbc63a5fcac`). 전체 `spinon-runtime` fixture-feature suite 284 passed / 3 ignored와 integration 3 + 16 passed를 기록했다. 앱 route나 scene은 바꾸지 않아 Android/iOS 앱 및 Simulator는 다시 실행하지 않았다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. [비이미지 입력 거부 근거 20개](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/non-image-negative-controls-implementation-review-20.md).
 
-다음 제한 slice는 exact direct `display:none` text child를 두 mixed-track scene에 추가해 CSS box 부재가 intrinsic contribution과 flex freeze에 미치는 영향을 양축에서 확인하는 [계획](./c11-4-mixed-flex-hidden-item.md)이다. Chrome 156 사전 관측과 독립 기대값은 [별도 evidence](../spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/README.md)에 기록한다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
+이 계획 뒤의 `display:none` slice는 [계획](./c11-4-mixed-flex-hidden-item.md)과 PR #734로 완료했고, 후속 [visibility-hidden slice](./c11-4-mixed-flex-visibility-hidden.md) 및 [border-overflow slice](./c11-4-visibility-hidden-border-overflow.md)는 각각 PR #738과 #747로 병합했다. 각 변경은 자체 고정 fixture와 simulator 근거에 한정된다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
 선택한 고정-fixture 변조 거부와 PR #729의 앱 장면 검증은 전체 CSS Grid, 일반 CSS admission, WPT, hidden/out-of-flow/overflow 조합 또는 전체 C11.4를 증명하지 않는다. C11.4와 공식 `72/213`은 미완료다.
+
+## `visibility:hidden` border overflow 후속 · PR #747
+
+직전 [visibility-hidden mixed-track slice](./c11-4-mixed-flex-visibility-hidden.md)는 layout 기여와 paint 제외를 검사했지만 root border 밖의 item paint는 확인하지 않았다. 그 간극은 별도 [border-overflow 계획](./c11-4-visibility-hidden-border-overflow.md)과 구현 PR [#747](https://github.com/ohah/spinon/pull/747)로 보완했다. PR은 2026-10-28T08:42:37Z Rebase and merge로 `cb3c9a50b9a10d1d441cf15a584bacefcd91630d`에 병합됐다. 기존 14개와 신규 네 scene은 Android API 37 ARM64 16 KB AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 18/18 통과했다. Hidden/visible controls 모두 `[150,40,0]px` tracks와 `-114px` remaining space를 보였고, border 밖 PixelCopy/Metal 표본은 hidden blue와 visible purple을 구분했다. [실행·화면·제한](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/README.md) · [독립 matcher](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/matrix-verification-18-scenes.json).
+
+이 검증은 기존 opt-in fixture route 안에 한정되며 일반 CSS admission, arbitrary styles, clipping/scrolling, real devices, hardware GPU, iOS compositor-after pixels 또는 전체 C11.4 완료를 추가하지 않는다. 공식 `72/213`은 그대로 유지한다.
