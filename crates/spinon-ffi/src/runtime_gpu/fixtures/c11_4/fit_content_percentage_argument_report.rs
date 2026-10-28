@@ -69,7 +69,7 @@ pub(super) fn report_json(
         })
         .collect::<Vec<_>>();
     let report = serde_json::json!({
-        "sceneId": "fit-content-percentage-row-wpt",
+        "sceneId": observation.scene_id,
         "styleSnapshot": {
             "profile": format!("{:?}", observation.style_snapshot.profile),
             "generation": observation.style_snapshot.generation.get(),
@@ -97,6 +97,16 @@ pub(super) fn report_json(
             "autoFlow": format!("{:?}", observation.grid_container_input.auto_flow),
             "placementMode": format!("{:?}", observation.grid_container_input.placement_mode),
         },
+        "layoutCssMathRegistry": observation
+            .css_math
+            .iter()
+            .map(|value| serde_json::json!({
+                "id": value.id.0,
+                "node": value.node_id.get(),
+                "property": format!("{:?}", value.property),
+                "expression": format!("{:?}", value.expression),
+            }))
+            .collect::<Vec<_>>(),
         "nodeIds": {
             "root": observation.node_ids[0].get(),
             "item": observation.node_ids[1].get(),

@@ -87,7 +87,9 @@ const fixedAutoAreaSceneIDs = new Set([
 ]);
 const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
 const fitContentMinHeightSceneIDs = new Set(['fit-content-min-height-wpt']);
-const fitContentPercentageArgumentSceneIDs = new Set(['fit-content-percentage-row-wpt']);
+const fitContentPercentageArgumentSceneIDs = new Set([
+  'fit-content-percentage-row-wpt', 'fit-content-calc-percentage-row-wpt',
+]);
 const fitContentSpanningSceneIDs = new Set(['fit-content-spanning-wpt']);
 const fitContentAutoMinFloorSceneIDs = new Set([
   'fit-content-auto-min-floor-wpt', 'fit-content-auto-min-floor-zero-control',
@@ -5149,6 +5151,8 @@ scenes.push({
     itemNode: 2,
     childNode: 3,
     rowSize: 150,
+    gridAutoRows: 'fit-content(50%)',
+    layoutAutoRows: 'TrackList([FitContent(Percentage(0.5))])',
   },
   pixelSamples: [
     { id: 'fit-content-percentage-child-in-row',
@@ -5162,6 +5166,42 @@ scenes.push({
       xCssPx: 45, yCssPx: 200, rgba: [23, 33, 43, 255] },
     { id: 'fit-content-percentage-child-outside-root',
       nodeId: 'c114-fit-content-percentage-child',
+      xCssPx: 15, yCssPx: 350, rgba: [255, 209, 102, 255] },
+  ],
+});
+scenes.push({
+  id: 'fit-content-calc-percentage-row-wpt',
+  axis: 'Rows',
+  boxCount: 3,
+  rootFrame: 'width=60,height=300',
+  itemFrame: 'width=60,height=35',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;'
+    + '1:node=2,x=0,y=0,width=60,height=35;'
+    + '2:node=3,x=0,y=0,width=30,height=400]',
+  tracks: [35],
+  collapsed: [false],
+  requiresStrictPresentationIdentity: true,
+  fitContentPercentageArgument: {
+    rootNode: 1,
+    itemNode: 2,
+    childNode: 3,
+    rowSize: 35,
+    gridAutoRows: 'fit-content(calc(10% + 5px))',
+    layoutAutoRowsIncludes: 'FitContent(Calc(',
+    layoutCssMathExpression: 'Sum([Percentage(0.1), LengthPx(5.0)])',
+  },
+  pixelSamples: [
+    { id: 'fit-content-calc-percentage-child-in-row',
+      nodeId: 'c114-fit-content-calc-percentage-child',
+      xCssPx: 15, yCssPx: 34, rgba: [255, 209, 102, 255] },
+    { id: 'fit-content-calc-percentage-item-in-row',
+      nodeId: 'c114-fit-content-calc-percentage-item',
+      xCssPx: 45, yCssPx: 34, rgba: [229, 72, 77, 255] },
+    { id: 'fit-content-calc-percentage-root-below-row',
+      nodeId: 'c114-fit-content-calc-percentage-grid',
+      xCssPx: 45, yCssPx: 200, rgba: [23, 33, 43, 255] },
+    { id: 'fit-content-calc-percentage-child-outside-root',
+      nodeId: 'c114-fit-content-calc-percentage-child',
       xCssPx: 15, yCssPx: 350, rgba: [255, 209, 102, 255] },
   ],
 });
@@ -5516,7 +5556,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 540, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 541, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6940,19 +6980,41 @@ function verifyRuntimeLog(log, scene, runID) {
       height: 'LengthPx(300.0)',
       gridTemplateColumns: '60px',
       gridTemplateRows: 'none',
-      gridAutoRows: 'fit-content(50%)',
+      gridAutoRows: expected.gridAutoRows,
       alignContent: 'normal',
     });
     assert.ok(typeof style.typedGridStyle === 'string' && style.typedGridStyle.length > 0,
       `${scene.id}: typed computed Grid style is missing`);
-    assert.deepEqual(observation.layoutInputGridContainer, {
+    const input = observation.layoutInputGridContainer;
+    assert.deepEqual({ ...input, autoRows: undefined }, {
       rootNode: expected.rootNode,
       columns: '[LengthPx(60.0)]',
       explicitRows: '[]',
-      autoRows: 'TrackList([FitContent(Percentage(0.5))])',
+      autoRows: undefined,
       autoFlow: 'Row',
       placementMode: 'TrackSizing',
     });
+    if (expected.layoutAutoRows !== undefined) {
+      assert.equal(input.autoRows, expected.layoutAutoRows);
+    } else {
+      assert.ok(input.autoRows.includes(expected.layoutAutoRowsIncludes),
+        `${scene.id}: projected auto-row calc is missing`);
+    }
+    const mathRegistry = observation.layoutCssMathRegistry;
+    assert.ok(Array.isArray(mathRegistry),
+      `${scene.id}: projected CSS math registry is missing`);
+    if (expected.layoutCssMathExpression === undefined) {
+      assert.deepEqual(mathRegistry, [], `${scene.id}: unexpected CSS math registry entry`);
+    } else {
+      const calcID = input.autoRows.match(/LayoutCalcId\((\d+)\)/)?.[1];
+      assert.ok(calcID !== undefined, `${scene.id}: projected calc handle is missing`);
+      assert.deepEqual(mathRegistry, [{
+        id: Number(calcID),
+        node: expected.rootNode,
+        property: 'GridTemplateRows',
+        expression: expected.layoutCssMathExpression,
+      }], `${scene.id}: calc registry must bind the handle to its row owner and expression`);
+    }
     assert.deepEqual(observation.nodeIds, {
       root: expected.rootNode,
       item: expected.itemNode,
@@ -6960,7 +7022,7 @@ function verifyRuntimeLog(log, scene, runID) {
     });
     assert.deepEqual(observation.framesCssPx, {
       root: { x: 0, y: 0, width: 60, height: 300 },
-      item: { x: 0, y: 0, width: 60, height: 150 },
+      item: { x: 0, y: 0, width: 60, height: expected.rowSize },
       child: { x: 0, y: 0, width: 30, height: 400 },
     });
     const stages = observation.rowSizingStages;
@@ -6973,7 +7035,9 @@ function verifyRuntimeLog(log, scene, runID) {
       'StretchAutoTracks { applied: true }',
     ];
     assert.ok(Array.isArray(stages), `${scene.id}: row sizing trace is missing`);
-    assert.deepEqual(stages.map(({ stage }) => stage), expectedStages,
+    assert.deepEqual(stages.map(({ stage }) => stage.replace(
+      'crosses_flexible_track: false}', 'crosses_flexible_track: false }')),
+    expectedStages,
       `${scene.id}: row sizing stages are missing, duplicated, or out of order`);
     for (const [index, stage] of stages.entries()) {
       assert.deepEqual(stage.baseSizesCssPx, [index < 3 ? 0 : expected.rowSize],
