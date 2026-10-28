@@ -1,0 +1,28 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "apkSha256": "f8622826361a068f688bdb832e0b686db28ab99dac3829c82ad187e2edbf62a7",
+  "installedApkSha256": "f8622826361a068f688bdb832e0b686db28ab99dac3829c82ad187e2edbf62a7",
+  "sourceRevision": {
+    "commit": "98b8a7ff8964a21534877bb223f54b7180cbfca1",
+    "tree": "980abae2130bb632a9e3b4f34f0ae78deb801c8c",
+    "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trackedDirtyPaths": [],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "95c3d59df304ce5bbc50f126f42ecb45e873ebaea7702435f8a91aa368788d02"
+  }
+}
