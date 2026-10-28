@@ -51,13 +51,13 @@ CSS Grid 2025 CRD §6.6은 item automatic minimum을 해당 축의 computed over
 
 구현 전에 독립된 20개 관점 계획 검토와 browser 사전 비교를 마친다. 구현 뒤에는 새 20개 runtime/code 실패 관점 검토를 기록한다. 프로젝트 규칙에 따라 최종 PR diff를 서로 다른 실패 관점 30개로 검토한다. 이는 사용자가 요청한 PR별 20회보다 많다. 결함 수정 후 영향받은 관점은 다시 확인한다. rendered screenshot을 얻으면 Android와 iOS Simulator 캡처를 PR에 첨부한다.
 
-Update `spec/STATUS.md`, `spec/0001-conformance.md`, the parent C11.4 plan and the internal contract only for behavior this slice actually establishes. Record PR #764's post-merge SHA/check state during the next roadmap sync. Keep C11.4 unchecked and official completion count at `72/213`. This runtime slice does not claim general CSS overflow admission, clipping or scrolling, full WPT execution, hardware GPU/physical-device behavior, or completion of C11.4.
+이 slice가 실제로 확인한 범위만 `spec/STATUS.md`, `spec/0001-conformance.md`, 상위 C11.4 계획과 내부 계약에 반영한다. PR #765 병합 정보는 아래 결과와 상태 대장에 기록했다. C11.4 항목은 미완료로 두고 공식 완료 수 `72/213`을 유지한다. 이 runtime slice는 일반 CSS overflow 허용, clipping·scroll 동작, 전체 WPT 실행, hardware GPU·실기기 동작 또는 C11.4 완료를 주장하지 않는다.
 
 
-## 구현 후보 결과
+## 구현 및 PR #765 병합 결과
 
 고정 14-scene 행렬을 opt-in fixture-test cascade·typed projection·Taffy contribution trace·FFI report·GPU draw/present 경로에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 14/14 scene을 통과했다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable 표본은 row visible scene의 root 바깥 PNG red 및 item 아래 black을 exact match했다. Product/fixture static FFI archive boundary에서 일반 c04-runtime-gpu archive에는 새 route marker가 없고 fixture-test positive control에는 14 scene ID와 PNG marker가 있다.
 
 최종 소스 검토에서 row image intrinsic revision 전달과 render image attachment 누락을 찾아 수정한 뒤 전체 matrix를 다시 실행했다. contribution trace의 정확히 두 pass 조건이 정상 repeated same-axis subpass를 거부해 축 존재·Columns 시작·연속 sequence 및 각 pass contribution 검증으로 바꿨다. visibility:collapse도 author stylesheet 경계에서 거부하도록 보완했다. 상세 실행 및 제한은 [runtime evidence](../spec/internal/evidence/c11-4-overflow-auto-minimum-runtime-2026-10-29/README.md), [구현/runtime 20관점](../spec/internal/evidence/c11-4-overflow-auto-minimum-runtime-2026-10-29/implementation-runtime-review-20.md)에 둔다.
 
-앞선 PR #764는 2026-10-28T14:30:20Z에 Rebase and merge되어 db9b51c6ae72328c408b2a0ed15d602a90938d47가 main merge SHA가 됐다. combined check rollup은 비어 있었다. 이번 후보는 C11.4 미완료/72/213을 유지하며 일반 CSS admission, clipping·scroll 동작, 전체 WPT, 실기기/hardware GPU와 iOS compositor 이후 pixel equality를 주장하지 않는다.
+앞선 PR #764는 2026-10-28T14:30:20Z에 Rebase and merge되어 db9b51c6ae72328c408b2a0ed15d602a90938d47가 main merge SHA가 됐다. PR #765는 2026-10-28T16:52:08Z Rebase and merge됐고 merge SHA는 31103049d4a99a70fb97d3dfc58c96ac67cb173c다. merge 당시 head의 check run과 status context는 없었고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다. 이번 PR #765는 C11.4 미완료/72/213을 유지한다. 일반 CSS admission, clipping·scroll 동작, 전체 WPT, 실기기/hardware GPU와 iOS compositor 이후 pixel equality를 주장하지 않는다.

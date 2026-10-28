@@ -27,4 +27,4 @@ Android는 emulator의 SwiftShader 경로다. iOS 표본은 Metal drawable 제�
 
 마지막 검토에서 trace가 정확히 2 pass일 것을 요구한 조건은 `column-hidden-zero-minimum`의 정상 subpass를 거부했다. 실제 trace 계약에 맞게 pass 수 조건을 완화하고 축 존재·sequence·각 subpass contribution 검사는 유지했다. 해당 장면과 최신 양 플랫폼 14-scene 행렬을 재실행했다. 첫 실패와 수정을 숨기지 않고 [20개 구현/runtime 실패 관점 검토](./implementation-runtime-review-20.md)에 기록했다.
 
-C11.4 공식 항목은 미완료이며 완료 수 `72/213`을 유지한다. [PR diff 30관점 검토](./pr-diff-review-30.md)를 마쳤다. 새 구현 PR 생성, GitHub checks 및 merge proof는 남아 있다.
+C11.4 공식 항목은 미완료이며 완료 수 `72/213`을 유지한다. [PR diff 30관점 검토](./pr-diff-review-30.md)를 마쳤다. [PR #765](https://github.com/ohah/spinon/pull/765)는 2026-10-28T16:52:08Z Rebase and merge되어 merge SHA 31103049d4a99a70fb97d3dfc58c96ac67cb173c를 기록했다. check run/status context는 없고 main required status checks도 설정되지 않아 CI 성공을 주장하지 않는다.
