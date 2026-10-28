@@ -4,13 +4,13 @@
     "rows": "20px",
     "grid": {
       "x": 32,
-      "y": 127.781,
+      "y": 127.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 32,
-      "y": 127.781,
+      "y": 127.78125,
       "width": 100,
       "height": 20
     },
@@ -18,6 +18,7 @@
     "minHeight": "auto",
     "overflowX": "visible",
     "overflowY": "visible",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -26,13 +27,13 @@
     "rows": "20px",
     "grid": {
       "x": 654,
-      "y": 127.781,
+      "y": 127.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 654,
-      "y": 127.781,
+      "y": 127.78125,
       "width": 100,
       "height": 20
     },
@@ -40,6 +41,7 @@
     "minHeight": "auto",
     "overflowX": "clip",
     "overflowY": "clip",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -48,13 +50,13 @@
     "rows": "20px",
     "grid": {
       "x": 32,
-      "y": 235.781,
+      "y": 235.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 32,
-      "y": 235.781,
+      "y": 235.78125,
       "width": 60,
       "height": 20
     },
@@ -62,6 +64,7 @@
     "minHeight": "auto",
     "overflowX": "hidden",
     "overflowY": "hidden",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -70,13 +73,13 @@
     "rows": "20px",
     "grid": {
       "x": 654,
-      "y": 235.781,
+      "y": 235.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 654,
-      "y": 235.781,
+      "y": 235.78125,
       "width": 60,
       "height": 20
     },
@@ -84,6 +87,7 @@
     "minHeight": "auto",
     "overflowX": "auto",
     "overflowY": "auto",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -92,13 +96,13 @@
     "rows": "20px",
     "grid": {
       "x": 32,
-      "y": 343.781,
+      "y": 343.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 32,
-      "y": 343.781,
+      "y": 343.78125,
       "width": 60,
       "height": 20
     },
@@ -106,6 +110,7 @@
     "minHeight": "auto",
     "overflowX": "scroll",
     "overflowY": "scroll",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -114,13 +119,13 @@
     "rows": "20px",
     "grid": {
       "x": 654,
-      "y": 343.781,
+      "y": 343.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 654,
-      "y": 343.781,
+      "y": 343.78125,
       "width": 60,
       "height": 20
     },
@@ -128,6 +133,7 @@
     "minHeight": "auto",
     "overflowX": "visible",
     "overflowY": "visible",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
@@ -136,13 +142,13 @@
     "rows": "20px",
     "grid": {
       "x": 32,
-      "y": 451.781,
+      "y": 451.78125,
       "width": 60,
       "height": 20
     },
     "item": {
       "x": 32,
-      "y": 451.781,
+      "y": 451.78125,
       "width": 60,
       "height": 20
     },
@@ -150,161 +156,190 @@
     "minHeight": "auto",
     "overflowX": "visible",
     "overflowY": "visible",
+    "naturalImage": null,
     "scrollWidth": 100,
     "scrollHeight": 20
   },
   "row-visible": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "10px",
     "grid": {
       "x": 654,
-      "y": 451.781,
+      "y": 451.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 654,
-      "y": 451.781,
-      "width": 30,
+      "y": 451.78125,
+      "width": 10,
       "height": 10
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "visible",
     "overflowY": "visible",
-    "scrollWidth": 30,
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
     "scrollHeight": 10
   },
   "row-clip": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "10px",
     "grid": {
       "x": 32,
-      "y": 559.781,
+      "y": 559.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 32,
-      "y": 559.781,
-      "width": 30,
+      "y": 559.78125,
+      "width": 10,
       "height": 10
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "clip",
     "overflowY": "clip",
-    "scrollWidth": 30,
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
     "scrollHeight": 10
   },
   "row-hidden": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "5px",
     "grid": {
       "x": 654,
-      "y": 559.781,
+      "y": 559.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 654,
-      "y": 559.781,
-      "width": 30,
+      "y": 559.78125,
+      "width": 10,
       "height": 5
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "hidden",
     "overflowY": "hidden",
-    "scrollWidth": 30,
-    "scrollHeight": 10
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
+    "scrollHeight": 5
   },
   "row-auto": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "5px",
     "grid": {
       "x": 32,
-      "y": 667.781,
+      "y": 667.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 32,
-      "y": 667.781,
-      "width": 30,
+      "y": 667.78125,
+      "width": 10,
       "height": 5
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "auto",
     "overflowY": "auto",
-    "scrollWidth": 30,
-    "scrollHeight": 10
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
+    "scrollHeight": 5
   },
   "row-scroll": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "5px",
     "grid": {
       "x": 654,
-      "y": 667.781,
+      "y": 667.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 654,
-      "y": 667.781,
-      "width": 30,
+      "y": 667.78125,
+      "width": 10,
       "height": 5
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "scroll",
     "overflowY": "scroll",
-    "scrollWidth": 30,
-    "scrollHeight": 10
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
+    "scrollHeight": 5
   },
   "row-zero-item-min": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "5px",
     "grid": {
       "x": 32,
-      "y": 775.781,
+      "y": 775.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 32,
-      "y": 775.781,
-      "width": 30,
+      "y": 775.78125,
+      "width": 10,
       "height": 5
     },
     "minWidth": "auto",
     "minHeight": "0px",
     "overflowX": "visible",
     "overflowY": "visible",
-    "scrollWidth": 30,
-    "scrollHeight": 10
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
+    "scrollHeight": 5
   },
   "row-zero-track-min": {
-    "columns": "30px",
+    "columns": "10px",
     "rows": "5px",
     "grid": {
       "x": 654,
-      "y": 775.781,
+      "y": 775.78125,
       "width": 30,
       "height": 5
     },
     "item": {
       "x": 654,
-      "y": 775.781,
-      "width": 30,
+      "y": 775.78125,
+      "width": 10,
       "height": 5
     },
     "minWidth": "auto",
     "minHeight": "auto",
     "overflowX": "visible",
     "overflowY": "visible",
-    "scrollWidth": 30,
-    "scrollHeight": 10
+    "naturalImage": [
+      10,
+      10
+    ],
+    "scrollWidth": 10,
+    "scrollHeight": 5
   }
 }

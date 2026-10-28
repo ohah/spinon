@@ -28,3 +28,13 @@
 | 20 | 좁은 regression test를 전체 C11.4 완료나 공식 count 증가로 표현 | Status checkbox와 `72/213`을 유지하고 계획·구현·PR 검토 결과를 별도로 기록한다. | 통과 |
 
 **판정:** PASS 20/20, 계획 blocker 0개. 독립 기대값, 양축·다섯 overflow 분류, source-aware trace 및 좁은 C11.4/C13 경계가 구현 전에 고정됐다. 구현 runtime 검토 20개와 PR diff 검토 20개는 실제 변경 뒤 새로운 관점으로 수행한다.
+
+## 구현 피드백 추가 기록 · 2026-10-28
+
+계획 PR #749 병합 후 focused Rust test에서 `minmax(0,1fr)` control에는 item `Minimum` contribution이 기록되지 않는 것을 확인했다. 이 계획 초안과 위 검토 12·14번은 이를 `AutomaticMinimum { content_based: false }` trace가 있는 것으로 잘못 예상했고, 그 결함을 구현 전에 발견하지 못했다. 따라서 위 PASS는 당시 plan diff에 대한 20개 검토 기록이지, 발견된 잘못된 기대값이 없었다는 뜻은 아니다. 구현 PR에서 독립 기대값을 `queried: false`로 고치고 테스트가 query 부재를 직접 검사한다.
+
+또한 Rows의 auto-minimum이 item을 5px로 줄일 때 기존 text-layout path가 `TextLayoutHeightMismatch`를 반환했다. 계획은 C15 text validation 경계를 고려하지 못했다. Rows case를 natural 10×10 replaced image로 바꿔 C11.4 track/overflow 차이를 확인하고 text-layout 동작은 유지한다.
+
+구현을 연결한 첫 실행에서는 natural 10×10 image의 aspect ratio가 row track 축소에 따라 auto width까지 5px로 줄어드는 것을 추가 발견했다. 앞선 계획 검토는 fixed 10px column track만으로 image width가 고정된다고 가정했다. fixture와 test 양쪽에서 image CSS width를 10px로 고정하고, 구현 PR 검토에서 축 간 coupling을 별도 관점으로 확인한다.
+
+이후 Agent Browser 재관측에서는 replaced `<img>`의 UA 기본 computed overflow가 `clip`인 것을 발견했다. 앞선 계획 검토는 HTML fixture의 `overflow:visible` row baseline을 확인하지 못했다. fixture에서 visible을 명시하고 Chrome computed style을 재수집해 visible/clip cases가 구별되게 했다.

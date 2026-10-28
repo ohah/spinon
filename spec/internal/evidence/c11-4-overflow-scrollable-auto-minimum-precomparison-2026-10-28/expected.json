@@ -7,137 +7,403 @@
     "font": "Ahem 10px/10px",
     "columnsText": "XXXXXXXXXX",
     "columnsMinContentPx": 100,
-    "rowsText": "X",
-    "rowsMinContentPx": 10
+    "rowsReplacedImageNaturalPx": [
+      10,
+      10
+    ],
+    "rowsReplacedImageCssWidthPx": 10,
+    "rowsMinContentHeightPx": 10
   },
   "cases": [
     {
       "id": "column-visible",
       "axis": "columns",
       "itemOverflow": "visible",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [100], "rows": [20] },
-      "itemPx": [100, 20],
-      "minimumContribution": { "kind": "automatic", "contentBased": true, "valuePx": 100 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        100,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 100
+      }
     },
     {
       "id": "column-clip",
       "axis": "columns",
       "itemOverflow": "clip",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [100], "rows": [20] },
-      "itemPx": [100, 20],
-      "minimumContribution": { "kind": "automatic", "contentBased": true, "valuePx": 100 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        100,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 100
+      }
     },
     {
       "id": "column-hidden",
       "axis": "columns",
       "itemOverflow": "hidden",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [60], "rows": [20] },
-      "itemPx": [60, 20],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      }
     },
     {
       "id": "column-auto",
       "axis": "columns",
       "itemOverflow": "auto",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [60], "rows": [20] },
-      "itemPx": [60, 20],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      }
     },
     {
       "id": "column-scroll",
       "axis": "columns",
       "itemOverflow": "scroll",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [60], "rows": [20] },
-      "itemPx": [60, 20],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      }
     },
     {
       "id": "column-zero-item-min",
       "axis": "columns",
       "itemOverflow": "visible",
-      "itemMinSizePx": [0, null],
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [60], "rows": [20] },
-      "itemPx": [60, 20],
-      "minimumContribution": { "kind": "specifiedMinimum", "valuePx": 0 }
+      "itemMinSizePx": [
+        0,
+        null
+      ],
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "specifiedMinimum",
+        "valuePx": 0
+      }
     },
     {
       "id": "column-zero-track-min",
       "axis": "columns",
       "itemOverflow": "visible",
-      "gridPx": [60, 20],
-      "tracksPx": { "columns": [60], "rows": [20] },
-      "itemPx": [60, 20],
-      "minimumContribution": { "kind": "automatic", "contentBased": false, "valuePx": 0 }
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "queried": false,
+        "reason": "zeroTrackMinimumDoesNotQueryItemMinimum"
+      }
     },
     {
       "id": "row-visible",
       "axis": "rows",
       "itemOverflow": "visible",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [10] },
-      "itemPx": [30, 10],
-      "minimumContribution": { "kind": "automatic", "contentBased": true, "valuePx": 10 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "itemPx": [
+        10,
+        10
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 10
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-clip",
       "axis": "rows",
       "itemOverflow": "clip",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [10] },
-      "itemPx": [30, 10],
-      "minimumContribution": { "kind": "automatic", "contentBased": true, "valuePx": 10 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "itemPx": [
+        10,
+        10
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 10
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-hidden",
       "axis": "rows",
       "itemOverflow": "hidden",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [5] },
-      "itemPx": [30, 5],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-auto",
       "axis": "rows",
       "itemOverflow": "auto",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [5] },
-      "itemPx": [30, 5],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-scroll",
       "axis": "rows",
       "itemOverflow": "scroll",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [5] },
-      "itemPx": [30, 5],
-      "minimumContribution": { "kind": "overflowAutomaticMinimum", "valuePx": 0 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-zero-item-min",
       "axis": "rows",
       "itemOverflow": "visible",
-      "itemMinSizePx": [null, 0],
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [5] },
-      "itemPx": [30, 5],
-      "minimumContribution": { "kind": "specifiedMinimum", "valuePx": 0 }
+      "itemMinSizePx": [
+        null,
+        0
+      ],
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "specifiedMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     },
     {
       "id": "row-zero-track-min",
       "axis": "rows",
       "itemOverflow": "visible",
-      "gridPx": [30, 5],
-      "tracksPx": { "columns": [30], "rows": [5] },
-      "itemPx": [30, 5],
-      "minimumContribution": { "kind": "automatic", "contentBased": false, "valuePx": 0 }
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "queried": false,
+        "reason": "zeroTrackMinimumDoesNotQueryItemMinimum"
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ]
     }
   ]
 }

@@ -28,3 +28,13 @@
 | 20 | 계획 PR을 제품 구현·시뮬레이터·CI 통과로 보고 | 계획 문서와 PR 본문은 실제 Rust implementation, tests, app runtime, simulator, CI를 별도 미실행 상태로 둔다. | 통과 |
 
 **판정:** PASS 20/20, 계획 PR diff blocker 0개. 계획 검토 20개와는 다른 PR-level failure paths를 확인했다. 실제 implementation/runtime의 새 20관점 검토와 implementation PR diff 20관점 검토는 후속 구현에서 다시 수행한다.
+
+## 구현 피드백 추가 기록 · 2026-10-28
+
+계획 PR #749 병합 후 focused Rust test에서 `minmax(0,1fr)` control에는 item `Minimum` contribution이 질의되지 않는 것을 확인했다. 이 PR diff 검토는 그 대조군이 `AutomaticMinimum { content_based: false }`를 내야 한다는 잘못된 기대를 발견하지 못했다. 원래 PASS는 #749의 당시 diff 검토 기록으로 보존하며, 구현 PR에서 expected JSON과 계획을 `Minimum query 없음`으로 수정한다. 이 후속 발견을 새 구현/runtime 검토와 implementation PR diff 검토에서 별도로 다룬다.
+
+Rows text case도 planned Taffy path에서 `TextLayoutHeightMismatch`를 만들었다. 이 failure boundary는 PR diff 검토에서 발견하지 못했고, C15 text contract를 느슨하게 하지 않도록 Rows oracle/test를 natural replaced image로 변경했다.
+
+구현을 연결한 첫 실행에서는 natural 10×10 image의 aspect ratio가 row track 축소에 따라 auto width까지 5px로 줄어드는 것을 추가 발견했다. 앞선 PR diff 검토는 fixed 10px column track만으로 image width가 고정된다고 가정했다. fixture와 test 양쪽에서 image CSS width를 10px로 고정하고, 구현 PR 검토에서 축 간 coupling을 별도 관점으로 확인한다.
+
+이후 Agent Browser 재관측에서는 replaced `<img>`의 UA 기본 computed overflow가 `clip`인 것을 발견했다. 앞선 PR diff 검토는 HTML fixture의 `overflow:visible` row baseline을 확인하지 못했다. fixture에서 visible을 명시하고 Chrome computed style을 재수집해 visible/clip cases가 구별되게 했다.
