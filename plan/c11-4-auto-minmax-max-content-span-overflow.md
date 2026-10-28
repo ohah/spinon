@@ -41,6 +41,10 @@ Non-scrollable cases raise the sum of the two auto-minimum base sizes to 100px, 
 7. The PR may show the [Chrome baseline screenshot](../spec/internal/evidence/c11-4-auto-minmax-max-content-span-overflow-precomparison-2026-10-28/chrome/two-track-span-overflow.png), labeled as Chrome only. After browser evidence work, close the Agent Browser session and process.
 8. After merge, reconcile the parent plan, `spec/STATUS.md`, and public roadmap with actual results. Keep the C11.4 checkbox incomplete and official complete count `72/213`.
 
+## 구현 후보 결과 · PR 검토 중
+
+별도 `#[cfg(test)]` submodule에 다섯 two-track span 입력을 추가했다. 정확 비교는 두 track bases, root/item frame, automatic minimum source/value와 max-content contribution을 포함한다. Focused test 1/1, `spinon-layout` 298/298, `cargo fmt --all -- --check`, crate all-target Clippy가 통과했다. [실행·source hash](../spec/internal/evidence/c11-4-auto-minmax-max-content-span-overflow-implementation-2026-10-28/README.md) · [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-auto-minmax-max-content-span-overflow-implementation-2026-10-28/implementation-runtime-review-20.md) · [구현 PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-minmax-max-content-span-overflow-implementation-2026-10-28/pr-diff-review-30.md). This is a test-only candidate; app runtime and Android/iOS Simulator were not run. PR merge proof and post-merge official status synchronization are pending. C11.4 remains incomplete and official count remains `72/213`.
+
 ## 범위 밖
 
 This slice does not implement CSS `overflow` parsing/admission, general DOM or arbitrary item placement, app/runtime fixture routes, clipping pixels, scroll offsets or scrollbars, painting, WPT conformance, Android/iOS Simulator behavior, or all span/track combinations. Chrome is an independent browser baseline, not a Spinon result. It does not close C11.4 or change official completion count `72/213`.

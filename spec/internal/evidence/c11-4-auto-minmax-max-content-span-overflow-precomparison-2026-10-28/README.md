@@ -9,7 +9,7 @@
 - Agent Browser `0.31.1`, HeadlessChrome `156.0.0.0`, macOS ARM64 host
 - viewport `1280×633` CSS px, DPR `1`
 - 저장소 Ahem font를 load했고 `document.fonts.check("10px Ahem") === true`였다.
-- 고정 입력: [Chrome fixture](../../../../tests/fixtures/css/c11/grid-auto-minmax-max-content-two-track-span-overflow-c114-precomparison.html)
+- 고정 입력: [Chrome fixture at the merged source commit](https://github.com/ohah/spinon/blob/8b90a68892aab0980d5f526d7ed47d14bb55d8dd/tests/fixtures/css/c11/grid-auto-minmax-max-content-two-track-span-overflow-c114-precomparison.html)
 - Chrome 관측: [observation JSON](./chrome/chrome156-observation.json)
 - 독립 기대값: [expected.json](./expected.json)
 - 축별 overflow 계산 규칙: [CSS Overflow Module Level 3 §3.1](https://www.w3.org/TR/css-overflow-3/#overflow-properties)
