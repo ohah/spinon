@@ -7,6 +7,12 @@ mod style;
 
 pub(crate) use cascade::{acquire_standard_stylo_preferences, initialize_stylo_preferences};
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use cascade::{
+    compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+};
+
 #[cfg(test)]
 mod tests;
 

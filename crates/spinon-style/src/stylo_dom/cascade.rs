@@ -44,6 +44,11 @@ pub use runtime_grid::{
     first_unsupported_runtime_block_flex_grid_template_inline_property,
     first_unsupported_runtime_block_flex_grid_track_sizing_inline_property,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use runtime_grid::{
+    compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+};
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
     compute_runtime_flex_custom_properties_cascade_with_stylesheets,
@@ -607,6 +612,34 @@ fn compute_cascade(
     )
 }
 
+fn compute_cascade_with_author_properties_override(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+    properties: &[(&str, LonghandId)],
+    profile: ComputedStyleProfile,
+    author_properties_override: Option<&[&str]>,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    compute_cascade_with_options(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        properties,
+        profile,
+        CascadeOptions {
+            additional_user_agent_stylesheets: &[],
+            author_properties_override,
+        },
+    )
+}
+
+struct CascadeOptions<'a> {
+    additional_user_agent_stylesheets: &'a [StylesheetSource],
+    author_properties_override: Option<&'a [&'a str]>,
+}
+
 fn compute_cascade_with_additional_user_agent_stylesheets(
     view: &StyloDocumentView,
     additional_user_agent_stylesheets: &[StylesheetSource],
@@ -616,14 +649,38 @@ fn compute_cascade_with_additional_user_agent_stylesheets(
     properties: &[(&str, LonghandId)],
     profile: ComputedStyleProfile,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
-    incremental::compute_cascade_with_reuse(incremental::CascadeComputeRequest {
+    compute_cascade_with_options(
         view,
-        additional_user_agent_stylesheets,
         author_stylesheets,
         viewport,
         style_revision,
         properties,
         profile,
+        CascadeOptions {
+            additional_user_agent_stylesheets,
+            author_properties_override: None,
+        },
+    )
+}
+
+fn compute_cascade_with_options(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+    properties: &[(&str, LonghandId)],
+    profile: ComputedStyleProfile,
+    options: CascadeOptions<'_>,
+) -> Result<ComputedStyleSnapshot, CssCascadeError> {
+    incremental::compute_cascade_with_reuse(incremental::CascadeComputeRequest {
+        view,
+        additional_user_agent_stylesheets: options.additional_user_agent_stylesheets,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        properties,
+        profile,
+        author_properties_override: options.author_properties_override,
         reuse: None,
     })
     .and_then(|result| match result {

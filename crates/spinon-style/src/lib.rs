@@ -2,6 +2,12 @@
 
 use std::ffi::CStr;
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use stylo_dom::{
+    compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+};
+
 mod c10_flex_baseline_css;
 mod computed_css_color;
 mod container_relative_units;

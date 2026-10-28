@@ -51,6 +51,7 @@ pub(super) fn project_styles(
     allow_implicit_named_lines: bool,
     blockify_c11_4_anonymous_grid_images: bool,
     allow_c11_4_replaced_grid_item_align_self_start: bool,
+    allow_c11_4_overflow_auto_minimum_fixture: bool,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
@@ -250,12 +251,16 @@ pub(super) fn project_styles(
         }
         let mut style = LayoutStyle {
             display,
-            overflow_x: if supports_overflow_clip(snapshot.profile) {
+            overflow_x: if supports_overflow_clip(snapshot.profile)
+                || allow_c11_4_overflow_auto_minimum_fixture
+            {
                 parse_overflow(node, "overflow-x", element.layout_overflow_x)?
             } else {
                 LayoutOverflow::Visible
             },
-            overflow_y: if supports_overflow_clip(snapshot.profile) {
+            overflow_y: if supports_overflow_clip(snapshot.profile)
+                || allow_c11_4_overflow_auto_minimum_fixture
+            {
                 parse_overflow(node, "overflow-y", element.layout_overflow_y)?
             } else {
                 LayoutOverflow::Visible

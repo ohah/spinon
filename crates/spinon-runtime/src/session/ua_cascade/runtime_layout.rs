@@ -98,6 +98,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub fit_content_auto_neighbor: Option<RuntimeC11_4FitContentAutoNeighborObservation>,
     pub fit_content_min_height: Option<RuntimeC11_4FitContentMinHeightObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
+    pub c11_4_overflow_auto_minimum_fixture: Option<RuntimeC11_4AutoMinmaxSpanOverflowObservation>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -125,6 +126,23 @@ pub struct RuntimeC11_4GridLayoutAutoTracksObservation {
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
     pub node_ids: [spinon_core::NodeId; 5],
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4AutoMinmaxSpanOverflowObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub item: spinon_core::NodeId,
+    pub scene_id: String,
+    pub authored_overflow_x: String,
+    pub computed_overflow_x: spinon_style::ComputedCssOverflow,
+    pub computed_overflow_y: spinon_style::ComputedCssOverflow,
+    pub expected_track_base_sizes: [f32; 2],
+    pub expected_item_width: f32,
+    pub expected_minimum_value: f32,
+    pub expects_content_based_minimum: bool,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -170,6 +188,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
             fit_content_min_height: self.fit_content_min_height.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
+            c11_4_overflow_auto_minimum_fixture: self.c11_4_overflow_auto_minimum_fixture.clone(),
         }
     }
 }
@@ -265,6 +284,10 @@ where
 
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_auto_minmax_span_overflow_root = profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && fixtures::is_c11_4_auto_minmax_span_overflow_root(&request.snapshot, root);
     if profile == super::calculation::RuntimeCalculationProfile::BlockFormatting {
         if let Some((node, value)) = first_unsupported_runtime_block_display_inline_value(&view) {
             return Err(layout_failure(
@@ -342,6 +365,15 @@ where
             spinon_style::first_unsupported_runtime_block_flex_grid_template_inline_property(&view)
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
+            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+            if c11_4_auto_minmax_span_overflow_root {
+                spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property(&view)
+            } else {
+                spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
+                    &view,
+                )
+            }
+            #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
             spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
                 &view,
             )
@@ -389,26 +421,37 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_nested_grid_replaced_item_input =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_nested_grid_replaced_item(&request.snapshot, root, &styles)?
-        } else {
-            None
-        };
+    let c11_4_auto_minmax_span_overflow_input = if c11_4_auto_minmax_span_overflow_root {
+        fixtures::prepare_c11_4_auto_minmax_span_overflow(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_nested_grid_depth_three_anonymous_image_input =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_nested_grid_depth_three_anonymous_image(
-                &request.snapshot,
-                root,
-                &styles,
-            )?
-        } else {
-            None
-        };
+    let c11_4_nested_grid_replaced_item_input = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_nested_grid_replaced_item(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_nested_grid_depth_three_anonymous_image_input = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_nested_grid_depth_three_anonymous_image(
+            &request.snapshot,
+            root,
+            &styles,
+        )?
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_multi_image_input = if profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_replaced_item_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
     {
@@ -426,6 +469,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_image_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
@@ -436,6 +480,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_mixed_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
@@ -447,6 +492,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_anonymous_text_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
@@ -459,6 +505,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_grid_layout_auto_tracks_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
@@ -473,7 +520,8 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_text_input = if let Some(input) = &c11_4_grid_layout_auto_tracks_input {
         Some(input.text_input.clone())
-    } else if c11_4_nested_grid_replaced_item_input.is_none()
+    } else if c11_4_auto_minmax_span_overflow_input.is_none()
+        && c11_4_nested_grid_replaced_item_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
@@ -487,6 +535,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_fit_content_calc_render_input = if runtime_paint_enabled
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && fixtures::is_cyclic_fit_content_calc_scene_root(&request.snapshot, root)?
     {
         let text_input = c11_4_text_input.as_ref().ok_or_else(|| {
@@ -520,6 +569,7 @@ where
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_image_input = if c11_4_nested_grid_replaced_item_input.is_none()
+        && c11_4_auto_minmax_span_overflow_input.is_none()
         && c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && c11_4_anonymous_text_multi_image_input.is_none()
         && c11_4_anonymous_text_image_input.is_none()
@@ -531,19 +581,23 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_fit_content_auto_neighbor_node_ids =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_fit_content_auto_neighbor(&request.snapshot, root, &styles)?
-        } else {
-            None
-        };
+    let c11_4_fit_content_auto_neighbor_node_ids = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_fit_content_auto_neighbor(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_fit_content_min_height_node_ids =
-        if profile == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing {
-            fixtures::prepare_c11_4_fit_content_min_height(&request.snapshot, root, &styles)?
-        } else {
-            None
-        };
+    let c11_4_fit_content_min_height_node_ids = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_fit_content_min_height(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
@@ -581,7 +635,16 @@ where
         )
     } else {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-        if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
+        if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture(
+                &request.snapshot,
+                root,
+                styles.clone(),
+                request.viewport,
+                &input.paragraph_styles,
+                &input.engine,
+            )
+        } else if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
                 &request.snapshot,
                 root,
@@ -790,6 +853,18 @@ where
         } else {
             None
         };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_overflow_auto_minimum_observation =
+        if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
+            Some(fixtures::c11_4_auto_minmax_span_overflow_observation(
+                root,
+                &output.computed_styles,
+                input,
+                &output.grid_container_inputs,
+            )?)
+        } else {
+            None
+        };
     let frames = runtime_frames(&request.snapshot, root, &styles, &output.layout)?;
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let anonymous_grid_text_item_frames =
@@ -903,6 +978,7 @@ where
                 fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
                 fit_content_min_height: fit_content_min_height_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
+                c11_4_overflow_auto_minimum_fixture: c11_4_overflow_auto_minimum_observation,
             }))
         }
     };
@@ -926,6 +1002,10 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_grid_layout_auto_tracks_input.is_some() {
         fixtures::validate_c11_4_grid_layout_auto_tracks_output(&completed)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_auto_minmax_span_overflow_input.is_some() {
+        fixtures::validate_c11_4_auto_minmax_span_overflow_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if let Some(mixed_input) = &c11_4_mixed_input {
@@ -1479,6 +1559,7 @@ mod tests {
             }),
             fit_content_min_height: None,
             grid_layout_auto_tracks: None,
+            c11_4_overflow_auto_minimum_fixture: None,
         };
         let rekeyed_revision = LayoutInputRevision::new(
             LayoutSourceRevision::HostDocument {

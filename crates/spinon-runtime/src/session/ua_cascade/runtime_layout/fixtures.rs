@@ -48,6 +48,10 @@ mod c11_4_fit_content_min_height;
 mod c11_4_grid_layout_auto_tracks;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_auto_minmax_span_overflow.rs"]
+mod c11_4_auto_minmax_span_overflow;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_nested_grid_implicit_rows.rs"]
 mod c11_4_nested_grid_implicit_rows;
 
@@ -159,4 +163,12 @@ pub(super) use c11_4_grid_layout_auto_tracks::{
     observation as c11_4_grid_layout_auto_tracks_observation,
     prepare as prepare_c11_4_grid_layout_auto_tracks,
     validate_output as validate_c11_4_grid_layout_auto_tracks_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_auto_minmax_span_overflow::{
+    has_root_marker as is_c11_4_auto_minmax_span_overflow_root,
+    observation as c11_4_auto_minmax_span_overflow_observation,
+    prepare as prepare_c11_4_auto_minmax_span_overflow,
+    validate_output as validate_c11_4_auto_minmax_span_overflow_output,
 };

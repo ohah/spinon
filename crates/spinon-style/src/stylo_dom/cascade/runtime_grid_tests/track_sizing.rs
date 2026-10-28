@@ -207,3 +207,66 @@ fn track_sizing_carries_aspect_ratio_for_transferred_size_suggestions() {
         .unwrap();
     assert_eq!(style.layout_aspect_ratio, Some(2.0));
 }
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn overflow_fixture_cascade_keeps_axis_conversion_out_of_the_base_profile() {
+    for (authored_x, expected_x, expected_y) in [
+        (
+            "visible",
+            crate::ComputedCssOverflow::Visible,
+            crate::ComputedCssOverflow::Visible,
+        ),
+        (
+            "clip",
+            crate::ComputedCssOverflow::Clip,
+            crate::ComputedCssOverflow::Visible,
+        ),
+        (
+            "hidden",
+            crate::ComputedCssOverflow::Hidden,
+            crate::ComputedCssOverflow::Auto,
+        ),
+        (
+            "auto",
+            crate::ComputedCssOverflow::Auto,
+            crate::ComputedCssOverflow::Auto,
+        ),
+        (
+            "scroll",
+            crate::ComputedCssOverflow::Scroll,
+            crate::ComputedCssOverflow::Auto,
+        ),
+    ] {
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:80px;height:20px;grid-template-columns:minmax(auto,max-content) minmax(auto,max-content);grid-template-rows:20px;overflow-x:{authored_x};overflow-y:visible;margin:0;padding:0"
+        ));
+        let authored = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_err();
+        assert!(matches!(
+            authored,
+            crate::CssCascadeError::UnsupportedInlineAuthorProperty { .. }
+        ));
+
+        let snapshot =
+            crate::compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets(
+                &fixture.view,
+                &[],
+                viewport(),
+                Default::default(),
+            )
+            .unwrap();
+        let style = snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.root)
+            .unwrap();
+        assert_eq!(style.layout_overflow_x, Some(expected_x), "{authored_x}");
+        assert_eq!(style.layout_overflow_y, Some(expected_y), "{authored_x}");
+    }
+}

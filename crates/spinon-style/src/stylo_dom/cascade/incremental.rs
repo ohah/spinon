@@ -150,6 +150,7 @@ pub fn compute_runtime_incremental_cascade_with_stylesheets(
         style_revision,
         properties: &properties,
         profile,
+        author_properties_override: None,
         reuse: Some((previous, dirty_root_ids)),
     })
 }

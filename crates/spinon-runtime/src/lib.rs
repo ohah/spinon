@@ -21,5 +21,6 @@ pub use session::{
 };
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use session::{
-    RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
+    RuntimeC11_4AutoMinmaxSpanOverflowObservation, RuntimeC11_4FitContentAutoNeighborObservation,
+    RuntimeGridTrackSizingDiagnostics,
 };

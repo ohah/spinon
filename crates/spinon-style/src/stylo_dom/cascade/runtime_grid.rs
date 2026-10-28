@@ -277,6 +277,41 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
     viewport: CssViewport,
     style_revision: StyleRevision,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        None,
+    )
+}
+
+/// C11.4 overflow automatic minimum 고정 fixture에서만 overflow 선언을 cascade 합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let mut author_properties = runtime_block_flex_grid_track_sizing_author_properties();
+    author_properties.extend(["overflow-x", "overflow-y"]);
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        Some(&author_properties),
+    )
+}
+
+fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+    author_properties_override: Option<&[&str]>,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
     let profile_view = {
         let _preferences = enable_orthogonal_writing_mode_preferences();
         for source in author_stylesheets
@@ -304,7 +339,8 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         let profile_view = view
             .rebuilt_with_current_stylo_preferences()
             .map_err(CssCascadeError::OrthogonalWritingModeViewRebuild)?;
-        let allowed = runtime_block_flex_grid_track_sizing_author_properties();
+        let default_allowed = runtime_block_flex_grid_track_sizing_author_properties();
+        let allowed = author_properties_override.unwrap_or(&default_allowed);
         if let Some((node, property)) =
             super::runtime_layout::first_unsupported_inline_property(&profile_view, |property| {
                 allowed.contains(&property)
@@ -323,14 +359,26 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         }
         profile_view
     };
-    compute_cascade(
-        &profile_view,
-        author_stylesheets,
-        viewport,
-        style_revision,
-        &runtime_block_flex_grid_track_sizing_properties(),
-        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
-    )
+    if let Some(author_properties) = author_properties_override {
+        super::compute_cascade_with_author_properties_override(
+            &profile_view,
+            author_stylesheets,
+            viewport,
+            style_revision,
+            &runtime_block_flex_grid_track_sizing_properties(),
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+            Some(author_properties),
+        )
+    } else {
+        compute_cascade(
+            &profile_view,
+            author_stylesheets,
+            viewport,
+            style_revision,
+            &runtime_block_flex_grid_track_sizing_properties(),
+            ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+        )
+    }
 }
 
 /// C11.1 inline Grid cascade 밖 선언을 찾습니다.
@@ -399,6 +447,18 @@ pub fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
             )
             .then_some((node, "text-orientation".to_owned()))
         })
+    })
+}
+
+/// C11.4 overflow automatic minimum fixture route의 inline 선언을 제한합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    let mut allowed = runtime_block_flex_grid_track_sizing_author_properties();
+    allowed.extend(["overflow-x", "overflow-y"]);
+    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+        allowed.contains(&property)
     })
 }
 
