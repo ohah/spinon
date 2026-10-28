@@ -1,0 +1,51 @@
+ios-simulator C11.4 scene 1/1: fit-content-spanning-wpt passed
+{
+  "evidenceDirectory": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126",
+  "target": "ios-simulator",
+  "observations": [
+    {
+      "sceneId": "fit-content-spanning-wpt",
+      "summary": "2026-10-29 03:35:08.073952+0900  localhost SpinonBootstrap[16403]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261028T183506443Z-c6b59126-0 scene_id=fit-content-spanning-wpt expected_root_frame=width=60,height=300 expected_item_frame=width=60,height=80 status=0 layout=ready boxes=3 generation=1 document_revision=15 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;1:node=2,x=0,y=0,width=60,height=80;2:node=3,x=0,y=0,width=60,height=200]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 300
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 80
+        },
+        {
+          "order": 2,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 200
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 40,
+          "collapsed": false
+        },
+        {
+          "baseSize": 40,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

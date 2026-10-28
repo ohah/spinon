@@ -1,0 +1,3 @@
+default=c04-runtime-gpu marker scan: 0 matches (negative control passed)
+fixture-test=c04-runtime-gpu-fixture-test marker scan: 16 matches (positive control passed)
+scope=macOS ARM64 spinon-ffi release static archive; APK/IPA whole-artifact exclusion not tested

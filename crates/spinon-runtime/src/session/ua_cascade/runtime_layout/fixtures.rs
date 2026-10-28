@@ -48,6 +48,10 @@ mod c11_4_fit_content_min_height;
 mod c11_4_fit_content_auto_min_floor;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_fit_content_spanning.rs"]
+mod c11_4_fit_content_spanning;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_grid_layout_auto_tracks.rs"]
 mod c11_4_grid_layout_auto_tracks;
 
@@ -167,6 +171,13 @@ pub(super) use c11_4_fit_content_auto_min_floor::{
     observation as c11_4_fit_content_auto_min_floor_observation,
     prepare as prepare_c11_4_fit_content_auto_min_floor,
     validate_output as validate_c11_4_fit_content_auto_min_floor_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_fit_content_spanning::{
+    observation as c11_4_fit_content_spanning_observation,
+    prepare as prepare_c11_4_fit_content_spanning,
+    validate_output as validate_c11_4_fit_content_spanning_output,
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

@@ -69,6 +69,11 @@ mod fit_content_min_height;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/fit_content_min_height_report.rs"]
 mod fit_content_min_height_report;
+#[path = "c11_4/fit_content_spanning.rs"]
+mod fit_content_spanning;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/fit_content_spanning_report.rs"]
+mod fit_content_spanning_report;
 #[path = "c11_4/fixed_repeat_auto_repeat.rs"]
 mod fixed_repeat_auto_repeat;
 #[path = "c11_4/fixed_repeat_minmax_flex.rs"]
@@ -1197,6 +1202,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = fit_content_auto_min_floor::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
+    if let Some(source) = fit_content_spanning::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {

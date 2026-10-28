@@ -36,6 +36,10 @@ mod nested_grid_text_multispan;
 mod nested_grid_replaced_item;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/fit_content_spanning.rs"]
+mod fit_content_spanning;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/nested_grid_rows.rs"]
 mod nested_grid_rows;
 

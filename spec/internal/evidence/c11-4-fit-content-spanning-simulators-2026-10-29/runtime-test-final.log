@@ -1,0 +1,23 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.17s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 5 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_fit_content_spanning::validation::tests::accepts_only_the_pinned_fit_content_span_grid_input ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_fit_content_spanning::validation::tests::validates_a_span_two_contribution_and_two_capped_tracks ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::fit_content_spanning::c114_fit_content_spanning_rejects_a_mutated_row_span ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::fit_content_spanning::c114_fit_content_span_two_caps_rows_and_keeps_child_overflow_visible ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::fit_content_spanning::c114_fit_content_spanning_rejects_scene_mutations ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 294 filtered out; finished in 0.02s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
