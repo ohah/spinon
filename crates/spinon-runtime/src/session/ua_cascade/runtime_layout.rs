@@ -129,6 +129,8 @@ pub struct RuntimeC11_4FitContentMinHeightObservation {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeC11_4FitContentPercentageArgumentObservation {
+    pub scene_id: &'static str,
+    pub css_math: Arc<[spinon_layout::LayoutCssMathValue]>,
     pub style_snapshot: ComputedStyleSnapshot,
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
@@ -679,7 +681,7 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    let c11_4_fit_content_percentage_argument_node_ids = if profile
+    let c11_4_fit_content_percentage_argument_target = if profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && c11_4_auto_minmax_span_overflow_input.is_none()
     {
@@ -971,12 +973,14 @@ where
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let fit_content_percentage_argument_observation =
-        if let Some(node_ids) = c11_4_fit_content_percentage_argument_node_ids {
+        if let Some((node_ids, scene_id)) = c11_4_fit_content_percentage_argument_target {
             Some(fixtures::c11_4_fit_content_percentage_argument_observation(
                 root,
                 &output.computed_styles,
                 &output.grid_container_inputs,
+                &output.css_math,
                 node_ids,
+                scene_id,
             )?)
         } else {
             None
@@ -1211,7 +1215,7 @@ where
         fixtures::validate_c11_4_fit_content_min_height_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-    if c11_4_fit_content_percentage_argument_node_ids.is_some() {
+    if c11_4_fit_content_percentage_argument_target.is_some() {
         fixtures::validate_c11_4_fit_content_percentage_argument_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

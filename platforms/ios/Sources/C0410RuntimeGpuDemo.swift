@@ -561,7 +561,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt", "fit-content-min-height-wpt",
-    "fit-content-percentage-row-wpt",
+    "fit-content-percentage-row-wpt", "fit-content-calc-percentage-row-wpt",
     C114FitContentImplicitColumnWpt.sceneID,
     "fit-content-spanning-wpt",
     "fit-content-auto-min-floor-wpt", "fit-content-auto-min-floor-zero-control",
@@ -1493,7 +1493,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=300" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=300" }
-    if sceneID == "fit-content-percentage-row-wpt" { return "width=60,height=300" }
+    if c114IsFitContentPercentageArgumentScene(sceneID) { return "width=60,height=300" }
     if sceneID == "fit-content-spanning-wpt" { return "width=60,height=300" }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return "width=60,height=300" }
@@ -1818,7 +1818,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=10" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=10" }
-    if sceneID == "fit-content-percentage-row-wpt" { return "width=60,height=150" }
+    if c114IsFitContentPercentageArgumentScene(sceneID) {
+        return "width=60,height=\(sceneID == "fit-content-calc-percentage-row-wpt" ? 35 : 150)"
+    }
     if sceneID == "fit-content-spanning-wpt" { return "width=60,height=80" }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return "width=60,height=10" }
@@ -3580,7 +3582,9 @@ private func c114FitContentMinHeightMatches(_ sceneID: String, report: String) -
 }
 
 private func c114FitContentPercentageArgumentMatches(_ sceneID: String, report: String) -> Bool {
-    guard sceneID == "fit-content-percentage-row-wpt" else { return true }
+    guard c114IsFitContentPercentageArgumentScene(sceneID) else { return true }
+    let calcArgument = sceneID == "fit-content-calc-percentage-row-wpt"
+    let expectedRowSize = calcArgument ? 35.0 : 150.0
     guard let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
           let source = revision["source"] as? String,
@@ -3615,12 +3619,17 @@ private func c114FitContentPercentageArgumentMatches(_ sceneID: String, report: 
           properties["height"] as? String == "LengthPx(300.0)",
           properties["gridTemplateColumns"] as? String == "60px",
           properties["gridTemplateRows"] as? String == "none",
-          properties["gridAutoRows"] as? String == "fit-content(50%)",
+          properties["gridAutoRows"] as? String == (calcArgument
+              ? "fit-content(calc(10% + 5px))" : "fit-content(50%)"),
           properties["alignContent"] as? String == "normal",
           let input = observation["layoutInputGridContainer"] as? [String: Any],
           input["columns"] as? String == "[LengthPx(60.0)]",
           input["explicitRows"] as? String == "[]",
-          input["autoRows"] as? String == "TrackList([FitContent(Percentage(0.5))])",
+          let autoRows = input["autoRows"] as? String,
+          (calcArgument
+              ? autoRows.hasPrefix("TrackList([FitContent(Calc(LayoutCalcId(")
+                  && autoRows.hasSuffix("))])")
+              : autoRows == "TrackList([FitContent(Percentage(0.5))])"),
           input["autoFlow"] as? String == "Row",
           input["placementMode"] as? String == "TrackSizing",
           let nodeIDs = observation["nodeIds"] as? [String: Any],
@@ -3634,11 +3643,14 @@ private func c114FitContentPercentageArgumentMatches(_ sceneID: String, report: 
           let frames = observation["framesCssPx"] as? [String: Any],
           frames.count == 3,
           c114FitContentFrameMatches(frames["root"], x: 0, y: 0, width: 60, height: 300),
-          c114FitContentFrameMatches(frames["item"], x: 0, y: 0, width: 60, height: 150),
+          c114FitContentFrameMatches(frames["item"], x: 0, y: 0, width: 60, height: expectedRowSize),
           c114FitContentFrameMatches(frames["child"], x: 0, y: 0, width: 30, height: 400),
           let rowStages = observation["rowSizingStages"] as? [[String: Any]] else {
         return false
     }
+    guard c114FitContentPercentageArgumentMathMatches(
+        observation, input: input, root: root.int64Value, calcArgument: calcArgument
+    ) else { return false }
     let expectedStages = [
         "Initialize",
         "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
@@ -3647,7 +3659,7 @@ private func c114FitContentPercentageArgumentMatches(_ sceneID: String, report: 
         "ExpandFlexibleTracks",
         "StretchAutoTracks { applied: true }",
     ]
-    let expectedBases: [Double] = [0, 0, 0, 150, 150, 150]
+    let expectedBases: [Double] = [0, 0, 0, expectedRowSize, expectedRowSize, expectedRowSize]
     guard rowStages.count == expectedStages.count else { return false }
     for index in expectedStages.indices {
         guard rowStages[index]["stage"] as? String == expectedStages[index],
@@ -3658,6 +3670,32 @@ private func c114FitContentPercentageArgumentMatches(_ sceneID: String, report: 
         }
     }
     return true
+}
+
+private func c114FitContentPercentageArgumentMathMatches(
+    _ observation: [String: Any], input: [String: Any], root: Int64, calcArgument: Bool
+) -> Bool {
+    guard let registry = observation["layoutCssMathRegistry"] as? [[String: Any]] else {
+        return false
+    }
+    if !calcArgument { return registry.isEmpty }
+    guard registry.count == 1,
+          let autoRows = input["autoRows"] as? String,
+          let value = registry.first,
+          let calcID = value["id"] as? NSNumber,
+          let node = value["node"] as? NSNumber else {
+        return false
+    }
+    return autoRows.contains("LayoutCalcId(\(calcID.intValue))")
+        && calcID.int64Value >= 0
+        && node.int64Value == root
+        && value["property"] as? String == "GridTemplateRows"
+        && value["expression"] as? String == "Sum([Percentage(0.1), LengthPx(5.0)])"
+}
+
+private func c114IsFitContentPercentageArgumentScene(_ sceneID: String) -> Bool {
+    sceneID == "fit-content-percentage-row-wpt"
+        || sceneID == "fit-content-calc-percentage-row-wpt"
 }
 
 private func c114FitContentSpanningMatches(_ sceneID: String, report: String) -> Bool {
@@ -5968,9 +6006,9 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=60,height=10;"
             + "2:node=3,x=0,y=0,width=60,height=10]"
     }
-    if sceneID == "fit-content-percentage-row-wpt" {
+    if c114IsFitContentPercentageArgumentScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
-            + "1:node=2,x=0,y=0,width=60,height=150;"
+            + "1:node=2,x=0,y=0,width=60,height=\(sceneID == "fit-content-calc-percentage-row-wpt" ? 35 : 150);"
             + "2:node=3,x=0,y=0,width=30,height=400]"
     }
     if sceneID == "fit-content-spanning-wpt" {
@@ -7601,7 +7639,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "fit-content-auto-neighbor-wpt"
         || sceneID == "grid-layout-auto-tracks-c114-wpt" { return 5 }
     if sceneID == "fit-content-min-height-wpt" { return 3 }
-    if sceneID == "fit-content-percentage-row-wpt" { return 3 }
+    if c114IsFitContentPercentageArgumentScene(sceneID) { return 3 }
     if sceneID == "fit-content-spanning-wpt" { return 3 }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return 5 }
@@ -8602,18 +8640,22 @@ private struct C111MetalPixelRun {
                 }
             }
         }
-        if sceneID == "fit-content-percentage-row-wpt" {
-            let rootID = "c114-fit-content-percentage-grid"
-            let itemID = "c114-fit-content-percentage-item"
-            let childID = "c114-fit-content-percentage-child"
+        if c114IsFitContentPercentageArgumentScene(sceneID) {
+            let calcArgument = sceneID == "fit-content-calc-percentage-row-wpt"
+            let prefix = calcArgument ? "fit-content-calc-percentage" : "fit-content-percentage"
+            let nodePrefix = calcArgument ? "c114-fit-content-calc-percentage" : "c114-fit-content-percentage"
+            let rootID = "\(nodePrefix)-grid"
+            let itemID = "\(nodePrefix)-item"
+            let childID = "\(nodePrefix)-child"
+            let rowSampleY: UInt32 = calcArgument ? 34 : 149
             let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
-                ("fit-content-percentage-child-in-row", childID, 15, 149,
+                ("\(prefix)-child-in-row", childID, 15, rowSampleY,
                  [255, 209, 102, 255]),
-                ("fit-content-percentage-item-in-row", itemID, 45, 149,
+                ("\(prefix)-item-in-row", itemID, 45, rowSampleY,
                  [229, 72, 77, 255]),
-                ("fit-content-percentage-root-below-row", rootID, 45, 200,
+                ("\(prefix)-root-below-row", rootID, 45, 200,
                  [23, 33, 43, 255]),
-                ("fit-content-percentage-child-outside-root", childID, 15, 350,
+                ("\(prefix)-child-outside-root", childID, 15, 350,
                  [255, 209, 102, 255]),
             ]
             guard samples.count == expectedSamples.count else { return false }
@@ -9489,7 +9531,7 @@ private struct C111MetalPixelRun {
         } ?? false
         let c114PixelViewportWidth: UInt32 = c114PixelSceneHasSurfaceSamples ? 480 : 320
         let c114PixelViewportHeight: UInt32 =
-            c114Scene == "fit-content-percentage-row-wpt" ? 400
+            c114IsFitContentPercentageArgumentScene(c114Scene ?? "") ? 400
                 : C114FitContentImplicitColumnWpt.isScene(c114Scene ?? "") ? 320 : 240
         guard (8...128).contains(runID.count),
               runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }),
@@ -10493,7 +10535,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c114GridTrackSizingProbeRequested
-            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
+            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -10848,7 +10890,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             equalToConstant: c114GridTrackSizingProbeRequested
                 && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
                 : c114GridTrackSizingProbeRequested
-                && c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400
+                && c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400
                 : c114OverflowPixelReadbackViewportWidth > 320 ? 240
                 : imagePaintProbeRequested
                 ? imageAsyncReplacementProbeRequested ? 88
@@ -12631,7 +12673,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c114GridTrackSizingProbeRequested
                 && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
             : c114GridTrackSizingProbeRequested
-                && c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400
+                && c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400
             : c125StickyFixtureRequested ? 260 : c131StackingDescendantClipProbeRequested
             ? 128 : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
@@ -14242,7 +14284,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
         }
         if c114GridTrackSizingProbeRequested,
-           c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" {
+           c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) {
             let environmentReport = report ?? ""
             guard c114FitContentPercentageArgumentMatches(
                     c114GridTrackSizingSceneID, report: environmentReport),
@@ -15490,7 +15532,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let viewportHeight = viewportHeightCssPx
             stateLock.unlock()
             let expectedViewportHeight: Float =
-                pixelRun.sceneID == "fit-content-percentage-row-wpt" ? 400
+                c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
                     : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
             guard viewportWidth == expectedViewportWidth,
                   viewportHeight == expectedViewportHeight,
@@ -15773,7 +15815,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             }
         }
         if c114GridTrackSizingProbeRequested,
-           c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" {
+           c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) {
             let actualIdentity = result.flatMap {
                 c114FitContentMinHeightPresentationIdentity(
                     $0, drawReport: true, expectedViewport: "320x400"
@@ -16872,7 +16914,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             sceneID: run.sceneID
         ) == nil ? 320 : 480
         let expectedViewportHeight: UInt32 =
-            run.sceneID == "fit-content-percentage-row-wpt" ? 400
+            c114IsFitContentPercentageArgumentScene(run.sceneID) ? 400
                 : C114FitContentImplicitColumnWpt.isScene(run.sceneID) ? 320 : 240
         let viewport = (width: expectedViewportWidth, height: expectedViewportHeight)
         stateLock.lock()

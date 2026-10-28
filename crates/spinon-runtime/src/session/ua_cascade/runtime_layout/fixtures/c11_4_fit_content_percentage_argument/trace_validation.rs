@@ -9,6 +9,7 @@ use super::RuntimeLayoutFailure;
 pub(super) fn validate_rows_pass(
     pass: &LayoutGridTrackSizingPassTrace,
     item: NodeId,
+    expected_row_size: f32,
 ) -> Result<(), RuntimeLayoutFailure> {
     let expected_stages = [
         (LayoutGridTrackSizingStageKind::Initialize, 0.0),
@@ -20,11 +21,17 @@ pub(super) fn validate_rows_pass(
             0.0,
         ),
         (LayoutGridTrackSizingStageKind::IntrinsicSizingComplete, 0.0),
-        (LayoutGridTrackSizingStageKind::MaximizeTracks, 150.0),
-        (LayoutGridTrackSizingStageKind::ExpandFlexibleTracks, 150.0),
+        (
+            LayoutGridTrackSizingStageKind::MaximizeTracks,
+            expected_row_size,
+        ),
+        (
+            LayoutGridTrackSizingStageKind::ExpandFlexibleTracks,
+            expected_row_size,
+        ),
         (
             LayoutGridTrackSizingStageKind::StretchAutoTracks { applied: true },
-            150.0,
+            expected_row_size,
         ),
     ];
     if pass.sequence != 1 || pass.stages.len() != expected_stages.len() {

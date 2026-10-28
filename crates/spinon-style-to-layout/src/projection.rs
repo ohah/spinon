@@ -59,6 +59,9 @@ pub struct StyleLayoutOutput {
     /// C11.4 fixture에서 Taffy에 전달한 실제 typed Grid container 입력입니다.
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub grid_container_inputs: BTreeMap<NodeId, GridContainerInput>,
+    /// C11.4 fixture에서 calc ID와 node/property가 결합된 실제 layout registry입니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub css_math: Vec<spinon_layout::LayoutCssMathValue>,
 }
 
 /// C11.1 inline CSS preflight, Stylo cascade, typed Grid projection과 Taffy layout을 연결합니다.
@@ -1418,6 +1421,8 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         .into_iter()
         .filter(|(node, _)| layout_node_ids.contains(node))
         .collect();
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let css_math = projected.css_math.clone();
     input = input
         .with_css_math(projected.css_math)
         .with_positioning(positioning)
@@ -1485,6 +1490,8 @@ fn compute_layout_from_styles_with_text_and_grid_options(
         layout,
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         grid_container_inputs,
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        css_math,
     })
 }
 
