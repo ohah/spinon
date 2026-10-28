@@ -1,0 +1,74 @@
+{
+  "schema": "spinon-c114-fit-content-calc-argument-precomparison-v1",
+  "source": {
+    "url": "https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "pinnedSha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "liveUrl": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "targetElement": "calculatedArgument",
+    "targetAssertion": "A calc() fit-content() argument resolves against the grid container's definite height",
+    "pinnedLines": {
+      "targetMarkup": 52,
+      "assertion": 111
+    }
+  },
+  "browser": {
+    "tool": "agent-browser",
+    "version": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    },
+    "devicePixelRatio": 1,
+    "upstreamHarness": {
+      "status": "OK",
+      "tests": 13,
+      "passed": 13
+    },
+    "targetObservation": {
+      "rootCssWidth": "1264px",
+      "rootCssHeight": "300px",
+      "gridTemplateRows": "35px",
+      "gridAutoRows": "fit-content(calc(10% + 5px))",
+      "itemCssHeight": "35px",
+      "itemMinHeight": "0px",
+      "itemOverflow": "visible",
+      "childCssHeight": "400px"
+    },
+    "interpretation": "upstream Chrome baseline only; not a Spinon WPT result"
+  },
+  "independentExpectation": {
+    "specification": "CSS Grid 2025 CRD §§7.2.1, 11.2, 6.6",
+    "basisAxis": "definite inner block size",
+    "basisCssPx": 300,
+    "calcTerms": {
+      "percentage": 0.1,
+      "resolvedPercentageCssPx": 30,
+      "absoluteLengthCssPx": 5
+    },
+    "fitContentLimitCssPx": 35,
+    "automaticMinimumCssPx": 0,
+    "maxContentContributionCssPx": 400,
+    "expectedRowsCssPx": [35],
+    "normalizedRuntimeFramesCssPx": {
+      "root": [0, 0, 60, 300],
+      "item": [0, 0, 60, 35],
+      "child": [0, 0, 30, 400]
+    },
+    "surfaceSamples": [
+      {"name": "row-child", "rootRelativeCssPx": [15.5, 34.5], "expected": "child background"},
+      {"name": "row-item", "rootRelativeCssPx": [45.5, 34.5], "expected": "item background"},
+      {"name": "root-below-track", "rootRelativeCssPx": [45.5, 200.5], "expected": "root background"},
+      {"name": "overflow-beyond-root", "rootRelativeCssPx": [15.5, 350.5], "expected": "child background"}
+    ]
+  },
+  "screenshot": {
+    "path": "../c11-4-fit-content-percentage-argument-precomparison-2026-10-29/wpt-fit-content-percentage-argument.png",
+    "width": 1280,
+    "height": 5266,
+    "sha256": "a7eaaf9fd1d68755272c044c519d277546ec6e070861c0cf663dfa3698c77849",
+    "note": "identical full-page capture reused to avoid storing a duplicate"
+  }
+}
