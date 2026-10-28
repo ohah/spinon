@@ -64,6 +64,10 @@ Definite target axis에서 flexible tracks에 남는 크기는 `300 - 40 - 2×10
 
 Focused Rust tests, `cargo fmt --all -- --check`, 영향받은 fixture FFI와 library Clippy, 기본/opt-in macOS ARM64 release static archive 경계 검사가 통과했다. `spinon-runtime`/`spinon-style-to-render --all-targets` Clippy는 변경하지 않은 `generic_direct_text_image/fixture.rs:311`의 기존 `clippy::map_identity`에서 실패했다. GitHub PR check rollup은 비어 있었다. 계획 밖의 실기기, hardware GPU, 일반 CSS admission, edge overflow/clipping, 전체 WPT와 iOS compositor-after pixels는 확인하지 않았다. C11.4 상위 checkbox는 미완료이며 공식 `72/213`을 유지한다. 구현과 PR diff의 별도 실패 검토는 [20관점](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-implementation-runtime-review-20.md) 및 [30관점](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-pr-diff-review-30.md)에 있다.
 
+### 병합 후 source tracking 복구
+
+PR #738 merge tree에는 부모가 `#[path]`로 참조하는 `visibility_hidden.rs`가 빠져 있었다. 당시 로컬의 동일 파일이 미추적 상태로 남아 fixture test와 simulator 빌드에 사용됐다. 후속 PR [#743](https://github.com/ohah/spinon/pull/743)은 이 파일 내용을 변경하지 않고 Git에 추가했으며, 2026-10-28T06:50:44Z에 Rebase and merge됐다(SHA `925113bde86055362c89fa32d505690044a26313`). 병합된 `main`의 focused C11.4 test는 1/1 통과했고 누락 복구 근거는 [별도 기록](../spec/internal/evidence/c11-4-pr738-runtime-source-fix-2026-10-28/README.md)에 있다. 전체 workspace all-target Clippy에서는 기존 FFI 테스트 initializer 누락 필드와 `clippy::map_identity`가 남아 있다. 이 수정은 runtime behavior와 공식 C11.4 상태 또는 `72/213`을 바꾸지 않는다.
+
 ## 제외
 
 Visibility inheritance, hidden ancestor와 visible descendant, `visibility:collapse`, animation/mutation, arbitrary item tree, 일반 CSS/Grid 지원, 전체 WPT, product support 선언, 실기기/hardware GPU, iOS compositor-after pixels, 전역 renderer parity와 전체 C11.4는 범위 밖이다.
