@@ -1,0 +1,9 @@
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 5.93s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-e07437e2bc2f8257)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::fit_content_implicit_column::tests::exposes_only_the_pinned_implicit_fit_content_column_scene ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 157 filtered out; finished in 0.01s

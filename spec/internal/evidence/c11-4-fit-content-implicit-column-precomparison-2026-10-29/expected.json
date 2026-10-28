@@ -57,6 +57,7 @@
     "childOverflowPastRootInlineCssPx": 160
   },
   "stageExpectations": {
+    "provenance": "Post-implementation Taffy internal trace regression baseline; not a normative or Chrome oracle",
     "columnsBaseSizesCssPx": [
       [60, 0],
       [60, 0],
@@ -67,11 +68,31 @@
     ],
     "rowsBaseSizesCssPx": [
       [0],
-      [0],
       [10],
       [10],
       [10],
       [10]
+    ],
+    "stretchAutoTracksApplied": {
+      "columns": false,
+      "rows": true
+    },
+    "rowContributions": [
+      {
+        "kind": "Minimum",
+        "valueCssPx": 10,
+        "minimumSource": "AutomaticMinimum"
+      },
+      {
+        "kind": "MinContent",
+        "valueCssPx": 10,
+        "minimumSource": null
+      },
+      {
+        "kind": "MaxContent",
+        "valueCssPx": 10,
+        "minimumSource": null
+      }
     ],
     "stageOrder": [
       "Initialize",

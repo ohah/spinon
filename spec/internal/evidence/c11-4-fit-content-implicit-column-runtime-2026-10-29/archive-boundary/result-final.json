@@ -1,0 +1,51 @@
+{
+  "sourceBaseRevision": "7855af31ce0b054280f6ec7d274da4b9811905d7",
+  "worktreeHasUncommittedChanges": true,
+  "markers": [
+    "fit-content-implicit-column-wpt",
+    "c114-fit-content-implicit-column-grid",
+    "c114_fit_content_implicit_column",
+    "fit_content_implicit_column"
+  ],
+  "product": {
+    "command": "mise exec -- cargo build --locked --release -p spinon-ffi --no-default-features --features c04-runtime-gpu",
+    "bytes": 75141680,
+    "sha256": "d71a07da2d7315dbfd68d368976310843700c40457234cf23011c51e4e17dc7a",
+    "markerCounts": {
+      "fit-content-implicit-column-wpt": 0,
+      "c114-fit-content-implicit-column-grid": 0,
+      "c114_fit_content_implicit_column": 0,
+      "fit_content_implicit_column": 0
+    },
+    "buildLog": "product-build.log"
+  },
+  "fixtureTest": {
+    "command": "mise exec -- cargo build --locked --release -p spinon-ffi --no-default-features --features c04-runtime-gpu-fixture-test",
+    "bytes": 80072120,
+    "sha256": "d12241060cf6af343e25b69f3381a619857f19cb8a1d247de955c24e01f40395",
+    "markerCounts": {
+      "fit-content-implicit-column-wpt": 4,
+      "c114-fit-content-implicit-column-grid": 4,
+      "c114_fit_content_implicit_column": 2,
+      "fit_content_implicit_column": 35
+    },
+    "buildLog": "fixture-build.log"
+  },
+  "selectedRuntimeSourceSha256": {
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "59dba5e94a6c5fa027f444630586b107d7275a4aae7badd22a5209ce48d33391",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "5623113db117c7c2e2c3c0d73ac10209038e63836ee07de738a9581464c7d51a",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_implicit_column.rs": "444494ecafb83ea10f0256e05175812a2d5124d1e39b7cac7caf6094dae09caa",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_implicit_column/trace_validation.rs": "edf4d6465c692e827556ca59b57939ca945366001a4224838daec86364b98c50",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_implicit_column/tests.rs": "0207549cc6248e656adba1bf8be057434fd446fb0e6eb95a5298cff617f5846b",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "3b4c6c229b1a9f35d17ed0d1288edad1260e741a148ffbdec0e0898ab5e8d1d3",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "7c42afa056feab82c0a6d47a671f7f0a618e7bee1e6ceda48b6d461fe6532887",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_implicit_column.rs": "96de1e3c3071b20190cbc8c12d7b237b33f218e00cba3a2a4425ab1ffe50dd47",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_implicit_column_report.rs": "22a8770b39054004442e98ab4b76780b02a57d935e0d92fbc6028c91b4481fcc",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "574273ebf62f27bd67c16b771027f4044527ca1b92614fc53cd85bf4adf33798",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FitContentImplicitColumnWpt.java": "69e308ea87cbca56c0cc9dc13facc1cf497494a456a06f0bdebd195cbc96c86b",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "f6ddcba2003a62bd2c944d48c566faed314fd51df908a69e8d002b32ae3f2e97",
+    "platforms/ios/Sources/C114FitContentImplicitColumnWpt.swift": "5ba1658af733c132c1d50140338004b9414a78ba77e33d22968236a7656cfbf6",
+    "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "ca6f4445bf27cb17f0af9cf78ac261b766627461f246d66e6a0b7284745ec8e3"
+  },
+  "scope": "Mac arm64 static FFI archive only; no APK or IPA exclusion claim"
+}

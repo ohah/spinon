@@ -1,0 +1,124 @@
+{
+  "date": "2026-10-29",
+  "sourceBaseRevision": "7855af31ce0b054280f6ec7d274da4b9811905d7",
+  "branch": "feat/c11-4-fit-content-implicit-column-runtime-20261029",
+  "pinnedWpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "assertion": "A fit-content() column's growth limit is clamped by its argument"
+  },
+  "scene": {
+    "id": "fit-content-implicit-column-wpt",
+    "rootCssPx": [
+      300,
+      300
+    ],
+    "viewportCssPx": [
+      480,
+      320
+    ],
+    "expectedColumnsCssPx": [
+      60,
+      40
+    ],
+    "expectedRowsCssPx": [
+      10
+    ],
+    "frames": {
+      "root": [
+        0,
+        0,
+        300,
+        300
+      ],
+      "item": [
+        60,
+        0,
+        40,
+        10
+      ],
+      "child": [
+        60,
+        0,
+        400,
+        10
+      ]
+    },
+    "childOverflowPastItemInlineCssPx": 360,
+    "childOverflowPastRootInlineCssPx": 160
+  },
+  "android": {
+    "runId": "c114-implicit-col-android-20261029k",
+    "device": "emulator-5554",
+    "model": "sdk_gphone16k_arm64",
+    "api": 37,
+    "abi": "arm64-v8a",
+    "status": "PASS",
+    "sceneCount": "1/1",
+    "presentationIdentity": "300x300/480x320/1/15/2/0/1",
+    "pixelCopySamples": "4/4 exact RGBA",
+    "viewportCssPx": [
+      480,
+      320
+    ],
+    "pixelCopyPngSha256": "2bb8d4fdc9cd091e74cb993d328507f0f11f0cab317a8bbda9652b1c557dae7b",
+    "screenPngSha256": "4006e5f96ba09f9d640348610f1927fbb158a5b7d106f99ffd590ca306a0009a",
+    "apkSha256": "8cc35372ddb0c5ed7b1966c0f4a139912a17d9d27d4d37743b79aa9d08524ad2",
+    "buildLog": "android/build-final.log",
+    "runtimeLog": "android/logcat-final.log"
+  },
+  "ios": {
+    "runId": "c114-implicit-col-ios-20261029e",
+    "deviceName": "Spinon-C114-Cyclic-Image-Span",
+    "deviceType": "iPhone 17 Pro",
+    "udid": "00D4D861-56AA-4552-9181-58D88770EDDA",
+    "runtime": "iOS 26.2",
+    "status": "PASS",
+    "sceneCount": "1/1",
+    "presentationIdentity": "300x300/480x320/1/15/2/0/1",
+    "metalSamples": "4/4 exact RGBA before OS compositor",
+    "drawablePx": [
+      1440,
+      960
+    ],
+    "drawableScale": [
+      3,
+      3
+    ],
+    "viewportCssPx": [
+      480,
+      320
+    ],
+    "screenPngSha256": "2824d116615c6918981f36a48eb22210487e89c38aa41b019b67eb8d8a21600c",
+    "appExecutableSha256": "28babcca2ef9187b3aaee2670f3e6113935296cc29d0a7f7d4e7990daa1c6614",
+    "buildLog": "ios/build-final.log",
+    "runtimeLog": "ios/logs-final.log"
+  },
+  "rust": {
+    "runtimeFocusedTests": "3 passed",
+    "ffiAllowlistTest": "1 passed",
+    "fmt": "pass",
+    "workspaceClippyFixtureFeature": "pass",
+    "testLogs": [
+      "checks/runtime-tests-final.log",
+      "checks/ffi-tests-route-final.log"
+    ],
+    "otherLogs": [
+      "checks/fmt-final.log",
+      "checks/clippy-fixture-final.log"
+    ]
+  },
+  "artifactBoundary": "archive-boundary/result-final.json",
+  "officialStatus": {
+    "c11_4": "incomplete",
+    "completed": "72/213"
+  },
+  "limits": [
+    "no general author CSS admission",
+    "not a Spinon WPT harness result",
+    "no physical-device or Android hardware GPU test",
+    "iOS Metal samples are before OS compositor",
+    "full C11.4 remains incomplete"
+  ]
+}

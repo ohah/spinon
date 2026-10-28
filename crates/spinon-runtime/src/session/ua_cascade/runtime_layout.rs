@@ -99,6 +99,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub fit_content_min_height: Option<RuntimeC11_4FitContentMinHeightObservation>,
     pub fit_content_percentage_argument:
         Option<RuntimeC11_4FitContentPercentageArgumentObservation>,
+    pub fit_content_implicit_column: Option<RuntimeC11_4FitContentImplicitColumnObservation>,
     pub fit_content_auto_min_floor: Option<RuntimeC11_4FitContentAutoMinFloorObservation>,
     pub fit_content_spanning: Option<RuntimeC11_4FitContentSpanningObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
@@ -128,6 +129,15 @@ pub struct RuntimeC11_4FitContentMinHeightObservation {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeC11_4FitContentPercentageArgumentObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub node_ids: [spinon_core::NodeId; 3],
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4FitContentImplicitColumnObservation {
     pub style_snapshot: ComputedStyleSnapshot,
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
@@ -251,6 +261,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             fit_content_auto_neighbor: self.fit_content_auto_neighbor.clone(),
             fit_content_min_height: self.fit_content_min_height.clone(),
             fit_content_percentage_argument: self.fit_content_percentage_argument.clone(),
+            fit_content_implicit_column: self.fit_content_implicit_column.clone(),
             fit_content_auto_min_floor: self.fit_content_auto_min_floor.clone(),
             fit_content_spanning: self.fit_content_spanning.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
@@ -677,6 +688,15 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_implicit_column_node_ids = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_fit_content_implicit_column(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_fit_content_auto_min_floor_node_ids = if profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && c11_4_auto_minmax_span_overflow_input.is_none()
@@ -962,6 +982,18 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let fit_content_implicit_column_observation =
+        if let Some(node_ids) = c11_4_fit_content_implicit_column_node_ids {
+            Some(fixtures::c11_4_fit_content_implicit_column_observation(
+                root,
+                &output.computed_styles,
+                &output.grid_container_inputs,
+                node_ids,
+            )?)
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let fit_content_auto_min_floor_observation =
         if let Some((scene_id, node_ids)) = c11_4_fit_content_auto_min_floor_node_ids {
             Some(fixtures::c11_4_fit_content_auto_min_floor_observation(
@@ -1151,6 +1183,7 @@ where
                 fit_content_auto_neighbor: fit_content_auto_neighbor_observation,
                 fit_content_min_height: fit_content_min_height_observation,
                 fit_content_percentage_argument: fit_content_percentage_argument_observation,
+                fit_content_implicit_column: fit_content_implicit_column_observation,
                 fit_content_auto_min_floor: fit_content_auto_min_floor_observation,
                 fit_content_spanning: fit_content_spanning_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
@@ -1180,6 +1213,10 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_percentage_argument_node_ids.is_some() {
         fixtures::validate_c11_4_fit_content_percentage_argument_output(&completed)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_fit_content_implicit_column_node_ids.is_some() {
+        fixtures::validate_c11_4_fit_content_implicit_column_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_auto_min_floor_node_ids.is_some() {
@@ -1749,6 +1786,7 @@ mod tests {
             }),
             fit_content_min_height: None,
             fit_content_percentage_argument: None,
+            fit_content_implicit_column: None,
             fit_content_auto_min_floor: None,
             fit_content_spanning: None,
             grid_layout_auto_tracks: None,
