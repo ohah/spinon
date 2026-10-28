@@ -58,6 +58,12 @@ Definite target axis에서 flexible tracks에 남는 크기는 `300 - 40 - 2×10
 3. Implementation PR merge 후 실제 코드·검증·범위를 계획, 상위 C11.4 plan, 공개 roadmap에 반영한다. 공식 `spec/STATUS.md` C11.4 checkbox와 완료 `72/213`은 바꾸지 않는다.
 4. Tailnet roadmap을 현재 main으로 갱신한 뒤 Agent Browser로 링크와 화면을 확인하고 실행에 사용한 Agent Browser session/process를 종료한다.
 
+## 구현과 병합 결과
+
+구현 PR [#738](https://github.com/ohah/spinon/pull/738)은 2026-10-28T06:06:39Z Rebase and merge됐고 merge SHA는 `bf4ab21eebc2f3739a7ae61de6511b92733b9464`다. 계획한 네 scene ID를 기존 opt-in route에 추가해, `visibility:hidden` span이 150px min-content와 전체 layout frame을 유지하면서 paint에서 제외되는지 확인했다. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 10개 control을 포함해 각각 14/14 scene이 통과했다. Hidden/visible overlap 및 fixed-gap 표본은 PixelCopy와 Metal readback에서 exact match했고, 독립 verifier의 15개 negative control도 모두 거부됐다. 실행 manifest·screenshot·hash는 [runtime evidence](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/README.md)에 있다.
+
+Focused Rust tests, `cargo fmt --all -- --check`, 영향받은 fixture FFI와 library Clippy, 기본/opt-in macOS ARM64 release static archive 경계 검사가 통과했다. `spinon-runtime`/`spinon-style-to-render --all-targets` Clippy는 변경하지 않은 `generic_direct_text_image/fixture.rs:311`의 기존 `clippy::map_identity`에서 실패했다. GitHub PR check rollup은 비어 있었다. 계획 밖의 실기기, hardware GPU, 일반 CSS admission, edge overflow/clipping, 전체 WPT와 iOS compositor-after pixels는 확인하지 않았다. C11.4 상위 checkbox는 미완료이며 공식 `72/213`을 유지한다. 구현과 PR diff의 별도 실패 검토는 [20관점](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-implementation-runtime-review-20.md) 및 [30관점](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-pr-diff-review-30.md)에 있다.
+
 ## 제외
 
 Visibility inheritance, hidden ancestor와 visible descendant, `visibility:collapse`, animation/mutation, arbitrary item tree, 일반 CSS/Grid 지원, 전체 WPT, product support 선언, 실기기/hardware GPU, iOS compositor-after pixels, 전역 renderer parity와 전체 C11.4는 범위 밖이다.
