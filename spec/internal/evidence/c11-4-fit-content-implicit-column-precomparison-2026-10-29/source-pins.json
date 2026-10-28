@@ -1,0 +1,17 @@
+{
+  "wptRepository": "https://github.com/web-platform-tests/wpt",
+  "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+  "wptPath": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+  "wptSha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+  "sourceLines": {
+    "targetMarkup": "64-66",
+    "assertion": "122-124"
+  },
+  "liveUrl": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+  "liveFetch": {
+    "status": 200,
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "bytes": 5060
+  },
+  "observedDateKst": "2026-10-29"
+}
