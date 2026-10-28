@@ -1,0 +1,84 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "found": true,
+  "mergeSha": "bf4ab21eebc2f3739a7ae61de6511b92733b9464",
+  "officialCount": "72/213",
+  "cardVisible": true,
+  "cardBounds": {
+    "top": 316.5,
+    "bottom": 418.453125
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "cardText": "2026-10-28 C11.4 mixed-track visibility:hidden · 구현 PR #738 Rebase and merge (2026-10-28T06:06:39Z, merge SHA bf4ab21eebc2f3739a7ae61de6511b92733b9464): 네 exact opt-in scene에서 hidden direct <span>은 150px min-content와 layout frame을 유지하고 paint에서 빠진다. 기존 control을 포함해 Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 14/14 scene을 확인했다. Hidden overlap은 파란 underlying item, visible control은 보라색 span을 PixelCopy·Metal 표면에서 exact match했다. PR check rollup은 비어 있고 CI 통과로 표현하지 않는다. 이 제한 fixture는 임의 CSS admission, 전체 WPT, 실기기·hardware GPU, edge overflow/clipping 또는 iOS compositor-after pixel을 검증하지 않는다. C11.4 상위는 미완료이며 공식 72/213을 유지한다. 집중 계획 · 실행·화면·한계 · 검증 JSON · archive 경계 · 구현/runtime 검토 20개 · PR diff 검토 30개 · 병합 후 문서 검토 30개 · Android 화면 · iOS 화면 · 공식 상태.",
+  "links": [
+    {
+      "text": "PR #738 Rebase and merge",
+      "href": "https://github.com/ohah/spinon/pull/738"
+    },
+    {
+      "text": "집중 계획",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-mixed-flex-visibility-hidden.html"
+    },
+    {
+      "text": "실행·화면·한계",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/README.html"
+    },
+    {
+      "text": "검증 JSON",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/matrix-verification-visibility-hidden-2026-10-28.json"
+    },
+    {
+      "text": "archive 경계",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/artifact-boundary.html"
+    },
+    {
+      "text": "구현/runtime 검토 20개",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-implementation-runtime-review-20.html"
+    },
+    {
+      "text": "PR diff 검토 30개",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-pr-diff-review-30.html"
+    },
+    {
+      "text": "병합 후 문서 검토 30개",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/visibility-hidden-docs-sync-review-30.html"
+    },
+    {
+      "text": "Android 화면",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T055342204Z-d0ead38b/android-row-visibility-hidden.png"
+    },
+    {
+      "text": "iOS 화면",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-visibility-hidden.png"
+    },
+    {
+      "text": "공식 상태",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8"
+    }
+  ],
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "8a3835626953809a30921b54ce3f1dbedf0ee38a959c8f8d926167ecb5f2ff80"
+  },
+  "sourceHead": "23304539ac9d6fab0e79e2bb8cc1154e77cc8469",
+  "sourceSha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+  "localRouteAfter": {
+    "status": 200,
+    "bytes": 363975,
+    "sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6"
+  },
+  "tailnetRouteAfter": {
+    "status": 200,
+    "bytes": 363975,
+    "sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6"
+  },
+  "agentBrowserSessionClosed": true,
+  "agentBrowserSessionListAfterClose": [],
+  "agentBrowserProcessAbsentAfterClose": true
+}

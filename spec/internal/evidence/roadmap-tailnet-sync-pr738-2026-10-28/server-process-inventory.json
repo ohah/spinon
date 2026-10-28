@@ -1,0 +1,38 @@
+{
+  "tailscale": {
+    "BackendState": "Running",
+    "Self": {
+      "HostName": "윤형배의 Mac Studio",
+      "Online": true
+    }
+  },
+  "listeners": {
+    "8768": {
+      "exitCode": 0,
+      "stdout": "p28040\ncnode\nf12\nn127.0.0.1:8768",
+      "stderr": ""
+    },
+    "4174": {
+      "exitCode": 0,
+      "stdout": "p33319\ncnode\nf12\nn127.0.0.1:4174",
+      "stderr": ""
+    }
+  },
+  "processes": {
+    "exitCode": 0,
+    "stdout": "PID  PPID \n28040     1 /Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs\n33319     1 /Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /tmp/spinon-static-preview-server-pass04.mjs /Users/yoonhb/Library/Application Support/SpinonPreview 4174",
+    "stderr": ""
+  },
+  "targetHandles": {
+    "exitCode": 1,
+    "stdout": "",
+    "stderr": ""
+  },
+  "targetSha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+  "agentBrowserSessionsAfterClose": {
+    "success": true,
+    "data": {
+      "sessions": []
+    }
+  }
+}
