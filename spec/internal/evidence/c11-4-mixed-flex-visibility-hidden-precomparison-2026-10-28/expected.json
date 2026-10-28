@@ -1,0 +1,225 @@
+{
+  "basis": {
+    "ahem_font_size_css_px": 10,
+    "hidden_text_characters": 15,
+    "hidden_text_min_content_css_px": 150,
+    "visible_a_text_characters": 10,
+    "visible_a_min_content_css_px": 100,
+    "fixed_track_css_px": 40,
+    "two_gaps_css_px": 20,
+    "available_flexible_space_css_px": 240,
+    "initial_fr_size_css_px": "80",
+    "first_track_freezes_at_css_px": 150,
+    "remaining_2fr_size_css_px": 90
+  },
+  "scenes": {
+    "column-hidden": {
+      "axis_tracks_css_px": [
+        150,
+        40,
+        90
+      ],
+      "root": [
+        0,
+        0,
+        300,
+        120
+      ],
+      "items": {
+        "a": [
+          0,
+          0,
+          150,
+          120
+        ],
+        "hidden": [
+          0,
+          0,
+          150,
+          120
+        ],
+        "b": [
+          160,
+          0,
+          24,
+          16
+        ],
+        "c": [
+          210,
+          0,
+          90,
+          120
+        ]
+      },
+      "hidden_display": "block",
+      "hidden_visibility": "hidden",
+      "hidden_client_rect_count": 1,
+      "surface_sample_root_css_px": [
+        120,
+        60
+      ],
+      "surface_sample_rgb": [
+        40,
+        100,
+        220
+      ],
+      "surface_sample_hex": "#2864dc"
+    },
+    "column-visible-control": {
+      "axis_tracks_css_px": [
+        150,
+        40,
+        90
+      ],
+      "root": [
+        0,
+        0,
+        300,
+        120
+      ],
+      "items": {
+        "a": [
+          0,
+          0,
+          150,
+          120
+        ],
+        "hidden": [
+          0,
+          0,
+          150,
+          120
+        ],
+        "b": [
+          160,
+          0,
+          24,
+          16
+        ],
+        "c": [
+          210,
+          0,
+          90,
+          120
+        ]
+      },
+      "hidden_display": "block",
+      "hidden_visibility": "visible",
+      "hidden_client_rect_count": 1,
+      "surface_sample_root_css_px": [
+        120,
+        60
+      ],
+      "surface_sample_rgb": [
+        142,
+        68,
+        173
+      ],
+      "surface_sample_hex": "#8e44ad"
+    },
+    "row-hidden": {
+      "axis_tracks_css_px": [
+        150,
+        40,
+        90
+      ],
+      "root": [
+        0,
+        0,
+        120,
+        300
+      ],
+      "items": {
+        "a": [
+          0,
+          0,
+          120,
+          150
+        ],
+        "hidden": [
+          0,
+          0,
+          120,
+          150
+        ],
+        "b": [
+          0,
+          160,
+          24,
+          16
+        ],
+        "c": [
+          0,
+          210,
+          120,
+          90
+        ]
+      },
+      "hidden_display": "block",
+      "hidden_visibility": "hidden",
+      "hidden_client_rect_count": 1,
+      "surface_sample_root_css_px": [
+        60,
+        125
+      ],
+      "surface_sample_rgb": [
+        40,
+        100,
+        220
+      ],
+      "surface_sample_hex": "#2864dc"
+    },
+    "row-visible-control": {
+      "axis_tracks_css_px": [
+        150,
+        40,
+        90
+      ],
+      "root": [
+        0,
+        0,
+        120,
+        300
+      ],
+      "items": {
+        "a": [
+          0,
+          0,
+          120,
+          150
+        ],
+        "hidden": [
+          0,
+          0,
+          120,
+          150
+        ],
+        "b": [
+          0,
+          160,
+          24,
+          16
+        ],
+        "c": [
+          0,
+          210,
+          120,
+          90
+        ]
+      },
+      "hidden_display": "block",
+      "hidden_visibility": "visible",
+      "hidden_client_rect_count": 1,
+      "surface_sample_root_css_px": [
+        60,
+        125
+      ],
+      "surface_sample_rgb": [
+        142,
+        68,
+        173
+      ],
+      "surface_sample_hex": "#8e44ad"
+    }
+  }
+}
