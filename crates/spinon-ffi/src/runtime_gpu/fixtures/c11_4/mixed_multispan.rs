@@ -102,7 +102,7 @@ pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
 }
 
 fn scene_source(scene: Scene) -> String {
-    let root_id = format!("c114-{}-grid", scene.id);
+    let root_id = format!("generic-host-root-{}", scene.id);
     let mut source = format!(
         r#"(() => {{
 const root = document.createElement('div');
@@ -122,7 +122,7 @@ item{index}.setAttribute('data-node', '');
 item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:auto;margin:0;padding:0;border:0;grid-column:{column_start} / span {column_span};grid-row:{row};font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:wrap;word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;background-color:#e5484d');
 item{index}.appendChild(document.createTextNode({text:?}));
 "#,
-                item_id = item.id,
+                item_id = format!("generic-host-{}", item.id),
                 column_start = item.column_start,
                 column_span = item.column_span,
                 row = item.row,
@@ -134,7 +134,7 @@ item{index}.setAttribute('data-node', '');
 item{index}.setAttribute('src', 'https://spinon.invalid/c14-1-png-basic.png');
 item{index}.setAttribute('style', 'box-sizing:border-box;display:block;width:auto;height:{height}px;margin:0;padding:0;border:0;grid-column:{column_start} / span {column_span};grid-row:{row};justify-self:auto;align-self:auto;background-color:#e5484d');
 "#,
-                item_id = item.id,
+                item_id = format!("generic-host-{}", item.id),
                 column_start = item.column_start,
                 column_span = item.column_span,
                 row = item.row,
@@ -168,6 +168,15 @@ mod tests {
             assert!(source.contains("grid-template-rows:repeat(3,60px)"));
             assert!(source.contains("https://spinon.invalid/c14-1-png-basic.png"));
             assert!(source.contains(&format!("sceneId:{:?}", scene.id)));
+            assert!(source.contains(&format!(
+                "setAttribute('id', {:?})",
+                format!("generic-host-root-{}", scene.id)
+            )));
+            assert!(!source.contains("setAttribute('id', \"c114-mixed-text-image-span"));
+            assert_eq!(
+                source.matches("setAttribute('id', \"generic-host-").count(),
+                scene.items.len() + 1
+            );
             assert_eq!(source.matches("document.createElement('img')").count(), 1);
             assert_eq!(
                 source.matches("document.createElement('div')").count(),
