@@ -18,6 +18,8 @@ const AHEM: &[u8] = include_bytes!("../../../tests/fixtures/resources/c15/Ahem.t
 mod max_content;
 #[path = "grid_auto_min_scrollable_overflow_tests/row_axis_replaced.rs"]
 mod row_axis_replaced;
+#[path = "grid_auto_min_scrollable_overflow_tests/two_track_span_max_content.rs"]
+mod two_track_span_max_content;
 
 #[derive(Clone, Copy)]
 enum Axis {
