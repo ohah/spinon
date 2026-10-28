@@ -86,6 +86,8 @@ PR [#764](https://github.com/ohah/spinon/pull/764)는 2026-10-28T14:30:20Z Rebas
 
 2026-10-29 C11.4 single-track overflow automatic minimum은 14개 opt-in fixture scene으로 양 축의 visible/clip/hidden/auto/scroll과 specified-item/zero-track controls를 비교한다. Columns는 고정 Ahem text, Rows는 natural 10×10 PNG를 사용한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 14/14 frame·track·minimum-source trace·draw/present를 확인했다. PixelCopy와 compositor 제출 전 Metal 표본은 row visible scene에서 root 바깥 PNG red와 item 아래 black을 확인한다. 이 결과는 clipping/scroll, 일반 CSS admission, 실기기, 전체 WPT 또는 전체 C11.4 지원을 뜻하지 않는다. [계획](../plan/c11-4-overflow-auto-minimum-runtime.md) · [실행 근거](internal/evidence/c11-4-overflow-auto-minimum-runtime-2026-10-29/README.md).
 
+PR #765는 2026-10-28T16:52:08Z Rebase and merge됐고 merge SHA는 31103049d4a99a70fb97d3dfc58c96ac67cb173c다. merge 당시 head의 check run과 status context는 없었고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다. C11.4 checkbox와 공식 72/213은 유지한다.
+
 
 ## 시나리오 카탈로그
 
