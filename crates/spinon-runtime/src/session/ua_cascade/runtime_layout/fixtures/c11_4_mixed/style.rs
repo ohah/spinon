@@ -62,7 +62,7 @@ pub(super) fn validate_grid_style(
         )
     })?;
     let (root_width, root_height, columns, rows) = match scene.grid {
-        SceneGrid::SpanningMultiTrack => (
+        SceneGrid::SpanningMultiTrack | SceneGrid::GenericSpanningMultiTrack => (
             ComputedCssDimension::LengthPx(220.0),
             ComputedCssDimension::LengthPx(180.0),
             vec![ComputedCssGridTrackSize::MinContent; 4],
@@ -160,6 +160,7 @@ pub(super) fn validate_item_style(
     });
     let (justify_self, align_self) = match scene.grid {
         SceneGrid::SpanningMultiTrack
+        | SceneGrid::GenericSpanningMultiTrack
         | SceneGrid::DirectMinContent
         | SceneGrid::DirectMaxContent
         | SceneGrid::DirectMinContentRow

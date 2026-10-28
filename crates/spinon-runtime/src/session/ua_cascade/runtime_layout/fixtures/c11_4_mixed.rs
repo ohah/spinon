@@ -24,6 +24,8 @@ mod cyclic_minmax_mixed_text_image_span;
 mod generic_direct_text_image;
 #[path = "c11_4_mixed/generic_direct_text_image_row_axis.rs"]
 mod generic_direct_text_image_row_axis;
+#[path = "c11_4_mixed/generic_spanning.rs"]
+mod generic_spanning;
 #[path = "c11_4_mixed/orthogonal_rows.rs"]
 mod orthogonal_rows;
 #[path = "c11_4_mixed/style.rs"]
@@ -46,6 +48,7 @@ enum SceneGrid {
     DirectMaxContentRow,
     GenericDirectMinContentRow,
     GenericDirectMaxContentRow,
+    GenericSpanningMultiTrack,
 }
 
 #[derive(Clone, Copy)]
@@ -316,6 +319,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_minmax_mixed_text_image_span::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = generic_spanning::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
     let (namespace, tag, root_id) = element_identity(snapshot, root)?;
