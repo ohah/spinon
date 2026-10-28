@@ -16,7 +16,7 @@
 
 [CSS Grid Layout Module Level 1, 2025 CRD [§6.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto)에 따르면 Grid item은 computed overflow가 scrollable overflow value가 아니고 해당 축에 `auto` min track을 span할 때 content-based automatic minimum을 사용한다. 그렇지 않으면 automatic minimum은 0이다. [§§11.5–11.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing)은 `auto` minimum track base와 `max-content` maximum growth limit/contribution을 정의한다. 고정 수치, 원 Chrome observation, fixture hash는 [사전 비교 기록](../spec/internal/evidence/c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/README.md)에 있다.
 
-입력은 [Chrome fixture](../tests/fixtures/css/c11/grid-auto-min-max-content-c114-precomparison.html)와 일치한다.
+타깃 축의 overflow, root size, Grid track, item content/size는 [Chrome fixture](../tests/fixtures/css/c11/grid-auto-min-max-content-c114-precomparison.html)의 비교 입력을 따른다. Rust unit test에서는 축 선택 오류를 검출하도록 비타깃 축의 overflow를 `visible`로 고정한다. 이 보조 control은 타깃 축의 계산값을 바꾸지 않는다.
 
 - Columns: definite root `60×20px`, `minmax(auto, max-content)` column 하나, direct Ahem `XXXXXXXXXX` item. Min-/max-content inline contribution은 `100px`이다.
 - Rows: definite root `30×5px`, fixed `15px` column과 `minmax(auto, max-content)` row 하나, natural `24×16px` image. CSS width `15px`가 transferred row size `10px`를 만들며 item은 `align-self:start`로 `15×10px` frame을 유지한다.
