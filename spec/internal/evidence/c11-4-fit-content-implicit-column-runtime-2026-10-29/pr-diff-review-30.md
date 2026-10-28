@@ -41,5 +41,5 @@
 
 - `spec/STATUS.md`, plan, runtime README가 모두 같은 PR #775를 가리키고 상대 evidence 링크는 존재한다.
 - 상태 문구는 PR open 상태와 공식 `72/213`을 구분하며 C11.4 checkbox를 체크하지 않았다.
-- PR 본문의 raw screenshot URL은 commit `1849e4bd5bf2f2a085a4c93db2d04a14aec136d2` 아래 두 이미지 파일을 가리킨다. 링크 응답과 GitHub PR 렌더링은 Agent Browser에서 확인한다.
+- PR 본문의 raw screenshot URL은 commit `1849e4bd5bf2f2a085a4c93db2d04a14aec136d2` 아래 두 이미지 파일을 가리킨다. Agent Browser의 PR DOM에서 둘 다 `complete=true`로 로드됐고 크기는 Android 1080×2400, iOS 1206×2622였다. 확인 뒤 이번 세션의 브라우저를 닫았다.
 - 업데이트된 문서 diff를 이 30개 관점에 다시 대조했다. 변경은 PR 링크 추가이며 지원 범위·runtime expectation·contract claim은 달라지지 않았다.
