@@ -23,7 +23,15 @@
   },
   "browserClosed": true,
   "browserProcess": {
-    "active": false,
-    "pid": null
+    "activeSessionCount": 0,
+    "browserLaunched": false
+  },
+  "followupPrScreenshot": {
+    "url": "https://github.com/ohah/spinon/pull/762",
+    "alt": "Tailnet 공개 로드맵에서 확인한 PR #759 runtime slice",
+    "loaded": true,
+    "width": 1280,
+    "height": 633,
+    "sessionClosedAfterCheck": true
   }
 }

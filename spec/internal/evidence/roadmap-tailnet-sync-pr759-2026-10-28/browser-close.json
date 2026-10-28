@@ -1,9 +1,14 @@
 {
   "session": "spinon-c114-review",
   "closeCommandSucceeded": true,
-  "sessionInfo": {
-    "active": false,
-    "pid": null
+  "sessionListAfterClose": [],
+  "sessionInfoAfterClose": {
+    "active": true,
+    "reportedPid": 33404,
+    "browserLaunched": false,
+    "pageCount": 0
   },
+  "reportedPidPresentInProcessTable": false,
+  "chromeBrowserForSessionLaunched": false,
   "otherProcessesTerminated": false
 }
