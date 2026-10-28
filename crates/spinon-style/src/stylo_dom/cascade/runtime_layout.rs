@@ -4,7 +4,7 @@ use super::{
 };
 use crate::StylesheetSource;
 use spinon_core::{NodeId, StyleRevision};
-use style::properties::LonghandId;
+use style::properties::{LonghandId, PropertyDeclaration};
 
 pub(super) const RUNTIME_FLEX_LAYOUT_PROPERTIES: &[(&str, LonghandId)] = &[
     ("display", LonghandId::Display),
@@ -393,6 +393,13 @@ pub(super) fn first_unsupported_inline_property(
     view: &StyloDocumentView,
     is_allowed: impl Fn(&str) -> bool,
 ) -> Option<(NodeId, String)> {
+    first_unsupported_inline_declaration(view, |_, property| is_allowed(property))
+}
+
+pub(super) fn first_unsupported_inline_declaration(
+    view: &StyloDocumentView,
+    is_allowed: impl Fn(&PropertyDeclaration, &str) -> bool,
+) -> Option<(NodeId, String)> {
     let guard = view.shared_lock().read();
     let mut pending = vec![view.root_handle()];
     while let Some(handle) = pending.pop() {
@@ -402,7 +409,7 @@ pub(super) fn first_unsupported_inline_property(
             let block = inline_style.read_with(&guard);
             for declaration in block.declarations() {
                 let property = declaration.id().name().into_owned();
-                if !is_allowed(&property)
+                if !is_allowed(declaration, &property)
                     && !crate::stylesheet_registry::is_border_image_initial(declaration, &property)
                 {
                     return Some((handle.id(), property));

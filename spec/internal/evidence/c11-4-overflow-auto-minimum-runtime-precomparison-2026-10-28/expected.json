@@ -1,0 +1,474 @@
+{
+  "basis": {
+    "spec": "CSS Grid Layout Module Level 1, 2025 CRD, section 6.6",
+    "gridUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto",
+    "overflowSpec": "CSS Overflow Module Level 3, 2025-10-07 WD",
+    "overflowUrl": "https://www.w3.org/TR/2025/WD-css-overflow-3-20251007/#overflow-properties",
+    "font": "Ahem 10px/10px",
+    "columnsText": "XXXXXXXXXX",
+    "columnsMinContentPx": 100,
+    "rowsReplacedImageNaturalPx": [
+      10,
+      10
+    ],
+    "rowsReplacedImageCssWidthPx": 10,
+    "rowsMinContentHeightPx": 10
+  },
+  "cases": [
+    {
+      "id": "column-visible",
+      "axis": "columns",
+      "itemOverflow": "visible",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        100,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 100
+      },
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "column-clip",
+      "axis": "columns",
+      "itemOverflow": "clip",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        100,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 100
+      },
+      "authoredOverflowX": "clip",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "clip",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "column-hidden",
+      "axis": "columns",
+      "itemOverflow": "hidden",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "authoredOverflowX": "hidden",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "hidden",
+      "computedOverflowY": "auto"
+    },
+    {
+      "id": "column-auto",
+      "axis": "columns",
+      "itemOverflow": "auto",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "authoredOverflowX": "auto",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "auto",
+      "computedOverflowY": "auto"
+    },
+    {
+      "id": "column-scroll",
+      "axis": "columns",
+      "itemOverflow": "scroll",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "authoredOverflowX": "scroll",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "scroll",
+      "computedOverflowY": "auto"
+    },
+    {
+      "id": "column-zero-item-min",
+      "axis": "columns",
+      "itemOverflow": "visible",
+      "itemMinSizePx": [
+        0,
+        null
+      ],
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "kind": "specifiedMinimum",
+        "valuePx": 0
+      },
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "column-zero-track-min",
+      "axis": "columns",
+      "itemOverflow": "visible",
+      "gridPx": [
+        60,
+        20
+      ],
+      "tracksPx": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "itemPx": [
+        60,
+        20
+      ],
+      "minimumContribution": {
+        "queried": false,
+        "reason": "zeroTrackMinimumDoesNotQueryItemMinimum"
+      },
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "row-visible",
+      "axis": "rows",
+      "itemOverflow": "visible",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "itemPx": [
+        10,
+        10
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 10
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "row-clip",
+      "axis": "rows",
+      "itemOverflow": "clip",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "itemPx": [
+        10,
+        10
+      ],
+      "minimumContribution": {
+        "kind": "automatic",
+        "contentBased": true,
+        "valuePx": 10
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "clip",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "clip"
+    },
+    {
+      "id": "row-hidden",
+      "axis": "rows",
+      "itemOverflow": "hidden",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "hidden",
+      "computedOverflowX": "auto",
+      "computedOverflowY": "hidden"
+    },
+    {
+      "id": "row-auto",
+      "axis": "rows",
+      "itemOverflow": "auto",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "auto",
+      "computedOverflowX": "auto",
+      "computedOverflowY": "auto"
+    },
+    {
+      "id": "row-scroll",
+      "axis": "rows",
+      "itemOverflow": "scroll",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "overflowAutomaticMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "scroll",
+      "computedOverflowX": "auto",
+      "computedOverflowY": "scroll"
+    },
+    {
+      "id": "row-zero-item-min",
+      "axis": "rows",
+      "itemOverflow": "visible",
+      "itemMinSizePx": [
+        null,
+        0
+      ],
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "kind": "specifiedMinimum",
+        "valuePx": 0
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    },
+    {
+      "id": "row-zero-track-min",
+      "axis": "rows",
+      "itemOverflow": "visible",
+      "gridPx": [
+        30,
+        5
+      ],
+      "tracksPx": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "itemPx": [
+        10,
+        5
+      ],
+      "minimumContribution": {
+        "queried": false,
+        "reason": "zeroTrackMinimumDoesNotQueryItemMinimum"
+      },
+      "naturalItemPx": [
+        10,
+        10
+      ],
+      "authoredOverflowX": "visible",
+      "authoredOverflowY": "visible",
+      "computedOverflowX": "visible",
+      "computedOverflowY": "visible"
+    }
+  ],
+  "fixture": "tests/fixtures/css/c11/grid-auto-min-scrollable-overflow-c114-axis-precomparison.html",
+  "fixtureSha256": "0ace22d96a72a6b151d3e39c8cc8c9131a90afafd3ff9b0ac281a7cc45a9789b",
+  "imageFixture": "tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+  "imageFixtureSha256": "d9d0901f98fe6bbfe3291dad85c5b32a42d71d940f1f51642f2f3a0e4ddfe7b9",
+  "overflowBasis": {
+    "rule": "CSS Overflow Level 3 \u00a73.1: if either axis is scrollable (hidden, auto, or scroll), visible on the other axis computes to auto and clip computes to hidden. This fixture authors visible on the non-target axis, so clip stays clip and the non-target axis becomes auto only for hidden/auto/scroll target values.",
+    "url": "https://www.w3.org/TR/2025/WD-css-overflow-3-20251007/#overflow-properties",
+    "authoring": "The sizing axis receives the case value; the other axis is authored visible. Controls author visible on both axes."
+  }
+}

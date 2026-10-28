@@ -321,6 +321,90 @@ pub(crate) fn grid_track_sizing_trace_report(
         } else {
             None
         };
+    let single_track_overflow_auto_minimum = if let Some(observation) = diagnostics
+        .c11_4_single_track_overflow_auto_minimum_fixture
+        .as_ref()
+    {
+        let item_style = observation
+            .style_snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == observation.item)
+            .ok_or_else(|| {
+                "C11.4 single-track overflow item computed style이 없습니다".to_owned()
+            })?;
+        let axis_pass = diagnostics
+            .traces
+            .iter()
+            .find(|trace| trace.node == observation.grid_root)
+            .and_then(|trace| {
+                trace
+                    .passes
+                    .iter()
+                    .find(|pass| pass.axis == observation.axis)
+            })
+            .ok_or_else(|| "C11.4 single-track overflow target pass가 없습니다".to_owned())?;
+        let actual_track_base_size = axis_pass
+            .stages
+            .last()
+            .ok_or_else(|| "C11.4 single-track overflow final stage가 없습니다".to_owned())?
+            .tracks
+            .iter()
+            .find(|track| !track.is_gutter && !track.is_collapsed)
+            .map(|track| track.base_size)
+            .ok_or_else(|| "C11.4 single-track overflow used track가 없습니다".to_owned())?;
+        let root_frame = completed
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == observation.grid_root.get())
+            .ok_or_else(|| "C11.4 single-track overflow root frame이 없습니다".to_owned())?;
+        let item_frame = completed
+            .frames
+            .iter()
+            .find(|frame| frame.node_id == observation.item.get())
+            .ok_or_else(|| "C11.4 single-track overflow item frame이 없습니다".to_owned())?;
+        Some(serde_json::json!({
+            "sceneId": observation.scene_id,
+            "axis": format!("{:?}", observation.axis),
+            "authoredOverflowX": observation.authored_overflow_x,
+            "authoredOverflowY": observation.authored_overflow_y,
+            "computedOverflowX": computed_overflow_name(observation.computed_overflow_x),
+            "computedOverflowY": computed_overflow_name(observation.computed_overflow_y),
+            "actualComputedOverflowX": item_style.layout_overflow_x.map(computed_overflow_name),
+            "actualComputedOverflowY": item_style.layout_overflow_y.map(computed_overflow_name),
+            "gridRoot": observation.grid_root.get(),
+            "item": observation.item.get(),
+            "placementMode": format!("{:?}", observation.grid_container_input.placement_mode),
+            "layoutInputColumns": format!("{:?}", observation.grid_container_input.columns),
+            "layoutInputRows": format!("{:?}", observation.grid_container_input.rows),
+            "expectedTrackBaseSize": observation.expected_track_base_size,
+            "actualTrackBaseSize": actual_track_base_size,
+            "expectedItemWidth": observation.expected_item_width,
+            "actualItemWidth": item_frame.width,
+            "expectedItemHeight": observation.expected_item_height,
+            "actualItemHeight": item_frame.height,
+            "expectedMinimumValue": observation.expected_minimum_value,
+            "expectedMinimumSource": format!("{:?}", observation.expected_minimum_source),
+            "generation": observation.style_snapshot.generation.get(),
+            "documentRevision": observation.style_snapshot.document_revision.get(),
+            "renderTreeRevision": observation.style_snapshot.render_tree_revision.get(),
+            "styleRevision": observation.style_snapshot.style_revision.get(),
+            "rootFrame": {
+                "x": root_frame.x,
+                "y": root_frame.y,
+                "width": root_frame.width,
+                "height": root_frame.height,
+            },
+            "itemFrame": {
+                "x": item_frame.x,
+                "y": item_frame.y,
+                "width": item_frame.width,
+                "height": item_frame.height,
+            },
+        }))
+    } else {
+        None
+    };
     let report = serde_json::json!({
         "layoutInputRevision": {
             "source": format!("{:?}", diagnostics.revision.source()),
@@ -338,6 +422,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         "fitContentAutoMinFloor": fit_content_auto_min_floor,
         "gridLayoutAutoTracks": grid_layout_auto_tracks,
         "overflowAutomaticMinimum": overflow_auto_minimum,
+        "singleTrackOverflowAutoMinimum": single_track_overflow_auto_minimum,
     });
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
@@ -797,6 +882,7 @@ mod tests {
                 fit_content_auto_min_floor: None,
                 grid_layout_auto_tracks: None,
                 c11_4_overflow_auto_minimum_fixture: None,
+                c11_4_single_track_overflow_auto_minimum_fixture: None,
             }
         };
 
@@ -967,6 +1053,7 @@ mod tests {
             fit_content_auto_min_floor: None,
             grid_layout_auto_tracks: None,
             c11_4_overflow_auto_minimum_fixture: None,
+            c11_4_single_track_overflow_auto_minimum_fixture: None,
         };
         let completed = RuntimeLayoutCompleted {
             key: RuntimeUaCascadeKey {

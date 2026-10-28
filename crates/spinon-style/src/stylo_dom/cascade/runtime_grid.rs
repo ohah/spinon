@@ -341,11 +341,16 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
             .map_err(CssCascadeError::OrthogonalWritingModeViewRebuild)?;
         let default_allowed = runtime_block_flex_grid_track_sizing_author_properties();
         let allowed = author_properties_override.unwrap_or(&default_allowed);
-        if let Some((node, property)) =
-            super::runtime_layout::first_unsupported_inline_property(&profile_view, |property| {
+        if let Some((node, property)) = super::runtime_layout::first_unsupported_inline_declaration(
+            &profile_view,
+            |declaration, property| {
                 allowed.contains(&property)
-            })
-        {
+                    && (property != "visibility"
+                        || crate::stylesheet_registry::supports_runtime_visibility_value(
+                            declaration,
+                        ))
+            },
+        ) {
             return Err(CssCascadeError::UnsupportedInlineAuthorProperty { node, property });
         }
         match first_authored_disabled_inline_property(&profile_view) {
@@ -436,8 +441,10 @@ pub fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
     view: &StyloDocumentView,
 ) -> Option<(NodeId, String)> {
     let allowed = runtime_block_flex_grid_track_sizing_author_properties();
-    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+    super::runtime_layout::first_unsupported_inline_declaration(view, |declaration, property| {
         allowed.contains(&property)
+            && (property != "visibility"
+                || crate::stylesheet_registry::supports_runtime_visibility_value(declaration))
     })
     .or_else(|| {
         view.inline_style_sources().find_map(|(node, css)| {
@@ -457,8 +464,10 @@ pub fn first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_t
 ) -> Option<(NodeId, String)> {
     let mut allowed = runtime_block_flex_grid_track_sizing_author_properties();
     allowed.extend(["overflow-x", "overflow-y"]);
-    super::runtime_layout::first_unsupported_inline_property(view, |property| {
+    super::runtime_layout::first_unsupported_inline_declaration(view, |declaration, property| {
         allowed.contains(&property)
+            && (property != "visibility"
+                || crate::stylesheet_registry::supports_runtime_visibility_value(declaration))
     })
 }
 

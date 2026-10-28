@@ -523,6 +523,7 @@ fn c11_4_auto_minmax_span_overflow_root(
 ) -> bool {
     const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
     const ROOT_ID_PREFIX: &str = "c114-auto-minmax-span-overflow-";
+    const SINGLE_TRACK_ROOT_ID_PREFIX: &str = "c114-auto-min-scrollable-overflow-";
 
     let Some(node) = snapshot.node(root) else {
         return false;
@@ -536,7 +537,10 @@ fn c11_4_auto_minmax_span_overflow_root(
     element.attributes().iter().any(|(name, value)| {
         name.namespace().is_none()
             && name.local_name() == "id"
-            && value.to_string_lossy().starts_with(ROOT_ID_PREFIX)
+            && (value.to_string_lossy().starts_with(ROOT_ID_PREFIX)
+                || value
+                    .to_string_lossy()
+                    .starts_with(SINGLE_TRACK_ROOT_ID_PREFIX))
     })
 }
 

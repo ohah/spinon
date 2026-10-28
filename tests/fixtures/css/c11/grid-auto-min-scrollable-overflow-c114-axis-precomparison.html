@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 axis-specific automatic minimum and scrollable overflow</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      padding: 24px;
+      color: #172033;
+      background: #f3f5f8;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 0 0 16px; }
+    #cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .case { min-height: 96px; padding: 8px; background: white; }
+    .case h2 { margin: 0 0 6px; font-size: 13px; }
+    .grid {
+      display: grid;
+      align-items: stretch;
+      align-content: start;
+      justify-content: start;
+      justify-items: stretch;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      background: #101820;
+    }
+    .columns {
+      width: 60px;
+      height: 20px;
+      grid-template-columns: minmax(auto, 1fr);
+      grid-template-rows: 20px;
+    }
+    .columns.zero-track-min { grid-template-columns: minmax(0px, 1fr); }
+    .rows {
+      width: 30px;
+      height: 5px;
+      grid-template-columns: 10px;
+      grid-template-rows: minmax(auto, 1fr);
+    }
+    .rows.zero-track-min { grid-template-rows: minmax(0px, 1fr); }
+    .rows-item { width: 10px; overflow-x: visible; overflow-y: visible; }
+    .item {
+      display: block;
+      min-width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: white;
+      background: #e5484d;
+      font: 10px/10px Ahem, sans-serif;
+      justify-self: auto;
+      align-self: auto;
+    }
+    .column-clip { overflow-x: clip; overflow-y: visible; }
+    .column-hidden { overflow-x: hidden; overflow-y: visible; }
+    .column-auto { overflow-x: auto; overflow-y: visible; }
+    .column-scroll { overflow-x: scroll; overflow-y: visible; }
+    .row-clip { overflow-x: visible; overflow-y: clip; }
+    .row-hidden { overflow-y: hidden; }
+    .row-auto { overflow-y: auto; }
+    .row-scroll { overflow-y: scroll; }
+    .column-zero-item-min { min-width: 0; }
+    .row-zero-item-min { min-height: 0; }
+  </style>
+</head>
+<body>
+  <h1>Grid automatic minimum with axis-specific item overflow</h1>
+  <p>Only the sizing axis declares a non-visible overflow value. The other axis starts at visible so computed cross-axis values remain observable.</p>
+  <main id="cases">
+    <section class="case" id="column-visible"><h2>Columns · overflow-x:visible</h2><div class="grid columns"><div class="item">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-clip"><h2>Columns · overflow-x:clip</h2><div class="grid columns"><div class="item column-clip">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-hidden"><h2>Columns · overflow-x:hidden</h2><div class="grid columns"><div class="item column-hidden">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-auto"><h2>Columns · overflow-x:auto</h2><div class="grid columns"><div class="item column-auto">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-scroll"><h2>Columns · overflow-x:scroll</h2><div class="grid columns"><div class="item column-scroll">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-zero-item-min"><h2>Columns · explicit min-width:0</h2><div class="grid columns"><div class="item column-zero-item-min">XXXXXXXXXX</div></div></section>
+    <section class="case" id="column-zero-track-min"><h2>Columns · minmax(0,1fr)</h2><div class="grid columns zero-track-min"><div class="item">XXXXXXXXXX</div></div></section>
+    <section class="case" id="row-visible"><h2>Rows · overflow-y:visible</h2><div class="grid rows"><img class="item rows-item" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-clip"><h2>Rows · overflow-y:clip</h2><div class="grid rows"><img class="item rows-item row-clip" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-hidden"><h2>Rows · overflow-y:hidden</h2><div class="grid rows"><img class="item rows-item row-hidden" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-auto"><h2>Rows · overflow-y:auto</h2><div class="grid rows"><img class="item rows-item row-auto" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-scroll"><h2>Rows · overflow-y:scroll</h2><div class="grid rows"><img class="item rows-item row-scroll" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-zero-item-min"><h2>Rows · explicit min-height:0</h2><div class="grid rows"><img class="item rows-item row-zero-item-min" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+    <section class="case" id="row-zero-track-min"><h2>Rows · minmax(0,1fr)</h2><div class="grid rows zero-track-min"><img class="item rows-item" alt="" src="../../resources/c11-4-overflow-auto-minimum-10x10.png"></div></section>
+  </main>
+  <script>
+    const round = value => Math.round(value * 1000) / 1000;
+    const rect = element => {
+      const value = element.getBoundingClientRect();
+      return { x: round(value.x), y: round(value.y), width: round(value.width), height: round(value.height) };
+    };
+    window.collectObservation = async () => {
+      await document.fonts.ready;
+      await Promise.all([...document.images].map(image => image.decode()));
+      return Object.fromEntries([...document.querySelectorAll(".case")].map(section => {
+        const grid = section.querySelector(".grid");
+        const item = grid.firstElementChild;
+        const gridStyle = getComputedStyle(grid);
+        const itemStyle = getComputedStyle(item);
+        return [section.id, {
+          columns: gridStyle.gridTemplateColumns,
+          rows: gridStyle.gridTemplateRows,
+          alignItems: gridStyle.alignItems,
+          grid: rect(grid),
+          item: rect(item),
+          minWidth: itemStyle.minWidth,
+          minHeight: itemStyle.minHeight,
+          overflowX: itemStyle.overflowX,
+          overflowY: itemStyle.overflowY,
+          naturalImage: item instanceof HTMLImageElement ? [item.naturalWidth, item.naturalHeight] : null,
+        }];
+      }));
+    };
+  </script>
+</body>
+</html>
