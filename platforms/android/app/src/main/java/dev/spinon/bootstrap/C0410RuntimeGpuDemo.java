@@ -294,6 +294,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
             "definite-minmax-calc-cross-axis-span-groups-forward",
             "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
+            "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
+            "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
             "definite-minmax-calc-cross-axis-span-groups-reverse",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",

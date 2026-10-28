@@ -1,0 +1,454 @@
+{
+  "complete": true,
+  "target": "android-avd",
+  "runPrefix": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf",
+  "generatedAtUtc": "2026-10-28T01:29:01.337Z",
+  "device": {
+    "serial": "emulator-5554",
+    "avdName": "spinon_api37_1_compat16k",
+    "apiLevel": 37,
+    "abi": "arm64-v8a",
+    "model": "sdk_gphone16k_arm64",
+    "pageSizeBytes": 16384,
+    "qemu": "1",
+    "screenSize": "Physical size: 1080x2400",
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys"
+  },
+  "apkSha256": "b0b682843ba8bed3e6e28aa47c08aa67b002a9e71737e4effb1362272564b6d0",
+  "installedApkSha256": "b0b682843ba8bed3e6e28aa47c08aa67b002a9e71737e4effb1362272564b6d0",
+  "build": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "bun",
+      "run",
+      "build:android"
+    ],
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_V8_DIR": "<shared build/v8-source/v8>"
+    },
+    "v8": {
+      "checkout": "<shared build/v8-source/v8>",
+      "requiredRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "actualRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "cleanBeforeBuild": true,
+      "cleanAfterBuild": true
+    },
+    "source": {
+      "commit": "2fb8f706487acb898a206cc3ecf38a594ab5ba15",
+      "tree": "29e1085421ca933be5c6df6123b8728fefc64b95",
+      "trackedDiffSha256": "63dc70a7a2db2217d9199f67e83c11e9d7ccb191e6c53bdcaf342dd4974e5d7f",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs",
+        "crates/spinon-style-to-layout/src/projection.rs",
+        "crates/spinon-text-layout/src/engine/intrinsic.rs",
+        "crates/spinon-text-layout/src/tests.rs",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "platforms/ios/Sources/C114FlexStage.swift"
+      ],
+      "sourceFileSha256": {
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "ffafff343509d05f40e1dfc2be14eae3cb0ef40ab1b8fe4b023a3bd8cdc48feb",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs": "11785fb467abee6c6ecc70e25189b7e7dea33b177a3699f8b43b9d32533874c9",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "181f1ceb1be2c857b2ff87ee97daa51bee552aea33cafe1f185b0bd0d3060a12",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "db821576269df209d5f94519747ddeaba1b96b871da9bbae5f46f0d1d0a1b820",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "f52e36954b215dfd607c565f0c23c360994a63e1c1ea0d775ffda480f9594760",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs": "70dacef120d4228727023eda2dc2d1a5cf629a9024aa1abc2c32dab671e421df",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs": "dc8266854e204811cf3e81280ec65ab7f24a281bac429c66c9d8242dfb419d20",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs": "51b096657dc3bca4d61b85565f9e687fbbf4f1c02cd29280c5efa80749c7554f",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs": "bbc43a4b58fd91f2456e9f4bcf67e7b8b4c8850bedd236d74668254987451ae2",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs": "74507ad1c350ea10bf9bc303b8ee852d7b27188a4b0bf725a5eb576c11f5394b",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs": "dba05cb99081f5387176d93d9043788f5975382507b3735bbcd97b2884f9b82d",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "e89431de7ac3d15d9e0b78b1763b653a38be2b6e5f38a4365a5e6e4eb2b602c1",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "c906df5deac17198c5095756d97c4ac941ff0b8e52268c1f9d865967e929c8f1",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs": "bf0a15e5b0f00b01f105836fe6ac2bf097364c34690e901a68e812111f08450b",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs": "75c5680dba706ae87daee1fb45d07b964382c2c74a36a1d20095c8457ec17114",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "3836b3b1eb4f1627b7013ed5ce0a3657bab1031acf8a47f0bbab407e5f523adc",
+        "crates/spinon-style-to-layout/src/projection.rs": "8377203f2f2ca85c3d422dbac1521e10388456129d0e44836d1021f8c7648aa2",
+        "crates/spinon-text-layout/src/engine/intrinsic.rs": "e7f678f0ef0a4451534e5339fc14c4043d34e9e10bbc2252877cff3f687194b1",
+        "crates/spinon-text-layout/src/tests.rs": "9554984608587160626b65a707551877a06b94ff940e37cfd10781fc754f47df",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "c1e63d27906db46bec72a934fa6cafa8d3b4e24e2dd6b0561b7c5d6adf4af5ef",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java": "d628f35925c05a5c40886b910af185e859945a31fec2c6aba0cc8c71dd3db628",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "f102263b1000459a3fb04f5ccb102d03175a096c58828de945acd670faca362e",
+        "platforms/ios/Sources/C114FlexStage.swift": "b45922de0a1a0975b976b94cc30f4494f51e38eaf3047adca1038905315440ad",
+        "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "a63bd3bd9717436a7ee359101279ffc1ed049131e3c0ffd9f54ec5e30604e52a",
+        "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json": "7de5cb44203088e2fb0d552d37c027b3dcf6cf2da032d238074e1934e047d9f9"
+      },
+      "sourceFilesSha256": "d4fc9477d737c91e1d18174e6b191217e3085f3f4d00be60e8f58a79af8600b1"
+    },
+    "captureScriptSha256": "006600585d19bfca74ddfbae559e1b1ad48786c39c5b97a243de81b549f26233",
+    "artifactPath": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "artifactSha256": "b0b682843ba8bed3e6e28aa47c08aa67b002a9e71737e4effb1362272564b6d0",
+    "buildLogPath": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-build.log",
+    "buildLogSha256": "e07c9282edc41b49c7a83a45f79a8c7ebb585a1846fc0f8248b9f0563da7c9b8"
+  },
+  "sourceRevisionAfter": {
+    "commit": "2fb8f706487acb898a206cc3ecf38a594ab5ba15",
+    "tree": "29e1085421ca933be5c6df6123b8728fefc64b95",
+    "trackedDiffSha256": "63dc70a7a2db2217d9199f67e83c11e9d7ccb191e6c53bdcaf342dd4974e5d7f",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs",
+      "crates/spinon-style-to-layout/src/projection.rs",
+      "crates/spinon-text-layout/src/engine/intrinsic.rs",
+      "crates/spinon-text-layout/src/tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "platforms/ios/Sources/C114FlexStage.swift"
+    ],
+    "sourceFileSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "ffafff343509d05f40e1dfc2be14eae3cb0ef40ab1b8fe4b023a3bd8cdc48feb",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs": "11785fb467abee6c6ecc70e25189b7e7dea33b177a3699f8b43b9d32533874c9",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "181f1ceb1be2c857b2ff87ee97daa51bee552aea33cafe1f185b0bd0d3060a12",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "db821576269df209d5f94519747ddeaba1b96b871da9bbae5f46f0d1d0a1b820",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "f52e36954b215dfd607c565f0c23c360994a63e1c1ea0d775ffda480f9594760",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs": "70dacef120d4228727023eda2dc2d1a5cf629a9024aa1abc2c32dab671e421df",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs": "dc8266854e204811cf3e81280ec65ab7f24a281bac429c66c9d8242dfb419d20",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs": "51b096657dc3bca4d61b85565f9e687fbbf4f1c02cd29280c5efa80749c7554f",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs": "bbc43a4b58fd91f2456e9f4bcf67e7b8b4c8850bedd236d74668254987451ae2",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs": "74507ad1c350ea10bf9bc303b8ee852d7b27188a4b0bf725a5eb576c11f5394b",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs": "dba05cb99081f5387176d93d9043788f5975382507b3735bbcd97b2884f9b82d",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "e89431de7ac3d15d9e0b78b1763b653a38be2b6e5f38a4365a5e6e4eb2b602c1",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "c906df5deac17198c5095756d97c4ac941ff0b8e52268c1f9d865967e929c8f1",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs": "bf0a15e5b0f00b01f105836fe6ac2bf097364c34690e901a68e812111f08450b",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs": "75c5680dba706ae87daee1fb45d07b964382c2c74a36a1d20095c8457ec17114",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "3836b3b1eb4f1627b7013ed5ce0a3657bab1031acf8a47f0bbab407e5f523adc",
+      "crates/spinon-style-to-layout/src/projection.rs": "8377203f2f2ca85c3d422dbac1521e10388456129d0e44836d1021f8c7648aa2",
+      "crates/spinon-text-layout/src/engine/intrinsic.rs": "e7f678f0ef0a4451534e5339fc14c4043d34e9e10bbc2252877cff3f687194b1",
+      "crates/spinon-text-layout/src/tests.rs": "9554984608587160626b65a707551877a06b94ff940e37cfd10781fc754f47df",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "c1e63d27906db46bec72a934fa6cafa8d3b4e24e2dd6b0561b7c5d6adf4af5ef",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java": "d628f35925c05a5c40886b910af185e859945a31fec2c6aba0cc8c71dd3db628",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "f102263b1000459a3fb04f5ccb102d03175a096c58828de945acd670faca362e",
+      "platforms/ios/Sources/C114FlexStage.swift": "b45922de0a1a0975b976b94cc30f4494f51e38eaf3047adca1038905315440ad",
+      "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "a63bd3bd9717436a7ee359101279ffc1ed049131e3c0ffd9f54ec5e30604e52a",
+      "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json": "7de5cb44203088e2fb0d552d37c027b3dcf6cf2da032d238074e1934e047d9f9"
+    },
+    "sourceFilesSha256": "d4fc9477d737c91e1d18174e6b191217e3085f3f4d00be60e8f58a79af8600b1"
+  },
+  "rejectedRoutes": [
+    {
+      "label": "unknown-scene",
+      "sceneId": "column-freeze-unlisted",
+      "additionalSelectorArguments": [],
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-rejected-unknown-scene",
+      "pid": 5458,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "9eae2ea56b26ce2fc6a8032b0e77df1344d94b9878517b6727ad88f2688dc4fe",
+      "rejected": true
+    },
+    {
+      "label": "conflicting-c1121-profile",
+      "sceneId": "column-freeze",
+      "additionalSelectorArguments": [
+        "--ez",
+        "spinon_c1121_grid_placement",
+        "true"
+      ],
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-rejected-conflicting-c1121-profile",
+      "pid": 5538,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "88b9dd43c43bdf5c652d8816810cbf097d13ec242927831bff1002e69e88cf6f",
+      "rejected": true
+    }
+  ],
+  "observations": [
+    {
+      "sceneId": "column-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-0",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=100,height=120",
+        "2:node=4,x=110,y=0,width=24,height=16",
+        "3:node=5,x=160,y=0,width=140,height=120"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5577,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "78e225707bf2c3d8215d4760150ebb44f8e6d0c7c569757b03260836fd5b73f9",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{16224531 u0 dev.spinon.bootstrap/.MainActivity t4060}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "76aadc4f610e8164461f201151a17dcbbaba2e75976bc1ea5a9ad18a121f9f7f"
+      }
+    },
+    {
+      "sceneId": "column-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-1",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=80,height=120",
+        "2:node=4,x=90,y=0,width=24,height=16",
+        "3:node=5,x=140,y=0,width=160,height=120"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5645,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "994d8fda4087e32bf1eb09e70f234d99eb30da83034862a52d7630c7fd1c3dad",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{130937083 u0 dev.spinon.bootstrap/.MainActivity t4061}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-no-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "2780bbbad7d69e45a345ead19253c110906430497769683922d463d641f2a675"
+      }
+    },
+    {
+      "sceneId": "column-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-2",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=80,height=120",
+        "2:node=4,x=90,y=0,width=24,height=16",
+        "3:node=5,x=140,y=0,width=160,height=120"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5716,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "5abad04e2f2a3aa19d551e3f8a49974c56bc1744ffc13d61e80f9082fa517069",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{168112720 u0 dev.spinon.bootstrap/.MainActivity t4062}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-equal-boundary.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "c48a0d2886499ab5fefb8c4180c79bee4c8315a7c356cd170ce97332304257f0"
+      }
+    },
+    {
+      "sceneId": "column-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-3",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=160,y=0,width=140,height=120",
+        "2:node=4,x=110,y=0,width=24,height=16",
+        "3:node=5,x=0,y=0,width=100,height=120"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5791,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "088a01994b05a90754b1f5f65a4070be717c4af9c96bab5e984f35dc355c4b62",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{136888862 u0 dev.spinon.bootstrap/.MainActivity t4063}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-freeze-reversed.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "295faafd8a9855f379cdf66d0f7d543c3f8af160474c6b5b01b5721e3cfaf232"
+      }
+    },
+    {
+      "sceneId": "row-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-4",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=100",
+        "2:node=4,x=0,y=110,width=24,height=16",
+        "3:node=5,x=0,y=160,width=120,height=140"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5867,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "538ed654f5dc5c8823f7f13f6917b0faa36f358de122678e8460d7760b258bf3",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{244698582 u0 dev.spinon.bootstrap/.MainActivity t4064}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "866771892e5366cd39f9d9031a68f4759d3144ac08225e2d478bfbc58af3c7c5"
+      }
+    },
+    {
+      "sceneId": "row-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-5",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=80",
+        "2:node=4,x=0,y=90,width=24,height=16",
+        "3:node=5,x=0,y=140,width=120,height=160"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 5937,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "e1e696dc0408b8b37b6050644b2c69d5dbc25a28350dd1b3e2c8389874e476e6",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{242031054 u0 dev.spinon.bootstrap/.MainActivity t4065}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-no-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "15888eb5140efa5f921b08c645dda541b9405419641953d0c24dbee4fa5cb645"
+      }
+    },
+    {
+      "sceneId": "row-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-6",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=80",
+        "2:node=4,x=0,y=90,width=24,height=16",
+        "3:node=5,x=0,y=140,width=120,height=160"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 6021,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "b0dcb75faa198d913b62449ab265fce41e229bf5e71e3ef2b8c081d594626e9b",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{187400390 u0 dev.spinon.bootstrap/.MainActivity t4066}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-equal-boundary.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "4a9ada5c56ea7e6a2ad5ac1ad044f885ee627e7828b028381b7c535e17d7d26a"
+      }
+    },
+    {
+      "sceneId": "row-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf-7",
+      "status": "passed",
+      "boxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=160,width=120,height=140",
+        "2:node=4,x=0,y=110,width=24,height=16",
+        "3:node=5,x=0,y=0,width=120,height=100"
+      ],
+      "traceChunks": 9,
+      "presented": true,
+      "pid": 6087,
+      "launchLogSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "runtimeLogSha256": "ef32012c27146bca7c69706ff8b8bf657641502108a4971644897c05dfd1797c",
+      "foregroundActivity": "topResumedActivity=ActivityRecord{130958542 u0 dev.spinon.bootstrap/.MainActivity t4067}",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-freeze-reversed.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "28a8f288dba6d1fd72cba905f395f9b9e5836990acea77804742aa27e1e03fbc"
+      }
+    }
+  ],
+  "cleanup": {
+    "action": "force-stop Spinon only",
+    "avdRemainsBooted": true
+  }
+}

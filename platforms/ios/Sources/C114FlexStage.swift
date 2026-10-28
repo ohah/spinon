@@ -5,6 +5,8 @@ import Foundation
 enum C114FlexStage {
     private static let sceneIDs: Set<String> = [
         "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
+        "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
+        "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
     ]
     private static let tolerance = 1.0e-4
 
@@ -14,7 +16,15 @@ enum C114FlexStage {
 
     static func expectedRootFrame(_ sceneID: String) -> String? {
         guard isScene(sceneID) else { return nil }
+        if isMixedScene(sceneID) {
+            return isRowScene(sceneID) ? "width=120,height=300" : "width=300,height=120"
+        }
         return isRowScene(sceneID) ? "width=120,height=200" : "width=200,height=120"
+    }
+
+    static func itemCount(_ sceneID: String) -> Int {
+        guard isScene(sceneID) else { return 0 }
+        return isMixedScene(sceneID) ? 3 : 2
     }
 
     static func nodeFramesMatch(_ sceneID: String, report: String) -> Bool {
@@ -35,7 +45,7 @@ enum C114FlexStage {
             guard identity.count == 2,
                   let frameIndex = Int(identity[0]),
                   let node = integerField(identity[1], prefix: "node="),
-                  frameIndex == index, node == index + 1 else { return false }
+                  frameIndex == index, node == expectedFrameNode(sceneID, index) else { return false }
             let numericFields = [
                 (fields[1], "x="), (fields[2], "y="),
                 (fields[3], "width="), (fields[4], "height="),
@@ -66,6 +76,7 @@ enum C114FlexStage {
         let fixedIndex = 1 - targetIndex
         return fixedAxisMatches(passes[fixedIndex])
             && flexibleAxisMatches(sceneID, pass: passes[targetIndex])
+            && (!isMixedScene(sceneID) || intrinsicInputsMatch(sceneID, diagnostics: diagnostics))
     }
 
     private static func fixedAxisMatches(_ pass: [String: Any]) -> Bool {
@@ -112,17 +123,19 @@ enum C114FlexStage {
 
     private static func flexibleTracksMatch(_ sceneID: String, tracks value: Any?) -> Bool {
         guard let expected = expectedTrackBases(sceneID),
-              let tracks = value as? [[String: Any]], tracks.count == 5 else { return false }
+              let tracks = value as? [[String: Any]], tracks.count == expected.count * 2 + 1 else {
+            return false
+        }
         var cssTrackIndex = 0
         for (index, track) in tracks.enumerated() {
             let gutter = index.isMultiple(of: 2)
-            let boundary = index == 0 || index == 4
+            let boundary = index == 0 || index == tracks.count - 1
             guard integer(track["internalIndex"]) == index,
                   boolean(track["gutter"]) == gutter,
                   boolean(track["collapsed"]) == boundary else { return false }
             let size: Double
             if gutter {
-                size = index == 2 ? 10 : 0
+                size = boundary ? 0 : 10
             } else {
                 guard cssTrackIndex < expected.count else { return false }
                 size = expected[cssTrackIndex]
@@ -165,6 +178,18 @@ enum C114FlexStage {
 
     private static func expectedNodeFrames(_ sceneID: String) -> [[Double]]? {
         switch sceneID {
+        case "column-freeze":
+            return [[0, 0, 300, 120], [0, 0, 100, 120], [110, 0, 24, 16], [160, 0, 140, 120]]
+        case "column-no-freeze", "column-equal-boundary":
+            return [[0, 0, 300, 120], [0, 0, 80, 120], [90, 0, 24, 16], [140, 0, 160, 120]]
+        case "column-freeze-reversed":
+            return [[0, 0, 300, 120], [160, 0, 140, 120], [110, 0, 24, 16], [0, 0, 100, 120]]
+        case "row-freeze":
+            return [[0, 0, 120, 300], [0, 0, 120, 100], [0, 110, 24, 16], [0, 160, 120, 140]]
+        case "row-no-freeze", "row-equal-boundary":
+            return [[0, 0, 120, 300], [0, 0, 120, 80], [0, 90, 24, 16], [0, 140, 120, 160]]
+        case "row-freeze-reversed":
+            return [[0, 0, 120, 300], [0, 160, 120, 140], [0, 110, 24, 16], [0, 0, 120, 100]]
         case "weighted-columns":
             return [
                 [0, 0, 200, 120], [0, 0, 190.0 / 3.0, 120], [220.0 / 3.0, 0, 380.0 / 3.0, 120],
@@ -182,6 +207,10 @@ enum C114FlexStage {
 
     private static func expectedTrackBases(_ sceneID: String) -> [Double]? {
         switch sceneID {
+        case "column-freeze", "column-freeze-reversed", "row-freeze", "row-freeze-reversed":
+            return [100, 40, 140]
+        case "column-no-freeze", "column-equal-boundary", "row-no-freeze", "row-equal-boundary":
+            return [80, 40, 160]
         case "weighted-columns": return [190.0 / 3.0, 380.0 / 3.0]
         case "frozen-row": return [80, 110]
         case "subunit-columns": return [85, 20]
@@ -191,7 +220,63 @@ enum C114FlexStage {
     }
 
     private static func isRowScene(_ sceneID: String) -> Bool {
-        sceneID == "frozen-row" || sceneID == "zero-fr-row"
+        sceneID == "frozen-row" || sceneID == "zero-fr-row" || sceneID.hasPrefix("row-")
+    }
+
+    private static func isMixedScene(_ sceneID: String) -> Bool {
+        sceneID.hasPrefix("column-") || sceneID.hasPrefix("row-")
+    }
+
+    private static func intrinsicInputsMatch(
+        _ sceneID: String,
+        diagnostics: [String: Any]
+    ) -> Bool {
+        guard let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+              inputs.count == 3 else { return false }
+        let reversed = sceneID.hasSuffix("reversed")
+        let aMinContent: Double = sceneID.contains("equal-boundary")
+            ? 80 : (sceneID.contains("no-freeze") ? 40 : 100)
+        for (index, input) in inputs.enumerated() {
+            guard integer(input["sourceOrder"]) == index,
+                  integer(input["node"]) == expectedIntrinsicNode(index),
+                  let source = input["source"] as? [String: Any],
+                  let kind = string(source["kind"]) else { return false }
+            if index == 1 {
+                guard kind == "replaced",
+                      let natural = source["natural"] as? [String: Any],
+                      near(natural["width"], expected: 24),
+                      near(natural["height"], expected: 16) else { return false }
+                continue
+            }
+            guard kind == (isRowScene(sceneID) ? "orthogonalText" : "text"),
+                  let contribution = input["contributionInput"] as? [String: Any],
+                  let targetSize = contribution[isRowScene(sceneID) ? "height" : "width"]
+                    as? [String: Any] else { return false }
+            let itemA = reversed ? index == 2 : index == 0
+            let expected = itemA ? aMinContent : 40
+            guard near(targetSize["minContent"], expected: expected) else { return false }
+        }
+        return true
+    }
+
+    private static func expectedFrameNode(_ sceneID: String, _ frameIndex: Int) -> Int {
+        guard isMixedScene(sceneID) else { return frameIndex + 1 }
+        switch frameIndex {
+        case 0: return 1
+        case 1: return 2
+        case 2: return 4
+        case 3: return 5
+        default: return -1
+        }
+    }
+
+    private static func expectedIntrinsicNode(_ inputIndex: Int) -> Int {
+        switch inputIndex {
+        case 0: return 2
+        case 1: return 4
+        case 2: return 5
+        default: return -1
+        }
     }
 
     private static func integerField(_ field: Substring, prefix: String) -> Int? {

@@ -622,7 +622,7 @@ where
                 mixed_input.intrinsic_sizes.clone(),
             )
         } else if let Some(mixed_input) = &c11_4_mixed_input {
-            if mixed_input.allow_two_axis_root_intrinsic {
+            if mixed_input.use_extended_fixture_projection {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes_and_two_axis_grid_fixture(
                     &request.snapshot,
                     root,

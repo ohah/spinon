@@ -249,6 +249,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-minmax-calc-cross-axis-span-groups-intrinsic-reverse",
     "definite-minmax-calc-cross-axis-span-groups-forward",
     "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
+    "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
+    "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
     "definite-minmax-calc-cross-axis-span-groups-reverse",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
@@ -6950,7 +6952,7 @@ private func c114GapNodeFrames(
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
-    if C114FlexStage.isScene(sceneID) { return 3 }
+    if C114FlexStage.isScene(sceneID) { return C114FlexStage.itemCount(sceneID) + 1 }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
         return 2 + [4, 6, 8, 10].filter { intrinsicWpt[$0] > 0 }.count
     }

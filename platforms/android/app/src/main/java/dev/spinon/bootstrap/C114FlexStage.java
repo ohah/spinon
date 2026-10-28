@@ -12,6 +12,8 @@ import org.json.JSONTokener;
 final class C114FlexStage {
     private static final String[] SCENE_IDS = {
         "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
+        "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
+        "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
     };
     private static final double TOLERANCE = 1.0e-4;
     private static final String DIAGNOSTICS_MARKER = "grid_track_sizing_diagnostics=";
@@ -29,11 +31,15 @@ final class C114FlexStage {
     }
 
     static int itemCount(String sceneId) {
+        if (isMixedScene(sceneId)) return 3;
         return isScene(sceneId) ? 2 : 0;
     }
 
     static String expectedRootFrame(String sceneId) {
         if (!isScene(sceneId)) return "";
+        if (isMixedScene(sceneId)) {
+            return isRowScene(sceneId) ? "width=120,height=300" : "width=300,height=120";
+        }
         return isRowScene(sceneId) ? "width=120,height=200" : "width=200,height=120";
     }
 
@@ -51,7 +57,7 @@ final class C114FlexStage {
             if (!frame.matches()) return false;
             try {
                 if (Integer.parseInt(frame.group(1)) != index
-                        || Integer.parseInt(frame.group(2)) != index + 1) return false;
+                        || Integer.parseInt(frame.group(2)) != expectedFrameNode(sceneId, index)) return false;
                 for (int field = 0; field < 4; field++) {
                     double actual = Double.parseDouble(frame.group(field + 3));
                     if (!Double.isFinite(actual)
@@ -93,7 +99,8 @@ final class C114FlexStage {
             JSONObject target = isRowScene(sceneId) ? rows : columns;
             JSONObject fixed = isRowScene(sceneId) ? columns : rows;
             return fixedAxisMatches(fixed)
-                    && flexibleAxisMatches(sceneId, target);
+                    && flexibleAxisMatches(sceneId, target)
+                    && (!isMixedScene(sceneId) || intrinsicInputsMatch(sceneId, diagnostics));
         } catch (JSONException | ClassCastException | NumberFormatException error) {
             return false;
         }
@@ -174,14 +181,18 @@ final class C114FlexStage {
 
     private static boolean flexibleTracksMatch(String sceneId, JSONArray tracks) {
         double[] expected = expectedTrackBases(sceneId);
-        if (expected == null || tracks == null || tracks.length() != 5) return false;
+        if (expected == null || tracks == null || tracks.length() != expected.length * 2 + 1) {
+            return false;
+        }
         int cssTrackIndex = 0;
         for (int index = 0; index < tracks.length(); index++) {
             JSONObject track = tracks.optJSONObject(index);
             if (track == null || !integerEquals(track, "internalIndex", index)) return false;
             boolean gutter = index % 2 == 0;
-            boolean boundary = index == 0 || index == 4;
-            double baseSize = gutter ? (index == 2 ? 10.0 : 0.0) : expected[cssTrackIndex++];
+            boolean boundary = index == 0 || index == tracks.length() - 1;
+            double baseSize = gutter
+                    ? (boundary ? 0.0 : 10.0)
+                    : expected[cssTrackIndex++];
             if (!booleanEquals(track, "gutter", gutter)
                     || !booleanEquals(track, "collapsed", boundary)
                     || !numberNear(track, "baseSize", baseSize)) return false;
@@ -191,6 +202,32 @@ final class C114FlexStage {
 
     private static double[][] expectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "column-freeze":
+                return new double[][] {
+                    {0, 0, 300, 120}, {0, 0, 100, 120}, {110, 0, 24, 16}, {160, 0, 140, 120},
+                };
+            case "column-no-freeze":
+            case "column-equal-boundary":
+                return new double[][] {
+                    {0, 0, 300, 120}, {0, 0, 80, 120}, {90, 0, 24, 16}, {140, 0, 160, 120},
+                };
+            case "column-freeze-reversed":
+                return new double[][] {
+                    {0, 0, 300, 120}, {160, 0, 140, 120}, {110, 0, 24, 16}, {0, 0, 100, 120},
+                };
+            case "row-freeze":
+                return new double[][] {
+                    {0, 0, 120, 300}, {0, 0, 120, 100}, {0, 110, 24, 16}, {0, 160, 120, 140},
+                };
+            case "row-no-freeze":
+            case "row-equal-boundary":
+                return new double[][] {
+                    {0, 0, 120, 300}, {0, 0, 120, 80}, {0, 90, 24, 16}, {0, 140, 120, 160},
+                };
+            case "row-freeze-reversed":
+                return new double[][] {
+                    {0, 0, 120, 300}, {0, 160, 120, 140}, {0, 110, 24, 16}, {0, 0, 120, 100},
+                };
             case "weighted-columns":
                 return new double[][] {
                     {0, 0, 200, 120}, {0, 0, 190.0 / 3.0, 120}, {220.0 / 3.0, 0, 380.0 / 3.0, 120},
@@ -214,6 +251,14 @@ final class C114FlexStage {
 
     private static double[] expectedTrackBases(String sceneId) {
         switch (sceneId) {
+            case "column-freeze":
+            case "column-freeze-reversed":
+            case "row-freeze":
+            case "row-freeze-reversed": return new double[] {100, 40, 140};
+            case "column-no-freeze":
+            case "column-equal-boundary":
+            case "row-no-freeze":
+            case "row-equal-boundary": return new double[] {80, 40, 160};
             case "weighted-columns": return new double[] {190.0 / 3.0, 380.0 / 3.0};
             case "frozen-row": return new double[] {80, 110};
             case "subunit-columns": return new double[] {85, 20};
@@ -223,7 +268,64 @@ final class C114FlexStage {
     }
 
     private static boolean isRowScene(String sceneId) {
-        return "frozen-row".equals(sceneId) || "zero-fr-row".equals(sceneId);
+        return "frozen-row".equals(sceneId) || "zero-fr-row".equals(sceneId)
+                || sceneId.startsWith("row-");
+    }
+
+    private static boolean isMixedScene(String sceneId) {
+        return sceneId.startsWith("column-") || sceneId.startsWith("row-");
+    }
+
+    private static boolean intrinsicInputsMatch(String sceneId, JSONObject diagnostics) {
+        JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+        if (inputs == null || inputs.length() != 3) return false;
+        boolean reversed = sceneId.endsWith("reversed");
+        double aMinContent = sceneId.contains("equal-boundary") ? 80
+                : sceneId.contains("no-freeze") ? 40 : 100;
+        for (int index = 0; index < inputs.length(); index++) {
+            JSONObject input = inputs.optJSONObject(index);
+            if (input == null || !integerEquals(input, "sourceOrder", index)
+                    || !integerEquals(input, "node", expectedIntrinsicNode(index))) return false;
+            JSONObject source = input.optJSONObject("source");
+            if (source == null) return false;
+            if (index == 1) {
+                JSONObject natural = source.optJSONObject("natural");
+                if (!stringEquals(source, "kind", "replaced") || natural == null
+                        || !numberNear(natural, "width", 24)
+                        || !numberNear(natural, "height", 16)) return false;
+                continue;
+            }
+            if (!stringEquals(source, "kind", isRowScene(sceneId) ? "orthogonalText" : "text")) {
+                return false;
+            }
+            boolean itemA = reversed ? index == 2 : index == 0;
+            double expected = itemA ? aMinContent : 40;
+            JSONObject contribution = input.optJSONObject("contributionInput");
+            JSONObject axisSize = contribution == null ? null
+                    : contribution.optJSONObject(isRowScene(sceneId) ? "height" : "width");
+            if (axisSize == null || !numberNear(axisSize, "minContent", expected)) return false;
+        }
+        return true;
+    }
+
+    private static int expectedFrameNode(String sceneId, int frameIndex) {
+        if (!isMixedScene(sceneId)) return frameIndex + 1;
+        switch (frameIndex) {
+            case 0: return 1;
+            case 1: return 2;
+            case 2: return 4;
+            case 3: return 5;
+            default: return -1;
+        }
+    }
+
+    private static int expectedIntrinsicNode(int inputIndex) {
+        switch (inputIndex) {
+            case 0: return 2;
+            case 1: return 4;
+            case 2: return 5;
+            default: return -1;
+        }
     }
 
     private static boolean integerEquals(JSONObject object, String key, int expected) {
