@@ -1,0 +1,53 @@
+{
+  "diagnosticOverlay": "Applied outline and translucent backgrounds after layout observation; sizing properties unchanged.",
+  "harnessSummary": [
+    "Summary",
+    "",
+    "Harness status: OK",
+    "",
+    "Rerun",
+    "",
+    "Found 13 tests",
+    ""
+  ],
+  "harnessCounts": {
+    "tests": 13,
+    "passed": 13,
+    "failed": 0,
+    "skipped": 0
+  },
+  "target": {
+    "autoColumns": "fit-content(40px)",
+    "child": {
+      "height": 10,
+      "width": 400,
+      "x": 68,
+      "y": 166.625
+    },
+    "childWidth": "400px",
+    "columns": "60px 40px",
+    "grid": {
+      "height": 300,
+      "width": 300,
+      "x": 8,
+      "y": 166.625
+    },
+    "id": "implicitColumn",
+    "item": {
+      "height": 10,
+      "width": 40,
+      "x": 68,
+      "y": 166.625
+    },
+    "itemGridColumn": "2",
+    "itemMinWidth": "0px",
+    "rows": "10px"
+  },
+  "title": "CSS Grid Layout Test: fit-content() track sizing",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "case": "fit-content-implicit-column-wpt",
+  "oracle": {
+    "kind": "pinned-web-platform-test",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "assertion": "A fit-content() column's growth limit is clamped by its argument"
+  },
+  "input": {
+    "root": {
+      "display": "grid",
+      "widthCssPx": 300,
+      "heightCssPx": 300,
+      "explicitColumnsCssPx": [60],
+      "implicitColumns": "fit-content(40px)",
+      "implicitRows": "fit-content(40px)",
+      "columnGapCssPx": 0,
+      "rowGapCssPx": 0
+    },
+    "item": {
+      "gridColumn": "2",
+      "minWidthCssPx": 0
+    },
+    "child": {
+      "widthCssPx": 400,
+      "heightCssPx": 10
+    }
+  },
+  "normativeDerivation": {
+    "explicitColumnTrackCssPx": 60,
+    "implicitFitContentArgumentCssPx": 40,
+    "itemMinimumContributionCssPx": 0,
+    "itemMaxContentContributionCssPx": 400,
+    "fitContentGrowthLimitCssPx": 40,
+    "unusedInlineFreeSpaceCssPx": 200
+  },
+  "expected": {
+    "gridTemplateColumns": "60px 40px",
+    "gridTemplateRows": "10px",
+    "rootContentSizeCssPx": {
+      "width": 300,
+      "height": 300
+    },
+    "itemFrameRelativeToRootCssPx": {
+      "x": 60,
+      "y": 0,
+      "width": 40,
+      "height": 10
+    },
+    "childFrameRelativeToRootCssPx": {
+      "x": 60,
+      "y": 0,
+      "width": 400,
+      "height": 10
+    },
+    "childOverflowPastItemInlineCssPx": 360,
+    "childOverflowPastRootInlineCssPx": 160
+  },
+  "stageExpectations": {
+    "columnsBaseSizesCssPx": [
+      [60, 0],
+      [60, 0],
+      [60, 0],
+      [60, 40],
+      [60, 40],
+      [60, 40]
+    ],
+    "rowsBaseSizesCssPx": [
+      [0],
+      [0],
+      [10],
+      [10],
+      [10],
+      [10]
+    ],
+    "stageOrder": [
+      "Initialize",
+      "IntrinsicItemBatch",
+      "IntrinsicSizingComplete",
+      "MaximizeTracks",
+      "ExpandFlexibleTracks",
+      "StretchAutoTracks"
+    ]
+  },
+  "toleranceCssPx": 0.0001
+}
