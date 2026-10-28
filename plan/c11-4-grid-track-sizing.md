@@ -6,7 +6,7 @@
 
 ## 2026-10-28 mixed-track `visibility:hidden` · 다음 제한 계획
 
-직전 [display:none slice](./c11-4-mixed-flex-hidden-item.md)와 대비해 `visibility:hidden`은 box와 layout contribution을 유지하고 paint만 억제하는 네 fixed scene을 준비했다. Chrome 156과 CSS Grid 2025 CRD 독립 계산은 hidden/visible controls 모두 Columns·Rows tracks `[150,40,90]px`이며, hidden/visible surface sample은 파랑/보라로 갈린다. [집중 계획](./c11-4-mixed-flex-visibility-hidden.md) · [사전 비교와 hash](../spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/README.md) · [계획 실패 관점 검토 20개](./c11-4-mixed-flex-visibility-hidden-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30.md). 계획 PR은 아직 병합되지 않았고 C11.4와 공식 `72/213`은 미완료로 유지한다.
+직전 [display:none slice](./c11-4-mixed-flex-hidden-item.md)와 대비해 `visibility:hidden`은 box와 layout contribution을 유지하고 paint만 억제하는 네 fixed scene을 준비했다. Chrome 156과 CSS Grid 2025 CRD 독립 계산은 hidden/visible controls 모두 Columns·Rows tracks `[150,40,90]px`이며, hidden/visible surface sample은 파랑/보라로 갈린다. [집중 계획](./c11-4-mixed-flex-visibility-hidden.md) · [사전 비교와 hash](../spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/README.md) · [계획 실패 관점 검토 20개](./c11-4-mixed-flex-visibility-hidden-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30.md) · [이미지 확인 후속 검토 5개](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30-addendum.md). 계획 PR은 아직 병합되지 않았고 C11.4와 공식 `72/213`은 미완료로 유지한다.
 
 ## 2026-10-28 CSS Grid §11.7 flexible track expansion test-only 계획
 

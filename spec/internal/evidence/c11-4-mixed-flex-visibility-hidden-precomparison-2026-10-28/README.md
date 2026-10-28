@@ -9,6 +9,7 @@
 - 고정 Ahem 10px와 PNG natural size `24×16px`가 준비된 뒤 관측했다.
 - Chrome 결과: [관측 JSON](./chrome156-observation.json), [화면](./chrome156-visibility-hidden.png), [화면 표본](./chrome156-surface-samples.json)
 - Agent Browser session/process 종료 확인: [수명주기 기록](./agent-browser-lifecycle.json)
+- PR #737 본문에서 full-SHA raw image link를 Agent Browser로 열어 실제 로드와 `1280×633` dimensions를 확인했다: [검증 JSON](./plan-pr-image-agent-browser-pass01.json)
 - 독립 산술: [기대값 JSON](./expected.json), 재현 명령 `python3 spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/derive_expected.py`
 - 입력·기대값·화면 해시는 [SHA-256 manifest](./SHA256SUMS.txt)에 있다.
 

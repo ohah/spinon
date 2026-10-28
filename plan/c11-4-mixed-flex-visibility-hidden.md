@@ -8,6 +8,8 @@
 
 **계획 PR diff 검토:** [별도 실패 관점 30개](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30.md)
 
+**계획 PR 이미지 후속 검토:** [Agent Browser image-load 5관점](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30-addendum.md)
+
 ## 결손과 목표
 
 직전 [PR #734](https://github.com/ohah/spinon/pull/734)는 exact direct HTML `<span style="display:none">`의 텍스트가 mixed flexible/fixed track sizing에서 빠지는 두 fixed scene을 Columns와 Rows에서 확인했다. 해당 adapter의 `visibility:hidden`은 의도적인 거부 control이다. CSS 2.1 §11.2에 따르면 `visibility:hidden` 상자는 생성되어 레이아웃에 계속 참여하고 그려지지 않는다. 이는 `display:none`과 반대 결과를 내야 한다.
