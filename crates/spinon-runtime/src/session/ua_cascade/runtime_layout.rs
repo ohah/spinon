@@ -100,6 +100,8 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub fit_content_auto_min_floor: Option<RuntimeC11_4FitContentAutoMinFloorObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
     pub c11_4_overflow_auto_minimum_fixture: Option<RuntimeC11_4AutoMinmaxSpanOverflowObservation>,
+    pub c11_4_single_track_overflow_auto_minimum_fixture:
+        Option<RuntimeC11_4SingleTrackOverflowAutoMinimumObservation>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -157,6 +159,35 @@ pub struct RuntimeC11_4AutoMinmaxSpanOverflowObservation {
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4SingleTrackOverflowAutoMinimumObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub item: spinon_core::NodeId,
+    pub scene_id: String,
+    pub axis: spinon_layout::LayoutGridTrackSizingAxis,
+    pub authored_overflow_x: String,
+    pub authored_overflow_y: String,
+    pub computed_overflow_x: spinon_style::ComputedCssOverflow,
+    pub computed_overflow_y: spinon_style::ComputedCssOverflow,
+    pub expected_track_base_size: f32,
+    pub expected_item_width: f32,
+    pub expected_item_height: f32,
+    pub expected_minimum_value: Option<f32>,
+    pub expected_minimum_source: RuntimeC11_4OverflowMinimumSource,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum RuntimeC11_4OverflowMinimumSource {
+    ContentBased,
+    Overflow,
+    Specified,
+    TrackMinimum,
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 impl RuntimeGridTrackSizingDiagnostics {
     pub(crate) fn with_revision(&self, revision: spinon_layout::LayoutInputRevision) -> Self {
         let intrinsic_measurements = self
@@ -201,6 +232,9 @@ impl RuntimeGridTrackSizingDiagnostics {
             fit_content_auto_min_floor: self.fit_content_auto_min_floor.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
             c11_4_overflow_auto_minimum_fixture: self.c11_4_overflow_auto_minimum_fixture.clone(),
+            c11_4_single_track_overflow_auto_minimum_fixture: self
+                .c11_4_single_track_overflow_auto_minimum_fixture
+                .clone(),
         }
     }
 }
@@ -657,14 +691,26 @@ where
     } else {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
-            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture(
-                &request.snapshot,
-                root,
-                styles.clone(),
-                request.viewport,
-                &input.paragraph_styles,
-                &input.engine,
-            )
+            if let Some(intrinsic_sizes) = &input.intrinsic_sizes {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture_and_intrinsic_sizes(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &input.paragraph_styles,
+                    &input.engine,
+                    intrinsic_sizes.clone(),
+                )
+            } else {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &input.paragraph_styles,
+                    &input.engine,
+                )
+            }
         } else if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
             spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_intrinsic_sizes(
                 &request.snapshot,
@@ -890,12 +936,34 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_overflow_auto_minimum_observation =
         if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
-            Some(fixtures::c11_4_auto_minmax_span_overflow_observation(
-                root,
-                &output.computed_styles,
-                input,
-                &output.grid_container_inputs,
-            )?)
+            if input.has_span_case() {
+                Some(fixtures::c11_4_auto_minmax_span_overflow_observation(
+                    root,
+                    &output.computed_styles,
+                    input,
+                    &output.grid_container_inputs,
+                )?)
+            } else {
+                None
+            }
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_single_track_overflow_auto_minimum_observation =
+        if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
+            if input.has_single_track_case() {
+                Some(
+                    fixtures::c11_4_single_track_overflow_auto_minimum_observation(
+                        root,
+                        &output.computed_styles,
+                        input,
+                        &output.grid_container_inputs,
+                    )?,
+                )
+            } else {
+                None
+            }
         } else {
             None
         };
@@ -935,6 +1003,12 @@ where
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         let current = if let Some(mixed_input) = &c11_4_nested_grid_replaced_item_input {
             current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())
+        } else if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
+            if let Some(intrinsic_sizes) = &input.intrinsic_sizes {
+                current.with_intrinsic_size_revision(intrinsic_sizes.revision())
+            } else {
+                current
+            }
         } else if let Some(mixed_input) = &c11_4_nested_grid_depth_three_anonymous_image_input {
             current.with_intrinsic_size_revision(mixed_input.intrinsic_sizes.revision())
         } else if let Some(mixed_input) = &c11_4_anonymous_text_multi_image_input {
@@ -1014,6 +1088,8 @@ where
                 fit_content_auto_min_floor: fit_content_auto_min_floor_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
                 c11_4_overflow_auto_minimum_fixture: c11_4_overflow_auto_minimum_observation,
+                c11_4_single_track_overflow_auto_minimum_fixture:
+                    c11_4_single_track_overflow_auto_minimum_observation,
             }))
         }
     };
@@ -1600,6 +1676,7 @@ mod tests {
             fit_content_auto_min_floor: None,
             grid_layout_auto_tracks: None,
             c11_4_overflow_auto_minimum_fixture: None,
+            c11_4_single_track_overflow_auto_minimum_fixture: None,
         };
         let rekeyed_revision = LayoutInputRevision::new(
             LayoutSourceRevision::HostDocument {

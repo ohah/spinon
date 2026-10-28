@@ -596,7 +596,14 @@ pub(super) fn project_styles(
         }
         if let Some(nodes) = grid_nodes.as_ref() {
             if nodes.grid_containers.contains(&node) {
-                reject_grid_alignment(element, snapshot.profile, true, false, false)?;
+                reject_grid_alignment(
+                    element,
+                    snapshot.profile,
+                    true,
+                    false,
+                    false,
+                    allow_c11_4_overflow_auto_minimum_fixture,
+                )?;
             }
             if nodes.grid_items.contains(&node) {
                 reject_grid_alignment(
@@ -606,6 +613,7 @@ pub(super) fn project_styles(
                     true,
                     supports_grid_image_ratio_transfer
                         && allow_c11_4_replaced_grid_item_align_self_start,
+                    allow_c11_4_overflow_auto_minimum_fixture,
                 )?;
             }
         }
@@ -817,6 +825,7 @@ fn reject_grid_alignment(
     is_grid_container: bool,
     is_grid_item: bool,
     is_replaced_grid_item: bool,
+    allow_c11_4_overflow_auto_minimum_fixture: bool,
 ) -> Result<(), StyleLayoutError> {
     let mut unsupported = Vec::new();
     if is_grid_container {
@@ -834,6 +843,11 @@ fn reject_grid_alignment(
         if let Some(value) = element.properties.get(property)
             && value != initial
             && !(is_grid_container && property == "align-items" && value == "start")
+            && !(is_grid_container
+                && allow_c11_4_overflow_auto_minimum_fixture
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && property == "align-items"
+                && value == "stretch")
             && !(is_grid_container
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "justify-items"

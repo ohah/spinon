@@ -94,6 +94,13 @@ const overflowAutoMinimumSceneIDs = new Set([
   'columns-span2-visible-content-minimum', 'columns-span2-clip-content-minimum',
   'columns-span2-hidden-zero-minimum', 'columns-span2-auto-zero-minimum',
   'columns-span2-scroll-zero-minimum',
+  'column-visible-content-minimum', 'column-clip-content-minimum',
+  'column-hidden-zero-minimum', 'column-auto-zero-minimum',
+  'column-scroll-zero-minimum', 'column-specified-minimum-control',
+  'column-zero-track-control', 'row-visible-content-minimum',
+  'row-clip-content-minimum', 'row-hidden-zero-minimum',
+  'row-auto-zero-minimum', 'row-scroll-zero-minimum',
+  'row-specified-minimum-control', 'row-zero-track-control',
 ]);
 const equalAutoRowsSceneIDs = new Set(['align-content-normal-equal-auto-rows']);
 const textMultiSpanSceneIDs = new Set([
@@ -5344,13 +5351,93 @@ for (const overflow of [
   });
 }
 
+for (const spec of [
+  { id: 'column-visible-content-minimum', axis: 'Columns', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 100, minimum: 100, minimumSource: 'ContentBased' },
+  { id: 'column-clip-content-minimum', axis: 'Columns', authoredOverflowX: 'clip', authoredOverflowY: 'visible', computedOverflowX: 'clip', computedOverflowY: 'visible',
+    track: 100, minimum: 100, minimumSource: 'ContentBased' },
+  { id: 'column-hidden-zero-minimum', axis: 'Columns', authoredOverflowX: 'hidden', authoredOverflowY: 'visible', computedOverflowX: 'hidden', computedOverflowY: 'auto',
+    track: 60, minimum: 0, minimumSource: 'Overflow' },
+  { id: 'column-auto-zero-minimum', axis: 'Columns', authoredOverflowX: 'auto', authoredOverflowY: 'visible', computedOverflowX: 'auto', computedOverflowY: 'auto',
+    track: 60, minimum: 0, minimumSource: 'Overflow' },
+  { id: 'column-scroll-zero-minimum', axis: 'Columns', authoredOverflowX: 'scroll', authoredOverflowY: 'visible', computedOverflowX: 'scroll', computedOverflowY: 'auto',
+    track: 60, minimum: 0, minimumSource: 'Overflow' },
+  { id: 'column-specified-minimum-control', axis: 'Columns', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 60, minimum: 0, minimumSource: 'Specified' },
+  { id: 'column-zero-track-control', axis: 'Columns', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 60, minimum: null, minimumSource: 'TrackMinimum' },
+  { id: 'row-visible-content-minimum', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 10, minimum: 10, minimumSource: 'ContentBased', image: true },
+  { id: 'row-clip-content-minimum', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'clip', computedOverflowX: 'visible', computedOverflowY: 'clip',
+    track: 10, minimum: 10, minimumSource: 'ContentBased', image: true },
+  { id: 'row-hidden-zero-minimum', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'hidden', computedOverflowX: 'auto', computedOverflowY: 'hidden',
+    track: 5, minimum: 0, minimumSource: 'Overflow', image: true },
+  { id: 'row-auto-zero-minimum', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'auto', computedOverflowX: 'auto', computedOverflowY: 'auto',
+    track: 5, minimum: 0, minimumSource: 'Overflow', image: true },
+  { id: 'row-scroll-zero-minimum', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'scroll', computedOverflowX: 'auto', computedOverflowY: 'scroll',
+    track: 5, minimum: 0, minimumSource: 'Overflow', image: true },
+  { id: 'row-specified-minimum-control', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 5, minimum: 0, minimumSource: 'Specified', image: true },
+  { id: 'row-zero-track-control', axis: 'Rows', authoredOverflowX: 'visible', authoredOverflowY: 'visible', computedOverflowX: 'visible', computedOverflowY: 'visible',
+    track: 5, minimum: null, minimumSource: 'TrackMinimum', image: true },
+]) {
+  const isColumns = spec.axis === 'Columns';
+  const rootWidth = isColumns ? 60 : 30;
+  const rootHeight = isColumns ? 20 : 5;
+  const itemWidth = isColumns ? spec.track : 10;
+  const itemHeight = isColumns ? 20 : spec.track;
+  const rootId = `c114-auto-min-scrollable-overflow-${spec.id}`;
+  const pixelSamples = spec.id === 'column-visible-content-minimum'
+    ? [
+      { id: 'column-visible-outside-root', nodeId: rootId, xCssPx: 70, yCssPx: 10, rgba: [229, 72, 77, 255] },
+      { id: 'column-visible-after-item', nodeId: rootId, xCssPx: 101, yCssPx: 10, rgba: [0, 0, 0, 255] },
+    ]
+    : spec.id === 'row-visible-content-minimum'
+      ? [
+        { id: 'row-visible-outside-root', nodeId: rootId, xCssPx: 5, yCssPx: 7, rgba: [229, 72, 77, 255] },
+        { id: 'row-visible-after-item', nodeId: rootId, xCssPx: 5, yCssPx: 11, rgba: [0, 0, 0, 255] },
+      ]
+      : undefined;
+  scenes.push({
+    id: spec.id,
+    axis: spec.axis,
+    boxCount: 2,
+    rootFrame: `width=${rootWidth},height=${rootHeight}`,
+    itemFrame: `width=${itemWidth},height=${itemHeight}`,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight};`
+      + `1:node=2,x=0,y=0,width=${itemWidth},height=${itemHeight}]`,
+    axes: isColumns
+      ? { Columns: { tracks: [spec.track], collapsed: [false] }, Rows: { tracks: [20], collapsed: [false] } }
+      : { Columns: { tracks: [10], collapsed: [false] }, Rows: { tracks: [spec.track], collapsed: [false] } },
+    gaps: { Columns: 0, Rows: 0 },
+    geometryTolerance: 1 / 64,
+    requiresStrictPresentationIdentity: true,
+    ...(spec.image ? { runtimeImageCount: 1 } : {}),
+    ...(pixelSamples ? { pixelSamples } : {}),
+    singleTrackOverflowAutoMinimum: {
+      axis: spec.axis,
+      authoredOverflowX: spec.authoredOverflowX,
+      authoredOverflowY: spec.authoredOverflowY,
+      computedOverflowX: spec.computedOverflowX,
+      computedOverflowY: spec.computedOverflowY,
+      track: spec.track,
+      minimum: spec.minimum,
+      minimumSource: spec.minimumSource,
+      itemWidth,
+      itemHeight,
+      rootWidth,
+      rootHeight,
+    },
+  });
+}
+
 scenes.push(...intrinsicAutoRepeatRecomputeScenes());
 scenes.push(...gridAutoRepeatIntrinsicWptScenes());
 assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRepeatRecompute).length,
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 524, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 538, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5376,7 +5463,7 @@ if (requestedSceneIDs?.some((sceneID) => overflowAutoMinimumSceneIDs.has(sceneID
   assert.equal(runKind, 'overflow-auto-minimum',
     'overflow automatic-minimum scenes need their dedicated evidence run-kind.');
   assert.ok(runScenes.every(({ id }) => overflowAutoMinimumSceneIDs.has(id)),
-    'overflow automatic-minimum run에는 다섯 고정 scene만 선택해야 합니다.');
+    'overflow automatic-minimum run에는 고정 span/single-track scene만 선택해야 합니다.');
 }
 
 function anonymousGridBorderOverflowScenes() {
@@ -6575,6 +6662,119 @@ function verifyRuntimeLog(log, scene, runID) {
       assert.match(minimum.minimumSource, /content_based: true/);
     } else {
       assert.equal(minimum.minimumSource, 'OverflowAutomaticMinimum');
+    }
+  }
+  if (scene.singleTrackOverflowAutoMinimum) {
+    const expected = scene.singleTrackOverflowAutoMinimum;
+    const observation = diagnostics.singleTrackOverflowAutoMinimum;
+    assert.ok(observation, `${scene.id}: single-track overflow automatic-minimum observation is missing`);
+    assert.deepEqual({
+      sceneId: observation.sceneId,
+      axis: observation.axis,
+      authoredOverflowX: observation.authoredOverflowX,
+      authoredOverflowY: observation.authoredOverflowY,
+      computedOverflowX: observation.computedOverflowX,
+      computedOverflowY: observation.computedOverflowY,
+      actualComputedOverflowX: observation.actualComputedOverflowX,
+      actualComputedOverflowY: observation.actualComputedOverflowY,
+      gridRoot: observation.gridRoot,
+      item: observation.item,
+      placementMode: observation.placementMode,
+      expectedMinimumValue: observation.expectedMinimumValue,
+      expectedMinimumSource: observation.expectedMinimumSource,
+      expectedTrackBaseSize: observation.expectedTrackBaseSize,
+      actualTrackBaseSize: observation.actualTrackBaseSize,
+      expectedItemWidth: observation.expectedItemWidth,
+      actualItemWidth: observation.actualItemWidth,
+      expectedItemHeight: observation.expectedItemHeight,
+      actualItemHeight: observation.actualItemHeight,
+    }, {
+      sceneId: scene.id,
+      axis: expected.axis,
+      authoredOverflowX: expected.authoredOverflowX,
+      authoredOverflowY: expected.authoredOverflowY,
+      computedOverflowX: expected.computedOverflowX,
+      computedOverflowY: expected.computedOverflowY,
+      actualComputedOverflowX: expected.computedOverflowX,
+      actualComputedOverflowY: expected.computedOverflowY,
+      gridRoot: 1,
+      item: 2,
+      placementMode: 'TrackSizing',
+      expectedMinimumValue: expected.minimum,
+      expectedMinimumSource: expected.minimumSource,
+      expectedTrackBaseSize: expected.track,
+      actualTrackBaseSize: expected.track,
+      expectedItemWidth: expected.itemWidth,
+      actualItemWidth: expected.itemWidth,
+      expectedItemHeight: expected.itemHeight,
+      actualItemHeight: expected.itemHeight,
+    }, `${scene.id}: single-track overflow style/geometry metadata differs`);
+    assert.equal(observation.layoutInputColumns.startsWith('['), true,
+      `${scene.id}: typed Columns input is missing`);
+    assert.equal(observation.layoutInputRows.startsWith('['), true,
+      `${scene.id}: typed Rows input is missing`);
+    if (expected.axis === 'Columns') {
+      assert.match(observation.layoutInputColumns, /MinMax/);
+      assert.equal(observation.layoutInputRows, '[LengthPx(20.0)]');
+    } else {
+      assert.equal(observation.layoutInputColumns, '[LengthPx(10.0)]');
+      assert.match(observation.layoutInputRows, /MinMax/);
+    }
+    assert.deepEqual(observation.rootFrame,
+      { x: 0, y: 0, width: expected.rootWidth, height: expected.rootHeight },
+      `${scene.id}: Grid root frame differs`);
+    assert.deepEqual(observation.itemFrame,
+      { x: 0, y: 0, width: expected.itemWidth, height: expected.itemHeight },
+      `${scene.id}: Grid item frame differs`);
+    const [trace] = diagnostics.trackSizingTraces;
+    assert.equal(diagnostics.trackSizingTraces.length, 1,
+      `${scene.id}: expected one fixed Grid trace`);
+    assert.ok(trace.passes.length >= 2 && trace.passes[0].axis === 'Columns'
+      && trace.passes.some(({ axis }) => axis === 'Columns')
+      && trace.passes.some(({ axis }) => axis === 'Rows'),
+    `${scene.id}: expected an ordered trace with Columns and Rows passes`);
+    for (const [passIndex, pass] of trace.passes.entries()) {
+      assert.equal(pass.sequence, passIndex, `${scene.id}: trace pass sequence differs`);
+      assert.ok(['Columns', 'Rows'].includes(pass.axis),
+        `${scene.id}: unexpected track-sizing axis ${pass.axis}`);
+      const targetPass = pass.axis === expected.axis;
+      const expectedTrack = targetPass ? expected.track
+        : expected.axis === 'Columns' ? 20 : 10;
+      const contributions = pass.contributions;
+      assert.ok(Array.isArray(contributions), `${scene.id}: pass contributions are missing`);
+      if (!targetPass) {
+        assert.deepEqual(contributions, [],
+          `${scene.id}: fixed-axis pass must not query item contributions`);
+      } else {
+        assert.ok(contributions.every(({ item, span, kind, crossesFlexibleTrack }) =>
+          item === 2 && span === 1 && kind === 'Minimum' && crossesFlexibleTrack === true),
+        `${scene.id}: target pass contains an unexpected contribution`);
+        const minimums = contributions;
+        if (expected.minimumSource === 'TrackMinimum') {
+          assert.deepEqual(minimums, [], `${scene.id}: zero track minimum must not query Minimum`);
+        } else {
+          assert.equal(minimums.length, 1, `${scene.id}: expected one Minimum contribution per target pass`);
+          assert.equal(minimums[0].value, expected.minimum,
+            `${scene.id}: Minimum contribution value differs`);
+          if (expected.minimumSource === 'ContentBased') {
+            assert.match(minimums[0].minimumSource, /AutomaticMinimum/);
+            assert.match(minimums[0].minimumSource, /spans_auto_min_track: true/);
+            assert.match(minimums[0].minimumSource, /spans_multiple_tracks: false/);
+            assert.match(minimums[0].minimumSource, /spans_flexible_max_track: true/);
+            assert.match(minimums[0].minimumSource, /content_based: true/);
+          } else if (expected.minimumSource === 'Overflow') {
+            assert.equal(minimums[0].minimumSource, 'OverflowAutomaticMinimum');
+          } else {
+            assert.equal(minimums[0].minimumSource, 'SpecifiedMinimum');
+          }
+        }
+      }
+      const finalTracks = pass.stages.at(-1)?.tracks;
+      assert.ok(Array.isArray(finalTracks), `${scene.id}: final pass track snapshot is missing`);
+      const usedTracks = finalTracks.filter(({ gutter, collapsed }) => !gutter && !collapsed);
+      assert.equal(usedTracks.length, 1, `${scene.id}: expected one used track per pass`);
+      assert.equal(usedTracks[0].baseSize, expectedTrack,
+        `${scene.id}: final used track size differs for ${pass.axis} pass ${pass.sequence}`);
     }
   }
   if (scene.fitContentMinHeight) {

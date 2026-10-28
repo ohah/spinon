@@ -548,6 +548,45 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
     )
 }
 
+/// C11.4 overflow fixture에서 text 입력과 replaced intrinsic snapshot을 함께 계산합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture_and_intrinsic_sizes(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    intrinsic_sizes: LayoutIntrinsicSizeSnapshot,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    if computed_styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", computed_styles.profile),
+        });
+    }
+    if computed_styles.viewport != viewport {
+        return Err(StyleLayoutError::SnapshotMismatch { field: "viewport" });
+    }
+    let inline_run_styles = BTreeMap::new();
+    compute_layout_from_styles_with_text_and_grid_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        Some(intrinsic_sizes),
+        Some((paragraph_styles, &inline_run_styles, text_engine)),
+        StyleLayoutProjectionOptions {
+            reject_cascade_diagnostics: true,
+            allow_implicit_named_lines: false,
+            allow_c11_4_anonymous_grid_text_items: true,
+            blockify_c11_4_anonymous_grid_images: false,
+            allow_c11_4_nested_grid_two_axis_intrinsics: true,
+            allow_c11_4_replaced_grid_item_align_self_start: true,
+            allow_c11_4_overflow_auto_minimum_fixture: true,
+        },
+    )
+}
+
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Clone, Copy, Debug, Default)]
 struct RuntimeGridProjectionOptions {

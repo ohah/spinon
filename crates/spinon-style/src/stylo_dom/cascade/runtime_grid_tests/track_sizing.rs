@@ -270,3 +270,33 @@ fn overflow_fixture_cascade_keeps_axis_conversion_out_of_the_base_profile() {
         assert_eq!(style.layout_overflow_y, Some(expected_y), "{authored_x}");
     }
 }
+
+#[test]
+fn track_sizing_profile_rejects_unsupported_visibility_collapse_in_author_stylesheets() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:60px;height:20px;grid-template-columns:60px;grid-template-rows:20px;margin:0;padding:0",
+    );
+    let stylesheet = StylesheetSource {
+        id: "visibility-collapse".to_owned(),
+        base_url: "https://spinon.invalid/visibility-collapse.css".to_owned(),
+        origin: CssOrigin::Author,
+        css: "#root { visibility: collapse; }".to_owned(),
+    };
+
+    let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[stylesheet],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_err();
+
+    assert!(matches!(
+        error,
+        crate::CssCascadeError::UnsupportedAuthorCss {
+            stylesheet_id,
+            feature,
+        } if stylesheet_id == "visibility-collapse"
+            && feature == "지원하지 않는 CSS 선언 visibility 값"
+    ));
+}

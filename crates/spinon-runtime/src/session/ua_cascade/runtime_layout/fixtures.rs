@@ -177,6 +177,8 @@ pub(super) use c11_4_grid_layout_auto_tracks::{
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(in crate::session::ua_cascade::runtime_layout) use c11_4_auto_minmax_span_overflow::single_track_observation as c11_4_single_track_overflow_auto_minimum_observation;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_auto_minmax_span_overflow::{
     has_root_marker as is_c11_4_auto_minmax_span_overflow_root,
     observation as c11_4_auto_minmax_span_overflow_observation,

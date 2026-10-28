@@ -343,6 +343,26 @@ fn track_sizing_maps_pref_disabled_inline_author_property_error() {
 }
 
 #[test]
+fn track_sizing_profile_rejects_align_items_stretch_without_overflow_fixture_opt_in() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:60px;height:20px;grid-template-columns:60px;grid-template-rows:20px;align-items:stretch;align-content:start;justify-content:start;column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[(
+            "item",
+            "display:block;width:10px;height:10px;margin:0;padding:0;border:0",
+        )],
+    );
+
+    assert!(matches!(
+        fixture.try_compute(),
+        Err(StyleLayoutError::UnsupportedComputedValue {
+            property: "align-items",
+            value,
+            ..
+        }) if value == "stretch"
+    ));
+}
+
+#[test]
 fn direct_html_image_ratio_constraints_are_scoped_to_track_sizing_profile() {
     let (root_style, image_style) = ratio_constraint_styles();
     let image = Fixture::new_with_item_tag(root_style, &[("image", image_style)], "img");

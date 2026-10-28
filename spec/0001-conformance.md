@@ -82,6 +82,11 @@ C15 사전 비교는 Agent Browser Chrome `155.0.8059.85` / macOS `26.5.1 ARM`, 
 
 2026-10-28 C11.4 WPT `fit-content-track-sizing.html` 세 번째 assertion의 `fit-content(40px)` auto-minimum floor를 opt-in runtime fixture로 검증했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 main/control 각 2/2 scene, Rows `[10,100]px`/`[10,40]px`, same-revision frame·trace·draw/present를 확인했다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable sample은 각각 4/4·5/5 RGBA exact다. production `c04-runtime-gpu` release `spinon-ffi` archive에는 신규 marker가 없고 opt-in positive control에는 fixture marker와 symbols가 있다. 이는 WPT runner 전체 pass, 일반 CSS admission, APK/IPA exclusion, 실기기/hardware GPU, iOS compositor 이후 pixels 또는 전체 C11.4 적합성을 뜻하지 않는다. [계획](../plan/c11-4-fit-content-auto-minimum-floor.md) · [pinned WPT·CRD 사전 비교](internal/evidence/c11-4-fit-content-auto-min-floor-precomparison-2026-10-28/README.md) · [simulator·screenshot·archive evidence](internal/evidence/c11-4-fit-content-auto-min-floor-runtime-2026-10-28/README.md) · [구현/runtime 검토 20개](internal/evidence/c11-4-fit-content-auto-min-floor-runtime-2026-10-28/implementation-review-20.md). C11.4 checkbox와 공식 `72/213`은 유지한다.
 
+PR [#764](https://github.com/ohah/spinon/pull/764)는 2026-10-28T14:30:20Z Rebase and merge됐으며 merge SHA는 db9b51c6ae72328c408b2a0ed15d602a90938d47다. 해당 merge commit의 combined status rollup은 비어 있었으므로 CI 통과로 해석하지 않는다. C11.4와 공식 72/213은 미완료로 유지한다.
+
+2026-10-29 C11.4 single-track overflow automatic minimum은 14개 opt-in fixture scene으로 양 축의 visible/clip/hidden/auto/scroll과 specified-item/zero-track controls를 비교한다. Columns는 고정 Ahem text, Rows는 natural 10×10 PNG를 사용한다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 14/14 frame·track·minimum-source trace·draw/present를 확인했다. PixelCopy와 compositor 제출 전 Metal 표본은 row visible scene에서 root 바깥 PNG red와 item 아래 black을 확인한다. 이 결과는 clipping/scroll, 일반 CSS admission, 실기기, 전체 WPT 또는 전체 C11.4 지원을 뜻하지 않는다. [계획](../plan/c11-4-overflow-auto-minimum-runtime.md) · [실행 근거](internal/evidence/c11-4-overflow-auto-minimum-runtime-2026-10-29/README.md).
+
+
 ## 시나리오 카탈로그
 
 첫 적합성 시나리오의 필드와 제안 목록은 [0009 적합성 시나리오 카탈로그](0009-conformance-scenarios.md)에 둔다. 이 버전의 일곱 시나리오는 모두 제안·미실행이며 공개 API의 지원 상태를 바꾸지 않는다. 플랫폼별 실행 근거가 갖춰지면 결과를 분리해 기록하고, `지원` 표기는 이 문서의 조건과 구현 상태 대장에 따라 별도로 판정한다.

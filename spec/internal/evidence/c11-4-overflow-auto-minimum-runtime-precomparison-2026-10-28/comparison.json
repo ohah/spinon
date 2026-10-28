@@ -1,0 +1,463 @@
+{
+  "source": "Chrome computed style and layout observations; expected sizes/minimum sources are from CSS Grid CRD and the previously pinned independent oracle.",
+  "environment": {
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "platform": "MacIntel",
+    "dpr": 1,
+    "viewport": [
+      1280,
+      633
+    ],
+    "fontStatus": "loaded",
+    "ahemReady": true
+  },
+  "imageReadiness": [
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    },
+    {
+      "complete": true,
+      "currentSrc": "http://127.0.0.1:4187/tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png",
+      "naturalHeight": 10,
+      "naturalWidth": 10
+    }
+  ],
+  "caseCount": 14,
+  "passed": 14,
+  "failed": 0,
+  "assetsReady": true,
+  "checks": [
+    {
+      "id": "column-visible",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        100,
+        20
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-clip",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          100
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        100,
+        20
+      ],
+      "computedOverflow": [
+        "clip",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-hidden",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        60,
+        20
+      ],
+      "computedOverflow": [
+        "hidden",
+        "auto"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-auto",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        60,
+        20
+      ],
+      "computedOverflow": [
+        "auto",
+        "auto"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-scroll",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        60,
+        20
+      ],
+      "computedOverflow": [
+        "scroll",
+        "auto"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-zero-item-min",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        60,
+        20
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "column-zero-track-min",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          60
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "gridPx": [
+        60,
+        20
+      ],
+      "itemPx": [
+        60,
+        20
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": null
+    },
+    {
+      "id": "row-visible",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        10
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-clip",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          10
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        10
+      ],
+      "computedOverflow": [
+        "visible",
+        "clip"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-hidden",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        5
+      ],
+      "computedOverflow": [
+        "auto",
+        "hidden"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-auto",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        5
+      ],
+      "computedOverflow": [
+        "auto",
+        "auto"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-scroll",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        5
+      ],
+      "computedOverflow": [
+        "auto",
+        "scroll"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-zero-item-min",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        5
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    },
+    {
+      "id": "row-zero-track-min",
+      "result": "PASS",
+      "failures": [],
+      "tracks": {
+        "columns": [
+          10
+        ],
+        "rows": [
+          5
+        ]
+      },
+      "gridPx": [
+        30,
+        5
+      ],
+      "itemPx": [
+        10,
+        5
+      ],
+      "computedOverflow": [
+        "visible",
+        "visible"
+      ],
+      "alignItems": "stretch",
+      "naturalImage": [
+        10,
+        10
+      ]
+    }
+  ]
+}

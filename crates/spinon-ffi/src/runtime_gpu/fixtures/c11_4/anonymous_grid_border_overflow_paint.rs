@@ -9,6 +9,21 @@ use spinon_render::{
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 const IMAGE_URL: &str = "https://spinon.invalid/c14-1-png-basic.png";
 const PNG: &[u8] = include_bytes!("../../../../../../tests/fixtures/resources/c14-1-png-basic.png");
+const AUTO_MINIMUM_ROW_SCENES: &[&str] = &[
+    "row-visible-content-minimum",
+    "row-clip-content-minimum",
+    "row-hidden-zero-minimum",
+    "row-auto-zero-minimum",
+    "row-scroll-zero-minimum",
+    "row-specified-minimum-control",
+    "row-zero-track-control",
+];
+const AUTO_MINIMUM_ROW_ITEM_IDS: &[&str] = &["c114-auto-min-scrollable-overflow-item"];
+const AUTO_MINIMUM_ROW_IMAGE_URL: &str =
+    "https://spinon.invalid/c11-4-overflow-auto-minimum-10x10.png";
+const AUTO_MINIMUM_ROW_PNG: &[u8] = include_bytes!(
+    "../../../../../../tests/fixtures/resources/c11-4-overflow-auto-minimum-10x10.png"
+);
 const FORWARD_TWO_IMAGE_IDS: &[&str] = &[
     "c114-overflow-image-a-forward",
     "c114-overflow-image-b-forward",
@@ -98,7 +113,10 @@ pub(super) fn attach_images(
                 .attribute(&id_attribute)
                 .map(|value| String::from_utf16_lossy(value.code_units()))
                 .unwrap_or_default();
-            if expected_roots.contains(&root_id.as_str()) {
+            let is_auto_minimum_row = AUTO_MINIMUM_ROW_SCENES
+                .iter()
+                .any(|scene_id| root_id == format!("c114-auto-min-scrollable-overflow-{scene_id}"));
+            if expected_roots.contains(&root_id.as_str()) || is_auto_minimum_row {
                 roots.push((handle, root_id));
             }
         }
@@ -112,39 +130,70 @@ pub(super) fn attach_images(
         }
         return Err("C11.4 bordered Grid root가 유일하지 않습니다".to_owned());
     };
-    let scene_id = root_id
-        .strip_prefix("c114-")
-        .and_then(|value| value.strip_suffix("-grid"))
-        .ok_or_else(|| "C11.4 bordered Grid root ID가 올바르지 않습니다".to_owned())?;
-    let image_ids = match scene_id {
-        "anonymous-runs-two-images-forward" => FORWARD_TWO_IMAGE_IDS,
-        "two-images-anonymous-runs-reversed" => REVERSED_TWO_IMAGE_IDS,
-        "two-anonymous-runs-three-images-forward" => FORWARD_THREE_IMAGE_IDS,
-        "three-images-two-anonymous-runs-reversed" => REVERSED_THREE_IMAGE_IDS,
-        "cyclic-minmax-replaced-image-span-intrinsic-forward" => CYCLIC_INTRINSIC_FORWARD_IMAGE_IDS,
-        "cyclic-minmax-replaced-image-span-intrinsic-reverse" => CYCLIC_INTRINSIC_REVERSE_IMAGE_IDS,
-        "cyclic-minmax-replaced-image-span-definite-forward" => CYCLIC_DEFINITE_FORWARD_IMAGE_IDS,
-        "cyclic-minmax-replaced-image-span-definite-reverse" => CYCLIC_DEFINITE_REVERSE_IMAGE_IDS,
-        "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward" => {
-            CYCLIC_MIXED_INTRINSIC_FORWARD_IMAGE_IDS
-        }
-        "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse" => {
-            CYCLIC_MIXED_INTRINSIC_REVERSE_IMAGE_IDS
-        }
-        "definite-minmax-calc-mixed-text-image-span-forward" => {
-            CYCLIC_MIXED_DEFINITE_FORWARD_IMAGE_IDS
-        }
-        "definite-minmax-calc-mixed-text-image-span-reverse" => {
-            CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS
-        }
-        "max-content-forward" => MAX_CONTENT_FORWARD_IMAGE_IDS,
-        "max-content-reverse" => MAX_CONTENT_REVERSE_IMAGE_IDS,
-        "definite-forward" => DEFINITE_FORWARD_IMAGE_IDS,
-        "definite-reverse" => DEFINITE_REVERSE_IMAGE_IDS,
-        _ => return Ok((scene, String::new())),
-    };
-    let expected_non_image_children =
-        usize::from(!scene_id.starts_with("cyclic-minmax-replaced-image-span-")) * 2;
+    let (scene_id, image_ids, expected_non_image_children, image_url, png, image_dimensions) =
+        if let Some(scene_id) = root_id.strip_prefix("c114-auto-min-scrollable-overflow-") {
+            if !AUTO_MINIMUM_ROW_SCENES.contains(&scene_id) {
+                return Err("C11.4 single-track row scene ID가 허용 목록에 없습니다".to_owned());
+            }
+            (
+                scene_id,
+                AUTO_MINIMUM_ROW_ITEM_IDS,
+                0,
+                AUTO_MINIMUM_ROW_IMAGE_URL,
+                AUTO_MINIMUM_ROW_PNG,
+                (10, 10),
+            )
+        } else {
+            let scene_id = root_id
+                .strip_prefix("c114-")
+                .and_then(|value| value.strip_suffix("-grid"))
+                .ok_or_else(|| "C11.4 bordered Grid root ID가 올바르지 않습니다".to_owned())?;
+            let image_ids = match scene_id {
+                "anonymous-runs-two-images-forward" => FORWARD_TWO_IMAGE_IDS,
+                "two-images-anonymous-runs-reversed" => REVERSED_TWO_IMAGE_IDS,
+                "two-anonymous-runs-three-images-forward" => FORWARD_THREE_IMAGE_IDS,
+                "three-images-two-anonymous-runs-reversed" => REVERSED_THREE_IMAGE_IDS,
+                "cyclic-minmax-replaced-image-span-intrinsic-forward" => {
+                    CYCLIC_INTRINSIC_FORWARD_IMAGE_IDS
+                }
+                "cyclic-minmax-replaced-image-span-intrinsic-reverse" => {
+                    CYCLIC_INTRINSIC_REVERSE_IMAGE_IDS
+                }
+                "cyclic-minmax-replaced-image-span-definite-forward" => {
+                    CYCLIC_DEFINITE_FORWARD_IMAGE_IDS
+                }
+                "cyclic-minmax-replaced-image-span-definite-reverse" => {
+                    CYCLIC_DEFINITE_REVERSE_IMAGE_IDS
+                }
+                "cyclic-minmax-calc-mixed-text-image-span-intrinsic-forward" => {
+                    CYCLIC_MIXED_INTRINSIC_FORWARD_IMAGE_IDS
+                }
+                "cyclic-minmax-calc-mixed-text-image-span-intrinsic-reverse" => {
+                    CYCLIC_MIXED_INTRINSIC_REVERSE_IMAGE_IDS
+                }
+                "definite-minmax-calc-mixed-text-image-span-forward" => {
+                    CYCLIC_MIXED_DEFINITE_FORWARD_IMAGE_IDS
+                }
+                "definite-minmax-calc-mixed-text-image-span-reverse" => {
+                    CYCLIC_MIXED_DEFINITE_REVERSE_IMAGE_IDS
+                }
+                "max-content-forward" => MAX_CONTENT_FORWARD_IMAGE_IDS,
+                "max-content-reverse" => MAX_CONTENT_REVERSE_IMAGE_IDS,
+                "definite-forward" => DEFINITE_FORWARD_IMAGE_IDS,
+                "definite-reverse" => DEFINITE_REVERSE_IMAGE_IDS,
+                _ => return Ok((scene, String::new())),
+            };
+            let expected_non_image_children =
+                usize::from(!scene_id.starts_with("cyclic-minmax-replaced-image-span-")) * 2;
+            (
+                scene_id,
+                image_ids,
+                expected_non_image_children,
+                IMAGE_URL,
+                PNG,
+                (24, 16),
+            )
+        };
     let children = document
         .children(*root)
         .ok_or_else(|| "C11.4 bordered Grid child 목록이 없습니다".to_owned())?
@@ -181,14 +230,14 @@ pub(super) fn attach_images(
         }
         let request = ImageRequest::from_document(document, handle)
             .map_err(|error| format!("C11.4 image request 실패: {error}"))?;
-        if request.src().code_units() != IMAGE_URL.encode_utf16().collect::<Vec<_>>().as_slice() {
+        if request.src().code_units() != image_url.encode_utf16().collect::<Vec<_>>().as_slice() {
             return Err(format!(
                 "C11.4 image src가 고정 입력과 다릅니다: {actual_id}"
             ));
         }
         completions.push(
             request
-                .decode(PNG)
+                .decode(png)
                 .map_err(|error| format!("C11.4 PNG decode 실패: {error}"))?,
         );
         image_nodes.push(handle.id());
@@ -213,8 +262,13 @@ pub(super) fn attach_images(
             .images()
             .get(&image_id)
             .ok_or_else(|| format!("C11.4 decoded image가 없습니다: {}", image_id.get()))?;
-        if decoded.dimensions().width() != 24 || decoded.dimensions().height() != 16 {
-            return Err("C11.4 PNG intrinsic size가 고정값 24x16과 다릅니다".to_owned());
+        if decoded.dimensions().width() != image_dimensions.0
+            || decoded.dimensions().height() != image_dimensions.1
+        {
+            return Err(format!(
+                "C11.4 PNG intrinsic size가 고정값 {}x{}와 다릅니다",
+                image_dimensions.0, image_dimensions.1
+            ));
         }
         let render_box = scene
             .boxes()

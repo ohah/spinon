@@ -186,6 +186,17 @@ pub(crate) fn declaration_contains_css_system_color(declaration: &PropertyDeclar
     css_contains_system_color_identifier(&serialized)
 }
 
+pub(crate) fn supports_runtime_visibility_value(declaration: &PropertyDeclaration) -> bool {
+    let mut serialized = String::new();
+    if declaration.to_css(&mut serialized).is_err() {
+        return false;
+    }
+    matches!(
+        serialized.as_str(),
+        "visible" | "hidden" | "inherit" | "initial" | "unset" | "revert" | "revert-layer"
+    )
+}
+
 const CSS_SYSTEM_COLOR_KEYWORDS: &[&str] = &[
     "accentcolor",
     "accentcolortext",
@@ -442,10 +453,17 @@ fn unsupported_rule_feature(
                             || (policy.allow_background_color && name == "background-color")
                     }
                 };
+                let unsupported_visibility_value = name == "visibility"
+                    && allowed_properties.contains(&"visibility")
+                    && !supports_runtime_visibility_value(declaration);
                 if !(allowed
                     || (policy.allow_border_image_initial_resets
                         && is_border_image_initial(declaration, &name)))
+                    || unsupported_visibility_value
                 {
+                    if unsupported_visibility_value {
+                        return Some("지원하지 않는 CSS 선언 visibility 값".to_owned());
+                    }
                     return Some(format!("지원하지 않는 CSS 선언 {name}"));
                 }
             }

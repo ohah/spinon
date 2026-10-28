@@ -6,7 +6,10 @@ use std::{
 };
 mod css_profile;
 mod raw_style;
-pub(crate) use css_profile::{declaration_contains_css_system_color, is_border_image_initial};
+pub(crate) use css_profile::{
+    declaration_contains_css_system_color, is_border_image_initial,
+    supports_runtime_visibility_value,
+};
 
 use cssparser::SourceLocation;
 use style::{
