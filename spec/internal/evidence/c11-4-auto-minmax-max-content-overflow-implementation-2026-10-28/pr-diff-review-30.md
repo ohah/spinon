@@ -30,7 +30,7 @@
 | 26 | `OverflowAutomaticMinimum`의 source는 맞아도 값이 양수임 | 통과 — source와 0px value를 각각 검증한다. |
 | 27 | MaxContent contribution이 누락·중복되거나 minimum 값으로 대체됨 | 통과 — 별도 kind로 정확히 하나의 trace 및 기대값 100/10px을 확인한다. |
 | 28 | layout error가 case context 없이 실패해 원인을 찾기 어려움 | 통과 — 모든 compute 실패에 해당 case id를 포함한다. |
-| 29 | unrelated test/module/evidence 또는 simulator output이 변경분에 포함됨 | 통과 — code diff는 기존 parent module 2줄과 전용 test module만 포함한다. |
+| 29 | Chrome screenshot을 일반 링크로 넣어 Rspress가 PNG를 HTML route로 해석하고 dead-link 오류를 냄 | 통과 — 첫 build에서 발견한 일반 링크를 Markdown image embed로 바꿨고, 재실행 로그에는 이 evidence 경로 오류가 없다. |
 | 30 | focused gate만 통과한 상태에서 package regression/lint/format도 통과했다고 주장함 | 통과 — 기록은 focused 2/2, package 297/297, rustfmt check, crate all-target Clippy의 실제 실행 결과로 제한한다. |
 
 구현/runtime 실패 관점 20개와 구별되는 최종 PR diff 검토다. 이 PR은 CSS admission, painting, scroll offsets, app runtime 또는 simulator 동작을 바꾸지 않는다.
