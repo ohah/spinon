@@ -562,6 +562,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt", "fit-content-min-height-wpt",
     "fit-content-percentage-row-wpt",
+    C114FitContentImplicitColumnWpt.sceneID,
     "fit-content-spanning-wpt",
     "fit-content-auto-min-floor-wpt", "fit-content-auto-min-floor-zero-control",
     "columns-span2-visible-content-minimum", "columns-span2-clip-content-minimum",
@@ -1148,6 +1149,9 @@ private func c114RowAxisSpanExpectedNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if C114FitContentImplicitColumnWpt.isScene(sceneID) {
+        return C114FitContentImplicitColumnWpt.nodeFramesMatch(sceneID: sceneID, report: report)
+    }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) {
         return C114GridAutoFitColumnsWpt.nodeFramesMatch(sceneID: sceneID, report: report)
     }
@@ -1474,6 +1478,7 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let frame = C114FitContentImplicitColumnWpt.expectedRootFrame(sceneID) { return frame }
     if let frame = C114GridAutoFitColumnsWpt.expectedRootFrame(sceneID) { return frame }
     if let frame = C114FlexStage.expectedRootFrame(sceneID) { return frame }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
@@ -1795,6 +1800,7 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let frame = C114FitContentImplicitColumnWpt.expectedItemFrame(sceneID) { return frame }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return "" }
     if C114FlexStage.isScene(sceneID) { return "" }
     if c114GridAutoRepeatIntrinsicWptState(sceneID) != nil {
@@ -5932,6 +5938,9 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let frames = C114FitContentImplicitColumnWpt.expectedNodeFrames(sceneID) {
+        return frames
+    }
     if let intrinsicWptFrames = c114GridAutoRepeatIntrinsicWptNodeFrames(sceneID) {
         return intrinsicWptFrames
     }
@@ -7576,6 +7585,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let count = C114FitContentImplicitColumnWpt.expectedBoxCount(sceneID) { return count }
     if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
     if C114FlexStage.isScene(sceneID) { return C114FlexStage.itemCount(sceneID) + 1 }
     if let intrinsicWpt = c114GridAutoRepeatIntrinsicWptState(sceneID) {
@@ -8469,6 +8479,18 @@ private struct C111MetalPixelRun {
             }
         }
         if let expectedSamples = C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneID: sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
+        if let expectedSamples = C114FitContentImplicitColumnWpt.surfacePixelSamples(
+            sceneID: sceneID
+        ) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
                 samples.contains { sample in
@@ -9463,10 +9485,12 @@ private struct C111MetalPixelRun {
         }
         let c114PixelSceneHasSurfaceSamples = c114Scene.map {
             C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneID: $0) != nil
+                || C114FitContentImplicitColumnWpt.surfacePixelSamples(sceneID: $0) != nil
         } ?? false
         let c114PixelViewportWidth: UInt32 = c114PixelSceneHasSurfaceSamples ? 480 : 320
         let c114PixelViewportHeight: UInt32 =
-            c114Scene == "fit-content-percentage-row-wpt" ? 400 : 240
+            c114Scene == "fit-content-percentage-row-wpt" ? 400
+                : C114FitContentImplicitColumnWpt.isScene(c114Scene ?? "") ? 320 : 240
         guard (8...128).contains(runID.count),
               runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }),
               (1...16_384).contains(encoded.count),
@@ -9688,6 +9712,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c114FitContentPercentageArgumentExpectedPresentationIdentity: String?
     private var c114FitContentPercentageArgumentExpectedSurfaceGeneration: UInt64?
     private var c114FitContentPercentageArgumentExpectedSequence: UInt64?
+    private var c114FitContentImplicitColumnExpectedPresentationIdentity: String?
+    private var c114FitContentImplicitColumnExpectedSurfaceGeneration: UInt64?
+    private var c114FitContentImplicitColumnExpectedSequence: UInt64?
     private var c114FitContentSpanningExpectedPresentationIdentity: String?
     private var c114FitContentSpanningExpectedSurfaceGeneration: UInt64?
     private var c114FitContentSpanningExpectedSequence: UInt64?
@@ -9888,6 +9915,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         guard let pixelRun = c111MetalPixelRun,
               pixelRun.markerPrefix == "C114",
               C114GridAutoFitColumnsWpt.surfacePixelSamples(
+                sceneID: c114GridTrackSizingSceneID
+              ) != nil || C114FitContentImplicitColumnWpt.surfacePixelSamples(
                 sceneID: c114GridTrackSizingSceneID
               ) != nil else { return 320 }
         return 480
@@ -10464,7 +10493,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c114GridTrackSizingProbeRequested
-            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400 : 240) CSS px"
+            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -10817,6 +10846,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         )
         let canvasHeight = canvasView.heightAnchor.constraint(
             equalToConstant: c114GridTrackSizingProbeRequested
+                && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
+                : c114GridTrackSizingProbeRequested
                 && c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400
                 : c114OverflowPixelReadbackViewportWidth > 320 ? 240
                 : imagePaintProbeRequested
@@ -10923,7 +10954,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         let scale = view.window?.screen.scale ?? UIScreen.main.scale
         let viewportSize = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             ? CGSize(width: 360, height: 800)
-            : c114OverflowPixelReadbackViewportWidth > 320
+            : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID)
+                ? CGSize(width: 480, height: 320)
+                : c114OverflowPixelReadbackViewportWidth > 320
                 ? CGSize(width: 480, height: 240) : canvasView.bounds.size
         guard viewportSize.width > 0, viewportSize.height > 0 else { return }
         stateLock.lock()
@@ -12596,6 +12629,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : imageObjectFitPositionProbeRequested ? 72 : 40
             : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
             : c114GridTrackSizingProbeRequested
+                && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
+            : c114GridTrackSizingProbeRequested
                 && c114GridTrackSizingSceneID == "fit-content-percentage-row-wpt" ? 400
             : c125StickyFixtureRequested ? 260 : c131StackingDescendantClipProbeRequested
             ? 128 : c131CompactSurfaceMatrixRouteRequested
@@ -13167,6 +13202,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 C114GridAutoFitColumnsWpt.traceMatches(
                     sceneID: c114GridTrackSizingSceneID, report: report
                 )
+            let expectedFitContentImplicitColumnMatches =
+                C114FitContentImplicitColumnWpt.traceMatches(
+                    sceneID: c114GridTrackSizingSceneID, report: report
+                )
             let expectedCrossAxisTrackTraceMatches = c114CrossAxisFixedAutoRepeatAreaExpectation(
                 c114GridTrackSizingSceneID
             ) == nil || c114CrossAxisFixedAutoRepeatAreaTraceMatches(
@@ -13215,6 +13254,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedCyclicAutoRepeatTraceMatches,
                   expectedGridAutoRepeatIntrinsicWptTraceMatches,
                   expectedGridAutoFitColumnsWptTraceMatches,
+                  expectedFitContentImplicitColumnMatches,
                   expectedCrossAxisSpanGroupFramesMatch,
                   expectedTextMultiSpanFramesMatch, expectedImageMultiSpanFramesMatch,
                   expectedMixedMultiSpanFramesMatch,
@@ -14230,6 +14270,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c114FitContentPercentageArgumentExpectedPresentationIdentity = identity
             c114FitContentPercentageArgumentExpectedSurfaceGeneration = generation
             c114FitContentPercentageArgumentExpectedSequence = sequence
+            stateLock.unlock()
+            log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
+        }
+        if c114GridTrackSizingProbeRequested,
+           C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) {
+            let environmentReport = report ?? ""
+            guard C114FitContentImplicitColumnWpt.traceMatches(
+                    sceneID: c114GridTrackSizingSceneID, report: environmentReport),
+                  C114FitContentImplicitColumnWpt.nodeFramesMatch(
+                    sceneID: c114GridTrackSizingSceneID, report: environmentReport),
+                  let identity = C114FitContentImplicitColumnWpt.presentationIdentity(
+                    environmentReport, drawReport: false) else {
+                stateLock.lock()
+                c114FitContentImplicitColumnExpectedPresentationIdentity = nil
+                c114FitContentImplicitColumnExpectedSurfaceGeneration = nil
+                c114FitContentImplicitColumnExpectedSequence = nil
+                stateLock.unlock()
+                log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=false report=\(environmentReport)")
+                postStatus("실패 · C11.4 implicit fit-content column 환경이 기준 trace와 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 implicit fit-content column environment layout/revision 검증 실패"
+                )
+            }
+            stateLock.lock()
+            guard !closing && surfaceGeneration == generation
+                && presentationSequence == sequence else {
+                stateLock.unlock()
+                return
+            }
+            c114FitContentImplicitColumnExpectedPresentationIdentity = identity
+            c114FitContentImplicitColumnExpectedSurfaceGeneration = generation
+            c114FitContentImplicitColumnExpectedSequence = sequence
             stateLock.unlock()
             log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
         }
@@ -15409,6 +15481,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let pixelMarker = "SPINON_\(pixelRun.markerPrefix)_METAL_PIXEL"
             let expectedViewportWidth: Float = C114GridAutoFitColumnsWpt.surfacePixelSamples(
                 sceneID: pixelRun.sceneID
+            ) == nil && C114FitContentImplicitColumnWpt.surfacePixelSamples(
+                sceneID: pixelRun.sceneID
             ) == nil ? 320 : 480
             stateLock.lock()
             let drawableSize = c111MetalDrawableSize
@@ -15416,7 +15490,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let viewportHeight = viewportHeightCssPx
             stateLock.unlock()
             let expectedViewportHeight: Float =
-                pixelRun.sceneID == "fit-content-percentage-row-wpt" ? 400 : 240
+                pixelRun.sceneID == "fit-content-percentage-row-wpt" ? 400
+                    : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
             guard viewportWidth == expectedViewportWidth,
                   viewportHeight == expectedViewportHeight,
                   drawableSize.width > 0, drawableSize.height > 0 else {
@@ -15720,6 +15795,29 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C11.4 percentage fit-content draw revision이 surface 환경과 다릅니다")
                 throw C0410LatestTaskLaneError.operationFailed(
                     "C11.4 percentage fit-content draw identity가 surface environment와 일치하지 않습니다"
+                )
+            }
+        }
+        if c114GridTrackSizingProbeRequested,
+           C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) {
+            let actualIdentity = result.flatMap {
+                C114FitContentImplicitColumnWpt.presentationIdentity($0, drawReport: true)
+            }
+            stateLock.lock()
+            let expectedIdentity = c114FitContentImplicitColumnExpectedPresentationIdentity
+            let expectedSurfaceGeneration = c114FitContentImplicitColumnExpectedSurfaceGeneration
+            let expectedSequence = c114FitContentImplicitColumnExpectedSequence
+            let currentSequence = presentationSequence
+            stateLock.unlock()
+            let matched = actualIdentity != nil
+                && actualIdentity == expectedIdentity
+                && expectedSurfaceGeneration == generation
+                && expectedSequence == currentSequence
+            log("SPINON_C114_GRID_PRESENTATION_MATCH run_id=\(c114GridTrackSizingRunID) matched=\(matched) surface_generation=\(generation) sequence=\(currentSequence) expected_identity=\(expectedIdentity ?? "missing") actual_identity=\(actualIdentity ?? "missing")")
+            guard matched else {
+                postStatus("실패 · C11.4 implicit fit-content column draw revision이 surface 환경과 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 implicit fit-content column draw identity가 surface environment와 일치하지 않습니다"
                 )
             }
         }
@@ -16770,9 +16868,12 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }
         let expectedViewportWidth: UInt32 = C114GridAutoFitColumnsWpt.surfacePixelSamples(
             sceneID: run.sceneID
+        ) == nil && C114FitContentImplicitColumnWpt.surfacePixelSamples(
+            sceneID: run.sceneID
         ) == nil ? 320 : 480
         let expectedViewportHeight: UInt32 =
-            run.sceneID == "fit-content-percentage-row-wpt" ? 400 : 240
+            run.sceneID == "fit-content-percentage-row-wpt" ? 400
+                : C114FitContentImplicitColumnWpt.isScene(run.sceneID) ? 320 : 240
         let viewport = (width: expectedViewportWidth, height: expectedViewportHeight)
         stateLock.lock()
         let drawableSize = c111MetalDrawableSize

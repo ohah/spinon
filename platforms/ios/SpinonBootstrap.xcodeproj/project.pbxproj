@@ -24,6 +24,7 @@
 		100000000000000000000016 /* root-html-page-scale-runtime.html in Resources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000020 /* root-html-page-scale-runtime.html */; };
 		100000000000000000000017 /* C114GridAutoFitColumnsWpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000021 /* C114GridAutoFitColumnsWpt.swift */; };
 		100000000000000000000018 /* C114FlexStage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000022 /* C114FlexStage.swift */; };
+		100000000000000000000019 /* C114FitContentImplicitColumnWpt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200000000000000000000023 /* C114FitContentImplicitColumnWpt.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		200000000000000000000020 /* root-html-page-scale-runtime.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = "../Resources/root-html-page-scale-runtime.html"; sourceTree = "<group>"; };
 		200000000000000000000021 /* C114GridAutoFitColumnsWpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C114GridAutoFitColumnsWpt.swift; sourceTree = "<group>"; };
 		200000000000000000000022 /* C114FlexStage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C114FlexStage.swift; sourceTree = "<group>"; };
+		200000000000000000000023 /* C114FitContentImplicitColumnWpt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = C114FitContentImplicitColumnWpt.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				200000000000000000000018 /* C131StackingFullViewportHitGridSummary.swift */,
 				200000000000000000000021 /* C114GridAutoFitColumnsWpt.swift */,
 				200000000000000000000022 /* C114FlexStage.swift */,
+				200000000000000000000023 /* C114FitContentImplicitColumnWpt.swift */,
 				200000000000000000000008 /* RuntimeThreadExperimentViewController.swift */,
 				200000000000000000000009 /* S04GpuDemo.swift */,
 				200000000000000000000002 /* SpinonRunner.mm */,
@@ -141,7 +144,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		500000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000001 /* AppDelegate.swift in Sources */, 100000000000000000000002 /* SpinonRunner.mm in Sources */, 100000000000000000000003 /* R08GpuDemo.swift in Sources */, 100000000000000000000004 /* RuntimeThreadExperimentViewController.swift in Sources */, 100000000000000000000005 /* S04GpuDemo.swift in Sources */, 100000000000000000000006 /* R05PresentationLedger.swift in Sources */, 100000000000000000000007 /* C0410RuntimeGpuDemo.swift in Sources */, 100000000000000000000008 /* C0410LatestTaskLane.swift in Sources */, 100000000000000000000009 /* C124RuntimeMatrixProbe.swift in Sources */, 100000000000000000000010 /* C131HitIdentityGridSummary.swift in Sources */, 100000000000000000000011 /* C131MetalSurfacePixelCapture.swift in Sources */, 100000000000000000000012 /* C192MetalSurfacePixelCapture.swift in Sources */, 100000000000000000000013 /* C131MetalFullSurfacePixelCapture.swift in Sources */, 100000000000000000000014 /* C131StackingFullViewportHitGridSummary.swift in Sources */, 100000000000000000000017 /* C114GridAutoFitColumnsWpt.swift in Sources */, 100000000000000000000018 /* C114FlexStage.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
+		500000000000000000000002 /* Sources */ = {isa = PBXSourcesBuildPhase; buildActionMask = 2147483647; files = (100000000000000000000001 /* AppDelegate.swift in Sources */, 100000000000000000000002 /* SpinonRunner.mm in Sources */, 100000000000000000000003 /* R08GpuDemo.swift in Sources */, 100000000000000000000004 /* RuntimeThreadExperimentViewController.swift in Sources */, 100000000000000000000005 /* S04GpuDemo.swift in Sources */, 100000000000000000000006 /* R05PresentationLedger.swift in Sources */, 100000000000000000000007 /* C0410RuntimeGpuDemo.swift in Sources */, 100000000000000000000008 /* C0410LatestTaskLane.swift in Sources */, 100000000000000000000009 /* C124RuntimeMatrixProbe.swift in Sources */, 100000000000000000000010 /* C131HitIdentityGridSummary.swift in Sources */, 100000000000000000000011 /* C131MetalSurfacePixelCapture.swift in Sources */, 100000000000000000000012 /* C192MetalSurfacePixelCapture.swift in Sources */, 100000000000000000000013 /* C131MetalFullSurfacePixelCapture.swift in Sources */, 100000000000000000000014 /* C131StackingFullViewportHitGridSummary.swift in Sources */, 100000000000000000000017 /* C114GridAutoFitColumnsWpt.swift in Sources */, 100000000000000000000018 /* C114FlexStage.swift in Sources */, 100000000000000000000019 /* C114FitContentImplicitColumnWpt.swift in Sources */,); runOnlyForDeploymentPostprocessing = 0; };
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
