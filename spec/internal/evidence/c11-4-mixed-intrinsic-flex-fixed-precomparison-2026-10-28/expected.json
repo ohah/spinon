@@ -1,0 +1,397 @@
+{
+  "calculation": "CSS Grid 2025 CRD \u00a711.7.1 exact rational arithmetic",
+  "cases": {
+    "column-freeze": {
+      "axis": "columns",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 100,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 100,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 140,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 120
+        },
+        "b": {
+          "x": 110,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 160,
+          "y": 0,
+          "width": 140,
+          "height": 120
+        }
+      }
+    },
+    "column-no-freeze": {
+      "axis": "columns",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 40,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 80,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 160,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 120
+        },
+        "b": {
+          "x": 90,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 140,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        }
+      }
+    },
+    "column-equal-boundary": {
+      "axis": "columns",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 80,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 80,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 160,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 120
+        },
+        "b": {
+          "x": 90,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 140,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        }
+      }
+    },
+    "column-freeze-reversed": {
+      "axis": "columns",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 100,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 100,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 140,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 120
+        },
+        "b": {
+          "x": 110,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 160,
+          "y": 0,
+          "width": 140,
+          "height": 120
+        }
+      }
+    },
+    "row-freeze": {
+      "axis": "rows",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 100,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 100,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 140,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 100
+        },
+        "b": {
+          "x": 0,
+          "y": 110,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 160,
+          "width": 120,
+          "height": 140
+        }
+      }
+    },
+    "row-no-freeze": {
+      "axis": "rows",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 40,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 80,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 160,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "b": {
+          "x": 0,
+          "y": 90,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 140,
+          "width": 120,
+          "height": 160
+        }
+      }
+    },
+    "row-equal-boundary": {
+      "axis": "rows",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 80,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 80,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 160,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "b": {
+          "x": 0,
+          "y": 90,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 140,
+          "width": 120,
+          "height": 160
+        }
+      }
+    },
+    "row-freeze-reversed": {
+      "axis": "rows",
+      "sizingAxisPx": 300,
+      "crossAxisPx": 120,
+      "minContentBasePx": 100,
+      "flexFactors": [
+        1,
+        2
+      ],
+      "gapPx": 10,
+      "tracksPx": [
+        {
+          "numerator": 100,
+          "denominator": 1
+        },
+        {
+          "numerator": 40,
+          "denominator": 1
+        },
+        {
+          "numerator": 140,
+          "denominator": 1
+        }
+      ],
+      "remainingFreeSpacePx": {
+        "numerator": 0,
+        "denominator": 1
+      },
+      "itemFramesRootRelativePx": {
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 100
+        },
+        "b": {
+          "x": 0,
+          "y": 110,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 160,
+          "width": 120,
+          "height": 140
+        }
+      }
+    }
+  }
+}

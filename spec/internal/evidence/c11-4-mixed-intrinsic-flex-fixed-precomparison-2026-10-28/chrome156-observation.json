@@ -1,0 +1,97 @@
+{
+  "browser": "HeadlessChrome/156.0.0.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "widthCssPx": 1280,
+    "heightCssPx": 633,
+    "devicePixelRatio": 1
+  },
+  "readiness": {
+    "ahemFontLoaded": true,
+    "documentFontStatus": "loaded",
+    "decodedImages": 8,
+    "imageNaturalSizeCssPx": [24, 16]
+  },
+  "scenes": {
+    "column-freeze": {
+      "gridTemplateColumns": "100px 40px 140px",
+      "gridTemplateRows": "120px",
+      "rootFrameGlobalCssPx": [36, 107.594, 300, 120],
+      "itemFramesGlobalCssPx": {
+        "a": [36, 107.594, 100, 120],
+        "b": [146, 107.594, 24, 16],
+        "c": [196, 107.594, 140, 120]
+      }
+    },
+    "column-no-freeze": {
+      "gridTemplateColumns": "80px 40px 160px",
+      "gridTemplateRows": "120px",
+      "rootFrameGlobalCssPx": [662, 107.594, 300, 120],
+      "itemFramesGlobalCssPx": {
+        "a": [662, 107.594, 80, 120],
+        "b": [752, 107.594, 24, 16],
+        "c": [802, 107.594, 160, 120]
+      }
+    },
+    "column-equal-boundary": {
+      "gridTemplateColumns": "80px 40px 160px",
+      "gridTemplateRows": "120px",
+      "rootFrameGlobalCssPx": [36, 347.594, 300, 120],
+      "itemFramesGlobalCssPx": {
+        "a": [36, 347.594, 80, 120],
+        "b": [126, 347.594, 24, 16],
+        "c": [176, 347.594, 160, 120]
+      }
+    },
+    "column-freeze-reversed": {
+      "gridTemplateColumns": "100px 40px 140px",
+      "gridTemplateRows": "120px",
+      "rootFrameGlobalCssPx": [662, 347.594, 300, 120],
+      "itemFramesGlobalCssPx": {
+        "c": [822, 347.594, 140, 120],
+        "b": [772, 347.594, 24, 16],
+        "a": [662, 347.594, 100, 120]
+      }
+    },
+    "row-freeze": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "100px 40px 140px",
+      "rootFrameGlobalCssPx": [36, 587.594, 120, 300],
+      "itemFramesGlobalCssPx": {
+        "a": [36, 587.594, 120, 100],
+        "b": [36, 697.594, 24, 16],
+        "c": [36, 747.594, 120, 140]
+      }
+    },
+    "row-equal-boundary": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "80px 40px 160px",
+      "rootFrameGlobalCssPx": [662, 587.594, 120, 300],
+      "itemFramesGlobalCssPx": {
+        "a": [662, 587.594, 120, 80],
+        "b": [662, 677.594, 24, 16],
+        "c": [662, 727.594, 120, 160]
+      }
+    },
+    "row-no-freeze": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "80px 40px 160px",
+      "rootFrameGlobalCssPx": [36, 959.188, 120, 300],
+      "itemFramesGlobalCssPx": {
+        "a": [36, 959.188, 120, 80],
+        "b": [36, 1049.188, 24, 16],
+        "c": [36, 1099.188, 120, 160]
+      }
+    },
+    "row-freeze-reversed": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "100px 40px 140px",
+      "rootFrameGlobalCssPx": [662, 959.188, 120, 300],
+      "itemFramesGlobalCssPx": {
+        "c": [662, 1119.188, 120, 140],
+        "b": [662, 1069.188, 24, 16],
+        "a": [662, 959.188, 120, 100]
+      }
+    }
+  }
+}
