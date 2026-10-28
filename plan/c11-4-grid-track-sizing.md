@@ -2,7 +2,7 @@
 
 ## 2026-10-28 `fit-content()` automatic-minimum floor WPT 계획
 
-Pinned WPT의 `fit-content(40px)` third assertion에서 item automatic minimum이 argument보다 큰 경우와 `min-height:0` differential control을 고정했다. Agent Browser HeadlessChrome 156은 upstream WPT 13/13과 target rows `[10,100]px`를 관찰했다. CSS Grid 2025 CRD §6.6·§11.2·§11.5에서 산출한 독립 기대값과 고정 source hash는 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-precomparison-2026-10-28/README.md)에 있다. 계획 review 20개는 [별도 문서](./c11-4-fit-content-auto-minimum-floor-plan-review-20.md)에 기록했다. 구현 전 계획 PR diff를 별도 검토하고 병합한 뒤 opt-in Android/iOS app runtime slice로 진행한다. 계획에는 UI runtime, 일반 CSS admission, WPT 전체 통과를 주장하지 않는다. C11.4와 공식 `72/213`은 미완료다.
+Pinned WPT의 `fit-content(40px)` third assertion에서 item automatic minimum이 argument보다 큰 경우와 `min-height:0` differential control을 고정했다. Agent Browser HeadlessChrome 156은 upstream WPT 13/13과 target rows `[10,100]px`를 관찰했다. CSS Grid 2025 CRD §6.6·§11.2·§11.5에서 산출한 독립 기대값과 고정 source hash는 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-precomparison-2026-10-28/README.md)에 있다. 계획 review 20개는 [별도 문서](./c11-4-fit-content-auto-minimum-floor-plan-review-20.md)에 기록했다. 그 계획을 기반으로 두 고정 scene의 opt-in Android/iOS app runtime slice를 추가했고, device geometry, contribution trace, PixelCopy/Metal 표면 표본과 한계를 [실행 근거](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-runtime-2026-10-28/README.md)에 기록했다. 이는 WPT suite 통과나 일반 CSS admission이 아니다. C11.4와 공식 `72/213`은 미완료다.
 
 ## 2026-10-28 `minmax(auto, max-content)` two-track span · overflow automatic minimum runtime 후속 계획
 

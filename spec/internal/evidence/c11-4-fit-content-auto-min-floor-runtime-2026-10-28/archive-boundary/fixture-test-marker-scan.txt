@@ -1,0 +1,27 @@
+810:__ZN10spinon_ffi11runtime_gpu8fixtures5c11_433fit_content_auto_min_floor_report11report_json17h9fee2071770481b1E
+2892:__ZN14spinon_runtime7session10ua_cascade14runtime_layout8fixtures32c11_4_fit_content_auto_min_floor11observation17ha05cce7038e4da3cE
+2893:__ZN14spinon_runtime7session10ua_cascade14runtime_layout8fixtures32c11_4_fit_content_auto_min_floor15validate_output17hccb6bb8179402746E
+2894:__ZN14spinon_runtime7session10ua_cascade14runtime_layout8fixtures32c11_4_fit_content_auto_min_floor7prepare17hfc01a3cff45e731fE
+54966:crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor_report.rs
+56862:crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor_report.rs
+57662:single-token-min-contentABCmin-contentsingle-token-max-contentmax-contenttwo-words-min-contenttwo-words-max-contentthree-words-min-contentthree-words-max-contentcollapsed-whitespace-min-content  A   9Z  collapsed-whitespace-max-contentspaces-only-min-content   spaces-only-max-contentfit-content-auto-min-floor-wptfit-content-auto-min-floor-zero-control(() => {
+57664:root.setAttribute('id', 'c114-fit-content-auto-min-floor-zero-grid');
+57669:first.setAttribute('id', 'c114-fit-content-auto-min-floor-zero-first-item');
+57673:firstChild.setAttribute('id', 'c114-fit-content-auto-min-floor-zero-first-child');
+57679:second.setAttribute('id', 'c114-fit-content-auto-min-floor-zero-second-item');
+57683:secondChild.setAttribute('id', 'c114-fit-content-auto-min-floor-zero-second-child');
+57688:return { sceneId:'fit-content-auto-min-floor-zero-control', rootId:'c114-fit-content-auto-min-floor-zero-grid', nodeIds:['c114-fit-content-auto-min-floor-zero-grid','c114-fit-content-auto-min-floor-zero-first-item','c114-fit-content-auto-min-floor-zero-first-child','c114-fit-content-auto-min-floor-zero-second-item','c114-fit-content-auto-min-floor-zero-second-child'] };
+57691:root.setAttribute('id', 'c114-fit-content-auto-min-floor-wpt-grid');
+57696:first.setAttribute('id', 'c114-fit-content-auto-min-floor-wpt-first-item');
+57700:firstChild.setAttribute('id', 'c114-fit-content-auto-min-floor-wpt-first-child');
+57706:second.setAttribute('id', 'c114-fit-content-auto-min-floor-wpt-second-item');
+57710:secondChild.setAttribute('id', 'c114-fit-content-auto-min-floor-wpt-second-child');
+57715:return { sceneId:'fit-content-auto-min-floor-wpt', rootId:'c114-fit-content-auto-min-floor-wpt-grid', nodeIds:['c114-fit-content-auto-min-floor-wpt-grid','c114-fit-content-auto-min-floor-wpt-first-item','c114-fit-content-auto-min-floor-wpt-first-child','c114-fit-content-auto-min-floor-wpt-second-item','c114-fit-content-auto-min-floor-wpt-second-child'] };
+72952:fit-content-auto-min-floor-wptsceneIdstyleSnapshotprofilegenerationrenderTreeRevisionstyleRevisionenvironmentRevisioncomputedPropertiesdisplaywidthheightminHeightgridTemplateColumnsgrid-template-columnsgrid-template-rowsgridAutoRowsgrid-auto-rowsalignContentalign-contenttypedGridStylelayoutInputGridContainercolumnsexplicitRowsplacementModeexpectedRowBaseSizesCssPxitemMinHeightsnodeIdsfirstItemfirstChildsecondItemsecondChildframesCssPxrowSizingStagesframeSourcepre-render LayoutOutput CSS pxC11.4 automatic-minimum fixture frame
+74277:crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor_report.rs
+78588:decoded image metadata missingc114_nested_implicit_row_intrinsic_snapshotPNG natural size changedc114_nested_implicit_row_image_snapshotc114_nested_implicit_row_image_decodec114_nested_implicit_row_image_requestexplicit row, first implicit row, and second implicit row items requirednested Grid identity or ownerone nested Grid requiredc114_fit_content_auto_min_floor_grid_input_missingc114-fit-content-auto-min-floor-wpt-gridc114-fit-content-auto-min-floor-zero-gridfit-content-auto-min-floor-zero-controlfit-content-auto-min-floor-wptduplicate fixture node framesrow sizing stage sequence or fit-content base differs from pinned tracerow sizing stage count differs from pinned tracec114_fit_content_auto_min_floor_output_mismatchwptfirst item child countsecond item child countColumns
+78609:crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_auto_min_floor.rs
+78610: c114-fit-content-auto-min-floor-
+78612: c114-fit-content-auto-min-floor-
+78614: c114-fit-content-auto-min-floor-
+78616: c114-fit-content-auto-min-floor-

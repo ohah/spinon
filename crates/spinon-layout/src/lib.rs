@@ -652,6 +652,8 @@ mod grid_auto_min_scrollable_overflow_tests;
 #[cfg(test)]
 mod grid_cyclic_percentage_gap_tests;
 #[cfg(test)]
+mod grid_fit_content_auto_min_floor_oracle_tests;
+#[cfg(test)]
 mod grid_fit_content_auto_neighbor_oracle_tests;
 #[cfg(test)]
 mod grid_fit_content_min_height_oracle_tests;
