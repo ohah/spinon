@@ -43,34 +43,41 @@ fn expected_rows_pass() -> LayoutGridTrackSizingPassTrace {
     ];
     let stages = stage_bases
         .into_iter()
-        .map(|(stage, base)| LayoutGridTrackSizingStageTrace {
-            stage,
-            tracks: vec![
-                LayoutGridTrackSizingTrackState {
-                    internal_index: 0,
-                    is_gutter: true,
-                    is_collapsed: true,
-                    base_size: 0.0,
-                    growth_limit: Some(0.0),
-                    infinitely_growable: false,
-                },
-                LayoutGridTrackSizingTrackState {
-                    internal_index: 1,
-                    is_gutter: false,
-                    is_collapsed: false,
-                    base_size: base,
-                    growth_limit: Some(400.0),
-                    infinitely_growable: false,
-                },
-                LayoutGridTrackSizingTrackState {
-                    internal_index: 2,
-                    is_gutter: true,
-                    is_collapsed: true,
-                    base_size: 0.0,
-                    growth_limit: Some(0.0),
-                    infinitely_growable: false,
-                },
-            ],
+        .map(|(stage, base)| {
+            let row_growth_limit = if stage == LayoutGridTrackSizingStageKind::Initialize {
+                None
+            } else {
+                Some(400.0)
+            };
+            LayoutGridTrackSizingStageTrace {
+                stage,
+                tracks: vec![
+                    LayoutGridTrackSizingTrackState {
+                        internal_index: 0,
+                        is_gutter: true,
+                        is_collapsed: true,
+                        base_size: 0.0,
+                        growth_limit: Some(0.0),
+                        infinitely_growable: false,
+                    },
+                    LayoutGridTrackSizingTrackState {
+                        internal_index: 1,
+                        is_gutter: false,
+                        is_collapsed: false,
+                        base_size: base,
+                        growth_limit: row_growth_limit,
+                        infinitely_growable: false,
+                    },
+                    LayoutGridTrackSizingTrackState {
+                        internal_index: 2,
+                        is_gutter: true,
+                        is_collapsed: true,
+                        base_size: 0.0,
+                        growth_limit: Some(0.0),
+                        infinitely_growable: false,
+                    },
+                ],
+            }
         })
         .collect();
     LayoutGridTrackSizingPassTrace {
@@ -145,6 +152,10 @@ fn accepts_only_the_exact_percentage_row_stage_and_contribution_trace() {
     let mut wrong_growth_limit = expected.clone();
     wrong_growth_limit.stages[3].tracks[1].growth_limit = Some(401.0);
     assert!(validate_rows_pass(&wrong_growth_limit, item).is_err());
+
+    let mut initial_growth_limit_resolved_too_early = expected.clone();
+    initial_growth_limit_resolved_too_early.stages[0].tracks[1].growth_limit = Some(400.0);
+    assert!(validate_rows_pass(&initial_growth_limit_resolved_too_early, item).is_err());
 
     let mut unexpectedly_growable = expected.clone();
     unexpectedly_growable.stages[3].tracks[1].infinitely_growable = true;

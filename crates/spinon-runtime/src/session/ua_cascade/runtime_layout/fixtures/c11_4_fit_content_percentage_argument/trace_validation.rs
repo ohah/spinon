@@ -32,13 +32,19 @@ pub(super) fn validate_rows_pass(
             "row sizing stage count or sequence differs from the WPT slice",
         ));
     }
+    let mut track_state_mismatches = Vec::new();
     for (stage, (expected_kind, expected_base)) in pass.stages.iter().zip(expected_stages) {
         if stage.stage != expected_kind || stage.tracks.len() != 3 {
             return Err(super::failure(
                 "row sizing stage order or track structure differs",
             ));
         }
-        let expected_growth_limits = [Some(0.0), Some(400.0), Some(0.0)];
+        let expected_growth_limits = if expected_kind == LayoutGridTrackSizingStageKind::Initialize
+        {
+            [Some(0.0), None, Some(0.0)]
+        } else {
+            [Some(0.0), Some(400.0), Some(0.0)]
+        };
         for (index, ((track, expected_track_base), expected_growth_limit)) in stage
             .tracks
             .iter()
@@ -54,11 +60,15 @@ pub(super) fn validate_rows_pass(
                 || track.growth_limit != expected_growth_limit
                 || track.infinitely_growable
             {
-                return Err(super::failure(
-                    "row sizing stage track state differs from the WPT slice",
+                track_state_mismatches.push(format!(
+                    "row sizing stage {:?} track {index}: actual={track:?}, expected_gutter={is_gutter}, expected_base={expected_track_base}, expected_growth_limit={expected_growth_limit:?}, expected_infinitely_growable=false",
+                    stage.stage
                 ));
             }
         }
+    }
+    if !track_state_mismatches.is_empty() {
+        return Err(super::failure(&track_state_mismatches.join("; ")));
     }
 
     let expected_contributions = [
