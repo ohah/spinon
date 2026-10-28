@@ -1,0 +1,59 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "apkSha256": "e5778e0f70ee430ecec95c55a77f86da41055f568662aea1cda218c8dff349cd",
+  "installedApkSha256": "e5778e0f70ee430ecec95c55a77f86da41055f568662aea1cda218c8dff349cd",
+  "sourceRevision": {
+    "commit": "95d45080b3127d3d1a5a77ca40d5f4a9845dec8d",
+    "tree": "60b679d4174243fb9b4e1b1598bfcf5b17245dc5",
+    "trackedDiffSha256": "ebdaecf382afcb487dc83e8147d0188622ee1ea01742559efce4023b604ef104",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "plan/c11-4-fit-content-percentage-argument.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/internal/0059-c11-grid-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_percentage_argument.rs",
+        "sha256": "a04b99ba4879f43200e661c9d1c4b220e4c722b85d9493dc96a557373b4f7d71"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_percentage_argument_report.rs",
+        "sha256": "b71257eeb0faf580136a782216b18c36d58d2139dc2f1c9aed1247cebdda3878"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_percentage_argument.rs",
+        "sha256": "5c314f1783e40a22c119e1226fa9040007a434bc1ff6974265ebaa33f6ac5093"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_percentage_argument/tests.rs",
+        "sha256": "f33479ddceb30ad0a04d47fac4aa725bd815fff7674a029134c3592d6085b718"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_percentage_argument/trace_validation.rs",
+        "sha256": "9bb321f2059b90f150b1a8bd166ff92ec744d5478bcaca280b63c6813871eb0f"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "88aebc21c77fc4afa04ebf039e90ba4bb321bafed2aa10c710ba287cf857aced"
+  }
+}

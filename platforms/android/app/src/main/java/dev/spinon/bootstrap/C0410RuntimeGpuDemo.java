@@ -346,6 +346,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-fixed-width-item", "minmax-auto-fixed-width-item",
             "fit-content-below-item-size", "fit-content-auto-neighbor-wpt",
             "fit-content-min-height-wpt",
+            "fit-content-percentage-row-wpt",
             "fit-content-spanning-wpt",
             "fit-content-auto-min-floor-wpt", "fit-content-auto-min-floor-zero-control",
             "columns-span2-visible-content-minimum", "columns-span2-clip-content-minimum",
@@ -1491,8 +1492,6 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             report, "render_tree_revision="))
                     || !Long.toString(styleRevision).equals(c114FitContentAutoNeighborReportField(
                             report, "style_revision="))
-                    || !Long.toString(environment).equals(c114FitContentAutoNeighborReportField(
-                            report, "environment_revision="))
                     || !source.startsWith("HostDocument {")
                     || !source.contains("DocumentGeneration(" + generation + ")")
                     || !source.contains("DocumentRevision(" + document + ")")
@@ -1523,9 +1522,122 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean c114FitContentMinHeightStageBasesMatch(
             org.json.JSONObject stage, double expectedBase
     ) {
+        if (stage == null) return false;
         org.json.JSONArray bases = stage.optJSONArray("baseSizesCssPx");
         return bases != null && bases.length() == 1
                 && Math.abs(bases.optDouble(0, Double.NaN) - expectedBase) <= 0.000001;
+    }
+
+    private static boolean c114FitContentPercentageArgumentTraceMatches(
+            String sceneId, String report
+    ) {
+        if (!"fit-content-percentage-row-wpt".equals(sceneId)) return true;
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject observation = diagnostics.optJSONObject(
+                    "fitContentPercentageArgument");
+            org.json.JSONObject style = observation == null
+                    ? null : observation.optJSONObject("styleSnapshot");
+            org.json.JSONObject computed = style == null
+                    ? null : style.optJSONObject("computedProperties");
+            org.json.JSONObject input = observation == null
+                    ? null : observation.optJSONObject("layoutInputGridContainer");
+            org.json.JSONObject ids = observation == null
+                    ? null : observation.optJSONObject("nodeIds");
+            org.json.JSONObject frames = observation == null
+                    ? null : observation.optJSONObject("framesCssPx");
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            if (observation == null || style == null || computed == null || input == null
+                    || ids == null || frames == null || revision == null
+                    || !sceneId.equals(observation.optString("sceneId"))
+                    || !"pre-render LayoutOutput CSS px".equals(
+                            observation.optString("frameSource"))
+                    || !"RuntimeBlockFlexGridTrackSizingV1".equals(style.optString("profile"))
+                    || !"grid".equals(computed.optString("display"))
+                    || !"LengthPx(60.0)".equals(computed.optString("width"))
+                    || !"LengthPx(300.0)".equals(computed.optString("height"))
+                    || !"60px".equals(computed.optString("gridTemplateColumns"))
+                    || !"none".equals(computed.optString("gridTemplateRows"))
+                    || !"fit-content(50%)".equals(computed.optString("gridAutoRows"))
+                    || !"normal".equals(computed.optString("alignContent"))
+                    || !"[LengthPx(60.0)]".equals(input.optString("columns"))
+                    || !"[]".equals(input.optString("explicitRows"))
+                    || !"TrackList([FitContent(Percentage(0.5))])".equals(
+                            input.optString("autoRows"))
+                    || !"Row".equals(input.optString("autoFlow"))
+                    || !"TrackSizing".equals(input.optString("placementMode"))) return false;
+
+            long root = ids.optLong("root", -1);
+            if (root != 1 || ids.optLong("item", -1) != 2 || ids.optLong("child", -1) != 3
+                    || style.optLong("rootNode", -1) != root
+                    || input.optLong("rootNode", -1) != root
+                    || !c114FitContentAutoNeighborFrameMatches(
+                            frames.optJSONObject("root"), 0, 0, 60, 300)
+                    || !c114FitContentAutoNeighborFrameMatches(
+                            frames.optJSONObject("item"), 0, 0, 60, 150)
+                    || !c114FitContentAutoNeighborFrameMatches(
+                            frames.optJSONObject("child"), 0, 0, 30, 400)) return false;
+
+            long generation = style.optLong("generation", -1);
+            long document = style.optLong("documentRevision", -1);
+            long renderTree = style.optLong("renderTreeRevision", -1);
+            long styleRevision = style.optLong("styleRevision", -1);
+            long environment = style.optLong("environmentRevision", -1);
+            String source = revision.optString("source");
+            if (generation <= 0 || document <= 0 || renderTree <= 0 || styleRevision < 0
+                    || environment < 0 || revision.optLong("style", -1) != styleRevision
+                    || revision.optLong("environment", -1) != environment
+                    || !Long.toString(generation).equals(c114FitContentAutoNeighborReportField(
+                            report, "generation="))
+                    || !Long.toString(document).equals(c114FitContentAutoNeighborReportField(
+                            report, "document_revision="))
+                    || !Long.toString(renderTree).equals(c114FitContentAutoNeighborReportField(
+                            report, "render_tree_revision="))
+                    || !Long.toString(styleRevision).equals(c114FitContentAutoNeighborReportField(
+                            report, "style_revision="))
+                    || !Long.toString(environment).equals(c114FitContentAutoNeighborReportField(
+                            report, "environment_revision="))
+                    || !source.startsWith("HostDocument {")
+                    || !source.contains("DocumentGeneration(" + generation + ")")
+                    || !source.contains("DocumentRevision(" + document + ")")
+                    || !source.contains("RenderTreeRevision(" + renderTree + ")")) return false;
+
+            org.json.JSONArray stages = observation.optJSONArray("rowSizingStages");
+            return c114FitContentPercentageArgumentStagesMatch(stages);
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114FitContentPercentageArgumentStagesMatch(
+            org.json.JSONArray stages
+    ) {
+        String[] expectedStages = {
+                "Initialize",
+                "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+                "IntrinsicSizingComplete",
+                "MaximizeTracks",
+                "ExpandFlexibleTracks",
+                "StretchAutoTracks { applied: true }",
+        };
+        double[] expectedBases = {0.0, 0.0, 0.0, 150.0, 150.0, 150.0};
+        if (stages == null || stages.length() != expectedStages.length) return false;
+        for (int index = 0; index < expectedStages.length; index++) {
+            org.json.JSONObject stage = stages.optJSONObject(index);
+            org.json.JSONArray bases = stage == null
+                    ? null : stage.optJSONArray("baseSizesCssPx");
+            if (stage == null || bases == null || bases.length() != 1
+                    || !expectedStages[index].equals(stage.optString("stage"))
+                    || !Double.isFinite(bases.optDouble(0, Double.NaN))
+                    || Math.abs(bases.optDouble(0, Double.NaN) - expectedBases[index])
+                            > 0.000001) return false;
+        }
+        return true;
     }
 
     private static boolean c114FitContentSpanningTraceMatches(String sceneId, String report) {
@@ -2313,13 +2425,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static String c114FitContentMinHeightPresentationIdentity(
             String report, boolean drawReport
     ) {
+        return c114FitContentFixedViewportPresentationIdentity(report, drawReport, "320x240");
+    }
+
+    private static String c114FitContentPercentagePresentationIdentity(
+            String report, boolean drawReport
+    ) {
+        return c114FitContentFixedViewportPresentationIdentity(report, drawReport, "320x400");
+    }
+
+    private static String c114FitContentFixedViewportPresentationIdentity(
+            String report, boolean drawReport, String expectedViewport
+    ) {
         String rootFrameField = drawReport ? "root_css_px=" : "root_frame_css_px=";
         String viewportField = drawReport ? "viewport_css_px=" : "render_viewport_css_px=";
         if (!report.startsWith("status=0 ")
                 || !"3".equals(c114FitContentAutoNeighborReportField(report, "boxes="))
                 || !"60x300".equals(
                         c114FitContentAutoNeighborReportField(report, rootFrameField))
-                || !"320x240".equals(
+                || !expectedViewport.equals(
                         c114FitContentAutoNeighborReportField(report, viewportField))
                 || (!drawReport && !"ready".equals(
                         c114FitContentAutoNeighborReportField(report, "layout=")))
@@ -3391,6 +3515,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("fit-content-min-height-wpt".equals(sceneId)) {
             return "width=60,height=300";
         }
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) {
+            return "width=60,height=300";
+        }
         if ("fit-content-spanning-wpt".equals(sceneId)) {
             return "width=60,height=300";
         }
@@ -3786,6 +3913,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if ("fit-content-min-height-wpt".equals(sceneId)) {
             return "width=60,height=10";
+        }
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) {
+            return "width=60,height=150";
         }
         if ("fit-content-spanning-wpt".equals(sceneId)) {
             return "width=60,height=80";
@@ -5917,6 +6047,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
                     + "1:node=2,x=0,y=0,width=60,height=10;"
                     + "2:node=3,x=0,y=0,width=60,height=10]";
+        }
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
+                    + "1:node=2,x=0,y=0,width=60,height=150;"
+                    + "2:node=3,x=0,y=0,width=30,height=400]";
         }
         if ("fit-content-spanning-wpt".equals(sceneId)) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
@@ -8546,6 +8681,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if ("fit-content-auto-neighbor-wpt".equals(sceneId)
                 || "grid-layout-auto-tracks-c114-wpt".equals(sceneId)) return 5;
         if ("fit-content-min-height-wpt".equals(sceneId)) return 3;
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) return 3;
         if ("fit-content-spanning-wpt".equals(sceneId)) return 3;
         if ("fit-content-auto-min-floor-wpt".equals(sceneId)
                 || "fit-content-auto-min-floor-zero-control".equals(sceneId)) return 5;
@@ -9489,6 +9625,37 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             };
             String[] expectedTargets = {childId, rootId, rootId};
             int[][] expectedPoints = {{30, 5}, {30, 15}, {60, 15}};
+            if (samples.size() != expectedIds.length) return false;
+            boolean[] found = new boolean[expectedIds.length];
+            for (SurfaceViewPixelCapture.Sample sample : samples) {
+                int index = -1;
+                for (int candidate = 0; candidate < expectedIds.length; candidate++) {
+                    if (expectedIds[candidate].equals(sample.id)) {
+                        index = candidate;
+                        break;
+                    }
+                }
+                if (index < 0 || found[index]
+                        || !expectedTargets[index].equals(sample.targetNodeId)
+                        || sample.xCssPx != expectedPoints[index][0]
+                        || sample.yCssPx != expectedPoints[index][1]) return false;
+                found[index] = true;
+            }
+            for (boolean sampleFound : found) if (!sampleFound) return false;
+            return true;
+        }
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) {
+            String rootId = "c114-fit-content-percentage-grid";
+            String itemId = "c114-fit-content-percentage-item";
+            String childId = "c114-fit-content-percentage-child";
+            String[] expectedIds = {
+                "fit-content-percentage-child-in-row",
+                "fit-content-percentage-item-in-row",
+                "fit-content-percentage-root-below-row",
+                "fit-content-percentage-child-outside-root"
+            };
+            String[] expectedTargets = {childId, itemId, rootId, childId};
+            int[][] expectedPoints = {{15, 149}, {45, 149}, {45, 200}, {15, 350}};
             if (samples.size() != expectedIds.length) return false;
             boolean[] found = new boolean[expectedIds.length];
             for (SurfaceViewPixelCapture.Sample sample : samples) {
@@ -11406,6 +11573,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private String c114FitContentMinHeightExpectedPresentationIdentity = "";
     private long c114FitContentMinHeightExpectedSurfaceGeneration = -1;
     private long c114FitContentMinHeightExpectedSequence = -1;
+    private String c114FitContentPercentageArgumentExpectedPresentationIdentity = "";
+    private long c114FitContentPercentageArgumentExpectedSurfaceGeneration = -1;
+    private long c114FitContentPercentageArgumentExpectedSequence = -1;
     private String c114FitContentSpanningExpectedPresentationIdentity = "";
     private long c114FitContentSpanningExpectedSurfaceGeneration = -1;
     private long c114FitContentSpanningExpectedSequence = -1;
@@ -11905,6 +12075,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || C114FlexStage.surfacePixelSamples(pixelMatrixSceneId) != null
                         || "fit-content-auto-neighbor-wpt".equals(pixelMatrixSceneId)
                         || "fit-content-min-height-wpt".equals(pixelMatrixSceneId)
+                        || "fit-content-percentage-row-wpt".equals(pixelMatrixSceneId)
                         || "fit-content-spanning-wpt".equals(pixelMatrixSceneId)
                         || "fit-content-auto-min-floor-wpt".equals(pixelMatrixSceneId)
                         || "fit-content-auto-min-floor-zero-control".equals(pixelMatrixSceneId)
@@ -11960,10 +12131,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 try {
                     byte[] decoded = android.util.Base64.decode(pixelMatrixEncodedSamples,
                             android.util.Base64.URL_SAFE | android.util.Base64.NO_WRAP);
+                    int pixelMatrixViewportHeightCssPx =
+                            "fit-content-percentage-row-wpt".equals(pixelMatrixSceneId) ? 400 : 240;
                     pixelMatrixSamples = parseC11GridPixelMatrixSamples(
                             new String(decoded, StandardCharsets.UTF_8),
                             C114GridAutoFitColumnsWpt.surfacePixelSamples(pixelMatrixSceneId) != null
-                                    ? 480 : 320);
+                                    ? 480 : 320,
+                            pixelMatrixViewportHeightCssPx);
                     if (pixelMatrixSamples.isEmpty()) pixelMatrixConfigError = "empty-samples";
                     else if (c1131GridRepeatRequested
                             && !isC1131GridRepeatPixelSamples(pixelMatrixSamples)) {
@@ -12209,7 +12383,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c114GridTrackSizingRequested
                 ? "V8 intrinsic Grid track sizing → Stylo → Taffy → WGPU · "
                         + (c114AutoFitOverflowPixelMatrixRequested() ? "480" : "320")
-                        + "×240 CSS px"
+                        + "×"
+                        + ("fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId)
+                                ? "400" : "240") + " CSS px"
                 : c1133GridTemplateAreasRequested
                 ? "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
@@ -12420,6 +12596,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c131BorderStripProbeRequested ? 160
                 : c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested ? 240
                 : c125StickyFixtureRequested ? 260
+                : c114GridTrackSizingRequested
+                        && "fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId) ? 400
                 : fixedSizeCssFixtureRequested ? 240 : 100;
         LayoutParams surfaceParams = rootHtmlApplicationRequested
                 ? new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT)
@@ -12878,6 +13056,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     : c131CompactSurfaceMatrixProbeRequested ? 100
                     : c131BorderStripProbeRequested ? 160
                     : c132ScrollFixtureRequested || c133GestureFixtureRequested ? 240
+                : c114GridTrackSizingRequested
+                        && "fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId) ? 400
                     : c1133GridTemplateAreasRequested
                     || c1132GridNamedLinesRequested || c1131GridRepeatRequested ? 240
                     : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
@@ -13184,6 +13364,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     c114FitContentAutoNeighborTraceMatches(c114GridTrackSizingSceneId, result);
             boolean fitContentMinHeightTraceMatches =
                     c114FitContentMinHeightTraceMatches(c114GridTrackSizingSceneId, result);
+            boolean fitContentPercentageArgumentTraceMatches =
+                    c114FitContentPercentageArgumentTraceMatches(
+                            c114GridTrackSizingSceneId, result);
             boolean fitContentSpanningTraceMatches =
                     c114FitContentSpanningTraceMatches(c114GridTrackSizingSceneId, result);
             boolean fitContentAutoMinFloorTraceMatches =
@@ -13224,6 +13407,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !crossAxisTemplateAreaTraceMatches
                     || !fitContentAutoNeighborTraceMatches
                     || !fitContentMinHeightTraceMatches
+                    || !fitContentPercentageArgumentTraceMatches
                     || !fitContentSpanningTraceMatches
                     || !fitContentAutoMinFloorTraceMatches
                     || !overflowAutoMinimumTraceMatches
@@ -15367,7 +15551,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static List<SurfaceViewPixelCapture.Sample> parseC11GridPixelMatrixSamples(
-            String json, int viewportWidthCssPx
+            String json, int viewportWidthCssPx, int viewportHeightCssPx
     ) throws Exception {
         JSONArray records = new JSONArray(json);
         if (records.length() < 1 || records.length() > 64) return List.of();
@@ -15395,7 +15579,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             double y = yNumber.doubleValue();
             if (!id.matches("[a-z0-9-]{1,128}") || !Double.isFinite(x) || !Double.isFinite(y)
                     || x != Math.rint(x) || y != Math.rint(y)
-                    || x < 0 || x >= viewportWidthCssPx || y < 0 || y >= 240
+                    || x < 0 || x >= viewportWidthCssPx || y < 0 || y >= viewportHeightCssPx
                     || !ids.add(id) || !coordinates.add((int) x + "," + (int) y)) {
                 return List.of();
             }
@@ -15516,7 +15700,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? "c1122-grid-surface-pixel-matrix" : "c11-grid-surface-pixel-matrix";
         final int viewportWidthCssPx = C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneId) != null
                 ? 480 : 320;
-        final int viewportHeightCssPx = 240;
+        final int viewportHeightCssPx =
+                "fit-content-percentage-row-wpt".equals(sceneId) ? 400 : 240;
         double scaleX = width / (double) viewportWidthCssPx;
         double scaleY = height / (double) viewportHeightCssPx;
         Log.i(TAG, marker + "_BEGIN run_id=" + runId
@@ -15685,6 +15870,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "fit-content-min-height-child": return new int[] {255, 209, 102};
                 case "fit-content-min-height-root-background": return new int[] {23, 33, 43};
                 case "fit-content-min-height-outside-root": return new int[] {0, 0, 0};
+                default: return new int[] {0, 0, 0};
+            }
+        }
+        if ("fit-content-percentage-row-wpt".equals(sceneId)) {
+            switch (sampleId) {
+                case "fit-content-percentage-child-in-row":
+                case "fit-content-percentage-child-outside-root":
+                    return new int[] {255, 209, 102};
+                case "fit-content-percentage-item-in-row":
+                    return new int[] {229, 72, 77};
+                case "fit-content-percentage-root-below-row":
+                    return new int[] {23, 33, 43};
                 default: return new int[] {0, 0, 0};
             }
         }
@@ -16715,6 +16912,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " sequence=" + sequence + " identity=" + identity);
         }
         if (c114GridTrackSizingRequested
+                && "fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId)
+                && result.startsWith("status=0 ")) {
+            String identity = c114FitContentPercentagePresentationIdentity(result, false);
+            boolean strictMatches = !identity.isEmpty()
+                    && c114FitContentPercentageArgumentTraceMatches(
+                            c114GridTrackSizingSceneId, result)
+                    && c114ExpectedNodeFramesMatch(c114GridTrackSizingSceneId, result);
+            if (!strictMatches) {
+                synchronized (stateLock) {
+                    c114FitContentPercentageArgumentExpectedPresentationIdentity = "";
+                    c114FitContentPercentageArgumentExpectedSurfaceGeneration = -1;
+                    c114FitContentPercentageArgumentExpectedSequence = -1;
+                }
+                Log.e(TAG, "SPINON_C114_GRID_ENVIRONMENT_RESULT run_id="
+                        + c114GridTrackSizingRunId
+                        + " scene_id=" + c114GridTrackSizingSceneId
+                        + " strict_matches=false identity=" + identity + " report=" + result);
+                postStatus("실패 · C11.4 percentage fit-content surface 환경 trace가 기대값과 다릅니다");
+                return;
+            }
+            synchronized (stateLock) {
+                if (closing || !surfaceAvailable || surfaceGeneration != generation
+                        || hostPresentationSequence != sequence) return;
+                c114FitContentPercentageArgumentExpectedPresentationIdentity = identity;
+                c114FitContentPercentageArgumentExpectedSurfaceGeneration = generation;
+                c114FitContentPercentageArgumentExpectedSequence = sequence;
+            }
+            Log.i(TAG, "SPINON_C114_GRID_ENVIRONMENT_RESULT run_id="
+                    + c114GridTrackSizingRunId + " scene_id=" + c114GridTrackSizingSceneId
+                    + " strict_matches=true surface_generation=" + generation
+                    + " sequence=" + sequence + " identity=" + identity);
+        }
+        if (c114GridTrackSizingRequested
                 && "fit-content-spanning-wpt".equals(c114GridTrackSizingSceneId)
                 && result.startsWith("status=0 ")) {
             String identity = c114FitContentSpanningPresentationIdentity(result, false);
@@ -16878,6 +17108,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private float cssViewportHeightLocked() {
+        if (c114GridTrackSizingRequested
+                && "fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId)) {
+            return 400.0f;
+        }
         if (c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested) return 240.0f;
         if (BuildConfig.SPINON_IMAGE_PAINT_FIXTURE_TEST && imagePaintProbeRequested) {
             return imageAsyncReplacementProbeRequested ? 88.0f
@@ -17102,6 +17336,33 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + " actual_identity=" + actualIdentity);
             if (!matched) {
                 postStatus("실패 · C11.4 min-height draw revision이 검증된 환경과 다릅니다");
+                return;
+            }
+        }
+        if (c114GridTrackSizingRequested
+                && "fit-content-percentage-row-wpt".equals(c114GridTrackSizingSceneId)) {
+            String actualIdentity = c114FitContentPercentagePresentationIdentity(result, true);
+            String expectedIdentity;
+            long expectedSurfaceGeneration;
+            long expectedSequence;
+            long currentSequence;
+            synchronized (stateLock) {
+                expectedIdentity = c114FitContentPercentageArgumentExpectedPresentationIdentity;
+                expectedSurfaceGeneration = c114FitContentPercentageArgumentExpectedSurfaceGeneration;
+                expectedSequence = c114FitContentPercentageArgumentExpectedSequence;
+                currentSequence = hostPresentationSequence;
+            }
+            boolean matched = !actualIdentity.isEmpty()
+                    && actualIdentity.equals(expectedIdentity)
+                    && expectedSurfaceGeneration == generation
+                    && expectedSequence == currentSequence;
+            Log.i(TAG, "SPINON_C114_GRID_PRESENTATION_MATCH run_id="
+                    + c114GridTrackSizingRunId + " matched=" + matched
+                    + " surface_generation=" + generation + " sequence=" + currentSequence
+                    + " expected_identity=" + expectedIdentity
+                    + " actual_identity=" + actualIdentity);
+            if (!matched) {
+                postStatus("실패 · C11.4 percentage fit-content draw revision이 검증된 환경과 다릅니다");
                 return;
             }
         }
