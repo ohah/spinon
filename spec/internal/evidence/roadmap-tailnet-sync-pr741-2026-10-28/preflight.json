@@ -1,0 +1,39 @@
+{
+  "recorded_at_utc": "2026-10-28T06:31:58.811745+00:00",
+  "source_commit": "974296be9744681b42ea9c79a512e183f2d836a2",
+  "source_path": "/Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+  "source_bytes": 364401,
+  "source_sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+  "target_path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "target_before_bytes": 363975,
+  "target_before_sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+  "target_open_handles": [],
+  "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr741-2026-10-28/pass01/roadmap.html",
+  "backup_sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+  "tailscale_backend": "Running",
+  "tailscale_self_online": true,
+  "listeners_left_untouched": [
+    {
+      "pid": 28040,
+      "port": 8768,
+      "role": "Spinon preview server"
+    },
+    {
+      "pid": 33319,
+      "port": 4174,
+      "role": "separate preview listener"
+    }
+  ],
+  "local_http_before": {
+    "status": 200,
+    "bytes": 363975,
+    "sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+    "cache_control": "no-cache"
+  },
+  "tailnet_http_before": {
+    "status": 200,
+    "bytes": 363975,
+    "sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+    "cache_control": "no-cache"
+  }
+}

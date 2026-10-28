@@ -1,0 +1,22 @@
+{
+  "recorded_at_utc": "2026-10-28T06:31:58.824452+00:00",
+  "backup_sha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6",
+  "target_after_bytes": 364401,
+  "target_after_sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+  "source_sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+  "local_http_after": {
+    "status": 200,
+    "bytes": 364401,
+    "sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+    "cache_control": "no-cache"
+  },
+  "tailnet_http_after": {
+    "status": 200,
+    "bytes": 364401,
+    "sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+    "cache_control": "no-cache"
+  },
+  "changed_path": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "server_restarted": false,
+  "other_routes_or_files_changed": false
+}
