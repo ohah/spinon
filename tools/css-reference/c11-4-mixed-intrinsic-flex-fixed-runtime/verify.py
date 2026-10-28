@@ -22,6 +22,9 @@ EXPECTED_PATH = ROOT / (
 HIDDEN_EXPECTED_PATH = ROOT / (
     "spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json"
 )
+VISIBILITY_EXPECTED_PATH = ROOT / (
+    "spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json"
+)
 TRACE_TOLERANCE = 1e-4
 FRAME_TOLERANCE = 1e-4
 NUMBER = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
@@ -32,6 +35,8 @@ SCENE_IDS = {
     "column-freeze", "column-no-freeze", "column-equal-boundary",
     "column-freeze-reversed", "row-freeze", "row-no-freeze",
     "row-equal-boundary", "row-freeze-reversed", "column-hidden", "row-hidden",
+    "column-visibility-hidden", "column-visibility-visible-control",
+    "row-visibility-hidden", "row-visibility-visible-control",
 }
 
 
@@ -107,6 +112,70 @@ def merge_hidden_cases(cases: dict[str, Any], hidden_scenes: Any) -> dict[str, A
     return merged
 
 
+def merge_visibility_cases(cases: dict[str, Any], visibility_scenes: Any) -> dict[str, Any]:
+    if not isinstance(visibility_scenes, dict):
+        raise AssertionError("visibility scene 목록이 아닙니다.")
+    merged = dict(cases)
+    scene_ids = {
+        "column-hidden": "column-visibility-hidden",
+        "column-visible-control": "column-visibility-visible-control",
+        "row-hidden": "row-visibility-hidden",
+        "row-visible-control": "row-visibility-visible-control",
+    }
+    if set(visibility_scenes) != set(scene_ids):
+        raise AssertionError(f"visibility expected scene 집합 불일치: {sorted(visibility_scenes)}")
+    for expected_id, scene in visibility_scenes.items():
+        scene_id = scene_ids[expected_id]
+        axis = "rows" if scene_id.startswith("row-") else "columns"
+        root = scene.get("root")
+        items = scene.get("items")
+        if not isinstance(root, list) or len(root) != 4 or not isinstance(items, dict):
+            raise AssertionError(f"{scene_id}: root/items expected 값 누락")
+        hidden_frame = items.get("hidden")
+        if not isinstance(hidden_frame, list) or len(hidden_frame) != 4:
+            raise AssertionError(f"{scene_id}: visibility frame 누락")
+        if set(items) != {"a", "hidden", "b", "c"}:
+            raise AssertionError(f"{scene_id}: visibility item 집합 불일치")
+        if any(not isinstance(values, list) or len(values) != 4 for values in items.values()):
+            raise AssertionError(f"{scene_id}: visibility item frame 형식 오류")
+        frames = {
+            name: dict(zip(("x", "y", "width", "height"), values))
+            for name, values in items.items()
+        }
+        samples = scene.get("surface_sample_root_css_px")
+        rgb = scene.get("surface_sample_rgb")
+        if not isinstance(samples, list) or len(samples) != 2 or not isinstance(rgb, list) or len(rgb) != 3:
+            raise AssertionError(f"{scene_id}: 표면 pixel expected 값 누락")
+        hidden = scene.get("hidden_visibility") == "hidden"
+        if scene.get("hidden_visibility") not in {"hidden", "visible"}:
+            raise AssertionError(f"{scene_id}: visibility 값 오류")
+        prefix = f"novel-mixed-intrinsic-flex-fixed-{scene_id}"
+        gap_sample = ([60, 155] if axis == "rows" else [155, 60])
+        merged[scene_id] = {
+            "id": scene_id,
+            "axis": axis,
+            "crossAxisPx": root[2] if axis == "rows" else root[3],
+            "sizingAxisPx": root[3] if axis == "rows" else root[2],
+            "gapPx": 10,
+            "tracksPx": scene.get("axis_tracks_css_px"),
+            "remainingFreeSpacePx": 0,
+            "minContentBasePx": 100,
+            "visibilityMinContentPx": 150,
+            "itemFramesRootRelativePx": frames,
+            "visibilityHidden": hidden,
+            "boxCount": 4 if hidden else 5,
+            "drawBoxCount": 4 if hidden else 5,
+            "surfacePixelSamples": [
+                {"id": f"{scene_id}-overlap", "nodeId": f"{prefix}-visibility",
+                 "xCssPx": samples[0], "yCssPx": samples[1], "rgba": [*rgb, 255]},
+                {"id": f"{scene_id}-fixed-track-gap", "nodeId": f"{prefix}-root",
+                 "xCssPx": gap_sample[0], "yCssPx": gap_sample[1],
+                 "rgba": [232, 237, 245, 255]},
+            ],
+        }
+    return merged
+
+
 def expected_track_bases(case: dict[str, Any]) -> list[float]:
     tracks = case.get("tracksPx")
     if not isinstance(tracks, list) or len(tracks) != 3:
@@ -121,6 +190,14 @@ def expected_frames(case: dict[str, Any]) -> list[dict[str, float | int]]:
         "width": case["crossAxisPx"] if rows else case["sizingAxisPx"],
         "height": case["sizingAxisPx"] if rows else case["crossAxisPx"],
     }
+    if case.get("visibilityHidden") is not None:
+        return [
+            root,
+            {"node": 2, **case["itemFramesRootRelativePx"]["a"]},
+            {"node": 4, **case["itemFramesRootRelativePx"]["hidden"]},
+            {"node": 6, **case["itemFramesRootRelativePx"]["b"]},
+            {"node": 7, **case["itemFramesRootRelativePx"]["c"]},
+        ]
     if case.get("hiddenItem"):
         return [
             root,
@@ -175,12 +252,16 @@ def validate_fixed_pass(pass_record: dict[str, Any], case: dict[str, Any]) -> No
 
 def validate_intrinsic_inputs(diagnostics: dict[str, Any], case: dict[str, Any]) -> None:
     inputs = diagnostics.get("gridItemIntrinsicInputs")
-    if not isinstance(inputs, list) or len(inputs) != 3:
+    visibility = case.get("visibilityHidden") is not None
+    expected_count = 4 if visibility else 3
+    if not isinstance(inputs, list) or len(inputs) != expected_count:
         raise AssertionError(f"{case['id']}: direct Grid intrinsic input count 오류")
     hidden = case.get("hiddenItem") is True
     order = (["a", "b", "c"] if hidden else
-             (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]))
-    item_nodes = [4, 6, 7] if hidden else [2, 4, 5]
+             (["a", "visibility", "b", "c"] if visibility else
+              (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"])))
+    item_nodes = ([4, 6, 7] if hidden else
+                  ([2, 4, 6, 7] if visibility else [2, 4, 5]))
     target_dimension = "height" if case["axis"] == "rows" else "width"
     for index, (item, value) in enumerate(zip(order, inputs)):
         expected_source_order = index + 1 if hidden else index
@@ -204,9 +285,35 @@ def validate_intrinsic_inputs(diagnostics: dict[str, Any], case: dict[str, Any])
         contribution = value.get("contributionInput")
         if not isinstance(contribution, dict) or not isinstance(contribution.get(target_dimension), dict):
             raise AssertionError(f"{case['id']}/{item}: target-axis contribution 누락")
-        expected = (case["minContentBasePx"] if item == "a" else 40)
+        expected = (case["minContentBasePx"] if item == "a" else
+                    case["visibilityMinContentPx"] if item == "visibility" else 40)
         close(contribution[target_dimension].get("minContent"), expected,
               f"{case['id']}/{item}: min-content contribution")
+
+
+def validate_visibility_contributions(target: dict[str, Any], case: dict[str, Any]) -> None:
+    contributions = target.get("contributions")
+    automatic_minimum = (
+        "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, "
+        "spans_flexible_max_track: true, content_based: false, "
+        "is_compressible_replaced: false, fixed_track_sum: None, "
+        "fixed_gutter_sum: None, fixed_track_limit: None }"
+    )
+    signature = lambda item: (
+        item.get("item"), item.get("kind"), item.get("span"), item.get("value"),
+        item.get("crossesFlexibleTrack"), item.get("minimumSource"),
+    )
+    actual = sorted(signature(item) for item in contributions or [])
+    expected = sorted([
+        (2, "Minimum", 1, 0.0, True, automatic_minimum),
+        (4, "Minimum", 1, 0.0, True, automatic_minimum),
+        (2, "MinContent", 1, 100.0, True, None),
+        (4, "MinContent", 1, 150.0, True, None),
+    ])
+    if actual != expected:
+        raise AssertionError(
+            f"{case['id']}: visibility hidden span/visible sibling contributions 불일치: {actual!r}"
+        )
 
 
 def validate_diagnostics(diagnostics: dict[str, Any], case: dict[str, Any]) -> dict[str, Any]:
@@ -230,6 +337,8 @@ def validate_diagnostics(diagnostics: dict[str, Any], case: dict[str, Any]) -> d
     target = passes[target_index]
     if target.get("axis") != target_axis:
         raise AssertionError(f"{case['id']}: target axis 불일치")
+    if case.get("visibilityHidden") is not None:
+        validate_visibility_contributions(target, case)
     if case.get("hiddenItem") and any(
         contribution.get("item") == 2
         for axis_pass in passes
@@ -326,7 +435,70 @@ def parse_node_frames(log: str, scene_id: str) -> list[dict[str, Any]]:
     return frames
 
 
-def verify_scene_log(log: str, run_id: str, case: dict[str, Any]) -> dict[str, Any]:
+def verify_surface_pixels(log: str, run_id: str, case: dict[str, Any], target: str) -> list[dict[str, Any]]:
+    samples = case.get("surfacePixelSamples")
+    if not isinstance(samples, list) or not samples:
+        return []
+    marker = ("SPINON_C114_GRID_PIXEL_MATRIX" if target == "android-avd"
+              else "SPINON_C114_METAL_PIXEL")
+    summary_marker = f"{marker}_SUMMARY"
+    summary = next((line for line in log.splitlines()
+                    if summary_marker in line and f"run_id={run_id}" in line), None)
+    if summary is None or "status=matched" not in summary:
+        raise AssertionError(f"{case['id']}: 정확한 표면 표본 summary 누락/불일치")
+    for field in ("expected_samples", "observed_samples", "matched_samples"):
+        if f"{field}={len(samples)}" not in summary:
+            raise AssertionError(f"{case['id']}: 표면 표본 {field} 불일치")
+    begin_marker = f"{marker}_BEGIN"
+    begin = next((line for line in log.splitlines()
+                  if begin_marker in line and f"run_id={run_id}" in line), None)
+    if begin is None:
+        raise AssertionError(f"{case['id']}: 표면 표본 begin marker 누락")
+    if target == "android-avd":
+        drawable_width = re.search(r"\bwidth=(\d+)", begin)
+        drawable_height = re.search(r"\bheight=(\d+)", begin)
+        viewport_width = re.search(r"\bviewport_width=(\d+)", begin)
+        viewport_height = re.search(r"\bviewport_height=(\d+)", begin)
+    else:
+        drawable = re.search(r"\bdrawable=(\d+)x(\d+)", begin)
+        viewport = re.search(r"\bviewport=(\d+)x(\d+)", begin)
+        drawable_width = re.match(r"(\d+)", drawable[1]) if drawable else None
+        drawable_height = re.match(r"(\d+)", drawable[2]) if drawable else None
+        viewport_width = re.match(r"(\d+)", viewport[1]) if viewport else None
+        viewport_height = re.match(r"(\d+)", viewport[2]) if viewport else None
+    if not all((drawable_width, drawable_height, viewport_width, viewport_height)):
+        raise AssertionError(f"{case['id']}: 표면 drawable/viewport 크기 누락")
+    scale_x = int(drawable_width[1]) / int(viewport_width[1])
+    scale_y = int(drawable_height[1]) / int(viewport_height[1])
+    if not math.isfinite(scale_x) or not math.isfinite(scale_y) or scale_x <= 0 or scale_y <= 0:
+        raise AssertionError(f"{case['id']}: 표면 pixel scale 오류")
+    if abs(scale_x - scale_y) >= 1e-9:
+        raise AssertionError(f"{case['id']}: 표면 x/y pixel scale 불일치")
+    sample_marker = f"{marker}_SAMPLE"
+    for expected in samples:
+        line = next((line for line in log.splitlines()
+                     if sample_marker in line and f"run_id={run_id}" in line
+                     and f"sample={expected['id']}" in line), None)
+        if line is None:
+            raise AssertionError(f"{case['id']}/{expected['id']}: 표면 표본 로그 누락")
+        rgba = ",".join(str(channel) for channel in expected["rgba"])
+        if f"rgba={rgba}" not in line or f"expected={rgba} exact=true" not in line:
+            raise AssertionError(f"{case['id']}/{expected['id']}: 표면 RGBA mismatch")
+        if target == "android-avd" and f"target_node_id={expected['nodeId']}" not in line:
+            raise AssertionError(f"{case['id']}/{expected['id']}: PixelCopy target node 불일치")
+        if target == "android-avd" and (
+            f"css_x={float(expected['xCssPx'])}" not in line
+            or f"css_y={float(expected['yCssPx'])}" not in line
+        ):
+            raise AssertionError(f"{case['id']}/{expected['id']}: PixelCopy CSS 좌표 불일치")
+        x = math.floor((expected["xCssPx"] + 0.5) * scale_x)
+        y = math.floor((expected["yCssPx"] + 0.5) * scale_y)
+        if f"x={x} y={y}" not in line:
+            raise AssertionError(f"{case['id']}/{expected['id']}: drawable pixel 좌표 불일치")
+    return [{key: sample[key] for key in ("id", "nodeId", "rgba")} for sample in samples]
+
+
+def verify_scene_log(log: str, run_id: str, case: dict[str, Any], target: str) -> dict[str, Any]:
     scene_id = case["id"]
     if f"SPINON_C114_GRID_ASSERTION_ERROR run_id={run_id}" in log:
         raise AssertionError(f"{scene_id}: native assertion 실패")
@@ -338,19 +510,22 @@ def verify_scene_log(log: str, run_id: str, case: dict[str, Any]) -> dict[str, A
     if f"expected_root_frame=width={frame['width']},height={frame['height']}" not in line:
         raise AssertionError(f"{scene_id}: root frame summary 불일치")
     frame_count = len(expected_frames(case))
-    box_count = frame_count - (1 if case.get("hiddenItem") else 0)
+    box_count = case.get("boxCount", frame_count - (1 if case.get("hiddenItem") else 0))
     if f"status=0 layout=ready boxes={box_count}" not in line:
         raise AssertionError(f"{scene_id}: ready/box summary 불일치")
-    if "SPINON_C0410_DRAW" not in log or "status=0 presented boxes=4" not in log:
+    draw_box_count = case.get("drawBoxCount", box_count)
+    if ("SPINON_C0410_DRAW" not in log
+            or f"status=0 presented boxes={draw_box_count}" not in log):
         raise AssertionError(f"{scene_id}: presented marker 누락")
     frames = parse_node_frames(log, scene_id)
     verify_frames(frames, case)
     diagnostics, chunk_count = trace_diagnostics(log, run_id, scene_id)
     trace = validate_diagnostics(diagnostics, case)
+    pixel_samples = verify_surface_pixels(log, run_id, case, target)
     return {"sceneId": scene_id, "runID": run_id, "status": "passed",
-            "boxCount": box_count, "frameCount": frame_count,
+            "boxCount": box_count, "frameCount": frame_count, "drawBoxCount": draw_box_count,
             "nodeFrames": frames, "traceChunks": chunk_count, **trace,
-            "presented": True}
+            "presented": True, **({"pixelSamples": pixel_samples} if pixel_samples else {})}
 
 
 def extract_function_body(source: str, signature: str) -> str:
@@ -479,7 +654,10 @@ def verify_manifest(run_dir: Path, expected_cases: dict[str, dict[str, Any]]) ->
         if scene_id not in expected_cases or scene_id in found:
             raise AssertionError(f"{manifest_path}: 누락/중복/미등록 scene {scene_id!r}")
         log_path = run_dir / f"{log_prefix}{scene_id}.log"
-        result = verify_scene_log(log_path.read_text(), observation["runID"], expected_cases[scene_id])
+        result = verify_scene_log(log_path.read_text(), observation["runID"],
+                                  expected_cases[scene_id], manifest["target"])
+        if "pixelSamples" in result and observation.get("pixelSamples") != result["pixelSamples"]:
+            raise AssertionError(f"{scene_id}: manifest Pixel sample과 runtime log 불일치")
         screenshot = observation.get("screenshot", {})
         screenshot_path = ROOT / screenshot.get("path", "")
         data = screenshot_path.read_bytes()
@@ -515,9 +693,12 @@ def synthetic_diagnostics(case: dict[str, Any]) -> dict[str, Any]:
         flex_tracks.append({"internalIndex": index, "gutter": gutter,
                             "collapsed": boundary, "baseSize": size})
     hidden = case.get("hiddenItem") is True
+    visibility = case.get("visibilityHidden") is not None
     order = (["a", "b", "c"] if hidden else
-             (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]))
-    item_nodes = [4, 6, 7] if hidden else [2, 4, 5]
+             (["a", "visibility", "b", "c"] if visibility else
+              (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"])))
+    item_nodes = ([4, 6, 7] if hidden else
+                  ([2, 4, 6, 7] if visibility else [2, 4, 5]))
     inputs = []
     for index, item in enumerate(order):
         source_order = index + 1 if hidden else index
@@ -525,7 +706,8 @@ def synthetic_diagnostics(case: dict[str, Any]) -> dict[str, Any]:
             source = {"kind": "replaced", "natural": {"width": 24, "height": 16}}
             contribution = {"width": {"minContent": 24}, "height": {"minContent": 16}}
         else:
-            minimum = case["minContentBasePx"] if item == "a" else 40
+            minimum = (case["minContentBasePx"] if item == "a" else
+                       case["visibilityMinContentPx"] if item == "visibility" else 40)
             dimension = "height" if case["axis"] == "rows" else "width"
             source = {"kind": "orthogonalText" if case["axis"] == "rows" else "text"}
             contribution = {dimension: {"minContent": minimum}}
@@ -539,7 +721,21 @@ def synthetic_diagnostics(case: dict[str, Any]) -> dict[str, Any]:
                 {"stage": "ExpandFlexibleTracks", "tracks": flex_tracks},
                 {"stage": "StretchAutoTracks { applied: false }"},
             ]
-            contributions = []
+            if visibility:
+                contributions = [
+                    {"item": 2, "kind": "Minimum", "span": 1, "value": 0.0,
+                     "crossesFlexibleTrack": True,
+                     "minimumSource": "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }"},
+                    {"item": 4, "kind": "Minimum", "span": 1, "value": 0.0,
+                     "crossesFlexibleTrack": True,
+                     "minimumSource": "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }"},
+                    {"item": 2, "kind": "MinContent", "span": 1, "value": 100.0,
+                     "crossesFlexibleTrack": True, "minimumSource": None},
+                    {"item": 4, "kind": "MinContent", "span": 1, "value": 150.0,
+                     "crossesFlexibleTrack": True, "minimumSource": None},
+                ]
+            else:
+                contributions = []
         else:
             stages = [{"stage": "Initialize", "tracks": fixed_tracks},
                       {"stage": "FixedTrackEarlyReturn", "tracks": fixed_tracks}]
@@ -608,6 +804,43 @@ def run_negative_controls(cases: dict[str, dict[str, Any]]) -> list[str]:
     expect_rejected("hidden item track contribution", lambda: validate_diagnostics(
         leaked_contribution, hidden_case))
     passed.append("hidden item track contribution")
+    visibility_case = cases["row-visibility-hidden"]
+    visibility_diagnostics = synthetic_diagnostics(visibility_case)
+    validate_diagnostics(visibility_diagnostics, visibility_case)
+    wrong_visibility_min_content = copy.deepcopy(visibility_diagnostics)
+    wrong_visibility_min_content["gridItemIntrinsicInputs"][1]["contributionInput"]["height"]["minContent"] = 149
+    expect_rejected("wrong visibility hidden min-content", lambda: validate_intrinsic_inputs(
+        wrong_visibility_min_content, visibility_case))
+    passed.append("wrong visibility hidden min-content")
+    missing_visibility_contribution = copy.deepcopy(visibility_diagnostics)
+    missing_visibility_contribution["trackSizingTraces"][0]["passes"][1]["contributions"] = [
+        record for record in missing_visibility_contribution["trackSizingTraces"][0]["passes"][1]["contributions"]
+        if not (record.get("item") == 4 and record.get("kind") == "MinContent")
+    ]
+    expect_rejected("missing visibility hidden track contribution", lambda: validate_diagnostics(
+        missing_visibility_contribution, visibility_case))
+    passed.append("missing visibility hidden track contribution")
+    visible_case = cases["row-visibility-visible-control"]
+    visible_diagnostics = synthetic_diagnostics(visible_case)
+    validate_diagnostics(visible_diagnostics, visible_case)
+    pixel_log = (
+        "SPINON_C114_METAL_PIXEL_BEGIN run_id=test drawable=960x720 viewport=320x240\n"
+        "SPINON_C114_METAL_PIXEL_SAMPLE run_id=test sample=row-visibility-hidden-overlap x=181 y=376 "
+        "rgba=40,100,220,255 expected=40,100,220,255 exact=true\n"
+        "SPINON_C114_METAL_PIXEL_SAMPLE run_id=test sample=row-visibility-hidden-fixed-track-gap x=181 y=466 "
+        "rgba=232,237,245,255 expected=232,237,245,255 exact=true\n"
+        "SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=test expected_samples=2 "
+        "observed_samples=2 matched_samples=2"
+    )
+    expect_rejected("visible paint leaked through hidden visibility sample", lambda: verify_surface_pixels(
+        pixel_log.replace("rgba=40,100,220,255 expected=",
+                          "rgba=142,68,173,255 expected=", 1),
+        "test", visibility_case, "ios-simulator"))
+    passed.append("visible paint leaked through hidden visibility sample")
+    expect_rejected("wrong visibility sample coordinate", lambda: verify_surface_pixels(
+        pixel_log.replace("x=181 y=376", "x=182 y=376", 1),
+        "test", visibility_case, "ios-simulator"))
+    passed.append("wrong visibility sample coordinate")
     return passed
 
 
@@ -619,8 +852,10 @@ def main() -> None:
     args = parser.parse_args()
     expected = load_json(EXPECTED_PATH)
     hidden_expected = load_json(HIDDEN_EXPECTED_PATH)
-    cases = validate_case_inventory(merge_hidden_cases(
-        expected.get("cases"), hidden_expected.get("scenes")))
+    visibility_expected = load_json(VISIBILITY_EXPECTED_PATH)
+    cases = validate_case_inventory(merge_visibility_cases(
+        merge_hidden_cases(expected.get("cases"), hidden_expected.get("scenes")),
+        visibility_expected.get("scenes")))
     compare_platform_tables(cases)
     summary: dict[str, Any] = {
         "expectedSceneIds": list(cases),

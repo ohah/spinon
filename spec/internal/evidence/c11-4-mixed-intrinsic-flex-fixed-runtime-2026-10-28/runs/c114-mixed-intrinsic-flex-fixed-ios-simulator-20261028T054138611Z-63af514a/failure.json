@@ -1,0 +1,10 @@
+{
+  "complete": false,
+  "target": "ios-simulator",
+  "runPrefix": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054138611Z-63af514a",
+  "generatedAtUtc": "2026-10-28T05:45:21.701Z",
+  "selectedScenes": [
+    "row-visibility-hidden"
+  ],
+  "error": "AssertionError [ERR_ASSERTION]: row-visibility-hidden: exact runtime summary marker 누락\n    at verifyScene (file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs:589:10)\n    at runIOS (file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs:996:27)\n    at async file:///Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs:1061:8"
+}

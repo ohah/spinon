@@ -40,6 +40,9 @@ fn prepare_with_png(
     styles: &ComputedStyleSnapshot,
     png: &[u8],
 ) -> Result<Option<super::super::C11_4MixedInput>, RuntimeLayoutFailure> {
+    if let Some(input) = visibility_hidden::prepare(snapshot, root, styles, png)? {
+        return Ok(Some(input));
+    }
     if let Some(input) = hidden::prepare(snapshot, root, styles, png)? {
         return Ok(Some(input));
     }
@@ -194,6 +197,8 @@ fn prepare_with_png(
 
 #[path = "generic_intrinsic_flex_fixed/hidden.rs"]
 mod hidden;
+#[path = "generic_intrinsic_flex_fixed/visibility_hidden.rs"]
+mod visibility_hidden;
 
 fn track_axis(style: &ComputedElementStyle) -> Option<Axis> {
     let grid = style.grid_layout.as_ref()?;

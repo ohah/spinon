@@ -42,6 +42,27 @@ hidden scene은 보이는 root/item box가 4개이고 draw/presentation도 네 b
 | --- | --- |
 | ![Android column-hidden](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T035340076Z-8be33a99/android-column-hidden.png) | ![iOS row-hidden](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T035420142Z-8d77bf8f/ios-row-hidden.png) |
 
+## `visibility:hidden` hidden item 후속
+
+`visibility:hidden`인 direct `<span>`은 Grid layout과 intrinsic sizing에는 남고 paint에서는 빠진다. 두 축에서 span의 150px min-content가 첫 flexible track에 기여해 tracks `[150, 40, 90] CSS px`를 만들고 remaining free space는 0px이다. 숨긴 경우 root와 보이는 세 sibling만 4개 box로 그리지만 frame 기록은 다섯 개이며, span은 `120×150` 또는 `150×120 CSS px` frame을 유지한다. visible control도 같은 layout contribution을 유지하고 box/presentation 수는 5개다.
+
+hidden overlap 표본은 아래 파란 A box의 `[40, 100, 220, 255]`를, 고정 track gap은 root 배경 `[232, 237, 245, 255]`를 읽었다. visible-control overlap은 span의 보라색 `[142, 68, 173, 255]`를 읽었다. Android PixelCopy와 iOS Metal surface readback이 네 scene에서 각 표본을 exact match했다. Android/iOS 모두 전체 14 scene(기존 mixed freeze 8, `display:none` 2, 새 visibility 4)과 미등록 scene·visible-control·C11.2.1 충돌 profile의 거부 경로를 통과했다.
+
+| 대상 | 실행 환경 | Run ID | 앱 SHA-256 | source commit / tracked diff SHA-256 |
+| --- | --- | --- | --- | --- |
+| Android | API 37 ARM64 16 KB AVD `spinon_api37_1_compat16k`, `emulator-5554`, 1080×2400 | `c114-mixed-intrinsic-flex-fixed-android-avd-20261028T055342204Z-d0ead38b` | `65a819539645a4b04e60e621a35f2685f642144145c59b9cf048f71bd3afcb13` | `7c2d939557408673f02dfdba7d4e31a2d6e53df2` / `df29327c7fba381f868447332fc1b3bb997d32abaa26b7460c021939327ed4ba` |
+| iOS | iPhone 17 Pro (`iPhone18,1`), iOS 26.2 Simulator, 1206×2622 | `c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f` | `d3e843fa9a7a616eb7cd0f9ff31ab4ee4134450180e13a670f2126c6b1c3c8f2` | `7c2d939557408673f02dfdba7d4e31a2d6e53df2` / `a6e6cb3c26377cc725af54b74ebded299edc2e0f20640e9e4f7a87d146dc12e2` |
+
+두 manifest는 동일한 C11.4 source file set SHA-256 `42eb931cbf5f76245963de03677d9900cdd2149c64e957885d42ef18c35e7705`와 고정 V8 revision `7b50b62cb18f28617959e8452e2cd18195b38bcf`를 기록한다. 독립 검증 결과는 [14-scene visibility matrix](matrix-verification-visibility-hidden-2026-10-28.json)에 저장했다. 15개 negative control은 잘못된 visibility min-content, span contribution 누락, hidden text paint 누출, 표면 좌표 변조 등을 거부한다.
+
+| Android API 37 AVD: `row-visibility-hidden` | iPhone 17 Pro / iOS 26.2 Simulator: `row-visibility-hidden` |
+| --- | --- |
+| ![Android row visibility hidden](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T055342204Z-d0ead38b/android-row-visibility-hidden.png) | ![iOS row visibility hidden](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-visibility-hidden.png) |
+
+첫 iOS probe는 capture build에서 `SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST`가 빠져 실패했다. capture script에 opt-in을 추가해 다시 빌드·실행했으며, 첫 실패 run `c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054138611Z-63af514a`는 재현 이력으로 보존했다.
+
+이번 구현의 서로 다른 [20개 runtime/구현 실패 관점](visibility-hidden-implementation-runtime-review-20.md)과 [30개 PR diff 실패 관점](visibility-hidden-pr-diff-review-30.md)을 별도 검토했다. 기본/fixture opt-in release archive의 심볼 경계와 해시는 [아티팩트 경계 기록](artifact-boundary.md)에 있다.
+
 ## 기계 검증과 재현
 
 [`matrix-verification.json`](matrix-verification.json)은 두 manifest, 16 scene, frame 및 track trace, screenshot 크기·해시, 앱 presentation을 다시 검사했다. matcher의 자체 negative control 8개(중복 JSON 키, 누락 축, 누락 `ExpandFlexibleTracks`, 비유한 track 값, 잘못된 source order, 잘못된 image natural size, 잘못된 min-content, 잘못된 frame)도 모두 예상대로 거부됐다. 두 플랫폼 실행에서 미등록 scene과 충돌하는 C11.2.1 profile도 각각 거부됐다.
@@ -57,6 +78,9 @@ python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py -
 python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py --self-test \
   --android-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T035340076Z-8be33a99 \
   --ios-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T035420142Z-8d77bf8f
+python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py --self-test \
+  --android-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T055342204Z-d0ead38b \
+  --ios-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f
 ```
 
 ## 검증하지 않은 범위

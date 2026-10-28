@@ -19,6 +19,8 @@ const expectedJsonPath = resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json');
 const hiddenExpectedJsonPath = resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json');
+const visibilityExpectedJsonPath = resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json');
 const expectedCases = JSON.parse(readFileSync(expectedJsonPath, 'utf8')).cases;
 function rational(value) {
   if (value && typeof value === 'object') return value.numerator / value.denominator;
@@ -85,7 +87,70 @@ const hiddenScenes = JSON.parse(readFileSync(hiddenExpectedJsonPath, 'utf8')).sc
       hiddenNode: 2,
     };
   });
-const scenes = [...existingScenes, ...hiddenScenes];
+const visibilityScenes = Object.entries(
+  JSON.parse(readFileSync(visibilityExpectedJsonPath, 'utf8')).scenes,
+).map(([id, expected]) => {
+  const sceneId = {
+    'column-hidden': 'column-visibility-hidden',
+    'column-visible-control': 'column-visibility-visible-control',
+    'row-hidden': 'row-visibility-hidden',
+    'row-visible-control': 'row-visibility-visible-control',
+  }[id];
+  assert.ok(sceneId, `알 수 없는 visibility precomparison scene: ${id}`);
+  const axis = sceneId.startsWith('row-') ? 'Rows' : 'Columns';
+  const rootArray = expected.root;
+  const root = {
+    x: rootArray[0], y: rootArray[1], width: rootArray[2], height: rootArray[3],
+  };
+  const frame = (values) => ({
+    x: values[0], y: values[1], width: values[2], height: values[3],
+  });
+  const hidden = expected.hidden_visibility === 'hidden';
+  const rootId = `novel-mixed-intrinsic-flex-fixed-${sceneId}-root`;
+  const spanId = `novel-mixed-intrinsic-flex-fixed-${sceneId}-visibility`;
+  const sample = expected.surface_sample_root_css_px;
+  const surfacePixelSamples = [
+    {
+      id: `${sceneId}-overlap`, nodeId: spanId,
+      xCssPx: sample[0], yCssPx: sample[1],
+      rgba: [...expected.surface_sample_rgb, 255],
+    },
+    {
+      id: `${sceneId}-fixed-track-gap`, nodeId: rootId,
+      xCssPx: axis === 'Rows' ? 60 : 155,
+      yCssPx: axis === 'Rows' ? 155 : 60,
+      rgba: [232, 237, 245, 255],
+    },
+  ];
+  const visibleItems = Object.fromEntries(Object.entries(expected.items)
+    .map(([name, values]) => [name, frame(values)]));
+  return {
+    id: sceneId,
+    axis,
+    availableSize: axis === 'Rows' ? root.height : root.width,
+    oppositeSize: axis === 'Rows' ? root.width : root.height,
+    gap: 10,
+    bases: expected.axis_tracks_css_px,
+    remaining: 0,
+    minContentBase: 100,
+    root,
+    frames: [
+      { node: 1, ...root, semantic: 'root' },
+      { node: 2, ...visibleItems.a, semantic: 'a' },
+      { node: 4, ...visibleItems.hidden, semantic: 'visibility-span' },
+      { node: 6, ...visibleItems.b, semantic: 'image' },
+      { node: 7, ...visibleItems.c, semantic: 'c' },
+    ],
+    boxCount: hidden ? 4 : 5,
+    frameCount: 5,
+    drawBoxCount: hidden ? 4 : 5,
+    visibilityNode: 4,
+    visibilityMinContent: 150,
+    visibility: expected.hidden_visibility,
+    surfacePixelSamples,
+  };
+});
+const scenes = [...existingScenes, ...hiddenScenes, ...visibilityScenes];
 assert.ok(!sceneFilter || scenes.some(({ id }) => id === sceneFilter),
   `알 수 없는 flexible-track scene: ${sceneFilter}`);
 const selectedScenes = sceneFilter ? scenes.filter(({ id }) => id === sceneFilter) : scenes;
@@ -103,11 +168,17 @@ const sourceInputPaths = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/hidden.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/visibility_hidden.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/hidden.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/visibility_hidden.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests/visibility_hidden.rs',
+  'crates/spinon-style-to-render/src/runtime.rs',
+  'crates/spinon-style-to-render/src/tests/runtime.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs',
@@ -129,6 +200,7 @@ const sourceInputPaths = [
   'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
   'spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json',
   'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json',
+  'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json',
 ];
 const frameTolerance = 1e-4;
 const traceTolerance = 1e-4;
@@ -230,6 +302,7 @@ async function buildApplication() {
   const environment = {
     SPINON_ENABLE_C04_RUNTIME_GPU: '1',
     SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST: '1',
+    SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST: '1',
     SPINON_V8_DIR: v8Directory,
   };
   const result = command('mise', args, {
@@ -435,19 +508,46 @@ function assertTrace(diagnostics, scene) {
     `${scene.id}: Initialize → Maximize → Expand → Stretch 순서`);
   const { actualBases, remaining } = assertFlexibleTracks(
     target.stages[expand].tracks, scene);
+  assertVisibilityContributions(target, scene);
   assertIntrinsicInputs(diagnostics, scene);
   return { actualBases, remaining };
 }
 
+function assertVisibilityContributions(pass, scene) {
+  if (scene.visibilityNode === undefined) return;
+  const contributions = pass.contributions;
+  assert.ok(Array.isArray(contributions) && contributions.length === 4,
+    `${scene.id}: A와 visibility 항목의 축 contribution은 각각 Minimum/MinContent여야 함`);
+  const automaticMinimum = 'AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }';
+  const normalized = contributions.map(({ item, kind, span, crossesFlexibleTrack, value,
+    minimumSource }) => ({ item, kind, span, crossesFlexibleTrack, value, minimumSource }))
+    .sort((left, right) => left.item - right.item
+      || (left.kind === 'Minimum' ? 0 : 1) - (right.kind === 'Minimum' ? 0 : 1));
+  assert.deepEqual(normalized, [
+    { item: 2, kind: 'Minimum', span: 1, crossesFlexibleTrack: true,
+      value: 0, minimumSource: automaticMinimum },
+    { item: 2, kind: 'MinContent', span: 1, crossesFlexibleTrack: true,
+      value: 100, minimumSource: null },
+    { item: 4, kind: 'Minimum', span: 1, crossesFlexibleTrack: true,
+      value: 0, minimumSource: automaticMinimum },
+    { item: 4, kind: 'MinContent', span: 1, crossesFlexibleTrack: true,
+      value: scene.visibilityMinContent, minimumSource: null },
+  ], `${scene.id}: hidden visibility도 A 다음 source order로 정확히 track sizing에 참여해야 함`);
+}
+
 function assertIntrinsicInputs(diagnostics, scene) {
   const inputs = diagnostics.gridItemIntrinsicInputs;
-  assert.ok(Array.isArray(inputs) && inputs.length === 3,
-    `${scene.id}: direct grid intrinsic input count`);
+  const visibility = scene.visibilityNode !== undefined;
   const hidden = scene.hiddenNode !== undefined;
-  const itemOrder = hidden
+  const expectedLength = visibility ? 4 : 3;
+  assert.ok(Array.isArray(inputs) && inputs.length === expectedLength,
+    `${scene.id}: direct grid intrinsic input count`);
+  const itemOrder = visibility
+    ? ['a', 'visibility', 'b', 'c']
+    : hidden
     ? ['a', 'b', 'c']
     : (scene.id.endsWith('reversed') ? ['c', 'b', 'a'] : ['a', 'b', 'c']);
-  const nodeIds = hidden ? [4, 6, 7] : [2, 4, 5];
+  const nodeIds = visibility ? [2, 4, 6, 7] : hidden ? [4, 6, 7] : [2, 4, 5];
   for (const [index, input] of inputs.entries()) {
     const item = itemOrder[index];
     assert.equal(input.sourceOrder, hidden ? index + 1 : index,
@@ -464,7 +564,8 @@ function assertIntrinsicInputs(diagnostics, scene) {
     assert.equal(input.source?.kind, scene.axis === 'Rows' ? 'orthogonalText' : 'text',
       `${scene.id}/${item}: text input kind`);
     const physicalAxis = scene.axis === 'Rows' ? 'height' : 'width';
-    const expectedMinContent = item === 'a' ? scene.minContentBase : 40;
+    const expectedMinContent = item === 'a' ? scene.minContentBase
+      : item === 'visibility' ? scene.visibilityMinContent : 40;
     assertClose(input.contributionInput?.[physicalAxis]?.minContent, expectedMinContent,
       `${scene.id}/${item}: min-content contribution`);
   }
@@ -507,6 +608,35 @@ function verifyScene(log, runID, scene) {
   }
   const { total: traceChunks, diagnostics } = reassembleTrace(log, runID, scene.id);
   const { actualBases, remaining } = assertTrace(diagnostics, scene);
+  let pixelSamples;
+  if (scene.surfacePixelSamples) {
+    const marker = target === 'android-avd'
+      ? 'SPINON_C114_GRID_PIXEL_MATRIX' : 'SPINON_C114_METAL_PIXEL';
+    const summaryLine = log.split(/\r?\n/).find((line) => (
+      line.includes(`${marker}_SUMMARY`) && line.includes(`run_id=${runID}`)
+    ));
+    assert.ok(summaryLine?.includes('status=matched'),
+      `${scene.id}: ${marker} 정확한 표면 표본 summary 누락 또는 불일치`);
+    pixelSamples = scene.surfacePixelSamples.map((expected) => {
+      const sampleLine = log.split(/\r?\n/).find((line) => (
+        line.includes(`${marker}_SAMPLE`) && line.includes(`run_id=${runID}`)
+        && line.includes(`sample=${expected.id}`)
+      ));
+      assert.ok(sampleLine, `${scene.id}/${expected.id}: 표면 표본 로그 누락`);
+      assert.ok(sampleLine.includes(`rgba=${expected.rgba.join(',')}`),
+        `${scene.id}/${expected.id}: 실제 RGBA가 기대와 다름`);
+      if (target === 'android-avd') {
+        assert.ok(sampleLine.includes(`expected=${expected.rgba[0]},${expected.rgba[1]},${expected.rgba[2]},255 exact=true`),
+          `${scene.id}/${expected.id}: PixelCopy 표본 expected/exact 불일치`);
+        assert.ok(sampleLine.includes(`target_node_id=${expected.nodeId}`),
+          `${scene.id}/${expected.id}: PixelCopy 표본 owner NodeId 불일치`);
+      } else {
+        assert.ok(sampleLine.includes(`expected=${expected.rgba.join(',')} exact=true`),
+          `${scene.id}/${expected.id}: Metal 표본 expected/exact 불일치`);
+      }
+      return { id: expected.id, nodeId: expected.nodeId, rgba: expected.rgba };
+    });
+  }
   return {
     sceneId: scene.id,
     runID,
@@ -520,6 +650,7 @@ function verifyScene(log, runID, scene) {
     nodeFrames,
     traceChunks,
     presented: true,
+    ...(pixelSamples ? { pixelSamples } : {}),
   };
 }
 
@@ -615,10 +746,22 @@ async function runAndroid() {
     const observations = [];
     for (const [index, scene] of selectedScenes.entries()) {
       const runID = `${runPrefix}-${index}`;
+      assert.ok(runID.length <= 80, `${scene.id}: PixelCopy run ID가 80자를 초과합니다.`);
+      const pixelMatrixArguments = scene.surfacePixelSamples ? [
+        '--es', 'spinon_c11_grid_pixel_matrix_run_id', runID,
+        '--es', 'spinon_c11_grid_pixel_matrix_samples',
+        Buffer.from(JSON.stringify(scene.surfacePixelSamples.map((sample) => ({
+          id: sample.id,
+          nodeId: sample.nodeId,
+          xCssPx: sample.xCssPx,
+          yCssPx: sample.yCssPx,
+          rgba: sample.rgba,
+        })))).toString('base64url'),
+      ] : [];
       const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n',
         `${packageName}/.MainActivity`, '--ez', 'spinon_c114_grid_track_sizing', 'true',
         '--es', 'spinon_c114_grid_scene', scene.id,
-        '--es', 'spinon_c114_grid_run_id', runID]);
+        '--es', 'spinon_c114_grid_run_id', runID, ...pixelMatrixArguments]);
       const launchLog = normalizeEvidenceText(`${launch.stdout}${launch.stderr}`);
       const launchPath = resolve(evidenceDirectory, `android-launch-${scene.id}.log`);
       await writeFile(launchPath, launchLog);
@@ -635,9 +778,11 @@ async function runAndroid() {
         const summarySeen = runtimeLog.includes(
           `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
         const drawSeen = successfulDraw(runtimeLog, scene.drawBoxCount ?? scene.boxCount);
+        const pixelSeen = !scene.surfacePixelSamples || runtimeLog.includes(
+          `SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`);
         if (runtimeLog.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || runtimeLog.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
-            || (summarySeen && drawSeen)) break;
+            || (summarySeen && drawSeen && pixelSeen)) break;
         await sleep(300);
       }
       runtimeLog = normalizeEvidenceText(runtimeLog);
@@ -663,6 +808,19 @@ async function runAndroid() {
         dimensions: pngDimensions(screenshotPath),
         sha256: sha256(screenshot),
       };
+      if (scene.surfacePixelSamples) {
+        const pixelCopy = adb(['exec-out', 'run-as', packageName, 'cat',
+          `cache/c114-grid-surface-pixel-matrix/${scene.id}-${runID}.png`],
+        { encoding: null });
+        assertPng(pixelCopy.stdout, `Android PixelCopy 표면 캡처 ${scene.id}`);
+        const pixelCopyPath = resolve(evidenceDirectory, `android-pixelcopy-${scene.id}.png`);
+        await writeFile(pixelCopyPath, pixelCopy.stdout);
+        observation.pixelCopy = {
+          path: pixelCopyPath.slice(repositoryRoot.length + 1),
+          dimensions: pngDimensions(pixelCopyPath),
+          sha256: sha256(pixelCopy.stdout),
+        };
+      }
       observations.push(observation);
       console.log(`Android API 37 ARM64 AVD ${scene.id}: PASS`);
     }
@@ -790,9 +948,23 @@ async function runIOS() {
     const observations = [];
     for (const [index, scene] of selectedScenes.entries()) {
       const runID = `${runPrefix}-${index}`;
+      assert.ok(runID.length <= 80, `${scene.id}: Metal surface run ID가 80자를 초과합니다.`);
+      const pixelMatrixArguments = scene.surfacePixelSamples ? [
+        `--spinon-c11-grid-metal-surface-pixels=${runID}`,
+        `--spinon-c11-grid-metal-surface-samples=${Buffer.from(JSON.stringify(
+          scene.surfacePixelSamples.map((sample) => ({
+            id: sample.id,
+            nodeId: sample.nodeId,
+            xCssPx: sample.xCssPx,
+            yCssPx: sample.yCssPx,
+            rgba: sample.rgba,
+          })),
+        )).toString('base64')}`,
+      ] : [];
       const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process',
         serialOrUDID, packageName, '--spinon-c114-grid-track-sizing',
-        `--spinon-c114-grid-run-id=${runID}`, `--spinon-c114-grid-scene=${scene.id}`]);
+        `--spinon-c114-grid-run-id=${runID}`, `--spinon-c114-grid-scene=${scene.id}`,
+        ...pixelMatrixArguments]);
       const launchLog = normalizeEvidenceText(`${launch.stdout}${launch.stderr}`);
       const launchPath = resolve(evidenceDirectory, `ios-launch-${scene.id}.log`);
       await writeFile(launchPath, launchLog);
@@ -800,7 +972,8 @@ async function runIOS() {
       assert.ok(Number.isInteger(pid) && pid > 0, `${scene.id}: iOS launch PID 없음`);
       const predicate = 'process == "SpinonBootstrap" AND (eventMessage CONTAINS[c] "SPINON_C114_GRID" '
         + 'OR eventMessage CONTAINS[c] "SPINON_C0410_DRAW" '
-        + 'OR eventMessage CONTAINS[c] "SPINON_C114_GRID_NODE_FRAME")';
+        + 'OR eventMessage CONTAINS[c] "SPINON_C114_GRID_NODE_FRAME" '
+        + 'OR eventMessage CONTAINS[c] "SPINON_C114_METAL_PIXEL")';
       const deadline = Date.now() + 150_000;
       let runtimeLog = '';
       while (Date.now() < deadline) {
@@ -811,9 +984,11 @@ async function runIOS() {
         const summarySeen = runtimeLog.includes(
           `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
         const drawSeen = successfulDraw(runtimeLog, scene.drawBoxCount ?? scene.boxCount);
+        const pixelSeen = !scene.surfacePixelSamples || runtimeLog.includes(
+          `SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`);
         if (runtimeLog.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || runtimeLog.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
-            || (summarySeen && drawSeen)) break;
+            || (summarySeen && drawSeen && pixelSeen)) break;
         await sleep(500);
       }
       runtimeLog = normalizeEvidenceText(runtimeLog);

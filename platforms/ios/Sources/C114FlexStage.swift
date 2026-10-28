@@ -8,6 +8,8 @@ enum C114FlexStage {
         "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
         "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
         "column-hidden", "row-hidden",
+        "column-visibility-hidden", "column-visibility-visible-control",
+        "row-visibility-hidden", "row-visibility-visible-control",
     ]
     private static let tolerance = 1.0e-4
 
@@ -25,7 +27,25 @@ enum C114FlexStage {
 
     static func itemCount(_ sceneID: String) -> Int {
         guard isScene(sceneID) else { return 0 }
+        if isVisibilityScene(sceneID) { return isVisibilityHiddenScene(sceneID) ? 3 : 4 }
         return isMixedScene(sceneID) ? 3 : 2
+    }
+
+    static func surfacePixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        guard isVisibilityScene(sceneID) else { return nil }
+        let rootID = "novel-mixed-intrinsic-flex-fixed-\(sceneID)-root"
+        let spanID = "novel-mixed-intrinsic-flex-fixed-\(sceneID)-visibility"
+        let rows = isRowScene(sceneID)
+        let hidden = isVisibilityHiddenScene(sceneID)
+        return [
+            ("\(sceneID)-overlap", spanID,
+             rows ? 60 : 120, rows ? 125 : 60,
+             hidden ? [40, 100, 220, 255] : [142, 68, 173, 255]),
+            ("\(sceneID)-fixed-track-gap", rootID,
+             rows ? 60 : 155, rows ? 155 : 60, [232, 237, 245, 255]),
+        ]
     }
 
     static func nodeFramesMatch(_ sceneID: String, report: String) -> Bool {
@@ -119,7 +139,40 @@ enum C114FlexStage {
               let stretch = names.firstIndex(of: "StretchAutoTracks { applied: false }"),
               names.firstIndex(of: "Initialize")! < maximize,
               maximize < expand, expand < stretch else { return false }
-        return flexibleTracksMatch(sceneID, tracks: stages[expand]["tracks"])
+        return visibilityContributionsMatch(sceneID, pass: pass)
+            && flexibleTracksMatch(sceneID, tracks: stages[expand]["tracks"])
+    }
+
+    private static func visibilityContributionsMatch(
+        _ sceneID: String,
+        pass: [String: Any]
+    ) -> Bool {
+        guard isVisibilityScene(sceneID) else { return true }
+        let automaticMinimum = "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }"
+        let expected: [(Int, String, Double, String?)] = [
+            (2, "Minimum", 0, automaticMinimum),
+            (2, "MinContent", 100, nil),
+            (4, "Minimum", 0, automaticMinimum),
+            (4, "MinContent", 150, nil),
+        ]
+        guard let contributions = pass["contributions"] as? [[String: Any]],
+              contributions.count == expected.count else { return false }
+        var seen = Set<String>()
+        for contribution in contributions {
+            guard let node = integer(contribution["item"]),
+                  let kind = string(contribution["kind"]),
+                  let item = expected.first(where: { $0.0 == node && $0.1 == kind }),
+                  seen.insert("\(node):\(kind)").inserted,
+                  integer(contribution["span"]) == 1,
+                  boolean(contribution["crossesFlexibleTrack"]) == true,
+                  near(contribution["value"], expected: item.2) else { return false }
+            if let minimumSource = item.3 {
+                guard string(contribution["minimumSource"]) == minimumSource else { return false }
+            } else {
+                guard contribution["minimumSource"] is NSNull else { return false }
+            }
+        }
+        return seen.count == expected.count
     }
 
     private static func flexibleTracksMatch(_ sceneID: String, tracks value: Any?) -> Bool {
@@ -189,6 +242,16 @@ enum C114FlexStage {
                 [0, 0, 120, 300], [0, 0, 0, 0], [0, 0, 120, 100],
                 [0, 110, 24, 16], [0, 160, 120, 140],
             ]
+        case "column-visibility-hidden", "column-visibility-visible-control":
+            return [
+                [0, 0, 300, 120], [0, 0, 150, 120], [0, 0, 150, 120],
+                [160, 0, 24, 16], [210, 0, 90, 120],
+            ]
+        case "row-visibility-hidden", "row-visibility-visible-control":
+            return [
+                [0, 0, 120, 300], [0, 0, 120, 150], [0, 0, 120, 150],
+                [0, 160, 24, 16], [0, 210, 120, 90],
+            ]
         case "column-freeze":
             return [[0, 0, 300, 120], [0, 0, 100, 120], [110, 0, 24, 16], [160, 0, 140, 120]]
         case "column-no-freeze", "column-equal-boundary":
@@ -221,6 +284,9 @@ enum C114FlexStage {
         case "column-freeze", "column-freeze-reversed", "row-freeze", "row-freeze-reversed",
              "column-hidden", "row-hidden":
             return [100, 40, 140]
+        case "column-visibility-hidden", "column-visibility-visible-control",
+             "row-visibility-hidden", "row-visibility-visible-control":
+            return [150, 40, 90]
         case "column-no-freeze", "column-equal-boundary", "row-no-freeze", "row-equal-boundary":
             return [80, 40, 160]
         case "weighted-columns": return [190.0 / 3.0, 380.0 / 3.0]
@@ -243,12 +309,23 @@ enum C114FlexStage {
         sceneID == "column-hidden" || sceneID == "row-hidden"
     }
 
+    private static func isVisibilityScene(_ sceneID: String) -> Bool {
+        isVisibilityHiddenScene(sceneID)
+            || sceneID == "column-visibility-visible-control"
+            || sceneID == "row-visibility-visible-control"
+    }
+
+    private static func isVisibilityHiddenScene(_ sceneID: String) -> Bool {
+        sceneID == "column-visibility-hidden" || sceneID == "row-visibility-hidden"
+    }
+
     private static func intrinsicInputsMatch(
         _ sceneID: String,
         diagnostics: [String: Any]
     ) -> Bool {
+        let expectedInputCount = isVisibilityScene(sceneID) ? 4 : 3
         guard let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
-              inputs.count == 3 else { return false }
+              inputs.count == expectedInputCount else { return false }
         let reversed = sceneID.hasSuffix("reversed")
         let aMinContent: Double = sceneID.contains("equal-boundary")
             ? 80 : (sceneID.contains("no-freeze") ? 40 : 100)
@@ -258,7 +335,8 @@ enum C114FlexStage {
                   integer(input["node"]) == expectedIntrinsicNode(sceneID, index),
                   let source = input["source"] as? [String: Any],
                   let kind = string(source["kind"]) else { return false }
-            if index == 1 {
+            if (isVisibilityScene(sceneID) && index == 2)
+                || (!isVisibilityScene(sceneID) && index == 1) {
                 guard kind == "replaced",
                       let natural = source["natural"] as? [String: Any],
                       near(natural["width"], expected: 24),
@@ -269,8 +347,10 @@ enum C114FlexStage {
                   let contribution = input["contributionInput"] as? [String: Any],
                   let targetSize = contribution[isRowScene(sceneID) ? "height" : "width"]
                     as? [String: Any] else { return false }
-            let itemA = reversed ? index == 2 : index == 0
-            let expected = itemA ? aMinContent : 40
+            let visibilitySpan = isVisibilityScene(sceneID) && index == 1
+            let itemA = isVisibilityScene(sceneID)
+                ? index == 0 : (reversed ? index == 2 : index == 0)
+            let expected = visibilitySpan ? 150 : (itemA ? aMinContent : 40)
             guard near(targetSize["minContent"], expected: expected) else { return false }
         }
         return true
@@ -278,6 +358,16 @@ enum C114FlexStage {
 
     private static func expectedFrameNode(_ sceneID: String, _ frameIndex: Int) -> Int {
         guard isMixedScene(sceneID) else { return frameIndex + 1 }
+        if isVisibilityScene(sceneID) {
+            switch frameIndex {
+            case 0: return 1
+            case 1: return 2
+            case 2: return 4
+            case 3: return 6
+            case 4: return 7
+            default: return -1
+            }
+        }
         if isHiddenScene(sceneID) {
             switch frameIndex {
             case 0: return 1
@@ -298,6 +388,15 @@ enum C114FlexStage {
     }
 
     private static func expectedIntrinsicNode(_ sceneID: String, _ inputIndex: Int) -> Int {
+        if isVisibilityScene(sceneID) {
+            switch inputIndex {
+            case 0: return 2
+            case 1: return 4
+            case 2: return 6
+            case 3: return 7
+            default: return -1
+            }
+        }
         if isHiddenScene(sceneID) {
             switch inputIndex {
             case 0: return 4

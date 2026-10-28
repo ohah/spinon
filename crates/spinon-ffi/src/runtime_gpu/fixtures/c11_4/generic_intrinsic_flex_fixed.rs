@@ -6,6 +6,8 @@ enum Axis {
 
 #[path = "generic_intrinsic_flex_fixed/hidden.rs"]
 mod hidden;
+#[path = "generic_intrinsic_flex_fixed/visibility_hidden.rs"]
+mod visibility_hidden;
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Contribution {
@@ -109,7 +111,7 @@ pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
     if let Some(scene) = SCENES.iter().find(|scene| scene.id == scene_id).copied() {
         Some(scene_source(scene))
     } else {
-        hidden::runtime_source(scene_id)
+        hidden::runtime_source(scene_id).or_else(|| visibility_hidden::runtime_source(scene_id))
     }
 }
 

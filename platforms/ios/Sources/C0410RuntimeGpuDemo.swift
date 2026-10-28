@@ -252,6 +252,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
     "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
     "column-hidden", "row-hidden",
+    "column-visibility-hidden", "column-visibility-visible-control",
+    "row-visibility-hidden", "row-visibility-visible-control",
     "definite-minmax-calc-cross-axis-span-groups-reverse",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
     "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
@@ -7788,6 +7790,16 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = C114FlexStage.surfacePixelSamples(sceneID: sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneID: sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

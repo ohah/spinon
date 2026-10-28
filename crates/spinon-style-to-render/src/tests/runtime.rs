@@ -172,6 +172,47 @@ fn c114_runtime_scene_preserves_solid_border_geometry_and_paint() {
     );
 }
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn c114_visibility_hidden_keeps_layout_frame_but_omits_the_painted_box() {
+    let (document, root, children) = fixture_with_root_style(
+        "box-sizing:border-box;display:grid;width:100px;height:100px;grid-template-columns:100px;grid-template-rows:100px;background-color:#112233",
+        &[
+            "display:block;box-sizing:border-box;width:100px;height:100px;grid-column:1/2;grid-row:1/2;visibility:hidden;background-color:#e500a4",
+            "display:block;box-sizing:border-box;width:100px;height:100px;grid-column:1/2;grid-row:1/2;visibility:visible;background-color:#2864dc",
+        ],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), root)
+        .unwrap();
+    let viewport = viewport();
+    let output = compute_runtime_block_flex_grid_track_sizing_style_layout(
+        &snapshot,
+        &view,
+        root,
+        &[],
+        viewport,
+        Default::default(),
+    )
+    .unwrap();
+    let hidden_frame = output.layout.frames.get(&children[0].id()).unwrap();
+    assert_eq!(
+        [
+            hidden_frame.x,
+            hidden_frame.y,
+            hidden_frame.width,
+            hidden_frame.height,
+        ],
+        [0.0, 0.0, 100.0, 100.0]
+    );
+    let current = CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+    assert_eq!(render.boxes().len(), 2);
+    assert_eq!(render.boxes()[0].node_id(), root.id());
+    assert_eq!(render.boxes()[1].node_id(), children[1].id());
+}
+
 #[test]
 fn c19_computed_color_profile_is_rejected_by_runtime_renderer() {
     let (document, root, _) = fixture(&["width:51px;height:31px"], false);
