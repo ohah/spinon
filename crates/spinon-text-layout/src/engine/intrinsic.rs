@@ -33,6 +33,7 @@ impl TextLayoutEngine {
     /// 일반 공백 intrinsic profile만 지원합니다. 다른 vertical 입력은
     /// `UnsupportedVerticalIntrinsicProfile`로 거부하며,
     /// 이 profile은 일반 vertical text shaping이나 glyph painting 지원을 뜻하지 않습니다.
+    /// White-space는 normal/nowrap만 허용하며, nowrap은 soft wrap 기회가 없는 ASCII 입력으로 제한합니다.
     pub fn intrinsic_logical_sizes(
         &mut self,
         input: &ParagraphInput,
@@ -259,7 +260,10 @@ fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
         && !style.line_height_is_normal
         && style.font_weight == 400.0
         && style.font_style == crate::FontStyleMode::Normal
-        && style.white_space == WhiteSpaceMode::Normal
+        && matches!(
+            style.white_space,
+            WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap
+        )
         && style.word_break == WordBreakMode::Normal
         && style.direction == TextDirection::Ltr
         && style.line_break == LineBreakMode::Normal

@@ -291,6 +291,17 @@ fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
 }
 
 #[test]
+fn ahem_vertical_nowrap_intrinsics_have_no_soft_wrap_opportunities() {
+    let mut engine = engine();
+    let mut input = vertical_paragraph("A BC");
+    input.style.white_space = WhiteSpaceMode::NoWrap;
+
+    let sizes = engine.intrinsic_logical_sizes(&input).unwrap();
+    close_to(sizes.min_content().inline_px, 40.0);
+    close_to(sizes.max_content().inline_px, 40.0);
+}
+
+#[test]
 fn horizontal_logical_intrinsics_preserve_legacy_measurement_axes() {
     let mut engine = engine();
     let input = paragraph(
@@ -344,10 +355,6 @@ fn vertical_logical_intrinsics_reject_out_of_profile_text_style_and_topology() {
     let mut wrong_font_style = vertical_paragraph("ABC");
     wrong_font_style.style.font_style = crate::FontStyleMode::Italic;
     assert_vertical_intrinsic_rejected(&mut engine, &wrong_font_style);
-
-    let mut no_wrap = vertical_paragraph("ABC");
-    no_wrap.style.white_space = WhiteSpaceMode::NoWrap;
-    assert_vertical_intrinsic_rejected(&mut engine, &no_wrap);
 
     let mut break_all = vertical_paragraph("ABC");
     break_all.style.word_break = WordBreakMode::BreakAll;

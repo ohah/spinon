@@ -253,7 +253,7 @@ pub(super) fn prepare(
         paragraph_styles: BTreeMap::from([(text_item.id(), ahem_paragraph_style())]),
         engine,
         intrinsic_sizes,
-        allow_two_axis_root_intrinsic: false,
+        use_extended_fixture_projection: false,
     }))
 }
 

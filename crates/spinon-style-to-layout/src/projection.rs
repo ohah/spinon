@@ -615,17 +615,6 @@ fn validate_c11_4_orthogonal_text_styles(
             reason: "computed vertical text nodes must match the paragraph inputs",
         });
     }
-    if expected_vertical_nodes.len() != 1 {
-        let node = expected_vertical_nodes
-            .iter()
-            .next()
-            .copied()
-            .unwrap_or(root);
-        return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
-            node,
-            reason: "the fixture accepts exactly one vertical text paragraph",
-        });
-    }
     if computed_styles.writing_style_for(root)
         != Some((WritingMode::HorizontalTb, TextOrientation::Mixed))
     {

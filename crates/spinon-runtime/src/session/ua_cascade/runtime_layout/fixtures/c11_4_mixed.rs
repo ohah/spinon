@@ -24,6 +24,8 @@ mod cyclic_minmax_mixed_text_image_span;
 mod generic_direct_text_image;
 #[path = "c11_4_mixed/generic_direct_text_image_row_axis.rs"]
 mod generic_direct_text_image_row_axis;
+#[path = "c11_4_mixed/generic_intrinsic_flex_fixed.rs"]
+mod generic_intrinsic_flex_fixed;
 #[path = "c11_4_mixed/generic_spanning.rs"]
 mod generic_spanning;
 #[path = "c11_4_mixed/orthogonal_rows.rs"]
@@ -324,6 +326,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if let Some(input) = generic_spanning::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
+    if let Some(input) = generic_intrinsic_flex_fixed::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     let (namespace, tag, root_id) = element_identity(snapshot, root)?;
     let scene = root_id
         .strip_prefix("c114-")
@@ -486,7 +491,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles,
         engine,
         intrinsic_sizes,
-        allow_two_axis_root_intrinsic: false,
+        use_extended_fixture_projection: false,
     }))
 }
 
