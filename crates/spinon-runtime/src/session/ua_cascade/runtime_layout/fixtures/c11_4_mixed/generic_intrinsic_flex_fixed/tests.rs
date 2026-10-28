@@ -84,6 +84,15 @@ const STYLESHEET: &str = r#"
 .b.rows { grid-column: 1 / 2; grid-row: 2 / 3; }
 .c.columns { grid-column: 3 / 4; grid-row: 1 / 2; }
 .c.rows { grid-column: 1 / 2; grid-row: 3 / 4; }
+.a, .c { background-color: #2864dc; color: #2864dc; }
+.visibility-hidden, .visibility-visible-control {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  background-color: #8e44ad;
+  color: #8e44ad;
+}
+.visibility-hidden { visibility: hidden; }
+.visibility-visible-control { visibility: visible; }
 .hidden {
   display: none;
   grid-column: 1 / 2;
@@ -469,3 +478,5 @@ mod negative_controls;
 
 #[path = "tests/hidden.rs"]
 mod hidden;
+#[path = "tests/visibility_hidden.rs"]
+mod visibility_hidden;

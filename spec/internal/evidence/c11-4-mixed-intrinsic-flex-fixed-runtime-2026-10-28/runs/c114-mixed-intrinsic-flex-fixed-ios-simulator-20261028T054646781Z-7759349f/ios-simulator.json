@@ -1,0 +1,760 @@
+{
+  "complete": true,
+  "target": "ios-simulator",
+  "runPrefix": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f",
+  "generatedAtUtc": "2026-10-28T05:48:49.222Z",
+  "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+  "name": "iPhone 17 Pro",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "deviceTypeIdentifier": "com.apple.CoreSimulator.SimDeviceType.iPhone-17-Pro",
+  "modelIdentifier": "iPhone18,1",
+  "bootedBeforeRun": true,
+  "bootedByThisRun": false,
+  "appSha256": "d3e843fa9a7a616eb7cd0f9ff31ab4ee4134450180e13a670f2126c6b1c3c8f2",
+  "build": {
+    "command": [
+      "mise",
+      "exec",
+      "--",
+      "bun",
+      "run",
+      "build:ios-sim"
+    ],
+    "environment": {
+      "SPINON_ENABLE_C04_RUNTIME_GPU": "1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST": "1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST": "1",
+      "SPINON_V8_DIR": "<shared build/v8-source/v8>"
+    },
+    "v8": {
+      "checkout": "<shared build/v8-source/v8>",
+      "requiredRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "actualRevision": "7b50b62cb18f28617959e8452e2cd18195b38bcf",
+      "cleanBeforeBuild": true,
+      "cleanAfterBuild": true
+    },
+    "source": {
+      "commit": "7c2d939557408673f02dfdba7d4e31a2d6e53df2",
+      "tree": "6ef43c296dada0d6f3345fa97c8a0fd5b5f26c5e",
+      "trackedDiffSha256": "a6e6cb3c26377cc725af54b74ebded299edc2e0f20640e9e4f7a87d146dc12e2",
+      "trackedDirtyPaths": [
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs",
+        "crates/spinon-style-to-render/src/runtime.rs",
+        "crates/spinon-style-to-render/src/tests/runtime.rs",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+        "platforms/ios/Sources/C114FlexStage.swift",
+        "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs"
+      ],
+      "sourceFileSha256": {
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "ffafff343509d05f40e1dfc2be14eae3cb0ef40ab1b8fe4b023a3bd8cdc48feb",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs": "9986dcb9dbd82b86930ae0a36534aabe27bf4baeaee6a8ef0015c7679b40e761",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/hidden.rs": "c0dff53c2f6bbf96695ef9134eb5917e320cd0be6f8a5f3ef90b1af9a93e2896",
+        "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/visibility_hidden.rs": "9ef927c16507e82eee51230c3d3817d1a6b59e43ec25fceadb125038ccfe9334",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "181f1ceb1be2c857b2ff87ee97daa51bee552aea33cafe1f185b0bd0d3060a12",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "db821576269df209d5f94519747ddeaba1b96b871da9bbae5f46f0d1d0a1b820",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "f52e36954b215dfd607c565f0c23c360994a63e1c1ea0d775ffda480f9594760",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs": "a0762bb86b32ad14940351754ff6f9714c2ba9f66ae5ba0a6d5adbd95a81e609",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/hidden.rs": "0eb9d0642f6701f8663c1e5152cd0eb9054164577325c7dd9a42e62df747a68d",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/visibility_hidden.rs": "947ebadef46ee8d4b0839ba4f08a85e54110e33726929d2d3e45440890df43b9",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs": "42e6629fe3853c60d6057073da6a5cf8707c23a7ed3b935162d8ea724f4f25f6",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests/visibility_hidden.rs": "68b404173aaa0f2999db993a4007f14b419dd7741ff0ad07beffc2c340dcf72c",
+        "crates/spinon-style-to-render/src/runtime.rs": "1a6e098db681998be96f32072084078dc76b65f05647fd78851ca681d3710d24",
+        "crates/spinon-style-to-render/src/tests/runtime.rs": "935c342ad80342383d38574f0f1ceb802f38d278565dae678e123afc5135cd18",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs": "dc8266854e204811cf3e81280ec65ab7f24a281bac429c66c9d8242dfb419d20",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs": "51b096657dc3bca4d61b85565f9e687fbbf4f1c02cd29280c5efa80749c7554f",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs": "bbc43a4b58fd91f2456e9f4bcf67e7b8b4c8850bedd236d74668254987451ae2",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs": "74507ad1c350ea10bf9bc303b8ee852d7b27188a4b0bf725a5eb576c11f5394b",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs": "dba05cb99081f5387176d93d9043788f5975382507b3735bbcd97b2884f9b82d",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "e89431de7ac3d15d9e0b78b1763b653a38be2b6e5f38a4365a5e6e4eb2b602c1",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "c906df5deac17198c5095756d97c4ac941ff0b8e52268c1f9d865967e929c8f1",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs": "bf0a15e5b0f00b01f105836fe6ac2bf097364c34690e901a68e812111f08450b",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs": "75c5680dba706ae87daee1fb45d07b964382c2c74a36a1d20095c8457ec17114",
+        "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "3836b3b1eb4f1627b7013ed5ce0a3657bab1031acf8a47f0bbab407e5f523adc",
+        "crates/spinon-style-to-layout/src/projection.rs": "fbfa71ba7159c8cc2c840083b7b3b14bc9cfdd84deb5863d8125342e1bcc489b",
+        "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs": "c9e6bf4ab36f1aa360504b41f39e32fce393995e777fed7bb163bf7abfe75237",
+        "crates/spinon-text-layout/src/engine/intrinsic.rs": "e7f678f0ef0a4451534e5339fc14c4043d34e9e10bbc2252877cff3f687194b1",
+        "crates/spinon-text-layout/src/tests.rs": "9554984608587160626b65a707551877a06b94ff940e37cfd10781fc754f47df",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "0d419670ec4750fb1867c20dfec1de242ac82426e47f2c1fcbd09668d2ce2965",
+        "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java": "67c5149a257b3e5a09c159c2c4101c18c5857cd018b4f5e299036179f556ce59",
+        "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "b597dc3c3048467dc28e2ef6f99a4ba7ce6440f97fd16427f8b5124afe4c6e35",
+        "platforms/ios/Sources/C114FlexStage.swift": "d127e7da09cb4e8d70c3fd38e88b9989e3b1e420078d6e294bf97c35119262a0",
+        "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "a63bd3bd9717436a7ee359101279ffc1ed049131e3c0ffd9f54ec5e30604e52a",
+        "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json": "7de5cb44203088e2fb0d552d37c027b3dcf6cf2da032d238074e1934e047d9f9",
+        "spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json": "6ea70d8ff4a2d3a0c1e724e32f923a048be8ec8e2aaebddb3a36140331e6b9c8",
+        "spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json": "0d058da30396e152d064b28754050be9958314cf66d0e5dff9d9f1836d2c6417"
+      },
+      "sourceFilesSha256": "42eb931cbf5f76245963de03677d9900cdd2149c64e957885d42ef18c35e7705"
+    },
+    "captureScriptSha256": "2edc566f8bc0249959d750e489df81df404cb1d062103ab7914e80cc1c23abd6",
+    "artifactPath": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "artifactSha256": "d3e843fa9a7a616eb7cd0f9ff31ab4ee4134450180e13a670f2126c6b1c3c8f2",
+    "buildLogPath": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-build.log",
+    "buildLogSha256": "bb413a07ea51621f7ce54802a4f937363d7b6176d776f12b5cd91ed0dde51eed"
+  },
+  "sourceRevisionAfter": {
+    "commit": "7c2d939557408673f02dfdba7d4e31a2d6e53df2",
+    "tree": "6ef43c296dada0d6f3345fa97c8a0fd5b5f26c5e",
+    "trackedDiffSha256": "a6e6cb3c26377cc725af54b74ebded299edc2e0f20640e9e4f7a87d146dc12e2",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs",
+      "crates/spinon-style-to-render/src/runtime.rs",
+      "crates/spinon-style-to-render/src/tests/runtime.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "platforms/ios/Sources/C114FlexStage.swift",
+      "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs"
+    ],
+    "sourceFileSha256": {
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "ffafff343509d05f40e1dfc2be14eae3cb0ef40ab1b8fe4b023a3bd8cdc48feb",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs": "9986dcb9dbd82b86930ae0a36534aabe27bf4baeaee6a8ef0015c7679b40e761",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/hidden.rs": "c0dff53c2f6bbf96695ef9134eb5917e320cd0be6f8a5f3ef90b1af9a93e2896",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/visibility_hidden.rs": "9ef927c16507e82eee51230c3d3817d1a6b59e43ec25fceadb125038ccfe9334",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "181f1ceb1be2c857b2ff87ee97daa51bee552aea33cafe1f185b0bd0d3060a12",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "db821576269df209d5f94519747ddeaba1b96b871da9bbae5f46f0d1d0a1b820",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs": "f52e36954b215dfd607c565f0c23c360994a63e1c1ea0d775ffda480f9594760",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs": "a0762bb86b32ad14940351754ff6f9714c2ba9f66ae5ba0a6d5adbd95a81e609",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/hidden.rs": "0eb9d0642f6701f8663c1e5152cd0eb9054164577325c7dd9a42e62df747a68d",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/visibility_hidden.rs": "947ebadef46ee8d4b0839ba4f08a85e54110e33726929d2d3e45440890df43b9",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs": "42e6629fe3853c60d6057073da6a5cf8707c23a7ed3b935162d8ea724f4f25f6",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests/visibility_hidden.rs": "68b404173aaa0f2999db993a4007f14b419dd7741ff0ad07beffc2c340dcf72c",
+      "crates/spinon-style-to-render/src/runtime.rs": "1a6e098db681998be96f32072084078dc76b65f05647fd78851ca681d3710d24",
+      "crates/spinon-style-to-render/src/tests/runtime.rs": "935c342ad80342383d38574f0f1ceb802f38d278565dae678e123afc5135cd18",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs": "dc8266854e204811cf3e81280ec65ab7f24a281bac429c66c9d8242dfb419d20",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs": "51b096657dc3bca4d61b85565f9e687fbbf4f1c02cd29280c5efa80749c7554f",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs": "bbc43a4b58fd91f2456e9f4bcf67e7b8b4c8850bedd236d74668254987451ae2",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs": "74507ad1c350ea10bf9bc303b8ee852d7b27188a4b0bf725a5eb576c11f5394b",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs": "dba05cb99081f5387176d93d9043788f5975382507b3735bbcd97b2884f9b82d",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs": "e89431de7ac3d15d9e0b78b1763b653a38be2b6e5f38a4365a5e6e4eb2b602c1",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs": "c906df5deac17198c5095756d97c4ac941ff0b8e52268c1f9d865967e929c8f1",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs": "bf0a15e5b0f00b01f105836fe6ac2bf097364c34690e901a68e812111f08450b",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs": "75c5680dba706ae87daee1fb45d07b964382c2c74a36a1d20095c8457ec17114",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs": "3836b3b1eb4f1627b7013ed5ce0a3657bab1031acf8a47f0bbab407e5f523adc",
+      "crates/spinon-style-to-layout/src/projection.rs": "fbfa71ba7159c8cc2c840083b7b3b14bc9cfdd84deb5863d8125342e1bcc489b",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs": "c9e6bf4ab36f1aa360504b41f39e32fce393995e777fed7bb163bf7abfe75237",
+      "crates/spinon-text-layout/src/engine/intrinsic.rs": "e7f678f0ef0a4451534e5339fc14c4043d34e9e10bbc2252877cff3f687194b1",
+      "crates/spinon-text-layout/src/tests.rs": "9554984608587160626b65a707551877a06b94ff940e37cfd10781fc754f47df",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "0d419670ec4750fb1867c20dfec1de242ac82426e47f2c1fcbd09668d2ce2965",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C114FlexStage.java": "67c5149a257b3e5a09c159c2c4101c18c5857cd018b4f5e299036179f556ce59",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "b597dc3c3048467dc28e2ef6f99a4ba7ce6440f97fd16427f8b5124afe4c6e35",
+      "platforms/ios/Sources/C114FlexStage.swift": "d127e7da09cb4e8d70c3fd38e88b9989e3b1e420078d6e294bf97c35119262a0",
+      "platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj": "a63bd3bd9717436a7ee359101279ffc1ed049131e3c0ffd9f54ec5e30604e52a",
+      "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json": "7de5cb44203088e2fb0d552d37c027b3dcf6cf2da032d238074e1934e047d9f9",
+      "spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json": "6ea70d8ff4a2d3a0c1e724e32f923a048be8ec8e2aaebddb3a36140331e6b9c8",
+      "spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json": "0d058da30396e152d064b28754050be9958314cf66d0e5dff9d9f1836d2c6417"
+    },
+    "sourceFilesSha256": "42eb931cbf5f76245963de03677d9900cdd2149c64e957885d42ef18c35e7705"
+  },
+  "rejectedRoutes": [
+    {
+      "label": "unknown-scene",
+      "sceneId": "column-freeze-unlisted",
+      "additionalSelectorArguments": [],
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-rejected-unknown-scene",
+      "pid": 28768,
+      "launchLogSha256": "cd5c1239cd59a46200e17295b20911f715d2500254617a088d2151b1ebaf8e19",
+      "runtimeLogSha256": "51fb2e52e2294cba66fd81e221800fce68e5e92133fdd709a9403875c0512db8",
+      "rejected": true
+    },
+    {
+      "label": "visible-control",
+      "sceneId": "column-visible-control",
+      "additionalSelectorArguments": [],
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-rejected-visible-control",
+      "pid": 28800,
+      "launchLogSha256": "a93c5785aca85cd14cbc660df9ed17d3e282da3b4bb49f7fc566c295bb490984",
+      "runtimeLogSha256": "b188d423aa9e3c495213b336c9397fd92e20d37765e99181126b7cc8070ea842",
+      "rejected": true
+    },
+    {
+      "label": "conflicting-c1121-profile",
+      "sceneId": "column-freeze",
+      "additionalSelectorArguments": [
+        "--spinon-c1121-grid-placement"
+      ],
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-rejected-conflicting-c1121-profile",
+      "pid": 28835,
+      "launchLogSha256": "372f07af6c80008468e4e3d05cb1eb63bb0b39d2153de387a87da0453af38e0b",
+      "runtimeLogSha256": "fa61c63d3754400020b059e4af1747028d8cb4e3bdf424308d9dc6c5da11ceb7",
+      "rejected": true
+    }
+  ],
+  "observations": [
+    {
+      "sceneId": "column-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-0",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=100,height=120",
+        "2:node=4,x=110,y=0,width=24,height=16",
+        "3:node=5,x=160,y=0,width=140,height=120"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 28865,
+      "launchLogSha256": "0f16c523bf1223b2a659cb996ccf89eda1a708cfc2580bb7dd9f5688db5a92c3",
+      "runtimeLogSha256": "47d55105c4b5f31da61396e5c40607003a283932e0da288c5212448d373d921d",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "ef23ec988b1572fca4d91a47f1e65c3f0a2e94b5347a8963d4ead157c44d8262"
+      }
+    },
+    {
+      "sceneId": "column-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-1",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=80,height=120",
+        "2:node=4,x=90,y=0,width=24,height=16",
+        "3:node=5,x=140,y=0,width=160,height=120"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 29065,
+      "launchLogSha256": "2dc39b9cd52966a722749ec1f39d2abc74fcc20e945042eb286cbc978e42488b",
+      "runtimeLogSha256": "f6f2311d4f2566122e59ed19540d93c28b1ec37f93fe02a33638ffc497ed4560",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-no-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "ec94fd8801ce7e5d6bee83f369ff357acc486dd4c6c5d9bc060660711722141c"
+      }
+    },
+    {
+      "sceneId": "column-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-2",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=80,height=120",
+        "2:node=4,x=90,y=0,width=24,height=16",
+        "3:node=5,x=140,y=0,width=160,height=120"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 29357,
+      "launchLogSha256": "f154beea41df851f21986c6abc6d3e1d19db027705052c35c4228e53a1be6b7c",
+      "runtimeLogSha256": "7c84388f74995bf2f8c9b3046960d08314b8e3838f24296399834d23c706d11c",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-equal-boundary.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "07ddf77bbc36ba1052542533dd9143a4203b86486d50831efe188432e54440c7"
+      }
+    },
+    {
+      "sceneId": "column-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-3",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=160,y=0,width=140,height=120",
+        "2:node=4,x=110,y=0,width=24,height=16",
+        "3:node=5,x=0,y=0,width=100,height=120"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 29823,
+      "launchLogSha256": "bd6df0ad7b0a06562fe764fa5e85a9a78d802041e1cebdb420d0cc1158a9ee3b",
+      "runtimeLogSha256": "0338b58a18141f065cb05875491880c723d83509b38bff42f897091857c93592",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-freeze-reversed.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "254d2f6476ccd5588be0de41bc3382f82ea26d022930be478e720fb9f299f7a9"
+      }
+    },
+    {
+      "sceneId": "row-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-4",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=100",
+        "2:node=4,x=0,y=110,width=24,height=16",
+        "3:node=5,x=0,y=160,width=120,height=140"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30000,
+      "launchLogSha256": "d48258cc7a6c7726deb605cd5129d8deb5c7b20dc298328ab675706ad7a0b96e",
+      "runtimeLogSha256": "f53ea7eaff80b6f4d2d37549306c74a5772d5bb29d896e146813fd8014a1e0cb",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "8af6de54b5ee7e310acc90572c6cf2754ee873bffb9ae9f5f043789b85b50d68"
+      }
+    },
+    {
+      "sceneId": "row-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-5",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=80",
+        "2:node=4,x=0,y=90,width=24,height=16",
+        "3:node=5,x=0,y=140,width=120,height=160"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30212,
+      "launchLogSha256": "ba9fb7def73b116a8c1865a6787e6492a1fe9df63c5abecc47fb555b6caa8297",
+      "runtimeLogSha256": "33e507236ec8ca96a025a8946b77bfd7c0ad561e6783639d12692f630e50ee1a",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-no-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "117eb8ca7cf8ec443a775808c7fd3ef64edd8806335f546153d9103fe40260b1"
+      }
+    },
+    {
+      "sceneId": "row-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-6",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80,
+        40,
+        160
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=80",
+        "2:node=4,x=0,y=90,width=24,height=16",
+        "3:node=5,x=0,y=140,width=120,height=160"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30390,
+      "launchLogSha256": "878ea996bd90835f58f7d94c6b2426e196759856bab2c57c3c557e27b4c43b89",
+      "runtimeLogSha256": "675ec43d11b51aa9d1a31eb9fc1a0a1d042574f822e99b26cb9a44ada205e814",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-equal-boundary.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "b39f46ad00b4ff90ed9f01b1eb442424e7c705dd2f19b3fe526818bb17d19525"
+      }
+    },
+    {
+      "sceneId": "row-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-7",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=160,width=120,height=140",
+        "2:node=4,x=0,y=110,width=24,height=16",
+        "3:node=5,x=0,y=0,width=120,height=100"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30487,
+      "launchLogSha256": "1d38df78e1291be8a793e68ff5d8d04941e6892b06faa2558bd42965ffbe63bb",
+      "runtimeLogSha256": "0573a1dfa464f7d225c3b31651d61b0f9e3b29b93e21cc8d306a34ea6e1e686f",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-freeze-reversed.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "8af6de54b5ee7e310acc90572c6cf2754ee873bffb9ae9f5f043789b85b50d68"
+      }
+    },
+    {
+      "sceneId": "column-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-8",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=0,height=0",
+        "2:node=4,x=0,y=0,width=100,height=120",
+        "3:node=6,x=110,y=0,width=24,height=16",
+        "4:node=7,x=160,y=0,width=140,height=120"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30552,
+      "launchLogSha256": "22ea58bc6a499f2d21177993b5dbddcee4c230f1a1c65948e844864aa5fb2389",
+      "runtimeLogSha256": "14e2708d1d948290db6189c7af3aa61d58ca6c02619e1423b514812d40ee813b",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "a2ff1dee6afcd4cef849357d44d9c6aa9059b1580d7cfae299977edb3c8ce9d7"
+      }
+    },
+    {
+      "sceneId": "row-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-9",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100,
+        40,
+        140
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=0,height=0",
+        "2:node=4,x=0,y=0,width=120,height=100",
+        "3:node=6,x=0,y=110,width=24,height=16",
+        "4:node=7,x=0,y=160,width=120,height=140"
+      ],
+      "traceChunks": 18,
+      "presented": true,
+      "pid": 30611,
+      "launchLogSha256": "6875ae2ee4717c42dcbe014ba29f9a77e2135cc1136940fb3a3da571671f2957",
+      "runtimeLogSha256": "681f26b01c8b85d7efca34c19f7d2d776d77e4b99eed39995db22c824e8e5513",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "00d8f92d8e56bb3c6a2939038bbc550d3dd28a059176939d6573a87177e12dac"
+      }
+    },
+    {
+      "sceneId": "column-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-10",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150,
+        40,
+        90
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=150,height=120",
+        "2:node=4,x=0,y=0,width=150,height=120",
+        "3:node=6,x=160,y=0,width=24,height=16",
+        "4:node=7,x=210,y=0,width=90,height=120"
+      ],
+      "traceChunks": 21,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "pid": 30685,
+      "launchLogSha256": "f0e0afe6e87c0b986143b895ab9a3131015135765bd229ad2db383bd79c72343",
+      "runtimeLogSha256": "ff38aeb029412a9902d71efd57af3321e66f7e6df984b9a00914cb881b67f767",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-visibility-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "346b5d7b01c7bb9f5aa6fbaa6092e613136a888b23895b972df34307055dab49"
+      }
+    },
+    {
+      "sceneId": "column-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-11",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150,
+        40,
+        90
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=300,height=120",
+        "1:node=2,x=0,y=0,width=150,height=120",
+        "2:node=4,x=0,y=0,width=150,height=120",
+        "3:node=6,x=160,y=0,width=24,height=16",
+        "4:node=7,x=210,y=0,width=90,height=120"
+      ],
+      "traceChunks": 21,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "pid": 30742,
+      "launchLogSha256": "838f3a6669818914ae2b2d544431ebb5e1dac475ac9e8abfb550406e58d8253f",
+      "runtimeLogSha256": "cad54fe0c1d1a58fa0f98ea1ac7faf77e3ae903a0dfe5c0faf43d2128f013ccd",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-column-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "961435362b50c18c6e4a7a8fc9cb76912f05e71643e44cf3af901dcfc0340f5c"
+      }
+    },
+    {
+      "sceneId": "row-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-12",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150,
+        40,
+        90
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=150",
+        "2:node=4,x=0,y=0,width=120,height=150",
+        "3:node=6,x=0,y=160,width=24,height=16",
+        "4:node=7,x=0,y=210,width=120,height=90"
+      ],
+      "traceChunks": 22,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "pid": 30797,
+      "launchLogSha256": "b0831974b792317895ade1f5a397e1641bd0d6d509d46a070b78741629a967a8",
+      "runtimeLogSha256": "34fbc227100a8ca2eb0c7e897f7cd72fb4d72b46713d4ed623c5ff1230abe85a",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-visibility-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "72c69ed3518b79795cc0439acf560ee72a9be504a7d335c300985ce5b3831825"
+      }
+    },
+    {
+      "sceneId": "row-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f-13",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150,
+        40,
+        90
+      ],
+      "remainingSpaceCssPx": 0,
+      "nodeFrames": [
+        "0:node=1,x=0,y=0,width=120,height=300",
+        "1:node=2,x=0,y=0,width=120,height=150",
+        "2:node=4,x=0,y=0,width=120,height=150",
+        "3:node=6,x=0,y=160,width=24,height=16",
+        "4:node=7,x=0,y=210,width=120,height=90"
+      ],
+      "traceChunks": 22,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "pid": 30860,
+      "launchLogSha256": "e540816a1a60686083783348711f0c4a6b5e8ef1b8ed085f710a9c60062e25de",
+      "runtimeLogSha256": "0e3b7359d395c2d765b14af3a5a9e2770f2f97d739a181f130a738d24f7e423f",
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T054646781Z-7759349f/ios-row-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "f762334402a8f818b83d7cad9bd0e042d2cc87f00d6bdfb12aa7e5a93482a771"
+      }
+    }
+  ]
+}

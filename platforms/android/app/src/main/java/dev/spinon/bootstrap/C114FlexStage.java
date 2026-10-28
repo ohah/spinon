@@ -2,6 +2,9 @@ package dev.spinon.bootstrap;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeSet;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -15,12 +18,30 @@ final class C114FlexStage {
         "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
         "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
         "column-hidden", "row-hidden",
+        "column-visibility-hidden", "column-visibility-visible-control",
+        "row-visibility-hidden", "row-visibility-visible-control",
     };
     private static final double TOLERANCE = 1.0e-4;
     private static final String DIAGNOSTICS_MARKER = "grid_track_sizing_diagnostics=";
     private static final Pattern NODE_FRAMES = Pattern.compile("node_frames_css_px=\\[([^\\]]+)\\]");
     private static final Pattern NODE_FRAME = Pattern.compile(
             "^(\\d+):node=(\\d+),x=([^,]+),y=([^,]+),width=([^,]+),height=([^,]+)$");
+
+    static final class SurfacePixelExpectation {
+        final String id;
+        final String nodeId;
+        final int x;
+        final int y;
+        final int[] rgba;
+
+        SurfacePixelExpectation(String id, String nodeId, int x, int y, int[] rgba) {
+            this.id = id;
+            this.nodeId = nodeId;
+            this.x = x;
+            this.y = y;
+            this.rgba = rgba;
+        }
+    }
 
     private C114FlexStage() {}
 
@@ -32,6 +53,7 @@ final class C114FlexStage {
     }
 
     static int itemCount(String sceneId) {
+        if (isVisibilityScene(sceneId)) return isVisibilityHiddenScene(sceneId) ? 3 : 4;
         if (isMixedScene(sceneId)) return 3;
         return isScene(sceneId) ? 2 : 0;
     }
@@ -71,6 +93,53 @@ final class C114FlexStage {
             }
         }
         return true;
+    }
+
+    static List<SurfacePixelExpectation> surfacePixelSamples(String sceneId) {
+        if (!isVisibilityScene(sceneId)) return null;
+        String rootId = "novel-mixed-intrinsic-flex-fixed-" + sceneId + "-root";
+        String spanId = "novel-mixed-intrinsic-flex-fixed-" + sceneId + "-visibility";
+        boolean rows = isRowScene(sceneId);
+        boolean hidden = isVisibilityHiddenScene(sceneId);
+        String overlapId = sceneId + "-overlap";
+        String gapId = sceneId + "-fixed-track-gap";
+        return List.of(
+                new SurfacePixelExpectation(overlapId, spanId,
+                        rows ? 60 : 120, rows ? 125 : 60,
+                        hidden ? new int[] {40, 100, 220, 255}
+                                : new int[] {142, 68, 173, 255}),
+                new SurfacePixelExpectation(gapId, rootId,
+                        rows ? 60 : 155, rows ? 155 : 60,
+                        new int[] {232, 237, 245, 255}));
+    }
+
+    static boolean surfacePixelSamplesMatch(
+            String sceneId, List<SurfaceViewPixelCapture.Sample> actual
+    ) {
+        List<SurfacePixelExpectation> expected = surfacePixelSamples(sceneId);
+        if (expected == null || actual.size() != expected.size()) return false;
+        TreeSet<String> found = new TreeSet<>();
+        for (SurfaceViewPixelCapture.Sample sample : actual) {
+            SurfacePixelExpectation match = null;
+            for (SurfacePixelExpectation candidate : expected) {
+                if (candidate.id.equals(sample.id)) match = candidate;
+            }
+            if (match == null || !found.add(sample.id)
+                    || !match.nodeId.equals(sample.targetNodeId)
+                    || sample.xCssPx != match.x || sample.yCssPx != match.y) return false;
+        }
+        return found.size() == expected.size();
+    }
+
+    static int[] expectedSurfacePixelRgb(String sceneId, String sampleId) {
+        List<SurfacePixelExpectation> expected = surfacePixelSamples(sceneId);
+        if (expected == null) return null;
+        for (SurfacePixelExpectation sample : expected) {
+            if (sample.id.equals(sampleId)) {
+                return new int[] {sample.rgba[0], sample.rgba[1], sample.rgba[2]};
+            }
+        }
+        return null;
     }
 
     static boolean traceMatches(String sceneId, String report) {
@@ -175,9 +244,44 @@ final class C114FlexStage {
         return initializeCount == 1 && maximizeCount == 1 && expandCount == 1
                 && stretchCount == 1 && initialize < maximize && maximize < expand
                 && expand < stretch
+                && visibilityContributionsMatch(sceneId, pass)
                 && stages.optJSONObject(expand) != null
                 && flexibleTracksMatch(
                         sceneId, stages.optJSONObject(expand).optJSONArray("tracks"));
+    }
+
+    private static boolean visibilityContributionsMatch(String sceneId, JSONObject pass)
+            throws JSONException {
+        if (!isVisibilityScene(sceneId)) return true;
+        JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null || contributions.length() != 4) return false;
+        String automaticMinimum = "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }";
+        String[] keys = {"2:Minimum", "2:MinContent", "4:Minimum", "4:MinContent"};
+        double[] values = {0, 100, 0, 150};
+        boolean[] found = new boolean[keys.length];
+        for (int index = 0; index < contributions.length(); index++) {
+            JSONObject contribution = contributions.optJSONObject(index);
+            if (contribution == null) return false;
+            String kind = contribution.optString("kind");
+            String key = contribution.optInt("item", -1) + ":" + kind;
+            int expectedIndex = -1;
+            for (int candidate = 0; candidate < keys.length; candidate++) {
+                if (keys[candidate].equals(key)) expectedIndex = candidate;
+            }
+            if (expectedIndex < 0 || found[expectedIndex]
+                    || !integerEquals(contribution, "span", 1)
+                    || !booleanEquals(contribution, "crossesFlexibleTrack", true)
+                    || !numberNear(contribution, "value", values[expectedIndex])) return false;
+            found[expectedIndex] = true;
+            if ("Minimum".equals(kind)) {
+                if (!stringEquals(contribution, "minimumSource", automaticMinimum)) return false;
+            } else if (!contribution.has("minimumSource")
+                    || !contribution.isNull("minimumSource")) {
+                return false;
+            }
+        }
+        for (boolean matched : found) if (!matched) return false;
+        return true;
     }
 
     private static boolean flexibleTracksMatch(String sceneId, JSONArray tracks) {
@@ -212,6 +316,18 @@ final class C114FlexStage {
                 return new double[][] {
                     {0, 0, 120, 300}, {0, 0, 0, 0}, {0, 0, 120, 100},
                     {0, 110, 24, 16}, {0, 160, 120, 140},
+                };
+            case "column-visibility-hidden":
+            case "column-visibility-visible-control":
+                return new double[][] {
+                    {0, 0, 300, 120}, {0, 0, 150, 120}, {0, 0, 150, 120},
+                    {160, 0, 24, 16}, {210, 0, 90, 120},
+                };
+            case "row-visibility-hidden":
+            case "row-visibility-visible-control":
+                return new double[][] {
+                    {0, 0, 120, 300}, {0, 0, 120, 150}, {0, 0, 120, 150},
+                    {0, 160, 24, 16}, {0, 210, 120, 90},
                 };
             case "column-freeze":
                 return new double[][] {
@@ -268,6 +384,10 @@ final class C114FlexStage {
             case "row-freeze-reversed": return new double[] {100, 40, 140};
             case "column-hidden":
             case "row-hidden": return new double[] {100, 40, 140};
+            case "column-visibility-hidden":
+            case "column-visibility-visible-control":
+            case "row-visibility-hidden":
+            case "row-visibility-visible-control": return new double[] {150, 40, 90};
             case "column-no-freeze":
             case "column-equal-boundary":
             case "row-no-freeze":
@@ -293,9 +413,21 @@ final class C114FlexStage {
         return "column-hidden".equals(sceneId) || "row-hidden".equals(sceneId);
     }
 
+    private static boolean isVisibilityScene(String sceneId) {
+        return isVisibilityHiddenScene(sceneId)
+                || "column-visibility-visible-control".equals(sceneId)
+                || "row-visibility-visible-control".equals(sceneId);
+    }
+
+    private static boolean isVisibilityHiddenScene(String sceneId) {
+        return "column-visibility-hidden".equals(sceneId)
+                || "row-visibility-hidden".equals(sceneId);
+    }
+
     private static boolean intrinsicInputsMatch(String sceneId, JSONObject diagnostics) {
         JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
-        if (inputs == null || inputs.length() != 3) return false;
+        int expectedInputCount = isVisibilityScene(sceneId) ? 4 : 3;
+        if (inputs == null || inputs.length() != expectedInputCount) return false;
         boolean reversed = sceneId.endsWith("reversed");
         double aMinContent = sceneId.contains("equal-boundary") ? 80
                 : sceneId.contains("no-freeze") ? 40 : 100;
@@ -306,7 +438,7 @@ final class C114FlexStage {
                     || !integerEquals(input, "node", expectedIntrinsicNode(sceneId, index))) return false;
             JSONObject source = input.optJSONObject("source");
             if (source == null) return false;
-            if (index == 1) {
+            if (isVisibilityScene(sceneId) && index == 2 || !isVisibilityScene(sceneId) && index == 1) {
                 JSONObject natural = source.optJSONObject("natural");
                 if (!stringEquals(source, "kind", "replaced") || natural == null
                         || !numberNear(natural, "width", 24)
@@ -316,8 +448,10 @@ final class C114FlexStage {
             if (!stringEquals(source, "kind", isRowScene(sceneId) ? "orthogonalText" : "text")) {
                 return false;
             }
-            boolean itemA = reversed ? index == 2 : index == 0;
-            double expected = itemA ? aMinContent : 40;
+            boolean visibilitySpan = isVisibilityScene(sceneId) && index == 1;
+            boolean itemA = isVisibilityScene(sceneId)
+                    ? index == 0 : reversed ? index == 2 : index == 0;
+            double expected = visibilitySpan ? 150 : itemA ? aMinContent : 40;
             JSONObject contribution = input.optJSONObject("contributionInput");
             JSONObject axisSize = contribution == null ? null
                     : contribution.optJSONObject(isRowScene(sceneId) ? "height" : "width");
@@ -328,6 +462,16 @@ final class C114FlexStage {
 
     private static int expectedFrameNode(String sceneId, int frameIndex) {
         if (!isMixedScene(sceneId)) return frameIndex + 1;
+        if (isVisibilityScene(sceneId)) {
+            switch (frameIndex) {
+                case 0: return 1;
+                case 1: return 2;
+                case 2: return 4;
+                case 3: return 6;
+                case 4: return 7;
+                default: return -1;
+            }
+        }
         if (isHiddenScene(sceneId)) {
             switch (frameIndex) {
                 case 0: return 1;
@@ -348,6 +492,15 @@ final class C114FlexStage {
     }
 
     private static int expectedIntrinsicNode(String sceneId, int inputIndex) {
+        if (isVisibilityScene(sceneId)) {
+            switch (inputIndex) {
+                case 0: return 2;
+                case 1: return 4;
+                case 2: return 6;
+                case 3: return 7;
+                default: return -1;
+            }
+        }
         if (isHiddenScene(sceneId)) {
             switch (inputIndex) {
                 case 0: return 4;

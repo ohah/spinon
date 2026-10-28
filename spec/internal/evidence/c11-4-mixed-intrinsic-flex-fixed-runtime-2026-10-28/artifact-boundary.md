@@ -21,3 +21,14 @@
 | fixture positive control | `cargo build --locked -p spinon-ffi --lib --release --no-default-features --features c04-runtime-gpu-fixture-test` | `222980b63bb717c2ea62faf5307cc2b2e5fc656f6e1389da054da6f391f8a50f` | `new`·`eval` C11.4 fixture FFI symbol 확인, marker 10회 포함 |
 
 Symbol은 Rust 1.96.1 sysroot의 `llvm-nm -g target/release/libspinon_ffi.a`, payload는 `strings -a target/release/libspinon_ffi.a`로 검사했다. 이 정적 archive 결과는 Android APK, iOS IPA 또는 전체 앱 bundle의 fixture 제외 여부를 증명하지 않는다.
+
+## `visibility:hidden` follow-up
+
+2026-10-28 구현 작업 tree의 source commit `7c2d939557408673f02dfdba7d4e31a2d6e53df2`에서 macOS ARM64 release archive를 기본 runtime과 fixture opt-in으로 각각 다시 빌드했다. 두 구성은 같은 source 변경을 사용했다.
+
+| Cargo 구성 | 명령 | `libspinon_ffi.a` SHA-256 | visibility fixture 경계 |
+|---|---|---|---|
+| 제품 runtime | `cargo build --locked -p spinon-ffi --lib --release --no-default-features --features c04-runtime-gpu` | `fc42bb1a4f67bdb58262354884c02ba8b849149ce31d5bc905d5759f385a4b03` | `c11_4_grid_track_sizing_fixture`·`generic_intrinsic_flex_fixed` symbol 및 `novel-mixed-intrinsic-flex-fixed`·`visibility_hidden` marker 없음 |
+| fixture positive control | `cargo build --locked -p spinon-ffi --lib --release --no-default-features --features c04-runtime-gpu-fixture-test` | `6ecc5fd843ee4bb1cadb521f99d2a4181d5453e810ae717243f5c6725d1cdf6e` | C11.4 fixture FFI/Rust symbol 확인, `novel-mixed-intrinsic-flex-fixed` marker 16회 포함 |
+
+Rust 1.96.1 sysroot의 `llvm-nm -g`와 `strings -a`로 확인했다. Apple `nm`은 이 toolchain archive의 LLVM 22 attribute를 읽지 못해 toolchain 동봉 `llvm-nm`을 사용했다. 이 검사는 macOS ARM64 release **static FFI archive**의 fixture 경계에 한정하며 Android APK, iOS IPA 또는 전체 앱 bundle은 검사하지 않았다.

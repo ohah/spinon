@@ -297,6 +297,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
             "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
             "column-hidden", "row-hidden",
+            "column-visibility-hidden", "column-visibility-visible-control",
+            "row-visibility-hidden", "row-visibility-visible-control",
             "definite-minmax-calc-cross-axis-span-groups-reverse",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-forward",
             "cyclic-minmax-cross-axis-mixed-span-groups-intrinsic-reverse",
@@ -8471,6 +8473,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (C114FlexStage.surfacePixelSamples(sceneId) != null) {
+            return C114FlexStage.surfacePixelSamplesMatch(sceneId, samples);
+        }
         if (C114GridAutoFitColumnsWpt.surfacePixelSamples(sceneId) != null) {
             return C114GridAutoFitColumnsWpt.surfacePixelSamplesMatch(sceneId, samples);
         }
@@ -11003,6 +11008,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c114IsAnonymousGridBorderOverflowScene(pixelMatrixSceneId)
                         || c114GridAutoRepeatIntrinsicWptColumns(pixelMatrixSceneId) != null
                         || C114GridAutoFitColumnsWpt.surfacePixelSamples(pixelMatrixSceneId) != null
+                        || C114FlexStage.surfacePixelSamples(pixelMatrixSceneId) != null
                         || "fit-content-auto-neighbor-wpt".equals(pixelMatrixSceneId)
                         || "fit-content-min-height-wpt".equals(pixelMatrixSceneId)
                         || "grid-layout-auto-tracks-c114-wpt".equals(pixelMatrixSceneId)
@@ -14709,6 +14715,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        int[] flexStageColor = C114FlexStage.expectedSurfacePixelRgb(sceneId, sampleId);
+        if (flexStageColor != null) return flexStageColor;
         int[] autoFitColumnsColor = C114GridAutoFitColumnsWpt.expectedSurfacePixelRgb(
                 sceneId, sampleId);
         if (autoFitColumnsColor != null) return autoFitColumnsColor;
