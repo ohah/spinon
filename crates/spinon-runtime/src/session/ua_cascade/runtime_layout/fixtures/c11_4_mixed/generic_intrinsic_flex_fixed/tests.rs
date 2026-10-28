@@ -84,6 +84,11 @@ const STYLESHEET: &str = r#"
 .b.rows { grid-column: 1 / 2; grid-row: 2 / 3; }
 .c.columns { grid-column: 3 / 4; grid-row: 1 / 2; }
 .c.rows { grid-column: 1 / 2; grid-row: 3 / 4; }
+.hidden {
+  display: none;
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}
 "#;
 
 struct Fixture {
@@ -461,3 +466,6 @@ impl Axis {
 
 #[path = "negative_controls.rs"]
 mod negative_controls;
+
+#[path = "tests/hidden.rs"]
+mod hidden;

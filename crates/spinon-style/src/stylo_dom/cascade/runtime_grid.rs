@@ -127,6 +127,7 @@ pub(super) fn runtime_block_flex_grid_track_sizing_author_properties() -> Vec<&'
     let mut properties = runtime_block_flex_grid_template_author_properties();
     for property in [
         "aspect-ratio",
+        "visibility",
         "font-family",
         "font-size",
         "font-weight",
@@ -154,6 +155,13 @@ pub(super) fn runtime_block_flex_grid_track_sizing_author_properties() -> Vec<&'
 
 pub(super) fn runtime_block_flex_grid_track_sizing_properties() -> Vec<(&'static str, LonghandId)> {
     let mut properties = runtime_block_flex_grid_template_properties();
+    properties.extend([
+        ("grid-row-start", LonghandId::GridRowStart),
+        ("grid-row-end", LonghandId::GridRowEnd),
+        ("grid-column-start", LonghandId::GridColumnStart),
+        ("grid-column-end", LonghandId::GridColumnEnd),
+        ("visibility", LonghandId::Visibility),
+    ]);
     properties.extend([
         ("font-family", LonghandId::FontFamily),
         ("font-size", LonghandId::FontSize),

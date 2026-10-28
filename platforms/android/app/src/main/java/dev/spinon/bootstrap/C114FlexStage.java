@@ -14,6 +14,7 @@ final class C114FlexStage {
         "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
         "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
         "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
+        "column-hidden", "row-hidden",
     };
     private static final double TOLERANCE = 1.0e-4;
     private static final String DIAGNOSTICS_MARKER = "grid_track_sizing_diagnostics=";
@@ -202,6 +203,16 @@ final class C114FlexStage {
 
     private static double[][] expectedNodeFrames(String sceneId) {
         switch (sceneId) {
+            case "column-hidden":
+                return new double[][] {
+                    {0, 0, 300, 120}, {0, 0, 0, 0}, {0, 0, 100, 120},
+                    {110, 0, 24, 16}, {160, 0, 140, 120},
+                };
+            case "row-hidden":
+                return new double[][] {
+                    {0, 0, 120, 300}, {0, 0, 0, 0}, {0, 0, 120, 100},
+                    {0, 110, 24, 16}, {0, 160, 120, 140},
+                };
             case "column-freeze":
                 return new double[][] {
                     {0, 0, 300, 120}, {0, 0, 100, 120}, {110, 0, 24, 16}, {160, 0, 140, 120},
@@ -255,6 +266,8 @@ final class C114FlexStage {
             case "column-freeze-reversed":
             case "row-freeze":
             case "row-freeze-reversed": return new double[] {100, 40, 140};
+            case "column-hidden":
+            case "row-hidden": return new double[] {100, 40, 140};
             case "column-no-freeze":
             case "column-equal-boundary":
             case "row-no-freeze":
@@ -276,6 +289,10 @@ final class C114FlexStage {
         return sceneId.startsWith("column-") || sceneId.startsWith("row-");
     }
 
+    private static boolean isHiddenScene(String sceneId) {
+        return "column-hidden".equals(sceneId) || "row-hidden".equals(sceneId);
+    }
+
     private static boolean intrinsicInputsMatch(String sceneId, JSONObject diagnostics) {
         JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
         if (inputs == null || inputs.length() != 3) return false;
@@ -284,8 +301,9 @@ final class C114FlexStage {
                 : sceneId.contains("no-freeze") ? 40 : 100;
         for (int index = 0; index < inputs.length(); index++) {
             JSONObject input = inputs.optJSONObject(index);
-            if (input == null || !integerEquals(input, "sourceOrder", index)
-                    || !integerEquals(input, "node", expectedIntrinsicNode(index))) return false;
+            int expectedSourceOrder = isHiddenScene(sceneId) ? index + 1 : index;
+            if (input == null || !integerEquals(input, "sourceOrder", expectedSourceOrder)
+                    || !integerEquals(input, "node", expectedIntrinsicNode(sceneId, index))) return false;
             JSONObject source = input.optJSONObject("source");
             if (source == null) return false;
             if (index == 1) {
@@ -310,6 +328,16 @@ final class C114FlexStage {
 
     private static int expectedFrameNode(String sceneId, int frameIndex) {
         if (!isMixedScene(sceneId)) return frameIndex + 1;
+        if (isHiddenScene(sceneId)) {
+            switch (frameIndex) {
+                case 0: return 1;
+                case 1: return 2;
+                case 2: return 4;
+                case 3: return 6;
+                case 4: return 7;
+                default: return -1;
+            }
+        }
         switch (frameIndex) {
             case 0: return 1;
             case 1: return 2;
@@ -319,7 +347,15 @@ final class C114FlexStage {
         }
     }
 
-    private static int expectedIntrinsicNode(int inputIndex) {
+    private static int expectedIntrinsicNode(String sceneId, int inputIndex) {
+        if (isHiddenScene(sceneId)) {
+            switch (inputIndex) {
+                case 0: return 4;
+                case 1: return 6;
+                case 2: return 7;
+                default: return -1;
+            }
+        }
         switch (inputIndex) {
             case 0: return 2;
             case 1: return 4;

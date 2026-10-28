@@ -7,6 +7,7 @@ enum C114FlexStage {
         "weighted-columns", "frozen-row", "subunit-columns", "zero-fr-row",
         "column-freeze", "column-no-freeze", "column-equal-boundary", "column-freeze-reversed",
         "row-freeze", "row-no-freeze", "row-equal-boundary", "row-freeze-reversed",
+        "column-hidden", "row-hidden",
     ]
     private static let tolerance = 1.0e-4
 
@@ -178,6 +179,16 @@ enum C114FlexStage {
 
     private static func expectedNodeFrames(_ sceneID: String) -> [[Double]]? {
         switch sceneID {
+        case "column-hidden":
+            return [
+                [0, 0, 300, 120], [0, 0, 0, 0], [0, 0, 100, 120],
+                [110, 0, 24, 16], [160, 0, 140, 120],
+            ]
+        case "row-hidden":
+            return [
+                [0, 0, 120, 300], [0, 0, 0, 0], [0, 0, 120, 100],
+                [0, 110, 24, 16], [0, 160, 120, 140],
+            ]
         case "column-freeze":
             return [[0, 0, 300, 120], [0, 0, 100, 120], [110, 0, 24, 16], [160, 0, 140, 120]]
         case "column-no-freeze", "column-equal-boundary":
@@ -207,7 +218,8 @@ enum C114FlexStage {
 
     private static func expectedTrackBases(_ sceneID: String) -> [Double]? {
         switch sceneID {
-        case "column-freeze", "column-freeze-reversed", "row-freeze", "row-freeze-reversed":
+        case "column-freeze", "column-freeze-reversed", "row-freeze", "row-freeze-reversed",
+             "column-hidden", "row-hidden":
             return [100, 40, 140]
         case "column-no-freeze", "column-equal-boundary", "row-no-freeze", "row-equal-boundary":
             return [80, 40, 160]
@@ -227,6 +239,10 @@ enum C114FlexStage {
         sceneID.hasPrefix("column-") || sceneID.hasPrefix("row-")
     }
 
+    private static func isHiddenScene(_ sceneID: String) -> Bool {
+        sceneID == "column-hidden" || sceneID == "row-hidden"
+    }
+
     private static func intrinsicInputsMatch(
         _ sceneID: String,
         diagnostics: [String: Any]
@@ -237,8 +253,9 @@ enum C114FlexStage {
         let aMinContent: Double = sceneID.contains("equal-boundary")
             ? 80 : (sceneID.contains("no-freeze") ? 40 : 100)
         for (index, input) in inputs.enumerated() {
-            guard integer(input["sourceOrder"]) == index,
-                  integer(input["node"]) == expectedIntrinsicNode(index),
+            let expectedSourceOrder = isHiddenScene(sceneID) ? index + 1 : index
+            guard integer(input["sourceOrder"]) == expectedSourceOrder,
+                  integer(input["node"]) == expectedIntrinsicNode(sceneID, index),
                   let source = input["source"] as? [String: Any],
                   let kind = string(source["kind"]) else { return false }
             if index == 1 {
@@ -261,6 +278,16 @@ enum C114FlexStage {
 
     private static func expectedFrameNode(_ sceneID: String, _ frameIndex: Int) -> Int {
         guard isMixedScene(sceneID) else { return frameIndex + 1 }
+        if isHiddenScene(sceneID) {
+            switch frameIndex {
+            case 0: return 1
+            case 1: return 2
+            case 2: return 4
+            case 3: return 6
+            case 4: return 7
+            default: return -1
+            }
+        }
         switch frameIndex {
         case 0: return 1
         case 1: return 2
@@ -270,7 +297,15 @@ enum C114FlexStage {
         }
     }
 
-    private static func expectedIntrinsicNode(_ inputIndex: Int) -> Int {
+    private static func expectedIntrinsicNode(_ sceneID: String, _ inputIndex: Int) -> Int {
+        if isHiddenScene(sceneID) {
+            switch inputIndex {
+            case 0: return 4
+            case 1: return 6
+            case 2: return 7
+            default: return -1
+            }
+        }
         switch inputIndex {
         case 0: return 2
         case 1: return 4

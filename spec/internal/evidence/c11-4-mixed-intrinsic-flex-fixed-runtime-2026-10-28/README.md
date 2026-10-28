@@ -25,6 +25,23 @@
 
 추가 대표 화면: [Android column-freeze](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-freeze.png) · [iOS column-freeze](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c/ios-column-freeze.png).
 
+## `display:none` hidden item 후속
+
+2026-10-28 후속 run은 기존 8개 scene에 `column-hidden`, `row-hidden`을 추가해 두 플랫폼에서 각각 10/10 scene을 통과했다. 15-character direct `<span>`이 첫 track에 `display:none`으로 놓일 때 그 text가 intrinsic sizing input과 track contribution에서 빠지고, 보이는 text/image sibling만 `[100, 40, 140] CSS px` tracks를 만든다. 두 축 모두 remaining free space는 0px이다. 미등록 scene, visible-control, C11.2.1 충돌 profile 경로는 양쪽 앱에서 거부됐다.
+
+hidden scene은 보이는 root/item box가 4개이고 draw/presentation도 네 box를 확인한다. 내부 `node_frames_css_px`에는 추가로 hidden node의 0×0 bookkeeping frame이 있어 frame record는 5개다. 이 내부 frame은 CSS box 생성이나 paint를 뜻하지 않는다.
+
+| 대상 | 실행 환경 | Run ID | 앱 SHA-256 | hidden frame records |
+| --- | --- | --- | --- | --- |
+| Android | API 37 ARM64 16 KB AVD `emulator-5554`, 1080×2400 | `c114-mixed-intrinsic-flex-fixed-android-avd-20261028T035340076Z-8be33a99` | `3b90206b7eff096ffe9bc1b0522568355bca47799d708f30d61778a8bdd392a2` | 5: root + 3 visible + 0×0 hidden bookkeeping |
+| iOS | iPhone 17 Pro / iOS 26.2 Simulator, 1206×2622 | `c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T035420142Z-8d77bf8f` | `336647e0d52ff0c83e4cb51a730994f7c1b0ee2ae0c3610796c841c1a27efe25` | 5: root + 3 visible + 0×0 hidden bookkeeping |
+
+두 실행은 고정 V8 `7b50b62cb18f28617959e8452e2cd18195b38bcf`, source commit `d73f71c950ae4ba64d27ebfd0c70f6e81475ec8c`, tracked diff SHA-256 `be56dc1ede073d53bc749aa73951526db415636c2061f5e6da8ca36da3b2889a`를 기록한다. [hidden-item 통합 검증 JSON](matrix-verification-hidden-2026-10-28.json)은 20 scene, screenshot 크기·해시, frames, tracks, trace와 presentation을 검사하고 서로 다른 11개 negative-control mutation을 모두 거부한다.
+
+| Android API 37 AVD: `column-hidden` | iPhone 17 Pro / iOS 26.2 Simulator: `row-hidden` |
+| --- | --- |
+| ![Android column-hidden](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T035340076Z-8be33a99/android-column-hidden.png) | ![iOS row-hidden](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T035420142Z-8d77bf8f/ios-row-hidden.png) |
+
 ## 기계 검증과 재현
 
 [`matrix-verification.json`](matrix-verification.json)은 두 manifest, 16 scene, frame 및 track trace, screenshot 크기·해시, 앱 presentation을 다시 검사했다. matcher의 자체 negative control 8개(중복 JSON 키, 누락 축, 누락 `ExpandFlexibleTracks`, 비유한 track 값, 잘못된 source order, 잘못된 image natural size, 잘못된 min-content, 잘못된 frame)도 모두 예상대로 거부됐다. 두 플랫폼 실행에서 미등록 scene과 충돌하는 C11.2.1 profile도 각각 거부됐다.
@@ -37,10 +54,13 @@ mise exec -- node spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtim
 python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py --self-test \
   --android-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf \
   --ios-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c
+python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py --self-test \
+  --android-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T035340076Z-8be33a99 \
+  --ios-run-dir spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T035420142Z-8d77bf8f
 ```
 
 ## 검증하지 않은 범위
 
 실기기, hardware GPU, 경계 바깥 pixel overflow·clip, 임의 CSS/DOM 및 글꼴, WPT 전체 적합성은 이 고정 fixture에서 검증하지 않았다. C11.4 전체 기능과 공식 완료 checkbox는 미완료이며 공식 집계 `72/213`도 바꾸지 않는다.
 
-구현 실패 관점은 [20개 검토](implementation-review-20.md), 변경분 검토는 [서로 다른 30개 관점](pr-delta-review-30.md)에 기록했다.
+기존 8-scene mixed-track slice의 구현 실패 관점은 [20개 검토](implementation-review-20.md), 그 변경분은 [30개 검토](pr-delta-review-30.md)에 기록했다. 이번 hidden-item 구현은 별도로 [runtime 구현 20관점](hidden-item-implementation-runtime-review-20.md)과 [구현 PR diff 30관점](hidden-item-pr-diff-review-30.md)에서 검토했다.

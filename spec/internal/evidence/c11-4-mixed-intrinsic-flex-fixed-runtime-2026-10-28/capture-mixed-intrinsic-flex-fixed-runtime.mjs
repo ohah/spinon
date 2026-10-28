@@ -17,13 +17,15 @@ assert.ok(serialOrUDID, 'Android AVD serial 또는 iOS Simulator UDID가 필요�
 
 const expectedJsonPath = resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json');
+const hiddenExpectedJsonPath = resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json');
 const expectedCases = JSON.parse(readFileSync(expectedJsonPath, 'utf8')).cases;
 function rational(value) {
   if (value && typeof value === 'object') return value.numerator / value.denominator;
   const [numerator, denominator = '1'] = String(value).split('/');
   return Number(numerator) / Number(denominator);
 }
-const scenes = Object.entries(expectedCases).map(([id, scene]) => {
+const existingScenes = Object.entries(expectedCases).map(([id, scene]) => {
   const axis = scene.axis === 'rows' ? 'Rows' : 'Columns';
   const root = axis === 'Rows'
     ? { x: 0, y: 0, width: scene.crossAxisPx, height: scene.sizingAxisPx }
@@ -49,8 +51,41 @@ const scenes = Object.entries(expectedCases).map(([id, scene]) => {
     root,
     frames,
     boxCount: 4,
+    drawBoxCount: 4,
   };
 });
+const hiddenScenes = JSON.parse(readFileSync(hiddenExpectedJsonPath, 'utf8')).scenes
+  .filter(({ displayNoneChild }) => displayNoneChild)
+  .map((scene) => {
+    const id = scene.sceneId;
+    const root = scene.rootRelativeFramesCssPx.root;
+    const axis = scene.axis;
+    const hiddenFrame = { x: 0, y: 0, width: 0, height: 0 };
+    const frames = [
+      { node: 1, ...root, semantic: 'root' },
+      { node: 2, ...hiddenFrame, semantic: 'hidden-zero-frame-bookkeeping' },
+      { node: 4, ...scene.rootRelativeFramesCssPx.a, semantic: 'a' },
+      { node: 6, ...scene.rootRelativeFramesCssPx.b, semantic: 'b' },
+      { node: 7, ...scene.rootRelativeFramesCssPx.c, semantic: 'c' },
+    ];
+    return {
+      id,
+      axis,
+      availableSize: scene.trackSizing.definiteAxisCssPx,
+      oppositeSize: axis === 'Rows' ? root.width : root.height,
+      gap: scene.trackSizing.gapsCssPx[0],
+      bases: scene.trackSizing.usedTracksCssPx,
+      remaining: scene.trackSizing.remainingFreeSpaceCssPx,
+      minContentBase: scene.intrinsicInputs.visibleAminContentCssPx,
+      root,
+      frames,
+      boxCount: 4,
+      frameCount: 5,
+      drawBoxCount: 4,
+      hiddenNode: 2,
+    };
+  });
+const scenes = [...existingScenes, ...hiddenScenes];
 assert.ok(!sceneFilter || scenes.some(({ id }) => id === sceneFilter),
   `알 수 없는 flexible-track scene: ${sceneFilter}`);
 const selectedScenes = sceneFilter ? scenes.filter(({ id }) => id === sceneFilter) : scenes;
@@ -67,10 +102,12 @@ const evidenceDirectory = resolve(evidenceRoot, 'runs', runPrefix);
 const sourceInputPaths = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/hidden.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/hidden.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_rows.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs',
@@ -82,6 +119,7 @@ const sourceInputPaths = [
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs',
   'crates/spinon-style-to-layout/src/projection.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs',
   'crates/spinon-text-layout/src/engine/intrinsic.rs',
   'crates/spinon-text-layout/src/tests.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
@@ -90,6 +128,7 @@ const sourceInputPaths = [
   'platforms/ios/Sources/C114FlexStage.swift',
   'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
   'spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json',
+  'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json',
 ];
 const frameTolerance = 1e-4;
 const traceTolerance = 1e-4;
@@ -404,11 +443,18 @@ function assertIntrinsicInputs(diagnostics, scene) {
   const inputs = diagnostics.gridItemIntrinsicInputs;
   assert.ok(Array.isArray(inputs) && inputs.length === 3,
     `${scene.id}: direct grid intrinsic input count`);
-  const itemOrder = scene.id.endsWith('reversed') ? ['c', 'b', 'a'] : ['a', 'b', 'c'];
+  const hidden = scene.hiddenNode !== undefined;
+  const itemOrder = hidden
+    ? ['a', 'b', 'c']
+    : (scene.id.endsWith('reversed') ? ['c', 'b', 'a'] : ['a', 'b', 'c']);
+  const nodeIds = hidden ? [4, 6, 7] : [2, 4, 5];
   for (const [index, input] of inputs.entries()) {
     const item = itemOrder[index];
-    assert.equal(input.sourceOrder, index, `${scene.id}: source order ${index}`);
-    assert.equal(input.node, [2, 4, 5][index], `${scene.id}: intrinsic input node ${index}`);
+    assert.equal(input.sourceOrder, hidden ? index + 1 : index,
+      `${scene.id}: source order ${index}`);
+    assert.equal(input.node, nodeIds[index], `${scene.id}: intrinsic input node ${index}`);
+    assert.notEqual(input.node, scene.hiddenNode,
+      `${scene.id}: display:none text must not enter intrinsic inputs`);
     if (item === 'b') {
       assert.equal(input.source?.kind, 'replaced', `${scene.id}: image input kind`);
       assertClose(input.source?.natural?.width, 24, `${scene.id}: PNG natural width`);
@@ -442,19 +488,21 @@ function verifyScene(log, runID, scene) {
   const summaryOffset = log.indexOf(summary);
   assert.ok(summaryOffset >= 0, `${scene.id}: exact runtime summary marker 누락`);
   const boxCount = scene.boxCount;
+  const frameCount = scene.frameCount ?? boxCount;
   const summaryLine = log.slice(summaryOffset).split(/\r?\n/, 1)[0];
   assert.ok(summaryLine.includes(
     `expected_root_frame=width=${scene.root.width},height=${scene.root.height}`),
     `${scene.id}: root expected frame summary 불일치`);
   assert.ok(summaryLine.includes(`status=0 layout=ready boxes=${boxCount}`),
     `${scene.id}: ready/box summary 불일치`);
-  assert.ok(successfulDraw(log.slice(summaryOffset), boxCount),
+  const drawBoxCount = scene.drawBoxCount ?? boxCount;
+  assert.ok(successfulDraw(log.slice(summaryOffset), drawBoxCount),
     `${scene.id}: presented frame marker 누락`);
 
   const nodeFrames = assertFrames(log, scene);
   if (target === 'ios-simulator') {
     assert.ok(log.includes(
-      `SPINON_C114_GRID_FRAME_SUMMARY run_id=${runID} count=${boxCount} marker=present`),
+    `SPINON_C114_GRID_FRAME_SUMMARY run_id=${runID} count=${frameCount} marker=present`),
     `${scene.id}: iOS frame summary marker 누락`);
   }
   const { total: traceChunks, diagnostics } = reassembleTrace(log, runID, scene.id);
@@ -464,6 +512,8 @@ function verifyScene(log, runID, scene) {
     runID,
     status: 'passed',
     boxCount,
+    frameCount,
+    drawBoxCount,
     targetAxis: scene.axis,
     trackBasesCssPx: actualBases,
     remainingSpaceCssPx: remaining,
@@ -519,6 +569,7 @@ async function runAndroid() {
     const rejectedRoutes = [];
     for (const rejected of [
       { label: 'unknown-scene', scene: 'column-freeze-unlisted', selector: [] },
+      { label: 'visible-control', scene: 'column-visible-control', selector: [] },
       { label: 'conflicting-c1121-profile', scene: 'column-freeze',
         selector: ['--ez', 'spinon_c1121_grid_placement', 'true'] },
     ]) {
@@ -583,7 +634,7 @@ async function runAndroid() {
         }
         const summarySeen = runtimeLog.includes(
           `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
-        const drawSeen = successfulDraw(runtimeLog, scene.boxCount);
+        const drawSeen = successfulDraw(runtimeLog, scene.drawBoxCount ?? scene.boxCount);
         if (runtimeLog.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || runtimeLog.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
             || (summarySeen && drawSeen)) break;
@@ -690,6 +741,7 @@ async function runIOS() {
     const rejectedRoutes = [];
     for (const rejected of [
       { label: 'unknown-scene', scene: 'column-freeze-unlisted', selector: [] },
+      { label: 'visible-control', scene: 'column-visible-control', selector: [] },
       { label: 'conflicting-c1121-profile', scene: 'column-freeze',
         selector: ['--spinon-c1121-grid-placement'] },
     ]) {
@@ -758,7 +810,7 @@ async function runIOS() {
         runtimeLog = runtimeLog.split(/\r?\n/).filter((line) => processMarker.test(line)).join('\n');
         const summarySeen = runtimeLog.includes(
           `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `);
-        const drawSeen = successfulDraw(runtimeLog, scene.boxCount);
+        const drawSeen = successfulDraw(runtimeLog, scene.drawBoxCount ?? scene.boxCount);
         if (runtimeLog.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
             || runtimeLog.includes('SPINON_C114_GRID_ARGUMENT_ERROR')
             || (summarySeen && drawSeen)) break;

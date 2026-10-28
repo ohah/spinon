@@ -4,6 +4,9 @@ enum Axis {
     Rows,
 }
 
+#[path = "generic_intrinsic_flex_fixed/hidden.rs"]
+mod hidden;
+
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 enum Contribution {
     Freeze,
@@ -103,8 +106,11 @@ impl ItemKind {
 }
 
 pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
-    let scene = SCENES.iter().find(|scene| scene.id == scene_id).copied()?;
-    Some(scene_source(scene))
+    if let Some(scene) = SCENES.iter().find(|scene| scene.id == scene_id).copied() {
+        Some(scene_source(scene))
+    } else {
+        hidden::runtime_source(scene_id)
+    }
 }
 
 fn scene_source(scene: Scene) -> String {

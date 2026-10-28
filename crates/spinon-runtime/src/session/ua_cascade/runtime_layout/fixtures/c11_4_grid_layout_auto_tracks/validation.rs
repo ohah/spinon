@@ -17,6 +17,8 @@ use super::super::super::{
 };
 use super::{SCENE_ID, spacing_is, unsupported, zero_edges};
 
+type ObservedFrames = BTreeMap<u64, (f32, f32, f32, f32)>;
+
 pub(super) fn validate_output(
     completed: &RuntimeLayoutCompleted,
 ) -> Result<(), RuntimeLayoutFailure> {
@@ -326,7 +328,7 @@ fn validate_axis_pass(
 fn observed_frames(
     completed: &RuntimeLayoutCompleted,
     node_ids: &[NodeId; 5],
-) -> Result<BTreeMap<u64, (f32, f32, f32, f32)>, RuntimeLayoutFailure> {
+) -> Result<ObservedFrames, RuntimeLayoutFailure> {
     let frames = completed
         .frames
         .iter()
