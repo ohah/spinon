@@ -1,0 +1,35 @@
+{
+  "toolchain": "Rust 1.96.1 / bundled LLVM llvm-nm",
+  "scope": "macOS ARM64 spinon-ffi static archive only",
+  "negativeControl": {
+    "featureSet": "--no-default-features",
+    "archive": "target/debug/libspinon_ffi.a",
+    "bytes": 514497312,
+    "sha256": "6ccd706745756858faa91d35377d09cd80fe965bf2e0242d06e283a3f987c160",
+    "sceneMarkerCounts": {
+      "column-visibility-hidden-border-overflow": 0,
+      "column-visibility-visible-border-overflow-control": 0,
+      "row-visibility-hidden-border-overflow": 0,
+      "row-visibility-visible-border-overflow-control": 0
+    },
+    "fixtureSymbols": []
+  },
+  "positiveControl": {
+    "featureSet": "c04-runtime-gpu-fixture-test",
+    "archive": "target/debug/libspinon_ffi.a",
+    "bytes": 713499200,
+    "sha256": "5b03b9e8f8e9066e5f9ca204541518276f6bda360dff40e91e653f6fc3dafc2d",
+    "sceneMarkerCounts": {
+      "column-visibility-hidden-border-overflow": 3,
+      "column-visibility-visible-border-overflow-control": 3,
+      "row-visibility-hidden-border-overflow": 3,
+      "row-visibility-visible-border-overflow-control": 3
+    },
+    "fixtureSymbols": [
+      "ZN10spinon_ffi11runtime_gpu3ffi8fixtures5c11_460spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture28_$u7b$$u7b$closure$u7d$$u7d$17h94572f3487a5f5c7E",
+      "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+      "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+    ]
+  },
+  "interpretation": "Static archive feature isolation only; this does not prove APK/IPA exclusion."
+}

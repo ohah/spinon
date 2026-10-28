@@ -10,6 +10,10 @@ enum C114FlexStage {
         "column-hidden", "row-hidden",
         "column-visibility-hidden", "column-visibility-visible-control",
         "row-visibility-hidden", "row-visibility-visible-control",
+        "column-visibility-hidden-border-overflow",
+        "column-visibility-visible-border-overflow-control",
+        "row-visibility-hidden-border-overflow",
+        "row-visibility-visible-border-overflow-control",
     ]
     private static let tolerance = 1.0e-4
 
@@ -19,6 +23,9 @@ enum C114FlexStage {
 
     static func expectedRootFrame(_ sceneID: String) -> String? {
         guard isScene(sceneID) else { return nil }
+        if isBorderOverflowScene(sceneID) {
+            return isRowScene(sceneID) ? "width=120,height=100" : "width=100,height=120"
+        }
         if isMixedScene(sceneID) {
             return isRowScene(sceneID) ? "width=120,height=300" : "width=300,height=120"
         }
@@ -27,6 +34,7 @@ enum C114FlexStage {
 
     static func itemCount(_ sceneID: String) -> Int {
         guard isScene(sceneID) else { return 0 }
+        if isBorderOverflowScene(sceneID) { return isVisibilityHiddenScene(sceneID) ? 2 : 3 }
         if isVisibilityScene(sceneID) { return isVisibilityHiddenScene(sceneID) ? 3 : 4 }
         return isMixedScene(sceneID) ? 3 : 2
     }
@@ -39,6 +47,17 @@ enum C114FlexStage {
         let spanID = "novel-mixed-intrinsic-flex-fixed-\(sceneID)-visibility"
         let rows = isRowScene(sceneID)
         let hidden = isVisibilityHiddenScene(sceneID)
+        if isBorderOverflowScene(sceneID) {
+            let aID = "novel-mixed-intrinsic-flex-fixed-\(sceneID)-a"
+            let overflowOwner = hidden ? aID : spanID
+            return [
+                ("\(sceneID)-border", rootID,
+                 rows ? 60 : 1, rows ? 1 : 60, [240, 198, 116, 255]),
+                ("\(sceneID)-overflow", overflowOwner,
+                 rows ? 60 : 120, rows ? 120 : 60,
+                 hidden ? [40, 100, 220, 255] : [142, 68, 173, 255]),
+            ]
+        }
         return [
             ("\(sceneID)-overlap", spanID,
              rows ? 60 : 120, rows ? 125 : 60,
@@ -95,27 +114,28 @@ enum C114FlexStage {
 
         let targetIndex = isRowScene(sceneID) ? 1 : 0
         let fixedIndex = 1 - targetIndex
-        return fixedAxisMatches(passes[fixedIndex])
+        return fixedAxisMatches(sceneID, passes[fixedIndex])
             && flexibleAxisMatches(sceneID, pass: passes[targetIndex])
             && (!isMixedScene(sceneID) || intrinsicInputsMatch(sceneID, diagnostics: diagnostics))
     }
 
-    private static func fixedAxisMatches(_ pass: [String: Any]) -> Bool {
+    private static func fixedAxisMatches(_ sceneID: String, _ pass: [String: Any]) -> Bool {
         guard let stages = pass["stages"] as? [[String: Any]],
               stages.count == 2,
               let contributions = pass["contributions"] as? [[String: Any]],
               contributions.isEmpty,
               string(stages[0]["stage"]) == "Initialize",
               string(stages[1]["stage"]) == "FixedTrackEarlyReturn" else { return false }
-        return fixedTracksMatch(stages[0]["tracks"]) && fixedTracksMatch(stages[1]["tracks"])
+        return fixedTracksMatch(stages[0]["tracks"], sceneID: sceneID)
+            && fixedTracksMatch(stages[1]["tracks"], sceneID: sceneID)
     }
 
-    private static func fixedTracksMatch(_ value: Any?) -> Bool {
+    private static func fixedTracksMatch(_ value: Any?, sceneID: String) -> Bool {
         guard let tracks = value as? [[String: Any]], tracks.count == 3 else { return false }
         for (index, track) in tracks.enumerated() {
             let gutter = index.isMultiple(of: 2)
             let boundary = index == 0 || index == 2
-            let size = gutter ? 0.0 : 120.0
+            let size = gutter ? 0.0 : (isBorderOverflowScene(sceneID) ? 116.0 : 120.0)
             guard integer(track["internalIndex"]) == index,
                   boolean(track["gutter"]) == gutter,
                   boolean(track["collapsed"]) == boundary,
@@ -167,7 +187,10 @@ enum C114FlexStage {
                   boolean(contribution["crossesFlexibleTrack"]) == true,
                   near(contribution["value"], expected: item.2) else { return false }
             if let minimumSource = item.3 {
-                guard string(contribution["minimumSource"]) == minimumSource else { return false }
+                guard debugValue(string(contribution["minimumSource"]))
+                    == debugValue(minimumSource) else {
+                    return false
+                }
             } else {
                 guard contribution["minimumSource"] is NSNull else { return false }
             }
@@ -252,6 +275,18 @@ enum C114FlexStage {
                 [0, 0, 120, 300], [0, 0, 120, 150], [0, 0, 120, 150],
                 [0, 160, 24, 16], [0, 210, 120, 90],
             ]
+        case "column-visibility-hidden-border-overflow",
+             "column-visibility-visible-border-overflow-control":
+            return [
+                [0, 0, 100, 120], [2, 2, 150, 116], [2, 2, 150, 116],
+                [162, 2, 24, 16], [212, 2, 0, 116],
+            ]
+        case "row-visibility-hidden-border-overflow",
+             "row-visibility-visible-border-overflow-control":
+            return [
+                [0, 0, 120, 100], [2, 2, 116, 150], [2, 2, 116, 150],
+                [2, 162, 24, 16], [2, 212, 116, 0],
+            ]
         case "column-freeze":
             return [[0, 0, 300, 120], [0, 0, 100, 120], [110, 0, 24, 16], [160, 0, 140, 120]]
         case "column-no-freeze", "column-equal-boundary":
@@ -287,6 +322,11 @@ enum C114FlexStage {
         case "column-visibility-hidden", "column-visibility-visible-control",
              "row-visibility-hidden", "row-visibility-visible-control":
             return [150, 40, 90]
+        case "column-visibility-hidden-border-overflow",
+             "column-visibility-visible-border-overflow-control",
+             "row-visibility-hidden-border-overflow",
+             "row-visibility-visible-border-overflow-control":
+            return [150, 40, 0]
         case "column-no-freeze", "column-equal-boundary", "row-no-freeze", "row-equal-boundary":
             return [80, 40, 160]
         case "weighted-columns": return [190.0 / 3.0, 380.0 / 3.0]
@@ -310,13 +350,15 @@ enum C114FlexStage {
     }
 
     private static func isVisibilityScene(_ sceneID: String) -> Bool {
-        isVisibilityHiddenScene(sceneID)
-            || sceneID == "column-visibility-visible-control"
-            || sceneID == "row-visibility-visible-control"
+        sceneID.contains("-visibility-hidden") || sceneID.contains("-visibility-visible")
     }
 
     private static func isVisibilityHiddenScene(_ sceneID: String) -> Bool {
-        sceneID == "column-visibility-hidden" || sceneID == "row-visibility-hidden"
+        sceneID.contains("-visibility-hidden")
+    }
+
+    private static func isBorderOverflowScene(_ sceneID: String) -> Bool {
+        sceneID.contains("-border-overflow")
     }
 
     private static func intrinsicInputsMatch(
@@ -433,6 +475,10 @@ enum C114FlexStage {
 
     private static func string(_ value: Any?) -> String? {
         value as? String
+    }
+
+    private static func debugValue(_ value: String?) -> String? {
+        value.map { String($0.filter { !$0.isWhitespace }) }
     }
 
     private static func boolean(_ value: Any?) -> Bool? {

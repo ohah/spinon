@@ -21,6 +21,8 @@ const hiddenExpectedJsonPath = resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json');
 const visibilityExpectedJsonPath = resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json');
+const overflowExpectedJsonPath = resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-border-overflow-precomparison-2026-10-28/expected.json');
 const expectedCases = JSON.parse(readFileSync(expectedJsonPath, 'utf8')).cases;
 function rational(value) {
   if (value && typeof value === 'object') return value.numerator / value.denominator;
@@ -150,7 +152,79 @@ const visibilityScenes = Object.entries(
     surfacePixelSamples,
   };
 });
-const scenes = [...existingScenes, ...hiddenScenes, ...visibilityScenes];
+const overflowExpected = JSON.parse(readFileSync(overflowExpectedJsonPath, 'utf8'));
+const overflowSceneIds = {
+  'column-hidden': 'column-visibility-hidden-border-overflow',
+  'column-visible-control': 'column-visibility-visible-border-overflow-control',
+  'row-hidden': 'row-visibility-hidden-border-overflow',
+  'row-visible-control': 'row-visibility-visible-border-overflow-control',
+};
+const overflowScenes = Object.entries(overflowExpected.scenes).map(([key, expected]) => {
+  const id = overflowSceneIds[key];
+  assert.ok(id, `알 수 없는 border overflow precomparison scene: ${key}`);
+  const axis = id.startsWith('row-') ? 'Rows' : 'Columns';
+  const rootWidth = expected.rootBorderBoxCssPx[0];
+  const rootHeight = expected.rootBorderBoxCssPx[1];
+  const contentWidth = expected.contentBoxCssPx[0];
+  const contentHeight = expected.contentBoxCssPx[1];
+  const availableSize = axis === 'Rows' ? contentHeight : contentWidth;
+  const oppositeSize = axis === 'Rows' ? contentWidth : contentHeight;
+  const bases = axis === 'Rows'
+    ? expected.gridTemplateRowsCssPx : expected.gridTemplateColumnsCssPx;
+  const hidden = expected.visibility === 'hidden';
+  const rootId = `novel-mixed-intrinsic-flex-fixed-${id}-root`;
+  const aId = `novel-mixed-intrinsic-flex-fixed-${id}-a`;
+  const spanId = `novel-mixed-intrinsic-flex-fixed-${id}-visibility`;
+  const toFrame = (values) => ({
+    x: values[0], y: values[1], width: values[2], height: values[3],
+  });
+  const borderPoint = axis === 'Rows'
+    ? overflowExpected.surfaceSampleRequirements.rowBorderRootLocalCssPx
+    : overflowExpected.surfaceSampleRequirements.columnBorderRootLocalCssPx;
+  const overflowPoint = axis === 'Rows'
+    ? overflowExpected.surfaceSampleRequirements.rowOverflowRootLocalCssPx
+    : overflowExpected.surfaceSampleRequirements.columnOverflowRootLocalCssPx;
+  return {
+    id,
+    axis,
+    availableSize,
+    oppositeSize,
+    gap: 10,
+    bases,
+    remaining: availableSize - bases.reduce((sum, size) => sum + size, 0) - 20,
+    minContentBase: 100,
+    root: { x: 0, y: 0, width: rootWidth, height: rootHeight },
+    frames: [
+      { node: 1, x: 0, y: 0, width: rootWidth, height: rootHeight, semantic: 'root' },
+      { node: 2, ...toFrame(expected.aAndVisibilityFrameRootLocalCssPx), semantic: 'a' },
+      { node: 4, ...toFrame(expected.aAndVisibilityFrameRootLocalCssPx), semantic: 'visibility-span' },
+      { node: 6, ...toFrame(expected.imageFrameRootLocalCssPx), semantic: 'image' },
+      { node: 7, ...toFrame(expected.cFrameRootLocalCssPx), semantic: 'c' },
+    ],
+    boxCount: hidden ? 3 : 4,
+    frameCount: 5,
+    drawBoxCount: hidden ? 3 : 4,
+    visibilityNode: 4,
+    visibilityMinContent: overflowExpected.independentTrackCalculation.hiddenSpanCharacters
+      * overflowExpected.independentTrackCalculation.ahemCharacterAdvanceCssPx,
+    visibility: expected.visibility,
+    surfacePixelSamples: [
+      {
+        id: `${id}-border`, nodeId: rootId,
+        xCssPx: borderPoint[0], yCssPx: borderPoint[1],
+        rgba: overflowExpected.colors.border.rgba,
+      },
+      {
+        id: `${id}-overflow`, nodeId: hidden ? aId : spanId,
+        xCssPx: overflowPoint[0], yCssPx: overflowPoint[1],
+        rgba: hidden
+          ? overflowExpected.colors.underlyingVisibleItem.rgba
+          : overflowExpected.colors.visibleSpanControl.rgba,
+      },
+    ],
+  };
+});
+const scenes = [...existingScenes, ...hiddenScenes, ...visibilityScenes, ...overflowScenes];
 assert.ok(!sceneFilter || scenes.some(({ id }) => id === sceneFilter),
   `알 수 없는 flexible-track scene: ${sceneFilter}`);
 const selectedScenes = sceneFilter ? scenes.filter(({ id }) => id === sceneFilter) : scenes;
@@ -174,9 +248,12 @@ const sourceInputPaths = [
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/hidden.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/root_contract.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/visibility_hidden.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests/visibility_hidden.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_intrinsic_flex_fixed/tests/visibility_hidden/border_overflow.rs',
+  'crates/spinon-layout/src/calc_tree/text.rs',
   'crates/spinon-style-to-render/src/runtime.rs',
   'crates/spinon-style-to-render/src/tests/runtime.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs',
@@ -185,6 +262,7 @@ const sourceInputPaths = [
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image/fixture.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_direct_text_image_row_axis.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/cyclic_minmax_mixed_text_image_span.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/generic_spanning.rs',
@@ -198,9 +276,11 @@ const sourceInputPaths = [
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   'platforms/ios/Sources/C114FlexStage.swift',
   'platforms/ios/SpinonBootstrap.xcodeproj/project.pbxproj',
+  'tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py',
   'spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json',
   'spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json',
   'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json',
+  'spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-border-overflow-precomparison-2026-10-28/expected.json',
 ];
 const frameTolerance = 1e-4;
 const traceTolerance = 1e-4;
@@ -519,17 +599,20 @@ function assertVisibilityContributions(pass, scene) {
   assert.ok(Array.isArray(contributions) && contributions.length === 4,
     `${scene.id}: A와 visibility 항목의 축 contribution은 각각 Minimum/MinContent여야 함`);
   const automaticMinimum = 'AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, spans_flexible_max_track: true, content_based: false, is_compressible_replaced: false, fixed_track_sum: None, fixed_gutter_sum: None, fixed_track_limit: None }';
+  const normalizeDebugValue = (value) => typeof value === 'string'
+    ? value.replaceAll(/\s+/g, '') : value;
   const normalized = contributions.map(({ item, kind, span, crossesFlexibleTrack, value,
-    minimumSource }) => ({ item, kind, span, crossesFlexibleTrack, value, minimumSource }))
+    minimumSource }) => ({ item, kind, span, crossesFlexibleTrack, value,
+    minimumSource: normalizeDebugValue(minimumSource) }))
     .sort((left, right) => left.item - right.item
       || (left.kind === 'Minimum' ? 0 : 1) - (right.kind === 'Minimum' ? 0 : 1));
   assert.deepEqual(normalized, [
     { item: 2, kind: 'Minimum', span: 1, crossesFlexibleTrack: true,
-      value: 0, minimumSource: automaticMinimum },
+      value: 0, minimumSource: normalizeDebugValue(automaticMinimum) },
     { item: 2, kind: 'MinContent', span: 1, crossesFlexibleTrack: true,
       value: 100, minimumSource: null },
     { item: 4, kind: 'Minimum', span: 1, crossesFlexibleTrack: true,
-      value: 0, minimumSource: automaticMinimum },
+      value: 0, minimumSource: normalizeDebugValue(automaticMinimum) },
     { item: 4, kind: 'MinContent', span: 1, crossesFlexibleTrack: true,
       value: scene.visibilityMinContent, minimumSource: null },
   ], `${scene.id}: hidden visibility도 A 다음 source order로 정확히 track sizing에 참여해야 함`);

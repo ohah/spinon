@@ -20,6 +20,10 @@ final class C114FlexStage {
         "column-hidden", "row-hidden",
         "column-visibility-hidden", "column-visibility-visible-control",
         "row-visibility-hidden", "row-visibility-visible-control",
+        "column-visibility-hidden-border-overflow",
+        "column-visibility-visible-border-overflow-control",
+        "row-visibility-hidden-border-overflow",
+        "row-visibility-visible-border-overflow-control",
     };
     private static final double TOLERANCE = 1.0e-4;
     private static final String DIAGNOSTICS_MARKER = "grid_track_sizing_diagnostics=";
@@ -53,6 +57,7 @@ final class C114FlexStage {
     }
 
     static int itemCount(String sceneId) {
+        if (isBorderOverflowScene(sceneId)) return isVisibilityHiddenScene(sceneId) ? 2 : 3;
         if (isVisibilityScene(sceneId)) return isVisibilityHiddenScene(sceneId) ? 3 : 4;
         if (isMixedScene(sceneId)) return 3;
         return isScene(sceneId) ? 2 : 0;
@@ -60,6 +65,9 @@ final class C114FlexStage {
 
     static String expectedRootFrame(String sceneId) {
         if (!isScene(sceneId)) return "";
+        if (isBorderOverflowScene(sceneId)) {
+            return isRowScene(sceneId) ? "width=120,height=100" : "width=100,height=120";
+        }
         if (isMixedScene(sceneId)) {
             return isRowScene(sceneId) ? "width=120,height=300" : "width=300,height=120";
         }
@@ -103,6 +111,18 @@ final class C114FlexStage {
         boolean hidden = isVisibilityHiddenScene(sceneId);
         String overlapId = sceneId + "-overlap";
         String gapId = sceneId + "-fixed-track-gap";
+        if (isBorderOverflowScene(sceneId)) {
+            String aId = "novel-mixed-intrinsic-flex-fixed-" + sceneId + "-a";
+            String overflowOwner = hidden ? aId : spanId;
+            return List.of(
+                    new SurfacePixelExpectation(sceneId + "-border", rootId,
+                            rows ? 60 : 1, rows ? 1 : 60,
+                            new int[] {240, 198, 116, 255}),
+                    new SurfacePixelExpectation(sceneId + "-overflow", overflowOwner,
+                            rows ? 60 : 120, rows ? 120 : 60,
+                            hidden ? new int[] {40, 100, 220, 255}
+                                    : new int[] {142, 68, 173, 255}));
+        }
         return List.of(
                 new SurfacePixelExpectation(overlapId, spanId,
                         rows ? 60 : 120, rows ? 125 : 60,
@@ -168,7 +188,7 @@ final class C114FlexStage {
 
             JSONObject target = isRowScene(sceneId) ? rows : columns;
             JSONObject fixed = isRowScene(sceneId) ? columns : rows;
-            return fixedAxisMatches(fixed)
+            return fixedAxisMatches(sceneId, fixed)
                     && flexibleAxisMatches(sceneId, target)
                     && (!isMixedScene(sceneId) || intrinsicInputsMatch(sceneId, diagnostics));
         } catch (JSONException | ClassCastException | NumberFormatException error) {
@@ -176,7 +196,7 @@ final class C114FlexStage {
         }
     }
 
-    private static boolean fixedAxisMatches(JSONObject pass) {
+    private static boolean fixedAxisMatches(String sceneId, JSONObject pass) {
         JSONArray stages = pass.optJSONArray("stages");
         JSONArray contributions = pass.optJSONArray("contributions");
         if (stages == null || stages.length() != 2
@@ -186,18 +206,18 @@ final class C114FlexStage {
         return initialize != null && earlyReturn != null
                 && stringEquals(initialize, "stage", "Initialize")
                 && stringEquals(earlyReturn, "stage", "FixedTrackEarlyReturn")
-                && fixedTracksMatch(initialize.optJSONArray("tracks"))
-                && fixedTracksMatch(earlyReturn.optJSONArray("tracks"));
+                && fixedTracksMatch(sceneId, initialize.optJSONArray("tracks"))
+                && fixedTracksMatch(sceneId, earlyReturn.optJSONArray("tracks"));
     }
 
-    private static boolean fixedTracksMatch(JSONArray tracks) {
+    private static boolean fixedTracksMatch(String sceneId, JSONArray tracks) {
         if (tracks == null || tracks.length() != 3) return false;
         for (int index = 0; index < tracks.length(); index++) {
             JSONObject track = tracks.optJSONObject(index);
             if (track == null || !integerEquals(track, "internalIndex", index)) return false;
             boolean gutter = index % 2 == 0;
             boolean boundary = index == 0 || index == 2;
-            double size = gutter ? 0.0 : 120.0;
+            double size = gutter ? 0.0 : isBorderOverflowScene(sceneId) ? 116.0 : 120.0;
             if (!booleanEquals(track, "gutter", gutter)
                     || !booleanEquals(track, "collapsed", boundary)
                     || !numberNear(track, "baseSize", size)
@@ -274,7 +294,7 @@ final class C114FlexStage {
                     || !numberNear(contribution, "value", values[expectedIndex])) return false;
             found[expectedIndex] = true;
             if ("Minimum".equals(kind)) {
-                if (!stringEquals(contribution, "minimumSource", automaticMinimum)) return false;
+                if (!debugValueEquals(contribution, "minimumSource", automaticMinimum)) return false;
             } else if (!contribution.has("minimumSource")
                     || !contribution.isNull("minimumSource")) {
                 return false;
@@ -328,6 +348,18 @@ final class C114FlexStage {
                 return new double[][] {
                     {0, 0, 120, 300}, {0, 0, 120, 150}, {0, 0, 120, 150},
                     {0, 160, 24, 16}, {0, 210, 120, 90},
+                };
+            case "column-visibility-hidden-border-overflow":
+            case "column-visibility-visible-border-overflow-control":
+                return new double[][] {
+                    {0, 0, 100, 120}, {2, 2, 150, 116}, {2, 2, 150, 116},
+                    {162, 2, 24, 16}, {212, 2, 0, 116},
+                };
+            case "row-visibility-hidden-border-overflow":
+            case "row-visibility-visible-border-overflow-control":
+                return new double[][] {
+                    {0, 0, 120, 100}, {2, 2, 116, 150}, {2, 2, 116, 150},
+                    {2, 162, 24, 16}, {2, 212, 116, 0},
                 };
             case "column-freeze":
                 return new double[][] {
@@ -388,6 +420,10 @@ final class C114FlexStage {
             case "column-visibility-visible-control":
             case "row-visibility-hidden":
             case "row-visibility-visible-control": return new double[] {150, 40, 90};
+            case "column-visibility-hidden-border-overflow":
+            case "column-visibility-visible-border-overflow-control":
+            case "row-visibility-hidden-border-overflow":
+            case "row-visibility-visible-border-overflow-control": return new double[] {150, 40, 0};
             case "column-no-freeze":
             case "column-equal-boundary":
             case "row-no-freeze":
@@ -414,14 +450,16 @@ final class C114FlexStage {
     }
 
     private static boolean isVisibilityScene(String sceneId) {
-        return isVisibilityHiddenScene(sceneId)
-                || "column-visibility-visible-control".equals(sceneId)
-                || "row-visibility-visible-control".equals(sceneId);
+        return sceneId.contains("-visibility-hidden")
+                || sceneId.contains("-visibility-visible");
     }
 
     private static boolean isVisibilityHiddenScene(String sceneId) {
-        return "column-visibility-hidden".equals(sceneId)
-                || "row-visibility-hidden".equals(sceneId);
+        return sceneId.contains("-visibility-hidden");
+    }
+
+    private static boolean isBorderOverflowScene(String sceneId) {
+        return sceneId.contains("-border-overflow");
     }
 
     private static boolean intrinsicInputsMatch(String sceneId, JSONObject diagnostics) {
@@ -539,5 +577,12 @@ final class C114FlexStage {
     private static boolean stringEquals(JSONObject object, String key, String expected) {
         Object value = object.opt(key);
         return value instanceof String && expected.equals(value);
+    }
+
+    private static boolean debugValueEquals(JSONObject object, String key, String expected) {
+        Object value = object.opt(key);
+        return value instanceof String
+                && ((String) value).replaceAll("\\s+", "")
+                        .equals(expected.replaceAll("\\s+", ""));
     }
 }

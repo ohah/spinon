@@ -1,9 +1,13 @@
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
-    let (rows, visibility) = match scene_id {
-        "column-visibility-hidden" => (false, "hidden"),
-        "column-visibility-visible-control" => (false, "visible"),
-        "row-visibility-hidden" => (true, "hidden"),
-        "row-visibility-visible-control" => (true, "visible"),
+    let (rows, visibility, border_overflow) = match scene_id {
+        "column-visibility-hidden" => (false, "hidden", false),
+        "column-visibility-visible-control" => (false, "visible", false),
+        "row-visibility-hidden" => (true, "hidden", false),
+        "row-visibility-visible-control" => (true, "visible", false),
+        "column-visibility-hidden-border-overflow" => (false, "hidden", true),
+        "column-visibility-visible-border-overflow-control" => (false, "visible", true),
+        "row-visibility-hidden-border-overflow" => (true, "hidden", true),
+        "row-visibility-visible-border-overflow-control" => (true, "visible", true),
         _ => return None,
     };
     let root_id = format!("novel-mixed-intrinsic-flex-fixed-{scene_id}-root");
@@ -12,23 +16,50 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
     let image_id = format!("novel-mixed-intrinsic-flex-fixed-{scene_id}-b");
     let c_id = format!("novel-mixed-intrinsic-flex-fixed-{scene_id}-c");
     let (width, height, column_gap, row_gap, columns, rows_style) = if rows {
-        (
-            120,
-            300,
-            0,
-            10,
-            "120px",
-            "minmax(min-content,1fr) 40px minmax(0px,2fr)",
-        )
+        if border_overflow {
+            (
+                120,
+                100,
+                0,
+                10,
+                "116px",
+                "minmax(min-content,1fr) 40px minmax(0px,2fr)",
+            )
+        } else {
+            (
+                120,
+                300,
+                0,
+                10,
+                "120px",
+                "minmax(min-content,1fr) 40px minmax(0px,2fr)",
+            )
+        }
     } else {
-        (
-            300,
-            120,
-            10,
-            0,
-            "minmax(min-content,1fr) 40px minmax(0px,2fr)",
-            "120px",
-        )
+        if border_overflow {
+            (
+                100,
+                120,
+                10,
+                0,
+                "minmax(min-content,1fr) 40px minmax(0px,2fr)",
+                "116px",
+            )
+        } else {
+            (
+                300,
+                120,
+                10,
+                0,
+                "minmax(min-content,1fr) 40px minmax(0px,2fr)",
+                "120px",
+            )
+        }
+    };
+    let border_style = if border_overflow {
+        "border-width:2px;border-style:solid;border-color:#f0c674;"
+    } else {
+        ""
     };
     let writing_mode = if rows {
         "writing-mode:vertical-rl;"
@@ -46,7 +77,7 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
 const root = document.createElement('div');
 root.setAttribute('id', {root_id:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height}px;margin:0;padding:0;column-gap:{column_gap}px;row-gap:{row_gap}px;align-content:start;justify-content:start;align-items:normal;justify-items:normal;direction:ltr;writing-mode:horizontal-tb;grid-template-columns:{columns};grid-template-rows:{rows_style};background-color:#e8edf5');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height}px;margin:0;padding:0;{border_style}column-gap:{column_gap}px;row-gap:{row_gap}px;align-content:start;justify-content:start;align-items:normal;justify-items:normal;direction:ltr;writing-mode:horizontal-tb;grid-template-columns:{columns};grid-template-rows:{rows_style};background-color:#e8edf5');
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
 const itema = document.createElement('div');
@@ -89,17 +120,55 @@ mod tests {
     use crate::runtime_gpu::fixtures::c11_4::c11_4_grid_track_sizing_runtime_source;
 
     #[test]
-    fn routes_only_the_four_exact_visibility_mixed_track_scenes() {
-        for (scene_id, rows, visibility) in [
-            ("column-visibility-hidden", false, "hidden"),
-            ("column-visibility-visible-control", false, "visible"),
-            ("row-visibility-hidden", true, "hidden"),
-            ("row-visibility-visible-control", true, "visible"),
+    fn routes_only_the_eight_exact_visibility_mixed_track_scenes() {
+        for (scene_id, rows, visibility, border_overflow) in [
+            ("column-visibility-hidden", false, "hidden", false),
+            ("column-visibility-visible-control", false, "visible", false),
+            ("row-visibility-hidden", true, "hidden", false),
+            ("row-visibility-visible-control", true, "visible", false),
+            (
+                "column-visibility-hidden-border-overflow",
+                false,
+                "hidden",
+                true,
+            ),
+            (
+                "column-visibility-visible-border-overflow-control",
+                false,
+                "visible",
+                true,
+            ),
+            (
+                "row-visibility-hidden-border-overflow",
+                true,
+                "hidden",
+                true,
+            ),
+            (
+                "row-visibility-visible-border-overflow-control",
+                true,
+                "visible",
+                true,
+            ),
         ] {
             let source = runtime_source(scene_id).expect("fixed visibility scene");
             assert!(source.contains(&format!("sceneId:{scene_id:?}")));
             assert!(source.contains(&format!("novel-mixed-intrinsic-flex-fixed-{scene_id}-root")));
             assert!(source.contains("minmax(min-content,1fr) 40px minmax(0px,2fr)"));
+            assert!(source.contains(if border_overflow {
+                "border-width:2px;border-style:solid;border-color:#f0c674;"
+            } else {
+                "margin:0;padding:0;"
+            }));
+            if border_overflow {
+                assert!(source.contains("width:100px;height:120px;") || rows);
+                assert!(source.contains("width:120px;height:100px;") || !rows);
+                assert!(source.contains(if rows {
+                    "grid-template-columns:116px"
+                } else {
+                    "grid-template-rows:116px"
+                }));
+            }
             assert_eq!(source.matches("document.createElement('div')").count(), 3);
             assert_eq!(source.matches("document.createElement('span')").count(), 1);
             assert_eq!(source.matches("document.createElement('img')").count(), 1);
@@ -134,6 +203,7 @@ mod tests {
         for unknown in [
             "column-visibility-hidden-extra",
             "column-visibility-collapse",
+            "column-visibility-hidden-border-overflow-extra",
             "",
         ] {
             assert!(runtime_source(unknown).is_none());

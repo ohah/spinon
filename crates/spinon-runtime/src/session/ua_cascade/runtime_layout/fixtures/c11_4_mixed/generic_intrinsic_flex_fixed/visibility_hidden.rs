@@ -27,7 +27,13 @@ pub(super) fn prepare(
     validate_element(snapshot, root, "div", &root_id, HostParent::Root)?;
 
     let root_style = super::super::style_for(styles, root)?;
-    super::validate_root_style(root_style, styles, root, axis)?;
+    super::root_contract::validate(
+        root_style,
+        styles,
+        root,
+        axis,
+        scene_id.contains("border-overflow"),
+    )?;
     super::require_property(root_style, "visibility", "visible")?;
 
     let children = snapshot
@@ -86,7 +92,7 @@ pub(super) fn prepare(
     super::require_property(
         span_style,
         "visibility",
-        if scene_id.ends_with("-visible-control") {
+        if scene_id.contains("visibility-visible") {
             "visible"
         } else {
             "hidden"
@@ -213,6 +219,21 @@ fn scene_for_root(root_id: &str) -> Option<(&'static str, Axis)> {
         }
         "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-root" => {
             Some(("row-visibility-visible-control", Axis::Rows))
+        }
+        "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-border-overflow-root" => {
+            Some(("column-visibility-hidden-border-overflow", Axis::Columns))
+        }
+        "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-border-overflow-control-root" => {
+            Some((
+                "column-visibility-visible-border-overflow-control",
+                Axis::Columns,
+            ))
+        }
+        "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-border-overflow-root" => {
+            Some(("row-visibility-hidden-border-overflow", Axis::Rows))
+        }
+        "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-border-overflow-control-root" => {
+            Some(("row-visibility-visible-border-overflow-control", Axis::Rows))
         }
         _ => None,
     }
