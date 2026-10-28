@@ -87,6 +87,11 @@ const fixedAutoAreaSceneIDs = new Set([
 ]);
 const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
 const fitContentMinHeightSceneIDs = new Set(['fit-content-min-height-wpt']);
+const overflowAutoMinimumSceneIDs = new Set([
+  'columns-span2-visible-content-minimum', 'columns-span2-clip-content-minimum',
+  'columns-span2-hidden-zero-minimum', 'columns-span2-auto-zero-minimum',
+  'columns-span2-scroll-zero-minimum',
+]);
 const equalAutoRowsSceneIDs = new Set(['align-content-normal-equal-auto-rows']);
 const textMultiSpanSceneIDs = new Set([
   'text-span2-forward', 'text-span2-reversed',
@@ -172,6 +177,8 @@ const isFitContentAutoNeighborRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoNeighborSceneIDs.has(sceneID));
 const isFitContentMinHeightRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentMinHeightSceneIDs.has(sceneID));
+const isOverflowAutoMinimumRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => overflowAutoMinimumSceneIDs.has(sceneID));
 const equalAutoRowsSceneID = 'align-content-normal-equal-auto-rows';
 if (requestedSceneIDs?.includes(equalAutoRowsSceneID)
     || requestedRunKind === equalAutoRowsSceneID) {
@@ -190,6 +197,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => multiSpanSceneIDs.has(sceneID)
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
+  : isOverflowAutoMinimumRun ? 'overflow-auto-minimum'
   : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
   : isFitContentMinHeightRun ? 'fit-content-min-height'
   : isEqualAutoRowsRun ? 'align-content-normal-equal-auto-rows'
@@ -237,6 +245,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-${date}/${target}-${runPrefix}`
   : isFitContentMinHeightRun
     ? `spec/internal/evidence/c11-4-fit-content-min-height-runtime-${date}/${target}-${runPrefix}`
+  : isOverflowAutoMinimumRun || runKind === 'overflow-auto-minimum'
+    ? `spec/internal/evidence/c11-4-overflow-auto-minimum-runtime-${date}/${target}-${runPrefix}`
   : isImageAutoMaxBorderOverflowRun
     ? `spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
@@ -5213,13 +5223,51 @@ function gridAutoRepeatIntrinsicWptScenes() {
   });
 }
 
+for (const overflow of [
+  { id: 'visible-content-minimum', x: 'visible', y: 'visible', minimum: 100,
+    contentBased: true, tracks: [50, 50], itemWidth: 100 },
+  { id: 'clip-content-minimum', x: 'clip', y: 'visible', minimum: 100,
+    contentBased: true, tracks: [50, 50], itemWidth: 100 },
+  { id: 'hidden-zero-minimum', x: 'hidden', y: 'auto', minimum: 0,
+    contentBased: false, tracks: [40, 40], itemWidth: 80 },
+  { id: 'auto-zero-minimum', x: 'auto', y: 'auto', minimum: 0,
+    contentBased: false, tracks: [40, 40], itemWidth: 80 },
+  { id: 'scroll-zero-minimum', x: 'scroll', y: 'auto', minimum: 0,
+    contentBased: false, tracks: [40, 40], itemWidth: 80 },
+]) {
+  const contentBasedColor = [229, 72, 77, 255];
+  scenes.push({
+    id: `columns-span2-${overflow.id}`,
+    axis: 'Both',
+    boxCount: 2,
+    rootFrame: 'width=80,height=20',
+    itemFrame: `width=${overflow.itemWidth},height=20`,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=20;`
+      + `1:node=2,x=0,y=0,width=${overflow.itemWidth},height=20]`,
+    axes: {
+      Columns: { tracks: overflow.tracks, collapsed: [false, false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    overflowAutoMinimum: overflow,
+    pixelSamples: [
+      { id: `${overflow.id}-inside-root-edge`,
+        nodeId: `c114-auto-minmax-span-overflow-${overflow.x}`,
+        xCssPx: 79, yCssPx: 18, rgba: contentBasedColor },
+      { id: `${overflow.id}-outside-root-edge`,
+        nodeId: `c114-auto-minmax-span-overflow-${overflow.x}`,
+        xCssPx: 90, yCssPx: 18, rgba: overflow.contentBased ? contentBasedColor : [0, 0, 0, 255] },
+    ],
+  });
+}
+
 scenes.push(...intrinsicAutoRepeatRecomputeScenes());
 scenes.push(...gridAutoRepeatIntrinsicWptScenes());
 assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRepeatRecompute).length,
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 517, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 522, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5240,6 +5288,12 @@ if (requestedSceneIDs) {
 if (runKind === 'fixed-repeat-minmax-flex') {
   assert.ok(runScenes.every(({ id }) => id.startsWith('fixed-repeat-minmax-flex-')),
     'fixed-repeat-minmax-flex run에는 해당 scene만 선택해야 합니다.');
+}
+if (runScenes.some(({ id }) => overflowAutoMinimumSceneIDs.has(id))) {
+  assert.equal(runKind, 'overflow-auto-minimum',
+    'overflow automatic-minimum scenes need their dedicated evidence run-kind.');
+  assert.ok(runScenes.every(({ id }) => overflowAutoMinimumSceneIDs.has(id)),
+    'overflow automatic-minimum run에는 다섯 고정 scene만 선택해야 합니다.');
 }
 
 function anonymousGridBorderOverflowScenes() {
@@ -6367,6 +6421,79 @@ function verifyRuntimeLog(log, scene, runID) {
   const tracePayload = traceState.parts.map(({ payload }) => payload).join('')
     .replace(/^grid_track_sizing_diagnostics=/, '');
   const diagnostics = JSON.parse(tracePayload);
+  if (scene.overflowAutoMinimum) {
+    const expected = scene.overflowAutoMinimum;
+    const observation = diagnostics.overflowAutomaticMinimum;
+    assert.ok(observation, `${scene.id}: overflow automatic-minimum observation is missing`);
+    assert.deepEqual({
+      sceneId: observation.sceneId,
+      authoredOverflowX: observation.authoredOverflowX,
+      computedOverflowX: observation.computedOverflowX,
+      computedOverflowY: observation.computedOverflowY,
+      actualComputedOverflowX: observation.actualComputedOverflowX,
+      actualComputedOverflowY: observation.actualComputedOverflowY,
+      gridRoot: observation.gridRoot,
+      item: observation.item,
+      placementMode: observation.placementMode,
+      expectedMinimumValue: observation.expectedMinimumValue,
+      expectsContentBasedMinimum: observation.expectsContentBasedMinimum,
+      expectedItemWidth: observation.expectedItemWidth,
+    }, {
+      sceneId: scene.id,
+      authoredOverflowX: expected.x,
+      computedOverflowX: expected.x,
+      computedOverflowY: expected.y,
+      actualComputedOverflowX: expected.x,
+      actualComputedOverflowY: expected.y,
+      gridRoot: 1,
+      item: 2,
+      placementMode: 'TrackSizing',
+      expectedMinimumValue: expected.minimum,
+      expectsContentBasedMinimum: expected.contentBased,
+      expectedItemWidth: expected.itemWidth,
+    }, `${scene.id}: overflow style/minimum metadata differs`);
+    assert.match(observation.layoutInputColumns, /MinMax/,
+      `${scene.id}: fixed MinMax LayoutInput is missing`);
+    assert.equal(observation.layoutInputRows, '[LengthPx(20.0)]',
+      `${scene.id}: fixed Rows LayoutInput differs`);
+    assert.deepEqual(observation.expectedTrackBaseSizes, expected.tracks,
+      `${scene.id}: expected track base sizes differ`);
+    assert.deepEqual(observation.actualTrackBaseSizes, expected.tracks,
+      `${scene.id}: actual track base sizes differ`);
+    assert.equal(observation.actualItemWidth, expected.itemWidth,
+      `${scene.id}: actual item width differs`);
+    assert.deepEqual(observation.rootFrame, { x: 0, y: 0, width: 80, height: 20 },
+      `${scene.id}: Grid root frame differs`);
+    assert.deepEqual(observation.itemFrame, {
+      x: 0, y: 0, width: expected.itemWidth, height: 20,
+    }, `${scene.id}: Grid item frame differs`);
+    const [trace] = diagnostics.trackSizingTraces;
+    assert.equal(diagnostics.trackSizingTraces.length, 1,
+      `${scene.id}: expected one fixed Grid trace`);
+    assert.equal(trace.grid, 1, `${scene.id}: Grid trace must belong to root node`);
+    assert.deepEqual(trace.passes.map(({ axis }) => axis), ['Columns', 'Rows'],
+      `${scene.id}: expected Columns and Rows passes`);
+    const contributions = trace.passes[0].contributions.filter(({ item, span }) => (
+      item === 2 && span === 2
+    ));
+    const [minimum] = contributions.filter(({ kind }) => kind === 'Minimum');
+    assert.ok(minimum, `${scene.id}: span-2 Minimum contribution is missing`);
+    assert.equal(minimum.value, expected.minimum,
+      `${scene.id}: Minimum contribution value differs`);
+    const maxContent = contributions.filter(({ kind }) => kind === 'MaxContent');
+    assert.equal(maxContent.length, 1, `${scene.id}: expected one MaxContent contribution`);
+    assert.equal(maxContent[0].value, 100,
+      `${scene.id}: content MaxContent contribution must remain 100px`);
+    if (expected.contentBased) {
+      assert.match(minimum.minimumSource, /AutomaticMinimum/);
+      assert.match(minimum.minimumSource, /spans_auto_min_track: true/);
+      assert.match(minimum.minimumSource, /spans_multiple_tracks: true/);
+      assert.match(minimum.minimumSource, /spans_flexible_max_track: false/);
+      assert.match(minimum.minimumSource, /content_based: true/);
+    } else {
+      assert.equal(minimum.minimumSource, 'OverflowAutomaticMinimum');
+    }
+  }
   if (scene.fitContentMinHeight) {
     const expected = scene.fitContentMinHeight;
     const observation = diagnostics.fitContentMinHeight;
@@ -7820,7 +7947,7 @@ if (target === 'ios-simulator') {
   const simulatorModelIdentifier = command('xcrun', [
     'simctl', 'getenv', simulatorUDID, 'SIMULATOR_MODEL_IDENTIFIER',
   ]).stdout.trim();
-  if (isImageAutoMaxBorderOverflowRun) {
+  if (isImageAutoMaxBorderOverflowRun || isOverflowAutoMinimumRun) {
     assert.equal(simulatorModelIdentifier, 'iPhone18,1',
       `iPhone 17 Pro simulator가 아닙니다: ${simulator[0].name}/${simulatorModelIdentifier}`);
   } else if (isEqualAutoRowsRun) {

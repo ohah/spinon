@@ -53,6 +53,7 @@ pub(in crate::stylo_dom::cascade) struct CascadeComputeRequest<'a> {
     pub style_revision: StyleRevision,
     pub properties: &'a [(&'a str, LonghandId)],
     pub profile: ComputedStyleProfile,
+    pub author_properties_override: Option<&'a [&'a str]>,
     pub reuse: Option<(&'a ComputedStyleSnapshot, &'a [NodeId])>,
 }
 
@@ -67,6 +68,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         style_revision,
         properties,
         profile,
+        author_properties_override,
         reuse,
     } = request;
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 && reuse.is_some() {
@@ -207,7 +209,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
     let mut runtime_root_html_author_properties = RUNTIME_FLEX_LAYOUT_AUTHOR_PROPERTIES.to_vec();
     runtime_root_html_author_properties.push("color-scheme");
     runtime_root_html_author_properties.push("background-color");
-    let allowed_author_properties: Option<&[&str]> = match profile {
+    let profile_author_properties: Option<&[&str]> = match profile {
         ComputedStyleProfile::BasicCascadeV1 => None,
         ComputedStyleProfile::SupportedElementsUaV1 => None,
         ComputedStyleProfile::FlexLayoutV1 => Some(FLEX_LAYOUT_AUTHOR_PROPERTIES),
@@ -275,6 +277,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         }
         ComputedStyleProfile::RuntimeFlexPaintV1 => None,
     };
+    let allowed_author_properties = author_properties_override.or(profile_author_properties);
     let unsupported_author_feature = match profile {
         ComputedStyleProfile::FlexAlignmentCascadeLayersV1 => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature_with_layers(allowed)),

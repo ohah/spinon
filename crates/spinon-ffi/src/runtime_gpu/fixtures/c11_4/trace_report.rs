@@ -249,6 +249,76 @@ pub(crate) fn grid_track_sizing_trace_report(
         super::fit_content_auto_neighbor_report::report_json(completed)?;
     let fit_content_min_height = super::fit_content_min_height_report::report_json(completed)?;
     let grid_layout_auto_tracks = super::grid_layout_auto_tracks_report::report_json(completed)?;
+    let overflow_auto_minimum =
+        if let Some(observation) = diagnostics.c11_4_overflow_auto_minimum_fixture.as_ref() {
+            let item_style = observation
+                .style_snapshot
+                .elements
+                .iter()
+                .find(|style| style.node_id == observation.item)
+                .ok_or_else(|| "C11.4 overflow item computed style이 없습니다".to_owned())?;
+            let columns = diagnostics
+                .traces
+                .iter()
+                .find(|trace| trace.node == observation.grid_root)
+                .and_then(|trace| {
+                    trace
+                        .passes
+                        .iter()
+                        .find(|pass| pass.axis == spinon_layout::LayoutGridTrackSizingAxis::Columns)
+                })
+                .and_then(|pass| pass.stages.last())
+                .ok_or_else(|| "C11.4 overflow Columns 최종 track stage가 없습니다".to_owned())?;
+            let actual_track_base_sizes = columns
+                .tracks
+                .iter()
+                .filter(|track| !track.is_gutter && !track.is_collapsed)
+                .map(|track| track.base_size)
+                .collect::<Vec<_>>();
+            let root_frame = completed
+                .frames
+                .iter()
+                .find(|frame| frame.node_id == observation.grid_root.get())
+                .ok_or_else(|| "C11.4 overflow root frame이 없습니다".to_owned())?;
+            let item_frame = completed
+                .frames
+                .iter()
+                .find(|frame| frame.node_id == observation.item.get())
+                .ok_or_else(|| "C11.4 overflow item frame이 없습니다".to_owned())?;
+            Some(serde_json::json!({
+                "sceneId": observation.scene_id.as_str(),
+                "authoredOverflowX": observation.authored_overflow_x.as_str(),
+                "computedOverflowX": computed_overflow_name(observation.computed_overflow_x),
+                "computedOverflowY": computed_overflow_name(observation.computed_overflow_y),
+                "actualComputedOverflowX": item_style.layout_overflow_x.map(computed_overflow_name),
+                "actualComputedOverflowY": item_style.layout_overflow_y.map(computed_overflow_name),
+                "gridRoot": observation.grid_root.get(),
+                "item": observation.item.get(),
+                "layoutInputColumns": format!("{:?}", observation.grid_container_input.columns),
+                "layoutInputRows": format!("{:?}", observation.grid_container_input.rows),
+                "placementMode": format!("{:?}", observation.grid_container_input.placement_mode),
+                "expectedTrackBaseSizes": observation.expected_track_base_sizes,
+                "actualTrackBaseSizes": actual_track_base_sizes,
+                "expectedItemWidth": observation.expected_item_width,
+                "actualItemWidth": item_frame.width,
+                "expectedMinimumValue": observation.expected_minimum_value,
+                "expectsContentBasedMinimum": observation.expects_content_based_minimum,
+                "rootFrame": {
+                    "x": root_frame.x,
+                    "y": root_frame.y,
+                    "width": root_frame.width,
+                    "height": root_frame.height,
+                },
+                "itemFrame": {
+                    "x": item_frame.x,
+                    "y": item_frame.y,
+                    "width": item_frame.width,
+                    "height": item_frame.height,
+                },
+            }))
+        } else {
+            None
+        };
     let report = serde_json::json!({
         "layoutInputRevision": {
             "source": format!("{:?}", diagnostics.revision.source()),
@@ -264,10 +334,21 @@ pub(crate) fn grid_track_sizing_trace_report(
         "fitContentAutoNeighbor": fit_content_auto_neighbor,
         "fitContentMinHeight": fit_content_min_height,
         "gridLayoutAutoTracks": grid_layout_auto_tracks,
+        "overflowAutomaticMinimum": overflow_auto_minimum,
     });
     serde_json::to_string(&report)
         .map(|json| format!(" grid_track_sizing_diagnostics={json}"))
         .map_err(|error| format!("C11.4 trace JSON 변환 실패: {error}"))
+}
+
+fn computed_overflow_name(value: spinon_style::ComputedCssOverflow) -> &'static str {
+    match value {
+        spinon_style::ComputedCssOverflow::Visible => "visible",
+        spinon_style::ComputedCssOverflow::Clip => "clip",
+        spinon_style::ComputedCssOverflow::Hidden => "hidden",
+        spinon_style::ComputedCssOverflow::Scroll => "scroll",
+        spinon_style::ComputedCssOverflow::Auto => "auto",
+    }
 }
 
 fn text_layout_revision_matches(
@@ -711,6 +792,7 @@ mod tests {
                 fit_content_auto_neighbor: None,
                 fit_content_min_height: None,
                 grid_layout_auto_tracks: None,
+                c11_4_overflow_auto_minimum_fixture: None,
             }
         };
 
@@ -879,6 +961,7 @@ mod tests {
             fit_content_auto_neighbor: None,
             fit_content_min_height: None,
             grid_layout_auto_tracks: None,
+            c11_4_overflow_auto_minimum_fixture: None,
         };
         let completed = RuntimeLayoutCompleted {
             key: RuntimeUaCascadeKey {

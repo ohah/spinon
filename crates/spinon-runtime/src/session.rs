@@ -41,7 +41,8 @@ use trace::{TraceSection, finish_reply_handoff};
 use ua_cascade::RuntimeUaCascadeCoordinator;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use ua_cascade::{
-    RuntimeC11_4FitContentAutoNeighborObservation, RuntimeGridTrackSizingDiagnostics,
+    RuntimeC11_4AutoMinmaxSpanOverflowObservation, RuntimeC11_4FitContentAutoNeighborObservation,
+    RuntimeGridTrackSizingDiagnostics,
 };
 pub use ua_cascade::{
     RuntimeLayoutCompleted, RuntimeLayoutFailure, RuntimeLayoutFrame, RuntimeLayoutSnapshot,

@@ -125,6 +125,8 @@ mod nested_grid_text_multispan;
 mod orthogonal_direct_text_image_intrinsic_rows;
 #[path = "c11_4/orthogonal_text_intrinsic.rs"]
 mod orthogonal_text_intrinsic;
+#[path = "c11_4/overflow_auto_minimum.rs"]
+mod overflow_auto_minimum;
 #[path = "c11_4/row_axis_overlapping_spans.rs"]
 mod row_axis_overlapping_spans;
 #[path = "c11_4/text_multispan.rs"]
@@ -1168,6 +1170,9 @@ const C11_4_IMAGE_BORDER_OVERFLOW_SCENES: [ImageSceneWithRowGap; 1] = [ImageScen
 pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     scene_id: &str,
 ) -> Result<Cow<'static, str>, String> {
+    if let Some(source) = overflow_auto_minimum::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
     if let Some(source) = flex_track_expansion::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }

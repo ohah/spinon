@@ -561,6 +561,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt", "fit-content-min-height-wpt",
+    "columns-span2-visible-content-minimum", "columns-span2-clip-content-minimum",
+    "columns-span2-hidden-zero-minimum", "columns-span2-auto-zero-minimum",
+    "columns-span2-scroll-zero-minimum",
     "grid-layout-auto-tracks-c114-wpt",
     "intrinsic-auto-repeat-max-content-100",
     "intrinsic-auto-repeat-max-content-80",
@@ -579,6 +582,19 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-intrinsic-fit-auto-max",
     "auto-repeat-intrinsic-fit-auto-min",
 ]
+
+private func c114OverflowAutoMinimumExpectation(
+    _ sceneID: String
+) -> (overflowX: String, overflowY: String, minimum: Double, contentBased: Bool)? {
+    switch sceneID {
+    case "columns-span2-visible-content-minimum": return ("visible", "visible", 100, true)
+    case "columns-span2-clip-content-minimum": return ("clip", "visible", 100, true)
+    case "columns-span2-hidden-zero-minimum": return ("hidden", "auto", 0, false)
+    case "columns-span2-auto-zero-minimum": return ("auto", "auto", 0, false)
+    case "columns-span2-scroll-zero-minimum": return ("scroll", "auto", 0, false)
+    default: return nil
+    }
+}
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
@@ -1442,6 +1458,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=300" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=300" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=20" }
+    if c114OverflowAutoMinimumExpectation(sceneID) != nil { return "width=80,height=20" }
     if sceneID == "image-auto-max-mixed-tracks" { return "width=100,height=40" }
     if sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=12,height=40"
@@ -1758,6 +1775,10 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=10" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=10" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=10" }
+    if let expected = c114OverflowAutoMinimumExpectation(sceneID) {
+        let itemWidth = expected.contentBased ? 100 : 80
+        return "width=\(itemWidth),height=20"
+    }
     if sceneID == "image-auto-max-mixed-tracks"
         || sceneID == "image-auto-max-mixed-tracks-border-overflow" {
         return "width=24,height=16"
@@ -3021,6 +3042,78 @@ private func c114GridTrackSizingDiagnostics(_ report: String) -> [String: Any]? 
         return nil
     }
     return diagnostics
+}
+
+private func c114OverflowAutoMinimumMatches(_ sceneID: String, report: String) -> Bool {
+    guard let expected = c114OverflowAutoMinimumExpectation(sceneID) else { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let observation = diagnostics["overflowAutomaticMinimum"] as? [String: Any],
+          observation["sceneId"] as? String == sceneID,
+          observation["authoredOverflowX"] as? String == expected.overflowX,
+          observation["computedOverflowX"] as? String == expected.overflowX,
+          observation["computedOverflowY"] as? String == expected.overflowY,
+          observation["actualComputedOverflowX"] as? String == expected.overflowX,
+          observation["actualComputedOverflowY"] as? String == expected.overflowY,
+          (observation["gridRoot"] as? NSNumber)?.intValue == 1,
+          (observation["item"] as? NSNumber)?.intValue == 2,
+          (observation["layoutInputColumns"] as? String)?.contains("MinMax") == true,
+          observation["layoutInputRows"] as? String == "[LengthPx(20.0)]",
+          observation["placementMode"] as? String == "TrackSizing",
+          let minimum = (observation["expectedMinimumValue"] as? NSNumber)?.doubleValue,
+          let expectedTracks = observation["expectedTrackBaseSizes"] as? [NSNumber],
+          let actualTracks = observation["actualTrackBaseSizes"] as? [NSNumber],
+          let expectedItemWidth = (observation["expectedItemWidth"] as? NSNumber)?.doubleValue,
+          let actualItemWidth = (observation["actualItemWidth"] as? NSNumber)?.doubleValue,
+          let contentBased = observation["expectsContentBasedMinimum"] as? Bool,
+          c114FitContentFrameMatches(observation["rootFrame"], x: 0, y: 0, width: 80, height: 20),
+          c114FitContentFrameMatches(
+            observation["itemFrame"], x: 0, y: 0, width: expectedItemWidth, height: 20
+          ),
+          expectedTracks.count == 2, actualTracks.count == 2,
+          abs(minimum - expected.minimum) <= 0.0001,
+          abs(expectedItemWidth - (expected.contentBased ? 100 : 80)) <= 0.0001,
+          abs(actualItemWidth - expectedItemWidth) <= 0.0001,
+          contentBased == expected.contentBased else { return false }
+
+    let expectedTrackSizes = expected.contentBased ? [50.0, 50.0] : [40.0, 40.0]
+    let expectedTrackSizesMatch = zip(expectedTracks, expectedTrackSizes)
+        .allSatisfy { pair in abs(pair.0.doubleValue - pair.1) <= 0.0001 }
+    let actualTrackSizesMatch = zip(actualTracks, expectedTrackSizes)
+        .allSatisfy { pair in abs(pair.0.doubleValue - pair.1) <= 0.0001 }
+    guard expectedTrackSizesMatch, actualTrackSizesMatch,
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          (traces[0]["grid"] as? NSNumber)?.intValue == 1,
+          let passes = traces[0]["passes"] as? [[String: Any]],
+          passes.count == 2,
+          passes[0]["axis"] as? String == "Columns",
+          passes[1]["axis"] as? String == "Rows",
+          let contributions = passes[0]["contributions"] as? [[String: Any]] else {
+        return false
+    }
+    let itemContributions = contributions.filter {
+        ($0["item"] as? NSNumber)?.intValue == 2
+            && ($0["span"] as? NSNumber)?.intValue == 2
+    }
+    guard let minimumContribution = itemContributions.first(where: {
+        $0["kind"] as? String == "Minimum"
+    }),
+    let minimumValue = (minimumContribution["value"] as? NSNumber)?.doubleValue,
+    abs(minimumValue - expected.minimum) <= 0.0001,
+    itemContributions.contains(where: {
+        ($0["kind"] as? String) == "MaxContent"
+            && abs((($0["value"] as? NSNumber)?.doubleValue ?? .nan) - 100) <= 0.0001
+    }),
+    let minimumSource = minimumContribution["minimumSource"] as? String else { return false }
+
+    if expected.contentBased {
+        return minimumSource.contains("AutomaticMinimum")
+            && minimumSource.contains("spans_auto_min_track: true")
+            && minimumSource.contains("spans_multiple_tracks: true")
+            && minimumSource.contains("spans_flexible_max_track: false")
+            && minimumSource.contains("content_based: true")
+    }
+    return minimumSource == "OverflowAutomaticMinimum"
 }
 
 private func c114GridAutoRepeatIntrinsicWptColumns(_ sceneID: String) -> [Double]? {
@@ -5378,6 +5471,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "3:node=5,x=100,y=0,width=50,height=10;"
             + "4:node=7,x=0,y=10,width=100,height=10]"
     }
+    if let expected = c114OverflowAutoMinimumExpectation(sceneID) {
+        let itemWidth = expected.contentBased ? 100 : 80
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=20;"
+            + "1:node=2,x=0,y=0,width=\(itemWidth),height=20]"
+    }
     if sceneID == "image-auto-max-mixed-tracks" {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=40;"
             + "1:node=2,x=0,y=0,width=24,height=16]"
@@ -6973,6 +7071,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "fit-content-auto-neighbor-wpt"
         || sceneID == "grid-layout-auto-tracks-c114-wpt" { return 5 }
     if sceneID == "fit-content-min-height-wpt" { return 3 }
+    if c114OverflowAutoMinimumExpectation(sceneID) != nil { return 2 }
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
@@ -7791,9 +7890,32 @@ private struct C111MetalPixelRun {
         }
     }
 
+    private static func c114OverflowAutoMinimumPixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        guard let expected = c114OverflowAutoMinimumExpectation(sceneID) else { return nil }
+        let suffix = sceneID.replacingOccurrences(of: "columns-span2-", with: "")
+        let rootID = "c114-auto-minmax-span-overflow-\(expected.overflowX)"
+        let outsideColor: [UInt32] = expected.contentBased ? [229, 72, 77, 255] : [0, 0, 0, 255]
+        return [
+            ("\(suffix)-inside-root-edge", rootID, 79, 18, [229, 72, 77, 255]),
+            ("\(suffix)-outside-root-edge", rootID, 90, 18, outsideColor),
+        ]
+    }
+
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = c114OverflowAutoMinimumPixelSamples(sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = C114FlexStage.surfacePixelSamples(sceneID: sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
@@ -12334,6 +12456,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedFitContentMinHeightMatches = c114FitContentMinHeightMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedOverflowAutoMinimumMatches = c114OverflowAutoMinimumMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedGridLayoutAutoTracksMatches = c114GridLayoutAutoTracksMatches(
                 c114GridTrackSizingSceneID, report: report)
             let expectedEqualAutoRowsMatches = c114AlignContentNormalEqualAutoRowsMatches(
@@ -12360,12 +12484,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedMixedMultiSpanFramesMatch,
                   expectedFitContentAutoNeighborMatches,
                   expectedFitContentMinHeightMatches,
+                  expectedOverflowAutoMinimumMatches,
                   expectedGridLayoutAutoTracksMatches,
                   expectedEqualAutoRowsMatches,
                   expectedRowAxisSpanStageMatches,
                   expectedFlexStageMatches else {
                 logC114GridNodeFrames(report)
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
