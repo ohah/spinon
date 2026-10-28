@@ -1,0 +1,258 @@
+{
+  "scenes": [
+    {
+      "sceneId": "column-hidden",
+      "axis": "Columns",
+      "displayNoneChild": true,
+      "intrinsicInputs": {
+        "visibleAminContentCssPx": 100,
+        "largeSiblingMinContentCssPx": 150,
+        "largeSiblingParticipates": false
+      },
+      "trackSizing": {
+        "definiteAxisCssPx": 300,
+        "fixedNeighborCssPx": 40,
+        "gapsCssPx": [
+          10,
+          10
+        ],
+        "flexibleSpaceBeforeExpansionCssPx": 240,
+        "initialFlexFractionCssPx": 80,
+        "firstTrackBaseCssPx": 100,
+        "firstTrackFreezes": true,
+        "usedTracksCssPx": [
+          100,
+          40,
+          140
+        ],
+        "remainingFreeSpaceCssPx": 0,
+        "trackAxis": "columns"
+      },
+      "rootRelativeFramesCssPx": {
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 300,
+          "height": 120
+        },
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 120
+        },
+        "b": {
+          "x": 110,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 160,
+          "y": 0,
+          "width": 140,
+          "height": 120
+        },
+        "hidden": null
+      },
+      "hiddenBox": {
+        "display": "none",
+        "generated": false,
+        "clientRectCount": 0
+      }
+    },
+    {
+      "sceneId": "column-visible-control",
+      "axis": "Columns",
+      "displayNoneChild": false,
+      "intrinsicInputs": {
+        "visibleAminContentCssPx": 100,
+        "largeSiblingMinContentCssPx": 150,
+        "largeSiblingParticipates": true
+      },
+      "trackSizing": {
+        "definiteAxisCssPx": 300,
+        "fixedNeighborCssPx": 40,
+        "gapsCssPx": [
+          10,
+          10
+        ],
+        "flexibleSpaceBeforeExpansionCssPx": 240,
+        "initialFlexFractionCssPx": 80,
+        "firstTrackBaseCssPx": 150,
+        "firstTrackFreezes": true,
+        "usedTracksCssPx": [
+          150,
+          40,
+          90
+        ],
+        "remainingFreeSpaceCssPx": 0,
+        "trackAxis": "columns"
+      },
+      "rootRelativeFramesCssPx": {
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 300,
+          "height": 120
+        },
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 150,
+          "height": 120
+        },
+        "b": {
+          "x": 160,
+          "y": 0,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 210,
+          "y": 0,
+          "width": 90,
+          "height": 120
+        },
+        "hidden": {
+          "x": 0,
+          "y": 0,
+          "width": 150,
+          "height": 120
+        }
+      },
+      "hiddenBox": {
+        "display": "block",
+        "generated": true,
+        "clientRectCount": 1
+      }
+    },
+    {
+      "sceneId": "row-hidden",
+      "axis": "Rows",
+      "displayNoneChild": true,
+      "intrinsicInputs": {
+        "visibleAminContentCssPx": 100,
+        "largeSiblingMinContentCssPx": 150,
+        "largeSiblingParticipates": false
+      },
+      "trackSizing": {
+        "definiteAxisCssPx": 300,
+        "fixedNeighborCssPx": 40,
+        "gapsCssPx": [
+          10,
+          10
+        ],
+        "flexibleSpaceBeforeExpansionCssPx": 240,
+        "initialFlexFractionCssPx": 80,
+        "firstTrackBaseCssPx": 100,
+        "firstTrackFreezes": true,
+        "usedTracksCssPx": [
+          100,
+          40,
+          140
+        ],
+        "remainingFreeSpaceCssPx": 0,
+        "trackAxis": "rows"
+      },
+      "rootRelativeFramesCssPx": {
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 300
+        },
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 100
+        },
+        "b": {
+          "x": 0,
+          "y": 110,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 160,
+          "width": 120,
+          "height": 140
+        },
+        "hidden": null
+      },
+      "hiddenBox": {
+        "display": "none",
+        "generated": false,
+        "clientRectCount": 0
+      }
+    },
+    {
+      "sceneId": "row-visible-control",
+      "axis": "Rows",
+      "displayNoneChild": false,
+      "intrinsicInputs": {
+        "visibleAminContentCssPx": 100,
+        "largeSiblingMinContentCssPx": 150,
+        "largeSiblingParticipates": true
+      },
+      "trackSizing": {
+        "definiteAxisCssPx": 300,
+        "fixedNeighborCssPx": 40,
+        "gapsCssPx": [
+          10,
+          10
+        ],
+        "flexibleSpaceBeforeExpansionCssPx": 240,
+        "initialFlexFractionCssPx": 80,
+        "firstTrackBaseCssPx": 150,
+        "firstTrackFreezes": true,
+        "usedTracksCssPx": [
+          150,
+          40,
+          90
+        ],
+        "remainingFreeSpaceCssPx": 0,
+        "trackAxis": "rows"
+      },
+      "rootRelativeFramesCssPx": {
+        "root": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 300
+        },
+        "a": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 150
+        },
+        "b": {
+          "x": 0,
+          "y": 160,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 0,
+          "y": 210,
+          "width": 120,
+          "height": 90
+        },
+        "hidden": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 150
+        }
+      },
+      "hiddenBox": {
+        "display": "block",
+        "generated": true,
+        "clientRectCount": 1
+      }
+    }
+  ]
+}

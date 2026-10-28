@@ -1,0 +1,206 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "userAgentData": {
+    "brands": [
+      {
+        "brand": "Not:A-Brand",
+        "version": "8"
+      },
+      {
+        "brand": "Chromium",
+        "version": "156"
+      },
+      {
+        "brand": "Google Chrome",
+        "version": "156"
+      }
+    ],
+    "platform": "macOS",
+    "mobile": false
+  },
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "fonts": {
+    "status": "loaded",
+    "ahem10": true
+  },
+  "images": [
+    {
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16
+    },
+    {
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16
+    },
+    {
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16
+    },
+    {
+      "complete": true,
+      "naturalWidth": 24,
+      "naturalHeight": 16
+    }
+  ],
+  "observation": {
+    "column-hidden": {
+      "gridTemplateColumns": "100px 40px 140px",
+      "gridTemplateRows": "120px",
+      "root": {
+        "x": 36,
+        "y": 107.594,
+        "width": 300,
+        "height": 120
+      },
+      "hiddenDisplay": "none",
+      "hiddenClientRectCount": 0,
+      "items": {
+        "hidden": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "a": {
+          "x": 36,
+          "y": 107.594,
+          "width": 100,
+          "height": 120
+        },
+        "b": {
+          "x": 146,
+          "y": 107.594,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 196,
+          "y": 107.594,
+          "width": 140,
+          "height": 120
+        }
+      }
+    },
+    "column-visible-control": {
+      "gridTemplateColumns": "150px 40px 90px",
+      "gridTemplateRows": "120px",
+      "root": {
+        "x": 662,
+        "y": 107.594,
+        "width": 300,
+        "height": 120
+      },
+      "hiddenDisplay": "block",
+      "hiddenClientRectCount": 1,
+      "items": {
+        "hidden": {
+          "x": 662,
+          "y": 107.594,
+          "width": 150,
+          "height": 120
+        },
+        "a": {
+          "x": 662,
+          "y": 107.594,
+          "width": 150,
+          "height": 120
+        },
+        "b": {
+          "x": 822,
+          "y": 107.594,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 872,
+          "y": 107.594,
+          "width": 90,
+          "height": 120
+        }
+      }
+    },
+    "row-hidden": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "100px 40px 140px",
+      "root": {
+        "x": 36,
+        "y": 347.594,
+        "width": 120,
+        "height": 300
+      },
+      "hiddenDisplay": "none",
+      "hiddenClientRectCount": 0,
+      "items": {
+        "hidden": {
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        },
+        "a": {
+          "x": 36,
+          "y": 347.594,
+          "width": 120,
+          "height": 100
+        },
+        "b": {
+          "x": 36,
+          "y": 457.594,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 36,
+          "y": 507.594,
+          "width": 120,
+          "height": 140
+        }
+      }
+    },
+    "row-visible-control": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "150px 40px 90px",
+      "root": {
+        "x": 662,
+        "y": 347.594,
+        "width": 120,
+        "height": 300
+      },
+      "hiddenDisplay": "block",
+      "hiddenClientRectCount": 1,
+      "items": {
+        "hidden": {
+          "x": 662,
+          "y": 347.594,
+          "width": 120,
+          "height": 150
+        },
+        "a": {
+          "x": 662,
+          "y": 347.594,
+          "width": 120,
+          "height": 150
+        },
+        "b": {
+          "x": 662,
+          "y": 507.594,
+          "width": 24,
+          "height": 16
+        },
+        "c": {
+          "x": 662,
+          "y": 557.594,
+          "width": 120,
+          "height": 90
+        }
+      }
+    }
+  }
+}
