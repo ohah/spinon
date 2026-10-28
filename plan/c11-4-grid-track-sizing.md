@@ -8,7 +8,7 @@
 
 ## 2026-10-28 generic mixed text/image spanning scene · PR #725
 
-기존 네 mixed multi-span scene의 launcher ID와 CSS는 유지하면서 HTML root/item `HostNode ID`를 바꿔도 제한 generic adapter가 계산하는 후속 slice를 [PR #725](https://github.com/ohah/spinon/pull/725)로 열었다. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene의 tracks·frames·trace·draw/present를 확인했다. Rust focused tests는 runtime 6/6, FFI 1/1이며 기본 및 `c04-runtime-gpu` product static archive에는 fixture markers가 없고 opt-in fixture-test archive에는 있다. 실행 자료와 범위 한계는 [evidence](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/README.md)에 있다. PR check 탭은 관찰 시 비어 있어 CI 통과로 간주하지 않는다. 전체 C11.4 checkbox와 공식 집계 `72/213`은 그대로 미완료다.
+기존 네 mixed multi-span scene의 launcher ID와 CSS는 유지하면서 HTML root/item `HostNode ID`를 바꿔도 제한 generic adapter가 계산하는 후속 slice를 [PR #725](https://github.com/ohah/spinon/pull/725)로 구현했다. PR은 2026-10-28 00:12:19 UTC Rebase and merge로 `a0f7d0c6a541feae44cb5f746567dde5e3818c23`에 병합됐다. 병합 시 PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene의 tracks·frames·trace·draw/present를 확인했다. Rust focused tests는 runtime 6/6, FFI 1/1이며 기본 및 `c04-runtime-gpu` product static archive에는 fixture markers가 없고 opt-in fixture-test archive에는 있다. 실행 자료와 범위 한계는 [evidence](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/README.md)에 있다. [병합 후 로드맵 동기화 검토](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/roadmap-sync-pr-diff-review-20.md)를 별도로 기록했다. 전체 C11.4 checkbox와 공식 집계 `72/213`은 그대로 미완료다.
 
 ## 2026-10-28 §11.7 앱 runtime 후속 계획
 

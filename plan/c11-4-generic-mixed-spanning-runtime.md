@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 및 Android/iOS Simulator 검증 완료, [PR #725](https://github.com/ohah/spinon/pull/725) 검토 대기. 기존 mixed text/image multi-span의 Chrome 155 관측과 §11.5.1 독립 기대값을 재사용해, 네 fixed scene이 새 HostNode ID를 사용해도 opt-in runtime adapter에 도달함을 확인했다. 일반 CSS admission, WPT 적합성, C11.4 완료 또는 공식 완료 수 변경은 범위에 포함하지 않는다.
+**상태:** 구현 및 Android/iOS Simulator 검증 완료. [PR #725](https://github.com/ohah/spinon/pull/725)은 2026-10-28 00:12:19 UTC Rebase and merge로 병합됐고 merge SHA는 `a0f7d0c6a541feae44cb5f746567dde5e3818c23`이다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. 기존 mixed text/image multi-span의 Chrome 155 관측과 §11.5.1 독립 기대값을 재사용해, 네 fixed scene이 새 HostNode ID를 사용해도 opt-in runtime adapter에 도달함을 확인했다. 일반 CSS admission, WPT 적합성, C11.4 완료 또는 공식 완료 수 변경은 범위에 포함하지 않는다.
 
 ## 목적
 
@@ -46,3 +46,4 @@ Arbitrary direct item 수와 source tree, anonymous/nested Grid, 다른 font/scr
 - 최종 runtime·시뮬레이터·archive 근거: [evidence](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/README.md)
 - 구현/runtime 적대 검토 20개: [검토 기록](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/implementation-runtime-review-20.md)
 - PR diff 적대 검토 20개: [검토 기록](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/pr-diff-review-20.md)
+- 병합 후 roadmap 동기화 PR diff 검토 20개: [검토 기록](../spec/internal/evidence/c11-4-generic-mixed-spanning-runtime-2026-10-28/roadmap-sync-pr-diff-review-20.md)
