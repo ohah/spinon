@@ -65,10 +65,23 @@ impl CalcLayoutTree {
                 - layout.border.bottom
                 - layout.padding.top
                 - layout.padding.bottom;
+            // C11.4 track-sizing Grid item은 0px track에서 텍스트를 visible overflow할 수 있습니다.
+            let zero_height_track_sizing_item = normalize_zero(content_height) == 0.0
+                && input.grid_items.contains_key(&paragraph.node)
+                && input.nodes().iter().any(|container| {
+                    container.children.contains(&paragraph.node)
+                        && input
+                            .grid_containers
+                            .get(&container.id)
+                            .is_some_and(|grid| {
+                                grid.placement_mode == crate::GridPlacementMode::TrackSizing
+                            })
+                });
             if node_style.is_some_and(|node| {
                 node.style.height == crate::LayoutDimension::Auto
                     && node.style.min_height != crate::LayoutDimension::Fixed(0.0)
-            }) && text_measure_exceeds_content_height(content_height, snapshot.height)
+            }) && !zero_height_track_sizing_item
+                && text_measure_exceeds_content_height(content_height, snapshot.height)
             {
                 return Err(LayoutError::TextLayoutHeightMismatch(paragraph.node));
             }

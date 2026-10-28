@@ -1,0 +1,2846 @@
+{
+  "expectedSceneIds": [
+    "column-freeze",
+    "column-no-freeze",
+    "column-equal-boundary",
+    "column-freeze-reversed",
+    "row-freeze",
+    "row-no-freeze",
+    "row-equal-boundary",
+    "row-freeze-reversed",
+    "column-hidden",
+    "row-hidden",
+    "column-visibility-hidden",
+    "column-visibility-visible-control",
+    "row-visibility-hidden",
+    "row-visibility-visible-control",
+    "column-visibility-hidden-border-overflow",
+    "column-visibility-visible-border-overflow-control",
+    "row-visibility-hidden-border-overflow",
+    "row-visibility-visible-border-overflow-control"
+  ],
+  "platformMatcherTables": "matched",
+  "negativeControls": [
+    "duplicate JSON key",
+    "missing axis",
+    "missing Expand stage",
+    "non-finite track",
+    "wrong source order",
+    "wrong image natural size",
+    "wrong min-content input",
+    "wrong frame",
+    "wrong hidden source order",
+    "hidden text intrinsic input",
+    "hidden item track contribution",
+    "wrong visibility hidden min-content",
+    "missing visibility hidden track contribution",
+    "visible paint leaked through hidden visibility sample",
+    "wrong visibility sample coordinate",
+    "hidden overflow paint leaked from visibility span",
+    "wrong border-overflow surface coordinate"
+  ],
+  "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a": [
+    {
+      "sceneId": "column-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-0",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=160,y=0,width=140,height=120"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "b50195381fd7ec0779f38f493eaef8f1f09e7968dea19f57b1a0c4956ecdd63c"
+      }
+    },
+    {
+      "sceneId": "column-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-1",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=80,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 90.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=90,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 140.0,
+          "y": 0.0,
+          "width": 160.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=140,y=0,width=160,height=120"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-no-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "fd6265c96f83a302fd6bb25bb4e27b3b3f2a9eeea7e0ddcfed1d9f07e495666d"
+      }
+    },
+    {
+      "sceneId": "column-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-2",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=80,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 90.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=90,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 140.0,
+          "y": 0.0,
+          "width": 160.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=140,y=0,width=160,height=120"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-equal-boundary.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "bfe8df6c91470bf4fc1cbd052fc97ae14c831da8d50b69f44a3b585a6d1ad6cc"
+      }
+    },
+    {
+      "sceneId": "column-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-3",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=160,y=0,width=140,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=0,y=0,width=100,height=120"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-freeze-reversed.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "e6a75369f9b3625f37842a1bec6261081d685d4fa1c6c9e2de18f862a9686b34"
+      }
+    },
+    {
+      "sceneId": "row-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-4",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "3:node=5,x=0,y=160,width=120,height=140"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "eb747c5b340c97b6ba909521789d96df1bbd46d287b01e7fd7b36f6a9bf32f7c"
+      }
+    },
+    {
+      "sceneId": "row-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-5",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=80"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=90,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 140.0,
+          "width": 120.0,
+          "height": 160.0,
+          "raw": "3:node=5,x=0,y=140,width=120,height=160"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-no-freeze.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "9df3bfa0dfc5ceaaaa9499b18c2e918aea51ce18f32bca19d32f4d80d60ba36e"
+      }
+    },
+    {
+      "sceneId": "row-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-6",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=80"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=90,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 140.0,
+          "width": 120.0,
+          "height": 160.0,
+          "raw": "3:node=5,x=0,y=140,width=120,height=160"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-equal-boundary.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "8bbee8334a045aa00c51ffb3113ac59e84c2853847d3080fa3662f8f8fe8f3f6"
+      }
+    },
+    {
+      "sceneId": "row-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-7",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "1:node=2,x=0,y=160,width=120,height=140"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "3:node=5,x=0,y=0,width=120,height=100"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-freeze-reversed.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "eb747c5b340c97b6ba909521789d96df1bbd46d287b01e7fd7b36f6a9bf32f7c"
+      }
+    },
+    {
+      "sceneId": "column-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-8",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.0,
+          "height": 0.0,
+          "raw": "1:node=2,x=0,y=0,width=0,height=0"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=160,y=0,width=140,height=120"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-hidden.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "91c081c772037bc904dc0b672d6bdc13da2fd1de73c0d476e18cb66006101406"
+      }
+    },
+    {
+      "sceneId": "row-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-9",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.0,
+          "height": 0.0,
+          "raw": "1:node=2,x=0,y=0,width=0,height=0"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "4:node=7,x=0,y=160,width=120,height=140"
+        }
+      ],
+      "traceChunks": 9,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-hidden.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "475dc1455f367a1fd002bf1731bb90b1b7cdd978c75576df985c202ff96f7963"
+      }
+    },
+    {
+      "sceneId": "column-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-10",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=160,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 210.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=210,y=0,width=90,height=120"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-visibility-hidden.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "e5f7ea019a37792684c98bb018e724224037cd81bc0438e8c9946f0a0833a9fe"
+      }
+    },
+    {
+      "sceneId": "column-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-11",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=160,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 210.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=210,y=0,width=90,height=120"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "3ccb24115bdc8768da36805432e85c84a7d15d14e8133e78bcdf9a68b80943df"
+      }
+    },
+    {
+      "sceneId": "row-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-12",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=160,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 210.0,
+          "width": 120.0,
+          "height": 90.0,
+          "raw": "4:node=7,x=0,y=210,width=120,height=90"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-visibility-hidden.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "55bceef6fde162859ea95bcf6382d82f8b29456bce2fa112e47ea363c784a892"
+      }
+    },
+    {
+      "sceneId": "row-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-13",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=160,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 210.0,
+          "width": 120.0,
+          "height": 90.0,
+          "raw": "4:node=7,x=0,y=210,width=120,height=90"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "eb4ae0980d5a89c5f7add3e17295b812c12ba50b2459fbe0ad077d06d5cb76d4"
+      }
+    },
+    {
+      "sceneId": "column-visibility-hidden-border-overflow",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-14",
+      "status": "passed",
+      "boxCount": 3,
+      "frameCount": 5,
+      "drawBoxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "1:node=2,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "2:node=4,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 162.0,
+          "y": 2.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=162,y=2,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 212.0,
+          "y": 2.0,
+          "width": 0.0,
+          "height": 116.0,
+          "raw": "4:node=7,x=212,y=2,width=0,height=116"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-hidden-border-overflow-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-border-overflow-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-hidden-border-overflow-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-border-overflow-a",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-visibility-hidden-border-overflow.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "5f854f12c8368d6a233024771e868d8bf7f0f4b97c13e4beb1703ffd2848411e"
+      }
+    },
+    {
+      "sceneId": "column-visibility-visible-border-overflow-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-15",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "1:node=2,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "2:node=4,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 162.0,
+          "y": 2.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=162,y=2,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 212.0,
+          "y": 2.0,
+          "width": 0.0,
+          "height": 116.0,
+          "raw": "4:node=7,x=212,y=2,width=0,height=116"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-visible-border-overflow-control-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-border-overflow-control-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-visible-border-overflow-control-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-border-overflow-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-visibility-visible-border-overflow-control.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "86e498cf09bd1dc2529cc7ea0b01c661b790b99b90e77b64aa1e3e625672a756"
+      }
+    },
+    {
+      "sceneId": "row-visibility-hidden-border-overflow",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-16",
+      "status": "passed",
+      "boxCount": 3,
+      "frameCount": 5,
+      "drawBoxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 2.0,
+          "y": 162.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=2,y=162,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 2.0,
+          "y": 212.0,
+          "width": 116.0,
+          "height": 0.0,
+          "raw": "4:node=7,x=2,y=212,width=116,height=0"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-hidden-border-overflow-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-border-overflow-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-hidden-border-overflow-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-border-overflow-a",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-visibility-hidden-border-overflow.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "5d091ad3628152d23d91924f10beeccd875652093ead2b98900fadfecd495f00"
+      }
+    },
+    {
+      "sceneId": "row-visibility-visible-border-overflow-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a-17",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 2.0,
+          "y": 162.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=2,y=162,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 2.0,
+          "y": 212.0,
+          "width": 116.0,
+          "height": 0.0,
+          "raw": "4:node=7,x=2,y=212,width=116,height=0"
+        }
+      ],
+      "traceChunks": 11,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-visible-border-overflow-control-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-border-overflow-control-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-visible-border-overflow-control-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-border-overflow-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-row-visibility-visible-border-overflow-control.png",
+        "dimensions": {
+          "width": 1080,
+          "height": 2400
+        },
+        "sha256": "6a9d42465b63d3268cea82d1680f9324dead449e1f8e85688088fcfb7b1ff4e3"
+      }
+    }
+  ],
+  "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b": [
+    {
+      "sceneId": "column-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-0",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=160,y=0,width=140,height=120"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "d9300ca1488105c62b0119c2bd53ea32ae3c0d33ab167dab57c9ceb2bdbb279c"
+      }
+    },
+    {
+      "sceneId": "column-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-1",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=80,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 90.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=90,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 140.0,
+          "y": 0.0,
+          "width": 160.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=140,y=0,width=160,height=120"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-no-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "14a23f517b05424096b9044a320ad1c5d90984cb5a684418af55fdc723698ecc"
+      }
+    },
+    {
+      "sceneId": "column-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-2",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 80.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=80,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 90.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=90,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 140.0,
+          "y": 0.0,
+          "width": 160.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=140,y=0,width=160,height=120"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-equal-boundary.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "a594b62a6433d24deed06d5b6c7735b5c5e538c71800b3f7772d31f888f8abc9"
+      }
+    },
+    {
+      "sceneId": "column-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-3",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=160,y=0,width=140,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "3:node=5,x=0,y=0,width=100,height=120"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-freeze-reversed.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "d9300ca1488105c62b0119c2bd53ea32ae3c0d33ab167dab57c9ceb2bdbb279c"
+      }
+    },
+    {
+      "sceneId": "row-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-4",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "3:node=5,x=0,y=160,width=120,height=140"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "6a2b83f264d5eff9fe68f7e5ecc747435776fbf9acaa6b919f3efdfc891d5e10"
+      }
+    },
+    {
+      "sceneId": "row-no-freeze",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-5",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=80"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=90,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 140.0,
+          "width": 120.0,
+          "height": 160.0,
+          "raw": "3:node=5,x=0,y=140,width=120,height=160"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-no-freeze.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "ba9878b850011ede165dad0d754bb6511438946ede6b2a0fd391eab66b4d9a5f"
+      }
+    },
+    {
+      "sceneId": "row-equal-boundary",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-6",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 80.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=80"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 90.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=90,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 140.0,
+          "width": 120.0,
+          "height": 160.0,
+          "raw": "3:node=5,x=0,y=140,width=120,height=160"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        80.0,
+        40.0,
+        160.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-equal-boundary.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "553c861befea52cf5d274cf80df0c7f93d84f6a45025909234001f966c8274c3"
+      }
+    },
+    {
+      "sceneId": "row-freeze-reversed",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-7",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 4,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "1:node=2,x=0,y=160,width=120,height=140"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "2:node=4,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 3,
+          "node": 5,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "3:node=5,x=0,y=0,width=120,height=100"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-freeze-reversed.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "6a2b83f264d5eff9fe68f7e5ecc747435776fbf9acaa6b919f3efdfc891d5e10"
+      }
+    },
+    {
+      "sceneId": "column-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-8",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.0,
+          "height": 0.0,
+          "raw": "1:node=2,x=0,y=0,width=0,height=0"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 110.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=110,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 140.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=160,y=0,width=140,height=120"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "efc48b193fdf9bf0b23403710fed3acb7825a23526d93fbf4eb6563d5cc2f839"
+      }
+    },
+    {
+      "sceneId": "row-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-9",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 0.0,
+          "height": 0.0,
+          "raw": "1:node=2,x=0,y=0,width=0,height=0"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 110.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=110,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 120.0,
+          "height": 140.0,
+          "raw": "4:node=7,x=0,y=160,width=120,height=140"
+        }
+      ],
+      "traceChunks": 18,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        100.0,
+        40.0,
+        140.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "29665a5b85042c1afb4f41bb4d0d2b7430128d0310f746a7148b4004d32fcc80"
+      }
+    },
+    {
+      "sceneId": "column-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-10",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=160,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 210.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=210,y=0,width=90,height=120"
+        }
+      ],
+      "traceChunks": 21,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-visibility-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "c55209bbfd64a85b621ec9562e7b15844a705243ea640a83ae921bb99cbdb822"
+      }
+    },
+    {
+      "sceneId": "column-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-11",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 300.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=300,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "1:node=2,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 150.0,
+          "height": 120.0,
+          "raw": "2:node=4,x=0,y=0,width=150,height=120"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 160.0,
+          "y": 0.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=160,y=0,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 210.0,
+          "y": 0.0,
+          "width": 90.0,
+          "height": 120.0,
+          "raw": "4:node=7,x=210,y=0,width=90,height=120"
+        }
+      ],
+      "traceChunks": 21,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "f7178b71638b354da519e5e7e3d967205f8d47b92d710a94f51422603983faa5"
+      }
+    },
+    {
+      "sceneId": "row-visibility-hidden",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-12",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=160,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 210.0,
+          "width": 120.0,
+          "height": 90.0,
+          "raw": "4:node=7,x=0,y=210,width=120,height=90"
+        }
+      ],
+      "traceChunks": 22,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-hidden-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-visibility",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-hidden-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-visibility-hidden.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "c4e4767414bf10f2fb4fe3bf0a1f8d65e07306b53a7f99c6f161d4c306eb4a8a"
+      }
+    },
+    {
+      "sceneId": "row-visibility-visible-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-13",
+      "status": "passed",
+      "boxCount": 5,
+      "frameCount": 5,
+      "drawBoxCount": 5,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 300.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=300"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=0,y=0,width=120,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 0.0,
+          "y": 160.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=0,y=160,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 0.0,
+          "y": 210.0,
+          "width": 120.0,
+          "height": 90.0,
+          "raw": "4:node=7,x=0,y=210,width=120,height=90"
+        }
+      ],
+      "traceChunks": 22,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        90.0
+      ],
+      "remainingSpaceCssPx": 0.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-visible-control-overlap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-visible-control-fixed-track-gap",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-control-root",
+          "rgba": [
+            232,
+            237,
+            245,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-visibility-visible-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "c593bd0ba3cc7c54aead719e71e1be9194adb88eedafe2a21f8db3ffce7e40ba"
+      }
+    },
+    {
+      "sceneId": "column-visibility-hidden-border-overflow",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-14",
+      "status": "passed",
+      "boxCount": 3,
+      "frameCount": 5,
+      "drawBoxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "1:node=2,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "2:node=4,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 162.0,
+          "y": 2.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=162,y=2,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 212.0,
+          "y": 2.0,
+          "width": 0.0,
+          "height": 116.0,
+          "raw": "4:node=7,x=212,y=2,width=0,height=116"
+        }
+      ],
+      "traceChunks": 21,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-hidden-border-overflow-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-border-overflow-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-hidden-border-overflow-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-hidden-border-overflow-a",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-visibility-hidden-border-overflow.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "d151517e4fa16dea2811336bbccd671324fa6a9c06bea2091c257f1c1111a0cc"
+      }
+    },
+    {
+      "sceneId": "column-visibility-visible-border-overflow-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-15",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 100.0,
+          "height": 120.0,
+          "raw": "0:node=1,x=0,y=0,width=100,height=120"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "1:node=2,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 150.0,
+          "height": 116.0,
+          "raw": "2:node=4,x=2,y=2,width=150,height=116"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 162.0,
+          "y": 2.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=162,y=2,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 212.0,
+          "y": 2.0,
+          "width": 0.0,
+          "height": 116.0,
+          "raw": "4:node=7,x=212,y=2,width=0,height=116"
+        }
+      ],
+      "traceChunks": 21,
+      "targetAxis": "Columns",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "column-visibility-visible-border-overflow-control-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-border-overflow-control-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "column-visibility-visible-border-overflow-control-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-column-visibility-visible-border-overflow-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-column-visibility-visible-border-overflow-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "f6f03205a2c3c8420b1d55352b5b51c172be778692cc723d55d7db6a40cb2bfa"
+      }
+    },
+    {
+      "sceneId": "row-visibility-hidden-border-overflow",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-16",
+      "status": "passed",
+      "boxCount": 3,
+      "frameCount": 5,
+      "drawBoxCount": 3,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 2.0,
+          "y": 162.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=2,y=162,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 2.0,
+          "y": 212.0,
+          "width": 116.0,
+          "height": 0.0,
+          "raw": "4:node=7,x=2,y=212,width=116,height=0"
+        }
+      ],
+      "traceChunks": 22,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-hidden-border-overflow-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-border-overflow-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-hidden-border-overflow-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-hidden-border-overflow-a",
+          "rgba": [
+            40,
+            100,
+            220,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-visibility-hidden-border-overflow.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "f80e88f95e46368a0b9322008e12687104536bc796e82e3e485bab25b680427e"
+      }
+    },
+    {
+      "sceneId": "row-visibility-visible-border-overflow-control",
+      "runID": "c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b-17",
+      "status": "passed",
+      "boxCount": 4,
+      "frameCount": 5,
+      "drawBoxCount": 4,
+      "nodeFrames": [
+        {
+          "index": 0,
+          "node": 1,
+          "x": 0.0,
+          "y": 0.0,
+          "width": 120.0,
+          "height": 100.0,
+          "raw": "0:node=1,x=0,y=0,width=120,height=100"
+        },
+        {
+          "index": 1,
+          "node": 2,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "1:node=2,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 2,
+          "node": 4,
+          "x": 2.0,
+          "y": 2.0,
+          "width": 116.0,
+          "height": 150.0,
+          "raw": "2:node=4,x=2,y=2,width=116,height=150"
+        },
+        {
+          "index": 3,
+          "node": 6,
+          "x": 2.0,
+          "y": 162.0,
+          "width": 24.0,
+          "height": 16.0,
+          "raw": "3:node=6,x=2,y=162,width=24,height=16"
+        },
+        {
+          "index": 4,
+          "node": 7,
+          "x": 2.0,
+          "y": 212.0,
+          "width": 116.0,
+          "height": 0.0,
+          "raw": "4:node=7,x=2,y=212,width=116,height=0"
+        }
+      ],
+      "traceChunks": 22,
+      "targetAxis": "Rows",
+      "trackBasesCssPx": [
+        150.0,
+        40.0,
+        0.0
+      ],
+      "remainingSpaceCssPx": -114.0,
+      "presented": true,
+      "pixelSamples": [
+        {
+          "id": "row-visibility-visible-border-overflow-control-border",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-border-overflow-control-root",
+          "rgba": [
+            240,
+            198,
+            116,
+            255
+          ]
+        },
+        {
+          "id": "row-visibility-visible-border-overflow-control-overflow",
+          "nodeId": "novel-mixed-intrinsic-flex-fixed-row-visibility-visible-border-overflow-control-visibility",
+          "rgba": [
+            142,
+            68,
+            173,
+            255
+          ]
+        }
+      ],
+      "screenshot": {
+        "path": "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-visibility-visible-border-overflow-control.png",
+        "dimensions": {
+          "width": 1206,
+          "height": 2622
+        },
+        "sha256": "37500ce239ef96d51eba6f34f3c4d66ff5039565997a4bee94f612d1af03961c"
+      }
+    }
+  ]
+}

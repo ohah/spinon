@@ -25,6 +25,9 @@ HIDDEN_EXPECTED_PATH = ROOT / (
 VISIBILITY_EXPECTED_PATH = ROOT / (
     "spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/expected.json"
 )
+BORDER_OVERFLOW_EXPECTED_PATH = ROOT / (
+    "spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-border-overflow-precomparison-2026-10-28/expected.json"
+)
 TRACE_TOLERANCE = 1e-4
 FRAME_TOLERANCE = 1e-4
 NUMBER = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
@@ -37,6 +40,10 @@ SCENE_IDS = {
     "row-equal-boundary", "row-freeze-reversed", "column-hidden", "row-hidden",
     "column-visibility-hidden", "column-visibility-visible-control",
     "row-visibility-hidden", "row-visibility-visible-control",
+    "column-visibility-hidden-border-overflow",
+    "column-visibility-visible-border-overflow-control",
+    "row-visibility-hidden-border-overflow",
+    "row-visibility-visible-border-overflow-control",
 }
 
 
@@ -176,6 +183,87 @@ def merge_visibility_cases(cases: dict[str, Any], visibility_scenes: Any) -> dic
     return merged
 
 
+def merge_border_overflow_cases(
+    cases: dict[str, Any],
+    border_scenes: Any,
+    independent: Any,
+    colors: Any,
+    sample_requirements: Any,
+) -> dict[str, Any]:
+    if (not isinstance(border_scenes, dict) or not isinstance(independent, dict)
+            or not isinstance(colors, dict) or not isinstance(sample_requirements, dict)):
+        raise AssertionError("border-overflow expected 자료가 올바르지 않습니다.")
+    scene_ids = {
+        "column-hidden": "column-visibility-hidden-border-overflow",
+        "column-visible-control": "column-visibility-visible-border-overflow-control",
+        "row-hidden": "row-visibility-hidden-border-overflow",
+        "row-visible-control": "row-visibility-visible-border-overflow-control",
+    }
+    if set(border_scenes) != set(scene_ids):
+        raise AssertionError(f"border-overflow expected scene 집합 불일치: {sorted(border_scenes)}")
+    merged = dict(cases)
+    frame_fields = ("x", "y", "width", "height")
+    for expected_id, scene in border_scenes.items():
+        scene_id = scene_ids[expected_id]
+        axis = "rows" if scene_id.startswith("row-") else "columns"
+        root = scene.get("rootBorderBoxCssPx")
+        content = scene.get("contentBoxCssPx")
+        if (not isinstance(root, list) or len(root) != 2
+                or not isinstance(content, list) or len(content) != 2):
+            raise AssertionError(f"{scene_id}: root/content box expected 값 누락")
+        tracks = scene.get("gridTemplateRowsCssPx" if axis == "rows"
+                           else "gridTemplateColumnsCssPx")
+        if not isinstance(tracks, list) or len(tracks) != 3:
+            raise AssertionError(f"{scene_id}: target-axis track expected 값 누락")
+        target_size = content[1] if axis == "rows" else content[0]
+        cross_size = content[0] if axis == "rows" else content[1]
+        gap = 10
+        remaining = target_size - sum(tracks) - gap * (len(tracks) - 1)
+        item_frame = lambda key: dict(zip(frame_fields, scene[key]))
+        hidden = scene.get("visibility") == "hidden"
+        prefix = f"novel-mixed-intrinsic-flex-fixed-{scene_id}"
+        border_point = sample_requirements[
+            "rowBorderRootLocalCssPx" if axis == "rows" else "columnBorderRootLocalCssPx"
+        ]
+        overflow_point = sample_requirements[
+            "rowOverflowRootLocalCssPx" if axis == "rows" else "columnOverflowRootLocalCssPx"
+        ]
+        overflow_rgba = colors["underlyingVisibleItem" if hidden else "visibleSpanControl"]["rgba"]
+        merged[scene_id] = {
+            "id": scene_id,
+            "axis": axis,
+            "crossAxisPx": cross_size,
+            "sizingAxisPx": target_size,
+            "gapPx": gap,
+            "tracksPx": tracks,
+            "remainingFreeSpacePx": remaining,
+            "minContentBasePx": 100,
+            "visibilityMinContentPx": independent["hiddenSpanCharacters"]
+                * independent["ahemCharacterAdvanceCssPx"],
+            "itemFramesRootRelativePx": {
+                "a": item_frame("aAndVisibilityFrameRootLocalCssPx"),
+                "visibility": item_frame("aAndVisibilityFrameRootLocalCssPx"),
+                "hidden": item_frame("aAndVisibilityFrameRootLocalCssPx"),
+                "b": item_frame("imageFrameRootLocalCssPx"),
+                "c": item_frame("cFrameRootLocalCssPx"),
+            },
+            "visibilityHidden": hidden,
+            "boxCount": 3 if hidden else 4,
+            "drawBoxCount": 3 if hidden else 4,
+            "rootBorderBoxCssPx": root,
+            "surfacePixelSamples": [
+                {"id": f"{scene_id}-border", "nodeId": f"{prefix}-root",
+                 "xCssPx": border_point[0], "yCssPx": border_point[1],
+                 "rgba": colors["border"]["rgba"]},
+                {"id": f"{scene_id}-overflow",
+                 "nodeId": f"{prefix}-a" if hidden else f"{prefix}-visibility",
+                 "xCssPx": overflow_point[0], "yCssPx": overflow_point[1],
+                 "rgba": overflow_rgba},
+            ],
+        }
+    return merged
+
+
 def expected_track_bases(case: dict[str, Any]) -> list[float]:
     tracks = case.get("tracksPx")
     if not isinstance(tracks, list) or len(tracks) != 3:
@@ -185,11 +273,14 @@ def expected_track_bases(case: dict[str, Any]) -> list[float]:
 
 def expected_frames(case: dict[str, Any]) -> list[dict[str, float | int]]:
     rows = case["axis"] == "rows"
-    root = {
-        "node": 1, "x": 0, "y": 0,
-        "width": case["crossAxisPx"] if rows else case["sizingAxisPx"],
-        "height": case["sizingAxisPx"] if rows else case["crossAxisPx"],
-    }
+    root_border_box = case.get("rootBorderBoxCssPx")
+    root = ({"node": 1, "x": 0, "y": 0,
+             "width": root_border_box[0], "height": root_border_box[1]}
+            if root_border_box is not None else {
+                "node": 1, "x": 0, "y": 0,
+                "width": case["crossAxisPx"] if rows else case["sizingAxisPx"],
+                "height": case["sizingAxisPx"] if rows else case["crossAxisPx"],
+            })
     if case.get("visibilityHidden") is not None:
         return [
             root,
@@ -293,15 +384,17 @@ def validate_intrinsic_inputs(diagnostics: dict[str, Any], case: dict[str, Any])
 
 def validate_visibility_contributions(target: dict[str, Any], case: dict[str, Any]) -> None:
     contributions = target.get("contributions")
-    automatic_minimum = (
+    automatic_minimum = re.sub(r"\s+", "", (
         "AutomaticMinimum { spans_auto_min_track: false, spans_multiple_tracks: false, "
         "spans_flexible_max_track: true, content_based: false, "
         "is_compressible_replaced: false, fixed_track_sum: None, "
         "fixed_gutter_sum: None, fixed_track_limit: None }"
-    )
+    ))
     signature = lambda item: (
         item.get("item"), item.get("kind"), item.get("span"), item.get("value"),
-        item.get("crossesFlexibleTrack"), item.get("minimumSource"),
+        item.get("crossesFlexibleTrack"),
+        re.sub(r"\s+", "", item["minimumSource"])
+        if isinstance(item.get("minimumSource"), str) else item.get("minimumSource"),
     )
     actual = sorted(signature(item) for item in contributions or [])
     expected = sorted([
@@ -841,6 +934,38 @@ def run_negative_controls(cases: dict[str, dict[str, Any]]) -> list[str]:
         pixel_log.replace("x=181 y=376", "x=182 y=376", 1),
         "test", visibility_case, "ios-simulator"))
     passed.append("wrong visibility sample coordinate")
+    border_case = cases["column-visibility-hidden-border-overflow"]
+    validate_diagnostics(synthetic_diagnostics(border_case), border_case)
+    border_lines = [
+        "SPINON_C114_METAL_PIXEL_BEGIN run_id=border-test drawable=960x720 viewport=320x240"
+    ]
+    for sample in border_case["surfacePixelSamples"]:
+        x = math.floor((sample["xCssPx"] + 0.5) * 3)
+        y = math.floor((sample["yCssPx"] + 0.5) * 3)
+        rgba = ",".join(str(channel) for channel in sample["rgba"])
+        border_lines.append(
+            f"SPINON_C114_METAL_PIXEL_SAMPLE run_id=border-test sample={sample['id']} "
+            f"x={x} y={y} rgba={rgba} expected={rgba} exact=true"
+        )
+    border_lines.append(
+        "SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=border-test "
+        "expected_samples=2 observed_samples=2 matched_samples=2"
+    )
+    border_pixel_log = "\n".join(border_lines)
+    expect_rejected("hidden overflow paint leaked from visibility span", lambda: verify_surface_pixels(
+        border_pixel_log.replace(
+            "rgba=40,100,220,255 expected=40,100,220,255",
+            "rgba=142,68,173,255 expected=40,100,220,255", 1),
+        "border-test", border_case, "ios-simulator"))
+    passed.append("hidden overflow paint leaked from visibility span")
+    overflow_sample = border_case["surfacePixelSamples"][1]
+    overflow_x = math.floor((overflow_sample["xCssPx"] + 0.5) * 3)
+    overflow_y = math.floor((overflow_sample["yCssPx"] + 0.5) * 3)
+    expect_rejected("wrong border-overflow surface coordinate", lambda: verify_surface_pixels(
+        border_pixel_log.replace(f"x={overflow_x} y={overflow_y}",
+                                 f"x={overflow_x + 1} y={overflow_y}", 1),
+        "border-test", border_case, "ios-simulator"))
+    passed.append("wrong border-overflow surface coordinate")
     return passed
 
 
@@ -853,9 +978,15 @@ def main() -> None:
     expected = load_json(EXPECTED_PATH)
     hidden_expected = load_json(HIDDEN_EXPECTED_PATH)
     visibility_expected = load_json(VISIBILITY_EXPECTED_PATH)
-    cases = validate_case_inventory(merge_visibility_cases(
-        merge_hidden_cases(expected.get("cases"), hidden_expected.get("scenes")),
-        visibility_expected.get("scenes")))
+    border_overflow_expected = load_json(BORDER_OVERFLOW_EXPECTED_PATH)
+    cases = validate_case_inventory(merge_border_overflow_cases(
+        merge_visibility_cases(
+            merge_hidden_cases(expected.get("cases"), hidden_expected.get("scenes")),
+            visibility_expected.get("scenes")),
+        border_overflow_expected.get("scenes"),
+        border_overflow_expected.get("independentTrackCalculation"),
+        border_overflow_expected.get("colors"),
+        border_overflow_expected.get("surfaceSampleRequirements")))
     compare_platform_tables(cases)
     summary: dict[str, Any] = {
         "expectedSceneIds": list(cases),

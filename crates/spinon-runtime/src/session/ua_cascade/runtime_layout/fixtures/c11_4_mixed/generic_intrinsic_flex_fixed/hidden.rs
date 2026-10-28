@@ -31,7 +31,7 @@ pub(super) fn prepare(
     validate_element(snapshot, root, "div", &root_id, HostParent::Root)?;
 
     let root_style = super::super::style_for(styles, root)?;
-    super::validate_root_style(root_style, styles, root, axis)?;
+    super::root_contract::validate(root_style, styles, root, axis, false)?;
     let children = snapshot
         .children(root)
         .ok_or_else(|| super::fail(root.id(), "root children unavailable"))?

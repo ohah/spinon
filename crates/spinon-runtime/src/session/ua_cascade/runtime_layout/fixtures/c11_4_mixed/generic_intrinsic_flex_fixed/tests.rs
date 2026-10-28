@@ -49,6 +49,22 @@ const STYLESHEET: &str = r#"
   grid-template-columns: 120px;
   grid-template-rows: minmax(min-content, 1fr) 40px minmax(0px, 2fr);
 }
+.root.columns.border-overflow {
+  width: 100px;
+  height: 120px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f0c674;
+  grid-template-rows: 116px;
+}
+.root.rows.border-overflow {
+  width: 120px;
+  height: 100px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #f0c674;
+  grid-template-columns: 116px;
+}
 .item {
   box-sizing: border-box;
   display: block;

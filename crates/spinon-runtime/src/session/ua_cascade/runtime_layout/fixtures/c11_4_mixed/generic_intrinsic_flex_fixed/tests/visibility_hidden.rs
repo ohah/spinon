@@ -5,6 +5,9 @@ use spinon_style::StyloDocumentView;
 use super::super::Axis;
 use super::{Fixture, NodeSpec, VIEWPORT, append_spec, cascade};
 
+#[path = "visibility_hidden/border_overflow.rs"]
+mod border_overflow;
+
 struct VisibilityFixture {
     fixture: Fixture,
     span: HostNodeHandle,
@@ -177,11 +180,23 @@ fn visibility_scene_contract_rejects_visibility_and_grid_input_mutations() {
 }
 
 fn make_fixture(axis: Axis, visible_control: bool) -> VisibilityFixture {
-    let scene_id = match (axis, visible_control) {
-        (Axis::Columns, false) => "column-visibility-hidden",
-        (Axis::Columns, true) => "column-visibility-visible-control",
-        (Axis::Rows, false) => "row-visibility-hidden",
-        (Axis::Rows, true) => "row-visibility-visible-control",
+    make_fixture_with_border_overflow(axis, visible_control, false)
+}
+
+fn make_fixture_with_border_overflow(
+    axis: Axis,
+    visible_control: bool,
+    border_overflow: bool,
+) -> VisibilityFixture {
+    let scene_id = match (axis, visible_control, border_overflow) {
+        (Axis::Columns, false, false) => "column-visibility-hidden",
+        (Axis::Columns, true, false) => "column-visibility-visible-control",
+        (Axis::Rows, false, false) => "row-visibility-hidden",
+        (Axis::Rows, true, false) => "row-visibility-visible-control",
+        (Axis::Columns, false, true) => "column-visibility-hidden-border-overflow",
+        (Axis::Columns, true, true) => "column-visibility-visible-border-overflow-control",
+        (Axis::Rows, false, true) => "row-visibility-hidden-border-overflow",
+        (Axis::Rows, true, true) => "row-visibility-visible-border-overflow-control",
     };
     let prefix = format!("novel-mixed-intrinsic-flex-fixed-{scene_id}");
     let image = NodeSpec::Element {
@@ -200,7 +215,15 @@ fn make_fixture(axis: Axis, visible_control: bool) -> VisibilityFixture {
     let root = NodeSpec::Element {
         tag: "div",
         id: format!("{prefix}-root"),
-        class: format!("root {}", axis.class_name()),
+        class: format!(
+            "root {}{}",
+            axis.class_name(),
+            if border_overflow {
+                " border-overflow"
+            } else {
+                ""
+            }
+        ),
         attributes: Vec::new(),
         children: vec![
             NodeSpec::Element {

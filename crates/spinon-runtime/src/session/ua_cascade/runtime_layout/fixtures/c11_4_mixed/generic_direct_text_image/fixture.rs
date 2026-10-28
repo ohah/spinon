@@ -308,7 +308,7 @@ fn append_spec(
             });
             for (name, value) in [("id", id.to_owned()), ("class", class)]
                 .into_iter()
-                .chain(attributes.into_iter().map(|(name, value)| (name, value)))
+                .chain(attributes)
             {
                 batch.push(DocumentOperation::SetAttribute {
                     node: handle,
