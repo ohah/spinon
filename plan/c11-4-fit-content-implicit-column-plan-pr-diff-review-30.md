@@ -25,7 +25,7 @@
 | 19 | child width overflow가 root boundary 밖에 있는지 | PASS — 400px child endpoint 460px, root endpoint 300px로 산술 검증했다. |
 | 20 | overflow sample 위치가 host viewport 밖으로 나가는지 | PASS — 480×320 CSS viewport와 x=350.5 target sample을 요구한다. |
 | 21 | outside-root pixel이 surface clear와 구분되는지 | PASS — child sample 및 x=470.5 surface-clear sample을 각각 지정했다. |
-| 22 | screenshot overlay가 raw WPT input으로 오해되는지 | PASS — overlay stage와 geometry evidence boundary를 README에 썼다. |
+| 22 | screenshot overlay가 raw WPT input으로 오해되는지 | PASS — README는 overlay가 harness/geometry 관측 뒤 추가됐다고 밝히며 캡처 파일명만 제시한다. |
 | 23 | pixel sample color가 diagnostic CSS와 일치하는지 | PASS — root/item/child 색과 expected sample roles를 plan에 고정했다. |
 | 24 | renderer trace from stale revisions can pass | PASS — same source/style/environment revision requirement is explicit. |
 | 25 | malformed or extra source tree publishes partial output | PASS — negative controls and no-partial-output criterion are required. |
@@ -33,6 +33,6 @@
 | 27 | test-only fixture is mistaken for general CSS author admission | PASS — CSS grammar, runtime profile, public API remain fixed. |
 | 28 | internal contract version is bumped without need | PASS — `0.1.0` stays unchanged. |
 | 29 | C11.4 completion count is incremented after a single WPT assertion | PASS — checkbox and `72/213` are explicitly retained. |
-| 30 | evidence links, paths, and file names refer to distinct artifacts | PASS — source pins, expected JSON, browser capture, README, plan, and reviews cross-link by relative paths. |
+| 30 | evidence links, paths, and file names refer to distinct artifacts | PASS — source pins, expected JSON, browser capture, checksum manifest, README, plan, and reviews resolve to the intended artifacts. |
 
-**판정:** 계획 변경 diff 30/30 PASS. PR merge 전 Markdown link validation and docs build remain required.
+**판정:** 계획 변경 diff 30/30 PASS. Final task-document local Markdown links, JSON parsing, evidence SHA-256, and `git diff --check` pass. Full `bun run docs:build` exits 1 because unrelated repository documentation contains 1,023 dead-link error entries; the final build log contains no error for these task documents. C11.4 remains unchecked and the official count stays at `72/213`.
