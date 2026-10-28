@@ -1,0 +1,54 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "apkSha256": "5a71ae27f14222e52ca068d103f4a7d6076b03deec4fd06903040f0e796582a1",
+  "installedApkSha256": "5a71ae27f14222e52ca068d103f4a7d6076b03deec4fd06903040f0e796582a1",
+  "sourceRevision": {
+    "commit": "180a3229957c548046b6ad3e0a4e1f37cc5cf56b",
+    "tree": "3edb5da899f3d69ededc64cd97c7077d345cbff6",
+    "trackedDiffSha256": "0bc90319a50a7e2ee74a7fdfda2ad8b57cff46f0ef11b437cfff61e9f32aace6",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-layout/src/lib.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor.rs",
+        "sha256": "acda255780716d88fde659cd73742bde7e6c010998ba2aea81a33740e78278cc"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor_report.rs",
+        "sha256": "58eebb02a98aaaf1434e4e6fecd589a84b50051b639174f5bc0c709cec69d4b3"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_fit_content_auto_min_floor_oracle_tests.rs",
+        "sha256": "3b907535a4413d43ca3c9a8f1e1860eb529b52dd50cedb7d85a117e1e6544b0c"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_auto_min_floor.rs",
+        "sha256": "d4ebd9cbace8c4456f3e30b003e1b55f0ccb4547f84ff7b6c8099863d0a16efa"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "b7fccff443623580b79bdac55a8230a3bc260075a086f2ff5217f6767dc6a8a9"
+  }
+}

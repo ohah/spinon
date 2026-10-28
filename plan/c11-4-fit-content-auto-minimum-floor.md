@@ -1,6 +1,6 @@
 # C11.4 · `fit-content()` automatic-minimum floor WPT slice 계획
 
-**상태:** 구현 전 계획이다. Pinned WPT의 자동 최소 크기 바닥 assertion은 아직 앱 runtime scene으로 연결하지 않았다. 계획 PR에서만 계획·사전 비교·검토 자료를 추가하며, 공식 C11.4 완료 체크와 `72/213`은 유지한다.
+**상태:** 두 고정 scene의 opt-in 앱 runtime slice를 구현했고 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 검증을 기록했다. 세부 결과와 미검증 경계는 [runtime evidence](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-runtime-2026-10-28/README.md)에 있다. 이 제한 slice는 C11.4 완료를 뜻하지 않으며 공식 완료 `72/213`을 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -33,7 +33,7 @@ WPT main input의 `fit-content(40px)` implicit rows는 다음 값을 내야 한�
 
 ## 입력과 구현 경계
 
-계획 병합 후 opt-in fixture에 고정 scene 두 개를 추가한다.
+구현된 opt-in fixture는 다음 두 고정 scene만 받는다.
 
 1. `fit-content-auto-min-floor-wpt`: WPT DOM을 유지하며 `box-sizing:border-box; width:60px; height:300px; margin:0; padding:0; border:0; grid-template-columns:60px; grid-template-rows:none; grid-auto-rows:fit-content(40px); align-content:normal; row-gap:0; column-gap:0`을 사용한다. root width는 deterministic frame을 위해 60px로 고정한다. item 두 개와 각각의 10px/100px child를 두고, item의 `min-height:auto`와 `overflow:visible`을 유지한다. 예상 Rows `[10,100]px`.
 2. `fit-content-auto-min-floor-zero-control`: 같은 root, alignment, DOM topology, content, track list에서 두 번째 item만 `min-height:0`으로 바꾼다. 예상 Rows `[10,40]px`; 100px child overflow는 별도 표면 sample로 확인한다.

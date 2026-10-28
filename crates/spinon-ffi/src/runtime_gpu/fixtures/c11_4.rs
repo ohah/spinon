@@ -54,6 +54,11 @@ mod cyclic_percentage_minmax;
 mod cyclic_percentage_tracks;
 #[path = "c11_4/cyclic_percentage_two_axis_multitrack.rs"]
 mod cyclic_percentage_two_axis_multitrack;
+#[path = "c11_4/fit_content_auto_min_floor.rs"]
+mod fit_content_auto_min_floor;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/fit_content_auto_min_floor_report.rs"]
+mod fit_content_auto_min_floor_report;
 #[path = "c11_4/fit_content_auto_neighbor.rs"]
 mod fit_content_auto_neighbor;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
@@ -1189,6 +1194,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = fit_content_min_height::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
+    if let Some(source) = fit_content_auto_min_floor::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {
