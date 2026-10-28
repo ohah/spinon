@@ -29,7 +29,7 @@
 25. **existing implementation scene ID와 충돌할 수 있음 — PASS.** 양 scene ID를 FFI/layout fixture 구현 경로에서 검색했고 현재 충돌은 없다.
 26. **정확히 두 scene만 allowlist 된다는 범위를 빠뜨릴 수 있음 — PASS.** plan은 WPT main과 min-zero control의 exact ID, 변형 topology/style 및 unknown ID 거부를 요구한다.
 27. **fixture ABI가 기본 제품 archive에 들어갈 수 있음 — PASS.** default/product negative control과 opt-in fixture positive control을 모두 수용 기준으로 둔다.
-28. **WPT screenshot이 앱 검증 화면처럼 해석될 수 있음 — PASS.** PNG 이름·README·계획은 upstream WPT/Chrome baseline이라고 표시하고 앱 screenshot은 구현 PR로 남긴다.
+28. **PR 본문 screenshot raw URL이 잘못된 commit SHA를 가리키거나 앱 결과처럼 해석될 수 있음 — PASS.** PR metadata 대조에서 초기 URL의 SHA 오기를 찾아 실제 PR head `6efc7f71348c22cefc0186a7f1602bf85b753ae7`로 수정했다. Agent Browser에서 PR #763 본문 이미지를 읽어 `complete:true`, `1280×5266`을 확인했고 alt text도 upstream WPT baseline으로 표시된다.
 29. **screenshot 또는 JSON이 수정 뒤 이전 hash를 유지할 수 있음 — PASS.** expected JSON parse, SHA256SUMS의 세 파일 checksum, screenshot 1280×5266 및 digest를 현재 bytes로 확인했다.
 30. **Agent Browser가 끝난 뒤 살아 있을 수 있음 — PASS.** capture session을 닫은 후 `session info`가 `active:false`, `pid:null`을 반환했다.
 
