@@ -1,0 +1,101 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewportCssPx": {
+    "width": 1280,
+    "height": 633
+  },
+  "screenshot": {
+    "path": "chrome156-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "sha256": "59ac9e5783142727781df1855b932c232eb99305a294a611de27f94cdae60a79"
+  },
+  "scenes": {
+    "column-hidden": {
+      "gridTemplateColumns": "150px 40px 0px",
+      "gridTemplateRows": "116px",
+      "overflow": "visible",
+      "root": { "x": 36, "y": 107.594, "width": 100, "height": 120 },
+      "borderRightColor": "rgb(240, 198, 116)",
+      "borderBottomColor": "rgb(240, 198, 116)",
+      "visibilityDisplay": "block",
+      "visibility": "hidden",
+      "visibilityClientRectCount": 1,
+      "itemsRootLocalCssPx": {
+        "a": { "x": 2, "y": 2, "width": 150, "height": 116 },
+        "visibility": { "x": 2, "y": 2, "width": 150, "height": 116 },
+        "b": { "x": 162, "y": 2, "width": 24, "height": 16 },
+        "c": { "x": 212, "y": 2, "width": 0, "height": 116 }
+      },
+      "sampleRootLocalCssPx": { "border": [1, 60], "overflow": [120, 60] },
+      "sampleViewportCssPx": { "border": [37, 167.594], "overflow": [156, 167.594] },
+      "imageNaturalSize": [24, 16]
+    },
+    "column-visible-control": {
+      "gridTemplateColumns": "150px 40px 0px",
+      "gridTemplateRows": "116px",
+      "overflow": "visible",
+      "root": { "x": 664, "y": 107.594, "width": 100, "height": 120 },
+      "borderRightColor": "rgb(240, 198, 116)",
+      "borderBottomColor": "rgb(240, 198, 116)",
+      "visibilityDisplay": "block",
+      "visibility": "visible",
+      "visibilityClientRectCount": 1,
+      "itemsRootLocalCssPx": {
+        "a": { "x": 2, "y": 2, "width": 150, "height": 116 },
+        "visibility": { "x": 2, "y": 2, "width": 150, "height": 116 },
+        "b": { "x": 162, "y": 2, "width": 24, "height": 16 },
+        "c": { "x": 212, "y": 2, "width": 0, "height": 116 }
+      },
+      "sampleRootLocalCssPx": { "border": [1, 60], "overflow": [120, 60] },
+      "sampleViewportCssPx": { "border": [665, 167.594], "overflow": [784, 167.594] },
+      "imageNaturalSize": [24, 16]
+    },
+    "row-hidden": {
+      "gridTemplateColumns": "116px",
+      "gridTemplateRows": "150px 40px 0px",
+      "overflow": "visible",
+      "root": { "x": 36, "y": 387.188, "width": 120, "height": 100 },
+      "borderRightColor": "rgb(240, 198, 116)",
+      "borderBottomColor": "rgb(240, 198, 116)",
+      "visibilityDisplay": "block",
+      "visibility": "hidden",
+      "visibilityClientRectCount": 1,
+      "itemsRootLocalCssPx": {
+        "a": { "x": 2, "y": 2, "width": 116, "height": 150 },
+        "visibility": { "x": 2, "y": 2, "width": 116, "height": 150 },
+        "b": { "x": 2, "y": 162, "width": 24, "height": 16 },
+        "c": { "x": 2, "y": 212, "width": 116, "height": 0 }
+      },
+      "sampleRootLocalCssPx": { "border": [60, 1], "overflow": [60, 120] },
+      "sampleViewportCssPx": { "border": [96, 388.188], "overflow": [96, 507.188] },
+      "imageNaturalSize": [24, 16]
+    },
+    "row-visible-control": {
+      "gridTemplateColumns": "116px",
+      "gridTemplateRows": "150px 40px 0px",
+      "overflow": "visible",
+      "root": { "x": 664, "y": 367.594, "width": 120, "height": 100 },
+      "borderRightColor": "rgb(240, 198, 116)",
+      "borderBottomColor": "rgb(240, 198, 116)",
+      "visibilityDisplay": "block",
+      "visibility": "visible",
+      "visibilityClientRectCount": 1,
+      "itemsRootLocalCssPx": {
+        "a": { "x": 2, "y": 2, "width": 116, "height": 150 },
+        "visibility": { "x": 2, "y": 2, "width": 116, "height": 150 },
+        "b": { "x": 2, "y": 162, "width": 24, "height": 16 },
+        "c": { "x": 2, "y": 212, "width": 116, "height": 0 }
+      },
+      "sampleRootLocalCssPx": { "border": [60, 1], "overflow": [60, 120] },
+      "sampleViewportCssPx": { "border": [724, 368.594], "overflow": [724, 487.594] },
+      "imageNaturalSize": [24, 16]
+    }
+  },
+  "limitations": [
+    "Chrome oracle only; no Spinon runtime or app result.",
+    "Screenshot pixel samples confirm painted colors at selected points, not whole-surface equality.",
+    "The right/bottom border pixels are partly covered by the overflowing grid item; border pixels are sampled on the unobscured left/top edges."
+  ]
+}

@@ -47,7 +47,7 @@ Definite target axis에서 flexible tracks에 남는 크기는 `300 - 40 - 2×10
 - Hidden span과 A의 `Minimum`/`MinContent`/`MaxContent` contribution trace는 owner `NodeId`, axis, span, value를 정확히 연결한다. 두 항목이 겹치는 first track은 `150px` min-content base를 고르고, final flexible track은 `[150,40,90]px`이어야 한다. 모든 pass의 track/gutter 배열 길이, stage 순서, freeze와 free-space 값을 비교한다. Chrome quantization은 규범 stage oracle로 쓰지 않는다.
 - Hidden span은 full-size item frame과 layout trace에 있어야 하지만 draw 목록과 hidden sample pixel에는 없어야 한다. Visible control은 같은 위치에서 보라색 draw sample을 내야 한다. Layout frame 존재를 painted box로 해석하지 않는다.
 - `visibility:collapse`, 다른 visibility/display 값, `display:none`, 임의 hidden subtree, 변형 text/font/writing-mode, child 추가/누락/재정렬, 다른 placement/track/gap/root size/axis/profile, 미등록 scene ID 및 stale revision은 정확한 failure로 fail closed한다. 기존 #734 `display:none` two-scene와 PR #729의 여덟 visible mixed-track scene은 회귀 대조군으로 유지한다.
-- Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 8 scene과 새 4 scene을 동일 source revision으로 각각 12/12 실행한다. Frame·track/contribution trace·scene/node identity·draw omission/presence·presentation completion을 검사한다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable에서 hidden/visible root-local sample을 각각 확인한다. 이 결과를 실기기, hardware GPU, iOS compositor-after 또는 전체-screen pixel parity로 확대하지 않는다.
+- Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 mixed-freeze 8 scene, `display:none` 2 scene, 새 `visibility:hidden` 4 scene을 동일 source revision으로 각각 14/14 실행한다. Frame·track/contribution trace·scene/node identity·draw omission/presence·presentation completion을 검사한다. Android PixelCopy와 iOS compositor 제출 전 Metal drawable에서 hidden/visible root-local sample을 각각 확인한다. 이 결과를 실기기, hardware GPU, iOS compositor-after 또는 전체-screen pixel parity로 확대하지 않는다.
 - 기본 product FFI archive는 신규 fixture marker/symbol이 없어야 하고 fixture-test positive control에는 포함한다. Static archive 경계는 APK/IPA 전체 exclusion을 증명하지 않는다. Focused Rust/FFI test, `cargo fmt --all -- --check`, 관련 Clippy, Android/iOS Simulator build와 `git diff --check`를 실행한다.
 - 실행 전 simulator boot 상태를 기록한다. 이미 booted device는 유지하고 이 작업이 직접 boot한 simulator만 종료한다. PR 본문에는 full commit SHA가 붙은 Android/iOS screenshot link를 넣고 Agent Browser로 image load/dimensions를 확인한 다음 browser session과 process를 종료한다. Terminal Browser는 사용하지 않는다.
 
@@ -71,3 +71,5 @@ PR #738 merge tree에는 부모가 `#[path]`로 참조하는 `visibility_hidden.
 ## 제외
 
 Visibility inheritance, hidden ancestor와 visible descendant, `visibility:collapse`, animation/mutation, arbitrary item tree, 일반 CSS/Grid 지원, 전체 WPT, product support 선언, 실기기/hardware GPU, iOS compositor-after pixels, 전역 renderer parity와 전체 C11.4는 범위 밖이다.
+
+Border 바깥 overflow는 이 구현과 별도로 [후속 계획](./c11-4-visibility-hidden-border-overflow.md)에서 고정했으며, 해당 runtime slice는 아직 구현되지 않았다.

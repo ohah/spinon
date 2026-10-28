@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 visibility-hidden mixed Grid items beyond a bordered root</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      padding: 24px;
+      color: #172033;
+      background: #f3f5f8;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    h1 { margin: 0 0 16px; font-size: 20px; }
+    #scenes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+    .scene { min-height: 236px; padding: 12px; background: white; overflow: visible; }
+    .scene h2 { margin: 0 0 8px; font-size: 14px; }
+    .root {
+      display: grid;
+      align-content: start;
+      justify-content: start;
+      align-items: stretch;
+      justify-items: stretch;
+      box-sizing: border-box;
+      border: 2px solid #f0c674;
+      background: #101820;
+      overflow: visible;
+    }
+    .columns {
+      width: 100px;
+      height: 120px;
+      grid-template-columns: minmax(min-content, 1fr) 40px minmax(0px, 2fr);
+      grid-template-rows: 116px;
+      column-gap: 10px;
+      row-gap: 0;
+    }
+    .rows {
+      width: 120px;
+      height: 100px;
+      grid-template-columns: 116px;
+      grid-template-rows: minmax(min-content, 1fr) 40px minmax(0px, 2fr);
+      column-gap: 0;
+      row-gap: 10px;
+    }
+    .item { min-width: auto; min-height: auto; color: white; overflow: visible; }
+    .text { font: 10px/10px Ahem, sans-serif; white-space: nowrap; background: #2864dc; }
+    .row-text { writing-mode: vertical-rl; text-orientation: mixed; }
+    .visibility-item { display: block; grid-column: 1 / 2; grid-row: 1 / 2; background: #8e44ad; }
+    [data-item="c"] { color: transparent; }
+    .image { display: block; width: auto; height: auto; justify-self: start; align-self: start; background: #d73b51; }
+    [data-item="a"] { grid-column: 1; grid-row: 1; }
+    [data-item="b"] { grid-column: 2; grid-row: 1; }
+    [data-item="c"] { grid-column: 3; grid-row: 1; }
+    .rows [data-item="a"], .rows .visibility-item { grid-column: 1 / 2; grid-row: 1 / 2; }
+    .rows [data-item="b"] { grid-column: 1; grid-row: 2; }
+    .rows [data-item="c"] { grid-column: 1; grid-row: 3; }
+    .hidden .visibility-item { visibility: hidden; }
+    .visible-control .visibility-item { visibility: visible; }
+  </style>
+</head>
+<body>
+  <h1>visibility:hidden Grid item overflow beyond a solid border</h1>
+  <main id="scenes">
+    <section class="scene hidden" id="column-hidden">
+      <h2>Columns · hidden item contributes but does not paint beyond the right edge</h2>
+      <div class="root columns">
+        <div class="item text" data-item="a">XXXXXXXXXX</div>
+        <span class="item text visibility-item" data-item="visibility">XXXXXXXXXXXXXXX</span>
+        <img class="item image" data-item="b" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text" data-item="c">XXXX</div>
+      </div>
+    </section>
+    <section class="scene visible-control" id="column-visible-control">
+      <h2>Columns · visible control paints beyond the right edge</h2>
+      <div class="root columns">
+        <div class="item text" data-item="a">XXXXXXXXXX</div>
+        <span class="item text visibility-item" data-item="visibility">XXXXXXXXXXXXXXX</span>
+        <img class="item image" data-item="b" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text" data-item="c">XXXX</div>
+      </div>
+    </section>
+    <section class="scene hidden" id="row-hidden">
+      <h2>Rows · orthogonal hidden item contributes but does not paint beyond the bottom edge</h2>
+      <div class="root rows">
+        <div class="item text row-text" data-item="a">XXXXXXXXXX</div>
+        <span class="item text row-text visibility-item" data-item="visibility">XXXXXXXXXXXXXXX</span>
+        <img class="item image" data-item="b" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text row-text" data-item="c">XXXX</div>
+      </div>
+    </section>
+    <section class="scene visible-control" id="row-visible-control">
+      <h2>Rows · orthogonal visible control paints beyond the bottom edge</h2>
+      <div class="root rows">
+        <div class="item text row-text" data-item="a">XXXXXXXXXX</div>
+        <span class="item text row-text visibility-item" data-item="visibility">XXXXXXXXXXXXXXX</span>
+        <img class="item image" data-item="b" src="../../resources/c14-1-png-basic.png" alt="">
+        <div class="item text row-text" data-item="c">XXXX</div>
+      </div>
+    </section>
+  </main>
+  <script>
+    const round = value => Math.round(value * 1000) / 1000;
+    const rect = (element, root) => {
+      const value = element.getBoundingClientRect();
+      const origin = root.getBoundingClientRect();
+      return {
+        x: round(value.left - origin.left),
+        y: round(value.top - origin.top),
+        width: round(value.width),
+        height: round(value.height),
+      };
+    };
+    const samplePoints = {
+      "column-hidden": { border: [1, 60], overflow: [120, 60] },
+      "column-visible-control": { border: [1, 60], overflow: [120, 60] },
+      "row-hidden": { border: [60, 1], overflow: [60, 120] },
+      "row-visible-control": { border: [60, 1], overflow: [60, 120] },
+    };
+    window.collectObservation = () => Object.fromEntries(
+      [...document.querySelectorAll(".scene")].map(scene => {
+        const root = scene.querySelector(".root");
+        const style = getComputedStyle(root);
+        const hidden = scene.querySelector(".visibility-item");
+        const rootRect = root.getBoundingClientRect();
+        const border = samplePoints[scene.id].border;
+        const overflow = samplePoints[scene.id].overflow;
+        return [scene.id, {
+          gridTemplateColumns: style.gridTemplateColumns,
+          gridTemplateRows: style.gridTemplateRows,
+          overflow: style.overflow,
+          root: { x: round(rootRect.x), y: round(rootRect.y), width: round(rootRect.width), height: round(rootRect.height) },
+          borderRightColor: style.borderRightColor,
+          borderBottomColor: style.borderBottomColor,
+          hiddenDisplay: getComputedStyle(hidden).display,
+          hiddenVisibility: getComputedStyle(hidden).visibility,
+          hiddenClientRectCount: hidden.getClientRects().length,
+          items: Object.fromEntries([...scene.querySelectorAll("[data-item]")].map(item => [item.dataset.item, rect(item, root)])),
+          sampleViewportCssPx: {
+            border: [round(rootRect.left + border[0]), round(rootRect.top + border[1])],
+            overflow: [round(rootRect.left + overflow[0]), round(rootRect.top + overflow[1])],
+          },
+          sampleRootCssPx: samplePoints[scene.id],
+          imageNaturalSize: [scene.querySelector("img").naturalWidth, scene.querySelector("img").naturalHeight],
+        }];
+      }),
+    );
+    document.fonts.ready.then(() => {
+      Promise.all([...document.images].map(image => image.decode())).then(() => {
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+          window.__ready = true;
+          window.__observation = window.collectObservation();
+        }));
+      });
+    });
+  </script>
+</body>
+</html>
