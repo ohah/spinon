@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 구현 및 Android/iOS Simulator 검증 완료, PR 검토 대기. 기존 mixed text/image multi-span의 Chrome 155 관측과 §11.5.1 독립 기대값을 재사용해, 네 fixed scene이 새 HostNode ID를 사용해도 opt-in runtime adapter에 도달함을 확인했다. 일반 CSS admission, WPT 적합성, C11.4 완료 또는 공식 완료 수 변경은 범위에 포함하지 않는다.
+**상태:** 구현 및 Android/iOS Simulator 검증 완료, [PR #725](https://github.com/ohah/spinon/pull/725) 검토 대기. 기존 mixed text/image multi-span의 Chrome 155 관측과 §11.5.1 독립 기대값을 재사용해, 네 fixed scene이 새 HostNode ID를 사용해도 opt-in runtime adapter에 도달함을 확인했다. 일반 CSS admission, WPT 적합성, C11.4 완료 또는 공식 완료 수 변경은 범위에 포함하지 않는다.
 
 ## 목적
 
