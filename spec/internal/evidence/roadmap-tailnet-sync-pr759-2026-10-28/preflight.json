@@ -1,0 +1,33 @@
+{
+  "sourceHead": "3210face8b77dd921c403188fe73f2c6993c53c2",
+  "sourcePath": "spec/public/roadmap.html",
+  "sourceBytes": 374155,
+  "sourceSha256": "d24e7dfc498cd33ecdaeedee897b902f826103b9d9b1688ed50ccd1cfa4f070c",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewPid": 28040,
+  "previewCommand": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "previewServerRestarted": false,
+  "tailscaleBackendState": "Running",
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "targetWasRegularFile": true,
+  "previousBytes": 372287,
+  "previousSha256": "faff974c222573d5c7ae8683a3a2f2072540dd2723b2d9263a39e38736ab26a3",
+  "localRouteBefore": {
+    "status": 200,
+    "bytes": 372287,
+    "sha256": "faff974c222573d5c7ae8683a3a2f2072540dd2723b2d9263a39e38736ab26a3"
+  },
+  "tailnetRouteBefore": {
+    "status": 200,
+    "bytes": 372287,
+    "sha256": "faff974c222573d5c7ae8683a3a2f2072540dd2723b2d9263a39e38736ab26a3"
+  },
+  "listenerRowsBefore": [
+    "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+  ],
+  "targetOpenHandlesBefore": [],
+  "quiescenceWaitPolls": 19,
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr759-2026-10-28/pass01",
+  "backupRootWasAbsent": true,
+  "selectedRouteCount": 1
+}
