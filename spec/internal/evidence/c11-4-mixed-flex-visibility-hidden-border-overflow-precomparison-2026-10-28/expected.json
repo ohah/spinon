@@ -1,0 +1,97 @@
+{
+  "basis": {
+    "grid": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, track sizing and flexible tracks",
+    "visibility": "CSS 2.1 section 11.2",
+    "overflow": "CSS Overflow Module Level 3 section 3.1",
+    "font": "tests/fixtures/resources/c15/Ahem.ttf",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "png": "tests/fixtures/resources/c14-1-png-basic.png",
+    "pngSha256": "5d8c9509a0fec2288f02611a8ccc22a23a90033d1a96b894b439525398bce4a2"
+  },
+  "independentTrackCalculation": {
+    "targetAxisContentSizeCssPx": 96,
+    "fixedTrackCssPx": 40,
+    "gapsCssPx": [10, 10],
+    "spaceBeforeMinConstraintsCssPx": 36,
+    "ahemCharacterAdvanceCssPx": 10,
+    "visibleTextCharacters": 10,
+    "hiddenSpanCharacters": 15,
+    "firstTrackMinContentBaseCssPx": 150,
+    "firstTrackUsedCssPx": 150,
+    "lastTrackMinimumCssPx": 0,
+    "targetAxisTracksCssPx": [150, 40, 0],
+    "firstItemStartRootLocalCssPx": 2,
+    "firstItemEndRootLocalCssPx": 152,
+    "rootBorderBoxEndRootLocalCssPx": 100,
+    "firstItemExtendsBeyondRootBorderBoxCssPx": 52
+  },
+  "colors": {
+    "border": { "hex": "#f0c674", "rgba": [240, 198, 116, 255] },
+    "underlyingVisibleItem": { "hex": "#2864dc", "rgba": [40, 100, 220, 255] },
+    "visibleSpanControl": { "hex": "#8e44ad", "rgba": [142, 68, 173, 255] }
+  },
+  "scenes": {
+    "column-hidden": {
+      "rootBorderBoxCssPx": [100, 120],
+      "contentBoxCssPx": [96, 116],
+      "rootBorderWidthCssPx": 2,
+      "rootBorderStyle": "solid",
+      "rootOverflow": "visible",
+      "gridTemplateColumnsCssPx": [150, 40, 0],
+      "gridTemplateRowsCssPx": [116],
+      "aAndVisibilityFrameRootLocalCssPx": [2, 2, 150, 116],
+      "imageFrameRootLocalCssPx": [162, 2, 24, 16],
+      "cFrameRootLocalCssPx": [212, 2, 0, 116],
+      "visibility": "hidden"
+    },
+    "column-visible-control": {
+      "rootBorderBoxCssPx": [100, 120],
+      "contentBoxCssPx": [96, 116],
+      "rootBorderWidthCssPx": 2,
+      "rootBorderStyle": "solid",
+      "rootOverflow": "visible",
+      "gridTemplateColumnsCssPx": [150, 40, 0],
+      "gridTemplateRowsCssPx": [116],
+      "aAndVisibilityFrameRootLocalCssPx": [2, 2, 150, 116],
+      "imageFrameRootLocalCssPx": [162, 2, 24, 16],
+      "cFrameRootLocalCssPx": [212, 2, 0, 116],
+      "visibility": "visible"
+    },
+    "row-hidden": {
+      "rootBorderBoxCssPx": [120, 100],
+      "contentBoxCssPx": [116, 96],
+      "rootBorderWidthCssPx": 2,
+      "rootBorderStyle": "solid",
+      "rootOverflow": "visible",
+      "gridTemplateColumnsCssPx": [116],
+      "gridTemplateRowsCssPx": [150, 40, 0],
+      "aAndVisibilityFrameRootLocalCssPx": [2, 2, 116, 150],
+      "imageFrameRootLocalCssPx": [2, 162, 24, 16],
+      "cFrameRootLocalCssPx": [2, 212, 116, 0],
+      "visibility": "hidden"
+    },
+    "row-visible-control": {
+      "rootBorderBoxCssPx": [120, 100],
+      "contentBoxCssPx": [116, 96],
+      "rootBorderWidthCssPx": 2,
+      "rootBorderStyle": "solid",
+      "rootOverflow": "visible",
+      "gridTemplateColumnsCssPx": [116],
+      "gridTemplateRowsCssPx": [150, 40, 0],
+      "aAndVisibilityFrameRootLocalCssPx": [2, 2, 116, 150],
+      "imageFrameRootLocalCssPx": [2, 162, 24, 16],
+      "cFrameRootLocalCssPx": [2, 212, 116, 0],
+      "visibility": "visible"
+    }
+  },
+  "surfaceSampleRequirements": {
+    "columnBorderRootLocalCssPx": [1, 60],
+    "columnOverflowRootLocalCssPx": [120, 60],
+    "rowBorderRootLocalCssPx": [60, 1],
+    "rowOverflowRootLocalCssPx": [60, 120],
+    "hiddenOverflowExpectedRgba": [40, 100, 220, 255],
+    "visibleControlOverflowExpectedRgba": [142, 68, 173, 255],
+    "borderExpectedRgba": [240, 198, 116, 255],
+    "samplingScope": "individual points only; no full-surface pixel-parity claim"
+  }
+}

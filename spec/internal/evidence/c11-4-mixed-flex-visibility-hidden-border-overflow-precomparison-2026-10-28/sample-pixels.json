@@ -1,0 +1,21 @@
+{
+  "source": "chrome156-agent-browser.png",
+  "sourceSha256": "59ac9e5783142727781df1855b932c232eb99305a294a611de27f94cdae60a79",
+  "sourceDimensions": [1280, 633],
+  "devicePixelRatio": 1,
+  "rasterMapping": "floor(sampleViewportCssPx) for this DPR-1 Chrome screenshot",
+  "samples": [
+    { "scene": "column-hidden", "kind": "unobscured-left-border", "rootLocalCssPx": [1, 60], "rasterPx": [37, 167], "expectedHex": "#f0c674", "actualRgb": [240, 198, 116], "match": true },
+    { "scene": "column-hidden", "kind": "outside-root-painted-underlayer", "rootLocalCssPx": [120, 60], "rasterPx": [156, 167], "expectedHex": "#2864dc", "actualRgb": [40, 100, 220], "match": true },
+    { "scene": "column-visible-control", "kind": "unobscured-left-border", "rootLocalCssPx": [1, 60], "rasterPx": [665, 167], "expectedHex": "#f0c674", "actualRgb": [240, 198, 116], "match": true },
+    { "scene": "column-visible-control", "kind": "outside-root-visible-span", "rootLocalCssPx": [120, 60], "rasterPx": [784, 167], "expectedHex": "#8e44ad", "actualRgb": [142, 68, 173], "match": true },
+    { "scene": "row-hidden", "kind": "unobscured-top-border", "rootLocalCssPx": [60, 1], "rasterPx": [96, 388], "expectedHex": "#f0c674", "actualRgb": [240, 198, 116], "match": true },
+    { "scene": "row-hidden", "kind": "outside-root-painted-underlayer", "rootLocalCssPx": [60, 120], "rasterPx": [96, 507], "expectedHex": "#2864dc", "actualRgb": [40, 100, 220], "match": true },
+    { "scene": "row-visible-control", "kind": "unobscured-top-border", "rootLocalCssPx": [60, 1], "rasterPx": [724, 368], "expectedHex": "#f0c674", "actualRgb": [240, 198, 116], "match": true },
+    { "scene": "row-visible-control", "kind": "outside-root-visible-span", "rootLocalCssPx": [60, 120], "rasterPx": [724, 487], "expectedHex": "#8e44ad", "actualRgb": [142, 68, 173], "match": true }
+  ],
+  "limitations": [
+    "The screenshot is Chrome oracle evidence, not Spinon output.",
+    "Only the listed sample pixels were inspected; full-surface equality was not tested."
+  ]
+}
