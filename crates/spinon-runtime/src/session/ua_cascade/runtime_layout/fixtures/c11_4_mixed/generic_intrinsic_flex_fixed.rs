@@ -30,6 +30,16 @@ pub(super) fn prepare(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<super::super::C11_4MixedInput>, RuntimeLayoutFailure> {
+    prepare_with_png(snapshot, root, styles, super::PNG)
+}
+
+/// 고정 adapter를 유지하면서 PNG decode 입력을 바꿔 fail-closed 경계를 검증한다.
+fn prepare_with_png(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+    png: &[u8],
+) -> Result<Option<super::super::C11_4MixedInput>, RuntimeLayoutFailure> {
     if !has_mixed_signature(snapshot, root)? {
         return Ok(None);
     }
@@ -130,7 +140,7 @@ pub(super) fn prepare(
     let image_item = image_item.ok_or_else(|| reject(root.id(), "image item missing"))?;
     let completion = ImageRequest::from_document(snapshot, image_item)
         .map_err(|error| fail(image_item.id(), format!("image request: {error}")))?
-        .decode(super::PNG)
+        .decode(png)
         .map_err(|error| fail(image_item.id(), format!("image decode: {error}")))?;
     let revision = IntrinsicSizeRevision::INITIAL
         .checked_next()
