@@ -108,6 +108,15 @@ enum NodeSpec {
 }
 
 fn make_fixture(axis: Axis, a_length: usize, reversed: bool) -> Fixture {
+    make_fixture_with_image_source(axis, a_length, reversed, IMAGE_URL)
+}
+
+fn make_fixture_with_image_source(
+    axis: Axis,
+    a_length: usize,
+    reversed: bool,
+    image_source: &str,
+) -> Fixture {
     let a = NodeSpec::Element {
         tag: "div",
         id: "novel-a".to_owned(),
@@ -119,7 +128,7 @@ fn make_fixture(axis: Axis, a_length: usize, reversed: bool) -> Fixture {
         tag: "img",
         id: "novel-b".to_owned(),
         class: format!("item image b {}", axis.class_name()),
-        attributes: vec![("alt", String::new()), ("src", IMAGE_URL.to_owned())],
+        attributes: vec![("alt", String::new()), ("src", image_source.to_owned())],
         children: Vec::new(),
     };
     let c = NodeSpec::Element {
@@ -375,6 +384,63 @@ fn unsupported_text_and_item_placement_fail_closed() {
         .unwrap();
     item.grid_item_placement = None;
     assert!(super::super::prepare(&fixture.snapshot, fixture.root, &styles).is_err());
+}
+
+#[test]
+fn wrong_image_source_fails_closed_in_both_axes() {
+    for axis in [Axis::Columns, Axis::Rows] {
+        let fixture = make_fixture_with_image_source(
+            axis,
+            10,
+            false,
+            "https://spinon.invalid/not-the-fixture.png",
+        );
+        let styles = cascade(&fixture);
+        assert_image_input_rejected(&fixture, &styles, super::super::PNG);
+    }
+}
+
+#[test]
+fn undecodable_image_bytes_fail_closed_in_both_axes() {
+    for axis in [Axis::Columns, Axis::Rows] {
+        let fixture = make_fixture(axis, 10, false);
+        let styles = cascade(&fixture);
+        assert_image_input_rejected(&fixture, &styles, b"not a PNG");
+    }
+}
+
+#[test]
+fn unexpected_decoded_image_size_fails_closed_in_both_axes() {
+    const WRONG_SIZE_PNG: &[u8] = include_bytes!(concat!(
+        env!("CARGO_MANIFEST_DIR"),
+        "/../../tests/fixtures/resources/c18-4-async-a-slow.png"
+    ));
+    let decoded = spinon_image::PngDecoder
+        .decode(WRONG_SIZE_PNG)
+        .expect("wrong-size control is a valid, decodable PNG");
+    assert_eq!(
+        (decoded.dimensions().width(), decoded.dimensions().height()),
+        (2, 2)
+    );
+
+    for axis in [Axis::Columns, Axis::Rows] {
+        let fixture = make_fixture(axis, 10, false);
+        let styles = cascade(&fixture);
+        assert_image_input_rejected(&fixture, &styles, WRONG_SIZE_PNG);
+    }
+}
+
+fn assert_image_input_rejected(
+    fixture: &Fixture,
+    styles: &spinon_style::ComputedStyleSnapshot,
+    png: &[u8],
+) {
+    let error = match super::prepare_with_png(&fixture.snapshot, fixture.root, styles, png) {
+        Err(error) => error,
+        Ok(_) => panic!("invalid mixed image input unexpectedly produced a fixture layout"),
+    };
+    assert_eq!(error.code, "unsupported_c114_generic_intrinsic_flex_fixed");
+    assert_eq!(error.node_id, Some(fixture.b.id().get()));
 }
 
 fn close(actual: f32, expected: f32, label: &str) {
