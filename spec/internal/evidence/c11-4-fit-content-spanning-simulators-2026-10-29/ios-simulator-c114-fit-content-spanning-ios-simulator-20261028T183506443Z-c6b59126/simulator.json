@@ -1,0 +1,64 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "2b48a523108398d1c2c4a67721613f13d47c462a7b4c50eeae402c4ef1e8681e",
+  "installedAppSha256": "2b48a523108398d1c2c4a67721613f13d47c462a7b4c50eeae402c4ef1e8681e",
+  "sourceRevision": {
+    "commit": "43177bd3b21c7a5ad6c3c0c4125cbe6134805930",
+    "tree": "1064ac06c4d4a6626211f7c53b60cd61fd85ebd7",
+    "trackedDiffSha256": "ea1b6b6168876e55b4ed86a75b798fd844fc54221bf582072e98ce208dfbeccb",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "plan/c11-4-fit-content-spanning-wpt.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_spanning.rs",
+        "sha256": "e033137247ac2ea864e6671d4260c4aaf1368b94d03e319057ed0b1c14ea258c"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_spanning_report.rs",
+        "sha256": "3808ccea54fe4369dcf48463c212c9c671a66c4d33f05033c7fed36ca6c184ae"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_spanning.rs",
+        "sha256": "515c07d706c355c2cf77fcb17d57f8dfc04b571e9b8e636521df2c71c85cc7e9"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_spanning/tests.rs",
+        "sha256": "48a132fe03b0c579fc3ceed1d9ef1d172a2f2c4ce9f4ed1978b34df9c8f4c291"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_spanning/validation.rs",
+        "sha256": "937c409bf88a7853687d884783d0a67211449fb0eebf78594efb8e64cfc3ba0d"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/fit_content_spanning.rs",
+        "sha256": "3a53b2cb8cfdac4a2a884acc9494c86c40b86f0e48fa0c7996636ac8acf12215"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "ab3a8d0c5b207b7aad2a1d41986e56080100847e4b3d71aee7434ba007c76c64"
+  }
+}

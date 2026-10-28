@@ -83,7 +83,7 @@ mod tests {
             assert_eq!(source.matches("root.appendChild(").count(), 2);
             assert_eq!(source.matches("first.appendChild(").count(), 1);
             assert_eq!(source.matches("second.appendChild(").count(), 1);
-            assert_eq!(c11_4_grid_track_sizing_runtime_source(scene).is_ok(), true);
+            assert!(c11_4_grid_track_sizing_runtime_source(scene).is_ok());
         }
         assert!(runtime_source("fit-content-auto-min-floor-wpt;throw 1").is_none());
         assert!(
