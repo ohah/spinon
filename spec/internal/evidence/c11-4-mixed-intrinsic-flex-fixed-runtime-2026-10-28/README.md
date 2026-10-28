@@ -27,7 +27,7 @@
 
 ## `display:none` hidden item 후속
 
-2026-10-28 후속 run은 기존 8개 scene에 `column-hidden`, `row-hidden`을 추가해 두 플랫폼에서 각각 10/10 scene을 통과했다. 15-character direct `<span>`이 첫 track에 `display:none`으로 놓일 때 그 text가 intrinsic sizing input과 track contribution에서 빠지고, 보이는 text/image sibling만 `[100, 40, 140] CSS px` tracks를 만든다. 두 축 모두 remaining free space는 0px이다. 미등록 scene, visible-control, C11.2.1 충돌 profile 경로는 양쪽 앱에서 거부됐다.
+구현 PR [#734](https://github.com/ohah/spinon/pull/734)은 2026-10-28T04:03:05Z Rebase and merge됐다(merge SHA `50e6286cf7b1c86a8c0398221751a42db105cb05`). 후속 run은 기존 8개 scene에 `column-hidden`, `row-hidden`을 추가해 두 플랫폼에서 각각 10/10 scene을 통과했다. 15-character direct `<span>`이 첫 track에 `display:none`으로 놓일 때 그 text가 intrinsic sizing input과 track contribution에서 빠지고, 보이는 text/image sibling만 `[100, 40, 140] CSS px` tracks를 만든다. 두 축 모두 remaining free space는 0px이다. 미등록 scene, visible-control, C11.2.1 충돌 profile 경로는 양쪽 앱에서 거부됐다.
 
 hidden scene은 보이는 root/item box가 4개이고 draw/presentation도 네 box를 확인한다. 내부 `node_frames_css_px`에는 추가로 hidden node의 0×0 bookkeeping frame이 있어 frame record는 5개다. 이 내부 frame은 CSS box 생성이나 paint를 뜻하지 않는다.
 
@@ -63,4 +63,4 @@ python3 tools/css-reference/c11-4-mixed-intrinsic-flex-fixed-runtime/verify.py -
 
 실기기, hardware GPU, 경계 바깥 pixel overflow·clip, 임의 CSS/DOM 및 글꼴, WPT 전체 적합성은 이 고정 fixture에서 검증하지 않았다. C11.4 전체 기능과 공식 완료 checkbox는 미완료이며 공식 집계 `72/213`도 바꾸지 않는다.
 
-기존 8-scene mixed-track slice의 구현 실패 관점은 [20개 검토](implementation-review-20.md), 그 변경분은 [30개 검토](pr-delta-review-30.md)에 기록했다. 이번 hidden-item 구현은 별도로 [runtime 구현 20관점](hidden-item-implementation-runtime-review-20.md)과 [구현 PR diff 30관점](hidden-item-pr-diff-review-30.md)에서 검토했다.
+기존 8-scene mixed-track slice의 구현 실패 관점은 [20개 검토](implementation-review-20.md), 그 변경분은 [30개 검토](pr-delta-review-30.md)에 기록했다. 이번 hidden-item 구현은 별도로 [runtime 구현 20관점](hidden-item-implementation-runtime-review-20.md)과 [구현 PR diff 30관점](hidden-item-pr-diff-review-30.md)에서 검토했다. 병합 뒤 status/plan/contract source sync는 [30개 별도 관점](hidden-item-docs-sync-review-30.md)으로 확인했다.

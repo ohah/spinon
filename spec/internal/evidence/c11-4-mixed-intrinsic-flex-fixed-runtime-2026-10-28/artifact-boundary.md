@@ -13,7 +13,7 @@
 
 ## hidden-item follow-up
 
-2026-10-28 현재 hidden-item 구현 source commit `d73f71c950ae4ba64d27ebfd0c70f6e81475ec8c`에서 다시 빌드했다. 아래 hash는 앞 절의 PR #729 병합 후 archive와 별개인 현재 소스 산출물이다. host는 macOS ARM64이며 feature 두 구성을 순서대로 빌드했다.
+2026-10-28 구현 PR [#734](https://github.com/ohah/spinon/pull/734)의 hidden-item code를 macOS ARM64에서 두 feature 구성으로 순서대로 빌드했다. 작업 tree의 base commit은 `d73f71c950ae4ba64d27ebfd0c70f6e81475ec8c`이고, 빌드된 code changes는 PR head `61be0e3ec930398270f0929dadbc677f10d7a7f4`에 포함되어 merge commit `50e6286cf7b1c86a8c0398221751a42db105cb05`로 병합됐다. 아래 hash는 앞 절의 PR #729 archive와 별개인 이 hidden-item fixture 경계 결과다.
 
 | Cargo 구성 | 명령 | `libspinon_ffi.a` SHA-256 | hidden fixture 경계 |
 |---|---|---|---|

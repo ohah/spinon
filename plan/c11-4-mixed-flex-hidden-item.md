@@ -38,11 +38,15 @@ Chrome controls `column-visible-control`과 `row-visible-control`은 첫 track `
 
 ## 계획·구현·PR 게이트
 
-1. 이 계획을 서로 다른 20가지 실패 관점으로 검토하고, 계획 PR diff를 별도 30관점으로 검토한 뒤 계획 PR을 `Rebase and merge`한다.
-2. 계획 병합 뒤 같은 checkout에서 hidden-item runtime adapter와 앱 fixture를 구현한다. 새로운 구현/runtime 실패 관점 20개와 PR diff 30개를 수행하고, 수정한 결함에 영향받은 관점을 다시 확인한다.
-3. PR 본문에는 commit-pinned Android/iOS Simulator screenshot link를 넣고 Agent Browser에서 표시되는지 확인한다. 사용한 Agent Browser session과 process는 마친 뒤 종료한다. PR을 `Rebase and merge`한다.
-4. 구현 병합 뒤 `spec/STATUS.md`, 상위 계획, 내부 계약 0059 및 Tailnet roadmap을 실제 근거와 동기화한다. C11.4 parent checkbox와 공식 완료 수 `72/213`은 이 제한 fixture로 변경하지 않는다.
+1. 계획 실패 관점 20개와 계획 PR diff 30관점 검토를 마치고 계획 PR [#733](https://github.com/ohah/spinon/pull/733)을 2026-10-28T02:51:37Z `Rebase and merge`했다(merge SHA `d73f71c950ae4ba64d27ebfd0c70f6e81475ec8c`).
+2. 병합 뒤 같은 checkout에서 hidden-item adapter와 앱 fixture를 구현했다. 새 구현/runtime 실패 관점 20개와 구현 PR diff 30관점 검토는 [runtime evidence](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/README.md)에 있다.
+3. commit-pinned Android/iOS Simulator screenshot을 구현 PR 본문에 넣고 Agent Browser에서 두 이미지의 로드와 크기를 확인한 뒤 브라우저 process를 종료했다. 구현 PR [#734](https://github.com/ohah/spinon/pull/734)은 2026-10-28T04:03:05Z `Rebase and merge`했다(merge SHA `50e6286cf7b1c86a8c0398221751a42db105cb05`).
+4. 구현 병합 후 status 대장, 상위 계획, 이 계획과 내부 계약 0059를 결과에 맞춰 동기화한다. 이 문서 sync PR이 main에 들어간 뒤 Tailnet roadmap 화면을 다시 만들고 Agent Browser로 확인한다. C11.4 parent checkbox와 공식 완료 수 `72/213`은 이 제한 fixture로 변경하지 않는다.
 
 ## 범위 밖
 
 이 slice는 visible runtime control, arbitrary/ancestor-hidden/nested/anonymous items, `visibility:hidden`의 지원, dynamic style 변경, 다른 fonts/scripts, multiple image, 일반 CSS admission, WPT pass, 실기기, Android hardware GPU, iOS compositor-after pixels, 모든 Grid hidden-item 조합 또는 전체 C11.4 완료를 주장하지 않는다.
+
+## 구현 결과 · 2026-10-28
+
+숨겨진 exact direct HTML `span`을 Columns/Rows 각 한 scene에 연결했다. 15자 text는 intrinsic sizing input에서 빠지고 보이는 A text가 첫 track 100px을 유지해 최종 tracks는 두 축 모두 `[100,40,140]px`이다. Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 8개와 hidden 2개가 각각 10/10 통과했다. hidden node는 내부 0×0 bookkeeping frame만 기록하며 visible/drawn box는 네 개다. Rust runtime tests 13/13, FFI route test 1/1, fixture boundary tests 28/28, 기본·fixture Clippy, rustfmt와 release static archive positive/negative 경계를 확인했다. 상세 run ID·hash·screenshot·검증 범위는 [runtime 근거](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/README.md), 제한 archive 근거는 [artifact boundary](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/artifact-boundary.md)에 있다. 미등록 route, visible control, C11.2.1 충돌 profile은 양 앱에서 거부됐다. 이 결과는 일반 CSS admission/WPT/실기기/hardware GPU/전체 C11.4 지원을 뜻하지 않으며 공식 `72/213`은 유지한다.
