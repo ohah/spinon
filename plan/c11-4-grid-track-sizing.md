@@ -4,9 +4,9 @@
 
 이 mixed intrinsic/flexible/fixed slice는 `minmax(min-content,1fr) 40px minmax(0px,2fr)`의 100px freeze, 80px equality, 40px no-freeze 경계를 직접 text contribution과 함께 검사했다. Columns/Rows, natural PNG fixed-track item과 reversed source-order controls의 Chrome 156 관측 및 CSS Grid 2025 CRD §11.5.1/§11.7.1 독립 기대값은 [사전 비교](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/README.md)에 고정했다. [집중 계획](./c11-4-mixed-intrinsic-flex-fixed.md) · [예상값](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json). 구현 PR #729와 test-only 거부 후속 PR #731·#732가 병합됐으며 상세 근거는 집중 계획에 연결했다. PR #732는 2026-10-28T02:35:51Z에 `9e9355369a48e5fa6bbed25a76954dbc63a5fcac`로 Rebase and merge됐다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
-## 2026-10-28 mixed-track `display:none` intrinsic child · 다음 계획
+## 2026-10-28 mixed-track `visibility:hidden` · 다음 제한 계획
 
-Chrome 156의 두 hidden scene과 두 visible controls를 비교하고, CSS Display box-generation 규칙 및 CSS Grid 2025 CRD에서 `[100,40,140]px` hidden 결과를 독립 산출했다. 다음 제한 fixture 계획은 exact direct `display:none` span만 Columns/Rows runtime adapter에서 받아 hidden text가 flex freeze에 기여하지 않는지 확인한다. [집중 계획](./c11-4-mixed-flex-hidden-item.md) · [사전 비교·기대값](../spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/README.md) · [계획 실패 관점 검토 20개](./c11-4-mixed-flex-hidden-item-plan-review-20.md). 아직 계획 PR 전이며 C11.4 및 공식 `72/213`은 미완료다.
+직전 [display:none slice](./c11-4-mixed-flex-hidden-item.md)와 대비해 `visibility:hidden`은 box와 layout contribution을 유지하고 paint만 억제하는 네 fixed scene을 준비했다. Chrome 156과 CSS Grid 2025 CRD 독립 계산은 hidden/visible controls 모두 Columns·Rows tracks `[150,40,90]px`이며, hidden/visible surface sample은 파랑/보라로 갈린다. [집중 계획](./c11-4-mixed-flex-visibility-hidden.md) · [사전 비교와 hash](../spec/internal/evidence/c11-4-mixed-flex-visibility-hidden-precomparison-2026-10-28/README.md) · [계획 실패 관점 검토 20개](./c11-4-mixed-flex-visibility-hidden-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-mixed-flex-visibility-hidden-pr-diff-review-30.md). 계획 PR은 아직 병합되지 않았고 C11.4와 공식 `72/213`은 미완료로 유지한다.
 
 ## 2026-10-28 CSS Grid §11.7 flexible track expansion test-only 계획
 

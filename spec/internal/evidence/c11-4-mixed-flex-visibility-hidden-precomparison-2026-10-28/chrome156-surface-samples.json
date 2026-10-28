@@ -1,0 +1,78 @@
+{
+  "source_screenshot": "chrome156-visibility-hidden.png",
+  "dimensions": [
+    1280,
+    633
+  ],
+  "dpr": 1,
+  "samples": {
+    "column-hidden": {
+      "screenshot_xy": [
+        156,
+        168
+      ],
+      "root_css_px": [
+        120,
+        60
+      ],
+      "expected_semantics": "visible A box remains; later visibility-hidden magenta sibling contributes but paints nothing",
+      "rgb": [
+        40,
+        100,
+        220
+      ],
+      "hex": "#2864dc"
+    },
+    "column-visible-control": {
+      "screenshot_xy": [
+        782,
+        168
+      ],
+      "root_css_px": [
+        120,
+        60
+      ],
+      "expected_semantics": "later visible magenta sibling paints over visible A",
+      "rgb": [
+        142,
+        68,
+        173
+      ],
+      "hex": "#8e44ad"
+    },
+    "row-hidden": {
+      "screenshot_xy": [
+        96,
+        473
+      ],
+      "root_css_px": [
+        60,
+        125
+      ],
+      "expected_semantics": "visible A box remains; later visibility-hidden magenta sibling contributes but paints nothing",
+      "rgb": [
+        40,
+        100,
+        220
+      ],
+      "hex": "#2864dc"
+    },
+    "row-visible-control": {
+      "screenshot_xy": [
+        722,
+        473
+      ],
+      "root_css_px": [
+        60,
+        125
+      ],
+      "expected_semantics": "later visible magenta sibling paints over visible A",
+      "rgb": [
+        142,
+        68,
+        173
+      ],
+      "hex": "#8e44ad"
+    }
+  }
+}

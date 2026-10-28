@@ -1,0 +1,17 @@
+{
+  "tool": "agent-browser",
+  "version": "0.31.1",
+  "session": "spinon-c114-vis-hidden",
+  "active_sessions_before": [],
+  "actions": [
+    "opened the local fixed HTML fixture",
+    "observed CSS Grid and CSS visibility references",
+    "captured the final screenshot and observation JSON",
+    "ran close --all"
+  ],
+  "verification": {
+    "active_sessions_after": [],
+    "agent_browser_processes_after": 0,
+    "terminal_browser_used": false
+  }
+}

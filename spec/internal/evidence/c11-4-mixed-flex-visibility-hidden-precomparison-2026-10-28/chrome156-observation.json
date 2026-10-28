@@ -1,0 +1,166 @@
+{
+  "devicePixelRatio": 1,
+  "observation": {
+    "column-hidden": {
+      "gridTemplateColumns": "150px 40px 90px",
+      "gridTemplateRows": "120px",
+      "hiddenClientRectCount": 1,
+      "hiddenDisplay": "block",
+      "hiddenVisibility": "hidden",
+      "items": {
+        "a": {
+          "height": 120,
+          "width": 150,
+          "x": 36,
+          "y": 107.594
+        },
+        "b": {
+          "height": 16,
+          "width": 24,
+          "x": 196,
+          "y": 107.594
+        },
+        "c": {
+          "height": 120,
+          "width": 90,
+          "x": 246,
+          "y": 107.594
+        },
+        "hidden": {
+          "height": 120,
+          "width": 150,
+          "x": 36,
+          "y": 107.594
+        }
+      },
+      "root": {
+        "height": 120,
+        "width": 300,
+        "x": 36,
+        "y": 107.594
+      }
+    },
+    "column-visible-control": {
+      "gridTemplateColumns": "150px 40px 90px",
+      "gridTemplateRows": "120px",
+      "hiddenClientRectCount": 1,
+      "hiddenDisplay": "block",
+      "hiddenVisibility": "visible",
+      "items": {
+        "a": {
+          "height": 120,
+          "width": 150,
+          "x": 662,
+          "y": 107.594
+        },
+        "b": {
+          "height": 16,
+          "width": 24,
+          "x": 822,
+          "y": 107.594
+        },
+        "c": {
+          "height": 120,
+          "width": 90,
+          "x": 872,
+          "y": 107.594
+        },
+        "hidden": {
+          "height": 120,
+          "width": 150,
+          "x": 662,
+          "y": 107.594
+        }
+      },
+      "root": {
+        "height": 120,
+        "width": 300,
+        "x": 662,
+        "y": 107.594
+      }
+    },
+    "row-hidden": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "150px 40px 90px",
+      "hiddenClientRectCount": 1,
+      "hiddenDisplay": "block",
+      "hiddenVisibility": "hidden",
+      "items": {
+        "a": {
+          "height": 150,
+          "width": 120,
+          "x": 36,
+          "y": 347.594
+        },
+        "b": {
+          "height": 16,
+          "width": 24,
+          "x": 36,
+          "y": 507.594
+        },
+        "c": {
+          "height": 90,
+          "width": 120,
+          "x": 36,
+          "y": 557.594
+        },
+        "hidden": {
+          "height": 150,
+          "width": 120,
+          "x": 36,
+          "y": 347.594
+        }
+      },
+      "root": {
+        "height": 300,
+        "width": 120,
+        "x": 36,
+        "y": 347.594
+      }
+    },
+    "row-visible-control": {
+      "gridTemplateColumns": "120px",
+      "gridTemplateRows": "150px 40px 90px",
+      "hiddenClientRectCount": 1,
+      "hiddenDisplay": "block",
+      "hiddenVisibility": "visible",
+      "items": {
+        "a": {
+          "height": 150,
+          "width": 120,
+          "x": 662,
+          "y": 347.594
+        },
+        "b": {
+          "height": 16,
+          "width": 24,
+          "x": 662,
+          "y": 507.594
+        },
+        "c": {
+          "height": 90,
+          "width": 120,
+          "x": 662,
+          "y": 557.594
+        },
+        "hidden": {
+          "height": 150,
+          "width": 120,
+          "x": 662,
+          "y": 347.594
+        }
+      },
+      "root": {
+        "height": 300,
+        "width": 120,
+        "x": 662,
+        "y": 347.594
+      }
+    }
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}
