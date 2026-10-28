@@ -38,10 +38,12 @@ pub(super) fn validate_rows_pass(
                 "row sizing stage order or track structure differs",
             ));
         }
-        for (index, (track, expected_track_base)) in stage
+        let expected_growth_limits = [Some(0.0), Some(400.0), Some(0.0)];
+        for (index, ((track, expected_track_base), expected_growth_limit)) in stage
             .tracks
             .iter()
             .zip([0.0, expected_base, 0.0])
+            .zip(expected_growth_limits)
             .enumerate()
         {
             let is_gutter = index != 1;
@@ -49,6 +51,8 @@ pub(super) fn validate_rows_pass(
                 || track.is_gutter != is_gutter
                 || track.is_collapsed != is_gutter
                 || (track.base_size - expected_track_base).abs() > 0.000001
+                || track.growth_limit != expected_growth_limit
+                || track.infinitely_growable
             {
                 return Err(super::failure(
                     "row sizing stage track state differs from the WPT slice",

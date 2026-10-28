@@ -142,6 +142,14 @@ fn accepts_only_the_exact_percentage_row_stage_and_contribution_trace() {
     wrong_row_base.stages[3].tracks[1].base_size = 149.0;
     assert!(validate_rows_pass(&wrong_row_base, item).is_err());
 
+    let mut wrong_growth_limit = expected.clone();
+    wrong_growth_limit.stages[3].tracks[1].growth_limit = Some(401.0);
+    assert!(validate_rows_pass(&wrong_growth_limit, item).is_err());
+
+    let mut unexpectedly_growable = expected.clone();
+    unexpectedly_growable.stages[3].tracks[1].infinitely_growable = true;
+    assert!(validate_rows_pass(&unexpectedly_growable, item).is_err());
+
     let mut wrong_min_content = expected.clone();
     wrong_min_content.contributions[1].value = 399.0;
     assert!(validate_rows_pass(&wrong_min_content, item).is_err());

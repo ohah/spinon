@@ -184,7 +184,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn validate_output(
         })
         .map(|frame| (frame.node_id, (frame.x, frame.y, frame.width, frame.height)))
         .collect::<BTreeMap<_, _>>();
-    if frames.len() != observation.node_ids.len() {
+    if completed.frames.len() != observation.node_ids.len()
+        || frames.len() != observation.node_ids.len()
+    {
         return Err(failure("missing, duplicate, or extra fixture node frames"));
     }
     for (node, expected) in observation.node_ids.iter().zip([
