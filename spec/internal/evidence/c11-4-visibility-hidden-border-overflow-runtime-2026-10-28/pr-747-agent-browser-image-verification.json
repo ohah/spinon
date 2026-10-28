@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-28 08:41:40 UTC",
+  "pullRequest": "https://github.com/ohah/spinon/pull/747",
+  "headCommit": "25f44dd6cdbb1ae3d5a02cde87b0fcc0c1a1002b",
+  "pageTitle": "feat(c11.4): visibility:hidden border overflow 검증 by ohah · Pull Request #747 · ohah/spinon · GitHub",
+  "tool": "agent-browser",
+  "session": "c11-4-pr747",
+  "images": [
+    {
+      "alt": "Android column visibility hidden border overflow",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/25f44dd6cdbb1ae3d5a02cde87b0fcc0c1a1002b/spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T083254064Z-ec49e19a/android-column-visibility-hidden-border-overflow.png",
+      "complete": true,
+      "displayed": true,
+      "naturalWidth": 1080,
+      "naturalHeight": 2400
+    },
+    {
+      "alt": "iOS row visibility visible border overflow control",
+      "url": "https://raw.githubusercontent.com/ohah/spinon/25f44dd6cdbb1ae3d5a02cde87b0fcc0c1a1002b/spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T083358020Z-01851d7b/ios-row-visibility-visible-border-overflow-control.png",
+      "complete": true,
+      "displayed": true,
+      "naturalWidth": 1206,
+      "naturalHeight": 2622
+    }
+  ],
+  "sessionClosed": true,
+  "sessionActiveAfterClose": false,
+  "matchingAgentBrowserProcessAfterClose": false
+}
