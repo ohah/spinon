@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 Grid automatic minimum and scrollable overflow categories</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      padding: 24px;
+      color: #172033;
+      background: #f3f5f8;
+      font: 14px/1.4 system-ui, sans-serif;
+    }
+    h1 { margin: 0 0 8px; font-size: 20px; }
+    p { margin: 0 0 16px; }
+    #cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+    .case { min-height: 96px; padding: 8px; background: white; }
+    .case h2 { margin: 0 0 6px; font-size: 13px; }
+    .grid {
+      display: grid;
+      align-content: start;
+      justify-content: start;
+      align-items: stretch;
+      justify-items: stretch;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      background: #101820;
+    }
+    .columns {
+      width: 60px;
+      height: 20px;
+      grid-template-columns: minmax(auto, 1fr);
+      grid-template-rows: 20px;
+    }
+    .columns.zero-track-min { grid-template-columns: minmax(0px, 1fr); }
+    .rows {
+      width: 30px;
+      height: 5px;
+      grid-template-columns: 30px;
+      grid-template-rows: minmax(auto, 1fr);
+    }
+    .rows.zero-track-min { grid-template-rows: minmax(0px, 1fr); }
+    .item {
+      display: block;
+      min-width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      color: white;
+      background: #2864dc;
+      font: 10px/10px Ahem, sans-serif;
+      justify-self: auto;
+      align-self: auto;
+    }
+    .clip { overflow: clip; }
+    .hidden { overflow: hidden; }
+    .auto { overflow: auto; }
+    .scroll { overflow: scroll; }
+    .zero-item-min.columns-item { min-width: 0; }
+    .zero-item-min.rows-item { min-height: 0; }
+    .rows-item { white-space: nowrap; }
+  </style>
+</head>
+<body>
+  <h1>Grid automatic minimum depends on whether item overflow is scrollable</h1>
+  <p>One Grid item spans one auto-minimum track. Ahem metrics and fixed container sizes make the min-content threshold deterministic.</p>
+  <main id="cases">
+    <section class="case" id="column-visible">
+      <h2>Columns · overflow:visible</h2>
+      <div class="grid columns"><div class="item columns-item">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-clip">
+      <h2>Columns · overflow:clip</h2>
+      <div class="grid columns"><div class="item columns-item clip">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-hidden">
+      <h2>Columns · overflow:hidden</h2>
+      <div class="grid columns"><div class="item columns-item hidden">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-auto">
+      <h2>Columns · overflow:auto</h2>
+      <div class="grid columns"><div class="item columns-item auto">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-scroll">
+      <h2>Columns · overflow:scroll</h2>
+      <div class="grid columns"><div class="item columns-item scroll">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-zero-item-min">
+      <h2>Columns · explicit min-width:0 control</h2>
+      <div class="grid columns"><div class="item columns-item zero-item-min">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="column-zero-track-min">
+      <h2>Columns · minmax(0,1fr) control</h2>
+      <div class="grid columns zero-track-min"><div class="item columns-item">XXXXXXXXXX</div></div>
+    </section>
+    <section class="case" id="row-visible">
+      <h2>Rows · overflow:visible</h2>
+      <div class="grid rows"><div class="item rows-item">X</div></div>
+    </section>
+    <section class="case" id="row-clip">
+      <h2>Rows · overflow:clip</h2>
+      <div class="grid rows"><div class="item rows-item clip">X</div></div>
+    </section>
+    <section class="case" id="row-hidden">
+      <h2>Rows · overflow:hidden</h2>
+      <div class="grid rows"><div class="item rows-item hidden">X</div></div>
+    </section>
+    <section class="case" id="row-auto">
+      <h2>Rows · overflow:auto</h2>
+      <div class="grid rows"><div class="item rows-item auto">X</div></div>
+    </section>
+    <section class="case" id="row-scroll">
+      <h2>Rows · overflow:scroll</h2>
+      <div class="grid rows"><div class="item rows-item scroll">X</div></div>
+    </section>
+    <section class="case" id="row-zero-item-min">
+      <h2>Rows · explicit min-height:0 control</h2>
+      <div class="grid rows"><div class="item rows-item zero-item-min">X</div></div>
+    </section>
+    <section class="case" id="row-zero-track-min">
+      <h2>Rows · minmax(0,1fr) control</h2>
+      <div class="grid rows zero-track-min"><div class="item rows-item">X</div></div>
+    </section>
+  </main>
+  <script>
+    const round = value => Math.round(value * 1000) / 1000;
+    const rect = element => {
+      const value = element.getBoundingClientRect();
+      return { x: round(value.x), y: round(value.y), width: round(value.width), height: round(value.height) };
+    };
+    window.collectObservation = async () => {
+      await document.fonts.ready;
+      return Object.fromEntries([...document.querySelectorAll(".case")].map(section => {
+        const grid = section.querySelector(".grid");
+        const item = grid.firstElementChild;
+        const gridStyle = getComputedStyle(grid);
+        const itemStyle = getComputedStyle(item);
+        return [section.id, {
+          columns: gridStyle.gridTemplateColumns,
+          rows: gridStyle.gridTemplateRows,
+          grid: rect(grid),
+          item: rect(item),
+          minWidth: itemStyle.minWidth,
+          minHeight: itemStyle.minHeight,
+          overflowX: itemStyle.overflowX,
+          overflowY: itemStyle.overflowY,
+          scrollWidth: item.scrollWidth,
+          scrollHeight: item.scrollHeight,
+        }];
+      }));
+    };
+  </script>
+</body>
+</html>
