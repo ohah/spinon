@@ -19,7 +19,7 @@
 ## Agent Browser 검증과 종료
 
 - Terminal Browser를 사용하지 않았다. Agent Browser로 [Tailnet 로드맵](https://macstudio.tailed42f2.ts.net/spinon/roadmap.html)을 열어 #759 merge SHA, Android/iOS 각각 5/5, 범위 한계, C11.4 미완료와 `72/213` 표시를 확인했다.
-- [화면 캡처](tailnet-roadmap-agent-browser.png)는 1280×633이다. 페이지 title과 9개 근거 링크를 확인했고 capture SHA-256은 `agent-browser-verification.json`에 있다.
-- Agent Browser `close` 명령은 성공했고 후속 session 정보는 `active: false`, `pid: null`을 반환했다. [관측 기록](agent-browser-verification.json) · [종료 기록](browser-close.json).
+- [화면 캡처](tailnet-roadmap-agent-browser.png)는 1280×633이다. 페이지 title과 9개 근거 링크를 확인했다. PR #762 본문 캡처도 1280×633으로 정상 표시됐다. capture SHA-256은 `agent-browser-verification.json`에 있다.
+- Agent Browser `close` 명령은 성공했다. PR #762 이미지 확인 후 session list는 비었고, session info는 browser `launched:false`, `pageCount:0`을 반환했다. 응답의 오래된 PID 33404는 `ps`에 존재하지 않았다. [관측 기록](agent-browser-verification.json) · [종료 기록](browser-close.json).
 
 이 동기화는 정적 `roadmap.html` 단일 route 변경이다. 전체 문서 사이트 publication이나 Android/iOS 앱 재실행을 뜻하지 않는다. C11.4 전체는 미완료이며 공식 완료 집계 `72/213`은 유지된다.

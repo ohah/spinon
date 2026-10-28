@@ -31,6 +31,6 @@
 27. **local after check** — local route가 HTTP 200, source와 같은 byte 수 및 SHA인지 확인한다.
 28. **Tailnet after check** — Tailnet route도 HTTP 200과 같은 content hash를 반환해야 성공으로 기록한다.
 29. **runtime ownership** — 동기화 전후 listener PID가 같아 기존 preview server를 중단하거나 재시작하지 않는다.
-30. **render·lifecycle evidence** — Agent Browser DOM에서 PR #759, 5/5 두 플랫폼, `72/213`, C11.4 미완료를 확인하고 캡처를 보존하며 close 뒤 session `active:false`, `pid:null`을 기록한다.
+30. **render·lifecycle evidence** — Agent Browser DOM에서 PR #759, 두 플랫폼 5/5, `72/213`, C11.4 미완료를 확인하고 캡처를 보존한다. PR #762 본문 이미지도 1280×633으로 로드됐다. close 뒤 session list는 비었고 `browserLaunched:false`, `pageCount:0`; session info의 stale PID는 process table에 없었다.
 
 최종 결과는 단일 route의 hash 일치와 렌더된 페이지 확인이다. 전체 문서 사이트 deploy, C11.4 완료, CI 통과 또는 새 앱 runtime 검증으로 확대 해석하지 않는다.
