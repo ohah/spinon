@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 1,
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, §§6.6, 11.2, 11.5, and 11.6",
+  "comparison": {
+    "trackAndFrameToleranceCssPx": 0,
+    "minimumContributionToleranceCssPx": 0,
+    "maxContentContributionToleranceCssPx": 0
+  },
+  "overflowValues": {
+    "contentBasedAutomaticMinimum": ["visible", "clip"],
+    "zeroAutomaticMinimum": ["hidden", "auto", "scroll"]
+  },
+  "cases": [
+    {
+      "id": "columns-visible",
+      "axis": "columns",
+      "overflow": "visible",
+      "rootFrame": { "width": 60, "height": 20 },
+      "usedTracks": [100],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 100 },
+      "maxContentContribution": 100
+    },
+    {
+      "id": "columns-clip",
+      "axis": "columns",
+      "overflow": "clip",
+      "rootFrame": { "width": 60, "height": 20 },
+      "usedTracks": [100],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 100 },
+      "maxContentContribution": 100
+    },
+    {
+      "id": "columns-hidden",
+      "axis": "columns",
+      "overflow": "hidden",
+      "rootFrame": { "width": 60, "height": 20 },
+      "usedTracks": [60],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 60, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100
+    },
+    {
+      "id": "columns-auto",
+      "axis": "columns",
+      "overflow": "auto",
+      "rootFrame": { "width": 60, "height": 20 },
+      "usedTracks": [60],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 60, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100
+    },
+    {
+      "id": "columns-scroll",
+      "axis": "columns",
+      "overflow": "scroll",
+      "rootFrame": { "width": 60, "height": 20 },
+      "usedTracks": [60],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 60, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100
+    },
+    {
+      "id": "rows-visible",
+      "axis": "rows",
+      "overflow": "visible",
+      "rootFrame": { "width": 30, "height": 5 },
+      "usedTracks": [10],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 15, "height": 10 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 10 },
+      "maxContentContribution": 10
+    },
+    {
+      "id": "rows-clip",
+      "axis": "rows",
+      "overflow": "clip",
+      "rootFrame": { "width": 30, "height": 5 },
+      "usedTracks": [10],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 15, "height": 10 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 10 },
+      "maxContentContribution": 10
+    },
+    {
+      "id": "rows-hidden",
+      "axis": "rows",
+      "overflow": "hidden",
+      "rootFrame": { "width": 30, "height": 5 },
+      "usedTracks": [5],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 15, "height": 10 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 10
+    },
+    {
+      "id": "rows-auto",
+      "axis": "rows",
+      "overflow": "auto",
+      "rootFrame": { "width": 30, "height": 5 },
+      "usedTracks": [5],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 15, "height": 10 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 10
+    },
+    {
+      "id": "rows-scroll",
+      "axis": "rows",
+      "overflow": "scroll",
+      "rootFrame": { "width": 30, "height": 5 },
+      "usedTracks": [5],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 15, "height": 10 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 10
+    }
+  ]
+}
