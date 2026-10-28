@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "source": "CSS Grid Layout Module Level 1, 2025 CRD, §§6.6, 11.2, 11.5, 11.5.1, and 11.6",
+  "comparison": {
+    "trackAndFrameToleranceCssPx": 0,
+    "minimumContributionToleranceCssPx": 0,
+    "maxContentContributionToleranceCssPx": 0
+  },
+  "overflowValues": {
+    "contentBasedAutomaticMinimum": ["visible", "clip"],
+    "zeroAutomaticMinimum": ["hidden", "auto", "scroll"]
+  },
+  "fixedInput": {
+    "axis": "columns",
+    "rootFrame": { "width": 80, "height": 20 },
+    "gridTemplateColumns": ["minmax(auto, max-content)", "minmax(auto, max-content)"],
+    "gridTemplateRows": ["20px"],
+    "itemPlacement": "column 1 / span 2",
+    "itemText": "XXXXXXXXXX",
+    "font": "Ahem 10px/10px",
+    "minContentContribution": 100,
+    "maxContentContribution": 100
+  },
+  "cases": [
+    {
+      "id": "columns-span2-visible",
+      "overflowX": "visible",
+      "computedOverflowY": "visible",
+      "rootFrame": { "width": 80, "height": 20 },
+      "usedTracks": [50, 50],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 100 },
+      "maxContentContribution": 100,
+      "itemScrollWidth": 100
+    },
+    {
+      "id": "columns-span2-clip",
+      "overflowX": "clip",
+      "computedOverflowY": "visible",
+      "rootFrame": { "width": 80, "height": 20 },
+      "usedTracks": [50, 50],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "minimumContribution": { "source": "AutomaticMinimumContentBased", "value": 100 },
+      "maxContentContribution": 100,
+      "itemScrollWidth": 100
+    },
+    {
+      "id": "columns-span2-hidden",
+      "overflowX": "hidden",
+      "computedOverflowY": "auto",
+      "rootFrame": { "width": 80, "height": 20 },
+      "usedTracks": [40, 40],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 80, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100,
+      "itemScrollWidth": 100
+    },
+    {
+      "id": "columns-span2-auto",
+      "overflowX": "auto",
+      "computedOverflowY": "auto",
+      "rootFrame": { "width": 80, "height": 20 },
+      "usedTracks": [40, 40],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 80, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100,
+      "itemScrollWidth": 100
+    },
+    {
+      "id": "columns-span2-scroll",
+      "overflowX": "scroll",
+      "computedOverflowY": "auto",
+      "rootFrame": { "width": 80, "height": 20 },
+      "usedTracks": [40, 40],
+      "itemRelativeFrame": { "x": 0, "y": 0, "width": 80, "height": 20 },
+      "minimumContribution": { "source": "OverflowAutomaticMinimum", "value": 0 },
+      "maxContentContribution": 100,
+      "itemScrollWidth": 100
+    }
+  ]
+}

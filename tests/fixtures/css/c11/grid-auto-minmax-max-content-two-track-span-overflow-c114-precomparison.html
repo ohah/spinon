@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 two-track span overflow automatic minimum</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+    html, body { margin: 0; padding: 0; }
+    body { font: 12px sans-serif; color: #18212b; background: #f1f5f9; }
+    h1 { margin: 8px 10px; font-size: 16px; }
+    #scenes { display: grid; grid-template-columns: repeat(2, max-content); gap: 8px; padding: 10px; }
+    .scene { box-sizing: border-box; padding: 4px; background: white; border: 1px solid #94a3b8; }
+    .label { margin-bottom: 4px; }
+    .grid { box-sizing: border-box; display: grid; width: 80px; height: 20px; margin: 0; padding: 0; border: 0; outline: 1px solid #64748b; gap: 0; align-content: start; justify-content: start; grid-template-columns: repeat(2, minmax(auto, max-content)); grid-template-rows: 20px; }
+    .text-item { box-sizing: border-box; grid-column: 1 / span 2; width: auto; min-width: auto; margin: 0; padding: 0; border: 0; font: 10px/10px Ahem; white-space: normal; overflow-y: visible; }
+    pre { white-space: pre-wrap; margin: 8px; padding: 8px; background: #e2e8f0; }
+  </style>
+</head>
+<body>
+  <h1>C11.4: two-track minmax(auto, max-content) span × overflow automatic minimum</h1>
+  <main id="scenes"></main>
+  <pre id="observation">waiting</pre>
+  <script>
+    const overflowValues = ["visible", "clip", "hidden", "auto", "scroll"];
+    const scenes = document.querySelector("#scenes");
+    for (const overflow of overflowValues) {
+      const id = `columns-span2-${overflow}`;
+      const card = document.createElement("section");
+      card.className = "scene";
+      card.dataset.scene = id;
+      const label = document.createElement("div");
+      label.className = "label";
+      label.textContent = id;
+      const grid = document.createElement("div");
+      grid.className = "grid";
+      grid.dataset.grid = id;
+      const item = document.createElement("div");
+      item.className = "text-item";
+      item.dataset.item = id;
+      item.style.overflowX = overflow;
+      item.textContent = "XXXXXXXXXX";
+      grid.append(item);
+      card.append(label, grid);
+      scenes.append(card);
+    }
+    async function observe() {
+      await document.fonts.load("10px Ahem");
+      await document.fonts.ready;
+      const frame = element => {
+        const rect = element.getBoundingClientRect();
+        return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+      };
+      const relativeFrame = (element, ancestor) => {
+        const rect = element.getBoundingClientRect();
+        const parent = ancestor.getBoundingClientRect();
+        return { x: rect.x - parent.x, y: rect.y - parent.y, width: rect.width, height: rect.height };
+      };
+      const observation = {
+        userAgent: navigator.userAgent,
+        devicePixelRatio,
+        viewport: { width: innerWidth, height: innerHeight },
+        fontReady: document.fonts.check("10px Ahem"),
+        scenes: [...scenes.querySelectorAll(".scene")].map(card => {
+          const grid = card.querySelector(".grid");
+          const item = grid.firstElementChild;
+          const style = getComputedStyle(grid);
+          const itemStyle = getComputedStyle(item);
+          return {
+            id: card.dataset.scene,
+            overflowX: itemStyle.overflowX,
+            overflowY: itemStyle.overflowY,
+            tracks: style.gridTemplateColumns,
+            root: frame(grid),
+            item: frame(item),
+            itemRelative: relativeFrame(item, grid),
+            itemMinimum: itemStyle.minWidth,
+            scrollSize: { width: item.scrollWidth, height: item.scrollHeight },
+          };
+        }),
+      };
+      document.querySelector("#observation").textContent = JSON.stringify(observation, null, 2);
+      return observation;
+    }
+    window.observationReady = observe();
+  </script>
+</body>
+</html>
