@@ -1,0 +1,43 @@
+{
+  "schema": "spinon.c11-4.fit-content-spanning.precomparison.v1",
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "targetLines": [56, 58],
+    "assertionLines": [114, 116]
+  },
+  "browserObservation": {
+    "engine": "HeadlessChrome 156.0.0.0",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1,
+    "upstreamHarness": "OK",
+    "tests": 13,
+    "passed": 13,
+    "targetRowsCssPx": [40, 40],
+    "targetItemBorderBoxCssPx": [60, 80],
+    "targetRootUsedHeightCssPx": 300,
+    "targetItemMinHeight": "0px",
+    "targetItemOverflow": "visible"
+  },
+  "independentExpected": {
+    "rootContentBoxCssPx": [60, 300],
+    "rowGapCssPx": 0,
+    "trackSizingFunction": "fit-content(40px)",
+    "trackCount": 2,
+    "rowTracksCssPx": [40, 40],
+    "rowTrackSumCssPx": 80,
+    "itemBorderBoxCssPx": [60, 80],
+    "nestedChildCssPx": [60, 200],
+    "childVisibleOverflowPastItemCssPx": 120,
+    "basis": "CSS Grid 2025 CRD §11.2, §11.5 spanning items, §11.8"
+  },
+  "scope": {
+    "spinonRuntimeExecuted": false,
+    "spinonWptPassClaimed": false,
+    "generalCssSupportClaimed": false,
+    "c114Complete": false,
+    "officialCompletionCount": "72/213"
+  }
+}
