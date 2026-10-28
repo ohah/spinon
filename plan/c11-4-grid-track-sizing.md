@@ -243,7 +243,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 | 후보 | 계획상 대응 범위 |
 | --- | --- |
-| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, auto row 및 implicit column |
+| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, auto row 및 implicit column · [definite-height percentage row 계획](./c11-4-fit-content-percentage-argument.md) |
 | `grid-layout-auto-tracks.html` | explicit/positive implicit auto track과 두 item contribution의 한 normalized scene (제한 runtime PR [#688](https://github.com/ohah/spinon/pull/688) 병합 · [집중 계획](./c11-4-grid-layout-auto-tracks-wpt.md) · [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md)) |
 | `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | 같은 `HostDocument`에서 intrinsic inline-size를 바꾼 8단계 재계산 (제한 runtime PR [#683](https://github.com/ohah/spinon/pull/683) 병합) |
 | `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size의 auto-fill/auto-fit 8-scene 행렬 (제한 runtime PR [#691](https://github.com/ohah/spinon/pull/691) 병합 · [집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
