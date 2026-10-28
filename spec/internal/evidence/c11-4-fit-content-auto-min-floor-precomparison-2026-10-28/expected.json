@@ -1,0 +1,86 @@
+{
+  "schema": "spinon.c11_4.fit_content_auto_min_floor.precomparison.v1",
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256_pinned": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "sha256_live_wpt_live_2026_10_28": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "target_dom_lines": [31, 34],
+    "target_assertion_lines": [90, 92],
+    "minimum_zero_control_dom_lines": [36, 38],
+    "minimum_zero_control_assertion_lines": [94, 96]
+  },
+  "upstream_browser_observation": {
+    "tool": "Agent Browser",
+    "engine": "HeadlessChrome 156.0.0.0",
+    "url": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "harness_status": "OK",
+    "tests_found": 13,
+    "tests_passed": 13,
+    "tests_failed": 0,
+    "target_assertion": "A fit-content() row is floored by its item's automatic minimum size, above the argument",
+    "target_grid_template_rows": "10px 100px",
+    "target_root_height": "300px",
+    "target_item_min_height": ["auto", "auto"],
+    "target_nested_child_height": ["10px", "100px"],
+    "interpretation": "Upstream Chrome WPT observation only; not a Spinon WPT result."
+  },
+  "independent_expected_values": {
+    "grid_content_box": [60, 300],
+    "grid_align_content": "normal",
+    "row_track_function": "fit-content(40px)",
+    "rows": [
+      {
+        "item_minimum_contribution_px": 10,
+        "item_max_content_contribution_px": 10,
+        "fit_content_limit_px": 40,
+        "expected_base_and_final_px": 10
+      },
+      {
+        "item_minimum_contribution_px": 100,
+        "item_max_content_contribution_px": 100,
+        "fit_content_limit_px": 40,
+        "expected_base_and_final_px": 100
+      }
+    ],
+    "automatic_minimum_formula": "max(minimum, min(limit, max-content))",
+    "main_expected_rows_px": [10, 100],
+    "main_expected_frames_px": {
+      "root": [0, 0, 60, 300],
+      "items": [[0, 0, 60, 10], [0, 10, 60, 100]],
+      "children": [[0, 0, 60, 10], [0, 10, 60, 100]]
+    },
+    "minimum_zero_control_expected_rows_px": [10, 40],
+    "minimum_zero_control_second_child_overflow_px": 60,
+    "minimum_zero_control_expected_frames_px": {
+      "root": [0, 0, 60, 300],
+      "items": [[0, 0, 60, 10], [0, 10, 60, 40]],
+      "children": [[0, 0, 60, 10], [0, 10, 60, 100]]
+    },
+    "expected_root_used_size_px": [60, 300]
+  },
+  "scope_boundary": {
+    "tested_axis": "block / rows",
+    "root_width_deviation": "The runtime fixture fixes width to 60px for deterministic frames; WPT leaves the block grid width auto. The comparison is limited to row sizing and preserves the 60px explicit column.",
+    "not_proven": [
+      "Spinon WPT harness pass",
+      "general CSS fit-content support",
+      "full C11.4 completion",
+      "Android physical device or hardware GPU behavior",
+      "iOS compositor-after pixels",
+      "glyph rasterization equality"
+    ]
+  },
+  "screenshot": {
+    "path": "chrome156-fit-content-auto-min-floor-wpt.png",
+    "width": 1280,
+    "height": 5266,
+    "sha256": "a7eaaf9fd1d68755272c044c519d277546ec6e070861c0cf663dfa3698c77849"
+  },
+  "browser_lifecycle": {
+    "closed_after_capture": true,
+    "session_active_after_close": false,
+    "session": "spinon-fit-floor-evidence-e00ea27987c0"
+  }
+}
