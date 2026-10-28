@@ -1,0 +1,2233 @@
+{
+  "version": 1,
+  "pr": 768,
+  "implementationMergeSha": "7c004e8f5ed3197d696abcc8f84bcace83b97fe2",
+  "implementationMergedAt": "2026-10-28T18:41:57Z",
+  "generatedAt": "2026-10-28T19:08:19.135Z",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewRoutePrefix": "/spinon/",
+  "backupPass": "pass02",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02",
+  "sourceRenderedRoot": "/tmp/spinon-pr768-rendered.4Vm9PK",
+  "noDeletes": true,
+  "deletionPaths": [],
+  "targetCount": 170,
+  "counts": {
+    "create": 10,
+    "replace": 30,
+    "same": 130
+  },
+  "targets": [
+    {
+      "target": "icon.svg",
+      "sourceLabel": "selected-rspress:icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "prior": {
+        "exists": true,
+        "bytes": 638,
+        "mode": 420,
+        "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/0059-c11-grid-layout.html",
+      "sourceLabel": "selected-rspress:internal/0059-c11-grid-layout.html",
+      "bytes": 272373,
+      "sha256": "49b97f9898023f2c4518e1ab852b672d05c1b0fe62996fec5ed63585cf08e283",
+      "prior": {
+        "exists": true,
+        "bytes": 272373,
+        "mode": 420,
+        "sha256": "6ec32ee7864a5b87d077735f804398fbf42373552c996548e5716e1584a27645"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-spanning-pass.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-spanning-pass.png",
+      "bytes": 84868,
+      "sha256": "6980092d74855923157df711924e9b2c7887f2f482fbc8d5320cbcd4d02a7528",
+      "prior": {
+        "exists": true,
+        "bytes": 84868,
+        "mode": 420,
+        "sha256": "6980092d74855923157df711924e9b2c7887f2f482fbc8d5320cbcd4d02a7528"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-wpt.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc",
+      "prior": {
+        "exists": true,
+        "bytes": 66525,
+        "mode": 420,
+        "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/expected.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/expected.json",
+      "bytes": 1395,
+      "sha256": "86916fd732ad31ab00295ea2a7d1ec38746ac529cffd34ad9b916397af38e32d",
+      "prior": {
+        "exists": true,
+        "bytes": 1395,
+        "mode": 420,
+        "sha256": "86916fd732ad31ab00295ea2a7d1ec38746ac529cffd34ad9b916397af38e32d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html",
+      "bytes": 44062,
+      "sha256": "b7021be8453801ecda1ceb1cdb009e8aaafd5413842011d1ed2f4e68bc3854cb",
+      "prior": {
+        "exists": true,
+        "bytes": 44062,
+        "mode": 420,
+        "sha256": "eeb2d8662f554ad74293816e881b67205311a1fbf08475044d26f8f817d152e9"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md",
+      "bytes": 3449,
+      "sha256": "987bffb577f0bfab91d4501f40cf16851b404edfaa328d6902633577ea1a08aa",
+      "prior": {
+        "exists": true,
+        "bytes": 3449,
+        "mode": 420,
+        "sha256": "987bffb577f0bfab91d4501f40cf16851b404edfaa328d6902633577ea1a08aa"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/fit-content-spanning-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/fit-content-spanning-wpt.png",
+      "bytes": 78064,
+      "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a",
+      "prior": {
+        "exists": true,
+        "bytes": 78064,
+        "mode": 420,
+        "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/install.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "prior": {
+        "exists": true,
+        "bytes": 36,
+        "mode": 420,
+        "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/installed-apk-verification.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "628d527f54eff50a115140182562beef9c2351da49909416a1d25ee587ce056d",
+      "prior": {
+        "exists": true,
+        "bytes": 360,
+        "mode": 420,
+        "sha256": "628d527f54eff50a115140182562beef9c2351da49909416a1d25ee587ce056d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/launch-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/launch-fit-content-spanning-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "prior": {
+        "exists": true,
+        "bytes": 119,
+        "mode": 420,
+        "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/result.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/result.json",
+      "bytes": 1485,
+      "sha256": "db66a0503a582e2f66ac5ded2f06991c639335078441105142976c04f109cdec",
+      "prior": {
+        "exists": true,
+        "bytes": 1485,
+        "mode": 420,
+        "sha256": "db66a0503a582e2f66ac5ded2f06991c639335078441105142976c04f109cdec"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/runtime-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/runtime-fit-content-spanning-wpt.log",
+      "bytes": 29695,
+      "sha256": "14d9cab006ed7c849adb12f245b04d00c66bfa4092d21b8ac045dc1d736ddb17",
+      "prior": {
+        "exists": true,
+        "bytes": 29695,
+        "mode": 420,
+        "sha256": "14d9cab006ed7c849adb12f245b04d00c66bfa4092d21b8ac045dc1d736ddb17"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/simulator.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/simulator.json",
+      "bytes": 3344,
+      "sha256": "b5b2fdbd3c1179430a1311c90cab655e6ccc32435f769f7c5bd7886f78a21f4e",
+      "prior": {
+        "exists": true,
+        "bytes": 3344,
+        "mode": 420,
+        "sha256": "b5b2fdbd3c1179430a1311c90cab655e6ccc32435f769f7c5bd7886f78a21f4e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-build-final.log",
+      "bytes": 4802,
+      "sha256": "28cae1a8034850659c70cca55f3ec5f19c5bc5fcdf6a8b95b7b2aee8f2f06a6c",
+      "prior": {
+        "exists": true,
+        "bytes": 4802,
+        "mode": 420,
+        "sha256": "28cae1a8034850659c70cca55f3ec5f19c5bc5fcdf6a8b95b7b2aee8f2f06a6c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-capture-runner-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-capture-runner-final.log",
+      "bytes": 1638,
+      "sha256": "08cfd2e1414aa7a75a3792568b723bf21e68ea28290b61faaf9ef5027e75e39b",
+      "prior": {
+        "exists": true,
+        "bytes": 1638,
+        "mode": 420,
+        "sha256": "08cfd2e1414aa7a75a3792568b723bf21e68ea28290b61faaf9ef5027e75e39b"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-archive-final.sha256",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-archive-final.sha256",
+      "bytes": 97,
+      "sha256": "1d3eba102f60fb32d0a50aed63c8c1a6a79a0e68a96d8cb7e2d6f97210b36357",
+      "prior": {
+        "exists": true,
+        "bytes": 97,
+        "mode": 420,
+        "sha256": "1d3eba102f60fb32d0a50aed63c8c1a6a79a0e68a96d8cb7e2d6f97210b36357"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-build-final.log",
+      "bytes": 254,
+      "sha256": "9f81d5c361ad20f7263b5b78502e04d8092ff5b628bcfd57df71b4edac59acb4",
+      "prior": {
+        "exists": true,
+        "bytes": 254,
+        "mode": 420,
+        "sha256": "9f81d5c361ad20f7263b5b78502e04d8092ff5b628bcfd57df71b4edac59acb4"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-marker-scan-final.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-marker-scan-final.txt",
+      "bytes": 4506,
+      "sha256": "7ebf1ef8261330736407a797b852fcda30f40432bf10969d2565078896adfdd6",
+      "prior": {
+        "exists": true,
+        "bytes": 4506,
+        "mode": 420,
+        "sha256": "7ebf1ef8261330736407a797b852fcda30f40432bf10969d2565078896adfdd6"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-archive-final.sha256",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-archive-final.sha256",
+      "bytes": 97,
+      "sha256": "08022ba0621d1b71762348d4af4f5b0cedb111847a80a238fa9bdc2d4580c343",
+      "prior": {
+        "exists": true,
+        "bytes": 97,
+        "mode": 420,
+        "sha256": "08022ba0621d1b71762348d4af4f5b0cedb111847a80a238fa9bdc2d4580c343"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-build-final.log",
+      "bytes": 62,
+      "sha256": "6b1c8cbe0bd9cb3b12baa322a9182419af04da4050d3affc7c9798b1b46e30b5",
+      "prior": {
+        "exists": true,
+        "bytes": 62,
+        "mode": 420,
+        "sha256": "6b1c8cbe0bd9cb3b12baa322a9182419af04da4050d3affc7c9798b1b46e30b5"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-marker-scan-final.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-marker-scan-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/result.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/result.txt",
+      "bytes": 262,
+      "sha256": "276d28514f7ce40e30b874e411e767db3dcdb8f789eb88a2c7e9d63e8a5170b3",
+      "prior": {
+        "exists": true,
+        "bytes": 262,
+        "mode": 420,
+        "sha256": "276d28514f7ce40e30b874e411e767db3dcdb8f789eb88a2c7e9d63e8a5170b3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/capture-script-syntax-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/capture-script-syntax-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-clippy-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-clippy-final.log",
+      "bytes": 72,
+      "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710",
+      "prior": {
+        "exists": true,
+        "bytes": 72,
+        "mode": 420,
+        "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-test-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-test-final.log",
+      "bytes": 386,
+      "sha256": "afcf3b9fe538e10b4ac6ee3d1fea177c430c714a23decae6b7bae8b1e9dc632f",
+      "prior": {
+        "exists": true,
+        "bytes": 386,
+        "mode": 420,
+        "sha256": "afcf3b9fe538e10b4ac6ee3d1fea177c430c714a23decae6b7bae8b1e9dc632f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fixture-module-boundary-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fixture-module-boundary-final.log",
+      "bytes": 1832,
+      "sha256": "8064cad85b8481a991fd57e79fe444cd0351dfb02e02ac4a2dc1399634d1c651",
+      "prior": {
+        "exists": true,
+        "bytes": 1832,
+        "mode": 420,
+        "sha256": "8064cad85b8481a991fd57e79fe444cd0351dfb02e02ac4a2dc1399634d1c651"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fmt-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html",
+      "sourceLabel": "selected-rspress:internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html",
+      "bytes": 45988,
+      "sha256": "9738c123b0e22c16d234d4f983bed6118e7e7f062e969b653e286633693b7b34",
+      "prior": {
+        "exists": true,
+        "bytes": 45988,
+        "mode": 420,
+        "sha256": "6cca056c6e98423f53029d1690eaffa7551c70b0b0fcf4fed4a5093d76fba5e5"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.md",
+      "bytes": 4841,
+      "sha256": "eed8c262c7c8d60dcf178c89b5e7960202440ecd9d55d22f11658c703c9b68a0",
+      "prior": {
+        "exists": true,
+        "bytes": 4841,
+        "mode": 420,
+        "sha256": "eed8c262c7c8d60dcf178c89b5e7960202440ecd9d55d22f11658c703c9b68a0"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-build-final.log",
+      "bytes": 92272,
+      "sha256": "c9714cdefad279d215cc5408663bccade25838dfb34c884b38298045d105b0d2",
+      "prior": {
+        "exists": true,
+        "bytes": 92272,
+        "mode": 420,
+        "sha256": "c9714cdefad279d215cc5408663bccade25838dfb34c884b38298045d105b0d2"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-capture-runner-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-capture-runner-final.log",
+      "bytes": 1679,
+      "sha256": "f815589ec7194b8b03e4b1cd152e7cb27570dad66ffc65ea7ad480e5bccfbc85",
+      "prior": {
+        "exists": true,
+        "bytes": 1679,
+        "mode": 420,
+        "sha256": "f815589ec7194b8b03e4b1cd152e7cb27570dad66ffc65ea7ad480e5bccfbc85"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/fit-content-spanning-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/fit-content-spanning-wpt.png",
+      "bytes": 131423,
+      "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb",
+      "prior": {
+        "exists": true,
+        "bytes": 131423,
+        "mode": 420,
+        "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/install.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/launch-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/launch-fit-content-spanning-wpt.log",
+      "bytes": 28,
+      "sha256": "af9c6a8b3b52706ef76c830404f537c8d671156294b11dcfc5826c2464616bac",
+      "prior": {
+        "exists": true,
+        "bytes": 28,
+        "mode": 420,
+        "sha256": "af9c6a8b3b52706ef76c830404f537c8d671156294b11dcfc5826c2464616bac"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/result.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/result.json",
+      "bytes": 1522,
+      "sha256": "f8e9cf94e2ac727be4cf4bee43ba66acb40a4e52225f396e17383cb1d73651fa",
+      "prior": {
+        "exists": true,
+        "bytes": 1522,
+        "mode": 420,
+        "sha256": "f8e9cf94e2ac727be4cf4bee43ba66acb40a4e52225f396e17383cb1d73651fa"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/runtime-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/runtime-fit-content-spanning-wpt.log",
+      "bytes": 21882,
+      "sha256": "893e72edacf459308d73f92e328e492c8c85e4e66ce0a3aeac270960ea2d8a86",
+      "prior": {
+        "exists": true,
+        "bytes": 21882,
+        "mode": 420,
+        "sha256": "893e72edacf459308d73f92e328e492c8c85e4e66ce0a3aeac270960ea2d8a86"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/screenshot-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/screenshot-fit-content-spanning-wpt.log",
+      "bytes": 286,
+      "sha256": "bf9443569e3ec3d640edf444040ee1268f98b4c0f69ed512d957e17f306c16b5",
+      "prior": {
+        "exists": true,
+        "bytes": 286,
+        "mode": 420,
+        "sha256": "bf9443569e3ec3d640edf444040ee1268f98b4c0f69ed512d957e17f306c16b5"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/simulator.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/simulator.json",
+      "bytes": 3296,
+      "sha256": "2fe20fac85e8a91ece1af7c5b9e00058948e394c4a1e5cf2f33eabe71843351e",
+      "prior": {
+        "exists": true,
+        "bytes": 3296,
+        "mode": 420,
+        "sha256": "2fe20fac85e8a91ece1af7c5b9e00058948e394c4a1e5cf2f33eabe71843351e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html",
+      "sourceLabel": "selected-rspress:internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html",
+      "bytes": 51141,
+      "sha256": "66fa4c0ad2d1ffc353997f278b21aba77217da836d5e10803a6aff249872b414",
+      "prior": {
+        "exists": true,
+        "bytes": 51141,
+        "mode": 420,
+        "sha256": "3e476015e288e015c7348353f4c561889f74659f902b3391d396dc8a52e6beed"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.md",
+      "bytes": 8294,
+      "sha256": "40b407adb971faa374f44493e708fe8fe7735929499327f6557ab6658eba3875",
+      "prior": {
+        "exists": true,
+        "bytes": 8294,
+        "mode": 420,
+        "sha256": "40b407adb971faa374f44493e708fe8fe7735929499327f6557ab6658eba3875"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html",
+      "bytes": 48543,
+      "sha256": "b9c54773f04a8a74e98050e092950c4430b4cdd508369355a0f134b29c2c9c8f",
+      "prior": {
+        "exists": true,
+        "bytes": 48543,
+        "mode": 420,
+        "sha256": "47b3f5ef7b5c4ad17f07891fd1ce6f0c4df7e4cd9269c6c048d55927bf7d30c8"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.md",
+      "bytes": 5791,
+      "sha256": "2d05bd8f04bb982ed4e90ac55d0f73330fe213fc2c4e1312100619572d77be8c",
+      "prior": {
+        "exists": true,
+        "bytes": 5791,
+        "mode": 420,
+        "sha256": "2d05bd8f04bb982ed4e90ac55d0f73330fe213fc2c4e1312100619572d77be8c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-clippy-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-clippy-final.log",
+      "bytes": 72,
+      "sha256": "92bec25ad54c650450560360480d5f94d3d8ad203f81a2c724e0c641b330bbfb",
+      "prior": {
+        "exists": true,
+        "bytes": 72,
+        "mode": 420,
+        "sha256": "92bec25ad54c650450560360480d5f94d3d8ad203f81a2c724e0c641b330bbfb"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-test-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-test-final.log",
+      "bytes": 1520,
+      "sha256": "7cd78d2196e86d5ff17036e16a9b4f5baeafbc18f7393baf24afc784602c0bf2",
+      "prior": {
+        "exists": true,
+        "bytes": 1520,
+        "mode": 420,
+        "sha256": "7cd78d2196e86d5ff17036e16a9b4f5baeafbc18f7393baf24afc784602c0bf2"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/agent-browser-verification.json",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/agent-browser-verification.json",
+      "bytes": 1075,
+      "sha256": "f44273f478a5958a359962e547f52fb1908038b3a9f0b80f17e5e7debebec4ba",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html",
+      "sourceLabel": "selected-rspress:internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html",
+      "bytes": 48294,
+      "sha256": "b196fea33a050d18f958c8415a9b6eba76519da4c766061e16a26a5c12682e86",
+      "prior": {
+        "exists": true,
+        "bytes": 47576,
+        "mode": 420,
+        "sha256": "80ad1393d0635ded499d2a8a66f051717c37f09e2d498d5a9465faa4ee84253b"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md",
+      "bytes": 6242,
+      "sha256": "408a5d8d27b1d8c81c616277dac6426bd2d350bcce3f41431c9b8ca76e809f73",
+      "prior": {
+        "exists": true,
+        "bytes": 5603,
+        "mode": 420,
+        "sha256": "3818ea6347c8540b50eec09e8b9fc6c54ef968df9f0525265cb031b1063964d8"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html",
+      "bytes": 43499,
+      "sha256": "70eec320d43cb5144d810b36ce06d5e069e4ed70a98a7e0c6fae612f21610f14",
+      "prior": {
+        "exists": true,
+        "bytes": 42223,
+        "mode": 420,
+        "sha256": "5a186dde3f91bd48737c4248c4a20f55330fc7b43c5178f77285e2b1681bab97"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md",
+      "bytes": 2764,
+      "sha256": "a06fbbcad4a5a3e654d5f6bf95b48d1a6069396d6bd4ef50b7063cc96f7d3f78",
+      "prior": {
+        "exists": true,
+        "bytes": 1648,
+        "mode": 420,
+        "sha256": "81fadd97f940595806665c14b13720a73c22c810f32fda20f169faac073198cf"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs",
+      "bytes": 11534,
+      "sha256": "b8788fa92c44615d021144c6ad3783aa9300b47b3939f8d0a75a9f0acdacf03e",
+      "prior": {
+        "exists": true,
+        "bytes": 11144,
+        "mode": 420,
+        "sha256": "a988fd686903618163288005a633172e131646a894c22d18ed0701417c7d5bee"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs"
+    },
+    {
+      "target": "internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-roadmap-agent-browser.png",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-roadmap-agent-browser.png",
+      "bytes": 112476,
+      "sha256": "f835a01b8948949ad29c80406df6feb58e290d566dd52d20898a3457dbac8d0e",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "plan/c11-4-fit-content-auto-minimum-floor.html",
+      "sourceLabel": "selected-rspress:plan/c11-4-fit-content-auto-minimum-floor.html",
+      "bytes": 50903,
+      "sha256": "c79e4779b006c5f462e8ca0a5adbe2a5386d5b3be7407a592ee0e7be64181d59",
+      "prior": {
+        "exists": true,
+        "bytes": 50903,
+        "mode": 420,
+        "sha256": "014a1c23d57b5c816a6ed4587721848a71c4078a493cd26474ffec4ba17c4590"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/plan/c11-4-fit-content-auto-minimum-floor.html"
+    },
+    {
+      "target": "plan/c11-4-fit-content-auto-neighbor-runtime.html",
+      "sourceLabel": "selected-rspress:plan/c11-4-fit-content-auto-neighbor-runtime.html",
+      "bytes": 51808,
+      "sha256": "6699375a9d620d07048e93725cd7069906649a23afcd4ead47cf8e260f950a75",
+      "prior": {
+        "exists": true,
+        "bytes": 51808,
+        "mode": 420,
+        "sha256": "4ad1fa1ea67844140a93ae780cc75ee453b816a7ca746917a85442da64b3e88b"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/plan/c11-4-fit-content-auto-neighbor-runtime.html"
+    },
+    {
+      "target": "plan/c11-4-fit-content-spanning-wpt.html",
+      "sourceLabel": "selected-rspress:plan/c11-4-fit-content-spanning-wpt.html",
+      "bytes": 55249,
+      "sha256": "caaf3005924ecb3445352c23bf30977842fc04ac302d6cad16ccc2394e540986",
+      "prior": {
+        "exists": true,
+        "bytes": 55249,
+        "mode": 420,
+        "sha256": "2420693617d976c316d528f13f65d93be37dc5f2cc1e96b45337e4a0991266dc"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/plan/c11-4-fit-content-spanning-wpt.html"
+    },
+    {
+      "target": "plan/c11-4-grid-track-sizing.html",
+      "sourceLabel": "selected-rspress:plan/c11-4-grid-track-sizing.html",
+      "bytes": 258024,
+      "sha256": "bdaee3d61ba713210fef9730ee802ed2b09a1f9080e99c08160d107667fffe9a",
+      "prior": {
+        "exists": true,
+        "bytes": 258024,
+        "mode": 420,
+        "sha256": "b085461168b531ab15c55c0f24bbca55a70ec2112030dab6e5e3331247a80dc9"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "target": "roadmap.html",
+      "sourceLabel": "spec/public/roadmap.html",
+      "bytes": 378595,
+      "sha256": "b2e49d3c9142ea26fa112814434bd89beac46df752d9dbc1bdecbc03f29f1994",
+      "prior": {
+        "exists": true,
+        "bytes": 378595,
+        "mode": 420,
+        "sha256": "b2e49d3c9142ea26fa112814434bd89beac46df752d9dbc1bdecbc03f29f1994"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/0059-c11-grid-layout.html",
+      "sourceLabel": "selected-rspress:spec/internal/0059-c11-grid-layout.html",
+      "bytes": 272412,
+      "sha256": "d53b4e79303c9b07c727707a897ba9a0999225984b88594ec471a4f3b39805c4",
+      "prior": {
+        "exists": true,
+        "bytes": 272412,
+        "mode": 420,
+        "sha256": "bac4af4128402cafc6c73afde351ef6a2767a3b2ac9e6a933ad0c7e900578d75"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-spanning-pass.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-spanning-pass.png",
+      "bytes": 84868,
+      "sha256": "6980092d74855923157df711924e9b2c7887f2f482fbc8d5320cbcd4d02a7528",
+      "prior": {
+        "exists": true,
+        "bytes": 84868,
+        "mode": 420,
+        "sha256": "6980092d74855923157df711924e9b2c7887f2f482fbc8d5320cbcd4d02a7528"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/chrome156-wpt.png",
+      "bytes": 66525,
+      "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc",
+      "prior": {
+        "exists": true,
+        "bytes": 66525,
+        "mode": 420,
+        "sha256": "e387f20ad60768800d6d085a966f89e2061bd5ee7eacb6fcc4db5dfae4a6b9bc"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/expected.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/expected.json",
+      "bytes": 1395,
+      "sha256": "86916fd732ad31ab00295ea2a7d1ec38746ac529cffd34ad9b916397af38e32d",
+      "prior": {
+        "exists": true,
+        "bytes": 1395,
+        "mode": 420,
+        "sha256": "86916fd732ad31ab00295ea2a7d1ec38746ac529cffd34ad9b916397af38e32d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html",
+      "bytes": 44072,
+      "sha256": "65fbe0837591f2f1fd9c1ec96c0fc39585c0de27adb0b90485d9307b7def8195",
+      "prior": {
+        "exists": true,
+        "bytes": 44072,
+        "mode": 420,
+        "sha256": "b015d9ec619f15176d68212faaf7fb73f602976544372658ff84ceab81070d60"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.html"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md",
+      "bytes": 3449,
+      "sha256": "987bffb577f0bfab91d4501f40cf16851b404edfaa328d6902633577ea1a08aa",
+      "prior": {
+        "exists": true,
+        "bytes": 3449,
+        "mode": 420,
+        "sha256": "987bffb577f0bfab91d4501f40cf16851b404edfaa328d6902633577ea1a08aa"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/fit-content-spanning-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/fit-content-spanning-wpt.png",
+      "bytes": 78064,
+      "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a",
+      "prior": {
+        "exists": true,
+        "bytes": 78064,
+        "mode": 420,
+        "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/install.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "prior": {
+        "exists": true,
+        "bytes": 36,
+        "mode": 420,
+        "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/installed-apk-verification.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "628d527f54eff50a115140182562beef9c2351da49909416a1d25ee587ce056d",
+      "prior": {
+        "exists": true,
+        "bytes": 360,
+        "mode": 420,
+        "sha256": "628d527f54eff50a115140182562beef9c2351da49909416a1d25ee587ce056d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/launch-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/launch-fit-content-spanning-wpt.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "prior": {
+        "exists": true,
+        "bytes": 119,
+        "mode": 420,
+        "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/result.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/result.json",
+      "bytes": 1485,
+      "sha256": "db66a0503a582e2f66ac5ded2f06991c639335078441105142976c04f109cdec",
+      "prior": {
+        "exists": true,
+        "bytes": 1485,
+        "mode": 420,
+        "sha256": "db66a0503a582e2f66ac5ded2f06991c639335078441105142976c04f109cdec"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/runtime-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/runtime-fit-content-spanning-wpt.log",
+      "bytes": 29695,
+      "sha256": "14d9cab006ed7c849adb12f245b04d00c66bfa4092d21b8ac045dc1d736ddb17",
+      "prior": {
+        "exists": true,
+        "bytes": 29695,
+        "mode": 420,
+        "sha256": "14d9cab006ed7c849adb12f245b04d00c66bfa4092d21b8ac045dc1d736ddb17"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/simulator.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-avd-c114-fit-content-spanning-android-avd-20261028T183501979Z-69e492b8/simulator.json",
+      "bytes": 3344,
+      "sha256": "b5b2fdbd3c1179430a1311c90cab655e6ccc32435f769f7c5bd7886f78a21f4e",
+      "prior": {
+        "exists": true,
+        "bytes": 3344,
+        "mode": 420,
+        "sha256": "b5b2fdbd3c1179430a1311c90cab655e6ccc32435f769f7c5bd7886f78a21f4e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-build-final.log",
+      "bytes": 4802,
+      "sha256": "28cae1a8034850659c70cca55f3ec5f19c5bc5fcdf6a8b95b7b2aee8f2f06a6c",
+      "prior": {
+        "exists": true,
+        "bytes": 4802,
+        "mode": 420,
+        "sha256": "28cae1a8034850659c70cca55f3ec5f19c5bc5fcdf6a8b95b7b2aee8f2f06a6c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-capture-runner-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/android-capture-runner-final.log",
+      "bytes": 1638,
+      "sha256": "08cfd2e1414aa7a75a3792568b723bf21e68ea28290b61faaf9ef5027e75e39b",
+      "prior": {
+        "exists": true,
+        "bytes": 1638,
+        "mode": 420,
+        "sha256": "08cfd2e1414aa7a75a3792568b723bf21e68ea28290b61faaf9ef5027e75e39b"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-archive-final.sha256",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-archive-final.sha256",
+      "bytes": 97,
+      "sha256": "1d3eba102f60fb32d0a50aed63c8c1a6a79a0e68a96d8cb7e2d6f97210b36357",
+      "prior": {
+        "exists": true,
+        "bytes": 97,
+        "mode": 420,
+        "sha256": "1d3eba102f60fb32d0a50aed63c8c1a6a79a0e68a96d8cb7e2d6f97210b36357"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-build-final.log",
+      "bytes": 254,
+      "sha256": "9f81d5c361ad20f7263b5b78502e04d8092ff5b628bcfd57df71b4edac59acb4",
+      "prior": {
+        "exists": true,
+        "bytes": 254,
+        "mode": 420,
+        "sha256": "9f81d5c361ad20f7263b5b78502e04d8092ff5b628bcfd57df71b4edac59acb4"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-marker-scan-final.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/fixture-test-marker-scan-final.txt",
+      "bytes": 4506,
+      "sha256": "7ebf1ef8261330736407a797b852fcda30f40432bf10969d2565078896adfdd6",
+      "prior": {
+        "exists": true,
+        "bytes": 4506,
+        "mode": 420,
+        "sha256": "7ebf1ef8261330736407a797b852fcda30f40432bf10969d2565078896adfdd6"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-archive-final.sha256",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-archive-final.sha256",
+      "bytes": 97,
+      "sha256": "08022ba0621d1b71762348d4af4f5b0cedb111847a80a238fa9bdc2d4580c343",
+      "prior": {
+        "exists": true,
+        "bytes": 97,
+        "mode": 420,
+        "sha256": "08022ba0621d1b71762348d4af4f5b0cedb111847a80a238fa9bdc2d4580c343"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-build-final.log",
+      "bytes": 62,
+      "sha256": "6b1c8cbe0bd9cb3b12baa322a9182419af04da4050d3affc7c9798b1b46e30b5",
+      "prior": {
+        "exists": true,
+        "bytes": 62,
+        "mode": 420,
+        "sha256": "6b1c8cbe0bd9cb3b12baa322a9182419af04da4050d3affc7c9798b1b46e30b5"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-marker-scan-final.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/product-marker-scan-final.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/result.txt",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/archive-boundary/result.txt",
+      "bytes": 262,
+      "sha256": "276d28514f7ce40e30b874e411e767db3dcdb8f789eb88a2c7e9d63e8a5170b3",
+      "prior": {
+        "exists": true,
+        "bytes": 262,
+        "mode": 420,
+        "sha256": "276d28514f7ce40e30b874e411e767db3dcdb8f789eb88a2c7e9d63e8a5170b3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/capture-script-syntax-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/capture-script-syntax-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-clippy-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-clippy-final.log",
+      "bytes": 72,
+      "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710",
+      "prior": {
+        "exists": true,
+        "bytes": 72,
+        "mode": 420,
+        "sha256": "f0788aa36d1c86b6ccdfb7f4042a5574102d82061c046422a2d42e008a1e4710"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-test-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ffi-test-final.log",
+      "bytes": 386,
+      "sha256": "afcf3b9fe538e10b4ac6ee3d1fea177c430c714a23decae6b7bae8b1e9dc632f",
+      "prior": {
+        "exists": true,
+        "bytes": 386,
+        "mode": 420,
+        "sha256": "afcf3b9fe538e10b4ac6ee3d1fea177c430c714a23decae6b7bae8b1e9dc632f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fixture-module-boundary-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fixture-module-boundary-final.log",
+      "bytes": 1832,
+      "sha256": "8064cad85b8481a991fd57e79fe444cd0351dfb02e02ac4a2dc1399634d1c651",
+      "prior": {
+        "exists": true,
+        "bytes": 1832,
+        "mode": 420,
+        "sha256": "8064cad85b8481a991fd57e79fe444cd0351dfb02e02ac4a2dc1399634d1c651"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fmt-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/fmt-final.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html",
+      "bytes": 45998,
+      "sha256": "249f1d941fb9f8ab61cc8feb54b82e0fd8d104b1bf561ad01eaed88fa02b02d2",
+      "prior": {
+        "exists": true,
+        "bytes": 45998,
+        "mode": 420,
+        "sha256": "5af61e90eb1dd6069aa1fb21eee7a0ff775e9918a6d738fae5538e0603dd6fa2"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.html"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.md",
+      "bytes": 4841,
+      "sha256": "eed8c262c7c8d60dcf178c89b5e7960202440ecd9d55d22f11658c703c9b68a0",
+      "prior": {
+        "exists": true,
+        "bytes": 4841,
+        "mode": 420,
+        "sha256": "eed8c262c7c8d60dcf178c89b5e7960202440ecd9d55d22f11658c703c9b68a0"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-build-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-build-final.log",
+      "bytes": 92272,
+      "sha256": "c9714cdefad279d215cc5408663bccade25838dfb34c884b38298045d105b0d2",
+      "prior": {
+        "exists": true,
+        "bytes": 92272,
+        "mode": 420,
+        "sha256": "c9714cdefad279d215cc5408663bccade25838dfb34c884b38298045d105b0d2"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-capture-runner-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-capture-runner-final.log",
+      "bytes": 1679,
+      "sha256": "f815589ec7194b8b03e4b1cd152e7cb27570dad66ffc65ea7ad480e5bccfbc85",
+      "prior": {
+        "exists": true,
+        "bytes": 1679,
+        "mode": 420,
+        "sha256": "f815589ec7194b8b03e4b1cd152e7cb27570dad66ffc65ea7ad480e5bccfbc85"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/fit-content-spanning-wpt.png",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/fit-content-spanning-wpt.png",
+      "bytes": 131423,
+      "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb",
+      "prior": {
+        "exists": true,
+        "bytes": 131423,
+        "mode": 420,
+        "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/install.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "prior": {
+        "exists": true,
+        "bytes": 0,
+        "mode": 420,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/launch-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/launch-fit-content-spanning-wpt.log",
+      "bytes": 28,
+      "sha256": "af9c6a8b3b52706ef76c830404f537c8d671156294b11dcfc5826c2464616bac",
+      "prior": {
+        "exists": true,
+        "bytes": 28,
+        "mode": 420,
+        "sha256": "af9c6a8b3b52706ef76c830404f537c8d671156294b11dcfc5826c2464616bac"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/result.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/result.json",
+      "bytes": 1522,
+      "sha256": "f8e9cf94e2ac727be4cf4bee43ba66acb40a4e52225f396e17383cb1d73651fa",
+      "prior": {
+        "exists": true,
+        "bytes": 1522,
+        "mode": 420,
+        "sha256": "f8e9cf94e2ac727be4cf4bee43ba66acb40a4e52225f396e17383cb1d73651fa"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/runtime-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/runtime-fit-content-spanning-wpt.log",
+      "bytes": 21882,
+      "sha256": "893e72edacf459308d73f92e328e492c8c85e4e66ce0a3aeac270960ea2d8a86",
+      "prior": {
+        "exists": true,
+        "bytes": 21882,
+        "mode": 420,
+        "sha256": "893e72edacf459308d73f92e328e492c8c85e4e66ce0a3aeac270960ea2d8a86"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/screenshot-fit-content-spanning-wpt.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/screenshot-fit-content-spanning-wpt.log",
+      "bytes": 286,
+      "sha256": "bf9443569e3ec3d640edf444040ee1268f98b4c0f69ed512d957e17f306c16b5",
+      "prior": {
+        "exists": true,
+        "bytes": 286,
+        "mode": 420,
+        "sha256": "bf9443569e3ec3d640edf444040ee1268f98b4c0f69ed512d957e17f306c16b5"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/simulator.json",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/ios-simulator-c114-fit-content-spanning-ios-simulator-20261028T183506443Z-c6b59126/simulator.json",
+      "bytes": 3296,
+      "sha256": "2fe20fac85e8a91ece1af7c5b9e00058948e394c4a1e5cf2f33eabe71843351e",
+      "prior": {
+        "exists": true,
+        "bytes": 3296,
+        "mode": 420,
+        "sha256": "2fe20fac85e8a91ece1af7c5b9e00058948e394c4a1e5cf2f33eabe71843351e"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html",
+      "bytes": 51151,
+      "sha256": "44a98321c34ddc2e36414bbc7f49affd808d078de26bde41809fbfc15ab9d4e5",
+      "prior": {
+        "exists": true,
+        "bytes": 51151,
+        "mode": 420,
+        "sha256": "b70ed7848b112ee22142183227a366acd44b6c08d3d29bbf3e38da3237fcfed0"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.html"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/pr-diff-review-30.md",
+      "bytes": 8294,
+      "sha256": "40b407adb971faa374f44493e708fe8fe7735929499327f6557ab6658eba3875",
+      "prior": {
+        "exists": true,
+        "bytes": 8294,
+        "mode": 420,
+        "sha256": "40b407adb971faa374f44493e708fe8fe7735929499327f6557ab6658eba3875"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html",
+      "bytes": 48553,
+      "sha256": "5ccfad846c1c664af1150ac2a268b36c70f17446a121237d88c974f902a50160",
+      "prior": {
+        "exists": true,
+        "bytes": 48553,
+        "mode": 420,
+        "sha256": "ee98779b899f70b16955cc4c38c9b2f354f7a1c59c5d5d96d8a13c953ccaa9ea"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.html"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.md",
+      "bytes": 5791,
+      "sha256": "2d05bd8f04bb982ed4e90ac55d0f73330fe213fc2c4e1312100619572d77be8c",
+      "prior": {
+        "exists": true,
+        "bytes": 5791,
+        "mode": 420,
+        "sha256": "2d05bd8f04bb982ed4e90ac55d0f73330fe213fc2c4e1312100619572d77be8c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-clippy-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-clippy-final.log",
+      "bytes": 72,
+      "sha256": "92bec25ad54c650450560360480d5f94d3d8ad203f81a2c724e0c641b330bbfb",
+      "prior": {
+        "exists": true,
+        "bytes": 72,
+        "mode": 420,
+        "sha256": "92bec25ad54c650450560360480d5f94d3d8ad203f81a2c724e0c641b330bbfb"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-test-final.log",
+      "sourceLabel": "spec/internal/evidence/c11-4-fit-content-spanning-simulators-2026-10-29/runtime-test-final.log",
+      "bytes": 1520,
+      "sha256": "7cd78d2196e86d5ff17036e16a9b4f5baeafbc18f7393baf24afc784602c0bf2",
+      "prior": {
+        "exists": true,
+        "bytes": 1520,
+        "mode": 420,
+        "sha256": "7cd78d2196e86d5ff17036e16a9b4f5baeafbc18f7393baf24afc784602c0bf2"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/agent-browser-verification.json",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/agent-browser-verification.json",
+      "bytes": 1075,
+      "sha256": "f44273f478a5958a359962e547f52fb1908038b3a9f0b80f17e5e7debebec4ba",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html",
+      "bytes": 48304,
+      "sha256": "0ba7ed7b1ff259326015a5e14663ac47cc2780905399df5fc62408f847f3e4e8",
+      "prior": {
+        "exists": true,
+        "bytes": 47586,
+        "mode": 420,
+        "sha256": "c99a0b451d35e22c75724d6f3887b6dadaf5ada4ef04c33863fb85e55466df70"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.html"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md",
+      "bytes": 6242,
+      "sha256": "408a5d8d27b1d8c81c616277dac6426bd2d350bcce3f41431c9b8ca76e809f73",
+      "prior": {
+        "exists": true,
+        "bytes": 5603,
+        "mode": 420,
+        "sha256": "3818ea6347c8540b50eec09e8b9fc6c54ef968df9f0525265cb031b1063964d8"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/docs-sync-pr-diff-review-30.md"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html",
+      "sourceLabel": "selected-rspress:spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html",
+      "bytes": 43509,
+      "sha256": "1f5986bc5b5e3ad3894f2680d90a46c5b3b276736ec2ab717f3c8f6b8d50ac0d",
+      "prior": {
+        "exists": true,
+        "bytes": 42233,
+        "mode": 420,
+        "sha256": "535fd16d5faf67b92c8e6695ee47187680c719ddde5da663d28eab39a0a66689"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.html"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md",
+      "bytes": 2764,
+      "sha256": "a06fbbcad4a5a3e654d5f6bf95b48d1a6069396d6bd4ef50b7063cc96f7d3f78",
+      "prior": {
+        "exists": true,
+        "bytes": 1648,
+        "mode": 420,
+        "sha256": "81fadd97f940595806665c14b13720a73c22c810f32fda20f169faac073198cf"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/README.md"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs",
+      "bytes": 11534,
+      "sha256": "b8788fa92c44615d021144c6ad3783aa9300b47b3939f8d0a75a9f0acdacf03e",
+      "prior": {
+        "exists": true,
+        "bytes": 11144,
+        "mode": 420,
+        "sha256": "a988fd686903618163288005a633172e131646a894c22d18ed0701417c7d5bee"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/sync-preview.mjs"
+    },
+    {
+      "target": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-roadmap-agent-browser.png",
+      "sourceLabel": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-roadmap-agent-browser.png",
+      "bytes": 112476,
+      "sha256": "f835a01b8948949ad29c80406df6feb58e290d566dd52d20898a3457dbac8d0e",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "spec/plan/c11-4-fit-content-auto-minimum-floor.html",
+      "sourceLabel": "selected-rspress:spec/plan/c11-4-fit-content-auto-minimum-floor.html",
+      "bytes": 50913,
+      "sha256": "980179dcc9a86edc99ba4f1faad1d9aa5dd771aad2e195c8dc267d507cb5cb66",
+      "prior": {
+        "exists": true,
+        "bytes": 50913,
+        "mode": 420,
+        "sha256": "89f636b005c43e05c1c9a7d41cc5b0f7e39c84bfee872cc14f59fee03b037815"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/plan/c11-4-fit-content-auto-minimum-floor.html"
+    },
+    {
+      "target": "spec/plan/c11-4-fit-content-auto-neighbor-runtime.html",
+      "sourceLabel": "selected-rspress:spec/plan/c11-4-fit-content-auto-neighbor-runtime.html",
+      "bytes": 51818,
+      "sha256": "f3de3c4508cabcf5138beaf359d6e64093051047ffed1d133f81cbcf1bd6264c",
+      "prior": {
+        "exists": true,
+        "bytes": 51818,
+        "mode": 420,
+        "sha256": "800d7201a1085cd0471d53962e389952ba335085c7ffe8358f628a25658b3f13"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/plan/c11-4-fit-content-auto-neighbor-runtime.html"
+    },
+    {
+      "target": "spec/plan/c11-4-fit-content-spanning-wpt.html",
+      "sourceLabel": "selected-rspress:spec/plan/c11-4-fit-content-spanning-wpt.html",
+      "bytes": 55259,
+      "sha256": "e954960b00661125ad280ffd6778b1959c2db0c6a17ab3e6f75fb51a3e3429af",
+      "prior": {
+        "exists": true,
+        "bytes": 55259,
+        "mode": 420,
+        "sha256": "d09a57fea0ed5c4bc23f056472e38044b0bdf191a6eb7c0c1cea6e21ecf988d8"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/plan/c11-4-fit-content-spanning-wpt.html"
+    },
+    {
+      "target": "spec/plan/c11-4-grid-track-sizing.html",
+      "sourceLabel": "selected-rspress:spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 258007,
+      "sha256": "4a05434290029a9e6b682529cfe3196f3e321e6c653e562f181a2fa639281156",
+      "prior": {
+        "exists": true,
+        "bytes": 258007,
+        "mode": 420,
+        "sha256": "2b098710a2e649c9ad704c728121616ea72feadf528c30c2593984418eadbbac"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "target": "spec/STATUS.html",
+      "sourceLabel": "selected-rspress:spec/STATUS.html",
+      "bytes": 635612,
+      "sha256": "4c447db6ecf2549621ce7bc99a9cf3032f871c92070e4da34df031c55a57d1b4",
+      "prior": {
+        "exists": true,
+        "bytes": 635612,
+        "mode": 420,
+        "sha256": "8a4c957439c48e88fa702d0abfe1168393904374a491b42e307173da31f8271f"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/spec/STATUS.html"
+    },
+    {
+      "target": "static/css/styles.8d918fd78e.css",
+      "sourceLabel": "selected-rspress:static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "prior": {
+        "exists": true,
+        "bytes": 73952,
+        "mode": 420,
+        "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/image/fit-content-spanning-wpt.6ae79331bd.png",
+      "sourceLabel": "selected-rspress:static/image/fit-content-spanning-wpt.6ae79331bd.png",
+      "bytes": 78064,
+      "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a",
+      "prior": {
+        "exists": true,
+        "bytes": 78064,
+        "mode": 420,
+        "sha256": "89ad8429c36af759dcb5bc2502731377219ecc1cabd24d334f331915bee4a97a"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/image/fit-content-spanning-wpt.b7e7ee02c9.png",
+      "sourceLabel": "selected-rspress:static/image/fit-content-spanning-wpt.b7e7ee02c9.png",
+      "bytes": 131423,
+      "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb",
+      "prior": {
+        "exists": true,
+        "bytes": 131423,
+        "mode": 420,
+        "sha256": "bbccceddaa3026a5b2e20f60b51ab2435601b9e37a4c16ef65efd0a71dcf75bb"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/a.877e354479.js",
+      "sourceLabel": "selected-rspress:static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "prior": {
+        "exists": true,
+        "bytes": 217085,
+        "mode": 420,
+        "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/a.877e354479.js.LICENSE.txt",
+      "sourceLabel": "selected-rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "prior": {
+        "exists": true,
+        "bytes": 384,
+        "mode": 420,
+        "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/i.25208e7c92.js",
+      "sourceLabel": "selected-rspress:static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "prior": {
+        "exists": true,
+        "bytes": 100,
+        "mode": 420,
+        "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-04cbcabea10a.9ca12e1c52.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-04cbcabea10a.9ca12e1c52.js",
+      "bytes": 262469,
+      "sha256": "3f9c4c2c58e113da9eb197c26b4421e5a3870acc5022a654f3500ee59acba052",
+      "prior": {
+        "exists": true,
+        "bytes": 262469,
+        "mode": 420,
+        "sha256": "3f9c4c2c58e113da9eb197c26b4421e5a3870acc5022a654f3500ee59acba052"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-086bfa124422.213108ce6f.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-086bfa124422.213108ce6f.js",
+      "bytes": 15913,
+      "sha256": "f71b35e5c86c6d7a01b6d6b70e2825eec270443e256debbe901a2ffedfbbb6ae",
+      "prior": {
+        "exists": true,
+        "bytes": 15913,
+        "mode": 420,
+        "sha256": "f71b35e5c86c6d7a01b6d6b70e2825eec270443e256debbe901a2ffedfbbb6ae"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-112e8e952601.74dc0c93ae.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-112e8e952601.74dc0c93ae.js",
+      "bytes": 10482,
+      "sha256": "b3f6220f9bcabe1876096851ff8662358f80e89dd71c1f16a4d36ff2db87270a",
+      "prior": {
+        "exists": true,
+        "bytes": 10482,
+        "mode": 420,
+        "sha256": "b3f6220f9bcabe1876096851ff8662358f80e89dd71c1f16a4d36ff2db87270a"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-15c74b89cfc6.10e20fc3c2.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-15c74b89cfc6.10e20fc3c2.js",
+      "bytes": 6888,
+      "sha256": "42682dc73d3c52589b4254f4be6a3e82aed899244edde5f4eba2c2f68478d45d",
+      "prior": {
+        "exists": true,
+        "bytes": 6888,
+        "mode": 420,
+        "sha256": "42682dc73d3c52589b4254f4be6a3e82aed899244edde5f4eba2c2f68478d45d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-29b22e18a9bc.1f4f690975.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-29b22e18a9bc.1f4f690975.js",
+      "bytes": 13619,
+      "sha256": "347440bafefd9d3eb8a157fc745cf222d4c5b1ed91ab431e7b194c539cae35c0",
+      "prior": {
+        "exists": true,
+        "bytes": 13619,
+        "mode": 420,
+        "sha256": "347440bafefd9d3eb8a157fc745cf222d4c5b1ed91ab431e7b194c539cae35c0"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-2a1e01c11bc5.42b8e1a6a8.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-2a1e01c11bc5.42b8e1a6a8.js",
+      "bytes": 15012,
+      "sha256": "ec54b61ff475cf3ff2710209dbba4332c7bcc068205492a1e24260557113d81c",
+      "prior": {
+        "exists": true,
+        "bytes": 15012,
+        "mode": 420,
+        "sha256": "ec54b61ff475cf3ff2710209dbba4332c7bcc068205492a1e24260557113d81c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-33e0e932439a.9e350f5dea.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-33e0e932439a.9e350f5dea.js",
+      "bytes": 9104,
+      "sha256": "03726f0cbe7f291f728651f22914df6f629090ea720bc13209bf4519793e5c39",
+      "prior": {
+        "exists": true,
+        "bytes": 9104,
+        "mode": 420,
+        "sha256": "03726f0cbe7f291f728651f22914df6f629090ea720bc13209bf4519793e5c39"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-3b980a585cd8.ed0cdf4108.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-3b980a585cd8.ed0cdf4108.js",
+      "bytes": 13624,
+      "sha256": "ccc73936dbfbb1a5d290c84a23f2a3a5f4c41930e78140fcd846ef72f5c88cb3",
+      "prior": {
+        "exists": true,
+        "bytes": 13624,
+        "mode": 420,
+        "sha256": "ccc73936dbfbb1a5d290c84a23f2a3a5f4c41930e78140fcd846ef72f5c88cb3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-4dce8be889ca.665f3f9392.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-4dce8be889ca.665f3f9392.js",
+      "bytes": 10508,
+      "sha256": "3327450ab80b654fc34ecf800f3f2f1b350c0e7767b6f8fa5dbcb18dfe8ca7da",
+      "prior": {
+        "exists": true,
+        "bytes": 10508,
+        "mode": 420,
+        "sha256": "3327450ab80b654fc34ecf800f3f2f1b350c0e7767b6f8fa5dbcb18dfe8ca7da"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-5078ba6f2c1e.0c21029e68.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-5078ba6f2c1e.0c21029e68.js",
+      "bytes": 9724,
+      "sha256": "6c4adf3fc814239e8a8a86fcc98715bbd840aa033b5c89e9251e782a542f4e43",
+      "prior": {
+        "exists": true,
+        "bytes": 9724,
+        "mode": 420,
+        "sha256": "6c4adf3fc814239e8a8a86fcc98715bbd840aa033b5c89e9251e782a542f4e43"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-52d008e30d94.e0ff730951.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-52d008e30d94.e0ff730951.js",
+      "bytes": 12222,
+      "sha256": "86ea288e8fffdb42c03f23e46a6ab0d64be807cf88b9dcc89ac3cdae756fbcb3",
+      "prior": {
+        "exists": true,
+        "bytes": 12222,
+        "mode": 420,
+        "sha256": "86ea288e8fffdb42c03f23e46a6ab0d64be807cf88b9dcc89ac3cdae756fbcb3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-620384eedc52.47e524b61b.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-620384eedc52.47e524b61b.js",
+      "bytes": 15922,
+      "sha256": "53b8574c52ce679576d2793773f27268e6a286ac3ccc207a24a94f5875d772f0",
+      "prior": {
+        "exists": true,
+        "bytes": 15922,
+        "mode": 420,
+        "sha256": "53b8574c52ce679576d2793773f27268e6a286ac3ccc207a24a94f5875d772f0"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-67f617b96abd.f98deccaed.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-67f617b96abd.f98deccaed.js",
+      "bytes": 19301,
+      "sha256": "82a13656904249ef4e3d1d7dd462ebaf728dc68ae0e9f28294ad8323e6e3e3ee",
+      "prior": {
+        "exists": true,
+        "bytes": 19301,
+        "mode": 420,
+        "sha256": "82a13656904249ef4e3d1d7dd462ebaf728dc68ae0e9f28294ad8323e6e3e3ee"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-6961a79c42be.d3904f0991.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-6961a79c42be.d3904f0991.js",
+      "bytes": 7016,
+      "sha256": "a423b4bfc225f55ef34feb5672e3da1ab0c02292020a3d064652517bd1715fe7",
+      "prior": {
+        "exists": true,
+        "bytes": 7016,
+        "mode": 420,
+        "sha256": "a423b4bfc225f55ef34feb5672e3da1ab0c02292020a3d064652517bd1715fe7"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-69fb44d3ca61.aba93bc114.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-69fb44d3ca61.aba93bc114.js",
+      "bytes": 5456,
+      "sha256": "0340e47a98b6a1c37446aaf5b9a6784dd6968598a6dffd6bcb11d0bd84f71a37",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "static/js/async/route-6c33a3943990.1e9a036b5a.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-6c33a3943990.1e9a036b5a.js",
+      "bytes": 663826,
+      "sha256": "5bce012c96dbe3e4c9d48f908e81570b6c08f999a831265e6d44935a6ba179cf",
+      "prior": {
+        "exists": true,
+        "bytes": 663826,
+        "mode": 420,
+        "sha256": "5bce012c96dbe3e4c9d48f908e81570b6c08f999a831265e6d44935a6ba179cf"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-6ca9b52dbc3e.270a5c3ba0.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-6ca9b52dbc3e.270a5c3ba0.js",
+      "bytes": 7026,
+      "sha256": "ad94edbe4ca0aee3c17292023b902adb06813a2f54dcd3fc54ecff2923e95872",
+      "prior": {
+        "exists": true,
+        "bytes": 7026,
+        "mode": 420,
+        "sha256": "ad94edbe4ca0aee3c17292023b902adb06813a2f54dcd3fc54ecff2923e95872"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-6cf1f2dc0bff.fe7ebc4596.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-6cf1f2dc0bff.fe7ebc4596.js",
+      "bytes": 10994,
+      "sha256": "778a16de68d774223e02ea4b722d385287c382570a9f22fbf75790d5f88081d1",
+      "prior": {
+        "exists": true,
+        "bytes": 10994,
+        "mode": 420,
+        "sha256": "778a16de68d774223e02ea4b722d385287c382570a9f22fbf75790d5f88081d1"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-739571cd2ae5.c6c0211c7c.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-739571cd2ae5.c6c0211c7c.js",
+      "bytes": 272032,
+      "sha256": "4cae42bee6dfa79643375006ad2bdc9b8d672a29c98d87c42480707182d4ad66",
+      "prior": {
+        "exists": true,
+        "bytes": 272032,
+        "mode": 420,
+        "sha256": "4cae42bee6dfa79643375006ad2bdc9b8d672a29c98d87c42480707182d4ad66"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-769d23063ad1.8fb3ce8eb7.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-769d23063ad1.8fb3ce8eb7.js",
+      "bytes": 6896,
+      "sha256": "70b5bfae3fec3356fd724504f02deb20a154bf01a109114f0302f779d29516c8",
+      "prior": {
+        "exists": true,
+        "bytes": 6896,
+        "mode": 420,
+        "sha256": "70b5bfae3fec3356fd724504f02deb20a154bf01a109114f0302f779d29516c8"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-7ce2535ac56d.c6cd3eb0dc.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-7ce2535ac56d.c6cd3eb0dc.js",
+      "bytes": 663834,
+      "sha256": "575f0d2d099df2a9187dcb9a2f4385768d6d0b1a7b77635d7a4272569d30f750",
+      "prior": {
+        "exists": true,
+        "bytes": 663834,
+        "mode": 420,
+        "sha256": "575f0d2d099df2a9187dcb9a2f4385768d6d0b1a7b77635d7a4272569d30f750"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-7e56d8338719.f73610e738.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-7e56d8338719.f73610e738.js",
+      "bytes": 16535,
+      "sha256": "ff490ebab6ff017ac9b1b1b63356c24854496feb167b6081761392e35c61bcb7",
+      "prior": {
+        "exists": true,
+        "bytes": 16535,
+        "mode": 420,
+        "sha256": "ff490ebab6ff017ac9b1b1b63356c24854496feb167b6081761392e35c61bcb7"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-8ca6c782941e.9cd6f701ea.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-8ca6c782941e.9cd6f701ea.js",
+      "bytes": 11005,
+      "sha256": "6b5d07c2c89c3653b54adb51f83b07021f4a7d31075457a271844db8414517dd",
+      "prior": {
+        "exists": true,
+        "bytes": 11005,
+        "mode": 420,
+        "sha256": "6b5d07c2c89c3653b54adb51f83b07021f4a7d31075457a271844db8414517dd"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-8d2c4751007c.b244e9b451.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-8d2c4751007c.b244e9b451.js",
+      "bytes": 9333,
+      "sha256": "0309f4d14bca76c04121d0cdd8bde267a8370d5c41ca4cc241dd105ac177f7e3",
+      "prior": {
+        "exists": true,
+        "bytes": 9333,
+        "mode": 420,
+        "sha256": "0309f4d14bca76c04121d0cdd8bde267a8370d5c41ca4cc241dd105ac177f7e3"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-915569a0f08c.fccf05eeda.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-915569a0f08c.fccf05eeda.js",
+      "bytes": 9327,
+      "sha256": "d2f2ea3e12a35792359fc64a83402334aeef37c3ff297f3ec2e0c4a49b1063ea",
+      "prior": {
+        "exists": true,
+        "bytes": 9327,
+        "mode": 420,
+        "sha256": "d2f2ea3e12a35792359fc64a83402334aeef37c3ff297f3ec2e0c4a49b1063ea"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-915a32a6c0e7.c9c99c4e32.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-915a32a6c0e7.c9c99c4e32.js",
+      "bytes": 15274,
+      "sha256": "64d3445eab315fc51be9f5a21c8767e2a66ece2dc7238e66e77416752cd60a4c",
+      "prior": {
+        "exists": true,
+        "bytes": 15274,
+        "mode": 420,
+        "sha256": "64d3445eab315fc51be9f5a21c8767e2a66ece2dc7238e66e77416752cd60a4c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-93d7b46bf35f.376fcb271c.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-93d7b46bf35f.376fcb271c.js",
+      "bytes": 15271,
+      "sha256": "7eef145442a800bb1b3d6394e996b94abdf510625c002890b74aebc6087af767",
+      "prior": {
+        "exists": true,
+        "bytes": 15271,
+        "mode": 420,
+        "sha256": "7eef145442a800bb1b3d6394e996b94abdf510625c002890b74aebc6087af767"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-a48746cae70c.2035500b81.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-a48746cae70c.2035500b81.js",
+      "bytes": 975,
+      "sha256": "1b33bd07801bdb6b621f9b22e27533a00fc3a8d2c6a0e64987198ce37bafee7d",
+      "prior": {
+        "exists": true,
+        "bytes": 975,
+        "mode": 420,
+        "sha256": "1b33bd07801bdb6b621f9b22e27533a00fc3a8d2c6a0e64987198ce37bafee7d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-a9fdc0b17da4.0e412d612e.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-a9fdc0b17da4.0e412d612e.js",
+      "bytes": 10490,
+      "sha256": "b0049d860ee088a1634d36bfbf1ffa1815f2a30fcb6486cb3afc5c3941e9d9ea",
+      "prior": {
+        "exists": true,
+        "bytes": 10490,
+        "mode": 420,
+        "sha256": "b0049d860ee088a1634d36bfbf1ffa1815f2a30fcb6486cb3afc5c3941e9d9ea"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-aace0ddd9fa8.e9dec3741b.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-aace0ddd9fa8.e9dec3741b.js",
+      "bytes": 9716,
+      "sha256": "81040926b92e3f6802af3bdef656c03102122d221ae5806456848ee331b7f09f",
+      "prior": {
+        "exists": true,
+        "bytes": 9716,
+        "mode": 420,
+        "sha256": "81040926b92e3f6802af3bdef656c03102122d221ae5806456848ee331b7f09f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-af46dbfeaadf.8c47461436.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-af46dbfeaadf.8c47461436.js",
+      "bytes": 13048,
+      "sha256": "2a5a45ebe3b0ac7d5f1a0b4155b7f8dffc62db7f4c837d84c7d2d4702a8649af",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "static/js/async/route-b2cd99b979d4.ce48851bfc.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-b2cd99b979d4.ce48851bfc.js",
+      "bytes": 10227,
+      "sha256": "98d3d2659ff8dbab67ffc948c88e1195a60bf8dacf884ff91a0dca385a2e9cd1",
+      "prior": {
+        "exists": true,
+        "bytes": 10227,
+        "mode": 420,
+        "sha256": "98d3d2659ff8dbab67ffc948c88e1195a60bf8dacf884ff91a0dca385a2e9cd1"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-b7ce154f07b0.bae9188ec1.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-b7ce154f07b0.bae9188ec1.js",
+      "bytes": 262477,
+      "sha256": "f11375c1c98eb0be06e0ce15e987eeff27f75b992d59dbaa4275cd0a0a4eab16",
+      "prior": {
+        "exists": true,
+        "bytes": 262477,
+        "mode": 420,
+        "sha256": "f11375c1c98eb0be06e0ce15e987eeff27f75b992d59dbaa4275cd0a0a4eab16"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-bf36672279e0.1718a3461f.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-bf36672279e0.1718a3461f.js",
+      "bytes": 10516,
+      "sha256": "2d8abeb480be483f68c1241c11c45a50615b7ca61f2c5cba523c81cd92be3aa9",
+      "prior": {
+        "exists": true,
+        "bytes": 10516,
+        "mode": 420,
+        "sha256": "2d8abeb480be483f68c1241c11c45a50615b7ca61f2c5cba523c81cd92be3aa9"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-c4dae6800800.39658645fe.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-c4dae6800800.39658645fe.js",
+      "bytes": 272025,
+      "sha256": "11009d4d33dff1a2426b1a4a8c02c3dc0dc51c7cd59eba311a3a00275038dca6",
+      "prior": {
+        "exists": true,
+        "bytes": 272025,
+        "mode": 420,
+        "sha256": "11009d4d33dff1a2426b1a4a8c02c3dc0dc51c7cd59eba311a3a00275038dca6"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-d40267937e52.7b5c6af5b7.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-d40267937e52.7b5c6af5b7.js",
+      "bytes": 16545,
+      "sha256": "841eedd5f033372a04367d63cf2f2351137fdd315814d213231c5b0a6cb76a35",
+      "prior": {
+        "exists": true,
+        "bytes": 16545,
+        "mode": 420,
+        "sha256": "841eedd5f033372a04367d63cf2f2351137fdd315814d213231c5b0a6cb76a35"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-e4d2753d831a.475d8c53a4.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-e4d2753d831a.475d8c53a4.js",
+      "bytes": 13054,
+      "sha256": "b5ebf173a2a95367b2f9c9b694144c089a9d46eae7af79a62d02ce9c80a442c8",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "static/js/async/route-e85ae31ba633.fd7ef6d1a5.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-e85ae31ba633.fd7ef6d1a5.js",
+      "bytes": 5451,
+      "sha256": "2d2beee2d221e97d3415dba8537ce3cc90586156f31cb4131a7c8008d070d317",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "static/js/async/route-e921ee0831ae.e315cca6c7.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-e921ee0831ae.e315cca6c7.js",
+      "bytes": 10221,
+      "sha256": "1fa18cba22a6df4c67c62f47eeade69d0e4bdf52ef30d1f2c60bb4a995947231",
+      "prior": {
+        "exists": true,
+        "bytes": 10221,
+        "mode": 420,
+        "sha256": "1fa18cba22a6df4c67c62f47eeade69d0e4bdf52ef30d1f2c60bb4a995947231"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-ea7cc0ed4a42.23a94be5fc.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-ea7cc0ed4a42.23a94be5fc.js",
+      "bytes": 19309,
+      "sha256": "83f8f2ea9dd481665bd71ab108601c213b650cded640c6bb573782953c0a424f",
+      "prior": {
+        "exists": true,
+        "bytes": 19309,
+        "mode": 420,
+        "sha256": "83f8f2ea9dd481665bd71ab108601c213b650cded640c6bb573782953c0a424f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-f264269cdab9.d6d0dcd8c7.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-f264269cdab9.d6d0dcd8c7.js",
+      "bytes": 15007,
+      "sha256": "046a431e781f177018572ddb30b20c6e31f11901ad0976b0c74c17f70624237c",
+      "prior": {
+        "exists": true,
+        "bytes": 15007,
+        "mode": 420,
+        "sha256": "046a431e781f177018572ddb30b20c6e31f11901ad0976b0c74c17f70624237c"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-f2d02e4ce7ea.e0bdf47cec.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-f2d02e4ce7ea.e0bdf47cec.js",
+      "bytes": 12229,
+      "sha256": "6ab38592c8a59229b3ea54034e0883cf31e3f789ce65f2e0f717ee2b8be7973f",
+      "prior": {
+        "exists": true,
+        "bytes": 12229,
+        "mode": 420,
+        "sha256": "6ab38592c8a59229b3ea54034e0883cf31e3f789ce65f2e0f717ee2b8be7973f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/async/route-fef45de7c5b0.e1d98318a5.js",
+      "sourceLabel": "selected-rspress:static/js/async/route-fef45de7c5b0.e1d98318a5.js",
+      "bytes": 9096,
+      "sha256": "0f7bc49b17ff1fa49e95844314927fff28a5d81523a94306394d5f58c81a5dd6",
+      "prior": {
+        "exists": true,
+        "bytes": 9096,
+        "mode": 420,
+        "sha256": "0f7bc49b17ff1fa49e95844314927fff28a5d81523a94306394d5f58c81a5dd6"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/index.5023201c93.js",
+      "sourceLabel": "selected-rspress:static/js/index.5023201c93.js",
+      "bytes": 132741,
+      "sha256": "66d3a0a06ce6dced14439f00487f2e4e9682805440662a18c094d7f02cce3ba4",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "static/js/lib-react.9cdf8f49ce.js",
+      "sourceLabel": "selected-rspress:static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "prior": {
+        "exists": true,
+        "bytes": 218364,
+        "mode": 420,
+        "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "sourceLabel": "selected-rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "prior": {
+        "exists": true,
+        "bytes": 1209,
+        "mode": 420,
+        "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/lib-router.1e14e568cb.js",
+      "sourceLabel": "selected-rspress:static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "prior": {
+        "exists": true,
+        "bytes": 35370,
+        "mode": 420,
+        "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "sourceLabel": "selected-rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "prior": {
+        "exists": true,
+        "bytes": 222,
+        "mode": 420,
+        "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/js/styles.d2a6dfa6a0.js",
+      "sourceLabel": "selected-rspress:static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "prior": {
+        "exists": true,
+        "bytes": 473,
+        "mode": 420,
+        "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2"
+      },
+      "disposition": "same"
+    },
+    {
+      "target": "static/search_index.ko.c16701e1.json",
+      "sourceLabel": "selected-rspress:static/search_index.ko.c16701e1.json",
+      "bytes": 1612496,
+      "sha256": "c16701e17e481537d5b6b923c00e040d59e668c41f51ca4ed537269ac3cadb7f",
+      "prior": {
+        "exists": false
+      },
+      "disposition": "create"
+    },
+    {
+      "target": "STATUS.html",
+      "sourceLabel": "selected-rspress:STATUS.html",
+      "bytes": 635204,
+      "sha256": "6bc0abf6fcbaf8322b1070a6d94fc6181c424b7c909d875326c96ab735b377b8",
+      "prior": {
+        "exists": true,
+        "bytes": 635204,
+        "mode": 420,
+        "sha256": "2643a24b03d9cb468a2b8f69330bddd613a414364450f3ecdb71280a078d2fa8"
+      },
+      "disposition": "replace",
+      "backupPath": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr768-2026-10-29/pass02/STATUS.html"
+    }
+  ],
+  "manifestRoute": "/spinon/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-sync-manifest.json"
+}

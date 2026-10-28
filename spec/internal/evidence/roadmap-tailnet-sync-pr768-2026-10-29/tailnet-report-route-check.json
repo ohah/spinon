@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-10-28T19:10:04.414Z",
+  "sourceReport": "spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-served-hash-check.json",
+  "reportBytes": 99353,
+  "reportSha256": "af74542b92317bca6a0166f6e861702a6203857f0a2b91db5f9b7355c0040b8f",
+  "noDeletes": true,
+  "results": [
+    {
+      "route": "/spinon/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-served-hash-check.json",
+      "status": 200,
+      "expectedBytes": 99353,
+      "responseBytes": 99353,
+      "expectedSha256": "af74542b92317bca6a0166f6e861702a6203857f0a2b91db5f9b7355c0040b8f",
+      "responseSha256": "af74542b92317bca6a0166f6e861702a6203857f0a2b91db5f9b7355c0040b8f",
+      "match": true
+    },
+    {
+      "route": "/spinon/spec/internal/evidence/roadmap-tailnet-sync-pr768-2026-10-29/tailnet-served-hash-check.json",
+      "status": 200,
+      "expectedBytes": 99353,
+      "responseBytes": 99353,
+      "expectedSha256": "af74542b92317bca6a0166f6e861702a6203857f0a2b91db5f9b7355c0040b8f",
+      "responseSha256": "af74542b92317bca6a0166f6e861702a6203857f0a2b91db5f9b7355c0040b8f",
+      "match": true
+    }
+  ]
+}
