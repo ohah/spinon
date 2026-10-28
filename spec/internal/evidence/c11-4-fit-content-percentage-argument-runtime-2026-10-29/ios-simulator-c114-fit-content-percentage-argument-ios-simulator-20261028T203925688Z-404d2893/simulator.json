@@ -1,0 +1,26 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "452ac53200d3f04dda1670e220c18d3e877359a35e12a6416d32ab0c26fe546a",
+  "installedAppSha256": "452ac53200d3f04dda1670e220c18d3e877359a35e12a6416d32ab0c26fe546a",
+  "sourceRevision": {
+    "commit": "98b8a7ff8964a21534877bb223f54b7180cbfca1",
+    "tree": "980abae2130bb632a9e3b4f34f0ae78deb801c8c",
+    "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "trackedDirtyPaths": [],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "95c3d59df304ce5bbc50f126f42ecb45e873ebaea7702435f8a91aa368788d02"
+  }
+}

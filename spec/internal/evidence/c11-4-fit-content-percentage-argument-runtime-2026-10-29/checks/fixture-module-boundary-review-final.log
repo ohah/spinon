@@ -1,0 +1,26 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.574083ms)
+✔ calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 (101.653ms)
+✔ 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 (95.664583ms)
+✔ 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 (732.898292ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (23.708625ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.348542ms)
+✔ C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 (93.55175ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (2.40475ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (21.853666ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (5.105917ms)
+✔ C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 (101.947458ms)
+✔ C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 (181.159417ms)
+✔ C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 (93.636917ms)
+✔ C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 (93.832292ms)
+✔ fit-content min-height WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (93.71975ms)
+✔ definite-height percentage fit-content WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (92.625583ms)
+✔ fit-content automatic-minimum floor와 zero control이 opt-in runtime에 고정된다 (92.321ms)
+✔ fit-content span-2 WPT slice가 opt-in runtime과 simulator capture에 연결된다 (92.228959ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 1962.72325

@@ -1,0 +1,5 @@
+macOS ARM64 spinon-ffi static archive; APK/IPA whole-artifact exclusion not tested
+product=c04-runtime-gpu markers=0
+product_sha256=bc6dee976da6979212fd7e927ad5f3a4c8f0f0b69ffaa6fecb7570e293685498
+fixture-test=c04-runtime-gpu-fixture-test markers present
+fixture-test_sha256=98166eda261b63f749242d18c1768a6e8a5548a44f1611caa2d290a23ae1024c
