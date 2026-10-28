@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-28 `fit-content()` automatic-minimum floor WPT 계획
+
+Pinned WPT의 `fit-content(40px)` third assertion에서 item automatic minimum이 argument보다 큰 경우와 `min-height:0` differential control을 고정했다. Agent Browser HeadlessChrome 156은 upstream WPT 13/13과 target rows `[10,100]px`를 관찰했다. CSS Grid 2025 CRD §6.6·§11.2·§11.5에서 산출한 독립 기대값과 고정 source hash는 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-precomparison-2026-10-28/README.md)에 있다. 계획 review 20개는 [별도 문서](./c11-4-fit-content-auto-minimum-floor-plan-review-20.md)에 기록했다. 구현 전 계획 PR diff를 별도 검토하고 병합한 뒤 opt-in Android/iOS app runtime slice로 진행한다. 계획에는 UI runtime, 일반 CSS admission, WPT 전체 통과를 주장하지 않는다. C11.4와 공식 `72/213`은 미완료다.
+
 ## 2026-10-28 `minmax(auto, max-content)` two-track span · overflow automatic minimum runtime 후속 계획
 
 PR #756의 pure Rust five-case slice를 기존 opt-in C11.4 app fixture의 cascade·layout·draw/present 경로까지 연결하는 후속 계획이다. 현재 `RuntimeBlockFlexGridTrackSizingV1` author allowlist는 `overflow-x`/`overflow-y`를 허용하지 않고 layout projection은 overflow를 `Visible`로 고정하므로, 이 follow-up은 일반 profile을 넓히지 않는 전용 fixture-test cascade/projection 경계를 먼저 둔다. Chrome 156과 CSS Grid 2025 CRD 독립 입력을 다시 사용해 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 5 case의 computed overflow, exact tracks/frames/contribution trace, draw/present를 검증한다. Clipping, scrolling, scrollbar와 WPT는 제외한다. [집중 계획](./c11-4-auto-minmax-span-overflow-runtime.md) · [계획 실패 관점 20개](./c11-4-auto-minmax-span-overflow-runtime-plan-review-20.md) · [계획 PR diff 검토 30개](./c11-4-auto-minmax-span-overflow-runtime-pr-diff-review-30.md) · [Chrome 기준](../spec/internal/evidence/c11-4-auto-minmax-max-content-span-overflow-precomparison-2026-10-28/README.md). C11.4와 공식 `72/213`은 미완료다.
