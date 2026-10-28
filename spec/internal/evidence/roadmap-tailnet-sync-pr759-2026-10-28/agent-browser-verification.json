@@ -1,0 +1,29 @@
+{
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "browser": "Agent Browser",
+  "session": "spinon-c114-review",
+  "terminalBrowserUsed": false,
+  "observations": {
+    "implementationPr": "#759 Rebase and merge",
+    "mergeSha": "9937a510439e46c5a6374a6ab373edc556afe2b0",
+    "androidScenes": "5/5",
+    "iosSimulatorScenes": "5/5",
+    "officialStatusNote": "공식 상태 동기화 완료 · 상위 78개 + 세부 ID 133개 + ID 없는 하위 체크 2개 · 완료 72/213개 · 마지막 확인 오후 10:29:25",
+    "bodyHas72of213": true,
+    "bodyHasC114Incomplete": true,
+    "roadmapEntryLinkCount": 9
+  },
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser.png",
+    "width": 1280,
+    "height": 633,
+    "bytes": 297972,
+    "sha256": "4a1116d204a558d320c6b078fba768243b49a90b833459ce714756dee94c6118"
+  },
+  "browserClosed": true,
+  "browserProcess": {
+    "active": false,
+    "pid": null
+  }
+}
