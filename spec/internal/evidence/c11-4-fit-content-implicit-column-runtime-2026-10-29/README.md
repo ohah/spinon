@@ -1,6 +1,6 @@
 # C11.4 pinned WPT `fit-content()` implicit column runtime
 
-이 근거는 pinned WPT [`fit-content-track-sizing.html`](https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/grid-definition/fit-content-track-sizing.html)의 `fit-content()` implicit-column computed-value assertion 하나를 고정한 opt-in fixture-test slice다. Pinned source revision은 `c999c58338ee1d223df5ad62e48be1202ced0d37`, SHA-256은 `828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736`다. Chrome 156 Agent Browser에서 upstream WPT harness 13/13을 확인했지만, 이는 Spinon WPT runner의 결과가 아니다. 독립 규범 계산과 Chrome 관측은 [사전 비교](../c11-4-fit-content-implicit-column-precomparison-2026-10-29/README.md)에 있고, 구현은 [PR #775](https://github.com/ohah/spinon/pull/775)에서 검토 중이다.
+이 근거는 pinned WPT [`fit-content-track-sizing.html`](https://github.com/web-platform-tests/wpt/blob/c999c58338ee1d223df5ad62e48be1202ced0d37/css/css-grid/grid-definition/fit-content-track-sizing.html)의 `fit-content()` implicit-column computed-value assertion 하나를 고정한 opt-in fixture-test slice다. Pinned source revision은 `c999c58338ee1d223df5ad62e48be1202ced0d37`, SHA-256은 `828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736`다. Chrome 156 Agent Browser에서 upstream WPT harness 13/13을 확인했지만, 이는 Spinon WPT runner의 결과가 아니다. 독립 규범 계산과 Chrome 관측은 [사전 비교](../c11-4-fit-content-implicit-column-precomparison-2026-10-29/README.md)에 있고, 구현 PR은 [#775](https://github.com/ohah/spinon/pull/775)다.
 
 ## 고정 입력과 판정
 
