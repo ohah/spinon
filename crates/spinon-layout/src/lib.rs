@@ -648,6 +648,8 @@ mod fixed_position_tests;
 mod grid_chrome_oracle_tests;
 
 #[cfg(test)]
+mod grid_auto_min_scrollable_overflow_tests;
+#[cfg(test)]
 mod grid_cyclic_percentage_gap_tests;
 #[cfg(test)]
 mod grid_fit_content_auto_neighbor_oracle_tests;
