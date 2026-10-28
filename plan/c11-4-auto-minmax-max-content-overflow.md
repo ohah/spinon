@@ -43,6 +43,10 @@ All ten IDs and root/item frames are fixed in [expected.json](../spec/internal/e
 6. PR body may include the Chrome reference screenshot, clearly labeled as browser baseline rather than Spinon runtime. Verify any image link with Agent Browser and close the browser process afterward.
 7. After merge, synchronize the parent plan, `spec/STATUS.md`, and public roadmap with actual results. Keep C11.4 incomplete and official complete count at `72/213`.
 
+## 구현 결과 · PR #752 병합
+
+10개 fixed layout unit-test 입력을 구현했다. Focused tests 2/2, `spinon-layout` 297/297, rustfmt와 crate all-target Clippy가 통과했다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개를 [구현 evidence](../spec/internal/evidence/c11-4-auto-minmax-max-content-overflow-implementation-2026-10-28/README.md)에 기록했다. PR [#752](https://github.com/ohah/spinon/pull/752)은 2026-10-28T10:39:21Z Rebase and merge됐으며 main merge SHA는 `5ed428701832d539bd97cf6c2a1dca7253f7e966`이다. 병합 후 문서 동기화는 [30개 관점](../spec/internal/evidence/c11-4-auto-minmax-max-content-overflow-implementation-2026-10-28/post-merge-status-roadmap-review-30.md)으로 별도 검토했다. 이 test-only slice는 Android/iOS Simulator나 앱 runtime을 검증하지 않는다. CSS admission, clipping/scrolling 및 전체 C11.4는 미완료이며 공식 `72/213`을 유지한다.
+
 ## Scope limits
 
 This test matrix does not implement scroll containers, clipping, scrolling offsets, scrollbar layout, paint, item pixel overflow, general HTML/CSS admission, WPT, app/runtime paths, simulator behavior, or the full automatic-minimum matrix. It does not resolve every `minmax(auto, max-content)` item/track/span combination and does not close C11.4. Official count `72/213` and the C11.4 checkbox remain unchanged.

@@ -12,6 +12,7 @@ Columns는 고정 Ahem `XXXXXXXXXX`, definite `60×20px` root와 `minmax(auto,ma
 
 - 초기 focused compile은 새 child module에서 부모의 `node` helper를 import하지 않아 `E0425`로 실패했다. 명시 import를 보완한 뒤 아래 gate를 다시 실행했다.
 - Source revision: `2fdccabe8e77fc4bbf67bf59b0dabf309b4947eb`.
+- PR [#752](https://github.com/ohah/spinon/pull/752) merged at `2026-10-28T10:39:21Z` via Rebase and merge; main merge commit is `5ed428701832d539bd97cf6c2a1dca7253f7e966`.
 - `cargo test --locked -p spinon-layout auto_minmax_max_content_follows_overflow_scrollability`: 2 passed.
 - `cargo test --locked -p spinon-layout`: 297 passed, 0 failed; doc-tests 0.
 - `cargo fmt --all -- --check`: 통과.
@@ -24,4 +25,4 @@ Columns는 고정 Ahem `XXXXXXXXXX`, definite `60×20px` root와 `minmax(auto,ma
 
 ![Chrome 156 Agent Browser 기준 화면 — Spinon runtime 결과 아님](../c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/chrome/mixed-auto-min-max-content-overflow.png)
 
-[구현 실패 관점 20개](implementation-runtime-review-20.md)와 별도 [PR diff 실패 관점 30개](pr-diff-review-30.md)를 기록했다. 이 제한 test slice는 일반 CSS admission, clipping/scrolling 동작 또는 전체 C11.4를 완료하지 않으며 공식 집계 `72/213`을 바꾸지 않는다.
+[구현 실패 관점 20개](implementation-runtime-review-20.md), 별도 [PR diff 실패 관점 30개](pr-diff-review-30.md), 병합 후 [상태·로드맵 동기화 검토 30개](post-merge-status-roadmap-review-30.md)를 기록했다. 이 제한 test slice는 일반 CSS admission, clipping/scrolling 동작 또는 전체 C11.4를 완료하지 않으며 공식 집계 `72/213`을 바꾸지 않는다.
