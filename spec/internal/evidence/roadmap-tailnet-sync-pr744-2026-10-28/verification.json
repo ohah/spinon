@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-28",
+  "source_commit": "15c253c67ae70ca37004f8c14c4f1b0d264828ae",
+  "source_path": "spec/public/roadmap.html",
+  "source_bytes": 365344,
+  "source_sha256": "e1ec9b89dacca1acc9a7a72d679a3f41b2dc7f42722646b2a1ef1f075c3ff316",
+  "server_target": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "backup_path": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr744-2026-10-28/pass01/roadmap.html",
+  "before": {
+    "http_status": 200,
+    "bytes": 364401,
+    "sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba"
+  },
+  "backup_sha256": "22d32405f27f7b67b51745e26c8d3a7d915b901a0556e3dac6c32a9e01217cba",
+  "after": {
+    "http_status": 200,
+    "bytes": 365344,
+    "sha256": "e1ec9b89dacca1acc9a7a72d679a3f41b2dc7f42722646b2a1ef1f075c3ff316",
+    "content_type": "text/html; charset=utf-8",
+    "cache_control": "no-cache"
+  },
+  "tailscale": {
+    "backend_state": "Running",
+    "self_online": true
+  },
+  "listeners_preserved": [
+    { "pid": 28040, "address": "127.0.0.1:8768" },
+    { "pid": 33319, "address": "127.0.0.1:4174" }
+  ],
+  "replacement": {
+    "method": "same-directory verified temp file and atomic replace",
+    "target_open_handles_before_replace": 0,
+    "mode": "0644"
+  },
+  "agent_browser": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=pr744-15c253c6&capture=2",
+    "title": "스피논 구현 로드맵",
+    "source_recovery_card_visible": true,
+    "official_completion_text": "72/213",
+    "pr_743_page_opened": true,
+    "evidence_readme_opened": true,
+    "screenshot": "tailnet-roadmap-agent-browser.png",
+    "screenshot_dimensions": "1280x633",
+    "screenshot_sha256": "2b1e95a91e101f2ec9f75dfa50c5371fc4419c4a0172d09e0b65b07a4cd45ec0",
+    "session_closed": true,
+    "agent_browser_process_remaining": false
+  },
+  "official_c11_4_complete": false,
+  "official_completed_count": "72/213"
+}
