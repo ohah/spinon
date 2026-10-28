@@ -1,0 +1,33 @@
+{
+  "verifiedAt": "2026-10-28T19:05:26Z",
+  "tool": "Agent Browser",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "pr768CardFound": true,
+    "pr768CardVisibleInViewport": true,
+    "pr768CardViewportBounds": {
+      "top": 275.765625,
+      "bottom": 357.328125,
+      "viewportHeight": 633
+    },
+    "officialCountTextPresent": true,
+    "screenshot": "tailnet-roadmap-agent-browser.png",
+    "screenshotBytes": 112476,
+    "screenshotSha256": "f835a01b8948949ad29c80406df6feb58e290d566dd52d20898a3457dbac8d0e"
+  },
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "title": "스피논 문서",
+    "officialCountTextPresent": true,
+    "officialCount": "72/213",
+    "c11_4IntrinsicTrackSizingCheckboxFound": true,
+    "c11_4IntrinsicTrackSizingCheckboxChecked": false
+  },
+  "cleanup": {
+    "session": "spinon-tailnet-pr768",
+    "sessionClosed": true,
+    "activeSessionsAfterClose": [],
+    "agentBrowserOrChromeProcessesAfterClose": []
+  }
+}

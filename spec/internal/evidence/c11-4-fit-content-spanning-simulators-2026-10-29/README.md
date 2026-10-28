@@ -4,6 +4,8 @@
 
 C11.4 공식 항목은 미완료이며 공식 완료 수 `72/213`을 유지한다. 이 fixture는 일반 author CSS 지원, 전체 WPT, 전체 C11.4 또는 실기기 GPU 동작을 의미하지 않는다.
 
+구현 PR [#768](https://github.com/ohah/spinon/pull/768)은 2026-10-28T18:41:57Z Rebase and merge됐고 merge SHA는 `7c004e8f5ed3197d696abcc8f84bcace83b97fe2`다. 병합 당시 merge state는 `CLEAN`이었지만 required-check 조회와 status rollup에 결과가 없었고 main에도 required status checks가 설정돼 있지 않아 CI 통과로 표현하지 않는다. [구현 PR diff 검토 30개](./pr-diff-review-30.md).
+
 ## Android AVD와 iOS Simulator
 
 두 앱은 같은 source snapshot `ab3a8d0c5b207b7aad2a1d41986e56080100847e4b3d71aee7434ba007c76c64`에서 각각 scene `fit-content-spanning-wpt`를 통과했다. 루트는 `60×300px`, implicit `fit-content(40px)` row는 `[40,40]px`, span item은 `60×80px`, 자식은 `60×200px`이다. 각 실행에서 frame revision과 draw presentation identity가 일치했다.

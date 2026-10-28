@@ -640,3 +640,5 @@ Runtime trace는 same-revision root/item/child frames, Columns/Rows pass, Rows 6
 Fixture-feature runtime tests 5/5, FFI exact-route 1/1, fixture-module boundary 17/17, Rust/FFI Clippy, rustfmt 및 두 simulator build가 통과했다. Default `c04-runtime-gpu` static FFI archive에서는 신규 marker가 0개였고 fixture-test positive control은 16개를 포함했다. [계획](../../plan/c11-4-fit-content-spanning-wpt.md) · [사전 비교](evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md) · [실행 화면/hash/검증 범위](evidence/c11-4-fit-content-spanning-simulators-2026-10-29/README.md) · [구현/runtime 검토 20개](evidence/c11-4-fit-content-spanning-simulators-2026-10-29/implementation-runtime-review-20.md).
 
 이 slice는 arbitrary DOM/CSS, 일반 author CSS admission, scrolling/clipping, 전체 WPT suite 또는 C11.4 전체 완료를 계약하지 않는다. C11.4 checkbox와 공식 `72/213`은 계속 미완료다.
+
+구현 PR [#768](https://github.com/ohah/spinon/pull/768)은 2026-10-28 18:41:57 UTC에 Rebase and merge됐고 merge SHA는 `7c004e8f5ed3197d696abcc8f84bcace83b97fe2`다. 병합 직전 merge state는 `CLEAN`이었으나 required-check 조회와 rollup에 결과가 없고 main에는 required status checks가 설정돼 있지 않았다. 이를 CI 통과로 기록하지 않는다. 공식 C11.4 checkbox와 `72/213`은 미완료 상태다.

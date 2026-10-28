@@ -6,7 +6,7 @@
 
 **사전 비교:** [Chrome 156·독립 기대값·pinned source](../spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/README.md) · [기계 판독 기대값](../spec/internal/evidence/c11-4-fit-content-spanning-precomparison-2026-10-29/expected.json)
 
-**상태:** 계획 PR [#767](https://github.com/ohah/spinon/pull/767)은 2026-10-28T17:31:54Z Rebase and merge됐다(merge SHA `43177bd3b21c7a5ad6c3c0c4125cbe6134805930`). 지정한 단일 WPT 장면 구현과 Android/iOS Simulator 검증을 마쳤다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
+**상태:** 계획 PR [#767](https://github.com/ohah/spinon/pull/767)은 2026-10-28T17:31:54Z Rebase and merge됐다(merge SHA `43177bd3b21c7a5ad6c3c0c4125cbe6134805930`). 구현 PR [#768](https://github.com/ohah/spinon/pull/768)은 2026-10-28T18:41:57Z Rebase and merge됐다(merge SHA `7c004e8f5ed3197d696abcc8f84bcace83b97fe2`). 병합 직전 merge state는 `CLEAN`이었고 required-check 조회와 rollup은 비어 있었으며 main에는 required status check이 설정돼 있지 않았다. CI 통과로 기록하지 않는다. 지정한 단일 WPT 장면 구현과 Android/iOS Simulator 검증을 마쳤다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
 ## 목표와 범위
 
