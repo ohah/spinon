@@ -35,6 +35,6 @@
 | 27 | simulator coverage를 physical-device proof로 과장 | **통과.** AVD/iOS Simulator만 언급하고 physical/hardware/compositor-after를 제외한다. |
 | 28 | static archive 경계를 APK/IPA exclusion으로 확대 | **통과.** Product archive negative 및 fixture positive 의미를 분리하고 번들 exclusion을 주장하지 않는다. |
 | 29 | 문서 변경이 공식 지원 상태를 올림 | **통과.** C11.4 checkbox와 `72/213`을 그대로 둔다. |
-| 30 | Agent Browser가 실행 후 남거나 Terminal Browser를 사용 | **통과.** Browser lifecycle JSON은 session/process 0, Terminal Browser 미사용을 기록한다. 입력·기대값·화면의 SHA-256은 `SHA256SUMS.txt`에서 재검증했다. |
+| 30 | Agent Browser가 실행 후 남거나 Terminal Browser를 사용 | **통과.** 두 번의 browser run 모두 lifecycle JSON에서 session/process 0, Terminal Browser 미사용으로 확인한다. 입력·기대값·화면의 SHA-256은 `SHA256SUMS.txt`에서 재검증했다. |
 
 **판정:** PASS 30/30, 계획 PR diff blocker 0개. 구현 PR과 runtime은 이 PR의 검토 범위가 아니며 구현 이후 새 20관점·30관점 리뷰가 필요하다.
