@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-29 definite calc `fit-content()` implicit-row WPT 계획
+
+Pinned WPT `fit-content-track-sizing.html`의 definite-height `calc(10% + 5px)` assertion을 별도 opt-in runtime scene으로 다루는 계획이다. Agent Browser HeadlessChrome 156은 upstream harness 13/13과 computed row `35px`를 관측했다. CSS Grid 2025 CRD의 독립 계산, source hash 및 재사용한 화면은 [사전 비교](../spec/internal/evidence/c11-4-fit-content-calc-argument-precomparison-2026-10-29/README.md)에 있으며 계획 실패 관점 20개는 [계획 검토](./c11-4-fit-content-calc-argument-plan-review-20.md), 계획 변경분 30관점은 [PR diff 검토](../spec/internal/evidence/c11-4-fit-content-calc-argument-precomparison-2026-10-29/plan-pr-diff-review-30.md)에 기록했다. 현재 구현은 시작하지 않았다. 계획 PR 병합 뒤 별도 구현 PR을 진행하며 C11.4와 공식 `72/213`은 미완료로 둔다.
+
 ## 2026-10-28 `fit-content()` automatic-minimum floor WPT 계획
 
 Pinned WPT의 `fit-content(40px)` third assertion에서 item automatic minimum이 argument보다 큰 경우와 `min-height:0` differential control을 고정했다. Agent Browser HeadlessChrome 156은 upstream WPT 13/13과 target rows `[10,100]px`를 관찰했다. CSS Grid 2025 CRD §6.6·§11.2·§11.5에서 산출한 독립 기대값과 고정 source hash는 [사전 비교](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-precomparison-2026-10-28/README.md)에 있다. 계획 review 20개는 [별도 문서](./c11-4-fit-content-auto-minimum-floor-plan-review-20.md)에 기록했다. 그 계획을 기반으로 두 고정 scene의 opt-in Android/iOS app runtime slice를 추가했고, device geometry, contribution trace, PixelCopy/Metal 표면 표본과 한계를 [실행 근거](../spec/internal/evidence/c11-4-fit-content-auto-min-floor-runtime-2026-10-28/README.md)에 기록했다. 이는 WPT suite 통과나 일반 CSS admission이 아니다. C11.4와 공식 `72/213`은 미완료다.
@@ -243,7 +247,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 | 후보 | 계획상 대응 범위 |
 | --- | --- |
-| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, auto row 및 implicit column · [definite-height percentage row 계획](./c11-4-fit-content-percentage-argument.md) |
+| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, definite calc argument 계획, auto row 및 implicit column · [definite-height percentage row 계획](./c11-4-fit-content-percentage-argument.md) · [definite-height calc row 계획](./c11-4-fit-content-calc-argument.md) |
 | `grid-layout-auto-tracks.html` | explicit/positive implicit auto track과 두 item contribution의 한 normalized scene (제한 runtime PR [#688](https://github.com/ohah/spinon/pull/688) 병합 · [집중 계획](./c11-4-grid-layout-auto-tracks-wpt.md) · [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md)) |
 | `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | 같은 `HostDocument`에서 intrinsic inline-size를 바꾼 8단계 재계산 (제한 runtime PR [#683](https://github.com/ohah/spinon/pull/683) 병합) |
 | `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size의 auto-fill/auto-fit 8-scene 행렬 (제한 runtime PR [#691](https://github.com/ohah/spinon/pull/691) 병합 · [집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
@@ -253,7 +257,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 2026-10-27 `grid-auto-fit-columns-001.html`의 Chrome source harness는 35/35였다. 이후 PR #695의 제한 runtime fixture도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 35/35 scene을 확인했고, 여섯 overflow scene의 PixelCopy 및 compositor 제출 전 Metal 표본은 각 24/24 exact였다. 두 결과는 구분된 근거이며 WPT harness의 Spinon pass가 아니다. [고정 scene 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [runtime 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/README.md).
 
-`fit-content-track-sizing.html`의 마지막 `fit-content(40px) auto` assertion은 [PR #664](https://github.com/ohah/spinon/pull/664)의 제한 runtime slice로, 두 번째 `height:auto; min-height:300px` assertion은 PR #699로 각각 구현했다. 이들은 서로 다른 고정 입력이며 전체 WPT 실행은 아니다. `grid-layout-auto-tracks.html`도 PR #688에서 Ahem font를 고정한 normalized scene 하나를 구현했다. 그 결과는 WPT 파일 전체나 일반 auto-track 지원을 뜻하지 않는다. 남은 모든 track 조합과 전체 C11.4는 미완료다.
+`fit-content-track-sizing.html`의 마지막 `fit-content(40px) auto` assertion은 [PR #664](https://github.com/ohah/spinon/pull/664)의 제한 runtime slice로, 두 번째 `height:auto; min-height:300px` assertion은 PR #699로 각각 구현했다. 이들은 서로 다른 고정 입력이며 전체 WPT 실행은 아니다. definite percentage row assertion은 PR #771에서 구현했다. definite calc row assertion은 별도 계획 단계이며 아직 Spinon runtime에서 실행하지 않았다. `grid-layout-auto-tracks.html`도 PR #688에서 Ahem font를 고정한 normalized scene 하나를 구현했다. 그 결과는 WPT 파일 전체나 일반 auto-track 지원을 뜻하지 않는다. 남은 모든 track 조합과 전체 C11.4는 미완료다.
 
 ## Rust·앱 검증과 증거 경계
 
