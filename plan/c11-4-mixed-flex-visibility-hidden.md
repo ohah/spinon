@@ -72,4 +72,4 @@ PR #738 merge tree에는 부모가 `#[path]`로 참조하는 `visibility_hidden.
 
 Visibility inheritance, hidden ancestor와 visible descendant, `visibility:collapse`, animation/mutation, arbitrary item tree, 일반 CSS/Grid 지원, 전체 WPT, product support 선언, 실기기/hardware GPU, iOS compositor-after pixels, 전역 renderer parity와 전체 C11.4는 범위 밖이다.
 
-Border 바깥 overflow는 이 구현과 별도로 [후속 계획](./c11-4-visibility-hidden-border-overflow.md)에서 고정했으며, 해당 runtime slice는 아직 구현되지 않았다.
+Border 바깥 overflow는 별도 [후속 계획](./c11-4-visibility-hidden-border-overflow.md)과 구현 PR [#747](https://github.com/ohah/spinon/pull/747)에서 다뤘다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 새 hidden/visible control scene을 포함해 각 18/18을 확인했으며, 상세 실행과 한계는 [evidence](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/README.md)에 있다. C11.4 전체와 공식 `72/213`은 미완료다.

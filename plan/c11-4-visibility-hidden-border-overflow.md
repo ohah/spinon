@@ -10,7 +10,7 @@
 
 PR [#738](https://github.com/ohah/spinon/pull/738)은 `visibility:hidden` item이 mixed flexible/fixed tracks의 intrinsic sizing과 layout frame에는 남고 paint에서 빠지는 네 장면을 구현했다. 그 장면의 root 축 길이는 300px라 track이 root border 바깥으로 나가지 않는다. 기존 [anonymous Grid border-overflow slice](./c11-4-anonymous-grid-border-overflow.md)는 별도의 text/image topology를 다루므로 hidden item과 visible paint control의 결합을 증명하지 않는다. 이번 후속은 **같은 visibility-hidden topology**에서 Columns와 Rows의 첫 item을 border 바깥까지 뻗게 하고, hidden 장면과 visible positive control의 surface pixels를 비교한다.
 
-범위는 C11.4 opt-in fixture-test adapter와 검증 harness다. 일반 CSS admission, 전체 `visibility`/Grid 지원, 실기기·hardware GPU 및 C11.4 완료를 주장하지 않는다. 구현은 이 계획의 Rebase and merge 뒤 시작한다.
+범위는 C11.4 opt-in fixture-test adapter와 검증 harness다. 일반 CSS admission, 전체 `visibility`/Grid 지원, 실기기·hardware GPU 및 C11.4 완료를 주장하지 않는다. 계획 PR [#746](https://github.com/ohah/spinon/pull/746)은 2026-10-28T07:25:27Z Rebase and merge됐다(merge SHA `a44ab6c079b35e91055afd66e9300a70c8de2918`). 구현 PR [#747](https://github.com/ohah/spinon/pull/747)은 아래 결과와 같이 병합됐다.
 
 ## 규범과 고정 기준
 
@@ -54,3 +54,11 @@ Root는 `box-sizing:border-box`, 2px solid `#f0c674`, `overflow:visible`이다. 
 ## 미포함 범위
 
 `overflow:hidden`/`clip`/`scroll`, clipping edge나 scroll container 동작, rounded/alpha border, right/bottom border 아래 합성 색, hidden ancestor/visible descendant, `visibility:collapse`, animation/mutation, arbitrary item tree/style, 일반 CSS/Grid admission, 전체 WPT, 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4 완료는 검사하지 않는다.
+
+## 구현 결과 · 2026-10-28
+
+구현 PR [#747](https://github.com/ohah/spinon/pull/747)은 2026-10-28T08:42:37Z에 Rebase and merge됐다(merge SHA `cb3c9a50b9a10d1d441cf15a584bacefcd91630d`). 기존 14개 regression scene에 네 border-overflow scene을 더해 Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 18/18 통과했다. 새 scene은 Columns/Rows의 hidden과 visible control이며 root border box는 각각 `100×120px`/`120×100px`, tracks는 `[150,40,0]px`, 남은 공간은 `-114px`이다. Root 바깥 PixelCopy 표본은 hidden `#2864dc`, visible control `#8e44ad`; 비가림 border 표본은 `#f0c674`로 양쪽 simulator에서 일치했다. 독립 matcher의 17 negative controls와 PR 본문 두 image URL의 Agent Browser load/표시(`1080×2400`, `1206×2622`)도 통과했다. 사용한 Agent Browser session은 종료했다.
+
+Runtime focused tests 4/4, FFI exact-route test 1/1, `spinon-layout` 전체 308/308, formatter, 기본·fixture opt-in Clippy와 verifier checks가 통과했다. 기본 static archive에서 신규 marker/symbol이 빠지고 opt-in positive control에는 들어오는 것도 확인했으나 이는 APK/IPA 전체 exclusion이 아니다. PR #747에는 GitHub status check이 보고되지 않았고 main에는 required status check이 설정되어 있지 않았다. [실행·화면·hash·한계](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/README.md) · [18-scene 독립 검증](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/matrix-verification-18-scenes.json) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/pr-diff-review-30.md) · [병합 후 문서·로드맵 검토 30개](../spec/internal/evidence/c11-4-visibility-hidden-border-overflow-runtime-2026-10-28/post-merge-docs-review-30.md).
+
+C11.4와 공식 `72/213`은 미완료로 유지한다. 이 PR은 실기기/hardware GPU, 전체 CSS Grid/WPT, iOS compositor 이후 pixels, arbitrary styles 또는 clipping/scrolling 동작을 판정하지 않는다.
