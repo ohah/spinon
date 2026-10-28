@@ -17,6 +17,11 @@ Columns는 고정 Ahem `XXXXXXXXXX`, definite `60×20px` root와 `minmax(auto,ma
 - `cargo fmt --all -- --check`: 통과.
 - `cargo clippy --locked -p spinon-layout --all-targets -- -D warnings`: 통과.
 - Rust case constants와 고정 `expected.json` 10개 결과를 별도 대조했고 모두 일치했다.
+- `bun run docs:build`: 기존 문서 1007곳의 dead link로 실패했다. 수정 후 재실행에서 이 evidence와 precomparison 경로는 오류로 나오지 않았다.
 - 변경 전후 제품 코드, runtime route, public API, ABI 및 mobile fixture feature는 추가하지 않았다. 따라서 Android/iOS app 또는 Simulator 실행 결과는 없다.
 
-사전 비교는 [Chrome 156 Agent Browser baseline](../c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/README.md)과 [기준 화면](../c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/chrome/mixed-auto-min-max-content-overflow.png)이며 Spinon 화면이 아니다. [구현 실패 관점 20개](implementation-runtime-review-20.md)와 별도 [PR diff 실패 관점 30개](pr-diff-review-30.md)를 기록했다. 이 제한 test slice는 일반 CSS admission, clipping/scrolling 동작 또는 전체 C11.4를 완료하지 않으며 공식 집계 `72/213`을 바꾸지 않는다.
+사전 비교는 [Chrome 156 Agent Browser baseline](../c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/README.md)이며 Spinon 화면이 아니다.
+
+![Chrome 156 Agent Browser 기준 화면 — Spinon runtime 결과 아님](../c11-4-auto-minmax-max-content-overflow-precomparison-2026-10-28/chrome/mixed-auto-min-max-content-overflow.png)
+
+[구현 실패 관점 20개](implementation-runtime-review-20.md)와 별도 [PR diff 실패 관점 30개](pr-diff-review-30.md)를 기록했다. 이 제한 test slice는 일반 CSS admission, clipping/scrolling 동작 또는 전체 C11.4를 완료하지 않으며 공식 집계 `72/213`을 바꾸지 않는다.
