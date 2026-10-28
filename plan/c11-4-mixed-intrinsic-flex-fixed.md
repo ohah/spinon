@@ -6,9 +6,9 @@
 
 **계획 검토:** [서로 다른 실패 관점 20개](./c11-4-mixed-intrinsic-flex-fixed-plan-review-20.md) · [계획 PR diff 30관점 검토](./c11-4-mixed-intrinsic-flex-fixed-pr-diff-review-30.md)
 
-## 목적과 현재 결손
+## 목적과 구현 전 결손
 
-이미 병합된 `ExpandFlexibleTracks` pure Rust oracle과 앱 fixture는 definite empty Grid에서 1fr:2fr 배분, base size가 만드는 freeze/recompute, factor 합이 1보다 작은 경우와 0fr을 확인한다. 직접 text/image fixture와 multi-span runtime은 있지만, intrinsic item contribution이 실제 flexible track의 freeze와 fixed neighbor를 함께 포함한 한 Grid에서 바뀌는지는 별도 검증하지 않았다. 이 계획은 CSS Grid §11.5.1의 min-content track base가 §11.7.1의 flex 분배 결과를 바꾸는 입력을 `RuntimeBlockFlexGridTrackSizingV1`의 제한 fixture 경로에서 확인한다.
+계획을 세울 당시 이미 병합된 `ExpandFlexibleTracks` pure Rust oracle과 앱 fixture는 definite empty Grid에서 1fr:2fr 배분, base size가 만드는 freeze/recompute, factor 합이 1보다 작은 경우와 0fr을 확인한다. 직접 text/image fixture와 multi-span runtime은 있었지만, intrinsic item contribution이 실제 flexible track의 freeze와 fixed neighbor를 함께 포함한 한 Grid에서 바뀌는지는 검증하지 않았다. 이 계획은 CSS Grid §11.5.1의 min-content track base가 §11.7.1의 flex 분배 결과를 바꾸는 입력을 `RuntimeBlockFlexGridTrackSizingV1`의 제한 fixture 경로에서 확인했다.
 
 기준 동작은 [사전 비교 자료](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/README.md)에 구현 전에 고정했다. Chrome은 independent CSS Grid 2025 CRD 계산을 교차 관찰할 뿐 규범 oracle을 대신하지 않는다.
 
@@ -61,3 +61,9 @@ CSS Grid Layout Module Level 1, 2025 CRD §§11.5.1, 11.7, 11.7.1을 사용한�
 ## 범위 밖
 
 이 slice는 arbitrary item/source trees, anonymous/nested/hidden/out-of-flow items, other fonts/scripts, multiple images, dynamic image replacement, unspecified intrinsic track combinations, percentage/calc gap, auto-repeat, full span-group matrix, WPT harness pass, physical devices, Android hardware GPU, iOS compositor-after pixels, general CSS admission 또는 전체 C11.4 완료를 주장하지 않는다.
+
+## 구현 결과 · 2026-10-28
+
+구현 PR [#729](https://github.com/ohah/spinon/pull/729)은 Rebase and merge됐고 최종 merge SHA는 `3e1add7414d534c0b5ca830a9c772ba65a3a3ace`다. 여덟 scene이 Android API 37 ARM64 16 KB AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 8/8 통과했다. 두 simulator에서 미등록 scene과 충돌 C11.2.1 profile도 fail closed됐다. [실행 근거](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/README.md) · [기본·opt-in archive 비교](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/artifact-boundary.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/implementation-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/pr-delta-review-30.md) · [병합 후 문서 검토 30개](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/post-merge-docs-review-30.md).
+
+PR check rollup은 비어 있으며 CI 통과로 해석하지 않는다. targeted Clippy는 변경하지 않은 runtime의 `type_complexity`·`map_identity` 경고로 실패했다. archive 검사는 macOS ARM64 static FFI library에 한정되며 Android APK/iOS IPA 전체 제외를 뜻하지 않는다. 계획한 모든 변조 negative control은 신규 adapter에서 개별 실행되지 않았다. [구현/runtime 검토](../spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/implementation-review-20.md)의 잔여 항목을 유지한다. C11.4와 공식 `72/213`은 미완료다.

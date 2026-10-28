@@ -21,13 +21,15 @@
 
 | Android API 37 AVD | iPhone 17 Pro / iOS 26.2 Simulator |
 | --- | --- |
-| ![Android row-freeze](runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-freeze.png) | ![iOS row-freeze](runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c/ios-row-freeze.png) |
+| ![Android row-freeze](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-row-freeze.png) | ![iOS row-freeze](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c/ios-row-freeze.png) |
 
-추가 대표 화면: [Android column-freeze](runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-freeze.png) · [iOS column-freeze](runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c/ios-column-freeze.png).
+추가 대표 화면: [Android column-freeze](./runs/c114-mixed-intrinsic-flex-fixed-android-avd-20261028T012823935Z-815905bf/android-column-freeze.png) · [iOS column-freeze](./runs/c114-mixed-intrinsic-flex-fixed-ios-simulator-20261028T012904007Z-0e25206c/ios-column-freeze.png).
 
 ## 기계 검증과 재현
 
 [`matrix-verification.json`](matrix-verification.json)은 두 manifest, 16 scene, frame 및 track trace, screenshot 크기·해시, 앱 presentation을 다시 검사했다. matcher의 자체 negative control 8개(중복 JSON 키, 누락 축, 누락 `ExpandFlexibleTracks`, 비유한 track 값, 잘못된 source order, 잘못된 image natural size, 잘못된 min-content, 잘못된 frame)도 모두 예상대로 거부됐다. 두 플랫폼 실행에서 미등록 scene과 충돌하는 C11.2.1 profile도 각각 거부됐다.
+
+PR 병합 뒤 macOS ARM64 기본·opt-in `spinon-ffi` release static archive의 fixture 심볼·payload 경계도 비교했다. 상세 해시와 검색 결과는 [아티팩트 경계 기록](artifact-boundary.md)에 있다. 이 검사는 Android APK/iOS IPA 전체 bundle을 대상으로 하지 않았다.
 
 ```sh
 mise exec -- node spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-runtime-2026-10-28/capture-mixed-intrinsic-flex-fixed-runtime.mjs android-avd emulator-5554
