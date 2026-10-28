@@ -1,0 +1,30 @@
+{
+  "sourceHead": "23304539ac9d6fab0e79e2bb8cc1154e77cc8469",
+  "priorSourceHead": "bf4ab21eebc2f3739a7ae61de6511b92733b9464",
+  "tailscaleBackendState": "Running",
+  "tailnetHostName": "윤형배의 Mac Studio",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "previewPid": 28040,
+  "previewServerRestarted": false,
+  "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+  "targetWasRegularFile": true,
+  "previousBytes": 361424,
+  "previousSha256": "ecb1845d51e5eff1407f863ff591317df43127479d2b6efd71518198dab86709",
+  "targetReadHandles": [],
+  "activeClientConnections": 0,
+  "localRouteBefore": {
+    "status": 200,
+    "bytes": 361424,
+    "sha256": "ecb1845d51e5eff1407f863ff591317df43127479d2b6efd71518198dab86709"
+  },
+  "tailnetRouteBefore": {
+    "status": 200,
+    "bytes": 361424,
+    "sha256": "ecb1845d51e5eff1407f863ff591317df43127479d2b6efd71518198dab86709"
+  },
+  "backupTaskRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-pr738-2026-10-28",
+  "backupTaskRootWasAbsent": true,
+  "selectedRouteCount": 1,
+  "selectedBytes": 363975,
+  "sourceSha256": "0adb06aff0f5c2733a02b20d18099ccad2c6093e060b164a4f8ccad612483ea6"
+}
