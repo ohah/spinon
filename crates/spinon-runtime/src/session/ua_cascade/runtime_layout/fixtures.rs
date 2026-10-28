@@ -44,6 +44,10 @@ mod c11_4_fit_content_auto_neighbor;
 mod c11_4_fit_content_min_height;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_fit_content_percentage_argument.rs"]
+mod c11_4_fit_content_percentage_argument;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_fit_content_auto_min_floor.rs"]
 mod c11_4_fit_content_auto_min_floor;
 
@@ -164,6 +168,13 @@ pub(super) use c11_4_fit_content_min_height::{
     observation as c11_4_fit_content_min_height_observation,
     prepare as prepare_c11_4_fit_content_min_height,
     validate_output as validate_c11_4_fit_content_min_height_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_fit_content_percentage_argument::{
+    observation as c11_4_fit_content_percentage_argument_observation,
+    prepare as prepare_c11_4_fit_content_percentage_argument,
+    validate_output as validate_c11_4_fit_content_percentage_argument_output,
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

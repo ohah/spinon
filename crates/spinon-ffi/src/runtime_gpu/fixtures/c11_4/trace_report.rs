@@ -248,6 +248,8 @@ pub(crate) fn grid_track_sizing_trace_report(
     let fit_content_auto_neighbor =
         super::fit_content_auto_neighbor_report::report_json(completed)?;
     let fit_content_min_height = super::fit_content_min_height_report::report_json(completed)?;
+    let fit_content_percentage_argument =
+        super::fit_content_percentage_argument_report::report_json(completed)?;
     let fit_content_auto_min_floor =
         super::fit_content_auto_min_floor_report::report_json(completed)?;
     let fit_content_spanning = super::fit_content_spanning_report::report_json(completed)?;
@@ -420,6 +422,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         "trackSizingTraces": traces,
         "fitContentAutoNeighbor": fit_content_auto_neighbor,
         "fitContentMinHeight": fit_content_min_height,
+        "fitContentPercentageArgument": fit_content_percentage_argument,
         "fitContentAutoMinFloor": fit_content_auto_min_floor,
         "fitContentSpanning": fit_content_spanning,
         "gridLayoutAutoTracks": grid_layout_auto_tracks,
@@ -881,6 +884,7 @@ mod tests {
                 traces: Arc::from([]),
                 fit_content_auto_neighbor: None,
                 fit_content_min_height: None,
+                fit_content_percentage_argument: None,
                 fit_content_auto_min_floor: None,
                 fit_content_spanning: None,
                 grid_layout_auto_tracks: None,
@@ -1053,6 +1057,7 @@ mod tests {
             .into(),
             fit_content_auto_neighbor: None,
             fit_content_min_height: None,
+            fit_content_percentage_argument: None,
             fit_content_auto_min_floor: None,
             fit_content_spanning: None,
             grid_layout_auto_tracks: None,
