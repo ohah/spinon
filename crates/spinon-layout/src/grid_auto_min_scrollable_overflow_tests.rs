@@ -14,6 +14,8 @@ use crate::{
 
 const AHEM: &[u8] = include_bytes!("../../../tests/fixtures/resources/c15/Ahem.ttf");
 
+#[path = "grid_auto_min_scrollable_overflow_tests/max_content.rs"]
+mod max_content;
 #[path = "grid_auto_min_scrollable_overflow_tests/row_axis_replaced.rs"]
 mod row_axis_replaced;
 
