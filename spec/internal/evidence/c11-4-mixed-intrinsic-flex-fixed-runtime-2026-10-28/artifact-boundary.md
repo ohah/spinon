@@ -10,3 +10,14 @@
 검사는 `nm -gU target/release/libspinon_ffi.a`와 `strings target/release/libspinon_ffi.a`에서 `c11_4_grid_track_sizing_fixture`, `generic_intrinsic_flex_fixed`, `novel-mixed-intrinsic-flex-fixed`를 검색했다. Rust 앱 fixture 모듈은 `c04-runtime-gpu-fixture-test`에 gated되어 있으며, opt-in positive control에서만 위 symbol과 payload marker가 나타났다.
 
 이 결과는 macOS ARM64 release **static FFI archive**의 이 fixture 경계에 한정한다. Android APK, iOS IPA, 전체 앱 bundle, 다른 fixture의 제외 여부는 검사하지 않았다.
+
+## hidden-item follow-up
+
+2026-10-28 현재 hidden-item 구현 source commit `d73f71c950ae4ba64d27ebfd0c70f6e81475ec8c`에서 다시 빌드했다. 아래 hash는 앞 절의 PR #729 병합 후 archive와 별개인 현재 소스 산출물이다. host는 macOS ARM64이며 feature 두 구성을 순서대로 빌드했다.
+
+| Cargo 구성 | 명령 | `libspinon_ffi.a` SHA-256 | hidden fixture 경계 |
+|---|---|---|---|
+| 제품 runtime | `cargo build --locked -p spinon-ffi --lib --release --no-default-features --features c04-runtime-gpu` | `cb7bad54e87708a38d51d8e4a7fa86154258b3831fb0fef1effec3248f3c5400` | `spinon_runtime_gpu_host_new/eval_c11_4_grid_track_sizing_fixture` symbol 없음, `novel-mixed-intrinsic-flex-fixed` marker 없음 |
+| fixture positive control | `cargo build --locked -p spinon-ffi --lib --release --no-default-features --features c04-runtime-gpu-fixture-test` | `222980b63bb717c2ea62faf5307cc2b2e5fc656f6e1389da054da6f391f8a50f` | `new`·`eval` C11.4 fixture FFI symbol 확인, marker 10회 포함 |
+
+Symbol은 Rust 1.96.1 sysroot의 `llvm-nm -g target/release/libspinon_ffi.a`, payload는 `strings -a target/release/libspinon_ffi.a`로 검사했다. 이 정적 archive 결과는 Android APK, iOS IPA 또는 전체 앱 bundle의 fixture 제외 여부를 증명하지 않는다.

@@ -584,10 +584,32 @@ fn validate_c11_4_writing_styles_without_text_profile(
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 fn validate_c11_4_orthogonal_text_styles(
-    root: NodeId,
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
     computed_styles: &ComputedStyleSnapshot,
     paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
 ) -> Result<(), StyleLayoutError> {
+    let mut hidden_nodes = BTreeSet::new();
+    let mut pending = vec![(root, false)];
+    while let Some((handle, ancestor_hidden)) = pending.pop() {
+        let node = snapshot
+            .node(handle)
+            .ok_or(StyleLayoutError::SnapshotMismatch { field: "HostNode" })?;
+        let display_none = matches!(node.kind(), HostNodeKind::Element(_))
+            && computed_styles
+                .elements
+                .iter()
+                .find(|element| element.node_id == node.id())
+                .and_then(|element| element.properties.get("display"))
+                .is_some_and(|display| display == "none");
+        let hidden = ancestor_hidden || display_none;
+        if hidden {
+            hidden_nodes.insert(node.id());
+        }
+        if let Some(children) = snapshot.children(handle) {
+            pending.extend(children.map(|child| (child, hidden)));
+        }
+    }
     let vertical_paragraphs = paragraph_styles
         .iter()
         .filter(|(_, style)| style.writing_mode == WritingMode::VerticalRl)
@@ -599,7 +621,9 @@ fn validate_c11_4_orthogonal_text_styles(
     let computed_vertical_nodes = computed_styles
         .writing_styles
         .iter()
-        .filter_map(|(node, mode, _)| (*mode == WritingMode::VerticalRl).then_some(*node))
+        .filter_map(|(node, mode, _)| {
+            (*mode == WritingMode::VerticalRl && !hidden_nodes.contains(node)).then_some(*node)
+        })
         .collect::<BTreeSet<_>>();
     if expected_vertical_nodes.is_empty() && computed_vertical_nodes.is_empty() {
         return Ok(());
@@ -609,17 +633,17 @@ fn validate_c11_4_orthogonal_text_styles(
             .symmetric_difference(&computed_vertical_nodes)
             .next()
             .copied()
-            .unwrap_or(root);
+            .unwrap_or(root.id());
         return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
             node,
             reason: "computed vertical text nodes must match the paragraph inputs",
         });
     }
-    if computed_styles.writing_style_for(root)
+    if computed_styles.writing_style_for(root.id())
         != Some((WritingMode::HorizontalTb, TextOrientation::Mixed))
     {
         return Err(StyleLayoutError::UnsupportedOrthogonalTextProfile {
-            node: root,
+            node: root.id(),
             reason: "root computed writing-mode/text-orientation must be horizontal-tb/mixed",
         });
     }
@@ -1059,7 +1083,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
     if computed_styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
         && let Some((paragraph_styles, _, _)) = text_profile
     {
-        validate_c11_4_orthogonal_text_styles(root.id(), &computed_styles, paragraph_styles)?;
+        validate_c11_4_orthogonal_text_styles(snapshot, root, &computed_styles, paragraph_styles)?;
     }
     if options.reject_cascade_diagnostics
         && let Some(diagnostic) = computed_styles.diagnostics.first().cloned()

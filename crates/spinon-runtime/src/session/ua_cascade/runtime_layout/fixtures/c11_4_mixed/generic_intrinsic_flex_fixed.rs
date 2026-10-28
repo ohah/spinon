@@ -40,6 +40,9 @@ fn prepare_with_png(
     styles: &ComputedStyleSnapshot,
     png: &[u8],
 ) -> Result<Option<super::super::C11_4MixedInput>, RuntimeLayoutFailure> {
+    if let Some(input) = hidden::prepare(snapshot, root, styles, png)? {
+        return Ok(Some(input));
+    }
     if !has_mixed_signature(snapshot, root)? {
         return Ok(None);
     }
@@ -188,6 +191,9 @@ fn prepare_with_png(
         use_extended_fixture_projection: false,
     }))
 }
+
+#[path = "generic_intrinsic_flex_fixed/hidden.rs"]
+mod hidden;
 
 fn track_axis(style: &ComputedElementStyle) -> Option<Axis> {
     let grid = style.grid_layout.as_ref()?;

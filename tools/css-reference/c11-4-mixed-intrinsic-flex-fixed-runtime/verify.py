@@ -19,6 +19,9 @@ ROOT = Path(__file__).resolve().parents[3]
 EXPECTED_PATH = ROOT / (
     "spec/internal/evidence/c11-4-mixed-intrinsic-flex-fixed-precomparison-2026-10-28/expected.json"
 )
+HIDDEN_EXPECTED_PATH = ROOT / (
+    "spec/internal/evidence/c11-4-mixed-flex-hidden-item-precomparison-2026-10-28/expected.json"
+)
 TRACE_TOLERANCE = 1e-4
 FRAME_TOLERANCE = 1e-4
 NUMBER = r"[-+]?(?:\d+\.?\d*|\.\d+)(?:[eE][-+]?\d+)?"
@@ -28,7 +31,7 @@ FRAME_RE = re.compile(
 SCENE_IDS = {
     "column-freeze", "column-no-freeze", "column-equal-boundary",
     "column-freeze-reversed", "row-freeze", "row-no-freeze",
-    "row-equal-boundary", "row-freeze-reversed",
+    "row-equal-boundary", "row-freeze-reversed", "column-hidden", "row-hidden",
 }
 
 
@@ -69,6 +72,41 @@ def validate_case_inventory(cases: Any) -> dict[str, dict[str, Any]]:
     return indexed
 
 
+def merge_hidden_cases(cases: dict[str, Any], hidden_scenes: Any) -> dict[str, Any]:
+    if not isinstance(hidden_scenes, list):
+        raise AssertionError("hidden scene 목록이 아닙니다.")
+    merged = dict(cases)
+    for scene in hidden_scenes:
+        if not isinstance(scene, dict) or scene.get("displayNoneChild") is not True:
+            continue
+        scene_id = scene.get("sceneId")
+        if scene_id not in {"column-hidden", "row-hidden"}:
+            raise AssertionError(f"허용되지 않은 hidden scene: {scene_id!r}")
+        frames = scene.get("rootRelativeFramesCssPx")
+        sizing = scene.get("trackSizing")
+        intrinsic = scene.get("intrinsicInputs")
+        if not all(isinstance(value, dict) for value in (frames, sizing, intrinsic)):
+            raise AssertionError(f"{scene_id}: hidden expected 값 누락")
+        merged[scene_id] = {
+            "axis": "rows" if scene["axis"] == "Rows" else "columns",
+            "crossAxisPx": frames["root"]["width"] if scene["axis"] == "Rows"
+                else frames["root"]["height"],
+            "sizingAxisPx": sizing["definiteAxisCssPx"],
+            "gapPx": sizing["gapsCssPx"][0],
+            "tracksPx": sizing["usedTracksCssPx"],
+            "remainingFreeSpacePx": sizing["remainingFreeSpaceCssPx"],
+            "minContentBasePx": intrinsic["visibleAminContentCssPx"],
+            "itemFramesRootRelativePx": {
+                "hidden": {"x": 0, "y": 0, "width": 0, "height": 0},
+                "a": frames["a"],
+                "b": frames["b"],
+                "c": frames["c"],
+            },
+            "hiddenItem": True,
+        }
+    return merged
+
+
 def expected_track_bases(case: dict[str, Any]) -> list[float]:
     tracks = case.get("tracksPx")
     if not isinstance(tracks, list) or len(tracks) != 3:
@@ -83,6 +121,14 @@ def expected_frames(case: dict[str, Any]) -> list[dict[str, float | int]]:
         "width": case["crossAxisPx"] if rows else case["sizingAxisPx"],
         "height": case["sizingAxisPx"] if rows else case["crossAxisPx"],
     }
+    if case.get("hiddenItem"):
+        return [
+            root,
+            {"node": 2, **case["itemFramesRootRelativePx"]["hidden"]},
+            {"node": 4, **case["itemFramesRootRelativePx"]["a"]},
+            {"node": 6, **case["itemFramesRootRelativePx"]["b"]},
+            {"node": 7, **case["itemFramesRootRelativePx"]["c"]},
+        ]
     order = ["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]
     item_nodes = [2, 4, 5]
     return [root, *[
@@ -131,11 +177,14 @@ def validate_intrinsic_inputs(diagnostics: dict[str, Any], case: dict[str, Any])
     inputs = diagnostics.get("gridItemIntrinsicInputs")
     if not isinstance(inputs, list) or len(inputs) != 3:
         raise AssertionError(f"{case['id']}: direct Grid intrinsic input count 오류")
-    order = ["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]
-    item_nodes = [2, 4, 5]
+    hidden = case.get("hiddenItem") is True
+    order = (["a", "b", "c"] if hidden else
+             (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]))
+    item_nodes = [4, 6, 7] if hidden else [2, 4, 5]
     target_dimension = "height" if case["axis"] == "rows" else "width"
     for index, (item, value) in enumerate(zip(order, inputs)):
-        if value.get("sourceOrder") != index or value.get("node") != item_nodes[index]:
+        expected_source_order = index + 1 if hidden else index
+        if value.get("sourceOrder") != expected_source_order or value.get("node") != item_nodes[index]:
             raise AssertionError(f"{case['id']}: source order/node 불일치 at {index}")
         source = value.get("source")
         if not isinstance(source, dict):
@@ -181,6 +230,12 @@ def validate_diagnostics(diagnostics: dict[str, Any], case: dict[str, Any]) -> d
     target = passes[target_index]
     if target.get("axis") != target_axis:
         raise AssertionError(f"{case['id']}: target axis 불일치")
+    if case.get("hiddenItem") and any(
+        contribution.get("item") == 2
+        for axis_pass in passes
+        for contribution in axis_pass.get("contributions", [])
+    ):
+        raise AssertionError(f"{case['id']}: display:none item track contribution 발견")
     stages = target.get("stages")
     if not isinstance(stages, list):
         raise AssertionError(f"{case['id']}: stage 목록 누락")
@@ -282,7 +337,9 @@ def verify_scene_log(log: str, run_id: str, case: dict[str, Any]) -> dict[str, A
     frame = expected_frames(case)[0]
     if f"expected_root_frame=width={frame['width']},height={frame['height']}" not in line:
         raise AssertionError(f"{scene_id}: root frame summary 불일치")
-    if "status=0 layout=ready boxes=4" not in line:
+    frame_count = len(expected_frames(case))
+    box_count = frame_count - (1 if case.get("hiddenItem") else 0)
+    if f"status=0 layout=ready boxes={box_count}" not in line:
         raise AssertionError(f"{scene_id}: ready/box summary 불일치")
     if "SPINON_C0410_DRAW" not in log or "status=0 presented boxes=4" not in log:
         raise AssertionError(f"{scene_id}: presented marker 누락")
@@ -290,7 +347,8 @@ def verify_scene_log(log: str, run_id: str, case: dict[str, Any]) -> dict[str, A
     verify_frames(frames, case)
     diagnostics, chunk_count = trace_diagnostics(log, run_id, scene_id)
     trace = validate_diagnostics(diagnostics, case)
-    return {"sceneId": scene_id, "runID": run_id, "status": "passed", "boxCount": 4,
+    return {"sceneId": scene_id, "runID": run_id, "status": "passed",
+            "boxCount": box_count, "frameCount": frame_count,
             "nodeFrames": frames, "traceChunks": chunk_count, **trace,
             "presented": True}
 
@@ -342,9 +400,23 @@ def platform_track_map(path: Path, language: str) -> dict[str, list[float]]:
     labels: list[str] = []
     array_pattern = (re.compile(r'return\s+new double\[\]\s*\{([^}]+)\}')
                      if language == "java" else re.compile(r'return\s+\[([^\]]+)\]'))
+    pending_swift_case = ""
     for line in body.splitlines():
-        for case_labels in case_pattern.findall(line):
-            labels.extend(re.findall(r'"([^"]+)"', case_labels))
+        if language == "swift":
+            stripped = line.strip()
+            if stripped.startswith("case "):
+                pending_swift_case = stripped
+                if ":" in stripped:
+                    labels.extend(re.findall(r'"([^"]+)"', pending_swift_case.split(":", 1)[0]))
+                    pending_swift_case = ""
+            elif pending_swift_case:
+                pending_swift_case += " " + stripped
+                if ":" in stripped:
+                    labels.extend(re.findall(r'"([^"]+)"', pending_swift_case.split(":", 1)[0]))
+                    pending_swift_case = ""
+        else:
+            for case_labels in case_pattern.findall(line):
+                labels.extend(re.findall(r'"([^"]+)"', case_labels))
         match = array_pattern.search(line)
         if not match:
             continue
@@ -396,7 +468,7 @@ def verify_manifest(run_dir: Path, expected_cases: dict[str, dict[str, Any]]) ->
         raise AssertionError("지원하지 않는 simulator target")
     rejected = {item.get("label") for item in manifest.get("rejectedRoutes", [])
                 if item.get("rejected") is True}
-    if not {"unknown-scene", "conflicting-c1121-profile"}.issubset(rejected):
+    if not {"unknown-scene", "visible-control", "conflicting-c1121-profile"}.issubset(rejected):
         raise AssertionError(f"{manifest_path}: fail-closed route controls 누락")
     observations = manifest.get("observations")
     if not isinstance(observations, list) or len(observations) != len(expected_cases):
@@ -442,10 +514,13 @@ def synthetic_diagnostics(case: dict[str, Any]) -> dict[str, Any]:
         size = 0.0 if boundary else float(case["gapPx"]) if gutter else bases[index // 2]
         flex_tracks.append({"internalIndex": index, "gutter": gutter,
                             "collapsed": boundary, "baseSize": size})
-    order = ["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]
-    item_nodes = [2, 4, 5]
+    hidden = case.get("hiddenItem") is True
+    order = (["a", "b", "c"] if hidden else
+             (["c", "b", "a"] if case["id"].endswith("reversed") else ["a", "b", "c"]))
+    item_nodes = [4, 6, 7] if hidden else [2, 4, 5]
     inputs = []
     for index, item in enumerate(order):
+        source_order = index + 1 if hidden else index
         if item == "b":
             source = {"kind": "replaced", "natural": {"width": 24, "height": 16}}
             contribution = {"width": {"minContent": 24}, "height": {"minContent": 16}}
@@ -454,7 +529,7 @@ def synthetic_diagnostics(case: dict[str, Any]) -> dict[str, Any]:
             dimension = "height" if case["axis"] == "rows" else "width"
             source = {"kind": "orthogonalText" if case["axis"] == "rows" else "text"}
             contribution = {dimension: {"minContent": minimum}}
-        inputs.append({"sourceOrder": index, "node": item_nodes[index],
+        inputs.append({"sourceOrder": source_order, "node": item_nodes[index],
                        "source": source, "contributionInput": contribution})
     passes = []
     for index, axis in enumerate(axes):
@@ -509,6 +584,30 @@ def run_negative_controls(cases: dict[str, dict[str, Any]]) -> list[str]:
     expect_rejected("wrong frame", lambda: verify_frames(
         [{"index": index, **frame} for index, frame in enumerate(wrong_frames)], case))
     passed.append("wrong frame")
+    hidden_case = cases["column-hidden"]
+    hidden_diagnostics = synthetic_diagnostics(hidden_case)
+    validate_diagnostics(hidden_diagnostics, hidden_case)
+    wrong_hidden_source_order = copy.deepcopy(hidden_diagnostics)
+    wrong_hidden_source_order["gridItemIntrinsicInputs"][0]["sourceOrder"] = 0
+    expect_rejected("wrong hidden source order", lambda: validate_intrinsic_inputs(
+        wrong_hidden_source_order, hidden_case))
+    passed.append("wrong hidden source order")
+    leaked_text = copy.deepcopy(hidden_diagnostics)
+    leaked_text["gridItemIntrinsicInputs"].insert(0, {
+        "sourceOrder": 0,
+        "node": 2,
+        "source": {"kind": "text"},
+        "contributionInput": {"width": {"minContent": 150}},
+    })
+    expect_rejected("hidden text intrinsic input", lambda: validate_intrinsic_inputs(
+        leaked_text, hidden_case))
+    passed.append("hidden text intrinsic input")
+    leaked_contribution = copy.deepcopy(hidden_diagnostics)
+    leaked_contribution["trackSizingTraces"][0]["passes"][0]["contributions"].append(
+        {"item": 2})
+    expect_rejected("hidden item track contribution", lambda: validate_diagnostics(
+        leaked_contribution, hidden_case))
+    passed.append("hidden item track contribution")
     return passed
 
 
@@ -519,7 +618,9 @@ def main() -> None:
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
     expected = load_json(EXPECTED_PATH)
-    cases = validate_case_inventory(expected.get("cases"))
+    hidden_expected = load_json(HIDDEN_EXPECTED_PATH)
+    cases = validate_case_inventory(merge_hidden_cases(
+        expected.get("cases"), hidden_expected.get("scenes")))
     compare_platform_tables(cases)
     summary: dict[str, Any] = {
         "expectedSceneIds": list(cases),
