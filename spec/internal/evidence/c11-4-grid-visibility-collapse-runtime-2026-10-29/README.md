@@ -29,3 +29,9 @@
 - [기본/fixture-test static archive 경계](./artifact-boundary/README.md): 기본 `c04-runtime-gpu` archive에는 C11.4 visibility route marker가 없고, `c04-runtime-gpu-fixture-test` positive control에는 route, symbol 및 scene marker가 있다.
 
 Capture runner는 각 scene을 새 process로 실행하고 마지막에 Android app을 force-stop, iOS app을 terminate했다. 테스트는 고정 opt-in fixture route만 다루며 일반 CSS admission, 다른 Grid profile, Flex/Table collapse, WPT 전체 또는 C11.4/C11 완료를 뜻하지 않는다. 공식 `spec/STATUS.md`의 C11 checkbox와 전체 `72/213`은 그대로다.
+
+## PR 검토
+
+- [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 별도로 PR 변경·본문·증거 연결을 30개 관점에서 검토했다: [PR diff 검토](./pr-diff-review-30.md).
+- PR [#804](https://github.com/ohah/spinon/pull/804)의 Android/iOS 동작 화면 두 장을 Agent Browser에서 직접 로드해 크기와 `complete`를 확인했다. [이미지 로드 결과](./pr-image-load-agent-browser.json) · [브라우저 화면](./pr-body-agent-browser.png).
+- main branch protection은 required status check가 없고 required approval 0개, linear history 필수다. PR은 `CLEAN`; GitHub check query도 비어 있어 CI 성공으로 기록하지 않는다.

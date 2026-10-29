@@ -1,0 +1,28 @@
+{
+  "pr": 804,
+  "url": "https://github.com/ohah/spinon/pull/804",
+  "headCommit": "daae850483a1c7011f31ce06e5144c151e441f88",
+  "browser": "agent-browser",
+  "observedAt": "2026-10-29",
+  "pageHeading": "feat(c11.4): Grid collapse 제한 runtime fixture 연결",
+  "images": [
+    {
+      "alt": "iOS Simulator: visible descendant under collapsed Grid item",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/daae850483a1c7011f31ce06e5144c151e441f88/spec/internal/evidence/c11-4-grid-visibility-collapse-runtime-2026-10-29/ios-simulator/c114-collapse-mvtfn06e-14ef5dc2/collapse-visible-descendant-column.png",
+      "complete": true,
+      "width": 1206,
+      "height": 2622
+    },
+    {
+      "alt": "Android AVD: visible Grid overflow positive control",
+      "src": "https://raw.githubusercontent.com/ohah/spinon/daae850483a1c7011f31ce06e5144c151e441f88/spec/internal/evidence/c11-4-grid-visibility-collapse-runtime-2026-10-29/android-avd/c114-collapse-mvtfme5e-89daa39e/visible-column.png",
+      "complete": true,
+      "width": 1080,
+      "height": 2400
+    }
+  ],
+  "sessionAfterClose": {
+    "active": false,
+    "pid": null
+  }
+}
