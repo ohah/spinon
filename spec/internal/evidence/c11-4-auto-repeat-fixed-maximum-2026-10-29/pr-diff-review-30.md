@@ -35,4 +35,4 @@
 | 29 | iOS capture가 fixture define 없이 성공처럼 보고되거나 다른 scene set을 허용하는가? | Set은 fixture compile flag 안에서만 있고 49 exact IDs다. 마지막 실행은 Metal pixel define을 켠 앱 hash와 설치 앱 hash가 일치한다. |
 | 30 | 문서가 제한 slice를 전체 C11.4로 승격하거나 이미지 링크가 없는 캡처를 가리키는가? | STATUS checkbox와 `72/213`을 유지하고 README/roadmap은 제한을 쓴다. Android/iOS 대표 PNG와 run evidence 경로가 실제로 존재한다. |
 
-**결과:** 차단할 diff 결함은 남기지 않았다. 0px maximum repeat-count behavior는 oracle이 없는 경계로 남겨 지원 주장에 포함하지 않았다. 이 후보의 전체 한계와 source/run hash는 [runtime 근거](./README.md), 별도 코드/runtime 검토는 [implementation review 20](./implementation-review-20.md)에 있다. PR required checks, 외부 승인 및 merge 결과는 PR 생성 후 별도로 확인한다.
+**결과:** 차단할 diff 결함은 남기지 않았다. 0px maximum repeat-count behavior는 oracle이 없는 경계로 남겨 지원 주장에 포함하지 않았다. 이 후보의 전체 한계와 source/run hash는 [runtime 근거](./README.md), 별도 코드/runtime 검토는 [implementation review 20](./implementation-review-20.md)에 있다. 구현 PR [#796](https://github.com/ohah/spinon/pull/796)은 2026-10-29T07:08:47Z Rebase and merge됐다. 당시 PR check rollup과 main required status checks는 비어 있어 CI 통과 증거로 해석하지 않는다.

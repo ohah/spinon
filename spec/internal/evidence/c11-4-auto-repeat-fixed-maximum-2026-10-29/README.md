@@ -1,6 +1,8 @@
 # C11.4 auto-repeat fixed maximum 제한 runtime 구현 근거
 
-2026-10-29, `minmax(auto | min-content | max-content, fixed-breadth)` 반복 트랙을 기존 C11.4 opt-in Grid 경로에 연결했다. 이 기록은 한 고정 fixture profile의 후보 구현 및 simulator 관찰이며 C11.4 전체 완료를 뜻하지 않는다.
+2026-10-29, `minmax(auto | min-content | max-content, fixed-breadth)` 반복 트랙을 기존 C11.4 opt-in Grid 경로에 연결했다. 이 기록은 한 고정 fixture profile의 제한 구현 및 simulator 관찰이며 C11.4 전체 완료를 뜻하지 않는다.
+
+구현 PR [#796](https://github.com/ohah/spinon/pull/796)은 2026-10-29T07:08:47Z Rebase and merge로 병합됐고 merge SHA는 `48100cc93b32c00a9fb50bde68e0c12fde78f08b`다. PR check rollup과 main required status checks는 비어 있어 CI 통과로 기록하지 않는다.
 
 ## 고정 입력과 기대값
 
