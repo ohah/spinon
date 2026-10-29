@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-30 `fit-content()` intrinsic limit 열 축 후속 계획
+## 2026-10-30 `fit-content()` intrinsic limit 열 축 제한 slice · PR #811 병합
 
-기존 pinned WPT `fit-content-track-sizing.html`의 30/40/200px row limit fixture와 별도로, CSS Grid 2025 CRD §11.2의 같은 계산을 implicit column에서 고정한다. `min-width:0` main scenes와 `min-width:auto` floor control을 사용하며 Chrome Headless 156 관측 및 독립 기대값은 [precomparison evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 새 계획은 [고정 입력·검증 경계](./c11-4-fit-content-column-axis.md), 계획 실패 관점 20개는 [별도 검토](./c11-4-fit-content-column-axis-plan-review-20.md)에서 관리한다. 현재 계획 단계이며 implementation/runtime은 시작하지 않았다. C11.4와 공식 `72/213`은 미완료 상태로 유지한다.
+기존 pinned WPT `fit-content-track-sizing.html`의 행 축 30/40/200px limit 장면에 CSS Grid 2025 CRD §11.2의 같은 계산을 implicit columns로 연결했다. `min-width:0` main scene 세 개와 `min-width:auto` floor control 한 개를 고정했다. 구현 계획·Chrome Headless 156 관측 및 독립 기대값은 [집중 계획](./c11-4-fit-content-column-axis.md)과 [precomparison evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 네 장면은 Android API 37 ARM64 software AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 통과했고 PixelCopy 및 compositor 제출 전 Metal 표본 각 14/14가 exact였다. [구현·simulator·artifact 근거](../spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md)에 결과와 한계를 기록했다. 구현 PR [#811](https://github.com/ohah/spinon/pull/811)은 Rebase and merge로 2026-10-29T17:19:06Z 병합됐다(merge SHA `8b2e3088c84ae4a3df1fd56c9e75eba150ce1f59`). PR check rollup 및 main required status check은 비어 있으므로 CI 성공으로 세지 않는다. 이는 fixture-test opt-in slice이며 일반 author CSS admission이나 전체 WPT를 완료하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료 상태로 유지한다.
 
 ## 2026-10-29 Grid item `visibility:collapse` 계측 계획
 
