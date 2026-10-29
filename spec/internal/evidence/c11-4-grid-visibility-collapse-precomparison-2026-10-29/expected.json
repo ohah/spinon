@@ -1,0 +1,160 @@
+{
+  "reference": {
+    "userAgent": "HeadlessChrome/156.0.0.0",
+    "viewport": {
+      "width": 1280,
+      "height": 633,
+      "dpr": 1
+    },
+    "sourceSha256": "376826646d970b61f8e1a1e68f2ecd6fd70faf114c59627390abfa951dbd3ac7",
+    "screenshotSha256": "23b1c2013be0842fcb8c43b952bc91ae9241c137e6a03b1729872f6902635782"
+  },
+  "cases": [
+    {
+      "id": "collapse-column",
+      "axis": "columns",
+      "display": "block",
+      "visibility": "collapse",
+      "root": { "width": 80, "height": 20 },
+      "columns": [50, 50],
+      "rows": [20],
+      "item": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "child": { "width": 100, "height": 20, "visibility": "collapse" },
+      "hitAtItem": "collapse-column",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "hidden-column",
+      "axis": "columns",
+      "display": "block",
+      "visibility": "hidden",
+      "root": { "width": 80, "height": 20 },
+      "columns": [50, 50],
+      "rows": [20],
+      "item": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "child": { "width": 100, "height": 20, "visibility": "hidden" },
+      "hitAtItem": "hidden-column",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "display-none-column",
+      "axis": "columns",
+      "display": "none",
+      "visibility": "visible",
+      "root": { "width": 80, "height": 20 },
+      "columns": [0, 0],
+      "rows": [20],
+      "item": { "x": 0, "y": 0, "width": 0, "height": 0 },
+      "child": { "width": 0, "height": 0, "visibility": "visible" },
+      "hitAtItem": "display-none-column",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "collapse-visible-descendant-column",
+      "axis": "columns",
+      "display": "block",
+      "visibility": "collapse",
+      "root": { "width": 80, "height": 20 },
+      "columns": [50, 50],
+      "rows": [20],
+      "item": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "child": { "width": 8, "height": 8, "visibility": "visible" },
+      "hitAtItem": "visible-child-column",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "collapse-row",
+      "axis": "rows",
+      "display": "block",
+      "visibility": "collapse",
+      "root": { "width": 20, "height": 80 },
+      "columns": [20],
+      "rows": [50, 50],
+      "item": { "x": 0, "y": 0, "width": 20, "height": 100 },
+      "child": { "width": 20, "height": 100, "visibility": "collapse" },
+      "hitAtItem": "collapse-row",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "hidden-row",
+      "axis": "rows",
+      "display": "block",
+      "visibility": "hidden",
+      "root": { "width": 20, "height": 80 },
+      "columns": [20],
+      "rows": [50, 50],
+      "item": { "x": 0, "y": 0, "width": 20, "height": 100 },
+      "child": { "width": 20, "height": 100, "visibility": "hidden" },
+      "hitAtItem": "hidden-row",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "display-none-row",
+      "axis": "rows",
+      "display": "none",
+      "visibility": "visible",
+      "root": { "width": 20, "height": 80 },
+      "columns": [20],
+      "rows": [0, 0],
+      "item": { "x": 0, "y": 0, "width": 0, "height": 0 },
+      "child": { "width": 0, "height": 0, "visibility": "visible" },
+      "hitAtItem": "display-none-row",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "collapse-visible-descendant-row",
+      "axis": "rows",
+      "display": "block",
+      "visibility": "collapse",
+      "root": { "width": 20, "height": 80 },
+      "columns": [20],
+      "rows": [50, 50],
+      "item": { "x": 0, "y": 0, "width": 20, "height": 100 },
+      "child": { "width": 8, "height": 8, "visibility": "visible" },
+      "hitAtItem": "visible-child-row",
+      "hitAtOverflow": "body"
+    },
+    {
+      "id": "visible-column",
+      "axis": "columns",
+      "display": "block",
+      "visibility": "visible",
+      "root": { "width": 80, "height": 20 },
+      "columns": [50, 50],
+      "rows": [20],
+      "item": { "x": 0, "y": 0, "width": 100, "height": 20 },
+      "child": { "width": 100, "height": 20, "visibility": "visible" },
+      "hitAtItem": "visible-column-content",
+      "hitAtOverflow": "visible-column-content"
+    },
+    {
+      "id": "visible-row",
+      "axis": "rows",
+      "display": "block",
+      "visibility": "visible",
+      "root": { "width": 20, "height": 80 },
+      "columns": [20],
+      "rows": [50, 50],
+      "item": { "x": 0, "y": 0, "width": 20, "height": 100 },
+      "child": { "width": 20, "height": 100, "visibility": "visible" },
+      "hitAtItem": "visible-row-content",
+      "hitAtOverflow": "visible-row-content"
+    }
+  ],
+  "surfaceSamples": [
+    { "scene": "collapse-column", "offset": { "x": 40, "y": 10 }, "rgb": [240, 240, 240], "purpose": "collapse content remains unpainted inside root" },
+    { "scene": "hidden-column", "offset": { "x": 40, "y": 10 }, "rgb": [240, 240, 240], "purpose": "hidden control remains unpainted inside root" },
+    { "scene": "collapse-row", "offset": { "x": 10, "y": 40 }, "rgb": [240, 240, 240], "purpose": "collapse content remains unpainted inside root" },
+    { "scene": "hidden-row", "offset": { "x": 10, "y": 40 }, "rgb": [240, 240, 240], "purpose": "hidden control remains unpainted inside root" },
+    { "scene": "collapse-visible-descendant-column", "offset": { "x": 4, "y": 4 }, "rgb": [0, 0, 255], "purpose": "visible descendant paints" },
+    { "scene": "collapse-visible-descendant-row", "offset": { "x": 4, "y": 4 }, "rgb": [0, 0, 255], "purpose": "visible descendant paints" },
+    { "scene": "collapse-visible-descendant-column", "offset": { "x": 81, "y": 10 }, "rgb": [255, 255, 255], "purpose": "collapse overflow stays unpainted beside visible descendant" },
+    { "scene": "collapse-column", "offset": { "x": 81, "y": 10 }, "rgb": [255, 255, 255], "purpose": "collapse overflow one pixel outside root is unpainted" },
+    { "scene": "hidden-column", "offset": { "x": 81, "y": 10 }, "rgb": [255, 255, 255], "purpose": "hidden overflow one pixel outside root is unpainted" },
+    { "scene": "collapse-row", "offset": { "x": 10, "y": 81 }, "rgb": [255, 255, 255], "purpose": "collapse overflow one pixel outside root is unpainted" },
+    { "scene": "hidden-row", "offset": { "x": 10, "y": 81 }, "rgb": [255, 255, 255], "purpose": "hidden overflow one pixel outside root is unpainted" },
+    { "scene": "collapse-visible-descendant-row", "offset": { "x": 10, "y": 81 }, "rgb": [255, 255, 255], "purpose": "collapse overflow stays unpainted beside visible descendant" },
+    { "scene": "visible-column", "offset": { "x": 81, "y": 10 }, "rgb": [255, 0, 0], "purpose": "visible control paints past right root boundary" },
+    { "scene": "visible-row", "offset": { "x": 10, "y": 81 }, "rgb": [255, 0, 0], "purpose": "visible control paints past bottom root boundary" }
+  ]
+}

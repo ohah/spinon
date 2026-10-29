@@ -1,0 +1,352 @@
+{
+  "cases": [
+    {
+      "axis": "columns",
+      "child": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 0
+      },
+      "childVisibility": "collapse",
+      "gridTemplateColumns": "50px 50px",
+      "gridTemplateRows": "20px",
+      "hitAtItem": "collapse-column",
+      "hitAtOverflow": "body",
+      "id": "collapse-column",
+      "item": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 0
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "collapse",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 81,
+        "y": 10
+      },
+      "root": {
+        "height": 20,
+        "width": 80,
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "axis": "columns",
+      "child": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 28
+      },
+      "childVisibility": "hidden",
+      "gridTemplateColumns": "50px 50px",
+      "gridTemplateRows": "20px",
+      "hitAtItem": "hidden-column",
+      "hitAtOverflow": "body",
+      "id": "hidden-column",
+      "item": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 28
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "hidden",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 81,
+        "y": 38
+      },
+      "root": {
+        "height": 20,
+        "width": 80,
+        "x": 0,
+        "y": 28
+      }
+    },
+    {
+      "axis": "columns",
+      "child": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "0px 0px",
+      "gridTemplateRows": "20px",
+      "hitAtItem": "display-none-column",
+      "hitAtOverflow": "body",
+      "id": "display-none-column",
+      "item": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "itemDisplay": "none",
+      "itemVisibility": "visible",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 81,
+        "y": 66
+      },
+      "root": {
+        "height": 20,
+        "width": 80,
+        "x": 0,
+        "y": 56
+      }
+    },
+    {
+      "axis": "columns",
+      "child": {
+        "height": 8,
+        "width": 8,
+        "x": 0,
+        "y": 84
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "50px 50px",
+      "gridTemplateRows": "20px",
+      "hitAtItem": "visible-child-column",
+      "hitAtOverflow": "body",
+      "id": "collapse-visible-descendant-column",
+      "item": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 84
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "collapse",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 81,
+        "y": 94
+      },
+      "root": {
+        "height": 20,
+        "width": 80,
+        "x": 0,
+        "y": 84
+      }
+    },
+    {
+      "axis": "rows",
+      "child": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 112
+      },
+      "childVisibility": "collapse",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "50px 50px",
+      "hitAtItem": "collapse-row",
+      "hitAtOverflow": "body",
+      "id": "collapse-row",
+      "item": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 112
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "collapse",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 10,
+        "y": 193
+      },
+      "root": {
+        "height": 80,
+        "width": 20,
+        "x": 0,
+        "y": 112
+      }
+    },
+    {
+      "axis": "rows",
+      "child": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 200
+      },
+      "childVisibility": "hidden",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "50px 50px",
+      "hitAtItem": "hidden-row",
+      "hitAtOverflow": "body",
+      "id": "hidden-row",
+      "item": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 200
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "hidden",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 10,
+        "y": 281
+      },
+      "root": {
+        "height": 80,
+        "width": 20,
+        "x": 0,
+        "y": 200
+      }
+    },
+    {
+      "axis": "rows",
+      "child": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "0px 0px",
+      "hitAtItem": "display-none-row",
+      "hitAtOverflow": "body",
+      "id": "display-none-row",
+      "item": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 0
+      },
+      "itemDisplay": "none",
+      "itemVisibility": "visible",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 10,
+        "y": 369
+      },
+      "root": {
+        "height": 80,
+        "width": 20,
+        "x": 0,
+        "y": 288
+      }
+    },
+    {
+      "axis": "rows",
+      "child": {
+        "height": 8,
+        "width": 8,
+        "x": 0,
+        "y": 376
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "50px 50px",
+      "hitAtItem": "visible-child-row",
+      "hitAtOverflow": "body",
+      "id": "collapse-visible-descendant-row",
+      "item": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 376
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "collapse",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 10,
+        "y": 457
+      },
+      "root": {
+        "height": 80,
+        "width": 20,
+        "x": 0,
+        "y": 376
+      }
+    },
+    {
+      "axis": "columns",
+      "child": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 464
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "50px 50px",
+      "gridTemplateRows": "20px",
+      "hitAtItem": "visible-column-content",
+      "hitAtOverflow": "visible-column-content",
+      "id": "visible-column",
+      "item": {
+        "height": 20,
+        "width": 100,
+        "x": 0,
+        "y": 464
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "visible",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 81,
+        "y": 474
+      },
+      "root": {
+        "height": 20,
+        "width": 80,
+        "x": 0,
+        "y": 464
+      }
+    },
+    {
+      "axis": "rows",
+      "child": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 492
+      },
+      "childVisibility": "visible",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "50px 50px",
+      "hitAtItem": "visible-row-content",
+      "hitAtOverflow": "visible-row-content",
+      "id": "visible-row",
+      "item": {
+        "height": 100,
+        "width": 20,
+        "x": 0,
+        "y": 492
+      },
+      "itemDisplay": "block",
+      "itemVisibility": "visible",
+      "overflow": "visible",
+      "overflowPoint": {
+        "x": 10,
+        "y": 573
+      },
+      "root": {
+        "height": 80,
+        "width": 20,
+        "x": 0,
+        "y": 492
+      }
+    }
+  ],
+  "title": "C11.4 grid visibility collapse oracle",
+  "url": "file://<workspace>/tests/fixtures/css/c11/grid-visibility-collapse-c114-precomparison.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
