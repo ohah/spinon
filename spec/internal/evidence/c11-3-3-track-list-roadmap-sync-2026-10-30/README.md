@@ -27,6 +27,7 @@
 - 상태 페이지에는 PR #814의 2026-10-30 기록이 표시되고, C11·C11.3·C11.3.3 candidate checkbox는 모두 unchecked다. [화면](./tailnet-status-c11-agent-browser-pass03.png)
 - 계획 페이지의 완료 동기화 문구와 내부 구현 evidence 페이지를 열어 37/118 및 두 플랫폼 28/28 표본 링크를 확인했다.
 - Android AVD 화면은 1080×2400, iOS Simulator 화면은 1206×2622이며 두 이미지 모두 browser `complete=true`, `naturalWidth > 0`이다. [browser 관찰](./agent-browser-verification-pass03.json) · [세션 종료](./browser-close-pass03.json) · [화면 SHA-256](./SHA256SUMS-pass03.txt).
+- PR #815 본문의 두 Tailnet 화면은 Agent Browser에서 1280×633으로 모두 표시됐다. 첫 확인에서 두 번째 이미지 링크가 브랜치 이름 `docs/c11-3-3-track-list-roadmap-sync`를 잘못 사용해 `naturalWidth=0`이었다. URL을 실제 branch `docs/c11-3-3-track-list-cycling-roadmap-sync`의 raw 이미지 경로로 고친 뒤 2/2 모두 로드됨을 확인했다. [초기 관찰](./pr815-agent-browser-images-initial.raw.json) · [수정 후 관찰](./pr815-agent-browser-images-final.raw.json) · [PR 브라우저 종료](./browser-close-pr815.json).
 
 ## 검토와 제한
 
