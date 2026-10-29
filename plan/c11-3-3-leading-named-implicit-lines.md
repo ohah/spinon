@@ -1,6 +1,6 @@
 # C11.3.3 · Leading and trailing implicit named lines
 
-**Status:** implementation plan; no implementation or official completion claim yet.
+**상태 (2026-10-29):** 이 계획의 leading/trailing named implicit-line 제한 fixture는 [PR #790](https://github.com/ohah/spinon/pull/790)(merge SHA `d993eb4114b17a49b2d096f319053fd43c6fcf27`)으로 구현·병합됐다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 근거는 [구현 보고서](../spec/internal/evidence/c11-3-3-leading-named-implicit-lines-implementation-2026-10-29/README.md)에 있다. C11.3.3과 C11은 여전히 미완료이며, 이 제한 slice는 공개 CSS 지원 선언이 아니다.
 **Parent:** [C11 Grid plan](./c11-css-grid.md) · [official status](../spec/STATUS.md#c11-css-grid) · [internal contract 0059](../spec/internal/0059-c11-grid-layout.md)
 **Normative source:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §8.3](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#line-placement), §7.5 and §8.3.1.
 **Pinned WPT context:** revision `c999c58338ee1d223df5ad62e48be1202ced0d37`. The existing unknown-area WPT cases do not directly cover leading named-line fallback; this plan is derived from the normative §8.3 example and its named-occurrence rules.
