@@ -1,0 +1,78 @@
+{
+  "source": "CSS Grid Layout Module Level 1, 2025-03-26 CRD, §§7.3, 7.5, 7.6",
+  "method": "independent authored-prefix plus implicit-track pattern calculation",
+  "viewportCssPx": [1280, 633],
+  "dpr": 1,
+  "scenes": [
+    {
+      "id": "both-axis-cycle",
+      "root": [100, 80],
+      "rows": ["20px", "5px", "7px", "5px"],
+      "columns": ["30px", "11px", "13px", "11px"],
+      "nodes": [
+        ["both-hero", 0, 0, 41, 25],
+        ["both-side", 41, 0, 24, 25],
+        ["both-footer", 0, 25, 41, 7],
+        ["both-utility", 41, 25, 24, 7],
+        ["both-extra", 0, 32, 41, 5],
+        ["both-spare", 41, 32, 24, 5]
+      ]
+    },
+    {
+      "id": "row-cycle-from-first-implicit",
+      "root": [100, 80],
+      "rows": ["17px", "19px", "6px", "8px", "6px"],
+      "columns": ["22px", "24px"],
+      "nodes": [
+        ["row-a", 0, 0, 46, 17],
+        ["row-b", 0, 17, 46, 19],
+        ["row-c", 0, 36, 46, 6],
+        ["row-d", 0, 42, 46, 8],
+        ["row-e", 0, 50, 46, 6]
+      ]
+    },
+    {
+      "id": "column-cycle-from-first-implicit",
+      "root": [100, 80],
+      "rows": ["12px", "14px"],
+      "columns": ["21px", "23px", "25px", "9px", "10px"],
+      "nodes": [
+        ["column-left", 0, 0, 44, 26],
+        ["column-middle", 44, 0, 34, 26],
+        ["column-right", 78, 0, 10, 26]
+      ]
+    },
+    {
+      "id": "row-cycle-continues-after-area",
+      "root": [100, 80],
+      "rows": ["20px", "6px", "8px"],
+      "columns": ["30px"],
+      "nodes": [
+        ["phase-row-known", 0, 0, 30, 20],
+        ["phase-row-area", 0, 20, 30, 6],
+        ["phase-row-late", 0, 26, 30, 8]
+      ]
+    },
+    {
+      "id": "column-cycle-continues-after-area",
+      "root": [100, 80],
+      "rows": ["30px"],
+      "columns": ["20px", "5px", "7px"],
+      "nodes": [
+        ["phase-column-known", 0, 0, 20, 30],
+        ["phase-column-area", 20, 0, 5, 30],
+        ["phase-column-late", 25, 0, 7, 30]
+      ]
+    },
+    {
+      "id": "authored-tracks-exceed-area",
+      "root": [100, 80],
+      "rows": ["15px", "16px", "17px"],
+      "columns": ["18px", "19px", "20px"],
+      "nodes": [
+        ["exceed-top", 0, 0, 37, 15],
+        ["exceed-bottom", 0, 15, 37, 16]
+      ]
+    }
+  ]
+}

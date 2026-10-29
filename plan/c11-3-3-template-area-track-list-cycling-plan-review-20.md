@@ -1,6 +1,6 @@
 # C11.3.3 template-area auto-track-list cycling · plan review
 
-**검토 대상:** [계획](./c11-3-3-template-area-track-list-cycling.md), [Chrome 156 사전 비교](../spec/internal/evidence/c11-3-3-template-area-track-list-cycle-precomparison-2026-10-30/README.md), 고정 HTML fixture 및 독립 기대값 JSON.
+**검토 대상:** [계획](./c11-3-3-template-area-track-list-cycling.md), [Chrome 156 사전 비교](../spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.md), 고정 HTML fixture 및 독립 기대값 JSON.
 
 **시점:** 구현 전. 계획 PR diff 검토는 별도 기록으로 수행하며 이 계획 리뷰를 재사용하지 않는다.
 
@@ -30,3 +30,7 @@
 ## 판정
 
 PASS 20/20, 계획 blocker 0개. 이 검토는 구현 성공이나 PR diff 통과를 의미하지 않는다. 구현 PR은 새 코드/runtime 20관점 검토와 별도 PR diff 20관점 검토를 거쳐야 한다.
+
+## Source-audit correction · 2026-10-30
+
+구현 착수 전 layout validation을 다시 읽다가 관점 #15의 부정 대조 설명이 기존 동작을 잘못 분류한 것을 발견했다. `TemplateGridImplicitTracks`와 `TemplateGridSignedImplicitTracks`는 이미 fixed-px `TrackList`를 허용한다. 계획의 “named mode는 목록 거부” 문구를 제거하고, 구현 검증은 named mode의 기존 fixed-px 수용 및 non-px 거부를 함께 고정한다. 새 feature gate는 area-expansion의 forward cycle에만 적용된다. 이 수정 때문에 범위가 확장되지 않았고, #15를 기존 동작 보존 판정으로 다시 확인했다. 초기 검토 누락은 숨기지 않고 이 addendum에 남긴다.

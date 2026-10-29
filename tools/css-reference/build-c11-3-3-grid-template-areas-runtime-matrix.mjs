@@ -11,6 +11,9 @@ const htmlPath = 'tests/fixtures/css/c11/grid-template-areas-c1133.html';
 const referencePath = 'tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json';
 const supplementalHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html';
 const supplementalObservationPath = 'spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json';
+const cycleHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-track-list-cycling-c1133-runtime.html';
+const cycleObservationPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json';
+const cycleScreenshotPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png';
 const outputPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
 const checkOnly = process.argv.includes('--check');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -118,24 +121,34 @@ function createSceneSource(sceneId, nodes, rules) {
   return lines.join('\n');
 }
 
-const [inventoryBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplementalObservationBytes] = await Promise.all([
+const [inventoryBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplementalObservationBytes,
+  cycleHtmlBytes, cycleObservationBytes, cycleScreenshotBytes] = await Promise.all([
   readFile(resolve(repositoryRoot, inventoryPath)),
   readFile(resolve(repositoryRoot, htmlPath)),
   readFile(resolve(repositoryRoot, referencePath)),
   readFile(resolve(repositoryRoot, supplementalHtmlPath)),
   readFile(resolve(repositoryRoot, supplementalObservationPath)),
+  readFile(resolve(repositoryRoot, cycleHtmlPath)),
+  readFile(resolve(repositoryRoot, cycleObservationPath)),
+  readFile(resolve(repositoryRoot, cycleScreenshotPath)),
 ]);
 const inventory = JSON.parse(inventoryBytes.toString('utf8'));
 const reference = JSON.parse(referenceBytes.toString('utf8'));
 const supplementalObservation = JSON.parse(supplementalObservationBytes.toString('utf8'));
+const cycleObservation = JSON.parse(cycleObservationBytes.toString('utf8'));
 const parseErrors = [];
 const document = parse(htmlBytes.toString('utf8'), { sourceCodeLocationInfo: true, onParseError: (error) => parseErrors.push(error) });
 const supplementalParseErrors = [];
+const cycleParseErrors = [];
 const supplementalDocument = parse(supplementalHtmlBytes.toString('utf8'), {
   sourceCodeLocationInfo: true, onParseError: (error) => supplementalParseErrors.push(error),
 });
+const cycleDocument = parse(cycleHtmlBytes.toString('utf8'), {
+  sourceCodeLocationInfo: true, onParseError: (error) => cycleParseErrors.push(error),
+});
 assert.deepEqual(parseErrors, [], 'C11.3.3 HTML fixture에 parse error가 있습니다.');
 assert.deepEqual(supplementalParseErrors, [], 'C11.3.3 supplemental HTML fixture에 parse error가 있습니다.');
+assert.deepEqual(cycleParseErrors, [], 'C11.3.3 track-list HTML fixture에 parse error가 있습니다.');
 assert.equal(inventory.schema, 'spinon-css-c11-3-3-grid-template-areas-inventory/v1');
 assert.equal(reference.fixture.inventorySha256, sha256(inventoryBytes));
 assert.equal(reference.fixture.htmlSha256, sha256(htmlBytes));
@@ -145,9 +158,21 @@ assert.equal(supplementalObservation.schema, 'spinon-css-c11-3-3-area-auto-track
 assert.equal(supplementalObservation.fixture.path, supplementalHtmlPath);
 assert.equal(supplementalObservation.fixture.sha256, sha256(supplementalHtmlBytes));
 assert.equal(supplementalObservation.devicePixelRatio, 1);
+assert.equal(cycleObservation.schema, 'spinon-css-c11-3-3-area-auto-track-list-cycle-chrome-observation/v1');
+assert.equal(cycleObservation.fixture.path, cycleHtmlPath);
+assert.equal(cycleObservation.fixture.sha256, sha256(cycleHtmlBytes));
+assert.equal(cycleObservation.devicePixelRatio, 1);
+assert.deepEqual(cycleObservation.viewport, { width: 1280, height: 633 });
+assert.equal(cycleObservation.capture.tool, 'agent-browser');
+assert.equal(cycleObservation.capture.toolVersion, '0.31.1');
+assert.equal(cycleObservation.capture.browserVersion, '156.0.0.0');
+assert.match(cycleObservation.userAgent, /HeadlessChrome\/156\.0\.0\.0/);
+assert.equal(cycleObservation.screenshot.path, cycleScreenshotPath);
+assert.equal(cycleObservation.screenshot.sha256, sha256(cycleScreenshotBytes));
 
 const rules = parseRules(document);
 const supplementalRules = parseRules(supplementalDocument);
+const cycleRules = parseRules(cycleDocument);
 const sections = descendants(document, (node) => node.tagName === 'div' && attributes(node).has('data-scene'));
 assert.deepEqual(sections.map((node) => attributes(node).get('data-scene')),
   inventory.cases.map(({ id }) => id), 'HTML fixture scene ID/순서가 inventory와 다릅니다.');
@@ -156,6 +181,12 @@ const supplementalSections = descendants(supplementalDocument,
 assert.deepEqual(supplementalSections.map((node) => attributes(node).get('data-scene')),
   ['area-auto-tracks-none', 'area-auto-tracks-short-row', 'area-auto-tracks-short-col',
     'area-auto-tracks-auto', 'area-auto-tracks-long'], 'supplemental scene ID/순서가 다릅니다.');
+const cycleSections = descendants(cycleDocument,
+  (node) => node.tagName === 'div' && attributes(node).has('data-scene'));
+assert.deepEqual(cycleSections.map((node) => attributes(node).get('data-scene')),
+  ['both-axis-cycle', 'row-cycle-from-first-implicit', 'column-cycle-from-first-implicit',
+    'authored-tracks-exceed-area', 'row-cycle-continues-after-area',
+    'column-cycle-continues-after-area'], 'track-list scene ID/순서가 다릅니다.');
 const referenceCases = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1).cases;
 const expectedRejections = new Map([
   ['unknown-area-implicit-tracks', {
@@ -220,6 +251,31 @@ const definitions = [
       oraclePath: supplementalObservationPath, supplemental: true,
     };
   }),
+  ...cycleSections.map((section) => {
+    const sceneId = attributes(section).get('data-scene');
+    const observed = cycleObservation.observations[sceneId];
+    assert.ok(observed, `${sceneId}: track-list Chrome observation이 없습니다.`);
+    const rootId = attributes(section).get('id');
+    const fixtureNodeIds = descendants(section,
+      (node) => attributes(node).has('data-node'))
+      .map((node) => attributes(node).get('id'));
+    const oracleNodes = observed.nodes.map(({ id, rect }) => ({ id, rect }));
+    assert.deepEqual(fixtureNodeIds, oracleNodes.map(({ id }) => id),
+      `${sceneId}: track-list Chrome node 순서가 다릅니다.`);
+    return {
+      section, sceneId, fixtureCase: {
+        rootId, nodeIds: fixtureNodeIds, expectedSpinonOutcome: 'success',
+      }, rules: cycleRules,
+      chromeCase: {
+        id: sceneId,
+        rootId,
+        rootRect: { x: 0, y: 0, width: observed.root.width, height: observed.root.height },
+        nodes: oracleNodes,
+      },
+      oracleProduct: `Chrome/${cycleObservation.capture.browserVersion}`,
+      oraclePath: cycleObservationPath, supplemental: true,
+    };
+  }),
 ];
 
 const cases = definitions.map(({ section, sceneId, fixtureCase, rules: sceneRules, chromeCase,
@@ -282,6 +338,11 @@ const matrix = {
     supplementalObservation: {
       path: supplementalObservationPath, sha256: sha256(supplementalObservationBytes),
     },
+    cycleHtml: { path: cycleHtmlPath, sha256: sha256(cycleHtmlBytes) },
+    cycleObservation: {
+      path: cycleObservationPath, sha256: sha256(cycleObservationBytes),
+    },
+    cycleScreenshot: { path: cycleScreenshotPath, sha256: sha256(cycleScreenshotBytes) },
   },
   summary: {
     sceneCount: cases.length,
@@ -292,7 +353,8 @@ const matrix = {
   },
   cases,
 };
-assert.equal(nodeCount, 90);
+assert.equal(cases.length, 37);
+assert.equal(nodeCount, 118);
 assert.equal(cascadeFallbackCount, 5);
 assert.equal(expectedRejectCount, 1);
 assert.equal(allNodeIds.size, nodeCount);
