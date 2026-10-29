@@ -565,6 +565,9 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "fit-content-percentage-row-wpt", "fit-content-calc-percentage-row-wpt",
     C114FitContentImplicitColumnWpt.sceneID,
     "fit-content-spanning-wpt",
+    "fit-content-limit-40-wpt",
+    "fit-content-limit-30-wpt",
+    "fit-content-limit-200-wpt",
     "fit-content-auto-min-floor-wpt", "fit-content-auto-min-floor-zero-control",
     "columns-span2-visible-content-minimum", "columns-span2-clip-content-minimum",
     "columns-span2-hidden-zero-minimum", "columns-span2-auto-zero-minimum",
@@ -1497,6 +1500,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "fit-content-zoomed-grid-wpt" { return "width=120,height=600" }
     if c114IsFitContentPercentageArgumentScene(sceneID) { return "width=60,height=300" }
     if sceneID == "fit-content-spanning-wpt" { return "width=60,height=300" }
+    if c114IsFitContentLimitBoundaryScene(sceneID) { return "width=60,height=300" }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return "width=60,height=300" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=20" }
@@ -1825,6 +1829,9 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
         return "width=60,height=\(sceneID == "fit-content-calc-percentage-row-wpt" ? 35 : 150)"
     }
     if sceneID == "fit-content-spanning-wpt" { return "width=60,height=80" }
+    if let limit = c114FitContentLimitBoundaryLimit(sceneID) {
+        return "width=60,height=\(Int(min(limit, 100)))"
+    }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return "width=60,height=10" }
     if sceneID == "grid-layout-auto-tracks-c114-wpt" { return "width=100,height=10" }
@@ -3797,6 +3804,115 @@ private func c114FitContentPercentageArgumentMathMatches(
 private func c114IsFitContentPercentageArgumentScene(_ sceneID: String) -> Bool {
     sceneID == "fit-content-percentage-row-wpt"
         || sceneID == "fit-content-calc-percentage-row-wpt"
+}
+
+private func c114FitContentLimitBoundaryLimit(_ sceneID: String) -> Double? {
+    switch sceneID {
+    case "fit-content-limit-40-wpt": return 40
+    case "fit-content-limit-30-wpt": return 30
+    case "fit-content-limit-200-wpt": return 200
+    default: return nil
+    }
+}
+
+private func c114IsFitContentLimitBoundaryScene(_ sceneID: String) -> Bool {
+    c114FitContentLimitBoundaryLimit(sceneID) != nil
+}
+
+private func c114FitContentLimitBoundariesMatches(_ sceneID: String, report: String) -> Bool {
+    guard let limit = c114FitContentLimitBoundaryLimit(sceneID) else { return true }
+    let expectedRow = min(limit, 100)
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let source = revision["source"] as? String,
+          let revisionStyle = revision["style"] as? NSNumber,
+          let revisionEnvironment = revision["environment"] as? NSNumber,
+          let observation = diagnostics["fitContentLimitBoundaries"] as? [String: Any],
+          observation["sceneId"] as? String == sceneID,
+          observation["frameSource"] as? String == "pre-render LayoutOutput CSS px",
+          let observedLimit = observation["expectedLimitCssPx"] as? NSNumber,
+          observedLimit.doubleValue == limit,
+          let observedRow = observation["expectedRowCssPx"] as? NSNumber,
+          observedRow.doubleValue == expectedRow,
+          let maxContent = observation["expectedMaxContentCssPx"] as? NSNumber,
+          maxContent.doubleValue == 100,
+          let style = observation["styleSnapshot"] as? [String: Any],
+          style["profile"] as? String == "RuntimeBlockFlexGridTrackSizingV1",
+          let generation = style["generation"] as? NSNumber,
+          let document = style["documentRevision"] as? NSNumber,
+          let renderTree = style["renderTreeRevision"] as? NSNumber,
+          let styleRevision = style["styleRevision"] as? NSNumber,
+          let environment = style["environmentRevision"] as? NSNumber,
+          generation.int64Value > 0, document.int64Value > 0, renderTree.int64Value > 0,
+          styleRevision.int64Value >= 0,
+          styleRevision.int64Value == revisionStyle.int64Value,
+          environment.int64Value >= 0,
+          environment.int64Value == revisionEnvironment.int64Value,
+          c114FitContentAutoNeighborReportField(report, "generation=") == String(generation.int64Value),
+          c114FitContentAutoNeighborReportField(report, "document_revision=") == String(document.int64Value),
+          c114FitContentAutoNeighborReportField(report, "render_tree_revision=") == String(renderTree.int64Value),
+          c114FitContentAutoNeighborReportField(report, "style_revision=") == String(styleRevision.int64Value),
+          c114FitContentAutoNeighborReportField(report, "environment_revision=") == String(environment.int64Value),
+          source.contains("generation: DocumentGeneration(\(generation.int64Value))"),
+          source.contains("document: DocumentRevision(\(document.int64Value))"),
+          source.contains("render_tree: RenderTreeRevision(\(renderTree.int64Value))"),
+          let properties = style["computedProperties"] as? [String: Any],
+          properties["display"] as? String == "grid",
+          properties["width"] as? String == "LengthPx(60.0)",
+          properties["height"] as? String == "LengthPx(300.0)",
+          properties["gridTemplateColumns"] as? String == "60px",
+          properties["gridTemplateRows"] as? String == "none",
+          properties["gridAutoRows"] as? String == "fit-content(\(Int(limit))px)",
+          properties["alignContent"] as? String == "normal",
+          properties["itemMinHeight"] as? String == "LengthPx(0.0)",
+          properties["itemOverflowY"] as? String == "visible",
+          let input = observation["layoutInputGridContainer"] as? [String: Any],
+          input["columns"] as? String == "[LengthPx(60.0)]",
+          input["explicitRows"] as? String == "[]",
+          input["autoRows"] as? String == "TrackList([FitContent(LengthPx(\(limit)))])",
+          input["autoFlow"] as? String == "Row",
+          input["placementMode"] as? String == "TrackSizing",
+          let nodeIDs = observation["nodeIds"] as? [String: Any],
+          nodeIDs.count == 3,
+          let root = nodeIDs["root"] as? NSNumber,
+          let item = nodeIDs["item"] as? NSNumber,
+          let child = nodeIDs["child"] as? NSNumber,
+          [root, item, child].map(\.int64Value) == [1, 2, 3],
+          (style["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          (input["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          let frames = observation["framesCssPx"] as? [String: Any],
+          frames.count == 3,
+          c114FitContentFrameMatches(frames["root"], x: 0, y: 0, width: 60, height: 300),
+          c114FitContentFrameMatches(frames["item"], x: 0, y: 0, width: 60, height: expectedRow),
+          c114FitContentFrameMatches(frames["child"], x: 0, y: 0, width: 60, height: 100),
+          let stages = observation["rowSizingStages"] as? [[String: Any]],
+          let maximize = stages.first(where: { $0["stage"] as? String == "MaximizeTracks" }),
+          let tracks = maximize["tracks"] as? [[String: Any]] else {
+        return false
+    }
+    let rowTracks = tracks.filter {
+        ($0["gutter"] as? Bool) == false && ($0["collapsed"] as? Bool) == false
+    }
+    guard rowTracks.count == 1,
+          let rowBase = rowTracks[0]["baseSizeCssPx"] as? NSNumber,
+          abs(rowBase.doubleValue - expectedRow) <= 0.000001,
+          rowTracks[0]["infinitelyGrowable"] as? Bool == false,
+          let growthLimit = rowTracks[0]["growthLimitCssPx"] as? NSNumber,
+          abs(growthLimit.doubleValue - 100) <= 0.000001,
+          let contributions = observation["rowContributions"] as? [[String: Any]] else {
+        return false
+    }
+    let maxContentContributions = contributions.filter { contribution in
+        guard contribution["kind"] as? String == "MaxContent",
+              (contribution["item"] as? NSNumber)?.int64Value == item.int64Value,
+              (contribution["span"] as? NSNumber)?.intValue == 1 else { return false }
+        return true
+    }
+    guard maxContentContributions.count == 1,
+          let maxContentValue = maxContentContributions[0]["valueCssPx"] as? NSNumber else {
+        return false
+    }
+    return abs(maxContentValue.doubleValue - 100) <= 0.000001
 }
 
 private func c114FitContentSpanningMatches(_ sceneID: String, report: String) -> Bool {
@@ -6122,6 +6238,12 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=60,height=80;"
             + "2:node=3,x=0,y=0,width=60,height=200]"
     }
+    if let limit = c114FitContentLimitBoundaryLimit(sceneID) {
+        let row = Int(min(limit, 100))
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
+            + "1:node=2,x=0,y=0,width=60,height=\(row);"
+            + "2:node=3,x=0,y=0,width=60,height=100]"
+    }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" {
         let zeroControl = sceneID == "fit-content-auto-min-floor-zero-control"
@@ -7748,6 +7870,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "fit-content-zoomed-grid-wpt" { return 3 }
     if c114IsFitContentPercentageArgumentScene(sceneID) { return 3 }
     if sceneID == "fit-content-spanning-wpt" { return 3 }
+    if c114IsFitContentLimitBoundaryScene(sceneID) { return 3 }
     if sceneID == "fit-content-auto-min-floor-wpt"
         || sceneID == "fit-content-auto-min-floor-zero-control" { return 5 }
     if c114SingleTrackOverflowAutoMinimumState(sceneID) != nil { return 2 }
@@ -8802,6 +8925,30 @@ private struct C111MetalPixelRun {
                  [23, 33, 43, 255]),
                 ("spanning-outside-root", rootID, 60, 120, [0, 0, 0, 255]),
             ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
+        if let limit = c114FitContentLimitBoundaryLimit(sceneID) {
+            let suffix = String(Int(limit))
+            let rootID = "c114-fit-content-limit-\(suffix)-grid"
+            let childID = "c114-fit-content-limit-\(suffix)-child"
+            var expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("\(sceneID)-child-in-row", childID, 30, 10, [255, 209, 102, 255]),
+            ]
+            if limit < 100 {
+                expectedSamples.append(("\(sceneID)-child-past-item", childID, 30,
+                    limit == 40 ? 60 : 50, [255, 209, 102, 255]))
+            }
+            expectedSamples.append(("\(sceneID)-root-after-child", rootID, 30, 120,
+                [23, 33, 43, 255]))
+            expectedSamples.append(("\(sceneID)-outside-root", rootID, 60, 120,
+                [0, 0, 0, 255]))
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
                 samples.contains { sample in
@@ -9889,6 +10036,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c114FitContentSpanningExpectedPresentationIdentity: String?
     private var c114FitContentSpanningExpectedSurfaceGeneration: UInt64?
     private var c114FitContentSpanningExpectedSequence: UInt64?
+    private var c114FitContentLimitBoundariesExpectedPresentationIdentity: String?
+    private var c114FitContentLimitBoundariesExpectedSurfaceGeneration: UInt64?
+    private var c114FitContentLimitBoundariesExpectedSequence: UInt64?
     private var c114FitContentAutoMinFloorExpectedPresentationIdentity: String?
     private var c114FitContentAutoMinFloorExpectedSurfaceGeneration: UInt64?
     private var c114FitContentAutoMinFloorExpectedSequence: UInt64?
@@ -11372,6 +11522,35 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
               (UInt64(values[1]) ?? 0) > 0,
               (UInt64(values[2]) ?? 0) > 0 else { return nil }
         return "60x300/320x240/" + values.joined(separator: "/")
+    }
+
+    private func c114FitContentLimitBoundariesPresentationIdentity(
+        _ sceneID: String, _ report: String, drawReport: Bool
+    ) -> String? {
+        let rootFrameField = drawReport ? "root_css_px=" : "root_frame_css_px="
+        let viewportField = drawReport ? "viewport_css_px=" : "render_viewport_css_px="
+        guard c114IsFitContentLimitBoundaryScene(sceneID),
+              report.hasPrefix("status=0 "),
+              c114FitContentAutoNeighborReportField(report, "boxes=") == "3",
+              c114FitContentAutoNeighborReportField(report, rootFrameField) == "60x300",
+              c114FitContentAutoNeighborReportField(report, viewportField) == "320x240",
+              drawReport
+                ? (report.contains("presented boxes=3 ")
+                    && c114AlignContentNormalEqualAutoRowsPositiveSize(
+                        c114FitContentAutoNeighborReportField(report, "surface_texture=")))
+                : c114FitContentAutoNeighborReportField(report, "layout=") == "ready" else {
+            return nil
+        }
+        let fields = [
+            "generation=", "document_revision=", "render_tree_revision=",
+            "style_revision=", "environment_revision="
+        ]
+        let values = fields.map { c114FitContentAutoNeighborReportField(report, $0) }
+        guard values.allSatisfy({ UInt64($0) != nil }),
+              (UInt64(values[0]) ?? 0) > 0,
+              (UInt64(values[1]) ?? 0) > 0,
+              (UInt64(values[2]) ?? 0) > 0 else { return nil }
+        return "\(sceneID)/60x300/320x240/" + values.joined(separator: "/")
     }
 
     private func c114FitContentAutoMinFloorPresentationIdentity(
@@ -13436,6 +13615,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                     c114GridTrackSizingSceneID, report: report)
             let expectedFitContentSpanningMatches = c114FitContentSpanningMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedFitContentLimitBoundariesMatches = c114FitContentLimitBoundariesMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedOverflowAutoMinimumMatches = c114OverflowAutoMinimumMatches(
                 c114GridTrackSizingSceneID, report: report)
             let expectedSingleTrackOverflowAutoMinimumMatches =
@@ -13471,6 +13652,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedFitContentZoomedGridMatches,
                   expectedFitContentPercentageArgumentMatches,
                   expectedFitContentSpanningMatches,
+                  expectedFitContentLimitBoundariesMatches,
                   expectedOverflowAutoMinimumMatches,
                   expectedSingleTrackOverflowAutoMinimumMatches,
                   expectedGridLayoutAutoTracksMatches,
@@ -13478,7 +13660,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedRowAxisSpanStageMatches,
                   expectedFlexStageMatches else {
                 logC114GridNodeFrames(report)
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) fit_content_limit_boundaries_matches=\(expectedFitContentLimitBoundariesMatches) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
@@ -14575,6 +14757,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c114FitContentSpanningExpectedPresentationIdentity = identity
             c114FitContentSpanningExpectedSurfaceGeneration = generation
             c114FitContentSpanningExpectedSequence = sequence
+            stateLock.unlock()
+            log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114IsFitContentLimitBoundaryScene(c114GridTrackSizingSceneID) {
+            let environmentReport = report ?? ""
+            guard c114FitContentLimitBoundariesMatches(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  c114ExpectedNodeFramesMatch(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  let identity = c114FitContentLimitBoundariesPresentationIdentity(
+                    c114GridTrackSizingSceneID, environmentReport, drawReport: false) else {
+                stateLock.lock()
+                c114FitContentLimitBoundariesExpectedPresentationIdentity = nil
+                c114FitContentLimitBoundariesExpectedSurfaceGeneration = nil
+                c114FitContentLimitBoundariesExpectedSequence = nil
+                stateLock.unlock()
+                log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=false report=\(environmentReport)")
+                postStatus("실패 · C11.4 fit-content limit boundary surface 환경 trace가 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 fit-content limit boundary environment layout/revision 검증 실패"
+                )
+            }
+            stateLock.lock()
+            guard !closing && surfaceGeneration == generation
+                && presentationSequence == sequence else {
+                stateLock.unlock()
+                return
+            }
+            c114FitContentLimitBoundariesExpectedPresentationIdentity = identity
+            c114FitContentLimitBoundariesExpectedSurfaceGeneration = generation
+            c114FitContentLimitBoundariesExpectedSequence = sequence
             stateLock.unlock()
             log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
         }
@@ -16106,6 +16320,30 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C11.4 fit-content spanning draw revision이 검증된 환경과 다릅니다")
                 throw C0410LatestTaskLaneError.operationFailed(
                     "C11.4 fit-content spanning draw identity가 surface 환경과 일치하지 않습니다"
+                )
+            }
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114IsFitContentLimitBoundaryScene(c114GridTrackSizingSceneID) {
+            let actualIdentity = result.flatMap {
+                c114FitContentLimitBoundariesPresentationIdentity(
+                    c114GridTrackSizingSceneID, $0, drawReport: true)
+            }
+            stateLock.lock()
+            let expectedIdentity = c114FitContentLimitBoundariesExpectedPresentationIdentity
+            let expectedSurfaceGeneration = c114FitContentLimitBoundariesExpectedSurfaceGeneration
+            let expectedSequence = c114FitContentLimitBoundariesExpectedSequence
+            let currentSequence = presentationSequence
+            stateLock.unlock()
+            let matched = actualIdentity != nil
+                && actualIdentity == expectedIdentity
+                && expectedSurfaceGeneration == generation
+                && expectedSequence == currentSequence
+            log("SPINON_C114_GRID_PRESENTATION_MATCH run_id=\(c114GridTrackSizingRunID) matched=\(matched) surface_generation=\(generation) sequence=\(currentSequence) expected_identity=\(expectedIdentity ?? "missing") actual_identity=\(actualIdentity ?? "missing")")
+            guard matched else {
+                postStatus("실패 · C11.4 fit-content limit boundary draw revision이 surface 환경과 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 fit-content limit boundary draw identity가 surface environment와 일치하지 않습니다"
                 )
             }
         }
