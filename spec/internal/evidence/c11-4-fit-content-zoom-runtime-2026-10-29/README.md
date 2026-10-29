@@ -47,4 +47,4 @@
 
 ## 한계
 
-Android 결과는 software AVD이며 iOS 표본은 compositor 제출 전 Metal drawable에서 읽었다. 실기기, hardware GPU, compositor 최종 출력, zoom ancestor 조합·zoomed auto-repeat·percentage/calc·text intrinsic sizing, 일반 CSSOM zoom, 전체 WPT runner, C11.4 전체는 검증하지 않았다. 사전 계획 리뷰 20개, 구현/runtime 리뷰 20개, PR diff 리뷰 30개는 완료했다. 커밋·PR·merge는 아직 남아 있다. C11.4 checkbox와 공식 `72/213`은 유지한다.
+Android 결과는 software AVD이며 iOS 표본은 compositor 제출 전 Metal drawable에서 읽었다. 실기기, hardware GPU, compositor 최종 출력, zoom ancestor 조합·zoomed auto-repeat·percentage/calc·text intrinsic sizing, 일반 CSSOM zoom, 전체 WPT runner, C11.4 전체는 검증하지 않았다. 사전 계획 리뷰 20개, 구현/runtime 리뷰 20개, PR diff 리뷰 30개는 완료했다. 구현 PR [#783](https://github.com/ohah/spinon/pull/783)은 2026-10-29T01:51:27Z Rebase and merge됐고 merge SHA는 `664f4a848a3bf21bec4d2be6080633a8e3b4c5a4`다. 병합 당시 check rollup과 required-check 조회는 비어 있었다. [병합 후 상태 기록 검토 30개](./post-merge-status-review-30.md). C11.4 checkbox와 공식 `72/213`은 유지한다.
