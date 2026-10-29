@@ -47,8 +47,8 @@ C11.3은 다음 세 단계로 분할한다. 각 단계는 독립된 기능 PR �
 3. 소유된 엔진 중립 track 입력은 track 크기 N개와 경계 line-name 목록 N+1개를 보존한다. 각 CSS Grid line의 이름은 순서·반복 횟수·축을 잃지 않고 저장한다. 중복 이름을 임의로 제거하지 않는다. 동일 line에 복수 표기가 있을 때의 조회 결과는 규범과 고정 Chrome fixture로 확정한다.
 4. 정수 repeat는 Taffy에 넘기기 전에 Spinon이 확장한다. count와 기존 track 수를 checked arithmetic으로 계산하고 `GRID_MAX_TRACKS`(10,000)를 넘으면 전체 계산을 구체 오류로 거부한다. 축별 expanded line-name metadata 예상 크기는 line-group/vector header와 이름 payload를 합산해 1 MiB까지 허용한다. 초과 입력, 산술 overflow, `try_reserve` 실패는 전체 계산을 거부하고 부분 layout을 내보내지 않는다. 이 크기는 메모리 사전 차단용 추정치이며 프로세스 전체 메모리 상한은 아니다. 조용한 clamp나 축소는 금지한다.
 5. named line/area 해석은 고정된 CSS Grid 규칙에 따라 Spinon 엔진 중립 계층에서 수행한다. Taffy 입력에는 검증된 explicit numeric line을 전달한다. 지원 밖 해석은 구체 진단으로 실패시키며 다른 이름·line으로 대체하지 않는다.
-6. C11.3.3 area matrix는 모든 행의 cell 수가 같고 각 area 이름이 하나의 채워진 직사각형이어야 한다. 하나의 이름이 여러 인접 cell을 차지하는 것은 유효하며, L자형·분리 영역은 무효다. `.` 연속 표기는 하나의 null cell token이다. area matrix의 행·열 수는 명시 rows/columns track 수와 같아야 한다. 현재 단계는 area 선언만으로 자동 크기 explicit track을 생성하는 CSS 동작을 지원하지 않는다.
-7. 입력은 `grid-template-columns`, `grid-template-rows`, `grid-template-areas`, `grid-row`/`grid-column` longhand와 shorthand, `grid-area`를 포함한다. `grid-template`과 `grid` shorthand도 authored 문법을 구별해 차단하지 않는다. Stylo computed 결과가 이 계획의 typed-value subset에 들어오면 처리하고, shorthand가 만든 값 중 하나라도 지원 밖이면 해당 computed property를 진단과 함께 거부한다. explicit grid 밖 implicit line/track 생성은 지원하지 않는다.
+6. C11.3.3 area matrix는 모든 행의 cell 수가 같고 각 area 이름이 하나의 채워진 직사각형이어야 한다. 하나의 이름이 여러 인접 cell을 차지하는 것은 유효하며, L자형·분리 영역은 무효다. `.` 연속 표기는 하나의 null cell token이다. 최초 area profile은 area matrix와 authored track 수가 같은 경우만 처리한다. CSS Grid가 area 차원에 맞는 implicit track을 만드는 후속 동작은 별도 [C11.3.3 계획](./c11-3-3-template-area-implicit-tracks.md)으로 추적한다.
+7. 입력은 `grid-template-columns`, `grid-template-rows`, `grid-template-areas`, `grid-row`/`grid-column` longhand와 shorthand, `grid-area`를 포함한다. `grid-template`과 `grid` shorthand도 authored 문법을 구별해 차단하지 않는다. Stylo computed 결과가 이 계획의 typed-value subset에 들어오면 처리하고, shorthand가 만든 값 중 하나라도 지원 밖이면 해당 computed property를 진단과 함께 거부한다. C11.3.1/.2의 일반 implicit line placement는 지원하지 않는다. Area matrix가 요구하는 implicit track은 [별도 후속 계획](./c11-3-3-template-area-implicit-tracks.md) 범위에서 다룬다.
 8. CSS parser가 잘못된 declaration을 버리고 cascade fallback을 적용하는 것과 layout adapter의 unsupported computed value 오류를 구분한다. malformed CSS를 adapter에서 재파싱하거나 모든 잘못된 authored string을 runtime error라고 부르지 않는다.
 9. Chrome `getComputedStyle()`은 브라우저 oracle로만 사용한다. `grid-template-rows/columns`의 CSSOM resolved value(used track size serialization), Stylo typed computed value, normalized line/area metadata, node frame을 각각 다른 관측값으로 비교한다. 이를 Spinon 공개 CSSOM/`getComputedStyle` 구현으로 표시하지 않는다.
 10. DOM/source/accessibility/paint order, NodeId, mount root, document/style/environment revision은 placement 결과만으로 재정렬·변경하지 않는다. 모든 runtime profile과 새 metadata는 같은 snapshot revision을 유지한다.
@@ -81,7 +81,7 @@ C11.3은 다음 세 단계로 분할한다. 각 단계는 독립된 기능 PR �
 - empty/null cell, 반복 점, unequal row width, 하나의 유효한 반복 영역, L자형·분리 area, `none`, 비 ASCII/escaped custom-ident, area alias와 authored line name 충돌을 분리한다. explicit `foo-start`/`foo-end` line names가 만드는 implicitly-named area도 CSS Grid §7.3.3 규칙으로 조회한다. 이름으로 배치할 때 explicit/generated `foo-start`/`foo-end` 후보의 우선 순서는 CSS Grid §8.3의 첫 매칭 규칙을 따른다.
 - area 이름은 각 축에 `name-start`/`name-end` alias를 제공한다. authored explicit line name과 생성 alias의 합성 및 동일 이름의 occurrence는 CSS 규칙 및 Chrome 비교로 검증한다.
 - area 이름을 placement로 지정하면 해당 rectangle의 네 경계로 정규화한다. `grid-area` shorthand의 영역 해석, 네 longhand에서 이름을 지정하는 경우, 이름이 area와 line 모두와 관계되는 경우를 구분한다.
-- area 행/열과 명시 track 수가 다르거나 auto track 생성이 필요하면 실패한다. invalid authored declaration이 Stylo cascade에서 무시되어 earlier declaration/initial value가 선택되면 그 computed 결과를 그대로 사용한다.
+- 최초 C11.3.3 profile은 area 차원과 explicit track 수가 다르면 실패시켰다. 이 제한을 해제하는 작업은 [area-generated implicit track 후속 계획](./c11-3-3-template-area-implicit-tracks.md)으로 분리한다. Invalid authored declaration이 Stylo cascade에서 무시되어 earlier declaration/initial value가 선택되면 그 computed 결과를 그대로 사용한다.
 - definite area item의 `width`·`height:auto`와 0 `min-width`·`min-height`는 `TemplateGrid` placement mode에서만 허용한다. 이 mode는 explicit `template_areas`가 있거나 같은 area 이름의 `-start`·`-end` line pair가 양 축 모두에 있을 때만 선택한다. area metadata가 없는 일반 template/repeat/named-line 입력은 기존 `DenseAutoPlacement` 계약을 유지해 C11.3.1/.2로 item auto-size 지원이 번지지 않게 한다. auto-placed item의 고정 크기 요구와 나머지 min/max 제약은 유지한다. 전체 C11.3.3 fixture runtime·WPT·실기기 검증을 뜻하지 않는다.
 
 ## 단계별 fixture 최소 목록
@@ -145,7 +145,7 @@ CSS Grid `grid-template-rows/columns`의 `getComputedStyle()`은 resolved value�
 
 ## 이 계획의 미포함
 
-auto-repeat, nested repeat, automatic/intrinsic track sizing, `minmax()`, `fit-content()`, implicit named lines/tracks, area matrix로 인한 implicit auto tracks, auto-sized shorthand result, subgrid, masonry, writing mode/RTL, baseline/alignment, text/replaced content, scroll/overflow, full WPT runner·적합성 또는 성능 우위는 이 세 단계의 완료를 주장할 근거가 아니다. 해당 항목은 C11.4–C11.6 또는 별도 후속 계획으로 남긴다.
+auto-repeat, nested repeat, automatic/intrinsic track sizing, `minmax()`, `fit-content()`, implicit named lines/tracks, area matrix로 인한 implicit auto tracks, auto-sized shorthand result, subgrid, masonry, writing mode/RTL, baseline/alignment, text/replaced content, scroll/overflow, full WPT runner·적합성 또는 성능 우위는 이 세 단계만으로 완료를 주장할 근거가 아니다. Area matrix에 따른 implicit track은 [별도 C11.3.3 후속 계획](./c11-3-3-template-area-implicit-tracks.md)에서 범위를 확장하며, 나머지 항목은 C11.4–C11.6 또는 각각의 후속 계획으로 남긴다.
 
 C11.3 전체는 세 단계의 제한 profile과 지정 검증이 모두 통과해도 공개 CSS 지원 선언이나 전체 CSS Grid/WPT 적합성을 뜻하지 않는다. 공개 호환성 표는 각 단계에서 실험/내부 상태와 사용자 지원 상태를 분리해 갱신한다.
 
