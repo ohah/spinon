@@ -198,14 +198,85 @@ fn track_sizing_profile_admits_positive_percentage_auto_repeat_minimums() {
             },
             "{axis}/{mode} computed minimum"
         );
+        let repeat = repeat
+            .as_ref()
+            .unwrap_or_else(|| panic!("{axis}/{mode} repeat metadata is missing"));
         assert_eq!(
-            repeat.as_ref().map(|repeat| repeat.mode),
-            Some(if mode == "auto-fill" {
+            repeat.mode,
+            if mode == "auto-fill" {
                 ComputedCssGridAutoRepeatMode::AutoFill
             } else {
                 ComputedCssGridAutoRepeatMode::AutoFit
-            }),
+            },
             "{axis}/{mode} repeat mode"
+        );
+        assert_eq!(
+            (repeat.start, repeat.end),
+            (0, 1),
+            "{axis}/{mode} repeat range"
+        );
+    }
+}
+
+#[test]
+fn track_sizing_profile_admits_definite_percentage_auto_repeat_track_sizes() {
+    for (axis, mode) in [
+        ("columns", "auto-fill"),
+        ("columns", "auto-fit"),
+        ("rows", "auto-fill"),
+        ("rows", "auto-fit"),
+    ] {
+        let repeated_axis = format!("grid-template-{axis}:repeat({mode},10%)");
+        let other_axis = if axis == "columns" {
+            "grid-template-rows:48px"
+        } else {
+            "grid-template-columns:48px"
+        };
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;{repeated_axis};{other_axis};margin:0"
+        ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap_or_else(|error| panic!("{axis}/{mode} definite percentage track: {error:?}"));
+        let grid = snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.root)
+            .unwrap()
+            .grid_layout
+            .as_ref()
+            .unwrap();
+        let (tracks, repeat) = if axis == "columns" {
+            (&grid.columns, &grid.columns_auto_repeat)
+        } else {
+            (&grid.rows, &grid.rows_auto_repeat)
+        };
+
+        assert_eq!(
+            tracks,
+            &[ComputedCssGridTrackSize::Percentage(0.1)],
+            "{axis}/{mode} computed track"
+        );
+        let repeat = repeat
+            .as_ref()
+            .unwrap_or_else(|| panic!("{axis}/{mode} repeat metadata is missing"));
+        assert_eq!(
+            repeat.mode,
+            if mode == "auto-fill" {
+                ComputedCssGridAutoRepeatMode::AutoFill
+            } else {
+                ComputedCssGridAutoRepeatMode::AutoFit
+            },
+            "{axis}/{mode} repeat mode"
+        );
+        assert_eq!(
+            (repeat.start, repeat.end),
+            (0, 1),
+            "{axis}/{mode} repeat range"
         );
     }
 }
@@ -280,30 +351,7 @@ fn track_sizing_profile_admits_zero_percentage_minimum_with_flexible_maximum() {
 }
 
 #[test]
-fn track_sizing_profile_rejects_out_of_scope_percentage_auto_repeat_minimums() {
-    let template = "repeat(auto-fill,10%)";
-    let bad_percent_fixture = fixture(&format!(
-        "display:grid;box-sizing:border-box;width:124px;height:124px;min-width:0;min-height:0;border:2px solid;padding:0;grid-template-columns:{template};grid-template-rows:48px;margin:0"
-    ));
-    let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
-        &bad_percent_fixture.view,
-        &[],
-        viewport(),
-        Default::default(),
-    )
-    .unwrap_err();
-
-    assert!(
-        matches!(
-            error,
-            crate::stylo_dom::cascade::CssCascadeError::UnsupportedComputedGridValue {
-                node,
-                property: "grid-template-columns",
-                ..
-            } if node == bad_percent_fixture.root
-        ),
-        "out-of-scope {template} must remain fail-closed"
-    );
+fn track_sizing_profile_rejects_percentage_auto_repeat_minimums_with_intrinsic_maximums() {
     for minimum in ["0%", "10%"] {
         for maximum in ["auto", "max-content"] {
             let fixture = fixture(&format!(
