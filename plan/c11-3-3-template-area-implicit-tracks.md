@@ -1,6 +1,6 @@
 # C11.3.3 · `grid-template-areas` 누락 track 생성
 
-**상태:** Chrome 156 사전 비교와 독립 기대값을 고정했다. 이 계획은 C11.3.3의 제한 `RuntimeBlockFlexGridTemplateV1`에서 area 차원과 authored track 수가 다를 때 CSS Grid가 만드는 implicit track을 연결한다. 계획 PR #806 병합 뒤 별도 구현 PR #807에서 진행했다. C11.3.3 candidate, C11 및 공식 완료 `72/213`은 이 계획만으로 완료 처리하지 않는다.
+**상태:** Chrome 156 사전 비교와 독립 기대값을 고정했다. 이 계획은 C11.3.3의 제한 `RuntimeBlockFlexGridTemplateV1`에서 area 차원과 authored track 수가 다를 때 CSS Grid가 만드는 implicit track을 연결한다. 계획 PR #806 및 기본 area-dimension 구현 PR #807에 이어, fixed-px `grid-auto-*` 목록 순환은 [후속 계획](./c11-3-3-template-area-track-list-cycling.md)과 구현 PR #814에서 추가했다. C11.3.3 candidate, C11 및 공식 완료 `72/213`은 계속 미완료 상태다.
 
 ## 구현 진행 상황 · 2026-10-29
 
@@ -10,7 +10,13 @@
 - [2026-10-29 Chrome 보충 근거](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/README.md)에는 fixture, CSSOM used tracks, root-relative frames, screenshot과 browser closure를 연결했다. 기존 26-scene Chrome 154 reference와 구분한다.
 - Rust layout/style focused tests, fixture FFI matrix test, CSS reference tests와 `cargo fmt --check`가 통과했다. 기본 `spinon-ffi` static archive에는 C11.3.3 FFI symbol/payload가 없고 `c04-runtime-gpu-fixture-test` opt-in archive에는 둘 다 포함됨을 확인했다. [archive 경계 근거](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/ffi-artifact-boundary.json). 시작 시 pinned V8 checkout이 없어 저장소 pin `7b50b62cb18f28617959e8452e2cd18195b38bcf`로 새 checkout과 Android/iOS simulator archive를 만들었다. 구현/runtime 실패 관점 20개, 별도 PR diff 실패 관점 20개와 병합 전 PR 적대 검토 30개를 [각각 기록](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/README.md)했다. PR #807은 2026-10-29T13:54:24Z Rebase and merge로 병합됐고 GitHub check run은 없었다. 이 구현만으로 C11.3.3 candidate·C11·공식 완료 수를 올리지 않는다. [Chrome 보충 근거](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/README.md) · [Android API 37 AVD 실행](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/android-avd-c1133-matrix-20261029T132906693Z-b13baf02/README.md) · [iOS Simulator 실행](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/ios-simulator-c1133-ios-matrix-20261029T131950859Z-f6d1bd47/README.md).
 
-- PR #807 병합 뒤 `spec/STATUS.md`, conformance, 내부 계약과 공개 Tailnet 로드맵을 동기화한다. 문서 변경 적대 검토는 [30관점 기록](../spec/internal/evidence/c11-3-3-merge-status-sync-2026-10-29/post-merge-roadmap-sync-review-30.md)에 남긴다.
+- PR #807 병합 뒤의 area-dimension 동기화는 PR #808에서 완료했다. Track-list cycling PR #814의 추가 bounded-result 동기화는 현재 문서 변경에서 수행한다. 이전 문서 검토는 [30관점 기록](../spec/internal/evidence/c11-3-3-merge-status-sync-2026-10-29/post-merge-roadmap-sync-review-30.md)에 남아 있다.
+
+## Track-list cycling 후속 · 2026-10-30
+
+- 구현 PR [#814](https://github.com/ohah/spinon/pull/814)이 Rebase and merge로 병합됐다. 이 후속은 validated template-area route에만 fixed-px `grid-auto-*` 목록을 허용하고 area-created positive implicit track을 각 축에서 독립 순환한다. area가 소비한 목록 phase는 지원되는 후속 named implicit-line placement에 이어진다.
+- Chrome 156 독립 oracle과 Android API 37 ARM64 AVD/SwiftShader, iPhone 17 Pro/iOS 26.2 Simulator의 37-scene runtime 행렬이 통과했다. 이 후속은 numeric implicit placement, backward/negative sizing, non-px track list, WPT 적합성 또는 전체 Grid 지원을 추가하지 않는다.
+- 최종 실행·픽셀·artifact 경계와 구현/PR diff 리뷰는 [증거 요약](../spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.md)에 있다. 공식 C11.3.3/C11 체크와 `72/213`은 유지한다.
 
 **상위:** [C11 계획](./c11-css-grid.md) · [C11.3 `repeat()`·named line·template areas](./c11-3-template-repeat-named-lines-areas.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
