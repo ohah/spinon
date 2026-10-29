@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-30 `fit-content()` intrinsic limit 열 축 후속 계획
+
+기존 pinned WPT `fit-content-track-sizing.html`의 30/40/200px row limit fixture와 별도로, CSS Grid 2025 CRD §11.2의 같은 계산을 implicit column에서 고정한다. `min-width:0` main scenes와 `min-width:auto` floor control을 사용하며 Chrome Headless 156 관측 및 독립 기대값은 [precomparison evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 새 계획은 [고정 입력·검증 경계](./c11-4-fit-content-column-axis.md), 계획 실패 관점 20개는 [별도 검토](./c11-4-fit-content-column-axis-plan-review-20.md)에서 관리한다. 현재 계획 단계이며 implementation/runtime은 시작하지 않았다. C11.4와 공식 `72/213`은 미완료 상태로 유지한다.
+
 ## 2026-10-29 Grid item `visibility:collapse` 계측 계획
 
 현재 C11.4 Grid profile은 `visibility:collapse` author declaration을 거부한다. CSS Display Level 3 §4는 table와 flex처럼 별도 동작을 정의한 formatting context를 제외하면 `collapse`를 `hidden`과 같이 처리한다. CSS Grid Level 1은 Grid item의 `visibility:collapse`에 별도 sizing 동작을 정의하지 않으므로, Grid fixture에서는 computed value `collapse`를 보존하면서 hidden과 같은 track contribution·layout·paint 규칙을 적용할 계획이다. 양축 10-scene Chrome 156 사전 비교, root 바깥 overflow 대조와 독립 기대값은 [계획](./c11-4-grid-visibility-collapse.md), [evidence](../spec/internal/evidence/c11-4-grid-visibility-collapse-precomparison-2026-10-29/README.md)에 기록한다. Flex formatting context에는 이 Grid 규칙을 전파하지 않는다. 계획 검토와 계획 PR diff 검토가 각각 20/20 완료됐다. 계획 PR 병합 전에는 구현하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료다.
