@@ -1,4 +1,4 @@
-# C11.3.3 area-generated implicit tracks · plan review
+# C11.3.3 area로 생성되는 implicit track · 계획 검토
 
 **결과:** PASS 20/20. 계획 단계의 서로 다른 실패 관점을 점검했으며, 구현 검증을 대신하지 않는다.
 
