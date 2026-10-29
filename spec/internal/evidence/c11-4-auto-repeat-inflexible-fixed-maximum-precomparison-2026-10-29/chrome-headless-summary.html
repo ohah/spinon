@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 Chromium auto-repeat 관측 요약</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    color: #e7edf5;
+    background: #0b1020;
+    font: 15px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+  main { max-width: 1180px; margin: 0 auto; padding: 34px 38px 28px; }
+  .eyebrow { color: #93c5fd; font-size: 12px; font-weight: 700; letter-spacing: .12em; }
+  h1 { margin: 9px 0 7px; font-size: 25px; line-height: 1.2; }
+  .intro { margin: 0; color: #aab7c9; font-size: 14px; }
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 25px; }
+  article { min-height: 276px; padding: 18px; border: 1px solid #293549; border-radius: 13px; background: #121a2b; }
+  h2 { margin: 0 0 3px; font: 700 18px/1.35 ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .resolved { color: #9eacc0; font-size: 13px; }
+  .mode { margin-top: 18px; }
+  .mode-title { display: flex; justify-content: space-between; gap: 8px; margin-bottom: 5px; font-size: 13px; }
+  .mode-title strong { color: #f4f7fb; }
+  .tracks { display: grid; gap: 5px; height: 37px; align-items: stretch; }
+  .track { display: grid; place-items: center; min-width: 0; overflow: hidden; border: 1px solid #456078; border-radius: 5px; color: #c7d5e3; background: #203147; font: 11px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  .track.occupied { border-color: #f87171; background: #7f1d1d; }
+  .item { width: 20px; height: 20px; justify-self: start; align-self: start; border-radius: 2px; background: #ef4444; }
+  .sizes { margin-top: 5px; color: #cbd5e1; font: 12px ui-monospace, SFMono-Regular, Menlo, monospace; }
+  footer { margin-top: 19px; color: #8795aa; font-size: 12px; }
+</style>
+<main>
+  <div class="eyebrow">C11.4 · CHROMIUM ORACLE · HEADLESSCHROME 156</div>
+  <h1>고정 최대 크기로 자동 반복 트랙 수 계산</h1>
+  <p class="intro">130px definite content axis · 5px gap · 첫 트랙에만 20px item 배치</p>
+  <section class="cards" aria-label="Chrome CSSOM 관측 트랙 크기">
+    <article>
+      <h2>minmax(auto, 40px)</h2>
+      <div class="resolved">maximum: 40px</div>
+      <div class="mode" data-observation-id="columns-auto-fill-auto-px40-130" data-cssom="40px 40px 40px">
+        <div class="mode-title"><strong>auto-fill</strong><span>빈 트랙 유지</span></div>
+        <div class="tracks" style="grid-template-columns:40px 40px 40px;width:130px">
+          <div class="track occupied"><div class="item"></div></div><div class="track">40px</div><div class="track">40px</div>
+        </div>
+        <div class="sizes">40px 40px 40px</div>
+      </div>
+      <div class="mode" data-observation-id="columns-auto-fit-auto-px40-130" data-cssom="40px 0px 0px">
+        <div class="mode-title"><strong>auto-fit</strong><span>빈 트랙 접힘</span></div>
+        <div class="tracks" style="grid-template-columns:40px 0 0;width:130px">
+          <div class="track occupied"><div class="item"></div></div><div></div><div></div>
+        </div>
+        <div class="sizes">40px 0px 0px</div>
+      </div>
+    </article>
+    <article>
+      <h2>minmax(auto, 30%)</h2>
+      <div class="resolved">130px 기준 → 39px</div>
+      <div class="mode" data-observation-id="columns-auto-fill-auto-percent30-130" data-cssom="39px 39px 39px">
+        <div class="mode-title"><strong>auto-fill</strong><span>빈 트랙 유지</span></div>
+        <div class="tracks" style="grid-template-columns:39px 39px 39px;width:130px">
+          <div class="track occupied"><div class="item"></div></div><div class="track">39px</div><div class="track">39px</div>
+        </div>
+        <div class="sizes">39px 39px 39px</div>
+      </div>
+      <div class="mode" data-observation-id="columns-auto-fit-auto-percent30-130" data-cssom="39px 0px 0px">
+        <div class="mode-title"><strong>auto-fit</strong><span>빈 트랙 접힘</span></div>
+        <div class="tracks" style="grid-template-columns:39px 0 0;width:130px">
+          <div class="track occupied"><div class="item"></div></div><div></div><div></div>
+        </div>
+        <div class="sizes">39px 0px 0px</div>
+      </div>
+    </article>
+    <article>
+      <h2>minmax(auto, calc(...))</h2>
+      <div class="resolved">15px + 25% → 47.5px</div>
+      <div class="mode" data-observation-id="columns-auto-fill-auto-calc15-plus-25-percent-130" data-cssom="47.5px 47.5px">
+        <div class="mode-title"><strong>auto-fill</strong><span>빈 트랙 유지</span></div>
+        <div class="tracks" style="grid-template-columns:47.5px 47.5px;width:100px">
+          <div class="track occupied"><div class="item"></div></div><div class="track">47.5px</div>
+        </div>
+        <div class="sizes">47.5px 47.5px</div>
+      </div>
+      <div class="mode" data-observation-id="columns-auto-fit-auto-calc15-plus-25-percent-130" data-cssom="47.5px 0px">
+        <div class="mode-title"><strong>auto-fit</strong><span>빈 트랙 접힘</span></div>
+        <div class="tracks" style="grid-template-columns:47.5px 0;width:100px">
+          <div class="track occupied"><div class="item"></div></div><div></div>
+        </div>
+        <div class="sizes">47.5px 0px</div>
+      </div>
+    </article>
+  </section>
+  <footer>요약 그림은 고정 관측 JSON의 CSSOM 크기를 표시한다. 제품 UI 또는 Spinon runtime 캡처가 아니다.</footer>
+</main>
+</html>

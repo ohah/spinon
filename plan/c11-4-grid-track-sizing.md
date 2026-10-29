@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-29 auto-repeat `minmax(inflexible, fixed)` 계획
+
+현재 `RuntimeBlockFlexGridTrackSizingV1`는 repeated `fixed-size`에서 fixed minimum branch만 통과시킨다. CSS Grid 2025 CRD §7.2.3.1의 다른 유효 형식인 `minmax(auto|min-content|max-content, fixed-breadth)`를 추가할 계획이다. Agent Browser HeadlessChrome 156의 49-scene precomparison은 rows/columns·`auto-fill`/`auto-fit`·length/percentage/calc max breadth·multi-track fragment·129/130px count boundary를 고정했다. [집중 계획](./c11-4-auto-repeat-inflexible-fixed-maximum.md) · [계획 리뷰 20개](./c11-4-auto-repeat-inflexible-fixed-maximum-plan-review-20.md) · [Chrome/CRD 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-inflexible-fixed-maximum-precomparison-2026-10-29/README.md). 이는 계획 단계이며 구현과 runtime 검증은 시작하지 않았다. C11.4 checkbox와 공식 `72/213`은 유지한다.
+
 ## 2026-10-29 `fit-content()` growth-limit boundary WPT 계획
 
 Pinned `fit-content-track-sizing.html`의 `contentLargerThanArgument`, `smallArgument`, `largeArgument` 세 fit-content limit 경계를 고정했다. Agent Browser HeadlessChrome 156 upstream harness 13/13과 원본/60px width-normalized rows `40/30/100px`를 확인했다. 독립 CSS Grid 2025 CRD 계산과 source hash는 [사전 비교](../spec/internal/evidence/c11-4-fit-content-limit-boundaries-precomparison-2026-10-29/README.md), 계획 실패 관점 20개는 [계획 검토](./c11-4-fit-content-limit-boundaries-plan-review-20.md)에 있다. 제한 opt-in app runtime은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 3/3 확인했다. PixelCopy 및 compositor 제출 전 Metal 표본은 각각 11/11 exact이고, raw finite max-content growth limit 100px과 used row 경계를 구분한다. 구현 PR [#787](https://github.com/ohah/spinon/pull/787)은 2026-10-29T03:04:46Z Rebase and merge됐고 merge SHA는 `328e4e416b80012caac6297f1fabd556b85e2074`다. [runtime 실행 근거·화면·artifact 경계](../spec/internal/evidence/c11-4-fit-content-limit-boundaries-simulators-2026-10-29/README.md) · [집중 계획](./c11-4-fit-content-limit-boundaries.md). C11.4와 공식 `72/213`은 미완료다.
