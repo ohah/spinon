@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 제한 fixture 구현과 Android/iOS Simulator 검증을 마쳤다. 일반 CSS admission, 전체 WPT와 상위 C11.4 게이트는 미완료이며 공식 완료 `72/213`을 유지한다.
+**상태:** 제한 fixture 구현 PR [#804](https://github.com/ohah/spinon/pull/804)은 2026-10-29T11:08:12Z Rebase and merge되어 SHA `85b41e75aaa4452355a8cb38d557a702604fa0cf`에 반영됐다. Android/iOS Simulator 검증은 마쳤다. 일반 CSS admission, 전체 WPT와 상위 C11.4 게이트는 미완료이며 공식 완료 `72/213`을 유지한다.
 
 **사전 비교:** [고정 CSS 및 Agent Browser 증거](../spec/internal/evidence/c11-4-grid-visibility-collapse-precomparison-2026-10-29/README.md) · [계획 실패 관점 20개](./c11-4-grid-visibility-collapse-plan-review-20.md) · [계획 PR 변경 검토 20개](./c11-4-grid-visibility-collapse-pr-diff-review-20.md)
 

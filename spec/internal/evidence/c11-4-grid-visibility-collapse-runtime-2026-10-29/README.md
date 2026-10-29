@@ -34,4 +34,5 @@ Capture runner는 각 scene을 새 process로 실행하고 마지막에 Android 
 
 - [구현/runtime 실패 관점 20개](./implementation-runtime-review-20.md)와 별도로 PR 변경·본문·증거 연결을 30개 관점에서 검토했다: [PR diff 검토](./pr-diff-review-30.md).
 - PR [#804](https://github.com/ohah/spinon/pull/804)의 Android/iOS 동작 화면 두 장을 Agent Browser에서 직접 로드해 크기와 `complete`를 확인했다. [이미지 로드 결과](./pr-image-load-agent-browser.json) · [브라우저 화면](./pr-body-agent-browser.png).
-- main branch protection은 required status check가 없고 required approval 0개, linear history 필수다. PR은 `CLEAN`; GitHub check query도 비어 있어 CI 성공으로 기록하지 않는다.
+- PR [#804](https://github.com/ohah/spinon/pull/804)은 2026-10-29T11:08:12Z Rebase and merge되어 merge SHA `85b41e75aaa4452355a8cb38d557a702604fa0cf`에 반영됐다. main branch protection은 required status check가 없고 required approval 0개, linear history 필수다. GitHub check query는 비어 있어 CI 성공으로 기록하지 않는다.
+- 구현 PR 병합 뒤의 공식 상태·계약·로드맵 문서 교차 확인 30개는 [병합 후 상태·로드맵 검토](./post-merge-status-roadmap-review-30.md)에 기록한다. Tailnet live preview 동기화와 브라우저 재확인은 그 검토와 별도다.
