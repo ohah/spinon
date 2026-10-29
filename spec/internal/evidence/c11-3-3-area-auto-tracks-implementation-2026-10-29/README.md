@@ -9,6 +9,7 @@
 - 자동 크기 scene은 root 50×30 CSS px다. Chrome used rows는 `10px 20px`, columns는 `20px 30px`이며, `align-content:start` profile에 남은 공간이 track 크기에 섞이지 않도록 입력 크기를 track 합과 맞췄다.
 - 나머지 scene은 root 120×80 CSS px다. 명시 track이 없는 경우 rows `7px 7px`·columns `9px 9px`; 한 축 authored list가 짧은 경우 기존 authored 값 뒤에 auto track을 추가하고, area보다 긴 authored list는 보존한다.
 - 원시 Agent Browser 응답은 [`agent-browser-eval-envelope.json`](./chrome/agent-browser-eval-envelope.json)에 보존한다. 캡처 뒤 `agent-browser close`를 실행했고 `pgrep -fl 'agent-browser|HeadlessChrome'` 결과는 비어 있었다.
+- 최종 후보 archive의 기본/opt-in fixture 경계는 [`ffi-artifact-boundary.json`](./ffi-artifact-boundary.json)에 기록했다. 기본 static archive에는 C11.3.3 fixture 심볼·scene payload가 없고 fixture-test opt-in archive에는 둘 다 있다. 이는 macOS ARM64 static archive 근거이며 APK/IPA 전체를 증명하지 않는다.
 
 ## 비교 경계
 
