@@ -1,0 +1,43 @@
+{
+  "original": {
+    "zoom": "2",
+    "gridTemplateRows": "40px",
+    "computedWidth": "632px",
+    "computedHeight": "300px",
+    "rect": {
+      "x": 8,
+      "y": 3757.625,
+      "width": 1264,
+      "height": 600
+    },
+    "itemRect": {
+      "width": 120,
+      "height": 80
+    },
+    "childRect": {
+      "width": 120,
+      "height": 800
+    }
+  },
+  "normalizedWidthProbe": {
+    "zoom": "2",
+    "gridTemplateRows": "40px",
+    "computedWidth": "60px",
+    "computedHeight": "300px",
+    "rect": {
+      "x": 8,
+      "y": 5257.625,
+      "width": 120,
+      "height": 600
+    },
+    "itemRect": {
+      "width": 120,
+      "height": 80
+    },
+    "childRect": {
+      "width": 120,
+      "height": 800
+    }
+  },
+  "equalUsedRows": true
+}

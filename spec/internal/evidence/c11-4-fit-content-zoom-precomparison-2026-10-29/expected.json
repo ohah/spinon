@@ -1,0 +1,48 @@
+{
+  "caseId": "fit-content-zoomed-grid-wpt",
+  "source": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "assertion": "A fit-content() argument is applied on a zoomed grid container"
+  },
+  "input": {
+    "gridContainer": {
+      "display": "grid",
+      "gridTemplateColumns": "60px",
+      "gridAutoRows": "fit-content(40px)",
+      "heightCssPx": 300,
+      "zoom": 2
+    },
+    "item": {
+      "minHeightCssPx": 0,
+      "gridRow": "auto"
+    },
+    "child": {
+      "heightCssPx": 400
+    }
+  },
+  "normativeExpected": {
+    "normalizedUnzoomedTrackResultCssPx": [40],
+    "wptCssomGridTemplateRows": "40px",
+    "derivation": "In the fixture's unzoomed coordinate model: fit-content limit 40px; item minimum 0px; child max-content contribution 400px; max(0, min(40, 400)) = 40px"
+  },
+  "integrationExpected": {
+    "zoomedVisualRowCssPx": [80],
+    "gridContainerVisualHeightCssPx": 600,
+    "itemVisualHeightCssPx": 80,
+    "childVisualHeightCssPx": 800,
+    "basis": "Root zoom 2; checked as app integration geometry and separately compared with Chrome observation"
+  },
+  "wptAssertionOnlyChecks": "The resolved CSS gridTemplateRows string is 40px. The zoomed visual dimensions are recorded as a separate runtime integration expectation, not as part of the WPT assertion.",
+  "normalizationProbe": {
+    "change": "Set only the WPT grid's inline width to 60px to make the app fixture independent of viewport width.",
+    "originalGridTemplateRows": "40px",
+    "normalizedGridTemplateRows": "40px",
+    "originalZoomedItemRectCssPx": [120, 80],
+    "normalizedZoomedItemRectCssPx": [120, 80],
+    "normalizedZoomedChildRectCssPx": [120, 800],
+    "source": "Agent Browser 0.31.1 / HeadlessChrome 156.0.0.0 live WPT probe; see normalized-width-probe.json"
+  },
+  "browserObservationIsNotTheNormativeOracle": true
+}

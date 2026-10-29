@@ -1,0 +1,129 @@
+{
+  "url": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+  "title": "CSS Grid Layout Test: fit-content() track sizing",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "summary": "Summary\n\nHarness status: OK\n\nRerun\n\nFound 13 tests\n\n13 Pass",
+  "tests": [
+    [
+      "Pass",
+      "A fit-content() row is not stretched to a definite grid container height",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() row is not stretched to the grid container's min-height",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() row is floored by its item's automatic minimum size, above the argument",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() row's growth limit is clamped by its argument",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() argument smaller than the content sizes the row",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() argument larger than the content does not size the row",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A percentage fit-content() argument resolves against the grid container's definite height",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A calc() fit-content() argument resolves against the grid container's definite height",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "An item spanning fit-content() rows does not grow either past its argument",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() argument is applied on a zoomed grid container",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "A fit-content() column's growth limit is clamped by its argument",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "An auto row in the same position is stretched",
+      "Asserts run"
+    ],
+    [
+      "Pass",
+      "Leftover space goes to the auto row rather than the fit-content() row beside it",
+      "Asserts run"
+    ]
+  ],
+  "zoomedGrid": {
+    "id": "zoomedGrid",
+    "className": "grid",
+    "authoredStyle": "zoom: 2",
+    "display": "grid",
+    "zoom": "2",
+    "gridTemplateRows": "40px",
+    "gridTemplateColumns": "60px",
+    "width": "632px",
+    "height": "300px",
+    "rect": {
+      "x": 8,
+      "y": 3757.625,
+      "width": 1264,
+      "height": 600
+    }
+  },
+  "zoomedItem": {
+    "id": "",
+    "className": "zeroMinimumSize",
+    "authoredStyle": null,
+    "display": "block",
+    "zoom": "1",
+    "gridTemplateRows": "none",
+    "gridTemplateColumns": "none",
+    "width": "60px",
+    "height": "40px",
+    "rect": {
+      "x": 8,
+      "y": 3757.625,
+      "width": 120,
+      "height": 80
+    }
+  },
+  "zoomedChild": {
+    "id": "",
+    "className": "",
+    "authoredStyle": "height: 400px",
+    "display": "block",
+    "zoom": "1",
+    "gridTemplateRows": "none",
+    "gridTemplateColumns": "none",
+    "width": "60px",
+    "height": "400px",
+    "rect": {
+      "x": 8,
+      "y": 3757.625,
+      "width": 120,
+      "height": 800
+    }
+  }
+}
