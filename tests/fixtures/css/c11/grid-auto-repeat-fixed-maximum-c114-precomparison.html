@@ -1,0 +1,143 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 auto-repeat fixed maximum precomparison</title>
+<style>
+  html, body { margin: 0; }
+  body { font: 12px monospace; }
+  #results { white-space: pre-wrap; }
+  .grid {
+    display: grid;
+    box-sizing: border-box;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    align-content: start;
+    justify-content: start;
+    align-items: start;
+    justify-items: start;
+    background: rgb(16 24 32);
+  }
+  .item {
+    width: 20px;
+    height: 20px;
+    background: rgb(220 38 38);
+  }
+</style>
+<pre id="results">waiting</pre>
+<script>
+  const cases = [];
+  const minima = ['auto', 'min-content', 'max-content'];
+  const maxima = [
+    { id: 'px40', token: '40px' },
+    { id: 'percent30', token: '30%' },
+    { id: 'calc15-plus-25-percent', token: 'calc(15px + 25%)' },
+  ];
+  for (const axis of ['columns', 'rows']) {
+    for (const minimum of minima) {
+      for (const maximum of maxima) {
+        for (const mode of ['auto-fill', 'auto-fit']) {
+          cases.push({
+            id: `${axis}-${mode}-${minimum}-${maximum.id}-130`,
+            axis,
+            mode,
+            basis: 130,
+            minimum,
+            maximum: maximum.token,
+          });
+        }
+      }
+      cases.push({
+        id: `${axis}-overflow-${minimum}-max10-basis10`,
+        axis,
+        mode: 'auto-fill',
+        basis: 10,
+        minimum,
+        maximum: '10px',
+      });
+    }
+    cases.push({
+      id: `${axis}-auto-fill-px40-below-boundary-129`,
+      axis,
+      mode: 'auto-fill',
+      basis: 129,
+      minimum: 'auto',
+      maximum: '40px',
+    });
+  }
+  cases.push({
+    id: 'columns-auto-fill-fixed-minimum-control',
+    axis: 'columns',
+    mode: 'auto-fill',
+    basis: 130,
+    minimum: '0px',
+    maximum: '40px',
+  });
+  for (const axis of ['columns', 'rows']) {
+    for (const mode of ['auto-fill', 'auto-fit']) {
+      cases.push({
+        id: `${axis}-${mode}-two-track-pattern-135`,
+        axis,
+        mode,
+        basis: 135,
+        minimum: 'auto',
+        maximum: '40px',
+        pattern: 'two-track',
+      });
+    }
+  }
+
+  function rect(element) {
+    const value = element.getBoundingClientRect();
+    return {
+      x: value.x,
+      y: value.y,
+      width: value.width,
+      height: value.height,
+    };
+  }
+
+  const observed = cases.map((scene) => {
+    const root = document.createElement('div');
+    const item = document.createElement('div');
+    root.className = 'grid';
+    root.dataset.case = scene.id;
+    root.style.width = scene.axis === 'columns' ? `${scene.basis}px` : '40px';
+    root.style.height = scene.axis === 'rows' ? `${scene.basis}px` : '40px';
+    root.style.columnGap = scene.axis === 'columns' ? '5px' : '0px';
+    root.style.rowGap = scene.axis === 'rows' ? '5px' : '0px';
+    const repeatedPattern = scene.pattern === 'two-track'
+      ? `minmax(${scene.minimum ?? 'auto'}, ${scene.maximum ?? '40px'}) 20px`
+      : `minmax(${scene.minimum ?? 'auto'}, ${scene.maximum ?? '40px'})`;
+    if (scene.axis === 'columns') {
+      root.style.gridTemplateColumns = `repeat(${scene.mode}, ${repeatedPattern})`;
+      root.style.gridTemplateRows = '20px';
+    } else {
+      root.style.gridTemplateColumns = '20px';
+      root.style.gridTemplateRows = `repeat(${scene.mode}, ${repeatedPattern})`;
+    }
+    item.className = 'item';
+    item.style.gridColumn = '1';
+    item.style.gridRow = '1';
+    root.append(item);
+    document.body.append(root);
+    const computed = getComputedStyle(root);
+    return {
+      id: scene.id,
+      axis: scene.axis,
+      mode: scene.mode,
+      minimum: scene.minimum ?? 'auto',
+      maximum: scene.maximum ?? '40px',
+      pattern: scene.pattern ?? 'single-track',
+      basis: scene.basis,
+      width: scene.axis === 'columns' ? scene.basis : null,
+      height: scene.axis === 'rows' ? scene.basis : null,
+      gridTemplateColumns: computed.gridTemplateColumns,
+      gridTemplateRows: computed.gridTemplateRows,
+      root: rect(root),
+      item: rect(item),
+    };
+  });
+
+  window.__c114AutoRepeatFixedMaximum = observed;
+  document.querySelector('#results').textContent = JSON.stringify(observed, null, 2);
+</script>
