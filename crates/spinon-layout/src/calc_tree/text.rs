@@ -28,6 +28,88 @@ pub(super) struct TextMeasureResult {
 }
 
 impl CalcLayoutTree {
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) fn first_baseline_for_track_sizing_text(
+        &self,
+        node_id: TaffyNodeId,
+        border_box_width: f32,
+    ) -> Result<Option<f32>, LayoutError> {
+        let Some(spinon_node) = self.node(node_id).spinon_node else {
+            return Ok(None);
+        };
+        let Some(metadata) = self.grid_item_intrinsic_metadata.get(&spinon_node) else {
+            return Ok(None);
+        };
+        if !metadata.is_track_sizing || !metadata.first_baseline_aligned {
+            return Ok(None);
+        }
+        let Some(paragraph) = self.text_paragraphs.get(&node_id).cloned() else {
+            return Ok(None);
+        };
+        if !metadata.is_leaf
+            || metadata.style.margin != crate::LayoutEdges::default()
+            || metadata.style.border != crate::LayoutBorder::default()
+            || metadata.style.padding != crate::LayoutEdges::default()
+        {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: spinon_node,
+                reason: "C11.4 Grid first-baseline text requires a direct leaf with zero box edges",
+            });
+        }
+        if paragraph.style.writing_mode != WritingMode::HorizontalTb {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: paragraph.node,
+                reason: "C11.4 Grid first-baseline text requires horizontal-tb writing mode",
+            });
+        }
+        if !border_box_width.is_finite() || border_box_width < 0.0 {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: paragraph.node,
+                reason: "C11.4 Grid first-baseline text has an invalid measured width",
+            });
+        }
+
+        let width_key = normalize_zero(border_box_width).to_bits();
+        let cached = self
+            .text_layouts
+            .borrow()
+            .get(&node_id)
+            .and_then(|by_width| by_width.get(&width_key))
+            .cloned();
+        let snapshot = if let Some(snapshot) = cached {
+            snapshot
+        } else {
+            let engine = self
+                .text_layout_engine
+                .as_ref()
+                .ok_or(LayoutError::MissingTextLayoutEngine(paragraph.node))?;
+            let snapshot = engine
+                .borrow_mut()
+                .layout_paragraph(&paragraph, border_box_width)
+                .map_err(LayoutError::TextLayout)?;
+            self.text_layouts
+                .borrow_mut()
+                .entry(node_id)
+                .or_default()
+                .insert(width_key, snapshot.clone());
+            snapshot
+        };
+        if snapshot.lines.len() != 1 {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: paragraph.node,
+                reason: "C11.4 Grid first-baseline text requires exactly one line",
+            });
+        }
+        let baseline = snapshot.lines[0].baseline;
+        if !baseline.is_finite() || baseline < 0.0 || baseline > snapshot.height {
+            return Err(LayoutError::UnsupportedTextParagraph {
+                node: paragraph.node,
+                reason: "C11.4 Grid first-baseline text has an invalid line baseline",
+            });
+        }
+        Ok(Some(baseline))
+    }
+
     pub(crate) fn final_text_layouts(
         &self,
         input: &LayoutInput,
@@ -452,6 +534,10 @@ mod tests {
                     container: grid_container,
                     source_order: 2,
                     is_leaf: true,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    is_track_sizing: false,
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    first_baseline_aligned: false,
                     style: item_style,
                     text_sources: Vec::new(),
                 },

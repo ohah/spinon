@@ -1,0 +1,180 @@
+{
+  "browser": {
+    "ahemLoaded": true,
+    "languages": [
+      "ko-KR",
+      "ko",
+      "en-US",
+      "en"
+    ],
+    "platform": "MacIntel",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+      "dpr": 1,
+      "height": 633,
+      "width": 1280
+    }
+  },
+  "scenes": [
+    {
+      "grid": {
+        "alignItems": "baseline",
+        "columns": "20px 40px",
+        "height": 20,
+        "rows": "20px",
+        "width": 68,
+        "x": 20,
+        "y": 40.390625
+      },
+      "id": "align-items",
+      "items": [
+        {
+          "fontSize": "10px",
+          "frame": {
+            "height": 10,
+            "width": 20,
+            "x": 20,
+            "y": 48.390625
+          },
+          "glyphBaselineY": 56.390625,
+          "id": "align-items-small",
+          "lineHeight": "10px",
+          "textAscent": 8
+        },
+        {
+          "fontSize": "20px",
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 48,
+            "y": 40.390625
+          },
+          "glyphBaselineY": 56.390625,
+          "id": "align-items-large",
+          "lineHeight": "20px",
+          "textAscent": 16
+        }
+      ]
+    },
+    {
+      "grid": {
+        "alignItems": "start",
+        "columns": "20px 40px",
+        "height": 20,
+        "rows": "20px",
+        "width": 68,
+        "x": 179.0625,
+        "y": 40.390625
+      },
+      "id": "start-control",
+      "items": [
+        {
+          "fontSize": "10px",
+          "frame": {
+            "height": 10,
+            "width": 20,
+            "x": 179.0625,
+            "y": 40.390625
+          },
+          "glyphBaselineY": 48.390625,
+          "id": "start-small",
+          "lineHeight": "10px",
+          "textAscent": 8
+        },
+        {
+          "fontSize": "20px",
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 207.0625,
+            "y": 40.390625
+          },
+          "glyphBaselineY": 56.390625,
+          "id": "start-large",
+          "lineHeight": "20px",
+          "textAscent": 16
+        }
+      ]
+    },
+    {
+      "grid": {
+        "alignItems": "start",
+        "columns": "20px 40px",
+        "height": 20,
+        "rows": "20px",
+        "width": 68,
+        "x": 20,
+        "y": 104.78125
+      },
+      "id": "explicit-self",
+      "items": [
+        {
+          "fontSize": "10px",
+          "frame": {
+            "height": 10,
+            "width": 20,
+            "x": 20,
+            "y": 112.78125
+          },
+          "glyphBaselineY": 120.78125,
+          "id": "self-small",
+          "lineHeight": "10px",
+          "textAscent": 8
+        },
+        {
+          "fontSize": "20px",
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 48,
+            "y": 104.78125
+          },
+          "glyphBaselineY": 120.78125,
+          "id": "self-large",
+          "lineHeight": "20px",
+          "textAscent": 16
+        }
+      ]
+    },
+    {
+      "grid": {
+        "alignItems": "baseline",
+        "columns": "40px 20px",
+        "height": 20,
+        "rows": "20px",
+        "width": 68,
+        "x": 179.0625,
+        "y": 104.78125
+      },
+      "id": "reversed",
+      "items": [
+        {
+          "fontSize": "20px",
+          "frame": {
+            "height": 20,
+            "width": 40,
+            "x": 179.0625,
+            "y": 104.78125
+          },
+          "glyphBaselineY": 120.78125,
+          "id": "reversed-large",
+          "lineHeight": "20px",
+          "textAscent": 16
+        },
+        {
+          "fontSize": "10px",
+          "frame": {
+            "height": 10,
+            "width": 20,
+            "x": 227.0625,
+            "y": 112.78125
+          },
+          "glyphBaselineY": 120.78125,
+          "id": "reversed-small",
+          "lineHeight": "10px",
+          "textAscent": 8
+        }
+      ]
+    }
+  ]
+}

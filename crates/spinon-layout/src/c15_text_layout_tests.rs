@@ -513,3 +513,7 @@ mod c15_2b;
 
 #[path = "c15_text_layout_tests/grid_chrome_oracle.rs"]
 mod grid_chrome_oracle;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c15_text_layout_tests/grid_text_first_baseline.rs"]
+mod grid_text_first_baseline;

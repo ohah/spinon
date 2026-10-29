@@ -35,6 +35,8 @@ mod cyclic_two_axis_multitrack;
 mod flex_span;
 #[path = "c11_4_text/generic_direct_text.rs"]
 mod generic_direct_text;
+#[path = "c11_4_text/grid_text_first_baseline.rs"]
+mod grid_text_first_baseline;
 #[path = "c11_4_text/overlapping_spans.rs"]
 mod overlapping_spans;
 use cases::{TEXT_CASES, TextCase, TextDimension, TextTrack};
@@ -123,6 +125,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Ok(Some(input));
     }
     if let Some(input) = cyclic_calc::prepare(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
+    if let Some(input) = grid_text_first_baseline::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
     if let Some(input) = generic_direct_text::prepare(snapshot, root, styles)? {
@@ -317,6 +322,13 @@ const MULTISPAN_TEXT_SCENES: [MultispanTextScene; 4] = [
         items: &[MULTISPAN_TEXT_C, MULTISPAN_TEXT_B, MULTISPAN_TEXT_A],
     },
 ];
+
+pub(in crate::session::ua_cascade::runtime_layout) fn is_grid_text_first_baseline_fixture_root(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> bool {
+    grid_text_first_baseline::is_fixture_root(snapshot, root)
+}
 
 fn prepare_multispan_text(
     snapshot: &HostDocumentSnapshot,

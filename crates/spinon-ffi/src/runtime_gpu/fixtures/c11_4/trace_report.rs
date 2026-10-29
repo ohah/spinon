@@ -570,6 +570,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
                 "advance": line.advance,
                 "lineTop": line.line_top,
                 "lineHeight": line.line_height,
+                "baseline": line.baseline,
             })
         }).collect::<Vec<_>>(),
     })

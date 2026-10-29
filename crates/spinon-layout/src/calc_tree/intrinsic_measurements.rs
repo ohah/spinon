@@ -3,6 +3,8 @@ use std::collections::{BTreeMap, BTreeSet};
 use spinon_core::NodeId as SpinonNodeId;
 use taffy::{AvailableSpace, NodeId as TaffyNodeId, Size};
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use crate::{GridPlacementMode, LayoutAlignItems, LayoutAlignSelf};
 use crate::{
     LayoutDisplay, LayoutError, LayoutGridItemIntrinsicInput, LayoutGridItemIntrinsicSource,
     LayoutInput, LayoutInputRevision, LayoutIntrinsicMeasureAvailableSpace,
@@ -18,6 +20,10 @@ pub(super) struct GridItemIntrinsicMetadata {
     pub(super) container: SpinonNodeId,
     pub(super) source_order: usize,
     pub(super) is_leaf: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) is_track_sizing: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) first_baseline_aligned: bool,
     pub(super) style: LayoutStyle,
     pub(super) text_sources: Vec<crate::LayoutGridItemTextSource>,
 }
@@ -54,6 +60,21 @@ pub(super) fn grid_item_metadata(
                 })
                 .map(|(source_order, child)| {
                     let child_node = &input.nodes[index[&child]];
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    let container_node = &input.nodes[index[&container.id]];
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    let is_track_sizing = input
+                        .grid_containers
+                        .get(&container.id)
+                        .is_some_and(|grid| grid.placement_mode == GridPlacementMode::TrackSizing);
+                    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                    let first_baseline_aligned = match child_node.style.align_self {
+                        LayoutAlignSelf::FirstBaseline => true,
+                        LayoutAlignSelf::Auto => {
+                            container_node.style.align_items == LayoutAlignItems::FirstBaseline
+                        }
+                        _ => false,
+                    };
                     let text_sources = match input.text_paragraphs.get(&child) {
                         Some(TextParagraphInput::AnonymousGridText {
                             grid_container,
@@ -68,6 +89,10 @@ pub(super) fn grid_item_metadata(
                             container: container.id,
                             source_order,
                             is_leaf: child_node.children.is_empty(),
+                            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                            is_track_sizing,
+                            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                            first_baseline_aligned,
                             style: child_node.style,
                             text_sources,
                         },

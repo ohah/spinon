@@ -59,6 +59,8 @@ mod cyclic_minmax_replaced_image_span;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/cyclic_two_axis_multitrack.rs"]
 mod cyclic_two_axis_multitrack;
+#[path = "c11_4_track_sizing_areas_tests/first_baseline_admission.rs"]
+mod first_baseline_admission;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_4_track_sizing_areas_tests/orthogonal_writing_mode.rs"]
 mod orthogonal_writing_mode;

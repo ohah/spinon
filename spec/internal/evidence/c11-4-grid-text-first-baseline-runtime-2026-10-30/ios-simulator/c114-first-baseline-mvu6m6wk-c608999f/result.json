@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-first-baseline-mvu6m6wk-c608999f",
+  "sourceHead": "2fe70f255e078c7caeb85097f6eb909b9e381fe6",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs\n M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs\n M crates/spinon-layout/src/c15_text_layout_tests.rs\n M crates/spinon-layout/src/calc_tree.rs\n M crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs\n M crates/spinon-layout/src/calc_tree/text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs\n M crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs\n M crates/spinon-style-to-layout/src/lib.rs\n M crates/spinon-style-to-layout/src/projection.rs\n M crates/spinon-style-to-layout/src/projection/style_values.rs\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n?? crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_first_baseline.rs\n?? crates/spinon-layout/src/c15_text_layout_tests/grid_text_first_baseline.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/grid_text_first_baseline.rs\n?? crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/first_baseline_admission.rs\n?? tests/fixtures/css/c11/grid-first-baseline-direct-text.html\n?? tools/css-reference/capture-c11-4-grid-text-first-baseline-simulators.mjs",
+  "sceneCount": 4,
+  "observations": [
+    {
+      "id": "grid-text-first-baseline-align-items",
+      "boxCount": 3,
+      "traceParts": 22,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-first-baseline-start-control",
+      "boxCount": 3,
+      "traceParts": 21,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-first-baseline-align-self",
+      "boxCount": 3,
+      "traceParts": 22,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-first-baseline-reversed",
+      "boxCount": 3,
+      "traceParts": 22,
+      "pixelSamples": 3
+    }
+  ]
+}
