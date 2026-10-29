@@ -21,3 +21,4 @@
 
 - [구현·런타임 실패 관점 20개](./implementation-runtime-review-20.md)
 - [별도 변경 diff 실패 관점 20개](./pr-diff-review-20.md)
+- [PR #807 적대적 변경 검토 30개](./pr-review-30.md)
