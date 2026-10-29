@@ -40,3 +40,12 @@
 ## 판정
 
 고정 근거 및 이미 병합된 PR metadata와 일치한다. Tailnet에서 실제 렌더링된 카드와 링크 해시는 동기화 뒤 Agent Browser로 확인한다.
+
+## PR 원격 diff 판정
+
+- Public roadmap PR [#792](https://github.com/ohah/spinon/pull/792)의 base는 `b532c96a718bdede496b9509da6f20bd142805b1`, 최초 원격 검토 head는 `7809a5bc86ca5b4a58ba9df9f88acf84d6cb1ce5`다.
+- GitHub PR files API의 두 파일은 `origin/main...origin/docs/c11-3-3-public-roadmap-20261029`의 변경 경로와 일치한다: `spec/public/roadmap.html` 및 이 30개 검토 문서다.
+- 위 30개 관점을 실제 HTML 문구·링크·PR 본문 및 기존 implementation evidence에 대조했다. PR 본문에는 Android/iOS 최종 캡처가 포함되어 있고, 시뮬레이터 범위와 남은 한계를 유지한다.
+- PR check rollup과 required-check 조회는 비어 있다. `main`은 required approving review 0개이며 linear history를 요구하므로 Rebase and merge만 가능하다.
+
+검토 기록 추가 뒤에는 동일 두 경로의 최종 원격 diff, head SHA, merge state와 required checks를 다시 확인한다. Merge 후 Tailnet에서 actual card text, links, screenshot loads와 served hashes를 Agent Browser 및 HTTP hash 검증으로 확인한다.
