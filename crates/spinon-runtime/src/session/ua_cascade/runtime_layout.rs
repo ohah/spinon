@@ -682,6 +682,9 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_grid_text_first_baseline_fixture = c11_4_text_input.is_some()
+        && fixtures::is_grid_text_first_baseline_fixture_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_fit_content_calc_render_input = if runtime_paint_enabled
         && c11_4_auto_minmax_span_overflow_input.is_none()
         && fixtures::is_cyclic_fit_content_calc_scene_root(&request.snapshot, root)?
@@ -940,7 +943,16 @@ where
                 &text_input.engine,
             )
         } else if let Some(text_input) = &c11_4_text_input {
-            if text_input.two_axis_nested_grid {
+            if c11_4_grid_text_first_baseline_fixture {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_first_baseline_fixture(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                )
+            } else if text_input.two_axis_nested_grid {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_two_axis_nested_grid_text_paragraphs(
                     &request.snapshot,
                     root,

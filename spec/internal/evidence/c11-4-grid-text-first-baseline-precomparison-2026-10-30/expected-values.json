@@ -1,0 +1,49 @@
+{
+  "schema": "spinon.c11.4.grid-text-first-baseline.expected.v1",
+  "specUrl": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing",
+  "fixture": "tests/fixtures/css/c11/grid-first-baseline-direct-text.html",
+  "fixtureSha256": "abbc3c3f289093e633b34dec18358637aa0f6ec53f7100ab8698cd75019757d8",
+  "font": {
+    "path": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "unitsPerEm": 1000,
+    "hheaAscent": 800,
+    "hheaDescent": -200,
+    "expectedBaselineRatio": 0.8
+  },
+  "grid": {
+    "columnsPx": [20, 40],
+    "columnGapPx": 8,
+    "rowsPx": [20],
+    "framePx": { "width": 68, "height": 20 },
+    "sharedBaselineYFromGridStartPx": 16
+  },
+  "scenes": {
+    "align-items": {
+      "items": [
+        { "id": "align-items-small", "xFromGridPx": 0, "yFromGridPx": 8, "widthPx": 20, "heightPx": 10, "baselineYFromGridPx": 16 },
+        { "id": "align-items-large", "xFromGridPx": 28, "yFromGridPx": 0, "widthPx": 40, "heightPx": 20, "baselineYFromGridPx": 16 }
+      ]
+    },
+    "start-control": {
+      "items": [
+        { "id": "start-small", "xFromGridPx": 0, "yFromGridPx": 0, "widthPx": 20, "heightPx": 10, "baselineYFromGridPx": 8 },
+        { "id": "start-large", "xFromGridPx": 28, "yFromGridPx": 0, "widthPx": 40, "heightPx": 20, "baselineYFromGridPx": 16 }
+      ]
+    },
+    "explicit-self": {
+      "items": [
+        { "id": "self-small", "xFromGridPx": 0, "yFromGridPx": 8, "widthPx": 20, "heightPx": 10, "baselineYFromGridPx": 16 },
+        { "id": "self-large", "xFromGridPx": 28, "yFromGridPx": 0, "widthPx": 40, "heightPx": 20, "baselineYFromGridPx": 16 }
+      ]
+    },
+    "reversed": {
+      "items": [
+        { "id": "reversed-large", "xFromGridPx": 0, "yFromGridPx": 0, "widthPx": 40, "heightPx": 20, "baselineYFromGridPx": 16 },
+        { "id": "reversed-small", "xFromGridPx": 48, "yFromGridPx": 8, "widthPx": 20, "heightPx": 10, "baselineYFromGridPx": 16 }
+      ]
+    }
+  },
+  "chromeObservation": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+  "browserScreenshot": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png"
+}

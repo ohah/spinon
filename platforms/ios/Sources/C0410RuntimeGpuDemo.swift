@@ -171,6 +171,13 @@ private let c114GenericDirectTextSceneIDs: Set<String> = [
 private let c114GenericDirectTextSceneIDs: Set<String> = []
 #endif
 
+private let c114GridTextFirstBaselineSceneIDs: Set<String> = [
+    "grid-text-first-baseline-align-items",
+    "grid-text-first-baseline-start-control",
+    "grid-text-first-baseline-align-self",
+    "grid-text-first-baseline-reversed",
+]
+
 private struct C114GenericDirectTextItemExpectation {
     let node: Int
     let x: Double
@@ -736,6 +743,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     #endif
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
+    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return true }
     if sceneID.hasPrefix("template-area-repeat-cross-axis-") {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
     }
@@ -745,6 +753,25 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
         || c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID)
         || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
         || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
+}
+
+private func c114GridTextFirstBaselineNodeFrames(_ sceneID: String) -> String? {
+    switch sceneID {
+    case "grid-text-first-baseline-align-items", "grid-text-first-baseline-align-self":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;"
+            + "1:node=2,x=0,y=8,width=20,height=10;"
+            + "2:node=4,x=28,y=0,width=40,height=20]"
+    case "grid-text-first-baseline-start-control":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;"
+            + "1:node=2,x=0,y=0,width=20,height=10;"
+            + "2:node=4,x=28,y=0,width=40,height=20]"
+    case "grid-text-first-baseline-reversed":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;"
+            + "1:node=4,x=0,y=0,width=40,height=20;"
+            + "2:node=2,x=48,y=8,width=20,height=10]"
+    default:
+        return nil
+    }
 }
 private let c114CyclicMinmaxReplacedImageSpanSceneIDs: Set<String> = [
     "cyclic-minmax-replaced-image-span-intrinsic-forward",
@@ -1616,6 +1643,7 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return "width=68,height=20" }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         return sceneID.hasSuffix("-column") ? "width=80,height=20" : "width=20,height=80"
     }
@@ -1949,6 +1977,10 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) {
+        return sceneID == "grid-text-first-baseline-reversed"
+            ? "width=40,height=20" : "width=20,height=10"
+    }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         if sceneID.hasPrefix("display-none-") { return "width=0,height=0" }
         return sceneID.hasSuffix("-column") ? "width=100,height=20" : "width=20,height=100"
@@ -6502,6 +6534,7 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let frames = c114GridTextFirstBaselineNodeFrames(sceneID) { return frames }
     if let frames = c114FixedMaximumNodeFrames(sceneID) { return frames }
     if let frames = C114FitContentImplicitColumnWpt.expectedNodeFrames(sceneID) {
         return frames
@@ -8168,6 +8201,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return 3 }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         if sceneID.hasPrefix("collapse-visible-descendant-") { return 2 }
         if sceneID.hasPrefix("visible-") { return 3 }
@@ -9220,6 +9254,31 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if c114GridTextFirstBaselineSceneIDs.contains(sceneID) {
+            let reversed = sceneID.hasSuffix("-reversed")
+            let startControl = sceneID.hasSuffix("-start-control")
+            let rootID = "c114-\(sceneID)"
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = reversed
+                ? [
+                    ("\(sceneID)-grid-gap", rootID, 44, 5, [238, 243, 248, 255]),
+                    ("\(sceneID)-small-item", rootID, 58, 13, [229, 72, 77, 255]),
+                    ("\(sceneID)-large-item", rootID, 20, 10, [58, 134, 255, 255]),
+                ]
+                : [
+                    ("\(sceneID)-grid-gap", rootID, 24, 5, [238, 243, 248, 255]),
+                    ("\(sceneID)-small-item", rootID, 10, startControl ? 5 : 13,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-large-item", rootID, 48, 10, [58, 134, 255, 255]),
+                ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = c114VisibilityCollapsePixelSamples(sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

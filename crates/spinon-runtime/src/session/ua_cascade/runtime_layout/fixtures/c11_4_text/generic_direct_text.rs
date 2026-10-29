@@ -93,7 +93,7 @@ pub(super) fn prepare(
             ));
         }
         let style = style_for(styles, item.id())?;
-        let paragraph_style = paragraph_style_for(styles, style)?;
+        let paragraph_style = paragraph_style_for(styles, style, 10.0, "auto")?;
         paragraph_styles.insert(item.id(), paragraph_style);
     }
 
@@ -119,7 +119,7 @@ pub(super) fn prepare(
     }))
 }
 
-fn validate_snapshot_revision(
+pub(super) fn validate_snapshot_revision(
     snapshot: &HostDocumentSnapshot,
     root: NodeId,
     styles: &ComputedStyleSnapshot,
@@ -227,7 +227,7 @@ fn validate_grid_root(
     Ok(())
 }
 
-fn direct_text_source(
+pub(super) fn direct_text_source(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
     item: HostNodeHandle,
@@ -278,7 +278,7 @@ fn direct_text_source(
     Ok(direct_texts[0])
 }
 
-fn subtree_has_meaningful_text(
+pub(super) fn subtree_has_meaningful_text(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
 ) -> Result<bool, RuntimeLayoutFailure> {
@@ -304,7 +304,7 @@ fn subtree_has_meaningful_text(
     Ok(false)
 }
 
-fn first_html_image(
+pub(super) fn first_html_image(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
 ) -> Result<Option<HostNodeHandle>, RuntimeLayoutFailure> {
@@ -328,23 +328,54 @@ fn first_html_image(
     Ok(None)
 }
 
-fn paragraph_style_for(
+pub(super) fn paragraph_style_for(
     styles: &ComputedStyleSnapshot,
     style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, false)
+}
+
+pub(super) fn paragraph_style_for_first_baseline_fixture(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, true)
+}
+
+fn paragraph_style_for_with_baseline_alias(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+    allow_first_baseline_alias: bool,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     require_style_property(style, "display", "block")?;
     require_style_property(style, "position", "static")?;
     require_style_property(style, "order", "0")?;
-    require_style_property(style, "align-self", "auto")?;
+    if !(allow_first_baseline_alias
+        && align_self == "first baseline"
+        && property(style, "align-self") == Some("baseline"))
+    {
+        require_style_property(style, "align-self", align_self)?;
+    }
     require_style_property(style, "justify-self", "auto")?;
     if style.layout_position != ComputedCssPosition::Static {
         return Err(style_failure(style.node_id.get(), "position"));
     }
     require_style_property(style, "font-family", "Ahem")?;
-    require_style_property(style, "font-size", "10px")?;
+    let font_size_property = match font_size {
+        10.0 => "10px",
+        20.0 => "20px",
+        _ => return Err(style_failure(style.node_id.get(), "font-size profile")),
+    };
+    require_style_property(style, "font-size", font_size_property)?;
     require_style_property(style, "font-weight", "400")?;
     require_style_property(style, "font-style", "normal")?;
-    require_style_property(style, "line-height", "10px")?;
+    require_style_property(style, "line-height", font_size_property)?;
     require_style_property(style, "white-space-collapse", "collapse")?;
     require_style_property(style, "direction", "ltr")?;
     require_style_property(style, "line-break", "auto")?;
@@ -359,7 +390,7 @@ fn paragraph_style_for(
     let (writing_mode, text_orientation) = styles
         .writing_style_for(style.node_id)
         .ok_or_else(|| style_failure(style.node_id.get(), "writing-mode ownership"))?;
-    if (style.font_size_css_px - 10.0).abs() > f32::EPSILON
+    if (style.font_size_css_px - font_size).abs() > f32::EPSILON
         || writing_mode != spinon_core::WritingMode::HorizontalTb
         || text_orientation != spinon_core::TextOrientation::Mixed
     {
@@ -415,7 +446,7 @@ fn paragraph_style_for(
         text_orientation,
         font_family: "Ahem".to_owned(),
         font_size: style.font_size_css_px,
-        line_height: 10.0,
+        line_height: font_size,
         line_height_is_normal: false,
         font_weight: 400.0,
         font_style: FontStyleMode::Normal,
@@ -427,7 +458,7 @@ fn paragraph_style_for(
     })
 }
 
-fn style_for(
+pub(super) fn style_for(
     styles: &ComputedStyleSnapshot,
     node: NodeId,
 ) -> Result<&ComputedElementStyle, RuntimeLayoutFailure> {
@@ -444,7 +475,7 @@ fn style_for(
     Ok(style)
 }
 
-fn require_style_property(
+pub(super) fn require_style_property(
     style: &ComputedElementStyle,
     name: &'static str,
     expected: &'static str,
@@ -462,7 +493,7 @@ fn require_style_property(
     }
 }
 
-fn require_grid_property(
+pub(super) fn require_grid_property(
     style: &ComputedElementStyle,
     name: &'static str,
     expected: &'static str,
@@ -480,17 +511,17 @@ fn require_grid_property(
     }
 }
 
-fn property<'a>(style: &'a ComputedElementStyle, name: &str) -> Option<&'a str> {
+pub(super) fn property<'a>(style: &'a ComputedElementStyle, name: &str) -> Option<&'a str> {
     style.properties.get(name).map(String::as_str)
 }
 
-fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
+pub(super) fn zero_edges(edges: spinon_style::ComputedCssEdges) -> bool {
     [edges.top, edges.right, edges.bottom, edges.left]
         .into_iter()
         .all(|value| value == ComputedCssSpacingValue::LengthPx(0.0))
 }
 
-fn source_failure(node: NodeId, detail: &str) -> RuntimeLayoutFailure {
+pub(super) fn source_failure(node: NodeId, detail: &str) -> RuntimeLayoutFailure {
     layout_failure(
         "unsupported_c114_text_source",
         Some(node.get()),
@@ -498,7 +529,7 @@ fn source_failure(node: NodeId, detail: &str) -> RuntimeLayoutFailure {
     )
 }
 
-fn style_failure(node: u64, detail: &str) -> RuntimeLayoutFailure {
+pub(super) fn style_failure(node: u64, detail: &str) -> RuntimeLayoutFailure {
     layout_failure(
         "unsupported_c114_text_style",
         Some(node),
@@ -506,7 +537,7 @@ fn style_failure(node: u64, detail: &str) -> RuntimeLayoutFailure {
     )
 }
 
-fn grid_style_failure(node: NodeId, detail: &str) -> RuntimeLayoutFailure {
+pub(super) fn grid_style_failure(node: NodeId, detail: &str) -> RuntimeLayoutFailure {
     layout_failure(
         "unsupported_c114_text_grid_style",
         Some(node.get()),

@@ -48,10 +48,7 @@ pub(super) fn project_styles(
     tree: &HostDocumentSnapshot,
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
-    allow_implicit_named_lines: bool,
-    blockify_c11_4_anonymous_grid_images: bool,
-    allow_c11_4_replaced_grid_item_align_self_start: bool,
-    allow_c11_4_overflow_auto_minimum_fixture: bool,
+    options: super::StyleLayoutProjectionOptions,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
@@ -212,7 +209,7 @@ pub(super) fn project_styles(
                 &format!("{value} with direction:rtl"),
             ));
         }
-        let blockify_anonymous_grid_image = blockify_c11_4_anonymous_grid_images
+        let blockify_anonymous_grid_image = options.blockify_c11_4_anonymous_grid_images
             && grid_nodes
                 .as_ref()
                 .is_some_and(|nodes| nodes.html_image_grid_items.contains(&node));
@@ -252,14 +249,14 @@ pub(super) fn project_styles(
         let mut style = LayoutStyle {
             display,
             overflow_x: if supports_overflow_clip(snapshot.profile)
-                || allow_c11_4_overflow_auto_minimum_fixture
+                || options.allow_c11_4_overflow_auto_minimum_fixture
             {
                 parse_overflow(node, "overflow-x", element.layout_overflow_x)?
             } else {
                 LayoutOverflow::Visible
             },
             overflow_y: if supports_overflow_clip(snapshot.profile)
-                || allow_c11_4_overflow_auto_minimum_fixture
+                || options.allow_c11_4_overflow_auto_minimum_fixture
             {
                 parse_overflow(node, "overflow-y", element.layout_overflow_y)?
             } else {
@@ -602,7 +599,8 @@ pub(super) fn project_styles(
                     true,
                     false,
                     false,
-                    allow_c11_4_overflow_auto_minimum_fixture,
+                    options.allow_c11_4_overflow_auto_minimum_fixture,
+                    options.allow_c11_4_grid_text_first_baseline_fixture,
                 )?;
             }
             if nodes.grid_items.contains(&node) {
@@ -612,8 +610,9 @@ pub(super) fn project_styles(
                     false,
                     true,
                     supports_grid_image_ratio_transfer
-                        && allow_c11_4_replaced_grid_item_align_self_start,
-                    allow_c11_4_overflow_auto_minimum_fixture,
+                        && options.allow_c11_4_replaced_grid_item_align_self_start,
+                    options.allow_c11_4_overflow_auto_minimum_fixture,
+                    options.allow_c11_4_grid_text_first_baseline_fixture,
                 )?;
             }
         }
@@ -723,7 +722,7 @@ pub(super) fn project_styles(
                     placement,
                     container,
                     grid_style.template_areas.as_ref(),
-                    allow_implicit_named_lines
+                    options.allow_implicit_named_lines
                         && snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
                 )?
             };
@@ -836,6 +835,7 @@ fn reject_grid_alignment(
     is_grid_item: bool,
     is_replaced_grid_item: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
+    allow_c11_4_grid_text_first_baseline_fixture: bool,
 ) -> Result<(), StyleLayoutError> {
     let mut unsupported = Vec::new();
     if is_grid_container {
@@ -853,6 +853,16 @@ fn reject_grid_alignment(
         if let Some(value) = element.properties.get(property)
             && value != initial
             && !(is_grid_container && property == "align-items" && value == "start")
+            && !(is_grid_container
+                && allow_c11_4_grid_text_first_baseline_fixture
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && property == "align-items"
+                && matches!(value.as_str(), "baseline" | "first baseline"))
+            && !(is_grid_item
+                && allow_c11_4_grid_text_first_baseline_fixture
+                && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && property == "align-self"
+                && matches!(value.as_str(), "baseline" | "first baseline"))
             && !(is_grid_container
                 && allow_c11_4_overflow_auto_minimum_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1

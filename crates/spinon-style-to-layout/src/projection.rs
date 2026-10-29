@@ -503,6 +503,30 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
     )
 }
 
+/// C11.4 fixed direct-text baseline fixture에만 Grid first-baseline 정렬을 허용합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_first_baseline_fixture(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        text_engine,
+        RuntimeGridProjectionOptions {
+            allow_c11_4_grid_text_first_baseline_fixture: true,
+            ..RuntimeGridProjectionOptions::default()
+        },
+    )
+}
+
 /// C11.4 고정 nested Grid fixture에서 양 축 intrinsic sizing을 opt-in 합니다.
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_two_axis_nested_grid_text_paragraphs(
@@ -586,6 +610,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: true,
             allow_c11_4_overflow_auto_minimum_fixture: true,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -595,6 +620,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
 struct RuntimeGridProjectionOptions {
     allow_c11_4_nested_grid_two_axis_intrinsics: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
+    allow_c11_4_grid_text_first_baseline_fixture: bool,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -633,6 +659,8 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: options
                 .allow_c11_4_overflow_auto_minimum_fixture,
+            allow_c11_4_grid_text_first_baseline_fixture: options
+                .allow_c11_4_grid_text_first_baseline_fixture,
         },
     )
 }
@@ -820,6 +848,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: true,
             allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -919,6 +948,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text
                 .allow_two_axis_nested_grid,
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -987,6 +1017,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_a
             allow_c11_4_nested_grid_two_axis_intrinsics: true,
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -1106,6 +1137,7 @@ fn compute_layout_from_styles_with_grid_options(
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -1134,6 +1166,7 @@ fn compute_layout_from_styles_with_text(
             allow_c11_4_nested_grid_two_axis_intrinsics: false,
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
+            allow_c11_4_grid_text_first_baseline_fixture: false,
         },
     )
 }
@@ -1147,6 +1180,7 @@ struct StyleLayoutProjectionOptions {
     allow_c11_4_nested_grid_two_axis_intrinsics: bool,
     allow_c11_4_replaced_grid_item_align_self_start: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
+    allow_c11_4_grid_text_first_baseline_fixture: bool,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(
@@ -1260,15 +1294,7 @@ fn compute_layout_from_styles_with_text_and_grid_options(
             }
         }
     }
-    let mut projected = project_styles(
-        snapshot,
-        root,
-        &computed_styles,
-        options.allow_implicit_named_lines,
-        options.blockify_c11_4_anonymous_grid_images,
-        options.allow_c11_4_replaced_grid_item_align_self_start,
-        options.allow_c11_4_overflow_auto_minimum_fixture,
-    )?;
+    let mut projected = project_styles(snapshot, root, &computed_styles, options)?;
     validate_intrinsic_image_inputs(
         snapshot,
         root,

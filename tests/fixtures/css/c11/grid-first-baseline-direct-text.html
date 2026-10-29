@@ -1,0 +1,92 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 direct text first-baseline reference</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  gap: 24px 32px;
+  padding: 20px;
+  font: 12px/1.2 sans-serif;
+}
+.case { display: grid; gap: 6px; }
+.case-label { color: #263238; }
+.grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-template-rows: auto;
+  column-gap: 8px;
+  width: max-content;
+  position: relative;
+  background: #eef3f8;
+}
+.grid::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 16px;
+  border-top: 1px solid #d32f2f;
+  pointer-events: none;
+}
+.item {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 1px solid #1976d2;
+  color: #111;
+  font-family: Ahem;
+  white-space: nowrap;
+  line-height: 1;
+}
+.item::before {
+  content: attr(data-size);
+  position: absolute;
+  top: -13px;
+  left: 0;
+  color: #37474f;
+  font: 10px/1 sans-serif;
+  white-space: nowrap;
+}
+.small { font-size: 10px; }
+.large { font-size: 20px; }
+.first-baseline { align-items: first baseline; }
+.start { align-items: start; }
+.explicit-self > .item { align-self: first baseline; }
+</style>
+<body>
+  <section class="case">
+    <div class="case-label">align-items: first baseline</div>
+    <div id="align-items" class="grid first-baseline">
+      <div id="align-items-small" class="item small" data-size="10px">XX</div>
+      <div id="align-items-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">align-items: start control</div>
+    <div id="start-control" class="grid start">
+      <div id="start-small" class="item small" data-size="10px">XX</div>
+      <div id="start-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">align-self: first baseline</div>
+    <div id="explicit-self" class="grid start explicit-self">
+      <div id="self-small" class="item small" data-size="10px">XX</div>
+      <div id="self-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">reversed source order</div>
+    <div id="reversed" class="grid first-baseline">
+      <div id="reversed-large" class="item large" data-size="20px">XX</div>
+      <div id="reversed-small" class="item small" data-size="10px">XX</div>
+    </div>
+  </section>
+</body>
