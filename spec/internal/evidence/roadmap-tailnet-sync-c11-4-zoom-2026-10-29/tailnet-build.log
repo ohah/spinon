@@ -1,0 +1,45 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 104 ms.
+ready   built in 0.96s (node)
+ready   built in 0.96s (web)
+
+File (web)                                                                                                               Size        Gzip
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-0ab008146c2c.5dda371c00.js   7.8 kB      3.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-ba4f0db7dd7d.3dd163c0d3.js   9.6 kB      2.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5c615b56aec7.98344a5d13.js   12.7 kB     4.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-9f88506f6df2.4da836a2c8.js   13.4 kB     3.7 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5b5bdd881774.3244fe9b5c.js   15.1 kB     4.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5f6a30048422.1dff6700e5.js   15.7 kB     4.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-015eccef89a3.786940db3c.js   17.6 kB     5.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/index.a749e8051d.js                      52.7 kB     15.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-04cbcabea10a.1b8da8c0df.js   265.4 kB    55.5 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-c4dae6800800.016cade6b1.js   285.5 kB    65.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-6c33a3943990.160d0ff449.js   673.7 kB    145.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/search_index.ko.e65ce97f.json               762.6 kB    228.4 kB
+
+                                                                                                                Total:   2677.7 kB   707.8 kB
+
+File (node)                                                                                                                                                               Size        Gzip
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/404.html                                                                                            8.5 kB      2.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-fit-content-zoom-wpt-plan-review-20.html                                                 25.0 kB     6.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.html                       25.0 kB     6.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.html        27.8 kB     6.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.html   27.8 kB     7.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.html                  29.7 kB     7.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.html                             31.0 kB     7.5 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-fit-content-zoom-wpt.html                                                                35.8 kB     9.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-grid-track-sizing.html                                                                   271.8 kB    58.5 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/0059-c11-grid-layout.html                                                                  285.6 kB    68.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/STATUS.html                                                                                         627.0 kB    146.5 kB
+
+                                                                                                                                                                 Total:   1394.9 kB   326.6 kB

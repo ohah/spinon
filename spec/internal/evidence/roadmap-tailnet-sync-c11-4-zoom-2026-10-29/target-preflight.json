@@ -1,0 +1,915 @@
+{
+  "sourceHead": "4abc761fad14a8c233152c40c4620b5b22773a93",
+  "sourceTree": "adf32c2d5de7524f3ec44d34cc781d41db845233",
+  "trackedRoadmapDiffSha256": "a115c9181640717dc491dc88ead9422a67412ff21235bdee7ecbd994468ea983",
+  "tailscaleBackendState": "Running",
+  "selfHostName": "윤형배의 Mac Studio",
+  "selfTailscaleIPs": [
+    "100.64.53.81",
+    "fd7a:115c:a1e0::312d:3552"
+  ],
+  "previewPid": 28040,
+  "localPreviewUrl": "http://127.0.0.1:8768/spinon/roadmap.html",
+  "localRoadmapBeforeStatus": 200,
+  "localRoadmapBeforeBytes": 384046,
+  "localRoadmapBeforeSha256": "6dc14a23896303d05b5be4e28ce9dd9c9facd3da9fd027f4b979a0fe42a24f97",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-c11-4-zoom-2026-10-29",
+  "routeCount": 111,
+  "totalBytes": 6161562,
+  "createdCount": 92,
+  "replacedCount": 7,
+  "identicalCount": 12,
+  "changedOpenTargetCount": 0,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "404.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/404.html",
+      "bytes": 8512,
+      "sourceSha256": "eb4e06385c7734fc686beeadf79acb8661b40364e509816a24379845a63ee9f9",
+      "targetExists": true,
+      "targetSha256": "eda5a80226e636e96cf07b158cfd0491f4fa9ed289fcf1171134b47e7eb25267"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/STATUS.html",
+      "bytes": 626980,
+      "sourceSha256": "1258ab14209ae13b09428e232bf0373eb08af3cdd999160f18180eb0ad36c487",
+      "targetExists": true,
+      "targetSha256": "5015e5be0ddd177c6213b6744a0a3579139ced6aa851f97556aa13b873df4172"
+    },
+    {
+      "path": "icon.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/icon.svg",
+      "bytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/0059-c11-grid-layout.html",
+      "bytes": 285571,
+      "sourceSha256": "e041c9964639effa147cff608219165925ccbf5649ff15db416cf3507a2d44ac",
+      "targetExists": true,
+      "targetSha256": "e5ddf81945097685578127b54062774b99c9b796afd6f124ffe36367c0546a4d"
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.html",
+      "bytes": 25011,
+      "sourceSha256": "affb4b1b8c18b621382d4d79e5b2930b98a7209d6b23b5c54c9138ae2d3f7ac5",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.html",
+      "bytes": 30959,
+      "sourceSha256": "0e9e8d772831d4510a6d00dfbebf7250101943c300bf0424ccf11b6456b8bb33",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.html",
+      "bytes": 27803,
+      "sourceSha256": "8636c978769d0e85d1263cd7d21dca02081d01c5fa02fabf2c88f6ffd2886581",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.html",
+      "bytes": 27792,
+      "sourceSha256": "7de5f1b8401933a3c01364d53eec4de2ae50a39a2d87cdf9ae85231134fcbf5a",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.html",
+      "bytes": 29685,
+      "sourceSha256": "f4b4da7811ac9716f0e1b3db680222cf86b13e3afe8472d44ea3424ce07c0f40",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "logo.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/logo.svg",
+      "bytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-fit-content-zoom-wpt-plan-review-20.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-fit-content-zoom-wpt-plan-review-20.html",
+      "bytes": 24990,
+      "sourceSha256": "6ef52d8187ef4f1a546a186bbfce66cceb4c83afb2864c58ee9d2d664bad9138",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "plan/c11-4-fit-content-zoom-wpt.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-fit-content-zoom-wpt.html",
+      "bytes": 35779,
+      "sourceSha256": "33ffd91242aa463ae5122d08b6a6fe518e9051faab0bd3fe22e48fdd27d8a9fb",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/plan/c11-4-grid-track-sizing.html",
+      "bytes": 271813,
+      "sourceSha256": "1126f9dda0c61dc503d09be136db2a601108d5fe37a5e81a979406a5fc1fbc21",
+      "targetExists": true,
+      "targetSha256": "11990530c72a23205a1afde6c61f631054704efa01361a9abd0146503bd7803e"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/roadmap.html",
+      "bytes": 387186,
+      "sourceSha256": "df9e4e8b47984df289a098adf86998994bd332cb94c5f0c8de1ff695211d1556",
+      "targetExists": true,
+      "targetSha256": "6dc14a23896303d05b5be4e28ce9dd9c9facd3da9fd027f4b979a0fe42a24f97"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/roadmap.svg",
+      "bytes": 4835,
+      "sourceSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "targetExists": true,
+      "targetSha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sourceSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "targetExists": true,
+      "targetSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sourceSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "targetExists": true,
+      "targetSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-015eccef89a3.786940db3c.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-015eccef89a3.786940db3c.js",
+      "bytes": 17561,
+      "sourceSha256": "467fdcd8a6ff59c50766c65493b17adc76ca9230d44bf89896fc73e59c658508",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.1b8da8c0df.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-04cbcabea10a.1b8da8c0df.js",
+      "bytes": 265379,
+      "sourceSha256": "3d5079454111390e56e0765b547201d6ab89be047d2b808d15b3075ed8a108d7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-0ab008146c2c.5dda371c00.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-0ab008146c2c.5dda371c00.js",
+      "bytes": 7817,
+      "sourceSha256": "8bd65475213fd91f31e4c825297f30ab37c78b7e20e5eb479a3b2a5b32063ea3",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-5b5bdd881774.3244fe9b5c.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5b5bdd881774.3244fe9b5c.js",
+      "bytes": 15099,
+      "sourceSha256": "58ef5d49b05723844426886f3f5ea5638bacdfb1ac193f02be370d6b0152219f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-5c615b56aec7.98344a5d13.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5c615b56aec7.98344a5d13.js",
+      "bytes": 12682,
+      "sourceSha256": "74d5495f8b0fced8950fe64cf86545a00e31b67d0512c172e3e3aff0e81729e9",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-5f6a30048422.1dff6700e5.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-5f6a30048422.1dff6700e5.js",
+      "bytes": 15739,
+      "sourceSha256": "51fc80caed7a8155c6d178518a3e7f51b90597eeb5eca2fce05865b4ec849a40",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.160d0ff449.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-6c33a3943990.160d0ff449.js",
+      "bytes": 673720,
+      "sourceSha256": "2eabe2e7e4b0ea40cc5d70171124e52939a31ec91c5cab8c8a27225df8cbd7ed",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-9f88506f6df2.4da836a2c8.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-9f88506f6df2.4da836a2c8.js",
+      "bytes": 13446,
+      "sourceSha256": "cbfea0746652e9f3463c6f27b6aabb97dcb782f7b7b1fb00ac6c28de097e31ee",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-ba4f0db7dd7d.3dd163c0d3.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-ba4f0db7dd7d.3dd163c0d3.js",
+      "bytes": 9568,
+      "sourceSha256": "210826075335149dca6dc478cca064e8d7712ad346786b7e295a5447b61a9e3d",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.016cade6b1.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/async/route-c4dae6800800.016cade6b1.js",
+      "bytes": 285485,
+      "sourceSha256": "0276eaa0e5954570e5df4d710c07fc9b2449d1c02008b165754f7802a1e3279f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/index.a749e8051d.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/index.a749e8051d.js",
+      "bytes": 52692,
+      "sourceSha256": "5346ef554ebf5ea65bd0ffb4323391201e48bbb21bd927dc0a0bbce84e63175e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sourceSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "targetExists": true,
+      "targetSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sourceSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "targetExists": true,
+      "targetSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sourceSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "targetExists": true,
+      "targetSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "path": "static/search_index.ko.e65ce97f.json",
+      "source": "build/spinon/roadmap-tailnet-sync-c11-4-zoom-2026-10-29/selected-site/static/search_index.ko.e65ce97f.json",
+      "bytes": 762608,
+      "sourceSha256": "e65ce97f105abe2ee3e604a9b38c1eeea15ebae81f29a7f58219bee8d7444be2",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "bytes": 387186,
+      "sourceSha256": "df9e4e8b47984df289a098adf86998994bd332cb94c5f0c8de1ff695211d1556",
+      "targetExists": true,
+      "targetSha256": "242057b655a823a65c9dc0c4b5ea24a2071335a8f4978bec214db55edb447426"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "spec/public/roadmap.html",
+      "bytes": 387186,
+      "sourceSha256": "df9e4e8b47984df289a098adf86998994bd332cb94c5f0c8de1ff695211d1556",
+      "targetExists": true,
+      "targetSha256": "242057b655a823a65c9dc0c4b5ea24a2071335a8f4978bec214db55edb447426"
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.md",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.md",
+      "bytes": 4235,
+      "sourceSha256": "c649c67739845f8f943125cb30038455089355a1f0fa0c95917521a57e981d8a",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/agent-browser-observation.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/agent-browser-observation.json",
+      "bytes": 3175,
+      "sourceSha256": "1c23ed8fc3d04749dfef909a4c3c612f7766c07312132d75948437bcdec5172a",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/normalized-width-probe.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/normalized-width-probe.json",
+      "bytes": 752,
+      "sourceSha256": "8b764d717e27867cb3fe9a080db1989ac73ae573e6a023190977066054b76fdb",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/wpt-fit-content-track-sizing-13-results.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/chrome/wpt-fit-content-track-sizing-13-results.png",
+      "bytes": 152439,
+      "sourceSha256": "a7eaaf9fd1d68755272c044c519d277546ec6e070861c0cf663dfa3698c77849",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/expected.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/expected.json",
+      "bytes": 2636,
+      "sourceSha256": "93cc3dad49d4dcb50a50bbc1368378dc1bb1361c2508a6d3f710a273b6bc9d9f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/source-pins.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/source-pins.json",
+      "bytes": 1184,
+      "sourceSha256": "ffd1d02bc9c1f420dcb867b3b4fafcbac7c39df382fe36e684ea82a929315705",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.md",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.md",
+      "bytes": 8215,
+      "sourceSha256": "47582cbd129fa028ac6f1eca486e46ffadec67309166012b4d08111bdcfde140",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "04197b51867b675a12e158c4c37762704e169d346b66dd5447f177f03f1ae087",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 317,
+      "sourceSha256": "6f7bdd4d0f960b94d5dfa8e38b41e09761d13bd65032cd9b130c4fda5747eb9c",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011313763Z-dd1aeb1a/simulator.json",
+      "bytes": 3582,
+      "sourceSha256": "4ebd76a293ee8590695296701dabbcf3afcac48ac11adcf85963c6d6005c5b20",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "15b446cf6400872a3cd833e57c264a55e00823f8f5e01ec9319d2d4eb368f741",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 7067,
+      "sourceSha256": "a8c7292ed9dd0460ef4a2f634a943f9f5306576c1e1ce566682a4a9636e93f26",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011351582Z-abbdbac3/simulator.json",
+      "bytes": 3582,
+      "sourceSha256": "1196ac8225d1432a7d7040a0ac7b37e2c0860be7fc12095f9fb5c34f772248b7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "11b4d33c7cdbe20b48571b553d4afa4799f12d6c821f22f0077b19992d19facd",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 25009,
+      "sourceSha256": "aa7ed36ce4e366dea9650de074db05932a86cb5c71d7b84a87a1e97bcf6ac29b",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011545389Z-2af6d024/simulator.json",
+      "bytes": 3582,
+      "sourceSha256": "ea9454165ed5f6cb049b060e92edd7ecf7d0a381b3676bb4b238be7c88ab9212",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/fit-content-zoomed-grid-wpt.png",
+      "bytes": 78063,
+      "sourceSha256": "c82e4871c50370253f91e6a73c0ff1be24b58b5ab316fffaba7adb7cb8793787",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "19d6fe614af0cebebf5a1888478f51c78f8d29d8ba73fc86a06357be74acfb1d",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/result.json",
+      "bytes": 1426,
+      "sourceSha256": "f4e1c27318e0b17fd3040ec1bd23f19e1d5f98288d249d17ae11a412c4af7be2",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 24853,
+      "sourceSha256": "9d7f0f7830d6114f8f5603991b5ef029ac4fd9d703bc3090e7a9a036cf150f3f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T011841493Z-dfedaef2/simulator.json",
+      "bytes": 3582,
+      "sourceSha256": "649e991a2f90ae3458497d514421bb42d12e27ebf5e5f281c5b1101963d28885",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/fit-content-zoomed-grid-wpt.png",
+      "bytes": 78229,
+      "sourceSha256": "15788dffb1a2ae4d79b958a6149680c12bb68a0191a282f71dd81fd828aa1621",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "f9dc8f413adb9782cf0caa2e7c66af7d978bc69a1f123fff55e1833a1ed9b199",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/result.json",
+      "bytes": 1426,
+      "sourceSha256": "effa6e25f25e28d64ae5bd39397db29c0eb54898cd12b9a1a0c763e27c29ec58",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 30027,
+      "sourceSha256": "3f9390c5fa8bb8a20ef9cfbc12cde336879a02d8f66a26cff8ec9ccd1c345a48",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T013658994Z-f4e29d4a/simulator.json",
+      "bytes": 3650,
+      "sourceSha256": "8a45a77fc453050ddd147de244cde97c5e2237b3731ecb4645320278aa66f91b",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/fit-content-zoomed-grid-wpt.png",
+      "bytes": 77556,
+      "sourceSha256": "298262e3f025469cd238827f2b5c5fe0b6fb871ca1b4273eed4a52b3fbe3ffe0",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/install.log",
+      "bytes": 36,
+      "sourceSha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/installed-apk-verification.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/installed-apk-verification.json",
+      "bytes": 360,
+      "sourceSha256": "41f0fac492d938c33d098483ef72e876cdbede146e2f088339f9f2523afc5c8b",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 119,
+      "sourceSha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/result.json",
+      "bytes": 1426,
+      "sourceSha256": "fb6c43ea58b57b41014e136c736bdd4a99361c35c902a559ae6658085b23e02f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 24850,
+      "sourceSha256": "582dcc327a857c8b3753e42422b9ade920af961119911604a875cc5ea26b6b70",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/simulator.json",
+      "bytes": 3650,
+      "sourceSha256": "6aed28709fb18ea0762d35efef6ee5c4b0882fd45b89fc6bdb2a03d41387170c",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.md",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.md",
+      "bytes": 6279,
+      "sourceSha256": "28add3379b7b867909c5b964c47e0130aa2a03088714152df7317710e123e556",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/install.log",
+      "bytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 28,
+      "sourceSha256": "12f69ddd961250400552e07011b7b194965d4c9fdb4559ae84b73d60edd84dea",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T011934582Z-05c81c41/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 240,
+      "sourceSha256": "beb3e39889ba60a31057f07271c906266ca8c483f84ce6ba9f6dc6a454485952",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/install.log",
+      "bytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 28,
+      "sourceSha256": "715adb1313826597c32cf70737dc59b903ca28a25e5e3781e3ba966e185a2535",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012102157Z-13379645/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 13092,
+      "sourceSha256": "294a4c76afec6ccef4c0b676ea7d1bddb80cdfb392b6d51041efae65bb7dfd2c",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/fit-content-zoomed-grid-wpt.png",
+      "bytes": 91674,
+      "sourceSha256": "e4f2b11da4e52dfef5a15ef09d685ff5b6a0fba4705d0e8158b0f9bd8a76eb71",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/install.log",
+      "bytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 28,
+      "sourceSha256": "b0e1fd098979131328984321b8ae0a2e523e0500b7cc0fa776a6b3f89ec3ffe6",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/result.json",
+      "bytes": 1462,
+      "sourceSha256": "4b15d98835d5fdc5420e2d3ed866aa11c9390e353a570dcbca9dcc7da4d31afc",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 16374,
+      "sourceSha256": "43923427fdfa58fb11b7d20d858fe6039bda31c96a45256c97b4cc7d4c5d15e6",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/screenshot-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/screenshot-fit-content-zoomed-grid-wpt.log",
+      "bytes": 285,
+      "sourceSha256": "8c7e87b6f8852e87e9d2ff38fb3292d88b1c986638354bfe8ac2601cf4362f6f",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T012242450Z-e919e8c6/simulator.json",
+      "bytes": 3534,
+      "sourceSha256": "607937aa12ad949d120be0700a2b8f27a19301b7c736e9fde129e4c03ee79a17",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/fit-content-zoomed-grid-wpt.png",
+      "bytes": 92147,
+      "sourceSha256": "f27abbb84cdf3ea738f4cfd02b1f6ae041162aa3bfe5fd911fda876ef28ee1d8",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/install.log",
+      "bytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 28,
+      "sourceSha256": "09f3c1845b1c00e30ae7aa63a94a2ea8f3d58fe3c349a66bdc334a293995092c",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/result.json",
+      "bytes": 1462,
+      "sourceSha256": "d8d68277f04ce1373356733253bfb6d53bf3d40757ac6a711faa2697ec527c93",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 15273,
+      "sourceSha256": "c6c2b4365dc110b0523cb8870c0046516f5f133f0f14c1ccd51fcb1f47553441",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/screenshot-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/screenshot-fit-content-zoomed-grid-wpt.log",
+      "bytes": 285,
+      "sourceSha256": "3f147108884548c01a8d6535aca3bb079333ce7a9febb0492265c8728e29271d",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T013705347Z-f2332ace/simulator.json",
+      "bytes": 3602,
+      "sourceSha256": "8fe1961d8776963399b7b8c1a72065985d17946cfa5ace65349703e63dd4ba83",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/fit-content-zoomed-grid-wpt.png",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/fit-content-zoomed-grid-wpt.png",
+      "bytes": 91242,
+      "sourceSha256": "d5aa47b94a1792f7cb98ebf98e4a5c0123c1a78752d6e2efe58fe0bd26b9c514",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/install.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/install.log",
+      "bytes": 0,
+      "sourceSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/launch-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/launch-fit-content-zoomed-grid-wpt.log",
+      "bytes": 28,
+      "sourceSha256": "2f2cfd78be389331c9d411e831fa7b55aa66a0de29570bc47d9d0376a49ec251",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/result.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/result.json",
+      "bytes": 1462,
+      "sourceSha256": "e4d8f190dd92de231fcf16a752fb9aab4b5d4b85aaec9aa7297383b9c363ad63",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/runtime-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/runtime-fit-content-zoomed-grid-wpt.log",
+      "bytes": 16374,
+      "sourceSha256": "743df34d9d15112a9238c5f71040622293b92a1627f1ac69e5fee91b19a5b93b",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/screenshot-fit-content-zoomed-grid-wpt.log",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/screenshot-fit-content-zoomed-grid-wpt.log",
+      "bytes": 285,
+      "sourceSha256": "431641920a91a4db66ba51c1b2118d9be370a5ff7fbdf144846147241290d798",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/simulator.json",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/simulator.json",
+      "bytes": 3602,
+      "sourceSha256": "f1232b2297fa246576ed60799bfa98abef4486aaadebc2197c5621a956d6258d",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.md",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.md",
+      "bytes": 5745,
+      "sourceSha256": "cf1c52141efb23cc21dd895029a0e63ddc5f4d55420e776c5a689c09b2c77e30",
+      "targetExists": false,
+      "targetSha256": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.md",
+      "source": "spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.md",
+      "bytes": 7981,
+      "sourceSha256": "25053ebc90f237a1b1c4eca88a4a376a726a662b3abbee9b0aef15c4b6a0bb93",
+      "targetExists": false,
+      "targetSha256": null
+    }
+  ]
+}
