@@ -7,6 +7,7 @@
 - **원본 관찰값:** [`chrome-156-observations.json`](chrome-156-observations.json)
 - **화면:** [`chrome-156-precomparison.png`](chrome-156-precomparison.png)
 - **SHA-256 manifest:** [`sha256sums.txt`](sha256sums.txt)
+- **PR #800 변경분 실패 관점 검토:** [`pr-diff-review-20.md`](pr-diff-review-20.md)
 
 ## 입력과 독립 기대값
 
