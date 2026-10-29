@@ -1,0 +1,72 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone16k_arm64",
+  "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+  "apkSha256": "d01daf34b6dd7fb81740d9d5d3e29ae8901e836a2c082ed6b4b3935f86463e66",
+  "installedApkSha256": "d01daf34b6dd7fb81740d9d5d3e29ae8901e836a2c082ed6b4b3935f86463e66",
+  "sourceRevision": {
+    "commit": "60ffaf1509902c94a11644331d82280916767a1d",
+    "tree": "4d649e1e311c5d7980a3ac108cb289e0e4cd8c8c",
+    "trackedDiffSha256": "5a6d2feea7c09c2e156f4fe65a7dc56ed4c4c117bb8ebef2f7c3971e9e05905d",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-runtime/src/lib.rs",
+      "crates/spinon-runtime/src/session.rs",
+      "crates/spinon-runtime/src/session/ua_cascade.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/calculation.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_image/tests.rs",
+      "crates/spinon-style/src/lib.rs",
+      "crates/spinon-style/src/stylo_dom.rs",
+      "crates/spinon-style/src/stylo_dom/cascade.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs",
+      "crates/spinon-style/src/stylo_dom/document.rs",
+      "plan/c11-4-fit-content-zoom-wpt.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_zoomed_grid.rs",
+        "sha256": "fe2561fa4dace130ce2bb2583c78b048d244b50bf52c6004e5262d41daae0564"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_zoomed_grid_report.rs",
+        "sha256": "248f020cbeeabfe3822ba2364556b3d1d299855745fb28d7615f831a4e0b427a"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_zoomed_grid.rs",
+        "sha256": "a60a6813e744bfa8f5c2b0d2b1b677f43bef6fb6aead91191ec61d043269b88f"
+      },
+      {
+        "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_zoomed_grid/tests.rs",
+        "sha256": "a23fa3018fd834913783f3ca4f4d04b1fefbddd7372fe2fb4e177aa5946d3759"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/zoom_fixture.rs",
+        "sha256": "2c6c849dc9196522811d9093975297f5e1f74983fae898c7169ed72b9a863f5f"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "4532333a9548635e8e39d41d2f9601ed4a074aefa9505c476002e7296bbc3c25"
+  }
+}

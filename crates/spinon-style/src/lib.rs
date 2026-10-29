@@ -5,7 +5,9 @@ use std::ffi::CStr;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use stylo_dom::{
     compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property,
 };
 
 mod c10_flex_baseline_css;
@@ -24,6 +26,8 @@ pub use stylesheet_registry::{
     CssOrigin, CssParseDiagnostic, RegisteredStylesheet, StylesheetRegistry,
     StylesheetRegistryError, StylesheetSource,
 };
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use stylo_dom::ComputedCssZoom;
 pub use stylo_dom::{
     CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,

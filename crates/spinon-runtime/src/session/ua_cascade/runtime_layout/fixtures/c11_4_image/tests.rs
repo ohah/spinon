@@ -289,6 +289,8 @@ fn style(
         properties,
         layout_position: ComputedCssPosition::Static,
         stacking_z_index: None,
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        c11_4_zoom: None,
         stacking_opacity: None,
         stacking_visibility: None,
         layout_overflow_x: None,

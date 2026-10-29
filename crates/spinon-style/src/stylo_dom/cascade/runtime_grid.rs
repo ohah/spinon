@@ -283,6 +283,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         viewport,
         style_revision,
         None,
+        None,
     )
 }
 
@@ -302,6 +303,29 @@ pub fn compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascad
         viewport,
         style_revision,
         Some(&author_properties),
+        None,
+    )
+}
+
+/// C11.4 zoomed fit-content 고정 fixture에서만 author `zoom`을 계산합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let mut author_properties = runtime_block_flex_grid_track_sizing_author_properties();
+    author_properties.push("zoom");
+    let mut properties = runtime_block_flex_grid_track_sizing_properties();
+    properties.push(("zoom", LonghandId::Zoom));
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        Some(&author_properties),
+        Some(&properties),
     )
 }
 
@@ -311,6 +335,7 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
     viewport: CssViewport,
     style_revision: StyleRevision,
     author_properties_override: Option<&[&str]>,
+    properties_override: Option<&[(&'static str, LonghandId)]>,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
     let profile_view = {
         let _preferences = enable_orthogonal_writing_mode_preferences();
@@ -364,13 +389,15 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
         }
         profile_view
     };
+    let default_properties = runtime_block_flex_grid_track_sizing_properties();
+    let properties = properties_override.unwrap_or(&default_properties);
     if let Some(author_properties) = author_properties_override {
         super::compute_cascade_with_author_properties_override(
             &profile_view,
             author_stylesheets,
             viewport,
             style_revision,
-            &runtime_block_flex_grid_track_sizing_properties(),
+            properties,
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
             Some(author_properties),
         )
@@ -380,7 +407,7 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
             author_stylesheets,
             viewport,
             style_revision,
-            &runtime_block_flex_grid_track_sizing_properties(),
+            properties,
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
         )
     }
@@ -464,6 +491,20 @@ pub fn first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_t
 ) -> Option<(NodeId, String)> {
     let mut allowed = runtime_block_flex_grid_track_sizing_author_properties();
     allowed.extend(["overflow-x", "overflow-y"]);
+    super::runtime_layout::first_unsupported_inline_declaration(view, |declaration, property| {
+        allowed.contains(&property)
+            && (property != "visibility"
+                || crate::stylesheet_registry::supports_runtime_visibility_value(declaration))
+    })
+}
+
+/// C11.4 zoomed fit-content 고정 fixture route에서만 author `zoom`을 허용합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    let mut allowed = runtime_block_flex_grid_track_sizing_author_properties();
+    allowed.push("zoom");
     super::runtime_layout::first_unsupported_inline_declaration(view, |declaration, property| {
         allowed.contains(&property)
             && (property != "visibility"

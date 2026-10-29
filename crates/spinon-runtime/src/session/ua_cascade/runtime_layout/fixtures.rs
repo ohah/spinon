@@ -52,6 +52,10 @@ mod c11_4_fit_content_percentage_argument;
 mod c11_4_fit_content_implicit_column;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_fit_content_zoomed_grid.rs"]
+mod c11_4_fit_content_zoomed_grid;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_fit_content_auto_min_floor.rs"]
 mod c11_4_fit_content_auto_min_floor;
 
@@ -186,6 +190,13 @@ pub(super) use c11_4_fit_content_implicit_column::{
     observation as c11_4_fit_content_implicit_column_observation,
     prepare as prepare_c11_4_fit_content_implicit_column,
     validate_output as validate_c11_4_fit_content_implicit_column_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_fit_content_zoomed_grid::{
+    observation as c11_4_fit_content_zoomed_grid_observation,
+    prepare as prepare_c11_4_fit_content_zoomed_grid,
+    validate_output as validate_c11_4_fit_content_zoomed_grid_output,
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

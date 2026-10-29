@@ -47,7 +47,9 @@ pub use runtime_grid::{
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use runtime_grid::{
     compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property,
 };
 pub use runtime_layout::{
     compute_runtime_flex_custom_properties_cascade,
@@ -132,6 +134,8 @@ mod typed_css_math_tests;
 
 pub use margin::compute_flex_margin_cascade;
 pub use margin::compute_flex_media_environment_cascade;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub use snapshot::ComputedCssZoom;
 pub use snapshot::{
     CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,

@@ -87,6 +87,7 @@ const fixedAutoAreaSceneIDs = new Set([
 ]);
 const fitContentAutoNeighborSceneIDs = new Set(['fit-content-auto-neighbor-wpt']);
 const fitContentMinHeightSceneIDs = new Set(['fit-content-min-height-wpt']);
+const fitContentZoomedGridSceneIDs = new Set(['fit-content-zoomed-grid-wpt']);
 const fitContentPercentageArgumentSceneIDs = new Set([
   'fit-content-percentage-row-wpt', 'fit-content-calc-percentage-row-wpt',
 ]);
@@ -191,6 +192,8 @@ const isFitContentAutoNeighborRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoNeighborSceneIDs.has(sceneID));
 const isFitContentMinHeightRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentMinHeightSceneIDs.has(sceneID));
+const isFitContentZoomedGridRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => fitContentZoomedGridSceneIDs.has(sceneID));
 const isFitContentPercentageArgumentRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentPercentageArgumentSceneIDs.has(sceneID));
 const isFitContentSpanningRun = requestedSceneIDs?.length > 0
@@ -220,6 +223,7 @@ const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
   : isOverflowAutoMinimumRun ? 'overflow-auto-minimum'
   : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
   : isFitContentMinHeightRun ? 'fit-content-min-height'
+  : isFitContentZoomedGridRun ? 'fit-content-zoomed-grid'
   : isFitContentPercentageArgumentRun ? 'fit-content-percentage-argument'
   : isFitContentSpanningRun ? 'fit-content-spanning'
   : isFitContentAutoMinFloorRun ? 'fit-content-auto-min-floor'
@@ -268,6 +272,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-fit-content-auto-neighbor-runtime-${date}/${target}-${runPrefix}`
   : isFitContentMinHeightRun
     ? `spec/internal/evidence/c11-4-fit-content-min-height-runtime-${date}/${target}-${runPrefix}`
+  : isFitContentZoomedGridRun
+    ? `spec/internal/evidence/c11-4-fit-content-zoom-runtime-${date}/${target}-${runPrefix}`
   : isFitContentPercentageArgumentRun
     ? `spec/internal/evidence/c11-4-fit-content-percentage-argument-runtime-${date}/${target}-${runPrefix}`
   : isFitContentSpanningRun
@@ -5135,6 +5141,38 @@ scenes.push({
   ],
 });
 scenes.push({
+  id: 'fit-content-zoomed-grid-wpt',
+  axis: 'Rows',
+  boxCount: 3,
+  rootFrame: 'width=120,height=600',
+  itemFrame: 'width=120,height=80',
+  nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=600;'
+    + '1:node=2,x=0,y=0,width=120,height=80;'
+    + '2:node=3,x=0,y=0,width=120,height=800]',
+  tracks: [80],
+  collapsed: [false],
+  requiresStrictPresentationIdentity: true,
+  fitContentZoomedGrid: {
+    rootNode: 1,
+    itemNode: 2,
+    childNode: 3,
+  },
+  pixelSamples: [
+    { id: 'fit-content-zoom-child-in-row',
+      nodeId: 'c114-fit-content-zoomed-grid-child',
+      xCssPx: 60, yCssPx: 40, rgba: [255, 209, 102, 255] },
+    { id: 'fit-content-zoom-child-past-item',
+      nodeId: 'c114-fit-content-zoomed-grid-child',
+      xCssPx: 60, yCssPx: 100, rgba: [255, 209, 102, 255] },
+    { id: 'fit-content-zoom-child-past-root',
+      nodeId: 'c114-fit-content-zoomed-grid-child',
+      xCssPx: 60, yCssPx: 610, rgba: [255, 209, 102, 255] },
+    { id: 'fit-content-zoom-outside-root',
+      nodeId: 'c114-fit-content-zoomed-grid',
+      xCssPx: 125, yCssPx: 610, rgba: [0, 0, 0, 255] },
+  ],
+});
+scenes.push({
   id: 'fit-content-percentage-row-wpt',
   axis: 'Rows',
   boxCount: 3,
@@ -5556,7 +5594,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 541, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 542, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -6957,6 +6995,76 @@ function verifyRuntimeLog(log, scene, runID) {
       assert.deepEqual(stage.baseSizesCssPx, [expectedBase],
         `${scene.id}: fit-content row size changed at ${stage.stage}`);
     }
+  }
+  if (scene.fitContentZoomedGrid) {
+    const expected = scene.fitContentZoomedGrid;
+    const observation = diagnostics.fitContentZoomedGrid;
+    assert.ok(observation, `${scene.id}: zoomed-grid fixture observation is missing`);
+    assert.equal(observation.sceneId, scene.id);
+    assert.equal(observation.frameSource, 'pre-render LayoutOutput CSS px');
+    const style = observation.styleSnapshot;
+    assert.equal(style.profile, 'RuntimeBlockFlexGridTrackSizingV1');
+    assert.equal(style.rootNode, expected.rootNode);
+    assert.deepEqual(style.zoom, {
+      root: { specified: 2, effective: 2 },
+      item: { specified: 1, effective: 2 },
+      child: { specified: 1, effective: 2 },
+    });
+    assert.ok(Number.isInteger(style.generation) && style.generation > 0);
+    assert.ok(Number.isInteger(style.documentRevision) && style.documentRevision > 0);
+    assert.ok(Number.isInteger(style.renderTreeRevision) && style.renderTreeRevision > 0);
+    assert.ok(Number.isInteger(style.styleRevision) && style.styleRevision >= 0);
+    assert.ok(Number.isInteger(style.environmentRevision) && style.environmentRevision >= 0);
+    assert.equal(style.styleRevision, diagnostics.layoutInputRevision.style);
+    assert.equal(style.environmentRevision, diagnostics.layoutInputRevision.environment);
+    assert.equal(style.computedPropertyGridTemplateRows, 'none');
+    assert.deepEqual(style.typedDimensions, {
+      rootWidth: 'LengthPx(120.0)',
+      rootHeight: 'LengthPx(600.0)',
+      itemMinHeight: 'LengthPx(0.0)',
+      childHeight: 'LengthPx(800.0)',
+    });
+    assert.ok(style.typedGridStyle.includes(
+      'auto_rows: TrackList([FitContent(LengthPx(80.0))])'),
+    `${scene.id}: zoom-scaled typed fit-content limit is missing`);
+    assert.deepEqual(observation.layoutInputGridContainer, {
+      rootNode: expected.rootNode,
+      columns: '[LengthPx(120.0)]',
+      explicitRows: '[]',
+      autoColumns: 'Auto',
+      autoRows: 'TrackList([FitContent(LengthPx(80.0))])',
+      autoFlow: 'Row',
+      placementMode: 'TrackSizing',
+    });
+    assert.deepEqual(observation.nodeIds, {
+      root: expected.rootNode,
+      item: expected.itemNode,
+      child: expected.childNode,
+    });
+    assert.deepEqual(observation.framesCssPx, {
+      root: { x: 0, y: 0, width: 120, height: 600 },
+      item: { x: 0, y: 0, width: 120, height: 80 },
+      child: { x: 0, y: 0, width: 120, height: 800 },
+    });
+    const expectedStages = [
+      'Initialize',
+      'IntrinsicItemBatch { span: 1, crosses_flexible_track: false }',
+      'IntrinsicSizingComplete', 'MaximizeTracks', 'ExpandFlexibleTracks',
+      'StretchAutoTracks { applied: true }',
+    ];
+    assert.deepEqual(observation.rowSizingStages.map(({ stage }) => stage), expectedStages,
+      `${scene.id}: row sizing stages are missing, duplicated, or out of order`);
+    for (const [index, stage] of observation.rowSizingStages.entries()) {
+      assert.deepEqual(stage.baseSizesCssPx, [index < 3 ? 0 : 80],
+        `${scene.id}: fit-content zoomed row differs at ${stage.stage}`);
+    }
+    assert.deepEqual(observation.rowContributions.map(({ kind, valueCssPx }) => ({
+      kind, valueCssPx,
+    })), [
+      { kind: 'Minimum', valueCssPx: 0 },
+      { kind: 'MinContent', valueCssPx: 800 },
+      { kind: 'MaxContent', valueCssPx: 800 },
+    ], `${scene.id}: zoom-scaled row contributions differ`);
   }
   if (scene.fitContentPercentageArgument) {
     const expected = scene.fitContentPercentageArgument;

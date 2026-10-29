@@ -100,6 +100,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub fit_content_percentage_argument:
         Option<RuntimeC11_4FitContentPercentageArgumentObservation>,
     pub fit_content_implicit_column: Option<RuntimeC11_4FitContentImplicitColumnObservation>,
+    pub fit_content_zoomed_grid: Option<RuntimeC11_4FitContentZoomedGridObservation>,
     pub fit_content_auto_min_floor: Option<RuntimeC11_4FitContentAutoMinFloorObservation>,
     pub fit_content_spanning: Option<RuntimeC11_4FitContentSpanningObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
@@ -140,6 +141,15 @@ pub struct RuntimeC11_4FitContentPercentageArgumentObservation {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeC11_4FitContentImplicitColumnObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub node_ids: [spinon_core::NodeId; 3],
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4FitContentZoomedGridObservation {
     pub style_snapshot: ComputedStyleSnapshot,
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
@@ -264,6 +274,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             fit_content_min_height: self.fit_content_min_height.clone(),
             fit_content_percentage_argument: self.fit_content_percentage_argument.clone(),
             fit_content_implicit_column: self.fit_content_implicit_column.clone(),
+            fit_content_zoomed_grid: self.fit_content_zoomed_grid.clone(),
             fit_content_auto_min_floor: self.fit_content_auto_min_floor.clone(),
             fit_content_spanning: self.fit_content_spanning.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
@@ -367,6 +378,10 @@ where
     let (root, view, styles) =
         layout_context.expect("단일 스타일 root의 layout 입력이 있어야 합니다");
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_zoom_root = profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && super::calculation::is_c11_4_fit_content_zoom_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let c11_4_auto_minmax_span_overflow_root = profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && fixtures::is_c11_4_auto_minmax_span_overflow_root(&request.snapshot, root);
@@ -448,7 +463,9 @@ where
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-            if c11_4_auto_minmax_span_overflow_root {
+            if c11_4_fit_content_zoom_root {
+                spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property(&view)
+            } else if c11_4_auto_minmax_span_overflow_root {
                 spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property(&view)
             } else {
                 spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
@@ -695,6 +712,15 @@ where
         && c11_4_auto_minmax_span_overflow_input.is_none()
     {
         fixtures::prepare_c11_4_fit_content_implicit_column(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_zoomed_grid_node_ids = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_fit_content_zoomed_grid(&request.snapshot, root, &styles)?
     } else {
         None
     };
@@ -998,6 +1024,18 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let fit_content_zoomed_grid_observation =
+        if let Some(node_ids) = c11_4_fit_content_zoomed_grid_node_ids {
+            Some(fixtures::c11_4_fit_content_zoomed_grid_observation(
+                root,
+                &output.computed_styles,
+                &output.grid_container_inputs,
+                node_ids,
+            )?)
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let fit_content_auto_min_floor_observation =
         if let Some((scene_id, node_ids)) = c11_4_fit_content_auto_min_floor_node_ids {
             Some(fixtures::c11_4_fit_content_auto_min_floor_observation(
@@ -1188,6 +1226,7 @@ where
                 fit_content_min_height: fit_content_min_height_observation,
                 fit_content_percentage_argument: fit_content_percentage_argument_observation,
                 fit_content_implicit_column: fit_content_implicit_column_observation,
+                fit_content_zoomed_grid: fit_content_zoomed_grid_observation,
                 fit_content_auto_min_floor: fit_content_auto_min_floor_observation,
                 fit_content_spanning: fit_content_spanning_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
@@ -1221,6 +1260,10 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_implicit_column_node_ids.is_some() {
         fixtures::validate_c11_4_fit_content_implicit_column_output(&completed)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_fit_content_zoomed_grid_node_ids.is_some() {
+        fixtures::validate_c11_4_fit_content_zoomed_grid_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_auto_min_floor_node_ids.is_some() {
@@ -1791,6 +1834,7 @@ mod tests {
             fit_content_min_height: None,
             fit_content_percentage_argument: None,
             fit_content_implicit_column: None,
+            fit_content_zoomed_grid: None,
             fit_content_auto_min_floor: None,
             fit_content_spanning: None,
             grid_layout_auto_tracks: None,

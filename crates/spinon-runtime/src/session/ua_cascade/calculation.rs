@@ -544,6 +544,31 @@ fn c11_4_auto_minmax_span_overflow_root(
     })
 }
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) fn is_c11_4_fit_content_zoom_root(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> bool {
+    const SCENE_ROOT_ID: &str = "c114-fit-content-zoomed-grid";
+    let Some(node) = snapshot.node(root) else {
+        return false;
+    };
+    let HostNodeKind::Element(element) = node.kind() else {
+        return false;
+    };
+    if element.namespace() != HTML_NAMESPACE
+        || element.local_name() != "div"
+        || snapshot.parent(root) != Some(HostParent::Root)
+    {
+        return false;
+    }
+    element.attributes().iter().any(|(name, value)| {
+        name.namespace().is_none()
+            && name.local_name() == "id"
+            && value.to_string_lossy() == SCENE_ROOT_ID
+    })
+}
+
 fn compute_root(
     request: &WorkRequest,
     root: HostNodeHandle,
@@ -561,6 +586,23 @@ fn compute_root(
     let c11_4_auto_minmax_span_overflow_root = calculation_profile
         == RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && c11_4_auto_minmax_span_overflow_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_zoom_root = calculation_profile
+        == RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && is_c11_4_fit_content_zoom_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let view = if c11_4_fit_content_zoom_root {
+        StyloDocumentView::new_c11_4_fit_content_zoom_runtime_mount_shared(
+            Arc::clone(&request.snapshot),
+            root,
+        )
+    } else if is_root_html_paint_profile(calculation_profile) {
+        StyloDocumentView::new_html_shared(Arc::clone(&request.snapshot), root)
+    } else {
+        StyloDocumentView::new_html_runtime_mount_shared(Arc::clone(&request.snapshot), root)
+    }
+    .map_err(|error| error.to_string())?;
+    #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
     let view = if is_root_html_paint_profile(calculation_profile) {
         StyloDocumentView::new_html_shared(Arc::clone(&request.snapshot), root)
     } else {
@@ -634,7 +676,7 @@ fn compute_root(
     let reuse_previous_styles = !is_root_html_paint_profile(calculation_profile) && {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         {
-            !c11_4_auto_minmax_span_overflow_root
+            !c11_4_auto_minmax_span_overflow_root && !c11_4_fit_content_zoom_root
         }
         #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         {
@@ -857,6 +899,13 @@ fn compute_root(
                 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                 if c11_4_auto_minmax_span_overflow_root {
                     spinon_style::compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets(
+                        &view,
+                        author_stylesheets,
+                        request.viewport,
+                        request.key.style_revision,
+                    )
+                } else if c11_4_fit_content_zoom_root {
+                    spinon_style::compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets(
                         &view,
                         author_stylesheets,
                         request.viewport,
