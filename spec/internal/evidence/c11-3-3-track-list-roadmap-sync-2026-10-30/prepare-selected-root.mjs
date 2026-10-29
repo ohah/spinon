@@ -7,9 +7,9 @@ import { fileURLToPath } from 'node:url';
 
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
-const selectedRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-20261030');
-const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-20261030');
-const reportPath = path.join(evidenceDirectory, 'selected-root-pass01.json');
+const selectedRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-pass03-20261030');
+const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-pass03-20261030');
+const reportPath = path.join(evidenceDirectory, 'selected-root-pass03.json');
 const sourceCommit = execFileSync('git', ['rev-parse', 'HEAD'], { cwd: repositoryRoot, encoding: 'utf8' }).trim();
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 
@@ -76,7 +76,11 @@ const sourcePaths = [
   'spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.md',
   'spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.md',
   'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.md',
+  'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/result.json',
+  'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/android-track-list-cycle-screen.png',
   'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.md',
+  'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/result.json',
+  'spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/ios-track-list-cycle-screen.png',
 ];
 for (const relative of sourcePaths) copyTree(relative);
 

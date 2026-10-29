@@ -8,13 +8,13 @@ import { fileURLToPath } from 'node:url';
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
 const [mode, preflightArgument] = process.argv.slice(2);
-const selectedBuildPath = path.join(evidenceDirectory, 'selected-build-verification-pass01.json');
-const preflightPath = path.join(evidenceDirectory, 'tailnet-preflight-pass01.json');
-const resultPath = path.join(evidenceDirectory, 'tailnet-' + mode + '-pass01.json');
+const selectedBuildPath = path.join(evidenceDirectory, 'selected-build-verification-pass03.json');
+const preflightPath = path.join(evidenceDirectory, 'tailnet-preflight-pass03.json');
+const resultPath = path.join(evidenceDirectory, 'tailnet-' + mode + '-pass03.json');
 const targetRoot = '/Users/yoonhb/Library/Application Support/SpinonPreview';
-const backupRoot = '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass01';
+const backupRoot = '/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03';
 const targetRootRelative = 'SpinonPreview';
-const backupRootRelative = 'SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass01';
+const backupRootRelative = 'SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03';
 const origin = process.env.SPINON_PREVIEW_ORIGIN ? process.env.SPINON_PREVIEW_ORIGIN.replace(/\/$/, '') : '';
 assert.ok(['preflight', 'copy', 'verify'].includes(mode), 'usage: node sync-tailnet.mjs preflight|copy|verify [PREFLIGHT_JSON]');
 assert.ok(fs.lstatSync(selectedBuildPath).isFile(), 'selected build verification report is required');
@@ -184,7 +184,7 @@ for (const entry of expected.files) {
     assert.ok(backup.exists && backup.bytes.byteLength === entry.previous_bytes && sha256(backup.bytes) === entry.previous_sha256, 'backup hash mismatch: ' + entry.path);
     backups.push({ path: entry.path, backup_verified: true });
   }
-  const response = await fetch(origin + '/spinon/' + entry.path + '?sync=c11-3-3-track-list-roadmap-2026-10-30', { headers: { 'cache-control': 'no-cache' } });
+  const response = await fetch(origin + '/spinon/' + entry.path + '?sync=c11-3-3-track-list-roadmap-2026-10-30-pass03', { headers: { 'cache-control': 'no-cache' } });
   assert.equal(response.status, 200, 'remote HTTP status for ' + entry.path + ': ' + response.status);
   const remoteBytes = Buffer.from(await response.arrayBuffer());
   assert.equal(remoteBytes.byteLength, entry.source_bytes, 'remote byte count differs: ' + entry.path);
