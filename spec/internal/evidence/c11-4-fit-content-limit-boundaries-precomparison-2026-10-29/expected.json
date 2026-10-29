@@ -1,0 +1,29 @@
+{
+  "source": {
+    "repository": "web-platform-tests/wpt",
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "path": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "url": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "bytes": 5060
+  },
+  "standard": {
+    "document": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/",
+    "sections": ["11.2", "11.5.1"],
+    "fitContentFormula": "max(minimum, min(limit, max-content))",
+    "reasonMinimumIsZero": "Each target grid item specifies min-height:0; no automatic minimum floor is expected."
+  },
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "harness": "13 Pass, 0 failed",
+    "screenshot": "fit-content-track-sizing-wpt-13-results.png",
+    "screenshotSize": [1280, 5266],
+    "screenshotSha256": "a7eaaf9fd1d68755272c044c519d277546ec6e070861c0cf663dfa3698c77849"
+  },
+  "cases": [
+    {"wptId":"contentLargerThanArgument","sceneId":"fit-content-limit-40-wpt","limitPx":40,"minimumPx":0,"maxContentPx":100,"expectedRows":"40px","expectedItemHeightPx":40,"childHeightPx":100,"overflowBeyondItemPx":60},
+    {"wptId":"smallArgument","sceneId":"fit-content-limit-30-wpt","limitPx":30,"minimumPx":0,"maxContentPx":100,"expectedRows":"30px","expectedItemHeightPx":30,"childHeightPx":100,"overflowBeyondItemPx":70},
+    {"wptId":"largeArgument","sceneId":"fit-content-limit-200-wpt","limitPx":200,"minimumPx":0,"maxContentPx":100,"expectedRows":"100px","expectedItemHeightPx":100,"childHeightPx":100,"overflowBeyondItemPx":0}
+  ]
+}
