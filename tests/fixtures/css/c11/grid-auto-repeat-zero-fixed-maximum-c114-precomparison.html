@@ -1,0 +1,119 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 zero fixed maximum auto-repeat precomparison</title>
+<style>
+  html, body { margin: 0; }
+  body { font: 12px monospace; }
+  #results { display: none; white-space: pre-wrap; }
+  .scene { display: flex; align-items: center; gap: 8px; min-height: 40px; }
+  .label { display: block; flex: 0 0 340px; }
+  .grid {
+    display: grid;
+    box-sizing: content-box;
+    padding: 0;
+    border: 0;
+    margin: 0;
+    align-content: start;
+    justify-content: start;
+    align-items: start;
+    justify-items: start;
+    background: rgb(16 24 32);
+  }
+  .item {
+    box-sizing: content-box;
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    min-height: 12px;
+    background: rgb(220 38 38);
+  }
+</style>
+<pre id="results">waiting</pre>
+<script>
+  const cases = [];
+  for (const axis of ['columns', 'rows']) {
+    for (const minimum of ['auto', 'min-content', 'max-content']) {
+      for (const mode of ['auto-fill', 'auto-fit']) {
+        for (const gap of [0, 4]) {
+          cases.push({
+            id: `${axis}-${mode}-${minimum}-max0-gap${gap}`,
+            axis,
+            minimum,
+            mode,
+            gap,
+            basis: 16,
+          });
+        }
+      }
+    }
+  }
+
+  function rect(element) {
+    const value = element.getBoundingClientRect();
+    return {
+      x: value.x,
+      y: value.y,
+      width: value.width,
+      height: value.height,
+    };
+  }
+
+  const observed = cases.map((scene) => {
+    const section = document.createElement('section');
+    const label = document.createElement('span');
+    const root = document.createElement('div');
+    const item = document.createElement('div');
+    section.className = 'scene';
+    section.dataset.scene = scene.id;
+    label.className = 'label';
+    label.textContent = scene.id;
+    root.className = 'grid';
+    root.dataset.case = scene.id;
+    root.style.width = scene.axis === 'columns' ? `${scene.basis}px` : '40px';
+    root.style.height = scene.axis === 'rows' ? `${scene.basis}px` : '40px';
+    root.style.columnGap = scene.axis === 'columns' ? `${scene.gap}px` : '0px';
+    root.style.rowGap = scene.axis === 'rows' ? `${scene.gap}px` : '0px';
+    const repeated = `repeat(${scene.mode}, minmax(${scene.minimum}, 0px))`;
+    if (scene.axis === 'columns') {
+      root.style.gridTemplateColumns = repeated;
+      root.style.gridTemplateRows = '20px';
+    } else {
+      root.style.gridTemplateColumns = '20px';
+      root.style.gridTemplateRows = repeated;
+    }
+    item.className = 'item';
+    item.style.gridColumn = scene.axis === 'columns' ? '3' : '1';
+    item.style.gridRow = scene.axis === 'rows' ? '3' : '1';
+    root.append(item);
+    section.append(label, root);
+    document.body.append(section);
+
+    const computed = getComputedStyle(root);
+    const rootRect = rect(root);
+    const itemRect = rect(item);
+    const axisTracks = scene.axis === 'columns'
+      ? computed.gridTemplateColumns
+      : computed.gridTemplateRows;
+    return {
+      id: scene.id,
+      axis: scene.axis,
+      mode: scene.mode,
+      minimum: scene.minimum,
+      maximum: '0px',
+      gap: scene.gap,
+      basis: scene.basis,
+      gridTemplateColumns: computed.gridTemplateColumns,
+      gridTemplateRows: computed.gridTemplateRows,
+      repeatedTrackCount: axisTracks.trim().split(/\s+/).length,
+      root: rootRect,
+      item: itemRect,
+      itemOffset: {
+        x: itemRect.x - rootRect.x,
+        y: itemRect.y - rootRect.y,
+      },
+    };
+  });
+
+  window.__c114AutoRepeatZeroFixedMaximum = observed;
+  document.querySelector('#results').textContent = JSON.stringify(observed, null, 2);
+</script>
