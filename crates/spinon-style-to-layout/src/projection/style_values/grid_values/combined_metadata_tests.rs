@@ -35,6 +35,12 @@ fn projection_grid(line_name_bytes: usize, include_area: bool) -> ComputedCssGri
     }
 }
 
+fn template_projection_grid(line_name_bytes: usize) -> ComputedCssGridLayout {
+    let mut grid = projection_grid(line_name_bytes, true);
+    grid.columns_auto_repeat = None;
+    grid
+}
+
 fn line_and_area_fixed_bytes(auto_repeat_axes: usize) -> usize {
     let outer_line_name_groups = 2 + 2;
     let auto_repeat_line_name_groups = auto_repeat_axes * 2;
@@ -217,4 +223,35 @@ fn combined_metadata_reservation_failures_keep_property_context_and_recover() {
             .is_ok()
         );
     }
+}
+
+#[test]
+fn template_grid_combined_line_name_and_area_metadata_obeys_one_mib_budget() {
+    let node = NodeId::new(11_135).unwrap();
+    let line_name_bytes =
+        COMBINED_METADATA_LIMIT - line_and_area_fixed_bytes(0) - std::mem::size_of::<Vec<String>>();
+    let grid = template_projection_grid(line_name_bytes);
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+    )
+    .unwrap();
+    assert!(projected.template_areas.is_some());
+    assert_eq!(projected.columns_line_names[0][0].len(), line_name_bytes);
+
+    let over_budget = template_projection_grid(line_name_bytes + 1);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &over_budget,
+            ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-template-areas",
+            value,
+        }) if error_node == node && value.contains("1 MiB")
+    ));
 }

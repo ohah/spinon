@@ -146,14 +146,14 @@ fn template_area_profile_selects_template_grid_sizing_mode() {
         columns_line_names: vec![Vec::new(), Vec::new()],
         rows_line_names: vec![Vec::new(), Vec::new()],
         template_areas: Some(ComputedCssGridTemplateAreas {
-            rows: 1,
-            columns: 1,
+            rows: 2,
+            columns: 3,
             areas: vec![ComputedCssGridArea {
                 name: "area".to_owned(),
-                row_start: 0,
-                row_end: 1,
-                column_start: 0,
-                column_end: 1,
+                row_start: 1,
+                row_end: 2,
+                column_start: 2,
+                column_end: 3,
             }],
         }),
         auto_flow: ComputedCssGridAutoFlow::Row,
@@ -172,6 +172,47 @@ fn template_area_profile_selects_template_grid_sizing_mode() {
         projected.placement_mode,
         spinon_layout::GridPlacementMode::TemplateGrid
     );
+    assert_eq!(
+        projected.rows,
+        [GridTrackSize::LengthPx(40.0), GridTrackSize::Auto]
+    );
+    assert_eq!(
+        projected.columns,
+        [
+            GridTrackSize::LengthPx(80.0),
+            GridTrackSize::Auto,
+            GridTrackSize::Auto
+        ]
+    );
+    assert_eq!(
+        projected.template_areas,
+        Some(spinon_layout::GridTemplateAreasInput {
+            rows: 2,
+            columns: 3,
+            areas: vec![spinon_layout::GridTemplateAreaInput {
+                name: "area".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 2,
+                column_end: 3,
+            }],
+        })
+    );
+
+    let unrelated_profile = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+    )
+    .unwrap_err();
+    assert!(matches!(
+        unrelated_profile,
+        crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-template-areas",
+            ..
+        } if error_node == node
+    ));
 }
 
 #[test]

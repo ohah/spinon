@@ -1,5 +1,5 @@
 use spinon_core::NodeId;
-use spinon_layout::{GridContainerInput, GridItemInput};
+use spinon_layout::{GridContainerInput, GridItemInput, GridPlacementMode};
 use spinon_style::{ComputedCssGridItemPlacement, ComputedCssGridTemplateAreas};
 
 use crate::StyleLayoutError;
@@ -44,6 +44,8 @@ pub(super) fn project_grid_item_placement(
                 areas: template_areas,
                 axis: named_line::GridAxis::Rows,
                 track_count: container.rows.len(),
+                allow_area_dimension_mismatch: container.placement_mode
+                    == GridPlacementMode::TemplateGrid,
             },
             allow_implicit_named_lines,
         )?,
@@ -79,6 +81,8 @@ pub(super) fn project_grid_item_placement(
                     areas: template_areas,
                     axis: named_line::GridAxis::Columns,
                     track_count: container.columns.len(),
+                    allow_area_dimension_mismatch: container.placement_mode
+                        == GridPlacementMode::TemplateGrid,
                 },
                 allow_implicit_named_lines,
             )?,

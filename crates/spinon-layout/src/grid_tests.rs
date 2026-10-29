@@ -236,6 +236,21 @@ fn implicit_named_line_mode_requires_fixed_auto_tracks_on_both_axes() {
         .get_mut(&id(1))
         .unwrap()
         .placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .template_areas = Some(GridTemplateAreasInput {
+        rows: 1,
+        columns: 1,
+        areas: vec![GridTemplateAreaInput {
+            name: "known".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 1,
+        }],
+    });
     input.grid_items.insert(
         id(2),
         GridItemInput {

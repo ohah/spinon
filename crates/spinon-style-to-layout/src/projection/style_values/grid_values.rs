@@ -58,11 +58,14 @@ pub(super) fn project_grid_layout_with_math(
         }
     }
     if let Some(areas) = &grid.template_areas {
+        let template_grid_can_expand_areas =
+            profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1;
         let row_dimension_matches =
             grid.rows_auto_repeat.is_some() || areas.rows == grid.rows.len();
         let column_dimension_matches =
             grid.columns_auto_repeat.is_some() || areas.columns == grid.columns.len();
-        if !row_dimension_matches || !column_dimension_matches {
+        if !template_grid_can_expand_areas && (!row_dimension_matches || !column_dimension_matches)
+        {
             return Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property: "grid-template-areas",
@@ -94,7 +97,7 @@ pub(super) fn project_grid_layout_with_math(
             &auto_repeat.fixed_repeat_minmax_track_indices,
         )?;
     }
-    validate_combined_grid_line_area_metadata(node, grid)?;
+    validate_combined_grid_line_area_metadata(node, grid, profile)?;
     project_grid_layout_with_reservations(
         node,
         grid,
@@ -108,11 +111,15 @@ pub(super) fn project_grid_layout_with_math(
 fn validate_combined_grid_line_area_metadata(
     node: NodeId,
     grid: &ComputedCssGridLayout,
+    profile: ComputedStyleProfile,
 ) -> Result<(), StyleLayoutError> {
     let Some(areas) = &grid.template_areas else {
         return Ok(());
     };
-    if grid.columns_auto_repeat.is_none() && grid.rows_auto_repeat.is_none() {
+    let carries_area_metadata = grid.columns_auto_repeat.is_some()
+        || grid.rows_auto_repeat.is_some()
+        || profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1;
+    if !carries_area_metadata {
         return Ok(());
     }
 
@@ -162,6 +169,29 @@ fn validate_combined_grid_line_area_metadata(
     for groups in [&grid.columns_line_names, &grid.rows_line_names] {
         if !add_line_names(&mut metadata_bytes, groups) {
             return Err(combined_grid_line_area_metadata_error(node));
+        }
+    }
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && grid.columns_auto_repeat.is_none()
+        && grid.rows_auto_repeat.is_none()
+    {
+        for (groups, authored_track_count, area_track_count) in [
+            (&grid.columns_line_names, grid.columns.len(), areas.columns),
+            (&grid.rows_line_names, grid.rows.len(), areas.rows),
+        ] {
+            let target_groups = authored_track_count
+                .max(usize::from(area_track_count))
+                .checked_add(1)
+                .ok_or_else(|| combined_grid_line_area_metadata_error(node))?;
+            let missing_groups = target_groups.saturating_sub(groups.len());
+            let Some(group_headers) =
+                missing_groups.checked_mul(std::mem::size_of::<Vec<String>>())
+            else {
+                return Err(combined_grid_line_area_metadata_error(node));
+            };
+            if !add_bytes(&mut metadata_bytes, group_headers) {
+                return Err(combined_grid_line_area_metadata_error(node));
+            }
         }
     }
     for auto_repeat in [
@@ -424,7 +454,7 @@ fn project_grid_layout_with_reservations(
     mut reserve: impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
     mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
 ) -> Result<GridContainerInput, StyleLayoutError> {
-    let columns = project_tracks(
+    let mut columns = project_tracks(
         &grid.columns,
         node,
         "grid-template-columns",
@@ -432,7 +462,7 @@ fn project_grid_layout_with_reservations(
         math,
         &mut reserve,
     )?;
-    let rows = project_tracks(
+    let mut rows = project_tracks(
         &grid.rows,
         node,
         "grid-template-rows",
@@ -440,7 +470,7 @@ fn project_grid_layout_with_reservations(
         math,
         &mut reserve,
     )?;
-    let (columns_line_names, rows_line_names) = if matches!(
+    let (mut columns_line_names, mut rows_line_names) = if matches!(
         profile,
         ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
@@ -517,7 +547,10 @@ fn project_grid_layout_with_reservations(
             )
         })
         .transpose()?;
-    let template_areas = if columns_auto_repeat.is_some() || rows_auto_repeat.is_some() {
+    let template_areas = if columns_auto_repeat.is_some()
+        || rows_auto_repeat.is_some()
+        || profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+    {
         grid.template_areas
             .as_ref()
             .map(|areas| project_template_areas(node, areas, &mut reserve_line_metadata))
@@ -525,6 +558,32 @@ fn project_grid_layout_with_reservations(
     } else {
         None
     };
+    if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && let Some(areas) = &template_areas
+    {
+        extend_template_area_tracks(
+            node,
+            "grid-template-columns",
+            "grid-auto-columns",
+            usize::from(areas.columns),
+            &auto_columns,
+            &mut columns,
+            &mut columns_line_names,
+            &mut reserve,
+            &mut reserve_line_metadata,
+        )?;
+        extend_template_area_tracks(
+            node,
+            "grid-template-rows",
+            "grid-auto-rows",
+            usize::from(areas.rows),
+            &auto_rows,
+            &mut rows,
+            &mut rows_line_names,
+            &mut reserve,
+            &mut reserve_line_metadata,
+        )?;
+    }
     Ok(GridContainerInput {
         columns,
         rows,
@@ -567,6 +626,69 @@ fn project_grid_layout_with_reservations(
             _ => GridPlacementMode::Existing,
         },
     })
+}
+
+fn extend_template_area_tracks(
+    node: NodeId,
+    template_property: &'static str,
+    auto_property: &'static str,
+    area_track_count: usize,
+    auto_track: &GridAutoRows,
+    tracks: &mut Vec<GridTrackSize>,
+    line_names: &mut Vec<Vec<String>>,
+    reserve_tracks: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
+    mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
+) -> Result<(), StyleLayoutError> {
+    let missing_tracks = area_track_count.saturating_sub(tracks.len());
+    if missing_tracks > 0 {
+        let generated_track = match auto_track {
+            GridAutoRows::Auto => GridTrackSize::Auto,
+            GridAutoRows::LengthPx(value) => GridTrackSize::LengthPx(*value),
+            GridAutoRows::TrackList(_) => {
+                return Err(StyleLayoutError::UnsupportedComputedValue {
+                    node,
+                    property: auto_property,
+                    value:
+                        "grid-template-areas 확장에서는 grid-auto-* 단일 auto 또는 px만 지원합니다"
+                            .to_owned(),
+                });
+            }
+        };
+        reserve_tracks(tracks, missing_tracks).map_err(|_| {
+            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                node,
+                property: auto_property,
+            })
+        })?;
+        tracks.extend(std::iter::repeat(generated_track).take(missing_tracks));
+    }
+
+    let required_groups =
+        tracks
+            .len()
+            .checked_add(1)
+            .ok_or_else(|| StyleLayoutError::UnsupportedComputedValue {
+                node,
+                property: template_property,
+                value: "grid-template-areas line-name metadata 크기가 범위를 넘었습니다".to_owned(),
+            })?;
+    let missing_groups = required_groups.saturating_sub(line_names.len());
+    if missing_groups > 0 {
+        reserve_line_metadata(GridLineNameReservationSite::Groups).map_err(|_| {
+            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                node,
+                property: template_property,
+            })
+        })?;
+        line_names.try_reserve_exact(missing_groups).map_err(|_| {
+            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                node,
+                property: template_property,
+            })
+        })?;
+        line_names.extend(std::iter::repeat_with(Vec::new).take(missing_groups));
+    }
+    Ok(())
 }
 
 fn project_template_areas(

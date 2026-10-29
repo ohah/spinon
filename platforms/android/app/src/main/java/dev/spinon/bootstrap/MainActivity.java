@@ -79,6 +79,8 @@ public final class MainActivity extends Activity {
             "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
             "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+            "area-auto-tracks-none", "area-auto-tracks-short-row", "area-auto-tracks-short-col",
+            "area-auto-tracks-auto", "area-auto-tracks-long",
             "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
             "negative-missing-occurrences", "backward-span-one", "backward-span-two",
             "backward-span-partial-explicit", "forward-span-two",

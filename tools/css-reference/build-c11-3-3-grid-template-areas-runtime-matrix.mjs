@@ -9,6 +9,8 @@ const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..')
 const inventoryPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-inventory.json';
 const htmlPath = 'tests/fixtures/css/c11/grid-template-areas-c1133.html';
 const referencePath = 'tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json';
+const supplementalHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html';
+const supplementalObservationPath = 'spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json';
 const outputPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
 const checkOnly = process.argv.includes('--check');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
@@ -116,31 +118,46 @@ function createSceneSource(sceneId, nodes, rules) {
   return lines.join('\n');
 }
 
-const [inventoryBytes, htmlBytes, referenceBytes] = await Promise.all([
+const [inventoryBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplementalObservationBytes] = await Promise.all([
   readFile(resolve(repositoryRoot, inventoryPath)),
   readFile(resolve(repositoryRoot, htmlPath)),
   readFile(resolve(repositoryRoot, referencePath)),
+  readFile(resolve(repositoryRoot, supplementalHtmlPath)),
+  readFile(resolve(repositoryRoot, supplementalObservationPath)),
 ]);
 const inventory = JSON.parse(inventoryBytes.toString('utf8'));
 const reference = JSON.parse(referenceBytes.toString('utf8'));
+const supplementalObservation = JSON.parse(supplementalObservationBytes.toString('utf8'));
 const parseErrors = [];
 const document = parse(htmlBytes.toString('utf8'), { sourceCodeLocationInfo: true, onParseError: (error) => parseErrors.push(error) });
+const supplementalParseErrors = [];
+const supplementalDocument = parse(supplementalHtmlBytes.toString('utf8'), {
+  sourceCodeLocationInfo: true, onParseError: (error) => supplementalParseErrors.push(error),
+});
 assert.deepEqual(parseErrors, [], 'C11.3.3 HTML fixture에 parse error가 있습니다.');
+assert.deepEqual(supplementalParseErrors, [], 'C11.3.3 supplemental HTML fixture에 parse error가 있습니다.');
 assert.equal(inventory.schema, 'spinon-css-c11-3-3-grid-template-areas-inventory/v1');
 assert.equal(reference.fixture.inventorySha256, sha256(inventoryBytes));
 assert.equal(reference.fixture.htmlSha256, sha256(htmlBytes));
 assert.equal(inventory.cases.length, 26);
 assert.deepEqual(reference.observations.map(({ deviceScaleFactor }) => deviceScaleFactor), [1, 2]);
+assert.equal(supplementalObservation.schema, 'spinon-css-c11-3-3-area-auto-tracks-chrome-observation/v1');
+assert.equal(supplementalObservation.fixture.path, supplementalHtmlPath);
+assert.equal(supplementalObservation.fixture.sha256, sha256(supplementalHtmlBytes));
+assert.equal(supplementalObservation.devicePixelRatio, 1);
 
 const rules = parseRules(document);
+const supplementalRules = parseRules(supplementalDocument);
 const sections = descendants(document, (node) => node.tagName === 'div' && attributes(node).has('data-scene'));
 assert.deepEqual(sections.map((node) => attributes(node).get('data-scene')),
   inventory.cases.map(({ id }) => id), 'HTML fixture scene ID/순서가 inventory와 다릅니다.');
+const supplementalSections = descendants(supplementalDocument,
+  (node) => node.tagName === 'div' && attributes(node).has('data-scene'));
+assert.deepEqual(supplementalSections.map((node) => attributes(node).get('data-scene')),
+  ['area-auto-tracks-none', 'area-auto-tracks-short-row', 'area-auto-tracks-short-col',
+    'area-auto-tracks-auto', 'area-auto-tracks-long'], 'supplemental scene ID/순서가 다릅니다.');
 const referenceCases = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1).cases;
 const expectedRejections = new Map([
-  ['area-track-count-mismatch', {
-    code: 'unsupported_computed_value', property: 'grid-template-areas', nodeId: 'mismatch-grid',
-  }],
   ['unknown-area-implicit-tracks', {
     code: 'unsupported_grid_auto_rows', property: 'grid-auto-rows', nodeId: 'unknown-area-grid',
   }],
@@ -150,16 +167,12 @@ let nodeCount = 0;
 let cascadeFallbackCount = 0;
 let expectedRejectCount = 0;
 
-const cases = sections.map((section, index) => {
-  const fixtureCase = inventory.cases[index];
-  const sceneId = attributes(section).get('data-scene');
-  const chromeCase = referenceCases.find((candidate) => candidate.id === sceneId);
-  assert.ok(chromeCase, `${sceneId}: DPR 1 Chrome scene이 없습니다.`);
+function nodesFor(section, sceneId) {
   const nodes = [];
   const visit = (node, parentId = null) => {
     const attrs = attributes(node);
     let nextParent = parentId;
-    if (node !== section && attrs.has('data-node')) {
+    if (attrs.has('data-node')) {
       assert.equal(node.tagName, 'div', `${sceneId}: 지원하지 않는 element ${node.tagName}`);
       const id = attrs.get('id');
       assert.ok(id && !allNodeIds.has(id), `${sceneId}: 비어 있거나 중복된 node ID ${id}`);
@@ -170,21 +183,65 @@ const cases = sections.map((section, index) => {
     for (const child of children(node)) visit(child, nextParent);
   };
   visit(section);
+  return nodes;
+}
+
+const definitions = [
+  ...sections.map((section, index) => {
+    const fixtureCase = inventory.cases[index];
+    const sceneId = attributes(section).get('data-scene');
+    const chromeCase = referenceCases.find((candidate) => candidate.id === sceneId);
+    assert.ok(chromeCase, `${sceneId}: DPR 1 Chrome scene이 없습니다.`);
+    return { section, sceneId, fixtureCase, rules, chromeCase,
+      oracleProduct: reference.oracle.product, oraclePath: referencePath, supplemental: false };
+  }),
+  ...supplementalSections.map((section) => {
+    const sceneId = attributes(section).get('data-scene');
+    const observed = supplementalObservation.observations[sceneId];
+    assert.ok(observed, `${sceneId}: supplemental Chrome observation이 없습니다.`);
+    const rootId = attributes(section).get('id');
+    const fixtureNodeIds = descendants(section,
+      (node) => attributes(node).has('data-node'))
+      .map((node) => attributes(node).get('id'));
+    const oracleNodes = observed.nodes.map(({ id, rect }) => ({ id, rect }));
+    assert.deepEqual(fixtureNodeIds, oracleNodes.map(({ id }) => id),
+      `${sceneId}: supplemental Chrome node 순서가 다릅니다.`);
+    return {
+      section, sceneId, fixtureCase: {
+        rootId, nodeIds: fixtureNodeIds, expectedSpinonOutcome: 'success',
+      }, rules: supplementalRules,
+      chromeCase: {
+        id: sceneId,
+        rootId,
+        rootRect: { x: 0, y: 0, width: observed.root.width, height: observed.root.height },
+        nodes: oracleNodes,
+      },
+      oracleProduct: `Chrome/${supplementalObservation.capture.browserVersion}`,
+      oraclePath: supplementalObservationPath, supplemental: true,
+    };
+  }),
+];
+
+const cases = definitions.map(({ section, sceneId, fixtureCase, rules: sceneRules, chromeCase,
+  oracleProduct, oraclePath, supplemental }, index) => {
+  const nodes = nodesFor(section, sceneId);
   assert.deepEqual(nodes.map(({ id }) => id), fixtureCase.nodeIds, `${sceneId}: inventory node preorder`);
-  assert.deepEqual(nodes.map(({ id, parentId }) => ({ id, parentId })),
-    chromeCase.nodes.map(({ id, parentId }) => ({ id, parentId })), `${sceneId}: Chrome parent graph`);
+  if (!supplemental) {
+    assert.deepEqual(nodes.map(({ id, parentId }) => ({ id, parentId })),
+      chromeCase.nodes.map(({ id, parentId }) => ({ id, parentId })), `${sceneId}: Chrome parent graph`);
+  }
   assert.equal(nodes[0]?.id, fixtureCase.rootId, `${sceneId}: root ID`);
   nodeCount += nodes.length;
 
-  const outcome = fixtureCase.expectedSpinonOutcome;
+  const outcome = sceneId === 'area-track-count-mismatch'
+    ? 'success' : fixtureCase.expectedSpinonOutcome;
   let expected;
   if (outcome === 'success') {
     expected = { outcome: 'success' };
   } else if (outcome === 'cascade-fallback') {
     cascadeFallbackCount += 1;
     expected = { outcome: 'cascade-fallback', runtimeOutcome: 'success' };
-  } else if (outcome === 'reject-area-track-count-mismatch'
-      || outcome === 'reject-unsupported-implicit-area-tracks') {
+  } else if (outcome === 'reject-unsupported-implicit-area-tracks') {
     expectedRejectCount += 1;
     const rejection = expectedRejections.get(sceneId);
     assert.ok(rejection, `${sceneId}: 고정된 rejection 계약이 없습니다.`);
@@ -192,7 +249,7 @@ const cases = sections.map((section, index) => {
   } else {
     throw new Error(`${sceneId}: 알 수 없는 expectedSpinonOutcome ${outcome}`);
   }
-  const source = createSceneSource(sceneId, nodes, rules);
+  const source = createSceneSource(sceneId, nodes, sceneRules);
   assert.ok(source.length > 0 && source.length <= 16 * 1024, `${sceneId}: JS source byte limit`);
   assert.ok(source.includes(`sceneId:'${sceneId}'`), `${sceneId}: source scene marker`);
   return {
@@ -202,6 +259,14 @@ const cases = sections.map((section, index) => {
     rootId: fixtureCase.rootId,
     nodeIds: nodes.map(({ id }) => id),
     parentIds: nodes.map(({ parentId }) => parentId),
+    oracle: {
+      product: oracleProduct,
+      path: oraclePath,
+      sceneId: chromeCase.id,
+      rootId: chromeCase.rootId,
+      rootRect: chromeCase.rootRect,
+      nodes: chromeCase.nodes.map(({ id, rect }) => ({ id, rect })),
+    },
     source,
   };
 });
@@ -213,6 +278,10 @@ const matrix = {
     inventory: { path: inventoryPath, sha256: sha256(inventoryBytes) },
     html: { path: htmlPath, sha256: sha256(htmlBytes) },
     reference: { path: referencePath, sha256: sha256(referenceBytes) },
+    supplementalHtml: { path: supplementalHtmlPath, sha256: sha256(supplementalHtmlBytes) },
+    supplementalObservation: {
+      path: supplementalObservationPath, sha256: sha256(supplementalObservationBytes),
+    },
   },
   summary: {
     sceneCount: cases.length,
@@ -223,9 +292,9 @@ const matrix = {
   },
   cases,
 };
-assert.equal(nodeCount, 65);
+assert.equal(nodeCount, 90);
 assert.equal(cascadeFallbackCount, 5);
-assert.equal(expectedRejectCount, 2);
+assert.equal(expectedRejectCount, 1);
 assert.equal(allNodeIds.size, nodeCount);
 
 const output = `${JSON.stringify(matrix, null, 2)}\n`;

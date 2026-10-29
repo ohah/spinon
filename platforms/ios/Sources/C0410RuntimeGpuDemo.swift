@@ -14,6 +14,8 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
     "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+    "area-auto-tracks-none", "area-auto-tracks-short-row", "area-auto-tracks-short-col",
+    "area-auto-tracks-auto", "area-auto-tracks-long",
     "unknown-area-fixed-implicit-tracks",
     "positive-missing-occurrences", "negative-missing-occurrences", "backward-span-one",
     "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
@@ -10494,7 +10496,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }).map { String($0.dropFirst("--spinon-c1133-grid-scene=".count)) }
             ?? "basic-rectangles"
     }
-    private let c1133GridTemplateAreasRejectSceneID = "area-track-count-mismatch"
+    private let c1133GridTemplateAreasRejectSceneID = "unknown-area-implicit-tracks"
     private let c1133GridTemplateAreasProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1133-grid-template-areas")
     private var c1133GridTemplateAreasRunID: String {
@@ -13587,19 +13589,19 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 SpinonRunner.freeRuntimeGpuHost(rejectionHost)
             }
             let expectedRejection = rejection.hasPrefix("status=-11 ")
-                && rejection.contains("unsupported_computed_value")
-                && rejection.contains("property=Some(\"grid-template-areas\")")
+                && rejection.contains("unsupported_grid_auto_rows")
+                && rejection.contains("property=Some(\"grid-auto-rows\")")
                 && !rejection.contains("node_frames_css_px=[")
             log("SPINON_C1133_GRID_REJECTION run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasRejectSceneID) expected=\(expectedRejection) \(rejection)")
             let rejectionStatus = String(rejection.split(separator: " ", maxSplits: 1).first ?? "status=-1")
-            let rejectionCode = rejection.contains("unsupported_computed_value")
-                ? "unsupported_computed_value" : "missing"
-            let rejectionProperty = rejection.contains("property=Some(\"grid-template-areas\")")
-                ? "grid-template-areas" : "missing"
+            let rejectionCode = rejection.contains("unsupported_grid_auto_rows")
+                ? "unsupported_grid_auto_rows" : "missing"
+            let rejectionProperty = rejection.contains("property=Some(\"grid-auto-rows\")")
+                ? "grid-auto-rows" : "missing"
             let rejectionFrames = rejection.contains("node_frames_css_px=[") ? "present" : "absent"
             log("SPINON_C1133_GRID_REJECTION_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasRejectSceneID) expected=\(expectedRejection) \(rejectionStatus) code=\(rejectionCode) property=\(rejectionProperty) frames=\(rejectionFrames)")
             guard expectedRejection else {
-                postStatus("실패 · C11.3.3 area track 수 불일치 거부 계약 오류")
+                postStatus("실패 · C11.3.3 unknown area implicit track 거부 계약 오류")
                 return
             }
         }
@@ -13974,17 +13976,13 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 let nodeID = result.range(of: #"node=Some\(\d+\)"#, options: .regularExpression).map {
                     String(result[$0].dropFirst("node=Some(".count).dropLast())
                 } ?? "missing"
-                let expectedNodeID = c1133GridTemplateAreasSceneID == "area-track-count-mismatch"
-                    || c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
+                let expectedNodeID = c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
                     ? "1" : "missing"
                 let status = String(result.split(separator: " ", maxSplits: 1).first ?? "status=-1")
                 let expected = status == "status=-11"
-                    && ((c1133GridTemplateAreasSceneID == "area-track-count-mismatch"
-                        && code == "unsupported_computed_value" && property == "grid-template-areas"
-                        && nodeID == expectedNodeID)
-                    || (c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
-                        && code == "unsupported_grid_auto_rows" && property == "grid-auto-rows"
-                        && nodeID == expectedNodeID))
+                    && c1133GridTemplateAreasSceneID == "unknown-area-implicit-tracks"
+                    && code == "unsupported_grid_auto_rows" && property == "grid-auto-rows"
+                    && nodeID == expectedNodeID
                 let frames = result.contains("node_frames_css_px=[") ? "present" : "absent"
                 log("SPINON_C1133_GRID_REJECTION_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasSceneID) expected=\(expected) \(status) code=\(code) property=\(property) node_id=\(nodeID) frames=\(frames)")
             }

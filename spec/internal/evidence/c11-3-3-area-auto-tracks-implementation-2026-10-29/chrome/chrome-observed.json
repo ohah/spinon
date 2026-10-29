@@ -1,0 +1,304 @@
+{
+  "schema": "spinon-css-c11-3-3-area-auto-tracks-chrome-observation/v1",
+  "capture": {
+    "tool": "agent-browser",
+    "toolVersion": "0.31.1",
+    "browserVersion": "156.0.0.0"
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "devicePixelRatio": 1,
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html",
+    "sha256": "45e5f78ac66ea632d24797a02bb4c8d267e9ae9bf3dcfbfc43e8365cb314c701"
+  },
+  "screenshot": {
+    "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-156-c1133-area-auto-tracks-runtime.png",
+    "sha256": "ff9301d0e151a3d3b7305fd77bfe1ecc5034c0eccddb6225a71892deaa0ef7a6"
+  },
+  "observations": {
+    "area-auto-tracks-auto": {
+      "rows": "10px 20px",
+      "columns": "20px 30px",
+      "areas": "\"a b\" \"c d\"",
+      "root": {
+        "width": 50,
+        "height": 30
+      },
+      "nodes": [
+        {
+          "id": "area-auto-tracks-auto",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 50,
+            "height": 30
+          }
+        },
+        {
+          "id": "area-auto-tracks-auto-a",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-auto-b",
+          "rect": {
+            "x": 20,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-auto-c",
+          "rect": {
+            "x": 0,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "area-auto-tracks-auto-d",
+          "rect": {
+            "x": 20,
+            "y": 10,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ]
+    },
+    "area-auto-tracks-long": {
+      "rows": "5px 6px 7px",
+      "columns": "30px 40px 50px",
+      "areas": "\"a b\" \"c d\"",
+      "root": {
+        "width": 120,
+        "height": 80
+      },
+      "nodes": [
+        {
+          "id": "area-auto-tracks-long",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          }
+        },
+        {
+          "id": "area-auto-tracks-long-a",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          }
+        },
+        {
+          "id": "area-auto-tracks-long-b",
+          "rect": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          }
+        },
+        {
+          "id": "area-auto-tracks-long-c",
+          "rect": {
+            "x": 0,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          }
+        },
+        {
+          "id": "area-auto-tracks-long-d",
+          "rect": {
+            "x": 30,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          }
+        }
+      ]
+    },
+    "area-auto-tracks-none": {
+      "rows": "7px 7px",
+      "columns": "9px 9px",
+      "areas": "\"a b\" \"c d\"",
+      "root": {
+        "width": 120,
+        "height": 80
+      },
+      "nodes": [
+        {
+          "id": "area-auto-tracks-none",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          }
+        },
+        {
+          "id": "area-auto-tracks-none-a",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-none-b",
+          "rect": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-none-c",
+          "rect": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "area-auto-tracks-none-d",
+          "rect": {
+            "x": 9,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ]
+    },
+    "area-auto-tracks-short-col": {
+      "rows": "7px 7px",
+      "columns": "13px 9px",
+      "areas": "\"a b\" \"c d\"",
+      "root": {
+        "width": 120,
+        "height": 80
+      },
+      "nodes": [
+        {
+          "id": "area-auto-tracks-short-col",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-col-a",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-col-b",
+          "rect": {
+            "x": 13,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-col-c",
+          "rect": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-col-d",
+          "rect": {
+            "x": 13,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ]
+    },
+    "area-auto-tracks-short-row": {
+      "rows": "12px 7px",
+      "columns": "9px 9px",
+      "areas": "\"a b\" \"c d\"",
+      "root": {
+        "width": 120,
+        "height": 80
+      },
+      "nodes": [
+        {
+          "id": "area-auto-tracks-short-row",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-row-a",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-row-b",
+          "rect": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-row-c",
+          "rect": {
+            "x": 0,
+            "y": 12,
+            "width": 20,
+            "height": 20
+          }
+        },
+        {
+          "id": "area-auto-tracks-short-row-d",
+          "rect": {
+            "x": 9,
+            "y": 12,
+            "width": 30,
+            "height": 20
+          }
+        }
+      ]
+    }
+  }
+}

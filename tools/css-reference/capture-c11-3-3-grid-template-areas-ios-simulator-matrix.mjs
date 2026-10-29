@@ -348,7 +348,7 @@ async function captureMatrix(simulator) {
       continue;
     }
 
-    const chromeCase = observation.cases.find(({ id }) => id === scene.id);
+    const chromeCase = scene.oracle ?? observation.cases.find(({ id }) => id === scene.id);
     const geometry = compareC1133IOSSceneGeometry(scene, log, chromeCase, effectiveRunID);
     let pixel = null;
     if (scene.id === mobile.sceneId) {

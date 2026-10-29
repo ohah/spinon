@@ -110,6 +110,7 @@ pub(super) fn computed_grid_layout(
         allow_integer_repeat,
         allow_intrinsic_tracks,
         allow_auto_repeat,
+        template_areas.is_some() && allow_integer_repeat && !allow_intrinsic_tracks,
     )?;
     let ComputedGridTracks {
         tracks: rows,
@@ -127,6 +128,7 @@ pub(super) fn computed_grid_layout(
         allow_integer_repeat,
         allow_intrinsic_tracks,
         allow_auto_repeat,
+        template_areas.is_some() && allow_integer_repeat && !allow_intrinsic_tracks,
     )?;
     let has_cross_axis_fixed_and_auto_repeat = (columns_has_fixed_repeat
         && rows_auto_repeat.is_some())
@@ -441,9 +443,30 @@ fn computed_grid_tracks(
     allow_integer_repeat: bool,
     allow_intrinsic_tracks: bool,
     allow_auto_repeat: bool,
+    allow_empty_tracks: bool,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
     let list = match component {
         GridTemplateComponent::TrackList(list) => list,
+        GridTemplateComponent::None if allow_empty_tracks => {
+            let mut line_names = Vec::new();
+            reserve_integer_repeat_vec(
+                &mut line_names,
+                1,
+                IntegerRepeatReservationSite::LineGroups,
+                node,
+                property,
+            )?;
+            line_names.push(Vec::new());
+            return Ok(ComputedGridTracks {
+                tracks: Vec::new(),
+                line_names,
+                auto_repeat: None,
+                has_fixed_repeat: false,
+                fixed_repeat_group_count: 0,
+                single_bounded_fixed_repeat: false,
+                single_bounded_auto_repeat: false,
+            });
+        }
         GridTemplateComponent::None if allow_intrinsic_tracks => {
             return Ok(ComputedGridTracks {
                 tracks: Vec::new(),

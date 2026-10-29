@@ -65,6 +65,62 @@ fn auto_repeat_template_areas_accept_empty_and_bounded_metadata() {
 }
 
 #[test]
+fn template_grid_areas_accept_missing_and_extra_authored_tracks() {
+    let node = NodeId::new(11_136).unwrap();
+    let mut container = valid_container();
+    container.columns_auto_repeat = None;
+    container.placement_mode = GridPlacementMode::TemplateGrid;
+    areas(&mut container).rows = 2;
+    areas(&mut container).columns = 3;
+    areas(&mut container).areas[0].row_start = 1;
+    areas(&mut container).areas[0].row_end = 2;
+    areas(&mut container).areas[0].column_start = 2;
+    areas(&mut container).areas[0].column_end = 3;
+    assert!(validate_template_areas(node, &container).is_ok());
+
+    container.rows.clear();
+    container.columns.clear();
+    assert!(validate_template_areas(node, &container).is_ok());
+
+    container.rows = vec![GridTrackSize::LengthPx(10.0), GridTrackSize::LengthPx(11.0)];
+    container.columns = vec![
+        GridTrackSize::LengthPx(12.0),
+        GridTrackSize::LengthPx(13.0),
+        GridTrackSize::LengthPx(14.0),
+    ];
+    areas(&mut container).rows = 1;
+    areas(&mut container).columns = 1;
+    areas(&mut container).areas[0] = GridTemplateAreaInput {
+        name: "area".to_owned(),
+        row_start: 0,
+        row_end: 1,
+        column_start: 0,
+        column_end: 1,
+    };
+    assert!(validate_template_areas(node, &container).is_ok());
+}
+
+#[test]
+fn template_grid_areas_remain_valid_after_implicit_placement_mode_selection() {
+    let node = NodeId::new(11_137).unwrap();
+    for mode in [
+        GridPlacementMode::TemplateGridImplicitTracks,
+        GridPlacementMode::TemplateGridSignedImplicitTracks,
+    ] {
+        let mut container = valid_container();
+        container.columns_auto_repeat = None;
+        container.placement_mode = mode;
+        areas(&mut container).rows = 2;
+        areas(&mut container).columns = 3;
+        areas(&mut container).areas[0].row_start = 1;
+        areas(&mut container).areas[0].row_end = 2;
+        areas(&mut container).areas[0].column_start = 2;
+        areas(&mut container).areas[0].column_end = 3;
+        assert!(validate_template_areas(node, &container).is_ok());
+    }
+}
+
+#[test]
 fn auto_repeat_template_areas_accept_two_auto_repeat_axes_and_area_extension() {
     let node = NodeId::new(11_121).unwrap();
     let mut container = valid_container();

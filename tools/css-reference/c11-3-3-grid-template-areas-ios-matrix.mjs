@@ -1,24 +1,24 @@
 import assert from 'node:assert/strict';
 
 const EXPECTED_COUNTS = {
-  success: 19,
+  success: 25,
   'cascade-fallback': 5,
-  'expected-rejection': 2,
+  'expected-rejection': 1,
 };
 
 export function validateC1133IOSMatrixInputs(runtime, reference) {
   assert.equal(runtime.schema, 'spinon-css-c11-3-3-grid-template-areas-runtime-matrix/v1');
   assert.equal(runtime.profileId, 'RuntimeBlockFlexGridTemplateV1');
   assert.deepEqual(runtime.summary, {
-    sceneCount: 26,
-    nodeCount: 65,
+    sceneCount: 31,
+    nodeCount: 90,
     successCount: EXPECTED_COUNTS.success,
     cascadeFallbackCount: EXPECTED_COUNTS['cascade-fallback'],
     expectedRejectCount: EXPECTED_COUNTS['expected-rejection'],
   });
   const observation = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1);
   assert.ok(observation, 'Chrome DPR 1 observation이 없습니다.');
-  assert.equal(observation.cases.length, runtime.cases.length);
+  assert.equal(observation.cases.length, 26, '기존 Chrome 154 reference 장면 수가 바뀌었습니다.');
   assert.equal(runtime.cases.length, runtime.summary.sceneCount);
 
   const counts = { success: 0, 'cascade-fallback': 0, 'expected-rejection': 0 };
@@ -31,8 +31,12 @@ export function validateC1133IOSMatrixInputs(runtime, reference) {
     assert.ok(Object.hasOwn(counts, scene.expected.outcome), scene.id + ': 알 수 없는 outcome');
     counts[scene.expected.outcome] += 1;
     nodeCount += scene.nodeIds.length;
-    const chromeCase = observation.cases.find(({ id }) => id === scene.id);
-    assert.ok(chromeCase, scene.id + ': Chrome DPR 1 reference 누락');
+    const chromeCase = scene.oracle ?? observation.cases.find(({ id }) => id === scene.id);
+    assert.ok(chromeCase, scene.id + ': 고정 Chrome oracle이 없습니다');
+    if (scene.oracle) {
+      assert.equal(scene.oracle.sceneId, scene.id, scene.id + ': supplemental oracle scene ID');
+      assert.equal(scene.oracle.nodes.length, scene.nodeIds.length, scene.id + ': oracle node 수');
+    }
     assert.equal(chromeCase.rootId, scene.rootId, scene.id + ': root ID');
     assert.deepEqual(chromeCase.nodes.map(({ id }) => id), scene.nodeIds, scene.id + ': node 순서');
   }
