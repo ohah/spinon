@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "chromeUserAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "sceneCount": 24,
+  "targets": {
+    "android-avd": {
+      "runDirectory": "android-avd-c114-zero-fixed-maximum-android-avd-20261029T084323971Z-d7251a9d",
+      "sceneCount": 24,
+      "drawPresented": 24,
+      "traceChunks": 264,
+      "pixelSamplesExact": 54,
+      "screenshots": 24,
+      "appInstalledHashMatches": true
+    },
+    "ios-simulator": {
+      "runDirectory": "ios-simulator-c114-zero-fixed-maximum-ios-simulator-20261029T084208665Z-aa4ce7f8",
+      "sceneCount": 24,
+      "drawPresented": 24,
+      "traceChunks": 516,
+      "pixelSamplesExact": 54,
+      "screenshots": 24,
+      "appInstalledHashMatches": true
+    }
+  }
+}

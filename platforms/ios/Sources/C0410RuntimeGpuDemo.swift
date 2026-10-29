@@ -133,6 +133,24 @@ private let c114FixedMaximumPixelSceneIDs: Set<String> = [
 #else
 private let c114FixedMaximumPixelSceneIDs: Set<String> = []
 #endif
+#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+private let c114ZeroFixedMaximumPixelSceneIDs: Set<String> = [
+    "columns-auto-fill-auto-max0-gap0", "columns-auto-fill-auto-max0-gap4",
+    "columns-auto-fit-auto-max0-gap0", "columns-auto-fit-auto-max0-gap4",
+    "columns-auto-fill-min-content-max0-gap0", "columns-auto-fill-min-content-max0-gap4",
+    "columns-auto-fit-min-content-max0-gap0", "columns-auto-fit-min-content-max0-gap4",
+    "columns-auto-fill-max-content-max0-gap0", "columns-auto-fill-max-content-max0-gap4",
+    "columns-auto-fit-max-content-max0-gap0", "columns-auto-fit-max-content-max0-gap4",
+    "rows-auto-fill-auto-max0-gap0", "rows-auto-fill-auto-max0-gap4",
+    "rows-auto-fit-auto-max0-gap0", "rows-auto-fit-auto-max0-gap4",
+    "rows-auto-fill-min-content-max0-gap0", "rows-auto-fill-min-content-max0-gap4",
+    "rows-auto-fit-min-content-max0-gap0", "rows-auto-fit-min-content-max0-gap4",
+    "rows-auto-fill-max-content-max0-gap0", "rows-auto-fill-max-content-max0-gap4",
+    "rows-auto-fit-max-content-max0-gap0", "rows-auto-fit-max-content-max0-gap4",
+]
+#else
+private let c114ZeroFixedMaximumPixelSceneIDs: Set<String> = []
+#endif
 private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
     "cyclic-max-content-auto-fill-prefix-suffix",
     "cyclic-max-content-auto-fit-prefix-suffix",
@@ -704,6 +722,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     }
     return c114GridTrackSizingSceneIDs.contains(sceneID)
         || c114FixedMaximumPixelSceneIDs.contains(sceneID)
+        || c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID)
         || c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID)
         || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
         || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
@@ -1042,6 +1061,10 @@ private func c114PercentageMaximumNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114FixedMaximumRootFrame(_ sceneID: String) -> String? {
+    if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) {
+        return sceneID.hasPrefix("columns-")
+            ? "width=16,height=40" : "width=40,height=16"
+    }
     guard c114FixedMaximumPixelSceneIDs.contains(sceneID) else { return nil }
     let axisSize = sceneID.hasSuffix("basis10") ? 10
         : sceneID.hasSuffix("129") ? 129
@@ -1051,12 +1074,20 @@ private func c114FixedMaximumRootFrame(_ sceneID: String) -> String? {
 }
 
 private func c114FixedMaximumItemFrame(_ sceneID: String) -> String? {
-    c114FixedMaximumPixelSceneIDs.contains(sceneID) ? "width=20,height=20" : nil
+    if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) { return "width=12,height=12" }
+    return c114FixedMaximumPixelSceneIDs.contains(sceneID) ? "width=20,height=20" : nil
 }
 
 private func c114FixedMaximumNodeFrames(_ sceneID: String) -> String? {
     guard let rootFrame = c114FixedMaximumRootFrame(sceneID),
           let itemFrame = c114FixedMaximumItemFrame(sceneID) else { return nil }
+    if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) {
+        let offset = sceneID.contains("-auto-fill-") && sceneID.hasSuffix("-gap4") ? 8 : 0
+        let itemX = sceneID.hasPrefix("columns-") ? offset : 0
+        let itemY = sceneID.hasPrefix("rows-") ? offset : 0
+        return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
+            + "1:node=2,x=\(itemX),y=\(itemY),\(itemFrame)]"
+    }
     return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
         + "1:node=2,x=0,y=0,\(itemFrame)]"
 }
@@ -7942,6 +7973,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) { return 2 }
     if c114FixedMaximumPixelSceneIDs.contains(sceneID) { return 2 }
     if let count = C114FitContentImplicitColumnWpt.expectedBoxCount(sceneID) { return count }
     if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
@@ -8659,6 +8691,9 @@ private struct C111MetalPixelRun {
     private static func c114FixedMaximumPixelSamples(
         sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) {
+            return c114ZeroFixedMaximumPixelSamples(sceneID: sceneID)
+        }
         guard c114FixedMaximumPixelSceneIDs.contains(sceneID) else { return [] }
         let rootID = "c114-\(sceneID)-grid"
         let itemID = "c114-\(sceneID)-item-1"
@@ -8688,6 +8723,28 @@ private struct C111MetalPixelRun {
              rootSize.0 / 2, rootSize.1 / 2, [226, 232, 240, 255]),
             ("\(sceneID)-item-1-interior", itemID, 10, 10, [229, 72, 77, 255]),
         ]
+    }
+
+    private static func c114ZeroFixedMaximumPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        guard c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) else { return [] }
+        let columns = sceneID.hasPrefix("columns-")
+        let overflow = sceneID.contains("-auto-fill-") && sceneID.hasSuffix("-gap4")
+        let offset: UInt32 = overflow ? 8 : 0
+        let rootID = "c114-\(sceneID)-grid"
+        let itemID = "c114-\(sceneID)-item-1"
+        var samples: [(String, String, UInt32, UInt32, [UInt32])] = [
+            ("\(sceneID)-root-interior", rootID,
+             columns ? 2 : 30, columns ? 30 : 2, [226, 232, 240, 255]),
+            ("\(sceneID)-item-interior", itemID,
+             columns ? offset + 6 : 6, columns ? 6 : offset + 6, [229, 72, 77, 255]),
+        ]
+        if overflow {
+            samples.append(("\(sceneID)-item-outside-root", itemID,
+                columns ? 18 : 6, columns ? 6 : 18, [229, 72, 77, 255]))
+        }
+        return samples
     }
 
     private static func c114PercentageMaximumPixelSamples(
@@ -9227,7 +9284,8 @@ private struct C111MetalPixelRun {
                 }
             }
         }
-        if c114FixedMaximumPixelSceneIDs.contains(sceneID) {
+        if c114FixedMaximumPixelSceneIDs.contains(sceneID)
+            || c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) {
             let expectedSamples = c114FixedMaximumPixelSamples(sceneID: sceneID)
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

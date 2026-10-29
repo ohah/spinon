@@ -700,3 +700,11 @@ Android API 37 ARM64 AVD에서 세 scene의 layout/draw/presentation 및 PixelCo
 Android API 37 ARM64 software AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 49/49 scene을 통과했다. PixelCopy와 compositor 제출 전 Metal drawable 관찰은 각각 104/104 RGBA exact다. 기본 `spinon-ffi` static archive에서 신규 scene marker가 없고 fixture-test archive positive control에 세 marker가 있는 것을 확인했다. archive 결과는 APK/IPA 전체 제외 증거가 아니며 simulator는 실기기 증거가 아니다. [Chrome 사전 비교](evidence/c11-4-auto-repeat-inflexible-fixed-maximum-precomparison-2026-10-29/README.md) · [실행·스크린샷·artifact 경계와 한계](evidence/c11-4-auto-repeat-fixed-maximum-2026-10-29/README.md).
 
 이는 fixture-test opt-in의 고정 장면 결과다. 일반 author CSS admission, 전체 CSS Grid/WPT, auto-repeat 전체 조합 또는 전체 C11.4 완료를 계약하지 않는다. 구현 PR [#796](https://github.com/ohah/spinon/pull/796)은 2026-10-29T07:08:47Z Rebase and merge됐다(merge SHA `48100cc93b32c00a9fb50bde68e0c12fde78f08b`). PR check rollup과 main required status checks는 비어 있어 CI 통과로 기록하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
+
+## C11.4 auto-repeat inflexible minimum + `0px` fixed maximum · 제한 opt-in runtime slice
+
+이 후속 slice는 CSS Grid auto-repeat `1px` floor를 `minmax(auto | min-content | max-content, 0px)`에서 확인한다. 고정 Chrome 156 oracle의 24 scenes는 Columns/Rows × `auto-fill`/`auto-fit` × 세 intrinsic minimum × 0px/4px gap을 교차한다. definite repeated axis는 16px이고 12×12px item은 세 번째 track을 점유한다. 독립 계산 repeat count는 gap 0px에서 16, gap 4px에서 4다. Occupied track은 item의 12px minimum을 보존한다. `auto-fit`은 다른 반복 track과 gutter를 접으며, gap 4px에서 `auto-fill` item offset은 8px, `auto-fit`은 0px이다.
+
+Layout direct test, FFI fixture route, vendored Taffy two-axis test 및 2px positive maximum control을 고정했다. Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 scene 24/24를 실행했다. 각 플랫폼은 frame/track/draw-present를 통과하고 PixelCopy 또는 pre-compositor Metal drawable 표본 54/54가 exact였다. 각 24 screenshots와 source/hash receipt는 [실행 evidence](evidence/c11-4-auto-repeat-zero-fixed-maximum-2026-10-29/README.md)에 있다. Default/fixture artifact 경계는 해당 JSON의 inspected artifact에 한정된다. Android 실기기/hardware GPU와 iOS compositor 이후 pixels는 검증하지 않았다.
+
+일반 author CSS admission, 임의 Grid 입력, 전체 auto-repeat 조합, 전체 C11.4는 이 제한 fixture slice에 포함하지 않는다. 구현/runtime 실패 관점 20개와 PR diff 검토 20개는 같은 evidence directory에 둔다. C11.4 checkbox와 공식 `72/213`은 계속 미완료다.

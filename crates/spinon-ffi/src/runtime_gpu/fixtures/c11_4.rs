@@ -1407,6 +1407,10 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+    if let Some(source) = super::c11_4_auto_repeat_zero_fixed_maximum::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    #[cfg(feature = "c04-runtime-gpu-fixture-test")]
     if let Some(source) = super::c11_4_auto_repeat_percentage_maximum::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
