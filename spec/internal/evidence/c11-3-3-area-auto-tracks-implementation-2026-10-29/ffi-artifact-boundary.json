@@ -1,0 +1,39 @@
+{
+  "schema": "spinon-c11-3-3-fixture-artifact-boundary/v1",
+  "target": {
+    "os": "macOS",
+    "architecture": "aarch64-apple-darwin",
+    "artifactKind": "Rust static archive",
+    "profile": "dev"
+  },
+  "toolchain": {
+    "rustc": "rustc 1.96.1 (31fca3adb 2026-06-26)",
+    "llvm": "22.1.2",
+    "symbolTool": "rustup LLVM 22.1.2 llvm-nm"
+  },
+  "fixtureSymbols": [
+    "spinon_runtime_gpu_host_new_c11_3_3_grid_template_areas_fixture",
+    "spinon_runtime_gpu_host_eval_c11_3_3_grid_template_areas_fixture"
+  ],
+  "payloadMarker": "area-auto-tracks-none",
+  "default": {
+    "command": "cargo build --locked -p spinon-ffi --lib",
+    "features": [],
+    "artifact": "target/debug/deps/libspinon_ffi-0098a99528f2b0e6.a",
+    "sha256": "cd8a2eb02958f5f063ae92b9a8c48d204772a79fc71b55d14e7f4eca323595be",
+    "symbolMatches": 0,
+    "payloadMarkerPresent": false
+  },
+  "fixtureTestOptIn": {
+    "command": "cargo build --locked -p spinon-ffi --lib --features c04-runtime-gpu-fixture-test",
+    "features": [
+      "c04-runtime-gpu",
+      "c04-runtime-gpu-fixture-test"
+    ],
+    "artifact": "target/debug/deps/libspinon_ffi-2f4562df41e0918f.a",
+    "sha256": "06c679eb59a12df7f8fc7c52665eed2878248a809f13b708613485ade03673ab",
+    "symbolMatches": 2,
+    "payloadMarkerPresent": true
+  },
+  "scope": "macOS ARM64 static archive evidence only; this does not establish the final APK or IPA artifact boundary"
+}

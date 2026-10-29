@@ -22,8 +22,8 @@
 | 16 | implicit named-line mode가 원래의 fixed-px 자동 트랙 제한을 우회 | `GridPlacementMode::TemplateGridImplicitTracks` 및 signed mode에서 `grid-auto-rows:auto` 거부 분기가 유지된다. 최종 unknown-area rejection log의 typed code와 property가 이를 확인한다. | PASS |
 | 17 | 넓은 line-name 문자열에 area 확장용 metadata group header 예산이 빠짐 | combined metadata 계산이 새 group header 수를 사전 포함하며 1 MiB 초과 입력은 `grid-template-areas` 문맥 오류가 된다. 새 경계 테스트의 limit/limit+1 입력이 통과했다. | PASS |
 | 18 | track 또는 line metadata reserve 실패가 panic/잘못된 성공으로 전파 | track reserve는 `GridAllocationFailure`로 바꾸고 line group은 `try_reserve_exact` 실패를 같은 구체 오류로 변환한다. 기존 reservation failure 회귀군과 style-to-layout 전체 255개 테스트가 통과했다. | PASS |
-| 19 | Android/iOS route 또는 matrix scene 목록이 보충 5개 scene을 누락 | FFI 고정 matrix, 양 앱 allowlist 및 capture 스크립트에 5개 ID가 반영됐다. 고정 집계 31 scene·90 node, 성공 25·fallback 5·거부 1이 양 플랫폼에서 `matched`다. | PASS |
-| 20 | 플랫폼 결과가 CSSOM/frame 또는 표면 결과와 다르지만 전체 PASS 처리 | Chrome 156 supplemental oracle 5 scene과 pinned Chrome 154 기존 26 scene을 분리했다. Android visible 88 frame은 최대 0 CSS px, PixelCopy 2/2 exact; iOS frame도 0 CSS px, Metal drawable 2/2 exact다. overflow 3/3 및 leading-line 7/7 표본도 일치했다. | PASS |
+| 19 | fixture FFI 심볼·payload가 기본 artifact에 유출되거나 opt-in artifact에서 빠짐 | Rust 1.96/LLVM 22.1 `llvm-nm`으로 기본 archive는 두 C11.3.3 심볼 0개, `strings`로 보충 scene marker 부재를 확인했다. `c04-runtime-gpu-fixture-test` positive control은 심볼 2개와 payload marker를 포함한다. [archive hash와 feature 기록](./ffi-artifact-boundary.json). | PASS |
+| 20 | 보충 scene route가 빠지거나 CSSOM/frame/표면 결과가 달라도 전체 PASS 처리 | FFI matrix와 두 앱 allowlist/capture에 5개 ID가 반영됐다. pinned Chrome 154 26 scene과 Chrome 156 supplemental 5 scene을 분리했고, 두 플랫폼의 31/31 행렬이 matched다. Android visible 88 frame 및 iOS frame은 최대 0 CSS px, PixelCopy/Metal 표본 2/2 exact, overflow 3/3 및 leading-line 7/7 표본도 일치한다. | PASS |
 
 ## 실행 근거
 
