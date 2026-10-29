@@ -10,7 +10,7 @@
 
 **구현/runtime 검토:** [실패 경계 20개와 수정 기록](../spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.md) · [구현 PR diff 30개 관점](../spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.md) · [최종 AVD·Simulator 근거](../spec/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.md)
 
-**상태:** 계획 PR이 병합됐다. 구현, 정적 artifact 경계, Android API 37 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 검증 및 리뷰가 현재 후보 변경에서 통과했다. 구현 PR 생성·required check·병합은 아직 남았다. 아직 C11.3.3·C11 또는 공식 완료 수를 승격하지 않는다.
+**상태:** 계획 PR과 구현 PR [#814](https://github.com/ohah/spinon/pull/814)이 Rebase and merge로 병합됐다(2026-10-29T18:48:29Z, merge SHA `4b40ffc3b16cbdde4bb3f66e3e1036ac8a3f8cd3`). 현재 bounded behavior를 내부 계약·상태 대장·공개/Tailnet 로드맵에 동기화 중이다. C11.3.3·C11은 계속 미완료이며 공식 완료 수는 `72/213` 그대로다.
 
 ## 결손
 
