@@ -1,0 +1,62 @@
+{
+  "serial": "emulator-5556",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "bad1fd7fec0d5567dabdc7dbde76dcc2f26443d261c7f5c31fe7bb4c279086e9",
+  "installedApkSha256": "bad1fd7fec0d5567dabdc7dbde76dcc2f26443d261c7f5c31fe7bb4c279086e9",
+  "sourceRevision": {
+    "commit": "0435059826bedb29bbe15a046fdbca2ec6cc88c3",
+    "tree": "6b2d0dfa9e0d2287b257a94316b9f8eb72be6025",
+    "trackedDiffSha256": "1ba94d52a5c14347c35002b5998a033e37805fa2aedab0744af1fc621a2c8a22",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-layout/src/grid.rs",
+      "crates/spinon-layout/src/grid_track_sizing_tests.rs",
+      "crates/spinon-style-to-layout/src/projection/style_values/grid_values.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/incremental/grid/auto_repeat.rs",
+      "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs",
+      "vendor/taffy/src/compute/grid/types/grid_item.rs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_maximum_scenes.json",
+        "sha256": "03df6caedac2e531bbd17c4c97c1d5a37b8fed301e2d3cb92b55cfe77d36bee8"
+      },
+      {
+        "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4_auto_repeat_fixed_maximum.rs",
+        "sha256": "719e297563fe1a44b03c7b40d73c1a4a7cd90f09206258f6d8af843bbb3817c3"
+      },
+      {
+        "path": "crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_fixed_maximum.rs",
+        "sha256": "6b7d59f5033ffb8ed223b6b0ce2c81c8fb18d5c1a28c7b848ef0b7bbc1058d76"
+      },
+      {
+        "path": "crates/spinon-style-to-layout/src/projection/style_values/grid_values/auto_repeat_fixed_maximum_tests.rs",
+        "sha256": "683c48ddbb6568fc1c2b79c029260e9154065cbcc7210ba990591a5dfc87b223"
+      },
+      {
+        "path": "crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/auto_repeat_fixed_maximum.rs",
+        "sha256": "a488e31513defe03787fcc379f1d7b8e19b203a50ae13aa1744e77618eb5152b"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "250deb1cc175e514ec93e93b789fa6f230b9f379394569d211ad28fdce8c61fd"
+  }
+}

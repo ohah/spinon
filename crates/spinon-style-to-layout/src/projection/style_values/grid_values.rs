@@ -1062,6 +1062,10 @@ mod tests;
 mod auto_repeat_neighbor_tests;
 
 #[cfg(test)]
+#[path = "grid_values/auto_repeat_fixed_maximum_tests.rs"]
+mod auto_repeat_fixed_maximum_tests;
+
+#[cfg(test)]
 #[path = "grid_values/auto_track_tests.rs"]
 mod auto_track_tests;
 

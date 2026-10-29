@@ -10,7 +10,7 @@ use super::super::super::{
 };
 use super::{
     ComputedGridTracks, IntegerRepeatReservationSite, MAX_COMPUTED_GRID_LINE_METADATA_BYTES,
-    MAX_COMPUTED_GRID_TRACKS, add_line_name_budget, auto_repeat_track_has_fixed_minimum,
+    MAX_COMPUTED_GRID_TRACKS, add_line_name_budget, auto_repeat_track_has_supported_fixed_size,
     copy_computed_line_name_groups, fail_integer_repeat_reservation_if_requested,
     line_name_groups_metadata_bytes, reserve_computed_tracks, reserve_integer_repeat_string,
     reserve_integer_repeat_vec, track_size, track_size_is_valid, unsupported_grid_value,
@@ -224,7 +224,7 @@ pub(super) fn computed_auto_repeat_tracks(
                     let track = track_size(size, allow_intrinsic_tracks)
                         .filter(track_size_is_valid)
                         .ok_or_else(|| unsupported_grid_value(node, property, serialized))?;
-                    if !auto_repeat_track_has_fixed_minimum(&track) {
+                    if !auto_repeat_track_has_supported_fixed_size(&track) {
                         return Err(unsupported_grid_value(node, property, serialized));
                     }
                     tracks.push(track);

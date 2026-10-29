@@ -78,6 +78,61 @@ private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = [
 #else
 private let c114CrossAxisFixedAutoRepeatAreaSceneIDs: Set<String> = []
 #endif
+#if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+private let c114FixedMaximumPixelSceneIDs: Set<String> = [
+    "columns-auto-fill-auto-px40-130",
+    "columns-auto-fit-auto-px40-130",
+    "columns-auto-fill-auto-percent30-130",
+    "columns-auto-fit-auto-percent30-130",
+    "columns-auto-fill-auto-calc15-plus-25-percent-130",
+    "columns-auto-fit-auto-calc15-plus-25-percent-130",
+    "columns-overflow-auto-max10-basis10",
+    "columns-auto-fill-min-content-px40-130",
+    "columns-auto-fit-min-content-px40-130",
+    "columns-auto-fit-min-content-percent30-130",
+    "columns-auto-fill-min-content-percent30-130",
+    "columns-auto-fill-min-content-calc15-plus-25-percent-130",
+    "columns-auto-fit-min-content-calc15-plus-25-percent-130",
+    "columns-overflow-min-content-max10-basis10",
+    "columns-auto-fill-max-content-px40-130",
+    "columns-auto-fit-max-content-px40-130",
+    "columns-auto-fill-max-content-percent30-130",
+    "columns-auto-fit-max-content-percent30-130",
+    "columns-auto-fill-max-content-calc15-plus-25-percent-130",
+    "columns-auto-fit-max-content-calc15-plus-25-percent-130",
+    "columns-overflow-max-content-max10-basis10",
+    "columns-auto-fill-px40-below-boundary-129",
+    "rows-auto-fill-auto-px40-130",
+    "rows-auto-fit-auto-px40-130",
+    "rows-auto-fill-auto-percent30-130",
+    "rows-auto-fit-auto-percent30-130",
+    "rows-auto-fill-auto-calc15-plus-25-percent-130",
+    "rows-auto-fit-auto-calc15-plus-25-percent-130",
+    "rows-overflow-auto-max10-basis10",
+    "rows-auto-fill-min-content-px40-130",
+    "rows-auto-fit-min-content-px40-130",
+    "rows-auto-fill-min-content-percent30-130",
+    "rows-auto-fit-min-content-percent30-130",
+    "rows-auto-fill-min-content-calc15-plus-25-percent-130",
+    "rows-auto-fit-min-content-calc15-plus-25-percent-130",
+    "rows-overflow-min-content-max10-basis10",
+    "rows-auto-fill-max-content-px40-130",
+    "rows-auto-fit-max-content-px40-130",
+    "rows-auto-fill-max-content-percent30-130",
+    "rows-auto-fit-max-content-percent30-130",
+    "rows-auto-fill-max-content-calc15-plus-25-percent-130",
+    "rows-auto-fit-max-content-calc15-plus-25-percent-130",
+    "rows-overflow-max-content-max10-basis10",
+    "rows-auto-fill-px40-below-boundary-129",
+    "columns-auto-fill-fixed-minimum-control",
+    "columns-auto-fill-two-track-pattern-135",
+    "columns-auto-fit-two-track-pattern-135",
+    "rows-auto-fill-two-track-pattern-135",
+    "rows-auto-fit-two-track-pattern-135",
+]
+#else
+private let c114FixedMaximumPixelSceneIDs: Set<String> = []
+#endif
 private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
     "cyclic-max-content-auto-fill-prefix-suffix",
     "cyclic-max-content-auto-fit-prefix-suffix",
@@ -592,6 +647,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "auto-repeat-intrinsic-fit-fixed-min",
     "auto-repeat-intrinsic-fit-auto-max",
     "auto-repeat-intrinsic-fit-auto-min",
+    "columns-auto-fill-auto-px40-130",
+    "columns-auto-fit-min-content-percent30-130",
+    "rows-auto-fill-max-content-calc15-plus25-130",
+    "rows-auto-fit-auto-max10-basis10-overflow",
+    "columns-auto-fill-two-track-pattern-135",
     "column-visible-content-minimum", "column-clip-content-minimum",
     "column-hidden-zero-minimum", "column-auto-zero-minimum",
     "column-scroll-zero-minimum", "column-specified-minimum-control",
@@ -643,6 +703,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
     }
     return c114GridTrackSizingSceneIDs.contains(sceneID)
+        || c114FixedMaximumPixelSceneIDs.contains(sceneID)
         || c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID)
         || c114FixedRepeatAutoRepeatSceneIDs.contains(sceneID)
         || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
@@ -978,6 +1039,26 @@ private func c114PercentageMaximumNodeFrames(_ sceneID: String) -> String? {
     }
     return "node_frames_css_px=[0:node=1,x=0,y=0,width=188,height=188;"
         + itemFrames.joined(separator: ";") + "]"
+}
+
+private func c114FixedMaximumRootFrame(_ sceneID: String) -> String? {
+    guard c114FixedMaximumPixelSceneIDs.contains(sceneID) else { return nil }
+    let axisSize = sceneID.hasSuffix("basis10") ? 10
+        : sceneID.hasSuffix("129") ? 129
+        : sceneID.hasSuffix("135") ? 135 : 130
+    return sceneID.hasPrefix("columns-")
+        ? "width=\(axisSize),height=40" : "width=40,height=\(axisSize)"
+}
+
+private func c114FixedMaximumItemFrame(_ sceneID: String) -> String? {
+    c114FixedMaximumPixelSceneIDs.contains(sceneID) ? "width=20,height=20" : nil
+}
+
+private func c114FixedMaximumNodeFrames(_ sceneID: String) -> String? {
+    guard let rootFrame = c114FixedMaximumRootFrame(sceneID),
+          let itemFrame = c114FixedMaximumItemFrame(sceneID) else { return nil }
+    return "node_frames_css_px=[0:node=1,x=0,y=0,\(rootFrame);"
+        + "1:node=2,x=0,y=0,\(itemFrame)]"
 }
 
 private struct C114PercentageNeighborItemFrame {
@@ -1485,6 +1566,9 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let fixedMaximumFrame = c114FixedMaximumRootFrame(sceneID) {
+        return fixedMaximumFrame
+    }
     if let frame = C114FitContentImplicitColumnWpt.expectedRootFrame(sceneID) { return frame }
     if let frame = C114GridAutoFitColumnsWpt.expectedRootFrame(sceneID) { return frame }
     if let frame = C114FlexStage.expectedRootFrame(sceneID) { return frame }
@@ -1809,6 +1893,9 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if let fixedMaximumFrame = c114FixedMaximumItemFrame(sceneID) {
+        return fixedMaximumFrame
+    }
     if let frame = C114FitContentImplicitColumnWpt.expectedItemFrame(sceneID) { return frame }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return "" }
     if C114FlexStage.isScene(sceneID) { return "" }
@@ -6196,6 +6283,7 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let frames = c114FixedMaximumNodeFrames(sceneID) { return frames }
     if let frames = C114FitContentImplicitColumnWpt.expectedNodeFrames(sceneID) {
         return frames
     }
@@ -7854,6 +7942,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114FixedMaximumPixelSceneIDs.contains(sceneID) { return 2 }
     if let count = C114FitContentImplicitColumnWpt.expectedBoxCount(sceneID) { return count }
     if let count = C114GridAutoFitColumnsWpt.expectedBoxCount(sceneID) { return count }
     if C114FlexStage.isScene(sceneID) { return C114FlexStage.itemCount(sceneID) + 1 }
@@ -8567,6 +8656,40 @@ private struct C111MetalPixelRun {
         "both-calc-percent-max-fill", "both-calc-percent-max-fill-control",
     ]
 
+    private static func c114FixedMaximumPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        guard c114FixedMaximumPixelSceneIDs.contains(sceneID) else { return [] }
+        let rootID = "c114-\(sceneID)-grid"
+        let itemID = "c114-\(sceneID)-item-1"
+        if sceneID.contains("-overflow-") {
+            let samples: [(String, String, UInt32, UInt32, [UInt32])]
+            if sceneID.hasPrefix("columns-") {
+                samples = [
+                    ("\(sceneID)-root-interior", rootID, 5, 20, [226, 232, 240, 255]),
+                    ("\(sceneID)-item-inside-root", itemID, 5, 10, [229, 72, 77, 255]),
+                    ("\(sceneID)-item-outside-root", itemID, 15, 10, [229, 72, 77, 255]),
+                ]
+            } else {
+                samples = [
+                    ("\(sceneID)-root-interior", rootID, 30, 5, [226, 232, 240, 255]),
+                    ("\(sceneID)-item-inside-root", itemID, 10, 5, [229, 72, 77, 255]),
+                    ("\(sceneID)-item-outside-root", itemID, 10, 15, [229, 72, 77, 255]),
+                ]
+            }
+            return samples
+        }
+        let axisSize: UInt32 = sceneID.hasSuffix("129") ? 129
+            : sceneID.hasSuffix("135") ? 135 : 130
+        let rootSize: (UInt32, UInt32) = sceneID.hasPrefix("columns-")
+            ? (axisSize, 40) : (40, axisSize)
+        return [
+            ("\(sceneID)-root-interior", rootID,
+             rootSize.0 / 2, rootSize.1 / 2, [226, 232, 240, 255]),
+            ("\(sceneID)-item-1-interior", itemID, 10, 10, [229, 72, 77, 255]),
+        ]
+    }
+
     private static func c114PercentageMaximumPixelSamples(
         sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])] {
@@ -9095,6 +9218,17 @@ private struct C111MetalPixelRun {
         }
         if c114PercentageMaximumPixelSceneIDs.contains(sceneID) {
             let expectedSamples = c114PercentageMaximumPixelSamples(sceneID: sceneID)
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
+        if c114FixedMaximumPixelSceneIDs.contains(sceneID) {
+            let expectedSamples = c114FixedMaximumPixelSamples(sceneID: sceneID)
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
                 samples.contains { sample in

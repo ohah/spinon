@@ -166,6 +166,8 @@ mod auto_placement;
 mod auto_repeat_calc_minimum;
 #[path = "runtime_grid_tests/auto_repeat_calc_neighbor.rs"]
 mod auto_repeat_calc_neighbor;
+#[path = "runtime_grid_tests/auto_repeat_fixed_maximum.rs"]
+mod auto_repeat_fixed_maximum;
 #[path = "runtime_grid_tests/auto_repeat_percentage_maximum.rs"]
 mod auto_repeat_percentage_maximum;
 #[path = "runtime_grid_tests/fixed_repeat_auto_repeat.rs"]

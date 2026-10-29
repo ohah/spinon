@@ -664,6 +664,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "auto-repeat-intrinsic-fit-fixed-min",
             "auto-repeat-intrinsic-fit-auto-max",
             "auto-repeat-intrinsic-fit-auto-min",
+            "columns-auto-fill-auto-px40-130",
+            "columns-auto-fit-min-content-percent30-130",
+            "rows-auto-fill-max-content-calc15-plus25-130",
+            "rows-auto-fit-auto-max10-basis10-overflow",
+            "columns-auto-fill-two-track-pattern-135",
 
     };
     private static final String[] C114_SINGLE_TRACK_OVERFLOW_AUTO_MINIMUM_SCENE_IDS = {
@@ -878,6 +883,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114IsFixedAutoAreaScene(sceneId)) return true;
         if (c114IsFixedRepeatAutoRepeatScene(sceneId)) return true;
+        if (isC114FixedMaximumPixelSceneId(sceneId)) return true;
         for (String candidate : C114_GRID_TRACK_SIZING_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
@@ -3630,6 +3636,28 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return frames.append(']').toString();
     }
 
+    private static String c114FixedMaximumRootFrame(String sceneId) {
+        if (!isC114FixedMaximumPixelSceneId(sceneId)) return null;
+        int axisSize = sceneId.endsWith("basis10") ? 10
+                : sceneId.endsWith("129") ? 129
+                : sceneId.endsWith("135") ? 135 : 130;
+        return sceneId.startsWith("columns-")
+                ? "width=" + axisSize + ",height=40"
+                : "width=40,height=" + axisSize;
+    }
+
+    private static String c114FixedMaximumItemFrame(String sceneId) {
+        return isC114FixedMaximumPixelSceneId(sceneId) ? "width=20,height=20" : null;
+    }
+
+    private static String c114FixedMaximumNodeFrames(String sceneId) {
+        String rootFrame = c114FixedMaximumRootFrame(sceneId);
+        String itemFrame = c114FixedMaximumItemFrame(sceneId);
+        if (rootFrame == null || itemFrame == null) return null;
+        return "node_frames_css_px=[0:node=1,x=0,y=0," + rootFrame
+                + ";1:node=2,x=0,y=0," + itemFrame + "]";
+    }
+
     private static final String[] C114_PERCENTAGE_NEIGHBOR_SCENE_IDS = {
         "col-fill-both", "row-fill-both", "col-fill-prefix", "row-fill-suffix",
         "col-fit-first", "row-fit-first", "col-fit-empty", "row-fit-empty",
@@ -3883,6 +3911,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        String fixedMaximumFrame = c114FixedMaximumRootFrame(sceneId);
+        if (fixedMaximumFrame != null) return fixedMaximumFrame;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
             return C114FitContentImplicitColumnWpt.expectedRootFrame(sceneId);
         }
@@ -4292,6 +4322,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        String fixedMaximumFrame = c114FixedMaximumItemFrame(sceneId);
+        if (fixedMaximumFrame != null) return fixedMaximumFrame;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
             return C114FitContentImplicitColumnWpt.expectedItemFrame(sceneId);
         }
@@ -6434,6 +6466,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        String fixedMaximumFrames = c114FixedMaximumNodeFrames(sceneId);
+        if (fixedMaximumFrames != null) return fixedMaximumFrames;
         String intrinsicWptFrames = c114GridAutoRepeatIntrinsicWptNodeFrames(sceneId);
         if (intrinsicWptFrames != null) return intrinsicWptFrames;
         String intrinsicAutoRepeatFrames = c114IntrinsicAutoRepeatNodeFrames(sceneId);
@@ -9074,6 +9108,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (isC114FixedMaximumPixelSceneId(sceneId)) return 2;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
             return C114FitContentImplicitColumnWpt.expectedBoxCount(sceneId);
         }
@@ -9637,6 +9672,58 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         "both-calc-percent-max-fill", "both-calc-percent-max-fill-control",
     };
 
+    private static final String[] C114_FIXED_MAXIMUM_PIXEL_SCENE_IDS = {
+        "columns-auto-fill-auto-px40-130",
+        "columns-auto-fit-auto-px40-130",
+        "columns-auto-fill-auto-percent30-130",
+        "columns-auto-fit-auto-percent30-130",
+        "columns-auto-fill-auto-calc15-plus-25-percent-130",
+        "columns-auto-fit-auto-calc15-plus-25-percent-130",
+        "columns-overflow-auto-max10-basis10",
+        "columns-auto-fill-min-content-px40-130",
+        "columns-auto-fit-min-content-px40-130",
+        "columns-auto-fill-min-content-percent30-130",
+        "columns-auto-fit-min-content-percent30-130",
+        "columns-auto-fill-min-content-calc15-plus-25-percent-130",
+        "columns-auto-fit-min-content-calc15-plus-25-percent-130",
+        "columns-overflow-min-content-max10-basis10",
+        "columns-auto-fill-max-content-px40-130",
+        "columns-auto-fit-max-content-px40-130",
+        "columns-auto-fill-max-content-percent30-130",
+        "columns-auto-fit-max-content-percent30-130",
+        "columns-auto-fill-max-content-calc15-plus-25-percent-130",
+        "columns-auto-fit-max-content-calc15-plus-25-percent-130",
+        "columns-overflow-max-content-max10-basis10",
+        "columns-auto-fill-px40-below-boundary-129",
+        "rows-auto-fill-auto-px40-130",
+        "rows-auto-fit-auto-px40-130",
+        "rows-auto-fill-auto-percent30-130",
+        "rows-auto-fit-auto-percent30-130",
+        "rows-auto-fill-auto-calc15-plus-25-percent-130",
+        "rows-auto-fit-auto-calc15-plus-25-percent-130",
+        "rows-overflow-auto-max10-basis10",
+        "rows-auto-fill-min-content-px40-130",
+        "rows-auto-fit-min-content-px40-130",
+        "rows-auto-fill-min-content-percent30-130",
+        "rows-auto-fit-min-content-percent30-130",
+        "rows-auto-fill-min-content-calc15-plus-25-percent-130",
+        "rows-auto-fit-min-content-calc15-plus-25-percent-130",
+        "rows-overflow-min-content-max10-basis10",
+        "rows-auto-fill-max-content-px40-130",
+        "rows-auto-fit-max-content-px40-130",
+        "rows-auto-fill-max-content-percent30-130",
+        "rows-auto-fit-max-content-percent30-130",
+        "rows-auto-fill-max-content-calc15-plus-25-percent-130",
+        "rows-auto-fit-max-content-calc15-plus-25-percent-130",
+        "rows-overflow-max-content-max10-basis10",
+        "rows-auto-fill-px40-below-boundary-129",
+        "columns-auto-fill-fixed-minimum-control",
+        "columns-auto-fill-two-track-pattern-135",
+        "columns-auto-fit-two-track-pattern-135",
+        "rows-auto-fill-two-track-pattern-135",
+        "rows-auto-fit-two-track-pattern-135",
+    };
+
     private static boolean c114PercentageMaximumPixelSamplesMatch(
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
@@ -9777,6 +9864,53 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean isC114PercentageMaximumPixelSceneId(String sceneId) {
         return java.util.Arrays.asList(C114_PERCENTAGE_MAXIMUM_PIXEL_SCENE_IDS)
                 .contains(sceneId);
+    }
+
+    private static boolean isC114FixedMaximumPixelSceneId(String sceneId) {
+        return java.util.Arrays.asList(C114_FIXED_MAXIMUM_PIXEL_SCENE_IDS).contains(sceneId);
+    }
+
+    private static boolean c114FixedMaximumPixelSamplesMatch(
+            String sceneId,
+            List<SurfaceViewPixelCapture.Sample> samples
+    ) {
+        if (!isC114FixedMaximumPixelSceneId(sceneId)) return false;
+        String rootId = "c114-" + sceneId + "-grid";
+        String itemId = "c114-" + sceneId + "-item-1";
+        boolean overflow = sceneId.contains("-overflow-");
+        String[] expectedIds = overflow
+                ? new String[] {sceneId + "-root-interior", sceneId + "-item-inside-root",
+                        sceneId + "-item-outside-root"}
+                : new String[] {sceneId + "-root-interior", sceneId + "-item-1-interior"};
+        String[] expectedTargets = overflow
+                ? new String[] {rootId, itemId, itemId} : new String[] {rootId, itemId};
+        String rootFrame = c114FixedMaximumRootFrame(sceneId);
+        if (rootFrame == null) return false;
+        String[] dimensions = rootFrame.replace("width=", "").replace("height=", "").split(",");
+        int rootWidth = Integer.parseInt(dimensions[0]);
+        int rootHeight = Integer.parseInt(dimensions[1]);
+        int[][] expectedPoints = overflow && sceneId.startsWith("columns-")
+                ? new int[][] {{5, 20}, {5, 10}, {15, 10}}
+                : overflow ? new int[][] {{30, 5}, {10, 5}, {10, 15}}
+                : new int[][] {{rootWidth / 2, rootHeight / 2}, {10, 10}};
+        if (samples.size() != expectedIds.length) return false;
+        boolean[] found = new boolean[expectedIds.length];
+        for (SurfaceViewPixelCapture.Sample sample : samples) {
+            int index = -1;
+            for (int candidate = 0; candidate < expectedIds.length; candidate++) {
+                if (expectedIds[candidate].equals(sample.id)) {
+                    index = candidate;
+                    break;
+                }
+            }
+            if (index < 0 || found[index]
+                    || !expectedTargets[index].equals(sample.targetNodeId)
+                    || sample.xCssPx != expectedPoints[index][0]
+                    || sample.yCssPx != expectedPoints[index][1]) return false;
+            found[index] = true;
+        }
+        for (boolean sampleFound : found) if (!sampleFound) return false;
+        return true;
     }
 
     private static boolean isC114PercentageNeighborPixelSceneId(String sceneId) {
@@ -10264,6 +10398,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsFixedAutoAreaScene(sceneId)) {
             return c114FixedAutoAreaPixelSamplesMatch(sceneId, samples);
         }
+        if (c114FixedMaximumPixelSamplesMatch(sceneId, samples)) return true;
         if (isC114FixedRepeatAutoRepeatPixelSamples(sceneId, samples)) return true;
         if (c114CalcNeighborPixelSamplesMatch(sceneId, samples)) return true;
         if (c114PercentageMaximumPixelSamplesMatch(sceneId, samples)) return true;
@@ -12607,6 +12742,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId)
                         || "align-content-normal-equal-auto-rows".equals(pixelMatrixSceneId)
                         || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId)
+                        || isC114FixedMaximumPixelSceneId(pixelMatrixSceneId)
                         || isC114PercentageNeighborPixelSceneId(pixelMatrixSceneId)
                         || isC114CalcNeighborPixelSceneId(pixelMatrixSceneId)
                         || (BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST
@@ -16376,6 +16512,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int[] implicitColumnColor = C114FitContentImplicitColumnWpt.expectedSurfacePixelRgb(
                 sceneId, sampleId);
         if (implicitColumnColor != null) return implicitColumnColor;
+        if (isC114FixedMaximumPixelSceneId(sceneId)) {
+            if ((sceneId + "-root-interior").equals(sampleId)) {
+                return new int[] {226, 232, 240};
+            }
+            if ((sceneId + "-item-1-interior").equals(sampleId)
+                    || (sceneId + "-item-inside-root").equals(sampleId)
+                    || (sceneId + "-item-outside-root").equals(sampleId)) {
+                return new int[] {229, 72, 77};
+            }
+        }
         if (c114IsOverflowAutoMinimumScene(sceneId)) {
             if (sampleId.endsWith("-inside-root-edge")) return new int[] {229, 72, 77};
             if (sampleId.endsWith("-outside-root-edge")) {
