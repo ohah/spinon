@@ -23,18 +23,35 @@
     }
   },
   "normativeExpected": {
-    "normalizedUnzoomedTrackResultCssPx": [40],
-    "wptCssomGridTemplateRows": "40px",
-    "derivation": "In the fixture's unzoomed coordinate model: fit-content limit 40px; item minimum 0px; child max-content contribution 400px; max(0, min(40, 400)) = 40px"
+    "unscaledAuthorValues": {
+      "fitContentLimitCssPx": 40,
+      "itemMinimumContributionCssPx": 0,
+      "childMaxContentContributionCssPx": 400
+    },
+    "effectiveZoom": 2,
+    "cssZoomScaledValues": {
+      "fitContentLimitCssPx": 80,
+      "itemMinimumContributionCssPx": 0,
+      "childMaxContentContributionCssPx": 800,
+      "usedRowsCssPx": [80]
+    },
+    "wptCssomGridTemplateRowsUnscaled": "40px",
+    "derivation": "CSS Grid fit-content formula in Taffy layout coordinates: max(0, min(80, 800)) = 80px; DOM/CSSOM computed lengths are serialized unscaled as 40px"
   },
   "integrationExpected": {
+    "taffyGridInput": {
+      "fitContentLimitCssPx": 80,
+      "itemMinimumContributionCssPx": 0,
+      "childMaxContentContributionCssPx": 800
+    },
+    "taffyUsedRowsCssPx": [80],
     "zoomedVisualRowCssPx": [80],
     "gridContainerVisualHeightCssPx": 600,
     "itemVisualHeightCssPx": 80,
     "childVisualHeightCssPx": 800,
-    "basis": "Root zoom 2; checked as app integration geometry and separately compared with Chrome observation"
+    "basis": "Stylo 0.22 source audit predicts effective zoom 2 is already applied to absolute lengths before Spinon copies typed px values into Taffy; pending cascade/runtime verification; do not scale again after layout"
   },
-  "wptAssertionOnlyChecks": "The resolved CSS gridTemplateRows string is 40px. The zoomed visual dimensions are recorded as a separate runtime integration expectation, not as part of the WPT assertion.",
+  "wptAssertionOnlyChecks": "The resolved CSS gridTemplateRows CSSOM string is unscaled 40px. The Taffy used row and app visual dimensions are separate runtime integration expectations, not values directly asserted by WPT.",
   "normalizationProbe": {
     "change": "Set only the WPT grid's inline width to 60px to make the app fixture independent of viewport width.",
     "originalGridTemplateRows": "40px",
