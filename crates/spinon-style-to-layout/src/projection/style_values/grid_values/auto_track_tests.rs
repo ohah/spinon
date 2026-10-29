@@ -129,6 +129,66 @@ fn non_track_sizing_profile_rejects_typed_auto_track_lists() {
 }
 
 #[test]
+fn template_profile_projects_only_fixed_px_auto_track_lists() {
+    let node = NodeId::new(11_207).unwrap();
+    let mut grid = ComputedCssGridLayout {
+        columns: vec![ComputedCssGridTrackSize::LengthPx(24.0)],
+        rows: vec![ComputedCssGridTrackSize::LengthPx(12.0)],
+        columns_auto_repeat: None,
+        rows_auto_repeat: None,
+        columns_line_names: vec![Vec::new(), Vec::new()],
+        rows_line_names: vec![Vec::new(), Vec::new()],
+        template_areas: None,
+        auto_flow: ComputedCssGridAutoFlow::Row,
+        auto_rows: ComputedCssGridAutoRows::TrackList(vec![
+            ComputedCssGridTrackSize::LengthPx(15.0),
+            ComputedCssGridTrackSize::LengthPx(7.0),
+        ]),
+        auto_columns: spinon_style::ComputedCssGridAutoColumns::TrackList(vec![
+            ComputedCssGridTrackSize::LengthPx(15.0),
+            ComputedCssGridTrackSize::LengthPx(7.0),
+        ]),
+    };
+
+    let projected = project_grid_layout(
+        node,
+        &grid,
+        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+    )
+    .unwrap();
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+        ])
+    );
+    assert_eq!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+        ])
+    );
+
+    grid.auto_columns = spinon_style::ComputedCssGridAutoColumns::TrackList(vec![
+        ComputedCssGridTrackSize::Fraction(1.0),
+    ]);
+    assert!(matches!(
+        project_grid_layout(
+            node,
+            &grid,
+            ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+        ),
+        Err(crate::StyleLayoutError::UnsupportedComputedValue {
+            node: error_node,
+            property: "grid-auto-columns",
+            ..
+        }) if error_node == node
+    ));
+}
+
+#[test]
 fn auto_track_list_reservation_failure_keeps_axis_context() {
     let node = NodeId::new(11_203).unwrap();
     let grid = ComputedCssGridLayout {

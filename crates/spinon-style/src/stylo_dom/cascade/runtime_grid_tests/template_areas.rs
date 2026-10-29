@@ -81,6 +81,55 @@ fn all_null_template_areas_keep_dimensions_without_dense_cells() {
 }
 
 #[test]
+fn template_profile_preserves_only_fixed_px_auto_track_lists() {
+    let fixed_fixture = fixture(
+        "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:80px;grid-template-rows:40px;grid-auto-columns:15px 7px;grid-auto-rows:15px 7px;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+        &fixed_fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+    assert_eq!(
+        grid.auto_columns,
+        crate::ComputedCssGridAutoColumns::TrackList(vec![
+            crate::ComputedCssGridTrackSize::LengthPx(15.0),
+            crate::ComputedCssGridTrackSize::LengthPx(7.0),
+        ])
+    );
+    assert_eq!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![
+            crate::ComputedCssGridTrackSize::LengthPx(15.0),
+            crate::ComputedCssGridTrackSize::LengthPx(7.0),
+        ])
+    );
+
+    let intrinsic_fixture = fixture(
+        "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:80px;grid-template-rows:40px;grid-auto-columns:15px 1fr;margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+        &intrinsic_fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    assert!(matches!(
+        snapshot.elements[0]
+            .grid_layout
+            .as_ref()
+            .unwrap()
+            .auto_columns,
+        crate::ComputedCssGridAutoColumns::Unsupported(_)
+    ));
+}
+
+#[test]
 fn invalid_later_area_declaration_keeps_the_earlier_valid_template() {
     let fixture = fixture(
         "display:grid;box-sizing:border-box;width:160px;height:40px;grid-template-columns:80px 80px;grid-template-rows:40px;margin:0;padding:0",

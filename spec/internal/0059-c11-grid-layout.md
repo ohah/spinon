@@ -84,6 +84,14 @@ Template area 행·열 수와 explicit track 수가 다르면 `grid-template-are
 
 이 후보는 C11.3.3 완료, WPT 적합성, 전체 CSS Grid 또는 공개 제품 CSS 지원을 선언하지 않는다. C11.3.3 상태와 공식 완료 집계는 미완료로 유지한다.
 
+## C11.3.3 leading named implicit lines · 제한 fixture 계약
+
+이 후속 제한 profile은 기존 area/authored-name 우선순위를 보존한 뒤, 부족한 named occurrence 또는 named span을 explicit grid 앞·뒤의 implicit line으로 해석한다. fixed fixture 일곱 장면은 양의·음의 occurrence, 앞쪽 span 부족, explicit authored name 우선순위를 고정한다. `TemplateGridSignedImplicitTracks` layout mode는 이름 배치가 요구한 definite implicit extent만 계산하며, 앞쪽 implicit extent에는 authored grid-auto track pattern을 역순으로 확장한다.
+
+양 축 `grid-auto-rows`·`grid-auto-columns`는 비어 있지 않은 고정 CSS-pixel 값 또는 고정 px 목록만 허용한다. checked signed arithmetic과 공통 10,000-track 상한을 적용한다. 숫자 line은 named span의 definite 반대 endpoint로 필요한 경우만 허용하며, 독립 numeric implicit placement, 자동 배치, `auto`·intrinsic implicit sizing, auto-repeat, 일반 CSS admission은 범위 밖이다. 관련 제한은 전용 C11.3.3 opt-in fixture 경로에만 적용한다.
+
+이 fixture와 Chrome 사전 비교는 해당 일곱 입력의 동작 근거일 뿐, 일반 CSS Grid 또는 WPT 적합성을 증명하지 않는다. Android AVD의 SwiftShader PixelCopy 및 iOS Simulator Metal drawable은 각각 플랫폼 표면·compositor 이전 단계의 증거이며, 실기기 GPU 또는 compositor 이후 픽셀을 증명하지 않는다. C11.3.3 및 C11 전체 완료 상태와 공식 완료 집계는 그대로 미완료다.
+
 ## C11.4 auto-repeat named-line implicit fallback · 제한 fixture 계약
 
 내부 계약 숫자 버전은 `0.1.0`이다. 이 절은 `c04-runtime-gpu-fixture-test` 아래 고정 fixture에서만 적용하는 기존 Grid runtime profile의 제한 계약을 기록한다. 일반 CSS 입력 허용, 공개 CSS 지원 또는 C11.4 완료를 선언하지 않는다.

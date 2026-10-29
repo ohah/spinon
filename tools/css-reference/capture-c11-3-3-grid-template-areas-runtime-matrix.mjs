@@ -22,6 +22,11 @@ const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implici
 const unknownAreaPixels = JSON.parse(await readFile(resolve(repositoryRoot, unknownAreaPixelsPath), 'utf8'));
 const unknownAreaReferenceBytes = await readFile(resolve(repositoryRoot, unknownAreaPixels.inputs.reference.path));
 const unknownAreaReference = JSON.parse(unknownAreaReferenceBytes.toString('utf8'));
+const leadingNamedLinesPixelsPath = 'tests/fixtures/css/c11/grid-leading-named-implicit-lines-mobile-pixels-v1.json';
+const leadingNamedLinesPixels = JSON.parse(await readFile(resolve(repositoryRoot, leadingNamedLinesPixelsPath), 'utf8'));
+const leadingNamedLinesReferenceBytes = await readFile(resolve(repositoryRoot,
+  leadingNamedLinesPixels.oracle.referencePath));
+const leadingNamedLinesReference = JSON.parse(leadingNamedLinesReferenceBytes.toString('utf8'));
 const unknownAreaObservation = unknownAreaReference.observations.find(({ deviceScaleFactor }) =>
   deviceScaleFactor === 1);
 const unknownAreaChromeSourceCase = unknownAreaObservation.cases.find(({ id }) =>
@@ -262,6 +267,98 @@ async function captureUnknownAreaOverflow(adb) {
   };
 }
 
+async function captureLeadingNamedImplicitLines(adb) {
+  assert.equal(leadingNamedLinesPixels.schema,
+    'spinon-css-c11-3-3-leading-named-implicit-lines-mobile-pixels/v1');
+  assert.equal(sha256(leadingNamedLinesReferenceBytes),
+    leadingNamedLinesPixels.oracle.referenceSha256);
+  assert.equal(leadingNamedLinesReference.referenceId, leadingNamedLinesPixels.oracle.referenceId);
+  assert.equal(leadingNamedLinesPixels.scenes.length, 7);
+  const observations = [];
+  for (const [index, entry] of leadingNamedLinesPixels.scenes.entries()) {
+    const sceneRunID = `${runID}-leading-${String(index).padStart(2, '0')}`;
+    assert.match(sceneRunID, /^[A-Za-z0-9_-]{1,80}$/,
+      `${entry.id}: Android route run ID가 고정 입력 길이를 벗어났습니다.`);
+    const scene = {
+      id: entry.id,
+      nodeIds: [entry.rootId, entry.itemId],
+      expected: { outcome: 'success' },
+    };
+    const chromeCase = {
+      id: entry.id,
+      nodes: [
+        { id: entry.rootId, rect: Object.fromEntries(['x', 'y', 'width', 'height']
+          .map((key, coordinate) => [key, entry.rootRect[coordinate]])) },
+        { id: entry.itemId, rect: Object.fromEntries(['x', 'y', 'width', 'height']
+          .map((key, coordinate) => [key, entry.itemRect[coordinate]])) },
+      ],
+    };
+    const launch = launchScene(adb, entry.id, sceneRunID, { samples: entry.samples });
+    await saveLog(`launch-leading-${String(index).padStart(2, '0')}-${entry.id}.log`, launch);
+    const pid = waitForProcess(adb);
+    const evalMarker = `SPINON_C1133_GRID_EVAL_RUN run_id=${sceneRunID} scene_id=${entry.id} `;
+    let log = waitForLog(() => currentProcessLog(adb, pid), (value) =>
+      value.includes(evalMarker) || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'),
+    `${entry.id}: leading named implicit line runtime 결과`);
+    assert.ok(!log.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'),
+      `${entry.id}: Android route에서 scene이 거부되었습니다.`);
+    assert.ok(log.includes(`${evalMarker}status=0 layout=ready`),
+      `${entry.id}: layout 평가가 성공하지 않았습니다.`);
+    log = waitForLog(() => currentProcessLog(adb, pid), (value) =>
+      value.includes('SPINON_C0410_DRAW status=0 presented boxes=')
+        && (value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${sceneRunID}`)
+          || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${sceneRunID}`)
+          || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=error run_id=${sceneRunID}`)
+          || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=${sceneRunID}`)),
+    `${entry.id}: GPU draw / PixelCopy 결과`, 60_000);
+    const logPath = `runtime-leading-${String(index).padStart(2, '0')}-${entry.id}.log`;
+    await writeFile(resolve(evidenceDirectory, logPath), `${formatLog(log)}\n`);
+    const geometry = compareGeometry(scene, log, chromeCase);
+    const capture = log.split(/\r?\n/).find((line) => line.includes(
+      `SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${sceneRunID}`));
+    assert.ok(capture, `${entry.id}: PixelCopy capture marker가 없습니다.`);
+    const devicePng = capture.match(/\bpng=(\S+)/)?.[1];
+    assert.ok(devicePng?.startsWith('/data/user/0/dev.spinon.bootstrap/cache/c1133-grid-surface-pixel-matrix/'),
+      `${entry.id}: PixelCopy 경로가 C11.3.3 전용 cache가 아닙니다.`);
+    const pngBytes = adb(['exec-out', 'run-as', packageName, 'cat',
+      `cache/c1133-grid-surface-pixel-matrix/${devicePng.split('/').at(-1)}`],
+    { encoding: null }).stdout;
+    const pixel = compareC11AndroidPixelCopyScene(log, {
+      scene: { id: entry.id, samples: entry.samples },
+      runID: sceneRunID,
+      pngBytes,
+      viewportCssPx: leadingNamedLinesPixels.runtime.viewportCssPx,
+      markerPrefix: 'C1133',
+      cacheDirectory: 'c1133-grid-surface-pixel-matrix',
+    });
+    await writeFile(resolve(evidenceDirectory, `pixelcopy-leading-${entry.id}.png`), pngBytes);
+    observations.push({
+      index,
+      sceneId: entry.id,
+      expectedTracksPx: entry.columnsPx,
+      boxes: geometry.boxes,
+      frames: geometry.frames.length,
+      comparisons: geometry.comparisons,
+      maximumGeometryErrorCssPx: Math.max(0, ...geometry.comparisons
+        .map(({ maximumErrorCssPx }) => maximumErrorCssPx)),
+      pixel,
+      logPath,
+    });
+  }
+  return {
+    fixturePath: leadingNamedLinesPixelsPath,
+    fixtureSha256: sha256(await readFile(resolve(repositoryRoot, leadingNamedLinesPixelsPath))),
+    referencePath: leadingNamedLinesPixels.oracle.referencePath,
+    referenceSha256: sha256(leadingNamedLinesReferenceBytes),
+    scenes: observations,
+    sceneCount: observations.length,
+    comparedVisibleNodes: observations.reduce((sum, scene) => sum + scene.comparisons.length, 0),
+    maximumGeometryErrorCssPx: Math.max(0, ...observations
+      .map(({ maximumGeometryErrorCssPx }) => maximumGeometryErrorCssPx)),
+    matchedPixelSamples: observations.reduce((sum, scene) => sum + scene.pixel.matchedSamples, 0),
+  };
+}
+
 function androidDevice() {
   const devices = command('adb', ['devices', '-l']).stdout;
   const serial = target === 'android-avd'
@@ -379,13 +476,14 @@ async function captureMatrix(adb) {
     });
   }
   const unknownAreaOverflow = await captureUnknownAreaOverflow(adb);
+  const leadingNamedImplicitLines = await captureLeadingNamedImplicitLines(adb);
   let screenSha256 = null;
   if (target === 'android-avd') {
     const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
     await writeFile(resolve(evidenceDirectory, 'android-screen.png'), screen);
     screenSha256 = sha256(screen);
   }
-  return { appSha256, observations, pixelComparison, unknownAreaOverflow,
+  return { appSha256, observations, pixelComparison, unknownAreaOverflow, leadingNamedImplicitLines,
     screenSha256 };
 }
 
@@ -454,6 +552,17 @@ try {
       referencePath: unknownAreaPixels.inputs.reference.path,
       referenceSha256: sha256(unknownAreaReferenceBytes),
     },
+    leadingNamedImplicitLinesFixture: {
+      path: platform.leadingNamedImplicitLines.fixturePath,
+      sha256: platform.leadingNamedImplicitLines.fixtureSha256,
+      referencePath: platform.leadingNamedImplicitLines.referencePath,
+      referenceSha256: platform.leadingNamedImplicitLines.referenceSha256,
+      sceneCount: platform.leadingNamedImplicitLines.sceneCount,
+      comparedVisibleNodes: platform.leadingNamedImplicitLines.comparedVisibleNodes,
+      maximumGeometryErrorCssPx: platform.leadingNamedImplicitLines.maximumGeometryErrorCssPx,
+      matchedPixelSamples: platform.leadingNamedImplicitLines.matchedPixelSamples,
+      scenes: platform.leadingNamedImplicitLines.scenes,
+    },
     oracle: {
       product: reference.oracle.product, referenceId: reference.referenceId,
       referenceSha256: sha256(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath))),
@@ -464,6 +573,7 @@ try {
         .map(({ maximumGeometryErrorCssPx = 0 }) => maximumGeometryErrorCssPx)) },
     platform: { appSha256: platform.appSha256, pixelComparison: platform.pixelComparison,
       unknownAreaOverflow: platform.unknownAreaOverflow,
+      leadingNamedImplicitLines: platform.leadingNamedImplicitLines,
       screenSha256: platform.screenSha256 },
     negative, observations: platform.observations,
     interpretation: target === 'android-physical'
@@ -480,6 +590,7 @@ try {
     `- Chrome DPR 1 geometry: ${totalComparisons} visible node frames compared; maximum error ${result.matrix.maximumGeometryErrorCssPx} CSS px.`,
     `- Basic scene PixelCopy: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact; max channel error 0.`,
     `- Fixed unknown-area overflow: ${platform.unknownAreaOverflow.comparisons.length} Chrome geometry nodes; ${platform.unknownAreaOverflow.pixel.matchedSamples}/${platform.unknownAreaOverflow.pixel.expectedSamples} exact PixelCopy samples, including the red item outside the grid root.`,
+    `- Leading named implicit lines: ${platform.leadingNamedImplicitLines.sceneCount} scenes / ${platform.leadingNamedImplicitLines.comparedVisibleNodes} visible nodes; maximum geometry error ${platform.leadingNamedImplicitLines.maximumGeometryErrorCssPx} CSS px; ${platform.leadingNamedImplicitLines.matchedPixelSamples}/7 PixelCopy samples exact.`,
     `- Negative controls: pixel samples ${negative.pixelSamples.status}; unknown scene ${negative.sceneRoute.status}.`,
     target === 'android-physical'
       ? '- 이 결과는 기록한 단일 실기기·OS·renderer에 한정되며 다른 실기기·driver, WPT 적합성, 일반 CSS Grid 지원을 입증하지 않습니다.'
@@ -488,6 +599,7 @@ try {
     '- `result.json`: aggregate fixture, geometry and negative-control result',
     '- `pixelcopy.png`: basic scene Android SurfaceView PixelCopy',
     '- `unknown-area-overflow-pixelcopy.png`: fixed implicit-track overflow SurfaceView PixelCopy',
+    '- `pixelcopy-leading-*.png`: named implicit line SurfaceView PixelCopy samples',
     ...(target === 'android-avd' ? ['- `android-screen.png`: final AVD screen capture'] : []),
   ].join('\n') + '\n');
   process.stdout.write(`${JSON.stringify({ ...result, evidenceDirectory }, null, 2)}\n`);

@@ -837,6 +837,22 @@ fn project_auto_columns(
         ComputedCssGridAutoColumns::Auto => Ok(GridAutoColumns::Auto),
         ComputedCssGridAutoColumns::LengthPx(value) => Ok(GridAutoColumns::LengthPx(*value)),
         ComputedCssGridAutoColumns::TrackList(tracks)
+            if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                && tracks
+                    .iter()
+                    .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
+        {
+            project_tracks(
+                tracks,
+                node,
+                "grid-auto-columns",
+                LayoutCssMathProperty::GridTemplateColumns,
+                math,
+                reserve,
+            )
+            .map(GridAutoColumns::TrackList)
+        }
+        ComputedCssGridAutoColumns::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 =>
         {
             project_tracks(
@@ -876,6 +892,22 @@ fn project_auto_rows(
     match auto_rows {
         ComputedCssGridAutoRows::Auto => Ok(GridAutoRows::Auto),
         ComputedCssGridAutoRows::LengthPx(value) => Ok(GridAutoRows::LengthPx(*value)),
+        ComputedCssGridAutoRows::TrackList(tracks)
+            if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                && tracks
+                    .iter()
+                    .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
+        {
+            project_tracks(
+                tracks,
+                node,
+                "grid-auto-rows",
+                LayoutCssMathProperty::GridTemplateRows,
+                math,
+                reserve,
+            )
+            .map(GridAutoRows::TrackList)
+        }
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 =>
         {

@@ -135,6 +135,63 @@ fn named_span_searches_backward_from_definite_end() {
 }
 
 #[test]
+fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() {
+    let line_names = names(&[&[], &[]]);
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(40).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &span_named("edge", 1),
+        &ComputedCssGridPlacement::Line(4),
+        LineMetadata {
+            names: &line_names,
+            opposite_names: &[],
+            areas: None,
+            axis: GridAxis::Columns,
+            track_count: 1,
+        },
+        true,
+    )
+    .unwrap();
+
+    assert_eq!(start, GridPlacementInput::Line(-3));
+    assert_eq!(end, GridPlacementInput::Line(4));
+    assert_eq!(
+        usage,
+        ImplicitNamedLineUsage {
+            uses_implicit_tracks: true,
+            requires_signed_extent: true,
+        }
+    );
+}
+
+#[test]
+fn missing_negative_occurrences_create_distinct_leading_lines() {
+    let line_names = names(&[&[], &[], &[]]);
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(41).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("edge", -1),
+        &named("edge", -2),
+        LineMetadata {
+            names: &line_names,
+            opposite_names: &[],
+            areas: None,
+            axis: GridAxis::Columns,
+            track_count: 2,
+        },
+        true,
+    )
+    .unwrap();
+
+    assert_eq!(start, GridPlacementInput::Line(-4));
+    assert_eq!(end, GridPlacementInput::Line(-5));
+    assert!(usage.uses_implicit_tracks);
+    assert!(usage.requires_signed_extent);
+}
+
+#[test]
 fn same_line_duplicate_name_is_one_span_occurrence() {
     let line_names = names(&[&[], &["edge", "edge"], &["edge"], &[]]);
     assert_eq!(

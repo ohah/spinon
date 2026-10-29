@@ -1,0 +1,8 @@
+AssertionError [ERR_ASSERTION]: 고정 iPhone 17 Pro Simulator가 아닙니다.
++ actual - expected
+
++ 'Spinon-C1133-Leading-Named-20261029'
+- 'iPhone 17 Pro'
+
+    at bootedSimulator (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs:101:10)
+    at file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs:520:21

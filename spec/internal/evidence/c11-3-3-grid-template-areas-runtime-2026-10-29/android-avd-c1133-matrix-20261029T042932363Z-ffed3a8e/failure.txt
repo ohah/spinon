@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: positive-missing-occurrences: Android route에서 scene이 거부되었습니다.
+    at captureLeadingNamedImplicitLines (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:301:12)
+    at async captureMatrix (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:477:37)
+    at async file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:537:20

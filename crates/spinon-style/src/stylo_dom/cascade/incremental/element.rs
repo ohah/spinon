@@ -209,6 +209,7 @@ pub(super) fn computed_element_output(
                 ),
                 profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
                 profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
+                profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
             )?)
         } else {
             None
