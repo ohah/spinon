@@ -243,16 +243,32 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.equal(runtime.schema, 'spinon-css-c11-3-3-grid-template-areas-runtime-matrix/v1');
   assert.equal(runtime.profileId, 'RuntimeBlockFlexGridTemplateV1');
   assert.deepEqual(runtime.summary, {
-    sceneCount: 26, nodeCount: 65, successCount: 19, cascadeFallbackCount: 5, expectedRejectCount: 2,
+    sceneCount: 31, nodeCount: 90, successCount: 25, cascadeFallbackCount: 5, expectedRejectCount: 1,
   });
+  const supplementalHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html';
+  const supplementalObservationPath = 'spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json';
+  const [supplementalHtmlBytes, supplementalObservationBytes] = await Promise.all([
+    read(supplementalHtmlPath), read(supplementalObservationPath),
+  ]);
+  const supplementalObservation = JSON.parse(supplementalObservationBytes.toString('utf8'));
   assert.deepEqual(runtime.inputs, {
     inventory: { path: paths.inventory, sha256: sha256(inventoryBytes) },
     html: { path: paths.html, sha256: sha256(htmlBytes) },
     reference: { path: paths.reference, sha256: sha256(await read(paths.reference)) },
+    supplementalHtml: { path: supplementalHtmlPath, sha256: sha256(supplementalHtmlBytes) },
+    supplementalObservation: {
+      path: supplementalObservationPath, sha256: sha256(supplementalObservationBytes),
+    },
   });
-  assert.deepEqual(runtime.cases.map(({ id }) => id), matrixInventory.cases.map(({ id }) => id));
-  assert.equal(runtime.cases.reduce((sum, item) => sum + item.nodeIds.length, 0), 65);
-  for (const [index, item] of runtime.cases.entries()) {
+  const supplementalIds = [
+    'area-auto-tracks-none', 'area-auto-tracks-short-row', 'area-auto-tracks-short-col',
+    'area-auto-tracks-auto', 'area-auto-tracks-long',
+  ];
+  assert.deepEqual(runtime.cases.map(({ id }) => id), [
+    ...matrixInventory.cases.map(({ id }) => id), ...supplementalIds,
+  ]);
+  assert.equal(runtime.cases.reduce((sum, item) => sum + item.nodeIds.length, 0), 90);
+  for (const [index, item] of runtime.cases.slice(0, matrixInventory.cases.length).entries()) {
     const sourceCase = matrixInventory.cases[index];
     const chromeCase = chromeCases.find(({ id }) => id === item.id);
     assert.ok(chromeCase, `${item.id}: Chrome DPR 1 case`);
@@ -270,14 +286,27 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
       `${item.id}: 현재 profile에서 지원하지 않는 grid alignment는 inline 선언으로 합성하지 않습니다`);
     assert.equal(item.source.includes('justify-content:'), false,
       `${item.id}: 현재 profile에서 지원하지 않는 grid alignment는 inline 선언으로 합성하지 않습니다`);
+    assert.equal(item.oracle.product, reference.oracle.product);
+    assert.equal(item.oracle.sceneId, item.id);
   }
+  for (const item of runtime.cases.slice(matrixInventory.cases.length)) {
+    const observed = supplementalObservation.observations[item.id];
+    assert.ok(observed, `${item.id}: Chrome 156 observation`);
+    assert.equal(item.oracle.product, 'Chrome/156.0.0.0');
+    assert.equal(item.oracle.sceneId, item.id);
+    assert.equal(item.oracle.rootId, item.rootId);
+    assert.deepEqual(item.nodeIds, observed.nodes.map(({ id }) => id));
+    assert.deepEqual(item.oracle.nodes.map(({ id, rect }) => ({ id, rect })), observed.nodes);
+    assert.equal(item.expected.outcome, 'success');
+  }
+  assert.deepEqual(supplementalObservation.observations['area-auto-tracks-auto'].root,
+    { width: 50, height: 30 });
   assert.equal(runtime.cases[0].expected.outcome, 'success');
   assert.equal(runtime.cases.filter(({ expected }) => expected.outcome === 'cascade-fallback').length, 5);
-  assert.equal(runtime.cases.filter(({ expected }) => expected.outcome === 'expected-rejection').length, 2);
+  assert.equal(runtime.cases.filter(({ expected }) => expected.outcome === 'expected-rejection').length, 1);
   const trackMismatch = runtime.cases.find(({ id }) => id === 'area-track-count-mismatch');
-  assert.equal(trackMismatch.expected.code, 'unsupported_computed_value');
-  assert.equal(trackMismatch.expected.property, 'grid-template-areas');
-  assert.equal(trackMismatch.expected.nodeId, trackMismatch.rootId);
+  assert.equal(trackMismatch.expected.outcome, 'success');
+  assert.equal(trackMismatch.oracle.product, 'Chrome/154.0.8037.92');
   const unknownArea = runtime.cases.find(({ id }) => id === 'unknown-area-implicit-tracks');
   assert.equal(unknownArea.expected.code, 'unsupported_grid_auto_rows');
   assert.equal(unknownArea.expected.property, 'grid-auto-rows');
@@ -328,7 +357,7 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(matrixCapture.includes("if (target === 'android-avd')"));
   assert.ok(matrixCapture.includes('screenSha256 = null'));
   assert.ok(matrixCapture.includes('function formatLog(log)'));
-  assert.ok(matrixCapture.includes('observation.cases.find(({ id }) => id === scene.id)'));
+  assert.ok(matrixCapture.includes('scene.oracle ?? observation.cases.find(({ id }) => id === scene.id)'));
   assert.ok(matrixCapture.includes('maximumGeometryErrorCssPx'));
   assert.ok(matrixCapture.includes('paint_node_order'));
   assert.ok(matrixCapture.includes('SPINON_C1133_GRID_REJECTION_SUMMARY'));

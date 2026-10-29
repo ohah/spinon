@@ -13,14 +13,22 @@
     "reference": {
       "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
       "sha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913"
+    },
+    "supplementalHtml": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html",
+      "sha256": "45e5f78ac66ea632d24797a02bb4c8d267e9ae9bf3dcfbfc43e8365cb314c701"
+    },
+    "supplementalObservation": {
+      "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+      "sha256": "240c173ea3b99005bbd0624296d1408030e2528f7971ef3203d2bae86a672b31"
     }
   },
   "summary": {
-    "sceneCount": 26,
-    "nodeCount": 65,
-    "successCount": 19,
+    "sceneCount": 31,
+    "nodeCount": 90,
+    "successCount": 25,
     "cascadeFallbackCount": 5,
-    "expectedRejectCount": 2
+    "expectedRejectCount": 1
   },
   "cases": [
     {
@@ -42,6 +50,56 @@
         "basic-grid",
         "basic-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "basic-rectangles",
+        "rootId": "basic-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "basic-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "basic-head",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          },
+          {
+            "id": "basic-main",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "basic-foot",
+            "rect": {
+              "x": 0,
+              "y": 80,
+              "width": 160,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"basic-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"basic-grid\"] = node_0;\nnodeIds.push(\"basic-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"basic-head\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:head\");\nrefs[\"basic-grid\"].appendChild(node_1);\nrefs[\"basic-head\"] = node_1;\nnodeIds.push(\"basic-head\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"basic-main\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:main\");\nrefs[\"basic-grid\"].appendChild(node_2);\nrefs[\"basic-main\"] = node_2;\nnodeIds.push(\"basic-main\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"basic-foot\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:foot\");\nrefs[\"basic-grid\"].appendChild(node_3);\nrefs[\"basic-foot\"] = node_3;\nnodeIds.push(\"basic-foot\");\nreturn { sceneId:'basic-rectangles', rootId:\"basic-grid\", nodeIds };\n})()"
     },
     {
@@ -63,6 +121,56 @@
         "null-grid",
         "null-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "null-cell-dot-runs",
+        "rootId": "null-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "null-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "null-hero",
+            "rect": {
+              "x": 40,
+              "y": 0,
+              "width": 60,
+              "height": 120
+            }
+          },
+          {
+            "id": "null-left",
+            "rect": {
+              "x": 0,
+              "y": 60,
+              "width": 40,
+              "height": 60
+            }
+          },
+          {
+            "id": "null-right",
+            "rect": {
+              "x": 100,
+              "y": 60,
+              "width": 60,
+              "height": 60
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"null-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:60px 60px;grid-template-areas:'.... hero ....' 'left hero right'\");\ndocument.appendChild(node_0);\nrefs[\"null-grid\"] = node_0;\nnodeIds.push(\"null-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"null-hero\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:hero\");\nrefs[\"null-grid\"].appendChild(node_1);\nrefs[\"null-hero\"] = node_1;\nnodeIds.push(\"null-hero\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"null-left\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:left\");\nrefs[\"null-grid\"].appendChild(node_2);\nrefs[\"null-left\"] = node_2;\nnodeIds.push(\"null-left\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"null-right\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:right\");\nrefs[\"null-grid\"].appendChild(node_3);\nrefs[\"null-right\"] = node_3;\nnodeIds.push(\"null-right\");\nreturn { sceneId:'null-cell-dot-runs', rootId:\"null-grid\", nodeIds };\n})()"
     },
     {
@@ -78,6 +186,29 @@
       "parentIds": [
         null
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "all-null-cells",
+        "rootId": "empty-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "empty-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"empty-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'. ....' '... .'\");\ndocument.appendChild(node_0);\nrefs[\"empty-grid\"] = node_0;\nnodeIds.push(\"empty-grid\");\nreturn { sceneId:'all-null-cells', rootId:\"empty-grid\", nodeIds };\n})()"
     },
     {
@@ -95,6 +226,38 @@
         null,
         "single-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "single-cell-area",
+        "rootId": "single-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "single-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "single-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"single-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;width:160px;height:120px;grid-template-columns:160px;grid-template-rows:120px;grid-template-areas:'solo'\");\ndocument.appendChild(node_0);\nrefs[\"single-grid\"] = node_0;\nnodeIds.push(\"single-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"single-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:solo\");\nrefs[\"single-grid\"].appendChild(node_1);\nrefs[\"single-item\"] = node_1;\nnodeIds.push(\"single-item\");\nreturn { sceneId:'single-cell-area', rootId:\"single-grid\", nodeIds };\n})()"
     },
     {
@@ -112,6 +275,38 @@
         null,
         "alias-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "bare-area-edge-aliases",
+        "rootId": "alias-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "alias-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "alias-area",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"alias-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'foo foo .' 'bar baz baz'\");\ndocument.appendChild(node_0);\nrefs[\"alias-grid\"] = node_0;\nnodeIds.push(\"alias-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"alias-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:foo-start / foo-end;grid-row:foo-start / foo-end\");\nrefs[\"alias-grid\"].appendChild(node_1);\nrefs[\"alias-area\"] = node_1;\nnodeIds.push(\"alias-area\");\nreturn { sceneId:'bare-area-edge-aliases', rootId:\"alias-grid\", nodeIds };\n})()"
     },
     {
@@ -129,6 +324,38 @@
         null,
         "area-one-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-area-one-value",
+        "rootId": "area-one-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "area-one-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "area-one-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-one-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'head head .' 'nav main main' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"area-one-grid\"] = node_0;\nnodeIds.push(\"area-one-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-one-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"area-one-grid\"].appendChild(node_1);\nrefs[\"area-one-item\"] = node_1;\nnodeIds.push(\"area-one-item\");\nreturn { sceneId:'grid-area-one-value', rootId:\"area-one-grid\", nodeIds };\n})()"
     },
     {
@@ -146,6 +373,38 @@
         null,
         "area-two-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-area-two-values",
+        "rootId": "area-two-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "area-two-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "area-two-item",
+            "rect": {
+              "x": 40,
+              "y": 0,
+              "width": 60,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-two-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-two-grid\"] = node_0;\nnodeIds.push(\"area-two-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-two-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:1 / 2\");\nrefs[\"area-two-grid\"].appendChild(node_1);\nrefs[\"area-two-item\"] = node_1;\nnodeIds.push(\"area-two-item\");\nreturn { sceneId:'grid-area-two-values', rootId:\"area-two-grid\", nodeIds };\n})()"
     },
     {
@@ -163,6 +422,38 @@
         null,
         "area-three-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-area-three-values",
+        "rootId": "area-three-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "area-three-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "area-three-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 60,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-three-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-three-grid\"] = node_0;\nnodeIds.push(\"area-three-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-three-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:2 / 2 / 4\");\nrefs[\"area-three-grid\"].appendChild(node_1);\nrefs[\"area-three-item\"] = node_1;\nnodeIds.push(\"area-three-item\");\nreturn { sceneId:'grid-area-three-values', rootId:\"area-three-grid\", nodeIds };\n})()"
     },
     {
@@ -180,6 +471,38 @@
         null,
         "area-four-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-area-four-values",
+        "rootId": "area-four-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "area-four-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "area-four-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-four-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'a a .' 'b c c' 'd d d'\");\ndocument.appendChild(node_0);\nrefs[\"area-four-grid\"] = node_0;\nnodeIds.push(\"area-four-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-four-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:1 / 1 / span 2 / span 2\");\nrefs[\"area-four-grid\"].appendChild(node_1);\nrefs[\"area-four-item\"] = node_1;\nnodeIds.push(\"area-four-item\");\nreturn { sceneId:'grid-area-four-values', rootId:\"area-four-grid\", nodeIds };\n})()"
     },
     {
@@ -197,6 +520,38 @@
         null,
         "longhand-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "row-column-longhands-area",
+        "rootId": "longhand-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "longhand-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "longhand-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"longhand-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px;grid-template-areas:'top top .' 'left body body'\");\ndocument.appendChild(node_0);\nrefs[\"longhand-grid\"] = node_0;\nnodeIds.push(\"longhand-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"longhand-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:body;grid-row:body\");\nrefs[\"longhand-grid\"].appendChild(node_1);\nrefs[\"longhand-item\"] = node_1;\nnodeIds.push(\"longhand-item\");\nreturn { sceneId:'row-column-longhands-area', rootId:\"longhand-grid\", nodeIds };\n})()"
     },
     {
@@ -214,6 +569,38 @@
         null,
         "template-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-template-shorthand",
+        "rootId": "template-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "template-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "template-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"template-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template:'head head .' 40px 'left main main' 80px / 40px 60px 60px\");\ndocument.appendChild(node_0);\nrefs[\"template-grid\"] = node_0;\nnodeIds.push(\"template-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"template-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"template-grid\"].appendChild(node_1);\nrefs[\"template-item\"] = node_1;\nnodeIds.push(\"template-item\");\nreturn { sceneId:'grid-template-shorthand', rootId:\"template-grid\", nodeIds };\n})()"
     },
     {
@@ -231,6 +618,38 @@
         null,
         "grid-shorthand-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "grid-shorthand",
+        "rootId": "grid-shorthand-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "grid-shorthand-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "grid-shorthand-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"grid-shorthand-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid:'head head .' 40px 'left main main' 80px / 40px 60px 60px\");\ndocument.appendChild(node_0);\nrefs[\"grid-shorthand-grid\"] = node_0;\nnodeIds.push(\"grid-shorthand-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"grid-shorthand-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:main\");\nrefs[\"grid-shorthand-grid\"].appendChild(node_1);\nrefs[\"grid-shorthand-item\"] = node_1;\nnodeIds.push(\"grid-shorthand-item\");\nreturn { sceneId:'grid-shorthand', rootId:\"grid-shorthand-grid\", nodeIds };\n})()"
     },
     {
@@ -250,6 +669,47 @@
         "bare-vs-number-grid",
         "bare-vs-number-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "bare-area-vs-explicit-one-name",
+        "rootId": "bare-vs-number-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "bare-vs-number-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "bare-area-name",
+            "rect": {
+              "x": 40,
+              "y": 0,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "explicit-one-name",
+            "rect": {
+              "x": 0,
+              "y": 40,
+              "width": 40,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"bare-vs-number-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[foo] 40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. foo foo' 'bar foo foo' 'foot foot foot'\");\ndocument.appendChild(node_0);\nrefs[\"bare-vs-number-grid\"] = node_0;\nnodeIds.push(\"bare-vs-number-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"bare-area-name\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:foo;grid-row:1\");\nrefs[\"bare-vs-number-grid\"].appendChild(node_1);\nrefs[\"bare-area-name\"] = node_1;\nnodeIds.push(\"bare-area-name\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"explicit-one-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:1 foo;grid-row:2\");\nrefs[\"bare-vs-number-grid\"].appendChild(node_2);\nrefs[\"explicit-one-name\"] = node_2;\nnodeIds.push(\"explicit-one-name\");\nreturn { sceneId:'bare-area-vs-explicit-one-name', rootId:\"bare-vs-number-grid\", nodeIds };\n})()"
     },
     {
@@ -271,6 +731,56 @@
         "line-before-grid",
         "line-before-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "explicit-line-before-area",
+        "rootId": "line-before-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "line-before-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "line-before-area",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 40
+            }
+          },
+          {
+            "id": "line-before-name",
+            "rect": {
+              "x": 0,
+              "y": 40,
+              "width": 40,
+              "height": 40
+            }
+          },
+          {
+            "id": "line-before-grid-area",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"line-before-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[a-start c-start] 40px [d-start] 60px 60px;grid-template-rows:[c-start] 40px [d-start] 40px 40px;grid-template-areas:'. a a' 'c a a' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"line-before-grid\"] = node_0;\nnodeIds.push(\"line-before-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"line-before-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a;grid-row:1\");\nrefs[\"line-before-grid\"].appendChild(node_1);\nrefs[\"line-before-area\"] = node_1;\nnodeIds.push(\"line-before-area\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"line-before-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-start;grid-row:2\");\nrefs[\"line-before-grid\"].appendChild(node_2);\nrefs[\"line-before-name\"] = node_2;\nnodeIds.push(\"line-before-name\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"line-before-grid-area\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-column:d;grid-row:d\");\nrefs[\"line-before-grid\"].appendChild(node_3);\nrefs[\"line-before-grid-area\"] = node_3;\nnodeIds.push(\"line-before-grid-area\");\nreturn { sceneId:'explicit-line-before-area', rootId:\"line-before-grid\", nodeIds };\n})()"
     },
     {
@@ -290,6 +800,47 @@
         "line-after-grid",
         "line-after-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "explicit-line-after-area",
+        "rootId": "line-after-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "line-after-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "line-after-area",
+            "rect": {
+              "x": 40,
+              "y": 0,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "line-after-name",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 60,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"line-after-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px [a-start] 60px;grid-template-rows:40px 40px [c-start] 40px;grid-template-areas:'. a a' 'c a a' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"line-after-grid\"] = node_0;\nnodeIds.push(\"line-after-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"line-after-area\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a;grid-row:1\");\nrefs[\"line-after-grid\"].appendChild(node_1);\nrefs[\"line-after-area\"] = node_1;\nnodeIds.push(\"line-after-area\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"line-after-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-start;grid-row:2\");\nrefs[\"line-after-grid\"].appendChild(node_2);\nrefs[\"line-after-name\"] = node_2;\nnodeIds.push(\"line-after-name\");\nreturn { sceneId:'explicit-line-after-area', rootId:\"line-after-grid\", nodeIds };\n})()"
     },
     {
@@ -309,6 +860,47 @@
         "suffix-grid",
         "suffix-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "area-names-ending-start-or-end",
+        "rootId": "suffix-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "suffix-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "suffix-area-name",
+            "rect": {
+              "x": 40,
+              "y": 0,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "suffix-area-end-name",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"suffix-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:'. a-start a-start' 'c a-end a-end' '. . d'\");\ndocument.appendChild(node_0);\nrefs[\"suffix-grid\"] = node_0;\nnodeIds.push(\"suffix-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"suffix-area-name\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:a-start;grid-row:1\");\nrefs[\"suffix-grid\"].appendChild(node_1);\nrefs[\"suffix-area-name\"] = node_1;\nnodeIds.push(\"suffix-area-name\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"suffix-area-end-name\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-column:a-end;grid-row:2\");\nrefs[\"suffix-grid\"].appendChild(node_2);\nrefs[\"suffix-area-end-name\"] = node_2;\nnodeIds.push(\"suffix-area-end-name\");\nreturn { sceneId:'area-names-ending-start-or-end', rootId:\"suffix-grid\", nodeIds };\n})()"
     },
     {
@@ -326,6 +918,38 @@
         null,
         "implicit-area-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "implicit-area-from-explicit-lines",
+        "rootId": "implicit-area-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "implicit-area-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "implicit-area-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"implicit-area-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:[box-start] 40px 60px [box-end];grid-template-rows:[box-start] 40px 40px [box-end];grid-template-areas:none\");\ndocument.appendChild(node_0);\nrefs[\"implicit-area-grid\"] = node_0;\nnodeIds.push(\"implicit-area-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"implicit-area-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:box\");\nrefs[\"implicit-area-grid\"].appendChild(node_1);\nrefs[\"implicit-area-item\"] = node_1;\nnodeIds.push(\"implicit-area-item\");\nreturn { sceneId:'implicit-area-from-explicit-lines', rootId:\"implicit-area-grid\", nodeIds };\n})()"
     },
     {
@@ -345,6 +969,47 @@
         "unicode-grid",
         "unicode-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "escaped-and-unicode-identifiers",
+        "rootId": "unicode-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "unicode-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "unicode-escaped-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 40,
+              "height": 120
+            }
+          },
+          {
+            "id": "unicode-asian-item",
+            "rect": {
+              "x": 100,
+              "y": 0,
+              "width": 60,
+              "height": 120
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"unicode-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:120px;grid-template-areas:'caf\\\\E9 . 田'\");\ndocument.appendChild(node_0);\nrefs[\"unicode-grid\"] = node_0;\nnodeIds.push(\"unicode-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"unicode-escaped-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:café\");\nrefs[\"unicode-grid\"].appendChild(node_1);\nrefs[\"unicode-escaped-item\"] = node_1;\nnodeIds.push(\"unicode-escaped-item\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"unicode-asian-item\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:田\");\nrefs[\"unicode-grid\"].appendChild(node_2);\nrefs[\"unicode-asian-item\"] = node_2;\nnodeIds.push(\"unicode-asian-item\");\nreturn { sceneId:'escaped-and-unicode-identifiers', rootId:\"unicode-grid\", nodeIds };\n})()"
     },
     {
@@ -363,6 +1028,38 @@
         null,
         "invalid-l-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "invalid-l-shape-fallback",
+        "rootId": "invalid-l-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "invalid-l-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "invalid-l-fallback",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-l-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"broken broken .\\\" \\\"broken . .\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-l-grid\"] = node_0;\nnodeIds.push(\"invalid-l-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-l-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-l-grid\"].appendChild(node_1);\nrefs[\"invalid-l-fallback\"] = node_1;\nnodeIds.push(\"invalid-l-fallback\");\nreturn { sceneId:'invalid-l-shape-fallback', rootId:\"invalid-l-grid\", nodeIds };\n})()"
     },
     {
@@ -381,6 +1078,38 @@
         null,
         "invalid-disconnected-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "invalid-disconnected-area-fallback",
+        "rootId": "invalid-disconnected-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "invalid-disconnected-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "invalid-disconnected-fallback",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-disconnected-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"broken . broken\\\" \\\"left middle right\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-disconnected-grid\"] = node_0;\nnodeIds.push(\"invalid-disconnected-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-disconnected-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-disconnected-grid\"].appendChild(node_1);\nrefs[\"invalid-disconnected-fallback\"] = node_1;\nnodeIds.push(\"invalid-disconnected-fallback\");\nreturn { sceneId:'invalid-disconnected-area-fallback', rootId:\"invalid-disconnected-grid\", nodeIds };\n})()"
     },
     {
@@ -399,6 +1128,38 @@
         null,
         "invalid-row-width-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "invalid-row-width-fallback",
+        "rootId": "invalid-row-width-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "invalid-row-width-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "invalid-row-width-fallback",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-row-width-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"a b\\\" \\\"c d e\\\" \\\"foot foot foot\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-row-width-grid\"] = node_0;\nnodeIds.push(\"invalid-row-width-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-row-width-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-row-width-grid\"].appendChild(node_1);\nrefs[\"invalid-row-width-fallback\"] = node_1;\nnodeIds.push(\"invalid-row-width-fallback\");\nreturn { sceneId:'invalid-row-width-fallback', rootId:\"invalid-row-width-grid\", nodeIds };\n})()"
     },
     {
@@ -417,6 +1178,38 @@
         null,
         "invalid-trash-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "invalid-trash-token-fallback",
+        "rootId": "invalid-trash-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "invalid-trash-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "invalid-trash-fallback",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-trash-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"a b\\\" - \\\"c d\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-trash-grid\"] = node_0;\nnodeIds.push(\"invalid-trash-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-trash-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-trash-grid\"].appendChild(node_1);\nrefs[\"invalid-trash-fallback\"] = node_1;\nnodeIds.push(\"invalid-trash-fallback\");\nreturn { sceneId:'invalid-trash-token-fallback', rootId:\"invalid-trash-grid\", nodeIds };\n})()"
     },
     {
@@ -435,16 +1228,45 @@
         null,
         "invalid-empty-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "empty-string-fallback",
+        "rootId": "invalid-empty-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "invalid-empty-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "invalid-empty-fallback",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"invalid-empty-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 40px 40px;grid-template-areas:\\\"fallback fallback .\\\" \\\"left right right\\\" \\\"foot foot foot\\\";grid-template-areas:\\\"\\\"\");\ndocument.appendChild(node_0);\nrefs[\"invalid-empty-grid\"] = node_0;\nnodeIds.push(\"invalid-empty-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"invalid-empty-fallback\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:fallback\");\nrefs[\"invalid-empty-grid\"].appendChild(node_1);\nrefs[\"invalid-empty-fallback\"] = node_1;\nnodeIds.push(\"invalid-empty-fallback\");\nreturn { sceneId:'empty-string-fallback', rootId:\"invalid-empty-grid\", nodeIds };\n})()"
     },
     {
       "index": 23,
       "id": "area-track-count-mismatch",
       "expected": {
-        "outcome": "expected-rejection",
-        "code": "unsupported_computed_value",
-        "property": "grid-template-areas",
-        "nodeId": "mismatch-grid"
+        "outcome": "success"
       },
       "rootId": "mismatch-grid",
       "nodeIds": [
@@ -455,6 +1277,38 @@
         null,
         "mismatch-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "area-track-count-mismatch",
+        "rootId": "mismatch-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "mismatch-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "mismatch-last-cell",
+            "rect": {
+              "x": 160,
+              "y": 0,
+              "width": 0,
+              "height": 60
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"mismatch-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 120px;grid-template-rows:60px 60px;grid-template-areas:'a b c' 'd e f'\");\ndocument.appendChild(node_0);\nrefs[\"mismatch-grid\"] = node_0;\nnodeIds.push(\"mismatch-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"mismatch-last-cell\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:c\");\nrefs[\"mismatch-grid\"].appendChild(node_1);\nrefs[\"mismatch-last-cell\"] = node_1;\nnodeIds.push(\"mismatch-last-cell\");\nreturn { sceneId:'area-track-count-mismatch', rootId:\"mismatch-grid\", nodeIds };\n})()"
     },
     {
@@ -475,6 +1329,38 @@
         null,
         "unknown-area-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "unknown-area-implicit-tracks",
+        "rootId": "unknown-area-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "unknown-area-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "unknown-area-item",
+            "rect": {
+              "x": 160,
+              "y": 120,
+              "width": 0,
+              "height": 0
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"unknown-area-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:80px 80px;grid-template-rows:60px 60px;grid-template-areas:'known .' '. .'\");\ndocument.appendChild(node_0);\nrefs[\"unknown-area-grid\"] = node_0;\nnodeIds.push(\"unknown-area-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"unknown-area-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:not-authored\");\nrefs[\"unknown-area-grid\"].appendChild(node_1);\nrefs[\"unknown-area-item\"] = node_1;\nnodeIds.push(\"unknown-area-item\");\nreturn { sceneId:'unknown-area-implicit-tracks', rootId:\"unknown-area-grid\", nodeIds };\n})()"
     },
     {
@@ -500,7 +1386,485 @@
         "nested-inner-grid",
         "nested-inner-grid"
       ],
+      "oracle": {
+        "product": "Chrome/154.0.8037.92",
+        "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
+        "sceneId": "nested-hidden-source-order",
+        "rootId": "nested-outer-grid",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 160,
+          "height": 120
+        },
+        "nodes": [
+          {
+            "id": "nested-outer-grid",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 160,
+              "height": 120
+            }
+          },
+          {
+            "id": "nested-outer-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 40
+            }
+          },
+          {
+            "id": "nested-inner-grid",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 80
+            }
+          },
+          {
+            "id": "nested-inner-item",
+            "rect": {
+              "x": 40,
+              "y": 40,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "nested-bottom-item",
+            "rect": {
+              "x": 40,
+              "y": 80,
+              "width": 120,
+              "height": 40
+            }
+          },
+          {
+            "id": "nested-hidden-item",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 0,
+              "height": 0
+            }
+          }
+        ]
+      },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"nested-outer-grid\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;grid-template-columns:40px 60px 60px;grid-template-rows:40px 80px;grid-template-areas:'outer outer .' 'left nested nested'\");\ndocument.appendChild(node_0);\nrefs[\"nested-outer-grid\"] = node_0;\nnodeIds.push(\"nested-outer-grid\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"nested-outer-item\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:outer\");\nrefs[\"nested-outer-grid\"].appendChild(node_1);\nrefs[\"nested-outer-item\"] = node_1;\nnodeIds.push(\"nested-outer-item\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"nested-inner-grid\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;display:grid;width:160px;height:120px;margin:0;padding:0;border:0;gap:0;grid-auto-flow:row;background-color:#101820;min-width:0;min-height:0;margin:0;padding:0;border:0;width:120px;height:80px;grid-area:nested;grid-template-columns:60px 60px;grid-template-rows:40px 40px;grid-template-areas:'inner inner' 'bottom bottom'\");\nrefs[\"nested-outer-grid\"].appendChild(node_2);\nrefs[\"nested-inner-grid\"] = node_2;\nnodeIds.push(\"nested-inner-grid\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"nested-inner-item\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#3e63dd;grid-area:inner\");\nrefs[\"nested-inner-grid\"].appendChild(node_3);\nrefs[\"nested-inner-item\"] = node_3;\nnodeIds.push(\"nested-inner-item\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"nested-bottom-item\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;background-color:#30a46c;grid-area:bottom\");\nrefs[\"nested-inner-grid\"].appendChild(node_4);\nrefs[\"nested-bottom-item\"] = node_4;\nnodeIds.push(\"nested-bottom-item\");\nconst node_5 = document.createElement('div');\nnode_5.setAttribute('id', \"nested-hidden-item\");\nnode_5.setAttribute('data-node', '');\nnode_5.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;display:none;grid-area:left\");\nrefs[\"nested-inner-grid\"].appendChild(node_5);\nrefs[\"nested-hidden-item\"] = node_5;\nnodeIds.push(\"nested-hidden-item\");\nreturn { sceneId:'nested-hidden-source-order', rootId:\"nested-outer-grid\", nodeIds };\n})()"
+    },
+    {
+      "index": 26,
+      "id": "area-auto-tracks-none",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-auto-tracks-none",
+      "nodeIds": [
+        "area-auto-tracks-none",
+        "area-auto-tracks-none-a",
+        "area-auto-tracks-none-b",
+        "area-auto-tracks-none-c",
+        "area-auto-tracks-none-d"
+      ],
+      "parentIds": [
+        null,
+        "area-auto-tracks-none",
+        "area-auto-tracks-none",
+        "area-auto-tracks-none",
+        "area-auto-tracks-none"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+        "sceneId": "area-auto-tracks-none",
+        "rootId": "area-auto-tracks-none",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "area-auto-tracks-none",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 120,
+              "height": 80
+            }
+          },
+          {
+            "id": "area-auto-tracks-none-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 20,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-none-b",
+            "rect": {
+              "x": 9,
+              "y": 0,
+              "width": 30,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-none-c",
+            "rect": {
+              "x": 0,
+              "y": 7,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "id": "area-auto-tracks-none-d",
+            "rect": {
+              "x": 9,
+              "y": 7,
+              "width": 30,
+              "height": 20
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-none\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-none\"] = node_0;\nnodeIds.push(\"area-auto-tracks-none\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-none-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;grid-area:a;height:10px\");\nrefs[\"area-auto-tracks-none\"].appendChild(node_1);\nrefs[\"area-auto-tracks-none-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-none-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-none-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:30px;height:10px\");\nrefs[\"area-auto-tracks-none\"].appendChild(node_2);\nrefs[\"area-auto-tracks-none-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-none-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-none-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;height:20px;grid-area:c\");\nrefs[\"area-auto-tracks-none\"].appendChild(node_3);\nrefs[\"area-auto-tracks-none-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-none-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-none-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;height:20px;grid-area:d;width:30px\");\nrefs[\"area-auto-tracks-none\"].appendChild(node_4);\nrefs[\"area-auto-tracks-none-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-none-d\");\nreturn { sceneId:'area-auto-tracks-none', rootId:\"area-auto-tracks-none\", nodeIds };\n})()"
+    },
+    {
+      "index": 27,
+      "id": "area-auto-tracks-short-row",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-auto-tracks-short-row",
+      "nodeIds": [
+        "area-auto-tracks-short-row",
+        "area-auto-tracks-short-row-a",
+        "area-auto-tracks-short-row-b",
+        "area-auto-tracks-short-row-c",
+        "area-auto-tracks-short-row-d"
+      ],
+      "parentIds": [
+        null,
+        "area-auto-tracks-short-row",
+        "area-auto-tracks-short-row",
+        "area-auto-tracks-short-row",
+        "area-auto-tracks-short-row"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+        "sceneId": "area-auto-tracks-short-row",
+        "rootId": "area-auto-tracks-short-row",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "area-auto-tracks-short-row",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 120,
+              "height": 80
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-row-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 20,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-row-b",
+            "rect": {
+              "x": 9,
+              "y": 0,
+              "width": 30,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-row-c",
+            "rect": {
+              "x": 0,
+              "y": 12,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-row-d",
+            "rect": {
+              "x": 9,
+              "y": 12,
+              "width": 30,
+              "height": 20
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-short-row\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;grid-template-rows:12px;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-short-row\"] = node_0;\nnodeIds.push(\"area-auto-tracks-short-row\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-short-row-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;grid-area:a;height:10px\");\nrefs[\"area-auto-tracks-short-row\"].appendChild(node_1);\nrefs[\"area-auto-tracks-short-row-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-short-row-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-short-row-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:30px;height:10px\");\nrefs[\"area-auto-tracks-short-row\"].appendChild(node_2);\nrefs[\"area-auto-tracks-short-row-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-short-row-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-short-row-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;height:20px;grid-area:c\");\nrefs[\"area-auto-tracks-short-row\"].appendChild(node_3);\nrefs[\"area-auto-tracks-short-row-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-short-row-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-short-row-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;height:20px;grid-area:d;width:30px\");\nrefs[\"area-auto-tracks-short-row\"].appendChild(node_4);\nrefs[\"area-auto-tracks-short-row-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-short-row-d\");\nreturn { sceneId:'area-auto-tracks-short-row', rootId:\"area-auto-tracks-short-row\", nodeIds };\n})()"
+    },
+    {
+      "index": 28,
+      "id": "area-auto-tracks-short-col",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-auto-tracks-short-col",
+      "nodeIds": [
+        "area-auto-tracks-short-col",
+        "area-auto-tracks-short-col-a",
+        "area-auto-tracks-short-col-b",
+        "area-auto-tracks-short-col-c",
+        "area-auto-tracks-short-col-d"
+      ],
+      "parentIds": [
+        null,
+        "area-auto-tracks-short-col",
+        "area-auto-tracks-short-col",
+        "area-auto-tracks-short-col",
+        "area-auto-tracks-short-col"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+        "sceneId": "area-auto-tracks-short-col",
+        "rootId": "area-auto-tracks-short-col",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "area-auto-tracks-short-col",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 120,
+              "height": 80
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-col-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 20,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-col-b",
+            "rect": {
+              "x": 13,
+              "y": 0,
+              "width": 30,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-col-c",
+            "rect": {
+              "x": 0,
+              "y": 7,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "id": "area-auto-tracks-short-col-d",
+            "rect": {
+              "x": 13,
+              "y": 7,
+              "width": 30,
+              "height": 20
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-short-col\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;grid-template-columns:13px;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-short-col\"] = node_0;\nnodeIds.push(\"area-auto-tracks-short-col\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-short-col-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;grid-area:a;height:10px\");\nrefs[\"area-auto-tracks-short-col\"].appendChild(node_1);\nrefs[\"area-auto-tracks-short-col-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-short-col-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-short-col-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:30px;height:10px\");\nrefs[\"area-auto-tracks-short-col\"].appendChild(node_2);\nrefs[\"area-auto-tracks-short-col-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-short-col-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-short-col-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;height:20px;grid-area:c\");\nrefs[\"area-auto-tracks-short-col\"].appendChild(node_3);\nrefs[\"area-auto-tracks-short-col-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-short-col-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-short-col-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;height:20px;grid-area:d;width:30px\");\nrefs[\"area-auto-tracks-short-col\"].appendChild(node_4);\nrefs[\"area-auto-tracks-short-col-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-short-col-d\");\nreturn { sceneId:'area-auto-tracks-short-col', rootId:\"area-auto-tracks-short-col\", nodeIds };\n})()"
+    },
+    {
+      "index": 29,
+      "id": "area-auto-tracks-auto",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-auto-tracks-auto",
+      "nodeIds": [
+        "area-auto-tracks-auto",
+        "area-auto-tracks-auto-a",
+        "area-auto-tracks-auto-b",
+        "area-auto-tracks-auto-c",
+        "area-auto-tracks-auto-d"
+      ],
+      "parentIds": [
+        null,
+        "area-auto-tracks-auto",
+        "area-auto-tracks-auto",
+        "area-auto-tracks-auto",
+        "area-auto-tracks-auto"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+        "sceneId": "area-auto-tracks-auto",
+        "rootId": "area-auto-tracks-auto",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 50,
+          "height": 30
+        },
+        "nodes": [
+          {
+            "id": "area-auto-tracks-auto",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 50,
+              "height": 30
+            }
+          },
+          {
+            "id": "area-auto-tracks-auto-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 20,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-auto-b",
+            "rect": {
+              "x": 20,
+              "y": 0,
+              "width": 30,
+              "height": 10
+            }
+          },
+          {
+            "id": "area-auto-tracks-auto-c",
+            "rect": {
+              "x": 0,
+              "y": 10,
+              "width": 20,
+              "height": 20
+            }
+          },
+          {
+            "id": "area-auto-tracks-auto-d",
+            "rect": {
+              "x": 20,
+              "y": 10,
+              "width": 30,
+              "height": 20
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-auto\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;width:50px;height:30px;grid-auto-rows:auto;grid-auto-columns:auto;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-auto\"] = node_0;\nnodeIds.push(\"area-auto-tracks-auto\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-auto-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;grid-area:a;height:10px\");\nrefs[\"area-auto-tracks-auto\"].appendChild(node_1);\nrefs[\"area-auto-tracks-auto-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-auto-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-auto-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:30px;height:10px\");\nrefs[\"area-auto-tracks-auto\"].appendChild(node_2);\nrefs[\"area-auto-tracks-auto-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-auto-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-auto-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;width:20px;height:20px;grid-area:c\");\nrefs[\"area-auto-tracks-auto\"].appendChild(node_3);\nrefs[\"area-auto-tracks-auto-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-auto-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-auto-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;height:20px;grid-area:d;width:30px\");\nrefs[\"area-auto-tracks-auto\"].appendChild(node_4);\nrefs[\"area-auto-tracks-auto-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-auto-d\");\nreturn { sceneId:'area-auto-tracks-auto', rootId:\"area-auto-tracks-auto\", nodeIds };\n})()"
+    },
+    {
+      "index": 30,
+      "id": "area-auto-tracks-long",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "area-auto-tracks-long",
+      "nodeIds": [
+        "area-auto-tracks-long",
+        "area-auto-tracks-long-a",
+        "area-auto-tracks-long-b",
+        "area-auto-tracks-long-c",
+        "area-auto-tracks-long-d"
+      ],
+      "parentIds": [
+        null,
+        "area-auto-tracks-long",
+        "area-auto-tracks-long",
+        "area-auto-tracks-long",
+        "area-auto-tracks-long"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
+        "sceneId": "area-auto-tracks-long",
+        "rootId": "area-auto-tracks-long",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "area-auto-tracks-long",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 120,
+              "height": 80
+            }
+          },
+          {
+            "id": "area-auto-tracks-long-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 10,
+              "height": 3
+            }
+          },
+          {
+            "id": "area-auto-tracks-long-b",
+            "rect": {
+              "x": 30,
+              "y": 0,
+              "width": 10,
+              "height": 3
+            }
+          },
+          {
+            "id": "area-auto-tracks-long-c",
+            "rect": {
+              "x": 0,
+              "y": 5,
+              "width": 10,
+              "height": 4
+            }
+          },
+          {
+            "id": "area-auto-tracks-long-d",
+            "rect": {
+              "x": 30,
+              "y": 5,
+              "width": 10,
+              "height": 4
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-long\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;grid-template-rows:5px 6px 7px;grid-template-columns:30px 40px 50px;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-long\"] = node_0;\nnodeIds.push(\"area-auto-tracks-long\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-long-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:a;width:10px;height:3px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_1);\nrefs[\"area-auto-tracks-long-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-long-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-long-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:10px;height:3px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_2);\nrefs[\"area-auto-tracks-long-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-long-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-long-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:c;width:10px;height:4px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_3);\nrefs[\"area-auto-tracks-long-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-long-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-long-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:d;width:10px;height:4px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_4);\nrefs[\"area-auto-tracks-long-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-long-d\");\nreturn { sceneId:'area-auto-tracks-long', rootId:\"area-auto-tracks-long\", nodeIds };\n})()"
     }
   ]
 }

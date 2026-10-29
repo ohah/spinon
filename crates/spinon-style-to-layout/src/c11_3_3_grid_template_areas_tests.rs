@@ -221,28 +221,95 @@ fn explicit_line_pairs_form_implicit_areas_on_both_axes() {
 }
 
 #[test]
-fn mismatched_area_dimensions_are_rejected_before_layout_output() {
-    for areas in ["'a b c'", "'. . .'", "'a' 'b'"] {
+fn area_dimensions_generate_implicit_tracks_and_preserve_authored_tracks() {
+    let areas = "grid-template-areas:'a b' 'c d';";
+    let items = [
+        ("a", "width:20px;height:10px;grid-area:a"),
+        ("b", "width:30px;height:10px;grid-area:b"),
+        ("c", "width:20px;height:20px;grid-area:c"),
+        ("d", "width:30px;height:20px;grid-area:d"),
+    ];
+    let cases = [
+        (
+            "implicit rows and columns use fixed auto-track sizes",
+            format!("{areas}grid-auto-rows:7px;grid-auto-columns:9px;"),
+            120.0,
+            80.0,
+            (9.0, 7.0, 30.0, 20.0),
+        ),
+        (
+            "short authored row list keeps its authored first track",
+            format!("grid-template-rows:12px;{areas}grid-auto-rows:7px;grid-auto-columns:9px;"),
+            120.0,
+            80.0,
+            (9.0, 12.0, 30.0, 20.0),
+        ),
+        (
+            "short authored column list keeps its authored first track",
+            format!("grid-template-columns:13px;{areas}grid-auto-rows:7px;grid-auto-columns:9px;"),
+            120.0,
+            80.0,
+            (13.0, 7.0, 30.0, 20.0),
+        ),
+        (
+            "auto implicit tracks use item contributions on both axes",
+            format!("{areas}grid-auto-rows:auto;grid-auto-columns:auto;"),
+            50.0,
+            30.0,
+            (20.0, 10.0, 30.0, 20.0),
+        ),
+    ];
+
+    for (label, tracks, width, height, expected) in cases {
         let fixture = Fixture::new(
             &format!(
-                "display:grid;box-sizing:border-box;width:80px;height:40px;grid-template-columns:40px 40px;grid-template-rows:40px;grid-template-areas:{areas};margin:0;padding:0;border:0"
+                "display:grid;box-sizing:border-box;width:{width}px;height:{height}px;{tracks}column-gap:0;row-gap:0;margin:0;padding:0;border:0"
             ),
-            &[("item", "width:20px;height:20px;margin:0;padding:0;border:0")],
+            &items,
         );
-        let error = fixture.compute().unwrap_err();
-
-        assert!(
-            matches!(
-                error,
-                StyleLayoutError::UnsupportedComputedValue {
-                    node,
-                    property: "grid-template-areas",
-                    ..
-                } if node == fixture.root.id()
-            ),
-            "{areas}: {error}"
+        let output = fixture
+            .compute()
+            .unwrap_or_else(|error| panic!("{label}: {error}"));
+        let frame = output.layout.frames[&fixture.nodes["d"].id()];
+        assert_eq!(
+            (frame.x, frame.y, frame.width, frame.height),
+            expected,
+            "{label}"
         );
     }
+
+    let longer_authored_tracks = Fixture::new(
+        &format!(
+            "display:grid;box-sizing:border-box;width:120px;height:80px;grid-template-rows:5px 6px 7px;grid-template-columns:30px 40px 50px;{areas}column-gap:0;row-gap:0;margin:0;padding:0;border:0"
+        ),
+        &[
+            ("a", "width:10px;height:3px;grid-area:a"),
+            ("b", "width:10px;height:3px;grid-area:b"),
+            ("c", "width:10px;height:4px;grid-area:c"),
+            ("d", "width:10px;height:4px;grid-area:d"),
+        ],
+    );
+    let output = longer_authored_tracks.compute().unwrap();
+    let frame = output.layout.frames[&longer_authored_tracks.nodes["d"].id()];
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (30.0, 5.0, 10.0, 4.0)
+    );
+}
+
+#[test]
+fn shorter_explicit_column_list_places_area_item_on_created_track() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:120px;grid-template-columns:40px 120px;grid-template-rows:60px 60px;grid-template-areas:'a b c' 'd e f';column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[("last-cell", "grid-area:c;margin:0;padding:0;border:0")],
+    );
+    let output = fixture.compute().unwrap();
+    let frame = output.layout.frames[&fixture.nodes["last-cell"].id()];
+
+    assert_eq!(
+        (frame.x, frame.y, frame.width, frame.height),
+        (160.0, 0.0, 0.0, 60.0)
+    );
 }
 
 #[test]

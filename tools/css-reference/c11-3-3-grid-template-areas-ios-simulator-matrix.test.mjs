@@ -46,16 +46,22 @@ function successLog(scene, chromeCase, runID) {
   ].join('\n');
 }
 
-test('iOS Simulator matrix 입력은 Chrome 고정 기준과 26개 장면·65개 노드를 일대일로 묶는다', () => {
+test('iOS Simulator matrix는 Chrome 154의 26개 장면과 Chrome 156의 5개 보충 장면을 묶는다', () => {
   const ids = runtime.cases.map(({ id }) => id);
-  assert.equal(new Set(ids).size, 26);
-  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 65);
-  assert.deepEqual(observation.cases.map(({ id }) => id), ids);
+  assert.equal(new Set(ids).size, 31);
+  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 90);
+  assert.equal(observation.cases.length, 26);
+  assert.deepEqual(runtime.cases.slice(0, 26).map(({ id }) => id), observation.cases.map(({ id }) => id));
+  for (const scene of runtime.cases) {
+    assert.equal(scene.oracle.sceneId, scene.id);
+    assert.equal(scene.oracle.rootId, scene.rootId);
+    assert.deepEqual(scene.oracle.nodes.map(({ id }) => id), scene.nodeIds);
+  }
 });
 
 test('성공 scene의 node frame, paint order와 WGPU 제출을 Chrome DPR 1 기준에 대조한다', () => {
   const scene = runtime.cases.find(({ id }) => id === 'basic-rectangles');
-  const chromeCase = observation.cases.find(({ id }) => id === scene.id);
+  const chromeCase = scene.oracle;
   const result = compareC1133IOSSceneGeometry(scene, successLog(scene, chromeCase, 'ios-run'), chromeCase, 'ios-run');
   assert.equal(result.frames.length, 4);
   assert.equal(result.comparisons.length, 4);
@@ -65,7 +71,7 @@ test('성공 scene의 node frame, paint order와 WGPU 제출을 Chrome DPR 1 기
 
 test('paint node 순서·ordinal 변조를 통과시키지 않는다', () => {
   const scene = runtime.cases.find(({ id }) => id === 'basic-rectangles');
-  const chromeCase = observation.cases.find(({ id }) => id === scene.id);
+  const chromeCase = scene.oracle;
   const valid = successLog(scene, chromeCase, 'ios-run');
   const reorderedNodes = valid.replace('paint_node_order=[0:1,1:2,2:3,3:4]',
     'paint_node_order=[0:1,1:3,2:2,3:4]');

@@ -135,7 +135,7 @@ function parseFrames(log, scene) {
 }
 
 function compareGeometry(scene, log, chromeCaseOverride = null) {
-  const chromeCase = chromeCaseOverride ?? observation.cases.find(({ id }) => id === scene.id);
+  const chromeCase = chromeCaseOverride ?? scene.oracle ?? observation.cases.find(({ id }) => id === scene.id);
   assert.ok(chromeCase, `${scene.id}: Chrome DPR 1 장면이 없습니다.`);
   const frames = parseFrames(log, scene);
   const byNodeId = new Map(frames.map((frame) => [frame.nodeId, frame]));
@@ -530,9 +530,9 @@ async function runNegativeControls(adb) {
 
 await mkdir(evidenceDirectory, { recursive: true });
 try {
-  assert.equal(runtime.summary.sceneCount, 26);
-  assert.equal(runtime.summary.nodeCount, 65);
-  assert.equal(observation.cases.length, runtime.cases.length);
+  assert.equal(runtime.summary.sceneCount, 31);
+  assert.equal(runtime.summary.nodeCount, 90);
+  assert.equal(observation.cases.length, 26);
   assert.equal(sha256(await readFile(resolve(repositoryRoot, runtimePath))), mobile.inputs.runtimeMatrix.sha256);
   const { adb, metadata } = androidDevice();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(metadata, null, 2)}\n`);
@@ -540,7 +540,7 @@ try {
   const negative = await runNegativeControls(adb);
   const outcomeCounts = Object.fromEntries(['success', 'cascade-fallback', 'expected-rejection']
     .map((outcome) => [outcome, platform.observations.filter((item) => item.outcome === outcome).length]));
-  assert.deepEqual(outcomeCounts, { success: 19, 'cascade-fallback': 5, 'expected-rejection': 2 });
+  assert.deepEqual(outcomeCounts, { success: 25, 'cascade-fallback': 5, 'expected-rejection': 1 });
   const totalComparisons = platform.observations.reduce((sum, item) => sum + (item.comparisons?.length ?? 0), 0);
   const result = {
     schema: 'spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1',
@@ -568,7 +568,7 @@ try {
       referenceSha256: sha256(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath))),
       dpr: 1, viewportCssPx: mobile.oracle.viewportCssPx,
     },
-    matrix: { sceneCount: 26, nodeCount: 65, outcomeCounts, comparedVisibleNodes: totalComparisons,
+    matrix: { sceneCount: 31, nodeCount: 90, outcomeCounts, comparedVisibleNodes: totalComparisons,
       maximumGeometryErrorCssPx: Math.max(0, ...platform.observations
         .map(({ maximumGeometryErrorCssPx = 0 }) => maximumGeometryErrorCssPx)) },
     platform: { appSha256: platform.appSha256, pixelComparison: platform.pixelComparison,

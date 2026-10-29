@@ -306,7 +306,7 @@ pub struct GridContainerInput {
     pub columns_line_names: Vec<Vec<String>>,
     /// 일반 축에서는 track 경계 이름이고, auto-repeat 축에서는 template component 경계 이름입니다.
     pub rows_line_names: Vec<Vec<String>>,
-    /// auto-repeat과 `grid-template-areas`를 함께 쓸 때만 전달합니다.
+    /// 제한 TemplateGrid 또는 TrackSizing+auto-repeat의 `grid-template-areas`입니다.
     pub template_areas: Option<GridTemplateAreasInput>,
     /// Grid item의 inline 축 기본 정렬입니다.
     pub justify_items: crate::LayoutAlignItems,
@@ -435,6 +435,7 @@ pub(super) fn validate_grid_layout(
                 "grid-auto-rows",
                 tracks,
                 container.placement_mode == GridPlacementMode::TrackSizing,
+                false,
             )?;
         }
         if let GridAutoColumns::TrackList(tracks) = &container.auto_columns {
@@ -449,6 +450,7 @@ pub(super) fn validate_grid_layout(
                 "grid-auto-columns",
                 tracks,
                 container.placement_mode == GridPlacementMode::TrackSizing,
+                false,
             )?;
         }
         validate_grid_line_metadata(id, container, input, index)?;
@@ -494,17 +496,22 @@ pub(super) fn validate_grid_layout(
             return Err(LayoutError::MissingGridContainer(node.id));
         };
         let allow_intrinsic_tracks = container.placement_mode == GridPlacementMode::TrackSizing;
+        let allow_template_area_auto_track = container.placement_mode
+            == GridPlacementMode::TemplateGrid
+            && container.template_areas.is_some();
         validate_tracks(
             node.id,
             "grid-template-columns",
             &container.columns,
             allow_intrinsic_tracks,
+            allow_template_area_auto_track,
         )?;
         validate_tracks(
             node.id,
             "grid-template-rows",
             &container.rows,
             allow_intrinsic_tracks,
+            allow_template_area_auto_track,
         )?;
         if container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some() {
             if container.placement_mode != GridPlacementMode::TrackSizing {
@@ -867,8 +874,16 @@ fn validate_template_areas(
     let property = "grid-template-areas";
     let has_auto_repeat_axis =
         container.columns_auto_repeat.is_some() || container.rows_auto_repeat.is_some();
-    if container.placement_mode != GridPlacementMode::TrackSizing
-        || !has_auto_repeat_axis
+    let track_sizing_auto_repeat =
+        container.placement_mode == GridPlacementMode::TrackSizing && has_auto_repeat_axis;
+    let template_grid_area_tracks = matches!(
+        container.placement_mode,
+        GridPlacementMode::TemplateGrid
+            | GridPlacementMode::TemplateGridImplicitTracks
+            | GridPlacementMode::TemplateGridSignedImplicitTracks
+    ) && !has_auto_repeat_axis;
+    let template_grid_areas_allow_mismatched_tracks = template_grid_area_tracks;
+    if (!track_sizing_auto_repeat && !template_grid_area_tracks)
         || areas.rows == 0
         || areas.columns == 0
         || usize::from(areas.rows) > GRID_MAX_TRACKS
@@ -876,9 +891,11 @@ fn validate_template_areas(
     {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
-    if (container.rows_auto_repeat.is_none() && usize::from(areas.rows) != container.rows.len())
-        || (container.columns_auto_repeat.is_none()
-            && usize::from(areas.columns) != container.columns.len())
+    if !template_grid_areas_allow_mismatched_tracks
+        && ((container.rows_auto_repeat.is_none()
+            && usize::from(areas.rows) != container.rows.len())
+            || (container.columns_auto_repeat.is_none()
+                && usize::from(areas.columns) != container.columns.len()))
     {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
@@ -1401,6 +1418,7 @@ fn validate_tracks(
     property: &'static str,
     tracks: &[GridTrackSize],
     allow_intrinsic: bool,
+    allow_auto: bool,
 ) -> Result<(), LayoutError> {
     if tracks.is_empty() {
         return if allow_intrinsic {
@@ -1424,9 +1442,8 @@ fn validate_tracks(
             }
             GridTrackSize::Fraction(value) => value.is_finite() && *value >= 0.0,
             GridTrackSize::Calc(_) => allow_intrinsic,
-            GridTrackSize::Auto | GridTrackSize::MinContent | GridTrackSize::MaxContent => {
-                allow_intrinsic
-            }
+            GridTrackSize::Auto => allow_intrinsic || allow_auto,
+            GridTrackSize::MinContent | GridTrackSize::MaxContent => allow_intrinsic,
             GridTrackSize::MinMax { min, max } => {
                 allow_intrinsic
                     && valid_min_track_sizing_function(*min)

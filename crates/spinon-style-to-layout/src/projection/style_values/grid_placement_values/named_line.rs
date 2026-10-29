@@ -36,6 +36,7 @@ pub(super) struct LineMetadata<'a> {
     pub(super) areas: Option<&'a ComputedCssGridTemplateAreas>,
     pub(super) axis: GridAxis,
     pub(super) track_count: usize,
+    pub(super) allow_area_dimension_mismatch: bool,
 }
 
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
@@ -79,6 +80,7 @@ pub(super) fn project_axis(
             areas: None,
             axis: GridAxis::Rows,
             track_count,
+            allow_area_dimension_mismatch: false,
         },
     )
 }

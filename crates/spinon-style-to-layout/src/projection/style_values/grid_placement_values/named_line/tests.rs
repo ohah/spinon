@@ -41,6 +41,7 @@ fn metadata<'a>(
         areas,
         axis,
         track_count,
+        allow_area_dimension_mismatch: false,
     }
 }
 
@@ -149,6 +150,7 @@ fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() 
             areas: None,
             axis: GridAxis::Columns,
             track_count: 1,
+            allow_area_dimension_mismatch: false,
         },
         true,
     )
@@ -180,6 +182,7 @@ fn missing_negative_occurrences_create_distinct_leading_lines() {
             areas: None,
             axis: GridAxis::Columns,
             track_count: 2,
+            allow_area_dimension_mismatch: false,
         },
         true,
     )

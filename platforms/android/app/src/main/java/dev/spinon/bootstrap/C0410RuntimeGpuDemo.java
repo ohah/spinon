@@ -122,13 +122,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
             "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
+            "area-auto-tracks-none", "area-auto-tracks-short-row", "area-auto-tracks-short-col",
+            "area-auto-tracks-auto", "area-auto-tracks-long",
             "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
             "negative-missing-occurrences", "backward-span-one", "backward-span-two",
             "backward-span-partial-explicit", "forward-span-two",
             "backward-span-uses-authored-name",
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
-            "area-track-count-mismatch";
+            "unknown-area-implicit-tracks";
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
     private static final String[] C114_GENERIC_DIRECT_TEXT_SCENE_IDS = {
@@ -14046,21 +14048,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }
             }
             boolean expectedRejection = rejection.startsWith("status=-11 ")
-                    && rejection.contains("unsupported_computed_value")
-                    && rejection.contains("property=Some(\"grid-template-areas\")")
+                    && rejection.contains("unsupported_grid_auto_rows")
+                    && rejection.contains("property=Some(\"grid-auto-rows\")")
                     && !rejection.contains("node_frames_css_px=[");
             Log.i(TAG, "SPINON_C1133_GRID_REJECTION run_id=" + c1133GridTemplateAreasRunId
                     + " scene_id=" + C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID
                     + " expected=" + expectedRejection + " " + rejection);
             if (!expectedRejection) {
-                postStatus("실패 · C11.3.3 area track 수 불일치 거부 계약 오류");
+                postStatus("실패 · C11.3.3 unknown area implicit track 거부 계약 오류");
                 return;
             }
             Log.i(TAG, "SPINON_C1133_GRID_REJECTION_SUMMARY run_id="
                     + c1133GridTemplateAreasRunId + " scene_id="
                     + C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID
-                    + " expected=true status=-11 code=unsupported_computed_value"
-                    + " property=grid-template-areas frames=absent");
+                    + " expected=true status=-11 code=unsupported_grid_auto_rows"
+                    + " property=grid-auto-rows frames=absent");
         }
         if (c1132GridNamedLinesRequested && result.startsWith("status=0 ")) {
             long rejectionHost = nativeCreateC1132GridNamedLinesHost();
@@ -14306,18 +14308,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 java.util.regex.Matcher nodeMatcher = java.util.regex.Pattern
                         .compile("node=Some\\((\\d+)\\)").matcher(result);
                 String nodeId = nodeMatcher.find() ? nodeMatcher.group(1) : "missing";
-                String expectedNodeId = "area-track-count-mismatch".equals(c1133GridTemplateAreasSceneId)
-                        || "unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
+                String expectedNodeId = "unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
                         ? "1" : "missing";
                 boolean expected = result.startsWith("status=-11 ")
-                        && (("area-track-count-mismatch".equals(c1133GridTemplateAreasSceneId)
-                                && "unsupported_computed_value".equals(code)
-                                && "grid-template-areas".equals(property)
-                                && expectedNodeId.equals(nodeId))
-                        || ("unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
+                        && "unknown-area-implicit-tracks".equals(c1133GridTemplateAreasSceneId)
                                 && "unsupported_grid_auto_rows".equals(code)
                                 && "grid-auto-rows".equals(property)
-                                && expectedNodeId.equals(nodeId)));
+                                && expectedNodeId.equals(nodeId);
                 String rejectionStatus = result.split(" ", 2)[0];
                 Log.i(TAG, "SPINON_C1133_GRID_REJECTION_SUMMARY run_id="
                         + c1133GridTemplateAreasRunId + " scene_id="

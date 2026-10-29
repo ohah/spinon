@@ -80,6 +80,25 @@ pub(super) fn resolve_bare_custom_ident(
             return Ok((line, false));
         }
     }
+    if let Some(areas) = line_metadata.areas
+        && let Some(area) = areas.areas.iter().find(|area| area.name == name)
+    {
+        let edge_line = area_edge_line(area, line_metadata.axis, edge);
+        if edge_line > line_metadata.track_count {
+            let line = edge_line
+                .checked_add(1)
+                .and_then(|line| i32::try_from(line).ok())
+                .ok_or_else(|| {
+                    unsupported_named_line(
+                        node,
+                        property,
+                        name,
+                        "resolved area line exceeds the supported range",
+                    )
+                })?;
+            return Ok((line, false));
+        }
+    }
     Err(unsupported_named_line(
         node,
         property,
@@ -112,7 +131,8 @@ fn validate_area_line_metadata(
         GridAxis::Rows => areas.rows,
         GridAxis::Columns => areas.columns,
     };
-    if axis_track_count != line_metadata.track_count {
+    if !line_metadata.allow_area_dimension_mismatch && axis_track_count != line_metadata.track_count
+    {
         return Err(unsupported_named_line(
             node,
             property,

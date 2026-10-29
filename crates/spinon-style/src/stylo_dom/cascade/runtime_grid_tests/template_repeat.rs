@@ -127,6 +127,43 @@ fn template_profile_accepts_repeat_shorthands_and_grid_template_areas() {
 }
 
 #[test]
+fn template_profile_accepts_empty_explicit_tracks_when_areas_define_grid() {
+    let fixture_with_areas = fixture(
+        "display:grid;box-sizing:border-box;width:120px;height:80px;grid-template-columns:none;grid-template-rows:none;grid-template-areas:'a b' 'c d';margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+        &fixture_with_areas.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+
+    assert!(grid.columns.is_empty());
+    assert!(grid.rows.is_empty());
+    assert_eq!(
+        grid.template_areas
+            .as_ref()
+            .map(|areas| (areas.rows, areas.columns)),
+        Some((2, 2))
+    );
+
+    let no_areas = fixture(
+        "display:grid;box-sizing:border-box;width:120px;height:80px;grid-template-columns:none;grid-template-rows:none;margin:0;padding:0",
+    );
+    assert!(
+        compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+            &no_areas.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .is_err()
+    );
+}
+
+#[test]
 fn integer_repeat_accepts_author_stylesheet_declarations() {
     let fixture =
         fixture("display:grid;box-sizing:border-box;width:300px;height:200px;margin:0;padding:0");

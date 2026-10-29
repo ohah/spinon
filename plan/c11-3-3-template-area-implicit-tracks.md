@@ -2,6 +2,14 @@
 
 **상태:** Chrome 156 사전 비교와 독립 기대값을 고정했다. 이 계획은 C11.3.3의 제한 `RuntimeBlockFlexGridTemplateV1`에서 area 차원과 authored track 수가 다를 때 CSS Grid가 만드는 implicit track을 연결한다. 계획 PR을 병합한 뒤 별도 구현 PR로 진행한다. C11.3.3 candidate, C11 및 공식 완료 `72/213`은 이 계획만으로 완료 처리하지 않는다.
 
+## 구현 진행 상황 · 2026-10-29
+
+- 구현 후보는 같은 checkout의 `feat/c11-3-3-area-auto-tracks` 브랜치에서 진행 중이다. 아직 구현 PR이나 merge가 없고 공식 완료 상태는 `72/213` 그대로다.
+- Style projection의 dimension-equality gate, no-auto-repeat template-area 전달 경로, `grid-template: none` cascade gate 및 TemplateGrid track 검증을 좁혀 area가 요구하는 track을 만들도록 연결했다. Authored track은 보존하고 부족한 track은 기존 단일 `grid-auto-*` `auto`/px 값으로 채운다. `area-track-count-mismatch`는 성공 geometry 대조군으로 전환했다. Android 검증에서 implicit-placement 모드 전환 뒤 area metadata가 잘못 거부되던 경계를 수정하고 회귀 테스트를 추가했다.
+- Runtime matrix는 기존 Chrome 154 26 scene·65 node를 보존하고 Agent Browser/Chrome 156에서 새 5 scene·25 node를 추가했다. 후보 집계는 31 scene·90 node, success 25, cascade fallback 5, expected rejection 1이다. Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 최신 코드로 각 31/31 scene이 통과했다. 양쪽 모두 visible node 88개의 최대 geometry 오차는 0 CSS px, 기본 PixelCopy/Metal 표본은 2/2 exact다. 별도 unknown-area overflow 1 scene은 양쪽에서 geometry 오차 0 CSS px·표면 표본 3/3 exact, leading named-line 7 scene·14 node는 오차 0 CSS px·표본 7/7 exact다. Android의 두 negative control도 readback/draw 전 거부됐다. 이 결과는 simulator fixture 증거이며 실기기·hardware GPU·WPT 적합성을 증명하지 않는다.
+- [2026-10-29 Chrome 보충 근거](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/README.md)에는 fixture, CSSOM used tracks, root-relative frames, screenshot과 browser closure를 연결했다. 기존 26-scene Chrome 154 reference와 구분한다.
+- Rust layout/style focused tests, fixture FFI matrix test, CSS reference tests와 `cargo fmt --check`가 통과했다. 시작 시 pinned V8 checkout이 없어 저장소 pin `7b50b62cb18f28617959e8452e2cd18195b38bcf`로 새 checkout과 Android/iOS simulator archive를 만들었다. 현재 구현 PR은 아직 없다. implementation 실패 관점 20개와 별도 PR diff 실패 관점 20개, PR/CI가 남아 있으며 이 검증만으로 C11.3.3 candidate·C11·공식 완료 수를 올리지 않는다. [Chrome 보충 근거](../spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/README.md) · [Android API 37 AVD 실행](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/android-avd-c1133-matrix-20261029T132906693Z-b13baf02/README.md) · [iOS Simulator 실행](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/ios-simulator-c1133-ios-matrix-20261029T131950859Z-f6d1bd47/README.md).
+
 **상위:** [C11 계획](./c11-css-grid.md) · [C11.3 `repeat()`·named line·template areas](./c11-3-template-repeat-named-lines-areas.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
 **규범:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD §7.3](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#grid-template-areas-property), §7.3.2, §8.5.
