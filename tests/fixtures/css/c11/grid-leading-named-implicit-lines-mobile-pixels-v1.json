@@ -1,0 +1,81 @@
+{
+  "schema": "spinon-css-c11-3-3-leading-named-implicit-lines-mobile-pixels/v1",
+  "fixtureId": "C11.3.3-leading-named-implicit-lines-v1",
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1
+  },
+  "oracle": {
+    "name": "Agent Browser",
+    "referenceId": "agent-browser-0.31.1-headlesschrome-156-dpr1-8df2520e",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json",
+    "referenceSha256": "e36e31c4ed658963cd9f3d5bdcd0a5c83c748950fe2f048d975b4a44191a6ec3",
+    "binaryRevision": null,
+    "limitation": "Agent Browser did not expose the Chromium binary revision or executable hash. CSS Grid 2025 CRD §8.3 is normative authority."
+  },
+  "scenes": [
+    {
+      "id": "positive-missing-occurrences",
+      "rootId": "leading-positive-grid",
+      "itemId": "leading-positive-item",
+      "columnsPx": [30, 40, 15, 7, 15, 7],
+      "rootRect": [0, 0, 114, 20],
+      "itemRect": [107, 0, 7, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-positive-item", "xCssPx": 110, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "negative-missing-occurrences",
+      "rootId": "leading-negative-grid",
+      "itemId": "leading-negative-item",
+      "columnsPx": [15, 7, 30, 40],
+      "rootRect": [0, 0, 92, 20],
+      "itemRect": [0, 0, 15, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-negative-item", "xCssPx": 7, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "backward-span-one",
+      "rootId": "leading-backward-one-grid",
+      "itemId": "leading-backward-one-item",
+      "columnsPx": [7, 100, 15, 7],
+      "rootRect": [0, 0, 129, 20],
+      "itemRect": [0, 0, 129, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-backward-one-item", "xCssPx": 64, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "backward-span-two",
+      "rootId": "leading-backward-two-grid",
+      "itemId": "leading-backward-two-item",
+      "columnsPx": [15, 7, 100, 15, 7],
+      "rootRect": [0, 0, 144, 20],
+      "itemRect": [0, 0, 144, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-backward-two-item", "xCssPx": 72, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "backward-span-partial-explicit",
+      "rootId": "leading-backward-partial-grid",
+      "itemId": "leading-backward-partial-item",
+      "columnsPx": [7, 40, 100, 15],
+      "rootRect": [0, 0, 162, 20],
+      "itemRect": [0, 0, 162, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-backward-partial-item", "xCssPx": 81, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "forward-span-two",
+      "rootId": "leading-forward-grid",
+      "itemId": "leading-forward-item",
+      "columnsPx": [50, 15, 7, 15, 7],
+      "rootRect": [0, 0, 94, 20],
+      "itemRect": [72, 0, 22, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-forward-item", "xCssPx": 80, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    },
+    {
+      "id": "backward-span-uses-authored-name",
+      "rootId": "leading-authored-grid",
+      "itemId": "leading-authored-item",
+      "columnsPx": [30, 40, 15],
+      "rootRect": [0, 0, 85, 20],
+      "itemRect": [30, 0, 55, 20],
+      "samples": [{ "id": "named-implicit-item", "nodeId": "leading-authored-item", "xCssPx": 50, "yCssPx": 10, "rgba": [40, 102, 246, 255] }]
+    }
+  ]
+}

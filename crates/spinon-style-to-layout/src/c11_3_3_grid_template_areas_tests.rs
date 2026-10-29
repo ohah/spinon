@@ -300,7 +300,7 @@ fn forward_named_span_counts_explicit_matches_before_adding_trailing_tracks() {
 }
 
 #[test]
-fn backward_named_span_does_not_create_leading_implicit_lines() {
+fn backward_named_span_creates_leading_implicit_lines() {
     let fixture = Fixture::new(
         "display:grid;box-sizing:border-box;width:30px;height:20px;grid-template-columns:[edge] 10px [edge] 10px [edge] 10px;grid-template-rows:20px;grid-auto-columns:7px;grid-auto-rows:10px;grid-auto-flow:row;margin:0;padding:0;border:0",
         &[(
@@ -309,16 +309,67 @@ fn backward_named_span_does_not_create_leading_implicit_lines() {
         )],
     );
 
-    let error = fixture.compute_with_implicit_named_lines(true).unwrap_err();
+    let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+    let frame = output.layout.frames[&fixture.nodes["span"].id()];
 
-    assert!(matches!(
-        error,
-        StyleLayoutError::UnsupportedNamedGridLine {
-            node,
-            property: "grid-column-start",
-            ..
-        } if node == fixture.nodes["span"].id()
-    ));
+    assert_eq!((frame.x, frame.width), (0.0, 10.0));
+}
+
+#[test]
+fn signed_named_line_implicit_matrix_matches_frozen_chrome_frames() {
+    let cases = [
+        (
+            "positive-missing-occurrences",
+            "[known-start] 30px 40px [known-end]",
+            "3 ghost / 4 ghost",
+            (107.0, 7.0),
+        ),
+        (
+            "negative-missing-occurrences",
+            "[known-start] 30px 40px [known-end]",
+            "-1 ghost / -2 ghost",
+            (0.0, 15.0),
+        ),
+        ("backward-span-one", "100px", "span ghost / 4", (0.0, 129.0)),
+        (
+            "backward-span-two",
+            "100px",
+            "span 2 ghost / 4",
+            (0.0, 144.0),
+        ),
+        (
+            "backward-span-partial-explicit",
+            "[ghost] 40px [other] 100px",
+            "span 2 ghost / 4",
+            (0.0, 162.0),
+        ),
+        ("forward-span-two", "50px", "4 / span 2 ghost", (72.0, 22.0)),
+        (
+            "backward-span-uses-authored-name",
+            "30px [ghost] 40px",
+            "span 1 ghost / 4",
+            (30.0, 55.0),
+        ),
+    ];
+
+    for (id, columns, placement, expected) in cases {
+        let fixture = Fixture::new(
+            &format!(
+                "display:grid;box-sizing:border-box;width:320px;height:20px;grid-template-columns:{columns};grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;gap:0;margin:0;padding:0;border:0"
+            ),
+            &[(
+                id,
+                &format!(
+                    "box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:{placement};margin:0;padding:0;border:0"
+                ),
+            )],
+        );
+        let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+        let frame = output.layout.frames[&fixture.nodes[id].id()];
+
+        assert_eq!((frame.x, frame.width), expected, "{id}");
+        assert_eq!((frame.y, frame.height), (0.0, 20.0), "{id}");
+    }
 }
 
 #[test]

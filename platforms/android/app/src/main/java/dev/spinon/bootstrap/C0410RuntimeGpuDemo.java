@@ -122,7 +122,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "invalid-l-shape-fallback", "invalid-disconnected-area-fallback",
             "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
-            "unknown-area-fixed-implicit-tracks",
+            "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
+            "negative-missing-occurrences", "backward-span-one", "backward-span-two",
+            "backward-span-partial-explicit", "forward-span-two",
+            "backward-span-uses-authored-name",
     };
     private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
             "area-track-count-mismatch";
@@ -831,6 +834,33 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (candidate.equals(sceneId)) return true;
         }
         return "revision-reuse".equals(sceneId);
+    }
+
+    private static String c1133LeadingNamedLineItemId(String sceneId) {
+        if (sceneId == null) return null;
+        switch (sceneId) {
+            case "positive-missing-occurrences": return "leading-positive-item";
+            case "negative-missing-occurrences": return "leading-negative-item";
+            case "backward-span-one": return "leading-backward-one-item";
+            case "backward-span-two": return "leading-backward-two-item";
+            case "backward-span-partial-explicit": return "leading-backward-partial-item";
+            case "forward-span-two": return "leading-forward-item";
+            case "backward-span-uses-authored-name": return "leading-authored-item";
+            default: return null;
+        }
+    }
+
+    private static int c1133LeadingNamedLineItemSampleX(String sceneId) {
+        switch (sceneId) {
+            case "positive-missing-occurrences": return 110;
+            case "negative-missing-occurrences": return 7;
+            case "backward-span-one": return 64;
+            case "backward-span-two": return 72;
+            case "backward-span-partial-explicit": return 81;
+            case "forward-span-two": return 80;
+            case "backward-span-uses-authored-name": return 50;
+            default: return -1;
+        }
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
@@ -11515,6 +11545,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             return background && blue;
         }
+        String leadingItemId = c1133LeadingNamedLineItemId(sceneId);
+        if (leadingItemId != null) {
+            if (samples.size() != 1) return false;
+            SurfaceViewPixelCapture.Sample sample = samples.get(0);
+            return "named-implicit-item".equals(sample.id)
+                    && leadingItemId.equals(sample.targetNodeId)
+                    && sample.xCssPx == c1133LeadingNamedLineItemSampleX(sceneId)
+                    && sample.yCssPx == 10;
+        }
         if (!"unknown-area-fixed-implicit-tracks".equals(sceneId) || samples.size() != 3) {
             return false;
         }
@@ -12576,7 +12615,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         && c114GridTrackSizingRunId.equals(pixelMatrixRunId)
                 : c1133GridTemplateAreasRequested
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
-                        || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId))
+                        || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId)
+                        || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -16823,6 +16863,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c1133TemplateAreas && "item-blue".equals(sampleId)) {
             return new int[] {62, 99, 221};
+        }
+        if ("named-implicit-item".equals(sampleId)) {
+            return new int[] {40, 102, 246};
         }
         if ("item-blue".equals(sampleId)) return new int[] {40, 102, 246};
         if ("item-red".equals(sampleId)) return new int[] {229, 72, 77};

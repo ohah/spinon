@@ -17,8 +17,11 @@ mod extent;
 mod lines;
 #[path = "track_sizing/occupancy.rs"]
 mod occupancy;
+#[path = "track_sizing/signed_implicit.rs"]
+mod signed_implicit;
 #[path = "track_sizing/tracks.rs"]
 mod tracks;
+pub(super) use signed_implicit::normalize_signed_implicit_grid_container;
 
 use axis::{AxisPlacement, resolve_axis};
 use extent::{Extent, coordinate_index, next_coordinate, raw_track_end, track_end, validate_count};

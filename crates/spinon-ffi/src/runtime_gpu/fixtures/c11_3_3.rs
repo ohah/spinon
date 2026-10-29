@@ -45,6 +45,120 @@ item.setAttribute('style', 'box-sizing:border-box;width:15px;height:5px;margin:0
 root.appendChild(item);
 return { sceneId:'unknown-area-fixed-implicit-tracks', rootId:'fixed-implicit-grid', nodeIds:['fixed-implicit-grid', 'fixed-known-area', 'fixed-unknown-area'] };
 })()"#;
+const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES: [(&str, &str); 7] = [
+    (
+        "positive-missing-occurrences",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-positive-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:114px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:[known-start] 30px 40px [known-end];grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-positive-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:3 ghost / 4 ghost;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'positive-missing-occurrences', rootId:'leading-positive-grid', nodeIds:['leading-positive-grid','leading-positive-item'] };
+})()"#,
+    ),
+    (
+        "negative-missing-occurrences",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-negative-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:92px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:[known-start] 30px 40px [known-end];grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-negative-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:-1 ghost / -2 ghost;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'negative-missing-occurrences', rootId:'leading-negative-grid', nodeIds:['leading-negative-grid','leading-negative-item'] };
+})()"#,
+    ),
+    (
+        "backward-span-one",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-backward-one-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:129px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:100px;grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-backward-one-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:span ghost / 4;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'backward-span-one', rootId:'leading-backward-one-grid', nodeIds:['leading-backward-one-grid','leading-backward-one-item'] };
+})()"#,
+    ),
+    (
+        "backward-span-two",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-backward-two-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:144px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:100px;grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-backward-two-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:span 2 ghost / 4;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'backward-span-two', rootId:'leading-backward-two-grid', nodeIds:['leading-backward-two-grid','leading-backward-two-item'] };
+})()"#,
+    ),
+    (
+        "backward-span-partial-explicit",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-backward-partial-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:162px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:[ghost] 40px [other] 100px;grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-backward-partial-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:span 2 ghost / 4;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'backward-span-partial-explicit', rootId:'leading-backward-partial-grid', nodeIds:['leading-backward-partial-grid','leading-backward-partial-item'] };
+})()"#,
+    ),
+    (
+        "forward-span-two",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-forward-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:94px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:50px;grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-forward-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:4 / span 2 ghost;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'forward-span-two', rootId:'leading-forward-grid', nodeIds:['leading-forward-grid','leading-forward-item'] };
+})()"#,
+    ),
+    (
+        "backward-span-uses-authored-name",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'leading-authored-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:85px;height:20px;margin:0;padding:0;border:0;gap:0;grid-template-columns:30px [ghost] 40px;grid-template-rows:20px;grid-auto-rows:20px;grid-auto-columns:15px 7px;grid-auto-flow:row;background-color:#101820');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'leading-authored-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:auto;height:auto;min-width:0;min-height:0;grid-row:1 / 2;grid-column:span 1 ghost / 4;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(item);
+return { sceneId:'backward-span-uses-authored-name', rootId:'leading-authored-grid', nodeIds:['leading-authored-grid','leading-authored-item'] };
+})()"#,
+    ),
+];
 const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 26] = [
     "basic-rectangles",
     "null-cell-dot-runs",
@@ -82,6 +196,12 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     }
     if scene_id == "unknown-area-fixed-implicit-tracks" {
         return Ok(C11_3_3_UNKNOWN_AREA_FIXED_IMPLICIT_TRACKS_SOURCE);
+    }
+    if let Some((_, source)) = C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES
+        .iter()
+        .find(|(id, _)| *id == scene_id)
+    {
+        return Ok(source);
     }
     static MATRIX: OnceLock<Result<Value, String>> = OnceLock::new();
     let matrix = MATRIX
@@ -274,5 +394,80 @@ mod tests {
         assert!(source.contains("grid-area:not-authored"));
         assert!(source.contains("fixed-known-area"));
         assert!(source.contains("fixed-unknown-area"));
+    }
+
+    #[test]
+    fn leading_named_implicit_scenes_are_allowlisted_and_match_pixel_fixture_contract() {
+        let expected = [
+            (
+                "positive-missing-occurrences",
+                "leading-positive-grid",
+                "leading-positive-item",
+                114,
+            ),
+            (
+                "negative-missing-occurrences",
+                "leading-negative-grid",
+                "leading-negative-item",
+                92,
+            ),
+            (
+                "backward-span-one",
+                "leading-backward-one-grid",
+                "leading-backward-one-item",
+                129,
+            ),
+            (
+                "backward-span-two",
+                "leading-backward-two-grid",
+                "leading-backward-two-item",
+                144,
+            ),
+            (
+                "backward-span-partial-explicit",
+                "leading-backward-partial-grid",
+                "leading-backward-partial-item",
+                162,
+            ),
+            (
+                "forward-span-two",
+                "leading-forward-grid",
+                "leading-forward-item",
+                94,
+            ),
+            (
+                "backward-span-uses-authored-name",
+                "leading-authored-grid",
+                "leading-authored-item",
+                85,
+            ),
+        ];
+
+        for (scene_id, root_id, item_id, root_width) in expected {
+            let source = c11_3_3_grid_template_areas_runtime_source(scene_id).unwrap();
+            assert!(
+                source.contains(&format!("sceneId:'{scene_id}'")),
+                "{scene_id}"
+            );
+            assert!(
+                source.contains(&format!("rootId:'{root_id}'")),
+                "{scene_id}"
+            );
+            assert!(
+                source.contains(&format!("'{root_id}','{item_id}'")),
+                "{scene_id}"
+            );
+            assert!(
+                source.contains(&format!("width:{root_width}px")),
+                "{scene_id}"
+            );
+            assert!(source.contains("background-color:#2866f6"), "{scene_id}");
+            assert!(source.contains("grid-auto-columns:15px 7px"), "{scene_id}");
+        }
+
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source("positive-missing-occurrences;throw 1")
+                .is_err()
+        );
     }
 }

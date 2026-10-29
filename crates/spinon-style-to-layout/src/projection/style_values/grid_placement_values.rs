@@ -13,41 +13,60 @@ pub(super) fn project_grid_item_placement(
     container: &GridContainerInput,
     template_areas: Option<&ComputedCssGridTemplateAreas>,
     allow_implicit_named_lines: bool,
-) -> Result<(Option<GridItemInput>, bool), StyleLayoutError> {
-    let (row_start, row_end, row_used_implicit_named_line) =
-        match container.rows_auto_repeat.as_ref() {
-            Some(_) => named_line::project_axis_for_auto_repeat(
+) -> Result<(Option<GridItemInput>, named_line::ImplicitNamedLineUsage), StyleLayoutError> {
+    let (row_start, row_end, row_implicit_usage) = match container.rows_auto_repeat.as_ref() {
+        Some(_) => {
+            let (start, end, used_implicit_tracks) = named_line::project_axis_for_auto_repeat(
                 node,
                 "grid-row-start",
                 "grid-row-end",
                 &placement.row_start,
                 &placement.row_end,
-            )?,
-            None => named_line::project_axis_with_areas_and_implicit_named_lines(
-                node,
-                "grid-row-start",
-                "grid-row-end",
-                &placement.row_start,
-                &placement.row_end,
-                named_line::LineMetadata {
-                    names: &container.rows_line_names,
-                    opposite_names: &container.columns_line_names,
-                    areas: template_areas,
-                    axis: named_line::GridAxis::Rows,
-                    track_count: container.rows.len(),
+            )?;
+            (
+                start,
+                end,
+                named_line::ImplicitNamedLineUsage {
+                    uses_implicit_tracks: used_implicit_tracks,
+                    requires_signed_extent: false,
                 },
-                allow_implicit_named_lines,
-            )?,
-        };
-    let (column_start, column_end, column_used_implicit_named_line) =
+            )
+        }
+        None => named_line::project_axis_with_areas_and_implicit_named_lines(
+            node,
+            "grid-row-start",
+            "grid-row-end",
+            &placement.row_start,
+            &placement.row_end,
+            named_line::LineMetadata {
+                names: &container.rows_line_names,
+                opposite_names: &container.columns_line_names,
+                areas: template_areas,
+                axis: named_line::GridAxis::Rows,
+                track_count: container.rows.len(),
+            },
+            allow_implicit_named_lines,
+        )?,
+    };
+    let (column_start, column_end, column_implicit_usage) =
         match container.columns_auto_repeat.as_ref() {
-            Some(_) => named_line::project_axis_for_auto_repeat(
-                node,
-                "grid-column-start",
-                "grid-column-end",
-                &placement.column_start,
-                &placement.column_end,
-            )?,
+            Some(_) => {
+                let (start, end, used_implicit_tracks) = named_line::project_axis_for_auto_repeat(
+                    node,
+                    "grid-column-start",
+                    "grid-column-end",
+                    &placement.column_start,
+                    &placement.column_end,
+                )?;
+                (
+                    start,
+                    end,
+                    named_line::ImplicitNamedLineUsage {
+                        uses_implicit_tracks: used_implicit_tracks,
+                        requires_signed_extent: false,
+                    },
+                )
+            }
             None => named_line::project_axis_with_areas_and_implicit_named_lines(
                 node,
                 "grid-column-start",
@@ -64,6 +83,12 @@ pub(super) fn project_grid_item_placement(
                 allow_implicit_named_lines,
             )?,
         };
+    let usage = named_line::ImplicitNamedLineUsage {
+        uses_implicit_tracks: row_implicit_usage.uses_implicit_tracks
+            || column_implicit_usage.uses_implicit_tracks,
+        requires_signed_extent: row_implicit_usage.requires_signed_extent
+            || column_implicit_usage.requires_signed_extent,
+    };
     let result = GridItemInput {
         row_start,
         row_end,
@@ -78,15 +103,9 @@ pub(super) fn project_grid_item_placement(
         )
         && matches!(&result.column_end, spinon_layout::GridPlacementInput::Auto)
     {
-        Ok((
-            None,
-            row_used_implicit_named_line || column_used_implicit_named_line,
-        ))
+        Ok((None, usage))
     } else {
-        Ok((
-            Some(result),
-            row_used_implicit_named_line || column_used_implicit_named_line,
-        ))
+        Ok((Some(result), usage))
     }
 }
 
@@ -163,7 +182,7 @@ mod tests {
                 count: 2,
             }
         );
-        assert!(!used_implicit);
+        assert!(!used_implicit.uses_implicit_tracks);
     }
 
     #[test]
@@ -194,6 +213,6 @@ mod tests {
             }
         );
         assert_eq!(item.column_end, GridPlacementInput::Auto);
-        assert!(!used_implicit);
+        assert!(!used_implicit.uses_implicit_tracks);
     }
 }

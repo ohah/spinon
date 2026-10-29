@@ -139,6 +139,105 @@ fn negative_track_lists_cycle_backwards_before_the_explicit_grid() {
 }
 
 #[test]
+fn signed_named_implicit_mode_expands_fixed_track_lists_on_both_sides() {
+    let mut input = grid(
+        GridAutoFlow::Row,
+        &[30.0, 40.0],
+        &[20.0],
+        GridAutoRows::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+        ]),
+        GridAutoColumns::TrackList(vec![
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+        ]),
+        2,
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGridSignedImplicitTracks;
+    for child in [id(2), id(3)] {
+        input.nodes[child.get() as usize - 1].style.width = LayoutDimension::Auto;
+        input.nodes[child.get() as usize - 1].style.min_width = LayoutDimension::Fixed(0.0);
+    }
+    input.nodes[1].style.height = LayoutDimension::Auto;
+    input.nodes[1].style.min_height = LayoutDimension::Fixed(0.0);
+    input.grid_items.insert(
+        id(2),
+        item(P::Line(-4), P::Line(-2), P::Line(-5), P::Line(-3)),
+    );
+    input
+        .grid_items
+        .insert(id(3), item(P::Line(1), P::Line(2), P::Line(4), P::Line(6)));
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    let leading = output.frames[&id(2)];
+    assert_eq!(
+        (leading.x, leading.y, leading.width, leading.height),
+        (0.0, 0.0, 22.0, 22.0)
+    );
+    let trailing = output.frames[&id(3)];
+    assert_eq!(
+        (trailing.x, trailing.y, trailing.width, trailing.height),
+        (107.0, 22.0, 22.0, 1.0)
+    );
+
+    let index = input
+        .nodes
+        .iter()
+        .enumerate()
+        .map(|(index, node)| (node.id, index))
+        .collect::<BTreeMap<_, _>>();
+    let normalized = crate::grid_placement::normalize_grid_layout(&input, &index).unwrap();
+    assert_eq!(
+        normalized.expanded_rows[&id(1)],
+        [
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+            GridTrackSize::LengthPx(20.0),
+        ]
+    );
+    assert_eq!(
+        normalized.expanded_columns[&id(1)],
+        [
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+            GridTrackSize::LengthPx(30.0),
+            GridTrackSize::LengthPx(40.0),
+            GridTrackSize::LengthPx(15.0),
+            GridTrackSize::LengthPx(7.0),
+            GridTrackSize::LengthPx(15.0),
+        ]
+    );
+}
+
+#[test]
+fn signed_named_implicit_mode_rejects_auto_placement() {
+    let mut input = grid(
+        GridAutoFlow::Row,
+        &[30.0, 40.0],
+        &[20.0],
+        GridAutoRows::LengthPx(20.0),
+        GridAutoColumns::LengthPx(7.0),
+        1,
+    );
+    input
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGridSignedImplicitTracks;
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::GridImplicitTrackRequired(node)) if node == id(1)
+    ));
+}
+
+#[test]
 fn negative_line_resolution_and_reverse_track_lists_work_on_both_axes() {
     let mut input = grid(
         GridAutoFlow::Row,

@@ -349,7 +349,10 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(androidMainActivity.includes('|| c1133GridTemplateAreasRequested'));
   assert.ok(androidMainActivity.includes('SPINON_C1133_GRID_ARGUMENT_ERROR'));
   const sceneIds = runtime.cases.map(({ id }) => id);
-  const runtimeSceneIds = [...sceneIds, 'unknown-area-fixed-implicit-tracks'];
+  const runtimeSceneIds = [...sceneIds, 'unknown-area-fixed-implicit-tracks',
+    'positive-missing-occurrences', 'negative-missing-occurrences', 'backward-span-one',
+    'backward-span-two', 'backward-span-partial-explicit', 'forward-span-two',
+    'backward-span-uses-authored-name'];
   const mainActivityAllowlist = androidMainActivity.match(
     /C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = \{([\s\S]*?)\};/,
   )?.[1];
@@ -429,6 +432,84 @@ test('unknown-area fixed implicit tracks root 바깥 paint가 Chrome geometry와
   assert.ok(ios.includes('unsupported_grid_auto_rows'));
   assert.ok(androidCaptureBytes.toString('utf8').includes('captureUnknownAreaOverflow'));
   assert.ok(iosCaptureBytes.toString('utf8').includes('unknownAreaOverflow'));
+});
+
+test('leading named implicit line 모바일 fixture가 oracle geometry와 양 플랫폼 제한 경로에 고정된다', async () => {
+  const fixturePath = 'tests/fixtures/css/c11/grid-leading-named-implicit-lines-mobile-pixels-v1.json';
+  const inventoryPath = 'tests/fixtures/css/c11/grid-leading-named-implicit-lines-c1133-inventory.json';
+  const referencePath = 'tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json';
+  const [fixtureBytes, inventoryBytes, referenceBytes, rustFixtureBytes,
+    mainActivityBytes, androidDemoBytes, iosDemoBytes, androidCaptureBytes, iosCaptureBytes] = await Promise.all([
+    read(fixturePath), read(inventoryPath), read(referencePath),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_3.rs'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    read('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs'),
+  ]);
+  const fixture = JSON.parse(fixtureBytes.toString('utf8'));
+  const inventory = JSON.parse(inventoryBytes.toString('utf8'));
+  const reference = JSON.parse(referenceBytes.toString('utf8'));
+  assert.equal(fixture.schema,
+    'spinon-css-c11-3-3-leading-named-implicit-lines-mobile-pixels/v1');
+  assert.equal(fixture.oracle.referenceSha256, sha256(referenceBytes));
+  assert.equal(fixture.oracle.referenceId, reference.referenceId);
+  assert.deepEqual(fixture.runtime.viewportCssPx, { width: 320, height: 240 });
+  assert.deepEqual(fixture.scenes.map(({ id }) => id), inventory.cases.map(({ id }) => id));
+  assert.deepEqual(reference.cases.map(({ id }) => id), fixture.scenes.map(({ id }) => id));
+  for (let index = 0; index < fixture.scenes.length; index++) {
+    const scene = fixture.scenes[index];
+    const expected = inventory.cases[index];
+    const oracle = reference.cases[index];
+    assert.deepEqual(scene.columnsPx, expected.columnsPx, scene.id);
+    assert.deepEqual(scene.rootRect, oracle.rootRect, scene.id);
+    assert.deepEqual(scene.itemRect, oracle.itemRect, scene.id);
+    assert.equal(scene.rootRect[2], scene.columnsPx.reduce((sum, size) => sum + size, 0), scene.id);
+    assert.equal(scene.samples.length, 1, scene.id);
+    const [sample] = scene.samples;
+    assert.equal(sample.nodeId, scene.itemId, scene.id);
+    assert.ok(sample.xCssPx >= scene.itemRect[0]
+      && sample.xCssPx < scene.itemRect[0] + scene.itemRect[2], `${scene.id}: x sample outside item`);
+    assert.ok(sample.yCssPx >= scene.itemRect[1]
+      && sample.yCssPx < scene.itemRect[1] + scene.itemRect[3], `${scene.id}: y sample outside item`);
+    assert.deepEqual(sample.rgba, [40, 102, 246, 255], scene.id);
+  }
+
+  const sceneIds = fixture.scenes.map(({ id }) => id);
+  const rustFixture = rustFixtureBytes.toString('utf8');
+  const androidMain = mainActivityBytes.toString('utf8');
+  const android = androidDemoBytes.toString('utf8');
+  const ios = iosDemoBytes.toString('utf8');
+  const androidCapture = androidCaptureBytes.toString('utf8');
+  const iosCapture = iosCaptureBytes.toString('utf8');
+  for (const source of [rustFixture, androidMain, android, ios]) {
+    for (const id of sceneIds) assert.ok(source.includes(id), `${id}: scene route 누락`);
+  }
+  const leadingNamedSourceStart = rustFixture.indexOf('const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES:');
+  const leadingNamedSourceEnd = rustFixture.indexOf('\nconst C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS',
+    leadingNamedSourceStart);
+  assert.ok(leadingNamedSourceStart >= 0 && leadingNamedSourceEnd > leadingNamedSourceStart);
+  const leadingNamedSources = rustFixture.slice(leadingNamedSourceStart, leadingNamedSourceEnd);
+  assert.equal((leadingNamedSources.match(/width:\d+px/g) ?? []).length, 7);
+  for (const scene of fixture.scenes) {
+    assert.ok(leadingNamedSources.includes(`width:${scene.rootRect[2]}px`), scene.id);
+  }
+  assert.equal((leadingNamedSources.match(/background-color:#2866f6/g) ?? []).length, 7);
+  assert.ok(android.includes('c1133LeadingNamedLineItemId'));
+  assert.ok(ios.includes('c1133LeadingNamedImplicitPixelSamples'));
+  assert.ok(android.includes('named-implicit-item'));
+  assert.ok(android.includes('if ("named-implicit-item".equals(sampleId)) {\n            return new int[] {40, 102, 246};'));
+  assert.ok(ios.includes('named-implicit-item'));
+  assert.ok(androidCapture.includes(fixturePath));
+  assert.ok(androidCapture.includes('captureLeadingNamedImplicitLines'));
+  assert.ok(androidCapture.includes('compareC11AndroidPixelCopyScene'));
+  assert.ok(androidCapture.includes("const sceneRunID = `${runID}-leading-${String(index).padStart(2, '0')}`;"));
+  assert.ok(androidCapture.includes('assert.match(sceneRunID, /^[A-Za-z0-9_-]{1,80}$/'));
+  assert.ok(iosCapture.includes(fixturePath));
+  assert.ok(iosCapture.includes('captureLeadingNamedImplicitLines'));
+  assert.ok(iosCapture.includes('compareC11IOSMetalPixelLogs'));
+  assert.ok(iosCapture.includes('ios-leading-'));
 });
 
 test('Android capture는 고정 실기기를 자동 선택하고 명시 대상·중복·AVD를 분리한다', () => {

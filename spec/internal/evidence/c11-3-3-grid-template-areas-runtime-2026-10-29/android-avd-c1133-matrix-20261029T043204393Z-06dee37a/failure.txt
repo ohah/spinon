@@ -1,0 +1,4 @@
+AssertionError [ERR_ASSERTION]: positive-missing-occurrences: layout 평가가 성공하지 않았습니다.
+    at captureLeadingNamedImplicitLines (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:305:12)
+    at async captureMatrix (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:479:37)
+    at async file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs:539:20

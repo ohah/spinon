@@ -714,7 +714,7 @@ pub(super) fn project_styles(
             let grid_style = grid_styles
                 .get(&owner)
                 .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
-            let (placement, used_implicit_named_line) = {
+            let (placement, implicit_usage) = {
                 let container = grid_containers
                     .get(&owner)
                     .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
@@ -727,12 +727,22 @@ pub(super) fn project_styles(
                         && snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
                 )?
             };
-            if used_implicit_named_line {
+            if implicit_usage.requires_signed_extent {
                 let container = grid_containers
                     .get_mut(&owner)
                     .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
                 container.placement_mode =
-                    spinon_layout::GridPlacementMode::TemplateGridImplicitTracks;
+                    spinon_layout::GridPlacementMode::TemplateGridSignedImplicitTracks;
+            } else if implicit_usage.uses_implicit_tracks {
+                let container = grid_containers
+                    .get_mut(&owner)
+                    .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
+                if container.placement_mode
+                    != spinon_layout::GridPlacementMode::TemplateGridSignedImplicitTracks
+                {
+                    container.placement_mode =
+                        spinon_layout::GridPlacementMode::TemplateGridImplicitTracks;
+                }
             }
             if let Some(placement) = placement {
                 grid_items.insert(element.node_id, placement);

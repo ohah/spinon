@@ -13,6 +13,13 @@ use crate::{
     GridAutoFlow, GridContainerInput, GridPlacementInput, GridTrackSize, LayoutError, LayoutInput,
 };
 
+#[derive(Clone, Copy, Eq, PartialEq)]
+enum AutoTrackExpansionMode {
+    Unsupported,
+    FixedPxList,
+    Intrinsic,
+}
+
 struct Item {
     node: NodeId,
     row: AxisPlacement,
@@ -37,6 +44,15 @@ pub(crate) fn normalize_dense_grid_container(
 
     if container.placement_mode == crate::GridPlacementMode::TrackSizing {
         return super::track_sizing::normalize_track_sizing_grid_container(
+            input,
+            hidden,
+            container_node,
+            container,
+        );
+    }
+
+    if container.placement_mode == crate::GridPlacementMode::TemplateGridSignedImplicitTracks {
+        return super::track_sizing::normalize_signed_implicit_grid_container(
             input,
             hidden,
             container_node,
@@ -408,6 +424,14 @@ pub(crate) fn normalize_dense_grid_container(
         cursor_initialized = true;
     }
 
+    let auto_track_mode = match container.placement_mode {
+        crate::GridPlacementMode::TrackSizing => AutoTrackExpansionMode::Intrinsic,
+        crate::GridPlacementMode::TemplateGridImplicitTracks
+        | crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
+            AutoTrackExpansionMode::FixedPxList
+        }
+        _ => AutoTrackExpansionMode::Unsupported,
+    };
     output.expanded_rows = expand_tracks(
         node,
         "grid-template-rows",
@@ -415,7 +439,7 @@ pub(crate) fn normalize_dense_grid_container(
         row_count,
         &container.auto_rows,
         true,
-        container.placement_mode == crate::GridPlacementMode::TrackSizing,
+        auto_track_mode,
     )?;
     output.expanded_columns = expand_tracks(
         node,
@@ -424,7 +448,7 @@ pub(crate) fn normalize_dense_grid_container(
         column_count,
         &container.auto_columns,
         false,
-        container.placement_mode == crate::GridPlacementMode::TrackSizing,
+        auto_track_mode,
     )?;
     Ok(output)
 }
@@ -655,7 +679,7 @@ fn expand_tracks(
     count: usize,
     auto_size: &crate::GridAutoTrackSize,
     rows: bool,
-    allow_track_sizing: bool,
+    mode: AutoTrackExpansionMode,
 ) -> Result<Option<Vec<GridTrackSize>>, LayoutError> {
     validate_count(node, property, count)?;
     if count == explicit.len() {
@@ -663,7 +687,7 @@ fn expand_tracks(
     }
     let pattern = match auto_size {
         crate::GridAutoTrackSize::Auto => {
-            if allow_track_sizing {
+            if mode == AutoTrackExpansionMode::Intrinsic {
                 TrackPattern::Single(GridTrackSize::Auto)
             } else {
                 return if rows {
@@ -685,7 +709,16 @@ fn expand_tracks(
         crate::GridAutoTrackSize::LengthPx(_) => {
             return Err(LayoutError::InvalidGridTrack { node, property });
         }
-        crate::GridAutoTrackSize::TrackList(tracks) if allow_track_sizing && !tracks.is_empty() => {
+        crate::GridAutoTrackSize::TrackList(tracks)
+            if !tracks.is_empty()
+                && match mode {
+                    AutoTrackExpansionMode::Unsupported => false,
+                    AutoTrackExpansionMode::FixedPxList => tracks
+                        .iter()
+                        .all(|track| matches!(track, GridTrackSize::LengthPx(_))),
+                    AutoTrackExpansionMode::Intrinsic => true,
+                } =>
+        {
             TrackPattern::List(tracks)
         }
         crate::GridAutoTrackSize::TrackList(_) => {

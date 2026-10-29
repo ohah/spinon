@@ -8,13 +8,14 @@ pub(super) fn resolve_named_placements<'a>(
     mut end: Placement<'a>,
     line_metadata: &LineMetadata<'_>,
     allow_implicit_named_lines: bool,
-) -> Result<(Placement<'a>, Placement<'a>, bool), StyleLayoutError> {
+) -> Result<(Placement<'a>, Placement<'a>, ImplicitNamedLineUsage), StyleLayoutError> {
     let span_resolver =
         super::ImplicitNamedLineResolver::new(node, line_metadata, allow_implicit_named_lines);
-    let mut start_is_implicit_named_line = false;
-    let mut end_is_implicit_named_line = false;
+    let mut start_uses_implicit_grid_line = false;
+    let mut end_uses_implicit_grid_line = false;
+    let mut usage = ImplicitNamedLineUsage::default();
     if matches!(start, Placement::NamedLine { .. }) {
-        (start, start_is_implicit_named_line) = super::resolve_named_endpoint(
+        (start, start_uses_implicit_grid_line) = super::resolve_named_endpoint(
             node,
             start_property,
             start,
@@ -22,9 +23,14 @@ pub(super) fn resolve_named_placements<'a>(
             line_metadata,
             allow_implicit_named_lines,
         )?;
+        usage.include(usage_for_line(
+            start,
+            start_uses_implicit_grid_line,
+            line_metadata.track_count,
+        ));
     }
     if matches!(end, Placement::NamedLine { .. }) {
-        (end, end_is_implicit_named_line) = super::resolve_named_endpoint(
+        (end, end_uses_implicit_grid_line) = super::resolve_named_endpoint(
             node,
             end_property,
             end,
@@ -32,6 +38,11 @@ pub(super) fn resolve_named_placements<'a>(
             line_metadata,
             allow_implicit_named_lines,
         )?;
+        usage.include(usage_for_line(
+            end,
+            end_uses_implicit_grid_line,
+            line_metadata.track_count,
+        ));
     }
 
     match (start, end) {
@@ -42,14 +53,14 @@ pub(super) fn resolve_named_placements<'a>(
             // CSS Grid 충돌 규칙은 끝쪽 span을 버립니다. 남은 named span의 반대쪽에
             // 확정된 line이 없으면 기본 1 track span으로 처리합니다.
             start = Placement::Span(1);
-            start_is_implicit_named_line = false;
+            start_uses_implicit_grid_line = false;
             end = Placement::Auto;
-            end_is_implicit_named_line = false;
+            end_uses_implicit_grid_line = false;
         }
         (Placement::Span(_), Placement::SpanNamed { .. }) => {
             // 끝쪽 span은 충돌로 버리므로 named line 검색도 하지 않습니다.
             end = Placement::Auto;
-            end_is_implicit_named_line = false;
+            end_uses_implicit_grid_line = false;
         }
         _ => {}
     }
@@ -57,15 +68,29 @@ pub(super) fn resolve_named_placements<'a>(
     if let Placement::SpanNamed { name, count } = start {
         start = match end {
             Placement::Line(line) => {
+                let anchor_uses_implicit =
+                    line_requires_implicit_extent(line, line_metadata.track_count);
+                if allow_implicit_named_lines && anchor_uses_implicit {
+                    end_uses_implicit_grid_line = true;
+                    usage.include(usage_for_line(
+                        Placement::Line(line),
+                        true,
+                        line_metadata.track_count,
+                    ));
+                }
                 let (line, is_implicit) = span_resolver.resolve_span_line(
                     start_property,
                     name,
                     count,
                     line,
                     super::SearchDirection::Backward,
-                    end_is_implicit_named_line,
                 )?;
-                start_is_implicit_named_line = is_implicit;
+                start_uses_implicit_grid_line = is_implicit;
+                usage.include(usage_for_line(
+                    Placement::Line(line),
+                    is_implicit,
+                    line_metadata.track_count,
+                ));
                 Placement::Line(line)
             }
             Placement::Auto | Placement::Span(_) | Placement::SpanNamed { .. } => {
@@ -84,15 +109,29 @@ pub(super) fn resolve_named_placements<'a>(
     if let Placement::SpanNamed { name, count } = end {
         end = match start {
             Placement::Line(line) => {
+                let anchor_uses_implicit =
+                    line_requires_implicit_extent(line, line_metadata.track_count);
+                if allow_implicit_named_lines && anchor_uses_implicit {
+                    start_uses_implicit_grid_line = true;
+                    usage.include(usage_for_line(
+                        Placement::Line(line),
+                        true,
+                        line_metadata.track_count,
+                    ));
+                }
                 let (line, is_implicit) = span_resolver.resolve_span_line(
                     end_property,
                     name,
                     count,
                     line,
                     super::SearchDirection::Forward,
-                    start_is_implicit_named_line,
                 )?;
-                end_is_implicit_named_line = is_implicit;
+                end_uses_implicit_grid_line = is_implicit;
+                usage.include(usage_for_line(
+                    Placement::Line(line),
+                    is_implicit,
+                    line_metadata.track_count,
+                ));
                 Placement::Line(line)
             }
             Placement::Auto | Placement::Span(_) | Placement::SpanNamed { .. } => {
@@ -114,17 +153,17 @@ pub(super) fn resolve_named_placements<'a>(
             node,
             start_property,
             start,
-            start_is_implicit_named_line,
+            start_uses_implicit_grid_line,
             line_metadata.track_count,
         )?;
         validate_unmarked_implicit_line(
             node,
             end_property,
             end,
-            end_is_implicit_named_line,
+            end_uses_implicit_grid_line,
             line_metadata.track_count,
         )?;
-        if !start_is_implicit_named_line && !end_is_implicit_named_line {
+        if !start_uses_implicit_grid_line && !end_uses_implicit_grid_line {
             validate_unmarked_implicit_span_extent(
                 node,
                 start_property,
@@ -136,11 +175,27 @@ pub(super) fn resolve_named_placements<'a>(
         }
     }
 
-    Ok((
-        start,
-        end,
-        start_is_implicit_named_line || end_is_implicit_named_line,
-    ))
+    Ok((start, end, usage))
+}
+
+fn usage_for_line(
+    placement: Placement<'_>,
+    uses_implicit_grid_line: bool,
+    track_count: usize,
+) -> ImplicitNamedLineUsage {
+    if !uses_implicit_grid_line {
+        return ImplicitNamedLineUsage::default();
+    }
+    let requires_signed_extent = matches!(placement, Placement::Line(line)
+        if line < 0 && line_requires_implicit_extent(line, track_count));
+    ImplicitNamedLineUsage {
+        uses_implicit_tracks: true,
+        requires_signed_extent,
+    }
+}
+
+fn line_requires_implicit_extent(line: i32, track_count: usize) -> bool {
+    super::normalize_explicit_line(line, track_count).is_err()
 }
 
 fn validate_unmarked_implicit_line(

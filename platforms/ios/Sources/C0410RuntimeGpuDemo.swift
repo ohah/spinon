@@ -15,6 +15,9 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "invalid-row-width-fallback", "invalid-trash-token-fallback", "empty-string-fallback",
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
     "unknown-area-fixed-implicit-tracks",
+    "positive-missing-occurrences", "negative-missing-occurrences", "backward-span-one",
+    "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
+    "backward-span-uses-authored-name",
 ]
 #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
@@ -8309,6 +8312,25 @@ private struct C111MetalPixelRun {
         ("known-area", "fixed-known-area", 10, 10, [48, 164, 108, 255]),
         ("unknown-area-overflow", "fixed-unknown-area", 182, 127, [229, 72, 77, 255]),
     ]
+    private static func c1133LeadingNamedImplicitPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        let itemID: String
+        let sampleX: UInt32
+        switch sceneID {
+        case "positive-missing-occurrences": itemID = "leading-positive-item"; sampleX = 110
+        case "negative-missing-occurrences": itemID = "leading-negative-item"; sampleX = 7
+        case "backward-span-one": itemID = "leading-backward-one-item"; sampleX = 64
+        case "backward-span-two": itemID = "leading-backward-two-item"; sampleX = 72
+        case "backward-span-partial-explicit":
+            itemID = "leading-backward-partial-item"; sampleX = 81
+        case "forward-span-two": itemID = "leading-forward-item"; sampleX = 80
+        case "backward-span-uses-authored-name":
+            itemID = "leading-authored-item"; sampleX = 50
+        default: return []
+        }
+        return [("named-implicit-item", itemID, sampleX, 10, [40, 102, 246, 255])]
+    }
     private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
@@ -8426,10 +8448,14 @@ private struct C111MetalPixelRun {
     private static func hasFixedC1133TemplateAreaSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
-        let expectedSamples = sceneID == "basic-rectangles"
-            ? c1133TemplateAreaPixelSamples
-            : sceneID == "unknown-area-fixed-implicit-tracks"
-                ? c1133UnknownAreaOverflowPixelSamples : []
+        let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
+        if sceneID == "basic-rectangles" {
+            expectedSamples = c1133TemplateAreaPixelSamples
+        } else if sceneID == "unknown-area-fixed-implicit-tracks" {
+            expectedSamples = c1133UnknownAreaOverflowPixelSamples
+        } else {
+            expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
+        }
         guard samples.count == expectedSamples.count else { return false }
         return expectedSamples.allSatisfy { expected in
             samples.contains { sample in
@@ -9734,7 +9760,9 @@ private struct C111MetalPixelRun {
             }).map { String($0.dropFirst("--spinon-c1133-grid-scene=".count)) }
                 ?? "basic-rectangles"
             guard sceneID == c1133SceneID,
-                  sceneID == "basic-rectangles" || sceneID == "unknown-area-fixed-implicit-tracks",
+                  sceneID == "basic-rectangles"
+                    || sceneID == "unknown-area-fixed-implicit-tracks"
+                    || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   c1133GridTemplateAreasSceneIDs.contains(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,
                   !arguments.contains("--spinon-c1123-grid-auto-placement"),

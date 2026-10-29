@@ -267,6 +267,8 @@ pub enum GridPlacementMode {
     TemplateGrid,
     /// C11.3.3 opt-in 경로의 explicit placement와 trailing fixed implicit tracks입니다.
     TemplateGridImplicitTracks,
+    /// C11.3.3 named-line opt-in의 signed leading/trailing fixed implicit tracks입니다.
+    TemplateGridSignedImplicitTracks,
     /// C11.4 intrinsic track sizing 후보 profile입니다.
     TrackSizing,
 }
@@ -338,17 +340,29 @@ pub(super) fn validate_grid_layout(
         validate_template_areas(id, container)?;
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
-            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto) => {
+            (
+                GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridAutoRows::Auto,
+            ) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
                     reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-rows",
                 });
             }
             (
+                GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridAutoRows::TrackList(tracks),
+            ) if tracks
+                .iter()
+                .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
-                | GridPlacementMode::TemplateGridImplicitTracks,
+                | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
             | (_, GridAutoRows::Auto) => {}
@@ -361,16 +375,28 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_columns) {
             (GridPlacementMode::TrackSizing, _) => {}
-            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::Auto) => {
+            (
+                GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridAutoColumns::Auto,
+            ) => {
                 return Err(LayoutError::UnsupportedGridAutoColumns {
                     node: id,
                     reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-columns",
                 });
             }
             (
+                GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridAutoColumns::TrackList(tracks),
+            ) if tracks
+                .iter()
+                .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (
                 GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
-                | GridPlacementMode::TemplateGridImplicitTracks,
+                | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
             | (_, GridAutoColumns::Auto) => {}
@@ -675,6 +701,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(size, crate::LayoutDimension::Fixed(_))
@@ -708,6 +735,7 @@ pub(super) fn validate_grid_layout(
                     ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
                 GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks
                     if !normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
                     matches!(
@@ -726,14 +754,15 @@ pub(super) fn validate_grid_layout(
                 ("min-height", child.style.min_height),
                 ("max-height", child.style.max_height),
             ] {
-                let zero_minimum_on_definite_area = matches!(
-                    container.placement_mode,
-                    GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
-                ) && !normalized_grid
-                    .auto_placed_items
-                    .contains(&child_id)
-                    && matches!(property, "min-width" | "min-height")
-                    && value == crate::LayoutDimension::Fixed(0.0);
+                let zero_minimum_on_definite_area =
+                    matches!(
+                        container.placement_mode,
+                        GridPlacementMode::TemplateGrid
+                            | GridPlacementMode::TemplateGridImplicitTracks
+                            | GridPlacementMode::TemplateGridSignedImplicitTracks
+                    ) && !normalized_grid.auto_placed_items.contains(&child_id)
+                        && matches!(property, "min-width" | "min-height")
+                        && value == crate::LayoutDimension::Fixed(0.0);
                 let track_sizing_constraint = container.placement_mode
                     == GridPlacementMode::TrackSizing
                     && matches!(
@@ -762,6 +791,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridSignedImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) && !has_explicit_placement
             && item_count > cell_count

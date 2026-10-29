@@ -1,0 +1,47 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133m-20261029T044652726Z-50e350a2-31",
+  "processId": 73860,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 10,
+    "renderTree": 2,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 1,
+  "matchedSamples": 1,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "named-implicit-item",
+      "css": [
+        81,
+        10
+      ],
+      "drawable": [
+        244,
+        31
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
