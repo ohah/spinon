@@ -103,6 +103,7 @@ pub struct RuntimeGridTrackSizingDiagnostics {
     pub fit_content_zoomed_grid: Option<RuntimeC11_4FitContentZoomedGridObservation>,
     pub fit_content_auto_min_floor: Option<RuntimeC11_4FitContentAutoMinFloorObservation>,
     pub fit_content_spanning: Option<RuntimeC11_4FitContentSpanningObservation>,
+    pub fit_content_limit_boundaries: Option<RuntimeC11_4FitContentLimitBoundariesObservation>,
     pub grid_layout_auto_tracks: Option<RuntimeC11_4GridLayoutAutoTracksObservation>,
     pub c11_4_overflow_auto_minimum_fixture: Option<RuntimeC11_4AutoMinmaxSpanOverflowObservation>,
     pub c11_4_single_track_overflow_auto_minimum_fixture:
@@ -169,6 +170,18 @@ pub struct RuntimeC11_4FitContentAutoMinFloorObservation {
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[derive(Clone, Debug, PartialEq)]
 pub struct RuntimeC11_4FitContentSpanningObservation {
+    pub style_snapshot: ComputedStyleSnapshot,
+    pub grid_root: spinon_core::NodeId,
+    pub grid_container_input: spinon_layout::GridContainerInput,
+    pub node_ids: [spinon_core::NodeId; 3],
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Debug, PartialEq)]
+pub struct RuntimeC11_4FitContentLimitBoundariesObservation {
+    pub scene_id: &'static str,
+    pub limit_css_px: f32,
+    pub expected_row_css_px: f32,
     pub style_snapshot: ComputedStyleSnapshot,
     pub grid_root: spinon_core::NodeId,
     pub grid_container_input: spinon_layout::GridContainerInput,
@@ -277,6 +290,7 @@ impl RuntimeGridTrackSizingDiagnostics {
             fit_content_zoomed_grid: self.fit_content_zoomed_grid.clone(),
             fit_content_auto_min_floor: self.fit_content_auto_min_floor.clone(),
             fit_content_spanning: self.fit_content_spanning.clone(),
+            fit_content_limit_boundaries: self.fit_content_limit_boundaries.clone(),
             grid_layout_auto_tracks: self.grid_layout_auto_tracks.clone(),
             c11_4_overflow_auto_minimum_fixture: self.c11_4_overflow_auto_minimum_fixture.clone(),
             c11_4_single_track_overflow_auto_minimum_fixture: self
@@ -743,6 +757,15 @@ where
         None
     };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_fit_content_limit_boundaries_target = if profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && c11_4_auto_minmax_span_overflow_input.is_none()
+    {
+        fixtures::prepare_c11_4_fit_content_limit_boundaries(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_nested_grid_depth_three_anonymous_image_input.is_none()
         && (c11_4_text_input.is_some() || c11_4_anonymous_text_input.is_some())
         && c11_4_image_input.is_some()
@@ -1061,6 +1084,19 @@ where
             None
         };
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let fit_content_limit_boundaries_observation =
+        if let Some((scene_id, node_ids)) = c11_4_fit_content_limit_boundaries_target {
+            Some(fixtures::c11_4_fit_content_limit_boundaries_observation(
+                scene_id,
+                root,
+                &output.computed_styles,
+                &output.grid_container_inputs,
+                node_ids,
+            )?)
+        } else {
+            None
+        };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let grid_layout_auto_tracks_observation =
         if let Some(input) = &c11_4_grid_layout_auto_tracks_input {
             Some(fixtures::c11_4_grid_layout_auto_tracks_observation(
@@ -1229,6 +1265,7 @@ where
                 fit_content_zoomed_grid: fit_content_zoomed_grid_observation,
                 fit_content_auto_min_floor: fit_content_auto_min_floor_observation,
                 fit_content_spanning: fit_content_spanning_observation,
+                fit_content_limit_boundaries: fit_content_limit_boundaries_observation,
                 grid_layout_auto_tracks: grid_layout_auto_tracks_observation,
                 c11_4_overflow_auto_minimum_fixture: c11_4_overflow_auto_minimum_observation,
                 c11_4_single_track_overflow_auto_minimum_fixture:
@@ -1272,6 +1309,10 @@ where
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_spanning_node_ids.is_some() {
         fixtures::validate_c11_4_fit_content_spanning_output(&completed)?;
+    }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if c11_4_fit_content_limit_boundaries_target.is_some() {
+        fixtures::validate_c11_4_fit_content_limit_boundaries_output(&completed)?;
     }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_grid_layout_auto_tracks_input.is_some() {
@@ -1837,6 +1878,7 @@ mod tests {
             fit_content_zoomed_grid: None,
             fit_content_auto_min_floor: None,
             fit_content_spanning: None,
+            fit_content_limit_boundaries: None,
             grid_layout_auto_tracks: None,
             c11_4_overflow_auto_minimum_fixture: None,
             c11_4_single_track_overflow_auto_minimum_fixture: None,

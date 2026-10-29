@@ -1,0 +1,1 @@
+`nm` symbol inspection was not accepted: the Apple `nm` reader rejected Rust 1.96 LLVM 22.1.2 object attributes (`Unknown attribute kind`). No dedicated C header or C ABI symbol was added for this slice; it uses the existing opt-in runtime-GPU fixture route. The default-vs-fixture marker scan below is based on `strings` over the produced static archives.
