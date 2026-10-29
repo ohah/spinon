@@ -1,0 +1,78 @@
+{
+  "bodyHasOfficialCount": true,
+  "firstCard": "2026-10-29 C11.3.3 leading named implicit lines 제한 fixture · 구현 PR #790 Rebase and merge (2026-10-29T04:59:50Z, merge SHA d993eb4114b17a49b2d096f319053fd43c6fcf27), 상태 동기화 PR #791 Rebase and merge (2026-10-29T05:02:55Z, merge SHA b532c96a718bdede496b9509da6f20bd142805b1): 부족한 named occurrence/span을 signed implicit tracks로 확장하고 authored names와 area aliases 우선순위를 유지했다. 고정 fixed-pixel track fixture의 기존 26 scene, 별도 unknown-area overflow 1 scene, 신규 leading scene 7개를 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 확인했다. 새 7 scene geometry 오차는 0 CSS px이며 PixelCopy 및 compositor 제출 전 Metal drawable sample은 각각 7/7 exact다. Android는 SwiftShader software renderer다. `spinon-style` 전체 suite는 247개 중 246개 통과하며 기존 percentage auto-repeat TrackSizing 실패 1개가 남고, PR check rollup은 비어 있다. 이 범위는 제한 opt-in fixture로 일반 CSS admission·Spinon WPT 적합성·실기기/hardware GPU·iOS compositor 이후 pixel을 확인하지 않는다. C11.3.3 candidate 및 공식 72/213은 그대로 유지한다. 계획 · 실행 근거와 한계 · 로드맵 변경 검토 30개 · Android AVD 화면 · iOS Simulator 화면 · 공식 상태.",
+  "imageLoads": [
+    {
+      "height": 2400,
+      "loaded": true,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/android-avd-c1133-matrix-20261029T044453973Z-30ad6bc8/android-screen.png",
+      "width": 1080
+    },
+    {
+      "height": 2622,
+      "loaded": true,
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/ios-simulator-c1133-ios-matrix-20261029T044652725Z-9bc5bb6e/ios-leading-positive-missing-occurrences-screen.png",
+      "width": 1206
+    }
+  ],
+  "links": [
+    {
+      "href": "https://github.com/ohah/spinon/pull/790",
+      "text": "PR #790 Rebase and merge"
+    },
+    {
+      "href": "https://github.com/ohah/spinon/pull/791",
+      "text": "PR #791 Rebase and merge"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-3-3-leading-named-implicit-lines.html",
+      "text": "계획"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-leading-named-implicit-lines-implementation-2026-10-29/README.html",
+      "text": "실행 근거와 한계"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-leading-named-implicit-lines-implementation-2026-10-29/roadmap-pr-diff-review-30.html",
+      "text": "로드맵 변경 검토 30개"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/android-avd-c1133-matrix-20261029T044453973Z-30ad6bc8/android-screen.png",
+      "text": "Android AVD 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-29/ios-simulator-c1133-ios-matrix-20261029T044652725Z-9bc5bb6e/ios-leading-positive-missing-occurrences-screen.png",
+      "text": "iOS Simulator 화면"
+    },
+    {
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8",
+      "text": "공식 상태"
+    }
+  ],
+  "routeChecks": [
+    {
+      "bytes": 528189,
+      "route": "/spinon/STATUS.html",
+      "status": 200
+    },
+    {
+      "bytes": 46305,
+      "route": "/spinon/plan/c11-3-3-leading-named-implicit-lines.html",
+      "status": 200
+    },
+    {
+      "bytes": 43777,
+      "route": "/spinon/internal/evidence/c11-3-3-leading-named-implicit-lines-implementation-2026-10-29/README.html",
+      "status": 200
+    },
+    {
+      "bytes": 40555,
+      "route": "/spinon/internal/evidence/c11-3-3-leading-named-implicit-lines-implementation-2026-10-29/roadmap-pr-diff-review-30.html",
+      "status": 200
+    }
+  ],
+  "statusHasImplementationPR": true,
+  "statusHasOfficialCount": true,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}

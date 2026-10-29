@@ -1,0 +1,9 @@
+{
+  "c11Checkboxes": [],
+  "checkboxCount": 226,
+  "implementationPRPresent": true,
+  "officialCountPresent": true,
+  "statusEntryContext": "C11.3.3 leading named implicit lines 제한 fixture 구현 PR #790이 Rebase and merge로 병합됐다 (2026-10-29T04:59:50Z, merge SHA d993eb4114b17a49b2d096f319053fd43c6fcf27). Android 17/API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 26 scene, 별도 unknown-area overflow 1 scene, 새 leading scene 7개를 확인했다. 새 7 scene은 양 플랫폼 모두 geometry 오차 0 CSS px이며 Android PixelCopy와 iOS compositor 제출 전 Metal drawable 표본이 각각 7/7 exact다. Android는 SwiftShader software renderer다. 내부 계약 0059는 버전 0.1.0을 유지하며 전체 spinon-style suite의 기존 실패 1개와 PR check 미보고 사실도 근거에 기록했다. 이 제한 slice는 일반 CSS Grid 또는 Spinon WPT 적합성이 아니므로 C11.3.3 candidate와 C11 checkbox, 공식 72/213은 그대로다. 내부 계약 · 실행 근거 · 구현 검토 20개 · PR diff 검토 30개 · 병합 후 상태 검토 30개\n20",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}
