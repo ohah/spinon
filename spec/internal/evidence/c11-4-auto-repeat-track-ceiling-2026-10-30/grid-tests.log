@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.08s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 134 tests
+....................................................................................... 87/134
+...............................................
+test result: ok. 134 passed; 0 failed; 0 ignored; 0 measured; 178 filtered out; finished in 0.07s
