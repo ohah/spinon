@@ -32,8 +32,8 @@
 | 26 | sample 한 점이 child painting과 overflow 경계를 대표한다고 과장하는가 | row 안, item 밖, root 밖 child yellow 세 지점과 root 밖 black control을 따로 사용한다. | 통과 |
 | 27 | screenshot만으로 frame/overflow를 성공 판정하는가 | frame/track/revision summary와 per-pixel PixelCopy/Metal assertions가 성공 기준이다. screenshot은 보조 확인으로만 보존한다. | 통과 |
 | 28 | capture catalog의 scene count·allowlist가 새 항목과 어긋나는가 | 전체 fixture boundary suite의 stale count를 542로 고친 뒤 20/20이다. scene selection은 한 ID만 선택한다. | 통과 |
-| 29 | 변경이 공식 C11.4 또는 완료 수를 조기에 올리는가 | `spec/STATUS.md`는 C11.4 checkbox 미완료, 공식 `72/213`을 유지하며 제한된 slice와 근거만 추가한다. | 통과 |
-| 30 | PR 설명의 화면/빌드 주장이 재생 불가능하거나 증거 파일이 빠지는가 | README에 최신 run IDs, 결과 JSON, raw log, 화면 SHA-256과 범위를 연결했다. Android/iOS 앱 빌드, Clippy, focused tests가 최신 코드에서 재실행됐다. | 통과 |
+| 29 | 변경이 공식 C11.4 또는 완료 수를 조기에 올리는가 | `spec/STATUS.md`는 C11.4 checkbox 미완료, 공식 `72/213`을 유지한다. 내부 계약 0059도 exact fixture와 남은 범위를 제한해 적는다. | 통과 |
+| 30 | PR 설명의 화면/빌드 주장이 재생 불가능하거나 증거 파일이 빠지는가 | README와 계약 0059가 최신 run IDs, 결과 JSON, raw log, 화면 SHA-256, 앱 빌드 및 검증 한계를 연결한다. focused checks와 Clippy는 최신 코드에서 재실행됐다. | 통과 |
 
 ## 검토 결과
 
