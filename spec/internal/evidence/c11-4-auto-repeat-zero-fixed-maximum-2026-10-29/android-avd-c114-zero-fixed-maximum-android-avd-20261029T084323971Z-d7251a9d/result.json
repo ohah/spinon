@@ -1,0 +1,1832 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-zero-fixed-maximum-android-avd-20261029T084323971Z-d7251a9d",
+  "sceneCount": 24,
+  "observations": [
+    {
+      "sceneId": "columns-auto-fill-auto-max0-gap0",
+      "summary": "10-29 17:43:26.571 25710 25728 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-0 scene_id=columns-auto-fill-auto-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fill-auto-max0-gap4",
+      "summary": "10-29 17:43:29.184 25778 25797 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-1 scene_id=columns-auto-fill-auto-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=8,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 8,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-auto-max0-gap0",
+      "summary": "10-29 17:43:31.993 25845 25866 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-2 scene_id=columns-auto-fit-auto-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-auto-max0-gap4",
+      "summary": "10-29 17:43:34.116 25912 25934 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-3 scene_id=columns-auto-fit-auto-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fill-min-content-max0-gap0",
+      "summary": "10-29 17:43:37.261 25987 26006 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-4 scene_id=columns-auto-fill-min-content-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fill-min-content-max0-gap4",
+      "summary": "10-29 17:43:39.451 26054 26073 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-5 scene_id=columns-auto-fill-min-content-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=8,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 8,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-min-content-max0-gap0",
+      "summary": "10-29 17:43:41.849 26122 26144 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-6 scene_id=columns-auto-fit-min-content-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-min-content-max0-gap4",
+      "summary": "10-29 17:43:43.973 26188 26207 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-7 scene_id=columns-auto-fit-min-content-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fill-max-content-max0-gap0",
+      "summary": "10-29 17:43:46.558 26255 26275 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-8 scene_id=columns-auto-fill-max-content-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fill-max-content-max0-gap4",
+      "summary": "10-29 17:43:49.455 26327 26347 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-9 scene_id=columns-auto-fill-max-content-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=8,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 8,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-max-content-max0-gap0",
+      "summary": "10-29 17:43:52.082 26395 26414 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-10 scene_id=columns-auto-fit-max-content-max0-gap0 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "columns-auto-fit-max-content-max0-gap4",
+      "summary": "10-29 17:43:54.232 26457 26476 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-11 scene_id=columns-auto-fit-max-content-max0-gap4 expected_root_frame=width=16,height=40 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=16,height=40;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 16,
+          "height": 40
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-auto-max0-gap0",
+      "summary": "10-29 17:43:56.778 26524 26543 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-12 scene_id=rows-auto-fill-auto-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-auto-max0-gap4",
+      "summary": "10-29 17:43:59.332 26592 26611 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-13 scene_id=rows-auto-fill-auto-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=8,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 8,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-auto-max0-gap0",
+      "summary": "10-29 17:44:02.395 26667 26688 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-14 scene_id=rows-auto-fit-auto-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-auto-max0-gap4",
+      "summary": "10-29 17:44:04.840 26737 26759 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-15 scene_id=rows-auto-fit-auto-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-min-content-max0-gap0",
+      "summary": "10-29 17:44:07.411 26809 26828 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-16 scene_id=rows-auto-fill-min-content-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-min-content-max0-gap4",
+      "summary": "10-29 17:44:10.930 26887 26907 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-17 scene_id=rows-auto-fill-min-content-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=8,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 8,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-min-content-max0-gap0",
+      "summary": "10-29 17:44:13.398 26955 26977 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-18 scene_id=rows-auto-fit-min-content-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-min-content-max0-gap4",
+      "summary": "10-29 17:44:15.997 27026 27048 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-19 scene_id=rows-auto-fit-min-content-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-max-content-max0-gap0",
+      "summary": "10-29 17:44:18.111 27091 27111 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-20 scene_id=rows-auto-fill-max-content-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fill-max-content-max0-gap4",
+      "summary": "10-29 17:44:20.721 27158 27178 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-21 scene_id=rows-auto-fill-max-content-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=8,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 8,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-max-content-max0-gap0",
+      "summary": "10-29 17:44:23.398 27226 27248 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-22 scene_id=rows-auto-fit-max-content-max0-gap0 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "rows-auto-fit-max-content-max0-gap4",
+      "summary": "10-29 17:44:25.577 27292 27311 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261029T084323971Z-d7251a9d-23 scene_id=rows-auto-fit-max-content-max0-gap4 expected_root_frame=width=40,height=16 expected_item_frame=width=12,height=12 status=0 layout=ready boxes=2 generation=1 document_revision=10 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=16;1:node=2,x=0,y=0,width=12,height=12]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 16
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 12,
+          "height": 12
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          },
+          {
+            "baseSize": 12,
+            "collapsed": false
+          },
+          {
+            "baseSize": 0,
+            "collapsed": true
+          }
+        ]
+      },
+      "trackTraceChunks": 6,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

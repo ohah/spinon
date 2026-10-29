@@ -1,0 +1,2114 @@
+[
+  {
+    "id": "columns-auto-fill-auto-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(auto,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fill-auto-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(auto,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            8,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-auto-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(auto,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-auto-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(auto,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fill-min-content-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(min-content,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fill-min-content-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(min-content,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            8,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-min-content-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(min-content,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-min-content-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(min-content,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fill-max-content-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(max-content,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fill-max-content-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fill",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fill,minmax(max-content,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            8,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false,
+          false,
+          false,
+          false
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-max-content-max0-gap0",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(max-content,0px))",
+    "rows": "20px",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "columns-auto-fit-max-content-max0-gap4",
+    "axis": "columns",
+    "mode": "auto-fit",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "16px",
+    "height": "40px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "repeat(auto-fit,minmax(max-content,0px))",
+    "rows": "20px",
+    "columnGap": "4px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "3",
+          "row": "1"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        16,
+        40
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ],
+        "rows": [
+          20
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          true,
+          true,
+          false,
+          true
+        ],
+        "rows": [
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-auto-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(auto,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-auto-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(auto,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            8,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-auto-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(auto,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-auto-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "auto",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(auto,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-min-content-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(min-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-min-content-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(min-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            8,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-min-content-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(min-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-min-content-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "min-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(min-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-max-content-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(max-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fill-max-content-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fill",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fill,minmax(max-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            8,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          false,
+          false,
+          false,
+          false
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-max-content-max0-gap0",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 0,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(max-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "0px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true,
+          true
+        ]
+      }
+    }
+  },
+  {
+    "id": "rows-auto-fit-max-content-max0-gap4",
+    "axis": "rows",
+    "mode": "auto-fit",
+    "minimum": "max-content",
+    "maximum": "0px",
+    "gap": 4,
+    "basis": 16,
+    "boxSizing": "content-box",
+    "width": "40px",
+    "height": "16px",
+    "border": "0",
+    "minWidth": "0px",
+    "minHeight": "0px",
+    "maxWidth": "none",
+    "maxHeight": "none",
+    "columns": "20px",
+    "rows": "repeat(auto-fit,minmax(max-content,0px))",
+    "columnGap": "0px",
+    "rowGap": "4px",
+    "autoFlow": "row",
+    "rootColor": "#e2e8f0",
+    "items": [
+      {
+        "name": "item-1",
+        "width": "12px",
+        "height": "12px",
+        "minWidth": "12px",
+        "minHeight": "12px",
+        "color": "#e5484d",
+        "placement": {
+          "column": "1",
+          "row": "3"
+        }
+      }
+    ],
+    "expect": {
+      "root": [
+        40,
+        16
+      ],
+      "items": [
+        {
+          "name": "item-1",
+          "frame": [
+            0,
+            0,
+            12,
+            12
+          ]
+        }
+      ],
+      "tracks": {
+        "columns": [
+          20
+        ],
+        "rows": [
+          0.0,
+          0.0,
+          12.0,
+          0.0
+        ]
+      },
+      "collapsed": {
+        "columns": [
+          false
+        ],
+        "rows": [
+          true,
+          true,
+          false,
+          true
+        ]
+      }
+    }
+  }
+]

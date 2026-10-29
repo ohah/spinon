@@ -98,6 +98,20 @@ const fitContentLimitBoundarySceneIDs = new Set([
 const fitContentAutoMinFloorSceneIDs = new Set([
   'fit-content-auto-min-floor-wpt', 'fit-content-auto-min-floor-zero-control',
 ]);
+const zeroFixedMaximumSceneIDs = new Set([
+  'columns-auto-fill-auto-max0-gap0', 'columns-auto-fill-auto-max0-gap4',
+  'columns-auto-fit-auto-max0-gap0', 'columns-auto-fit-auto-max0-gap4',
+  'columns-auto-fill-min-content-max0-gap0', 'columns-auto-fill-min-content-max0-gap4',
+  'columns-auto-fit-min-content-max0-gap0', 'columns-auto-fit-min-content-max0-gap4',
+  'columns-auto-fill-max-content-max0-gap0', 'columns-auto-fill-max-content-max0-gap4',
+  'columns-auto-fit-max-content-max0-gap0', 'columns-auto-fit-max-content-max0-gap4',
+  'rows-auto-fill-auto-max0-gap0', 'rows-auto-fill-auto-max0-gap4',
+  'rows-auto-fit-auto-max0-gap0', 'rows-auto-fit-auto-max0-gap4',
+  'rows-auto-fill-min-content-max0-gap0', 'rows-auto-fill-min-content-max0-gap4',
+  'rows-auto-fit-min-content-max0-gap0', 'rows-auto-fit-min-content-max0-gap4',
+  'rows-auto-fill-max-content-max0-gap0', 'rows-auto-fill-max-content-max0-gap4',
+  'rows-auto-fit-max-content-max0-gap0', 'rows-auto-fit-max-content-max0-gap4',
+]);
 const overflowAutoMinimumSceneIDs = new Set([
   'columns-span2-visible-content-minimum', 'columns-span2-clip-content-minimum',
   'columns-span2-hidden-zero-minimum', 'columns-span2-auto-zero-minimum',
@@ -207,6 +221,8 @@ const isFitContentAutoMinFloorRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoMinFloorSceneIDs.has(sceneID));
 const isOverflowAutoMinimumRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => overflowAutoMinimumSceneIDs.has(sceneID));
+const isZeroFixedMaximumRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => zeroFixedMaximumSceneIDs.has(sceneID));
 const equalAutoRowsSceneID = 'align-content-normal-equal-auto-rows';
 if (requestedSceneIDs?.includes(equalAutoRowsSceneID)
     || requestedRunKind === equalAutoRowsSceneID) {
@@ -226,6 +242,7 @@ const isMultiSpanRun = requestedSceneIDs?.length > 0
     || textMultiSpanSceneIDs.has(sceneID) || mixedMultiSpanSceneIDs.has(sceneID));
 const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
   : isOverflowAutoMinimumRun ? 'overflow-auto-minimum'
+  : isZeroFixedMaximumRun ? 'zero-fixed-maximum'
   : isFitContentAutoNeighborRun ? 'fit-content-auto-neighbor'
   : isFitContentMinHeightRun ? 'fit-content-min-height'
   : isFitContentZoomedGridRun ? 'fit-content-zoomed-grid'
@@ -290,6 +307,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-fit-content-auto-min-floor-runtime-${date}/${target}-${runPrefix}`
   : isOverflowAutoMinimumRun || runKind === 'overflow-auto-minimum'
     ? `spec/internal/evidence/c11-4-overflow-auto-minimum-runtime-${date}/${target}-${runPrefix}`
+  : isZeroFixedMaximumRun || runKind === 'zero-fixed-maximum'
+    ? `spec/internal/evidence/c11-4-auto-repeat-zero-fixed-maximum-runtime-${date}/${target}-${runPrefix}`
   : isImageAutoMaxBorderOverflowRun
     ? `spec/internal/evidence/c11-4-image-auto-max-border-overflow-runtime-${date}/${target}-${runPrefix}`
   : runKind === 'fixed-auto-area'
@@ -4199,6 +4218,130 @@ async function autoRepeatFixedMaximumScenes() {
   });
 }
 
+async function autoRepeatZeroFixedMaximumScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_zero_fixed_maximum_scenes.json');
+  const chromePath = resolve(repositoryRoot,
+    'spec/internal/evidence/c11-4-auto-repeat-zero-fixed-maximum-precomparison-2026-10-29/chrome-156-observations.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, chrome, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(chromePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 24,
+    'zero fixed-maximum auto-repeat fixture는 24 scene이어야 합니다.');
+  assert.ok(chrome.userAgent.includes('HeadlessChrome/156.0.0.0'),
+    'zero fixed-maximum oracle는 Chrome 156이어야 합니다.');
+  assert.equal(chrome.scenes.length, 24,
+    'zero fixed-maximum Chrome 관측은 24 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_ZERO_FIXED_MAXIMUM_PIXEL_SCENE_IDS\s*=\s*BuildConfig\.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST\s*\?\s*new String\[\]\s*\{([\s\S]*?)\}\s*:\s*new String\[0\];/,
+    'Android zero fixed-maximum pixel');
+  const iosScenes = allowlist(iosSource,
+    /private let c114ZeroFixedMaximumPixelSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS zero fixed-maximum pixel');
+  const chromeById = new Map(chrome.scenes.map((scene) => [scene.id, scene]));
+  assert.deepEqual(fixtures.map(({ id }) => id), chrome.scenes.map(({ id }) => id),
+    'runtime fixture와 Chrome scene ID 순서가 달라졌습니다.');
+  const colorRgba = (color) => [
+    Number.parseInt(color.slice(1, 3), 16),
+    Number.parseInt(color.slice(3, 5), 16),
+    Number.parseInt(color.slice(5, 7), 16),
+    255,
+  ];
+  const close = (actual, expected, label) => {
+    assert.ok(Math.abs(actual - expected) <= 1 / 64,
+      `${label}: ${actual} != ${expected}`);
+  };
+
+  return fixtures.map((scene) => {
+    const { id, expect } = scene;
+    const oracle = chromeById.get(id);
+    assert.ok(oracle, `Chrome oracle에 ${id}가 없습니다.`);
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    for (const key of ['axis', 'mode', 'minimum', 'maximum']) {
+      assert.equal(scene[key], oracle[key], `${id} ${key}`);
+    }
+    for (const key of ['gap', 'basis']) {
+      close(Number(scene[key]), Number(oracle[key]), `${id} ${key}`);
+    }
+    const axisKey = scene.axis;
+    const repeatedValues = (axisKey === 'columns'
+      ? oracle.gridTemplateColumns : oracle.gridTemplateRows)
+      .split(/\s+/).map((value) => Number.parseFloat(value));
+    const expectedCount = Math.floor((scene.basis + scene.gap) / (1 + scene.gap));
+    assert.equal(repeatedValues.length, expectedCount, `${id} independent repeat count`);
+    assert.equal(oracle.repeatedTrackCount, expectedCount, `${id} Chrome repeat count`);
+    assert.deepEqual(expect.tracks[axisKey], repeatedValues, `${id} used track list`);
+    assert.equal(expect.tracks[axisKey][2], 12, `${id} occupied track minimum`);
+    assert.ok(expect.tracks[axisKey].every((value, index) => index === 2 || value === 0),
+      `${id} empty track sizes`);
+    const collapsed = repeatedValues.map((_, index) => scene.mode === 'auto-fit' && index !== 2);
+    assert.deepEqual(expect.collapsed[axisKey], collapsed, `${id} auto-fit collapse`);
+    assert.deepEqual(expect.items[0].frame, [
+      oracle.itemOffset.x, oracle.itemOffset.y, oracle.item.width, oracle.item.height,
+    ], `${id} item frame`);
+
+    const [rootWidth, rootHeight] = expect.root;
+    const [itemX, itemY, itemWidth, itemHeight] = expect.items[0].frame;
+    const rootNodeId = `c114-${id}-grid`;
+    const itemNodeId = `c114-${id}-item-1`;
+    const axis = axisKey === 'columns' ? 'Columns' : 'Rows';
+    const pixelSamples = [
+      {
+        id: `${id}-root-interior`, nodeId: rootNodeId,
+        xCssPx: axisKey === 'columns' ? 2 : 30,
+        yCssPx: axisKey === 'columns' ? 30 : 2,
+        rgba: colorRgba('#e2e8f0'),
+      },
+      {
+        id: `${id}-item-interior`, nodeId: itemNodeId,
+        xCssPx: Math.floor(itemX + itemWidth / 2),
+        yCssPx: Math.floor(itemY + itemHeight / 2),
+        rgba: colorRgba('#e5484d'),
+      },
+    ];
+    const itemOverflowsRoot = scene.mode === 'auto-fill' && scene.gap === 4;
+    if (itemOverflowsRoot) {
+      pixelSamples.push({
+        id: `${id}-item-outside-root`, nodeId: itemNodeId,
+        xCssPx: axisKey === 'columns' ? 18 : 6,
+        yCssPx: axisKey === 'columns' ? 6 : 18,
+        rgba: colorRgba('#e5484d'),
+      });
+    }
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight};`
+      + `1:node=2,x=${itemX},y=${itemY},width=${itemWidth},height=${itemHeight}]`;
+    return {
+      id,
+      axis,
+      boxCount: 2,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: null,
+      nodeFrames,
+      axes: {
+        Columns: { tracks: expect.tracks.columns, collapsed: expect.collapsed.columns },
+        Rows: { tracks: expect.tracks.rows, collapsed: expect.collapsed.rows },
+      },
+      gaps: {
+        Columns: Number.parseFloat(scene.columnGap),
+        Rows: Number.parseFloat(scene.rowGap),
+      },
+      pixelSamples,
+    };
+  });
+}
+
 async function autoRepeatPercentageNeighborScenes() {
   const fixturePath = resolve(repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json');
@@ -5035,6 +5178,7 @@ scenes.push(...await autoRepeatPositivePercentMinimumScenes());
 scenes.push(...await autoRepeatZeroPercentMinimumScenes());
 scenes.push(...await autoRepeatPercentageMaximumScenes());
 scenes.push(...await autoRepeatFixedMaximumScenes());
+scenes.push(...await autoRepeatZeroFixedMaximumScenes());
 scenes.push(...await autoRepeatPercentageNeighborScenes());
 scenes.push(...await autoRepeatCalcNeighborScenes());
 scenes.push(...await autoRepeatNegativePercentageNeighborScenes());
@@ -5733,7 +5877,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 594, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 618, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -5760,6 +5904,15 @@ if (requestedSceneIDs?.some((sceneID) => overflowAutoMinimumSceneIDs.has(sceneID
     'overflow automatic-minimum scenes need their dedicated evidence run-kind.');
   assert.ok(runScenes.every(({ id }) => overflowAutoMinimumSceneIDs.has(id)),
     'overflow automatic-minimum run에는 고정 span/single-track scene만 선택해야 합니다.');
+}
+if (requestedRunKind === 'zero-fixed-maximum'
+    || requestedSceneIDs?.some((sceneID) => zeroFixedMaximumSceneIDs.has(sceneID))) {
+  assert.ok(requestedSceneIDs?.length > 0,
+    'zero fixed-maximum run requires an explicit scene selection.');
+  assert.equal(runKind, 'zero-fixed-maximum',
+    'zero fixed-maximum scenes need their dedicated evidence run-kind.');
+  assert.ok(runScenes.every(({ id }) => zeroFixedMaximumSceneIDs.has(id)),
+    'zero fixed-maximum run에는 해당 auto-repeat scene만 선택해야 합니다.');
 }
 
 function anonymousGridBorderOverflowScenes() {
@@ -8908,7 +9061,7 @@ if (target === 'ios-simulator') {
   const simulatorModelIdentifier = command('xcrun', [
     'simctl', 'getenv', simulatorUDID, 'SIMULATOR_MODEL_IDENTIFIER',
   ]).stdout.trim();
-  if (isImageAutoMaxBorderOverflowRun || isOverflowAutoMinimumRun) {
+  if (isImageAutoMaxBorderOverflowRun || isOverflowAutoMinimumRun || isZeroFixedMaximumRun) {
     assert.equal(simulatorModelIdentifier, 'iPhone18,1',
       `iPhone 17 Pro simulator가 아닙니다: ${simulator[0].name}/${simulatorModelIdentifier}`);
   } else if (isEqualAutoRowsRun) {

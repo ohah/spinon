@@ -1034,6 +1034,9 @@ mod positive_percentage_auto_repeat;
 #[path = "grid_track_sizing_tests/auto_repeat_fixed_maximum.rs"]
 mod auto_repeat_fixed_maximum;
 
+#[path = "grid_track_sizing_tests/auto_repeat_zero_fixed_maximum.rs"]
+mod auto_repeat_zero_fixed_maximum;
+
 #[path = "grid_track_sizing_tests/cyclic_percentage_auto_repeat_rows.rs"]
 mod cyclic_percentage_auto_repeat_rows;
 

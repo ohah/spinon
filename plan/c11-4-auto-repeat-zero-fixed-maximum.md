@@ -1,6 +1,6 @@
 # C11.4 · 자동 반복 `minmax(inflexible, 0px)` 경계
 
-**상태:** 계획 및 Chrome 사전 비교만 완료했다. 구현, Spinon runtime, Android/iOS Simulator는 아직 확인하지 않았다. C11.4와 상위 C11 체크박스는 미완료로 두며 공식 완료 집계 `72/213`을 변경하지 않는다.
+**상태:** 24개 고정 장면의 제한 opt-in runtime slice 구현과 Android/iOS Simulator 검증을 완료했다. 구현 근거와 범위 제한은 [실행 evidence](../spec/internal/evidence/c11-4-auto-repeat-zero-fixed-maximum-2026-10-29/README.md)에 기록한다. 이 slice만으로 C11.4 또는 상위 C11을 완료 처리하지 않으며 공식 완료 집계 `72/213`은 유지한다.
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [직전 fixed-maximum slice](./c11-4-auto-repeat-inflexible-fixed-maximum.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 

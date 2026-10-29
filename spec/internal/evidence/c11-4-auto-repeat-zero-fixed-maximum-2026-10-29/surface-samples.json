@@ -1,0 +1,2503 @@
+{
+  "schemaVersion": 1,
+  "targets": {
+    "android-avd": {
+      "readback": "PixelCopy",
+      "sampleCount": 54,
+      "exactCount": 54,
+      "samples": [
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap0",
+          "sampleId": "columns-auto-fill-auto-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-auto-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap0",
+          "sampleId": "columns-auto-fill-auto-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-auto-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-auto-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 14.0,
+            "css_y": 6.0,
+            "x": 38,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-columns-auto-fill-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 18.0,
+            "css_y": 6.0,
+            "x": 48,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap0",
+          "sampleId": "columns-auto-fit-auto-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-auto-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap0",
+          "sampleId": "columns-auto-fit-auto-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-auto-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap4",
+          "sampleId": "columns-auto-fit-auto-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-auto-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap4",
+          "sampleId": "columns-auto-fit-auto-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap0",
+          "sampleId": "columns-auto-fill-min-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-min-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap0",
+          "sampleId": "columns-auto-fill-min-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-min-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-min-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 14.0,
+            "css_y": 6.0,
+            "x": 38,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-columns-auto-fill-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 18.0,
+            "css_y": 6.0,
+            "x": 48,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap0",
+          "sampleId": "columns-auto-fit-min-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-min-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap0",
+          "sampleId": "columns-auto-fit-min-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-min-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap4",
+          "sampleId": "columns-auto-fit-min-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-min-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap4",
+          "sampleId": "columns-auto-fit-min-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap0",
+          "sampleId": "columns-auto-fill-max-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-max-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap0",
+          "sampleId": "columns-auto-fill-max-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-max-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fill-max-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fill-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 14.0,
+            "css_y": 6.0,
+            "x": 38,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-columns-auto-fill-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 18.0,
+            "css_y": 6.0,
+            "x": 48,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap0",
+          "sampleId": "columns-auto-fit-max-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-max-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap0",
+          "sampleId": "columns-auto-fit-max-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-max-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap4",
+          "sampleId": "columns-auto-fit-max-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-columns-auto-fit-max-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 2.0,
+            "css_y": 30.0,
+            "x": 6,
+            "y": 80
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap4",
+          "sampleId": "columns-auto-fit-max-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-columns-auto-fit-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap0",
+          "sampleId": "rows-auto-fill-auto-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-auto-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap0",
+          "sampleId": "rows-auto-fill-auto-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-auto-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-auto-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 14.0,
+            "x": 17,
+            "y": 38
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-rows-auto-fill-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 18.0,
+            "x": 17,
+            "y": 48
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap0",
+          "sampleId": "rows-auto-fit-auto-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-auto-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap0",
+          "sampleId": "rows-auto-fit-auto-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-auto-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap4",
+          "sampleId": "rows-auto-fit-auto-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-auto-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap4",
+          "sampleId": "rows-auto-fit-auto-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-auto-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap0",
+          "sampleId": "rows-auto-fill-min-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-min-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap0",
+          "sampleId": "rows-auto-fill-min-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-min-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-min-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 14.0,
+            "x": 17,
+            "y": 38
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-rows-auto-fill-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 18.0,
+            "x": 17,
+            "y": 48
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap0",
+          "sampleId": "rows-auto-fit-min-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-min-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap0",
+          "sampleId": "rows-auto-fit-min-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-min-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap4",
+          "sampleId": "rows-auto-fit-min-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-min-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap4",
+          "sampleId": "rows-auto-fit-min-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-min-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap0",
+          "sampleId": "rows-auto-fill-max-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-max-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap0",
+          "sampleId": "rows-auto-fill-max-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-max-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fill-max-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fill-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 14.0,
+            "x": 17,
+            "y": 38
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-item-outside-root",
+          "targetNodeId": "c114-rows-auto-fill-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 18.0,
+            "x": 17,
+            "y": 48
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap0",
+          "sampleId": "rows-auto-fit-max-content-max0-gap0-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-max-content-max0-gap0-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap0",
+          "sampleId": "rows-auto-fit-max-content-max0-gap0-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-max-content-max0-gap0-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap4",
+          "sampleId": "rows-auto-fit-max-content-max0-gap4-root-interior",
+          "targetNodeId": "c114-rows-auto-fit-max-content-max0-gap4-grid",
+          "surfacePoint": {
+            "css_x": 30.0,
+            "css_y": 2.0,
+            "x": 80,
+            "y": 6
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap4",
+          "sampleId": "rows-auto-fit-max-content-max0-gap4-item-interior",
+          "targetNodeId": "c114-rows-auto-fit-max-content-max0-gap4-item-1",
+          "surfacePoint": {
+            "css_x": 6.0,
+            "css_y": 6.0,
+            "x": 17,
+            "y": 17
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        }
+      ]
+    },
+    "ios-simulator": {
+      "readback": "Metal drawable before compositor",
+      "sampleCount": 54,
+      "exactCount": 54,
+      "samples": [
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap0",
+          "sampleId": "columns-auto-fill-auto-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap0",
+          "sampleId": "columns-auto-fill-auto-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 43,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-auto-max0-gap4",
+          "sampleId": "columns-auto-fill-auto-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 55,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap0",
+          "sampleId": "columns-auto-fit-auto-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap0",
+          "sampleId": "columns-auto-fit-auto-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap4",
+          "sampleId": "columns-auto-fit-auto-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-auto-max0-gap4",
+          "sampleId": "columns-auto-fit-auto-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap0",
+          "sampleId": "columns-auto-fill-min-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap0",
+          "sampleId": "columns-auto-fill-min-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 43,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-min-content-max0-gap4",
+          "sampleId": "columns-auto-fill-min-content-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 55,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap0",
+          "sampleId": "columns-auto-fit-min-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap0",
+          "sampleId": "columns-auto-fit-min-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap4",
+          "sampleId": "columns-auto-fit-min-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-min-content-max0-gap4",
+          "sampleId": "columns-auto-fit-min-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap0",
+          "sampleId": "columns-auto-fill-max-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap0",
+          "sampleId": "columns-auto-fill-max-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 43,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fill-max-content-max0-gap4",
+          "sampleId": "columns-auto-fill-max-content-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 55,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap0",
+          "sampleId": "columns-auto-fit-max-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap0",
+          "sampleId": "columns-auto-fit-max-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap4",
+          "sampleId": "columns-auto-fit-max-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 7,
+            "y": 91
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "columns-auto-fit-max-content-max0-gap4",
+          "sampleId": "columns-auto-fit-max-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap0",
+          "sampleId": "rows-auto-fill-auto-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap0",
+          "sampleId": "rows-auto-fill-auto-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 43
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-auto-max0-gap4",
+          "sampleId": "rows-auto-fill-auto-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 55
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap0",
+          "sampleId": "rows-auto-fit-auto-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap0",
+          "sampleId": "rows-auto-fit-auto-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap4",
+          "sampleId": "rows-auto-fit-auto-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-auto-max0-gap4",
+          "sampleId": "rows-auto-fit-auto-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap0",
+          "sampleId": "rows-auto-fill-min-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap0",
+          "sampleId": "rows-auto-fill-min-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 43
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-min-content-max0-gap4",
+          "sampleId": "rows-auto-fill-min-content-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 55
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap0",
+          "sampleId": "rows-auto-fit-min-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap0",
+          "sampleId": "rows-auto-fit-min-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap4",
+          "sampleId": "rows-auto-fit-min-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-min-content-max0-gap4",
+          "sampleId": "rows-auto-fit-min-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap0",
+          "sampleId": "rows-auto-fill-max-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap0",
+          "sampleId": "rows-auto-fill-max-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 43
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fill-max-content-max0-gap4",
+          "sampleId": "rows-auto-fill-max-content-max0-gap4-item-outside-root",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 55
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap0",
+          "sampleId": "rows-auto-fit-max-content-max0-gap0-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap0",
+          "sampleId": "rows-auto-fit-max-content-max0-gap0-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap4",
+          "sampleId": "rows-auto-fit-max-content-max0-gap4-root-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 91,
+            "y": 7
+          },
+          "rgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "expectedRgba": [
+            226,
+            232,
+            240,
+            255
+          ],
+          "exact": true
+        },
+        {
+          "sceneId": "rows-auto-fit-max-content-max0-gap4",
+          "sampleId": "rows-auto-fit-max-content-max0-gap4-item-interior",
+          "targetNodeId": null,
+          "surfacePoint": {
+            "x": 19,
+            "y": 19
+          },
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "expectedRgba": [
+            229,
+            72,
+            77,
+            255
+          ],
+          "exact": true
+        }
+      ]
+    }
+  }
+}

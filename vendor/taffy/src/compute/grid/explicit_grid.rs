@@ -949,6 +949,19 @@ mod test {
         )
     }
 
+    fn row_auto_repeat_count(
+        style: &Style<DefaultCheapStr>,
+        container_size: Option<f32>,
+    ) -> (u16, u16) {
+        compute_explicit_grid_size_in_axis(
+            style,
+            container_size,
+            AutoRepeatStrategy::MaxRepetitionsThatDoNotOverflow,
+            |_, _| 0.0,
+            AbsoluteAxis::Vertical,
+        )
+    }
+
     #[test]
     fn auto_repeat_count_floors_zero_sized_tracks_to_one_px() {
         use RepetitionCount::AutoFill;
@@ -985,6 +998,46 @@ mod test {
             column_auto_repeat_count(&zero_length_control, Some(120.0)),
             (120, 120)
         );
+    }
+
+    #[test]
+    fn auto_repeat_count_floors_zero_fixed_maximum_for_intrinsic_minima_on_both_axes() {
+        use crate::style_helpers::{TaffyAuto, TaffyMaxContent, TaffyMinContent};
+        use RepetitionCount::AutoFill;
+
+        let minima = [
+            MinTrackSizingFunction::AUTO,
+            MinTrackSizingFunction::MIN_CONTENT,
+            MinTrackSizingFunction::MAX_CONTENT,
+        ];
+        for minimum in minima {
+            for (gap, zero_expected, positive_expected) in [(0.0, 16, 8), (4.0, 4, 3)] {
+                for (maximum, expected) in [(0.0, zero_expected), (2.0, positive_expected)] {
+                    let track = minmax(minimum, length(maximum));
+                    let style: Style<DefaultCheapStr> = Style {
+                        display: Display::Grid,
+                        size: Size {
+                            width: length(16.0),
+                            height: length(16.0),
+                        },
+                        gap: length(gap),
+                        grid_template_columns: vec![repeat(AutoFill, vec![track])],
+                        grid_template_rows: vec![repeat(AutoFill, vec![track])],
+                        ..Default::default()
+                    };
+                    assert_eq!(
+                        column_auto_repeat_count(&style, Some(16.0)),
+                        (expected, expected),
+                        "column minimum {minimum:?}, maximum {maximum}, gap {gap}"
+                    );
+                    assert_eq!(
+                        row_auto_repeat_count(&style, Some(16.0)),
+                        (expected, expected),
+                        "row minimum {minimum:?}, maximum {maximum}, gap {gap}"
+                    );
+                }
+            }
+        }
     }
 
     #[test]

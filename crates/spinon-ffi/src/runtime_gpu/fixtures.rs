@@ -44,6 +44,8 @@ pub(crate) mod c11_4_auto_repeat_percentage_maximum;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_auto_repeat_percentage_neighbors;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) mod c11_4_auto_repeat_zero_fixed_maximum;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) mod c11_4_template_area_auto_repeat;
 #[cfg(feature = "c12-5-sticky-fixture-test")]
 mod c12_5_sticky_host;

@@ -1,0 +1,81 @@
+{
+  "default": {
+    "archive": "target/release/libspinon_ffi.a",
+    "bytes": 60201432,
+    "sha256": "4ceeff25b1056334f27ffc8870f4d7ba7abb9f2ed996c19c68dc69fc8eecf390",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": false,
+      "rows-auto-fit-max-content-max0-gap4": false
+    }
+  },
+  "fixtureTest": {
+    "archive": "target/release/libspinon_ffi.a",
+    "features": [
+      "c04-runtime-gpu-fixture-test"
+    ],
+    "bytes": 80511712,
+    "sha256": "9d74e4eb4d39bec5f9426222396c44fd4fa3afcaf8fcb92d0d68c4c1cddf1d36",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": true,
+      "rows-auto-fit-max-content-max0-gap4": true
+    }
+  },
+  "androidApkDefault": {
+    "archive": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "features": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=0"
+    ],
+    "bytes": 114296828,
+    "sha256": "bc85d615436a8ea337de08d46ae94f693bb97170d3649ccf2a683b9d89499205",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": [],
+      "rows-auto-fit-max-content-max0-gap4": []
+    }
+  },
+  "androidApkFixtureTest": {
+    "archive": "platforms/android/app/build/outputs/apk/debug/app-debug.apk",
+    "features": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1"
+    ],
+    "bytes": 117229642,
+    "sha256": "363e1e009e3ce0ed283f4ec770420cf2e812cd99d5b47554a3230cbd798b563c",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": [
+        "classes2.dex"
+      ],
+      "rows-auto-fit-max-content-max0-gap4": [
+        "classes2.dex"
+      ]
+    }
+  },
+  "iosSimulatorFixtureTest": {
+    "archive": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "features": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=1"
+    ],
+    "bytes": 40472032,
+    "sha256": "b50493a4895d2d32b403e23339b188c5de31b998ed7d7ec13d106814eedc2f81",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": true,
+      "rows-auto-fit-max-content-max0-gap4": true
+    }
+  },
+  "iosSimulatorDefault": {
+    "archive": "build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app/SpinonBootstrap",
+    "features": [
+      "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+      "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=0",
+      "SPINON_ENABLE_C11_GRID_METAL_SURFACE_PIXELS_TEST=0"
+    ],
+    "bytes": 37443504,
+    "sha256": "67d7ea6f36766988078d809c1c6c039f2263fde62b6ad60500f34ee90ded3333",
+    "markers": {
+      "columns-auto-fill-auto-max0-gap0": false,
+      "rows-auto-fit-max-content-max0-gap4": false
+    }
+  }
+}
