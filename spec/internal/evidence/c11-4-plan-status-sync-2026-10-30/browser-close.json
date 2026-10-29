@@ -1,0 +1,8 @@
+{
+  "session": "spinon-c114-roadmap-status-sync-2026-10-30",
+  "command": "agent-browser --session spinon-c114-roadmap-status-sync-2026-10-30 close",
+  "result": "Browser closed",
+  "daemon_check": "agent-browser doctor --offline --quick",
+  "active_daemons": 0,
+  "closed": true
+}
