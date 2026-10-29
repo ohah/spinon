@@ -579,9 +579,20 @@ try {
     'expected-rejection': runtime.summary.expectedRejectCount,
   });
   const totalComparisons = platform.observations.reduce((sum, item) => sum + (item.comparisons?.length ?? 0), 0);
+  const source = {
+    commit: command('git', ['rev-parse', 'HEAD']).stdout.trim(),
+    runtimeMatrixSha256: sha256(await readFile(resolve(repositoryRoot, runtimePath))),
+    historicalRuntimeMatrixSha256: historicalRuntimeSha256,
+    mobileFixtureSha256: sha256(await readFile(resolve(repositoryRoot, mobilePath))),
+    trackListCyclePixelsSha256: sha256(await readFile(resolve(repositoryRoot, cyclePixelsPath))),
+    captureScriptSha256: sha256(await readFile(fileURLToPath(import.meta.url))),
+    androidRuntimeSourceSha256: sha256(await readFile(resolve(repositoryRoot,
+      'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'))),
+    appSha256: platform.appSha256,
+  };
   const result = {
     schema: 'spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1',
-    status: 'matched', runID, target, metadata,
+    status: 'matched', runID, target, metadata, source,
     fixture: { path: runtimePath, sha256: sha256(await readFile(resolve(repositoryRoot, runtimePath))) },
     trackListCyclePixels: {
       path: cyclePixelsPath,
@@ -632,6 +643,7 @@ try {
     `- Run: \`${runID}\``, `- Target: ${target === 'android-physical'
       ? `Android 실기기 ${metadata.model} / Android ${metadata.release} (API ${metadata.sdk}); renderer: ${metadata.renderer}`
       : 'Android API 37 AVD with SwiftShader'}`,
+    `- Source commit: \`${source.commit}\`; Android Java SHA-256: \`${source.androidRuntimeSourceSha256}\`; APK SHA-256: \`${source.appSha256}\`.`,
     `- Runtime matrix: ${runtime.summary.sceneCount} scenes / ${runtime.summary.nodeCount} nodes; `
       + `${runtime.summary.successCount} success, ${runtime.summary.cascadeFallbackCount} cascade fallback, `
       + `${runtime.summary.expectedRejectCount} expected rejection.`,

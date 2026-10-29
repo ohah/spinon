@@ -498,6 +498,10 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(matrixCapture.includes('cyclePixelComparisons'));
   assert.ok(matrixCapture.includes('pixelcopy-${scene.id}.png'));
   assert.ok(matrixCapture.includes("'SPINON_ENABLE_C04_RUNTIME_GPU=1'"));
+  assert.ok(matrixCapture.includes("commit: command('git', ['rev-parse', 'HEAD'])"));
+  assert.ok(matrixCapture.includes('androidRuntimeSourceSha256:'));
+  assert.ok(matrixCapture.includes('captureScriptSha256:'));
+  assert.ok(matrixCapture.includes('- Source commit:'));
   const iosMatrixCapture = iosMatrixCaptureBytes.toString('utf8');
   assert.ok(iosMatrixCapture.includes('cyclePixelScenes'));
   assert.ok(iosMatrixCapture.includes('cyclePixelComparisons'));
