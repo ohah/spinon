@@ -132,8 +132,6 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "backward-span-partial-explicit", "forward-span-two",
             "backward-span-uses-authored-name",
     };
-    private static final String C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID =
-            "unknown-area-implicit-tracks";
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
     private static final String[] C114_GENERIC_DIRECT_TEXT_SCENE_IDS = {
@@ -14391,43 +14389,6 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return;
         }
         if (c153GlyphPaintProbeRequested) c153GlyphPaintEvaluationReport = result;
-        if (c1133GridTemplateAreasRequested
-                && C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(c1133GridTemplateAreasSceneId)
-                && result.startsWith("status=0 ")) {
-            long rejectionHost = nativeCreateC1133GridTemplateAreasHost();
-            String rejection;
-            if (rejectionHost == 0) {
-                rejection = "status=-2 isolated rejection host creation failed";
-            } else {
-                try {
-                    String rejectionEnvironment = decode(nativeSetEnvironment(
-                            rejectionHost, 320.0f, 240.0f, 1.0f, dark));
-                    rejection = rejectionEnvironment.startsWith("status=0 ")
-                            ? decode(nativeEvalC1133GridTemplateAreasFixture(
-                                    rejectionHost, C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID,
-                                    c1133GridTemplateAreasRunId))
-                            : rejectionEnvironment;
-                } finally {
-                    nativeFreeHost(rejectionHost);
-                }
-            }
-            boolean expectedRejection = rejection.startsWith("status=-11 ")
-                    && rejection.contains("unsupported_grid_auto_rows")
-                    && rejection.contains("property=Some(\"grid-auto-rows\")")
-                    && !rejection.contains("node_frames_css_px=[");
-            Log.i(TAG, "SPINON_C1133_GRID_REJECTION run_id=" + c1133GridTemplateAreasRunId
-                    + " scene_id=" + C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID
-                    + " expected=" + expectedRejection + " " + rejection);
-            if (!expectedRejection) {
-                postStatus("실패 · C11.3.3 unknown area implicit track 거부 계약 오류");
-                return;
-            }
-            Log.i(TAG, "SPINON_C1133_GRID_REJECTION_SUMMARY run_id="
-                    + c1133GridTemplateAreasRunId + " scene_id="
-                    + C1133_GRID_TEMPLATE_AREAS_REJECT_SCENE_ID
-                    + " expected=true status=-11 code=unsupported_grid_auto_rows"
-                    + " property=grid-auto-rows frames=absent");
-        }
         if (c1132GridNamedLinesRequested && result.startsWith("status=0 ")) {
             long rejectionHost = nativeCreateC1132GridNamedLinesHost();
             String rejection;

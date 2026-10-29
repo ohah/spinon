@@ -1,0 +1,117 @@
+{
+  "schema": "spinon-css-c11-3-3-grid-template-areas-inventory/v2",
+  "fixtureId": "C11.3.3-grid-template-areas-precomparison-v1",
+  "supersedes": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-c1133-inventory.json",
+    "sha256": "0d44c89512e5b049970c0da806a99ecc9d0c6601c29d1e0c82c73c39975c77cc"
+  },
+  "sourcePolicy": "HTML fixture is a derived fixed comparison input. Pinned WPT files are hashed and their Chrome subtests are individually classified in the linked report; those results do not establish Spinon WPT conformance.",
+  "viewport": { "width": 320, "height": 240, "deviceScaleFactors": [1, 2] },
+  "environment": {
+    "locale": "en-US",
+    "timeZone": "UTC",
+    "colorScheme": "light",
+    "forcedColors": "none",
+    "pointer": "coarse",
+    "hover": "none",
+    "direction": "ltr",
+    "writingMode": "horizontal-tb"
+  },
+  "comparison": {
+    "rectFields": ["x", "y", "width", "height"],
+    "maximumAbsoluteRectErrorCssPx": 0.5,
+    "computedProperties": [
+      "display", "direction", "writing-mode", "width", "height",
+      "grid-template-columns", "grid-template-rows", "grid-template-areas",
+      "grid-auto-flow", "column-gap", "row-gap", "grid-area",
+      "grid-column-start", "grid-column-end", "grid-row-start", "grid-row-end"
+    ]
+  },
+  "wpt": {
+    "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+    "browser": "Chrome/154.0.8037.92",
+    "chromeReportEvidence": "spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14/wpt-chrome154.0.8037.92-run01.json",
+    "classifiedReportEvidence": "spec/internal/evidence/c11-3-3-wpt-inventory-refresh-2026-10-30/classified-run06.json",
+    "candidates": [
+      {
+        "path": "css/css-grid/grid-definition/grid-support-grid-template-areas-001.html",
+        "sha256": "fdc219b1887a5aaf7e81c4db2cea39e7fb9878274736b06a629adabf06e77b4a",
+        "classification": "Spinon fixture candidates: typed area tokenization, equal row widths, rectangle validity, null-cell serialization, and invalid declaration cascade. Full WPT test remains Chrome oracle only.",
+        "subtestClassification": "Each PASS input is an individual Spinon fixture candidate for parsing/cascade. Valid matrix serialization and invalid declaration fallback are compared through the derived fixture; the full WPT DOM test is not ported."
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-named-grid-area-resolution-001.html",
+        "sha256": "573b98353618c00c3eefc27ccc56c176dc269fe12ece7bbcd8dd6375dcce6ae7",
+        "classification": "Spinon fixture candidates: area rectangle placement, grid-area/grid-row/grid-column shorthand expansion, named spans and explicit named-line interaction. Full WPT layout remains Chrome oracle only.",
+        "subtestClassification": "Each PASS subtest is a Spinon fixture candidate mapped to the named-area and shorthand geometry cases; original test is only run by Chrome."
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-named-lines-and-areas-001.html",
+        "sha256": "6e55fadc66203e6d570c61009c5d6a42d2f2db7eb77c7864aced34f86219aaa9",
+        "classification": "Spinon fixture candidates: generated area edges, authored/generated name precedence, areas ending in -start/-end, repeated names, and explicit-line implicit named areas. Full WPT layout remains Chrome oracle only.",
+        "subtestClassification": "Each PASS subtest is a Spinon fixture candidate unless it requires automatic implicit tracks; WPT fixture geometry is not copied wholesale."
+      },
+      {
+        "path": "css/css-grid/placement/grid-placement-unknown-named-area-001.html",
+        "sha256": "7fa795ad262e74399487fa817da1e99a75bbcce2e46b5f4547d55959e2e9ebd4",
+        "classification": "Four pinned subtests have derived Spinon fixture coverage for positive trailing implicit named lines/spans. The complete WPT DOM test remains Chrome-oracle-only; this mapping is not Spinon WPT conformance.",
+        "subtestClassification": "The four pinned .grid subtests map by report name to the fixed C11.3.3 opt-in scenes below. This covers only the derived positive trailing fixed-px profile; it does not run the original WPT through Spinon.",
+        "fixtureSceneSource": "tests/fixtures/css/c11/unknown-named-area-implicit-lines-c1133.html",
+        "subtestCoverage": [
+          {
+            "name": ".grid 1",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-both-named-row",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 2",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-column-named-span",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 3",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-row-named-span",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 4",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-column-span-one",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          }
+        ]
+      }
+    ]
+  },
+  "cases": [
+    { "id": "basic-rectangles", "rootId": "basic-grid", "nodeIds": ["basic-grid", "basic-head", "basic-main", "basic-foot"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["head", "head", "."], ["nav", "main", "main"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "success" },
+    { "id": "null-cell-dot-runs", "rootId": "null-grid", "nodeIds": ["null-grid", "null-hero", "null-left", "null-right"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [[".", "hero", "."], ["left", "hero", "right"]], "expectedSpinonOutcome": "success" },
+    { "id": "all-null-cells", "rootId": "empty-grid", "nodeIds": ["empty-grid"], "expectedColumns": 2, "expectedRows": 2, "expectedComputedAreaRows": [[".", "."], [".", "."]], "expectedSpinonOutcome": "success" },
+    { "id": "single-cell-area", "rootId": "single-grid", "nodeIds": ["single-grid", "single-item"], "expectedColumns": 1, "expectedRows": 1, "expectedComputedAreaRows": [["solo"]], "expectedSpinonOutcome": "success" },
+    { "id": "bare-area-edge-aliases", "rootId": "alias-grid", "nodeIds": ["alias-grid", "alias-area"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["foo", "foo", "."], ["bar", "baz", "baz"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-area-one-value", "rootId": "area-one-grid", "nodeIds": ["area-one-grid", "area-one-item"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["head", "head", "."], ["nav", "main", "main"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-area-two-values", "rootId": "area-two-grid", "nodeIds": ["area-two-grid", "area-two-item"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["a", "a", "."], ["b", "c", "c"], ["d", "d", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-area-three-values", "rootId": "area-three-grid", "nodeIds": ["area-three-grid", "area-three-item"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["a", "a", "."], ["b", "c", "c"], ["d", "d", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-area-four-values", "rootId": "area-four-grid", "nodeIds": ["area-four-grid", "area-four-item"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["a", "a", "."], ["b", "c", "c"], ["d", "d", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "row-column-longhands-area", "rootId": "longhand-grid", "nodeIds": ["longhand-grid", "longhand-item"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["top", "top", "."], ["left", "body", "body"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-template-shorthand", "rootId": "template-grid", "nodeIds": ["template-grid", "template-item"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["head", "head", "."], ["left", "main", "main"]], "expectedSpinonOutcome": "success" },
+    { "id": "grid-shorthand", "rootId": "grid-shorthand-grid", "nodeIds": ["grid-shorthand-grid", "grid-shorthand-item"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["head", "head", "."], ["left", "main", "main"]], "expectedSpinonOutcome": "success" },
+    { "id": "bare-area-vs-explicit-one-name", "rootId": "bare-vs-number-grid", "nodeIds": ["bare-vs-number-grid", "bare-area-name", "explicit-one-name"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [[".", "foo", "foo"], ["bar", "foo", "foo"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "success" },
+    { "id": "explicit-line-before-area", "rootId": "line-before-grid", "nodeIds": ["line-before-grid", "line-before-area", "line-before-name", "line-before-grid-area"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [[".", "a", "a"], ["c", "a", "a"], [".", ".", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "explicit-line-after-area", "rootId": "line-after-grid", "nodeIds": ["line-after-grid", "line-after-area", "line-after-name"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [[".", "a", "a"], ["c", "a", "a"], [".", ".", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "area-names-ending-start-or-end", "rootId": "suffix-grid", "nodeIds": ["suffix-grid", "suffix-area-name", "suffix-area-end-name"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [[".", "a-start", "a-start"], ["c", "a-end", "a-end"], [".", ".", "d"]], "expectedSpinonOutcome": "success" },
+    { "id": "implicit-area-from-explicit-lines", "rootId": "implicit-area-grid", "nodeIds": ["implicit-area-grid", "implicit-area-item"], "expectedColumns": 2, "expectedRows": 2, "expectedComputedAreaRows": null, "expectedSpinonOutcome": "success" },
+    { "id": "escaped-and-unicode-identifiers", "rootId": "unicode-grid", "nodeIds": ["unicode-grid", "unicode-escaped-item", "unicode-asian-item"], "expectedColumns": 3, "expectedRows": 1, "expectedComputedAreaRows": [["café", ".", "田"]], "expectedSpinonOutcome": "success" },
+    { "id": "invalid-l-shape-fallback", "rootId": "invalid-l-grid", "nodeIds": ["invalid-l-grid", "invalid-l-fallback"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["fallback", "fallback", "."], ["left", "right", "right"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "cascade-fallback" },
+    { "id": "invalid-disconnected-area-fallback", "rootId": "invalid-disconnected-grid", "nodeIds": ["invalid-disconnected-grid", "invalid-disconnected-fallback"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["fallback", "fallback", "."], ["left", "right", "right"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "cascade-fallback" },
+    { "id": "invalid-row-width-fallback", "rootId": "invalid-row-width-grid", "nodeIds": ["invalid-row-width-grid", "invalid-row-width-fallback"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["fallback", "fallback", "."], ["left", "right", "right"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "cascade-fallback" },
+    { "id": "invalid-trash-token-fallback", "rootId": "invalid-trash-grid", "nodeIds": ["invalid-trash-grid", "invalid-trash-fallback"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["fallback", "fallback", "."], ["left", "right", "right"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "cascade-fallback" },
+    { "id": "empty-string-fallback", "rootId": "invalid-empty-grid", "nodeIds": ["invalid-empty-grid", "invalid-empty-fallback"], "expectedColumns": 3, "expectedRows": 3, "expectedComputedAreaRows": [["fallback", "fallback", "."], ["left", "right", "right"], ["foot", "foot", "foot"]], "expectedSpinonOutcome": "cascade-fallback" },
+    { "id": "area-track-count-mismatch", "rootId": "mismatch-grid", "nodeIds": ["mismatch-grid", "mismatch-last-cell"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["a", "b", "c"], ["d", "e", "f"]], "authoredExplicitColumns": 2, "expectedSpinonOutcome": "reject-area-track-count-mismatch" },
+    { "id": "unknown-area-implicit-tracks", "rootId": "unknown-area-grid", "nodeIds": ["unknown-area-grid", "unknown-area-item"], "expectedColumns": 4, "expectedRows": 4, "expectedComputedAreaRows": [["known", "."], [".", "."]], "expectedSpinonOutcome": "success" },
+    { "id": "nested-hidden-source-order", "rootId": "nested-outer-grid", "nodeIds": ["nested-outer-grid", "nested-outer-item", "nested-inner-grid", "nested-inner-item", "nested-bottom-item", "nested-hidden-item"], "expectedColumns": 3, "expectedRows": 2, "expectedComputedAreaRows": [["outer", "outer", "."], ["left", "nested", "nested"]], "expectedSpinonOutcome": "success" }
+  ]
+}

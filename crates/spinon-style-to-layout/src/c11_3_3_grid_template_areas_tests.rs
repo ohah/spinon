@@ -540,6 +540,35 @@ fn opt_in_does_not_accept_unmarked_last_line_auto_extent() {
 }
 
 #[test]
+fn unknown_area_bare_ident_uses_default_auto_implicit_tracks() {
+    let fixture = Fixture::new(
+        "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:80px 80px;grid-template-rows:40px 40px;grid-template-areas:'known .' '. .';column-gap:0;row-gap:0;margin:0;padding:0;border:0",
+        &[
+            (
+                "known",
+                "box-sizing:border-box;width:80px;height:40px;grid-area:known;margin:0;padding:0;border:0",
+            ),
+            (
+                "unknown",
+                "box-sizing:border-box;min-width:0;min-height:0;grid-area:not-authored;margin:0;padding:0;border:0",
+            ),
+        ],
+    );
+    let output = fixture.compute_with_implicit_named_lines(true).unwrap();
+    let known = output.layout.frames[&fixture.nodes["known"].id()];
+    let unknown = output.layout.frames[&fixture.nodes["unknown"].id()];
+
+    assert_eq!(
+        (known.x, known.y, known.width, known.height),
+        (0.0, 0.0, 80.0, 40.0)
+    );
+    assert_eq!(
+        (unknown.x, unknown.y, unknown.width, unknown.height),
+        (160.0, 80.0, 0.0, 0.0)
+    );
+}
+
+#[test]
 fn implicit_track_profile_requires_fixed_tracks_and_definite_item_placement() {
     let auto_track = Fixture::new(
         "display:grid;box-sizing:border-box;width:80px;height:30px;grid-template-columns:40px 40px;grid-template-rows:30px;grid-auto-columns:10px;grid-auto-rows:auto;margin:0;padding:0;border:0",

@@ -10761,7 +10761,6 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         }).map { String($0.dropFirst("--spinon-c1133-grid-scene=".count)) }
             ?? "basic-rectangles"
     }
-    private let c1133GridTemplateAreasRejectSceneID = "unknown-area-implicit-tracks"
     private let c1133GridTemplateAreasProbeRequested = ProcessInfo.processInfo.arguments
         .contains("--spinon-c1133-grid-template-areas")
     private var c1133GridTemplateAreasRunID: String {
@@ -13861,44 +13860,6 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
         } else {
             result = SpinonRunner.evalRuntimeGpuFixture(handle)
         }
-        }
-        if c1133GridTemplateAreasProbeRequested,
-           c1133GridTemplateAreasSceneID == "basic-rectangles",
-           result?.hasPrefix("status=0 ") == true {
-            let rejectionHost = SpinonRunner.createRuntimeGpuHostWithC11_3_3GridTemplateAreasFixture()
-            let rejection: String
-            if rejectionHost == 0 {
-                rejection = "status=-2 isolated rejection host creation failed"
-            } else {
-                let rejectionEnvironment = SpinonRunner.setRuntimeGpuEnvironment(
-                    rejectionHost, width: 320, height: 240, scale: 1,
-                    dark: environmentInputs.dark
-                ) ?? "status=-1 missing-environment-report"
-                rejection = rejectionEnvironment.hasPrefix("status=0 ")
-                    ? SpinonRunner.evalRuntimeGpuC11_3_3GridTemplateAreasFixture(
-                        rejectionHost,
-                        sceneID: c1133GridTemplateAreasRejectSceneID,
-                        runID: c1133GridTemplateAreasRunID
-                    ) ?? "status=-1 missing-report"
-                    : rejectionEnvironment
-                SpinonRunner.freeRuntimeGpuHost(rejectionHost)
-            }
-            let expectedRejection = rejection.hasPrefix("status=-11 ")
-                && rejection.contains("unsupported_grid_auto_rows")
-                && rejection.contains("property=Some(\"grid-auto-rows\")")
-                && !rejection.contains("node_frames_css_px=[")
-            log("SPINON_C1133_GRID_REJECTION run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasRejectSceneID) expected=\(expectedRejection) \(rejection)")
-            let rejectionStatus = String(rejection.split(separator: " ", maxSplits: 1).first ?? "status=-1")
-            let rejectionCode = rejection.contains("unsupported_grid_auto_rows")
-                ? "unsupported_grid_auto_rows" : "missing"
-            let rejectionProperty = rejection.contains("property=Some(\"grid-auto-rows\")")
-                ? "grid-auto-rows" : "missing"
-            let rejectionFrames = rejection.contains("node_frames_css_px=[") ? "present" : "absent"
-            log("SPINON_C1133_GRID_REJECTION_SUMMARY run_id=\(c1133GridTemplateAreasRunID) scene_id=\(c1133GridTemplateAreasRejectSceneID) expected=\(expectedRejection) \(rejectionStatus) code=\(rejectionCode) property=\(rejectionProperty) frames=\(rejectionFrames)")
-            guard expectedRejection else {
-                postStatus("실패 · C11.3.3 unknown area implicit track 거부 계약 오류")
-                return
-            }
         }
         if c1132GridNamedLinesProbeRequested, result?.hasPrefix("status=0 ") == true {
             let rejectionHost = SpinonRunner.createRuntimeGpuHostWithC11_3_2GridNamedLinesFixture()

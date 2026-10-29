@@ -88,6 +88,14 @@ PR #807에서 병합된 구현은 template area dimension과 authored `grid-temp
 
 실행과 review: [증거 요약 및 범위](./evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.md) · [Android AVD](./evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.md) · [iOS Simulator](./evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.md). 이 bounded slice는 C11.3.3/C11 완료를 뜻하지 않으며 공식 완료 `72/213`을 유지한다.
 
+## C11.3.3 unknown-area trailing implicit `auto` track · 제한 구현 후보 · 2026-10-30
+
+계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 병합됐다. 구현은 template-area-backed `TemplateGridImplicitTracks`의 trailing implicit rows/columns에서만 기본 `grid-auto-rows/columns:auto`를 Taffy auto track sizing에 연결한다. Area 없는 implicit mode와 signed/leading implicit mode는 계속 거부하며, `grid-auto-*` track list는 기존 fixed-px profile만 허용한다. 새 intrinsic sizing algorithm, negative extent, arbitrary author CSS admission은 추가하지 않는다. Android/iOS 앱 시작 시 basic scene과 함께 과거 rejection을 재실행하던 obsolete probe를 없앴다. 새 matrix v2가 `unknown-area-implicit-tracks`를 독립 scene으로 직접 검증하고 immutable matrix v1의 거부 기록은 그대로 보존한다.
+
+고정 Chrome 154 expected frame은 root `(0,0,160,120)`, 빈 unknown item `(160,120,0,0)`이다. Matrix v2는 37 scene·118 node(성공 32, cascade fallback 5, 기대 거부 0)다. Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 37/37 scene, visible geometry maximum error 0 CSS px를 확인했고 해당 unknown-area scene 두 node 모두 exact했다. Basic PixelCopy/Metal 표본은 각각 2/2, fixed-track overflow control은 각각 3/3, track-list cycle 표본은 각각 28/28 exact다. iOS drawable 표본은 compositor 제출 전이며 AVD는 hardware GPU나 실기기 결과가 아니다.
+
+Rust 검사는 Grid 19/19, C11.3.3 style-to-layout 19/19, C11.4 auto track-sizing regression 13/13, C11.4 text/image mixed-span 3/3, feature-gated C11.3.3 FFI 7/7이다. CSS reference/iOS matrix Node tests 35/35, fixture-module boundary 23/23, workspace Clippy `-D warnings`도 통과했다. macOS arm64 Release FFI archive의 default/opt-in symbol·payload 경계는 [별도 근거](./evidence/c11-3-3-unknown-area-auto-implicit-tracks-implementation-2026-10-30/artifact-boundary.md)에 기록했다. 구현/runtime 20관점 및 구현 PR diff 30관점은 [검토 요약](./evidence/c11-3-3-unknown-area-auto-implicit-tracks-implementation-2026-10-30/README.md)에 둔다. 현재 단계는 C11.3.3 내부 후보이며 C11·전체 Grid·공개 CSS 지원 완료와 공식 `72/213`은 유지한다.
+
 ## C11.3.3 unknown-area trailing implicit named-line 후속 · 2026-10-21
 
 전용 `compute_runtime_block_flex_grid_template_implicit_named_lines_style_layout` fixture 경로에서 explicit line-name이나 area/area alias에 없는 bare `<custom-ident>`를 양의 trailing implicit named line으로 해석한다. 반대쪽 definite line에서 named span을 검색할 때 explicit occurrence가 부족하면 필요한 만큼 trailing line을 생성한다. 기존 C11.3.1–3.2 projection wrapper는 그대로 missing name을 거부한다.

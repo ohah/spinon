@@ -2,7 +2,7 @@ use serde_json::Value;
 use std::sync::OnceLock;
 
 const C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX: &str = include_str!(
-    "../../../../../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json"
+    "../../../../../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json"
 );
 const C11_3_3_GRID_TEMPLATE_AREAS_REVISION_REUSE_SOURCE: &str = r#"(() => {
 const key = '__spinonC1133RevisionReuseV1';
@@ -231,9 +231,9 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
             if cases.len() != C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS.len()
                 || matrix["summary"]["sceneCount"].as_u64() != Some(37)
                 || matrix["summary"]["nodeCount"].as_u64() != Some(118)
-                || matrix["summary"]["successCount"].as_u64() != Some(31)
+                || matrix["summary"]["successCount"].as_u64() != Some(32)
                 || matrix["summary"]["cascadeFallbackCount"].as_u64() != Some(5)
-                || matrix["summary"]["expectedRejectCount"].as_u64() != Some(1)
+                || matrix["summary"]["expectedRejectCount"].as_u64() != Some(0)
             {
                 return Err("C11.3.3 runtime matrix 요약이 고정 계약과 다릅니다".to_owned());
             }
@@ -266,18 +266,11 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
                     }
                     Some("expected-rejection") => {
                         rejection_count += 1;
-                        let contract = match id {
-                            "unknown-area-implicit-tracks" => {
-                                Some(("unsupported_grid_auto_rows", "grid-auto-rows"))
-                            }
-                            _ => None,
-                        };
                         let node_id = expected["nodeId"].as_str();
                         let node_ids = case["nodeIds"].as_array();
-                        if contract.is_none_or(|(code, property)| {
-                            expected["code"].as_str() != Some(code)
-                                || expected["property"].as_str() != Some(property)
-                        }) || node_id.is_none()
+                        if expected["code"].as_str().is_none()
+                            || expected["property"].as_str().is_none()
+                            || node_id.is_none()
                             || !node_ids
                                 .is_some_and(|ids| ids.iter().any(|node| node.as_str() == node_id))
                         {
@@ -342,9 +335,9 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
                     return Err(format!("C11.3.3 scene {id} source가 고정 계약과 다릅니다"));
                 }
             }
-            if success_count != 31
+            if success_count != 32
                 || cascade_fallback_count != 5
-                || rejection_count != 1
+                || rejection_count != 0
                 || node_count != 118
             {
                 return Err("C11.3.3 runtime matrix 개별 장면과 요약이 다릅니다".to_owned());

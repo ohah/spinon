@@ -1,9 +1,9 @@
 import assert from 'node:assert/strict';
 
 const EXPECTED_COUNTS = {
-  success: 31,
+  success: 32,
   'cascade-fallback': 5,
-  'expected-rejection': 1,
+  'expected-rejection': 0,
 };
 
 export function validateC1133IOSMatrixInputs(runtime, reference) {

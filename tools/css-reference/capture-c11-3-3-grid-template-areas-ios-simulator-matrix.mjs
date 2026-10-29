@@ -20,7 +20,10 @@ import {
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
+const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json';
+const historicalRuntimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
+const historicalRuntimeBytes = await readFile(resolve(repositoryRoot, historicalRuntimePath));
+const historicalRuntimeSha256 = sha256(historicalRuntimeBytes);
 const mobilePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
 const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 'utf8'));
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
@@ -28,8 +31,11 @@ const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-c
 const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
 const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
 const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
-assert.equal(cyclePixels.inputs.runtimeMatrix.sha256,
-  sha256(await readFile(resolve(repositoryRoot, runtimePath))));
+assert.equal(mobile.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
+assert.equal(cyclePixels.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
+assert.deepEqual(runtime.inputs.historicalRuntimeMatrix, {
+  path: historicalRuntimePath, sha256: historicalRuntimeSha256,
+});
 assert.equal(cyclePixels.inputs.chromeObservation.sha256, sha256(cycleObservationBytes));
 assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes));
 assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
