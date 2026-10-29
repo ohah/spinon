@@ -1,10 +1,10 @@
-# Auto-repeat track ceiling implementation review · 20 failure angles
+# Auto-repeat track ceiling 구현/runtime 검토 · 실패 관점 20개
 
 검토 대상: `grid_track_sizing_tests/auto_repeat_track_ceiling.rs`와 `grid_track_sizing_tests.rs` 모듈 연결. 고정 Taffy 0.15.0 입력 및 최종 검증 로그를 대조했다.
 
 | # | 독립 실패 관점 | 확인 결과 |
 | --- | --- | --- |
-| 1 | 9,999px case가 off-by-one을 내는가 | Columns/Rows의 `used_* .explicit_track_count`와 Initialize non-gutter 수가 모두 9,999다. |
+| 1 | 9,999px case가 off-by-one을 내는가 | `used_columns.explicit_track_count`/`used_rows.explicit_track_count`와 Initialize non-gutter 수가 모두 9,999다. |
 | 2 | 10,000px case가 상한 전에 멈추는가 | 두 축 모두 두 관측값이 정확히 10,000이다. |
 | 3 | 10,001px basis에서 Taffy의 clamp가 누락되는가 | 두 축 모두 layout이 성공하고 10,000으로 clamp된다. |
 | 4 | Columns가 고정 inline basis를 받지 못하는가 | helper가 root width와 viewport width를 요청한 basis에 고정한다. |
