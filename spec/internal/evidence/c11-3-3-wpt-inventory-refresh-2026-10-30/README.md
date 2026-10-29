@@ -47,5 +47,8 @@ node --test tools/css-reference/c11-3-3-grid-template-areas-wpt-classification.t
 | classifier helper | `e27dc0d22d881bb32113e41f9e62babf285f039c5c846a4c0c03ffec64350f08` |
 | focused classifier test | `8c55a5f6e872b0b9766de06d82c3d7df5bfbcf03c56e454d07bd70aa56f4f715` |
 | C11.3.3 consumer test | `7585ea7512364fcbf0a5caaa87058806882617bbd261b21887b7da184b2c06c9` |
+| public roadmap local-source screenshot | `66b0d185b24ea8dffee6bcb1e712d8119ec96e0951a7d0e547adcb7b110de1b9` |
 
-Agent Browser로 pinned WPT source를 확인했고 확인 후 browser session을 닫았다. 이 문서는 새로운 browser rendering·Spinon WPT 실행·Android/iOS 재실행 근거를 주장하지 않는다.
+Agent Browser로 pinned WPT source를 확인했고 확인 후 browser session을 닫았다. [로드맵 화면](./roadmap-pr-preview.png)은 수정한 local HTML source를 1440×1100 viewport로 연 별도 Agent Browser 캡처이며, Tailnet 서비스 반영 화면이나 새 WPT/Spinon 실행 근거는 아니다. Android/iOS 실행도 새로 하지 않았다.
+
+[PR #816 diff 적대 검토 30](./pr-diff-review-30.md) · [public roadmap PR diff 검토 30](./roadmap-pr-diff-review-30.md)
