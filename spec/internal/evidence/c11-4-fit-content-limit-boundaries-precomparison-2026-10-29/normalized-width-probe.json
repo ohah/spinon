@@ -1,0 +1,41 @@
+{
+  "cases": [
+    {
+      "after": {
+        "columns": "60px",
+        "rows": "40px",
+        "width": "60px"
+      },
+      "before": {
+        "rows": "40px",
+        "width": "1264px"
+      },
+      "id": "contentLargerThanArgument"
+    },
+    {
+      "after": {
+        "columns": "60px",
+        "rows": "30px",
+        "width": "60px"
+      },
+      "before": {
+        "rows": "30px",
+        "width": "1264px"
+      },
+      "id": "smallArgument"
+    },
+    {
+      "after": {
+        "columns": "60px",
+        "rows": "100px",
+        "width": "60px"
+      },
+      "before": {
+        "rows": "100px",
+        "width": "1264px"
+      },
+      "id": "largeArgument"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}

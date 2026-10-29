@@ -1,0 +1,46 @@
+{
+  "cases": [
+    {
+      "childHeight": 100,
+      "gridTemplateRows": "40px",
+      "id": "contentLargerThanArgument",
+      "itemHeight": 40,
+      "itemMinHeight": "0px",
+      "itemOverflow": "visible",
+      "rootHeight": 300
+    },
+    {
+      "childHeight": 100,
+      "gridTemplateRows": "30px",
+      "id": "smallArgument",
+      "itemHeight": 30,
+      "itemMinHeight": "0px",
+      "itemOverflow": "visible",
+      "rootHeight": 300
+    },
+    {
+      "childHeight": 100,
+      "gridTemplateRows": "100px",
+      "id": "largeArgument",
+      "itemHeight": 100,
+      "itemMinHeight": "0px",
+      "itemOverflow": "visible",
+      "rootHeight": 300
+    }
+  ],
+  "harness": {
+    "failed": 0,
+    "passed": 13,
+    "summaryLabels": [
+      "13 Pass"
+    ]
+  },
+  "source": {
+    "bytes": 5060,
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "status": 200,
+    "url": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html"
+  },
+  "title": "CSS Grid Layout Test: fit-content() track sizing",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36"
+}
