@@ -1,0 +1,33 @@
+{
+  "wptRepository": "https://github.com/web-platform-tests/wpt",
+  "wptRevision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
+  "wptPath": "css/css-grid/grid-definition/fit-content-track-sizing.html",
+  "wptSha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+  "target": {
+    "elementId": "zoomedGrid",
+    "authoredZoom": "2",
+    "assertion": "A fit-content() argument is applied on a zoomed grid container",
+    "expectedGridTemplateRows": "40px"
+  },
+  "cssZoomReference": {
+    "url": "https://drafts.csswg.org/css-viewport/#zoom-property",
+    "documentDate": "2026-08-29",
+    "status": "Editor's Draft; work in progress",
+    "accessedDateKst": "2026-10-29",
+    "relevantSections": ["4", "4.1"]
+  },
+  "liveUrl": "https://wpt.live/css/css-grid/grid-definition/fit-content-track-sizing.html",
+  "liveFetch": {
+    "status": 200,
+    "sha256": "828160951bba50f6ce1c09a69b804480df10d5e622c92a047452f432cb790736",
+    "bytes": 5060
+  },
+  "observedDateKst": "2026-10-29",
+  "browser": {
+    "tool": "Agent Browser",
+    "version": "0.31.1",
+    "userAgent": "HeadlessChrome/156.0.0.0",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1
+  }
+}

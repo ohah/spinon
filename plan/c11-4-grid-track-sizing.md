@@ -247,7 +247,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 | 후보 | 계획상 대응 범위 |
 | --- | --- |
-| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage argument, definite calc argument 계획, auto row 및 implicit column · [definite-height percentage row 계획](./c11-4-fit-content-percentage-argument.md) · [definite-height calc row 계획](./c11-4-fit-content-calc-argument.md) |
+| `fit-content-track-sizing.html` | max-content growth, fit-content cap/floor, auto-track stretch 비대상, definite/percentage/calc argument, span-2 rows, auto row 및 implicit column · [zoomed grid assertion 계획](./c11-4-fit-content-zoom-wpt.md) · [definite-height percentage row 계획](./c11-4-fit-content-percentage-argument.md) · [definite-height calc row 계획·구현](./c11-4-fit-content-calc-argument.md) |
 | `grid-layout-auto-tracks.html` | explicit/positive implicit auto track과 두 item contribution의 한 normalized scene (제한 runtime PR [#688](https://github.com/ohah/spinon/pull/688) 병합 · [집중 계획](./c11-4-grid-layout-auto-tracks-wpt.md) · [실행 근거](../spec/internal/evidence/c11-4-grid-layout-auto-tracks-runtime-2026-10-27/README.md)) |
 | `grid-change-intrinsic-size-with-auto-repeat-tracks-001.html` | 같은 `HostDocument`에서 intrinsic inline-size를 바꾼 8단계 재계산 (제한 runtime PR [#683](https://github.com/ohah/spinon/pull/683) 병합) |
 | `grid-auto-repeat-intrinsic-001.html` | definite/intrinsic container size의 auto-fill/auto-fit 8-scene 행렬 (제한 runtime PR [#691](https://github.com/ohah/spinon/pull/691) 병합 · [집중 계획](./c11-4-grid-auto-repeat-intrinsic-wpt.md)) |
@@ -257,7 +257,7 @@ C15 inline span edge는 Grid item box의 padding/border oracle와 분리해 [추
 
 2026-10-27 `grid-auto-fit-columns-001.html`의 Chrome source harness는 35/35였다. 이후 PR #695의 제한 runtime fixture도 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 35/35 scene을 확인했고, 여섯 overflow scene의 PixelCopy 및 compositor 제출 전 Metal 표본은 각 24/24 exact였다. 두 결과는 구분된 근거이며 WPT harness의 Spinon pass가 아니다. [고정 scene 계획](./c11-4-grid-auto-fit-columns-wpt.md) · [runtime 근거](../spec/internal/evidence/c11-4-grid-auto-fit-columns-runtime-2026-10-27/README.md).
 
-`fit-content-track-sizing.html`의 마지막 `fit-content(40px) auto` assertion은 [PR #664](https://github.com/ohah/spinon/pull/664)의 제한 runtime slice로, 두 번째 `height:auto; min-height:300px` assertion은 PR #699로 각각 구현했다. 이들은 서로 다른 고정 입력이며 전체 WPT 실행은 아니다. definite percentage row assertion은 PR #771에서 구현했다. definite calc row assertion은 별도 계획 단계이며 아직 Spinon runtime에서 실행하지 않았다. `grid-layout-auto-tracks.html`도 PR #688에서 Ahem font를 고정한 normalized scene 하나를 구현했다. 그 결과는 WPT 파일 전체나 일반 auto-track 지원을 뜻하지 않는다. 남은 모든 track 조합과 전체 C11.4는 미완료다.
+`fit-content-track-sizing.html`의 마지막 `fit-content(40px) auto` assertion은 [PR #664](https://github.com/ohah/spinon/pull/664)의 제한 runtime slice로, 두 번째 `height:auto; min-height:300px` assertion은 PR #699로 각각 구현했다. 이들은 서로 다른 고정 입력이며 전체 WPT 실행은 아니다. Definite percentage row assertion은 PR #771, definite calc row assertion은 PR #778에서 각각 제한 runtime fixture로 확인했다. Span-2 rows는 PR #768, implicit column은 PR #775에서 구현했다. 2026-10-29 zoomed-grid assertion은 [별도 계획](./c11-4-fit-content-zoom-wpt.md) 단계이며 runtime 구현 전이다. `grid-layout-auto-tracks.html`도 PR #688에서 Ahem font를 고정한 normalized scene 하나를 구현했다. 각 결과는 WPT 파일 전체나 일반 CSS 지원을 뜻하지 않는다. 남은 모든 track 조합과 전체 C11.4는 미완료다.
 
 ## Rust·앱 검증과 증거 경계
 
