@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-29 Grid item `visibility:collapse` 계측 계획
+
+현재 C11.4 Grid profile은 `visibility:collapse` author declaration을 거부한다. CSS Display Level 3 §4는 table와 flex처럼 별도 동작을 정의한 formatting context를 제외하면 `collapse`를 `hidden`과 같이 처리한다. CSS Grid Level 1은 Grid item의 `visibility:collapse`에 별도 sizing 동작을 정의하지 않으므로, Grid fixture에서는 computed value `collapse`를 보존하면서 hidden과 같은 track contribution·layout·paint 규칙을 적용할 계획이다. 양축 10-scene Chrome 156 사전 비교, root 바깥 overflow 대조와 독립 기대값은 [계획](./c11-4-grid-visibility-collapse.md), [evidence](../spec/internal/evidence/c11-4-grid-visibility-collapse-precomparison-2026-10-29/README.md)에 기록한다. Flex formatting context에는 이 Grid 규칙을 전파하지 않는다. 계획 검토와 계획 PR diff 검토가 각각 20/20 완료됐다. 계획 PR 병합 전에는 구현하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료다.
+
 ## 2026-10-29 auto-repeat `minmax(inflexible, fixed)` 계획
 
 현재 `RuntimeBlockFlexGridTrackSizingV1`는 repeated `fixed-size`에서 fixed minimum branch만 통과시킨다. CSS Grid 2025 CRD §7.2.3.1의 다른 유효 형식인 `minmax(auto|min-content|max-content, fixed-breadth)`를 추가할 계획이다. Agent Browser HeadlessChrome 156의 49-scene precomparison은 rows/columns·`auto-fill`/`auto-fit`·length/percentage/calc max breadth·multi-track fragment·129/130px count boundary를 고정했다. [집중 계획](./c11-4-auto-repeat-inflexible-fixed-maximum.md) · [계획 리뷰 20개](./c11-4-auto-repeat-inflexible-fixed-maximum-plan-review-20.md) · [Chrome/CRD 사전 비교](../spec/internal/evidence/c11-4-auto-repeat-inflexible-fixed-maximum-precomparison-2026-10-29/README.md). 이는 계획 단계이며 구현과 runtime 검증은 시작하지 않았다. C11.4 checkbox와 공식 `72/213`은 유지한다.

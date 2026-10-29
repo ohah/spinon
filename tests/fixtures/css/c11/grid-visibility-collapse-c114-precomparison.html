@@ -1,0 +1,27 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 grid visibility collapse oracle</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  .scene { position: relative; display: grid; column-gap: 0; row-gap: 0; margin-bottom: 8px; background: rgb(240 240 240); }
+  .column-scene { width: 80px; height: 20px; grid-template-columns: minmax(auto, max-content) minmax(auto, max-content); grid-template-rows: 20px; }
+  .row-scene { width: 20px; height: 80px; grid-template-columns: 20px; grid-template-rows: minmax(auto, max-content) minmax(auto, max-content); }
+  .column-item { grid-column: 1 / span 2; grid-row: 1; }
+  .row-item { grid-column: 1; grid-row: 1 / span 2; }
+  .item { width: auto; height: auto; margin: 0; padding: 0; border: 0; }
+  .column-content { width: 100px; height: 20px; background: rgb(255 0 0); }
+  .row-content { width: 20px; height: 100px; background: rgb(255 0 0); }
+  .row-content-visible-descendant { height: 92px; }
+  .visible-child { width: 8px; height: 8px; background: rgb(0 0 255); visibility: visible; }
+</style>
+<div id="collapse-column" class="scene column-scene"><div id="collapse-column-item" class="item column-item" style="visibility:collapse"><div class="column-content"></div></div></div>
+<div id="hidden-column" class="scene column-scene"><div id="hidden-column-item" class="item column-item" style="visibility:hidden"><div class="column-content"></div></div></div>
+<div id="display-none-column" class="scene column-scene"><div id="display-none-column-item" class="item column-item" style="display:none"><div class="column-content"></div></div></div>
+<div id="collapse-visible-descendant-column" class="scene column-scene"><div id="collapse-visible-descendant-column-item" class="item column-item" style="visibility:collapse"><div id="visible-child-column" class="visible-child"></div><div class="column-content"></div></div></div>
+<div id="collapse-row" class="scene row-scene"><div id="collapse-row-item" class="item row-item" style="visibility:collapse"><div class="row-content"></div></div></div>
+<div id="hidden-row" class="scene row-scene"><div id="hidden-row-item" class="item row-item" style="visibility:hidden"><div class="row-content"></div></div></div>
+<div id="display-none-row" class="scene row-scene"><div id="display-none-row-item" class="item row-item" style="display:none"><div class="row-content"></div></div></div>
+<div id="collapse-visible-descendant-row" class="scene row-scene"><div id="collapse-visible-descendant-row-item" class="item row-item" style="visibility:collapse"><div id="visible-child-row" class="visible-child"></div><div class="row-content row-content-visible-descendant"></div></div></div>
+<div id="visible-column" class="scene column-scene"><div id="visible-column-item" class="item column-item" style="visibility:visible"><div id="visible-column-content" class="column-content"></div></div></div>
+<div id="visible-row" class="scene row-scene"><div id="visible-row-item" class="item row-item" style="visibility:visible"><div id="visible-row-content" class="row-content"></div></div></div>
