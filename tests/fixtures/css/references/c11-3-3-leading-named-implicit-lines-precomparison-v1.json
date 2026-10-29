@@ -1,0 +1,43 @@
+{
+  "schema": "spinon-css-c11-3-3-leading-named-implicit-lines-precomparison/v1",
+  "referenceId": "agent-browser-0.31.1-headlesschrome-156-dpr1-8df2520e",
+  "sourceRevision": "d26a0cfd6d6383dbf9fffccef65a07f9647c320e",
+  "fixture": {
+    "id": "C11.3.3-leading-named-implicit-lines-precomparison-v1",
+    "inventoryPath": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-c1133-inventory.json",
+    "inventorySha256": "d3ac5f21369f434227582955609473f4e42972d372fb0bf882fa7f91da20368e",
+    "htmlPath": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-c1133.html",
+    "htmlSha256": "8df2520ecd9e7c4b1e6c1e9a6713ed2dcd61ee4fc86e71493c729987a2e2d993"
+  },
+  "oracle": {
+    "name": "Agent Browser",
+    "version": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "binaryRevision": null,
+    "binarySha256": null,
+    "limitation": "Agent Browser did not expose the Chromium binary revision or executable hash. This is a version-bounded observation; CSS Grid 2025 CRD §8.3 is normative authority."
+  },
+  "environment": {
+    "viewportCssPx": {"width": 1280, "height": 633},
+    "devicePixelRatio": 1,
+    "direction": "ltr",
+    "writingMode": "horizontal-tb",
+    "colorScheme": "light"
+  },
+  "capture": {
+    "screenshotPath": "spec/internal/evidence/c11-3-3-leading-named-implicit-lines-precomparison-2026-10-29/chrome-headless-156.png",
+    "screenshotSha256": "893dae1694bc4ab4549cb9eb4eac2036b63809309f43dcc3ababe8ac31bde9c6",
+    "computedProperty": "grid-template-columns",
+    "rectFieldOrder": ["x", "y", "width", "height"],
+    "coordinates": "item rects are relative to each grid root"
+  },
+  "cases": [
+    {"id":"positive-missing-occurrences","gridTemplateColumns":"[known-start] 30px 40px [known-end] 15px 7px 15px 7px","rootRect":[0,0,114,20],"itemRect":[107,0,7,20]},
+    {"id":"negative-missing-occurrences","gridTemplateColumns":"15px 7px [known-start] 30px 40px [known-end]","rootRect":[0,0,92,20],"itemRect":[0,0,15,20]},
+    {"id":"backward-span-one","gridTemplateColumns":"7px 100px 15px 7px","rootRect":[0,0,129,20],"itemRect":[0,0,129,20]},
+    {"id":"backward-span-two","gridTemplateColumns":"15px 7px 100px 15px 7px","rootRect":[0,0,144,20],"itemRect":[0,0,144,20]},
+    {"id":"backward-span-partial-explicit","gridTemplateColumns":"7px [ghost] 40px [other] 100px 15px","rootRect":[0,0,162,20],"itemRect":[0,0,162,20]},
+    {"id":"forward-span-two","gridTemplateColumns":"50px 15px 7px 15px 7px","rootRect":[0,0,94,20],"itemRect":[72,0,22,20]},
+    {"id":"backward-span-uses-authored-name","gridTemplateColumns":"30px [ghost] 40px 15px","rootRect":[0,0,85,20],"itemRect":[30,0,55,20]}
+  ]
+}

@@ -1,0 +1,122 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.3.3 named implicit lines on both sides of the explicit grid</title>
+<style>
+  html,
+  body {
+    margin: 0;
+  }
+
+  .grid {
+    display: grid;
+    width: max-content;
+    grid-auto-flow: row;
+    grid-auto-rows: 20px;
+    grid-auto-columns: 15px 7px;
+    gap: 0;
+    justify-content: start;
+    align-content: start;
+    margin: 0 0 16px;
+    padding: 0;
+    border: 0;
+  }
+
+  .item {
+    min-width: 0;
+    min-height: 0;
+    background: #2866f6;
+  }
+
+  #positive-missing-occurrences {
+    grid-template-columns: [known-start] 30px 40px [known-end];
+    grid-template-rows: 20px;
+  }
+
+  #positive-missing-occurrences .item {
+    grid-column: 3 ghost / 4 ghost;
+    grid-row: 1 / 2;
+  }
+
+  #negative-missing-occurrences {
+    grid-template-columns: [known-start] 30px 40px [known-end];
+    grid-template-rows: 20px;
+  }
+
+  #negative-missing-occurrences .item {
+    grid-column: -1 ghost / -2 ghost;
+    grid-row: 1 / 2;
+  }
+
+  #backward-span-one {
+    grid-template-columns: 100px;
+    grid-template-rows: 20px;
+  }
+
+  #backward-span-one .item {
+    grid-column: span ghost / 4;
+    grid-row: 1 / 2;
+  }
+
+  #backward-span-two {
+    grid-template-columns: 100px;
+    grid-template-rows: 20px;
+  }
+
+  #backward-span-two .item {
+    grid-column: span 2 ghost / 4;
+    grid-row: 1 / 2;
+  }
+
+  #backward-span-partial-explicit {
+    grid-template-columns: [ghost] 40px [other] 100px;
+    grid-template-rows: 20px;
+  }
+
+  #backward-span-partial-explicit .item {
+    grid-column: span 2 ghost / 4;
+    grid-row: 1 / 2;
+  }
+
+  #forward-span-two {
+    grid-template-columns: 50px;
+    grid-template-rows: 20px;
+  }
+
+  #forward-span-two .item {
+    grid-column: 4 / span 2 ghost;
+    grid-row: 1 / 2;
+  }
+
+  #backward-span-uses-authored-name {
+    grid-template-columns: 30px [ghost] 40px;
+    grid-template-rows: 20px;
+  }
+
+  #backward-span-uses-authored-name .item {
+    grid-column: span 1 ghost / 4;
+    grid-row: 1 / 2;
+  }
+</style>
+<body>
+  <div id="positive-missing-occurrences" class="grid" data-scene="positive-missing-occurrences">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="negative-missing-occurrences" class="grid" data-scene="negative-missing-occurrences">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="backward-span-one" class="grid" data-scene="backward-span-one">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="backward-span-two" class="grid" data-scene="backward-span-two">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="backward-span-partial-explicit" class="grid" data-scene="backward-span-partial-explicit">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="forward-span-two" class="grid" data-scene="forward-span-two">
+    <div class="item" data-node="item"></div>
+  </div>
+  <div id="backward-span-uses-authored-name" class="grid" data-scene="backward-span-uses-authored-name">
+    <div class="item" data-node="item"></div>
+  </div>
+</body>

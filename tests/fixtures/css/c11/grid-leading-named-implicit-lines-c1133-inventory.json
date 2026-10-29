@@ -1,0 +1,58 @@
+{
+  "schema": "spinon-css-c11-3-3-leading-named-implicit-lines-inventory/v1",
+  "fixtureId": "C11.3.3-leading-named-implicit-lines-precomparison-v1",
+  "fixturePath": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-c1133.html",
+  "referencePath": "tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json",
+  "normative": "https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#line-placement",
+  "cases": [
+    {
+      "id": "positive-missing-occurrences",
+      "placement": "grid-column: 3 ghost / 4 ghost",
+      "columnsPx": [30, 40, 15, 7, 15, 7],
+      "rootRect": [114, 20],
+      "itemRect": [107, 0, 7, 20]
+    },
+    {
+      "id": "negative-missing-occurrences",
+      "placement": "grid-column: -1 ghost / -2 ghost",
+      "columnsPx": [15, 7, 30, 40],
+      "rootRect": [92, 20],
+      "itemRect": [0, 0, 15, 20]
+    },
+    {
+      "id": "backward-span-one",
+      "placement": "grid-column: span ghost / 4",
+      "columnsPx": [7, 100, 15, 7],
+      "rootRect": [129, 20],
+      "itemRect": [0, 0, 129, 20]
+    },
+    {
+      "id": "backward-span-two",
+      "placement": "grid-column: span 2 ghost / 4",
+      "columnsPx": [15, 7, 100, 15, 7],
+      "rootRect": [144, 20],
+      "itemRect": [0, 0, 144, 20]
+    },
+    {
+      "id": "backward-span-partial-explicit",
+      "placement": "grid-column: span 2 ghost / 4",
+      "columnsPx": [7, 40, 100, 15],
+      "rootRect": [162, 20],
+      "itemRect": [0, 0, 162, 20]
+    },
+    {
+      "id": "forward-span-two",
+      "placement": "grid-column: 4 / span 2 ghost",
+      "columnsPx": [50, 15, 7, 15, 7],
+      "rootRect": [94, 20],
+      "itemRect": [72, 0, 22, 20]
+    },
+    {
+      "id": "backward-span-uses-authored-name",
+      "placement": "grid-column: span ghost / 4",
+      "columnsPx": [30, 40, 15],
+      "rootRect": [85, 20],
+      "itemRect": [30, 0, 55, 20]
+    }
+  ]
+}
