@@ -13,7 +13,15 @@ import {
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
-const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
+const target = process.argv[2];
+assert.ok(['android-avd', 'android-physical'].includes(target),
+  '사용법: node capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd|android-physical [ADB serial]');
+const historicalRuntimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
+const runtimePath = target === 'android-avd'
+  ? 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json'
+  : historicalRuntimePath;
+const historicalRuntimeBytes = await readFile(resolve(repositoryRoot, historicalRuntimePath));
+const historicalRuntimeSha256 = sha256(historicalRuntimeBytes);
 const mobilePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
 const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 'utf8'));
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
@@ -21,8 +29,13 @@ const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-c
 const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
 const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
 const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
-assert.equal(cyclePixels.inputs.runtimeMatrix.sha256,
-  sha256(await readFile(resolve(repositoryRoot, runtimePath))));
+assert.equal(mobile.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
+assert.equal(cyclePixels.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
+if (target === 'android-avd') {
+  assert.deepEqual(runtime.inputs.historicalRuntimeMatrix, {
+    path: historicalRuntimePath, sha256: historicalRuntimeSha256,
+  });
+}
 assert.equal(cyclePixels.inputs.chromeObservation.sha256, sha256(cycleObservationBytes));
 assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes));
 assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
@@ -43,10 +56,6 @@ const unknownAreaObservation = unknownAreaReference.observations.find(({ deviceS
   deviceScaleFactor === 1);
 const unknownAreaChromeSourceCase = unknownAreaObservation.cases.find(({ id }) =>
   id === 'unknown-template-area-with-sibling');
-const target = process.argv[2];
-assert.ok(['android-avd', 'android-physical'].includes(target),
-  '사용법: node capture-c11-3-3-grid-template-areas-runtime-matrix.mjs android-avd|android-physical [ADB serial]');
-
 const packageName = 'dev.spinon.bootstrap';
 const component = `${packageName}/.MainActivity`;
 const serialHint = process.argv[3] ?? (target === 'android-avd'
@@ -556,15 +565,19 @@ try {
   assert.equal(runtime.summary.sceneCount, 37);
   assert.equal(runtime.summary.nodeCount, 118);
   assert.equal(observation.cases.length, 26);
-  assert.equal(sha256(await readFile(resolve(repositoryRoot, runtimePath))), mobile.inputs.runtimeMatrix.sha256);
-  assert.equal(sha256(await readFile(resolve(repositoryRoot, runtimePath))), cyclePixels.inputs.runtimeMatrix.sha256);
+  assert.equal(historicalRuntimeSha256, mobile.inputs.runtimeMatrix.sha256);
+  assert.equal(historicalRuntimeSha256, cyclePixels.inputs.runtimeMatrix.sha256);
   const { adb, metadata } = androidDevice();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   const platform = await captureMatrix(adb);
   const negative = await runNegativeControls(adb);
   const outcomeCounts = Object.fromEntries(['success', 'cascade-fallback', 'expected-rejection']
     .map((outcome) => [outcome, platform.observations.filter((item) => item.outcome === outcome).length]));
-  assert.deepEqual(outcomeCounts, { success: 31, 'cascade-fallback': 5, 'expected-rejection': 1 });
+  assert.deepEqual(outcomeCounts, {
+    success: runtime.summary.successCount,
+    'cascade-fallback': runtime.summary.cascadeFallbackCount,
+    'expected-rejection': runtime.summary.expectedRejectCount,
+  });
   const totalComparisons = platform.observations.reduce((sum, item) => sum + (item.comparisons?.length ?? 0), 0);
   const result = {
     schema: 'spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1',
@@ -619,7 +632,9 @@ try {
     `- Run: \`${runID}\``, `- Target: ${target === 'android-physical'
       ? `Android 실기기 ${metadata.model} / Android ${metadata.release} (API ${metadata.sdk}); renderer: ${metadata.renderer}`
       : 'Android API 37 AVD with SwiftShader'}`,
-    '- Runtime matrix: 37 scenes / 118 nodes; 31 success, 5 cascade fallback, 1 expected rejection.',
+    `- Runtime matrix: ${runtime.summary.sceneCount} scenes / ${runtime.summary.nodeCount} nodes; `
+      + `${runtime.summary.successCount} success, ${runtime.summary.cascadeFallbackCount} cascade fallback, `
+      + `${runtime.summary.expectedRejectCount} expected rejection.`,
     `- Chrome DPR 1 geometry: ${totalComparisons} visible node frames compared; maximum error ${result.matrix.maximumGeometryErrorCssPx} CSS px.`,
     `- Basic scene PixelCopy: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact; max channel error 0.`,
     `- Track-list cycling PixelCopy: ${platform.cyclePixelComparisons.length} scenes / ${platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)} RGBA samples exact; max channel error 0.`,

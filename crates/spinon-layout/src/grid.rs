@@ -265,7 +265,7 @@ pub enum GridPlacementMode {
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
     TemplateGrid,
-    /// C11.3.3 opt-in 경로의 explicit placement와 trailing fixed implicit tracks입니다.
+    /// C11.3.3 opt-in 경로의 explicit placement와 trailing implicit tracks입니다. Template areas가 있으면 기본 auto track도 사용할 수 있습니다.
     TemplateGridImplicitTracks,
     /// C11.3.3 named-line opt-in의 signed leading/trailing fixed implicit tracks입니다.
     TemplateGridSignedImplicitTracks,
@@ -276,7 +276,7 @@ pub enum GridPlacementMode {
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub enum GridAutoTrackSize {
-    /// 기본 `auto` track입니다. intrinsic sizing은 TrackSizing profile에서 지원합니다.
+    /// 기본 `auto` track입니다. C11.3.3 template-area trailing tracks와 C11.4 TrackSizing에서 sizing합니다.
     #[default]
     Auto,
     /// 모든 implicit track에 반복할 하나의 고정 CSS px track입니다.
@@ -340,6 +340,8 @@ pub(super) fn validate_grid_layout(
         validate_template_areas(id, container)?;
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
+                if container.template_areas.is_some() => {}
             (
                 GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
@@ -381,6 +383,8 @@ pub(super) fn validate_grid_layout(
         }
         match (container.placement_mode, &container.auto_columns) {
             (GridPlacementMode::TrackSizing, _) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::Auto)
+                if container.template_areas.is_some() => {}
             (
                 GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,

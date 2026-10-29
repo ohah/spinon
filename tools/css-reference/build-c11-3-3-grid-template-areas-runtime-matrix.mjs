@@ -6,7 +6,9 @@ import { fileURLToPath } from 'node:url';
 import { parse } from 'parse5';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '../..');
-const inventoryPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-inventory.json';
+const inventoryPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-inventory-v2.json';
+const baselineInventoryPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-inventory.json';
+const historicalRuntimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
 const htmlPath = 'tests/fixtures/css/c11/grid-template-areas-c1133.html';
 const referencePath = 'tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json';
 const supplementalHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html';
@@ -14,7 +16,7 @@ const supplementalObservationPath = 'spec/internal/evidence/c11-3-3-area-auto-tr
 const cycleHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-track-list-cycling-c1133-runtime.html';
 const cycleObservationPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json';
 const cycleScreenshotPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png';
-const outputPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
+const outputPath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json';
 const checkOnly = process.argv.includes('--check');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const attributes = (node) => new Map((node.attrs ?? []).map(({ name, value }) => [name, value]));
@@ -121,9 +123,11 @@ function createSceneSource(sceneId, nodes, rules) {
   return lines.join('\n');
 }
 
-const [inventoryBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplementalObservationBytes,
+const [inventoryBytes, baselineInventoryBytes, historicalRuntimeBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplementalObservationBytes,
   cycleHtmlBytes, cycleObservationBytes, cycleScreenshotBytes] = await Promise.all([
   readFile(resolve(repositoryRoot, inventoryPath)),
+  readFile(resolve(repositoryRoot, baselineInventoryPath)),
+  readFile(resolve(repositoryRoot, historicalRuntimePath)),
   readFile(resolve(repositoryRoot, htmlPath)),
   readFile(resolve(repositoryRoot, referencePath)),
   readFile(resolve(repositoryRoot, supplementalHtmlPath)),
@@ -133,6 +137,8 @@ const [inventoryBytes, htmlBytes, referenceBytes, supplementalHtmlBytes, supplem
   readFile(resolve(repositoryRoot, cycleScreenshotPath)),
 ]);
 const inventory = JSON.parse(inventoryBytes.toString('utf8'));
+const baselineInventory = JSON.parse(baselineInventoryBytes.toString('utf8'));
+const historicalRuntime = JSON.parse(historicalRuntimeBytes.toString('utf8'));
 const reference = JSON.parse(referenceBytes.toString('utf8'));
 const supplementalObservation = JSON.parse(supplementalObservationBytes.toString('utf8'));
 const cycleObservation = JSON.parse(cycleObservationBytes.toString('utf8'));
@@ -149,8 +155,25 @@ const cycleDocument = parse(cycleHtmlBytes.toString('utf8'), {
 assert.deepEqual(parseErrors, [], 'C11.3.3 HTML fixture에 parse error가 있습니다.');
 assert.deepEqual(supplementalParseErrors, [], 'C11.3.3 supplemental HTML fixture에 parse error가 있습니다.');
 assert.deepEqual(cycleParseErrors, [], 'C11.3.3 track-list HTML fixture에 parse error가 있습니다.');
-assert.equal(inventory.schema, 'spinon-css-c11-3-3-grid-template-areas-inventory/v1');
-assert.equal(reference.fixture.inventorySha256, sha256(inventoryBytes));
+assert.equal(inventory.schema, 'spinon-css-c11-3-3-grid-template-areas-inventory/v2');
+assert.equal(inventory.supersedes.path, baselineInventoryPath);
+assert.equal(inventory.supersedes.sha256, sha256(baselineInventoryBytes));
+assert.equal(reference.fixture.inventoryPath, baselineInventoryPath);
+assert.equal(reference.fixture.inventorySha256, historicalRuntime.inputs.inventory.sha256);
+assert.equal(historicalRuntime.inputs.reference.path, referencePath);
+assert.equal(historicalRuntime.inputs.reference.sha256, sha256(referenceBytes));
+assert.equal(historicalRuntime.cases.find(({ id }) => id === 'unknown-area-implicit-tracks')
+  ?.expected.outcome, 'expected-rejection');
+const baselineProjection = JSON.parse(JSON.stringify(inventory));
+baselineProjection.schema = baselineInventory.schema;
+delete baselineProjection.supersedes;
+for (const baselineCase of baselineInventory.cases) {
+  const projectedCase = baselineProjection.cases.find(({ id }) => id === baselineCase.id);
+  assert.ok(projectedCase, `${baselineCase.id}: baseline inventory case`);
+  projectedCase.expectedSpinonOutcome = baselineCase.expectedSpinonOutcome;
+}
+assert.deepEqual(baselineProjection, baselineInventory,
+  'runtime inventory v2는 기존 fixture 분류와 unknown-area 결과만 달라야 합니다.');
 assert.equal(reference.fixture.htmlSha256, sha256(htmlBytes));
 assert.equal(inventory.cases.length, 26);
 assert.deepEqual(reference.observations.map(({ deviceScaleFactor }) => deviceScaleFactor), [1, 2]);
@@ -188,11 +211,7 @@ assert.deepEqual(cycleSections.map((node) => attributes(node).get('data-scene'))
     'authored-tracks-exceed-area', 'row-cycle-continues-after-area',
     'column-cycle-continues-after-area'], 'track-list scene ID/순서가 다릅니다.');
 const referenceCases = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1).cases;
-const expectedRejections = new Map([
-  ['unknown-area-implicit-tracks', {
-    code: 'unsupported_grid_auto_rows', property: 'grid-auto-rows', nodeId: 'unknown-area-grid',
-  }],
-]);
+const expectedRejections = new Map();
 const allNodeIds = new Set();
 let nodeCount = 0;
 let cascadeFallbackCount = 0;
@@ -332,6 +351,8 @@ const matrix = {
   profileId: 'RuntimeBlockFlexGridTemplateV1',
   inputs: {
     inventory: { path: inventoryPath, sha256: sha256(inventoryBytes) },
+    baselineInventory: { path: baselineInventoryPath, sha256: sha256(baselineInventoryBytes) },
+    historicalRuntimeMatrix: { path: historicalRuntimePath, sha256: sha256(historicalRuntimeBytes) },
     html: { path: htmlPath, sha256: sha256(htmlBytes) },
     reference: { path: referencePath, sha256: sha256(referenceBytes) },
     supplementalHtml: { path: supplementalHtmlPath, sha256: sha256(supplementalHtmlBytes) },
@@ -356,7 +377,7 @@ const matrix = {
 assert.equal(cases.length, 37);
 assert.equal(nodeCount, 118);
 assert.equal(cascadeFallbackCount, 5);
-assert.equal(expectedRejectCount, 1);
+assert.equal(expectedRejectCount, 0);
 assert.equal(allNodeIds.size, nodeCount);
 
 const output = `${JSON.stringify(matrix, null, 2)}\n`;

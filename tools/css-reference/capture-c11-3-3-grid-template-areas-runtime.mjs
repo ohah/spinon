@@ -86,19 +86,9 @@ function assertTemplateAreaGeometry(log, runID) {
     { x: 0, y: 80, width: 160, height: 40 },
   ]);
   const logLines = log.split(/\r?\n/);
-  const rejectionLine = logLines.find((line) =>
-    line.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=unknown-area-implicit-tracks `))
-    ?? logLines.find((line) =>
-      line.includes(`SPINON_C1133_GRID_REJECTION run_id=${runID} scene_id=unknown-area-implicit-tracks `));
-  assert.ok(rejectionLine?.includes('expected=true status=-11')
-      && rejectionLine.includes('unsupported_grid_auto_rows')
-      && (rejectionLine.includes('property=Some("grid-auto-rows")')
-        || rejectionLine.includes('property=grid-auto-rows'))
-      && (!rejectionLine.includes('SPINON_C1133_GRID_REJECTION_SUMMARY')
-        || rejectionLine.includes('frames=absent')),
-  'unknown area implicit track 거부가 기대 code·property로 기록되지 않았습니다.');
-  assert.ok(!rejectionLine.includes('node_frames_css_px=['),
-    '기대 거부 결과에 layout frame이 들어있습니다.');
+  assert.equal(logLines.some((line) =>
+    line.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${runID} scene_id=unknown-area-implicit-tracks `)),
+  false, '기본 scene 실행에서 unknown area 거부 경로가 호출되면 안 됩니다.');
   assert.ok(log.includes('SPINON_C0410_DRAW') && log.includes('presented boxes=4'),
     'WGPU surface draw/present가 완료되지 않았습니다.');
   return frames;

@@ -17,6 +17,7 @@ use crate::{
 enum AutoTrackExpansionMode {
     Unsupported,
     FixedPxList,
+    TemplateAreaImplicit,
     Intrinsic,
 }
 
@@ -427,6 +428,11 @@ pub(crate) fn normalize_dense_grid_container(
     let auto_track_mode = match container.placement_mode {
         crate::GridPlacementMode::TrackSizing => AutoTrackExpansionMode::Intrinsic,
         crate::GridPlacementMode::TemplateGridImplicitTracks
+            if container.template_areas.is_some() =>
+        {
+            AutoTrackExpansionMode::TemplateAreaImplicit
+        }
+        crate::GridPlacementMode::TemplateGridImplicitTracks
         | crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
             AutoTrackExpansionMode::FixedPxList
         }
@@ -687,7 +693,10 @@ fn expand_tracks(
     }
     let pattern = match auto_size {
         crate::GridAutoTrackSize::Auto => {
-            if mode == AutoTrackExpansionMode::Intrinsic {
+            if matches!(
+                mode,
+                AutoTrackExpansionMode::Intrinsic | AutoTrackExpansionMode::TemplateAreaImplicit
+            ) {
                 TrackPattern::Single(GridTrackSize::Auto)
             } else {
                 return if rows {
@@ -713,7 +722,8 @@ fn expand_tracks(
             if !tracks.is_empty()
                 && match mode {
                     AutoTrackExpansionMode::Unsupported => false,
-                    AutoTrackExpansionMode::FixedPxList => tracks
+                    AutoTrackExpansionMode::FixedPxList
+                    | AutoTrackExpansionMode::TemplateAreaImplicit => tracks
                         .iter()
                         .all(|track| matches!(track, GridTrackSize::LengthPx(_))),
                     AutoTrackExpansionMode::Intrinsic => true,

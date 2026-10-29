@@ -15,7 +15,7 @@ import {
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const runtime = JSON.parse(await readFile(resolve(repositoryRoot,
-  'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json'), 'utf8'));
+  'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json'), 'utf8'));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot,
   'tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json'), 'utf8'));
 const observation = validateC1133IOSMatrixInputs(runtime, reference);
@@ -48,8 +48,8 @@ function successLog(scene, chromeCase, runID) {
 
 test('iOS Simulator matrix는 Chrome 154의 26개 장면과 Chrome 156의 5개 보충 장면을 묶는다', () => {
   const ids = runtime.cases.map(({ id }) => id);
-  assert.equal(new Set(ids).size, 31);
-  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 90);
+  assert.equal(new Set(ids).size, 37);
+  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 118);
   assert.equal(observation.cases.length, 26);
   assert.deepEqual(runtime.cases.slice(0, 26).map(({ id }) => id), observation.cases.map(({ id }) => id));
   for (const scene of runtime.cases) {
@@ -106,7 +106,16 @@ test('누락 frame, 중복 node frame, draw count 불일치를 통과시키지 �
 });
 
 test('기대 rejection은 정확한 error·property·node와 frame/draw/readback 부재를 요구한다', () => {
-  const scene = runtime.cases.find(({ expected }) => expected.outcome === 'expected-rejection');
+  const scene = {
+    id: 'rejection-contract-probe',
+    nodeIds: ['rejection-grid', 'rejection-item'],
+    expected: {
+      outcome: 'expected-rejection',
+      code: 'unsupported_grid_auto_rows',
+      property: 'grid-auto-rows',
+      nodeId: 'rejection-grid',
+    },
+  };
   const nodeId = scene.nodeIds.indexOf(scene.expected.nodeId) + 1;
   const log = 'SPINON_C1133_GRID_REJECTION_SUMMARY run_id=ios-run scene_id=' + scene.id
     + ' expected=true status=-11 code=' + scene.expected.code
@@ -119,14 +128,17 @@ test('기대 rejection은 정확한 error·property·node와 frame/draw/readback
   assert.throws(() => validateC1133IOSRejection(scene, log + '\nSPINON_C0410_DRAW status=0 presented boxes=1', 'ios-run'));
 });
 
-test('unknown area auto-track rejection은 grid-auto-rows와 root node 1을 정확히 기록한다', () => {
+test('unknown area auto-track은 Chrome 기대 geometry와 성공 경로로 처리한다', () => {
   const scene = runtime.cases.find(({ id }) => id === 'unknown-area-implicit-tracks');
-  const log = 'SPINON_C1133_GRID_REJECTION_SUMMARY run_id=ios-run scene_id=' + scene.id
-    + ' expected=true status=-11 code=' + scene.expected.code
-    + ' property=' + scene.expected.property + ' node_id=1 frames=absent';
-  assert.equal(validateC1133IOSRejection(scene, log, 'ios-run').runtimeNodeId, 1);
-  assert.throws(() => validateC1133IOSRejection(scene,
-    log.replace('grid-auto-rows', 'grid-auto-columns'), 'ios-run'));
+  assert.equal(scene.expected.outcome, 'success');
+  const result = compareC1133IOSSceneGeometry(scene,
+    successLog(scene, scene.oracle, 'ios-run'), scene.oracle, 'ios-run');
+  assert.equal(result.frames.length, 1);
+  assert.deepEqual({
+    x: result.frames[0].x, y: result.frames[0].y,
+    width: result.frames[0].width, height: result.frames[0].height,
+  }, { x: 0, y: 0, width: 160, height: 120 });
+  assert.equal(result.comparisons[0].maximumErrorCssPx, 0);
 });
 
 test('한 번의 -12 superseded 응답만 같은 iOS scene 재실행 조건으로 잡는다', () => {

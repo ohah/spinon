@@ -1,12 +1,12 @@
 # C11.3.3 · 알 수 없는 `grid-area` 이름의 기본 auto implicit track
 
-**상태:** 계획 단계. 현재 `unknown-area-implicit-tracks`는 `grid-auto-rows:auto`에서 거부된다. 이 계획은 이미 고정된 Chrome 154 기준에 맞춰 unknown area 이름이 만든 trailing implicit track의 기본 auto sizing 동작을 C11.3.3 opt-in profile에 연결한다. 구현 전 계획 PR과 구현 PR은 각각 별도 실패 관점 검토를 거친다. C11.3.3 candidate·C11 및 공식 완료 `72/213`은 유지한다.
+**상태:** 계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 2026-10-29에 병합됐다. 제한 구현은 현재 브랜치에서 Rust·FFI·Android API 37 AVD·iOS 26.2 Simulator 검증을 통과했으며 구현 PR 병합은 대기 중이다. 기존 `unknown-area-implicit-tracks`의 과거 거부는 runtime matrix v1에 보존하고, v2 source-bound matrix에서 Chrome 154 geometry 기준 성공으로 갱신했다. 이 작업은 C11.3.3 candidate·C11 및 공식 완료 `72/213`을 완료로 바꾸지 않는다.
 
 **상위:** [C11.3 계획](./c11-3-template-repeat-named-lines-areas.md) · [unknown named line 후속](./c11-3-3-unknown-named-area-implicit-lines.md) · [area implicit-track 목록 순환](./c11-3-3-template-area-track-list-cycling.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
 **규범 기준:** [CSS Grid Layout Module Level 1 · 2025-03-26 CRD](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/) §7.3.2, §7.5–7.6, §8.3–8.4, §11.4–11.8
 
-**고정 oracle:** Chrome for Testing `154.0.8037.92` (macOS arm64), 기존 [C11.3.3 reference](../tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json); source fixture [grid-template-areas-c1133.html](../tests/fixtures/css/c11/grid-template-areas-c1133.html)의 `unknown-area-implicit-tracks` case. 이 custom fixture는 WPT testharness 실행 결과가 아니다. 현재 expected rejection과 root/node identity는 [runtime matrix](../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json)에 있다.
+**고정 oracle:** Chrome for Testing `154.0.8037.92` (macOS arm64), 기존 [C11.3.3 reference](../tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json); source fixture [grid-template-areas-c1133.html](../tests/fixtures/css/c11/grid-template-areas-c1133.html)의 `unknown-area-implicit-tracks` case. 이 custom fixture는 WPT testharness 실행 결과가 아니다. 기존 거부는 [immutable runtime matrix v1](../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json)에 남고 구현 결과는 [inventory v2](../tests/fixtures/css/c11/grid-template-areas-c1133-inventory-v2.json)와 [runtime matrix v2](../tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json)에 기록된다.
 
 **계획 검토:** [계획 실패 관점 20개](../spec/internal/evidence/c11-3-3-unknown-area-auto-implicit-tracks-plan-review-20.md)
 
@@ -52,6 +52,16 @@
 - 기존 C11.3.3 area, named implicit line, fixed-px track-list, C11.3.1–3.2 회귀와 default/product FFI boundary가 확인된다.
 - 구현/runtime 20관점과 각 PR의 독립 diff 검토 30관점을 별도 문서로 마치고 PR을 Rebase and merge한다.
 - 공개/Tailnet roadmap은 해당 bounded behavior와 남은 미지원 범위를 보여준다. C11.3.3/C11 checkbox와 공식 완료 `72/213`은 그대로다.
+
+## 구현 결과 · 2026-10-30
+
+`TemplateGridImplicitTracks`에서 template areas가 있는 trailing implicit track에만 기본 `auto` track을 허용한다. `GridTrackSize::Auto`를 Taffy의 auto track sizing에 전달하며, area가 없거나 signed/leading mode에서는 거부를 유지한다. Auto track-list grammar는 fixed-px list만 허용한다. Android/iOS 앱의 기본 scene 시작 시 `unknown-area-implicit-tracks`를 예전 거부 조건으로 중복 실행하던 probe를 제거해, 버전 있는 전체 matrix가 해당 scene을 직접 검증한다.
+
+새 v2 scene의 Chrome 기대 geometry는 root `(0,0,160,120)`, 빈 unknown-area item `(160,120,0,0)`이다. Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 37 scene·118 node, 성공 32·cascade fallback 5·기대 거부 0, 최대 geometry 오차 0 CSS px를 확인했다. `unknown-area-implicit-tracks` 두 node 모두 Chrome geometry와 exact match했다. 기본 surface 표본은 각 2/2, fixed-track overflow control은 PixelCopy/Metal 3/3, track-list cycle 표본은 각 28/28 exact다. Metal readback은 compositor 제출 전이다.
+
+로컬 검증은 `spinon-layout` grid tests 19/19, style-to-layout C11.3.3 19/19, feature-gated FFI C11.3.3 7/7, C11.4 auto sizing regression 13/13, C11.4 text/image regression 3/3, iOS matrix + CSS reference tests 35/35, fixture-module boundary 23/23, matrix builder `--check`, workspace Clippy `-D warnings`, rustfmt를 통과했다. macOS arm64 Release FFI archive에서 기본 product build의 fixture symbol/payload 부재와 opt-in build의 포함을 확인했다. 최종 implementation PR diff review 30개와 구현/runtime review 20개는 별도 evidence에 둔다. 초기 AVD 시도에서 구형 앱 probe가 새 성공 결과를 실패 처리해 멈춘 점과, 첫 iOS 시도에서 legacy pixel fixture hash를 v2 matrix와 직접 비교한 오류를 각각 수정한 뒤 양쪽 전체 행렬을 완료했다.
+
+재현 근거: [구현/runtime 검토와 실행 요약](../spec/internal/evidence/c11-3-3-unknown-area-auto-implicit-tracks-implementation-2026-10-30/README.md) · [Android API 37 AVD 결과](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T201752342Z-ba38b087/README.md) · [iPhone 17 Pro Simulator 결과](../spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T202005378Z-3b0cf3b6/README.md). 이 결과는 WPT 적합성, 실기기/hardware GPU, iOS compositor 이후 pixels, arbitrary author CSS 또는 전체 CSS Grid 지원을 뜻하지 않는다.
 
 ## 제외 범위
 
