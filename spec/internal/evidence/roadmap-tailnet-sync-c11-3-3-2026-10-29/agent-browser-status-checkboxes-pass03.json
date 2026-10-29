@@ -1,0 +1,38 @@
+{
+  "c11Checkboxes": [
+    {
+      "checked": false,
+      "label": "C11 CSS Grid — explicit/implicit track, repeat·named lines/areas, auto placement, minmax·fit-content, spanning·fractional tracks와 정렬을 단계별 구현한다. C11.1 Chrome 154의 10 scene·40 node reference와 고정 WPT source hash를 사용한다. spinon-layout Grid core, Stylo typed cascade, HostDocument→Stylo",
+      "ordinal": 187
+    },
+    {
+      "checked": false,
+      "label": "C11.3 repeat()·named line·template areas — C11.3.1은 현재 track-size subset의 양의 정수 repeat() 확장, N+1 line-name metadata, seam 병합, grid-template/grid track shorthand 경로와 unsupported areas 거부를 구현했다. explicit track 10,000개와 축별 1 MiB metadata 예상 크기를 제한한다. Chrome 154 fixture 12 scene·29 n",
+      "ordinal": 188
+    },
+    {
+      "checked": false,
+      "label": "C11.3.3 template areas candidate — Stylo typed area를 sparse owned rectangles로 보존하고 named area/alias를 numeric Grid placement로 해석한다. Chrome 154/WPT oracle inventory는 26 scene·65 node다. 최신 source Android 17/API 37 ARM64 AVD runtime matrix도 26 scene·65 node(성공 19, cascade fallback 5,",
+      "ordinal": 189
+    },
+    {
+      "checked": true,
+      "label": "C11.2.2 제한 runtime profile · 행 우선 sparse Grid 자동 배치 — 행 우선 sparse auto-placement 제한 profile의 구현과 범위 내 검증을 마쳤다. Chrome 154 기준 v4 16 scene·69 node, 다섯 명시적 Vec 예약 실패 주입·동일 engine 복구, Rust workspace 640 passed·4 ignored, JavaScript fixture 37/37을 확인했다. 검증한 실행은 Android 17/API 37 AVD와 ",
+      "ordinal": 190
+    },
+    {
+      "checked": true,
+      "label": "C11.2.3 dense·column Grid 자동 배치 제한 profile — row dense·column sparse/dense 배치, 양의 implicit row/column과 고정 px auto-track subset을 별도 runtime profile로 연결했다. 고정 Chromium 154 기준 25 scene·107 node(구현 후보 21·oracle-only 4)에서 19개 성공·6개 기대 거부를 Rust, Android SM-S731N 실기기, iPhone 17 Pro/iOS ",
+      "ordinal": 191
+    },
+    {
+      "checked": false,
+      "label": "C11.4 intrinsic track sizing",
+      "ordinal": 192
+    }
+  ],
+  "implementationPRPresent": true,
+  "officialCountPresent": true,
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+}
