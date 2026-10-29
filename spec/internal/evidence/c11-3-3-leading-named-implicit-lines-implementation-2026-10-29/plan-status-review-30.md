@@ -40,3 +40,12 @@
 ## 판정
 
 계획의 구현 상태 문구는 현재 merged state와 맞는다. 완료 범위는 제한 fixture이며 C11.3.3/C11 및 공식 `72/213`은 미완료다.
+
+## 원격 PR diff 판정
+
+- 계획 동기화 PR [#793](https://github.com/ohah/spinon/pull/793)의 base는 `a52913ec34cad6b0dda9b549ccb6618f7e565fc7`, 최초 원격 검토 head는 `d3b69afd5cb821b1d80150bc0d334be2a4775bcd`다.
+- GitHub PR files API의 두 경로는 `origin/main...origin/docs/c11-3-3-plan-status-sync-20261029`의 경로와 일치한다: 계획 파일과 이 검토 문서다.
+- PR 본문과 원격 diff는 PR #790 merge SHA, linked implementation report, unchecked C11 status 및 `72/213`을 정확히 설명한다. 제품 코드 변경은 없다.
+- PR check rollup과 required-check 조회는 비어 있다. `main`은 required approving review 0개이며 linear history를 요구해 Rebase and merge만 가능하다.
+
+이 검토 기록 추가 뒤 최종 원격 경로 목록, head SHA, merge state와 required checks를 다시 확인한다.
