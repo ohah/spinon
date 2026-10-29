@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "source": {
     "fixture": "tests/fixtures/css/c11/grid-fit-content-columns-c114-precomparison.html",
-    "fixtureSha256": "b8c5c577bd2cc934ea144186068ff77aefe9e69c8871d6ae7b814673fb872064",
+    "fixtureSha256": "0ef45e999df4f504c41018afd46af575aa1ccc1c25d577a962b056e0ec53c101",
     "screenshot": "chrome156-fit-content-columns.png",
     "screenshotSha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566",
     "agentBrowserVersion": "0.31.1",
@@ -15,6 +15,11 @@
       "id": "column-fit-content-40",
       "limitCssPx": 40,
       "itemMinimum": "0px",
+      "nodeIds": {
+        "root": "c114-fit-content-column-limit-40-grid",
+        "item": "c114-fit-content-column-limit-40-item",
+        "child": "c114-fit-content-column-limit-40-child"
+      },
       "observed": {
         "gridTemplateColumns": "40px",
         "gridTemplateRows": "60px",
@@ -35,6 +40,11 @@
       "id": "column-fit-content-30",
       "limitCssPx": 30,
       "itemMinimum": "0px",
+      "nodeIds": {
+        "root": "c114-fit-content-column-limit-30-grid",
+        "item": "c114-fit-content-column-limit-30-item",
+        "child": "c114-fit-content-column-limit-30-child"
+      },
       "observed": {
         "gridTemplateColumns": "30px",
         "gridTemplateRows": "60px",
@@ -55,6 +65,11 @@
       "id": "column-fit-content-200",
       "limitCssPx": 200,
       "itemMinimum": "0px",
+      "nodeIds": {
+        "root": "c114-fit-content-column-limit-200-grid",
+        "item": "c114-fit-content-column-limit-200-item",
+        "child": "c114-fit-content-column-limit-200-child"
+      },
       "observed": {
         "gridTemplateColumns": "100px",
         "gridTemplateRows": "60px",
@@ -75,6 +90,11 @@
       "id": "column-fit-content-auto-minimum-control",
       "limitCssPx": 40,
       "itemMinimum": "auto",
+      "nodeIds": {
+        "root": "c114-fit-content-column-limit-auto-minimum-grid",
+        "item": "c114-fit-content-column-limit-auto-minimum-item",
+        "child": "c114-fit-content-column-limit-auto-minimum-child"
+      },
       "observed": {
         "gridTemplateColumns": "100px",
         "gridTemplateRows": "60px",

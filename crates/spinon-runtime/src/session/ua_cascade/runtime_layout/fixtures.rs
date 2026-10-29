@@ -78,6 +78,10 @@ mod c11_4_fit_content_spanning;
 mod c11_4_fit_content_limit_boundaries;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_fit_content_limit_columns.rs"]
+mod c11_4_fit_content_limit_columns;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_grid_layout_auto_tracks.rs"]
 mod c11_4_grid_layout_auto_tracks;
 
@@ -232,6 +236,13 @@ pub(super) use c11_4_fit_content_limit_boundaries::{
     observation as c11_4_fit_content_limit_boundaries_observation,
     prepare as prepare_c11_4_fit_content_limit_boundaries,
     validate_output as validate_c11_4_fit_content_limit_boundaries_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_fit_content_limit_columns::{
+    observation as c11_4_fit_content_limit_columns_observation,
+    prepare as prepare_c11_4_fit_content_limit_columns,
+    validate_output as validate_c11_4_fit_content_limit_columns_output,
 };
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

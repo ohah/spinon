@@ -1,0 +1,61 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "93ce63ea3d4c6823808a2e3a4bb75356884ba7b4eb8cabbe2c93c7f46d3b2f7e",
+  "installedAppSha256": "93ce63ea3d4c6823808a2e3a4bb75356884ba7b4eb8cabbe2c93c7f46d3b2f7e",
+  "sourceRevision": {
+    "commit": "94e7ae25c6c89fc1123cf60104b5b629015c4b7e",
+    "tree": "a6d8253e782dbc4ea54890a1898fcf90df6ceae7",
+    "trackedDiffSha256": "8a154f41db3544f1895266a0722e3c12c2621c741f1f8c70b603ba7a512863a7",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_limit_columns.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_limit_columns_report.rs",
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_limit_columns.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_limit_columns/style_validation.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_limit_columns/tests.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_limit_columns/trace_validation.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_fit_content_limit_columns/validation.rs",
+      "plan/c11-4-fit-content-column-axis.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "tests/fixtures/css/c11/grid-fit-content-columns-c114-precomparison.html",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "96688c787ca4dfc73f7c785dbea7f7d1532181d80063afed2513d2939ad4c70d"
+  }
+}

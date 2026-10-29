@@ -95,6 +95,10 @@ const fitContentSpanningSceneIDs = new Set(['fit-content-spanning-wpt']);
 const fitContentLimitBoundarySceneIDs = new Set([
   'fit-content-limit-40-wpt', 'fit-content-limit-30-wpt', 'fit-content-limit-200-wpt',
 ]);
+const fitContentLimitColumnsSceneIDs = new Set([
+  'column-fit-content-40', 'column-fit-content-30', 'column-fit-content-200',
+  'column-fit-content-auto-minimum-control',
+]);
 const fitContentAutoMinFloorSceneIDs = new Set([
   'fit-content-auto-min-floor-wpt', 'fit-content-auto-min-floor-zero-control',
 ]);
@@ -217,6 +221,8 @@ const isFitContentSpanningRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentSpanningSceneIDs.has(sceneID));
 const isFitContentLimitBoundaryRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentLimitBoundarySceneIDs.has(sceneID));
+const isFitContentLimitColumnsRun = requestedSceneIDs?.length > 0
+  && requestedSceneIDs.every((sceneID) => fitContentLimitColumnsSceneIDs.has(sceneID));
 const isFitContentAutoMinFloorRun = requestedSceneIDs?.length > 0
   && requestedSceneIDs.every((sceneID) => fitContentAutoMinFloorSceneIDs.has(sceneID));
 const isOverflowAutoMinimumRun = requestedSceneIDs?.length > 0
@@ -248,6 +254,7 @@ const runKind = requestedRunKind ?? (isFixedAutoAreaRun ? 'fixed-auto-area'
   : isFitContentZoomedGridRun ? 'fit-content-zoomed-grid'
   : isFitContentPercentageArgumentRun ? 'fit-content-percentage-argument'
   : isFitContentSpanningRun ? 'fit-content-spanning'
+  : isFitContentLimitColumnsRun ? 'fit-content-limit-columns'
   : isFitContentLimitBoundaryRun ? 'fit-content-limit-boundaries'
   : isFitContentAutoMinFloorRun ? 'fit-content-auto-min-floor'
   : isEqualAutoRowsRun ? 'align-content-normal-equal-auto-rows'
@@ -303,6 +310,8 @@ const evidenceDirectory = resolve(repositoryRoot, evidenceGroup
     ? `spec/internal/evidence/c11-4-fit-content-spanning-simulators-${date}/${target}-${runPrefix}`
   : isFitContentLimitBoundaryRun
     ? `spec/internal/evidence/c11-4-fit-content-limit-boundaries-simulators-${date}/${target}-${runPrefix}`
+  : isFitContentLimitColumnsRun
+    ? `spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-${date}/${target}-${runPrefix}`
   : isFitContentAutoMinFloorRun
     ? `spec/internal/evidence/c11-4-fit-content-auto-min-floor-runtime-${date}/${target}-${runPrefix}`
   : isOverflowAutoMinimumRun || runKind === 'overflow-auto-minimum'
@@ -349,7 +358,8 @@ function sourceRevision() {
     'ls-files', '--others', '--exclude-standard',
   ]).stdout.split(/\r?\n/).filter((path) => path
     && !path.startsWith('spec/internal/evidence/')
-    && !path.startsWith('build/'));
+    && !path.startsWith('build/')
+    && !/(^|\/)target\//.test(path));
   const untrackedFiles = untrackedDirtyPaths.map((path) => ({
     path,
     sha256: sha256(readFileSync(resolve(repositoryRoot, path))),
@@ -5560,6 +5570,55 @@ for (const boundary of [
     ],
   });
 }
+for (const boundary of [
+  { id: 'column-fit-content-40', limit: 40, rootWidth: 60, column: 40, minimum: 0 },
+  { id: 'column-fit-content-30', limit: 30, rootWidth: 60, column: 30, minimum: 0 },
+  { id: 'column-fit-content-200', limit: 200, rootWidth: 300, column: 100, minimum: 0 },
+  { id: 'column-fit-content-auto-minimum-control', limit: 40, rootWidth: 60,
+    column: 100, minimum: 100 },
+]) {
+  const suffix = boundary.id.replace('column-fit-content-', '')
+    .replace('auto-minimum-control', 'auto-minimum');
+  const rootId = `c114-fit-content-column-limit-${suffix}-grid`;
+  const childId = `c114-fit-content-column-limit-${suffix}-child`;
+  const rootBackgroundX = boundary.rootWidth > 100 ? 120 : 30;
+  scenes.push({
+    id: boundary.id,
+    axis: 'Columns',
+    boxCount: 3,
+    rootFrame: `width=${boundary.rootWidth},height=60`,
+    itemFrame: `width=${boundary.column},height=10`,
+    nodeFrames: `node_frames_css_px=[0:node=1,x=0,y=0,width=${boundary.rootWidth},height=60;`
+      + `1:node=2,x=0,y=0,width=${boundary.column},height=10;`
+      + '2:node=3,x=0,y=0,width=100,height=10]',
+    tracks: [boundary.column],
+    collapsed: [false],
+    requiresStrictPresentationIdentity: true,
+    fitContentLimitColumns: {
+      rootNode: 1,
+      itemNode: 2,
+      childNode: 3,
+      limit: boundary.limit,
+      expectedMinimum: boundary.minimum,
+      expectedMaxContent: 100,
+      expectedColumn: boundary.column,
+      automaticMinimum: boundary.minimum > 0,
+      rootWidth: boundary.rootWidth,
+    },
+    pixelSamples: [
+      { id: `${boundary.id}-child-inside`, nodeId: childId,
+        xCssPx: 10, yCssPx: 5, rgba: [255, 209, 102, 255] },
+      ...(boundary.column < 100 ? [{
+        id: `${boundary.id}-child-overflows-item`, nodeId: childId,
+        xCssPx: 80, yCssPx: 5, rgba: [255, 209, 102, 255],
+      }] : []),
+      { id: `${boundary.id}-root-background`, nodeId: rootId,
+        xCssPx: rootBackgroundX, yCssPx: 30, rgba: [23, 33, 43, 255] },
+      { id: `${boundary.id}-outside-root`, nodeId: rootId,
+        xCssPx: boundary.rootWidth, yCssPx: 30, rgba: [0, 0, 0, 255] },
+    ],
+  });
+}
 scenes.push({
   id: 'fit-content-auto-min-floor-wpt',
   axis: 'Rows',
@@ -5877,7 +5936,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 618, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 622, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -7595,6 +7654,94 @@ function verifyRuntimeLog(log, scene, runID) {
       minimumSource: null,
     });
   }
+  if (scene.fitContentLimitColumns) {
+    const expected = scene.fitContentLimitColumns;
+    const observation = diagnostics.fitContentLimitColumns;
+    assert.ok(observation, `${scene.id}: fit-content column observation is missing`);
+    assert.equal(observation.sceneId, scene.id);
+    assert.equal(observation.frameSource, 'pre-render LayoutOutput CSS px');
+    assert.equal(observation.expectedLimitCssPx, expected.limit);
+    assert.equal(observation.expectedMinimumCssPx, expected.expectedMinimum);
+    assert.equal(observation.expectedMaxContentCssPx, expected.expectedMaxContent);
+    assert.equal(observation.expectedColumnCssPx, expected.expectedColumn);
+    assert.equal(observation.automaticMinimumControl, expected.automaticMinimum);
+    const style = observation.styleSnapshot;
+    assert.equal(style.profile, 'RuntimeBlockFlexGridTrackSizingV1');
+    assert.equal(style.rootNode, expected.rootNode);
+    assert.ok(Number.isInteger(style.generation) && style.generation > 0);
+    assert.ok(Number.isInteger(style.documentRevision) && style.documentRevision > 0);
+    assert.ok(Number.isInteger(style.renderTreeRevision) && style.renderTreeRevision > 0);
+    assert.ok(Number.isInteger(style.styleRevision) && style.styleRevision >= 0);
+    assert.ok(Number.isInteger(style.environmentRevision) && style.environmentRevision >= 0);
+    assert.equal(style.styleRevision, diagnostics.layoutInputRevision.style);
+    assert.equal(style.environmentRevision, diagnostics.layoutInputRevision.environment);
+    assert.deepEqual(style.computedProperties, {
+      alignContent: 'normal',
+      display: 'grid',
+      gridAutoColumns: `fit-content(${expected.limit}px)`,
+      gridAutoFlow: 'column',
+      gridAutoRows: 'auto',
+      gridTemplateColumns: 'none',
+      gridTemplateRows: '60px',
+      height: 'LengthPx(60.0)',
+      itemMinWidth: expected.automaticMinimum ? 'Auto' : 'LengthPx(0.0)',
+      itemOverflowX: 'visible',
+      width: `LengthPx(${expected.rootWidth}.0)`,
+    });
+    assert.ok(style.typedGridStyle.includes(
+      `auto_columns: TrackList([FitContent(LengthPx(${expected.limit}.0))])`));
+    assert.ok(style.typedGridStyle.includes('auto_flow: Column'));
+    assert.deepEqual(observation.layoutInputGridContainer, {
+      rootNode: expected.rootNode,
+      columns: '[]',
+      explicitRows: '[LengthPx(60.0)]',
+      autoColumns: `TrackList([FitContent(LengthPx(${expected.limit}.0))])`,
+      autoRows: 'Auto',
+      autoFlow: 'Column',
+      placementMode: 'TrackSizing',
+    });
+    assert.deepEqual(observation.nodeIds, {
+      root: expected.rootNode,
+      item: expected.itemNode,
+      child: expected.childNode,
+    });
+    assert.deepEqual(observation.framesCssPx, {
+      root: { x: 0, y: 0, width: expected.rootWidth, height: 60 },
+      item: { x: 0, y: 0, width: expected.expectedColumn, height: 10 },
+      child: { x: 0, y: 0, width: 100, height: 10 },
+    });
+    const maximize = observation.columnSizingStages.find(({ stage }) => stage === 'MaximizeTracks');
+    const maximizedTrack = maximize?.tracks?.filter(({ gutter, collapsed }) => !gutter && !collapsed);
+    assert.equal(maximizedTrack?.length, 1, `${scene.id}: MaximizeTracks column is missing`);
+    assert.equal(maximizedTrack[0].baseSizeCssPx, expected.expectedColumn);
+    assert.equal(maximizedTrack[0].growthLimitCssPx, expected.expectedMaxContent);
+    assert.equal(maximizedTrack[0].infinitelyGrowable, false);
+    assert.deepEqual(observation.columnContributions.map(({ kind, valueCssPx }) => [kind, valueCssPx]), [
+      ['Minimum', expected.expectedMinimum],
+      ['MinContent', expected.expectedMaxContent],
+      ['MaxContent', expected.expectedMaxContent],
+    ]);
+    assert.ok(observation.columnContributions.every((contribution) =>
+      contribution.item === expected.itemNode && contribution.span === 1
+        && contribution.crossesFlexibleTrack === false));
+    if (expected.automaticMinimum) {
+      assert.match(observation.columnContributions[0].minimumSource, /^AutomaticMinimum/);
+    } else {
+      assert.equal(observation.columnContributions[0].minimumSource, 'SpecifiedMinimum');
+    }
+    assert.equal(observation.columnContributions[1].minimumSource, null);
+    assert.equal(observation.columnContributions[2].minimumSource, null);
+    assert.deepEqual(observation.rowSizingStages.map(({ stage }) => stage), [
+      'Initialize', 'FixedTrackEarlyReturn',
+    ], `${scene.id}: explicit row must take the fixed-track early return`);
+    const rootTrace = diagnostics.trackSizingTraces.find(({ grid }) => grid === expected.rootNode);
+    assert.ok(rootTrace, `${scene.id}: root Grid sizing trace is missing`);
+    assert.deepEqual(rootTrace.passes.map(({ axis, sequence }) => [axis, sequence]), [
+      ['Columns', 0], ['Rows', 1],
+    ], `${scene.id}: both sizing axes and their order must be present`);
+    assert.deepEqual(rootTrace.passes[1].contributions, [],
+      `${scene.id}: fixed 60px row must not collect intrinsic contributions`);
+  }
   if (scene.fitContentAutoMinFloor) {
     const expected = scene.fitContentAutoMinFloor;
     const observation = diagnostics.fitContentAutoMinFloor;
@@ -9174,6 +9321,8 @@ if (target === 'ios-simulator') {
             || (scene.expectedRejection && rejectionSummary)
             || pixelError
             || log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
+            || log.includes(`SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=${runID} scene_id=${scene.id} strict_matches=false`)
+            || log.includes(`SPINON_C114_GRID_PRESENTATION_MATCH run_id=${runID} matched=false`)
             || log.includes('SPINON_C114_GRID_ARGUMENT_ERROR')) break;
         sleep(300);
       }

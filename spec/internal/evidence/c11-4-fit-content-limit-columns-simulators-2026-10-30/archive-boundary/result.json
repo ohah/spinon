@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "sourceBaseCommit": "94e7ae25c6c89fc1123cf60104b5b629015c4b7e",
+  "rustc": "rustc 1.96.1 (31fca3adb 2026-06-26)",
+  "llvmNm": "llvm-nm, compatible with GNU nm",
+  "scanPattern": [
+    "column-fit-content-",
+    "fit_content_limit_columns",
+    "fitContentLimitColumns"
+  ],
+  "artifacts": {
+    "product": {
+      "archive": "build/spinon/c11-4-fit-content-column-axis/archive-boundary/product/release/libspinon_ffi.a",
+      "sha256": "01edc486beafadfcac2108b0a08e72093e01ce0687ec2ea76dcad0237b28ef94",
+      "matchingStrings": 0,
+      "matchingSymbols": 0,
+      "representativeSymbols": []
+    },
+    "fixture-test": {
+      "archive": "build/spinon/c11-4-fit-content-column-axis/archive-boundary/fixture-test/release/libspinon_ffi.a",
+      "sha256": "64800da606d509c2bdeeecc19a6b13205a615c692d4ac64bb29c2bc5ce95f609",
+      "matchingStrings": 25,
+      "matchingSymbols": 25,
+      "representativeSymbols": [
+        "0000000000001708 T spinon_ffi::runtime_gpu::fixtures::c11_4::fit_content_limit_columns::runtime_source::h2e5cf4a33c659959",
+        "0000000000003fb0 T spinon_ffi::runtime_gpu::fixtures::c11_4::fit_content_limit_columns_report::report_json::h723376e3a8406063",
+        "0000000000006cb4 t spinon_ffi::runtime_gpu::fixtures::c11_4::fit_content_limit_columns_report::report_json::_$u7b$$u7b$closure$u7d$$u7d$::h35a5adc33dbc8a11",
+        "0000000000006d1c t spinon_ffi::runtime_gpu::fixtures::c11_4::fit_content_limit_columns_report::report_json::_$u7b$$u7b$closure$u7d$$u7d$::h596e57247473550c",
+        "0000000000006d84 t spinon_ffi::runtime_gpu::fixtures::c11_4::fit_content_limit_columns_report::report_json::_$u7b$$u7b$closure$u7d$$u7d$::h834c2030d0abef8e"
+      ]
+    }
+  }
+}

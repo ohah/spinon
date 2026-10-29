@@ -28,8 +28,6 @@
     column-gap: 0;
     row-gap: 0;
     align-content: normal;
-    justify-content: normal;
-    justify-items: stretch;
     align-items: start;
     overflow: visible;
     background: #ddd;
@@ -54,23 +52,23 @@
 </style>
 <main>
   <section data-scene="column-fit-content-40">
-    <div class="root" style="--limit: 40px">
-      <div class="item"><div class="child"></div></div>
+    <div id="c114-fit-content-column-limit-40-grid" class="root" style="--limit: 40px">
+      <div id="c114-fit-content-column-limit-40-item" class="item"><div id="c114-fit-content-column-limit-40-child" class="child"></div></div>
     </div>
   </section>
   <section data-scene="column-fit-content-30">
-    <div class="root" style="--limit: 30px">
-      <div class="item"><div class="child"></div></div>
+    <div id="c114-fit-content-column-limit-30-grid" class="root" style="--limit: 30px">
+      <div id="c114-fit-content-column-limit-30-item" class="item"><div id="c114-fit-content-column-limit-30-child" class="child"></div></div>
     </div>
   </section>
   <section data-scene="column-fit-content-200">
-    <div class="root" style="--limit: 200px; --root-width: 300px">
-      <div class="item"><div class="child"></div></div>
+    <div id="c114-fit-content-column-limit-200-grid" class="root" style="--limit: 200px; --root-width: 300px">
+      <div id="c114-fit-content-column-limit-200-item" class="item"><div id="c114-fit-content-column-limit-200-child" class="child"></div></div>
     </div>
   </section>
   <section data-scene="column-fit-content-auto-minimum-control">
-    <div class="root" style="--limit: 40px; --minimum: auto">
-      <div class="item"><div class="child"></div></div>
+    <div id="c114-fit-content-column-limit-auto-minimum-grid" class="root" style="--limit: 40px; --minimum: auto">
+      <div id="c114-fit-content-column-limit-auto-minimum-item" class="item"><div id="c114-fit-content-column-limit-auto-minimum-child" class="child"></div></div>
     </div>
   </section>
 </main>
@@ -87,6 +85,7 @@
     return {
       id: scene.dataset.scene,
       limit: getComputedStyle(root).getPropertyValue("--limit").trim(),
+      nodeIds: { root: root.id, item: item.id, child: child.id },
       gridTemplateColumns: getComputedStyle(root).gridTemplateColumns,
       gridTemplateRows: getComputedStyle(root).gridTemplateRows,
       root: rect(root),
