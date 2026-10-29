@@ -107,10 +107,14 @@ pub(super) fn computed_grid_layout(
         node,
         "grid-template-columns",
         columns_value,
-        allow_integer_repeat,
-        allow_intrinsic_tracks,
-        allow_auto_repeat,
-        template_areas.is_some() && allow_integer_repeat && !allow_intrinsic_tracks,
+        GridTrackComputeOptions {
+            allow_integer_repeat,
+            allow_intrinsic_tracks,
+            allow_auto_repeat,
+            allow_empty_tracks: template_areas.is_some()
+                && allow_integer_repeat
+                && !allow_intrinsic_tracks,
+        },
     )?;
     let ComputedGridTracks {
         tracks: rows,
@@ -125,10 +129,14 @@ pub(super) fn computed_grid_layout(
         node,
         "grid-template-rows",
         rows_value,
-        allow_integer_repeat,
-        allow_intrinsic_tracks,
-        allow_auto_repeat,
-        template_areas.is_some() && allow_integer_repeat && !allow_intrinsic_tracks,
+        GridTrackComputeOptions {
+            allow_integer_repeat,
+            allow_intrinsic_tracks,
+            allow_auto_repeat,
+            allow_empty_tracks: template_areas.is_some()
+                && allow_integer_repeat
+                && !allow_intrinsic_tracks,
+        },
     )?;
     let has_cross_axis_fixed_and_auto_repeat = (columns_has_fixed_repeat
         && rows_auto_repeat.is_some())
@@ -435,19 +443,24 @@ fn computed_grid_placement(
     }
 }
 
+#[derive(Clone, Copy)]
+struct GridTrackComputeOptions {
+    allow_integer_repeat: bool,
+    allow_intrinsic_tracks: bool,
+    allow_auto_repeat: bool,
+    allow_empty_tracks: bool,
+}
+
 fn computed_grid_tracks(
     component: GridTemplateComponent,
     node: NodeId,
     property: &'static str,
     serialized: &str,
-    allow_integer_repeat: bool,
-    allow_intrinsic_tracks: bool,
-    allow_auto_repeat: bool,
-    allow_empty_tracks: bool,
+    options: GridTrackComputeOptions,
 ) -> Result<ComputedGridTracks, CssCascadeError> {
     let list = match component {
         GridTemplateComponent::TrackList(list) => list,
-        GridTemplateComponent::None if allow_empty_tracks => {
+        GridTemplateComponent::None if options.allow_empty_tracks => {
             let mut line_names = Vec::new();
             reserve_integer_repeat_vec(
                 &mut line_names,
@@ -467,7 +480,7 @@ fn computed_grid_tracks(
                 single_bounded_auto_repeat: false,
             });
         }
-        GridTemplateComponent::None if allow_intrinsic_tracks => {
+        GridTemplateComponent::None if options.allow_intrinsic_tracks => {
             return Ok(ComputedGridTracks {
                 tracks: Vec::new(),
                 line_names: Vec::new(),
@@ -493,12 +506,12 @@ fn computed_grid_tracks(
             node,
             property,
             serialized,
-            allow_intrinsic_tracks,
-            allow_auto_repeat,
+            options.allow_intrinsic_tracks,
+            options.allow_auto_repeat,
         );
     }
 
-    if !allow_integer_repeat {
+    if !options.allow_integer_repeat {
         if list.values.len() > MAX_COMPUTED_GRID_TRACKS
             || list.line_names.iter().any(|names| !names.is_empty())
             || list
@@ -521,7 +534,7 @@ fn computed_grid_tracks(
                 return Err(unsupported_grid_value(node, property, serialized));
             };
             tracks.push(
-                track_size(size, allow_intrinsic_tracks)
+                track_size(size, options.allow_intrinsic_tracks)
                     .ok_or_else(|| unsupported_grid_value(node, property, serialized))?,
             );
         }
@@ -547,18 +560,24 @@ fn computed_grid_tracks(
             )
         })
         .count();
-    let single_bounded_fixed_repeat = single_bounded_fixed_repeat(&list, allow_intrinsic_tracks);
-    expand_integer_repeats(&list, node, property, serialized, allow_intrinsic_tracks).map(
-        |(tracks, line_names)| ComputedGridTracks {
-            tracks,
-            line_names,
-            auto_repeat: None,
-            has_fixed_repeat: fixed_repeat_group_count > 0,
-            fixed_repeat_group_count,
-            single_bounded_fixed_repeat,
-            single_bounded_auto_repeat: false,
-        },
+    let single_bounded_fixed_repeat =
+        single_bounded_fixed_repeat(&list, options.allow_intrinsic_tracks);
+    expand_integer_repeats(
+        &list,
+        node,
+        property,
+        serialized,
+        options.allow_intrinsic_tracks,
     )
+    .map(|(tracks, line_names)| ComputedGridTracks {
+        tracks,
+        line_names,
+        auto_repeat: None,
+        has_fixed_repeat: fixed_repeat_group_count > 0,
+        fixed_repeat_group_count,
+        single_bounded_fixed_repeat,
+        single_bounded_auto_repeat: false,
+    })
 }
 
 fn single_bounded_fixed_repeat(

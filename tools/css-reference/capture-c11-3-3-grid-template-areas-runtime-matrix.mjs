@@ -12,10 +12,22 @@ import {
 } from './c11-3-3-grid-template-areas-runtime-device.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
 const mobilePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
 const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 'utf8'));
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
+const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-cycling-mobile-pixels-v1.json';
+const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
+const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
+const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
+assert.equal(cyclePixels.inputs.runtimeMatrix.sha256,
+  sha256(await readFile(resolve(repositoryRoot, runtimePath))));
+assert.equal(cyclePixels.inputs.chromeObservation.sha256, sha256(cycleObservationBytes));
+assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes));
+assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
+assert.equal(cyclePixels.scenes.length, 6);
+const cyclePixelScenes = new Map(cyclePixels.scenes.map((entry) => [entry.sceneId, entry]));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1);
 const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
@@ -45,7 +57,6 @@ const date = new Intl.DateTimeFormat('en-CA', { timeZone: 'Asia/Seoul' }).format
 const evidenceDirectory = resolve(repositoryRoot,
   `spec/internal/evidence/c11-3-3-grid-template-areas-runtime-${date}`, `${target}-${runID}`);
 const apkPath = resolve(repositoryRoot, 'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
-const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const unknownAreaScene = {
   id: unknownAreaPixels.sceneId,
   index: runtime.summary.sceneCount,
@@ -413,11 +424,15 @@ async function captureMatrix(adb) {
 
   const observations = [];
   let pixelComparison;
+  const cyclePixelComparisons = [];
+  let trackListCycleScreenSha256 = null;
   for (const scene of runtime.cases) {
     const sceneRunID = `${runID}-${String(scene.index).padStart(2, '0')}-${scene.id}`;
     const expectedReject = scene.expected.outcome === 'expected-rejection';
-    const basicPixelSamples = scene.id === 'basic-rectangles' ? mobile.samples : null;
-    const launch = launchScene(adb, scene.id, sceneRunID, { samples: basicPixelSamples });
+    const cyclePixelScene = cyclePixelScenes.get(scene.id);
+    const pixelSamples = scene.id === mobile.sceneId ? mobile.samples : cyclePixelScene?.samples ?? null;
+    const requiresPixelResult = pixelSamples !== null;
+    const launch = launchScene(adb, scene.id, sceneRunID, { samples: pixelSamples });
     await saveLog(`launch-${scene.index.toString().padStart(2, '0')}-${scene.id}.log`, launch);
     const pid = waitForProcess(adb);
     const evalMarker = `SPINON_C1133_GRID_EVAL_RUN run_id=${sceneRunID} scene_id=${scene.id} `;
@@ -435,7 +450,7 @@ async function captureMatrix(adb) {
         `${scene.id}: runtime 평가가 성공하지 않았습니다: ${evalLine ?? log}`);
       log = waitForLog(() => currentProcessLog(adb, pid), (value) =>
         value.includes(`SPINON_C0410_DRAW status=0 presented boxes=`)
-          && (scene.id !== 'basic-rectangles'
+          && (!requiresPixelResult
             || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${sceneRunID}`)
             || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${sceneRunID}`)
             || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=error run_id=${sceneRunID}`)
@@ -450,22 +465,30 @@ async function captureMatrix(adb) {
     }
     const geometry = compareGeometry(scene, log);
     let pixel = null;
-    if (scene.id === 'basic-rectangles') {
+    if (requiresPixelResult) {
       const capture = log.split(/\r?\n/).find((line) => line.includes(
         `SPINON_C1133_GRID_PIXEL_MATRIX_CAPTURE status=ok run_id=${sceneRunID}`));
-      assert.ok(capture, 'basic-rectangles: PixelCopy capture marker가 없습니다.');
+      assert.ok(capture, `${scene.id}: PixelCopy capture marker가 없습니다.`);
       const devicePng = capture.match(/\bpng=(\S+)/)?.[1];
       assert.ok(devicePng?.startsWith('/data/user/0/dev.spinon.bootstrap/cache/c1133-grid-surface-pixel-matrix/'),
         'PixelCopy 경로가 C11.3.3 전용 cache 경로가 아닙니다.');
       const pngBytes = adb(['exec-out', 'run-as', packageName, 'cat',
         `cache/c1133-grid-surface-pixel-matrix/${devicePng.split('/').at(-1)}`], { encoding: null }).stdout;
       pixel = compareC11AndroidPixelCopyScene(log, {
-        scene: { id: mobile.sceneId, samples: mobile.samples }, runID: sceneRunID, pngBytes,
-        viewportCssPx: mobile.oracle.viewportCssPx, markerPrefix: 'C1133',
+        scene: { id: scene.id, samples: pixelSamples }, runID: sceneRunID, pngBytes,
+        viewportCssPx: cyclePixelScene ? cyclePixels.runtime.viewportCssPx : mobile.oracle.viewportCssPx,
+        markerPrefix: 'C1133',
         cacheDirectory: 'c1133-grid-surface-pixel-matrix',
       });
-      await writeFile(resolve(evidenceDirectory, 'pixelcopy.png'), pngBytes);
-      pixelComparison = pixel;
+      const pixelPath = scene.id === mobile.sceneId ? 'pixelcopy.png' : `pixelcopy-${scene.id}.png`;
+      await writeFile(resolve(evidenceDirectory, pixelPath), pngBytes);
+      if (scene.id === mobile.sceneId) pixelComparison = pixel;
+      else cyclePixelComparisons.push({ sceneId: scene.id, pixelPath, ...pixel });
+      if (scene.id === 'both-axis-cycle' && target === 'android-avd') {
+        const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
+        await writeFile(resolve(evidenceDirectory, 'android-track-list-cycle-screen.png'), screen);
+        trackListCycleScreenSha256 = sha256(screen);
+      }
     }
     observations.push({
       index: scene.index, sceneId: scene.id, outcome: matrixCaseStatus(scene),
@@ -483,8 +506,8 @@ async function captureMatrix(adb) {
     await writeFile(resolve(evidenceDirectory, 'android-screen.png'), screen);
     screenSha256 = sha256(screen);
   }
-  return { appSha256, observations, pixelComparison, unknownAreaOverflow, leadingNamedImplicitLines,
-    screenSha256 };
+  return { appSha256, observations, pixelComparison, cyclePixelComparisons,
+    trackListCycleScreenSha256, unknownAreaOverflow, leadingNamedImplicitLines, screenSha256 };
 }
 
 async function runNegativeControls(adb) {
@@ -530,22 +553,30 @@ async function runNegativeControls(adb) {
 
 await mkdir(evidenceDirectory, { recursive: true });
 try {
-  assert.equal(runtime.summary.sceneCount, 31);
-  assert.equal(runtime.summary.nodeCount, 90);
+  assert.equal(runtime.summary.sceneCount, 37);
+  assert.equal(runtime.summary.nodeCount, 118);
   assert.equal(observation.cases.length, 26);
   assert.equal(sha256(await readFile(resolve(repositoryRoot, runtimePath))), mobile.inputs.runtimeMatrix.sha256);
+  assert.equal(sha256(await readFile(resolve(repositoryRoot, runtimePath))), cyclePixels.inputs.runtimeMatrix.sha256);
   const { adb, metadata } = androidDevice();
   await writeFile(resolve(evidenceDirectory, 'device.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   const platform = await captureMatrix(adb);
   const negative = await runNegativeControls(adb);
   const outcomeCounts = Object.fromEntries(['success', 'cascade-fallback', 'expected-rejection']
     .map((outcome) => [outcome, platform.observations.filter((item) => item.outcome === outcome).length]));
-  assert.deepEqual(outcomeCounts, { success: 25, 'cascade-fallback': 5, 'expected-rejection': 1 });
+  assert.deepEqual(outcomeCounts, { success: 31, 'cascade-fallback': 5, 'expected-rejection': 1 });
   const totalComparisons = platform.observations.reduce((sum, item) => sum + (item.comparisons?.length ?? 0), 0);
   const result = {
     schema: 'spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1',
     status: 'matched', runID, target, metadata,
     fixture: { path: runtimePath, sha256: sha256(await readFile(resolve(repositoryRoot, runtimePath))) },
+    trackListCyclePixels: {
+      path: cyclePixelsPath,
+      sha256: sha256(await readFile(resolve(repositoryRoot, cyclePixelsPath))),
+      observations: platform.cyclePixelComparisons,
+      totalSamples: platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0),
+      screenshotSha256: platform.trackListCycleScreenSha256,
+    },
     unknownAreaOverflowFixture: {
       path: unknownAreaPixelsPath,
       sha256: sha256(await readFile(resolve(repositoryRoot, unknownAreaPixelsPath))),
@@ -568,10 +599,12 @@ try {
       referenceSha256: sha256(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath))),
       dpr: 1, viewportCssPx: mobile.oracle.viewportCssPx,
     },
-    matrix: { sceneCount: 31, nodeCount: 90, outcomeCounts, comparedVisibleNodes: totalComparisons,
+    matrix: { sceneCount: 37, nodeCount: 118, outcomeCounts, comparedVisibleNodes: totalComparisons,
       maximumGeometryErrorCssPx: Math.max(0, ...platform.observations
         .map(({ maximumGeometryErrorCssPx = 0 }) => maximumGeometryErrorCssPx)) },
     platform: { appSha256: platform.appSha256, pixelComparison: platform.pixelComparison,
+      cyclePixelComparisons: platform.cyclePixelComparisons,
+      trackListCycleScreenSha256: platform.trackListCycleScreenSha256,
       unknownAreaOverflow: platform.unknownAreaOverflow,
       leadingNamedImplicitLines: platform.leadingNamedImplicitLines,
       screenSha256: platform.screenSha256 },
@@ -586,9 +619,10 @@ try {
     `- Run: \`${runID}\``, `- Target: ${target === 'android-physical'
       ? `Android 실기기 ${metadata.model} / Android ${metadata.release} (API ${metadata.sdk}); renderer: ${metadata.renderer}`
       : 'Android API 37 AVD with SwiftShader'}`,
-    '- Runtime matrix: 26 scenes / 65 nodes; 19 success, 5 cascade fallback, 2 expected rejection.',
+    '- Runtime matrix: 37 scenes / 118 nodes; 31 success, 5 cascade fallback, 1 expected rejection.',
     `- Chrome DPR 1 geometry: ${totalComparisons} visible node frames compared; maximum error ${result.matrix.maximumGeometryErrorCssPx} CSS px.`,
     `- Basic scene PixelCopy: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact; max channel error 0.`,
+    `- Track-list cycling PixelCopy: ${platform.cyclePixelComparisons.length} scenes / ${platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)} RGBA samples exact; max channel error 0.`,
     `- Fixed unknown-area overflow: ${platform.unknownAreaOverflow.comparisons.length} Chrome geometry nodes; ${platform.unknownAreaOverflow.pixel.matchedSamples}/${platform.unknownAreaOverflow.pixel.expectedSamples} exact PixelCopy samples, including the red item outside the grid root.`,
     `- Leading named implicit lines: ${platform.leadingNamedImplicitLines.sceneCount} scenes / ${platform.leadingNamedImplicitLines.comparedVisibleNodes} visible nodes; maximum geometry error ${platform.leadingNamedImplicitLines.maximumGeometryErrorCssPx} CSS px; ${platform.leadingNamedImplicitLines.matchedPixelSamples}/7 PixelCopy samples exact.`,
     `- Negative controls: pixel samples ${negative.pixelSamples.status}; unknown scene ${negative.sceneRoute.status}.`,
@@ -598,9 +632,13 @@ try {
     '', '## Files', '', '- `runtime-*.log`: per-scene runtime, geometry, rejection and draw evidence',
     '- `result.json`: aggregate fixture, geometry and negative-control result',
     '- `pixelcopy.png`: basic scene Android SurfaceView PixelCopy',
+    '- `pixelcopy-*.png`: track-list cycling Android SurfaceView PixelCopy samples',
     '- `unknown-area-overflow-pixelcopy.png`: fixed implicit-track overflow SurfaceView PixelCopy',
     '- `pixelcopy-leading-*.png`: named implicit line SurfaceView PixelCopy samples',
-    ...(target === 'android-avd' ? ['- `android-screen.png`: final AVD screen capture'] : []),
+    ...(target === 'android-avd' ? [
+      '- `android-track-list-cycle-screen.png`: both-axis cycling AVD screen capture',
+      '- `android-screen.png`: final AVD screen capture',
+    ] : []),
   ].join('\n') + '\n');
   process.stdout.write(`${JSON.stringify({ ...result, evidenceDirectory }, null, 2)}\n`);
 } catch (error) {

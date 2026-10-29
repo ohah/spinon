@@ -1,0 +1,425 @@
+{
+  "schema": "spinon-css-c11-3-3-area-auto-track-list-cycle-mobile-pixel-matrix/v1",
+  "inputs": {
+    "runtimeMatrix": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json",
+      "sha256": "62baa58bab5af9fd9cfb498ed4a5a979202a5e43bba5438952358cfc204358ee"
+    },
+    "chromeObservation": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+      "sha256": "d5b338301c82502e710e3abb0839e5cb30e9dab9976be8d12add277eb4e2bb8b"
+    }
+  },
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1
+  },
+  "oracle": {
+    "name": "Chrome Headless via Agent Browser",
+    "product": "Chrome/156.0.0.0",
+    "observationPath": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+    "observationSha256": "d5b338301c82502e710e3abb0839e5cb30e9dab9976be8d12add277eb4e2bb8b",
+    "screenshotPath": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png",
+    "screenshotSha256": "3df254c19ede58efae3072a10225113e941586d148cc741e7cad3040611261ed",
+    "devicePixelRatio": 1,
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    }
+  },
+  "scenes": [
+    {
+      "sceneId": "both-axis-cycle",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "both-axis-cycle",
+          "xCssPx": 90,
+          "yCssPx": 60,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "hero",
+          "nodeId": "both-hero",
+          "xCssPx": 20,
+          "yCssPx": 12,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "side",
+          "nodeId": "both-side",
+          "xCssPx": 53,
+          "yCssPx": 12,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        },
+        {
+          "id": "footer",
+          "nodeId": "both-footer",
+          "xCssPx": 20,
+          "yCssPx": 28,
+          "rgba": [
+            142,
+            78,
+            198,
+            255
+          ]
+        },
+        {
+          "id": "utility",
+          "nodeId": "both-utility",
+          "xCssPx": 53,
+          "yCssPx": 28,
+          "rgba": [
+            247,
+            107,
+            21,
+            255
+          ]
+        },
+        {
+          "id": "extra",
+          "nodeId": "both-extra",
+          "xCssPx": 20,
+          "yCssPx": 34,
+          "rgba": [
+            0,
+            162,
+            199,
+            255
+          ]
+        },
+        {
+          "id": "spare",
+          "nodeId": "both-spare",
+          "xCssPx": 53,
+          "yCssPx": 34,
+          "rgba": [
+            62,
+            99,
+            221,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "sceneId": "row-cycle-from-first-implicit",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "row-cycle-from-first-implicit",
+          "xCssPx": 90,
+          "yCssPx": 70,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "row-a",
+          "nodeId": "row-a",
+          "xCssPx": 10,
+          "yCssPx": 8,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "row-b",
+          "nodeId": "row-b",
+          "xCssPx": 10,
+          "yCssPx": 20,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        },
+        {
+          "id": "row-c",
+          "nodeId": "row-c",
+          "xCssPx": 10,
+          "yCssPx": 38,
+          "rgba": [
+            142,
+            78,
+            198,
+            255
+          ]
+        },
+        {
+          "id": "row-d",
+          "nodeId": "row-d",
+          "xCssPx": 10,
+          "yCssPx": 45,
+          "rgba": [
+            247,
+            107,
+            21,
+            255
+          ]
+        },
+        {
+          "id": "row-e",
+          "nodeId": "row-e",
+          "xCssPx": 10,
+          "yCssPx": 53,
+          "rgba": [
+            0,
+            162,
+            199,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 80
+      }
+    },
+    {
+      "sceneId": "column-cycle-from-first-implicit",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "column-cycle-from-first-implicit",
+          "xCssPx": 95,
+          "yCssPx": 70,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "left",
+          "nodeId": "column-left",
+          "xCssPx": 10,
+          "yCssPx": 5,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "middle",
+          "nodeId": "column-middle",
+          "xCssPx": 50,
+          "yCssPx": 5,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        },
+        {
+          "id": "right",
+          "nodeId": "column-right",
+          "xCssPx": 82,
+          "yCssPx": 5,
+          "rgba": [
+            142,
+            78,
+            198,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 160
+      }
+    },
+    {
+      "sceneId": "authored-tracks-exceed-area",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "authored-tracks-exceed-area",
+          "xCssPx": 80,
+          "yCssPx": 60,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "exceed-top",
+          "nodeId": "exceed-top",
+          "xCssPx": 10,
+          "yCssPx": 5,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "exceed-bottom",
+          "nodeId": "exceed-bottom",
+          "xCssPx": 10,
+          "yCssPx": 20,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 240
+      }
+    },
+    {
+      "sceneId": "row-cycle-continues-after-area",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "row-cycle-continues-after-area",
+          "xCssPx": 80,
+          "yCssPx": 60,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "known",
+          "nodeId": "phase-row-known",
+          "xCssPx": 10,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "area",
+          "nodeId": "phase-row-area",
+          "xCssPx": 10,
+          "yCssPx": 22,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        },
+        {
+          "id": "late",
+          "nodeId": "phase-row-late",
+          "xCssPx": 10,
+          "yCssPx": 30,
+          "rgba": [
+            142,
+            78,
+            198,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 320
+      }
+    },
+    {
+      "sceneId": "column-cycle-continues-after-area",
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "column-cycle-continues-after-area",
+          "xCssPx": 80,
+          "yCssPx": 60,
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "known",
+          "nodeId": "phase-column-known",
+          "xCssPx": 10,
+          "yCssPx": 10,
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "area",
+          "nodeId": "phase-column-area",
+          "xCssPx": 22,
+          "yCssPx": 10,
+          "rgba": [
+            48,
+            164,
+            108,
+            255
+          ]
+        },
+        {
+          "id": "late",
+          "nodeId": "phase-column-late",
+          "xCssPx": 28,
+          "yCssPx": 10,
+          "rgba": [
+            142,
+            78,
+            198,
+            255
+          ]
+        }
+      ],
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 400
+      }
+    }
+  ]
+}

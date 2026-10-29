@@ -16,6 +16,9 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
     "area-auto-tracks-none", "area-auto-tracks-short-row", "area-auto-tracks-short-col",
     "area-auto-tracks-auto", "area-auto-tracks-long",
+    "both-axis-cycle", "row-cycle-from-first-implicit", "column-cycle-from-first-implicit",
+    "authored-tracks-exceed-area", "row-cycle-continues-after-area",
+    "column-cycle-continues-after-area",
     "unknown-area-fixed-implicit-tracks",
     "positive-missing-occurrences", "negative-missing-occurrences", "backward-span-one",
     "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
@@ -8626,6 +8629,60 @@ private struct C111MetalPixelRun {
         ("grid-background", "c1133-main-grid", 150, 10, [16, 24, 32, 255]),
         ("item-blue", "c1133-main-item", 100, 50, [62, 99, 221, 255]),
     ]
+    private static func c1133TrackListCyclePixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        switch sceneID {
+        case "both-axis-cycle":
+            return [
+                ("background", "both-axis-cycle", 90, 60, [16, 24, 32, 255]),
+                ("hero", "both-hero", 20, 12, [229, 72, 77, 255]),
+                ("side", "both-side", 53, 12, [48, 164, 108, 255]),
+                ("footer", "both-footer", 20, 28, [142, 78, 198, 255]),
+                ("utility", "both-utility", 53, 28, [247, 107, 21, 255]),
+                ("extra", "both-extra", 20, 34, [0, 162, 199, 255]),
+                ("spare", "both-spare", 53, 34, [62, 99, 221, 255]),
+            ]
+        case "row-cycle-from-first-implicit":
+            return [
+                ("background", sceneID, 90, 70, [16, 24, 32, 255]),
+                ("row-a", "row-a", 10, 8, [229, 72, 77, 255]),
+                ("row-b", "row-b", 10, 20, [48, 164, 108, 255]),
+                ("row-c", "row-c", 10, 38, [142, 78, 198, 255]),
+                ("row-d", "row-d", 10, 45, [247, 107, 21, 255]),
+                ("row-e", "row-e", 10, 53, [0, 162, 199, 255]),
+            ]
+        case "column-cycle-from-first-implicit":
+            return [
+                ("background", sceneID, 95, 70, [16, 24, 32, 255]),
+                ("left", "column-left", 10, 5, [229, 72, 77, 255]),
+                ("middle", "column-middle", 50, 5, [48, 164, 108, 255]),
+                ("right", "column-right", 82, 5, [142, 78, 198, 255]),
+            ]
+        case "authored-tracks-exceed-area":
+            return [
+                ("background", sceneID, 80, 60, [16, 24, 32, 255]),
+                ("exceed-top", "exceed-top", 10, 5, [229, 72, 77, 255]),
+                ("exceed-bottom", "exceed-bottom", 10, 20, [48, 164, 108, 255]),
+            ]
+        case "row-cycle-continues-after-area":
+            return [
+                ("background", sceneID, 80, 60, [16, 24, 32, 255]),
+                ("known", "phase-row-known", 10, 10, [229, 72, 77, 255]),
+                ("area", "phase-row-area", 10, 22, [48, 164, 108, 255]),
+                ("late", "phase-row-late", 10, 30, [142, 78, 198, 255]),
+            ]
+        case "column-cycle-continues-after-area":
+            return [
+                ("background", sceneID, 80, 60, [16, 24, 32, 255]),
+                ("known", "phase-column-known", 10, 10, [229, 72, 77, 255]),
+                ("area", "phase-column-area", 22, 10, [48, 164, 108, 255]),
+                ("late", "phase-column-late", 28, 10, [142, 78, 198, 255]),
+            ]
+        default:
+            return []
+        }
+    }
     private static let c1133UnknownAreaOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("grid-interior", "fixed-implicit-grid", 150, 110, [16, 24, 32, 255]),
         ("known-area", "fixed-known-area", 10, 10, [48, 164, 108, 255]),
@@ -8772,6 +8829,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133TemplateAreaPixelSamples
         } else if sceneID == "unknown-area-fixed-implicit-tracks" {
             expectedSamples = c1133UnknownAreaOverflowPixelSamples
+        } else if !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133TrackListCyclePixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -10221,6 +10280,7 @@ private struct C111MetalPixelRun {
             guard sceneID == c1133SceneID,
                   sceneID == "basic-rectangles"
                     || sceneID == "unknown-area-fixed-implicit-tracks"
+                    || !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   c1133GridTemplateAreasSceneIDs.contains(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,

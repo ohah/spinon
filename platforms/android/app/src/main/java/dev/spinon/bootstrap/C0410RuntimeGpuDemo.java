@@ -124,6 +124,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "area-track-count-mismatch", "unknown-area-implicit-tracks", "nested-hidden-source-order",
             "area-auto-tracks-none", "area-auto-tracks-short-row", "area-auto-tracks-short-col",
             "area-auto-tracks-auto", "area-auto-tracks-long",
+            "both-axis-cycle", "row-cycle-from-first-implicit", "column-cycle-from-first-implicit",
+            "authored-tracks-exceed-area", "row-cycle-continues-after-area",
+            "column-cycle-continues-after-area",
             "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
             "negative-missing-occurrences", "backward-span-one", "backward-span-two",
             "backward-span-partial-explicit", "forward-span-two",
@@ -12048,6 +12051,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static boolean isC1133GridTemplateAreasPixelSamples(
             String sceneId, List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        List<SurfaceViewPixelCapture.Sample> trackListCycleSamples =
+                c1133TrackListCyclePixelSamples(sceneId);
+        if (trackListCycleSamples != null) {
+            if (samples.size() != trackListCycleSamples.size()) return false;
+            for (SurfaceViewPixelCapture.Sample expected : trackListCycleSamples) {
+                boolean found = false;
+                for (SurfaceViewPixelCapture.Sample sample : samples) {
+                    if (expected.id.equals(sample.id)
+                            && expected.targetNodeId.equals(sample.targetNodeId)
+                            && expected.xCssPx == sample.xCssPx
+                            && expected.yCssPx == sample.yCssPx) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+            return true;
+        }
         if (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(sceneId)) {
             if (samples.size() != 2) return false;
             boolean background = false;
@@ -12107,6 +12129,58 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
         }
         return background && knownArea && overflow;
+    }
+
+    private static List<SurfaceViewPixelCapture.Sample> c1133TrackListCyclePixelSamples(
+            String sceneId
+    ) {
+        if ("both-axis-cycle".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", "both-axis-cycle", 90, 60),
+                    new SurfaceViewPixelCapture.Sample("hero", "both-hero", 20, 12),
+                    new SurfaceViewPixelCapture.Sample("side", "both-side", 53, 12),
+                    new SurfaceViewPixelCapture.Sample("footer", "both-footer", 20, 28),
+                    new SurfaceViewPixelCapture.Sample("utility", "both-utility", 53, 28),
+                    new SurfaceViewPixelCapture.Sample("extra", "both-extra", 20, 34),
+                    new SurfaceViewPixelCapture.Sample("spare", "both-spare", 53, 34));
+        }
+        if ("row-cycle-from-first-implicit".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 90, 70),
+                    new SurfaceViewPixelCapture.Sample("row-a", "row-a", 10, 8),
+                    new SurfaceViewPixelCapture.Sample("row-b", "row-b", 10, 20),
+                    new SurfaceViewPixelCapture.Sample("row-c", "row-c", 10, 38),
+                    new SurfaceViewPixelCapture.Sample("row-d", "row-d", 10, 45),
+                    new SurfaceViewPixelCapture.Sample("row-e", "row-e", 10, 53));
+        }
+        if ("column-cycle-from-first-implicit".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 95, 70),
+                    new SurfaceViewPixelCapture.Sample("left", "column-left", 10, 5),
+                    new SurfaceViewPixelCapture.Sample("middle", "column-middle", 50, 5),
+                    new SurfaceViewPixelCapture.Sample("right", "column-right", 82, 5));
+        }
+        if ("authored-tracks-exceed-area".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 80, 60),
+                    new SurfaceViewPixelCapture.Sample("exceed-top", "exceed-top", 10, 5),
+                    new SurfaceViewPixelCapture.Sample("exceed-bottom", "exceed-bottom", 10, 20));
+        }
+        if ("row-cycle-continues-after-area".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 80, 60),
+                    new SurfaceViewPixelCapture.Sample("known", "phase-row-known", 10, 10),
+                    new SurfaceViewPixelCapture.Sample("area", "phase-row-area", 10, 22),
+                    new SurfaceViewPixelCapture.Sample("late", "phase-row-late", 10, 30));
+        }
+        if ("column-cycle-continues-after-area".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 80, 60),
+                    new SurfaceViewPixelCapture.Sample("known", "phase-column-known", 10, 10),
+                    new SurfaceViewPixelCapture.Sample("area", "phase-column-area", 22, 10),
+                    new SurfaceViewPixelCapture.Sample("late", "phase-column-late", 28, 10));
+        }
+        return null;
     }
     private static boolean isC1121PixelScene(String sceneId) {
         for (String candidate : C1121_GRID_PIXEL_SCENE_IDS) {
@@ -13148,6 +13222,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c1133GridTemplateAreasRequested
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
                         || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId)
+                        || c1133TrackListCyclePixelSamples(pixelMatrixSceneId) != null
                         || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
@@ -17403,12 +17478,36 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sampleId.endsWith("-clear-past-image-b")) return new int[] {0, 0, 0};
         if (c1133TemplateAreas) {
             switch (sampleId) {
+                case "background":
                 case "grid-interior":
                     return new int[] {16, 24, 32};
+                case "side":
+                case "row-b":
+                case "middle":
+                case "area":
+                case "exceed-bottom":
                 case "known-area":
                     return new int[] {48, 164, 108};
+                case "hero":
+                case "row-a":
+                case "left":
+                case "exceed-top":
+                case "known":
                 case "unknown-area-overflow":
                     return new int[] {229, 72, 77};
+                case "footer":
+                case "row-c":
+                case "right":
+                case "late":
+                    return new int[] {142, 78, 198};
+                case "utility":
+                case "row-d":
+                    return new int[] {247, 107, 21};
+                case "extra":
+                case "row-e":
+                    return new int[] {0, 162, 199};
+                case "spare":
+                    return new int[] {62, 99, 221};
                 default:
                     break;
             }

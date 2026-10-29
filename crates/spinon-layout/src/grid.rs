@@ -357,6 +357,12 @@ pub(super) fn validate_grid_layout(
             ) if tracks
                 .iter()
                 .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (GridPlacementMode::TemplateGrid, GridAutoRows::TrackList(tracks))
+                if container.template_areas.is_some()
+                    && !tracks.is_empty()
+                    && tracks
+                        .iter()
+                        .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
             (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
@@ -392,6 +398,12 @@ pub(super) fn validate_grid_layout(
             ) if tracks
                 .iter()
                 .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (GridPlacementMode::TemplateGrid, GridAutoColumns::TrackList(tracks))
+                if container.template_areas.is_some()
+                    && !tracks.is_empty()
+                    && tracks
+                        .iter()
+                        .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
             (
                 GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid

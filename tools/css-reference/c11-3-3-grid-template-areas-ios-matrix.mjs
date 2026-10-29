@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 
 const EXPECTED_COUNTS = {
-  success: 25,
+  success: 31,
   'cascade-fallback': 5,
   'expected-rejection': 1,
 };
@@ -10,8 +10,8 @@ export function validateC1133IOSMatrixInputs(runtime, reference) {
   assert.equal(runtime.schema, 'spinon-css-c11-3-3-grid-template-areas-runtime-matrix/v1');
   assert.equal(runtime.profileId, 'RuntimeBlockFlexGridTemplateV1');
   assert.deepEqual(runtime.summary, {
-    sceneCount: 31,
-    nodeCount: 90,
+    sceneCount: 37,
+    nodeCount: 118,
     successCount: EXPECTED_COUNTS.success,
     cascadeFallbackCount: EXPECTED_COUNTS['cascade-fallback'],
     expectedRejectCount: EXPECTED_COUNTS['expected-rejection'],

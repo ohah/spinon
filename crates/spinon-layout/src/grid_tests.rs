@@ -224,6 +224,235 @@ fn template_area_mode_stretches_definite_auto_sized_items_without_widening_dense
 }
 
 #[test]
+fn template_area_rows_continue_fixed_px_pattern_after_area_expansion() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(30.0)],
+        vec![GridTrackSize::LengthPx(20.0), GridTrackSize::LengthPx(6.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(30.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(80.0);
+    input.viewport = Viewport {
+        width: 30.0,
+        height: 80.0,
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 2,
+        columns: 1,
+        areas: vec![
+            GridTemplateAreaInput {
+                name: "known".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 1,
+            },
+            GridTemplateAreaInput {
+                name: "area-row".to_owned(),
+                row_start: 1,
+                row_end: 2,
+                column_start: 0,
+                column_end: 1,
+            },
+        ],
+    });
+    container.auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(8.0),
+        GridTrackSize::LengthPx(6.0),
+    ]);
+    container.auto_columns = crate::GridAutoColumns::TrackList(vec![
+        GridTrackSize::LengthPx(9.0),
+        GridTrackSize::LengthPx(10.0),
+    ]);
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    input.grid_items.insert(
+        id(3),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(2),
+            row_end: GridPlacementInput::Line(3),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    input.grid_items.insert(
+        id(4),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(4),
+            row_end: GridPlacementInput::Span(1),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(output.frames[&id(2)].y, 0.0);
+    assert_eq!(output.frames[&id(3)].y, 20.0);
+    assert_eq!(output.frames[&id(4)].y, 34.0);
+    assert_eq!(output.frames[&id(4)].height, 10.0);
+}
+
+#[test]
+fn template_area_columns_continue_fixed_px_pattern_after_area_expansion() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(20.0), GridTrackSize::LengthPx(5.0)],
+        vec![GridTrackSize::LengthPx(30.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.nodes[0].style.width = LayoutDimension::Fixed(80.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(30.0);
+    input.viewport = Viewport {
+        width: 80.0,
+        height: 30.0,
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 1,
+        columns: 2,
+        areas: vec![
+            GridTemplateAreaInput {
+                name: "known".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 0,
+                column_end: 1,
+            },
+            GridTemplateAreaInput {
+                name: "area-col".to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: 1,
+                column_end: 2,
+            },
+        ],
+    });
+    container.auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(11.0),
+        GridTrackSize::LengthPx(13.0),
+    ]);
+    container.auto_columns = crate::GridAutoColumns::TrackList(vec![
+        GridTrackSize::LengthPx(7.0),
+        GridTrackSize::LengthPx(5.0),
+    ]);
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    input.grid_items.insert(
+        id(3),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(2),
+            column_end: GridPlacementInput::Line(3),
+        },
+    );
+    input.grid_items.insert(
+        id(4),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(4),
+            column_end: GridPlacementInput::Span(1),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(output.frames[&id(2)].x, 0.0);
+    assert_eq!(output.frames[&id(3)].x, 20.0);
+    assert_eq!(output.frames[&id(4)].x, 32.0);
+    assert_eq!(output.frames[&id(4)].width, 20.0);
+}
+
+#[test]
+fn template_grid_auto_track_lists_require_area_while_named_mode_keeps_existing_px_support() {
+    let mut no_area = grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(30.0)],
+        1,
+        LayoutGap::default(),
+    );
+    no_area
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGrid;
+    no_area.grid_containers.get_mut(&id(1)).unwrap().auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(10.0),
+        GridTrackSize::LengthPx(12.0),
+    ]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&no_area),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+
+    let mut named_mode = grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(30.0)],
+        1,
+        LayoutGap::default(),
+    );
+    let container = named_mode.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 1,
+        columns: 1,
+        areas: vec![GridTemplateAreaInput {
+            name: "known".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 1,
+        }],
+    });
+    container.auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(10.0),
+        GridTrackSize::LengthPx(12.0),
+    ]);
+    container.auto_columns = crate::GridAutoColumns::TrackList(vec![
+        GridTrackSize::LengthPx(8.0),
+        GridTrackSize::LengthPx(9.0),
+    ]);
+    named_mode.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    assert!(TaffyLayoutEngine.compute(&named_mode).is_ok());
+
+    named_mode
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&named_mode),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+}
+
+#[test]
 fn implicit_named_line_mode_requires_fixed_auto_tracks_on_both_axes() {
     let mut input = grid_input(
         vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(40.0)],

@@ -180,7 +180,7 @@ fn validate_combined_grid_line_area_metadata(
             (&grid.rows_line_names, grid.rows.len(), areas.rows),
         ] {
             let target_groups = authored_track_count
-                .max(usize::from(area_track_count))
+                .max(area_track_count)
                 .checked_add(1)
                 .ok_or_else(|| combined_grid_line_area_metadata_error(node))?;
             let missing_groups = target_groups.saturating_sub(groups.len());
@@ -513,12 +513,12 @@ fn project_grid_layout_with_reservations(
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
-    let auto_rows = if sparse_row || dense_auto_placement {
+    let mut auto_rows = if sparse_row || dense_auto_placement {
         project_auto_rows(node, &grid.auto_rows, profile, math, &mut reserve)?
     } else {
         GridAutoRows::Auto
     };
-    let auto_columns = if dense_auto_placement {
+    let mut auto_columns = if dense_auto_placement {
         project_auto_columns(node, &grid.auto_columns, profile, math, &mut reserve)?
     } else {
         GridAutoColumns::Auto
@@ -561,28 +561,34 @@ fn project_grid_layout_with_reservations(
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
         && let Some(areas) = &template_areas
     {
-        extend_template_area_tracks(
-            node,
-            "grid-template-columns",
-            "grid-auto-columns",
-            usize::from(areas.columns),
+        let missing_columns = extend_template_area_tracks(
+            TemplateAreaTrackExpansion {
+                node,
+                template_property: "grid-template-columns",
+                auto_property: "grid-auto-columns",
+                area_track_count: usize::from(areas.columns),
+            },
             &auto_columns,
             &mut columns,
             &mut columns_line_names,
             &mut reserve,
             &mut reserve_line_metadata,
         )?;
-        extend_template_area_tracks(
-            node,
-            "grid-template-rows",
-            "grid-auto-rows",
-            usize::from(areas.rows),
+        advance_template_area_auto_track_phase(&mut auto_columns, missing_columns);
+        let missing_rows = extend_template_area_tracks(
+            TemplateAreaTrackExpansion {
+                node,
+                template_property: "grid-template-rows",
+                auto_property: "grid-auto-rows",
+                area_track_count: usize::from(areas.rows),
+            },
             &auto_rows,
             &mut rows,
             &mut rows_line_names,
             &mut reserve,
             &mut reserve_line_metadata,
         )?;
+        advance_template_area_auto_track_phase(&mut auto_rows, missing_rows);
     }
     Ok(GridContainerInput {
         columns,
@@ -628,39 +634,68 @@ fn project_grid_layout_with_reservations(
     })
 }
 
-fn extend_template_area_tracks(
+struct TemplateAreaTrackExpansion {
     node: NodeId,
     template_property: &'static str,
     auto_property: &'static str,
     area_track_count: usize,
+}
+
+fn extend_template_area_tracks(
+    expansion: TemplateAreaTrackExpansion,
     auto_track: &GridAutoRows,
     tracks: &mut Vec<GridTrackSize>,
     line_names: &mut Vec<Vec<String>>,
     reserve_tracks: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
     mut reserve_line_metadata: impl FnMut(GridLineNameReservationSite) -> Result<(), ()>,
-) -> Result<(), StyleLayoutError> {
+) -> Result<usize, StyleLayoutError> {
+    let TemplateAreaTrackExpansion {
+        node,
+        template_property,
+        auto_property,
+        area_track_count,
+    } = expansion;
     let missing_tracks = area_track_count.saturating_sub(tracks.len());
     if missing_tracks > 0 {
-        let generated_track = match auto_track {
-            GridAutoRows::Auto => GridTrackSize::Auto,
-            GridAutoRows::LengthPx(value) => GridTrackSize::LengthPx(*value),
+        match auto_track {
+            GridAutoRows::Auto => {
+                reserve_tracks(tracks, missing_tracks).map_err(|_| {
+                    StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                        node,
+                        property: auto_property,
+                    })
+                })?;
+                tracks.extend(std::iter::repeat_n(GridTrackSize::Auto, missing_tracks));
+            }
+            GridAutoRows::LengthPx(value) => {
+                reserve_tracks(tracks, missing_tracks).map_err(|_| {
+                    StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                        node,
+                        property: auto_property,
+                    })
+                })?;
+                tracks.extend(std::iter::repeat_n(
+                    GridTrackSize::LengthPx(*value),
+                    missing_tracks,
+                ));
+            }
+            GridAutoRows::TrackList(pattern) if !pattern.is_empty() => {
+                reserve_tracks(tracks, missing_tracks).map_err(|_| {
+                    StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
+                        node,
+                        property: auto_property,
+                    })
+                })?;
+                tracks.extend(pattern.iter().cycle().take(missing_tracks).cloned());
+            }
             GridAutoRows::TrackList(_) => {
                 return Err(StyleLayoutError::UnsupportedComputedValue {
                     node,
                     property: auto_property,
-                    value:
-                        "grid-template-areas 확장에서는 grid-auto-* 단일 auto 또는 px만 지원합니다"
-                            .to_owned(),
+                    value: "area 확장에 빈 grid-auto-* 목록을 사용할 수 없습니다".to_owned(),
                 });
             }
-        };
-        reserve_tracks(tracks, missing_tracks).map_err(|_| {
-            StyleLayoutError::Layout(spinon_layout::LayoutError::GridAllocationFailure {
-                node,
-                property: auto_property,
-            })
-        })?;
-        tracks.extend(std::iter::repeat(generated_track).take(missing_tracks));
+        }
     }
 
     let required_groups =
@@ -688,7 +723,18 @@ fn extend_template_area_tracks(
         })?;
         line_names.extend(std::iter::repeat_with(Vec::new).take(missing_groups));
     }
-    Ok(())
+    Ok(missing_tracks)
+}
+
+fn advance_template_area_auto_track_phase(auto_track: &mut GridAutoRows, consumed_tracks: usize) {
+    let GridAutoRows::TrackList(pattern) = auto_track else {
+        return;
+    };
+    if pattern.is_empty() {
+        return;
+    }
+    let phase = consumed_tracks % pattern.len();
+    pattern.rotate_left(phase);
 }
 
 fn project_template_areas(
@@ -960,6 +1006,7 @@ fn project_auto_columns(
         ComputedCssGridAutoColumns::LengthPx(value) => Ok(GridAutoColumns::LengthPx(*value)),
         ComputedCssGridAutoColumns::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                && !tracks.is_empty()
                 && tracks
                     .iter()
                     .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
@@ -1016,6 +1063,7 @@ fn project_auto_rows(
         ComputedCssGridAutoRows::LengthPx(value) => Ok(GridAutoRows::LengthPx(*value)),
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+                && !tracks.is_empty()
                 && tracks
                     .iter()
                     .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
@@ -1190,6 +1238,10 @@ mod auto_repeat_fixed_maximum_tests;
 #[cfg(test)]
 #[path = "grid_values/auto_track_tests.rs"]
 mod auto_track_tests;
+
+#[cfg(test)]
+#[path = "grid_values/template_area_track_list_tests.rs"]
+mod template_area_track_list_tests;
 
 #[cfg(test)]
 #[path = "grid_values/combined_metadata_tests.rs"]

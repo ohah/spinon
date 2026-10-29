@@ -219,38 +219,50 @@ test('scene screenshot의 PNG hash가 기준 JSON과 실제 파일에 연결된�
 test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고정된다', async () => {
   const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
   const mobilePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
+  const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-cycling-mobile-pixels-v1.json';
   const builderPath = 'tools/css-reference/build-c11-3-3-grid-template-areas-runtime-matrix.mjs';
   const capturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs';
   const matrixCapturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-runtime-matrix.mjs';
+  const iosMatrixCapturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-ios-simulator-matrix.mjs';
   const revisionReuseCapturePath = 'tools/css-reference/capture-c11-3-3-grid-template-areas-revision-reuse.mjs';
   const deviceHelperPath = 'tools/css-reference/c11-3-3-grid-template-areas-runtime-device.mjs';
   const appDelegatePath = 'platforms/ios/Sources/AppDelegate.swift';
   const iosDemoPath = 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift';
   const androidMainActivityPath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java';
   const androidDemoPath = 'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java';
-  const [runtimeBytes, mobileBytes, builderBytes, captureBytes, matrixCaptureBytes, revisionReuseCaptureBytes,
+  const [runtimeBytes, mobileBytes, cyclePixelsBytes, builderBytes, captureBytes, matrixCaptureBytes,
+    iosMatrixCaptureBytes, revisionReuseCaptureBytes,
     deviceHelperBytes, appDelegateBytes, iosDemoBytes, androidMainActivityBytes, androidDemoBytes,
     inventoryBytes, htmlBytes] = await Promise.all([
-    read(runtimePath), read(mobilePath), read(builderPath), read(capturePath), read(matrixCapturePath),
+    read(runtimePath), read(mobilePath), read(cyclePixelsPath), read(builderPath), read(capturePath),
+    read(matrixCapturePath), read(iosMatrixCapturePath),
     read(revisionReuseCapturePath),
     read(deviceHelperPath), read(appDelegatePath), read(iosDemoPath), read(androidMainActivityPath),
     read(androidDemoPath), read(paths.inventory), read(paths.html),
   ]);
   const runtime = JSON.parse(runtimeBytes.toString('utf8'));
   const mobile = JSON.parse(mobileBytes.toString('utf8'));
+  const cyclePixels = JSON.parse(cyclePixelsBytes.toString('utf8'));
   const matrixInventory = JSON.parse(inventoryBytes.toString('utf8'));
   const chromeCases = reference.observations[0].cases;
   assert.equal(runtime.schema, 'spinon-css-c11-3-3-grid-template-areas-runtime-matrix/v1');
   assert.equal(runtime.profileId, 'RuntimeBlockFlexGridTemplateV1');
   assert.deepEqual(runtime.summary, {
-    sceneCount: 31, nodeCount: 90, successCount: 25, cascadeFallbackCount: 5, expectedRejectCount: 1,
+    sceneCount: 37, nodeCount: 118, successCount: 31, cascadeFallbackCount: 5, expectedRejectCount: 1,
   });
   const supplementalHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-tracks-c1133-runtime.html';
   const supplementalObservationPath = 'spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json';
+  const cycleHtmlPath = 'tests/fixtures/css/c11/grid-template-areas-auto-track-list-cycling-c1133-runtime.html';
+  const cycleObservationPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json';
+  const cycleScreenshotPath = 'spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png';
   const [supplementalHtmlBytes, supplementalObservationBytes] = await Promise.all([
     read(supplementalHtmlPath), read(supplementalObservationPath),
   ]);
   const supplementalObservation = JSON.parse(supplementalObservationBytes.toString('utf8'));
+  const [cycleHtmlBytes, cycleObservationBytes, cycleScreenshotBytes] = await Promise.all([
+    read(cycleHtmlPath), read(cycleObservationPath), read(cycleScreenshotPath),
+  ]);
+  const cycleObservation = JSON.parse(cycleObservationBytes.toString('utf8'));
   assert.deepEqual(runtime.inputs, {
     inventory: { path: paths.inventory, sha256: sha256(inventoryBytes) },
     html: { path: paths.html, sha256: sha256(htmlBytes) },
@@ -259,15 +271,26 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
     supplementalObservation: {
       path: supplementalObservationPath, sha256: sha256(supplementalObservationBytes),
     },
+    cycleHtml: { path: cycleHtmlPath, sha256: sha256(cycleHtmlBytes) },
+    cycleObservation: { path: cycleObservationPath, sha256: sha256(cycleObservationBytes) },
+    cycleScreenshot: { path: cycleScreenshotPath, sha256: sha256(cycleScreenshotBytes) },
   });
   const supplementalIds = [
     'area-auto-tracks-none', 'area-auto-tracks-short-row', 'area-auto-tracks-short-col',
     'area-auto-tracks-auto', 'area-auto-tracks-long',
   ];
+  const cycleIds = [
+    'both-axis-cycle', 'row-cycle-from-first-implicit', 'column-cycle-from-first-implicit',
+    'authored-tracks-exceed-area', 'row-cycle-continues-after-area',
+    'column-cycle-continues-after-area',
+  ];
+  const cycleHtml = cycleHtmlBytes.toString('utf8');
+  assert.ok(cycleHtml.includes('grid-row:area-row-end / span 1 ghost;grid-column:1'));
+  assert.ok(cycleHtml.includes('grid-row:1;grid-column:area-col-end / span 1 ghost'));
   assert.deepEqual(runtime.cases.map(({ id }) => id), [
-    ...matrixInventory.cases.map(({ id }) => id), ...supplementalIds,
+    ...matrixInventory.cases.map(({ id }) => id), ...supplementalIds, ...cycleIds,
   ]);
-  assert.equal(runtime.cases.reduce((sum, item) => sum + item.nodeIds.length, 0), 90);
+  assert.equal(runtime.cases.reduce((sum, item) => sum + item.nodeIds.length, 0), 118);
   for (const [index, item] of runtime.cases.slice(0, matrixInventory.cases.length).entries()) {
     const sourceCase = matrixInventory.cases[index];
     const chromeCase = chromeCases.find(({ id }) => id === item.id);
@@ -289,7 +312,8 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
     assert.equal(item.oracle.product, reference.oracle.product);
     assert.equal(item.oracle.sceneId, item.id);
   }
-  for (const item of runtime.cases.slice(matrixInventory.cases.length)) {
+  for (const item of runtime.cases.slice(matrixInventory.cases.length,
+    matrixInventory.cases.length + supplementalIds.length)) {
     const observed = supplementalObservation.observations[item.id];
     assert.ok(observed, `${item.id}: Chrome 156 observation`);
     assert.equal(item.oracle.product, 'Chrome/156.0.0.0');
@@ -301,6 +325,26 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   }
   assert.deepEqual(supplementalObservation.observations['area-auto-tracks-auto'].root,
     { width: 50, height: 30 });
+  assert.equal(cycleObservation.schema,
+    'spinon-css-c11-3-3-area-auto-track-list-cycle-chrome-observation/v1');
+  assert.equal(cycleObservation.capture.tool, 'agent-browser');
+  assert.equal(cycleObservation.capture.browserVersion, '156.0.0.0');
+  assert.equal(cycleObservation.fixture.sha256, sha256(cycleHtmlBytes));
+  assert.equal(cycleObservation.screenshot.sha256, sha256(cycleScreenshotBytes));
+  const cycleScreenshot = decodeRgbaPng(cycleScreenshotBytes);
+  for (const item of runtime.cases.slice(matrixInventory.cases.length + supplementalIds.length)) {
+    const observed = cycleObservation.observations[item.id];
+    assert.ok(observed, `${item.id}: Agent Browser Chrome observation`);
+    assert.equal(item.oracle.product, 'Chrome/156.0.0.0');
+    assert.equal(item.oracle.sceneId, item.id);
+    assert.equal(item.oracle.rootId, item.rootId);
+    assert.deepEqual(item.nodeIds, observed.nodes.map(({ id }) => id));
+    assert.deepEqual(item.oracle.nodes.map(({ id, rect }) => ({ id, rect })), observed.nodes);
+    assert.deepEqual(item.oracle.rootRect, {
+      x: 0, y: 0, width: observed.root.width, height: observed.root.height,
+    });
+    assert.equal(item.expected.outcome, 'success');
+  }
   assert.equal(runtime.cases[0].expected.outcome, 'success');
   assert.equal(runtime.cases.filter(({ expected }) => expected.outcome === 'cascade-fallback').length, 5);
   assert.equal(runtime.cases.filter(({ expected }) => expected.outcome === 'expected-rejection').length, 1);
@@ -327,6 +371,41 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
     ['grid-background', [16, 24, 32, 255]],
     ['item-blue', [62, 99, 221, 255]],
   ]);
+  assert.equal(cyclePixels.schema,
+    'spinon-css-c11-3-3-area-auto-track-list-cycle-mobile-pixel-matrix/v1');
+  assert.equal(cyclePixels.inputs.runtimeMatrix.sha256, sha256(runtimeBytes));
+  assert.equal(cyclePixels.inputs.chromeObservation.sha256, sha256(cycleObservationBytes));
+  assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes));
+  assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
+  assert.equal(cycleScreenshot.width, cyclePixels.oracle.viewportCssPx.width);
+  assert.equal(cycleScreenshot.height, cyclePixels.oracle.viewportCssPx.height);
+  assert.deepEqual(cyclePixels.scenes.map(({ sceneId }) => sceneId), cycleIds);
+  let cycleSampleCount = 0;
+  for (const scene of cyclePixels.scenes) {
+    const origin = cycleObservation.observations[scene.sceneId].screenshotRect;
+    assert.deepEqual(scene.oracleScreenshotOriginCssPx, { x: origin.x, y: origin.y });
+    for (const sample of scene.samples) {
+      assert.ok(sample.xCssPx >= 0 && sample.xCssPx < cyclePixels.runtime.viewportCssPx.width);
+      assert.ok(sample.yCssPx >= 0 && sample.yCssPx < cyclePixels.runtime.viewportCssPx.height);
+      const rgba = cycleScreenshot.getPixel(
+        sample.xCssPx + origin.x, sample.yCssPx + origin.y);
+      assert.deepEqual(rgba, sample.rgba, `${scene.sceneId}/${sample.id}: Chrome screenshot pixel`);
+      cycleSampleCount++;
+    }
+  }
+  assert.equal(cycleSampleCount, 28);
+  const androidDemo = androidDemoBytes.toString('utf8');
+  const cycleColorSwitch = androidDemo.match(
+    /if \(c1133TemplateAreas\) \{\s*switch \(sampleId\) \{([\s\S]*?)\n\s*default:/,
+  )?.[1];
+  assert.ok(cycleColorSwitch, 'Android C11.3.3 pixel oracle color mapping');
+  for (const sample of cyclePixels.scenes.flatMap(({ samples }) => samples)) {
+    assert.ok(cycleColorSwitch.includes(`case "${sample.id}":`),
+      `Android pixel oracle sample id ${sample.id}`);
+    assert.ok(cycleColorSwitch.includes(
+      `return new int[] {${sample.rgba.slice(0, 3).join(', ')}};`,
+    ), `Android pixel oracle color ${sample.id}`);
+  }
   const capture = captureBytes.toString('utf8');
   assert.ok(capture.includes('frames.length, 4'));
   assert.ok(capture.includes('android-physical [serial]'));
@@ -363,7 +442,15 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(matrixCapture.includes('SPINON_C1133_GRID_REJECTION_SUMMARY'));
   assert.ok(matrixCapture.includes("outcome: 'expected-rejection', rejection:"));
   assert.ok(matrixCapture.includes('compareC11AndroidPixelCopyScene'));
+  assert.ok(matrixCapture.includes('cyclePixelScenes'));
+  assert.ok(matrixCapture.includes('cyclePixelComparisons'));
+  assert.ok(matrixCapture.includes('pixelcopy-${scene.id}.png'));
   assert.ok(matrixCapture.includes("'SPINON_ENABLE_C04_RUNTIME_GPU=1'"));
+  const iosMatrixCapture = iosMatrixCaptureBytes.toString('utf8');
+  assert.ok(iosMatrixCapture.includes('cyclePixelScenes'));
+  assert.ok(iosMatrixCapture.includes('cyclePixelComparisons'));
+  assert.ok(iosMatrixCapture.includes('ios-track-list-cycle-screen.png'));
+  assert.ok(iosMatrixCapture.includes('compareC11IOSMetalPixelLogs'));
   const revisionReuseCapture = revisionReuseCaptureBytes.toString('utf8');
   assert.ok(revisionReuseCapture.includes("assert.equal(target, 'android-avd'"));
   assert.ok(revisionReuseCapture.includes('same_host=true first_status=0 second_status=0'));
@@ -388,7 +475,6 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(mainActivityAllowlist);
   assert.deepEqual([...mainActivityAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
     runtimeSceneIds);
-  const androidDemo = androidDemoBytes.toString('utf8');
   const androidAllowlist = androidDemo.match(/C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = \{([\s\S]*?)\};/)?.[1];
   assert.ok(androidAllowlist);
   assert.deepEqual([...androidAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
@@ -400,6 +486,8 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.deepEqual([...iosAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
   assert.ok(iosDemo.includes('--spinon-c1133-grid-scene='));
   assert.ok(iosDemo.includes('sceneID: c1133GridTemplateAreasSceneID'));
+  assert.ok(iosDemo.includes('c1133TrackListCyclePixelSamples'));
+  assert.ok(androidDemo.includes('c1133TrackListCyclePixelSamples'));
 });
 
 test('unknown-area fixed implicit tracks root 바깥 paint가 Chrome geometry와 pixel에 고정된다', async () => {

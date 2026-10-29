@@ -19,10 +19,22 @@ import {
 } from './compare-c11-ios-metal-surface-pixels.mjs';
 
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
+const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const runtimePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json';
 const mobilePath = 'tests/fixtures/css/c11/grid-template-areas-c1133-mobile-surface-pixel-matrix-v1.json';
 const runtime = JSON.parse(await readFile(resolve(repositoryRoot, runtimePath), 'utf8'));
 const mobile = JSON.parse(await readFile(resolve(repositoryRoot, mobilePath), 'utf8'));
+const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-cycling-mobile-pixels-v1.json';
+const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
+const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
+const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
+assert.equal(cyclePixels.inputs.runtimeMatrix.sha256,
+  sha256(await readFile(resolve(repositoryRoot, runtimePath))));
+assert.equal(cyclePixels.inputs.chromeObservation.sha256, sha256(cycleObservationBytes));
+assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes));
+assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
+assert.equal(cyclePixels.scenes.length, 6);
+const cyclePixelScenes = new Map(cyclePixels.scenes.map((entry) => [entry.sceneId, entry]));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = validateC1133IOSMatrixInputs(runtime, reference);
 const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
@@ -65,7 +77,6 @@ const evidenceDirectory = resolve(repositoryRoot,
 const iosAppPath = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const iosBinaryPath = resolve(iosAppPath, 'SpinonBootstrap');
-const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const sleep = (milliseconds) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, milliseconds);
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
@@ -302,8 +313,12 @@ async function captureMatrix(simulator) {
   const observations = [];
   let pixelComparison = null;
   let screenshotSha256 = null;
+  const cyclePixelComparisons = [];
+  let trackListCycleScreenshotSha256 = null;
   for (const scene of runtime.cases) {
-    const samples = scene.id === mobile.sceneId ? mobile.samples : null;
+    const cyclePixelScene = cyclePixelScenes.get(scene.id);
+    const samples = scene.id === mobile.sceneId ? mobile.samples : cyclePixelScene?.samples ?? null;
+    const requiresMetalResult = samples !== null;
     const isReject = scene.expected.outcome === 'expected-rejection';
     const attempts = [];
     let effectiveRunID = '';
@@ -319,8 +334,8 @@ async function captureMatrix(simulator) {
       log = waitForLog(() => iosProcessLog(simulator.udid, pid), (value) =>
         (isReject
           ? value.includes('SPINON_C1133_GRID_REJECTION_SUMMARY run_id=' + effectiveRunID + ' scene_id=' + scene.id + ' ')
-          : c1133SuccessLogsComplete(value, scene.id, effectiveRunID, scene.id === mobile.sceneId)
-            || c1133SupersededAttemptComplete(value, scene.id, effectiveRunID, scene.id === mobile.sceneId))
+          : c1133SuccessLogsComplete(value, scene.id, effectiveRunID, requiresMetalResult)
+            || c1133SupersededAttemptComplete(value, scene.id, effectiveRunID, requiresMetalResult))
           || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
       scene.id + ': iOS runtime 결과', 45_000);
       logPath = 'runtime-' + String(scene.index).padStart(2, '0') + '-' + scene.id
@@ -328,7 +343,7 @@ async function captureMatrix(simulator) {
       await writeFile(resolve(evidenceDirectory, logPath), formatLog(log) + '\n');
       const completed = isReject
         ? log.includes('SPINON_C1133_GRID_REJECTION_SUMMARY run_id=' + effectiveRunID + ' scene_id=' + scene.id + ' ')
-        : c1133SuccessLogsComplete(log, scene.id, effectiveRunID, scene.id === mobile.sceneId);
+        : c1133SuccessLogsComplete(log, scene.id, effectiveRunID, requiresMetalResult);
       const superseded = !isReject && isC1133IOSGridRuntimeSuperseded(log, effectiveRunID, scene.id);
       attempts.push({
         runID: effectiveRunID,
@@ -351,25 +366,41 @@ async function captureMatrix(simulator) {
     const chromeCase = scene.oracle ?? observation.cases.find(({ id }) => id === scene.id);
     const geometry = compareC1133IOSSceneGeometry(scene, log, chromeCase, effectiveRunID);
     let pixel = null;
-    if (scene.id === mobile.sceneId) {
+    if (requiresMetalResult) {
+      const pixelFixture = cyclePixelScene
+        ? { sceneId: scene.id, samples, runtime: cyclePixels.runtime }
+        : mobile;
       pixel = compareC11IOSMetalPixelLogs(log, {
-        fixture: mobile,
+        fixture: pixelFixture,
         runID: effectiveRunID,
         markerPrefix: 'C1133',
       });
-      assert.equal(pixel.status, 'matched', '기본 scene Metal 표면 pixel이 일치하지 않습니다.');
-      assert.equal(pixel.matchedSamples, mobile.samples.length);
+      assert.equal(pixel.status, 'matched', `${scene.id}: Metal 표면 pixel이 일치하지 않습니다.`);
+      assert.equal(pixel.matchedSamples, samples.length);
       assert.equal(pixel.maximumChannelError, 0);
-      pixelComparison = pixel;
-      await writeFile(resolve(evidenceDirectory, 'metal-surface-comparison.json'),
-        JSON.stringify(pixel, null, 2) + '\n');
-      const screenshotPath = resolve(evidenceDirectory, 'ios-screen.png');
-      await saveLog('screenshot.log', command('xcrun', ['simctl', 'io', simulator.udid,
-        'screenshot', screenshotPath]));
-      const screenBytes = await readFile(screenshotPath);
-      assert.equal(screenBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
-        'iOS Simulator 화면 캡처가 PNG가 아닙니다.');
-      screenshotSha256 = sha256(screenBytes);
+      if (scene.id === mobile.sceneId) {
+        pixelComparison = pixel;
+        await writeFile(resolve(evidenceDirectory, 'metal-surface-comparison.json'),
+          JSON.stringify(pixel, null, 2) + '\n');
+        const screenshotPath = resolve(evidenceDirectory, 'ios-screen.png');
+        await saveLog('screenshot.log', command('xcrun', ['simctl', 'io', simulator.udid,
+          'screenshot', screenshotPath]));
+        const screenBytes = await readFile(screenshotPath);
+        assert.equal(screenBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
+          'iOS Simulator 화면 캡처가 PNG가 아닙니다.');
+        screenshotSha256 = sha256(screenBytes);
+      } else {
+        cyclePixelComparisons.push({ sceneId: scene.id, ...pixel });
+      }
+      if (scene.id === 'both-axis-cycle') {
+        const screenshotPath = resolve(evidenceDirectory, 'ios-track-list-cycle-screen.png');
+        await saveLog('track-list-cycle-screenshot.log', command('xcrun', ['simctl', 'io',
+          simulator.udid, 'screenshot', screenshotPath]));
+        const screenBytes = await readFile(screenshotPath);
+        assert.equal(screenBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
+          'track-list cycling iOS Simulator screenshot이 PNG가 아닙니다.');
+        trackListCycleScreenshotSha256 = sha256(screenBytes);
+      }
     }
     observations.push({
       index: scene.index,
@@ -474,6 +505,8 @@ async function captureMatrix(simulator) {
     leadingNamedImplicitLines,
     pixelComparison,
     screenshotSha256,
+    cyclePixelComparisons,
+    trackListCycleScreenshotSha256,
     negative,
     routeNegative,
   };
@@ -520,6 +553,7 @@ try {
   const simulator = bootedSimulator();
   const fixtureBytes = await readFile(resolve(repositoryRoot, runtimePath));
   const mobileBytes = await readFile(resolve(repositoryRoot, mobilePath));
+  const cyclePixelsBytes = await readFile(resolve(repositoryRoot, cyclePixelsPath));
   const referenceBytes = await readFile(resolve(repositoryRoot, mobile.oracle.referencePath));
   const unknownAreaPixelsBytes = await readFile(resolve(repositoryRoot, unknownAreaPixelsPath));
   const leadingNamedLinesPixelsBytes = await readFile(resolve(repositoryRoot, leadingNamedLinesPixelsPath));
@@ -552,6 +586,10 @@ try {
   assert.ok(maximumGeometryErrorCssPx <= 0.5);
   assert.equal(platform.pixelComparison.matchedSamples, mobile.samples.length);
   assert.equal(platform.pixelComparison.maximumChannelError, 0);
+  assert.equal(platform.cyclePixelComparisons.length, 6);
+  assert.equal(platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0), 28);
+  assert.ok(platform.cyclePixelComparisons.every((item) =>
+    item.status === 'matched' && item.maximumChannelError === 0));
   assert.equal(platform.leadingNamedImplicitLines.sceneCount, 7);
   assert.equal(platform.leadingNamedImplicitLines.comparedVisibleNodes, 14);
   assert.ok(platform.leadingNamedImplicitLines.maximumGeometryErrorCssPx <= 0.5);
@@ -566,6 +604,9 @@ try {
       commit: command('git', ['rev-parse', 'HEAD']).stdout.trim(),
       runtimeMatrixSha256: sha256(fixtureBytes),
       mobileFixtureSha256: sha256(mobileBytes),
+      trackListCyclePixelsSha256: sha256(cyclePixelsBytes),
+      trackListCycleObservationSha256: sha256(cycleObservationBytes),
+      trackListCycleChromeScreenshotSha256: sha256(cycleScreenshotBytes),
       chromeReferenceSha256: sha256(referenceBytes),
       unknownAreaPixelFixtureSha256: sha256(unknownAreaPixelsBytes),
       unknownAreaReferenceSha256: sha256(unknownAreaReferenceBytes),
@@ -596,13 +637,15 @@ try {
       startupSupersededRetryCount,
       pixelComparison: platform.pixelComparison,
       screenshotSha256: platform.screenshotSha256,
+      cyclePixelComparisons: platform.cyclePixelComparisons,
+      trackListCycleScreenshotSha256: platform.trackListCycleScreenshotSha256,
       unknownAreaOverflow: platform.unknownAreaOverflow,
       leadingNamedImplicitLines: platform.leadingNamedImplicitLines,
       negative: platform.negative,
       routeNegative: platform.routeNegative,
     },
     observations: platform.observations,
-    interpretation: 'iPhone 17 Pro/iOS 26.2 Simulator에서 C11.3.3 기존 26개 scene·65개 node 행렬과 leading named implicit line 7개 scene·14개 node를 분리 검증했다. Metal drawable readback은 OS compositor 제출 전이며, 이는 실기기·hardware GPU·Spinon WPT 또는 전체 CSS Grid 지원 근거가 아니다.',
+    interpretation: 'iPhone 17 Pro/iOS 26.2 Simulator에서 기존 26개 Chrome 154 scene과 11개 Chrome 156 supplemental scene을 포함한 C11.3.3 37개 scene·118개 node 행렬, track-list cycling 6개 scene·28개 Metal 표본, leading named implicit line 7개 scene·14개 node를 검증했다. Metal drawable readback은 OS compositor 제출 전이며, 이는 실기기·hardware GPU·Spinon WPT 또는 전체 CSS Grid 지원 근거가 아니다.',
   };
   await writeFile(resolve(evidenceDirectory, 'result.json'), JSON.stringify(result, null, 2) + '\n');
   await writeFile(resolve(evidenceDirectory, 'README.md'), [
@@ -617,6 +660,9 @@ try {
     '- 초기 runtime 평가 `status=-12` 재실행: ' + startupSupersededRetryCount + '회 (최초 로그와 재실행 로그 모두 보존)',
     '- basic-rectangles Metal drawable 표본: ' + platform.pixelComparison.matchedSamples + '/'
       + platform.pixelComparison.expectedSamples + ' RGBA exact; 최대 채널 오차 0',
+    '- track-list cycling Metal drawable 표본: ' + platform.cyclePixelComparisons.length
+      + ' scene / ' + platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)
+      + ' RGBA exact; 최대 채널 오차 0',
     '- unknown-area overflow: ' + platform.unknownAreaOverflow.comparisons.length
       + '개 Chrome geometry node, ' + platform.unknownAreaOverflow.pixel.matchedSamples + '/'
       + platform.unknownAreaOverflow.pixel.expectedSamples
@@ -634,6 +680,7 @@ try {
     '',
     '- runtime-*.log: scene별 평가, frame, 거부 결과',
     '- ios-screen.png: basic-rectangles UI 화면 캡처',
+    '- ios-track-list-cycle-screen.png: 양 축 track-list cycling 화면 캡처',
     '- ios-unknown-area-overflow-screen.png: fixed implicit-track overflow 장면 화면 캡처',
     '- ios-leading-*-screen.png: leading named implicit line 장면 화면 캡처',
     '- metal-surface-comparison.json: Chrome 고정 sample과 Metal drawable 비교',

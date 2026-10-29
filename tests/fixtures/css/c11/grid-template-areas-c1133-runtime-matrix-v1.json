@@ -21,12 +21,24 @@
     "supplementalObservation": {
       "path": "spec/internal/evidence/c11-3-3-area-auto-tracks-implementation-2026-10-29/chrome/chrome-observed.json",
       "sha256": "240c173ea3b99005bbd0624296d1408030e2528f7971ef3203d2bae86a672b31"
+    },
+    "cycleHtml": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-auto-track-list-cycling-c1133-runtime.html",
+      "sha256": "6080bf1675f1ff292b516ea1d8907631a09bc3dd1603f0df7c8d658e93fc32bb"
+    },
+    "cycleObservation": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+      "sha256": "d5b338301c82502e710e3abb0839e5cb30e9dab9976be8d12add277eb4e2bb8b"
+    },
+    "cycleScreenshot": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png",
+      "sha256": "3df254c19ede58efae3072a10225113e941586d148cc741e7cad3040611261ed"
     }
   },
   "summary": {
-    "sceneCount": 31,
-    "nodeCount": 90,
-    "successCount": 25,
+    "sceneCount": 37,
+    "nodeCount": 118,
+    "successCount": 31,
     "cascadeFallbackCount": 5,
     "expectedRejectCount": 1
   },
@@ -1865,6 +1877,476 @@
         ]
       },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"area-auto-tracks-long\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:120px;height:80px;margin:0 0 12px;padding:0;border:0;gap:0;grid-auto-rows:7px;grid-auto-columns:9px;background-color:#101820;grid-template-rows:5px 6px 7px;grid-template-columns:30px 40px 50px;grid-template-areas:'a b' 'c d'\");\ndocument.appendChild(node_0);\nrefs[\"area-auto-tracks-long\"] = node_0;\nnodeIds.push(\"area-auto-tracks-long\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"area-auto-tracks-long-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:a;width:10px;height:3px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_1);\nrefs[\"area-auto-tracks-long-a\"] = node_1;\nnodeIds.push(\"area-auto-tracks-long-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"area-auto-tracks-long-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:b;width:10px;height:3px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_2);\nrefs[\"area-auto-tracks-long-b\"] = node_2;\nnodeIds.push(\"area-auto-tracks-long-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"area-auto-tracks-long-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:c;width:10px;height:4px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_3);\nrefs[\"area-auto-tracks-long-c\"] = node_3;\nnodeIds.push(\"area-auto-tracks-long-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"area-auto-tracks-long-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:d;width:10px;height:4px\");\nrefs[\"area-auto-tracks-long\"].appendChild(node_4);\nrefs[\"area-auto-tracks-long-d\"] = node_4;\nnodeIds.push(\"area-auto-tracks-long-d\");\nreturn { sceneId:'area-auto-tracks-long', rootId:\"area-auto-tracks-long\", nodeIds };\n})()"
+    },
+    {
+      "index": 31,
+      "id": "both-axis-cycle",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "both-axis-cycle",
+      "nodeIds": [
+        "both-axis-cycle",
+        "both-hero",
+        "both-side",
+        "both-footer",
+        "both-utility",
+        "both-extra",
+        "both-spare"
+      ],
+      "parentIds": [
+        null,
+        "both-axis-cycle",
+        "both-axis-cycle",
+        "both-axis-cycle",
+        "both-axis-cycle",
+        "both-axis-cycle",
+        "both-axis-cycle"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "both-axis-cycle",
+        "rootId": "both-axis-cycle",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "both-axis-cycle",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "both-hero",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 41,
+              "height": 25
+            }
+          },
+          {
+            "id": "both-side",
+            "rect": {
+              "x": 41,
+              "y": 0,
+              "width": 24,
+              "height": 25
+            }
+          },
+          {
+            "id": "both-footer",
+            "rect": {
+              "x": 0,
+              "y": 25,
+              "width": 41,
+              "height": 7
+            }
+          },
+          {
+            "id": "both-utility",
+            "rect": {
+              "x": 41,
+              "y": 25,
+              "width": 24,
+              "height": 7
+            }
+          },
+          {
+            "id": "both-extra",
+            "rect": {
+              "x": 0,
+              "y": 32,
+              "width": 41,
+              "height": 5
+            }
+          },
+          {
+            "id": "both-spare",
+            "rect": {
+              "x": 41,
+              "y": 32,
+              "width": 24,
+              "height": 5
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"both-axis-cycle\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:20px;grid-template-columns:30px;grid-auto-rows:5px 7px;grid-auto-columns:11px 13px;grid-template-areas:'hero hero side side' 'hero hero side side' 'footer footer utility utility' 'extra extra spare spare'\");\ndocument.appendChild(node_0);\nrefs[\"both-axis-cycle\"] = node_0;\nnodeIds.push(\"both-axis-cycle\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"both-hero\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:hero\");\nrefs[\"both-axis-cycle\"].appendChild(node_1);\nrefs[\"both-hero\"] = node_1;\nnodeIds.push(\"both-hero\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"both-side\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:side\");\nrefs[\"both-axis-cycle\"].appendChild(node_2);\nrefs[\"both-side\"] = node_2;\nnodeIds.push(\"both-side\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"both-footer\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-area:footer\");\nrefs[\"both-axis-cycle\"].appendChild(node_3);\nrefs[\"both-footer\"] = node_3;\nnodeIds.push(\"both-footer\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"both-utility\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#f76b15;grid-area:utility\");\nrefs[\"both-axis-cycle\"].appendChild(node_4);\nrefs[\"both-utility\"] = node_4;\nnodeIds.push(\"both-utility\");\nconst node_5 = document.createElement('div');\nnode_5.setAttribute('id', \"both-extra\");\nnode_5.setAttribute('data-node', '');\nnode_5.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#00a2c7;grid-area:extra\");\nrefs[\"both-axis-cycle\"].appendChild(node_5);\nrefs[\"both-extra\"] = node_5;\nnodeIds.push(\"both-extra\");\nconst node_6 = document.createElement('div');\nnode_6.setAttribute('id', \"both-spare\");\nnode_6.setAttribute('data-node', '');\nnode_6.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#3e63dd;grid-area:spare\");\nrefs[\"both-axis-cycle\"].appendChild(node_6);\nrefs[\"both-spare\"] = node_6;\nnodeIds.push(\"both-spare\");\nreturn { sceneId:'both-axis-cycle', rootId:\"both-axis-cycle\", nodeIds };\n})()"
+    },
+    {
+      "index": 32,
+      "id": "row-cycle-from-first-implicit",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "row-cycle-from-first-implicit",
+      "nodeIds": [
+        "row-cycle-from-first-implicit",
+        "row-a",
+        "row-b",
+        "row-c",
+        "row-d",
+        "row-e"
+      ],
+      "parentIds": [
+        null,
+        "row-cycle-from-first-implicit",
+        "row-cycle-from-first-implicit",
+        "row-cycle-from-first-implicit",
+        "row-cycle-from-first-implicit",
+        "row-cycle-from-first-implicit"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "row-cycle-from-first-implicit",
+        "rootId": "row-cycle-from-first-implicit",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "row-cycle-from-first-implicit",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "row-a",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 46,
+              "height": 17
+            }
+          },
+          {
+            "id": "row-b",
+            "rect": {
+              "x": 0,
+              "y": 17,
+              "width": 46,
+              "height": 19
+            }
+          },
+          {
+            "id": "row-c",
+            "rect": {
+              "x": 0,
+              "y": 36,
+              "width": 46,
+              "height": 6
+            }
+          },
+          {
+            "id": "row-d",
+            "rect": {
+              "x": 0,
+              "y": 42,
+              "width": 46,
+              "height": 8
+            }
+          },
+          {
+            "id": "row-e",
+            "rect": {
+              "x": 0,
+              "y": 50,
+              "width": 46,
+              "height": 6
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"row-cycle-from-first-implicit\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:17px 19px;grid-template-columns:22px 24px;grid-auto-rows:6px 8px;grid-auto-columns:10px 12px;grid-template-areas:'a a' 'b b' 'c c' 'd d' 'e e'\");\ndocument.appendChild(node_0);\nrefs[\"row-cycle-from-first-implicit\"] = node_0;\nnodeIds.push(\"row-cycle-from-first-implicit\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"row-a\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:a\");\nrefs[\"row-cycle-from-first-implicit\"].appendChild(node_1);\nrefs[\"row-a\"] = node_1;\nnodeIds.push(\"row-a\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"row-b\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:b\");\nrefs[\"row-cycle-from-first-implicit\"].appendChild(node_2);\nrefs[\"row-b\"] = node_2;\nnodeIds.push(\"row-b\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"row-c\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-area:c\");\nrefs[\"row-cycle-from-first-implicit\"].appendChild(node_3);\nrefs[\"row-c\"] = node_3;\nnodeIds.push(\"row-c\");\nconst node_4 = document.createElement('div');\nnode_4.setAttribute('id', \"row-d\");\nnode_4.setAttribute('data-node', '');\nnode_4.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#f76b15;grid-area:d\");\nrefs[\"row-cycle-from-first-implicit\"].appendChild(node_4);\nrefs[\"row-d\"] = node_4;\nnodeIds.push(\"row-d\");\nconst node_5 = document.createElement('div');\nnode_5.setAttribute('id', \"row-e\");\nnode_5.setAttribute('data-node', '');\nnode_5.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#00a2c7;grid-area:e\");\nrefs[\"row-cycle-from-first-implicit\"].appendChild(node_5);\nrefs[\"row-e\"] = node_5;\nnodeIds.push(\"row-e\");\nreturn { sceneId:'row-cycle-from-first-implicit', rootId:\"row-cycle-from-first-implicit\", nodeIds };\n})()"
+    },
+    {
+      "index": 33,
+      "id": "column-cycle-from-first-implicit",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "column-cycle-from-first-implicit",
+      "nodeIds": [
+        "column-cycle-from-first-implicit",
+        "column-left",
+        "column-middle",
+        "column-right"
+      ],
+      "parentIds": [
+        null,
+        "column-cycle-from-first-implicit",
+        "column-cycle-from-first-implicit",
+        "column-cycle-from-first-implicit"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "column-cycle-from-first-implicit",
+        "rootId": "column-cycle-from-first-implicit",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "column-cycle-from-first-implicit",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "column-left",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 44,
+              "height": 26
+            }
+          },
+          {
+            "id": "column-middle",
+            "rect": {
+              "x": 44,
+              "y": 0,
+              "width": 34,
+              "height": 26
+            }
+          },
+          {
+            "id": "column-right",
+            "rect": {
+              "x": 78,
+              "y": 0,
+              "width": 10,
+              "height": 26
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"column-cycle-from-first-implicit\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:12px 14px;grid-template-columns:21px 23px 25px;grid-auto-rows:4px 5px;grid-auto-columns:9px 10px;grid-template-areas:'left left middle middle right' 'left left middle middle right'\");\ndocument.appendChild(node_0);\nrefs[\"column-cycle-from-first-implicit\"] = node_0;\nnodeIds.push(\"column-cycle-from-first-implicit\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"column-left\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:left\");\nrefs[\"column-cycle-from-first-implicit\"].appendChild(node_1);\nrefs[\"column-left\"] = node_1;\nnodeIds.push(\"column-left\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"column-middle\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:middle\");\nrefs[\"column-cycle-from-first-implicit\"].appendChild(node_2);\nrefs[\"column-middle\"] = node_2;\nnodeIds.push(\"column-middle\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"column-right\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-area:right\");\nrefs[\"column-cycle-from-first-implicit\"].appendChild(node_3);\nrefs[\"column-right\"] = node_3;\nnodeIds.push(\"column-right\");\nreturn { sceneId:'column-cycle-from-first-implicit', rootId:\"column-cycle-from-first-implicit\", nodeIds };\n})()"
+    },
+    {
+      "index": 34,
+      "id": "authored-tracks-exceed-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "authored-tracks-exceed-area",
+      "nodeIds": [
+        "authored-tracks-exceed-area",
+        "exceed-top",
+        "exceed-bottom"
+      ],
+      "parentIds": [
+        null,
+        "authored-tracks-exceed-area",
+        "authored-tracks-exceed-area"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "authored-tracks-exceed-area",
+        "rootId": "authored-tracks-exceed-area",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "authored-tracks-exceed-area",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "exceed-top",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 37,
+              "height": 15
+            }
+          },
+          {
+            "id": "exceed-bottom",
+            "rect": {
+              "x": 0,
+              "y": 15,
+              "width": 37,
+              "height": 16
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"authored-tracks-exceed-area\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:15px 16px 17px;grid-template-columns:18px 19px 20px;grid-auto-rows:5px 7px;grid-auto-columns:9px 11px;grid-template-areas:'top top' 'bottom bottom'\");\ndocument.appendChild(node_0);\nrefs[\"authored-tracks-exceed-area\"] = node_0;\nnodeIds.push(\"authored-tracks-exceed-area\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"exceed-top\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:top\");\nrefs[\"authored-tracks-exceed-area\"].appendChild(node_1);\nrefs[\"exceed-top\"] = node_1;\nnodeIds.push(\"exceed-top\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"exceed-bottom\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:bottom\");\nrefs[\"authored-tracks-exceed-area\"].appendChild(node_2);\nrefs[\"exceed-bottom\"] = node_2;\nnodeIds.push(\"exceed-bottom\");\nreturn { sceneId:'authored-tracks-exceed-area', rootId:\"authored-tracks-exceed-area\", nodeIds };\n})()"
+    },
+    {
+      "index": 35,
+      "id": "row-cycle-continues-after-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "row-cycle-continues-after-area",
+      "nodeIds": [
+        "row-cycle-continues-after-area",
+        "phase-row-known",
+        "phase-row-area",
+        "phase-row-late"
+      ],
+      "parentIds": [
+        null,
+        "row-cycle-continues-after-area",
+        "row-cycle-continues-after-area",
+        "row-cycle-continues-after-area"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "row-cycle-continues-after-area",
+        "rootId": "row-cycle-continues-after-area",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "row-cycle-continues-after-area",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "phase-row-known",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 30,
+              "height": 20
+            }
+          },
+          {
+            "id": "phase-row-area",
+            "rect": {
+              "x": 0,
+              "y": 20,
+              "width": 30,
+              "height": 6
+            }
+          },
+          {
+            "id": "phase-row-late",
+            "rect": {
+              "x": 0,
+              "y": 26,
+              "width": 30,
+              "height": 8
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"row-cycle-continues-after-area\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:20px;grid-template-columns:30px;grid-auto-rows:6px 8px;grid-auto-columns:11px 13px;grid-template-areas:'known' 'area-row'\");\ndocument.appendChild(node_0);\nrefs[\"row-cycle-continues-after-area\"] = node_0;\nnodeIds.push(\"row-cycle-continues-after-area\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"phase-row-known\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:known\");\nrefs[\"row-cycle-continues-after-area\"].appendChild(node_1);\nrefs[\"phase-row-known\"] = node_1;\nnodeIds.push(\"phase-row-known\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"phase-row-area\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:area-row\");\nrefs[\"row-cycle-continues-after-area\"].appendChild(node_2);\nrefs[\"phase-row-area\"] = node_2;\nnodeIds.push(\"phase-row-area\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"phase-row-late\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-row:area-row-end / span 1 ghost;grid-column:1\");\nrefs[\"row-cycle-continues-after-area\"].appendChild(node_3);\nrefs[\"phase-row-late\"] = node_3;\nnodeIds.push(\"phase-row-late\");\nreturn { sceneId:'row-cycle-continues-after-area', rootId:\"row-cycle-continues-after-area\", nodeIds };\n})()"
+    },
+    {
+      "index": 36,
+      "id": "column-cycle-continues-after-area",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "column-cycle-continues-after-area",
+      "nodeIds": [
+        "column-cycle-continues-after-area",
+        "phase-column-known",
+        "phase-column-area",
+        "phase-column-late"
+      ],
+      "parentIds": [
+        null,
+        "column-cycle-continues-after-area",
+        "column-cycle-continues-after-area",
+        "column-cycle-continues-after-area"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+        "sceneId": "column-cycle-continues-after-area",
+        "rootId": "column-cycle-continues-after-area",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 80
+        },
+        "nodes": [
+          {
+            "id": "column-cycle-continues-after-area",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 80
+            }
+          },
+          {
+            "id": "phase-column-known",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 20,
+              "height": 30
+            }
+          },
+          {
+            "id": "phase-column-area",
+            "rect": {
+              "x": 20,
+              "y": 0,
+              "width": 5,
+              "height": 30
+            }
+          },
+          {
+            "id": "phase-column-late",
+            "rect": {
+              "x": 25,
+              "y": 0,
+              "width": 7,
+              "height": 30
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"column-cycle-continues-after-area\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:30px;grid-template-columns:20px;grid-auto-rows:11px 13px;grid-auto-columns:5px 7px;grid-template-areas:'known area-col'\");\ndocument.appendChild(node_0);\nrefs[\"column-cycle-continues-after-area\"] = node_0;\nnodeIds.push(\"column-cycle-continues-after-area\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"phase-column-known\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:known\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_1);\nrefs[\"phase-column-known\"] = node_1;\nnodeIds.push(\"phase-column-known\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"phase-column-area\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:area-col\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_2);\nrefs[\"phase-column-area\"] = node_2;\nnodeIds.push(\"phase-column-area\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"phase-column-late\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-row:1;grid-column:area-col-end / span 1 ghost\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_3);\nrefs[\"phase-column-late\"] = node_3;\nnodeIds.push(\"phase-column-late\");\nreturn { sceneId:'column-cycle-continues-after-area', rootId:\"column-cycle-continues-after-area\", nodeIds };\n})()"
     }
   ]
 }

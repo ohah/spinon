@@ -308,7 +308,7 @@ test('41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로
     'zero-percent auto-repeat fixture는 13개다.');
   assert.equal(maximumFixtures.length, 28,
     'percentage auto-repeat maximum fixture는 28개다.');
-  assert.match(captureSource, /assert\.equal\(scenes\.length, 618,/,
+  assert.match(captureSource, /assert\.equal\(scenes\.length, 622,/,
     'C11.4 simulator capture scene count must include percentage-neighbor cases.');
   const noAreaIDs = JSON.parse(noAreaOracleText).cases.map(({ id }) => id);
   assert.equal(noAreaIDs.length, 12, 'the no-area dual-axis oracle must contain 12 scenes.');

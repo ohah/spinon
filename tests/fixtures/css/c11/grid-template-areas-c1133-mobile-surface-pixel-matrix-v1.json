@@ -5,7 +5,7 @@
   "inputs": {
     "runtimeMatrix": {
       "path": "tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v1.json",
-      "sha256": "7dcafb02f353f2e83bcd2513dd49c738a4629ff3c726e62aa525487f8cf60295"
+      "sha256": "62baa58bab5af9fd9cfb498ed4a5a979202a5e43bba5438952358cfc204358ee"
     },
     "reference": {
       "path": "tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json",
