@@ -1,0 +1,8 @@
+{
+  "session": "spinon-pr815-agent-browser-20261030",
+  "close_command": "agent-browser --session spinon-pr815-agent-browser-20261030 close",
+  "close_report": "Browser closed",
+  "process_check": "ps -axo pid=,args= | rg [a]gent-browser",
+  "process_output": "no processes",
+  "verified": true
+}
