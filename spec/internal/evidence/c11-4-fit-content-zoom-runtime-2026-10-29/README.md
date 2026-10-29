@@ -1,6 +1,6 @@
 # C11.4 `fit-content-track-sizing.html` zoomed-grid runtime slice
 
-2026-10-29 · 제한된 opt-in fixture 구현과 두 Simulator의 표면 표본 기록이다. 이 결과는 일반 CSS `zoom`, 전체 WPT 실행, 전체 C11.4 완료를 뜻하지 않는다.
+2026-10-29 · 제한된 opt-in fixture 구현과 두 Simulator의 표면 표본 기록이다. 동작 범위는 [내부 계약 0059](../../0059-c11-grid-layout.md)에 고정했다. 이 결과는 일반 CSS `zoom`, 전체 WPT 실행, 전체 C11.4 완료를 뜻하지 않는다.
 
 ## 구현 판정
 
