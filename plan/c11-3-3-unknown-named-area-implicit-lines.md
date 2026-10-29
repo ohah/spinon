@@ -74,3 +74,7 @@ Pinned Chrome capture가 완료되면 각 항목에 근거와 PASS/PARTIAL을 �
 마지막 코드 변경 뒤 Android API 37 ARM64 AVD 행렬 `c1133-matrix-20261020T150911869Z-7abbeeff`, Android 16/API 36 Samsung SM-S731N 실기기 행렬 `c1133-matrix-20261020T152039508Z-5886c27a`, iPhone 17 Pro/iOS 26.2 Simulator 행렬 `c1133-ios-matrix-20261020T151033155Z-4d6bf988`가 각각 26 scene·65 node, 19 success·5 cascade fallback·2 expected rejection, 61 visible frame, geometry 오차 0 CSS px로 통과했다. 별도 root-overflow case의 3개 frame geometry와 표면 RGBA sample은 세 실행에서 각각 3/3 exact다. SM-S731N renderer는 ANGLE/Xclipse 940/Vulkan 1.3.279였다. 실행 hash, 화면과 플랫폼 경계는 [후속 근거](../spec/internal/evidence/c11-3-3-unknown-area-implicit-lines-followup-2026-10-21/README.md)에 있다.
 
 PR #393의 병합 전 후보 snapshot에서 로컬 Rust workspace는 1,193 passed·4 ignored, focused CSS reference 24/24, C11.3.3 fixture FFI 4/4였고 Clippy, rustfmt와 matrix generator check도 통과했다. Full `bun run test`는 당시 기존 C04, C11.3.2, C13.3 source expectation 네 개에서 중단되어 CSS-reference test 이후 benchmark step은 실행되지 않았다. 이 결과는 병합 전 해당 snapshot에 한정된다. PR #393 병합 뒤에도 제한 범위만 구현됐으므로 공식 C11.3.3/C11 상태는 미완료로 유지한다.
+
+## WPT inventory 재분류 · 2026-10-30
+
+고정 Chrome report의 `grid-placement-unknown-named-area-001.html` 네 `.grid` subtest를 이 문서의 양의 trailing-line/line-span 장면 네 개에 이름 기반으로 연결했다. [재분류 근거](../spec/internal/evidence/c11-3-3-wpt-inventory-refresh-2026-10-30/README.md)는 원본 WPT report를 재사용하고 source/hash를 확인한다. Chrome의 4/4 PASS와 파생 fixture 범위만 기록하며 Spinon WPT 실행·적합성으로 표시하지 않는다. `unknown-area-implicit-tracks`의 template-area rejection 및 C11.3.3/C11 미완료 상태는 바꾸지 않는다.

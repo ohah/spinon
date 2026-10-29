@@ -27,7 +27,7 @@
     "revision": "c999c58338ee1d223df5ad62e48be1202ced0d37",
     "browser": "Chrome/154.0.8037.92",
     "chromeReportEvidence": "spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14/wpt-chrome154.0.8037.92-run01.json",
-    "classifiedReportEvidence": "spec/internal/evidence/c11-3-3-grid-template-areas-precomparison-2026-10-14/wpt-chrome154.0.8037.92-classified-run01.json",
+    "classifiedReportEvidence": "spec/internal/evidence/c11-3-3-wpt-inventory-refresh-2026-10-30/classified-run06.json",
     "candidates": [
       {
         "path": "css/css-grid/grid-definition/grid-support-grid-template-areas-001.html",
@@ -50,8 +50,35 @@
       {
         "path": "css/css-grid/placement/grid-placement-unknown-named-area-001.html",
         "sha256": "7fa795ad262e74399487fa817da1e99a75bbcce2e46b5f4547d55959e2e9ebd4",
-        "classification": "Currently unsupported: unknown area creates implicit named lines/tracks outside C11.3.3. Chrome oracle only.",
-        "subtestClassification": "Each PASS subtest is currently unsupported because it requires implicit track generation; no Spinon fixture claims support."
+        "classification": "Four pinned subtests have derived Spinon fixture coverage for positive trailing implicit named lines/spans. The complete WPT DOM test remains Chrome-oracle-only; this mapping is not Spinon WPT conformance.",
+        "subtestClassification": "The four pinned .grid subtests map by report name to the fixed C11.3.3 opt-in scenes below. This covers only the derived positive trailing fixed-px profile; it does not run the original WPT through Spinon.",
+        "fixtureSceneSource": "tests/fixtures/css/c11/unknown-named-area-implicit-lines-c1133.html",
+        "subtestCoverage": [
+          {
+            "name": ".grid 1",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-both-named-row",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 2",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-column-named-span",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 3",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-row-named-span",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          },
+          {
+            "name": ".grid 4",
+            "classification": "spinon-fixture-candidate",
+            "fixtureSceneId": "unknown-column-span-one",
+            "fixtureEvidence": "plan/c11-3-3-unknown-named-area-implicit-lines.md"
+          }
+        ]
       }
     ]
   },

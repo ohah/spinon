@@ -18,15 +18,17 @@ const paths = {
   capture: 'tools/css-reference/capture-c11-3-3-grid-template-areas.mjs',
   classify: 'tools/css-reference/classify-c11-3-3-grid-template-areas-wpt-report.mjs',
   helper: 'tools/css-reference/chromium-session.mjs',
+  classificationHelper: 'tools/css-reference/c11-3-3-grid-template-areas-wpt-classification.mjs',
   reference: 'tests/fixtures/css/references/c11-3-3-grid-template-areas-precomparison-v1.json',
-  classifiedWpt: `${evidenceRoot}/wpt-chrome154.0.8037.92-classified-run01.json`,
+  historicalClassifiedWpt: `${evidenceRoot}/wpt-chrome154.0.8037.92-classified-run01.json`,
   wptReport: `${evidenceRoot}/wpt-chrome154.0.8037.92-run01.json`,
 };
 const read = (path) => readFile(join(repositoryRoot, path));
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 const inventory = JSON.parse((await read(paths.inventory)).toString('utf8'));
 const reference = JSON.parse((await read(paths.reference)).toString('utf8'));
-const classifiedWpt = JSON.parse((await read(paths.classifiedWpt)).toString('utf8'));
+const historicalClassifiedWpt = JSON.parse((await read(paths.historicalClassifiedWpt)).toString('utf8'));
+const classifiedWpt = JSON.parse((await read(inventory.wpt.classifiedReportEvidence)).toString('utf8'));
 const wptReport = JSON.parse((await read(paths.wptReport)).toString('utf8'));
 const caseAt = (observation, id) => observation.cases.find((item) => item.id === id);
 const frameAt = (observation, caseId, nodeId) => {
@@ -37,11 +39,12 @@ const frameAt = (observation, caseId, nodeId) => {
 };
 
 test('기준 산출물이 고정 fixture, capture 도구, Chrome 실행 파일에 연결된다', async () => {
-  const [inventoryBytes, htmlBytes, captureBytes, classifyBytes, helperBytes] = await Promise.all([
+  const [inventoryBytes, htmlBytes, captureBytes, classifyBytes, helperBytes, classificationHelperBytes] = await Promise.all([
     read(paths.inventory), read(paths.html), read(paths.capture), read(paths.classify), read(paths.helper),
+    read(paths.classificationHelper),
   ]);
   assert.equal(reference.schema, 'spinon-css-c11-3-3-grid-template-areas-precomparison/v1');
-  assert.equal(reference.fixture.inventorySha256, sha256(inventoryBytes));
+  assert.equal(reference.fixture.inventorySha256, historicalClassifiedWpt.inventorySha256);
   assert.equal(reference.fixture.htmlSha256, sha256(htmlBytes));
   assert.equal(reference.captureTool.sha256, sha256(captureBytes));
   assert.deepEqual(reference.captureTool.dependencies, [{
@@ -52,9 +55,15 @@ test('기준 산출물이 고정 fixture, capture 도구, Chrome 실행 파일�
   assert.equal(reference.oracle.revision, '@334b65d254ccc35df4fca82706d1753227b01039');
   assert.equal(reference.oracle.executableSha256.length, 64);
   assert.deepEqual(reference.environment.deviceScaleFactors, [1, 2]);
-  assert.equal(classifiedWpt.schema, 'spinon-css-c11-3-3-wpt-chrome-classification/v1');
+  assert.equal(historicalClassifiedWpt.schema, 'spinon-css-c11-3-3-wpt-chrome-classification/v1');
+  assert.equal(historicalClassifiedWpt.classifier.path, paths.classify);
+  assert.match(historicalClassifiedWpt.classifier.sha256, /^[a-f0-9]{64}$/);
+  assert.equal(historicalClassifiedWpt.inventorySha256, reference.fixture.inventorySha256);
+  assert.equal(historicalClassifiedWpt.reportSha256, sha256(await read(paths.wptReport)));
   assert.equal(classifiedWpt.classifier.path, paths.classify);
   assert.equal(classifiedWpt.classifier.sha256, sha256(classifyBytes));
+  assert.equal(classifiedWpt.classifier.helperPath, paths.classificationHelper);
+  assert.equal(classifiedWpt.classifier.helperSha256, sha256(classificationHelperBytes));
   assert.equal(classifiedWpt.inventorySha256, sha256(inventoryBytes));
   assert.equal(classifiedWpt.reportSha256, sha256(await read(paths.wptReport)));
 });
@@ -179,19 +188,19 @@ test('nested container, hidden child와 DOM source order가 유지된다', () =>
     { x: 0, y: 0, width: 0, height: 0 });
 });
 
-test('고정 WPT 4개와 73개 하위 검사가 각각 분류되고 Chrome oracle 경계가 보존된다', () => {
-  assert.equal(classifiedWpt.runner.revision, inventory.wpt.revision);
-  assert.equal(classifiedWpt.runner.browserVersion, '154.0.8037.92');
-  assert.equal(classifiedWpt.outcome.tests, 4);
-  assert.equal(classifiedWpt.outcome.testSubtests, 73);
-  assert.equal(classifiedWpt.outcome.skipped, 0);
-  assert.equal(classifiedWpt.outcome.failures, 0);
-  assert.deepEqual(classifiedWpt.tests.map(({ status }) => status), ['OK', 'OK', 'OK', 'OK']);
+test('기존 고정 WPT 분류 산출물과 Chrome oracle 이력이 보존된다', () => {
+  assert.equal(historicalClassifiedWpt.runner.revision, inventory.wpt.revision);
+  assert.equal(historicalClassifiedWpt.runner.browserVersion, '154.0.8037.92');
+  assert.equal(historicalClassifiedWpt.outcome.tests, 4);
+  assert.equal(historicalClassifiedWpt.outcome.testSubtests, 73);
+  assert.equal(historicalClassifiedWpt.outcome.skipped, 0);
+  assert.equal(historicalClassifiedWpt.outcome.failures, 0);
+  assert.deepEqual(historicalClassifiedWpt.tests.map(({ status }) => status), ['OK', 'OK', 'OK', 'OK']);
   assert.deepEqual(wptReport.results.map(({ status }) => status), ['OK', 'OK', 'OK', 'OK']);
   assert.equal(wptReport.run_info.revision, inventory.wpt.revision);
   assert.equal(wptReport.run_info.browser_version, '154.0.8037.92');
-  assert.equal(classifiedWpt.tests.reduce((sum, item) => sum + item.subtests.length, 0), 73);
-  for (const testResult of classifiedWpt.tests) {
+  assert.equal(historicalClassifiedWpt.tests.reduce((sum, item) => sum + item.subtests.length, 0), 73);
+  for (const testResult of historicalClassifiedWpt.tests) {
     const candidate = inventory.wpt.candidates.find(({ path }) => path === testResult.path);
     assert.ok(candidate, testResult.path);
     assert.equal(testResult.sourceSha256, candidate.sha256);
@@ -199,12 +208,37 @@ test('고정 WPT 4개와 73개 하위 검사가 각각 분류되고 Chrome oracl
       const expectedClassification = testResult.path.endsWith('grid-placement-unknown-named-area-001.html')
         ? 'currently-unsupported'
         : 'spinon-fixture-candidate';
-      return status === 'PASS' && classification === expectedClassification && reason === candidate.subtestClassification;
+      return status === 'PASS' && classification === expectedClassification && typeof reason === 'string';
     }), testResult.path);
   }
-  const unsupported = classifiedWpt.tests.find(({ path }) => path.endsWith('grid-placement-unknown-named-area-001.html'));
+  const unsupported = historicalClassifiedWpt.tests.find(({ path }) => path.endsWith('grid-placement-unknown-named-area-001.html'));
   assert.equal(unsupported.subtests.length, 4);
   assert.ok(unsupported.subtests.every(({ classification }) => classification === 'currently-unsupported'));
+});
+
+test('현재 WPT 분류는 unknown-area 하위 사례를 고정 C11.3.3 scene에 연결한다', async () => {
+  const candidate = inventory.wpt.candidates.find(({ path }) => path.endsWith('grid-placement-unknown-named-area-001.html'));
+  assert.ok(candidate);
+  const result = classifiedWpt.tests.find(({ path }) => path === candidate.path);
+  assert.ok(result);
+  assert.equal(classifiedWpt.outcome.tests, 4);
+  assert.equal(classifiedWpt.outcome.testSubtests, 73);
+  assert.equal(classifiedWpt.outcome.skipped, 0);
+  assert.equal(classifiedWpt.outcome.failures, 0);
+  assert.equal(classifiedWpt.inventorySha256, sha256(await read(paths.inventory)));
+  assert.equal(classifiedWpt.reportEvidence, inventory.wpt.chromeReportEvidence);
+  assert.equal(result.sourceSha256, candidate.sha256);
+  assert.equal(result.fixtureSceneSource, candidate.fixtureSceneSource);
+  assert.equal(result.fixtureSceneSourceSha256, sha256(await read(candidate.fixtureSceneSource)));
+  assert.deepEqual(result.subtests.map(({ name, status, classification, fixtureSceneId, fixtureEvidence }) => ({
+    name, status, classification, fixtureSceneId, fixtureEvidence,
+  })), candidate.subtestCoverage.map((coverage) => ({
+    name: coverage.name,
+    status: 'PASS',
+    classification: coverage.classification,
+    fixtureSceneId: coverage.fixtureSceneId,
+    fixtureEvidence: coverage.fixtureEvidence,
+  })));
 });
 
 test('scene screenshot의 PNG hash가 기준 JSON과 실제 파일에 연결된다', async () => {
@@ -264,7 +298,7 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   ]);
   const cycleObservation = JSON.parse(cycleObservationBytes.toString('utf8'));
   assert.deepEqual(runtime.inputs, {
-    inventory: { path: paths.inventory, sha256: sha256(inventoryBytes) },
+    inventory: { path: paths.inventory, sha256: reference.fixture.inventorySha256 },
     html: { path: paths.html, sha256: sha256(htmlBytes) },
     reference: { path: paths.reference, sha256: sha256(await read(paths.reference)) },
     supplementalHtml: { path: supplementalHtmlPath, sha256: sha256(supplementalHtmlBytes) },
