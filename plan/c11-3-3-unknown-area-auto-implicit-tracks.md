@@ -1,6 +1,6 @@
 # C11.3.3 · 알 수 없는 `grid-area` 이름의 기본 auto implicit track
 
-**상태:** 계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 2026-10-29에 병합됐다. 제한 구현은 현재 브랜치에서 Rust·FFI·Android API 37 AVD·iOS 26.2 Simulator 검증을 통과했으며 구현 PR 병합은 대기 중이다. 기존 `unknown-area-implicit-tracks`의 과거 거부는 runtime matrix v1에 보존하고, v2 source-bound matrix에서 Chrome 154 geometry 기준 성공으로 갱신했다. 이 작업은 C11.3.3 candidate·C11 및 공식 완료 `72/213`을 완료로 바꾸지 않는다.
+**상태:** 계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 2026-10-29에 병합됐다. 제한 구현 PR [#819](https://github.com/ohah/spinon/pull/819)은 2026-10-29T20:53:09Z Rebase and merge됐고 merge SHA는 `1e4e93401e4959ef6aec121c0a2a721d56e45b11`다. 병합된 source의 Rust·FFI·Android API 37 AVD·iOS 26.2 Simulator 검증은 계획된 제한 범위를 통과했다. PR 검사 결과는 비어 있고 저장소에 필수 상태 검사가 설정되어 있지 않다. 기존 `unknown-area-implicit-tracks`의 과거 거부는 runtime matrix v1에 보존하고, v2 source-bound matrix에서 Chrome 154 geometry 기준 성공으로 갱신했다. 이 작업은 C11.3.3 candidate·C11 및 공식 완료 `72/213`을 완료로 바꾸지 않는다.
 
 **상위:** [C11.3 계획](./c11-3-template-repeat-named-lines-areas.md) · [unknown named line 후속](./c11-3-3-unknown-named-area-implicit-lines.md) · [area implicit-track 목록 순환](./c11-3-3-template-area-track-list-cycling.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
