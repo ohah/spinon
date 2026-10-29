@@ -1,0 +1,42 @@
+{
+  "date": "2026-10-30",
+  "source_commit": "1dcdaf2f043f6d1abd85f787e6a6b05f37985dd6",
+  "selected_root": {
+    "path": "build/spinon/c11-3-3-track-list-roadmap-root-pass03-20261030",
+    "files": 56,
+    "bytes": 4191958
+  },
+  "selected_build": {
+    "path": "build/spinon/c11-3-3-track-list-roadmap-site-pass03-20261030",
+    "files": 51,
+    "bytes": 6755847,
+    "expected_routes": 14,
+    "excluded_route": "404.html"
+  },
+  "preview_target": "/Users/yoonhb/Library/Application Support/SpinonPreview/spinon",
+  "preflight": {
+    "routes": 51,
+    "counts": {
+      "create": 17,
+      "replace": 15,
+      "same": 19
+    },
+    "source_bytes": 6755847,
+    "backup_bytes": 2141971
+  },
+  "copy": {
+    "copied": 32,
+    "backups": 15,
+    "no_deletes": true
+  },
+  "verify": {
+    "routes": 51,
+    "local_hashes": 51,
+    "backup_hashes": 15,
+    "remote_http_200_and_hashes": 51,
+    "all_local": true,
+    "all_backups": true,
+    "all_remote": true,
+    "no_deletes": true
+  }
+}

@@ -1,0 +1,280 @@
+{
+  "selectedOutputRoot": "build/spinon/c11-3-3-track-list-roadmap-site-pass03-20261030",
+  "fileCount": 51,
+  "totalBytes": 6755847,
+  "expectedRoutes": [
+    "roadmap.html",
+    "roadmap.svg",
+    "icon.svg",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-3-3-template-area-implicit-tracks.html",
+    "plan/c11-3-3-template-area-track-list-cycling.html",
+    "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html",
+    "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html",
+    "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html",
+    "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html",
+    "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png",
+    "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/android-track-list-cycle-screen.png",
+    "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/ios-track-list-cycle-screen.png"
+  ],
+  "excludedExistingPreviewRoute": "404.html",
+  "noDeletes": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 316034,
+      "sha256": "226de47594042243d181b582fbbb45280f306376e72d3e46d0fa7239150e4b19"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/android-track-list-cycle-screen.png",
+      "bytes": 81326,
+      "sha256": "085d9c35d23f0e55bda2c99fed3c856ec8d1cb4a21b78514b17242cb6aa14451"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html",
+      "bytes": 27640,
+      "sha256": "8cd5c718bd35a65f5fdbb4e7e85b2cf123cf056b36ce74b0f2362a0ce6aa2817"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/result.json",
+      "bytes": 138060,
+      "sha256": "9d3c645ff005b6a430250794da06f0946e69b24dc0a600ba3ac838e05a44c2e7"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/ios-track-list-cycle-screen.png",
+      "bytes": 133655,
+      "sha256": "3fe6b4d46777e38494b6a02d182e52b8de6b5c09f128f3ec6cd9ec264bf5e9c5"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html",
+      "bytes": 28073,
+      "sha256": "c301593d1a2637f3bdc1e9dca5ef439ee964fe98279d7d2a6c3c8920eddaf743"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/result.json",
+      "bytes": 130415,
+      "sha256": "a3c9aecc46f4a09d5d8cc2a3316d74010e64e1636707bd9ff9b38537d68076ea"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png",
+      "bytes": 4107,
+      "sha256": "3df254c19ede58efae3072a10225113e941586d148cc741e7cad3040611261ed"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/observation.json",
+      "bytes": 8145,
+      "sha256": "d5b338301c82502e710e3abb0839e5cb30e9dab9976be8d12add277eb4e2bb8b"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/expected.json",
+      "bytes": 2213,
+      "sha256": "8f64d82feabc8cc177aaa591eede328511bf2729b4afaa56ae8d1406fa297797"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html",
+      "bytes": 27963,
+      "sha256": "76cbe4a2cb43dbf46cd7934555c72f86a91bd5780a502adc8190bc03c05ac673"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.html",
+      "bytes": 33012,
+      "sha256": "f06ab048ae4c10be9e7c763deb0a881c4fa906169b5e8a5a31c8a123337a4325"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 31777,
+      "sha256": "c51ef8d05c24999f4fed02602f6008780b5bdb0cf45e743532169a4f6e244209"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html",
+      "bytes": 29125,
+      "sha256": "f8f2626c0dfa8f1307f7d85d341c1989d2e65cdd5b58bb019acc5f578c99e655"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-implicit-tracks.html",
+      "bytes": 42464,
+      "sha256": "f635fdba61e5442d69523d789ccbad67ed8cc2473eed96e048b47188dec948e5"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-track-list-cycling.html",
+      "bytes": 40661,
+      "sha256": "acfc2ac4dcf6d02220da07ebd04762b3c2ff927bec9c92f17df090039051d384"
+    },
+    {
+      "path": "plan/c11-3-template-repeat-named-lines-areas.html",
+      "bytes": 91929,
+      "sha256": "b556c504eb74a2a3cd7247e3d0cdc539c277dda838b97fb78efb33c6a72ded86"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 403479,
+      "sha256": "daf796de4c89f06277dbcd4ed3246d3e29196f2ddf7550ffe970899833163f8a"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-implicit-tracks.html",
+      "bytes": 42425,
+      "sha256": "fcc70646c53452b4bff730c7093d75f35f2a40d0eb34f71a5657d43cb3076f02"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-track-list-cycling.html",
+      "bytes": 40674,
+      "sha256": "57867332bc7ea4b6bf714fc6a9ef5fb74c4d1bd870e56d44aa2c045f3a219f8c"
+    },
+    {
+      "path": "spec/plan/c11-3-template-repeat-named-lines-areas.html",
+      "bytes": 91899,
+      "sha256": "a85e4d7ad09b0facf827a9c871fb764aa21eee39392e7bdf56c72b213aa2f15f"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 649396,
+      "sha256": "d4ee97070ddf9bc629c8af6090198a465ca6f06dc21a8ec4fbbc9f41d97f49a5"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-07bf5552cfe2.890f24bcd6.js",
+      "bytes": 6310,
+      "sha256": "59c8b3bc150f93692d03c118af418dfc0be9402329d87131b99bb39dd7758349"
+    },
+    {
+      "path": "static/js/async/route-3a41f6b7dfff.81e17094e7.js",
+      "bytes": 3252,
+      "sha256": "726727c45b4607eb2aac6f3e91ece8fef3cab4e88ecd2d07889f6ce5ae222dda"
+    },
+    {
+      "path": "static/js/async/route-44c8d404a945.2d881eeea3.js",
+      "bytes": 3610,
+      "sha256": "6351dc8dfa144d4c26d9f42aea6f7909c4ad7a185b433db4a129e30616620953"
+    },
+    {
+      "path": "static/js/async/route-6161df7bfc15.d960443a95.js",
+      "bytes": 22175,
+      "sha256": "25015b1d9c659fbb6c59ad79d6c74f28e55dbecb961c49208504d5308e4e47a9"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.eb06416baf.js",
+      "bytes": 692531,
+      "sha256": "671abd6ab26c4f9bf8d67dce637f9efca91d501f10f653ef447d6ec4fc4026e2"
+    },
+    {
+      "path": "static/js/async/route-70da4bea658f.b2b1abd674.js",
+      "bytes": 22193,
+      "sha256": "cc353fceea617e3ff47ca40c5b7b3d8044b89913d983fa3990b87c1243d6063a"
+    },
+    {
+      "path": "static/js/async/route-7ad7fb1254a0.c759070811.js",
+      "bytes": 61404,
+      "sha256": "cc8fd43f0ad367291586d4b1054197f09e1e5f502726cda4bac2e6bc21e544f7"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.ff8d6c097b.js",
+      "bytes": 692482,
+      "sha256": "cf5f795a11d05e20ef29b23e02350ed153a393de49dd77ae2a025233ed9553ef"
+    },
+    {
+      "path": "static/js/async/route-8b8930bc8631.44f8d25fcf.js",
+      "bytes": 61429,
+      "sha256": "a33b6e105d30d83a451e4fb31d2533bb1174bd695160d9720b41d3e9a50d4d4d"
+    },
+    {
+      "path": "static/js/async/route-a3950dabde03.c4c044c4fb.js",
+      "bytes": 19063,
+      "sha256": "72f86e0e68a3da04285a7d51d91fd704ed80f8ec89a446ae7c8d45ce71b65bcc"
+    },
+    {
+      "path": "static/js/async/route-b64a3fade527.1ff7e4cabc.js",
+      "bytes": 12751,
+      "sha256": "72dafbedf84c875aaebe50a60a3dea65025edfb925c7ed8bb85f83e5b2de774e"
+    },
+    {
+      "path": "static/js/async/route-b8492571baef.5926c67fb8.js",
+      "bytes": 10671,
+      "sha256": "ac23498aa5c814f6e0b8294b61ec2b9848f94563496adc6f8ca82092b041d439"
+    },
+    {
+      "path": "static/js/async/route-bc25ecb0ceba.d854818233.js",
+      "bytes": 19082,
+      "sha256": "bb6b22d9e39f8f105a36770833f3e5a2126cb809d19240d4d7a23ee60978ea38"
+    },
+    {
+      "path": "static/js/async/route-bcde6c4f76e8.4c75747520.js",
+      "bytes": 3712,
+      "sha256": "3c514d0304317ffc0ed6ce13992240d1699db392cb93afb068bafa7e71b4793e"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.ea5dccb3ca.js",
+      "bytes": 312632,
+      "sha256": "9018e5fd7e6951ac0b1fc05f62e4df7eb5902614489fdabe0c0d5fdd5b09564c"
+    },
+    {
+      "path": "static/js/index.0a009a1be2.js",
+      "bytes": 71527,
+      "sha256": "bc7277c75265d8e8db70c3d4d532cb09b509708ebda963da63ffaffd34500107"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "path": "static/search_index.ko.23ff97cf.json",
+      "bytes": 1144852,
+      "sha256": "23ff97cf91b30731cb923d0ff22be7943da49c2a177abd3e49681f51098c1441"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 649097,
+      "sha256": "b0ed76d0600864bcf5b313d19c8ecb7d7daf2ca921011042ce47d72bec2e459d"
+    }
+  ]
+}

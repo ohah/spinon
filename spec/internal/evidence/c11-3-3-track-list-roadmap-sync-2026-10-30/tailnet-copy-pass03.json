@@ -1,0 +1,291 @@
+{
+  "copied_count": 32,
+  "backup_count": 15,
+  "no_deletes": true,
+  "copied": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "bytes": 316034,
+      "sha256": "226de47594042243d181b582fbbb45280f306376e72d3e46d0fa7239150e4b19"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html",
+      "status": "replace",
+      "bytes": 27640,
+      "sha256": "8cd5c718bd35a65f5fdbb4e7e85b2cf123cf056b36ce74b0f2362a0ce6aa2817"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html",
+      "status": "replace",
+      "bytes": 28073,
+      "sha256": "c301593d1a2637f3bdc1e9dca5ef439ee964fe98279d7d2a6c3c8920eddaf743"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 27963,
+      "sha256": "76cbe4a2cb43dbf46cd7934555c72f86a91bd5780a502adc8190bc03c05ac673"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.html",
+      "status": "replace",
+      "bytes": 33012,
+      "sha256": "f06ab048ae4c10be9e7c763deb0a881c4fa906169b5e8a5a31c8a123337a4325"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.html",
+      "status": "replace",
+      "bytes": 31777,
+      "sha256": "c51ef8d05c24999f4fed02602f6008780b5bdb0cf45e743532169a4f6e244209"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 29125,
+      "sha256": "f8f2626c0dfa8f1307f7d85d341c1989d2e65cdd5b58bb019acc5f578c99e655"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-implicit-tracks.html",
+      "status": "replace",
+      "bytes": 42464,
+      "sha256": "f635fdba61e5442d69523d789ccbad67ed8cc2473eed96e048b47188dec948e5"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-track-list-cycling.html",
+      "status": "replace",
+      "bytes": 40661,
+      "sha256": "acfc2ac4dcf6d02220da07ebd04762b3c2ff927bec9c92f17df090039051d384"
+    },
+    {
+      "path": "plan/c11-3-template-repeat-named-lines-areas.html",
+      "status": "replace",
+      "bytes": 91929,
+      "sha256": "b556c504eb74a2a3cd7247e3d0cdc539c277dda838b97fb78efb33c6a72ded86"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-implicit-tracks.html",
+      "status": "replace",
+      "bytes": 42425,
+      "sha256": "fcc70646c53452b4bff730c7093d75f35f2a40d0eb34f71a5657d43cb3076f02"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-track-list-cycling.html",
+      "status": "replace",
+      "bytes": 40674,
+      "sha256": "57867332bc7ea4b6bf714fc6a9ef5fb74c4d1bd870e56d44aa2c045f3a219f8c"
+    },
+    {
+      "path": "spec/plan/c11-3-template-repeat-named-lines-areas.html",
+      "status": "replace",
+      "bytes": 91899,
+      "sha256": "a85e4d7ad09b0facf827a9c871fb764aa21eee39392e7bdf56c72b213aa2f15f"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "bytes": 649396,
+      "sha256": "d4ee97070ddf9bc629c8af6090198a465ca6f06dc21a8ec4fbbc9f41d97f49a5"
+    },
+    {
+      "path": "static/js/async/route-07bf5552cfe2.890f24bcd6.js",
+      "status": "create",
+      "bytes": 6310,
+      "sha256": "59c8b3bc150f93692d03c118af418dfc0be9402329d87131b99bb39dd7758349"
+    },
+    {
+      "path": "static/js/async/route-3a41f6b7dfff.81e17094e7.js",
+      "status": "create",
+      "bytes": 3252,
+      "sha256": "726727c45b4607eb2aac6f3e91ece8fef3cab4e88ecd2d07889f6ce5ae222dda"
+    },
+    {
+      "path": "static/js/async/route-44c8d404a945.2d881eeea3.js",
+      "status": "create",
+      "bytes": 3610,
+      "sha256": "6351dc8dfa144d4c26d9f42aea6f7909c4ad7a185b433db4a129e30616620953"
+    },
+    {
+      "path": "static/js/async/route-6161df7bfc15.d960443a95.js",
+      "status": "create",
+      "bytes": 22175,
+      "sha256": "25015b1d9c659fbb6c59ad79d6c74f28e55dbecb961c49208504d5308e4e47a9"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.eb06416baf.js",
+      "status": "create",
+      "bytes": 692531,
+      "sha256": "671abd6ab26c4f9bf8d67dce637f9efca91d501f10f653ef447d6ec4fc4026e2"
+    },
+    {
+      "path": "static/js/async/route-70da4bea658f.b2b1abd674.js",
+      "status": "create",
+      "bytes": 22193,
+      "sha256": "cc353fceea617e3ff47ca40c5b7b3d8044b89913d983fa3990b87c1243d6063a"
+    },
+    {
+      "path": "static/js/async/route-7ad7fb1254a0.c759070811.js",
+      "status": "create",
+      "bytes": 61404,
+      "sha256": "cc8fd43f0ad367291586d4b1054197f09e1e5f502726cda4bac2e6bc21e544f7"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.ff8d6c097b.js",
+      "status": "create",
+      "bytes": 692482,
+      "sha256": "cf5f795a11d05e20ef29b23e02350ed153a393de49dd77ae2a025233ed9553ef"
+    },
+    {
+      "path": "static/js/async/route-8b8930bc8631.44f8d25fcf.js",
+      "status": "create",
+      "bytes": 61429,
+      "sha256": "a33b6e105d30d83a451e4fb31d2533bb1174bd695160d9720b41d3e9a50d4d4d"
+    },
+    {
+      "path": "static/js/async/route-a3950dabde03.c4c044c4fb.js",
+      "status": "create",
+      "bytes": 19063,
+      "sha256": "72f86e0e68a3da04285a7d51d91fd704ed80f8ec89a446ae7c8d45ce71b65bcc"
+    },
+    {
+      "path": "static/js/async/route-b64a3fade527.1ff7e4cabc.js",
+      "status": "create",
+      "bytes": 12751,
+      "sha256": "72dafbedf84c875aaebe50a60a3dea65025edfb925c7ed8bb85f83e5b2de774e"
+    },
+    {
+      "path": "static/js/async/route-b8492571baef.5926c67fb8.js",
+      "status": "create",
+      "bytes": 10671,
+      "sha256": "ac23498aa5c814f6e0b8294b61ec2b9848f94563496adc6f8ca82092b041d439"
+    },
+    {
+      "path": "static/js/async/route-bc25ecb0ceba.d854818233.js",
+      "status": "create",
+      "bytes": 19082,
+      "sha256": "bb6b22d9e39f8f105a36770833f3e5a2126cb809d19240d4d7a23ee60978ea38"
+    },
+    {
+      "path": "static/js/async/route-bcde6c4f76e8.4c75747520.js",
+      "status": "create",
+      "bytes": 3712,
+      "sha256": "3c514d0304317ffc0ed6ce13992240d1699db392cb93afb068bafa7e71b4793e"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.ea5dccb3ca.js",
+      "status": "create",
+      "bytes": 312632,
+      "sha256": "9018e5fd7e6951ac0b1fc05f62e4df7eb5902614489fdabe0c0d5fdd5b09564c"
+    },
+    {
+      "path": "static/js/index.0a009a1be2.js",
+      "status": "create",
+      "bytes": 71527,
+      "sha256": "bc7277c75265d8e8db70c3d4d532cb09b509708ebda963da63ffaffd34500107"
+    },
+    {
+      "path": "static/search_index.ko.23ff97cf.json",
+      "status": "create",
+      "bytes": 1144852,
+      "sha256": "23ff97cf91b30731cb923d0ff22be7943da49c2a177abd3e49681f51098c1441"
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "bytes": 649097,
+      "sha256": "b0ed76d0600864bcf5b313d19c8ecb7d7daf2ca921011042ce47d72bec2e459d"
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/0059-c11-grid-layout.html",
+      "bytes": 316034,
+      "sha256": "a77d8343080d6d453e997962185948de75ed21b193498959d384ad871d0d7811"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html",
+      "bytes": 27640,
+      "sha256": "bac8babd5f396ab533ff6be7b0e0670d7ef6b260248a016f7ce9a84c3d6ca9d9"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html",
+      "bytes": 28073,
+      "sha256": "5c2e978cd6fa4fd5b22e56aeb79be486f8c75006cb73ba8ef30a897c21346c71"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html",
+      "bytes": 27963,
+      "sha256": "9a13fe29eaa01343bf38a3e417210999ef9eac4339f2127094ad270d821a3b15"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-pr-diff-review-30.html",
+      "bytes": 33012,
+      "sha256": "768ac49fcb51ffd85aa0ddb051af4b4d0c7b264292400224a7651b8767a764de"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 31777,
+      "sha256": "07e9172cb1b5e36fcc24ceb2662518c785ce52b9d5a69f8fad0d5bc12334eb90"
+    },
+    {
+      "path": "internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html",
+      "bytes": 29125,
+      "sha256": "69703ad664f44323d3027cabd7d00669cbda8029777f3bce2f773a58bce3c637"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-implicit-tracks.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/plan/c11-3-3-template-area-implicit-tracks.html",
+      "bytes": 42464,
+      "sha256": "e533cd4ea7e15c08ba055ad93054515bd69526327c952369934ab6c581642fca"
+    },
+    {
+      "path": "plan/c11-3-3-template-area-track-list-cycling.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/plan/c11-3-3-template-area-track-list-cycling.html",
+      "bytes": 40562,
+      "sha256": "a8deb631acc88a8f9ff5378886391bb350e2c111a69699e8c27f28b4e6ffdcb3"
+    },
+    {
+      "path": "plan/c11-3-template-repeat-named-lines-areas.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/plan/c11-3-template-repeat-named-lines-areas.html",
+      "bytes": 91929,
+      "sha256": "7f39373a359dfa01b7b478c0eb4b7b1afae46dd1c71e3a928ff164ef76ee3ff9"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-implicit-tracks.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/spec/plan/c11-3-3-template-area-implicit-tracks.html",
+      "bytes": 42425,
+      "sha256": "01531cc79763ef2fdb3ef194dc722e0231c6cb64083f8f9bf058bd37bdbec38f"
+    },
+    {
+      "path": "spec/plan/c11-3-3-template-area-track-list-cycling.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/spec/plan/c11-3-3-template-area-track-list-cycling.html",
+      "bytes": 40575,
+      "sha256": "2637e6078698176e4b2cdf9fb2a9f6d022f5ebd2b81811228251df2e817dd506"
+    },
+    {
+      "path": "spec/plan/c11-3-template-repeat-named-lines-areas.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/spec/plan/c11-3-template-repeat-named-lines-areas.html",
+      "bytes": 91899,
+      "sha256": "9fc33ce2490d024ca310da7b0184492b64b70f1014f8af068b020fefae77d23b"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/spec/STATUS.html",
+      "bytes": 649396,
+      "sha256": "998f284da4c3f6dd9ef3f15b728f65172a6389a64118f6b5ac89c9bbaa294f84"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-3-3-track-list-roadmap-sync-2026-10-30/pass03/STATUS.html",
+      "bytes": 649097,
+      "sha256": "b712484d3a223a94cae806fe75435392d2ce72d0f5569cee09635a36fc0f3f30"
+    }
+  ]
+}

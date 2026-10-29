@@ -1,0 +1,119 @@
+{
+  "date": "2026-10-30",
+  "session": "spinon-c1133-roadmap-sync-pass03",
+  "roadmap": {
+    "title": "스피논 구현 로드맵",
+    "heading": "스피논을 만드는 순서",
+    "card": "2026-10-30 C11.3.3 template-area fixed-px implicit track-list cycling · implementation PR #814 Rebase and merge (2026-10-29T18:48:29Z, merge SHA 4b40ffc3b16cbdde4bb3f66e3e1036ac8a3f8cd3): validated template_areas가 활성화된 RuntimeBlockFlexGridTemplateV1에서만 non-empty fixed-px grid-auto-rows/grid-auto-columns 목록으로 area-created positive implicit tracks를 축별 순환한다. 이후 지원되는 positive named implicit-line 배치는 area가 소비한 목록 위상을 이어간다. 기존 31 scene에 6 scene을 추가한 37 scene·118 node 행렬을 Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 통과했다. 양 플랫폼 visible frame 116개의 최대 geometry 오차는 0 CSS px, cycle 장면 표본은 PixelCopy와 compositor 제출 전 Metal drawable에서 각각 28/28 exact다. 기본 spinon-ffi static archive에는 전용 fixture export/payload가 없고 opt-in positive control에는 3개 export와 scene payload가 있다. PR에 required check 설정이나 check run은 보고되지 않았다. numeric implicit placement, backward/negative sizing, non-px list, Spinon WPT 적합성, 실기기/hardware GPU 및 iOS compositor 이후 pixel은 미검증이다. C11.3.3 candidate와 C11 checkbox는 미완료이며 공식 72/213을 유지한다. track-list 계획 · 내부 계약 0059 · 구현·runtime 근거 · Android AVD · iOS Simulator · 공식 상태.",
+    "hrefs": [
+      {
+        "text": "PR #814 Rebase and merge",
+        "href": "https://github.com/ohah/spinon/pull/814"
+      },
+      {
+        "text": "track-list 계획",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-3-3-template-area-track-list-cycling.html"
+      },
+      {
+        "text": "내부 계약 0059",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html"
+      },
+      {
+        "text": "구현·runtime 근거",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-template-area-track-list-cycling-implementation-2026-10-30/README.html"
+      },
+      {
+        "text": "Android AVD",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html"
+      },
+      {
+        "text": "iOS Simulator",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/README.html"
+      },
+      {
+        "text": "공식 상태",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8"
+      }
+    ]
+  },
+  "status": {
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "count72of213": true,
+    "mergeSha": true,
+    "checks": [
+      {
+        "label": "C11 CSS Grid — explicit/implicit track, repeat·named lines/areas, auto placement, minmax·fit-content, spanning·fractional tracks와 정렬을 단계별 구현한다. C11.1 Chrome 154의 10 scene·40 node r",
+        "checked": false
+      },
+      {
+        "label": "C11.3 repeat()·named line·template areas — C11.3.1은 현재 track-size subset의 양의 정수 repeat() 확장, N+1 line-name metadata, seam 병합, grid-template/grid track shorthand 경로와 unsupported are",
+        "checked": false
+      },
+      {
+        "label": "C11.3.3 template areas candidate — Stylo typed area를 sparse owned rectangles로 보존하고 named area/alias를 numeric Grid placement로 해석한다. Chrome 154/WPT oracle inventory는 26 scene·65 node",
+        "checked": false
+      }
+    ],
+    "noteVisible": true
+  },
+  "plan": {
+    "title": "C11.3.3 · template-area implicit track-list cycling - 스피논 문서",
+    "mergeSha": true,
+    "count72of213": true,
+    "tailnetSyncDated": true,
+    "status": "상태: 계획 PR과 구현 PR #814이 Rebase and merge로 병합됐다(2026-10-29T18:48:29Z, merge SHA 4b40ffc3b16cbdde4bb3f66e3e1036ac8a3f8cd3). 이 bounded behavior를 내부 계약·상태 대장·공개 로드맵에 반영했고 Tailnet 미리보기도 2026-10-30에 갱신했다. C11.3.3·C11은 계속 미완료이며 공식 완료 수는 72/213 그대로다.\n\n#\n결손\n\n기존 C11.3.3 area 확장은 area 행·열 수가 authored template track보다 많으면 부족한 track을 생성한다. 이 제한 profile은 grid-auto-rows·grid-auto-columns의 단일 auto 또는 px 값만 연결하고, fixed-px track-size 목"
+  },
+  "implementation_evidence": {
+    "title": "C11.3.3 template-area track-list cycling implementation evidence - 스피논 문서",
+    "runtimeCount": true,
+    "pixelCounts": true,
+    "links": [
+      {
+        "text": "C11.3.3 Grid template areas Android runtime matrix",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/README.html"
+      },
+      {
+        "text": "C11.3.3 implicit track-list cycling · Chrome precomparison",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html"
+      },
+      {
+        "text": "fixture, observation, independent expected values",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/README.html"
+      },
+      {
+        "text": "screen capture",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/android-avd-c1133-matrix-20261029T183746529Z-702554bb/android-track-list-cycle-screen.png"
+      },
+      {
+        "text": "screen capture",
+        "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-30/ios-simulator-c1133-ios-matrix-20261029T183927099Z-83fc5f15/ios-track-list-cycle-screen.png"
+      }
+    ]
+  },
+  "android_image": {
+    "title": "android-track-list-cycle-screen.png (1080×2400)",
+    "images": [
+      {
+        "complete": true,
+        "naturalWidth": 1080,
+        "naturalHeight": 2400
+      }
+    ]
+  },
+  "ios_image": {
+    "title": "ios-track-list-cycle-screen.png (1206×2622)",
+    "images": [
+      {
+        "complete": true,
+        "naturalWidth": 1206,
+        "naturalHeight": 2622
+      }
+    ]
+  },
+  "screenshots": [
+    "tailnet-roadmap-agent-browser-pass03.png",
+    "tailnet-status-c11-agent-browser-pass03.png"
+  ],
+  "browser_closed": true,
+  "process_check": "ps -axo pid=,args= | rg [a]gent-browser returned no processes"
+}
