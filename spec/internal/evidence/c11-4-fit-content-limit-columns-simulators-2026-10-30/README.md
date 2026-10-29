@@ -1,6 +1,6 @@
 # C11.4 `fit-content()` column limit simulator evidence
 
-**상태 · 2026-10-30:** C11.4의 제한 opt-in column-axis runtime slice다. 공식 C11.4/C11 완료가 아니며 공식 완료 수 `72/213`을 바꾸지 않는다. 계획 PR #810은 병합됐고 runtime 구현/시뮬레이터 검증은 끝났으며 runtime PR/병합 상태 처리가 남아 있다.
+**상태 · 2026-10-30:** C11.4의 제한 opt-in column-axis runtime slice다. 공식 C11.4/C11 완료가 아니며 공식 완료 수 `72/213`을 바꾸지 않는다. 계획 PR #810과 구현 PR [#811](https://github.com/ohah/spinon/pull/811)은 모두 병합됐다. 구현 PR merge SHA는 `8b2e3088c84ae4a3df1fd56c9e75eba150ce1f59`이며 check rollup 및 main required status check 조회는 비어 있었다.
 
 ## 비교 입력과 기대값
 
@@ -39,6 +39,7 @@ The complete 4-scene capture is in [the iOS Simulator run](./ios-simulator-c114-
 ## Screenshots and hashes
 
 The separate [20-point PR diff review](./pr-diff-review-20.md) and [30-point adversarial PR review](./pr-adversarial-review-30.md) cover the submitted change surface. Neither review changes the official C11.4 status.
+The [30-point post-merge status and roadmap review](./post-merge-roadmap-review-30.md) checks the merged PR record and preserves the same incomplete C11.4/C11 boundary.
 
 The PNGs are simulator screenshots. They are useful for visual review; geometry and color assertions come from the runtime logs and PixelCopy/Metal drawable matrices above.
 

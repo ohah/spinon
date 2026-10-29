@@ -1,0 +1,65 @@
+{
+  "dateKst": "2026-10-30",
+  "method": "Agent Browser rendered Chromium session; terminal-browser was not used",
+  "session": "spinon-roadmap-c114-20261030",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=c11-4-column-roadmap-2026-10-30",
+      "title": "스피논 구현 로드맵",
+      "checks": {
+        "pr811Visible": true,
+        "mergeShaVisible": true,
+        "officialCount72of213Visible": true,
+        "c11IncompleteLimitVisible": true
+      },
+      "screenshot": "tailnet-roadmap-c114-pr811.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html?sync=c11-4-column-roadmap-2026-10-30",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checks": {
+        "officialCount72of213Visible": true,
+        "c114CheckboxChecked": false,
+        "pr811Visible": true
+      },
+      "screenshot": "tailnet-status-c114-checkbox.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-fit-content-column-axis.html?sync=c11-4-column-roadmap-2026-10-30",
+      "title": "C11.4 · fit-content() intrinsic limit 열 축 후속 계획 - 스피논 문서",
+      "checks": {
+        "pr811Visible": true,
+        "mergeShaVisible": true,
+        "officialCount72of213Visible": true,
+        "stalePendingOrUnmergedText": false
+      },
+      "screenshot": "tailnet-plan-c114.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.html?sync=c11-4-column-roadmap-2026-10-30",
+      "title": "C11.4 fit-content() column limit simulator evidence - 스피논 문서",
+      "checks": {
+        "pr811Visible": true,
+        "officialCount72of213Visible": true,
+        "stalePendingOrUnmergedText": false
+      },
+      "images": [
+        {
+          "alt": "Android AVD 40px fit-content column",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/column-fit-content-40.c1c49f20d6.png",
+          "complete": true,
+          "naturalWidth": 1080,
+          "naturalHeight": 2400
+        },
+        {
+          "alt": "iOS Simulator 40px fit-content column",
+          "url": "https://macstudio.tailed42f2.ts.net/spinon/static/image/column-fit-content-40.d2a5100bc0.png",
+          "complete": true,
+          "naturalWidth": 1206,
+          "naturalHeight": 2622
+        }
+      ],
+      "screenshot": "tailnet-evidence-screenshots-c114.png"
+    }
+  ]
+}

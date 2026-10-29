@@ -1,0 +1,1066 @@
+{
+  "sourceCommit": "8b2e3088c84ae4a3df1fd56c9e75eba150ce1f59",
+  "selectedRoot": "build/spinon/c11-4-fit-content-column-roadmap-root-20261030",
+  "outputRoot": "build/spinon/c11-4-fit-content-column-roadmap-site-20261030",
+  "sourcePaths": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "spec/internal/0059-c11-grid-layout.md",
+    "plan/c11-4-fit-content-column-axis.md",
+    "plan/c11-4-fit-content-column-axis-plan-review-20.md",
+    "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30",
+    "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30"
+  ],
+  "fileCount": 173,
+  "totalBytes": 6039873,
+  "noDeletes": true,
+  "entries": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 520009,
+      "sha256": "6d400afad892eacf8cd101b09f6130191b2e5f7b0880c204b1cd409e2a263a37"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 520009,
+      "sha256": "6d400afad892eacf8cd101b09f6130191b2e5f7b0880c204b1cd409e2a263a37"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 401214,
+      "sha256": "18cf11a97a824fbfef4638397147006ead29bcd3a405d56f16f6a0a71b266e40"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 401214,
+      "sha256": "18cf11a97a824fbfef4638397147006ead29bcd3a405d56f16f6a0a71b266e40"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 213958,
+      "sha256": "d95b21d6caa3f264bcca80cec6f8cce654409971e092cb60fc055104ab6c2e8d"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 213958,
+      "sha256": "d95b21d6caa3f264bcca80cec6f8cce654409971e092cb60fc055104ab6c2e8d"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 213958,
+      "sha256": "d95b21d6caa3f264bcca80cec6f8cce654409971e092cb60fc055104ab6c2e8d"
+    },
+    {
+      "source": "plan/c11-4-fit-content-column-axis.md",
+      "path": "plan/c11-4-fit-content-column-axis.md",
+      "bytes": 5528,
+      "sha256": "9d7d9f1fad5b9b7858e0e251d9659dcff36aea83833ee5fa318094ad4adc9f47"
+    },
+    {
+      "source": "plan/c11-4-fit-content-column-axis.md",
+      "path": "spec/plan/c11-4-fit-content-column-axis.md",
+      "bytes": 5528,
+      "sha256": "9d7d9f1fad5b9b7858e0e251d9659dcff36aea83833ee5fa318094ad4adc9f47"
+    },
+    {
+      "source": "plan/c11-4-fit-content-column-axis-plan-review-20.md",
+      "path": "plan/c11-4-fit-content-column-axis-plan-review-20.md",
+      "bytes": 5058,
+      "sha256": "89ee40bccca81baa148c3fe4960053d84583daca2cef7f51d721bef5afbd2f12"
+    },
+    {
+      "source": "plan/c11-4-fit-content-column-axis-plan-review-20.md",
+      "path": "spec/plan/c11-4-fit-content-column-axis-plan-review-20.md",
+      "bytes": 5058,
+      "sha256": "89ee40bccca81baa148c3fe4960053d84583daca2cef7f51d721bef5afbd2f12"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "bytes": 3883,
+      "sha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "path": "public/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "bytes": 3883,
+      "sha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "bytes": 3883,
+      "sha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "bytes": 3733,
+      "sha256": "1d89f2455b9e237c0e0e8c6a4c9182e40443cd0a84990ade3b6125c2d0f8ec70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "path": "public/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "bytes": 3733,
+      "sha256": "1d89f2455b9e237c0e0e8c6a4c9182e40443cd0a84990ade3b6125c2d0f8ec70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "bytes": 3733,
+      "sha256": "1d89f2455b9e237c0e0e8c6a4c9182e40443cd0a84990ade3b6125c2d0f8ec70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "bytes": 4501,
+      "sha256": "24ab1ac54321029591669dcbb6724541b079d6b23d3439371576ddb31d244ea1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "bytes": 4501,
+      "sha256": "24ab1ac54321029591669dcbb6724541b079d6b23d3439371576ddb31d244ea1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.md",
+      "bytes": 4501,
+      "sha256": "24ab1ac54321029591669dcbb6724541b079d6b23d3439371576ddb31d244ea1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "bytes": 1654,
+      "sha256": "251764d60b7574967843373ed3f383c42bbfc55cf23307db8fd7b30e56a21773"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "bytes": 1654,
+      "sha256": "251764d60b7574967843373ed3f383c42bbfc55cf23307db8fd7b30e56a21773"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md",
+      "bytes": 1654,
+      "sha256": "251764d60b7574967843373ed3f383c42bbfc55cf23307db8fd7b30e56a21773"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "bytes": 6418,
+      "sha256": "2cc23ffa332315c1a91629a65bc507a06532938767ad55cdc7cabd8684ad36d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "bytes": 6418,
+      "sha256": "2cc23ffa332315c1a91629a65bc507a06532938767ad55cdc7cabd8684ad36d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md",
+      "bytes": 6418,
+      "sha256": "2cc23ffa332315c1a91629a65bc507a06532938767ad55cdc7cabd8684ad36d3"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "bytes": 4565,
+      "sha256": "daab8ab62568a8e443355cfced61151f8074694d94b1d7848df31db0b2cb728f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "bytes": 4565,
+      "sha256": "daab8ab62568a8e443355cfced61151f8074694d94b1d7848df31db0b2cb728f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "bytes": 4565,
+      "sha256": "daab8ab62568a8e443355cfced61151f8074694d94b1d7848df31db0b2cb728f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "bytes": 65114,
+      "sha256": "06884b2ed71491d51552c1b8a20fedd34712669e5cc0ad900da66672c26238ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "bytes": 65114,
+      "sha256": "06884b2ed71491d51552c1b8a20fedd34712669e5cc0ad900da66672c26238ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "bytes": 65114,
+      "sha256": "06884b2ed71491d51552c1b8a20fedd34712669e5cc0ad900da66672c26238ec"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "bytes": 254,
+      "sha256": "2b1452f0175a74a504a69831a487c923d3f3e0da8f758b368f51406c1ecbbb7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "bytes": 254,
+      "sha256": "2b1452f0175a74a504a69831a487c923d3f3e0da8f758b368f51406c1ecbbb7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "bytes": 254,
+      "sha256": "2b1452f0175a74a504a69831a487c923d3f3e0da8f758b368f51406c1ecbbb7c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "bytes": 9808,
+      "sha256": "f119c876dfd207ac3caa1534d4bf2642e296c02910c0747a8ccda439a7e768f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "bytes": 9808,
+      "sha256": "f119c876dfd207ac3caa1534d4bf2642e296c02910c0747a8ccda439a7e768f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "bytes": 9808,
+      "sha256": "f119c876dfd207ac3caa1534d4bf2642e296c02910c0747a8ccda439a7e768f4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "bytes": 4282,
+      "sha256": "0d551f909d2418975297e3fb9f63c4cf24b91ee4980a330fc2e17bb875691e5f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "bytes": 4282,
+      "sha256": "0d551f909d2418975297e3fb9f63c4cf24b91ee4980a330fc2e17bb875691e5f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "bytes": 4282,
+      "sha256": "0d551f909d2418975297e3fb9f63c4cf24b91ee4980a330fc2e17bb875691e5f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "bytes": 62,
+      "sha256": "c663462ee6e8bd687c13f4f43386d516f3f0bb8fc1cb3522d98b83bf3664d8fd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "bytes": 62,
+      "sha256": "c663462ee6e8bd687c13f4f43386d516f3f0bb8fc1cb3522d98b83bf3664d8fd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "bytes": 62,
+      "sha256": "c663462ee6e8bd687c13f4f43386d516f3f0bb8fc1cb3522d98b83bf3664d8fd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "bytes": 1548,
+      "sha256": "059e3a08601dfc48be7a355df5d9e11586c59f3d35f9592a601f509cdb2c601e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "bytes": 1548,
+      "sha256": "059e3a08601dfc48be7a355df5d9e11586c59f3d35f9592a601f509cdb2c601e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.md",
+      "bytes": 1548,
+      "sha256": "059e3a08601dfc48be7a355df5d9e11586c59f3d35f9592a601f509cdb2c601e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "bytes": 1731,
+      "sha256": "db779908c967fd6adb1264897cb3eda4ce34b2fcdbab6a71fd261a1f341b19a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "bytes": 1731,
+      "sha256": "db779908c967fd6adb1264897cb3eda4ce34b2fcdbab6a71fd261a1f341b19a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "bytes": 1731,
+      "sha256": "db779908c967fd6adb1264897cb3eda4ce34b2fcdbab6a71fd261a1f341b19a6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "bytes": 5743,
+      "sha256": "ec39a3abcfaf09880676d9031f699fd8044753b63fbaf76933e7aa389f20e12c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "bytes": 5743,
+      "sha256": "ec39a3abcfaf09880676d9031f699fd8044753b63fbaf76933e7aa389f20e12c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md",
+      "bytes": 5743,
+      "sha256": "ec39a3abcfaf09880676d9031f699fd8044753b63fbaf76933e7aa389f20e12c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "bytes": 4972,
+      "sha256": "5d77e171909de042cf87da63d7fdb811fb3d063020decaca2316b790f4159b8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "bytes": 4972,
+      "sha256": "5d77e171909de042cf87da63d7fdb811fb3d063020decaca2316b790f4159b8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.md",
+      "bytes": 4972,
+      "sha256": "5d77e171909de042cf87da63d7fdb811fb3d063020decaca2316b790f4159b8e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "bytes": 5460,
+      "sha256": "619232eef4ee3d199dc82895f50a18d4b48f1a5c17438f377c956d7478f818e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "bytes": 5460,
+      "sha256": "619232eef4ee3d199dc82895f50a18d4b48f1a5c17438f377c956d7478f818e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.md",
+      "bytes": 5460,
+      "sha256": "619232eef4ee3d199dc82895f50a18d4b48f1a5c17438f377c956d7478f818e9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "bytes": 4549,
+      "sha256": "0e1b51b8b812de84b07b574ee40e5b2d2093839954c939f8718d863c42ec3e91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "bytes": 4549,
+      "sha256": "0e1b51b8b812de84b07b574ee40e5b2d2093839954c939f8718d863c42ec3e91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.md",
+      "bytes": 4549,
+      "sha256": "0e1b51b8b812de84b07b574ee40e5b2d2093839954c939f8718d863c42ec3e91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 77142,
+      "sha256": "7309b372520afcf32a06a110b40155f7961b71f87b0f361fa75769587c7beb8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 77142,
+      "sha256": "7309b372520afcf32a06a110b40155f7961b71f87b0f361fa75769587c7beb8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 77142,
+      "sha256": "7309b372520afcf32a06a110b40155f7961b71f87b0f361fa75769587c7beb8b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 77126,
+      "sha256": "13a3e5a8cc00b18cbad01d42d0a1489964e8b2c4605659a2eaca111246e899af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 77126,
+      "sha256": "13a3e5a8cc00b18cbad01d42d0a1489964e8b2c4605659a2eaca111246e899af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 77126,
+      "sha256": "13a3e5a8cc00b18cbad01d42d0a1489964e8b2c4605659a2eaca111246e899af"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 76907,
+      "sha256": "2cd5b4ea3bfed58c190f048f3420a29ee87867aa039a5a6859cbbea87b52be07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 76907,
+      "sha256": "2cd5b4ea3bfed58c190f048f3420a29ee87867aa039a5a6859cbbea87b52be07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 76907,
+      "sha256": "2cd5b4ea3bfed58c190f048f3420a29ee87867aa039a5a6859cbbea87b52be07"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 77145,
+      "sha256": "72e202b4a98b2968fe662772081f1d2b44bf16b1753a9d272ee7ecfc6bee6629"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 77145,
+      "sha256": "72e202b4a98b2968fe662772081f1d2b44bf16b1753a9d272ee7ecfc6bee6629"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 77145,
+      "sha256": "72e202b4a98b2968fe662772081f1d2b44bf16b1753a9d272ee7ecfc6bee6629"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c44f4c30eda0a4b7b69c86abf6bb9640083ccb8d51f2dfa10622cb91d7aaa949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c44f4c30eda0a4b7b69c86abf6bb9640083ccb8d51f2dfa10622cb91d7aaa949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "c44f4c30eda0a4b7b69c86abf6bb9640083ccb8d51f2dfa10622cb91d7aaa949"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "bytes": 5114,
+      "sha256": "702958fb5fba53e05ddc1792a29213c4ae9b171d7a60abc38f31bf31fbe7fd82"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "bytes": 5114,
+      "sha256": "702958fb5fba53e05ddc1792a29213c4ae9b171d7a60abc38f31bf31fbe7fd82"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "bytes": 5114,
+      "sha256": "702958fb5fba53e05ddc1792a29213c4ae9b171d7a60abc38f31bf31fbe7fd82"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 27587,
+      "sha256": "03854fdf5da892b96f3005f12b659c9300a4aeaaabbb4899fd20c93f904eeeb2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 27587,
+      "sha256": "03854fdf5da892b96f3005f12b659c9300a4aeaaabbb4899fd20c93f904eeeb2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 27587,
+      "sha256": "03854fdf5da892b96f3005f12b659c9300a4aeaaabbb4899fd20c93f904eeeb2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 28301,
+      "sha256": "c9ac236d228dcbe671f87fd528124e14d9610cccd36121076c75477ea94fc462"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 28301,
+      "sha256": "c9ac236d228dcbe671f87fd528124e14d9610cccd36121076c75477ea94fc462"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 28301,
+      "sha256": "c9ac236d228dcbe671f87fd528124e14d9610cccd36121076c75477ea94fc462"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 27922,
+      "sha256": "c1ce6b909880759768449e2d0fab923ac36c606113323157cf3e7bd3f2d1aae6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 27922,
+      "sha256": "c1ce6b909880759768449e2d0fab923ac36c606113323157cf3e7bd3f2d1aae6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 27922,
+      "sha256": "c1ce6b909880759768449e2d0fab923ac36c606113323157cf3e7bd3f2d1aae6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 28758,
+      "sha256": "707e64a94bdb1edf79e5b47c4b65f1be95e30e8499daafde302fba7bb9fbbd11"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 28758,
+      "sha256": "707e64a94bdb1edf79e5b47c4b65f1be95e30e8499daafde302fba7bb9fbbd11"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 28758,
+      "sha256": "707e64a94bdb1edf79e5b47c4b65f1be95e30e8499daafde302fba7bb9fbbd11"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "bytes": 4477,
+      "sha256": "a4191ff84fd9c8782931f1dd25a49511482cdf6b77746874293b0f668d8092a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "bytes": 4477,
+      "sha256": "a4191ff84fd9c8782931f1dd25a49511482cdf6b77746874293b0f668d8092a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "bytes": 4477,
+      "sha256": "a4191ff84fd9c8782931f1dd25a49511482cdf6b77746874293b0f668d8092a2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 132950,
+      "sha256": "d769900defd00c823a1e108cfa1533b8fc8235492bb25463d58862042eed72bb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 132950,
+      "sha256": "d769900defd00c823a1e108cfa1533b8fc8235492bb25463d58862042eed72bb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "bytes": 132950,
+      "sha256": "d769900defd00c823a1e108cfa1533b8fc8235492bb25463d58862042eed72bb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 131838,
+      "sha256": "d9e57c861754a513528765d98d35e56d50f1c9e91672418341ab9cc5c8d398e2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 131838,
+      "sha256": "d9e57c861754a513528765d98d35e56d50f1c9e91672418341ab9cc5c8d398e2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "bytes": 131838,
+      "sha256": "d9e57c861754a513528765d98d35e56d50f1c9e91672418341ab9cc5c8d398e2"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 131863,
+      "sha256": "0cb928b2176d6c6275f6f4b273125a74e7579bbfd4561f3166ea554c06b383b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 131863,
+      "sha256": "0cb928b2176d6c6275f6f4b273125a74e7579bbfd4561f3166ea554c06b383b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "bytes": 131863,
+      "sha256": "0cb928b2176d6c6275f6f4b273125a74e7579bbfd4561f3166ea554c06b383b0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 132521,
+      "sha256": "cbf1438f3d5fe908d227c977dd4b31cfb20733b9d9ec6fe8a745902dac64ee3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 132521,
+      "sha256": "cbf1438f3d5fe908d227c977dd4b31cfb20733b9d9ec6fe8a745902dac64ee3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "bytes": 132521,
+      "sha256": "cbf1438f3d5fe908d227c977dd4b31cfb20733b9d9ec6fe8a745902dac64ee3b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 28,
+      "sha256": "debd166d7e9a5ab2297785913a5d673caed60cfccadaacaccaa9cabc0d1dd178"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 28,
+      "sha256": "debd166d7e9a5ab2297785913a5d673caed60cfccadaacaccaa9cabc0d1dd178"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "bytes": 28,
+      "sha256": "debd166d7e9a5ab2297785913a5d673caed60cfccadaacaccaa9cabc0d1dd178"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 28,
+      "sha256": "ea6de748397726b75bb66524e660af3f0e8c50c7c8804bdbe54bc5a137fba7c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 28,
+      "sha256": "ea6de748397726b75bb66524e660af3f0e8c50c7c8804bdbe54bc5a137fba7c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "bytes": 28,
+      "sha256": "ea6de748397726b75bb66524e660af3f0e8c50c7c8804bdbe54bc5a137fba7c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 28,
+      "sha256": "fdf323d8d5a97cbd1bcea6c378bf5c90af685ec9cac5f8806b438c6c5b78ff02"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 28,
+      "sha256": "fdf323d8d5a97cbd1bcea6c378bf5c90af685ec9cac5f8806b438c6c5b78ff02"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "bytes": 28,
+      "sha256": "fdf323d8d5a97cbd1bcea6c378bf5c90af685ec9cac5f8806b438c6c5b78ff02"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 28,
+      "sha256": "57756cac9078954349c92292c5dce9cff5b745584fd0ea710ac46753d8fac6b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 28,
+      "sha256": "57756cac9078954349c92292c5dce9cff5b745584fd0ea710ac46753d8fac6b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "bytes": 28,
+      "sha256": "57756cac9078954349c92292c5dce9cff5b745584fd0ea710ac46753d8fac6b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "bytes": 5250,
+      "sha256": "02670b537af1b045e2094087ffeb2841d5070b6e4663bc1e783fe0654db09213"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "bytes": 5250,
+      "sha256": "02670b537af1b045e2094087ffeb2841d5070b6e4663bc1e783fe0654db09213"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "bytes": 5250,
+      "sha256": "02670b537af1b045e2094087ffeb2841d5070b6e4663bc1e783fe0654db09213"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 19505,
+      "sha256": "e3b41e23fe6fe332c9ff8611fa1e68b196fe84b94bec68f1db94ecad8f95a144"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 19505,
+      "sha256": "e3b41e23fe6fe332c9ff8611fa1e68b196fe84b94bec68f1db94ecad8f95a144"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "bytes": 19505,
+      "sha256": "e3b41e23fe6fe332c9ff8611fa1e68b196fe84b94bec68f1db94ecad8f95a144"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 19893,
+      "sha256": "aee90c071cce9387fc648d5330c2a86c97ad5d68e9ba6d958d46d5bcd4530537"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 19893,
+      "sha256": "aee90c071cce9387fc648d5330c2a86c97ad5d68e9ba6d958d46d5bcd4530537"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "bytes": 19893,
+      "sha256": "aee90c071cce9387fc648d5330c2a86c97ad5d68e9ba6d958d46d5bcd4530537"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 18792,
+      "sha256": "0d8beacf5fb9d5fecf7f1f95891e917c342ae591113d749fd28fa1e2cd64a542"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 18792,
+      "sha256": "0d8beacf5fb9d5fecf7f1f95891e917c342ae591113d749fd28fa1e2cd64a542"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "bytes": 18792,
+      "sha256": "0d8beacf5fb9d5fecf7f1f95891e917c342ae591113d749fd28fa1e2cd64a542"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 20155,
+      "sha256": "a9426e193845d8a9f3d9a10771421eb4acc5cc6380469a38cf48fbb27b549f9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 20155,
+      "sha256": "a9426e193845d8a9f3d9a10771421eb4acc5cc6380469a38cf48fbb27b549f9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "bytes": 20155,
+      "sha256": "a9426e193845d8a9f3d9a10771421eb4acc5cc6380469a38cf48fbb27b549f9a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "bytes": 294,
+      "sha256": "703bdce0108126a3fb3d544621f210d547c031289cebed5b7605c0f49e4d4361"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "bytes": 294,
+      "sha256": "703bdce0108126a3fb3d544621f210d547c031289cebed5b7605c0f49e4d4361"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "bytes": 294,
+      "sha256": "703bdce0108126a3fb3d544621f210d547c031289cebed5b7605c0f49e4d4361"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "bytes": 293,
+      "sha256": "509c002047e61a54f373a1d3346c1b8c1ed8401effd508d695754910e338f672"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "bytes": 293,
+      "sha256": "509c002047e61a54f373a1d3346c1b8c1ed8401effd508d695754910e338f672"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "bytes": 293,
+      "sha256": "509c002047e61a54f373a1d3346c1b8c1ed8401effd508d695754910e338f672"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "bytes": 293,
+      "sha256": "6e0c097b8eed42421aa497fe9f25cfef59a08b16d1aca2859edb9eb50d35777e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "bytes": 293,
+      "sha256": "6e0c097b8eed42421aa497fe9f25cfef59a08b16d1aca2859edb9eb50d35777e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "bytes": 293,
+      "sha256": "6e0c097b8eed42421aa497fe9f25cfef59a08b16d1aca2859edb9eb50d35777e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "bytes": 311,
+      "sha256": "e6fdbdcb56f66fee8b117571eb7d8589488c011007b09cc4551fb218484be576"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "bytes": 311,
+      "sha256": "e6fdbdcb56f66fee8b117571eb7d8589488c011007b09cc4551fb218484be576"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "bytes": 311,
+      "sha256": "e6fdbdcb56f66fee8b117571eb7d8589488c011007b09cc4551fb218484be576"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "bytes": 4429,
+      "sha256": "7f606db99e2fd6ccc01893137725a03236c19dd9c480182c73caef96a7fc2cb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "path": "public/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "bytes": 4429,
+      "sha256": "7f606db99e2fd6ccc01893137725a03236c19dd9c480182c73caef96a7fc2cb4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "bytes": 4429,
+      "sha256": "7f606db99e2fd6ccc01893137725a03236c19dd9c480182c73caef96a7fc2cb4"
+    }
+  ]
+}

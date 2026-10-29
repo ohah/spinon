@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 growth-limit row slice](./c11-4-fit-content-limit-boundaries.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**구현 상태 · 2026-10-30:** 행 축 `fit-content()` limit slice는 PR #787로 병합됐다. 이 후속은 같은 §11.2/§11.5.1 계산의 열 축을 고정한다. Chrome 사전 비교와 독립 기대값은 [evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 계획 검토와 계획 PR diff 검토를 마치고 PR #810 병합 뒤 같은 checkout에서 네 scene 구현과 Android/iOS Simulator 검증을 마쳤다. [실행 근거](../spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md)에 남긴다. 구현과 별도 PR diff 검토를 마쳤고 PR 생성·체크·병합 처리가 남아 있다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
+**구현 상태 · 2026-10-30:** 행 축 `fit-content()` limit slice는 PR #787로 병합됐다. 이 후속은 같은 §11.2/§11.5.1 계산의 열 축을 고정한다. Chrome 사전 비교와 독립 기대값은 [evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 계획 검토와 계획 PR diff 검토를 마치고 PR #810 병합 뒤 같은 checkout에서 네 scene 구현과 Android/iOS Simulator 검증을 마쳤다. [실행 근거](../spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md)에 남긴다. 구현과 PR diff/적대 검토를 마쳤고 구현 PR [#811](https://github.com/ohah/spinon/pull/811)은 Rebase and merge로 2026-10-29T17:19:06Z 병합됐다(merge SHA `8b2e3088c84ae4a3df1fd56c9e75eba150ce1f59`). check rollup 및 required status check은 비어 있어 CI 성공으로 세지 않는다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
 
 ## 목표
 

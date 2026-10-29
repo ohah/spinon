@@ -1,0 +1,946 @@
+{
+  "selected_output_relative": "build/spinon/c11-4-fit-content-column-roadmap-site-pass02-20261030",
+  "selected_route_count": 93,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01",
+  "source_bytes_total": 7184529,
+  "backup_bytes_total": 2030683,
+  "counts": {
+    "create": 77,
+    "replace": 5,
+    "same": 11
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "404.html",
+      "status": "replace",
+      "source_bytes": 8512,
+      "source_sha256": "3f588ba22b026a4517f9d63ed454aa007a00372c64ddb62c4d7c34e7e89c9019",
+      "target_exists": true,
+      "previous_bytes": 8512,
+      "previous_sha256": "3b283852c65114636871be39e96961fdd85baa2c81b3200a8a47153b5427c000",
+      "backup_path": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01/404.html"
+    },
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "source_bytes": 312066,
+      "source_sha256": "02a8bc850b6f5cea6a448dc848039df310aa9a2c065039be1f5465f0f47f23d8",
+      "target_exists": true,
+      "previous_bytes": 318749,
+      "previous_sha256": "d87efeaccb54b2f3ba94bc1eccf2fbdb13781d15058719f5ec9b5344b7518e34",
+      "backup_path": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/chrome156-fit-content-columns.png",
+      "status": "create",
+      "source_bytes": 3883,
+      "source_sha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/expected.json",
+      "status": "create",
+      "source_bytes": 3733,
+      "source_sha256": "1d89f2455b9e237c0e0e8c6a4c9182e40443cd0a84990ade3b6125c2d0f8ec70",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/plan-pr-diff-review-20.html",
+      "status": "create",
+      "source_bytes": 29096,
+      "source_sha256": "1661c2114c5499223bd5a1547bab450225300f4bfa0eaf34fcbb80e92e6cb3dc",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.html",
+      "status": "create",
+      "source_bytes": 27150,
+      "source_sha256": "cbdcbb1f9335997632f7a4a13eb0412215189ae018eb847ce0e77fc7f2b25c31",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-200.png",
+      "status": "create",
+      "source_bytes": 77142,
+      "source_sha256": "7309b372520afcf32a06a110b40155f7961b71f87b0f361fa75769587c7beb8b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-30.png",
+      "status": "create",
+      "source_bytes": 77126,
+      "source_sha256": "13a3e5a8cc00b18cbad01d42d0a1489964e8b2c4605659a2eaca111246e899af",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-40.png",
+      "status": "create",
+      "source_bytes": 76907,
+      "source_sha256": "2cd5b4ea3bfed58c190f048f3420a29ee87867aa039a5a6859cbbea87b52be07",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "status": "create",
+      "source_bytes": 77145,
+      "source_sha256": "72e202b4a98b2968fe662772081f1d2b44bf16b1753a9d272ee7ecfc6bee6629",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/install.log",
+      "status": "create",
+      "source_bytes": 36,
+      "source_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/installed-apk-verification.json",
+      "status": "create",
+      "source_bytes": 360,
+      "source_sha256": "c44f4c30eda0a4b7b69c86abf6bb9640083ccb8d51f2dfa10622cb91d7aaa949",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-200.log",
+      "status": "create",
+      "source_bytes": 119,
+      "source_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-30.log",
+      "status": "create",
+      "source_bytes": 119,
+      "source_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-40.log",
+      "status": "create",
+      "source_bytes": 119,
+      "source_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "status": "create",
+      "source_bytes": 119,
+      "source_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/result.json",
+      "status": "create",
+      "source_bytes": 5114,
+      "source_sha256": "702958fb5fba53e05ddc1792a29213c4ae9b171d7a60abc38f31bf31fbe7fd82",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-200.log",
+      "status": "create",
+      "source_bytes": 27587,
+      "source_sha256": "03854fdf5da892b96f3005f12b659c9300a4aeaaabbb4899fd20c93f904eeeb2",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-30.log",
+      "status": "create",
+      "source_bytes": 28301,
+      "source_sha256": "c9ac236d228dcbe671f87fd528124e14d9610cccd36121076c75477ea94fc462",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-40.log",
+      "status": "create",
+      "source_bytes": 27922,
+      "source_sha256": "c1ce6b909880759768449e2d0fab923ac36c606113323157cf3e7bd3f2d1aae6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "status": "create",
+      "source_bytes": 28758,
+      "source_sha256": "707e64a94bdb1edf79e5b47c4b65f1be95e30e8499daafde302fba7bb9fbbd11",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-avd-c114-fit-content-limit-columns-android-avd-final-2026-10-30/simulator.json",
+      "status": "create",
+      "source_bytes": 4477,
+      "source_sha256": "a4191ff84fd9c8782931f1dd25a49511482cdf6b77746874293b0f668d8092a2",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/android-build.log",
+      "status": "create",
+      "source_bytes": 4565,
+      "source_sha256": "daab8ab62568a8e443355cfced61151f8074694d94b1d7848df31db0b2cb728f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-build.log",
+      "status": "create",
+      "source_bytes": 254,
+      "source_sha256": "2b1452f0175a74a504a69831a487c923d3f3e0da8f758b368f51406c1ecbbb7c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-marker-scan.txt",
+      "status": "create",
+      "source_bytes": 9808,
+      "source_sha256": "f119c876dfd207ac3caa1534d4bf2642e296c02910c0747a8ccda439a7e768f4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/fixture-test-symbol-scan.txt",
+      "status": "create",
+      "source_bytes": 4282,
+      "source_sha256": "0d551f909d2418975297e3fb9f63c4cf24b91ee4980a330fc2e17bb875691e5f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-build.log",
+      "status": "create",
+      "source_bytes": 62,
+      "source_sha256": "c663462ee6e8bd687c13f4f43386d516f3f0bb8fc1cb3522d98b83bf3664d8fd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-marker-scan.txt",
+      "status": "create",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/product-symbol-scan.txt",
+      "status": "create",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/README.html",
+      "status": "create",
+      "source_bytes": 29013,
+      "source_sha256": "0f3bff9fdc907abb8013294e9ec2b869ac60b4ffeeb61c67a796b925a855c146",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/archive-boundary/result.json",
+      "status": "create",
+      "source_bytes": 1731,
+      "source_sha256": "db779908c967fd6adb1264897cb3eda4ce34b2fcdbab6a71fd261a1f341b19a6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.html",
+      "status": "create",
+      "source_bytes": 31020,
+      "source_sha256": "df243a1f96296b209fbf42cee62b075637a40e7909c1d843b3d33f26ef44f8bb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-build.log",
+      "status": "create",
+      "source_bytes": 65114,
+      "source_sha256": "06884b2ed71491d51552c1b8a20fedd34712669e5cc0ad900da66672c26238ec",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-200.png",
+      "status": "create",
+      "source_bytes": 132950,
+      "source_sha256": "d769900defd00c823a1e108cfa1533b8fc8235492bb25463d58862042eed72bb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-30.png",
+      "status": "create",
+      "source_bytes": 131838,
+      "source_sha256": "d9e57c861754a513528765d98d35e56d50f1c9e91672418341ab9cc5c8d398e2",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-40.png",
+      "status": "create",
+      "source_bytes": 131863,
+      "source_sha256": "0cb928b2176d6c6275f6f4b273125a74e7579bbfd4561f3166ea554c06b383b0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/column-fit-content-auto-minimum-control.png",
+      "status": "create",
+      "source_bytes": 132521,
+      "source_sha256": "cbf1438f3d5fe908d227c977dd4b31cfb20733b9d9ec6fe8a745902dac64ee3b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/install.log",
+      "status": "create",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-200.log",
+      "status": "create",
+      "source_bytes": 28,
+      "source_sha256": "debd166d7e9a5ab2297785913a5d673caed60cfccadaacaccaa9cabc0d1dd178",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-30.log",
+      "status": "create",
+      "source_bytes": 28,
+      "source_sha256": "ea6de748397726b75bb66524e660af3f0e8c50c7c8804bdbe54bc5a137fba7c6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-40.log",
+      "status": "create",
+      "source_bytes": 28,
+      "source_sha256": "fdf323d8d5a97cbd1bcea6c378bf5c90af685ec9cac5f8806b438c6c5b78ff02",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/launch-column-fit-content-auto-minimum-control.log",
+      "status": "create",
+      "source_bytes": 28,
+      "source_sha256": "57756cac9078954349c92292c5dce9cff5b745584fd0ea710ac46753d8fac6b4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/result.json",
+      "status": "create",
+      "source_bytes": 5250,
+      "source_sha256": "02670b537af1b045e2094087ffeb2841d5070b6e4663bc1e783fe0654db09213",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-200.log",
+      "status": "create",
+      "source_bytes": 19505,
+      "source_sha256": "e3b41e23fe6fe332c9ff8611fa1e68b196fe84b94bec68f1db94ecad8f95a144",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-30.log",
+      "status": "create",
+      "source_bytes": 19893,
+      "source_sha256": "aee90c071cce9387fc648d5330c2a86c97ad5d68e9ba6d958d46d5bcd4530537",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-40.log",
+      "status": "create",
+      "source_bytes": 18792,
+      "source_sha256": "0d8beacf5fb9d5fecf7f1f95891e917c342ae591113d749fd28fa1e2cd64a542",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/runtime-column-fit-content-auto-minimum-control.log",
+      "status": "create",
+      "source_bytes": 20155,
+      "source_sha256": "a9426e193845d8a9f3d9a10771421eb4acc5cc6380469a38cf48fbb27b549f9a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-200.log",
+      "status": "create",
+      "source_bytes": 294,
+      "source_sha256": "703bdce0108126a3fb3d544621f210d547c031289cebed5b7605c0f49e4d4361",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-30.log",
+      "status": "create",
+      "source_bytes": 293,
+      "source_sha256": "509c002047e61a54f373a1d3346c1b8c1ed8401effd508d695754910e338f672",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-40.log",
+      "status": "create",
+      "source_bytes": 293,
+      "source_sha256": "6e0c097b8eed42421aa497fe9f25cfef59a08b16d1aca2859edb9eb50d35777e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/screenshot-column-fit-content-auto-minimum-control.log",
+      "status": "create",
+      "source_bytes": 311,
+      "source_sha256": "e6fdbdcb56f66fee8b117571eb7d8589488c011007b09cc4551fb218484be576",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/ios-simulator-c114-fit-content-limit-columns-ios-simulator-final-2026-10-30/simulator.json",
+      "status": "create",
+      "source_bytes": 4429,
+      "source_sha256": "7f606db99e2fd6ccc01893137725a03236c19dd9c480182c73caef96a7fc2cb4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/post-merge-roadmap-review-30.html",
+      "status": "create",
+      "source_bytes": 29866,
+      "source_sha256": "eb431e95bb6927a2ff65c45cac0d4470b5c18d6ae292b04af08fde274ae5e4b3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-adversarial-review-30.html",
+      "status": "create",
+      "source_bytes": 30758,
+      "source_sha256": "09c4b592db2c30e78f3c1ebd7e51fa5adfebd79b37fc89c9171719ff171f0460",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/pr-diff-review-20.html",
+      "status": "create",
+      "source_bytes": 29985,
+      "source_sha256": "1b4b196577c9d340cf0093bf874e09d03c086cd53c220d4b1d756f4456c1be77",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.html",
+      "status": "create",
+      "source_bytes": 34185,
+      "source_sha256": "353e065ee85862baf68f0b660d3b7fa8f618f8fe9d8e2b71d599897c32e79705",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-fit-content-column-axis-plan-review-20.html",
+      "status": "create",
+      "source_bytes": 30001,
+      "source_sha256": "369b4309a91251e36ed7707208b5aec149c6bd359a57c9b8c96706137cf6844f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-fit-content-column-axis.html",
+      "status": "create",
+      "source_bytes": 32330,
+      "source_sha256": "7a14a773e6eff9b28060744aac479fcd5e26daf493ff74f9d285fce6cc404015",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "source_bytes": 401214,
+      "source_sha256": "18cf11a97a824fbfef4638397147006ead29bcd3a405d56f16f6a0a71b266e40",
+      "target_exists": true,
+      "previous_bytes": 398806,
+      "previous_sha256": "07993523b1374fe5fce9b4649e3f14faa072d09043129430234d5add0be51eb1",
+      "backup_path": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "source_bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_exists": true,
+      "previous_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-fit-content-column-axis-plan-review-20.html",
+      "status": "create",
+      "source_bytes": 29976,
+      "source_sha256": "d6593fa846aea85cc3122cb161748938cd37028b2874c94bf7e7304cded1773c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-fit-content-column-axis.html",
+      "status": "create",
+      "source_bytes": 32251,
+      "source_sha256": "75c35403de17980e6b777dec0c9c9b2de62ee81e6f385481840319519ab3148c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "source_bytes": 646124,
+      "source_sha256": "605a9c9aa7400642670b1e9ed523e095af9780fafb284f064ba81e81c97f7bb7",
+      "target_exists": true,
+      "previous_bytes": 652608,
+      "previous_sha256": "c0ab6cbcfab480ca2928d625e90413293e07eb7c923d899a78f3ad017b212a26",
+      "backup_path": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01/spec/STATUS.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/column-fit-content-40.c1c49f20d6.png",
+      "status": "create",
+      "source_bytes": 76907,
+      "source_sha256": "2cd5b4ea3bfed58c190f048f3420a29ee87867aa039a5a6859cbbea87b52be07",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/image/column-fit-content-40.d2a5100bc0.png",
+      "status": "create",
+      "source_bytes": 131863,
+      "source_sha256": "0cb928b2176d6c6275f6f4b273125a74e7579bbfd4561f3166ea554c06b383b0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "status": "same",
+      "source_bytes": 217061,
+      "source_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "target_exists": true,
+      "previous_bytes": 217061,
+      "previous_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "status": "same",
+      "source_bytes": 98,
+      "source_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "target_exists": true,
+      "previous_bytes": 98,
+      "previous_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-084fe3db79dd.bef0cc5975.js",
+      "status": "create",
+      "source_bytes": 10699,
+      "source_sha256": "913e6c3702047a38d9a8f89f6747a79e5dc903cb16263dd37c5c125bfc10d6d3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2b32bc5950c8.449030b0e0.js",
+      "status": "create",
+      "source_bytes": 10708,
+      "source_sha256": "1b59f47fe2e566db940a06f207eea0c08e3e5c076756d696e28dfe2a8cf2493e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-370c6c44e5e6.78c290da88.js",
+      "status": "create",
+      "source_bytes": 13349,
+      "source_sha256": "6827804a16a9ddd8d6d0a361a3f1741f4968a5d0578c72574a56ce6cfc5b6fa8",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3fbe3d593809.6c897cf1ca.js",
+      "status": "create",
+      "source_bytes": 3049,
+      "source_sha256": "79c1b694fa715cec8735d98cff5a6436ff8677f1131aa89c681ab18a5613d11e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3fcf1a67642c.f38bc6bf2d.js",
+      "status": "create",
+      "source_bytes": 10478,
+      "source_sha256": "64022b219c0c1517313810c1b9d6489a0ff0ddcf20ddf869ddcdfc279d666816",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-4bce01c9a824.2cf81c3da6.js",
+      "status": "create",
+      "source_bytes": 11260,
+      "source_sha256": "8066dab8b43d0801efab4f91e2c1b3366b37c23d87ecfd294908b638a92575d1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-5462289fc89d.5a2740ba30.js",
+      "status": "create",
+      "source_bytes": 10615,
+      "source_sha256": "4696167472a7c0490047856c0df0d94b7a4ef747dd6b83d568c36d846966fe80",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.920fdf2d33.js",
+      "status": "create",
+      "source_bytes": 690567,
+      "source_sha256": "04d43bf2ccd2895247e9d053ea5dc9d324de095544ed63de7c8011dee63e8123",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6e6bed61d5ae.65cb9d2915.js",
+      "status": "create",
+      "source_bytes": 9775,
+      "source_sha256": "9ec260eee4607d57ed469a3348ec04c87926cde417ef1c3722d0780174a0f727",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-79a057ac8e92.7e879ae7c6.js",
+      "status": "create",
+      "source_bytes": 11462,
+      "source_sha256": "8607c2febf66c189b68d39f1ec1803c9dab0a5ad4cadb0a4a75a82339f5b9327",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.1ef41db6bf.js",
+      "status": "create",
+      "source_bytes": 690513,
+      "source_sha256": "899560de07797764c80e226852ca04f48fd06acc36f42d4aff3fb0efd20cd6f8",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-8c428056efd6.11f2b9cfdf.js",
+      "status": "create",
+      "source_bytes": 10486,
+      "source_sha256": "ceb7cf454d90e087b48e157ff0bd27809cd320e6ea73d1829cc0e7d87fbf163e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b0078b05532d.751dcc7978.js",
+      "status": "create",
+      "source_bytes": 6208,
+      "source_sha256": "d65a93d624c8e0ee10b9b49bdf8b27bcd7a204c0bf1d1470b8a2c76ee66d5b10",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.a537089baa.js",
+      "status": "create",
+      "source_bytes": 310099,
+      "source_sha256": "8298ec00d9ba037b7a773d2f86ab65696883285d5bb75a0dd866f85ec6f79fd0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d922029d474f.55d97fc6ea.js",
+      "status": "create",
+      "source_bytes": 9865,
+      "source_sha256": "cba989d9bcf55f8b5f76555803a5b30e97a94b59cb529175dd97225be2618dbd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.06c5944c9b.js",
+      "status": "create",
+      "source_bytes": 50490,
+      "source_sha256": "ac39d9c5a9601d29534624ff1a7df05d5654bf9215f7aff3703ca6fdb848173c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": "same",
+      "source_bytes": 218366,
+      "source_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "target_exists": true,
+      "previous_bytes": 218366,
+      "previous_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": "same",
+      "source_bytes": 35366,
+      "source_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "target_exists": true,
+      "previous_bytes": 35366,
+      "previous_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "status": "same",
+      "source_bytes": 471,
+      "source_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "target_exists": true,
+      "previous_bytes": 471,
+      "previous_sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.2cb11e2b.json",
+      "status": "create",
+      "source_bytes": 1040835,
+      "source_sha256": "2cb11e2b838771997e949e65cc29e64a16547bbdfee874eb3e0a14fce5816aac",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 645870,
+      "source_sha256": "6952ae9bb3e778f4065b55684705be1575bd4618083e7cf6570242ae30a44449",
+      "target_exists": true,
+      "previous_bytes": 652008,
+      "previous_sha256": "abc71646905e1d9f56e2f1755a3c57f72b7b9a01d9a4eb5143391238da189525",
+      "backup_path": "SpinonPreviewBackups/c11-4-fit-content-column-roadmap-sync-2026-10-30/pass01/STATUS.html"
+    }
+  ]
+}

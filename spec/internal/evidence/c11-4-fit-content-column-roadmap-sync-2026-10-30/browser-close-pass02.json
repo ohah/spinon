@@ -1,0 +1,8 @@
+{
+  "session": "spinon-roadmap-c114-20261030",
+  "closeCommand": "agent-browser --session spinon-roadmap-c114-20261030 close",
+  "closeOutput": "Browser closed",
+  "processCheck": "pgrep -fl agent-browser",
+  "processCheckResult": "no rows",
+  "otherChromeProcessesTerminated": false
+}
