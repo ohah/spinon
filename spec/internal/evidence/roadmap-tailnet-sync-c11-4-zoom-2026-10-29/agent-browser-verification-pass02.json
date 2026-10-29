@@ -1,0 +1,88 @@
+{
+  "sourceHead": "4abc761fad14a8c233152c40c4620b5b22773a93",
+  "sourceTree": "adf32c2d5de7524f3ec44d34cc781d41db845233",
+  "roadmapDiffSha256": "d9123fc7cf374908fe7db5d5962ac9ed4c5267b5451d85442788f121b4b5f06c",
+  "urlBase": "https://macstudio.tailed42f2.ts.net/spinon/",
+  "tailnetBackend": "Running",
+  "localPreviewPid": 28040,
+  "agentBrowserSession": "spinon-roadmap-c11-4",
+  "beforeSync": {
+    "route": "roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "runtimeMarkerPresent": false,
+    "pr783Present": false,
+    "officialCountPresent": true
+  },
+  "afterSync": {
+    "roadmap": {
+      "route": "roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "runtimeMarkerPresent": true,
+      "pr783MergeShaPresent": true,
+      "pr784MergeShaPresent": true,
+      "officialCount72of213Present": true,
+      "c114IncompletePresent": true,
+      "noCiSuccessClaimPresent": true,
+      "planCardFullWidthClass": "hero-progress",
+      "runtimeCardWidthCssPixels": 1240
+    },
+    "status": {
+      "route": "STATUS.html",
+      "title": "스피논 구현 상태와 API 명세 대장",
+      "pr783MergeShaPresent": true,
+      "checkAbsenceNoted": true,
+      "officialCount72of213Present": true
+    },
+    "internalContract": {
+      "route": "internal/0059-c11-grid-layout.html",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약",
+      "zoomedAssertionSectionPresent": true,
+      "version010Present": true
+    },
+    "runtimeEvidence": {
+      "route": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.html",
+      "title": "C11.4 fit-content-track-sizing.html zoomed-grid runtime slice",
+      "scopeLimitationsVisible": true
+    },
+    "postMergeReview": {
+      "route": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/post-merge-status-review-30.html",
+      "title": "C11.4 zoomed fit-content() 병합 후 문서 변경 실패 관점 검토 30개",
+      "tableRows": 30
+    },
+    "screenshots": [
+      {
+        "route": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/android-avd-c114-fit-content-zoomed-grid-android-avd-20261029T014400643Z-28ab6d1f/fit-content-zoomed-grid-wpt.png",
+        "loaded": true,
+        "width": 1080,
+        "height": 2400
+      },
+      {
+        "route": "internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/ios-simulator-c114-fit-content-zoomed-grid-ios-simulator-20261029T014407699Z-670c5b73/fit-content-zoomed-grid-wpt.png",
+        "loaded": true,
+        "width": 1206,
+        "height": 2622
+      }
+    ],
+    "roadmapScreenshot": {
+      "path": "tailnet-roadmap-agent-browser-pass02.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "d10bbb719ebf362f1a3a2eb45139a1691911fa9aac1f1b091f197a31f0b41bba"
+    }
+  },
+  "servedHashCheck": {
+    "routeCount": 111,
+    "localAndRemoteResponses": 222,
+    "allHttp200": true,
+    "allSourceHashesMatch": true,
+    "noDeletes": true,
+    "serverRestarted": false
+  },
+  "processCleanup": {
+    "sessionClosed": true,
+    "backgroundPid": 96486,
+    "backgroundPidStillRunning": false,
+    "sessionProcessesRemaining": 0,
+    "unrelatedSessionPreserved": "spinon-roadmap-pr775-e00ea27987c0"
+  }
+}

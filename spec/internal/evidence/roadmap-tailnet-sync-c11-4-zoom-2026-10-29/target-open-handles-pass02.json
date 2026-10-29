@@ -1,0 +1,36 @@
+{
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "listenerPid": 28040,
+  "existingTargetCount": 100,
+  "changedExistingTargetCount": 14,
+  "openTargetCount": 5,
+  "openTargets": [
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "logo.svg",
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "command": "node",
+      "path": "static/css/styles.8d918fd78e.css",
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    }
+  ],
+  "changedOpenTargets": [],
+  "result": "no changed open target"
+}
