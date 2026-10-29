@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-collapse-mvtfn06e-14ef5dc2",
+  "sourceHead": "6be4b0c670f776254406778227aa5ce271b74f19",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu.rs\n M crates/spinon-ffi/src/runtime_gpu/ffi/fixtures/c11_4.rs\n M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs\n M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed.rs\n M crates/spinon-ffi/src/runtime_gpu/renderer.rs\n M crates/spinon-runtime/src/session/ua_cascade/calculation.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs\n M crates/spinon-style-to-render/Cargo.toml\n M crates/spinon-style-to-render/src/runtime.rs\n M crates/spinon-style-to-render/src/tests/runtime.rs\n M crates/spinon-style/src/lib.rs\n M crates/spinon-style/src/stylesheet_registry.rs\n M crates/spinon-style/src/stylesheet_registry/css_profile.rs\n M crates/spinon-style/src/stylo_dom.rs\n M crates/spinon-style/src/stylo_dom/cascade.rs\n M crates/spinon-style/src/stylo_dom/cascade/incremental.rs\n M crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs\n M crates/spinon-style/src/stylo_dom/cascade/runtime_grid.rs\n M crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/orthogonal_writing_mode.rs\n M crates/spinon-style/src/stylo_dom/cascade/runtime_grid_tests/track_sizing.rs\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n?? crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/generic_intrinsic_flex_fixed/visibility_collapse.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_visibility_collapse.rs\n?? platforms/android/app/src/main/java/dev/spinon/bootstrap/C114VisibilityCollapseStage.java\n?? tools/css-reference/capture-c11-4-visibility-collapse-simulators.mjs",
+  "sceneCount": 10,
+  "observations": [
+    {
+      "id": "collapse-column",
+      "boxCount": 1,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "hidden-column",
+      "boxCount": 1,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "display-none-column",
+      "boxCount": 1,
+      "traceParts": 7,
+      "pixelSamples": 0
+    },
+    {
+      "id": "collapse-visible-descendant-column",
+      "boxCount": 2,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "collapse-row",
+      "boxCount": 1,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "hidden-row",
+      "boxCount": 1,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "display-none-row",
+      "boxCount": 1,
+      "traceParts": 7,
+      "pixelSamples": 0
+    },
+    {
+      "id": "collapse-visible-descendant-row",
+      "boxCount": 2,
+      "traceParts": 8,
+      "pixelSamples": 2
+    },
+    {
+      "id": "visible-column",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 1
+    },
+    {
+      "id": "visible-row",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 1
+    }
+  ]
+}

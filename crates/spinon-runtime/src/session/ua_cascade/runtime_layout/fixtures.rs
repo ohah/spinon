@@ -4,6 +4,16 @@ use spinon_core::NodeId;
 use spinon_layout::{ParagraphStyle, TextLayoutEngine};
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "fixtures/c11_4_visibility_collapse.rs"]
+mod c11_4_visibility_collapse;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) use c11_4_visibility_collapse::{
+    is_root as is_c11_4_visibility_collapse_root, prepare as prepare_c11_4_visibility_collapse,
+    validate_output as validate_c11_4_visibility_collapse_output,
+};
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "fixtures/c11_4_text.rs"]
 mod c11_4_text;
 

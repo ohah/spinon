@@ -64,6 +64,7 @@ fn track_sizing_incremental_request_refuses_previous_snapshot_reuse() {
         properties: &properties,
         profile: ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
         author_properties_override: None,
+        allow_visibility_collapse: false,
         reuse: Some((&previous, &[])),
     })
     .unwrap();

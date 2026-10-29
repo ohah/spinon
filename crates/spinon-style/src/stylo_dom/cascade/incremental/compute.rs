@@ -54,6 +54,7 @@ pub(in crate::stylo_dom::cascade) struct CascadeComputeRequest<'a> {
     pub properties: &'a [(&'a str, LonghandId)],
     pub profile: ComputedStyleProfile,
     pub author_properties_override: Option<&'a [&'a str]>,
+    pub allow_visibility_collapse: bool,
     pub reuse: Option<(&'a ComputedStyleSnapshot, &'a [NodeId])>,
 }
 
@@ -69,6 +70,7 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         properties,
         profile,
         author_properties_override,
+        allow_visibility_collapse,
         reuse,
     } = request;
     if profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 && reuse.is_some() {
@@ -339,8 +341,13 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
         ComputedStyleProfile::RuntimeBlockImageV1 => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed))
             .or_else(|| registry.first_unsupported_runtime_block_image_value()),
-        _ => allowed_author_properties
-            .and_then(|allowed| registry.first_unsupported_author_feature(allowed)),
+        _ => allowed_author_properties.and_then(|allowed| {
+            if allow_visibility_collapse {
+                registry.first_unsupported_author_feature_with_visibility_collapse(allowed)
+            } else {
+                registry.first_unsupported_author_feature(allowed)
+            }
+        }),
     };
     if let Some((stylesheet_id, feature)) = unsupported_author_feature {
         return Err(CssCascadeError::UnsupportedAuthorCss {

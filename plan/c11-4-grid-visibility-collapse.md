@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태:** 계획·사전 비교 단계. C11.4와 공식 완료 `72/213`은 미완료로 유지한다.
+**상태:** 제한 fixture 구현과 Android/iOS Simulator 검증을 마쳤다. 일반 CSS admission, 전체 WPT와 상위 C11.4 게이트는 미완료이며 공식 완료 `72/213`을 유지한다.
 
 **사전 비교:** [고정 CSS 및 Agent Browser 증거](../spec/internal/evidence/c11-4-grid-visibility-collapse-precomparison-2026-10-29/README.md) · [계획 실패 관점 20개](./c11-4-grid-visibility-collapse-plan-review-20.md) · [계획 PR 변경 검토 20개](./c11-4-grid-visibility-collapse-pr-diff-review-20.md)
 
@@ -47,3 +47,7 @@ Chrome observation은 독립 expected를 대체하지 않는다. 2025 CRD의 tra
 ## 실패·범위 경계
 
 CSS Grid에서는 `visibility:collapse`가 `hidden`과 같은 layout contribution을 유지해야 하지만, paint/hit 결과는 hidden이어야 한다. 이 가운데 하나라도 다르면 route를 통과시키지 말고 실패 layer를 기록한다. CSS Flexbox는 별도 strut sizing/restart 규칙을 정의하므로 이번 변경의 shared mapping이 Flex layout을 바꾸면 실패다. Table row/column collapse, clipping/scrolling, scrollbar, generic HTML/CSS, public CSS admission, WPT 전체, 실기기/hardware GPU, 전체 C11.4 완료는 범위 밖이다.
+
+## 2026-10-29 구현·runtime 결과
+
+고정 10 scene을 기존 opt-in C11.4 fixture route에 연결했다. Computed `collapse`는 보존하고 Grid sizing에서는 `hidden`과 같은 contribution을 유지하며 render/hit 목록에서는 item을 제외한다. `display:none`은 축별 `[0,0]` tracks로 분리하고 visible descendant와 visible overflow controls를 둔다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 10/10 scene 및 14/14 surface sample이 통과했다. Android는 software AVD, iOS Metal readback은 compositor 제출 전이다. 최종 [실행 근거](../spec/internal/evidence/c11-4-grid-visibility-collapse-runtime-2026-10-29/README.md), [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-grid-visibility-collapse-runtime-2026-10-29/implementation-runtime-review-20.md), [static archive 경계](../spec/internal/evidence/c11-4-grid-visibility-collapse-runtime-2026-10-29/artifact-boundary/README.md)를 따른다. C11.4와 전체 C11은 미완료다.

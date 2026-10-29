@@ -151,6 +151,7 @@ pub fn compute_runtime_incremental_cascade_with_stylesheets(
         properties: &properties,
         profile,
         author_properties_override: None,
+        allow_visibility_collapse: false,
         reuse: Some((previous, dirty_root_ids)),
     })
 }

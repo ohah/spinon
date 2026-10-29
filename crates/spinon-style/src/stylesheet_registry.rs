@@ -8,7 +8,7 @@ mod css_profile;
 mod raw_style;
 pub(crate) use css_profile::{
     declaration_contains_css_system_color, is_border_image_initial,
-    supports_runtime_visibility_value,
+    supports_runtime_visibility_collapse_value, supports_runtime_visibility_value,
 };
 
 use cssparser::SourceLocation;
@@ -257,6 +257,16 @@ impl StylesheetRegistry {
         allowed_properties: &[&str],
     ) -> Option<(String, String)> {
         css_profile::first_unsupported_author_feature(self, allowed_properties)
+    }
+
+    pub(crate) fn first_unsupported_author_feature_with_visibility_collapse(
+        &self,
+        allowed_properties: &[&str],
+    ) -> Option<(String, String)> {
+        css_profile::first_unsupported_author_feature_with_visibility_collapse(
+            self,
+            allowed_properties,
+        )
     }
 
     pub(crate) fn first_unsupported_runtime_block_image_value(&self) -> Option<(String, String)> {

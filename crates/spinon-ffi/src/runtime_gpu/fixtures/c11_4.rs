@@ -1487,6 +1487,10 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
     Err(format!("알 수 없는 C11.4 scene ID: {scene_id}"))
 }
 
+pub(crate) fn c11_4_is_visibility_collapse_scene(scene_id: &str) -> bool {
+    generic_intrinsic_flex_fixed::is_visibility_collapse_scene(scene_id)
+}
+
 pub(crate) fn c11_4_grid_auto_fit_columns_wpt_expected_report(scene_id: &str) -> Option<String> {
     grid_auto_fit_columns_wpt::expected_report(scene_id)
 }
