@@ -7,7 +7,7 @@
 | 1 | PR #814의 기능 변경을 C11 전체 완료로 승격한다. | C11.3.3 candidate와 C11 checkbox가 계속 미완료다. 통과. |
 | 2 | 세부 구현 때문에 공식 완료 수가 증가한다. | 상태 대장·계획·공개 로드맵에 `72/213`을 유지한다. 통과. |
 | 3 | 기준일만 바뀌고 실제 병합 근거가 빠진다. | PR #814 URL, Rebase 병합 시각과 merge SHA `4b40ffc3…`가 함께 기록된다. 통과. |
-| 4 | implementation PR의 원래 commit SHA를 merge SHA로 오기한다. | status/plan/contract/roadmap의 merge SHA가 PR 병합 결과와 일치한다. 통과. |
+| 4 | implementation PR의 원래 commit SHA를 merge SHA로 오기한다. | 상태 대장·track-list 상세 계획·계약·공개 roadmap의 merge SHA가 PR 병합 결과와 일치한다. 통과. |
 | 5 | merge 시각을 로컬 날짜로 잘못 변환한다. | GitHub의 UTC `2026-10-29T18:48:29Z`를 그대로 기록한다. 통과. |
 | 6 | area dimension에서 implicit track 생성이 아직 거부되는 것으로 남는다. | 계약 0059는 PR #807의 실제 area-dimension 확장을 설명한다. 통과. |
 | 7 | track-list가 임의 template route에서 허용되는 것처럼 보인다. | `RuntimeBlockFlexGridTemplateV1`의 validated template-area route에 한정한다. 통과. |

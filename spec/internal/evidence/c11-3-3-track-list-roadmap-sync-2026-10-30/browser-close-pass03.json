@@ -1,0 +1,8 @@
+{
+  "session": "spinon-c1133-roadmap-sync-pass03",
+  "close_command": "agent-browser --session spinon-c1133-roadmap-sync-pass03 close",
+  "close_report": "Browser closed",
+  "process_check": "ps -axo pid=,args= | rg [a]gent-browser",
+  "process_output": "no processes",
+  "verified": true
+}
