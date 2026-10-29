@@ -17,13 +17,9 @@ The final runner requires an explicit scene list for `zero-fixed-maximum`; an un
 | Android | API 37 ARM64 AVD, `emulator-5556`, QEMU | 24/24 | 264 | PixelCopy 54/54 | 24 | matched |
 | iOS | iPhone 17 Pro, iOS 26.2 Simulator | 24/24 | 516 | Metal drawable 54/54 | 24 | matched |
 
-The machine-readable result and sanitized source receipts are in [`verification.json`](verification.json), [`simulator-source-revisions.json`](simulator-source-revisions.json), and [`surface-samples.json`](surface-samples.json). The two run directories named in `verification.json` contain structured per-scene observations, 24 PNGs each, screenshot hash manifests, and sanitized device/build metadata. The Android AVD is an emulator, not a physical device or hardware-GPU result. iOS Metal samples are read before OS compositor presentation; the captured Simulator screenshots are retained separately and do not change that pixel-sample boundary.
+The machine-readable result and sanitized source receipts are recorded in `verification.json`, `simulator-source-revisions.json`, and `surface-samples.json`. The two run directories named in `verification.json` contain structured per-scene observations, 24 PNGs each, screenshot hash manifests, and sanitized device/build metadata. The Android AVD is an emulator, not a physical device or hardware-GPU result. iOS Metal samples are read before OS compositor presentation; the captured Simulator screenshots are retained separately and do not change that pixel-sample boundary.
 
-Example screen captures show the root/item scale and the 4px overflow case:
-
-![Android API 37 AVD, auto-fill with a 4px gap](android-avd-c114-zero-fixed-maximum-android-avd-20261029T084323971Z-d7251a9d/columns-auto-fill-auto-max0-gap4.png)
-
-![iPhone 17 Pro iOS 26.2 Simulator, auto-fill with a 4px gap](ios-simulator-c114-zero-fixed-maximum-ios-simulator-20261029T084208665Z-aa4ce7f8/columns-auto-fill-auto-max0-gap4.png)
+Representative `auto-fill`, 4px-gap overflow captures are `android-avd-c114-zero-fixed-maximum-android-avd-20261029T084323971Z-d7251a9d/columns-auto-fill-auto-max0-gap4.png` and `ios-simulator-c114-zero-fixed-maximum-ios-simulator-20261029T084208665Z-aa4ce7f8/columns-auto-fill-auto-max0-gap4.png`. The implementation PR body embeds both images directly.
 
 ## Focused checks
 
@@ -40,7 +36,7 @@ The Taffy regression checks both axes and all three intrinsic minima. A 2px maxi
 
 ## Fixture artifact boundary
 
-[`artifact-boundary.json`](artifact-boundary.json) records SHA-256 and byte counts for default and fixture-enabled products. The new scene IDs are absent from the default host static archive, Android APK, and iOS Simulator executable; they are present in each corresponding fixture-test positive control. This is evidence for those inspected artifacts only and is not a claim about every packaging format.
+`artifact-boundary.json` records SHA-256 and byte counts for default and fixture-enabled products. The new scene IDs are absent from the default host static archive, Android APK, and iOS Simulator executable; they are present in each corresponding fixture-test positive control. This is evidence for those inspected artifacts only and is not a claim about every packaging format.
 
 Android and iOS default/fixture Simulator builds succeeded. The initial iOS fixture build exposed a missing explicit Swift `return` in the new frame helper; the helper was corrected, rebuilt, and the corrected fixture app passed all 24 scenes.
 
