@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "source": {
+    "fixture": "tests/fixtures/css/c11/grid-fit-content-columns-c114-precomparison.html",
+    "fixtureSha256": "b8c5c577bd2cc934ea144186068ff77aefe9e69c8871d6ae7b814673fb872064",
+    "screenshot": "chrome156-fit-content-columns.png",
+    "screenshotSha256": "46017164aa640f1aa7c184fa44a5c6de9bd6daf26ab205c015b8914d49a67566",
+    "agentBrowserVersion": "0.31.1",
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1
+  },
+  "cases": [
+    {
+      "id": "column-fit-content-40",
+      "limitCssPx": 40,
+      "itemMinimum": "0px",
+      "observed": {
+        "gridTemplateColumns": "40px",
+        "gridTemplateRows": "60px",
+        "root": [8, 8, 60, 60],
+        "item": [8, 8, 40, 10],
+        "child": [8, 8, 100, 10]
+      },
+      "normativeExpected": {
+        "minimumContributionCssPx": 0,
+        "maxContentContributionCssPx": 100,
+        "usedColumnCssPx": 40,
+        "itemWidthCssPx": 40,
+        "childWidthCssPx": 100,
+        "childOverflowPastItemCssPx": 60
+      }
+    },
+    {
+      "id": "column-fit-content-30",
+      "limitCssPx": 30,
+      "itemMinimum": "0px",
+      "observed": {
+        "gridTemplateColumns": "30px",
+        "gridTemplateRows": "60px",
+        "root": [88, 8, 60, 60],
+        "item": [88, 8, 30, 10],
+        "child": [88, 8, 100, 10]
+      },
+      "normativeExpected": {
+        "minimumContributionCssPx": 0,
+        "maxContentContributionCssPx": 100,
+        "usedColumnCssPx": 30,
+        "itemWidthCssPx": 30,
+        "childWidthCssPx": 100,
+        "childOverflowPastItemCssPx": 70
+      }
+    },
+    {
+      "id": "column-fit-content-200",
+      "limitCssPx": 200,
+      "itemMinimum": "0px",
+      "observed": {
+        "gridTemplateColumns": "100px",
+        "gridTemplateRows": "60px",
+        "root": [168, 8, 300, 60],
+        "item": [168, 8, 100, 10],
+        "child": [168, 8, 100, 10]
+      },
+      "normativeExpected": {
+        "minimumContributionCssPx": 0,
+        "maxContentContributionCssPx": 100,
+        "usedColumnCssPx": 100,
+        "itemWidthCssPx": 100,
+        "childWidthCssPx": 100,
+        "childOverflowPastItemCssPx": 0
+      }
+    },
+    {
+      "id": "column-fit-content-auto-minimum-control",
+      "limitCssPx": 40,
+      "itemMinimum": "auto",
+      "observed": {
+        "gridTemplateColumns": "100px",
+        "gridTemplateRows": "60px",
+        "root": [488, 8, 60, 60],
+        "item": [488, 8, 100, 10],
+        "child": [488, 8, 100, 10]
+      },
+      "normativeExpected": {
+        "automaticMinimumCssPx": 100,
+        "maxContentContributionCssPx": 100,
+        "usedColumnCssPx": 100,
+        "itemWidthCssPx": 100,
+        "childWidthCssPx": 100,
+        "childOverflowPastItemCssPx": 0
+      }
+    }
+  ]
+}
