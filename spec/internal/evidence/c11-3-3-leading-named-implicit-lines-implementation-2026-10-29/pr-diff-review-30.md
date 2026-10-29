@@ -35,4 +35,9 @@
 
 ## PR 원격 diff 판정
 
-PR 생성 뒤 base/head와 changed path 목록을 GitHub에서 다시 받아 이 항목들을 실제 remote diff에 대조하고, 발견 사항과 최종 판정을 기록한다. 리뷰가 끝나기 전에는 PR을 병합하지 않는다.
+- PR: [#790](https://github.com/ohah/spinon/pull/790), base `0990aa4e9e97ae04541c53713fb568847ec62189`, 최초 원격 검토 head `7e23e3adf3eee24fa2c26828e323a84afe76cb13`.
+- GitHub PR files API는 467개 경로를 반환했다. 해당 목록은 `origin/main...origin/feat/c11-3-3-leading-named-implicit-lines`의 467개 경로와 완전히 일치했고, 의도한 C11.3.3 구현·fixture·명세·근거 경로 외 파일은 없었다.
+- 위 30개 실패 관점을 원격 변경 경로, PR 본문, 플랫폼 결과와 대조했다. 상태 대장과 `72/213`은 미변경, 내부 계약 버전은 `0.1.0`, fixture ABI는 opt-in, 시뮬레이터 경계와 기존 `spinon-style` 실패는 본문에 그대로 기록했다. 최종 Android/iOS 캡처 이미지 링크도 PR 본문에 포함했다.
+- 실제 blocker는 발견하지 못했다. PR check rollup 및 `gh pr checks --required`는 모두 비어 있어 CI 통과로 해석하지 않는다. `main` 보호 설정은 required approving review 0개이며 linear history를 요구한다. 저장소 규칙대로 Rebase and merge만 허용된다.
+
+이 판정 기록을 반영한 뒤 PR head가 한 번 더 바뀌므로, 마지막 병합 전에 파일 목록·head SHA·merge state·required checks를 다시 확인한다.
