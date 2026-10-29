@@ -690,3 +690,13 @@ Android API 37 ARM64 software AVD의 PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulat
 Android API 37 ARM64 AVD에서 세 scene의 layout/draw/presentation 및 PixelCopy 표본 `11/11`을 확인했다. iPhone 17 Pro/iOS 26.2 Simulator에서도 `11/11` Metal drawable 표본을 확인했다(모두 compositor 제출 전). AVD는 software renderer라 hardware GPU/실기기 증거가 아니며 iOS 결과도 compositor 이후 표시 픽셀을 검증하지 않는다. Default `c04-runtime-gpu` static archive에서 새 scene/DOM/report marker는 0개, `c04-runtime-gpu-fixture-test` positive-control archive에서는 marker가 확인됐다. 이는 inspected static archive 한정이며 APK/IPA 전체 fixture exclusion을 주장하지 않는다. [계획](../../plan/c11-4-fit-content-limit-boundaries.md) · [Chrome/CRD 사전 비교](./evidence/c11-4-fit-content-limit-boundaries-precomparison-2026-10-29/README.md) · [runtime 로그·화면·build·artifact evidence](./evidence/c11-4-fit-content-limit-boundaries-simulators-2026-10-29/README.md) · [구현/runtime 실패 관점 20개](./evidence/c11-4-fit-content-limit-boundaries-simulators-2026-10-29/implementation-runtime-review-20.md) · [구현 PR diff 실패 관점 20개](./evidence/c11-4-fit-content-limit-boundaries-simulators-2026-10-29/pr-diff-review-20.md).
 
 전체 WPT 13 assertions, 일반 author CSS admission, 나머지 fit-content/Grid 조합, Android 실기기/hardware GPU, iOS compositor 이후 픽셀 및 전체 C11.4는 범위 밖이다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
+
+## C11.4 auto-repeat inflexible minimum + fixed maximum · 제한 opt-in runtime slice
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. CSS Grid Level 1 2025 CRD §7.2.3.1의 두 번째 `<fixed-size>` 형식 `minmax(<inflexible-breadth>, <fixed-breadth>)` 중 최소 `auto`, `min-content`, `max-content`와 최대 definite `LengthPx`, definite-basis `Percentage`, 현재 지원하는 정확한 `calc(length + percentage)`를 제한 C11.4 fixture profile에서 다룬다. Fraction/auto/intrinsic maximum, indefinite percentage basis와 임의 calc AST는 계속 거부한다.
+
+고정 Chrome 비교 JSON과 같은 49 scene을 FFI fixture catalog에 연결했다. 각 축과 `auto-fill`/`auto-fit`, 세 minimum, 세 fixed maximum, 최대가 minimum보다 작은 overflow 대조군, 129/130px 반복 수 경계, fixed-minimum control, 2-track repeated fragment를 검사한다. Taffy `MaximizeTracks` trace, track base sizes/collapse, root/item frames, draw/present revision을 검사한다.
+
+Android API 37 ARM64 software AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 49/49 scene을 통과했다. PixelCopy와 compositor 제출 전 Metal drawable 관찰은 각각 104/104 RGBA exact다. 기본 `spinon-ffi` static archive에서 신규 scene marker가 없고 fixture-test archive positive control에 세 marker가 있는 것을 확인했다. archive 결과는 APK/IPA 전체 제외 증거가 아니며 simulator는 실기기 증거가 아니다. [Chrome 사전 비교](evidence/c11-4-auto-repeat-inflexible-fixed-maximum-precomparison-2026-10-29/README.md) · [실행·스크린샷·artifact 경계와 한계](evidence/c11-4-auto-repeat-fixed-maximum-2026-10-29/README.md).
+
+이는 fixture-test opt-in의 고정 장면 결과다. 일반 author CSS admission, 전체 CSS Grid/WPT, auto-repeat 전체 조합 또는 전체 C11.4 완료를 계약하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.

@@ -1133,9 +1133,9 @@ fn validate_auto_repeat_axis(
         context,
         css_math,
     );
-    let repeat_tracks_supported = repeat_tracks
-        .iter()
-        .all(|track| auto_repeat_track_has_fixed_minimum(track, node, property, context, css_math));
+    let repeat_tracks_supported = repeat_tracks.iter().all(|track| {
+        auto_repeat_track_has_supported_fixed_size(track, node, property, context, css_math)
+    });
     if !neighbors_supported || !repeat_tracks_supported {
         return Err(LayoutError::InvalidGridTrackList { node, property });
     }
@@ -1451,7 +1451,7 @@ fn valid_grid_track_length_percentage(value: GridTrackLengthPercentage) -> bool 
     }
 }
 
-fn auto_repeat_track_has_fixed_minimum(
+fn auto_repeat_track_has_supported_fixed_size(
     track: &GridTrackSize,
     node: NodeId,
     property: &'static str,
@@ -1492,7 +1492,40 @@ fn auto_repeat_track_has_fixed_minimum(
                 && auto_repeat_minimum_calc_is_supported(*id, node, property, css_math)
                 && auto_repeat_maximum_is_supported(*max, node, property, context, css_math)
         }
+        GridTrackSize::MinMax {
+            min:
+                GridTrackMinSizingFunction::Auto
+                | GridTrackMinSizingFunction::MinContent
+                | GridTrackMinSizingFunction::MaxContent,
+            max,
+        } => auto_repeat_fixed_maximum_is_supported(*max, node, property, context, css_math),
         _ => false,
+    }
+}
+
+fn auto_repeat_fixed_maximum_is_supported(
+    value: GridTrackMaxSizingFunction,
+    node: NodeId,
+    property: &'static str,
+    context: AutoRepeatAxisContext<'_>,
+    css_math: &[crate::LayoutCssMathValue],
+) -> bool {
+    match value {
+        GridTrackMaxSizingFunction::LengthPx(value) => value.is_finite() && value >= 0.0,
+        GridTrackMaxSizingFunction::Percentage(value) => {
+            value.is_finite()
+                && value >= 0.0
+                && definite_auto_repeat_content_basis(context, property)
+                    .is_some_and(|basis| (value * basis).is_finite())
+        }
+        GridTrackMaxSizingFunction::Calc(id) => {
+            context.percentage_basis_is_definite
+                && auto_repeat_maximum_calc_is_supported(id, node, property, context, css_math)
+        }
+        GridTrackMaxSizingFunction::Fraction(_)
+        | GridTrackMaxSizingFunction::Auto
+        | GridTrackMaxSizingFunction::MinContent
+        | GridTrackMaxSizingFunction::MaxContent => false,
     }
 }
 

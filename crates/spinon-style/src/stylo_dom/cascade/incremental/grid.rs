@@ -1017,7 +1017,7 @@ fn track_size_is_valid(track: &ComputedCssGridTrackSize) -> bool {
     }
 }
 
-fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool {
+fn auto_repeat_track_has_supported_fixed_size(track: &ComputedCssGridTrackSize) -> bool {
     match track {
         ComputedCssGridTrackSize::LengthPx(value) => value.is_finite() && *value >= 0.0,
         // A percentage is a definite auto-repeat sizing function when its grid axis has a
@@ -1034,8 +1034,27 @@ fn auto_repeat_track_has_fixed_minimum(track: &ComputedCssGridTrackSize) -> bool
         ComputedCssGridTrackSize::MinMax {
             min: ComputedCssGridTrackBreadth::Calc(value),
             max,
-        } => auto_repeat_minimum_calc_is_supported(value) && auto_repeat_maximum_is_supported(max),
+        } => auto_repeat_calc_is_supported(value) && auto_repeat_maximum_is_supported(max),
+        ComputedCssGridTrackSize::MinMax {
+            min:
+                ComputedCssGridTrackBreadth::Auto
+                | ComputedCssGridTrackBreadth::MinContent
+                | ComputedCssGridTrackBreadth::MaxContent,
+            max,
+        } => auto_repeat_fixed_maximum_is_supported(max),
         _ => false,
+    }
+}
+
+fn auto_repeat_fixed_maximum_is_supported(value: &ComputedCssGridTrackBreadth) -> bool {
+    match value {
+        ComputedCssGridTrackBreadth::LengthPx(value)
+        | ComputedCssGridTrackBreadth::Percentage(value) => value.is_finite() && *value >= 0.0,
+        ComputedCssGridTrackBreadth::Calc(value) => auto_repeat_calc_is_supported(value),
+        ComputedCssGridTrackBreadth::Fraction(_)
+        | ComputedCssGridTrackBreadth::Auto
+        | ComputedCssGridTrackBreadth::MinContent
+        | ComputedCssGridTrackBreadth::MaxContent => false,
     }
 }
 
@@ -1044,14 +1063,14 @@ fn auto_repeat_maximum_is_supported(value: &ComputedCssGridTrackBreadth) -> bool
         ComputedCssGridTrackBreadth::LengthPx(value)
         | ComputedCssGridTrackBreadth::Percentage(value)
         | ComputedCssGridTrackBreadth::Fraction(value) => value.is_finite() && *value >= 0.0,
-        ComputedCssGridTrackBreadth::Calc(value) => auto_repeat_minimum_calc_is_supported(value),
+        ComputedCssGridTrackBreadth::Calc(value) => auto_repeat_calc_is_supported(value),
         ComputedCssGridTrackBreadth::Auto
         | ComputedCssGridTrackBreadth::MinContent
         | ComputedCssGridTrackBreadth::MaxContent => false,
     }
 }
 
-fn auto_repeat_minimum_calc_is_supported(value: &ComputedCssMath) -> bool {
+fn auto_repeat_calc_is_supported(value: &ComputedCssMath) -> bool {
     let ComputedCssMath::Sum(terms) = value else {
         return false;
     };

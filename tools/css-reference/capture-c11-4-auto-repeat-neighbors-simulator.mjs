@@ -4112,6 +4112,93 @@ async function autoRepeatPercentageMaximumScenes() {
   });
 }
 
+async function autoRepeatFixedMaximumScenes() {
+  const fixturePath = resolve(repositoryRoot,
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_fixed_maximum_scenes.json');
+  const androidPath = resolve(repositoryRoot,
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java');
+  const iosPath = resolve(repositoryRoot, 'platforms/ios/Sources/C0410RuntimeGpuDemo.swift');
+  const [fixtures, androidSource, iosSource] = await Promise.all([
+    readFile(fixturePath, 'utf8').then(JSON.parse),
+    readFile(androidPath, 'utf8'),
+    readFile(iosPath, 'utf8'),
+  ]);
+  assert.equal(fixtures.length, 49,
+    'intrinsic minimum fixed-maximum auto-repeat fixture는 49 scene이어야 합니다.');
+  const allowlist = (source, expression, label) => {
+    const match = source.match(expression);
+    assert.ok(match, `${label} scene allowlist를 읽을 수 없습니다.`);
+    return new Set([...match[1].matchAll(/"([^"]+)"/g)].map((entry) => entry[1]));
+  };
+  const androidScenes = allowlist(androidSource,
+    /C114_FIXED_MAXIMUM_PIXEL_SCENE_IDS\s*=\s*\{([\s\S]*?)\};/,
+    'Android fixed-maximum pixel');
+  const iosScenes = allowlist(iosSource,
+    /private let c114FixedMaximumPixelSceneIDs:\s*Set<String>\s*=\s*\[([\s\S]*?)\]/,
+    'iOS fixed-maximum pixel');
+  const colorRgba = (color) => [
+    Number.parseInt(color.slice(1, 3), 16),
+    Number.parseInt(color.slice(3, 5), 16),
+    Number.parseInt(color.slice(5, 7), 16),
+    255,
+  ];
+
+  return fixtures.map(({ id, expect, columnGap, rowGap, items }) => {
+    assert.ok(androidScenes.has(id), `Android Grid allowlist에 ${id}가 없습니다.`);
+    assert.ok(iosScenes.has(id), `iOS Grid allowlist에 ${id}가 없습니다.`);
+    const [rootWidth, rootHeight] = expect.root;
+    const axis = id.startsWith('columns-') ? 'Columns' : 'Rows';
+    const rootNodeId = `c114-${id}-grid`;
+    const itemNodeId = `c114-${id}-${items[0].name}`;
+    const [itemX, itemY, itemWidth, itemHeight] = expect.items[0].frame;
+    const nodeFrames = `node_frames_css_px=[0:node=1,x=0,y=0,width=${rootWidth},height=${rootHeight};`
+      + `1:node=2,x=${itemX},y=${itemY},width=${itemWidth},height=${itemHeight}]`;
+    const overflow = id.includes('-overflow-');
+    const pixelSamples = overflow
+      ? axis === 'Columns'
+        ? [
+          { id: `${id}-root-interior`, nodeId: rootNodeId,
+            xCssPx: 5, yCssPx: 20, rgba: colorRgba('#e2e8f0') },
+          { id: `${id}-item-inside-root`, nodeId: itemNodeId,
+            xCssPx: 5, yCssPx: 10, rgba: colorRgba(items[0].color) },
+          { id: `${id}-item-outside-root`, nodeId: itemNodeId,
+            xCssPx: 15, yCssPx: 10, rgba: colorRgba(items[0].color) },
+        ]
+        : [
+          { id: `${id}-root-interior`, nodeId: rootNodeId,
+            xCssPx: 30, yCssPx: 5, rgba: colorRgba('#e2e8f0') },
+          { id: `${id}-item-inside-root`, nodeId: itemNodeId,
+            xCssPx: 10, yCssPx: 5, rgba: colorRgba(items[0].color) },
+          { id: `${id}-item-outside-root`, nodeId: itemNodeId,
+            xCssPx: 10, yCssPx: 15, rgba: colorRgba(items[0].color) },
+        ]
+      : [
+        { id: `${id}-root-interior`, nodeId: rootNodeId,
+          xCssPx: Math.floor(rootWidth / 2), yCssPx: Math.floor(rootHeight / 2),
+          rgba: colorRgba('#e2e8f0') },
+        { id: `${id}-item-1-interior`, nodeId: itemNodeId,
+          xCssPx: Math.floor(itemX + itemWidth / 2),
+          yCssPx: Math.floor(itemY + itemHeight / 2), rgba: colorRgba(items[0].color) },
+      ];
+    return {
+      id,
+      axis,
+      boxCount: items.length + 1,
+      rootFrame: `width=${rootWidth},height=${rootHeight}`,
+      itemFrame: null,
+      nodeFrames,
+      axes: Object.fromEntries(Object.entries(expect.tracks).map(([trackAxis, tracks]) => [
+        trackAxis === 'columns' ? 'Columns' : 'Rows', {
+          tracks,
+          collapsed: expect.collapsed[trackAxis],
+        },
+      ])),
+      gaps: { Columns: Number.parseFloat(columnGap), Rows: Number.parseFloat(rowGap) },
+      pixelSamples,
+    };
+  });
+}
+
 async function autoRepeatPercentageNeighborScenes() {
   const fixturePath = resolve(repositoryRoot,
     'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/auto_repeat_percentage_neighbor_scenes.json');
@@ -4947,6 +5034,7 @@ scenes.push(...await autoRepeatCalcMinimumScenes());
 scenes.push(...await autoRepeatPositivePercentMinimumScenes());
 scenes.push(...await autoRepeatZeroPercentMinimumScenes());
 scenes.push(...await autoRepeatPercentageMaximumScenes());
+scenes.push(...await autoRepeatFixedMaximumScenes());
 scenes.push(...await autoRepeatPercentageNeighborScenes());
 scenes.push(...await autoRepeatCalcNeighborScenes());
 scenes.push(...await autoRepeatNegativePercentageNeighborScenes());
@@ -5645,7 +5733,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 545, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 594, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

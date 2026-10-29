@@ -1,6 +1,6 @@
 # C11.4 · 자동 반복 `minmax(inflexible, fixed)` 트랙
 
-**상태:** 구현 전 계획이다. Agent Browser HeadlessChrome 156의 49-scene 사전 비교와 별도 계획 실패 관점 20개 검토를 완료했다. 코드는 아직 변경하지 않았다. C11.4와 공식 집계 `72/213`은 미완료·유지 상태다.
+**상태:** 고정된 49 scene의 제한 opt-in 구현 및 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 실행을 마쳤다. 양 플랫폼에서 각 49/49 scene과 104/104 pixel 표본이 통과했고 구현/runtime 20개 및 PR diff 30개 실패 관점 검토도 마쳤다. Branch protection에 required status check이 없음을 확인했다. PR 생성과 merge는 남아 있다. C11.4 checkbox와 공식 집계 `72/213`은 미완료·유지 상태다. [구현/runtime 근거](../spec/internal/evidence/c11-4-auto-repeat-fixed-maximum-2026-10-29/README.md)
 
 **상위 계획:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
@@ -38,14 +38,14 @@ CSS Grid Level 1 2025 CRD §7.2.3.1의 `<fixed-size>`는 `<fixed-breadth>`, `min
 5. Rust direct layout, Stylo→typed projection, FFI opt-in dispatcher를 검사한다. 지원 밖 CSS value, indefinite basis, 잘못된 math owner, non-finite intermediate, unsupported fraction maximum은 기대 오류 또는 upstream CSS invalidation으로 분류하고 partial `LayoutOutput`이 없음을 확인한다.
 6. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 고정 scene ID별 track list, frame, item overflow, trace completeness, draw/present revision을 확인한다. PixelCopy와 compositor 제출 전 Metal drawable sample은 viewport/root 바깥까지 포함해 고정 좌표로 비교한다. AVD는 software-rendered일 수 있으므로 Android hardware GPU 증거로 확대하지 않는다.
 7. 기본/제품 artifact에서 fixture symbol·payload가 빠지고 opt-in fixture artifact에는 positive control로 포함되는지 검사한다.
-8. 구현/runtime 20개 관점 검토와 PR diff 20개 관점 검토는 서로 분리한다. PR plan-diff review도 계획 실패 검토표와 다른 20관점으로 남긴다. 리뷰 발견은 수정한 뒤 영향 관점을 다시 실행한다.
+8. 구현/runtime 20개 관점 검토와 PR diff 30개 관점 검토는 서로 분리한다. 이미 끝난 계획 실패 검토는 구현 검토에 재사용하지 않는다. 리뷰 발견은 수정한 뒤 영향 관점을 다시 실행한다.
 9. 내부 계약 0059, C11.4 상위 계획, `spec/STATUS.md`, public roadmap을 같은 용어와 범위로 갱신한다. C11.4와 C11 체크박스 및 공식 집계 `72/213`은 유지한다.
 
 ## 완료 조건
 
 - 49개 Chrome oracle 사례의 예상 트랙 수, 사용 breadth, root/item frame 및 collapse 상태가 독립 계산과 일치한다.
 - Rust, style projection, fixture FFI, Android AVD, iOS Simulator 행렬에서 모든 positive/negative case가 정해 둔 성공/오류 결과를 보인다.
-- Browser/runtime evidence, artifact boundary, implementation review 20, PR diff review 20을 기록한다.
+- Browser/runtime evidence, artifact boundary, implementation review 20, PR diff review 30을 기록한다.
 - PR의 `mergeStateStatus`, required checks 및 실제 merge 상태를 확인하고 Rebase and merge한다. Tailnet preview는 merge 뒤 갱신·렌더링 확인 후 Agent Browser 세션을 닫는다.
 
 ## 남는 범위

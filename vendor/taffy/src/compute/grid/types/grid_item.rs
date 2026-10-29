@@ -843,13 +843,19 @@ impl GridItem {
             } else {
                 size
             };
-            // CSS Grid 1 §6.6 caps the specified size suggestion at the all-fixed grid-area maximum.
-            let fixed_track_limit = self.spanned_fixed_track_limit(
-                axis,
-                axis_tracks,
-                inner_node_size.get(axis),
-                &|val, basis| tree.resolve_calc_value(val, basis),
-            );
+            // An absolute preferred size contributes its min-content size directly. The fixed
+            // grid-area cap applies to the content-based automatic minimum when the preferred
+            // size depends on the containing block (and to replaced-item transfer inputs below).
+            let fixed_track_limit = if self.is_replaced || self.size.get(axis).0.uses_percentage() {
+                self.spanned_fixed_track_limit(
+                    axis,
+                    axis_tracks,
+                    inner_node_size.get(axis),
+                    &|val, basis| tree.resolve_calc_value(val, basis),
+                )
+            } else {
+                None
+            };
             let value = value.maybe_min(
                 fixed_track_limit
                     .and_then(FixedAreaLimit::as_f32_limit)
