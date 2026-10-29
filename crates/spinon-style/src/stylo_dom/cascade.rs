@@ -47,8 +47,10 @@ pub use runtime_grid::{
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use runtime_grid::{
     compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_inline_property,
     first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property,
 };
 pub use runtime_layout::{
@@ -623,7 +625,7 @@ fn compute_cascade_with_author_properties_override(
     style_revision: StyleRevision,
     properties: &[(&str, LonghandId)],
     profile: ComputedStyleProfile,
-    author_properties_override: Option<&[&str]>,
+    options: CascadeOptions<'_>,
 ) -> Result<ComputedStyleSnapshot, CssCascadeError> {
     compute_cascade_with_options(
         view,
@@ -632,16 +634,14 @@ fn compute_cascade_with_author_properties_override(
         style_revision,
         properties,
         profile,
-        CascadeOptions {
-            additional_user_agent_stylesheets: &[],
-            author_properties_override,
-        },
+        options,
     )
 }
 
 struct CascadeOptions<'a> {
     additional_user_agent_stylesheets: &'a [StylesheetSource],
     author_properties_override: Option<&'a [&'a str]>,
+    allow_visibility_collapse: bool,
 }
 
 fn compute_cascade_with_additional_user_agent_stylesheets(
@@ -663,6 +663,7 @@ fn compute_cascade_with_additional_user_agent_stylesheets(
         CascadeOptions {
             additional_user_agent_stylesheets,
             author_properties_override: None,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -685,6 +686,7 @@ fn compute_cascade_with_options(
         properties,
         profile,
         author_properties_override: options.author_properties_override,
+        allow_visibility_collapse: options.allow_visibility_collapse,
         reuse: None,
     })
     .and_then(|result| match result {

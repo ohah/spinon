@@ -868,6 +868,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (C114VisibilityCollapseStage.isScene(sceneId)) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -3923,6 +3926,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        if (C114VisibilityCollapseStage.isScene(sceneId)) {
+            return C114VisibilityCollapseStage.expectedRootFrame(sceneId);
+        }
         String fixedMaximumFrame = c114FixedMaximumRootFrame(sceneId);
         if (fixedMaximumFrame != null) return fixedMaximumFrame;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
@@ -4334,6 +4340,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
+        if (C114VisibilityCollapseStage.isScene(sceneId)) {
+            return C114VisibilityCollapseStage.expectedItemFrame(sceneId);
+        }
         String fixedMaximumFrame = c114FixedMaximumItemFrame(sceneId);
         if (fixedMaximumFrame != null) return fixedMaximumFrame;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
@@ -9120,6 +9129,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (C114VisibilityCollapseStage.isScene(sceneId)) {
+            return C114VisibilityCollapseStage.expectedBoxCount(sceneId);
+        }
         if (isC114ZeroFixedMaximumPixelSceneId(sceneId)) return 2;
         if (isC114FixedMaximumPixelSceneId(sceneId)) return 2;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
@@ -10021,6 +10033,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
+        if (C114VisibilityCollapseStage.isScene(sceneId)) {
+            return C114VisibilityCollapseStage.surfaceSamplesMatch(sceneId, samples);
+        }
         if (C114FlexStage.surfacePixelSamples(sceneId) != null) {
             return C114FlexStage.surfacePixelSamplesMatch(sceneId, samples);
         }
@@ -12725,6 +12740,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? ((pixelMatrixSceneId != null
                                 && c114TemplateAreaRepeatRootFrame(pixelMatrixSceneId) != null)
                         || c114IsFixedAutoAreaScene(pixelMatrixSceneId)
+                        || C114VisibilityCollapseStage.isScene(pixelMatrixSceneId)
                         || "cyclic-percent-column".equals(pixelMatrixSceneId)
                         || "cyclic-percent-row".equals(pixelMatrixSceneId)
                         || "definite-percent-column".equals(pixelMatrixSceneId)
@@ -16593,6 +16609,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
+        int[] visibilityCollapseColor =
+                C114VisibilityCollapseStage.expectedSurfacePixelRgb(sceneId, sampleId);
+        if (visibilityCollapseColor != null) return visibilityCollapseColor;
         int[] flexStageColor = C114FlexStage.expectedSurfacePixelRgb(sceneId, sampleId);
         if (flexStageColor != null) return flexStageColor;
         int[] autoFitColumnsColor = C114GridAutoFitColumnsWpt.expectedSurfacePixelRgb(

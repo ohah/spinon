@@ -5,8 +5,10 @@ use std::ffi::CStr;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use stylo_dom::{
     compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets,
+    compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets,
     compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_with_stylesheets,
     first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property,
+    first_unsupported_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_inline_property,
     first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property,
 };
 

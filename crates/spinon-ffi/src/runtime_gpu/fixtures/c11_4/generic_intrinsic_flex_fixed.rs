@@ -6,6 +6,8 @@ enum Axis {
 
 #[path = "generic_intrinsic_flex_fixed/hidden.rs"]
 mod hidden;
+#[path = "generic_intrinsic_flex_fixed/visibility_collapse.rs"]
+mod visibility_collapse;
 #[path = "generic_intrinsic_flex_fixed/visibility_hidden.rs"]
 mod visibility_hidden;
 
@@ -111,8 +113,14 @@ pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
     if let Some(scene) = SCENES.iter().find(|scene| scene.id == scene_id).copied() {
         Some(scene_source(scene))
     } else {
-        hidden::runtime_source(scene_id).or_else(|| visibility_hidden::runtime_source(scene_id))
+        hidden::runtime_source(scene_id)
+            .or_else(|| visibility_hidden::runtime_source(scene_id))
+            .or_else(|| visibility_collapse::runtime_source(scene_id))
     }
+}
+
+pub(crate) fn is_visibility_collapse_scene(scene_id: &str) -> bool {
+    visibility_collapse::is_scene(scene_id)
 }
 
 fn scene_source(scene: Scene) -> String {

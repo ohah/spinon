@@ -300,3 +300,41 @@ fn track_sizing_profile_rejects_unsupported_visibility_collapse_in_author_styles
             && feature == "지원하지 않는 CSS 선언 visibility 값"
     ));
 }
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn visibility_collapse_fixture_test_cascade_preserves_computed_collapse() {
+    let fixture = fixture(
+        "display:grid;box-sizing:border-box;width:80px;height:20px;grid-template-columns:minmax(auto,max-content) minmax(auto,max-content);grid-template-rows:20px;margin:0;padding:0;visibility:collapse",
+    );
+
+    let error = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap_err();
+    assert!(matches!(
+        error,
+        crate::CssCascadeError::UnsupportedInlineAuthorProperty { property, .. }
+            if property == "visibility"
+    ));
+
+    let snapshot = crate::compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets(
+        &fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let root_style = snapshot
+        .elements
+        .iter()
+        .find(|style| style.node_id == fixture.root)
+        .unwrap();
+    assert_eq!(
+        root_style.properties.get("visibility").map(String::as_str),
+        Some("collapse")
+    );
+}

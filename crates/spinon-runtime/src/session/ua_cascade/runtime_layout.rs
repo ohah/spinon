@@ -38,6 +38,14 @@ mod root_html_default_render;
 #[path = "runtime_layout/root_html_text_paint.rs"]
 mod root_html_text_paint;
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub(super) fn is_c11_4_visibility_collapse_root(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> bool {
+    fixtures::is_c11_4_visibility_collapse_root(snapshot, root)
+}
+
 #[derive(Clone, Copy, Debug, Eq, PartialEq)]
 pub enum RuntimeLayoutState {
     NotConfigured,
@@ -399,6 +407,10 @@ where
     let c11_4_auto_minmax_span_overflow_root = profile
         == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && fixtures::is_c11_4_auto_minmax_span_overflow_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_visibility_collapse_root = profile
+        == super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && fixtures::is_c11_4_visibility_collapse_root(&request.snapshot, root);
     if profile == super::calculation::RuntimeCalculationProfile::BlockFormatting {
         if let Some((node, value)) = first_unsupported_runtime_block_display_inline_value(&view) {
             return Err(layout_failure(
@@ -477,7 +489,9 @@ where
         }
         super::calculation::RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-            if c11_4_fit_content_zoom_root {
+            if c11_4_visibility_collapse_root {
+                spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_inline_property(&view)
+            } else if c11_4_fit_content_zoom_root {
                 spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_zoom_fixture_test_inline_property(&view)
             } else if c11_4_auto_minmax_span_overflow_root {
                 spinon_style::first_unsupported_runtime_block_flex_grid_track_sizing_overflow_fixture_test_inline_property(&view)
@@ -509,6 +523,12 @@ where
             Some(property),
         ));
     }
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_visibility_collapse_scene = if c11_4_visibility_collapse_root {
+        fixtures::prepare_c11_4_visibility_collapse(&request.snapshot, root, &styles)?
+    } else {
+        None
+    };
     if profile == super::calculation::RuntimeCalculationProfile::RootHtmlBlockPaint {
         validate_root_html_block_paint_tree(&request.snapshot, root, &styles)?;
     }
@@ -1282,6 +1302,10 @@ where
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         grid_track_sizing_diagnostics,
     };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    if let Some(scene) = c11_4_visibility_collapse_scene {
+        fixtures::validate_c11_4_visibility_collapse_output(scene, &output.layout, &completed)?;
+    }
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     if c11_4_fit_content_auto_neighbor_node_ids.is_some() {
         fixtures::validate_c11_4_fit_content_auto_neighbor_output(&completed)?;

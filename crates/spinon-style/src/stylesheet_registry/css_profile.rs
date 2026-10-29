@@ -20,13 +20,21 @@ struct AuthorFeaturePolicy {
     allow_background_color: bool,
     allow_property_registration: bool,
     allow_border_image_initial_resets: bool,
+    allow_visibility_collapse: bool,
 }
 
 pub(super) fn first_unsupported_author_feature(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
 ) -> Option<(String, String)> {
-    first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, false)
+    first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, false, false)
+}
+
+pub(super) fn first_unsupported_author_feature_with_visibility_collapse(
+    registry: &StylesheetRegistry,
+    allowed_properties: &[&str],
+) -> Option<(String, String)> {
+    first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, false, true)
 }
 
 pub(super) fn first_unsupported_runtime_block_image_value(
@@ -88,7 +96,7 @@ pub(super) fn first_unsupported_author_feature_with_layers(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
 ) -> Option<(String, String)> {
-    first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, true)
+    first_unsupported_author_feature_with_layer_rules(registry, allowed_properties, true, false)
 }
 
 pub(super) fn first_unsupported_author_feature_with_media(
@@ -106,6 +114,7 @@ pub(super) fn first_unsupported_author_feature_with_media(
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: false,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -125,6 +134,7 @@ pub(super) fn first_unsupported_runtime_author_feature_with_media(
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: true,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -195,6 +205,13 @@ pub(crate) fn supports_runtime_visibility_value(declaration: &PropertyDeclaratio
         serialized.as_str(),
         "visible" | "hidden" | "inherit" | "initial" | "unset" | "revert" | "revert-layer"
     )
+}
+
+pub(crate) fn supports_runtime_visibility_collapse_value(
+    declaration: &PropertyDeclaration,
+) -> bool {
+    let mut serialized = String::new();
+    declaration.to_css(&mut serialized).is_ok() && serialized == "collapse"
 }
 
 const CSS_SYSTEM_COLOR_KEYWORDS: &[&str] = &[
@@ -298,6 +315,7 @@ pub(super) fn first_unsupported_runtime_author_feature(
             allow_background_color,
             allow_property_registration: false,
             allow_border_image_initial_resets: true,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -318,6 +336,7 @@ pub(super) fn first_unsupported_runtime_registered_properties_author_feature(
             allow_background_color,
             allow_property_registration: true,
             allow_border_image_initial_resets: true,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -338,6 +357,7 @@ pub(super) fn first_unsupported_runtime_layered_registered_properties_author_fea
             allow_background_color,
             allow_property_registration: true,
             allow_border_image_initial_resets: true,
+            allow_visibility_collapse: false,
         },
     )
 }
@@ -346,6 +366,7 @@ fn first_unsupported_author_feature_with_layer_rules(
     registry: &StylesheetRegistry,
     allowed_properties: &[&str],
     allow_layers: bool,
+    allow_visibility_collapse: bool,
 ) -> Option<(String, String)> {
     first_unsupported_author_feature_with_rules(
         registry,
@@ -358,6 +379,7 @@ fn first_unsupported_author_feature_with_layer_rules(
             allow_background_color: false,
             allow_property_registration: false,
             allow_border_image_initial_resets: false,
+            allow_visibility_collapse,
         },
     )
 }
@@ -455,7 +477,9 @@ fn unsupported_rule_feature(
                 };
                 let unsupported_visibility_value = name == "visibility"
                     && allowed_properties.contains(&"visibility")
-                    && !supports_runtime_visibility_value(declaration);
+                    && !supports_runtime_visibility_value(declaration)
+                    && !(policy.allow_visibility_collapse
+                        && supports_runtime_visibility_collapse_value(declaration));
                 if !(allowed
                     || (policy.allow_border_image_initial_resets
                         && is_border_image_initial(declaration, &name)))

@@ -1,6 +1,6 @@
 use super::super::super::{
     RuntimeGpuHost, SpinonRuntimeGpuHost, c11_4_grid_auto_fit_columns_wpt_expected_report,
-    c11_4_grid_track_sizing_runtime_source, raw_host,
+    c11_4_grid_track_sizing_runtime_source, c11_4_is_visibility_collapse_scene, raw_host,
 };
 use super::super::{ERR_ARGUMENT, write_host_status};
 use std::ffi::{CStr, c_char};
@@ -72,8 +72,14 @@ pub unsafe extern "C" fn spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fi
     let Some(host) = raw_host(host) else {
         return ERR_ARGUMENT;
     };
+    // Each C11.4 evaluation owns its surface baseline; do not carry the visibility fixture's
+    // white page background into a later track-sizing scene on the same host.
+    host.set_c114_visibility_collapse_white_clear(false);
     match host.eval(source.as_ref(), layout_timeout_millis) {
         Ok(report) => {
+            if c11_4_is_visibility_collapse_scene(scene_id) {
+                host.set_c114_visibility_collapse_white_clear(true);
+            }
             let report = c11_4_grid_auto_fit_columns_wpt_expected_report(scene_id)
                 .map(|expected| {
                     format!("{report} c11_4_grid_auto_fit_columns_wpt_expected={expected}")

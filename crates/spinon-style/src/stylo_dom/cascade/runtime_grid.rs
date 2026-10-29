@@ -284,6 +284,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
         style_revision,
         None,
         None,
+        false,
     )
 }
 
@@ -304,6 +305,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascad
         style_revision,
         Some(&author_properties),
         None,
+        false,
     )
 }
 
@@ -326,6 +328,27 @@ pub fn compute_runtime_block_flex_grid_track_sizing_zoom_fixture_test_cascade_wi
         style_revision,
         Some(&author_properties),
         Some(&properties),
+        false,
+    )
+}
+
+/// C11.4 `visibility:collapse` 고정 Grid fixture에서만 해당 computed 값을 cascade 합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets(
+    view: &StyloDocumentView,
+    author_stylesheets: &[StylesheetSource],
+    viewport: CssViewport,
+    style_revision: StyleRevision,
+) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
+    let author_properties = runtime_block_flex_grid_track_sizing_author_properties();
+    compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
+        view,
+        author_stylesheets,
+        viewport,
+        style_revision,
+        Some(&author_properties),
+        None,
+        true,
     )
 }
 
@@ -336,6 +359,7 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
     style_revision: StyleRevision,
     author_properties_override: Option<&[&str]>,
     properties_override: Option<&[(&'static str, LonghandId)]>,
+    allow_visibility_collapse: bool,
 ) -> Result<super::ComputedStyleSnapshot, CssCascadeError> {
     let profile_view = {
         let _preferences = enable_orthogonal_writing_mode_preferences();
@@ -373,7 +397,11 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
                     && (property != "visibility"
                         || crate::stylesheet_registry::supports_runtime_visibility_value(
                             declaration,
-                        ))
+                        )
+                        || (allow_visibility_collapse
+                            && crate::stylesheet_registry::supports_runtime_visibility_collapse_value(
+                                declaration,
+                            )))
             },
         ) {
             return Err(CssCascadeError::UnsupportedInlineAuthorProperty { node, property });
@@ -399,7 +427,11 @@ fn compute_runtime_block_flex_grid_track_sizing_cascade_with_author_properties(
             style_revision,
             properties,
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1,
-            Some(author_properties),
+            super::CascadeOptions {
+                additional_user_agent_stylesheets: &[],
+                author_properties_override: Some(author_properties),
+                allow_visibility_collapse,
+            },
         )
     } else {
         compute_cascade(
@@ -467,11 +499,34 @@ pub fn first_unsupported_runtime_block_flex_grid_template_inline_property(
 pub fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property(
     view: &StyloDocumentView,
 ) -> Option<(NodeId, String)> {
+    first_unsupported_runtime_block_flex_grid_track_sizing_inline_property_with_visibility_collapse(
+        view, false,
+    )
+}
+
+/// C11.4 visibility fixture route에서만 inline `collapse`를 preflight에 허용합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn first_unsupported_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_inline_property(
+    view: &StyloDocumentView,
+) -> Option<(NodeId, String)> {
+    first_unsupported_runtime_block_flex_grid_track_sizing_inline_property_with_visibility_collapse(
+        view, true,
+    )
+}
+
+fn first_unsupported_runtime_block_flex_grid_track_sizing_inline_property_with_visibility_collapse(
+    view: &StyloDocumentView,
+    allow_visibility_collapse: bool,
+) -> Option<(NodeId, String)> {
     let allowed = runtime_block_flex_grid_track_sizing_author_properties();
     super::runtime_layout::first_unsupported_inline_declaration(view, |declaration, property| {
         allowed.contains(&property)
             && (property != "visibility"
-                || crate::stylesheet_registry::supports_runtime_visibility_value(declaration))
+                || crate::stylesheet_registry::supports_runtime_visibility_value(declaration)
+                || allow_visibility_collapse
+                    && crate::stylesheet_registry::supports_runtime_visibility_collapse_value(
+                        declaration,
+                    ))
     })
     .or_else(|| {
         view.inline_style_sources().find_map(|(node, css)| {

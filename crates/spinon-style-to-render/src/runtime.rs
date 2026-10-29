@@ -77,8 +77,11 @@ pub fn build_runtime_render_snapshot(
             .copied()
             .ok_or(StyleRenderError::MissingLayoutFrame(node_id))?;
         validate_runtime_frame(node_id, frame)?;
+        let visibility = style.properties.get("visibility").map(String::as_str);
         if style.properties.get("display").map(String::as_str) == Some("none")
-            || style.properties.get("visibility").map(String::as_str) == Some("hidden")
+            || visibility == Some("hidden")
+            || (styles.profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
+                && visibility == Some("collapse"))
             || frame.width == 0.0
             || frame.height == 0.0
         {

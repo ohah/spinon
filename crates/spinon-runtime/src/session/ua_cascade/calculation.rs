@@ -10,6 +10,8 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent
 use spinon_layout::MAX_LAYOUT_TREE_DEPTH;
 #[cfg(feature = "c19-2-box-paint-opacity-fixture-test")]
 use spinon_style::compute_c19_box_paint_opacity_cascade_with_stylesheets;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_style::compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets;
 #[cfg(feature = "c13-3-gesture-fixture-test")]
 use spinon_style::compute_runtime_block_flex_scroll_gesture_cascade_with_stylesheets;
 use spinon_style::{
@@ -591,6 +593,10 @@ fn compute_root(
         == RuntimeCalculationProfile::BlockFlexGridTrackSizing
         && is_c11_4_fit_content_zoom_root(&request.snapshot, root);
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_visibility_collapse_root = calculation_profile
+        == RuntimeCalculationProfile::BlockFlexGridTrackSizing
+        && super::runtime_layout::is_c11_4_visibility_collapse_root(&request.snapshot, root);
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     let view = if c11_4_fit_content_zoom_root {
         StyloDocumentView::new_c11_4_fit_content_zoom_runtime_mount_shared(
             Arc::clone(&request.snapshot),
@@ -676,7 +682,9 @@ fn compute_root(
     let reuse_previous_styles = !is_root_html_paint_profile(calculation_profile) && {
         #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
         {
-            !c11_4_auto_minmax_span_overflow_root && !c11_4_fit_content_zoom_root
+            !c11_4_auto_minmax_span_overflow_root
+                && !c11_4_fit_content_zoom_root
+                && !c11_4_visibility_collapse_root
         }
         #[cfg(not(feature = "c11-4-grid-track-sizing-fixture-test"))]
         {
@@ -897,7 +905,14 @@ fn compute_root(
             }
             RuntimeCalculationProfile::BlockFlexGridTrackSizing => {
                 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-                if c11_4_auto_minmax_span_overflow_root {
+                if c11_4_visibility_collapse_root {
+                    compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets(
+                        &view,
+                        author_stylesheets,
+                        request.viewport,
+                        request.key.style_revision,
+                    )
+                } else if c11_4_auto_minmax_span_overflow_root {
                     spinon_style::compute_runtime_block_flex_grid_track_sizing_overflow_fixture_test_cascade_with_stylesheets(
                         &view,
                         author_stylesheets,

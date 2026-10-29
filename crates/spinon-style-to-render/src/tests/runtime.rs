@@ -5,6 +5,8 @@ use spinon_core::{
     HostParent, IntrinsicSizeRevision, OwnerId,
 };
 use spinon_layout::{LayoutInputRevision, LayoutSourceRevision};
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use spinon_style::compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets;
 use spinon_style::{
     ComputedBackgroundPaint, CssMediaEnvironment, CssViewport, StyloDocumentView,
     compute_runtime_flex_custom_properties_paint_cascade, compute_runtime_flex_paint_cascade,
@@ -211,6 +213,54 @@ fn c114_visibility_hidden_keeps_layout_frame_but_omits_the_painted_box() {
     assert_eq!(render.boxes().len(), 2);
     assert_eq!(render.boxes()[0].node_id(), root.id());
     assert_eq!(render.boxes()[1].node_id(), children[1].id());
+}
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[test]
+fn c114_visibility_collapse_keeps_grid_frame_but_omits_paint_and_hit_box() {
+    let (document, root, children) = fixture_with_root_style(
+        "box-sizing:border-box;display:grid;width:100px;height:100px;grid-template-columns:100px;grid-template-rows:100px;background-color:#112233",
+        &[
+            "display:block;box-sizing:border-box;width:100px;height:100px;grid-column:1/2;grid-row:1/2;visibility:collapse;background-color:#e500a4",
+        ],
+        false,
+    );
+    let snapshot = document.snapshot();
+    let view = StyloDocumentView::new_html_fragment_child_shared(Arc::new(snapshot.clone()), root)
+        .unwrap();
+    let viewport = viewport();
+    let computed_styles = compute_runtime_block_flex_grid_track_sizing_visibility_collapse_fixture_test_cascade_with_stylesheets(
+        &view,
+        &[],
+        viewport,
+        Default::default(),
+    )
+    .unwrap();
+    let child_style = computed_styles
+        .elements
+        .iter()
+        .find(|style| style.node_id == children[0].id())
+        .unwrap();
+    assert_eq!(
+        child_style.properties.get("visibility").map(String::as_str),
+        Some("collapse")
+    );
+    let output = compute_runtime_style_layout(&snapshot, root, computed_styles, viewport).unwrap();
+    let frame = output.layout.frames.get(&children[0].id()).unwrap();
+    assert_eq!(
+        [frame.x, frame.y, frame.width, frame.height],
+        [0.0, 0.0, 100.0, 100.0]
+    );
+    let current = CurrentLayoutInputs::for_host_document(&snapshot, Default::default(), viewport);
+    let render = build_runtime_render_snapshot(&snapshot, root, &output, current).unwrap();
+    assert_eq!(render.boxes().len(), 1);
+    assert_eq!(render.boxes()[0].node_id(), root.id());
+    assert_eq!(
+        render
+            .hit_test_css_point(50.0, 50.0)
+            .map(|target| target.node_id()),
+        Some(root.id())
+    );
 }
 
 #[test]

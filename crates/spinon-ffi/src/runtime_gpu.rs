@@ -45,6 +45,8 @@ pub(crate) use fixtures::c11_4::c11_4_grid_auto_fit_columns_wpt_expected_report;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use fixtures::c11_4::c11_4_grid_track_sizing_runtime_source;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+pub(crate) use fixtures::c11_4::c11_4_is_visibility_collapse_scene;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
 pub(crate) use fixtures::data::*;
 
 const ERR_ARGUMENT: i32 = -1;
@@ -71,6 +73,8 @@ struct RuntimeGpuHost {
     root_html_default_render: bool,
     #[cfg(feature = "c04-runtime-gpu-fixture-test")]
     include_c11_4_grid_track_sizing_report: bool,
+    #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+    c114_visibility_collapse_white_clear: Mutex<bool>,
     #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
     root_html_block_paint_fixture: bool,
     #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -265,6 +269,8 @@ impl RuntimeGpuHost {
             root_html_default_render: false,
             #[cfg(feature = "c04-runtime-gpu-fixture-test")]
             include_c11_4_grid_track_sizing_report: false,
+            #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+            c114_visibility_collapse_white_clear: Mutex::new(false),
             #[cfg(feature = "c04-12-root-html-block-paint-fixture-test")]
             root_html_block_paint_fixture: false,
             #[cfg(feature = "c04-12-root-html-text-paint-fixture-test")]
@@ -331,6 +337,11 @@ impl RuntimeGpuHost {
 
     fn invalidate_scene(&self) -> Result<u64, String> {
         self.presentation.invalidate()
+    }
+
+    #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+    pub(super) fn set_c114_visibility_collapse_white_clear(&self, enabled: bool) {
+        *lock(&self.c114_visibility_collapse_white_clear) = enabled;
     }
 
     fn begin_presentation_update(&self) -> Result<u64, String> {

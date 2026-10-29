@@ -305,6 +305,12 @@ private struct C114RowAxisSpanFrameExpectation {
     let height: Double
 }
 
+private let c114VisibilityCollapseSceneIDs: Set<String> = [
+    "collapse-column", "hidden-column", "display-none-column",
+    "collapse-visible-descendant-column", "collapse-row", "hidden-row",
+    "display-none-row", "collapse-visible-descendant-row", "visible-column", "visible-row",
+]
+
 private let c114GridTrackSizingSceneIDs: Set<String> = [
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
@@ -330,6 +336,10 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "column-hidden", "row-hidden",
     "column-visibility-hidden", "column-visibility-visible-control",
     "row-visibility-hidden", "row-visibility-visible-control",
+    "collapse-column", "hidden-column", "display-none-column",
+    "collapse-visible-descendant-column", "collapse-row", "hidden-row",
+    "display-none-row", "collapse-visible-descendant-row",
+    "visible-column", "visible-row",
     "column-visibility-hidden-border-overflow",
     "column-visibility-visible-border-overflow-control",
     "row-visibility-hidden-border-overflow",
@@ -1597,6 +1607,9 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if c114VisibilityCollapseSceneIDs.contains(sceneID) {
+        return sceneID.hasSuffix("-column") ? "width=80,height=20" : "width=20,height=80"
+    }
     if let fixedMaximumFrame = c114FixedMaximumRootFrame(sceneID) {
         return fixedMaximumFrame
     }
@@ -1924,6 +1937,10 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
+    if c114VisibilityCollapseSceneIDs.contains(sceneID) {
+        if sceneID.hasPrefix("display-none-") { return "width=0,height=0" }
+        return sceneID.hasSuffix("-column") ? "width=100,height=20" : "width=20,height=100"
+    }
     if let fixedMaximumFrame = c114FixedMaximumItemFrame(sceneID) {
         return fixedMaximumFrame
     }
@@ -7973,6 +7990,11 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114VisibilityCollapseSceneIDs.contains(sceneID) {
+        if sceneID.hasPrefix("collapse-visible-descendant-") { return 2 }
+        if sceneID.hasPrefix("visible-") { return 3 }
+        return 1
+    }
     if c114ZeroFixedMaximumPixelSceneIDs.contains(sceneID) { return 2 }
     if c114FixedMaximumPixelSceneIDs.contains(sceneID) { return 2 }
     if let count = C114FitContentImplicitColumnWpt.expectedBoxCount(sceneID) { return count }
@@ -8899,6 +8921,37 @@ private struct C111MetalPixelRun {
         }
     }
 
+    private static func c114VisibilityCollapsePixelSamples(
+        _ sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
+        guard c114VisibilityCollapseSceneIDs.contains(sceneID) else { return nil }
+        let rootID = "c114-grid-visibility-collapse-\(sceneID)"
+        if sceneID.hasPrefix("collapse-visible-descendant-") {
+            return [
+                ("\(sceneID)-visible-child", rootID, 4, 4, [0, 0, 255, 255]),
+                ("\(sceneID)-outside-root", rootID, 81, 10, [255, 255, 255, 255]),
+            ]
+        }
+        switch sceneID {
+        case "collapse-column", "hidden-column":
+            return [
+                ("\(sceneID)-inside-root", rootID, 40, 10, [240, 240, 240, 255]),
+                ("\(sceneID)-outside-root", rootID, 81, 10, [255, 255, 255, 255]),
+            ]
+        case "collapse-row", "hidden-row":
+            return [
+                ("\(sceneID)-inside-root", rootID, 10, 40, [240, 240, 240, 255]),
+                ("\(sceneID)-outside-root", rootID, 10, 81, [255, 255, 255, 255]),
+            ]
+        case "visible-column":
+            return [("\(sceneID)-visible-overflow", rootID, 81, 10, [255, 0, 0, 255])]
+        case "visible-row":
+            return [("\(sceneID)-visible-overflow", rootID, 10, 81, [255, 0, 0, 255])]
+        default:
+            return nil
+        }
+    }
+
     private static func c114OverflowAutoMinimumPixelSamples(
         _ sceneID: String
     ) -> [(String, String, UInt32, UInt32, [UInt32])]? {
@@ -8932,6 +8985,16 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if let expectedSamples = c114VisibilityCollapsePixelSamples(sceneID) {
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if let expectedSamples = c114OverflowAutoMinimumPixelSamples(sceneID) {
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in

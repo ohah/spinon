@@ -349,7 +349,14 @@ impl RuntimeGpuHost {
     pub(super) fn draw(&self) -> Result<String, (i32, String)> {
         let (sequence, scene) = self.presentation.lock_current();
         let snapshot = scene.as_ref().map(|published| published.snapshot.as_ref());
-        let clear_color = if self.root_html_default_render {
+        #[cfg(feature = "c04-runtime-gpu-fixture-test")]
+        let c114_visibility_collapse_white_clear =
+            *lock(&self.c114_visibility_collapse_white_clear);
+        #[cfg(not(feature = "c04-runtime-gpu-fixture-test"))]
+        let c114_visibility_collapse_white_clear = false;
+        let clear_color = if c114_visibility_collapse_white_clear {
+            [255, 255, 255, 255]
+        } else if self.root_html_default_render {
             lock(&self.root_html_canvas_color).unwrap_or([0, 0, 0, 255])
         } else {
             [0, 0, 0, 255]
