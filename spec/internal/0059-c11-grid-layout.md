@@ -699,4 +699,4 @@ Android API 37 ARM64 AVD에서 세 scene의 layout/draw/presentation 및 PixelCo
 
 Android API 37 ARM64 software AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 49/49 scene을 통과했다. PixelCopy와 compositor 제출 전 Metal drawable 관찰은 각각 104/104 RGBA exact다. 기본 `spinon-ffi` static archive에서 신규 scene marker가 없고 fixture-test archive positive control에 세 marker가 있는 것을 확인했다. archive 결과는 APK/IPA 전체 제외 증거가 아니며 simulator는 실기기 증거가 아니다. [Chrome 사전 비교](evidence/c11-4-auto-repeat-inflexible-fixed-maximum-precomparison-2026-10-29/README.md) · [실행·스크린샷·artifact 경계와 한계](evidence/c11-4-auto-repeat-fixed-maximum-2026-10-29/README.md).
 
-이는 fixture-test opt-in의 고정 장면 결과다. 일반 author CSS admission, 전체 CSS Grid/WPT, auto-repeat 전체 조합 또는 전체 C11.4 완료를 계약하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
+이는 fixture-test opt-in의 고정 장면 결과다. 일반 author CSS admission, 전체 CSS Grid/WPT, auto-repeat 전체 조합 또는 전체 C11.4 완료를 계약하지 않는다. 구현 PR [#796](https://github.com/ohah/spinon/pull/796)은 2026-10-29T07:08:47Z Rebase and merge됐다(merge SHA `48100cc93b32c00a9fb50bde68e0c12fde78f08b`). PR check rollup과 main required status checks는 비어 있어 CI 통과로 기록하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
