@@ -699,6 +699,14 @@ Android API 37 ARM64 AVD에서 세 scene의 layout/draw/presentation 및 PixelCo
 
 전체 WPT 13 assertions, 일반 author CSS admission, 나머지 fit-content/Grid 조합, Android 실기기/hardware GPU, iOS compositor 이후 픽셀 및 전체 C11.4는 범위 밖이다. C11.4 checkbox와 공식 `72/213`은 미완료로 유지한다.
 
+## C11.4 `fit-content()` intrinsic limit 열 축 · 제한 opt-in runtime slice
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 이 slice는 기존 WPT `fit-content-track-sizing.html`의 `contentLargerThanArgument`, `smallArgument`, `largeArgument` row cases를 열 축으로 대응시키고 `min-width:auto` control을 추가한 네 exact scene만 `c04-runtime-gpu-fixture-test` 및 `c11-4-grid-track-sizing-fixture-test` opt-in 경계에 연결한다. 일반 author CSS admission, 공개 CSS 지원, 공개 ABI 또는 전체 C11.4 완료를 선언하지 않는다.
+
+각 scene은 한 100×10px child, zero gap, 단일 implicit column, definite root width를 사용한다. Limit `30/40/200px`의 minimum contribution은 `0px`이고 max-content는 `100px`이므로 used column은 각각 `30/40/100px`이다. 네 번째 scene은 `fit-content(40px)`과 `min-width:auto`의 100px automatic minimum을 함께 사용해 used column이 limit보다 큰 `100px`임을 확인한다. 이 값은 CSS Grid 2025 CRD §11.2의 `max(minimum, min(limit, max-content))`와 일치한다. Root/item/child의 full CSS px frames, projected style과 typed `GridContainerInput`, same-revision Columns/Rows pass와 contribution trace를 고정한다. `MaximizeTracks`의 raw finite growth limit `100px`은 limit로 clamp된 used base와 구분해 검사한다.
+
+Android API 37 ARM64 AVD의 네 scene에서 layout/draw/presentation과 PixelCopy sample `14/14`를 확인했다. iPhone 17 Pro/iOS 26.2 Simulator에서도 네 scene과 Metal drawable sample `14/14`가 exact였다. Android AVD는 ANGLE/Vulkan/SwiftShader software rendering이며 iOS readback은 compositor 제출 전이다. 기본 product static FFI archive에는 신규 marker/symbol이 없고 fixture-test archive positive control에는 존재한다. 이는 static archive 검사 한정이며 APK/IPA 전체 제외를 주장하지 않는다. [계획](../../plan/c11-4-fit-content-column-axis.md) · [Chrome 사전 비교](./evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md) · [실행·screenshots·archive 근거](./evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md) · [구현/runtime 실패 관점 검토 20개](./evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/implementation-review-20.md).
+
 ## C11.4 auto-repeat inflexible minimum + fixed maximum · 제한 opt-in runtime slice
 
 내부 계약 숫자 버전 `0.1.0`을 유지한다. CSS Grid Level 1 2025 CRD §7.2.3.1의 두 번째 `<fixed-size>` 형식 `minmax(<inflexible-breadth>, <fixed-breadth>)` 중 최소 `auto`, `min-content`, `max-content`와 최대 definite `LengthPx`, definite-basis `Percentage`, 현재 지원하는 정확한 `calc(length + percentage)`를 제한 C11.4 fixture profile에서 다룬다. Fraction/auto/intrinsic maximum, indefinite percentage basis와 임의 calc AST는 계속 거부한다.

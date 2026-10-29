@@ -258,6 +258,8 @@ pub(crate) fn grid_track_sizing_trace_report(
     let fit_content_spanning = super::fit_content_spanning_report::report_json(completed)?;
     let fit_content_limit_boundaries =
         super::fit_content_limit_boundaries_report::report_json(completed)?;
+    let fit_content_limit_columns =
+        super::fit_content_limit_columns_report::report_json(completed)?;
     let grid_layout_auto_tracks = super::grid_layout_auto_tracks_report::report_json(completed)?;
     let overflow_auto_minimum =
         if let Some(observation) = diagnostics.c11_4_overflow_auto_minimum_fixture.as_ref() {
@@ -433,6 +435,7 @@ pub(crate) fn grid_track_sizing_trace_report(
         "fitContentAutoMinFloor": fit_content_auto_min_floor,
         "fitContentSpanning": fit_content_spanning,
         "fitContentLimitBoundaries": fit_content_limit_boundaries,
+        "fitContentLimitColumns": fit_content_limit_columns,
         "gridLayoutAutoTracks": grid_layout_auto_tracks,
         "overflowAutomaticMinimum": overflow_auto_minimum,
         "singleTrackOverflowAutoMinimum": single_track_overflow_auto_minimum,
@@ -898,6 +901,7 @@ mod tests {
                 fit_content_auto_min_floor: None,
                 fit_content_spanning: None,
                 fit_content_limit_boundaries: None,
+                fit_content_limit_columns: None,
                 grid_layout_auto_tracks: None,
                 c11_4_overflow_auto_minimum_fixture: None,
                 c11_4_single_track_overflow_auto_minimum_fixture: None,
@@ -1074,6 +1078,7 @@ mod tests {
             fit_content_auto_min_floor: None,
             fit_content_spanning: None,
             fit_content_limit_boundaries: None,
+            fit_content_limit_columns: None,
             grid_layout_auto_tracks: None,
             c11_4_overflow_auto_minimum_fixture: None,
             c11_4_single_track_overflow_auto_minimum_fixture: None,

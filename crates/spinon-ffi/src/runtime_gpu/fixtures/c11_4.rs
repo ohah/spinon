@@ -74,6 +74,11 @@ mod fit_content_limit_boundaries;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/fit_content_limit_boundaries_report.rs"]
 mod fit_content_limit_boundaries_report;
+#[path = "c11_4/fit_content_limit_columns.rs"]
+mod fit_content_limit_columns;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/fit_content_limit_columns_report.rs"]
+mod fit_content_limit_columns_report;
 #[path = "c11_4/fit_content_min_height.rs"]
 mod fit_content_min_height;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
@@ -1237,6 +1242,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = fit_content_limit_boundaries::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = fit_content_limit_columns::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {

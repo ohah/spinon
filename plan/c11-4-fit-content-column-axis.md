@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 growth-limit row slice](./c11-4-fit-content-limit-boundaries.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md#c11-css-grid)
 
-**상태 · 2026-10-30:** 행 축 `fit-content()` limit slice는 PR #787로 병합됐다. 이 후속은 같은 §11.2/§11.5.1 계산의 열 축을 고정한다. Chrome 사전 비교와 독립 기대값은 [evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 계획 검토와 계획 PR diff 검토가 끝나기 전 구현은 시작하지 않는다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
+**구현 상태 · 2026-10-30:** 행 축 `fit-content()` limit slice는 PR #787로 병합됐다. 이 후속은 같은 §11.2/§11.5.1 계산의 열 축을 고정한다. Chrome 사전 비교와 독립 기대값은 [evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 계획 검토와 계획 PR diff 검토를 마치고 PR #810 병합 뒤 같은 checkout에서 네 scene 구현과 Android/iOS Simulator 검증을 마쳤다. [실행 근거](../spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md)에 남긴다. 구현과 별도 PR diff 검토를 마쳤고 PR 생성·체크·병합 처리가 남아 있다. C11.4 checkbox와 공식 완료 `72/213`은 유지한다.
 
 ## 목표
 
@@ -24,11 +24,11 @@
 ## 구현 및 검증 경계
 
 1. 계획 PR을 병합한 뒤 같은 checkout에서 최신 `main`을 받아 구현한다. 새 worktree를 만들지 않는다.
-2. 기존 exact scene router를 보존하고 네 column scene을 fixture-test feature에만 연결한다. root/item identity, direct child width, `min-width`, `grid-auto-columns`, row definition, source/style/layout revision이 고정 fixture 계약과 다르면 계산 전에 거부한다.
+2. 기존 exact scene router를 보존하고 네 column scene을 fixture-test feature에만 연결한다. Chrome HTML과 runtime fixture가 같은 root/item/child ID 및 scene ID를 쓰게 한다. direct child width, `min-width`, `grid-auto-columns`, row definition, source/style/layout revision이 고정 fixture 계약과 다르면 계산 전에 거부한다.
 3. Rust direct-layout와 style projection 검사는 min-content minimum 0, max-content 100px, `MaximizeTracks` raw finite growth limit 100px, used base 30/40/100px, auto-minimum floor control, all node frames와 unsupported scene 거부를 확인한다. Raw growth limit과 used base size를 혼동하지 않는다.
 4. Android/iOS fixture route의 scene allowlist, strict result matcher, capture labels를 함께 갱신한다. 각 플랫폼에서 네 scene 모두 frame, complete Rows/Columns trace, draw/present revision을 검사한다. PixelCopy와 iOS compositor 제출 전 Metal drawable samples는 root 내부·item overflow·root 바깥이지만 viewport 안인 좌표를 분리한다. 이 결과를 실기기/hardware GPU 또는 iOS compositor-after 근거로 확대하지 않는다.
 5. 기본/product FFI archive에서 새 marker·symbol·payload가 없는지, fixture-test positive control에는 있는지 확인한다. Rust formatter, 관련 focused tests와 영향을 받는 Clippy, Android/iOS Simulator builds를 기록한다.
-6. 새 구현 실패 관점 20개와 사용자가 요청한 별도 PR diff 관점 20개를 검토한다. 수정 후 영향을 받은 관점을 재실행한다. PR 화면은 Agent Browser에서 이미지 load를 확인하고 이번 브라우저 세션과 프로세스를 닫는다.
+6. 새 구현 실패 관점 20개와 별도 PR diff 관점 20개, PR 적대 관점 30개를 각각 기록한다. 수정 후 영향을 받은 관점을 재실행한다. PR 화면은 Agent Browser에서 이미지 load를 확인하고 이번 브라우저 세션과 프로세스를 닫는다.
 7. 병합 뒤 source SHA, 실제 PR merge state/merge SHA와 check rollup을 확인한다. `spec/STATUS.md`, 상위 계획과 공개/Tailnet roadmap에 제한 결과를 동기화하되 C11.4 unchecked와 `72/213`을 유지한다.
 
 ## 제외 범위
