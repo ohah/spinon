@@ -4,7 +4,7 @@
 
 ## Oracle 및 시뮬레이터 실행
 
-- 계획: [C11.3.3 unknown-area implicit auto track](../../../../plan/c11-3-3-unknown-area-auto-implicit-tracks.md). 계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 `a234244ba3ab88ac324e122a1c61a8ff143b3c70`으로 병합됐다.
+- 계획: [C11.3.3 unknown-area implicit auto track](../../../../plan/c11-3-3-unknown-area-auto-implicit-tracks.md). 계획 PR [#818](https://github.com/ohah/spinon/pull/818)은 `a234244ba3ab88ac324e122a1c61a8ff143b3c70`으로 병합됐다. 구현 PR [#819](https://github.com/ohah/spinon/pull/819)은 2026-10-29T20:53:09Z Rebase and merge됐고 merge SHA는 `1e4e93401e4959ef6aec121c0a2a721d56e45b11`이다.
 - 변경 전 보존 matrix v1 SHA-256: `62baa58bab5af9fd9cfb498ed4a5a979202a5e43bba5438952358cfc204358ee`.
 - Runtime matrix v2 SHA-256: `6064bafe2e53c51696e13992a6d0bc0a9bc96188ea46a5f82052063ab47cbd6e`. v1과 기존 inventory v1을 수정하지 않고 과거 자료로 연결한다.
 - Chrome 154 기대 geometry: root `(0,0,160,120)`, 비어 있는 unknown-area item `(160,120,0,0)`.
