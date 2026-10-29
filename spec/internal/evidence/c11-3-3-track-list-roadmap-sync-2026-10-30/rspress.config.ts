@@ -6,8 +6,8 @@ const repositoryRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url))
 
 export default {
   ...baseConfig,
-  root: path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-20261030'),
-  outDir: path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-20261030'),
+  root: path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-pass03-20261030'),
+  outDir: path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-pass03-20261030'),
   builderConfig: {
     ...baseConfig.builderConfig,
     server: { ...baseConfig.builderConfig?.server, publicDir: false },

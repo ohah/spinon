@@ -6,9 +6,9 @@ import { fileURLToPath } from 'node:url';
 
 const evidenceDirectory = path.dirname(fileURLToPath(import.meta.url));
 const repositoryRoot = path.resolve(evidenceDirectory, '../../../..');
-const selectedRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-20261030');
-const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-20261030');
-const reportPath = path.join(evidenceDirectory, 'selected-build-verification-pass01.json');
+const selectedRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-root-pass03-20261030');
+const outputRoot = path.join(repositoryRoot, 'build/spinon/c11-3-3-track-list-roadmap-site-pass03-20261030');
+const reportPath = path.join(evidenceDirectory, 'selected-build-verification-pass03.json');
 const sha256 = (bytes) => createHash('sha256').update(bytes).digest('hex');
 assert.ok(fs.lstatSync(selectedRoot).isDirectory(), 'selected documentation root missing');
 assert.ok(fs.lstatSync(outputRoot).isDirectory(), 'RSPress output missing');
@@ -30,6 +30,7 @@ function copyIfMissing(sourcePath, relativeOutput) {
   assert.equal(sha256(fs.readFileSync(destination)), sha256(sourceBytes), 'copied build asset hash mismatch');
 }
 
+copyIfMissing(path.join(selectedRoot, 'roadmap.html'), 'roadmap.html');
 copyIfMissing(path.join(selectedRoot, 'roadmap.svg'), 'roadmap.svg');
 copyIfMissing(path.join(selectedRoot, 'public/icon.svg'), 'icon.svg');
 
