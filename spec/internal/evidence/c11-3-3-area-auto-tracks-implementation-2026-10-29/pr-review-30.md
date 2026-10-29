@@ -37,4 +37,4 @@
 
 ## 판정
 
-30개 관점은 PASS다. PR #807은 open이며 merge되지 않았다. GitHub check run은 보고되지 않았고, branch protection에 required status check가 설정되지 않았다. repository 규칙에 맞춰 `Rebase and merge`만 허용되는지 최종 확인한 뒤 merge state를 다시 읽어야 한다.
+30개 관점은 PASS다. 이 audit을 마쳤을 때 PR #807은 open이었고 GitHub check run은 없었다. 이후 2026-10-29T13:54:24Z에 `Rebase and merge`됐으며 merge SHA는 `ee824922ecff07f2dc0b79ba02cf865a51d45bb4`다. branch protection에 required status check는 설정되지 않았다.

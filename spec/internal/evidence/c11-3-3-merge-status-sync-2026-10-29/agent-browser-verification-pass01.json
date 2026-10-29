@@ -1,0 +1,17 @@
+{
+  "browser": "agent-browser",
+  "url": "file:///Users/yoonhb/Documents/workspace/spinon/spec/public/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "pr807_card_occurrences": 1,
+  "merge_sha_visible": true,
+  "official_count_72_of_213_visible": true,
+  "c11_3_3_candidate_visible": true,
+  "screenshot": {
+    "path": "roadmap-agent-browser-pass01.png",
+    "width": 1280,
+    "height": 633
+  },
+  "verification_boundary": "local file rendering only; Tailnet served content and links are checked after synchronization",
+  "browser_closed": true,
+  "agent_browser_process_remains": false
+}
