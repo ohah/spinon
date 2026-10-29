@@ -147,15 +147,41 @@ impl StyloDocumentView {
         snapshot: Arc<HostDocumentSnapshot>,
         root: HostNodeHandle,
     ) -> Result<Self, StyloDomError> {
+        Self::new_html_fragment_child_shared_with_base_url(
+            snapshot,
+            root,
+            "https://spinon.invalid/document.html",
+        )
+    }
+
+    /// C11.4 고정 fixture만 지정된 문맥에서 inline CSS를 파싱합니다.
+    pub(crate) fn new_html_fragment_child_shared_with_base_url(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+        document_base_url: &str,
+    ) -> Result<Self, StyloDomError> {
         let _preferences = acquire_standard_stylo_preferences();
         Self::build_shared_with_base_url(
             snapshot,
             root,
             true,
             QuirksMode::NoQuirks,
-            "https://spinon.invalid/document.html",
+            document_base_url,
             false,
             false,
+        )
+    }
+
+    /// opt-in C11.4 zoom fixture cascade용 view를 만듭니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fn new_c11_4_fit_content_zoom_fixture_test_html_fragment_child_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+    ) -> Result<Self, StyloDomError> {
+        Self::new_html_fragment_child_shared_with_base_url(
+            snapshot,
+            root,
+            "chrome://spinon.invalid/c11-4/fit-content-zoom.html",
         )
     }
 
@@ -174,6 +200,37 @@ impl StyloDocumentView {
             true,
             QuirksMode::NoQuirks,
             "https://spinon.invalid/document.html",
+            false,
+            true,
+        )
+    }
+
+    /// C11.4 zoom 고정 scene에서만 Chrome-only CSS를 해석하는 runtime view를 만듭니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub fn new_c11_4_fit_content_zoom_runtime_mount_shared(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+    ) -> Result<Self, StyloDomError> {
+        Self::new_html_runtime_mount_shared_with_base_url(
+            snapshot,
+            root,
+            "chrome://spinon.invalid/c11-4/fit-content-zoom.html",
+        )
+    }
+
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    fn new_html_runtime_mount_shared_with_base_url(
+        snapshot: Arc<HostDocumentSnapshot>,
+        root: HostNodeHandle,
+        document_base_url: &str,
+    ) -> Result<Self, StyloDomError> {
+        let _preferences = acquire_standard_stylo_preferences();
+        Self::build_shared_with_base_url(
+            snapshot,
+            root,
+            true,
+            QuirksMode::NoQuirks,
+            document_base_url,
             false,
             true,
         )

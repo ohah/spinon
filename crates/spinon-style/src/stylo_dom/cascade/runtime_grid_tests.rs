@@ -30,6 +30,10 @@ struct Fixture {
 }
 
 fn fixture(style: &str) -> Fixture {
+    fixture_with_base_url(style, "https://spinon.invalid/document.html")
+}
+
+fn fixture_with_base_url(style: &str, document_base_url: &str) -> Fixture {
     let mut document = HostDocument::new().unwrap();
     let root = document.reserve_node_handle().unwrap();
     let child = document.reserve_node_handle().unwrap();
@@ -66,9 +70,12 @@ fn fixture(style: &str) -> Fixture {
         });
     }
     document.commit(batch).unwrap();
-    let view =
-        StyloDocumentView::new_html_fragment_child_shared(Arc::new(document.snapshot()), root)
-            .unwrap();
+    let view = StyloDocumentView::new_html_fragment_child_shared_with_base_url(
+        Arc::new(document.snapshot()),
+        root,
+        document_base_url,
+    )
+    .unwrap();
     Fixture {
         view,
         root: root.id(),
@@ -179,3 +186,6 @@ mod template_repeat;
 mod track_sizing;
 #[path = "runtime_grid_tests/tracks.rs"]
 mod tracks;
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "runtime_grid_tests/zoom_fixture.rs"]
+mod zoom_fixture;

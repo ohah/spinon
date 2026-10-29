@@ -16,6 +16,8 @@ use style::{
     stylist::{RuleInclusion, Stylist},
 };
 
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+use super::super::ComputedCssZoom;
 use super::super::{
     ComputedCssMath, ComputedCssOpacity, ComputedCssOverflow, ComputedCssOverflowClipMargin,
     ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
@@ -70,6 +72,14 @@ pub(super) fn computed_element_output(
         style::values::computed::PositionProperty::Fixed => ComputedCssPosition::Fixed,
         style::values::computed::PositionProperty::Sticky => ComputedCssPosition::Sticky,
     };
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    let c11_4_zoom =
+        (profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1).then(|| {
+            ComputedCssZoom {
+                specified: computed.clone_zoom().value(),
+                effective: computed.effective_zoom.value(),
+            }
+        });
     let fixed_containing_block_effects = fixed_containing_block_effects(computed);
     let stacking_z_index = matches!(
         profile,
@@ -239,6 +249,8 @@ pub(super) fn computed_element_output(
         node_id,
         layout_position,
         stacking_z_index,
+        #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+        c11_4_zoom,
         stacking_opacity,
         stacking_visibility,
         layout_overflow_x,

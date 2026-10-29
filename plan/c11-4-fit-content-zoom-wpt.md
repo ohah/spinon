@@ -6,7 +6,7 @@
 
 **사전 비교:** [고정 source, Chrome 156 관측, 독립 기대값](../spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/README.md) · [machine-readable expected](../spec/internal/evidence/c11-4-fit-content-zoom-precomparison-2026-10-29/expected.json)
 
-**상태:** 계획·사전 비교 단계다. 구현, app runtime, Android/iOS Simulator는 아직 실행하지 않았다. 2026-10-29 계획 보정에서 Stylo→Taffy typed length의 zoom scaling을 반영해 Taffy track 기대값을 80px로 정정했다. C11.4 checkbox와 공식 완료 `72/213`을 유지한다.
+**상태:** 고정 zoomed-grid assertion을 opt-in runtime fixture와 Android/iOS Simulator surface 판정까지 구현했다. 구현은 exact fixture root ID와 `c11-4-grid-track-sizing-fixture-test`에 한정한다. Android API 37 ARM64 AVD PixelCopy와 iPhone 17 Pro/iOS 26.2 Simulator Metal 표본이 각각 4/4 exact다. 2026-10-29 계획 보정에서 Stylo→Taffy typed length의 zoom scaling을 반영해 Taffy track 기대값을 80px로 정정했고, 실행 증거에서 같은 값을 확인했다. 일반 CSS zoom 지원·전체 WPT runner·전체 C11.4는 미완료다. C11.4 checkbox와 공식 완료 `72/213`을 유지한다. [실행 근거](../spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.md).
 
 ## 목적과 범위
 
@@ -50,6 +50,16 @@ Zoom은 `RuntimeBlockFlexGridTrackSizingV1` 전체의 author allowlist로 승격
 ## 제외 범위
 
 일반 CSS zoom 지원, multiple zoom ancestors, zoomed auto-repeat, zoomed percentage/calc arguments, zoomed text/intrinsic wrapping, transforms, viewport page scale, CSSOM 일반 구현, full WPT runner, physical device/hardware GPU, iOS compositor-after pixels, C11.4 및 C11 전체 완료는 이 slice로 증명하지 않는다.
+
+## 구현 결과 · 2026-10-29
+
+Exact `c114-fit-content-zoomed-grid` root만 fixture-test 경로의 `chrome://spinon.invalid/c11-4/fit-content-zoom.html` Stylo view를 선택한다. `zoom`은 일반 C11.4 author allowlist나 product feature로 승격하지 않았고, exact fixture 외 입력은 기존 fail-closed path에 남는다. WPT CSSOM `gridTemplateRows:40px`과 Taffy typed `fit-content(80px)`는 서로 다른 계층의 기대값으로 유지한다.
+
+Android API 37 ARM64 `emulator-5554`와 iPhone 17 Pro/iOS 26.2 Simulator `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D`에서 root/item/child frames `120×600`, `120×80`, `120×800` CSS px, Rows `[80]px`, six track-sizing stages와 draw/present를 확인했다. Android PixelCopy 및 iOS compositor 제출 전 Metal drawable의 child 내부·item 밖·root 밖 표본 3개와 root 밖 검정 control 1개가 각 4/4 exact다. Android AVD는 ANGLE/SwiftShader software renderer다.
+
+Focused style test 1/1, runtime fixture tests 4/4, FFI fixture allowlist 1/1, fixture boundary 20/20, opt-in Clippy, product/fixture static archive isolation, Android app build 및 iOS Simulator app build를 확인했다. 두 플랫폼의 최신 scene capture는 각 1/1, 표면 표본은 각각 4/4 exact다. Fixture boundary 첫 재실행에서 capture catalog count assertion이 540으로 남아 실패해 542로 고친 뒤 전체를 재실행했다. 별도 [구현·런타임 실패 관점 검토 20개](../spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/implementation-runtime-review-20.md)와 [PR diff 실패 관점 검토 30개](../spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/pr-diff-review-30.md)를 마쳤다. 세부 명령과 source archive 범위는 실행 근거 README에 기록한다. PR은 아직 생성되지 않았고 merge state도 없다.
+
+실패·수정 경과, run IDs, screenshots, pixel coordinates와 raw runtime logs는 [실행 근거](../spec/internal/evidence/c11-4-fit-content-zoom-runtime-2026-10-29/README.md)에 둔다. 계획 실패 관점 검토, 구현/runtime 검토와 PR diff 검토는 각각 구분한다.
 
 ## 계획 실패 관점 검토
 

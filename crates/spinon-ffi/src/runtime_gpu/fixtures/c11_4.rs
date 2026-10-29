@@ -84,6 +84,11 @@ mod fit_content_spanning;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/fit_content_spanning_report.rs"]
 mod fit_content_spanning_report;
+#[path = "c11_4/fit_content_zoomed_grid.rs"]
+mod fit_content_zoomed_grid;
+#[cfg(feature = "c04-runtime-gpu-fixture-test")]
+#[path = "c11_4/fit_content_zoomed_grid_report.rs"]
+mod fit_content_zoomed_grid_report;
 #[path = "c11_4/fixed_repeat_auto_repeat.rs"]
 mod fixed_repeat_auto_repeat;
 #[path = "c11_4/fixed_repeat_minmax_flex.rs"]
@@ -1215,6 +1220,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = fit_content_implicit_column::runtime_source(scene_id) {
+        return Ok(Cow::Borrowed(source));
+    }
+    if let Some(source) = fit_content_zoomed_grid::runtime_source(scene_id) {
         return Ok(Cow::Borrowed(source));
     }
     if let Some(source) = fit_content_auto_min_floor::runtime_source(scene_id) {

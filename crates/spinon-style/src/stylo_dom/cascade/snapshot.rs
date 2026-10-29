@@ -505,6 +505,9 @@ pub struct ComputedElementStyle {
     pub layout_position: ComputedCssPosition,
     /// C12.4 profile에서만 설정하는 typed `z-index` 값입니다.
     pub stacking_z_index: Option<ComputedCssZIndex>,
+    /// C11.4 fixture profile에서만 보존하는 Stylo specified/effective zoom 값입니다.
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub c11_4_zoom: Option<ComputedCssZoom>,
     /// C19.2 runtime stacking profile에서 가져온 computed `opacity`입니다.
     pub stacking_opacity: Option<ComputedCssOpacity>,
     /// C12.4 profile에서만 설정하는 typed `visibility` 값입니다.
@@ -554,6 +557,14 @@ pub struct ComputedElementStyle {
 /// 유한한 범위 `[0, 1]`에 있는 CSS computed opacity입니다.
 #[derive(Clone, Copy, Debug, PartialEq)]
 pub struct ComputedCssOpacity(f32);
+
+/// C11.4의 제한 runtime fixture에서 같은 Stylo 결과의 specified/effective zoom입니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedCssZoom {
+    pub specified: f32,
+    pub effective: f32,
+}
 
 impl ComputedCssOpacity {
     pub(crate) fn new(value: f32) -> Option<Self> {

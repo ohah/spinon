@@ -561,6 +561,7 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "negative-percentage-col-fit-prefix-item",
     "negative-percentage-col-both-negative-final",
     "fit-content-auto-neighbor-wpt", "fit-content-min-height-wpt",
+    "fit-content-zoomed-grid-wpt",
     "fit-content-percentage-row-wpt", "fit-content-calc-percentage-row-wpt",
     C114FitContentImplicitColumnWpt.sceneID,
     "fit-content-spanning-wpt",
@@ -1493,6 +1494,7 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=300" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=300" }
+    if sceneID == "fit-content-zoomed-grid-wpt" { return "width=120,height=600" }
     if c114IsFitContentPercentageArgumentScene(sceneID) { return "width=60,height=300" }
     if sceneID == "fit-content-spanning-wpt" { return "width=60,height=300" }
     if sceneID == "fit-content-auto-min-floor-wpt"
@@ -1818,6 +1820,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     }
     if sceneID == "fit-content-auto-neighbor-wpt" { return "width=60,height=10" }
     if sceneID == "fit-content-min-height-wpt" { return "width=60,height=10" }
+    if sceneID == "fit-content-zoomed-grid-wpt" { return "width=120,height=80" }
     if c114IsFitContentPercentageArgumentScene(sceneID) {
         return "width=60,height=\(sceneID == "fit-content-calc-percentage-row-wpt" ? 35 : 150)"
     }
@@ -3577,6 +3580,104 @@ private func c114FitContentMinHeightMatches(_ sceneID: String, report: String) -
               abs(bases[0].doubleValue - (index == 0 ? 0 : 10)) <= 0.000001 else {
             return false
         }
+    }
+    return true
+}
+
+private func c114FitContentZoomedGridMatches(_ sceneID: String, report: String) -> Bool {
+    guard sceneID == "fit-content-zoomed-grid-wpt" else { return true }
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let revisionStyle = revision["style"] as? NSNumber,
+          let revisionEnvironment = revision["environment"] as? NSNumber,
+          let observation = diagnostics["fitContentZoomedGrid"] as? [String: Any],
+          observation["sceneId"] as? String == sceneID,
+          observation["frameSource"] as? String == "pre-render LayoutOutput CSS px",
+          let style = observation["styleSnapshot"] as? [String: Any],
+          style["profile"] as? String == "RuntimeBlockFlexGridTrackSizingV1",
+          let zoom = style["zoom"] as? [String: Any],
+          let rootZoom = zoom["root"] as? [String: Any],
+          let itemZoom = zoom["item"] as? [String: Any],
+          let childZoom = zoom["child"] as? [String: Any],
+          let dimensions = style["typedDimensions"] as? [String: Any],
+          let input = observation["layoutInputGridContainer"] as? [String: Any],
+          let nodeIDs = observation["nodeIds"] as? [String: Any],
+          let root = nodeIDs["root"] as? NSNumber,
+          let item = nodeIDs["item"] as? NSNumber,
+          let child = nodeIDs["child"] as? NSNumber,
+          let frames = observation["framesCssPx"] as? [String: Any],
+          let rowStages = observation["rowSizingStages"] as? [[String: Any]],
+          let contributions = observation["rowContributions"] as? [[String: Any]],
+          let generation = style["generation"] as? NSNumber,
+          let document = style["documentRevision"] as? NSNumber,
+          let renderTree = style["renderTreeRevision"] as? NSNumber,
+          let styleRevision = style["styleRevision"] as? NSNumber,
+          let environment = style["environmentRevision"] as? NSNumber else { return false }
+    func zoomMatches(_ value: [String: Any], specified: Double) -> Bool {
+        guard let actualSpecified = value["specified"] as? NSNumber,
+              let effective = value["effective"] as? NSNumber else { return false }
+        return abs(actualSpecified.doubleValue - specified) < 0.000001
+            && abs(effective.doubleValue - 2) < 0.000001
+    }
+    guard zoomMatches(rootZoom, specified: 2),
+          zoomMatches(itemZoom, specified: 1), zoomMatches(childZoom, specified: 1),
+          style["computedPropertyGridTemplateRows"] as? String == "none",
+          dimensions["rootWidth"] as? String == "LengthPx(120.0)",
+          dimensions["rootHeight"] as? String == "LengthPx(600.0)",
+          dimensions["itemMinHeight"] as? String == "LengthPx(0.0)",
+          dimensions["childHeight"] as? String == "LengthPx(800.0)",
+          (style["typedGridStyle"] as? String)?.contains(
+            "auto_rows: TrackList([FitContent(LengthPx(80.0))])") == true,
+          input["columns"] as? String == "[LengthPx(120.0)]",
+          input["explicitRows"] as? String == "[]",
+          input["autoColumns"] as? String == "Auto",
+          input["autoRows"] as? String == "TrackList([FitContent(LengthPx(80.0))])",
+          input["autoFlow"] as? String == "Row",
+          input["placementMode"] as? String == "TrackSizing",
+          [root, item, child].map(\.int64Value) == [1, 2, 3],
+          (style["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          (input["rootNode"] as? NSNumber)?.int64Value == root.int64Value,
+          frames.count == 3,
+          c114FitContentFrameMatches(frames["root"], x: 0, y: 0, width: 120, height: 600),
+          c114FitContentFrameMatches(frames["item"], x: 0, y: 0, width: 120, height: 80),
+          c114FitContentFrameMatches(frames["child"], x: 0, y: 0, width: 120, height: 800),
+          generation.int64Value > 0, document.int64Value > 0, renderTree.int64Value > 0,
+          styleRevision.int64Value >= 0,
+          styleRevision.int64Value == revisionStyle.int64Value,
+          environment.int64Value >= 0,
+          environment.int64Value == revisionEnvironment.int64Value,
+          c114FitContentAutoNeighborReportField(report, "generation=") == String(generation.int64Value),
+          c114FitContentAutoNeighborReportField(report, "document_revision=") == String(document.int64Value),
+          c114FitContentAutoNeighborReportField(report, "render_tree_revision=") == String(renderTree.int64Value),
+          c114FitContentAutoNeighborReportField(report, "style_revision=") == String(styleRevision.int64Value),
+          c114FitContentAutoNeighborReportField(report, "environment_revision=") == String(environment.int64Value) else {
+        return false
+    }
+    let expectedStages = [
+        "Initialize",
+        "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+        "IntrinsicSizingComplete", "MaximizeTracks", "ExpandFlexibleTracks",
+        "StretchAutoTracks { applied: true }",
+    ]
+    guard rowStages.count == expectedStages.count else { return false }
+    for (index, expected) in expectedStages.enumerated() {
+        guard rowStages[index]["stage"] as? String == expected,
+              let bases = rowStages[index]["baseSizesCssPx"] as? [NSNumber],
+              bases.count == 1,
+              abs(bases[0].doubleValue - (index < 3 ? 0 : 80)) < 0.000001 else {
+            return false
+        }
+    }
+    let expectedKinds = ["Minimum", "MinContent", "MaxContent"]
+    let expectedValues = [0.0, 800.0, 800.0]
+    guard contributions.count == expectedKinds.count else { return false }
+    for index in expectedKinds.indices {
+        guard (contributions[index]["item"] as? NSNumber)?.int64Value == item.int64Value,
+              (contributions[index]["span"] as? NSNumber)?.intValue == 1,
+              contributions[index]["crossesFlexibleTrack"] as? Bool == false,
+              contributions[index]["kind"] as? String == expectedKinds[index],
+              let value = contributions[index]["valueCssPx"] as? NSNumber,
+              abs(value.doubleValue - expectedValues[index]) < 0.000001 else { return false }
     }
     return true
 }
@@ -6006,6 +6107,11 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=2,x=0,y=0,width=60,height=10;"
             + "2:node=3,x=0,y=0,width=60,height=10]"
     }
+    if sceneID == "fit-content-zoomed-grid-wpt" {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=600;"
+            + "1:node=2,x=0,y=0,width=120,height=80;"
+            + "2:node=3,x=0,y=0,width=120,height=800]"
+    }
     if c114IsFitContentPercentageArgumentScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=300;"
             + "1:node=2,x=0,y=0,width=60,height=\(sceneID == "fit-content-calc-percentage-row-wpt" ? 35 : 150);"
@@ -7639,6 +7745,7 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "fit-content-auto-neighbor-wpt"
         || sceneID == "grid-layout-auto-tracks-c114-wpt" { return 5 }
     if sceneID == "fit-content-min-height-wpt" { return 3 }
+    if sceneID == "fit-content-zoomed-grid-wpt" { return 3 }
     if c114IsFitContentPercentageArgumentScene(sceneID) { return 3 }
     if sceneID == "fit-content-spanning-wpt" { return 3 }
     if sceneID == "fit-content-auto-min-floor-wpt"
@@ -8640,6 +8747,24 @@ private struct C111MetalPixelRun {
                 }
             }
         }
+        if sceneID == "fit-content-zoomed-grid-wpt" {
+            let rootID = "c114-fit-content-zoomed-grid"
+            let childID = "c114-fit-content-zoomed-grid-child"
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("fit-content-zoom-child-in-row", childID, 60, 40, [255, 209, 102, 255]),
+                ("fit-content-zoom-child-past-item", childID, 60, 100, [255, 209, 102, 255]),
+                ("fit-content-zoom-child-past-root", childID, 60, 610, [255, 209, 102, 255]),
+                ("fit-content-zoom-outside-root", rootID, 125, 610, [0, 0, 0, 255]),
+            ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if c114IsFitContentPercentageArgumentScene(sceneID) {
             let calcArgument = sceneID == "fit-content-calc-percentage-row-wpt"
             let prefix = calcArgument ? "fit-content-calc-percentage" : "fit-content-percentage"
@@ -9531,7 +9656,8 @@ private struct C111MetalPixelRun {
         } ?? false
         let c114PixelViewportWidth: UInt32 = c114PixelSceneHasSurfaceSamples ? 480 : 320
         let c114PixelViewportHeight: UInt32 =
-            c114IsFitContentPercentageArgumentScene(c114Scene ?? "") ? 400
+            c114Scene == "fit-content-zoomed-grid-wpt" ? 800
+                : c114IsFitContentPercentageArgumentScene(c114Scene ?? "") ? 400
                 : C114FitContentImplicitColumnWpt.isScene(c114Scene ?? "") ? 320 : 240
         guard (8...128).contains(runID.count),
               runID.allSatisfy({ $0.isASCII && ($0.isLetter || $0.isNumber || $0 == "-" || $0 == "_") }),
@@ -9751,6 +9877,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     private var c114FitContentMinHeightExpectedPresentationIdentity: String?
     private var c114FitContentMinHeightExpectedSurfaceGeneration: UInt64?
     private var c114FitContentMinHeightExpectedSequence: UInt64?
+    private var c114FitContentZoomedGridExpectedPresentationIdentity: String?
+    private var c114FitContentZoomedGridExpectedSurfaceGeneration: UInt64?
+    private var c114FitContentZoomedGridExpectedSequence: UInt64?
     private var c114FitContentPercentageArgumentExpectedPresentationIdentity: String?
     private var c114FitContentPercentageArgumentExpectedSurfaceGeneration: UInt64?
     private var c114FitContentPercentageArgumentExpectedSequence: UInt64?
@@ -10535,7 +10664,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c133GestureFixtureRequested
             ? "UIPanGestureRecognizer · bounded Rust queue/session → WGPU Metal · 400×240 CSS px"
             : c114GridTrackSizingProbeRequested
-            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
+            ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" ? 800 : c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
             : c1133GridTemplateAreasProbeRequested
             ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
@@ -10890,6 +11019,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             equalToConstant: c114GridTrackSizingProbeRequested
                 && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
                 : c114GridTrackSizingProbeRequested
+                    && c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" ? 800
+                : c114GridTrackSizingProbeRequested
                 && c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400
                 : c114OverflowPixelReadbackViewportWidth > 320 ? 240
                 : imagePaintProbeRequested
@@ -10994,7 +11125,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let scale = view.window?.screen.scale ?? UIScreen.main.scale
-        let viewportSize = c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
+        let viewportSize = c114GridTrackSizingProbeRequested
+            && c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt"
+            ? CGSize(width: 320, height: 800)
+            : c122AbsoluteBlockProbeRequested || c123FixedPositionProbeRequested
             ? CGSize(width: 360, height: 800)
             : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID)
                 ? CGSize(width: 480, height: 320)
@@ -11182,6 +11316,34 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
               (UInt64(values[1]) ?? 0) > 0,
               (UInt64(values[2]) ?? 0) > 0 else { return nil }
         return "60x300/\(expectedViewport)/" + values.joined(separator: "/")
+    }
+
+    private func c114FitContentZoomedGridPresentationIdentity(
+        _ report: String, drawReport: Bool
+    ) -> String? {
+        let rootFrameField = drawReport ? "root_css_px=" : "root_frame_css_px="
+        let viewportField = drawReport ? "viewport_css_px=" : "render_viewport_css_px="
+        guard report.hasPrefix("status=0 "),
+              c114FitContentAutoNeighborReportField(report, "boxes=") == "3",
+              c114FitContentAutoNeighborReportField(report, rootFrameField) == "120x600",
+              c114FitContentAutoNeighborReportField(report, viewportField) == "320x800",
+              drawReport
+                ? (report.contains("presented boxes=3 ")
+                    && c114AlignContentNormalEqualAutoRowsPositiveSize(
+                        c114FitContentAutoNeighborReportField(report, "surface_texture=")))
+                : c114FitContentAutoNeighborReportField(report, "layout=") == "ready" else {
+            return nil
+        }
+        let fields = [
+            "generation=", "document_revision=", "render_tree_revision=",
+            "style_revision=", "environment_revision="
+        ]
+        let values = fields.map { c114FitContentAutoNeighborReportField(report, $0) }
+        guard values.allSatisfy({ UInt64($0) != nil }),
+              (UInt64(values[0]) ?? 0) > 0,
+              (UInt64(values[1]) ?? 0) > 0,
+              (UInt64(values[2]) ?? 0) > 0 else { return nil }
+        return "120x600/320x800/" + values.joined(separator: "/")
     }
 
     private func c114FitContentSpanningPresentationIdentity(
@@ -12674,6 +12836,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 && C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320
             : c114GridTrackSizingProbeRequested
                 && c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400
+            : c114GridTrackSizingProbeRequested
+                && c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" ? 800
             : c125StickyFixtureRequested ? 260 : c131StackingDescendantClipProbeRequested
             ? 128 : c131CompactSurfaceMatrixRouteRequested
             ? 100 : c131BorderStripProbeRequested
@@ -13265,6 +13429,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 c114GridTrackSizingSceneID, report: report)
             let expectedFitContentMinHeightMatches = c114FitContentMinHeightMatches(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedFitContentZoomedGridMatches = c114FitContentZoomedGridMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedFitContentPercentageArgumentMatches =
                 c114FitContentPercentageArgumentMatches(
                     c114GridTrackSizingSceneID, report: report)
@@ -13302,6 +13468,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedMixedMultiSpanFramesMatch,
                   expectedFitContentAutoNeighborMatches,
                   expectedFitContentMinHeightMatches,
+                  expectedFitContentZoomedGridMatches,
                   expectedFitContentPercentageArgumentMatches,
                   expectedFitContentSpanningMatches,
                   expectedOverflowAutoMinimumMatches,
@@ -14280,6 +14447,38 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             c114FitContentMinHeightExpectedPresentationIdentity = identity
             c114FitContentMinHeightExpectedSurfaceGeneration = generation
             c114FitContentMinHeightExpectedSequence = sequence
+            stateLock.unlock()
+            log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" {
+            let environmentReport = report ?? ""
+            guard c114FitContentZoomedGridMatches(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  c114ExpectedNodeFramesMatch(
+                    c114GridTrackSizingSceneID, report: environmentReport),
+                  let identity = c114FitContentZoomedGridPresentationIdentity(
+                    environmentReport, drawReport: false) else {
+                stateLock.lock()
+                c114FitContentZoomedGridExpectedPresentationIdentity = nil
+                c114FitContentZoomedGridExpectedSurfaceGeneration = nil
+                c114FitContentZoomedGridExpectedSequence = nil
+                stateLock.unlock()
+                log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=false report=\(environmentReport)")
+                postStatus("실패 · C11.4 zoom fit-content surface 환경 trace가 기대값과 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 zoom fit-content environment layout/revision 검증 실패"
+                )
+            }
+            stateLock.lock()
+            guard !closing && surfaceGeneration == generation
+                && presentationSequence == sequence else {
+                stateLock.unlock()
+                return
+            }
+            c114FitContentZoomedGridExpectedPresentationIdentity = identity
+            c114FitContentZoomedGridExpectedSurfaceGeneration = generation
+            c114FitContentZoomedGridExpectedSequence = sequence
             stateLock.unlock()
             log("SPINON_C114_GRID_ENVIRONMENT_RESULT run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) strict_matches=true surface_generation=\(generation) sequence=\(sequence) identity=\(identity)")
         }
@@ -15532,7 +15731,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let viewportHeight = viewportHeightCssPx
             stateLock.unlock()
             let expectedViewportHeight: Float =
-                c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
+                pixelRun.sceneID == "fit-content-zoomed-grid-wpt" ? 800
+                    : c114IsFitContentPercentageArgumentScene(pixelRun.sceneID) ? 400
                     : C114FitContentImplicitColumnWpt.isScene(pixelRun.sceneID) ? 320 : 240
             guard viewportWidth == expectedViewportWidth,
                   viewportHeight == expectedViewportHeight,
@@ -15811,6 +16011,29 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                 postStatus("실패 · C11.4 min-height fit-content draw revision이 surface 환경과 다릅니다")
                 throw C0410LatestTaskLaneError.operationFailed(
                     "C11.4 min-height fit-content draw identity가 surface environment와 일치하지 않습니다"
+                )
+            }
+        }
+        if c114GridTrackSizingProbeRequested,
+           c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" {
+            let actualIdentity = result.flatMap {
+                c114FitContentZoomedGridPresentationIdentity($0, drawReport: true)
+            }
+            stateLock.lock()
+            let expectedIdentity = c114FitContentZoomedGridExpectedPresentationIdentity
+            let expectedSurfaceGeneration = c114FitContentZoomedGridExpectedSurfaceGeneration
+            let expectedSequence = c114FitContentZoomedGridExpectedSequence
+            let currentSequence = presentationSequence
+            stateLock.unlock()
+            let matched = actualIdentity != nil
+                && actualIdentity == expectedIdentity
+                && expectedSurfaceGeneration == generation
+                && expectedSequence == currentSequence
+            log("SPINON_C114_GRID_PRESENTATION_MATCH run_id=\(c114GridTrackSizingRunID) matched=\(matched) surface_generation=\(generation) sequence=\(currentSequence) expected_identity=\(expectedIdentity ?? "missing") actual_identity=\(actualIdentity ?? "missing")")
+            guard matched else {
+                postStatus("실패 · C11.4 zoom fit-content draw revision이 검증된 surface 환경과 다릅니다")
+                throw C0410LatestTaskLaneError.operationFailed(
+                    "C11.4 zoom fit-content draw identity가 surface environment와 일치하지 않습니다"
                 )
             }
         }
@@ -16914,7 +17137,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             sceneID: run.sceneID
         ) == nil ? 320 : 480
         let expectedViewportHeight: UInt32 =
-            c114IsFitContentPercentageArgumentScene(run.sceneID) ? 400
+            run.sceneID == "fit-content-zoomed-grid-wpt" ? 800
+                : c114IsFitContentPercentageArgumentScene(run.sceneID) ? 400
                 : C114FitContentImplicitColumnWpt.isScene(run.sceneID) ? 320 : 240
         let viewport = (width: expectedViewportWidth, height: expectedViewportHeight)
         stateLock.lock()
