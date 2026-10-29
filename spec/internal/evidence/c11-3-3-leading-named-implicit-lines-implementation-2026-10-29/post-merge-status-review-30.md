@@ -40,3 +40,12 @@ PR #790 병합 뒤 `spec/STATUS.md`에 이번 제한 slice의 근거만 추가�
 ## 판정
 
 병합 metadata와 검증 범위를 근거에 맞게 반영했다. C11.3.3 candidate, 상위 C11 checkbox, 공식 `72/213`은 그대로다. 수정 blocker는 발견하지 못했다.
+
+## 원격 PR diff 판정
+
+- 문서 PR [#791](https://github.com/ohah/spinon/pull/791)의 base는 `d993eb4114b17a49b2d096f319053fd43c6fcf27`, 최초 원격 검토 head는 `63d1a8c8d7cd41d5ea99c784e83e210653b3a25c`다.
+- GitHub PR files API의 두 경로는 로컬 `origin/main...origin/docs/c11-3-3-merge-status-sync-20261029` diff와 일치한다: `spec/STATUS.md` 및 이 검토 문서다. 제품 코드·체크박스·공식 집계 변경은 없다.
+- PR 본문은 #790의 merge metadata, 미보고 CI, candidate 상태와 `72/213` 보존을 정확히 설명한다. 위 30개 관점은 이 두 문서의 원격 변경 범위에 대조했다.
+- PR check rollup과 required-check 조회는 비어 있다. `main`은 required approving review 0개이며 linear history를 요구한다. 저장소 정책에 맞춰 Rebase and merge만 허용된다.
+
+이 검토 기록 변경 후 PR head가 바뀌므로 병합 전에 원격 경로 목록, 최종 head SHA, merge state와 required checks를 다시 확인한다.
