@@ -1,0 +1,23 @@
+{
+  "session": "spinon-roadmap-tailnet-pr831",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html?sync=pr831-2026-10-30",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "official_72_of_213_visible": true,
+  "checkboxes": {
+    "C11 CSS Grid": {
+      "count": 1,
+      "checked": false
+    },
+    "C11.4 intrinsic track sizing": {
+      "count": 1,
+      "checked": false
+    }
+  },
+  "screenshot": {
+    "path": "tailnet-status-agent-browser-pass01.png",
+    "bytes": 229787,
+    "width": 1280,
+    "height": 633,
+    "sha256": "dcee173aaa0e132fb4c351b864915980b36cbcdbfef1c9ac8bfe98fff7a2e209"
+  }
+}

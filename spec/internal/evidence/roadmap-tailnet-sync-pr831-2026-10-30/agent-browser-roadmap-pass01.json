@@ -1,0 +1,60 @@
+{
+  "session": "spinon-roadmap-tailnet-pr831",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=pr831-2026-10-30",
+  "title": "스피논 구현 로드맵",
+  "card_found": true,
+  "visible_text": "2026-10-30 C11.4 direct-text multiline last-baseline 제한 runtime slice · 구현 PR #830 Rebase and merge (2026-10-30T01:12:10Z, merge SHA 926bc4839aa72c8859ec0c5dfddf74675b7dfabb): 기존 first-baseline regression 네 scene과 multiline last-baseline/control 다섯 scene을 opt-in fixture에 연결했다. Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene, track trace와 item frames를 확인했다. PixelCopy 및 compositor 제출 전 Metal drawable은 각각 27/27 RGBA exact다. 화면은 box surface이며 glyph paint는 검사하지 않았다. PR check 결과가 보고되지 않았고 main required checks도 설정되지 않아 CI 통과로 기록하지 않는다. 일반 CSS admission, WPT, 실기기/hardware GPU, iOS compositor 이후 pixels와 전체 C11.4는 미완료이며 공식 72/213을 유지한다. 계획 · Chrome 사전 비교 · 실행·검증 한계 · 구현/runtime 검토 · PR diff 검토 · archive feature 경계 · Android AVD 화면 · iOS Simulator 화면 · Chrome 156 기준 화면 · 공식 상태",
+  "links": [
+    {
+      "text": "PR #830 Rebase and merge",
+      "href": "https://github.com/ohah/spinon/pull/830"
+    },
+    {
+      "text": "계획",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-text-last-baseline-multiline.html"
+    },
+    {
+      "text": "Chrome 사전 비교",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.html"
+    },
+    {
+      "text": "실행·검증 한계",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.html"
+    },
+    {
+      "text": "구현/runtime 검토",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.html"
+    },
+    {
+      "text": "PR diff 검토",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.html"
+    },
+    {
+      "text": "archive feature 경계",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.html"
+    },
+    {
+      "text": "Android AVD 화면",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-items-multiline.png"
+    },
+    {
+      "text": "iOS Simulator 화면",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-items-multiline.png"
+    },
+    {
+      "text": "Chrome 156 기준 화면",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-grid-last-baseline.png"
+    },
+    {
+      "text": "공식 상태",
+      "href": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html#css-%EA%B5%AC%ED%98%84-%EC%B2%B4%ED%81%AC%EB%A6%AC%EC%8A%A4%ED%8A%B8"
+    }
+  ],
+  "screenshot": {
+    "path": "tailnet-roadmap-agent-browser-pass01.png",
+    "bytes": 170302,
+    "width": 1280,
+    "height": 633,
+    "sha256": "8cfdebb4a675146c70e91e83f49746fa24971c7bdeae2fdf2c289e6ea33759ab"
+  }
+}

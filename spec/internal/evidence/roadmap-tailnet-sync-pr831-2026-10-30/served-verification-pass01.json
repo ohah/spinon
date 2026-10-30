@@ -1,0 +1,2813 @@
+{
+  "pass": "pass01",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "base_path": "/spinon/",
+  "concurrency": 8,
+  "file_count": 280,
+  "http_200_count": 280,
+  "matching_hash_count": 280,
+  "failures": [],
+  "all_verified": true,
+  "results": [
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_bytes": 638,
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.html",
+      "bytes": 328234,
+      "sha256": "035f84d72ee79c7d13772f54eaba6ad9d5b76373e53652e18b76d5d7e5b0de85",
+      "expected_bytes": 328234,
+      "expected_sha256": "035f84d72ee79c7d13772f54eaba6ad9d5b76373e53652e18b76d5d7e5b0de85",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/0059-c11-grid-layout.md",
+      "bytes": 221161,
+      "sha256": "2dbe9afc9530f0f511f14a232edeb1065415497b0ebfd8884fc7124e3aba6c95",
+      "expected_bytes": 221161,
+      "expected_sha256": "2dbe9afc9530f0f511f14a232edeb1065415497b0ebfd8884fc7124e3aba6c95",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-items.png",
+      "bytes": 77929,
+      "sha256": "2bfd49c56dbc47aa53b70a6ecae0938ec312e53afdbc2f3c7f8d1473f4c93b98",
+      "expected_bytes": 77929,
+      "expected_sha256": "2bfd49c56dbc47aa53b70a6ecae0938ec312e53afdbc2f3c7f8d1473f4c93b98",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-self.png",
+      "bytes": 77947,
+      "sha256": "8808da5aa282538eb0206985db0ae788305d16a4a14d228681661fde819f83fe",
+      "expected_bytes": 77947,
+      "expected_sha256": "8808da5aa282538eb0206985db0ae788305d16a4a14d228681661fde819f83fe",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-reversed.png",
+      "bytes": 77961,
+      "sha256": "97f198bb01dbd693d09093e308431af85c0dd917dc1b1a727e86a1a223b1cfc3",
+      "expected_bytes": 77961,
+      "expected_sha256": "97f198bb01dbd693d09093e308431af85c0dd917dc1b1a727e86a1a223b1cfc3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-start-control.png",
+      "bytes": 77938,
+      "sha256": "903fedfedba133817e8899823150e0a61a4a83408d98d64fdaacbbd87249969e",
+      "expected_bytes": 77938,
+      "expected_sha256": "903fedfedba133817e8899823150e0a61a4a83408d98d64fdaacbbd87249969e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 77937,
+      "sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "expected_bytes": 77937,
+      "expected_sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 77937,
+      "sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "expected_bytes": 77937,
+      "expected_sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_bytes": 36,
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 35226,
+      "sha256": "77a4e156ee20291827d738361c3b6c6786dfa7ea370f06cb8b028aa76f8f4324",
+      "expected_bytes": 35226,
+      "expected_sha256": "77a4e156ee20291827d738361c3b6c6786dfa7ea370f06cb8b028aa76f8f4324",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 35206,
+      "sha256": "28ad63eebdacf263b543dfb5d3b67e2954240ca058eb4bd5ae1e1191cee8039f",
+      "expected_bytes": 35206,
+      "expected_sha256": "28ad63eebdacf263b543dfb5d3b67e2954240ca058eb4bd5ae1e1191cee8039f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 34792,
+      "sha256": "200601d837461e1e79a51e107d10da98d401ec07a6f8988cab2c7fee8e04ac20",
+      "expected_bytes": 34792,
+      "expected_sha256": "200601d837461e1e79a51e107d10da98d401ec07a6f8988cab2c7fee8e04ac20",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34299,
+      "sha256": "75cdb433a0dea5889cef9be49793bc7eb4ccce8c4b2dc18b79c323774d92cc4f",
+      "expected_bytes": 34299,
+      "expected_sha256": "75cdb433a0dea5889cef9be49793bc7eb4ccce8c4b2dc18b79c323774d92cc4f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 29344,
+      "sha256": "6555b9a380a2e6d1210d869956f0cb9ab969367dd74a3cc554c967f9dc3a072a",
+      "expected_bytes": 29344,
+      "expected_sha256": "6555b9a380a2e6d1210d869956f0cb9ab969367dd74a3cc554c967f9dc3a072a",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 29705,
+      "sha256": "e8a52836a985b867e38b13e03d4b09e712af6f0e8fc4f92cc3c560335656e4c4",
+      "expected_bytes": 29705,
+      "expected_sha256": "e8a52836a985b867e38b13e03d4b09e712af6f0e8fc4f92cc3c560335656e4c4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 24694,
+      "sha256": "7093607af9c77c7eeafa661a69db91b96f65f06eb886bd4730bd4ffaa5b7bb07",
+      "expected_bytes": 24694,
+      "expected_sha256": "7093607af9c77c7eeafa661a69db91b96f65f06eb886bd4730bd4ffaa5b7bb07",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/simulator.json",
+      "bytes": 522,
+      "sha256": "66831e313a9b55a180ba20ca10333b8027a1e8bc92eaaf871126eaf92f3b6311",
+      "expected_bytes": 522,
+      "expected_sha256": "66831e313a9b55a180ba20ca10333b8027a1e8bc92eaaf871126eaf92f3b6311",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-items.png",
+      "bytes": 77656,
+      "sha256": "d7c789bfee77e4f96577a47f3f946b1187c2c43b279d640721a5444b0780b828",
+      "expected_bytes": 77656,
+      "expected_sha256": "d7c789bfee77e4f96577a47f3f946b1187c2c43b279d640721a5444b0780b828",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-self.png",
+      "bytes": 77714,
+      "sha256": "0d5ab52d190e372b15238704a3ccd607cd932584d5104c9b950011a325a53807",
+      "expected_bytes": 77714,
+      "expected_sha256": "0d5ab52d190e372b15238704a3ccd607cd932584d5104c9b950011a325a53807",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-reversed.png",
+      "bytes": 74395,
+      "sha256": "e6c495f1f80ab327d9080b2c7d1014d8292024980078327ab852d923da0a0ead",
+      "expected_bytes": 74395,
+      "expected_sha256": "e6c495f1f80ab327d9080b2c7d1014d8292024980078327ab852d923da0a0ead",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-start-control.png",
+      "bytes": 77702,
+      "sha256": "a065e5ee65908560c72a651a4d1c4af77cf6afc1999b17e18415e1682d9a3ee5",
+      "expected_bytes": 77702,
+      "expected_sha256": "a065e5ee65908560c72a651a4d1c4af77cf6afc1999b17e18415e1682d9a3ee5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 77680,
+      "sha256": "a0643315310a58711b45efd84b8a76e00d81c3c26e23a1fc73c27be01072c631",
+      "expected_bytes": 77680,
+      "expected_sha256": "a0643315310a58711b45efd84b8a76e00d81c3c26e23a1fc73c27be01072c631",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 77701,
+      "sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "expected_bytes": 77701,
+      "expected_sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-first-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-first-control.png",
+      "bytes": 77713,
+      "sha256": "b12de76268ec4b8805e34dbee5bfedcab1ca6dba5cda574c82f0e59702fac228",
+      "expected_bytes": 77713,
+      "expected_sha256": "b12de76268ec4b8805e34dbee5bfedcab1ca6dba5cda574c82f0e59702fac228",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-reversed-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-reversed-multiline.png",
+      "bytes": 77701,
+      "sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "expected_bytes": 77701,
+      "expected_sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-start-control.png",
+      "bytes": 77708,
+      "sha256": "e8dbf6377a20ce812beab6c1e9f494ec34afbb47f69a43ba73b5252a17ddb48c",
+      "expected_bytes": 77708,
+      "expected_sha256": "e8dbf6377a20ce812beab6c1e9f494ec34afbb47f69a43ba73b5252a17ddb48c",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_bytes": 36,
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-first-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/result.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/result.json",
+      "bytes": 2956,
+      "sha256": "8339a715097de62c8ef3bc94a25b33b8563cc8cc69f01b9fb8b8d0039b8e172f",
+      "expected_bytes": 2956,
+      "expected_sha256": "8339a715097de62c8ef3bc94a25b33b8563cc8cc69f01b9fb8b8d0039b8e172f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 35225,
+      "sha256": "bf2efde8b7244ec75cff7c46109fec4fad478e95a506401e9602c713e5c4fa27",
+      "expected_bytes": 35225,
+      "expected_sha256": "bf2efde8b7244ec75cff7c46109fec4fad478e95a506401e9602c713e5c4fa27",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 34825,
+      "sha256": "5298baf459076d5ba5935d4575826815570d9b7e553661cdec461b4543f7006b",
+      "expected_bytes": 34825,
+      "expected_sha256": "5298baf459076d5ba5935d4575826815570d9b7e553661cdec461b4543f7006b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 35172,
+      "sha256": "55ac89998557ef8650ca49f21807494a32039164bee58d5bdc69ebe0a38fc936",
+      "expected_bytes": 35172,
+      "expected_sha256": "55ac89998557ef8650ca49f21807494a32039164bee58d5bdc69ebe0a38fc936",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34299,
+      "sha256": "b1556cc4cd0df0c3fcfc6834380b52d63e08b498bb480ea9ac4dc80e9e32eec3",
+      "expected_bytes": 34299,
+      "expected_sha256": "b1556cc4cd0df0c3fcfc6834380b52d63e08b498bb480ea9ac4dc80e9e32eec3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 29344,
+      "sha256": "28be2c061662f42e7dc4bc9ab4b94316d2ba2c7192339e4f0d8a9cfbfa0397e3",
+      "expected_bytes": 29344,
+      "expected_sha256": "28be2c061662f42e7dc4bc9ab4b94316d2ba2c7192339e4f0d8a9cfbfa0397e3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 29328,
+      "sha256": "9494bfb6b4226f4b1eca42ed281bca709c8510d56687f3a976536bc561992dec",
+      "expected_bytes": 29328,
+      "expected_sha256": "9494bfb6b4226f4b1eca42ed281bca709c8510d56687f3a976536bc561992dec",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-first-control.log",
+      "bytes": 29129,
+      "sha256": "9298e8e2142e02963460d783988b9dc709ecb59afec66c8a2659a940bf06c137",
+      "expected_bytes": 29129,
+      "expected_sha256": "9298e8e2142e02963460d783988b9dc709ecb59afec66c8a2659a940bf06c137",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 29291,
+      "sha256": "ac7848841978cff36a12ae7d387a937c576ebca8adfda28665755e46b86ca879",
+      "expected_bytes": 29291,
+      "expected_sha256": "ac7848841978cff36a12ae7d387a937c576ebca8adfda28665755e46b86ca879",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-start-control.log",
+      "bytes": 28863,
+      "sha256": "a4011fc3c8881ba7bd405988ab3cbce1847b0569d8cf4e1c6cd2b9cc7eb99906",
+      "expected_bytes": 28863,
+      "expected_sha256": "a4011fc3c8881ba7bd405988ab3cbce1847b0569d8cf4e1c6cd2b9cc7eb99906",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/simulator.json",
+      "bytes": 522,
+      "sha256": "7b7273b06b14cd688b04b1984b5387bdec54b3b13d7917b0ec29af75bdc2f049",
+      "expected_bytes": 522,
+      "expected_sha256": "7b7273b06b14cd688b04b1984b5387bdec54b3b13d7917b0ec29af75bdc2f049",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "bytes": 35902,
+      "sha256": "408161cfab10eb03a213964a99544c5cd27ec9b047cc1323c66641f6ded10912",
+      "expected_bytes": 35902,
+      "expected_sha256": "408161cfab10eb03a213964a99544c5cd27ec9b047cc1323c66641f6ded10912",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1414,
+      "sha256": "17548bb28214b18a0dc36a5138b26a3fc97ceea7811a6835d5722661db4f4057",
+      "expected_bytes": 1414,
+      "expected_sha256": "17548bb28214b18a0dc36a5138b26a3fc97ceea7811a6835d5722661db4f4057",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 38983,
+      "sha256": "75afb5935fe8cb6260247fe6afdb096813456f431fe58fd97d0074b267f8388f",
+      "expected_bytes": 38983,
+      "expected_sha256": "75afb5935fe8cb6260247fe6afdb096813456f431fe58fd97d0074b267f8388f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 3555,
+      "sha256": "997a3ee24fb7ef07c6423c9a8b0b82c7160c12852e8ca26bb4b64bc1b12d0314",
+      "expected_bytes": 3555,
+      "expected_sha256": "997a3ee24fb7ef07c6423c9a8b0b82c7160c12852e8ca26bb4b64bc1b12d0314",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-items.png",
+      "bytes": 130947,
+      "sha256": "fd77f452b98c1acb0256c527b369e980a39f40aca2a70e0b266059e44556384e",
+      "expected_bytes": 130947,
+      "expected_sha256": "fd77f452b98c1acb0256c527b369e980a39f40aca2a70e0b266059e44556384e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-self.png",
+      "bytes": 132566,
+      "sha256": "9e27ac5ef8ffd7f43b46dcc34e19c1963bb32ed7b0e5731bd39cf340aa9affa8",
+      "expected_bytes": 132566,
+      "expected_sha256": "9e27ac5ef8ffd7f43b46dcc34e19c1963bb32ed7b0e5731bd39cf340aa9affa8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-reversed.png",
+      "bytes": 132109,
+      "sha256": "851e0dd85c65afb187578ac02e8daf801cd3661d76ca6f307526de6a0902e938",
+      "expected_bytes": 132109,
+      "expected_sha256": "851e0dd85c65afb187578ac02e8daf801cd3661d76ca6f307526de6a0902e938",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-start-control.png",
+      "bytes": 132217,
+      "sha256": "581312e8821055b92ea32ae2be33cf168918e9952860a06eba705b90419fec48",
+      "expected_bytes": 132217,
+      "expected_sha256": "581312e8821055b92ea32ae2be33cf168918e9952860a06eba705b90419fec48",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-first-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-first-control.png",
+      "bytes": 133018,
+      "sha256": "bbc9e167d50844134536c8fd2d3f9c2c2c366ae6bd4d5ee0f73d26371162f4f4",
+      "expected_bytes": 133018,
+      "expected_sha256": "bbc9e167d50844134536c8fd2d3f9c2c2c366ae6bd4d5ee0f73d26371162f4f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-reversed-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-reversed-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-start-control.png",
+      "bytes": 132769,
+      "sha256": "c111e5be96c46a5d90a8bace52ecad15e1b486140a9ddde37a2139bf8a0ed106",
+      "expected_bytes": 132769,
+      "expected_sha256": "c111e5be96c46a5d90a8bace52ecad15e1b486140a9ddde37a2139bf8a0ed106",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_bytes": 0,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 28,
+      "sha256": "401d5501c22aa76a5291dfdde4f5d5d44eee88ca0624c3aadfad945a7ea98f67",
+      "expected_bytes": 28,
+      "expected_sha256": "401d5501c22aa76a5291dfdde4f5d5d44eee88ca0624c3aadfad945a7ea98f67",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 28,
+      "sha256": "ba22ae8b2a354aa0687ce2ea5b8d0311c9388c3e0b6278090402689994b266eb",
+      "expected_bytes": 28,
+      "expected_sha256": "ba22ae8b2a354aa0687ce2ea5b8d0311c9388c3e0b6278090402689994b266eb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 28,
+      "sha256": "a38554b8d970835576bc3d2eb5c66689e3f0cea6bc6f289837c4817e1182c92d",
+      "expected_bytes": 28,
+      "expected_sha256": "a38554b8d970835576bc3d2eb5c66689e3f0cea6bc6f289837c4817e1182c92d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "4397d3cc2740be20a627923e8835b7dc1e96c5cb3a3f68452a45357b869ca02f",
+      "expected_bytes": 28,
+      "expected_sha256": "4397d3cc2740be20a627923e8835b7dc1e96c5cb3a3f68452a45357b869ca02f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 28,
+      "sha256": "d665f498ea169acc2b321baedef029f44f7178ed9a98020aaf11c96a0a9fc8e2",
+      "expected_bytes": 28,
+      "expected_sha256": "d665f498ea169acc2b321baedef029f44f7178ed9a98020aaf11c96a0a9fc8e2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 28,
+      "sha256": "c23593200819763a08db6e5d68d306e3d189090115af2173a243240491c21c3e",
+      "expected_bytes": 28,
+      "expected_sha256": "c23593200819763a08db6e5d68d306e3d189090115af2173a243240491c21c3e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-first-control.log",
+      "bytes": 28,
+      "sha256": "b3c2f43b6ad5b2aec8f6998c7f8f0a9c9a865aa95bf50e21a79e8d4d7eb71e07",
+      "expected_bytes": 28,
+      "expected_sha256": "b3c2f43b6ad5b2aec8f6998c7f8f0a9c9a865aa95bf50e21a79e8d4d7eb71e07",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 28,
+      "sha256": "02b2b2a2027dd0fa9c8b0cb895238b1c0458cb0c67f55e3f6ea99a3a3dbce600",
+      "expected_bytes": 28,
+      "expected_sha256": "02b2b2a2027dd0fa9c8b0cb895238b1c0458cb0c67f55e3f6ea99a3a3dbce600",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "ef582515c989bbe257e863a5fdd337d86cfb2f65c8ad54d483e9b0b584dff7f4",
+      "expected_bytes": 28,
+      "expected_sha256": "ef582515c989bbe257e863a5fdd337d86cfb2f65c8ad54d483e9b0b584dff7f4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/result.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/result.json",
+      "bytes": 2963,
+      "sha256": "a6ed6ee7dfb3fdd70948e1d8fbad80c86c527a82c44b703d7ed6ad80fae0aef7",
+      "expected_bytes": 2963,
+      "expected_sha256": "a6ed6ee7dfb3fdd70948e1d8fbad80c86c527a82c44b703d7ed6ad80fae0aef7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 27451,
+      "sha256": "7f934061ee9f37c56985dee8a12d9fc21582062895cb3e9daf2cbd66e3cd9ad1",
+      "expected_bytes": 27451,
+      "expected_sha256": "7f934061ee9f37c56985dee8a12d9fc21582062895cb3e9daf2cbd66e3cd9ad1",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 27442,
+      "sha256": "f64416f22a8976e4e5df85e30842a4f57bb09361c0ddff4b3d167748def251aa",
+      "expected_bytes": 27442,
+      "expected_sha256": "f64416f22a8976e4e5df85e30842a4f57bb09361c0ddff4b3d167748def251aa",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 27429,
+      "sha256": "3f49d1c42ded5606b72c19cab8efb31e1b3e5f0fb4a4a911d783eae440e12610",
+      "expected_bytes": 27429,
+      "expected_sha256": "3f49d1c42ded5606b72c19cab8efb31e1b3e5f0fb4a4a911d783eae440e12610",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 26718,
+      "sha256": "adc392e98a6b6f2b3bca2264ee4f0c7c3a694e739307020acadfee983c263595",
+      "expected_bytes": 26718,
+      "expected_sha256": "adc392e98a6b6f2b3bca2264ee4f0c7c3a694e739307020acadfee983c263595",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 20009,
+      "sha256": "b736baeb8a01cea00a0f55ea9fc9b26ffb9524326191b7ebbe283bf42e04f50b",
+      "expected_bytes": 20009,
+      "expected_sha256": "b736baeb8a01cea00a0f55ea9fc9b26ffb9524326191b7ebbe283bf42e04f50b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 20001,
+      "sha256": "20bba5a2e4a6e4c9d9635ecbc8404e853512c1e49aeeca3904754c530d78edd7",
+      "expected_bytes": 20001,
+      "expected_sha256": "20bba5a2e4a6e4c9d9635ecbc8404e853512c1e49aeeca3904754c530d78edd7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-first-control.log",
+      "bytes": 20973,
+      "sha256": "357e500573cd9d91eddc2689f2e9a04a18123bd555e24cc677d53fcaf7cadd72",
+      "expected_bytes": 20973,
+      "expected_sha256": "357e500573cd9d91eddc2689f2e9a04a18123bd555e24cc677d53fcaf7cadd72",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 19985,
+      "sha256": "2b4ce74ff51b45b0f2e3b41e692fac5957f5e0fe266f41637f2d699932cfa6ab",
+      "expected_bytes": 19985,
+      "expected_sha256": "2b4ce74ff51b45b0f2e3b41e692fac5957f5e0fe266f41637f2d699932cfa6ab",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-start-control.log",
+      "bytes": 20297,
+      "sha256": "30abc9a9fff6b06f73935324b64e65e4624e5783608a013070202ec64121294e",
+      "expected_bytes": 20297,
+      "expected_sha256": "30abc9a9fff6b06f73935324b64e65e4624e5783608a013070202ec64121294e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-items.log",
+      "bytes": 261,
+      "sha256": "24fa6258f00a891fe02c2db62d1722d5148887bb14ba56cc589499e24952b667",
+      "expected_bytes": 261,
+      "expected_sha256": "24fa6258f00a891fe02c2db62d1722d5148887bb14ba56cc589499e24952b667",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-self.log",
+      "bytes": 260,
+      "sha256": "b667351d1d9340f9099bd47349154d20e7788aa6ab08b9110c79bc3561d40f62",
+      "expected_bytes": 260,
+      "expected_sha256": "b667351d1d9340f9099bd47349154d20e7788aa6ab08b9110c79bc3561d40f62",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-reversed.log",
+      "bytes": 258,
+      "sha256": "b06bdac9e316e14ca4892bf7b3dc7e3a143a2d1c07b99554ff15e47c1732e3da",
+      "expected_bytes": 258,
+      "expected_sha256": "b06bdac9e316e14ca4892bf7b3dc7e3a143a2d1c07b99554ff15e47c1732e3da",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-start-control.log",
+      "bytes": 263,
+      "sha256": "3d5d5af00209c3e58031c38b9bb85e47554dd5f04b065275542120e34b1a65d5",
+      "expected_bytes": 263,
+      "expected_sha256": "3d5d5af00209c3e58031c38b9bb85e47554dd5f04b065275542120e34b1a65d5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 270,
+      "sha256": "353ef3a3b4f3c035033323ac91472e33c4674d1a35d8f4a1ba585d4792a7c1c2",
+      "expected_bytes": 270,
+      "expected_sha256": "353ef3a3b4f3c035033323ac91472e33c4674d1a35d8f4a1ba585d4792a7c1c2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 269,
+      "sha256": "fefb6c8f700d4b09f9d9fa4faaba111447f39995a515a3c9d4d7f0a7d1708024",
+      "expected_bytes": 269,
+      "expected_sha256": "fefb6c8f700d4b09f9d9fa4faaba111447f39995a515a3c9d4d7f0a7d1708024",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-first-control.log",
+      "bytes": 262,
+      "sha256": "eba9df27c662d0a3c2fa0b2a449c16585f2dee37f70cc5a049d339d334f3ffe5",
+      "expected_bytes": 262,
+      "expected_sha256": "eba9df27c662d0a3c2fa0b2a449c16585f2dee37f70cc5a049d339d334f3ffe5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 267,
+      "sha256": "aab4e88e773cd3640b3234382358e9d61161d6879d630b046eb622fbf68c9669",
+      "expected_bytes": 267,
+      "expected_sha256": "aab4e88e773cd3640b3234382358e9d61161d6879d630b046eb622fbf68c9669",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-start-control.log",
+      "bytes": 262,
+      "sha256": "f23e590104060bb1448e1e28658334e849a0679100c3296de6ed3e3946b676f2",
+      "expected_bytes": 262,
+      "expected_sha256": "f23e590104060bb1448e1e28658334e849a0679100c3296de6ed3e3946b676f2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/simulator.json",
+      "bytes": 393,
+      "sha256": "b81b5a0fa296924f35b7463018365819e5aee35dc5e6ec3985e09f080dcea67d",
+      "expected_bytes": 393,
+      "expected_sha256": "b81b5a0fa296924f35b7463018365819e5aee35dc5e6ec3985e09f080dcea67d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.html",
+      "bytes": 39113,
+      "sha256": "cbe675d1b115414a99fdfb408b953f1a95e2f1f284bb1ded6427818e8b7f7231",
+      "expected_bytes": 39113,
+      "expected_sha256": "cbe675d1b115414a99fdfb408b953f1a95e2f1f284bb1ded6427818e8b7f7231",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.md",
+      "bytes": 3617,
+      "sha256": "31457fd3cc92003112008f2925fbdb56bd7cafc0eb539eb0331c7aa34423c5d8",
+      "expected_bytes": 3617,
+      "expected_sha256": "31457fd3cc92003112008f2925fbdb56bd7cafc0eb539eb0331c7aa34423c5d8",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.html",
+      "bytes": 41061,
+      "sha256": "5f400a157ccbdcd186be59193174dde21e846a435b04f97c3b361e9ee0ffc9ea",
+      "expected_bytes": 41061,
+      "expected_sha256": "5f400a157ccbdcd186be59193174dde21e846a435b04f97c3b361e9ee0ffc9ea",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.md",
+      "bytes": 4273,
+      "sha256": "ce722841ff5fd177f51b2c86ace8b0b1d43e5b6f624e3100e9c10912a3e4863b",
+      "expected_bytes": 4273,
+      "expected_sha256": "ce722841ff5fd177f51b2c86ace8b0b1d43e5b6f624e3100e9c10912a3e4863b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.html",
+      "bytes": 38527,
+      "sha256": "51361cd955a3244f55e72c7e9049ede3053ac7a352c1e6d9f099ed1ba23d06e6",
+      "expected_bytes": 38527,
+      "expected_sha256": "51361cd955a3244f55e72c7e9049ede3053ac7a352c1e6d9f099ed1ba23d06e6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md",
+      "bytes": 6345,
+      "sha256": "a12fb498a4012d39319816a686c3f751181e9fbc2d1e12bd626c6d0edb01967d",
+      "expected_bytes": 6345,
+      "expected_sha256": "a12fb498a4012d39319816a686c3f751181e9fbc2d1e12bd626c6d0edb01967d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-grid-last-baseline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-grid-last-baseline.png",
+      "bytes": 19284,
+      "sha256": "62dedafd560fed380ffadab096bac3975acab58d51328b2a97e2d87f5ba1ecd4",
+      "expected_bytes": 19284,
+      "expected_sha256": "62dedafd560fed380ffadab096bac3975acab58d51328b2a97e2d87f5ba1ecd4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-observation.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-observation.json",
+      "bytes": 6707,
+      "sha256": "f383c75048babf15b2d7c90ff8cbb4bf1ff3e8e49530b39cbb9a37f63e7a06cb",
+      "expected_bytes": 6707,
+      "expected_sha256": "f383c75048babf15b2d7c90ff8cbb4bf1ff3e8e49530b39cbb9a37f63e7a06cb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/expected-values.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/expected-values.json",
+      "bytes": 4649,
+      "sha256": "33a1db97ab37b141e8d248abb557bfc7626608fba9383bd6bcf4ee004e456058",
+      "expected_bytes": 4649,
+      "expected_sha256": "33a1db97ab37b141e8d248abb557bfc7626608fba9383bd6bcf4ee004e456058",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "bytes": 37580,
+      "sha256": "eda255d5cfa0bc8e071a9d036470cfd7a31297c3c389feba5e6ddf840e7c788f",
+      "expected_bytes": 37580,
+      "expected_sha256": "eda255d5cfa0bc8e071a9d036470cfd7a31297c3c389feba5e6ddf840e7c788f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "bytes": 6183,
+      "sha256": "f130e75121fb6860dcbdc0e0583c8ed6daa87251989b59488f917dcd390db6fb",
+      "expected_bytes": 6183,
+      "expected_sha256": "f130e75121fb6860dcbdc0e0583c8ed6daa87251989b59488f917dcd390db6fb",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.html",
+      "bytes": 39227,
+      "sha256": "c9d8016a4dc7e551889b72c843e05fd3d8c76355ae7af761f057ec60e332110b",
+      "expected_bytes": 39227,
+      "expected_sha256": "c9d8016a4dc7e551889b72c843e05fd3d8c76355ae7af761f057ec60e332110b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.md",
+      "bytes": 5366,
+      "sha256": "0690b9c7105417ffc7b627f5d75b15f1eb8b5cf1ec09ba7bbefd04c19325014b",
+      "expected_bytes": 5366,
+      "expected_sha256": "0690b9c7105417ffc7b627f5d75b15f1eb8b5cf1ec09ba7bbefd04c19325014b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/verify-precomparison.mjs",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 2644,
+      "sha256": "891d09ac0387f6d17e7d3c9d1435d53f089bcafaf65f0662c24ee7b968a26a29",
+      "expected_bytes": 2644,
+      "expected_sha256": "891d09ac0387f6d17e7d3c9d1435d53f089bcafaf65f0662c24ee7b968a26a29",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_bytes": 568,
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-last-baseline-multiline.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-text-last-baseline-multiline.html",
+      "bytes": 41161,
+      "sha256": "fe92f10eb21ef69037d1161c1f285722867abc694647912c60544e3d942a7a6e",
+      "expected_bytes": 41161,
+      "expected_sha256": "fe92f10eb21ef69037d1161c1f285722867abc694647912c60544e3d942a7a6e",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-last-baseline-multiline.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-text-last-baseline-multiline.md",
+      "bytes": 8465,
+      "sha256": "2cdfabff5081c9cb3011d53510ba3e5b3341dda6cab354699a036ff80e5c9109",
+      "expected_bytes": 8465,
+      "expected_sha256": "2cdfabff5081c9cb3011d53510ba3e5b3341dda6cab354699a036ff80e5c9109",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "bytes": 294893,
+      "sha256": "2c9bf738e3adef8bb9c7d77824a39c88e190c2181c178694f7dadb93f02665a1",
+      "expected_bytes": 294893,
+      "expected_sha256": "2c9bf738e3adef8bb9c7d77824a39c88e190c2181c178694f7dadb93f02665a1",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.md",
+      "bytes": 180169,
+      "sha256": "2328db168f951a9eb678d06be6856b5414997842bd43b892d0a02717524229f8",
+      "expected_bytes": 180169,
+      "expected_sha256": "2328db168f951a9eb678d06be6856b5414997842bd43b892d0a02717524229f8",
+      "verified": true
+    },
+    {
+      "path": "public/icon.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_bytes": 638,
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "public/logo.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_bytes": 568,
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/public/roadmap.html",
+      "bytes": 412578,
+      "sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "expected_bytes": 412578,
+      "expected_sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "bytes": 412578,
+      "sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "expected_bytes": 412578,
+      "expected_sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0059-c11-grid-layout.html",
+      "bytes": 328288,
+      "sha256": "6964446f8546e629997f360752f3af56703278aac57ac2682a7db310b62a2ffe",
+      "expected_bytes": 328288,
+      "expected_sha256": "6964446f8546e629997f360752f3af56703278aac57ac2682a7db310b62a2ffe",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 221161,
+      "sha256": "2dbe9afc9530f0f511f14a232edeb1065415497b0ebfd8884fc7124e3aba6c95",
+      "expected_bytes": 221161,
+      "expected_sha256": "2dbe9afc9530f0f511f14a232edeb1065415497b0ebfd8884fc7124e3aba6c95",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-items.png",
+      "bytes": 77929,
+      "sha256": "2bfd49c56dbc47aa53b70a6ecae0938ec312e53afdbc2f3c7f8d1473f4c93b98",
+      "expected_bytes": 77929,
+      "expected_sha256": "2bfd49c56dbc47aa53b70a6ecae0938ec312e53afdbc2f3c7f8d1473f4c93b98",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-align-self.png",
+      "bytes": 77947,
+      "sha256": "8808da5aa282538eb0206985db0ae788305d16a4a14d228681661fde819f83fe",
+      "expected_bytes": 77947,
+      "expected_sha256": "8808da5aa282538eb0206985db0ae788305d16a4a14d228681661fde819f83fe",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-reversed.png",
+      "bytes": 77961,
+      "sha256": "97f198bb01dbd693d09093e308431af85c0dd917dc1b1a727e86a1a223b1cfc3",
+      "expected_bytes": 77961,
+      "expected_sha256": "97f198bb01dbd693d09093e308431af85c0dd917dc1b1a727e86a1a223b1cfc3",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-first-baseline-start-control.png",
+      "bytes": 77938,
+      "sha256": "903fedfedba133817e8899823150e0a61a4a83408d98d64fdaacbbd87249969e",
+      "expected_bytes": 77938,
+      "expected_sha256": "903fedfedba133817e8899823150e0a61a4a83408d98d64fdaacbbd87249969e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 77937,
+      "sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "expected_bytes": 77937,
+      "expected_sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 77937,
+      "sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "expected_bytes": 77937,
+      "expected_sha256": "47e6b653a36e3f7274102d12efd8382b36ad5eae5bb8b7b595eb1c4d22874d44",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_bytes": 36,
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 35226,
+      "sha256": "77a4e156ee20291827d738361c3b6c6786dfa7ea370f06cb8b028aa76f8f4324",
+      "expected_bytes": 35226,
+      "expected_sha256": "77a4e156ee20291827d738361c3b6c6786dfa7ea370f06cb8b028aa76f8f4324",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 35206,
+      "sha256": "28ad63eebdacf263b543dfb5d3b67e2954240ca058eb4bd5ae1e1191cee8039f",
+      "expected_bytes": 35206,
+      "expected_sha256": "28ad63eebdacf263b543dfb5d3b67e2954240ca058eb4bd5ae1e1191cee8039f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 34792,
+      "sha256": "200601d837461e1e79a51e107d10da98d401ec07a6f8988cab2c7fee8e04ac20",
+      "expected_bytes": 34792,
+      "expected_sha256": "200601d837461e1e79a51e107d10da98d401ec07a6f8988cab2c7fee8e04ac20",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34299,
+      "sha256": "75cdb433a0dea5889cef9be49793bc7eb4ccce8c4b2dc18b79c323774d92cc4f",
+      "expected_bytes": 34299,
+      "expected_sha256": "75cdb433a0dea5889cef9be49793bc7eb4ccce8c4b2dc18b79c323774d92cc4f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 29344,
+      "sha256": "6555b9a380a2e6d1210d869956f0cb9ab969367dd74a3cc554c967f9dc3a072a",
+      "expected_bytes": 29344,
+      "expected_sha256": "6555b9a380a2e6d1210d869956f0cb9ab969367dd74a3cc554c967f9dc3a072a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 29705,
+      "sha256": "e8a52836a985b867e38b13e03d4b09e712af6f0e8fc4f92cc3c560335656e4c4",
+      "expected_bytes": 29705,
+      "expected_sha256": "e8a52836a985b867e38b13e03d4b09e712af6f0e8fc4f92cc3c560335656e4c4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 24694,
+      "sha256": "7093607af9c77c7eeafa661a69db91b96f65f06eb886bd4730bd4ffaa5b7bb07",
+      "expected_bytes": 24694,
+      "expected_sha256": "7093607af9c77c7eeafa661a69db91b96f65f06eb886bd4730bd4ffaa5b7bb07",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9ml7d-9b75513a/simulator.json",
+      "bytes": 522,
+      "sha256": "66831e313a9b55a180ba20ca10333b8027a1e8bc92eaaf871126eaf92f3b6311",
+      "expected_bytes": 522,
+      "expected_sha256": "66831e313a9b55a180ba20ca10333b8027a1e8bc92eaaf871126eaf92f3b6311",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-items.png",
+      "bytes": 77656,
+      "sha256": "d7c789bfee77e4f96577a47f3f946b1187c2c43b279d640721a5444b0780b828",
+      "expected_bytes": 77656,
+      "expected_sha256": "d7c789bfee77e4f96577a47f3f946b1187c2c43b279d640721a5444b0780b828",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-align-self.png",
+      "bytes": 77714,
+      "sha256": "0d5ab52d190e372b15238704a3ccd607cd932584d5104c9b950011a325a53807",
+      "expected_bytes": 77714,
+      "expected_sha256": "0d5ab52d190e372b15238704a3ccd607cd932584d5104c9b950011a325a53807",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-reversed.png",
+      "bytes": 74395,
+      "sha256": "e6c495f1f80ab327d9080b2c7d1014d8292024980078327ab852d923da0a0ead",
+      "expected_bytes": 74395,
+      "expected_sha256": "e6c495f1f80ab327d9080b2c7d1014d8292024980078327ab852d923da0a0ead",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-first-baseline-start-control.png",
+      "bytes": 77702,
+      "sha256": "a065e5ee65908560c72a651a4d1c4af77cf6afc1999b17e18415e1682d9a3ee5",
+      "expected_bytes": 77702,
+      "expected_sha256": "a065e5ee65908560c72a651a4d1c4af77cf6afc1999b17e18415e1682d9a3ee5",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 77680,
+      "sha256": "a0643315310a58711b45efd84b8a76e00d81c3c26e23a1fc73c27be01072c631",
+      "expected_bytes": 77680,
+      "expected_sha256": "a0643315310a58711b45efd84b8a76e00d81c3c26e23a1fc73c27be01072c631",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 77701,
+      "sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "expected_bytes": 77701,
+      "expected_sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-first-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-first-control.png",
+      "bytes": 77713,
+      "sha256": "b12de76268ec4b8805e34dbee5bfedcab1ca6dba5cda574c82f0e59702fac228",
+      "expected_bytes": 77713,
+      "expected_sha256": "b12de76268ec4b8805e34dbee5bfedcab1ca6dba5cda574c82f0e59702fac228",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-reversed-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-reversed-multiline.png",
+      "bytes": 77701,
+      "sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "expected_bytes": 77701,
+      "expected_sha256": "b0bd629b6de03674ca06cf169800f8cade4d9c8e04fea2906ab9718a377ee5ee",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/grid-text-last-baseline-start-control.png",
+      "bytes": 77708,
+      "sha256": "e8dbf6377a20ce812beab6c1e9f494ec34afbb47f69a43ba73b5252a17ddb48c",
+      "expected_bytes": 77708,
+      "expected_sha256": "e8dbf6377a20ce812beab6c1e9f494ec34afbb47f69a43ba73b5252a17ddb48c",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "expected_bytes": 36,
+      "expected_sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-first-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/launch-grid-text-last-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "expected_bytes": 119,
+      "expected_sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/result.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/result.json",
+      "bytes": 2956,
+      "sha256": "8339a715097de62c8ef3bc94a25b33b8563cc8cc69f01b9fb8b8d0039b8e172f",
+      "expected_bytes": 2956,
+      "expected_sha256": "8339a715097de62c8ef3bc94a25b33b8563cc8cc69f01b9fb8b8d0039b8e172f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 35225,
+      "sha256": "bf2efde8b7244ec75cff7c46109fec4fad478e95a506401e9602c713e5c4fa27",
+      "expected_bytes": 35225,
+      "expected_sha256": "bf2efde8b7244ec75cff7c46109fec4fad478e95a506401e9602c713e5c4fa27",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 34825,
+      "sha256": "5298baf459076d5ba5935d4575826815570d9b7e553661cdec461b4543f7006b",
+      "expected_bytes": 34825,
+      "expected_sha256": "5298baf459076d5ba5935d4575826815570d9b7e553661cdec461b4543f7006b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 35172,
+      "sha256": "55ac89998557ef8650ca49f21807494a32039164bee58d5bdc69ebe0a38fc936",
+      "expected_bytes": 35172,
+      "expected_sha256": "55ac89998557ef8650ca49f21807494a32039164bee58d5bdc69ebe0a38fc936",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34299,
+      "sha256": "b1556cc4cd0df0c3fcfc6834380b52d63e08b498bb480ea9ac4dc80e9e32eec3",
+      "expected_bytes": 34299,
+      "expected_sha256": "b1556cc4cd0df0c3fcfc6834380b52d63e08b498bb480ea9ac4dc80e9e32eec3",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 29344,
+      "sha256": "28be2c061662f42e7dc4bc9ab4b94316d2ba2c7192339e4f0d8a9cfbfa0397e3",
+      "expected_bytes": 29344,
+      "expected_sha256": "28be2c061662f42e7dc4bc9ab4b94316d2ba2c7192339e4f0d8a9cfbfa0397e3",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 29328,
+      "sha256": "9494bfb6b4226f4b1eca42ed281bca709c8510d56687f3a976536bc561992dec",
+      "expected_bytes": 29328,
+      "expected_sha256": "9494bfb6b4226f4b1eca42ed281bca709c8510d56687f3a976536bc561992dec",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-first-control.log",
+      "bytes": 29129,
+      "sha256": "9298e8e2142e02963460d783988b9dc709ecb59afec66c8a2659a940bf06c137",
+      "expected_bytes": 29129,
+      "expected_sha256": "9298e8e2142e02963460d783988b9dc709ecb59afec66c8a2659a940bf06c137",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 29291,
+      "sha256": "ac7848841978cff36a12ae7d387a937c576ebca8adfda28665755e46b86ca879",
+      "expected_bytes": 29291,
+      "expected_sha256": "ac7848841978cff36a12ae7d387a937c576ebca8adfda28665755e46b86ca879",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/runtime-grid-text-last-baseline-start-control.log",
+      "bytes": 28863,
+      "sha256": "a4011fc3c8881ba7bd405988ab3cbce1847b0569d8cf4e1c6cd2b9cc7eb99906",
+      "expected_bytes": 28863,
+      "expected_sha256": "a4011fc3c8881ba7bd405988ab3cbce1847b0569d8cf4e1c6cd2b9cc7eb99906",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/android-avd/c114-text-baseline-mvu9nh3u-ddfba41b/simulator.json",
+      "bytes": 522,
+      "sha256": "7b7273b06b14cd688b04b1984b5387bdec54b3b13d7917b0ec29af75bdc2f049",
+      "expected_bytes": 522,
+      "expected_sha256": "7b7273b06b14cd688b04b1984b5387bdec54b3b13d7917b0ec29af75bdc2f049",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "bytes": 35912,
+      "sha256": "7d6208c92fc62216386f3365f726ed72f5edd133f578a99d7915e21ea1197452",
+      "expected_bytes": 35912,
+      "expected_sha256": "7d6208c92fc62216386f3365f726ed72f5edd133f578a99d7915e21ea1197452",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1414,
+      "sha256": "17548bb28214b18a0dc36a5138b26a3fc97ceea7811a6835d5722661db4f4057",
+      "expected_bytes": 1414,
+      "expected_sha256": "17548bb28214b18a0dc36a5138b26a3fc97ceea7811a6835d5722661db4f4057",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 38998,
+      "sha256": "13bd14fbb2e64a945ebcdf99f019c129af1062c4379e82e9e77d0738f80f3f10",
+      "expected_bytes": 38998,
+      "expected_sha256": "13bd14fbb2e64a945ebcdf99f019c129af1062c4379e82e9e77d0738f80f3f10",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 3555,
+      "sha256": "997a3ee24fb7ef07c6423c9a8b0b82c7160c12852e8ca26bb4b64bc1b12d0314",
+      "expected_bytes": 3555,
+      "expected_sha256": "997a3ee24fb7ef07c6423c9a8b0b82c7160c12852e8ca26bb4b64bc1b12d0314",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-items.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-items.png",
+      "bytes": 130947,
+      "sha256": "fd77f452b98c1acb0256c527b369e980a39f40aca2a70e0b266059e44556384e",
+      "expected_bytes": 130947,
+      "expected_sha256": "fd77f452b98c1acb0256c527b369e980a39f40aca2a70e0b266059e44556384e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-self.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-align-self.png",
+      "bytes": 132566,
+      "sha256": "9e27ac5ef8ffd7f43b46dcc34e19c1963bb32ed7b0e5731bd39cf340aa9affa8",
+      "expected_bytes": 132566,
+      "expected_sha256": "9e27ac5ef8ffd7f43b46dcc34e19c1963bb32ed7b0e5731bd39cf340aa9affa8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-reversed.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-reversed.png",
+      "bytes": 132109,
+      "sha256": "851e0dd85c65afb187578ac02e8daf801cd3661d76ca6f307526de6a0902e938",
+      "expected_bytes": 132109,
+      "expected_sha256": "851e0dd85c65afb187578ac02e8daf801cd3661d76ca6f307526de6a0902e938",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-first-baseline-start-control.png",
+      "bytes": 132217,
+      "sha256": "581312e8821055b92ea32ae2be33cf168918e9952860a06eba705b90419fec48",
+      "expected_bytes": 132217,
+      "expected_sha256": "581312e8821055b92ea32ae2be33cf168918e9952860a06eba705b90419fec48",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-items-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-items-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-self-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-align-self-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-first-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-first-control.png",
+      "bytes": 133018,
+      "sha256": "bbc9e167d50844134536c8fd2d3f9c2c2c366ae6bd4d5ee0f73d26371162f4f4",
+      "expected_bytes": 133018,
+      "expected_sha256": "bbc9e167d50844134536c8fd2d3f9c2c2c366ae6bd4d5ee0f73d26371162f4f4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-reversed-multiline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-reversed-multiline.png",
+      "bytes": 132457,
+      "sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "expected_bytes": 132457,
+      "expected_sha256": "5cd455341722115a6fd661ada588922996c8eaf1c9cb80e457fdc3f1a267041e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-start-control.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/grid-text-last-baseline-start-control.png",
+      "bytes": 132769,
+      "sha256": "c111e5be96c46a5d90a8bace52ecad15e1b486140a9ddde37a2139bf8a0ed106",
+      "expected_bytes": 132769,
+      "expected_sha256": "c111e5be96c46a5d90a8bace52ecad15e1b486140a9ddde37a2139bf8a0ed106",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/install.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "expected_bytes": 0,
+      "expected_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 28,
+      "sha256": "401d5501c22aa76a5291dfdde4f5d5d44eee88ca0624c3aadfad945a7ea98f67",
+      "expected_bytes": 28,
+      "expected_sha256": "401d5501c22aa76a5291dfdde4f5d5d44eee88ca0624c3aadfad945a7ea98f67",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 28,
+      "sha256": "ba22ae8b2a354aa0687ce2ea5b8d0311c9388c3e0b6278090402689994b266eb",
+      "expected_bytes": 28,
+      "expected_sha256": "ba22ae8b2a354aa0687ce2ea5b8d0311c9388c3e0b6278090402689994b266eb",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 28,
+      "sha256": "a38554b8d970835576bc3d2eb5c66689e3f0cea6bc6f289837c4817e1182c92d",
+      "expected_bytes": 28,
+      "expected_sha256": "a38554b8d970835576bc3d2eb5c66689e3f0cea6bc6f289837c4817e1182c92d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "4397d3cc2740be20a627923e8835b7dc1e96c5cb3a3f68452a45357b869ca02f",
+      "expected_bytes": 28,
+      "expected_sha256": "4397d3cc2740be20a627923e8835b7dc1e96c5cb3a3f68452a45357b869ca02f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 28,
+      "sha256": "d665f498ea169acc2b321baedef029f44f7178ed9a98020aaf11c96a0a9fc8e2",
+      "expected_bytes": 28,
+      "expected_sha256": "d665f498ea169acc2b321baedef029f44f7178ed9a98020aaf11c96a0a9fc8e2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 28,
+      "sha256": "c23593200819763a08db6e5d68d306e3d189090115af2173a243240491c21c3e",
+      "expected_bytes": 28,
+      "expected_sha256": "c23593200819763a08db6e5d68d306e3d189090115af2173a243240491c21c3e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-first-control.log",
+      "bytes": 28,
+      "sha256": "b3c2f43b6ad5b2aec8f6998c7f8f0a9c9a865aa95bf50e21a79e8d4d7eb71e07",
+      "expected_bytes": 28,
+      "expected_sha256": "b3c2f43b6ad5b2aec8f6998c7f8f0a9c9a865aa95bf50e21a79e8d4d7eb71e07",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 28,
+      "sha256": "02b2b2a2027dd0fa9c8b0cb895238b1c0458cb0c67f55e3f6ea99a3a3dbce600",
+      "expected_bytes": 28,
+      "expected_sha256": "02b2b2a2027dd0fa9c8b0cb895238b1c0458cb0c67f55e3f6ea99a3a3dbce600",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/launch-grid-text-last-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "ef582515c989bbe257e863a5fdd337d86cfb2f65c8ad54d483e9b0b584dff7f4",
+      "expected_bytes": 28,
+      "expected_sha256": "ef582515c989bbe257e863a5fdd337d86cfb2f65c8ad54d483e9b0b584dff7f4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/result.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/result.json",
+      "bytes": 2963,
+      "sha256": "a6ed6ee7dfb3fdd70948e1d8fbad80c86c527a82c44b703d7ed6ad80fae0aef7",
+      "expected_bytes": 2963,
+      "expected_sha256": "a6ed6ee7dfb3fdd70948e1d8fbad80c86c527a82c44b703d7ed6ad80fae0aef7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 27451,
+      "sha256": "7f934061ee9f37c56985dee8a12d9fc21582062895cb3e9daf2cbd66e3cd9ad1",
+      "expected_bytes": 27451,
+      "expected_sha256": "7f934061ee9f37c56985dee8a12d9fc21582062895cb3e9daf2cbd66e3cd9ad1",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 27442,
+      "sha256": "f64416f22a8976e4e5df85e30842a4f57bb09361c0ddff4b3d167748def251aa",
+      "expected_bytes": 27442,
+      "expected_sha256": "f64416f22a8976e4e5df85e30842a4f57bb09361c0ddff4b3d167748def251aa",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 27429,
+      "sha256": "3f49d1c42ded5606b72c19cab8efb31e1b3e5f0fb4a4a911d783eae440e12610",
+      "expected_bytes": 27429,
+      "expected_sha256": "3f49d1c42ded5606b72c19cab8efb31e1b3e5f0fb4a4a911d783eae440e12610",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 26718,
+      "sha256": "adc392e98a6b6f2b3bca2264ee4f0c7c3a694e739307020acadfee983c263595",
+      "expected_bytes": 26718,
+      "expected_sha256": "adc392e98a6b6f2b3bca2264ee4f0c7c3a694e739307020acadfee983c263595",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 20009,
+      "sha256": "b736baeb8a01cea00a0f55ea9fc9b26ffb9524326191b7ebbe283bf42e04f50b",
+      "expected_bytes": 20009,
+      "expected_sha256": "b736baeb8a01cea00a0f55ea9fc9b26ffb9524326191b7ebbe283bf42e04f50b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 20001,
+      "sha256": "20bba5a2e4a6e4c9d9635ecbc8404e853512c1e49aeeca3904754c530d78edd7",
+      "expected_bytes": 20001,
+      "expected_sha256": "20bba5a2e4a6e4c9d9635ecbc8404e853512c1e49aeeca3904754c530d78edd7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-first-control.log",
+      "bytes": 20973,
+      "sha256": "357e500573cd9d91eddc2689f2e9a04a18123bd555e24cc677d53fcaf7cadd72",
+      "expected_bytes": 20973,
+      "expected_sha256": "357e500573cd9d91eddc2689f2e9a04a18123bd555e24cc677d53fcaf7cadd72",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 19985,
+      "sha256": "2b4ce74ff51b45b0f2e3b41e692fac5957f5e0fe266f41637f2d699932cfa6ab",
+      "expected_bytes": 19985,
+      "expected_sha256": "2b4ce74ff51b45b0f2e3b41e692fac5957f5e0fe266f41637f2d699932cfa6ab",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/runtime-grid-text-last-baseline-start-control.log",
+      "bytes": 20297,
+      "sha256": "30abc9a9fff6b06f73935324b64e65e4624e5783608a013070202ec64121294e",
+      "expected_bytes": 20297,
+      "expected_sha256": "30abc9a9fff6b06f73935324b64e65e4624e5783608a013070202ec64121294e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-items.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-items.log",
+      "bytes": 261,
+      "sha256": "24fa6258f00a891fe02c2db62d1722d5148887bb14ba56cc589499e24952b667",
+      "expected_bytes": 261,
+      "expected_sha256": "24fa6258f00a891fe02c2db62d1722d5148887bb14ba56cc589499e24952b667",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-self.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-align-self.log",
+      "bytes": 260,
+      "sha256": "b667351d1d9340f9099bd47349154d20e7788aa6ab08b9110c79bc3561d40f62",
+      "expected_bytes": 260,
+      "expected_sha256": "b667351d1d9340f9099bd47349154d20e7788aa6ab08b9110c79bc3561d40f62",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-reversed.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-reversed.log",
+      "bytes": 258,
+      "sha256": "b06bdac9e316e14ca4892bf7b3dc7e3a143a2d1c07b99554ff15e47c1732e3da",
+      "expected_bytes": 258,
+      "expected_sha256": "b06bdac9e316e14ca4892bf7b3dc7e3a143a2d1c07b99554ff15e47c1732e3da",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-first-baseline-start-control.log",
+      "bytes": 263,
+      "sha256": "3d5d5af00209c3e58031c38b9bb85e47554dd5f04b065275542120e34b1a65d5",
+      "expected_bytes": 263,
+      "expected_sha256": "3d5d5af00209c3e58031c38b9bb85e47554dd5f04b065275542120e34b1a65d5",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-items-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-items-multiline.log",
+      "bytes": 270,
+      "sha256": "353ef3a3b4f3c035033323ac91472e33c4674d1a35d8f4a1ba585d4792a7c1c2",
+      "expected_bytes": 270,
+      "expected_sha256": "353ef3a3b4f3c035033323ac91472e33c4674d1a35d8f4a1ba585d4792a7c1c2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-self-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-align-self-multiline.log",
+      "bytes": 269,
+      "sha256": "fefb6c8f700d4b09f9d9fa4faaba111447f39995a515a3c9d4d7f0a7d1708024",
+      "expected_bytes": 269,
+      "expected_sha256": "fefb6c8f700d4b09f9d9fa4faaba111447f39995a515a3c9d4d7f0a7d1708024",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-first-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-first-control.log",
+      "bytes": 262,
+      "sha256": "eba9df27c662d0a3c2fa0b2a449c16585f2dee37f70cc5a049d339d334f3ffe5",
+      "expected_bytes": 262,
+      "expected_sha256": "eba9df27c662d0a3c2fa0b2a449c16585f2dee37f70cc5a049d339d334f3ffe5",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-reversed-multiline.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-reversed-multiline.log",
+      "bytes": 267,
+      "sha256": "aab4e88e773cd3640b3234382358e9d61161d6879d630b046eb622fbf68c9669",
+      "expected_bytes": 267,
+      "expected_sha256": "aab4e88e773cd3640b3234382358e9d61161d6879d630b046eb622fbf68c9669",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-start-control.log",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/screenshot-grid-text-last-baseline-start-control.log",
+      "bytes": 262,
+      "sha256": "f23e590104060bb1448e1e28658334e849a0679100c3296de6ed3e3946b676f2",
+      "expected_bytes": 262,
+      "expected_sha256": "f23e590104060bb1448e1e28658334e849a0679100c3296de6ed3e3946b676f2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/simulator.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/ios-simulator/c114-text-baseline-mvu9pccg-f329c361/simulator.json",
+      "bytes": 393,
+      "sha256": "b81b5a0fa296924f35b7463018365819e5aee35dc5e6ec3985e09f080dcea67d",
+      "expected_bytes": 393,
+      "expected_sha256": "b81b5a0fa296924f35b7463018365819e5aee35dc5e6ec3985e09f080dcea67d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.html",
+      "bytes": 39123,
+      "sha256": "ceee545be696d917fd139bd5f91b78dc82a0c03512764949c5ffb42677eb26bd",
+      "expected_bytes": 39123,
+      "expected_sha256": "ceee545be696d917fd139bd5f91b78dc82a0c03512764949c5ffb42677eb26bd",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.md",
+      "bytes": 3617,
+      "sha256": "31457fd3cc92003112008f2925fbdb56bd7cafc0eb539eb0331c7aa34423c5d8",
+      "expected_bytes": 3617,
+      "expected_sha256": "31457fd3cc92003112008f2925fbdb56bd7cafc0eb539eb0331c7aa34423c5d8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.html",
+      "bytes": 41071,
+      "sha256": "2b4910f2918ddf0c085bb406da22e5d0dc4965975b6eb35f3b25c5711e0a539a",
+      "expected_bytes": 41071,
+      "expected_sha256": "2b4910f2918ddf0c085bb406da22e5d0dc4965975b6eb35f3b25c5711e0a539a",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/pr-diff-review-30.md",
+      "bytes": 4273,
+      "sha256": "ce722841ff5fd177f51b2c86ace8b0b1d43e5b6f624e3100e9c10912a3e4863b",
+      "expected_bytes": 4273,
+      "expected_sha256": "ce722841ff5fd177f51b2c86ace8b0b1d43e5b6f624e3100e9c10912a3e4863b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.html",
+      "bytes": 38547,
+      "sha256": "8d00e0f1f2cfe1fbcaf8146f21af0f893368639e72eba0d78a29090e9283a0f4",
+      "expected_bytes": 38547,
+      "expected_sha256": "8d00e0f1f2cfe1fbcaf8146f21af0f893368639e72eba0d78a29090e9283a0f4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md",
+      "bytes": 6345,
+      "sha256": "a12fb498a4012d39319816a686c3f751181e9fbc2d1e12bd626c6d0edb01967d",
+      "expected_bytes": 6345,
+      "expected_sha256": "a12fb498a4012d39319816a686c3f751181e9fbc2d1e12bd626c6d0edb01967d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-grid-last-baseline.png",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-grid-last-baseline.png",
+      "bytes": 19284,
+      "sha256": "62dedafd560fed380ffadab096bac3975acab58d51328b2a97e2d87f5ba1ecd4",
+      "expected_bytes": 19284,
+      "expected_sha256": "62dedafd560fed380ffadab096bac3975acab58d51328b2a97e2d87f5ba1ecd4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-observation.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/chrome/chrome156-observation.json",
+      "bytes": 6707,
+      "sha256": "f383c75048babf15b2d7c90ff8cbb4bf1ff3e8e49530b39cbb9a37f63e7a06cb",
+      "expected_bytes": 6707,
+      "expected_sha256": "f383c75048babf15b2d7c90ff8cbb4bf1ff3e8e49530b39cbb9a37f63e7a06cb",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/expected-values.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/expected-values.json",
+      "bytes": 4649,
+      "sha256": "33a1db97ab37b141e8d248abb557bfc7626608fba9383bd6bcf4ee004e456058",
+      "expected_bytes": 4649,
+      "expected_sha256": "33a1db97ab37b141e8d248abb557bfc7626608fba9383bd6bcf4ee004e456058",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "bytes": 37590,
+      "sha256": "d76da1437ad4219f2ae73244279bb7808470f5ac7589a554ca669c60b84868f2",
+      "expected_bytes": 37590,
+      "expected_sha256": "d76da1437ad4219f2ae73244279bb7808470f5ac7589a554ca669c60b84868f2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "bytes": 6183,
+      "sha256": "f130e75121fb6860dcbdc0e0583c8ed6daa87251989b59488f917dcd390db6fb",
+      "expected_bytes": 6183,
+      "expected_sha256": "f130e75121fb6860dcbdc0e0583c8ed6daa87251989b59488f917dcd390db6fb",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.html",
+      "bytes": 39242,
+      "sha256": "c50eb25f7064483059bf69f02cee704472d67ad8b8d1dd52cacd2eaf529119a7",
+      "expected_bytes": 39242,
+      "expected_sha256": "c50eb25f7064483059bf69f02cee704472d67ad8b8d1dd52cacd2eaf529119a7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/README.md",
+      "bytes": 5366,
+      "sha256": "0690b9c7105417ffc7b627f5d75b15f1eb8b5cf1ec09ba7bbefd04c19325014b",
+      "expected_bytes": 5366,
+      "expected_sha256": "0690b9c7105417ffc7b627f5d75b15f1eb8b5cf1ec09ba7bbefd04c19325014b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/verify-precomparison.mjs",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-4-grid-text-last-baseline-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 2644,
+      "sha256": "891d09ac0387f6d17e7d3c9d1435d53f089bcafaf65f0662c24ee7b968a26a29",
+      "expected_bytes": 2644,
+      "expected_sha256": "891d09ac0387f6d17e7d3c9d1435d53f089bcafaf65f0662c24ee7b968a26a29",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-last-baseline-multiline.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-text-last-baseline-multiline.html",
+      "bytes": 41134,
+      "sha256": "6a16ffa6ac77095a8fea42b37e962372f653e8ad4f5a32b298968d0e89ff8740",
+      "expected_bytes": 41134,
+      "expected_sha256": "6a16ffa6ac77095a8fea42b37e962372f653e8ad4f5a32b298968d0e89ff8740",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-last-baseline-multiline.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-text-last-baseline-multiline.md",
+      "bytes": 8465,
+      "sha256": "2cdfabff5081c9cb3011d53510ba3e5b3341dda6cab354699a036ff80e5c9109",
+      "expected_bytes": 8465,
+      "expected_sha256": "2cdfabff5081c9cb3011d53510ba3e5b3341dda6cab354699a036ff80e5c9109",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 294876,
+      "sha256": "432dd8dcc729ab3984cf12d864ac31af2163155eb2f1876b15ad345c68a45acd",
+      "expected_bytes": 294876,
+      "expected_sha256": "432dd8dcc729ab3984cf12d864ac31af2163155eb2f1876b15ad345c68a45acd",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 180169,
+      "sha256": "2328db168f951a9eb678d06be6856b5414997842bd43b892d0a02717524229f8",
+      "expected_bytes": 180169,
+      "expected_sha256": "2328db168f951a9eb678d06be6856b5414997842bd43b892d0a02717524229f8",
+      "verified": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_bytes": 638,
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_bytes": 568,
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/public/roadmap.html",
+      "bytes": 412578,
+      "sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "expected_bytes": 412578,
+      "expected_sha256": "2bff79983a9cac91b2f2989a6d4f11f3990500204bf6a194bccdef5e20aeee57",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "expected_bytes": 4835,
+      "expected_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.html",
+      "bytes": 662091,
+      "sha256": "95eb6648d96b9fb7ed439a5772adb7a984281032cc7f5dea402e3414492dfb30",
+      "expected_bytes": 662091,
+      "expected_sha256": "95eb6648d96b9fb7ed439a5772adb7a984281032cc7f5dea402e3414492dfb30",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/STATUS.md",
+      "bytes": 528490,
+      "sha256": "71b67b38c280fcda71146916d897438ed783a2452afad8db34fd657a7b37ec8a",
+      "expected_bytes": 528490,
+      "expected_sha256": "71b67b38c280fcda71146916d897438ed783a2452afad8db34fd657a7b37ec8a",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_bytes": 73952,
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "expected_bytes": 217085,
+      "expected_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "expected_bytes": 384,
+      "expected_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "expected_bytes": 100,
+      "expected_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.3ff0d52b33.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-04cbcabea10a.3ff0d52b33.js",
+      "bytes": 279323,
+      "sha256": "89ca4c2744158181a4dac4d563f540102d34214ecec197755a9720e593d1c16f",
+      "expected_bytes": 279323,
+      "expected_sha256": "89ca4c2744158181a4dac4d563f540102d34214ecec197755a9720e593d1c16f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-0ba05709dfd7.fd8a2b2c99.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-0ba05709dfd7.fd8a2b2c99.js",
+      "bytes": 13726,
+      "sha256": "a5ca0151594452caffb92e307df2cbdeb9c1e42cb5b94554da053b97f96a92b2",
+      "expected_bytes": 13726,
+      "expected_sha256": "a5ca0151594452caffb92e307df2cbdeb9c1e42cb5b94554da053b97f96a92b2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-2e769ef1d001.8c7bcd6cda.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-2e769ef1d001.8c7bcd6cda.js",
+      "bytes": 13730,
+      "sha256": "ef8a012a4fb2232f3b3cd06bae5574a4f409bbe02cf66564cf3e9ecc1cfc141d",
+      "expected_bytes": 13730,
+      "expected_sha256": "ef8a012a4fb2232f3b3cd06bae5574a4f409bbe02cf66564cf3e9ecc1cfc141d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-2f907733842d.15d501a196.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-2f907733842d.15d501a196.js",
+      "bytes": 7025,
+      "sha256": "39a0fcc898803bc53b81110c5c4cf551e5b6f19128873ea5fe6d48d6814e59c4",
+      "expected_bytes": 7025,
+      "expected_sha256": "39a0fcc898803bc53b81110c5c4cf551e5b6f19128873ea5fe6d48d6814e59c4",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-42a0cd3f8c23.8206cbf208.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-42a0cd3f8c23.8206cbf208.js",
+      "bytes": 7684,
+      "sha256": "9cfe9723261cfa81e9ddc53c5999fbd831b4516549c08a173b4085887b3e1e08",
+      "expected_bytes": 7684,
+      "expected_sha256": "9cfe9723261cfa81e9ddc53c5999fbd831b4516549c08a173b4085887b3e1e08",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-45da53fa04c0.2cf5d05325.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-45da53fa04c0.2cf5d05325.js",
+      "bytes": 5599,
+      "sha256": "a11a0717d7a619da727e7e522355b25d85889118e4f35fbfc2890dcd3d53a5a2",
+      "expected_bytes": 5599,
+      "expected_sha256": "a11a0717d7a619da727e7e522355b25d85889118e4f35fbfc2890dcd3d53a5a2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5f1c0f313762.6c3afba10b.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-5f1c0f313762.6c3afba10b.js",
+      "bytes": 11195,
+      "sha256": "f40d3048aab964aad6794be8a5657aba4a3b6a8f789bece9d1dfae4636942d1d",
+      "expected_bytes": 11195,
+      "expected_sha256": "f40d3048aab964aad6794be8a5657aba4a3b6a8f789bece9d1dfae4636942d1d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.ec08be68a2.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6c33a3943990.ec08be68a2.js",
+      "bytes": 701154,
+      "sha256": "d1333359d95086b7dd33566c8b94ae197040f7334404bfcde08cfd3c174783ea",
+      "expected_bytes": 701154,
+      "expected_sha256": "d1333359d95086b7dd33566c8b94ae197040f7334404bfcde08cfd3c174783ea",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6f1a2576f08f.8567a1e890.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-6f1a2576f08f.8567a1e890.js",
+      "bytes": 7679,
+      "sha256": "96125f6772ac3efe1f47f861db04b45eac819dadcda3dc38c6b2edf36e55d923",
+      "expected_bytes": 7679,
+      "expected_sha256": "96125f6772ac3efe1f47f861db04b45eac819dadcda3dc38c6b2edf36e55d923",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.8fc5dfea9d.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-739571cd2ae5.8fc5dfea9d.js",
+      "bytes": 320392,
+      "sha256": "d0a2842779c5b38cb3cc105235357c084605dfe569c32fb6705a8f6f86ef20c0",
+      "expected_bytes": 320392,
+      "expected_sha256": "d0a2842779c5b38cb3cc105235357c084605dfe569c32fb6705a8f6f86ef20c0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.7af33803f0.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-7ce2535ac56d.7af33803f0.js",
+      "bytes": 701264,
+      "sha256": "c9c99b6042a294b3c146f973989dbb5fb70a606e23aa1e80abab83f07989a989",
+      "expected_bytes": 701264,
+      "expected_sha256": "c9c99b6042a294b3c146f973989dbb5fb70a606e23aa1e80abab83f07989a989",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-968faad24ecf.90ba371d15.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-968faad24ecf.90ba371d15.js",
+      "bytes": 11484,
+      "sha256": "bd1c745d13b38698074ae3e993c1ebc1dfc145096aad2b4d0453fb047fd8e8ab",
+      "expected_bytes": 11484,
+      "expected_sha256": "bd1c745d13b38698074ae3e993c1ebc1dfc145096aad2b4d0453fb047fd8e8ab",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.b4ebba52bb.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-a48746cae70c.b4ebba52bb.js",
+      "bytes": 1008,
+      "sha256": "bd98197a4ce4505b3c711dfdb5f4fabd6f81268ae165c24f8dc70b0f6c767bdc",
+      "expected_bytes": 1008,
+      "expected_sha256": "bd98197a4ce4505b3c711dfdb5f4fabd6f81268ae165c24f8dc70b0f6c767bdc",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-acab83dc0ae9.d934af1ba1.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-acab83dc0ae9.d934af1ba1.js",
+      "bytes": 7033,
+      "sha256": "07a7337c73a775895bcaa8773c44edf5cc59b0eaed4ea6bc66fa722bd504d45d",
+      "expected_bytes": 7033,
+      "expected_sha256": "07a7337c73a775895bcaa8773c44edf5cc59b0eaed4ea6bc66fa722bd504d45d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b31399347238.ba9603f42e.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b31399347238.ba9603f42e.js",
+      "bytes": 13234,
+      "sha256": "7ad16cbc7158669ec066e58dfa691480eaae53f1d23b5fbc77ec56b8576e3a24",
+      "expected_bytes": 13234,
+      "expected_sha256": "7ad16cbc7158669ec066e58dfa691480eaae53f1d23b5fbc77ec56b8576e3a24",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.f84613a074.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b7ce154f07b0.f84613a074.js",
+      "bytes": 279331,
+      "sha256": "b1270433fc844d813b435d114372fd77510ff817ae84a9aa72fb27f0f7a96e11",
+      "expected_bytes": 279331,
+      "expected_sha256": "b1270433fc844d813b435d114372fd77510ff817ae84a9aa72fb27f0f7a96e11",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b85086df5070.34ce01ae72.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b85086df5070.34ce01ae72.js",
+      "bytes": 11470,
+      "sha256": "36c8d6da86985b97d8451a235d6297c48915cebdd532532d0a2bad94b2ed7977",
+      "expected_bytes": 11470,
+      "expected_sha256": "36c8d6da86985b97d8451a235d6297c48915cebdd532532d0a2bad94b2ed7977",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2ea1a474b34.dcc88caa33.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c2ea1a474b34.dcc88caa33.js",
+      "bytes": 11183,
+      "sha256": "77974f833b45e31a9e88e8ab8cf7e4d19a9c4a3a542cce072512776c6a911b1f",
+      "expected_bytes": 11183,
+      "expected_sha256": "77974f833b45e31a9e88e8ab8cf7e4d19a9c4a3a542cce072512776c6a911b1f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.e53d759758.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c4dae6800800.e53d759758.js",
+      "bytes": 320371,
+      "sha256": "6bef2ce965045cd96a5d9af2c041a0828ba587d014347e1b8f4814d44c902b07",
+      "expected_bytes": 320371,
+      "expected_sha256": "6bef2ce965045cd96a5d9af2c041a0828ba587d014347e1b8f4814d44c902b07",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d1b49c6801ca.983dcdc544.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d1b49c6801ca.983dcdc544.js",
+      "bytes": 5603,
+      "sha256": "a798826de188f9c091e07b70013441cf8a0b56b28cc7cef3fa8d0141f75d8f95",
+      "expected_bytes": 5603,
+      "expected_sha256": "a798826de188f9c091e07b70013441cf8a0b56b28cc7cef3fa8d0141f75d8f95",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d3a4f4e82f84.3f9a2d39ba.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d3a4f4e82f84.3f9a2d39ba.js",
+      "bytes": 6359,
+      "sha256": "6f98ca91bdf8f377423907bea2d0d4c0c91face5346248bb40cf081bf01cec69",
+      "expected_bytes": 6359,
+      "expected_sha256": "6f98ca91bdf8f377423907bea2d0d4c0c91face5346248bb40cf081bf01cec69",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ea5bf960e5d2.a5d7a6e107.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-ea5bf960e5d2.a5d7a6e107.js",
+      "bytes": 6346,
+      "sha256": "a4d8478756eac2a0e2b2f0d54be0fbf21438c16a543e49bc25d7079bdd3e92a2",
+      "expected_bytes": 6346,
+      "expected_sha256": "a4d8478756eac2a0e2b2f0d54be0fbf21438c16a543e49bc25d7079bdd3e92a2",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-f4887018498c.a38e759ce7.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-f4887018498c.a38e759ce7.js",
+      "bytes": 13223,
+      "sha256": "b2c9cab9220b36b24c6a48bb3f51714d2ed4cd238734c138e28d87cb414eba1b",
+      "expected_bytes": 13223,
+      "expected_sha256": "b2c9cab9220b36b24c6a48bb3f51714d2ed4cd238734c138e28d87cb414eba1b",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.a3a74aa855.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/index.a3a74aa855.js",
+      "bytes": 127495,
+      "sha256": "6b0167ee4cc7dd856076b740a06b42be9366b0c7c3f26d32f6d0166f12f3cfd7",
+      "expected_bytes": 127495,
+      "expected_sha256": "6b0167ee4cc7dd856076b740a06b42be9366b0c7c3f26d32f6d0166f12f3cfd7",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_bytes": 218364,
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "expected_bytes": 1209,
+      "expected_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_bytes": 35370,
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "expected_bytes": 222,
+      "expected_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "expected_bytes": 472,
+      "expected_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.bafbf060.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/search_index.ko.bafbf060.json",
+      "bytes": 1617488,
+      "sha256": "bafbf060a741f9926489040d73f1d61074128862b2c2344ceab59d792442cc81",
+      "expected_bytes": 1617488,
+      "expected_sha256": "bafbf060a741f9926489040d73f1d61074128862b2c2344ceab59d792442cc81",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "bytes": 661550,
+      "sha256": "bd8d04c37be97be96c0fd675d7d37bcfbc3c065eb831280d44bddcc513d6d7d3",
+      "expected_bytes": 661550,
+      "expected_sha256": "bd8d04c37be97be96c0fd675d7d37bcfbc3c065eb831280d44bddcc513d6d7d3",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.md",
+      "bytes": 528490,
+      "sha256": "71b67b38c280fcda71146916d897438ed783a2452afad8db34fd657a7b37ec8a",
+      "expected_bytes": 528490,
+      "expected_sha256": "71b67b38c280fcda71146916d897438ed783a2452afad8db34fd657a7b37ec8a",
+      "verified": true
+    }
+  ]
+}
