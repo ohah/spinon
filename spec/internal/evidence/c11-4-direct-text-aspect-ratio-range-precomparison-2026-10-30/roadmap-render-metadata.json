@@ -1,0 +1,33 @@
+{
+  "captureMethod": "Agent Browser screenshot using Chrome DevTools Protocol",
+  "sourceUrl": "http://127.0.0.1:8867/spec/public/roadmap.html",
+  "browser": "HeadlessChrome/156.0.0.0",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "devicePixelRatio": 1
+  },
+  "documentTitle": "스피논 구현 로드맵",
+  "heading": "스피논을 만드는 순서",
+  "heroProgressCardCount": 80,
+  "firstCardContainsPlanOnlyState": true,
+  "javascriptPageErrors": [],
+  "observedFailedRequest": "/spinon/icon.svg returned HTTP 404",
+  "limitations": [
+    "This is a local rendering of spec/public/roadmap.html, not a Tailnet or deployed-site verification.",
+    "Plan links were not opened or tested in this capture."
+  ],
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8867,
+    "stateAfterCapture": "stopped"
+  },
+  "agentBrowserSession": {
+    "name": "spn-c11-ratio-roadmap",
+    "stateAfterCapture": "closed"
+  },
+  "screenshot": {
+    "path": "roadmap-agent-browser.png",
+    "sha256": "3b29aca427eb77f9b86f06d06505d9b0fdf86ca41475afad3820a1f3778ba82a"
+  }
+}

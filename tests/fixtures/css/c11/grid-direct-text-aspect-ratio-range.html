@@ -1,0 +1,164 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 direct text Grid aspect-ratio range precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  display: block;
+  padding: 20px;
+  color: #111;
+  background: #fff;
+  font: 12px/1.2 sans-serif;
+}
+.case { display: block; margin: 0 0 16px; }
+.case-label { color: #263238; }
+.grid {
+  display: grid;
+  width: 100px;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: auto;
+  gap: 0;
+  align-items: normal;
+  justify-items: normal;
+  outline: 1px solid #263238;
+}
+.item {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: #111;
+  background: #dbeafe;
+  font: 10px/10px Ahem;
+  white-space: nowrap;
+  outline: 1px solid #1976d2;
+}
+.ratio-1-2 { aspect-ratio: 1 / 2; }
+.ratio-4-3 { aspect-ratio: 4 / 3; }
+.ratio-3-2 { aspect-ratio: 3 / 2; }
+.ratio-5-2 { aspect-ratio: 5 / 2; }
+.row-60 { grid-template-rows: 60px; }
+.row-45 { grid-template-rows: 45px; }
+.row-30 { grid-template-rows: 30px; }
+.row-20 { grid-template-rows: 20px; }
+</style>
+
+<section class="case">
+  <div class="case-label">Auto row: ratio 1 / 2</div>
+  <div id="row-1-2" class="grid">
+    <div id="row-1-2-short" class="item">A</div>
+    <div id="row-1-2-long" class="item ratio-1-2">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: ratio 4 / 3</div>
+  <div id="row-4-3" class="grid">
+    <div id="row-4-3-short" class="item">A</div>
+    <div id="row-4-3-long" class="item ratio-4-3">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: ratio 3 / 2</div>
+  <div id="row-3-2" class="grid">
+    <div id="row-3-2-short" class="item">A</div>
+    <div id="row-3-2-long" class="item ratio-3-2">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: ratio 5 / 2</div>
+  <div id="row-5-2" class="grid">
+    <div id="row-5-2-short" class="item">A</div>
+    <div id="row-5-2-long" class="item ratio-5-2">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: no-ratio control</div>
+  <div id="row-control" class="grid">
+    <div id="row-control-short" class="item">A</div>
+    <div id="row-control-long" class="item">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 60px row: ratio 1 / 2</div>
+  <div id="column-1-2" class="grid row-60">
+    <div id="column-1-2-long" class="item ratio-1-2">AAAA</div>
+    <div id="column-1-2-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 45px row: ratio 4 / 3</div>
+  <div id="column-4-3" class="grid row-45">
+    <div id="column-4-3-long" class="item ratio-4-3">AAAA</div>
+    <div id="column-4-3-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 30px row: ratio 3 / 2</div>
+  <div id="column-3-2" class="grid row-30">
+    <div id="column-3-2-long" class="item ratio-3-2">AAAA</div>
+    <div id="column-3-2-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 20px row: ratio 5 / 2</div>
+  <div id="column-5-2" class="grid row-20">
+    <div id="column-5-2-long" class="item ratio-5-2">AAAA</div>
+    <div id="column-5-2-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 60px row: no-ratio control</div>
+  <div id="column-control-60" class="grid row-60">
+    <div id="column-control-60-long" class="item">AAAA</div>
+    <div id="column-control-60-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 45px row: no-ratio control</div>
+  <div id="column-control-45" class="grid row-45">
+    <div id="column-control-45-long" class="item">AAAA</div>
+    <div id="column-control-45-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 30px row: no-ratio control</div>
+  <div id="column-control-30" class="grid row-30">
+    <div id="column-control-30-long" class="item">AAAA</div>
+    <div id="column-control-30-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 20px row: no-ratio control</div>
+  <div id="column-control-20" class="grid row-20">
+    <div id="column-control-20-long" class="item">AAAA</div>
+    <div id="column-control-20-short" class="item">A</div>
+  </div>
+</section>
+
+<script>
+window.captureGridAspectRatioRange = () => {
+  const box = (element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  };
+  return {
+    fontReady: document.fonts.check('10px Ahem'),
+    scenes: [...document.querySelectorAll('.grid')].map((grid) => ({
+      id: grid.id,
+      grid: box(grid),
+      tracks: {
+        columns: getComputedStyle(grid).gridTemplateColumns,
+        rows: getComputedStyle(grid).gridTemplateRows,
+      },
+      items: [...grid.children].map((item) => ({
+        id: item.id,
+        aspectRatio: getComputedStyle(item).aspectRatio,
+        frame: box(item),
+      })),
+    })),
+  };
+};
+</script>
