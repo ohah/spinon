@@ -1,0 +1,5 @@
+Command: node stage-root-pass01.mjs
+Source: cf217d8bab6ea4b5f27e43f4be48d62c8b8272ca
+Failure: git show reported that plan/c11-4-direct-text-aspect-ratio-auto-projection-gate.md does not exist in this commit.
+Cause: the selected source allowlist used a nonexistent plan filename; only its review documents exist.
+Recovery: remove the nonexistent plan entry, retain the two existing review files, and restage under pass02. This failed before Tailnet preflight or copy, so the preview was not modified.

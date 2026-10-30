@@ -1,0 +1,198 @@
+{
+  "pass": "pass03",
+  "preview_root_relative": "SpinonPreview",
+  "target_count": 21,
+  "counts": {
+    "create": 10,
+    "replace": 4,
+    "same": 7
+  },
+  "no_deletes": true,
+  "all_verified": true,
+  "backup_count": 4,
+  "all_backups_verified": true,
+  "open_handle_observations": [],
+  "files": [
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": "create",
+      "bytes": 73762,
+      "sha256": "b404d89ae9bf420492c8f9c6e07a606135ee018764f740ffd146e7d88caac80e",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "bytes": 354409,
+      "sha256": "8cb0cd16d39a3907abf897928c71cdb3ea7bd9c45b986a8dcd37b18de9e026fb",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": "replace",
+      "bytes": 106557,
+      "sha256": "7c8acc5760facbdcd79a64b74fa84dc0668db57c3c63f9389ad59a5503df8241",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": "create",
+      "bytes": 73772,
+      "sha256": "d3a385e38a1eae13dbdf9ad059e79ae7c32295e0591e795372873963c0883f3d",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "bytes": 354331,
+      "sha256": "38015c9316d1ad49dd646341bd1abdac8d4f02d9c9e0b7c6ed7c8ee147cd534e",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "status": "replace",
+      "bytes": 106542,
+      "sha256": "142991c95043907defeb454db305e6fad95af7c9f84f35ed188991d28908b489",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": "same",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ae5be87d40.js",
+      "status": "create",
+      "bytes": 299873,
+      "sha256": "05e2477ab9c96b43ca68e7d418cb664b5336a35295d8c08e3881128304033819",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-3b92bbea126e.9ec729df02.js",
+      "status": "create",
+      "bytes": 10159,
+      "sha256": "8c16b5d621758b83c8dd5d9727710a4eac5092e19822a101731a8852fed8474f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.5750140f84.js",
+      "status": "create",
+      "bytes": 299926,
+      "sha256": "faff445d3de203dcbe2121c0b049bf4652eaeb69d437046310a0d26f1d267aa6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.dda6729c60.js",
+      "status": "create",
+      "bytes": 42784,
+      "sha256": "b6ca3ea22313b7c9c99656ca4624914e1f726becf1cd7634ceb754f43b09d8c7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d1d32028c6d0.6162791091.js",
+      "status": "create",
+      "bytes": 10152,
+      "sha256": "644ca9b6333bb81d5276be82d30da4e22dc8b3b31ab3da34d788acd5399135b0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.127c0dc8c5.js",
+      "status": "create",
+      "bytes": 42821,
+      "sha256": "d985c79dd0d053c7e1aa0629ab00a46c61da34c780b577114d3be54b76a657bb",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.cbefa9ed5d.js",
+      "status": "create",
+      "bytes": 239269,
+      "sha256": "efe2fb0446988cbb0940dd622cf441426823fe91353f5fbfad92179d44109a70",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "same",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "same",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "status": "same",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.ed3e171c.json",
+      "status": "create",
+      "bytes": 2163042,
+      "sha256": "ed3e171c5e21d3eb045472fb55654fede5e77669671196f719a1897bf113d479",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/plan/c11-4-grid-track-sizing.html",
+      "bytes": 314400,
+      "sha256": "aed689cd8ab6a02f6b3c0454b2a0474ee6bac9feb865ab44131efbb18b448c36",
+      "verified": true,
+      "reused_after_interrupted_copy": false
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/plan/c11-css-grid.html",
+      "bytes": 83237,
+      "sha256": "cae30e292abd1953b8951501f29ee703c52cfc6dfe668b03d6455d236826d71f",
+      "verified": true,
+      "reused_after_interrupted_copy": false
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 314381,
+      "sha256": "6b2b8e15fe8ca3a25972a255f994c0d15dbb732b79e0224a0e41f1abd18e88f8",
+      "verified": true,
+      "reused_after_interrupted_copy": false
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/spec/plan/c11-css-grid.html",
+      "bytes": 83207,
+      "sha256": "7e9758620ac5aae2c19a046a3c24158cd1421fd4757d9d674279b75674c5617d",
+      "verified": true,
+      "reused_after_interrupted_copy": false
+    }
+  ]
+}
