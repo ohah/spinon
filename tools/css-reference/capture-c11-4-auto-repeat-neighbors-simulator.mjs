@@ -159,6 +159,9 @@ const anonymousTextSceneIDs = new Set([
   'anonymous-break-spaces-trailing-max-content',
   'anonymous-break-spaces-whitespace-only',
   'anonymous-break-spaces-whitespace-before-block',
+  'anonymous-pre-max-content-spaces', 'anonymous-pre-min-content-spaces',
+  'anonymous-pre-forced-break', 'anonymous-normal-fixed-width-control',
+  'anonymous-pre-fixed-width-nowrap',
 ]);
 const anonymousTextImageSceneIDs = new Set([
   'anonymous-text-image-text', 'image-before-comment-group',
@@ -1452,8 +1455,93 @@ scenes.push(
     gaps: { Columns: 0, Rows: 0 },
     anonymousTextItems: [],
   },
+  {
+    id: 'anonymous-pre-max-content-spaces', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]',
+    tracks: [60], collapsed: [false],
+    axes: {
+      Columns: { tracks: [60], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 60, minContentHeight: 10, maxContent: 60, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX  XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 60, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-min-content-spaces', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]',
+    tracks: [50], collapsed: [false],
+    axes: {
+      Columns: { tracks: [50], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 50, minContentHeight: 10, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 50, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-forced-break', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]',
+    tracks: [20], collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 20, maxContentHeight: 20 },
+      textSources: [{ node: 2, text: 'XX\nXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 20, height: 20 },
+    }],
+  },
+  {
+    id: 'anonymous-normal-fixed-width-control', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=25,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]',
+    tracks: [25], collapsed: [false],
+    axes: {
+      Columns: { tracks: [25], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 25, height: 20 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-fixed-width-nowrap', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=25,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]',
+    tracks: [25], collapsed: [false],
+    axes: {
+      Columns: { tracks: [25], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 50, minContentHeight: 10, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 25, height: 10 },
+    }],
+  },
 );
-assert.equal(scenes.length, 181, 'C11.4 anonymous Grid text slice includes twenty-six scenes.');
+assert.equal(scenes.length, 186, 'C11.4 anonymous Grid text slice includes thirty-one scenes.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 scenes.push(
@@ -6267,7 +6355,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 643, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 648, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -8470,7 +8558,7 @@ function verifyRuntimeLog(log, scene, runID) {
     if (scene.id === 'anonymous-normal-newline-max-content'
       || scene.id === 'anonymous-pre-line-max-content'
       || scene.id === 'anonymous-normal-max-content-spaces'
-      || scene.id.startsWith('anonymous-pre-wrap-')
+      || scene.id.startsWith('anonymous-pre-')
       || scene.id.startsWith('anonymous-break-spaces-')) {
       const revision = diagnostics.layoutInputRevision;
       assert.ok(revision?.source?.startsWith('HostDocument'),
@@ -8485,7 +8573,8 @@ function verifyRuntimeLog(log, scene, runID) {
       if (scene.anonymousTextItems.length === 1) {
         const expectedWhiteSpace = scene.id === 'anonymous-pre-line-max-content' ? 'PreLine'
           : scene.id.startsWith('anonymous-pre-wrap-') ? 'PreWrap'
-            : scene.id.startsWith('anonymous-break-spaces-') ? 'BreakSpaces' : 'Normal';
+            : scene.id.startsWith('anonymous-pre-') ? 'Pre'
+              : scene.id.startsWith('anonymous-break-spaces-') ? 'BreakSpaces' : 'Normal';
         assert.equal(textLayouts[0].node, scene.anonymousTextItems[0].node,
           `${scene.id}: text layout node differs`);
         assert.equal(textLayouts[0].paragraphStyle?.whiteSpace, expectedWhiteSpace,
@@ -8511,6 +8600,8 @@ function verifyRuntimeLog(log, scene, runID) {
             'anonymous-pre-wrap-soft-wrap',
             'anonymous-break-spaces-soft-wrap-25',
             'anonymous-break-spaces-trailing-soft-wrap-25',
+            'anonymous-normal-fixed-width-control',
+            'anonymous-pre-fixed-width-nowrap',
           ].includes(scene.id));
         if (!expectsContribution) {
           assert.equal(pass.contributions.length, 0,
@@ -8521,6 +8612,7 @@ function verifyRuntimeLog(log, scene, runID) {
         const expectedValue = axis === 'Columns' ? item.frame.width : item.frame.height;
         const expectedKind = [
           'anonymous-pre-wrap-min-content-spaces',
+          'anonymous-pre-min-content-spaces',
           'anonymous-break-spaces-min-content',
           'anonymous-break-spaces-forced-break-min-content',
         ].includes(scene.id)

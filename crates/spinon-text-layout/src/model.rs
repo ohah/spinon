@@ -68,6 +68,7 @@ impl InlineEdges {
 pub enum WhiteSpaceMode {
     Normal,
     NoWrap,
+    Pre,
     PreLine,
     PreWrap,
     BreakSpaces,

@@ -199,7 +199,7 @@ impl TextLayoutEngine {
         }
         builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
         builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
-            WhiteSpaceMode::NoWrap => TextWrapMode::NoWrap,
+            WhiteSpaceMode::NoWrap | WhiteSpaceMode::Pre => TextWrapMode::NoWrap,
             WhiteSpaceMode::Normal
             | WhiteSpaceMode::PreLine
             | WhiteSpaceMode::PreWrap
@@ -208,7 +208,7 @@ impl TextLayoutEngine {
         builder.push_default(StyleProperty::WhiteSpaceCollapse(
             match input.style.white_space {
                 WhiteSpaceMode::PreLine => WhiteSpaceCollapse::PreserveBreaks,
-                WhiteSpaceMode::PreWrap => WhiteSpaceCollapse::Preserve,
+                WhiteSpaceMode::Pre | WhiteSpaceMode::PreWrap => WhiteSpaceCollapse::Preserve,
                 WhiteSpaceMode::BreakSpaces => WhiteSpaceCollapse::BreakSpaces,
                 WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
             },

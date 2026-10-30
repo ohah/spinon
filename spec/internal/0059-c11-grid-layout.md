@@ -843,3 +843,11 @@ Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 장면
 구현 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge됐고 merge SHA는 `32ba37b18dc5a8fc553667f52cc47d46dae3952f`다. PR check rollup은 비어 있었고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다.
 
 이 후보는 전체 WPT, 일반 CSS admission, 임의 font/script/tab, root-HTML mapping, glyph pixel 정합성, 실기기/hardware GPU 또는 전체 C11.4를 검증하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 미완료로 유지한다.
+
+## C11.4 anonymous Grid text `white-space:pre` · 제한 opt-in 구현 후보
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 기존 C11.4 anonymous-text fixture에서 고정된 다섯 `white-space:pre` 장면만 허용한다. HTML은 20px width `max-content` column Grid, zero gap/edges, `align-items:start`, `order:0`, horizontal-tb/LTR와 등록 Ahem 10px/10px paragraph profile을 사용한다. `pre-max-content`의 source `XX  XX`는 반복 공백을 보존해 60px column을 만든다. `pre-min-content`의 `XX XX`는 공백에서 soft-wrap하지 않아 50px column·10px row다. `pre-forced-break`의 `XX\nXX`는 LF를 forced segment break로 보존해 20px column·20px row다. 두 fixed-width control은 root/item frame 25px와 text intrinsic width를 분리해 검사하며 `pre` item의 50px line advance는 25px root 밖으로 overflow한다.
+
+Text engine은 `WhiteSpaceMode::Pre`에서 preserved spaces와 forced breaks를 유지하고 soft wrap을 막는다. Root HTML computed-style adapter는 `white-space-collapse:preserve` + `text-wrap-mode:nowrap`만 `Pre`로 매핑하고 인접 mode와 섞지 않는다. Anonymous Grid gate와 FFI scene allowlist는 고정 fixture profile 밖의 tree/style/text를 거부하며 tab은 부분 layout 없이 명시적으로 거부한다. 이는 일반 authored `white-space` cascade나 일반 CSS admission이 아니다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 31-scene 행렬은 각 31/31 통과했고 신규 5개 장면의 expected frame/track, 완성된 trace, draw/present와 retry 0을 확인했다. AVD는 ANGLE/Vulkan/SwiftShader software renderer이고 iOS는 compositor 제출 후 출력을 검사하지 않았다. C15.3 glyph paint가 이 runtime 경로에서 꺼져 있으므로 캡처는 glyph ink의 정확성을 보장하지 않는다. 실제 glyph pixels, 실기기/hardware GPU, 전체 WPT와 C11.4/C11 완료는 검증하지 않는다. [작업 계획](../../plan/c11-4-anonymous-grid-text-pre.md) · [실행 근거](evidence/c11-4-anonymous-grid-text-pre-runtime-2026-10-31-2026-10-31/README.md).

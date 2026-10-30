@@ -1,0 +1,43 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text pre precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { font: 10px/10px Ahem, sans-serif; }
+.case { margin: 0 0 20px; }
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: normal;
+}
+#pre-max-content,
+#pre-min-content,
+#pre-forced-break,
+#pre-fixed-width { white-space: pre; }
+#normal-min-content,
+#pre-min-content { grid-template-columns: min-content; }
+#normal-fixed-width,
+#pre-fixed-width {
+  width: 25px;
+  grid-template-columns: minmax(0, 1fr);
+}
+</style>
+<section class="case"><div id="normal-max-content" class="grid">XX  XX</div></section>
+<section class="case"><div id="pre-max-content" class="grid">XX  XX</div></section>
+<section class="case"><div id="normal-min-content" class="grid">XX XX</div></section>
+<section class="case"><div id="pre-min-content" class="grid">XX XX</div></section>
+<section class="case"><div id="pre-forced-break" class="grid">XX
+XX</div></section>
+<section class="case"><div id="normal-fixed-width" class="grid">XX XX</div></section>
+<section class="case"><div id="pre-fixed-width" class="grid">XX XX</div></section>

@@ -1,0 +1,64 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "03bbdc1282a6f7b75735a17f7f6893d6ddae16ac1f6bb04f413be7ed470b2a15",
+  "installedApkSha256": "03bbdc1282a6f7b75735a17f7f6893d6ddae16ac1f6bb04f413be7ed470b2a15",
+  "sourceRevision": {
+    "commit": "7cbebe5532cb0176cb4330ce2ea8e23217e7687a",
+    "tree": "c2279350182e392a220050c24a9966aee1dde780",
+    "trackedDiffSha256": "27db7e4ffc1e9c73bc820895d6452beb49e3db26ca28166fda39288d4a1ca579",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "crates/spinon-layout/src/compute.rs",
+      "crates/spinon-layout/src/host_document/text_paragraphs.rs",
+      "crates/spinon-layout/src/host_document_tests/c11_4_anonymous_text/white_space.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render/style.rs",
+      "crates/spinon-text-layout/src/engine/intrinsic.rs",
+      "crates/spinon-text-layout/src/error.rs",
+      "crates/spinon-text-layout/src/model.rs",
+      "crates/spinon-text-layout/src/normalize.rs",
+      "crates/spinon-text-layout/src/tests.rs",
+      "plan/c11-4-grid-track-sizing.md",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "spec/STATUS.md",
+      "spec/internal/0059-c11-grid-layout.md",
+      "spec/internal/0070-c15-1-inline-text-layout.md",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "crates/spinon-text-layout/src/tests/c11_4_pre.rs",
+        "sha256": "67784e02bd05c9a0c5b419c67b99ae4ebe8555c9d88c94a32be2b45b122d5f2b"
+      },
+      {
+        "path": "plan/c11-4-anonymous-grid-text-pre-plan-review-20.md",
+        "sha256": "855e714b9636ddf39cb6daffa4740846ad24bec811cb1d665f31743632eca8a1"
+      },
+      {
+        "path": "plan/c11-4-anonymous-grid-text-pre.md",
+        "sha256": "173965c3266a83a9d1c0692b8209c588ca6d4d8575b2674c66c2fe3e405c9936"
+      },
+      {
+        "path": "tests/fixtures/css/c11/anonymous-grid-text-pre-precomparison.html",
+        "sha256": "197cec44aa9b80d8b5e9af2170c8e1efbbe2b43456a9d1ed8c8c664fb8dd7353"
+      },
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "f66f1ae34a61847e643065181b54449c74b5ec486f74877d7b83b422901d2d02"
+  }
+}

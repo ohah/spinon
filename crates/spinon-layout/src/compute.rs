@@ -219,6 +219,7 @@ fn validate_text_paragraphs(
                         paragraph.style.white_space,
                         crate::WhiteSpaceMode::Normal
                             | crate::WhiteSpaceMode::NoWrap
+                            | crate::WhiteSpaceMode::Pre
                             | crate::WhiteSpaceMode::PreLine
                             | crate::WhiteSpaceMode::PreWrap
                             | crate::WhiteSpaceMode::BreakSpaces

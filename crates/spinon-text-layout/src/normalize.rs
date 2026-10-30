@@ -36,6 +36,11 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
 
     let preserve_tabs = input.style.white_space == WhiteSpaceMode::PreWrap
         && characters.iter().any(|source| source.character == '\t');
+    if input.style.white_space == WhiteSpaceMode::Pre
+        && characters.iter().any(|source| source.character == '\t')
+    {
+        return Err(TextLayoutError::UnsupportedPreTabProfile(input.node));
+    }
     if preserve_tabs && !supports_pre_wrap_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreWrapTabProfile(input.node));
     }
@@ -117,7 +122,10 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
 }
 
 fn preserves_spaces_and_breaks(mode: WhiteSpaceMode) -> bool {
-    matches!(mode, WhiteSpaceMode::PreWrap | WhiteSpaceMode::BreakSpaces)
+    matches!(
+        mode,
+        WhiteSpaceMode::Pre | WhiteSpaceMode::PreWrap | WhiteSpaceMode::BreakSpaces
+    )
 }
 
 fn supports_pre_wrap_tab_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {

@@ -74,6 +74,30 @@ fn assert_grid_tracks(
     }
 }
 
+fn assert_text_intrinsic(
+    output: &crate::LayoutOutput,
+    node: spinon_core::NodeId,
+    expected: (f32, f32, f32, f32),
+) {
+    let item = output
+        .grid_item_intrinsic_inputs
+        .iter()
+        .find(|item| item.node == node)
+        .expect("anonymous text intrinsic input");
+    let crate::LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
+        panic!("anonymous Grid text must use text intrinsic measurements");
+    };
+    assert_eq!(
+        (
+            sizes.min_content(),
+            sizes.max_content(),
+            sizes.min_content_height(),
+            sizes.max_content_height(),
+        ),
+        expected
+    );
+}
+
 #[test]
 fn anonymous_item_wraps_at_min_content_width() {
     let (document, root, children, styles) = fixture(&[Child::Text("XX XX")], 20.0);
@@ -536,4 +560,81 @@ fn pre_wrap_whitespace_before_block_does_not_consume_an_auto_placement_cell() {
     assert_frame(&output.frames, children[1].id(), (0.0, 0.0, 10.0, 10.0));
     assert!(!output.text_layouts.contains_key(&children[0].id()));
     assert_grid_tracks(&output, root, &[20.0, 20.0], &[10.0], [false, false]);
+}
+
+#[test]
+fn anonymous_pre_preserves_repeated_spaces_in_max_content_contribution() {
+    let (_document, root, children, output) = run_grid_scene(
+        &[Child::Text("XX  XX")],
+        20.0,
+        crate::WhiteSpaceMode::Pre,
+        vec![GridTrackSize::MaxContent],
+        vec![GridTrackSize::Auto],
+    );
+    assert_text_intrinsic(&output, children[0].id(), (60.0, 60.0, 10.0, 10.0));
+    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 10.0));
+    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 60.0, 10.0));
+    assert_grid_tracks(&output, root, &[60.0], &[10.0], [true, true]);
+}
+
+#[test]
+fn anonymous_pre_min_content_does_not_break_at_preserved_spaces() {
+    let (_document, root, children, output) = run_grid_scene(
+        &[Child::Text("XX XX")],
+        20.0,
+        crate::WhiteSpaceMode::Pre,
+        vec![GridTrackSize::MinContent],
+        vec![GridTrackSize::Auto],
+    );
+    assert_text_intrinsic(&output, children[0].id(), (50.0, 50.0, 10.0, 10.0));
+    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 10.0));
+    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 50.0, 10.0));
+    assert_grid_tracks(&output, root, &[50.0], &[10.0], [true, true]);
+}
+
+#[test]
+fn anonymous_pre_forced_breaks_remain_separate_intrinsic_lines() {
+    let (_document, root, children, output) = run_grid_scene(
+        &[Child::Text("XX\nXX")],
+        20.0,
+        crate::WhiteSpaceMode::Pre,
+        vec![GridTrackSize::MaxContent],
+        vec![GridTrackSize::Auto],
+    );
+    assert_text_intrinsic(&output, children[0].id(), (20.0, 20.0, 20.0, 20.0));
+    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 20.0));
+    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 20.0, 20.0));
+    assert_grid_tracks(&output, root, &[20.0], &[20.0], [true, true]);
+}
+
+#[test]
+fn anonymous_pre_overflows_a_fixed_width_without_soft_wrapping() {
+    let (_document, root, children, output) = run_grid_scene(
+        &[Child::Text("XX XX")],
+        25.0,
+        crate::WhiteSpaceMode::Pre,
+        vec![GridTrackSize::LengthPx(25.0)],
+        vec![GridTrackSize::Auto],
+    );
+    assert_text_intrinsic(&output, children[0].id(), (50.0, 50.0, 10.0, 10.0));
+    assert_frame(&output.frames, root.id(), (0.0, 0.0, 25.0, 10.0));
+    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 25.0, 10.0));
+    let text = &output.text_layouts[&children[0].id()].layout;
+    assert_eq!(text.lines.len(), 1);
+    assert_eq!(text.width, 50.0);
+    assert_grid_tracks(&output, root, &[25.0], &[10.0], [false, true]);
+
+    let (_document, normal_root, normal_children, normal) = run_grid_scene(
+        &[Child::Text("XX XX")],
+        25.0,
+        crate::WhiteSpaceMode::Normal,
+        vec![GridTrackSize::LengthPx(25.0)],
+        vec![GridTrackSize::Auto],
+    );
+    assert_frame(&normal.frames, normal_root.id(), (0.0, 0.0, 25.0, 20.0));
+    assert_frame(
+        &normal.frames,
+        normal_children[0].id(),
+        (0.0, 0.0, 25.0, 20.0),
+    );
 }

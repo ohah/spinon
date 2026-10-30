@@ -1,0 +1,24 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.64s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 1 test
+test session::ua_cascade::runtime_layout::root_html_default_render::style::tests::root_html_maps_pre_to_preserved_no_wrap_without_aliasing_neighbor_modes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
