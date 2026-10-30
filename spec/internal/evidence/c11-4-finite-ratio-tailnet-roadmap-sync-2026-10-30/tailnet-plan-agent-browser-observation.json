@@ -1,0 +1,40 @@
+{
+  "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+  "terms": {
+    "C11.4 · CSS Grid track sizing 계획": true,
+    "2026-10-30 direct-text finite-positive preferred aspect-ratio extension": false,
+    "C11.4": true,
+    "72/213": true
+  },
+  "excerpts": [
+    {
+      "term": "C11.4 · CSS Grid track sizing 계획",
+      "found": true,
+      "excerpt": "— 30 checks\nplan\nC11.4 direct-text finite-positive preferred aspect-ratio 확장 계획\nC11.4 · CSS Grid track sizing 계획\nspec\ninternal\n0059 · C11 Grid 레이아웃 내부 계약\nevidence\nc11-4-direct-text-aspect-ratio-range-precomparison-2026-10-30\nC11.4 direct-text finite-positive ratio 계획 PR diff 실패 관점 검토 30개\nC11.4 direct-text preferred aspect-ratio ra"
+    },
+    {
+      "term": "2026-10-30 direct-text finite-positive preferred aspect-ratio extension",
+      "found": false,
+      "excerpt": null
+    },
+    {
+      "term": "C11.4",
+      "found": true,
+      "excerpt": "아웃 내부 계약\nevidence\nc11-4-direct-text-aspect-ratio-range-precomparison-2026-10-30\nC11.4 direct-text finite-positive ratio 계획 PR diff 실패 관점 검토 30개\nC11.4 direct-text preferred aspect-ratio range 사전 비교\nc11-4-direct-text-aspect-ratio-runtime-2026-10-30\nC11.4 direct-text finite-positive aspect-ratio 구현/runtime "
+    },
+    {
+      "term": "72/213",
+      "found": true,
+      "excerpt": "test-only 범위다. 계획 · 구현/runtime 검토 20개 · PR diff 검토 30개.\n\n공식 C11.4/C11 checkbox와 72/213은 유지한다.\n\n#\n2026-10-30 direct-text preferred aspect-ratio intrinsic contribution · PR #834 병합\n\n고정 4개 scene의 fixture-test 전용 preferred-aspect-ratio profile을 구현하고, Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simul"
+    }
+  ],
+  "images": [
+    {
+      "src": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "complete": true,
+      "naturalWidth": 150,
+      "naturalHeight": 150
+    }
+  ]
+}
