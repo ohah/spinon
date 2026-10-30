@@ -1,0 +1,1286 @@
+{
+  "selectedOutputRoot": "build/spinon/c11-4-aspect-ratio-roadmap-sync-site-pass02-20261030",
+  "fileCount": 252,
+  "totalBytes": 13237232,
+  "requiredRoutes": [
+    "roadmap.html",
+    "roadmap.svg",
+    "icon.svg",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-direct-text-aspect-ratio.html",
+    "plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+    "plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+    "plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/grid-text-aspect-ratio-column.png",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/grid-text-aspect-ratio-column.png"
+  ],
+  "noDeletes": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 326289,
+      "sha256": "e09155f56360cde939c5bb61cdd1c7c1949dfc7a70e41661e5a703d50cef3ca2"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/chrome-156.png",
+      "bytes": 12795,
+      "sha256": "b90e14811966b88f7da715b5362f70a2671cd8680107162aea945ec286156a7c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/chrome-observation.json",
+      "bytes": 1260,
+      "sha256": "376253fb43c9def4601ecede2c89a3b3d26659400f0edb1c58c789e1c5ca2625"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.html",
+      "bytes": 29874,
+      "sha256": "0ec6ba39470b077406d9be899784ec5db389d24c63ea92d0d82529235048f156"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc5sb3-ace87a2f/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc5sb3-ace87a2f/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc5sb3-ace87a2f/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 23469,
+      "sha256": "972a42073bc0c57b682dd1528e064e831055547310c9eeb8f1806f0b1ea7811d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc5sb3-ace87a2f/simulator.json",
+      "bytes": 522,
+      "sha256": "562bba65b26419e1062dfa05c693f9234d304ea6bd6f369a1ad2f48168142116"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc9vml-c9fe44c6/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc9vml-c9fe44c6/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc9vml-c9fe44c6/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32864,
+      "sha256": "b85d2f47bc077e9a2e2630aa15073c123fbe0a2ed66fb52bed5965be0e1beddb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuc9vml-c9fe44c6/simulator.json",
+      "bytes": 522,
+      "sha256": "b1d6f15380d0dd48bd137803091a8ad916242d24ea89c4297a9b404597669a6f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/grid-text-aspect-ratio-row-control.png",
+      "bytes": 76211,
+      "sha256": "7fca4cc68ee10533bb88e5d12fa7d89403f7bb0b27ca49a1b1a90a29e6d1781a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/grid-text-aspect-ratio-row.png",
+      "bytes": 76483,
+      "sha256": "7cefaf1739e76d14fa2a28a174f8483f23a9f81f66a1cb9210d56d8d8dd3b1d0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 23744,
+      "sha256": "25bd3d49dc7d572d99f4dbecc1546e8010613d586a7626bc06cd0e7bdfc5efb4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33497,
+      "sha256": "361f3b8cf84c95d2c1e3b600d1658fca52c475be84e5410d355993f1ed622629"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32487,
+      "sha256": "72a8aa46016ce99a2662e2e11947dd097274d9219e823d8e12dc0aa3b78ca5d0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvuca7kk-371bd78d/simulator.json",
+      "bytes": 522,
+      "sha256": "b1d6f15380d0dd48bd137803091a8ad916242d24ea89c4297a9b404597669a6f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/grid-text-aspect-ratio-column-control.png",
+      "bytes": 76522,
+      "sha256": "fb5efc4ac573e390feff84abd5b34a5681d68af7861896ac753835bc36ee4329"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/grid-text-aspect-ratio-column.png",
+      "bytes": 76522,
+      "sha256": "0fc3bc51d15dc6aa27e731d5c4f165caff9411a6db197537352435c0460b46bf"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/grid-text-aspect-ratio-row-control.png",
+      "bytes": 76523,
+      "sha256": "f3761f07f4f62b05b450d74c86cc77f4e0d9aff8d141d7c247c21fc0cae47b74"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/grid-text-aspect-ratio-row.png",
+      "bytes": 76502,
+      "sha256": "b73af06ba3f5bdd519aff0d8a0aee3ceb717ff1dfcbb4c6f7fcdaa396f406650"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/result.json",
+      "bytes": 1474,
+      "sha256": "704dba4b2c2df2afd20a3703870266486501642dfe80f7bad392cd65b2b1ea82"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 29253,
+      "sha256": "ccc67062a214d7ee08cb0af6f3835cace2d7d1b7375674a9582bc2e04cec36f6"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28406,
+      "sha256": "6ac36105b55c5ff4bba40b39d95a36021160cb20cfc350600f7f78d06c3dc620"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33881,
+      "sha256": "ff19caaf7ade29b0c893a46bef5d32642643f151da7bf82ae9688e5234257748"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32491,
+      "sha256": "c10de1b08f4e327b850834b9e5dbd88f440dc2ca102e7996ba71284993241b87"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucds57-3f9196b9/simulator.json",
+      "bytes": 522,
+      "sha256": "cb1261d385c6a7d0997e2f02d3bc4ee5736cd080284f7fbd711deb9598482eeb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/grid-text-aspect-ratio-column-control.png",
+      "bytes": 77846,
+      "sha256": "9a254fe974a5849111c465f6b4d9050c5f3d487c7bf1d410eedac7c6d3f952f3"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/grid-text-aspect-ratio-column.png",
+      "bytes": 77846,
+      "sha256": "9222c4f81c68af900dba60de0ef97b3c5071d8206a84f726e69b0cbce711cc5b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/grid-text-aspect-ratio-row-control.png",
+      "bytes": 77847,
+      "sha256": "922d9f914beba71bbb68660d015f06ef6187521618dbd7cb1ca3b643ae423031"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/grid-text-aspect-ratio-row.png",
+      "bytes": 77827,
+      "sha256": "a92b81f5332c27ef0fb4b24ce7f8bcf5d2cb314678d9a250c083d75d70637764"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/result.json",
+      "bytes": 1474,
+      "sha256": "82c6fb70360a828d49ad4330ce098b06df37e4762703945fd5dc3401a9f94f25"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28874,
+      "sha256": "6fa9c5ee6f4c2970aae1c61fef01081112d0f186a199ba8124ea78f363ca3812"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28026,
+      "sha256": "0568c8755d9141e1a660a9b2ec69f070787cc289e1a407b7be5c821dd04ede7d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33501,
+      "sha256": "de138b97955132a51a8d9f10f2185c46b4c58cb44cd2b975512285250a2e24c8"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32493,
+      "sha256": "0581020c027760836b4c707ca74ba5c4ab8bf544f1965b6c7bfceffabba6223f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucl3jc-c6e37067/simulator.json",
+      "bytes": 522,
+      "sha256": "cb1261d385c6a7d0997e2f02d3bc4ee5736cd080284f7fbd711deb9598482eeb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/grid-text-aspect-ratio-column-control.png",
+      "bytes": 77859,
+      "sha256": "32a3d0f9f2cbbc4afd54825432aadb0532fcac449ef2687c1fa1c6defe79495d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/grid-text-aspect-ratio-column.png",
+      "bytes": 77859,
+      "sha256": "d6eaba3e1973ba43d675bc9109ea674c1abdfa0a2551f12c45068e66228e17f9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/grid-text-aspect-ratio-row-control.png",
+      "bytes": 77860,
+      "sha256": "b51b97e4f5355524ddd66f5c45f3a5a6e5f27dea84e35da2ddb43710594ca08c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/grid-text-aspect-ratio-row.png",
+      "bytes": 77841,
+      "sha256": "1308a7ad8ded22414eb1721c09bf242b59efc831399c5af46c514a5a20d1d0b2"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/result.json",
+      "bytes": 3010,
+      "sha256": "a6df5d32496f5cf0eec164828fb747c1d7c2b71f904923c55151d857617fe563"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 29253,
+      "sha256": "0c1b320cb853dfdd80e3c4d3578bd6ea4fcd7fe99dc22035661fe44e78017ddd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28027,
+      "sha256": "bbde4bf7faca214b642e9de83171726e4964039e81d073d1dba7d0b5bd41481b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 38678,
+      "sha256": "31a92cf972dd8cf72d1730e39ae6d825a1419dd12b69307a28a7c965cdc88fc4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32492,
+      "sha256": "3d2a5cad5e6f0e4f1c37f4fae4e3bf1e1d3e43d499cd17b04fbf5294554362f0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvucrqkq-8523a076/simulator.json",
+      "bytes": 522,
+      "sha256": "cb1261d385c6a7d0997e2f02d3bc4ee5736cd080284f7fbd711deb9598482eeb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/grid-text-aspect-ratio-column-control.png",
+      "bytes": 77806,
+      "sha256": "15917427efbf707f4d8f35950eb8d340dc8f61288e5486e3edf592bb3bb38707"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/grid-text-aspect-ratio-column.png",
+      "bytes": 77805,
+      "sha256": "aa175083c870e4aff08bcd2492213e770927b4a14848c0d84b9bc79d7dbdec5f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/grid-text-aspect-ratio-row-control.png",
+      "bytes": 77426,
+      "sha256": "9f381ebdfc3665e256871efa3fc9f64d3754086ccc25ac15d2d5f69820fe37b4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/grid-text-aspect-ratio-row.png",
+      "bytes": 77408,
+      "sha256": "cb6ef2dd27d9610edf5e03fc7b1164354f8c73059c4192b3b72b437727c75c4d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/result.json",
+      "bytes": 3010,
+      "sha256": "d1959eb5c39b2355eb7154fe23d35e7728698df200390998eca42cfa56469ebe"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 29253,
+      "sha256": "8512a2183c3914f3fc422e37aa8361f74f018b8c43d985635b4cb9f3168c07c9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28025,
+      "sha256": "607aefd7115aa7b3976844b5d4cbdb22b9fd1654f9952b0fee034ef072deaf3f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33880,
+      "sha256": "8d7b3ae8187eea95b773dc4e2f0ab3a5253fd83e8f979d0e480c04ec0cde8548"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32493,
+      "sha256": "86b7b65ce1a9c295c0e627614bf53faaf61628c7f49ade8bd21094a7b47dee37"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud09yc-c1136476/simulator.json",
+      "bytes": 522,
+      "sha256": "441c7a611a3c41b4661fb3390800b4ac6a907e4798b9149530774dd82c8989cd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/grid-text-aspect-ratio-column-control.png",
+      "bytes": 78123,
+      "sha256": "4b068244b6baca6f0bb749ca30897ec2f0a363b092e7046c6f13418ce47c8d4f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/grid-text-aspect-ratio-column.png",
+      "bytes": 78122,
+      "sha256": "34b3397c3bd28dfa428befd86b422fefd1df4e65d39185682f4f01aee254404d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/grid-text-aspect-ratio-row-control.png",
+      "bytes": 78124,
+      "sha256": "f6f5b1874cf6a7124965e424530ead4438a4f0ca15a2e0f1cbc80141b2ff4475"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/grid-text-aspect-ratio-row.png",
+      "bytes": 78103,
+      "sha256": "6489a0fbed3d33a0150ac1163302b47bbb2b429249fe30716f311b3f2a51d1c6"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/result.json",
+      "bytes": 3010,
+      "sha256": "72563c95bf8d09b50cf7631bc0cb756d706ea0a38bf482b76465e63a7777f442"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28874,
+      "sha256": "ff27f35948cf4115e7b484559745294fef6fd920df09a7ac4d741e5c76f9fe63"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28406,
+      "sha256": "35a1d97037538fb0cef4eb7df576a8104649ea52a6ec109dc9256e07059c35db"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33880,
+      "sha256": "32515cc65fc3001fa642c07331cb2ac4f387f96aaf3245e8d450719ae835d4a3"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32872,
+      "sha256": "003944c3ae7660957830cda617300923fa007a032481ecc6b35c40fcd7dd8e13"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud4q91-461a7fd3/simulator.json",
+      "bytes": 522,
+      "sha256": "441c7a611a3c41b4661fb3390800b4ac6a907e4798b9149530774dd82c8989cd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/grid-text-aspect-ratio-column-control.png",
+      "bytes": 77377,
+      "sha256": "00a491b889cceaeae1e3b1f2e1895697c94504f3738f4461892938a7cd6363eb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/grid-text-aspect-ratio-column.png",
+      "bytes": 77376,
+      "sha256": "3756066cda4277c726ef844d7130f9b5145ea6c8b0455718e1fd413587e27929"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/grid-text-aspect-ratio-row-control.png",
+      "bytes": 77377,
+      "sha256": "1bec4fb2102edbce1c2a6fff43d775cad247ccb4ab7e5102455e42888deff657"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/grid-text-aspect-ratio-row.png",
+      "bytes": 77957,
+      "sha256": "0c11f75d8bd3552c3c2d573b1fce098a272064527441d391ad1826b7a382e7e0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/result.json",
+      "bytes": 3010,
+      "sha256": "473ed9e275ef686910343b7bc75d0e0f047d7ee47c9068c072bde2f238f4f9ee"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 34050,
+      "sha256": "bdce33fceeddf574e7528c26e264ac84ca0eace7b4ed6ea46efdc3c506631fd2"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 28406,
+      "sha256": "b8f5187ba7ebee2d2091ec83eca851d52297df6c20e859e9a7ec914ded2c06da"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 33595,
+      "sha256": "b3e8958123577290f0876e5feee1b7ac3d0724ce7adb13032ce6f1dbc7fc0360"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 32492,
+      "sha256": "e7d72aad404704911cd8464e39d390b8e3449beba1db072fed61b9778ce936a7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvud6qie-49123a5e/simulator.json",
+      "bytes": 522,
+      "sha256": "441c7a611a3c41b4661fb3390800b4ac6a907e4798b9149530774dd82c8989cd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/default.json",
+      "bytes": 505,
+      "sha256": "2cab1682cd2b0fcef8bb872958290b71206f86da87484647d11376e5eaf94168"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/fixture-test.json",
+      "bytes": 521,
+      "sha256": "131e6513a1b49102d7355e32009d9dabbffbcb8d1d79688a2b064e09592bd49c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.html",
+      "bytes": 33801,
+      "sha256": "34104e3f5c66c71265c2fa1cb0f7682e902da7cb8458036b1e3ad9f96b596cf6"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 31891,
+      "sha256": "648570f63f2d7d9c90d2e2f161d58e173c81fa49d57ff9b0455482b6ff110f94"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/grid-text-aspect-ratio-row-control.png",
+      "bytes": 130726,
+      "sha256": "e73e960fd6f66d6b8b400123ec6c068e7d67a30a94f9c3c56f124430e47c9e03"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/grid-text-aspect-ratio-row.png",
+      "bytes": 129148,
+      "sha256": "ccf0b7059540f6ac80165f00c90753f63077601beb8cb81c000e5c4a50a26afe"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 28,
+      "sha256": "c87ce6c6d4c6d71f061da4e4efc13a6821f39408160501185c0dceaa1d4f8676"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 28,
+      "sha256": "f7253697843afe8b3a9a90fbbea69938ef680bb09044dd58449ad1df603d1e5f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "779c03379074e85f3c56350fc2f8af022b47d57d121a1d4c0aadc3e4ed069296"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 19606,
+      "sha256": "56a5728ec77f4c50f5616a06a6bd95e9f3bed32999d221263bf047b715256a71"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 25978,
+      "sha256": "e48ac33d1f00f848e2b28f9fa8b79a5be9eb75d5e20fcaf2fb1e42db948acbc9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 24866,
+      "sha256": "fbf7ff0b264fb61f44d828192ae0ae4ce8dc9fa49dba5a8c2a588b6d2ff3516c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/screenshot-grid-text-aspect-ratio-row-control.log",
+      "bytes": 262,
+      "sha256": "63255510247c5af0ff4014a88fe8611de0e91c8e448245ae6b004e3896f5e219"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/screenshot-grid-text-aspect-ratio-row.log",
+      "bytes": 254,
+      "sha256": "dbdcb8d334778590dce767a99896f08ba2af08c208eff7cf2e70d2b7d7986320"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuce38w-3a6f4507/simulator.json",
+      "bytes": 393,
+      "sha256": "79cd885aae779621f9179e0cf1dd7a474c5f24bf2d3875df79dcda04c4c4a2de"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/grid-text-aspect-ratio-column-control.png",
+      "bytes": 131431,
+      "sha256": "8da8e1e15cfb8d75cc41d8426d5bb8793b4fd4e454af2c66068eb31650d1a57d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/grid-text-aspect-ratio-column.png",
+      "bytes": 131784,
+      "sha256": "aa339aa9b58d877430097675151ca09617006071890e85bcd23c1702935544fe"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/grid-text-aspect-ratio-row-control.png",
+      "bytes": 131325,
+      "sha256": "6fa32bf22200788567162e45f37c99bbf9921892d0b8797f3238762b28036a53"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/grid-text-aspect-ratio-row.png",
+      "bytes": 129753,
+      "sha256": "812da0a8facff2697cb8cd29e931798498db6bd22290dbb5aa49e177004fac79"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28,
+      "sha256": "7724c6772ed7619634ce098ef8941d77e6498a19d3dd984339acb2348cd28268"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 28,
+      "sha256": "058ba9f972eea39aa48eab2dd044f5275b639d807667e42eeda2c82f858e5958"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 28,
+      "sha256": "81bc7634ce445eafcac0d419385923cf584fc25ac2a6c8f7ca1a80a12e6cc548"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "3dd403874e77057620d6d2b876f3569d27c001ce611133bef9a5c52dcb97abc6"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/result.json",
+      "bytes": 1478,
+      "sha256": "a96655c0e635dac4fa61864ff1c056eda444359fffc5cd07fc3e2d8f4506fb3a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 19677,
+      "sha256": "87eb874ae35db5610e160af751ddf94f77c44926dadc9536fa89024076679de8"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 18859,
+      "sha256": "ad92420b6f224427ca91fde50f995ace870ccc3e0d659a8b2af84d31985fe677"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 24878,
+      "sha256": "2e25be6e684053060313bff1782170af3a72335cdb5c9dea0c11cd3e75cd226b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 24867,
+      "sha256": "f3129b16e04c6c0396d1b7f5fbcff3542ed27dee137e0e24932aaf0975ba7fa0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/screenshot-grid-text-aspect-ratio-column-control.log",
+      "bytes": 265,
+      "sha256": "e94003b436a48fc5201bc29a6793e014e03a9bd1a2ec7dc2ec78f1a6fffeaacd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/screenshot-grid-text-aspect-ratio-column.log",
+      "bytes": 257,
+      "sha256": "254afdc100ad4447c9b2f8cde1fe7d5a9a37c68096189a409a18bcdf13395845"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/screenshot-grid-text-aspect-ratio-row-control.log",
+      "bytes": 262,
+      "sha256": "ef0f91a9df07acda2d001ccd522621294e4e41481a80d5d57c4b658fb032d294"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/screenshot-grid-text-aspect-ratio-row.log",
+      "bytes": 254,
+      "sha256": "383d22e4a214ea4e2f6657ff3975bff7b1be2b09ccda77aaa23148aac4f415b2"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucjtxi-d1d82e0e/simulator.json",
+      "bytes": 393,
+      "sha256": "1f6e2d15459431ff8c375339330226a4c378c342d6f327b5bc31d585007f16ca"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/grid-text-aspect-ratio-column-control.png",
+      "bytes": 132563,
+      "sha256": "acc67e96dcf77039dc839b2b1061e248e4dd4249a06699c9437aa4817144e60a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/grid-text-aspect-ratio-column.png",
+      "bytes": 132828,
+      "sha256": "45e9ed09ac5963bf1706a361fc179b496e192ca9abb75ba00ebebd1e2c8e5b8e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/grid-text-aspect-ratio-row-control.png",
+      "bytes": 132457,
+      "sha256": "3447e3e4caacce572a8563d8a305205a3d8cf9b1683eb7b33e528179a46dba2e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/grid-text-aspect-ratio-row.png",
+      "bytes": 130886,
+      "sha256": "60da07a20e3971ba3934bf07ac8e2395d43921d3900d59e135deb08e7f7ebdff"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28,
+      "sha256": "98ca7a607940fb4dc864f3a6befde9ef9cc561fd5cace8531b94f48a4bcbc418"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 28,
+      "sha256": "04f0459fad950516efc3eb5ac46c7c713364a425541312d72719dbe7e8d4c89a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 28,
+      "sha256": "96359f89bf95e5630a01cd6da7ede8e39e7a80482897881e0d7a93780340ee49"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "0bf09ae380c350d7145d986be86105a4feb757a45501e0920e4d0a98604aad1e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/result.json",
+      "bytes": 3014,
+      "sha256": "8b44778b367fc8d135f4f1855805e890ca74e5802c3a2ffb537443a547d0ad45"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 20778,
+      "sha256": "c3a265adfd287ee962b3c83175fc967c0ed53ea2b4fb02c95a1b637f0c60cd2d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 19960,
+      "sha256": "72adc8226aa2ba82ced143709c9e2b44b8f7a8ce42fdc2ed4d97f74e671e8c70"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 25979,
+      "sha256": "447ec96e233027759e98ad102f19cb70b7cb0a34fae90f57016f322310118c25"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 24867,
+      "sha256": "061dd21cf84c04073f309919599b5be4a91850a4fc4b5d15253935dce96991e1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/screenshot-grid-text-aspect-ratio-column-control.log",
+      "bytes": 265,
+      "sha256": "eccbd3b6ae73b44234de83ab8319d309901718a1e3f47ab65e2323ce6799e9ff"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/screenshot-grid-text-aspect-ratio-column.log",
+      "bytes": 257,
+      "sha256": "c4b824a8ced5f1770a4557af5ba2f073fdfad952ebe5f0311f21f0ca35653d63"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/screenshot-grid-text-aspect-ratio-row-control.log",
+      "bytes": 262,
+      "sha256": "2072502666d12c025e8defe539f9dbc5059030872d385beba61756b907577e7a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/screenshot-grid-text-aspect-ratio-row.log",
+      "bytes": 254,
+      "sha256": "7a5089de3c7ed6091622d41f627f51598ad6770eeaf78b215bce49f198855141"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvucrza2-d00066f7/simulator.json",
+      "bytes": 393,
+      "sha256": "1f6e2d15459431ff8c375339330226a4c378c342d6f327b5bc31d585007f16ca"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/grid-text-aspect-ratio-column-control.png",
+      "bytes": 132357,
+      "sha256": "dfe77eb9b3099d414a2f9de3b1f524f5c3aebdca4014d6b94e1042892abe9eed"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/grid-text-aspect-ratio-column.png",
+      "bytes": 132618,
+      "sha256": "7b5b5235359966bef8619cf14bac585cefd3d4f61f429cae9b162fe479104523"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/grid-text-aspect-ratio-row-control.png",
+      "bytes": 132231,
+      "sha256": "668ba8bc12fd7b603fa90a78b08731a098ddc1c397d81b23987789f7ab66be76"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/grid-text-aspect-ratio-row.png",
+      "bytes": 130665,
+      "sha256": "56709bd6b120a9f1055165bfb8399035d78911f3c622ab96f0fd059fcd4c9323"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28,
+      "sha256": "07bed79bc9a05ca6b1153a583efd4df7eb59b70f27f6581dcbc69e4d6eee2115"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 28,
+      "sha256": "11904884d7d3b9e67b18468b8dc89a47b425cb55abec2cce8012e541568d2b8d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 28,
+      "sha256": "75a47a9113ae5f111a28423b0e506ff4fd6d04315755a7ee98696b15c0e677ad"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "ec42d16c8311050512ad1843d68aa0cd6a8ada7967d527088272a75ba61ea49c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/result.json",
+      "bytes": 3014,
+      "sha256": "fad2af50259bb99826c0105adc44ffd24ae908746996d5832fc13d024e4a462a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 20778,
+      "sha256": "f1e52f75825919374d1675e5b0692a05cd1fa5af2247b202699b23f00724f971"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 19960,
+      "sha256": "3b2be6eaaf4d32fec1a4f6ed4606a4f8a70721b3ac5133cd9639488b517d6170"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 25979,
+      "sha256": "bd80e99bd27e30e203638687b189e624dbfd712df077005ea05b541f809c8de1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 23766,
+      "sha256": "b1113163540e462c132cdc6eeb6d1ea10fbfb241af3afc24291d79cb5710ee2f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/screenshot-grid-text-aspect-ratio-column-control.log",
+      "bytes": 265,
+      "sha256": "5fa5f075e81adf77eb1924a9b838ce509d99677e1504523f38046a752ec787c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/screenshot-grid-text-aspect-ratio-column.log",
+      "bytes": 257,
+      "sha256": "1c5ef40b6620b2d2440ca85b6beb67b20ed1c0af0879238b733a782ff7c4ba35"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/screenshot-grid-text-aspect-ratio-row-control.log",
+      "bytes": 262,
+      "sha256": "0dcc9aa27a8f4ad5bf7299e7db13ee4a820f5420d186175a2091e059256ae8ed"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/screenshot-grid-text-aspect-ratio-row.log",
+      "bytes": 254,
+      "sha256": "6044c1220288b786c2c097f21eb316c7e7ac991f5570411f043e4432c6d4c34c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud0jgy-42e144db/simulator.json",
+      "bytes": 393,
+      "sha256": "ff14ec5ae362ab17414e949efd0f462204c763a69df9904d4af83f4d62811c7c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud4zre-cb9c14a9/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud4zre-cb9c14a9/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "6dab241beb6df7e1fb182a0432469988b8176d7f2db1491a8e5c5adc12af6355"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud4zre-cb9c14a9/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 24517,
+      "sha256": "a8150e085259a512c35c08a5160cab311fb2e59b52c98c0052511e9e905993b4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud4zre-cb9c14a9/simulator.json",
+      "bytes": 393,
+      "sha256": "cafd73dd3122e24691d3fe59f67562be7beaba1c7a262b7e15651a26fc8fef9e"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/grid-text-aspect-ratio-column-control.png",
+      "bytes": 131910,
+      "sha256": "94f7026f36046a189697ebbf2bee4fc66b95f5cdac30c6e4699d7f32c0614a73"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/grid-text-aspect-ratio-column.png",
+      "bytes": 132249,
+      "sha256": "aa00d9823392e6ad95c206c080674de079bf521149f55a9d44dda43adcb1531f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/grid-text-aspect-ratio-row-control.png",
+      "bytes": 131810,
+      "sha256": "e2d32900c51186f1356f66681fa087f587ad71da100b8e5a553b464c1dc344c8"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/grid-text-aspect-ratio-row.png",
+      "bytes": 130246,
+      "sha256": "14a4341db51036894c39c560ea32754656913e0f95afe04a9cf8b009c71dabdc"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/launch-grid-text-aspect-ratio-column-control.log",
+      "bytes": 28,
+      "sha256": "7fe846ed5586f9eabb13a3a38210e9421de4ba5e2c22aa88932351b0ae6f1bae"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/launch-grid-text-aspect-ratio-column.log",
+      "bytes": 28,
+      "sha256": "f93f85353bd4ea827ae69bb65e594306a7624020a623a08b5743de0fcf56117d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/launch-grid-text-aspect-ratio-row-control.log",
+      "bytes": 28,
+      "sha256": "d91a9405b90da4282cecc5097a08757096655a4321dfa49bbd34715bb2a84c7a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/launch-grid-text-aspect-ratio-row.log",
+      "bytes": 28,
+      "sha256": "d7852f65d4589e8277b57ff36a1ac136a698a30106e037490d3edaf4d779d965"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/result.json",
+      "bytes": 3014,
+      "sha256": "65e126d50a9f1d12899b2f913d24c1a85cd79607224e848ad4103312ca0a3f56"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/runtime-grid-text-aspect-ratio-column-control.log",
+      "bytes": 20778,
+      "sha256": "2de4c34734338f878217689c2a2dfb7998f6f25e42b2fbb498c94643cc1e0fd9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/runtime-grid-text-aspect-ratio-column.log",
+      "bytes": 19960,
+      "sha256": "6522098627b667a7646cabc420a1886e0dfe05d98404ac5e42440d078033369d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/runtime-grid-text-aspect-ratio-row-control.log",
+      "bytes": 25979,
+      "sha256": "c18ede2d00fb042c3544b63d157535c5bb9255520f7347b965376e3fd3bb9d8b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/runtime-grid-text-aspect-ratio-row.log",
+      "bytes": 23766,
+      "sha256": "0de6416d28e60d7fa9a7a7ccb849f5585d8322eaf39f30fb155eb06ebb3f1a54"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/screenshot-grid-text-aspect-ratio-column-control.log",
+      "bytes": 265,
+      "sha256": "53d49cce3babdc13626469062bd12da64f1d0cbd40f798517d0db3a164e6bba0"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/screenshot-grid-text-aspect-ratio-column.log",
+      "bytes": 257,
+      "sha256": "f9c2373abad08e4f350078fdc7dacdb8278610dec6a166bf9925588f031ee590"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/screenshot-grid-text-aspect-ratio-row-control.log",
+      "bytes": 262,
+      "sha256": "33d5cf4141f957b2343766fb17aed08965767c15d61cbb4d579599c6dd966473"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/screenshot-grid-text-aspect-ratio-row.log",
+      "bytes": 254,
+      "sha256": "1950b54c4bc3be976cb381f56b17a287e8a59afdcaa42eb018e7200c9b33d23c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvud70h8-993b852b/simulator.json",
+      "bytes": 393,
+      "sha256": "4b0f0a1a0670c4e099770fee3f13981e9144d9964686ec82ba5ce110db7a2420"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "bytes": 32831,
+      "sha256": "51d81effdf75e29dd6182ea9448b4adf8d08fdbd5a3ccdba08d9ce6303af98e4"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "bytes": 26771,
+      "sha256": "78044d07d0a62e742b64eb9a8c6ee1299022497d80a092796226018e987a185a"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "bytes": 28550,
+      "sha256": "2ebdac659280d4c628fb58d392b17093ac5da565955f73f4614607ffbd925e0e"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "bytes": 27134,
+      "sha256": "2ae1da34e785eca1387bb8239dbe32d4b43802bd71daa1ad7d01d1cac6d53273"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio.html",
+      "bytes": 36143,
+      "sha256": "358ec137a329631a87875b6b6ffa785c0b87c0d51f8d4e0ed17d82aedd8280f6"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 291262,
+      "sha256": "29aa0e5b25b3d6eb35e469595b1f1e88c34e3dc78af0b2ad8e267aad25003680"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 414242,
+      "sha256": "3f86e2411f2cd911731715777406f8435b60ae55a332d2231d31f611a032a284"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "bytes": 26710,
+      "sha256": "e171106eafac8f96643479e85973b1092203c61188c72574ab22ecaa509f0d0b"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "bytes": 28560,
+      "sha256": "4e63fed24a102202aa68dec798df3b837e7b94b33ea92198d5fe84beaa0d154b"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "bytes": 27144,
+      "sha256": "6ac36aaf9aff1cb8359c13d0cb433cfd6244a9764916a9106fda06ce5e5e137a"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio.html",
+      "bytes": 36173,
+      "sha256": "b66e40cf8ece05fb858b119b314e4a19f5f483de700cbaa810612ac077719d4e"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 291192,
+      "sha256": "59156c8cebbb8ece951d8f0174fe6da650161e3036982e06a51bade478031e3b"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 657469,
+      "sha256": "2d8e1150aff7c4caf6fc380c4028469436cce1d722984e85793ee55cdef4ab02"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ee676f0e62.js",
+      "bytes": 281669,
+      "sha256": "d00084aeecf128536396104a1b601b25c85e0a29e10a077f36f3b67795e67a69"
+    },
+    {
+      "path": "static/js/async/route-37a156b8f728.60cbc20f0f.js",
+      "bytes": 13191,
+      "sha256": "5a9ddbf483732711fe2250c4ada4709fcd27e725e1ba3afc0e3682ec57db3c0c"
+    },
+    {
+      "path": "static/js/async/route-39b4a58b6564.04ded226b1.js",
+      "bytes": 9676,
+      "sha256": "696100c74d874edec6dbf5965c3bdd26483a3aed406fafaed5e722afce49285c"
+    },
+    {
+      "path": "static/js/async/route-5d2d1c3beba1.def6141b16.js",
+      "bytes": 13161,
+      "sha256": "abdfa7ee1c065af7baa19b8e3b82d40317f2b18948563d27420f7fe44ea2aa0e"
+    },
+    {
+      "path": "static/js/async/route-6366181a1429.26dbb3caef.js",
+      "bytes": 7136,
+      "sha256": "dd47a02f67afcc7bca2c0784593625f518529e3daaae6b0f2bdb10ba78fd19b6"
+    },
+    {
+      "path": "static/js/async/route-68be259384d1.8295daaaa7.js",
+      "bytes": 7129,
+      "sha256": "ddcb82d56abc5ace32c0f101126dcc0aa11d3c91e2156defeab9858e19b7a169"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.364b7ff210.js",
+      "bytes": 703059,
+      "sha256": "e14647f9a85ced66a22406494d16e3d1f3fd44b7492dab34a8497db3fffabc50"
+    },
+    {
+      "path": "static/js/async/route-6d0379ca76fc.5009b891db.js",
+      "bytes": 9683,
+      "sha256": "247d8ef85f8bcc00fb66092201ec8683cbcdacedfa8ad6145dc79dcb6f697632"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.11ad276950.js",
+      "bytes": 703007,
+      "sha256": "236463039c848e186087c5d8d9e74f1d66b27a470637d0e4c3e0dce183aa2217"
+    },
+    {
+      "path": "static/js/async/route-b42d587166c4.5c54bf9116.js",
+      "bytes": 7707,
+      "sha256": "8e8273081a4d429cdf9686ca2353226b259ae0de7c3112455c4294a70a2716dd"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.c1b731fcde.js",
+      "bytes": 281682,
+      "sha256": "803d6f438ac8fd6dbd9edc6f0e4e3a6cb5f3a56c5c9f3a7a21561644c16f50eb"
+    },
+    {
+      "path": "static/js/async/route-b888449d958c.d0a9cca8ff.js",
+      "bytes": 13631,
+      "sha256": "27ba1abb0aef911524ec12ffad9815f1048a50685677f66a15416dd95531d22c"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.ef0f4dfbfe.js",
+      "bytes": 325400,
+      "sha256": "69ed2025b031571acf231be76dcbda993434539e5f82f683cf8df7b545086108"
+    },
+    {
+      "path": "static/js/async/route-cd145fda1865.229ee1e4a8.js",
+      "bytes": 7699,
+      "sha256": "481b67358c87aea3432427a4098934188aedd81be29551fc675202c2250b0b4c"
+    },
+    {
+      "path": "static/js/async/route-f7cd022c8706.6ddafc7101.js",
+      "bytes": 8676,
+      "sha256": "d0a279938019000f79743cd5e8a2db5435980cbd3cdc702caee2b55219918214"
+    },
+    {
+      "path": "static/js/async/route-fc286444bf8b.060be2ddc5.js",
+      "bytes": 14407,
+      "sha256": "1107e3e7c9b93891e8482330b297be166000e96b64fd2024bdf389186ea951f0"
+    },
+    {
+      "path": "static/js/async/route-fd34c0bc6566.78f9952cd3.js",
+      "bytes": 11680,
+      "sha256": "9890b2b51eed11bf4686ea48d30c6944bcb523cb64a2ac974b3b66524910c27d"
+    },
+    {
+      "path": "static/js/index.70ddcff6eb.js",
+      "bytes": 85485,
+      "sha256": "672244a35cc63bab2fdbf3957e2934112a0f6206fefec77dc1bc4d091488b4b9"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "path": "static/search_index.ko.33dd9db6.json",
+      "bytes": 1385646,
+      "sha256": "33dd9db60064650ca3a69507f9bb81a115c9d0e3263b36989394578fb28c629f"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 657223,
+      "sha256": "dd93e5aebd481ddbfb681e9cbc8861bcbf13e53e19a7a576b681996c09b64843"
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "copied_count": 36,
+  "backup_count": 17,
+  "no_deletes": true,
+  "copied": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "bytes": 326289,
+      "sha256": "e09155f56360cde939c5bb61cdd1c7c1949dfc7a70e41661e5a703d50cef3ca2"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 29874,
+      "sha256": "0ec6ba39470b077406d9be899784ec5db389d24c63ea92d0d82529235048f156"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.html",
+      "status": "replace",
+      "bytes": 33801,
+      "sha256": "34104e3f5c66c71265c2fa1cb0f7682e902da7cb8458036b1e3ad9f96b596cf6"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "status": "replace",
+      "bytes": 31891,
+      "sha256": "648570f63f2d7d9c90d2e2f161d58e173c81fa49d57ff9b0455482b6ff110f94"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 32831,
+      "sha256": "51d81effdf75e29dd6182ea9448b4adf8d08fdbd5a3ccdba08d9ce6303af98e4"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "status": "replace",
+      "bytes": 26771,
+      "sha256": "78044d07d0a62e742b64eb9a8c6ee1299022497d80a092796226018e987a185a"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "status": "replace",
+      "bytes": 28550,
+      "sha256": "2ebdac659280d4c628fb58d392b17093ac5da565955f73f4614607ffbd925e0e"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "status": "replace",
+      "bytes": 27134,
+      "sha256": "2ae1da34e785eca1387bb8239dbe32d4b43802bd71daa1ad7d01d1cac6d53273"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio.html",
+      "status": "replace",
+      "bytes": 36143,
+      "sha256": "358ec137a329631a87875b6b6ffa785c0b87c0d51f8d4e0ed17d82aedd8280f6"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "bytes": 291262,
+      "sha256": "29aa0e5b25b3d6eb35e469595b1f1e88c34e3dc78af0b2ad8e267aad25003680"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "status": "replace",
+      "bytes": 26710,
+      "sha256": "e171106eafac8f96643479e85973b1092203c61188c72574ab22ecaa509f0d0b"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "status": "replace",
+      "bytes": 28560,
+      "sha256": "4e63fed24a102202aa68dec798df3b837e7b94b33ea92198d5fe84beaa0d154b"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "status": "replace",
+      "bytes": 27144,
+      "sha256": "6ac36aaf9aff1cb8359c13d0cb433cfd6244a9764916a9106fda06ce5e5e137a"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio.html",
+      "status": "replace",
+      "bytes": 36173,
+      "sha256": "b66e40cf8ece05fb858b119b314e4a19f5f483de700cbaa810612ac077719d4e"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "bytes": 291192,
+      "sha256": "59156c8cebbb8ece951d8f0174fe6da650161e3036982e06a51bade478031e3b"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "bytes": 657469,
+      "sha256": "2d8e1150aff7c4caf6fc380c4028469436cce1d722984e85793ee55cdef4ab02"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ee676f0e62.js",
+      "status": "create",
+      "bytes": 281669,
+      "sha256": "d00084aeecf128536396104a1b601b25c85e0a29e10a077f36f3b67795e67a69"
+    },
+    {
+      "path": "static/js/async/route-37a156b8f728.60cbc20f0f.js",
+      "status": "create",
+      "bytes": 13191,
+      "sha256": "5a9ddbf483732711fe2250c4ada4709fcd27e725e1ba3afc0e3682ec57db3c0c"
+    },
+    {
+      "path": "static/js/async/route-39b4a58b6564.04ded226b1.js",
+      "status": "create",
+      "bytes": 9676,
+      "sha256": "696100c74d874edec6dbf5965c3bdd26483a3aed406fafaed5e722afce49285c"
+    },
+    {
+      "path": "static/js/async/route-5d2d1c3beba1.def6141b16.js",
+      "status": "create",
+      "bytes": 13161,
+      "sha256": "abdfa7ee1c065af7baa19b8e3b82d40317f2b18948563d27420f7fe44ea2aa0e"
+    },
+    {
+      "path": "static/js/async/route-6366181a1429.26dbb3caef.js",
+      "status": "create",
+      "bytes": 7136,
+      "sha256": "dd47a02f67afcc7bca2c0784593625f518529e3daaae6b0f2bdb10ba78fd19b6"
+    },
+    {
+      "path": "static/js/async/route-68be259384d1.8295daaaa7.js",
+      "status": "create",
+      "bytes": 7129,
+      "sha256": "ddcb82d56abc5ace32c0f101126dcc0aa11d3c91e2156defeab9858e19b7a169"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.364b7ff210.js",
+      "status": "create",
+      "bytes": 703059,
+      "sha256": "e14647f9a85ced66a22406494d16e3d1f3fd44b7492dab34a8497db3fffabc50"
+    },
+    {
+      "path": "static/js/async/route-6d0379ca76fc.5009b891db.js",
+      "status": "create",
+      "bytes": 9683,
+      "sha256": "247d8ef85f8bcc00fb66092201ec8683cbcdacedfa8ad6145dc79dcb6f697632"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.11ad276950.js",
+      "status": "create",
+      "bytes": 703007,
+      "sha256": "236463039c848e186087c5d8d9e74f1d66b27a470637d0e4c3e0dce183aa2217"
+    },
+    {
+      "path": "static/js/async/route-b42d587166c4.5c54bf9116.js",
+      "status": "create",
+      "bytes": 7707,
+      "sha256": "8e8273081a4d429cdf9686ca2353226b259ae0de7c3112455c4294a70a2716dd"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.c1b731fcde.js",
+      "status": "create",
+      "bytes": 281682,
+      "sha256": "803d6f438ac8fd6dbd9edc6f0e4e3a6cb5f3a56c5c9f3a7a21561644c16f50eb"
+    },
+    {
+      "path": "static/js/async/route-b888449d958c.d0a9cca8ff.js",
+      "status": "create",
+      "bytes": 13631,
+      "sha256": "27ba1abb0aef911524ec12ffad9815f1048a50685677f66a15416dd95531d22c"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.ef0f4dfbfe.js",
+      "status": "create",
+      "bytes": 325400,
+      "sha256": "69ed2025b031571acf231be76dcbda993434539e5f82f683cf8df7b545086108"
+    },
+    {
+      "path": "static/js/async/route-cd145fda1865.229ee1e4a8.js",
+      "status": "create",
+      "bytes": 7699,
+      "sha256": "481b67358c87aea3432427a4098934188aedd81be29551fc675202c2250b0b4c"
+    },
+    {
+      "path": "static/js/async/route-f7cd022c8706.6ddafc7101.js",
+      "status": "create",
+      "bytes": 8676,
+      "sha256": "d0a279938019000f79743cd5e8a2db5435980cbd3cdc702caee2b55219918214"
+    },
+    {
+      "path": "static/js/async/route-fc286444bf8b.060be2ddc5.js",
+      "status": "create",
+      "bytes": 14407,
+      "sha256": "1107e3e7c9b93891e8482330b297be166000e96b64fd2024bdf389186ea951f0"
+    },
+    {
+      "path": "static/js/async/route-fd34c0bc6566.78f9952cd3.js",
+      "status": "create",
+      "bytes": 11680,
+      "sha256": "9890b2b51eed11bf4686ea48d30c6944bcb523cb64a2ac974b3b66524910c27d"
+    },
+    {
+      "path": "static/js/index.70ddcff6eb.js",
+      "status": "create",
+      "bytes": 85485,
+      "sha256": "672244a35cc63bab2fdbf3957e2934112a0f6206fefec77dc1bc4d091488b4b9"
+    },
+    {
+      "path": "static/search_index.ko.33dd9db6.json",
+      "status": "create",
+      "bytes": 1385646,
+      "sha256": "33dd9db60064650ca3a69507f9bb81a115c9d0e3263b36989394578fb28c629f"
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "bytes": 657223,
+      "sha256": "dd93e5aebd481ddbfb681e9cbc8861bcbf13e53e19a7a576b681996c09b64843"
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/internal/0059-c11-grid-layout.html",
+      "bytes": 326289,
+      "sha256": "ac9fe2bd9e2322fedeb4c8ad550531b512da2b4e7a1a17da03c77c8afba6b9bb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.html",
+      "bytes": 29874,
+      "sha256": "4d3c64ce076946ba8e2de979cc244ef4c69ccf6c2b57418211de3543e20649c1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.html",
+      "bytes": 33801,
+      "sha256": "f674268997d74b9dc456899f194b1614a90fe194b5972a09ae95aecb2fd0713c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 31891,
+      "sha256": "34226fda7beb7dcbf6e4d709ac2a05c21c5f22a9f8d640aeb58856c94ca0e4bc"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "bytes": 32831,
+      "sha256": "ec029b69bb65fa4c0ed44c750ee7c29230913eaf7caa65a4df9cf1d5b3eb01e9"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "bytes": 26771,
+      "sha256": "6588cbac25f80a50a9cb0be24841f54b56f1974b4ad4a0e2465d5fbc19a9e377"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "bytes": 28550,
+      "sha256": "002cd4f328e978c85c0c31301dffd2c3c77dceda025364d65771634e63d024e2"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "bytes": 27134,
+      "sha256": "bc7b6508b37494cf2ee8b4ac9f03866eda70fa932785ca65a56dd952009d8526"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/plan/c11-4-direct-text-aspect-ratio.html",
+      "bytes": 36143,
+      "sha256": "a4b7078572f0854f3f5f107066de3cabf262f8b330bba9cf4606132c76f6be92"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/plan/c11-4-grid-track-sizing.html",
+      "bytes": 290627,
+      "sha256": "7ecf5221125d6aab69b668d4d0081dc8fbea6b510b4c0f0400ba2785294c8a2d"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-direct-text-aspect-ratio-plan-follow-up-review-20.html",
+      "bytes": 26710,
+      "sha256": "2b908ceb11e27328b47c9c0d0a469c302793ed28d409d04b034fb1f7cfea0437"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-direct-text-aspect-ratio-plan-pr-diff-review-30.html",
+      "bytes": 28560,
+      "sha256": "daeafd43e632eb1afcb3f764e0cdc434babb25bacf4c414566eb0cd03bc356af"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-direct-text-aspect-ratio-plan-review-20.html",
+      "bytes": 27144,
+      "sha256": "d00c1bb9b34150df0291fdc0a262371b3c4257354d18ff3717092794af1f915a"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-direct-text-aspect-ratio.html",
+      "bytes": 36173,
+      "sha256": "e769842efa112ffe6dded2ae56ac542403afb60c520de0e566f228dcead9d05a"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 290557,
+      "sha256": "1b48d636b377ad736e70355e5b780da02ed66789868f175e7843b4a9e7943ddc"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/spec/STATUS.html",
+      "bytes": 657469,
+      "sha256": "e2d471d5cd7948c08d138c071eca037783418a4f5588bcfbb15039bfa31d11eb"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-aspect-ratio-roadmap-sync-2026-10-30/pass02/STATUS.html",
+      "bytes": 657223,
+      "sha256": "1171522ab15ef41fee3c51ecb7875d59db0eacd9bc0b5ea5946a2b0fe5ca2c41"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "session": "spinon-c114-pr834-roadmap-final-pass02",
+  "closeAllCommand": "agent-browser close --all",
+  "closeSucceeded": true,
+  "sessionListAfterClose": "No active sessions",
+  "processCheckAfterClose": "ps -Ao pid,ppid,stat,args | rg [a]gent-browser returned no rows"
+}
