@@ -1,0 +1,126 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text pre-wrap precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  color: #111;
+  background: #fff;
+  font: 10px/10px Ahem, sans-serif;
+}
+
+.case {
+  margin: 0 0 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: normal;
+}
+
+#pre-wrap-max-content,
+#pre-wrap-comment-split-max-content {
+  white-space: pre-wrap;
+}
+
+#pre-wrap-wrap {
+  width: 25px;
+  grid-template-columns: minmax(0, 1fr);
+  white-space: pre-wrap;
+}
+
+#pre-wrap-forced-break-max-content {
+  white-space: pre-wrap;
+}
+
+#normal-min-content,
+#pre-wrap-min-content {
+  grid-template-columns: min-content;
+}
+
+#pre-wrap-min-content {
+  white-space: pre-wrap;
+}
+
+#pre-wrap-whitespace-only-item {
+  white-space: pre-wrap;
+}
+
+#pre-wrap-leading-spaces-max-content,
+#pre-wrap-trailing-spaces-max-content,
+#pre-wrap-tab-max-content {
+  white-space: pre-wrap;
+  tab-size: 8;
+}
+
+#pre-wrap-whitespace-run-before-block {
+  width: 40px;
+  height: 10px;
+  grid-template-columns: 20px 20px;
+  grid-template-rows: 10px;
+  white-space: pre-wrap;
+}
+
+#pre-wrap-whitespace-run-before-block > div {
+  width: 10px;
+  height: 10px;
+  background: #2866f6;
+}
+</style>
+
+<section class="case">
+  <div id="normal-max-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-max-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-comment-split-max-content" class="grid">XX <!-- split --> XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-wrap" class="grid">XX XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-forced-break-max-content" class="grid">XX
+XX</div>
+</section>
+<section class="case">
+  <div id="normal-min-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-min-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-whitespace-only-item" class="grid">  </div>
+</section>
+<section class="case">
+  <div id="pre-wrap-leading-spaces-max-content" class="grid">  XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-trailing-spaces-max-content" class="grid">XX  </div>
+</section>
+<section class="case">
+  <div id="pre-wrap-tab-max-content" class="grid">XX	XX</div>
+</section>
+<section class="case">
+  <div id="pre-wrap-whitespace-run-before-block" class="grid">  <div id="pre-wrap-marker"></div></div>
+</section>
