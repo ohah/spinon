@@ -1,0 +1,54 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous Grid text pre-line precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../../../tests/fixtures/resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  html, body { margin: 0; background: #fff; }
+  body { padding: 16px; font: 12px/16px system-ui, sans-serif; color: #111; }
+  .case { margin-bottom: 16px; }
+  .grid { display: grid; width: 20px; grid-template-columns: max-content; grid-template-rows: auto; align-items: start; justify-items: start; align-content: start; justify-content: start; gap: 0; font: 10px/10px Ahem, sans-serif; color: #e5484d; }
+  #normal { white-space: normal; }
+  #pre-line { white-space: pre-line; }
+  #result { white-space: pre-wrap; font: 11px/14px ui-monospace, monospace; color: #111; }
+</style>
+<body>
+  <section class="case" data-case="normal-newline-max-content">
+    <div>normal: source segment break collapses</div>
+    <div class="grid" id="normal">XX&#10;XX</div>
+  </section>
+  <section class="case" data-case="pre-line-newline-max-content">
+    <div>pre-line: source segment break is a forced line break</div>
+    <div class="grid" id="pre-line">XX&#10;XX</div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const frame = (value) => ({x:value.x, y:value.y, width:value.width, height:value.height});
+    const observe = (element) => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      const style = getComputedStyle(element);
+      return {
+        id: element.id,
+        text: element.textContent,
+        whiteSpace: style.whiteSpace,
+        whiteSpaceCollapse: style.whiteSpaceCollapse,
+        textWrapMode: style.textWrapMode,
+        columns: style.gridTemplateColumns,
+        rows: style.gridTemplateRows,
+        grid: frame(element.getBoundingClientRect()),
+        textFragments: Array.from(range.getClientRects(), frame),
+      };
+    };
+    document.fonts.ready.then(() => {
+      window.__C114_PRE_LINE_OBSERVATION__ = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        viewport: {width: innerWidth, height: innerHeight},
+        devicePixelRatio,
+        ahemReady: document.fonts.check('10px Ahem'),
+        cases: Array.from(document.querySelectorAll('.grid'), observe),
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_PRE_LINE_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>
