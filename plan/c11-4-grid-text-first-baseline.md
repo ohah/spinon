@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [C11.4 track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 검토를 마치고 제한 구현 후보를 두 Simulator에서 실행했다. PR 검토·병합 전이며 `C11.4` 및 `C11` 완료를 뜻하지 않는다. 기존 Grid baseline-shim 알고리즘은 텍스트 leaf의 first baseline을 받지 못해 item 높이로 대체했다. 이 계획은 고정 Ahem 텍스트 두 개의 first-baseline 그룹에 실제 line baseline을 전달하는 제한 profile을 검증한다.
+**상태:** 계획 검토를 마치고 제한 구현 후보를 두 Simulator에서 실행했다. 구현 PR [#827](https://github.com/ohah/spinon/pull/827)이 열려 있으며 PR diff 검토·병합 전이다. `C11.4` 및 `C11` 완료를 뜻하지 않는다. 기존 Grid baseline-shim 알고리즘은 텍스트 leaf의 first baseline을 받지 못해 item 높이로 대체했다. 이 계획은 고정 Ahem 텍스트 두 개의 first-baseline 그룹에 실제 line baseline을 전달하는 제한 profile을 검증한다.
 
 ## 고정 동작 계약
 

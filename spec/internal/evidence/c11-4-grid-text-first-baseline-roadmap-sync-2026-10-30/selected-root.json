@@ -1,0 +1,854 @@
+{
+  "sourceCommit": "7e2b339080198245bbc08812fac3d7345f2343f5",
+  "selectedRoot": "build/spinon/c11-4-grid-text-first-baseline-roadmap-root-20261030",
+  "outputRoot": "build/spinon/c11-4-grid-text-first-baseline-roadmap-site-20261030",
+  "sourcePaths": [
+    "spec/STATUS.md",
+    "spec/public/roadmap.html",
+    "spec/public/roadmap.svg",
+    "spec/public/icon.svg",
+    "spec/internal/0059-c11-grid-layout.md",
+    "plan/c11-4-grid-text-first-baseline.md",
+    "plan/c11-4-grid-text-first-baseline-plan-review-20.md",
+    "tests/fixtures/css/c11/grid-first-baseline-direct-text.html",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6",
+    "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f"
+  ],
+  "fileCount": 138,
+  "totalBytes": 5986897,
+  "noDeletes": true,
+  "entries": [
+    {
+      "source": "spec/STATUS.md",
+      "path": "STATUS.md",
+      "bytes": 526107,
+      "sha256": "bc77372b9c398c5a0c9dfbf077d332cc6a14d802d141b91d03dedf43c576e694"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "path": "spec/STATUS.md",
+      "bytes": 526107,
+      "sha256": "bc77372b9c398c5a0c9dfbf077d332cc6a14d802d141b91d03dedf43c576e694"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "roadmap.html",
+      "bytes": 409779,
+      "sha256": "22c2e9afb0f3443b78f5768b4d530ca1307bb278931cc81dce00dfe2214db143"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "path": "public/roadmap.html",
+      "bytes": 409779,
+      "sha256": "22c2e9afb0f3443b78f5768b4d530ca1307bb278931cc81dce00dfe2214db143"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 221029,
+      "sha256": "d2162ab0d70600178d2ac966d62a254a13571c6ff7b617ce5b9c677c1630a107"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/internal/0059-c11-grid-layout.md",
+      "bytes": 221029,
+      "sha256": "d2162ab0d70600178d2ac966d62a254a13571c6ff7b617ce5b9c677c1630a107"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "path": "public/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 221029,
+      "sha256": "d2162ab0d70600178d2ac966d62a254a13571c6ff7b617ce5b9c677c1630a107"
+    },
+    {
+      "source": "plan/c11-4-grid-text-first-baseline.md",
+      "path": "plan/c11-4-grid-text-first-baseline.md",
+      "bytes": 5851,
+      "sha256": "3722548bb5ee37c326796b3ce11f98a04844b625777d14a3cfddf578c8e3ee50"
+    },
+    {
+      "source": "plan/c11-4-grid-text-first-baseline.md",
+      "path": "spec/plan/c11-4-grid-text-first-baseline.md",
+      "bytes": 5851,
+      "sha256": "3722548bb5ee37c326796b3ce11f98a04844b625777d14a3cfddf578c8e3ee50"
+    },
+    {
+      "source": "plan/c11-4-grid-text-first-baseline-plan-review-20.md",
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.md",
+      "bytes": 4856,
+      "sha256": "c8e7e8924ac5107b54dd5e9dac2b44e86dbf8783e662d45d49a1d87778437164"
+    },
+    {
+      "source": "plan/c11-4-grid-text-first-baseline-plan-review-20.md",
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.md",
+      "bytes": 4856,
+      "sha256": "c8e7e8924ac5107b54dd5e9dac2b44e86dbf8783e662d45d49a1d87778437164"
+    },
+    {
+      "source": "tests/fixtures/css/c11/grid-first-baseline-direct-text.html",
+      "path": "tests/fixtures/css/c11/grid-first-baseline-direct-text.html",
+      "bytes": 2569,
+      "sha256": "abbc3c3f289093e633b34dec18358637aa0f6ec53f7100ab8698cd75019757d8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "bytes": 14342,
+      "sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "bytes": 14342,
+      "sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "bytes": 14342,
+      "sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "bytes": 3994,
+      "sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "bytes": 3994,
+      "sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "bytes": 3994,
+      "sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "bytes": 2283,
+      "sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "bytes": 2283,
+      "sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "bytes": 2283,
+      "sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "bytes": 3275,
+      "sha256": "560a1a144deef83654d7a24456cc7ed55e4d30c6877a04ab7beb739bb75bd1bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "bytes": 3275,
+      "sha256": "560a1a144deef83654d7a24456cc7ed55e4d30c6877a04ab7beb739bb75bd1bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.md",
+      "bytes": 3275,
+      "sha256": "560a1a144deef83654d7a24456cc7ed55e4d30c6877a04ab7beb739bb75bd1bc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "bytes": 5726,
+      "sha256": "ad1b42f79359c6264afd0c1e2b067d445a7c80ddb4824f8257e43b001fe8a9c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "bytes": 5726,
+      "sha256": "ad1b42f79359c6264afd0c1e2b067d445a7c80ddb4824f8257e43b001fe8a9c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.md",
+      "bytes": 5726,
+      "sha256": "ad1b42f79359c6264afd0c1e2b067d445a7c80ddb4824f8257e43b001fe8a9c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1843,
+      "sha256": "c3c8de8fd88b1bea717c7c10b5400d59226b49ba5eefc1d36b7e390fd50b4a80"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1843,
+      "sha256": "c3c8de8fd88b1bea717c7c10b5400d59226b49ba5eefc1d36b7e390fd50b4a80"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1843,
+      "sha256": "c3c8de8fd88b1bea717c7c10b5400d59226b49ba5eefc1d36b7e390fd50b4a80"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 6791,
+      "sha256": "43360af2c39169d91d964bad839958846ac1ed1cf6583ab62836179dc8dc1a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 6791,
+      "sha256": "43360af2c39169d91d964bad839958846ac1ed1cf6583ab62836179dc8dc1a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 6791,
+      "sha256": "43360af2c39169d91d964bad839958846ac1ed1cf6583ab62836179dc8dc1a91"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "bytes": 2316,
+      "sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "bytes": 2316,
+      "sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "bytes": 2316,
+      "sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 34865,
+      "sha256": "82074a176e67410bc061f1406eb504822a1ae8851a58829d7ab17690f96c4185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 34865,
+      "sha256": "82074a176e67410bc061f1406eb504822a1ae8851a58829d7ab17690f96c4185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 34865,
+      "sha256": "82074a176e67410bc061f1406eb504822a1ae8851a58829d7ab17690f96c4185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 34847,
+      "sha256": "809eaab3ae6ea8095adc6b49281e68be0957558ed4c3a74a8f98e0958f3bfa60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 34847,
+      "sha256": "809eaab3ae6ea8095adc6b49281e68be0957558ed4c3a74a8f98e0958f3bfa60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 34847,
+      "sha256": "809eaab3ae6ea8095adc6b49281e68be0957558ed4c3a74a8f98e0958f3bfa60"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 34811,
+      "sha256": "5f3b8b6d179181360852a7d5661b233f0650952b973a47277ce8eadb01e499f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 34811,
+      "sha256": "5f3b8b6d179181360852a7d5661b233f0650952b973a47277ce8eadb01e499f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 34811,
+      "sha256": "5f3b8b6d179181360852a7d5661b233f0650952b973a47277ce8eadb01e499f0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34318,
+      "sha256": "0efd81957a4beb43ade5ac4e9a22904314a05f3e31e9ed5c42acae4483c4c2a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34318,
+      "sha256": "0efd81957a4beb43ade5ac4e9a22904314a05f3e31e9ed5c42acae4483c4c2a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 34318,
+      "sha256": "0efd81957a4beb43ade5ac4e9a22904314a05f3e31e9ed5c42acae4483c4c2a0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "bytes": 522,
+      "sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "bytes": 522,
+      "sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "bytes": 522,
+      "sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 28,
+      "sha256": "a6e4080f7e2331c569871bd93a08f715c440cd4b78089fb412421ee132000b69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 28,
+      "sha256": "a6e4080f7e2331c569871bd93a08f715c440cd4b78089fb412421ee132000b69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-items.log",
+      "bytes": 28,
+      "sha256": "a6e4080f7e2331c569871bd93a08f715c440cd4b78089fb412421ee132000b69"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 28,
+      "sha256": "08548d3516f309a90e28d226961d49915d289d68807d92533999cc83146905c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 28,
+      "sha256": "08548d3516f309a90e28d226961d49915d289d68807d92533999cc83146905c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-align-self.log",
+      "bytes": 28,
+      "sha256": "08548d3516f309a90e28d226961d49915d289d68807d92533999cc83146905c6"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 28,
+      "sha256": "b2e803e732ad413b53951ffb9c530a50497fe13289c7f2a096451c296ee61a7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 28,
+      "sha256": "b2e803e732ad413b53951ffb9c530a50497fe13289c7f2a096451c296ee61a7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-reversed.log",
+      "bytes": 28,
+      "sha256": "b2e803e732ad413b53951ffb9c530a50497fe13289c7f2a096451c296ee61a7a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "b40874c646882f0f547628aba53dbd7d833bd00977331e0ef069bba3dc0fe74a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "b40874c646882f0f547628aba53dbd7d833bd00977331e0ef069bba3dc0fe74a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/launch-grid-text-first-baseline-start-control.log",
+      "bytes": 28,
+      "sha256": "b40874c646882f0f547628aba53dbd7d833bd00977331e0ef069bba3dc0fe74a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "bytes": 2318,
+      "sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "bytes": 2318,
+      "sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "bytes": 2318,
+      "sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 27482,
+      "sha256": "bc6d77c0b270c6e2c52b7ab98ef12a281860432d1045ab931c5e64d1fff6275a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 27482,
+      "sha256": "bc6d77c0b270c6e2c52b7ab98ef12a281860432d1045ab931c5e64d1fff6275a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-items.log",
+      "bytes": 27482,
+      "sha256": "bc6d77c0b270c6e2c52b7ab98ef12a281860432d1045ab931c5e64d1fff6275a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 26372,
+      "sha256": "e7b63e4dcf9c1d4bb51bc17d209395b248b7a65e010161601a7ac11e02b1db99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 26372,
+      "sha256": "e7b63e4dcf9c1d4bb51bc17d209395b248b7a65e010161601a7ac11e02b1db99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-align-self.log",
+      "bytes": 26372,
+      "sha256": "e7b63e4dcf9c1d4bb51bc17d209395b248b7a65e010161601a7ac11e02b1db99"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 26359,
+      "sha256": "8c2d5bc1ae43ebaee905a243e413aa11354fdfdc44cb3eeed783a9f3f3814ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 26359,
+      "sha256": "8c2d5bc1ae43ebaee905a243e413aa11354fdfdc44cb3eeed783a9f3f3814ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-reversed.log",
+      "bytes": 26359,
+      "sha256": "8c2d5bc1ae43ebaee905a243e413aa11354fdfdc44cb3eeed783a9f3f3814ceb"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 26748,
+      "sha256": "80dd74faf6befd31c0391e0632181dc586adb005e3fc5206da11d544cc0a6185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 26748,
+      "sha256": "80dd74faf6befd31c0391e0632181dc586adb005e3fc5206da11d544cc0a6185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/runtime-grid-text-first-baseline-start-control.log",
+      "bytes": 26748,
+      "sha256": "80dd74faf6befd31c0391e0632181dc586adb005e3fc5206da11d544cc0a6185"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "bytes": 268,
+      "sha256": "ff6c31ed712ccb4f495d62a4956b88c1b02fdfae676a79342b0d574dfcd6a93c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "bytes": 268,
+      "sha256": "ff6c31ed712ccb4f495d62a4956b88c1b02fdfae676a79342b0d574dfcd6a93c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-items.log",
+      "bytes": 268,
+      "sha256": "ff6c31ed712ccb4f495d62a4956b88c1b02fdfae676a79342b0d574dfcd6a93c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "bytes": 267,
+      "sha256": "52f1459885f0a109c3789734768a2396899838ae043ca3b95669a99296015171"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "bytes": 267,
+      "sha256": "52f1459885f0a109c3789734768a2396899838ae043ca3b95669a99296015171"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-align-self.log",
+      "bytes": 267,
+      "sha256": "52f1459885f0a109c3789734768a2396899838ae043ca3b95669a99296015171"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "bytes": 265,
+      "sha256": "de5c2f02e350d2d3e803fc76b14c1921522f6e2ee8a3e19708f831409c7a6463"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "bytes": 265,
+      "sha256": "de5c2f02e350d2d3e803fc76b14c1921522f6e2ee8a3e19708f831409c7a6463"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-reversed.log",
+      "bytes": 265,
+      "sha256": "de5c2f02e350d2d3e803fc76b14c1921522f6e2ee8a3e19708f831409c7a6463"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "bytes": 270,
+      "sha256": "c8fe0189f816f466a407f75318fccf4beebf86d48bfaa9f4ea2c6ff10c3d5a47"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "bytes": 270,
+      "sha256": "c8fe0189f816f466a407f75318fccf4beebf86d48bfaa9f4ea2c6ff10c3d5a47"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/screenshot-grid-text-first-baseline-start-control.log",
+      "bytes": 270,
+      "sha256": "c8fe0189f816f466a407f75318fccf4beebf86d48bfaa9f4ea2c6ff10c3d5a47"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "bytes": 393,
+      "sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "path": "public/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "bytes": 393,
+      "sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "path": "public/spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "bytes": 393,
+      "sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992"
+    }
+  ]
+}
