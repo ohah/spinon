@@ -1,0 +1,646 @@
+{
+  "selected_output_relative": "build/spinon/c11-4-grid-text-first-baseline-roadmap-site-pass03-20261030",
+  "selected_route_count": 63,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03",
+  "source_bytes_total": 7531729,
+  "backup_bytes_total": 2298033,
+  "counts": {
+    "create": 16,
+    "replace": 13,
+    "same": 34
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "source_bytes": 321614,
+      "source_sha256": "4089a75898bce782a21c50311542df81fa4fb25ac9a2c6563876cd97cb81da56",
+      "target_exists": true,
+      "previous_bytes": 320516,
+      "previous_sha256": "968923433da1bdb57414932234d3406244e07efa34c28b244c4e0313bbf80f1e",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "status": "same",
+      "source_bytes": 14342,
+      "source_sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777",
+      "target_exists": true,
+      "previous_bytes": 14342,
+      "previous_sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "status": "same",
+      "source_bytes": 3994,
+      "source_sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34",
+      "target_exists": true,
+      "previous_bytes": 3994,
+      "previous_sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "status": "same",
+      "source_bytes": 2283,
+      "source_sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b",
+      "target_exists": true,
+      "previous_bytes": 2283,
+      "previous_sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "status": "replace",
+      "source_bytes": 28641,
+      "source_sha256": "137924306d89d27d164c86f7a5e8de86071593a046b4673be52727db899c9320",
+      "target_exists": true,
+      "previous_bytes": 27506,
+      "previous_sha256": "e01be14683a5ad592b8ef4b17e981c7bced4767f6335cfc9fbc5d00f6b49c49e",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/post-merge-doc-sync-review-20.html",
+      "status": "create",
+      "source_bytes": 29020,
+      "source_sha256": "7d6847bab44b12cbf378756073f55fc961f83702093025ec45084f1391cde9d1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "status": "same",
+      "source_bytes": 78675,
+      "source_sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "target_exists": true,
+      "previous_bytes": 78675,
+      "previous_sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "status": "same",
+      "source_bytes": 78693,
+      "source_sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "target_exists": true,
+      "previous_bytes": 78693,
+      "previous_sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "status": "same",
+      "source_bytes": 78703,
+      "source_sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "target_exists": true,
+      "previous_bytes": 78703,
+      "previous_sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "status": "same",
+      "source_bytes": 78682,
+      "source_sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "target_exists": true,
+      "previous_bytes": 78682,
+      "previous_sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "status": "same",
+      "source_bytes": 2316,
+      "source_sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0",
+      "target_exists": true,
+      "previous_bytes": 2316,
+      "previous_sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "status": "same",
+      "source_bytes": 522,
+      "source_sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4",
+      "target_exists": true,
+      "previous_bytes": 522,
+      "previous_sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "status": "replace",
+      "source_bytes": 30237,
+      "source_sha256": "c4d7309c6aa288934de9ed95db1c5c321df8c5041ddcdec63a2bc153a07a4c3d",
+      "target_exists": true,
+      "previous_bytes": 29091,
+      "previous_sha256": "4bcead5a966cf2cc92f1c2f66d25943dc3e6bea32b5913c0558151723a85ca33",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "status": "replace",
+      "source_bytes": 31883,
+      "source_sha256": "64c22c2f70e685d011f680283c6170f9407e3400064abd1fb01e2b93cd8bfd0c",
+      "target_exists": true,
+      "previous_bytes": 30785,
+      "previous_sha256": "cb48e6b194d72f95b0e9df40512b89c376c553be19f13351635a80c566d3b665",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "status": "same",
+      "source_bytes": 132262,
+      "source_sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "target_exists": true,
+      "previous_bytes": 132262,
+      "previous_sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "status": "same",
+      "source_bytes": 133879,
+      "source_sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "target_exists": true,
+      "previous_bytes": 133879,
+      "previous_sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "status": "same",
+      "source_bytes": 133452,
+      "source_sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "target_exists": true,
+      "previous_bytes": 133452,
+      "previous_sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "status": "same",
+      "source_bytes": 133604,
+      "source_sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "target_exists": true,
+      "previous_bytes": 133604,
+      "previous_sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "status": "same",
+      "source_bytes": 2318,
+      "source_sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88",
+      "target_exists": true,
+      "previous_bytes": 2318,
+      "previous_sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "status": "same",
+      "source_bytes": 393,
+      "source_sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992",
+      "target_exists": true,
+      "previous_bytes": 393,
+      "previous_sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html",
+      "status": "replace",
+      "source_bytes": 31185,
+      "source_sha256": "cc37b2d0ab240e05e5143da190beda8b6b51ce1ddc2caafe658cabac053113d8",
+      "target_exists": true,
+      "previous_bytes": 29436,
+      "previous_sha256": "3e410f253333c71bb4a337b405d800fb70bbb5991cee9ebef139f8ae637403dd",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "status": "replace",
+      "source_bytes": 32387,
+      "source_sha256": "79560ecf4881feb1b06ac371d7332ef1e87f695f1fa6f50770e7ba510f6a3b34",
+      "target_exists": true,
+      "previous_bytes": 31289,
+      "previous_sha256": "9970d2e774511fb7586d5a9bba480b34d9bce09336ecac96d9c455e628ee26da",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "status": "replace",
+      "source_bytes": 28872,
+      "source_sha256": "dfa77161f238c3b04c05aace960d36cd11433fe29d313e2371098e90fdb82589",
+      "target_exists": true,
+      "previous_bytes": 27774,
+      "previous_sha256": "91884b794534925cd9f80ca2b50e9d9d81a34bf612ebcd1ec271fcce0225bf6a",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/plan/c11-4-grid-text-first-baseline-plan-review-20.html"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "status": "replace",
+      "source_bytes": 31797,
+      "source_sha256": "0b3f30540d6e04a30235b5ebd4e88649687b545f73c88c8ec74f09afaa2692de",
+      "target_exists": true,
+      "previous_bytes": 30344,
+      "previous_sha256": "3cf434b661e3a2f499b9ca8ede5d92a470619bb3fb9ffa5cb8cc06354d0f7ab8",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/plan/c11-4-grid-text-first-baseline.html"
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "source_bytes": 410173,
+      "source_sha256": "e12acc6bfed75120edad4c6db18a91b12fc0f59b30af1c5a3e87ae8b7783807b",
+      "target_exists": true,
+      "previous_bytes": 409910,
+      "previous_sha256": "1d3e2ea73d4124db0c0f82d4bc2dd2541ba114732b87f615935c191b8544195a",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "source_bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_exists": true,
+      "previous_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "status": "replace",
+      "source_bytes": 28842,
+      "source_sha256": "6ee471b9dec83b6e8d896275d13326da10073bdeafaf71ec1bc0feabe2e9efa6",
+      "target_exists": true,
+      "previous_bytes": 27744,
+      "previous_sha256": "59daebc339d5856a8dd7a1fb5e8e11be6edd73d2b3bbe69c9b046920920703e1",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "status": "replace",
+      "source_bytes": 31736,
+      "source_sha256": "3c0b05731e1a078c33a260ce8111c01d67698830840f3830f49888ba9af8f508",
+      "target_exists": true,
+      "previous_bytes": 30283,
+      "previous_sha256": "e607069a099a9ace436af62fc98d1eab89f55075a8d0409a48255e3da3861c7e",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/spec/plan/c11-4-grid-text-first-baseline.html"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "source_bytes": 653188,
+      "source_sha256": "5bde839a7f56e101ae3046157843e3201dce55d095759fe43ce1444993e0c87e",
+      "target_exists": true,
+      "previous_bytes": 651796,
+      "previous_sha256": "91a6a868bd71bda03d3993ff2fde63b16b04c0e3b17239f185d1afe0b0bb144f",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/spec/STATUS.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.60ff51937f.png",
+      "status": "same",
+      "source_bytes": 132262,
+      "source_sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "target_exists": true,
+      "previous_bytes": 132262,
+      "previous_sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.dbd0df5399.png",
+      "status": "same",
+      "source_bytes": 78675,
+      "source_sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "target_exists": true,
+      "previous_bytes": 78675,
+      "previous_sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.8f70ade908.png",
+      "status": "same",
+      "source_bytes": 133879,
+      "source_sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "target_exists": true,
+      "previous_bytes": 133879,
+      "previous_sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.eeacc444fe.png",
+      "status": "same",
+      "source_bytes": 78693,
+      "source_sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "target_exists": true,
+      "previous_bytes": 78693,
+      "previous_sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.4194894913.png",
+      "status": "same",
+      "source_bytes": 133452,
+      "source_sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "target_exists": true,
+      "previous_bytes": 133452,
+      "previous_sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.f6371f82b5.png",
+      "status": "same",
+      "source_bytes": 78703,
+      "source_sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "target_exists": true,
+      "previous_bytes": 78703,
+      "previous_sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.684f15562c.png",
+      "status": "same",
+      "source_bytes": 133604,
+      "source_sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "target_exists": true,
+      "previous_bytes": 133604,
+      "previous_sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.d9a2354770.png",
+      "status": "same",
+      "source_bytes": 78682,
+      "source_sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "target_exists": true,
+      "previous_bytes": 78682,
+      "previous_sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "status": "same",
+      "source_bytes": 217061,
+      "source_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "target_exists": true,
+      "previous_bytes": 217061,
+      "previous_sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "status": "same",
+      "source_bytes": 98,
+      "source_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "target_exists": true,
+      "previous_bytes": 98,
+      "previous_sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-05ced162cdef.8d5bcec8a0.js",
+      "status": "create",
+      "source_bytes": 10079,
+      "source_sha256": "ac45ab370e90bf92c7b959c3a86c8470b5082115bcd0802d74a52ab04ce4f534",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-12b79fc00e82.7f083662dd.js",
+      "status": "create",
+      "source_bytes": 12752,
+      "source_sha256": "ecdbe3ae1542f9e15ef45f618dcce084e4b74a4b0f8dd8e3197a4bf8a8091e19",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-22877c032bcd.d91ac919f9.js",
+      "status": "create",
+      "source_bytes": 6216,
+      "source_sha256": "00d3bb12d8f21f31381cc80c4843cc5132aa9764aa044182a806c193ef088ac3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2e8206008e81.c9f0d1ac83.js",
+      "status": "create",
+      "source_bytes": 10086,
+      "source_sha256": "8bdec8c0c0c49b160ecf620db5f7cf10ae749c963e35ee1499e8d4b0f0ac1588",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-2f358d01b2ca.50ca834269.js",
+      "status": "create",
+      "source_bytes": 10001,
+      "source_sha256": "953f6041f7d8d1e4606c9c723a3cd0931c90e532d3ebed4f8dfbc3355692a5a6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-54509d65aa78.6002b066af.js",
+      "status": "create",
+      "source_bytes": 10359,
+      "source_sha256": "d96b2e483f16261184d6bfea9c43a63877e2ae70a6c6b56f36fe1715023fb7ba",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.8512c54d83.js",
+      "status": "create",
+      "source_bytes": 698722,
+      "source_sha256": "dc39da0185c7d5eebddfaee3fa396ff659ce693d991263a733abedbd9a999ec5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-763188c6f8b4.deeab7b2e6.js",
+      "status": "create",
+      "source_bytes": 10372,
+      "source_sha256": "d76a8746b922d02e47c6703eeb02f74063616403004f239d0d9e06622f759f67",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.910ec69cc0.js",
+      "status": "create",
+      "source_bytes": 698663,
+      "source_sha256": "42e844916245edbdbafda2346bf7aba0e8caa53ce815f0e03fa5a6ca49231721",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-87d3ad80e32d.f438d37f79.js",
+      "status": "create",
+      "source_bytes": 12099,
+      "source_sha256": "e864a22dcd354d8292bbd2744842089e06d7b3f426fb00d7c16e7ac113fbd988",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.370c068af0.js",
+      "status": "create",
+      "source_bytes": 320426,
+      "source_sha256": "c4636620fe67e8f0d10128b08077f1b82e2e341f084af7827572a59d03106ada",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f71d56f4fcb7.50d7430782.js",
+      "status": "create",
+      "source_bytes": 8558,
+      "source_sha256": "6891bc71c6362e86a399fca0f298982ac3910e79333684aac127d7177f362930",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-fa5b8bf5d6af.071bdef63d.js",
+      "status": "create",
+      "source_bytes": 11548,
+      "source_sha256": "6cbedeff1f00b563815de919f423d0048dfd11bc9fa541ceeda36cab45db5235",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.8b637181aa.js",
+      "status": "create",
+      "source_bytes": 46792,
+      "source_sha256": "8acdf47009f9412a3462d5354e9eaa6c3775f94121e52bf203389d1e53f734a5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "status": "same",
+      "source_bytes": 218366,
+      "source_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "target_exists": true,
+      "previous_bytes": 218366,
+      "previous_sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "status": "same",
+      "source_bytes": 35366,
+      "source_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "target_exists": true,
+      "previous_bytes": 35366,
+      "previous_sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "status": "same",
+      "source_bytes": 472,
+      "source_sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "target_exists": true,
+      "previous_bytes": 472,
+      "previous_sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.7c0dd0aa.json",
+      "status": "create",
+      "source_bytes": 1047849,
+      "source_sha256": "7c0dd0aa6de2b65fc694a2ae5e122d85952d8abcebd327ebd8e281f2bfea38a4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 652961,
+      "source_sha256": "7f7370604be90da451c8751564eed7d4235184bf8f23c7a5ae674af728e5061a",
+      "target_exists": true,
+      "previous_bytes": 651559,
+      "previous_sha256": "7c266dec5475a706a1df92d5b9181e7a16165d9e2804f50fda4b66089b6e4140",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass03/STATUS.html"
+    }
+  ]
+}
