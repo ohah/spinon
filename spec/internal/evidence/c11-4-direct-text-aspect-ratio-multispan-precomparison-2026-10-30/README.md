@@ -30,6 +30,8 @@ CSS Grid 2025 CRD §11.5 resolves single-track items before adding the space nee
 
 All nine DOM observations match the independently derived track/frame values. The `max-height` pair distinguishes the automatic minimum: without `min-width:0`, the 40px Ahem min-content floor keeps the inline contribution at 40px; with it, the ratio-adjusted 30px contribution distributes as 15px per track. For the latter cases, text width exceeds the item box by 10px or 4.5px and remains visible under the fixture's `overflow:visible` setting.
 
+Re-run the artifact check with `node verify-precomparison.mjs`. It validates the nine case IDs, typed placement, computed ratio/font/constraints, track/row and root-relative item/text geometry, all hashes in this README, and a built-in one-pixel mutation that must be rejected. Final output: `Verified 9/9 Agent Browser geometry cases, artifact hashes, and a rejected geometry mutation.`
+
 Normative source: [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing), [§11.5.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#extra-space), [§6.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto), and [CSS Sizing Level 4 §4](https://www.w3.org/TR/css-sizing-4/#aspect-ratio). The browser values corroborate the calculation; they are not a WPT or product conformance result.
 
 ## SHA-256
@@ -39,7 +41,7 @@ Normative source: [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/C
 | Canonical HTML | `70a6c4cc299c2acd180528a682272a1eab55ee615855b2b317b13fa212e141af` |
 | Ahem TTF | `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448` |
 | Agent Browser observation JSON | `212d83ab5f91719c0d6da63ead2d822a239226d201b52adce6965594c1fbe4e9` |
-| Independent expected values | `e4ffce139ff66d5c1827c71a9869da8007fdcd2fd080bba1999b61da8553731b` |
+| Independent expected values | `6be309b135b4a69879c673d79c8d29fa7e116c5e2d1377832fa49bb607bd5e56` |
 | Agent Browser screenshot | `4c4429b195f4e18b160384534772a487ea9881f5a430477bc4705c36c5bbee04` |
 
 ## 한계
