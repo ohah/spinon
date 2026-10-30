@@ -26,7 +26,7 @@
 - `mise exec -- cargo fmt --all -- --check`: 통과.
 - `git diff --check`: 통과.
 
-원본 출력은 [`checks/`](checks/)에 보존했다. 테스트 결과는 Rust trace 및 frame assertion 범위에 한정한다. 이 slice는 앱 화면을 렌더링하지 않아 시뮬레이터 screenshot evidence를 만들지 않는다. 구현/runtime 실패 관점은 [별도 검토 20개](implementation-runtime-review-20.md)에 있다.
+원본 출력은 [`checks/`](checks/)에 보존했다. 테스트 결과는 Rust trace 및 frame assertion 범위에 한정한다. 이 slice는 앱 화면을 렌더링하지 않아 시뮬레이터 screenshot evidence를 만들지 않는다. 구현/runtime 실패 관점은 [별도 검토 20개](implementation-runtime-review-20.md), 최종 구현 PR 변경 관점은 [적대 검토 30개](pr-diff-review-30.md)에 있다.
 
 ## 제한
 
