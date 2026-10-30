@@ -1,0 +1,72 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-anonymous-grid-text-android-avd-20261030T163822104Z-c87562e1",
+  "sceneCount": 2,
+  "observations": [
+    {
+      "sceneId": "anonymous-normal-newline-max-content",
+      "summary": "10-31 01:38:24.063  5328  5351 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261030T163822104Z-c87562e1-0 scene_id=anonymous-normal-newline-max-content expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 50,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 7,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-line-max-content",
+      "summary": "10-31 01:38:26.370  5396  5415 I SpinonBootstrap: SPINON_C114_GRID_SUMMARY run_id=c114-android-avd-20261030T163822104Z-c87562e1-1 scene_id=anonymous-pre-line-max-content expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 7,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

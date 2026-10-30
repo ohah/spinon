@@ -1,0 +1,30 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "e05c38babf6a500d5215865ffd5fd856c826965643e882c478821d09958d2e68",
+  "installedApkSha256": "e05c38babf6a500d5215865ffd5fd856c826965643e882c478821d09958d2e68",
+  "sourceRevision": {
+    "commit": "2dc6010524ecd91fa40c4e47ca8f7baabb7ce5d6",
+    "tree": "a3ea73489344e6cd4d4a153272ff9acdeba4d5eb",
+    "trackedDiffSha256": "954ee8194c32402f7c6366fb89452879c7cda4aa79a6a0f4751f56ccbd8dc9cb",
+    "trackedDirtyPaths": [
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "e4cb60b58b3ea79ffae0f6031c1b6ecc4bfd16b5a278e3cf3daecff2404ccd69"
+  }
+}

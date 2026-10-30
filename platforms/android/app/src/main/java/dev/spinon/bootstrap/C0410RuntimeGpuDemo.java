@@ -5733,10 +5733,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 if (tracks == null) return false;
                 int nonGutterTracks = 0;
                 boolean finalTrackMatches = false;
-                for (int index = 0; index < tracks.length(); index++) {
-                    org.json.JSONObject track = tracks.optJSONObject(index);
-                    if (track == null) return false;
-                    if (track.optBoolean("gutter") || track.optBoolean("collapsed")) continue;
+                for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
+                    org.json.JSONObject track = tracks.optJSONObject(trackIndex);
+                    if (track == null || !(track.opt("gutter") instanceof Boolean)
+                            || !(track.opt("collapsed") instanceof Boolean)) return false;
+                    if (track.optBoolean("gutter", false)
+                            || track.optBoolean("collapsed", false)) continue;
                     nonGutterTracks++;
                     finalTrackMatches = c114AnonymousTextNumberNear(track, "baseSize", expected);
                 }
@@ -5747,6 +5749,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 for (int index = 0; index < contributions.length(); index++) {
                     org.json.JSONObject contribution = contributions.optJSONObject(index);
                     if (contribution == null || contribution.optInt("item", -1) != 2
+                            || contribution.optInt("span", -1) != 1
                             || !c114AnonymousTextNumberNear(contribution, "value", expected)) {
                         continue;
                     }
