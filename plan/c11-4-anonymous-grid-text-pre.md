@@ -2,7 +2,7 @@
 
 **상위:** [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [공식 상태](../spec/STATUS.md#c11-css-grid) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [내부 text 계약 0070](../spec/internal/0070-c15-1-inline-text-layout.md)
 
-**상태:** 계획 실패 관점 20개 검토와 Chrome 156 사전 비교를 마쳤다. `WhiteSpaceMode::Pre`, HostDocument profile gate, root HTML computed-style mapping, 5개 opt-in scene 구현과 26개 기존 회귀 scene을 합친 Android/iOS Simulator 31/31 행렬이 통과했다. Text/layout/runtime/FFI focused tests, 59개 text-layout unit tests, fixture module boundary 24/24, rustfmt, workspace Clippy, 기본/fixture archive 경계 검사와 별도 구현/runtime 20관점 검토 및 별도 PR diff 20관점 검토도 통과했다. PR 생성·required checks·병합은 남아 있다. 일반 C11.4/C11 완료나 넓은 CSS admission은 주장하지 않는다.
+**상태:** 계획 실패 관점 20개 검토와 Chrome 156 사전 비교를 마쳤다. `WhiteSpaceMode::Pre`, HostDocument profile gate, root HTML computed-style mapping, 5개 opt-in scene 구현과 26개 기존 회귀 scene을 합친 Android/iOS Simulator 31/31 행렬이 통과했다. Text/layout/runtime/FFI focused tests, 59개 text-layout unit tests, fixture module boundary 24/24, rustfmt, workspace Clippy, 기본/fixture archive 경계 검사와 별도 구현/runtime 20관점 검토 및 별도 PR diff 20관점 검토도 통과했다. 구현 PR [#880](https://github.com/ohah/spinon/pull/880)은 2026-10-30T23:06:20Z Rebase and merge됐고 merge SHA는 `c592212bbf858cda0f310bb5885e864687960d06`이다. PR check rollup은 비어 있었고 main required status checks도 설정되지 않았다. 일반 C11.4/C11 완료나 넓은 CSS admission은 주장하지 않는다.
 
 ## 기준 규칙과 독립 oracle
 

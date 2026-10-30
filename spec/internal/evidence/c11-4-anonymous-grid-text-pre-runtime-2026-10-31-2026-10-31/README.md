@@ -4,6 +4,8 @@
 
 이 기록은 C11.4 anonymous Grid text에 `white-space:pre` 의미를 넣은 제한 fixture candidate를 다룬다. CSS Text/Grid의 고정 기대값은 [작업 계획](../../../../plan/c11-4-anonymous-grid-text-pre.md)과 [Chrome 156 사전 비교](../c11-4-anonymous-text-pre-precomparison-2026-10-31/README.md)에 고정했다. 계획 자체의 실패 관점 20개와 별도 구현/runtime 실패 관점 [20개](implementation-runtime-review-20.md)를 남겼다.
 
+구현 PR [#880](https://github.com/ohah/spinon/pull/880)은 2026-10-30T23:06:20Z Rebase and merge됐고 merge SHA는 `c592212bbf858cda0f310bb5885e864687960d06`다. PR check rollup은 비어 있었고 main required status checks도 설정되지 않았다.
+
 신규 장면은 `pre-max-content-spaces`, `pre-min-content-spaces`, `pre-forced-break`, `normal-fixed-width-control`, `pre-fixed-width-nowrap` 다섯 개다. 기존 anonymous text matrix 26개와 합친 31개 장면을 양 플랫폼에서 실행했다. 이 구현은 고정 Ahem ASCII source/style profile와 opt-in fixture allowlist에 한정되며 일반 CSS author admission이나 public CSS 지원이 아니다.
 
 ## 최종 source와 simulator 실행
