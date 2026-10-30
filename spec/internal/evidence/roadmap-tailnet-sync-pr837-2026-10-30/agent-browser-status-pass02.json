@@ -1,0 +1,34 @@
+{
+  "browser": "agent-browser",
+  "session": "spn837roadmap",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "official_completion_marker": "72/213",
+  "checkboxes": [
+    {
+      "id": "C11",
+      "checked": false
+    },
+    {
+      "id": "C11.2.2",
+      "checked": true
+    },
+    {
+      "id": "C11.2.3",
+      "checked": true
+    },
+    {
+      "id": "C11.3",
+      "checked": false
+    },
+    {
+      "id": "C11.3.3",
+      "checked": false
+    },
+    {
+      "id": "C11.4",
+      "checked": false
+    }
+  ],
+  "screenshot_viewport": "tailnet-status-c11-agent-browser-pass02-viewport.png"
+}

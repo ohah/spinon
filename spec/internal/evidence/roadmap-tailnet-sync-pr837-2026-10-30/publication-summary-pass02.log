@@ -1,0 +1,27 @@
+{
+  "sourceHead": "e886dfebccc406ac6f7303a462b228ef3f258248",
+  "sourceTree": "d1e7da7e0c3acaa726ef0c8073edf697f334d37f",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr837-2026-10-30/pass01/publication-pass02",
+  "routeCount": 102,
+  "totalBytes": 11589066,
+  "roadmapMarkers": [
+    "PR #837",
+    "12c11815165077d570d4d9c1674b0785047cba67",
+    "72/213"
+  ],
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-auto-repeat-pattern-ceiling.html",
+    "plan/c11-4-auto-repeat-pattern-ceiling-plan-review-20.html",
+    "internal/0059-c11-grid-layout.html",
+    "internal/evidence/c11-4-auto-repeat-pattern-ceiling-plan-2026-10-30/pr-diff-review-30.html",
+    "internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.html",
+    "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.html",
+    "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.html"
+  ],
+  "fullDocsLinkValidation": false
+}

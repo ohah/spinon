@@ -1,0 +1,26 @@
+{
+  "browser": "agent-browser",
+  "session": "spn837roadmap",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "first_card": {
+    "text_prefix": "2026-10-30 C11.4 auto-repeat two-track pattern ceiling test-only · PR #837 Rebase and merge",
+    "merge_sha": "12c11815165077d570d4d9c1674b0785047cba67",
+    "markers": [
+      "15,002/15,005px",
+      "Columns/Rows",
+      "focused 3/3",
+      "Grid 135/135",
+      "spinon-layout 314/314",
+      "72/213"
+    ],
+    "links": [
+      "https://github.com/ohah/spinon/pull/837",
+      "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-auto-repeat-pattern-ceiling.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.html",
+      "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+    ]
+  },
+  "screenshot_viewport": "tailnet-roadmap-agent-browser-pass02-viewport.png"
+}
