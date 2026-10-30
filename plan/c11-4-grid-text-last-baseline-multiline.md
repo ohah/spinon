@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [Grid track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing) · [CSS Box Alignment 3 baseline rules](https://www.w3.org/TR/css-align-3/#baseline-rules) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 구현/runtime 검증 완료, 구현 PR [#830](https://github.com/ohah/spinon/pull/830) 검토 대기. CSS Grid 규범 계산과 Chrome 156 fixture 관측을 분리해 고정했고, 제한 adapter/Taffy 구현을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene 확인했다. 일반 CSS admission은 그대로 닫혀 있다. 이 후보는 C11.4/C11 완료나 공식 집계 변경이 아니다. 기준 branch의 first-baseline fixture PR #827은 병합됐으며 이 후속 slice가 multiline last baseline을 추가한다.
+**상태:** 구현/runtime slice PR [#830](https://github.com/ohah/spinon/pull/830)은 2026-10-30T01:12:10Z에 Rebase and merge됐고 merge SHA는 `926bc4839aa72c8859ec0c5dfddf74675b7dfabb`다. CSS Grid 규범 계산과 Chrome 156 fixture 관측을 분리해 고정했고, 제한 adapter/Taffy 구현을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene 확인했다. 일반 CSS admission은 그대로 닫혀 있다. 이 병합은 C11.4/C11 완료나 공식 집계 변경이 아니다. 기준 branch의 first-baseline fixture PR #827에 multiline last-baseline 제한 slice를 이었다. [병합 후 상태·로드맵 검토 30개](../spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/post-merge-status-roadmap-review-30.md)
 
 ## 해결하려는 차이
 
@@ -33,8 +33,8 @@ Geometry 비교는 root-relative 좌표에서 1/64 CSS px까지 한다. Ahem byt
 3. 9개 typed Grid scene의 track trace, node/item frames, text line baselines를 비교했다. `align-items` 상속, `align-self` override, source order 역전, first/start controls와 malformed profile 거부를 Rust tests로 확인했다.
 4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 9/9 scene의 frame/track/draw/present를 확인했다. PixelCopy와 Metal drawable 표본은 각 27/27 exact다. 글리프 paint와 iOS compositor 이후 pixel로 확대 해석하지 않는다. [실행 근거](../spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md)
 5. product/debug 및 fixture-test/debug FFI archive 대조, module-boundary tests, focused Rust tests, formatting과 feature-enabled Clippy를 실행했다. exact archive probe와 SHA는 [artifact boundary](../spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md)에 있다.
-6. 구현/runtime 실패 관점 20개를 완료했고 PR diff의 독립된 30개 실패 관점을 검토했다. 최종 항목은 PR state/merge 및 roadmap 동기화 뒤 닫는다. PR에는 Chrome, Android AVD, iOS Simulator 화면을 분리해 첨부한다.
-7. 구현/runtime 결과를 `spec/STATUS.md`에 기록하되 C11.4/C11 상위 checkbox와 공식 `72/213`을 유지한다. PR merge 후 published roadmap 동기화를 별도로 확인한다.
+6. 구현/runtime 실패 관점 20개를 완료했고 PR diff의 독립된 30개 실패 관점을 검토했다. merge SHA와 PR check 경계를 확인했으며 published roadmap 확인을 병합 후 기록한다. PR에는 Chrome, Android AVD, iOS Simulator 화면을 분리해 첨부했다.
+7. 구현/runtime 결과와 PR #830 병합 사실을 `spec/STATUS.md`와 `spec/public/roadmap.html`에 기록하되 C11.4/C11 상위 checkbox와 공식 `72/213`을 유지한다. Tailnet preview의 served hash와 Agent Browser 화면을 별도 근거에 기록한다.
 
 ## 명시적으로 제외
 

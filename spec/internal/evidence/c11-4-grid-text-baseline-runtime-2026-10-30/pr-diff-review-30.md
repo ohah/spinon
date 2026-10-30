@@ -31,6 +31,6 @@ PR diff review의 대상은 last-baseline 계획 후보를 구현/runtime 후보
 27. **iOS install binding** — PASS. 설치 executable과 빌드 executable SHA-256이 같다.
 28. **iOS surface sampling** — PASS. 9 scene × 3 Metal drawable 표본, 27/27 exact다. compositor 제출 전 표본이다.
 29. **초기 Android 실패 기록** — PASS. reversed-scene validator indexing 오류와 수정 후 전체 재실행을 README에 함께 기록한다.
-30. **검증/PR/배포 경계** — PENDING PR. 최종 형식·diff·archive-boundary 검사와 simulator evidence는 통과했다. PR checks/state/merge SHA 및 STATUS가 게시 roadmap과 일치하는지 최종 head에서 확인한 뒤 이 항목을 갱신한다.
+30. **검증/PR/배포 경계** — PARTIAL. PR #830은 `MERGED`, `mergedAt=2026-10-30T01:12:10Z`, merge SHA `926bc4839aa72c8859ec0c5dfddf74675b7dfabb`다. check rollup은 비었고 main required checks도 설정되지 않았다. `spec/STATUS.md`와 local `spec/public/roadmap.html`은 병합 사실과 `72/213` 유지에 맞췄다. Tailnet served hash와 Agent Browser 확인 뒤 PASS로 닫는다.
 
-29개 항목은 source review와 현재 실행 근거에 대한 검토다. 30번은 PR 생성·병합과 roadmap 동기화까지 마친 뒤 닫는다.
+29개 항목은 source review와 현재 실행 근거에 대한 검토다. 30번은 Tailnet roadmap 동기화와 화면 확인이 끝나면 닫는다.
