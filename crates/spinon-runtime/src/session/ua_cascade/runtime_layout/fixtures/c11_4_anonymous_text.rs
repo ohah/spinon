@@ -14,7 +14,7 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 9] = [
+const SCENE_IDS: [&str; 16] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -24,6 +24,13 @@ const SCENE_IDS: [&str; 9] = [
     "anonymous-runs-around-block",
     "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item",
+    "anonymous-normal-max-content-spaces",
+    "anonymous-pre-wrap-max-content-spaces",
+    "anonymous-pre-wrap-comment-split-max-content",
+    "anonymous-pre-wrap-min-content-spaces",
+    "anonymous-pre-wrap-soft-wrap",
+    "anonymous-pre-wrap-forced-break",
+    "anonymous-pre-wrap-whitespace-before-block",
 ];
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -91,6 +98,14 @@ fn validate_direct_children(
         "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
             &[ExpectedChild::Text("XX\nXX")]
         }
+        "anonymous-normal-max-content-spaces"
+        | "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-min-content-spaces" => &[ExpectedChild::Text("XX  XX")],
+        "anonymous-pre-wrap-comment-split-max-content" => {
+            &[ExpectedChild::Text("XX "), ExpectedChild::Text(" XX")]
+        }
+        "anonymous-pre-wrap-soft-wrap" => &[ExpectedChild::Text("XX XX")],
+        "anonymous-pre-wrap-forced-break" => &[ExpectedChild::Text("XX\nXX")],
         "anonymous-comment-continuation" => &[ExpectedChild::Text("XX"), ExpectedChild::Text("XX")],
         "anonymous-runs-around-block" => &[
             ExpectedChild::Text("XX"),
@@ -109,6 +124,10 @@ fn validate_direct_children(
             ExpectedChild::Block("c114-whitespace-does-not-create-item-first"),
             ExpectedChild::Text(" \t\n"),
             ExpectedChild::Block("c114-whitespace-does-not-create-item-second"),
+        ],
+        "anonymous-pre-wrap-whitespace-before-block" => &[
+            ExpectedChild::Text("  "),
+            ExpectedChild::Block("c114-anonymous-pre-wrap-whitespace-before-block-item"),
         ],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
@@ -206,10 +225,15 @@ fn validate_grid_style(
     } else {
         "wrap"
     };
-    let expected_white_space_collapse = if scene_id == "anonymous-pre-line-max-content" {
-        "preserve-breaks"
-    } else {
-        "collapse"
+    let expected_white_space_collapse = match scene_id {
+        "anonymous-pre-line-max-content" => "preserve-breaks",
+        "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-comment-split-max-content"
+        | "anonymous-pre-wrap-min-content-spaces"
+        | "anonymous-pre-wrap-soft-wrap"
+        | "anonymous-pre-wrap-forced-break"
+        | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        _ => "collapse",
     };
     let (expected_width, expected_height) = match scene_id {
         "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
@@ -217,6 +241,15 @@ fn validate_grid_style(
         }
         "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
             (20.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-normal-max-content-spaces"
+        | "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-comment-split-max-content"
+        | "anonymous-pre-wrap-min-content-spaces"
+        | "anonymous-pre-wrap-forced-break" => (20.0, ComputedCssDimension::Auto),
+        "anonymous-pre-wrap-soft-wrap" => (25.0, ComputedCssDimension::Auto),
+        "anonymous-pre-wrap-whitespace-before-block" => {
+            (40.0, ComputedCssDimension::LengthPx(10.0))
         }
         "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
         _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
@@ -293,6 +326,16 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
             vec![ComputedCssGridTrackSize::MaxContent]
         }
+        "anonymous-normal-max-content-spaces"
+        | "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-comment-split-max-content"
+        | "anonymous-pre-wrap-forced-break" => vec![ComputedCssGridTrackSize::MaxContent],
+        "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
+        "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+        "anonymous-pre-wrap-whitespace-before-block" => vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+        ],
         "anonymous-comment-continuation" => vec![
             ComputedCssGridTrackSize::MaxContent,
             ComputedCssGridTrackSize::Fraction(1.0),
@@ -320,6 +363,12 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             | "anonymous-nowrap-min-content"
             | "anonymous-normal-newline-max-content"
             | "anonymous-pre-line-max-content"
+            | "anonymous-normal-max-content-spaces"
+            | "anonymous-pre-wrap-max-content-spaces"
+            | "anonymous-pre-wrap-comment-split-max-content"
+            | "anonymous-pre-wrap-min-content-spaces"
+            | "anonymous-pre-wrap-soft-wrap"
+            | "anonymous-pre-wrap-forced-break"
     ) {
         vec![ComputedCssGridTrackSize::Auto]
     } else {
@@ -439,6 +488,12 @@ fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
         white_space: match scene_id {
             "anonymous-nowrap-min-content" => WhiteSpaceMode::NoWrap,
             "anonymous-pre-line-max-content" => WhiteSpaceMode::PreLine,
+            "anonymous-pre-wrap-max-content-spaces"
+            | "anonymous-pre-wrap-comment-split-max-content"
+            | "anonymous-pre-wrap-min-content-spaces"
+            | "anonymous-pre-wrap-soft-wrap"
+            | "anonymous-pre-wrap-forced-break"
+            | "anonymous-pre-wrap-whitespace-before-block" => WhiteSpaceMode::PreWrap,
             _ => WhiteSpaceMode::Normal,
         },
         word_break: WordBreakMode::Normal,
@@ -495,7 +550,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 9);
+        assert_eq!(SCENE_IDS.len(), 16);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -596,6 +651,17 @@ mod tests {
             )
             .is_err()
         );
+        let mut pre_wrap = properties.clone();
+        pre_wrap.insert("white-space-collapse".to_owned(), "preserve".to_owned());
+        assert!(
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &pre_wrap,
+                "preserve",
+                "wrap",
+            )
+            .is_ok()
+        );
         for (name, changed) in [
             ("font-family", "sans-serif"),
             ("font-size", "11px"),
@@ -660,6 +726,35 @@ mod tests {
         assert!(grid_tracks_match(
             &max_content_single_track,
             "anonymous-pre-line-max-content"
+        ));
+        for scene_id in [
+            "anonymous-normal-max-content-spaces",
+            "anonymous-pre-wrap-max-content-spaces",
+            "anonymous-pre-wrap-comment-split-max-content",
+            "anonymous-pre-wrap-forced-break",
+        ] {
+            assert!(grid_tracks_match(&max_content_single_track, scene_id));
+        }
+        assert!(grid_tracks_match(
+            &min_content_single_track,
+            "anonymous-pre-wrap-min-content-spaces"
+        ));
+        assert!(grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                vec![ComputedCssGridTrackSize::Auto],
+            ),
+            "anonymous-pre-wrap-soft-wrap"
+        ));
+        assert!(grid_tracks_match(
+            &grid(
+                vec![
+                    ComputedCssGridTrackSize::LengthPx(20.0),
+                    ComputedCssGridTrackSize::LengthPx(20.0),
+                ],
+                vec![ComputedCssGridTrackSize::LengthPx(10.0)],
+            ),
+            "anonymous-pre-wrap-whitespace-before-block"
         ));
 
         macro_rules! rejects_grid_mutation {

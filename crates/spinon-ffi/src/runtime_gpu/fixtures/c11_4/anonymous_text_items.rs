@@ -1,4 +1,4 @@
-const SCENE_IDS: [&str; 9] = [
+const SCENE_IDS: [&str; 16] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -8,6 +8,13 @@ const SCENE_IDS: [&str; 9] = [
     "anonymous-runs-around-block",
     "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item",
+    "anonymous-normal-max-content-spaces",
+    "anonymous-pre-wrap-max-content-spaces",
+    "anonymous-pre-wrap-comment-split-max-content",
+    "anonymous-pre-wrap-min-content-spaces",
+    "anonymous-pre-wrap-soft-wrap",
+    "anonymous-pre-wrap-forced-break",
+    "anonymous-pre-wrap-whitespace-before-block",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -22,6 +29,13 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
             (20, "auto", "max-content", "auto", "wrap")
         }
+        "anonymous-normal-max-content-spaces"
+        | "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-comment-split-max-content"
+        | "anonymous-pre-wrap-forced-break" => (20, "auto", "max-content", "auto", "wrap"),
+        "anonymous-pre-wrap-min-content-spaces" => (20, "auto", "min-content", "auto", "wrap"),
+        "anonymous-pre-wrap-soft-wrap" => (25, "auto", "25px", "auto", "wrap"),
+        "anonymous-pre-wrap-whitespace-before-block" => (40, "10px", "20px 20px", "10px", "wrap"),
         "anonymous-comment-continuation" => (120, "10px", "max-content 1fr", "10px", "wrap"),
         "anonymous-runs-around-block" => (
             120,
@@ -34,10 +48,15 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "whitespace-does-not-create-item" => (120, "10px", "20px 30px 40px", "10px", "wrap"),
         _ => return None,
     };
-    let white_space_collapse = if scene_id == "anonymous-pre-line-max-content" {
-        "preserve-breaks"
-    } else {
-        "collapse"
+    let white_space_collapse = match scene_id {
+        "anonymous-pre-line-max-content" => "preserve-breaks",
+        "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-comment-split-max-content"
+        | "anonymous-pre-wrap-min-content-spaces"
+        | "anonymous-pre-wrap-soft-wrap"
+        | "anonymous-pre-wrap-forced-break"
+        | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        _ => "collapse",
     };
     let mut source = format!(
         r#"(() => {{
@@ -56,6 +75,20 @@ const nodeIds = [{root_id:?}];
             "root.appendChild(document.createTextNode('XX XX'));\n",
         ),
         "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\nXX'));\n")
+        }
+        "anonymous-normal-max-content-spaces"
+        | "anonymous-pre-wrap-max-content-spaces"
+        | "anonymous-pre-wrap-min-content-spaces" => {
+            source.push_str("root.appendChild(document.createTextNode('XX  XX'));\n")
+        }
+        "anonymous-pre-wrap-comment-split-max-content" => source.push_str(
+            "root.appendChild(document.createTextNode('XX '));\nroot.appendChild(document.createTextNode(' XX'));\n",
+        ),
+        "anonymous-pre-wrap-soft-wrap" => {
+            source.push_str("root.appendChild(document.createTextNode('XX XX'));\n")
+        }
+        "anonymous-pre-wrap-forced-break" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\nXX'));\n")
         }
         "anonymous-comment-continuation" => source.push_str(
@@ -98,6 +131,16 @@ root.appendChild(second);
 nodeIds.push('c114-whitespace-does-not-create-item-second');
 "#,
         ),
+        "anonymous-pre-wrap-whitespace-before-block" => source.push_str(
+            r#"root.appendChild(document.createTextNode('  '));
+const block = document.createElement('div');
+block.setAttribute('id', 'c114-anonymous-pre-wrap-whitespace-before-block-item');
+block.setAttribute('data-node', '');
+block.setAttribute('style', 'box-sizing:border-box;display:block;width:10px;height:10px;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(block);
+nodeIds.push('c114-anonymous-pre-wrap-whitespace-before-block-item');
+"#,
+        ),
         _ => return None,
     }
     source.push_str(&format!(
@@ -112,9 +155,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_nine_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_sixteen_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 9);
+        assert_eq!(SCENE_IDS.len(), 16);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (
@@ -163,6 +206,60 @@ mod tests {
                 "preserve-breaks",
             ),
             (
+                "anonymous-normal-max-content-spaces",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-pre-wrap-max-content-spaces",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-wrap-comment-split-max-content",
+                2,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-wrap-min-content-spaces",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-wrap-soft-wrap",
+                1,
+                0,
+                25,
+                "auto",
+                "wrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-wrap-forced-break",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "preserve",
+            ),
+            (
                 "anonymous-comment-continuation",
                 2,
                 0,
@@ -197,6 +294,15 @@ mod tests {
                 "10px",
                 "wrap",
                 "collapse",
+            ),
+            (
+                "anonymous-pre-wrap-whitespace-before-block",
+                1,
+                1,
+                40,
+                "10px",
+                "wrap",
+                "preserve",
             ),
         ] {
             let source = runtime_source(scene_id).expect("known C11.4 scene");

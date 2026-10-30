@@ -1,0 +1,19 @@
+{
+  "artifact": "/Users/yoonhb/Documents/workspace/spinon/target/release/libspinon_ffi.a",
+  "mode": "fixture",
+  "bytes": 80970496,
+  "sha256": "2d72e8f81040b2a650b0dae6fb636cd93c46819ec97a2a50a45fdf595aed8d6c",
+  "sceneMarkers": {
+    "anonymous-normal-max-content-spaces": true,
+    "anonymous-pre-wrap-max-content-spaces": true,
+    "anonymous-pre-wrap-comment-split-max-content": true,
+    "anonymous-pre-wrap-min-content-spaces": true,
+    "anonymous-pre-wrap-soft-wrap": true,
+    "anonymous-pre-wrap-forced-break": true,
+    "anonymous-pre-wrap-whitespace-before-block": true
+  },
+  "c114HostFfiSymbols": [
+    "0000000000009b8c T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+    "000000000000ce48 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ]
+}

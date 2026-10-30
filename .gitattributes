@@ -11,3 +11,8 @@ spec/internal/evidence/c11-4-tailnet-sync-post-349-2026-10-19/*.log whitespace=-
 
 # Preserve byte-exact C11.4 simulator logs with trailing spaces from tool output.
 spec/internal/evidence/c11-4-cyclic-minmax-calc-minimum-two-axis-runtime-2026-10-22/**/*.log whitespace=-blank-at-eol,-blank-at-eof
+
+# Preserve byte-exact C11.4 PreWrap simulator and build logs from tool output.
+spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/**/*.log whitespace=-blank-at-eol,-blank-at-eof
+spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/*.log whitespace=-blank-at-eol,-blank-at-eof
+spec/internal/evidence/roadmap-tailnet-sync-c11-4-prewrap-2026-10-31/*.log whitespace=-blank-at-eol,-blank-at-eof

@@ -63,7 +63,7 @@ pub(super) fn prepare(
     }
 
     // Automatic-placement ratio/minmax cases remain on their original adapters.
-    if !has_explicit_placement {
+    if !has_explicit_placement || (meaningful_items.is_empty() && !has_meaningful_anonymous_text) {
         return Ok(None);
     }
     if element_children.len() != 1 || meaningful_items.len() != 1 {
