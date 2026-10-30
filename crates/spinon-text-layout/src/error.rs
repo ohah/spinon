@@ -36,6 +36,7 @@ pub enum TextLayoutError {
     RasterAllocationFailed(NodeId),
     InvalidGlyphLayout(NodeId),
     UnsupportedVerticalIntrinsicProfile(NodeId),
+    UnsupportedPreTabProfile(NodeId),
     UnsupportedPreWrapTabProfile(NodeId),
     UnsupportedBreakSpacesTabProfile(NodeId),
     MissingGlyphCoverage {
@@ -137,6 +138,10 @@ impl fmt::Display for TextLayoutError {
             Self::UnsupportedVerticalIntrinsicProfile(node) => write!(
                 formatter,
                 "paragraph {node}의 vertical intrinsic 입력이 고정 Ahem profile과 일치하지 않습니다"
+            ),
+            Self::UnsupportedPreTabProfile(node) => write!(
+                formatter,
+                "paragraph {node}의 white-space:pre tab 입력은 현재 지원하지 않습니다"
             ),
             Self::UnsupportedPreWrapTabProfile(node) => write!(
                 formatter,

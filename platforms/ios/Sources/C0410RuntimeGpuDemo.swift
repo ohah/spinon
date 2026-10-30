@@ -1029,6 +1029,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "anonymous-break-spaces-trailing-max-content",
     "anonymous-break-spaces-whitespace-only",
     "anonymous-break-spaces-whitespace-before-block",
+    "anonymous-pre-max-content-spaces",
+    "anonymous-pre-min-content-spaces",
+    "anonymous-pre-forced-break",
+    "anonymous-normal-fixed-width-control",
+    "anonymous-pre-fixed-width-nowrap",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -2363,6 +2368,11 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "anonymous-pre-wrap-comment-split-max-content" {
         return "width=20,height=10"
     }
+    if sceneID == "anonymous-pre-max-content-spaces"
+        || sceneID == "anonymous-pre-min-content-spaces" { return "width=20,height=10" }
+    if sceneID == "anonymous-pre-forced-break" { return "width=20,height=20" }
+    if sceneID == "anonymous-normal-fixed-width-control" { return "width=25,height=20" }
+    if sceneID == "anonymous-pre-fixed-width-nowrap" { return "width=25,height=10" }
     if sceneID == "anonymous-pre-wrap-min-content-spaces"
         || sceneID == "anonymous-pre-wrap-forced-break" { return "width=20,height=20" }
     if sceneID == "anonymous-pre-wrap-soft-wrap" { return "width=25,height=20" }
@@ -3167,6 +3177,16 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
         expected = (20, 20, 20, 20, "PreLine", [(2, "XX\nXX")])
     case "anonymous-normal-max-content-spaces":
         expected = (50, 10, 50, 10, "Normal", [(2, "XX  XX")])
+    case "anonymous-pre-max-content-spaces":
+        expected = (60, 10, 60, 10, "Pre", [(2, "XX  XX")])
+    case "anonymous-pre-min-content-spaces":
+        expected = (50, 10, 50, 10, "Pre", [(2, "XX XX")])
+    case "anonymous-pre-forced-break":
+        expected = (20, 20, 20, 20, "Pre", [(2, "XX\nXX")])
+    case "anonymous-normal-fixed-width-control":
+        expected = (50, 10, 25, 20, "Normal", [(2, "XX XX")])
+    case "anonymous-pre-fixed-width-nowrap":
+        expected = (50, 10, 25, 10, "Pre", [(2, "XX XX")])
     case "anonymous-pre-wrap-max-content-spaces":
         expected = (60, 10, 60, 10, "PreWrap", [(2, "XX  XX")])
     case "anonymous-pre-wrap-comment-split-max-content":
@@ -3196,9 +3216,15 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
     default:
         return false
     }
-    let expectedMinContent = sceneID.hasPrefix("anonymous-break-spaces-") ? 30.0 : 20.0
+    let expectedMinContent = sceneID == "anonymous-pre-max-content-spaces" ? 60.0
+        : sceneID == "anonymous-pre-min-content-spaces"
+            || sceneID == "anonymous-pre-fixed-width-nowrap" ? 50.0
+            : sceneID.hasPrefix("anonymous-break-spaces-") ? 30.0 : 20.0
     let expectedMinContentHeight = sceneID == "anonymous-break-spaces-forced-break-max-content"
-        || sceneID == "anonymous-break-spaces-forced-break-min-content" ? 30.0 : 20.0
+        || sceneID == "anonymous-break-spaces-forced-break-min-content" ? 30.0
+        : sceneID == "anonymous-pre-max-content-spaces"
+            || sceneID == "anonymous-pre-min-content-spaces"
+            || sceneID == "anonymous-pre-fixed-width-nowrap" ? 10.0 : 20.0
     guard inputs.count == 1,
           let input = inputs.first,
           (input["grid"] as? Int) == 1,
@@ -3249,6 +3275,36 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
         expectColumnContribution = true
         expectRowContribution = true
         expectedColumnKind = "MaxContent"
+    case "anonymous-pre-max-content-spaces":
+        expectedColumns = [60]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-min-content-spaces":
+        expectedColumns = [50]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MinContent"
+    case "anonymous-pre-forced-break":
+        expectedColumns = [20]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-normal-fixed-width-control":
+        expectedColumns = [25]
+        expectedRows = [20]
+        expectColumnContribution = false
+        expectRowContribution = true
+        expectedColumnKind = nil
+    case "anonymous-pre-fixed-width-nowrap":
+        expectedColumns = [25]
+        expectedRows = [10]
+        expectColumnContribution = false
+        expectRowContribution = true
+        expectedColumnKind = nil
     case "anonymous-pre-line-max-content",
          "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-forced-break":
         expectedColumns = [20]
@@ -8261,6 +8317,14 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
          "anonymous-pre-wrap-max-content-spaces",
          "anonymous-pre-wrap-comment-split-max-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]"
+    case "anonymous-pre-max-content-spaces", "anonymous-pre-min-content-spaces":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]"
+    case "anonymous-pre-forced-break":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"
+    case "anonymous-normal-fixed-width-control":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]"
+    case "anonymous-pre-fixed-width-nowrap":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]"
     case "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-forced-break":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"
     case "anonymous-pre-wrap-soft-wrap":
@@ -9653,7 +9717,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "anonymous-break-spaces-whitespace-only" { return 0 }
     if ["anonymous-min-content-wrap", "anonymous-normal-min-content",
         "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
-        "anonymous-pre-line-max-content", "anonymous-comment-continuation",
+        "anonymous-normal-fixed-width-control", "anonymous-pre-line-max-content",
+        "anonymous-comment-continuation",
         "anonymous-hidden-child-continuation"].contains(sceneID)
         || c114IsAnonymousWhitespaceMatrixScene(sceneID) {
         return 1
@@ -9711,7 +9776,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
     ["anonymous-min-content-wrap", "anonymous-normal-min-content",
      "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
-     "anonymous-pre-line-max-content", "anonymous-comment-continuation",
+     "anonymous-normal-fixed-width-control", "anonymous-pre-line-max-content",
+     "anonymous-comment-continuation",
      "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
      "whitespace-does-not-create-item"].contains(sceneID)
         || c114IsAnonymousWhitespaceMatrixScene(sceneID)
@@ -9719,6 +9785,7 @@ private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
 
 private func c114IsAnonymousWhitespaceMatrixScene(_ sceneID: String) -> Bool {
     sceneID == "anonymous-normal-max-content-spaces"
+        || sceneID.hasPrefix("anonymous-pre-")
         || sceneID.hasPrefix("anonymous-pre-wrap-")
         || sceneID.hasPrefix("anonymous-break-spaces-")
 }
@@ -15707,7 +15774,10 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedRowAxisSpanStageMatches,
                   expectedFlexStageMatches else {
                 logC114GridNodeFrames(report)
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) root_frame_matches=\(expectedRootFrameMatches) item_frame_matches=\(expectedItemFrameMatches) text_intrinsic_inputs_match=\(expectedTextInputs) image_intrinsic_inputs_match=\(expectedImageInputs) node_frames_match=\(expectedNodeFramesMatch) fit_content_limit_boundaries_matches=\(expectedFitContentLimitBoundariesMatches) fit_content_limit_columns_matches=\(expectedFitContentLimitColumnsMatches) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_CHECKS_A run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) status=\(report.hasPrefix("status=0 ")) ready_boxes=\(report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))")) root=\(expectedRootFrameMatches) item=\(expectedItemFrameMatches) text=\(expectedTextInputs) newline=\(expectedAnonymousNewlineTraceMatches) image=\(expectedImageInputs) nodes=\(expectedNodeFramesMatch)")
+                log("SPINON_C114_GRID_ASSERTION_CHECKS_B run_id=\(c114GridTrackSizingRunID) implicit=\(expectedFitContentImplicitColumnMatches) auto_neighbor=\(expectedFitContentAutoNeighborMatches) min_height=\(expectedFitContentMinHeightMatches) zoomed=\(expectedFitContentZoomedGridMatches) percentage=\(expectedFitContentPercentageArgumentMatches) spanning=\(expectedFitContentSpanningMatches) cross_axis_groups=\(expectedCrossAxisSpanGroupFramesMatch) text_multispan=\(expectedTextMultiSpanFramesMatch) image_multispan=\(expectedImageMultiSpanFramesMatch) mixed_multispan=\(expectedMixedMultiSpanFramesMatch)")
+                log("SPINON_C114_GRID_ASSERTION_CHECKS_C run_id=\(c114GridTrackSizingRunID) limit_boundaries=\(expectedFitContentLimitBoundariesMatches) limit_columns=\(expectedFitContentLimitColumnsMatches) overflow_min=\(expectedOverflowAutoMinimumMatches) single_overflow_min=\(expectedSingleTrackOverflowAutoMinimumMatches) auto_fit=\(expectedGridAutoFitColumnsWptTraceMatches) auto_tracks=\(expectedGridLayoutAutoTracksMatches) fixed_area=\(expectedFixedAutoAreaTraceMatches) cyclic_repeat=\(expectedCyclicAutoRepeatTraceMatches) intrinsic_repeat=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track=\(expectedCrossAxisTrackTraceMatches) equal_rows=\(expectedEqualAutoRowsMatches) row_span=\(expectedRowAxisSpanStageMatches) flex=\(expectedFlexStageMatches)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) root_frame_matches=\(expectedRootFrameMatches) item_frame_matches=\(expectedItemFrameMatches) text_intrinsic_inputs_match=\(expectedTextInputs) anonymous_newline_trace_matches=\(expectedAnonymousNewlineTraceMatches) image_intrinsic_inputs_match=\(expectedImageInputs) node_frames_match=\(expectedNodeFramesMatch) fit_content_implicit_column_matches=\(expectedFitContentImplicitColumnMatches) fit_content_auto_neighbor_matches=\(expectedFitContentAutoNeighborMatches) fit_content_min_height_matches=\(expectedFitContentMinHeightMatches) fit_content_zoomed_grid_matches=\(expectedFitContentZoomedGridMatches) fit_content_percentage_argument_matches=\(expectedFitContentPercentageArgumentMatches) fit_content_spanning_matches=\(expectedFitContentSpanningMatches) cross_axis_span_group_frames_match=\(expectedCrossAxisSpanGroupFramesMatch) text_multi_span_frames_match=\(expectedTextMultiSpanFramesMatch) image_multi_span_frames_match=\(expectedImageMultiSpanFramesMatch) mixed_multi_span_frames_match=\(expectedMixedMultiSpanFramesMatch) fit_content_limit_boundaries_matches=\(expectedFitContentLimitBoundariesMatches) fit_content_limit_columns_matches=\(expectedFitContentLimitColumnsMatches) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }

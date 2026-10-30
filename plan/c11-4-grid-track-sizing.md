@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-31 anonymous Grid text `white-space:pre` 제한 slice · 검증 완료, PR 준비 중
+
+`WhiteSpaceMode::Pre`를 Ahem ASCII 기반 opt-in anonymous Grid text fixture에 연결했다. 신규 5 scene과 기존 normal/nowrap/pre-line/pre-wrap/break-spaces 26 scene을 합친 고정 31-scene 행렬이 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 통과했다. 상세한 scene geometry, test 결과, source snapshot, 검증 한계는 [작업 계획](./c11-4-anonymous-grid-text-pre.md)과 [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-runtime-2026-10-31-2026-10-31/README.md)에 있다. 이 slice는 일반 author CSS admission, WPT, glyph pixels 또는 C11.4/C11 완료가 아니며 공식 `72/213` 집계를 바꾸지 않는다.
+
 ## 2026-10-31 anonymous Grid text `white-space:break-spaces` 제한 slice · PR #873 병합
 
 opt-in anonymous Grid text fixture에 `break-spaces`를 추가한 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge로 병합됐다(merge SHA `32ba37b18dc5a8fc553667f52cc47d46dae3952f`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 16개와 신규 10개를 합친 고정 장면 26/26을 각각 통과했다. [계획 및 범위](./c11-4-anonymous-grid-text-break-spaces.md) · [runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md) · [Tailnet 로드맵 동기화](../spec/internal/evidence/roadmap-tailnet-sync-c11-4-break-spaces-2026-10-31-pass02/README.md) · [요약 PR diff 20관점 검토](../spec/internal/evidence/c11-4-grid-track-sizing-overview-sync-2026-10-31/pr-diff-review-20.md)

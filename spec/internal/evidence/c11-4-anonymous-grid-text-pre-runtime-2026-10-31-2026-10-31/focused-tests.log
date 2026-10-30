@@ -1,0 +1,204 @@
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.67s
+     Running unittests src/lib.rs (target/debug/deps/spinon_text_layout-150fd4237564ccc2)
+
+running 59 tests
+test engine::raster_tests::accumulated_raster_bytes_accepts_the_limit_and_rejects_overflow ... ok
+test engine::raster_tests::empty_swash_image_becomes_a_no_ink_glyph ... ok
+test engine::raster_tests::malformed_or_oversized_swash_images_fail_closed ... ok
+test engine::raster_tests::rgba_swash_image_keeps_color_content_and_y_down_placement ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_tabs_fail_closed ... ok
+test engine::tests::c11_4_pre::pre_tabs_fail_closed_for_intrinsic_and_final_layout ... ok
+test engine::tests::c11_4_pre::pre_keeps_space_boundaries_unbreakable_for_min_content ... ok
+test engine::tests::ahem_normalizes_collapsed_spaces_and_preserves_source_range ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_segment_break_split_across_sources_keeps_provenance ... ok
+test engine::tests::ahem_vertical_nowrap_intrinsics_have_no_soft_wrap_opportunities ... ok
+test engine::tests::ahem_wraps_words_and_keeps_long_unbreakable_words_overflowing ... ok
+test engine::tests::c11_4_pre::pre_preserves_forced_segment_breaks_and_source_provenance ... ok
+test engine::tests::c11_4_pre::pre_preserves_spaces_and_disables_soft_wrapping ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_expands_default_ahem_tab_stops_and_maps_the_source_tab ... ok
+test engine::tests::ahem_supports_break_all_pre_line_and_no_wrap ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_tab_outside_the_fixed_ahem_profile_fails_closed ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_preserves_each_space_for_min_and_max_content ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_forced_break_keeps_each_crlf_source_mapping ... ok
+test engine::tests::adjacent_text_nodes_keep_source_order_and_inline_fragments ... ok
+test engine::tests::c15_2::ahem_baseline_keeps_the_chrome_10px_10px_geometry ... ok
+test engine::tests::c15_2::invalid_inline_edges_and_overflowing_edge_sums_fail_closed ... ok
+test engine::tests::c15_2::noncontiguous_inline_owner_is_rejected_instead_of_decorating_intervening_text ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_soft_wraps_and_keeps_the_preserved_separator_in_the_source ... ok
+test engine::tests::c15_2::nested_inline_width_overflow_from_separate_valid_styles_fails_closed ... ok
+test engine::tests::c15_2::decorated_inline_owner_without_visible_text_is_rejected ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_preserves_repeated_leading_and_trailing_spaces ... ok
+test engine::tests::ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_preserves_leading_and_trailing_spaces_in_max_content ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_normalizes_segment_breaks_and_keeps_crlf_source_provenance ... ok
+test engine::tests::c15_3::missing_fixture_glyph_does_not_fall_back_to_a_system_font_or_notdef_glyph ... ok
+test engine::tests::c15_3_raster::rasterizer_handles_empty_text_and_rejects_oversized_physical_font_size ... ok
+test engine::tests::c15_2::roboto_metrics_keep_the_chrome_20px_24px_geometry ... ok
+test engine::tests::collapsed_space_and_pre_line_crlf_keep_all_source_code_units ... ok
+test engine::tests::empty_intrinsic_paragraph_returns_zero_sizes_with_current_font_revision ... ok
+test engine::tests::c15_3::combining_sequence_glyphs_retain_one_grapheme_and_the_full_utf16_source ... ok
+test engine::tests::c15_3::one_combining_cluster_can_preserve_sources_from_adjacent_dom_text_nodes ... ok
+test engine::tests::ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances ... ok
+test engine::tests::engine_boundaries::empty_text_does_not_create_a_line_and_missing_fonts_fail_closed ... ok
+test engine::tests::c15_3::ligature_mode_changes_shaping_and_keeps_the_full_ligature_source_range ... ok
+test engine::tests::paragraph_style::paragraph_style_default_keeps_the_legacy_horizontal_text_profile ... ok
+test engine::tests::paragraph_style::paragraph_style_rejects_invalid_family_and_non_positive_or_non_finite_metrics ... ok
+test engine::tests::c15_3_raster::raster_uses_owned_font_bytes_after_registration_input_is_dropped ... ok
+test engine::tests::engine_boundaries::zero_width_is_definite_and_preserves_unbreakable_text_advance ... ok
+test engine::tests::intrinsic_inline_sizes_include_inline_edges_and_pre_line_breaks ... ok
+test engine::tests::c15_3_raster::static_font_raster_applies_parley_synthetic_bold_and_italic ... ok
+test engine::tests::horizontal_logical_intrinsics_preserve_legacy_measurement_axes ... ok
+test engine::tests::supplementary_scalar_preserves_utf16_and_utf8_source_ranges ... ok
+test engine::tests::c15_3_raster::ahem_raster_dimensions_scale_in_physical_pixels_but_keep_css_positions ... ok
+test engine::tests::vertical_logical_intrinsics_reject_out_of_profile_text_style_and_topology ... ok
+test engine::tests::c15_3_raster::variable_font_raster_uses_the_same_normalized_weight_as_parley_shaping ... ok
+test engine::tests::roboto_uses_real_shaped_glyph_advances_and_metrics ... ok
+test engine::tests::c15_3::auto_rtl_and_ltr_base_directions_place_an_arabic_paragraph_correctly ... ok
+test engine::tests::engine_boundaries::font_registration_is_transactional_and_checks_the_new_font_family ... ok
+test engine::tests::c15_3::arabic_rtl_run_keeps_european_digits_in_ltr_order ... ok
+test engine::tests::c15_3::emoji_zwj_sequence_is_one_shaped_cluster_with_a_full_utf16_range ... ok
+test engine::tests::c15_3::strict_cjk_break_keeps_closing_punctuation_with_the_previous_cluster ... ok
+test engine::tests::c15_3::hangul_uses_the_registered_korean_font_and_emits_real_glyphs ... ok
+test engine::tests::c15_3_raster::rasterizer_rejects_invalid_scale_stale_registry_and_corrupt_glyph_ids ... ok
+test engine::tests::c15_3_raster::raster_snapshot_preserves_visible_glyphs_and_sources_across_c15_3_scripts ... ok
+
+test result: ok. 59 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.66s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-466af74e1171adde)
+
+running 31 tests
+test host_document::tests::c11_4_anonymous_text::anonymous_grid_pre_wrap_still_rejects_nonzero_order ... ok
+test host_document::tests::c11_4_anonymous_text::non_fixture_host_document_projection_still_rejects_direct_grid_text ... ok
+test host_document::tests::c11_4_anonymous_text::anonymous_grid_text_still_rejects_nonzero_order ... ok
+test host_document::tests::c11_4_anonymous_text::collapsible_whitespace_between_blocks_does_not_create_an_item ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::break_spaces_whitespace_only_does_not_create_an_anonymous_grid_item ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::break_spaces_whitespace_before_block_does_not_consume_an_auto_cell ... ok
+test host_document::tests::c11_4_anonymous_text::adjacent_text_nodes_become_one_anonymous_item_with_full_provenance ... ok
+test host_document::tests::c11_4_anonymous_text::direct_display_none_child_does_not_split_anonymous_text_run ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_nowrap_min_content_overflows_without_wrapping ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_line_preserves_segment_break_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_repeated_spaces_are_the_max_content_control ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_min_content_control_keeps_two_lines_at_twenty_px ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_comment_split_keeps_one_item_and_both_sources ... ok
+test host_document::tests::c11_4_anonymous_text::leading_collapsible_text_keeps_provenance_but_anchors_item_to_first_content_node ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_segment_break_uses_collapsed_space_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_forced_break_creates_two_max_content_rows ... ok
+test host_document::tests::c11_4_anonymous_text::direct_block_child_splits_anonymous_runs_without_losing_source_order ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_comment_split_remains_one_item_with_source_identity ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::pre_wrap_whitespace_before_block_does_not_consume_an_auto_placement_cell ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_soft_wrap_excludes_the_hanging_separator_from_track_contributions ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_preserves_repeated_spaces_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_wrap_min_content_keeps_two_lines ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_forced_breaks_remain_separate_intrinsic_lines ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_fixed_25px_track_keeps_non_hanging_wraps ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_forced_break_contributes_spaces_to_tracks ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_min_content_does_not_break_at_preserved_spaces ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_max_and_min_content_use_non_hanging_spaces ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_wraps_at_min_content_width ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_preserves_repeated_spaces_in_max_content_contribution ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_pre_overflows_a_fixed_width_without_soft_wrapping ... ok
+test host_document::tests::c11_4_anonymous_text::break_spaces::anonymous_break_spaces_trailing_spaces_wrap_and_size_without_hanging ... ok
+
+test result: ok. 31 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.05s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 3.64s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 1 test
+test session::ua_cascade::runtime_layout::root_html_default_render::style::tests::root_html_maps_pre_to_preserved_no_wrap_without_aliasing_neighbor_modes ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.69s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 1 test
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_fixture_cases_are_unique ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.72s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 1 test
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_grid_fixture_rejects_typography_and_track_profile_mutations ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.00s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s
+
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on package cache
+    Blocking waiting for file lock on build directory
+   Compiling spinon-runtime v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-runtime)
+   Compiling spinon-ffi v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-ffi)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 8.24s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-e07437e2bc2f8257)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::anonymous_text_items::tests::anonymous_grid_text_sources_are_a_fixed_thirty_one_scene_matrix ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 169 filtered out; finished in 0.00s
+

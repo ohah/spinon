@@ -57,18 +57,8 @@ fn text_flow_style(
 > {
     let collapse = property(style, "white-space-collapse")?;
     let wrap = property(style, "text-wrap-mode")?;
-    let white_space = match (collapse, wrap) {
-        ("collapse", "wrap") => WhiteSpaceMode::Normal,
-        ("collapse", "nowrap") => WhiteSpaceMode::NoWrap,
-        ("preserve-breaks", "wrap") => WhiteSpaceMode::PreLine,
-        _ => {
-            return Err(unsupported_style(
-                style.node_id,
-                "white-space",
-                "unsupported",
-            ));
-        }
-    };
+    let white_space = white_space_mode(collapse, wrap)
+        .ok_or_else(|| unsupported_style(style.node_id, "white-space", "unsupported"))?;
     let word_break = match property(style, "word-break")? {
         "normal" => WordBreakMode::Normal,
         "break-all" => WordBreakMode::BreakAll,
@@ -95,6 +85,16 @@ fn text_flow_style(
     require_zero_length_property(style, "word-spacing")?;
     require_zero_length_property(style, "text-indent")?;
     Ok((white_space, word_break, direction, line_break))
+}
+
+fn white_space_mode(collapse: &str, wrap: &str) -> Option<WhiteSpaceMode> {
+    match (collapse, wrap) {
+        ("collapse", "wrap") => Some(WhiteSpaceMode::Normal),
+        ("collapse", "nowrap") => Some(WhiteSpaceMode::NoWrap),
+        ("preserve", "nowrap") => Some(WhiteSpaceMode::Pre),
+        ("preserve-breaks", "wrap") => Some(WhiteSpaceMode::PreLine),
+        _ => None,
+    }
 }
 
 fn font_weight(style: &ComputedElementStyle) -> Result<f32, RuntimeLayoutFailure> {
@@ -249,5 +249,24 @@ pub(super) fn validate_frame(frame: LayoutFrame, node: NodeId) -> Result<(), Run
             Some(node.get()),
             None,
         ))
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::white_space_mode;
+    use spinon_layout::WhiteSpaceMode;
+
+    #[test]
+    fn root_html_maps_pre_to_preserved_no_wrap_without_aliasing_neighbor_modes() {
+        assert_eq!(
+            white_space_mode("preserve", "nowrap"),
+            Some(WhiteSpaceMode::Pre)
+        );
+        assert_eq!(white_space_mode("preserve", "wrap"), None);
+        assert_eq!(
+            white_space_mode("collapse", "nowrap"),
+            Some(WhiteSpaceMode::NoWrap)
+        );
     }
 }

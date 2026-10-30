@@ -14,7 +14,7 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 26] = [
+const SCENE_IDS: [&str; 31] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -41,6 +41,11 @@ const SCENE_IDS: [&str; 26] = [
     "anonymous-break-spaces-trailing-max-content",
     "anonymous-break-spaces-whitespace-only",
     "anonymous-break-spaces-whitespace-before-block",
+    "anonymous-pre-max-content-spaces",
+    "anonymous-pre-min-content-spaces",
+    "anonymous-pre-forced-break",
+    "anonymous-normal-fixed-width-control",
+    "anonymous-pre-fixed-width-nowrap",
 ];
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -112,6 +117,11 @@ fn validate_direct_children(
         "anonymous-normal-max-content-spaces"
         | "anonymous-pre-wrap-max-content-spaces"
         | "anonymous-pre-wrap-min-content-spaces" => &[ExpectedChild::Text("XX  XX")],
+        "anonymous-pre-max-content-spaces" => &[ExpectedChild::Text("XX  XX")],
+        "anonymous-pre-min-content-spaces"
+        | "anonymous-normal-fixed-width-control"
+        | "anonymous-pre-fixed-width-nowrap" => &[ExpectedChild::Text("XX XX")],
+        "anonymous-pre-forced-break" => &[ExpectedChild::Text("XX\nXX")],
         "anonymous-pre-wrap-comment-split-max-content" => {
             &[ExpectedChild::Text("XX "), ExpectedChild::Text(" XX")]
         }
@@ -246,7 +256,14 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
-    let expected_wrap_mode = if scene_id == "anonymous-nowrap-min-content" {
+    let expected_wrap_mode = if matches!(
+        scene_id,
+        "anonymous-nowrap-min-content"
+            | "anonymous-pre-max-content-spaces"
+            | "anonymous-pre-min-content-spaces"
+            | "anonymous-pre-forced-break"
+            | "anonymous-pre-fixed-width-nowrap"
+    ) {
         "nowrap"
     } else {
         "wrap"
@@ -258,7 +275,11 @@ fn validate_grid_style(
         | "anonymous-pre-wrap-min-content-spaces"
         | "anonymous-pre-wrap-soft-wrap"
         | "anonymous-pre-wrap-forced-break"
-        | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        | "anonymous-pre-wrap-whitespace-before-block"
+        | "anonymous-pre-max-content-spaces"
+        | "anonymous-pre-min-content-spaces"
+        | "anonymous-pre-forced-break"
+        | "anonymous-pre-fixed-width-nowrap" => "preserve",
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -283,6 +304,12 @@ fn validate_grid_style(
         | "anonymous-pre-wrap-comment-split-max-content"
         | "anonymous-pre-wrap-min-content-spaces"
         | "anonymous-pre-wrap-forced-break" => (20.0, ComputedCssDimension::Auto),
+        "anonymous-pre-max-content-spaces"
+        | "anonymous-pre-min-content-spaces"
+        | "anonymous-pre-forced-break" => (20.0, ComputedCssDimension::Auto),
+        "anonymous-normal-fixed-width-control" | "anonymous-pre-fixed-width-nowrap" => {
+            (25.0, ComputedCssDimension::Auto)
+        }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content" => (60.0, ComputedCssDimension::Auto),
         "anonymous-break-spaces-min-content"
@@ -379,6 +406,9 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         | "anonymous-pre-wrap-max-content-spaces"
         | "anonymous-pre-wrap-comment-split-max-content"
         | "anonymous-pre-wrap-forced-break" => vec![ComputedCssGridTrackSize::MaxContent],
+        "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {
+            vec![ComputedCssGridTrackSize::MaxContent]
+        }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-forced-break-max-content"
@@ -386,11 +416,15 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             vec![ComputedCssGridTrackSize::MaxContent]
         }
         "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
+        "anonymous-pre-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
         "anonymous-break-spaces-min-content"
         | "anonymous-break-spaces-forced-break-min-content" => {
             vec![ComputedCssGridTrackSize::MinContent]
         }
         "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+        "anonymous-normal-fixed-width-control" | "anonymous-pre-fixed-width-nowrap" => {
+            vec![ComputedCssGridTrackSize::LengthPx(25.0)]
+        }
         "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
             vec![ComputedCssGridTrackSize::LengthPx(25.0)]
         }
@@ -436,6 +470,11 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             | "anonymous-pre-wrap-min-content-spaces"
             | "anonymous-pre-wrap-soft-wrap"
             | "anonymous-pre-wrap-forced-break"
+            | "anonymous-pre-max-content-spaces"
+            | "anonymous-pre-min-content-spaces"
+            | "anonymous-pre-forced-break"
+            | "anonymous-normal-fixed-width-control"
+            | "anonymous-pre-fixed-width-nowrap"
             | "anonymous-break-spaces-max-content"
             | "anonymous-break-spaces-comment-split-max-content"
             | "anonymous-break-spaces-min-content"
@@ -570,6 +609,10 @@ fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
             | "anonymous-pre-wrap-soft-wrap"
             | "anonymous-pre-wrap-forced-break"
             | "anonymous-pre-wrap-whitespace-before-block" => WhiteSpaceMode::PreWrap,
+            "anonymous-pre-max-content-spaces"
+            | "anonymous-pre-min-content-spaces"
+            | "anonymous-pre-forced-break"
+            | "anonymous-pre-fixed-width-nowrap" => WhiteSpaceMode::Pre,
             "anonymous-break-spaces-max-content"
             | "anonymous-break-spaces-comment-split-max-content"
             | "anonymous-break-spaces-min-content"
@@ -636,7 +679,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 26);
+        assert_eq!(SCENE_IDS.len(), 31);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -702,6 +745,13 @@ mod tests {
                 "wrap",
             )
             .is_ok()
+        );
+        let mut pre = properties.clone();
+        pre.insert("white-space-collapse".to_owned(), "preserve".to_owned());
+        pre.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
+        assert!(
+            validate_text_profile_properties(NodeId::new(1).unwrap(), &pre, "preserve", "nowrap",)
+                .is_ok()
         );
         let mut nowrap = properties.clone();
         nowrap.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
@@ -824,6 +874,32 @@ mod tests {
         assert!(grid_tracks_match(
             &min_content_single_track,
             "anonymous-pre-wrap-min-content-spaces"
+        ));
+        assert!(grid_tracks_match(
+            &max_content_single_track,
+            "anonymous-pre-max-content-spaces"
+        ));
+        assert!(grid_tracks_match(
+            &max_content_single_track,
+            "anonymous-pre-forced-break"
+        ));
+        assert!(grid_tracks_match(
+            &min_content_single_track,
+            "anonymous-pre-min-content-spaces"
+        ));
+        assert!(grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                vec![ComputedCssGridTrackSize::Auto],
+            ),
+            "anonymous-normal-fixed-width-control"
+        ));
+        assert!(grid_tracks_match(
+            &grid(
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                vec![ComputedCssGridTrackSize::Auto],
+            ),
+            "anonymous-pre-fixed-width-nowrap"
         ));
         assert!(grid_tracks_match(
             &grid(

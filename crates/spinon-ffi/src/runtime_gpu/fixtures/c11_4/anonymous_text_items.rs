@@ -1,4 +1,4 @@
-const SCENE_IDS: [&str; 26] = [
+const SCENE_IDS: [&str; 31] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -25,6 +25,11 @@ const SCENE_IDS: [&str; 26] = [
     "anonymous-break-spaces-trailing-max-content",
     "anonymous-break-spaces-whitespace-only",
     "anonymous-break-spaces-whitespace-before-block",
+    "anonymous-pre-max-content-spaces",
+    "anonymous-pre-min-content-spaces",
+    "anonymous-pre-forced-break",
+    "anonymous-normal-fixed-width-control",
+    "anonymous-pre-fixed-width-nowrap",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -44,6 +49,12 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-pre-wrap-comment-split-max-content"
         | "anonymous-pre-wrap-forced-break" => (20, "auto", "max-content", "auto", "wrap"),
         "anonymous-pre-wrap-min-content-spaces" => (20, "auto", "min-content", "auto", "wrap"),
+        "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {
+            (20, "auto", "max-content", "auto", "nowrap")
+        }
+        "anonymous-pre-min-content-spaces" => (20, "auto", "min-content", "auto", "nowrap"),
+        "anonymous-normal-fixed-width-control" => (25, "auto", "25px", "auto", "wrap"),
+        "anonymous-pre-fixed-width-nowrap" => (25, "auto", "25px", "auto", "nowrap"),
         "anonymous-pre-wrap-soft-wrap" => (25, "auto", "25px", "auto", "wrap"),
         "anonymous-pre-wrap-whitespace-before-block" => (40, "10px", "20px 20px", "10px", "wrap"),
         "anonymous-break-spaces-max-content"
@@ -87,6 +98,10 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-pre-wrap-soft-wrap"
         | "anonymous-pre-wrap-forced-break"
         | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        "anonymous-pre-max-content-spaces"
+        | "anonymous-pre-min-content-spaces"
+        | "anonymous-pre-forced-break"
+        | "anonymous-pre-fixed-width-nowrap" => "preserve",
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -182,6 +197,17 @@ root.appendChild(block);
 nodeIds.push('c114-anonymous-pre-wrap-whitespace-before-block-item');
 "#,
         ),
+        "anonymous-pre-max-content-spaces" => {
+            source.push_str("root.appendChild(document.createTextNode('XX  XX'));\n")
+        }
+        "anonymous-pre-min-content-spaces"
+        | "anonymous-normal-fixed-width-control"
+        | "anonymous-pre-fixed-width-nowrap" => {
+            source.push_str("root.appendChild(document.createTextNode('XX XX'));\n")
+        }
+        "anonymous-pre-forced-break" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\nXX'));\n")
+        }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-min-content"
         | "anonymous-break-spaces-soft-wrap-25" => {
@@ -225,9 +251,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_twenty_six_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_thirty_one_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 26);
+        assert_eq!(SCENE_IDS.len(), 31);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (
@@ -463,6 +489,51 @@ mod tests {
                 "10px",
                 "wrap",
                 "break-spaces",
+            ),
+            (
+                "anonymous-pre-max-content-spaces",
+                1,
+                0,
+                20,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-min-content-spaces",
+                1,
+                0,
+                20,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-forced-break",
+                1,
+                0,
+                20,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-normal-fixed-width-control",
+                1,
+                0,
+                25,
+                "auto",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-pre-fixed-width-nowrap",
+                1,
+                0,
+                25,
+                "auto",
+                "nowrap",
+                "preserve",
             ),
         ] {
             let source = runtime_source(scene_id).expect("known C11.4 scene");

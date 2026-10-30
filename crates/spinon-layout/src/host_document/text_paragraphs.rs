@@ -81,6 +81,7 @@ pub(super) fn collect(
                 paragraph_style.white_space,
                 WhiteSpaceMode::Normal
                     | WhiteSpaceMode::NoWrap
+                    | WhiteSpaceMode::Pre
                     | WhiteSpaceMode::PreLine
                     | WhiteSpaceMode::PreWrap
                     | WhiteSpaceMode::BreakSpaces

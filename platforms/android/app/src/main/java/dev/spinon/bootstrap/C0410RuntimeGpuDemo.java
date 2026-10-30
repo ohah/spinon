@@ -988,6 +988,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "anonymous-break-spaces-trailing-max-content",
             "anonymous-break-spaces-whitespace-only",
             "anonymous-break-spaces-whitespace-before-block",
+            "anonymous-pre-max-content-spaces",
+            "anonymous-pre-min-content-spaces",
+            "anonymous-pre-forced-break",
+            "anonymous-normal-fixed-width-control",
+            "anonymous-pre-fixed-width-nowrap",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -5014,6 +5019,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return "width=20,height=20";
         }
         if (sceneId.equals("anonymous-pre-wrap-soft-wrap")) return "width=25,height=20";
+        if (sceneId.equals("anonymous-pre-max-content-spaces")
+                || sceneId.equals("anonymous-pre-min-content-spaces")) {
+            return "width=20,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-forced-break")) return "width=20,height=20";
+        if (sceneId.equals("anonymous-normal-fixed-width-control")) return "width=25,height=20";
+        if (sceneId.equals("anonymous-pre-fixed-width-nowrap")) return "width=25,height=10";
         if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) {
             return "width=40,height=10";
         }
@@ -5775,6 +5787,51 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             "anonymous-normal-newline-max-content") ? "XX\nXX" : "XX  XX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
+                case "anonymous-pre-max-content-spaces":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 60.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX  XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-min-content-spaces":
+                    maxContent = 50.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 50.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-forced-break":
+                    maxContent = 20.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 20.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\nXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-normal-fixed-width-control":
+                    maxContent = 50.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "Normal";
+                    expectedSourceText = new String[] { "XX XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-fixed-width-nowrap":
+                    maxContent = 50.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
                 case "anonymous-pre-line-max-content":
                     maxContent = 20.0;
                     maxContentHeight = 20.0;
@@ -5900,12 +5957,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 default:
                     return false;
             }
-            double expectedMinContent = sceneId.startsWith("anonymous-break-spaces-")
-                    ? 30.0 : 20.0;
+            double expectedMinContent = sceneId.equals("anonymous-pre-max-content-spaces")
+                    ? 60.0 : sceneId.equals("anonymous-pre-min-content-spaces")
+                            || sceneId.equals("anonymous-pre-fixed-width-nowrap") ? 50.0
+                                    : sceneId.startsWith("anonymous-break-spaces-") ? 30.0 : 20.0;
             double expectedMinContentHeight = sceneId.equals(
                     "anonymous-break-spaces-forced-break-max-content")
                     || sceneId.equals("anonymous-break-spaces-forced-break-min-content")
-                    ? 30.0 : 20.0;
+                    ? 30.0 : sceneId.equals("anonymous-pre-max-content-spaces")
+                            || sceneId.equals("anonymous-pre-min-content-spaces")
+                            || sceneId.equals("anonymous-pre-fixed-width-nowrap") ? 10.0 : 20.0;
             org.json.JSONObject input = inputs.optJSONObject(0);
             if (input == null || input.optInt("grid", -1) != 1
                     || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
@@ -5973,6 +6034,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectColumnContribution = true;
                 expectRowContribution = true;
                 expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-max-content-spaces":
+                expectedColumns = new double[] { 60.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-min-content-spaces":
+                expectedColumns = new double[] { 50.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MinContent";
+                break;
+            case "anonymous-pre-forced-break":
+                expectedColumns = new double[] { 20.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-normal-fixed-width-control":
+                expectedColumns = new double[] { 25.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = false;
+                expectRowContribution = true;
+                break;
+            case "anonymous-pre-fixed-width-nowrap":
+                expectedColumns = new double[] { 25.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = false;
+                expectRowContribution = true;
                 break;
             case "anonymous-pre-line-max-content":
             case "anonymous-pre-wrap-min-content-spaces":
@@ -8793,6 +8887,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "anonymous-pre-wrap-max-content-spaces":
             case "anonymous-pre-wrap-comment-split-max-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]";
+            case "anonymous-pre-max-content-spaces":
+            case "anonymous-pre-min-content-spaces":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]";
+            case "anonymous-pre-forced-break":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]";
+            case "anonymous-normal-fixed-width-control":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]";
+            case "anonymous-pre-fixed-width-nowrap":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]";
             case "anonymous-pre-wrap-min-content-spaces":
             case "anonymous-pre-wrap-forced-break":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]";
@@ -11164,6 +11267,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
                 || sceneId.equals("anonymous-normal-newline-max-content")
+                || sceneId.equals("anonymous-normal-fixed-width-control")
                 || sceneId.equals("anonymous-pre-line-max-content")
                 || c114IsAnonymousWhitespaceMatrixScene(sceneId)
                 || sceneId.equals("anonymous-comment-continuation")
@@ -11252,6 +11356,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
                 || sceneId.equals("anonymous-normal-newline-max-content")
+                || sceneId.equals("anonymous-normal-fixed-width-control")
                 || sceneId.equals("anonymous-pre-line-max-content")
                 || c114IsAnonymousWhitespaceMatrixScene(sceneId)
                 || sceneId.equals("anonymous-comment-continuation")
@@ -11262,6 +11367,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsAnonymousWhitespaceMatrixScene(String sceneId) {
         return sceneId.equals("anonymous-normal-max-content-spaces")
+                || sceneId.startsWith("anonymous-pre-")
                 || sceneId.startsWith("anonymous-pre-wrap-")
                 || sceneId.startsWith("anonymous-break-spaces-");
     }
