@@ -18,15 +18,43 @@ use super::AHEM;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+#[derive(Clone, Copy, Eq, PartialEq)]
+enum DirectTextProfile {
+    Intrinsic,
+    AspectRatio,
+}
+
 /// 기존 고정 scene adapter 다음에 실행하는 direct element-text fixture collector입니다.
 pub(super) fn prepare(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
+    prepare_with_profile(snapshot, root, styles, DirectTextProfile::Intrinsic)
+}
+
+/// Ahem direct text의 좁은 preferred aspect-ratio fixture profile입니다.
+pub(super) fn prepare_aspect_ratio(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
+    prepare_with_profile(snapshot, root, styles, DirectTextProfile::AspectRatio)
+}
+
+fn prepare_with_profile(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+    profile: DirectTextProfile,
+) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
     validate_snapshot_revision(snapshot, root.id(), styles)?;
     let root_style = style_for(styles, root.id())?;
     if property(root_style, "display") != Some("grid") {
+        return Ok(None);
+    }
+    if profile == DirectTextProfile::AspectRatio && !is_aspect_ratio_grid_root_candidate(root_style)
+    {
         return Ok(None);
     }
 
@@ -72,8 +100,11 @@ pub(super) fn prepare(
         ));
     }
 
-    validate_grid_root(snapshot, root, styles, root_style)?;
+    validate_grid_root(snapshot, root, styles, root_style, profile)?;
     let mut paragraph_styles = BTreeMap::new();
+    let mut short_text_count = 0;
+    let mut long_text_count = 0;
+    let mut aspect_ratio_count = 0;
     for item in candidates {
         let text_node = direct_text_source(snapshot, root, item)?;
         let text = snapshot
@@ -93,7 +124,34 @@ pub(super) fn prepare(
             ));
         }
         let style = style_for(styles, item.id())?;
-        let paragraph_style = paragraph_style_for(styles, style, 10.0, "auto")?;
+        let paragraph_style = match profile {
+            DirectTextProfile::Intrinsic => paragraph_style_for(styles, style, 10.0, "auto")?,
+            DirectTextProfile::AspectRatio => {
+                match text.as_str() {
+                    "A" => short_text_count += 1,
+                    "AAAA" => long_text_count += 1,
+                    _ => {
+                        return Err(source_failure(
+                            text_node.id(),
+                            "aspect-ratio profile requires one A and one AAAA item",
+                        ));
+                    }
+                }
+                if let Some(ratio) = style.layout_aspect_ratio {
+                    aspect_ratio_count += 1;
+                    if ratio != 2.0
+                        || text != "AAAA"
+                        || property(style, "aspect-ratio") != Some("2 / 1")
+                    {
+                        return Err(style_failure(
+                            style.node_id.get(),
+                            "aspect-ratio profile requires computed 2 / 1 on AAAA",
+                        ));
+                    }
+                }
+                paragraph_style_for_aspect_ratio(styles, style, 10.0, "auto")?
+            }
+        };
         paragraph_styles.insert(item.id(), paragraph_style);
     }
 
@@ -101,6 +159,14 @@ pub(super) fn prepare(
         return Err(source_failure(
             root.id(),
             "candidate paragraph ownership is not unique",
+        ));
+    }
+    if profile == DirectTextProfile::AspectRatio
+        && (short_text_count != 1 || long_text_count != 1 || aspect_ratio_count > 1)
+    {
+        return Err(source_failure(
+            root.id(),
+            "aspect-ratio profile requires A/AAAA and at most one ratio item",
         ));
     }
 
@@ -117,6 +183,21 @@ pub(super) fn prepare(
         engine,
         two_axis_nested_grid: false,
     }))
+}
+
+fn is_aspect_ratio_grid_root_candidate(style: &ComputedElementStyle) -> bool {
+    let Some(grid) = style.grid_layout.as_ref() else {
+        return false;
+    };
+    grid.columns
+        == [
+            ComputedCssGridTrackSize::MaxContent,
+            ComputedCssGridTrackSize::MaxContent,
+        ]
+        && (grid.rows == [ComputedCssGridTrackSize::Auto]
+            || grid.rows == [ComputedCssGridTrackSize::LengthPx(40.0)])
+        && style.layout_dimensions.width == ComputedCssDimension::LengthPx(100.0)
+        && style.layout_dimensions.height == ComputedCssDimension::Auto
 }
 
 pub(super) fn validate_snapshot_revision(
@@ -147,6 +228,7 @@ fn validate_grid_root(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
     style: &ComputedElementStyle,
+    profile: DirectTextProfile,
 ) -> Result<(), RuntimeLayoutFailure> {
     let element = snapshot
         .node(root)
@@ -162,7 +244,14 @@ fn validate_grid_root(
         ));
     }
     require_grid_property(style, "display", "grid")?;
-    require_grid_property(style, "align-items", "start")?;
+    require_grid_property(
+        style,
+        "align-items",
+        match profile {
+            DirectTextProfile::Intrinsic => "start",
+            DirectTextProfile::AspectRatio => "normal",
+        },
+    )?;
     require_grid_property(style, "align-content", "normal")?;
     require_grid_property(style, "justify-content", "normal")?;
     require_grid_property(style, "justify-items", "normal")?;
@@ -181,12 +270,26 @@ fn validate_grid_root(
     })?;
     let dimensions = style.layout_dimensions;
     let spacing = style.layout_spacing;
-    if grid.columns
-        != [
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::MaxContent,
-        ]
-        || grid.rows != [ComputedCssGridTrackSize::Auto]
+    let tracks_match = match profile {
+        DirectTextProfile::Intrinsic => {
+            grid.columns
+                == [
+                    ComputedCssGridTrackSize::MinContent,
+                    ComputedCssGridTrackSize::MaxContent,
+                ]
+                && grid.rows == [ComputedCssGridTrackSize::Auto]
+        }
+        DirectTextProfile::AspectRatio => {
+            grid.columns
+                == [
+                    ComputedCssGridTrackSize::MaxContent,
+                    ComputedCssGridTrackSize::MaxContent,
+                ]
+                && (grid.rows == [ComputedCssGridTrackSize::Auto]
+                    || grid.rows == [ComputedCssGridTrackSize::LengthPx(40.0)])
+        }
+    };
+    if !tracks_match
         || grid.auto_flow != ComputedCssGridAutoFlow::Row
         || grid.auto_rows != ComputedCssGridAutoRows::Auto
         || grid.auto_columns != ComputedCssGridAutoColumns::Auto
@@ -214,9 +317,17 @@ fn validate_grid_root(
         || style.layout_position != ComputedCssPosition::Static
         || !zero_edges(spacing.margin)
         || !zero_edges(spacing.padding)
-        || (spacing.row_gap != ComputedCssSpacingValue::Normal
-            && spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0))
-        || spacing.column_gap != ComputedCssSpacingValue::LengthPx(10.0)
+        || match profile {
+            DirectTextProfile::Intrinsic => {
+                (spacing.row_gap != ComputedCssSpacingValue::Normal
+                    && spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0))
+                    || spacing.column_gap != ComputedCssSpacingValue::LengthPx(10.0)
+            }
+            DirectTextProfile::AspectRatio => {
+                spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
+                    || spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
+            }
+        }
         || style.layout_border.top != 0.0
         || style.layout_border.right != 0.0
         || style.layout_border.bottom != 0.0
@@ -334,7 +445,20 @@ pub(super) fn paragraph_style_for(
     font_size: f32,
     align_self: &'static str,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
-    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, false, false)
+    paragraph_style_for_with_baseline_alias(
+        styles, style, font_size, align_self, false, false, false,
+    )
+}
+
+pub(super) fn paragraph_style_for_aspect_ratio(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(
+        styles, style, font_size, align_self, false, false, true,
+    )
 }
 
 pub(super) fn paragraph_style_for_baseline_fixture(
@@ -351,6 +475,7 @@ pub(super) fn paragraph_style_for_baseline_fixture(
         align_self,
         align_self == "first baseline",
         allow_explicit_grid_placement,
+        false,
     )
 }
 
@@ -361,6 +486,7 @@ fn paragraph_style_for_with_baseline_alias(
     align_self: &'static str,
     allow_first_baseline_alias: bool,
     allow_explicit_grid_placement: bool,
+    allow_aspect_ratio: bool,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     require_style_property(style, "display", "block")?;
     require_style_property(style, "position", "static")?;
@@ -425,7 +551,14 @@ fn paragraph_style_for_with_baseline_alias(
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
-        || style.layout_aspect_ratio.is_some()
+        || match style.layout_aspect_ratio {
+            None => false,
+            Some(ratio) => {
+                !allow_aspect_ratio
+                    || ratio != 2.0
+                    || property(style, "aspect-ratio") != Some("2 / 1")
+            }
+        }
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)
         || style.layout_border.top != 0.0

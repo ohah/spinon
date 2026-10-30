@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-text-ratio-mvud6qie-49123a5e",
+  "sourceHead": "0906ed5f47b4d3964c14ee0f96eca1b24a4bd945",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n M tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html\n?? crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs\n?? tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs",
+  "sourceHashes": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "3096c20f523e47fbe38f164a22f302b65ba0257b18f87ac84f38fcf7b5a1797d",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs": "acb3ebd45181160bc307ddf73c3f4607ee988b086f3569911eba8f3ba8b90c59",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "bac7255188e58821f499eeabdccf1b3bd2952e942caa6294b788c5aa12a33401",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "e9df5d7a4828c323748e62faa82cc7aa81ebdd910ec676beefa321a7570d0fa7",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs": "d27787d74ee8673d2f92d6bd9af23033cdb06dabc40c22ef5f4f45bfd102ade7",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs": "24eb8e136884686273280ed09d17af127ca66444d18f0cd5622a1fc8a33233e2",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "3622f5568c0333875474239e353c7ac67afb4911ca6a01382d7f363e5dfd9e78",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "ae2333c05b165bc5db5b781e677710b5597ffa11c0f4ea1db40756d5c7fc147f",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html": "f507edb05f1554e6d2c8ff4fac483c67021f38bc9f24bd850f2d8c1d7875d3ec",
+    "tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs": "2a3d2df476fc24579c29155e4ff22d4cc8eeb0571bb0d880364162728e2c880c"
+  },
+  "sceneCount": 4,
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    }
+  ]
+}
