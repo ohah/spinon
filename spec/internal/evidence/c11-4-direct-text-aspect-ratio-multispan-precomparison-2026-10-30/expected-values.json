@@ -17,6 +17,7 @@
     {
       "id": "span-baseline",
       "constraints": "",
+      "ratio": "2 / 1",
       "columns": [20, 20],
       "rows": [20],
       "item": {"x": 0, "y": 0, "width": 40, "height": 20},
@@ -26,6 +27,7 @@
     {
       "id": "span-min-width-45",
       "constraints": "min-width:45px",
+      "ratio": "2 / 1",
       "columns": [22.5, 22.5],
       "rows": [22.5],
       "item": {"x": 0, "y": 0, "width": 45, "height": 22.5},
@@ -35,6 +37,7 @@
     {
       "id": "span-min-width-60",
       "constraints": "min-width:60px",
+      "ratio": "2 / 1",
       "columns": [30, 30],
       "rows": [30],
       "item": {"x": 0, "y": 0, "width": 60, "height": 30},
@@ -44,6 +47,7 @@
     {
       "id": "span-min-height-30",
       "constraints": "min-height:30px",
+      "ratio": "2 / 1",
       "columns": [30, 30],
       "rows": [30],
       "item": {"x": 0, "y": 0, "width": 60, "height": 30},
@@ -53,6 +57,7 @@
     {
       "id": "span-max-width-30-min-width-0",
       "constraints": "min-width:0;max-width:30px",
+      "ratio": "2 / 1",
       "columns": [15, 15],
       "rows": [15],
       "item": {"x": 0, "y": 0, "width": 30, "height": 15},
@@ -62,6 +67,7 @@
     {
       "id": "span-max-height-15-auto-min-control",
       "constraints": "min-height:0;max-height:15px",
+      "ratio": "2 / 1",
       "columns": [20, 20],
       "rows": [15],
       "item": {"x": 0, "y": 0, "width": 40, "height": 15},
@@ -71,6 +77,7 @@
     {
       "id": "span-max-height-15-min-width-0",
       "constraints": "min-width:0;min-height:0;max-height:15px",
+      "ratio": "2 / 1",
       "columns": [15, 15],
       "rows": [15],
       "item": {"x": 0, "y": 0, "width": 30, "height": 15},
@@ -80,6 +87,7 @@
     {
       "id": "span-max-height-17-75-range",
       "constraints": "min-width:0;min-height:0;max-height:17.75px",
+      "ratio": "2 / 1",
       "columns": [17.75, 17.75],
       "rows": [17.75],
       "item": {"x": 0, "y": 0, "width": 35.5, "height": 17.75},
@@ -89,6 +97,7 @@
     {
       "id": "span-no-ratio",
       "constraints": "aspect-ratio:auto",
+      "ratio": "auto",
       "columns": [20, 20],
       "rows": [10],
       "item": {"x": 0, "y": 0, "width": 40, "height": 10},

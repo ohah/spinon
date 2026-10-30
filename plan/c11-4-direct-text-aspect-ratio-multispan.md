@@ -16,7 +16,7 @@
 
 Canonical fixture는 [grid-direct-text-aspect-ratio-multispan-precomparison.html](../tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html)이다. Root 하나는 `width:100px`, `grid-template-columns:max-content max-content`, `grid-template-rows:auto`, gap 0을 쓴다. 정확히 하나의 in-flow HTML block child가 direct text `AAAA`를 소유하고 `grid-column:1 / span 2`로 두 열을 차지한다. Font는 Ahem 10px, line-height 10px, horizontal-tb/LTR다. Item의 width/height는 auto, margin·padding·border는 0이다. Ratio owner는 이 item 하나이며 numeric `2 / 1` 또는 no-ratio control만 둔다.
 
-독립 기대값과 실제 관측은 [precomparison README](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md), [`expected-values.json`](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json), [Agent Browser 관측 JSON](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-observation-agent-browser.json), [화면](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-oracle-agent-browser.png)에 기록했다. Browser는 이 canonical HTML과 로컬 Ahem TTF를 사용했고 font readiness가 true인지 검사했다.
+독립 기대값과 실제 관측은 [precomparison README](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md), [`expected-values.json`](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json), [Agent Browser 관측 JSON](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-observation-agent-browser.json), [재검증 스크립트](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/verify-precomparison.mjs), [화면](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-oracle-agent-browser.png)에 기록했다. Browser는 이 canonical HTML과 로컬 Ahem TTF를 사용했고 font readiness가 true인지 검사했다.
 
 | case | item 제약 | columns | row | item frame | direct text 폭 |
 |---|---|---:|---:|---:|---:|
@@ -55,5 +55,6 @@ CSS Grid §11.5.1 independently predicts equal distribution here: both spanned t
 
 - 구현 전 계획 자체를 20개의 서로 다른 실패 관점으로 검토하고, 계획 PR diff도 별도 20개 관점으로 확인한다. 구현 뒤 새 코드/runtime 20개와 implementation PR diff 20개를 각각 검토한다. 동일한 항목을 말만 바꾸어 세지 않는다.
 - 현재 계획 검토: [실패 관점 20개](./c11-4-direct-text-aspect-ratio-multispan-plan-review-20.md).
+- 계획 PR #854 변경 검토: [실패 관점 20개](./c11-4-direct-text-aspect-ratio-multispan-pr-diff-review-20.md).
 - 계획 PR과 구현 PR은 별도 PR이며 `Rebase and merge`를 사용한다. 계획 PR에는 `planning`/`area: layout`, 구현 PR에는 `enhancement`/`area: layout` 라벨을 쓴다.
 - 범위는 이 단일 2-column span topology, Ahem `AAAA`, numeric 2:1 ratio, 0..=60px min/max fixture 입력에 한정한다. 다른 span length/topology, more than two tracks, unequal/fixed/flexible/fit-content tracks, gaps, multiple or mixed items, images, `auto <ratio>`, nonzero edges, arbitrary font/script, vertical writing, baseline alignment, general CSS admission, full WPT, real-device/hardware GPU, iOS compositor-after pixels, C11.4 전체 또는 C11 완료는 포함하지 않는다.
