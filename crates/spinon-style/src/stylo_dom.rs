@@ -23,8 +23,8 @@ pub use cascade::{
 mod tests;
 
 pub use cascade::{
-    CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
-    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    CascadeDiagnostic, ComputedAspectRatioSizingBox, ComputedBorderPaint, ComputedCssDimension,
+    ComputedCssEdges, ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows,
     ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
     ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth,
@@ -32,11 +32,11 @@ pub use cascade::{
     ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow, ComputedCssOverflowClipMargin,
     ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
     ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect, RuntimeCascadeReuseStats,
-    compute_c19_box_paint_opacity_cascade_with_stylesheets,
+    ComputedElementStyle, ComputedLayoutAspectRatio, ComputedLayoutBorder,
+    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
+    ComputedStyleSnapshot, CssCascadeError, CssColorScheme, CssMediaEnvironment,
+    CssPointerCapabilities, CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
+    RuntimeCascadeReuseStats, compute_c19_box_paint_opacity_cascade_with_stylesheets,
     compute_c19_computed_color_cascade_with_stylesheets, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
     compute_flex_margin_cascade, compute_flex_media_environment_cascade,

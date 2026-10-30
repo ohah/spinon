@@ -169,7 +169,7 @@ pub(super) fn computed_element_output(
             | ComputedStyleProfile::RuntimeBlockFlexScrollGestureV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     ) {
-        computed_layout_aspect_ratio(computed, node_id)?
+        computed_layout_aspect_ratio(computed, node_id, profile)?
     } else {
         None
     };

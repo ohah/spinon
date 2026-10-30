@@ -338,6 +338,10 @@ pub(in crate::stylo_dom::cascade) fn compute_cascade_with_reuse(
                     allowed, true,
                 )
             }),
+        ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 => allowed_author_properties
+            .and_then(|allowed| {
+                registry.first_unsupported_runtime_author_feature(allowed, false, false, false)
+            }),
         ComputedStyleProfile::RuntimeBlockImageV1 => allowed_author_properties
             .and_then(|allowed| registry.first_unsupported_author_feature(allowed))
             .or_else(|| registry.first_unsupported_runtime_block_image_value()),

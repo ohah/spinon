@@ -70,7 +70,10 @@ fn block_positioning_author_profile_accepts_layers_vars_and_border_resets_only()
         .unwrap();
     assert_eq!(style.properties["position"], "absolute");
     assert_eq!(style.properties["left"], "12px");
-    assert_eq!(style.layout_aspect_ratio, Some(2.0));
+    assert_eq!(
+        style.layout_aspect_ratio.map(|ratio| ratio.ratio),
+        Some(2.0)
+    );
 
     let explicit_border_image = StylesheetSource {
         id: "c12-unsupported-border-image".to_owned(),

@@ -3,6 +3,8 @@ struct Scene {
     route_id: &'static str,
     root_id: &'static str,
     row_template: &'static str,
+    item_box_sizing: &'static str,
+    item_edges: &'static str,
     first_id: &'static str,
     first_text: &'static str,
     first_ratio: Option<&'static str>,
@@ -11,11 +13,13 @@ struct Scene {
     second_ratio: Option<&'static str>,
 }
 
-const SCENES: [Scene; 16] = [
+const SCENES: [Scene; 23] = [
     Scene {
         route_id: "grid-text-aspect-ratio-row",
         root_id: "row-ratio",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-ratio-short",
         first_text: "A",
         first_ratio: None,
@@ -27,6 +31,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-row-control",
         root_id: "row-control",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-control-short",
         first_text: "A",
         first_ratio: None,
@@ -38,6 +44,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-column",
         root_id: "column-ratio",
         row_template: "40px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-ratio-long",
         first_text: "AAAA",
         first_ratio: Some("2 / 1"),
@@ -49,6 +57,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-column-control",
         root_id: "column-control",
         row_template: "40px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-control-long",
         first_text: "AAAA",
         first_ratio: None,
@@ -60,6 +70,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-row-1-2",
         root_id: "row-1-2",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-1-2-short",
         first_text: "A",
         first_ratio: None,
@@ -71,6 +83,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-row-4-3",
         root_id: "row-4-3",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-4-3-short",
         first_text: "A",
         first_ratio: None,
@@ -82,6 +96,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-row-3-2",
         root_id: "row-3-2",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-3-2-short",
         first_text: "A",
         first_ratio: None,
@@ -93,6 +109,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-row-5-2",
         root_id: "row-5-2",
         row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "row-5-2-short",
         first_text: "A",
         first_ratio: None,
@@ -104,6 +122,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-1-2",
         root_id: "column-1-2",
         row_template: "60px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-1-2-long",
         first_text: "AAAA",
         first_ratio: Some("1 / 2"),
@@ -115,6 +135,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-4-3",
         root_id: "column-4-3",
         row_template: "45px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-4-3-long",
         first_text: "AAAA",
         first_ratio: Some("4 / 3"),
@@ -126,6 +148,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-3-2",
         root_id: "column-3-2",
         row_template: "30px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-3-2-long",
         first_text: "AAAA",
         first_ratio: Some("3 / 2"),
@@ -137,6 +161,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-5-2",
         root_id: "column-5-2",
         row_template: "20px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-5-2-long",
         first_text: "AAAA",
         first_ratio: Some("5 / 2"),
@@ -148,6 +174,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-control-60",
         root_id: "column-control-60",
         row_template: "60px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-control-60-long",
         first_text: "AAAA",
         first_ratio: None,
@@ -159,6 +187,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-control-45",
         root_id: "column-control-45",
         row_template: "45px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-control-45-long",
         first_text: "AAAA",
         first_ratio: None,
@@ -170,6 +200,8 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-control-30",
         root_id: "column-control-30",
         row_template: "30px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-control-30-long",
         first_text: "AAAA",
         first_ratio: None,
@@ -181,10 +213,103 @@ const SCENES: [Scene; 16] = [
         route_id: "grid-text-aspect-ratio-range-column-control-20",
         root_id: "column-control-20",
         row_template: "20px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:0;border:0",
         first_id: "column-control-20-long",
         first_text: "AAAA",
         first_ratio: None,
         second_id: "column-control-20-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+        root_id: "row-auto-ratio",
+        row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-auto-ratio-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-auto-ratio-long",
+        second_text: "AAAA",
+        second_ratio: Some("auto 3 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+        root_id: "row-numeric-ratio",
+        row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-numeric-ratio-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-numeric-ratio-long",
+        second_text: "AAAA",
+        second_ratio: Some("3 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+        root_id: "row-auto-only",
+        row_template: "auto",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-auto-only-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-auto-only-long",
+        second_text: "AAAA",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+        root_id: "row-auto-ratio-content-box",
+        row_template: "auto",
+        item_box_sizing: "content-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-auto-ratio-content-box-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-auto-ratio-content-box-long",
+        second_text: "AAAA",
+        second_ratio: Some("auto 3 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+        root_id: "row-60-auto-ratio",
+        row_template: "60px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-60-auto-ratio-long",
+        first_text: "AAAA",
+        first_ratio: Some("auto 3 / 2"),
+        second_id: "row-60-auto-ratio-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+        root_id: "row-60-numeric-ratio",
+        row_template: "60px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-60-numeric-ratio-long",
+        first_text: "AAAA",
+        first_ratio: Some("3 / 2"),
+        second_id: "row-60-numeric-ratio-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+        root_id: "row-60-auto-only",
+        row_template: "60px",
+        item_box_sizing: "border-box",
+        item_edges: "padding:2px 4px;border:1px solid",
+        first_id: "row-60-auto-only-long",
+        first_text: "AAAA",
+        first_ratio: None,
+        second_id: "row-60-auto-only-short",
         second_text: "A",
         second_ratio: None,
     },
@@ -222,14 +347,14 @@ const first = document.createElement('div');
 first.setAttribute('id', '{}');
 first.setAttribute('data-node', '');
 first.setAttribute('class', 'item{}');
-first.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;overflow-wrap:normal;background-color:#e5484d;color:#111;{}');
+first.setAttribute('style', 'box-sizing:{};display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;{};font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;overflow-wrap:normal;background-color:#e5484d;color:#111;{}');
 first.appendChild(document.createTextNode('{}'));
 root.appendChild(first);
 const second = document.createElement('div');
 second.setAttribute('id', '{}');
 second.setAttribute('data-node', '');
 second.setAttribute('class', 'item{}');
-second.setAttribute('style', 'box-sizing:border-box;display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;padding:0;border:0;font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;overflow-wrap:normal;background-color:#3a86ff;color:#111;{}');
+second.setAttribute('style', 'box-sizing:{};display:block;position:static;width:auto;height:auto;min-width:auto;max-width:none;min-height:auto;max-height:none;margin:0;{};font-family:inherit;font-size:inherit;font-weight:inherit;font-style:inherit;line-height:inherit;white-space-collapse:collapse;text-wrap-mode:nowrap;word-break:normal;overflow-wrap:normal;background-color:#3a86ff;color:#111;{}');
 second.appendChild(document.createTextNode('{}'));
 root.appendChild(second);
 return {{ sceneId:'{}', rootId:'{}', nodeIds:['{}', '{}', '{}'] }};
@@ -238,10 +363,14 @@ return {{ sceneId:'{}', rootId:'{}', nodeIds:['{}', '{}', '{}'] }};
         scene.row_template,
         scene.first_id,
         first_ratio_class,
+        scene.item_box_sizing,
+        scene.item_edges,
         first_ratio,
         scene.first_text,
         scene.second_id,
         second_ratio_class,
+        scene.item_box_sizing,
+        scene.item_edges,
         second_ratio,
         scene.second_text,
         scene.route_id,
@@ -258,7 +387,7 @@ mod tests {
 
     #[test]
     fn exposes_fixed_direct_text_aspect_ratio_range_and_regression_scenes() {
-        assert_eq!(SCENES.len(), 16);
+        assert_eq!(SCENES.len(), 23);
         for scene in SCENES {
             let source = runtime_source(scene.route_id).expect("registered ratio scene");
             assert!(source.len() < 4 * 1024, "{}", scene.route_id);
@@ -266,6 +395,8 @@ mod tests {
             assert!(source.contains(&format!("rootId:'{}'", scene.root_id)));
             assert!(source.contains("grid-template-columns:max-content max-content"));
             assert!(source.contains("column-gap:0;row-gap:0;align-items:normal"));
+            assert!(source.contains(&format!("box-sizing:{};", scene.item_box_sizing)));
+            assert!(source.contains(scene.item_edges));
             assert_eq!(source.matches("document.createElement('div')").count(), 3);
             assert_eq!(source.matches("document.createTextNode('").count(), 2);
             assert_eq!(

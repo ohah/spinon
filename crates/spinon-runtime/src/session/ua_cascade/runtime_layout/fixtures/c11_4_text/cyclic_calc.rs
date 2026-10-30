@@ -149,6 +149,7 @@ pub(super) fn prepare(
         paragraph_styles: BTreeMap::from([(item.id(), ahem_paragraph_style())]),
         engine,
         two_axis_nested_grid: false,
+        content_box_ratio_node: None,
     }))
 }
 

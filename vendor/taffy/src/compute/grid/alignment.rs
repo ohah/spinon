@@ -1,5 +1,8 @@
 //! Alignment of tracks and final positioning of items
-use super::types::{maybe_apply_aspect_ratio_to_constraint_size, GridTrack};
+use super::types::{
+    maybe_apply_aspect_ratio_to_constraint_size, maybe_apply_aspect_ratio_with_box_sizing,
+    GridTrack,
+};
 use crate::compute::common::alignment::{
     apply_alignment_fallback, compute_alignment_offset, resolve_self_alignment_safety,
 };
@@ -180,7 +183,8 @@ pub(super) fn align_and_position_item(
     });
     let padding_border_size = (padding + border).sum_axes();
 
-    let box_sizing_adjustment = if style.box_sizing() == BoxSizing::ContentBox {
+    let box_sizing = style.box_sizing();
+    let box_sizing_adjustment = if box_sizing == BoxSizing::ContentBox {
         padding_border_size
     } else {
         Size::ZERO
@@ -361,11 +365,15 @@ pub(super) fn align_and_position_item(
     });
 
     // Reapply aspect ratio after stretch and absolute position width adjustments
-    let Size { width, height } = Size {
-        width,
-        height: inherent_size.height,
-    }
-    .maybe_apply_aspect_ratio(aspect_ratio);
+    let Size { width, height } = maybe_apply_aspect_ratio_with_box_sizing(
+        Size {
+            width,
+            height: inherent_size.height,
+        },
+        aspect_ratio,
+        box_sizing,
+        padding_border_size,
+    );
 
     let height = height.or_else(|| {
         if position.is_out_of_flow() {
@@ -421,7 +429,12 @@ pub(super) fn align_and_position_item(
         None
     });
     // Reapply aspect ratio after stretch and absolute position height adjustments
-    let Size { width, height } = Size { width, height }.maybe_apply_aspect_ratio(aspect_ratio);
+    let Size { width, height } = maybe_apply_aspect_ratio_with_box_sizing(
+        Size { width, height },
+        aspect_ratio,
+        box_sizing,
+        padding_border_size,
+    );
 
     // Clamp size by min and max width/height
     let Size { width, height } = Size { width, height }.maybe_clamp(min_size, max_size);

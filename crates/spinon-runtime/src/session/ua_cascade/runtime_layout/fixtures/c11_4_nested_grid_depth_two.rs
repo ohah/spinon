@@ -205,6 +205,7 @@ pub(super) fn prepare(
         paragraph_styles,
         engine,
         two_axis_nested_grid: scene.two_axis,
+        content_box_ratio_node: None,
     }))
 }
 

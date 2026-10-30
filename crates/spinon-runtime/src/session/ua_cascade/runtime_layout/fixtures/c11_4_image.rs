@@ -503,7 +503,7 @@ fn validate_item_style(
         || style.layout_dimensions.min_height != min_height
         || style.layout_dimensions.max_width != max_width
         || style.layout_dimensions.max_height != max_height
-        || style.layout_aspect_ratio != aspect_ratio
+        || style.layout_aspect_ratio.map(|ratio| ratio.ratio) != aspect_ratio
         || !zero_edges(style.layout_spacing.margin)
         || !edges_are(style.layout_spacing.padding, padding)
         || style.layout_border

@@ -5,7 +5,7 @@ use spinon_layout::{
     LayoutGridItemIntrinsicSource, LayoutGridTrackSizingAxis,
     LayoutGridTrackSizingContributionKind, LayoutGridTrackSizingMinimumContributionSource,
 };
-use spinon_style::ComputedStyleProfile;
+use spinon_style::{ComputedAspectRatioSizingBox, ComputedLayoutAspectRatio, ComputedStyleProfile};
 
 use super::cases::VIEWPORT;
 use super::test_fixture::{
@@ -62,6 +62,8 @@ const CSS: &str = r#"
 struct Case {
     id: &'static str,
     root_class: &'static str,
+    item_box_sizing: &'static str,
+    item_edges: bool,
     text_order: [&'static str; 2],
     ratio_item: Option<usize>,
     ratio_css: Option<&'static str>,
@@ -71,10 +73,12 @@ struct Case {
     frames: [(f32, f32, f32); 2],
 }
 
-const CASES: [Case; 16] = [
+const CASES: [Case; 23] = [
     Case {
         id: "row-ratio",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: Some(1),
         ratio_css: Some("2 / 1"),
@@ -86,6 +90,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "row-control",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: None,
         ratio_css: None,
@@ -97,6 +103,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-ratio",
         root_class: "scene column-row-40",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: Some(0),
         ratio_css: Some("2 / 1"),
@@ -108,6 +116,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-control",
         root_class: "scene column-row-40",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: None,
         ratio_css: None,
@@ -119,6 +129,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "row-range-1-2",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: Some(1),
         ratio_css: Some("1 / 2"),
@@ -130,6 +142,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "row-range-4-3",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: Some(1),
         ratio_css: Some("4 / 3"),
@@ -141,6 +155,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "row-range-3-2",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: Some(1),
         ratio_css: Some("3 / 2"),
@@ -152,6 +168,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "row-range-5-2",
         root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["A", "AAAA"],
         ratio_item: Some(1),
         ratio_css: Some("5 / 2"),
@@ -163,6 +181,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-range-1-2",
         root_class: "scene column-row-60",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: Some(0),
         ratio_css: Some("1 / 2"),
@@ -174,6 +194,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-range-4-3",
         root_class: "scene column-row-45",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: Some(0),
         ratio_css: Some("4 / 3"),
@@ -185,6 +207,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-range-3-2",
         root_class: "scene column-row-30",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: Some(0),
         ratio_css: Some("3 / 2"),
@@ -196,6 +220,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-range-5-2",
         root_class: "scene column-row-20",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: Some(0),
         ratio_css: Some("5 / 2"),
@@ -207,6 +233,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-control-60",
         root_class: "scene column-row-60",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: None,
         ratio_css: None,
@@ -218,6 +246,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-control-45",
         root_class: "scene column-row-45",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: None,
         ratio_css: None,
@@ -229,6 +259,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-control-30",
         root_class: "scene column-row-30",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: None,
         ratio_css: None,
@@ -240,6 +272,8 @@ const CASES: [Case; 16] = [
     Case {
         id: "column-control-20",
         root_class: "scene column-row-20",
+        item_box_sizing: "border-box",
+        item_edges: false,
         text_order: ["AAAA", "A"],
         ratio_item: None,
         ratio_css: None,
@@ -247,6 +281,97 @@ const CASES: [Case; 16] = [
         columns: [40.0, 10.0],
         row: 20.0,
         frames: [(0.0, 40.0, 20.0), (40.0, 10.0, 20.0)],
+    },
+    Case {
+        id: "row-auto-ratio-border-box",
+        root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["A", "AAAA"],
+        ratio_item: Some(1),
+        ratio_css: Some("auto 3 / 2"),
+        column_case: false,
+        columns: [20.0, 50.0],
+        row: 32.65625,
+        frames: [(0.0, 20.0, 32.65625), (20.0, 50.0, 32.65625)],
+    },
+    Case {
+        id: "row-numeric-ratio-border-box",
+        root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["A", "AAAA"],
+        ratio_item: Some(1),
+        ratio_css: Some("3 / 2"),
+        column_case: false,
+        columns: [20.0, 50.0],
+        row: 33.328125,
+        frames: [(0.0, 20.0, 33.328125), (20.0, 50.0, 33.328125)],
+    },
+    Case {
+        id: "row-no-ratio-border-box",
+        root_class: "scene",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["A", "AAAA"],
+        ratio_item: None,
+        ratio_css: None,
+        column_case: false,
+        columns: [20.0, 50.0],
+        row: 16.0,
+        frames: [(0.0, 20.0, 16.0), (20.0, 50.0, 16.0)],
+    },
+    Case {
+        id: "row-auto-ratio-content-box",
+        root_class: "scene",
+        item_box_sizing: "content-box",
+        item_edges: true,
+        text_order: ["A", "AAAA"],
+        ratio_item: Some(1),
+        ratio_css: Some("auto 3 / 2"),
+        column_case: false,
+        columns: [20.0, 50.0],
+        row: 32.65625,
+        frames: [(0.0, 20.0, 32.65625), (20.0, 50.0, 32.65625)],
+    },
+    Case {
+        id: "row-60-auto-ratio-border-box",
+        root_class: "scene column-row-60",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["AAAA", "A"],
+        ratio_item: Some(0),
+        ratio_css: Some("auto 3 / 2"),
+        column_case: true,
+        columns: [91.0, 20.0],
+        row: 60.0,
+        frames: [(0.0, 91.0, 60.0), (91.0, 20.0, 60.0)],
+    },
+    Case {
+        id: "row-60-numeric-ratio-border-box",
+        root_class: "scene column-row-60",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["AAAA", "A"],
+        ratio_item: Some(0),
+        ratio_css: Some("3 / 2"),
+        column_case: true,
+        columns: [90.0, 20.0],
+        row: 60.0,
+        frames: [(0.0, 90.0, 60.0), (90.0, 20.0, 60.0)],
+    },
+    Case {
+        id: "row-60-no-ratio-border-box",
+        root_class: "scene column-row-60",
+        item_box_sizing: "border-box",
+        item_edges: true,
+        text_order: ["AAAA", "A"],
+        ratio_item: None,
+        ratio_css: None,
+        column_case: true,
+        columns: [50.0, 20.0],
+        row: 60.0,
+        frames: [(0.0, 50.0, 60.0), (50.0, 20.0, 60.0)],
     },
 ];
 
@@ -271,10 +396,16 @@ fn direct_text_preferred_aspect_ratio_changes_only_the_expected_intrinsic_axis()
             })
             .collect();
         let fixture = custom_fixture(case.id, case.root_class, children, None);
-        let css = case
-            .ratio_css
-            .map(|ratio| format!("{CSS}\n.ratio {{ aspect-ratio:{ratio}; }}"));
-        let computed = cascade(&fixture.view, css.as_deref().unwrap_or(CSS));
+        let mut css = format!(
+            "{CSS}\n.item {{ box-sizing:{}; padding:{}; border:{}; }}",
+            case.item_box_sizing,
+            if case.item_edges { "2px 4px" } else { "0" },
+            if case.item_edges { "1px solid" } else { "0" },
+        );
+        if let Some(ratio) = case.ratio_css {
+            css.push_str(&format!("\n.ratio {{ aspect-ratio:{ratio}; }}"));
+        }
+        let computed = cascade(&fixture.view, &css);
         assert_eq!(
             computed.profile,
             ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
@@ -288,10 +419,24 @@ fn direct_text_preferred_aspect_ratio_changes_only_the_expected_intrinsic_axis()
                 .unwrap_or_else(|| panic!("{}: missing item style", case.id));
             if case.ratio_item == Some(index) {
                 let ratio = case.ratio_css.unwrap();
-                let (numerator, denominator) = ratio.split_once('/').unwrap();
+                let ratio_value = ratio.strip_prefix("auto ").unwrap_or(ratio);
+                let (numerator, denominator) = ratio_value.split_once('/').unwrap();
                 let expected = numerator.trim().parse::<f32>().unwrap()
                     / denominator.trim().parse::<f32>().unwrap();
-                assert_eq!(style.layout_aspect_ratio, Some(expected), "{}", case.id);
+                let aspect_ratio = style
+                    .layout_aspect_ratio
+                    .expect("numeric fixture ratio is typed");
+                assert_eq!(aspect_ratio.ratio, expected, "{}", case.id);
+                assert_eq!(
+                    aspect_ratio.sizing_box,
+                    if ratio.starts_with("auto ") {
+                        ComputedAspectRatioSizingBox::ContentBox
+                    } else {
+                        ComputedAspectRatioSizingBox::BoxSizing
+                    },
+                    "{}",
+                    case.id
+                );
                 assert_eq!(style.properties["aspect-ratio"], ratio, "{}", case.id);
             } else {
                 assert_eq!(style.layout_aspect_ratio, None, "{}", case.id);
@@ -303,15 +448,35 @@ fn direct_text_preferred_aspect_ratio_changes_only_the_expected_intrinsic_axis()
             .unwrap_or_else(|error| panic!("{}: {error:?}", case.id))
             .unwrap_or_else(|| panic!("{}: aspect-ratio candidate fell back", case.id));
         assert_eq!(input.paragraph_styles.len(), 2, "{}", case.id);
+        assert_eq!(
+            input.content_box_ratio_node,
+            case.ratio_css
+                .filter(|ratio| ratio.starts_with("auto "))
+                .and_then(|_| case.ratio_item.map(|index| fixture.items[index].id())),
+            "{}",
+            case.id
+        );
 
-        let output = spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
-            &fixture.snapshot,
-            fixture.root,
-            computed,
-            VIEWPORT,
-            &input.paragraph_styles,
-            &input.engine,
-        )
+        let output = if let Some(node) = input.content_box_ratio_node {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
+                &fixture.snapshot,
+                fixture.root,
+                computed,
+                VIEWPORT,
+                &input.paragraph_styles,
+                &input.engine,
+                node,
+            )
+        } else {
+            spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+                &fixture.snapshot,
+                fixture.root,
+                computed,
+                VIEWPORT,
+                &input.paragraph_styles,
+                &input.engine,
+            )
+        }
         .unwrap_or_else(|error| panic!("{}: {error:?}", case.id));
 
         let root = output.layout.frames[&fixture.root.id()];
@@ -338,12 +503,11 @@ fn direct_text_preferred_aspect_ratio_changes_only_the_expected_intrinsic_axis()
             case.id
         );
         assert_eq!(trace.used_columns.explicit_track_count, 2, "{}", case.id);
-        let expected_row_track = if case.id == "row-range-3-2" {
-            // Taffy retains the full f32 contribution; Chrome's used geometry
-            // oracle quantizes the corresponding frame to 1/64 CSS px.
-            "26.666666px".to_owned()
-        } else {
-            format!("{}px", case.row)
+        let expected_row_track = match case.id {
+            "row-range-3-2" => "26.666666px".to_owned(),
+            "row-auto-ratio-border-box" | "row-auto-ratio-content-box" => "32.666664px".to_owned(),
+            "row-numeric-ratio-border-box" => "33.333332px".to_owned(),
+            _ => format!("{}px", case.row),
         };
         assert_eq!(
             trace.used_rows.used_track_list, expected_row_track,
@@ -399,6 +563,8 @@ fn direct_text_preferred_aspect_ratio_changes_only_the_expected_intrinsic_axis()
                 };
                 let expected = if case.ratio_item == Some(item_index) {
                     case.row
+                } else if case.item_edges {
+                    16.0
                 } else {
                     10.0
                 };
@@ -513,22 +679,81 @@ fn aspect_ratio_profile_rejects_ratio_on_the_wrong_item_and_accepts_other_finite
 }
 
 #[test]
-fn aspect_ratio_profile_keeps_auto_ratio_cascade_rejection() {
+fn aspect_ratio_profile_preserves_auto_ratio_content_box_basis_for_exact_owner() {
     let fixture = profile_fixture("item", "A", "ratio", "AAAA");
     let css = format!("{CSS}\n.ratio {{ aspect-ratio:auto 2 / 1; }}");
-    let error =
+    let computed =
         spinon_style::compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
             &fixture.view,
             &[stylesheet(&css)],
             VIEWPORT,
             StyleRevision::INITIAL,
         )
-        .expect_err("auto <ratio> remains unsupported in this fixture profile");
+        .expect("C11.4 direct-text profile preserves auto <ratio>");
+    let style = computed
+        .elements
+        .iter()
+        .find(|style| style.node_id == fixture.items[1].id())
+        .expect("ratio item has computed style");
+    let ratio = style.layout_aspect_ratio.expect("typed auto ratio");
+    assert_eq!(ratio.ratio, 2.0);
+    assert_eq!(ratio.sizing_box, ComputedAspectRatioSizingBox::ContentBox);
+    assert_eq!(style.properties["aspect-ratio"], "auto 2 / 1");
+
+    let input = super::super::prepare(&fixture.snapshot, fixture.root, &computed)
+        .expect("supported direct-text auto ratio")
+        .expect("auto ratio fixture candidate");
+    assert_eq!(input.content_box_ratio_node, Some(fixture.items[1].id()));
+    let ungated = spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+        &fixture.snapshot,
+        fixture.root,
+        computed.clone(),
+        VIEWPORT,
+        &input.paragraph_styles,
+        &input.engine,
+    )
+    .expect_err("content-box ratio must not leak through the shared profile wrapper");
     assert!(matches!(
-        error,
-        spinon_style::CssCascadeError::UnsupportedComputedAspectRatio { node, .. }
-            if node == fixture.items[1].id()
+        ungated,
+        spinon_style_to_layout::StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "aspect-ratio",
+            ..
+        } if node == fixture.items[1].id()
     ));
+    let wrong_owner = spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
+        &fixture.snapshot,
+        fixture.root,
+        computed.clone(),
+        VIEWPORT,
+        &input.paragraph_styles,
+        &input.engine,
+        fixture.items[0].id(),
+    )
+    .expect_err("a different owner must not receive the content-box basis");
+    assert!(matches!(
+        wrong_owner,
+        spinon_style_to_layout::StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "aspect-ratio",
+            ..
+        } if node == fixture.items[0].id()
+    ));
+    let output = spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
+        &fixture.snapshot,
+        fixture.root,
+        computed,
+        VIEWPORT,
+        &input.paragraph_styles,
+        &input.engine,
+        fixture.items[1].id(),
+    )
+    .expect("the exact content-box owner is admitted");
+    close(
+        output.layout.frames[&fixture.root.id()].height,
+        20.0,
+        "auto ratio",
+    );
 }
 
 #[test]
@@ -625,7 +850,10 @@ fn replace_ratio_style(
         .iter_mut()
         .find(|style| style.node_id == node)
         .expect("synthetic ratio target style exists");
-    style.layout_aspect_ratio = ratio;
+    style.layout_aspect_ratio = ratio.map(|ratio| ComputedLayoutAspectRatio {
+        ratio,
+        sizing_box: ComputedAspectRatioSizingBox::BoxSizing,
+    });
     style
         .properties
         .insert("aspect-ratio".to_owned(), serialized.to_owned());
