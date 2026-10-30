@@ -1,0 +1,384 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-text-ratio-mvvhvvfz-4b9929a2",
+  "sourceHead": "81ae089794475686750222ef20d46b02096a8f04",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_multispan.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs\n M plan/c11-4-direct-text-aspect-ratio-definite-axis.md\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n M tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs\n?? crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_definite_axis.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_definite_axis.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_definite_axis.rs",
+  "sourceHashes": {
+    "plan/c11-4-direct-text-aspect-ratio-min-max.md": "ef3dbdc74b1c1a460987694afa6568b3b6a80926cdbe0e50797a7ed5f954698a",
+    "plan/c11-4-direct-text-aspect-ratio-multispan.md": "a8e15c38a92835ae0d46066be27589b3bb799396078d9b8eed1df988f43777b9",
+    "plan/c11-4-direct-text-aspect-ratio-definite-axis.md": "741006b43a71af6be0cc747e9978e112508f033b990e3869dfca6012f0808bd0",
+    "crates/spinon-layout/src/lib.rs": "97168c913a8d98ca657cf8bafd6ea25ac67cf17f89a57133d7400e06276486c2",
+    "crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs": "4d2dc512fcd8be15624b1b3ba0a0060fd086f52fc9fd41122ee15065ae2ed2fa",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "ea2388e71837b10a06dfd5909fc8e4ef14887a0a82f76a7715767c2a8ee01f5d",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "7519c348fdc45b93124151c8c9bf8f3ec4778834f2f9d66bc90346de520df647",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs": "55768d114ecd53a9e0f22e0f46e8d4767ccaf25a086a945a1682a1b1ee0ba86e",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_multispan.rs": "c4ec5911532699a2e87145e0837b34acb8417942cb7fe3f63712c95cba5f1326",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_definite_axis.rs": "f7a59fd541f755507885565c15a0700889d29ee00dd5d1565e882857ec5ef068",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs": "2c35ec5db74a7b62b8ec8e63918b63aa9a85d3625f98bd692fcbb459766d6279",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs": "fe0575faef48540aefee00649b6941bf3605f07dd8417791bdbd48b7bebf4c14",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs": "24ad08492e2583eaba2ec90baf2db3ca0468e89f8b921f091d79c46dd9e93139",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_multispan.rs": "37f58d16ab55f7bac72be5c9145b5cbed57645caafd4e1ddde21d29c3f2cfbf2",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_definite_axis.rs": "61ca0d55fe0723392a2e9e7fabf3f0691760cddeeb8db926086425d550a3b3ed",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "e12788f93cff67fea3e1f6db8445d6d2729e70804c0dcb9a78c400c21a6051d2",
+    "crates/spinon-style-to-layout/src/projection.rs": "3e225531070c2c09fad77055c43e038cce7645f66f2dd9fe6b661baad3b54d8a",
+    "crates/spinon-style-to-layout/src/projection/style_values.rs": "1e3d4940dd1ec95d5c89c70ad657d89428fe12149f4768fa69b0be42542029cd",
+    "crates/spinon-style-to-layout/src/lib.rs": "5461ee2c69a7baea1479f6acb8c5a5438a2e5614c22650536af48f6103cf5a19",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "f305e93b7fe015c3e69fddc316b420c409f8a700337e42d1b0363435401bd570",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs": "d0d2c6316d97dd6c8c4680264b1008b60cb8abeb326a163f4c5ad1be9382a5c6",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_definite_axis.rs": "5e1944de5c549972883b42ca5c627948382754d1ee58414e68ebfce681d855af",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs": "abe6eb76855a0b118ab0bded86731c843a51ca2b75a2b2b8ebec847dfd912175",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_multispan.rs": "a476657954983f189ff54192b87de87cbf9cc087af43e01e59c0e8b3406bac23",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "bac7255188e58821f499eeabdccf1b3bd2952e942caa6294b788c5aa12a33401",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "b8d18909d3dd347b075a8ab1c84fec13ecff23e586e7a01a22bf99c050ac13d7",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "a31136c1faf42a7e70b6424a2c4d828982364a784468a59d1127e0eac7a17c97",
+    "vendor/taffy/src/compute/grid/types/grid_item.rs": "4bea798a22d6bf8a1574533caaea776ccf043b84a7cb6c28e6da053efae02d7f",
+    "vendor/taffy/src/compute/grid/types/mod.rs": "4c01c62705018d154ba6a9423d39fd703bf0253da2d51369632013dcf797f6ba",
+    "vendor/taffy/src/compute/grid/alignment.rs": "cac950c10a0f270b934462adc6f625143ac57abb4bcd91452b69bcdf5a151122",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html": "f507edb05f1554e6d2c8ff4fac483c67021f38bc9f24bd850f2d8c1d7875d3ec",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-axis-transfer-precomparison.html": "d06fd4d534e3ca9c2032718ad30e1c30befc77bab6ae2998b4eb3749ae77cb8b",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html": "009bf8674384024e66bee140c838e8de6afc22dae2c2a94bd917749084154888",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html": "fd43945d6200d36524c07c539fdf1e3193157e4df4ad13f12243937e42c771d0",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md": "f2996c03a5030a6b1a5a93c97b5caf2e7da1466f82194cc9fdb5c03164b260f5",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json": "a5e976f767e3256c909b01bfe93a0c423298db474fb6c0276d0ebded88cea7f9",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/verify-precomparison.mjs": "aac1ddca8f098fccaa779a60fbb390f2e2dc65c249889e4762184d00fb08da1f",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/README.md": "3573ef11827d1ad6afd5627f1dc5fbd3d55a07b767021f29c9a5338e04117747",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json": "d65674d8a1ddcc86862639612e98d539c80aff350ce447817af5cbe7740b766b",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json": "6f736b092d3e69700b30e790a37821a7e0156bb98ff9e6e3a00838cf935f14ac",
+    "spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png": "f64131fb8d30fcbc458eee5b8880f23d97967a32557248c036241b6c48c4a8e2",
+    "tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs": "d4a86cd55b2a29f32c8e7fb850ef10a7ad3449e02c4ff2814d04032dca8355bc"
+  },
+  "sceneCount": 55,
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-width-ratio",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-width-control",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-height-ratio",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-height-control",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-1-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-4-3",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-3-2",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-5-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-1-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-4-3",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-3-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-5-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-60",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-45",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-30",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-20",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-baseline",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-45",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-width-30-min-width-0",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-17-75-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-height-30",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-baseline",
+      "boxCount": 2,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-45",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-60",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-height-30",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-width-30-min-width-0",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-auto-min-control",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-min-width-0",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-17-75-range",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-no-ratio",
+      "boxCount": 2,
+      "traceParts": 16,
+      "pixelSamples": 4
+    }
+  ]
+}

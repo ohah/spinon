@@ -144,6 +144,20 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         }
         return Ok(Some(input));
     }
+    if let Some(input) =
+        generic_direct_text::prepare_aspect_ratio_definite_axis(snapshot, root, styles)?
+    {
+        if let Some(node) = input.definite_axis_ratio_node
+            && !input.paragraph_styles.contains_key(&node)
+        {
+            return Err(layout_failure(
+                "c114_text_aspect_ratio_definite_axis_owner",
+                Some(node.get()),
+                None,
+            ));
+        }
+        return Ok(Some(input));
+    }
     if let Some(input) = generic_direct_text::prepare_aspect_ratio_minmax(snapshot, root, styles)? {
         if let Some(node) = input.aspect_ratio_minmax_node
             && !input.paragraph_styles.contains_key(&node)
@@ -299,6 +313,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
         aspect_ratio_minmax_node: None,
+        definite_axis_ratio_node: None,
     }))
 }
 
@@ -504,6 +519,7 @@ fn prepare_multispan_text(
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
         aspect_ratio_minmax_node: None,
+        definite_axis_ratio_node: None,
     }))
 }
 
@@ -736,6 +752,7 @@ fn prepare_typed_auto_repeat_text(
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
         aspect_ratio_minmax_node: None,
+        definite_axis_ratio_node: None,
     }))
 }
 

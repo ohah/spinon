@@ -1,0 +1,501 @@
+android-avd 1/55: grid-text-aspect-ratio-row passed
+android-avd 2/55: grid-text-aspect-ratio-row-control passed
+android-avd 3/55: grid-text-aspect-ratio-column passed
+android-avd 4/55: grid-text-aspect-ratio-column-control passed
+android-avd 5/55: grid-text-aspect-ratio-definite-width-ratio passed
+android-avd 6/55: grid-text-aspect-ratio-definite-width-control passed
+android-avd 7/55: grid-text-aspect-ratio-definite-height-ratio passed
+android-avd 8/55: grid-text-aspect-ratio-definite-height-control passed
+android-avd 9/55: grid-text-aspect-ratio-range-row-1-2 passed
+android-avd 10/55: grid-text-aspect-ratio-range-row-4-3 passed
+android-avd 11/55: grid-text-aspect-ratio-range-row-3-2 passed
+android-avd 12/55: grid-text-aspect-ratio-range-row-5-2 passed
+android-avd 13/55: grid-text-aspect-ratio-range-column-1-2 passed
+android-avd 14/55: grid-text-aspect-ratio-range-column-4-3 passed
+android-avd 15/55: grid-text-aspect-ratio-range-column-3-2 passed
+android-avd 16/55: grid-text-aspect-ratio-range-column-5-2 passed
+android-avd 17/55: grid-text-aspect-ratio-range-column-control-60 passed
+android-avd 18/55: grid-text-aspect-ratio-range-column-control-45 passed
+android-avd 19/55: grid-text-aspect-ratio-range-column-control-30 passed
+android-avd 20/55: grid-text-aspect-ratio-range-column-control-20 passed
+android-avd 21/55: grid-text-aspect-ratio-auto-row-auto-3-2-border-box passed
+android-avd 22/55: grid-text-aspect-ratio-auto-row-numeric-3-2-border-box passed
+android-avd 23/55: grid-text-aspect-ratio-auto-row-no-ratio-border-box passed
+android-avd 24/55: grid-text-aspect-ratio-auto-row-auto-3-2-content-box passed
+android-avd 25/55: grid-text-aspect-ratio-row-60-auto-3-2-border-box passed
+android-avd 26/55: grid-text-aspect-ratio-row-60-numeric-3-2-border-box passed
+android-avd 27/55: grid-text-aspect-ratio-row-60-no-ratio-border-box passed
+android-avd 28/55: grid-text-aspect-ratio-minmax-numeric-baseline passed
+android-avd 29/55: grid-text-aspect-ratio-minmax-min-width-60 passed
+android-avd 30/55: grid-text-aspect-ratio-minmax-min-width-45 passed
+android-avd 31/55: grid-text-aspect-ratio-minmax-max-width-30-min-width-0 passed
+android-avd 32/55: grid-text-aspect-ratio-minmax-min-height-30 passed
+android-avd 33/55: grid-text-aspect-ratio-minmax-max-height-15-min-height-0 passed
+android-avd 34/55: grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0 passed
+android-avd 35/55: grid-text-aspect-ratio-minmax-max-height-17-75-min-controls passed
+android-avd 36/55: grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20 passed
+android-avd 37/55: grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30 passed
+android-avd 38/55: grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40 passed
+android-avd 39/55: grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20 passed
+android-avd 40/55: grid-text-aspect-ratio-minmax-auto-ratio-min-width-60 passed
+android-avd 41/55: grid-text-aspect-ratio-minmax-no-ratio-min-width-60 passed
+android-avd 42/55: grid-text-aspect-ratio-minmax-no-ratio-min-height-30 passed
+android-avd 43/55: grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60 passed
+android-avd 44/55: grid-text-aspect-ratio-minmax-auto-content-box-min-width-60 passed
+android-avd 45/55: grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls passed
+android-avd 46/55: grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls passed
+android-avd 47/55: grid-text-aspect-ratio-multispan-span-baseline passed
+android-avd 48/55: grid-text-aspect-ratio-multispan-span-min-width-45 passed
+android-avd 49/55: grid-text-aspect-ratio-multispan-span-min-width-60 passed
+android-avd 50/55: grid-text-aspect-ratio-multispan-span-min-height-30 passed
+android-avd 51/55: grid-text-aspect-ratio-multispan-span-max-width-30-min-width-0 passed
+android-avd 52/55: grid-text-aspect-ratio-multispan-span-max-height-15-auto-min-control passed
+android-avd 53/55: grid-text-aspect-ratio-multispan-span-max-height-15-min-width-0 passed
+android-avd 54/55: grid-text-aspect-ratio-multispan-span-max-height-17-75-range passed
+android-avd 55/55: grid-text-aspect-ratio-multispan-span-no-ratio passed
+{
+  "evidenceDirectory": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/android-avd/c114-text-ratio-mvvhtfz4-348d5435",
+  "target": "android-avd",
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-0",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-1",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-2",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-3",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-width-ratio",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-4",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-width-control",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-5",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-height-ratio",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-6",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-definite-height-control",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-7",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-1-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-8",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-4-3",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-9",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-3-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-10",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-5-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-11",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-1-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-12",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-4-3",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-13",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-3-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-14",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-5-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-15",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-60",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-16",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-45",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-17",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-30",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-18",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-20",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-19",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-20",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-21",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-22",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-23",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-24",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-25",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-26",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-baseline",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-27",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-28",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-45",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-29",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-width-30-min-width-0",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-30",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-30",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-31",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-32",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-33",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-17-75-min-controls",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-34",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-35",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-36",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-37",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-38",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-39",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-40",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-height-30",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-41",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-42",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-43",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-44",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 9,
+      "pixelSamples": 3,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-45",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-baseline",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-46",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-45",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-47",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-60",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-48",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-height-30",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-49",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-width-30-min-width-0",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-50",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-auto-min-control",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-51",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-min-width-0",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-52",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-17-75-range",
+      "boxCount": 2,
+      "traceParts": 7,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-53",
+      "launchAttempts": 1
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-no-ratio",
+      "boxCount": 2,
+      "traceParts": 8,
+      "pixelSamples": 4,
+      "runID": "c114-text-ratio-mvvhtfz4-348d5435-54",
+      "launchAttempts": 1
+    }
+  ]
+}

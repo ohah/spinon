@@ -953,6 +953,25 @@ where
                     &text_input.engine,
                     aspect_ratio_minmax_node,
                 )
+            } else if let Some(definite_axis_ratio_node) = text_input.definite_axis_ratio_node {
+                if !text_input
+                    .paragraph_styles
+                    .contains_key(&definite_axis_ratio_node)
+                {
+                    return Err(layout_failure(
+                        "c114_text_aspect_ratio_definite_axis_owner",
+                        Some(definite_axis_ratio_node.get()),
+                        None,
+                    ));
+                }
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                )
             } else if let Some(content_box_ratio_node) = text_input.content_box_ratio_node {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
                     &request.snapshot,

@@ -187,6 +187,10 @@ private let c114GenericDirectTextSceneIDs: Set<String> = [
     "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
     "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
     "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+    "grid-text-aspect-ratio-definite-width-ratio",
+    "grid-text-aspect-ratio-definite-width-control",
+    "grid-text-aspect-ratio-definite-height-ratio",
+    "grid-text-aspect-ratio-definite-height-control",
 ]
 #else
 private let c114GenericDirectTextSceneIDs: Set<String> = []
@@ -215,6 +219,7 @@ private func c114IsGridTextAspectRatioScene(_ sceneID: String) -> Bool {
         || sceneID == "grid-text-aspect-ratio-column-control"
         || sceneID.hasPrefix("grid-text-aspect-ratio-range-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-auto-")
+        || sceneID.hasPrefix("grid-text-aspect-ratio-definite-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-row-60-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-minmax-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-multispan-")
@@ -383,6 +388,9 @@ private func c114GenericTextItem(
 private func c114GenericDirectTextExpectation(
     _ sceneID: String
 ) -> C114GenericDirectTextSceneExpectation? {
+    if let definiteAxis = c114GenericDirectTextDefiniteAxisExpectation(sceneID) {
+        return definiteAxis
+    }
     if let range = c114GenericDirectTextAspectRatioRangeExpectation(sceneID) { return range }
     if let boxRatio = c114GenericDirectTextBoxAspectRatioExpectation(sceneID) { return boxRatio }
     switch sceneID {
@@ -499,6 +507,51 @@ private func c114GenericDirectTextExpectation(
     default:
         return nil
     }
+}
+
+private func c114GenericDirectTextDefiniteAxisExpectation(
+    _ sceneID: String
+) -> C114GenericDirectTextSceneExpectation? {
+    let rootHeight: Double
+    let longWidth: Double
+    let longHeight: Double
+    switch sceneID {
+    case "grid-text-aspect-ratio-definite-width-ratio":
+        rootHeight = 30
+        longWidth = 60
+        longHeight = 30
+    case "grid-text-aspect-ratio-definite-width-control":
+        rootHeight = 10
+        longWidth = 60
+        longHeight = 10
+    case "grid-text-aspect-ratio-definite-height-ratio":
+        rootHeight = 30
+        longWidth = 60
+        longHeight = 30
+    case "grid-text-aspect-ratio-definite-height-control":
+        rootHeight = 30
+        longWidth = 40
+        longHeight = 30
+    default:
+        return nil
+    }
+    return C114GenericDirectTextSceneExpectation(rootHeight: rootHeight,
+        columns: [10, longWidth], items: [
+            c114GenericTextItem(
+                node: 2, x: 0, width: 10, height: rootHeight,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]
+            ),
+            c114GenericTextItem(
+                node: 4, x: 10, width: longWidth, height: longHeight,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                availableWidth: longWidth, textWidth: 40,
+                lineAdvances: [40]
+            ),
+        ]
+    )
 }
 
 private func c114GenericDirectTextAspectRatioRangeExpectation(
@@ -5984,6 +6037,8 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     var maxContentWidthNodes = Set<Int>()
     var minContentHeightNodes = Set<Int>()
     var maxContentHeightNodes = Set<Int>()
+    var measuredNodes = Set<Int>()
+    var definiteAxisDimensionMeasured = false
     for measurement in measurements {
         guard let node = c114GenericJSONInteger(measurement["node"]),
               expectedNodes.contains(node),
@@ -6001,6 +6056,14 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             }
             return false
         }
+        measuredNodes.insert(node)
+        if sceneID.hasPrefix("grid-text-aspect-ratio-definite-"),
+           expectedNodes.count > 1, node == expectedNodes[1] {
+            let definiteAxisDimension = sceneID.contains("-definite-width-")
+                ? "width: Definite(60.0)" : "height: Definite(30.0)"
+            definiteAxisDimensionMeasured = definiteAxisDimensionMeasured
+                || availableSpace.contains(definiteAxisDimension)
+        }
         if availableSpace.contains("width: MinContent") {
             minContentWidthNodes.insert(node)
         }
@@ -6014,7 +6077,14 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             maxContentHeightNodes.insert(node)
         }
     }
-    if isMinmaxScene || isMultispanScene {
+    if sceneID.hasPrefix("grid-text-aspect-ratio-definite-") {
+        let shortNode = expectedNodes[0]
+        guard measuredNodes == Set(expectedNodes), definiteAxisDimensionMeasured,
+              minContentWidthNodes.contains(shortNode),
+              maxContentWidthNodes.contains(shortNode),
+              minContentHeightNodes.contains(shortNode),
+              maxContentHeightNodes.contains(shortNode) else { return false }
+    } else if isMinmaxScene || isMultispanScene {
         guard !measurements.isEmpty else { return false }
     } else if c114IsGridTextAspectRatioScene(sceneID) {
         if c114IsGridTextAspectRatioColumnScene(sceneID) {
@@ -6053,6 +6123,20 @@ private func c114GenericContributionInputMatches(
     sceneID: String, itemIndex: Int
 ) -> Bool {
     guard let contribution = input["contributionInput"] as? [String: Any] else { return false }
+    if sceneID.hasPrefix("grid-text-aspect-ratio-definite-") {
+        let longItem = itemIndex == 1
+        let preferredWidth = longItem && sceneID.contains("-definite-width-") ? 60.0 : .nan
+        let preferredHeight = longItem && sceneID.contains("-definite-height-") ? 30.0 : .nan
+        return c114GenericAxisContributionMatches(
+            contribution["width"], minContent: expected.minContent,
+            maxContent: expected.maxContent, padding: expected.paddingInline,
+            border: expected.borderWidth, preferredSize: preferredWidth
+        ) && c114GenericAxisContributionMatches(
+            contribution["height"], minContent: expected.minContentHeight,
+            maxContent: expected.maxContentHeight, padding: expected.paddingBlock,
+            border: expected.borderWidth, preferredSize: preferredHeight
+        )
+    }
     if let minmax = c114AspectRatioMinmaxSceneExpectation(sceneID) {
         guard var constraints = c114AspectRatioMinmaxStyleConstraints(sceneID) else {
             return false
@@ -6159,7 +6243,7 @@ private func c114GenericSizeConstraintMatches(
 
 private func c114GenericAxisContributionMatches(
     _ value: Any?, minContent: Double, maxContent: Double,
-    padding: Double, border: Double
+    padding: Double, border: Double, preferredSize expectedPreferredSize: Double = .nan
 ) -> Bool {
     guard let axis = value as? [String: Any],
           let preferredSize = axis["preferredSize"] as? [String: Any],
@@ -6167,7 +6251,7 @@ private func c114GenericAxisContributionMatches(
           let maxSize = axis["maxSize"] as? [String: Any] else { return false }
     return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: 1.0 / 64.0)
         && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: 1.0 / 64.0)
-        && c114GenericJSONString(preferredSize["kind"]) == "auto"
+        && c114GenericSizeConstraintMatches(preferredSize, expected: expectedPreferredSize)
         && c114GenericJSONString(minSize["kind"]) == "auto"
         && c114GenericJSONString(maxSize["kind"]) == "auto"
         && c114GenericZeroLength(axis["marginStart"])
@@ -10529,6 +10613,12 @@ private struct C111MetalPixelRun {
                 rootID = "column-control"
                 itemPoints = [(5, 5), (45, 5), (70, 5)]
             default:
+                let definiteAxisPrefix = "grid-text-aspect-ratio-definite-"
+                if sceneID.hasPrefix(definiteAxisPrefix) {
+                    rootID = "definite-" + String(sceneID.dropFirst(definiteAxisPrefix.count))
+                    itemPoints = [(5, 5), (15, 5), (90, 5)]
+                    break
+                }
                 let prefix = "grid-text-aspect-ratio-range-"
                 guard sceneID.hasPrefix(prefix) else { return false }
                 rootID = String(sceneID.dropFirst(prefix.count))

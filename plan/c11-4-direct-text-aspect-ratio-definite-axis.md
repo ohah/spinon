@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio definite-axis transfer
 
-**상태:** 구현 전 계획. 이 제한 fixture slice는 C11.4 또는 C11 전체 완료를 뜻하지 않으며 공식 `72/213`을 올리지 않는다.
+**상태:** 계획 검토 완료, 제한 fixture 구현 후보 확인. 이 slice는 C11.4 또는 C11 전체 완료를 뜻하지 않으며 공식 `72/213`을 올리지 않는다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 51개와 신규 네 장면을 각 55/55 통과했다. [구현·실행 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-definite-axis-runtime-2026-10-31/README.md)
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [finite-positive ratio](./c11-4-direct-text-aspect-ratio-finite.md) · [`auto <ratio>` sizing basis](./c11-4-direct-text-aspect-ratio-auto.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
