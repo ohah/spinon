@@ -1,7 +1,9 @@
-const SCENE_IDS: [&str; 7] = [
+const SCENE_IDS: [&str; 9] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
+    "anonymous-normal-newline-max-content",
+    "anonymous-pre-line-max-content",
     "anonymous-comment-continuation",
     "anonymous-runs-around-block",
     "anonymous-hidden-child-continuation",
@@ -17,6 +19,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "anonymous-min-content-wrap" => (120, "20px", "min-content 1fr", "auto", "wrap"),
         "anonymous-normal-min-content" => (20, "auto", "min-content", "auto", "wrap"),
         "anonymous-nowrap-min-content" => (20, "auto", "min-content", "auto", "nowrap"),
+        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+            (20, "auto", "max-content", "auto", "wrap")
+        }
         "anonymous-comment-continuation" => (120, "10px", "max-content 1fr", "10px", "wrap"),
         "anonymous-runs-around-block" => (
             120,
@@ -29,12 +34,17 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "whitespace-does-not-create-item" => (120, "10px", "20px 30px 40px", "10px", "wrap"),
         _ => return None,
     };
+    let white_space_collapse = if scene_id == "anonymous-pre-line-max-content" {
+        "preserve-breaks"
+    } else {
+        "collapse"
+    };
     let mut source = format!(
         r#"(() => {{
 const root = document.createElement('div');
 root.setAttribute('id', {root_id:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height};margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{columns};grid-template-rows:{rows};font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:collapse;text-wrap-mode:{wrap_mode};word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height};margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{columns};grid-template-rows:{rows};font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:{white_space_collapse};text-wrap-mode:{wrap_mode};word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820');
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
 "#
@@ -45,6 +55,9 @@ const nodeIds = [{root_id:?}];
         | "anonymous-nowrap-min-content" => source.push_str(
             "root.appendChild(document.createTextNode('XX XX'));\n",
         ),
+        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\nXX'));\n")
+        }
         "anonymous-comment-continuation" => source.push_str(
             "root.appendChild(document.createTextNode('XX'));\nroot.appendChild(document.createTextNode('XX'));\n",
         ),
@@ -99,16 +112,74 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_seven_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_nine_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 7);
+        assert_eq!(SCENE_IDS.len(), 9);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
-        for (scene_id, text_nodes, elements, width, height, wrap_mode) in [
-            ("anonymous-min-content-wrap", 1, 0, 120, "20px", "wrap"),
-            ("anonymous-normal-min-content", 1, 0, 20, "auto", "wrap"),
-            ("anonymous-nowrap-min-content", 1, 0, 20, "auto", "nowrap"),
-            ("anonymous-comment-continuation", 2, 0, 120, "10px", "wrap"),
-            ("anonymous-runs-around-block", 2, 1, 120, "10px", "wrap"),
+        for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
+            (
+                "anonymous-min-content-wrap",
+                1,
+                0,
+                120,
+                "20px",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-normal-min-content",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-nowrap-min-content",
+                1,
+                0,
+                20,
+                "auto",
+                "nowrap",
+                "collapse",
+            ),
+            (
+                "anonymous-normal-newline-max-content",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-pre-line-max-content",
+                1,
+                0,
+                20,
+                "auto",
+                "wrap",
+                "preserve-breaks",
+            ),
+            (
+                "anonymous-comment-continuation",
+                2,
+                0,
+                120,
+                "10px",
+                "wrap",
+                "collapse",
+            ),
+            (
+                "anonymous-runs-around-block",
+                2,
+                1,
+                120,
+                "10px",
+                "wrap",
+                "collapse",
+            ),
             (
                 "anonymous-hidden-child-continuation",
                 3,
@@ -116,14 +187,24 @@ mod tests {
                 120,
                 "10px",
                 "wrap",
+                "collapse",
             ),
-            ("whitespace-does-not-create-item", 1, 2, 120, "10px", "wrap"),
+            (
+                "whitespace-does-not-create-item",
+                1,
+                2,
+                120,
+                "10px",
+                "wrap",
+                "collapse",
+            ),
         ] {
             let source = runtime_source(scene_id).expect("known C11.4 scene");
             assert!(source.len() < 4 * 1024);
             assert!(source.contains(&format!("sceneId:{scene_id:?}")));
             assert!(source.contains(&format!("display:grid;width:{width}px;height:{height};")));
             assert!(source.contains(&format!("text-wrap-mode:{wrap_mode}")));
+            assert!(source.contains(&format!("white-space-collapse:{white_space_collapse}")));
             assert_eq!(
                 source.matches("document.createTextNode(").count(),
                 text_nodes

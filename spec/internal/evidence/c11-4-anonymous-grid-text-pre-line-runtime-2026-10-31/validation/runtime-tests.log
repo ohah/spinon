@@ -1,0 +1,11 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.11s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 5 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_block_separator_requires_auto_grid_placement ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_fixture_cases_are_unique ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::border_overflow::two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_orders ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::c114_anonymous_text_and_two_or_three_images_share_one_revision_and_track_pass ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_image::c114_anonymous_text_and_default_inline_image_share_one_revision_and_track_pass ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 324 filtered out; finished in 0.10s

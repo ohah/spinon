@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.14s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-e07437e2bc2f8257)
+
+running 1 test
+test runtime_gpu::fixtures::c11_4::anonymous_text_items::tests::anonymous_grid_text_sources_are_a_fixed_nine_scene_matrix ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 168 filtered out; finished in 0.02s

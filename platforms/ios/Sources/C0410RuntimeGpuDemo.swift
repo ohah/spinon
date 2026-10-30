@@ -960,7 +960,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
     "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
     "anonymous-min-content-wrap", "anonymous-normal-min-content",
-    "anonymous-nowrap-min-content", "anonymous-comment-continuation",
+    "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
+    "anonymous-pre-line-max-content", "anonymous-comment-continuation",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -2288,6 +2289,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "anonymous-min-content-wrap" { return "width=120,height=20" }
     if sceneID == "anonymous-normal-min-content" { return "width=20,height=20" }
     if sceneID == "anonymous-nowrap-min-content" { return "width=20,height=10" }
+    if sceneID == "anonymous-normal-newline-max-content" { return "width=20,height=10" }
+    if sceneID == "anonymous-pre-line-max-content" { return "width=20,height=20" }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return "width=40,height=184" }
     if c114IsAnonymousTextMultiImageScene(sceneID) { return "width=220,height=180" }
     if c114IsAnonymousTextImageScene(sceneID) { return "width=220,height=60" }
@@ -2446,6 +2449,7 @@ private func c114ExpectedItemFrame(_ sceneID: String) -> String {
     if let frame = C114FitContentImplicitColumnWpt.expectedItemFrame(sceneID) { return frame }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return "" }
     if C114FlexStage.isScene(sceneID) { return "" }
+    if c114IsAnonymousTextScene(sceneID) { return "" }
     if c114GridAutoRepeatIntrinsicWptState(sceneID) != nil {
         return "width=100,height=20"
     }
@@ -2887,6 +2891,10 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if sceneID == "anonymous-normal-newline-max-content"
+        || sceneID == "anonymous-pre-line-max-content" {
+        return c114AnonymousNewlineTextIntrinsicInputsMatch(sceneID, report: report)
+    }
     if c114GenericDirectTextSceneIDs.contains(sceneID)
         || c114AspectRatioMinmaxSceneExpectation(sceneID) != nil
         || c114DirectTextMultispanSceneExpectation(sceneID) != nil {
@@ -3027,6 +3035,100 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
           let maxContentHeight = source["maxContentHeight"] as? NSNumber,
           maxContentHeight.doubleValue == Double(expected.maxContentHeight) else {
         return false
+    }
+    return true
+}
+
+private func c114AnonymousTextNumberNear(
+    _ object: [String: Any], key: String, expected: Double
+) -> Bool {
+    guard let number = object[key] as? NSNumber, number.doubleValue.isFinite else { return false }
+    return abs(number.doubleValue - expected) <= 1.0 / 64.0
+}
+
+private func c114AnonymousNewlineTextIntrinsicInputsMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    let preLine = sceneID == "anonymous-pre-line-max-content"
+    let expectedWidth = preLine ? 20.0 : 50.0
+    let expectedHeight = preLine ? 20.0 : 10.0
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let sourceRevision = revision["source"] as? String,
+          sourceRevision.hasPrefix("HostDocument"),
+          ["style", "environment", "intrinsicSize"].allSatisfy({
+              guard let value = revision[$0] as? NSNumber else { return false }
+              return value.intValue >= 0
+          }),
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          (input["grid"] as? Int) == 1,
+          (input["node"] as? Int) == 2,
+          (input["sourceOrder"] as? Int) == 0,
+          let source = input["source"] as? [String: Any],
+          (source["kind"] as? String) == "text",
+          (source["fontRegistryRevision"] as? Int) == 1,
+          c114AnonymousTextNumberNear(source, key: "minContent", expected: 20),
+          c114AnonymousTextNumberNear(source, key: "minContentHeight", expected: 20),
+          c114AnonymousTextNumberNear(source, key: "maxContent", expected: expectedWidth),
+          c114AnonymousTextNumberNear(source, key: "maxContentHeight", expected: expectedHeight),
+          let textSources = input["textSources"] as? [[String: Any]],
+          textSources.count == 1,
+          (textSources[0]["node"] as? Int) == 2,
+          (textSources[0]["text"] as? String) == "XX\nXX",
+          let frames = diagnostics["gridItemFrames"] as? [[String: Any]],
+          frames.count == 1,
+          (frames[0]["node"] as? Int) == 2,
+          c114AnonymousTextNumberNear(frames[0], key: "x", expected: 0),
+          c114AnonymousTextNumberNear(frames[0], key: "y", expected: 0),
+          c114AnonymousTextNumberNear(frames[0], key: "width", expected: expectedWidth),
+          c114AnonymousTextNumberNear(frames[0], key: "height", expected: expectedHeight),
+          let textLayouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]],
+          textLayouts.count == 1,
+          (textLayouts[0]["node"] as? Int) == 2,
+          let paragraphStyle = textLayouts[0]["paragraphStyle"] as? [String: Any] else {
+        return false
+    }
+    return (paragraphStyle["whiteSpace"] as? String) == (preLine ? "PreLine" : "Normal")
+}
+
+private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String) -> Bool {
+    guard sceneID == "anonymous-normal-newline-max-content"
+        || sceneID == "anonymous-pre-line-max-content" else { return true }
+    let preLine = sceneID == "anonymous-pre-line-max-content"
+    let expectedWidth = preLine ? 20.0 : 50.0
+    let expectedHeight = preLine ? 20.0 : 10.0
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          let trace = traces.first,
+          (trace["grid"] as? Int) == 1,
+          let passes = trace["passes"] as? [[String: Any]],
+          passes.count == 2,
+          (passes[0]["axis"] as? String) == "Columns",
+          (passes[1]["axis"] as? String) == "Rows" else { return false }
+    for pass in passes {
+        guard let axis = pass["axis"] as? String else { return false }
+        let expected = axis == "Columns" ? expectedWidth : expectedHeight
+        guard let stages = pass["stages"] as? [[String: Any]],
+              let finalStage = stages.last,
+              let tracks = finalStage["tracks"] as? [[String: Any]] else { return false }
+        let finalTracks = tracks.filter {
+            ($0["gutter"] as? Bool) == false && ($0["collapsed"] as? Bool) == false
+        }
+        guard finalTracks.count == 1,
+              c114AnonymousTextNumberNear(finalTracks[0], key: "baseSize", expected: expected),
+              let contributions = pass["contributions"] as? [[String: Any]] else { return false }
+        let hasExpectedContribution = contributions.contains { contribution in
+            guard (contribution["item"] as? Int) == 2,
+                  (contribution["span"] as? Int) == 1,
+                  c114AnonymousTextNumberNear(contribution, key: "value", expected: expected) else {
+                return false
+            }
+            return axis != "Columns" || (contribution["kind"] as? String) == "MaxContent"
+        }
+        guard hasExpectedContribution else { return false }
     }
     return true
 }
@@ -7880,6 +7982,10 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"
     case "anonymous-nowrap-min-content":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]"
+    case "anonymous-normal-newline-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]"
+    case "anonymous-pre-line-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"
     case "anonymous-comment-continuation", "anonymous-hidden-child-continuation":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]"
     case "anonymous-runs-around-block":
@@ -9242,7 +9348,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "three-images-anonymous-text-reversed" { return 4 }
     if c114IsAnonymousTextImageScene(sceneID) { return 2 }
     if ["anonymous-min-content-wrap", "anonymous-normal-min-content",
-        "anonymous-nowrap-min-content", "anonymous-comment-continuation",
+        "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
+        "anonymous-pre-line-max-content", "anonymous-comment-continuation",
         "anonymous-hidden-child-continuation"].contains(sceneID) {
         return 1
     }
@@ -9298,7 +9405,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
     ["anonymous-min-content-wrap", "anonymous-normal-min-content",
-     "anonymous-nowrap-min-content", "anonymous-comment-continuation",
+     "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
+     "anonymous-pre-line-max-content", "anonymous-comment-continuation",
      "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
      "whitespace-does-not-create-item"].contains(sceneID)
 }
@@ -15176,6 +15284,8 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             let expectedNodeFrames = c114ExpectedNodeFrames(c114GridTrackSizingSceneID)
             let expectedTextInputs = c114ExpectedTextIntrinsicInputs(
                 c114GridTrackSizingSceneID, report: report)
+            let expectedAnonymousNewlineTraceMatches = c114AnonymousNewlineTraceMatches(
+                c114GridTrackSizingSceneID, report: report)
             let expectedImageInputs = c114ExpectedImageIntrinsicInputs(
                 c114GridTrackSizingSceneID, report: report)
             let expectedNodeFramesMatch = c114ExpectedNodeFramesMatch(
@@ -15255,6 +15365,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             guard report.hasPrefix("status=0 "),
                   report.contains("layout=ready boxes=\(c114ExpectedBoxCount(c114GridTrackSizingSceneID))"),
                   expectedRootFrameMatches, expectedItemFrameMatches, expectedTextInputs,
+                  expectedAnonymousNewlineTraceMatches,
                   expectedImageInputs, expectedNodeFramesMatch,
                   expectedFixedAutoAreaTraceMatches, expectedCrossAxisTrackTraceMatches,
                   expectedCyclicAutoRepeatTraceMatches,

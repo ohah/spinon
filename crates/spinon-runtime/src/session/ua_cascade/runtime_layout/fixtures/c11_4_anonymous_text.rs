@@ -14,10 +14,12 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 7] = [
+const SCENE_IDS: [&str; 9] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
+    "anonymous-normal-newline-max-content",
+    "anonymous-pre-line-max-content",
     "anonymous-comment-continuation",
     "anonymous-runs-around-block",
     "anonymous-hidden-child-continuation",
@@ -86,6 +88,9 @@ fn validate_direct_children(
         "anonymous-min-content-wrap"
         | "anonymous-normal-min-content"
         | "anonymous-nowrap-min-content" => &[ExpectedChild::Text("XX XX")],
+        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+            &[ExpectedChild::Text("XX\nXX")]
+        }
         "anonymous-comment-continuation" => &[ExpectedChild::Text("XX"), ExpectedChild::Text("XX")],
         "anonymous-runs-around-block" => &[
             ExpectedChild::Text("XX"),
@@ -201,14 +206,27 @@ fn validate_grid_style(
     } else {
         "wrap"
     };
+    let expected_white_space_collapse = if scene_id == "anonymous-pre-line-max-content" {
+        "preserve-breaks"
+    } else {
+        "collapse"
+    };
     let (expected_width, expected_height) = match scene_id {
         "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
+            (20.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
             (20.0, ComputedCssDimension::Auto)
         }
         "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
         _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
     };
-    validate_text_profile_properties(style.node_id, &style.properties, expected_wrap_mode)?;
+    validate_text_profile_properties(
+        style.node_id,
+        &style.properties,
+        expected_white_space_collapse,
+        expected_wrap_mode,
+    )?;
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
         || style.properties.get("align-items").map(String::as_str) != Some("start")
@@ -222,7 +240,7 @@ fn validate_grid_style(
             .properties
             .get("white-space-collapse")
             .map(String::as_str)
-            != Some("collapse")
+            != Some(expected_white_space_collapse)
         || style.properties.get("text-wrap-mode").map(String::as_str) != Some(expected_wrap_mode)
         || style.properties.get("order").map(String::as_str) != Some("0")
         || style.layout_dimensions.width != ComputedCssDimension::LengthPx(expected_width)
@@ -272,6 +290,9 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
             vec![ComputedCssGridTrackSize::MinContent]
         }
+        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+            vec![ComputedCssGridTrackSize::MaxContent]
+        }
         "anonymous-comment-continuation" => vec![
             ComputedCssGridTrackSize::MaxContent,
             ComputedCssGridTrackSize::Fraction(1.0),
@@ -297,6 +318,8 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         "anonymous-min-content-wrap"
             | "anonymous-normal-min-content"
             | "anonymous-nowrap-min-content"
+            | "anonymous-normal-newline-max-content"
+            | "anonymous-pre-line-max-content"
     ) {
         vec![ComputedCssGridTrackSize::Auto]
     } else {
@@ -319,6 +342,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
 fn validate_text_profile_properties(
     node_id: NodeId,
     properties: &BTreeMap<String, String>,
+    expected_white_space_collapse: &str,
     expected_wrap_mode: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
     for (name, expected) in [
@@ -327,7 +351,6 @@ fn validate_text_profile_properties(
         ("font-weight", "400"),
         ("font-style", "normal"),
         ("line-height", "10px"),
-        ("white-space-collapse", "collapse"),
         ("word-break", "normal"),
         ("direction", "ltr"),
         ("line-break", "auto"),
@@ -347,6 +370,16 @@ fn validate_text_profile_properties(
                 Some(format!("{name}: expected {expected}, got {value:?}")),
             ));
         }
+    }
+    let actual_white_space_collapse = properties.get("white-space-collapse").map(String::as_str);
+    if actual_white_space_collapse != Some(expected_white_space_collapse) {
+        return Err(layout_failure(
+            "unsupported_c114_anonymous_text_style",
+            Some(node_id.get()),
+            Some(format!(
+                "white-space-collapse: expected {expected_white_space_collapse}, got {actual_white_space_collapse:?}"
+            )),
+        ));
     }
     let actual_wrap_mode = properties.get("text-wrap-mode").map(String::as_str);
     if actual_wrap_mode != Some(expected_wrap_mode) {
@@ -403,10 +436,10 @@ fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
         line_height_is_normal: false,
         font_weight: 400.0,
         font_style: FontStyleMode::Normal,
-        white_space: if scene_id == "anonymous-nowrap-min-content" {
-            WhiteSpaceMode::NoWrap
-        } else {
-            WhiteSpaceMode::Normal
+        white_space: match scene_id {
+            "anonymous-nowrap-min-content" => WhiteSpaceMode::NoWrap,
+            "anonymous-pre-line-max-content" => WhiteSpaceMode::PreLine,
+            _ => WhiteSpaceMode::Normal,
         },
         word_break: WordBreakMode::Normal,
         direction: TextParagraphDirection::Ltr,
@@ -462,7 +495,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 7);
+        assert_eq!(SCENE_IDS.len(), 9);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -521,12 +554,47 @@ mod tests {
             ("text-indent".to_owned(), "0px".to_owned()),
         ]);
         assert!(
-            validate_text_profile_properties(NodeId::new(1).unwrap(), &properties, "wrap").is_ok()
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &properties,
+                "collapse",
+                "wrap",
+            )
+            .is_ok()
         );
         let mut nowrap = properties.clone();
         nowrap.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
         assert!(
-            validate_text_profile_properties(NodeId::new(1).unwrap(), &nowrap, "nowrap").is_ok()
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &nowrap,
+                "collapse",
+                "nowrap",
+            )
+            .is_ok()
+        );
+        let mut pre_line = properties.clone();
+        pre_line.insert(
+            "white-space-collapse".to_owned(),
+            "preserve-breaks".to_owned(),
+        );
+        assert!(
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &pre_line,
+                "preserve-breaks",
+                "wrap",
+            )
+            .is_ok()
+        );
+        assert!(
+            validate_text_profile_properties(
+                NodeId::new(1).unwrap(),
+                &pre_line,
+                "collapse",
+                "wrap",
+            )
+            .is_err()
         );
         for (name, changed) in [
             ("font-family", "sans-serif"),
@@ -550,8 +618,13 @@ mod tests {
             let mut mutated = properties.clone();
             mutated.insert(name.to_owned(), changed.to_owned());
             assert!(
-                validate_text_profile_properties(NodeId::new(1).unwrap(), &mutated, "wrap")
-                    .is_err(),
+                validate_text_profile_properties(
+                    NodeId::new(1).unwrap(),
+                    &mutated,
+                    "collapse",
+                    "wrap",
+                )
+                .is_err(),
                 "the fixture must reject a changed {name}"
             );
         }
@@ -575,6 +648,18 @@ mod tests {
         assert!(grid_tracks_match(
             &min_content_single_track,
             "anonymous-nowrap-min-content"
+        ));
+        let max_content_single_track = grid(
+            vec![ComputedCssGridTrackSize::MaxContent],
+            vec![ComputedCssGridTrackSize::Auto],
+        );
+        assert!(grid_tracks_match(
+            &max_content_single_track,
+            "anonymous-normal-newline-max-content"
+        ));
+        assert!(grid_tracks_match(
+            &max_content_single_track,
+            "anonymous-pre-line-max-content"
         ));
 
         macro_rules! rejects_grid_mutation {

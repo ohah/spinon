@@ -924,7 +924,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
             "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
             "anonymous-min-content-wrap", "anonymous-normal-min-content",
-            "anonymous-nowrap-min-content", "anonymous-comment-continuation",
+            "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
+            "anonymous-pre-line-max-content", "anonymous-comment-continuation",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -4939,6 +4940,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-min-content-wrap")) return "width=120,height=20";
         if (sceneId.equals("anonymous-normal-min-content")) return "width=20,height=20";
         if (sceneId.equals("anonymous-nowrap-min-content")) return "width=20,height=10";
+        if (sceneId.equals("anonymous-normal-newline-max-content")) return "width=20,height=10";
+        if (sceneId.equals("anonymous-pre-line-max-content")) return "width=20,height=20";
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return "width=40,height=184";
         if (c114IsAnonymousTextMultiImageScene(sceneId)) return "width=220,height=180";
         if (c114IsAnonymousTextImageScene(sceneId)) return "width=220,height=60";
@@ -5118,6 +5121,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (C114GridAutoFitColumnsWpt.isScene(sceneId)) return "";
         if (C114FlexStage.isScene(sceneId)) return "";
+        if (c114IsAnonymousTextScene(sceneId)) return "";
         if (c114GridAutoRepeatIntrinsicWptState(sceneId) != null) {
             return "width=100,height=20";
         }
@@ -5436,6 +5440,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (sceneId.equals("anonymous-normal-newline-max-content")
+                || sceneId.equals("anonymous-pre-line-max-content")) {
+            return c114AnonymousNewlineTextIntrinsicInputsMatch(sceneId, report);
+        }
         if (c114IsGenericDirectTextScene(sceneId)) {
             return c114GenericDirectTextIntrinsicInputsMatch(sceneId, report);
         }
@@ -5615,6 +5623,142 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && source.optDouble("minContentHeight", Double.NaN) == minContentHeight
                     && source.optDouble("maxContent", Double.NaN) == maxContent
                     && source.optDouble("maxContentHeight", Double.NaN) == maxContentHeight;
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114AnonymousNewlineTextIntrinsicInputsMatch(
+            String sceneId, String report
+    ) {
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        boolean preLine = sceneId.equals("anonymous-pre-line-max-content");
+        double expectedWidth = preLine ? 20.0 : 50.0;
+        double expectedHeight = preLine ? 20.0 : 10.0;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            if (revision == null
+                    || !revision.optString("source", "").startsWith("HostDocument")
+                    || revision.optLong("style", -1) < 0
+                    || revision.optLong("environment", -1) < 0
+                    || revision.optLong("intrinsicSize", -1) < 0) return false;
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (inputs == null || inputs.length() != 1) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            if (input == null || input.optInt("grid", -1) != 1
+                    || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
+                return false;
+            }
+            org.json.JSONObject source = input.optJSONObject("source");
+            if (source == null || !"text".equals(source.optString("kind"))
+                    || source.optInt("fontRegistryRevision", -1) != 1
+                    || !c114AnonymousTextNumberNear(source, "minContent", 20.0)
+                    || !c114AnonymousTextNumberNear(source, "minContentHeight", 20.0)
+                    || !c114AnonymousTextNumberNear(source, "maxContent", expectedWidth)
+                    || !c114AnonymousTextNumberNear(source, "maxContentHeight", expectedHeight)) {
+                return false;
+            }
+            org.json.JSONArray textSources = input.optJSONArray("textSources");
+            if (textSources == null || textSources.length() != 1) return false;
+            org.json.JSONObject textSource = textSources.optJSONObject(0);
+            if (textSource == null || textSource.optInt("node", -1) != 2
+                    || !"XX\nXX".equals(textSource.optString("text"))) return false;
+            org.json.JSONArray frames = diagnostics.optJSONArray("gridItemFrames");
+            if (frames == null || frames.length() != 1) return false;
+            org.json.JSONObject frame = frames.optJSONObject(0);
+            if (frame == null || frame.optInt("node", -1) != 2
+                    || !c114AnonymousTextNumberNear(frame, "x", 0.0)
+                    || !c114AnonymousTextNumberNear(frame, "y", 0.0)
+                    || !c114AnonymousTextNumberNear(frame, "width", expectedWidth)
+                    || !c114AnonymousTextNumberNear(frame, "height", expectedHeight)) return false;
+            org.json.JSONArray textLayouts = diagnostics.optJSONArray("gridItemTextLayouts");
+            if (textLayouts == null || textLayouts.length() != 1) return false;
+            org.json.JSONObject textLayout = textLayouts.optJSONObject(0);
+            org.json.JSONObject paragraphStyle = textLayout == null
+                    ? null : textLayout.optJSONObject("paragraphStyle");
+            return textLayout != null && textLayout.optInt("node", -1) == 2
+                    && (preLine ? "PreLine" : "Normal").equals(
+                            paragraphStyle == null ? "" : paragraphStyle.optString("whiteSpace"));
+        } catch (org.json.JSONException | ClassCastException error) {
+            return false;
+        }
+    }
+
+    private static boolean c114AnonymousTextNumberNear(
+            org.json.JSONObject object, String key, double expected
+    ) {
+        double actual = object.optDouble(key, Double.NaN);
+        return Double.isFinite(actual) && Math.abs(actual - expected) <= 1.0 / 64.0;
+    }
+
+    private static boolean c114AnonymousNewlineTraceMatches(String sceneId, String report) {
+        if (!sceneId.equals("anonymous-normal-newline-max-content")
+                && !sceneId.equals("anonymous-pre-line-max-content")) return true;
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        boolean preLine = sceneId.equals("anonymous-pre-line-max-content");
+        double expectedWidth = preLine ? 20.0 : 50.0;
+        double expectedHeight = preLine ? 20.0 : 10.0;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONArray traces = ((org.json.JSONObject) value)
+                    .optJSONArray("trackSizingTraces");
+            if (traces == null || traces.length() != 1) return false;
+            org.json.JSONObject trace = traces.optJSONObject(0);
+            org.json.JSONArray passes = trace == null ? null : trace.optJSONArray("passes");
+            org.json.JSONObject columnsPass = passes == null ? null : passes.optJSONObject(0);
+            org.json.JSONObject rowsPass = passes == null ? null : passes.optJSONObject(1);
+            if (trace == null || trace.optInt("grid", -1) != 1
+                    || passes == null || passes.length() != 2
+                    || columnsPass == null || rowsPass == null
+                    || !"Columns".equals(columnsPass.optString("axis"))
+                    || !"Rows".equals(rowsPass.optString("axis"))) return false;
+            for (int passIndex = 0; passIndex < passes.length(); passIndex++) {
+                org.json.JSONObject pass = passes.optJSONObject(passIndex);
+                if (pass == null) return false;
+                String axis = pass.optString("axis");
+                double expected = "Columns".equals(axis) ? expectedWidth : expectedHeight;
+                org.json.JSONArray stages = pass.optJSONArray("stages");
+                org.json.JSONObject finalStage = stages == null || stages.length() == 0
+                        ? null : stages.optJSONObject(stages.length() - 1);
+                org.json.JSONArray tracks = finalStage == null
+                        ? null : finalStage.optJSONArray("tracks");
+                if (tracks == null) return false;
+                int nonGutterTracks = 0;
+                boolean finalTrackMatches = false;
+                for (int index = 0; index < tracks.length(); index++) {
+                    org.json.JSONObject track = tracks.optJSONObject(index);
+                    if (track == null) return false;
+                    if (track.optBoolean("gutter") || track.optBoolean("collapsed")) continue;
+                    nonGutterTracks++;
+                    finalTrackMatches = c114AnonymousTextNumberNear(track, "baseSize", expected);
+                }
+                if (nonGutterTracks != 1 || !finalTrackMatches) return false;
+                org.json.JSONArray contributions = pass.optJSONArray("contributions");
+                if (contributions == null) return false;
+                boolean contributionMatches = false;
+                for (int index = 0; index < contributions.length(); index++) {
+                    org.json.JSONObject contribution = contributions.optJSONObject(index);
+                    if (contribution == null || contribution.optInt("item", -1) != 2
+                            || !c114AnonymousTextNumberNear(contribution, "value", expected)) {
+                        continue;
+                    }
+                    if (!"Columns".equals(axis)
+                            || "MaxContent".equals(contribution.optString("kind"))) {
+                        contributionMatches = true;
+                        break;
+                    }
+                }
+                if (!contributionMatches) return false;
+            }
+            return true;
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
@@ -8231,6 +8375,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]";
             case "anonymous-nowrap-min-content":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]";
+            case "anonymous-normal-newline-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]";
+            case "anonymous-pre-line-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]";
             case "anonymous-comment-continuation":
             case "anonymous-hidden-child-continuation":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]";
@@ -10571,6 +10719,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
+                || sceneId.equals("anonymous-normal-newline-max-content")
+                || sceneId.equals("anonymous-pre-line-max-content")
                 || sceneId.equals("anonymous-comment-continuation")
                 || sceneId.equals("anonymous-hidden-child-continuation")) return 1;
         if (sceneId.equals("anonymous-runs-around-block")) return 2;
@@ -10656,6 +10806,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
+                || sceneId.equals("anonymous-normal-newline-max-content")
+                || sceneId.equals("anonymous-pre-line-max-content")
                 || sceneId.equals("anonymous-comment-continuation")
                 || sceneId.equals("anonymous-runs-around-block")
                 || sceneId.equals("anonymous-hidden-child-continuation")
@@ -15673,6 +15825,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     c114GridTrackSizingSceneId, result);
             boolean c114TextIntrinsicInputsMatch = c114ExpectedTextIntrinsicInputs(
                     c114GridTrackSizingSceneId, result);
+            boolean anonymousNewlineTraceMatches = c114AnonymousNewlineTraceMatches(
+                    c114GridTrackSizingSceneId, result);
             boolean c114CrossAxisSpanGroupFramesMatch = c114ExpectedCrossAxisSpanGroupFramesMatch(
                     c114GridTrackSizingSceneId, result);
             boolean c114ImageIntrinsicInputsMatch = c114ExpectedImageIntrinsicInputs(
@@ -15713,6 +15867,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114CrossAxisSpanGroupFramesMatch
                     || !c114MultiSpanFramesMatch
                     || !c114TextIntrinsicInputsMatch
+                    || !anonymousNewlineTraceMatches
                     || !c114ImageIntrinsicInputsMatch
                     || !rowAxisSpanStageTraceMatches
                     || !flexStageTraceMatches) {
