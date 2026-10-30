@@ -1,0 +1,1080 @@
+{
+  "sourceHead": "2102696e458e23993387d218d8932d1dcb062cba",
+  "sourceTree": "2457267a884fb39811a8d0b22b540682e8770afd",
+  "selectedRoot": "build/spinon/c11-4-direct-text-minmax-roadmap-root-20261030",
+  "selectedOutputRoot": "build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030",
+  "fileCount": 123,
+  "totalBytes": 10551275,
+  "copiedStaticCount": 87,
+  "expectedRoutes": [
+    "roadmap.html",
+    "roadmap.svg",
+    "icon.svg",
+    "STATUS.html",
+    "internal/0059-c11-grid-layout.html",
+    "plan/c11-4-direct-text-aspect-ratio-min-max.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/minmax-implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/pr-diff-review-30.html",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+    "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json"
+  ],
+  "excludedExistingPreviewRoute": "404.html",
+  "noDeletes": true,
+  "copiedStatic": [
+    {
+      "path": "roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-min-max-precomparison.html",
+      "bytes": 4309,
+      "sha256": "79f2e9994ba2fcff01d521e6c228b2526da9b93fd2b973f139e761838f95fcfc"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    }
+  ],
+  "files": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 339331,
+      "sha256": "0b47de87c99d3e343f5384e4e34d9240a5fb4dc3ebd996d8e3509e2df69f5c57"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.html",
+      "bytes": 37861,
+      "sha256": "7ead39173a18ada36c84a0543e7fab39c95b0fe6ee9edf75b7de8a998db69fd1"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/minmax-implementation-runtime-review-20.html",
+      "bytes": 32985,
+      "sha256": "092ffd73db72e5696629c3cf77bf31459fc95b7ddbefaf606825537c9c796c99"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/pr-diff-review-30.html",
+      "bytes": 29641,
+      "sha256": "520b06272dc60b63a19c52badb69144764aeeaa0979ab8eda710fc5f6787bec3"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "bytes": 47540,
+      "sha256": "2321bb836efcf6aea9c270afbf4946f4c238731e8840a2d955aee1b7b85ddf70"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-min-max.html",
+      "bytes": 38792,
+      "sha256": "8fc24cb949361da26761df5c482d677801dae2fd388390f6d0815281dd7ff54f"
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 299028,
+      "sha256": "217a2c0c4783450313331d9051583f67cfd951191b2529ad8a07ba4c2dc3d357"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "bytes": 1403,
+      "sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "bytes": 9837,
+      "sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "bytes": 9825,
+      "sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "bytes": 6330,
+      "sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "bytes": 9863,
+      "sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "bytes": 6891,
+      "sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "bytes": 5771,
+      "sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "bytes": 3960,
+      "sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "bytes": 6475,
+      "sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "bytes": 4313,
+      "sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "bytes": 133919,
+      "sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "bytes": 81213,
+      "sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "bytes": 66013,
+      "sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "bytes": 72037,
+      "sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "bytes": 33326,
+      "sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "bytes": 3510,
+      "sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "bytes": 1898,
+      "sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "bytes": 30941,
+      "sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "bytes": 3902,
+      "sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "bytes": 4853,
+      "sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "bytes": 11339,
+      "sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "bytes": 6924,
+      "sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "bytes": 11362,
+      "sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-min-max.html",
+      "bytes": 38729,
+      "sha256": "72159a70bbf35840e5e80b708b464e64e155bbe44c80b9a8b50c8086531959bc"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 298985,
+      "sha256": "f3fd67efe9c1676d2db73a8fc0d152be05a03907e8d2e52865dfd2eee864b831"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 662817,
+      "sha256": "577edba396e449b3476fcaed687458249dd8713bb5a15ddb04ebac88a6aee7ac"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.864657040c.png",
+      "bytes": 132333,
+      "sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62"
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-minmax-min-width-45.91c0caf286.png",
+      "bytes": 77996,
+      "sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.1ea58295dc.js",
+      "bytes": 291913,
+      "sha256": "fb04a4e2cb8d37177888b78bc832ecb2e5a36d76d95246c45a7fd0a8c662d603"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.18491f5fcc.js",
+      "bytes": 711453,
+      "sha256": "e898345e45eb947f3813d3c1d5742077d0eb72ea018f5b15692f4fde245a1d61"
+    },
+    {
+      "path": "static/js/async/route-7bcebc42698e.10cef2438a.js",
+      "bytes": 12717,
+      "sha256": "b14a53ea5ee23641a58076a2914d5010c9fd8fcb7568fbcb4e0d3ef1a49b1f9c"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.3c0863028d.js",
+      "bytes": 711392,
+      "sha256": "a1d8d84cf3049924f8a8dbc60f17401da63e2697f022718d2cfaed8a5cccecf9"
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.6667d5f742.js",
+      "bytes": 291920,
+      "sha256": "129c6c68ceae8275f0e02f8e8ecc09e16d6940cd5ffa7797db08e0c000e6c56a"
+    },
+    {
+      "path": "static/js/async/route-b888449d958c.b9a14a085a.js",
+      "bytes": 32599,
+      "sha256": "21e8244883e50f24588845020dd9a5d0ae8107f9c5122e49c4035f25d8148962"
+    },
+    {
+      "path": "static/js/async/route-c11eae28f0b1.a73abef411.js",
+      "bytes": 22916,
+      "sha256": "e74d66dba50bf5ec76ee3e9d56dd2065dabc90c6a7ab6f5d3f7de4ab77f20f80"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.549fc2a615.js",
+      "bytes": 342297,
+      "sha256": "f4d28459cfb8e869997ae6215a62e23ddfb41d50b6581713a37965b11ba99b6e"
+    },
+    {
+      "path": "static/js/async/route-c9aeeb303290.3f8aeba3de.js",
+      "bytes": 15044,
+      "sha256": "6fa5dd00e55d228aa208189c1bc246cdc00f04397e57772d809a22d22db4c397"
+    },
+    {
+      "path": "static/js/async/route-edd6d375ab6d.0fe3042d68.js",
+      "bytes": 22334,
+      "sha256": "b325ffd8d2a0b17b6d77a4a7907a15b79da5711e71b521b10fa6f57e9ce950e7"
+    },
+    {
+      "path": "static/js/async/route-f71df03c78be.5c21133572.js",
+      "bytes": 22928,
+      "sha256": "696892540ee4c23ef26fd921a794b84b16b09a071b400a01c2b646eabb335e72"
+    },
+    {
+      "path": "static/js/index.b15ee47d61.js",
+      "bytes": 80298,
+      "sha256": "cd1fb98e211297234faa8dffe97eb1a9882479e1489cf585e5904b6a8ffefb79"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.1a4e1b90.json",
+      "bytes": 1414726,
+      "sha256": "1a4e1b906d034cf9786770fdf1c54a895f1fb33c8e0b986cdabe311941969688"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 662601,
+      "sha256": "93f0f19115485b05d198584decac1d64b8ab7c4fd7d5d70fa986725589dc7d4f"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-min-max-precomparison.html",
+      "bytes": 4309,
+      "sha256": "79f2e9994ba2fcff01d521e6c228b2526da9b93fd2b973f139e761838f95fcfc"
+    }
+  ]
+}

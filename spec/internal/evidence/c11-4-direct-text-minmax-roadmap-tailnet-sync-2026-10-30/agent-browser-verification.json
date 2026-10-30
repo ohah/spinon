@@ -1,0 +1,47 @@
+{
+  "source_commit": "2102696e458e23993387d218d8932d1dcb062cba",
+  "source_tree": "2457267a884fb39811a8d0b22b540682e8770afd",
+  "tool": "Agent Browser",
+  "terminal_browser_used": false,
+  "session_name": "spinon-c114-roadmap-sync",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+      "title": "스피논 구현 로드맵",
+      "visible_markers": [
+        "PR #850",
+        "4959332936a6ad599e1355d18161b90a9fea05bf",
+        "42/42",
+        "129/129",
+        "72/213"
+      ],
+      "linked_simulator_images": [
+        { "platform": "Android", "loaded": true, "width": 1080, "height": 2400 },
+        { "platform": "iOS", "loaded": true, "width": 1206, "height": 2622 }
+      ],
+      "screenshot": {
+        "path": "tailnet-roadmap-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "sha256": "50fa17f8f0a7dc147a98e4493bc1ff73e8f75572f5bb9c393a76a11faaae8eec"
+      }
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+      "visible_markers": ["72/213"],
+      "c11_4_checkbox_checked": false,
+      "screenshot": {
+        "path": "tailnet-status-agent-browser.png",
+        "width": 1280,
+        "height": 633,
+        "sha256": "9f3590cdc60bfd797aabb76a3c1cd502a74c1ad0c601b23673f3b881f29a78ba"
+      }
+    }
+  ],
+  "browser_closed": true,
+  "active_session_after_close": false,
+  "session_list_after_close": [],
+  "agent_browser_process_after_close": false,
+  "preview_server_left_running": true,
+  "scope_note": "Rendered Tailnet preview observation only; this is not CI, a complete site audit, or overall C11 completion."
+}

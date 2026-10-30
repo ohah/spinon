@@ -1,0 +1,1246 @@
+{
+  "selected_output_relative": "build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030",
+  "selected_route_count": 123,
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01",
+  "source_bytes_total": 10551275,
+  "backup_bytes_total": 3168171,
+  "counts": {
+    "create": 102,
+    "replace": 8,
+    "same": 13
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "source_bytes": 339331,
+      "source_sha256": "0b47de87c99d3e343f5384e4e34d9240a5fb4dc3ebd996d8e3509e2df69f5c57",
+      "target_exists": true,
+      "previous_bytes": 338855,
+      "previous_sha256": "7c49ae56f1dac6333895afbd7902b005892a65502eb1f2a1ef47468beabe938c",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/internal/0059-c11-grid-layout.html"
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "status": "create",
+      "source_bytes": 1403,
+      "source_sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "status": "create",
+      "source_bytes": 9837,
+      "source_sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "status": "create",
+      "source_bytes": 9825,
+      "source_sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "status": "create",
+      "source_bytes": 6330,
+      "source_sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "status": "create",
+      "source_bytes": 9863,
+      "source_sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "status": "create",
+      "source_bytes": 5771,
+      "source_sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "status": "create",
+      "source_bytes": 3960,
+      "source_sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "status": "create",
+      "source_bytes": 6475,
+      "source_sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "status": "create",
+      "source_bytes": 4313,
+      "source_sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "status": "create",
+      "source_bytes": 133919,
+      "source_sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "status": "create",
+      "source_bytes": 66013,
+      "source_sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "status": "create",
+      "source_bytes": 72037,
+      "source_sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "status": "create",
+      "source_bytes": 33326,
+      "source_sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "status": "create",
+      "source_bytes": 3510,
+      "source_sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "status": "create",
+      "source_bytes": 1898,
+      "source_sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "status": "create",
+      "source_bytes": 30941,
+      "source_sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "status": "create",
+      "source_bytes": 3902,
+      "source_sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.html",
+      "status": "create",
+      "source_bytes": 37861,
+      "source_sha256": "7ead39173a18ada36c84a0543e7fab39c95b0fe6ee9edf75b7de8a998db69fd1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "status": "create",
+      "source_bytes": 4853,
+      "source_sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "status": "create",
+      "source_bytes": 77996,
+      "source_sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "status": "create",
+      "source_bytes": 11339,
+      "source_sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "status": "create",
+      "source_bytes": 6924,
+      "source_sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "status": "create",
+      "source_bytes": 132333,
+      "source_sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "status": "create",
+      "source_bytes": 11362,
+      "source_sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/minmax-implementation-runtime-review-20.html",
+      "status": "create",
+      "source_bytes": 32985,
+      "source_sha256": "092ffd73db72e5696629c3cf77bf31459fc95b7ddbefaf606825537c9c796c99",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/pr-diff-review-30.html",
+      "status": "create",
+      "source_bytes": 29641,
+      "source_sha256": "520b06272dc60b63a19c52badb69144764aeeaa0979ab8eda710fc5f6787bec3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html",
+      "status": "replace",
+      "source_bytes": 47540,
+      "source_sha256": "2321bb836efcf6aea9c270afbf4946f4c238731e8840a2d955aee1b7b85ddf70",
+      "target_exists": true,
+      "previous_bytes": 49133,
+      "previous_sha256": "564694dc7c42135b116136e40b65f140dbc256babf25147e9580aa45f0a92d43",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html"
+    },
+    {
+      "path": "plan/c11-4-direct-text-aspect-ratio-min-max.html",
+      "status": "create",
+      "source_bytes": 38792,
+      "source_sha256": "8fc24cb949361da26761df5c482d677801dae2fd388390f6d0815281dd7ff54f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "source_bytes": 299028,
+      "source_sha256": "217a2c0c4783450313331d9051583f67cfd951191b2529ad8a07ba4c2dc3d357",
+      "target_exists": true,
+      "previous_bytes": 303818,
+      "previous_sha256": "8a7fe86997ba3fa2b09460a8ee7cfef6916c75f73160564e9e5652f6b8e4a8d3",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "public/icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "status": "create",
+      "source_bytes": 1403,
+      "source_sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "status": "create",
+      "source_bytes": 9837,
+      "source_sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "status": "create",
+      "source_bytes": 9825,
+      "source_sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "status": "create",
+      "source_bytes": 6330,
+      "source_sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "status": "create",
+      "source_bytes": 9863,
+      "source_sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "status": "create",
+      "source_bytes": 5771,
+      "source_sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "status": "create",
+      "source_bytes": 3960,
+      "source_sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "status": "create",
+      "source_bytes": 6475,
+      "source_sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "status": "create",
+      "source_bytes": 4313,
+      "source_sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "status": "create",
+      "source_bytes": 133919,
+      "source_sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "status": "create",
+      "source_bytes": 66013,
+      "source_sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "status": "create",
+      "source_bytes": 72037,
+      "source_sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "status": "create",
+      "source_bytes": 33326,
+      "source_sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "status": "create",
+      "source_bytes": 3510,
+      "source_sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "status": "create",
+      "source_bytes": 1898,
+      "source_sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "status": "create",
+      "source_bytes": 30941,
+      "source_sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "status": "create",
+      "source_bytes": 3902,
+      "source_sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "status": "create",
+      "source_bytes": 4853,
+      "source_sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "status": "create",
+      "source_bytes": 77996,
+      "source_sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "status": "create",
+      "source_bytes": 11339,
+      "source_sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "status": "create",
+      "source_bytes": 6924,
+      "source_sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "status": "create",
+      "source_bytes": 132333,
+      "source_sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "status": "create",
+      "source_bytes": 11362,
+      "source_sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/roadmap.html",
+      "status": "replace",
+      "source_bytes": 422336,
+      "source_sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "target_exists": true,
+      "previous_bytes": 420337,
+      "previous_sha256": "1e6ed9ce5339483b4536e41f78ba3271c37c2e14e475f96346d2eecdcf3cdd74",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/public/roadmap.html"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "status": "same",
+      "source_bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_exists": true,
+      "previous_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/capture-source-comparison.json",
+      "status": "create",
+      "source_bytes": 1403,
+      "source_sha256": "9e8c2ad910428e84cd2d0ae10b16a21e4b638b6740611473ea10116abfbb5bcf",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.json",
+      "status": "create",
+      "source_bytes": 9837,
+      "source_sha256": "4784a5fc2ca9fb37f84f6df24c00c56201c7b0b8ebe499281a02a4ca4a2569bd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.json",
+      "status": "create",
+      "source_bytes": 9825,
+      "source_sha256": "44da17e6489efb94c6db908458828246fafe20fbde0a9c47ce679d2c9d5241b1",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-agent-browser.raw.json",
+      "status": "create",
+      "source_bytes": 6330,
+      "source_sha256": "8bd809f8728339bf923ef7f0b3f61feec02f743ca2b25d28be31b30fcc53eb17",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.json",
+      "status": "create",
+      "source_bytes": 9863,
+      "source_sha256": "76d415520fba6badb64acfc6d2e1da696174b8ce10c6534938b7626ce804e711",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-embedded-auto-track.raw.json",
+      "status": "create",
+      "source_bytes": 6891,
+      "source_sha256": "b3864a99ba728a97b15127accc9e342e7cb554330172dfe221657688580c7d7b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.json",
+      "status": "create",
+      "source_bytes": 5771,
+      "source_sha256": "28796c6c0866ff321222c6bf2d0619cea5c218fc01c2dac9a1c48c3daa52423b",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass01.raw.json",
+      "status": "create",
+      "source_bytes": 3960,
+      "source_sha256": "9efd3f2a36e1b63947f60a2233129e0fa6132e335e41db84e0d5e279e4073ceb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.json",
+      "status": "create",
+      "source_bytes": 6475,
+      "source_sha256": "5f020a66f3b98008b7b593255c02063d7a36108d3be3722d28ea20d1f8fb4aff",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-observation-exploratory-pass02.raw.json",
+      "status": "create",
+      "source_bytes": 4313,
+      "source_sha256": "45426d1d828b61070a9fdb8079ec03812b9b32b34eeb25d3a05d022abf709e2c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser-auto-track.png",
+      "status": "create",
+      "source_bytes": 133919,
+      "source_sha256": "d57e4de66970e399b1edc113e09c5ceda095b42eb4e462c8659f1bacd3363539",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-agent-browser.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-embedded-source-pass03.png",
+      "status": "create",
+      "source_bytes": 81213,
+      "source_sha256": "a7a9bf1891be1c140c93a750d5f9def60aa30339e6c84ac14615876c6c845b3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass01.png",
+      "status": "create",
+      "source_bytes": 66013,
+      "source_sha256": "2993a1e26a9f0bcf7bf32ae8731d68dc01592cca0b8d7fd63848750e32b798a9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle-exploratory-pass02.png",
+      "status": "create",
+      "source_bytes": 72037,
+      "source_sha256": "e717259a06696c30d5a5aa53cf9a73ed9f32d52733416272e83ccddc3cf2b62f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/chrome-oracle.html",
+      "status": "create",
+      "source_bytes": 33326,
+      "source_sha256": "c7251ac14aea07cbf09bec9b0ddf16c97a6f0aac16d16ac8f5ea8c6b1669f7f4",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/expected-values.json",
+      "status": "create",
+      "source_bytes": 3510,
+      "source_sha256": "66a67b95a701b4e3456f875cace58550362709c6d8a34e72f29157ae01a3e695",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle-observation.json",
+      "status": "create",
+      "source_bytes": 1898,
+      "source_sha256": "8c96f37034104612f6080a3ddbd572cf9a59c873b00b31ded9a1e5536f71e076",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.html",
+      "status": "create",
+      "source_bytes": 30941,
+      "source_sha256": "8677c7487073ab369d034d70fd4f3284760cd327fd36bbc4e51ec485faea054a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/extended-range-oracle.png",
+      "status": "create",
+      "source_bytes": 3902,
+      "source_sha256": "4e1560b9818c168ec1d976f7e79a565b3bfb0eaead258faa31f97b3a4bd9e831",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/verify-precomparison.mjs",
+      "status": "create",
+      "source_bytes": 4853,
+      "source_sha256": "a5d2bd85a5e6f228d24beda0732fefcf47db92619e6f0cfea1635d3a6fa1e21a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png",
+      "status": "create",
+      "source_bytes": 77996,
+      "source_sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json",
+      "status": "create",
+      "source_bytes": 11339,
+      "source_sha256": "1f3847904df539f3ff7552711f2618e82fcb80ce610ac9458c8138065a0251f5",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/artifact-boundary/minmax-archive-boundary.json",
+      "status": "create",
+      "source_bytes": 6924,
+      "source_sha256": "7d81c110cfcff6ef6514208ad11d5693fe766e243f8c783866b024d40a6d0cbd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png",
+      "status": "create",
+      "source_bytes": 132333,
+      "source_sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "public/spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json",
+      "status": "create",
+      "source_bytes": 11362,
+      "source_sha256": "a8d00bf920b7a873a3d1ecc2f318a84c0d01b1f5e800acc3a8859563d4e433f3",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "source_bytes": 422336,
+      "source_sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "target_exists": true,
+      "previous_bytes": 420337,
+      "previous_sha256": "1e6ed9ce5339483b4536e41f78ba3271c37c2e14e475f96346d2eecdcf3cdd74",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/roadmap.html"
+    },
+    {
+      "path": "roadmap.svg",
+      "status": "same",
+      "source_bytes": 4835,
+      "source_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "target_exists": true,
+      "previous_bytes": 4835,
+      "previous_sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-direct-text-aspect-ratio-min-max.html",
+      "status": "create",
+      "source_bytes": 38729,
+      "source_sha256": "72159a70bbf35840e5e80b708b464e64e155bbe44c80b9a8b50c8086531959bc",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "source_bytes": 298985,
+      "source_sha256": "f3fd67efe9c1676d2db73a8fc0d152be05a03907e8d2e52865dfd2eee864b831",
+      "target_exists": true,
+      "previous_bytes": 303794,
+      "previous_sha256": "8b63a16902309ec91b25674ff6b9654fce09dc9502d5af7e7bfa8ecfd8bd57b9",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/spec/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "source_bytes": 662817,
+      "source_sha256": "577edba396e449b3476fcaed687458249dd8713bb5a15ddb04ebac88a6aee7ac",
+      "target_exists": true,
+      "previous_bytes": 666214,
+      "previous_sha256": "e95e6d4a64f0d0c99be7050676a64afc657ba0a51e8717ce3ef81105791cfbb1",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/spec/STATUS.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.864657040c.png",
+      "status": "create",
+      "source_bytes": 132333,
+      "source_sha256": "9ebf85b60f954b2716289f40a368580c13d8c498cd3f5e22d2db3a2ec6885c62",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/image/grid-text-aspect-ratio-minmax-min-width-45.91c0caf286.png",
+      "status": "create",
+      "source_bytes": 77996,
+      "source_sha256": "245358441a44d4808f24214b0cf9be3d05d1791b51c6140514a36625486918dd",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": "same",
+      "source_bytes": 217085,
+      "source_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "target_exists": true,
+      "previous_bytes": 217085,
+      "previous_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 384,
+      "source_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "target_exists": true,
+      "previous_bytes": 384,
+      "previous_sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "status": "same",
+      "source_bytes": 100,
+      "source_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "target_exists": true,
+      "previous_bytes": 100,
+      "previous_sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.1ea58295dc.js",
+      "status": "create",
+      "source_bytes": 291913,
+      "source_sha256": "fb04a4e2cb8d37177888b78bc832ecb2e5a36d76d95246c45a7fd0a8c662d603",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.18491f5fcc.js",
+      "status": "create",
+      "source_bytes": 711453,
+      "source_sha256": "e898345e45eb947f3813d3c1d5742077d0eb72ea018f5b15692f4fde245a1d61",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7bcebc42698e.10cef2438a.js",
+      "status": "create",
+      "source_bytes": 12717,
+      "source_sha256": "b14a53ea5ee23641a58076a2914d5010c9fd8fcb7568fbcb4e0d3ef1a49b1f9c",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.3c0863028d.js",
+      "status": "create",
+      "source_bytes": 711392,
+      "source_sha256": "a1d8d84cf3049924f8a8dbc60f17401da63e2697f022718d2cfaed8a5cccecf9",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.6667d5f742.js",
+      "status": "create",
+      "source_bytes": 291920,
+      "source_sha256": "129c6c68ceae8275f0e02f8e8ecc09e16d6940cd5ffa7797db08e0c000e6c56a",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b888449d958c.b9a14a085a.js",
+      "status": "create",
+      "source_bytes": 32599,
+      "source_sha256": "21e8244883e50f24588845020dd9a5d0ae8107f9c5122e49c4035f25d8148962",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c11eae28f0b1.a73abef411.js",
+      "status": "create",
+      "source_bytes": 22916,
+      "source_sha256": "e74d66dba50bf5ec76ee3e9d56dd2065dabc90c6a7ab6f5d3f7de4ab77f20f80",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.549fc2a615.js",
+      "status": "create",
+      "source_bytes": 342297,
+      "source_sha256": "f4d28459cfb8e869997ae6215a62e23ddfb41d50b6581713a37965b11ba99b6e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c9aeeb303290.3f8aeba3de.js",
+      "status": "create",
+      "source_bytes": 15044,
+      "source_sha256": "6fa5dd00e55d228aa208189c1bc246cdc00f04397e57772d809a22d22db4c397",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-edd6d375ab6d.0fe3042d68.js",
+      "status": "create",
+      "source_bytes": 22334,
+      "source_sha256": "b325ffd8d2a0b17b6d77a4a7907a15b79da5711e71b521b10fa6f57e9ce950e7",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-f71df03c78be.5c21133572.js",
+      "status": "create",
+      "source_bytes": 22928,
+      "source_sha256": "696892540ee4c23ef26fd921a794b84b16b09a071b400a01c2b646eabb335e72",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.b15ee47d61.js",
+      "status": "create",
+      "source_bytes": 80298,
+      "source_sha256": "cd1fb98e211297234faa8dffe97eb1a9882479e1489cf585e5904b6a8ffefb79",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "same",
+      "source_bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_exists": true,
+      "previous_bytes": 218364,
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 1209,
+      "source_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "target_exists": true,
+      "previous_bytes": 1209,
+      "previous_sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "same",
+      "source_bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_exists": true,
+      "previous_bytes": 35370,
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "status": "same",
+      "source_bytes": 222,
+      "source_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "target_exists": true,
+      "previous_bytes": 222,
+      "previous_sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "status": "same",
+      "source_bytes": 472,
+      "source_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "target_exists": true,
+      "previous_bytes": 472,
+      "previous_sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.1a4e1b90.json",
+      "status": "create",
+      "source_bytes": 1414726,
+      "source_sha256": "1a4e1b906d034cf9786770fdf1c54a895f1fb33c8e0b986cdabe311941969688",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "source_bytes": 662601,
+      "source_sha256": "93f0f19115485b05d198584decac1d64b8ab7c4fd7d5d70fa986725589dc7d4f",
+      "target_exists": true,
+      "previous_bytes": 665683,
+      "previous_sha256": "9d0df961c53d7a15ebd33cacf98b2ce5b482fe99325de86f0e3d27e5e2d3ba45",
+      "backup_path": "SpinonPreviewBackups/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/pass01/STATUS.html"
+    },
+    {
+      "path": "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-min-max-precomparison.html",
+      "status": "create",
+      "source_bytes": 4309,
+      "source_sha256": "79f2e9994ba2fcff01d521e6c228b2526da9b93fd2b973f139e761838f95fcfc",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ]
+}
