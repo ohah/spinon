@@ -1,0 +1,7 @@
+The first Tailnet copy invocation stopped in discoverPreviewServerPid before the file-copy loop:
+
+AssertionError [ERR_ASSERTION]: preview server has unexpected network handles
+
+2 !== 1
+
+The extra handle belonged to the active Agent Browser session used to inspect the pre-sync roadmap. No Tailnet targets were changed by this invocation. After closing that browser session, lsof showed only the existing listener on 127.0.0.1:8768; the subsequent copy and verification passed.

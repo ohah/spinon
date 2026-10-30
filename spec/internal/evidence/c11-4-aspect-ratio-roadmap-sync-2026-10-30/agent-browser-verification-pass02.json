@@ -1,0 +1,49 @@
+{
+  "session": "spinon-c114-pr834-roadmap-final-pass02",
+  "pages": [
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html?sync=c11-4-aspect-ratio-roadmap-sync-2026-10-30-pass02",
+      "title": "스피논 구현 로드맵",
+      "checks": {
+        "pr834Visible": true,
+        "mergeShaVisible": true,
+        "mergedAtVisible": true,
+        "fourScenesMentioned": true,
+        "androidFourOfFourAndSamplesTwelveOfTwelve": true,
+        "iosFourOfFourAndSamplesTwelveOfTwelve": true,
+        "incompleteC11AndC114Visible": true,
+        "officialCompletion72of213Visible": true,
+        "noCiSuccessClaim": true
+      },
+      "screenshot": "tailnet-roadmap-agent-browser-pass02.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html?sync=c11-4-aspect-ratio-roadmap-sync-2026-10-30-pass02",
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "checkboxes": {
+        "C11": false,
+        "C11_3": false,
+        "C11_3_3": false,
+        "C11_2_2": true,
+        "C11_2_3": true,
+        "C11_4": false
+      },
+      "officialCompletion": "72/213",
+      "screenshot": "tailnet-status-c11-agent-browser-pass02.png"
+    },
+    {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html?sync=c11-4-aspect-ratio-roadmap-sync-2026-10-30-pass02",
+      "title": "C11.4 · CSS Grid track sizing 계획 - 스피논 문서",
+      "checks": {
+        "aspectRatioHeadingRendered": true,
+        "nextFitContentHeadingRenderedSeparately": true,
+        "pr834MergeShaVisible": true,
+        "officialCompletion72of213Visible": true
+      },
+      "headings": [
+        "2026-10-30 direct-text preferred aspect-ratio intrinsic contribution · PR #834 병합",
+        "2026-10-30 fit-content() intrinsic limit 열 축 제한 slice · PR #811 병합"
+      ]
+    }
+  ]
+}
