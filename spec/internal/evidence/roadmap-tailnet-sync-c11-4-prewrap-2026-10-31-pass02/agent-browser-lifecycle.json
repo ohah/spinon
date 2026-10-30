@@ -1,0 +1,11 @@
+{
+  "session": "spinon-prewrap-pass02",
+  "roadmapOpenSucceeded": true,
+  "statusOpenSucceeded": true,
+  "closeCommandSucceeded": true,
+  "closeAllCommandSucceeded": true,
+  "daemonExitedAfterClose": true,
+  "chromeExitedAfterClose": true,
+  "finalProcessSearch": "No agent-browser or agent-browser Chrome process remained.",
+  "terminalBrowserUsed": false
+}

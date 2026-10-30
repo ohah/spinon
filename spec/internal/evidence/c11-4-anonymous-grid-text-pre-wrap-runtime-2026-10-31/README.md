@@ -37,4 +37,4 @@
 
 기준 관찰과 독립 계산은 [PreWrap 사전 비교](../c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.md), 범위는 [계획](../../../../plan/c11-4-anonymous-grid-text-pre-wrap.md)에 있다. 이번 실행은 opt-in C11.4 fixture route의 anonymous text track sizing만 확인한다. 일반 author CSS cascade, arbitrary HTML/root-HTML parity, WPT, 임의 font/script, `white-space:pre`, `break-spaces`, 실기기·hardware renderer 및 전체 C11.4는 범위 밖이다.
 
-계획 PR #869는 병합됐다. 구현/runtime 실패 관점 20개, 현재 source 후보 diff 로컬 적대 검토 30개, product/fixture static archive 경계와 최종 simulator/build 검증은 끝났다. 구현 PR을 연 뒤 최종 PR head diff가 검토한 source snapshot과 일치하는지 대조하고 CI/merge 상태를 확인해야 한다. 공식 C11 완료 수 `72/213` 및 C11.4 checkbox는 유지한다.
+계획 PR #869와 구현 PR [#870](https://github.com/ohah/spinon/pull/870)은 병합됐다. 구현/runtime 실패 관점 20개, source 후보 diff 30관점 검토, product/fixture static archive 경계와 최종 simulator/build 검증은 끝났다. PR #870 최종 head `bf817aff25c5d39dcec45a744102cac9a0d9d0d7`의 변경 patch가 로컬 검토본과 일치했다. PR checks 결과는 보고되지 않았고 main required checks도 설정되지 않아 CI 통과로 기록하지 않는다. 공식 C11 완료 수 `72/213` 및 C11.4 checkbox는 유지한다.

@@ -1,0 +1,1813 @@
+{
+  "sourceHead": "5265793d71a02a6206a09b9bbbc9658696dfd992",
+  "sourceTree": "ba873209563842463191db864eaef73a7e1834f6",
+  "trackedDiffSha256": "267a75e029ea67fb5b23bf9e3cf183f13c54f7876b12fe5336df927566abb51f",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-c11-4-prewrap-2026-10-31/pass02",
+  "selectedRouteCount": 340,
+  "selectedBytes": 18649180,
+  "createdCount": 21,
+  "replacedCount": 31,
+  "identicalCount": 288,
+  "openHandleCount": 0,
+  "noDeletes": true,
+  "created": [
+    {
+      "path": "static/js/async/route-133af4d0e70a.e86a046289.js",
+      "bytes": 10296,
+      "sha256": "99a7258e38114bb1d78e8cac9fe837b8c5276b596d83896b31f9b3055be12846"
+    },
+    {
+      "path": "static/js/async/route-16bb4cead442.7eb636ed22.js",
+      "bytes": 25711,
+      "sha256": "482a5e6489127dd893e6717a71a3be6676fa2c7b18fd08907bdd3085c00c55bc"
+    },
+    {
+      "path": "static/js/async/route-381950658400.3abfea8fc7.js",
+      "bytes": 12138,
+      "sha256": "b51bbfadf5b71fb61d3f7c39bcfccbef496f7de6e8ab1fb8c6498ed390345225"
+    },
+    {
+      "path": "static/js/async/route-4478d07f439e.aa598432a2.js",
+      "bytes": 13028,
+      "sha256": "e3c93eb1a943a46edf1ef448ff79587b83ca96df31f966008d9b658a5483fa96"
+    },
+    {
+      "path": "static/js/async/route-4fe3266eb12c.2c1b7b825b.js",
+      "bytes": 8824,
+      "sha256": "416d2f3b5bf704f90778ce9504d03570611fc6744cc5cc77b62aac5d9b58e816"
+    },
+    {
+      "path": "static/js/async/route-64ced600e5b5.62a8a5351a.js",
+      "bytes": 4022,
+      "sha256": "a86602211c8791de552dde72f94b31aaaae8d0942f9fc49bc54ee52aa769d725"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.4b347dbfd9.js",
+      "bytes": 719484,
+      "sha256": "a98e81641ab886c1d75c55c1339017b7d83112a6ffd7083164d5deafc869c59b"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.7a402bf31e.js",
+      "bytes": 352278,
+      "sha256": "e49f595417a150376720e3d897f5d7f45fdcfb410901325756f2d611ec5ae24f"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.3e40b7fed7.js",
+      "bytes": 719595,
+      "sha256": "b9f35e2ede695335c56aa4b349fc3f303202e717268119ba5c9b59b187a58639"
+    },
+    {
+      "path": "static/js/async/route-8cb43ba7241f.02a1241fcd.js",
+      "bytes": 12129,
+      "sha256": "89a385c0a33d47280eb5b25e6316f8a3f03f7b4ae31a6fd71f8d6679ded41a9a"
+    },
+    {
+      "path": "static/js/async/route-935381defaa2.756d64556b.js",
+      "bytes": 8837,
+      "sha256": "5b9e82b204768d3c333780dceb9910453a11961443eb9a139f28e84d1cd7360a"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.9406866614.js",
+      "bytes": 1007,
+      "sha256": "e52f2d7daf39b0862534c1bbaf6a321a119e5ada98247f68470512e5b68fa3b1"
+    },
+    {
+      "path": "static/js/async/route-a49716182ec4.4545f61c85.js",
+      "bytes": 25704,
+      "sha256": "c210967754b98ed7d81ab6205fffb09a393502ad36cd58a870d4585622f94259"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.4c156ea344.js",
+      "bytes": 352237,
+      "sha256": "65ddd47e991021d5ad48ffd5c9f3bf0047805a2fc789f43de1ac429719ed6580"
+    },
+    {
+      "path": "static/js/async/route-c8f9ed7b3159.0bc0b4d524.js",
+      "bytes": 4028,
+      "sha256": "741d57ea14e2e308ad07ef9d4305b3c450327d03d2690c5c490ad04bf71a2d4f"
+    },
+    {
+      "path": "static/js/async/route-cc67cf668a22.714fd52190.js",
+      "bytes": 13023,
+      "sha256": "acf3864804e2284c3007c27ebae68c8429abcdebee0c124a1c00134c0243c5ff"
+    },
+    {
+      "path": "static/js/async/route-d3894aea1c96.af80bd82e2.js",
+      "bytes": 13029,
+      "sha256": "d76c31ce8ebe6846f2fd67ebd31e52be0703ff37af4597ae4dc6becdd9f99e3a"
+    },
+    {
+      "path": "static/js/async/route-f5e4e148a0c6.b481a764df.js",
+      "bytes": 10303,
+      "sha256": "ccdf332e69f74d6cb3db3771452281ca1fc7ff2e3ac90bc067594040c3bcd118"
+    },
+    {
+      "path": "static/js/async/route-f5f4813ac741.82e6bda6d8.js",
+      "bytes": 13021,
+      "sha256": "ae656ffdcfbd98783c431634cfa08aa7d5565054f895ae636915f799d97056db"
+    },
+    {
+      "path": "static/js/index.61362865f5.js",
+      "bytes": 84232,
+      "sha256": "fde99eef63d42751c7347daa25986b241d90b9845a33b693379f60ce7f9a0fef"
+    },
+    {
+      "path": "static/search_index.ko.0a82afa1.json",
+      "bytes": 1366962,
+      "sha256": "0a82afa1a5d535e47df28faafc66b2e24116a4afa7fd960cd6f9ad98ab4ec52c"
+    }
+  ],
+  "replaced": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 355659,
+      "sha256": "20d1c3dc2a823482651ec1db7afa0486cc692ef13e2a7b6933b559308a566a97",
+      "backupPath": "internal/0059-c11-grid-layout.html",
+      "previousBytes": 355143,
+      "previousSha256": "6ff18a13dfebdfff8a5761467979756b159a9c514c8f7bb381ff3750b54c4cb6"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 242909,
+      "sha256": "7f1c8c04a167d23781273b8fd8a0076271d949e82ad215c0e4ff704f042410ca",
+      "backupPath": "internal/0059-c11-grid-layout.md",
+      "previousBytes": 242500,
+      "previousSha256": "24a7723161e2ebcf5db6c3ea5a0a4c781c09dd03a9956a416b80d0bbd4ee8462"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html",
+      "bytes": 36369,
+      "sha256": "bd40a1a5da7d4c693af8d0c5fbd754a46f97a025a4f9f576dcae2822a44de956",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html",
+      "previousBytes": 36369,
+      "previousSha256": "beb26f78f39ea298987f00150ad7586a161ba06f1d497d284ae773a5503e0281"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html",
+      "bytes": 29817,
+      "sha256": "070c4f5caf27bfbc8a8bb1e5e2dcc72e8daee67c682592cba821208828d26fa0",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html",
+      "previousBytes": 29817,
+      "previousSha256": "198e0105e0e46823f39adc938d5dc8a077940ecba5095d825687800eacae89dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html",
+      "bytes": 47176,
+      "sha256": "47ab28884a744ab042c500b120bb8d3eac05f47a363382390063632239a8d6c4",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html",
+      "previousBytes": 46607,
+      "previousSha256": "0291dc14dd19d74f5a6c1b77ff4057aacc697a27ad4015c684197612b0897ea3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.md",
+      "bytes": 6659,
+      "sha256": "041ba870b1d69477a0694ffdc5c3bf6c5fa20445374ac503cdbf6fdbe2e09d6b",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.md",
+      "previousBytes": 6474,
+      "previousSha256": "dca39e79490b7a443f89aff3447147290a535f35c9af1a4ec63017c21f556f54"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html",
+      "bytes": 36341,
+      "sha256": "d0ad6c1398494efc76c545fcd2ae121ad2979d2f118b16f307bdf12fc9a6b317",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html",
+      "previousBytes": 35838,
+      "previousSha256": "00ca5655ae5c377dedd8ad279d0f7c96b3ad38f034e4f89b9e47a8a529a90268"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.md",
+      "bytes": 6166,
+      "sha256": "28f147d16f624d56c11350b38cd5a0d0fdd8275799ef4865a2a1d5118bcdf5ef",
+      "backupPath": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.md",
+      "previousBytes": 5754,
+      "previousSha256": "fb73e35d51cc2a3375f0ec65fa8b0f9bb92a8eacf6ec1e1337d2b5399ff7e1b8"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html",
+      "bytes": 36639,
+      "sha256": "74f424492dc24901e3d8f64dc94929f718111bc9ac5d81f6c068ddcf4123a9c6",
+      "backupPath": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html",
+      "previousBytes": 36639,
+      "previousSha256": "7f31ba2854d3f3990b669d58921c9bf8b3d054fc4ef90caf54b39780d2a2bf09"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html",
+      "bytes": 33265,
+      "sha256": "77740840f13a9976994bdbf0036e94a82662b873f52f6a10c52a4dcd454a0c34",
+      "backupPath": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html",
+      "previousBytes": 33265,
+      "previousSha256": "103ac6749c63551b5734474bf49abab258f81f87f78622c8b6e9089fcc4d8acc"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap.html",
+      "bytes": 48287,
+      "sha256": "1024b442703b9f7af580cf7b1ee2b4740d10eeded7f9cb59e2dc27671d38f047",
+      "backupPath": "plan/c11-4-anonymous-grid-text-pre-wrap.html",
+      "previousBytes": 47223,
+      "previousSha256": "568be86e6896106c5c62c2d939d1be02afb2d58b028cfffbc4ea53ec02892617"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap.md",
+      "bytes": 13411,
+      "sha256": "0f4bbe7a60d865a412f654a839d17e280f48db5a945fdf455f42d20768c57d2f",
+      "backupPath": "plan/c11-4-anonymous-grid-text-pre-wrap.md",
+      "previousBytes": 13059,
+      "previousSha256": "81cbe985d31bc61124f6d783af08480701af7befdbbef33e15e9855aa64dcb6a"
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 428213,
+      "sha256": "cbb6bd442912002278c829360c26b0cf45399180ecbb0233adad899a84b52fe3",
+      "backupPath": "public/roadmap.html",
+      "previousBytes": 427898,
+      "previousSha256": "99702d5032a23e5323d966ff47fd6ff45fbe16dc20bdfc7c464e4c0d5b12301c"
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 428213,
+      "sha256": "cbb6bd442912002278c829360c26b0cf45399180ecbb0233adad899a84b52fe3",
+      "backupPath": "roadmap.html",
+      "previousBytes": 427898,
+      "previousSha256": "99702d5032a23e5323d966ff47fd6ff45fbe16dc20bdfc7c464e4c0d5b12301c"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 355784,
+      "sha256": "aeebc52ce201c5f6f584bd621c6bd69951e81145b0a64ee703c20eb65a283b73",
+      "backupPath": "spec/internal/0059-c11-grid-layout.html",
+      "previousBytes": 355268,
+      "previousSha256": "baebe2b34f19d762b8d12d1fcb0f62d5b07415f744d0030e5cb1350356baf72c"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 242909,
+      "sha256": "7f1c8c04a167d23781273b8fd8a0076271d949e82ad215c0e4ff704f042410ca",
+      "backupPath": "spec/internal/0059-c11-grid-layout.md",
+      "previousBytes": 242500,
+      "previousSha256": "24a7723161e2ebcf5db6c3ea5a0a4c781c09dd03a9956a416b80d0bbd4ee8462"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html",
+      "bytes": 36379,
+      "sha256": "f40ee7eaf68ce7f359ce0e0ef674df6391ead517f1ae30f986ce2a7ef39fac88",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html",
+      "previousBytes": 36379,
+      "previousSha256": "080aa015f740eb98c780433fbf422b22aa4a0725908ea387dc897938d2fe5b9e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html",
+      "bytes": 29827,
+      "sha256": "2174639b02b3e3eede5d1cc940e77c73210442bcd936c8b6eaa374f00e952b2c",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html",
+      "previousBytes": 29827,
+      "previousSha256": "13433bc6f27a4567b47a045a8555f37b96a50cd412704d50c14229fdf66bd93c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html",
+      "bytes": 47186,
+      "sha256": "5ae56406f464787b6c4b0fefbca754b3000c61919aa4be392ea00664632cb66d",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html",
+      "previousBytes": 46617,
+      "previousSha256": "45fc3a6b8977f1392332c1c3c6c95dcf016ffe640f7c8d698eef632ebc57ac63"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.md",
+      "bytes": 6659,
+      "sha256": "041ba870b1d69477a0694ffdc5c3bf6c5fa20445374ac503cdbf6fdbe2e09d6b",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.md",
+      "previousBytes": 6474,
+      "previousSha256": "dca39e79490b7a443f89aff3447147290a535f35c9af1a4ec63017c21f556f54"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html",
+      "bytes": 36359,
+      "sha256": "12321337c59dfcacfb1bf4b69553481b8d4b6b359499ba6d07b65a542a607d96",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html",
+      "previousBytes": 35856,
+      "previousSha256": "45bd09970417540885274c2a2ba41f245dde1939716e729f6c554c0b4865ec9a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.md",
+      "bytes": 6166,
+      "sha256": "28f147d16f624d56c11350b38cd5a0d0fdd8275799ef4865a2a1d5118bcdf5ef",
+      "backupPath": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.md",
+      "previousBytes": 5754,
+      "previousSha256": "fb73e35d51cc2a3375f0ec65fa8b0f9bb92a8eacf6ec1e1337d2b5399ff7e1b8"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html",
+      "bytes": 36649,
+      "sha256": "66fecd3d6f5b48462f90a19e8fa6fc9511003f2b3f6e47c454317d1319a433db",
+      "backupPath": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html",
+      "previousBytes": 36649,
+      "previousSha256": "eaeab1cb247b7507da2185a8015a082bcfcbf3faf9db2c011c6cf2993df73ada"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html",
+      "bytes": 33280,
+      "sha256": "7ecfcfbb322f520344ce75867080adc63e3023460c2cfd3ee1be906d5526abcd",
+      "backupPath": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html",
+      "previousBytes": 33280,
+      "previousSha256": "ea2f53bc7fd25a7c680b3c9d0ba08a85bae14132bb8a67f5a0fd0f66dbe0758a"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap.html",
+      "bytes": 48235,
+      "sha256": "1700cd6c6fc54b2765a298e773f88f90b2a67ca574c494d057404a87e5be2fab",
+      "backupPath": "spec/plan/c11-4-anonymous-grid-text-pre-wrap.html",
+      "previousBytes": 47171,
+      "previousSha256": "21f49f06994f9fc05d809cd085091583e58d0e4c7e25f6d26254cc3746d02f83"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap.md",
+      "bytes": 13411,
+      "sha256": "0f4bbe7a60d865a412f654a839d17e280f48db5a945fdf455f42d20768c57d2f",
+      "backupPath": "spec/plan/c11-4-anonymous-grid-text-pre-wrap.md",
+      "previousBytes": 13059,
+      "previousSha256": "81cbe985d31bc61124f6d783af08480701af7befdbbef33e15e9855aa64dcb6a"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 428213,
+      "sha256": "cbb6bd442912002278c829360c26b0cf45399180ecbb0233adad899a84b52fe3",
+      "backupPath": "spec/public/roadmap.html",
+      "previousBytes": 427898,
+      "previousSha256": "99702d5032a23e5323d966ff47fd6ff45fbe16dc20bdfc7c464e4c0d5b12301c"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 677495,
+      "sha256": "815d23d835758d8fa4c2dc7373698d59ebd50d6ea6654b0d89ab24a269272df0",
+      "backupPath": "spec/STATUS.html",
+      "previousBytes": 677165,
+      "previousSha256": "ba2de20b8c728b4532b5b709fbba1fe7345d6667361bf5fa750501459fabb6fa"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 542964,
+      "sha256": "ad4ee6950a48e2e845a6b47c2e474cfda271187c6b73bf02f715f21b3ec6f7ea",
+      "backupPath": "spec/STATUS.md",
+      "previousBytes": 542645,
+      "previousSha256": "c3c9f88cfef2ce83959d96db67e2e6196babbb587f388cfdb59e9a70be8aae4f"
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 676928,
+      "sha256": "56ec779ddeb975b55e819fa8519120c142986ff0081d6b00a7566b908113f812",
+      "backupPath": "STATUS.html",
+      "previousBytes": 676598,
+      "previousSha256": "43e5a230a713abd00e3d5ea59935b805dc2c4c920603925d61883a7233b262d1"
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 542964,
+      "sha256": "ad4ee6950a48e2e845a6b47c2e474cfda271187c6b73bf02f715f21b3ec6f7ea",
+      "backupPath": "STATUS.md",
+      "previousBytes": 542645,
+      "previousSha256": "c3c9f88cfef2ce83959d96db67e2e6196babbb587f388cfdb59e9a70be8aae4f"
+    }
+  ],
+  "identical": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "bytes": 4284,
+      "sha256": "24f7950341e29209395550adddfd43d10b8011da814dd81f66404bd89b902f13"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "bytes": 5394,
+      "sha256": "88860cfb0912ce1cca41e1a56efb4aed56b6bb0ec13b9b8739f451f9e45374bf"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/expected-values.json",
+      "bytes": 4788,
+      "sha256": "64e9fcfeb557173857cc3422c168df86ab4a51691c8a95103a01abfe98bcc3f8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.md",
+      "bytes": 5290,
+      "sha256": "4049ee439971a52afadcb272506fd907d8525a7ae6eea18935dcdd5ab9d32995"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-comment-continuation.png",
+      "bytes": 77775,
+      "sha256": "a6ecc7e1c68089d42568858fbf19084355d6476d702ad7c99e5b814dda227546"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-hidden-child-continuation.png",
+      "bytes": 77868,
+      "sha256": "73a24b68654b413a3908befd6ed8a269d35b9fd5f310a0f8670ecb9a76d520a3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-min-content-wrap.png",
+      "bytes": 77668,
+      "sha256": "1871ea64e0a902f8cf228d860acb1f136e97d6f7d2755807d1e1c4b69c21f429"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-max-content-spaces.png",
+      "bytes": 77668,
+      "sha256": "b4ad7e55b4179d7c2a7258b6fd47e5cefc8b2916b92543354f224808e2e86416"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-min-content.png",
+      "bytes": 77668,
+      "sha256": "79290bd8963ad4ddc7493d1469d956318e381ac0ff2a248a662013cf20d46991"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-newline-max-content.png",
+      "bytes": 77615,
+      "sha256": "192d77691165bbe086991b046c38652266d213857d54fa48cc4dd23e67053c0d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-nowrap-min-content.png",
+      "bytes": 77680,
+      "sha256": "061e3cf85ee8135abae7ae78d878c3c12cc993ec63b5e4d12283686bee1dbe15"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-line-max-content.png",
+      "bytes": 77668,
+      "sha256": "79290bd8963ad4ddc7493d1469d956318e381ac0ff2a248a662013cf20d46991"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-comment-split-max-content.png",
+      "bytes": 77754,
+      "sha256": "61aaa8089001e734f1025190e472bd3673af9503f24254f8bd29342782e84c12"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-forced-break.png",
+      "bytes": 77415,
+      "sha256": "3a53c584074ec6fda85622bf4fb6d8803a53fede9f7d7bdcd702d44afc5390a0"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-max-content-spaces.png",
+      "bytes": 77668,
+      "sha256": "b4ad7e55b4179d7c2a7258b6fd47e5cefc8b2916b92543354f224808e2e86416"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-min-content-spaces.png",
+      "bytes": 77415,
+      "sha256": "3a53c584074ec6fda85622bf4fb6d8803a53fede9f7d7bdcd702d44afc5390a0"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-soft-wrap.png",
+      "bytes": 77415,
+      "sha256": "c8039fbce1c6df2a25620d7f750291978d27c3e07bcddfb3e1373e300968983f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-whitespace-before-block.png",
+      "bytes": 78145,
+      "sha256": "5078aadef4d0522d6f9ce83427eb3ebe10c86d69107ec810d9c466087652cd46"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-runs-around-block.png",
+      "bytes": 78244,
+      "sha256": "cc59d837411cad2cebf70526f3df758989e05861f1418538adbae4ca67a59334"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "836044cfc27ac98eb2f05a1088ff184c47bc9a7c2964c1ab72c69968d13ea647"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-comment-continuation.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-hidden-child-continuation.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-min-content-wrap.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-max-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-newline-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-nowrap-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-line-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-forced-break.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-runs-around-block.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-whitespace-does-not-create-item.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/result.json",
+      "bytes": 16651,
+      "sha256": "2752e54495ba999ff9752cb146abbc403036d53429b02ee4f7fa2dba194beb54"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-comment-continuation.log",
+      "bytes": 23112,
+      "sha256": "ca7fe3f614a9c2f05f6a4c2965083b5d7e35985e364c432b26bacba7541dc593"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-hidden-child-continuation.log",
+      "bytes": 23132,
+      "sha256": "c016abee06bc7bb6a2074082961f1731385b2d735efa9287754a122ebb16319a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-min-content-wrap.log",
+      "bytes": 26374,
+      "sha256": "ed130e65b9193eaa781c521754ca8c8cc2e47ef2ffc9ae754a95ef23dcc5ee86"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-max-content-spaces.log",
+      "bytes": 24840,
+      "sha256": "a9208ee48e1917bc164910addeda210048fb4ac96c40e8ac78df533648590995"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-min-content.log",
+      "bytes": 24397,
+      "sha256": "321e14714317abe68f6d1b8310da98ed95a03b5d9042e2cb94a3ee3793ee0709"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-newline-max-content.log",
+      "bytes": 24845,
+      "sha256": "a8b3f3aec906ab54ef91e58cc4f4cf4bef51b9d94c3ee5857a5431e2dd98e818"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 29599,
+      "sha256": "9795e3b2ae5bcb6921cf78a3aca01a0b1d702748f845a19b8d152ff223d428eb"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-line-max-content.log",
+      "bytes": 25270,
+      "sha256": "6ab9b78c6939b5576511b4a6686849212ab7fdf10a3ac1f88a21a2f2b058eb17"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 24941,
+      "sha256": "809c6fe2088a88828164828077a17d48bce773865b014c6d36af7a922fb74150"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-forced-break.log",
+      "bytes": 24905,
+      "sha256": "7f5e93098586dbf61edb6a0354f0c68d724389bffb3205c401c41c0f9dda53b1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 24855,
+      "sha256": "58d15883894f84d02f8e820794700c1c83b5fdaca1eb6780eae8ff71789a2cd6"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 24529,
+      "sha256": "acfa1e95d61381298af26a70985dd8800af4e301872454e04213b0b2ac41017f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 27016,
+      "sha256": "a13d3d0e2a01f807da58307fe494cea4957a65c306b8ff21c6c381cb3c1474d9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 17672,
+      "sha256": "c6b532252c571ae75754903942fb68bfcbc702dda31755cce4190a8088cb5d06"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-runs-around-block.log",
+      "bytes": 32350,
+      "sha256": "a9251c8d02a738d7aa3957178cad5e90987dc93b382f76283879cd3d0342023e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-whitespace-does-not-create-item.log",
+      "bytes": 18239,
+      "sha256": "d78a26e7ff8baca932f80c4e32b59068d1575028dadf280710605a32fe448fa5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/simulator.json",
+      "bytes": 2746,
+      "sha256": "375590ee73b4c89851b2582bd959ed2005a531965720c46ec083ece9b971aab3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/whitespace-does-not-create-item.png",
+      "bytes": 78333,
+      "sha256": "0ff101c2554dd824be1d6b0fb05dfa563694b8b7beedee84d390d9282d9c23b2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-build.log",
+      "bytes": 5101,
+      "sha256": "9be2bdf97d38e17e454ac1a6e78cd6930e822b9ef3efb37bdb8d92d9c69f0060"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-capture.log",
+      "bytes": 17887,
+      "sha256": "99dfd29eec383226d3a5db606f416eda1d1c41021699d40c6e43455348d5651c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/fixture-artifact.json",
+      "bytes": 795,
+      "sha256": "b0edb5fd5d73a6378edfee0fc2673bbdf9ebe56768e363adbb6b39c441a4104d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/fixture-build.log",
+      "bytes": 680,
+      "sha256": "a192bc4cf848bca25c4f0d4de2bb1d6d51bc0ed879c17adfd40d19ca984671cc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/product-artifact.json",
+      "bytes": 625,
+      "sha256": "f3879c633373b3ae8d4b924330ad2710f814659a52ebc013418bb2338fe4e310"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/product-build.log",
+      "bytes": 692,
+      "sha256": "89db3d7d53c083d4553f8810297bfa70b05cec965f68477f32316b8888665987"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.md",
+      "bytes": 1311,
+      "sha256": "a6f6a11b3d2bd7e8f6eb3142bc05c3d7e1dd60d7fe3cdc6aae0c66ed3c5b6140"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/scan-artifact.mjs",
+      "bytes": 2488,
+      "sha256": "dfb85fc4295a9bb37709446f3a0c994c29d8e04e4c817c799d254ed56a51e1dd"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-build.log",
+      "bytes": 65768,
+      "sha256": "23e55375acb2760f16101ec92e5e8c07306c5651df79bc520df956b5a24a8ce5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-capture.log",
+      "bytes": 18451,
+      "sha256": "b70e324149b56a9029a83152f8ce169694a5a0e8f24f552888f3fcc011d67336"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-comment-continuation.png",
+      "bytes": 145267,
+      "sha256": "be2fb6e57cbac3cdcba9b2da226a2ab053dd77c19c5a6aa37eeb5792d8a0cc13"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-hidden-child-continuation.png",
+      "bytes": 146597,
+      "sha256": "9ebb69c94b663218803dc9e2a4300ff94fadf385784b2d80784b22cb6b33e689"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-min-content-wrap.png",
+      "bytes": 144966,
+      "sha256": "da13f842cea0ce70fbe5ffcadd9f3a28b5a6629ef64b358735bf5f98f4934a85"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-max-content-spaces.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-min-content.png",
+      "bytes": 143230,
+      "sha256": "8d588b4156eade5797512d30ca6a4569bc312bc1def7585f508319208f5814db"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-newline-max-content.png",
+      "bytes": 144859,
+      "sha256": "f21f9f01a1ab490b24f1192c16a7988f0b160a29fbc9ab966e0b81b348dbdb0e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-nowrap-min-content.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-line-max-content.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-comment-split-max-content.png",
+      "bytes": 144989,
+      "sha256": "99b1dafe9a658c40910808695dadc3ff0173e78b760ecfe5a95d8336843439e3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-forced-break.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-max-content-spaces.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-min-content-spaces.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-soft-wrap.png",
+      "bytes": 144122,
+      "sha256": "ad8983ce43ef2c6e46ab23d4c80ecd5cfedecfdbc14689dd146d517312ba2e77"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-whitespace-before-block.png",
+      "bytes": 146406,
+      "sha256": "5b72509f572da9a7f3d5ea474c546b1fc2883a0a1c67bf2f2ec4b8a1a88e0324"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-runs-around-block.png",
+      "bytes": 146320,
+      "sha256": "0ff39ee244197bd29066066cb499ee0635b3cafd9a3ed5783411b2c467f05f07"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-comment-continuation.log",
+      "bytes": 28,
+      "sha256": "0371baeee27cbe7eb2188db1e79bbb3e47aad622763ae5d06f30cff75e2199dd"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-hidden-child-continuation.log",
+      "bytes": 28,
+      "sha256": "ff78092806e620d878af4d32778ec78816d808d7c78fd9a7f2599aed5cb2f5cc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-min-content-wrap.log",
+      "bytes": 28,
+      "sha256": "017321d03c1e6d631a201d0deca6143209fd185a5479a911cf83687b483cef78"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-max-content-spaces.log",
+      "bytes": 28,
+      "sha256": "754ccabd50d02d775d1f33e11204ea782543c9ee3c782606580fa570216c3d68"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-min-content.log",
+      "bytes": 28,
+      "sha256": "f3dd42d8b9b1bd2c179f24e4a63728d89d23cd77b4d804f1bf08784e519d4b5f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-newline-max-content.log",
+      "bytes": 28,
+      "sha256": "ea2485805c86891c885ba96f9d5edc090b042b9a7d921d4f182258e0657ec508"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-nowrap-min-content.log",
+      "bytes": 28,
+      "sha256": "0375888af7d3c3c05c453b444c42560833a280c7e0ce9ac2d90ce1ba8bafefd6"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-line-max-content.log",
+      "bytes": 28,
+      "sha256": "d36eda5e56351cd5c6d2169f2cfaaf260d46840037ba64087870e43b621eef6b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 28,
+      "sha256": "2b1b93cde691ef0f4d064d26d42c6a6422199e7aa96e4a7d69af7a757a99f53a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-forced-break.log",
+      "bytes": 28,
+      "sha256": "51464a705e9cca3cbc3cd4aad871c0b6c9dcb6733ccf9896d7f45e1480cae3e3"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 28,
+      "sha256": "1bbb31c029ade7ae9fde9a720dd11feec4c755adfef44da63ab8216e89f01953"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 28,
+      "sha256": "1f7665b8c7cc09fed899ab20f2b402e96b10c3191efe4af197949c9a4cf78b99"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 28,
+      "sha256": "35fd571cebd74116a7d84ee64e3f0b993cbde60e3988dcd1222488e66e9cfa50"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 28,
+      "sha256": "4d9f196e9ef012e1321a6343e581dbb5fff34bcb4ec35d9fc33c76ca4f3a9c97"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-runs-around-block.log",
+      "bytes": 28,
+      "sha256": "111e970ec093a343e14d559e962f6c50b562eef72d36d5be49bab11edf288432"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-whitespace-does-not-create-item.log",
+      "bytes": 28,
+      "sha256": "b9162115ec69212ac7812f79762b474666bb698e4f12286170633cc90e4dc567"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/result.json",
+      "bytes": 17181,
+      "sha256": "6c16e940fad700d8d7382aab5ed8bec1511a1abade38c2c8fbcebd44e2e03447"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-comment-continuation.log",
+      "bytes": 14904,
+      "sha256": "cd8284830cc6b61032a280cdb844f10c7f80ada023fb97d88b7a9a4a2c16bb44"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-hidden-child-continuation.log",
+      "bytes": 14919,
+      "sha256": "81d58fd3de6cc2051083789cd2bf2708801aad399296bbb49517db5ccd0962f9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-min-content-wrap.log",
+      "bytes": 18215,
+      "sha256": "0c94bb67c16dad6bb7d5f4a883e6772e2e290a8f37eddf1e063f1f6bd274bdd0"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-max-content-spaces.log",
+      "bytes": 16842,
+      "sha256": "30de71b97d29a6921fcadc1ff0cca7754308637d54eb3830c7b9d40a632b3818"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-min-content.log",
+      "bytes": 16499,
+      "sha256": "fce0a071cf556e51d923db0213c9105692f0b0b81081444a6dfc6baa05acf7a4"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-newline-max-content.log",
+      "bytes": 16844,
+      "sha256": "db83d7952d6515e46c7031cd7028c91ce751c9c5292f798be0bfdaa6a3178d41"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 16432,
+      "sha256": "2c36962a9d0152b3e3448b109a9c75208f2e5398783409a347a0cd01a1b9810b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-line-max-content.log",
+      "bytes": 16900,
+      "sha256": "0f589a24e7fbc2233ba5fb9baa29b6fa5c13aa5d68232cde2d0191aa71b7844f"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 16941,
+      "sha256": "9f52f0aad838a850398d1dbcf00dbc9de56c61b83270ee2969560449e8531218"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-forced-break.log",
+      "bytes": 16918,
+      "sha256": "58ec6c67e48c58d25ce0c62845602e56d6ed164966ff3e027431234b2f819b38"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 16864,
+      "sha256": "5a77bd782447ff3cd191f32e55f71cf174816b406674163134b94043664bc2be"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 16536,
+      "sha256": "0698ebd683f311ce30658bb67856ebda6427976fc025009d0aa311298c72969c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 13611,
+      "sha256": "43bdcda6ea1c1b0d3215fe1ee5f3ad3f49cd16dc1813bc6025cdde44a14dcc24"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 8581,
+      "sha256": "0e3638e15fa7fd0cdb5e69b7fa1c7e1f25230754a2734798d62ae30bbf84add1"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-runs-around-block.log",
+      "bytes": 18449,
+      "sha256": "4c4723e658ae658c19091891044123a6b703d26697256dfb642b2e988358fa3d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-whitespace-does-not-create-item.log",
+      "bytes": 9158,
+      "sha256": "209a8f35ea82fa7461d4a43b6cb98f67a58871286f6a958e182a60ae560c7f43"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-comment-continuation.log",
+      "bytes": 296,
+      "sha256": "61cc915b040839e7703847d5d0a4b3fd79f6126e98ad27c17e0f318d66450d99"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-hidden-child-continuation.log",
+      "bytes": 301,
+      "sha256": "817c423272bf8033535d29190a789ad8cc6d3a43cdc6dabbc7e28dc513b79e09"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-min-content-wrap.log",
+      "bytes": 292,
+      "sha256": "47bd89bb74ab2924815936dfe511bf57516c7da42099dff7498a46fcc0a6fb9d"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-max-content-spaces.log",
+      "bytes": 301,
+      "sha256": "71496b4c484121b5526bbf664d6afdfcdbd1ed0ac3e8954b24ae600792a3098c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-min-content.log",
+      "bytes": 294,
+      "sha256": "53378e9718225344aeb247696e35d100ef15c765fe78b86ea6e32fa8ca920b75"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-newline-max-content.log",
+      "bytes": 302,
+      "sha256": "9a17697d9f228847c4dcd528e8699d4823ee44c93008a8a567def183b11b46a7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-nowrap-min-content.log",
+      "bytes": 294,
+      "sha256": "5a904db6b91921179aabd17324b23aafd91b1244719891f98156bfc32ae34bfd"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-line-max-content.log",
+      "bytes": 296,
+      "sha256": "321363a45437967335f5bd2533caa66ed7100c15cf0b3bb7728fe862bfc44ba5"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 310,
+      "sha256": "413fc12246ec4af92115e7672a3b9ea6b21949d30873cc1ce009e879dabee26c"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-forced-break.log",
+      "bytes": 297,
+      "sha256": "95ada56db9801dc7e3c97065ee00e790287e5605746d4e1c27451fd0ba88e649"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 303,
+      "sha256": "3c072fdc08052bea17f63ae8528f735fce5998b727360d2e560eb5d77b00e0f0"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 303,
+      "sha256": "d5eb2c12926b081c628d1eacfaee5c0d96302094e830057791f112eb6f061a27"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 294,
+      "sha256": "719234f9ed02d6e21404c8e909556d697ad66a181ad84f0143e36ef69c2a69db"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 308,
+      "sha256": "ad3916a6313d4616715bdb671bbef952c537117751f423de3a9c148c8055af53"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-runs-around-block.log",
+      "bytes": 293,
+      "sha256": "e7dd91bce8bfbf3e0b7470840df5333a96a9a17d0c5d8769e4126552ee14bc29"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-whitespace-does-not-create-item.log",
+      "bytes": 297,
+      "sha256": "68d5e868cbcca2a68c00448e745068b23666cfb4ec0b886aefd67673ebeceeef"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/simulator.json",
+      "bytes": 2703,
+      "sha256": "57df8eb0ab717a25ccc350b001c9f7c3d9b934f72c741304507258db32b73e95"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/whitespace-does-not-create-item.png",
+      "bytes": 146920,
+      "sha256": "e9693e3f81eeea76f9b04d58d97735e209781831d347f7e17c57746feb7b338a"
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.md",
+      "bytes": 6394,
+      "sha256": "d65b52443bb3a03003c660b9d29c3e6c4acb6562688f218b66fffafb2c913dd3"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.md",
+      "bytes": 4180,
+      "sha256": "db74f3101d2d95aa85170a21c356a2e299a32308c01ad77deba270525ccd8610"
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "bytes": 4284,
+      "sha256": "24f7950341e29209395550adddfd43d10b8011da814dd81f66404bd89b902f13"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "bytes": 5394,
+      "sha256": "88860cfb0912ce1cca41e1a56efb4aed56b6bb0ec13b9b8739f451f9e45374bf"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/expected-values.json",
+      "bytes": 4788,
+      "sha256": "64e9fcfeb557173857cc3422c168df86ab4a51691c8a95103a01abfe98bcc3f8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.md",
+      "bytes": 5290,
+      "sha256": "4049ee439971a52afadcb272506fd907d8525a7ae6eea18935dcdd5ab9d32995"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-comment-continuation.png",
+      "bytes": 77775,
+      "sha256": "a6ecc7e1c68089d42568858fbf19084355d6476d702ad7c99e5b814dda227546"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-hidden-child-continuation.png",
+      "bytes": 77868,
+      "sha256": "73a24b68654b413a3908befd6ed8a269d35b9fd5f310a0f8670ecb9a76d520a3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-min-content-wrap.png",
+      "bytes": 77668,
+      "sha256": "1871ea64e0a902f8cf228d860acb1f136e97d6f7d2755807d1e1c4b69c21f429"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-max-content-spaces.png",
+      "bytes": 77668,
+      "sha256": "b4ad7e55b4179d7c2a7258b6fd47e5cefc8b2916b92543354f224808e2e86416"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-min-content.png",
+      "bytes": 77668,
+      "sha256": "79290bd8963ad4ddc7493d1469d956318e381ac0ff2a248a662013cf20d46991"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-normal-newline-max-content.png",
+      "bytes": 77615,
+      "sha256": "192d77691165bbe086991b046c38652266d213857d54fa48cc4dd23e67053c0d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-nowrap-min-content.png",
+      "bytes": 77680,
+      "sha256": "061e3cf85ee8135abae7ae78d878c3c12cc993ec63b5e4d12283686bee1dbe15"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-line-max-content.png",
+      "bytes": 77668,
+      "sha256": "79290bd8963ad4ddc7493d1469d956318e381ac0ff2a248a662013cf20d46991"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-comment-split-max-content.png",
+      "bytes": 77754,
+      "sha256": "61aaa8089001e734f1025190e472bd3673af9503f24254f8bd29342782e84c12"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-forced-break.png",
+      "bytes": 77415,
+      "sha256": "3a53c584074ec6fda85622bf4fb6d8803a53fede9f7d7bdcd702d44afc5390a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-max-content-spaces.png",
+      "bytes": 77668,
+      "sha256": "b4ad7e55b4179d7c2a7258b6fd47e5cefc8b2916b92543354f224808e2e86416"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-min-content-spaces.png",
+      "bytes": 77415,
+      "sha256": "3a53c584074ec6fda85622bf4fb6d8803a53fede9f7d7bdcd702d44afc5390a0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-soft-wrap.png",
+      "bytes": 77415,
+      "sha256": "c8039fbce1c6df2a25620d7f750291978d27c3e07bcddfb3e1373e300968983f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-pre-wrap-whitespace-before-block.png",
+      "bytes": 78145,
+      "sha256": "5078aadef4d0522d6f9ce83427eb3ebe10c86d69107ec810d9c466087652cd46"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/anonymous-runs-around-block.png",
+      "bytes": 78244,
+      "sha256": "cc59d837411cad2cebf70526f3df758989e05861f1418538adbae4ca67a59334"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "836044cfc27ac98eb2f05a1088ff184c47bc9a7c2964c1ab72c69968d13ea647"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-comment-continuation.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-hidden-child-continuation.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-min-content-wrap.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-max-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-normal-newline-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-nowrap-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-line-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-forced-break.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-anonymous-runs-around-block.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/launch-whitespace-does-not-create-item.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/result.json",
+      "bytes": 16651,
+      "sha256": "2752e54495ba999ff9752cb146abbc403036d53429b02ee4f7fa2dba194beb54"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-comment-continuation.log",
+      "bytes": 23112,
+      "sha256": "ca7fe3f614a9c2f05f6a4c2965083b5d7e35985e364c432b26bacba7541dc593"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-hidden-child-continuation.log",
+      "bytes": 23132,
+      "sha256": "c016abee06bc7bb6a2074082961f1731385b2d735efa9287754a122ebb16319a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-min-content-wrap.log",
+      "bytes": 26374,
+      "sha256": "ed130e65b9193eaa781c521754ca8c8cc2e47ef2ffc9ae754a95ef23dcc5ee86"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-max-content-spaces.log",
+      "bytes": 24840,
+      "sha256": "a9208ee48e1917bc164910addeda210048fb4ac96c40e8ac78df533648590995"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-min-content.log",
+      "bytes": 24397,
+      "sha256": "321e14714317abe68f6d1b8310da98ed95a03b5d9042e2cb94a3ee3793ee0709"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-normal-newline-max-content.log",
+      "bytes": 24845,
+      "sha256": "a8b3f3aec906ab54ef91e58cc4f4cf4bef51b9d94c3ee5857a5431e2dd98e818"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 29599,
+      "sha256": "9795e3b2ae5bcb6921cf78a3aca01a0b1d702748f845a19b8d152ff223d428eb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-line-max-content.log",
+      "bytes": 25270,
+      "sha256": "6ab9b78c6939b5576511b4a6686849212ab7fdf10a3ac1f88a21a2f2b058eb17"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 24941,
+      "sha256": "809c6fe2088a88828164828077a17d48bce773865b014c6d36af7a922fb74150"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-forced-break.log",
+      "bytes": 24905,
+      "sha256": "7f5e93098586dbf61edb6a0354f0c68d724389bffb3205c401c41c0f9dda53b1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 24855,
+      "sha256": "58d15883894f84d02f8e820794700c1c83b5fdaca1eb6780eae8ff71789a2cd6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 24529,
+      "sha256": "acfa1e95d61381298af26a70985dd8800af4e301872454e04213b0b2ac41017f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 27016,
+      "sha256": "a13d3d0e2a01f807da58307fe494cea4957a65c306b8ff21c6c381cb3c1474d9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 17672,
+      "sha256": "c6b532252c571ae75754903942fb68bfcbc702dda31755cce4190a8088cb5d06"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-anonymous-runs-around-block.log",
+      "bytes": 32350,
+      "sha256": "a9251c8d02a738d7aa3957178cad5e90987dc93b382f76283879cd3d0342023e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/runtime-whitespace-does-not-create-item.log",
+      "bytes": 18239,
+      "sha256": "d78a26e7ff8baca932f80c4e32b59068d1575028dadf280710605a32fe448fa5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/simulator.json",
+      "bytes": 2746,
+      "sha256": "375590ee73b4c89851b2582bd959ed2005a531965720c46ec083ece9b971aab3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-avd-c114-anonymous-grid-text-android-avd-20261030T182836149Z-c7a75e1a/whitespace-does-not-create-item.png",
+      "bytes": 78333,
+      "sha256": "0ff101c2554dd824be1d6b0fb05dfa563694b8b7beedee84d390d9282d9c23b2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-build.log",
+      "bytes": 5101,
+      "sha256": "9be2bdf97d38e17e454ac1a6e78cd6930e822b9ef3efb37bdb8d92d9c69f0060"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/android-capture.log",
+      "bytes": 17887,
+      "sha256": "99dfd29eec383226d3a5db606f416eda1d1c41021699d40c6e43455348d5651c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/fixture-artifact.json",
+      "bytes": 795,
+      "sha256": "b0edb5fd5d73a6378edfee0fc2673bbdf9ebe56768e363adbb6b39c441a4104d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/fixture-build.log",
+      "bytes": 680,
+      "sha256": "a192bc4cf848bca25c4f0d4de2bb1d6d51bc0ed879c17adfd40d19ca984671cc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/product-artifact.json",
+      "bytes": 625,
+      "sha256": "f3879c633373b3ae8d4b924330ad2710f814659a52ebc013418bb2338fe4e310"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/product-build.log",
+      "bytes": 692,
+      "sha256": "89db3d7d53c083d4553f8810297bfa70b05cec965f68477f32316b8888665987"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.md",
+      "bytes": 1311,
+      "sha256": "a6f6a11b3d2bd7e8f6eb3142bc05c3d7e1dd60d7fe3cdc6aae0c66ed3c5b6140"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/scan-artifact.mjs",
+      "bytes": 2488,
+      "sha256": "dfb85fc4295a9bb37709446f3a0c994c29d8e04e4c817c799d254ed56a51e1dd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-build.log",
+      "bytes": 65768,
+      "sha256": "23e55375acb2760f16101ec92e5e8c07306c5651df79bc520df956b5a24a8ce5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-capture.log",
+      "bytes": 18451,
+      "sha256": "b70e324149b56a9029a83152f8ce169694a5a0e8f24f552888f3fcc011d67336"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-comment-continuation.png",
+      "bytes": 145267,
+      "sha256": "be2fb6e57cbac3cdcba9b2da226a2ab053dd77c19c5a6aa37eeb5792d8a0cc13"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-hidden-child-continuation.png",
+      "bytes": 146597,
+      "sha256": "9ebb69c94b663218803dc9e2a4300ff94fadf385784b2d80784b22cb6b33e689"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-min-content-wrap.png",
+      "bytes": 144966,
+      "sha256": "da13f842cea0ce70fbe5ffcadd9f3a28b5a6629ef64b358735bf5f98f4934a85"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-max-content-spaces.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-min-content.png",
+      "bytes": 143230,
+      "sha256": "8d588b4156eade5797512d30ca6a4569bc312bc1def7585f508319208f5814db"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-normal-newline-max-content.png",
+      "bytes": 144859,
+      "sha256": "f21f9f01a1ab490b24f1192c16a7988f0b160a29fbc9ab966e0b81b348dbdb0e"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-nowrap-min-content.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-line-max-content.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-comment-split-max-content.png",
+      "bytes": 144989,
+      "sha256": "99b1dafe9a658c40910808695dadc3ff0173e78b760ecfe5a95d8336843439e3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-forced-break.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-max-content-spaces.png",
+      "bytes": 144725,
+      "sha256": "6254bea88121f88d86fc78ec1b7e6c2b3a0a96ba8c88b4e068720115fcfca7fb"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-min-content-spaces.png",
+      "bytes": 144759,
+      "sha256": "33fbb0770bb8d511033f710ec9c973bb327337791a7c5589594c01e62f403ee9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-soft-wrap.png",
+      "bytes": 144122,
+      "sha256": "ad8983ce43ef2c6e46ab23d4c80ecd5cfedecfdbc14689dd146d517312ba2e77"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-pre-wrap-whitespace-before-block.png",
+      "bytes": 146406,
+      "sha256": "5b72509f572da9a7f3d5ea474c546b1fc2883a0a1c67bf2f2ec4b8a1a88e0324"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/anonymous-runs-around-block.png",
+      "bytes": 146320,
+      "sha256": "0ff39ee244197bd29066066cb499ee0635b3cafd9a3ed5783411b2c467f05f07"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-comment-continuation.log",
+      "bytes": 28,
+      "sha256": "0371baeee27cbe7eb2188db1e79bbb3e47aad622763ae5d06f30cff75e2199dd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-hidden-child-continuation.log",
+      "bytes": 28,
+      "sha256": "ff78092806e620d878af4d32778ec78816d808d7c78fd9a7f2599aed5cb2f5cc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-min-content-wrap.log",
+      "bytes": 28,
+      "sha256": "017321d03c1e6d631a201d0deca6143209fd185a5479a911cf83687b483cef78"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-max-content-spaces.log",
+      "bytes": 28,
+      "sha256": "754ccabd50d02d775d1f33e11204ea782543c9ee3c782606580fa570216c3d68"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-min-content.log",
+      "bytes": 28,
+      "sha256": "f3dd42d8b9b1bd2c179f24e4a63728d89d23cd77b4d804f1bf08784e519d4b5f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-normal-newline-max-content.log",
+      "bytes": 28,
+      "sha256": "ea2485805c86891c885ba96f9d5edc090b042b9a7d921d4f182258e0657ec508"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-nowrap-min-content.log",
+      "bytes": 28,
+      "sha256": "0375888af7d3c3c05c453b444c42560833a280c7e0ce9ac2d90ce1ba8bafefd6"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-line-max-content.log",
+      "bytes": 28,
+      "sha256": "d36eda5e56351cd5c6d2169f2cfaaf260d46840037ba64087870e43b621eef6b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 28,
+      "sha256": "2b1b93cde691ef0f4d064d26d42c6a6422199e7aa96e4a7d69af7a757a99f53a"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-forced-break.log",
+      "bytes": 28,
+      "sha256": "51464a705e9cca3cbc3cd4aad871c0b6c9dcb6733ccf9896d7f45e1480cae3e3"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 28,
+      "sha256": "1bbb31c029ade7ae9fde9a720dd11feec4c755adfef44da63ab8216e89f01953"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 28,
+      "sha256": "1f7665b8c7cc09fed899ab20f2b402e96b10c3191efe4af197949c9a4cf78b99"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 28,
+      "sha256": "35fd571cebd74116a7d84ee64e3f0b993cbde60e3988dcd1222488e66e9cfa50"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 28,
+      "sha256": "4d9f196e9ef012e1321a6343e581dbb5fff34bcb4ec35d9fc33c76ca4f3a9c97"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-anonymous-runs-around-block.log",
+      "bytes": 28,
+      "sha256": "111e970ec093a343e14d559e962f6c50b562eef72d36d5be49bab11edf288432"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/launch-whitespace-does-not-create-item.log",
+      "bytes": 28,
+      "sha256": "b9162115ec69212ac7812f79762b474666bb698e4f12286170633cc90e4dc567"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/result.json",
+      "bytes": 17181,
+      "sha256": "6c16e940fad700d8d7382aab5ed8bec1511a1abade38c2c8fbcebd44e2e03447"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-comment-continuation.log",
+      "bytes": 14904,
+      "sha256": "cd8284830cc6b61032a280cdb844f10c7f80ada023fb97d88b7a9a4a2c16bb44"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-hidden-child-continuation.log",
+      "bytes": 14919,
+      "sha256": "81d58fd3de6cc2051083789cd2bf2708801aad399296bbb49517db5ccd0962f9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-min-content-wrap.log",
+      "bytes": 18215,
+      "sha256": "0c94bb67c16dad6bb7d5f4a883e6772e2e290a8f37eddf1e063f1f6bd274bdd0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-max-content-spaces.log",
+      "bytes": 16842,
+      "sha256": "30de71b97d29a6921fcadc1ff0cca7754308637d54eb3830c7b9d40a632b3818"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-min-content.log",
+      "bytes": 16499,
+      "sha256": "fce0a071cf556e51d923db0213c9105692f0b0b81081444a6dfc6baa05acf7a4"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-normal-newline-max-content.log",
+      "bytes": 16844,
+      "sha256": "db83d7952d6515e46c7031cd7028c91ce751c9c5292f798be0bfdaa6a3178d41"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 16432,
+      "sha256": "2c36962a9d0152b3e3448b109a9c75208f2e5398783409a347a0cd01a1b9810b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-line-max-content.log",
+      "bytes": 16900,
+      "sha256": "0f589a24e7fbc2233ba5fb9baa29b6fa5c13aa5d68232cde2d0191aa71b7844f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 16941,
+      "sha256": "9f52f0aad838a850398d1dbcf00dbc9de56c61b83270ee2969560449e8531218"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-forced-break.log",
+      "bytes": 16918,
+      "sha256": "58ec6c67e48c58d25ce0c62845602e56d6ed164966ff3e027431234b2f819b38"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 16864,
+      "sha256": "5a77bd782447ff3cd191f32e55f71cf174816b406674163134b94043664bc2be"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 16536,
+      "sha256": "0698ebd683f311ce30658bb67856ebda6427976fc025009d0aa311298c72969c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 13611,
+      "sha256": "43bdcda6ea1c1b0d3215fe1ee5f3ad3f49cd16dc1813bc6025cdde44a14dcc24"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 8581,
+      "sha256": "0e3638e15fa7fd0cdb5e69b7fa1c7e1f25230754a2734798d62ae30bbf84add1"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-anonymous-runs-around-block.log",
+      "bytes": 18449,
+      "sha256": "4c4723e658ae658c19091891044123a6b703d26697256dfb642b2e988358fa3d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/runtime-whitespace-does-not-create-item.log",
+      "bytes": 9158,
+      "sha256": "209a8f35ea82fa7461d4a43b6cb98f67a58871286f6a958e182a60ae560c7f43"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-comment-continuation.log",
+      "bytes": 296,
+      "sha256": "61cc915b040839e7703847d5d0a4b3fd79f6126e98ad27c17e0f318d66450d99"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-hidden-child-continuation.log",
+      "bytes": 301,
+      "sha256": "817c423272bf8033535d29190a789ad8cc6d3a43cdc6dabbc7e28dc513b79e09"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-min-content-wrap.log",
+      "bytes": 292,
+      "sha256": "47bd89bb74ab2924815936dfe511bf57516c7da42099dff7498a46fcc0a6fb9d"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-max-content-spaces.log",
+      "bytes": 301,
+      "sha256": "71496b4c484121b5526bbf664d6afdfcdbd1ed0ac3e8954b24ae600792a3098c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-min-content.log",
+      "bytes": 294,
+      "sha256": "53378e9718225344aeb247696e35d100ef15c765fe78b86ea6e32fa8ca920b75"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-normal-newline-max-content.log",
+      "bytes": 302,
+      "sha256": "9a17697d9f228847c4dcd528e8699d4823ee44c93008a8a567def183b11b46a7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-nowrap-min-content.log",
+      "bytes": 294,
+      "sha256": "5a904db6b91921179aabd17324b23aafd91b1244719891f98156bfc32ae34bfd"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-line-max-content.log",
+      "bytes": 296,
+      "sha256": "321363a45437967335f5bd2533caa66ed7100c15cf0b3bb7728fe862bfc44ba5"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-comment-split-max-content.log",
+      "bytes": 310,
+      "sha256": "413fc12246ec4af92115e7672a3b9ea6b21949d30873cc1ce009e879dabee26c"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-forced-break.log",
+      "bytes": 297,
+      "sha256": "95ada56db9801dc7e3c97065ee00e790287e5605746d4e1c27451fd0ba88e649"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-max-content-spaces.log",
+      "bytes": 303,
+      "sha256": "3c072fdc08052bea17f63ae8528f735fce5998b727360d2e560eb5d77b00e0f0"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-min-content-spaces.log",
+      "bytes": 303,
+      "sha256": "d5eb2c12926b081c628d1eacfaee5c0d96302094e830057791f112eb6f061a27"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-soft-wrap.log",
+      "bytes": 294,
+      "sha256": "719234f9ed02d6e21404c8e909556d697ad66a181ad84f0143e36ef69c2a69db"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-pre-wrap-whitespace-before-block.log",
+      "bytes": 308,
+      "sha256": "ad3916a6313d4616715bdb671bbef952c537117751f423de3a9c148c8055af53"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-anonymous-runs-around-block.log",
+      "bytes": 293,
+      "sha256": "e7dd91bce8bfbf3e0b7470840df5333a96a9a17d0c5d8769e4126552ee14bc29"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/screenshot-whitespace-does-not-create-item.log",
+      "bytes": 297,
+      "sha256": "68d5e868cbcca2a68c00448e745068b23666cfb4ec0b886aefd67673ebeceeef"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/simulator.json",
+      "bytes": 2703,
+      "sha256": "57df8eb0ab717a25ccc350b001c9f7c3d9b934f72c741304507258db32b73e95"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T182908683Z-2a6cafcf/whitespace-does-not-create-item.png",
+      "bytes": 146920,
+      "sha256": "e9693e3f81eeea76f9b04d58d97735e209781831d347f7e17c57746feb7b338a"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.md",
+      "bytes": 6394,
+      "sha256": "d65b52443bb3a03003c660b9d29c3e6c4acb6562688f218b66fffafb2c913dd3"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.md",
+      "bytes": 4180,
+      "sha256": "db74f3101d2d95aa85170a21c356a2e299a32308c01ad77deba270525ccd8610"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.b5d9a69293.js",
+      "bytes": 471,
+      "sha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    }
+  ]
+}

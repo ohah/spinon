@@ -1,0 +1,18 @@
+{
+  "c11Checkboxes": [
+    {
+      "checked": false,
+      "code": "C11",
+      "text": "C11 CSS Grid — explicit/implicit track, repeat·named lines/areas, auto placement, minmax·fit-content, spanning·fractional tracks와 정렬을 단계별 구현한다. C11.1 Chrome 154의 10 scene·40 node reference와 고정 WPT source hash를 사용한다. spinon-layout Grid core, Stylo typed cascade, HostDocument→Stylo→typed projection→Taffy adapter를 추가했고 root/snapshot/revision identity를 검사한다. Grid 전용 negative cases와 pinned Chrome reference 비교가 통과했다. 모바일 r"
+    },
+    {
+      "checked": false,
+      "code": "C11.4",
+      "text": "C11.4 intrinsic track sizing"
+    }
+  ],
+  "mergeShaPresent": true,
+  "officialCountPresent": true,
+  "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html?verify=20261031pass02"
+}

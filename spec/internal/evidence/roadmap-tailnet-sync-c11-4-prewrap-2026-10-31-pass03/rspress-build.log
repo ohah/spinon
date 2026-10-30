@@ -1,0 +1,64 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 169 ms.
+ready   built in 1.28s (node)
+ready   built in 1.29s (web)
+
+File (web)                                                                                                              Size        Gzip   
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-a48746cae70c.c95526e5ff.js   1.0 kB      0.56 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-64ced600e5b5.95e1ff7227.js   4.0 kB      1.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-c8f9ed7b3159.4c434a1b83.js   4.0 kB      1.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-4fe3266eb12c.b92ad4ac16.js   8.8 kB      2.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-935381defaa2.71638ae98a.js   8.8 kB      2.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-133af4d0e70a.c2e75f6e66.js   10.3 kB     4.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-f5e4e148a0c6.080cf56f19.js   10.3 kB     4.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-8cb43ba7241f.904c4cdf69.js   12.0 kB     4.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-381950658400.1e35c33f63.js   12.0 kB     4.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-f5f4813ac741.66a1393acf.js   13.0 kB     3.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-cc67cf668a22.cc0ec29c11.js   13.0 kB     4.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-4478d07f439e.cb44988175.js   13.0 kB     3.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-d3894aea1c96.d8304901b2.js   13.0 kB     4.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-a49716182ec4.ba0a384dfd.js   25.7 kB     6.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-16bb4cead442.c2ba7d6a9e.js   25.7 kB     6.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/index.bf5beba413.js                      84.2 kB     17.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-c4dae6800800.629d9cdd11.js   352.2 kB    79.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-739571cd2ae5.f2d6d13ec1.js   352.3 kB    79.9 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-6c33a3943990.359435b649.js   719.5 kB    154.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/js/async/route-7ce2535ac56d.e09e04202c.js   719.6 kB    154.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/static/search_index.ko.7ec5d477.json               1366.8 kB   403.7 kB
+
+                                                                                                               Total:   4315.5 kB   1111.8 kB
+
+File (node)                                                                                                                                                                       Size        Gzip   
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/404.html                                                                                                     8.5 kB      2.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/index.html                                                                                                   26.5 kB     4.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html        29.8 kB     5.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/artifact-boundary/README.html   29.8 kB     5.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html                                                  33.3 kB     6.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-review-20.html                                             33.3 kB     6.2 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html                          36.3 kB     7.5 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.html                     36.3 kB     7.5 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html                    36.4 kB     6.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.html               36.4 kB     6.6 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html                                          36.6 kB     7.4 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/plan/c11-4-anonymous-grid-text-pre-wrap-plan-pr-diff-review-30.html                                     36.6 kB     7.4 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html        47.2 kB     8.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/implementation-review-20.html   47.2 kB     8.0 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/plan/c11-4-anonymous-grid-text-pre-wrap.html                                                            48.2 kB     10.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/plan/c11-4-anonymous-grid-text-pre-wrap.html                                                                 48.3 kB     10.1 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/internal/0059-c11-grid-layout.html                                                                           355.7 kB    82.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/internal/0059-c11-grid-layout.html                                                                      355.8 kB    82.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/STATUS.html                                                                                                  676.9 kB    155.3 kB
+build/spinon/roadmap-tailnet-sync-c11-4-prewrap-20261031/pass03/site/spec/STATUS.html                                                                                             677.5 kB    155.3 kB
+
+                                                                                                                                                                         Total:   2636.6 kB   583.3 kB
+

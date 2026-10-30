@@ -23,4 +23,4 @@
 19. **fixture payload의 기본 제품 archive 유입** — release static archive 제품/fixture positive-control 비교에서 제품은 marker 0/7 및 host export 0개, fixture는 7/7 및 export 2개다. 이는 macOS ARM64 static archive 경계로 한정하며 APK/IPA 전체를 증명하지 않는다. archive 범위 통과.
 20. **부분 검증을 전체 C11 완료 또는 전체 테스트 통과로 승격** — 공식 `72/213`, C11/C11.4 미완료 상태를 유지한다. `cargo test --workspace`는 변경 crate 바깥 `spinon-style-to-layout` C07.3 pinned-Chromium 문자열 비교에서 기대 `1.77778 / 1`, 실제 `1.7777778 / 1`로 실패했다. 해당 결과를 전체 통과나 변경이 유발한 결함으로 단정하지 않고 evidence에 남겼다. 상태 경계 통과.
 
-**판정:** 이 검토에서 발견된 runtime adapter 오진은 구현 중 수정했고 영향받는 opt-in runtime suite 및 최종 시뮬레이터 행렬을 다시 통과시켰다. 새로 확인한 blocker는 없다. 현재 source 후보 diff의 별도 30관점 검토도 완료했다. 남은 범위는 전체 workspace C07.3 불일치의 별도 원인 판정, 구현 PR 최종 head 대조, PR checks/병합 상태이며 이 후보를 완료로 판정하지 않는다.
+**판정:** 이 검토에서 발견된 runtime adapter 오진은 구현 중 수정했고 영향받는 opt-in runtime suite 및 최종 시뮬레이터 행렬을 다시 통과시켰다. 새로 확인한 blocker는 없다. 현재 source 후보 diff의 별도 30관점 검토도 완료했다. PR #870 최종 head `bf817aff25c5d39dcec45a744102cac9a0d9d0d7`의 patch가 해당 검토본과 일치했고 PR은 merge SHA `5265793d71a02a6206a09b9bbbc9658696dfd992`로 병합됐다. 전체 workspace C07.3 불일치는 별도 미해결이며, 이 후보를 C11.4 완료로 판정하지 않는다.
