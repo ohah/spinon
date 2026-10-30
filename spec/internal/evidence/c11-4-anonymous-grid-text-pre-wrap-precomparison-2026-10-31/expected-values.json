@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 1,
+  "oracleKind": "independent-css-text-grid-and-ahem-calculation",
+  "specification": {
+    "url": "https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#white-space-property",
+    "sections": ["CSS Text Level 3 §3", "CSS Grid Layout Level 1 §6", "CSS Grid Layout Level 1 §11.5.1"],
+    "status": "Candidate Recommendation Draft"
+  },
+  "font": {
+    "path": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "fontSizeCssPx": 10,
+    "lineHeightCssPx": 10,
+    "advancePerAhemGlyphOrSpaceCssPx": 10
+  },
+  "scenes": [
+    {
+      "id": "normal-max-content",
+      "whiteSpace": "normal",
+      "source": "XX  XX",
+      "expectedColumnsCssPx": [50],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [50, 10]
+    },
+    {
+      "id": "pre-wrap-max-content",
+      "whiteSpace": "pre-wrap",
+      "source": "XX  XX",
+      "expectedColumnsCssPx": [60],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [60, 10]
+    },
+    {
+      "id": "pre-wrap-comment-split-max-content",
+      "whiteSpace": "pre-wrap",
+      "sourceTextSegments": ["XX ", " XX"],
+      "combinedText": "XX  XX",
+      "expectedColumnsCssPx": [60],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [60, 10],
+      "expectedAnonymousGridItemCount": 1
+    },
+    {
+      "id": "pre-wrap-wrap",
+      "whiteSpace": "pre-wrap",
+      "source": "XX XX",
+      "definiteRootWidthCssPx": 25,
+      "expectedColumnsCssPx": [25],
+      "expectedRowsCssPx": [20],
+      "expectedRootBorderBoxCssPx": [25, 20]
+    },
+    {
+      "id": "pre-wrap-forced-break-max-content",
+      "whiteSpace": "pre-wrap",
+      "source": "XX\nXX",
+      "expectedColumnsCssPx": [20],
+      "expectedRowsCssPx": [20],
+      "expectedRootBorderBoxCssPx": [20, 20]
+    },
+    {
+      "id": "normal-min-content",
+      "whiteSpace": "normal",
+      "source": "XX  XX",
+      "expectedColumnsCssPx": [20],
+      "expectedRowsCssPx": [20],
+      "expectedRootBorderBoxCssPx": [20, 20]
+    },
+    {
+      "id": "pre-wrap-min-content",
+      "whiteSpace": "pre-wrap",
+      "source": "XX  XX",
+      "expectedColumnsCssPx": [20],
+      "expectedRowsCssPx": [20],
+      "expectedRootBorderBoxCssPx": [20, 20]
+    },
+    {
+      "id": "pre-wrap-whitespace-only-item",
+      "whiteSpace": "pre-wrap",
+      "source": "  ",
+      "expectedColumnsCssPx": [0],
+      "expectedRowsCssPx": [0],
+      "expectedRootBorderBoxCssPx": [0, 0],
+      "expectedRenderedAnonymousGridItem": false
+    },
+    {
+      "id": "pre-wrap-leading-spaces-max-content",
+      "whiteSpace": "pre-wrap",
+      "source": "  XX",
+      "expectedColumnsCssPx": [40],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [40, 10]
+    },
+    {
+      "id": "pre-wrap-trailing-spaces-max-content",
+      "whiteSpace": "pre-wrap",
+      "source": "XX  ",
+      "expectedColumnsCssPx": [40],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [40, 10]
+    },
+    {
+      "id": "pre-wrap-tab-max-content",
+      "whiteSpace": "pre-wrap",
+      "source": "XX\tXX",
+      "tabSizeSpaces": 8,
+      "expectedColumnsCssPx": [100],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [100, 10]
+    },
+    {
+      "id": "pre-wrap-whitespace-run-before-block",
+      "whiteSpace": "pre-wrap",
+      "source": "  <div id=\"pre-wrap-marker\"></div>",
+      "expectedColumnsCssPx": [20, 20],
+      "expectedRowsCssPx": [10],
+      "expectedRootBorderBoxCssPx": [40, 10],
+      "expectedRenderedAnonymousGridItem": false,
+      "expectedMarkerBorderBoxRootRelativeCssPx": [0, 0, 10, 10],
+      "expectedMarkerGridPlacement": [1, 1]
+    }
+  ],
+  "calculationNotes": [
+    "For max-content, normal collapses the two spaces to one: 20 + 10 + 20 = 50 CSS px.",
+    "For max-content, pre-wrap preserves both spaces: 20 + 20 + 20 = 60 CSS px.",
+    "For min-content, the two words are separate unbreakable segments of 20 CSS px; preserved pre-wrap spaces hang at the line end and do not enlarge the 20 CSS px track.",
+    "The 25 CSS px soft-wrap case fits one 20 CSS px word. The preserved separator is allowed to hang; line-height 10 CSS px and two lines produce a 20 CSS px row.",
+    "CSS Grid §6 says a direct text sequence containing only white space is not rendered as a grid item. Therefore the whitespace-only max-content case has zero-sized tracks and the block following a whitespace-only sequence auto-places in the first grid cell.",
+    "Leading and trailing preserved spaces each contribute two Ahem advances to max-content: 20 + 20 = 40 CSS px.",
+    "With the default tab size of eight spaces, the tab after XX advances from x=20 to the next 80px stop, then XX ends at x=100."
+  ]
+}

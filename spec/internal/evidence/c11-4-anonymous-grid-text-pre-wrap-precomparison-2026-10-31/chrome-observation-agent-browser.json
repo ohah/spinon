@@ -1,0 +1,150 @@
+{
+  "tool": "Agent Browser",
+  "agentBrowserVersion": "0.31.1",
+  "browser": "HeadlessChrome 156.0.0.0",
+  "platform": "macOS arm64",
+  "viewportCssPx": [1280, 633],
+  "devicePixelRatio": 1,
+  "fontStatus": "loaded",
+  "ahemFontCheck": true,
+  "sourceFixture": {
+    "path": "tests/fixtures/css/c11/anonymous-grid-text-pre-wrap-precomparison.html",
+    "sha256": "a7b70631a1a09cdf94b42610a56b991ccb5f6d9e4b60938d3a869e7492062a81"
+  },
+  "font": {
+    "path": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "scenes": [
+    {
+      "id": "normal-max-content",
+      "source": "XX  XX",
+      "computedWhiteSpace": "normal",
+      "computedColumns": "50px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 0, 50, 10],
+      "rangeClientRectsRootRelative": [[0, 0, 50, 10]]
+    },
+    {
+      "id": "pre-wrap-max-content",
+      "source": "XX  XX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "60px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 30, 60, 10],
+      "rangeClientRectsRootRelative": [[0, 0, 60, 10]]
+    },
+    {
+      "id": "pre-wrap-comment-split-max-content",
+      "sourceTextSegments": ["XX ", " XX"],
+      "combinedText": "XX  XX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "60px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 60, 60, 10],
+      "rangeClientRectsRootRelativeBySegment": [
+        [[0, 0, 30, 10]],
+        [[30, 0, 30, 10]]
+      ],
+      "anonymousGridItemCount": 1
+    },
+    {
+      "id": "pre-wrap-wrap",
+      "source": "XX XX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "25px",
+      "computedRows": "20px",
+      "rootBorderBox": [0, 90, 25, 20],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [20, 0, 10, 10], [0, 10, 20, 10]]
+    },
+    {
+      "id": "pre-wrap-forced-break-max-content",
+      "source": "XX\nXX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "20px",
+      "computedRows": "20px",
+      "rootBorderBox": [0, 130, 20, 20],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [20, 0, 0, 10], [0, 10, 20, 10]]
+    },
+    {
+      "id": "normal-min-content",
+      "source": "XX  XX",
+      "computedWhiteSpace": "normal",
+      "computedColumns": "20px",
+      "computedRows": "20px",
+      "rootBorderBox": [0, 170, 20, 20],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [0, 10, 20, 10]]
+    },
+    {
+      "id": "pre-wrap-min-content",
+      "source": "XX  XX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "20px",
+      "computedRows": "20px",
+      "rootBorderBox": [0, 210, 20, 20],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [20, 0, 20, 10], [0, 10, 20, 10]]
+    },
+    {
+      "id": "pre-wrap-whitespace-only-item",
+      "source": "  ",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "0px",
+      "computedRows": "0px",
+      "rootBorderBox": [0, 250, 0, 0],
+      "rangeClientRectsRootRelative": [],
+      "renderedAnonymousGridItem": false
+    },
+    {
+      "id": "pre-wrap-leading-spaces-max-content",
+      "source": "  XX",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "40px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 270, 40, 10],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [20, 0, 20, 10]]
+    },
+    {
+      "id": "pre-wrap-trailing-spaces-max-content",
+      "source": "XX  ",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "40px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 300, 40, 10],
+      "rangeClientRectsRootRelative": [[0, 0, 40, 10]]
+    },
+    {
+      "id": "pre-wrap-tab-max-content",
+      "source": "XX\tXX",
+      "computedTabSize": "8",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "100px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 330, 100, 10],
+      "rangeClientRectsRootRelative": [[0, 0, 20, 10], [20, 0, 60, 10], [80, 0, 20, 10]]
+    },
+    {
+      "id": "pre-wrap-whitespace-run-before-block",
+      "source": "  <div id=\"pre-wrap-marker\"></div>",
+      "computedWhiteSpace": "pre-wrap",
+      "computedColumns": "20px 20px",
+      "computedRows": "10px",
+      "rootBorderBox": [0, 360, 40, 10],
+      "rangeClientRectsRootRelative": [],
+      "renderedAnonymousGridItem": false,
+      "markerBorderBoxRootRelative": [0, 0, 10, 10],
+      "markerComputedGridPlacement": ["auto", "auto"],
+      "markerUsedGridCell": [1, 1]
+    }
+  ],
+  "screenshot": {
+    "path": "spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/chrome-156-agent-browser.png",
+    "sha256": "24f7950341e29209395550adddfd43d10b8011da814dd81f66404bd89b902f13",
+    "pixelSize": [1280, 633]
+  },
+  "limits": [
+    "Range rectangles observe inline fragments and preserved whitespace, not glyph ink or final pixels. The two whitespace-only sequences have no Range fragments and do not create rendered Grid items.",
+    "The marker in pre-wrap-whitespace-run-before-block uses the first auto-placement cell; the preceding white-space-only text sequence consumes no cell.",
+    "The comment-split text nodes remain one anonymous Grid item while preserving distinct fragment ranges.",
+    "This is a Chrome observation and independent fixture calculation, not a Spinon WPT run or an implementation result."
+  ]
+}

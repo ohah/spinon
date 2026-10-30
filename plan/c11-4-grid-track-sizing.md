@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-31 anonymous Grid text `white-space:pre-wrap` follow-up 후보
+
+기존 pre-line opt-in slice [PR #867](https://github.com/ohah/spinon/pull/867)이 병합된 뒤 anonymous Grid text의 보존 공백·soft wrap 동작을 검토한다. Chrome 156 Agent Browser와 CSS Text/Grid 독립 계산에서 12 scene을 고정했다. 구현 계획과 계획 실패 관점 검토는 [집중 계획](./c11-4-anonymous-grid-text-pre-wrap.md)과 [사전 비교·hash·화면](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.md)에 있다. 계획 PR 병합 전이며 구현은 시작하지 않았다. PreWrap은 C11.4 opt-in fixture에서만 허용하도록 설계하고, 일반 root HTML/CSS admission, WPT와 상위 C11.4 완료는 제외한다. 공식 완료 `72/213` 및 C11/C11.4 checkbox는 유지한다.
+
 ## 2026-10-30 anonymous Grid text `white-space:nowrap` 제한 slice 계획
 
 CSS Grid §6에서 Grid container의 in-flow direct text는 anonymous block Grid item이 된다. 기존 opt-in anonymous text slice는 inherited `white-space:normal`만 받아들이고, 유효한 `white-space:nowrap` 입력은 아직 fixture 경로에서 거부한다. 고정 Ahem text `XX XX`의 `min-content` column에서 Chrome 156은 normal control을 `20px` track·두 줄로, nowrap을 `50px` track·한 줄로 계산했다. [집중 계획](./c11-4-anonymous-grid-text-nowrap.md) · [Chrome 사전 비교·hash·screenshot](../spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md)
