@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [Grid track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing) · [CSS Box Alignment 3 baseline rules](https://www.w3.org/TR/css-align-3/#baseline-rules) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 구현/runtime 검증 완료, PR 준비 중. CSS Grid 규범 계산과 Chrome 156 fixture 관측을 분리해 고정했고, 제한 adapter/Taffy 구현을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene 확인했다. 일반 CSS admission은 그대로 닫혀 있다. 이 후보는 C11.4/C11 완료나 공식 집계 변경이 아니다. 기준 branch의 first-baseline fixture PR #827은 병합됐으며 이 후속 slice가 multiline last baseline을 추가한다.
+**상태:** 구현/runtime 검증 완료, 구현 PR [#830](https://github.com/ohah/spinon/pull/830) 검토 대기. CSS Grid 규범 계산과 Chrome 156 fixture 관측을 분리해 고정했고, 제한 adapter/Taffy 구현을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene 확인했다. 일반 CSS admission은 그대로 닫혀 있다. 이 후보는 C11.4/C11 완료나 공식 집계 변경이 아니다. 기준 branch의 first-baseline fixture PR #827은 병합됐으며 이 후속 slice가 multiline last baseline을 추가한다.
 
 ## 해결하려는 차이
 
