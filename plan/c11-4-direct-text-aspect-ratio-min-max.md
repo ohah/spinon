@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio min/max 계획
 
-**상태:** 구현, 최종 로컬 검증, 구현/runtime 실패 관점 검토 20개를 완료했다. 최종 문서·diff 확인 후 구현 PR을 열고, PR이 열린 뒤 별도의 변경 실패 관점 30개를 검토한다. 계획·사전 비교 PR [#849](https://github.com/ohah/spinon/pull/849)은 Rebase and merge로 병합했다. 구현은 기존 C11.4 opt-in fixture에 한정하며 C11/C11.4 공식 상태를 완료로 바꾸지 않는다.
+**상태:** 구현, 최종 로컬 검증, 구현/runtime 실패 관점 검토 20개와 구현 PR diff 실패 관점 검토 30개를 완료했다. 구현 PR [#850](https://github.com/ohah/spinon/pull/850)은 열려 있고 GitHub check rollup은 비어 있어 CI 성공으로 기록하지 않는다. 계획·사전 비교 PR [#849](https://github.com/ohah/spinon/pull/849)은 Rebase and merge로 병합했다. 구현은 기존 C11.4 opt-in fixture에 한정하며 C11/C11.4 공식 상태를 완료로 바꾸지 않는다.
 
 **상위:** [C11.4 Grid track sizing](c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태 대장](../spec/STATUS.md)
 
