@@ -1,0 +1,12 @@
+{
+  "session": "spinon-roadmap-tailnet-pr831",
+  "roadmap_evaluated": true,
+  "status_evaluated": true,
+  "closed": true,
+  "agent_browser_processes_after_close": 0,
+  "tailnet_preview_server": {
+    "pid": 28040,
+    "address": "127.0.0.1:8768",
+    "restarted": false
+  }
+}
