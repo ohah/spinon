@@ -1,0 +1,36 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "appSha256": "7fcdd98029031f58d02ea608d138243b98942eb13a3a1a09d6d366887e569976",
+  "installedAppSha256": "7fcdd98029031f58d02ea608d138243b98942eb13a3a1a09d6d366887e569976",
+  "sourceRevision": {
+    "commit": "2f4d1cece718b0f65d3af3cfc458865cc410da6b",
+    "tree": "446d5e919c44c646391f7fc6b53f00f1e8e6a7df",
+    "trackedDiffSha256": "a13f0ec4e27e0715f524475625f1a5e601d962b595e5ce32c3eb03540f60a970",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "crates/spinon-layout/src/compute.rs",
+      "crates/spinon-layout/src/host_document/text_paragraphs.rs",
+      "crates/spinon-layout/src/host_document_tests/c11_4_anonymous_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "12183f598d9a7d025dceff7b99506c373c8fa4dbf7de44cca25b3788d420edbf"
+  }
+}

@@ -959,7 +959,8 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "image-span2-before-span3", "image-span3-before-span2",
     "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
     "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
-    "anonymous-min-content-wrap", "anonymous-comment-continuation",
+    "anonymous-min-content-wrap", "anonymous-normal-min-content",
+    "anonymous-nowrap-min-content", "anonymous-comment-continuation",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -2285,6 +2286,8 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "nested-grid-definite-flex-control" { return "width=120,height=20" }
     if c114AutoRepeatNegativeLineSceneIDs.contains(sceneID) { return "" }
     if sceneID == "anonymous-min-content-wrap" { return "width=120,height=20" }
+    if sceneID == "anonymous-normal-min-content" { return "width=20,height=20" }
+    if sceneID == "anonymous-nowrap-min-content" { return "width=20,height=10" }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return "width=40,height=184" }
     if c114IsAnonymousTextMultiImageScene(sceneID) { return "width=220,height=180" }
     if c114IsAnonymousTextImageScene(sceneID) { return "width=220,height=60" }
@@ -7873,6 +7876,10 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
             + "1:node=5,x=20,y=0,width=72,height=48]"
     case "anonymous-min-content-wrap":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]"
+    case "anonymous-normal-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"
+    case "anonymous-nowrap-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]"
     case "anonymous-comment-continuation", "anonymous-hidden-child-continuation":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]"
     case "anonymous-runs-around-block":
@@ -9234,7 +9241,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "anonymous-text-three-images-forward"
         || sceneID == "three-images-anonymous-text-reversed" { return 4 }
     if c114IsAnonymousTextImageScene(sceneID) { return 2 }
-    if ["anonymous-min-content-wrap", "anonymous-comment-continuation",
+    if ["anonymous-min-content-wrap", "anonymous-normal-min-content",
+        "anonymous-nowrap-min-content", "anonymous-comment-continuation",
         "anonymous-hidden-child-continuation"].contains(sceneID) {
         return 1
     }
@@ -9289,7 +9297,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
-    ["anonymous-min-content-wrap", "anonymous-comment-continuation",
+    ["anonymous-min-content-wrap", "anonymous-normal-min-content",
+     "anonymous-nowrap-min-content", "anonymous-comment-continuation",
      "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
      "whitespace-does-not-create-item"].contains(sceneID)
 }

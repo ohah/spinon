@@ -1,0 +1,38 @@
+{
+  "serial": "emulator-5554",
+  "target": "android-avd",
+  "qemu": "1",
+  "apiLevel": 37,
+  "abi": "arm64-v8a",
+  "model": "sdk_gphone64_arm64",
+  "fingerprint": "google/sdk_gphone64_arm64/emu64a:17/CE2A.260420.019/15611780:userdebug/dev-keys",
+  "apkSha256": "f9d013d42545ed62829842a0045be6fab95cfa6143b5b4bf8903cc233868697c",
+  "installedApkSha256": "f9d013d42545ed62829842a0045be6fab95cfa6143b5b4bf8903cc233868697c",
+  "sourceRevision": {
+    "commit": "2f4d1cece718b0f65d3af3cfc458865cc410da6b",
+    "tree": "446d5e919c44c646391f7fc6b53f00f1e8e6a7df",
+    "trackedDiffSha256": "a13f0ec4e27e0715f524475625f1a5e601d962b595e5ce32c3eb03540f60a970",
+    "trackedDirtyPaths": [
+      "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "crates/spinon-layout/src/compute.rs",
+      "crates/spinon-layout/src/host_document/text_paragraphs.rs",
+      "crates/spinon-layout/src/host_document_tests/c11_4_anonymous_text.rs",
+      "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "tools/css-reference/capture-c11-4-auto-repeat-neighbors-simulator.mjs",
+      "tools/css-reference/fixture-module-boundary.test.mjs"
+    ],
+    "untrackedFiles": [
+      {
+        "path": "tools/tailnet-preview/c11-4-anonymous-grid-border-overflow-pass03.rspress.config.ts",
+        "sha256": "6108fb6b4c30c8a56b0a18246002dd1f33cda1acff007c48ea795d579aad0c80"
+      },
+      {
+        "path": "vendor/taffy/Cargo.lock",
+        "sha256": "4a870c556bca8ed170e175289cb6991fb17825d6dce85b053ad1377f1501b3e6"
+      }
+    ],
+    "sourceSnapshotSha256": "12183f598d9a7d025dceff7b99506c373c8fa4dbf7de44cca25b3788d420edbf"
+  }
+}

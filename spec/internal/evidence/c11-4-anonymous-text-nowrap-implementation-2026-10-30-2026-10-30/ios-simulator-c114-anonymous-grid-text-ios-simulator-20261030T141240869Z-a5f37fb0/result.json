@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0",
+  "sceneCount": 2,
+  "observations": [
+    {
+      "sceneId": "anonymous-normal-min-content",
+      "summary": "2026-10-30 23:12:42.341888+0900  localhost SpinonBootstrap[35122]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T141240869Z-a5f37fb0-0 scene_id=anonymous-normal-min-content expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-nowrap-min-content",
+      "summary": "2026-10-30 23:12:45.806790+0900  localhost SpinonBootstrap[35218]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T141240869Z-a5f37fb0-1 scene_id=anonymous-nowrap-min-content expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 50,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    }
+  ]
+}

@@ -14,8 +14,10 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 5] = [
+const SCENE_IDS: [&str; 7] = [
     "anonymous-min-content-wrap",
+    "anonymous-normal-min-content",
+    "anonymous-nowrap-min-content",
     "anonymous-comment-continuation",
     "anonymous-runs-around-block",
     "anonymous-hidden-child-continuation",
@@ -62,7 +64,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             )
         })?;
     Ok(Some(super::C11_4TextInput {
-        paragraph_styles: BTreeMap::from([(root.id(), anonymous_paragraph_style())]),
+        paragraph_styles: BTreeMap::from([(root.id(), anonymous_paragraph_style(scene_id))]),
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
@@ -81,7 +83,9 @@ fn validate_direct_children(
         .ok_or_else(|| layout_failure("missing_node", Some(root.id().get()), None))?
         .collect::<Vec<_>>();
     let expected: &[ExpectedChild<'_>] = match scene_id {
-        "anonymous-min-content-wrap" => &[ExpectedChild::Text("XX XX")],
+        "anonymous-min-content-wrap"
+        | "anonymous-normal-min-content"
+        | "anonymous-nowrap-min-content" => &[ExpectedChild::Text("XX XX")],
         "anonymous-comment-continuation" => &[ExpectedChild::Text("XX"), ExpectedChild::Text("XX")],
         "anonymous-runs-around-block" => &[
             ExpectedChild::Text("XX"),
@@ -192,7 +196,19 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
-    validate_text_profile_properties(style.node_id, &style.properties)?;
+    let expected_wrap_mode = if scene_id == "anonymous-nowrap-min-content" {
+        "nowrap"
+    } else {
+        "wrap"
+    };
+    let (expected_width, expected_height) = match scene_id {
+        "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
+            (20.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
+        _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
+    };
+    validate_text_profile_properties(style.node_id, &style.properties, expected_wrap_mode)?;
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
         || style.properties.get("align-items").map(String::as_str) != Some("start")
@@ -207,15 +223,10 @@ fn validate_grid_style(
             .get("white-space-collapse")
             .map(String::as_str)
             != Some("collapse")
-        || style.properties.get("text-wrap-mode").map(String::as_str) != Some("wrap")
+        || style.properties.get("text-wrap-mode").map(String::as_str) != Some(expected_wrap_mode)
         || style.properties.get("order").map(String::as_str) != Some("0")
-        || style.layout_dimensions.width != ComputedCssDimension::LengthPx(120.0)
-        || style.layout_dimensions.height
-            != ComputedCssDimension::LengthPx(if scene_id == "anonymous-min-content-wrap" {
-                20.0
-            } else {
-                10.0
-            })
+        || style.layout_dimensions.width != ComputedCssDimension::LengthPx(expected_width)
+        || style.layout_dimensions.height != expected_height
         || style.layout_dimensions.min_width != ComputedCssDimension::Auto
         || style.layout_dimensions.min_height != ComputedCssDimension::Auto
         || style.layout_dimensions.max_width != ComputedCssMaxSize::None
@@ -258,6 +269,9 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             ComputedCssGridTrackSize::MinContent,
             ComputedCssGridTrackSize::Fraction(1.0),
         ],
+        "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
+            vec![ComputedCssGridTrackSize::MinContent]
+        }
         "anonymous-comment-continuation" => vec![
             ComputedCssGridTrackSize::MaxContent,
             ComputedCssGridTrackSize::Fraction(1.0),
@@ -278,7 +292,12 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         ],
         _ => return false,
     };
-    let expected_rows = if scene_id == "anonymous-min-content-wrap" {
+    let expected_rows = if matches!(
+        scene_id,
+        "anonymous-min-content-wrap"
+            | "anonymous-normal-min-content"
+            | "anonymous-nowrap-min-content"
+    ) {
         vec![ComputedCssGridTrackSize::Auto]
     } else {
         vec![ComputedCssGridTrackSize::LengthPx(10.0)]
@@ -300,6 +319,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
 fn validate_text_profile_properties(
     node_id: NodeId,
     properties: &BTreeMap<String, String>,
+    expected_wrap_mode: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
     for (name, expected) in [
         ("font-family", "Ahem"),
@@ -308,7 +328,6 @@ fn validate_text_profile_properties(
         ("font-style", "normal"),
         ("line-height", "10px"),
         ("white-space-collapse", "collapse"),
-        ("text-wrap-mode", "wrap"),
         ("word-break", "normal"),
         ("direction", "ltr"),
         ("line-break", "auto"),
@@ -328,6 +347,16 @@ fn validate_text_profile_properties(
                 Some(format!("{name}: expected {expected}, got {value:?}")),
             ));
         }
+    }
+    let actual_wrap_mode = properties.get("text-wrap-mode").map(String::as_str);
+    if actual_wrap_mode != Some(expected_wrap_mode) {
+        return Err(layout_failure(
+            "unsupported_c114_anonymous_text_style",
+            Some(node_id.get()),
+            Some(format!(
+                "text-wrap-mode: expected {expected_wrap_mode}, got {actual_wrap_mode:?}"
+            )),
+        ));
     }
     Ok(())
 }
@@ -364,7 +393,7 @@ fn element_identity(
     Ok((element.local_name().to_owned(), id))
 }
 
-fn anonymous_paragraph_style() -> ParagraphStyle {
+fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
     ParagraphStyle {
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
@@ -374,7 +403,11 @@ fn anonymous_paragraph_style() -> ParagraphStyle {
         line_height_is_normal: false,
         font_weight: 400.0,
         font_style: FontStyleMode::Normal,
-        white_space: WhiteSpaceMode::Normal,
+        white_space: if scene_id == "anonymous-nowrap-min-content" {
+            WhiteSpaceMode::NoWrap
+        } else {
+            WhiteSpaceMode::Normal
+        },
         word_break: WordBreakMode::Normal,
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
@@ -429,7 +462,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 5);
+        assert_eq!(SCENE_IDS.len(), 7);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -487,7 +520,14 @@ mod tests {
             ("word-spacing".to_owned(), "0px".to_owned()),
             ("text-indent".to_owned(), "0px".to_owned()),
         ]);
-        assert!(validate_text_profile_properties(NodeId::new(1).unwrap(), &properties).is_ok());
+        assert!(
+            validate_text_profile_properties(NodeId::new(1).unwrap(), &properties, "wrap").is_ok()
+        );
+        let mut nowrap = properties.clone();
+        nowrap.insert("text-wrap-mode".to_owned(), "nowrap".to_owned());
+        assert!(
+            validate_text_profile_properties(NodeId::new(1).unwrap(), &nowrap, "nowrap").is_ok()
+        );
         for (name, changed) in [
             ("font-family", "sans-serif"),
             ("font-size", "11px"),
@@ -510,7 +550,8 @@ mod tests {
             let mut mutated = properties.clone();
             mutated.insert(name.to_owned(), changed.to_owned());
             assert!(
-                validate_text_profile_properties(NodeId::new(1).unwrap(), &mutated).is_err(),
+                validate_text_profile_properties(NodeId::new(1).unwrap(), &mutated, "wrap")
+                    .is_err(),
                 "the fixture must reject a changed {name}"
             );
         }
@@ -523,6 +564,18 @@ mod tests {
             vec![ComputedCssGridTrackSize::Auto],
         );
         assert!(grid_tracks_match(&valid, "anonymous-min-content-wrap"));
+        let min_content_single_track = grid(
+            vec![ComputedCssGridTrackSize::MinContent],
+            vec![ComputedCssGridTrackSize::Auto],
+        );
+        assert!(grid_tracks_match(
+            &min_content_single_track,
+            "anonymous-normal-min-content"
+        ));
+        assert!(grid_tracks_match(
+            &min_content_single_track,
+            "anonymous-nowrap-min-content"
+        ));
 
         macro_rules! rejects_grid_mutation {
             ($name:literal, $mutation:expr) => {{

@@ -215,7 +215,10 @@ fn validate_text_paragraphs(
                     || !grid_is_parent
                     || !node.children.is_empty()
                     || paragraph.sources.is_empty()
-                    || paragraph.style.white_space != crate::WhiteSpaceMode::Normal
+                    || !matches!(
+                        paragraph.style.white_space,
+                        crate::WhiteSpaceMode::Normal | crate::WhiteSpaceMode::NoWrap
+                    )
                     || source_nodes.is_empty()
                     || !source_nodes.iter().any(|source| source.node == id)
                     || first_non_whitespace_source != Some(id)

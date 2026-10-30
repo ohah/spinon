@@ -923,7 +923,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "image-span2-before-span3", "image-span3-before-span2",
             "mixed-text-image-span2-forward", "mixed-text-image-span2-reversed",
             "mixed-text-image-span2-before-span3", "mixed-text-image-span3-before-span2",
-            "anonymous-min-content-wrap", "anonymous-comment-continuation",
+            "anonymous-min-content-wrap", "anonymous-normal-min-content",
+            "anonymous-nowrap-min-content", "anonymous-comment-continuation",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -4936,6 +4937,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (c114IsAutoRepeatNegativeLineScene(sceneId)) return "";
         if (sceneId.equals("anonymous-min-content-wrap")) return "width=120,height=20";
+        if (sceneId.equals("anonymous-normal-min-content")) return "width=20,height=20";
+        if (sceneId.equals("anonymous-nowrap-min-content")) return "width=20,height=10";
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return "width=40,height=184";
         if (c114IsAnonymousTextMultiImageScene(sceneId)) return "width=220,height=180";
         if (c114IsAnonymousTextImageScene(sceneId)) return "width=220,height=60";
@@ -8224,6 +8227,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         + "1:node=5,x=20,y=0,width=72,height=48]";
             case "anonymous-min-content-wrap":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]";
+            case "anonymous-normal-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]";
+            case "anonymous-nowrap-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]";
             case "anonymous-comment-continuation":
             case "anonymous-hidden-child-continuation":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]";
@@ -10562,6 +10569,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("three-images-anonymous-text-reversed")) return 4;
         if (c114IsAnonymousTextImageScene(sceneId)) return 2;
         if (sceneId.equals("anonymous-min-content-wrap")
+                || sceneId.equals("anonymous-normal-min-content")
+                || sceneId.equals("anonymous-nowrap-min-content")
                 || sceneId.equals("anonymous-comment-continuation")
                 || sceneId.equals("anonymous-hidden-child-continuation")) return 1;
         if (sceneId.equals("anonymous-runs-around-block")) return 2;
@@ -10645,6 +10654,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsAnonymousTextScene(String sceneId) {
         return sceneId.equals("anonymous-min-content-wrap")
+                || sceneId.equals("anonymous-normal-min-content")
+                || sceneId.equals("anonymous-nowrap-min-content")
                 || sceneId.equals("anonymous-comment-continuation")
                 || sceneId.equals("anonymous-runs-around-block")
                 || sceneId.equals("anonymous-hidden-child-continuation")
