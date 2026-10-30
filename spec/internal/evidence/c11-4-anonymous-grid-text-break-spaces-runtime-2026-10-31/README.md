@@ -32,9 +32,9 @@ Android 첫 실행은 24/26에서 멈췄다. 공백만 있는 `break-spaces` 입
 
 선택한 앱 화면은 실행 경로와 fixture harness를 보여준다. 이 PNG는 glyph ink의 pixel oracle이 아니다.
 
-![Android API 37 AVD C11.4 break-spaces max-content fixture](screenshots/android-avd-anonymous-break-spaces-max-content.png)
+![Android API 37 AVD C11.4 break-spaces max-content fixture](./screenshots/android-avd-anonymous-break-spaces-max-content.png)
 
-![iPhone 17 Pro Simulator C11.4 break-spaces max-content fixture](screenshots/ios-simulator-anonymous-break-spaces-max-content.png)
+![iPhone 17 Pro Simulator C11.4 break-spaces max-content fixture](./screenshots/ios-simulator-anonymous-break-spaces-max-content.png)
 
 전체 scene별 capture와 log는 원 실행 디렉터리에 보존되어 있다. 이 PR에는 축약된 result/environment receipts와 플랫폼별 대표 화면만 포함한다.
 
@@ -55,3 +55,6 @@ Android 첫 실행은 24/26에서 멈췄다. 공백만 있는 `break-spaces` 입
 전체 WPT·Spinon 적합성, 임의 font/script/tab profile, 일반 CSS admission, root HTML parity, glyph raster pixels, Android 실기기/hardware GPU와 iOS compositor 이후 pixels, 전체 C11.4/C11은 검증하지 않았다. C11.4와 C11 status checkbox, 공식 `72/213`은 미완료 상태로 유지한다.
 
 [기본/fixture-test static archive 경계](artifact-boundary/README.md) · [구현 실패 관점 검토 20개](implementation-review-20.md) · [PR 변경 검토 30개](pr-diff-review-30.md).
+
+
+구현 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge됐고 merge SHA는 `32ba37b18dc5a8fc553667f52cc47d46dae3952f`다. PR check rollup은 비어 있었고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 미완료 상태로 유지한다.

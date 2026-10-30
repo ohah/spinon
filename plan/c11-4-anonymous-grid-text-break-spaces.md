@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** 계획 PR [#872](https://github.com/ohah/spinon/pull/872)은 2026-10-30T19:22:58Z Rebase and merge됐고 merge SHA는 `908e35f0e480f42fb87b75550866c62999ad6642`다. 계획대로 구현 후보를 같은 checkout에서 순차 진행했다. 현재 제한 `BreakSpaces` 후보는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 26/26씩 통과했고 구현·runtime 검토를 마쳤다. 구현/runtime 실패 관점 20개와 최종 source diff 실패 관점 30개를 마쳤다. 구현 PR 생성과 병합은 이어서 진행한다. C11.4/C11 공식 완료와 `72/213`은 미완료로 유지한다.
+**상태:** 계획 PR [#872](https://github.com/ohah/spinon/pull/872)은 2026-10-30T19:22:58Z Rebase and merge됐고 merge SHA는 `908e35f0e480f42fb87b75550866c62999ad6642`다. 계획대로 구현 후보를 같은 checkout에서 순차 진행했다. 현재 제한 `BreakSpaces` 후보는 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 26/26씩 통과했고 구현·runtime 검토를 마쳤다. 구현/runtime 실패 관점 20개와 최종 source diff 실패 관점 30개를 마쳤다. 구현 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge됐고 merge SHA는 `32ba37b18dc5a8fc553667f52cc47d46dae3952f`다. PR check rollup은 비어 있어 CI 통과로 기록하지 않는다. C11.4/C11 공식 완료와 `72/213`은 미완료로 유지한다.
 
 **계획 검토:** 서로 다른 실패 경로 20개는 [계획 검토 기록](./c11-4-anonymous-grid-text-break-spaces-plan-review-20.md)에, 계획 PR diff 30개는 [PR diff 검토 기록](./c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.md)에 별도로 남긴다.
 

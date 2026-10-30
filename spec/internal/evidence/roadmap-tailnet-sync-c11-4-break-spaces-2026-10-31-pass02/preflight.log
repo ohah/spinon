@@ -1,0 +1,29 @@
+{
+  "sourceHead": "32ba37b18dc5a8fc553667f52cc47d46dae3952f",
+  "sourceTree": "8eefb38009fafea47b82053550519a34576b3970",
+  "trackedDiffSha256": "64a3dd0c3d9ccc3649544903b4d91a4e1ed2e2515dee681d5310a56af60d031a",
+  "tailscaleBackendState": "Running",
+  "selfHostName": "윤형배의 Mac Studio",
+  "selfTailscaleIPs": [
+    "100.64.53.81",
+    "fd7a:115c:a1e0::312d:3552"
+  ],
+  "previewPid": 28040,
+  "previewArgs": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "previewListen": "127.0.0.1:8768",
+  "localRoadmapStatus": 200,
+  "localRoadmapBytes": 428213,
+  "localRoadmapSha256": "cbb6bd442912002278c829360c26b0cf45399180ecbb0233adad899a84b52fe3",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/roadmap-tailnet-sync-c11-4-break-spaces-2026-10-31/pass02",
+  "routeCount": 104,
+  "targetBytes": 10786433,
+  "counts": {
+    "create": 75,
+    "replace": 11,
+    "same": 18
+  },
+  "openHandleCount": 0,
+  "openHandles": [],
+  "noDeletes": true
+}

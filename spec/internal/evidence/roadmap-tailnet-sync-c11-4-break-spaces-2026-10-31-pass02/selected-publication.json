@@ -1,0 +1,761 @@
+{
+  "sourceHead": "32ba37b18dc5a8fc553667f52cc47d46dae3952f",
+  "sourceTree": "8eefb38009fafea47b82053550519a34576b3970",
+  "trackedDiffSha256": "64a3dd0c3d9ccc3649544903b4d91a4e1ed2e2515dee681d5310a56af60d031a",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass02/publication",
+  "selectedRootFileCount": 51,
+  "routeCount": 104,
+  "totalBytes": 10786433,
+  "requiredRoutes": [
+    "roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-anonymous-grid-text-break-spaces.html",
+    "internal/0059-c11-grid-layout.html",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.html",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.html",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.html",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/android-avd-anonymous-break-spaces-max-content.png",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/ios-simulator-anonymous-break-spaces-max-content.png",
+    "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.html"
+  ],
+  "roadmapMarkers": [
+    "white-space:break-spaces",
+    "26/26",
+    "#873",
+    "72/213"
+  ],
+  "fullDocsLinkValidation": false,
+  "noDeletes": true,
+  "routes": [
+    {
+      "path": "icon.svg",
+      "source": "rspress:icon.svg",
+      "kind": "generated-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "source": "rspress:internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 359795,
+      "sha256": "e9c5af649308bbcbb2ebebf32630030ab6b16b9df5e3825be967bb0d2b0b559d"
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 245345,
+      "sha256": "d0d1143e8ee02be2cb974b73f6e81f76343db637e4432dfba63cd6a756a0b031"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 31672,
+      "sha256": "831c7eddd84f9330f5b7f5fb0ec886728d0ce5fde5e7a03be6e641c7264e7ff7"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "kind": "source-page-or-asset",
+      "bytes": 9662,
+      "sha256": "b2a3ac54b71c7d09f68a1a1c693a464d91c1f9a89d36562a96d96d760791db68"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/expected-values.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/expected-values.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3782,
+      "sha256": "e15a1f2393e648608a16fbc8e5744cfc361c48dac4a1e2c78f900dbfe227883b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32953,
+      "sha256": "8c040e14478f3e41e9a4ecfacd6342ea72600cc71d6e3cd66543a4b3597a4a6a"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3305,
+      "sha256": "27a46f52c437362777996cd43236675e0122af7c9b22737eae1695f8875496dc"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30954,
+      "sha256": "605a6d3351b242d6c9a0b21a18e1832b7fd52739459ee86774c7f115ac32b4c8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1069,
+      "sha256": "ee52b1b230d6ff609bcde231a570e9ec012d0dcfe32988b339c5dd735c0ee1e2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 35077,
+      "sha256": "15a23d5914daa821b379a5f131feeb1a2bf090375733795e3ef45d7054409b5b"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5154,
+      "sha256": "1935c2b73056e0fee402bd20895d9a138f497396384b21147feee2cb512d5401"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36249,
+      "sha256": "66265921cacffd8a773c15c6e196e427fdc4d83435a1b0dbf63e3a547b4f4b45"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6150,
+      "sha256": "33dfc97d53466f45917bb29341f61712b812811b57a74473ae3b999720216b57"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+      "source": "rspress:internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 38245,
+      "sha256": "c1f41254ecb7dbd30de117c192636646096cb72f8935ee0d013cd6cb2703c85e"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6767,
+      "sha256": "1fcc018fbfb1b4048784732dcc11c670c1d10fe66c05e6ac6b959bebe94cd7d8"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-result.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-result.json",
+      "kind": "source-page-or-asset",
+      "bytes": 27192,
+      "sha256": "0a432cd640edc59f772de307147d7efbaa0465d39176972bf92f87e07479c378"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2513,
+      "sha256": "d92b2c1afc2339913a0840804be0996ce91f9abeef525c798c39e4fb83c90243"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-result.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-result.json",
+      "kind": "source-page-or-asset",
+      "bytes": 28050,
+      "sha256": "1fb18a57bafa70f7b40f2744504398ca9a8a479558c2ad99be787a40b0a192a9"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2470,
+      "sha256": "3bacd50bda88c8cdfae35d24cf448f67ce9b79a46dd38478057d110b8bccdbe2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/android-avd-anonymous-break-spaces-max-content.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/android-avd-anonymous-break-spaces-max-content.png",
+      "kind": "source-page-or-asset",
+      "bytes": 76641,
+      "sha256": "5843ec24972c7333b8312c88d492f37e88660b6851a48a365c88dc6d2622c0c2"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/ios-simulator-anonymous-break-spaces-max-content.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/ios-simulator-anonymous-break-spaces-max-content.png",
+      "kind": "source-page-or-asset",
+      "bytes": 142306,
+      "sha256": "cf82149e67d6ce66c958542c67fba2e7e8d46da45beb87edf247182700a3cbd1"
+    },
+    {
+      "path": "logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36053,
+      "sha256": "b0dc3a091376b062ea2671d5832ca5f16483b30c28819e81843685bc36d133e9"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5546,
+      "sha256": "6047e2b8fd745c20232b512d6c49dc8cdc1d8d1decf43634c06aacfb674dac06"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34519,
+      "sha256": "b295b2fbaa639d98207a2aabd7e58166c1a9731b6369eec8e1984780bc9e7a0c"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4767,
+      "sha256": "e6c7e048f58aca0f91851a3abdab1312aa44e7ac1bb50a17ff92a12a5440f5e2"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces.html",
+      "source": "rspress:plan/c11-4-anonymous-grid-text-break-spaces.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41016,
+      "sha256": "d78c579c228f52bfdfe9e9cb42bad51d7047c5d0bd1d367c77e7883c489c480a"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-break-spaces.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces.md",
+      "kind": "source-page-or-asset",
+      "bytes": 8042,
+      "sha256": "4e9c9a0707dc9f2fa4f334c11d15adbd9a594a0b0e3acafd9b6a352446b039d4"
+    },
+    {
+      "path": "public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 430231,
+      "sha256": "35c9e08669fb4ecc83f4a330982bb723f1e0730fb6640a236b1a36d997f43b48"
+    },
+    {
+      "path": "public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 430231,
+      "sha256": "35c9e08669fb4ecc83f4a330982bb723f1e0730fb6640a236b1a36d997f43b48"
+    },
+    {
+      "path": "roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "source": "rspress:spec/internal/0059-c11-grid-layout.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 359919,
+      "sha256": "d3a5c486364c866034f1de218c1f7c04a01c1bada3324dbefe3b1872f9b3fb95"
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "source": "selected-root:spec/internal/0059-c11-grid-layout.md",
+      "kind": "source-page-or-asset",
+      "bytes": 245345,
+      "sha256": "d0d1143e8ee02be2cb974b73f6e81f76343db637e4432dfba63cd6a756a0b031"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-156-agent-browser.png",
+      "kind": "source-page-or-asset",
+      "bytes": 31672,
+      "sha256": "831c7eddd84f9330f5b7f5fb0ec886728d0ce5fde5e7a03be6e641c7264e7ff7"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/chrome-observation-agent-browser.json",
+      "kind": "source-page-or-asset",
+      "bytes": 9662,
+      "sha256": "b2a3ac54b71c7d09f68a1a1c693a464d91c1f9a89d36562a96d96d760791db68"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/expected-values.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/expected-values.json",
+      "kind": "source-page-or-asset",
+      "bytes": 3782,
+      "sha256": "e15a1f2393e648608a16fbc8e5744cfc361c48dac4a1e2c78f900dbfe227883b"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 32963,
+      "sha256": "8be93b107f70dedb4bd6db7ae0cae26c9157486977f7efa176ca18884b882b93"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-precomparison-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 3305,
+      "sha256": "27a46f52c437362777996cd43236675e0122af7c9b22737eae1695f8875496dc"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 30964,
+      "sha256": "c9cc48a57d3d413a2b4ed04e81af0006444e417639ecd34d5deebe2ec37fa51f"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 1069,
+      "sha256": "ee52b1b230d6ff609bcde231a570e9ec012d0dcfe32988b339c5dd735c0ee1e2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 35097,
+      "sha256": "54750c3421a4b832b030764d94814eb328a4cfbfc0d49b82789d7044d013b144"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/implementation-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5154,
+      "sha256": "1935c2b73056e0fee402bd20895d9a138f497396384b21147feee2cb512d5401"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36259,
+      "sha256": "0a205042a2f1ff5d7e01bd16d2b900a05a254a69c7216a453c709a18448c6d79"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6150,
+      "sha256": "33dfc97d53466f45917bb29341f61712b812811b57a74473ae3b999720216b57"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+      "source": "rspress:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 38275,
+      "sha256": "6d5effa5fe79904f57a7a3e5318c1bfb71d15b283b2383a7e6bad5b9a36aa7fe"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md",
+      "kind": "source-page-or-asset",
+      "bytes": 6767,
+      "sha256": "1fcc018fbfb1b4048784732dcc11c670c1d10fe66c05e6ac6b959bebe94cd7d8"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-result.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-result.json",
+      "kind": "source-page-or-asset",
+      "bytes": 27192,
+      "sha256": "0a432cd640edc59f772de307147d7efbaa0465d39176972bf92f87e07479c378"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/android-simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2513,
+      "sha256": "d92b2c1afc2339913a0840804be0996ce91f9abeef525c798c39e4fb83c90243"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-result.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-result.json",
+      "kind": "source-page-or-asset",
+      "bytes": 28050,
+      "sha256": "1fb18a57bafa70f7b40f2744504398ca9a8a479558c2ad99be787a40b0a192a9"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-simulator.json",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/receipts/ios-simulator.json",
+      "kind": "source-page-or-asset",
+      "bytes": 2470,
+      "sha256": "3bacd50bda88c8cdfae35d24cf448f67ce9b79a46dd38478057d110b8bccdbe2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/android-avd-anonymous-break-spaces-max-content.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/android-avd-anonymous-break-spaces-max-content.png",
+      "kind": "source-page-or-asset",
+      "bytes": 76641,
+      "sha256": "5843ec24972c7333b8312c88d492f37e88660b6851a48a365c88dc6d2622c0c2"
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/ios-simulator-anonymous-break-spaces-max-content.png",
+      "source": "selected-root:spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/screenshots/ios-simulator-anonymous-break-spaces-max-content.png",
+      "kind": "source-page-or-asset",
+      "bytes": 142306,
+      "sha256": "cf82149e67d6ce66c958542c67fba2e7e8d46da45beb87edf247182700a3cbd1"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 36063,
+      "sha256": "d7a0f1197b4e79cf03201ae120f90e44a91094dbf590522a06c64651bd3abe78"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces-plan-pr-diff-review-30.md",
+      "kind": "source-page-or-asset",
+      "bytes": 5546,
+      "sha256": "6047e2b8fd745c20232b512d6c49dc8cdc1d8d1decf43634c06aacfb674dac06"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 34534,
+      "sha256": "38f49e4e19533ac28476ae1643e7f1da771bdff75e015faad253e82ca49b018e"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces-plan-review-20.md",
+      "kind": "source-page-or-asset",
+      "bytes": 4767,
+      "sha256": "e6c7e048f58aca0f91851a3abdab1312aa44e7ac1bb50a17ff92a12a5440f5e2"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces.html",
+      "source": "rspress:spec/plan/c11-4-anonymous-grid-text-break-spaces.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 41002,
+      "sha256": "9c7c8669824c37f5521297984afd32787e9f094c22daa3ce6af3853dfddb2c60"
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-break-spaces.md",
+      "source": "selected-root:plan/c11-4-anonymous-grid-text-break-spaces.md",
+      "kind": "source-page-or-asset",
+      "bytes": 8042,
+      "sha256": "4e9c9a0707dc9f2fa4f334c11d15adbd9a594a0b0e3acafd9b6a352446b039d4"
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "source": "selected-root:spec/public/icon.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "source": "selected-root:spec/public/logo.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "source": "selected-root:spec/public/roadmap.html",
+      "kind": "source-page-or-asset",
+      "bytes": 430231,
+      "sha256": "35c9e08669fb4ecc83f4a330982bb723f1e0730fb6640a236b1a36d997f43b48"
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "source": "selected-root:spec/public/roadmap.svg",
+      "kind": "source-page-or-asset",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "source": "rspress:spec/STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 679960,
+      "sha256": "e13eb5c0bc9897d2634f87a96058f4ed24fe8c4445aeb73db35a657456e8b093"
+    },
+    {
+      "path": "spec/STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 544430,
+      "sha256": "607c65469d46c4a9a1b2ea89462f60db7eb38b12846d99b4f9c7619c92d6b170"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "source": "rspress:static/css/styles.8d918fd78e.css",
+      "kind": "generated-page-or-asset",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "path": "static/image/android-avd-anonymous-break-spaces-max-content.1c20d610ee.png",
+      "source": "rspress:static/image/android-avd-anonymous-break-spaces-max-content.1c20d610ee.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 76641,
+      "sha256": "5843ec24972c7333b8312c88d492f37e88660b6851a48a365c88dc6d2622c0c2"
+    },
+    {
+      "path": "static/image/ios-simulator-anonymous-break-spaces-max-content.a09921d113.png",
+      "source": "rspress:static/image/ios-simulator-anonymous-break-spaces-max-content.a09921d113.png",
+      "kind": "generated-page-or-asset",
+      "bytes": 142306,
+      "sha256": "cf82149e67d6ce66c958542c67fba2e7e8d46da45beb87edf247182700a3cbd1"
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "source": "rspress:static/js/a.877e354479.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6"
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "source": "rspress:static/js/a.877e354479.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af"
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "source": "rspress:static/js/async/i.25208e7c92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe"
+    },
+    {
+      "path": "static/js/async/route-024ac3e1f142.15b7cb22fd.js",
+      "source": "rspress:static/js/async/route-024ac3e1f142.15b7cb22fd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9910,
+      "sha256": "ccdf2826bfaa24f4960912c22d7f9868767a18c7a14fbab62c711b2a0974aff8"
+    },
+    {
+      "path": "static/js/async/route-0effcfa6f6e0.72bc1d6cac.js",
+      "source": "rspress:static/js/async/route-0effcfa6f6e0.72bc1d6cac.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 13575,
+      "sha256": "2b2d070799c57d45c14544fb2453a5a8691e6bb22e9ac93480ba387b849aca60"
+    },
+    {
+      "path": "static/js/async/route-13f09e21e973.42bceea894.js",
+      "source": "rspress:static/js/async/route-13f09e21e973.42bceea894.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14878,
+      "sha256": "729abaadfa4f74938d139e7750b7f430f4d51ca83c028ec1695ff93622beaca6"
+    },
+    {
+      "path": "static/js/async/route-4df26fa64762.338dbad89d.js",
+      "source": "rspress:static/js/async/route-4df26fa64762.338dbad89d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9927,
+      "sha256": "5b18664d87f39e6cde1033f98ff1d5b716d5a0222e1f7d7655ebd9e8233fd7f2"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.06f1830301.js",
+      "source": "rspress:static/js/async/route-6c33a3943990.06f1830301.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 721365,
+      "sha256": "aa5b4bd4a0fd2d8c42c13bdd63cfb2458ef160f3ae813293e2d67c6f0d208397"
+    },
+    {
+      "path": "static/js/async/route-6de5a8851863.d14973b46e.js",
+      "source": "rspress:static/js/async/route-6de5a8851863.d14973b46e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9416,
+      "sha256": "edae91f00a18d2fe067cd517010022ba56e125be1a2b41621440ce88f1ce5af6"
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.245aba6e92.js",
+      "source": "rspress:static/js/async/route-739571cd2ae5.245aba6e92.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 355827,
+      "sha256": "bfd51998bca305eaec78aca0d430c9d5efe2df9eaa425d9e7ed6be3036a5b21d"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.e0a379567b.js",
+      "source": "rspress:static/js/async/route-7ce2535ac56d.e0a379567b.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 721470,
+      "sha256": "02c460c79bc325d2df3a6d9b6b94e2d69f36cf56c7853428c1a3c9a7c9bc1ae0"
+    },
+    {
+      "path": "static/js/async/route-807914fa341a.6b6b24713d.js",
+      "source": "rspress:static/js/async/route-807914fa341a.6b6b24713d.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11564,
+      "sha256": "693ef76f50eeb67bbb03dc6da2abdbb898f80a67cc9c5a445d0309d413fce2d6"
+    },
+    {
+      "path": "static/js/async/route-88da2f404662.3950f26719.js",
+      "source": "rspress:static/js/async/route-88da2f404662.3950f26719.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11852,
+      "sha256": "25eeae3ff3bafc7614834a5f70feb5ee8d7ac242ade7f6665602b64b17e8d91b"
+    },
+    {
+      "path": "static/js/async/route-8bbf2a4b9f4c.961db77948.js",
+      "source": "rspress:static/js/async/route-8bbf2a4b9f4c.961db77948.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 14861,
+      "sha256": "ed745e384373b5bf457e5ccd8d5b6db9e9eb4e01c4705853e8e14358f77b5990"
+    },
+    {
+      "path": "static/js/async/route-a27954dbee55.8aa08cbd6e.js",
+      "source": "rspress:static/js/async/route-a27954dbee55.8aa08cbd6e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11860,
+      "sha256": "d27aaad6d77676d2a13092f67f2dd8d467371fe2091beca4d67d6db9dbba0737"
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.b3b558101e.js",
+      "source": "rspress:static/js/async/route-a48746cae70c.b3b558101e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 1008,
+      "sha256": "7e1831a811c98ace6921366cfeef007991bd465a22ac83ec4291ddcb6e014553"
+    },
+    {
+      "path": "static/js/async/route-a867926b217e.610a4777d1.js",
+      "source": "rspress:static/js/async/route-a867926b217e.610a4777d1.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6439,
+      "sha256": "38b5b5301263cc9f58be82af3392f583a3a485bfb9787f85766f2b20e4ab2f27"
+    },
+    {
+      "path": "static/js/async/route-a931eeaed48d.b11366ed57.js",
+      "source": "rspress:static/js/async/route-a931eeaed48d.b11366ed57.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 2614,
+      "sha256": "f3b4daf70f247f2e911734a9721426ccb77ec6b06b0bf45714d39f08daac46e0"
+    },
+    {
+      "path": "static/js/async/route-bb2e34c7ae40.9154e49056.js",
+      "source": "rspress:static/js/async/route-bb2e34c7ae40.9154e49056.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 13601,
+      "sha256": "eeab140bf69c85354e1321ddd6e20cbf5ba5dbc646ddee21987337b080d114d1"
+    },
+    {
+      "path": "static/js/async/route-c35e3ab3b23c.b30c260a6e.js",
+      "source": "rspress:static/js/async/route-c35e3ab3b23c.b30c260a6e.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 6448,
+      "sha256": "f25b8c45b5665952cc236cb8e29f8983ffdca53ed487ba220a7e7e07d419c791"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.91eb6f5d9f.js",
+      "source": "rspress:static/js/async/route-c4dae6800800.91eb6f5d9f.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 355787,
+      "sha256": "0680d6c3f0dbd5b068ec213574a45254763c27e479f755eb776ec2e3aa3adcfe"
+    },
+    {
+      "path": "static/js/async/route-c7cbbbf29940.7b206854d0.js",
+      "source": "rspress:static/js/async/route-c7cbbbf29940.7b206854d0.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 2621,
+      "sha256": "18333ff668fda284430c5b736a2512cff910c4da8886a0cbe295f194d6036914"
+    },
+    {
+      "path": "static/js/async/route-d71ab32e78f1.8dde1c6a28.js",
+      "source": "rspress:static/js/async/route-d71ab32e78f1.8dde1c6a28.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 9401,
+      "sha256": "fa9a50ddbb94cd5e33180755f358abe00c3487bed2066c9ff7d3d643826592c2"
+    },
+    {
+      "path": "static/js/async/route-f76f3d71ddb6.369c665dbd.js",
+      "source": "rspress:static/js/async/route-f76f3d71ddb6.369c665dbd.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 11572,
+      "sha256": "da61128ac5db079a1c7fdcbd18407775dd65726c92a2c0e4a2c885898b9b749e"
+    },
+    {
+      "path": "static/js/index.7aba9b1cc1.js",
+      "source": "rspress:static/js/index.7aba9b1cc1.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 75898,
+      "sha256": "9da6fe249bb0197bfe28de4c3ec5c34dea60ff5bae6ff174d7e392b022ceb200"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef"
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13"
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "source": "rspress:static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "kind": "generated-page-or-asset",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d"
+    },
+    {
+      "path": "static/js/styles.2da0941fcb.js",
+      "source": "rspress:static/js/styles.2da0941fcb.js",
+      "kind": "generated-page-or-asset",
+      "bytes": 472,
+      "sha256": "38d70e4dcbcd6eefd15a9c59654e37c244f1e2de83f19d504566c1dc9725fb6b"
+    },
+    {
+      "path": "static/search_index.ko.290f40c6.json",
+      "source": "rspress:static/search_index.ko.290f40c6.json",
+      "kind": "generated-page-or-asset",
+      "bytes": 1360605,
+      "sha256": "290f40c6d37c9bfad199004350e7842a328b341fb1ccb263c9b28926df59295f"
+    },
+    {
+      "path": "STATUS.html",
+      "source": "rspress:STATUS.html",
+      "kind": "generated-page-or-asset",
+      "bytes": 679390,
+      "sha256": "f85cfe9e8f8585f22a2c8fa82808d2f07c1c3e93c6bd7909fb2eafdd80b868b1"
+    },
+    {
+      "path": "STATUS.md",
+      "source": "selected-root:spec/STATUS.md",
+      "kind": "source-page-or-asset",
+      "bytes": 544430,
+      "sha256": "607c65469d46c4a9a1b2ea89462f60db7eb38b12846d99b4f9c7619c92d6b170"
+    }
+  ]
+}
