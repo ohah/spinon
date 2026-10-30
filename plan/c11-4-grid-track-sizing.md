@@ -1,10 +1,10 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-30 direct-text preferred aspect-ratio two-track span 후보
+## 2026-10-30 direct-text preferred aspect-ratio two-track span · PR #857 병합
 
 PR #850의 direct-text ratio min/max fixture는 span을 거부한다. Ahem `AAAA` 하나가 두 `max-content` columns를 span하는 고정 입력 9개를 Agent Browser HeadlessChrome 156과 CSS Grid 2025 CRD §11.5.1 독립 계산으로 사전 비교했다. columns `[20,20]`/`[30,30]`/`[15,15]` 및 17.75px 연속값, `min-width:auto` control이 일치한다. [집중 계획](./c11-4-direct-text-aspect-ratio-multispan.md) · [사전 비교 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md).
 
-현재는 계획 검토 단계다. 구현 수용 기준은 simulator surface에서 item background bounds와 clear 영역만 확인하며, text overhang은 Chrome text range·runtime trace/frame으로 검사한다. 기존 C11.4 simulator route는 Ahem glyph를 paint하지 않는다. 제품 구현과 WPT는 아직 하지 않았다. C11.4/C11 checkbox와 공식 `72/213`은 그대로 둔다.
+고정 fixture-test slice를 구현하고 Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 42개와 신규 9개를 합친 51/51 scene을 확인했다. 신규 scene 표본은 각 플랫폼 36/36, 전체 matrix 표본은 165/165 exact다. Rust/FFI focused tests, fixture archive boundary, 구현/runtime 실패 관점 20개와 implementation diff review 30개를 완료했다. 구현 PR [#857](https://github.com/ohah/spinon/pull/857)은 2026-10-30T13:25:43Z Rebase and merge됐고 merge SHA는 `22ffc526a3acd3fd56cd4647e8b7b82256909e36`다. PR check rollup은 비어 있고 main required status check도 없어 CI 성공으로 세지 않는다. 실행 경계와 화면·로그는 [runtime evidence](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-runtime-2026-10-30/README.md)에 있다. 이는 일반 CSS admission 또는 WPT 구현이 아니다. C11.4/C11 checkbox와 공식 `72/213`은 그대로 둔다.
 
 ## 2026-10-30 auto-repeat 두-track pattern ceiling test-only slice
 

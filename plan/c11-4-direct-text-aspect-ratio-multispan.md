@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio two-track span 계획
 
-**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값을 준비했다. 구현과 Android/iOS Simulator 51-scene 검증, Rust/FFI focused tests, fixture archive boundary, 구현/runtime 실패 관점 검토 20개 및 implementation PR diff review 30개를 완료했다. PR 검증은 진행 중이다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
+**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값, 구현과 Android/iOS Simulator 51-scene 검증, Rust/FFI focused tests, fixture archive boundary, 구현/runtime 실패 관점 검토 20개 및 implementation PR diff review 30개를 완료했다. 구현 PR [#857](https://github.com/ohah/spinon/pull/857)은 2026-10-30T13:25:43Z에 Rebase and merge 됐고 merge SHA는 `22ffc526a3acd3fd56cd4647e8b7b82256909e36`다. PR check rollup은 비어 있고 main required status check도 없으므로 CI 통과로 세지 않는다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.4 direct-text aspect-ratio min/max](./c11-4-direct-text-aspect-ratio-min-max.md) · [C11 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
