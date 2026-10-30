@@ -1,0 +1,36 @@
+{
+  "sourceHead": "9450dca8754f7bf63ae271c86e40d5f815c35d2c",
+  "sourceTree": "4960286292a086bc4526b366558508849f0158fe",
+  "publicationRoot": "build/spinon/roadmap-tailnet-sync-pr861-2026-10-30/pass01/publication-pass01",
+  "routeCount": 162,
+  "totalBytes": 12990739,
+  "roadmapMarkers": [
+    "#861 Rebase and merge",
+    "9b7c3a357d94db0e47f4397b73d3376a35de4439",
+    "72/213"
+  ],
+  "requiredRoutes": [
+    "roadmap.html",
+    "public/roadmap.html",
+    "spec/public/roadmap.html",
+    "STATUS.html",
+    "spec/STATUS.html",
+    "plan/c11-4-grid-track-sizing.html",
+    "plan/c11-4-anonymous-grid-text-nowrap.html",
+    "spec/plan/c11-4-anonymous-grid-text-nowrap.html",
+    "plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.html",
+    "spec/plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.html",
+    "internal/0059-c11-grid-layout.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/chrome156-anonymous-text-nowrap.png",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/pr-diff-review-30.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.html",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-nowrap-min-content.png",
+    "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-nowrap-min-content.png",
+    "internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/roadmap-pr-diff-review-30.html"
+  ],
+  "fullDocsLinkValidation": false
+}

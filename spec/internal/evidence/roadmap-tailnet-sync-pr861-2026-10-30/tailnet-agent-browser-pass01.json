@@ -1,0 +1,50 @@
+{
+  "browser": "Agent Browser 0.31.1",
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "title": "스피논 구현 로드맵",
+    "firstHeroCard": "2026-10-30 C11.4 anonymous Grid text nowrap · 구현 PR #861 Rebase and merge (2026-10-30T14:39:19Z, merge SHA 9b7c3a357d94db0e47f4397b73d3376a35de4439): normal 대조군은 root 20×20px·min-content track 20px에서 두 줄, nowrap은 root 20×10px·track 50px·text item 50×10px에서 한 줄과 root 밖 30px overflow를 만들었다.",
+    "assertions": {
+      "pr861": true,
+      "mergeSha": true,
+      "officialCount72of213": true,
+      "c11Incomplete": true,
+      "c114Incomplete": true
+    },
+    "screenshot": {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/tailnet-roadmap-agent-browser-pass01.png",
+      "width": 1280,
+      "height": 633,
+      "sha256": "bca6d50bf2248b2e12e1911c1d68395fadb37a826a9daca160007a80a0c42461"
+    }
+  },
+  "evidenceLinksOpened": [
+    {
+      "target": "Android API 37 ARM64 AVD nowrap scene",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-nowrap-min-content.png",
+      "width": 1080,
+      "height": 2400
+    },
+    {
+      "target": "iPhone 17 Pro / iOS 26.2 Simulator nowrap scene",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-nowrap-min-content.png",
+      "width": 1206,
+      "height": 2622
+    }
+  ],
+  "status": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+    "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+    "officialCount72of213": true,
+    "c11CssGrid": {
+      "checked": false,
+      "disabled": true
+    },
+    "c114IntrinsicTrackSizing": {
+      "checked": false,
+      "disabled": true
+    }
+  },
+  "browserClosed": true,
+  "terminalBrowserUsed": false
+}

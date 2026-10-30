@@ -1,0 +1,4 @@
+Attempt: initial stage-root-pass01.mjs run
+Result: stopped with AssertionError at the existing-artifact guard because rspress-pass01.config.ts had already been created by adapting the previous sync config.
+Cause: the stage script also generates that config, so its strict new-file check treated the intentionally pre-created identical file as a collision.
+Recovery: the stage guard now accepts an existing config only when its bytes exactly equal the generated config. The rerun completed and wrote selected-root-pass01.json; no Tailnet preflight or copy had run before the failed attempt.

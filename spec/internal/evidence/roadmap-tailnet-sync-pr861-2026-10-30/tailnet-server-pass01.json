@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-30T15:00:34.001Z",
+  "listenerPid": 28040,
+  "command": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+  "sockets": [
+    "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+  ],
+  "roadmap": {
+    "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+    "status": 200,
+    "bytes": 424464,
+    "sha256": "6bcfd7df6e6f3e0ce395289e0fe1e83a5867ab632be80ab16eceea307b4f29c7",
+    "includesPr861MergeSha": true
+  }
+}
