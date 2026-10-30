@@ -1,0 +1,269 @@
+{
+  "sourceHead": "e886dfebccc406ac6f7303a462b228ef3f258248",
+  "sourceTree": "d1e7da7e0c3acaa726ef0c8073edf697f334d37f",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-pr837-2026-10-30/pass01/root",
+  "siteRoot": "build/spinon/roadmap-tailnet-sync-pr837-2026-10-30/pass01/site",
+  "sourceCount": 21,
+  "stagedRouteCount": 43,
+  "fullDocsLinkValidation": false,
+  "staged": [
+    {
+      "source": "plan/c11-4-auto-repeat-pattern-ceiling-plan-review-20.md",
+      "route": "plan/c11-4-auto-repeat-pattern-ceiling-plan-review-20.md",
+      "bytes": 5395,
+      "sha256": "4907816f5c5f243acfbe60de151ef790d7b1732fcbd3ab7fd0b01221e30d7080"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-pattern-ceiling-plan-review-20.md",
+      "route": "spec/plan/c11-4-auto-repeat-pattern-ceiling-plan-review-20.md",
+      "bytes": 5395,
+      "sha256": "4907816f5c5f243acfbe60de151ef790d7b1732fcbd3ab7fd0b01221e30d7080"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-pattern-ceiling.md",
+      "route": "plan/c11-4-auto-repeat-pattern-ceiling.md",
+      "bytes": 6216,
+      "sha256": "a025db7b8460b93f39a6afa315f97c9b8a5bafbd4ffb75d1498cf950417f5c68"
+    },
+    {
+      "source": "plan/c11-4-auto-repeat-pattern-ceiling.md",
+      "route": "spec/plan/c11-4-auto-repeat-pattern-ceiling.md",
+      "bytes": 6216,
+      "sha256": "a025db7b8460b93f39a6afa315f97c9b8a5bafbd4ffb75d1498cf950417f5c68"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 183514,
+      "sha256": "9753e898200843ac5d4de262f4ebb20437cd57df524412d06c7dc413afce48a2"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 183514,
+      "sha256": "9753e898200843ac5d4de262f4ebb20437cd57df524412d06c7dc413afce48a2"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 531073,
+      "sha256": "2b686d67a3d05844f8890241d1bc212a5480881aad815d97906358c864757797"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 531073,
+      "sha256": "2b686d67a3d05844f8890241d1bc212a5480881aad815d97906358c864757797"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 224643,
+      "sha256": "eed72269348956cf2b7b437061dbc6b2ad5f110271af2a341ccf8d6efbcc07b7"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 224643,
+      "sha256": "eed72269348956cf2b7b437061dbc6b2ad5f110271af2a341ccf8d6efbcc07b7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-plan-2026-10-30/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-plan-2026-10-30/pr-diff-review-30.md",
+      "bytes": 6882,
+      "sha256": "12e41e361cd2314fc5fb36510bccb46dd62e639d0d8c2354253645b0b6a37d2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-plan-2026-10-30/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-plan-2026-10-30/pr-diff-review-30.md",
+      "bytes": 6882,
+      "sha256": "12e41e361cd2314fc5fb36510bccb46dd62e639d0d8c2354253645b0b6a37d2e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md",
+      "bytes": 3628,
+      "sha256": "df596d4ae42fa16429a9a2f7c3139972675f77762c570a1d608d48a2e9eaabe7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md",
+      "bytes": 3628,
+      "sha256": "df596d4ae42fa16429a9a2f7c3139972675f77762c570a1d608d48a2e9eaabe7"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md",
+      "bytes": 2698,
+      "sha256": "930e888a2ef58d91474465590b7a488ce85a8a2012505f77570a692c1d1edbd1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md",
+      "bytes": 2698,
+      "sha256": "930e888a2ef58d91474465590b7a488ce85a8a2012505f77570a692c1d1edbd1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/auto-repeat-track-ceiling.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/auto-repeat-track-ceiling.log",
+      "bytes": 700,
+      "sha256": "50619fd48145737fe9f60fa8613332b1261822a2101b0b595afc4f013bf32d4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/auto-repeat-track-ceiling.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/auto-repeat-track-ceiling.log",
+      "bytes": 700,
+      "sha256": "50619fd48145737fe9f60fa8613332b1261822a2101b0b595afc4f013bf32d4e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/clippy.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/clippy.log",
+      "bytes": 253,
+      "sha256": "a12e2fd9f102f364ccb45fc6ef5271e31392ca6eddfd1c071e6457aebb3313d5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/clippy.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/clippy.log",
+      "bytes": 253,
+      "sha256": "a12e2fd9f102f364ccb45fc6ef5271e31392ca6eddfd1c071e6457aebb3313d5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/diff-check.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/diff-check.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/diff-check.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/grid-tests.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/grid-tests.log",
+      "bytes": 15780,
+      "sha256": "37f4db7a2967af63c2ecdc14462f24ec466969f5fcc70c564996d500aca80fa0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/grid-tests.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/grid-tests.log",
+      "bytes": 15780,
+      "sha256": "37f4db7a2967af63c2ecdc14462f24ec466969f5fcc70c564996d500aca80fa0"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/initial-review-findings.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/initial-review-findings.md",
+      "bytes": 1389,
+      "sha256": "07bb46eae29fcd82af5d1a2ee7d856b429ca11e9352dfd0a58c670b58ddac011"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/initial-review-findings.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/initial-review-findings.md",
+      "bytes": 1389,
+      "sha256": "07bb46eae29fcd82af5d1a2ee7d856b429ca11e9352dfd0a58c670b58ddac011"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/rustfmt.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/rustfmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/rustfmt.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/rustfmt.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/spinon-layout-tests.log",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/spinon-layout-tests.log",
+      "bytes": 33842,
+      "sha256": "21cce3ee260b9de295eaa344f9a01af3d739864c0c41d0c980423511e4072348"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/spinon-layout-tests.log",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/checks/spinon-layout-tests.log",
+      "bytes": 33842,
+      "sha256": "21cce3ee260b9de295eaa344f9a01af3d739864c0c41d0c980423511e4072348"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 4877,
+      "sha256": "971155c65a31923426526bea38385846b5ccfefd2fc8394235de2bf6c7bf50df"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 4877,
+      "sha256": "971155c65a31923426526bea38385846b5ccfefd2fc8394235de2bf6c7bf50df"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md",
+      "bytes": 6472,
+      "sha256": "0790d89c9e5b5ff4ebf5aa98853afb6eff2d43518f42e1cafadf1e7365cb8b1b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md",
+      "bytes": 6472,
+      "sha256": "0790d89c9e5b5ff4ebf5aa98853afb6eff2d43518f42e1cafadf1e7365cb8b1b"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 415429,
+      "sha256": "d2f687f41746f5122f9eb663e3555c91f97a366bda97ece502a1b7824eabc4e8"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 415429,
+      "sha256": "d2f687f41746f5122f9eb663e3555c91f97a366bda97ece502a1b7824eabc4e8"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "spec/public/roadmap.svg",
+      "route": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
