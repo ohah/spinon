@@ -1,12 +1,26 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-31 anonymous Grid text `white-space:pre-wrap` follow-up 후보
+## 2026-10-31 anonymous Grid text `white-space:break-spaces` 제한 slice · PR #873 병합
 
-기존 pre-line opt-in slice [PR #867](https://github.com/ohah/spinon/pull/867)이 병합된 뒤 anonymous Grid text의 보존 공백·soft wrap 동작을 검토한다. Chrome 156 Agent Browser와 CSS Text/Grid 독립 계산에서 12 scene을 고정했다. 구현 계획과 계획 실패 관점 검토는 [집중 계획](./c11-4-anonymous-grid-text-pre-wrap.md)과 [사전 비교·hash·화면](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-precomparison-2026-10-31/README.md)에 있다. 계획 PR 병합 전이며 구현은 시작하지 않았다. PreWrap은 C11.4 opt-in fixture에서만 허용하도록 설계하고, 일반 root HTML/CSS admission, WPT와 상위 C11.4 완료는 제외한다. 공식 완료 `72/213` 및 C11/C11.4 checkbox는 유지한다.
+opt-in anonymous Grid text fixture에 `break-spaces`를 추가한 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge로 병합됐다(merge SHA `32ba37b18dc5a8fc553667f52cc47d46dae3952f`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 16개와 신규 10개를 합친 고정 장면 26/26을 각각 통과했다. [계획 및 범위](./c11-4-anonymous-grid-text-break-spaces.md) · [runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md) · [Tailnet 로드맵 동기화](../spec/internal/evidence/roadmap-tailnet-sync-c11-4-break-spaces-2026-10-31-pass02/README.md) · [요약 PR diff 20관점 검토](../spec/internal/evidence/c11-4-grid-track-sizing-overview-sync-2026-10-31/pr-diff-review-20.md)
 
-## 2026-10-30 anonymous Grid text `white-space:nowrap` 제한 slice 계획
+이 제한 fixture slice는 일반 author CSS admission, root HTML mapping 또는 WPT 지원을 뜻하지 않는다. C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
 
-CSS Grid §6에서 Grid container의 in-flow direct text는 anonymous block Grid item이 된다. 기존 opt-in anonymous text slice는 inherited `white-space:normal`만 받아들이고, 유효한 `white-space:nowrap` 입력은 아직 fixture 경로에서 거부한다. 고정 Ahem text `XX XX`의 `min-content` column에서 Chrome 156은 normal control을 `20px` track·두 줄로, nowrap을 `50px` track·한 줄로 계산했다. [집중 계획](./c11-4-anonymous-grid-text-nowrap.md) · [Chrome 사전 비교·hash·screenshot](../spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md)
+## 2026-10-31 anonymous Grid text `white-space:pre-wrap` 제한 slice · PR #870 병합
+
+opt-in anonymous Grid text fixture에 `pre-wrap`을 추가한 PR [#870](https://github.com/ohah/spinon/pull/870)은 2026-10-30T18:51:40Z Rebase and merge로 병합됐다(merge SHA `5265793d71a02a6206a09b9bbbc9658696dfd992`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 16-scene 행렬을 각각 통과했다. [계획 및 범위](./c11-4-anonymous-grid-text-pre-wrap.md) · [runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-wrap-runtime-2026-10-31/README.md) · [Tailnet 로드맵 동기화](../spec/internal/evidence/roadmap-tailnet-sync-c11-4-prewrap-2026-10-31-pass03/README.md)
+
+## 2026-10-31 anonymous Grid text `white-space:pre-line` 제한 slice · PR #867 병합
+
+opt-in anonymous Grid text fixture의 `pre-line` 제한 구현 PR [#867](https://github.com/ohah/spinon/pull/867)은 2026-10-30T16:45:11Z Rebase and merge로 병합됐다(merge SHA `c4e0aab3fd749ed9f76a8cf4fb09fc9a862e0d3d`). [계획 및 범위](./c11-4-anonymous-grid-text-pre-line.md) · [runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-line-runtime-2026-10-31/README.md)
+
+일반 author CSS admission과 root HTML mapping은 포함하지 않는다. C11.4/C11 checkbox와 공식 완료 `72/213`은 미완료로 유지한다.
+
+## 2026-10-30 anonymous Grid text `white-space:nowrap` 제한 slice · PR #861 병합
+
+`nowrap`의 opt-in anonymous Grid text fixture 제한 구현 PR [#861](https://github.com/ohah/spinon/pull/861)은 2026-10-30T14:39:19Z Rebase and merge로 병합됐다(merge SHA `9b7c3a357d94db0e47f4397b73d3376a35de4439`). 고정 Ahem `XX XX` 장면에서 `normal` control과 `nowrap` min-content contribution을 검증했다. [계획 및 범위](./c11-4-anonymous-grid-text-nowrap.md) · [구현/runtime 근거](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md)
+
+이 제한 slice도 일반 CSS white-space cascade, root HTML mapping 또는 C11.4 전체 완료를 뜻하지 않는다.
 
 ## 2026-10-30 direct-text preferred aspect-ratio two-track span · PR #857 병합
 
