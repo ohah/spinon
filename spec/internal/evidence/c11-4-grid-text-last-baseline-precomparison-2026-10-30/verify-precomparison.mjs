@@ -34,7 +34,8 @@ for (const scene of expected.cases) {
     for (const key of ['x', 'y', 'width', 'height']) {
       assert.equal(browserItem[key], item[key], `${scene.id} ${item.id} ${key}`);
     }
-    assert.equal(browserItem.lineRects.length, item.id === 'small' ? 2 : 1);
+    const expectedLineCount = item.id === 'small' && scene.id !== 'grid-first-baseline-control' ? 2 : 1;
+    assert.equal(browserItem.lineRects.length, expectedLineCount);
 
     const fontSize = Number.parseFloat(browserItem.font);
     const baselineOffset = fontSize * 0.8;

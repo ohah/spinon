@@ -55,6 +55,9 @@ pub enum AlignItemsKeyword {
     Center,
     /// Items are aligned such as their baselines align.
     Baseline,
+    /// Internal Grid marker for last-baseline alignment. Most callers should use `Baseline`.
+    #[doc(hidden)]
+    LastBaseline,
     /// Stretch to fill the container.
     Stretch,
 }
@@ -208,6 +211,12 @@ impl AlignItems {
     pub const BASELINE: Self = Self {
         keyword: AlignItemsKeyword::Baseline,
         safety: AlignmentSafety::Default,
+    };
+    /// Internal Grid last-baseline marker. Falls back safely to the block-start edge on overflow.
+    #[doc(hidden)]
+    pub const LAST_BASELINE: Self = Self {
+        keyword: AlignItemsKeyword::LastBaseline,
+        safety: AlignmentSafety::Safe,
     };
     /// Stretch to fill the container.
     pub const STRETCH: Self = Self {
@@ -629,6 +638,7 @@ impl serde::Serialize for AlignItems {
             (AlignItemsKeyword::Center, AlignmentSafety::Unsafe) => "UnsafeCenter",
             (AlignItemsKeyword::Normal, _) => "Normal",
             (AlignItemsKeyword::Baseline, _) => "Baseline",
+            (AlignItemsKeyword::LastBaseline, _) => "LastBaseline",
             (AlignItemsKeyword::Stretch, _) => "Stretch",
             (AlignItemsKeyword::Start, AlignmentSafety::Safe) => "SafeStart",
             (AlignItemsKeyword::End, AlignmentSafety::Safe) => "SafeEnd",

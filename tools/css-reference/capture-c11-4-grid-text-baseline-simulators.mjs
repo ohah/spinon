@@ -15,8 +15,8 @@ const androidApk = resolve(repositoryRoot,
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const evidenceRoot = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30');
-const runPrefix = `c114-first-baseline-${Date.now().toString(36)}-${randomUUID().slice(0, 8)}`;
+  'spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30');
+const runPrefix = `c114-text-baseline-${Date.now().toString(36)}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(evidenceRoot, target, runPrefix);
 
 const scenes = [
@@ -24,36 +24,72 @@ const scenes = [
   'grid-text-first-baseline-start-control',
   'grid-text-first-baseline-align-self',
   'grid-text-first-baseline-reversed',
-].map((id) => ({ id, rootId: `c114-${id}`, boxCount: 3 }));
-
-for (const scene of scenes) {
-  const reversed = scene.id.endsWith('-reversed');
-  const start = scene.id.endsWith('-start-control');
-  scene.expectedRootFrame = 'width=68,height=20';
-  scene.expectedItemFrame = reversed ? 'width=40,height=20' : 'width=20,height=10';
-  scene.expectedNodeFrames = reversed
-    ? 'node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;'
-      + '1:node=4,x=0,y=0,width=40,height=20;'
-      + '2:node=2,x=48,y=8,width=20,height=10]'
-    : `node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;`
-      + `1:node=2,x=0,y=${start ? 0 : 8},width=20,height=10;`
-      + '2:node=4,x=28,y=0,width=40,height=20]';
-}
+  'grid-text-last-baseline-align-items-multiline',
+  'grid-text-last-baseline-align-self-multiline',
+  'grid-text-last-baseline-reversed-multiline',
+  'grid-text-last-baseline-first-control',
+  'grid-text-last-baseline-start-control',
+].map((id) => {
+  const last = id.startsWith('grid-text-last-baseline-');
+  const reversed = id.endsWith('-reversed') || id.endsWith('-reversed-multiline');
+  const firstControl = id.endsWith('-first-control');
+  const start = id.endsWith('-start-control');
+  const multilineLast = last && id.endsWith('-multiline');
+  const scene = {
+    id, rootId: `c114-${id}`, boxCount: 3, last, reversed, firstControl,
+    start, multilineLast,
+  };
+  const small = {
+    node: 2,
+    x: last ? 0 : reversed ? 48 : 0,
+    y: last ? (firstControl ? 8 : 0) : start ? 0 : 8,
+    width: last ? 25 : 20,
+    height: last ? (firstControl ? 10 : 20) : 10,
+    fontSize: 10,
+    text: last && !firstControl ? 'XX XX' : 'XX',
+    lineTops: last && !firstControl ? [0, 10] : [0],
+    baselines: last && !firstControl ? [8, 18] : [8],
+  };
+  const large = {
+    node: 4,
+    x: last ? 33 : reversed ? 0 : 28,
+    y: last && multilineLast ? 2 : 0,
+    width: last ? 40 : 40,
+    height: 20,
+    fontSize: 20,
+    text: 'XX',
+    lineTops: [0],
+    baselines: [16],
+  };
+  scene.expectedItems = reversed ? [large, small] : [small, large];
+  scene.expectedRootFrame = last
+    ? `width=73,height=${multilineLast ? 22 : 20}` : 'width=68,height=20';
+  scene.expectedItemFrame = reversed
+    ? 'width=40,height=20'
+    : `width=${small.width},height=${small.height}`;
+  const rootFrame = `0:node=1,x=0,y=0,width=${last ? 73 : 68},height=${last
+    ? (multilineLast ? 22 : 20) : 20}`;
+  const nodeFrames = scene.expectedItems.map((item, index) =>
+    `${index + 1}:node=${item.node},x=${item.x},y=${item.y},width=${item.width},height=${item.height}`);
+  scene.expectedNodeFrames = `node_frames_css_px=[${[rootFrame, ...nodeFrames].join(';')}]`;
+  return scene;
+});
 
 const sourcePaths = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
-  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_first_baseline.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_baseline.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
   'crates/spinon-layout/src/calc_tree.rs',
   'crates/spinon-layout/src/calc_tree/intrinsic_measurements.rs',
   'crates/spinon-layout/src/calc_tree/text.rs',
   'crates/spinon-layout/src/c15_text_layout_tests.rs',
-  'crates/spinon-layout/src/c15_text_layout_tests/grid_text_first_baseline.rs',
+  'crates/spinon-layout/src/c15_text_layout_tests/grid_text_baseline.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs',
-  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/grid_text_first_baseline.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/grid_text_baseline.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/grid_text_baseline.rs',
   'crates/spinon-style-to-layout/src/lib.rs',
   'crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests.rs',
   'crates/spinon-style-to-layout/src/c11_4_track_sizing_areas_tests/first_baseline_admission.rs',
@@ -61,8 +97,8 @@ const sourcePaths = [
   'crates/spinon-style-to-layout/src/projection/style_values.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
-  'tests/fixtures/css/c11/grid-first-baseline-direct-text.html',
-  'tools/css-reference/capture-c11-4-grid-text-first-baseline-simulators.mjs',
+  'tests/fixtures/css/c11/grid-last-baseline-multiline-direct-text.html',
+  'tools/css-reference/capture-c11-4-grid-text-baseline-simulators.mjs',
 ];
 
 function command(binary, args, { allowFailure = false, timeout = 120_000, encoding = 'utf8' } = {}) {
@@ -88,9 +124,15 @@ async function saveLog(path, result) {
 }
 
 function pixelSamples(scene) {
-  const { id, rootId } = scene;
-  const reversed = id.endsWith('-reversed');
-  const start = id.endsWith('-start-control');
+  const { id, rootId, last, reversed, start, firstControl } = scene;
+  if (last) {
+    return [
+      { id: `${id}-grid-gap`, nodeId: rootId, xCssPx: 28, yCssPx: 5, rgba: [238, 243, 248, 255] },
+      { id: `${id}-small-item`, nodeId: rootId,
+        xCssPx: 10, yCssPx: firstControl ? 13 : 15, rgba: [229, 72, 77, 255] },
+      { id: `${id}-large-item`, nodeId: rootId, xCssPx: 48, yCssPx: 10, rgba: [58, 134, 255, 255] },
+    ];
+  }
   return [
     { id: `${id}-grid-gap`, nodeId: rootId, xCssPx: reversed ? 44 : 24, yCssPx: 5, rgba: [238, 243, 248, 255] },
     { id: `${id}-small-item`, nodeId: rootId,
@@ -109,13 +151,7 @@ function traceJson(traces, scene, runID) {
 }
 
 function validateBaselineTrace(report, scene) {
-  const reverse = scene.id.endsWith('-reversed');
-  const start = scene.id.endsWith('-start-control');
-  const expected = reverse
-    ? [{ node: 4, x: 0, y: 0, width: 40, height: 20, fontSize: 20, baseline: 16 },
-      { node: 2, x: 48, y: 8, width: 20, height: 10, fontSize: 10, baseline: 8 }]
-    : [{ node: 2, x: 0, y: start ? 0 : 8, width: 20, height: 10, fontSize: 10, baseline: 8 },
-      { node: 4, x: 28, y: 0, width: 40, height: 20, fontSize: 20, baseline: 16 }];
+  const expected = scene.expectedItems;
   const frames = report.gridItemFrames;
   assert.ok(Array.isArray(frames) && frames.length === 2, `${scene.id}: item frames missing`);
   for (const item of expected) {
@@ -132,15 +168,17 @@ function validateBaselineTrace(report, scene) {
   for (const item of expected) {
     const layout = layouts.find(({ node }) => node === item.node);
     assert.ok(layout, `${scene.id}: text layout for ${item.node} missing`);
-    assert.equal(layout.text, 'XX');
+    assert.equal(layout.text, item.text);
     assert.equal(layout.fontRegistryRevision, 1);
     assert.equal(layout.paragraphStyle.fontFamily, 'Ahem');
     assert.equal(layout.paragraphStyle.fontSize, item.fontSize);
     assert.equal(layout.paragraphStyle.lineHeight, item.fontSize);
-    assert.equal(layout.lines.length, 1);
-    assert.equal(layout.lines[0].lineTop, 0);
-    assert.equal(layout.lines[0].lineHeight, item.fontSize);
-    assert.equal(layout.lines[0].baseline, item.baseline);
+    assert.equal(layout.lines.length, item.baselines.length);
+    for (const [index, line] of layout.lines.entries()) {
+      assert.equal(line.lineTop, item.lineTops[index]);
+      assert.equal(line.lineHeight, item.fontSize);
+      assert.equal(line.baseline, item.baselines[index]);
+    }
   }
 
   const trace = report.trackSizingTraces.find(({ grid }) => grid === 1);
@@ -152,8 +190,9 @@ function validateBaselineTrace(report, scene) {
       .filter((track) => !track.gutter && !track.collapsed)
       .map((track) => track.baseSize);
   };
-  assert.deepEqual(finalTrackSizes('Columns'), reverse ? [40, 20] : [20, 40]);
-  assert.deepEqual(finalTrackSizes('Rows'), [20]);
+  assert.deepEqual(finalTrackSizes('Columns'), scene.last ? [25, 40]
+    : scene.reversed ? [40, 20] : [20, 40]);
+  assert.deepEqual(finalTrackSizes('Rows'), [scene.multilineLast ? 22 : 20]);
 }
 
 function captureArguments(scene, runID, platform) {
@@ -398,7 +437,7 @@ async function runIOS() {
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  'Usage: capture-c11-4-grid-text-first-baseline-simulators.mjs <android-avd|ios-simulator> [serial|UDID]');
+  'Usage: capture-c11-4-grid-text-baseline-simulators.mjs <android-avd|ios-simulator> [serial|UDID]');
 await mkdir(evidenceDirectory, { recursive: true });
 const sourceHead = command('git', ['rev-parse', 'HEAD']).stdout.trim();
 const sourceDirty = command('git', ['status', '--short', '--', ...sourcePaths]).stdout.trim();

@@ -334,16 +334,24 @@ pub(super) fn paragraph_style_for(
     font_size: f32,
     align_self: &'static str,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
-    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, false)
+    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, false, false)
 }
 
-pub(super) fn paragraph_style_for_first_baseline_fixture(
+pub(super) fn paragraph_style_for_baseline_fixture(
     styles: &ComputedStyleSnapshot,
     style: &ComputedElementStyle,
     font_size: f32,
     align_self: &'static str,
+    allow_explicit_grid_placement: bool,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
-    paragraph_style_for_with_baseline_alias(styles, style, font_size, align_self, true)
+    paragraph_style_for_with_baseline_alias(
+        styles,
+        style,
+        font_size,
+        align_self,
+        align_self == "first baseline",
+        allow_explicit_grid_placement,
+    )
 }
 
 fn paragraph_style_for_with_baseline_alias(
@@ -352,6 +360,7 @@ fn paragraph_style_for_with_baseline_alias(
     font_size: f32,
     align_self: &'static str,
     allow_first_baseline_alias: bool,
+    allow_explicit_grid_placement: bool,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     require_style_property(style, "display", "block")?;
     require_style_property(style, "position", "static")?;
@@ -433,10 +442,11 @@ fn paragraph_style_for_with_baseline_alias(
         .grid_item_placement
         .as_ref()
         .ok_or_else(|| style_failure(style.node_id.get(), "Grid item placement is missing"))?;
-    if placement.row_start != ComputedCssGridPlacement::Auto
-        || placement.row_end != ComputedCssGridPlacement::Auto
-        || placement.column_start != ComputedCssGridPlacement::Auto
-        || placement.column_end != ComputedCssGridPlacement::Auto
+    if !allow_explicit_grid_placement
+        && (placement.row_start != ComputedCssGridPlacement::Auto
+            || placement.row_end != ComputedCssGridPlacement::Auto
+            || placement.column_start != ComputedCssGridPlacement::Auto
+            || placement.column_end != ComputedCssGridPlacement::Auto)
     {
         return Err(style_failure(style.node_id.get(), "Grid item placement"));
     }

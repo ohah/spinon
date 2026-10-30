@@ -40,6 +40,10 @@ mod nested_grid_replaced_item;
 mod fit_content_spanning;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/grid_text_baseline.rs"]
+mod grid_text_baseline;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/nested_grid_rows.rs"]
 mod nested_grid_rows;
 

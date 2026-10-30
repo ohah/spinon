@@ -126,7 +126,7 @@ pub(super) struct C11_4TextInput {
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-pub(super) use c11_4_text::is_grid_text_first_baseline_fixture_root;
+pub(super) use c11_4_text::is_grid_text_baseline_fixture_root;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub(super) use c11_4_text::prepare as prepare_c11_4_text;
 

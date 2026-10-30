@@ -171,12 +171,21 @@ private let c114GenericDirectTextSceneIDs: Set<String> = [
 private let c114GenericDirectTextSceneIDs: Set<String> = []
 #endif
 
-private let c114GridTextFirstBaselineSceneIDs: Set<String> = [
+private let c114GridTextBaselineSceneIDs: Set<String> = [
     "grid-text-first-baseline-align-items",
     "grid-text-first-baseline-start-control",
     "grid-text-first-baseline-align-self",
     "grid-text-first-baseline-reversed",
+    "grid-text-last-baseline-align-items-multiline",
+    "grid-text-last-baseline-align-self-multiline",
+    "grid-text-last-baseline-reversed-multiline",
+    "grid-text-last-baseline-first-control",
+    "grid-text-last-baseline-start-control",
 ]
+
+private func c114IsGridTextLastBaselineScene(_ sceneID: String) -> Bool {
+    sceneID.hasPrefix("grid-text-last-baseline-")
+}
 
 private struct C114GenericDirectTextItemExpectation {
     let node: Int
@@ -743,7 +752,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     #endif
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
-    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return true }
+    if c114GridTextBaselineSceneIDs.contains(sceneID) { return true }
     if sceneID.hasPrefix("template-area-repeat-cross-axis-") {
         return c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
     }
@@ -755,7 +764,21 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
         || c114CrossAxisFixedAutoRepeatAreaSceneIDs.contains(sceneID)
 }
 
-private func c114GridTextFirstBaselineNodeFrames(_ sceneID: String) -> String? {
+private func c114GridTextBaselineNodeFrames(_ sceneID: String) -> String? {
+    if c114IsGridTextLastBaselineScene(sceneID) {
+        let multilineLast = sceneID.hasSuffix("-multiline")
+        let firstControl = sceneID.hasSuffix("-first-control")
+        let reversed = sceneID.hasSuffix("-reversed-multiline")
+        let root = "0:node=1,x=0,y=0,width=73,height=\(multilineLast ? 22 : 20)"
+        let smallIndex = reversed ? 2 : 1
+        let largeIndex = reversed ? 1 : 2
+        let small = "\(smallIndex):node=2,x=0,y=\(firstControl ? 8 : 0),width=25,height=\(firstControl ? 10 : 20)"
+        let large = "\(largeIndex):node=4,x=33,y=\(multilineLast ? 2 : 0),width=40,height=20"
+        if reversed {
+            return "node_frames_css_px=[\(root);\(large);\(small)]"
+        }
+        return "node_frames_css_px=[\(root);\(small);\(large)]"
+    }
     switch sceneID {
     case "grid-text-first-baseline-align-items", "grid-text-first-baseline-align-self":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=68,height=20;"
@@ -1643,7 +1666,10 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
-    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return "width=68,height=20" }
+    if c114IsGridTextLastBaselineScene(sceneID) {
+        return sceneID.hasSuffix("-multiline") ? "width=73,height=22" : "width=73,height=20"
+    }
+    if c114GridTextBaselineSceneIDs.contains(sceneID) { return "width=68,height=20" }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         return sceneID.hasSuffix("-column") ? "width=80,height=20" : "width=20,height=80"
     }
@@ -1977,7 +2003,12 @@ private func c114FixedRepeatMinmaxFlexBoxCount(_ sceneID: String) -> Int? {
 }
 
 private func c114ExpectedItemFrame(_ sceneID: String) -> String {
-    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) {
+    if c114IsGridTextLastBaselineScene(sceneID) {
+        if sceneID.hasSuffix("-reversed-multiline") { return "width=40,height=20" }
+        return sceneID.hasSuffix("-first-control")
+            ? "width=25,height=10" : "width=25,height=20"
+    }
+    if c114GridTextBaselineSceneIDs.contains(sceneID) {
         return sceneID == "grid-text-first-baseline-reversed"
             ? "width=40,height=20" : "width=20,height=10"
     }
@@ -6534,7 +6565,7 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
-    if let frames = c114GridTextFirstBaselineNodeFrames(sceneID) { return frames }
+    if let frames = c114GridTextBaselineNodeFrames(sceneID) { return frames }
     if let frames = c114FixedMaximumNodeFrames(sceneID) { return frames }
     if let frames = C114FitContentImplicitColumnWpt.expectedNodeFrames(sceneID) {
         return frames
@@ -8201,7 +8232,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
-    if c114GridTextFirstBaselineSceneIDs.contains(sceneID) { return 3 }
+    if c114GridTextBaselineSceneIDs.contains(sceneID) { return 3 }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         if sceneID.hasPrefix("collapse-visible-descendant-") { return 2 }
         if sceneID.hasPrefix("visible-") { return 3 }
@@ -9254,22 +9285,34 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
-        if c114GridTextFirstBaselineSceneIDs.contains(sceneID) {
-            let reversed = sceneID.hasSuffix("-reversed")
+        if c114GridTextBaselineSceneIDs.contains(sceneID) {
+            let lastBaseline = c114IsGridTextLastBaselineScene(sceneID)
+            let reversed = !lastBaseline && sceneID.hasSuffix("-reversed")
             let startControl = sceneID.hasSuffix("-start-control")
+            let firstControl = sceneID.hasSuffix("-first-control")
             let rootID = "c114-\(sceneID)"
-            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = reversed
-                ? [
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])]
+            if lastBaseline {
+                expectedSamples = [
+                    ("\(sceneID)-grid-gap", rootID, 28, 5, [238, 243, 248, 255]),
+                    ("\(sceneID)-small-item", rootID, 10, firstControl ? 13 : 15,
+                     [229, 72, 77, 255]),
+                    ("\(sceneID)-large-item", rootID, 48, 10, [58, 134, 255, 255]),
+                ]
+            } else if reversed {
+                expectedSamples = [
                     ("\(sceneID)-grid-gap", rootID, 44, 5, [238, 243, 248, 255]),
                     ("\(sceneID)-small-item", rootID, 58, 13, [229, 72, 77, 255]),
                     ("\(sceneID)-large-item", rootID, 20, 10, [58, 134, 255, 255]),
                 ]
-                : [
+            } else {
+                expectedSamples = [
                     ("\(sceneID)-grid-gap", rootID, 24, 5, [238, 243, 248, 255]),
                     ("\(sceneID)-small-item", rootID, 10, startControl ? 5 : 13,
                      [229, 72, 77, 255]),
                     ("\(sceneID)-large-item", rootID, 48, 10, [58, 134, 255, 255]),
                 ]
+            }
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
                 samples.contains { sample in

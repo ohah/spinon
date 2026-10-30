@@ -568,9 +568,10 @@ pub(super) fn align_item_within_area(
     direction: Direction,
 ) -> (f32, Line<f32>) {
     // Calculate grid area dimension in the axis
+    let shim_at_end = alignment_style.keyword == AlignItemsKeyword::LastBaseline;
     let non_auto_margin = Line {
-        start: margin.start.unwrap_or(0.0) + baseline_shim,
-        end: margin.end.unwrap_or(0.0),
+        start: margin.start.unwrap_or(0.0) + if shim_at_end { 0.0 } else { baseline_shim },
+        end: margin.end.unwrap_or(0.0) + if shim_at_end { baseline_shim } else { 0.0 },
     };
     let grid_area_size = f32_max(grid_area.end - grid_area.start, 0.0);
     let free_space = f32_max(grid_area_size - resolved_size - non_auto_margin.sum(), 0.0);
@@ -583,8 +584,9 @@ pub(super) fn align_item_within_area(
         0.0
     };
     let resolved_margin = Line {
-        start: margin.start.unwrap_or(auto_margin_size) + baseline_shim,
-        end: margin.end.unwrap_or(auto_margin_size),
+        start: margin.start.unwrap_or(auto_margin_size)
+            + if shim_at_end { 0.0 } else { baseline_shim },
+        end: margin.end.unwrap_or(auto_margin_size) + if shim_at_end { baseline_shim } else { 0.0 },
     };
 
     let overflows = resolved_size + non_auto_margin.sum() > grid_area_size;
@@ -603,7 +605,7 @@ pub(super) fn align_item_within_area(
                 resolved_margin.start
             }
         }
-        AlignItemsKeyword::End | AlignItemsKeyword::FlexEnd => {
+        AlignItemsKeyword::End | AlignItemsKeyword::FlexEnd | AlignItemsKeyword::LastBaseline => {
             if direction.is_rtl() {
                 resolved_margin.start
             } else {

@@ -24,6 +24,8 @@ pub(super) struct GridItemIntrinsicMetadata {
     pub(super) is_track_sizing: bool,
     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
     pub(super) first_baseline_aligned: bool,
+    #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+    pub(super) last_baseline_aligned: bool,
     pub(super) style: LayoutStyle,
     pub(super) text_sources: Vec<crate::LayoutGridItemTextSource>,
 }
@@ -68,13 +70,16 @@ pub(super) fn grid_item_metadata(
                         .get(&container.id)
                         .is_some_and(|grid| grid.placement_mode == GridPlacementMode::TrackSizing);
                     #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-                    let first_baseline_aligned = match child_node.style.align_self {
-                        LayoutAlignSelf::FirstBaseline => true,
-                        LayoutAlignSelf::Auto => {
-                            container_node.style.align_items == LayoutAlignItems::FirstBaseline
-                        }
-                        _ => false,
-                    };
+                    let (first_baseline_aligned, last_baseline_aligned) =
+                        match child_node.style.align_self {
+                            LayoutAlignSelf::FirstBaseline => (true, false),
+                            LayoutAlignSelf::LastBaseline => (false, true),
+                            LayoutAlignSelf::Auto => (
+                                container_node.style.align_items == LayoutAlignItems::FirstBaseline,
+                                container_node.style.align_items == LayoutAlignItems::LastBaseline,
+                            ),
+                            _ => (false, false),
+                        };
                     let text_sources = match input.text_paragraphs.get(&child) {
                         Some(TextParagraphInput::AnonymousGridText {
                             grid_container,
@@ -93,6 +98,8 @@ pub(super) fn grid_item_metadata(
                             is_track_sizing,
                             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
                             first_baseline_aligned,
+                            #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+                            last_baseline_aligned,
                             style: child_node.style,
                             text_sources,
                         },

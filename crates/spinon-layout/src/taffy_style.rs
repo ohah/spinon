@@ -125,6 +125,16 @@ pub(super) fn to_taffy_style(
     } else {
         LayoutEdges::auto()
     };
+    let align_items = if style.display == LayoutDisplay::Grid {
+        to_taffy_grid_align_items(style.align_items)
+    } else {
+        to_taffy_align_items(style.align_items)
+    };
+    let align_self = if grid_input.item.is_some() {
+        to_taffy_grid_align_self(style.align_self)
+    } else {
+        to_taffy_align_self(style.align_self)
+    };
     let style = Style {
         display: match style.display {
             LayoutDisplay::Inline => {
@@ -272,8 +282,8 @@ pub(super) fn to_taffy_style(
                 calc_handles,
             )?,
         },
-        align_items: to_taffy_align_items(style.align_items),
-        align_self: to_taffy_align_self(style.align_self),
+        align_items,
+        align_self,
         align_content: style
             .align_content
             .map(to_taffy_align_content)
@@ -413,6 +423,13 @@ fn to_taffy_align_items(value: LayoutAlignItems) -> AlignItems {
     }
 }
 
+fn to_taffy_grid_align_items(value: LayoutAlignItems) -> AlignItems {
+    match value {
+        LayoutAlignItems::LastBaseline => AlignItems::LAST_BASELINE,
+        _ => to_taffy_align_items(value),
+    }
+}
+
 fn to_taffy_align_self(value: LayoutAlignSelf) -> Option<AlignSelf> {
     match value {
         LayoutAlignSelf::Auto => None,
@@ -425,6 +442,13 @@ fn to_taffy_align_self(value: LayoutAlignSelf) -> Option<AlignSelf> {
             keyword: to_taffy_item_alignment_keyword(position),
             safety: to_taffy_alignment_safety(safety),
         }),
+    }
+}
+
+fn to_taffy_grid_align_self(value: LayoutAlignSelf) -> Option<AlignSelf> {
+    match value {
+        LayoutAlignSelf::LastBaseline => Some(AlignSelf::LAST_BASELINE),
+        _ => to_taffy_align_self(value),
     }
 }
 
