@@ -1,5 +1,11 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-30 direct-text preferred aspect-ratio two-track span 후보
+
+PR #850의 direct-text ratio min/max fixture는 span을 거부한다. Ahem `AAAA` 하나가 두 `max-content` columns를 span하는 고정 입력 9개를 Agent Browser HeadlessChrome 156과 CSS Grid 2025 CRD §11.5.1 독립 계산으로 사전 비교했다. columns `[20,20]`/`[30,30]`/`[15,15]` 및 17.75px 연속값, `min-width:auto` control이 일치한다. [집중 계획](./c11-4-direct-text-aspect-ratio-multispan.md) · [사전 비교 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md).
+
+현재는 계획 검토 단계다. 제품 구현, simulator, WPT 실행은 아직 하지 않았다. C11.4/C11 checkbox와 공식 `72/213`은 그대로 둔다.
+
 ## 2026-10-30 auto-repeat 두-track pattern ceiling test-only slice
 
 `auto-fill`의 `[1px, 2px]` 반복 pattern을 Columns/Rows 양축에서 검사한다. 15,002px exact-fit과 15,005px cap overflow의 전체 10,000-track sequence, suffix source-order 절단, `pattern-start -1 / pattern-middle -1` child frame을 순수 Rust trace test로 고정했다. 반복 metadata 세 name group과 별도 outer metadata 네 빈 group을 입력한다. 기존 입력 검증에서 outer vector 누락으로 발생한 첫 테스트 실패를 수정하고 원인·실행을 [runtime evidence](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md)에 보존했다. 앱 runtime이나 simulator pixel을 만들지 않는 test-only 범위다. [계획](./c11-4-auto-repeat-pattern-ceiling.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md).
