@@ -2819,7 +2819,7 @@ fn align_flex_items_along_cross_axis(
             }
         }
         AlignItemsKeyword::Center => free_space / 2.0,
-        AlignItemsKeyword::Baseline => {
+        AlignItemsKeyword::Baseline | AlignItemsKeyword::LastBaseline => {
             if constants.is_row {
                 if constants.is_wrap_reverse {
                     // In a wrap-reverse container the cross axis is flipped, so the baseline-aligned
@@ -3347,7 +3347,9 @@ fn collect_oof_candidates(
         // `flex-start`/`flex-end` and the `stretch` fallback are flex-relative.
         let cross_edge_for = |keyword: AlignItemsKeyword| {
             let start_position = match keyword {
-                AlignItemsKeyword::Start | AlignItemsKeyword::Baseline => !cross_is_rtl,
+                AlignItemsKeyword::Start
+                | AlignItemsKeyword::Baseline
+                | AlignItemsKeyword::LastBaseline => !cross_is_rtl,
                 AlignItemsKeyword::End => cross_is_rtl,
                 _ => true,
             };
@@ -3356,7 +3358,10 @@ fn collect_oof_candidates(
                 // See "Example 3" at https://www.w3.org/TR/css-flexbox-1/#abspos-items
                 // Note: Stretch should be FlexStart not Start when we support both
                 (
-                    AlignItemsKeyword::Start | AlignItemsKeyword::End | AlignItemsKeyword::Baseline,
+                    AlignItemsKeyword::Start
+                    | AlignItemsKeyword::End
+                    | AlignItemsKeyword::Baseline
+                    | AlignItemsKeyword::LastBaseline,
                     _,
                 ) => {
                     if start_position {

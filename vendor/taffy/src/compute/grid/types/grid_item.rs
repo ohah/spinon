@@ -85,10 +85,12 @@ pub(in super::super) struct GridItem {
     pub align_self: AlignSelf,
     /// The item's justify_self property, or the parent's justify_items property if it is `None`
     pub justify_self: AlignSelf,
-    /// The items first baseline (horizontal)
+    /// The first horizontal baseline distance reported by this item to its parent Grid.
     pub baseline: Option<f32>,
-    /// Shim for baseline alignment that acts like an extra top margin
-    /// TODO: Support last baseline and vertical text baselines
+    /// The selected horizontal baseline distance used for this item's Grid baseline-sharing group.
+    pub baseline_alignment: Option<f32>,
+    /// Shim for baseline alignment, applied to the start margin for first-baseline groups and the
+    /// end margin for last-baseline groups.
     pub baseline_shim: f32,
 
     /// The item's definite row-start and row-end (same as `row` field, except in a different coordinate system)
@@ -162,6 +164,7 @@ impl GridItem {
             align_self: style.align_self().unwrap_or(parent_align_items),
             justify_self: style.justify_self().unwrap_or(parent_justify_items),
             baseline: None,
+            baseline_alignment: None,
             baseline_shim: 0.0,
             row_indexes: Line { start: 0, end: 0 }, // Properly initialised later
             column_indexes: Line { start: 0, end: 0 }, // Properly initialised later
@@ -204,8 +207,10 @@ impl GridItem {
     /// See <https://www.w3.org/TR/css-align-3/#baseline-align-self>
     #[inline(always)]
     pub fn participates_in_baseline_alignment(&self) -> bool {
-        self.align_self.keyword == AlignItemsKeyword::Baseline
-            && !self.has_auto_block_margin()
+        matches!(
+            self.align_self.keyword,
+            AlignItemsKeyword::Baseline | AlignItemsKeyword::LastBaseline
+        ) && !self.has_auto_block_margin()
             && !self.has_cyclic_block_size_dependency()
     }
 
@@ -599,11 +604,20 @@ impl GridItem {
                 .margin
                 .top
                 .resolve_or_zero(inner_node_width, |val, basis| tree.calc(val, basis))
-                + self.baseline_shim,
+                + if self.align_self.keyword == AlignItemsKeyword::LastBaseline {
+                    0.0
+                } else {
+                    self.baseline_shim
+                },
             bottom: self
                 .margin
                 .bottom
-                .resolve_or_zero(inner_node_width, |val, basis| tree.calc(val, basis)),
+                .resolve_or_zero(inner_node_width, |val, basis| tree.calc(val, basis))
+                + if self.align_self.keyword == AlignItemsKeyword::LastBaseline {
+                    self.baseline_shim
+                } else {
+                    0.0
+                },
         }
         .sum_axes()
     }

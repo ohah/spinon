@@ -16,7 +16,7 @@
 | 10 | CSS font fallback이나 비동기 font load가 baseline 값을 바꾼다. | 저장소 Ahem SHA와 browser `document.fonts.check` 10px/20px 결과를 기록한다. | PASS |
 | 11 | Ahem ascent ratio를 하강폭 또는 font-size 자체로 잘못 사용한다. | Ahem UPEM/ascent는 1000/800이며 line baseline을 0.8em으로 독립 계산한다. | PASS |
 | 12 | last group의 end shim 2px을 row height에 포함하지 않는다. | end shim은 small 2px/large 0px이며 `max(20+2,20+0)=22px`로 row contribution을 고정한다. | PASS |
-| 13 | first baseline 회귀를 last-baseline 값과 혼동한다. | first control은 baseline 16px, small y=8px, row 28px로 last group의 18px/2px/22px와 분리돼 있다. | PASS |
+| 13 | first baseline 회귀를 last-baseline 값과 혼동하거나 기존 one-line 경계를 넓힌다. | first control은 두 item 모두 한 줄이며 baseline 16px, small y=8px, row 20px다. multiline last group의 18px/2px/22px와 분리된다. | PASS |
 | 14 | start fallback control에서도 baseline shim이 적용된다. | start control은 두 y=0px, row 20px이며 line baseline은 8px와 16px로 다르다. | PASS |
 | 15 | `align-self` override가 부모 `align-items:start`보다 우선하는지 검증하지 않는다. | positive `explicit-self` scene은 parent start와 두 child last baseline을 지정한다. | PASS |
 | 16 | geometry가 page coordinates와 섞여 `.case`의 margin/padding 영향을 받는다. | expected 및 observation 값은 각 Grid root에 상대화한다. | PASS |

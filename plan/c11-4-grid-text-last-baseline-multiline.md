@@ -2,7 +2,7 @@
 
 **상위 원본:** [C11 상태](../spec/STATUS.md#c11-css-grid) · [Grid track sizing 계획](./c11-4-grid-track-sizing.md) · [CSS Grid 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing) · [CSS Box Alignment 3 baseline rules](https://www.w3.org/TR/css-align-3/#baseline-rules) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 계획 후보. 구현 전 규범 기대값과 Chrome fixture 관측을 분리해 고정했다. C11.4/C11 완료나 공식 집계 변경은 아니다. 기준 branch의 첫-baseline 제한 fixture PR #827은 병합됐지만, 해당 경로는 multiline 및 last baseline을 지원하지 않는다.
+**상태:** 구현/runtime 검증 완료, PR 준비 중. CSS Grid 규범 계산과 Chrome 156 fixture 관측을 분리해 고정했고, 제한 adapter/Taffy 구현을 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene 확인했다. 일반 CSS admission은 그대로 닫혀 있다. 이 후보는 C11.4/C11 완료나 공식 집계 변경이 아니다. 기준 branch의 first-baseline fixture PR #827은 병합됐으며 이 후속 slice가 multiline last baseline을 추가한다.
 
 ## 해결하려는 차이
 
@@ -16,7 +16,7 @@ Spinon의 fixture-only Grid text adapter는 현재 first baseline만 `LayoutOutp
 - 각 Grid는 `horizontal-tb`, LTR, `width:73px`, 두 explicit columns `25px 40px`, `column-gap:8px`, 한 `auto` row를 쓴다. 두 direct leaf item은 같은 row에 span 없이 놓이며 margin·border·padding은 0이다.
 - 작은 item은 고정 Ahem `XX XX`, 10px font와 `line-height:1`, 25px 열에서 두 줄이다. 큰 item은 `XX`, 20px font와 `line-height:1`, 40px 열에서 한 줄이다. system font나 platform fallback을 사용하지 않는다.
 - Positive scene은 `align-items:last baseline`; 대응 scene은 부모 `start`와 양 item의 `align-self:last baseline`; 세 번째 scene은 DOM source order만 뒤집는다. CSS Grid 2025 CRD로부터 기대하는 row height는 22px이고 두 last-baseline 좌표는 row start +18px다. source-order가 바뀌어도 이 geometry는 같다.
-- `first baseline` control은 row 28px, item y=8/0px, 공통 first baseline 16px다. `start` control은 row 20px이며 두 item y=0으로, 잘못된 baseline 정렬이 없는지 확인한다.
+- `first baseline` control은 기존 one-line first-baseline profile을 보존하도록 두 item을 각각 한 줄로 둔다. row 20px, item y=8/0px, 공통 first baseline 16px다. multiline `start` control은 row 20px이며 두 item y=0으로, 잘못된 baseline 정렬이 없는지 확인한다.
 - eligible text leaf는 paragraph snapshot의 `lines.first()`와 `lines.last()` baseline을 보존한다. 두 줄 미만, 잘못된 width, non-finite/out-of-range baseline, 누락된 paragraph/font에서 partial frame이나 높이 fallback으로 성공하지 않는다.
 - baseline kind와 shim edge는 Grid item 내부까지 명확히 전달되어야 한다. first/last를 보통 `baseline`으로 축약하거나 두 경우 모두 top-margin shim을 쓰지 않는다. first 그룹은 start shim/start fallback, last 그룹은 end shim/end fallback을 사용한다. `LayoutOutput.baselines.last`가 모든 Grid에 영향을 주도록 하지 않는다. baseline 미존재 fallback, scroll container clamping과 auto block-margin 제외 규칙도 해당 kind 별로 규범 근거와 회귀 검사를 갖춘다.
 
@@ -28,13 +28,13 @@ Geometry 비교는 root-relative 좌표에서 1/64 CSS px까지 한다. Ahem byt
 
 ## 구현 및 검증 단계
 
-1. Taffy Grid의 private baseline kind 및 start/end shim 전달 방식을 확정하고 CSS Grid §11.5와 CSS Box Alignment baseline/fallback 규칙을 대조한다. 변경 범위와 API 초안을 구현 전에 계획 PR review 20개로 검토한다.
-2. first baseline은 기존 first/start-shim 경로를 유지하고, last baseline은 text leaf의 마지막 line baseline과 end-shim/end-fallback 경로를 선택하도록 Taffy/adapter 경계를 수정한다. Grid baseline participation, auto margins, scroll-container behavior, shim 방향을 함께 검토한다. 최소한 Taffy Grid 단위 검증 및 기존 C11.4 first-baseline 회귀를 실행한다.
-3. 고정 다섯 장면의 typed Grid input, row track-sizing trace, item frames, text line baselines를 비교한다. 두 줄이 아닌 입력, source order 역전, `align-items` 상속과 `align-self` override, 잘못된 baseline 입력에서 실패가 부분 결과를 남기지 않는지 확인한다.
-4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 같은 다섯 scene의 frame/track/draw/present를 확인한다. PixelCopy와 Metal drawable을 실행하면 capture 경계를 각각 기록하고, glyph paint 또는 iOS compositor 이후 pixel로 확대 해석하지 않는다.
-5. 기본/product 및 opt-in fixture-test archive를 비교해 fixture 격리를 확인한다. 관련 Rust tests, formatting, feature-enabled Clippy를 실행한다. 변경된 구현/runtime 동작에 대한 새로운 실패 관점 20개를 기록한다.
-6. 실제 PR diff를 파일/계약/링크/fixture/검증근거별 서로 다른 30가지 실패 관점으로 검토한다. PR에는 Chrome과 Android/iOS simulator 이미지를 구분해 첨부한다.
-7. `spec/STATUS.md`, internal contract와 roadmap은 실행 결과만 기록한다. 이 slice의 병합으로 C11.4/C11 상위 checkbox나 공식 `72/213`을 완료로 올리지 않는다.
+1. Taffy Grid의 private baseline kind 및 start/end shim 전달 방식을 CSS Grid §11.5와 CSS Box Alignment baseline/fallback 규칙에 대조했다. 계획 PR diff review 20개를 기록했다.
+2. first baseline은 기존 first/start-shim 경로를 유지하고 last baseline은 마지막 line baseline과 end-shim/end-fallback 경로를 사용하도록 Taffy/adapter를 수정했다. Grid baseline participation, auto margin 제외, scroll-container clamping 및 shim edge를 구현 검토 20개에 기록했다.
+3. 9개 typed Grid scene의 track trace, node/item frames, text line baselines를 비교했다. `align-items` 상속, `align-self` override, source order 역전, first/start controls와 malformed profile 거부를 Rust tests로 확인했다.
+4. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 9/9 scene의 frame/track/draw/present를 확인했다. PixelCopy와 Metal drawable 표본은 각 27/27 exact다. 글리프 paint와 iOS compositor 이후 pixel로 확대 해석하지 않는다. [실행 근거](../spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/README.md)
+5. product/debug 및 fixture-test/debug FFI archive 대조, module-boundary tests, focused Rust tests, formatting과 feature-enabled Clippy를 실행했다. exact archive probe와 SHA는 [artifact boundary](../spec/internal/evidence/c11-4-grid-text-baseline-runtime-2026-10-30/artifact-boundary/README.md)에 있다.
+6. 구현/runtime 실패 관점 20개를 완료했고 PR diff의 독립된 30개 실패 관점을 검토했다. 최종 항목은 PR state/merge 및 roadmap 동기화 뒤 닫는다. PR에는 Chrome, Android AVD, iOS Simulator 화면을 분리해 첨부한다.
+7. 구현/runtime 결과를 `spec/STATUS.md`에 기록하되 C11.4/C11 상위 checkbox와 공식 `72/213`을 유지한다. PR merge 후 published roadmap 동기화를 별도로 확인한다.
 
 ## 명시적으로 제외
 

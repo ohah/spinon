@@ -4,8 +4,9 @@ use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind};
 use spinon_layout::TextLayoutEngine;
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
-    ComputedCssGridAutoRows, ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssPosition,
-    ComputedCssSpacingValue, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedCssGridAutoRows, ComputedCssGridPlacement, ComputedCssGridTrackSize,
+    ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue, ComputedStyleProfile,
+    ComputedStyleSnapshot,
 };
 
 use super::super::super::{RuntimeLayoutFailure, layout_failure};
@@ -14,17 +15,37 @@ use super::{AHEM, generic_direct_text};
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
-pub(super) fn is_fixture_root(snapshot: &HostDocumentSnapshot, root: HostNodeHandle) -> bool {
+#[derive(Clone, Copy)]
+enum FixtureProfile {
+    AutoTrackFirstBaseline,
+    FixedTrackFirstLastBaseline,
+}
+
+fn fixture_profile(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+) -> Option<FixtureProfile> {
     let Ok((_, root_id)) = super::element_identity(snapshot, root) else {
-        return false;
+        return None;
     };
-    matches!(
-        root_id.as_str(),
+    match root_id.as_str() {
         "c114-grid-text-first-baseline-align-items"
-            | "c114-grid-text-first-baseline-start-control"
-            | "c114-grid-text-first-baseline-align-self"
-            | "c114-grid-text-first-baseline-reversed"
-    )
+        | "c114-grid-text-first-baseline-start-control"
+        | "c114-grid-text-first-baseline-align-self"
+        | "c114-grid-text-first-baseline-reversed" => Some(FixtureProfile::AutoTrackFirstBaseline),
+        "c114-grid-text-last-baseline-align-items-multiline"
+        | "c114-grid-text-last-baseline-align-self-multiline"
+        | "c114-grid-text-last-baseline-reversed-multiline"
+        | "c114-grid-text-last-baseline-first-control"
+        | "c114-grid-text-last-baseline-start-control" => {
+            Some(FixtureProfile::FixedTrackFirstLastBaseline)
+        }
+        _ => None,
+    }
+}
+
+pub(super) fn is_fixture_root(snapshot: &HostDocumentSnapshot, root: HostNodeHandle) -> bool {
+    fixture_profile(snapshot, root).is_some()
 }
 
 pub(super) fn prepare(
@@ -33,14 +54,18 @@ pub(super) fn prepare(
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
     generic_direct_text::validate_snapshot_revision(snapshot, root.id(), styles)?;
+    let Some(profile) = fixture_profile(snapshot, root) else {
+        return Ok(None);
+    };
+    let (_, root_id) = super::element_identity(snapshot, root)?;
     let root_style = generic_direct_text::style_for(styles, root.id())?;
     if generic_direct_text::property(root_style, "display") != Some("grid") {
         return Ok(None);
     }
-    if !matches_first_baseline_fixture_profile(root_style) {
+    if !matches_baseline_fixture_profile(root_style, profile) {
         return Ok(None);
     }
-    validate_root(snapshot, root, styles, root_style)?;
+    validate_root(snapshot, root, styles, root_style, profile)?;
 
     let children = snapshot
         .children(root)
@@ -65,7 +90,7 @@ pub(super) fn prepare(
     if items.len() != 2 {
         return Err(generic_direct_text::source_failure(
             root.id(),
-            "first-baseline fixture requires exactly two direct element items",
+            "baseline fixture requires exactly two direct element items",
         ));
     }
 
@@ -73,11 +98,12 @@ pub(super) fn prepare(
         // Stylo serializes the computed first-baseline keyword as `baseline`, matching the
         // computed-value behavior observed in pinned Chromium.
         Some("baseline" | "first baseline") => "first baseline",
+        Some("last baseline") => "last baseline",
         Some("start") => "start",
         _ => {
             return Err(generic_direct_text::grid_style_failure(
                 root.id(),
-                "only first baseline and start control are supported",
+                "only first/last baseline and start control are supported",
             ));
         }
     };
@@ -101,13 +127,6 @@ pub(super) fn prepare(
             .ok_or_else(|| {
                 generic_direct_text::source_failure(text_node.id(), "direct Text source is missing")
             })?;
-        if text != "XX" {
-            return Err(generic_direct_text::source_failure(
-                text_node.id(),
-                "baseline fixture text must be exactly XX",
-            ));
-        }
-
         let style = generic_direct_text::style_for(styles, item.id())?;
         let font_size = style.font_size_css_px;
         if !matches!(font_size, 10.0 | 20.0) {
@@ -116,18 +135,61 @@ pub(super) fn prepare(
                 "baseline fixture font size must be 10px or 20px",
             ));
         }
+        if matches!(profile, FixtureProfile::FixedTrackFirstLastBaseline) {
+            let placement = style.grid_item_placement.as_ref().ok_or_else(|| {
+                generic_direct_text::grid_style_failure(style.node_id, "grid placement")
+            })?;
+            let expected_column = match font_size {
+                10.0 => 1,
+                20.0 => 2,
+                _ => unreachable!("font size was validated above"),
+            };
+            if placement.row_start != ComputedCssGridPlacement::Line(1)
+                || placement.row_end != ComputedCssGridPlacement::Line(2)
+                || placement.column_start != ComputedCssGridPlacement::Line(expected_column)
+                || placement.column_end != ComputedCssGridPlacement::Line(expected_column + 1)
+            {
+                return Err(generic_direct_text::grid_style_failure(
+                    style.node_id,
+                    "explicit baseline fixture column placement",
+                ));
+            }
+        }
+        let is_multiline_scene = matches!(
+            root_id.as_str(),
+            "c114-grid-text-last-baseline-align-items-multiline"
+                | "c114-grid-text-last-baseline-align-self-multiline"
+                | "c114-grid-text-last-baseline-reversed-multiline"
+                | "c114-grid-text-last-baseline-start-control"
+        );
+        let expected_text = if is_multiline_scene && font_size == 10.0 {
+            "XX XX"
+        } else {
+            "XX"
+        };
+        if text != expected_text {
+            return Err(generic_direct_text::source_failure(
+                text_node.id(),
+                "baseline fixture text does not match the pinned scene",
+            ));
+        }
         let align_self = match generic_direct_text::property(style, "align-self") {
             Some("auto") => "auto",
             Some("baseline" | "first baseline") => "first baseline",
+            Some("last baseline") => "last baseline",
             _ => {
                 return Err(generic_direct_text::style_failure(
                     style.node_id.get(),
-                    "align-self must be auto or first baseline",
+                    "align-self must be auto, first baseline, or last baseline",
                 ));
             }
         };
-        let paragraph_style = generic_direct_text::paragraph_style_for_first_baseline_fixture(
-            styles, style, font_size, align_self,
+        let paragraph_style = generic_direct_text::paragraph_style_for_baseline_fixture(
+            styles,
+            style,
+            font_size,
+            align_self,
+            matches!(profile, FixtureProfile::FixedTrackFirstLastBaseline),
         )?;
         font_sizes.push((font_size, align_self));
         paragraph_styles.insert(item.id(), paragraph_style);
@@ -141,30 +203,27 @@ pub(super) fn prepare(
             "baseline fixture requires one 10px and one 20px text item",
         ));
     }
-    if align_items == "first baseline"
-        && font_sizes
+    let (expected_align_items, expected_align_self) = match root_id.as_str() {
+        "c114-grid-text-first-baseline-align-items" | "c114-grid-text-first-baseline-reversed" => {
+            ("first baseline", "auto")
+        }
+        "c114-grid-text-first-baseline-start-control" => ("start", "auto"),
+        "c114-grid-text-first-baseline-align-self" => ("start", "first baseline"),
+        "c114-grid-text-last-baseline-align-items-multiline"
+        | "c114-grid-text-last-baseline-reversed-multiline" => ("last baseline", "auto"),
+        "c114-grid-text-last-baseline-align-self-multiline" => ("start", "last baseline"),
+        "c114-grid-text-last-baseline-first-control" => ("first baseline", "auto"),
+        "c114-grid-text-last-baseline-start-control" => ("start", "auto"),
+        _ => return Ok(None),
+    };
+    if align_items != expected_align_items
+        || font_sizes
             .iter()
-            .any(|(_, align_self)| *align_self != "auto")
+            .any(|(_, align_self)| *align_self != expected_align_self)
     {
         return Err(generic_direct_text::grid_style_failure(
             root.id(),
-            "align-items fixture items must retain align-self:auto",
-        ));
-    }
-    if align_items == "start"
-        && font_sizes
-            .iter()
-            .all(|(_, align_self)| *align_self == "auto")
-    {
-        // This is the start-alignment negative control.
-    } else if align_items == "start"
-        && font_sizes
-            .iter()
-            .any(|(_, align_self)| *align_self != "first baseline")
-    {
-        return Err(generic_direct_text::grid_style_failure(
-            root.id(),
-            "align-self fixture items must both request first baseline",
+            "baseline fixture alignment does not match its scene ID",
         ));
     }
 
@@ -183,15 +242,32 @@ pub(super) fn prepare(
     }))
 }
 
-fn matches_first_baseline_fixture_profile(style: &spinon_style::ComputedElementStyle) -> bool {
+fn matches_baseline_fixture_profile(
+    style: &spinon_style::ComputedElementStyle,
+    profile: FixtureProfile,
+) -> bool {
     let Some(grid) = style.grid_layout.as_ref() else {
         return false;
     };
-    grid.columns
-        == [
-            ComputedCssGridTrackSize::Auto,
-            ComputedCssGridTrackSize::Auto,
-        ]
+    let track_and_width_match = match profile {
+        FixtureProfile::AutoTrackFirstBaseline => {
+            grid.columns
+                == [
+                    ComputedCssGridTrackSize::Auto,
+                    ComputedCssGridTrackSize::Auto,
+                ]
+                && style.layout_dimensions.width == ComputedCssDimension::MaxContent
+        }
+        FixtureProfile::FixedTrackFirstLastBaseline => {
+            grid.columns
+                == [
+                    ComputedCssGridTrackSize::LengthPx(25.0),
+                    ComputedCssGridTrackSize::LengthPx(40.0),
+                ]
+                && style.layout_dimensions.width == ComputedCssDimension::LengthPx(73.0)
+        }
+    };
+    track_and_width_match
         && grid.rows == [ComputedCssGridTrackSize::Auto]
         && grid.auto_flow == ComputedCssGridAutoFlow::Row
         && grid.auto_rows == ComputedCssGridAutoRows::Auto
@@ -199,7 +275,6 @@ fn matches_first_baseline_fixture_profile(style: &spinon_style::ComputedElementS
         && grid.columns_auto_repeat.is_none()
         && grid.rows_auto_repeat.is_none()
         && grid.template_areas.is_none()
-        && style.layout_dimensions.width == ComputedCssDimension::MaxContent
         && style.layout_dimensions.height == ComputedCssDimension::Auto
         && style.layout_spacing.column_gap == ComputedCssSpacingValue::LengthPx(8.0)
 }
@@ -209,6 +284,7 @@ fn validate_root(
     root: HostNodeHandle,
     styles: &ComputedStyleSnapshot,
     style: &spinon_style::ComputedElementStyle,
+    profile: FixtureProfile,
 ) -> Result<(), RuntimeLayoutFailure> {
     let element = snapshot
         .node(root)
@@ -255,11 +331,23 @@ fn validate_root(
     let grid = style.grid_layout.as_ref().ok_or_else(|| {
         generic_direct_text::grid_style_failure(root.id(), "Grid layout is missing")
     })?;
-    if grid.columns
-        != [
-            ComputedCssGridTrackSize::Auto,
-            ComputedCssGridTrackSize::Auto,
-        ]
+    let (expected_columns, expected_width) = match profile {
+        FixtureProfile::AutoTrackFirstBaseline => (
+            [
+                ComputedCssGridTrackSize::Auto,
+                ComputedCssGridTrackSize::Auto,
+            ],
+            ComputedCssDimension::MaxContent,
+        ),
+        FixtureProfile::FixedTrackFirstLastBaseline => (
+            [
+                ComputedCssGridTrackSize::LengthPx(25.0),
+                ComputedCssGridTrackSize::LengthPx(40.0),
+            ],
+            ComputedCssDimension::LengthPx(73.0),
+        ),
+    };
+    if grid.columns != expected_columns
         || grid.rows != [ComputedCssGridTrackSize::Auto]
         || grid.auto_flow != ComputedCssGridAutoFlow::Row
         || grid.auto_rows != ComputedCssGridAutoRows::Auto
@@ -280,7 +368,7 @@ fn validate_root(
     }
     let dimensions = style.layout_dimensions;
     let spacing = style.layout_spacing;
-    if dimensions.width != ComputedCssDimension::MaxContent
+    if dimensions.width != expected_width
         || dimensions.height != ComputedCssDimension::Auto
         || dimensions.min_width != ComputedCssDimension::Auto
         || dimensions.max_width != ComputedCssMaxSize::None

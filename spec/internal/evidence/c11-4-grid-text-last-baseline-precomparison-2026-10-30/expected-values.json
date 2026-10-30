@@ -13,9 +13,10 @@
     },
     "assumptions": [
       "Each scene has one auto row and two explicit columns: 25px and 40px with an 8px column gap.",
-      "The 10px Ahem text wraps at its single space into two 10px line boxes in the 25px column; its first and last baselines are 8px and 18px from item top.",
+      "The 10px Ahem `XX XX` text wraps at its single space into two 10px line boxes in the last-baseline, align-self, reversed, and start scenes; its first and last baselines are 8px and 18px from item top.",
+      "The first-baseline control uses `XX` at 10px so it retains the already-supported one-line profile; its only baseline is 8px from item top.",
       "The 20px Ahem text occupies one 20px line in the 40px column; its first and last baselines are both 16px from item top.",
-      "Baseline-group shims align the selected baseline coordinates and contribute to the auto row's intrinsic size.",
+      "First-baseline shims extend the start side; last-baseline shims extend the end side, and each contributes to the auto row's intrinsic size.",
       "All items are direct Grid items with zero margin, border, and padding; each occupies row 1 and spans one track."
     ]
   },
@@ -53,10 +54,10 @@
     {
       "id": "grid-first-baseline-control",
       "alignment": "align-items:first baseline",
-      "root": { "width": 73, "height": 28, "columns": [25, 40], "rows": [28] },
+      "root": { "width": 73, "height": 20, "columns": [25, 40], "rows": [20] },
       "groupBaselineFromRowStart": 16,
       "items": [
-        { "id": "small", "x": 0, "y": 8, "width": 25, "height": 20, "startShim": 8, "firstBaselineFromItemTop": 8, "firstBaselineFromRowStart": 16 },
+        { "id": "small", "x": 0, "y": 8, "width": 25, "height": 10, "startShim": 8, "firstBaselineFromItemTop": 8, "firstBaselineFromRowStart": 16 },
         { "id": "large", "x": 33, "y": 0, "width": 40, "height": 20, "startShim": 0, "firstBaselineFromItemTop": 16, "firstBaselineFromRowStart": 16 }
       ]
     },

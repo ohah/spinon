@@ -263,14 +263,38 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
     }
 
-    private static boolean c114IsGridTextFirstBaselineScene(String sceneId) {
+    private static boolean c114IsGridTextBaselineScene(String sceneId) {
         return "grid-text-first-baseline-align-items".equals(sceneId)
                 || "grid-text-first-baseline-start-control".equals(sceneId)
                 || "grid-text-first-baseline-align-self".equals(sceneId)
-                || "grid-text-first-baseline-reversed".equals(sceneId);
+                || "grid-text-first-baseline-reversed".equals(sceneId)
+                || "grid-text-last-baseline-align-items-multiline".equals(sceneId)
+                || "grid-text-last-baseline-align-self-multiline".equals(sceneId)
+                || "grid-text-last-baseline-reversed-multiline".equals(sceneId)
+                || "grid-text-last-baseline-first-control".equals(sceneId)
+                || "grid-text-last-baseline-start-control".equals(sceneId);
     }
 
-    private static String c114GridTextFirstBaselineNodeFrames(String sceneId) {
+    private static boolean c114IsGridTextLastBaselineScene(String sceneId) {
+        return sceneId != null && sceneId.startsWith("grid-text-last-baseline-");
+    }
+
+    private static String c114GridTextBaselineNodeFrames(String sceneId) {
+        if (c114IsGridTextLastBaselineScene(sceneId)) {
+            boolean multilineLast = sceneId.endsWith("-multiline");
+            boolean firstControl = sceneId.endsWith("-first-control");
+            boolean reversed = sceneId.endsWith("-reversed-multiline");
+            String root = "0:node=1,x=0,y=0,width=73,height="
+                    + (multilineLast ? "22" : "20");
+            String small = (reversed ? "2" : "1") + ":node=2,x=0,y="
+                    + (firstControl ? "8" : "0")
+                    + ",width=25,height=" + (firstControl ? "10" : "20");
+            String large = (reversed ? "1" : "2") + ":node=4,x=33,y="
+                    + (multilineLast ? "2" : "0")
+                    + ",width=40,height=20";
+            if (reversed) return "node_frames_css_px=[" + root + ";" + large + ";" + small + "]";
+            return "node_frames_css_px=[" + root + ";" + small + ";" + large + "]";
+        }
         switch (sceneId) {
             case "grid-text-first-baseline-align-items":
             case "grid-text-first-baseline-align-self":
@@ -913,7 +937,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsGenericDirectTextScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
-        if (c114IsGridTextFirstBaselineScene(sceneId)) {
+        if (c114IsGridTextBaselineScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
         if (sceneId != null && sceneId.startsWith(C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX)) {
@@ -4194,7 +4218,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
-        if (c114IsGridTextFirstBaselineScene(sceneId)) return "width=68,height=20";
+        if (c114IsGridTextLastBaselineScene(sceneId)) {
+            return sceneId.endsWith("-multiline") ? "width=73,height=22" : "width=73,height=20";
+        }
+        if (c114IsGridTextBaselineScene(sceneId)) return "width=68,height=20";
         if (C114VisibilityCollapseStage.isScene(sceneId)) {
             return C114VisibilityCollapseStage.expectedRootFrame(sceneId);
         }
@@ -4612,7 +4639,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedItemFrame(String sceneId) {
-        if (c114IsGridTextFirstBaselineScene(sceneId)) {
+        if (c114IsGridTextLastBaselineScene(sceneId)) {
+            if (sceneId.endsWith("-reversed-multiline")) return "width=40,height=20";
+            return sceneId.endsWith("-first-control")
+                    ? "width=25,height=10" : "width=25,height=20";
+        }
+        if (c114IsGridTextBaselineScene(sceneId)) {
             return "grid-text-first-baseline-reversed".equals(sceneId)
                     ? "width=40,height=20" : "width=20,height=10";
         }
@@ -6767,7 +6799,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
-        String firstBaselineFrames = c114GridTextFirstBaselineNodeFrames(sceneId);
+        String firstBaselineFrames = c114GridTextBaselineNodeFrames(sceneId);
         if (firstBaselineFrames != null) return firstBaselineFrames;
         String fixedMaximumFrames = c114FixedMaximumNodeFrames(sceneId);
         if (fixedMaximumFrames != null) return fixedMaximumFrames;
@@ -9418,7 +9450,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
-        if (c114IsGridTextFirstBaselineScene(sceneId)) return 3;
+        if (c114IsGridTextBaselineScene(sceneId)) return 3;
         if (C114VisibilityCollapseStage.isScene(sceneId)) {
             return C114VisibilityCollapseStage.expectedBoxCount(sceneId);
         }
@@ -10324,16 +10356,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             String sceneId,
             List<SurfaceViewPixelCapture.Sample> samples
     ) {
-        if (c114IsGridTextFirstBaselineScene(sceneId)) {
-            boolean reversed = sceneId.endsWith("-reversed");
+        if (c114IsGridTextBaselineScene(sceneId)) {
+            boolean lastBaseline = c114IsGridTextLastBaselineScene(sceneId);
+            boolean reversed = !lastBaseline && sceneId.endsWith("-reversed");
             boolean startControl = sceneId.endsWith("-start-control");
+            boolean firstControl = sceneId.endsWith("-first-control");
             String rootId = "c114-" + sceneId;
             String[] expectedIds = {
                 sceneId + "-grid-gap", sceneId + "-small-item", sceneId + "-large-item"
             };
-            int[][] expectedPoints = reversed
-                    ? new int[][] {{44, 5}, {58, 13}, {20, 10}}
-                    : new int[][] {{24, 5}, {10, startControl ? 5 : 13}, {48, 10}};
+            int[][] expectedPoints = lastBaseline
+                    ? new int[][] {{28, 5}, {10, firstControl ? 13 : 15}, {48, 10}}
+                    : reversed
+                        ? new int[][] {{44, 5}, {58, 13}, {20, 10}}
+                        : new int[][] {{24, 5}, {10, startControl ? 5 : 13}, {48, 10}};
             if (samples.size() != expectedIds.length) return false;
             boolean[] found = new boolean[expectedIds.length];
             for (SurfaceViewPixelCapture.Sample sample : samples) {
@@ -13274,7 +13310,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || "grid-gap-cyclic-calc-min-basis".equals(pixelMatrixSceneId)
                         || "nested-grid-definite-flex-control".equals(pixelMatrixSceneId)
                         || "align-content-normal-equal-auto-rows".equals(pixelMatrixSceneId)
-                        || c114IsGridTextFirstBaselineScene(pixelMatrixSceneId)
+                        || c114IsGridTextBaselineScene(pixelMatrixSceneId)
                         || c114IsFitContentLimitColumnsScene(pixelMatrixSceneId)
                         || isC114PercentageMaximumPixelSceneId(pixelMatrixSceneId)
                         || isC114FixedMaximumPixelSceneId(pixelMatrixSceneId)
@@ -17004,7 +17040,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
-        if (c114IsGridTextFirstBaselineScene(sceneId)) {
+        if (c114IsGridTextBaselineScene(sceneId)) {
             if (sampleId.endsWith("-grid-gap")) return new int[] {238, 243, 248};
             if (sampleId.endsWith("-small-item")) return new int[] {229, 72, 77};
             if (sampleId.endsWith("-large-item")) return new int[] {58, 134, 255};

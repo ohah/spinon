@@ -23,7 +23,7 @@
 | 17 | first/last line box top을 item-relative라고 잘못 더해 baseline을 두 번 이동한다. | verifier는 browser line rect를 root-relative로 사용하고 first/last Ahem offset을 더한다. | PASS |
 | 18 | baseline offset의 font metric 계산이 기대값과 다르다. | Ahem ascent 800/UPEM 1000, 0.8em ratio와 fixed font hash를 expected JSON에 둔다. | PASS |
 | 19 | last-baseline이 first-baseline처럼 start shim을 쓰도록 계획에 잘못 고정된다. | Grid §11.5 end-side shim 및 end fallback으로 end shim small 2px/large 0px, item y 0/2px, common baseline 18px 및 row 22px를 명시한다. | PASS |
-| 20 | `first baseline` 회귀 control이 last와 구분되지 않는다. | first control은 group 16px, item y=8/0px, row 28px다. | PASS |
+| 20 | `first baseline` 회귀 control이 last와 구분되지 않거나 one-line 기존 계약을 넓힌다. | first control은 한 줄 text, group 16px, item y=8/0px, row 20px다. | PASS |
 | 21 | `start` control이 baseline alignment를 우연히 상속한다. | start scene은 item y=0/0px, row 20px로 Chrome 및 expected JSON에 있다. | PASS |
 | 22 | align-self scene이 부모 alignment를 검사하지 않는다. | expected/browser scene은 parent start와 두 child last-baseline 설정을 고정한다. | PASS |
 | 23 | source order 역전이 DOM semantic placement까지 바꾼다. | reverse scene은 same semantic x/y/frame 및 group baseline을 기대하며 verifier가 각 semantic ID를 비교한다. | PASS |

@@ -15,7 +15,7 @@
         {
           "alignSelf": "auto",
           "font": "10px / 10px Ahem",
-          "height": 20,
+          "height": 10,
           "id": "first-small",
           "lineHeight": "10px",
           "lineRects": [
@@ -24,12 +24,6 @@
               "width": 20,
               "x": 0,
               "y": 8
-            },
-            {
-              "height": 10,
-              "width": 20,
-              "x": 0,
-              "y": 18
             }
           ],
           "whiteSpace": "normal",
@@ -60,12 +54,12 @@
       "root": {
         "alignItems": "baseline",
         "gridTemplateColumns": "25px 40px",
-        "gridTemplateRows": "28px",
-        "height": 28,
+        "gridTemplateRows": "20px",
+        "height": 20,
         "id": "first-control",
         "width": 73,
-        "x": 0,
-        "y": 0
+        "x": 20,
+        "y": 102.78125
       }
     },
     "last": {
@@ -122,8 +116,8 @@
         "height": 22,
         "id": "align-items-last",
         "width": 73,
-        "x": 0,
-        "y": 0
+        "x": 20,
+        "y": 40.390625
       }
     },
     "reversed": {
@@ -180,8 +174,8 @@
         "height": 22,
         "id": "reversed",
         "width": 73,
-        "x": 0,
-        "y": 0
+        "x": 20,
+        "y": 285.953125
       }
     },
     "self": {
@@ -238,8 +232,8 @@
         "height": 22,
         "id": "explicit-self",
         "width": 73,
-        "x": 0,
-        "y": 0
+        "x": 20,
+        "y": 223.5625
       }
     },
     "start": {
@@ -296,10 +290,9 @@
         "height": 20,
         "id": "start-control",
         "width": 73,
-        "x": 0,
-        "y": 0
+        "x": 20,
+        "y": 163.171875
       }
     }
-  },
-  "source": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/grid-last-baseline-multiline-direct-text.html"
+  }
 }

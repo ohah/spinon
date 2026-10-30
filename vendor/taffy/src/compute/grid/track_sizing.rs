@@ -3,7 +3,7 @@
 use super::types::{GridItem, GridTrack, GridTrackKind, TrackCounts};
 use super::{GridTrackSizingStageKind, GridTrackSizingTrace};
 use crate::geometry::{AbstractAxis, Line, Size};
-use crate::style::{AlignContent, AlignContentKeyword, AvailableSpace};
+use crate::style::{AlignContent, AlignContentKeyword, AlignItemsKeyword, AvailableSpace};
 use crate::style_helpers::TaffyMinContent;
 use crate::tree::{LayoutPartialTree, LayoutPartialTreeExt, SizingMode};
 use crate::util::sys::{f32_max, f32_min, Vec};
@@ -658,66 +658,95 @@ fn resolve_item_baselines(
             row_items
         };
 
-        // Count how many items in *this row* are baseline aligned
-        // If a row has one or zero items participating in baseline alignment then baseline alignment is a no-op
-        // for those items and we skip further computations for that row
-        let row_baseline_item_count = row_items
-            .iter()
-            .filter(|item| item.participates_in_baseline_alignment())
-            .count();
-        if row_baseline_item_count <= 1 {
-            continue;
+        for item in row_items.iter_mut() {
+            item.baseline_shim = 0.0;
         }
 
-        // Compute the baselines of all items in the row participating in baseline alignment
-        for item in row_items.iter_mut() {
-            if !item.participates_in_baseline_alignment() {
+        // First- and last-baseline items have different baseline-sharing groups and shim edges.
+        for baseline_kind in [AlignItemsKeyword::Baseline, AlignItemsKeyword::LastBaseline] {
+            let participates_in_group = |item: &&&mut GridItem| {
+                item.participates_in_baseline_alignment()
+                    && item.align_self.keyword == baseline_kind
+            };
+            let row_baseline_item_count = row_items.iter().filter(participates_in_group).count();
+            if row_baseline_item_count <= 1 {
                 continue;
             }
 
-            let measured_size_and_baselines = tree.perform_child_layout(
-                item.node,
-                Size::NONE,
-                inner_node_size,
-                Size::MIN_CONTENT,
-                SizingMode::InherentSize,
-                Line::FALSE,
-            );
+            // Compute the selected baseline for every item in this group. First-baseline
+            // groups measure from the start margin edge; last-baseline groups measure back
+            // from the end margin edge.
+            for item in row_items.iter_mut() {
+                if !item.participates_in_baseline_alignment()
+                    || item.align_self.keyword != baseline_kind
+                {
+                    continue;
+                }
 
-            let baseline = measured_size_and_baselines.baselines.first;
-            let height = measured_size_and_baselines.size.height;
+                let measured_size_and_baselines = tree.perform_child_layout(
+                    item.node,
+                    Size::NONE,
+                    inner_node_size,
+                    Size::MIN_CONTENT,
+                    SizingMode::InherentSize,
+                    Line::FALSE,
+                );
 
-            // Scroll containers' baselines are determined from their content as if scrolled to the
-            // initial position, but are additionally clamped to their border box.
-            // See https://github.com/w3c/csswg-drafts/issues/7660
-            let baseline = if item.overflow.y.is_scroll_container() {
-                baseline.unwrap_or(height).min(height).max(0.0)
-            } else {
-                baseline.unwrap_or(height)
-            };
+                let height = measured_size_and_baselines.size.height;
 
-            item.baseline = Some(
-                baseline
-                    + item
-                        .margin
-                        .top
-                        .resolve_or_zero(inner_node_size.width, |val, basis| tree.calc(val, basis)),
-            );
-        }
+                // Scroll containers' baselines are determined from their content as if scrolled
+                // to the initial position, but are additionally clamped to their border box.
+                // See https://github.com/w3c/csswg-drafts/issues/7660
+                let clamp_scroll_baseline = |baseline: Option<f32>| {
+                    if item.overflow.y.is_scroll_container() {
+                        baseline.unwrap_or(height).min(height).max(0.0)
+                    } else {
+                        baseline.unwrap_or(height)
+                    }
+                };
+                let first_baseline =
+                    clamp_scroll_baseline(measured_size_and_baselines.baselines.first);
+                let selected_baseline = match baseline_kind {
+                    AlignItemsKeyword::Baseline => first_baseline,
+                    AlignItemsKeyword::LastBaseline => {
+                        clamp_scroll_baseline(measured_size_and_baselines.baselines.last)
+                    }
+                    _ => unreachable!(),
+                };
 
-        // Compute the max baseline of all items in the row participating in baseline alignment
-        let row_max_baseline = row_items
-            .iter()
-            .filter(|item| item.participates_in_baseline_alignment())
-            .map(|item| item.baseline.unwrap_or(0.0))
-            .max_by(|a, b| a.total_cmp(b))
-            .unwrap();
+                let margin_top = item
+                    .margin
+                    .top
+                    .resolve_or_zero(inner_node_size.width, |val, basis| tree.calc(val, basis));
+                let margin_bottom = item
+                    .margin
+                    .bottom
+                    .resolve_or_zero(inner_node_size.width, |val, basis| tree.calc(val, basis));
+                item.baseline = Some(first_baseline);
+                item.baseline_alignment =
+                    Some(if baseline_kind == AlignItemsKeyword::LastBaseline {
+                        height - selected_baseline + margin_bottom
+                    } else {
+                        selected_baseline + margin_top
+                    });
+            }
 
-        // Compute the baseline shim for each item in the row participating in baseline alignment
-        for item in row_items.iter_mut() {
-            if item.participates_in_baseline_alignment() {
-                item.baseline_shim = row_max_baseline - item.baseline.unwrap_or(0.0);
-                item.known_dimensions_cache = None;
+            let row_max_baseline = row_items
+                .iter()
+                .filter(participates_in_group)
+                .map(|item| item.baseline_alignment.unwrap_or(0.0))
+                .max_by(|a, b| a.total_cmp(b))
+                .unwrap();
+
+            // The selected side shim is represented by the item's baseline kind when Grid
+            // contributions and final placement apply `baseline_shim`.
+            for item in row_items.iter_mut() {
+                if item.participates_in_baseline_alignment()
+                    && item.align_self.keyword == baseline_kind
+                {
+                    item.baseline_shim = row_max_baseline - item.baseline_alignment.unwrap_or(0.0);
+                    item.known_dimensions_cache = None;
+                }
             }
         }
     }

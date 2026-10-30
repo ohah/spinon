@@ -9,8 +9,6 @@ use spinon_text_layout::{
     ParagraphInput, TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutEngine,
     TextLayoutSnapshot,
 };
-#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
-use taffy::Baselines;
 use taffy::{
     AvailableSpace, BlockContext, Cache, CacheTree, DetailedLayoutInfo, Display, Layout,
     LayoutBlockContainer, LayoutContainingBlock, LayoutFlexboxContainer,
@@ -808,16 +806,14 @@ impl CalcLayoutTree {
 
             #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
             if let Some(spinon_node) = tree.node(node_id).spinon_node
-                && tree
-                    .grid_item_intrinsic_metadata
-                    .get(&spinon_node)
-                    .is_some_and(|metadata| {
-                        metadata.is_track_sizing && metadata.first_baseline_aligned
-                    })
+                && let Some(metadata) = tree.grid_item_intrinsic_metadata.get(&spinon_node)
+                && metadata.is_track_sizing
+                && (metadata.first_baseline_aligned || metadata.last_baseline_aligned)
             {
-                match tree.first_baseline_for_track_sizing_text(node_id, output.size.width) {
-                    Ok(Some(baseline)) => {
-                        output.baselines = Baselines::from_first(Some(baseline));
+                match tree.baseline_for_track_sizing_text(node_id, output.size.width) {
+                    Ok(Some((first, last))) => {
+                        output.baselines.first = Some(first);
+                        output.baselines.last = Some(last);
                     }
                     Ok(None) => {}
                     Err(error) => tree.record_error(error),

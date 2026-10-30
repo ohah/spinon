@@ -600,7 +600,7 @@ pub(super) fn project_styles(
                     false,
                     false,
                     options.allow_c11_4_overflow_auto_minimum_fixture,
-                    options.allow_c11_4_grid_text_first_baseline_fixture,
+                    options.allow_c11_4_grid_text_baseline_fixture,
                 )?;
             }
             if nodes.grid_items.contains(&node) {
@@ -612,7 +612,7 @@ pub(super) fn project_styles(
                     supports_grid_image_ratio_transfer
                         && options.allow_c11_4_replaced_grid_item_align_self_start,
                     options.allow_c11_4_overflow_auto_minimum_fixture,
-                    options.allow_c11_4_grid_text_first_baseline_fixture,
+                    options.allow_c11_4_grid_text_baseline_fixture,
                 )?;
             }
         }
@@ -835,7 +835,7 @@ fn reject_grid_alignment(
     is_grid_item: bool,
     is_replaced_grid_item: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
-    allow_c11_4_grid_text_first_baseline_fixture: bool,
+    allow_c11_4_grid_text_baseline_fixture: bool,
 ) -> Result<(), StyleLayoutError> {
     let mut unsupported = Vec::new();
     if is_grid_container {
@@ -854,15 +854,21 @@ fn reject_grid_alignment(
             && value != initial
             && !(is_grid_container && property == "align-items" && value == "start")
             && !(is_grid_container
-                && allow_c11_4_grid_text_first_baseline_fixture
+                && allow_c11_4_grid_text_baseline_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-items"
-                && matches!(value.as_str(), "baseline" | "first baseline"))
+                && matches!(
+                    value.as_str(),
+                    "baseline" | "first baseline" | "last baseline"
+                ))
             && !(is_grid_item
-                && allow_c11_4_grid_text_first_baseline_fixture
+                && allow_c11_4_grid_text_baseline_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
                 && property == "align-self"
-                && matches!(value.as_str(), "baseline" | "first baseline"))
+                && matches!(
+                    value.as_str(),
+                    "baseline" | "first baseline" | "last baseline"
+                ))
             && !(is_grid_container
                 && allow_c11_4_overflow_auto_minimum_fixture
                 && profile == ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
