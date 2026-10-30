@@ -1,0 +1,57 @@
+{
+  "source": "Agent Browser HeadlessChrome",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "cases": {
+    "anonymous-normal-min-content": {
+      "whiteSpace": "normal",
+      "columns": "20px",
+      "rows": "20px",
+      "grid": {
+        "x": 5,
+        "y": 47,
+        "width": 20,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 5,
+          "y": 47,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 5,
+          "y": 57,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    "anonymous-nowrap-min-content": {
+      "whiteSpace": "nowrap",
+      "columns": "50px",
+      "rows": "10px",
+      "grid": {
+        "x": 5,
+        "y": 129,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 5,
+          "y": 129,
+          "width": 50,
+          "height": 10
+        }
+      ]
+    }
+  }
+}
