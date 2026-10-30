@@ -1,0 +1,442 @@
+{
+  "fonts": {
+    "ahem": true,
+    "faces": [
+      {
+        "family": "Ahem",
+        "status": "loaded"
+      }
+    ],
+    "status": "loaded"
+  },
+  "scenes": [
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "60px",
+        "gridTemplateRows": "10px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 10,
+        "width": 60,
+        "x": 0,
+        "y": 16
+      },
+      "id": "break-spaces-max-content",
+      "text": "XX  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 60,
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "20px",
+        "gridTemplateRows": "20px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "pre-wrap",
+        "whiteSpaceCollapse": "preserve"
+      },
+      "frame": {
+        "height": 20,
+        "width": 20,
+        "x": 0,
+        "y": 54
+      },
+      "id": "pre-wrap-min-content-control",
+      "text": "XX  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 20,
+          "x": 20,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 20,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "30px",
+        "gridTemplateRows": "20px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 20,
+        "width": 30,
+        "x": 0,
+        "y": 102
+      },
+      "id": "break-spaces-min-content",
+      "text": "XX  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 30,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "60px",
+        "gridTemplateRows": "10px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 10,
+        "width": 60,
+        "x": 0,
+        "y": 150
+      },
+      "id": "break-spaces-comment-split-max-content",
+      "text": "XX  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX ",
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 1,
+          "sourceText": " XX",
+          "width": 30,
+          "x": 30,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "25px",
+        "gridTemplateRows": "20px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 20,
+        "width": 25,
+        "x": 0,
+        "y": 188
+      },
+      "id": "break-spaces-soft-wrap-25",
+      "text": "XX  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  XX",
+          "width": 30,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "40px",
+        "gridTemplateRows": "20px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 20,
+        "width": 40,
+        "x": 0,
+        "y": 236
+      },
+      "id": "break-spaces-forced-break-max-content",
+      "text": "XX  \nXX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 0,
+          "x": 40,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 20,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "30px",
+        "gridTemplateRows": "30px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 30,
+        "width": 30,
+        "x": 0,
+        "y": 284
+      },
+      "id": "break-spaces-forced-break-min-content",
+      "text": "XX  \nXX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 10,
+          "x": 0,
+          "y": 10
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 0,
+          "x": 10,
+          "y": 10
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  \nXX",
+          "width": 20,
+          "x": 0,
+          "y": 20
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "25px",
+        "gridTemplateRows": "20px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 20,
+        "width": 25,
+        "x": 0,
+        "y": 342
+      },
+      "id": "break-spaces-trailing-soft-wrap-25",
+      "text": "XX  ",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  ",
+          "width": 30,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  ",
+          "width": 10,
+          "x": 0,
+          "y": 10
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "40px",
+        "gridTemplateRows": "10px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 10,
+        "width": 40,
+        "x": 0,
+        "y": 390
+      },
+      "id": "break-spaces-leading-spaces-max-content",
+      "text": "  XX",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "  XX",
+          "width": 20,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "  XX",
+          "width": 20,
+          "x": 20,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "40px",
+        "gridTemplateRows": "10px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 10,
+        "width": 40,
+        "x": 0,
+        "y": 428
+      },
+      "id": "break-spaces-trailing-max-content",
+      "text": "XX  ",
+      "textFragments": [
+        {
+          "height": 10,
+          "sourceIndex": 0,
+          "sourceText": "XX  ",
+          "width": 40,
+          "x": 0,
+          "y": 0
+        }
+      ]
+    },
+    {
+      "children": [],
+      "computed": {
+        "gridTemplateColumns": "0px",
+        "gridTemplateRows": "0px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 0,
+        "width": 0,
+        "x": 0,
+        "y": 466
+      },
+      "id": "break-spaces-whitespace-only",
+      "text": "  ",
+      "textFragments": []
+    },
+    {
+      "children": [
+        {
+          "height": 10,
+          "id": "break-spaces-marker",
+          "width": 10,
+          "x": 0,
+          "y": 0
+        }
+      ],
+      "computed": {
+        "gridTemplateColumns": "20px 20px",
+        "gridTemplateRows": "10px",
+        "textWrapMode": "wrap",
+        "whiteSpace": "break-spaces",
+        "whiteSpaceCollapse": "break-spaces"
+      },
+      "frame": {
+        "height": 10,
+        "width": 40,
+        "x": 0,
+        "y": 494
+      },
+      "id": "break-spaces-whitespace-before-block",
+      "text": "  ",
+      "textFragments": []
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
