@@ -1,0 +1,470 @@
+{
+  "fixture": {
+    "fontReady": true,
+    "scenes": [
+      {
+        "grid": {
+          "height": 32.65625,
+          "width": 100,
+          "x": 20,
+          "y": 34.390625
+        },
+        "id": "row-auto-ratio",
+        "items": [
+          {
+            "frame": {
+              "height": 32.65625,
+              "width": 20,
+              "x": 20,
+              "y": 34.390625
+            },
+            "id": "row-auto-ratio-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 32.65625,
+              "width": 50,
+              "x": 40,
+              "y": 34.390625
+            },
+            "id": "row-auto-ratio-long",
+            "used": {
+              "aspectRatio": "auto 3 / 2",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "20px 50px",
+          "rows": "32.6562px"
+        }
+      },
+      {
+        "grid": {
+          "height": 33.328125,
+          "width": 100,
+          "x": 20,
+          "y": 97.4375
+        },
+        "id": "row-numeric-ratio",
+        "items": [
+          {
+            "frame": {
+              "height": 33.328125,
+              "width": 20,
+              "x": 20,
+              "y": 97.4375
+            },
+            "id": "row-numeric-ratio-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 33.328125,
+              "width": 50,
+              "x": 40,
+              "y": 97.4375
+            },
+            "id": "row-numeric-ratio-long",
+            "used": {
+              "aspectRatio": "3 / 2",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "20px 50px",
+          "rows": "33.3281px"
+        }
+      },
+      {
+        "grid": {
+          "height": 16,
+          "width": 100,
+          "x": 20,
+          "y": 161.15625
+        },
+        "id": "row-auto-only",
+        "items": [
+          {
+            "frame": {
+              "height": 16,
+              "width": 20,
+              "x": 20,
+              "y": 161.15625
+            },
+            "id": "row-auto-only-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 16,
+              "width": 50,
+              "x": 40,
+              "y": 161.15625
+            },
+            "id": "row-auto-only-long",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "20px 50px",
+          "rows": "16px"
+        }
+      },
+      {
+        "grid": {
+          "height": 32.65625,
+          "width": 100,
+          "x": 20,
+          "y": 207.546875
+        },
+        "id": "row-auto-ratio-content-box",
+        "items": [
+          {
+            "frame": {
+              "height": 32.65625,
+              "width": 20,
+              "x": 20,
+              "y": 207.546875
+            },
+            "id": "row-auto-ratio-content-box-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "content-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 32.65625,
+              "width": 50,
+              "x": 40,
+              "y": 207.546875
+            },
+            "id": "row-auto-ratio-content-box-long",
+            "used": {
+              "aspectRatio": "auto 3 / 2",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "content-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "20px 50px",
+          "rows": "32.6562px"
+        }
+      },
+      {
+        "grid": {
+          "height": 60,
+          "width": 100,
+          "x": 20,
+          "y": 270.59375
+        },
+        "id": "row-60-auto-ratio",
+        "items": [
+          {
+            "frame": {
+              "height": 60,
+              "width": 91,
+              "x": 20,
+              "y": 270.59375
+            },
+            "id": "row-60-auto-ratio-long",
+            "used": {
+              "aspectRatio": "auto 3 / 2",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 60,
+              "width": 20,
+              "x": 111,
+              "y": 270.59375
+            },
+            "id": "row-60-auto-ratio-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "91px 20px",
+          "rows": "60px"
+        }
+      },
+      {
+        "grid": {
+          "height": 60,
+          "width": 100,
+          "x": 20,
+          "y": 360.984375
+        },
+        "id": "row-60-numeric-ratio",
+        "items": [
+          {
+            "frame": {
+              "height": 60,
+              "width": 90,
+              "x": 20,
+              "y": 360.984375
+            },
+            "id": "row-60-numeric-ratio-long",
+            "used": {
+              "aspectRatio": "3 / 2",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 60,
+              "width": 20,
+              "x": 110,
+              "y": 360.984375
+            },
+            "id": "row-60-numeric-ratio-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "90px 20px",
+          "rows": "60px"
+        }
+      },
+      {
+        "grid": {
+          "height": 60,
+          "width": 100,
+          "x": 20,
+          "y": 451.375
+        },
+        "id": "row-60-auto-only",
+        "items": [
+          {
+            "frame": {
+              "height": 60,
+              "width": 50,
+              "x": 20,
+              "y": 451.375
+            },
+            "id": "row-60-auto-only-long",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          },
+          {
+            "frame": {
+              "height": 60,
+              "width": 20,
+              "x": 70,
+              "y": 451.375
+            },
+            "id": "row-60-auto-only-short",
+            "used": {
+              "aspectRatio": "auto",
+              "border": [
+                "1px",
+                "1px",
+                "1px",
+                "1px"
+              ],
+              "boxSizing": "border-box",
+              "padding": [
+                "2px",
+                "4px",
+                "2px",
+                "4px"
+              ]
+            }
+          }
+        ],
+        "tracks": {
+          "columns": "50px 20px",
+          "rows": "60px"
+        }
+      }
+    ]
+  },
+  "fontCheck": true,
+  "url": "http://127.0.0.1:8769/css/c11/grid-direct-text-aspect-ratio-auto-precomparison.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "devicePixelRatio": 1,
+    "height": 633,
+    "width": 1280
+  }
+}

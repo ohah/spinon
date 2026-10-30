@@ -1,0 +1,123 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 direct text Grid aspect-ratio auto precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  padding: 20px;
+  color: #111;
+  background: #fff;
+  font: 12px/1.2 sans-serif;
+}
+.case { margin: 0 0 16px; }
+.case-label { color: #263238; }
+.grid {
+  display: grid;
+  width: 100px;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: auto;
+  gap: 0;
+  align-items: normal;
+  justify-items: normal;
+  outline: 1px solid #263238;
+}
+.item {
+  margin: 0;
+  border: 1px solid #1976d2;
+  padding: 2px 4px;
+  color: #111;
+  background: #dbeafe;
+  font: 10px/10px Ahem;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.auto-ratio { aspect-ratio: auto 3 / 2; }
+.numeric-ratio { aspect-ratio: 3 / 2; }
+.auto-only { aspect-ratio: auto; }
+.content-box { box-sizing: content-box; }
+.row-60 { grid-template-rows: 60px; }
+</style>
+
+<section class="case">
+  <div class="case-label">Auto row: auto 3 / 2, border-box</div>
+  <div id="row-auto-ratio" class="grid">
+    <div id="row-auto-ratio-short" class="item">A</div>
+    <div id="row-auto-ratio-long" class="item auto-ratio">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: numeric 3 / 2, border-box</div>
+  <div id="row-numeric-ratio" class="grid">
+    <div id="row-numeric-ratio-short" class="item">A</div>
+    <div id="row-numeric-ratio-long" class="item numeric-ratio">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: auto only, border-box</div>
+  <div id="row-auto-only" class="grid">
+    <div id="row-auto-only-short" class="item">A</div>
+    <div id="row-auto-only-long" class="item auto-only">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: auto 3 / 2, content-box</div>
+  <div id="row-auto-ratio-content-box" class="grid">
+    <div id="row-auto-ratio-content-box-short" class="item content-box">A</div>
+    <div id="row-auto-ratio-content-box-long" class="item auto-ratio content-box">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 60px row: auto 3 / 2, border-box</div>
+  <div id="row-60-auto-ratio" class="grid row-60">
+    <div id="row-60-auto-ratio-long" class="item auto-ratio">AAAA</div>
+    <div id="row-60-auto-ratio-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 60px row: numeric 3 / 2, border-box</div>
+  <div id="row-60-numeric-ratio" class="grid row-60">
+    <div id="row-60-numeric-ratio-long" class="item numeric-ratio">AAAA</div>
+    <div id="row-60-numeric-ratio-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite 60px row: auto only, border-box</div>
+  <div id="row-60-auto-only" class="grid row-60">
+    <div id="row-60-auto-only-long" class="item auto-only">AAAA</div>
+    <div id="row-60-auto-only-short" class="item">A</div>
+  </div>
+</section>
+
+<script>
+window.captureGridAspectRatioAuto = () => {
+  const box = (element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  };
+  const used = (element) => {
+    const style = getComputedStyle(element);
+    return {
+      boxSizing: style.boxSizing,
+      aspectRatio: style.aspectRatio,
+      padding: [style.paddingTop, style.paddingRight, style.paddingBottom, style.paddingLeft],
+      border: [style.borderTopWidth, style.borderRightWidth, style.borderBottomWidth, style.borderLeftWidth],
+    };
+  };
+  return {
+    fontReady: document.fonts.check('10px Ahem'),
+    scenes: [...document.querySelectorAll('.grid')].map((grid) => ({
+      id: grid.id,
+      grid: box(grid),
+      tracks: {
+        columns: getComputedStyle(grid).gridTemplateColumns,
+        rows: getComputedStyle(grid).gridTemplateRows,
+      },
+      items: [...grid.children].map((item) => ({ id: item.id, used: used(item), frame: box(item) })),
+    })),
+  };
+};
+</script>
