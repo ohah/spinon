@@ -46,6 +46,8 @@ function verifyGeometry(capture) {
     close(Math.max(0, actual.text.width - actual.item.width), target.text_inline_overflow, `${target.id}: text overflow`);
     assert(actual.computed.gridColumnStart === "1", `${target.id}: column start differs`);
     assert(actual.computed.gridColumnEnd === "span 2", `${target.id}: column span differs`);
+    assert(actual.computed.gridRowStart === "auto", `${target.id}: row start differs`);
+    assert(actual.computed.gridRowEnd === "auto", `${target.id}: row end differs`);
     assert(actual.computed.aspectRatio === target.ratio, `${target.id}: ratio differs`);
     assert(actual.computed.font === "10px / 10px Ahem, sans-serif", `${target.id}: computed font differs`);
 
