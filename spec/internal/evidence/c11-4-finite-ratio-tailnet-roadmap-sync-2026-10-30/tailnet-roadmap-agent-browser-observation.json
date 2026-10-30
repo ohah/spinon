@@ -1,0 +1,39 @@
+{
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "terms": {
+    "PR #842 Rebase and merge": true,
+    "78fd0b84e4132e1f91bd293735e97b33cbf0d9a0": true,
+    "72/213": true,
+    "C11.4/C11은 미완료이며 공식 완료는 72/213": true,
+    "계획 당시": true
+  },
+  "excerpts": [
+    {
+      "term": "PR #842 Rebase and merge",
+      "found": true,
+      "excerpt": "Column `1/2`의 max-content text track 40px, item 40×80px, 60px root row와 20px overflow를 분리한다. 후속은 구현 PR #842 Rebase and merge (2026-10-30T05:04:03Z, SHA 78fd0b84e4132e1f91bd293735e97b33cbf0d9a0)로 반영됐다. 자세한 현재 결과는 다음 카드와 계획/evidence를 따른다. C11.4/C11은 미완료이며 공식 완료 72/213을 유지한다. 계획 · Chrome 비교·기대값 · 공식 상태\n\n20"
+    },
+    {
+      "term": "78fd0b84e4132e1f91bd293735e97b33cbf0d9a0",
+      "found": true,
+      "excerpt": "0px, 60px root row와 20px overflow를 분리한다. 후속은 구현 PR #842 Rebase and merge (2026-10-30T05:04:03Z, SHA 78fd0b84e4132e1f91bd293735e97b33cbf0d9a0)로 반영됐다. 자세한 현재 결과는 다음 카드와 계획/evidence를 따른다. C11.4/C11은 미완료이며 공식 완료 72/213을 유지한다. 계획 · Chrome 비교·기대값 · 공식 상태\n\n2026-10-30 C11.4 auto-repeat two-track pattern ceiling test-only · PR "
+    },
+    {
+      "term": "72/213",
+      "found": true,
+      "excerpt": "e4132e1f91bd293735e97b33cbf0d9a0)로 반영됐다. 자세한 현재 결과는 다음 카드와 계획/evidence를 따른다. C11.4/C11은 미완료이며 공식 완료 72/213을 유지한다. 계획 · Chrome 비교·기대값 · 공식 상태\n\n2026-10-30 C11.4 auto-repeat two-track pattern ceiling test-only · PR #837 Rebase and merge (2026-10-30T03:35:31Z, merge SHA 12c11815165077d570d"
+    },
+    {
+      "term": "C11.4/C11은 미완료이며 공식 완료는 72/213",
+      "found": true,
+      "excerpt": "rustfmt가 통과했다. 순수 Rust test-only slice라 앱 runtime·simulator·WPT나 일반 author CSS admission을 추가하지 않는다. C11.4/C11은 미완료이며 공식 완료는 72/213 그대로다. 집중 계획 · 사전 비교 · 실행 근거 · 공식 상태\n\n2026-10-30 C11.4 direct-text preferred aspect-ratio intrinsic contribution · 구현 PR #834 Rebase and merge (2026-10-30T02:49:15Z, merge SHA 3136"
+    },
+    {
+      "term": "계획 당시",
+      "found": true,
+      "excerpt": "API 문서\n\n스피논 / 구현 로드맵\n\n스피논을 만드는 순서\n\n2026-10-30 C11.4 direct-text finite-positive aspect-ratio 사전 계획: 계획 당시 PR #834 구현은 `2/1`만 허용했고 후속 계획은 opt-in fixture에서 finite-positive typed ratio를 확장하도록 제안했다. Agent Browser HeadlessChrome 156의 Ahem 직접 텍스트 13개 장면은 `1/2`, `4/3`, `3/2`, `5/2`와 Rows·Col"
+    }
+  ],
+  "images": []
+}
