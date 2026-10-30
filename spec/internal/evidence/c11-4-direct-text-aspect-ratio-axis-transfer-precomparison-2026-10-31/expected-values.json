@@ -1,0 +1,78 @@
+{
+  "source": {
+    "path": "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-axis-transfer-precomparison.html",
+    "sha256": "d06fd4d534e3ca9c2032718ad30e1c30befc77bab6ae2998b4eb3749ae77cb8b",
+    "bytes": 3499
+  },
+  "basis": {
+    "grid": "CSS Grid Layout Module Level 1, 2025 CRD, sections 6.2 and 6.6",
+    "sizing": "CSS Box Sizing Module Level 4, Working Draft 2026-09-04, sections 4.1-4.3",
+    "qualification": "The CSS Sizing Level 4 source is a Working Draft. The fixed input and Chrome observation are a bounded oracle, not a general conformance claim."
+  },
+  "input": {
+    "gridContentWidthPx": 100,
+    "columns": ["max-content", "max-content"],
+    "rows": ["auto"],
+    "gapPx": 0,
+    "alignment": "normal",
+    "font": "Ahem 10px/10px",
+    "writingMode": "horizontal-tb",
+    "direction": "ltr",
+    "whiteSpace": "nowrap",
+    "text": {
+      "short": "A",
+      "long": "AAAA",
+      "aAdvancePx": 10,
+      "longMaxContentPx": 40,
+      "lineHeightPx": 10
+    },
+    "preferredAspectRatio": "2 / 1"
+  },
+  "calculation": {
+    "widthDeterminesHeight": "60px / 2 = 30px; the auto row track becomes 30px while the item's max-content column size remains 60px.",
+    "heightDeterminesWidth": "30px * 2 = 60px; the second max-content column becomes 60px, larger than the 40px Ahem text contribution.",
+    "controls": "Without a preferred ratio, width:60px leaves the content-driven auto row at 10px; height:30px leaves the AAAA max-content column at 40px."
+  },
+  "scenes": [
+    {
+      "id": "width-ratio",
+      "longItemStyle": { "width": "60px", "height": "auto", "aspectRatio": "2 / 1" },
+      "rootFrame": [0, 0, 100, 30],
+      "columns": [10, 60],
+      "rows": [30],
+      "shortItemFrame": [0, 0, 10, 30],
+      "longItemFrame": [10, 0, 60, 30],
+      "longTextRange": [10, 0, 40, 10]
+    },
+    {
+      "id": "width-control",
+      "longItemStyle": { "width": "60px", "height": "auto", "aspectRatio": "auto" },
+      "rootFrame": [0, 0, 100, 10],
+      "columns": [10, 60],
+      "rows": [10],
+      "shortItemFrame": [0, 0, 10, 10],
+      "longItemFrame": [10, 0, 60, 10],
+      "longTextRange": [10, 0, 40, 10]
+    },
+    {
+      "id": "height-ratio",
+      "longItemStyle": { "width": "auto", "height": "30px", "aspectRatio": "2 / 1" },
+      "rootFrame": [0, 0, 100, 30],
+      "columns": [10, 60],
+      "rows": [30],
+      "shortItemFrame": [0, 0, 10, 30],
+      "longItemFrame": [10, 0, 60, 30],
+      "longTextRange": [10, 0, 40, 10]
+    },
+    {
+      "id": "height-control",
+      "longItemStyle": { "width": "auto", "height": "30px", "aspectRatio": "auto" },
+      "rootFrame": [0, 0, 100, 30],
+      "columns": [10, 40],
+      "rows": [30],
+      "shortItemFrame": [0, 0, 10, 30],
+      "longItemFrame": [10, 0, 40, 30],
+      "longTextRange": [10, 0, 40, 10]
+    }
+  ]
+}

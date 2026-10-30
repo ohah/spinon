@@ -1,0 +1,215 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "fontReady": true,
+  "scenes": [
+    {
+      "id": "width-ratio",
+      "frame": {
+        "x": 20,
+        "y": 37.39,
+        "width": 100,
+        "height": 30
+      },
+      "columns": "10px 60px",
+      "rows": "30px",
+      "items": [
+        {
+          "id": "width-ratio-short",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 30
+          },
+          "width": "10px",
+          "height": "30px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          },
+          "fontReady": true
+        },
+        {
+          "id": "width-ratio-long",
+          "frame": {
+            "x": 10,
+            "y": 0,
+            "width": 60,
+            "height": 30
+          },
+          "width": "60px",
+          "height": "30px",
+          "aspectRatio": "2 / 1",
+          "textRange": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 10
+          },
+          "fontReady": true
+        }
+      ]
+    },
+    {
+      "id": "width-control",
+      "frame": {
+        "x": 20,
+        "y": 102.78,
+        "width": 100,
+        "height": 10
+      },
+      "columns": "10px 60px",
+      "rows": "10px",
+      "items": [
+        {
+          "id": "width-control-short",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          },
+          "width": "10px",
+          "height": "10px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          },
+          "fontReady": true
+        },
+        {
+          "id": "width-control-long",
+          "frame": {
+            "x": 10,
+            "y": 0,
+            "width": 60,
+            "height": 10
+          },
+          "width": "60px",
+          "height": "10px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 10
+          },
+          "fontReady": true
+        }
+      ]
+    },
+    {
+      "id": "height-ratio",
+      "frame": {
+        "x": 20,
+        "y": 148.17,
+        "width": 100,
+        "height": 30
+      },
+      "columns": "10px 60px",
+      "rows": "30px",
+      "items": [
+        {
+          "id": "height-ratio-short",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 30
+          },
+          "width": "10px",
+          "height": "30px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          },
+          "fontReady": true
+        },
+        {
+          "id": "height-ratio-long",
+          "frame": {
+            "x": 10,
+            "y": 0,
+            "width": 60,
+            "height": 30
+          },
+          "width": "60px",
+          "height": "30px",
+          "aspectRatio": "2 / 1",
+          "textRange": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 10
+          },
+          "fontReady": true
+        }
+      ]
+    },
+    {
+      "id": "height-control",
+      "frame": {
+        "x": 20,
+        "y": 213.56,
+        "width": 100,
+        "height": 30
+      },
+      "columns": "10px 40px",
+      "rows": "30px",
+      "items": [
+        {
+          "id": "height-control-short",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 30
+          },
+          "width": "10px",
+          "height": "30px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          },
+          "fontReady": true
+        },
+        {
+          "id": "height-control-long",
+          "frame": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 30
+          },
+          "width": "40px",
+          "height": "30px",
+          "aspectRatio": "auto",
+          "textRange": {
+            "x": 10,
+            "y": 0,
+            "width": 40,
+            "height": 10
+          },
+          "fontReady": true
+        }
+      ]
+    }
+  ]
+}
