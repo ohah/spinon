@@ -18,7 +18,7 @@
         "columns": [10, 40],
         "rows": [20]
       },
-      "root": [50, 20],
+      "root": [100, 20],
       "items": {
         "row-ratio-short": [0, 0, 10, 20],
         "row-ratio-long": [10, 0, 40, 20]
@@ -30,7 +30,7 @@
         "columns": [10, 40],
         "rows": [10]
       },
-      "root": [50, 10],
+      "root": [100, 10],
       "items": {
         "row-control-short": [0, 0, 10, 10],
         "row-control-long": [10, 0, 40, 10]
@@ -42,7 +42,7 @@
         "columns": [80, 10],
         "rows": [40]
       },
-      "root": [90, 40],
+      "root": [100, 40],
       "items": {
         "column-ratio-long": [0, 0, 80, 40],
         "column-ratio-short": [80, 0, 10, 40]
@@ -54,7 +54,7 @@
         "columns": [40, 10],
         "rows": [40]
       },
-      "root": [50, 40],
+      "root": [100, 40],
       "items": {
         "column-control-long": [0, 0, 40, 40],
         "column-control-short": [40, 0, 10, 40]

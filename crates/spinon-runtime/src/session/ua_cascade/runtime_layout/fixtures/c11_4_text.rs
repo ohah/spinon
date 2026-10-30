@@ -130,6 +130,9 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if let Some(input) = grid_text_baseline::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
+    if let Some(input) = generic_direct_text::prepare_aspect_ratio(snapshot, root, styles)? {
+        return Ok(Some(input));
+    }
     if let Some(input) = generic_direct_text::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }

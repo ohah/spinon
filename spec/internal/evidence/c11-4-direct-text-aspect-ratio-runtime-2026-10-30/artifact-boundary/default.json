@@ -1,0 +1,15 @@
+{
+  "feature": "default",
+  "archive": "target/release/libspinon_ffi.a",
+  "bytes": 60245056,
+  "sha256": "c209489712a27dd342e5049e8c3ef9b98de7c745eee7a33c803c490deb6d06a1",
+  "markers": {
+    "grid-text-aspect-ratio-row": false,
+    "grid-text-aspect-ratio-row-control": false,
+    "grid-text-aspect-ratio-column": false,
+    "grid-text-aspect-ratio-column-control": false,
+    "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture": false
+  },
+  "matchedSceneCount": 0,
+  "sceneMarkerCount": 4
+}

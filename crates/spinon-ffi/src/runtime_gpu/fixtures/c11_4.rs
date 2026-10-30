@@ -124,6 +124,8 @@ mod grid_layout_auto_tracks;
 #[cfg(feature = "c04-runtime-gpu-fixture-test")]
 #[path = "c11_4/grid_layout_auto_tracks_report.rs"]
 mod grid_layout_auto_tracks_report;
+#[path = "c11_4/grid_text_aspect_ratio.rs"]
+mod grid_text_aspect_ratio;
 #[path = "c11_4/grid_text_baseline.rs"]
 mod grid_text_baseline;
 #[path = "c11_4/image_multispan.rs"]
@@ -1253,6 +1255,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = generic_direct_text::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = grid_text_aspect_ratio::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = generic_mixed_direct_text_image_intrinsic::runtime_source(scene_id) {

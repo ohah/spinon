@@ -166,6 +166,8 @@ private let c114GeneralizedCyclicRowAutoRepeatSceneIDs: Set<String> = [
 private let c114GenericDirectTextSceneIDs: Set<String> = [
     "generic-root-normal", "generic-root-nowrap", "generic-root-break-all",
     "generic-root-content-variation", "generic-root-whitespace", "generic-root-reorder",
+    "grid-text-aspect-ratio-row", "grid-text-aspect-ratio-row-control",
+    "grid-text-aspect-ratio-column", "grid-text-aspect-ratio-column-control",
 ]
 #else
 private let c114GenericDirectTextSceneIDs: Set<String> = []
@@ -185,6 +187,18 @@ private let c114GridTextBaselineSceneIDs: Set<String> = [
 
 private func c114IsGridTextLastBaselineScene(_ sceneID: String) -> Bool {
     sceneID.hasPrefix("grid-text-last-baseline-")
+}
+
+private func c114IsGridTextAspectRatioScene(_ sceneID: String) -> Bool {
+    sceneID == "grid-text-aspect-ratio-row"
+        || sceneID == "grid-text-aspect-ratio-row-control"
+        || sceneID == "grid-text-aspect-ratio-column"
+        || sceneID == "grid-text-aspect-ratio-column-control"
+}
+
+private func c114IsGridTextAspectRatioColumnScene(_ sceneID: String) -> Bool {
+    sceneID == "grid-text-aspect-ratio-column"
+        || sceneID == "grid-text-aspect-ratio-column-control"
 }
 
 private struct C114GenericDirectTextItemExpectation {
@@ -294,6 +308,50 @@ private func c114GenericDirectTextExpectation(
                 minContent: 20, maxContent: 40, minContentHeight: 20, maxContentHeight: 10,
                 rawText: "A BC", layoutText: "A BC", whiteSpace: "Normal", wordBreak: "Normal",
                 lineAdvances: [40]),
+        ])
+    case "grid-text-aspect-ratio-row":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [10, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 10, height: 20,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+            c114GenericTextItem(node: 4, x: 10, width: 40, height: 20,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    case "grid-text-aspect-ratio-row-control":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 10, columns: [10, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 10, height: 10,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+            c114GenericTextItem(node: 4, x: 10, width: 40, height: 10,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    case "grid-text-aspect-ratio-column":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [80, 10], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 80, height: 40,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+            c114GenericTextItem(node: 4, x: 80, width: 10, height: 40,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+        ])
+    case "grid-text-aspect-ratio-column-control":
+        return C114GenericDirectTextSceneExpectation(rootHeight: 40, columns: [40, 10], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 40, height: 40,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+            c114GenericTextItem(node: 4, x: 40, width: 10, height: 40,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
         ])
     default:
         return nil
@@ -5282,12 +5340,28 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             maxContentHeightNodes.insert(node)
         }
     }
-    guard minContentWidthNodes == Set(expectedNodes),
-          maxContentWidthNodes == Set([expectedNodes[1]]),
-          minContentHeightNodes == Set(expectedNodes),
-          maxContentHeightNodes == Set(expectedNodes) else { return false }
+    if c114IsGridTextAspectRatioScene(sceneID) {
+        if c114IsGridTextAspectRatioColumnScene(sceneID) {
+            let expectedIntrinsicWidthNodes = sceneID == "grid-text-aspect-ratio-column"
+                ? Set([expectedNodes[1]]) : Set(expectedNodes)
+            guard minContentWidthNodes == expectedIntrinsicWidthNodes,
+                  maxContentWidthNodes == expectedIntrinsicWidthNodes,
+                  minContentHeightNodes.isEmpty,
+                  maxContentHeightNodes.isEmpty else { return false }
+        } else {
+            guard minContentWidthNodes == Set(expectedNodes),
+                  maxContentWidthNodes == Set(expectedNodes),
+                  minContentHeightNodes == Set(expectedNodes),
+                  maxContentHeightNodes == Set(expectedNodes) else { return false }
+        }
+    } else {
+        guard minContentWidthNodes == Set(expectedNodes),
+              maxContentWidthNodes == Set([expectedNodes[1]]),
+              minContentHeightNodes == Set(expectedNodes),
+              maxContentHeightNodes == Set(expectedNodes) else { return false }
+    }
     return c114GenericDirectTextTextLayoutsMatch(
-        scene: scene, diagnostics: diagnostics, layoutRevision: revision
+        sceneID: sceneID, scene: scene, diagnostics: diagnostics, layoutRevision: revision
     ) && c114GenericDirectTextTraceMatches(sceneID: sceneID, diagnostics: diagnostics)
 }
 
@@ -5331,6 +5405,7 @@ private func c114GenericZeroLength(_ value: Any?) -> Bool {
 }
 
 private func c114GenericDirectTextTextLayoutsMatch(
+    sceneID: String,
     scene: C114GenericDirectTextSceneExpectation,
     diagnostics: [String: Any],
     layoutRevision: [String: Any]
@@ -5339,6 +5414,10 @@ private func c114GenericDirectTextTextLayoutsMatch(
           layouts.count == scene.items.count else { return false }
     for (index, expected) in scene.items.enumerated() {
         let layout = layouts[index]
+        let expectedTextWidth = c114IsGridTextAspectRatioScene(sceneID)
+            && sceneID == "grid-text-aspect-ratio-column" && index == 0
+            ? 40 : expected.width
+        let expectedTextHeight = c114IsGridTextAspectRatioScene(sceneID) ? 10 : expected.height
         guard c114GenericJSONInteger(layout["node"]) == expected.node,
               c114GenericJSONInteger(layout["layoutParagraph"]) == expected.node,
               let revision = layout["revision"] as? [String: Any],
@@ -5355,8 +5434,8 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONString(layout["text"]) == expected.layoutText,
               c114GenericJSONInteger(layout["fontRegistryRevision"]) == 1,
               c114GenericJSONNear(layout["availableWidth"], expected: expected.width, tolerance: 1.0 / 64.0),
-              c114GenericJSONNear(layout["width"], expected: expected.width, tolerance: 1.0 / 64.0),
-              c114GenericJSONNear(layout["height"], expected: expected.height, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(layout["width"], expected: expectedTextWidth, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(layout["height"], expected: expectedTextHeight, tolerance: 1.0 / 64.0),
               let style = layout["paragraphStyle"] as? [String: Any],
               c114GenericJSONString(style["fontFamily"]) == "Ahem",
               c114GenericJSONNear(style["fontSize"], expected: 10, tolerance: 0),
@@ -5615,13 +5694,68 @@ private func c114GenericDirectTextTraceMatches(
                   && pass["percentageBasis"] is NSNull
           }),
           c114GenericJSONString(passes[0]["axis"]) == "Columns",
-          c114GenericJSONString(passes[1]["axis"]) == "Rows",
-          c114GenericTrackSizesMatch(passes[0], expected: scene.columns, gap: 10),
-          c114GenericTrackSizesMatch(passes[1], expected: [scene.rootHeight], gap: 0) else {
+          c114GenericJSONString(passes[1]["axis"]) == "Rows" else {
         return false
+    }
+    let rowTracksMatch = c114IsGridTextAspectRatioColumnScene(sceneID)
+        ? c114GenericFixedTrackSizesMatch(passes[1], expected: [scene.rootHeight])
+        : c114GenericTrackSizesMatch(passes[1], expected: [scene.rootHeight], gap: 0)
+    guard
+          c114GenericTrackSizesMatch(
+            passes[0], expected: scene.columns,
+            gap: c114IsGridTextAspectRatioScene(sceneID) ? 0 : 10
+          ),
+          rowTracksMatch else {
+        return false
+    }
+    if c114IsGridTextAspectRatioScene(sceneID) {
+        let fixedRows = c114IsGridTextAspectRatioColumnScene(sceneID)
+        guard c114GenericJSONInteger(passes[0]["sequence"]) == 0,
+              c114GenericJSONInteger(passes[1]["sequence"]) == 1,
+              passes.allSatisfy({
+                  $0["phase"] is NSNull
+                      && $0["autoRepeatCount"] is NSNull
+                      && $0["percentageBasis"] is NSNull
+              }),
+              c114GenericDirectTextAspectRatioStagesMatch(
+                  passes[0], expectedSizes: scene.columns,
+                  fixed: false, stretchApplied: false
+              ),
+              c114GenericDirectTextAspectRatioStagesMatch(
+                  passes[1], expectedSizes: [scene.rootHeight],
+                  fixed: fixedRows, stretchApplied: !fixedRows
+              ) else { return false }
     }
     let first = scene.items[0]
     let second = scene.items[1]
+    if c114IsGridTextAspectRatioScene(sceneID) {
+        let expectedColumns: [(item: Int, kind: String, value: Double)] = [
+            (first.node, "MaxContent", scene.columns[0]),
+            (first.node, "MinContent", scene.columns[0]),
+            (first.node, "MaxContent", scene.columns[0]),
+            (second.node, "MaxContent", scene.columns[1]),
+            (second.node, "MinContent", scene.columns[1]),
+            (second.node, "MaxContent", scene.columns[1]),
+        ]
+        guard c114GenericDirectTextContributionsMatch(
+            passes[0], expected: expectedColumns, allowIdenticalDuplicates: false
+        ) else { return false }
+        if sceneID.contains("-column") {
+            return (passes[1]["contributions"] as? [[String: Any]])?.isEmpty == true
+        }
+        let secondRow = sceneID == "grid-text-aspect-ratio-row" ? 20.0 : 10.0
+        let expectedRows: [(item: Int, kind: String, value: Double)] = [
+            (first.node, "Minimum", 10),
+            (first.node, "MinContent", 10),
+            (first.node, "MaxContent", 10),
+            (second.node, "Minimum", secondRow),
+            (second.node, "MinContent", secondRow),
+            (second.node, "MaxContent", secondRow),
+        ]
+        return c114GenericDirectTextContributionsMatch(
+            passes[1], expected: expectedRows, allowIdenticalDuplicates: false
+        )
+    }
     let expectedColumns: [(item: Int, kind: String, value: Double)] = [
         (first.node, "MinContent", first.minContent),
         (second.node, "MinContent", second.minContent),
@@ -5668,7 +5802,7 @@ private func c114GenericTrackSizesMatch(
         for (index, track) in tracks.enumerated() {
             let isExpectedGutter = index % 2 == 0
             let isOuterGutter = index == 0 || index == tracks.count - 1
-            let isExpectedCollapsed = isExpectedGutter && (gap == 0 || isOuterGutter)
+            let isExpectedCollapsed = isExpectedGutter && isOuterGutter
             guard c114GenericJSONInteger(track["internalIndex"]) == index,
                   c114GenericJSONBoolean(track["gutter"]) == isExpectedGutter,
                   c114GenericJSONBoolean(track["collapsed"]) == isExpectedCollapsed,
@@ -5690,6 +5824,81 @@ private func c114GenericTrackSizesMatch(
     return true
 }
 
+private func c114GenericFixedTrackSizesMatch(
+    _ pass: [String: Any], expected: [Double]
+) -> Bool {
+    guard expected.count == 1,
+          let stages = pass["stages"] as? [[String: Any]],
+          stages.count == 2,
+          c114GenericJSONString(stages[0]["stage"]) == "Initialize",
+          c114GenericJSONString(stages[1]["stage"]) == "FixedTrackEarlyReturn" else {
+        return false
+    }
+    for stage in stages {
+        guard let tracks = stage["tracks"] as? [[String: Any]], tracks.count == 3 else {
+            return false
+        }
+        for (index, track) in tracks.enumerated() {
+            let isGutter = index % 2 == 0
+            let expectedSize = isGutter ? 0 : expected[0]
+            guard c114GenericJSONInteger(track["internalIndex"]) == index,
+                  c114GenericJSONBoolean(track["gutter"]) == isGutter,
+                  c114GenericJSONBoolean(track["collapsed"]) == isGutter,
+                  c114GenericJSONBoolean(track["infinitelyGrowable"]) == false,
+                  let size = c114GenericJSONFiniteNumber(track["baseSize"]),
+                  abs(size - expectedSize) <= 0.0001 else { return false }
+        }
+    }
+    return true
+}
+
+private func c114GenericDirectTextAspectRatioStagesMatch(
+    _ pass: [String: Any], expectedSizes: [Double], fixed: Bool,
+    stretchApplied: Bool
+) -> Bool {
+    let expectedStages = fixed
+        ? ["Initialize", "FixedTrackEarlyReturn"]
+        : [
+            "Initialize",
+            "IntrinsicItemBatch { span: 1, crosses_flexible_track: false }",
+            "IntrinsicSizingComplete",
+            "MaximizeTracks",
+            "ExpandFlexibleTracks",
+            "StretchAutoTracks { applied: \(stretchApplied) }",
+        ]
+    guard let stages = pass["stages"] as? [[String: Any]],
+          stages.count == expectedStages.count else { return false }
+    let expectedTrackCount = expectedSizes.count * 2 + 1
+    for (stageIndex, stage) in stages.enumerated() {
+        guard c114GenericJSONString(stage["stage"]) == expectedStages[stageIndex],
+              let tracks = stage["tracks"] as? [[String: Any]],
+              tracks.count == expectedTrackCount else { return false }
+        var contentTrackIndex = 0
+        for (trackIndex, track) in tracks.enumerated() {
+            let gutter = trackIndex.isMultiple(of: 2)
+            let outerGutter = trackIndex == 0 || trackIndex == tracks.count - 1
+            let expectedCollapsed = gutter && outerGutter
+            let expectedSize: Double
+            if gutter {
+                expectedSize = 0
+            } else {
+                guard contentTrackIndex < expectedSizes.count else { return false }
+                expectedSize = !fixed && stageIndex == 0
+                    ? 0 : expectedSizes[contentTrackIndex]
+                contentTrackIndex += 1
+            }
+            guard c114GenericJSONInteger(track["internalIndex"]) == trackIndex,
+                  c114GenericJSONBoolean(track["gutter"]) == gutter,
+                  c114GenericJSONBoolean(track["collapsed"]) == expectedCollapsed,
+                  c114GenericJSONBoolean(track["infinitelyGrowable"]) == false,
+                  c114GenericJSONNear(track["baseSize"], expected: expectedSize, tolerance: 0.0001)
+            else { return false }
+        }
+        guard contentTrackIndex == expectedSizes.count else { return false }
+    }
+    return true
+}
+
 private func c114GenericDirectTextContributionsMatch(
     _ pass: [String: Any], expected: [(item: Int, kind: String, value: Double)],
     allowIdenticalDuplicates: Bool
@@ -5704,11 +5913,17 @@ private func c114GenericDirectTextContributionsMatch(
               let kind = c114GenericJSONString(contribution["kind"]),
               c114GenericJSONBoolean(contribution["crossesFlexibleTrack"]) == false,
               let value = c114GenericJSONFiniteNumber(contribution["value"]) else { return false }
-        guard let match = expected.indices.first(where: { index in
+        let match = expected.indices.first(where: { index in
             expected[index].item == item
                 && expected[index].kind == kind
                 && abs(value - expected[index].value) <= 1.0 / 64.0
-        }), allowIdenticalDuplicates || !observed[match] else { return false }
+                && !observed[index]
+        }) ?? (allowIdenticalDuplicates ? expected.indices.first(where: { index in
+            expected[index].item == item
+                && expected[index].kind == kind
+                && abs(value - expected[index].value) <= 1.0 / 64.0
+        }) : nil)
+        guard let match, allowIdenticalDuplicates || !observed[match] else { return false }
         observed[match] = true
     }
     return observed.allSatisfy { $0 }
@@ -9285,6 +9500,42 @@ private struct C111MetalPixelRun {
     private static func hasFixedC114TrackSizingSamples(
         _ samples: [C111MetalPixelSample], sceneID: String
     ) -> Bool {
+        if c114IsGridTextAspectRatioScene(sceneID) {
+            let rootID: String
+            let itemPoints: [(UInt32, UInt32)]
+            switch sceneID {
+            case "grid-text-aspect-ratio-row":
+                rootID = "row-ratio"
+                itemPoints = [(5, 5), (20, 5), (75, 5)]
+            case "grid-text-aspect-ratio-row-control":
+                rootID = "row-control"
+                itemPoints = [(5, 5), (20, 5), (75, 5)]
+            case "grid-text-aspect-ratio-column":
+                rootID = "column-ratio"
+                itemPoints = [(5, 5), (85, 5), (95, 5)]
+            case "grid-text-aspect-ratio-column-control":
+                rootID = "column-control"
+                itemPoints = [(5, 5), (45, 5), (70, 5)]
+            default:
+                return false
+            }
+            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+                ("\(sceneID)-first-item", rootID, itemPoints[0].0, itemPoints[0].1,
+                 [229, 72, 77, 255]),
+                ("\(sceneID)-second-item", rootID, itemPoints[1].0, itemPoints[1].1,
+                 [58, 134, 255, 255]),
+                ("\(sceneID)-unused-root", rootID, itemPoints[2].0, itemPoints[2].1,
+                 [255, 255, 255, 255]),
+            ]
+            guard samples.count == expectedSamples.count else { return false }
+            return expectedSamples.allSatisfy { expected in
+                samples.contains { sample in
+                    sample.id == expected.0 && sample.nodeId == expected.1
+                        && sample.xCssPx == expected.2 && sample.yCssPx == expected.3
+                        && sample.rgba == expected.4
+                }
+            }
+        }
         if c114GridTextBaselineSceneIDs.contains(sceneID) {
             let lastBaseline = c114IsGridTextLastBaselineScene(sceneID)
             let reversed = !lastBaseline && sceneID.hasSuffix("-reversed")
@@ -14306,7 +14557,7 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
                   expectedRowAxisSpanStageMatches,
                   expectedFlexStageMatches else {
                 logC114GridNodeFrames(report)
-                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) node_frames_match=\(expectedNodeFramesMatch) fit_content_limit_boundaries_matches=\(expectedFitContentLimitBoundariesMatches) fit_content_limit_columns_matches=\(expectedFitContentLimitColumnsMatches) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
+                log("SPINON_C114_GRID_ASSERTION_ERROR run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) expected_root_frame=\(rootFrame) expected_item_frame=\(itemFrame) expected_node_frames=\(String(describing: expectedNodeFrames)) root_frame_matches=\(expectedRootFrameMatches) item_frame_matches=\(expectedItemFrameMatches) text_intrinsic_inputs_match=\(expectedTextInputs) image_intrinsic_inputs_match=\(expectedImageInputs) node_frames_match=\(expectedNodeFramesMatch) fit_content_limit_boundaries_matches=\(expectedFitContentLimitBoundariesMatches) fit_content_limit_columns_matches=\(expectedFitContentLimitColumnsMatches) overflow_auto_minimum_matches=\(expectedOverflowAutoMinimumMatches) single_track_overflow_auto_minimum_matches=\(expectedSingleTrackOverflowAutoMinimumMatches) grid_auto_fit_columns_wpt_trace_matches=\(expectedGridAutoFitColumnsWptTraceMatches) grid_layout_auto_tracks_matches=\(expectedGridLayoutAutoTracksMatches) fixed_auto_area_trace_matches=\(expectedFixedAutoAreaTraceMatches) cyclic_auto_repeat_trace_matches=\(expectedCyclicAutoRepeatTraceMatches) grid_auto_repeat_intrinsic_wpt_trace_matches=\(expectedGridAutoRepeatIntrinsicWptTraceMatches) cross_axis_track_trace_matches=\(expectedCrossAxisTrackTraceMatches) equal_auto_rows_trace_matches=\(expectedEqualAutoRowsMatches) row_axis_span_stage_matches=\(expectedRowAxisSpanStageMatches) flex_stage_matches=\(expectedFlexStageMatches) report=\(report)")
                 postStatus("실패 · C11.4 track-sizing frame 검증 결과 불일치")
                 return
             }
