@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "scope": "macOS ARM64 spinon-ffi optimized static archive only",
+  "markerCriterion": "The nine case suffix strings and helper symbol are absent from the default archive and present in the fixture-test positive control. The route prefix is emitted as a separate compiler string literal.",
+  "default": {
+    "command": "cargo build --locked -p spinon-ffi --release",
+    "archive": "target/release/libspinon_ffi.a",
+    "sha256": "a2b717d0c161632bb81cc2b8bc7dfb519883eef0f089a2a02ecb67ad8fe3028b",
+    "bytes": 60282104,
+    "caseSuffixMarkersPresent": 0,
+    "caseSuffixMarkerCount": 9,
+    "prepareAspectRatioMultispanSymbolPresent": false,
+    "c11_4GridFixtureExportsPresent": []
+  },
+  "fixturePositiveControl": {
+    "command": "cargo build --locked -p spinon-ffi --release --features c04-runtime-gpu-fixture-test",
+    "archive": "target/release/libspinon_ffi.a",
+    "sha256": "3d231e476d4456dd53b7317a1686be867685068b32caa27dbf1b0d225c0b705c",
+    "bytes": 80938480,
+    "caseSuffixMarkersPresent": 9,
+    "caseSuffixMarkerCount": 9,
+    "prepareAspectRatioMultispanSymbolPresent": true,
+    "c11_4GridFixtureExportsPresent": [
+      "spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture",
+      "spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture"
+    ]
+  },
+  "limits": [
+    "This does not establish fixture exclusion from the final Android APK or iOS app bundle.",
+    "The positive control contains the shared C11.4 fixture ABI because this slice adds nine routes to that existing fixture; it does not add a separate public product ABI."
+  ]
+}

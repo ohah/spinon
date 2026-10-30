@@ -15,7 +15,9 @@ const androidApk = resolve(repositoryRoot,
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const evidenceRoot = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30');
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-runtime-2026-10-30');
+const multispanExpected = JSON.parse(await readFile(resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json'), 'utf8'));
 const runPrefix = `c114-text-ratio-${Date.now().toString(36)}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(evidenceRoot, target, runPrefix);
 
@@ -31,12 +33,12 @@ function item(node, x, width, height, text, textWidth = width, availableWidth = 
 function scene(id, rootId, rootHeight, columns, first, second,
   rowRatioContribution = 10, shortRowContribution = 10, rowTrackSize = rootHeight,
   fixedRows = id.includes('-column'), rowContributionValues = null) {
-  const expectedItems = [first, second];
+  const expectedItems = [first, second].filter(Boolean);
   const rootFrame = `0:node=1,x=0,y=0,width=100,height=${rootHeight}`;
   const itemFrames = expectedItems.map((expected, index) =>
     `${index + 1}:node=${expected.node},x=${expected.x},y=0,width=${expected.width},height=${expected.height}`);
   return {
-    id, rootId, boxCount: 3, rootHeight, columns, expectedItems, rowRatioContribution,
+    id, rootId, boxCount: expectedItems.length + 1, rootHeight, columns, expectedItems, rowRatioContribution,
     shortRowContribution, rowTrackSize, fixedRows, rowContributionValues,
     expectedRootFrame: `width=100,height=${rootHeight}`,
     expectedItemFrame: `width=${first.width},height=${first.height}`,
@@ -53,6 +55,19 @@ function minmaxScene(id, width, height, ratioMinimum, edges = false) {
     item(4, width, 10, height, 'A', 10, 10),
     height, 10, height, false,
     [[ratioMinimum, height, height], [10, 10, 10]]);
+}
+
+function multispanScene(target) {
+  const id = `grid-text-aspect-ratio-multispan-${target.id}`;
+  const row = target.track_sizing.rows;
+  return {
+    ...scene(id, id, target.rows[0], target.columns,
+      item(2, target.item.x, target.item.width, target.item.height, 'AAAA',
+        target.text.width, target.item.width), undefined,
+      row.minimum_contribution, row.min_content_contribution, target.rows[0], false,
+      [[row.minimum_contribution, row.min_content_contribution, row.max_content_contribution]]),
+    multiSpanTrackSizing: target.track_sizing,
+  };
 }
 
 const scenes = [
@@ -131,24 +146,31 @@ const scenes = [
   minmaxScene('auto-content-box-min-width-60', 60, 31, 31, true),
   minmaxScene('numeric-border-box-max-height-15-min-controls', 30, 15, 0, true),
   minmaxScene('auto-content-box-max-height-15-min-controls', 28, 15, 6, true),
+  ...multispanExpected.cases.map(multispanScene),
 ];
+assert.equal(multispanExpected.cases.length, 9, 'direct-text two-track span oracle must contain nine cases');
+assert.equal(scenes.length, 51, 'direct-text aspect-ratio simulator matrix must contain 51 scenes');
 
 const sourcePaths = [
   'plan/c11-4-direct-text-aspect-ratio-min-max.md',
+  'plan/c11-4-direct-text-aspect-ratio-multispan.md',
   'crates/spinon-layout/src/lib.rs',
   'crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_multispan.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_multispan.rs',
   'crates/spinon-style-to-layout/src/projection.rs',
   'crates/spinon-style-to-layout/src/projection/style_values.rs',
   'crates/spinon-style-to-layout/src/lib.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_multispan.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
@@ -156,7 +178,11 @@ const sourcePaths = [
   'vendor/taffy/src/compute/grid/types/mod.rs',
   'vendor/taffy/src/compute/grid/alignment.rs',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html',
+  'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/verify-precomparison.mjs',
   'tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs',
 ];
 
@@ -186,9 +212,16 @@ function pixelSamples(scene) {
   const { id, rootId } = scene;
   let points;
   const first = scene.expectedItems[0];
+  const isMultiSpan = id.startsWith('grid-text-aspect-ratio-multispan-');
   const overflowsRoot = id.startsWith('grid-text-aspect-ratio-row-60-')
     && scene.columns.reduce((sum, width) => sum + width, 0) > 100;
-  if (id.includes('grid-text-aspect-ratio-minmax-')) {
+  if (isMultiSpan) {
+    points = [
+      [Math.floor(first.x + first.width / 2), 5],
+      [Math.ceil(first.x + first.width) + 1, 5],
+      [80, 5],
+    ];
+  } else if (id.includes('grid-text-aspect-ratio-minmax-')) {
     const firstItemEdge = Math.floor(first.x + first.width);
     points = [[5, 5], [firstItemEdge + 5, 5], [firstItemEdge + 15, 5]];
   } else if (overflowsRoot) {
@@ -209,9 +242,10 @@ function pixelSamples(scene) {
   const samples = [
     { id: `${id}-first-item`, nodeId: rootId,
       xCssPx: points[0][0], yCssPx: points[0][1], rgba: [229, 72, 77, 255] },
-    { id: `${id}-second-item`, nodeId: rootId,
-      xCssPx: points[1][0], yCssPx: points[1][1], rgba: [58, 134, 255, 255] },
-    { id: overflowsRoot ? `${id}-first-item-edge` : `${id}-unused-root`, nodeId: rootId,
+    { id: isMultiSpan ? `${id}-after-item` : `${id}-second-item`, nodeId: rootId,
+      xCssPx: points[1][0], yCssPx: points[1][1],
+      rgba: isMultiSpan ? [255, 255, 255, 255] : [58, 134, 255, 255] },
+    { id: isMultiSpan ? `${id}-root-clear` : overflowsRoot ? `${id}-first-item-edge` : `${id}-unused-root`, nodeId: rootId,
       xCssPx: points[2][0], yCssPx: points[2][1],
       rgba: overflowsRoot ? [229, 72, 77, 255] : [255, 255, 255, 255] },
   ];
@@ -222,6 +256,10 @@ function pixelSamples(scene) {
   if (id.endsWith('column-1-2')) {
     samples.push({ id: `${id}-outside-root-overflow`, nodeId: rootId,
       xCssPx: 5, yCssPx: 70, rgba: [229, 72, 77, 255] });
+  }
+  if (isMultiSpan) {
+    samples.push({ id: `${id}-outside-root-clear`, nodeId: rootId,
+      xCssPx: 105, yCssPx: 5, rgba: [0, 0, 0, 255] });
   }
   assert(samples.every(({ xCssPx, yCssPx }) => Number.isInteger(xCssPx)
       && Number.isInteger(yCssPx)), `${id}: pixel sample coordinates must be integral CSS pixels`);
@@ -312,12 +350,13 @@ function assertContributions(pass, expected, label) {
     `${label}: contribution count differs`);
   const key = ({ item: node, span, kind, crossesFlexibleTrack, value }) =>
     `${node}/${span}/${kind}/${crossesFlexibleTrack}/${value}`;
-  const expectedKeys = expected.map(key);
-  const observed = new Set();
+  const expectedCounts = new Map();
+  for (const contribution of expected) {
+    const contributionKey = key(contribution);
+    expectedCounts.set(contributionKey, (expectedCounts.get(contributionKey) ?? 0) + 1);
+  }
+  const observedCounts = new Map();
   for (const contribution of pass.contributions) {
-    assert.equal(contribution.span, 1, `${label}: unexpected span`);
-    assert.equal(contribution.crossesFlexibleTrack, false,
-      `${label}: unexpected flex crossing`);
     const match = expected.find((candidate) =>
       candidate.item === contribution.item
         && candidate.kind === contribution.kind
@@ -325,17 +364,20 @@ function assertContributions(pass, expected, label) {
         && candidate.crossesFlexibleTrack === contribution.crossesFlexibleTrack
         && Math.abs(candidate.value - contribution.value) <= 1 / 64);
     assert.ok(match, `${label}: unexpected contribution ${JSON.stringify(contribution)}`);
-    observed.add(key({ ...contribution, value: match.value }));
+    const contributionKey = key({ ...contribution, value: match.value });
+    observedCounts.set(contributionKey, (observedCounts.get(contributionKey) ?? 0) + 1);
   }
-  for (const expectedKey of expectedKeys) {
-    assert.ok(observed.has(expectedKey), `${label}: missing ${expectedKey}`);
+  for (const [expectedKey, expectedCount] of expectedCounts) {
+    assert.equal(observedCounts.get(expectedKey), expectedCount,
+      `${label}: contribution multiplicity differs for ${expectedKey}`);
   }
 }
 
 function validateAspectRatioTrace(report, scene) {
   const expected = scene.expectedItems;
   const frames = report.gridItemFrames;
-  assert.ok(Array.isArray(frames) && frames.length === 2, `${scene.id}: item frames missing`);
+  assert.ok(Array.isArray(frames) && frames.length === expected.length,
+    `${scene.id}: item frames missing`);
   for (const item of expected) {
     const frame = frames.find(({ node }) => node === item.node);
     assert.ok(frame, `${scene.id}: Grid item ${item.node} frame missing`);
@@ -346,7 +388,7 @@ function validateAspectRatioTrace(report, scene) {
 
   assert.equal(report.layoutInputRevision.source.startsWith('HostDocument'), true);
   const inputs = report.gridItemIntrinsicInputs;
-  assert.ok(Array.isArray(inputs) && inputs.length === 2,
+  assert.ok(Array.isArray(inputs) && inputs.length === expected.length,
     `${scene.id}: intrinsic text inputs missing`);
   for (const [index, item] of expected.entries()) {
     const input = inputs.find(({ node }) => node === item.node);
@@ -362,7 +404,8 @@ function validateAspectRatioTrace(report, scene) {
   }
 
   const layouts = report.gridItemTextLayouts;
-  assert.ok(Array.isArray(layouts) && layouts.length === 2, `${scene.id}: text layouts missing`);
+  assert.ok(Array.isArray(layouts) && layouts.length === expected.length,
+    `${scene.id}: text layouts missing`);
   for (const item of expected) {
     const layout = layouts.find(({ node }) => node === item.node);
     assert.ok(layout, `${scene.id}: text layout for ${item.node} missing`);
@@ -371,7 +414,8 @@ function validateAspectRatioTrace(report, scene) {
     assert.equal(layout.paragraphStyle.fontFamily, 'Ahem');
     assert.equal(layout.paragraphStyle.fontSize, item.fontSize);
     assert.equal(layout.paragraphStyle.lineHeight, item.fontSize);
-    assert.equal(layout.paragraphStyle.whiteSpace, 'NoWrap');
+    assert.equal(layout.paragraphStyle.whiteSpace,
+      scene.multiSpanTrackSizing ? 'Normal' : 'NoWrap');
     assert.equal(layout.paragraphStyle.wordBreak, 'Normal');
     close(layout.availableWidth, item.availableWidth,
       `${scene.id}: available width for ${item.node}`);
@@ -394,11 +438,29 @@ function validateAspectRatioTrace(report, scene) {
   const rows = trace.passes.find(({ axis }) => axis === 'Rows');
   assertTrackSizes(columns, scene.columns, `${scene.id}: Columns`);
   assertTrackSizes(rows, [scene.rowTrackSize], `${scene.id}: Rows`);
-  const columnKinds = ['MaxContent', 'MinContent', 'MaxContent'];
-  const columnContributions = expected.flatMap((item) =>
-    columnKinds.map((kind) => ({
-      item: item.node, span: 1, kind, crossesFlexibleTrack: false, value: item.width,
-    })));
+  let columnContributions;
+  if (scene.multiSpanTrackSizing) {
+    const expectedColumns = scene.multiSpanTrackSizing.columns;
+    const item = expected[0];
+    columnContributions = [
+      { item: item.node, span: 2, kind: 'Minimum', crossesFlexibleTrack: false,
+        value: expectedColumns.minimum_contribution },
+      ...Array.from({ length: expectedColumns.min_content_trace_count }, () => ({
+        item: item.node, span: 2, kind: 'MinContent', crossesFlexibleTrack: false,
+        value: expectedColumns.min_content_contribution,
+      })),
+      ...Array.from({ length: expectedColumns.max_content_trace_count }, () => ({
+        item: item.node, span: 2, kind: 'MaxContent', crossesFlexibleTrack: false,
+        value: expectedColumns.max_content_contribution,
+      })),
+    ];
+  } else {
+    const columnKinds = ['MaxContent', 'MinContent', 'MaxContent'];
+    columnContributions = expected.flatMap((item) =>
+      columnKinds.map((kind) => ({
+        item: item.node, span: 1, kind, crossesFlexibleTrack: false, value: item.width,
+      })));
+  }
   assertContributions(columns, columnContributions, `${scene.id}: Columns`);
   const rowContributions = scene.fixedRows ? [] : expected.flatMap((item, index) =>
     ['Minimum', 'MinContent', 'MaxContent'].map((kind, kindIndex) => ({
@@ -553,6 +615,17 @@ function waitForAndroid(adb, scene, runID) {
   throw new Error(`${scene.id}: Android run timed out\n${log}`);
 }
 
+function wasAndroidEvaluationSuperseded(log, runID, sceneID) {
+  const fixtureEvaluationSuperseded = log.includes(`SPINON_C114_GRID_EVAL run_id=${runID} `)
+    && log.includes(`SPINON_C114_GRID_ASSERTION_ERROR run_id=${runID}`)
+    && /SPINON_C114_GRID_EVAL run_id=[^ ]+ .*?status=-12\b/.test(log);
+  const surfaceRequestSuperseded = log.includes('SPINON_C0410_ENVIRONMENT status=-12 ')
+    && log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=mismatch run_id=${runID}`)
+    && log.includes('SPINON_C0410_DRAW status=0 presented boxes=0 ')
+    && !log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${sceneID} `);
+  return fixtureEvaluationSuperseded || surfaceRequestSuperseded;
+}
+
 function waitForIOS(scene, runID, pid) {
   const deadline = Date.now() + 150_000;
   let log = '';
@@ -591,16 +664,33 @@ async function runAndroid() {
   const observations = [];
   try {
     for (const [index, scene] of scenes.entries()) {
-      const runID = `${runPrefix}-${index}`;
-      const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n',
-        `${packageName}/.MainActivity`, '--ez', 'spinon_c114_grid_track_sizing', 'true',
-        '--es', 'spinon_c114_grid_scene', scene.id,
-        '--es', 'spinon_c114_grid_run_id', runID,
-        ...captureArguments(scene, runID, 'android-avd')]);
-      await saveLog(`launch-${scene.id}.log`, launch);
-      const log = waitForAndroid(adb, scene, runID);
+      const baseRunID = `${runPrefix}-${index}`;
+      let runID;
+      let log;
+      let attempt = 0;
+      for (; attempt < 3; attempt++) {
+        runID = attempt === 0 ? baseRunID : `${baseRunID}-retry${attempt}`;
+        const launch = adb(['shell', 'am', 'start', '-S', '-f', '0x10008000', '-n',
+          `${packageName}/.MainActivity`, '--ez', 'spinon_c114_grid_track_sizing', 'true',
+          '--es', 'spinon_c114_grid_scene', scene.id,
+          '--es', 'spinon_c114_grid_run_id', runID,
+          ...captureArguments(scene, runID, 'android-avd')]);
+        const attemptSuffix = attempt === 0 ? '' : `-retry${attempt}`;
+        await saveLog(`launch-${scene.id}${attemptSuffix}.log`, launch);
+        log = waitForAndroid(adb, scene, runID);
+        if (!wasAndroidEvaluationSuperseded(log, runID, scene.id)) break;
+        await writeFile(resolve(evidenceDirectory,
+          `superseded-${scene.id}-attempt${attempt + 1}.log`), `${log}\n`);
+        if (attempt === 2) {
+          throw new Error(`${scene.id}: Android evaluation was superseded three times\n${log}`);
+        }
+      }
       await writeFile(resolve(evidenceDirectory, `runtime-${scene.id}.log`), `${log}\n`);
-      observations.push(validateLog(log, scene, runID, 'android-avd'));
+      observations.push({
+        ...validateLog(log, scene, runID, 'android-avd'),
+        runID,
+        launchAttempts: attempt + 1,
+      });
       adb(['shell', 'cmd', 'statusbar', 'collapse'], { allowFailure: true });
       Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 300);
       const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;

@@ -44,6 +44,16 @@ function verifyGeometry(capture) {
     close(actual.text.width, target.text.width, `${target.id}: text width`);
     close(actual.text.height, target.text.height, `${target.id}: text height`);
     close(Math.max(0, actual.text.width - actual.item.width), target.text_inline_overflow, `${target.id}: text overflow`);
+    const trace = target.track_sizing;
+    assert(trace && trace.columns && trace.rows, `${target.id}: track-sizing oracle missing`);
+    close(trace.columns.min_content_contribution, target.item.width,
+      `${target.id}: column min-content contribution`);
+    close(trace.columns.max_content_contribution, target.item.width,
+      `${target.id}: column max-content contribution`);
+    close(trace.rows.min_content_contribution, target.item.height,
+      `${target.id}: row min-content contribution`);
+    close(trace.rows.max_content_contribution, target.item.height,
+      `${target.id}: row max-content contribution`);
     assert(actual.computed.gridColumnStart === "1", `${target.id}: column start differs`);
     assert(actual.computed.gridColumnEnd === "span 2", `${target.id}: column span differs`);
     assert(actual.computed.gridRowStart === "auto", `${target.id}: row start differs`);
@@ -57,6 +67,42 @@ function verifyGeometry(capture) {
         return [property, value];
       }),
     );
+    const expectedColumnMinimum = declarations["min-width"]
+      ? Number(declarations["min-width"].replace(/px$/, "")) : 0;
+    const expectedRowMinimums = {
+      "span-baseline": 20,
+      "span-min-width-45": 22.5,
+      "span-min-width-60": 30,
+      "span-min-height-30": 30,
+      "span-max-width-30-min-width-0": 15,
+      "span-max-height-15-auto-min-control": 0,
+      "span-max-height-15-min-width-0": 0,
+      "span-max-height-17-75-range": 0,
+      "span-no-ratio": 10,
+    };
+    const expectedRowMinimum = expectedRowMinimums[target.id];
+    close(trace.columns.minimum_contribution, expectedColumnMinimum,
+      `${target.id}: column minimum contribution`);
+    close(trace.rows.minimum_contribution, expectedRowMinimum,
+      `${target.id}: row minimum contribution`);
+    const distribution = trace.columns.span_distribution;
+    assert(distribution.initial_track_base_sizes.every((size) => size === 0),
+      `${target.id}: initial track base sizes differ`);
+    assert(distribution.initial_track_growth_limits.every((limit) => limit === null),
+      `${target.id}: initial track growth limits differ`);
+    const initialSpanSize = distribution.initial_track_base_sizes.reduce((sum, size) => sum + size, 0);
+    const perTrackIncrease = (target.item.width - initialSpanSize) / 2;
+    for (const key of ["per_track_planned_increases", "after_span_batch_base_sizes",
+      "after_intrinsic_sizing_base_sizes"]) {
+      assert(distribution[key].length === 2, `${target.id}: ${key} track count differs`);
+      distribution[key].forEach((size, index) =>
+        close(size, perTrackIncrease, `${target.id}: ${key} track ${index + 1}`));
+    }
+    distribution.after_span_batch_growth_limits.forEach((limit) =>
+      assert(limit === null, `${target.id}: span-batch growth limit differs`));
+    distribution.after_intrinsic_sizing_growth_limits.forEach((limit, index) =>
+      close(limit, distribution.per_track_planned_increases[index],
+        `${target.id}: completed growth limit`));
     const defaults = { "min-width": "auto", "max-width": "none", "min-height": "auto", "max-height": "none" };
     const styleNames = { "min-width": "minWidth", "max-width": "maxWidth", "min-height": "minHeight", "max-height": "maxHeight" };
     for (const [property, defaultValue] of Object.entries(defaults)) {
