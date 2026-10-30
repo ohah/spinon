@@ -1,0 +1,51 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous Grid text nowrap precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; width: 240px; background: #fff; }
+  body { font: 10px/10px Ahem, sans-serif; }
+  .case { width: 80px; min-height: 70px; border: 1px solid #ccc; padding: 4px; }
+  .label { display: block; font: 10px/10px system-ui, sans-serif; margin-bottom: 2px; }
+  .grid { display: grid; box-sizing: border-box; width: 20px; min-width: 0; grid-template-columns: min-content; grid-template-rows: auto; gap: 0; margin: 0; padding: 0; border: 0; font: 10px/10px Ahem, sans-serif; color: #e5484d; }
+  .normal { white-space: normal; }
+  .nowrap { white-space: nowrap; }
+  #result { display: none; }
+</style>
+<body>
+  <section class="case" data-case="anonymous-normal-min-content">
+    <span class="label">normal control: XX XX wraps at the space</span>
+    <div class="grid normal" id="anonymous-normal-min-content">XX XX</div>
+  </section>
+  <section class="case" data-case="anonymous-nowrap-min-content">
+    <span class="label">nowrap: the same direct text has no soft wrap opportunity</span>
+    <div class="grid nowrap" id="anonymous-nowrap-min-content">XX XX</div>
+  </section>
+  <pre id="result"></pre>
+  <script>
+    const frame = (value) => ({x:value.x, y:value.y, width:value.width, height:value.height});
+    const observe = (element) => {
+      const range = document.createRange();
+      range.selectNodeContents(element);
+      return {
+        whiteSpace: getComputedStyle(element).whiteSpace,
+        columns: getComputedStyle(element).gridTemplateColumns,
+        rows: getComputedStyle(element).gridTemplateRows,
+        grid: frame(element.getBoundingClientRect()),
+        textRects: Array.from(range.getClientRects(), frame),
+      };
+    };
+    document.fonts.ready.then(() => {
+      window.__C114_ANONYMOUS_TEXT_NOWRAP_OBSERVATION__ = {
+        userAgent: navigator.userAgent,
+        platform: navigator.platform,
+        viewport: {width: innerWidth, height: innerHeight},
+        devicePixelRatio,
+        ahemReady: document.fonts.check('10px Ahem'),
+        cases: Object.fromEntries(Array.from(document.querySelectorAll('.grid'), (element) => [element.id, observe(element)])),
+      };
+      document.querySelector('#result').textContent = JSON.stringify(window.__C114_ANONYMOUS_TEXT_NOWRAP_OBSERVATION__, null, 2);
+    });
+  </script>
+</body>
