@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-30 direct-text preferred aspect-ratio intrinsic contribution · plan review complete
+
+The generic direct-text collector still rejects preferred aspect ratio. This new, fixture-only plan narrows the input to two Ahem direct-text Grid items, one `2 / 1` ratio, normal alignment, and separate auto-row/definite-row controls. Chrome 156 Agent Browser observation and independent CSS Grid 2025 CRD expected values are recorded in the [precomparison](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.md). The 20-item plan failure review and separate 30-item plan-PR delta review are complete. Implementation and both simulator routes remain pending; C11.4/C11 and `72/213` remain unchanged. See the [focused plan](./c11-4-direct-text-aspect-ratio.md).
+
 ## 2026-10-30 `fit-content()` intrinsic limit 열 축 제한 slice · PR #811 병합
 
 기존 pinned WPT `fit-content-track-sizing.html`의 행 축 30/40/200px limit 장면에 CSS Grid 2025 CRD §11.2의 같은 계산을 implicit columns로 연결했다. `min-width:0` main scene 세 개와 `min-width:auto` floor control 한 개를 고정했다. 구현 계획·Chrome Headless 156 관측 및 독립 기대값은 [집중 계획](./c11-4-fit-content-column-axis.md)과 [precomparison evidence](../spec/internal/evidence/c11-4-fit-content-columns-precomparison-2026-10-30/README.md)에 있다. 네 장면은 Android API 37 ARM64 software AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 통과했고 PixelCopy 및 compositor 제출 전 Metal 표본 각 14/14가 exact였다. [구현·simulator·artifact 근거](../spec/internal/evidence/c11-4-fit-content-limit-columns-simulators-2026-10-30/README.md)에 결과와 한계를 기록했다. 구현 PR [#811](https://github.com/ohah/spinon/pull/811)은 Rebase and merge로 2026-10-29T17:19:06Z 병합됐다(merge SHA `8b2e3088c84ae4a3df1fd56c9e75eba150ce1f59`). PR check rollup 및 main required status check은 비어 있으므로 CI 성공으로 세지 않는다. 이는 fixture-test opt-in slice이며 일반 author CSS admission이나 전체 WPT를 완료하지 않는다. C11.4 checkbox와 공식 `72/213`은 미완료 상태로 유지한다.
