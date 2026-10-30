@@ -18,6 +18,8 @@ use super::AHEM;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+#[path = "generic_direct_text/aspect_ratio_definite_axis.rs"]
+mod aspect_ratio_definite_axis;
 #[path = "generic_direct_text/aspect_ratio_multispan.rs"]
 mod aspect_ratio_multispan;
 
@@ -62,6 +64,15 @@ pub(super) fn prepare_aspect_ratio_multispan(
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
     aspect_ratio_multispan::prepare(snapshot, root, styles)
+}
+
+/// Definite item axis transferred through the numeric preferred aspect ratio.
+pub(super) fn prepare_aspect_ratio_definite_axis(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
+    aspect_ratio_definite_axis::prepare(snapshot, root, styles)
 }
 
 fn prepare_with_profile(
@@ -243,6 +254,7 @@ fn prepare_with_profile(
         two_axis_nested_grid: false,
         content_box_ratio_node,
         aspect_ratio_minmax_node,
+        definite_axis_ratio_node: None,
     }))
 }
 
@@ -633,6 +645,7 @@ pub(super) fn first_html_image(
 enum DirectTextParagraphProfile {
     Plain,
     AspectRatio,
+    AspectRatioDefiniteAxis,
     AspectRatioMinMax,
     AspectRatioMinMaxSpan,
     Baseline { allow_explicit_grid_placement: bool },
@@ -665,6 +678,21 @@ pub(super) fn paragraph_style_for_aspect_ratio(
         font_size,
         align_self,
         DirectTextParagraphProfile::AspectRatio,
+    )
+}
+
+pub(super) fn paragraph_style_for_aspect_ratio_definite_axis(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(
+        styles,
+        style,
+        font_size,
+        align_self,
+        DirectTextParagraphProfile::AspectRatioDefiniteAxis,
     )
 }
 
@@ -726,7 +754,8 @@ fn paragraph_style_for_with_baseline_alias(
     let (allow_explicit_grid_placement, allow_aspect_ratio, allow_minmax_constraints) =
         match profile {
             DirectTextParagraphProfile::Plain => (false, false, false),
-            DirectTextParagraphProfile::AspectRatio => (false, true, false),
+            DirectTextParagraphProfile::AspectRatio
+            | DirectTextParagraphProfile::AspectRatioDefiniteAxis => (false, true, false),
             DirectTextParagraphProfile::AspectRatioMinMax => (false, true, true),
             DirectTextParagraphProfile::AspectRatioMinMaxSpan => (true, true, true),
             DirectTextParagraphProfile::Baseline {
@@ -791,8 +820,28 @@ fn paragraph_style_for_with_baseline_alias(
         Some("break-all") => WordBreakMode::BreakAll,
         _ => return Err(style_failure(style.node_id.get(), "word-break")),
     };
-    if style.layout_dimensions.width != ComputedCssDimension::Auto
-        || style.layout_dimensions.height != ComputedCssDimension::Auto
+    let dimensions_supported =
+        if matches!(profile, DirectTextParagraphProfile::AspectRatioDefiniteAxis) {
+            matches!(
+                (
+                    style.layout_dimensions.width,
+                    style.layout_dimensions.height
+                ),
+                (ComputedCssDimension::Auto, ComputedCssDimension::Auto)
+                    | (
+                        ComputedCssDimension::LengthPx(60.0),
+                        ComputedCssDimension::Auto
+                    )
+                    | (
+                        ComputedCssDimension::Auto,
+                        ComputedCssDimension::LengthPx(30.0)
+                    )
+            )
+        } else {
+            style.layout_dimensions.width == ComputedCssDimension::Auto
+                && style.layout_dimensions.height == ComputedCssDimension::Auto
+        };
+    if !dimensions_supported
         || (!allow_minmax_constraints && has_minmax_constraints(style))
         || match style.layout_aspect_ratio {
             None => false,

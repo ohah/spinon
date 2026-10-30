@@ -202,6 +202,7 @@ pub(super) fn prepare(
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
         aspect_ratio_minmax_node: None,
+        definite_axis_ratio_node: None,
     }))
 }
 

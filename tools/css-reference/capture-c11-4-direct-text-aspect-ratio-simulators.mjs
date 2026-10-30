@@ -15,7 +15,8 @@ const androidApk = resolve(repositoryRoot,
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
 const evidenceRoot = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-runtime-2026-10-30');
+  process.env.SPINON_C114_ASPECT_RATIO_EVIDENCE_ROOT
+    ?? 'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-runtime-2026-10-30');
 const multispanExpected = JSON.parse(await readFile(resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json'), 'utf8'));
 const runPrefix = `c114-text-ratio-${Date.now().toString(36)}-${randomUUID().slice(0, 8)}`;
@@ -79,6 +80,14 @@ const scenes = [
     item(2, 0, 80, 40, 'AAAA', 40), item(4, 80, 10, 40, 'A')),
   scene('grid-text-aspect-ratio-column-control', 'column-control', 40, [40, 10],
     item(2, 0, 40, 40, 'AAAA'), item(4, 40, 10, 40, 'A')),
+  scene('grid-text-aspect-ratio-definite-width-ratio', 'definite-width-ratio', 30, [10, 60],
+    item(2, 0, 10, 30, 'A'), item(4, 10, 60, 30, 'AAAA', 40, 60), 30, 10),
+  scene('grid-text-aspect-ratio-definite-width-control', 'definite-width-control', 10, [10, 60],
+    item(2, 0, 10, 10, 'A'), item(4, 10, 60, 10, 'AAAA', 40, 60)),
+  scene('grid-text-aspect-ratio-definite-height-ratio', 'definite-height-ratio', 30, [10, 60],
+    item(2, 0, 10, 30, 'A'), item(4, 10, 60, 30, 'AAAA', 40, 60), 30, 10),
+  scene('grid-text-aspect-ratio-definite-height-control', 'definite-height-control', 30, [10, 40],
+    item(2, 0, 10, 30, 'A'), item(4, 10, 40, 30, 'AAAA', 40, 40), 30, 10),
   scene('grid-text-aspect-ratio-range-row-1-2', 'row-1-2', 80, [10, 40],
     item(2, 0, 10, 80, 'A'), item(4, 10, 40, 80, 'AAAA'), 80),
   scene('grid-text-aspect-ratio-range-row-4-3', 'row-4-3', 30, [10, 40],
@@ -149,26 +158,45 @@ const scenes = [
   ...multispanExpected.cases.map(multispanScene),
 ];
 assert.equal(multispanExpected.cases.length, 9, 'direct-text two-track span oracle must contain nine cases');
-assert.equal(scenes.length, 51, 'direct-text aspect-ratio simulator matrix must contain 51 scenes');
+assert.equal(scenes.length, 55, 'direct-text aspect-ratio simulator matrix must contain 55 scenes');
+
+const requestedSceneIDs = process.env.SPINON_C114_SCENE_IDS?.split(',')
+  .map((sceneID) => sceneID.trim()).filter(Boolean);
+const selectedScenes = requestedSceneIDs
+  ? scenes.filter((candidate) => requestedSceneIDs.includes(candidate.id))
+  : scenes;
+if (requestedSceneIDs) {
+  const unknownSceneIDs = requestedSceneIDs.filter((sceneID) =>
+    !scenes.some((candidate) => candidate.id === sceneID));
+  assert.deepEqual(unknownSceneIDs, [], 'requested C11.4 scene IDs must exist in the matrix');
+  assert.ok(selectedScenes.length > 0, 'at least one C11.4 scene ID must be selected');
+  assert.equal(new Set(requestedSceneIDs).size, requestedSceneIDs.length,
+    'requested C11.4 scene IDs must be unique');
+}
 
 const sourcePaths = [
   'plan/c11-4-direct-text-aspect-ratio-min-max.md',
   'plan/c11-4-direct-text-aspect-ratio-multispan.md',
+  'plan/c11-4-direct-text-aspect-ratio-definite-axis.md',
   'crates/spinon-layout/src/lib.rs',
   'crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_multispan.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text/aspect_ratio_definite_axis.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_multispan.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_definite_axis.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
   'crates/spinon-style-to-layout/src/projection.rs',
   'crates/spinon-style-to-layout/src/projection/style_values.rs',
   'crates/spinon-style-to-layout/src/lib.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_definite_axis.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_multispan.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
@@ -178,11 +206,16 @@ const sourcePaths = [
   'vendor/taffy/src/compute/grid/types/mod.rs',
   'vendor/taffy/src/compute/grid/alignment.rs',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html',
+  'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-axis-transfer-precomparison.html',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html',
   'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md',
   'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json',
   'spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/verify-precomparison.mjs',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/README.md',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/expected-values.json',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-observation-agent-browser.json',
+  'spec/internal/evidence/c11-4-direct-text-aspect-ratio-axis-transfer-precomparison-2026-10-31/chrome-156-agent-browser.png',
   'tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs',
 ];
 
@@ -213,9 +246,12 @@ function pixelSamples(scene) {
   let points;
   const first = scene.expectedItems[0];
   const isMultiSpan = id.startsWith('grid-text-aspect-ratio-multispan-');
+  const isDefiniteAxis = id.startsWith('grid-text-aspect-ratio-definite-');
   const overflowsRoot = id.startsWith('grid-text-aspect-ratio-row-60-')
     && scene.columns.reduce((sum, width) => sum + width, 0) > 100;
-  if (isMultiSpan) {
+  if (isDefiniteAxis) {
+    points = [[5, 5], [15, 5], [90, 5]];
+  } else if (isMultiSpan) {
     points = [
       [Math.floor(first.x + first.width / 2), 5],
       [Math.ceil(first.x + first.width) + 1, 5],
@@ -663,7 +699,7 @@ async function runAndroid() {
   await writeFile(resolve(evidenceDirectory, 'simulator.json'), `${JSON.stringify(metadata, null, 2)}\n`);
   const observations = [];
   try {
-    for (const [index, scene] of scenes.entries()) {
+    for (const [index, scene] of selectedScenes.entries()) {
       const baseRunID = `${runPrefix}-${index}`;
       let runID;
       let log;
@@ -695,7 +731,7 @@ async function runAndroid() {
       Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, 300);
       const screenshot = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
       await writeFile(resolve(evidenceDirectory, `${scene.id}.png`), screenshot);
-      console.log(`android-avd ${index + 1}/${scenes.length}: ${scene.id} passed`);
+      console.log(`android-avd ${index + 1}/${selectedScenes.length}: ${scene.id} passed`);
     }
   } finally {
     adb(['shell', 'am', 'force-stop', packageName], { allowFailure: true });
@@ -727,7 +763,7 @@ async function runIOS() {
   }, null, 2)}\n`);
   const observations = [];
   try {
-    for (const [index, scene] of scenes.entries()) {
+    for (const [index, scene] of selectedScenes.entries()) {
       const runID = `${runPrefix}-${index}`;
       const launch = command('xcrun', ['simctl', 'launch', '--terminate-running-process',
         simulatorUDID, packageName, '--spinon-c114-grid-track-sizing',
@@ -741,7 +777,7 @@ async function runIOS() {
       observations.push(validateLog(log, scene, runID, 'ios-simulator'));
       await saveLog(`screenshot-${scene.id}.log`, command('xcrun', ['simctl', 'io',
         simulatorUDID, 'screenshot', resolve(evidenceDirectory, `${scene.id}.png`)]));
-      console.log(`ios-simulator ${index + 1}/${scenes.length}: ${scene.id} passed`);
+      console.log(`ios-simulator ${index + 1}/${selectedScenes.length}: ${scene.id} passed`);
     }
   } finally {
     command('xcrun', ['simctl', 'terminate', simulatorUDID, packageName], { allowFailure: true });
@@ -761,6 +797,6 @@ const sourceHashes = Object.fromEntries(await Promise.all(sourcePaths.map(async 
 const observations = target === 'android-avd' ? await runAndroid() : await runIOS();
 await writeFile(resolve(evidenceDirectory, 'result.json'), `${JSON.stringify({
   schemaVersion: 1, target, runPrefix, sourceHead, sourceDirty, sourceHashes,
-  sceneCount: scenes.length, observations,
+  sceneCount: selectedScenes.length, observations,
 }, null, 2)}\n`);
 console.log(JSON.stringify({ evidenceDirectory, target, observations }, null, 2));

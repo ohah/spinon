@@ -126,6 +126,8 @@ mod grid_layout_auto_tracks;
 mod grid_layout_auto_tracks_report;
 #[path = "c11_4/grid_text_aspect_ratio.rs"]
 mod grid_text_aspect_ratio;
+#[path = "c11_4/grid_text_aspect_ratio_definite_axis.rs"]
+mod grid_text_aspect_ratio_definite_axis;
 #[path = "c11_4/grid_text_aspect_ratio_minmax.rs"]
 mod grid_text_aspect_ratio_minmax;
 #[path = "c11_4/grid_text_aspect_ratio_multispan.rs"]
@@ -1262,6 +1264,9 @@ pub(crate) fn c11_4_grid_track_sizing_runtime_source(
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = grid_text_aspect_ratio::runtime_source(scene_id) {
+        return Ok(Cow::Owned(source));
+    }
+    if let Some(source) = grid_text_aspect_ratio_definite_axis::runtime_source(scene_id) {
         return Ok(Cow::Owned(source));
     }
     if let Some(source) = grid_text_aspect_ratio_minmax::runtime_source(scene_id) {
