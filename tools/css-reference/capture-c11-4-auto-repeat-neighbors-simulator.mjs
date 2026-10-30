@@ -142,7 +142,8 @@ const mixedMultiSpanSceneIDs = new Set([
   'mixed-text-image-span2-before-span3', 'mixed-text-image-span3-before-span2',
 ]);
 const anonymousTextSceneIDs = new Set([
-  'anonymous-min-content-wrap', 'anonymous-comment-continuation',
+  'anonymous-min-content-wrap', 'anonymous-normal-min-content',
+  'anonymous-nowrap-min-content', 'anonymous-comment-continuation',
   'anonymous-runs-around-block', 'anonymous-hidden-child-continuation',
   'whitespace-does-not-create-item',
 ]);
@@ -1057,6 +1058,30 @@ assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 auto-minimum flexible span scene ID는 중복되지 않아야 합니다.');
 scenes.push(
   {
+    id: 'anonymous-normal-min-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]',
+    tracks: [20], collapsed: [false],
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 20, height: 20 },
+    }],
+  },
+  {
+    id: 'anonymous-nowrap-min-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]',
+    tracks: [50], collapsed: [false],
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 50, minContentHeight: 10, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX XX' }],
+      frame: { node: 2, x: 0, y: 0, width: 50, height: 10 },
+    }],
+  },
+  {
     id: 'anonymous-min-content-wrap', axis: 'Columns', boxCount: 1,
     rootFrame: 'width=120,height=20', itemFrame: null,
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]',
@@ -1122,7 +1147,7 @@ scenes.push(
     anonymousTextItems: [],
   },
 );
-assert.equal(scenes.length, 160, 'C11.4 anonymous Grid text slice adds five scene이어야 합니다.');
+assert.equal(scenes.length, 162, 'C11.4 anonymous Grid text slice includes seven scenes.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 scenes.push(
@@ -5936,7 +5961,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 622, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 624, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;

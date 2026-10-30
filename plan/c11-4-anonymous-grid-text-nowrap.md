@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** Agent Browser HeadlessChrome 156 사전 비교를 고정했다. 구현은 시작하지 않았다. 이번 계획은 opt-in C11.4 anonymous Grid text fixture 경로에서 inherited `white-space:nowrap` 하나를 다룬다. C11.4/C11 checkbox와 공식 완료 `72/213`을 바꾸지 않는다. [Chrome 관측·입력 hash·화면](../spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md)
+**상태:** 제한 구현과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행을 마쳤다. 구현/runtime 실패 관점 20개 검토까지 끝냈고, PR diff 30개 검토와 PR은 다음 단계다. 이번 계획은 opt-in C11.4 anonymous Grid text fixture 경로에서 inherited `white-space:nowrap` 하나를 다룬다. C11.4/C11 checkbox와 공식 완료 `72/213`은 바꾸지 않는다. [Chrome 관측·입력 hash·화면](../spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md) · [구현/runtime 근거·한계](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md)
 
 ## 목적과 경계
 
@@ -41,3 +41,7 @@ Browser input SHA-256, Ahem asset SHA-256, Chrome user agent, viewport·DPR 및 
 ## 선행 계획 검토
 
 구현 전에 이 계획을 서로 다른 실패 관점 20개로 검토한다([검토 기록](./c11-4-anonymous-grid-text-nowrap-plan-review-20.md)). 구현 뒤에는 새 구현/runtime 20개 검토를 수행하고 PR diff는 [필수 프로젝트 규칙](../docs/project-rules.md)에 따라 30개 독립 관점으로 별도 검토한다. 구현 결과와 한계는 `spec/STATUS.md` 및 이 계획의 실행 기록에 연결하되 상위 완료 수는 변경하지 않는다.
+
+## 구현 결과
+
+`Normal | NoWrap`만 anonymous Grid text paragraph allowlist에 둔다. normal control은 min-content 20px·두 줄을 유지하고 nowrap은 min-content 50px·한 줄로 계산한다. `PreLine`과 비영 `order`의 오류 경계를 유지한다. Android·iOS trace에서 root 20×10px와 text item 50×10px를 분리해 확인했고, 화면 캡처는 draw/present 경로만 증명하며 glyph pixel 판정에는 쓰지 않았다. artifact scan도 새 두 scene marker와 host FFI export가 product feature에 없는 것, fixture-test positive control에 포함되는 것만 확인한다. [구현/runtime 근거·검사 결과·검증 한계](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md) · [구현/runtime 적대 검토 20개](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.md) · [static archive 경계](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.md)

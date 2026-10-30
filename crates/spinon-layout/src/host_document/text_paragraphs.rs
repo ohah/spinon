@@ -77,10 +77,14 @@ pub(super) fn collect(
             if is_hidden_by_ancestor(snapshot, paragraph_handle, root, styles)? {
                 continue;
             }
-            if paragraph_style.white_space != WhiteSpaceMode::Normal || layout_style.order != 0 {
+            if !matches!(
+                paragraph_style.white_space,
+                WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap
+            ) || layout_style.order != 0
+            {
                 return Err(LayoutError::UnsupportedTextParagraph {
                     node: paragraph_id,
-                    reason: "C11.4 anonymous Grid text requires white-space:normal and order:0",
+                    reason: "C11.4 anonymous Grid text requires white-space:normal or nowrap and order:0",
                 });
             }
             let mut inline_styles = BTreeMap::new();
