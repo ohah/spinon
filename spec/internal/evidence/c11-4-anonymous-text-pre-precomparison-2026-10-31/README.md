@@ -7,7 +7,7 @@
 - Fixture: [`anonymous-grid-text-pre-precomparison.html`](../../../../tests/fixtures/css/c11/anonymous-grid-text-pre-precomparison.html).
 - Ahem SHA-256: `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`.
 - Fixture SHA-256 at observation time: `197cec44aa9b80d8b5e9af2170c8e1efbbe2b43456a9d1ed8c8c664fb8dd7353`.
-- Browser screenshot: [`chrome-156.png`](./chrome-156.png).
+- Chrome 156 reference screenshot captured with Agent Browser before implementation: [`chrome-156.png`](./chrome-156.png). It shows the browser oracle fixture, not Spinon output.
 
 ## 관찰값
 
