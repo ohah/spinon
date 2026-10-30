@@ -1,0 +1,223 @@
+{
+  "pass": "pass03",
+  "origin": "https://macstudio.tailed42f2.ts.net",
+  "base_path": "/spinon/",
+  "concurrency": 8,
+  "file_count": 21,
+  "http_200_count": 21,
+  "matching_hash_count": 21,
+  "failures": [],
+  "all_verified": true,
+  "results": [
+    {
+      "path": "icon.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "expected_bytes": 638,
+      "expected_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "bytes": 73762,
+      "sha256": "b404d89ae9bf420492c8f9c6e07a606135ee018764f740ffd146e7d88caac80e",
+      "expected_bytes": 73762,
+      "expected_sha256": "b404d89ae9bf420492c8f9c6e07a606135ee018764f740ffd146e7d88caac80e",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "expected_bytes": 568,
+      "expected_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-4-grid-track-sizing.html",
+      "bytes": 354409,
+      "sha256": "8cb0cd16d39a3907abf897928c71cdb3ea7bd9c45b986a8dcd37b18de9e026fb",
+      "expected_bytes": 354409,
+      "expected_sha256": "8cb0cd16d39a3907abf897928c71cdb3ea7bd9c45b986a8dcd37b18de9e026fb",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/plan/c11-css-grid.html",
+      "bytes": 106557,
+      "sha256": "7c8acc5760facbdcd79a64b74fa84dc0668db57c3c63f9389ad59a5503df8241",
+      "expected_bytes": 106557,
+      "expected_sha256": "7c8acc5760facbdcd79a64b74fa84dc0668db57c3c63f9389ad59a5503df8241",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "bytes": 73772,
+      "sha256": "d3a385e38a1eae13dbdf9ad059e79ae7c32295e0591e795372873963c0883f3d",
+      "expected_bytes": 73772,
+      "expected_sha256": "d3a385e38a1eae13dbdf9ad059e79ae7c32295e0591e795372873963c0883f3d",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 354331,
+      "sha256": "38015c9316d1ad49dd646341bd1abdac8d4f02d9c9e0b7c6ed7c8ee147cd534e",
+      "expected_bytes": 354331,
+      "expected_sha256": "38015c9316d1ad49dd646341bd1abdac8d4f02d9c9e0b7c6ed7c8ee147cd534e",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/spec/plan/c11-css-grid.html",
+      "bytes": 106542,
+      "sha256": "142991c95043907defeb454db305e6fad95af7c9f84f35ed188991d28908b489",
+      "expected_bytes": 106542,
+      "expected_sha256": "142991c95043907defeb454db305e6fad95af7c9f84f35ed188991d28908b489",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "expected_bytes": 73952,
+      "expected_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "expected_bytes": 217085,
+      "expected_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ae5be87d40.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-04cbcabea10a.ae5be87d40.js",
+      "bytes": 299873,
+      "sha256": "05e2477ab9c96b43ca68e7d418cb664b5336a35295d8c08e3881128304033819",
+      "expected_bytes": 299873,
+      "expected_sha256": "05e2477ab9c96b43ca68e7d418cb664b5336a35295d8c08e3881128304033819",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-3b92bbea126e.9ec729df02.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-3b92bbea126e.9ec729df02.js",
+      "bytes": 10159,
+      "sha256": "8c16b5d621758b83c8dd5d9727710a4eac5092e19822a101731a8852fed8474f",
+      "expected_bytes": 10159,
+      "expected_sha256": "8c16b5d621758b83c8dd5d9727710a4eac5092e19822a101731a8852fed8474f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.5750140f84.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-b7ce154f07b0.5750140f84.js",
+      "bytes": 299926,
+      "sha256": "faff445d3de203dcbe2121c0b049bf4652eaeb69d437046310a0d26f1d267aa6",
+      "expected_bytes": 299926,
+      "expected_sha256": "faff445d3de203dcbe2121c0b049bf4652eaeb69d437046310a0d26f1d267aa6",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.dda6729c60.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-c2801b21f038.dda6729c60.js",
+      "bytes": 42784,
+      "sha256": "b6ca3ea22313b7c9c99656ca4624914e1f726becf1cd7634ceb754f43b09d8c7",
+      "expected_bytes": 42784,
+      "expected_sha256": "b6ca3ea22313b7c9c99656ca4624914e1f726becf1cd7634ceb754f43b09d8c7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d1d32028c6d0.6162791091.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d1d32028c6d0.6162791091.js",
+      "bytes": 10152,
+      "sha256": "644ca9b6333bb81d5276be82d30da4e22dc8b3b31ab3da34d788acd5399135b0",
+      "expected_bytes": 10152,
+      "expected_sha256": "644ca9b6333bb81d5276be82d30da4e22dc8b3b31ab3da34d788acd5399135b0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.127c0dc8c5.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/async/route-d4b02f34c38e.127c0dc8c5.js",
+      "bytes": 42821,
+      "sha256": "d985c79dd0d053c7e1aa0629ab00a46c61da34c780b577114d3be54b76a657bb",
+      "expected_bytes": 42821,
+      "expected_sha256": "d985c79dd0d053c7e1aa0629ab00a46c61da34c780b577114d3be54b76a657bb",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.cbefa9ed5d.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/index.cbefa9ed5d.js",
+      "bytes": 239269,
+      "sha256": "efe2fb0446988cbb0940dd622cf441426823fe91353f5fbfad92179d44109a70",
+      "expected_bytes": 239269,
+      "expected_sha256": "efe2fb0446988cbb0940dd622cf441426823fe91353f5fbfad92179d44109a70",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "expected_bytes": 218364,
+      "expected_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "expected_bytes": 35370,
+      "expected_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "expected_bytes": 473,
+      "expected_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.ed3e171c.json",
+      "status": 200,
+      "final_url": "https://macstudio.tailed42f2.ts.net/spinon/static/search_index.ko.ed3e171c.json",
+      "bytes": 2163042,
+      "sha256": "ed3e171c5e21d3eb045472fb55654fede5e77669671196f719a1897bf113d479",
+      "expected_bytes": 2163042,
+      "expected_sha256": "ed3e171c5e21d3eb045472fb55654fede5e77669671196f719a1897bf113d479",
+      "verified": true
+    }
+  ]
+}

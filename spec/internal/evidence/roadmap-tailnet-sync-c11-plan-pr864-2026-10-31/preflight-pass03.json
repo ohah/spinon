@@ -1,0 +1,227 @@
+{
+  "pass": "pass03",
+  "source_root_relative": "build/spinon/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/publication-pass03",
+  "preview_root_relative": "SpinonPreview",
+  "backup_root_relative": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03",
+  "target_count": 21,
+  "source_bytes_total": 4723849,
+  "backup_bytes_total": 795225,
+  "counts": {
+    "create": 10,
+    "replace": 4,
+    "same": 7
+  },
+  "no_deletes": true,
+  "files": [
+    {
+      "path": "icon.svg",
+      "status": "same",
+      "source_bytes": 638,
+      "source_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "target_exists": true,
+      "previous_bytes": 638,
+      "previous_sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "backup_path": null
+    },
+    {
+      "path": "internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": "create",
+      "source_bytes": 73762,
+      "source_sha256": "b404d89ae9bf420492c8f9c6e07a606135ee018764f740ffd146e7d88caac80e",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "logo.svg",
+      "status": "same",
+      "source_bytes": 568,
+      "source_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "target_exists": true,
+      "previous_bytes": 568,
+      "previous_sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "backup_path": null
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "source_bytes": 354409,
+      "source_sha256": "8cb0cd16d39a3907abf897928c71cdb3ea7bd9c45b986a8dcd37b18de9e026fb",
+      "target_exists": true,
+      "previous_bytes": 314400,
+      "previous_sha256": "aed689cd8ab6a02f6b3c0454b2a0474ee6bac9feb865ab44131efbb18b448c36",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "plan/c11-css-grid.html",
+      "status": "replace",
+      "source_bytes": 106557,
+      "source_sha256": "7c8acc5760facbdcd79a64b74fa84dc0668db57c3c63f9389ad59a5503df8241",
+      "target_exists": true,
+      "previous_bytes": 83237,
+      "previous_sha256": "cae30e292abd1953b8951501f29ee703c52cfc6dfe668b03d6455d236826d71f",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/plan/c11-css-grid.html"
+    },
+    {
+      "path": "spec/internal/evidence/c11-roadmap-sync-pr864-2026-10-31/pr-diff-review-30.html",
+      "status": "create",
+      "source_bytes": 73772,
+      "source_sha256": "d3a385e38a1eae13dbdf9ad059e79ae7c32295e0591e795372873963c0883f3d",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "status": "replace",
+      "source_bytes": 354331,
+      "source_sha256": "38015c9316d1ad49dd646341bd1abdac8d4f02d9c9e0b7c6ed7c8ee147cd534e",
+      "target_exists": true,
+      "previous_bytes": 314381,
+      "previous_sha256": "6b2b8e15fe8ca3a25972a255f994c0d15dbb732b79e0224a0e41f1abd18e88f8",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/spec/plan/c11-4-grid-track-sizing.html"
+    },
+    {
+      "path": "spec/plan/c11-css-grid.html",
+      "status": "replace",
+      "source_bytes": 106542,
+      "source_sha256": "142991c95043907defeb454db305e6fad95af7c9f84f35ed188991d28908b489",
+      "target_exists": true,
+      "previous_bytes": 83207,
+      "previous_sha256": "7e9758620ac5aae2c19a046a3c24158cd1421fd4757d9d674279b75674c5617d",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-c11-plan-pr864-2026-10-31/pass03/spec/plan/c11-css-grid.html"
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "status": "same",
+      "source_bytes": 73952,
+      "source_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "target_exists": true,
+      "previous_bytes": 73952,
+      "previous_sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "status": "same",
+      "source_bytes": 217085,
+      "source_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "target_exists": true,
+      "previous_bytes": 217085,
+      "previous_sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.ae5be87d40.js",
+      "status": "create",
+      "source_bytes": 299873,
+      "source_sha256": "05e2477ab9c96b43ca68e7d418cb664b5336a35295d8c08e3881128304033819",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-3b92bbea126e.9ec729df02.js",
+      "status": "create",
+      "source_bytes": 10159,
+      "source_sha256": "8c16b5d621758b83c8dd5d9727710a4eac5092e19822a101731a8852fed8474f",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.5750140f84.js",
+      "status": "create",
+      "source_bytes": 299926,
+      "source_sha256": "faff445d3de203dcbe2121c0b049bf4652eaeb69d437046310a0d26f1d267aa6",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-c2801b21f038.dda6729c60.js",
+      "status": "create",
+      "source_bytes": 42784,
+      "source_sha256": "b6ca3ea22313b7c9c99656ca4624914e1f726becf1cd7634ceb754f43b09d8c7",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d1d32028c6d0.6162791091.js",
+      "status": "create",
+      "source_bytes": 10152,
+      "source_sha256": "644ca9b6333bb81d5276be82d30da4e22dc8b3b31ab3da34d788acd5399135b0",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/async/route-d4b02f34c38e.127c0dc8c5.js",
+      "status": "create",
+      "source_bytes": 42821,
+      "source_sha256": "d985c79dd0d053c7e1aa0629ab00a46c61da34c780b577114d3be54b76a657bb",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/index.cbefa9ed5d.js",
+      "status": "create",
+      "source_bytes": 239269,
+      "source_sha256": "efe2fb0446988cbb0940dd622cf441426823fe91353f5fbfad92179d44109a70",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "status": "same",
+      "source_bytes": 218364,
+      "source_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "target_exists": true,
+      "previous_bytes": 218364,
+      "previous_sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "status": "same",
+      "source_bytes": 35370,
+      "source_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "target_exists": true,
+      "previous_bytes": 35370,
+      "previous_sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "backup_path": null
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "status": "same",
+      "source_bytes": 473,
+      "source_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "target_exists": true,
+      "previous_bytes": 473,
+      "previous_sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "backup_path": null
+    },
+    {
+      "path": "static/search_index.ko.ed3e171c.json",
+      "status": "create",
+      "source_bytes": 2163042,
+      "source_sha256": "ed3e171c5e21d3eb045472fb55654fede5e77669671196f719a1897bf113d479",
+      "target_exists": false,
+      "previous_bytes": null,
+      "previous_sha256": null,
+      "backup_path": null
+    }
+  ]
+}
