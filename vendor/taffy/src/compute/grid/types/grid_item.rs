@@ -634,7 +634,15 @@ impl GridItem {
         // If the item's size in the axis being measured is already known then that size is its contribution,
         // and we can avoid calling into the child entirely.
         if let Some(size) = known_dimensions.get(axis) {
-            return size;
+            let content_size = self.non_replaced_ratio_content_contribution(
+                axis,
+                tree,
+                grid_area_size,
+                available_space,
+                known_dimensions,
+                true,
+            );
+            return content_size.map_or(size, |content| size.max(content));
         }
         // The child sees the grid area as its containing block during intrinsic measurement, so
         // percentage box properties resolve against the grid area when that size is definite.
@@ -691,7 +699,15 @@ impl GridItem {
         // If the item's size in the axis being measured is already known then that size is its contribution,
         // and we can avoid calling into the child entirely.
         if let Some(size) = known_dimensions.get(axis) {
-            return size;
+            let content_size = self.non_replaced_ratio_content_contribution(
+                axis,
+                tree,
+                grid_area_size,
+                available_space,
+                known_dimensions,
+                false,
+            );
+            return content_size.map_or(size, |content| size.max(content));
         }
         // See the min-content path above. Max-content measurement uses the same containing-block
         // basis so percentage-dependent item geometry is measured from the grid area rather than
@@ -713,6 +729,51 @@ impl GridItem {
             axis.as_abs_naive(),
             Line::FALSE,
         )
+    }
+
+    /// Ratio-derived known sizes cannot erase the intrinsic content contribution
+    /// of an auto-sized, non-replaced Grid item.
+    fn non_replaced_ratio_content_contribution(
+        &self,
+        axis: AbstractAxis,
+        tree: &mut impl LayoutPartialTree,
+        grid_area_size: Size<Option<f32>>,
+        available_space: Size<Option<f32>>,
+        known_dimensions: Size<Option<f32>>,
+        min_content: bool,
+    ) -> Option<f32> {
+        if self.is_replaced
+            || self.aspect_ratio.is_none()
+            || !self.size.width.is_auto()
+            || !self.size.height.is_auto()
+            || !self.min_size.width.is_auto()
+            || !self.min_size.height.is_auto()
+            || !self.max_size.width.is_auto()
+            || !self.max_size.height.is_auto()
+        {
+            return None;
+        }
+
+        let mut content_dimensions = known_dimensions;
+        content_dimensions.set(axis, None);
+        let available_space = self
+            .available_space_minus_margins(grid_area_size, available_space, tree)
+            .map(|space| match space {
+                Some(size) => AvailableSpace::Definite(size),
+                None if min_content => AvailableSpace::MinContent,
+                None => AvailableSpace::MaxContent,
+            });
+        let available_space =
+            self.keyword_adjusted_available_space(grid_area_size, available_space, tree);
+        Some(tree.measure_child_size(
+            self.node,
+            content_dimensions,
+            grid_area_size,
+            available_space,
+            SizingMode::ContentSize,
+            axis.as_abs_naive(),
+            Line::FALSE,
+        ))
     }
 
     /// Subtract the item's margins (and baseline shim) from the definite axes of the space available

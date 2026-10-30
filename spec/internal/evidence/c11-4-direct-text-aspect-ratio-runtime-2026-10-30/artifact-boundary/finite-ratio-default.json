@@ -1,0 +1,28 @@
+{
+  "sourceHead": "e56dd00264e9ed2ad05539a70f9e143e6d9ac1bf",
+  "profile": "default optimized spinon-ffi release static archive",
+  "buildCommand": "cargo build --locked -p spinon-ffi --lib --release",
+  "archive": "target/release/libspinon_ffi.a",
+  "sha256": "27a5e0d495acb2117c5d55a3847907c3703de1a9782e6fd51a3c4b24b2310c24",
+  "sceneIds": {
+    "grid-text-aspect-ratio-row": false,
+    "grid-text-aspect-ratio-row-control": false,
+    "grid-text-aspect-ratio-column": false,
+    "grid-text-aspect-ratio-column-control": false,
+    "grid-text-aspect-ratio-range-row-1-2": false,
+    "grid-text-aspect-ratio-range-row-4-3": false,
+    "grid-text-aspect-ratio-range-row-3-2": false,
+    "grid-text-aspect-ratio-range-row-5-2": false,
+    "grid-text-aspect-ratio-range-column-1-2": false,
+    "grid-text-aspect-ratio-range-column-4-3": false,
+    "grid-text-aspect-ratio-range-column-3-2": false,
+    "grid-text-aspect-ratio-range-column-5-2": false,
+    "grid-text-aspect-ratio-range-column-control-60": false,
+    "grid-text-aspect-ratio-range-column-control-45": false,
+    "grid-text-aspect-ratio-range-column-control-30": false,
+    "grid-text-aspect-ratio-range-column-control-20": false
+  },
+  "routeSymbolMarker": "grid_text_aspect_ratio",
+  "routeSymbolPresent": false,
+  "inspection": "strings and Rust toolchain llvm-nm"
+}

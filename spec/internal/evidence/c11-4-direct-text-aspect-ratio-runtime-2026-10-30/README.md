@@ -50,3 +50,46 @@ The scanner records raw byte markers in the inspected macOS ARM64 `spinon-ffi` r
 ## 범위 밖
 
 임의 aspect ratio, `auto <ratio>`, replaced elements, image/anonymous/rich text, 여러 줄 wrapping, spans, flex/percentage/calc, vertical writing, baseline, 일반 author CSS admission, 전체 WPT/전체 C11.4, 실기기·hardware GPU, glyph pixels와 iOS compositor-after pixels는 확인하지 않았다. C11.4와 C11은 계속 미완료이며 공식 집계 `72/213`은 바뀌지 않는다.
+
+## 2026-10-30 finite-positive ratio 확장 후보
+
+**판정:** 기존 PR #834의 4-scene baseline 위에 더한 fixture-test 전용 구현 후보. C11.4 및 C11은 미완료이며 공식 집계 `72/213`을 유지한다.
+
+이 후속 candidate는 기존 `2 / 1` direct-text profile에 computed serialization과 일치하는 finite-positive typed ratio를 추가한다. 표준 근거와 Chrome 기준값은 [구현 전 비교](../c11-4-direct-text-aspect-ratio-range-precomparison-2026-10-30/README.md), 입력·거부 범위는 [계획](../../../../plan/c11-4-direct-text-aspect-ratio-finite.md)에 기록했다.
+
+| 실행 | 기기·환경 | 장면 | 표면 표본 | 설치 artifact |
+| --- | --- | ---: | ---: | --- |
+| [Android API 37 ARM64 AVD](./android-avd/c114-text-ratio-mvuhobpm-b96aae77/result.json) | `emulator-5554`, `sdk_gphone16k_arm64`, API 37, arm64-v8a, 1080×2400 @ 420dpi | 16/16 | PixelCopy 49/49 exact | APK SHA-256 `ce54324f03547465a10464d673a9338ba8ba119059afeb7a695979cb42006b11` |
+| [iPhone 17 Pro Simulator](./ios-simulator/c114-text-ratio-mvuhr3w3-23d87e87/result.json) | iOS 26.2, `iPhone18,1`, UDID `ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D` | 16/16 | Metal drawable 49/49 exact | executable SHA-256 `9f5fa2162e713c4b9040a4947e778fa43d5495c99db388e8adf52a51b2466b66` |
+
+두 설치 hash는 각 실행의 local artifact hash와 일치한다. 실행 receipt는 source HEAD `e56dd00264e9ed2ad05539a70f9e143e6d9ac1bf`, 당시 dirty source 목록과 파일별 SHA-256을 보존한다. Android는 QEMU/software renderer다. iOS 표본은 Metal drawable에서 읽었으며 OS compositor 제출 뒤의 화면을 뜻하지 않는다.
+
+16개 장면은 기존 2/1 regression 4개, `1/2`, `4/3`, `3/2`, `5/2` 각각의 row·definite-row column scene 8개, ratio 없는 control 4개다. Chrome 156 geometry의 used value는 최대 1/64 CSS px 차이를 허용한다. `row-3-2`에서 독립 산술값 `26.666666…px`와 Chrome 관측 `26.65625px`는 이 허용치 안이다.
+
+`column-1-2`의 별도 표면 검사는 root 바깥 overflow도 포함한다. 두 플랫폼에서 4/4 sample이 exact이며, CSS y=70은 60px root 아래에 있지만 40×80px ratio item의 red fill이 관측된다. 해당 화면은 [Android](./android-avd/c114-text-ratio-mvuhobpm-b96aae77/grid-text-aspect-ratio-range-column-1-2.png)와 [iOS](./ios-simulator/c114-text-ratio-mvuhr3w3-23d87e87/grid-text-aspect-ratio-range-column-1-2.png)에서 볼 수 있다. 나머지 표본은 item fill과 root 배경을 검사하며 glyph raster를 검사하지 않는다.
+
+### 확장 후보 검증
+
+- `cargo fmt --all -- --check`
+- `cargo test --locked -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test`: 320 passed, 3 ignored.
+- `cargo test --locked -p spinon-style --features c11-4-grid-track-sizing-fixture-test`: 253 passed.
+- `cargo test --locked -p spinon-ffi --features c04-runtime-gpu-fixture-test`: 165 passed, 2 ignored.
+- Focused direct-text aspect-ratio runtime tests: 7 passed; broader generic direct-text suite including legacy fallback: 20 passed. Style serialization carried test: 1 passed. FFI route test: 1 passed.
+- `node --test tools/css-reference/fixture-module-boundary.test.mjs`: 23 passed.
+- Feature Clippy with `-D warnings`: `taffy` library, `spinon-style`, `spinon-runtime`, and `spinon-ffi` passed. Android and iOS simulator builds succeeded.
+- 기본 최적화 FFI archive SHA-256 `27a5e0d495acb2117c5d55a3847907c3703de1a9782e6fd51a3c4b24b2310c24`에는 ratio scene ID와 route symbol이 없다. Fixture positive-control archive SHA-256 `31ae2eb79c94a0c6e6381b44d634028b74020db44523db949b9adf90c44736e8`에는 scene ID 16개와 gated route symbol이 있다. 이는 검사한 static archive 범위의 결과이며 APK/IPA 전체에서 제외됨을 뜻하지 않는다.
+
+이번 16-scene 비교 원장은 [default archive](./artifact-boundary/finite-ratio-default.json)와 [fixture positive control](./artifact-boundary/finite-ratio-fixture-test.json)에 있다. 기존 PR #834의 4-scene artifact JSON은 같은 디렉터리의 `default.json`과 `fixture-test.json`에 보존되어 있다.
+
+저장소 workspace에서 Taffy는 제외되어 있고 자체 test target은 dev-dependencies를 요구하므로 `cargo test --locked -p taffy`를 직접 실행할 수 없다. Taffy library Clippy와 변경된 layout 경로를 호출하는 runtime/FFI tests는 통과했다.
+
+### 초기 검증 실패와 수정
+
+최종 실행 전의 실패 evidence도 보존했다. 네 종류의 검증기 기대 오류를 발견해 고쳤다.
+
+1. Android app verifier가 Chrome의 1/64px geometry quantization을 허용하지 않아 3/2 row 비교를 실패 처리했다. 숫자 frame 비교를 1/64px tolerance로 바꿨다.
+2. Capture runner가 app이 수치 tolerance로 허용한 값을 예전 요약 문자열과 exact 비교했다. Runner도 수치값 기준으로 통일했다.
+3. `column-1-2` 기대값이 40×60px로 잘못되어 있었다. 독립 계산과 Chrome 결과에 맞춰 40×80px item 및 20px overflow로 고쳤다.
+4. Android PixelCopy 기대색 목록에 root 밖 overflow 표본의 red가 빠져 있었다. 기대 표본을 보완하고 양 플랫폼을 다시 실행했다.
+
+이전 실패 디렉터리를 삭제하지 않고 같은 evidence root에 남겨 두었다. 최종 판정은 위 표의 마지막 실행 receipt만 사용한다. 일반 CSS 입력 허용, 전체 WPT, 이 fixture 행렬 밖의 임의 ratio, `auto <ratio>`, 이 collector의 degenerate numeric ratio, 여러 ratio item, replaced/rich/anonymous text, wrapping, min/max·box-edge transfer, span, vertical writing, 실기기/hardware GPU, glyph 픽셀 일치, iOS compositor 이후 픽셀은 확장 후보의 보장 범위가 아니다. PR check 상태는 PR 생성 후 확인한다. 상세한 구현/runtime 검토는 [20개 실패 관점](./finite-ratio-implementation-runtime-review-20.md), 현재 branch diff 검토는 [30개 관점](./finite-ratio-pr-diff-review-30.md)에 둔다.

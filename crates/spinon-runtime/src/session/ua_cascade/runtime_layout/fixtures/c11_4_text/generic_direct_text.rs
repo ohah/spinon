@@ -139,15 +139,18 @@ fn prepare_with_profile(
                 }
                 if let Some(ratio) = style.layout_aspect_ratio {
                     aspect_ratio_count += 1;
-                    if ratio != 2.0
-                        || text != "AAAA"
-                        || property(style, "aspect-ratio") != Some("2 / 1")
-                    {
+                    if text != "AAAA" || !computed_ratio_matches(style, ratio) {
                         return Err(style_failure(
                             style.node_id.get(),
-                            "aspect-ratio profile requires computed 2 / 1 on AAAA",
+                            "aspect-ratio profile requires a matching finite positive computed ratio on AAAA",
                         ));
                     }
+                    validate_ratio_geometry(root_style, ratio, style.node_id.get())?;
+                } else if property(style, "aspect-ratio") != Some("auto") {
+                    return Err(style_failure(
+                        style.node_id.get(),
+                        "aspect-ratio profile requires computed auto when typed ratio is absent",
+                    ));
                 }
                 paragraph_style_for_aspect_ratio(styles, style, 10.0, "auto")?
             }
@@ -194,8 +197,7 @@ fn is_aspect_ratio_grid_root_candidate(style: &ComputedElementStyle) -> bool {
             ComputedCssGridTrackSize::MaxContent,
             ComputedCssGridTrackSize::MaxContent,
         ]
-        && (grid.rows == [ComputedCssGridTrackSize::Auto]
-            || grid.rows == [ComputedCssGridTrackSize::LengthPx(40.0)])
+        && aspect_ratio_rows_supported(&grid.rows)
         && style.layout_dimensions.width == ComputedCssDimension::LengthPx(100.0)
         && style.layout_dimensions.height == ComputedCssDimension::Auto
 }
@@ -285,8 +287,7 @@ fn validate_grid_root(
                     ComputedCssGridTrackSize::MaxContent,
                     ComputedCssGridTrackSize::MaxContent,
                 ]
-                && (grid.rows == [ComputedCssGridTrackSize::Auto]
-                    || grid.rows == [ComputedCssGridTrackSize::LengthPx(40.0)])
+                && aspect_ratio_rows_supported(&grid.rows)
         }
     };
     if !tracks_match
@@ -334,6 +335,68 @@ fn validate_grid_root(
         || style.layout_border.left != 0.0
     {
         return Err(grid_style_failure(style.node_id, "Grid root box geometry"));
+    }
+    Ok(())
+}
+
+fn aspect_ratio_rows_supported(rows: &[ComputedCssGridTrackSize]) -> bool {
+    matches!(rows, [ComputedCssGridTrackSize::Auto])
+        || matches!(
+            rows,
+            [ComputedCssGridTrackSize::LengthPx(value)]
+                if [20.0, 30.0, 40.0, 45.0, 60.0].contains(value)
+        )
+}
+
+fn computed_ratio_matches(style: &ComputedElementStyle, ratio: f32) -> bool {
+    if !ratio.is_finite() || ratio <= 0.0 {
+        return false;
+    }
+    let Some(serialized) = property(style, "aspect-ratio") else {
+        return false;
+    };
+    let Some((numerator, denominator)) = serialized.split_once('/') else {
+        return false;
+    };
+    let (Ok(numerator), Ok(denominator)) = (
+        numerator.trim().parse::<f32>(),
+        denominator.trim().parse::<f32>(),
+    ) else {
+        return false;
+    };
+    if !numerator.is_finite() || !denominator.is_finite() || numerator <= 0.0 || denominator <= 0.0
+    {
+        return false;
+    }
+    numerator / denominator == ratio
+}
+
+fn validate_ratio_geometry(
+    root_style: &ComputedElementStyle,
+    ratio: f32,
+    node: u64,
+) -> Result<(), RuntimeLayoutFailure> {
+    // The profile's long text has a 40px intrinsic inline size. A ratio can
+    // derive its block size from that width, or its inline size from a fixed
+    // row track. Reject unrepresentable intermediates before Taffy sees them.
+    let derived_block = 40.0_f32 / ratio;
+    let fixed_row = root_style
+        .grid_layout
+        .as_ref()
+        .and_then(|grid| grid.rows.first())
+        .and_then(|row| match row {
+            ComputedCssGridTrackSize::LengthPx(value) => Some(*value),
+            _ => None,
+        });
+    let derived_inline = fixed_row.map(|height| height * ratio);
+    if !derived_block.is_finite()
+        || derived_block <= 0.0
+        || derived_inline.is_some_and(|value| !value.is_finite() || value <= 0.0)
+    {
+        return Err(style_failure(
+            node,
+            "aspect-ratio derived geometry is outside the finite positive f32 layout domain",
+        ));
     }
     Ok(())
 }
@@ -553,11 +616,7 @@ fn paragraph_style_for_with_baseline_alias(
         || style.layout_dimensions.max_height != ComputedCssMaxSize::None
         || match style.layout_aspect_ratio {
             None => false,
-            Some(ratio) => {
-                !allow_aspect_ratio
-                    || ratio != 2.0
-                    || property(style, "aspect-ratio") != Some("2 / 1")
-            }
+            Some(ratio) => !allow_aspect_ratio || !computed_ratio_matches(style, ratio),
         }
         || !zero_edges(style.layout_spacing.margin)
         || !zero_edges(style.layout_spacing.padding)

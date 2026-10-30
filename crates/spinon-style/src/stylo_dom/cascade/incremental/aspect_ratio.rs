@@ -41,3 +41,22 @@ pub(crate) fn computed_layout_aspect_ratio(
 
     Ok(Some(width_over_height))
 }
+
+/// Stylo currently serializes a degenerate computed ratio as `auto`, although
+/// CSS Sizing keeps the computed numeric pair and makes only its sizing effect
+/// equivalent to `auto`. Preserve the computed pair in our snapshot string.
+pub(crate) fn computed_aspect_ratio_serialization(computed: &ComputedValues) -> String {
+    let value = computed.clone_aspect_ratio();
+    let ratio = match value.ratio {
+        PreferredRatio::None => return "auto".to_owned(),
+        PreferredRatio::Ratio(ratio) => ratio,
+    };
+    let numerator = (ratio.0).0;
+    let denominator = (ratio.1).0;
+    let pair = format!("{numerator} / {denominator}");
+    if value.auto {
+        format!("auto {pair}")
+    } else {
+        pair
+    }
+}

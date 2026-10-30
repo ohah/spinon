@@ -5,23 +5,23 @@ struct Scene {
     row_template: &'static str,
     first_id: &'static str,
     first_text: &'static str,
-    first_has_ratio: bool,
+    first_ratio: Option<&'static str>,
     second_id: &'static str,
     second_text: &'static str,
-    second_has_ratio: bool,
+    second_ratio: Option<&'static str>,
 }
 
-const SCENES: [Scene; 4] = [
+const SCENES: [Scene; 16] = [
     Scene {
         route_id: "grid-text-aspect-ratio-row",
         root_id: "row-ratio",
         row_template: "auto",
         first_id: "row-ratio-short",
         first_text: "A",
-        first_has_ratio: false,
+        first_ratio: None,
         second_id: "row-ratio-long",
         second_text: "AAAA",
-        second_has_ratio: true,
+        second_ratio: Some("2 / 1"),
     },
     Scene {
         route_id: "grid-text-aspect-ratio-row-control",
@@ -29,10 +29,10 @@ const SCENES: [Scene; 4] = [
         row_template: "auto",
         first_id: "row-control-short",
         first_text: "A",
-        first_has_ratio: false,
+        first_ratio: None,
         second_id: "row-control-long",
         second_text: "AAAA",
-        second_has_ratio: false,
+        second_ratio: None,
     },
     Scene {
         route_id: "grid-text-aspect-ratio-column",
@@ -40,10 +40,10 @@ const SCENES: [Scene; 4] = [
         row_template: "40px",
         first_id: "column-ratio-long",
         first_text: "AAAA",
-        first_has_ratio: true,
+        first_ratio: Some("2 / 1"),
         second_id: "column-ratio-short",
         second_text: "A",
-        second_has_ratio: false,
+        second_ratio: None,
     },
     Scene {
         route_id: "grid-text-aspect-ratio-column-control",
@@ -51,22 +51,162 @@ const SCENES: [Scene; 4] = [
         row_template: "40px",
         first_id: "column-control-long",
         first_text: "AAAA",
-        first_has_ratio: false,
+        first_ratio: None,
         second_id: "column-control-short",
         second_text: "A",
-        second_has_ratio: false,
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-row-1-2",
+        root_id: "row-1-2",
+        row_template: "auto",
+        first_id: "row-1-2-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-1-2-long",
+        second_text: "AAAA",
+        second_ratio: Some("1 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-row-4-3",
+        root_id: "row-4-3",
+        row_template: "auto",
+        first_id: "row-4-3-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-4-3-long",
+        second_text: "AAAA",
+        second_ratio: Some("4 / 3"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-row-3-2",
+        root_id: "row-3-2",
+        row_template: "auto",
+        first_id: "row-3-2-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-3-2-long",
+        second_text: "AAAA",
+        second_ratio: Some("3 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-row-5-2",
+        root_id: "row-5-2",
+        row_template: "auto",
+        first_id: "row-5-2-short",
+        first_text: "A",
+        first_ratio: None,
+        second_id: "row-5-2-long",
+        second_text: "AAAA",
+        second_ratio: Some("5 / 2"),
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-1-2",
+        root_id: "column-1-2",
+        row_template: "60px",
+        first_id: "column-1-2-long",
+        first_text: "AAAA",
+        first_ratio: Some("1 / 2"),
+        second_id: "column-1-2-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-4-3",
+        root_id: "column-4-3",
+        row_template: "45px",
+        first_id: "column-4-3-long",
+        first_text: "AAAA",
+        first_ratio: Some("4 / 3"),
+        second_id: "column-4-3-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-3-2",
+        root_id: "column-3-2",
+        row_template: "30px",
+        first_id: "column-3-2-long",
+        first_text: "AAAA",
+        first_ratio: Some("3 / 2"),
+        second_id: "column-3-2-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-5-2",
+        root_id: "column-5-2",
+        row_template: "20px",
+        first_id: "column-5-2-long",
+        first_text: "AAAA",
+        first_ratio: Some("5 / 2"),
+        second_id: "column-5-2-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-control-60",
+        root_id: "column-control-60",
+        row_template: "60px",
+        first_id: "column-control-60-long",
+        first_text: "AAAA",
+        first_ratio: None,
+        second_id: "column-control-60-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-control-45",
+        root_id: "column-control-45",
+        row_template: "45px",
+        first_id: "column-control-45-long",
+        first_text: "AAAA",
+        first_ratio: None,
+        second_id: "column-control-45-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-control-30",
+        root_id: "column-control-30",
+        row_template: "30px",
+        first_id: "column-control-30-long",
+        first_text: "AAAA",
+        first_ratio: None,
+        second_id: "column-control-30-short",
+        second_text: "A",
+        second_ratio: None,
+    },
+    Scene {
+        route_id: "grid-text-aspect-ratio-range-column-control-20",
+        root_id: "column-control-20",
+        row_template: "20px",
+        first_id: "column-control-20-long",
+        first_text: "AAAA",
+        first_ratio: None,
+        second_id: "column-control-20-short",
+        second_text: "A",
+        second_ratio: None,
     },
 ];
 
 pub(crate) fn runtime_source(scene_id: &str) -> Option<String> {
     let scene = SCENES.iter().find(|scene| scene.route_id == scene_id)?;
-    let first_ratio = if scene.first_has_ratio {
-        "aspect-ratio:2 / 1;"
+    let first_ratio = scene
+        .first_ratio
+        .map(|ratio| format!("aspect-ratio:{ratio};"))
+        .unwrap_or_default();
+    let second_ratio = scene
+        .second_ratio
+        .map(|ratio| format!("aspect-ratio:{ratio};"))
+        .unwrap_or_default();
+    let first_ratio_class = if scene.first_ratio.is_some() {
+        " ratio"
     } else {
         ""
     };
-    let second_ratio = if scene.second_has_ratio {
-        "aspect-ratio:2 / 1;"
+    let second_ratio_class = if scene.second_ratio.is_some() {
+        " ratio"
     } else {
         ""
     };
@@ -97,11 +237,11 @@ return {{ sceneId:'{}', rootId:'{}', nodeIds:['{}', '{}', '{}'] }};
         scene.root_id,
         scene.row_template,
         scene.first_id,
-        if scene.first_has_ratio { " ratio" } else { "" },
+        first_ratio_class,
         first_ratio,
         scene.first_text,
         scene.second_id,
-        if scene.second_has_ratio { " ratio" } else { "" },
+        second_ratio_class,
         second_ratio,
         scene.second_text,
         scene.route_id,
@@ -117,8 +257,8 @@ mod tests {
     use super::{SCENES, runtime_source};
 
     #[test]
-    fn exposes_four_paired_direct_text_aspect_ratio_scenes() {
-        assert_eq!(SCENES.len(), 4);
+    fn exposes_fixed_direct_text_aspect_ratio_range_and_regression_scenes() {
+        assert_eq!(SCENES.len(), 16);
         for scene in SCENES {
             let source = runtime_source(scene.route_id).expect("registered ratio scene");
             assert!(source.len() < 4 * 1024, "{}", scene.route_id);
@@ -129,9 +269,16 @@ mod tests {
             assert_eq!(source.matches("document.createElement('div')").count(), 3);
             assert_eq!(source.matches("document.createTextNode('").count(), 2);
             assert_eq!(
-                source.matches("aspect-ratio:2 / 1;").count(),
-                usize::from(scene.first_has_ratio) + usize::from(scene.second_has_ratio)
+                source.matches("aspect-ratio:").count(),
+                usize::from(scene.first_ratio.is_some())
+                    + usize::from(scene.second_ratio.is_some())
             );
+            for ratio in [scene.first_ratio, scene.second_ratio]
+                .into_iter()
+                .flatten()
+            {
+                assert!(source.contains(&format!("aspect-ratio:{ratio};")));
+            }
         }
         assert!(runtime_source("unknown-grid-text-aspect-ratio-scene").is_none());
     }

@@ -109,7 +109,7 @@ mod source_border;
 mod source_math;
 #[path = "incremental/spacing.rs"]
 mod spacing;
-pub(super) use aspect_ratio::computed_layout_aspect_ratio;
+pub(super) use aspect_ratio::{computed_aspect_ratio_serialization, computed_layout_aspect_ratio};
 pub(super) use border::computed_layout_border;
 pub(super) use compute::{CascadeComputeRequest, compute_cascade_with_reuse};
 #[cfg(test)]
