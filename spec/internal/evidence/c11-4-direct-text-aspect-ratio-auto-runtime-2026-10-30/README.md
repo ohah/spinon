@@ -2,7 +2,7 @@
 
 ## 판정 범위
 
-이 제한 구현 후보는 C11.4 `RuntimeBlockFlexGridTrackSizingV1` fixture-test profile에서 HTML non-replaced direct-text Grid item 하나에 `aspect-ratio: auto <ratio>`의 content-box 기준을 전달한다. 일반 author CSS admission이나 C11.4/C11 전체 완료를 뜻하지 않는다. 공식 완료 수 `72/213`은 유지한다. Chrome 156/Ahem 사전 관측 및 독립 계산은 [precomparison evidence](../c11-4-direct-text-aspect-ratio-auto-precomparison-2026-10-30/README.md)에 있다.
+이 제한 구현 PR #847은 2026-10-30T07:03:22Z Rebase and merge되어 04ef250c7009da5b81579ea1ef14e45981e56fd4에 반영됐다. PR check rollup은 비어 있고 필수 status check가 없어 CI 성공으로 기록하지 않는다. 이 제한 구현 후보는 C11.4 `RuntimeBlockFlexGridTrackSizingV1` fixture-test profile에서 HTML non-replaced direct-text Grid item 하나에 `aspect-ratio: auto <ratio>`의 content-box 기준을 전달한다. 일반 author CSS admission이나 C11.4/C11 전체 완료를 뜻하지 않는다. 공식 완료 수 `72/213`은 유지한다. Chrome 156/Ahem 사전 관측 및 독립 계산은 [precomparison evidence](../c11-4-direct-text-aspect-ratio-auto-precomparison-2026-10-30/README.md)에 있다.
 
 기존 유한 양수 ratio 회귀 16개와 새 `auto <ratio>`·numeric·no-ratio control 7개를 함께 실행했다. 새 장면은 기존 숫자 ratio 동작과 auto ratio의 sizing basis 차이, content-box control, definite row의 overflow를 비교한다.
 

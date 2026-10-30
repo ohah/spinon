@@ -785,9 +785,9 @@ Taffy의 grid intrinsic contribution 경로는 known ratio-derived size가 non-r
 
 C11.4와 상위 C11 항목은 미완료이며 공식 완료 `72/213`을 그대로 유지한다. 이 제한 구현 PR [#842](https://github.com/ohah/spinon/pull/842)은 2026-10-30T05:04:03Z Rebase and merge되어 `78fd0b84e4132e1f91bd293735e97b33cbf0d9a0`에 반영됐다. PR check rollup은 비어 있고 main 필수 상태 검사는 설정되지 않아 CI 통과를 주장하지 않는다.
 
-## C11.4 direct text `auto <ratio>` content-box transfer · 제한 opt-in fixture 후보
+## C11.4 direct text `auto <ratio>` content-box transfer · 제한 opt-in fixture 구현
 
-내부 계약 숫자 버전은 `0.1.0`으로 유지한다. 이 구현 후보는 기존 `c04-runtime-gpu-fixture-test` opt-in `RuntimeBlockFlexGridTrackSizingV1`의 고정 Ahem direct-text fixture에만 `aspect-ratio: auto <ratio>`를 연결한다. 일반 author CSS admission, public API/ABI, 전체 C11.4 지원을 추가하지 않는다. 기준값은 CSS Grid 2025 CRD의 non-replaced grid item sizing 및 intrinsic track contribution 규칙에서 독립 계산하고 Chrome 156/Ahem의 고정 장면으로 대조한다. Chrome의 1/64 CSS px geometry quantization은 rational 기대값과 분리한다.
+내부 계약 숫자 버전은 0.1.0으로 유지한다. 구현 PR [#847](https://github.com/ohah/spinon/pull/847)은 2026-10-30T07:03:22Z Rebase and merge되어 04ef250c7009da5b81579ea1ef14e45981e56fd4에 반영됐다. 이 제한 fixture는 기존 c04-runtime-gpu-fixture-test opt-in RuntimeBlockFlexGridTrackSizingV1에서 HTML non-replaced direct-text Grid item 하나에 `aspect-ratio: auto <ratio>`의 content-box 기준을 전달한다. 일반 author CSS admission, public API/ABI, 전체 C11.4 지원은 추가하지 않는다. PR check rollup은 비어 있고 main 필수 status check는 설정되지 않아 CI 성공으로 기록하지 않는다. 기준값은 CSS Grid 2025 CRD의 non-replaced grid item sizing 및 intrinsic track contribution 규칙에서 독립 계산하고 Chrome 156/Ahem의 고정 장면으로 대조한다. Chrome의 1/64 CSS px geometry quantization은 rational 기대값과 분리한다.
 
 Stylo snapshot은 수치 ratio와 sizing basis를 `ComputedLayoutAspectRatio { ratio, sizing_box }`로 함께 보존한다. 일반 numeric `<ratio>`에는 `BoxSizing`, `auto <ratio>`에는 `ContentBox`를 기록한다. Cascade에서 typed ratio를 추출할 수 없으면 computed serialization이 정확히 `auto`인지 확인한다. `auto <ratio>`의 typed exposure는 C11.4 runtime Grid style profile에서만 허용하며, 다른 profile의 거부 동작을 유지한다. 입력 ratio는 finite-positive이고, typed 값과 computed `aspect-ratio` serialization의 numerator/denominator 및 `auto` 유무가 일치해야 한다. Degenerate ratio, malformed/mismatched value와 표현 불가능한 파생 geometry는 명시 오류로 닫는다.
 

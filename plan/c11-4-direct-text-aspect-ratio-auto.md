@@ -1,6 +1,6 @@
 # C11.4 direct-text `auto <ratio>` content-box 계획
 
-**상태:** 계획 PR [#845](https://github.com/ohah/spinon/pull/845)와 projection-gate 보완 PR [#846](https://github.com/ohah/spinon/pull/846)은 병합됐다. 구현은 기존 16개 회귀 장면과 신규 7개 장면을 Android·iOS Simulator에서 각각 23/23, 표면 표본 72/72 exact로 통과했고 Rust·Clippy 및 FFI archive 경계를 확인했다. 별도 구현/runtime 20관점 및 PR diff 30관점 검토도 기록했다. 인접 C07.3 computed-style 문자열 비교 1건(4/5)은 이 변경의 serializer 수정 없이 남아 있어 PR 전 별도 판정이 필요하다. 구현 PR 검토·병합은 아직 완료되지 않았다. C11.4/C11 완료 표시는 아니다.
+**상태:** 계획 PR [#845](https://github.com/ohah/spinon/pull/845)와 exact-owner projection gate amendment PR [#846](https://github.com/ohah/spinon/pull/846)에 이어 구현 PR [#847](https://github.com/ohah/spinon/pull/847)이 2026-10-30T07:03:22Z Rebase and merge되어 04ef250c7009da5b81579ea1ef14e45981e56fd4에 반영됐다. 기존 회귀 16개와 신규 7개 장면은 Android·iOS Simulator에서 각각 23/23, 표면 표본 72/72 exact였다. PR check rollup은 비어 있고 필수 status check도 설정되지 않아 CI 성공으로 기록하지 않는다. 인접 C07.3 serialization test 4/5의 문자열 차이는 미해결로 기록했다. 이 제한 fixture는 C11.4/C11 전체 완료가 아니다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [finite-positive ratio 선행 slice](./c11-4-direct-text-aspect-ratio-finite.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
