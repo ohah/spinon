@@ -1,0 +1,363 @@
+ios-simulator 1/51: grid-text-aspect-ratio-row passed
+ios-simulator 2/51: grid-text-aspect-ratio-row-control passed
+ios-simulator 3/51: grid-text-aspect-ratio-column passed
+ios-simulator 4/51: grid-text-aspect-ratio-column-control passed
+ios-simulator 5/51: grid-text-aspect-ratio-range-row-1-2 passed
+ios-simulator 6/51: grid-text-aspect-ratio-range-row-4-3 passed
+ios-simulator 7/51: grid-text-aspect-ratio-range-row-3-2 passed
+ios-simulator 8/51: grid-text-aspect-ratio-range-row-5-2 passed
+ios-simulator 9/51: grid-text-aspect-ratio-range-column-1-2 passed
+ios-simulator 10/51: grid-text-aspect-ratio-range-column-4-3 passed
+ios-simulator 11/51: grid-text-aspect-ratio-range-column-3-2 passed
+ios-simulator 12/51: grid-text-aspect-ratio-range-column-5-2 passed
+ios-simulator 13/51: grid-text-aspect-ratio-range-column-control-60 passed
+ios-simulator 14/51: grid-text-aspect-ratio-range-column-control-45 passed
+ios-simulator 15/51: grid-text-aspect-ratio-range-column-control-30 passed
+ios-simulator 16/51: grid-text-aspect-ratio-range-column-control-20 passed
+ios-simulator 17/51: grid-text-aspect-ratio-auto-row-auto-3-2-border-box passed
+ios-simulator 18/51: grid-text-aspect-ratio-auto-row-numeric-3-2-border-box passed
+ios-simulator 19/51: grid-text-aspect-ratio-auto-row-no-ratio-border-box passed
+ios-simulator 20/51: grid-text-aspect-ratio-auto-row-auto-3-2-content-box passed
+ios-simulator 21/51: grid-text-aspect-ratio-row-60-auto-3-2-border-box passed
+ios-simulator 22/51: grid-text-aspect-ratio-row-60-numeric-3-2-border-box passed
+ios-simulator 23/51: grid-text-aspect-ratio-row-60-no-ratio-border-box passed
+ios-simulator 24/51: grid-text-aspect-ratio-minmax-numeric-baseline passed
+ios-simulator 25/51: grid-text-aspect-ratio-minmax-min-width-60 passed
+ios-simulator 26/51: grid-text-aspect-ratio-minmax-min-width-45 passed
+ios-simulator 27/51: grid-text-aspect-ratio-minmax-max-width-30-min-width-0 passed
+ios-simulator 28/51: grid-text-aspect-ratio-minmax-min-height-30 passed
+ios-simulator 29/51: grid-text-aspect-ratio-minmax-max-height-15-min-height-0 passed
+ios-simulator 30/51: grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0 passed
+ios-simulator 31/51: grid-text-aspect-ratio-minmax-max-height-17-75-min-controls passed
+ios-simulator 32/51: grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20 passed
+ios-simulator 33/51: grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30 passed
+ios-simulator 34/51: grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40 passed
+ios-simulator 35/51: grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20 passed
+ios-simulator 36/51: grid-text-aspect-ratio-minmax-auto-ratio-min-width-60 passed
+ios-simulator 37/51: grid-text-aspect-ratio-minmax-no-ratio-min-width-60 passed
+ios-simulator 38/51: grid-text-aspect-ratio-minmax-no-ratio-min-height-30 passed
+ios-simulator 39/51: grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60 passed
+ios-simulator 40/51: grid-text-aspect-ratio-minmax-auto-content-box-min-width-60 passed
+ios-simulator 41/51: grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls passed
+ios-simulator 42/51: grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls passed
+ios-simulator 43/51: grid-text-aspect-ratio-multispan-span-baseline passed
+ios-simulator 44/51: grid-text-aspect-ratio-multispan-span-min-width-45 passed
+ios-simulator 45/51: grid-text-aspect-ratio-multispan-span-min-width-60 passed
+ios-simulator 46/51: grid-text-aspect-ratio-multispan-span-min-height-30 passed
+ios-simulator 47/51: grid-text-aspect-ratio-multispan-span-max-width-30-min-width-0 passed
+ios-simulator 48/51: grid-text-aspect-ratio-multispan-span-max-height-15-auto-min-control passed
+ios-simulator 49/51: grid-text-aspect-ratio-multispan-span-max-height-15-min-width-0 passed
+ios-simulator 50/51: grid-text-aspect-ratio-multispan-span-max-height-17-75-range passed
+ios-simulator 51/51: grid-text-aspect-ratio-multispan-span-no-ratio passed
+{
+  "evidenceDirectory": "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-runtime-2026-10-30/ios-simulator/c114-text-ratio-mvuzeirh-6322b22d",
+  "target": "ios-simulator",
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-1-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-4-3",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-3-2",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-5-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-1-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-4-3",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-3-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-5-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-60",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-45",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-30",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-20",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-baseline",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-45",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-width-30-min-width-0",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-17-75-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-height-30",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-baseline",
+      "boxCount": 2,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-45",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-width-60",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-min-height-30",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-width-30-min-width-0",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-auto-min-control",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-15-min-width-0",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-max-height-17-75-range",
+      "boxCount": 2,
+      "traceParts": 13,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-multispan-span-no-ratio",
+      "boxCount": 2,
+      "traceParts": 16,
+      "pixelSamples": 4
+    }
+  ]
+}

@@ -18,6 +18,9 @@ use super::AHEM;
 
 const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 
+#[path = "generic_direct_text/aspect_ratio_multispan.rs"]
+mod aspect_ratio_multispan;
+
 #[derive(Clone, Copy, Eq, PartialEq)]
 enum DirectTextProfile {
     Intrinsic,
@@ -50,6 +53,15 @@ pub(super) fn prepare_aspect_ratio_minmax(
     styles: &ComputedStyleSnapshot,
 ) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
     prepare_with_profile(snapshot, root, styles, DirectTextProfile::AspectRatioMinMax)
+}
+
+/// One direct-text item spanning two equal max-content columns with a ratio/minmax profile.
+pub(super) fn prepare_aspect_ratio_multispan(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
+    aspect_ratio_multispan::prepare(snapshot, root, styles)
 }
 
 fn prepare_with_profile(
@@ -622,6 +634,7 @@ enum DirectTextParagraphProfile {
     Plain,
     AspectRatio,
     AspectRatioMinMax,
+    AspectRatioMinMaxSpan,
     Baseline { allow_explicit_grid_placement: bool },
 }
 
@@ -670,6 +683,21 @@ pub(super) fn paragraph_style_for_aspect_ratio_minmax(
     )
 }
 
+pub(super) fn paragraph_style_for_aspect_ratio_minmax_span(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(
+        styles,
+        style,
+        font_size,
+        align_self,
+        DirectTextParagraphProfile::AspectRatioMinMaxSpan,
+    )
+}
+
 pub(super) fn paragraph_style_for_baseline_fixture(
     styles: &ComputedStyleSnapshot,
     style: &ComputedElementStyle,
@@ -700,6 +728,7 @@ fn paragraph_style_for_with_baseline_alias(
             DirectTextParagraphProfile::Plain => (false, false, false),
             DirectTextParagraphProfile::AspectRatio => (false, true, false),
             DirectTextParagraphProfile::AspectRatioMinMax => (false, true, true),
+            DirectTextParagraphProfile::AspectRatioMinMaxSpan => (true, true, true),
             DirectTextParagraphProfile::Baseline {
                 allow_explicit_grid_placement,
             } => (allow_explicit_grid_placement, false, false),

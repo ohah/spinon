@@ -130,6 +130,20 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if let Some(input) = grid_text_baseline::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
+    if let Some(input) =
+        generic_direct_text::prepare_aspect_ratio_multispan(snapshot, root, styles)?
+    {
+        if let Some(node) = input.aspect_ratio_minmax_node
+            && !input.paragraph_styles.contains_key(&node)
+        {
+            return Err(layout_failure(
+                "c114_text_aspect_ratio_multispan_owner",
+                Some(node.get()),
+                None,
+            ));
+        }
+        return Ok(Some(input));
+    }
     if let Some(input) = generic_direct_text::prepare_aspect_ratio_minmax(snapshot, root, styles)? {
         if let Some(node) = input.aspect_ratio_minmax_node
             && !input.paragraph_styles.contains_key(&node)

@@ -30,6 +30,8 @@ CSS Grid 2025 CRD §11.5 resolves single-track items before adding the space nee
 
 All nine DOM observations match the independently derived track/frame values. The `max-height` pair distinguishes the automatic minimum: without `min-width:0`, the 40px Ahem min-content floor keeps the inline contribution at 40px; with it, the ratio-adjusted 30px contribution distributes as 15px per track. For the latter cases, text width exceeds the item box by 10px or 4.5px and remains visible under the fixture's `overflow:visible` setting.
 
+The machine-readable expected values also record the §11.5.1 span distribution for each case: both column bases start at zero with unbounded growth limits, then the item's independently derived inline contribution is split equally across the two columns. They retain the min-content, max-content, and minimum contributions separately from the final used track sizes. The recorded trace multiplicities describe this runtime's diagnostic output; they are not CSS Grid requirements. The verifier checks these calculations against the item dimensions and constraint-derived minimums.
+
 Re-run the artifact check with `node verify-precomparison.mjs`. It validates the nine case IDs, typed placement, computed ratio/font/constraints, track/row and root-relative item/text geometry, all hashes in this README, and a built-in one-pixel mutation that must be rejected. Final output: `Verified 9/9 Agent Browser geometry cases, artifact hashes, and a rejected geometry mutation.`
 
 Normative source: [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#algo-track-sizing), [§11.5.1](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#extra-space), [§6.6](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#min-size-auto), and [CSS Sizing Level 4 §4](https://www.w3.org/TR/css-sizing-4/#aspect-ratio). The browser values corroborate the calculation; they are not a WPT or product conformance result.
@@ -41,7 +43,7 @@ Normative source: [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/C
 | Canonical HTML | `009bf8674384024e66bee140c838e8de6afc22dae2c2a94bd917749084154888` |
 | Ahem TTF | `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448` |
 | Agent Browser observation JSON | `134880bca62c6538a6a2d6910ec6dce595913fdbdfc034d2de5bfef16727c9fc` |
-| Independent expected values | `bae5668e1f5da634c83f24f37e3896285d8825b41810ee40b3131d25d3de16f2` |
+| Independent expected values | `a5e976f767e3256c909b01bfe93a0c423298db474fb6c0276d0ebded88cea7f9` |
 | Agent Browser screenshot | `4c4429b195f4e18b160384534772a487ea9881f5a430477bc4705c36c5bbee04` |
 
 ## 한계

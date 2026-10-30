@@ -239,7 +239,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         ) {
             this.rootHeight = rootHeight;
             this.columns = columns;
-            this.items = new C114GenericDirectTextItemExpectation[] {first, second};
+            this.items = second == null
+                    ? new C114GenericDirectTextItemExpectation[] {first}
+                    : new C114GenericDirectTextItemExpectation[] {first, second};
         }
     }
 
@@ -284,6 +286,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         && (sceneId.startsWith("grid-text-aspect-ratio-range-")
                                 || sceneId.startsWith("grid-text-aspect-ratio-auto-")
                                 || sceneId.startsWith("grid-text-aspect-ratio-row-60-")
+                                || sceneId.startsWith("grid-text-aspect-ratio-multispan-")
                                 || sceneId.startsWith(
                                         "grid-text-aspect-ratio-minmax-")));
     }
@@ -450,6 +453,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static C114GenericDirectTextSceneExpectation
             c114GenericDirectTextBoxAspectRatioExpectation(String sceneId) {
+        C114DirectTextMultispanSceneExpectation multispan =
+                c114DirectTextMultispanSceneExpectation(sceneId);
+        if (multispan != null) {
+            return new C114GenericDirectTextSceneExpectation(multispan.height,
+                    new double[] {multispan.width / 2.0, multispan.width / 2.0},
+                    new C114GenericDirectTextItemExpectation(
+                            2, 0, multispan.width, multispan.height,
+                            multispan.width, 40, 0, 0, 0,
+                            40, 40, 10, 10, "AAAA", "AAAA", "Normal", "Normal",
+                            new double[] {40}),
+                    null);
+        }
         if (sceneId == null) return null;
         C114AspectRatioMinmaxSceneExpectation minmax =
                 c114AspectRatioMinmaxSceneExpectation(sceneId);
@@ -477,6 +492,62 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return c114GenericDirectTextBoxScene(60, 50, 20, "AAAA", "A");
             default:
                 return null;
+        }
+    }
+
+    private static final class C114DirectTextMultispanSceneExpectation {
+        final double width;
+        final double height;
+        final double minimumColumnContribution;
+        final double minimumRowContribution;
+
+        C114DirectTextMultispanSceneExpectation(
+                double width, double height,
+                double minimumColumnContribution, double minimumRowContribution
+        ) {
+            this.width = width;
+            this.height = height;
+            this.minimumColumnContribution = minimumColumnContribution;
+            this.minimumRowContribution = minimumRowContribution;
+        }
+    }
+
+    private static C114DirectTextMultispanSceneExpectation
+            c114DirectTextMultispanSceneExpectation(String sceneId) {
+        String prefix = "grid-text-aspect-ratio-multispan-";
+        if (sceneId == null || !sceneId.startsWith(prefix)) return null;
+        switch (sceneId.substring(prefix.length())) {
+            case "span-baseline": return new C114DirectTextMultispanSceneExpectation(40, 20, 0, 20);
+            case "span-min-width-45": return new C114DirectTextMultispanSceneExpectation(45, 22.5, 45, 22.5);
+            case "span-min-width-60": return new C114DirectTextMultispanSceneExpectation(60, 30, 60, 30);
+            case "span-min-height-30": return new C114DirectTextMultispanSceneExpectation(60, 30, 0, 30);
+            case "span-max-width-30-min-width-0": return new C114DirectTextMultispanSceneExpectation(30, 15, 0, 15);
+            case "span-max-height-15-auto-min-control": return new C114DirectTextMultispanSceneExpectation(40, 15, 0, 0);
+            case "span-max-height-15-min-width-0": return new C114DirectTextMultispanSceneExpectation(30, 15, 0, 0);
+            case "span-max-height-17-75-range": return new C114DirectTextMultispanSceneExpectation(35.5, 17.75, 0, 0);
+            case "span-no-ratio": return new C114DirectTextMultispanSceneExpectation(40, 10, 0, 10);
+            default: return null;
+        }
+    }
+
+    private static double[] c114DirectTextMultispanStyleConstraints(String sceneId) {
+        String prefix = "grid-text-aspect-ratio-multispan-";
+        if (sceneId == null || !sceneId.startsWith(prefix)) return null;
+        double auto = Double.NaN;
+        switch (sceneId.substring(prefix.length())) {
+            case "span-baseline":
+            case "span-no-ratio": return new double[] {auto, auto, auto, auto};
+            case "span-min-width-45": return new double[] {45, auto, auto, auto};
+            case "span-min-width-60": return new double[] {60, auto, auto, auto};
+            case "span-min-height-30": return new double[] {auto, auto, 30, auto};
+            case "span-max-width-30-min-width-0": return new double[] {0, 30, auto, auto};
+            case "span-max-height-15-auto-min-control":
+                return new double[] {auto, auto, 0, 15};
+            case "span-max-height-15-min-width-0":
+                return new double[] {0, auto, 0, 15};
+            case "span-max-height-17-75-range":
+                return new double[] {0, auto, 0, 17.75};
+            default: return null;
         }
     }
 
@@ -570,6 +641,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114GenericDirectTextBoxRootId(String sceneId) {
+        if (c114DirectTextMultispanSceneExpectation(sceneId) != null) return sceneId;
         String minmaxPrefix = "grid-text-aspect-ratio-minmax-";
         if (sceneId != null && sceneId.startsWith(minmaxPrefix)
                 && c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
@@ -4482,7 +4554,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114AspectRatioNodeFramesMatch(String sceneId, String report) {
         C114GenericDirectTextSceneExpectation scene = c114GenericDirectTextExpectation(sceneId);
-        if (scene == null || scene.items.length != 2) return false;
+        if (scene == null || scene.items.length == 0) return false;
         int rootMarker = report.indexOf("root_frame_css_px=");
         if (rootMarker < 0) return false;
         int rootStart = rootMarker + "root_frame_css_px=".length();
@@ -5575,8 +5647,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || environmentRevision == null || environmentRevision < 0
                     || c114GenericJsonInteger(revision, "intrinsicSize") == null
                     || c114GenericJsonInteger(revision, "intrinsicSize") < 0
-                    || inputs == null || inputs.length() != 2) return false;
-            int[] expectedNodes = {scene.items[0].node, scene.items[1].node};
+                    || inputs == null || inputs.length() != scene.items.length) return false;
+            int[] expectedNodes = new int[scene.items.length];
+            for (int index = 0; index < scene.items.length; index++) {
+                expectedNodes[index] = scene.items[index].node;
+            }
             for (int index = 0; index < inputs.length(); index++) {
                 org.json.JSONObject input = inputs.optJSONObject(index);
                 org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
@@ -5622,9 +5697,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         ? null : measurement.optJSONObject("source");
                 Integer node = measurement == null
                         ? null : c114GenericJsonInteger(measurement, "node");
-                int expectedIndex = node == null ? -1
-                        : node == expectedNodes[0] ? 0
-                        : node == expectedNodes[1] ? 1 : -1;
+                int expectedIndex = -1;
+                if (node != null) {
+                    for (int candidate = 0; candidate < expectedNodes.length; candidate++) {
+                        if (node == expectedNodes[candidate]) {
+                            expectedIndex = candidate;
+                            break;
+                        }
+                    }
+                }
                 String availableSpace = c114GenericJsonString(measurement, "availableSpace");
                 org.json.JSONObject contentSize = measurement == null
                         ? null : measurement.optJSONObject("contentSize");
@@ -5656,7 +5737,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeightNodes[expectedIndex] = true;
                 }
             }
-            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null
+                    || c114DirectTextMultispanSceneExpectation(sceneId) != null) {
                 if (measurements.length() == 0) return false;
             } else if (c114IsGridTextAspectRatioScene(sceneId)) {
                 if (c114IsGridTextAspectRatioColumnScene(sceneId)) {
@@ -5688,6 +5770,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             boolean layoutsMatch = c114GenericDirectTextTextLayoutsMatch(
                     sceneId, scene, diagnostics, revision);
             boolean traceMatches = c114GenericDirectTextTraceMatches(sceneId, diagnostics);
+            if (c114DirectTextMultispanSceneExpectation(sceneId) != null
+                    && (!layoutsMatch || !traceMatches)) {
+                Log.e(TAG, "SPINON_C114_MULTISPAN_TEXT_CHECK stage=final scene=" + sceneId
+                        + " layouts=" + layoutsMatch + " trace=" + traceMatches);
+            }
             if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null
                     && (!layoutsMatch || !traceMatches)) {
                 Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=final scene=" + sceneId
@@ -5723,6 +5810,21 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 constraints[2] = c114ContentBoxConstraint(constraints[2], 6.0);
                 constraints[3] = c114ContentBoxConstraint(constraints[3], 6.0);
             }
+            return c114GenericAxisMinmaxContributionMatches(
+                    width, expected.minContent, expected.maxContent,
+                    expected.paddingInline, expected.borderWidth,
+                    constraints[0], constraints[1])
+                    && c114GenericAxisMinmaxContributionMatches(
+                            height, expected.minContentHeight, expected.maxContentHeight,
+                            expected.paddingBlock, expected.borderWidth,
+                            constraints[2], constraints[3]);
+        }
+        if (c114DirectTextMultispanSceneExpectation(sceneId) != null) {
+            double[] constraints = c114DirectTextMultispanStyleConstraints(sceneId);
+            if (constraints == null) return false;
+            if (itemIndex != 0) constraints = new double[] {
+                Double.NaN, Double.NaN, Double.NaN, Double.NaN
+            };
             return c114GenericAxisMinmaxContributionMatches(
                     width, expected.minContent, expected.maxContent,
                     expected.paddingInline, expected.borderWidth,
@@ -6002,6 +6104,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }, 0.0)) {
             return false;
         }
+        C114DirectTextMultispanSceneExpectation multispan =
+                c114DirectTextMultispanSceneExpectation(sceneId);
+        if (multispan != null) {
+            return c114GenericDirectTextMultispanTraceMatches(
+                    columns, rows, scene, multispan);
+        }
         C114GenericDirectTextItemExpectation first = scene.items[0];
         C114GenericDirectTextItemExpectation second = scene.items[1];
         if (c114IsGridTextAspectRatioScene(sceneId)) {
@@ -6109,6 +6217,155 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     + "," + secondRow + " observed=" + rows.optJSONArray("contributions"));
         }
         return rowsMatch;
+    }
+
+    private static boolean c114GenericDirectTextMultispanTraceMatches(
+            org.json.JSONObject columns, org.json.JSONObject rows,
+            C114GenericDirectTextSceneExpectation scene,
+            C114DirectTextMultispanSceneExpectation expected
+    ) throws org.json.JSONException {
+        if (!Integer.valueOf(0).equals(c114GenericJsonInteger(columns, "sequence"))
+                || !Integer.valueOf(1).equals(c114GenericJsonInteger(rows, "sequence"))
+                || !c114GenericNullableTraceFieldsMatch(columns)
+                || !c114GenericNullableTraceFieldsMatch(rows)) return false;
+        double[] columnSizes = {expected.width / 2.0, expected.width / 2.0};
+        boolean columnStagesMatch = c114GenericDirectTextMultispanStagesMatch(
+                columns, columnSizes, 2, false, 0);
+        boolean rowStagesMatch = c114GenericDirectTextMultispanStagesMatch(
+                rows, new double[] {expected.height}, 1, true,
+                expected.minimumRowContribution);
+        if (!columnStagesMatch || !rowStagesMatch) {
+            Log.e(TAG, "SPINON_C114_MULTISPAN_TRACE_CHECK stage=stages columns="
+                    + columnStagesMatch + " rows=" + rowStagesMatch
+                    + " width=" + expected.width + " height=" + expected.height);
+            return false;
+        }
+
+        int[] columnItems = {2, 2, 2, 2, 2};
+        int[] columnSpans = {2, 2, 2, 2, 2};
+        String[] columnKinds = {"Minimum", "MinContent", "MinContent", "MaxContent", "MaxContent"};
+        double[] columnValues = {
+            expected.minimumColumnContribution,
+            expected.width, expected.width, expected.width, expected.width
+        };
+        int[] rowItems = {2, 2, 2};
+        int[] rowSpans = {1, 1, 1};
+        String[] rowKinds = {"Minimum", "MinContent", "MaxContent"};
+        double[] rowValues = {
+            expected.minimumRowContribution, expected.height, expected.height
+        };
+        boolean columnContributionsMatch = c114GenericDirectTextSpanContributionsMatch(
+                columns, columnItems, columnSpans, columnKinds, columnValues);
+        boolean rowContributionsMatch = c114GenericDirectTextSpanContributionsMatch(
+                rows, rowItems, rowSpans, rowKinds, rowValues);
+        if (!columnContributionsMatch || !rowContributionsMatch) {
+            Log.e(TAG, "SPINON_C114_MULTISPAN_TRACE_CHECK stage=contributions columns="
+                    + columnContributionsMatch + " rows=" + rowContributionsMatch
+                    + " width=" + expected.width + " height=" + expected.height);
+        }
+        return columnContributionsMatch && rowContributionsMatch;
+    }
+
+    private static boolean c114GenericDirectTextMultispanStagesMatch(
+            org.json.JSONObject pass, double[] expectedSizes, int span, boolean stretchApplied,
+            double initialIntrinsicBase
+    ) throws org.json.JSONException {
+        org.json.JSONArray stages = pass.optJSONArray("stages");
+        String[] expectedStages = {
+            "Initialize",
+            "IntrinsicItemBatch { span: " + span + ", crosses_flexible_track: false }",
+            "IntrinsicSizingComplete",
+            "MaximizeTracks",
+            "ExpandFlexibleTracks",
+            "StretchAutoTracks { applied: " + stretchApplied + " }"
+        };
+        int trackCount = expectedSizes.length * 2 + 1;
+        if (stages == null || stages.length() != expectedStages.length) return false;
+        for (int stageIndex = 0; stageIndex < stages.length(); stageIndex++) {
+            org.json.JSONObject stage = stages.optJSONObject(stageIndex);
+            org.json.JSONArray tracks = stage == null ? null : stage.optJSONArray("tracks");
+            if (stage == null || !c114GenericStageNameMatches(
+                        c114GenericJsonString(stage, "stage"), expectedStages[stageIndex])
+                    || tracks == null || tracks.length() != trackCount) return false;
+            int cssTrack = 0;
+            for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
+                org.json.JSONObject track = tracks.optJSONObject(trackIndex);
+                boolean gutter = trackIndex % 2 == 0;
+                boolean outerGutter = trackIndex == 0 || trackIndex == tracks.length() - 1;
+                double expectedBase;
+                Double expectedGrowthLimit;
+                if (gutter) {
+                    expectedBase = 0;
+                    expectedGrowthLimit = 0.0;
+                } else {
+                    expectedBase = stageIndex == 0 ? 0
+                            : span == 1 && stageIndex < 3
+                            ? initialIntrinsicBase : expectedSizes[cssTrack];
+                    int growthLimitStage = span == 1 ? 1 : 2;
+                    expectedGrowthLimit = stageIndex < growthLimitStage
+                            ? null : expectedSizes[cssTrack];
+                    cssTrack++;
+                }
+                if (track == null
+                        || !Integer.valueOf(trackIndex).equals(
+                                c114GenericJsonInteger(track, "internalIndex"))
+                        || !Boolean.valueOf(gutter).equals(
+                                c114GenericJsonBoolean(track, "gutter"))
+                        || !Boolean.valueOf(gutter && outerGutter).equals(
+                                c114GenericJsonBoolean(track, "collapsed"))
+                        || !Boolean.FALSE.equals(
+                                c114GenericJsonBoolean(track, "infinitelyGrowable"))
+                        || !c114GenericJsonNear(track, "baseSize", expectedBase, 0.0001)) {
+                    return false;
+                }
+                if (expectedGrowthLimit == null) {
+                    if (!track.has("growthLimit") || !track.isNull("growthLimit")) return false;
+                } else if (!c114GenericJsonNear(
+                        track, "growthLimit", expectedGrowthLimit, 0.0001)) {
+                    return false;
+                }
+            }
+            if (cssTrack != expectedSizes.length) return false;
+        }
+        return true;
+    }
+
+    private static boolean c114GenericDirectTextSpanContributionsMatch(
+            org.json.JSONObject pass, int[] expectedItems, int[] expectedSpans,
+            String[] expectedKinds, double[] expectedValues
+    ) throws org.json.JSONException {
+        org.json.JSONArray contributions = pass.optJSONArray("contributions");
+        if (contributions == null || expectedItems.length != expectedSpans.length
+                || expectedItems.length != expectedKinds.length
+                || expectedItems.length != expectedValues.length
+                || contributions.length() != expectedItems.length) return false;
+        boolean[] observed = new boolean[expectedItems.length];
+        for (int index = 0; index < contributions.length(); index++) {
+            org.json.JSONObject contribution = contributions.optJSONObject(index);
+            Integer item = c114GenericJsonInteger(contribution, "item");
+            Integer span = c114GenericJsonInteger(contribution, "span");
+            String kind = c114GenericJsonString(contribution, "kind");
+            Boolean crossesFlexibleTrack = c114GenericJsonBoolean(
+                    contribution, "crossesFlexibleTrack");
+            Double value = c114GenericJsonFiniteNumber(contribution, "value");
+            if (item == null || span == null || kind == null
+                    || !Boolean.FALSE.equals(crossesFlexibleTrack) || value == null) return false;
+            int matched = -1;
+            for (int expectedIndex = 0; expectedIndex < expectedItems.length; expectedIndex++) {
+                if (!observed[expectedIndex]
+                        && item == expectedItems[expectedIndex]
+                        && span == expectedSpans[expectedIndex]
+                        && kind.equals(expectedKinds[expectedIndex])
+                        && Math.abs(value - expectedValues[expectedIndex]) <= 1.0 / 64.0) {
+                    matched = expectedIndex;
+                    break;
+                }
+            }
+            if (matched < 0) return false;
+            observed[matched] = true;
+        }
+        for (boolean present : observed) if (!present) return false;
+        return true;
     }
 
     private static boolean c114GenericNullableTraceFieldsMatch(org.json.JSONObject pass) {
@@ -10156,6 +10413,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         if (isC114ZeroFixedMaximumPixelSceneId(sceneId)) return 2;
         if (isC114FixedMaximumPixelSceneId(sceneId)) return 2;
+        if (c114DirectTextMultispanSceneExpectation(sceneId) != null) return 2;
         if (C114FitContentImplicitColumnWpt.isScene(sceneId)) {
             return C114FitContentImplicitColumnWpt.expectedBoxCount(sceneId);
         }
@@ -11064,8 +11322,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         c114GenericDirectTextExpectation(sceneId);
                 rootId = c114GenericDirectTextBoxRootId(sceneId);
                 if (expectation == null || rootId == null) return false;
+                C114DirectTextMultispanSceneExpectation multispan =
+                        c114DirectTextMultispanSceneExpectation(sceneId);
                 int firstWidth = (int) expectation.items[0].width;
-                if (sceneId.startsWith("grid-text-aspect-ratio-minmax-")) {
+                if (multispan != null) {
+                    expectedPoints = new int[][] {
+                        {(int) Math.floor(firstWidth / 2.0), 5},
+                        {(int) Math.ceil(expectation.items[0].width) + 1, 5},
+                        {80, 5}, {105, 5}
+                    };
+                } else if (sceneId.startsWith("grid-text-aspect-ratio-minmax-")) {
                     expectedPoints = new int[][] {
                         {5, 5}, {firstWidth + 5, 5}, {firstWidth + 15, 5}
                     };
@@ -11120,9 +11386,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     }
             }
             }
-            boolean hasFirstItemEdgeSample = expectedPoints.length == 4
+            boolean multispan = c114DirectTextMultispanSceneExpectation(sceneId) != null;
+            boolean hasFirstItemEdgeSample = expectedPoints.length == 4 && !multispan
                     && sceneId.startsWith("grid-text-aspect-ratio-row-60-");
-            String[] expectedIds = expectedPoints.length == 4
+            String[] expectedIds = multispan
+                    ? new String[] {sceneId + "-first-item", sceneId + "-after-item",
+                            sceneId + "-root-clear", sceneId + "-outside-root-clear"}
+                    : expectedPoints.length == 4
                     ? new String[] {sceneId + "-first-item", sceneId + "-second-item",
                             sceneId + (hasFirstItemEdgeSample
                                     ? "-first-item-edge" : "-unused-root"),
@@ -17840,7 +18110,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (sampleId.endsWith("-first-item")) return new int[] {229, 72, 77};
             if (sampleId.endsWith("-first-item-edge")) return new int[] {229, 72, 77};
             if (sampleId.endsWith("-second-item")) return new int[] {58, 134, 255};
-            if (sampleId.endsWith("-unused-root")) return new int[] {255, 255, 255};
+            if (sampleId.endsWith("-outside-root-clear")) return new int[] {0, 0, 0};
+            if (sampleId.endsWith("-unused-root") || sampleId.endsWith("-after-item")
+                    || sampleId.endsWith("-root-clear")) {
+                return new int[] {255, 255, 255};
+            }
             if (("grid-text-aspect-ratio-row-60-auto-3-2-border-box".equals(sceneId)
                     || "grid-text-aspect-ratio-row-60-numeric-3-2-border-box".equals(sceneId))
                     && sampleId.endsWith("-outside-root-overflow")) {

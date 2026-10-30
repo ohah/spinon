@@ -862,12 +862,8 @@ fn replace_ratio_style(
 }
 
 #[test]
-fn aspect_ratio_profile_rejects_unsupported_item_edges_and_dimensions() {
+fn aspect_ratio_profile_rejects_nonzero_item_edges_and_nondefault_line_height() {
     for declaration in [
-        "min-width:1px",
-        "max-width:1px",
-        "min-height:1px",
-        "max-height:1px",
         "margin-left:1px",
         "padding-left:1px",
         "border-left:1px solid",

@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio two-track span 계획
 
-**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값을 준비했다. 구현을 시작한 뒤 row placement가 canonical HTML과 계획에서 다른 점을 발견해 계획을 보정했다. 보정 근거를 반영하고 있으며 simulator/runtime 검증은 아직 없다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
+**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값을 준비했다. 구현과 Android/iOS Simulator 51-scene 검증, Rust/FFI focused tests, fixture archive boundary, 구현/runtime 실패 관점 검토 20개 및 implementation PR diff review 30개를 완료했다. PR 검증은 진행 중이다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.4 direct-text aspect-ratio min/max](./c11-4-direct-text-aspect-ratio-min-max.md) · [C11 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
