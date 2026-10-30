@@ -1,0 +1,50 @@
+$ RSPRESS_PERSISTENT_CACHE=false rspress build --config "/Users/yoonhb/Documents/workspace/spinon/spec/internal/evidence/c11-4-direct-text-minmax-roadmap-tailnet-sync-2026-10-30/rspress.config.ts"
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 146 ms.
+ready   built in 1.48s (web)
+ready   built in 1.49s (node)
+
+File (web)                                                                                                                                                  Size        Gzip
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/i.25208e7c92.js                                                           0.10 kB     0.09 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/styles.2da0941fcb.js                                                            0.47 kB     0.23 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/icon.svg                                                                                  0.64 kB     0.42 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-7bcebc42698e.10cef2438a.js                                          12.7 kB     4.2 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-c9aeeb303290.3f8aeba3de.js                                          15.0 kB     5.5 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-edd6d375ab6d.0fe3042d68.js                                          22.3 kB     5.1 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-c11eae28f0b1.a73abef411.js                                          22.9 kB     6.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-f71df03c78be.5c21133572.js                                          22.9 kB     6.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-b888449d958c.b9a14a085a.js                                          32.6 kB     9.2 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/lib-router.1e14e568cb.js                                                        35.4 kB     12.7 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/css/styles.8d918fd78e.css                                                          74.0 kB     14.2 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/image/grid-text-aspect-ratio-minmax-min-width-45.91c0caf286.png                    78.0 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/index.b15ee47d61.js                                                             80.3 kB     17.9 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/image/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.864657040c.png   132.3 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/a.877e354479.js                                                                 217.1 kB    72.0 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/lib-react.9cdf8f49ce.js                                                         218.4 kB    68.8 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-04cbcabea10a.1ea58295dc.js                                          291.9 kB    60.8 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-b7ce154f07b0.6667d5f742.js                                          291.9 kB    60.8 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-c4dae6800800.549fc2a615.js                                          342.3 kB    77.9 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-7ce2535ac56d.3c0863028d.js                                          711.4 kB    152.7 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/js/async/route-6c33a3943990.18491f5fcc.js                                          711.5 kB    152.7 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/static/search_index.ko.1a4e1b90.json                                                      1414.7 kB   422.5 kB
+
+                                                                                                                                                   Total:   4728.8 kB   1361.2 kB
+
+File (node)                                                                                                                                                                          Size        Gzip
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/404.html                                                                                                           8.5 kB      2.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/pr-diff-review-30.html                         29.6 kB     7.3 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/minmax-implementation-runtime-review-20.html   33.0 kB     8.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.html                      37.9 kB     8.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/spec/plan/c11-4-direct-text-aspect-ratio-min-max.html                                                              38.7 kB     9.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/plan/c11-4-direct-text-aspect-ratio-min-max.html                                                                   38.8 kB     9.7 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.html                                    47.5 kB     12.4 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/spec/plan/c11-4-grid-track-sizing.html                                                                             299.0 kB    63.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/plan/c11-4-grid-track-sizing.html                                                                                  299.0 kB    63.6 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/internal/0059-c11-grid-layout.html                                                                                 339.3 kB    80.1 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/STATUS.html                                                                                                        662.6 kB    153.5 kB
+../../build/spinon/c11-4-direct-text-minmax-roadmap-site-20261030/spec/STATUS.html                                                                                                   662.8 kB    153.5 kB
+
+                                                                                                                                                                            Total:   2496.8 kB   573.1 kB

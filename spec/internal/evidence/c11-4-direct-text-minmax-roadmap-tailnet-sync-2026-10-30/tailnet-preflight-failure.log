@@ -1,0 +1,7 @@
+초기 preflight 시도는 `sync-tailnet.mjs`의 preview listener 안전 검사에서 중단됐다.
+
+오류: `AssertionError: preview server has unexpected network handles`
+관측: 포트 8768 listener PID의 네트워크 handle이 일시적으로 2개였고, 스크립트는 정확히 1개를 기대했다.
+영향: 실패 지점은 preflight다. 대상 파일 복사나 백업 생성은 시작되지 않았다.
+재확인: 직후 listener를 다시 조회했을 때 예상된 `127.0.0.1:8768 (LISTEN)` handle 하나만 남았다.
+결과: preflight를 재실행해 성공한 뒤 복사와 로컬·원격 해시 검증을 진행했다. 최종 결과는 `tailnet-preflight.json`, `tailnet-copy.json`, `tailnet-verify.json`에 있다.
