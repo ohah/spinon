@@ -1,0 +1,22 @@
+{
+  "browser": "HeadlessChrome/156.0.0.0",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "platform": "macOS",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "devicePixelRatio": 1
+  },
+  "fontSetStatus": "loaded",
+  "fontFaces": [
+    {
+      "family": "Ahem",
+      "status": "loaded",
+      "style": "normal",
+      "weight": "normal"
+    }
+  ],
+  "fontCheck": "document.fonts.check('10px Ahem') == true",
+  "captureMethod": "Agent Browser using Chrome DevTools Protocol",
+  "sourceUrl": "http://127.0.0.1:8866/tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html"
+}
