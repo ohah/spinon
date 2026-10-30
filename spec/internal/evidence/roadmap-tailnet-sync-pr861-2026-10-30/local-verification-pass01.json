@@ -1,0 +1,1109 @@
+{
+  "pass": "pass01",
+  "target_count": 162,
+  "source_counts": {
+    "create": 129,
+    "replace": 15,
+    "same": 18
+  },
+  "all_targets_verified": true,
+  "backup_count": 15,
+  "all_backups_verified": true,
+  "no_deletes": true,
+  "targets": [
+    {
+      "path": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "bytes": 350302,
+      "sha256": "9ec96b07998945efdb015ebe812c0f816f5b2204d65c6452495739e7504cd005",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "bytes": 236406,
+      "sha256": "64da3b66913642526cba8aaa4d8bdeb349b1cf54073ee54b5665a10e0e362920",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b92ca2a2cbbc1503d3acaf3ae77897adb52a65ea23f58dd74e729179bf3ef55e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/runtime-anonymous-normal-min-content.log",
+      "bytes": 6100,
+      "sha256": "fb04a17ba29119e3d444ae6ac29673eda6f1c76ab24f05804ccaedeb4d177ca2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/simulator.json",
+      "bytes": 1832,
+      "sha256": "25dbfb3aa8cc35afee8d796cc84ef95c69511231e41c6d63f04db8d5a3bcdece",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b71cdb97fa0449799ca5e29ebe2154beca4ab981da468e9c24b320bb55dfe2a5",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/runtime-anonymous-normal-min-content.log.gz",
+      "bytes": 2595,
+      "sha256": "67f98144b3b0255e73f3b4267fffc0df1ecbefa8359c7a002797b8c729b9c40f",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/simulator.json",
+      "bytes": 1832,
+      "sha256": "b113656e8b0672481d6db6710c1273a43bc435e0af5250c42f5650aca14a7311",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-normal-min-content.png",
+      "bytes": 76000,
+      "sha256": "4865d37f8337d42fa8187d7fb76b6ac0f0352a3cb0a48e1ce17bf55ff78b42ae",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-nowrap-min-content.png",
+      "bytes": 76020,
+      "sha256": "eaa8e2e5286f832f9dce80d52fb53c43222712d542866579cae0676fcde2f62e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b9728938b6a656a4ee8cfc0bc6235461b75ccc4230565c4eb84635764200d1c6",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/launch-anonymous-nowrap-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/result.json",
+      "bytes": 1877,
+      "sha256": "408c565d7d27581d86edb61f093c7d8d392ab6f0ff8e684248bda2c3ddfbb9d4",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/runtime-anonymous-normal-min-content.log.gz",
+      "bytes": 2995,
+      "sha256": "a9d2e8b876359a6ddc8b9ad16c8238cb6234ef9d551829a3c81674e74837270b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 24802,
+      "sha256": "2b062d2c360cfe8c62ac8e2d3f1ed29618163de44be9307be6cd795448b2f295",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/simulator.json",
+      "bytes": 1827,
+      "sha256": "9687a4477e48179362fb7efe582bb032558b9f48e9eee534c7276f95b67ae738",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.html",
+      "bytes": 35082,
+      "sha256": "213f4297c3396af05b135871f4fd446d9383fbd6d013754abb64027027352917",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1817,
+      "sha256": "18d5a09acf078da8399536cb42ce9a4a12989339fc149028195b3f2a5c994b07",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 38223,
+      "sha256": "d98b1821165d6a56343620f0a960a5c3d21fbb7448500ca827586a24b69ad8f3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 4930,
+      "sha256": "7fe3a583232520603713fd57911e167bc8088b4c5e517c582da2c08c866966ca",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-normal-min-content.png",
+      "bytes": 141233,
+      "sha256": "bbd48e8236841928fc2a3daf0e8a06b730c60c36d05ebe167d9d58c598aa845d",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-nowrap-min-content.png",
+      "bytes": 142731,
+      "sha256": "12f392e67cde0f51ecfd64ba686c816e8e4177e0eb1bda2c91b4fc05c329770b",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/launch-anonymous-normal-min-content.log",
+      "bytes": 28,
+      "sha256": "41568630752909311fb41e7bcc2cfccece2105a12bc60f48220abf885c398c33",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/launch-anonymous-nowrap-min-content.log",
+      "bytes": 28,
+      "sha256": "ca7bc4c53a92c1ce620d4b8fc74639c8db27011b4d752590baa8eeb5a824b512",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/result.json",
+      "bytes": 1947,
+      "sha256": "93b7af9e349caa3a06b043130119bf122f68aa0a6dd08e696683e9871a95d9d0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/runtime-anonymous-normal-min-content.log",
+      "bytes": 16499,
+      "sha256": "3a7e1e2abdc2a80a6ff7f44ab9bd8e450d79886d174a2a28a7ff9cf344ffbdef",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 15331,
+      "sha256": "68c1a16375b469faa691bd0466370502c212eda6f3481387b15c7928767ab2f7",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/screenshot-anonymous-normal-min-content.log",
+      "bytes": 305,
+      "sha256": "05b7794c2c91c1d386bd61e5fd67f5428dded9c94884249009e76335e1fbe4f3",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/screenshot-anonymous-nowrap-min-content.log",
+      "bytes": 305,
+      "sha256": "fe15962d21e0fc30cc48ecec4143c0565d2d01f483594b0d61a65466b93d9b22",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/simulator.json",
+      "bytes": 1784,
+      "sha256": "0fadac53ec2a4bdf6bc0d5c10d73a89e596e9cc40426981f483aa5e65869ea34",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/pr-diff-review-30.html",
+      "bytes": 41857,
+      "sha256": "9810ecf0d4079b1a586f2a0128e92232f32f852d5b5881a4c489b0f7e2e401a2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/pr-diff-review-30.md",
+      "bytes": 7420,
+      "sha256": "005bb0ace2c164743c275ecafc99d458fb86dfef1e852fbf317c7abf2f132489",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.html",
+      "bytes": 41454,
+      "sha256": "a26b3640684110f980f07340f6e5b756b8b8f0552439113b378af9f846d16825",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md",
+      "bytes": 6314,
+      "sha256": "ae2a5a47033e32020cd58f295a800e2c1874547c85b92cfb05e73431db7b314e",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/chrome156-anonymous-text-nowrap.png",
+      "bytes": 11920,
+      "sha256": "1b24f9e58edeaf4128fb3f6d364b92b13df485cf75e976f43085b07c8632f5b0",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/chrome156-observation.json",
+      "bytes": 1152,
+      "sha256": "a006c885cb33823f756c5779fb47c8edf7e933aebfb41bfc28e5666dcc0d4ca2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "bytes": 38479,
+      "sha256": "16718d45c8a4f8be4f86ec925b5de71c46433e00853d3c0eaef397b74a764032",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "bytes": 4963,
+      "sha256": "cb10056101ce6c2511dc7312cc53f9b4bb39d3329139b741857688ccbc5dc9c2",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.html",
+      "bytes": 36281,
+      "sha256": "f34d30bd7172e20d09b8557b62d36e780a145b4171c103bf7e32fc0d80e16a61",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md",
+      "bytes": 2798,
+      "sha256": "c39a03aa8973013d2a20038229519e68c6acbc7ae31d32d10abbcc7e9b5e3181",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/roadmap-pr-diff-review-30.html",
+      "bytes": 37704,
+      "sha256": "2e3e4d4d5562b6c1fb805f8b2fd90a2674c83052ee203d64d5904024a8460f06",
+      "verified": true
+    },
+    {
+      "path": "internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/roadmap-pr-diff-review-30.md",
+      "bytes": 4351,
+      "sha256": "c92fecebddbb974614daba998182a6ebbe8197de6453eac2d5dad0e94dc65688",
+      "verified": true
+    },
+    {
+      "path": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.html",
+      "bytes": 37557,
+      "sha256": "624fe0ff891dfc43c64dae80cbd25401e9250e33b7037b9e48b786807c1ac9f6",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.md",
+      "bytes": 4551,
+      "sha256": "030521108619bb473f1d328b7f340b6e0c0b97609da8aa51ca0d614dc0644909",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-nowrap.html",
+      "bytes": 43083,
+      "sha256": "c8a97eca14a5b9c8d7acf6eaa7742f573c43c2579e5fd6be50925aacad8a8f20",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-nowrap.md",
+      "bytes": 7492,
+      "sha256": "a59547e3ed138224513aecd4af03a9921aa9ed8078bad1418ba542d584d30c62",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "bytes": 314400,
+      "sha256": "aed689cd8ab6a02f6b3c0454b2a0474ee6bac9feb865ab44131efbb18b448c36",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 190655,
+      "sha256": "71e0961e36b77a36819626fa74120e722ed3260f5eb32101d1f16955e36e11df",
+      "verified": true
+    },
+    {
+      "path": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "bytes": 424464,
+      "sha256": "6bcfd7df6e6f3e0ce395289e0fe1e83a5867ab632be80ab16eceea307b4f29c7",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "bytes": 424464,
+      "sha256": "6bcfd7df6e6f3e0ce395289e0fe1e83a5867ab632be80ab16eceea307b4f29c7",
+      "verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "bytes": 350356,
+      "sha256": "7d513ca205921e90590ce8db7251c8330d71faf1930469c4f611392699f789a1",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 236406,
+      "sha256": "64da3b66913642526cba8aaa4d8bdeb349b1cf54073ee54b5665a10e0e362920",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b92ca2a2cbbc1503d3acaf3ae77897adb52a65ea23f58dd74e729179bf3ef55e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/runtime-anonymous-normal-min-content.log",
+      "bytes": 6100,
+      "sha256": "fb04a17ba29119e3d444ae6ac29673eda6f1c76ab24f05804ccaedeb4d177ca2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140406381Z-d529725d/simulator.json",
+      "bytes": 1832,
+      "sha256": "25dbfb3aa8cc35afee8d796cc84ef95c69511231e41c6d63f04db8d5a3bcdece",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b71cdb97fa0449799ca5e29ebe2154beca4ab981da468e9c24b320bb55dfe2a5",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/runtime-anonymous-normal-min-content.log.gz",
+      "bytes": 2595,
+      "sha256": "67f98144b3b0255e73f3b4267fffc0df1ecbefa8359c7a002797b8c729b9c40f",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T140507016Z-79291521/simulator.json",
+      "bytes": 1832,
+      "sha256": "b113656e8b0672481d6db6710c1273a43bc435e0af5250c42f5650aca14a7311",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-normal-min-content.png",
+      "bytes": 76000,
+      "sha256": "4865d37f8337d42fa8187d7fb76b6ac0f0352a3cb0a48e1ce17bf55ff78b42ae",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/anonymous-nowrap-min-content.png",
+      "bytes": 76020,
+      "sha256": "eaa8e2e5286f832f9dce80d52fb53c43222712d542866579cae0676fcde2f62e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/install.log",
+      "bytes": 36,
+      "sha256": "781a31c82430c97897af612ece5e0ca2205e301cb5ff121ce2660541ea5182c7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/installed-apk-verification.json",
+      "bytes": 360,
+      "sha256": "b9728938b6a656a4ee8cfc0bc6235461b75ccc4230565c4eb84635764200d1c6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/launch-anonymous-normal-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/launch-anonymous-nowrap-min-content.log",
+      "bytes": 119,
+      "sha256": "a2e1a6c881e74d75a2b60d9247c71853f757fb1e43084b6930319d3c8503620e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/result.json",
+      "bytes": 1877,
+      "sha256": "408c565d7d27581d86edb61f093c7d8d392ab6f0ff8e684248bda2c3ddfbb9d4",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/runtime-anonymous-normal-min-content.log.gz",
+      "bytes": 2995,
+      "sha256": "a9d2e8b876359a6ddc8b9ad16c8238cb6234ef9d551829a3c81674e74837270b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 24802,
+      "sha256": "2b062d2c360cfe8c62ac8e2d3f1ed29618163de44be9307be6cd795448b2f295",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/android-avd-c114-anonymous-grid-text-android-avd-20261030T141543872Z-5daf0288/simulator.json",
+      "bytes": 1827,
+      "sha256": "9687a4477e48179362fb7efe582bb032558b9f48e9eee534c7276f95b67ae738",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.html",
+      "bytes": 35092,
+      "sha256": "7b1f71d0f73cbdd47dede1fe3e7d8fefbcd40efaf74d4ccfca4becd3ded04750",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/artifact-boundary/README.md",
+      "bytes": 1817,
+      "sha256": "18d5a09acf078da8399536cb42ce9a4a12989339fc149028195b3f2a5c994b07",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 38233,
+      "sha256": "f99e317ffb7ed895b439bf30b379fad7fe88022854755f5ce174979ed01d559e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/implementation-runtime-review-20.md",
+      "bytes": 4930,
+      "sha256": "7fe3a583232520603713fd57911e167bc8088b4c5e517c582da2c08c866966ca",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-normal-min-content.png",
+      "bytes": 141233,
+      "sha256": "bbd48e8236841928fc2a3daf0e8a06b730c60c36d05ebe167d9d58c598aa845d",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/anonymous-nowrap-min-content.png",
+      "bytes": 142731,
+      "sha256": "12f392e67cde0f51ecfd64ba686c816e8e4177e0eb1bda2c91b4fc05c329770b",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/install.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/launch-anonymous-normal-min-content.log",
+      "bytes": 28,
+      "sha256": "41568630752909311fb41e7bcc2cfccece2105a12bc60f48220abf885c398c33",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/launch-anonymous-nowrap-min-content.log",
+      "bytes": 28,
+      "sha256": "ca7bc4c53a92c1ce620d4b8fc74639c8db27011b4d752590baa8eeb5a824b512",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/result.json",
+      "bytes": 1947,
+      "sha256": "93b7af9e349caa3a06b043130119bf122f68aa0a6dd08e696683e9871a95d9d0",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/runtime-anonymous-normal-min-content.log",
+      "bytes": 16499,
+      "sha256": "3a7e1e2abdc2a80a6ff7f44ab9bd8e450d79886d174a2a28a7ff9cf344ffbdef",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/runtime-anonymous-nowrap-min-content.log",
+      "bytes": 15331,
+      "sha256": "68c1a16375b469faa691bd0466370502c212eda6f3481387b15c7928767ab2f7",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/screenshot-anonymous-normal-min-content.log",
+      "bytes": 305,
+      "sha256": "05b7794c2c91c1d386bd61e5fd67f5428dded9c94884249009e76335e1fbe4f3",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/screenshot-anonymous-nowrap-min-content.log",
+      "bytes": 305,
+      "sha256": "fe15962d21e0fc30cc48ecec4143c0565d2d01f483594b0d61a65466b93d9b22",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/ios-simulator-c114-anonymous-grid-text-ios-simulator-20261030T141240869Z-a5f37fb0/simulator.json",
+      "bytes": 1784,
+      "sha256": "0fadac53ec2a4bdf6bc0d5c10d73a89e596e9cc40426981f483aa5e65869ea34",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/pr-diff-review-30.html",
+      "bytes": 41867,
+      "sha256": "56561ae03694e593532f99ace8cd2a811f8d6fcfb2aef4a4c7b906763f943950",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/pr-diff-review-30.md",
+      "bytes": 7420,
+      "sha256": "005bb0ace2c164743c275ecafc99d458fb86dfef1e852fbf317c7abf2f132489",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.html",
+      "bytes": 41484,
+      "sha256": "295923e33e354f590a0d9e2646a5cc74eb55d873df9dc4b8ed1ebcdf4267b641",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md",
+      "bytes": 6314,
+      "sha256": "ae2a5a47033e32020cd58f295a800e2c1874547c85b92cfb05e73431db7b314e",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/chrome156-anonymous-text-nowrap.png",
+      "bytes": 11920,
+      "sha256": "1b24f9e58edeaf4128fb3f6d364b92b13df485cf75e976f43085b07c8632f5b0",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/chrome156-observation.json",
+      "bytes": 1152,
+      "sha256": "a006c885cb33823f756c5779fb47c8edf7e933aebfb41bfc28e5666dcc0d4ca2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/plan-pr-diff-review-30.html",
+      "bytes": 38489,
+      "sha256": "8b17b864c56f73e1be2b76197a2867d3bc5b3b44792461c45183de8b413ca5e8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/plan-pr-diff-review-30.md",
+      "bytes": 4963,
+      "sha256": "cb10056101ce6c2511dc7312cc53f9b4bb39d3329139b741857688ccbc5dc9c2",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.html",
+      "bytes": 36294,
+      "sha256": "00cf2b6889049ad5fe41bc8915dcbbbba3a80b607d63b3fd3b3d6eac1213d7b6",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md",
+      "bytes": 2798,
+      "sha256": "c39a03aa8973013d2a20038229519e68c6acbc7ae31d32d10abbcc7e9b5e3181",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/roadmap-pr-diff-review-30.html",
+      "bytes": 37714,
+      "sha256": "05122e2bb3c8ad0f3589963e0318b7857e47157cf720c8db69af3d80dcf4ea4c",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/evidence/roadmap-tailnet-sync-pr861-2026-10-30/roadmap-pr-diff-review-30.md",
+      "bytes": 4351,
+      "sha256": "c92fecebddbb974614daba998182a6ebbe8197de6453eac2d5dad0e94dc65688",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.html",
+      "bytes": 37565,
+      "sha256": "d37d890a99c73691a0c1ce5c66e120830e45a8209d4e39ef4266bfa9cd008a00",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-nowrap-plan-review-20.md",
+      "bytes": 4551,
+      "sha256": "030521108619bb473f1d328b7f340b6e0c0b97609da8aa51ca0d614dc0644909",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-nowrap.html",
+      "bytes": 43061,
+      "sha256": "9fe458aaa3f3be21824050c30d2cb8a684144813ccc181ba05af0765f2f046d9",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-anonymous-grid-text-nowrap.md",
+      "bytes": 7492,
+      "sha256": "a59547e3ed138224513aecd4af03a9921aa9ed8078bad1418ba542d584d30c62",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 314381,
+      "sha256": "6b2b8e15fe8ca3a25972a255f994c0d15dbb732b79e0224a0e41f1abd18e88f8",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 190655,
+      "sha256": "71e0961e36b77a36819626fa74120e722ed3260f5eb32101d1f16955e36e11df",
+      "verified": true
+    },
+    {
+      "path": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "verified": true
+    },
+    {
+      "path": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "bytes": 424464,
+      "sha256": "6bcfd7df6e6f3e0ce395289e0fe1e83a5867ab632be80ab16eceea307b4f29c7",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.svg",
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "bytes": 675941,
+      "sha256": "1d8e1f541a60d1a112489c45504a923043f766738702ded28113c7e8000bd447",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "bytes": 538620,
+      "sha256": "16c97ab2e37173f8abdf6d1d546d727ce4fe3fdf40b78829ae58164a97cf9d4e",
+      "verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js",
+      "bytes": 217085,
+      "sha256": "65592f521c569367df173ace6436b70d8ec5028ff5c5871bea666fc9854bb4e6",
+      "verified": true
+    },
+    {
+      "path": "static/js/a.877e354479.js.LICENSE.txt",
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/i.25208e7c92.js",
+      "bytes": 100,
+      "sha256": "c3e7dff193895cf56f471e9c7f2a717225cae3b3c9e43bf131e22a8473c76afe",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-007ddede6915.1d1affd415.js",
+      "bytes": 9650,
+      "sha256": "3e44043f2a9f8168cd26c6242f426a33882ba07c228edab60f5df0f4093eca13",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-04cbcabea10a.165c1a00f2.js",
+      "bytes": 296781,
+      "sha256": "6a39d59e107dd9c5464817707239b8d5eacf82705a2ae7d7a8e9d1030d351e86",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-11a32a7ba34f.20dbc5a682.js",
+      "bytes": 13528,
+      "sha256": "06b46876815831d316ef0f8cabfbd671d0b534fa43466207298a6c62ae145ac7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-35238bf13b65.d29f9c1158.js",
+      "bytes": 10643,
+      "sha256": "e0a302fec177a8f75d62c6028d293b570dc6766759b7fee7ba95701369d9fc6f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5195ea6338a6.e8e248c819.js",
+      "bytes": 13539,
+      "sha256": "b66269e557de36118fa39c924353be5cee745d2b066f29b4bcbc088afd1acace",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5ad831859aa4.3831c4154b.js",
+      "bytes": 14838,
+      "sha256": "926f9b1d1549219827460f6fcac301e3ae4a008962f25a9f76473c82fc06fad8",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-5e679ec461a0.56ee463911.js",
+      "bytes": 10651,
+      "sha256": "de231ca9b63111754328791fe6e011328a80c2ca7c517bae02e09a0e2fa160f7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.d068a4f69e.js",
+      "bytes": 713823,
+      "sha256": "55fa7319cd4bdf67ebdf1dc621b0a696de9b8ace30be76f2ef610f774b3e4b68",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-71056d39e160.219476ee43.js",
+      "bytes": 4143,
+      "sha256": "9e850020f3278b70be375064bf61c26909a35749920cfbd397cc49dbbe6b122f",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-739571cd2ae5.f600abf989.js",
+      "bytes": 342261,
+      "sha256": "fd391e7e1981b5d06299066aa5fe8c281f5c893ad3a5f9561af981e02f4aaab7",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-74eb22f316c2.b9b617a548.js",
+      "bytes": 11464,
+      "sha256": "1ea88e5d0e58f71680ec0f27563a99723ab4d1a8afc44328dd737bef25f3b92c",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7bbee46faa87.453f21e52e.js",
+      "bytes": 10321,
+      "sha256": "4c4ce3c5bd403e318b5d679b184f8b16fe0e7227f8d114631f3c3b40d0a09640",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7c9d74653dfa.26981d0644.js",
+      "bytes": 9660,
+      "sha256": "3a5f7e6fab172cde104cdf3422a5de15f37de915b9978462a0b15e034835c326",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.fa5e70cf1c.js",
+      "bytes": 713928,
+      "sha256": "a75d6ea06917a18c02553c415287c3a53afeaad744eddc33a30ce1d385be6b1d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-82c389526377.5a759fa3e3.js",
+      "bytes": 10326,
+      "sha256": "b72eb2830c1b789ba5290e9925584a73edf702ecce5070a5b2fc6b3d52177844",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-a48746cae70c.3b436595ce.js",
+      "bytes": 1009,
+      "sha256": "bdb1641510b5c342940f470e0e56dd0fb54ae07e7b1acd08f9f33dcc0d166377",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b415139c8f21.7d2c7dfc70.js",
+      "bytes": 13556,
+      "sha256": "974cba51d3e57eed9560e1f6e48817a127b80552488f39122bdc63242d5b0212",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7829fab8646.b21dcb8bb4.js",
+      "bytes": 13554,
+      "sha256": "fc66299c59baccaf5d84efeaf820bdeb7e9ce1d56bf6caa42f2032fcbe925f3d",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-b7ce154f07b0.7c98320797.js",
+      "bytes": 296794,
+      "sha256": "27d183e401b96d92e8b4058de85d51ecd67bec54332b027d3e0e4bd6ec868372",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.9b8f04b544.js",
+      "bytes": 342237,
+      "sha256": "8ac82e407d78895966d50a2700f2596b56fdb48dd72711f346e198f3d8810fb4",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-cf20b4dbcff9.4f42128f27.js",
+      "bytes": 7593,
+      "sha256": "b252f3828bbf0bc362c4ae4927b0d046d7ef3de483d00964ed00c63e56a1bea9",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d05a6a0ca44a.d96939edab.js",
+      "bytes": 14834,
+      "sha256": "3ef5d3f64de3325928a90e4b9dbb49b4894a8a6733f57623db2edf67cd701c4b",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-d06ea573a07b.a6ddf7984c.js",
+      "bytes": 11471,
+      "sha256": "501a8b9bd9686c9274987421e67ddc03c9ba8d6f787594707bda0f40f964c4e0",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-ea060d295936.e3f79e08cd.js",
+      "bytes": 7597,
+      "sha256": "85b9f64db2c5675fc8ed2a6a78b97e96d75661f36eecd5a844d8e6f0cb1dbfeb",
+      "verified": true
+    },
+    {
+      "path": "static/js/async/route-fcf9bf38bd64.c33aed1078.js",
+      "bytes": 4151,
+      "sha256": "a2f164679403316a3458baced0018c467a6c0a7e18eb7bdf609fc0ebc99f7f38",
+      "verified": true
+    },
+    {
+      "path": "static/js/index.902a3990a2.js",
+      "bytes": 119004,
+      "sha256": "e9b3851b3aba8a8d53dfd9d674ce1a9b38056161f3941a60c9b6a11cddcedcba",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js",
+      "bytes": 218364,
+      "sha256": "b710babe543b63c36fd66abe11956c99c59d30d5b28490c251532417a253aeef",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-react.9cdf8f49ce.js.LICENSE.txt",
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js",
+      "bytes": 35370,
+      "sha256": "36b031c0bc858077e660bc9e25c2e16471366a7a89f9d0f1bdc5f9b58e3dac13",
+      "verified": true
+    },
+    {
+      "path": "static/js/lib-router.1e14e568cb.js.LICENSE.txt",
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "verified": true
+    },
+    {
+      "path": "static/js/styles.d2a6dfa6a0.js",
+      "bytes": 473,
+      "sha256": "d371952f1f0042e686460e21f3aafc517eb1c8a57948371f8cf2c55749d6d2b2",
+      "verified": true
+    },
+    {
+      "path": "static/search_index.ko.5829b0f1.json",
+      "bytes": 1672157,
+      "sha256": "5829b0f14f86e8e1ec4a0e2193bf0f43cc68bda3415ab56dbcd9c1510bdcafc2",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "bytes": 675405,
+      "sha256": "94fdcac6769c58c102d750a16e6145a3fd416b98ebe2d82193ffdd4bd468ccf4",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "bytes": 538620,
+      "sha256": "16c97ab2e37173f8abdf6d1d546d727ce4fe3fdf40b78829ae58164a97cf9d4e",
+      "verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/internal/0059-c11-grid-layout.html",
+      "bytes": 339331,
+      "sha256": "0b47de87c99d3e343f5384e4e34d9240a5fb4dc3ebd996d8e3509e2df69f5c57",
+      "expected_sha256": "0b47de87c99d3e343f5384e4e34d9240a5fb4dc3ebd996d8e3509e2df69f5c57",
+      "verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/internal/0059-c11-grid-layout.md",
+      "bytes": 232065,
+      "sha256": "a36b4c58490c01b11211dead703c5e832cdad1d0e47fb713df558eb646b04200",
+      "expected_sha256": "a36b4c58490c01b11211dead703c5e832cdad1d0e47fb713df558eb646b04200",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/plan/c11-4-grid-track-sizing.html",
+      "bytes": 299028,
+      "sha256": "217a2c0c4783450313331d9051583f67cfd951191b2529ad8a07ba4c2dc3d357",
+      "expected_sha256": "217a2c0c4783450313331d9051583f67cfd951191b2529ad8a07ba4c2dc3d357",
+      "verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-track-sizing.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/plan/c11-4-grid-track-sizing.md",
+      "bytes": 187740,
+      "sha256": "1c99b5fce42d64c42cdfb3168a0106fef1947ec5d1556deb2fc883182f9e0976",
+      "expected_sha256": "1c99b5fce42d64c42cdfb3168a0106fef1947ec5d1556deb2fc883182f9e0976",
+      "verified": true
+    },
+    {
+      "path": "public/roadmap.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/public/roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "expected_sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/roadmap.html",
+      "bytes": 422336,
+      "sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "expected_sha256": "a7565781d34a0597dfe25b1eea80d791ae6c7db521a0cd1f10f8c17671b20bd8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/internal/0059-c11-grid-layout.html",
+      "bytes": 338924,
+      "sha256": "2b081d4e7109662ecd8272264fb465b28bd22f4e0ec889a72a7b221c2cfbe6b8",
+      "expected_sha256": "2b081d4e7109662ecd8272264fb465b28bd22f4e0ec889a72a7b221c2cfbe6b8",
+      "verified": true
+    },
+    {
+      "path": "spec/internal/0059-c11-grid-layout.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/internal/0059-c11-grid-layout.md",
+      "bytes": 232065,
+      "sha256": "a36b4c58490c01b11211dead703c5e832cdad1d0e47fb713df558eb646b04200",
+      "expected_sha256": "a36b4c58490c01b11211dead703c5e832cdad1d0e47fb713df558eb646b04200",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/plan/c11-4-grid-track-sizing.html",
+      "bytes": 298985,
+      "sha256": "f3fd67efe9c1676d2db73a8fc0d152be05a03907e8d2e52865dfd2eee864b831",
+      "expected_sha256": "f3fd67efe9c1676d2db73a8fc0d152be05a03907e8d2e52865dfd2eee864b831",
+      "verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-track-sizing.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/plan/c11-4-grid-track-sizing.md",
+      "bytes": 187740,
+      "sha256": "1c99b5fce42d64c42cdfb3168a0106fef1947ec5d1556deb2fc883182f9e0976",
+      "expected_sha256": "1c99b5fce42d64c42cdfb3168a0106fef1947ec5d1556deb2fc883182f9e0976",
+      "verified": true
+    },
+    {
+      "path": "spec/public/roadmap.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/public/roadmap.html",
+      "bytes": 420337,
+      "sha256": "1e6ed9ce5339483b4536e41f78ba3271c37c2e14e475f96346d2eecdcf3cdd74",
+      "expected_sha256": "1e6ed9ce5339483b4536e41f78ba3271c37c2e14e475f96346d2eecdcf3cdd74",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/STATUS.html",
+      "bytes": 662817,
+      "sha256": "577edba396e449b3476fcaed687458249dd8713bb5a15ddb04ebac88a6aee7ac",
+      "expected_sha256": "577edba396e449b3476fcaed687458249dd8713bb5a15ddb04ebac88a6aee7ac",
+      "verified": true
+    },
+    {
+      "path": "spec/STATUS.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/spec/STATUS.md",
+      "bytes": 535163,
+      "sha256": "9d5fb9021e9ac59f05f1faf617a84e7a93a5fb883b3b520d4632d781ac46a921",
+      "expected_sha256": "9d5fb9021e9ac59f05f1faf617a84e7a93a5fb883b3b520d4632d781ac46a921",
+      "verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/STATUS.html",
+      "bytes": 662601,
+      "sha256": "93f0f19115485b05d198584decac1d64b8ab7c4fd7d5d70fa986725589dc7d4f",
+      "expected_sha256": "93f0f19115485b05d198584decac1d64b8ab7c4fd7d5d70fa986725589dc7d4f",
+      "verified": true
+    },
+    {
+      "path": "STATUS.md",
+      "backup_path": "SpinonPreviewBackups/roadmap-tailnet-sync-pr861-2026-10-30/pass01/STATUS.md",
+      "bytes": 535163,
+      "sha256": "9d5fb9021e9ac59f05f1faf617a84e7a93a5fb883b3b520d4632d781ac46a921",
+      "expected_sha256": "9d5fb9021e9ac59f05f1faf617a84e7a93a5fb883b3b520d4632d781ac46a921",
+      "verified": true
+    }
+  ]
+}
