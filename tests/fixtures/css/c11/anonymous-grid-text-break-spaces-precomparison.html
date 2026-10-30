@@ -1,0 +1,210 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text break-spaces precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+}
+
+body {
+  color: #111;
+  background: #fff;
+  font: 10px/10px Ahem, sans-serif;
+}
+
+.case {
+  margin: 0 0 12px;
+}
+
+.label {
+  color: #333;
+  font: 12px/16px sans-serif;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: normal;
+  outline: 1px solid #2866f6;
+}
+
+#break-spaces-max-content,
+#break-spaces-comment-split-max-content,
+#break-spaces-forced-break-max-content,
+#break-spaces-trailing-max-content {
+  white-space: break-spaces;
+}
+
+#break-spaces-min-content,
+#break-spaces-forced-break-min-content,
+#pre-wrap-min-content-control {
+  grid-template-columns: min-content;
+}
+
+#break-spaces-min-content,
+#break-spaces-forced-break-min-content {
+  white-space: break-spaces;
+}
+
+#break-spaces-soft-wrap-25,
+#break-spaces-trailing-soft-wrap-25 {
+  width: 25px;
+  grid-template-columns: 25px;
+  white-space: break-spaces;
+}
+
+#break-spaces-whitespace-only {
+  white-space: break-spaces;
+}
+
+#break-spaces-whitespace-before-block {
+  width: 40px;
+  height: 10px;
+  grid-template-columns: 20px 20px;
+  grid-template-rows: 10px;
+  white-space: break-spaces;
+}
+
+#break-spaces-whitespace-before-block > div {
+  width: 10px;
+  height: 10px;
+  background: #2866f6;
+}
+</style>
+
+<section class="case">
+  <div class="label">break-spaces max-content</div>
+  <div id="break-spaces-max-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div class="label">pre-wrap min-content control</div>
+  <div id="pre-wrap-min-content-control" class="grid" style="white-space:pre-wrap">XX  XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces min-content</div>
+  <div id="break-spaces-min-content" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces comment split max-content</div>
+  <div id="break-spaces-comment-split-max-content" class="grid">XX <!-- split --> XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces soft wrap at 25px</div>
+  <div id="break-spaces-soft-wrap-25" class="grid">XX  XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces forced break max-content</div>
+  <div id="break-spaces-forced-break-max-content" class="grid">XX&#32;&#32;
+XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces forced break min-content</div>
+  <div id="break-spaces-forced-break-min-content" class="grid">XX&#32;&#32;
+XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces trailing spaces at 25px</div>
+  <div id="break-spaces-trailing-soft-wrap-25" class="grid">XX  </div>
+</section>
+<section class="case">
+  <div class="label">break-spaces leading spaces</div>
+  <div id="break-spaces-leading-spaces-max-content" class="grid" style="white-space:break-spaces">  XX</div>
+</section>
+<section class="case">
+  <div class="label">break-spaces trailing spaces max-content</div>
+  <div id="break-spaces-trailing-max-content" class="grid">XX  </div>
+</section>
+<section class="case">
+  <div class="label">break-spaces whitespace-only text</div>
+  <div id="break-spaces-whitespace-only" class="grid">  </div>
+</section>
+<section class="case">
+  <div class="label">break-spaces whitespace before block</div>
+  <div id="break-spaces-whitespace-before-block" class="grid">  <div id="break-spaces-marker"></div></div>
+</section>
+
+<script>
+window.collectBreakSpacesObservation = () => {
+  const ids = [
+    "break-spaces-max-content",
+    "pre-wrap-min-content-control",
+    "break-spaces-min-content",
+    "break-spaces-comment-split-max-content",
+    "break-spaces-soft-wrap-25",
+    "break-spaces-forced-break-max-content",
+    "break-spaces-forced-break-min-content",
+    "break-spaces-trailing-soft-wrap-25",
+    "break-spaces-leading-spaces-max-content",
+    "break-spaces-trailing-max-content",
+    "break-spaces-whitespace-only",
+    "break-spaces-whitespace-before-block",
+  ];
+  return {
+    userAgent: navigator.userAgent,
+    viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+    fonts: {
+      status: document.fonts.status,
+      ahem: document.fonts.check("10px Ahem"),
+      faces: [...document.fonts].map((face) => ({ family: face.family, status: face.status })),
+    },
+    scenes: ids.map((id) => {
+      const root = document.getElementById(id);
+      const rect = root.getBoundingClientRect();
+      const style = getComputedStyle(root);
+      const textNodes = [...root.childNodes].filter(
+        (node) => node.nodeType === Node.TEXT_NODE && node.length > 0,
+      );
+      const fragments = textNodes.flatMap((node, sourceIndex) => {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        return [...range.getClientRects()].map((fragment) => ({
+          sourceIndex,
+          sourceText: node.data,
+          x: fragment.x - rect.x,
+          y: fragment.y - rect.y,
+          width: fragment.width,
+          height: fragment.height,
+        }));
+      });
+      return {
+        id,
+        text: textNodes.map((node) => node.data).join(""),
+        computed: {
+          whiteSpace: style.whiteSpace,
+          whiteSpaceCollapse: style.whiteSpaceCollapse,
+          textWrapMode: style.textWrapMode,
+          gridTemplateColumns: style.gridTemplateColumns,
+          gridTemplateRows: style.gridTemplateRows,
+        },
+        frame: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        children: [...root.children].map((child) => {
+          const childRect = child.getBoundingClientRect();
+          return {
+            id: child.id,
+            x: childRect.x - rect.x,
+            y: childRect.y - rect.y,
+            width: childRect.width,
+            height: childRect.height,
+          };
+        }),
+        textFragments: fragments,
+      };
+    }),
+  };
+};
+</script>

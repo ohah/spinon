@@ -1,0 +1,110 @@
+{
+  "schema": "spinon-c114-break-spaces-independent-expectations/v1",
+  "oracle": {
+    "normative": "https://www.w3.org/TR/css-text-4/#white-space-property",
+    "font": "tests/fixtures/resources/c15/Ahem.ttf",
+    "fontSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+    "assumption": "Ahem at 10px gives each ASCII X and U+0020 an advance of 10 CSS px. CSS Text 4 break-spaces preserves spaces, allows wrapping after each preserved space, and does not hang end-of-line spaces."
+  },
+  "scenes": [
+    {
+      "id": "break-spaces-max-content",
+      "text": "XX  XX",
+      "columns": [60],
+      "rows": [10],
+      "root": [60, 10],
+      "reason": "Two preserved spaces contribute 20px between two 20px words."
+    },
+    {
+      "id": "pre-wrap-min-content-control",
+      "text": "XX  XX",
+      "columns": [20],
+      "rows": [20],
+      "root": [20, 20],
+      "reason": "pre-wrap preserved spaces may hang after soft wrapping; the two words determine the 20px minimum."
+    },
+    {
+      "id": "break-spaces-min-content",
+      "text": "XX  XX",
+      "columns": [30],
+      "rows": [20],
+      "root": [30, 20],
+      "reason": "A break is available after each preserved space; the longest unbreakable segment is XX plus one 10px space."
+    },
+    {
+      "id": "break-spaces-comment-split-max-content",
+      "textSources": ["XX ", " XX"],
+      "columns": [60],
+      "rows": [10],
+      "root": [60, 10],
+      "reason": "The comment does not create a box; both source spaces remain in the single anonymous item."
+    },
+    {
+      "id": "break-spaces-soft-wrap-25",
+      "text": "XX  XX",
+      "columns": [25],
+      "rows": [20],
+      "root": [25, 20],
+      "textFragments": [[30, 10], [30, 10]],
+      "reason": "Each word followed by a preserved space is a 30px fragment, so the 25px track overflows by 5px on each of two lines."
+    },
+    {
+      "id": "break-spaces-forced-break-max-content",
+      "text": "XX  \nXX",
+      "columns": [40],
+      "rows": [20],
+      "root": [40, 20],
+      "reason": "The two non-hanging spaces before LF remain in the first 40px line; the second line is 20px."
+    },
+    {
+      "id": "break-spaces-forced-break-min-content",
+      "text": "XX  \nXX",
+      "columns": [30],
+      "rows": [30],
+      "root": [30, 30],
+      "reason": "No spaces hang before the forced break; min-content wraps XX-space, the remaining space, then XX into three lines."
+    },
+    {
+      "id": "break-spaces-trailing-soft-wrap-25",
+      "text": "XX  ",
+      "columns": [25],
+      "rows": [20],
+      "root": [25, 20],
+      "textFragments": [[30, 10], [10, 10]],
+      "reason": "Trailing spaces wrap and remain measurable rather than hanging beyond the line."
+    },
+    {
+      "id": "break-spaces-leading-spaces-max-content",
+      "text": "  XX",
+      "columns": [40],
+      "rows": [10],
+      "root": [40, 10],
+      "reason": "Leading spaces are preserved and included in max-content sizing."
+    },
+    {
+      "id": "break-spaces-trailing-max-content",
+      "text": "XX  ",
+      "columns": [40],
+      "rows": [10],
+      "root": [40, 10],
+      "reason": "Trailing spaces are preserved and included in max-content sizing."
+    },
+    {
+      "id": "break-spaces-whitespace-only",
+      "text": "  ",
+      "columns": [0],
+      "rows": [0],
+      "root": [0, 0],
+      "reason": "CSS Grid does not create a rendered anonymous item from a whitespace-only text sequence."
+    },
+    {
+      "id": "break-spaces-whitespace-before-block",
+      "text": "  ",
+      "columns": [20, 20],
+      "rows": [10],
+      "root": [40, 10],
+      "marker": [0, 0, 10, 10],
+      "reason": "The whitespace-only sequence consumes no auto-placement cell; the following block remains in cell 1."
+    }
+  ]
+}
