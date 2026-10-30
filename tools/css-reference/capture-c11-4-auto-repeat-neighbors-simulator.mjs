@@ -143,7 +143,8 @@ const mixedMultiSpanSceneIDs = new Set([
 ]);
 const anonymousTextSceneIDs = new Set([
   'anonymous-min-content-wrap', 'anonymous-normal-min-content',
-  'anonymous-nowrap-min-content', 'anonymous-comment-continuation',
+  'anonymous-nowrap-min-content', 'anonymous-normal-newline-max-content',
+  'anonymous-pre-line-max-content', 'anonymous-comment-continuation',
   'anonymous-runs-around-block', 'anonymous-hidden-child-continuation',
   'whitespace-does-not-create-item',
 ]);
@@ -1082,6 +1083,38 @@ scenes.push(
     }],
   },
   {
+    id: 'anonymous-normal-newline-max-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]',
+    tracks: [50], collapsed: [false],
+    axes: {
+      Columns: { tracks: [50], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 50, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\nXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 50, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-line-max-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=20,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]',
+    tracks: [20], collapsed: [false],
+    axes: {
+      Columns: { tracks: [20], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 20, minContentHeight: 20, maxContent: 20, maxContentHeight: 20 },
+      textSources: [{ node: 2, text: 'XX\nXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 20, height: 20 },
+    }],
+  },
+  {
     id: 'anonymous-min-content-wrap', axis: 'Columns', boxCount: 1,
     rootFrame: 'width=120,height=20', itemFrame: null,
     nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]',
@@ -1147,7 +1180,7 @@ scenes.push(
     anonymousTextItems: [],
   },
 );
-assert.equal(scenes.length, 162, 'C11.4 anonymous Grid text slice includes seven scenes.');
+assert.equal(scenes.length, 164, 'C11.4 anonymous Grid text slice includes nine scenes.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 scenes.push(
@@ -5961,7 +5994,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 624, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 626, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -8161,6 +8194,44 @@ function verifyRuntimeLog(log, scene, runID) {
     assert.deepEqual(diagnostics.gridItemFrames ?? [],
       scene.anonymousTextItems.map(({ frame }) => frame),
       `${scene.id}: anonymous item frame evidence differs`);
+    if (scene.id === 'anonymous-normal-newline-max-content'
+      || scene.id === 'anonymous-pre-line-max-content') {
+      const preLine = scene.id === 'anonymous-pre-line-max-content';
+      const expectedWidth = preLine ? 20 : 50;
+      const expectedHeight = preLine ? 20 : 10;
+      const revision = diagnostics.layoutInputRevision;
+      assert.ok(revision?.source?.startsWith('HostDocument'),
+        `${scene.id}: HostDocument source revision is missing`);
+      for (const key of ['style', 'environment', 'intrinsicSize']) {
+        assert.ok(Number.isInteger(revision[key]) && revision[key] >= 0,
+          `${scene.id}: ${key} revision is missing`);
+      }
+      const textLayouts = diagnostics.gridItemTextLayouts ?? [];
+      assert.equal(textLayouts.length, 1, `${scene.id}: expected one anonymous text layout`);
+      assert.equal(textLayouts[0].node, 2, `${scene.id}: text layout node differs`);
+      assert.equal(textLayouts[0].paragraphStyle?.whiteSpace, preLine ? 'PreLine' : 'Normal',
+        `${scene.id}: white-space profile differs`);
+      const traces = diagnostics.trackSizingTraces ?? [];
+      assert.equal(traces.length, 1, `${scene.id}: expected exactly one Grid trace`);
+      const [trace] = traces;
+      assert.equal(trace.grid, 1, `${scene.id}: Grid trace must belong to root node 1`);
+      assert.equal(trace.passes.length, 2, `${scene.id}: expected Columns and Rows passes`);
+      assert.deepEqual(trace.passes.map(({ axis }) => axis), ['Columns', 'Rows'],
+        `${scene.id}: expected one Columns pass followed by one Rows pass`);
+      for (const [axis, expected] of [['Columns', expectedWidth], ['Rows', expectedHeight]]) {
+        const pass = trace.passes.find((candidate) => candidate.axis === axis);
+        const finalTracks = pass.stages.at(-1)?.tracks
+          .filter(({ gutter, collapsed }) => !gutter && !collapsed)
+          .map(({ baseSize }) => baseSize);
+        assert.deepEqual(finalTracks, [expected], `${scene.id}: final ${axis} track differs`);
+        assert.ok(pass.contributions.some((contribution) => (
+          contribution.item === 2
+            && contribution.span === 1
+            && Math.abs(contribution.value - expected) <= 1 / 64
+            && (axis !== 'Columns' || contribution.kind === 'MaxContent')
+        )), `${scene.id}: ${axis} intrinsic contribution differs`);
+      }
+    }
   }
   if (scene.anonymousTextImageItems) {
     assert.equal(diagnostics.layoutInputRevision?.intrinsicSize, 1,

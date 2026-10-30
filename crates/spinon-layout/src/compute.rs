@@ -217,7 +217,9 @@ fn validate_text_paragraphs(
                     || paragraph.sources.is_empty()
                     || !matches!(
                         paragraph.style.white_space,
-                        crate::WhiteSpaceMode::Normal | crate::WhiteSpaceMode::NoWrap
+                        crate::WhiteSpaceMode::Normal
+                            | crate::WhiteSpaceMode::NoWrap
+                            | crate::WhiteSpaceMode::PreLine
                     )
                     || source_nodes.is_empty()
                     || !source_nodes.iter().any(|source| source.node == id)

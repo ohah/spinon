@@ -1,0 +1,19 @@
+   Compiling spinon-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 4.55s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-466af74e1171adde)
+
+running 12 tests
+test host_document::tests::c11_4_anonymous_text::non_fixture_host_document_projection_still_rejects_direct_grid_text ... ok
+test host_document::tests::c11_4_anonymous_text::anonymous_grid_text_still_rejects_nonzero_order ... ok
+test host_document::tests::c11_4_anonymous_text::collapsible_whitespace_between_blocks_does_not_create_an_item ... ok
+test host_document::tests::c11_4_anonymous_text::leading_collapsible_text_keeps_provenance_but_anchors_item_to_first_content_node ... ok
+test host_document::tests::c11_4_anonymous_text::adjacent_text_nodes_become_one_anonymous_item_with_full_provenance ... ok
+test host_document::tests::c11_4_anonymous_text::direct_display_none_child_does_not_split_anonymous_text_run ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_min_content_control_keeps_two_lines_at_twenty_px ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_wraps_at_min_content_width ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_nowrap_min_content_overflows_without_wrapping ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_normal_segment_break_uses_collapsed_space_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::white_space::anonymous_item_pre_line_preserves_segment_break_for_max_content ... ok
+test host_document::tests::c11_4_anonymous_text::direct_block_child_splits_anonymous_runs_without_losing_source_order ... ok
+
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 334 filtered out; finished in 0.01s

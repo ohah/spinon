@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** Chrome 156 Agent Browser 사전 관찰과 CSS Text/Grid/Box Sizing 별도 기대값 계산을 기록했다. 계획 실패 관점 20개 검토를 마친 뒤 계획 PR에서 검토받는다. 구현은 아직 시작하지 않았다. 이 계획은 기존 opt-in C11.4 anonymous Grid text fixture 경로에서 `white-space:pre-line` 한 값을 추가한다. C11.4/C11 checkbox와 공식 완료 수 `72/213`은 바꾸지 않는다. [사전 비교와 입력 hash](../spec/internal/evidence/c11-4-anonymous-text-pre-line-precomparison-2026-10-31/README.md)
+**상태:** Chrome 156 Agent Browser 사전 관찰과 CSS Text/Grid/Box Sizing 별도 기대값 계산을 기록했다. 계획 실패 관점 20개 검토 후 계획 PR [#866](https://github.com/ohah/spinon/pull/866)은 2026-10-30에 병합됐다. 현재 `feat/c11-4-anonymous-grid-text-pre-line` 브랜치에 구현 후보와 Android/iOS 시뮬레이터 근거가 있으며, 구현 PR 검토·병합은 아직 남아 있다. 이 계획은 기존 opt-in C11.4 anonymous Grid text fixture 경로에서 `white-space:pre-line` 한 값을 추가한다. C11.4/C11 checkbox와 공식 완료 수 `72/213`은 바꾸지 않는다. [사전 비교와 입력 hash](../spec/internal/evidence/c11-4-anonymous-text-pre-line-precomparison-2026-10-31/README.md) · [구현·시뮬레이터 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-pre-line-runtime-2026-10-31/README.md)
 
 ## 목적과 경계
 
@@ -28,7 +28,7 @@ Browser page의 x/y는 section 위치이므로 acceptance에는 쓰지 않는다
 3. `RuntimeBlockFlexGridTrackSizingV1` anonymous text fixture validator에 두 scene ID와 정확한 direct text source `XX\nXX`를 추가한다. pre-line scene의 computed root style은 `white-space-collapse:preserve-breaks;text-wrap-mode:wrap`이어야 하고 Normal scene은 `collapse/wrap`이어야 한다. static scene adapter는 `PreLine`을 명시적으로 전달하며 inferred CSS/cascade mapping을 주장하지 않는다.
 4. 두 scene을 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator app fixture 경로에 연결한다. 기존 anonymous text controls와 함께 root/item frame, intrinsic values, Columns·Rows trace, source order, layout-ready/revision, draw/present를 확인한다. 실제 실기기는 사용하지 않는다. Frame·trace·draw/present 결과를 glyph pixel equality나 iOS compositor 이후 pixels로 확대 해석하지 않는다.
 5. 기본 artifact와 fixture-test opt-in artifact 경계를 다시 검사한다. 새 scene ID/payload와 fixture FFI marker는 opt-in positive control에만 있어야 한다. 관련 focused Rust tests, workspace Clippy, formatting, Android/iOS builds를 실행한다.
-6. 구현/runtime 변경 후 새로운 실패 관점 20개, PR diff에 별도 실패 관점 20개를 적용한다. 발견된 결함은 고치고 영향 관점을 다시 확인한다. required checks가 있으면 통과와 최종 head 연결을 확인한 뒤 저장소 허용 방식으로 병합한다.
+6. 구현/runtime 변경 후 새로운 실패 관점 20개, PR diff에는 별도 실패 관점 30개를 적용한다. 발견된 결함은 고치고 영향 관점을 다시 확인한다. required checks가 있으면 통과와 최종 head 연결을 확인한 뒤 저장소 허용 방식으로 병합한다.
 
 ## 실패 기준과 남은 제한
 

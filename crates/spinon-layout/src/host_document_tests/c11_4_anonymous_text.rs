@@ -14,6 +14,9 @@ use crate::{
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const AHEM: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
+#[path = "c11_4_anonymous_text/white_space.rs"]
+mod white_space;
+
 #[derive(Clone, Copy)]
 enum Child<'a> {
     Text(&'a str),
@@ -430,137 +433,16 @@ fn direct_display_none_child_does_not_split_anonymous_text_run() {
 }
 
 #[test]
-fn anonymous_item_wraps_at_min_content_width() {
-    let (document, root, children, styles) = fixture(&[Child::Text("XX XX")], 20.0);
+fn anonymous_grid_text_still_rejects_nonzero_order() {
+    let (document, root, _, mut styles) = fixture(&[Child::Text("XX\nXX")], 10.0);
+    styles.get_mut(&root.id()).unwrap().order = 1;
     let snapshot = document.snapshot();
-    let input = input(
-        &snapshot,
-        root,
-        &styles,
-        paragraph_style(),
-        vec![GridTrackSize::MinContent, GridTrackSize::Fraction(1.0)],
-        vec![GridTrackSize::Auto],
-    );
-    let output = TaffyLayoutEngine
-        .compute_with_text_layout_engine(&input, &ahem_engine())
-        .unwrap();
-    let item = &output.grid_item_intrinsic_inputs[0];
-    let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
-        panic!("anonymous Grid text must use text intrinsic measurements");
-    };
-    assert_eq!((sizes.min_content(), sizes.max_content()), (20.0, 50.0));
-    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 20.0, 20.0));
-    assert_eq!(output.text_layouts[&children[0].id()].layout.height, 20.0);
-}
 
-#[test]
-fn anonymous_item_normal_min_content_control_keeps_two_lines_at_twenty_px() {
-    let (document, root, children, mut styles) = fixture(&[Child::Text("XX XX")], 10.0);
-    let root_style = styles.get_mut(&root.id()).unwrap();
-    root_style.width = LayoutDimension::Fixed(20.0);
-    root_style.height = LayoutDimension::Auto;
-    let snapshot = document.snapshot();
-    let input = input(
-        &snapshot,
-        root,
-        &styles,
-        paragraph_style(),
-        vec![GridTrackSize::MinContent],
-        vec![GridTrackSize::Auto],
-    );
-    let output = TaffyLayoutEngine
-        .compute_with_text_layout_engine(&input, &ahem_engine())
-        .unwrap();
-    let item = &output.grid_item_intrinsic_inputs[0];
-    let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
-        panic!("anonymous Grid text must use text intrinsic measurements");
-    };
-    assert_eq!(
-        (
-            sizes.min_content(),
-            sizes.max_content(),
-            sizes.min_content_height(),
-            sizes.max_content_height(),
-        ),
-        (20.0, 50.0, 20.0, 10.0)
-    );
-    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 20.0));
-    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 20.0, 20.0));
-    assert_eq!(output.text_layouts[&children[0].id()].layout.height, 20.0);
-}
-
-#[test]
-fn anonymous_item_nowrap_min_content_overflows_without_wrapping() {
-    let (document, root, children, mut styles) = fixture(&[Child::Text("XX XX")], 10.0);
-    let root_style = styles.get_mut(&root.id()).unwrap();
-    root_style.width = LayoutDimension::Fixed(20.0);
-    root_style.height = LayoutDimension::Auto;
-    let snapshot = document.snapshot();
-    let input = input(
-        &snapshot,
-        root,
-        &styles,
-        paragraph_style_with_white_space(crate::WhiteSpaceMode::NoWrap),
-        vec![GridTrackSize::MinContent],
-        vec![GridTrackSize::Auto],
-    );
-    let output = TaffyLayoutEngine
-        .compute_with_text_layout_engine(&input, &ahem_engine())
-        .unwrap();
-    let item = &output.grid_item_intrinsic_inputs[0];
-    let LayoutGridItemIntrinsicSource::Text { sizes } = &item.source else {
-        panic!("anonymous Grid text must use text intrinsic measurements");
-    };
-    assert_eq!(
-        (
-            sizes.min_content(),
-            sizes.max_content(),
-            sizes.min_content_height(),
-            sizes.max_content_height(),
-        ),
-        (50.0, 50.0, 10.0, 10.0)
-    );
-    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 10.0));
-    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 50.0, 10.0));
-    assert_eq!(output.text_layouts[&children[0].id()].layout.height, 10.0);
-    let trace = output
-        .grid_track_sizing_traces
-        .iter()
-        .find(|trace| trace.node == root.id())
-        .expect("Grid sizing trace for the anonymous text container");
-    assert!(trace.passes.iter().any(|pass| {
-        pass.axis == crate::LayoutGridTrackSizingAxis::Columns
-            && pass.contributions.iter().any(|contribution| {
-                contribution.kind == crate::LayoutGridTrackSizingContributionKind::MinContent
-                    && contribution.value == 50.0
-            })
-    }));
-}
-
-#[test]
-fn anonymous_grid_text_still_rejects_pre_line_and_nonzero_order() {
-    let (document, root, _, styles) = fixture(&[Child::Text("XX XX")], 10.0);
-    let snapshot = document.snapshot();
-    let pre_line = input_result(
+    let reordered = input_result(
         &snapshot,
         root,
         &styles,
         paragraph_style_with_white_space(crate::WhiteSpaceMode::PreLine),
-        vec![GridTrackSize::MinContent],
-        vec![GridTrackSize::Auto],
-    )
-    .unwrap_err();
-    assert!(
-        matches!(pre_line, LayoutError::UnsupportedTextParagraph { node, .. } if node == root.id())
-    );
-
-    let mut reordered = styles;
-    reordered.get_mut(&root.id()).unwrap().order = 1;
-    let reordered = input_result(
-        &snapshot,
-        root,
-        &reordered,
-        paragraph_style(),
         vec![GridTrackSize::MinContent],
         vec![GridTrackSize::Auto],
     )

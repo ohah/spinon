@@ -1,0 +1,13 @@
+{
+  "artifact": "/Users/yoonhb/Documents/workspace/spinon/target/release/libspinon_ffi.a",
+  "bytes": 80929104,
+  "sha256": "6cc04bf48e26b54b80f4ff28e44f8c1f8d597a6dc351f03ab1342a0b9a45271a",
+  "sceneMarkers": {
+    "anonymous-normal-newline-max-content": true,
+    "anonymous-pre-line-max-content": true
+  },
+  "c114HostFfiSymbols": [
+    "000000000000a324 T _spinon_runtime_gpu_host_eval_c11_4_grid_track_sizing_fixture",
+    "000000000000d5e0 T _spinon_runtime_gpu_host_new_c11_4_grid_track_sizing_fixture"
+  ]
+}

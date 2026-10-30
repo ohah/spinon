@@ -810,3 +810,13 @@ Style-to-layout adapter는 computed snapshot의 exact owner `NodeId`, typed aspe
 구현 PR [#850](https://github.com/ohah/spinon/pull/850)은 2026-10-30T10:31:12Z Rebase and merge됐고 merge SHA는 `4959332936a6ad599e1355d18161b90a9fea05bf`다. 구현/runtime 실패 관점 20개와 별도 PR diff 실패 관점 30개를 마쳤다. PR check rollup이 비어 있고 main required status checks가 설정되어 있지 않아 CI 성공으로 기록하지 않는다.
 
 이 제한 fixture는 전체 WPT, 일반 CSS author admission, 임의 Grid tree, replaced/image/anonymous/rich text, multiline/wrapping, percentage/calc, vertical writing 또는 전체 C11.4/C11 완료를 주장하지 않는다. C11.4 및 상위 C11 checkbox는 미완료이며 공식 완료 `72/213`을 유지한다.
+
+## C11.4 anonymous Grid text `white-space:pre-line` · 제한 opt-in fixture 후보
+
+내부 계약 숫자 버전 `0.1.0`을 유지한다. 이 확장은 기존 `c04-runtime-gpu-fixture-test` 앱 경로와 `c11-4-grid-track-sizing-fixture-test` layout/runtime gate 아래의 anonymous Grid text 고정 장면 두 개만 허용한다. 일반 author CSS admission, 사용자 API/ABI, 전체 C11.4 지원을 추가하지 않는다. 기준 동작은 [Chrome 156 사전 비교](evidence/c11-4-anonymous-text-pre-line-precomparison-2026-10-31/README.md), 범위 계획은 [pre-line 계획](../../plan/c11-4-anonymous-grid-text-pre-line.md)을 따른다.
+
+두 장면 모두 HTML `div` Grid root의 width `20px`, `max-content` column, `auto` row, zero gap/edges, `align-items:start`, `order:0`, horizontal-tb/LTR와 Ahem 10px/10px paragraph profile을 요구한다. 단일 direct Text source는 정확히 `XX\nXX`다. Normal control은 `white-space-collapse:collapse;text-wrap-mode:wrap`을 사용해 LF를 collapsible space로 바꾸고 Columns `[50px]`, Rows `[10px]`, root `20×10px`, anonymous text item `50×10px`를 낸다. Pre-line은 `white-space-collapse:preserve-breaks;text-wrap-mode:wrap`을 사용해 LF를 forced line break로 보존하고 Columns `[20px]`, Rows `[20px]`, root/item `20×20px`를 낸다.
+
+Runtime validator는 scene ID, source node/content, exact root/style profile와 computed white-space longhand를 확인한 뒤 `WhiteSpaceMode::Normal` 또는 `WhiteSpaceMode::PreLine`을 명시 전달한다. Layout gate는 이 두 mode만 anonymous Grid paragraph에 추가로 허용하고 `order != 0`, 다른 profile, unsupported text shape는 계속 거부한다. Intrinsic input과 track trace는 같은 HostDocument source/style/revision에 묶이며 Android/iOS fixture validator는 양 축 final track/contribution, frame, trace chunk 완성 및 draw/present를 확인한다.
+
+이 fixture는 실제 glyph paint/pixels, Android 실기기 또는 hardware GPU, iOS compositor 이후 화면, 전체 WPT, generic HTML/CSS, 일반 authored `white-space` cascade를 증명하지 않는다. static FFI archive 비교는 새 scene marker와 host export만 검사하고 APK/IPA 전체의 fixture 제외를 뜻하지 않는다. C11.4/C11 체크와 공식 `72/213`은 유지한다. [구현·simulator 근거](evidence/c11-4-anonymous-grid-text-pre-line-runtime-2026-10-31/README.md) · [구현/runtime 실패 관점 20개](evidence/c11-4-anonymous-grid-text-pre-line-runtime-2026-10-31/implementation-runtime-review-20.md).
