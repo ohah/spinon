@@ -2,12 +2,13 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_layout::{
-    FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutEdges, LayoutGap,
-    LayoutOverflow, LayoutPositioning, LayoutStyle, TextDirection,
+    FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutBoxSizing, LayoutEdges,
+    LayoutGap, LayoutOverflow, LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize, ComputedCssOverflow,
-    ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize,
+    ComputedCssOverflow, ComputedCssPosition, ComputedElementStyle, ComputedStyleProfile,
+    ComputedStyleSnapshot,
 };
 
 mod flex_values;
@@ -44,12 +45,75 @@ pub(super) struct ProjectedStyles {
     pub css_math: Vec<spinon_layout::LayoutCssMathValue>,
 }
 
+fn validate_content_box_ratio_gate(
+    snapshot: &ComputedStyleSnapshot,
+    requested_node: Option<NodeId>,
+) -> Result<(), StyleLayoutError> {
+    let content_box_ratios = snapshot
+        .elements
+        .iter()
+        .filter(|element| {
+            element
+                .layout_aspect_ratio
+                .is_some_and(|ratio| ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox)
+        })
+        .collect::<Vec<_>>();
+    if requested_node.is_none() && content_box_ratios.is_empty() {
+        return Ok(());
+    }
+
+    let Some(node) =
+        requested_node.or_else(|| content_box_ratios.first().map(|element| element.node_id))
+    else {
+        return Err(StyleLayoutError::UnsupportedProfile {
+            profile: format!("{:?}", snapshot.profile),
+        });
+    };
+    let failure = |value: String| StyleLayoutError::UnsupportedComputedValue {
+        node,
+        property: "aspect-ratio",
+        value,
+    };
+    if snapshot.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(failure(
+            "auto <ratio> is restricted to the C11.4 direct-text fixture".into(),
+        ));
+    }
+    let Some(requested_node) = requested_node else {
+        return Err(failure(
+            "content-box ratio requires its exact direct-text owner gate".into(),
+        ));
+    };
+    if content_box_ratios.len() != 1 || content_box_ratios[0].node_id != requested_node {
+        let owners = content_box_ratios
+            .iter()
+            .map(|element| element.node_id.get().to_string())
+            .collect::<Vec<_>>();
+        return Err(failure(format!(
+            "owner gate {requested_node:?} does not uniquely match content-box ratio owners {owners:?}"
+        )));
+    }
+    let ratio_style = content_box_ratios[0];
+    let Some(serialized) = ratio_style.properties.get("aspect-ratio") else {
+        return Err(failure(
+            "typed content-box ratio has no computed serialization".into(),
+        ));
+    };
+    if !serialized.starts_with("auto ") {
+        return Err(failure(format!(
+            "content-box basis requires computed auto <ratio>, got {serialized:?}"
+        )));
+    }
+    Ok(())
+}
+
 pub(super) fn project_styles(
     tree: &HostDocumentSnapshot,
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
     options: super::StyleLayoutProjectionOptions,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
+    validate_content_box_ratio_gate(snapshot, options.content_box_ratio_node)?;
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
@@ -262,7 +326,14 @@ pub(super) fn project_styles(
             } else {
                 LayoutOverflow::Visible
             },
-            box_sizing: parse_box_sizing(node, required(element, "box-sizing")?)?,
+            box_sizing: if options.content_box_ratio_node == Some(node)
+                && element.layout_aspect_ratio.is_some_and(|ratio| {
+                    ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox
+                }) {
+                LayoutBoxSizing::ContentBox
+            } else {
+                parse_box_sizing(node, required(element, "box-sizing")?)?
+            },
             width: parse_dimension(
                 node,
                 "width",
@@ -328,7 +399,7 @@ pub(super) fn project_styles(
                 LayoutStyle::default().max_height
             },
             aspect_ratio: if supports_size_constraints {
-                element.layout_aspect_ratio
+                element.layout_aspect_ratio.map(|ratio| ratio.ratio)
             } else {
                 None
             },

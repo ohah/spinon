@@ -19,21 +19,25 @@ const evidenceRoot = resolve(repositoryRoot,
 const runPrefix = `c114-text-ratio-${Date.now().toString(36)}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(evidenceRoot, target, runPrefix);
 
-function item(node, x, width, height, text, textWidth = width) {
+function item(node, x, width, height, text, textWidth = width, availableWidth = width) {
   return {
     node, x, y: 0, width, height, text, textWidth,
+    availableWidth,
     textHeight: 10, fontSize: 10, lineTops: [0], baselines: [8],
     lineAdvances: [text.length * 10],
   };
 }
 
-function scene(id, rootId, rootHeight, columns, first, second, rowRatioContribution = 10) {
+function scene(id, rootId, rootHeight, columns, first, second,
+  rowRatioContribution = 10, shortRowContribution = 10, rowTrackSize = rootHeight,
+  fixedRows = id.includes('-column')) {
   const expectedItems = [first, second];
   const rootFrame = `0:node=1,x=0,y=0,width=100,height=${rootHeight}`;
   const itemFrames = expectedItems.map((expected, index) =>
     `${index + 1}:node=${expected.node},x=${expected.x},y=0,width=${expected.width},height=${expected.height}`);
   return {
     id, rootId, boxCount: 3, rootHeight, columns, expectedItems, rowRatioContribution,
+    shortRowContribution, rowTrackSize, fixedRows,
     expectedRootFrame: `width=100,height=${rootHeight}`,
     expectedItemFrame: `width=${first.width},height=${first.height}`,
     expectedNodeFrames: `node_frames_css_px=[${[rootFrame, ...itemFrames].join(';')}]`,
@@ -73,6 +77,30 @@ const scenes = [
     item(2, 0, 40, 30, 'AAAA'), item(4, 40, 10, 30, 'A')),
   scene('grid-text-aspect-ratio-range-column-control-20', 'column-control-20', 20, [40, 10],
     item(2, 0, 40, 20, 'AAAA'), item(4, 40, 10, 20, 'A')),
+  scene('grid-text-aspect-ratio-auto-row-auto-3-2-border-box', 'row-auto-ratio',
+    32.65625, [20, 50], item(2, 0, 20, 32.65625, 'A', 10, 10),
+    item(4, 20, 50, 32.65625, 'AAAA', 40, 40), 32.666664, 16, 32.666664),
+  scene('grid-text-aspect-ratio-auto-row-numeric-3-2-border-box', 'row-numeric-ratio',
+    33.328125, [20, 50], item(2, 0, 20, 33.328125, 'A', 10, 10),
+    item(4, 20, 50, 33.328125, 'AAAA', 40, 40), 33.333332, 16, 33.333332),
+  scene('grid-text-aspect-ratio-auto-row-no-ratio-border-box', 'row-auto-only',
+    16, [20, 50], item(2, 0, 20, 16, 'A', 10, 10),
+    item(4, 20, 50, 16, 'AAAA', 40, 40), 16, 16),
+  scene('grid-text-aspect-ratio-auto-row-auto-3-2-content-box', 'row-auto-ratio-content-box',
+    32.65625, [20, 50], item(2, 0, 20, 32.65625, 'A', 10, 10),
+    item(4, 20, 50, 32.65625, 'AAAA', 40, 40), 32.666664, 16, 32.666664),
+  scene('grid-text-aspect-ratio-row-60-auto-3-2-border-box', 'row-60-auto-ratio',
+    60, [91, 20], item(2, 0, 91, 60, 'AAAA', 40, 81),
+    item(4, 91, 20, 60, 'A', 10, 10),
+    60, 10, 60, true),
+  scene('grid-text-aspect-ratio-row-60-numeric-3-2-border-box', 'row-60-numeric-ratio',
+    60, [90, 20], item(2, 0, 90, 60, 'AAAA', 40, 80),
+    item(4, 90, 20, 60, 'A', 10, 10),
+    60, 10, 60, true),
+  scene('grid-text-aspect-ratio-row-60-no-ratio-border-box', 'row-60-auto-only',
+    60, [50, 20], item(2, 0, 50, 60, 'AAAA', 40, 40),
+    item(4, 50, 20, 60, 'A', 10, 10),
+    60, 10, 60, true),
 ];
 
 const sourcePaths = [
@@ -85,9 +113,23 @@ const sourcePaths = [
   'crates/spinon-style/src/stylo_dom/cascade/incremental.rs',
   'crates/spinon-style/src/stylo_dom/cascade/incremental/aspect_ratio.rs',
   'crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/snapshot.rs',
+  'crates/spinon-style-to-layout/src/projection.rs',
+  'crates/spinon-style-to-layout/src/projection/style_values.rs',
+  'crates/spinon-style-to-layout/src/lib.rs',
+  'crates/spinon-style/src/lib.rs',
+  'crates/spinon-style/src/stylo_dom.rs',
+  'crates/spinon-style/src/stylo_dom/cascade.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   'vendor/taffy/src/compute/grid/types/grid_item.rs',
+  'vendor/taffy/src/compute/grid/types/mod.rs',
+  'vendor/taffy/src/compute/grid/alignment.rs',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html',
   'tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs',
@@ -118,7 +160,17 @@ async function saveLog(path, result) {
 function pixelSamples(scene) {
   const { id, rootId } = scene;
   let points;
-  if (id.includes('-row')) points = [[5, 5], [20, 5], [75, 5]];
+  const first = scene.expectedItems[0];
+  const overflowsRoot = id.startsWith('grid-text-aspect-ratio-row-60-')
+    && scene.columns.reduce((sum, width) => sum + width, 0) > 100;
+  if (overflowsRoot) {
+    points = [[5, 5], [first.x + first.width + 5, 5], [first.x + first.width - 5, 5]];
+  }
+  else if (id.startsWith('grid-text-aspect-ratio-row-60-')) {
+    points = [[5, 5], [first.x + first.width + 5, 5], [75, 5]];
+  } else if (id.startsWith('grid-text-aspect-ratio-auto-row-')) {
+    points = [[5, 5], [25, 5], [75, 5]];
+  } else if (id.includes('-row')) points = [[5, 5], [20, 5], [75, 5]];
   else if (id.endsWith('column-control')) points = [[5, 5], [45, 5], [70, 5]];
   else if (id.includes('column-control-')) points = [[5, 5], [45, 5], [70, 5]];
   else if (id.includes('-column')) {
@@ -131,9 +183,14 @@ function pixelSamples(scene) {
       xCssPx: points[0][0], yCssPx: points[0][1], rgba: [229, 72, 77, 255] },
     { id: `${id}-second-item`, nodeId: rootId,
       xCssPx: points[1][0], yCssPx: points[1][1], rgba: [58, 134, 255, 255] },
-    { id: `${id}-unused-root`, nodeId: rootId,
-      xCssPx: points[2][0], yCssPx: points[2][1], rgba: [255, 255, 255, 255] },
+    { id: overflowsRoot ? `${id}-first-item-edge` : `${id}-unused-root`, nodeId: rootId,
+      xCssPx: points[2][0], yCssPx: points[2][1],
+      rgba: overflowsRoot ? [229, 72, 77, 255] : [255, 255, 255, 255] },
   ];
+  if (overflowsRoot) {
+    samples.push({ id: `${id}-outside-root-overflow`, nodeId: rootId,
+      xCssPx: 105, yCssPx: 5, rgba: [58, 134, 255, 255] });
+  }
   if (id.endsWith('column-1-2')) {
     samples.push({ id: `${id}-outside-root-overflow`, nodeId: rootId,
       xCssPx: 5, yCssPx: 70, rgba: [229, 72, 77, 255] });
@@ -286,7 +343,8 @@ function validateAspectRatioTrace(report, scene) {
     assert.equal(layout.paragraphStyle.lineHeight, item.fontSize);
     assert.equal(layout.paragraphStyle.whiteSpace, 'NoWrap');
     assert.equal(layout.paragraphStyle.wordBreak, 'Normal');
-    close(layout.availableWidth, item.width, `${scene.id}: available width for ${item.node}`);
+    close(layout.availableWidth, item.availableWidth,
+      `${scene.id}: available width for ${item.node}`);
     close(layout.width, item.textWidth, `${scene.id}: measured width for ${item.node}`);
     close(layout.height, item.textHeight, `${scene.id}: measured height for ${item.node}`);
     assert.equal(layout.lines.length, item.baselines.length);
@@ -305,17 +363,17 @@ function validateAspectRatioTrace(report, scene) {
   const columns = trace.passes.find(({ axis }) => axis === 'Columns');
   const rows = trace.passes.find(({ axis }) => axis === 'Rows');
   assertTrackSizes(columns, scene.columns, `${scene.id}: Columns`);
-  assertTrackSizes(rows, [scene.rootHeight], `${scene.id}: Rows`);
+  assertTrackSizes(rows, [scene.rowTrackSize], `${scene.id}: Rows`);
   const columnKinds = ['MaxContent', 'MinContent', 'MaxContent'];
   const columnContributions = expected.flatMap((item) =>
     columnKinds.map((kind) => ({
       item: item.node, span: 1, kind, crossesFlexibleTrack: false, value: item.width,
     })));
   assertContributions(columns, columnContributions, `${scene.id}: Columns`);
-  const rowContributions = scene.id.includes('-column') ? [] : expected.flatMap((item) =>
+  const rowContributions = scene.fixedRows ? [] : expected.flatMap((item, index) =>
     ['Minimum', 'MinContent', 'MaxContent'].map((kind) => ({
       item: item.node, span: 1, kind, crossesFlexibleTrack: false,
-      value: item.text === 'AAAA' ? scene.rowRatioContribution : 10,
+      value: index === 1 ? scene.rowRatioContribution : scene.shortRowContribution,
     })));
   assertContributions(rows, rowContributions, `${scene.id}: Rows`);
 }

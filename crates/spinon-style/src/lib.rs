@@ -31,8 +31,8 @@ pub use stylesheet_registry::{
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use stylo_dom::ComputedCssZoom;
 pub use stylo_dom::{
-    CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
-    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    CascadeDiagnostic, ComputedAspectRatioSizingBox, ComputedBorderPaint, ComputedCssDimension,
+    ComputedCssEdges, ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows,
     ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
     ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth,
@@ -40,11 +40,12 @@ pub use stylo_dom::{
     ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow, ComputedCssOverflowClipMargin,
     ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
     ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssCascadeError,
-    CssColorScheme, CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect, RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView,
-    StyloDomError, StyloElement, StyloNode, compute_c19_box_paint_opacity_cascade_with_stylesheets,
+    ComputedElementStyle, ComputedLayoutAspectRatio, ComputedLayoutBorder,
+    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
+    ComputedStyleSnapshot, CssCascadeError, CssColorScheme, CssMediaEnvironment,
+    CssPointerCapabilities, CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
+    RuntimeCascadeReuseStats, StyloDocument, StyloDocumentView, StyloDomError, StyloElement,
+    StyloNode, compute_c19_box_paint_opacity_cascade_with_stylesheets,
     compute_c19_computed_color_cascade_with_stylesheets, compute_flex_alignment_cascade,
     compute_flex_alignment_layers_cascade, compute_flex_layout_cascade,
     compute_flex_margin_cascade, compute_flex_media_environment_cascade,

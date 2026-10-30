@@ -205,7 +205,10 @@ fn track_sizing_carries_aspect_ratio_for_transferred_size_suggestions() {
         .iter()
         .find(|style| style.node_id == fixture.root)
         .unwrap();
-    assert_eq!(style.layout_aspect_ratio, Some(2.0));
+    assert_eq!(
+        style.layout_aspect_ratio.map(|ratio| ratio.ratio),
+        Some(2.0)
+    );
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

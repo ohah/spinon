@@ -503,6 +503,31 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_parag
     )
 }
 
+/// `auto <ratio>`의 content-box 효과를 하나의 C11.4 direct-text owner에만 허용합니다.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    content_box_ratio_node: NodeId,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        text_engine,
+        RuntimeGridProjectionOptions {
+            content_box_ratio_node: Some(content_box_ratio_node),
+            ..RuntimeGridProjectionOptions::default()
+        },
+    )
+}
+
 /// C11.4 fixed direct-text baseline fixture에만 Grid first/last-baseline 정렬을 허용합니다.
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_baseline_fixture(
@@ -611,6 +636,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
             allow_c11_4_replaced_grid_item_align_self_start: true,
             allow_c11_4_overflow_auto_minimum_fixture: true,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -621,6 +647,7 @@ struct RuntimeGridProjectionOptions {
     allow_c11_4_nested_grid_two_axis_intrinsics: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
+    content_box_ratio_node: Option<NodeId>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -660,6 +687,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
             allow_c11_4_overflow_auto_minimum_fixture: options
                 .allow_c11_4_overflow_auto_minimum_fixture,
             allow_c11_4_grid_text_baseline_fixture: options.allow_c11_4_grid_text_baseline_fixture,
+            content_box_ratio_node: options.content_box_ratio_node,
         },
     )
 }
@@ -848,6 +876,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
             allow_c11_4_replaced_grid_item_align_self_start: true,
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -948,6 +977,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -1017,6 +1047,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_a
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -1137,6 +1168,7 @@ fn compute_layout_from_styles_with_grid_options(
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -1166,6 +1198,7 @@ fn compute_layout_from_styles_with_text(
             allow_c11_4_replaced_grid_item_align_self_start: false,
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
+            content_box_ratio_node: None,
         },
     )
 }
@@ -1180,6 +1213,7 @@ struct StyleLayoutProjectionOptions {
     allow_c11_4_replaced_grid_item_align_self_start: bool,
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
+    content_box_ratio_node: Option<NodeId>,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(

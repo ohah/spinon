@@ -157,12 +157,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "grid-text-aspect-ratio-range-column-control-45",
             "grid-text-aspect-ratio-range-column-control-30",
             "grid-text-aspect-ratio-range-column-control-20",
+            "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+            "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+            "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+            "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+            "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+            "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+            "grid-text-aspect-ratio-row-60-no-ratio-border-box",
     };
     private static final class C114GenericDirectTextItemExpectation {
         final int node;
         final double x;
         final double width;
         final double height;
+        final double availableWidth;
+        final double textWidth;
+        final double paddingInline;
+        final double paddingBlock;
+        final double borderWidth;
         final double minContent;
         final double maxContent;
         final double minContentHeight;
@@ -180,10 +192,29 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 String rawText, String layoutText, String whiteSpace, String wordBreak,
                 double[] lineAdvances
         ) {
+            this(node, x, width, height, width, width, 0, 0, 0,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak, lineAdvances);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double[] lineAdvances
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
             this.height = height;
+            this.availableWidth = availableWidth;
+            this.textWidth = textWidth;
+            this.paddingInline = paddingInline;
+            this.paddingBlock = paddingBlock;
+            this.borderWidth = borderWidth;
             this.minContent = minContent;
             this.maxContent = maxContent;
             this.minContentHeight = minContentHeight;
@@ -225,6 +256,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 whiteSpace, wordBreak, lineAdvances);
     }
 
+    private static C114GenericDirectTextItemExpectation c114GenericBoxTextItem(
+            int node, double x, double width, double height, String text
+    ) {
+        double textWidth = text.length() * 10.0;
+        return new C114GenericDirectTextItemExpectation(
+                node, x, width, height, width - 10.0, textWidth, 4.0, 2.0, 1.0,
+                textWidth, textWidth, 10.0, 10.0,
+                text, text, "NoWrap", "Normal", new double[] {textWidth});
+    }
+
     private static boolean c114IsGenericDirectTextScene(String sceneId) {
         if (sceneId == null) return false;
         if (c114IsGridTextAspectRatioScene(sceneId)) return true;
@@ -240,7 +281,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || "grid-text-aspect-ratio-column".equals(sceneId)
                 || "grid-text-aspect-ratio-column-control".equals(sceneId)
                 || (sceneId != null
-                        && sceneId.startsWith("grid-text-aspect-ratio-range-"));
+                        && (sceneId.startsWith("grid-text-aspect-ratio-range-")
+                                || sceneId.startsWith("grid-text-aspect-ratio-auto-")
+                                || sceneId.startsWith("grid-text-aspect-ratio-row-60-")));
     }
 
     private static boolean c114IsGridTextAspectRatioColumnScene(String sceneId) {
@@ -249,7 +292,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || (sceneId != null
                         && (sceneId.startsWith("grid-text-aspect-ratio-range-column-")
                                 || sceneId.startsWith(
-                                        "grid-text-aspect-ratio-range-column-control-")));
+                                        "grid-text-aspect-ratio-range-column-control-")
+                                || sceneId.startsWith("grid-text-aspect-ratio-row-60-")));
     }
 
     private static C114GenericDirectTextSceneExpectation c114GenericDirectTextExpectation(
@@ -259,6 +303,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         C114GenericDirectTextSceneExpectation rangeExpectation =
                 c114GenericDirectTextAspectRatioRangeExpectation(sceneId);
         if (rangeExpectation != null) return rangeExpectation;
+        C114GenericDirectTextSceneExpectation boxRatioExpectation =
+                c114GenericDirectTextBoxAspectRatioExpectation(sceneId);
+        if (boxRatioExpectation != null) return boxRatioExpectation;
         switch (sceneId) {
             case "generic-root-normal":
                 return new C114GenericDirectTextSceneExpectation(20, new double[] {20, 40},
@@ -396,6 +443,72 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "30": return 30;
             case "20": return 20;
             default: return 0;
+        }
+    }
+
+    private static C114GenericDirectTextSceneExpectation
+            c114GenericDirectTextBoxAspectRatioExpectation(String sceneId) {
+        if (sceneId == null) return null;
+        switch (sceneId) {
+            case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box":
+            case "grid-text-aspect-ratio-auto-row-auto-3-2-content-box":
+                return c114GenericDirectTextBoxScene(32.65625, 20, 50, "A", "AAAA");
+            case "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box":
+                return c114GenericDirectTextBoxScene(33.328125, 20, 50, "A", "AAAA");
+            case "grid-text-aspect-ratio-auto-row-no-ratio-border-box":
+                return c114GenericDirectTextBoxScene(16, 20, 50, "A", "AAAA");
+            case "grid-text-aspect-ratio-row-60-auto-3-2-border-box":
+                return c114GenericDirectTextBoxScene(60, 91, 20, "AAAA", "A");
+            case "grid-text-aspect-ratio-row-60-numeric-3-2-border-box":
+                return c114GenericDirectTextBoxScene(60, 90, 20, "AAAA", "A");
+            case "grid-text-aspect-ratio-row-60-no-ratio-border-box":
+                return c114GenericDirectTextBoxScene(60, 50, 20, "AAAA", "A");
+            default:
+                return null;
+        }
+    }
+
+    private static C114GenericDirectTextSceneExpectation c114GenericDirectTextBoxScene(
+            double rowHeight, double firstWidth, double secondWidth,
+            String firstText, String secondText
+    ) {
+        return new C114GenericDirectTextSceneExpectation(rowHeight,
+                new double[] {firstWidth, secondWidth},
+                c114GenericBoxTextItem(2, 0, firstWidth, rowHeight, firstText),
+                c114GenericBoxTextItem(4, firstWidth, secondWidth, rowHeight, secondText));
+    }
+
+    private static double c114GenericDirectTextAspectRatioRowTrackSize(
+            String sceneId, double fallback
+    ) {
+        if ("grid-text-aspect-ratio-auto-row-auto-3-2-border-box".equals(sceneId)
+                || "grid-text-aspect-ratio-auto-row-auto-3-2-content-box".equals(sceneId)) {
+            return 32.666664;
+        }
+        if ("grid-text-aspect-ratio-auto-row-numeric-3-2-border-box".equals(sceneId)) {
+            return 33.333332;
+        }
+        return fallback;
+    }
+
+    private static String c114GenericDirectTextBoxRootId(String sceneId) {
+        switch (sceneId) {
+            case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box":
+                return "row-auto-ratio";
+            case "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box":
+                return "row-numeric-ratio";
+            case "grid-text-aspect-ratio-auto-row-no-ratio-border-box":
+                return "row-auto-only";
+            case "grid-text-aspect-ratio-auto-row-auto-3-2-content-box":
+                return "row-auto-ratio-content-box";
+            case "grid-text-aspect-ratio-row-60-auto-3-2-border-box":
+                return "row-60-auto-ratio";
+            case "grid-text-aspect-ratio-row-60-numeric-3-2-border-box":
+                return "row-60-numeric-ratio";
+            case "grid-text-aspect-ratio-row-60-no-ratio-border-box":
+                return "row-60-auto-only";
+            default:
+                return null;
         }
     }
 
@@ -5448,7 +5561,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             if (c114IsGridTextAspectRatioScene(sceneId)) {
                 if (c114IsGridTextAspectRatioColumnScene(sceneId)) {
-                    boolean firstHasIntrinsicWidth = sceneId.contains("control");
+                    boolean firstHasIntrinsicWidth = sceneId.contains("control")
+                            || sceneId.contains("no-ratio");
                     for (int index = 0; index < expectedNodes.length; index++) {
                         boolean expectedIntrinsicWidth = index == 0
                                 ? firstHasIntrinsicWidth : true;
@@ -5488,13 +5602,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         org.json.JSONObject height = contribution == null
                 ? null : contribution.optJSONObject("height");
         return c114GenericAxisContributionMatches(
-                width, expected.minContent, expected.maxContent)
+                width, expected.minContent, expected.maxContent,
+                expected.paddingInline, expected.borderWidth)
                 && c114GenericAxisContributionMatches(
-                        height, expected.minContentHeight, expected.maxContentHeight);
+                        height, expected.minContentHeight, expected.maxContentHeight,
+                        expected.paddingBlock, expected.borderWidth);
     }
 
     private static boolean c114GenericAxisContributionMatches(
-            org.json.JSONObject axis, double minContent, double maxContent
+            org.json.JSONObject axis, double minContent, double maxContent,
+            double padding, double border
     ) {
         return axis != null
                 && c114GenericJsonNear(axis, "minContent", minContent, 1.0 / 64.0)
@@ -5504,10 +5621,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && c114GenericAutoDimension(axis.optJSONObject("maxSize"))
                 && c114GenericZeroLength(axis.optJSONObject("marginStart"))
                 && c114GenericZeroLength(axis.optJSONObject("marginEnd"))
-                && c114GenericZeroLength(axis.optJSONObject("paddingStart"))
-                && c114GenericZeroLength(axis.optJSONObject("paddingEnd"))
-                && c114GenericJsonNear(axis, "borderStart", 0, 0.0001)
-                && c114GenericJsonNear(axis, "borderEnd", 0, 0.0001);
+                && c114GenericLength(axis.optJSONObject("paddingStart"), padding)
+                && c114GenericLength(axis.optJSONObject("paddingEnd"), padding)
+                && c114GenericJsonNear(axis, "borderStart", border, 0.0001)
+                && c114GenericJsonNear(axis, "borderEnd", border, 0.0001);
     }
 
     private static boolean c114GenericAutoDimension(org.json.JSONObject dimension) {
@@ -5515,9 +5632,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114GenericZeroLength(org.json.JSONObject length) {
+        return c114GenericLength(length, 0);
+    }
+
+    private static boolean c114GenericLength(org.json.JSONObject length, double expected) {
         return length != null
                 && "length".equals(c114GenericJsonString(length, "kind"))
-                && c114GenericJsonNear(length, "cssPx", 0, 0.0001);
+                && c114GenericJsonNear(length, "cssPx", expected, 0.0001);
     }
 
     private static boolean c114GenericDirectTextTextLayoutsMatch(
@@ -5539,7 +5660,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? null : layout.optJSONObject("paragraphStyle");
             org.json.JSONArray lines = layout == null
                     ? null : layout.optJSONArray("lines");
-            double expectedTextWidth = c114IsGridTextAspectRatioScene(sceneId)
+            double expectedTextWidth = expected.textWidth != expected.width
+                    ? expected.textWidth : c114IsGridTextAspectRatioScene(sceneId)
                     && c114IsGridTextAspectRatioColumnScene(sceneId)
                     && index == 0 ? 40.0 : expected.width;
             double expectedTextHeight = c114IsGridTextAspectRatioScene(sceneId)
@@ -5553,7 +5675,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || sources == null || sources.length() != 1
                     || !c114GenericJsonNear(
                             layout, "fontRegistryRevision", 1, 0)
-                    || !c114GenericJsonNear(layout, "availableWidth", expected.width, 1.0 / 64.0)
+                    || !c114GenericJsonNear(
+                            layout, "availableWidth", expected.availableWidth, 1.0 / 64.0)
                     || !c114GenericJsonNear(layout, "width", expectedTextWidth, 1.0 / 64.0)
                     || !c114GenericJsonNear(layout, "height", expectedTextHeight, 1.0 / 64.0)
                     || !expected.layoutText.equals(c114GenericJsonString(layout, "text"))
@@ -5676,7 +5799,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || !"Columns".equals(c114GenericJsonString(columns, "axis"))
                 || !"Rows".equals(c114GenericJsonString(rows, "axis"))
                 || !c114GenericTrackSizesMatch(columns, scene.columns, columnGap)
-                || !c114GenericTrackSizesMatch(rows, new double[] {scene.rootHeight}, 0.0)) {
+                || !c114GenericTrackSizesMatch(rows, new double[] {
+                        c114GenericDirectTextAspectRatioRowTrackSize(sceneId, scene.rootHeight)
+                }, 0.0)) {
             return false;
         }
         C114GenericDirectTextItemExpectation first = scene.items[0];
@@ -5716,6 +5841,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         C114GenericDirectTextItemExpectation first = scene.items[0];
         C114GenericDirectTextItemExpectation second = scene.items[1];
         boolean fixedRows = c114IsGridTextAspectRatioColumnScene(sceneId);
+        double rowTrackSize = c114GenericDirectTextAspectRatioRowTrackSize(
+                sceneId, scene.rootHeight);
         if (!Integer.valueOf(0).equals(c114GenericJsonInteger(columns, "sequence"))
                 || !Integer.valueOf(1).equals(c114GenericJsonInteger(rows, "sequence"))
                 || !c114GenericNullableTraceFieldsMatch(columns)
@@ -5723,7 +5850,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || !c114GenericDirectTextAspectRatioStagesMatch(
                         columns, scene.columns, false, false)
                 || !c114GenericDirectTextAspectRatioStagesMatch(
-                        rows, new double[] {scene.rootHeight}, fixedRows, !fixedRows)) {
+                        rows, new double[] {rowTrackSize}, fixedRows, !fixedRows)) {
             return false;
         }
         int[] columnItems = {first.node, first.node, first.node,
@@ -5737,12 +5864,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         boolean columnsMatch = c114GenericDirectTextContributionsMatch(
                 columns, columnItems, columnKinds, columnValues, false);
         if (!columnsMatch) return false;
-        if (sceneId.contains("-column")) {
+        if (fixedRows) {
             return c114GenericDirectTextContributionsMatch(
                     rows, new int[0], new String[0], new double[0], true);
         }
-        double firstRow = 10.0;
-        double secondRow = scene.rootHeight;
+        double firstRow = sceneId.startsWith("grid-text-aspect-ratio-auto-")
+                ? 16.0 : 10.0;
+        double secondRow = sceneId.contains("no-ratio")
+                ? 16.0 : rowTrackSize;
         return c114GenericDirectTextContributionsMatch(
                 rows,
                 new int[] {first.node, first.node, first.node,
@@ -10695,6 +10824,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsGridTextAspectRatioScene(sceneId)) {
             String rootId;
             int[][] expectedPoints;
+            if (c114GenericDirectTextBoxAspectRatioExpectation(sceneId) != null) {
+                C114GenericDirectTextSceneExpectation expectation =
+                        c114GenericDirectTextExpectation(sceneId);
+                rootId = c114GenericDirectTextBoxRootId(sceneId);
+                if (expectation == null || rootId == null) return false;
+                int firstWidth = (int) expectation.items[0].width;
+                if (expectation.rootHeight == 60 && firstWidth > 80) {
+                    expectedPoints = new int[][] {
+                        {5, 5}, {firstWidth + 5, 5}, {firstWidth - 5, 5}, {105, 5}
+                    };
+                } else if (expectation.rootHeight == 60) {
+                    expectedPoints = new int[][] {
+                        {5, 5}, {firstWidth + 5, 5}, {75, 5}
+                    };
+                } else {
+                    expectedPoints = new int[][] {{5, 5}, {25, 5}, {75, 5}};
+                }
+            } else {
             switch (sceneId) {
                 case "grid-text-aspect-ratio-row":
                     rootId = "row-ratio";
@@ -10733,9 +10880,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         return false;
                     }
             }
+            }
+            boolean hasFirstItemEdgeSample = expectedPoints.length == 4
+                    && sceneId.startsWith("grid-text-aspect-ratio-row-60-");
             String[] expectedIds = expectedPoints.length == 4
                     ? new String[] {sceneId + "-first-item", sceneId + "-second-item",
-                            sceneId + "-unused-root", sceneId + "-outside-root-overflow"}
+                            sceneId + (hasFirstItemEdgeSample
+                                    ? "-first-item-edge" : "-unused-root"),
+                            sceneId + "-outside-root-overflow"}
                     : new String[] {sceneId + "-first-item", sceneId + "-second-item",
                             sceneId + "-unused-root"};
             if (samples.size() != expectedIds.length) return false;
@@ -17447,8 +17599,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static int[] c114GridExpectedRgb(String sceneId, String sampleId) {
         if (c114IsGridTextAspectRatioScene(sceneId)) {
             if (sampleId.endsWith("-first-item")) return new int[] {229, 72, 77};
+            if (sampleId.endsWith("-first-item-edge")) return new int[] {229, 72, 77};
             if (sampleId.endsWith("-second-item")) return new int[] {58, 134, 255};
             if (sampleId.endsWith("-unused-root")) return new int[] {255, 255, 255};
+            if (("grid-text-aspect-ratio-row-60-auto-3-2-border-box".equals(sceneId)
+                    || "grid-text-aspect-ratio-row-60-numeric-3-2-border-box".equals(sceneId))
+                    && sampleId.endsWith("-outside-root-overflow")) {
+                return new int[] {58, 134, 255};
+            }
             if ("grid-text-aspect-ratio-range-column-1-2".equals(sceneId)
                     && sampleId.endsWith("-outside-root-overflow")) {
                 return new int[] {229, 72, 77};

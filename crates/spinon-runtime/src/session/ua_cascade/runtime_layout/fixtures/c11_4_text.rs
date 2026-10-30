@@ -271,6 +271,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_styles: BTreeMap::from([(item.id(), ahem_paragraph_style(case))]),
         engine,
         two_axis_nested_grid: false,
+        content_box_ratio_node: None,
     }))
 }
 
@@ -474,6 +475,7 @@ fn prepare_multispan_text(
         paragraph_styles,
         engine,
         two_axis_nested_grid: false,
+        content_box_ratio_node: None,
     }))
 }
 
@@ -704,6 +706,7 @@ fn prepare_typed_auto_repeat_text(
         paragraph_styles: BTreeMap::from([(text_owner.id(), typed_auto_repeat_paragraph_style())]),
         engine,
         two_axis_nested_grid: false,
+        content_box_ratio_node: None,
     }))
 }
 

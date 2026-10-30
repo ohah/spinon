@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 1,
+  "target": "android-avd",
+  "runPrefix": "c114-text-ratio-mvulqeze-ea726d6a",
+  "sourceHead": "74dce30b5be51c1d34dc977b8b64a2fdf08d101d",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs\n M crates/spinon-style-to-layout/src/lib.rs\n M crates/spinon-style-to-layout/src/projection.rs\n M crates/spinon-style-to-layout/src/projection/style_values.rs\n M crates/spinon-style/src/lib.rs\n M crates/spinon-style/src/stylo_dom.rs\n M crates/spinon-style/src/stylo_dom/cascade.rs\n M crates/spinon-style/src/stylo_dom/cascade/incremental/aspect_ratio.rs\n M crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs\n M crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs\n M crates/spinon-style/src/stylo_dom/cascade/snapshot.rs\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n M tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs\n M vendor/taffy/src/compute/grid/alignment.rs\n M vendor/taffy/src/compute/grid/types/grid_item.rs\n M vendor/taffy/src/compute/grid/types/mod.rs",
+  "sourceHashes": {
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "3096c20f523e47fbe38f164a22f302b65ba0257b18f87ac84f38fcf7b5a1797d",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs": "d0d2c6316d97dd6c8c4680264b1008b60cb8abeb326a163f4c5ad1be9382a5c6",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "bac7255188e58821f499eeabdccf1b3bd2952e942caa6294b788c5aa12a33401",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "14324716e2e34e14e39a92a3d388d46773328712e1e3aa8435b2084885394bd8",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs": "5a38aa6c16958271bcbc8b03a7ac937030e0c82bd9fc06f36c9e3736ff98d42e",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs": "e4cfd262affefb3d7cfa182ef3cf21f8175a0c80a260aa0212540a5eaf4d09ca",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental.rs": "3e1eb7dee3ef22b71a52e97e7101fc8e28043f9d726e279b05911cf2e839bc76",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/aspect_ratio.rs": "69bf8f7cc7f8dd606d80fce15bbd07a9ebc3b57a6dff86d0f117d29c04a6db19",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs": "e58f6848777e989ee3ff761ac3c4770cee94725540f005bd393ec440785dc781",
+    "crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs": "efcbe08f09022fbdabe4da5cb91d353f62480fe78411df3d972b9212e4bb24d9",
+    "crates/spinon-style/src/stylo_dom/cascade/snapshot.rs": "3f35abd48e47f9de4d1cfe55e89583b9fbf9992e5f40d4de8673fdb2a5ffa0b0",
+    "crates/spinon-style-to-layout/src/projection.rs": "509b9af6d23b33178949b58906c96a254bf2da5e62310abc25c790ce312440ea",
+    "crates/spinon-style-to-layout/src/projection/style_values.rs": "a6d26a2bf505ee98e5530422958e3096a0a255778c65f8c1e7110e9c45694865",
+    "crates/spinon-style-to-layout/src/lib.rs": "29643067a169775e448f8e6063819c06696f17ae097d9f75c269c5438074e886",
+    "crates/spinon-style/src/lib.rs": "1d1fb2e8119e46e8d3768a11bc9d76e9a8e435c59543133cfea68618af2b5967",
+    "crates/spinon-style/src/stylo_dom.rs": "f756a4863dc6e9227f5394ebcc29238b19a05ef1fa91901469c01cbd1f89e138",
+    "crates/spinon-style/src/stylo_dom/cascade.rs": "bcf0b0f0f4689474401827e1ff0489c79a87cff559f5a4d728ab3954c4c66999",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs": "83d8d4c2c0bd1298822ba67a76b6c86ec332d13ddb475f4f962d76d20dde6bb0",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "5592661bdebc29fcc34edd25a90724d5a15ee09f8105a8be4c720b8791ac42da",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "7f6f22fe7dce6e2ada850bb9ce25473ba0fcc119cb0ae3c13c2bc4109074317f",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "a9e4293dce80b49d8285f2868cd324acd766c9cfabb54698191e0c37b757d41f",
+    "vendor/taffy/src/compute/grid/types/grid_item.rs": "7a9b3c1e71beb16cbe9bd7717fd27a048d20df35c9cabb108ddb0763cdc2b6bf",
+    "vendor/taffy/src/compute/grid/types/mod.rs": "2aa9351f8483eec35faea54a5ccfef19db1647884a98d7c0d72bcd19eab11e6f",
+    "vendor/taffy/src/compute/grid/alignment.rs": "52b4ef0e6b906a57a20583ab4742ec77c2ae2a47d25a76d4c01b31c92bb10393",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html": "f507edb05f1554e6d2c8ff4fac483c67021f38bc9f24bd850f2d8c1d7875d3ec",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html": "fd43945d6200d36524c07c539fdf1e3193157e4df4ad13f12243937e42c771d0",
+    "tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs": "d3bdf786368e1656589db785f354a2cc39d8d4d8482ecfadc115b66c8aa06405"
+  },
+  "sceneCount": 23,
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-1-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-4-3",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-3-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-5-2",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-1-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-4-3",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-3-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-5-2",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-60",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-45",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-30",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-20",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+      "boxCount": 3,
+      "traceParts": 10,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 7,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 8,
+      "pixelSamples": 3
+    }
+  ]
+}

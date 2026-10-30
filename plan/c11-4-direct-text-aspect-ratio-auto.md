@@ -1,6 +1,6 @@
 # C11.4 direct-text `auto <ratio>` content-box 계획
 
-**상태:** 구현 전 계획. Chrome 156 사전 비교와 계획 실패 관점 20개 검토를 마쳤다. 계획 PR이 병합되기 전에는 구현하지 않는다. 이 고정 fixture 후보는 C11.4/C11 완료 표시가 아니다.
+**상태:** 계획 PR [#845](https://github.com/ohah/spinon/pull/845)와 projection-gate 보완 PR [#846](https://github.com/ohah/spinon/pull/846)은 병합됐다. 구현은 기존 16개 회귀 장면과 신규 7개 장면을 Android·iOS Simulator에서 각각 23/23, 표면 표본 72/72 exact로 통과했고 Rust·Clippy 및 FFI archive 경계를 확인했다. 별도 구현/runtime 20관점 및 PR diff 30관점 검토도 기록했다. 인접 C07.3 computed-style 문자열 비교 1건(4/5)은 이 변경의 serializer 수정 없이 남아 있어 PR 전 별도 판정이 필요하다. 구현 PR 검토·병합은 아직 완료되지 않았다. C11.4/C11 완료 표시는 아니다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [finite-positive ratio 선행 slice](./c11-4-direct-text-aspect-ratio-finite.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
@@ -49,6 +49,14 @@ Chrome used dimensions은 1/64 CSS px 단위로 quantize되어 있으므로 32�
 6. Default/product static archive에 fixture route/symbol/string/payload가 없고 fixture-test positive control에는 있는지 재검사한다. Focused Rust/style/projection/runtime/FFI tests, 관련 crate gates, `cargo fmt`, feature Clippy 및 Android/iOS simulator build를 기록한다. 미실행 결과는 통과로 쓰지 않는다.
 7. 내부 계약 [0059](../spec/internal/0059-c11-grid-layout.md)에 제한 입력, basis 전달, 오류·fallback과 미지원 범위를 기록하고 숫자 계약 `0.1.0`은 유지한다. [공식 상태 대장](../spec/STATUS.md)의 C11/C11.4 checkbox와 `72/213`은 그대로 둔다. 상위 계획과 Tailnet preview를 PR 병합 후 동기화한다.
 8. 이 계획 자체는 별도 실패 관점 20개로 검토하고 계획 PR을 먼저 병합한다. 이후 구현/runtime 20관점과 별도 구현 PR diff 20관점을 새로 검토한다. PR #842와 이 계획의 테스트/리뷰 결과를 한 구현 slice로 합쳐 세지 않는다.
+
+## 구현/runtime 결과 · 2026-10-30
+
+- 수치 ratio와 sizing basis를 `ComputedLayoutAspectRatio { ratio, sizing_box }`로 보존한다. `auto <ratio>`는 `ContentBox`, 일반 숫자 ratio는 `BoxSizing`이다. content-box ratio projection은 일반 API에서 거부하고, C11.4 opt-in 경로에서 collector가 지정한 단일 `NodeId`에만 허용한다.
+- Taffy Grid ratio transfer는 content-box dimensions에 ratio를 적용하고 padding/border를 결과에 더한다. numeric ratio의 기존 box-sizing basis는 유지한다.
+- 기존 finite-positive 행렬 16개와 신규 `auto <ratio>`·numeric·no-ratio 장면 7개를 합친 23개를 실행했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator가 각각 23/23 장면, 72/72 표면 표본을 통과했다. 결과·입력 hash·화면·한계는 [runtime evidence](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-auto-runtime-2026-10-30/README.md)에 있다.
+- `cargo fmt --all -- --check`, 기본 및 fixture-feature Clippy, runtime/style/layout focused tests와 기본/opt-in FFI archive marker 검사를 기록했다. 인접 `c07_3_aspect_ratio_tests`는 4/5 통과하고, 기존 computed-value 문자열 `1.7777778 / 1` 대 Chromium `1.77778 / 1` 비교 1개가 남아 있다. 해당 serializer는 이 변경에서 수정하지 않았고, 실패를 통과로 세지 않는다.
+- 공식 C11.4/C11 체크와 완료 `72/213`은 유지한다. 일반 CSS author admission·WPT·실기기·hardware GPU 범위는 열지 않는다.
 
 ## 제외 범위
 

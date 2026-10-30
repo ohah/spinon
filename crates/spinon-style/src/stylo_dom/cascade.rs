@@ -139,8 +139,8 @@ pub use margin::compute_flex_media_environment_cascade;
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub use snapshot::ComputedCssZoom;
 pub use snapshot::{
-    CascadeDiagnostic, ComputedBorderPaint, ComputedCssDimension, ComputedCssEdges,
-    ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
+    CascadeDiagnostic, ComputedAspectRatioSizingBox, ComputedBorderPaint, ComputedCssDimension,
+    ComputedCssEdges, ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRepeat, ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows,
     ComputedCssGridItemPlacement, ComputedCssGridLayout, ComputedCssGridPlacement,
     ComputedCssGridTemplateAreas, ComputedCssGridTrackBreadth,
@@ -148,10 +148,10 @@ pub use snapshot::{
     ComputedCssMaxSize, ComputedCssOpacity, ComputedCssOverflow, ComputedCssOverflowClipMargin,
     ComputedCssOverflowVisualBox, ComputedCssOverscrollBehavior, ComputedCssPosition,
     ComputedCssSpacingValue, ComputedCssTouchAction, ComputedCssVisibility, ComputedCssZIndex,
-    ComputedElementStyle, ComputedLayoutBorder, ComputedLayoutDimensions, ComputedLayoutInsets,
-    ComputedLayoutSpacing, ComputedStyleProfile, ComputedStyleSnapshot, CssColorScheme,
-    CssMediaEnvironment, CssPointerCapabilities, CssPrimaryPointer, CssViewport,
-    FixedContainingBlockEffect,
+    ComputedElementStyle, ComputedLayoutAspectRatio, ComputedLayoutBorder,
+    ComputedLayoutDimensions, ComputedLayoutInsets, ComputedLayoutSpacing, ComputedStyleProfile,
+    ComputedStyleSnapshot, CssColorScheme, CssMediaEnvironment, CssPointerCapabilities,
+    CssPrimaryPointer, CssViewport, FixedContainingBlockEffect,
 };
 pub use ua_baseline::compute_supported_elements_ua_cascade;
 

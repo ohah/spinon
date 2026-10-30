@@ -6,10 +6,10 @@ use spinon_layout::{
     TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_style::{
-    ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
-    ComputedCssGridAutoRows, ComputedCssGridPlacement, ComputedCssGridTrackSize,
-    ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue, ComputedElementStyle,
-    ComputedStyleProfile, ComputedStyleSnapshot,
+    ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridAutoColumns,
+    ComputedCssGridAutoFlow, ComputedCssGridAutoRows, ComputedCssGridPlacement,
+    ComputedCssGridTrackSize, ComputedCssMaxSize, ComputedCssPosition, ComputedCssSpacingValue,
+    ComputedElementStyle, ComputedStyleProfile, ComputedStyleSnapshot,
 };
 
 use super::super::super::{RuntimeLayoutFailure, layout_failure};
@@ -105,6 +105,7 @@ fn prepare_with_profile(
     let mut short_text_count = 0;
     let mut long_text_count = 0;
     let mut aspect_ratio_count = 0;
+    let mut content_box_ratio_node = None;
     for item in candidates {
         let text_node = direct_text_source(snapshot, root, item)?;
         let text = snapshot
@@ -145,7 +146,10 @@ fn prepare_with_profile(
                             "aspect-ratio profile requires a matching finite positive computed ratio on AAAA",
                         ));
                     }
-                    validate_ratio_geometry(root_style, ratio, style.node_id.get())?;
+                    if ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox {
+                        content_box_ratio_node = Some(style.node_id);
+                    }
+                    validate_ratio_geometry(root_style, ratio.ratio, style.node_id.get())?;
                 } else if property(style, "aspect-ratio") != Some("auto") {
                     return Err(style_failure(
                         style.node_id.get(),
@@ -185,6 +189,7 @@ fn prepare_with_profile(
         paragraph_styles,
         engine,
         two_axis_nested_grid: false,
+        content_box_ratio_node,
     }))
 }
 
@@ -348,14 +353,25 @@ fn aspect_ratio_rows_supported(rows: &[ComputedCssGridTrackSize]) -> bool {
         )
 }
 
-fn computed_ratio_matches(style: &ComputedElementStyle, ratio: f32) -> bool {
-    if !ratio.is_finite() || ratio <= 0.0 {
+fn computed_ratio_matches(
+    style: &ComputedElementStyle,
+    ratio: spinon_style::ComputedLayoutAspectRatio,
+) -> bool {
+    if !ratio.ratio.is_finite() || ratio.ratio <= 0.0 {
         return false;
     }
     let Some(serialized) = property(style, "aspect-ratio") else {
         return false;
     };
-    let Some((numerator, denominator)) = serialized.split_once('/') else {
+    let (has_auto, serialized_ratio) = if let Some(serialized) = serialized.strip_prefix("auto ") {
+        (true, serialized)
+    } else {
+        (false, serialized)
+    };
+    if has_auto != (ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox) {
+        return false;
+    }
+    let Some((numerator, denominator)) = serialized_ratio.split_once('/') else {
         return false;
     };
     let (Ok(numerator), Ok(denominator)) = (
@@ -368,7 +384,30 @@ fn computed_ratio_matches(style: &ComputedElementStyle, ratio: f32) -> bool {
     {
         return false;
     }
-    numerator / denominator == ratio
+    numerator / denominator == ratio.ratio
+}
+
+fn supported_aspect_ratio_edges(style: &ComputedElementStyle, allow_aspect_ratio: bool) -> bool {
+    let spacing = style.layout_spacing;
+    let border = style.layout_border;
+    let no_border =
+        border.top == 0.0 && border.right == 0.0 && border.bottom == 0.0 && border.left == 0.0;
+    if zero_edges(spacing.padding) && no_border {
+        return true;
+    }
+    allow_aspect_ratio
+        && spacing.padding.top == ComputedCssSpacingValue::LengthPx(2.0)
+        && spacing.padding.right == ComputedCssSpacingValue::LengthPx(4.0)
+        && spacing.padding.bottom == ComputedCssSpacingValue::LengthPx(2.0)
+        && spacing.padding.left == ComputedCssSpacingValue::LengthPx(4.0)
+        && border.top == 1.0
+        && border.right == 1.0
+        && border.bottom == 1.0
+        && border.left == 1.0
+        && matches!(
+            property(style, "box-sizing"),
+            Some("border-box" | "content-box")
+        )
 }
 
 fn validate_ratio_geometry(
@@ -619,11 +658,7 @@ fn paragraph_style_for_with_baseline_alias(
             Some(ratio) => !allow_aspect_ratio || !computed_ratio_matches(style, ratio),
         }
         || !zero_edges(style.layout_spacing.margin)
-        || !zero_edges(style.layout_spacing.padding)
-        || style.layout_border.top != 0.0
-        || style.layout_border.right != 0.0
-        || style.layout_border.bottom != 0.0
-        || style.layout_border.left != 0.0
+        || !supported_aspect_ratio_edges(style, allow_aspect_ratio)
     {
         return Err(style_failure(
             style.node_id.get(),

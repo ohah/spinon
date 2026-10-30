@@ -1,3 +1,6 @@
+use crate::stylo_dom::cascade::snapshot::{
+    ComputedAspectRatioSizingBox, ComputedLayoutAspectRatio, ComputedStyleProfile,
+};
 use spinon_core::NodeId;
 use style::{properties::ComputedValues, values::generics::position::PreferredRatio};
 
@@ -6,7 +9,8 @@ use crate::stylo_dom::cascade::CssCascadeError;
 pub(crate) fn computed_layout_aspect_ratio(
     computed: &ComputedValues,
     node: NodeId,
-) -> Result<Option<f32>, CssCascadeError> {
+    profile: ComputedStyleProfile,
+) -> Result<Option<ComputedLayoutAspectRatio>, CssCascadeError> {
     let value = computed.clone_aspect_ratio();
     let PreferredRatio::Ratio(ratio) = value.ratio else {
         return Ok(None);
@@ -15,10 +19,10 @@ pub(crate) fn computed_layout_aspect_ratio(
     if ratio.is_degenerate() {
         return Ok(None);
     }
-    if value.auto {
+    if value.auto && profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
         return Err(CssCascadeError::UnsupportedComputedAspectRatio {
             node,
-            reason: "auto <ratio>의 content-box 의미는 현재 Taffy 계약에서 보존하지 않습니다"
+            reason: "auto <ratio>의 content-box 의미는 C11.4 direct-text fixture profile에서만 보존합니다"
                 .into(),
         });
     }
@@ -39,7 +43,14 @@ pub(crate) fn computed_layout_aspect_ratio(
         });
     }
 
-    Ok(Some(width_over_height))
+    Ok(Some(ComputedLayoutAspectRatio {
+        ratio: width_over_height,
+        sizing_box: if value.auto {
+            ComputedAspectRatioSizingBox::ContentBox
+        } else {
+            ComputedAspectRatioSizingBox::BoxSizing
+        },
+    }))
 }
 
 /// Stylo currently serializes a degenerate computed ratio as `auto`, although

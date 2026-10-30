@@ -530,8 +530,8 @@ pub struct ComputedElementStyle {
     pub font_size_css_px: f32,
     /// `properties`와 같은 계산 결과에서 추출한 typed width·height·flex-basis입니다.
     pub layout_dimensions: ComputedLayoutDimensions,
-    /// 현재 runtime layout profile에서 추출한 preferred width/height ratio입니다.
-    pub layout_aspect_ratio: Option<f32>,
+    /// 현재 runtime layout profile에서 추출한 preferred width/height ratio와 기준 box입니다.
+    pub layout_aspect_ratio: Option<ComputedLayoutAspectRatio>,
     /// 같은 Stylo computed-style revision에서 추출한 margin·padding·gap 값입니다.
     pub layout_spacing: ComputedLayoutSpacing,
     /// C11 runtime Grid profile에서만 설정하는 Stylo typed explicit tracks입니다.
@@ -552,6 +552,22 @@ pub struct ComputedElementStyle {
     pub computed_color: Option<ComputedCssColor>,
     /// C19.1 computed-color profile에서만 설정하는 Stylo `background-color` 값입니다.
     pub computed_background_color: Option<ComputedCssColor>,
+}
+
+/// Computed preferred aspect ratio와 이를 적용할 box-sizing 기준입니다.
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub struct ComputedLayoutAspectRatio {
+    pub ratio: f32,
+    pub sizing_box: ComputedAspectRatioSizingBox,
+}
+
+/// CSS `aspect-ratio`가 sizing에 사용하는 기준 box입니다.
+#[derive(Clone, Copy, Debug, Eq, PartialEq)]
+pub enum ComputedAspectRatioSizingBox {
+    /// 일반 `<ratio>`가 사용하는 `box-sizing` 선택 box입니다.
+    BoxSizing,
+    /// `auto <ratio>`가 사용하는 content box입니다.
+    ContentBox,
 }
 
 /// 유한한 범위 `[0, 1]`에 있는 CSS computed opacity입니다.

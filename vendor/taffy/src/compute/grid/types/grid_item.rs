@@ -1,5 +1,8 @@
 //! Contains GridItem used to represent a single grid item during layout
-use super::{maybe_apply_aspect_ratio_to_constraint_size, GridTrack};
+use super::{
+    maybe_apply_aspect_ratio_to_constraint_size, maybe_apply_aspect_ratio_with_box_sizing,
+    GridTrack,
+};
 use crate::compute::common::sizing_keyword::{resolve_sizing_keyword, SizingKeywordResolution};
 use crate::compute::grid::OriginZeroLine;
 use crate::compute::grid::{
@@ -457,11 +460,15 @@ impl GridItem {
             None
         });
         // Reapply aspect ratio after stretch and absolute position width adjustments
-        let Size { width, height } = Size {
-            width,
-            height: inherent_size.height,
-        }
-        .maybe_apply_aspect_ratio(aspect_ratio);
+        let Size { width, height } = maybe_apply_aspect_ratio_with_box_sizing(
+            Size {
+                width,
+                height: inherent_size.height,
+            },
+            aspect_ratio,
+            self.box_sizing,
+            padding_border_size,
+        );
 
         let height = height.or_else(|| {
             // A height that is a sizing keyword is not auto, so it does not stretch. The stretch
@@ -492,7 +499,12 @@ impl GridItem {
             None
         });
         // Reapply aspect ratio after stretch and absolute position height adjustments
-        let Size { width, height } = Size { width, height }.maybe_apply_aspect_ratio(aspect_ratio);
+        let Size { width, height } = maybe_apply_aspect_ratio_with_box_sizing(
+            Size { width, height },
+            aspect_ratio,
+            self.box_sizing,
+            padding_border_size,
+        );
 
         // Clamp size by min and max width/height
         let Size { width, height } = Size { width, height }.maybe_clamp(min_size, max_size);

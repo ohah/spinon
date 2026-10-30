@@ -233,7 +233,10 @@ fn compare_dpr(dpr: f32, reference: &Value) -> BTreeMap<String, [f32; 4]> {
             );
         }
         let expected_ratio = expected_layout_ratio(expected_node);
-        match (style.layout_aspect_ratio, expected_ratio) {
+        match (
+            style.layout_aspect_ratio.map(|ratio| ratio.ratio),
+            expected_ratio,
+        ) {
             (Some(actual), Some(expected)) => assert!(
                 (actual - expected).abs() <= 0.00001,
                 "{dpr}x {id}.aspect-ratio: Spinon {actual}, Chrome {expected}"

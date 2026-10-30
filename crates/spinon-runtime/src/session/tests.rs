@@ -279,10 +279,9 @@ fn root_html_environment_projects_viewport_and_os_scheme_into_css_cascade() {
             .is_some_and(|value| value == "123px")
     }));
     assert!(initial_styles.elements.iter().any(|element| {
-        element
-            .properties
-            .get("aspect-ratio")
-            .is_some_and(|value| value == "2 / 1" && element.layout_aspect_ratio == Some(2.0))
+        element.properties.get("aspect-ratio").is_some_and(|value| {
+            value == "2 / 1" && element.layout_aspect_ratio.map(|ratio| ratio.ratio) == Some(2.0)
+        })
     }));
     assert!(!initial_styles.elements.iter().any(|element| {
         element
