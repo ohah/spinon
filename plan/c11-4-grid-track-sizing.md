@@ -608,6 +608,10 @@ PR #765는 2026-10-28T16:52:08Z Rebase and merge됐고 merge SHA는 31103049d4a9
 
 Focused tests 2/2, 전체 Grid 선택 134/134, `spinon-layout` 312/312, crate Clippy와 rustfmt가 통과했다. [실행 로그·범위·실패 수정](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/README.md) · [구현 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/pr-diff-review-30.md). 이는 fixed-size Rust test이며 앱 surface, WPT, 일반 CSS admission을 다루지 않는다. C11.4와 C11은 미완료다.
 
-## 2026-10-30 auto-repeat 두-track pattern 상한 · 계획
+## 2026-10-30 auto-repeat 두-track pattern 상한 · PR #837
 
-단일-track cap 검사 뒤, 2-track `[1px, 2px]` repetition의 exact-fit과 상한 초과 truncation을 Columns·Rows에서 각각 고정한다. Prefix/suffix source order와 반복 중간 named line의 마지막 occurrence를 frame으로 확인하는 test-only 후속이다. 독립 기대값은 [precomparison](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md), 구현 계획은 [계획 문서](./c11-4-auto-repeat-pattern-ceiling.md)에 있다. 이 계획의 구현, simulator, WPT 또는 공개 지원 결과는 아직 없다. C11.4/C11과 `72/213` 공식 집계는 그대로 미완료다.
+[단일-track 상한 검사](./c11-4-auto-repeat-track-ceiling.md)에 이어 `[1px, 2px]` 반복 pattern의 exact-fit과 10,000-track 상한 초과 절단을 Columns·Rows 양쪽에서 test-only로 고정했다. definite `15,002px`·`15,005px` 네 입력에서 전체 track 순서, prefix/suffix source order, 반복 중간 named line의 마지막 occurrence frame을 확인했다. 초기 outer line-name metadata 입력 검증 실패와 수정 내용도 실행 근거에 보존했다.
+
+Focused tests 3/3, Grid tests 135/135, `spinon-layout` 314/314, crate Clippy와 rustfmt가 통과했다. [독립 기대값](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md) · [실행 근거와 실패 수정](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md) · [구현/runtime 검토](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md) · [집중 계획](./c11-4-auto-repeat-pattern-ceiling.md).
+
+구현 PR [#837](https://github.com/ohah/spinon/pull/837)은 2026-10-30T03:35:31Z Rebase and merge됐고 merge SHA는 `12c11815165077d570d4d9c1674b0785047cba67`이다. 순수 Rust test-only slice라 앱 runtime·simulator·WPT·일반 author CSS admission을 포함하지 않는다. C11.4/C11은 미완료이며 공식 `72/213` 집계는 유지한다.
