@@ -1,5 +1,11 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-10-30 auto-repeat 두-track pattern ceiling test-only slice
+
+`auto-fill`의 `[1px, 2px]` 반복 pattern을 Columns/Rows 양축에서 검사한다. 15,002px exact-fit과 15,005px cap overflow의 전체 10,000-track sequence, suffix source-order 절단, `pattern-start -1 / pattern-middle -1` child frame을 순수 Rust trace test로 고정했다. 반복 metadata 세 name group과 별도 outer metadata 네 빈 group을 입력한다. 기존 입력 검증에서 outer vector 누락으로 발생한 첫 테스트 실패를 수정하고 원인·실행을 [runtime evidence](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/README.md)에 보존했다. 앱 runtime이나 simulator pixel을 만들지 않는 test-only 범위다. [계획](./c11-4-auto-repeat-pattern-ceiling.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-runtime-2026-10-30/pr-diff-review-30.md).
+
+공식 C11.4/C11 checkbox와 `72/213`은 유지한다.
+
 ## 2026-10-30 direct-text preferred aspect-ratio intrinsic contribution · PR #834 병합
 
 고정 4개 scene의 fixture-test 전용 preferred-aspect-ratio profile을 구현하고, Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 4/4 scene과 12/12 표면 표본을 확인했다. focused Rust 26/26, FFI route 1/1, feature Clippy, rustfmt, module/build-flag 36/36, 기본/opt-in archive marker 0/4·4/4, 구현/runtime 검토 20개와 PR diff 검토 30개를 기록했다. 구현 PR [#834](https://github.com/ohah/spinon/pull/834)은 2026-10-30T02:49:15Z Rebase and merge됐고 merge SHA는 `31361a9b0b01532fb0baa019f8c30d8b75caeb8a`다. PR check rollup은 비어 있고 main required status checks도 설정되지 않아 CI 성공으로 세지 않는다. 네 장면에 한정한 fixture-test slice이며 일반 author CSS admission·전체 WPT·C11.4 전체 동작은 미완료다. 공식 완료 `72/213`은 유지한다. [집중 계획](./c11-4-direct-text-aspect-ratio.md) · [사전 비교](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-precomparison-2026-10-30/README.md) · [실행 근거](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.md) · [runtime 검토 20개](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/implementation-pr-diff-review-30.md)

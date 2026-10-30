@@ -35,4 +35,8 @@
 | 29 | 계획 검토 20개를 구현 검토나 PR 검토 횟수에 재사용한다 | **통과.** 계획 검토 20개가 별도 파일에 있고 구현/runtime 검토는 이후 새 관점으로 남긴다. |
 | 30 | PR checks가 비어 있는데 CI 성공을 주장한다 | **통과.** `gh pr view`의 status check rollup은 비어 있으며 PR 본문은 계획 검토와 문서 검사만 보고한다. |
 
-**판정:** PR 변경 실패 관점 30/30 통과. 계획 범위, independent expected values, 공식 완료 상태, 테스트/플랫폼 주장 사이에 모순을 찾지 못했다. 계획 검토 20개와 이 PR diff 검토는 구현/runtime 검토를 대신하지 않는다.
+**판정 당시:** PR 변경 실패 관점 30/30 통과. 계획 범위, independent expected values, 공식 완료 상태, 테스트/플랫폼 주장 사이에 모순을 찾지 못했다. 계획 검토 20개와 이 PR diff 검토는 구현/runtime 검토를 대신하지 않는다.
+
+## 구현 전환 후 확인된 계획 누락 · 2026-10-30
+
+첫 focused runtime 입력은 `InvalidGridTrackList`로 거부됐다. `validate_auto_repeat_axis`는 repeat pattern의 `GridAutoRepeat.line_names` 3개뿐 아니라 `tracks.len() - repeated_track_count + 2` 길이의 outer line-name vector도 요구한다. 계획과 precomparison에 이름 없는 네 outer group을 입력한다는 조건이 빠져 있었다. 구현 입력을 빈 vector 4개로 고치고 계획 문서·계획 검토 관점 7·8을 보완했다. 기존 PR diff 관점 7·8은 이 validator 구조를 놓쳤으며 구현/runtime 검토에서 재확인한다.

@@ -9,6 +9,7 @@
 ## 기준 revision
 
 - Base source: `e17c65f69e9a8639617fad69a6288207b059e3b0` (`origin/main`, 2026-10-30)
+- Implementation branch base after plan PR #836: `945c9781be074231bc4163d4847be4aa78b8fc3f` (`origin/main`)
 - Internal boundary: `crates/spinon-layout/src/grid.rs`, `GRID_MAX_TRACKS = 10_000`
 - Pinned implementation: `vendor/taffy`, version `0.15.0`, `src/compute/grid/explicit_grid.rs`
 - Independent rules: [CSS Grid 2025 CRD §5.4](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#limiting-large-grids), [§7.2.3.2](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#auto-repeat), and [§8.3](https://www.w3.org/TR/2025/CRD-css-grid-1-20250326/#line-placement)
@@ -23,7 +24,7 @@
 ) 3px
 ```
 
-`GridAutoRepeat.line_names`에는 `pattern-start`, `pattern-middle`, `pattern-end` 세 이름 그룹을 둔다. 고정 `1px` child 하나를 반복 축에서 `pattern-start -1`부터 `pattern-middle -1`까지, 다른 축에서는 line 1부터 2까지 배치한다. `auto-fill`은 빈 반복 track도 유지한다. 이 child는 마지막 named-line 구간을 실행으로 확인하며 고정 track 크기는 바꾸지 않는다.
+`GridAutoRepeat.line_names`에는 `pattern-start`, `pattern-middle`, `pattern-end` 세 이름 그룹을 둔다. Spinon 입력 검증 계약에 맞춰 repeated axis의 outer line-name vector에도 네 개의 빈 group을 둔다 (`4` tracks - `2` repeated tracks + `2`). 고정 `1px` child 하나를 반복 축에서 `pattern-start -1`부터 `pattern-middle -1`까지, 다른 축에서는 line 1부터 2까지 배치한다. `auto-fill`은 빈 반복 track도 유지한다. 이 child는 마지막 named-line 구간을 실행으로 확인하며 고정 track 크기는 바꾸지 않는다.
 
 ## 독립 기대값
 
