@@ -168,6 +168,18 @@ private let c114GenericDirectTextSceneIDs: Set<String> = [
     "generic-root-content-variation", "generic-root-whitespace", "generic-root-reorder",
     "grid-text-aspect-ratio-row", "grid-text-aspect-ratio-row-control",
     "grid-text-aspect-ratio-column", "grid-text-aspect-ratio-column-control",
+    "grid-text-aspect-ratio-range-row-1-2",
+    "grid-text-aspect-ratio-range-row-4-3",
+    "grid-text-aspect-ratio-range-row-3-2",
+    "grid-text-aspect-ratio-range-row-5-2",
+    "grid-text-aspect-ratio-range-column-1-2",
+    "grid-text-aspect-ratio-range-column-4-3",
+    "grid-text-aspect-ratio-range-column-3-2",
+    "grid-text-aspect-ratio-range-column-5-2",
+    "grid-text-aspect-ratio-range-column-control-60",
+    "grid-text-aspect-ratio-range-column-control-45",
+    "grid-text-aspect-ratio-range-column-control-30",
+    "grid-text-aspect-ratio-range-column-control-20",
 ]
 #else
 private let c114GenericDirectTextSceneIDs: Set<String> = []
@@ -194,11 +206,13 @@ private func c114IsGridTextAspectRatioScene(_ sceneID: String) -> Bool {
         || sceneID == "grid-text-aspect-ratio-row-control"
         || sceneID == "grid-text-aspect-ratio-column"
         || sceneID == "grid-text-aspect-ratio-column-control"
+        || sceneID.hasPrefix("grid-text-aspect-ratio-range-")
 }
 
 private func c114IsGridTextAspectRatioColumnScene(_ sceneID: String) -> Bool {
     sceneID == "grid-text-aspect-ratio-column"
         || sceneID == "grid-text-aspect-ratio-column-control"
+        || sceneID.hasPrefix("grid-text-aspect-ratio-range-column-")
 }
 
 private struct C114GenericDirectTextItemExpectation {
@@ -242,6 +256,7 @@ private func c114GenericTextItem(
 private func c114GenericDirectTextExpectation(
     _ sceneID: String
 ) -> C114GenericDirectTextSceneExpectation? {
+    if let range = c114GenericDirectTextAspectRatioRangeExpectation(sceneID) { return range }
     switch sceneID {
     case "generic-root-normal":
         return C114GenericDirectTextSceneExpectation(rootHeight: 20, columns: [20, 40], items: [
@@ -355,6 +370,89 @@ private func c114GenericDirectTextExpectation(
         ])
     default:
         return nil
+    }
+}
+
+private func c114GenericDirectTextAspectRatioRangeExpectation(
+    _ sceneID: String
+) -> C114GenericDirectTextSceneExpectation? {
+    let prefix = "grid-text-aspect-ratio-range-"
+    guard sceneID.hasPrefix(prefix) else { return nil }
+    let suffix = String(sceneID.dropFirst(prefix.count))
+    if suffix.hasPrefix("row-") {
+        let ratioText = String(suffix.dropFirst("row-".count))
+        let ratio = c114AspectRatioRangeValue(ratioText)
+        guard ratio.isFinite, ratio > 0 else { return nil }
+        let height = 40 / ratio
+        return C114GenericDirectTextSceneExpectation(rootHeight: height, columns: [10, 40], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 10, height: height,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+            c114GenericTextItem(node: 4, x: 10, width: 40, height: height,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+        ])
+    }
+    if suffix.hasPrefix("column-control-") {
+        let height = c114AspectRatioControlHeight(String(suffix.dropFirst("column-control-".count)))
+        guard height > 0 else { return nil }
+        return C114GenericDirectTextSceneExpectation(rootHeight: height, columns: [40, 10], items: [
+            c114GenericTextItem(node: 2, x: 0, width: 40, height: height,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+            c114GenericTextItem(node: 4, x: 40, width: 10, height: height,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+        ])
+    }
+    guard suffix.hasPrefix("column-") else { return nil }
+    let ratioText = String(suffix.dropFirst("column-".count))
+    let ratio = c114AspectRatioRangeValue(ratioText)
+    let height = c114AspectRatioColumnHeight(ratioText)
+    guard ratio.isFinite, ratio > 0, height > 0 else { return nil }
+    let firstWidth = max(40, height * ratio)
+    let firstHeight = firstWidth / ratio
+    return C114GenericDirectTextSceneExpectation(rootHeight: height,
+        columns: [firstWidth, 10], items: [
+            c114GenericTextItem(node: 2, x: 0, width: firstWidth, height: firstHeight,
+                minContent: 40, maxContent: 40, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "AAAA", layoutText: "AAAA", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [40]),
+            c114GenericTextItem(node: 4, x: firstWidth, width: 10, height: height,
+                minContent: 10, maxContent: 10, minContentHeight: 10, maxContentHeight: 10,
+                rawText: "A", layoutText: "A", whiteSpace: "NoWrap", wordBreak: "Normal",
+                lineAdvances: [10]),
+        ])
+}
+
+private func c114AspectRatioRangeValue(_ ratioText: String) -> Double {
+    let parts = ratioText.split(separator: "-", omittingEmptySubsequences: false)
+    guard parts.count == 2, let numerator = Double(parts[0]),
+          let denominator = Double(parts[1]), denominator > 0 else { return .nan }
+    return numerator / denominator
+}
+
+private func c114AspectRatioColumnHeight(_ ratioText: String) -> Double {
+    switch ratioText {
+    case "1-2": return 60
+    case "4-3": return 45
+    case "3-2": return 30
+    case "5-2": return 20
+    default: return 0
+    }
+}
+
+private func c114AspectRatioControlHeight(_ heightText: String) -> Double {
+    switch heightText {
+    case "60": return 60
+    case "45": return 45
+    case "30": return 30
+    case "20": return 20
+    default: return 0
     }
 }
 
@@ -1395,6 +1493,9 @@ private func c114RowAxisSpanExpectedNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    if c114IsGridTextAspectRatioScene(sceneID) {
+        return c114AspectRatioNodeFramesMatch(sceneID, report: report)
+    }
     if C114FitContentImplicitColumnWpt.isScene(sceneID) {
         return C114FitContentImplicitColumnWpt.nodeFramesMatch(sceneID: sceneID, report: report)
     }
@@ -1412,6 +1513,35 @@ private func c114ExpectedNodeFramesMatch(_ sceneID: String, report: String) -> B
     if report.contains(expected) { return true }
     guard sceneID == "calc-neighbor-col-fill-border-box" else { return false }
     return report.contains(expected.replacingOccurrences(of: "x=23.796875", with: "x=23.8"))
+}
+
+private func c114AspectRatioNodeFramesMatch(_ sceneID: String, report: String) -> Bool {
+    guard let scene = c114GenericDirectTextExpectation(sceneID),
+          scene.items.count == 2,
+          let rootMarker = report.range(of: "root_frame_css_px=") else { return false }
+    let rootSizeText = report[rootMarker.upperBound...].prefix { !$0.isWhitespace }
+    let rootSize = rootSizeText.split(separator: "x", omittingEmptySubsequences: false)
+    guard rootSize.count == 2,
+          let rootWidth = Double(rootSize[0]), rootWidth.isFinite,
+          let rootHeight = Double(rootSize[1]), rootHeight.isFinite,
+          abs(rootWidth - 100) <= 1.0 / 64.0,
+          abs(rootHeight - scene.rootHeight) <= 1.0 / 64.0,
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let frames = diagnostics["gridItemFrames"] as? [[String: Any]],
+          frames.count == scene.items.count else { return false }
+    for expected in scene.items {
+        let matches = frames.filter({
+            c114GenericJSONInteger($0["node"]) == expected.node
+        })
+        guard matches.count == 1,
+              let frame = matches.first,
+              c114GenericJSONNear(frame["x"], expected: expected.x, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(frame["y"], expected: 0, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(frame["width"], expected: expected.width, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(frame["height"], expected: expected.height, tolerance: 1.0 / 64.0)
+        else { return false }
+    }
+    return true
 }
 
 private func c114PercentageNeighborRootSize(_ sceneID: String) -> (width: Int, height: Int)? {
@@ -5342,8 +5472,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     }
     if c114IsGridTextAspectRatioScene(sceneID) {
         if c114IsGridTextAspectRatioColumnScene(sceneID) {
-            let expectedIntrinsicWidthNodes = sceneID == "grid-text-aspect-ratio-column"
-                ? Set([expectedNodes[1]]) : Set(expectedNodes)
+            let firstHasIntrinsicWidth = sceneID.contains("control")
+            let expectedIntrinsicWidthNodes = firstHasIntrinsicWidth
+                ? Set(expectedNodes) : Set([expectedNodes[1]])
             guard minContentWidthNodes == expectedIntrinsicWidthNodes,
                   maxContentWidthNodes == expectedIntrinsicWidthNodes,
                   minContentHeightNodes.isEmpty,
@@ -5415,7 +5546,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
     for (index, expected) in scene.items.enumerated() {
         let layout = layouts[index]
         let expectedTextWidth = c114IsGridTextAspectRatioScene(sceneID)
-            && sceneID == "grid-text-aspect-ratio-column" && index == 0
+            && c114IsGridTextAspectRatioColumnScene(sceneID) && index == 0
             ? 40 : expected.width
         let expectedTextHeight = c114IsGridTextAspectRatioScene(sceneID) ? 10 : expected.height
         guard c114GenericJSONInteger(layout["node"]) == expected.node,
@@ -5743,7 +5874,7 @@ private func c114GenericDirectTextTraceMatches(
         if sceneID.contains("-column") {
             return (passes[1]["contributions"] as? [[String: Any]])?.isEmpty == true
         }
-        let secondRow = sceneID == "grid-text-aspect-ratio-row" ? 20.0 : 10.0
+        let secondRow = scene.rootHeight
         let expectedRows: [(item: Int, kind: String, value: Double)] = [
             (first.node, "Minimum", 10),
             (first.node, "MinContent", 10),
@@ -9503,6 +9634,7 @@ private struct C111MetalPixelRun {
         if c114IsGridTextAspectRatioScene(sceneID) {
             let rootID: String
             let itemPoints: [(UInt32, UInt32)]
+            var includesOverflowSample = false
             switch sceneID {
             case "grid-text-aspect-ratio-row":
                 rootID = "row-ratio"
@@ -9517,9 +9649,24 @@ private struct C111MetalPixelRun {
                 rootID = "column-control"
                 itemPoints = [(5, 5), (45, 5), (70, 5)]
             default:
-                return false
+                let prefix = "grid-text-aspect-ratio-range-"
+                guard sceneID.hasPrefix(prefix) else { return false }
+                rootID = String(sceneID.dropFirst(prefix.count))
+                if rootID.hasPrefix("row-") {
+                    itemPoints = [(5, 5), (20, 5), (75, 5)]
+                } else if rootID.hasPrefix("column-control-") {
+                    itemPoints = [(5, 5), (45, 5), (70, 5)]
+                } else if rootID.hasPrefix("column-") {
+                    guard let scene = c114GenericDirectTextExpectation(sceneID) else {
+                        return false
+                    }
+                    itemPoints = [(5, 5), (UInt32(scene.columns[0]) + 5, 5), (95, 5)]
+                } else {
+                    return false
+                }
+                includesOverflowSample = rootID == "column-1-2"
             }
-            let expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
+            var expectedSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
                 ("\(sceneID)-first-item", rootID, itemPoints[0].0, itemPoints[0].1,
                  [229, 72, 77, 255]),
                 ("\(sceneID)-second-item", rootID, itemPoints[1].0, itemPoints[1].1,
@@ -9527,6 +9674,10 @@ private struct C111MetalPixelRun {
                 ("\(sceneID)-unused-root", rootID, itemPoints[2].0, itemPoints[2].1,
                  [255, 255, 255, 255]),
             ]
+            if includesOverflowSample {
+                expectedSamples.append(("\(sceneID)-outside-root-overflow", rootID, 5, 70,
+                    [229, 72, 77, 255]))
+            }
             guard samples.count == expectedSamples.count else { return false }
             return expectedSamples.allSatisfy { expected in
                 samples.contains { sample in
@@ -14527,8 +14678,11 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             ) ? c114RowAxisSpanTraceMatches(c114GridTrackSizingSceneID, report: report) : true
             let expectedFlexStageMatches = C114FlexStage.isScene(c114GridTrackSizingSceneID)
                 ? C114FlexStage.traceMatches(c114GridTrackSizingSceneID, report: report) : true
-            let expectedRootFrameMatches = rootFrame.isEmpty || report.contains(rootFrame)
-            let expectedItemFrameMatches = itemFrame.isEmpty || report.contains(itemFrame)
+            let aspectRatioScene = c114IsGridTextAspectRatioScene(c114GridTrackSizingSceneID)
+            let expectedRootFrameMatches = aspectRatioScene
+                || rootFrame.isEmpty || report.contains(rootFrame)
+            let expectedItemFrameMatches = aspectRatioScene
+                || itemFrame.isEmpty || report.contains(itemFrame)
             log("SPINON_C114_GRID_EVAL_RUN run_id=\(c114GridTrackSizingRunID) scene_id=\(c114GridTrackSizingSceneID) \(runtimeStatusSummary(report))")
             let gridTrackSizingTraceAvailable = logC114GridTrackSizingTraceChunks(report)
             guard report.hasPrefix("status=0 "),

@@ -30,7 +30,9 @@ use super::source_border::{
 };
 use super::source_math::winning_layout_math_values;
 use super::spacing::{computed_layout_insets, computed_layout_spacing};
-use super::{computed_layout_aspect_ratio, computed_layout_border};
+use super::{
+    computed_aspect_ratio_serialization, computed_layout_aspect_ratio, computed_layout_border,
+};
 use crate::StyloElement;
 
 pub(super) fn computed_element_output(
@@ -180,6 +182,12 @@ pub(super) fn computed_element_output(
             )
         })
         .collect::<BTreeMap<_, _>>();
+    if computed_properties.contains_key("aspect-ratio") {
+        computed_properties.insert(
+            "aspect-ratio".to_owned(),
+            computed_aspect_ratio_serialization(computed),
+        );
+    }
     let layout_suppressed = ancestor_hidden
         || computed_properties
             .get("display")

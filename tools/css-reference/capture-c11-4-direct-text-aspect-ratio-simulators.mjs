@@ -27,13 +27,13 @@ function item(node, x, width, height, text, textWidth = width) {
   };
 }
 
-function scene(id, rootId, rootHeight, columns, first, second) {
+function scene(id, rootId, rootHeight, columns, first, second, rowRatioContribution = 10) {
   const expectedItems = [first, second];
   const rootFrame = `0:node=1,x=0,y=0,width=100,height=${rootHeight}`;
   const itemFrames = expectedItems.map((expected, index) =>
     `${index + 1}:node=${expected.node},x=${expected.x},y=0,width=${expected.width},height=${expected.height}`);
   return {
-    id, rootId, boxCount: 3, rootHeight, columns, expectedItems,
+    id, rootId, boxCount: 3, rootHeight, columns, expectedItems, rowRatioContribution,
     expectedRootFrame: `width=100,height=${rootHeight}`,
     expectedItemFrame: `width=${first.width},height=${first.height}`,
     expectedNodeFrames: `node_frames_css_px=[${[rootFrame, ...itemFrames].join(';')}]`,
@@ -42,13 +42,37 @@ function scene(id, rootId, rootHeight, columns, first, second) {
 
 const scenes = [
   scene('grid-text-aspect-ratio-row', 'row-ratio', 20, [10, 40],
-    item(2, 0, 10, 20, 'A'), item(4, 10, 40, 20, 'AAAA')),
+    item(2, 0, 10, 20, 'A'), item(4, 10, 40, 20, 'AAAA'), 20),
   scene('grid-text-aspect-ratio-row-control', 'row-control', 10, [10, 40],
     item(2, 0, 10, 10, 'A'), item(4, 10, 40, 10, 'AAAA')),
   scene('grid-text-aspect-ratio-column', 'column-ratio', 40, [80, 10],
     item(2, 0, 80, 40, 'AAAA', 40), item(4, 80, 10, 40, 'A')),
   scene('grid-text-aspect-ratio-column-control', 'column-control', 40, [40, 10],
     item(2, 0, 40, 40, 'AAAA'), item(4, 40, 10, 40, 'A')),
+  scene('grid-text-aspect-ratio-range-row-1-2', 'row-1-2', 80, [10, 40],
+    item(2, 0, 10, 80, 'A'), item(4, 10, 40, 80, 'AAAA'), 80),
+  scene('grid-text-aspect-ratio-range-row-4-3', 'row-4-3', 30, [10, 40],
+    item(2, 0, 10, 30, 'A'), item(4, 10, 40, 30, 'AAAA'), 30),
+  scene('grid-text-aspect-ratio-range-row-3-2', 'row-3-2', 26.65625, [10, 40],
+    item(2, 0, 10, 26.65625, 'A'), item(4, 10, 40, 26.65625, 'AAAA'), 26.65625),
+  scene('grid-text-aspect-ratio-range-row-5-2', 'row-5-2', 16, [10, 40],
+    item(2, 0, 10, 16, 'A'), item(4, 10, 40, 16, 'AAAA'), 16),
+  scene('grid-text-aspect-ratio-range-column-1-2', 'column-1-2', 60, [40, 10],
+    item(2, 0, 40, 80, 'AAAA', 40), item(4, 40, 10, 60, 'A')),
+  scene('grid-text-aspect-ratio-range-column-4-3', 'column-4-3', 45, [60, 10],
+    item(2, 0, 60, 45, 'AAAA', 40), item(4, 60, 10, 45, 'A')),
+  scene('grid-text-aspect-ratio-range-column-3-2', 'column-3-2', 30, [45, 10],
+    item(2, 0, 45, 30, 'AAAA', 40), item(4, 45, 10, 30, 'A')),
+  scene('grid-text-aspect-ratio-range-column-5-2', 'column-5-2', 20, [50, 10],
+    item(2, 0, 50, 20, 'AAAA', 40), item(4, 50, 10, 20, 'A')),
+  scene('grid-text-aspect-ratio-range-column-control-60', 'column-control-60', 60, [40, 10],
+    item(2, 0, 40, 60, 'AAAA'), item(4, 40, 10, 60, 'A')),
+  scene('grid-text-aspect-ratio-range-column-control-45', 'column-control-45', 45, [40, 10],
+    item(2, 0, 40, 45, 'AAAA'), item(4, 40, 10, 45, 'A')),
+  scene('grid-text-aspect-ratio-range-column-control-30', 'column-control-30', 30, [40, 10],
+    item(2, 0, 40, 30, 'AAAA'), item(4, 40, 10, 30, 'A')),
+  scene('grid-text-aspect-ratio-range-column-control-20', 'column-control-20', 20, [40, 10],
+    item(2, 0, 40, 20, 'AAAA'), item(4, 40, 10, 20, 'A')),
 ];
 
 const sourcePaths = [
@@ -58,9 +82,14 @@ const sourcePaths = [
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/incremental.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/incremental/aspect_ratio.rs',
+  'crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+  'vendor/taffy/src/compute/grid/types/grid_item.rs',
   'tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html',
+  'tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html',
   'tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs',
 ];
 
@@ -88,15 +117,16 @@ async function saveLog(path, result) {
 
 function pixelSamples(scene) {
   const { id, rootId } = scene;
-  const pointSets = {
-    'grid-text-aspect-ratio-row': [[5, 5], [20, 5], [75, 5]],
-    'grid-text-aspect-ratio-row-control': [[5, 5], [20, 5], [75, 5]],
-    'grid-text-aspect-ratio-column': [[5, 5], [85, 5], [95, 5]],
-    'grid-text-aspect-ratio-column-control': [[5, 5], [45, 5], [70, 5]],
-  };
-  const points = pointSets[id];
+  let points;
+  if (id.includes('-row')) points = [[5, 5], [20, 5], [75, 5]];
+  else if (id.endsWith('column-control')) points = [[5, 5], [45, 5], [70, 5]];
+  else if (id.includes('column-control-')) points = [[5, 5], [45, 5], [70, 5]];
+  else if (id.includes('-column')) {
+    const secondX = scene.expectedItems[0].x + scene.expectedItems[0].width + 5;
+    points = [[5, 5], [secondX, 5], [95, 5]];
+  }
   assert.ok(points, `${id}: no fixed pixel sample oracle`);
-  return [
+  const samples = [
     { id: `${id}-first-item`, nodeId: rootId,
       xCssPx: points[0][0], yCssPx: points[0][1], rgba: [229, 72, 77, 255] },
     { id: `${id}-second-item`, nodeId: rootId,
@@ -104,6 +134,11 @@ function pixelSamples(scene) {
     { id: `${id}-unused-root`, nodeId: rootId,
       xCssPx: points[2][0], yCssPx: points[2][1], rgba: [255, 255, 255, 255] },
   ];
+  if (id.endsWith('column-1-2')) {
+    samples.push({ id: `${id}-outside-root-overflow`, nodeId: rootId,
+      xCssPx: 5, yCssPx: 70, rgba: [229, 72, 77, 255] });
+  }
+  return samples;
 }
 
 function traceJson(traces, scene, runID) {
@@ -119,6 +154,48 @@ function close(actual, expected, label) {
   assert.ok(Number.isFinite(actual), `${label}: non-finite value`);
   assert.ok(Math.abs(actual - expected) <= 1 / 64,
     `${label}: expected ${expected}, got ${actual}`);
+}
+
+function parseFrameSize(value, label) {
+  const match = value.match(/^width=([^,\s]+),height=([^\s]+)$/);
+  assert.ok(match, `${label}: frame size missing`);
+  const width = Number(match[1]);
+  const height = Number(match[2]);
+  assert.ok(Number.isFinite(width) && Number.isFinite(height),
+    `${label}: frame size is non-finite`);
+  return { width, height };
+}
+
+function parseNodeFrames(value, label) {
+  const match = value.match(/node_frames_css_px=\[([^\]]*)\]/);
+  assert.ok(match, `${label}: node frames missing`);
+  return match[1].split(';').map((entry) => {
+    const frame = entry.match(/^(\d+):node=(\d+),x=([^,]+),y=([^,]+),width=([^,]+),height=([^,]+)$/);
+    assert.ok(frame, `${label}: malformed node frame ${entry}`);
+    const values = frame.slice(3).map(Number);
+    assert.ok(values.every(Number.isFinite), `${label}: non-finite node frame ${entry}`);
+    return {
+      index: Number(frame[1]), node: Number(frame[2]),
+      x: values[0], y: values[1], width: values[2], height: values[3],
+    };
+  });
+}
+
+function validateNativeNodeFrames(log, expected, sceneID) {
+  const marker = 'SPINON_C114_GRID_NODE_FRAME ';
+  const observed = log.split(/\r?\n/).filter((line) => line.includes(marker))
+    .map((line) => line.slice(line.indexOf(marker) + marker.length).trim())
+    .map((frame) => parseNodeFrames(`node_frames_css_px=[${frame}]`, `${sceneID} native`)[0]);
+  assert.equal(observed.length, expected.length,
+    `${sceneID}: native node-frame count differs`);
+  for (const [index, wanted] of expected.entries()) {
+    const actual = observed[index];
+    assert.equal(actual.index, wanted.index, `${sceneID}: native frame index differs`);
+    assert.equal(actual.node, wanted.node, `${sceneID}: native node id differs`);
+    for (const key of ['x', 'y', 'width', 'height']) {
+      close(actual[key], wanted[key], `${sceneID}: native node ${wanted.node} ${key}`);
+    }
+  }
 }
 
 function assertTrackSizes(pass, expectedSizes, label) {
@@ -176,7 +253,7 @@ function validateAspectRatioTrace(report, scene) {
     const frame = frames.find(({ node }) => node === item.node);
     assert.ok(frame, `${scene.id}: Grid item ${item.node} frame missing`);
     for (const key of ['x', 'y', 'width', 'height']) {
-      assert.equal(frame[key], item[key], `${scene.id}: item ${item.node} ${key}`);
+      close(frame[key], item[key], `${scene.id}: item ${item.node} ${key}`);
     }
   }
 
@@ -238,7 +315,7 @@ function validateAspectRatioTrace(report, scene) {
   const rowContributions = scene.id.includes('-column') ? [] : expected.flatMap((item) =>
     ['Minimum', 'MinContent', 'MaxContent'].map((kind) => ({
       item: item.node, span: 1, kind, crossesFlexibleTrack: false,
-      value: scene.id === 'grid-text-aspect-ratio-row' && item.text === 'AAAA' ? 20 : 10,
+      value: item.text === 'AAAA' ? scene.rowRatioContribution : 10,
     })));
   assertContributions(rows, rowContributions, `${scene.id}: Rows`);
 }
@@ -283,11 +360,20 @@ function traceParts(log, runID) {
 function validateLog(log, scene, runID, platform) {
   assert.ok(log.includes(`SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `),
     `${scene.id}: runtime summary missing\n${log}`);
-  assert.ok(log.includes(`expected_root_frame=${scene.expectedRootFrame}`)
-      && log.includes(`expected_item_frame=${scene.expectedItemFrame}`),
-    `${scene.id}: root/item frame expectation differs\n${log}`);
-  assert.ok(log.includes(scene.expectedNodeFrames),
-    `${scene.id}: native node-frame assertion differs\n${log}`);
+  const expectedRoot = parseFrameSize(scene.expectedRootFrame, `${scene.id} oracle root`);
+  const expectedItem = parseFrameSize(scene.expectedItemFrame, `${scene.id} oracle item`);
+  const summaryRoot = log.match(/expected_root_frame=(width=[^,\s]+,height=[^\s]+)/);
+  const summaryItem = log.match(/expected_item_frame=(width=[^,\s]+,height=[^\s]+)/);
+  assert.ok(summaryRoot && summaryItem,
+    `${scene.id}: native root/item expectations missing\n${log}`);
+  const nativeRoot = parseFrameSize(summaryRoot[1], `${scene.id} native root`);
+  const nativeItem = parseFrameSize(summaryItem[1], `${scene.id} native item`);
+  for (const key of ['width', 'height']) {
+    close(nativeRoot[key], expectedRoot[key], `${scene.id}: native root ${key}`);
+    close(nativeItem[key], expectedItem[key], `${scene.id}: native first item ${key}`);
+  }
+  validateNativeNodeFrames(log, parseNodeFrames(scene.expectedNodeFrames,
+    `${scene.id} oracle`), scene.id);
   assert.ok(log.includes(`layout=ready boxes=${scene.boxCount}`),
     `${scene.id}: layout or draw box count differs\n${log}`);
   assert.ok(log.includes(`SPINON_C0410_DRAW`) && log.includes(`presented boxes=${scene.boxCount}`),

@@ -1,6 +1,6 @@
 # C11.4 direct-text finite-positive preferred aspect-ratio 확장 계획
 
-**상태:** 구현 계획 PR 준비. 아직 runtime 변경이나 C11.4 완료 표시는 없다.
+**상태:** 구현 후보 및 두 플랫폼 시뮬레이터 검증 완료. 구현 PR 병합 전이며 C11.4 완료 표시는 없다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [기존 direct-text ratio slice](./c11-4-direct-text-aspect-ratio.md) · [C11 Grid 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태](../spec/STATUS.md)
 
@@ -34,6 +34,16 @@ PR #834의 `RuntimeBlockFlexGridTrackSizingV1` direct-text collector는 `layout_
 6. 기본 product와 fixture-test static archive를 각각 빌드해 fixture FFI/payload absence와 positive-control presence를 확인한다. Focused Rust/runtime/FFI tests, relevant crates, rustfmt, feature Clippy를 실행한다.
 7. 계획 자체를 서로 다른 실패 관점 20개로 검토한 뒤 계획 PR을 병합한다. 구현/runtime review 20개와 별도 PR diff review를 프로젝트 PR 규칙에 따라 30개로 마친다. 결함 수정 뒤 영향받은 항목을 재검토한다.
 8. `spec/internal/0059-c11-grid-layout.md`, `spec/STATUS.md`, `plan/c11-4-grid-track-sizing.md`, public roadmap을 같은 범위로 동기화한다. C11.4/C11 checkbox와 `72/213` 집계는 그대로 둔다. 병합 후 exact merge SHA와 Tailnet rendered page를 확인한다.
+
+## 구현 후보 결과 · 2026-10-30
+
+기존 2/1 제한을 finite-positive typed ratio와 computed serialization이 일치하는 범위로 확장했다. 숫자 ratio의 원본 serialization을 Stylo computed snapshot에 보존하고, typed ratio가 없는 item은 computed `auto`일 때만 control로 허용한다. `auto <ratio>`와 degenerate numeric ratio는 이 collector에서 거부한다. Fixed row 후보는 20·30·40·45·60px로 제한한다. 이 값이나 row/column 축을 scene ID에서 추론하지 않는다.
+
+Taffy intrinsic measurement에서 ratio-derived known size만으로 non-replaced auto-sized Grid item의 content contribution을 낮추지 않도록 content-size floor를 추가했다. `column-1-2`는 max-content track 40px, item 40×80px, root 100×60px와 20px overflow를 함께 고정한다. 이 수정은 replaced item, non-auto size/min/max 항목, 임의 CSS admission을 열지 않는다.
+
+최종 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator 실행은 각 16/16 scene, 49/49 surface samples exact다. 네 기존 2/1 회귀 scene, 새 4 row ratio, 4 definite-row column ratio, 4 no-ratio control을 포함한다. Geometry 비교는 Chrome 156의 1/64 CSS px 양자화까지 허용한다. 예를 들어 `row-3-2`의 독립 계산 26.666666…px과 Chrome 26.65625px 차이는 1/64px 미만이다. 각 실행의 source, simulator, app hash, pixel log 및 screenshot은 [runtime evidence](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.md)에 연결한다.
+
+구현/runtime 실패 관점 20개, runtime crate 320 passed·3 ignored, style 253/253, FFI 165 passed·2 ignored, fixture boundary 23/23 및 네 feature Clippy 대상과 rustfmt를 확인했다. 기본 release FFI archive에는 scene ID와 route symbol이 없고, fixture positive control에는 포함된다. Taffy는 workspace에서 제외되어 `cargo test -p taffy`를 직접 실행할 수 없었다. 두 플랫폼 모두 시뮬레이터이며 Android는 software renderer, iOS 표본은 compositor 제출 전이다. [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/finite-ratio-implementation-runtime-review-20.md)와 [현재 PR diff 검토 30개](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/finite-ratio-pr-diff-review-30.md)를 별도 파일로 둔다. 이 후보는 전체 WPT, 실기기/hardware GPU, glyph pixel, compositor 이후 pixel 또는 C11.4 완료를 뜻하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 유지한다.
 
 ## 제외 범위
 

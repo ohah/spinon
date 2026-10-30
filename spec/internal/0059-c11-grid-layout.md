@@ -772,3 +772,15 @@ Chrome 156 구현 전 관측 및 CSS Grid 2025 CRD 독립 기대값은 [precompa
 Focused direct-text Runtime tests 26/26, four-scene FFI route test 1/1, feature-enabled runtime/FFI all-target Clippy, rustfmt, Android/iOS Simulator builds와 source/install hash comparison을 통과했다. macOS ARM64 default `spinon-ffi` release static archive의 새 route ID는 0/4, `c04-runtime-gpu-fixture-test` positive-control archive는 4/4 포함한다. 이 archive 검사로 APK/IPA 전체 fixture exclusion을 주장하지 않는다. 초기 캡처에서 드러난 gutter-collapse·intrinsic query·fixed-row early-return validator 가정은 수정했고, 실패 로그와 최종 실행을 같은 evidence 묶음에 보존한다.
 
 이 구현 후보는 임의 aspect ratio, `auto <ratio>`, min/max 및 box-edge transfer, replaced/image·anonymous/rich text, wrapping/multiple lines, spanning, flex/percentage/calc, vertical writing, baseline, WPT harness/전체 적합성, 실기기/hardware GPU, glyph paint 또는 iOS compositor 이후 pixels를 보장하지 않는다. C11.4와 C11 checkbox, 공식 완료 `72/213`은 미완료로 유지한다.
+
+## C11.4 direct text finite-positive preferred aspect-ratio extension · 제한 opt-in fixture 후보
+
+기존 2/1 전용 direct-text fixture collector를 computed preferred ratio와 같은 finite-positive typed `f32` 값까지 확장한다. `aspect-ratio` computed serialization은 Stylo의 degenerate numeric ratio가 sizing effect에서 `auto`처럼 동작하더라도 numeric numerator/denominator를 보존한다. Typed ratio가 없으면 serialized computed value가 `auto`여야 하고, `auto <ratio>`와 degenerate numeric ratio는 이 collector에서 허용하지 않는다. 이 정책은 해당 제한 fixture profile의 입력 일관성 규칙이며 일반 CSS projection의 지원 계약을 넓히지 않는다.
+
+양의 ratio는 `1/2`, `4/3`, `3/2`, `5/2`를 Ahem direct-text item 하나에 적용한다. Auto row에서 40px intrinsic inline text의 ratio-derived block contribution을 검사하고, 20·30·45·60px definite row에서는 max-content inline track·ratio item frame을 검사한다. Ratio가 없는 각 definite-row control은 같은 line-height/row에서 text intrinsic width 40px을 유지한다. `column-1-2`는 40px max-content column, 40×80px item, 100×60px root, visible 20px overflow를 분리해 검증한다.
+
+Taffy의 grid intrinsic contribution 경로는 known ratio-derived size가 non-replaced, auto-sized, no-min/max Grid item의 content-size contribution을 낮추지 않도록 한다. Replaced item과 explicit size/min/max 조건은 이 helper에서 제외한다. 이는 `ContentSize` measurement를 기반으로 하는 이 구현의 Grid contribution 보정이다. Runtime traces와 platform frame checks는 track contribution, item frame, direct-text line box를 별도로 비교하고 Chrome 156 used geometry에는 최대 1/64 CSS px tolerance를 적용한다.
+
+고정 16 scene(기존 2/1 회귀 4개, 양축 ratio 8개, no-ratio controls 4개)은 Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 16/16 통과했고 surface samples는 각 플랫폼 49/49 exact였다. Android는 software renderer이며 iOS Metal readback은 compositor 제출 전이다. 이 결과는 실기기/hardware GPU, glyph paint, OS compositor 이후 pixel, 전체 WPT 또는 일반 CSS admission을 증명하지 않는다. [구현 전 Chrome/독립 계산](evidence/c11-4-direct-text-aspect-ratio-range-precomparison-2026-10-30/README.md) · [runtime·artifact·실패 수정 근거](evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/README.md) · [구현/runtime 검토 20개](evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/finite-ratio-implementation-runtime-review-20.md) · [PR diff 검토 30개](evidence/c11-4-direct-text-aspect-ratio-runtime-2026-10-30/finite-ratio-pr-diff-review-30.md).
+
+C11.4와 상위 C11 항목은 미완료이며 공식 완료 `72/213`을 그대로 유지한다.
