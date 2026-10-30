@@ -1,0 +1,18 @@
+{
+  "sessions": [
+    {
+      "name": "spinon-c114-roadmap",
+      "closeCommandSucceeded": true,
+      "daemonExitedAfterClose": true,
+      "chromeExitedAfterClose": true
+    },
+    {
+      "name": "spinon-c114-status",
+      "closeAllCommandSucceeded": true,
+      "daemonExitedAfterSigterm": true,
+      "chromeExitedAfterClose": true
+    }
+  ],
+  "finalProcessSearch": "No agent-browser daemon or agent-browser Chrome process remained; the process search matched only its own shell/rg command.",
+  "terminalBrowserUsed": false
+}

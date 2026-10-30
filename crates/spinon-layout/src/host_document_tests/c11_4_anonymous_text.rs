@@ -453,6 +453,26 @@ fn anonymous_grid_text_still_rejects_nonzero_order() {
 }
 
 #[test]
+fn anonymous_grid_pre_wrap_still_rejects_nonzero_order() {
+    let (document, root, _, mut styles) = fixture(&[Child::Text("XX  XX")], 10.0);
+    styles.get_mut(&root.id()).unwrap().order = 1;
+    let snapshot = document.snapshot();
+
+    let reordered = input_result(
+        &snapshot,
+        root,
+        &styles,
+        paragraph_style_with_white_space(crate::WhiteSpaceMode::PreWrap),
+        vec![GridTrackSize::MaxContent],
+        vec![GridTrackSize::Auto],
+    )
+    .unwrap_err();
+    assert!(
+        matches!(reordered, LayoutError::UnsupportedTextParagraph { node, .. } if node == root.id())
+    );
+}
+
+#[test]
 fn collapsible_whitespace_between_blocks_does_not_create_an_item() {
     let (document, root, children, styles) = fixture(
         &[

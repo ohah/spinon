@@ -79,12 +79,15 @@ pub(super) fn collect(
             }
             if !matches!(
                 paragraph_style.white_space,
-                WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap | WhiteSpaceMode::PreLine
+                WhiteSpaceMode::Normal
+                    | WhiteSpaceMode::NoWrap
+                    | WhiteSpaceMode::PreLine
+                    | WhiteSpaceMode::PreWrap
             ) || layout_style.order != 0
             {
                 return Err(LayoutError::UnsupportedTextParagraph {
                     node: paragraph_id,
-                    reason: "C11.4 anonymous Grid text requires white-space:normal, nowrap, or pre-line and order:0",
+                    reason: "C11.4 anonymous Grid text requires white-space:normal, nowrap, pre-line, or pre-wrap and order:0",
                 });
             }
             let mut inline_styles = BTreeMap::new();

@@ -1,0 +1,23 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "chromiumVersion": "156.0.8078.76",
+  "roadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "roadmapTitle": "스피논 구현 로드맵",
+  "preSyncTopCard": "2026-10-31 C11.4 anonymous Grid text white-space:pre-line, implementation PR #867 merged",
+  "postSync": {
+    "preWrapCards": 1,
+    "firstCardContainsSixteenOfSixteenOnBothPlatforms": true,
+    "firstCardContainsWorkspaceTestFailure": true,
+    "firstCardContainsOfficialCount72of213": true,
+    "firstCardSaysImplementationPullRequestNotYetOpened": true
+  },
+  "statusUrl": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html",
+  "statusTitle": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+  "statusChecks": {
+    "visibleOfficialCount72of213": true,
+    "preWrapCandidateVisible": true,
+    "C11CheckboxChecked": false,
+    "C114IntrinsicTrackSizingCheckboxChecked": false
+  },
+  "terminalBrowserUsed": false
+}

@@ -131,7 +131,7 @@ impl TextLayoutEngine {
             }
         }
 
-        let normalized = normalize(input);
+        let normalized = normalize(input)?;
         let (mut inline_boxes, mut inline_boundaries) =
             inline_boxes::prepare_inline_boxes(input, &normalized)?;
         for (inline_box, boundary) in additional_inline_items {
@@ -193,11 +193,14 @@ impl TextLayoutEngine {
         builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
         builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
             WhiteSpaceMode::NoWrap => TextWrapMode::NoWrap,
-            WhiteSpaceMode::Normal | WhiteSpaceMode::PreLine => TextWrapMode::Wrap,
+            WhiteSpaceMode::Normal | WhiteSpaceMode::PreLine | WhiteSpaceMode::PreWrap => {
+                TextWrapMode::Wrap
+            }
         }));
         builder.push_default(StyleProperty::WhiteSpaceCollapse(
             match input.style.white_space {
                 WhiteSpaceMode::PreLine => WhiteSpaceCollapse::PreserveBreaks,
+                WhiteSpaceMode::PreWrap => WhiteSpaceCollapse::Preserve,
                 WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
             },
         ));

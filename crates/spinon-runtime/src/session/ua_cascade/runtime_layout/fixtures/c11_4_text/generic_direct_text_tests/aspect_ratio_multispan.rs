@@ -512,6 +512,25 @@ fn ratio_span_rejects_extra_items_and_non_direct_text() {
     );
 }
 
+#[test]
+fn empty_explicit_grid_item_does_not_enter_the_text_only_span_adapter() {
+    let empty = fixture_with_children(vec![item("ratio", "item ratio", Vec::new())]);
+    let computed = cascade(
+        &empty.view,
+        &format!("{CSS}\n.ratio {{ grid-column:1 / span 2; aspect-ratio:2 / 1; min-width:45px; }}"),
+    );
+
+    assert!(
+        super::super::generic_direct_text::prepare_aspect_ratio_multispan(
+            &empty.snapshot,
+            empty.root,
+            &computed,
+        )
+        .unwrap()
+        .is_none()
+    );
+}
+
 fn fixture(text: &str) -> super::test_fixture::Fixture {
     fixture_with_children(vec![item(
         "ratio",

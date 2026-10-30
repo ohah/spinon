@@ -786,7 +786,7 @@ fn supplementary_scalar_preserves_utf16_and_utf8_source_ranges() {
         WhiteSpaceMode::Normal,
         WordBreakMode::Normal,
     );
-    let normalized = crate::normalize::normalize(&input);
+    let normalized = crate::normalize::normalize(&input).unwrap();
 
     assert_eq!(normalized.text, "😀");
     assert_eq!(normalized.sources.len(), 1);
@@ -809,3 +809,6 @@ mod c15_3_raster;
 
 #[path = "tests/paragraph_style.rs"]
 mod paragraph_style;
+
+#[path = "tests/c11_4_pre_wrap.rs"]
+mod c11_4_pre_wrap;
