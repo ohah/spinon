@@ -14,7 +14,7 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
-const SCENE_IDS: [&str; 16] = [
+const SCENE_IDS: [&str; 26] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -31,6 +31,16 @@ const SCENE_IDS: [&str; 16] = [
     "anonymous-pre-wrap-soft-wrap",
     "anonymous-pre-wrap-forced-break",
     "anonymous-pre-wrap-whitespace-before-block",
+    "anonymous-break-spaces-max-content",
+    "anonymous-break-spaces-comment-split-max-content",
+    "anonymous-break-spaces-min-content",
+    "anonymous-break-spaces-soft-wrap-25",
+    "anonymous-break-spaces-forced-break-max-content",
+    "anonymous-break-spaces-forced-break-min-content",
+    "anonymous-break-spaces-trailing-soft-wrap-25",
+    "anonymous-break-spaces-trailing-max-content",
+    "anonymous-break-spaces-whitespace-only",
+    "anonymous-break-spaces-whitespace-before-block",
 ];
 
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
@@ -128,6 +138,21 @@ fn validate_direct_children(
         "anonymous-pre-wrap-whitespace-before-block" => &[
             ExpectedChild::Text("  "),
             ExpectedChild::Block("c114-anonymous-pre-wrap-whitespace-before-block-item"),
+        ],
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-soft-wrap-25" => &[ExpectedChild::Text("XX  XX")],
+        "anonymous-break-spaces-comment-split-max-content" => {
+            &[ExpectedChild::Text("XX "), ExpectedChild::Text(" XX")]
+        }
+        "anonymous-break-spaces-forced-break-max-content"
+        | "anonymous-break-spaces-forced-break-min-content" => &[ExpectedChild::Text("XX  \nXX")],
+        "anonymous-break-spaces-trailing-soft-wrap-25"
+        | "anonymous-break-spaces-trailing-max-content" => &[ExpectedChild::Text("XX  ")],
+        "anonymous-break-spaces-whitespace-only" => &[ExpectedChild::Text("  ")],
+        "anonymous-break-spaces-whitespace-before-block" => &[
+            ExpectedChild::Text("  "),
+            ExpectedChild::Block("c114-anonymous-break-spaces-whitespace-before-block-item"),
         ],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
@@ -233,6 +258,16 @@ fn validate_grid_style(
         | "anonymous-pre-wrap-soft-wrap"
         | "anonymous-pre-wrap-forced-break"
         | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-comment-split-max-content"
+        | "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-soft-wrap-25"
+        | "anonymous-break-spaces-forced-break-max-content"
+        | "anonymous-break-spaces-forced-break-min-content"
+        | "anonymous-break-spaces-trailing-soft-wrap-25"
+        | "anonymous-break-spaces-trailing-max-content"
+        | "anonymous-break-spaces-whitespace-only"
+        | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
         _ => "collapse",
     };
     let (expected_width, expected_height) = match scene_id {
@@ -247,6 +282,19 @@ fn validate_grid_style(
         | "anonymous-pre-wrap-comment-split-max-content"
         | "anonymous-pre-wrap-min-content-spaces"
         | "anonymous-pre-wrap-forced-break" => (20.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-comment-split-max-content" => (60.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-forced-break-min-content" => (30.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
+            (25.0, ComputedCssDimension::Auto)
+        }
+        "anonymous-break-spaces-forced-break-max-content" => (40.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-trailing-max-content" => (40.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-whitespace-only" => (0.0, ComputedCssDimension::Auto),
+        "anonymous-break-spaces-whitespace-before-block" => {
+            (40.0, ComputedCssDimension::LengthPx(10.0))
+        }
         "anonymous-pre-wrap-soft-wrap" => (25.0, ComputedCssDimension::Auto),
         "anonymous-pre-wrap-whitespace-before-block" => {
             (40.0, ComputedCssDimension::LengthPx(10.0))
@@ -330,9 +378,27 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         | "anonymous-pre-wrap-max-content-spaces"
         | "anonymous-pre-wrap-comment-split-max-content"
         | "anonymous-pre-wrap-forced-break" => vec![ComputedCssGridTrackSize::MaxContent],
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-comment-split-max-content"
+        | "anonymous-break-spaces-forced-break-max-content"
+        | "anonymous-break-spaces-trailing-max-content" => {
+            vec![ComputedCssGridTrackSize::MaxContent]
+        }
         "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
+        "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-forced-break-min-content" => {
+            vec![ComputedCssGridTrackSize::MinContent]
+        }
         "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+        "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
+            vec![ComputedCssGridTrackSize::LengthPx(25.0)]
+        }
+        "anonymous-break-spaces-whitespace-only" => vec![ComputedCssGridTrackSize::Auto],
         "anonymous-pre-wrap-whitespace-before-block" => vec![
+            ComputedCssGridTrackSize::LengthPx(20.0),
+            ComputedCssGridTrackSize::LengthPx(20.0),
+        ],
+        "anonymous-break-spaces-whitespace-before-block" => vec![
             ComputedCssGridTrackSize::LengthPx(20.0),
             ComputedCssGridTrackSize::LengthPx(20.0),
         ],
@@ -369,6 +435,15 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             | "anonymous-pre-wrap-min-content-spaces"
             | "anonymous-pre-wrap-soft-wrap"
             | "anonymous-pre-wrap-forced-break"
+            | "anonymous-break-spaces-max-content"
+            | "anonymous-break-spaces-comment-split-max-content"
+            | "anonymous-break-spaces-min-content"
+            | "anonymous-break-spaces-soft-wrap-25"
+            | "anonymous-break-spaces-forced-break-max-content"
+            | "anonymous-break-spaces-forced-break-min-content"
+            | "anonymous-break-spaces-trailing-soft-wrap-25"
+            | "anonymous-break-spaces-trailing-max-content"
+            | "anonymous-break-spaces-whitespace-only"
     ) {
         vec![ComputedCssGridTrackSize::Auto]
     } else {
@@ -494,6 +569,16 @@ fn anonymous_paragraph_style(scene_id: &str) -> ParagraphStyle {
             | "anonymous-pre-wrap-soft-wrap"
             | "anonymous-pre-wrap-forced-break"
             | "anonymous-pre-wrap-whitespace-before-block" => WhiteSpaceMode::PreWrap,
+            "anonymous-break-spaces-max-content"
+            | "anonymous-break-spaces-comment-split-max-content"
+            | "anonymous-break-spaces-min-content"
+            | "anonymous-break-spaces-soft-wrap-25"
+            | "anonymous-break-spaces-forced-break-max-content"
+            | "anonymous-break-spaces-forced-break-min-content"
+            | "anonymous-break-spaces-trailing-soft-wrap-25"
+            | "anonymous-break-spaces-trailing-max-content"
+            | "anonymous-break-spaces-whitespace-only"
+            | "anonymous-break-spaces-whitespace-before-block" => WhiteSpaceMode::BreakSpaces,
             _ => WhiteSpaceMode::Normal,
         },
         word_break: WordBreakMode::Normal,
@@ -550,7 +635,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 16);
+        assert_eq!(SCENE_IDS.len(), 26);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -756,6 +841,40 @@ mod tests {
             ),
             "anonymous-pre-wrap-whitespace-before-block"
         ));
+        let break_spaces_max_track = grid(
+            vec![ComputedCssGridTrackSize::MaxContent],
+            vec![ComputedCssGridTrackSize::Auto],
+        );
+        for scene_id in [
+            "anonymous-break-spaces-max-content",
+            "anonymous-break-spaces-comment-split-max-content",
+            "anonymous-break-spaces-forced-break-max-content",
+            "anonymous-break-spaces-trailing-max-content",
+        ] {
+            assert!(grid_tracks_match(&break_spaces_max_track, scene_id));
+        }
+        let break_spaces_min_track = grid(
+            vec![ComputedCssGridTrackSize::MinContent],
+            vec![ComputedCssGridTrackSize::Auto],
+        );
+        for scene_id in [
+            "anonymous-break-spaces-min-content",
+            "anonymous-break-spaces-forced-break-min-content",
+        ] {
+            assert!(grid_tracks_match(&break_spaces_min_track, scene_id));
+        }
+        for scene_id in [
+            "anonymous-break-spaces-soft-wrap-25",
+            "anonymous-break-spaces-trailing-soft-wrap-25",
+        ] {
+            assert!(grid_tracks_match(
+                &grid(
+                    vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                    vec![ComputedCssGridTrackSize::Auto],
+                ),
+                scene_id
+            ));
+        }
 
         macro_rules! rejects_grid_mutation {
             ($name:literal, $mutation:expr) => {{

@@ -39,6 +39,13 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     if preserve_tabs && !supports_pre_wrap_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreWrapTabProfile(input.node));
     }
+    if input.style.white_space == WhiteSpaceMode::BreakSpaces
+        && characters.iter().any(|source| source.character == '\t')
+    {
+        return Err(TextLayoutError::UnsupportedBreakSpacesTabProfile(
+            input.node,
+        ));
+    }
 
     let mut result = NormalizedText {
         text: String::new(),
@@ -50,7 +57,8 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     let mut index = 0;
     while index < characters.len() {
         let source = &characters[index];
-        if input.style.white_space == WhiteSpaceMode::PreWrap && is_segment_break(source.character)
+        if preserves_spaces_and_breaks(input.style.white_space)
+            && is_segment_break(source.character)
         {
             let mut line_break_sources = vec![source.clone()];
             if source.character == '\r'
@@ -67,9 +75,11 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
             let spaces = 8 - pre_wrap_column % 8;
             push_expanded_tab(&mut result, source, spaces);
             pre_wrap_column += spaces;
-        } else if input.style.white_space == WhiteSpaceMode::PreWrap {
+        } else if preserves_spaces_and_breaks(input.style.white_space) {
             push_character(&mut result, source, source.character);
-            pre_wrap_column += 1;
+            if input.style.white_space == WhiteSpaceMode::PreWrap {
+                pre_wrap_column += 1;
+            }
         } else if input.style.white_space == WhiteSpaceMode::PreLine
             && is_segment_break(source.character)
         {
@@ -104,6 +114,10 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     push_suppressed_sources(&mut result, &pending_spaces);
 
     Ok(result)
+}
+
+fn preserves_spaces_and_breaks(mode: WhiteSpaceMode) -> bool {
+    matches!(mode, WhiteSpaceMode::PreWrap | WhiteSpaceMode::BreakSpaces)
 }
 
 fn supports_pre_wrap_tab_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {

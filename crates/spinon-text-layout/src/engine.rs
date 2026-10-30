@@ -117,7 +117,14 @@ impl TextLayoutEngine {
                 inline_fragments: Vec::new(),
             });
         }
-        layout.break_all_lines(Some(available_width));
+        let line_break_width = if input.style.white_space == crate::WhiteSpaceMode::BreakSpaces {
+            self.intrinsic_inline_sizes(input)?
+                .min_content()
+                .max(available_width)
+        } else {
+            available_width
+        };
+        layout.break_all_lines(Some(line_break_width));
         layout.align(Alignment::Start, AlignmentOptions::default());
         let layout_height = layout.height();
         if !layout_height.is_finite() || layout_height < 0.0 {

@@ -70,6 +70,7 @@ pub enum WhiteSpaceMode {
     NoWrap,
     PreLine,
     PreWrap,
+    BreakSpaces,
 }
 
 /// C15.1에서 고정하는 단어 경계 profile입니다.

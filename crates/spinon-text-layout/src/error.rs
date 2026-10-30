@@ -37,6 +37,7 @@ pub enum TextLayoutError {
     InvalidGlyphLayout(NodeId),
     UnsupportedVerticalIntrinsicProfile(NodeId),
     UnsupportedPreWrapTabProfile(NodeId),
+    UnsupportedBreakSpacesTabProfile(NodeId),
     MissingGlyphCoverage {
         paragraph: NodeId,
         text_range: Range<usize>,
@@ -140,6 +141,10 @@ impl fmt::Display for TextLayoutError {
             Self::UnsupportedPreWrapTabProfile(node) => write!(
                 formatter,
                 "paragraph {node}의 pre-wrap tab 입력이 고정 Ahem 10px LTR XX-tab-XX fixture profile과 일치하지 않습니다"
+            ),
+            Self::UnsupportedBreakSpacesTabProfile(node) => write!(
+                formatter,
+                "paragraph {node}의 break-spaces tab 입력은 현재 고정 fixture profile에서 지원하지 않습니다"
             ),
             Self::MissingGlyphCoverage {
                 paragraph,
