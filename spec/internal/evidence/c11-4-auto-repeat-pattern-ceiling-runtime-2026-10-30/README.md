@@ -9,7 +9,7 @@
 - 계획: [`c11-4-auto-repeat-pattern-ceiling`](../../../../plan/c11-4-auto-repeat-pattern-ceiling.md)
 - 사전 비교: [`precomparison`](../c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md)
 - 대상 테스트: `crates/spinon-layout/src/grid_track_sizing_tests/auto_repeat_track_ceiling.rs`
-- 구현 기준 revision: `945c9781be074231bc4163d4847be4aa78b8fc3f` (`origin/main`), 구현 diff 미커밋
+- 구현 당시 기준 revision: `945c9781be074231bc4163d4847be4aa78b8fc3f` (`origin/main`). 검증한 test-only 변경은 PR [#837](https://github.com/ohah/spinon/pull/837)으로 제출되어 2026-10-30T03:35:31Z Rebase and merge됐고 merge SHA는 `12c11815165077d570d4d9c1674b0785047cba67`다. GitHub PR check rollup은 비어 있어 CI 성공으로 세지 않는다.
 
 ## 초기 실패와 수정
 
