@@ -33,4 +33,4 @@
 29. **미완료 후보를 공식 완료 수나 내부 계약 버전으로 승격** — `spec/STATUS.md`, public roadmap, internal contract는 C11/C11.4 미완료와 `72/213`을 유지하고 내부 계약 숫자 버전 `0.1.0`도 유지한다. 통과.
 30. **실패한 전체 workspace test를 숨기거나 patch 원인으로 단정** — `cargo test --workspace`의 `spinon-style-to-layout` C07.3 pinned-Chromium format assertion은 기대 `1.77778 / 1`, actual `1.7777778 / 1`로 기록했다. 해당 crate는 후보 diff에서 수정하지 않았으며 base에서도 실패했는지는 별도 증거가 없어 주장하지 않는다. PR/CI 결과와 함께 공개해야 한다. 통과.
 
-**판정:** 이 diff에서 새로 수정할 blocker를 찾지 못했다. 이 검토는 PR 열기 전 로컬 diff 검토이며, PR 생성 후 final head와 check 상태를 확인하고 문서에서 PR 상태를 갱신한다. 최종 PR을 병합하려면 이 30관점 검토를 final diff에 연결하고 required checks 결과와 merge state를 별도로 확인해야 한다.
+**판정:** 이 diff에서 새로 수정할 blocker를 찾지 못했다. PR #870의 최종 head `bf817aff25c5d39dcec45a744102cac9a0d9d0d7`에서 GitHub diff와 로컬 patch의 변경 내용은 일치했다(함수명 hunk context만 달랐다). PR은 2026-10-30T18:51:40Z Rebase and merge로 병합됐다. checks 결과는 보고되지 않았고 main required checks도 설정되지 않았다. CI 통과로 기록하지 않는다.
