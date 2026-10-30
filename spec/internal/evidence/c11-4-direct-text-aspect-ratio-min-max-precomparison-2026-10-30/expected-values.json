@@ -1,0 +1,183 @@
+{
+  "derivedFrom": [
+    "CSS Sizing Level 4 §4.2 and §4.4",
+    "CSS Grid Layout Level 1 §6.6",
+    "Ahem 10px direct text; Grid width 100px; max-content columns; auto row"
+  ],
+  "browser": "HeadlessChrome/156.0.0.0",
+  "fontReadyRequired": true,
+  "caseCount": 17,
+  "units": "CSS px",
+  "cases": [
+    {
+      "id": "numeric-baseline",
+      "columns": "40px 10px",
+      "rows": "20px",
+      "item": [
+        40,
+        20
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "min-width-60",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "max-width-30-min-width-0",
+      "columns": "30px 10px",
+      "rows": "15px",
+      "item": [
+        30,
+        15
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "min-height-30",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "max-height-15-min-height-0",
+      "columns": "40px 10px",
+      "rows": "15px",
+      "item": [
+        40,
+        15
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "max-height-15-min-height-0-min-width-0",
+      "columns": "30px 10px",
+      "rows": "15px",
+      "item": [
+        30,
+        15
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "min-width-60-clamped-by-max-height-20",
+      "columns": "60px 10px",
+      "rows": "20px",
+      "item": [
+        60,
+        20
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "min-height-20-clamps-transferred-max-width-30",
+      "columns": "30px 10px",
+      "rows": "20px",
+      "item": [
+        30,
+        20
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "source-min-width-60-over-max-width-40",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "source-min-height-30-over-max-height-20",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "auto-ratio-min-width-60",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "auto 2 / 1"
+    },
+    {
+      "id": "no-ratio-min-width-60",
+      "columns": "60px 10px",
+      "rows": "10px",
+      "item": [
+        60,
+        10
+      ],
+      "aspectRatio": "auto"
+    },
+    {
+      "id": "no-ratio-min-height-30",
+      "columns": "40px 10px",
+      "rows": "30px",
+      "item": [
+        40,
+        30
+      ],
+      "aspectRatio": "auto"
+    },
+    {
+      "id": "numeric-border-box-min-width-60",
+      "columns": "60px 10px",
+      "rows": "30px",
+      "item": [
+        60,
+        30
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "auto-content-box-min-width-60",
+      "columns": "60px 10px",
+      "rows": "31px",
+      "item": [
+        60,
+        31
+      ],
+      "aspectRatio": "auto 2 / 1"
+    },
+    {
+      "id": "numeric-border-box-max-height-15-min-controls",
+      "columns": "30px 10px",
+      "rows": "15px",
+      "item": [
+        30,
+        15
+      ],
+      "aspectRatio": "2 / 1"
+    },
+    {
+      "id": "auto-content-box-max-height-15-min-controls",
+      "columns": "28px 10px",
+      "rows": "15px",
+      "item": [
+        28,
+        15
+      ],
+      "aspectRatio": "auto 2 / 1"
+    }
+  ]
+}
