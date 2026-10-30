@@ -1,0 +1,305 @@
+{
+  "browser": {
+    "dpr": 1,
+    "font10": true,
+    "font20": true,
+    "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+    "viewport": {
+      "height": 633,
+      "width": 1280
+    }
+  },
+  "observations": {
+    "first": {
+      "items": [
+        {
+          "alignSelf": "auto",
+          "font": "10px / 10px Ahem",
+          "height": 20,
+          "id": "first-small",
+          "lineHeight": "10px",
+          "lineRects": [
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 8
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 18
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 25,
+          "x": 0,
+          "y": 8
+        },
+        {
+          "alignSelf": "auto",
+          "font": "20px / 20px Ahem",
+          "height": 20,
+          "id": "first-large",
+          "lineHeight": "20px",
+          "lineRects": [
+            {
+              "height": 20,
+              "width": 40,
+              "x": 33,
+              "y": 0
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 40,
+          "x": 33,
+          "y": 0
+        }
+      ],
+      "root": {
+        "alignItems": "baseline",
+        "gridTemplateColumns": "25px 40px",
+        "gridTemplateRows": "28px",
+        "height": 28,
+        "id": "first-control",
+        "width": 73,
+        "x": 0,
+        "y": 0
+      }
+    },
+    "last": {
+      "items": [
+        {
+          "alignSelf": "auto",
+          "font": "10px / 10px Ahem",
+          "height": 20,
+          "id": "align-items-last-small",
+          "lineHeight": "10px",
+          "lineRects": [
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 10
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 25,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "alignSelf": "auto",
+          "font": "20px / 20px Ahem",
+          "height": 20,
+          "id": "align-items-last-large",
+          "lineHeight": "20px",
+          "lineRects": [
+            {
+              "height": 20,
+              "width": 40,
+              "x": 33,
+              "y": 2
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 40,
+          "x": 33,
+          "y": 2
+        }
+      ],
+      "root": {
+        "alignItems": "last baseline",
+        "gridTemplateColumns": "25px 40px",
+        "gridTemplateRows": "22px",
+        "height": 22,
+        "id": "align-items-last",
+        "width": 73,
+        "x": 0,
+        "y": 0
+      }
+    },
+    "reversed": {
+      "items": [
+        {
+          "alignSelf": "auto",
+          "font": "10px / 10px Ahem",
+          "height": 20,
+          "id": "reversed-small",
+          "lineHeight": "10px",
+          "lineRects": [
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 10
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 25,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "alignSelf": "auto",
+          "font": "20px / 20px Ahem",
+          "height": 20,
+          "id": "reversed-large",
+          "lineHeight": "20px",
+          "lineRects": [
+            {
+              "height": 20,
+              "width": 40,
+              "x": 33,
+              "y": 2
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 40,
+          "x": 33,
+          "y": 2
+        }
+      ],
+      "root": {
+        "alignItems": "last baseline",
+        "gridTemplateColumns": "25px 40px",
+        "gridTemplateRows": "22px",
+        "height": 22,
+        "id": "reversed",
+        "width": 73,
+        "x": 0,
+        "y": 0
+      }
+    },
+    "self": {
+      "items": [
+        {
+          "alignSelf": "last baseline",
+          "font": "10px / 10px Ahem",
+          "height": 20,
+          "id": "self-small",
+          "lineHeight": "10px",
+          "lineRects": [
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 10
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 25,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "alignSelf": "last baseline",
+          "font": "20px / 20px Ahem",
+          "height": 20,
+          "id": "self-large",
+          "lineHeight": "20px",
+          "lineRects": [
+            {
+              "height": 20,
+              "width": 40,
+              "x": 33,
+              "y": 2
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 40,
+          "x": 33,
+          "y": 2
+        }
+      ],
+      "root": {
+        "alignItems": "start",
+        "gridTemplateColumns": "25px 40px",
+        "gridTemplateRows": "22px",
+        "height": 22,
+        "id": "explicit-self",
+        "width": 73,
+        "x": 0,
+        "y": 0
+      }
+    },
+    "start": {
+      "items": [
+        {
+          "alignSelf": "auto",
+          "font": "10px / 10px Ahem",
+          "height": 20,
+          "id": "start-small",
+          "lineHeight": "10px",
+          "lineRects": [
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 0
+            },
+            {
+              "height": 10,
+              "width": 20,
+              "x": 0,
+              "y": 10
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 25,
+          "x": 0,
+          "y": 0
+        },
+        {
+          "alignSelf": "auto",
+          "font": "20px / 20px Ahem",
+          "height": 20,
+          "id": "start-large",
+          "lineHeight": "20px",
+          "lineRects": [
+            {
+              "height": 20,
+              "width": 40,
+              "x": 33,
+              "y": 0
+            }
+          ],
+          "whiteSpace": "normal",
+          "width": 40,
+          "x": 33,
+          "y": 0
+        }
+      ],
+      "root": {
+        "alignItems": "start",
+        "gridTemplateColumns": "25px 40px",
+        "gridTemplateRows": "20px",
+        "height": 20,
+        "id": "start-control",
+        "width": 73,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
+  "source": "file:///Users/yoonhb/Documents/workspace/spinon/tests/fixtures/css/c11/grid-last-baseline-multiline-direct-text.html"
+}

@@ -1,0 +1,107 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 direct text last-baseline reference</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  display: block;
+  padding: 20px;
+  font: 12px/1.2 sans-serif;
+}
+.case { display: block; margin: 0 0 20px; }
+.case-label { color: #263238; margin: 0 0 6px; }
+.grid {
+  display: grid;
+  grid-template-columns: 25px 40px;
+  grid-template-rows: auto;
+  column-gap: 8px;
+  width: 73px;
+  position: relative;
+  background: #eef3f8;
+}
+.grid::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--baseline-y, 0px);
+  border-top: 1px solid #d32f2f;
+  pointer-events: none;
+}
+.item {
+  position: relative;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  outline: 1px solid #1976d2;
+  color: #111;
+  font-family: Ahem;
+  white-space: normal;
+  line-height: 1;
+}
+.item::before {
+  content: attr(data-size);
+  position: absolute;
+  top: -13px;
+  left: 0;
+  color: #37474f;
+  font: 10px/1 sans-serif;
+  white-space: nowrap;
+}
+.small {
+  grid-column: 1;
+  grid-row: 1;
+  font-size: 10px;
+}
+.large {
+  grid-column: 2;
+  grid-row: 1;
+  font-size: 20px;
+}
+.last-baseline { align-items: last baseline; --baseline-y: 18px; }
+.last-baseline-marker { --baseline-y: 18px; }
+.first-baseline { align-items: first baseline; --baseline-y: 16px; }
+.start { align-items: start; }
+.explicit-self > .item { align-self: last baseline; }
+</style>
+<body>
+  <section class="case">
+    <div class="case-label">align-items: last baseline</div>
+    <div id="align-items-last" class="grid last-baseline">
+      <div id="align-items-last-small" class="item small" data-size="10px">XX XX</div>
+      <div id="align-items-last-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">align-items: first baseline control</div>
+    <div id="first-control" class="grid first-baseline">
+      <div id="first-small" class="item small" data-size="10px">XX XX</div>
+      <div id="first-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">align-items: start control</div>
+    <div id="start-control" class="grid start">
+      <div id="start-small" class="item small" data-size="10px">XX XX</div>
+      <div id="start-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">align-self: last baseline</div>
+    <div id="explicit-self" class="grid start explicit-self last-baseline-marker">
+      <div id="self-small" class="item small" data-size="10px">XX XX</div>
+      <div id="self-large" class="item large" data-size="20px">XX</div>
+    </div>
+  </section>
+  <section class="case">
+    <div class="case-label">reversed source order</div>
+    <div id="reversed" class="grid last-baseline">
+      <div id="reversed-large" class="item large" data-size="20px">XX</div>
+      <div id="reversed-small" class="item small" data-size="10px">XX XX</div>
+    </div>
+  </section>
+</body>
