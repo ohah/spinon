@@ -1,0 +1,6 @@
+{
+  "linkedSimulatorImages": [],
+  "roadmapEntry": "2026-10-30 C11.4 direct text first-baseline 제한 fixture candidate · 구현 PR #827 검토 중: 고정 Ahem direct-text item의 first baseline을 `TextLayoutSnapshot`에서 Taffy baseline으로 연결했다. `align-items`, `align-self`, `start` control 및 reversed source order 네 scene이 Android API 37 ARM64 QEMU AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 4/4 통과했고 root/item/gap 표면 표본은 12/12 exact다. 표본은 glyph paint를 검사하지 않으며 Metal은 compositor 제출 전이다. C11.4/C11 미완료와 공식 72/213을 유지한다. 계획 · Chrome 기준·독립 기대값 · 실행·근거 · Android 화면 · iOS 화면 · 공식 상태.",
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}

@@ -41,3 +41,7 @@ AVD 실행은 Android 실기기 또는 hardware GPU 결과가 아니다. PixelCo
 - Product/fixture static archive 비교는 [artifact 경계 근거](./artifact-boundary/README.md)에 기록했다. named fixture symbol과 네 scene ID는 product debug archive에서 빠지고 fixture-test positive control에서 확인됐다. 이 비교는 앱 APK/IPA 전체의 fixture 제외를 증명하지 않는다.
 
 지원 입력은 고정된 네 root ID, `RuntimeBlockFlexGridTrackSizingV1`, horizontal-tb/LTR, 두 direct element item, Ahem `XX`, 10px/20px 한 줄 text, zero margin/border/padding으로 제한한다. 다중 line, rich inline descendants, empty text, image/replaced item, multi-row span, `last baseline`, Flex baseline, vertical writing mode, WGPU glyph paint, 임의 author CSS와 전체 CSS Grid/WPT는 검증 범위가 아니다.
+
+## PR 검토
+
+[구현/runtime 적대 검토 20개](./implementation-runtime-review-20.md) · [PR diff 적대 검토 20개](./pr-diff-review-20.md). PR #827에 check run은 보고되지 않았고 main required status checks도 설정되어 있지 않다.

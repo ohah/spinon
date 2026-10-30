@@ -1,0 +1,550 @@
+{
+  "selected_route_count": 61,
+  "local_targets_verified": 61,
+  "backups_verified": 12,
+  "remote_http_200_and_hash_verified": 61,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_verified": true,
+  "no_deletes": true,
+  "targets": [
+    {
+      "path": "icon.svg",
+      "http_status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 320516,
+      "sha256": "968923433da1bdb57414932234d3406244e07efa34c28b244c4e0313bbf80f1e",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "http_status": 200,
+      "bytes": 14342,
+      "sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "http_status": 200,
+      "bytes": 3994,
+      "sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "http_status": 200,
+      "bytes": 2283,
+      "sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "http_status": 200,
+      "bytes": 27506,
+      "sha256": "e01be14683a5ad592b8ef4b17e981c7bced4767f6335cfc9fbc5d00f6b49c49e",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "http_status": 200,
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "http_status": 200,
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "http_status": 200,
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "http_status": 200,
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "http_status": 200,
+      "bytes": 2316,
+      "sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "http_status": 200,
+      "bytes": 522,
+      "sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "http_status": 200,
+      "bytes": 29091,
+      "sha256": "4bcead5a966cf2cc92f1c2f66d25943dc3e6bea32b5913c0558151723a85ca33",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 30785,
+      "sha256": "cb48e6b194d72f95b0e9df40512b89c376c553be19f13351635a80c566d3b665",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "http_status": 200,
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "http_status": 200,
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "http_status": 200,
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "http_status": 200,
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "http_status": 200,
+      "bytes": 2318,
+      "sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "http_status": 200,
+      "bytes": 393,
+      "sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 29436,
+      "sha256": "3e410f253333c71bb4a337b405d800fb70bbb5991cee9ebef139f8ae637403dd",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "http_status": 200,
+      "bytes": 31289,
+      "sha256": "9970d2e774511fb7586d5a9bba480b34d9bce09336ecac96d9c455e628ee26da",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 27774,
+      "sha256": "91884b794534925cd9f80ca2b50e9d9d81a34bf612ebcd1ec271fcce0225bf6a",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "http_status": 200,
+      "bytes": 30344,
+      "sha256": "3cf434b661e3a2f499b9ca8ede5d92a470619bb3fb9ffa5cb8cc06354d0f7ab8",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 409910,
+      "sha256": "1d3e2ea73d4124db0c0f82d4bc2dd2541ba114732b87f615935c191b8544195a",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "http_status": 200,
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 27744,
+      "sha256": "59daebc339d5856a8dd7a1fb5e8e11be6edd73d2b3bbe69c9b046920920703e1",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "http_status": 200,
+      "bytes": 30283,
+      "sha256": "e607069a099a9ace436af62fc98d1eab89f55075a8d0409a48255e3da3861c7e",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "http_status": 200,
+      "bytes": 651796,
+      "sha256": "91a6a868bd71bda03d3993ff2fde63b16b04c0e3b17239f185d1afe0b0bb144f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http_status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.60ff51937f.png",
+      "http_status": 200,
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.dbd0df5399.png",
+      "http_status": 200,
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.8f70ade908.png",
+      "http_status": 200,
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.eeacc444fe.png",
+      "http_status": 200,
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.4194894913.png",
+      "http_status": 200,
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.f6371f82b5.png",
+      "http_status": 200,
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.684f15562c.png",
+      "http_status": 200,
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.d9a2354770.png",
+      "http_status": 200,
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "http_status": 200,
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "http_status": 200,
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-05ced162cdef.69c8f5cbfa.js",
+      "http_status": 200,
+      "bytes": 9930,
+      "sha256": "3ed254836e9eebdc1325c24b76fa8d30aed7bd57277b280596e17dc3e469da05",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-12b79fc00e82.76cf5cacfb.js",
+      "http_status": 200,
+      "bytes": 12752,
+      "sha256": "6702579059ec321842c975ade0c0a011907f11e8ce08376b727f6d72b81e0fe3",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-22877c032bcd.21c8da57d8.js",
+      "http_status": 200,
+      "bytes": 6216,
+      "sha256": "96d3afc16a20e22d8eb0476c6db5898431ba27676c7b04fb65bc0898e1e2f710",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-2e8206008e81.f528f3fb19.js",
+      "http_status": 200,
+      "bytes": 9937,
+      "sha256": "c1b2dda47c1be9e2536ade920672b9a5e79ad08472fc9e7db72a371917977d00",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-54509d65aa78.7d57266ee8.js",
+      "http_status": 200,
+      "bytes": 10359,
+      "sha256": "35d30646425867ea98541a03ec98b244e23f60598120883cac31196ab32c5d53",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.2d3a74ec21.js",
+      "http_status": 200,
+      "bytes": 698394,
+      "sha256": "85e62790a35e1a5b66496652aff60155197829dbf39d93b4ce88fa1a2bbfe92c",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-763188c6f8b4.d68b71cc05.js",
+      "http_status": 200,
+      "bytes": 10372,
+      "sha256": "8b2b181c45c166594e14d059c59469dea4c43ace137bcf1bc89e04e7b9ada1b8",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.14daf9efd7.js",
+      "http_status": 200,
+      "bytes": 698338,
+      "sha256": "f66d8582064845edc55db1375c33c37279126400e3974d9b9e86eb6c7b403e57",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-87d3ad80e32d.0b102f62c1.js",
+      "http_status": 200,
+      "bytes": 11642,
+      "sha256": "7156459b32c10920f27ef1759b973cae343847e97bb3215f2229da6a7a7da5ab",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.c9e5833b1e.js",
+      "http_status": 200,
+      "bytes": 320425,
+      "sha256": "53a94ef23209646c71bb93460035c8c7114479c22197f8e5589a7d17bc2b2959",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-f71d56f4fcb7.0e48394383.js",
+      "http_status": 200,
+      "bytes": 8558,
+      "sha256": "881a5cb25407dad2eb71267f870e9cbde8f997abaf6ec7c04ca79216713a6040",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-fa5b8bf5d6af.4e99661645.js",
+      "http_status": 200,
+      "bytes": 11548,
+      "sha256": "099fabdd201d475626e08c45460eb2264e0a75b848634412d45ae484dd5846a2",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/index.2f6a70f176.js",
+      "http_status": 200,
+      "bytes": 44740,
+      "sha256": "61d8bb39ec6e7f538583ebfecf1d9c9a1239c53692a02c50e4bc88efa44e2fba",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "http_status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "http_status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "http_status": 200,
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/search_index.ko.90e302de.json",
+      "http_status": 200,
+      "bytes": 1041679,
+      "sha256": "90e302de01abfc36309295d356832bee187727abe2baf824ac694ba2daf83f8e",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 651559,
+      "sha256": "7c266dec5475a706a1df92d5b9181e7a16165d9e2804f50fda4b66089b6e4140",
+      "local_verified": true,
+      "remote_verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "backup_verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_verified": true
+    }
+  ]
+}

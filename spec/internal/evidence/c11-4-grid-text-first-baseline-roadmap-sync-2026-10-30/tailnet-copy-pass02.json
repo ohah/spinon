@@ -1,0 +1,243 @@
+{
+  "copied_count": 27,
+  "backup_count": 12,
+  "no_deletes": true,
+  "copied": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "status": "replace",
+      "bytes": 320516,
+      "sha256": "968923433da1bdb57414932234d3406244e07efa34c28b244c4e0313bbf80f1e"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 27506,
+      "sha256": "e01be14683a5ad592b8ef4b17e981c7bced4767f6335cfc9fbc5d00f6b49c49e"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "status": "replace",
+      "bytes": 29091,
+      "sha256": "4bcead5a966cf2cc92f1c2f66d25943dc3e6bea32b5913c0558151723a85ca33"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "status": "replace",
+      "bytes": 30785,
+      "sha256": "cb48e6b194d72f95b0e9df40512b89c376c553be19f13351635a80c566d3b665"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html",
+      "status": "create",
+      "bytes": 29436,
+      "sha256": "3e410f253333c71bb4a337b405d800fb70bbb5991cee9ebef139f8ae637403dd"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "status": "replace",
+      "bytes": 31289,
+      "sha256": "9970d2e774511fb7586d5a9bba480b34d9bce09336ecac96d9c455e628ee26da"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "status": "replace",
+      "bytes": 27774,
+      "sha256": "91884b794534925cd9f80ca2b50e9d9d81a34bf612ebcd1ec271fcce0225bf6a"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "status": "replace",
+      "bytes": 30344,
+      "sha256": "3cf434b661e3a2f499b9ca8ede5d92a470619bb3fb9ffa5cb8cc06354d0f7ab8"
+    },
+    {
+      "path": "roadmap.html",
+      "status": "replace",
+      "bytes": 409910,
+      "sha256": "1d3e2ea73d4124db0c0f82d4bc2dd2541ba114732b87f615935c191b8544195a"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "status": "replace",
+      "bytes": 27744,
+      "sha256": "59daebc339d5856a8dd7a1fb5e8e11be6edd73d2b3bbe69c9b046920920703e1"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "status": "replace",
+      "bytes": 30283,
+      "sha256": "e607069a099a9ace436af62fc98d1eab89f55075a8d0409a48255e3da3861c7e"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "status": "replace",
+      "bytes": 651796,
+      "sha256": "91a6a868bd71bda03d3993ff2fde63b16b04c0e3b17239f185d1afe0b0bb144f"
+    },
+    {
+      "path": "static/js/async/route-05ced162cdef.69c8f5cbfa.js",
+      "status": "create",
+      "bytes": 9930,
+      "sha256": "3ed254836e9eebdc1325c24b76fa8d30aed7bd57277b280596e17dc3e469da05"
+    },
+    {
+      "path": "static/js/async/route-12b79fc00e82.76cf5cacfb.js",
+      "status": "create",
+      "bytes": 12752,
+      "sha256": "6702579059ec321842c975ade0c0a011907f11e8ce08376b727f6d72b81e0fe3"
+    },
+    {
+      "path": "static/js/async/route-22877c032bcd.21c8da57d8.js",
+      "status": "create",
+      "bytes": 6216,
+      "sha256": "96d3afc16a20e22d8eb0476c6db5898431ba27676c7b04fb65bc0898e1e2f710"
+    },
+    {
+      "path": "static/js/async/route-2e8206008e81.f528f3fb19.js",
+      "status": "create",
+      "bytes": 9937,
+      "sha256": "c1b2dda47c1be9e2536ade920672b9a5e79ad08472fc9e7db72a371917977d00"
+    },
+    {
+      "path": "static/js/async/route-54509d65aa78.7d57266ee8.js",
+      "status": "create",
+      "bytes": 10359,
+      "sha256": "35d30646425867ea98541a03ec98b244e23f60598120883cac31196ab32c5d53"
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.2d3a74ec21.js",
+      "status": "create",
+      "bytes": 698394,
+      "sha256": "85e62790a35e1a5b66496652aff60155197829dbf39d93b4ce88fa1a2bbfe92c"
+    },
+    {
+      "path": "static/js/async/route-763188c6f8b4.d68b71cc05.js",
+      "status": "create",
+      "bytes": 10372,
+      "sha256": "8b2b181c45c166594e14d059c59469dea4c43ace137bcf1bc89e04e7b9ada1b8"
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.14daf9efd7.js",
+      "status": "create",
+      "bytes": 698338,
+      "sha256": "f66d8582064845edc55db1375c33c37279126400e3974d9b9e86eb6c7b403e57"
+    },
+    {
+      "path": "static/js/async/route-87d3ad80e32d.0b102f62c1.js",
+      "status": "create",
+      "bytes": 11642,
+      "sha256": "7156459b32c10920f27ef1759b973cae343847e97bb3215f2229da6a7a7da5ab"
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.c9e5833b1e.js",
+      "status": "create",
+      "bytes": 320425,
+      "sha256": "53a94ef23209646c71bb93460035c8c7114479c22197f8e5589a7d17bc2b2959"
+    },
+    {
+      "path": "static/js/async/route-f71d56f4fcb7.0e48394383.js",
+      "status": "create",
+      "bytes": 8558,
+      "sha256": "881a5cb25407dad2eb71267f870e9cbde8f997abaf6ec7c04ca79216713a6040"
+    },
+    {
+      "path": "static/js/async/route-fa5b8bf5d6af.4e99661645.js",
+      "status": "create",
+      "bytes": 11548,
+      "sha256": "099fabdd201d475626e08c45460eb2264e0a75b848634412d45ae484dd5846a2"
+    },
+    {
+      "path": "static/js/index.2f6a70f176.js",
+      "status": "create",
+      "bytes": 44740,
+      "sha256": "61d8bb39ec6e7f538583ebfecf1d9c9a1239c53692a02c50e4bc88efa44e2fba"
+    },
+    {
+      "path": "static/search_index.ko.90e302de.json",
+      "status": "create",
+      "bytes": 1041679,
+      "sha256": "90e302de01abfc36309295d356832bee187727abe2baf824ac694ba2daf83f8e"
+    },
+    {
+      "path": "STATUS.html",
+      "status": "replace",
+      "bytes": 651559,
+      "sha256": "7c266dec5475a706a1df92d5b9181e7a16165d9e2804f50fda4b66089b6e4140"
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/internal/0059-c11-grid-layout.html",
+      "bytes": 319964,
+      "sha256": "bbf46329408a3195be69e50b8caf00dec4cc75a272bb6194d672053e090fde0a"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "bytes": 27132,
+      "sha256": "432cc99bffc1af769bd64e771002cdb06514a56080542135035464b1a905f74b"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "bytes": 28717,
+      "sha256": "9d523740429b47d87ae8d8616c7235cfb56bc5710106b18d0aee31378b5a4b16"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "bytes": 30414,
+      "sha256": "0a2aec10022e51aae8d531ebc01bb22fc481c179553d2021100c3ad91d193f98"
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "bytes": 30213,
+      "sha256": "162618734aa9db38dfcfedd1227ce7a78fe2eed42d48408e96555750a3452c49"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "bytes": 27400,
+      "sha256": "ea590f7a759a5a30d02ca79d24943bf2f808c8664f2ae106eb6262f85fe49c2e"
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/plan/c11-4-grid-text-first-baseline.html",
+      "bytes": 29970,
+      "sha256": "f1cc587783dec8380320e275339c055da36670db87403d7342287ce54f4eed25"
+    },
+    {
+      "path": "roadmap.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/roadmap.html",
+      "bytes": 409779,
+      "sha256": "22c2e9afb0f3443b78f5768b4d530ca1307bb278931cc81dce00dfe2214db143"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "bytes": 27370,
+      "sha256": "03316b8448722c3be54fa6f7295f7b429f31e77256e9f8a6e924e603dfa2af3b"
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/spec/plan/c11-4-grid-text-first-baseline.html",
+      "bytes": 29909,
+      "sha256": "b19a41ffde2f1349e917e353363afb7b6d0b653bd1e1a22b35a1f44c8bca925f"
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/spec/STATUS.html",
+      "bytes": 651272,
+      "sha256": "746df7511a43bc67a0997399ff6a6f51f66948e6848f2536d41467a327c92d74"
+    },
+    {
+      "path": "STATUS.html",
+      "backup_path": "SpinonPreviewBackups/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/pass02/STATUS.html",
+      "bytes": 651025,
+      "sha256": "310ae58da0f59c3e96bdf0a6214a1b2c397b7f8a90653f5938f4b8a6dba6f2cd"
+    }
+  ]
+}
