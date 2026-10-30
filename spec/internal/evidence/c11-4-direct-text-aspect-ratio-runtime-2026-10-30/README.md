@@ -96,7 +96,7 @@ The scanner records raw byte markers in the inspected macOS ARM64 `spinon-ffi` r
 
 ## 2026-10-30 direct-text aspect-ratio min/max 구현 후보
 
-**판정:** 제한 C11.4 fixture 구현과 Android/iOS Simulator 확인, 구현/runtime 적대 검토 20개 및 구현 PR diff 실패 관점 검토 30개를 마쳤다. 구현 PR [#850](https://github.com/ohah/spinon/pull/850)은 열려 있고 GitHub check rollup은 비어 있다. 로컬 검증 결과와 PR CI 상태를 구분하며 CI 성공으로 기록하지 않는다. C11.4/C11은 미완료이고 공식 상태 72/213을 유지한다.
+**판정:** 제한 C11.4 fixture 구현과 Android/iOS Simulator 확인, 구현/runtime 적대 검토 20개 및 구현 PR diff 실패 관점 검토 30개를 마쳤다. 구현 PR [#850](https://github.com/ohah/spinon/pull/850)은 2026-10-30T10:31:12Z Rebase and merge됐고 merge SHA는 `4959332936a6ad599e1355d18161b90a9fea05bf`다. PR check rollup은 비어 있고 main required status checks가 설정되어 있지 않아 CI 성공으로 기록하지 않는다. C11.4/C11은 미완료이고 공식 상태 72/213을 유지한다.
 
 작업은 기존 C11.4 direct-text ratio의 min-width, max-width, min-height, max-height 전달을 고정 Ahem fixture에 추가한다. Chrome 156 oracle의 원래 17개 case에 continuous CSS px 범위 확인용 2개를 더해 새 scene은 19개, 기존 ratio scene을 합친 최종 행렬은 각 플랫폼 42개다. CSS Sizing §4.4는 definite min을 먼저 반대 축으로 전환해 destination max에 cap하고, max 전환은 destination min과 transferred min에 floor한다. CSS Grid non-replaced content size contribution은 replaced의 transferred suggestion과 구별한다. 계획, oracle 및 구현 범위는 [집중 계획](../../../../plan/c11-4-direct-text-aspect-ratio-min-max.md), [Chrome 사전 비교](../c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.md), [구현/runtime 20개 검토](./minmax-implementation-runtime-review-20.md)에 있다.
 
