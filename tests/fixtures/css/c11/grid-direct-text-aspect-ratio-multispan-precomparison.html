@@ -65,7 +65,7 @@ const host = document.querySelector("#cases");
 for (const [id, hasRatio, constraints] of cases) {
   const row = document.createElement("section");
   row.className = "case";
-  row.innerHTML = `<p class="label">${id}: ${constraints || (hasRatio ? "ratio only" : "no ratio")}</p><div class="grid" id="${id}"><div class="item${hasRatio ? " ratio" : ""}" style="grid-column:1 / span 2;grid-row:1;${constraints}">AAAA</div></div>`;
+  row.innerHTML = `<p class="label">${id}: ${constraints || (hasRatio ? "ratio only" : "no ratio")}</p><div class="grid" id="${id}"><div class="item${hasRatio ? " ratio" : ""}" style="grid-column:1 / span 2;${constraints}">AAAA</div></div>`;
   host.append(row);
 }
 window.collectOracle = async () => {
@@ -95,6 +95,8 @@ window.collectOracle = async () => {
         maxHeight: itemStyle.maxHeight,
         gridColumnStart: itemStyle.gridColumnStart,
         gridColumnEnd: itemStyle.gridColumnEnd,
+        gridRowStart: itemStyle.gridRowStart,
+        gridRowEnd: itemStyle.gridRowEnd,
         font: itemStyle.font,
       },
     };

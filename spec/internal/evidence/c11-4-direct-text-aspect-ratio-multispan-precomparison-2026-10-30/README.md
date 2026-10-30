@@ -8,7 +8,7 @@
 
 - Canonical HTML: [`grid-direct-text-aspect-ratio-multispan-precomparison.html`](../../../../tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html)
 - Root: width 100px, `max-content max-content` columns, one `auto` row, zero gap, one HTML Grid item.
-- Item: direct text `AAAA`, `grid-column: 1 / span 2`, Ahem 10px/10px, numeric aspect ratio `2 / 1` unless the no-ratio control, auto width/height, zero margin/padding/border.
+- Item: direct text `AAAA`, `grid-column: 1 / span 2`, automatic row placement, Ahem 10px/10px, numeric aspect ratio `2 / 1` unless the no-ratio control, auto width/height, zero margin/padding/border.
 - Browser: Agent Browser 0.31.1, `HeadlessChrome/156.0.0.0`, macOS UA. `document.fonts.check("10px Ahem")` returned `true`.
 - Captured DOM geometry and computed styles: [`chrome-observation-agent-browser.json`](./chrome-observation-agent-browser.json). Rendered view: [`chrome-oracle-agent-browser.png`](./chrome-oracle-agent-browser.png).
 
@@ -38,10 +38,10 @@ Normative source: [CSS Grid Layout 2025 CRD §11.5](https://www.w3.org/TR/2025/C
 
 | Artifact | SHA-256 |
 |---|---|
-| Canonical HTML | `70a6c4cc299c2acd180528a682272a1eab55ee615855b2b317b13fa212e141af` |
+| Canonical HTML | `009bf8674384024e66bee140c838e8de6afc22dae2c2a94bd917749084154888` |
 | Ahem TTF | `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448` |
-| Agent Browser observation JSON | `212d83ab5f91719c0d6da63ead2d822a239226d201b52adce6965594c1fbe4e9` |
-| Independent expected values | `6be309b135b4a69879c673d79c8d29fa7e116c5e2d1377832fa49bb607bd5e56` |
+| Agent Browser observation JSON | `134880bca62c6538a6a2d6910ec6dce595913fdbdfc034d2de5bfef16727c9fc` |
+| Independent expected values | `bae5668e1f5da634c83f24f37e3896285d8825b41810ee40b3131d25d3de16f2` |
 | Agent Browser screenshot | `4c4429b195f4e18b160384534772a487ea9881f5a430477bc4705c36c5bbee04` |
 
 ## 한계

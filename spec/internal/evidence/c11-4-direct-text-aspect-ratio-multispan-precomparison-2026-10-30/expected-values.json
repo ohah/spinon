@@ -9,7 +9,13 @@
       "width": 100,
       "columns": ["max-content", "max-content"],
       "rows": ["auto"],
-      "gap": 0
+      "gap": 0,
+      "placement": {
+        "grid_column_start": "1",
+        "grid_column_end": "span 2",
+        "grid_row_start": "auto",
+        "grid_row_end": "auto"
+      }
     },
     "derivation": "For each one-item span, first determine its inline contribution and block size under the ratio/min/max constraints. CSS Grid 2025 CRD 11.5.1 subtracts the current sizes of both spanned tracks and distributes the remaining contribution equally because the two tracks have identical sizing functions and neither has an existing single-span contribution."
   },

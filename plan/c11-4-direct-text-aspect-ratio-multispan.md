@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio two-track span 계획
 
-**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값을 준비했다. 구현 전 계획 검토 단계이며 제품 코드는 변경하지 않았다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
+**상태:** 고정 HTML 입력, Agent Browser HeadlessChrome 156 관측, CSS Grid 2025 CRD 기반 독립 기대값을 준비했다. 구현을 시작한 뒤 row placement가 canonical HTML과 계획에서 다른 점을 발견해 계획을 보정했다. 보정 근거를 반영하고 있으며 simulator/runtime 검증은 아직 없다. 공식 C11/C11.4 checkbox와 `72/213`은 유지한다.
 
 **상위:** [C11.4 Grid track sizing](./c11-4-grid-track-sizing.md) · [C11.4 direct-text aspect-ratio min/max](./c11-4-direct-text-aspect-ratio-min-max.md) · [C11 내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
@@ -14,7 +14,7 @@
 
 ## 고정 입력과 독립 기대값
 
-Canonical fixture는 [grid-direct-text-aspect-ratio-multispan-precomparison.html](../tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html)이다. Root 하나는 `width:100px`, `grid-template-columns:max-content max-content`, `grid-template-rows:auto`, gap 0을 쓴다. 정확히 하나의 in-flow HTML block child가 direct text `AAAA`를 소유하고 `grid-column:1 / span 2`로 두 열을 차지한다. Font는 Ahem 10px, line-height 10px, horizontal-tb/LTR다. Item의 width/height는 auto, margin·padding·border는 0이다. Ratio owner는 이 item 하나이며 numeric `2 / 1` 또는 no-ratio control만 둔다.
+Canonical fixture는 [grid-direct-text-aspect-ratio-multispan-precomparison.html](../tests/fixtures/css/c11/grid-direct-text-aspect-ratio-multispan-precomparison.html)이다. Root 하나는 `width:100px`, `grid-template-columns:max-content max-content`, `grid-template-rows:auto`, gap 0을 쓴다. 정확히 하나의 in-flow HTML block child가 direct text `AAAA`를 소유하고 `grid-column:1 / span 2`로 두 열을 차지하며 row placement는 `auto / auto`다. Font는 Ahem 10px, line-height 10px, horizontal-tb/LTR다. Item의 width/height는 auto, margin·padding·border는 0이다. Ratio owner는 이 item 하나이며 numeric `2 / 1` 또는 no-ratio control만 둔다.
 
 독립 기대값과 실제 관측은 [precomparison README](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/README.md), [`expected-values.json`](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/expected-values.json), [Agent Browser 관측 JSON](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-observation-agent-browser.json), [재검증 스크립트](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/verify-precomparison.mjs), [화면](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-multispan-precomparison-2026-10-30/chrome-oracle-agent-browser.png)에 기록했다. Browser는 이 canonical HTML과 로컬 Ahem TTF를 사용했고 font readiness가 true인지 검사했다.
 
@@ -60,5 +60,7 @@ CSS Grid §11.5.1 independently predicts equal distribution here: both spanned t
 - 계획 PR #854 변경 검토: [실패 관점 20개](./c11-4-direct-text-aspect-ratio-multispan-pr-diff-review-20.md).
 - simulator glyph-paint 한계에 따른 pixel 기준 보정 계획 검토: [실패 관점 20개](./c11-4-direct-text-aspect-ratio-multispan-pixel-amendment-review-20.md).
 - pixel 기준 보정 계획 PR 변경 검토: [실패 관점 30개](./c11-4-direct-text-aspect-ratio-multispan-pixel-amendment-pr-diff-review-30.md).
+- canonical HTML과 계획의 row placement 불일치 보정 검토: [실패 관점 20개](./c11-4-direct-text-aspect-ratio-multispan-row-placement-plan-review-20.md).
+- row placement 보정 PR 변경 검토: [실패 관점 30개](./c11-4-direct-text-aspect-ratio-multispan-row-placement-pr-diff-review-30.md).
 - 계획 PR과 구현 PR은 별도 PR이며 `Rebase and merge`를 사용한다. 계획 PR에는 `planning`/`area: layout`, 구현 PR에는 `enhancement`/`area: layout` 라벨을 쓴다.
 - 범위는 이 단일 2-column span topology, Ahem `AAAA`, numeric 2:1 ratio, 0..=60px min/max fixture 입력에 한정한다. 다른 span length/topology, more than two tracks, unequal/fixed/flexible/fit-content tracks, gaps, multiple or mixed items, images, `auto <ratio>`, nonzero edges, arbitrary font/script, vertical writing, baseline alignment, general CSS admission, full WPT, real-device/hardware GPU, glyph raster/pixel proof, iOS compositor-after pixels, C11.4 전체 또는 C11 완료는 포함하지 않는다.
