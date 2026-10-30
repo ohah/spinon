@@ -83,11 +83,12 @@ pub(super) fn collect(
                     | WhiteSpaceMode::NoWrap
                     | WhiteSpaceMode::PreLine
                     | WhiteSpaceMode::PreWrap
+                    | WhiteSpaceMode::BreakSpaces
             ) || layout_style.order != 0
             {
                 return Err(LayoutError::UnsupportedTextParagraph {
                     node: paragraph_id,
-                    reason: "C11.4 anonymous Grid text requires white-space:normal, nowrap, pre-line, or pre-wrap and order:0",
+                    reason: "C11.4 anonymous Grid text requires supported white-space mode and order:0",
                 });
             }
             let mut inline_styles = BTreeMap::new();

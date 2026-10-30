@@ -221,6 +221,7 @@ fn validate_text_paragraphs(
                             | crate::WhiteSpaceMode::NoWrap
                             | crate::WhiteSpaceMode::PreLine
                             | crate::WhiteSpaceMode::PreWrap
+                            | crate::WhiteSpaceMode::BreakSpaces
                     )
                     || source_nodes.is_empty()
                     || !source_nodes.iter().any(|source| source.node == id)

@@ -1,4 +1,4 @@
-const SCENE_IDS: [&str; 16] = [
+const SCENE_IDS: [&str; 26] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -15,6 +15,16 @@ const SCENE_IDS: [&str; 16] = [
     "anonymous-pre-wrap-soft-wrap",
     "anonymous-pre-wrap-forced-break",
     "anonymous-pre-wrap-whitespace-before-block",
+    "anonymous-break-spaces-max-content",
+    "anonymous-break-spaces-comment-split-max-content",
+    "anonymous-break-spaces-min-content",
+    "anonymous-break-spaces-soft-wrap-25",
+    "anonymous-break-spaces-forced-break-max-content",
+    "anonymous-break-spaces-forced-break-min-content",
+    "anonymous-break-spaces-trailing-soft-wrap-25",
+    "anonymous-break-spaces-trailing-max-content",
+    "anonymous-break-spaces-whitespace-only",
+    "anonymous-break-spaces-whitespace-before-block",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -36,6 +46,27 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "anonymous-pre-wrap-min-content-spaces" => (20, "auto", "min-content", "auto", "wrap"),
         "anonymous-pre-wrap-soft-wrap" => (25, "auto", "25px", "auto", "wrap"),
         "anonymous-pre-wrap-whitespace-before-block" => (40, "10px", "20px 20px", "10px", "wrap"),
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-comment-split-max-content" => {
+            (60, "auto", "max-content", "auto", "wrap")
+        }
+        "anonymous-break-spaces-min-content" => (30, "auto", "min-content", "auto", "wrap"),
+        "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
+            (25, "auto", "25px", "auto", "wrap")
+        }
+        "anonymous-break-spaces-forced-break-max-content" => {
+            (40, "auto", "max-content", "auto", "wrap")
+        }
+        "anonymous-break-spaces-forced-break-min-content" => {
+            (30, "auto", "min-content", "auto", "wrap")
+        }
+        "anonymous-break-spaces-trailing-max-content" => {
+            (40, "auto", "max-content", "auto", "wrap")
+        }
+        "anonymous-break-spaces-whitespace-only" => (0, "auto", "auto", "auto", "wrap"),
+        "anonymous-break-spaces-whitespace-before-block" => {
+            (40, "10px", "20px 20px", "10px", "wrap")
+        }
         "anonymous-comment-continuation" => (120, "10px", "max-content 1fr", "10px", "wrap"),
         "anonymous-runs-around-block" => (
             120,
@@ -56,6 +87,16 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-pre-wrap-soft-wrap"
         | "anonymous-pre-wrap-forced-break"
         | "anonymous-pre-wrap-whitespace-before-block" => "preserve",
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-comment-split-max-content"
+        | "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-soft-wrap-25"
+        | "anonymous-break-spaces-forced-break-max-content"
+        | "anonymous-break-spaces-forced-break-min-content"
+        | "anonymous-break-spaces-trailing-soft-wrap-25"
+        | "anonymous-break-spaces-trailing-max-content"
+        | "anonymous-break-spaces-whitespace-only"
+        | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
         _ => "collapse",
     };
     let mut source = format!(
@@ -141,6 +182,35 @@ root.appendChild(block);
 nodeIds.push('c114-anonymous-pre-wrap-whitespace-before-block-item');
 "#,
         ),
+        "anonymous-break-spaces-max-content"
+        | "anonymous-break-spaces-min-content"
+        | "anonymous-break-spaces-soft-wrap-25" => {
+            source.push_str("root.appendChild(document.createTextNode('XX  XX'));\n")
+        }
+        "anonymous-break-spaces-comment-split-max-content" => source.push_str(
+            "root.appendChild(document.createTextNode('XX '));\nroot.appendChild(document.createTextNode(' XX'));\n",
+        ),
+        "anonymous-break-spaces-forced-break-max-content"
+        | "anonymous-break-spaces-forced-break-min-content" => {
+            source.push_str("root.appendChild(document.createTextNode('XX  \\nXX'));\n")
+        }
+        "anonymous-break-spaces-trailing-soft-wrap-25"
+        | "anonymous-break-spaces-trailing-max-content" => {
+            source.push_str("root.appendChild(document.createTextNode('XX  '));\n")
+        }
+        "anonymous-break-spaces-whitespace-only" => {
+            source.push_str("root.appendChild(document.createTextNode('  '));\n")
+        }
+        "anonymous-break-spaces-whitespace-before-block" => source.push_str(
+            r#"root.appendChild(document.createTextNode('  '));
+const block = document.createElement('div');
+block.setAttribute('id', 'c114-anonymous-break-spaces-whitespace-before-block-item');
+block.setAttribute('data-node', '');
+block.setAttribute('style', 'box-sizing:border-box;display:block;width:10px;height:10px;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#2866f6');
+root.appendChild(block);
+nodeIds.push('c114-anonymous-break-spaces-whitespace-before-block-item');
+"#,
+        ),
         _ => return None,
     }
     source.push_str(&format!(
@@ -155,9 +225,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_sixteen_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_twenty_six_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 16);
+        assert_eq!(SCENE_IDS.len(), 26);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (
@@ -303,6 +373,96 @@ mod tests {
                 "10px",
                 "wrap",
                 "preserve",
+            ),
+            (
+                "anonymous-break-spaces-max-content",
+                1,
+                0,
+                60,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-comment-split-max-content",
+                2,
+                0,
+                60,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-min-content",
+                1,
+                0,
+                30,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-soft-wrap-25",
+                1,
+                0,
+                25,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-forced-break-max-content",
+                1,
+                0,
+                40,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-forced-break-min-content",
+                1,
+                0,
+                30,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-trailing-soft-wrap-25",
+                1,
+                0,
+                25,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-trailing-max-content",
+                1,
+                0,
+                40,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-whitespace-only",
+                1,
+                0,
+                0,
+                "auto",
+                "wrap",
+                "break-spaces",
+            ),
+            (
+                "anonymous-break-spaces-whitespace-before-block",
+                1,
+                1,
+                40,
+                "10px",
+                "wrap",
+                "break-spaces",
             ),
         ] {
             let source = runtime_source(scene_id).expect("known C11.4 scene");

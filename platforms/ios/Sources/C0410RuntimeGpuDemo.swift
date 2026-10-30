@@ -967,6 +967,15 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "anonymous-pre-wrap-comment-split-max-content",
     "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-soft-wrap",
     "anonymous-pre-wrap-forced-break", "anonymous-pre-wrap-whitespace-before-block",
+    "anonymous-break-spaces-max-content",
+    "anonymous-break-spaces-comment-split-max-content",
+    "anonymous-break-spaces-min-content", "anonymous-break-spaces-soft-wrap-25",
+    "anonymous-break-spaces-forced-break-max-content",
+    "anonymous-break-spaces-forced-break-min-content",
+    "anonymous-break-spaces-trailing-soft-wrap-25",
+    "anonymous-break-spaces-trailing-max-content",
+    "anonymous-break-spaces-whitespace-only",
+    "anonymous-break-spaces-whitespace-before-block",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -2305,6 +2314,20 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
         || sceneID == "anonymous-pre-wrap-forced-break" { return "width=20,height=20" }
     if sceneID == "anonymous-pre-wrap-soft-wrap" { return "width=25,height=20" }
     if sceneID == "anonymous-pre-wrap-whitespace-before-block" { return "width=40,height=10" }
+    if sceneID == "anonymous-break-spaces-max-content"
+        || sceneID == "anonymous-break-spaces-comment-split-max-content" {
+        return "width=60,height=10"
+    }
+    if sceneID == "anonymous-break-spaces-min-content" { return "width=30,height=20" }
+    if sceneID == "anonymous-break-spaces-soft-wrap-25"
+        || sceneID == "anonymous-break-spaces-trailing-soft-wrap-25" {
+        return "width=25,height=20"
+    }
+    if sceneID == "anonymous-break-spaces-forced-break-max-content" { return "width=40,height=20" }
+    if sceneID == "anonymous-break-spaces-forced-break-min-content" { return "width=30,height=30" }
+    if sceneID == "anonymous-break-spaces-trailing-max-content" { return "width=40,height=10" }
+    if sceneID == "anonymous-break-spaces-whitespace-only" { return "width=0,height=0" }
+    if sceneID == "anonymous-break-spaces-whitespace-before-block" { return "width=40,height=10" }
     if c114IsAnonymousGridBorderOverflowScene(sceneID) { return "width=40,height=184" }
     if c114IsAnonymousTextMultiImageScene(sceneID) { return "width=220,height=180" }
     if c114IsAnonymousTextImageScene(sceneID) { return "width=220,height=60" }
@@ -3077,7 +3100,9 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
           let textLayouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]] else {
         return false
     }
-    if sceneID == "anonymous-pre-wrap-whitespace-before-block" {
+    if sceneID == "anonymous-pre-wrap-whitespace-before-block"
+        || sceneID == "anonymous-break-spaces-whitespace-only"
+        || sceneID == "anonymous-break-spaces-whitespace-before-block" {
         return inputs.isEmpty && frames.isEmpty && textLayouts.isEmpty
     }
     let expected: (maxContent: Double, maxContentHeight: Double,
@@ -3099,9 +3124,28 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
         expected = (50, 10, 25, 20, "PreWrap", [(2, "XX XX")])
     case "anonymous-pre-wrap-forced-break":
         expected = (20, 20, 20, 20, "PreWrap", [(2, "XX\nXX")])
+    case "anonymous-break-spaces-max-content":
+        expected = (60, 10, 60, 10, "BreakSpaces", [(2, "XX  XX")])
+    case "anonymous-break-spaces-comment-split-max-content":
+        expected = (60, 10, 60, 10, "BreakSpaces", [(2, "XX "), (3, " XX")])
+    case "anonymous-break-spaces-min-content":
+        expected = (60, 10, 30, 20, "BreakSpaces", [(2, "XX  XX")])
+    case "anonymous-break-spaces-soft-wrap-25":
+        expected = (60, 10, 25, 20, "BreakSpaces", [(2, "XX  XX")])
+    case "anonymous-break-spaces-forced-break-max-content":
+        expected = (40, 20, 40, 20, "BreakSpaces", [(2, "XX  \nXX")])
+    case "anonymous-break-spaces-forced-break-min-content":
+        expected = (40, 20, 30, 30, "BreakSpaces", [(2, "XX  \nXX")])
+    case "anonymous-break-spaces-trailing-soft-wrap-25":
+        expected = (40, 10, 25, 20, "BreakSpaces", [(2, "XX  ")])
+    case "anonymous-break-spaces-trailing-max-content":
+        expected = (40, 10, 40, 10, "BreakSpaces", [(2, "XX  ")])
     default:
         return false
     }
+    let expectedMinContent = sceneID.hasPrefix("anonymous-break-spaces-") ? 30.0 : 20.0
+    let expectedMinContentHeight = sceneID == "anonymous-break-spaces-forced-break-max-content"
+        || sceneID == "anonymous-break-spaces-forced-break-min-content" ? 30.0 : 20.0
     guard inputs.count == 1,
           let input = inputs.first,
           (input["grid"] as? Int) == 1,
@@ -3110,8 +3154,9 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
           let source = input["source"] as? [String: Any],
           (source["kind"] as? String) == "text",
           (source["fontRegistryRevision"] as? Int) == 1,
-          c114AnonymousTextNumberNear(source, key: "minContent", expected: 20),
-          c114AnonymousTextNumberNear(source, key: "minContentHeight", expected: 20),
+          c114AnonymousTextNumberNear(source, key: "minContent", expected: expectedMinContent),
+          c114AnonymousTextNumberNear(
+            source, key: "minContentHeight", expected: expectedMinContentHeight),
           c114AnonymousTextNumberNear(source, key: "maxContent", expected: expected.maxContent),
           c114AnonymousTextNumberNear(
             source, key: "maxContentHeight", expected: expected.maxContentHeight),
@@ -3173,6 +3218,56 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
         expectRowContribution = true
         expectedColumnKind = nil
     case "anonymous-pre-wrap-whitespace-before-block":
+        expectedColumns = [20, 20]
+        expectedRows = [10]
+        expectColumnContribution = false
+        expectRowContribution = false
+        expectedColumnKind = nil
+    case "anonymous-break-spaces-max-content",
+         "anonymous-break-spaces-comment-split-max-content":
+        expectedColumns = [60]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-break-spaces-min-content":
+        expectedColumns = [30]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MinContent"
+    case "anonymous-break-spaces-soft-wrap-25",
+         "anonymous-break-spaces-trailing-soft-wrap-25":
+        expectedColumns = [25]
+        expectedRows = [20]
+        expectColumnContribution = false
+        expectRowContribution = true
+        expectedColumnKind = nil
+    case "anonymous-break-spaces-forced-break-max-content":
+        expectedColumns = [40]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-break-spaces-forced-break-min-content":
+        expectedColumns = [30]
+        expectedRows = [30]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MinContent"
+    case "anonymous-break-spaces-trailing-max-content":
+        expectedColumns = [40]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-break-spaces-whitespace-only":
+        expectedColumns = [0]
+        expectedRows = [0]
+        expectColumnContribution = false
+        expectRowContribution = false
+        expectedColumnKind = nil
+    case "anonymous-break-spaces-whitespace-before-block":
         expectedColumns = [20, 20]
         expectedRows = [10]
         expectColumnContribution = false
@@ -8089,6 +8184,25 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     case "anonymous-pre-wrap-whitespace-before-block":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;"
             + "1:node=3,x=0,y=0,width=10,height=10]"
+    case "anonymous-break-spaces-max-content",
+         "anonymous-break-spaces-comment-split-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=10]"
+    case "anonymous-break-spaces-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=20]"
+    case "anonymous-break-spaces-soft-wrap-25",
+         "anonymous-break-spaces-trailing-soft-wrap-25":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]"
+    case "anonymous-break-spaces-forced-break-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20]"
+    case "anonymous-break-spaces-forced-break-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=30]"
+    case "anonymous-break-spaces-trailing-max-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10]"
+    case "anonymous-break-spaces-whitespace-only":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=0,height=0]"
+    case "anonymous-break-spaces-whitespace-before-block":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;"
+            + "1:node=3,x=0,y=0,width=10,height=10]"
     case "anonymous-comment-continuation", "anonymous-hidden-child-continuation":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]"
     case "anonymous-runs-around-block":
@@ -9450,7 +9564,9 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
     if sceneID == "anonymous-text-three-images-forward"
         || sceneID == "three-images-anonymous-text-reversed" { return 4 }
     if c114IsAnonymousTextImageScene(sceneID) { return 2 }
-    if sceneID == "anonymous-pre-wrap-whitespace-before-block" { return 2 }
+    if sceneID == "anonymous-pre-wrap-whitespace-before-block"
+        || sceneID == "anonymous-break-spaces-whitespace-before-block" { return 2 }
+    if sceneID == "anonymous-break-spaces-whitespace-only" { return 0 }
     if ["anonymous-min-content-wrap", "anonymous-normal-min-content",
         "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
         "anonymous-pre-line-max-content", "anonymous-comment-continuation",
@@ -9520,6 +9636,7 @@ private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
 private func c114IsAnonymousWhitespaceMatrixScene(_ sceneID: String) -> Bool {
     sceneID == "anonymous-normal-max-content-spaces"
         || sceneID.hasPrefix("anonymous-pre-wrap-")
+        || sceneID.hasPrefix("anonymous-break-spaces-")
 }
 
 private func c114IsAnonymousTextImageScene(_ sceneID: String) -> Bool {

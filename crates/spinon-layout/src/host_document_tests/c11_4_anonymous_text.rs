@@ -14,6 +14,8 @@ use crate::{
 const HTML: &str = "http://www.w3.org/1999/xhtml";
 const AHEM: &[u8] = include_bytes!("../../../../tests/fixtures/resources/c15/Ahem.ttf");
 
+#[path = "c11_4_anonymous_text/break_spaces.rs"]
+mod break_spaces;
 #[path = "c11_4_anonymous_text/white_space.rs"]
 mod white_space;
 

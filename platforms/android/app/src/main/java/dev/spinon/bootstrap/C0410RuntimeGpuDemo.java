@@ -931,6 +931,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "anonymous-pre-wrap-comment-split-max-content",
             "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-soft-wrap",
             "anonymous-pre-wrap-forced-break", "anonymous-pre-wrap-whitespace-before-block",
+            "anonymous-break-spaces-max-content",
+            "anonymous-break-spaces-comment-split-max-content",
+            "anonymous-break-spaces-min-content", "anonymous-break-spaces-soft-wrap-25",
+            "anonymous-break-spaces-forced-break-max-content",
+            "anonymous-break-spaces-forced-break-min-content",
+            "anonymous-break-spaces-trailing-soft-wrap-25",
+            "anonymous-break-spaces-trailing-max-content",
+            "anonymous-break-spaces-whitespace-only",
+            "anonymous-break-spaces-whitespace-before-block",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -4960,6 +4969,30 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) {
             return "width=40,height=10";
         }
+        if (sceneId.equals("anonymous-break-spaces-max-content")
+                || sceneId.equals("anonymous-break-spaces-comment-split-max-content")) {
+            return "width=60,height=10";
+        }
+        if (sceneId.equals("anonymous-break-spaces-min-content")) return "width=30,height=20";
+        if (sceneId.equals("anonymous-break-spaces-soft-wrap-25")
+                || sceneId.equals("anonymous-break-spaces-trailing-soft-wrap-25")) {
+            return "width=25,height=20";
+        }
+        if (sceneId.equals("anonymous-break-spaces-forced-break-max-content")) {
+            return "width=40,height=20";
+        }
+        if (sceneId.equals("anonymous-break-spaces-forced-break-min-content")) {
+            return "width=30,height=30";
+        }
+        if (sceneId.equals("anonymous-break-spaces-trailing-max-content")) {
+            return "width=40,height=10";
+        }
+        if (sceneId.equals("anonymous-break-spaces-whitespace-only")) {
+            return "width=0,height=0";
+        }
+        if (sceneId.equals("anonymous-break-spaces-whitespace-before-block")) {
+            return "width=40,height=10";
+        }
         if (c114IsAnonymousGridBorderOverflowScene(sceneId)) return "width=40,height=184";
         if (c114IsAnonymousTextMultiImageScene(sceneId)) return "width=220,height=180";
         if (c114IsAnonymousTextImageScene(sceneId)) return "width=220,height=60";
@@ -5667,7 +5700,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONArray frames = diagnostics.optJSONArray("gridItemFrames");
             org.json.JSONArray textLayouts = diagnostics.optJSONArray("gridItemTextLayouts");
             if (inputs == null || frames == null || textLayouts == null) return false;
-            if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) {
+            if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")
+                    || sceneId.equals("anonymous-break-spaces-whitespace-only")
+                    || sceneId.equals("anonymous-break-spaces-whitespace-before-block")) {
                 return inputs.length() == 0 && frames.length() == 0 && textLayouts.length() == 0;
             }
             if (inputs.length() != 1 || frames.length() != 1 || textLayouts.length() != 1) {
@@ -5742,9 +5777,87 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     expectedSourceText = new String[] { "XX\nXX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
+                case "anonymous-break-spaces-max-content":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 60.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-comment-split-max-content":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 60.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX ", " XX" };
+                    expectedSourceNodes = new int[] { 2, 3 };
+                    break;
+                case "anonymous-break-spaces-min-content":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 30.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-soft-wrap-25":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  XX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-forced-break-max-content":
+                    maxContent = 40.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 40.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  \nXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-forced-break-min-content":
+                    maxContent = 40.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 30.0;
+                    itemHeight = 30.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  \nXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-trailing-soft-wrap-25":
+                    maxContent = 40.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  " };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-break-spaces-trailing-max-content":
+                    maxContent = 40.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 40.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "BreakSpaces";
+                    expectedSourceText = new String[] { "XX  " };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
                 default:
                     return false;
             }
+            double expectedMinContent = sceneId.startsWith("anonymous-break-spaces-")
+                    ? 30.0 : 20.0;
+            double expectedMinContentHeight = sceneId.equals(
+                    "anonymous-break-spaces-forced-break-max-content")
+                    || sceneId.equals("anonymous-break-spaces-forced-break-min-content")
+                    ? 30.0 : 20.0;
             org.json.JSONObject input = inputs.optJSONObject(0);
             if (input == null || input.optInt("grid", -1) != 1
                     || input.optInt("node", -1) != 2 || input.optInt("sourceOrder", -1) != 0) {
@@ -5753,8 +5866,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject source = input.optJSONObject("source");
             if (source == null || !"text".equals(source.optString("kind"))
                     || source.optInt("fontRegistryRevision", -1) != 1
-                    || !c114AnonymousTextNumberNear(source, "minContent", 20.0)
-                    || !c114AnonymousTextNumberNear(source, "minContentHeight", 20.0)
+                    || !c114AnonymousTextNumberNear(source, "minContent", expectedMinContent)
+                    || !c114AnonymousTextNumberNear(source, "minContentHeight",
+                            expectedMinContentHeight)
                     || !c114AnonymousTextNumberNear(source, "maxContent", maxContent)
                     || !c114AnonymousTextNumberNear(source, "maxContentHeight", maxContentHeight)) {
                 return false;
@@ -5837,6 +5951,61 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectRowContribution = true;
                 break;
             case "anonymous-pre-wrap-whitespace-before-block":
+                expectedColumns = new double[] { 20.0, 20.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = false;
+                expectRowContribution = false;
+                break;
+            case "anonymous-break-spaces-max-content":
+            case "anonymous-break-spaces-comment-split-max-content":
+                expectedColumns = new double[] { 60.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-break-spaces-min-content":
+                expectedColumns = new double[] { 30.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MinContent";
+                break;
+            case "anonymous-break-spaces-soft-wrap-25":
+            case "anonymous-break-spaces-trailing-soft-wrap-25":
+                expectedColumns = new double[] { 25.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = false;
+                expectRowContribution = true;
+                break;
+            case "anonymous-break-spaces-forced-break-max-content":
+                expectedColumns = new double[] { 40.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-break-spaces-forced-break-min-content":
+                expectedColumns = new double[] { 30.0 };
+                expectedRows = new double[] { 30.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MinContent";
+                break;
+            case "anonymous-break-spaces-trailing-max-content":
+                expectedColumns = new double[] { 40.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-break-spaces-whitespace-only":
+                expectedColumns = new double[] { 0.0 };
+                expectedRows = new double[] { 0.0 };
+                expectColumnContribution = false;
+                expectRowContribution = false;
+                break;
+            case "anonymous-break-spaces-whitespace-before-block":
                 expectedColumns = new double[] { 20.0, 20.0 };
                 expectedRows = new double[] { 10.0 };
                 expectColumnContribution = false;
@@ -8547,6 +8716,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "anonymous-pre-wrap-whitespace-before-block":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;"
                         + "1:node=3,x=0,y=0,width=10,height=10]";
+            case "anonymous-break-spaces-max-content":
+            case "anonymous-break-spaces-comment-split-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=10]";
+            case "anonymous-break-spaces-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=20]";
+            case "anonymous-break-spaces-soft-wrap-25":
+            case "anonymous-break-spaces-trailing-soft-wrap-25":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]";
+            case "anonymous-break-spaces-forced-break-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20]";
+            case "anonymous-break-spaces-forced-break-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=30]";
+            case "anonymous-break-spaces-trailing-max-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10]";
+            case "anonymous-break-spaces-whitespace-only":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=0,height=0]";
+            case "anonymous-break-spaces-whitespace-before-block":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;"
+                        + "1:node=3,x=0,y=0,width=10,height=10]";
             case "anonymous-comment-continuation":
             case "anonymous-hidden-child-continuation":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]";
@@ -10884,7 +11072,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-text-three-images-forward")
                 || sceneId.equals("three-images-anonymous-text-reversed")) return 4;
         if (c114IsAnonymousTextImageScene(sceneId)) return 2;
-        if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) return 2;
+        if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")
+                || sceneId.equals("anonymous-break-spaces-whitespace-before-block")) return 2;
+        if (sceneId.equals("anonymous-break-spaces-whitespace-only")) return 0;
         if (sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
@@ -10987,7 +11177,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsAnonymousWhitespaceMatrixScene(String sceneId) {
         return sceneId.equals("anonymous-normal-max-content-spaces")
-                || sceneId.startsWith("anonymous-pre-wrap-");
+                || sceneId.startsWith("anonymous-pre-wrap-")
+                || sceneId.startsWith("anonymous-break-spaces-");
     }
 
     private static boolean c114IsAnonymousTextImageScene(String sceneId) {

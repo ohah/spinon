@@ -80,10 +80,17 @@ impl TextLayoutEngine {
             ));
         }
         layout.break_all_lines(Some(0.0));
-        let min_content = (
-            min_content_inline_advance(&layout, &inline_boundaries, input.node)?,
-            min_content_block_size(&layout, input.node)?,
-        );
+        let min_content_inline =
+            min_content_inline_advance(&layout, &inline_boundaries, input.node)?;
+        let min_content_block = if input.style.white_space == WhiteSpaceMode::BreakSpaces {
+            // break-spaces does not hang preserved end-of-line spaces. Reflow at the
+            // computed min-content inline size so block size reflects those retained spaces.
+            layout.break_all_lines(Some(min_content_inline));
+            min_content_block_size(&layout, input.node)?
+        } else {
+            min_content_block_size(&layout, input.node)?
+        };
+        let min_content = (min_content_inline, min_content_block);
         layout.break_all_lines(None);
         let max_content = (layout.width(), layout.height());
         if !min_content.0.is_finite()
@@ -193,14 +200,16 @@ impl TextLayoutEngine {
         builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
         builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
             WhiteSpaceMode::NoWrap => TextWrapMode::NoWrap,
-            WhiteSpaceMode::Normal | WhiteSpaceMode::PreLine | WhiteSpaceMode::PreWrap => {
-                TextWrapMode::Wrap
-            }
+            WhiteSpaceMode::Normal
+            | WhiteSpaceMode::PreLine
+            | WhiteSpaceMode::PreWrap
+            | WhiteSpaceMode::BreakSpaces => TextWrapMode::Wrap,
         }));
         builder.push_default(StyleProperty::WhiteSpaceCollapse(
             match input.style.white_space {
                 WhiteSpaceMode::PreLine => WhiteSpaceCollapse::PreserveBreaks,
                 WhiteSpaceMode::PreWrap => WhiteSpaceCollapse::Preserve,
+                WhiteSpaceMode::BreakSpaces => WhiteSpaceCollapse::BreakSpaces,
                 WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap => WhiteSpaceCollapse::Collapse,
             },
         ));
