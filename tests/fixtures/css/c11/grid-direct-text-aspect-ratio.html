@@ -1,0 +1,86 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 direct text Grid aspect-ratio precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+}
+html, body { margin: 0; }
+body {
+  display: block;
+  padding: 20px;
+  color: #111;
+  background: #fff;
+  font: 12px/1.2 sans-serif;
+}
+.case { display: block; margin: 0 0 20px; }
+.case-label { color: #263238; }
+.grid {
+  display: grid;
+  width: max-content;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: auto;
+  gap: 0;
+  align-items: normal;
+  justify-items: normal;
+  outline: 1px solid #263238;
+}
+.column-control { grid-template-rows: 40px; }
+.item {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  color: #111;
+  background: #dbeafe;
+  font: 10px/10px Ahem;
+  white-space: nowrap;
+  outline: 1px solid #1976d2;
+}
+.ratio { aspect-ratio: 2 / 1; }
+</style>
+<section class="case">
+  <div class="case-label">Auto row: ratio contribution</div>
+  <div id="row-ratio" class="grid">
+    <div id="row-ratio-short" class="item">A</div>
+    <div id="row-ratio-long" class="item ratio">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Auto row: no-ratio control</div>
+  <div id="row-control" class="grid">
+    <div id="row-control-short" class="item">A</div>
+    <div id="row-control-long" class="item">AAAA</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite row: ratio column contribution</div>
+  <div id="column-ratio" class="grid column-control">
+    <div id="column-ratio-long" class="item ratio">AAAA</div>
+    <div id="column-ratio-short" class="item">A</div>
+  </div>
+</section>
+<section class="case">
+  <div class="case-label">Definite row: no-ratio control</div>
+  <div id="column-control" class="grid column-control">
+    <div id="column-control-long" class="item">AAAA</div>
+    <div id="column-control-short" class="item">A</div>
+  </div>
+</section>
+<script>
+window.captureGridAspectRatio = () => {
+  const box = (element) => {
+    const rect = element.getBoundingClientRect();
+    return { x: rect.x, y: rect.y, width: rect.width, height: rect.height };
+  };
+  return [...document.querySelectorAll('.grid')].map((grid) => ({
+    id: grid.id,
+    grid: box(grid),
+    tracks: {
+      columns: getComputedStyle(grid).gridTemplateColumns,
+      rows: getComputedStyle(grid).gridTemplateRows,
+    },
+    items: [...grid.children].map((item) => ({ id: item.id, frame: box(item) })),
+  }));
+};
+</script>
