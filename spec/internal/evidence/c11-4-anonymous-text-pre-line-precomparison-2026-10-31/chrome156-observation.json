@@ -1,0 +1,78 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "platform": "MacIntel",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "ahemReady": true,
+  "inputSha256": "e0d4b9f17f9790faeb7b7b34699e4d90c9c6a69b8c1d67663d5720cf0aa69e1a",
+  "ahemSha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+  "screenshot": {
+    "path": "chrome-agent-browser.png",
+    "sha256": "07f68b4ac8adb6cd069e0eb2d85d7f6385f1afdcc2e71b62d9d62f5d4656678a",
+    "width": 1280,
+    "height": 633
+  },
+  "cases": [
+    {
+      "id": "normal",
+      "text": "XX\nXX",
+      "whiteSpace": "normal",
+      "whiteSpaceCollapse": "collapse",
+      "textWrapMode": "wrap",
+      "columns": "50px",
+      "rows": "10px",
+      "grid": {
+        "x": 16,
+        "y": 32,
+        "width": 20,
+        "height": 10
+      },
+      "textFragments": [
+        {
+          "x": 16,
+          "y": 32,
+          "width": 50,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "pre-line",
+      "text": "XX\nXX",
+      "whiteSpace": "pre-line",
+      "whiteSpaceCollapse": "preserve-breaks",
+      "textWrapMode": "wrap",
+      "columns": "20px",
+      "rows": "20px",
+      "grid": {
+        "x": 16,
+        "y": 74,
+        "width": 20,
+        "height": 20
+      },
+      "textFragments": [
+        {
+          "x": 16,
+          "y": 74,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 74,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 16,
+          "y": 84,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    }
+  ]
+}
