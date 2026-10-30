@@ -1,0 +1,320 @@
+[
+  {
+    "id": "tab-after-two-columns",
+    "text": "XX\tXX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "100px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 0,
+      "width": 100,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 0,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 0,
+        "width": 60,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 0,
+        "width": 20,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "leading-tab",
+    "text": "\tX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "90px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 30,
+      "width": 90,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 30,
+        "width": 80,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 30,
+        "width": 10,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "tab-at-eight-column-stop",
+    "text": "XXXXXXXX\tX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "170px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 60,
+      "width": 170,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 60,
+        "width": 80,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 60,
+        "width": 80,
+        "height": 10
+      },
+      {
+        "x": 160,
+        "y": 60,
+        "width": 10,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "consecutive-tabs",
+    "text": "XX\t\tX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "170px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 90,
+      "width": 170,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 90,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 90,
+        "width": 140,
+        "height": 10
+      },
+      {
+        "x": 160,
+        "y": 90,
+        "width": 10,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "tab-stop-resets-after-break",
+    "text": "XX\tXX\nX\tX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "100px",
+    "gridRows": "20px",
+    "frame": {
+      "x": 0,
+      "y": 120,
+      "width": 100,
+      "height": 20
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 120,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 120,
+        "width": 60,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 120,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 100,
+        "y": 120,
+        "width": 0,
+        "height": 10
+      },
+      {
+        "x": 0,
+        "y": 130,
+        "width": 10,
+        "height": 10
+      },
+      {
+        "x": 10,
+        "y": 130,
+        "width": 70,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 130,
+        "width": 10,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "trailing-tab",
+    "text": "XX\t",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "80px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 160,
+      "width": 80,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 160,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 160,
+        "width": 60,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "tab-min-content-no-wrap",
+    "text": "XX\tXX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "100px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 190,
+      "width": 100,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 190,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 190,
+        "width": 60,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 190,
+        "width": 20,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "pre-tab-fixed-width-overflow",
+    "text": "XX\tXX",
+    "tabSize": "8",
+    "whiteSpace": "pre",
+    "gridColumns": "25px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 220,
+      "width": 25,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 220,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 220,
+        "width": 60,
+        "height": 10
+      },
+      {
+        "x": 80,
+        "y": 220,
+        "width": 20,
+        "height": 10
+      }
+    ]
+  },
+  {
+    "id": "custom-tab-size-control",
+    "text": "XX\tXX",
+    "tabSize": "2",
+    "whiteSpace": "pre",
+    "gridColumns": "60px",
+    "gridRows": "10px",
+    "frame": {
+      "x": 0,
+      "y": 250,
+      "width": 60,
+      "height": 10
+    },
+    "textRects": [
+      {
+        "x": 0,
+        "y": 250,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 20,
+        "y": 250,
+        "width": 20,
+        "height": 10
+      },
+      {
+        "x": 40,
+        "y": 250,
+        "width": 20,
+        "height": 10
+      }
+    ]
+  }
+]
