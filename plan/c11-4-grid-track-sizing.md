@@ -601,3 +601,7 @@ PR #765는 2026-10-28T16:52:08Z Rebase and merge됐고 merge SHA는 31103049d4a9
 [집중 계획](./c11-4-auto-repeat-track-ceiling.md)에 따라 9,999px·10,000px·10,001px definite basis와 1px 반복 track의 expanded count를 `auto-fill`·`auto-fit`, Columns·Rows 각각 확인했다. 두 축의 `used explicit count`와 non-gutter `Initialize` stage는 모든 case에서 일치했고, 10,001px 입력은 Taffy 0.15.0 상한인 10,000 tracks로 제한됐다. 빈 `auto-fit`은 collapse되며 `auto-fill`은 유지된다. 10,003px/10,004px source-order controls에서 2px prefix는 보존됐고 3px suffix는 cap 도달 전에는 남고 cap을 넘으면 잘렸다.
 
 Focused tests 2/2, 전체 Grid 선택 134/134, `spinon-layout` 312/312, crate Clippy와 rustfmt가 통과했다. [실행 로그·범위·실패 수정](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/README.md) · [구현 검토 20개](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-auto-repeat-track-ceiling-2026-10-30/pr-diff-review-30.md). 이는 fixed-size Rust test이며 앱 surface, WPT, 일반 CSS admission을 다루지 않는다. C11.4와 C11은 미완료다.
+
+## 2026-10-30 auto-repeat 두-track pattern 상한 · 계획
+
+단일-track cap 검사 뒤, 2-track `[1px, 2px]` repetition의 exact-fit과 상한 초과 truncation을 Columns·Rows에서 각각 고정한다. Prefix/suffix source order와 반복 중간 named line의 마지막 occurrence를 frame으로 확인하는 test-only 후속이다. 독립 기대값은 [precomparison](../spec/internal/evidence/c11-4-auto-repeat-pattern-ceiling-precomparison-2026-10-30/README.md), 구현 계획은 [계획 문서](./c11-4-auto-repeat-pattern-ceiling.md)에 있다. 이 계획의 구현, simulator, WPT 또는 공개 지원 결과는 아직 없다. C11.4/C11과 `72/213` 공식 집계는 그대로 미완료다.
