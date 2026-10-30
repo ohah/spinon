@@ -840,4 +840,6 @@ Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 최종 16-sce
 
 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 장면을 포함한 26-scene matrix가 각각 26/26 성공했다. 두 앱 경로에서 각 scene의 expected frame/track trace와 draw/present를 확인했고 retry는 0이다. AVD는 ANGLE/Vulkan/SwiftShader software renderer이며 iOS 결과는 compositor 제출 전이다. 대표 화면, simulator receipts와 한계는 [runtime evidence](evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md)에 있다. 기본/fixture-test static archive 경계는 [별도 기록](evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/artifact-boundary/README.md)에서 macOS ARM64 archive만 확인했으며 APK/IPA 전체 exclusion은 주장하지 않는다.
 
+구현 PR [#873](https://github.com/ohah/spinon/pull/873)은 2026-10-30T20:02:37Z Rebase and merge됐고 merge SHA는 `32ba37b18dc5a8fc553667f52cc47d46dae3952f`다. PR check rollup은 비어 있었고 main required status checks도 설정되지 않아 CI 통과로 기록하지 않는다.
+
 이 후보는 전체 WPT, 일반 CSS admission, 임의 font/script/tab, root-HTML mapping, glyph pixel 정합성, 실기기/hardware GPU 또는 전체 C11.4를 검증하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 미완료로 유지한다.

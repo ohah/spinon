@@ -1,0 +1,193 @@
+@spinon/docs docs:build: 🔥 Rspress v2.0.22
+@spinon/docs docs:build:
+@spinon/docs docs:build: info    build started...
+@spinon/docs docs:build: error   build failed in 1.07s (node)
+@spinon/docs docs:build: error   build failed in 1.21s (web)
+@spinon/docs docs:build: error   Build errors:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:3:1-85
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/android-avd-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/android-avd-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:4:1-87
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/ios-simulator-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  6 │     const _components = {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/ios-simulator-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:3:1-85
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/android-avd-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/android-avd-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:4:1-87
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/ios-simulator-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  6 │     const _components = {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/ios-simulator-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrClientEntry.js
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/route.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:3:1-85
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/android-avd-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/android-avd-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:4:1-87
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/ios-simulator-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  6 │     const _components = {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/ios-simulator-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:3:1-85
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/android-avd-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[3:0]
+@spinon/docs docs:build:  1 │ import { Fragment as _Fragment, jsx as _jsx, jsxs as _jsxs } from "react/jsx-runtime";
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/android-avd-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: File: ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md:4:1-87
+@spinon/docs docs:build:   × Module not found: Can't resolve 'screenshots/ios-simulator-anonymous-break-spaces-max-content.png' in '/Users/yoonhb/Documents/workspace/spinon/build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31'
+@spinon/docs docs:build:    ╭─[4:0]
+@spinon/docs docs:build:  2 │ import { useMDXComponents as _provideComponents } from "@mdx-js/react";
+@spinon/docs docs:build:  3 │ import image0 from "screenshots/android-avd-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:  4 │ import image1 from "screenshots/ios-simulator-anonymous-break-spaces-max-content.png";
+@spinon/docs docs:build:    · ──────────────────────────────────────────────────────────────────────────────────────
+@spinon/docs docs:build:  5 │ function _createMdxContent(props) {
+@spinon/docs docs:build:  6 │     const _components = {
+@spinon/docs docs:build:    ╰────
+@spinon/docs docs:build:   help: Did you mean './screenshots/ios-simulator-anonymous-break-spaces-max-content.png'?
+@spinon/docs docs:build:
+@spinon/docs docs:build:         Requests that should resolve in the current directory need to start with './'.
+@spinon/docs docs:build:         Requests that start with a name are treated as module requests and resolve within module directories (node_modules).
+@spinon/docs docs:build:
+@spinon/docs docs:build:         If changing the source code is not an option, there is also a resolve options called 'preferRelative'
+@spinon/docs docs:build:         which tries to resolve these kind of requests in the current directory too.
+@spinon/docs docs:build: Import traces (entry → error):
+@spinon/docs docs:build:   ../../node_modules/.bun/@rspress+core@2.0.22+158ff6584667c646/node_modules/@rspress/core/dist/runtime/ssrServerEntry.js
+@spinon/docs docs:build:   ./.rspress/runtime/virtual-routes.js
+@spinon/docs docs:build:   ../../build/spinon/roadmap-tailnet-sync-c11-4-break-spaces-20261031/pass01/root/spec/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.md ×
+@spinon/docs docs:build:
+@spinon/docs docs:build: error   Rspack build failed.
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rsbuild+core@2.2.10/node_modules/@rsbuild/core/dist/m.js:4309:141
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9074:31
+@spinon/docs docs:build:     at callback1 (file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9082:78)
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:9088:36
+@spinon/docs docs:build:     at file:///Users/yoonhb/Documents/workspace/spinon/node_modules/.bun/@rspack+core@2.2.7+dcea513fa271d095/node_modules/@rspack/core/dist/index.js:12604:36
+@spinon/docs docs:build: Exited with code 1

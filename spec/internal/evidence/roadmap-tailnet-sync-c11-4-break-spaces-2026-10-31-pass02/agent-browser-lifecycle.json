@@ -1,0 +1,15 @@
+{
+  "closeAllExitCode": 0,
+  "closeOutput": "No active sessions",
+  "session": {
+    "active": false,
+    "namespace": null,
+    "pid": null,
+    "runtime": null,
+    "runtimeError": null,
+    "session": "default",
+    "socketDir": "/Users/yoonhb/.agent-browser",
+    "version": null
+  },
+  "terminalBrowserUsed": false
+}

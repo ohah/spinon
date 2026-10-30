@@ -1,0 +1,11 @@
+{
+  "checks": {
+    "breakSpaces": true,
+    "matrix26": true,
+    "mergeSha": true,
+    "officialCount": true,
+    "pr873": true
+  },
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}

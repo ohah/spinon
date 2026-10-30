@@ -1,0 +1,64 @@
+{
+  "browser": "Agent Browser CLI",
+  "terminalBrowserUsed": false,
+  "sourceHead": "32ba37b18dc5a8fc553667f52cc47d46dae3952f",
+  "pages": {
+    "roadmap": {
+      "checks": {
+        "breakSpaces": true,
+        "matrix26": true,
+        "mergeSha": true,
+        "officialCount": true,
+        "pr873": true
+      },
+      "title": "스피논 구현 로드맵",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+    },
+    "status": {
+      "c114": {
+        "checked": false,
+        "context": " C11.4 intrinsic track sizing",
+        "disabled": true
+      },
+      "mergeSha": true,
+      "officialCount": true,
+      "title": "스피논 구현 상태와 API 명세 대장 - 스피논 문서",
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/STATUS.html"
+    },
+    "runtime": {
+      "url": "https://macstudio.tailed42f2.ts.net/spinon/internal/evidence/c11-4-anonymous-grid-text-break-spaces-runtime-2026-10-31/README.html",
+      "title": "C11.4 anonymous Grid text white-space: break-spaces runtime 후보 - 스피논 문서",
+      "loadedScreenshots": [
+        {
+          "complete": true,
+          "naturalHeight": 2400,
+          "naturalWidth": 1080,
+          "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/android-avd-anonymous-break-spaces-max-content.1c20d610ee.png"
+        },
+        {
+          "complete": true,
+          "naturalHeight": 2622,
+          "naturalWidth": 1206,
+          "src": "https://macstudio.tailed42f2.ts.net/spinon/static/image/ios-simulator-anonymous-break-spaces-max-content.a09921d113.png"
+        }
+      ]
+    }
+  },
+  "screenshots": [
+    {
+      "path": "tailnet-roadmap-agent-browser-viewport.png",
+      "bytes": 428754,
+      "sha256": "83af35bc8430b50ce5b61309f49b350d04d2175999b501e5607555be1f685e6e"
+    },
+    {
+      "path": "tailnet-status-c114-agent-browser-viewport.png",
+      "bytes": 399544,
+      "sha256": "fa078bed17d07bc781c00346245bc9e15ceb50902155dbc975a1e54b33914d3c"
+    },
+    {
+      "path": "tailnet-runtime-agent-browser-viewport.png",
+      "bytes": 97031,
+      "sha256": "d60397c722cc6720960728e5e84064ad5988bc150303f8e268f5b50ee16c62ca"
+    }
+  ]
+}
