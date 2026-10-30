@@ -1,0 +1,137 @@
+{
+  "standard": "CSS Text Module Level 3, sections 4.1.2 and 4.2",
+  "oracle": "Agent Browser HeadlessChrome 156.0.0.0",
+  "font": "Ahem 10px/10px, SHA-256 b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+  "tab_stop_interval_px": 80,
+  "scenes": [
+    {
+      "id": "tab-after-two-columns",
+      "source": "XX\tXX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 100,
+      "root_frame_px": [
+        100,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        100
+      ],
+      "text_line_advance_px": 100,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "leading-tab",
+      "source": "\tX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 90,
+      "root_frame_px": [
+        90,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        90
+      ],
+      "text_line_advance_px": 90,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "tab-at-eight-column-stop",
+      "source": "XXXXXXXX\tX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 170,
+      "root_frame_px": [
+        170,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        170
+      ],
+      "text_line_advance_px": 170,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "consecutive-tabs",
+      "source": "XX\t\tX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 170,
+      "root_frame_px": [
+        170,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        170
+      ],
+      "text_line_advance_px": 170,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "tab-stop-resets-after-break",
+      "source": "XX\tXX\nX\tX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 100,
+      "root_frame_px": [
+        100,
+        20
+      ],
+      "logical_text_line_widths_px": [
+        100,
+        90
+      ],
+      "text_line_advance_px": 100,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "trailing-tab",
+      "source": "XX\t",
+      "computed_tab_size": "8",
+      "grid_columns_px": 80,
+      "root_frame_px": [
+        80,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        80
+      ],
+      "text_line_advance_px": 80,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "tab-min-content-no-wrap",
+      "source": "XX\tXX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 100,
+      "root_frame_px": [
+        100,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        100
+      ],
+      "text_line_advance_px": 100,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "pre-tab-fixed-width-overflow",
+      "source": "XX\tXX",
+      "computed_tab_size": "8",
+      "grid_columns_px": 25,
+      "root_frame_px": [
+        25,
+        10
+      ],
+      "logical_text_line_widths_px": [
+        100
+      ],
+      "text_line_advance_px": 100,
+      "oracle_matches_independent_expectation": true
+    },
+    {
+      "id": "custom-tab-size-control",
+      "source": "XX\tXX",
+      "computed_tab_size": "2",
+      "grid_columns_px": 60,
+      "classification": "negative boundary; proposed default-only profile must not accept this authored value"
+    }
+  ],
+  "calculation": "Each Ahem X and space advances 10px. The initial tab-size is 8 spaces. A tab moves to the next strict multiple of 80px from the shared content origin; a forced line break starts a new line at that origin."
+}

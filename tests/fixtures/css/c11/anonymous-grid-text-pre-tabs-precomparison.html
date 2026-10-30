@@ -1,0 +1,70 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text pre tabs precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { color: #111; background: #fff; font: 10px/10px Ahem, sans-serif; }
+.case { margin: 0 0 20px; }
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: pre;
+  tab-size: 8;
+}
+#custom-tab-size-control { tab-size: 2; }
+#tab-min-content-no-wrap { grid-template-columns: min-content; }
+#pre-tab-fixed-width-overflow {
+  width: 25px;
+  grid-template-columns: minmax(0, 1fr);
+}
+</style>
+<section class="case"><div id="tab-after-two-columns" class="grid">XX	XX</div></section>
+<section class="case"><div id="leading-tab" class="grid">	X</div></section>
+<section class="case"><div id="tab-at-eight-column-stop" class="grid">XXXXXXXX	X</div></section>
+<section class="case"><div id="consecutive-tabs" class="grid">XX		X</div></section>
+<section class="case"><div id="tab-stop-resets-after-break" class="grid">XX	XX
+X	X</div></section>
+<section class="case"><div id="trailing-tab" class="grid">XX	</div></section>
+<section class="case"><div id="tab-min-content-no-wrap" class="grid">XX	XX</div></section>
+<section class="case"><div id="pre-tab-fixed-width-overflow" class="grid">XX	XX</div></section>
+<section class="case"><div id="custom-tab-size-control" class="grid">XX	XX</div></section>
+<script>
+(async () => {
+  await document.fonts.ready;
+  const ids = [
+    'tab-after-two-columns', 'leading-tab', 'tab-at-eight-column-stop',
+    'consecutive-tabs', 'tab-stop-resets-after-break', 'trailing-tab',
+    'tab-min-content-no-wrap', 'pre-tab-fixed-width-overflow',
+    'custom-tab-size-control'
+  ];
+  window.__spinonOracle = ids.map(id => {
+    const element = document.getElementById(id);
+    const style = getComputedStyle(element);
+    const box = element.getBoundingClientRect();
+    const range = document.createRange();
+    range.selectNodeContents(element);
+    return {
+      id,
+      text: element.textContent,
+      tabSize: style.tabSize,
+      whiteSpace: style.whiteSpace,
+      gridColumns: style.gridTemplateColumns,
+      gridRows: style.gridTemplateRows,
+      frame: { x: box.x, y: box.y, width: box.width, height: box.height },
+      textRects: [...range.getClientRects()].map(rect => ({
+        x: rect.x, y: rect.y, width: rect.width, height: rect.height
+      }))
+    };
+  });
+})();
+</script>
