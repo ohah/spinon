@@ -283,7 +283,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || (sceneId != null
                         && (sceneId.startsWith("grid-text-aspect-ratio-range-")
                                 || sceneId.startsWith("grid-text-aspect-ratio-auto-")
-                                || sceneId.startsWith("grid-text-aspect-ratio-row-60-")));
+                                || sceneId.startsWith("grid-text-aspect-ratio-row-60-")
+                                || sceneId.startsWith(
+                                        "grid-text-aspect-ratio-minmax-")));
     }
 
     private static boolean c114IsGridTextAspectRatioColumnScene(String sceneId) {
@@ -449,6 +451,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static C114GenericDirectTextSceneExpectation
             c114GenericDirectTextBoxAspectRatioExpectation(String sceneId) {
         if (sceneId == null) return null;
+        C114AspectRatioMinmaxSceneExpectation minmax =
+                c114AspectRatioMinmaxSceneExpectation(sceneId);
+        if (minmax != null) {
+            return new C114GenericDirectTextSceneExpectation(minmax.height,
+                    new double[] {minmax.width, 10},
+                    c114AspectRatioMinmaxTextItem(2, 0, minmax.width, minmax.height,
+                            "AAAA", minmax.hasEdges),
+                    c114AspectRatioMinmaxTextItem(4, minmax.width, 10, minmax.height,
+                            "A", false));
+        }
         switch (sceneId) {
             case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box":
             case "grid-text-aspect-ratio-auto-row-auto-3-2-content-box":
@@ -466,6 +478,72 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             default:
                 return null;
         }
+    }
+
+    private static final class C114AspectRatioMinmaxSceneExpectation {
+        final double width;
+        final double height;
+        final double minimumRowContribution;
+        final double initialRowStageBase;
+        final boolean hasEdges;
+
+        C114AspectRatioMinmaxSceneExpectation(
+                double width, double height, double minimumRowContribution, boolean hasEdges
+        ) {
+            this(width, height, minimumRowContribution, height, hasEdges);
+        }
+
+        C114AspectRatioMinmaxSceneExpectation(
+                double width, double height, double minimumRowContribution,
+                double initialRowStageBase, boolean hasEdges
+        ) {
+            this.width = width;
+            this.height = height;
+            this.minimumRowContribution = minimumRowContribution;
+            this.initialRowStageBase = initialRowStageBase;
+            this.hasEdges = hasEdges;
+        }
+    }
+
+    private static C114AspectRatioMinmaxSceneExpectation c114AspectRatioMinmaxSceneExpectation(
+            String sceneId
+    ) {
+        String prefix = "grid-text-aspect-ratio-minmax-";
+        if (sceneId == null || !sceneId.startsWith(prefix)) return null;
+        switch (sceneId.substring(prefix.length())) {
+            case "numeric-baseline": return new C114AspectRatioMinmaxSceneExpectation(40, 20, 20, false);
+            case "min-width-60": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, false);
+            case "min-width-45": return new C114AspectRatioMinmaxSceneExpectation(45, 22.5, 22.5, false);
+            case "max-width-30-min-width-0": return new C114AspectRatioMinmaxSceneExpectation(30, 15, 15, false);
+            case "min-height-30": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, false);
+            case "max-height-15-min-height-0": return new C114AspectRatioMinmaxSceneExpectation(40, 15, 0, 10, false);
+            case "max-height-15-min-height-0-min-width-0": return new C114AspectRatioMinmaxSceneExpectation(30, 15, 0, 10, false);
+            case "max-height-17-75-min-controls": return new C114AspectRatioMinmaxSceneExpectation(35.5, 17.75, 0, 10, false);
+            case "min-width-60-clamped-by-max-height-20": return new C114AspectRatioMinmaxSceneExpectation(60, 20, 20, false);
+            case "min-height-20-clamps-transferred-max-width-30": return new C114AspectRatioMinmaxSceneExpectation(30, 20, 20, false);
+            case "source-min-width-60-over-max-width-40": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, false);
+            case "source-min-height-30-over-max-height-20": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, false);
+            case "auto-ratio-min-width-60": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, false);
+            case "no-ratio-min-width-60": return new C114AspectRatioMinmaxSceneExpectation(60, 10, 10, false);
+            case "no-ratio-min-height-30": return new C114AspectRatioMinmaxSceneExpectation(40, 30, 30, false);
+            case "numeric-border-box-min-width-60": return new C114AspectRatioMinmaxSceneExpectation(60, 30, 30, true);
+            case "auto-content-box-min-width-60": return new C114AspectRatioMinmaxSceneExpectation(60, 31, 31, true);
+            case "numeric-border-box-max-height-15-min-controls": return new C114AspectRatioMinmaxSceneExpectation(30, 15, 0, 10, true);
+            case "auto-content-box-max-height-15-min-controls": return new C114AspectRatioMinmaxSceneExpectation(28, 15, 6, 10, true);
+            default: return null;
+        }
+    }
+
+    private static C114GenericDirectTextItemExpectation c114AspectRatioMinmaxTextItem(
+            int node, double x, double width, double height, String text, boolean hasEdges
+    ) {
+        double textWidth = text.length() * 10.0;
+        return new C114GenericDirectTextItemExpectation(
+                node, x, width, height,
+                width - (hasEdges ? 10.0 : 0.0), textWidth,
+                hasEdges ? 4.0 : 0.0, hasEdges ? 2.0 : 0.0, hasEdges ? 1.0 : 0.0,
+                textWidth, textWidth, 10.0, 10.0,
+                text, text, "NoWrap", "Normal", new double[] {textWidth});
     }
 
     private static C114GenericDirectTextSceneExpectation c114GenericDirectTextBoxScene(
@@ -492,6 +570,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114GenericDirectTextBoxRootId(String sceneId) {
+        String minmaxPrefix = "grid-text-aspect-ratio-minmax-";
+        if (sceneId != null && sceneId.startsWith(minmaxPrefix)
+                && c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+            return "grid-text-ratio-minmax-" + sceneId.substring(minmaxPrefix.length());
+        }
         switch (sceneId) {
             case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box":
                 return "row-auto-ratio";
@@ -5467,7 +5550,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     ) {
         C114GenericDirectTextSceneExpectation scene =
                 c114GenericDirectTextExpectation(sceneId);
-        if (scene == null) return false;
+        if (scene == null) {
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=scene scene=" + sceneId);
+            }
+            return false;
+        }
         int marker = report.indexOf("grid_track_sizing_diagnostics=");
         if (marker < 0) return false;
         String json = report.substring(marker + "grid_track_sizing_diagnostics=".length());
@@ -5513,7 +5601,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                 source, "maxContent", expected.maxContent, 1.0 / 64.0)
                         || !c114GenericJsonNear(
                                 source, "maxContentHeight", expected.maxContentHeight, 1.0 / 64.0)
-                        || !c114GenericContributionInputMatches(input, expected)) {
+                        || !c114GenericContributionInputMatches(
+                                input, expected, sceneId, index)) {
+                    if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                        Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=input scene="
+                                + sceneId + " index=" + index + " input=" + input);
+                    }
                     return false;
                 }
             }
@@ -5544,6 +5637,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || availableSpace == null
                         || measuredWidth == null || measuredWidth < 0.0
                         || measuredHeight == null || measuredHeight < 0.0) {
+                    if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                        Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=measurement scene="
+                                + sceneId + " measurement=" + measurement);
+                    }
                     return false;
                 }
                 if (availableSpace.contains("width: MinContent")) {
@@ -5559,7 +5656,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeightNodes[expectedIndex] = true;
                 }
             }
-            if (c114IsGridTextAspectRatioScene(sceneId)) {
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                if (measurements.length() == 0) return false;
+            } else if (c114IsGridTextAspectRatioScene(sceneId)) {
                 if (c114IsGridTextAspectRatioColumnScene(sceneId)) {
                     boolean firstHasIntrinsicWidth = sceneId.contains("control")
                             || sceneId.contains("no-ratio");
@@ -5586,27 +5685,126 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 }
                 if (maxContentWidthNodes[0] || !maxContentWidthNodes[1]) return false;
             }
-            return c114GenericDirectTextTextLayoutsMatch(sceneId, scene, diagnostics, revision)
-                    && c114GenericDirectTextTraceMatches(sceneId, diagnostics);
+            boolean layoutsMatch = c114GenericDirectTextTextLayoutsMatch(
+                    sceneId, scene, diagnostics, revision);
+            boolean traceMatches = c114GenericDirectTextTraceMatches(sceneId, diagnostics);
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null
+                    && (!layoutsMatch || !traceMatches)) {
+                Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=final scene=" + sceneId
+                        + " layouts=" + layoutsMatch + " trace=" + traceMatches);
+            }
+            return layoutsMatch && traceMatches;
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
     }
 
     private static boolean c114GenericContributionInputMatches(
-            org.json.JSONObject input, C114GenericDirectTextItemExpectation expected
+            org.json.JSONObject input, C114GenericDirectTextItemExpectation expected,
+            String sceneId, int itemIndex
     ) {
         org.json.JSONObject contribution = input.optJSONObject("contributionInput");
         org.json.JSONObject width = contribution == null
                 ? null : contribution.optJSONObject("width");
         org.json.JSONObject height = contribution == null
                 ? null : contribution.optJSONObject("height");
+        C114AspectRatioMinmaxSceneExpectation minmax =
+                c114AspectRatioMinmaxSceneExpectation(sceneId);
+        if (minmax != null) {
+            double[] constraints = c114AspectRatioMinmaxStyleConstraints(sceneId);
+            if (constraints == null) return false;
+            if (itemIndex != 0) constraints = new double[] {
+                Double.NaN, Double.NaN, Double.NaN, Double.NaN
+            };
+            if (minmax.hasEdges && sceneId.startsWith(
+                    "grid-text-aspect-ratio-minmax-auto-content-box-")) {
+                constraints[0] = c114ContentBoxConstraint(constraints[0], 10.0);
+                constraints[1] = c114ContentBoxConstraint(constraints[1], 10.0);
+                constraints[2] = c114ContentBoxConstraint(constraints[2], 6.0);
+                constraints[3] = c114ContentBoxConstraint(constraints[3], 6.0);
+            }
+            return c114GenericAxisMinmaxContributionMatches(
+                    width, expected.minContent, expected.maxContent,
+                    expected.paddingInline, expected.borderWidth,
+                    constraints[0], constraints[1])
+                    && c114GenericAxisMinmaxContributionMatches(
+                            height, expected.minContentHeight, expected.maxContentHeight,
+                            expected.paddingBlock, expected.borderWidth,
+                            constraints[2], constraints[3]);
+        }
         return c114GenericAxisContributionMatches(
                 width, expected.minContent, expected.maxContent,
                 expected.paddingInline, expected.borderWidth)
                 && c114GenericAxisContributionMatches(
                         height, expected.minContentHeight, expected.maxContentHeight,
                         expected.paddingBlock, expected.borderWidth);
+    }
+
+    private static double[] c114AspectRatioMinmaxStyleConstraints(String sceneId) {
+        String prefix = "grid-text-aspect-ratio-minmax-";
+        if (sceneId == null || !sceneId.startsWith(prefix)) return null;
+        double auto = Double.NaN;
+        switch (sceneId.substring(prefix.length())) {
+            case "numeric-baseline":
+            case "min-width-60": return new double[] {sceneId.endsWith("min-width-60") ? 60 : auto,
+                    auto, auto, auto};
+            case "min-width-45": return new double[] {45, auto, auto, auto};
+            case "max-width-30-min-width-0": return new double[] {0, 30, auto, auto};
+            case "min-height-30": return new double[] {auto, auto, 30, auto};
+            case "max-height-15-min-height-0": return new double[] {auto, auto, 0, 15};
+            case "max-height-15-min-height-0-min-width-0":
+                return new double[] {0, auto, 0, 15};
+            case "max-height-17-75-min-controls": return new double[] {0, auto, 0, 17.75};
+            case "min-width-60-clamped-by-max-height-20":
+                return new double[] {60, auto, auto, 20};
+            case "min-height-20-clamps-transferred-max-width-30":
+                return new double[] {0, 30, 20, auto};
+            case "source-min-width-60-over-max-width-40":
+                return new double[] {60, 40, auto, auto};
+            case "source-min-height-30-over-max-height-20":
+                return new double[] {auto, auto, 30, 20};
+            case "auto-ratio-min-width-60":
+            case "no-ratio-min-width-60":
+            case "numeric-border-box-min-width-60":
+            case "auto-content-box-min-width-60":
+                return new double[] {60, auto, auto, auto};
+            case "no-ratio-min-height-30": return new double[] {auto, auto, 30, auto};
+            case "numeric-border-box-max-height-15-min-controls":
+            case "auto-content-box-max-height-15-min-controls":
+                return new double[] {0, auto, 0, 15};
+            default: return null;
+        }
+    }
+
+    private static double c114ContentBoxConstraint(double value, double edges) {
+        return Double.isNaN(value) ? value : Math.max(0, value - edges);
+    }
+
+    private static boolean c114GenericAxisMinmaxContributionMatches(
+            org.json.JSONObject axis, double minContent, double maxContent,
+            double padding, double border, double minSize, double maxSize
+    ) {
+        return axis != null
+                && c114GenericJsonNear(axis, "minContent", minContent, 1.0 / 64.0)
+                && c114GenericJsonNear(axis, "maxContent", maxContent, 1.0 / 64.0)
+                && c114GenericAutoDimension(axis.optJSONObject("preferredSize"))
+                && c114GenericSizeConstraint(axis.optJSONObject("minSize"), minSize)
+                && c114GenericSizeConstraint(axis.optJSONObject("maxSize"), maxSize)
+                && c114GenericZeroLength(axis.optJSONObject("marginStart"))
+                && c114GenericZeroLength(axis.optJSONObject("marginEnd"))
+                && c114GenericLength(axis.optJSONObject("paddingStart"), padding)
+                && c114GenericLength(axis.optJSONObject("paddingEnd"), padding)
+                && c114GenericJsonNear(axis, "borderStart", border, 0.0001)
+                && c114GenericJsonNear(axis, "borderEnd", border, 0.0001);
+    }
+
+    private static boolean c114GenericSizeConstraint(
+            org.json.JSONObject size, double expectedFixedSize
+    ) {
+        if (Double.isNaN(expectedFixedSize)) return c114GenericAutoDimension(size);
+        return size != null
+                && "fixed".equals(c114GenericJsonString(size, "kind"))
+                && c114GenericJsonNear(size, "cssPx", expectedFixedSize, 0.0001);
     }
 
     private static boolean c114GenericAxisContributionMatches(
@@ -5841,16 +6039,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         C114GenericDirectTextItemExpectation first = scene.items[0];
         C114GenericDirectTextItemExpectation second = scene.items[1];
         boolean fixedRows = c114IsGridTextAspectRatioColumnScene(sceneId);
+        C114AspectRatioMinmaxSceneExpectation minmax =
+                c114AspectRatioMinmaxSceneExpectation(sceneId);
         double rowTrackSize = c114GenericDirectTextAspectRatioRowTrackSize(
                 sceneId, scene.rootHeight);
-        if (!Integer.valueOf(0).equals(c114GenericJsonInteger(columns, "sequence"))
-                || !Integer.valueOf(1).equals(c114GenericJsonInteger(rows, "sequence"))
-                || !c114GenericNullableTraceFieldsMatch(columns)
-                || !c114GenericNullableTraceFieldsMatch(rows)
-                || !c114GenericDirectTextAspectRatioStagesMatch(
-                        columns, scene.columns, false, false)
-                || !c114GenericDirectTextAspectRatioStagesMatch(
-                        rows, new double[] {rowTrackSize}, fixedRows, !fixedRows)) {
+        double initialRowStageBase = minmax == null
+                ? rowTrackSize : minmax.initialRowStageBase;
+        boolean traceSequencesMatch = Integer.valueOf(0).equals(
+                    c114GenericJsonInteger(columns, "sequence"))
+                && Integer.valueOf(1).equals(c114GenericJsonInteger(rows, "sequence"));
+        boolean traceNullableFieldsMatch = c114GenericNullableTraceFieldsMatch(columns)
+                && c114GenericNullableTraceFieldsMatch(rows);
+        boolean columnStagesMatch = c114GenericDirectTextAspectRatioStagesMatch(
+                columns, scene.columns, scene.columns, false, false);
+        boolean rowStagesMatch = c114GenericDirectTextAspectRatioStagesMatch(
+                rows, new double[] {rowTrackSize}, new double[] {initialRowStageBase},
+                fixedRows, !fixedRows);
+        if (!traceSequencesMatch || !traceNullableFieldsMatch
+                || !columnStagesMatch || !rowStagesMatch) {
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=trace-stages scene="
+                        + sceneId + " sequences=" + traceSequencesMatch
+                        + " nullable=" + traceNullableFieldsMatch
+                        + " columns=" + columnStagesMatch + " rows=" + rowStagesMatch
+                        + " rowStages=" + rows.optJSONArray("stages"));
+            }
             return false;
         }
         int[] columnItems = {first.node, first.node, first.node,
@@ -5863,24 +6076,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 secondColumn, secondColumn, secondColumn};
         boolean columnsMatch = c114GenericDirectTextContributionsMatch(
                 columns, columnItems, columnKinds, columnValues, false);
-        if (!columnsMatch) return false;
+        if (!columnsMatch) {
+            if (c114AspectRatioMinmaxSceneExpectation(sceneId) != null) {
+                Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=trace-columns scene="
+                        + sceneId + " contributions=" + columns.optJSONArray("contributions"));
+            }
+            return false;
+        }
         if (fixedRows) {
             return c114GenericDirectTextContributionsMatch(
                     rows, new int[0], new String[0], new double[0], true);
         }
-        double firstRow = sceneId.startsWith("grid-text-aspect-ratio-auto-")
-                ? 16.0 : 10.0;
-        double secondRow = sceneId.contains("no-ratio")
-                ? 16.0 : rowTrackSize;
-        return c114GenericDirectTextContributionsMatch(
+        double firstMinimum = minmax != null
+                ? minmax.minimumRowContribution
+                : sceneId.startsWith("grid-text-aspect-ratio-auto-") ? 16.0 : 10.0;
+        double firstIntrinsic = minmax != null ? first.height : firstMinimum;
+        double secondRow = minmax != null ? 10.0
+                : sceneId.contains("no-ratio") ? 16.0 : rowTrackSize;
+        boolean rowsMatch = c114GenericDirectTextContributionsMatch(
                 rows,
                 new int[] {first.node, first.node, first.node,
                         second.node, second.node, second.node},
                 new String[] {"Minimum", "MinContent", "MaxContent",
                         "Minimum", "MinContent", "MaxContent"},
-                new double[] {firstRow, firstRow, firstRow,
+                new double[] {firstMinimum, firstIntrinsic, firstIntrinsic,
                         secondRow, secondRow, secondRow},
                 false);
+        if (!rowsMatch && minmax != null) {
+            Log.e(TAG, "SPINON_C114_MINMAX_TEXT_CHECK stage=trace-rows scene="
+                    + sceneId + " expected=" + firstMinimum + "," + firstIntrinsic
+                    + "," + firstIntrinsic + "," + secondRow + "," + secondRow
+                    + "," + secondRow + " observed=" + rows.optJSONArray("contributions"));
+        }
+        return rowsMatch;
     }
 
     private static boolean c114GenericNullableTraceFieldsMatch(org.json.JSONObject pass) {
@@ -5891,8 +6119,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114GenericDirectTextAspectRatioStagesMatch(
-            org.json.JSONObject pass, double[] expectedSizes, boolean fixed,
-            boolean stretchApplied
+            org.json.JSONObject pass, double[] expectedSizes, double[] initialIntrinsicSizes,
+            boolean fixed, boolean stretchApplied
     ) throws org.json.JSONException {
         org.json.JSONArray stages = pass.optJSONArray("stages");
         String[] expectedStages = fixed
@@ -5910,8 +6138,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (int stageIndex = 0; stageIndex < stages.length(); stageIndex++) {
             org.json.JSONObject stage = stages.optJSONObject(stageIndex);
             org.json.JSONArray tracks = stage == null ? null : stage.optJSONArray("tracks");
-            if (stage == null || !expectedStages[stageIndex].equals(
-                        c114GenericJsonString(stage, "stage"))
+            if (stage == null || !c114GenericStageNameMatches(
+                        c114GenericJsonString(stage, "stage"), expectedStages[stageIndex])
                     || tracks == null || tracks.length() != expectedTrackCount) return false;
             int contentTrackIndex = 0;
             for (int trackIndex = 0; trackIndex < tracks.length(); trackIndex++) {
@@ -5920,8 +6148,10 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 boolean outerGutter = trackIndex == 0 || trackIndex == tracks.length() - 1;
                 double expectedSize = 0.0;
                 if (!gutter) {
-                    expectedSize = !fixed && stageIndex == 0
-                            ? 0.0 : expectedSizes[contentTrackIndex];
+                    expectedSize = !fixed && stageIndex == 0 ? 0.0
+                            : !fixed && stageIndex < 3
+                                    ? initialIntrinsicSizes[contentTrackIndex]
+                                    : expectedSizes[contentTrackIndex];
                     contentTrackIndex++;
                 }
                 if (track == null
@@ -5940,6 +6170,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             if (contentTrackIndex != expectedSizes.length) return false;
         }
         return true;
+    }
+
+    private static boolean c114GenericStageNameMatches(String actual, String expected) {
+        return actual != null
+                && actual.replace(" ", "").equals(expected.replace(" ", ""));
     }
 
     private static boolean c114GenericTrackSizesMatch(
@@ -10830,7 +11065,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 rootId = c114GenericDirectTextBoxRootId(sceneId);
                 if (expectation == null || rootId == null) return false;
                 int firstWidth = (int) expectation.items[0].width;
-                if (expectation.rootHeight == 60 && firstWidth > 80) {
+                if (sceneId.startsWith("grid-text-aspect-ratio-minmax-")) {
+                    expectedPoints = new int[][] {
+                        {5, 5}, {firstWidth + 5, 5}, {firstWidth + 15, 5}
+                    };
+                } else if (expectation.rootHeight == 60 && firstWidth > 80) {
                     expectedPoints = new int[][] {
                         {5, 5}, {firstWidth + 5, 5}, {firstWidth - 5, 5}, {105, 5}
                     };

@@ -200,16 +200,25 @@ pub(super) fn align_and_position_item(
         .min_size()
         .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis))
         .maybe_add(box_sizing_adjustment);
-    let min_size =
+    // Replaced elements use the transferred suggestions during Grid sizing. For a non-replaced
+    // item, an opposite-axis constraint must not clamp an axis that alignment has already made
+    // definite; the child layout applies its direct min/max constraints after the ratio resolves.
+    let min_size = if is_replaced {
         maybe_apply_aspect_ratio_to_constraint_size(minimum_size, preferred_size, aspect_ratio)
-            .or(padding_border_size.map(Some))
-            .maybe_max(padding_border_size);
+    } else {
+        minimum_size
+    }
+    .or(padding_border_size.map(Some))
+    .maybe_max(padding_border_size);
     let maximum_size = style
         .max_size()
         .maybe_resolve(containing_block_size, |val, basis| tree.calc(val, basis));
-    let max_size =
+    let max_size = if is_replaced {
         maybe_apply_aspect_ratio_to_constraint_size(maximum_size, preferred_size, aspect_ratio)
-            .maybe_add(box_sizing_adjustment);
+    } else {
+        maximum_size
+    }
+    .maybe_add(box_sizing_adjustment);
 
     // Resolve `normal` alignment (the default if alignment is set on neither the parent or the node itself)
     // Note: if the child has a preferred aspect ratio but neither width or height are set, then the width is stretched

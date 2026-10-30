@@ -62,6 +62,17 @@ node spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison
 
 Agent Browser session `spinon-c11-4-direct-text-ratio-mm-final-20261030` opened the canonical fixture and embedded-font copy sequentially, then was closed. The final session query returned `active=false` and `pid=null`. The browser oracle used no terminal-browser session.
 
+## 연속 px 범위 추가 oracle
+
+초기 17개 oracle이 30px·60px 등 일부 값만 사용해 `0..=60px` 전체를 연속적으로 허용하는 구현 경계를 충분히 고정하지 못했다. 구현 review 뒤 같은 Ahem 10px 조건의 두 입력을 Agent Browser HeadlessChrome 156에서 추가 관측했다. Canonical 17개 fixture와 expected JSON은 그대로 둔다.
+
+| 추가 case | CSS 제약 | columns | row | ratio item |
+|---|---|---|---|---|
+| `min-width-45` | `min-width:45px` | `45px 10px` | `22.5px` | `45×22.5px` |
+| `max-height-17-75` | `min-width:0; min-height:0; max-height:17.75px` | `35.5px 10px` | `17.75px` | `35.5×17.75px` |
+
+두 case 모두 `fontReady:true`였고 전체 root/child frame은 [추가 관측 JSON](./extended-range-oracle-observation.json)에 있다. 입력과 browser-side 측정기는 [HTML](./extended-range-oracle.html), 화면은 [PNG](./extended-range-oracle.png)다. 실제 구현은 fixture contract의 finite `0..=60px` 범위에서 이처럼 정수가 아닌 CSS px도 받으며 percentage, `calc()`, 음수, 60px 초과 및 비유한 값은 계속 거부한다.
+
 ## 범위 한계
 
 이 evidence는 Chrome 156의 고정 입력 관측이다. Spinon runtime, Android/iOS, replaced image, 임의 font/text, percentages, `calc()`, arbitrary Grid structure, 전체 WPT, iOS compositor 이후 pixels, hardware GPU 또는 C11/C11.4 전체 지원을 증명하지 않는다. 구현 acceptance는 Chrome geometry와 함께 CSS Grid §6.6 단계별 runtime trace 및 unsupported-input 거부를 확인해야 한다.

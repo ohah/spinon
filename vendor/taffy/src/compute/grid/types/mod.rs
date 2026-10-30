@@ -61,6 +61,58 @@ pub(super) fn maybe_apply_aspect_ratio_to_constraint_size(
     }
 }
 
+/// Transfers Grid item's min/max constraints through a preferred ratio and applies the
+/// cross-axis precedence rules from CSS Sizing: transferred minimums are capped by a direct
+/// maximum in the destination axis, and transferred maximums are floored by the effective
+/// minimum there. Direct min/max conflicts remain resolved by the usual min-wins clamp.
+pub(super) fn maybe_apply_aspect_ratio_to_min_max_constraints(
+    minimum: Size<Option<f32>>,
+    maximum: Size<Option<f32>>,
+    preferred_size: Size<Option<f32>>,
+    aspect_ratio: Option<f32>,
+) -> (Size<Option<f32>>, Size<Option<f32>>) {
+    let minimum_from_width = minimum.width.is_some() && minimum.height.is_none();
+    let minimum_from_height = minimum.width.is_none() && minimum.height.is_some();
+    let maximum_from_width = maximum.width.is_some() && maximum.height.is_none();
+    let maximum_from_height = maximum.width.is_none() && maximum.height.is_some();
+    let direct_maximum = maximum;
+    let mut minimum =
+        maybe_apply_aspect_ratio_to_constraint_size(minimum, preferred_size, aspect_ratio);
+    let mut maximum =
+        maybe_apply_aspect_ratio_to_constraint_size(maximum, preferred_size, aspect_ratio);
+
+    if preferred_size.width.is_none() && preferred_size.height.is_none() {
+        // Transfer a minimum only into an automatic opposite-axis minimum. It cannot exceed a
+        // direct maximum in that destination axis.
+        if minimum_from_width {
+            if let Some(destination_max) = direct_maximum.height {
+                minimum.height = minimum.height.map(|value| value.min(destination_max));
+            }
+        }
+        if minimum_from_height {
+            if let Some(destination_max) = direct_maximum.width {
+                minimum.width = minimum.width.map(|value| value.min(destination_max));
+            }
+        }
+
+        // A transferred maximum cannot undercut an explicit or transferred minimum in its
+        // destination axis. Keep the source-axis min/max conflict for the ordinary min-wins
+        // clamp below.
+        if maximum_from_width {
+            if let (Some(transferred_maximum), Some(minimum)) = (maximum.height, minimum.height) {
+                maximum.height = Some(transferred_maximum.max(minimum));
+            }
+        }
+        if maximum_from_height {
+            if let (Some(transferred_maximum), Some(minimum)) = (maximum.width, minimum.width) {
+                maximum.width = Some(transferred_maximum.max(minimum));
+            }
+        }
+    }
+
+    (minimum, maximum)
+}
+
 // Publish only locally in the grid module
 pub(super) use cell_occupancy::{CellOccupancyMatrix, CellOccupancyState};
 pub(crate) use coordinates::{

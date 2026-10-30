@@ -124,6 +124,7 @@ pub(super) struct C11_4TextInput {
     pub(super) engine: TextLayoutEngine,
     pub(super) two_axis_nested_grid: bool,
     pub(super) content_box_ratio_node: Option<NodeId>,
+    pub(super) aspect_ratio_minmax_node: Option<NodeId>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]

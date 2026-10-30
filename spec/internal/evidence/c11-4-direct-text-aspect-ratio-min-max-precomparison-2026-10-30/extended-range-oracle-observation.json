@@ -1,0 +1,84 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "fontReady": true,
+  "scenes": [
+    {
+      "id": "min-width-45",
+      "grid": {
+        "x": 0,
+        "y": 0,
+        "width": 100,
+        "height": 22.5
+      },
+      "columns": "45px 10px",
+      "rows": "22.5px",
+      "items": [
+        {
+          "id": "min-width-45-long",
+          "aspectRatio": "2 / 1",
+          "minWidth": "45px",
+          "minHeight": "auto",
+          "maxHeight": "none",
+          "frame": {
+            "x": 0,
+            "y": 0,
+            "width": 45,
+            "height": 22.5
+          }
+        },
+        {
+          "id": "min-width-45-short",
+          "aspectRatio": "auto",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "maxHeight": "none",
+          "frame": {
+            "x": 45,
+            "y": 0,
+            "width": 10,
+            "height": 22.5
+          }
+        }
+      ]
+    },
+    {
+      "id": "max-height-17-75",
+      "grid": {
+        "x": 0,
+        "y": 22.5,
+        "width": 100,
+        "height": 17.75
+      },
+      "columns": "35.5px 10px",
+      "rows": "17.75px",
+      "items": [
+        {
+          "id": "max-height-17-75-long",
+          "aspectRatio": "2 / 1",
+          "minWidth": "0px",
+          "minHeight": "0px",
+          "maxHeight": "17.75px",
+          "frame": {
+            "x": 0,
+            "y": 22.5,
+            "width": 35.5,
+            "height": 17.75
+          }
+        },
+        {
+          "id": "max-height-17-75-short",
+          "aspectRatio": "auto",
+          "minWidth": "auto",
+          "minHeight": "auto",
+          "maxHeight": "none",
+          "frame": {
+            "x": 35.5,
+            "y": 22.5,
+            "width": 10,
+            "height": 17.75
+          }
+        }
+      ]
+    }
+  ]
+}

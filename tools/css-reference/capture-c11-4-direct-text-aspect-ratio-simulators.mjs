@@ -30,18 +30,29 @@ function item(node, x, width, height, text, textWidth = width, availableWidth = 
 
 function scene(id, rootId, rootHeight, columns, first, second,
   rowRatioContribution = 10, shortRowContribution = 10, rowTrackSize = rootHeight,
-  fixedRows = id.includes('-column')) {
+  fixedRows = id.includes('-column'), rowContributionValues = null) {
   const expectedItems = [first, second];
   const rootFrame = `0:node=1,x=0,y=0,width=100,height=${rootHeight}`;
   const itemFrames = expectedItems.map((expected, index) =>
     `${index + 1}:node=${expected.node},x=${expected.x},y=0,width=${expected.width},height=${expected.height}`);
   return {
     id, rootId, boxCount: 3, rootHeight, columns, expectedItems, rowRatioContribution,
-    shortRowContribution, rowTrackSize, fixedRows,
+    shortRowContribution, rowTrackSize, fixedRows, rowContributionValues,
     expectedRootFrame: `width=100,height=${rootHeight}`,
     expectedItemFrame: `width=${first.width},height=${first.height}`,
     expectedNodeFrames: `node_frames_css_px=[${[rootFrame, ...itemFrames].join(';')}]`,
   };
+}
+
+function minmaxScene(id, width, height, ratioMinimum, edges = false) {
+  const route = `grid-text-aspect-ratio-minmax-${id}`;
+  const rootId = `grid-text-ratio-minmax-${id}`;
+  const edgeWidth = edges ? 10 : 0;
+  return scene(route, rootId, height, [width, 10],
+    item(2, 0, width, height, 'AAAA', 40, width - edgeWidth),
+    item(4, width, 10, height, 'A', 10, 10),
+    height, 10, height, false,
+    [[ratioMinimum, height, height], [10, 10, 10]]);
 }
 
 const scenes = [
@@ -101,30 +112,44 @@ const scenes = [
     60, [50, 20], item(2, 0, 50, 60, 'AAAA', 40, 40),
     item(4, 50, 20, 60, 'A', 10, 10),
     60, 10, 60, true),
+  minmaxScene('numeric-baseline', 40, 20, 20),
+  minmaxScene('min-width-60', 60, 30, 30),
+  minmaxScene('min-width-45', 45, 22.5, 22.5),
+  minmaxScene('max-width-30-min-width-0', 30, 15, 15),
+  minmaxScene('min-height-30', 60, 30, 30),
+  minmaxScene('max-height-15-min-height-0', 40, 15, 0),
+  minmaxScene('max-height-15-min-height-0-min-width-0', 30, 15, 0),
+  minmaxScene('max-height-17-75-min-controls', 35.5, 17.75, 0),
+  minmaxScene('min-width-60-clamped-by-max-height-20', 60, 20, 20),
+  minmaxScene('min-height-20-clamps-transferred-max-width-30', 30, 20, 20),
+  minmaxScene('source-min-width-60-over-max-width-40', 60, 30, 30),
+  minmaxScene('source-min-height-30-over-max-height-20', 60, 30, 30),
+  minmaxScene('auto-ratio-min-width-60', 60, 30, 30),
+  minmaxScene('no-ratio-min-width-60', 60, 10, 10),
+  minmaxScene('no-ratio-min-height-30', 40, 30, 30),
+  minmaxScene('numeric-border-box-min-width-60', 60, 30, 30, true),
+  minmaxScene('auto-content-box-min-width-60', 60, 31, 31, true),
+  minmaxScene('numeric-border-box-max-height-15-min-controls', 30, 15, 0, true),
+  minmaxScene('auto-content-box-max-height-15-min-controls', 28, 15, 6, true),
 ];
 
 const sourcePaths = [
-  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
-  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs',
-  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
+  'plan/c11-4-direct-text-aspect-ratio-min-max.md',
+  'crates/spinon-layout/src/lib.rs',
+  'crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs',
   'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
-  'crates/spinon-style/src/stylo_dom/cascade/incremental.rs',
-  'crates/spinon-style/src/stylo_dom/cascade/incremental/aspect_ratio.rs',
-  'crates/spinon-style/src/stylo_dom/cascade/incremental/element.rs',
-  'crates/spinon-style/src/stylo_dom/cascade/incremental/compute.rs',
-  'crates/spinon-style/src/stylo_dom/cascade/snapshot.rs',
+  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs',
   'crates/spinon-style-to-layout/src/projection.rs',
   'crates/spinon-style-to-layout/src/projection/style_values.rs',
   'crates/spinon-style-to-layout/src/lib.rs',
-  'crates/spinon-style/src/lib.rs',
-  'crates/spinon-style/src/stylo_dom.rs',
-  'crates/spinon-style/src/stylo_dom/cascade.rs',
-  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout.rs',
-  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs',
-  'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
   'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
   'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
   'vendor/taffy/src/compute/grid/types/grid_item.rs',
@@ -163,7 +188,10 @@ function pixelSamples(scene) {
   const first = scene.expectedItems[0];
   const overflowsRoot = id.startsWith('grid-text-aspect-ratio-row-60-')
     && scene.columns.reduce((sum, width) => sum + width, 0) > 100;
-  if (overflowsRoot) {
+  if (id.includes('grid-text-aspect-ratio-minmax-')) {
+    const firstItemEdge = Math.floor(first.x + first.width);
+    points = [[5, 5], [firstItemEdge + 5, 5], [firstItemEdge + 15, 5]];
+  } else if (overflowsRoot) {
     points = [[5, 5], [first.x + first.width + 5, 5], [first.x + first.width - 5, 5]];
   }
   else if (id.startsWith('grid-text-aspect-ratio-row-60-')) {
@@ -195,6 +223,8 @@ function pixelSamples(scene) {
     samples.push({ id: `${id}-outside-root-overflow`, nodeId: rootId,
       xCssPx: 5, yCssPx: 70, rgba: [229, 72, 77, 255] });
   }
+  assert(samples.every(({ xCssPx, yCssPx }) => Number.isInteger(xCssPx)
+      && Number.isInteger(yCssPx)), `${id}: pixel sample coordinates must be integral CSS pixels`);
   return samples;
 }
 
@@ -371,9 +401,10 @@ function validateAspectRatioTrace(report, scene) {
     })));
   assertContributions(columns, columnContributions, `${scene.id}: Columns`);
   const rowContributions = scene.fixedRows ? [] : expected.flatMap((item, index) =>
-    ['Minimum', 'MinContent', 'MaxContent'].map((kind) => ({
+    ['Minimum', 'MinContent', 'MaxContent'].map((kind, kindIndex) => ({
       item: item.node, span: 1, kind, crossesFlexibleTrack: false,
-      value: index === 1 ? scene.rowRatioContribution : scene.shortRowContribution,
+      value: scene.rowContributionValues?.[index]?.[kindIndex]
+        ?? (index === 1 ? scene.rowRatioContribution : scene.shortRowContribution),
     })));
   assertContributions(rows, rowContributions, `${scene.id}: Rows`);
 }
@@ -629,7 +660,7 @@ async function runIOS() {
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  'Usage: capture-c11-4-grid-text-baseline-simulators.mjs <android-avd|ios-simulator> [serial|UDID]');
+  'Usage: capture-c11-4-direct-text-aspect-ratio-simulators.mjs <android-avd|ios-simulator> [serial|UDID]');
 await mkdir(evidenceDirectory, { recursive: true });
 const sourceHead = command('git', ['rev-parse', 'HEAD']).stdout.trim();
 const sourceDirty = command('git', ['status', '--short', '--', ...sourcePaths]).stdout.trim();

@@ -943,7 +943,17 @@ where
                 &text_input.engine,
             )
         } else if let Some(text_input) = &c11_4_text_input {
-            if let Some(content_box_ratio_node) = text_input.content_box_ratio_node {
+            if let Some(aspect_ratio_minmax_node) = text_input.aspect_ratio_minmax_node {
+                spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_aspect_ratio_minmax_text(
+                    &request.snapshot,
+                    root,
+                    styles.clone(),
+                    request.viewport,
+                    &text_input.paragraph_styles,
+                    &text_input.engine,
+                    aspect_ratio_minmax_node,
+                )
+            } else if let Some(content_box_ratio_node) = text_input.content_box_ratio_node {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_box_ratio_text(
                     &request.snapshot,
                     root,
