@@ -1,0 +1,113 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C11.4 direct-text aspect-ratio min/max constraint oracle</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url("../../resources/c15/Ahem.ttf") format("truetype");
+}
+body { margin: 16px; color: #15202b; font: 14px/1.4 system-ui, sans-serif; }
+h1 { font-size: 18px; }
+.case { display: flex; align-items: flex-start; gap: 16px; margin: 10px 0; }
+.label { width: 310px; margin: 0; font: 12px/1.4 ui-monospace, monospace; }
+.grid {
+  display: grid;
+  grid-template-columns: max-content max-content;
+  grid-template-rows: auto;
+  gap: 0;
+  width: 100px;
+  height: auto;
+  align-items: normal;
+  justify-items: stretch;
+  font-family: Ahem, sans-serif;
+  font-size: 10px;
+  line-height: 10px;
+  font-weight: 400;
+  font-style: normal;
+}
+.item {
+  display: block;
+  width: auto;
+  height: auto;
+  min-width: auto;
+  max-width: none;
+  min-height: auto;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  white-space: normal;
+  overflow: visible;
+  font: inherit;
+  word-break: normal;
+  overflow-wrap: normal;
+}
+.ratio { aspect-ratio: 2 / 1; }
+</style>
+<h1>C11.4 direct-text aspect-ratio min/max constraint oracle</h1>
+<p id="font-status">Ahem font loading…</p>
+<div id="cases"></div>
+<script>
+const cases = [
+  ["numeric-baseline", ""],
+  ["min-width-60", "min-width:60px"],
+  ["max-width-30-min-width-0", "min-width:0;max-width:30px"],
+  ["min-height-30", "min-height:30px"],
+  ["max-height-15-min-height-0", "min-height:0;max-height:15px"],
+  ["max-height-15-min-height-0-min-width-0", "min-width:0;min-height:0;max-height:15px"],
+  ["min-width-60-clamped-by-max-height-20", "min-width:60px;max-height:20px"],
+  ["min-height-20-clamps-transferred-max-width-30", "min-width:0;min-height:20px;max-width:30px"],
+  ["source-min-width-60-over-max-width-40", "min-width:60px;max-width:40px"],
+  ["source-min-height-30-over-max-height-20", "min-height:30px;max-height:20px"],
+  ["auto-ratio-min-width-60", "aspect-ratio:auto 2 / 1;min-width:60px"],
+  ["no-ratio-min-width-60", "aspect-ratio:auto;min-width:60px"],
+  ["no-ratio-min-height-30", "aspect-ratio:auto;min-height:30px"],
+  ["numeric-border-box-min-width-60", "box-sizing:border-box;padding:2px 4px;border:1px solid;min-width:60px"],
+  ["auto-content-box-min-width-60", "box-sizing:border-box;padding:2px 4px;border:1px solid;aspect-ratio:auto 2 / 1;min-width:60px"],
+  ["numeric-border-box-max-height-15-min-controls", "box-sizing:border-box;padding:2px 4px;border:1px solid;min-width:0;min-height:0;max-height:15px"],
+  ["auto-content-box-max-height-15-min-controls", "box-sizing:border-box;padding:2px 4px;border:1px solid;aspect-ratio:auto 2 / 1;min-width:0;min-height:0;max-height:15px"],
+];
+const host = document.querySelector("#cases");
+for (const [id, constraints] of cases) {
+  const row = document.createElement("section");
+  row.className = "case";
+  row.innerHTML = `<p class="label">${id}: ${constraints || "no min/max"}</p><div class="grid" id="${id}"><div class="item ratio" style="${constraints}">AAAA</div><div class="item">A</div></div>`;
+  host.append(row);
+}
+window.collectOracle = async () => {
+  await document.fonts.ready;
+  const result = [...document.querySelectorAll(".grid")].map((grid) => {
+    const item = grid.querySelector(".ratio");
+    const rect = (node) => {
+      const box = node.getBoundingClientRect();
+      return { x: box.x, y: box.y, width: box.width, height: box.height };
+    };
+    const style = getComputedStyle(grid);
+    const itemStyle = getComputedStyle(item);
+    return {
+      id: grid.id,
+      columns: style.gridTemplateColumns,
+      rows: style.gridTemplateRows,
+      grid: rect(grid),
+      ratioItem: rect(item),
+      computed: {
+        aspectRatio: itemStyle.aspectRatio,
+        minWidth: itemStyle.minWidth,
+        maxWidth: itemStyle.maxWidth,
+        minHeight: itemStyle.minHeight,
+        maxHeight: itemStyle.maxHeight,
+        font: itemStyle.font,
+      },
+    };
+  });
+  return {
+    userAgent: navigator.userAgent,
+    fontReady: document.fonts.check("10px Ahem"),
+    results: result,
+  };
+};
+document.fonts.ready.then(() => {
+  document.querySelector("#font-status").textContent = `Ahem ready: ${document.fonts.check("10px Ahem")}`;
+});
+</script>
