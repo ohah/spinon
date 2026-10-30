@@ -10,8 +10,8 @@
 | 4 | overflow case가 전체 pattern 개수만 보아 중간 절단을 놓친다 | **통과.** 15,005px은 반복 10,000 tracks를 요청하지만 prefix 뒤 9,999개만 남아 마지막 `[1px, 2px]`에서 `1px`만 유지된다. |
 | 5 | track 크기 순서를 검사하지 않아 pattern이 잘못된 subtrack에서 잘린다 | **통과.** 전체 Initialize track sequence, prefix, 반복 pattern, suffix 유무를 확인한다. |
 | 6 | prefix/suffix를 생략해 cap의 source-order 효과를 놓친다 | **통과.** 두 neighbor를 포함한다. exact-fit은 suffix를 보존하고 cap 초과는 suffix를 버린다. |
-| 7 | repeat metadata의 line group 개수가 pattern track 수와 맞지 않는다 | **통과.** 두 repeated tracks에는 앞·중간·끝의 세 line-name group을 지정한다. |
-| 8 | pattern 시작 이름을 반복 바깥 line에 중복해 경계 occurrence가 두 번 센다 | **통과.** CSS 입력과 `GridAutoRepeat.line_names`는 반복 pattern 내부의 세 group만 사용하며 외부 line name은 비운다. |
+| 7 | repeat metadata와 Spinon outer line metadata의 길이가 서로 다르다 | **통과.** 두 repeated tracks에는 앞·중간·끝의 세 `GridAutoRepeat.line_names` group을 둔다. 네-track 입력의 outer vector는 `4 - 2 + 2 = 4`개의 빈 group을 둔다. |
+| 8 | pattern 시작 이름을 반복 바깥 line에 중복해 occurrence가 한 번 더 센다 | **통과.** CSS 입력과 반복 metadata만 이름을 소유하고, outer vector는 길이 4이되 모든 group이 비어 있다. |
 | 9 | 음수 named-line occurrence가 explicit grid 끝에서 센다는 기준을 놓친다 | **통과.** §8.3 의미와 Taffy `-1` 배치를 사용하고 고정 기대 frame을 비교한다. |
 | 10 | 중간 이름이 마지막 partial pattern 뒤에 남지 않아 named item이 이전 track으로 이동한다 | **통과.** cap 초과 case에서 `pattern-start -1 / pattern-middle -1` child가 마지막 보존된 `1px` track에 있어야 한다. |
 | 11 | exact-fit에서 마지막 완전 pattern의 named line을 cap case 좌표와 혼동한다 | **통과.** exact-fit과 overflow에 서로 다른 offset `14,996px`·`14,999px`를 지정한다. |
@@ -25,4 +25,4 @@
 | 19 | test-only 결과를 앱 runtime, CSS admission 또는 WPT 완료로 확대한다 | **통과.** 구현·증거·공식 상태에서 앱·WPT·일반 author CSS 지원을 제외한다. |
 | 20 | 세부 경계 통과를 C11.4/C11 완료나 전체 완료 수 증가로 기록한다 | **통과.** C11.4/C11 체크와 `72/213`을 유지한다고 명시한다. |
 
-**판정:** 계획 실패 관점 20/20 통과. 검토 중 §5.4가 explicit auto-repeat cap의 근거가 아님을 더 분명히 적고 중복된 pattern 시작 이름 표기를 제거한 뒤 관점 1·8을 다시 확인했다. 이 검토는 계획의 경계·기대값 검토이며 구현/runtime 검토나 계획 PR diff 검토를 대신하지 않는다.
+**판정:** 계획 실패 관점 20/20 통과. 검토 중 §5.4가 explicit auto-repeat cap의 근거가 아님을 더 분명히 적고 중복된 pattern 시작 이름 표기를 제거한 뒤 관점 1·8을 다시 확인했다. 첫 구현 전처리에서 outer metadata vector 길이 계약 누락이 확인되어 계획을 네 빈 group까지 명시하도록 보완한 뒤 관점 7·8도 다시 확인했다. 이 검토는 계획의 경계·기대값 검토이며 구현/runtime 검토나 계획 PR diff 검토를 대신하지 않는다.

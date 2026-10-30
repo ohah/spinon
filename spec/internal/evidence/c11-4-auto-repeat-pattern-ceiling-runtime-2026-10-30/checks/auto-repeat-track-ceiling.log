@@ -1,0 +1,9 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.05s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 3 tests
+test grid::track_sizing_tests::auto_repeat_track_ceiling::auto_repeat_ceiling_preserves_prefix_and_truncates_suffix_in_source_order ... ok
+test grid::track_sizing_tests::auto_repeat_track_ceiling::auto_repeat_track_count_and_empty_fit_collapse_stop_at_the_ceiling_on_both_axes ... ok
+test grid::track_sizing_tests::auto_repeat_track_ceiling::auto_repeat_two_track_pattern_preserves_named_line_at_the_ceiling_on_both_axes ... ok
+
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 311 filtered out; finished in 0.07s

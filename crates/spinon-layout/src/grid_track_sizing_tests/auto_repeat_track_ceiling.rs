@@ -1,8 +1,8 @@
 use super::{grid_input, id};
 use crate::{
-    GRID_MAX_TRACKS, GridAutoRepeat, GridAutoRepeatMode, GridPlacementMode, GridTrackSize,
-    LayoutDimension, LayoutEngine, LayoutGap, LayoutGridTrackSizingAxis,
-    LayoutGridTrackSizingStageKind, TaffyLayoutEngine, Viewport,
+    GRID_MAX_TRACKS, GridAutoRepeat, GridAutoRepeatMode, GridItemInput, GridPlacementInput,
+    GridPlacementMode, GridTrackSize, LayoutDimension, LayoutEngine, LayoutGap,
+    LayoutGridTrackSizingAxis, LayoutGridTrackSizingStageKind, TaffyLayoutEngine, Viewport,
 };
 
 const TRACK_CEILING_CASES: [(f32, usize); 3] =
@@ -179,6 +179,142 @@ fn auto_repeat_ceiling_preserves_prefix_and_truncates_suffix_in_source_order() {
                 tracks.iter().all(|track| !track.0),
                 "{label}: auto-fill collapse"
             );
+        }
+    }
+}
+
+fn two_track_auto_repeat_input(axis: LayoutGridTrackSizingAxis, basis: f32) -> crate::LayoutInput {
+    let repeated_axis_tracks = vec![
+        GridTrackSize::LengthPx(2.0),
+        GridTrackSize::LengthPx(1.0),
+        GridTrackSize::LengthPx(2.0),
+        GridTrackSize::LengthPx(3.0),
+    ];
+    let fixed_axis_tracks = vec![GridTrackSize::LengthPx(1.0)];
+    let (columns, rows) = match axis {
+        LayoutGridTrackSizingAxis::Columns => (repeated_axis_tracks, fixed_axis_tracks),
+        LayoutGridTrackSizingAxis::Rows => (fixed_axis_tracks, repeated_axis_tracks),
+    };
+    let (width, height) = match axis {
+        LayoutGridTrackSizingAxis::Columns => (basis, 1.0),
+        LayoutGridTrackSizingAxis::Rows => (1.0, basis),
+    };
+    let mut input = grid_input(columns, rows, 1, LayoutGap::default());
+    input.nodes[0].style.width = LayoutDimension::Fixed(width);
+    input.nodes[0].style.height = LayoutDimension::Fixed(height);
+    input.nodes[1].style.width = LayoutDimension::Fixed(1.0);
+    input.nodes[1].style.height = LayoutDimension::Fixed(1.0);
+    input.viewport = Viewport { width, height };
+
+    let auto_repeat = GridAutoRepeat {
+        mode: GridAutoRepeatMode::AutoFill,
+        start: 1,
+        end: 3,
+        line_names: vec![
+            vec!["pattern-start".into()],
+            vec!["pattern-middle".into()],
+            vec!["pattern-end".into()],
+        ],
+    };
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TrackSizing;
+    match axis {
+        LayoutGridTrackSizingAxis::Columns => {
+            container.columns_auto_repeat = Some(auto_repeat);
+            container.columns_line_names = vec![Vec::new(); 4];
+        }
+        LayoutGridTrackSizingAxis::Rows => {
+            container.rows_auto_repeat = Some(auto_repeat);
+            container.rows_line_names = vec![Vec::new(); 4];
+        }
+    }
+
+    let named_line = |name: &str| GridPlacementInput::NamedLine {
+        name: name.into(),
+        occurrence: -1,
+    };
+    let (row_start, row_end, column_start, column_end) = match axis {
+        LayoutGridTrackSizingAxis::Columns => (
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+            named_line("pattern-start"),
+            named_line("pattern-middle"),
+        ),
+        LayoutGridTrackSizingAxis::Rows => (
+            named_line("pattern-start"),
+            named_line("pattern-middle"),
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Line(2),
+        ),
+    };
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start,
+            row_end,
+            column_start,
+            column_end,
+        },
+    );
+    input
+}
+
+#[test]
+fn auto_repeat_two_track_pattern_preserves_named_line_at_the_ceiling_on_both_axes() {
+    for axis in [
+        LayoutGridTrackSizingAxis::Columns,
+        LayoutGridTrackSizingAxis::Rows,
+    ] {
+        for (basis, expected_item_offset, expected_last_track) in
+            [(15_002.0, 14_996.0, 3.0), (15_005.0, 14_999.0, 1.0)]
+        {
+            let label = format!("{axis:?} {basis}px two-track auto-repeat");
+            let input = two_track_auto_repeat_input(axis, basis);
+            let output = TaffyLayoutEngine
+                .compute(&input)
+                .unwrap_or_else(|error| panic!("{label}: expected bounded layout, got {error:?}"));
+            let (resolved_count, tracks, trace_state_count) =
+                initialize_tracks(&output, axis, &label);
+
+            assert_eq!(
+                resolved_count, GRID_MAX_TRACKS,
+                "{label}: resolved explicit count"
+            );
+            assert_eq!(tracks.len(), GRID_MAX_TRACKS, "{label}: stage track count");
+            assert!(
+                trace_state_count < 100_000,
+                "{label}: {trace_state_count} trace states"
+            );
+
+            let mut expected_sizes = Vec::with_capacity(GRID_MAX_TRACKS);
+            expected_sizes.push(2.0);
+            for _ in 0..4_999 {
+                expected_sizes.extend([1.0, 2.0]);
+            }
+            expected_sizes.push(expected_last_track);
+            assert_eq!(
+                tracks.iter().map(|track| track.1).collect::<Vec<_>>(),
+                expected_sizes,
+                "{label}: complete pattern and source-order truncation"
+            );
+            assert!(
+                tracks.iter().all(|track| !track.0),
+                "{label}: auto-fill tracks must not collapse"
+            );
+
+            let frame = &output.frames[&id(2)];
+            match axis {
+                LayoutGridTrackSizingAxis::Columns => assert_eq!(
+                    (frame.x, frame.width),
+                    (expected_item_offset, 1.0),
+                    "{label}: last named-line track frame"
+                ),
+                LayoutGridTrackSizingAxis::Rows => assert_eq!(
+                    (frame.y, frame.height),
+                    (expected_item_offset, 1.0),
+                    "{label}: last named-line track frame"
+                ),
+            }
         }
     }
 }
