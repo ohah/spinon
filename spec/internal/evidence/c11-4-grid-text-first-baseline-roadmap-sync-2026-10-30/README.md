@@ -1,8 +1,8 @@
-# C11.4 first-baseline PR·로드맵·Tailnet 동기화
+# C11.4 first-baseline PR·병합 상태·Tailnet 동기화
 
 ## 범위
 
-구현 PR [#827](https://github.com/ohah/spinon/pull/827)의 bounded first-baseline candidate를 공식 상태와 public roadmap에 연결했다. C11.4/C11 체크는 미완료이고 공식 완료 수는 `72/213`이다. 이 동기화는 미리보기 `/spinon/` 경로만 갱신한다.
+구현 PR [#827](https://github.com/ohah/spinon/pull/827)은 2026-10-30T00:02:17Z에 Rebase and merge됐고 merge SHA는 `f35ab0f15b7c65e2a7cb16fa3fb2769b9946f7ca`다. 병합된 bounded first-baseline candidate를 공식 상태와 public roadmap에 연결했다. C11.4/C11 체크는 미완료이고 공식 완료 수는 `72/213`이다. 이 동기화는 미리보기 `/spinon/` 경로만 갱신한다.
 
 ## 선택 문서 빌드
 
@@ -36,16 +36,29 @@ PR 이미지 로드 관찰: [Agent Browser JSON](./pr827-agent-browser-images.js
 - Agent Browser에서 최신 roadmap candidate row와 STATUS candidate 기록을 확인했다. PR diff review 링크가 연결되고 공식 `72/213` 및 unchecked `C11.4 intrinsic track sizing` 상태가 유지된다. [roadmap DOM](./tailnet-roadmap-dom-pass02.json) · [STATUS DOM](./tailnet-status-dom-pass02.json)
 - 후보 행을 보이도록 스크롤한 화면: [roadmap](./tailnet-roadmap-candidate-agent-browser-pass02.png) · [STATUS](./tailnet-status-candidate-agent-browser-pass02.png). 최종 세션 close 뒤 agent-browser 프로세스는 남지 않았다. [process check](./browser-close-agent-browser-final-pass02.json)
 
+## pass03: PR #827 병합 상태 동기화
+
+- 병합 기록, merge SHA, 미완료 checkbox 상태와 post-merge 20-point review route를 포함해 RSPress를 다시 빌드했다. Source manifest는 base commit `f35ab0f15b7c65e2a7cb16fa3fb2769b9946f7ca`와 각 선택 파일 SHA-256을 보존한다. 선택 root는 144개 파일·6,022,470 bytes이고 output은 63개 경로·7,531,729 bytes다. [source manifest](./selected-root-pass03.json) · [build/route manifest](./selected-build-verification-pass03.json)
+- Preflight는 16 create, 13 replace, 34 same으로 분류했다. 교체 대상 13개·2,298,033 bytes를 pass03 backup root에 보존했다. 복사 29개, backup 13개, 삭제 0개다. [preflight](./tailnet-preflight-pass03.json) · [copy result](./tailnet-copy-pass03.json)
+- Local preview 경로 63/63, backup 13/13, Tailnet HTTP 200·SHA-256 63/63을 확인했다. [verify result](./tailnet-verify-pass03.json)
+- Agent Browser에서 PR #827 병합 시각·merge SHA가 roadmap과 STATUS에 보이고, `72/213`, C11/C11.4 unchecked, post-merge review link가 일치하는지 확인했다. 새 review route는 20개 행 모두 PASS다. [roadmap DOM](./tailnet-roadmap-dom-pass03.json) · [STATUS DOM](./tailnet-status-dom-pass03.json) · [review DOM](./tailnet-review-dom-pass03.json)
+- candidate 행이 보이는 화면: [roadmap](./tailnet-roadmap-candidate-agent-browser-pass03.png) · [STATUS](./tailnet-status-candidate-agent-browser-pass03.png). Browser close 뒤 agent-browser process는 남지 않았다. [process check](./browser-close-agent-browser-pass03.json)
+- [병합 후 문서 변경 적대 검토 20개](./post-merge-doc-sync-review-20.md)
+
 ## 재현 스크립트
 
 - [선택 root 구성](./prepare-selected-root.mjs)
 - [선택 build 보완 및 route 검증](./complete-selected-build.mjs)
 - [pass02 선택 root 구성](./prepare-selected-root-pass02.mjs)
 - [pass02 선택 build 보완 및 route 검증](./complete-selected-build-pass02.mjs)
+- [pass03 선택 root 구성](./prepare-selected-root-pass03.mjs)
+- [pass03 선택 build 보완 및 route 검증](./complete-selected-build-pass03.mjs)
 - [RSPress 설정](./rspress.config.ts)
 - [pass02 RSPress 설정](./rspress-pass02.config.ts)
+- [pass03 RSPress 설정](./rspress-pass03.config.ts)
 - [Tailnet preflight/copy/verify](./sync-tailnet.mjs)
 - [pass02 Tailnet preflight/copy/verify](./sync-tailnet-pass02.mjs)
+- [pass03 Tailnet preflight/copy/verify](./sync-tailnet-pass03.mjs)
 - 증거 파일 SHA-256: [manifest](./SHA256SUMS.txt)
 
 동기화는 미리보기 경로만 대상으로 한다. GitHub Pages workflow 및 `gh-pages`는 변경하지 않았다.

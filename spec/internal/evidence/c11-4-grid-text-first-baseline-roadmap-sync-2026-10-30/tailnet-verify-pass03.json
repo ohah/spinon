@@ -1,0 +1,570 @@
+{
+  "selected_route_count": 63,
+  "local_targets_verified": 63,
+  "backups_verified": 13,
+  "remote_http_200_and_hash_verified": 63,
+  "all_local_targets_verified": true,
+  "all_backups_verified": true,
+  "all_remote_targets_verified": true,
+  "no_deletes": true,
+  "targets": [
+    {
+      "path": "icon.svg",
+      "http_status": 200,
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "http_status": 200,
+      "bytes": 321614,
+      "sha256": "4089a75898bce782a21c50311542df81fa4fb25ac9a2c6563876cd97cb81da56",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-156-grid-text-first-baseline.png",
+      "http_status": 200,
+      "bytes": 14342,
+      "sha256": "acc63999dcf16197e41f4e4ec4138393eee29d29be944af663f587f0b14f5777",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/chrome-observation.json",
+      "http_status": 200,
+      "bytes": 3994,
+      "sha256": "d47aa75b22513f57326c8e97f9a5827d67fc44e34dbd7ca553260ea514412d34",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/expected-values.json",
+      "http_status": 200,
+      "bytes": 2283,
+      "sha256": "538aac7b21ff09f7019152b3781da730fdee33a89605d3ee2d39da413cedf03b",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "http_status": 200,
+      "bytes": 28641,
+      "sha256": "137924306d89d27d164c86f7a5e8de86071593a046b4673be52727db899c9320",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-roadmap-sync-2026-10-30/post-merge-doc-sync-review-20.html",
+      "http_status": 200,
+      "bytes": 29020,
+      "sha256": "7d6847bab44b12cbf378756073f55fc961f83702093025ec45084f1391cde9d1",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-items.png",
+      "http_status": 200,
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-align-self.png",
+      "http_status": 200,
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-reversed.png",
+      "http_status": 200,
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/grid-text-first-baseline-start-control.png",
+      "http_status": 200,
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/result.json",
+      "http_status": 200,
+      "bytes": 2316,
+      "sha256": "baae822accbcb8f92eb9124eecf990917ceadffef74784b879adae7bc2780bd0",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/android-avd/c114-first-baseline-mvu6l1qt-17df8ba6/simulator.json",
+      "http_status": 200,
+      "bytes": 522,
+      "sha256": "d1abb01e7f7b65ad2632c74ff180ecf3320182ec856a02c163ca4ac6712884c4",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "http_status": 200,
+      "bytes": 30237,
+      "sha256": "c4d7309c6aa288934de9ed95db1c5c321df8c5041ddcdec63a2bc153a07a4c3d",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "http_status": 200,
+      "bytes": 31883,
+      "sha256": "64c22c2f70e685d011f680283c6170f9407e3400064abd1fb01e2b93cd8bfd0c",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-items.png",
+      "http_status": 200,
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-align-self.png",
+      "http_status": 200,
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-reversed.png",
+      "http_status": 200,
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/grid-text-first-baseline-start-control.png",
+      "http_status": 200,
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/result.json",
+      "http_status": 200,
+      "bytes": 2318,
+      "sha256": "4119381b6e98bfcda09d4dc0990de9e3392f5e1af420fbdfbed4383e9bc2bb88",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/ios-simulator/c114-first-baseline-mvu6m6wk-c608999f/simulator.json",
+      "http_status": 200,
+      "bytes": 393,
+      "sha256": "d9da283aeb9914c18b4eee7353cbbde896a8f908510f2fe3298e588b9733d992",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html",
+      "http_status": 200,
+      "bytes": 31185,
+      "sha256": "cc37b2d0ab240e05e5143da190beda8b6b51ce1ddc2caafe658cabac053113d8",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "http_status": 200,
+      "bytes": 32387,
+      "sha256": "79560ecf4881feb1b06ac371d7332ef1e87f695f1fa6f50770e7ba510f6a3b34",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 28872,
+      "sha256": "dfa77161f238c3b04c05aace960d36cd11433fe29d313e2371098e90fdb82589",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "http_status": 200,
+      "bytes": 31797,
+      "sha256": "0b3f30540d6e04a30235b5ebd4e88649687b545f73c88c8ec74f09afaa2692de",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "http_status": 200,
+      "bytes": 410173,
+      "sha256": "e12acc6bfed75120edad4c6db18a91b12fc0f59b30af1c5a3e87ae8b7783807b",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "roadmap.svg",
+      "http_status": 200,
+      "bytes": 4835,
+      "sha256": "825a0a1bda6aa73ca0b36c096bc7ae3d2620f91255d50e46c11d3bbfc80a72ca",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "http_status": 200,
+      "bytes": 28842,
+      "sha256": "6ee471b9dec83b6e8d896275d13326da10073bdeafaf71ec1bc0feabe2e9efa6",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "http_status": 200,
+      "bytes": 31736,
+      "sha256": "3c0b05731e1a078c33a260ce8111c01d67698830840f3830f49888ba9af8f508",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "http_status": 200,
+      "bytes": 653188,
+      "sha256": "5bde839a7f56e101ae3046157843e3201dce55d095759fe43ce1444993e0c87e",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/css/styles.8d918fd78e.css",
+      "http_status": 200,
+      "bytes": 73952,
+      "sha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.60ff51937f.png",
+      "http_status": 200,
+      "bytes": 132262,
+      "sha256": "6a97729a78468a8fe77c11317a77951dce1c53039a9de71b0e389bc3b3301192",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-items.dbd0df5399.png",
+      "http_status": 200,
+      "bytes": 78675,
+      "sha256": "82f03685a276462aa65067bc4986ea209cbf59663ca4337bd6998fa3ac66632f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.8f70ade908.png",
+      "http_status": 200,
+      "bytes": 133879,
+      "sha256": "646ce6e285b0fc1a7bb97bbd18239c8b25bb87280f14afc1e3aa61e0be0f3086",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-align-self.eeacc444fe.png",
+      "http_status": 200,
+      "bytes": 78693,
+      "sha256": "eb7798073905801539b2872a6c0ab59cd8be8871aa275c3c1c0d9c5704b438ab",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.4194894913.png",
+      "http_status": 200,
+      "bytes": 133452,
+      "sha256": "96691b47a93a5294bdb7eb6892097bb46c1162ab1f1c27e86cb5f490e3805d99",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-reversed.f6371f82b5.png",
+      "http_status": 200,
+      "bytes": 78703,
+      "sha256": "f94b0aaae6a3b5203955c7c193dd9e90eb977e5a75aeb0f31a5c49f3fcf1da70",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.684f15562c.png",
+      "http_status": 200,
+      "bytes": 133604,
+      "sha256": "d58a369cba46187c9c20043afeef2132a0f01f5f08fee11dbf3f6444cc119709",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/image/grid-text-first-baseline-start-control.d9a2354770.png",
+      "http_status": 200,
+      "bytes": 78682,
+      "sha256": "d53888dc8aa2e05993cd35a6aca33a3be149184638822305a227407e761987c5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js",
+      "http_status": 200,
+      "bytes": 217061,
+      "sha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 384,
+      "sha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/l.76b60f2b87.js",
+      "http_status": 200,
+      "bytes": 98,
+      "sha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-05ced162cdef.8d5bcec8a0.js",
+      "http_status": 200,
+      "bytes": 10079,
+      "sha256": "ac45ab370e90bf92c7b959c3a86c8470b5082115bcd0802d74a52ab04ce4f534",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-12b79fc00e82.7f083662dd.js",
+      "http_status": 200,
+      "bytes": 12752,
+      "sha256": "ecdbe3ae1542f9e15ef45f618dcce084e4b74a4b0f8dd8e3197a4bf8a8091e19",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-22877c032bcd.d91ac919f9.js",
+      "http_status": 200,
+      "bytes": 6216,
+      "sha256": "00d3bb12d8f21f31381cc80c4843cc5132aa9764aa044182a806c193ef088ac3",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-2e8206008e81.c9f0d1ac83.js",
+      "http_status": 200,
+      "bytes": 10086,
+      "sha256": "8bdec8c0c0c49b160ecf620db5f7cf10ae749c963e35ee1499e8d4b0f0ac1588",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-2f358d01b2ca.50ca834269.js",
+      "http_status": 200,
+      "bytes": 10001,
+      "sha256": "953f6041f7d8d1e4606c9c723a3cd0931c90e532d3ebed4f8dfbc3355692a5a6",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-54509d65aa78.6002b066af.js",
+      "http_status": 200,
+      "bytes": 10359,
+      "sha256": "d96b2e483f16261184d6bfea9c43a63877e2ae70a6c6b56f36fe1715023fb7ba",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-6c33a3943990.8512c54d83.js",
+      "http_status": 200,
+      "bytes": 698722,
+      "sha256": "dc39da0185c7d5eebddfaee3fa396ff659ce693d991263a733abedbd9a999ec5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-763188c6f8b4.deeab7b2e6.js",
+      "http_status": 200,
+      "bytes": 10372,
+      "sha256": "d76a8746b922d02e47c6703eeb02f74063616403004f239d0d9e06622f759f67",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-7ce2535ac56d.910ec69cc0.js",
+      "http_status": 200,
+      "bytes": 698663,
+      "sha256": "42e844916245edbdbafda2346bf7aba0e8caa53ce815f0e03fa5a6ca49231721",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-87d3ad80e32d.f438d37f79.js",
+      "http_status": 200,
+      "bytes": 12099,
+      "sha256": "e864a22dcd354d8292bbd2744842089e06d7b3f426fb00d7c16e7ac113fbd988",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-c4dae6800800.370c068af0.js",
+      "http_status": 200,
+      "bytes": 320426,
+      "sha256": "c4636620fe67e8f0d10128b08077f1b82e2e341f084af7827572a59d03106ada",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-f71d56f4fcb7.50d7430782.js",
+      "http_status": 200,
+      "bytes": 8558,
+      "sha256": "6891bc71c6362e86a399fca0f298982ac3910e79333684aac127d7177f362930",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/async/route-fa5b8bf5d6af.071bdef63d.js",
+      "http_status": 200,
+      "bytes": 11548,
+      "sha256": "6cbedeff1f00b563815de919f423d0048dfd11bc9fa541ceeda36cab45db5235",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/index.8b637181aa.js",
+      "http_status": 200,
+      "bytes": 46792,
+      "sha256": "8acdf47009f9412a3462d5354e9eaa6c3775f94121e52bf203389d1e53f734a5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js",
+      "http_status": 200,
+      "bytes": 218366,
+      "sha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 1209,
+      "sha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "http_status": 200,
+      "bytes": 35366,
+      "sha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "http_status": 200,
+      "bytes": 222,
+      "sha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/js/styles.aba03c5c90.js",
+      "http_status": 200,
+      "bytes": 472,
+      "sha256": "98e813a0920ce1c113f2a314c05f7f6fc793e807593127c1662b7557d10e26e5",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "static/search_index.ko.7c0dd0aa.json",
+      "http_status": 200,
+      "bytes": 1047849,
+      "sha256": "7c0dd0aa6de2b65fc694a2ae5e122d85952d8abcebd327ebd8e281f2bfea38a4",
+      "local_verified": true,
+      "remote_verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "http_status": 200,
+      "bytes": 652961,
+      "sha256": "7f7370604be90da451c8751564eed7d4235184bf8f23c7a5ae674af728e5061a",
+      "local_verified": true,
+      "remote_verified": true
+    }
+  ],
+  "backups": [
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-precomparison-2026-10-30/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/artifact-boundary/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/implementation-runtime-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/pr-diff-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "internal/evidence/c11-4-grid-text-first-baseline-runtime-2026-10-30/README.html",
+      "backup_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "plan/c11-4-grid-text-first-baseline.html",
+      "backup_verified": true
+    },
+    {
+      "path": "roadmap.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline-plan-review-20.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/plan/c11-4-grid-text-first-baseline.html",
+      "backup_verified": true
+    },
+    {
+      "path": "spec/STATUS.html",
+      "backup_verified": true
+    },
+    {
+      "path": "STATUS.html",
+      "backup_verified": true
+    }
+  ]
+}
