@@ -1,0 +1,9 @@
+{
+  "target": "ios-simulator",
+  "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+  "name": "iPhone 17 Pro",
+  "modelIdentifier": "iPhone18,1",
+  "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+  "executableSha256": "5d912b77a42cc4884b49ee57166d1f74920e39791b195de8939c3a434e4c3c7b",
+  "installedExecutableSha256": "5d912b77a42cc4884b49ee57166d1f74920e39791b195de8939c3a434e4c3c7b"
+}

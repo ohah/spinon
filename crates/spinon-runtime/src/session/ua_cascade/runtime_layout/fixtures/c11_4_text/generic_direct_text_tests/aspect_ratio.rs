@@ -12,7 +12,7 @@ use super::test_fixture::{
     NodeSpec, cascade, custom_fixture, direct_text, item, stylesheet, take_error,
 };
 
-const CSS: &str = r#"
+pub(super) const CSS: &str = r#"
 .scene {
     display:grid;
     box-sizing:border-box;
@@ -917,7 +917,7 @@ fn aspect_ratio_profile_rejects_wrong_text_shape_and_extra_grid_item() {
     assert_eq!(error.code, "unsupported_c114_text_source");
 }
 
-fn profile_fixture(
+pub(super) fn profile_fixture(
     first_class: &str,
     first_text: &str,
     second_class: &str,
@@ -942,7 +942,7 @@ fn profile_fixture(
     )
 }
 
-fn close(actual: f32, expected: f32, label: &str) {
+pub(super) fn close(actual: f32, expected: f32, label: &str) {
     assert!(
         (actual - expected).abs() <= 1.0 / 64.0,
         "{label}: expected {expected}, got {actual}"

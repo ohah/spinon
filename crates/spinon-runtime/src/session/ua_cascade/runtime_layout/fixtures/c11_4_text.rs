@@ -130,6 +130,18 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if let Some(input) = grid_text_baseline::prepare(snapshot, root, styles)? {
         return Ok(Some(input));
     }
+    if let Some(input) = generic_direct_text::prepare_aspect_ratio_minmax(snapshot, root, styles)? {
+        if let Some(node) = input.aspect_ratio_minmax_node
+            && !input.paragraph_styles.contains_key(&node)
+        {
+            return Err(layout_failure(
+                "c114_text_aspect_ratio_minmax_owner",
+                Some(node.get()),
+                None,
+            ));
+        }
+        return Ok(Some(input));
+    }
     if let Some(input) = generic_direct_text::prepare_aspect_ratio(snapshot, root, styles)? {
         return Ok(Some(input));
     }
@@ -272,6 +284,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
+        aspect_ratio_minmax_node: None,
     }))
 }
 
@@ -476,6 +489,7 @@ fn prepare_multispan_text(
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
+        aspect_ratio_minmax_node: None,
     }))
 }
 
@@ -707,6 +721,7 @@ fn prepare_typed_auto_repeat_text(
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
+        aspect_ratio_minmax_node: None,
     }))
 }
 

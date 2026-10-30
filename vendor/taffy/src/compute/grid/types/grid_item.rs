@@ -1,6 +1,6 @@
 //! Contains GridItem used to represent a single grid item during layout
 use super::{
-    maybe_apply_aspect_ratio_to_constraint_size, maybe_apply_aspect_ratio_with_box_sizing,
+    maybe_apply_aspect_ratio_to_min_max_constraints, maybe_apply_aspect_ratio_with_box_sizing,
     GridTrack,
 };
 use crate::compute::common::sizing_keyword::{resolve_sizing_keyword, SizingKeywordResolution};
@@ -410,18 +410,21 @@ impl GridItem {
         let minimum_size = self
             .min_size
             .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
-        let min_size =
-            maybe_apply_aspect_ratio_to_constraint_size(minimum_size, preferred_size, aspect_ratio)
-                .maybe_add(box_sizing_adjustment)
-                // The size of the item is floored by its padding and border
-                .or(padding_border_size.map(Some))
-                .maybe_max(padding_border_size);
         let maximum_size = self
             .max_size
             .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
-        let max_size =
-            maybe_apply_aspect_ratio_to_constraint_size(maximum_size, preferred_size, aspect_ratio)
-                .maybe_add(box_sizing_adjustment);
+        let (min_size, max_size) = maybe_apply_aspect_ratio_to_min_max_constraints(
+            minimum_size,
+            maximum_size,
+            preferred_size,
+            aspect_ratio,
+        );
+        let min_size = min_size
+            .maybe_add(box_sizing_adjustment)
+            // The size of the item is floored by its padding and border
+            .or(padding_border_size.map(Some))
+            .maybe_max(padding_border_size);
+        let max_size = max_size.maybe_add(box_sizing_adjustment);
 
         let grid_area_minus_item_margins_size =
             grid_area_size.maybe_sub(margins).maybe_max(Size::ZERO);
@@ -656,6 +659,16 @@ impl GridItem {
             );
             return content_size.map_or(size, |content| size.max(content));
         }
+        if let Some(content_size) = self.non_replaced_ratio_content_contribution(
+            axis,
+            tree,
+            grid_area_size,
+            available_space,
+            known_dimensions,
+            true,
+        ) {
+            return content_size;
+        }
         // The child sees the grid area as its containing block during intrinsic measurement, so
         // percentage box properties resolve against the grid area when that size is definite.
         // Spec:
@@ -721,6 +734,16 @@ impl GridItem {
             );
             return content_size.map_or(size, |content| size.max(content));
         }
+        if let Some(content_size) = self.non_replaced_ratio_content_contribution(
+            axis,
+            tree,
+            grid_area_size,
+            available_space,
+            known_dimensions,
+            false,
+        ) {
+            return content_size;
+        }
         // See the min-content path above. Max-content measurement uses the same containing-block
         // basis so percentage-dependent item geometry is measured from the grid area rather than
         // from the container.
@@ -758,13 +781,50 @@ impl GridItem {
             || self.aspect_ratio.is_none()
             || !self.size.width.is_auto()
             || !self.size.height.is_auto()
-            || !self.min_size.width.is_auto()
-            || !self.min_size.height.is_auto()
-            || !self.max_size.width.is_auto()
-            || !self.max_size.height.is_auto()
         {
             return None;
         }
+
+        let has_size_constraints = !self.min_size.width.is_auto()
+            || !self.min_size.height.is_auto()
+            || !self.max_size.width.is_auto()
+            || !self.max_size.height.is_auto();
+        if known_dimensions.get(axis).is_none() && !has_size_constraints {
+            return None;
+        }
+
+        let padding = self
+            .padding
+            .resolve_or_zero(grid_area_size.width, |val, basis| tree.calc(val, basis));
+        let border = self
+            .border
+            .resolve_or_zero(grid_area_size.width, |val, basis| tree.calc(val, basis));
+        let padding_border_size = (padding + border).sum_axes();
+        let box_sizing_adjustment = if self.box_sizing == BoxSizing::ContentBox {
+            padding_border_size
+        } else {
+            Size::ZERO
+        };
+        let preferred_size = self
+            .size
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let minimum_size = self
+            .min_size
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let maximum_size = self
+            .max_size
+            .maybe_resolve(grid_area_size, |val, basis| tree.calc(val, basis));
+        let (minimum_size, maximum_size) = maybe_apply_aspect_ratio_to_min_max_constraints(
+            minimum_size,
+            maximum_size,
+            preferred_size,
+            self.aspect_ratio,
+        );
+        let minimum_size = minimum_size
+            .maybe_add(box_sizing_adjustment)
+            .or(padding_border_size.map(Some))
+            .maybe_max(padding_border_size);
+        let maximum_size = maximum_size.maybe_add(box_sizing_adjustment);
 
         let mut content_dimensions = known_dimensions;
         content_dimensions.set(axis, None);
@@ -777,7 +837,7 @@ impl GridItem {
             });
         let available_space =
             self.keyword_adjusted_available_space(grid_area_size, available_space, tree);
-        Some(tree.measure_child_size(
+        let mut content_size = tree.measure_child_size(
             self.node,
             content_dimensions,
             grid_area_size,
@@ -785,7 +845,20 @@ impl GridItem {
             SizingMode::ContentSize,
             axis.as_abs_naive(),
             Line::FALSE,
-        ))
+        );
+
+        // An automatic minimum keeps the content-size suggestion, then applies any transferred
+        // minimum as a floor. A direct minimum replaces that automatic behavior, so its direct
+        // and transferred maximum constraints can clamp the contribution.
+        let direct_minimum = !self.min_size.get(axis).is_auto();
+        let direct_maximum = !self.max_size.get(axis).is_auto();
+        if direct_minimum || direct_maximum {
+            content_size = content_size.maybe_clamp(minimum_size.get(axis), maximum_size.get(axis));
+        } else {
+            content_size = content_size.max(minimum_size.get(axis).unwrap_or(0.0));
+        }
+        content_size = content_size.max(known_dimensions.get(axis).unwrap_or(0.0));
+        Some(content_size)
     }
 
     /// Subtract the item's margins (and baseline shim) from the definite axes of the space available

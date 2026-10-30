@@ -528,6 +528,32 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_content_bo
     )
 }
 
+/// C11.4 direct-text min/max constraints are admitted for one exact ratio item owner.
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_aspect_ratio_minmax_text(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    computed_styles: ComputedStyleSnapshot,
+    viewport: CssViewport,
+    paragraph_styles: &BTreeMap<NodeId, ParagraphStyle>,
+    text_engine: &TextLayoutEngine,
+    aspect_ratio_minmax_node: NodeId,
+) -> Result<StyleLayoutOutput, StyleLayoutError> {
+    compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraphs_and_options(
+        snapshot,
+        root,
+        computed_styles,
+        viewport,
+        paragraph_styles,
+        text_engine,
+        RuntimeGridProjectionOptions {
+            content_box_ratio_node: None,
+            aspect_ratio_minmax_node: Some(aspect_ratio_minmax_node),
+            ..RuntimeGridProjectionOptions::default()
+        },
+    )
+}
+
 /// C11.4 fixed direct-text baseline fixture에만 Grid first/last-baseline 정렬을 허용합니다.
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_baseline_fixture(
@@ -637,6 +663,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_a
             allow_c11_4_overflow_auto_minimum_fixture: true,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -648,6 +675,7 @@ struct RuntimeGridProjectionOptions {
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
     content_box_ratio_node: Option<NodeId>,
+    aspect_ratio_minmax_node: Option<NodeId>,
 }
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
@@ -688,6 +716,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_paragraph
                 .allow_c11_4_overflow_auto_minimum_fixture,
             allow_c11_4_grid_text_baseline_fixture: options.allow_c11_4_grid_text_baseline_fixture,
             content_box_ratio_node: options.content_box_ratio_node,
+            aspect_ratio_minmax_node: options.aspect_ratio_minmax_node,
         },
     )
 }
@@ -877,6 +906,7 @@ pub fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_text_and_i
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -978,6 +1008,7 @@ fn compute_runtime_block_flex_grid_track_sizing_style_layout_with_anonymous_text
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -1048,6 +1079,7 @@ pub fn compute_runtime_style_layout_with_intrinsic_size_snapshot_for_c11_4_two_a
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -1169,6 +1201,7 @@ fn compute_layout_from_styles_with_grid_options(
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -1199,6 +1232,7 @@ fn compute_layout_from_styles_with_text(
             allow_c11_4_overflow_auto_minimum_fixture: false,
             allow_c11_4_grid_text_baseline_fixture: false,
             content_box_ratio_node: None,
+            aspect_ratio_minmax_node: None,
         },
     )
 }
@@ -1214,6 +1248,7 @@ struct StyleLayoutProjectionOptions {
     allow_c11_4_overflow_auto_minimum_fixture: bool,
     allow_c11_4_grid_text_baseline_fixture: bool,
     content_box_ratio_node: Option<NodeId>,
+    aspect_ratio_minmax_node: Option<NodeId>,
 }
 
 fn compute_layout_from_styles_with_text_and_grid_options(

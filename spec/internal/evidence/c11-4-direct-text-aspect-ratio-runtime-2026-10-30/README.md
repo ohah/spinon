@@ -93,3 +93,48 @@ The scanner records raw byte markers in the inspected macOS ARM64 `spinon-ffi` r
 4. Android PixelCopy 기대색 목록에 root 밖 overflow 표본의 red가 빠져 있었다. 기대 표본을 보완하고 양 플랫폼을 다시 실행했다.
 
 이전 실패 디렉터리를 삭제하지 않고 같은 evidence root에 남겨 두었다. 최종 판정은 위 표의 마지막 실행 receipt만 사용한다. 일반 CSS 입력 허용, 전체 WPT, 이 fixture 행렬 밖의 임의 ratio, `auto <ratio>`, 이 collector의 degenerate numeric ratio, 여러 ratio item, replaced/rich/anonymous text, wrapping, min/max·box-edge transfer, span, vertical writing, 실기기/hardware GPU, glyph 픽셀 일치, iOS compositor 이후 픽셀은 확장 후보의 보장 범위가 아니다. 구현 PR [#842](https://github.com/ohah/spinon/pull/842)은 2026-10-30T05:04:03Z Rebase and merge되어 `78fd0b84e4132e1f91bd293735e97b33cbf0d9a0`에 반영됐다. PR check rollup은 비어 있고 main 필수 상태 검사는 설정되지 않아 CI 성공으로 세지 않는다. 상세한 구현/runtime 검토는 [20개 실패 관점](./finite-ratio-implementation-runtime-review-20.md), 현재 branch diff 검토는 [30개 관점](./finite-ratio-pr-diff-review-30.md)에 둔다.
+
+## 2026-10-30 direct-text aspect-ratio min/max 구현 후보
+
+**판정:** 제한 C11.4 fixture 구현과 Android/iOS Simulator 확인을 마쳤다. 구현/runtime 적대 검토 20개도 통과했다. 구현 PR을 열기 전 최종 문서·diff 검사를 진행 중이며, PR을 연 뒤 별도의 30개 변경 실패 관점 검토가 남아 있다. C11.4/C11은 미완료이고 공식 상태 72/213을 유지한다.
+
+작업은 기존 C11.4 direct-text ratio의 min-width, max-width, min-height, max-height 전달을 고정 Ahem fixture에 추가한다. Chrome 156 oracle의 원래 17개 case에 continuous CSS px 범위 확인용 2개를 더해 새 scene은 19개, 기존 ratio scene을 합친 최종 행렬은 각 플랫폼 42개다. CSS Sizing §4.4는 definite min을 먼저 반대 축으로 전환해 destination max에 cap하고, max 전환은 destination min과 transferred min에 floor한다. CSS Grid non-replaced content size contribution은 replaced의 transferred suggestion과 구별한다. 계획, oracle 및 구현 범위는 [집중 계획](../../../../plan/c11-4-direct-text-aspect-ratio-min-max.md), [Chrome 사전 비교](../c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.md), [구현/runtime 20개 검토](./minmax-implementation-runtime-review-20.md)에 있다.
+
+| 실행 | 환경 및 결과 | 설치 산출물 동일성 | 범위 |
+|---|---|---|---|
+| [Android API 37 ARM64 QEMU AVD](./android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/result.json) | sdk_gphone16k_arm64, emulator-5554; 42/42 scene, PixelCopy 129/129 exact | local/installed APK SHA-256 59e01ec3240ed1a4c8b71d2374a66ed4a2a7bd11cbaf50176c61d67d70451295 | QEMU software renderer, 실기기/hardware GPU 아님 |
+| [iPhone 17 Pro / iOS 26.2 Simulator](./ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/result.json) | iPhone18,1, UDID ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D; 42/42 scene, Metal drawable 129/129 exact | local/installed executable SHA-256 5d912b77a42cc4884b49ee57166d1f74920e39791b195de8939c3a434e4c3c7b | OS compositor 제출 전 drawable readback |
+
+두 receipt는 source HEAD d3fdd5660614c7f877908e95c2bffca39bd4496a와 각 당시 dirty source의 SHA-256을 기록한다. Capture 뒤 계획 파일의 상태 문단을 20개 검토 완료로 갱신했기 때문에 현재 receipt와 다른 hash는 그 문서 파일 하나뿐이며, 구현 source는 capture 당시 hash와 일치한다. Android sample 좌표는 정수 CSS px로 내림했다. 별도 화면 검사는 min-width:45px와 fractional max-height:17.75px case를 포함한다. 이 표본은 배경 fill/root clear만 확인하며 glyph raster equality, compositor 이후 iOS pixels를 검사하지 않는다.
+
+화면:
+
+![Android min-width 45px scene](./android-avd/c114-text-ratio-mvut1ldd-e32f3c4c/grid-text-aspect-ratio-minmax-min-width-45.png)
+
+![iOS fractional max-height scene](./ios-simulator/c114-text-ratio-mvut4y8z-74dc1d74/grid-text-aspect-ratio-minmax-max-height-17-75-min-controls.png)
+
+### 최종 검증
+
+- cargo fmt --all -- --check, git diff --check 통과.
+- cargo test -p spinon-runtime --features c11-4-grid-track-sizing-fixture-test --lib ratio_minmax: 2/2 통과.
+- cargo test -p spinon-ffi --features c04-runtime-gpu-fixture-test --lib exposes_fixed_direct_text_ratio_minmax_scenes: 1/1 통과.
+- cargo test -p spinon-layout direct_text_ratio_min_max --lib 및 fixture feature 실행: 각각 1/1 통과.
+- 공통 Grid 경로에 대한 추가 replaced/nested regression cargo test -p spinon-layout --features c11-4-grid-track-sizing-fixture-test nested_grid_text_and_replaced_contributions_match_chrome_oracle --lib: 1/1 통과.
+- runtime·FFI·style-to-layout feature Clippy와 layout default/fixture Clippy는 -D warnings로 통과.
+- node --check tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs; fixture module boundary 및 iOS build flags 검사 36/36 통과.
+- Android build BUILD SUCCESSFUL; iOS Simulator build BUILD SUCCEEDED.
+- 최종 simulator capture는 Android와 iOS 각각 42/42 scene 및 129/129 표면 sample 통과.
+
+### fixture archive 경계
+
+[archive 검사 결과](./artifact-boundary/minmax-archive-boundary.json)는 macOS ARM64 spinon-ffi release static archive만 대상으로 한다. 기본 c04-runtime-gpu archive는 19개 신규 scene marker 0/19, fixture ABI 문자열 및 정의 symbol 없음이다(SHA-256 bd65f73a93bb7f74e021e48ca5efa72db52a3282d6d1f416e8b9e66e8d9119e2). c04-runtime-gpu-fixture-test,c11-grid-metal-surface-pixels-test positive control은 marker 19/19와 ABI symbol을 포함한다(SHA-256 b4d99169bb940b25d59a0426362e6b4de09a26424adb647a0cffa0929d285c79). 이는 최종 APK/IPA 전체에서 fixture가 빠짐을 증명하지 않는다. Archive scanner는 Rust 1.96 toolchain LLVM 22 llvm-nm을 사용했다. Apple LLVM 17은 Rust object의 최신 attribute를 읽지 못했다.
+
+### 구현 중 수정과 한계
+
+- 처음에는 고정 oracle의 일부 정수만 허용했지만, 별도 Chrome 관측으로 확인한 연속 0..=60px 범위로 고쳤다.
+- fractional CSS PixelCopy 지점을 정수 native 좌표로 정리했다.
+- owner gate의 content-box ratio 경로를 runtime test 실패에서 찾아 복구했다.
+- Clippy가 잡은 8-argument helper를 enum profile로 바꿨다.
+- 각 실패 run과 이전 snapshot은 지우지 않고 보존했다. 최종 판단은 위 final receipt에만 근거한다.
+
+임의 CSS admission, arbitrary ratios/fonts, replaced/image/anonymous/rich text, wrapping, span, percentage/calc, vertical writing, 전체 WPT, Android 실기기/hardware GPU, glyph paint, iOS compositor-after pixels 및 전체 C11.4/C11은 이번 후보 범위에 없다. 내부 계약 0.1.0, 공식 C11.4 체크와 72/213은 유지한다.

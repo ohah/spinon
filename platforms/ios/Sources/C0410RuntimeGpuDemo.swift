@@ -216,6 +216,7 @@ private func c114IsGridTextAspectRatioScene(_ sceneID: String) -> Bool {
         || sceneID.hasPrefix("grid-text-aspect-ratio-range-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-auto-")
         || sceneID.hasPrefix("grid-text-aspect-ratio-row-60-")
+        || sceneID.hasPrefix("grid-text-aspect-ratio-minmax-")
 }
 
 private func c114IsGridTextAspectRatioColumnScene(_ sceneID: String) -> Bool {
@@ -250,6 +251,69 @@ private struct C114GenericDirectTextSceneExpectation {
     let rootHeight: Double
     let columns: [Double]
     let items: [C114GenericDirectTextItemExpectation]
+}
+
+private struct C114AspectRatioMinmaxSceneExpectation {
+    let width: Double
+    let height: Double
+    let minimumRowContribution: Double
+    let initialRowStageBase: Double
+    let hasEdges: Bool
+
+    init(
+        width: Double, height: Double, minimumRowContribution: Double,
+        hasEdges: Bool, initialRowStageBase: Double? = nil
+    ) {
+        self.width = width
+        self.height = height
+        self.minimumRowContribution = minimumRowContribution
+        self.initialRowStageBase = initialRowStageBase ?? height
+        self.hasEdges = hasEdges
+    }
+}
+
+private func c114AspectRatioMinmaxSceneExpectation(
+    _ sceneID: String
+) -> C114AspectRatioMinmaxSceneExpectation? {
+    let prefix = "grid-text-aspect-ratio-minmax-"
+    guard sceneID.hasPrefix(prefix) else { return nil }
+    switch String(sceneID.dropFirst(prefix.count)) {
+    case "numeric-baseline": return .init(width: 40, height: 20, minimumRowContribution: 20, hasEdges: false)
+    case "min-width-60": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "min-width-45": return .init(width: 45, height: 22.5, minimumRowContribution: 22.5, hasEdges: false)
+    case "max-width-30-min-width-0": return .init(width: 30, height: 15, minimumRowContribution: 15, hasEdges: false)
+    case "min-height-30": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "max-height-15-min-height-0": return .init(width: 40, height: 15, minimumRowContribution: 0, hasEdges: false, initialRowStageBase: 10)
+    case "max-height-15-min-height-0-min-width-0": return .init(width: 30, height: 15, minimumRowContribution: 0, hasEdges: false, initialRowStageBase: 10)
+    case "max-height-17-75-min-controls": return .init(width: 35.5, height: 17.75, minimumRowContribution: 0, hasEdges: false, initialRowStageBase: 10)
+    case "min-width-60-clamped-by-max-height-20": return .init(width: 60, height: 20, minimumRowContribution: 20, hasEdges: false)
+    case "min-height-20-clamps-transferred-max-width-30": return .init(width: 30, height: 20, minimumRowContribution: 20, hasEdges: false)
+    case "source-min-width-60-over-max-width-40": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "source-min-height-30-over-max-height-20": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "auto-ratio-min-width-60": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "no-ratio-min-width-60": return .init(width: 60, height: 10, minimumRowContribution: 10, hasEdges: false)
+    case "no-ratio-min-height-30": return .init(width: 40, height: 30, minimumRowContribution: 30, hasEdges: false)
+    case "numeric-border-box-min-width-60": return .init(width: 60, height: 30, minimumRowContribution: 30, hasEdges: true)
+    case "auto-content-box-min-width-60": return .init(width: 60, height: 31, minimumRowContribution: 31, hasEdges: true)
+    case "numeric-border-box-max-height-15-min-controls": return .init(width: 30, height: 15, minimumRowContribution: 0, hasEdges: true, initialRowStageBase: 10)
+    case "auto-content-box-max-height-15-min-controls": return .init(width: 28, height: 15, minimumRowContribution: 6, hasEdges: true, initialRowStageBase: 10)
+    default: return nil
+    }
+}
+
+private func c114AspectRatioMinmaxTextItem(
+    node: Int, x: Double, width: Double, height: Double, text: String, hasEdges: Bool
+) -> C114GenericDirectTextItemExpectation {
+    let textWidth = Double(text.count) * 10
+    return c114GenericTextItem(
+        node: node, x: x, width: width, height: height,
+        minContent: textWidth, maxContent: textWidth,
+        minContentHeight: 10, maxContentHeight: 10,
+        rawText: text, layoutText: text, whiteSpace: "NoWrap", wordBreak: "Normal",
+        availableWidth: width - (hasEdges ? 10 : 0), textWidth: textWidth,
+        paddingInline: hasEdges ? 4 : 0, paddingBlock: hasEdges ? 2 : 0,
+        borderWidth: hasEdges ? 1 : 0, lineAdvances: [textWidth]
+    )
 }
 
 private func c114GenericTextItem(
@@ -452,6 +516,20 @@ private func c114GenericDirectTextAspectRatioRangeExpectation(
 private func c114GenericDirectTextBoxAspectRatioExpectation(
     _ sceneID: String
 ) -> C114GenericDirectTextSceneExpectation? {
+    if let minmax = c114AspectRatioMinmaxSceneExpectation(sceneID) {
+        return C114GenericDirectTextSceneExpectation(
+            rootHeight: minmax.height, columns: [minmax.width, 10], items: [
+                c114AspectRatioMinmaxTextItem(
+                    node: 2, x: 0, width: minmax.width, height: minmax.height,
+                    text: "AAAA", hasEdges: minmax.hasEdges
+                ),
+                c114AspectRatioMinmaxTextItem(
+                    node: 4, x: minmax.width, width: 10, height: minmax.height,
+                    text: "A", hasEdges: false
+                ),
+            ]
+        )
+    }
     switch sceneID {
     case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
          "grid-text-aspect-ratio-auto-row-auto-3-2-content-box":
@@ -508,6 +586,10 @@ private func c114GenericDirectTextAspectRatioRowTrackSize(
 }
 
 private func c114GenericDirectTextBoxRootID(_ sceneID: String) -> String? {
+    let minmaxPrefix = "grid-text-aspect-ratio-minmax-"
+    if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil {
+        return "grid-text-ratio-minmax-" + String(sceneID.dropFirst(minmaxPrefix.count))
+    }
     switch sceneID {
     case "grid-text-aspect-ratio-auto-row-auto-3-2-border-box": return "row-auto-ratio"
     case "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box": return "row-numeric-ratio"
@@ -998,6 +1080,7 @@ private func c114SingleTrackOverflowAutoMinimumState(
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
+    if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return true }
     #endif
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
     if c114GridTextBaselineSceneIDs.contains(sceneID) { return true }
@@ -2743,7 +2826,8 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
-    if c114GenericDirectTextSceneIDs.contains(sceneID) {
+    if c114GenericDirectTextSceneIDs.contains(sceneID)
+        || c114AspectRatioMinmaxSceneExpectation(sceneID) != nil {
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114OrthogonalRowIntrinsicSceneIDs.contains(sceneID) {
@@ -5487,6 +5571,7 @@ private func c114ImageMultiSpanTracksMatch(
 private func c114GenericDirectTextIntrinsicInputsMatch(
     sceneID: String, report: String
 ) -> Bool {
+    let isMinmaxScene = c114AspectRatioMinmaxSceneExpectation(sceneID) != nil
     guard let scene = c114GenericDirectTextExpectation(sceneID),
           let diagnostics = c114GridTrackSizingDiagnostics(report),
           let revision = diagnostics["layoutInputRevision"] as? [String: Any],
@@ -5499,7 +5584,12 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
           let intrinsicSizeRevision = c114GenericJSONInteger(revision["intrinsicSize"]),
           intrinsicSizeRevision >= 0,
           let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
-          inputs.count == 2 else { return false }
+          inputs.count == 2 else {
+        if isMinmaxScene {
+            NSLog("SPINON_C114_MINMAX_TEXT_CHECK stage=header scene=\(sceneID)")
+        }
+        return false
+    }
     let expectedNodes = scene.items.map(\.node)
     for (index, input) in inputs.enumerated() {
         let expected = scene.items[index]
@@ -5527,7 +5617,12 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
                 expected: expected.maxContentHeight,
                 tolerance: 1.0 / 64.0
               ),
-              c114GenericContributionInputMatches(input, expected) else {
+              c114GenericContributionInputMatches(
+                input, expected, sceneID: sceneID, itemIndex: index
+              ) else {
+            if isMinmaxScene {
+                NSLog("SPINON_C114_MINMAX_TEXT_CHECK stage=input scene=\(sceneID) index=\(index)")
+            }
             return false
         }
     }
@@ -5548,7 +5643,12 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
               let measuredWidth = c114GenericJSONFiniteNumber(contentSize["width"]),
               measuredWidth >= 0,
               let measuredHeight = c114GenericJSONFiniteNumber(contentSize["height"]),
-              measuredHeight >= 0 else { return false }
+              measuredHeight >= 0 else {
+            if isMinmaxScene {
+                NSLog("SPINON_C114_MINMAX_TEXT_CHECK stage=measurement scene=\(sceneID)")
+            }
+            return false
+        }
         if availableSpace.contains("width: MinContent") {
             minContentWidthNodes.insert(node)
         }
@@ -5562,7 +5662,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
             maxContentHeightNodes.insert(node)
         }
     }
-    if c114IsGridTextAspectRatioScene(sceneID) {
+    if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil {
+        guard !measurements.isEmpty else { return false }
+    } else if c114IsGridTextAspectRatioScene(sceneID) {
         if c114IsGridTextAspectRatioColumnScene(sceneID) {
             let firstHasIntrinsicWidth = sceneID.contains("control")
                 || sceneID.contains("no-ratio")
@@ -5584,15 +5686,43 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
               minContentHeightNodes == Set(expectedNodes),
               maxContentHeightNodes == Set(expectedNodes) else { return false }
     }
-    return c114GenericDirectTextTextLayoutsMatch(
+    let layoutsMatch = c114GenericDirectTextTextLayoutsMatch(
         sceneID: sceneID, scene: scene, diagnostics: diagnostics, layoutRevision: revision
-    ) && c114GenericDirectTextTraceMatches(sceneID: sceneID, diagnostics: diagnostics)
+    )
+    let traceMatches = c114GenericDirectTextTraceMatches(sceneID: sceneID, diagnostics: diagnostics)
+    if isMinmaxScene && (!layoutsMatch || !traceMatches) {
+        NSLog("SPINON_C114_MINMAX_TEXT_CHECK stage=final scene=\(sceneID) layouts=\(layoutsMatch) trace=\(traceMatches)")
+    }
+    return layoutsMatch && traceMatches
 }
 
 private func c114GenericContributionInputMatches(
-    _ input: [String: Any], _ expected: C114GenericDirectTextItemExpectation
+    _ input: [String: Any], _ expected: C114GenericDirectTextItemExpectation,
+    sceneID: String, itemIndex: Int
 ) -> Bool {
     guard let contribution = input["contributionInput"] as? [String: Any] else { return false }
+    if let minmax = c114AspectRatioMinmaxSceneExpectation(sceneID) {
+        guard var constraints = c114AspectRatioMinmaxStyleConstraints(sceneID) else {
+            return false
+        }
+        if itemIndex != 0 { constraints = [.nan, .nan, .nan, .nan] }
+        if minmax.hasEdges && sceneID.hasPrefix(
+            "grid-text-aspect-ratio-minmax-auto-content-box-"
+        ) {
+            for index in constraints.indices where constraints[index].isFinite {
+                constraints[index] = max(0, constraints[index] - (index < 2 ? 10 : 6))
+            }
+        }
+        return c114GenericAxisMinmaxContributionMatches(
+            contribution["width"], minContent: expected.minContent,
+            maxContent: expected.maxContent, padding: expected.paddingInline,
+            border: expected.borderWidth, minSize: constraints[0], maxSize: constraints[1]
+        ) && c114GenericAxisMinmaxContributionMatches(
+            contribution["height"], minContent: expected.minContentHeight,
+            maxContent: expected.maxContentHeight, padding: expected.paddingBlock,
+            border: expected.borderWidth, minSize: constraints[2], maxSize: constraints[3]
+        )
+    }
     return c114GenericAxisContributionMatches(
         contribution["width"], minContent: expected.minContent, maxContent: expected.maxContent,
         padding: expected.paddingInline, border: expected.borderWidth
@@ -5602,6 +5732,62 @@ private func c114GenericContributionInputMatches(
         maxContent: expected.maxContentHeight,
         padding: expected.paddingBlock, border: expected.borderWidth
     )
+}
+
+private func c114AspectRatioMinmaxStyleConstraints(_ sceneID: String) -> [Double]? {
+    let prefix = "grid-text-aspect-ratio-minmax-"
+    guard sceneID.hasPrefix(prefix) else { return nil }
+    let auto = Double.nan
+    switch String(sceneID.dropFirst(prefix.count)) {
+    case "numeric-baseline": return [auto, auto, auto, auto]
+    case "min-width-60": return [60, auto, auto, auto]
+    case "min-width-45": return [45, auto, auto, auto]
+    case "max-width-30-min-width-0": return [0, 30, auto, auto]
+    case "min-height-30": return [auto, auto, 30, auto]
+    case "max-height-15-min-height-0": return [auto, auto, 0, 15]
+    case "max-height-15-min-height-0-min-width-0": return [0, auto, 0, 15]
+    case "max-height-17-75-min-controls": return [0, auto, 0, 17.75]
+    case "min-width-60-clamped-by-max-height-20": return [60, auto, auto, 20]
+    case "min-height-20-clamps-transferred-max-width-30": return [0, 30, 20, auto]
+    case "source-min-width-60-over-max-width-40": return [60, 40, auto, auto]
+    case "source-min-height-30-over-max-height-20": return [auto, auto, 30, 20]
+    case "auto-ratio-min-width-60", "no-ratio-min-width-60",
+         "numeric-border-box-min-width-60", "auto-content-box-min-width-60":
+        return [60, auto, auto, auto]
+    case "no-ratio-min-height-30": return [auto, auto, 30, auto]
+    case "numeric-border-box-max-height-15-min-controls",
+         "auto-content-box-max-height-15-min-controls": return [0, auto, 0, 15]
+    default: return nil
+    }
+}
+
+private func c114GenericAxisMinmaxContributionMatches(
+    _ value: Any?, minContent: Double, maxContent: Double,
+    padding: Double, border: Double, minSize: Double, maxSize: Double
+) -> Bool {
+    guard let axis = value as? [String: Any],
+          let preferredSize = axis["preferredSize"] as? [String: Any],
+          let minSizeValue = axis["minSize"] as? [String: Any],
+          let maxSizeValue = axis["maxSize"] as? [String: Any] else { return false }
+    return c114GenericJSONNear(axis["minContent"], expected: minContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(axis["maxContent"], expected: maxContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONString(preferredSize["kind"]) == "auto"
+        && c114GenericSizeConstraintMatches(minSizeValue, expected: minSize)
+        && c114GenericSizeConstraintMatches(maxSizeValue, expected: maxSize)
+        && c114GenericZeroLength(axis["marginStart"])
+        && c114GenericZeroLength(axis["marginEnd"])
+        && c114GenericLength(axis["paddingStart"], expected: padding)
+        && c114GenericLength(axis["paddingEnd"], expected: padding)
+        && c114GenericJSONNear(axis["borderStart"], expected: border, tolerance: 0.0001)
+        && c114GenericJSONNear(axis["borderEnd"], expected: border, tolerance: 0.0001)
+}
+
+private func c114GenericSizeConstraintMatches(
+    _ size: [String: Any], expected: Double
+) -> Bool {
+    if expected.isNaN { return c114GenericJSONString(size["kind"]) == "auto" }
+    return c114GenericJSONString(size["kind"]) == "fixed"
+        && c114GenericJSONNear(size["cssPx"], expected: expected, tolerance: 0.0001)
 }
 
 private func c114GenericAxisContributionMatches(
@@ -5948,9 +6134,11 @@ private func c114GenericDirectTextTraceMatches(
     }
     let aspectRatioScene = c114IsGridTextAspectRatioScene(sceneID)
     let fixedRows = c114IsGridTextAspectRatioColumnScene(sceneID)
+    let minmax = c114AspectRatioMinmaxSceneExpectation(sceneID)
     let rowTrackSize = c114GenericDirectTextAspectRatioRowTrackSize(
         sceneID, fallback: scene.rootHeight
     )
+    let initialRowStageBase = minmax?.initialRowStageBase ?? rowTrackSize
     if aspectRatioScene {
         guard c114GenericJSONInteger(passes[0]["sequence"]) == 0,
               c114GenericJSONInteger(passes[1]["sequence"]) == 1,
@@ -5961,10 +6149,12 @@ private func c114GenericDirectTextTraceMatches(
               }),
               c114GenericDirectTextAspectRatioStagesMatch(
                   passes[0], expectedSizes: scene.columns,
+                  initialIntrinsicSizes: scene.columns,
                   fixed: false, stretchApplied: false
               ),
               c114GenericDirectTextAspectRatioStagesMatch(
                   passes[1], expectedSizes: [rowTrackSize],
+                  initialIntrinsicSizes: [initialRowStageBase],
                   fixed: fixedRows, stretchApplied: !fixedRows
               ) else { return false }
     }
@@ -5985,12 +6175,15 @@ private func c114GenericDirectTextTraceMatches(
         if fixedRows {
             return (passes[1]["contributions"] as? [[String: Any]])?.isEmpty == true
         }
-        let firstRow = sceneID.hasPrefix("grid-text-aspect-ratio-auto-") ? 16.0 : 10.0
-        let secondRow = sceneID.contains("no-ratio") ? 16.0 : rowTrackSize
+        let firstMinimum = minmax?.minimumRowContribution
+            ?? (sceneID.hasPrefix("grid-text-aspect-ratio-auto-") ? 16.0 : 10.0)
+        let firstIntrinsic = minmax != nil ? first.height : firstMinimum
+        let secondRow = minmax != nil ? 10.0
+            : sceneID.contains("no-ratio") ? 16.0 : rowTrackSize
         let expectedRows: [(item: Int, kind: String, value: Double)] = [
-            (first.node, "Minimum", firstRow),
-            (first.node, "MinContent", firstRow),
-            (first.node, "MaxContent", firstRow),
+            (first.node, "Minimum", firstMinimum),
+            (first.node, "MinContent", firstIntrinsic),
+            (first.node, "MaxContent", firstIntrinsic),
             (second.node, "Minimum", secondRow),
             (second.node, "MinContent", secondRow),
             (second.node, "MaxContent", secondRow),
@@ -6096,8 +6289,8 @@ private func c114GenericFixedTrackSizesMatch(
 }
 
 private func c114GenericDirectTextAspectRatioStagesMatch(
-    _ pass: [String: Any], expectedSizes: [Double], fixed: Bool,
-    stretchApplied: Bool
+    _ pass: [String: Any], expectedSizes: [Double], initialIntrinsicSizes: [Double],
+    fixed: Bool, stretchApplied: Bool
 ) -> Bool {
     let expectedStages = fixed
         ? ["Initialize", "FixedTrackEarlyReturn"]
@@ -6113,7 +6306,9 @@ private func c114GenericDirectTextAspectRatioStagesMatch(
           stages.count == expectedStages.count else { return false }
     let expectedTrackCount = expectedSizes.count * 2 + 1
     for (stageIndex, stage) in stages.enumerated() {
-        guard c114GenericJSONString(stage["stage"]) == expectedStages[stageIndex],
+        guard c114GenericStageNameMatches(
+                c114GenericJSONString(stage["stage"]), expected: expectedStages[stageIndex]
+              ),
               let tracks = stage["tracks"] as? [[String: Any]],
               tracks.count == expectedTrackCount else { return false }
         var contentTrackIndex = 0
@@ -6126,8 +6321,10 @@ private func c114GenericDirectTextAspectRatioStagesMatch(
                 expectedSize = 0
             } else {
                 guard contentTrackIndex < expectedSizes.count else { return false }
-                expectedSize = !fixed && stageIndex == 0
-                    ? 0 : expectedSizes[contentTrackIndex]
+                expectedSize = !fixed && stageIndex == 0 ? 0
+                    : !fixed && stageIndex < 3
+                        ? initialIntrinsicSizes[contentTrackIndex]
+                        : expectedSizes[contentTrackIndex]
                 contentTrackIndex += 1
             }
             guard c114GenericJSONInteger(track["internalIndex"]) == trackIndex,
@@ -6140,6 +6337,11 @@ private func c114GenericDirectTextAspectRatioStagesMatch(
         guard contentTrackIndex == expectedSizes.count else { return false }
     }
     return true
+}
+
+private func c114GenericStageNameMatches(_ actual: String?, expected: String) -> Bool {
+    guard let actual else { return false }
+    return actual.filter({ !$0.isWhitespace }) == expected.filter({ !$0.isWhitespace })
 }
 
 private func c114GenericDirectTextContributionsMatch(
@@ -8723,7 +8925,8 @@ private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
         || sceneID == "fit-content-auto-min-floor-zero-control" { return 5 }
     if c114SingleTrackOverflowAutoMinimumState(sceneID) != nil { return 2 }
     if c114OverflowAutoMinimumExpectation(sceneID) != nil { return 2 }
-    if c114GenericDirectTextSceneIDs.contains(sceneID) { return 3 }
+    if c114GenericDirectTextSceneIDs.contains(sceneID)
+        || c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return 3 }
     if c114GeneralizedCyclicRowAutoRepeatSceneIDs.contains(sceneID) { return 4 }
     if sceneID == "cyclic-max-content-auto-fill"
         || sceneID == "definite-40px-auto-fill-control"
@@ -9752,7 +9955,9 @@ private struct C111MetalPixelRun {
                let boxRootID = c114GenericDirectTextBoxRootID(sceneID) {
                 rootID = boxRootID
                 let firstWidth = UInt32(expectation.items[0].width)
-                if expectation.rootHeight == 60 && firstWidth > 80 {
+                if sceneID.hasPrefix("grid-text-aspect-ratio-minmax-") {
+                    itemPoints = [(5, 5), (firstWidth + 5, 5), (firstWidth + 15, 5)]
+                } else if expectation.rootHeight == 60 && firstWidth > 80 {
                     itemPoints = [(5, 5), (firstWidth + 5, 5), (firstWidth - 5, 5)]
                     includesHorizontalOverflowSample = true
                 } else if expectation.rootHeight == 60 {

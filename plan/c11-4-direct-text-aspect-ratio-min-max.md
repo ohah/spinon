@@ -1,6 +1,6 @@
 # C11.4 direct-text preferred aspect-ratio min/max 계획
 
-**상태:** 계획 단계. 이 문서와 사전 비교 PR을 먼저 병합한 뒤 구현 branch를 시작한다. 구현은 기존 C11.4 opt-in fixture에 한정하며 C11/C11.4 공식 상태를 완료로 바꾸지 않는다.
+**상태:** 구현, 최종 로컬 검증, 구현/runtime 실패 관점 검토 20개를 완료했다. 최종 문서·diff 확인 후 구현 PR을 열고, PR이 열린 뒤 별도의 변경 실패 관점 30개를 검토한다. 계획·사전 비교 PR [#849](https://github.com/ohah/spinon/pull/849)은 Rebase and merge로 병합했다. 구현은 기존 C11.4 opt-in fixture에 한정하며 C11/C11.4 공식 상태를 완료로 바꾸지 않는다.
 
 **상위:** [C11.4 Grid track sizing](c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태 대장](../spec/STATUS.md)
 
@@ -14,7 +14,7 @@
 
 ## 사전 비교 입력과 관측
 
-고정 입력·Chrome 관측·화면·hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.md)에 있다. Canonical HTML fixture와 embedded-font 사본은 각각 Agent Browser HeadlessChrome 156에서 실행했고 17개 case 결과가 정확히 같았다. 양쪽에서 Ahem 10px font readiness가 true였다.
+고정 입력·Chrome 관측·화면·hash는 [사전 비교 evidence](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.md)에 있다. Canonical HTML fixture와 embedded-font 사본은 각각 Agent Browser HeadlessChrome 156에서 실행했고 17개 case 결과가 정확히 같았다. 양쪽에서 Ahem 10px font readiness가 true였다. 구현 review에서 0..=60px의 중간값도 연속 지원해야 함을 확인해 별도 [추가 Chrome 관측](../spec/internal/evidence/c11-4-direct-text-aspect-ratio-min-max-precomparison-2026-10-30/README.md#연속-px-범위-추가-oracle) 두 개를 더했다. `min-width:45px`는 columns `[45,10]px`, row `22.5px`, item `45×22.5px`이고 `max-height:17.75px; min-width:0; min-height:0`는 columns `[35.5,10]px`, row `17.75px`, item `35.5×17.75px`다.
 
 - Root: HTML Grid, width `100px`, height `auto`, columns `max-content max-content`, rows `auto`, gap `0`, normal alignment.
 - Item: 정확히 두 개의 HTML block child이며 direct text는 `AAAA`와 `A`다. Ahem `10px/10px`, `horizontal-tb`, LTR, wrapping 기본 조건을 유지한다.
@@ -54,9 +54,9 @@
 
 1. Vendored Taffy 0.15.0 Grid 코드를 대조한다. 현재 `non_replaced_ratio_content_contribution`은 min/max가 전부 auto일 때만 ratio-derived intrinsic contribution을 쓰고, `transferred_size_suggestion`은 replaced item 전용이다. 구현은 replaced-only 분기를 유지하면서 non-replaced content-size suggestion의 min-content, 반대 축 min/max ratio conversion, affected-axis max clamp 및 box-sizing edge를 별도 처리한다. 기존 `minimum_contribution`/min-content/max-content 경로의 실제 trace를 확인해 어느 경로가 관측된 track을 결정하는지 증명한다.
 2. Direct-text collector와 `paragraph_style_for_aspect_ratio`에서 지원 subset의 px min/max를 typed value로 허용한다. 미지원 값은 paragraph/layout 시작 전에 오류로 끝나야 한다. Style-to-layout projection은 기존 정확한 ratio owner NodeId 및 ratio sizing-box contract를 재사용한다.
-3. 17개 사전 비교 장면을 고정 C11.4 runtime matrix에 추가한다. 각 case의 resolved track list, min-content/ratio-adjusted suggestion, row/column contribution stage, item/root frame과 overflow를 같은 style revision으로 기록한다. 17개 Chrome oracle expected값과 정확히 일치해야 한다. Ahem/embedded source oracle도 계속 같은 출력을 내야 한다.
+3. 17개 사전 비교 장면과 연속 px 범위 추가 oracle 2개를 고정 C11.4 runtime matrix에 둔다. 19개 각각의 resolved track list, min-content/ratio-adjusted suggestion, row/column contribution stage, item/root frame과 overflow를 같은 style revision으로 기록한다. 전체 19개 expected값은 고정 Chrome 관측과 정확히 일치해야 한다. Ahem/embedded source의 기존 17개 oracle 동등성도 유지한다.
 4. Negative controls: row/column axis swap, ratio 역수 오류, min/max 적용 순서 역전, max가 min을 잘못 덮음, `min-width:auto`를 0으로 처리, min-width 0 control 누락, content-box edge 중복/누락, numeric ratio를 content-box 처리, `auto <ratio>`를 border-box 처리, no-ratio도 전이, wrong/multiple ratio owner, stale style revision, unsupported dimension/percentage/calc/negative/non-finite input, unsupported root track, extra item, wrong Ahem metrics를 각각 거부하거나 반례 출력으로 검출한다.
-5. 기존 23개 direct-text aspect-ratio/runtime 회귀와 신규 17개를 Android API 37 ARM64 AVD/SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 실행한다. Scene geometry와 표면 표본을 oracle와 비교한다. AVD는 software renderer, iOS 표본은 compositor submission 전 Metal drawable이라는 한계를 보고하며 실기기/hardware GPU 증거로 확대하지 않는다.
+5. 기존 23개 direct-text aspect-ratio/runtime 회귀와 신규 19개를 합친 42개를 Android API 37 ARM64 AVD/SwiftShader 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 실행한다. Scene geometry와 표면 표본을 oracle와 비교한다. 최종 dirty source 기준 두 플랫폼 모두 42/42 scene과 129/129 surface sample이 exact다. AVD는 software renderer, iOS 표본은 compositor submission 전 Metal drawable이라는 한계를 보고하며 실기기/hardware GPU 증거로 확대하지 않는다.
 6. Focused Rust tests, `spinon-layout` 및 runtime 관련 gates, `cargo fmt --all -- --check`, default/fixture-test Clippy와 default/positive-control artifact boundary를 기록한다. Fixture-only FFI, string, matrix payload는 product/default artifact에서 빠져야 한다. 실행하지 않은 CI는 통과로 보고하지 않는다.
 7. 내부 계약 0059의 제한 direct-text fixture 범위와 오류 경계를 갱신하고 숫자 버전 `0.1.0`을 유지한다. 공식 STATUS에서 C11/C11.4 checkbox와 `72/213`은 그대로 둔다. 계획 PR 병합 뒤 구현 PR도 별도 branch/PR로 진행한다.
 

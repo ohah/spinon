@@ -2,8 +2,9 @@ use std::collections::{BTreeMap, BTreeSet};
 
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, NodeId};
 use spinon_layout::{
-    FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutBoxSizing, LayoutEdges,
-    LayoutGap, LayoutOverflow, LayoutPositioning, LayoutStyle, TextDirection,
+    FlexDirection, GridContainerInput, GridItemInput, LayoutBorder, LayoutBoxSizing,
+    LayoutDimension, LayoutEdges, LayoutGap, LayoutLengthPercentage, LayoutOverflow,
+    LayoutPositioning, LayoutStyle, TextDirection,
 };
 use spinon_style::{
     ComputedAspectRatioSizingBox, ComputedCssDimension, ComputedCssGridLayout, ComputedCssMaxSize,
@@ -107,13 +108,127 @@ fn validate_content_box_ratio_gate(
     Ok(())
 }
 
+fn validate_aspect_ratio_minmax_gate(
+    snapshot: &ComputedStyleSnapshot,
+    requested_node: Option<NodeId>,
+) -> Result<(), StyleLayoutError> {
+    let Some(requested_node) = requested_node else {
+        return Ok(());
+    };
+    let failure = |value: String| StyleLayoutError::UnsupportedComputedValue {
+        node: requested_node,
+        property: "aspect-ratio",
+        value,
+    };
+    if snapshot.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 {
+        return Err(failure(
+            "ratio min/max constraints are restricted to the C11.4 direct-text fixture".into(),
+        ));
+    }
+    let ratio_owners = snapshot
+        .elements
+        .iter()
+        .filter(|element| element.layout_aspect_ratio.is_some())
+        .collect::<Vec<_>>();
+    let owners = ratio_owners
+        .iter()
+        .copied()
+        .filter(|element| has_size_constraints(element))
+        .collect::<Vec<_>>();
+    if ratio_owners.len() != 1
+        || ratio_owners[0].node_id != requested_node
+        || owners.len() != 1
+        || owners[0].node_id != requested_node
+    {
+        return Err(failure(format!(
+            "owner gate {requested_node:?} does not uniquely match ratio owners {:?} with min/max owners {:?}",
+            ratio_owners
+                .iter()
+                .map(|element| element.node_id.get())
+                .collect::<Vec<_>>(),
+            owners
+                .iter()
+                .map(|element| element.node_id.get())
+                .collect::<Vec<_>>()
+        )));
+    }
+    let ratio_style = owners[0];
+    let supported_ratio = match ratio_style
+        .properties
+        .get("aspect-ratio")
+        .map(String::as_str)
+    {
+        Some("2 / 1") => ratio_style.layout_aspect_ratio.is_some_and(|ratio| {
+            ratio.ratio.is_finite()
+                && ratio.ratio == 2.0
+                && ratio.sizing_box == ComputedAspectRatioSizingBox::BoxSizing
+        }),
+        Some("auto 2 / 1") => ratio_style.layout_aspect_ratio.is_some_and(|ratio| {
+            ratio.ratio.is_finite()
+                && ratio.ratio == 2.0
+                && ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox
+        }),
+        _ => false,
+    };
+    if !supported_ratio || !supported_fixed_constraints(ratio_style) {
+        return Err(failure(
+            "ratio min/max fixture supports only computed 2 / 1 and fixed oracle dimensions".into(),
+        ));
+    }
+    Ok(())
+}
+
+fn has_size_constraints(element: &ComputedElementStyle) -> bool {
+    let dimensions = element.layout_dimensions;
+    dimensions.min_width != ComputedCssDimension::Auto
+        || dimensions.max_width != ComputedCssMaxSize::None
+        || dimensions.min_height != ComputedCssDimension::Auto
+        || dimensions.max_height != ComputedCssMaxSize::None
+}
+
+fn supported_fixed_constraints(element: &ComputedElementStyle) -> bool {
+    fn allowed(value: f32) -> bool {
+        value.is_finite() && (0.0..=60.0).contains(&value)
+    }
+    let dimensions = element.layout_dimensions;
+    let minimums = [dimensions.min_width, dimensions.min_height]
+        .into_iter()
+        .all(|value| match value {
+            ComputedCssDimension::Auto => true,
+            ComputedCssDimension::LengthPx(value) => allowed(value),
+            _ => false,
+        });
+    let maximums = [dimensions.max_width, dimensions.max_height]
+        .into_iter()
+        .all(|value| match value {
+            ComputedCssMaxSize::None => true,
+            ComputedCssMaxSize::LengthPx(value) => allowed(value),
+            _ => false,
+        });
+    minimums && maximums
+}
+
 pub(super) fn project_styles(
     tree: &HostDocumentSnapshot,
     root: HostNodeHandle,
     snapshot: &ComputedStyleSnapshot,
     options: super::StyleLayoutProjectionOptions,
 ) -> Result<ProjectedStyles, StyleLayoutError> {
-    validate_content_box_ratio_gate(snapshot, options.content_box_ratio_node)?;
+    let content_box_ratio_node = options.content_box_ratio_node.or_else(|| {
+        let minmax_node = options.aspect_ratio_minmax_node?;
+        snapshot
+            .elements
+            .iter()
+            .any(|element| {
+                element.node_id == minmax_node
+                    && element.layout_aspect_ratio.is_some_and(|ratio| {
+                        ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox
+                    })
+            })
+            .then_some(minmax_node)
+    });
+    validate_content_box_ratio_gate(snapshot, content_box_ratio_node)?;
+    validate_aspect_ratio_minmax_gate(snapshot, options.aspect_ratio_minmax_node)?;
     validate_fixed_ancestor_effects(tree, root, snapshot)?;
     let mut output = BTreeMap::new();
     let mut positioning = BTreeMap::new();
@@ -176,8 +291,11 @@ pub(super) fn project_styles(
             && grid_nodes
                 .as_ref()
                 .is_some_and(|nodes| nodes.html_image_grid_items.contains(&element.node_id));
+        let supports_c11_4_aspect_ratio_minmax =
+            options.aspect_ratio_minmax_node == Some(element.node_id);
         if let Some(property) = unsupported_aspect_ratio_constraint(element)
             && !supports_grid_image_ratio_transfer
+            && !supports_c11_4_aspect_ratio_minmax
         {
             return Err(StyleLayoutError::UnsupportedAspectRatioConstraint { node, property });
         }
@@ -310,6 +428,12 @@ pub(super) fn project_styles(
         if blockify_anonymous_grid_image && display == spinon_layout::LayoutDisplay::Inline {
             display = spinon_layout::LayoutDisplay::Block;
         }
+        let css_box_sizing = parse_box_sizing(node, required(element, "box-sizing")?)?;
+        let content_box_ratio_owner = (options.content_box_ratio_node == Some(node)
+            || options.aspect_ratio_minmax_node == Some(node))
+            && element
+                .layout_aspect_ratio
+                .is_some_and(|ratio| ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox);
         let mut style = LayoutStyle {
             display,
             overflow_x: if supports_overflow_clip(snapshot.profile)
@@ -326,13 +450,10 @@ pub(super) fn project_styles(
             } else {
                 LayoutOverflow::Visible
             },
-            box_sizing: if options.content_box_ratio_node == Some(node)
-                && element.layout_aspect_ratio.is_some_and(|ratio| {
-                    ratio.sizing_box == ComputedAspectRatioSizingBox::ContentBox
-                }) {
+            box_sizing: if content_box_ratio_owner {
                 LayoutBoxSizing::ContentBox
             } else {
-                parse_box_sizing(node, required(element, "box-sizing")?)?
+                css_box_sizing
             },
             width: parse_dimension(
                 node,
@@ -656,6 +777,20 @@ pub(super) fn project_styles(
                 LayoutBorder::default()
             },
         };
+        if options.aspect_ratio_minmax_node == Some(node)
+            && content_box_ratio_owner
+            && css_box_sizing == LayoutBoxSizing::BorderBox
+        {
+            let horizontal_edges =
+                edge_padding_border(style.padding.left, style.border.left, node)?
+                    + edge_padding_border(style.padding.right, style.border.right, node)?;
+            let vertical_edges = edge_padding_border(style.padding.top, style.border.top, node)?
+                + edge_padding_border(style.padding.bottom, style.border.bottom, node)?;
+            style.min_width = content_box_constraint(style.min_width, horizontal_edges, node)?;
+            style.max_width = content_box_constraint(style.max_width, horizontal_edges, node)?;
+            style.min_height = content_box_constraint(style.min_height, vertical_edges, node)?;
+            style.max_height = content_box_constraint(style.max_height, vertical_edges, node)?;
+        }
         if grid_nodes
             .as_ref()
             .is_some_and(|nodes| nodes.hidden.contains(&node))
@@ -1092,6 +1227,37 @@ fn unsupported_aspect_ratio_constraint(element: &ComputedElementStyle) -> Option
         Some("max-height")
     } else {
         None
+    }
+}
+
+fn edge_padding_border(
+    padding: LayoutLengthPercentage,
+    border: f32,
+    node: NodeId,
+) -> Result<f32, StyleLayoutError> {
+    match padding {
+        LayoutLengthPercentage::LengthPx(value) => Ok(value + border),
+        _ => Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "padding",
+            value: "C11.4 ratio min/max requires fixed pixel box edges".into(),
+        }),
+    }
+}
+
+fn content_box_constraint(
+    dimension: LayoutDimension,
+    edge_sum: f32,
+    node: NodeId,
+) -> Result<LayoutDimension, StyleLayoutError> {
+    match dimension {
+        LayoutDimension::Fixed(value) => Ok(LayoutDimension::Fixed((value - edge_sum).max(0.0))),
+        LayoutDimension::Auto => Ok(LayoutDimension::Auto),
+        _ => Err(StyleLayoutError::UnsupportedComputedValue {
+            node,
+            property: "min/max-size",
+            value: "C11.4 ratio min/max requires fixed pixel constraints".into(),
+        }),
     }
 }
 

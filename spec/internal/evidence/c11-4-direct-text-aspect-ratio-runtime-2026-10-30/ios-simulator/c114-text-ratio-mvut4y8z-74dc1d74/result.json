@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-text-ratio-mvut4y8z-74dc1d74",
+  "sourceHead": "d3fdd5660614c7f877908e95c2bffca39bd4496a",
+  "sourceDirty": "M crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs\n M crates/spinon-layout/src/lib.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs\n M crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs\n M crates/spinon-style-to-layout/src/lib.rs\n M crates/spinon-style-to-layout/src/projection.rs\n M crates/spinon-style-to-layout/src/projection/style_values.rs\n M plan/c11-4-direct-text-aspect-ratio-min-max.md\n M platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java\n M platforms/ios/Sources/C0410RuntimeGpuDemo.swift\n M tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs\n M vendor/taffy/src/compute/grid/alignment.rs\n M vendor/taffy/src/compute/grid/types/grid_item.rs\n M vendor/taffy/src/compute/grid/types/mod.rs\n?? crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs\n?? crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs\n?? crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs",
+  "sourceHashes": {
+    "plan/c11-4-direct-text-aspect-ratio-min-max.md": "0e39faa4bcc486f05a2f3fa1cab61e4bc5347d24c4589c31d5e650908ac5ad2c",
+    "crates/spinon-layout/src/lib.rs": "97168c913a8d98ca657cf8bafd6ea25ac67cf17f89a57133d7400e06276486c2",
+    "crates/spinon-layout/src/grid_non_replaced_ratio_content_tests.rs": "4d2dc512fcd8be15624b1b3ba0a0060fd086f52fc9fd41122ee15065ae2ed2fa",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures.rs": "bf232f9698eb302f51f49101ee49448928cc02906a995bd4cc8845fe4d6eb583",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs": "ff24377c07e7ad036dc894ffac832e9b79e1fc61a4175bb99883ec98fb011c30",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs": "7d165f99ba02be6b3eac34296c2dde0763d3de4d59f9e876879cc77d82e2360c",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests.rs": "3926b9d4dfaa327ca05fde11f6a5583cf1a03e2b37fa86679e59b3d40e1ebcc2",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio.rs": "96d9230819700b6719c9dd34f1b482741c9ecd477aedb03162dc00f3c31757d3",
+    "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text_tests/aspect_ratio_minmax.rs": "24ad08492e2583eaba2ec90baf2db3ca0468e89f8b921f091d79c46dd9e93139",
+    "crates/spinon-style-to-layout/src/projection.rs": "3e225531070c2c09fad77055c43e038cce7645f66f2dd9fe6b661baad3b54d8a",
+    "crates/spinon-style-to-layout/src/projection/style_values.rs": "1e3d4940dd1ec95d5c89c70ad657d89428fe12149f4768fa69b0be42542029cd",
+    "crates/spinon-style-to-layout/src/lib.rs": "5461ee2c69a7baea1479f6acb8c5a5438a2e5614c22650536af48f6103cf5a19",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4.rs": "97a398e3e029fdafdb4fa4d57f426e9aa9eaf0567795cb14c5e92bc7f2d82c4d",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio.rs": "d0d2c6316d97dd6c8c4680264b1008b60cb8abeb326a163f4c5ad1be9382a5c6",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs": "abe6eb76855a0b118ab0bded86731c843a51ca2b75a2b2b8ebec847dfd912175",
+    "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs": "bac7255188e58821f499eeabdccf1b3bd2952e942caa6294b788c5aa12a33401",
+    "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java": "39541233de1db01fd622e590ea4bbfeb2a38d588eb47ae665dab2f7b78220d79",
+    "platforms/ios/Sources/C0410RuntimeGpuDemo.swift": "483b63cc77ea28c01d6e234fc02f1945465a002e96d1a77ae582306927864d39",
+    "vendor/taffy/src/compute/grid/types/grid_item.rs": "4bea798a22d6bf8a1574533caaea776ccf043b84a7cb6c28e6da053efae02d7f",
+    "vendor/taffy/src/compute/grid/types/mod.rs": "4c01c62705018d154ba6a9423d39fd703bf0253da2d51369632013dcf797f6ba",
+    "vendor/taffy/src/compute/grid/alignment.rs": "cac950c10a0f270b934462adc6f625143ac57abb4bcd91452b69bcdf5a151122",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio.html": "f507edb05f1554e6d2c8ff4fac483c67021f38bc9f24bd850f2d8c1d7875d3ec",
+    "tests/fixtures/css/c11/grid-direct-text-aspect-ratio-range.html": "fd43945d6200d36524c07c539fdf1e3193157e4df4ad13f12243937e42c771d0",
+    "tools/css-reference/capture-c11-4-direct-text-aspect-ratio-simulators.mjs": "ec84eb8020a5c3f6fcf3699cd454553ce2aa2adb25b6edffc3515214c036b580"
+  },
+  "sceneCount": 42,
+  "observations": [
+    {
+      "id": "grid-text-aspect-ratio-row",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-control",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-column-control",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-1-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-4-3",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-3-2",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-row-5-2",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-1-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-4-3",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-3-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-5-2",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-60",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-45",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-30",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-range-column-control-20",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-auto-row-auto-3-2-content-box",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-auto-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-numeric-3-2-border-box",
+      "boxCount": 3,
+      "traceParts": 14,
+      "pixelSamples": 4
+    },
+    {
+      "id": "grid-text-aspect-ratio-row-60-no-ratio-border-box",
+      "boxCount": 3,
+      "traceParts": 15,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-baseline",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-45",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-width-30-min-width-0",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-15-min-height-0-min-width-0",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-max-height-17-75-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-width-60-clamped-by-max-height-20",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-min-height-20-clamps-transferred-max-width-30",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-width-60-over-max-width-40",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-source-min-height-30-over-max-height-20",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-width-60",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-no-ratio-min-height-30",
+      "boxCount": 3,
+      "traceParts": 20,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-min-width-60",
+      "boxCount": 3,
+      "traceParts": 19,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-numeric-border-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    },
+    {
+      "id": "grid-text-aspect-ratio-minmax-auto-content-box-max-height-15-min-controls",
+      "boxCount": 3,
+      "traceParts": 18,
+      "pixelSamples": 3
+    }
+  ]
+}

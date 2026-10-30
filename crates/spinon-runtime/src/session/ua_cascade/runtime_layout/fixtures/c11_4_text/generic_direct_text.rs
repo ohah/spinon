@@ -22,6 +22,7 @@ const HTML_NAMESPACE: &str = "http://www.w3.org/1999/xhtml";
 enum DirectTextProfile {
     Intrinsic,
     AspectRatio,
+    AspectRatioMinMax,
 }
 
 /// 기존 고정 scene adapter 다음에 실행하는 direct element-text fixture collector입니다.
@@ -42,6 +43,15 @@ pub(super) fn prepare_aspect_ratio(
     prepare_with_profile(snapshot, root, styles, DirectTextProfile::AspectRatio)
 }
 
+/// Ahem direct-text ratio and fixed min/max fixture profile.
+pub(super) fn prepare_aspect_ratio_minmax(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<Option<C11_4TextInput>, RuntimeLayoutFailure> {
+    prepare_with_profile(snapshot, root, styles, DirectTextProfile::AspectRatioMinMax)
+}
+
 fn prepare_with_profile(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
@@ -53,7 +63,10 @@ fn prepare_with_profile(
     if property(root_style, "display") != Some("grid") {
         return Ok(None);
     }
-    if profile == DirectTextProfile::AspectRatio && !is_aspect_ratio_grid_root_candidate(root_style)
+    if matches!(
+        profile,
+        DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax
+    ) && !is_aspect_ratio_grid_root_candidate(root_style)
     {
         return Ok(None);
     }
@@ -106,6 +119,8 @@ fn prepare_with_profile(
     let mut long_text_count = 0;
     let mut aspect_ratio_count = 0;
     let mut content_box_ratio_node = None;
+    let mut aspect_ratio_minmax_node = None;
+    let mut saw_minmax_constraints = false;
     for item in candidates {
         let text_node = direct_text_source(snapshot, root, item)?;
         let text = snapshot
@@ -125,9 +140,25 @@ fn prepare_with_profile(
             ));
         }
         let style = style_for(styles, item.id())?;
+        let item_has_minmax = has_minmax_constraints(style);
+        saw_minmax_constraints |= item_has_minmax;
+        if item_has_minmax {
+            if profile != DirectTextProfile::AspectRatioMinMax
+                || text != "AAAA"
+                || !supported_minmax_constraints(style)
+            {
+                return Err(style_failure(
+                    style.node_id.get(),
+                    "min/max constraints are limited to fixed C11.4 direct-text cases on AAAA",
+                ));
+            }
+            if style.layout_aspect_ratio.is_some() {
+                aspect_ratio_minmax_node = Some(style.node_id);
+            }
+        }
         let paragraph_style = match profile {
             DirectTextProfile::Intrinsic => paragraph_style_for(styles, style, 10.0, "auto")?,
-            DirectTextProfile::AspectRatio => {
+            DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax => {
                 match text.as_str() {
                     "A" => short_text_count += 1,
                     "AAAA" => long_text_count += 1,
@@ -156,7 +187,11 @@ fn prepare_with_profile(
                         "aspect-ratio profile requires computed auto when typed ratio is absent",
                     ));
                 }
-                paragraph_style_for_aspect_ratio(styles, style, 10.0, "auto")?
+                if profile == DirectTextProfile::AspectRatioMinMax {
+                    paragraph_style_for_aspect_ratio_minmax(styles, style, 10.0, "auto")?
+                } else {
+                    paragraph_style_for_aspect_ratio(styles, style, 10.0, "auto")?
+                }
             }
         };
         paragraph_styles.insert(item.id(), paragraph_style);
@@ -168,8 +203,13 @@ fn prepare_with_profile(
             "candidate paragraph ownership is not unique",
         ));
     }
-    if profile == DirectTextProfile::AspectRatio
-        && (short_text_count != 1 || long_text_count != 1 || aspect_ratio_count > 1)
+    if profile == DirectTextProfile::AspectRatioMinMax && !saw_minmax_constraints {
+        return Ok(None);
+    }
+    if matches!(
+        profile,
+        DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax
+    ) && (short_text_count != 1 || long_text_count != 1 || aspect_ratio_count > 1)
     {
         return Err(source_failure(
             root.id(),
@@ -190,6 +230,7 @@ fn prepare_with_profile(
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node,
+        aspect_ratio_minmax_node,
     }))
 }
 
@@ -256,7 +297,7 @@ fn validate_grid_root(
         "align-items",
         match profile {
             DirectTextProfile::Intrinsic => "start",
-            DirectTextProfile::AspectRatio => "normal",
+            DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax => "normal",
         },
     )?;
     require_grid_property(style, "align-content", "normal")?;
@@ -286,7 +327,7 @@ fn validate_grid_root(
                 ]
                 && grid.rows == [ComputedCssGridTrackSize::Auto]
         }
-        DirectTextProfile::AspectRatio => {
+        DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax => {
             grid.columns
                 == [
                     ComputedCssGridTrackSize::MaxContent,
@@ -329,7 +370,7 @@ fn validate_grid_root(
                     && spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0))
                     || spacing.column_gap != ComputedCssSpacingValue::LengthPx(10.0)
             }
-            DirectTextProfile::AspectRatio => {
+            DirectTextProfile::AspectRatio | DirectTextProfile::AspectRatioMinMax => {
                 spacing.row_gap != ComputedCssSpacingValue::LengthPx(0.0)
                     || spacing.column_gap != ComputedCssSpacingValue::LengthPx(0.0)
             }
@@ -351,6 +392,41 @@ fn aspect_ratio_rows_supported(rows: &[ComputedCssGridTrackSize]) -> bool {
             [ComputedCssGridTrackSize::LengthPx(value)]
                 if [20.0, 30.0, 40.0, 45.0, 60.0].contains(value)
         )
+}
+
+fn has_minmax_constraints(style: &ComputedElementStyle) -> bool {
+    let dimensions = style.layout_dimensions;
+    dimensions.min_width != ComputedCssDimension::Auto
+        || dimensions.max_width != ComputedCssMaxSize::None
+        || dimensions.min_height != ComputedCssDimension::Auto
+        || dimensions.max_height != ComputedCssMaxSize::None
+}
+
+fn supported_minmax_constraints(style: &ComputedElementStyle) -> bool {
+    fn min_supported(value: ComputedCssDimension) -> bool {
+        match value {
+            ComputedCssDimension::Auto => true,
+            ComputedCssDimension::LengthPx(value) => {
+                value.is_finite() && (0.0..=60.0).contains(&value)
+            }
+            _ => false,
+        }
+    }
+    fn max_supported(value: ComputedCssMaxSize) -> bool {
+        match value {
+            ComputedCssMaxSize::None => true,
+            ComputedCssMaxSize::LengthPx(value) => {
+                value.is_finite() && (0.0..=60.0).contains(&value)
+            }
+            _ => false,
+        }
+    }
+
+    let dimensions = style.layout_dimensions;
+    min_supported(dimensions.min_width)
+        && max_supported(dimensions.max_width)
+        && min_supported(dimensions.min_height)
+        && max_supported(dimensions.max_height)
 }
 
 fn computed_ratio_matches(
@@ -541,6 +617,14 @@ pub(super) fn first_html_image(
     Ok(None)
 }
 
+#[derive(Clone, Copy)]
+enum DirectTextParagraphProfile {
+    Plain,
+    AspectRatio,
+    AspectRatioMinMax,
+    Baseline { allow_explicit_grid_placement: bool },
+}
+
 pub(super) fn paragraph_style_for(
     styles: &ComputedStyleSnapshot,
     style: &ComputedElementStyle,
@@ -548,7 +632,11 @@ pub(super) fn paragraph_style_for(
     align_self: &'static str,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     paragraph_style_for_with_baseline_alias(
-        styles, style, font_size, align_self, false, false, false,
+        styles,
+        style,
+        font_size,
+        align_self,
+        DirectTextParagraphProfile::Plain,
     )
 }
 
@@ -559,7 +647,26 @@ pub(super) fn paragraph_style_for_aspect_ratio(
     align_self: &'static str,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
     paragraph_style_for_with_baseline_alias(
-        styles, style, font_size, align_self, false, false, true,
+        styles,
+        style,
+        font_size,
+        align_self,
+        DirectTextParagraphProfile::AspectRatio,
+    )
+}
+
+pub(super) fn paragraph_style_for_aspect_ratio_minmax(
+    styles: &ComputedStyleSnapshot,
+    style: &ComputedElementStyle,
+    font_size: f32,
+    align_self: &'static str,
+) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    paragraph_style_for_with_baseline_alias(
+        styles,
+        style,
+        font_size,
+        align_self,
+        DirectTextParagraphProfile::AspectRatioMinMax,
     )
 }
 
@@ -575,9 +682,9 @@ pub(super) fn paragraph_style_for_baseline_fixture(
         style,
         font_size,
         align_self,
-        align_self == "first baseline",
-        allow_explicit_grid_placement,
-        false,
+        DirectTextParagraphProfile::Baseline {
+            allow_explicit_grid_placement,
+        },
     )
 }
 
@@ -586,10 +693,18 @@ fn paragraph_style_for_with_baseline_alias(
     style: &ComputedElementStyle,
     font_size: f32,
     align_self: &'static str,
-    allow_first_baseline_alias: bool,
-    allow_explicit_grid_placement: bool,
-    allow_aspect_ratio: bool,
+    profile: DirectTextParagraphProfile,
 ) -> Result<ParagraphStyle, RuntimeLayoutFailure> {
+    let (allow_explicit_grid_placement, allow_aspect_ratio, allow_minmax_constraints) =
+        match profile {
+            DirectTextParagraphProfile::Plain => (false, false, false),
+            DirectTextParagraphProfile::AspectRatio => (false, true, false),
+            DirectTextParagraphProfile::AspectRatioMinMax => (false, true, true),
+            DirectTextParagraphProfile::Baseline {
+                allow_explicit_grid_placement,
+            } => (allow_explicit_grid_placement, false, false),
+        };
+    let allow_first_baseline_alias = matches!(profile, DirectTextParagraphProfile::Baseline { .. });
     require_style_property(style, "display", "block")?;
     require_style_property(style, "position", "static")?;
     require_style_property(style, "order", "0")?;
@@ -649,10 +764,7 @@ fn paragraph_style_for_with_baseline_alias(
     };
     if style.layout_dimensions.width != ComputedCssDimension::Auto
         || style.layout_dimensions.height != ComputedCssDimension::Auto
-        || style.layout_dimensions.min_width != ComputedCssDimension::Auto
-        || style.layout_dimensions.max_width != ComputedCssMaxSize::None
-        || style.layout_dimensions.min_height != ComputedCssDimension::Auto
-        || style.layout_dimensions.max_height != ComputedCssMaxSize::None
+        || (!allow_minmax_constraints && has_minmax_constraints(style))
         || match style.layout_aspect_ratio {
             None => false,
             Some(ratio) => !allow_aspect_ratio || !computed_ratio_matches(style, ratio),

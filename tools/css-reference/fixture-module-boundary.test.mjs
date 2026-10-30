@@ -52,6 +52,7 @@ const canonicalFixtureSources = [
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_percentage_argument.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_percentage_argument_report.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor.rs',
+  'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_text_aspect_ratio_minmax.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/fit_content_auto_min_floor_report.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/cyclic_percentage_auto_repeat_rows.rs',
   'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/grid_auto_repeat_intrinsic_wpt.rs',
