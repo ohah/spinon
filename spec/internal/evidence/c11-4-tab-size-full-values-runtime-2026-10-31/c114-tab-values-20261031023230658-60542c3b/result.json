@@ -1,0 +1,1587 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-tab-values-20261031023230658-60542c3b",
+  "sourceHead": "e3ec8a24b2ff463519dc79968f4cbba35d1226e3",
+  "target": "android",
+  "expectedSceneCount": 140,
+  "results": [
+    {
+      "target": "android-avd",
+      "runPrefix": "c114-tab-values-20261031023230658-60542c3b",
+      "sceneCount": 140,
+      "positiveScenes": 140,
+      "rejectedScenes": 0,
+      "retryCount": 0,
+      "observations": [
+        {
+          "id": "anonymous-pre-tab-value-number-zero-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            10
+          ],
+          "itemWidth": 10,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 3695
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 3771
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 3836
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 3896
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 3970
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4039
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            40,
+            20
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 4110
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            10,
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 4176
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4238
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-zero-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 4303
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            15
+          ],
+          "itemWidth": 15,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4380
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4460
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4538
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4615
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            27.5
+          ],
+          "itemWidth": 27.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4672
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4745
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            45,
+            25
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 4820
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 4890
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 4950
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-quarter-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 5027
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            16
+          ],
+          "itemWidth": 16,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5092
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5167
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            34
+          ],
+          "itemWidth": 34,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5236
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5297
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            28
+          ],
+          "itemWidth": 28,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5366
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            24
+          ],
+          "itemWidth": 24,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5438
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            44,
+            25
+          ],
+          "itemWidth": 44,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 5513
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 5585
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            44
+          ],
+          "itemWidth": 44,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5659
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-tenths-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            44
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 5730
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            15
+          ],
+          "itemWidth": 15,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5798
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5892
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 5954
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6026
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6099
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6165
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            45,
+            25
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 6234
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 6302
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6371
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-half-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 6446
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6530
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6600
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6674
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6741
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6811
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 6892
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            50,
+            25
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 6961
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 7028
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7099
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-one-and-half-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 7167
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7235
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7298
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7366
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            60
+          ],
+          "itemWidth": 60,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7433
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            60
+          ],
+          "itemWidth": 60,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7499
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7575
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            45,
+            35
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 7649
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            25,
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 7714
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7786
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-two-and-half-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 7866
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            42.5
+          ],
+          "itemWidth": 42.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 7937
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            42.5
+          ],
+          "itemWidth": 42.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8012
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            42.5
+          ],
+          "itemWidth": 42.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8078
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            75
+          ],
+          "itemWidth": 75,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8160
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            75
+          ],
+          "itemWidth": 75,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8231
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            32.5
+          ],
+          "itemWidth": 32.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8298
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            52.5,
+            42.5
+          ],
+          "itemWidth": 52.5,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 8373
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            32.5,
+            42.5
+          ],
+          "itemWidth": 42.5,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 8446
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            52.5
+          ],
+          "itemWidth": 52.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8523
+        },
+        {
+          "id": "anonymous-pre-tab-value-number-three-and-quarter-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            52.5
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 8587
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            10
+          ],
+          "itemWidth": 10,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8653
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8721
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8793
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8867
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 8944
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9010
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            40,
+            20
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 9082
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            10,
+            20
+          ],
+          "itemWidth": 20,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 9145
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9214
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-zero-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 9285
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            10.6
+          ],
+          "itemWidth": 10.6,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9351
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            20.5
+          ],
+          "itemWidth": 20.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9431
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            30.4
+          ],
+          "itemWidth": 30.4,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9495
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            50.5
+          ],
+          "itemWidth": 50.5,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9561
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            20.8
+          ],
+          "itemWidth": 20.8,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9635
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            20.4
+          ],
+          "itemWidth": 20.4,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9704
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-lf-reset",
+          "traceParts": 8,
+          "lineAdvances": [
+            40.4,
+            20.5
+          ],
+          "itemWidth": 40.4,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 9778
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            10.5,
+            20.5
+          ],
+          "itemWidth": 20.5,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 9849
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            40.4
+          ],
+          "itemWidth": 40.4,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 9924
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-three-tenths-fixed-overflow",
+          "traceParts": 6,
+          "lineAdvances": [
+            40.4
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 9994
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            14
+          ],
+          "itemWidth": 14,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10060
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            24
+          ],
+          "itemWidth": 24,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10134
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            34
+          ],
+          "itemWidth": 34,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10205
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            54
+          ],
+          "itemWidth": 54,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10291
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            26
+          ],
+          "itemWidth": 26,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10366
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            24
+          ],
+          "itemWidth": 24,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10432
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            44,
+            24
+          ],
+          "itemWidth": 44,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 10515
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            14,
+            24
+          ],
+          "itemWidth": 24,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 10584
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            44
+          ],
+          "itemWidth": 44,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10643
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-two-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            44
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 10714
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            15
+          ],
+          "itemWidth": 15,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10780
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10861
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10919
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 10988
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11057
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11127
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            45,
+            25
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 11185
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 11250
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11311
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-five-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 11380
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            22
+          ],
+          "itemWidth": 22,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11444
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            34
+          ],
+          "itemWidth": 34,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11508
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            46
+          ],
+          "itemWidth": 46,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11574
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            58
+          ],
+          "itemWidth": 58,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11643
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            46
+          ],
+          "itemWidth": 46,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11707
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            36
+          ],
+          "itemWidth": 36,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11777
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            56,
+            34
+          ],
+          "itemWidth": 56,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 11842
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            24,
+            34
+          ],
+          "itemWidth": 34,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 11902
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            56
+          ],
+          "itemWidth": 56,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 11972
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-twelve-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            56
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 12030
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12100
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12161
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12226
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12294
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            40
+          ],
+          "itemWidth": 40,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12366
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12432
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            50,
+            25
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 12498
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 12567
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 50,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12633
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-em-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            50
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 12691
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-leading",
+          "traceParts": 7,
+          "lineAdvances": [
+            15
+          ],
+          "itemWidth": 15,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12755
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-after-one",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12817
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-after-two",
+          "traceParts": 7,
+          "lineAdvances": [
+            35
+          ],
+          "itemWidth": 35,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12878
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-exact-stop",
+          "traceParts": 7,
+          "lineAdvances": [
+            55
+          ],
+          "itemWidth": 55,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 12954
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-consecutive",
+          "traceParts": 7,
+          "lineAdvances": [
+            30
+          ],
+          "itemWidth": 30,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 13027
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-trailing",
+          "traceParts": 7,
+          "lineAdvances": [
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 13088
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-lf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            45,
+            25
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 13154
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-crlf-reset",
+          "traceParts": 7,
+          "lineAdvances": [
+            15,
+            25
+          ],
+          "itemWidth": 25,
+          "rootWidth": 120,
+          "height": 20,
+          "pid": 13215
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-min-content",
+          "traceParts": 7,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 45,
+          "rootWidth": 120,
+          "height": 10,
+          "pid": 13287
+        },
+        {
+          "id": "anonymous-pre-tab-value-length-calc-fixed-overflow",
+          "traceParts": 5,
+          "lineAdvances": [
+            45
+          ],
+          "itemWidth": 25,
+          "rootWidth": 25,
+          "height": 10,
+          "pid": 13351
+        }
+      ]
+    }
+  ]
+}

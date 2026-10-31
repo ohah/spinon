@@ -5,6 +5,12 @@ use crate::{ParagraphInput, TextLayoutError, TextSourceRange, WhiteSpaceMode};
 pub(crate) struct NormalizedText {
     pub text: String,
     pub sources: Vec<TextSourceRange>,
+    pub tab_advances: Vec<TabAdvance>,
+}
+
+pub(crate) struct TabAdvance {
+    pub text_index: usize,
+    pub width: f32,
 }
 
 #[derive(Clone)]
@@ -40,11 +46,6 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
         WhiteSpaceMode::Pre | WhiteSpaceMode::PreWithTabSize(_)
     ) && has_tabs;
     let preserve_pre_wrap_tabs = input.style.white_space == WhiteSpaceMode::PreWrap && has_tabs;
-    let pre_tab_size = match input.style.white_space {
-        WhiteSpaceMode::Pre => crate::TabSize::Eight,
-        WhiteSpaceMode::PreWithTabSize(tab_size) => tab_size,
-        _ => crate::TabSize::Eight,
-    };
     if preserve_pre_tabs && !supports_pre_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreTabProfile(input.node));
     }
@@ -63,10 +64,13 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
     let mut result = NormalizedText {
         text: String::new(),
         sources: Vec::new(),
+        tab_advances: Vec::new(),
     };
     let mut pending_spaces = Vec::new();
     let mut line_start = true;
     let mut pre_wrap_column = 0usize;
+    let mut pre_tab_inline_position = 0.0_f32;
+    let mut in_pre_tab_run = false;
     let mut index = 0;
     while index < characters.len() {
         let source = &characters[index];
@@ -84,15 +88,46 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
             }
             push_character_sources(&mut result, &line_break_sources, '\n');
             pre_wrap_column = 0;
+            pre_tab_inline_position = 0.0;
+            in_pre_tab_run = false;
         } else if preserve_tabs && source.character == '\t' {
-            let tab_stop = pre_tab_size.spaces();
-            let spaces = tab_stop - pre_wrap_column % tab_stop;
-            push_expanded_tab(&mut result, source, spaces);
-            pre_wrap_column += spaces;
+            if let WhiteSpaceMode::PreWithTabSize(tab_size) = input.style.white_space {
+                let width = pre_tab_advance(
+                    tab_size,
+                    input.style.font_size,
+                    pre_tab_inline_position,
+                    in_pre_tab_run,
+                )
+                .ok_or(TextLayoutError::InvalidGlyphLayout(input.node))?;
+                result.tab_advances.push(TabAdvance {
+                    text_index: result.text.len(),
+                    width,
+                });
+                push_suppressed_sources(&mut result, std::slice::from_ref(source));
+                pre_tab_inline_position += width;
+                if !pre_tab_inline_position.is_finite() {
+                    return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                }
+                in_pre_tab_run = true;
+            } else {
+                let tab_stop = 8;
+                let spaces = tab_stop - pre_wrap_column % tab_stop;
+                push_expanded_tab(&mut result, source, spaces);
+                pre_wrap_column += spaces;
+            }
         } else if preserves_spaces_and_breaks(input.style.white_space) {
             push_character(&mut result, source, source.character);
             if preserve_tabs {
                 pre_wrap_column += 1;
+            }
+            if matches!(input.style.white_space, WhiteSpaceMode::PreWithTabSize(_)) {
+                if source.character == 'X' || source.character == ' ' {
+                    pre_tab_inline_position += input.style.font_size;
+                    if !pre_tab_inline_position.is_finite() {
+                        return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                    }
+                }
+                in_pre_tab_run = false;
             }
         } else if input.style.white_space == WhiteSpaceMode::PreLine
             && is_segment_break(source.character)
@@ -196,6 +231,33 @@ fn supports_pre_tab_profile(input: &ParagraphInput, characters: &[SourceCharacte
                     'X' | ' ' | '\t' | '\n' | '\r' | '\u{000c}'
                 )
         })
+}
+
+fn pre_tab_advance(
+    tab_size: crate::TabSize,
+    font_size: f32,
+    inline_position: f32,
+    in_tab_run: bool,
+) -> Option<f32> {
+    let interval = tab_size.interval_px(font_size);
+    if !interval.is_finite() || interval < 0.0 || !inline_position.is_finite() {
+        return None;
+    }
+    if interval == 0.0 {
+        return Some(0.0);
+    }
+    if in_tab_run {
+        return Some(interval);
+    }
+
+    let next_stop_index = (inline_position / interval).floor() + 1.0;
+    let mut next_stop = next_stop_index * interval;
+    let mut width = next_stop - inline_position;
+    if width < font_size * 0.5 {
+        next_stop += interval;
+        width = next_stop - inline_position;
+    }
+    (width.is_finite() && width >= 0.0 && next_stop.is_finite()).then_some(width)
 }
 
 fn push_expanded_tab(result: &mut NormalizedText, source: &SourceCharacter, spaces: usize) {

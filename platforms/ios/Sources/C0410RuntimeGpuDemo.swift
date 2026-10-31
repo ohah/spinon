@@ -1227,6 +1227,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return true }
     if c114DirectTextMultispanSceneExpectation(sceneID) != nil { return true }
+    if c114FullTabSizeSceneExpectation(sceneID) != nil { return true }
     #endif
     if c114GenericDirectTextSceneIDs.contains(sceneID) { return true }
     if c114GridTextBaselineSceneIDs.contains(sceneID) { return true }
@@ -2179,6 +2180,10 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let tabSize = c114FullTabSizeSceneExpectation(sceneID) {
+        return "width=\(c114GenericFrameNumber(tabSize.rootWidth)),"
+            + "height=\(c114GenericFrameNumber(tabSize.height))"
+    }
     if c114IsGridTextLastBaselineScene(sceneID) {
         return sceneID.hasSuffix("-multiline") ? "width=73,height=22" : "width=73,height=20"
     }
@@ -3186,6 +3191,180 @@ private func c114AnonymousTextNumberNear(
     return abs(number.doubleValue - expected) <= 1.0 / 64.0
 }
 
+private struct C114FullTabSizeSceneExpectation {
+    let sourceText: String
+    let normalizedText: String
+    let lineAdvances: [Double]
+    let contentWidth: Double
+    let rootWidth: Double
+    let height: Double
+    let caseID: String
+
+    var columnContribution: Bool { caseID != "fixed-overflow" }
+    var columnKind: String? {
+        switch caseID {
+        case "min-content": return "MinContent"
+        case "fixed-overflow": return nil
+        default: return "MaxContent"
+        }
+    }
+}
+
+private func c114FullTabSizeSceneExpectation(
+    _ sceneID: String
+) -> C114FullTabSizeSceneExpectation? {
+    let prefix = "anonymous-pre-tab-value-"
+    guard sceneID.hasPrefix(prefix) else { return nil }
+    let valueAndCase = String(sceneID.dropFirst(prefix.count))
+    let values: [(String, Double)] = [
+        ("number-zero", 0), ("number-quarter", 2.5), ("number-three-tenths", 3),
+        ("number-half", 5), ("number-one-and-half", 15), ("number-two-and-half", 25),
+        ("number-three-and-quarter", 32.5), ("length-zero", 0),
+        ("length-three-tenths", 0.3), ("length-two", 2), ("length-five", 5),
+        ("length-twelve", 12), ("length-em", 15), ("length-calc", 5),
+    ]
+    guard let (valueID, interval) = values.first(where: {
+        valueAndCase.hasPrefix("\($0.0)-")
+    }) else { return nil }
+    let caseID = String(valueAndCase.dropFirst(valueID.count + 1))
+    let sourceText: String
+    switch caseID {
+    case "leading": sourceText = "\tX"
+    case "after-one": sourceText = "X\tX"
+    case "after-two": sourceText = "XX\tX"
+    case "exact-stop": sourceText = "XXXX\tX"
+    case "consecutive": sourceText = "X\t\tX"
+    case "trailing": sourceText = "XX\t"
+    case "lf-reset": sourceText = "XX\tXX\nX\tX"
+    case "crlf-reset": sourceText = "X\t\r\nX\tX"
+    case "min-content", "fixed-overflow": sourceText = "XX\tXX"
+    default: return nil
+    }
+    let normalizedText = sourceText
+        .replacingOccurrences(of: "\t", with: "")
+        .replacingOccurrences(of: "\r\n", with: "\n")
+    let lines = sourceText.replacingOccurrences(of: "\r\n", with: "\n")
+        .components(separatedBy: "\n")
+    var lineAdvances: [Double] = []
+    for line in lines {
+        guard let advance = c114FullTabSizeLineAdvance(line, interval: interval) else { return nil }
+        lineAdvances.append(advance)
+    }
+    guard let contentWidth = lineAdvances.max() else { return nil }
+    let height = Double(lineAdvances.count) * 10
+    return C114FullTabSizeSceneExpectation(
+        sourceText: sourceText,
+        normalizedText: normalizedText,
+        lineAdvances: lineAdvances,
+        contentWidth: contentWidth,
+        rootWidth: caseID == "fixed-overflow" ? 25 : 120,
+        height: height,
+        caseID: caseID
+    )
+}
+
+private func c114FullTabSizeLineAdvance(_ line: String, interval: Double) -> Double? {
+    var advance = 0.0
+    var inTabRun = false
+    for unit in line.utf16 {
+        if unit == 0x0058 {
+            advance += 10
+            inTabRun = false
+        } else if unit == 0x0009 {
+            if interval > 0 {
+                if inTabRun {
+                    advance += interval
+                } else {
+                    let nextStop = (floor(advance / interval) + 1) * interval
+                    var tabAdvance = nextStop - advance
+                    if tabAdvance < 5 { tabAdvance += interval }
+                    advance += tabAdvance
+                }
+            }
+            inTabRun = true
+        } else {
+            return nil
+        }
+    }
+    return advance
+}
+
+private func c114FullTabIntrinsicInputsMatch(
+    _ expected: C114FullTabSizeSceneExpectation,
+    inputs: [[String: Any]],
+    frames: [[String: Any]],
+    textLayouts: [[String: Any]]
+) -> Bool {
+    guard inputs.count == 1, frames.count == 1, textLayouts.count == 1,
+          let input = inputs.first,
+          (input["grid"] as? Int) == 1,
+          (input["node"] as? Int) == 2,
+          (input["sourceOrder"] as? Int) == 0,
+          let source = input["source"] as? [String: Any],
+          (source["kind"] as? String) == "text",
+          (source["fontRegistryRevision"] as? Int) == 1,
+          c114AnonymousTextNumberNear(source, key: "minContent", expected: expected.contentWidth),
+          c114AnonymousTextNumberNear(source, key: "maxContent", expected: expected.contentWidth),
+          c114AnonymousTextNumberNear(
+            source, key: "minContentHeight", expected: expected.height),
+          c114AnonymousTextNumberNear(
+            source, key: "maxContentHeight", expected: expected.height),
+          let textSources = input["textSources"] as? [[String: Any]],
+          textSources.count == 1,
+          (textSources[0]["node"] as? Int) == 2,
+          (textSources[0]["text"] as? String) == expected.sourceText,
+          let frame = frames.first,
+          (frame["node"] as? Int) == 2,
+          c114AnonymousTextNumberNear(frame, key: "x", expected: 0),
+          c114AnonymousTextNumberNear(frame, key: "y", expected: 0),
+          c114AnonymousTextNumberNear(
+            frame, key: "width",
+            expected: expected.caseID == "fixed-overflow" ? expected.rootWidth : expected.contentWidth),
+          c114AnonymousTextNumberNear(frame, key: "height", expected: expected.height),
+          let textLayout = textLayouts.first,
+          (textLayout["node"] as? Int) == 2,
+          (textLayout["text"] as? String) == expected.normalizedText,
+          let paragraphStyle = textLayout["paragraphStyle"] as? [String: Any],
+          (paragraphStyle["whiteSpace"] as? String)?.hasPrefix("PreWithTabSize(") == true,
+          let lines = textLayout["lines"] as? [[String: Any]],
+          lines.count == expected.lineAdvances.count else { return false }
+    for (index, line) in lines.enumerated() {
+        guard c114AnonymousTextNumberNear(
+            line, key: "advance", expected: expected.lineAdvances[index]) else { return false }
+    }
+    return c114AnonymousFullTabNormalizationMatches(expected, textLayout: textLayout)
+}
+
+private func c114AnonymousFullTabNormalizationMatches(
+    _ expected: C114FullTabSizeSceneExpectation, textLayout: [String: Any]
+) -> Bool {
+    guard let ranges = textLayout["normalizedSources"] as? [[String: Any]],
+          ranges.count == expected.sourceText.utf16.count else { return false }
+    let units = Array(expected.sourceText.utf16)
+    var outputOffset = 0
+    for (index, unit) in units.enumerated() {
+        var outputStart = outputOffset
+        let outputLength: Int
+        if unit == 0x000A, index > 0, units[index - 1] == 0x000D {
+            outputStart -= 1
+            outputLength = 1
+        } else if unit == 0x0009 {
+            outputLength = 0
+        } else {
+            outputLength = 1
+        }
+        let range = ranges[index]
+        guard (range["node"] as? Int) == 2,
+              (range["sourceUtf16"] as? [Int]) == [index, index + 1],
+              (range["paragraphUtf8"] as? [Int]) == [outputStart, outputStart + outputLength],
+              (range["inlineAncestors"] as? [Int])?.isEmpty == true else { return false }
+        if !(unit == 0x000A && index > 0 && units[index - 1] == 0x000D) {
+            outputOffset += outputLength
+        }
+    }
+    return outputOffset == expected.normalizedText.utf8.count
+}
+
 private func c114AnonymousNewlineTextIntrinsicInputsMatch(
     _ sceneID: String, report: String
 ) -> Bool {
@@ -3206,6 +3385,10 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
         || sceneID == "anonymous-break-spaces-whitespace-only"
         || sceneID == "anonymous-break-spaces-whitespace-before-block" {
         return inputs.isEmpty && frames.isEmpty && textLayouts.isEmpty
+    }
+    if let tabSize = c114FullTabSizeSceneExpectation(sceneID) {
+        return c114FullTabIntrinsicInputsMatch(
+            tabSize, inputs: inputs, frames: frames, textLayouts: textLayouts)
     }
     let expected: (maxContent: Double, maxContentHeight: Double,
         itemWidth: Double, itemHeight: Double, whiteSpace: String, texts: [(Int, String)])
@@ -3459,6 +3642,9 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
     guard sceneID == "anonymous-normal-newline-max-content"
         || sceneID == "anonymous-pre-line-max-content"
         || c114IsAnonymousWhitespaceMatrixScene(sceneID) else { return true }
+    if let tabSize = c114FullTabSizeSceneExpectation(sceneID) {
+        return c114FullTabGridTraceMatches(tabSize, report: report)
+    }
     let expectedColumns: [Double]
     let expectedRows: [Double]
     let expectColumnContribution: Bool
@@ -3732,6 +3918,57 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
             else { return false }
             if axis == "Columns", let expectedColumnKind {
                 return (contribution["kind"] as? String) == expectedColumnKind
+            }
+            return true
+        }
+        guard hasExpectedContribution else { return false }
+    }
+    return true
+}
+
+private func c114FullTabGridTraceMatches(
+    _ expected: C114FullTabSizeSceneExpectation, report: String
+) -> Bool {
+    guard let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let traces = diagnostics["trackSizingTraces"] as? [[String: Any]],
+          traces.count == 1,
+          let trace = traces.first,
+          (trace["grid"] as? Int) == 1,
+          let passes = trace["passes"] as? [[String: Any]],
+          passes.count == 2 else { return false }
+    for (index, axis) in ["Columns", "Rows"].enumerated() {
+        let pass = passes[index]
+        guard (pass["axis"] as? String) == axis,
+              let stages = pass["stages"] as? [[String: Any]],
+              let finalStage = stages.last,
+              let tracks = finalStage["tracks"] as? [[String: Any]],
+              let contributions = pass["contributions"] as? [[String: Any]] else { return false }
+        let expectedTrack = axis == "Columns"
+            ? (expected.caseID == "fixed-overflow" ? expected.rootWidth : expected.contentWidth)
+            : expected.height
+        let expectedContribution = axis == "Columns"
+            ? expected.columnContribution : true
+        let expectedContributionValue = axis == "Columns"
+            ? expected.contentWidth : expected.height
+        let finalTracks = tracks.filter {
+            ($0["gutter"] as? Bool) == false && ($0["collapsed"] as? Bool) == false
+        }
+        guard finalTracks.count == 1,
+              c114AnonymousTextNumberNear(finalTracks[0], key: "baseSize", expected: expectedTrack)
+        else { return false }
+        if !expectedContribution {
+            guard contributions.isEmpty else { return false }
+            continue
+        }
+        let hasExpectedContribution = contributions.contains { contribution in
+            guard (contribution["item"] as? Int) == 2,
+                  (contribution["span"] as? Int) == 1,
+                  c114AnonymousTextNumberNear(
+                    contribution, key: "value", expected: expectedContributionValue) else {
+                return false
+            }
+            if axis == "Columns", let expectedKind = expected.columnKind {
+                return (contribution["kind"] as? String) == expectedKind
             }
             return true
         }

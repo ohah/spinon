@@ -72,6 +72,70 @@ const SCENE_IDS: [&str; 55] = [
     "anonymous-pre-tab-size-length-negative",
 ];
 
+const FULL_TAB_VALUE_IDS: [&str; 14] = [
+    "number-zero",
+    "number-quarter",
+    "number-three-tenths",
+    "number-half",
+    "number-one-and-half",
+    "number-two-and-half",
+    "number-three-and-quarter",
+    "length-zero",
+    "length-three-tenths",
+    "length-two",
+    "length-five",
+    "length-twelve",
+    "length-em",
+    "length-calc",
+];
+
+const FULL_TAB_CASE_IDS: [&str; 10] = [
+    "leading",
+    "after-one",
+    "after-two",
+    "exact-stop",
+    "consecutive",
+    "trailing",
+    "lf-reset",
+    "crlf-reset",
+    "min-content",
+    "fixed-overflow",
+];
+
+const FULL_TAB_COMPUTED_VALUES: [&str; 14] = [
+    "0", "0.25", "0.3", "0.5", "1.5", "2.5", "3.25", "0px", "0.3px", "2px", "5px", "12px", "15px",
+    "5px",
+];
+
+// expected-values.json의 10개 text case별 독립 tab-stop 산술 결과입니다.
+#[cfg(test)]
+const FULL_TAB_EXPECTED_WIDTHS: [[f32; 10]; 14] = [
+    [10.0, 20.0, 30.0, 50.0, 20.0, 20.0, 40.0, 20.0, 40.0, 40.0],
+    [15.0, 25.0, 35.0, 55.0, 27.5, 25.0, 45.0, 25.0, 45.0, 45.0],
+    [16.0, 25.0, 34.0, 55.0, 28.0, 24.0, 44.0, 25.0, 44.0, 44.0],
+    [15.0, 25.0, 35.0, 55.0, 30.0, 25.0, 45.0, 25.0, 45.0, 45.0],
+    [25.0, 25.0, 40.0, 55.0, 40.0, 30.0, 50.0, 25.0, 50.0, 50.0],
+    [35.0, 35.0, 35.0, 60.0, 60.0, 25.0, 45.0, 35.0, 45.0, 45.0],
+    [42.5, 42.5, 42.5, 75.0, 75.0, 32.5, 52.5, 42.5, 52.5, 52.5],
+    [10.0, 20.0, 30.0, 50.0, 20.0, 20.0, 40.0, 20.0, 40.0, 40.0],
+    [10.6, 20.5, 30.4, 50.5, 20.8, 20.4, 40.4, 20.5, 40.4, 40.4],
+    [14.0, 24.0, 34.0, 54.0, 26.0, 24.0, 44.0, 24.0, 44.0, 44.0],
+    [15.0, 25.0, 35.0, 55.0, 30.0, 25.0, 45.0, 25.0, 45.0, 45.0],
+    [22.0, 34.0, 46.0, 58.0, 46.0, 36.0, 56.0, 34.0, 56.0, 56.0],
+    [25.0, 25.0, 40.0, 55.0, 40.0, 30.0, 50.0, 25.0, 50.0, 50.0],
+    [15.0, 25.0, 35.0, 55.0, 30.0, 25.0, 45.0, 25.0, 45.0, 45.0],
+];
+
+#[cfg(test)]
+const FULL_TAB_LF_SECOND_LINE_WIDTHS: [f32; 14] = [
+    20.0, 25.0, 25.0, 25.0, 25.0, 35.0, 42.5, 20.0, 20.5, 24.0, 25.0, 34.0, 25.0, 25.0,
+];
+
+#[cfg(test)]
+const FULL_TAB_CRLF_FIRST_LINE_WIDTHS: [f32; 14] = [
+    10.0, 15.0, 15.0, 15.0, 15.0, 25.0, 32.5, 10.0, 10.5, 14.0, 15.0, 24.0, 15.0, 15.0,
+];
+
 pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     snapshot: &HostDocumentSnapshot,
     root: HostNodeHandle,
@@ -84,7 +148,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     else {
         return Ok(None);
     };
-    if !SCENE_IDS.contains(&scene_id) {
+    if !SCENE_IDS.contains(&scene_id) && full_tab_scene(scene_id).is_none() {
         return if scene_id.starts_with("anonymous-")
             || scene_id == "whitespace-does-not-create-item"
         {
@@ -322,68 +386,77 @@ fn validate_grid_style(
         | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
         _ => "collapse",
     };
-    let (expected_width, expected_height) = match scene_id {
-        "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
-            (20.0, ComputedCssDimension::Auto)
+    let (expected_width, expected_height) = if let Some((_, case_index)) = full_tab_scene(scene_id)
+    {
+        let width = if case_index == 9 { 25.0 } else { 120.0 };
+        (width, ComputedCssDimension::Auto)
+    } else {
+        match scene_id {
+            "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
+                (20.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+                (20.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-normal-max-content-spaces"
+            | "anonymous-pre-wrap-max-content-spaces"
+            | "anonymous-pre-wrap-comment-split-max-content"
+            | "anonymous-pre-wrap-min-content-spaces"
+            | "anonymous-pre-wrap-forced-break" => (20.0, ComputedCssDimension::Auto),
+            "anonymous-pre-max-content-spaces"
+            | "anonymous-pre-min-content-spaces"
+            | "anonymous-pre-forced-break" => (20.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-max-content" | "anonymous-pre-tab-forced-break" => {
+                (100.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-pre-tab-leading" => (90.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-exact-stop" | "anonymous-pre-tab-consecutive" => {
+                (170.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-pre-tab-trailing" => (80.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-min-content" => (100.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {
+                (60.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-pre-tab-size-2-leading" => (30.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {
+                (70.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-pre-tab-size-2-crlf-reset" => (30.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-2-trailing" => (40.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-2-min-content" => (60.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-2-fixed-overflow" => (25.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-1-leading" => (20.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-1-exact-stop" => (30.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-4-leading" => (50.0, ComputedCssDimension::Auto),
+            "anonymous-pre-tab-size-4-exact-stop" => (90.0, ComputedCssDimension::Auto),
+            "anonymous-normal-fixed-width-control" | "anonymous-pre-fixed-width-nowrap" => {
+                (25.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-pre-tab-fixed-width-nowrap" => (25.0, ComputedCssDimension::Auto),
+            "anonymous-break-spaces-max-content"
+            | "anonymous-break-spaces-comment-split-max-content" => {
+                (60.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-break-spaces-min-content"
+            | "anonymous-break-spaces-forced-break-min-content" => {
+                (30.0, ComputedCssDimension::Auto)
+            }
+            "anonymous-break-spaces-soft-wrap-25"
+            | "anonymous-break-spaces-trailing-soft-wrap-25" => (25.0, ComputedCssDimension::Auto),
+            "anonymous-break-spaces-forced-break-max-content" => (40.0, ComputedCssDimension::Auto),
+            "anonymous-break-spaces-trailing-max-content" => (40.0, ComputedCssDimension::Auto),
+            "anonymous-break-spaces-whitespace-only" => (0.0, ComputedCssDimension::Auto),
+            "anonymous-break-spaces-whitespace-before-block" => {
+                (40.0, ComputedCssDimension::LengthPx(10.0))
+            }
+            "anonymous-pre-wrap-soft-wrap" => (25.0, ComputedCssDimension::Auto),
+            "anonymous-pre-wrap-whitespace-before-block" => {
+                (40.0, ComputedCssDimension::LengthPx(10.0))
+            }
+            "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
+            _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
         }
-        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
-            (20.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-normal-max-content-spaces"
-        | "anonymous-pre-wrap-max-content-spaces"
-        | "anonymous-pre-wrap-comment-split-max-content"
-        | "anonymous-pre-wrap-min-content-spaces"
-        | "anonymous-pre-wrap-forced-break" => (20.0, ComputedCssDimension::Auto),
-        "anonymous-pre-max-content-spaces"
-        | "anonymous-pre-min-content-spaces"
-        | "anonymous-pre-forced-break" => (20.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-max-content" | "anonymous-pre-tab-forced-break" => {
-            (100.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-pre-tab-leading" => (90.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-exact-stop" | "anonymous-pre-tab-consecutive" => {
-            (170.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-pre-tab-trailing" => (80.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-min-content" => (100.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-two-columns" | "anonymous-pre-tab-size-2-reset" => {
-            (60.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-pre-tab-size-2-leading" => (30.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-exact-stop" | "anonymous-pre-tab-size-2-consecutive" => {
-            (70.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-pre-tab-size-2-crlf-reset" => (30.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-trailing" => (40.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-min-content" => (60.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-2-fixed-overflow" => (25.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-1-leading" => (20.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-1-exact-stop" => (30.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-4-leading" => (50.0, ComputedCssDimension::Auto),
-        "anonymous-pre-tab-size-4-exact-stop" => (90.0, ComputedCssDimension::Auto),
-        "anonymous-normal-fixed-width-control" | "anonymous-pre-fixed-width-nowrap" => {
-            (25.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-pre-tab-fixed-width-nowrap" => (25.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-max-content"
-        | "anonymous-break-spaces-comment-split-max-content" => (60.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-min-content"
-        | "anonymous-break-spaces-forced-break-min-content" => (30.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
-            (25.0, ComputedCssDimension::Auto)
-        }
-        "anonymous-break-spaces-forced-break-max-content" => (40.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-trailing-max-content" => (40.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-whitespace-only" => (0.0, ComputedCssDimension::Auto),
-        "anonymous-break-spaces-whitespace-before-block" => {
-            (40.0, ComputedCssDimension::LengthPx(10.0))
-        }
-        "anonymous-pre-wrap-soft-wrap" => (25.0, ComputedCssDimension::Auto),
-        "anonymous-pre-wrap-whitespace-before-block" => {
-            (40.0, ComputedCssDimension::LengthPx(10.0))
-        }
-        "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
-        _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
     };
     let tab_size = validate_computed_tab_size(style.node_id, &style.properties, scene_id)?;
     validate_text_profile_properties(
@@ -449,22 +522,41 @@ fn validate_computed_tab_size(
             Some("tab-size".to_owned()),
         )
     };
-    let tab_size = match properties.get("tab-size").map(String::as_str) {
-        Some("1") => TabSize::One,
-        Some("2") => TabSize::Two,
-        Some("4") => TabSize::Four,
-        Some("8") => TabSize::Eight,
-        _ => return Err(unsupported_tab_size()),
-    };
-    if tab_size != expected_tab_size_for_scene(scene_id) {
+    let computed_tab_size = properties
+        .get("tab-size")
+        .and_then(|value| parse_computed_tab_size(value))
+        .ok_or_else(unsupported_tab_size)?;
+    let expected_tab_size =
+        expected_tab_size_for_scene(scene_id).ok_or_else(unsupported_tab_size)?;
+    if computed_tab_size != expected_tab_size {
         return Err(unsupported_tab_size());
     }
-    Ok(tab_size)
+    Ok(computed_tab_size)
 }
 
-fn expected_tab_size_for_scene(scene_id: &str) -> TabSize {
-    match scene_id {
-        "anonymous-pre-tab-size-1-leading" | "anonymous-pre-tab-size-1-exact-stop" => TabSize::One,
+fn parse_computed_tab_size(value: &str) -> Option<TabSize> {
+    let (value, is_length) = if let Some(value) = value.strip_suffix("px") {
+        (value, true)
+    } else {
+        (value, false)
+    };
+    let value = value.trim().parse::<f32>().ok()?;
+    let tab_size = if is_length {
+        TabSize::LengthPx(value)
+    } else {
+        TabSize::Number(value)
+    };
+    (value.is_finite() && value >= 0.0).then_some(tab_size)
+}
+
+fn expected_tab_size_for_scene(scene_id: &str) -> Option<TabSize> {
+    if let Some((value_index, _)) = full_tab_scene(scene_id) {
+        return parse_computed_tab_size(FULL_TAB_COMPUTED_VALUES[value_index]);
+    }
+    Some(match scene_id {
+        "anonymous-pre-tab-size-1-leading" | "anonymous-pre-tab-size-1-exact-stop" => {
+            TabSize::Number(1.0)
+        }
         "anonymous-pre-tab-size-2-two-columns"
         | "anonymous-pre-tab-size-2-leading"
         | "anonymous-pre-tab-size-2-exact-stop"
@@ -473,17 +565,36 @@ fn expected_tab_size_for_scene(scene_id: &str) -> TabSize {
         | "anonymous-pre-tab-size-2-crlf-reset"
         | "anonymous-pre-tab-size-2-trailing"
         | "anonymous-pre-tab-size-2-min-content"
-        | "anonymous-pre-tab-size-2-fixed-overflow" => TabSize::Two,
-        "anonymous-pre-tab-size-4-leading" | "anonymous-pre-tab-size-4-exact-stop" => TabSize::Four,
-        _ => TabSize::Eight,
-    }
+        | "anonymous-pre-tab-size-2-fixed-overflow" => TabSize::Number(2.0),
+        "anonymous-pre-tab-size-4-leading" | "anonymous-pre-tab-size-4-exact-stop" => {
+            TabSize::Number(4.0)
+        }
+        "anonymous-pre-tab-size-0-negative" => TabSize::Number(0.0),
+        "anonymous-pre-tab-size-fractional-negative" => TabSize::Number(1.5),
+        "anonymous-pre-tab-size-length-negative" => TabSize::LengthPx(20.0),
+        _ => TabSize::Number(8.0),
+    })
 }
 
 fn is_pre_tab_scene(scene_id: &str) -> bool {
-    scene_id.starts_with("anonymous-pre-tab-")
+    scene_id.starts_with("anonymous-pre-tab-") || full_tab_scene(scene_id).is_some()
 }
 
 fn pre_tab_text(scene_id: &str) -> &'static str {
+    if let Some((_, case_index)) = full_tab_scene(scene_id) {
+        return match case_index {
+            0 => "\tX",
+            1 => "X\tX",
+            2 => "XX\tX",
+            3 => "XXXX\tX",
+            4 => "X\t\tX",
+            5 => "XX\t",
+            6 => "XX\tXX\nX\tX",
+            7 => "X\t\r\nX\tX",
+            8 | 9 => "XX\tXX",
+            _ => "XX\tXX",
+        };
+    }
     match scene_id {
         "anonymous-pre-tab-leading"
         | "anonymous-pre-tab-size-2-leading"
@@ -502,6 +613,33 @@ fn pre_tab_text(scene_id: &str) -> &'static str {
     }
 }
 
+fn full_tab_scene(scene_id: &str) -> Option<(usize, usize)> {
+    let scene_id = scene_id.strip_prefix("anonymous-pre-tab-value-")?;
+    for (value_index, value_id) in FULL_TAB_VALUE_IDS.iter().enumerate() {
+        let Some(case_id) = scene_id
+            .strip_prefix(value_id)
+            .and_then(|value| value.strip_prefix('-'))
+        else {
+            continue;
+        };
+        if let Some(case_index) = FULL_TAB_CASE_IDS.iter().position(|case| *case == case_id) {
+            return Some((value_index, case_index));
+        }
+    }
+    None
+}
+
+#[cfg(test)]
+fn full_tab_scene_id(value_id: &str, case_id: &str) -> String {
+    format!("anonymous-pre-tab-value-{value_id}-{case_id}")
+}
+
+#[cfg(test)]
+fn full_tab_expected_width(scene_id: &str) -> Option<f32> {
+    let (value_index, case_index) = full_tab_scene(scene_id)?;
+    Some(FULL_TAB_EXPECTED_WIDTHS[value_index][case_index])
+}
+
 fn grid_item_placement_is_auto(placement: Option<&ComputedCssGridItemPlacement>) -> bool {
     placement.is_some_and(|placement| {
         placement.row_start == ComputedCssGridPlacement::Auto
@@ -512,99 +650,110 @@ fn grid_item_placement_is_auto(placement: Option<&ComputedCssGridItemPlacement>)
 }
 
 fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
-    let expected_columns = match scene_id {
-        "anonymous-min-content-wrap" => vec![
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::Fraction(1.0),
-        ],
-        "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
-            vec![ComputedCssGridTrackSize::MinContent]
+    let expected_columns = if let Some((_, case_index)) = full_tab_scene(scene_id) {
+        vec![match case_index {
+            8 => ComputedCssGridTrackSize::MinContent,
+            9 => ComputedCssGridTrackSize::LengthPx(25.0),
+            _ => ComputedCssGridTrackSize::MaxContent,
+        }]
+    } else {
+        match scene_id {
+            "anonymous-min-content-wrap" => vec![
+                ComputedCssGridTrackSize::MinContent,
+                ComputedCssGridTrackSize::Fraction(1.0),
+            ],
+            "anonymous-normal-min-content" | "anonymous-nowrap-min-content" => {
+                vec![ComputedCssGridTrackSize::MinContent]
+            }
+            "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
+                vec![ComputedCssGridTrackSize::MaxContent]
+            }
+            "anonymous-normal-max-content-spaces"
+            | "anonymous-pre-wrap-max-content-spaces"
+            | "anonymous-pre-wrap-comment-split-max-content"
+            | "anonymous-pre-wrap-forced-break" => vec![ComputedCssGridTrackSize::MaxContent],
+            "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {
+                vec![ComputedCssGridTrackSize::MaxContent]
+            }
+            "anonymous-pre-tab-max-content"
+            | "anonymous-pre-tab-leading"
+            | "anonymous-pre-tab-exact-stop"
+            | "anonymous-pre-tab-consecutive"
+            | "anonymous-pre-tab-forced-break"
+            | "anonymous-pre-tab-trailing"
+            | "anonymous-pre-tab-size-2-two-columns"
+            | "anonymous-pre-tab-size-2-leading"
+            | "anonymous-pre-tab-size-2-exact-stop"
+            | "anonymous-pre-tab-size-2-consecutive"
+            | "anonymous-pre-tab-size-2-reset"
+            | "anonymous-pre-tab-size-2-crlf-reset"
+            | "anonymous-pre-tab-size-2-trailing"
+            | "anonymous-pre-tab-size-1-leading"
+            | "anonymous-pre-tab-size-1-exact-stop"
+            | "anonymous-pre-tab-size-4-leading"
+            | "anonymous-pre-tab-size-4-exact-stop" => {
+                vec![ComputedCssGridTrackSize::MaxContent]
+            }
+            "anonymous-break-spaces-max-content"
+            | "anonymous-break-spaces-comment-split-max-content"
+            | "anonymous-break-spaces-forced-break-max-content"
+            | "anonymous-break-spaces-trailing-max-content" => {
+                vec![ComputedCssGridTrackSize::MaxContent]
+            }
+            "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
+            "anonymous-pre-min-content-spaces"
+            | "anonymous-pre-tab-min-content"
+            | "anonymous-pre-tab-size-2-min-content" => {
+                vec![ComputedCssGridTrackSize::MinContent]
+            }
+            "anonymous-break-spaces-min-content"
+            | "anonymous-break-spaces-forced-break-min-content" => {
+                vec![ComputedCssGridTrackSize::MinContent]
+            }
+            "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+            "anonymous-normal-fixed-width-control"
+            | "anonymous-pre-fixed-width-nowrap"
+            | "anonymous-pre-tab-fixed-width-nowrap"
+            | "anonymous-pre-tab-size-2-fixed-overflow" => {
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)]
+            }
+            "anonymous-break-spaces-soft-wrap-25"
+            | "anonymous-break-spaces-trailing-soft-wrap-25" => {
+                vec![ComputedCssGridTrackSize::LengthPx(25.0)]
+            }
+            "anonymous-break-spaces-whitespace-only" => vec![ComputedCssGridTrackSize::Auto],
+            "anonymous-pre-wrap-whitespace-before-block" => vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::LengthPx(20.0),
+            ],
+            "anonymous-break-spaces-whitespace-before-block" => vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::LengthPx(20.0),
+            ],
+            "anonymous-comment-continuation" => vec![
+                ComputedCssGridTrackSize::MaxContent,
+                ComputedCssGridTrackSize::Fraction(1.0),
+            ],
+            "anonymous-hidden-child-continuation" => vec![
+                ComputedCssGridTrackSize::MaxContent,
+                ComputedCssGridTrackSize::Fraction(1.0),
+            ],
+            "anonymous-runs-around-block" => vec![
+                ComputedCssGridTrackSize::MinContent,
+                ComputedCssGridTrackSize::MinContent,
+                ComputedCssGridTrackSize::MinContent,
+            ],
+            "whitespace-does-not-create-item" => vec![
+                ComputedCssGridTrackSize::LengthPx(20.0),
+                ComputedCssGridTrackSize::LengthPx(30.0),
+                ComputedCssGridTrackSize::LengthPx(40.0),
+            ],
+            _ => return false,
         }
-        "anonymous-normal-newline-max-content" | "anonymous-pre-line-max-content" => {
-            vec![ComputedCssGridTrackSize::MaxContent]
-        }
-        "anonymous-normal-max-content-spaces"
-        | "anonymous-pre-wrap-max-content-spaces"
-        | "anonymous-pre-wrap-comment-split-max-content"
-        | "anonymous-pre-wrap-forced-break" => vec![ComputedCssGridTrackSize::MaxContent],
-        "anonymous-pre-max-content-spaces" | "anonymous-pre-forced-break" => {
-            vec![ComputedCssGridTrackSize::MaxContent]
-        }
-        "anonymous-pre-tab-max-content"
-        | "anonymous-pre-tab-leading"
-        | "anonymous-pre-tab-exact-stop"
-        | "anonymous-pre-tab-consecutive"
-        | "anonymous-pre-tab-forced-break"
-        | "anonymous-pre-tab-trailing"
-        | "anonymous-pre-tab-size-2-two-columns"
-        | "anonymous-pre-tab-size-2-leading"
-        | "anonymous-pre-tab-size-2-exact-stop"
-        | "anonymous-pre-tab-size-2-consecutive"
-        | "anonymous-pre-tab-size-2-reset"
-        | "anonymous-pre-tab-size-2-crlf-reset"
-        | "anonymous-pre-tab-size-2-trailing"
-        | "anonymous-pre-tab-size-1-leading"
-        | "anonymous-pre-tab-size-1-exact-stop"
-        | "anonymous-pre-tab-size-4-leading"
-        | "anonymous-pre-tab-size-4-exact-stop" => {
-            vec![ComputedCssGridTrackSize::MaxContent]
-        }
-        "anonymous-break-spaces-max-content"
-        | "anonymous-break-spaces-comment-split-max-content"
-        | "anonymous-break-spaces-forced-break-max-content"
-        | "anonymous-break-spaces-trailing-max-content" => {
-            vec![ComputedCssGridTrackSize::MaxContent]
-        }
-        "anonymous-pre-wrap-min-content-spaces" => vec![ComputedCssGridTrackSize::MinContent],
-        "anonymous-pre-min-content-spaces"
-        | "anonymous-pre-tab-min-content"
-        | "anonymous-pre-tab-size-2-min-content" => {
-            vec![ComputedCssGridTrackSize::MinContent]
-        }
-        "anonymous-break-spaces-min-content"
-        | "anonymous-break-spaces-forced-break-min-content" => {
-            vec![ComputedCssGridTrackSize::MinContent]
-        }
-        "anonymous-pre-wrap-soft-wrap" => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
-        "anonymous-normal-fixed-width-control"
-        | "anonymous-pre-fixed-width-nowrap"
-        | "anonymous-pre-tab-fixed-width-nowrap"
-        | "anonymous-pre-tab-size-2-fixed-overflow" => {
-            vec![ComputedCssGridTrackSize::LengthPx(25.0)]
-        }
-        "anonymous-break-spaces-soft-wrap-25" | "anonymous-break-spaces-trailing-soft-wrap-25" => {
-            vec![ComputedCssGridTrackSize::LengthPx(25.0)]
-        }
-        "anonymous-break-spaces-whitespace-only" => vec![ComputedCssGridTrackSize::Auto],
-        "anonymous-pre-wrap-whitespace-before-block" => vec![
-            ComputedCssGridTrackSize::LengthPx(20.0),
-            ComputedCssGridTrackSize::LengthPx(20.0),
-        ],
-        "anonymous-break-spaces-whitespace-before-block" => vec![
-            ComputedCssGridTrackSize::LengthPx(20.0),
-            ComputedCssGridTrackSize::LengthPx(20.0),
-        ],
-        "anonymous-comment-continuation" => vec![
-            ComputedCssGridTrackSize::MaxContent,
-            ComputedCssGridTrackSize::Fraction(1.0),
-        ],
-        "anonymous-hidden-child-continuation" => vec![
-            ComputedCssGridTrackSize::MaxContent,
-            ComputedCssGridTrackSize::Fraction(1.0),
-        ],
-        "anonymous-runs-around-block" => vec![
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::MinContent,
-            ComputedCssGridTrackSize::MinContent,
-        ],
-        "whitespace-does-not-create-item" => vec![
-            ComputedCssGridTrackSize::LengthPx(20.0),
-            ComputedCssGridTrackSize::LengthPx(30.0),
-            ComputedCssGridTrackSize::LengthPx(40.0),
-        ],
-        _ => return false,
     };
-    let expected_rows = if matches!(
+    let expected_rows = if full_tab_scene(scene_id).is_some() {
+        vec![ComputedCssGridTrackSize::Auto]
+    } else if matches!(
         scene_id,
         "anonymous-min-content-wrap"
             | "anonymous-normal-min-content"
@@ -833,12 +982,20 @@ enum ExpectedChild<'a> {
 
 #[cfg(test)]
 mod tests {
+    use super::super::c11_4_text::AHEM;
     use super::{
-        SCENE_IDS, grid_item_placement_is_auto, grid_tracks_match, validate_computed_tab_size,
+        FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES, FULL_TAB_CRLF_FIRST_LINE_WIDTHS,
+        FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS, FULL_TAB_VALUE_IDS, SCENE_IDS,
+        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
+        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
-    use spinon_layout::TabSize;
+    use spinon_core::{TextOrientation, WritingMode};
+    use spinon_layout::{
+        FontStyleMode, LigatureMode, LineBreakMode, ParagraphInput, ParagraphStyle, TabSize,
+        TextLayoutEngine, TextParagraphDirection, TextSource, WhiteSpaceMode, WordBreakMode,
+    };
     use spinon_style::{
         ComputedCssGridAutoColumns, ComputedCssGridAutoFlow, ComputedCssGridAutoRepeat,
         ComputedCssGridAutoRepeatMode, ComputedCssGridAutoRows, ComputedCssGridItemPlacement,
@@ -858,10 +1015,37 @@ mod tests {
     fn anonymous_text_tab_size_comes_from_computed_style_and_rejects_other_values() {
         let node_id = NodeId::new(1).unwrap();
         for (scene_id, value, expected) in [
-            ("anonymous-pre-tab-size-1-leading", "1", TabSize::One),
-            ("anonymous-pre-tab-size-2-two-columns", "2", TabSize::Two),
-            ("anonymous-pre-tab-size-4-leading", "4", TabSize::Four),
-            ("anonymous-pre-tab-max-content", "8", TabSize::Eight),
+            (
+                "anonymous-pre-tab-size-1-leading",
+                "1",
+                TabSize::Number(1.0),
+            ),
+            (
+                "anonymous-pre-tab-size-2-two-columns",
+                "2",
+                TabSize::Number(2.0),
+            ),
+            (
+                "anonymous-pre-tab-size-4-leading",
+                "4",
+                TabSize::Number(4.0),
+            ),
+            ("anonymous-pre-tab-max-content", "8", TabSize::Number(8.0)),
+            (
+                "anonymous-pre-tab-size-0-negative",
+                "0",
+                TabSize::Number(0.0),
+            ),
+            (
+                "anonymous-pre-tab-size-fractional-negative",
+                "1.5",
+                TabSize::Number(1.5),
+            ),
+            (
+                "anonymous-pre-tab-size-length-negative",
+                "20px",
+                TabSize::LengthPx(20.0),
+            ),
         ] {
             let properties = BTreeMap::from([("tab-size".to_owned(), value.to_owned())]);
             assert_eq!(
@@ -876,9 +1060,9 @@ mod tests {
                 .is_err()
         );
         for (scene_id, value) in [
-            ("anonymous-pre-tab-size-0-negative", "0"),
-            ("anonymous-pre-tab-size-fractional-negative", "1.5"),
-            ("anonymous-pre-tab-size-length-negative", "20px"),
+            ("anonymous-pre-tab-size-0-negative", "-1"),
+            ("anonymous-pre-tab-size-fractional-negative", "NaN"),
+            ("anonymous-pre-tab-size-length-negative", "20em"),
         ] {
             let properties = BTreeMap::from([("tab-size".to_owned(), value.to_owned())]);
             assert!(validate_computed_tab_size(node_id, &properties, scene_id).is_err());
@@ -891,6 +1075,134 @@ mod tests {
             )
             .is_err()
         );
+    }
+
+    #[test]
+    fn anonymous_text_full_tab_size_matrix_matches_the_fixed_css_stop_oracle() {
+        let node_id = NodeId::new(1).unwrap();
+        let mut engine = TextLayoutEngine::new_without_system_fonts();
+        engine.register_font("Ahem", AHEM).unwrap();
+        let mut generated = BTreeSet::new();
+
+        for (value_index, value_id) in FULL_TAB_VALUE_IDS.iter().enumerate() {
+            let expected_style = parse_computed_tab_size(FULL_TAB_COMPUTED_VALUES[value_index])
+                .expect("fixed computed tab-size value");
+            for (case_index, case_id) in FULL_TAB_CASE_IDS.iter().enumerate() {
+                let scene_id = full_tab_scene_id(value_id, case_id);
+                assert!(generated.insert(scene_id.clone()));
+                assert_eq!(full_tab_scene(&scene_id), Some((value_index, case_index)));
+                assert_eq!(
+                    full_tab_expected_width(&scene_id),
+                    Some(FULL_TAB_EXPECTED_WIDTHS[value_index][case_index])
+                );
+                let expected_columns = match case_index {
+                    8 => vec![ComputedCssGridTrackSize::MinContent],
+                    9 => vec![ComputedCssGridTrackSize::LengthPx(25.0)],
+                    _ => vec![ComputedCssGridTrackSize::MaxContent],
+                };
+                assert!(grid_tracks_match(
+                    &grid(expected_columns, vec![ComputedCssGridTrackSize::Auto]),
+                    &scene_id
+                ));
+                let computed = BTreeMap::from([(
+                    "tab-size".to_owned(),
+                    FULL_TAB_COMPUTED_VALUES[value_index].to_owned(),
+                )]);
+                assert_eq!(
+                    validate_computed_tab_size(node_id, &computed, &scene_id).unwrap(),
+                    expected_style,
+                    "{scene_id} computed style"
+                );
+
+                let text = pre_tab_text(&scene_id);
+                let style = ParagraphStyle {
+                    writing_mode: WritingMode::HorizontalTb,
+                    text_orientation: TextOrientation::Mixed,
+                    font_family: "Ahem".to_owned(),
+                    font_size: 10.0,
+                    line_height: 10.0,
+                    line_height_is_normal: false,
+                    font_weight: 400.0,
+                    font_style: FontStyleMode::Normal,
+                    white_space: WhiteSpaceMode::PreWithTabSize(expected_style),
+                    word_break: WordBreakMode::Normal,
+                    direction: TextParagraphDirection::Ltr,
+                    line_break: LineBreakMode::Strict,
+                    ligatures: LigatureMode::Normal,
+                };
+                let paragraph = ParagraphInput {
+                    node: node_id,
+                    sources: vec![TextSource {
+                        node: node_id,
+                        inline_ancestors: Vec::new(),
+                        text: text.to_owned(),
+                    }],
+                    style,
+                    inline_styles: BTreeMap::new(),
+                    inline_run_styles: BTreeMap::new(),
+                };
+                let intrinsic = engine.intrinsic_inline_sizes(&paragraph).unwrap();
+                let expected_width = FULL_TAB_EXPECTED_WIDTHS[value_index][case_index];
+                assert!(
+                    (intrinsic.min_content() - expected_width).abs() < 0.02,
+                    "{scene_id} min"
+                );
+                assert!(
+                    (intrinsic.max_content() - expected_width).abs() < 0.02,
+                    "{scene_id} max"
+                );
+                let layout = engine.layout_paragraph(&paragraph, 25.0).unwrap();
+                assert_eq!(
+                    layout.text,
+                    text.replace('\t', "").replace("\r\n", "\n"),
+                    "{scene_id} normalized text"
+                );
+                assert_eq!(
+                    layout.lines.len(),
+                    if case_index == 6 || case_index == 7 {
+                        2
+                    } else {
+                        1
+                    },
+                    "{scene_id} line count"
+                );
+                assert!(
+                    (layout.width - expected_width).abs() < 0.02,
+                    "{scene_id} width"
+                );
+                if case_index == 6 {
+                    assert!(
+                        (layout.lines[1].advance - FULL_TAB_LF_SECOND_LINE_WIDTHS[value_index])
+                            .abs()
+                            < 0.02,
+                        "{scene_id} LF reset"
+                    );
+                }
+                if case_index == 7 {
+                    assert!(
+                        (layout.lines[0].advance - FULL_TAB_CRLF_FIRST_LINE_WIDTHS[value_index])
+                            .abs()
+                            < 0.02,
+                        "{scene_id} CRLF first line"
+                    );
+                    assert!(
+                        (layout.lines[1].advance - FULL_TAB_EXPECTED_WIDTHS[value_index][7]).abs()
+                            < 0.02,
+                        "{scene_id} CRLF reset"
+                    );
+                }
+                let tab_sources = layout
+                    .sources
+                    .iter()
+                    .filter(|source| source.paragraph_utf8.is_empty());
+                assert_eq!(
+                    tab_sources.count(),
+                    text.matches('\t').count(),
+                    "{scene_id} tab provenance"
+                );
+            }
+        }
+        assert_eq!(generated.len(), 140);
     }
 
     #[test]

@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "runPrefix": "c114-tab-values-20261031023735537-6dd34784",
+  "sourceHead": "e3ec8a24b2ff463519dc79968f4cbba35d1226e3",
+  "target": "ios",
+  "expectedSceneCount": 140,
+  "results": [],
+  "failure": "SyntaxError: Bad escaped character in JSON at position 1275 (line 1 column 1276)\n    at JSON.parse (<anonymous>)\n    at diagnosticsFromLog (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-full-tab-size-values-simulators.mjs:107:30)\n    at validateLog (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-full-tab-size-values-simulators.mjs:187:46)\n    at runIOS (file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-full-tab-size-values-simulators.mjs:336:27)\n    at async file:///Users/yoonhb/Documents/workspace/spinon/tools/css-reference/capture-c11-4-full-tab-size-values-simulators.mjs:362:66"
+}
