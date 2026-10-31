@@ -1,0 +1,47 @@
+{
+  "oracle": {
+    "specification": "CSS Text Level 3 2026-08-14 CRD §5.4; CSS Sizing Level 3 §5.1; CSS Grid Level 1 2025-03-26 CRD §11",
+    "font": {
+      "family": "Ahem",
+      "path": "tests/fixtures/resources/c15/Ahem.ttf",
+      "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448",
+      "unitsPerEm": 1000,
+      "xAdvanceUnits": 1000,
+      "xAdvanceCssPxAt10px": 10
+    },
+    "text": "XXXX",
+    "grid": {
+      "rootInlineSizeCssPx": 120,
+      "lineHeightCssPx": 10,
+      "whiteSpace": "normal",
+      "wordBreak": "normal",
+      "writingMode": "horizontal-tb",
+      "direction": "ltr",
+      "gapCssPx": 0,
+      "borderAndPaddingCssPx": 0
+    },
+    "values": ["normal", "anywhere", "break-word"],
+    "independentExpectedMetrics": {
+      "normal": {"minContentInlineCssPx": 40, "maxContentInlineCssPx": 40, "minContentAutoRowCssPx": 10, "maxContentAutoRowCssPx": 10},
+      "anywhere": {"minContentInlineCssPx": 10, "maxContentInlineCssPx": 40, "minContentAutoRowCssPx": 40, "maxContentAutoRowCssPx": 10},
+      "break-word": {"minContentInlineCssPx": 40, "maxContentInlineCssPx": 40, "minContentAutoRowCssPx": 10, "maxContentAutoRowCssPx": 10}
+    }
+  },
+  "candidateScenes": [
+    {"sceneId": "overflow-wrap-normal-min-content", "overflowWrap": "normal", "track": "min-content", "columnsCssPx": [40], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-normal-max-content", "overflowWrap": "normal", "track": "max-content", "columnsCssPx": [40], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-normal-fixed-10px", "overflowWrap": "normal", "track": "10px", "columnsCssPx": [10], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-anywhere-min-content", "overflowWrap": "anywhere", "track": "min-content", "columnsCssPx": [10], "rowsCssPx": [40], "textLineCount": 4},
+    {"sceneId": "overflow-wrap-anywhere-max-content", "overflowWrap": "anywhere", "track": "max-content", "columnsCssPx": [40], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-anywhere-fixed-10px", "overflowWrap": "anywhere", "track": "10px", "columnsCssPx": [10], "rowsCssPx": [40], "textLineCount": 4},
+    {"sceneId": "overflow-wrap-break-word-min-content", "overflowWrap": "break-word", "track": "min-content", "columnsCssPx": [40], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-break-word-max-content", "overflowWrap": "break-word", "track": "max-content", "columnsCssPx": [40], "rowsCssPx": [10], "textLineCount": 1},
+    {"sceneId": "overflow-wrap-break-word-fixed-10px", "overflowWrap": "break-word", "track": "10px", "columnsCssPx": [10], "rowsCssPx": [40], "textLineCount": 4}
+  ],
+  "observationBoundary": {
+    "browser": "HeadlessChrome 156.0.0.0 through Agent Browser",
+    "viewportCssPx": [1280, 633],
+    "devicePixelRatio": 1,
+    "meaning": "Chrome CSSOM tracks, auto rows and text-line positions are cross-observations. The independent font-metric and CSS Text/Sizing/Grid calculations above define expected values."
+  }
+}

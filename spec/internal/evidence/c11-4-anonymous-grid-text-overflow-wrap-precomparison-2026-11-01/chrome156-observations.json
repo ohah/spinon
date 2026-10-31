@@ -1,0 +1,223 @@
+{
+  "dpr": 1,
+  "fontLoaded": true,
+  "observations": [
+    {
+      "authoredOverflowWrap": "normal",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "normal",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-normal-min-content",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 87.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        87.59375
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "normal",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-normal-max-content",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 119.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        119.59375
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "normal",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "normal",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-normal-fixed-10px",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 151.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        151.59375
+      ],
+      "track": "fixed-10px"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-anywhere-min-content",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 328,
+        "y": 183.59375
+      },
+      "rows": "40px",
+      "text": "XXXX",
+      "textLineTops": [
+        183.59375,
+        193.59375,
+        203.59375,
+        213.59375
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-anywhere-max-content",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 227.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        227.59375
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "anywhere",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "anywhere",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-anywhere-fixed-10px",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 328,
+        "y": 259.59375
+      },
+      "rows": "40px",
+      "text": "XXXX",
+      "textLineTops": [
+        259.59375,
+        269.59375,
+        279.59375,
+        289.59375
+      ],
+      "track": "fixed-10px"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-break-word-min-content",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 303.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        303.59375
+      ],
+      "track": "min-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-break-word-max-content",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 328,
+        "y": 335.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "textLineTops": [
+        335.59375
+      ],
+      "track": "max-content"
+    },
+    {
+      "authoredOverflowWrap": "break-word",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontSize": "10px",
+      "computedLineHeight": "10px",
+      "computedOverflowWrap": "break-word",
+      "computedWordBreak": "normal",
+      "id": "overflow-wrap-break-word-fixed-10px",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 328,
+        "y": 367.59375
+      },
+      "rows": "40px",
+      "text": "XXXX",
+      "textLineTops": [
+        367.59375,
+        377.59375,
+        387.59375,
+        397.59375
+      ],
+      "track": "fixed-10px"
+    }
+  ],
+  "overflowWrapAnywhereSupported": true,
+  "screen": {
+    "height": 600,
+    "width": 800
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "height": 633,
+    "width": 1280
+  }
+}
