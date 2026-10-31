@@ -1,0 +1,163 @@
+{
+  "devicePixelRatio": 1,
+  "observations": [
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-distinct",
+      "itemColumnEnd": "omega",
+      "itemColumnStart": "alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 30px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-occurrences",
+      "itemColumnEnd": "3 omega",
+      "itemColumnStart": "2 alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 0px 30px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-same-name",
+      "itemColumnEnd": "alpha",
+      "itemColumnStart": "alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 30px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-forward-adjacent",
+      "itemColumnEnd": "2 omega",
+      "itemColumnStart": "1 alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 30px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-reverse-adjacent",
+      "itemColumnEnd": "1 omega",
+      "itemColumnStart": "2 alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 30px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "columns-multi-track",
+      "itemColumnEnd": "3 omega",
+      "itemColumnStart": "1 alpha",
+      "itemFrame": [
+        80,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 0px 15px 15px",
+      "templateRows": "20px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "rows-distinct",
+      "itemColumnEnd": "auto",
+      "itemColumnStart": "1",
+      "itemFrame": [
+        0,
+        40,
+        20,
+        25
+      ],
+      "itemRowEnd": "omega",
+      "itemRowStart": "alpha",
+      "templateColumns": "40px",
+      "templateRows": "20px 20px 0px 25px"
+    },
+    {
+      "autoColumns": "auto",
+      "autoRows": "auto",
+      "id": "rows-adjacent",
+      "itemColumnEnd": "auto",
+      "itemColumnStart": "1",
+      "itemFrame": [
+        0,
+        40,
+        20,
+        25
+      ],
+      "itemRowEnd": "2 omega",
+      "itemRowStart": "1 alpha",
+      "templateColumns": "40px",
+      "templateRows": "20px 20px 0px 25px"
+    },
+    {
+      "autoColumns": "30px",
+      "autoRows": "auto",
+      "id": "fixed-control",
+      "itemColumnEnd": "omega",
+      "itemColumnStart": "alpha",
+      "itemFrame": [
+        110,
+        0,
+        30,
+        10
+      ],
+      "itemRowEnd": "auto",
+      "itemRowStart": "1",
+      "templateColumns": "40px 40px 30px 30px",
+      "templateRows": "20px"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": [
+    720,
+    400
+  ]
+}

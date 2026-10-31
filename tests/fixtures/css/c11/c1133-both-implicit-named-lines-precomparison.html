@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.3.3 both implicit named-line placement precomparison</title>
+  <style>
+    html, body { margin: 0; width: 680px; height: 360px; }
+    body { position: relative; background: #ffffff; color-scheme: light; }
+    .scene {
+      position: absolute;
+      display: grid;
+      box-sizing: border-box;
+      grid-template-columns: 40px 40px;
+      grid-template-rows: 20px;
+      grid-auto-columns: auto;
+      grid-auto-rows: auto;
+      grid-auto-flow: row;
+      column-gap: 0;
+      row-gap: 0;
+      justify-content: start;
+      align-content: start;
+      justify-items: start;
+      align-items: start;
+      width: 80px;
+      height: 20px;
+      overflow: visible;
+      background: #101820;
+    }
+    .item {
+      display: block;
+      box-sizing: border-box;
+      width: 30px;
+      height: 10px;
+      min-width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #e5484d;
+    }
+    #columns-distinct { left: 8px; top: 8px; }
+    #columns-occurrences { left: 120px; top: 8px; }
+    #columns-same-name { left: 232px; top: 8px; }
+    #columns-forward-adjacent { left: 344px; top: 8px; }
+    #columns-reverse-adjacent { left: 456px; top: 8px; }
+    #columns-multi-track { left: 568px; top: 8px; }
+    #rows-distinct {
+      left: 8px;
+      top: 80px;
+      grid-template-columns: 40px;
+      grid-template-rows: 20px 20px;
+      width: 40px;
+      height: 40px;
+    }
+    #rows-distinct .item { width: 20px; height: 25px; }
+    #rows-adjacent {
+      left: 120px;
+      top: 80px;
+      grid-template-columns: 40px;
+      grid-template-rows: 20px 20px;
+      width: 40px;
+      height: 40px;
+    }
+    #rows-adjacent .item { width: 20px; height: 25px; }
+    #fixed-control { left: 232px; top: 80px; grid-auto-columns: 30px; }
+    #fixed-control .item { width: 30px; height: 10px; }
+  </style>
+</head>
+<body>
+  <section id="columns-distinct" class="scene" aria-label="columns, distinct implicit names">
+    <div id="columns-distinct-item" class="item" style="grid-column: alpha / omega; grid-row: 1"></div>
+  </section>
+  <section id="columns-occurrences" class="scene" aria-label="columns, positive implicit occurrences">
+    <div id="columns-occurrences-item" class="item" style="grid-column: 2 alpha / 3 omega; grid-row: 1"></div>
+  </section>
+  <section id="columns-same-name" class="scene" aria-label="columns, same implicit name at both ends">
+    <div id="columns-same-name-item" class="item" style="grid-column: alpha / alpha; grid-row: 1"></div>
+  </section>
+  <section id="columns-forward-adjacent" class="scene" aria-label="columns, adjacent positive implicit occurrences">
+    <div id="columns-forward-adjacent-item" class="item" style="grid-column: 1 alpha / 2 omega; grid-row: 1"></div>
+  </section>
+  <section id="columns-reverse-adjacent" class="scene" aria-label="columns, reversed adjacent positive implicit occurrences">
+    <div id="columns-reverse-adjacent-item" class="item" style="grid-column: 2 alpha / 1 omega; grid-row: 1"></div>
+  </section>
+  <section id="columns-multi-track" class="scene" aria-label="columns, positive implicit occurrences spanning two tracks">
+    <div id="columns-multi-track-item" class="item" style="grid-column: 1 alpha / 3 omega; grid-row: 1"></div>
+  </section>
+  <section id="rows-distinct" class="scene" aria-label="rows, distinct implicit names">
+    <div id="rows-distinct-item" class="item" style="grid-column: 1; grid-row: alpha / omega"></div>
+  </section>
+  <section id="rows-adjacent" class="scene" aria-label="rows, adjacent positive implicit occurrences">
+    <div id="rows-adjacent-item" class="item" style="grid-column: 1; grid-row: 1 alpha / 2 omega"></div>
+  </section>
+  <section id="fixed-control" class="scene" aria-label="fixed implicit track control">
+    <div id="fixed-control-item" class="item" style="grid-column: alpha / omega; grid-row: 1"></div>
+  </section>
+  <script>
+    window.captureGridObservation = () => [...document.querySelectorAll('.scene')].map(root => {
+      const item = root.firstElementChild;
+      const rootRect = root.getBoundingClientRect();
+      const itemRect = item.getBoundingClientRect();
+      const style = getComputedStyle(root);
+      const itemStyle = getComputedStyle(item);
+      return {
+        id: root.id,
+        templateColumns: style.gridTemplateColumns,
+        templateRows: style.gridTemplateRows,
+        autoColumns: style.gridAutoColumns,
+        autoRows: style.gridAutoRows,
+        itemColumnStart: itemStyle.gridColumnStart,
+        itemColumnEnd: itemStyle.gridColumnEnd,
+        itemRowStart: itemStyle.gridRowStart,
+        itemRowEnd: itemStyle.gridRowEnd,
+        itemFrame: [itemRect.x - rootRect.x, itemRect.y - rootRect.y, itemRect.width, itemRect.height],
+      };
+    });
+  </script>
+</body>
+</html>
