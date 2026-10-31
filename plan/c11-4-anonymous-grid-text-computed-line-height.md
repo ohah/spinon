@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** Chrome 156 관찰, 독립 기대값과 구현 전 계획 검토 20개를 기록했고 제한 fixture 구현 및 최신 Android/iOS Simulator 16-scene 실행을 마쳤다. 별도 구현/runtime 20관점과 PR diff 30관점 검토도 마쳤으며 PR·병합은 진행 중이다. C11/C11.4 checkbox와 공식 완료 `72/213`은 그대로 둔다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/README.md) · [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/pr-diff-review-30.md) · [계획 검토 20개](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)
+**상태:** Chrome 156 관찰, 독립 기대값과 구현 전 계획 검토 20개를 기록했고 제한 fixture 구현 및 최신 Android/iOS Simulator 16-scene 실행을 마쳤다. 별도 구현/runtime 20관점과 PR diff 30관점 검토도 마쳤으며 구현 PR [#905](https://github.com/ohah/spinon/pull/905)은 2026-10-31T05:46:15Z Rebase and merge로 병합됐고 merge SHA는 `454036612372241fa7b162d6f87c78674ab7e559`다. 필수 checks와 보고된 check은 없었다. C11/C11.4 checkbox와 공식 완료 `72/213`은 그대로 둔다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/README.md) · [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/pr-diff-review-30.md) · [병합 후 상태 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/post-merge-status-review-30.md) · [계획 검토 20개](https://github.com/ohah/spinon/blob/main/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)
 
 ## 목적과 경계
 
@@ -57,4 +57,4 @@ iOS Simulator 캡처는 fixture app route와 `layout=ready` 상태를 보여주�
 
 ## 계획 적대 검토
 
-[20개 독립 실패 관점](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)은 구현 전 이 계획에만 적용한다. 기존 white-space 및 tab-size 계획 검토는 재사용하지 않는다.
+[20개 독립 실패 관점](https://github.com/ohah/spinon/blob/main/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)은 구현 전 이 계획에만 적용한다. 기존 white-space 및 tab-size 계획 검토는 재사용하지 않는다.
