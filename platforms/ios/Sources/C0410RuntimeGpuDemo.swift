@@ -1231,6 +1231,7 @@ private func c114SingleTrackOverflowAutoMinimumState(
 }
 
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    if c114IsComputedFontSizeScene(sceneID) { return true }
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return true }
@@ -2188,6 +2189,9 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let fontSize = c114ComputedFontSizeScene(sceneID) {
+        return "width=20,height=\(c114GenericFrameNumber(fontSize.rowHeight))"
+    }
     if let lineHeight = c114ComputedLineHeightTrackHeight(sceneID) {
         return "width=20,height=\(c114GenericFrameNumber(lineHeight))"
     }
@@ -3046,6 +3050,9 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114IsComputedFontSizeScene(sceneID) {
+        return c114ComputedFontSizeTextIntrinsicInputsMatch(sceneID, report: report)
+    }
     if c114ComputedLineHeightTrackHeight(sceneID) != nil {
         return c114ComputedLineHeightTextIntrinsicInputsMatch(sceneID, report: report)
     }
@@ -8416,6 +8423,9 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let fontSize = c114ComputedFontSizeScene(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=\(c114GenericFrameNumber(fontSize.rowHeight))]"
+    }
     if let lineHeight = c114ComputedLineHeightTrackHeight(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=\(c114GenericFrameNumber(lineHeight))]"
     }
@@ -10144,6 +10154,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114IsComputedFontSizeScene(sceneID) { return 1 }
     if let height = c114ComputedLineHeightTrackHeight(sceneID) {
         return height == 0 ? 0 : 1
     }
@@ -10354,7 +10365,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
-    c114ComputedLineHeightTrackHeight(sceneID) != nil
+    c114IsComputedFontSizeScene(sceneID)
+        || c114ComputedLineHeightTrackHeight(sceneID) != nil
         || ["anonymous-min-content-wrap", "anonymous-normal-min-content",
      "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
      "anonymous-normal-fixed-width-control", "anonymous-pre-line-max-content",
@@ -10379,6 +10391,104 @@ private func c114ComputedLineHeightTrackHeight(_ sceneID: String) -> Double? {
     case "line-height-half-number-single-line": return 5
     default: return nil
     }
+}
+
+private func c114IsComputedFontSizeScene(_ sceneID: String) -> Bool {
+    c114ComputedFontSizeScene(sceneID) != nil
+}
+
+private func c114ComputedFontSizeScene(
+    _ sceneID: String
+) -> (fontSize: Double, trackWidth: Double, rowHeight: Double, lineCount: Int)? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    let fontSize: Double
+    switch sceneID {
+    case "font-size-5-min-content", "font-size-5-max-content": fontSize = 5
+    case "font-size-7-5-min-content", "font-size-7-5-max-content": fontSize = 7.5
+    case "font-size-10-min-content", "font-size-10-max-content": fontSize = 10
+    case "font-size-12-5-min-content", "font-size-12-5-max-content": fontSize = 12.5
+    case "font-size-20-min-content", "font-size-20-max-content": fontSize = 20
+    default: return nil
+    }
+    let minContent = sceneID.hasSuffix("-min-content")
+    return (
+        fontSize: fontSize,
+        trackWidth: (minContent ? 2 : 5) * fontSize,
+        rowHeight: minContent ? 20 : 10,
+        lineCount: minContent ? 2 : 1
+    )
+    #else
+    return nil
+    #endif
+}
+
+private func c114ComputedFontSizeTextIntrinsicInputsMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let expected = c114ComputedFontSizeScene(sceneID),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let revisionSource = revision["source"] as? String,
+          revisionSource.hasPrefix("HostDocument"),
+          ["style", "environment", "intrinsicSize"].allSatisfy({
+              guard let value = c114GenericJSONFiniteNumber(revision[$0]) else { return false }
+              return value >= 0
+          }),
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          c114GenericJSONInteger(input["grid"]) == 1,
+          c114GenericJSONInteger(input["node"]) == 2,
+          c114GenericJSONInteger(input["sourceOrder"]) == 0,
+          let source = input["source"] as? [String: Any],
+          c114GenericJSONString(source["kind"]) == "text",
+          c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+          let textSources = input["textSources"] as? [[String: Any]],
+          textSources.count == 1,
+          c114GenericJSONInteger(textSources[0]["node"]) == 2,
+          c114GenericJSONString(textSources[0]["text"]) == "XX XX",
+          let frames = diagnostics["gridItemFrames"] as? [[String: Any]],
+          frames.count == 1,
+          let frame = frames.first,
+          c114GenericJSONInteger(frame["node"]) == 2,
+          c114GenericJSONNear(frame["x"], expected: 0, tolerance: 1.0 / 64.0),
+          c114GenericJSONNear(frame["y"], expected: 0, tolerance: 1.0 / 64.0),
+          c114GenericJSONNear(frame["width"], expected: expected.trackWidth, tolerance: 1.0 / 64.0),
+          c114GenericJSONNear(frame["height"], expected: expected.rowHeight, tolerance: 1.0 / 64.0),
+          let layouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]],
+          layouts.count == 1,
+          let layout = layouts.first,
+          c114GenericJSONInteger(layout["node"]) == 2,
+          c114GenericJSONInteger(layout["layoutParagraph"]) == 2,
+          c114GenericJSONString(layout["text"]) == "XX XX",
+          c114GenericJSONInteger(layout["fontRegistryRevision"]) == 1,
+          c114GenericJSONNear(layout["width"], expected: expected.trackWidth, tolerance: 1.0 / 64.0),
+          c114GenericJSONNear(layout["height"], expected: expected.rowHeight, tolerance: 1.0 / 64.0),
+          let style = layout["paragraphStyle"] as? [String: Any],
+          c114GenericJSONString(style["fontFamily"]) == "Ahem",
+          c114GenericJSONNear(style["fontSize"], expected: expected.fontSize, tolerance: 0),
+          c114GenericJSONNear(style["lineHeight"], expected: 10, tolerance: 0),
+          style["lineHeightIsNormal"] as? Bool == false,
+          c114GenericJSONNear(style["fontWeight"], expected: 400, tolerance: 0),
+          c114GenericJSONString(style["fontStyle"]) == "Normal",
+          c114GenericJSONString(style["whiteSpace"]) == "Normal",
+          c114GenericJSONString(style["wordBreak"]) == "Normal",
+          c114GenericJSONString(style["direction"]) == "Ltr",
+          let lines = layout["lines"] as? [[String: Any]],
+          lines.count == expected.lineCount else { return false }
+
+    let expectedAdvance = expected.lineCount == 2 ? 2 * expected.fontSize : 5 * expected.fontSize
+    for (index, line) in lines.enumerated() {
+        guard c114GenericJSONNear(line["advance"], expected: expectedAdvance, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(line["lineTop"], expected: Double(index) * 10, tolerance: 1.0 / 64.0),
+              c114GenericJSONNear(line["lineHeight"], expected: 10, tolerance: 1.0 / 64.0) else {
+            return false
+        }
+    }
+    return c114GenericJSONNear(source["minContent"], expected: 2 * expected.fontSize, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["minContentHeight"], expected: 20, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["maxContent"], expected: 5 * expected.fontSize, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["maxContentHeight"], expected: 10, tolerance: 1.0 / 64.0)
 }
 
 private func c114ComputedLineHeightTextIntrinsicInputsMatch(

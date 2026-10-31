@@ -1,0 +1,29 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.09s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 11 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_block_separator_requires_auto_grid_placement ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_fixture_cases_are_unique ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_tab_size_comes_from_computed_style_and_rejects_other_values ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::computed_font_size_scales_anonymous_text_intrinsic_sizes_and_auto_height ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_line_height::anonymous_grid_computed_line_height_mismatch_fails_before_layout_publication ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::tests::anonymous_text_full_tab_size_matrix_matches_the_fixed_css_stop_oracle ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_text::generic_direct_text_tests::aspect_ratio_definite_axis::definite_axis_profile_rejects_anonymous_text_and_stale_style_revision ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::c114_anonymous_text_and_two_or_three_images_share_one_revision_and_track_pass ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_multi_image::border_overflow::two_anonymous_runs_and_images_keep_border_box_and_visible_overflow_in_both_orders ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_image::c114_anonymous_text_and_default_inline_image_share_one_revision_and_track_pass ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_line_height::anonymous_grid_computed_line_height_matrix_reaches_text_and_auto_row_sizing ... ok
+
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 336 filtered out; finished in 0.08s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

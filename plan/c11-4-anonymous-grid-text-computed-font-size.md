@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** 현재 C11.4 anonymous direct-text fixture는 computed `line-height`를 `ParagraphStyle`에 전달하지만 `font-size:10px`과 `ParagraphStyle.font_size:10.0`은 고정한다. Chrome 156 사전 비교와 Ahem font-table 산식을 고정했다. [비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/README.md). 구현과 Android/iOS Simulator 재검증은 아직 시작하지 않았다. 계획 PR은 C11.4/C11 체크와 공식 `72/213`을 바꾸지 않는다.
+**상태:** 5 computed sizes × min/max-content의 10-scene opt-in candidate를 구현했다. Rust intrinsic sizing, 기본/fixture-test static archive boundary, Android API 37 ARM64 AVD 10/10 및 iPhone 17 Pro/iOS 26.2 Simulator 10/10을 검증했다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/README.md)와 [구현/runtime 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-runtime-2026-10-31/README.md). 구현/runtime 실패 관점 검토 20개와 local PR diff 실패 관점 검토 30개를 마쳤다. PR 생성 뒤 remote head diff/hash 대조와 PR 절차가 남아 있다. C11.4/C11 체크와 공식 `72/213`은 유지한다.
 
 ## 목적과 경계
 
