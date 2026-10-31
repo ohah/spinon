@@ -1,0 +1,237 @@
+{
+  "ahemLoaded": true,
+  "cases": [
+    {
+      "authoredLetterSpacing": "normal",
+      "computedLetterSpacing": "normal",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "20px",
+      "id": "normal-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 20,
+        "x": 27,
+        "y": 49.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "normal",
+      "computedLetterSpacing": "normal",
+      "gridTemplateColumns": "50px",
+      "gridTemplateRows": "10px",
+      "id": "normal-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 50,
+        "x": 447,
+        "y": 49.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "-1px",
+      "computedLetterSpacing": "-1px",
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "20px",
+      "id": "minus-one-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 18,
+        "x": 867,
+        "y": 49.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "-1px",
+      "computedLetterSpacing": "-1px",
+      "gridTemplateColumns": "45px",
+      "gridTemplateRows": "10px",
+      "id": "minus-one-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 45,
+        "x": 27,
+        "y": 137.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "0px",
+      "computedLetterSpacing": "normal",
+      "gridTemplateColumns": "20px",
+      "gridTemplateRows": "20px",
+      "id": "zero-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 20,
+        "x": 447,
+        "y": 137.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "0px",
+      "computedLetterSpacing": "normal",
+      "gridTemplateColumns": "50px",
+      "gridTemplateRows": "10px",
+      "id": "zero-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 50,
+        "x": 867,
+        "y": 137.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "0.5px",
+      "computedLetterSpacing": "0.5px",
+      "gridTemplateColumns": "21px",
+      "gridTemplateRows": "20px",
+      "id": "half-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 21,
+        "x": 27,
+        "y": 225.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "0.5px",
+      "computedLetterSpacing": "0.5px",
+      "gridTemplateColumns": "52.5px",
+      "gridTemplateRows": "10px",
+      "id": "half-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 52.5,
+        "x": 447,
+        "y": 225.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "1px",
+      "computedLetterSpacing": "1px",
+      "gridTemplateColumns": "22px",
+      "gridTemplateRows": "20px",
+      "id": "one-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 22,
+        "x": 867,
+        "y": 225.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "1px",
+      "computedLetterSpacing": "1px",
+      "gridTemplateColumns": "55px",
+      "gridTemplateRows": "10px",
+      "id": "one-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 55,
+        "x": 27,
+        "y": 313.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "2px",
+      "computedLetterSpacing": "2px",
+      "gridTemplateColumns": "24px",
+      "gridTemplateRows": "20px",
+      "id": "two-min",
+      "rootFrame": {
+        "height": 20,
+        "width": 24,
+        "x": 447,
+        "y": 313.390625
+      }
+    },
+    {
+      "authoredLetterSpacing": "2px",
+      "computedLetterSpacing": "2px",
+      "gridTemplateColumns": "60px",
+      "gridTemplateRows": "10px",
+      "id": "two-max",
+      "rootFrame": {
+        "height": 10,
+        "width": 60,
+        "x": 867,
+        "y": 313.390625
+      }
+    }
+  ],
+  "singleWordCases": [
+    {
+      "authoredLetterSpacing": "-1px",
+      "computedLetterSpacing": "-1px",
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "10px",
+      "id": "minus-one-word-min",
+      "rootFrame": { "height": 10, "width": 18 }
+    },
+    {
+      "authoredLetterSpacing": "-1px",
+      "computedLetterSpacing": "-1px",
+      "gridTemplateColumns": "18px",
+      "gridTemplateRows": "10px",
+      "id": "minus-one-word-max",
+      "rootFrame": { "height": 10, "width": 18 }
+    },
+    {
+      "authoredLetterSpacing": "1px",
+      "computedLetterSpacing": "1px",
+      "gridTemplateColumns": "22px",
+      "gridTemplateRows": "10px",
+      "id": "one-word-min",
+      "rootFrame": { "height": 10, "width": 22 }
+    },
+    {
+      "authoredLetterSpacing": "1px",
+      "computedLetterSpacing": "1px",
+      "gridTemplateColumns": "22px",
+      "gridTemplateRows": "10px",
+      "id": "one-word-max",
+      "rootFrame": { "height": 10, "width": 22 }
+    }
+  ],
+  "plainBlockWidthProbe": [
+    { "letterSpacing": "normal", "width": 20, "rangeWidth": 20, "scrollWidth": 20 },
+    { "letterSpacing": "-1px", "width": 18, "rangeWidth": 18, "scrollWidth": 18 },
+    { "letterSpacing": "0.5px", "width": 21, "rangeWidth": 21, "scrollWidth": 21 },
+    { "letterSpacing": "1px", "width": 22, "rangeWidth": 22, "scrollWidth": 22 },
+    { "letterSpacing": "2px", "width": 24, "rangeWidth": 24, "scrollWidth": 24 }
+  ],
+  "cssText4Expected": {
+    "source": "https://www.w3.org/TR/css-text-4/#letter-spacing-property",
+    "rule": "Letter spacing contributes between adjacent typographic character units, with no added spacing at a line start or line end.",
+    "ahemAdvancePxPerUnit": 10,
+    "singleWordXXMinAndMaxPx": { "-1px": 19, "0px": 20, "0.5px": 20.5, "1px": 21, "2px": 22 },
+    "twoWordXXSpaceXXMinContentPx": { "-1px": 19, "0px": 20, "0.5px": 20.5, "1px": 21, "2px": 22 },
+    "twoWordXXSpaceXXMaxContentPx": { "-1px": 46, "0px": 50, "0.5px": 52, "1px": 54, "2px": 58 }
+  },
+  "fontFaces": [
+    {
+      "family": "Ahem",
+      "status": "loaded"
+    }
+  ],
+  "title": "C11.4 anonymous Grid text letter-spacing precomparison",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "userAgentFullVersionList": [
+    {
+      "brand": "Not:A-Brand",
+      "version": "8.0.0.0"
+    },
+    {
+      "brand": "Chromium",
+      "version": "156.0.8078.80"
+    },
+    {
+      "brand": "Google Chrome",
+      "version": "156.0.8078.80"
+    }
+  ],
+  "viewport": {
+    "dpr": 1,
+    "height": 633,
+    "width": 1280
+  }
+}
