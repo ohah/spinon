@@ -1,0 +1,68 @@
+{
+  "oracle": "Agent Browser / HeadlessChrome 156",
+  "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "font": {
+    "family": "Spinon Noto Sans KR",
+    "sha256": "9e1d729e7e2b36f9ef439da102f8c134c10aabe46f1c843bf0aca5c043b86f76",
+    "font_loaded": true,
+    "size_px": 10,
+    "weight": 400,
+    "line_height_px": 10
+  },
+  "text": "文〜文",
+  "grid_style": {
+    "display": "grid",
+    "width_px": 120,
+    "height": "auto",
+    "columns": "min-content or max-content",
+    "rows": "auto",
+    "white_space_collapse": "collapse",
+    "text_wrap_mode": "wrap",
+    "word_break": "normal",
+    "direction": "ltr",
+    "writing_mode": "horizontal-tb",
+    "gap_px": 0,
+    "edges_px": 0
+  },
+  "direct_child_node_type": 3,
+  "scenes": [
+    {
+      "id": "ja-normal",
+      "lang": "ja",
+      "line_break": "normal",
+      "grid_template_columns": "10px",
+      "grid_template_rows": "30px",
+      "root_frame_px": [120, 30]
+    },
+    {
+      "id": "ja-strict",
+      "lang": "ja",
+      "line_break": "strict",
+      "grid_template_columns": "20px",
+      "grid_template_rows": "20px",
+      "root_frame_px": [120, 20]
+    },
+    {
+      "id": "en-normal",
+      "lang": "en",
+      "line_break": "normal",
+      "grid_template_columns": "20px",
+      "grid_template_rows": "20px",
+      "root_frame_px": [120, 20]
+    },
+    {
+      "id": "ja-max",
+      "lang": "ja",
+      "line_break": "normal",
+      "grid_template_columns": "30px",
+      "grid_template_rows": "10px",
+      "root_frame_px": [120, 10]
+    }
+  ],
+  "runtime_style_screenshot_sha256": "f52fc2e75238bafce88b215437686f2a1ffd08e52c8eb70e46193226cc9e9ac9",
+  "shrink_to_fit_screenshot_sha256": "5f149f2531340aeda40289700fa470c9277baf473ce8350a2d07cdd6cdf07865",
+  "captures": {
+    "runtime_style": "chrome156-runtime-style-grid.png",
+    "shrink_to_fit": "chrome156-line-break-grid.png"
+  }
+}
