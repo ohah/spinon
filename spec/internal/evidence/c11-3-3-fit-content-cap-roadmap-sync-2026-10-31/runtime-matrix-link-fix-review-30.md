@@ -33,6 +33,6 @@
 | 27 | geometry 비교 결과가 0 CSS px로 유지되는가 | PASS |
 | 28 | 변경이 C11.3.3 candidate를 공식 완료로 승격하지 않는가 | PASS |
 | 29 | 변경이 공식 완료 72/213을 수정하지 않는가 | PASS |
-| 30 | 두 링크가 candidate/served Agent Browser에서 HTTP 200으로 열리는가 | PENDING — build와 live verification에서 기록 |
+| 30 | 두 링크가 build route에서 열리고 실행 행렬이 맞는가 | PASS — Agent Browser에서 Android/iOS 각 200, 39 scenes·126 nodes, broken image 0; [측정·hash](runtime-matrix-link-fix-browser-verification-pass01.json) |
 
 검토 범위는 해당 문서 diff와 고정 run 경로다. 이 검토는 앱 테스트나 CI 결과를 대신하지 않는다.

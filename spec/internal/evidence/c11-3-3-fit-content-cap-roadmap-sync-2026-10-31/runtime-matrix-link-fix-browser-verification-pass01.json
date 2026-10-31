@@ -1,0 +1,67 @@
+{
+  "sourceHead": "82ed5e9d38c5bc860e635e9ca510a3d8fe172d22",
+  "publicationRouteCount": 163,
+  "generatedHtmlCount": 35,
+  "fullDocsLinkValidation": false,
+  "browser": "Agent Browser / Chrome 156",
+  "candidateRuntimePage": "http://127.0.0.1:8799/spinon/spec/internal/evidence/c11-3-3-template-area-fit-content-cap-runtime-2026-10-31/README.html",
+  "desktop": {
+    "viewport": [
+      1280,
+      900
+    ],
+    "documentWidth": 1280
+  },
+  "mobile": {
+    "viewport": [
+      390,
+      844
+    ],
+    "documentWidth": 390,
+    "bodyWidth": 390
+  },
+  "matrixLinks": [
+    {
+      "platform": "Android",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/android-avd-c1133-matrix-20261031T094711326Z-ff0e1d13/README.html",
+      "status": 200,
+      "title": "C11.3.3 Grid template areas Android runtime matrix",
+      "scenes": 39,
+      "nodes": 126,
+      "sourceCommit": "b815f483a253072cbbca1c0cd473d519fc95a220",
+      "brokenImages": []
+    },
+    {
+      "platform": "iOS",
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/ios-simulator-c1133-ios-matrix-20261031T094825291Z-76286963/README.html",
+      "status": 200,
+      "title": "C11.3.3 Grid template areas iOS Simulator 전체 행렬",
+      "scenes": 39,
+      "nodes": 126,
+      "sourceCommit": "b815f483a253072cbbca1c0cd473d519fc95a220",
+      "brokenImages": []
+    }
+  ],
+  "parentLinks": [
+    200,
+    200
+  ],
+  "screenshots": [
+    {
+      "path": "runtime-readme-links-desktop-agent-browser.png",
+      "pixelSize": [
+        1280,
+        900
+      ],
+      "sha256": "9a90649b51940278e4acc62a1a14adfda3567cfa20a25cdef885b0cf3d00b9ff"
+    },
+    {
+      "path": "runtime-readme-links-parent-mobile-agent-browser.png",
+      "pixelSize": [
+        390,
+        844
+      ],
+      "sha256": "763ef4a1df84f753f60a6ac3dbdafac79c18127e8223546acee76f4b6e17ee6f"
+    }
+  ]
+}
