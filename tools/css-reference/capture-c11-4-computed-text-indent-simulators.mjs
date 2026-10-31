@@ -8,17 +8,49 @@ import { fileURLToPath } from 'node:url';
 const repositoryRoot = resolve(fileURLToPath(new URL('../..', import.meta.url)));
 const target = process.argv[2];
 const deviceID = process.argv[3];
+const profile = process.argv[4] ?? 'positive';
+const negativeMode = profile === 'negative';
 const packageName = 'dev.spinon.bootstrap';
 const androidApk = resolve(repositoryRoot,
   'platforms/android/app/build/outputs/apk/debug/app-debug.apk');
 const iosApp = resolve(repositoryRoot,
   'build/spinon/DerivedData/Build/Products/Debug-iphonesimulator/SpinonBootstrap.app');
-const evidenceRoot = resolve(repositoryRoot,
-  'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01');
-const expectedValues = JSON.parse(await readFile(resolve(repositoryRoot,
+const evidenceRoot = resolve(repositoryRoot, negativeMode
+  ? 'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01'
+  : 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01');
+const positiveExpectedValues = JSON.parse(await readFile(resolve(repositoryRoot,
   'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/spec-derived-expectations.json'),
 { encoding: 'utf8' }));
-const runPrefix = `c114-computed-text-indent-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
+const negativeExpectedValues = negativeMode ? JSON.parse(await readFile(resolve(repositoryRoot,
+  'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/expected.json'),
+{ encoding: 'utf8' })) : null;
+const negativeCases = negativeMode ? negativeExpectedValues.candidateScenes.map((candidate) => {
+  const metric = negativeExpectedValues.candidateMetrics.find((item) =>
+    item.text === candidate.text && item.indentPx === candidate.indentPx);
+  assert.ok(metric, `${candidate.sceneId}: negative-indent metric missing`);
+  return {
+    id: candidate.sceneId,
+    computedTextIndent: `${candidate.indentPx}px`,
+    textIndentPx: candidate.indentPx,
+    text: candidate.text,
+    track: candidate.trackKind === 'min-content' ? 'min' : 'max',
+    columnsPx: candidate.trackPx,
+    rowsPx: candidate.itemHeightPx,
+    minContentPx: metric.minContentPx,
+    maxContentPx: metric.maxContentPx,
+    minContentHeightPx: metric.minContentRows * positiveExpectedValues.ahem.fontSizeCssPx,
+    maxContentHeightPx: positiveExpectedValues.ahem.fontSizeCssPx,
+    lineCount: metric.minContentRows,
+    lineAdvancePx: null,
+  };
+}) : [];
+const expectedValues = {
+  ...positiveExpectedValues,
+  cases: negativeMode
+    ? [...positiveExpectedValues.cases, ...negativeCases]
+    : positiveExpectedValues.cases,
+};
+const runPrefix = `c114-computed-text-indent-${profile}-${target}-${Date.now()}-${randomUUID().slice(0, 8)}`;
 const evidenceDirectory = resolve(evidenceRoot, `${target}-${runPrefix}`);
 const sleep = (ms) => Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 
@@ -73,13 +105,14 @@ function deriveScene(scene) {
   const words = scene.text.trim().split(/\s+/);
   const fontSize = expectedValues.ahem.fontSizeCssPx;
   const textIndent = Number.parseFloat(scene.computedTextIndent);
-  const minContent = Math.max(...words.map((word) => [...word].length)) * fontSize + textIndent;
+  const minContent = Math.max(...words.map((word, index) => [...word].length * fontSize
+    + (index === 0 ? textIndent : 0)));
   const maxContent = words.reduce((sum, word) => sum + [...word].length, 0) * fontSize
     + Math.max(0, words.length - 1) * fontSize + textIndent;
   const unindentedMaxContent = maxContent - textIndent;
   const minContentHeight = words.length * fontSize;
   const maxContentHeight = fontSize;
-  assert.ok(Number.isFinite(textIndent) && textIndent >= 0,
+  assert.ok(Number.isFinite(textIndent) && textIndent >= -10 && textIndent <= 10,
     `${scene.id}: invalid fixed-profile text-indent`);
   assert.equal(scene.columnsPx, scene.track === 'min' ? minContent : maxContent,
     `${scene.id}: independent column formula`);
@@ -87,9 +120,9 @@ function deriveScene(scene) {
     `${scene.id}: independent row formula`);
   const lineCount = scene.track === 'min' ? words.length : 1;
   const trackWidth = scene.track === 'min' ? minContent : maxContent;
-  const unindentedLineAdvance = scene.track === 'min'
-    ? Math.max(...words.map((word) => [...word].length)) * fontSize
-    : unindentedMaxContent;
+  const lineAdvances = scene.track === 'min'
+    ? words.map((word) => [...word].length * fontSize)
+    : [unindentedMaxContent];
   return {
     words,
     textIndent,
@@ -100,7 +133,7 @@ function deriveScene(scene) {
     trackWidth,
     rowHeight: scene.rowsPx,
     lineCount,
-    lineAdvances: Array(lineCount).fill(unindentedLineAdvance),
+    lineAdvances,
     layoutText: words.join(' '),
   };
 }
@@ -224,11 +257,18 @@ async function runAndroid(serial) {
       const scene = item;
       const { id } = scene;
       const runID = `${runPrefix}-${String(index + 1).padStart(2, '0')}`;
-      adb(['shell', 'am', 'start', '-S', '-W', '-n', `${packageName}/.MainActivity`,
+      const launch = adb(['shell', 'am', 'start', '-S', '-W', '-n', `${packageName}/.MainActivity`,
         '--ez', 'spinon_c114_grid_track_sizing', 'true',
         '--es', 'spinon_c114_grid_scene', id, '--es', 'spinon_c114_grid_run_id', runID]);
-      const pid = adb(['shell', 'pidof', packageName], { allowFailure: true }).stdout.trim().split(/\s+/)[0];
-      assert.ok(pid, `${id}: Android process missing`);
+      let pid = '';
+      const launchDeadline = Date.now() + 10_000;
+      while (Date.now() < launchDeadline) {
+        pid = adb(['shell', 'pidof', packageName], { allowFailure: true })
+          .stdout.trim().split(/\s+/)[0] ?? '';
+        if (pid) break;
+        sleep(100);
+      }
+      assert.ok(pid, `${id}: Android process missing after launch: ${launch.stdout.trim()}`);
       let log = '';
       const deadline = Date.now() + 90_000;
       while (Date.now() < deadline) {
@@ -241,7 +281,9 @@ async function runAndroid(serial) {
       await writeFile(resolve(evidenceDirectory, `${id}.log`), evidenceLog(log));
       const row = validateScene(log, scene, runID);
       rows.push(row);
-      if (id === 'text-indent-five-collapsed-three-words-max-content') {
+      if (id === (negativeMode
+        ? 'text-indent-negative-five-first-word-long-max-content'
+        : 'text-indent-five-collapsed-three-words-max-content')) {
         sleep(1500);
         const screenshot = command('/opt/homebrew/bin/adb', ['-s', serial, 'exec-out', 'screencap', '-p'],
           { encoding: null, maxBuffer: 16 * 1024 * 1024 });
@@ -305,7 +347,9 @@ async function runIOS(udid) {
       await writeFile(resolve(evidenceDirectory, `${id}.log`), evidenceLog(log));
       const row = validateScene(log, scene, runID);
       rows.push(row);
-      if (id === 'text-indent-five-collapsed-three-words-max-content') {
+      if (id === (negativeMode
+        ? 'text-indent-negative-five-first-word-long-max-content'
+        : 'text-indent-five-collapsed-three-words-max-content')) {
         sleep(1500);
         command('xcrun', ['simctl', 'io', udid, 'screenshot',
           resolve(evidenceDirectory, 'representative-screen.png')]);
@@ -323,7 +367,8 @@ async function runIOS(udid) {
 }
 
 assert.ok(['android-avd', 'ios-simulator'].includes(target),
-  'Usage: capture-c11-4-computed-text-indent-simulators.mjs <android-avd|ios-simulator> <serial|UDID>');
+  'Usage: capture-c11-4-computed-text-indent-simulators.mjs <android-avd|ios-simulator> <serial|UDID> [positive|negative]');
+assert.ok(['positive', 'negative'].includes(profile), 'Unknown text-indent matrix profile');
 assert.ok(deviceID, 'An explicit Android serial or iOS Simulator UDID is required');
 await mkdir(evidenceDirectory, { recursive: true });
 if (target === 'android-avd') await runAndroid(deviceID);

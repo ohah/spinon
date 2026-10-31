@@ -2,13 +2,17 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [직전 nonnegative `text-indent` slice](./c11-4-anonymous-grid-text-computed-text-indent.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md)
 
-**상태:** 구현 전 계획 후보. 이전 `text-indent` 구현 PR #930은 병합되어 0/5/10px의 고정 profile을 지원한다. 이 문서는 음수 length에 대한 새 opt-in fixture slice만 계획하며 C11.4/C11 완료나 일반 CSS 지원을 뜻하지 않는다.
+**상태:** 12개 음수 장면 구현·simulator 검증·구현 diff 30관점 검토를 마쳤다. 이전 구현 PR #930의 18개 `0px`/`5px`/`10px` scene과 합쳐 30개 matrix를 확인했으며 구현 PR 생성 전 상태다. 이 제한 opt-in slice는 C11.4/C11 완료나 일반 CSS 지원을 뜻하지 않는다.
 
 **사전 비교:** [CSS Text 3·CSS Sizing·Grid 규범 및 독립 기대값, Chrome 156 Agent Browser 관측](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md) · [Chrome 156 observation JSON](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-observation.json) · [화면](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/chrome156-agent-browser.png)
 
 **계획 검토:** [서로 다른 실패 관점 20개](./c11-4-anonymous-grid-text-negative-indent-plan-review-20.md). 이 20개 검토는 계획 PR diff 검토와 분리한다.
 
 **계획 PR diff 검토:** [서로 다른 실패 관점 30개](./c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.md).
+
+**구현/runtime 검토:** [새 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.md). 계획 검토와 별도다.
+
+**구현 PR diff 검토:** [서로 다른 실패 관점 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.md). Android max-content line advance 기대값 결함을 수정한 뒤 static source test·fixture build·Android 30-scene capture를 다시 실행했다.
 
 ## 목표와 고정 범위
 
@@ -50,3 +54,7 @@
 - 기존 positive 18-scene regression을 유지하고 모든 unlisted/unsupported inputs를 fail-closed한다.
 - Android AVD와 iOS Simulator 전체 30 scene, default/opt-in artifact boundary, focused Rust checks, implementation review 20개와 PR diff review 30개가 각각 통과해야 한다.
 - 이 slice는 임의 음수값, `-30px` boundary, percentage, `hanging`/`each-line`, 일반 CSS admission, arbitrary fonts/scripts, glyph paint, WPT, 실기기/hardware GPU, 전체 C11.4 또는 C11을 지원/완료로 만들지 않는다.
+
+## 구현 후보 결과
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 양수 18개와 새 음수 12개가 각각 30/30 통과했다. Rust focused tests, text-layout tests, fixture module boundary Node tests, formatter, runtime/FFI scoped Clippy 및 두 platform app build도 통과했다. 실행 증거와 상세 한계는 [implementation evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.md)에 기록한다. 공식 C11.4/C11 checkbox와 완료 수 `72/213`은 유지한다.

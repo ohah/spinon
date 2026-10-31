@@ -21,63 +21,102 @@ struct Case {
     expected_min_content: f32,
     expected_max_content: f32,
     expected_min_height: f32,
-    unindented_line_advance: f32,
+    expected_line_advances: Vec<f32>,
 }
 
 fn cases() -> Vec<Case> {
-    let values = [
-        ("zero", "0px", 0.0),
-        ("five", "5px", 5.0),
-        ("ten", "10px", 10.0),
-    ];
-    let text_cases = [
+    let positive_text_cases = [
         ("two-words", "XX XX"),
         ("collapsed-three-words", "XX   XX XX  "),
         ("single-word", "XX"),
     ];
+    let negative_text_cases = [
+        ("first-word-long", "XXX X"),
+        ("first-word-short", "X XXX"),
+        ("single-word", "XX"),
+    ];
     let tracks = [("min-content", true), ("max-content", false)];
-    let mut cases = Vec::with_capacity(values.len() * text_cases.len() * tracks.len());
-    for (value_name, computed_value, text_indent) in values {
-        for (text_name, text) in text_cases {
-            let words = text.split_ascii_whitespace().collect::<Vec<_>>();
-            let x_count = text.chars().filter(|character| *character == 'X').count();
-            let unindented_line_advance =
-                10.0 * x_count as f32 + 10.0 * words.len().saturating_sub(1) as f32;
-            let expected_min_content = 10.0
-                * words
-                    .iter()
-                    .map(|word| word.len())
-                    .max()
-                    .unwrap_or_default() as f32
-                + text_indent;
-            let expected_max_content = unindented_line_advance + text_indent;
-            for (track_name, is_min_content) in tracks {
-                cases.push(Case {
-                    scene_id: format!("text-indent-{value_name}-{text_name}-{track_name}"),
-                    specified_value: computed_value,
-                    computed_value,
-                    text,
-                    is_min_content,
-                    text_indent,
-                    expected_min_content,
-                    expected_max_content,
-                    expected_min_height: 10.0 * words.len() as f32,
-                    unindented_line_advance: if is_min_content {
-                        expected_min_content - text_indent
-                    } else {
-                        unindented_line_advance
-                    },
-                });
-            }
-        }
+    let mut cases = Vec::with_capacity(30);
+    for (value_name, computed_value, text_indent) in [
+        ("zero", "0px", 0.0),
+        ("five", "5px", 5.0),
+        ("ten", "10px", 10.0),
+    ] {
+        append_cases(
+            &mut cases,
+            value_name,
+            computed_value,
+            text_indent,
+            &positive_text_cases,
+            &tracks,
+        );
+    }
+    for (value_name, computed_value, text_indent) in [
+        ("negative-five", "-5px", -5.0),
+        ("negative-ten", "-10px", -10.0),
+    ] {
+        append_cases(
+            &mut cases,
+            value_name,
+            computed_value,
+            text_indent,
+            &negative_text_cases,
+            &tracks,
+        );
     }
     cases
+}
+
+fn append_cases(
+    cases: &mut Vec<Case>,
+    value_name: &str,
+    computed_value: &'static str,
+    text_indent: f32,
+    text_cases: &[(&'static str, &'static str)],
+    tracks: &[(&str, bool)],
+) {
+    for (text_name, text) in text_cases {
+        let words = text.split_ascii_whitespace().collect::<Vec<_>>();
+        let expected_min_content = words
+            .iter()
+            .enumerate()
+            .map(|(index, word)| {
+                10.0 * word.len() as f32 + if index == 0 { text_indent } else { 0.0 }
+            })
+            .fold(0.0_f32, f32::max);
+        let unindented_max_content = 10.0
+            * (words.iter().map(|word| word.len()).sum::<usize>() + words.len().saturating_sub(1))
+                as f32;
+        let expected_max_content = unindented_max_content + text_indent;
+        let expected_line_advances = words
+            .iter()
+            .map(|word| 10.0 * word.len() as f32)
+            .collect::<Vec<_>>();
+        for (track_name, is_min_content) in tracks.iter().copied() {
+            cases.push(Case {
+                scene_id: format!("text-indent-{value_name}-{text_name}-{track_name}"),
+                specified_value: computed_value,
+                computed_value,
+                text,
+                is_min_content,
+                text_indent,
+                expected_min_content,
+                expected_max_content,
+                expected_min_height: 10.0 * words.len() as f32,
+                expected_line_advances: if is_min_content {
+                    expected_line_advances.clone()
+                } else {
+                    vec![unindented_max_content]
+                },
+            });
+        }
+    }
 }
 
 #[test]
 fn anonymous_grid_computed_text_indent_reaches_intrinsic_tracks_and_first_line_position() {
     let cases = cases();
-    assert_eq!(cases.len(), 18);
+    assert_eq!(cases.len(), 30);
     assert_eq!(
         cases
             .iter()
@@ -210,23 +249,21 @@ fn anonymous_grid_computed_text_indent_reaches_intrinsic_tracks_and_first_line_p
                 .collect::<Vec<_>>()
                 .join(" ")
         );
-        let expected_line_count = if case.is_min_content {
-            case.text.split_ascii_whitespace().count()
-        } else {
-            1
-        };
         assert_eq!(
             text_layout.layout.lines.len(),
-            expected_line_count,
+            case.expected_line_advances.len(),
             "{} line count",
             case.scene_id
         );
         assert!(
-            text_layout.layout.lines.iter().all(|line| {
-                (line.advance - case.unindented_line_advance).abs() <= 1.0 / 64.0
-                    && line.line_top.is_finite()
-                    && line.baseline.is_finite()
-            }),
+            case.expected_line_advances
+                .iter()
+                .zip(&text_layout.layout.lines)
+                .all(|(expected, line)| {
+                    (line.advance - expected).abs() <= 1.0 / 64.0
+                        && line.line_top.is_finite()
+                        && line.baseline.is_finite()
+                }),
             "{} shaped line metrics: {:?}",
             case.scene_id,
             text_layout.layout.lines
@@ -280,7 +317,10 @@ fn anonymous_grid_computed_text_indent_reaches_intrinsic_tracks_and_first_line_p
 
 #[test]
 fn anonymous_grid_text_indent_out_of_profile_and_mismatch_fail_before_layout_publication() {
-    for (index, specified_value) in ["-5px", "5%", "10px"].into_iter().enumerate() {
+    for (index, specified_value) in ["-5px", "-7px", "-30px", "5%", "5px hanging", "10px"]
+        .into_iter()
+        .enumerate()
+    {
         let mut case = cases()[6].clone();
         case.specified_value = specified_value;
         let (snapshot, _, _) = snapshot_for(&case, 12_399 + index as u64);
@@ -311,6 +351,38 @@ fn anonymous_grid_text_indent_out_of_profile_and_mismatch_fail_before_layout_pub
         );
         assert!(error.contains("text-indent"), "{error}");
     }
+}
+
+#[test]
+fn anonymous_grid_text_indent_unlisted_negative_scene_fails_before_layout_publication() {
+    let mut case = cases()[0].clone();
+    case.scene_id = "text-indent-negative-seven-first-word-long-min-content".to_owned();
+    case.specified_value = "-7px";
+    let (snapshot, _, _) = snapshot_for(&case, 12_499);
+    let request = WorkRequest {
+        key: key_for(&snapshot, EnvironmentRevision::INITIAL),
+        snapshot,
+        viewport: CssViewport {
+            width_css_px: 120.0,
+            height_css_px: 100.0,
+            device_scale_factor: 1.0,
+            environment_revision: EnvironmentRevision::INITIAL,
+            media_environment: CssMediaEnvironment::MOBILE,
+        },
+        previous_snapshot: None,
+        force_full: true,
+        invalidation: None,
+        previous_styles: None,
+    };
+    let calculation = compute_request_for_block_flex_grid_track_sizing(&request)
+        .expect("unlisted scene is rejected at the fixture boundary");
+    let Err(error) = calculation.layout else {
+        panic!("unlisted negative text-indent scene published layout output");
+    };
+    assert!(
+        format!("{error:?}").contains("unsupported_c114_"),
+        "{error:?}"
+    );
 }
 
 fn snapshot_for(

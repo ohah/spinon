@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-11-01 anonymous Grid negative `text-indent` · 구현 전 계획 후보
+## 2026-11-01 anonymous Grid negative `text-indent` · 구현 후보 검증
 
-PR #930의 fixed 0/5/10px anonymous text-indent profile 다음으로, CSS Text 3 §8.1에 정의된 negative `<length>` 중 -5px·-10px만 opt-in fixture에 추가하는 [집중 계획](./c11-4-anonymous-grid-text-negative-indent.md)을 작성했다. Chrome 156 Agent Browser 18 track probe와 Ahem independent expectation은 [precomparison evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md)에 있다. [계획 실패 관점 20개](./c11-4-anonymous-grid-text-negative-indent-plan-review-20.md)와 [계획 PR diff 검토 30개](./c11-4-anonymous-grid-text-negative-indent-plan-pr-diff-review-30.md)를 통과했다. `-30px`은 min/max invariant와 Grid track floor를 더 분석해야 하므로 oracle-only이며 구현 범위에 넣지 않았다. 계획 PR diff 검토가 끝나고 계획 PR이 병합되기 전에는 제품 구현을 시작하지 않는다. C11.4/C11 checkbox와 공식 `72/213`은 유지한다.
+PR #930의 fixed 0/5/10px profile에 CSS Text 3 §8.1의 `-5px`·`-10px`만 더한 [집중 계획](./c11-4-anonymous-grid-text-negative-indent.md)을 바탕으로 12개 신규 장면을 기존 18개 regression과 함께 구현했다. Chrome 156 Agent Browser precomparison과 독립 Ahem 계산은 [사전 비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.md)에 있다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 30/30을 통과했고 runtime implementation 실패 관점 검토 20개와 별도 구현 diff 30관점 검토를 완료했다. [실행 evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.md) · [구현 diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.md). diff 검토에서 Android max-content line advance 기대값 오류를 고친 뒤 source test, fixture build, AVD 30/30을 재실행했다. `-30px`은 min/max invariant와 Grid track floor를 더 분석해야 하므로 oracle-only다. C11.4/C11 checkbox와 공식 `72/213`은 유지한다.
 
 ## 2026-11-01 anonymous Grid text computed `text-indent` · PR #930 병합
 
