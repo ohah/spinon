@@ -10,6 +10,8 @@ mod computed_line_height;
 mod computed_overflow_wrap;
 #[path = "anonymous_text_items/computed_text_indent.rs"]
 mod computed_text_indent;
+#[path = "anonymous_text_items/computed_text_transform.rs"]
+mod computed_text_transform;
 #[path = "anonymous_text_items/computed_word_break.rs"]
 mod computed_word_break;
 #[path = "anonymous_text_items/computed_word_spacing.rs"]
@@ -143,6 +145,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         return Some(source);
     }
     if let Some(source) = computed_text_indent::runtime_source(scene_id) {
+        return Some(source);
+    }
+    if let Some(source) = computed_text_transform::runtime_source(scene_id) {
         return Some(source);
     }
     if let Some((value_index, case_index)) = full_tab_scene(scene_id) {

@@ -1,0 +1,190 @@
+{
+  "candidateBaseCommit": "b77964973b40534c03a43a5e1fa86993fb6f7f42",
+  "targetBuilds": {
+    "androidApi37Arm64Avd": {
+      "serial": "emulator-5554",
+      "apkSha256": "e84c90be1499ce5b517c17a0633f4ccc407d52bba85612ec4f011570d0f8c8c7",
+      "installedApkSha256Matched": true,
+      "buildFlags": [
+        "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+        "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1"
+      ],
+      "matrix": "c114-computed-text-transform-android-avd-1793490026684-7e379b0a/matrix.tsv"
+    },
+    "iosSimulator": {
+      "name": "iPhone 17 Pro",
+      "runtime": "iOS 26.2",
+      "udid": "9DCCE836-7659-4914-B6C1-13F54BFFA9DB",
+      "executableSha256": "19a9f4173100f264ddfd0b27e054d8c7085fa732f2287d950e15afffca203a6d",
+      "installedExecutableSha256Matched": true,
+      "buildFlags": [
+        "SPINON_ENABLE_C04_RUNTIME_GPU=1",
+        "SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1"
+      ],
+      "matrix": "c114-computed-text-transform-ios-simulator-1793490071946-86bc2cd5/matrix.tsv"
+    }
+  },
+  "ffiStaticArchiveMarkerScan": {
+    "scope": "macOS debug static archive only; this does not prove APK/IPA bundle exclusion",
+    "defaultFeatures": [
+      "c04-runtime-gpu"
+    ],
+    "defaultArchiveSha256": "79b676ef5e4803ff6e5f6696363136f610d7c04366f1a260bbf8f8daf9766bfe",
+    "defaultCandidateSceneIdMarkers": 0,
+    "defaultFixtureExportNameMarkers": 0,
+    "fixtureTestFeatures": [
+      "c04-runtime-gpu-fixture-test"
+    ],
+    "fixtureTestArchiveSha256": "34a077ee50391a3580f0419e48aec50c1d0c223cec457c75f06ae15324d38f90",
+    "fixtureTestCandidateSceneIdMarkers": 6,
+    "fixtureTestFixtureExportNameMarkers": 2,
+    "inspection": "raw ASCII archive marker scan; Xcode nm could not read LLVM 22.1.2 archive objects"
+  },
+  "files": [
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs",
+      "sha256": "b315200b864a7b7a228315156e0af4d496095c74f36e4bf026a6a4c7dc1f4165"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_text_transform.rs",
+      "sha256": "383a6dbc55aa360eb67e5333e109ce5788a72910ac4563ad6e7cff3b3045d997"
+    },
+    {
+      "path": "crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs",
+      "sha256": "0b4b61b7292c89faa2c24084e42d3bf519fb7dbf181acd636d1fa0b33406662c"
+    },
+    {
+      "path": "crates/spinon-layout/src/lib.rs",
+      "sha256": "a7b69700dc580f3eb8ba136577fbaa7ef9df78d2bc91f2440f1af1b86e6a9a03"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_3_3_fit_content_area_cap.rs",
+      "sha256": "9958172a13e6e2d8ec245ba1a0b2cb00e3b4ba9f58d6ecaf061c2efcc768446d"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_grid_border_overflow.rs",
+      "sha256": "788b4a33aabd91c50fd77ce710b35d2e4518b871483270f12e55034d133f79ae"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs",
+      "sha256": "7d7819a6cc1eed819881fd5945079b556cd236d6f222b68fe54a7e97d6927195"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/text_transform.rs",
+      "sha256": "2196868adbdadab3487946d36aa5290ad30e5809fb55707a509f475c0b2d5e5f"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_image.rs",
+      "sha256": "3f4bf22e9743e37c924fd88caf29dd866ca412212fffe3f906c79008edea1b8d"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text_multi_image.rs",
+      "sha256": "8f1825009899e969abae69190dcec6580bdb0e1b2c1698ee4204fec3127c47af"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_grid_layout_auto_tracks.rs",
+      "sha256": "4e5159bd5f0560ee6142244547c4471b4046b6c9f69fb958f6bd7e58b0626a0c"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_implicit_intrinsic_text.rs",
+      "sha256": "c464cd2b09082fc2ea3285b0eef7f78f88c2153e91d497e5778a8add3e0ebd59"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed.rs",
+      "sha256": "6675d24842111a309d08cb87939b59678c41c7b8c18b7c49c38a2c2121467dbd"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_mixed/orthogonal_rows/prepare.rs",
+      "sha256": "254eeb2a2826e46ce6c1a923be672c11483a7123df336973a2530e6ea7987c54"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_nested_grid_replaced_item.rs",
+      "sha256": "8fe32a53546783ca8584249ca1af1626c91c050a989de79f3b3742cbae8c06b4"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text.rs",
+      "sha256": "410753172acb2de86993a45294c33219b60efa3769c57aea0a9000cc83514a0f"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/flex_span.rs",
+      "sha256": "1e60b603fb23db356186ce9aa252bc0fe68cfa4ad6bdceae3fb669067260cd57"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_text/generic_direct_text.rs",
+      "sha256": "98cb8e43eff22465fd7998aae7d459da3dcdefbc570bc28fbadc144d7827b30c"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout/root_html_default_render/style.rs",
+      "sha256": "8806decd92e435028389b4feea49f112ae95fd8f8e10b8782054a145d092035e"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs",
+      "sha256": "bc670ddd67a8e136d121a4a8839efd02194991684dc983ecc0e95ba183d68443"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_text_transform.rs",
+      "sha256": "eaa8189aaec2176f68a18cfe49f5440098b010d4fe9ad4851bbfa22e508ae024"
+    },
+    {
+      "path": "crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/orthogonal_rows/assertions.rs",
+      "sha256": "5311125cacf992218483595f05ae5a4f0caeae287d3f60fa08015d72a0a58ba2"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/engine.rs",
+      "sha256": "c3c910496a23306fbb6bf5b4ee4f4936144dc82b2407617d0f5a27e55ce02d48"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/error.rs",
+      "sha256": "5e3ec8a644150e228de602916a57f7c0da34d91d56c9083226062fa409b3f6b4"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/lib.rs",
+      "sha256": "ebfc047b46bfb75c2edda0a3e1e9b00cbfd28ccb4b8d33f896deda15d43b5daa"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/model.rs",
+      "sha256": "9ec5645d1fc0c5109abe941bba624652dc1914ca997e4a945ed4f98d60ade881"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/normalize.rs",
+      "sha256": "ef316f1ed433f2aa8d90679bf67715417222a8ff869df01e37d5bb3391f36c6f"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/snapshot.rs",
+      "sha256": "fe1de8f61969c9691ade0768af601a31a0550fdbf2dd0bb7ce532f955a5453ff"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/tests.rs",
+      "sha256": "ef934ae811e4ee0cc1efd0e39b59606e51b5615ad829ec2c557b3f9ae9bfb909"
+    },
+    {
+      "path": "crates/spinon-text-layout/src/tests/c11_4_text_transform.rs",
+      "sha256": "f3d0597db71c531aa37a80b965d8bdafa9fd19ef3cbaf6bf5cba751c9b0f442f"
+    },
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-text-transform.md",
+      "sha256": "5294564a80fcecb8b5a4b6db00530f0389793426b1606688958890907a4f0950"
+    },
+    {
+      "path": "platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java",
+      "sha256": "a340c69b91b266120f7152ca077c9ede70dfd0be66776e466542ae3788d6c199"
+    },
+    {
+      "path": "platforms/ios/Sources/C0410RuntimeGpuDemo.swift",
+      "sha256": "516fb0733248a1c82e3d6e96be906c8b76e221ed0a23260c1164a741e50a4a27"
+    },
+    {
+      "path": "tools/css-reference/c11-4-computed-text-transform.test.mjs",
+      "sha256": "58e2dd43c2efade93945582a4232ed8abba27ac86eedad4aa47d1dd21d91055e"
+    },
+    {
+      "path": "tools/css-reference/capture-c11-4-computed-text-transform-simulators.mjs",
+      "sha256": "2b893f8240b2db0c25ef1300506400116557379d7acee268b2c01342b66312bf"
+    },
+    {
+      "path": "tools/css-reference/fixture-module-boundary.test.mjs",
+      "sha256": "6cf1557d4d134a7c0b2b7c83598897f5aee36fd1ac947a02c859f994cf461e69"
+    }
+  ],
+  "candidateSourceBinding": "The listed source, test, tool, and plan files are hashed to bind them to these simulator runs; source files are based on candidateBaseCommit."
+}

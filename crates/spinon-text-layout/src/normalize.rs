@@ -40,6 +40,24 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
         }
     }
 
+    if input.style.text_transform != crate::TextTransformMode::None {
+        if !input.inline_styles.is_empty()
+            || !input.inline_run_styles.is_empty()
+            || characters
+                .iter()
+                .any(|source| !source.inline_ancestors.is_empty() || !source.character.is_ascii())
+        {
+            return Err(TextLayoutError::UnsupportedTextTransformProfile(input.node));
+        }
+        for source in &mut characters {
+            source.character = match input.style.text_transform {
+                crate::TextTransformMode::None => source.character,
+                crate::TextTransformMode::Uppercase => source.character.to_ascii_uppercase(),
+                crate::TextTransformMode::Lowercase => source.character.to_ascii_lowercase(),
+            };
+        }
+    }
+
     let has_tabs = characters.iter().any(|source| source.character == '\t');
     let preserve_pre_tabs = matches!(
         input.style.white_space,

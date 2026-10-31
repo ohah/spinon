@@ -3,7 +3,7 @@ use std::collections::BTreeMap;
 use spinon_core::{HostDocumentSnapshot, HostNodeHandle, HostNodeKind, HostParent, NodeId};
 use spinon_layout::{
     FontStyleMode, LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphStyle, TabSize,
-    TextLayoutEngine, TextParagraphDirection, WhiteSpaceMode, WordBreakMode,
+    TextLayoutEngine, TextParagraphDirection, TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 use spinon_style::{
     ComputedCssDimension, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
@@ -26,6 +26,8 @@ mod line_height;
 mod overflow_wrap;
 #[path = "c11_4_anonymous_text/text_indent.rs"]
 mod text_indent;
+#[path = "c11_4_anonymous_text/text_transform.rs"]
+mod text_transform;
 #[path = "c11_4_anonymous_text/word_break.rs"]
 mod word_break;
 #[path = "c11_4_anonymous_text/word_spacing.rs"]
@@ -50,13 +52,19 @@ use text_indent::{
     TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene, validate_computed_text_indent,
 };
 #[cfg(test)]
+use text_transform::SCENES as TEXT_TRANSFORM_SCENES;
+use text_transform::{
+    SCENE_IDS as TEXT_TRANSFORM_SCENE_IDS, find_scene as text_transform_scene,
+    validate_computed_text_transform,
+};
+#[cfg(test)]
 use word_break::SCENES as WORD_BREAK_SCENES;
 use word_break::find_scene as word_break_scene;
 use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 76] = [
+const SCENE_IDS: [&str; 82] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -133,6 +141,12 @@ const SCENE_IDS: [&str; 76] = [
     "overflow-wrap-break-word-min-content",
     "overflow-wrap-break-word-max-content",
     "overflow-wrap-break-word-fixed-10px",
+    "text-transform-none-min-content",
+    "text-transform-none-max-content",
+    "text-transform-uppercase-min-content",
+    "text-transform-uppercase-max-content",
+    "text-transform-lowercase-min-content",
+    "text-transform-lowercase-max-content",
 ];
 
 const FULL_TAB_VALUE_IDS: [&str; 14] = [
@@ -217,6 +231,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         && !LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         && !WORD_SPACING_SCENE_IDS.contains(&scene_id)
         && !TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+        && !TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
         && line_break_scene(scene_id).is_none()
         && full_tab_scene(scene_id).is_none()
     {
@@ -224,6 +239,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
             || scene_id.starts_with("word-break-")
             || scene_id.starts_with("line-break-")
             || scene_id.starts_with("overflow-wrap-")
+            || scene_id.starts_with("text-transform-")
             || scene_id == "whitespace-does-not-create-item"
         {
             Err(unsupported(root.id(), "unknown anonymous text scene"))
@@ -234,15 +250,17 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if styles.profile != ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1 || tag != "div" {
         return Err(unsupported(root.id(), "runtime profile or root tag"));
     }
+    validate_snapshot_revision(snapshot, root, styles)?;
 
     let word_break_scene = word_break_scene(scene_id);
     let locale = word_break::validate_owner_language(snapshot, root, scene_id)?;
     let line_break_scene = line_break_scene(scene_id);
     let line_break_locale = line_break::validate_owner_language(snapshot, root, scene_id)?;
+    let text_transform_scene = text_transform_scene(scene_id);
+    let text_transform_locale = text_transform::validate_owner_language(snapshot, root, scene_id)?;
     let grid_style = style_for(styles, root.id())?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
-    let (tab_size, line_height, letter_spacing, word_spacing, text_indent, overflow_wrap) =
-        validate_grid_style(grid_style, scene_id, font_size)?;
+    let validated_text_style = validate_grid_style(grid_style, scene_id, font_size)?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -257,6 +275,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         })?;
     if word_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR")
         || line_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR")
+        || text_transform_scene.is_some()
     {
         engine
             .register_font("Noto Sans KR", word_break::NOTO_SANS_KR)
@@ -270,14 +289,15 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }
     let mut paragraph_style = anonymous_paragraph_style(
         scene_id,
-        tab_size,
-        line_height,
+        validated_text_style.tab_size,
+        validated_text_style.line_height,
         font_size,
-        letter_spacing,
-        word_spacing,
-        text_indent,
+        validated_text_style.letter_spacing,
+        validated_text_style.word_spacing,
+        validated_text_style.text_indent,
     );
-    paragraph_style.overflow_wrap = overflow_wrap;
+    paragraph_style.overflow_wrap = validated_text_style.overflow_wrap;
+    paragraph_style.text_transform = validated_text_style.text_transform;
     if let Some(scene) = word_break_scene {
         paragraph_style.font_family = scene.font_family.to_owned();
         paragraph_style.word_break = scene.word_break;
@@ -287,6 +307,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         paragraph_style.font_family = scene.font_family.to_owned();
         paragraph_style.line_break = scene.line_break;
         paragraph_style.locale = line_break_locale;
+    }
+    if text_transform_scene.is_some() {
+        paragraph_style.font_family = "Noto Sans KR".to_owned();
+        paragraph_style.locale = text_transform_locale;
     }
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(root.id(), paragraph_style)]),
@@ -381,6 +405,9 @@ fn validate_direct_children(
         )],
         scene_id if TEXT_INDENT_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
             text_indent_scene(scene_id).unwrap().text,
+        )],
+        scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
+            text_transform_scene(scene_id).unwrap().text,
         )],
         scene_id if word_break_scene(scene_id).is_some() => &[ExpectedChild::Text(
             word_break_scene(scene_id).unwrap().text,
@@ -478,11 +505,39 @@ fn validate_direct_children(
     Ok(())
 }
 
+fn validate_snapshot_revision(
+    snapshot: &HostDocumentSnapshot,
+    root: HostNodeHandle,
+    styles: &ComputedStyleSnapshot,
+) -> Result<(), RuntimeLayoutFailure> {
+    if styles.generation != snapshot.generation()
+        || styles.document_revision != snapshot.document_revision()
+        || styles.render_tree_revision != snapshot.render_tree_revision()
+    {
+        return Err(unsupported(
+            root.id(),
+            "computed-style source revision does not match HostDocumentSnapshot",
+        ));
+    }
+    Ok(())
+}
+
+#[derive(Clone, Copy)]
+struct ValidatedAnonymousTextStyle {
+    tab_size: TabSize,
+    line_height: ComputedLineHeight,
+    letter_spacing: f32,
+    word_spacing: f32,
+    text_indent: f32,
+    overflow_wrap: OverflowWrapMode,
+    text_transform: TextTransformMode,
+}
+
 fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
     font_size: f32,
-) -> Result<(TabSize, ComputedLineHeight, f32, f32, f32, OverflowWrapMode), RuntimeLayoutFailure> {
+) -> Result<ValidatedAnonymousTextStyle, RuntimeLayoutFailure> {
     let expected_wrap_mode = if is_pre_tab_scene(scene_id)
         || matches!(
             scene_id,
@@ -607,6 +662,9 @@ fn validate_grid_style(
             scene_id if TEXT_INDENT_SCENE_IDS.contains(&scene_id) => {
                 (120.0, ComputedCssDimension::Auto)
             }
+            scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => {
+                (120.0, ComputedCssDimension::Auto)
+            }
             scene_id if word_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if line_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if overflow_wrap_scene(scene_id).is_some() => {
@@ -626,6 +684,8 @@ fn validate_grid_style(
     let text_indent = validate_computed_text_indent(style.node_id, &style.properties, scene_id)?;
     let overflow_wrap =
         validate_computed_overflow_wrap(style.node_id, &style.properties, scene_id)?;
+    let text_transform =
+        validate_computed_text_transform(style.node_id, &style.properties, scene_id)?;
     let expected_text_indent =
         text_indent_scene(scene_id).map_or("0px", |scene| scene.computed_value);
     validate_text_profile_properties(
@@ -680,14 +740,15 @@ fn validate_grid_style(
             "Grid track functions or auto-placement defaults",
         ));
     }
-    Ok((
+    Ok(ValidatedAnonymousTextStyle {
         tab_size,
         line_height,
         letter_spacing,
         word_spacing,
         text_indent,
         overflow_wrap,
-    ))
+        text_transform,
+    })
 }
 
 fn validate_computed_tab_size(
@@ -895,6 +956,13 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     },
                 ]
             }
+            scene_id if TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id) => {
+                vec![if text_transform_scene(scene_id).unwrap().is_min_content {
+                    ComputedCssGridTrackSize::MinContent
+                } else {
+                    ComputedCssGridTrackSize::MaxContent
+                }]
+            }
             "anonymous-min-content-wrap" => vec![
                 ComputedCssGridTrackSize::MinContent,
                 ComputedCssGridTrackSize::Fraction(1.0),
@@ -994,6 +1062,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         || LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+        || TEXT_TRANSFORM_SCENE_IDS.contains(&scene_id)
         || word_break_scene(scene_id).is_some()
         || line_break_scene(scene_id).is_some()
         || overflow_wrap_scene(scene_id).is_some()
@@ -1085,7 +1154,10 @@ fn validate_text_profile_properties(
         ("line-break", expected_line_break(scene_id)),
         ("text-align", "start"),
         ("overflow-wrap", expected_overflow_wrap(scene_id)),
-        ("text-transform", "none"),
+        (
+            "text-transform",
+            text_transform_scene(scene_id).map_or("none", |scene| scene.computed_value),
+        ),
         ("writing-mode", "horizontal-tb"),
         ("text-indent", expected_text_indent),
     ] {
@@ -1134,7 +1206,8 @@ fn validate_text_profile_properties(
 fn expected_font_family(scene_id: &str) -> &'static str {
     let family = word_break_scene(scene_id)
         .map(|scene| scene.font_family)
-        .or_else(|| line_break_scene(scene_id).map(|scene| scene.font_family));
+        .or_else(|| line_break_scene(scene_id).map(|scene| scene.font_family))
+        .or_else(|| text_transform_scene(scene_id).map(|_| "Noto Sans KR"));
     family.map_or("Ahem", |family| {
         if family == "Noto Sans KR" {
             "\"Noto Sans KR\""
@@ -1251,6 +1324,7 @@ fn anonymous_paragraph_style(
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
+        text_transform: TextTransformMode::None,
     }
 }
 
@@ -1291,9 +1365,9 @@ mod tests {
         ComputedLineHeight, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES,
         FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS,
         FULL_TAB_VALUE_IDS, LINE_BREAK_SCENES, OVERFLOW_WRAP_SCENES, OverflowWrapTrackKind,
-        SCENE_IDS, WORD_BREAK_SCENES, anonymous_paragraph_style, full_tab_expected_width,
-        full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto, grid_tracks_match,
-        parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
+        SCENE_IDS, TEXT_TRANSFORM_SCENES, WORD_BREAK_SCENES, anonymous_paragraph_style,
+        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
+        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
@@ -1313,7 +1387,7 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 76);
+        assert_eq!(SCENE_IDS.len(), 82);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
     }
 
@@ -1391,6 +1465,39 @@ mod tests {
                 &grid(vec![wrong], vec![ComputedCssGridTrackSize::Auto]),
                 scene.id,
             ));
+        }
+    }
+
+    #[test]
+    fn computed_text_transform_scenes_require_their_exact_min_or_max_content_track() {
+        for scene in TEXT_TRANSFORM_SCENES {
+            let expected = if scene.is_min_content {
+                ComputedCssGridTrackSize::MinContent
+            } else {
+                ComputedCssGridTrackSize::MaxContent
+            };
+            let wrong = if scene.is_min_content {
+                ComputedCssGridTrackSize::MaxContent
+            } else {
+                ComputedCssGridTrackSize::MinContent
+            };
+            assert!(grid_tracks_match(
+                &grid(vec![expected], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(vec![wrong], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(
+                    vec![ComputedCssGridTrackSize::LengthPx(120.0)],
+                    vec![ComputedCssGridTrackSize::Auto]
+                ),
+                scene.id,
+            ));
+            assert_eq!(scene.min_content_height, 20.0, "{}", scene.id);
+            assert_eq!(scene.max_content_height, 10.0, "{}", scene.id);
         }
     }
 
@@ -1672,6 +1779,7 @@ mod tests {
                     letter_spacing: 0.0,
                     word_spacing: 0.0,
                     text_indent: 0.0,
+                    text_transform: Default::default(),
                 };
                 let paragraph = ParagraphInput {
                     node: node_id,
@@ -1917,6 +2025,50 @@ mod tests {
                 )
                 .is_err(),
                 "the fixture must reject a changed {name}"
+            );
+        }
+
+        for scene in TEXT_TRANSFORM_SCENES {
+            let mut transformed = properties.clone();
+            transformed.insert("font-family".to_owned(), "\"Noto Sans KR\"".to_owned());
+            transformed.insert("text-transform".to_owned(), scene.computed_value.to_owned());
+            assert!(
+                validate_text_profile_properties(
+                    NodeId::new(1).unwrap(),
+                    &transformed,
+                    "collapse",
+                    "wrap",
+                    10.0,
+                    "0px",
+                    scene.id,
+                )
+                .is_ok(),
+                "{}",
+                scene.id
+            );
+            let mut mismatched = transformed;
+            mismatched.insert(
+                "text-transform".to_owned(),
+                if scene.computed_value == "none" {
+                    "uppercase"
+                } else {
+                    "none"
+                }
+                .to_owned(),
+            );
+            assert!(
+                validate_text_profile_properties(
+                    NodeId::new(1).unwrap(),
+                    &mismatched,
+                    "collapse",
+                    "wrap",
+                    10.0,
+                    "0px",
+                    scene.id,
+                )
+                .is_err(),
+                "{}",
+                scene.id
             );
         }
 

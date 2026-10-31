@@ -549,6 +549,24 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return new C114GenericDirectTextSceneExpectation(
                     120, wordBreak.rowHeight, new double[] {wordBreak.trackWidth}, item, null);
         }
+        double[] textTransform = c114ComputedTextTransformScene(sceneId);
+        if (textTransform != null) {
+            boolean minContentTrack = sceneId.endsWith("-min-content");
+            double[] advances = minContentTrack
+                    ? new double[] {textTransform[5], textTransform[6]}
+                    : new double[] {textTransform[7]};
+            C114GenericDirectTextItemExpectation item =
+                    new C114GenericDirectTextItemExpectation(
+                            2, 0, textTransform[2], textTransform[3],
+                            textTransform[2], minContentTrack
+                                    ? textTransform[2] : textTransform[7], 0, 0, 0,
+                            textTransform[0], textTransform[1], textTransform[4], 10,
+                            "IIII ii", c114ComputedTextTransformLayoutText(sceneId),
+                            "Normal", "Normal", 0, 0, 0,
+                            "Noto Sans KR", "en", "Strict", "Normal", advances);
+            return new C114GenericDirectTextSceneExpectation(
+                    120, textTransform[3], new double[] {textTransform[2]}, item, null);
+        }
         double[] textIndent = c114ComputedTextIndentScene(sceneId);
         if (textIndent != null) {
             boolean singleWord = sceneId.contains("-single-word-");
@@ -1730,6 +1748,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
         if (c114ComputedTextIndentScene(sceneId) != null) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
+        if (c114ComputedTextTransformScene(sceneId) != null) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
         if (c114IsComputedWordSpacingScene(sceneId)) {
@@ -7823,7 +7844,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114GenericJsonNear(layout, "width", expectedTextWidth, 1.0 / 64.0)
                     || !c114GenericJsonNear(layout, "height", expectedTextHeight, 1.0 / 64.0)
                     || !expected.layoutText.equals(c114GenericJsonString(layout, "text"))
-                    || !c114GenericParagraphStyleMatches(paragraph, expected)
+                    || !c114GenericParagraphStyleMatches(sceneId, paragraph, expected)
                     || lines == null || lines.length() != expected.lineAdvances.length) {
                 return false;
             }
@@ -7866,8 +7887,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114GenericParagraphStyleMatches(
-            org.json.JSONObject style, C114GenericDirectTextItemExpectation expected
+            String sceneId, org.json.JSONObject style,
+            C114GenericDirectTextItemExpectation expected
     ) {
+        String expectedTextTransform = c114ComputedTextTransformStyle(sceneId);
+        if (expectedTextTransform == null) expectedTextTransform = "None";
         return style != null
                 && expected.fontFamily.equals(c114GenericJsonString(style, "fontFamily"))
                 && Objects.equals(expected.locale, c114GenericJsonString(style, "locale"))
@@ -7883,6 +7907,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && c114GenericJsonNear(style, "letterSpacing", expected.letterSpacing, 0)
                 && c114GenericJsonNear(style, "wordSpacing", expected.wordSpacing, 0)
                 && c114GenericJsonNear(style, "textIndent", expected.textIndent, 0)
+                && expectedTextTransform.equals(
+                        c114GenericJsonString(style, "textTransform"))
                 && "HorizontalTb".equals(c114GenericJsonString(style, "writingMode"))
                 && "Mixed".equals(c114GenericJsonString(style, "textOrientation"))
                 && expected.lineBreak.equals(c114GenericJsonString(style, "lineBreak"))
@@ -9643,6 +9669,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (textIndent != null) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
                     + c114GenericFrameNumber(textIndent[4]) + "]";
+        }
+        double[] textTransform = c114ComputedTextTransformScene(sceneId);
+        if (textTransform != null) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
+                    + c114GenericFrameNumber(textTransform[3]) + "]";
         }
         double[] letterSpacing = c114ComputedLetterSpacingScene(sceneId);
         if (letterSpacing != null) {
@@ -12381,6 +12412,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static int c114ExpectedBoxCount(String sceneId) {
         if (c114ComputedWordBreakScene(sceneId) != null) return 1;
         if (c114ComputedTextIndentScene(sceneId) != null) return 1;
+        if (c114ComputedTextTransformScene(sceneId) != null) return 1;
         if (c114IsComputedWordSpacingScene(sceneId)) return 1;
         if (c114IsComputedLetterSpacingScene(sceneId)) return 1;
         if (c114IsComputedFontSizeScene(sceneId)) return 1;
@@ -12636,6 +12668,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return c114ComputedWordBreakScene(sceneId) != null
                 || c114IsComputedWordSpacingScene(sceneId)
                 || c114ComputedTextIndentScene(sceneId) != null
+                || c114ComputedTextTransformScene(sceneId) != null
                 || c114IsComputedLetterSpacingScene(sceneId)
                 || c114IsComputedFontSizeScene(sceneId)
                 || c114IsComputedLineHeightScene(sceneId)
@@ -12715,6 +12748,71 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 firstLineAdvance,
                 secondLineAdvance, lineAdvance,
         };
+    }
+
+    // [min-content px, max-content px, selected track px, row height px,
+    // min-content row height px, first-word advance px, second-word advance px,
+    // unbroken text advance px]
+    private static double[] c114ComputedTextTransformScene(String sceneId) {
+        String mode = c114ComputedTextTransformStyle(sceneId);
+        if (mode == null || !BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST) return null;
+        boolean minContentTrack = sceneId.endsWith("-min-content");
+        double minContent;
+        double maxContent;
+        double firstWordAdvance;
+        double secondWordAdvance;
+        double unbrokenAdvance;
+        switch (mode) {
+            case "None":
+                minContent = 11.734375;
+                maxContent = 19.46875;
+                firstWordAdvance = 11.72;
+                secondWordAdvance = 5.5;
+                unbrokenAdvance = 19.46;
+                break;
+            case "Uppercase":
+                minContent = 11.734375;
+                maxContent = 19.84375;
+                firstWordAdvance = 11.72;
+                secondWordAdvance = 5.86;
+                unbrokenAdvance = 19.82;
+                break;
+            case "Lowercase":
+                minContent = 11.0;
+                maxContent = 18.71875;
+                firstWordAdvance = 11.0;
+                secondWordAdvance = 5.5;
+                unbrokenAdvance = 18.74;
+                break;
+            default:
+                return null;
+        }
+        double track = minContentTrack ? minContent : maxContent;
+        double rowHeight = minContentTrack ? 20 : 10;
+        return new double[] {
+                minContent, maxContent, track, rowHeight, 20,
+                firstWordAdvance, secondWordAdvance, unbrokenAdvance,
+        };
+    }
+
+    private static String c114ComputedTextTransformStyle(String sceneId) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return null;
+        switch (sceneId) {
+            case "text-transform-none-min-content":
+            case "text-transform-none-max-content": return "None";
+            case "text-transform-uppercase-min-content":
+            case "text-transform-uppercase-max-content": return "Uppercase";
+            case "text-transform-lowercase-min-content":
+            case "text-transform-lowercase-max-content": return "Lowercase";
+            default: return null;
+        }
+    }
+
+    private static String c114ComputedTextTransformLayoutText(String sceneId) {
+        String mode = c114ComputedTextTransformStyle(sceneId);
+        if ("Uppercase".equals(mode)) return "IIII II";
+        if ("Lowercase".equals(mode)) return "iiii ii";
+        return "IIII ii";
     }
 
     private static C114ComputedWordBreakScene c114ComputedWordBreakScene(String sceneId) {

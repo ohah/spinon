@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [CSS Text Level 3 §2.1](https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#text-transform-property)
 
-**상태:** 계획 전 사전 비교를 마쳤다. 구현/runtime 검증은 시작하지 않았다. [Chrome oracle와 독립 Noto Sans KR advance](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md) · [계획 실패 관점 검토 20개](./c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md)
+**상태:** 제한 fixture 구현 후보. ASCII layout-only mapping, source preservation 및 style snapshot revision guard가 연결됐다. `spinon-text-layout` 86/86, feature-enabled `spinon-runtime` 379 passed·3 ignored와 19 integration passes, feature-enabled FFI 182 passed·2 ignored, fixture boundary 30/30, targeted Clippy와 Android API 37 ARM64 AVD/iPhone 17 Pro iOS 26.2 Simulator 각 6/6이 통과했다. 기본/opt-in FFI archive marker 경계를 대조했고 구현/runtime 실패 관점 검토 20개를 마쳤다. 실제 PR diff 검토 30개와 PR 검토가 남아 있으므로 이 slice는 미완료이며 공식 `72/213`은 유지한다. [Chrome oracle와 독립 Noto Sans KR advance](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-precomparison-2026-11-01/README.md) · [현재 구현·시뮬레이터 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/README.md) · [구현/runtime 실패 관점 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-transform-runtime-2026-11-01/implementation-runtime-review-20.md) · [계획 실패 관점 검토 20개](./c11-4-anonymous-grid-text-computed-text-transform-plan-review-20.md)
 
 ## 목표와 범위
 

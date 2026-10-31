@@ -12,7 +12,7 @@ pub use error::TextLayoutError;
 pub use model::{
     FontStyleMode, InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode, LineBreakMode,
     OverflowWrapMode, ParagraphInput, ParagraphStyle, TabSize, TextDirection, TextSource,
-    WhiteSpaceMode, WordBreakMode,
+    TextTransformMode, WhiteSpaceMode, WordBreakMode,
 };
 pub use raster::{GlyphBitmap, GlyphBitmapContent, TextGlyphRaster, TextGlyphRasterSnapshot};
 pub use snapshot::{
