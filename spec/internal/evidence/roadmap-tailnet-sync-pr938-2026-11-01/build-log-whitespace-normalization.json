@@ -1,0 +1,24 @@
+{
+  "normalization": "trim ASCII space and tab immediately before line endings, preserve all other bytes and line endings, and remove extra blank lines at EOF while keeping one final line ending",
+  "files": [
+    {
+      "file": "docs-build-prreview.log",
+      "originalBytes": 3428863,
+      "storedBytes": 3421750,
+      "lines": 22991,
+      "removedTrailingSpaceBytes": 7113,
+      "originalSha256": "b270c5653e4621b280a007e895906fda0f0b92e3333834e89a242eecd5ef4b3c",
+      "storedSha256": "f0d6a6e5bcd03d7f8da0ef0816cdef366be1822fa19a87ed24a494fa042442d0"
+    },
+    {
+      "file": "selected-rspress-build-pass06.log",
+      "originalBytes": 9079,
+      "storedBytes": 9072,
+      "lines": 69,
+      "removedTrailingSpaceBytes": 6,
+      "removedTrailingBlankLines": 1,
+      "originalSha256": "12c7154add8687448b515c4ac7fdb36eba9dbdc099fcefaa4667fa7c79467d2b",
+      "storedSha256": "ccb4e337a8fd811dd4b10f3fa4c9b01f22aa3d6773a0589409cd8586819e490d"
+    }
+  ]
+}
