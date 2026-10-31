@@ -1,0 +1,88 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text computed line-height reference</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url('../../resources/c15/Ahem.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+html, body { margin: 0; }
+body {
+  display: grid;
+  grid-template-columns: repeat(2, 180px);
+  gap: 12px;
+  padding: 12px;
+  font: 12px/1.2 sans-serif;
+  color: #263238;
+}
+.case { display: block; }
+.label { margin-bottom: 4px; font: 11px/1.2 sans-serif; }
+.grid {
+  display: grid;
+  box-sizing: border-box;
+  width: 20px;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  grid-template-columns: 20px;
+  grid-template-rows: auto;
+  align-items: start;
+  align-content: start;
+  white-space: pre-line;
+  font-family: Ahem;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  color: #111;
+  background: #d9edf7;
+}
+#normal { line-height: normal; }
+#zero-number { line-height: 0; }
+#half-number { line-height: 0.5; }
+#one-number { line-height: 1; }
+#one-point-five-number { line-height: 1.5; }
+#two-number { line-height: 2; }
+#zero-length { line-height: 0px; }
+#five-length { line-height: 5px; }
+#twelve-point-five-length { line-height: 12.5px; }
+#one-hundred-twenty-five-percent { line-height: 125%; }
+#one-point-two-five-em { line-height: 1.25em; }
+#calc-length { line-height: calc(10px + 2.5px); }
+#normal-single-line { line-height: normal; }
+#half-number-single-line { line-height: 0.5; }
+#one-point-five-soft-wrap { line-height: 1.5; white-space: normal; }
+#zero-number-soft-wrap { line-height: 0; white-space: normal; }
+</style>
+<body>
+  <section class="case"><div class="label">normal</div><div id="normal" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">number: 0</div><div id="zero-number" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">number: 0.5</div><div id="half-number" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">number: 1</div><div id="one-number" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">number: 1.5</div><div id="one-point-five-number" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">number: 2</div><div id="two-number" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">length: 0px</div><div id="zero-length" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">length: 5px</div><div id="five-length" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">length: 12.5px</div><div id="twelve-point-five-length" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">percentage: 125%</div><div id="one-hundred-twenty-five-percent" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">length: 1.25em</div><div id="one-point-two-five-em" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">calc(10px + 2.5px)</div><div id="calc-length" class="grid">XX
+XX</div></section>
+  <section class="case"><div class="label">normal, one line</div><div id="normal-single-line" class="grid">XX</div></section>
+  <section class="case"><div class="label">number: 0.5, one line</div><div id="half-number-single-line" class="grid">XX</div></section>
+  <section class="case"><div class="label">number: 1.5, soft wrap</div><div id="one-point-five-soft-wrap" class="grid">XX XX</div></section>
+  <section class="case"><div class="label">number: 0, soft wrap</div><div id="zero-number-soft-wrap" class="grid">XX XX</div></section>
+</body>

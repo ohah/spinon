@@ -1,0 +1,22 @@
+{
+  "source": "tests/fixtures/css/c11/c11-4-anonymous-grid-text-line-height.html",
+  "fontSizePx": 10,
+  "cases": [
+    {"id":"normal","sourceValue":"normal","lineCount":2,"resolvedLineHeight":"normal","expectedTrackPx":20,"basis":"Chrome 156 Ahem font-metric observation; normal is UA/font-metric dependent"},
+    {"id":"zero-number","sourceValue":"0","lineCount":2,"resolvedLineHeight":"0px","expectedTrackPx":0,"basis":"2 × (0 × 10px)"},
+    {"id":"half-number","sourceValue":"0.5","lineCount":2,"resolvedLineHeight":"5px","expectedTrackPx":10,"basis":"2 × (0.5 × 10px)"},
+    {"id":"one-number","sourceValue":"1","lineCount":2,"resolvedLineHeight":"10px","expectedTrackPx":20,"basis":"2 × (1 × 10px)"},
+    {"id":"one-point-five-number","sourceValue":"1.5","lineCount":2,"resolvedLineHeight":"15px","expectedTrackPx":30,"basis":"2 × (1.5 × 10px)"},
+    {"id":"two-number","sourceValue":"2","lineCount":2,"resolvedLineHeight":"20px","expectedTrackPx":40,"basis":"2 × (2 × 10px)"},
+    {"id":"zero-length","sourceValue":"0px","lineCount":2,"resolvedLineHeight":"0px","expectedTrackPx":0,"basis":"2 × 0px"},
+    {"id":"five-length","sourceValue":"5px","lineCount":2,"resolvedLineHeight":"5px","expectedTrackPx":10,"basis":"2 × 5px"},
+    {"id":"twelve-point-five-length","sourceValue":"12.5px","lineCount":2,"resolvedLineHeight":"12.5px","expectedTrackPx":25,"basis":"2 × 12.5px"},
+    {"id":"one-hundred-twenty-five-percent","sourceValue":"125%","lineCount":2,"resolvedLineHeight":"12.5px","expectedTrackPx":25,"basis":"2 × (125% × 10px)"},
+    {"id":"one-point-two-five-em","sourceValue":"1.25em","lineCount":2,"resolvedLineHeight":"12.5px","expectedTrackPx":25,"basis":"2 × (1.25 × 10px)"},
+    {"id":"calc-length","sourceValue":"calc(10px + 2.5px)","lineCount":2,"resolvedLineHeight":"12.5px","expectedTrackPx":25,"basis":"2 × (10px + 2.5px)"},
+    {"id":"normal-single-line","sourceValue":"normal","lineCount":1,"resolvedLineHeight":"normal","expectedTrackPx":10,"basis":"Chrome 156 Ahem font-metric observation; one line"},
+    {"id":"half-number-single-line","sourceValue":"0.5","lineCount":1,"resolvedLineHeight":"5px","expectedTrackPx":5,"basis":"1 × (0.5 × 10px)"},
+    {"id":"one-point-five-soft-wrap","sourceValue":"1.5","lineCount":2,"resolvedLineHeight":"15px","expectedTrackPx":30,"basis":"2 wrapped lines × (1.5 × 10px)"},
+    {"id":"zero-number-soft-wrap","sourceValue":"0","lineCount":2,"resolvedLineHeight":"0px","expectedTrackPx":0,"basis":"2 wrapped lines × (0 × 10px); glyph ranges overlap"}
+  ]
+}
