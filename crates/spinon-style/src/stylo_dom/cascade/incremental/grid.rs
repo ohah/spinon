@@ -175,18 +175,21 @@ pub(super) fn computed_grid_layout(
             columns_value,
         ));
     }
+    let allow_template_area_track_sizing =
+        template_areas.is_some() && allow_fixed_auto_track_lists && !allow_intrinsic_tracks;
+    let allow_typed_auto_track_sizes = allow_intrinsic_tracks || allow_template_area_track_sizing;
     let auto_rows = computed_grid_auto_rows(
         computed.clone_grid_auto_rows(),
         node,
         property_value(properties, "grid-auto-rows"),
-        allow_intrinsic_tracks,
+        allow_typed_auto_track_sizes,
         allow_fixed_auto_track_lists,
     )?;
     let auto_columns = computed_grid_auto_columns(
         computed.clone_grid_auto_columns(),
         node,
         property_value(properties, "grid-auto-columns"),
-        allow_intrinsic_tracks,
+        allow_typed_auto_track_sizes,
         allow_fixed_auto_track_lists,
     )?;
     let flow = computed.clone_grid_auto_flow();
@@ -218,7 +221,7 @@ fn computed_grid_auto_columns(
     value: style::values::computed::ImplicitGridTracks,
     node: NodeId,
     serialized: &str,
-    allow_intrinsic_tracks: bool,
+    allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
 ) -> Result<ComputedCssGridAutoColumns, CssCascadeError> {
     Ok(
@@ -227,7 +230,7 @@ fn computed_grid_auto_columns(
             node,
             "grid-auto-columns",
             serialized,
-            allow_intrinsic_tracks,
+            allow_typed_track_sizes,
             allow_fixed_track_lists,
             IntegerRepeatReservationSite::AutoColumns,
         )? {
@@ -249,7 +252,7 @@ fn computed_grid_auto_rows(
     value: style::values::computed::ImplicitGridTracks,
     node: NodeId,
     serialized: &str,
-    allow_intrinsic_tracks: bool,
+    allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
 ) -> Result<ComputedCssGridAutoRows, CssCascadeError> {
     Ok(
@@ -258,7 +261,7 @@ fn computed_grid_auto_rows(
             node,
             "grid-auto-rows",
             serialized,
-            allow_intrinsic_tracks,
+            allow_typed_track_sizes,
             allow_fixed_track_lists,
             IntegerRepeatReservationSite::AutoRows,
         )? {
@@ -286,7 +289,7 @@ fn computed_grid_auto_track_list(
     node: NodeId,
     property: &'static str,
     serialized: &str,
-    allow_intrinsic_tracks: bool,
+    allow_typed_track_sizes: bool,
     allow_fixed_track_lists: bool,
     reservation_site: IntegerRepeatReservationSite,
 ) -> Result<ComputedGridAutoTrackValue, CssCascadeError> {
@@ -299,7 +302,7 @@ fn computed_grid_auto_track_list(
         ));
     }
 
-    if !allow_intrinsic_tracks {
+    if !allow_typed_track_sizes {
         if value.0.len() != 1 && !allow_fixed_track_lists {
             return Ok(ComputedGridAutoTrackValue::Unsupported(
                 serialized.to_owned(),
@@ -358,7 +361,7 @@ fn computed_grid_auto_track_list(
         },
     )?;
     for size in value.0.iter() {
-        let Some(track) = track_size(size, true) else {
+        let Some(track) = track_size(size, allow_typed_track_sizes) else {
             return Ok(ComputedGridAutoTrackValue::Unsupported(
                 serialized.to_owned(),
             ));

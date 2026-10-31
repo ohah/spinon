@@ -1,0 +1,102 @@
+{
+  "schema": "spinon-css-c11-3-3-template-area-typed-auto-track-sizing-mobile-pixels/v1",
+  "inputs": {
+    "html": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-c1133-runtime.html",
+      "sha256": "28ea4bc93adb53f56148ffd5017982b3b2fc35333902918f8ab1cede811c2f49"
+    },
+    "observation": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/observation.json",
+      "sha256": "ff74e4379a7360282af09492fffd6b5cb5ceb20863c1f49910ae6ba83dc6c630"
+    }
+  },
+  "runtime": {
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    },
+    "deviceScaleFactor": 1
+  },
+  "oracle": {
+    "name": "Chrome Headless via Agent Browser",
+    "product": "Chrome/156.0.0.0",
+    "observationPath": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/observation.json",
+    "observationSha256": "ff74e4379a7360282af09492fffd6b5cb5ceb20863c1f49910ae6ba83dc6c630",
+    "screenshotPath": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/fixture.png",
+    "screenshotSha256": "b6f32defbd3f7180138a3074abcfea04726fc67fc10fedacf235302cf934cc3d",
+    "devicePixelRatio": 1,
+    "viewportCssPx": {
+      "width": 1280,
+      "height": 633
+    }
+  },
+  "scenes": [
+    {
+      "sceneId": "typed-area-minmax-row",
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 0
+      },
+      "samples": [
+        {
+          "id": "first-row",
+          "nodeId": "typed-area-minmax-row-first",
+          "xCssPx": 50,
+          "yCssPx": 5,
+          "rgba": [229, 72, 77, 255]
+        },
+        {
+          "id": "second-row",
+          "nodeId": "typed-area-minmax-row-second",
+          "xCssPx": 50,
+          "yCssPx": 20,
+          "rgba": [48, 164, 108, 255]
+        },
+        {
+          "id": "third-row",
+          "nodeId": "typed-area-minmax-row-third",
+          "xCssPx": 50,
+          "yCssPx": 60,
+          "rgba": [62, 99, 221, 255]
+        }
+      ]
+    },
+    {
+      "sceneId": "typed-area-percentage-column",
+      "oracleScreenshotOriginCssPx": {
+        "x": 0,
+        "y": 90
+      },
+      "samples": [
+        {
+          "id": "background",
+          "nodeId": "typed-area-percentage-column",
+          "xCssPx": 80,
+          "yCssPx": 10,
+          "rgba": [16, 24, 32, 255]
+        },
+        {
+          "id": "left-column",
+          "nodeId": "typed-area-percentage-column-left",
+          "xCssPx": 5,
+          "yCssPx": 10,
+          "rgba": [229, 72, 77, 255]
+        },
+        {
+          "id": "middle-column",
+          "nodeId": "typed-area-percentage-column-middle",
+          "xCssPx": 15,
+          "yCssPx": 10,
+          "rgba": [48, 164, 108, 255]
+        },
+        {
+          "id": "right-column",
+          "nodeId": "typed-area-percentage-column-right",
+          "xCssPx": 40,
+          "yCssPx": 10,
+          "rgba": [62, 99, 221, 255]
+        }
+      ]
+    }
+  ]
+}

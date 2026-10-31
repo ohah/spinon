@@ -31,6 +31,12 @@ const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-c
 const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
 const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
 const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
+const typedAutoPixelsPath = 'tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-mobile-pixels-v1.json';
+const typedAutoPixelsBytes = await readFile(resolve(repositoryRoot, typedAutoPixelsPath));
+const typedAutoPixels = JSON.parse(typedAutoPixelsBytes.toString('utf8'));
+const typedAutoHtmlBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.inputs.html.path));
+const typedAutoObservationBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.inputs.observation.path));
+const typedAutoScreenshotBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.oracle.screenshotPath));
 assert.equal(mobile.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
 assert.equal(cyclePixels.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
 assert.deepEqual(runtime.inputs.historicalRuntimeMatrix, {
@@ -41,6 +47,13 @@ assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes)
 assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
 assert.equal(cyclePixels.scenes.length, 6);
 const cyclePixelScenes = new Map(cyclePixels.scenes.map((entry) => [entry.sceneId, entry]));
+assert.equal(typedAutoPixels.schema,
+  'spinon-css-c11-3-3-template-area-typed-auto-track-sizing-mobile-pixels/v1');
+assert.equal(typedAutoPixels.inputs.html.sha256, sha256(typedAutoHtmlBytes));
+assert.equal(typedAutoPixels.inputs.observation.sha256, sha256(typedAutoObservationBytes));
+assert.equal(typedAutoPixels.oracle.observationSha256, sha256(typedAutoObservationBytes));
+assert.equal(typedAutoPixels.oracle.screenshotSha256, sha256(typedAutoScreenshotBytes));
+const typedAutoPixelScenes = new Map(typedAutoPixels.scenes.map((entry) => [entry.sceneId, entry]));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = validateC1133IOSMatrixInputs(runtime, reference);
 const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
@@ -320,10 +333,14 @@ async function captureMatrix(simulator) {
   let pixelComparison = null;
   let screenshotSha256 = null;
   const cyclePixelComparisons = [];
+  const typedAutoPixelComparisons = [];
+  const typedAutoScreenCaptures = [];
   let trackListCycleScreenshotSha256 = null;
   for (const scene of runtime.cases) {
     const cyclePixelScene = cyclePixelScenes.get(scene.id);
-    const samples = scene.id === mobile.sceneId ? mobile.samples : cyclePixelScene?.samples ?? null;
+    const typedAutoPixelScene = typedAutoPixelScenes.get(scene.id);
+    const samples = scene.id === mobile.sceneId ? mobile.samples
+      : cyclePixelScene?.samples ?? typedAutoPixelScene?.samples ?? null;
     const requiresMetalResult = samples !== null;
     const isReject = scene.expected.outcome === 'expected-rejection';
     const attempts = [];
@@ -342,6 +359,7 @@ async function captureMatrix(simulator) {
           ? value.includes('SPINON_C1133_GRID_REJECTION_SUMMARY run_id=' + effectiveRunID + ' scene_id=' + scene.id + ' ')
           : c1133SuccessLogsComplete(value, scene.id, effectiveRunID, requiresMetalResult)
             || c1133SupersededAttemptComplete(value, scene.id, effectiveRunID, requiresMetalResult))
+          || value.includes('SPINON_C1133_METAL_PIXEL_ERROR run_id=' + effectiveRunID)
           || value.includes('SPINON_C1133_GRID_ARGUMENT_ERROR rejected=true'),
       scene.id + ': iOS runtime 결과', 45_000);
       logPath = 'runtime-' + String(scene.index).padStart(2, '0') + '-' + scene.id
@@ -375,7 +393,7 @@ async function captureMatrix(simulator) {
     if (requiresMetalResult) {
       const pixelFixture = cyclePixelScene
         ? { sceneId: scene.id, samples, runtime: cyclePixels.runtime }
-        : mobile;
+        : typedAutoPixelScene ? { sceneId: scene.id, samples, runtime: typedAutoPixels.runtime } : mobile;
       pixel = compareC11IOSMetalPixelLogs(log, {
         fixture: pixelFixture,
         runID: effectiveRunID,
@@ -395,6 +413,17 @@ async function captureMatrix(simulator) {
         assert.equal(screenBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
           'iOS Simulator 화면 캡처가 PNG가 아닙니다.');
         screenshotSha256 = sha256(screenBytes);
+      } else if (typedAutoPixelScene) {
+        typedAutoPixelComparisons.push({ sceneId: scene.id, ...pixel });
+        const screenshotPath = resolve(evidenceDirectory, `${scene.id}-screen.png`);
+        await saveLog(`${scene.id}-screenshot.log`, command('xcrun', ['simctl', 'io',
+          simulator.udid, 'screenshot', screenshotPath]));
+        const screenBytes = await readFile(screenshotPath);
+        assert.equal(screenBytes.toString('hex', 0, 8), '89504e470d0a1a0a',
+          `${scene.id}: iOS Simulator 화면 캡처가 PNG가 아닙니다.`);
+        typedAutoScreenCaptures.push({
+          sceneId: scene.id, path: `${scene.id}-screen.png`, sha256: sha256(screenBytes),
+        });
       } else {
         cyclePixelComparisons.push({ sceneId: scene.id, ...pixel });
       }
@@ -512,6 +541,8 @@ async function captureMatrix(simulator) {
     pixelComparison,
     screenshotSha256,
     cyclePixelComparisons,
+    typedAutoPixelComparisons,
+    typedAutoScreenCaptures,
     trackListCycleScreenshotSha256,
     negative,
     routeNegative,
@@ -560,6 +591,7 @@ try {
   const fixtureBytes = await readFile(resolve(repositoryRoot, runtimePath));
   const mobileBytes = await readFile(resolve(repositoryRoot, mobilePath));
   const cyclePixelsBytes = await readFile(resolve(repositoryRoot, cyclePixelsPath));
+  const typedAutoPixelsBytes = await readFile(resolve(repositoryRoot, typedAutoPixelsPath));
   const referenceBytes = await readFile(resolve(repositoryRoot, mobile.oracle.referencePath));
   const unknownAreaPixelsBytes = await readFile(resolve(repositoryRoot, unknownAreaPixelsPath));
   const leadingNamedLinesPixelsBytes = await readFile(resolve(repositoryRoot, leadingNamedLinesPixelsPath));
@@ -611,6 +643,7 @@ try {
       runtimeMatrixSha256: sha256(fixtureBytes),
       mobileFixtureSha256: sha256(mobileBytes),
       trackListCyclePixelsSha256: sha256(cyclePixelsBytes),
+      typedAutoPixelsSha256: sha256(typedAutoPixelsBytes),
       trackListCycleObservationSha256: sha256(cycleObservationBytes),
       trackListCycleChromeScreenshotSha256: sha256(cycleScreenshotBytes),
       chromeReferenceSha256: sha256(referenceBytes),
@@ -644,14 +677,23 @@ try {
       pixelComparison: platform.pixelComparison,
       screenshotSha256: platform.screenshotSha256,
       cyclePixelComparisons: platform.cyclePixelComparisons,
+      typedAutoPixelComparisons: platform.typedAutoPixelComparisons,
+      typedAutoScreenCaptures: platform.typedAutoScreenCaptures,
       trackListCycleScreenshotSha256: platform.trackListCycleScreenshotSha256,
+    typedAutoPixels: {
+      path: typedAutoPixelsPath,
+      sha256: sha256(typedAutoPixelsBytes),
+      observations: platform.typedAutoPixelComparisons,
+      totalSamples: platform.typedAutoPixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0),
+      screenshots: platform.typedAutoScreenCaptures,
+    },
       unknownAreaOverflow: platform.unknownAreaOverflow,
       leadingNamedImplicitLines: platform.leadingNamedImplicitLines,
       negative: platform.negative,
       routeNegative: platform.routeNegative,
     },
     observations: platform.observations,
-    interpretation: 'iPhone 17 Pro/iOS 26.2 Simulator에서 기존 26개 Chrome 154 scene과 11개 Chrome 156 supplemental scene을 포함한 C11.3.3 37개 scene·118개 node 행렬, track-list cycling 6개 scene·28개 Metal 표본, leading named implicit line 7개 scene·14개 node를 검증했다. Metal drawable readback은 OS compositor 제출 전이며, 이는 실기기·hardware GPU·Spinon WPT 또는 전체 CSS Grid 지원 근거가 아니다.',
+    interpretation: 'iPhone 17 Pro/iOS 26.2 Simulator에서 기존 26개 Chrome 154 scene과 13개 Chrome 156 supplemental scene을 포함한 C11.3.3 39개 scene·126개 node 행렬, track-list cycling 6개 scene·28개 Metal 표본, leading named implicit line 7개 scene·14개 node를 검증했다. Metal drawable readback은 OS compositor 제출 전이며, 이는 실기기·hardware GPU·Spinon WPT 또는 전체 CSS Grid 지원 근거가 아니다.',
   };
   await writeFile(resolve(evidenceDirectory, 'result.json'), JSON.stringify(result, null, 2) + '\n');
   await writeFile(resolve(evidenceDirectory, 'README.md'), [
@@ -668,6 +710,9 @@ try {
       + platform.pixelComparison.expectedSamples + ' RGBA exact; 최대 채널 오차 0',
     '- track-list cycling Metal drawable 표본: ' + platform.cyclePixelComparisons.length
       + ' scene / ' + platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)
+      + ' RGBA exact; 최대 채널 오차 0',
+    '- typed auto-track Metal drawable 표본: ' + platform.typedAutoPixelComparisons.length
+      + ' scene / ' + platform.typedAutoPixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)
       + ' RGBA exact; 최대 채널 오차 0',
     '- unknown-area overflow: ' + platform.unknownAreaOverflow.comparisons.length
       + '개 Chrome geometry node, ' + platform.unknownAreaOverflow.pixel.matchedSamples + '/'
@@ -687,6 +732,7 @@ try {
     '- runtime-*.log: scene별 평가, frame, 거부 결과',
     '- ios-screen.png: basic-rectangles UI 화면 캡처',
     '- ios-track-list-cycle-screen.png: 양 축 track-list cycling 화면 캡처',
+    '- typed-area-*-screen.png: typed auto-track scene별 iOS Simulator 화면 캡처',
     '- ios-unknown-area-overflow-screen.png: fixed implicit-track overflow 장면 화면 캡처',
     '- ios-leading-*-screen.png: leading named implicit line 장면 화면 캡처',
     '- metal-surface-comparison.json: Chrome 고정 sample과 Metal drawable 비교',

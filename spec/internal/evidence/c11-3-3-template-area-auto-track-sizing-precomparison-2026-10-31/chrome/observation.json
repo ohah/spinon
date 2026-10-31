@@ -1,0 +1,77 @@
+{
+  "schema": "spinon-css-c11-3-3-template-area-typed-auto-track-sizing-chrome-observation/v1",
+  "capture": {
+    "tool": "agent-browser",
+    "toolVersion": "0.31.1",
+    "browserVersion": "156.0.0.0"
+  },
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "devicePixelRatio": 1,
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-c1133-runtime.html",
+    "sha256": "28ea4bc93adb53f56148ffd5017982b3b2fc35333902918f8ab1cede811c2f49"
+  },
+  "screenshot": {
+    "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/fixture.png",
+    "sha256": "b6f32defbd3f7180138a3074abcfea04726fc67fc10fedacf235302cf934cc3d"
+  },
+  "classification": "Chrome oracle observation only; not Spinon behavior or WPT conformance",
+  "observations": {
+    "typed-area-minmax-row": {
+      "rows": "10px 40px 40px",
+      "columns": "100px",
+      "root": {
+        "width": 100,
+        "height": 90
+      },
+      "nodes": [
+        {
+          "id": "typed-area-minmax-row",
+          "rect": { "x": 0, "y": 0, "width": 100, "height": 90 }
+        },
+        {
+          "id": "typed-area-minmax-row-first",
+          "rect": { "x": 0, "y": 0, "width": 100, "height": 10 }
+        },
+        {
+          "id": "typed-area-minmax-row-second",
+          "rect": { "x": 0, "y": 10, "width": 100, "height": 40 }
+        },
+        {
+          "id": "typed-area-minmax-row-third",
+          "rect": { "x": 0, "y": 50, "width": 100, "height": 40 }
+        }
+      ]
+    },
+    "typed-area-percentage-column": {
+      "rows": "20px",
+      "columns": "10px 25px 25px",
+      "root": {
+        "width": 100,
+        "height": 20
+      },
+      "nodes": [
+        {
+          "id": "typed-area-percentage-column",
+          "rect": { "x": 0, "y": 0, "width": 100, "height": 20 }
+        },
+        {
+          "id": "typed-area-percentage-column-left",
+          "rect": { "x": 0, "y": 0, "width": 10, "height": 20 }
+        },
+        {
+          "id": "typed-area-percentage-column-middle",
+          "rect": { "x": 10, "y": 0, "width": 25, "height": 20 }
+        },
+        {
+          "id": "typed-area-percentage-column-right",
+          "rect": { "x": 35, "y": 0, "width": 25, "height": 20 }
+        }
+      ]
+    }
+  }
+}

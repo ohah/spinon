@@ -86,6 +86,7 @@ public final class MainActivity extends Activity {
             "both-axis-cycle", "row-cycle-from-first-implicit", "column-cycle-from-first-implicit",
             "authored-tracks-exceed-area", "row-cycle-continues-after-area",
             "column-cycle-continues-after-area",
+            "typed-area-minmax-row", "typed-area-percentage-column",
             "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
             "negative-missing-occurrences", "backward-span-one", "backward-span-two",
             "backward-span-partial-explicit", "forward-span-two",

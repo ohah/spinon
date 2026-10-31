@@ -1,0 +1,15 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/spinon_layout-eafe5a551a3bbde3)
+
+running 9 tests
+test grid::tests::trailing_template_area_named_lines_use_typed_auto_tracks_after_area_pattern_phase ... ok
+test grid::tests::template_area_columns_continue_fixed_px_pattern_after_area_expansion ... ok
+test grid::track_sizing_tests::auto_repeat_template_area_extends_the_explicit_grid_and_resolves_area_lines ... ok
+test grid::track_sizing_tests::two_axis_auto_repeat_template_area_extends_both_axes_and_resolves_area_lines ... ok
+test grid::tests::template_area_implicit_rows_use_the_authored_grid_auto_track_list ... ok
+test grid::tests::template_area_rows_continue_fixed_px_pattern_after_area_expansion ... ok
+test grid::tests::template_area_implicit_columns_use_the_authored_percentage_track_list ... ok
+test grid::tests::template_area_mode_stretches_definite_auto_sized_items_without_widening_dense_mode ... ok
+test grid::tests::trailing_template_area_named_lines_use_default_auto_tracks ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 311 filtered out; finished in 0.02s

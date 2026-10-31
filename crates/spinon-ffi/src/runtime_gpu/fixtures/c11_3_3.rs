@@ -159,7 +159,7 @@ return { sceneId:'backward-span-uses-authored-name', rootId:'leading-authored-gr
 })()"#,
     ),
 ];
-const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 37] = [
+const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 39] = [
     "basic-rectangles",
     "null-cell-dot-runs",
     "all-null-cells",
@@ -197,6 +197,8 @@ const C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS: [&str; 37] = [
     "authored-tracks-exceed-area",
     "row-cycle-continues-after-area",
     "column-cycle-continues-after-area",
+    "typed-area-minmax-row",
+    "typed-area-percentage-column",
 ];
 
 pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
@@ -229,9 +231,9 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
                 .as_array()
                 .ok_or_else(|| "C11.3.3 runtime matrix 장면 목록이 없습니다".to_owned())?;
             if cases.len() != C11_3_3_GRID_TEMPLATE_AREAS_SCENE_IDS.len()
-                || matrix["summary"]["sceneCount"].as_u64() != Some(37)
-                || matrix["summary"]["nodeCount"].as_u64() != Some(118)
-                || matrix["summary"]["successCount"].as_u64() != Some(32)
+                || matrix["summary"]["sceneCount"].as_u64() != Some(39)
+                || matrix["summary"]["nodeCount"].as_u64() != Some(126)
+                || matrix["summary"]["successCount"].as_u64() != Some(34)
                 || matrix["summary"]["cascadeFallbackCount"].as_u64() != Some(5)
                 || matrix["summary"]["expectedRejectCount"].as_u64() != Some(0)
             {
@@ -335,10 +337,10 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
                     return Err(format!("C11.3.3 scene {id} source가 고정 계약과 다릅니다"));
                 }
             }
-            if success_count != 32
+            if success_count != 34
                 || cascade_fallback_count != 5
                 || rejection_count != 0
-                || node_count != 118
+                || node_count != 126
             {
                 return Err("C11.3.3 runtime matrix 개별 장면과 요약이 다릅니다".to_owned());
             }
@@ -374,8 +376,8 @@ mod tests {
             assert!(source.contains("document.createElement"));
         }
         assert!(c11_3_3_grid_template_areas_runtime_source("unknown;throw 1").is_err());
-        assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"sceneCount\": 37"));
-        assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"nodeCount\": 118"));
+        assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"sceneCount\": 39"));
+        assert!(C11_3_3_GRID_TEMPLATE_AREAS_RUNTIME_MATRIX.contains("\"nodeCount\": 126"));
         assert!(c11_3_3_grid_template_areas_runtime_source("unknown-area-implicit-tracks").is_ok());
     }
 

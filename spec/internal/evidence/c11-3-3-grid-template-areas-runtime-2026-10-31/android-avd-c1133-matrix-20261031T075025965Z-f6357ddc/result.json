@@ -1,0 +1,6794 @@
+{
+  "schema": "spinon-c11-3-3-grid-template-areas-runtime-matrix-result/v1",
+  "status": "matched",
+  "runID": "c1133-matrix-20261031T075025965Z-f6357ddc",
+  "target": "android-avd",
+  "metadata": {
+    "serial": "[REDACTED]",
+    "model": "sdk_gphone16k_arm64",
+    "product": "sdk_gphone16k_arm64",
+    "device": "emu64a16k",
+    "manufacturer": "Google",
+    "release": "17",
+    "sdk": 37,
+    "qemu": true,
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+  },
+  "source": {
+    "commit": "7bcc6a6641a2d95e607a6f805578a19a5fa84f0a",
+    "runtimeMatrixSha256": "669e30fe49f93db5db05cd282ed60f78c1861a98db949124442ed244c1a875a8",
+    "historicalRuntimeMatrixSha256": "62baa58bab5af9fd9cfb498ed4a5a979202a5e43bba5438952358cfc204358ee",
+    "mobileFixtureSha256": "fec1edba1a1eef22009991e286b6d0bd1503cc066505e75a046613870ca8beb6",
+    "trackListCyclePixelsSha256": "bfc2fd808e981f75185284423ce8142130d32e85fa5f1303e99e410837e83f03",
+    "typedAutoPixelsSha256": "cc3faf8a5e1eaffc85db2bcd8060a4ddd385298014fef409c7d7ac4304b09109",
+    "captureScriptSha256": "3cdf72c60d15eed65fd1356e1013ff955ae58baa0e734037c7d0b952ece524e7",
+    "androidRuntimeSourceSha256": "a88f0caa630310a5c89354ce5567d49d9d859b42ecd054adcc26e93946abef9c",
+    "appSha256": "16fb68df6a6517eade346629a0534050e0cb3c2997fd2deae2294b70a9a5984b"
+  },
+  "fixture": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-c1133-runtime-matrix-v2.json",
+    "sha256": "669e30fe49f93db5db05cd282ed60f78c1861a98db949124442ed244c1a875a8"
+  },
+  "trackListCyclePixels": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-track-list-cycling-mobile-pixels-v1.json",
+    "sha256": "bfc2fd808e981f75185284423ce8142130d32e85fa5f1303e99e410837e83f03",
+    "observations": [
+      {
+        "sceneId": "both-axis-cycle",
+        "pixelPath": "pixelcopy-both-axis-cycle.png",
+        "status": "matched",
+        "scene": "both-axis-cycle",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-31-both-axis-cycle",
+        "processId": 7754,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "pngSha256": "247da893ff5095e51950e24a51d3912df73111122b452ed333f464ea7b6a1fec",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              60
+            ],
+            "pixel": [
+              237,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "hero",
+            "css": [
+              20,
+              12
+            ],
+            "pixel": [
+              53,
+              32
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "side",
+            "css": [
+              53,
+              12
+            ],
+            "pixel": [
+              140,
+              32
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "footer",
+            "css": [
+              20,
+              28
+            ],
+            "pixel": [
+              53,
+              74
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "utility",
+            "css": [
+              53,
+              28
+            ],
+            "pixel": [
+              140,
+              74
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "extra",
+            "css": [
+              20,
+              34
+            ],
+            "pixel": [
+              53,
+              90
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "spare",
+            "css": [
+              53,
+              34
+            ],
+            "pixel": [
+              140,
+              90
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-from-first-implicit",
+        "pixelPath": "pixelcopy-row-cycle-from-first-implicit.png",
+        "status": "matched",
+        "scene": "row-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-32-row-cycle-from-first-implicit",
+        "processId": 7828,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "ff6c5e10777565ad9997d8df26a51a0d7ea9315f78102c6b897f752ced8314a1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              70
+            ],
+            "pixel": [
+              237,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "row-a",
+            "css": [
+              10,
+              8
+            ],
+            "pixel": [
+              27,
+              22
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "row-b",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "row-c",
+            "css": [
+              10,
+              38
+            ],
+            "pixel": [
+              27,
+              101
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "row-d",
+            "css": [
+              10,
+              45
+            ],
+            "pixel": [
+              27,
+              119
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "row-e",
+            "css": [
+              10,
+              53
+            ],
+            "pixel": [
+              27,
+              140
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-from-first-implicit",
+        "pixelPath": "pixelcopy-column-cycle-from-first-implicit.png",
+        "status": "matched",
+        "scene": "column-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-33-column-cycle-from-first-implicit",
+        "processId": 7884,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "94606de9b6a206e6765496d70ec2373d847a747164f85719691e08afffe534c1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              95,
+              70
+            ],
+            "pixel": [
+              250,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right",
+            "css": [
+              82,
+              5
+            ],
+            "pixel": [
+              216,
+              14
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "authored-tracks-exceed-area",
+        "pixelPath": "pixelcopy-authored-tracks-exceed-area.png",
+        "status": "matched",
+        "scene": "authored-tracks-exceed-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-34-authored-tracks-exceed-area",
+        "processId": 7947,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ef5bf052e121de7636ccbe45faa8ffececdc05d7e98a5c6e6770e8d9dbaf63",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "exceed-top",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "exceed-bottom",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-continues-after-area",
+        "pixelPath": "pixelcopy-row-cycle-continues-after-area.png",
+        "status": "matched",
+        "scene": "row-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-35-row-cycle-continues-after-area",
+        "processId": 8010,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "ef20cae48e0e59f8eeaf11891be87a9f2963aa955d562982409f3e97cf6da100",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              10,
+              22
+            ],
+            "pixel": [
+              27,
+              59
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              10,
+              30
+            ],
+            "pixel": [
+              27,
+              80
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-continues-after-area",
+        "pixelPath": "pixelcopy-column-cycle-continues-after-area.png",
+        "status": "matched",
+        "scene": "column-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-36-column-cycle-continues-after-area",
+        "processId": 8068,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ec743eff0d85847f01a4110cd752d40dfcb733e507dab055849e4efef8d086",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              22,
+              10
+            ],
+            "pixel": [
+              59,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              28,
+              10
+            ],
+            "pixel": [
+              74,
+              27
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      }
+    ],
+    "totalSamples": 28,
+    "screenshotSha256": "6aab1bb619be533e3f5a27618e07c440c4fce81f31efb97d991accb330ad1191"
+  },
+  "typedAutoPixels": {
+    "path": "tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-mobile-pixels-v1.json",
+    "sha256": "cc3faf8a5e1eaffc85db2bcd8060a4ddd385298014fef409c7d7ac4304b09109",
+    "observations": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "pixelPath": "pixelcopy-typed-area-minmax-row.png",
+        "status": "matched",
+        "scene": "typed-area-minmax-row",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-37-typed-area-minmax-row",
+        "processId": 8136,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "560076367c3f1f58104b45dc85cabd29e1917aed90486869eaf38d8fbdad475d",
+        "samples": [
+          {
+            "id": "first-row",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "second-row",
+            "css": [
+              50,
+              20
+            ],
+            "pixel": [
+              132,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "third-row",
+            "css": [
+              50,
+              60
+            ],
+            "pixel": [
+              132,
+              158
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "pixelPath": "pixelcopy-typed-area-percentage-column.png",
+        "status": "matched",
+        "scene": "typed-area-percentage-column",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-38-typed-area-percentage-column",
+        "processId": 8198,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "6e2d35f7eefd19303431288e49697424d796b6a7256bcc36b188c7f261fa5b15",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              10
+            ],
+            "pixel": [
+              211,
+              27
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left-column",
+            "css": [
+              5,
+              10
+            ],
+            "pixel": [
+              14,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle-column",
+            "css": [
+              15,
+              10
+            ],
+            "pixel": [
+              40,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right-column",
+            "css": [
+              40,
+              10
+            ],
+            "pixel": [
+              106,
+              27
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      }
+    ],
+    "totalSamples": 7,
+    "screenshots": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "path": "typed-area-minmax-row-screen.png",
+        "sha256": "43cba6730955813754484e2db4c9b050825a365ebb2f0d493869f545c71999dc"
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "path": "typed-area-percentage-column-screen.png",
+        "sha256": "6ea163d7e1057491d4ae5a93de3e21da521ad6ad3dc5e2792afc34bdef15944a"
+      }
+    ]
+  },
+  "unknownAreaOverflowFixture": {
+    "path": "tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json",
+    "sha256": "10c676c6c1553d2f38a372d7c399c0f41885f9fa1acd99a00e58cf1dcece5647",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-unknown-named-area-implicit-lines-precomparison-v1.json",
+    "referenceSha256": "3f0f3fa8afead05c0bc1d77041b1ebe81c93208d48031e03b1758245fc9f9e20"
+  },
+  "leadingNamedImplicitLinesFixture": {
+    "path": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-mobile-pixels-v1.json",
+    "sha256": "60717838fc88c0de02281c979aa2e3c549934d8c0aca46850d841fe453ce5871",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json",
+    "referenceSha256": "e36e31c4ed658963cd9f3d5bdcd0a5c83c748950fe2f048d975b4a44191a6ec3",
+    "sceneCount": 7,
+    "comparedVisibleNodes": 14,
+    "maximumGeometryErrorCssPx": 0,
+    "matchedPixelSamples": 7,
+    "scenes": [
+      {
+        "index": 0,
+        "sceneId": "positive-missing-occurrences",
+        "expectedTracksPx": [
+          30,
+          40,
+          15,
+          7,
+          15,
+          7
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-positive-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 114,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 114,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-positive-item",
+            "expected": {
+              "x": 107,
+              "y": 0,
+              "width": 7,
+              "height": 20
+            },
+            "actual": {
+              "x": 107,
+              "y": 0,
+              "width": 7,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "positive-missing-occurrences",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-00",
+          "processId": 8324,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "00ed0f7dc1142281bb288d6bbf47dc338fe8b130916dc21bc52621e05c720c1e",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                110,
+                10
+              ],
+              "pixel": [
+                290,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-00-positive-missing-occurrences.log"
+      },
+      {
+        "index": 1,
+        "sceneId": "negative-missing-occurrences",
+        "expectedTracksPx": [
+          15,
+          7,
+          30,
+          40
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-negative-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 92,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 92,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-negative-item",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 15,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 15,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "negative-missing-occurrences",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-01",
+          "processId": 8390,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "cd46d47c797ac85e8b6c001e042c9936fdaa467b6c6756c75a5f57cd321c33f5",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                7,
+                10
+              ],
+              "pixel": [
+                19,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-01-negative-missing-occurrences.log"
+      },
+      {
+        "index": 2,
+        "sceneId": "backward-span-one",
+        "expectedTracksPx": [
+          7,
+          100,
+          15,
+          7
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-backward-one-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 129,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 129,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-backward-one-item",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 129,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 129,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "backward-span-one",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-02",
+          "processId": 8453,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "149292334321a6179c5c04d9990bf6fe5907544ca8e246c19ddfb716c50010a6",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                64,
+                10
+              ],
+              "pixel": [
+                169,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-02-backward-span-one.log"
+      },
+      {
+        "index": 3,
+        "sceneId": "backward-span-two",
+        "expectedTracksPx": [
+          15,
+          7,
+          100,
+          15,
+          7
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-backward-two-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 144,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 144,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-backward-two-item",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 144,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 144,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "backward-span-two",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-03",
+          "processId": 8519,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "ea0322a95efdc12d173aa933ec19ad640873c0f745794e75b09ad83c7af71224",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                72,
+                10
+              ],
+              "pixel": [
+                190,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-03-backward-span-two.log"
+      },
+      {
+        "index": 4,
+        "sceneId": "backward-span-partial-explicit",
+        "expectedTracksPx": [
+          7,
+          40,
+          100,
+          15
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-backward-partial-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 162,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 162,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-backward-partial-item",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 162,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 162,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "backward-span-partial-explicit",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-04",
+          "processId": 8577,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "ccd0980840b95a7d89631ed27f4e88fe0470a99583bf5ff5ff90ac08bd22b8f0",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                81,
+                10
+              ],
+              "pixel": [
+                213,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-04-backward-span-partial-explicit.log"
+      },
+      {
+        "index": 5,
+        "sceneId": "forward-span-two",
+        "expectedTracksPx": [
+          50,
+          15,
+          7,
+          15,
+          7
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-forward-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 94,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 94,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-forward-item",
+            "expected": {
+              "x": 72,
+              "y": 0,
+              "width": 22,
+              "height": 20
+            },
+            "actual": {
+              "x": 72,
+              "y": 0,
+              "width": 22,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "forward-span-two",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-05",
+          "processId": 8639,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "27a6d58483f4cf9bf891ac01850262af5099adaa6b352ac5064da460e72f6dda",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                80,
+                10
+              ],
+              "pixel": [
+                211,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-05-forward-span-two.log"
+      },
+      {
+        "index": 6,
+        "sceneId": "backward-span-uses-authored-name",
+        "expectedTracksPx": [
+          30,
+          40,
+          15
+        ],
+        "boxes": 2,
+        "frames": 2,
+        "comparisons": [
+          {
+            "nodeId": 1,
+            "nodeName": "leading-authored-grid",
+            "expected": {
+              "x": 0,
+              "y": 0,
+              "width": 85,
+              "height": 20
+            },
+            "actual": {
+              "x": 0,
+              "y": 0,
+              "width": 85,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          },
+          {
+            "nodeId": 2,
+            "nodeName": "leading-authored-item",
+            "expected": {
+              "x": 30,
+              "y": 0,
+              "width": 55,
+              "height": 20
+            },
+            "actual": {
+              "x": 30,
+              "y": 0,
+              "width": 55,
+              "height": 20
+            },
+            "maximumErrorCssPx": 0
+          }
+        ],
+        "maximumGeometryErrorCssPx": 0,
+        "pixel": {
+          "status": "matched",
+          "scene": "backward-span-uses-authored-name",
+          "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-06",
+          "processId": 8699,
+          "markerPrefix": "C1133",
+          "surfaceGeneration": 2,
+          "density": 2.625,
+          "surface": [
+            840,
+            630
+          ],
+          "runtimeViewportCssPx": [
+            320,
+            240
+          ],
+          "scale": [
+            2.625,
+            2.625
+          ],
+          "expectedSamples": 1,
+          "matchedSamples": 1,
+          "maximumChannelError": 0,
+          "pngSha256": "b08c0f207a2d38849b9c314a3d3b0a92012edc9d416bd2ac67735f3b06fd7ad7",
+          "samples": [
+            {
+              "id": "named-implicit-item",
+              "css": [
+                50,
+                10
+              ],
+              "pixel": [
+                132,
+                27
+              ],
+              "rgba": [
+                40,
+                102,
+                246,
+                255
+              ]
+            }
+          ]
+        },
+        "logPath": "runtime-leading-06-backward-span-uses-authored-name.log"
+      }
+    ]
+  },
+  "oracle": {
+    "product": "Chrome/154.0.8037.92",
+    "referenceId": "chromium-darwin-arm64-Chrome-154.0.8037.92-bace2c635c76-953bb95b881a-6efbd2b256d1",
+    "referenceSha256": "e92cb8fc33c9c55a20871d4455f4d67f6179aae239b94d0ac12afdfc337e3913",
+    "dpr": 1,
+    "viewportCssPx": {
+      "width": 320,
+      "height": 240
+    }
+  },
+  "matrix": {
+    "sceneCount": 39,
+    "nodeCount": 126,
+    "outcomeCounts": {
+      "success": 34,
+      "cascade-fallback": 5,
+      "expected-rejection": 0
+    },
+    "comparedVisibleNodes": 126,
+    "maximumGeometryErrorCssPx": 0
+  },
+  "platform": {
+    "appSha256": "16fb68df6a6517eade346629a0534050e0cb3c2997fd2deae2294b70a9a5984b",
+    "pixelComparison": {
+      "status": "matched",
+      "scene": "basic-rectangles",
+      "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-00-basic-rectangles",
+      "processId": 5914,
+      "markerPrefix": "C1133",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 2,
+      "matchedSamples": 2,
+      "maximumChannelError": 0,
+      "pngSha256": "f693605ae4b5d0b7d2c64f4c770bc1326cac508a2125c24b29f7ef2377b4cec0",
+      "samples": [
+        {
+          "id": "grid-background",
+          "css": [
+            150,
+            10
+          ],
+          "pixel": [
+            395,
+            27
+          ],
+          "rgba": [
+            16,
+            24,
+            32,
+            255
+          ]
+        },
+        {
+          "id": "item-blue",
+          "css": [
+            100,
+            50
+          ],
+          "pixel": [
+            263,
+            132
+          ],
+          "rgba": [
+            62,
+            99,
+            221,
+            255
+          ]
+        }
+      ]
+    },
+    "cyclePixelComparisons": [
+      {
+        "sceneId": "both-axis-cycle",
+        "pixelPath": "pixelcopy-both-axis-cycle.png",
+        "status": "matched",
+        "scene": "both-axis-cycle",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-31-both-axis-cycle",
+        "processId": 7754,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "pngSha256": "247da893ff5095e51950e24a51d3912df73111122b452ed333f464ea7b6a1fec",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              60
+            ],
+            "pixel": [
+              237,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "hero",
+            "css": [
+              20,
+              12
+            ],
+            "pixel": [
+              53,
+              32
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "side",
+            "css": [
+              53,
+              12
+            ],
+            "pixel": [
+              140,
+              32
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "footer",
+            "css": [
+              20,
+              28
+            ],
+            "pixel": [
+              53,
+              74
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "utility",
+            "css": [
+              53,
+              28
+            ],
+            "pixel": [
+              140,
+              74
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "extra",
+            "css": [
+              20,
+              34
+            ],
+            "pixel": [
+              53,
+              90
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "spare",
+            "css": [
+              53,
+              34
+            ],
+            "pixel": [
+              140,
+              90
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-from-first-implicit",
+        "pixelPath": "pixelcopy-row-cycle-from-first-implicit.png",
+        "status": "matched",
+        "scene": "row-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-32-row-cycle-from-first-implicit",
+        "processId": 7828,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "ff6c5e10777565ad9997d8df26a51a0d7ea9315f78102c6b897f752ced8314a1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              70
+            ],
+            "pixel": [
+              237,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "row-a",
+            "css": [
+              10,
+              8
+            ],
+            "pixel": [
+              27,
+              22
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "row-b",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "row-c",
+            "css": [
+              10,
+              38
+            ],
+            "pixel": [
+              27,
+              101
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "row-d",
+            "css": [
+              10,
+              45
+            ],
+            "pixel": [
+              27,
+              119
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "row-e",
+            "css": [
+              10,
+              53
+            ],
+            "pixel": [
+              27,
+              140
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-from-first-implicit",
+        "pixelPath": "pixelcopy-column-cycle-from-first-implicit.png",
+        "status": "matched",
+        "scene": "column-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-33-column-cycle-from-first-implicit",
+        "processId": 7884,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "94606de9b6a206e6765496d70ec2373d847a747164f85719691e08afffe534c1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              95,
+              70
+            ],
+            "pixel": [
+              250,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right",
+            "css": [
+              82,
+              5
+            ],
+            "pixel": [
+              216,
+              14
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "authored-tracks-exceed-area",
+        "pixelPath": "pixelcopy-authored-tracks-exceed-area.png",
+        "status": "matched",
+        "scene": "authored-tracks-exceed-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-34-authored-tracks-exceed-area",
+        "processId": 7947,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ef5bf052e121de7636ccbe45faa8ffececdc05d7e98a5c6e6770e8d9dbaf63",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "exceed-top",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "exceed-bottom",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "row-cycle-continues-after-area",
+        "pixelPath": "pixelcopy-row-cycle-continues-after-area.png",
+        "status": "matched",
+        "scene": "row-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-35-row-cycle-continues-after-area",
+        "processId": 8010,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "ef20cae48e0e59f8eeaf11891be87a9f2963aa955d562982409f3e97cf6da100",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              10,
+              22
+            ],
+            "pixel": [
+              27,
+              59
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              10,
+              30
+            ],
+            "pixel": [
+              27,
+              80
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "column-cycle-continues-after-area",
+        "pixelPath": "pixelcopy-column-cycle-continues-after-area.png",
+        "status": "matched",
+        "scene": "column-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-36-column-cycle-continues-after-area",
+        "processId": 8068,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ec743eff0d85847f01a4110cd752d40dfcb733e507dab055849e4efef8d086",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              22,
+              10
+            ],
+            "pixel": [
+              59,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              28,
+              10
+            ],
+            "pixel": [
+              74,
+              27
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      }
+    ],
+    "typedAutoPixelComparisons": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "pixelPath": "pixelcopy-typed-area-minmax-row.png",
+        "status": "matched",
+        "scene": "typed-area-minmax-row",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-37-typed-area-minmax-row",
+        "processId": 8136,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "560076367c3f1f58104b45dc85cabd29e1917aed90486869eaf38d8fbdad475d",
+        "samples": [
+          {
+            "id": "first-row",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "second-row",
+            "css": [
+              50,
+              20
+            ],
+            "pixel": [
+              132,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "third-row",
+            "css": [
+              50,
+              60
+            ],
+            "pixel": [
+              132,
+              158
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "pixelPath": "pixelcopy-typed-area-percentage-column.png",
+        "status": "matched",
+        "scene": "typed-area-percentage-column",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-38-typed-area-percentage-column",
+        "processId": 8198,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "6e2d35f7eefd19303431288e49697424d796b6a7256bcc36b188c7f261fa5b15",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              10
+            ],
+            "pixel": [
+              211,
+              27
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left-column",
+            "css": [
+              5,
+              10
+            ],
+            "pixel": [
+              14,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle-column",
+            "css": [
+              15,
+              10
+            ],
+            "pixel": [
+              40,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right-column",
+            "css": [
+              40,
+              10
+            ],
+            "pixel": [
+              106,
+              27
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      }
+    ],
+    "typedAutoScreenCaptures": [
+      {
+        "sceneId": "typed-area-minmax-row",
+        "path": "typed-area-minmax-row-screen.png",
+        "sha256": "43cba6730955813754484e2db4c9b050825a365ebb2f0d493869f545c71999dc"
+      },
+      {
+        "sceneId": "typed-area-percentage-column",
+        "path": "typed-area-percentage-column-screen.png",
+        "sha256": "6ea163d7e1057491d4ae5a93de3e21da521ad6ad3dc5e2792afc34bdef15944a"
+      }
+    ],
+    "trackListCycleScreenSha256": "6aab1bb619be533e3f5a27618e07c440c4fce81f31efb97d991accb330ad1191",
+    "unknownAreaOverflow": {
+      "sceneId": "unknown-area-fixed-implicit-tracks",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "fixed-implicit-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "fixed-known-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 60
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 80,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "fixed-unknown-area",
+          "expected": {
+            "x": 175,
+            "y": 125,
+            "width": 15,
+            "height": 5
+          },
+          "actual": {
+            "x": 175,
+            "y": 125,
+            "width": 15,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "unknown-area-fixed-implicit-tracks",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-unknown-area-fixed-implicit-tracks",
+        "processId": 8259,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "d177234adf5a2ec22e90e966ea4b03483c433db2398beb3ed8b74ee9e5351d59",
+        "samples": [
+          {
+            "id": "grid-interior",
+            "css": [
+              150,
+              110
+            ],
+            "pixel": [
+              395,
+              290
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known-area",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "unknown-area-overflow",
+            "css": [
+              182,
+              127
+            ],
+            "pixel": [
+              479,
+              334
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-unknown-area-fixed-implicit-tracks.log"
+    },
+    "leadingNamedImplicitLines": {
+      "fixturePath": "tests/fixtures/css/c11/grid-leading-named-implicit-lines-mobile-pixels-v1.json",
+      "fixtureSha256": "60717838fc88c0de02281c979aa2e3c549934d8c0aca46850d841fe453ce5871",
+      "referencePath": "tests/fixtures/css/references/c11-3-3-leading-named-implicit-lines-precomparison-v1.json",
+      "referenceSha256": "e36e31c4ed658963cd9f3d5bdcd0a5c83c748950fe2f048d975b4a44191a6ec3",
+      "scenes": [
+        {
+          "index": 0,
+          "sceneId": "positive-missing-occurrences",
+          "expectedTracksPx": [
+            30,
+            40,
+            15,
+            7,
+            15,
+            7
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-positive-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 114,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 114,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-positive-item",
+              "expected": {
+                "x": 107,
+                "y": 0,
+                "width": 7,
+                "height": 20
+              },
+              "actual": {
+                "x": 107,
+                "y": 0,
+                "width": 7,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "positive-missing-occurrences",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-00",
+            "processId": 8324,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "00ed0f7dc1142281bb288d6bbf47dc338fe8b130916dc21bc52621e05c720c1e",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  110,
+                  10
+                ],
+                "pixel": [
+                  290,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-00-positive-missing-occurrences.log"
+        },
+        {
+          "index": 1,
+          "sceneId": "negative-missing-occurrences",
+          "expectedTracksPx": [
+            15,
+            7,
+            30,
+            40
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-negative-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 92,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 92,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-negative-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 15,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 15,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "negative-missing-occurrences",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-01",
+            "processId": 8390,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "cd46d47c797ac85e8b6c001e042c9936fdaa467b6c6756c75a5f57cd321c33f5",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  7,
+                  10
+                ],
+                "pixel": [
+                  19,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-01-negative-missing-occurrences.log"
+        },
+        {
+          "index": 2,
+          "sceneId": "backward-span-one",
+          "expectedTracksPx": [
+            7,
+            100,
+            15,
+            7
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-one-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-one-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 129,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "backward-span-one",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-02",
+            "processId": 8453,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "149292334321a6179c5c04d9990bf6fe5907544ca8e246c19ddfb716c50010a6",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  64,
+                  10
+                ],
+                "pixel": [
+                  169,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-02-backward-span-one.log"
+        },
+        {
+          "index": 3,
+          "sceneId": "backward-span-two",
+          "expectedTracksPx": [
+            15,
+            7,
+            100,
+            15,
+            7
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-two-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-two-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 144,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "backward-span-two",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-03",
+            "processId": 8519,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "ea0322a95efdc12d173aa933ec19ad640873c0f745794e75b09ad83c7af71224",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  72,
+                  10
+                ],
+                "pixel": [
+                  190,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-03-backward-span-two.log"
+        },
+        {
+          "index": 4,
+          "sceneId": "backward-span-partial-explicit",
+          "expectedTracksPx": [
+            7,
+            40,
+            100,
+            15
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-backward-partial-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-backward-partial-item",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 162,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "backward-span-partial-explicit",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-04",
+            "processId": 8577,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "ccd0980840b95a7d89631ed27f4e88fe0470a99583bf5ff5ff90ac08bd22b8f0",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  81,
+                  10
+                ],
+                "pixel": [
+                  213,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-04-backward-span-partial-explicit.log"
+        },
+        {
+          "index": 5,
+          "sceneId": "forward-span-two",
+          "expectedTracksPx": [
+            50,
+            15,
+            7,
+            15,
+            7
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-forward-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 94,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 94,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-forward-item",
+              "expected": {
+                "x": 72,
+                "y": 0,
+                "width": 22,
+                "height": 20
+              },
+              "actual": {
+                "x": 72,
+                "y": 0,
+                "width": 22,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "forward-span-two",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-05",
+            "processId": 8639,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "27a6d58483f4cf9bf891ac01850262af5099adaa6b352ac5064da460e72f6dda",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  80,
+                  10
+                ],
+                "pixel": [
+                  211,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-05-forward-span-two.log"
+        },
+        {
+          "index": 6,
+          "sceneId": "backward-span-uses-authored-name",
+          "expectedTracksPx": [
+            30,
+            40,
+            15
+          ],
+          "boxes": 2,
+          "frames": 2,
+          "comparisons": [
+            {
+              "nodeId": 1,
+              "nodeName": "leading-authored-grid",
+              "expected": {
+                "x": 0,
+                "y": 0,
+                "width": 85,
+                "height": 20
+              },
+              "actual": {
+                "x": 0,
+                "y": 0,
+                "width": 85,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            },
+            {
+              "nodeId": 2,
+              "nodeName": "leading-authored-item",
+              "expected": {
+                "x": 30,
+                "y": 0,
+                "width": 55,
+                "height": 20
+              },
+              "actual": {
+                "x": 30,
+                "y": 0,
+                "width": 55,
+                "height": 20
+              },
+              "maximumErrorCssPx": 0
+            }
+          ],
+          "maximumGeometryErrorCssPx": 0,
+          "pixel": {
+            "status": "matched",
+            "scene": "backward-span-uses-authored-name",
+            "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-leading-06",
+            "processId": 8699,
+            "markerPrefix": "C1133",
+            "surfaceGeneration": 2,
+            "density": 2.625,
+            "surface": [
+              840,
+              630
+            ],
+            "runtimeViewportCssPx": [
+              320,
+              240
+            ],
+            "scale": [
+              2.625,
+              2.625
+            ],
+            "expectedSamples": 1,
+            "matchedSamples": 1,
+            "maximumChannelError": 0,
+            "pngSha256": "b08c0f207a2d38849b9c314a3d3b0a92012edc9d416bd2ac67735f3b06fd7ad7",
+            "samples": [
+              {
+                "id": "named-implicit-item",
+                "css": [
+                  50,
+                  10
+                ],
+                "pixel": [
+                  132,
+                  27
+                ],
+                "rgba": [
+                  40,
+                  102,
+                  246,
+                  255
+                ]
+              }
+            ]
+          },
+          "logPath": "runtime-leading-06-backward-span-uses-authored-name.log"
+        }
+      ],
+      "sceneCount": 7,
+      "comparedVisibleNodes": 14,
+      "maximumGeometryErrorCssPx": 0,
+      "matchedPixelSamples": 7
+    },
+    "screenSha256": "8e1588f562329983f631576ee6c6f0521f67f9b18b78163af2e9bc6919cd53d9"
+  },
+  "negative": {
+    "pixelSamples": {
+      "status": "rejected-before-readback",
+      "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-bad-samples"
+    },
+    "sceneRoute": {
+      "status": "rejected-before-runtime-draw",
+      "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-bad-scene"
+    }
+  },
+  "observations": [
+    {
+      "index": 0,
+      "sceneId": "basic-rectangles",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "basic-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "basic-head",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "basic-main",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "basic-foot",
+          "expected": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 80,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "basic-rectangles",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-00-basic-rectangles",
+        "processId": 5914,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 2,
+        "matchedSamples": 2,
+        "maximumChannelError": 0,
+        "pngSha256": "f693605ae4b5d0b7d2c64f4c770bc1326cac508a2125c24b29f7ef2377b4cec0",
+        "samples": [
+          {
+            "id": "grid-background",
+            "css": [
+              150,
+              10
+            ],
+            "pixel": [
+              395,
+              27
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "item-blue",
+            "css": [
+              100,
+              50
+            ],
+            "pixel": [
+              263,
+              132
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-00-basic-rectangles.log"
+    },
+    {
+      "index": 1,
+      "sceneId": "null-cell-dot-runs",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "null-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "null-hero",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "null-left",
+          "expected": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "actual": {
+            "x": 0,
+            "y": 60,
+            "width": 40,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "null-right",
+          "expected": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "actual": {
+            "x": 100,
+            "y": 60,
+            "width": 60,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-01-null-cell-dot-runs.log"
+    },
+    {
+      "index": 2,
+      "sceneId": "all-null-cells",
+      "outcome": "success",
+      "boxes": 1,
+      "frames": 1,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-02-all-null-cells.log"
+    },
+    {
+      "index": 3,
+      "sceneId": "single-cell-area",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "single-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "single-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-03-single-cell-area.log"
+    },
+    {
+      "index": 4,
+      "sceneId": "bare-area-edge-aliases",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "alias-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "alias-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-04-bare-area-edge-aliases.log"
+    },
+    {
+      "index": 5,
+      "sceneId": "grid-area-one-value",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-one-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-one-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-05-grid-area-one-value.log"
+    },
+    {
+      "index": 6,
+      "sceneId": "grid-area-two-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-two-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-two-item",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-06-grid-area-two-values.log"
+    },
+    {
+      "index": 7,
+      "sceneId": "grid-area-three-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-three-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-three-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-07-grid-area-three-values.log"
+    },
+    {
+      "index": 8,
+      "sceneId": "grid-area-four-values",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-four-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-four-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-08-grid-area-four-values.log"
+    },
+    {
+      "index": 9,
+      "sceneId": "row-column-longhands-area",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "longhand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "longhand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-09-row-column-longhands-area.log"
+    },
+    {
+      "index": 10,
+      "sceneId": "grid-template-shorthand",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "template-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "template-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-10-grid-template-shorthand.log"
+    },
+    {
+      "index": 11,
+      "sceneId": "grid-shorthand",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "grid-shorthand-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "grid-shorthand-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-11-grid-shorthand.log"
+    },
+    {
+      "index": 12,
+      "sceneId": "bare-area-vs-explicit-one-name",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "bare-vs-number-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "bare-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "explicit-one-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-12-bare-area-vs-explicit-one-name.log"
+    },
+    {
+      "index": 13,
+      "sceneId": "explicit-line-before-area",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-before-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-before-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-before-name",
+          "expected": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 40,
+            "width": 40,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "line-before-grid-area",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-13-explicit-line-before-area.log"
+    },
+    {
+      "index": 14,
+      "sceneId": "explicit-line-after-area",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "line-after-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "line-after-area",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "line-after-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 60,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-14-explicit-line-after-area.log"
+    },
+    {
+      "index": 15,
+      "sceneId": "area-names-ending-start-or-end",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "suffix-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "suffix-area-name",
+          "expected": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 0,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "suffix-area-end-name",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-15-area-names-ending-start-or-end.log"
+    },
+    {
+      "index": 16,
+      "sceneId": "implicit-area-from-explicit-lines",
+      "outcome": "success",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "implicit-area-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "implicit-area-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-16-implicit-area-from-explicit-lines.log"
+    },
+    {
+      "index": 17,
+      "sceneId": "escaped-and-unicode-identifiers",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "unicode-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "unicode-escaped-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 40,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "unicode-asian-item",
+          "expected": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "actual": {
+            "x": 100,
+            "y": 0,
+            "width": 60,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-17-escaped-and-unicode-identifiers.log"
+    },
+    {
+      "index": 18,
+      "sceneId": "invalid-l-shape-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-l-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-l-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-18-invalid-l-shape-fallback.log"
+    },
+    {
+      "index": 19,
+      "sceneId": "invalid-disconnected-area-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-disconnected-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-disconnected-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-19-invalid-disconnected-area-fallback.log"
+    },
+    {
+      "index": 20,
+      "sceneId": "invalid-row-width-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-row-width-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-row-width-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-20-invalid-row-width-fallback.log"
+    },
+    {
+      "index": 21,
+      "sceneId": "invalid-trash-token-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-trash-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-trash-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-21-invalid-trash-token-fallback.log"
+    },
+    {
+      "index": 22,
+      "sceneId": "empty-string-fallback",
+      "outcome": "cascade-fallback",
+      "boxes": 2,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "invalid-empty-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "invalid-empty-fallback",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-22-empty-string-fallback.log"
+    },
+    {
+      "index": 23,
+      "sceneId": "area-track-count-mismatch",
+      "outcome": "success",
+      "boxes": 1,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "mismatch-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "mismatch-last-cell",
+          "expected": {
+            "x": 160,
+            "y": 0,
+            "width": 0,
+            "height": 60
+          },
+          "actual": {
+            "x": 160,
+            "y": 0,
+            "width": 0,
+            "height": 60
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-23-area-track-count-mismatch.log"
+    },
+    {
+      "index": 24,
+      "sceneId": "unknown-area-implicit-tracks",
+      "outcome": "success",
+      "boxes": 1,
+      "frames": 2,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "unknown-area-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "unknown-area-item",
+          "expected": {
+            "x": 160,
+            "y": 120,
+            "width": 0,
+            "height": 0
+          },
+          "actual": {
+            "x": 160,
+            "y": 120,
+            "width": 0,
+            "height": 0
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-24-unknown-area-implicit-tracks.log"
+    },
+    {
+      "index": 25,
+      "sceneId": "nested-hidden-source-order",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 6,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "nested-outer-grid",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 160,
+            "height": 120
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "nested-outer-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "nested-inner-grid",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "nested-inner-item",
+          "expected": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 40,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "nested-bottom-item",
+          "expected": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "actual": {
+            "x": 40,
+            "y": 80,
+            "width": 120,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "nested-hidden-item",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 0,
+            "height": 0
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-25-nested-hidden-source-order.log"
+    },
+    {
+      "index": 26,
+      "sceneId": "area-auto-tracks-none",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 5,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-none",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-none-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-none-b",
+          "expected": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-none-c",
+          "expected": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-none-d",
+          "expected": {
+            "x": 9,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 9,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-26-area-auto-tracks-none.log"
+    },
+    {
+      "index": 27,
+      "sceneId": "area-auto-tracks-short-row",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 5,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-short-row",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-short-row-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-short-row-b",
+          "expected": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 9,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-short-row-c",
+          "expected": {
+            "x": 0,
+            "y": 12,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 12,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-short-row-d",
+          "expected": {
+            "x": 9,
+            "y": 12,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 9,
+            "y": 12,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-27-area-auto-tracks-short-row.log"
+    },
+    {
+      "index": 28,
+      "sceneId": "area-auto-tracks-short-col",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 5,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-short-col",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-short-col-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-short-col-b",
+          "expected": {
+            "x": 13,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 13,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-short-col-c",
+          "expected": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 7,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-short-col-d",
+          "expected": {
+            "x": 13,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 13,
+            "y": 7,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-28-area-auto-tracks-short-col.log"
+    },
+    {
+      "index": 29,
+      "sceneId": "area-auto-tracks-auto",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 5,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-auto",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 50,
+            "height": 30
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 50,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-auto-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-auto-b",
+          "expected": {
+            "x": 20,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "actual": {
+            "x": 20,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-auto-c",
+          "expected": {
+            "x": 0,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 10,
+            "width": 20,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-auto-d",
+          "expected": {
+            "x": 20,
+            "y": 10,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 20,
+            "y": 10,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-29-area-auto-tracks-auto.log"
+    },
+    {
+      "index": 30,
+      "sceneId": "area-auto-tracks-long",
+      "outcome": "success",
+      "boxes": 5,
+      "frames": 5,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "area-auto-tracks-long",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 120,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "area-auto-tracks-long-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "area-auto-tracks-long-b",
+          "expected": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "actual": {
+            "x": 30,
+            "y": 0,
+            "width": 10,
+            "height": 3
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "area-auto-tracks-long-c",
+          "expected": {
+            "x": 0,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "actual": {
+            "x": 0,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "area-auto-tracks-long-d",
+          "expected": {
+            "x": 30,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "actual": {
+            "x": 30,
+            "y": 5,
+            "width": 10,
+            "height": 4
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": null,
+      "logPath": "runtime-30-area-auto-tracks-long.log"
+    },
+    {
+      "index": 31,
+      "sceneId": "both-axis-cycle",
+      "outcome": "success",
+      "boxes": 7,
+      "frames": 7,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "both-axis-cycle",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "both-hero",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 41,
+            "height": 25
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 41,
+            "height": 25
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "both-side",
+          "expected": {
+            "x": 41,
+            "y": 0,
+            "width": 24,
+            "height": 25
+          },
+          "actual": {
+            "x": 41,
+            "y": 0,
+            "width": 24,
+            "height": 25
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "both-footer",
+          "expected": {
+            "x": 0,
+            "y": 25,
+            "width": 41,
+            "height": 7
+          },
+          "actual": {
+            "x": 0,
+            "y": 25,
+            "width": 41,
+            "height": 7
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "both-utility",
+          "expected": {
+            "x": 41,
+            "y": 25,
+            "width": 24,
+            "height": 7
+          },
+          "actual": {
+            "x": 41,
+            "y": 25,
+            "width": 24,
+            "height": 7
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "both-extra",
+          "expected": {
+            "x": 0,
+            "y": 32,
+            "width": 41,
+            "height": 5
+          },
+          "actual": {
+            "x": 0,
+            "y": 32,
+            "width": 41,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 7,
+          "nodeName": "both-spare",
+          "expected": {
+            "x": 41,
+            "y": 32,
+            "width": 24,
+            "height": 5
+          },
+          "actual": {
+            "x": 41,
+            "y": 32,
+            "width": 24,
+            "height": 5
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "both-axis-cycle",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-31-both-axis-cycle",
+        "processId": 7754,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 7,
+        "matchedSamples": 7,
+        "maximumChannelError": 0,
+        "pngSha256": "247da893ff5095e51950e24a51d3912df73111122b452ed333f464ea7b6a1fec",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              60
+            ],
+            "pixel": [
+              237,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "hero",
+            "css": [
+              20,
+              12
+            ],
+            "pixel": [
+              53,
+              32
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "side",
+            "css": [
+              53,
+              12
+            ],
+            "pixel": [
+              140,
+              32
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "footer",
+            "css": [
+              20,
+              28
+            ],
+            "pixel": [
+              53,
+              74
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "utility",
+            "css": [
+              53,
+              28
+            ],
+            "pixel": [
+              140,
+              74
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "extra",
+            "css": [
+              20,
+              34
+            ],
+            "pixel": [
+              53,
+              90
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          },
+          {
+            "id": "spare",
+            "css": [
+              53,
+              34
+            ],
+            "pixel": [
+              140,
+              90
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-31-both-axis-cycle.log"
+    },
+    {
+      "index": 32,
+      "sceneId": "row-cycle-from-first-implicit",
+      "outcome": "success",
+      "boxes": 6,
+      "frames": 6,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "row-cycle-from-first-implicit",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "row-a",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 46,
+            "height": 17
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 46,
+            "height": 17
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "row-b",
+          "expected": {
+            "x": 0,
+            "y": 17,
+            "width": 46,
+            "height": 19
+          },
+          "actual": {
+            "x": 0,
+            "y": 17,
+            "width": 46,
+            "height": 19
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "row-c",
+          "expected": {
+            "x": 0,
+            "y": 36,
+            "width": 46,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 36,
+            "width": 46,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 5,
+          "nodeName": "row-d",
+          "expected": {
+            "x": 0,
+            "y": 42,
+            "width": 46,
+            "height": 8
+          },
+          "actual": {
+            "x": 0,
+            "y": 42,
+            "width": 46,
+            "height": 8
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 6,
+          "nodeName": "row-e",
+          "expected": {
+            "x": 0,
+            "y": 50,
+            "width": 46,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 50,
+            "width": 46,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "row-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-32-row-cycle-from-first-implicit",
+        "processId": 7828,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 6,
+        "matchedSamples": 6,
+        "maximumChannelError": 0,
+        "pngSha256": "ff6c5e10777565ad9997d8df26a51a0d7ea9315f78102c6b897f752ced8314a1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              90,
+              70
+            ],
+            "pixel": [
+              237,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "row-a",
+            "css": [
+              10,
+              8
+            ],
+            "pixel": [
+              27,
+              22
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "row-b",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "row-c",
+            "css": [
+              10,
+              38
+            ],
+            "pixel": [
+              27,
+              101
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          },
+          {
+            "id": "row-d",
+            "css": [
+              10,
+              45
+            ],
+            "pixel": [
+              27,
+              119
+            ],
+            "rgba": [
+              247,
+              107,
+              21,
+              255
+            ]
+          },
+          {
+            "id": "row-e",
+            "css": [
+              10,
+              53
+            ],
+            "pixel": [
+              27,
+              140
+            ],
+            "rgba": [
+              0,
+              162,
+              199,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-32-row-cycle-from-first-implicit.log"
+    },
+    {
+      "index": 33,
+      "sceneId": "column-cycle-from-first-implicit",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "column-cycle-from-first-implicit",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "column-left",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 44,
+            "height": 26
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 44,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "column-middle",
+          "expected": {
+            "x": 44,
+            "y": 0,
+            "width": 34,
+            "height": 26
+          },
+          "actual": {
+            "x": 44,
+            "y": 0,
+            "width": 34,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "column-right",
+          "expected": {
+            "x": 78,
+            "y": 0,
+            "width": 10,
+            "height": 26
+          },
+          "actual": {
+            "x": 78,
+            "y": 0,
+            "width": 10,
+            "height": 26
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "column-cycle-from-first-implicit",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-33-column-cycle-from-first-implicit",
+        "processId": 7884,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "94606de9b6a206e6765496d70ec2373d847a747164f85719691e08afffe534c1",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              95,
+              70
+            ],
+            "pixel": [
+              250,
+              185
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right",
+            "css": [
+              82,
+              5
+            ],
+            "pixel": [
+              216,
+              14
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-33-column-cycle-from-first-implicit.log"
+    },
+    {
+      "index": 34,
+      "sceneId": "authored-tracks-exceed-area",
+      "outcome": "success",
+      "boxes": 3,
+      "frames": 3,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "authored-tracks-exceed-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "exceed-top",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 37,
+            "height": 15
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 37,
+            "height": 15
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "exceed-bottom",
+          "expected": {
+            "x": 0,
+            "y": 15,
+            "width": 37,
+            "height": 16
+          },
+          "actual": {
+            "x": 0,
+            "y": 15,
+            "width": 37,
+            "height": 16
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "authored-tracks-exceed-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-34-authored-tracks-exceed-area",
+        "processId": 7947,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ef5bf052e121de7636ccbe45faa8ffececdc05d7e98a5c6e6770e8d9dbaf63",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "exceed-top",
+            "css": [
+              10,
+              5
+            ],
+            "pixel": [
+              27,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "exceed-bottom",
+            "css": [
+              10,
+              20
+            ],
+            "pixel": [
+              27,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-34-authored-tracks-exceed-area.log"
+    },
+    {
+      "index": 35,
+      "sceneId": "row-cycle-continues-after-area",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "row-cycle-continues-after-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "phase-row-known",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "phase-row-area",
+          "expected": {
+            "x": 0,
+            "y": 20,
+            "width": 30,
+            "height": 6
+          },
+          "actual": {
+            "x": 0,
+            "y": 20,
+            "width": 30,
+            "height": 6
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "phase-row-late",
+          "expected": {
+            "x": 0,
+            "y": 26,
+            "width": 30,
+            "height": 8
+          },
+          "actual": {
+            "x": 0,
+            "y": 26,
+            "width": 30,
+            "height": 8
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "row-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-35-row-cycle-continues-after-area",
+        "processId": 8010,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "ef20cae48e0e59f8eeaf11891be87a9f2963aa955d562982409f3e97cf6da100",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              10,
+              22
+            ],
+            "pixel": [
+              27,
+              59
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              10,
+              30
+            ],
+            "pixel": [
+              27,
+              80
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-35-row-cycle-continues-after-area.log"
+    },
+    {
+      "index": 36,
+      "sceneId": "column-cycle-continues-after-area",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "column-cycle-continues-after-area",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 80
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "phase-column-known",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 30
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 20,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "phase-column-area",
+          "expected": {
+            "x": 20,
+            "y": 0,
+            "width": 5,
+            "height": 30
+          },
+          "actual": {
+            "x": 20,
+            "y": 0,
+            "width": 5,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "phase-column-late",
+          "expected": {
+            "x": 25,
+            "y": 0,
+            "width": 7,
+            "height": 30
+          },
+          "actual": {
+            "x": 25,
+            "y": 0,
+            "width": 7,
+            "height": 30
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "column-cycle-continues-after-area",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-36-column-cycle-continues-after-area",
+        "processId": 8068,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "e7ec743eff0d85847f01a4110cd752d40dfcb733e507dab055849e4efef8d086",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              60
+            ],
+            "pixel": [
+              211,
+              158
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "known",
+            "css": [
+              10,
+              10
+            ],
+            "pixel": [
+              27,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "area",
+            "css": [
+              22,
+              10
+            ],
+            "pixel": [
+              59,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "late",
+            "css": [
+              28,
+              10
+            ],
+            "pixel": [
+              74,
+              27
+            ],
+            "rgba": [
+              142,
+              78,
+              198,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-36-column-cycle-continues-after-area.log"
+    },
+    {
+      "index": 37,
+      "sceneId": "typed-area-minmax-row",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "typed-area-minmax-row",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 90
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 90
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "typed-area-minmax-row-first",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 10
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "typed-area-minmax-row-second",
+          "expected": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 10,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "typed-area-minmax-row-third",
+          "expected": {
+            "x": 0,
+            "y": 50,
+            "width": 100,
+            "height": 40
+          },
+          "actual": {
+            "x": 0,
+            "y": 50,
+            "width": 100,
+            "height": 40
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "typed-area-minmax-row",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-37-typed-area-minmax-row",
+        "processId": 8136,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "560076367c3f1f58104b45dc85cabd29e1917aed90486869eaf38d8fbdad475d",
+        "samples": [
+          {
+            "id": "first-row",
+            "css": [
+              50,
+              5
+            ],
+            "pixel": [
+              132,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "second-row",
+            "css": [
+              50,
+              20
+            ],
+            "pixel": [
+              132,
+              53
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "third-row",
+            "css": [
+              50,
+              60
+            ],
+            "pixel": [
+              132,
+              158
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-37-typed-area-minmax-row.log"
+    },
+    {
+      "index": 38,
+      "sceneId": "typed-area-percentage-column",
+      "outcome": "success",
+      "boxes": 4,
+      "frames": 4,
+      "comparisons": [
+        {
+          "nodeId": 1,
+          "nodeName": "typed-area-percentage-column",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 100,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 2,
+          "nodeName": "typed-area-percentage-column-left",
+          "expected": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 20
+          },
+          "actual": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 3,
+          "nodeName": "typed-area-percentage-column-middle",
+          "expected": {
+            "x": 10,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "actual": {
+            "x": 10,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        },
+        {
+          "nodeId": 4,
+          "nodeName": "typed-area-percentage-column-right",
+          "expected": {
+            "x": 35,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "actual": {
+            "x": 35,
+            "y": 0,
+            "width": 25,
+            "height": 20
+          },
+          "maximumErrorCssPx": 0
+        }
+      ],
+      "maximumGeometryErrorCssPx": 0,
+      "pixel": {
+        "status": "matched",
+        "scene": "typed-area-percentage-column",
+        "runID": "c1133-matrix-20261031T075025965Z-f6357ddc-38-typed-area-percentage-column",
+        "processId": 8198,
+        "markerPrefix": "C1133",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "6e2d35f7eefd19303431288e49697424d796b6a7256bcc36b188c7f261fa5b15",
+        "samples": [
+          {
+            "id": "background",
+            "css": [
+              80,
+              10
+            ],
+            "pixel": [
+              211,
+              27
+            ],
+            "rgba": [
+              16,
+              24,
+              32,
+              255
+            ]
+          },
+          {
+            "id": "left-column",
+            "css": [
+              5,
+              10
+            ],
+            "pixel": [
+              14,
+              27
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "middle-column",
+            "css": [
+              15,
+              10
+            ],
+            "pixel": [
+              40,
+              27
+            ],
+            "rgba": [
+              48,
+              164,
+              108,
+              255
+            ]
+          },
+          {
+            "id": "right-column",
+            "css": [
+              40,
+              10
+            ],
+            "pixel": [
+              106,
+              27
+            ],
+            "rgba": [
+              62,
+              99,
+              221,
+              255
+            ]
+          }
+        ]
+      },
+      "logPath": "runtime-38-typed-area-percentage-column.log"
+    }
+  ],
+  "interpretation": "Android API 37 AVD, SwiftShader software renderer; this is fixture runtime evidence and does not establish physical-device, hardware-GPU, WPT, or general CSS Grid support."
+}

@@ -513,13 +513,30 @@ fn project_grid_layout_with_reservations(
             | ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
             | ComputedStyleProfile::RuntimeBlockFlexGridTrackSizingV1
     );
+    let allow_template_area_track_sizing = profile
+        == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
+        && grid.template_areas.is_some();
     let mut auto_rows = if sparse_row || dense_auto_placement {
-        project_auto_rows(node, &grid.auto_rows, profile, math, &mut reserve)?
+        project_auto_rows(
+            node,
+            &grid.auto_rows,
+            profile,
+            allow_template_area_track_sizing,
+            math,
+            &mut reserve,
+        )?
     } else {
         GridAutoRows::Auto
     };
     let mut auto_columns = if dense_auto_placement {
-        project_auto_columns(node, &grid.auto_columns, profile, math, &mut reserve)?
+        project_auto_columns(
+            node,
+            &grid.auto_columns,
+            profile,
+            allow_template_area_track_sizing,
+            math,
+            &mut reserve,
+        )?
     } else {
         GridAutoColumns::Auto
     };
@@ -998,6 +1015,7 @@ fn project_auto_columns(
     node: NodeId,
     auto_columns: &ComputedCssGridAutoColumns,
     profile: ComputedStyleProfile,
+    allow_template_area_track_sizing: bool,
     math: &mut CssMathProjector,
     reserve: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
 ) -> Result<GridAutoColumns, StyleLayoutError> {
@@ -1007,9 +1025,10 @@ fn project_auto_columns(
         ComputedCssGridAutoColumns::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 && !tracks.is_empty()
-                && tracks
-                    .iter()
-                    .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
+                && (allow_template_area_track_sizing
+                    || tracks
+                        .iter()
+                        .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_)))) =>
         {
             project_tracks(
                 tracks,
@@ -1038,7 +1057,7 @@ fn project_auto_columns(
             Err(StyleLayoutError::UnsupportedComputedValue {
                 node,
                 property: "grid-auto-columns",
-                value: "track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다".to_owned(),
+                value: "track-size 목록은 C11.4 track-sizing 또는 area-backed C11.3.3 template profile에서만 지원됩니다".to_owned(),
             })
         }
         ComputedCssGridAutoColumns::Unsupported(value) => {
@@ -1055,6 +1074,7 @@ fn project_auto_rows(
     node: NodeId,
     auto_rows: &ComputedCssGridAutoRows,
     profile: ComputedStyleProfile,
+    allow_template_area_track_sizing: bool,
     math: &mut CssMathProjector,
     reserve: &mut impl FnMut(&mut Vec<GridTrackSize>, usize) -> Result<(), ()>,
 ) -> Result<GridAutoRows, StyleLayoutError> {
@@ -1064,9 +1084,10 @@ fn project_auto_rows(
         ComputedCssGridAutoRows::TrackList(tracks)
             if profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1
                 && !tracks.is_empty()
-                && tracks
-                    .iter()
-                    .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_))) =>
+                && (allow_template_area_track_sizing
+                    || tracks
+                        .iter()
+                        .all(|track| matches!(track, ComputedCssGridTrackSize::LengthPx(_)))) =>
         {
             project_tracks(
                 tracks,
@@ -1094,7 +1115,7 @@ fn project_auto_rows(
         ComputedCssGridAutoRows::TrackList(_) => Err(StyleLayoutError::UnsupportedComputedValue {
             node,
             property: "grid-auto-rows",
-            value: "track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다".to_owned(),
+            value: "track-size 목록은 C11.4 track-sizing 또는 area-backed C11.3.3 template profile에서만 지원됩니다".to_owned(),
         }),
         ComputedCssGridAutoRows::Unsupported(value) => {
             Err(StyleLayoutError::UnsupportedComputedValue {

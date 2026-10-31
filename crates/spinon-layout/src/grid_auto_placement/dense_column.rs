@@ -722,11 +722,11 @@ fn expand_tracks(
             if !tracks.is_empty()
                 && match mode {
                     AutoTrackExpansionMode::Unsupported => false,
-                    AutoTrackExpansionMode::FixedPxList
-                    | AutoTrackExpansionMode::TemplateAreaImplicit => tracks
+                    AutoTrackExpansionMode::FixedPxList => tracks
                         .iter()
                         .all(|track| matches!(track, GridTrackSize::LengthPx(_))),
-                    AutoTrackExpansionMode::Intrinsic => true,
+                    AutoTrackExpansionMode::TemplateAreaImplicit
+                    | AutoTrackExpansionMode::Intrinsic => true,
                 } =>
         {
             TrackPattern::List(tracks)
@@ -735,12 +735,12 @@ fn expand_tracks(
             return if rows {
                 Err(LayoutError::UnsupportedGridAutoRows {
                     node,
-                    reason: "grid-auto-rows track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다",
+                    reason: "grid-auto-rows track-size 목록이 비어 있거나 placement profile에서 지원되지 않습니다",
                 })
             } else {
                 Err(LayoutError::UnsupportedGridAutoColumns {
                     node,
-                    reason: "grid-auto-columns track-size 목록은 C11.4 track-sizing profile에서만 지원됩니다",
+                    reason: "grid-auto-columns track-size 목록이 비어 있거나 placement profile에서 지원되지 않습니다",
                 })
             };
         }
