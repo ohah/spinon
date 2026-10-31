@@ -1,6 +1,6 @@
 # C11.3.3 area-backed `fit-content()` cap와 text intrinsic 통합
 
-**상태:** Chrome 156 입력, 별도 fixture/runtime adapter, 플랫폼 allowlist와 캡처 경로가 구현됐다. CSS Grid 규격에 맞춰 area-created track을 `TemplateGrid`의 explicit second column으로 분류한다. source commit `b815f483a253072cbbca1c0cd473d519fc95a220`에서 Android API 37 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator 새 scene geometry 및 3/3 surface 표본, 기존 39-scene·126-node C11.3.3 matrix가 모두 통과했다. 같은 source의 feature-off/opt-in static archive 경계, 구현/runtime 적대 검토 20개, 기본 layout 320개와 C11.4 opt-in layout 371개, fixture Node 41개 검사가 통과했다. PR diff 검토 30개와 PR/merge가 남아 있다. C11.3.3 candidate, C11, 공식 완료 `72/213`은 미완료로 유지한다.
+**상태:** Chrome 156 입력, 별도 fixture/runtime adapter, 플랫폼 allowlist와 캡처 경로가 구현됐다. CSS Grid 규격에 맞춰 area-created track을 `TemplateGrid`의 explicit second column으로 분류한다. source commit `b815f483a253072cbbca1c0cd473d519fc95a220`에서 Android API 37 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator 새 scene geometry 및 3/3 surface 표본, 기존 39-scene·126-node C11.3.3 matrix가 모두 통과했다. 같은 source의 feature-off/opt-in static archive 경계, 구현/runtime 적대 검토 20개, 기본 layout 320개와 C11.4 opt-in layout 371개, fixture Node 41개 검사가 통과했다. [PR #916 실제 diff 검토 30개](../spec/internal/evidence/c11-3-3-template-area-fit-content-cap-runtime-2026-10-31/pr-diff-review-30.md)는 통과했고 Rebase and merge가 남아 있다. C11.3.3 candidate, C11, 공식 완료 `72/213`은 미완료로 유지한다.
 
 ## 결손과 목표
 
