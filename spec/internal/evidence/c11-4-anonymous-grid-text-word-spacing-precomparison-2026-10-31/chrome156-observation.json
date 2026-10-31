@@ -1,0 +1,371 @@
+{
+  "viewport": {
+    "width": 1280,
+    "height": 633
+  },
+  "fontLoaded": true,
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "dpr": 1,
+  "observations": [
+    {
+      "id": "word-spacing-normal-two-words-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "20px",
+      "rect": {
+        "x": 21,
+        "y": 159.78125,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "word-spacing-normal-two-words-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "max",
+      "columns": "50px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 159.78125,
+        "width": 50,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-normal-collapsed-three-words-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columns": "20px",
+      "rows": "30px",
+      "rect": {
+        "x": 858.328125,
+        "y": 159.78125,
+        "width": 20,
+        "height": 30
+      }
+    },
+    {
+      "id": "word-spacing-normal-collapsed-three-words-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columns": "80px",
+      "rows": "10px",
+      "rect": {
+        "x": 21,
+        "y": 242.78125,
+        "width": 80,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-normal-single-word-min-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 242.78125,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-normal-single-word-max-content",
+      "authoredWordSpacing": "normal",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "max",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 858.328125,
+        "y": 242.78125,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-zero-two-words-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "20px",
+      "rect": {
+        "x": 21,
+        "y": 308.375,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "word-spacing-zero-two-words-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX XX",
+      "track": "max",
+      "columns": "50px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 308.375,
+        "width": 50,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-zero-collapsed-three-words-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columns": "20px",
+      "rows": "30px",
+      "rect": {
+        "x": 858.328125,
+        "y": 308.375,
+        "width": 20,
+        "height": 30
+      }
+    },
+    {
+      "id": "word-spacing-zero-collapsed-three-words-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columns": "80px",
+      "rows": "10px",
+      "rect": {
+        "x": 21,
+        "y": 391.375,
+        "width": 80,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-zero-single-word-min-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 391.375,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-zero-single-word-max-content",
+      "authoredWordSpacing": "0px",
+      "computedWordSpacing": "0px",
+      "text": "XX",
+      "track": "max",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 858.328125,
+        "y": 391.375,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-two-words-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "20px",
+      "rect": {
+        "x": 21,
+        "y": 456.96875,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-two-words-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX XX",
+      "track": "max",
+      "columns": "49px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 456.96875,
+        "width": 49,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-collapsed-three-words-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columns": "20px",
+      "rows": "30px",
+      "rect": {
+        "x": 858.328125,
+        "y": 456.96875,
+        "width": 20,
+        "height": 30
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-collapsed-three-words-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columns": "78px",
+      "rows": "10px",
+      "rect": {
+        "x": 21,
+        "y": 539.96875,
+        "width": 78,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-single-word-min-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 539.96875,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-minus-one-single-word-max-content",
+      "authoredWordSpacing": "-1px",
+      "computedWordSpacing": "-1px",
+      "text": "XX",
+      "track": "max",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 858.328125,
+        "y": 539.96875,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-two-words-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "20px",
+      "rect": {
+        "x": 21,
+        "y": 605.5625,
+        "width": 20,
+        "height": 20
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-two-words-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX XX",
+      "track": "max",
+      "columns": "51px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 605.5625,
+        "width": 51,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-collapsed-three-words-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX   XX XX  ",
+      "track": "min",
+      "columns": "20px",
+      "rows": "30px",
+      "rect": {
+        "x": 858.328125,
+        "y": 605.5625,
+        "width": 20,
+        "height": 30
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-collapsed-three-words-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX   XX XX  ",
+      "track": "max",
+      "columns": "82px",
+      "rows": "10px",
+      "rect": {
+        "x": 21,
+        "y": 688.5625,
+        "width": 82,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-single-word-min-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX",
+      "track": "min",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 439.65625,
+        "y": 688.5625,
+        "width": 20,
+        "height": 10
+      }
+    },
+    {
+      "id": "word-spacing-plus-one-single-word-max-content",
+      "authoredWordSpacing": "1px",
+      "computedWordSpacing": "1px",
+      "text": "XX",
+      "track": "max",
+      "columns": "20px",
+      "rows": "10px",
+      "rect": {
+        "x": 858.328125,
+        "y": 688.5625,
+        "width": 20,
+        "height": 10
+      }
+    }
+  ]
+}

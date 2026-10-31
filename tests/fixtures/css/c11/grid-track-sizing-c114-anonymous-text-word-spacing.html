@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid text computed word-spacing precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 400;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 16px; color: #162333; font: 14px/1.4 system-ui, sans-serif; }
+    h1 { margin: 0 0 12px; font-size: 20px; }
+    #summary { white-space: pre-wrap; font: 12px/1.35 ui-monospace, monospace; }
+    #cases { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 8px; }
+    .case { min-width: 0; padding: 4px; border: 1px solid #8390a0; }
+    .label { max-width: 240px; margin-bottom: 4px; overflow-wrap: anywhere; font: 10px/12px ui-monospace, monospace; }
+    .grid {
+      display: inline-grid;
+      grid-template-columns: var(--track);
+      grid-template-rows: auto;
+      width: var(--track);
+      height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      gap: 0;
+      align-items: start;
+      align-content: start;
+      justify-content: start;
+      font-family: Ahem;
+      font-size: 10px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 10px;
+      white-space: normal;
+      word-break: normal;
+      direction: ltr;
+      writing-mode: horizontal-tb;
+      letter-spacing: normal;
+      text-indent: 0;
+      color: #e5484d;
+      background: #101820;
+    }
+    .grid[data-track="min"] { --track: min-content; }
+    .grid[data-track="max"] { --track: max-content; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>C11.4 anonymous Grid text computed <code>word-spacing</code></h1>
+    <p>Chrome 156 · Ahem 10px/400 · white-space normal · horizontal-tb/LTR.</p>
+    <pre id="summary">Ahem font loading…</pre>
+    <section id="cases"></section>
+  </main>
+  <script>
+    const values = [
+      { id: "normal", css: "normal" },
+      { id: "zero", css: "0px" },
+      { id: "minus-one", css: "-1px" },
+      { id: "plus-one", css: "1px" },
+    ];
+    const content = [
+      { id: "two-words", text: "XX XX" },
+      { id: "collapsed-three-words", text: "XX   XX XX  " },
+      { id: "single-word", text: "XX" },
+    ];
+    const cases = [];
+    for (const value of values) {
+      for (const text of content) {
+        for (const track of ["min", "max"]) {
+          const id = `word-spacing-${value.id}-${text.id}-${track}-content`;
+          const card = document.createElement("div");
+          card.className = "case";
+          card.dataset.caseId = id;
+          const label = document.createElement("div");
+          label.className = "label";
+          label.textContent = `${id} · ${JSON.stringify(text.text)}`;
+          const grid = document.createElement("div");
+          grid.className = "grid";
+          grid.dataset.track = track;
+          grid.style.wordSpacing = value.css;
+          grid.textContent = text.text;
+          card.append(label, grid);
+          document.querySelector("#cases").append(card);
+          cases.push({ id, authored: value.css, text: text.text, track, grid });
+        }
+      }
+    }
+    document.fonts.load("10px Ahem").then(() => {
+      const fontLoaded = document.fonts.check("10px Ahem");
+      const observations = cases.map(({ id, authored, text, track, grid }) => {
+        const style = getComputedStyle(grid);
+        const rect = grid.getBoundingClientRect();
+        return {
+          id,
+          authoredWordSpacing: authored,
+          computedWordSpacing: style.wordSpacing,
+          text,
+          track,
+          columns: style.gridTemplateColumns,
+          rows: style.gridTemplateRows,
+          rect: { x: rect.x, y: rect.y, width: rect.width, height: rect.height },
+        };
+      });
+      window.__wordSpacingPrecomparison = { fontLoaded, userAgent: navigator.userAgent, dpr: devicePixelRatio, observations };
+      document.querySelector("#summary").textContent = `Ahem loaded · ${observations.length} scenes · Chrome 156 · CSSOM and Grid tracks recorded.`;
+    });
+  </script>
+</body>
+</html>
