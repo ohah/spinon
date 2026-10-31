@@ -1038,7 +1038,16 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive",
     "anonymous-pre-tab-forced-break", "anonymous-pre-tab-trailing",
     "anonymous-pre-tab-min-content", "anonymous-pre-tab-fixed-width-nowrap",
-    "anonymous-pre-tab-size-2-negative",
+    "anonymous-pre-tab-size-2-two-columns", "anonymous-pre-tab-size-2-leading",
+    "anonymous-pre-tab-size-2-exact-stop", "anonymous-pre-tab-size-2-consecutive",
+    "anonymous-pre-tab-size-2-reset", "anonymous-pre-tab-size-2-crlf-reset",
+    "anonymous-pre-tab-size-2-trailing", "anonymous-pre-tab-size-2-min-content",
+    "anonymous-pre-tab-size-2-fixed-overflow",
+    "anonymous-pre-tab-size-1-leading", "anonymous-pre-tab-size-1-exact-stop",
+    "anonymous-pre-tab-size-4-leading", "anonymous-pre-tab-size-4-exact-stop",
+    "anonymous-pre-tab-size-0-negative",
+    "anonymous-pre-tab-size-fractional-negative",
+    "anonymous-pre-tab-size-length-negative",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -1706,7 +1715,9 @@ private func c114CalcNeighborExpectedRejection(_ sceneID: String)
         return ("unsupported_computed_value", "grid-template-columns", "1")
     case "calc-neighbor-col-max-content":
         return ("invalid_grid_track_list", "grid-template-columns", "1")
-    case "anonymous-pre-tab-size-2-negative":
+    case "anonymous-pre-tab-size-0-negative",
+        "anonymous-pre-tab-size-fractional-negative",
+        "anonymous-pre-tab-size-length-negative":
         return ("unsupported_c114_anonymous_text_style", "tab-size", "1")
     default:
         return nil
@@ -2388,6 +2399,19 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "anonymous-pre-tab-trailing" { return "width=80,height=10" }
     if sceneID == "anonymous-pre-tab-min-content" { return "width=100,height=10" }
     if sceneID == "anonymous-pre-tab-fixed-width-nowrap" { return "width=25,height=10" }
+    if sceneID == "anonymous-pre-tab-size-2-two-columns"
+        || sceneID == "anonymous-pre-tab-size-2-min-content" { return "width=60,height=10" }
+    if sceneID == "anonymous-pre-tab-size-2-leading" { return "width=30,height=10" }
+    if sceneID == "anonymous-pre-tab-size-2-exact-stop"
+        || sceneID == "anonymous-pre-tab-size-2-consecutive" { return "width=70,height=10" }
+    if sceneID == "anonymous-pre-tab-size-2-reset" { return "width=60,height=20" }
+    if sceneID == "anonymous-pre-tab-size-2-crlf-reset" { return "width=30,height=20" }
+    if sceneID == "anonymous-pre-tab-size-2-trailing" { return "width=40,height=10" }
+    if sceneID == "anonymous-pre-tab-size-2-fixed-overflow" { return "width=25,height=10" }
+    if sceneID == "anonymous-pre-tab-size-1-leading" { return "width=20,height=10" }
+    if sceneID == "anonymous-pre-tab-size-1-exact-stop" { return "width=30,height=10" }
+    if sceneID == "anonymous-pre-tab-size-4-leading" { return "width=50,height=10" }
+    if sceneID == "anonymous-pre-tab-size-4-exact-stop" { return "width=90,height=10" }
     if sceneID == "anonymous-pre-wrap-min-content-spaces"
         || sceneID == "anonymous-pre-wrap-forced-break" { return "width=20,height=20" }
     if sceneID == "anonymous-pre-wrap-soft-wrap" { return "width=25,height=20" }
@@ -3203,21 +3227,46 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
     case "anonymous-pre-fixed-width-nowrap":
         expected = (50, 10, 25, 10, "Pre", [(2, "XX XX")])
     case "anonymous-pre-tab-max-content":
-        expected = (100, 10, 100, 10, "Pre", [(2, "XX\tXX")])
+        expected = (100, 10, 100, 10, "PreWithTabSize(Eight)", [(2, "XX\tXX")])
     case "anonymous-pre-tab-leading":
-        expected = (90, 10, 90, 10, "Pre", [(2, "\tX")])
+        expected = (90, 10, 90, 10, "PreWithTabSize(Eight)", [(2, "\tX")])
     case "anonymous-pre-tab-exact-stop":
-        expected = (170, 10, 170, 10, "Pre", [(2, "XXXXXXXX\tX")])
+        expected = (170, 10, 170, 10, "PreWithTabSize(Eight)", [(2, "XXXXXXXX\tX")])
     case "anonymous-pre-tab-consecutive":
-        expected = (170, 10, 170, 10, "Pre", [(2, "XX\t\tX")])
+        expected = (170, 10, 170, 10, "PreWithTabSize(Eight)", [(2, "XX\t\tX")])
     case "anonymous-pre-tab-forced-break":
-        expected = (100, 20, 100, 20, "Pre", [(2, "XX\tXX\nX\tX")])
+        expected = (100, 20, 100, 20, "PreWithTabSize(Eight)", [(2, "XX\tXX\nX\tX")])
     case "anonymous-pre-tab-trailing":
-        expected = (80, 10, 80, 10, "Pre", [(2, "XX\t")])
+        expected = (80, 10, 80, 10, "PreWithTabSize(Eight)", [(2, "XX\t")])
     case "anonymous-pre-tab-min-content":
-        expected = (100, 10, 100, 10, "Pre", [(2, "XX\tXX")])
+        expected = (100, 10, 100, 10, "PreWithTabSize(Eight)", [(2, "XX\tXX")])
     case "anonymous-pre-tab-fixed-width-nowrap":
-        expected = (100, 10, 25, 10, "Pre", [(2, "XX\tXX")])
+        expected = (100, 10, 25, 10, "PreWithTabSize(Eight)", [(2, "XX\tXX")])
+    case "anonymous-pre-tab-size-2-two-columns",
+         "anonymous-pre-tab-size-2-min-content":
+        expected = (60, 10, 60, 10, "PreWithTabSize(Two)", [(2, "XX\tXX")])
+    case "anonymous-pre-tab-size-2-leading":
+        expected = (30, 10, 30, 10, "PreWithTabSize(Two)", [(2, "\tX")])
+    case "anonymous-pre-tab-size-2-exact-stop":
+        expected = (70, 10, 70, 10, "PreWithTabSize(Two)", [(2, "XXXX\tX")])
+    case "anonymous-pre-tab-size-2-consecutive":
+        expected = (70, 10, 70, 10, "PreWithTabSize(Two)", [(2, "XX\t\tX")])
+    case "anonymous-pre-tab-size-2-reset":
+        expected = (60, 20, 60, 20, "PreWithTabSize(Two)", [(2, "XX\tXX\nX\tX")])
+    case "anonymous-pre-tab-size-2-crlf-reset":
+        expected = (30, 20, 30, 20, "PreWithTabSize(Two)", [(2, "X\t\r\nX\tX")])
+    case "anonymous-pre-tab-size-2-trailing":
+        expected = (40, 10, 40, 10, "PreWithTabSize(Two)", [(2, "XX\t")])
+    case "anonymous-pre-tab-size-2-fixed-overflow":
+        expected = (60, 10, 25, 10, "PreWithTabSize(Two)", [(2, "XX\tXX")])
+    case "anonymous-pre-tab-size-1-leading":
+        expected = (20, 10, 20, 10, "PreWithTabSize(One)", [(2, "\tX")])
+    case "anonymous-pre-tab-size-1-exact-stop":
+        expected = (30, 10, 30, 10, "PreWithTabSize(One)", [(2, "X\tX")])
+    case "anonymous-pre-tab-size-4-leading":
+        expected = (50, 10, 50, 10, "PreWithTabSize(Four)", [(2, "\tX")])
+    case "anonymous-pre-tab-size-4-exact-stop":
+        expected = (90, 10, 90, 10, "PreWithTabSize(Four)", [(2, "XXXX\tX")])
     case "anonymous-pre-wrap-max-content-spaces":
         expected = (60, 10, 60, 10, "PreWrap", [(2, "XX  XX")])
     case "anonymous-pre-wrap-comment-split-max-content":
@@ -3327,17 +3376,67 @@ private func c114AnonymousTabNormalizationMatches(
         source = "XX\t"
         normalized = "XX      "
         tabAdvances = [6]
+    case "anonymous-pre-tab-size-2-two-columns", "anonymous-pre-tab-size-2-min-content",
+         "anonymous-pre-tab-size-2-fixed-overflow":
+        source = "XX\tXX"
+        normalized = "XX  XX"
+        tabAdvances = [2]
+    case "anonymous-pre-tab-size-2-leading":
+        source = "\tX"
+        normalized = "  X"
+        tabAdvances = [2]
+    case "anonymous-pre-tab-size-2-exact-stop":
+        source = "XXXX\tX"
+        normalized = "XXXX  X"
+        tabAdvances = [2]
+    case "anonymous-pre-tab-size-2-consecutive":
+        source = "XX\t\tX"
+        normalized = "XX    X"
+        tabAdvances = [2, 2]
+    case "anonymous-pre-tab-size-2-reset":
+        source = "XX\tXX\nX\tX"
+        normalized = "XX  XX\nX X"
+        tabAdvances = [2, 1]
+    case "anonymous-pre-tab-size-2-crlf-reset":
+        source = "X\t\r\nX\tX"
+        normalized = "X \nX X"
+        tabAdvances = [1, 1]
+    case "anonymous-pre-tab-size-2-trailing":
+        source = "XX\t"
+        normalized = "XX  "
+        tabAdvances = [2]
+    case "anonymous-pre-tab-size-1-leading":
+        source = "\tX"
+        normalized = " X"
+        tabAdvances = [1]
+    case "anonymous-pre-tab-size-1-exact-stop":
+        source = "X\tX"
+        normalized = "X X"
+        tabAdvances = [1]
+    case "anonymous-pre-tab-size-4-leading":
+        source = "\tX"
+        normalized = "    X"
+        tabAdvances = [4]
+    case "anonymous-pre-tab-size-4-exact-stop":
+        source = "XXXX\tX"
+        normalized = "XXXX    X"
+        tabAdvances = [4]
     default:
         return false
     }
     guard textLayout["text"] as? String == normalized,
           let ranges = textLayout["normalizedSources"] as? [[String: Any]],
           ranges.count == source.utf16.count else { return false }
+    let sourceUnits = Array(source.utf16)
     var outputOffset = 0
     var tabIndex = 0
-    for (index, unit) in source.utf16.enumerated() {
+    for (index, unit) in sourceUnits.enumerated() {
+        var outputStart = outputOffset
         let outputLength: Int
-        if unit == 0x0009 {
+        if unit == 0x000A, index > 0, sourceUnits[index - 1] == 0x000D {
+            outputStart -= 1
+            outputLength = 1
+        } else if unit == 0x0009 {
             guard tabIndex < tabAdvances.count else { return false }
             outputLength = tabAdvances[tabIndex]
             tabIndex += 1
@@ -3347,9 +3446,11 @@ private func c114AnonymousTabNormalizationMatches(
         let range = ranges[index]
         guard (range["node"] as? Int) == 2,
               (range["sourceUtf16"] as? [Int]) == [index, index + 1],
-              (range["paragraphUtf8"] as? [Int]) == [outputOffset, outputOffset + outputLength],
+              (range["paragraphUtf8"] as? [Int]) == [outputStart, outputStart + outputLength],
               (range["inlineAncestors"] as? [Int])?.isEmpty == true else { return false }
-        outputOffset += outputLength
+        if !(unit == 0x000A && index > 0 && sourceUnits[index - 1] == 0x000D) {
+            outputOffset += outputLength
+        }
     }
     return tabIndex == tabAdvances.count && outputOffset == normalized.utf8.count
 }
@@ -3442,6 +3543,79 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
         expectColumnContribution = false
         expectRowContribution = true
         expectedColumnKind = nil
+    case "anonymous-pre-tab-size-2-two-columns":
+        expectedColumns = [60]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-2-fixed-overflow":
+        expectedColumns = [25]
+        expectedRows = [10]
+        expectColumnContribution = false
+        expectRowContribution = true
+        expectedColumnKind = nil
+    case "anonymous-pre-tab-size-2-min-content":
+        expectedColumns = [60]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MinContent"
+    case "anonymous-pre-tab-size-2-leading":
+        expectedColumns = [30]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-2-exact-stop",
+         "anonymous-pre-tab-size-2-consecutive":
+        expectedColumns = [70]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-2-reset":
+        expectedColumns = [60]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-2-crlf-reset":
+        expectedColumns = [30]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-2-trailing":
+        expectedColumns = [40]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-1-leading":
+        expectedColumns = [20]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-1-exact-stop":
+        expectedColumns = [30]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-4-leading":
+        expectedColumns = [50]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-size-4-exact-stop":
+        expectedColumns = [90]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
     case "anonymous-pre-line-max-content",
          "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-forced-break":
         expectedColumns = [20]

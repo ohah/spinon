@@ -69,9 +69,32 @@ pub enum WhiteSpaceMode {
     Normal,
     NoWrap,
     Pre,
+    /// 제한된 `pre` tab profile에서 computed CSS `tab-size`를 전달합니다.
+    PreWithTabSize(TabSize),
     PreLine,
     PreWrap,
     BreakSpaces,
+}
+
+/// C11.4 익명 Grid `pre` fixture에서 허용하는 숫자 tab stop 배수입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum TabSize {
+    One,
+    Two,
+    Four,
+    #[default]
+    Eight,
+}
+
+impl TabSize {
+    pub(crate) fn spaces(self) -> usize {
+        match self {
+            Self::One => 1,
+            Self::Two => 2,
+            Self::Four => 4,
+            Self::Eight => 8,
+        }
+    }
 }
 
 /// C15.1에서 고정하는 단어 경계 profile입니다.

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "expectedSceneCount": 55,
+  "runCatalogMatches": true,
+  "runs": [
+    {
+      "target": "android-avd",
+      "evidenceDirectory": "android-avd-c114-anonymous-grid-text-android-avd-20261031T005435485Z-72d3f9e6",
+      "sceneCount": 55,
+      "positiveScenes": 52,
+      "expectedRejections": [
+        "anonymous-pre-tab-size-0-negative",
+        "anonymous-pre-tab-size-fractional-negative",
+        "anonymous-pre-tab-size-length-negative"
+      ],
+      "drawPresented": 52,
+      "maxSupersededRetries": 0,
+      "screenshotCount": 52,
+      "runtimeLogCount": 55,
+      "installedHashMatched": true,
+      "simulator": {
+        "serial": "emulator-5554",
+        "apiLevel": 37,
+        "abi": "arm64-v8a",
+        "model": "sdk_gphone64_arm64",
+        "apkSha256": "eff8873afb3199fe702463fab443ce43f943d771e6a0792bcdc811d2234e56d3"
+      },
+      "capturedSource": {
+        "commit": "15e9d642a3ed5217f73225ee72ea0c45611119ef",
+        "trackedDiffSha256": "be7ef6701d6a9efcfc8a52bf6153c6bf19ba37004ab664c63e905ad57662d908",
+        "sourceSnapshotSha256": "d27004c0a1e0cdd31a231e52da001df152a69d55f5c305b5f752085a08eda3fe"
+      }
+    },
+    {
+      "target": "ios-simulator",
+      "evidenceDirectory": "ios-simulator-c114-anonymous-grid-text-ios-simulator-20261031T005822343Z-c7eb33a7",
+      "sceneCount": 55,
+      "positiveScenes": 52,
+      "expectedRejections": [
+        "anonymous-pre-tab-size-0-negative",
+        "anonymous-pre-tab-size-fractional-negative",
+        "anonymous-pre-tab-size-length-negative"
+      ],
+      "drawPresented": 52,
+      "maxSupersededRetries": 0,
+      "screenshotCount": 52,
+      "runtimeLogCount": 55,
+      "installedHashMatched": true,
+      "simulator": {
+        "udid": "ACA7BF91-E2D5-4CF7-909A-08D1AD95FF3D",
+        "name": "iPhone 17 Pro",
+        "modelIdentifier": "iPhone18,1",
+        "runtime": "com.apple.CoreSimulator.SimRuntime.iOS-26-2",
+        "appSha256": "eee937030c7d3d2e624ba446be78098f3ededc6ea572b7b9070678ed7bcb0a95"
+      },
+      "capturedSource": {
+        "commit": "15e9d642a3ed5217f73225ee72ea0c45611119ef",
+        "trackedDiffSha256": "be7ef6701d6a9efcfc8a52bf6153c6bf19ba37004ab664c63e905ad57662d908",
+        "sourceSnapshotSha256": "d27004c0a1e0cdd31a231e52da001df152a69d55f5c305b5f752085a08eda3fe"
+      }
+    }
+  ],
+  "verified": true
+}

@@ -12,19 +12,33 @@ fn run_grid_scene(
     Vec<HostNodeHandle>,
     crate::LayoutOutput,
 ) {
+    run_grid_scene_with_style(
+        children,
+        width,
+        paragraph_style_with_white_space(white_space),
+        columns,
+        rows,
+    )
+}
+
+fn run_grid_scene_with_style(
+    children: &[Child<'_>],
+    width: f32,
+    paragraph_style: ParagraphStyle,
+    columns: Vec<GridTrackSize>,
+    rows: Vec<GridTrackSize>,
+) -> (
+    HostDocument,
+    HostNodeHandle,
+    Vec<HostNodeHandle>,
+    crate::LayoutOutput,
+) {
     let (document, root, child_handles, mut styles) = fixture(children, 10.0);
     let root_style = styles.get_mut(&root.id()).unwrap();
     root_style.width = LayoutDimension::Fixed(width);
     root_style.height = LayoutDimension::Auto;
     let snapshot = document.snapshot();
-    let input = input(
-        &snapshot,
-        root,
-        &styles,
-        paragraph_style_with_white_space(white_space),
-        columns,
-        rows,
-    );
+    let input = input(&snapshot, root, &styles, paragraph_style, columns, rows);
     let output = TaffyLayoutEngine
         .compute_with_text_layout_engine(&input, &ahem_engine())
         .unwrap();
@@ -568,6 +582,26 @@ fn anonymous_pre_preserves_repeated_spaces_in_max_content_contribution() {
         &[Child::Text("XX  XX")],
         20.0,
         crate::WhiteSpaceMode::Pre,
+        vec![GridTrackSize::MaxContent],
+        vec![GridTrackSize::Auto],
+    );
+    assert_text_intrinsic(&output, children[0].id(), (60.0, 60.0, 10.0, 10.0));
+    assert_frame(&output.frames, root.id(), (0.0, 0.0, 20.0, 10.0));
+    assert_frame(&output.frames, children[0].id(), (0.0, 0.0, 60.0, 10.0));
+    assert_grid_tracks(&output, root, &[60.0], &[10.0], [true, true]);
+}
+
+#[test]
+fn anonymous_pre_tab_size_applies_to_grid_text_intrinsics() {
+    let mut style = paragraph_style_with_white_space(crate::WhiteSpaceMode::PreWithTabSize(
+        crate::TabSize::Two,
+    ));
+    style.line_height_is_normal = false;
+    style.direction = crate::TextParagraphDirection::Ltr;
+    let (_document, root, children, output) = run_grid_scene_with_style(
+        &[Child::Text("XX\tXX")],
+        20.0,
+        style,
         vec![GridTrackSize::MaxContent],
         vec![GridTrackSize::Auto],
     );

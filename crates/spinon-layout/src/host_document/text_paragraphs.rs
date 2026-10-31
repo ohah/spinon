@@ -82,6 +82,7 @@ pub(super) fn collect(
                 WhiteSpaceMode::Normal
                     | WhiteSpaceMode::NoWrap
                     | WhiteSpaceMode::Pre
+                    | WhiteSpaceMode::PreWithTabSize(_)
                     | WhiteSpaceMode::PreLine
                     | WhiteSpaceMode::PreWrap
                     | WhiteSpaceMode::BreakSpaces

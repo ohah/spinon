@@ -997,7 +997,16 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive",
             "anonymous-pre-tab-forced-break", "anonymous-pre-tab-trailing",
             "anonymous-pre-tab-min-content", "anonymous-pre-tab-fixed-width-nowrap",
-            "anonymous-pre-tab-size-2-negative",
+            "anonymous-pre-tab-size-2-two-columns", "anonymous-pre-tab-size-2-leading",
+            "anonymous-pre-tab-size-2-exact-stop", "anonymous-pre-tab-size-2-consecutive",
+            "anonymous-pre-tab-size-2-reset", "anonymous-pre-tab-size-2-crlf-reset",
+            "anonymous-pre-tab-size-2-trailing", "anonymous-pre-tab-size-2-min-content",
+            "anonymous-pre-tab-size-2-fixed-overflow",
+            "anonymous-pre-tab-size-1-leading", "anonymous-pre-tab-size-1-exact-stop",
+            "anonymous-pre-tab-size-4-leading", "anonymous-pre-tab-size-4-exact-stop",
+            "anonymous-pre-tab-size-0-negative",
+            "anonymous-pre-tab-size-fractional-negative",
+            "anonymous-pre-tab-size-length-negative",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -4569,7 +4578,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return new String[] {"unsupported_computed_value", "grid-template-columns", "1"};
             case "calc-neighbor-col-max-content":
                 return new String[] {"invalid_grid_track_list", "grid-template-columns", "1"};
-            case "anonymous-pre-tab-size-2-negative":
+            case "anonymous-pre-tab-size-0-negative":
+            case "anonymous-pre-tab-size-fractional-negative":
+            case "anonymous-pre-tab-size-length-negative":
                 return new String[] {"unsupported_c114_anonymous_text_style", "tab-size", "1"};
             default:
                 return null;
@@ -5044,6 +5055,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-pre-tab-min-content")) return "width=100,height=10";
         if (sceneId.equals("anonymous-pre-tab-fixed-width-nowrap")) {
             return "width=25,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-2-two-columns")
+                || sceneId.equals("anonymous-pre-tab-size-2-min-content")) {
+            return "width=60,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-2-leading")) return "width=30,height=10";
+        if (sceneId.equals("anonymous-pre-tab-size-2-exact-stop")
+                || sceneId.equals("anonymous-pre-tab-size-2-consecutive")) {
+            return "width=70,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-2-reset")) return "width=60,height=20";
+        if (sceneId.equals("anonymous-pre-tab-size-2-crlf-reset")) {
+            return "width=30,height=20";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-2-trailing")) return "width=40,height=10";
+        if (sceneId.equals("anonymous-pre-tab-size-2-fixed-overflow")) {
+            return "width=25,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-1-leading")) return "width=20,height=10";
+        if (sceneId.equals("anonymous-pre-tab-size-1-exact-stop")) {
+            return "width=30,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-size-4-leading")) return "width=50,height=10";
+        if (sceneId.equals("anonymous-pre-tab-size-4-exact-stop")) {
+            return "width=90,height=10";
         }
         if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) {
             return "width=40,height=10";
@@ -5856,7 +5892,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 100.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\tXX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5865,7 +5901,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 90.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "\tX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5874,7 +5910,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 170.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XXXXXXXX\tX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5883,7 +5919,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 170.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\t\tX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5892,7 +5928,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 20.0;
                     itemWidth = 100.0;
                     itemHeight = 20.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\tXX\nX\tX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5901,7 +5937,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 80.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\t" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5910,7 +5946,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 100.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\tXX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
@@ -5919,8 +5955,117 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     maxContentHeight = 10.0;
                     itemWidth = 25.0;
                     itemHeight = 10.0;
-                    expectedWhiteSpace = "Pre";
+                    expectedWhiteSpace = "PreWithTabSize(Eight)";
                     expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-two-columns":
+                case "anonymous-pre-tab-size-2-min-content":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 60.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-leading":
+                    maxContent = 30.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 30.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-exact-stop":
+                    maxContent = 70.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 70.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XXXX\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-consecutive":
+                    maxContent = 70.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 70.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XX\t\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-reset":
+                    maxContent = 60.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 60.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XX\tXX\nX\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-crlf-reset":
+                    maxContent = 30.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 30.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "X\t\r\nX\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-trailing":
+                    maxContent = 40.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 40.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XX\t" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-2-fixed-overflow":
+                    maxContent = 60.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Two)";
+                    expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-1-leading":
+                    maxContent = 20.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 20.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(One)";
+                    expectedSourceText = new String[] { "\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-1-exact-stop":
+                    maxContent = 30.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 30.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(One)";
+                    expectedSourceText = new String[] { "X\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-4-leading":
+                    maxContent = 50.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 50.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Four)";
+                    expectedSourceText = new String[] { "\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-size-4-exact-stop":
+                    maxContent = 90.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 90.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "PreWithTabSize(Four)";
+                    expectedSourceText = new String[] { "XXXX\tX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
                 case "anonymous-pre-line-max-content":
@@ -6142,6 +6287,63 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 normalized = "XX      ";
                 tabAdvances = new int[] { 6 };
                 break;
+            case "anonymous-pre-tab-size-2-two-columns":
+            case "anonymous-pre-tab-size-2-min-content":
+            case "anonymous-pre-tab-size-2-fixed-overflow":
+                source = "XX\tXX";
+                normalized = "XX  XX";
+                tabAdvances = new int[] { 2 };
+                break;
+            case "anonymous-pre-tab-size-2-leading":
+                source = "\tX";
+                normalized = "  X";
+                tabAdvances = new int[] { 2 };
+                break;
+            case "anonymous-pre-tab-size-2-exact-stop":
+                source = "XXXX\tX";
+                normalized = "XXXX  X";
+                tabAdvances = new int[] { 2 };
+                break;
+            case "anonymous-pre-tab-size-2-consecutive":
+                source = "XX\t\tX";
+                normalized = "XX    X";
+                tabAdvances = new int[] { 2, 2 };
+                break;
+            case "anonymous-pre-tab-size-2-reset":
+                source = "XX\tXX\nX\tX";
+                normalized = "XX  XX\nX X";
+                tabAdvances = new int[] { 2, 1 };
+                break;
+            case "anonymous-pre-tab-size-2-crlf-reset":
+                source = "X\t\r\nX\tX";
+                normalized = "X \nX X";
+                tabAdvances = new int[] { 1, 1 };
+                break;
+            case "anonymous-pre-tab-size-2-trailing":
+                source = "XX\t";
+                normalized = "XX  ";
+                tabAdvances = new int[] { 2 };
+                break;
+            case "anonymous-pre-tab-size-1-leading":
+                source = "\tX";
+                normalized = " X";
+                tabAdvances = new int[] { 1 };
+                break;
+            case "anonymous-pre-tab-size-1-exact-stop":
+                source = "X\tX";
+                normalized = "X X";
+                tabAdvances = new int[] { 1 };
+                break;
+            case "anonymous-pre-tab-size-4-leading":
+                source = "\tX";
+                normalized = "    X";
+                tabAdvances = new int[] { 4 };
+                break;
+            case "anonymous-pre-tab-size-4-exact-stop":
+                source = "XXXX\tX";
+                normalized = "XXXX    X";
+                tabAdvances = new int[] { 4 };
+                break;
             default:
                 return false;
         }
@@ -6151,7 +6353,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         int outputOffset = 0;
         int tabIndex = 0;
         for (int index = 0; index < source.length(); index++) {
-            int outputLength = source.charAt(index) == '\t' ? tabAdvances[tabIndex++] : 1;
+            int outputStart = outputOffset;
+            int outputLength;
+            if (source.charAt(index) == '\n' && index > 0
+                    && source.charAt(index - 1) == '\r') {
+                outputStart--;
+                outputLength = 1;
+            } else if (source.charAt(index) == '\t') {
+                outputLength = tabAdvances[tabIndex++];
+            } else {
+                outputLength = 1;
+            }
             org.json.JSONObject range = ranges.optJSONObject(index);
             org.json.JSONArray sourceUtf16 = range == null
                     ? null : range.optJSONArray("sourceUtf16");
@@ -6164,12 +6376,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || sourceUtf16.optInt(0, -1) != index
                     || sourceUtf16.optInt(1, -1) != index + 1
                     || paragraphUtf8 == null || paragraphUtf8.length() != 2
-                    || paragraphUtf8.optInt(0, -1) != outputOffset
-                    || paragraphUtf8.optInt(1, -1) != outputOffset + outputLength
+                    || paragraphUtf8.optInt(0, -1) != outputStart
+                    || paragraphUtf8.optInt(1, -1) != outputStart + outputLength
                     || inlineAncestors == null || inlineAncestors.length() != 0) {
                 return false;
             }
-            outputOffset += outputLength;
+            if (!(source.charAt(index) == '\n' && index > 0
+                    && source.charAt(index - 1) == '\r')) outputOffset += outputLength;
         }
         return tabIndex == tabAdvances.length && outputOffset == normalized.length();
     }
@@ -6282,6 +6495,88 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectedRows = new double[] { 10.0 };
                 expectColumnContribution = false;
                 expectRowContribution = true;
+                break;
+            case "anonymous-pre-tab-size-2-two-columns":
+            case "anonymous-pre-tab-size-2-fixed-overflow":
+                expectedColumns = new double[] {
+                        "anonymous-pre-tab-size-2-fixed-overflow".equals(sceneId) ? 25.0 : 60.0
+                };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = !"anonymous-pre-tab-size-2-fixed-overflow"
+                        .equals(sceneId);
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-2-min-content":
+                expectedColumns = new double[] { 60.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MinContent";
+                break;
+            case "anonymous-pre-tab-size-2-leading":
+                expectedColumns = new double[] { 30.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-2-exact-stop":
+            case "anonymous-pre-tab-size-2-consecutive":
+                expectedColumns = new double[] { 70.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-2-reset":
+                expectedColumns = new double[] { 60.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-2-crlf-reset":
+                expectedColumns = new double[] { 30.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-2-trailing":
+                expectedColumns = new double[] { 40.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-1-leading":
+                expectedColumns = new double[] { 20.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-1-exact-stop":
+                expectedColumns = new double[] { 30.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-4-leading":
+                expectedColumns = new double[] { 50.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-size-4-exact-stop":
+                expectedColumns = new double[] { 90.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
                 break;
             case "anonymous-pre-line-max-content":
             case "anonymous-pre-wrap-min-content-spaces":
