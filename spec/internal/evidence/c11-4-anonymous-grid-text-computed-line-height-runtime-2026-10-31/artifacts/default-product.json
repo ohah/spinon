@@ -1,0 +1,72 @@
+{
+  "feature": "c04-runtime-gpu (fixture-test disabled)",
+  "artifact": "target/release/libspinon_ffi.a",
+  "sizeBytes": 75260528,
+  "sha256": "4661c6c46e5a23f462de8ac00c909cb48e76f3322091076527e996ae9fff35c8",
+  "markers": [
+    {
+      "id": "line-height-normal-two-lines",
+      "present": false
+    },
+    {
+      "id": "line-height-zero-number",
+      "present": false
+    },
+    {
+      "id": "line-height-half-number",
+      "present": false
+    },
+    {
+      "id": "line-height-one-number",
+      "present": false
+    },
+    {
+      "id": "line-height-one-point-five-number",
+      "present": false
+    },
+    {
+      "id": "line-height-two-number",
+      "present": false
+    },
+    {
+      "id": "line-height-zero-length",
+      "present": false
+    },
+    {
+      "id": "line-height-five-length",
+      "present": false
+    },
+    {
+      "id": "line-height-twelve-point-five-length",
+      "present": false
+    },
+    {
+      "id": "line-height-one-hundred-twenty-five-percent",
+      "present": false
+    },
+    {
+      "id": "line-height-one-point-two-five-em",
+      "present": false
+    },
+    {
+      "id": "line-height-calc-length",
+      "present": false
+    },
+    {
+      "id": "line-height-normal-single-line",
+      "present": false
+    },
+    {
+      "id": "line-height-half-number-single-line",
+      "present": false
+    },
+    {
+      "id": "line-height-one-point-five-soft-wrap",
+      "present": false
+    },
+    {
+      "id": "line-height-zero-number-soft-wrap",
+      "present": false
+    }
+  ]
+}

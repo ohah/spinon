@@ -1,3 +1,6 @@
+#[path = "anonymous_text_items/computed_line_height.rs"]
+mod computed_line_height;
+
 const SCENE_IDS: [&str; 55] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
@@ -104,6 +107,9 @@ const FULL_TAB_SPECIFIED_VALUES: [&str; 14] = [
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
+    if let Some(source) = computed_line_height::runtime_source(scene_id) {
+        return Some(source);
+    }
     if let Some((value_index, case_index)) = full_tab_scene(scene_id) {
         return Some(full_tab_runtime_source(scene_id, value_index, case_index));
     }

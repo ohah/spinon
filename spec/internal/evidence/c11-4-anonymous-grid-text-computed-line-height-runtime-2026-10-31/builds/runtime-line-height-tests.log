@@ -1,0 +1,23 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/spinon_runtime-92809b21deafa73a)
+
+running 5 tests
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::line_height::tests::computed_line_height_rejects_values_that_do_not_match_the_scene_fixture ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::line_height::tests::computed_line_height_accepts_only_finite_nonnegative_stylo_values ... ok
+test session::ua_cascade::runtime_layout::fixtures::c11_4_anonymous_text::line_height::tests::computed_line_height_scene_matrix_is_unique_and_has_expected_text_shapes ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_line_height::anonymous_grid_computed_line_height_mismatch_fails_before_layout_publication ... ok
+test session::ua_cascade::tests::runtime_layout_tests::c11_grid_tests::anonymous_text_line_height::anonymous_grid_computed_line_height_matrix_reaches_text_and_auto_row_sizing ... ok
+
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 337 filtered out; finished in 0.13s
+
+     Running tests/priority_policy_comparison.rs (target/debug/deps/priority_policy_comparison-be0ecad518b49b65)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 3 filtered out; finished in 0.00s
+
+     Running tests/s03_node_lifecycle_contract.rs (target/debug/deps/s03_node_lifecycle_contract-8b9bc9f826ba97f5)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 16 filtered out; finished in 0.00s

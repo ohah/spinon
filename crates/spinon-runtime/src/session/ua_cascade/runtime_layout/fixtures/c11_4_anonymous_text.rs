@@ -14,6 +14,12 @@ use spinon_style::{
 
 use super::super::{RuntimeLayoutFailure, layout_failure};
 
+#[path = "c11_4_anonymous_text/line_height.rs"]
+mod line_height;
+use line_height::{
+    ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,
+};
+
 const SCENE_IDS: [&str; 55] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
@@ -148,7 +154,10 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     else {
         return Ok(None);
     };
-    if !SCENE_IDS.contains(&scene_id) && full_tab_scene(scene_id).is_none() {
+    if !SCENE_IDS.contains(&scene_id)
+        && !LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+        && full_tab_scene(scene_id).is_none()
+    {
         return if scene_id.starts_with("anonymous-")
             || scene_id == "whitespace-does-not-create-item"
         {
@@ -162,7 +171,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     }
 
     let grid_style = style_for(styles, root.id())?;
-    let tab_size = validate_grid_style(grid_style, scene_id)?;
+    let (tab_size, line_height) = validate_grid_style(grid_style, scene_id)?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -178,7 +187,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(
             root.id(),
-            anonymous_paragraph_style(scene_id, tab_size),
+            anonymous_paragraph_style(scene_id, tab_size, line_height),
         )]),
         engine,
         two_axis_nested_grid: false,
@@ -257,6 +266,11 @@ fn validate_direct_children(
             ExpectedChild::Text("  "),
             ExpectedChild::Block("c114-anonymous-break-spaces-whitespace-before-block-item"),
         ],
+        scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
+            let text = line_height_text(scene_id)
+                .ok_or_else(|| unsupported(root.id(), "line-height scene text missing"))?;
+            &[ExpectedChild::Text(text)]
+        }
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
     if children.len() != expected.len() {
@@ -347,7 +361,7 @@ fn validate_direct_children(
 fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
-) -> Result<TabSize, RuntimeLayoutFailure> {
+) -> Result<(TabSize, ComputedLineHeight), RuntimeLayoutFailure> {
     let expected_wrap_mode = if is_pre_tab_scene(scene_id)
         || matches!(
             scene_id,
@@ -384,6 +398,11 @@ fn validate_grid_style(
         | "anonymous-break-spaces-trailing-max-content"
         | "anonymous-break-spaces-whitespace-only"
         | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
+        scene_id
+            if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) && !scene_id.ends_with("soft-wrap") =>
+        {
+            "preserve-breaks"
+        }
         _ => "collapse",
     };
     let (expected_width, expected_height) = if let Some((_, case_index)) = full_tab_scene(scene_id)
@@ -455,10 +474,14 @@ fn validate_grid_style(
                 (40.0, ComputedCssDimension::LengthPx(10.0))
             }
             "anonymous-min-content-wrap" => (120.0, ComputedCssDimension::LengthPx(20.0)),
+            scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
+                (20.0, ComputedCssDimension::Auto)
+            }
             _ => (120.0, ComputedCssDimension::LengthPx(10.0)),
         }
     };
     let tab_size = validate_computed_tab_size(style.node_id, &style.properties, scene_id)?;
+    let line_height = validate_computed_line_height(style.node_id, &style.properties, scene_id)?;
     validate_text_profile_properties(
         style.node_id,
         &style.properties,
@@ -473,7 +496,6 @@ fn validate_grid_style(
         || style.layout_position != spinon_style::ComputedCssPosition::Static
         || style.properties.get("font-family").map(String::as_str) != Some("Ahem")
         || style.properties.get("font-size").map(String::as_str) != Some("10px")
-        || style.properties.get("line-height").map(String::as_str) != Some("10px")
         || style
             .properties
             .get("white-space-collapse")
@@ -507,7 +529,7 @@ fn validate_grid_style(
             "Grid track functions or auto-placement defaults",
         ));
     }
-    Ok(tab_size)
+    Ok((tab_size, line_height))
 }
 
 fn validate_computed_tab_size(
@@ -658,6 +680,9 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         }]
     } else {
         match scene_id {
+            scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
+                vec![ComputedCssGridTrackSize::LengthPx(20.0)]
+            }
             "anonymous-min-content-wrap" => vec![
                 ComputedCssGridTrackSize::MinContent,
                 ComputedCssGridTrackSize::Fraction(1.0),
@@ -751,57 +776,57 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
             _ => return false,
         }
     };
-    let expected_rows = if full_tab_scene(scene_id).is_some() {
-        vec![ComputedCssGridTrackSize::Auto]
-    } else if matches!(
-        scene_id,
-        "anonymous-min-content-wrap"
-            | "anonymous-normal-min-content"
-            | "anonymous-nowrap-min-content"
-            | "anonymous-normal-newline-max-content"
-            | "anonymous-pre-line-max-content"
-            | "anonymous-normal-max-content-spaces"
-            | "anonymous-pre-wrap-max-content-spaces"
-            | "anonymous-pre-wrap-comment-split-max-content"
-            | "anonymous-pre-wrap-min-content-spaces"
-            | "anonymous-pre-wrap-soft-wrap"
-            | "anonymous-pre-wrap-forced-break"
-            | "anonymous-pre-max-content-spaces"
-            | "anonymous-pre-min-content-spaces"
-            | "anonymous-pre-forced-break"
-            | "anonymous-normal-fixed-width-control"
-            | "anonymous-pre-fixed-width-nowrap"
-            | "anonymous-pre-tab-max-content"
-            | "anonymous-pre-tab-leading"
-            | "anonymous-pre-tab-exact-stop"
-            | "anonymous-pre-tab-consecutive"
-            | "anonymous-pre-tab-forced-break"
-            | "anonymous-pre-tab-trailing"
-            | "anonymous-pre-tab-min-content"
-            | "anonymous-pre-tab-fixed-width-nowrap"
-            | "anonymous-pre-tab-size-2-two-columns"
-            | "anonymous-pre-tab-size-2-leading"
-            | "anonymous-pre-tab-size-2-exact-stop"
-            | "anonymous-pre-tab-size-2-consecutive"
-            | "anonymous-pre-tab-size-2-reset"
-            | "anonymous-pre-tab-size-2-crlf-reset"
-            | "anonymous-pre-tab-size-2-trailing"
-            | "anonymous-pre-tab-size-2-min-content"
-            | "anonymous-pre-tab-size-2-fixed-overflow"
-            | "anonymous-pre-tab-size-1-leading"
-            | "anonymous-pre-tab-size-1-exact-stop"
-            | "anonymous-pre-tab-size-4-leading"
-            | "anonymous-pre-tab-size-4-exact-stop"
-            | "anonymous-break-spaces-max-content"
-            | "anonymous-break-spaces-comment-split-max-content"
-            | "anonymous-break-spaces-min-content"
-            | "anonymous-break-spaces-soft-wrap-25"
-            | "anonymous-break-spaces-forced-break-max-content"
-            | "anonymous-break-spaces-forced-break-min-content"
-            | "anonymous-break-spaces-trailing-soft-wrap-25"
-            | "anonymous-break-spaces-trailing-max-content"
-            | "anonymous-break-spaces-whitespace-only"
-    ) {
+    let expected_rows = if full_tab_scene(scene_id).is_some()
+        || LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+        || matches!(
+            scene_id,
+            "anonymous-min-content-wrap"
+                | "anonymous-normal-min-content"
+                | "anonymous-nowrap-min-content"
+                | "anonymous-normal-newline-max-content"
+                | "anonymous-pre-line-max-content"
+                | "anonymous-normal-max-content-spaces"
+                | "anonymous-pre-wrap-max-content-spaces"
+                | "anonymous-pre-wrap-comment-split-max-content"
+                | "anonymous-pre-wrap-min-content-spaces"
+                | "anonymous-pre-wrap-soft-wrap"
+                | "anonymous-pre-wrap-forced-break"
+                | "anonymous-pre-max-content-spaces"
+                | "anonymous-pre-min-content-spaces"
+                | "anonymous-pre-forced-break"
+                | "anonymous-normal-fixed-width-control"
+                | "anonymous-pre-fixed-width-nowrap"
+                | "anonymous-pre-tab-max-content"
+                | "anonymous-pre-tab-leading"
+                | "anonymous-pre-tab-exact-stop"
+                | "anonymous-pre-tab-consecutive"
+                | "anonymous-pre-tab-forced-break"
+                | "anonymous-pre-tab-trailing"
+                | "anonymous-pre-tab-min-content"
+                | "anonymous-pre-tab-fixed-width-nowrap"
+                | "anonymous-pre-tab-size-2-two-columns"
+                | "anonymous-pre-tab-size-2-leading"
+                | "anonymous-pre-tab-size-2-exact-stop"
+                | "anonymous-pre-tab-size-2-consecutive"
+                | "anonymous-pre-tab-size-2-reset"
+                | "anonymous-pre-tab-size-2-crlf-reset"
+                | "anonymous-pre-tab-size-2-trailing"
+                | "anonymous-pre-tab-size-2-min-content"
+                | "anonymous-pre-tab-size-2-fixed-overflow"
+                | "anonymous-pre-tab-size-1-leading"
+                | "anonymous-pre-tab-size-1-exact-stop"
+                | "anonymous-pre-tab-size-4-leading"
+                | "anonymous-pre-tab-size-4-exact-stop"
+                | "anonymous-break-spaces-max-content"
+                | "anonymous-break-spaces-comment-split-max-content"
+                | "anonymous-break-spaces-min-content"
+                | "anonymous-break-spaces-soft-wrap-25"
+                | "anonymous-break-spaces-forced-break-max-content"
+                | "anonymous-break-spaces-forced-break-min-content"
+                | "anonymous-break-spaces-trailing-soft-wrap-25"
+                | "anonymous-break-spaces-trailing-max-content"
+                | "anonymous-break-spaces-whitespace-only"
+        ) {
         vec![ComputedCssGridTrackSize::Auto]
     } else {
         vec![ComputedCssGridTrackSize::LengthPx(10.0)]
@@ -831,7 +856,6 @@ fn validate_text_profile_properties(
         ("font-size", "10px"),
         ("font-weight", "400"),
         ("font-style", "normal"),
-        ("line-height", "10px"),
         ("word-break", "normal"),
         ("direction", "ltr"),
         ("line-break", "auto"),
@@ -907,17 +931,31 @@ fn element_identity(
     Ok((element.local_name().to_owned(), id))
 }
 
-fn anonymous_paragraph_style(scene_id: &str, tab_size: TabSize) -> ParagraphStyle {
+fn anonymous_paragraph_style(
+    scene_id: &str,
+    tab_size: TabSize,
+    line_height: ComputedLineHeight,
+) -> ParagraphStyle {
+    let (line_height, line_height_is_normal) = match line_height {
+        ComputedLineHeight::Normal => (10.0, true),
+        ComputedLineHeight::AbsolutePx(value) => (value, false),
+    };
     ParagraphStyle {
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size: 10.0,
-        line_height: 10.0,
-        line_height_is_normal: false,
+        line_height,
+        line_height_is_normal,
         font_weight: 400.0,
         font_style: FontStyleMode::Normal,
         white_space: match scene_id {
+            scene_id
+                if LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+                    && !scene_id.ends_with("soft-wrap") =>
+            {
+                WhiteSpaceMode::PreLine
+            }
             "anonymous-nowrap-min-content" => WhiteSpaceMode::NoWrap,
             "anonymous-pre-line-max-content" => WhiteSpaceMode::PreLine,
             "anonymous-pre-wrap-max-content-spaces"
@@ -1326,7 +1364,6 @@ mod tests {
             ("font-size", "11px"),
             ("font-weight", "700"),
             ("font-style", "italic"),
-            ("line-height", "normal"),
             ("white-space-collapse", "preserve"),
             ("text-wrap-mode", "nowrap"),
             ("word-break", "break-all"),

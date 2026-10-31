@@ -4,13 +4,13 @@
 
 ## 입력과 환경
 
-- 입력 fixture: [`c11-4-anonymous-grid-text-line-height.html`](../../../../tests/fixtures/css/c11/c11-4-anonymous-grid-text-line-height.html), SHA-256 `8dfa0356993153e5cd0a54134c6cb118d98ff5177d1edbca9ff5bd0728bab20d`
-- Ahem: [`Ahem.ttf`](../../../../tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
+- 입력 fixture: [`c11-4-anonymous-grid-text-line-height.html`](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/tests/fixtures/css/c11/c11-4-anonymous-grid-text-line-height.html), SHA-256 `8dfa0356993153e5cd0a54134c6cb118d98ff5177d1edbca9ff5bd0728bab20d`
+- Ahem: [`Ahem.ttf`](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/tests/fixtures/resources/c15/Ahem.ttf), SHA-256 `b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448`
 - Browser: Agent Browser 0.31.1, HeadlessChrome/Google Chrome `156.0.8078.76`, macOS `26.5.1`, locale `ko-KR`, viewport `420×600`, DPR 1
 - 폰트: `document.fonts.check("10px Ahem") == true`
 - 재현: Agent Browser 전용 `spinon-c114-line-height` 세션에서 fixture를 열고 viewport를 `420×600`으로 설정한 뒤 `chrome/capture-observation.js`를 `eval --stdin`에 전달했다. JSON 관찰과 screenshot 저장 뒤 세션을 닫았다. terminal-browser는 사용하지 않았다.
-- 화면: [`chrome156-line-height-matrix.png`](./chrome/chrome156-line-height-matrix.png), SHA-256 `73df185aff47ffbdf879b7b300a99b2e9f472113874155ecaab1cb8da82b7202`
-- 구조화된 원본: [`chrome156-observation.json`](./chrome/chrome156-observation.json), SHA-256 `34b94a740f59cab64cac7fd6a3f33ca9eef69b68f483672cc4f7fecb890f9841`
+- 화면: ![Chrome 156 line-height matrix](./chrome/chrome156-line-height-matrix.png) SHA-256 `73df185aff47ffbdf879b7b300a99b2e9f472113874155ecaab1cb8da82b7202`
+- 구조화된 원본: [chrome156-observation.json](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/chrome/chrome156-observation.json), SHA-256 `34b94a740f59cab64cac7fd6a3f33ca9eef69b68f483672cc4f7fecb890f9841`
 - 관찰 스크립트: [`capture-observation.js`](./chrome/capture-observation.js), SHA-256 `00094845137a50f153aa1dad07bfcb9edd5cdb9ddab47a88b2d41387b7921938`
 
 ## 규범 규칙과 독립 기대값
@@ -33,7 +33,7 @@
 | `1.5` + 20px 폭의 soft wrap | 2 | 30px | 30px |
 | `0` + 20px 폭의 soft wrap | 2 | 0px | 0px |
 
-각 행은 [`expected-values.json`](./expected-values.json)에 장면별로 기록했다. `gridTemplateRows`가 track 판정값이며 root의 auto height는 별도 관찰값이다. Range rectangles는 inline text geometry이지 Grid track이나 glyph paint sample이 아니다. 특히 `line-height`가 글꼴 크기보다 작거나 0인 장면에서는 10px glyph rectangles가 겹치거나 track 밖에 있어도 행 크기는 line-height 산식을 따른다. 이 자료는 glyph 픽셀 정합성을 주장하지 않는다.
+각 행은 [expected-values.json](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/expected-values.json)에 장면별로 기록했다. `gridTemplateRows`가 track 판정값이며 root의 auto height는 별도 관찰값이다. Range rectangles는 inline text geometry이지 Grid track이나 glyph paint sample이 아니다. 특히 `line-height`가 글꼴 크기보다 작거나 0인 장면에서는 10px glyph rectangles가 겹치거나 track 밖에 있어도 행 크기는 line-height 산식을 따른다. 이 자료는 glyph 픽셀 정합성을 주장하지 않는다.
 
 ## 기존 코드와 구현 공백
 
