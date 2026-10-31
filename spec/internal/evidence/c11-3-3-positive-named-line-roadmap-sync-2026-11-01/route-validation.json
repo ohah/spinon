@@ -1,0 +1,115 @@
+{
+  "sourceHead": "a5643ae7c94354c90cfcc3742f9dcf2f45ce9139",
+  "sourceRoadmapSha256": "a32706091eaa3bbcdab9883db28c2aa8e6ad129b71d7aed1eaec8e5f9a8e8559",
+  "browser": {
+    "agentBrowser": "0.31.1",
+    "chrome": "156.0.0.0"
+  },
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 900,
+      "documentWidth": 1280,
+      "cardWidth": 908
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "documentWidth": 390,
+      "cardWidth": 362,
+      "noHorizontalOverflow": true
+    }
+  },
+  "baseURL": "http://127.0.0.1:8799/spinon/",
+  "fullDocsLinkValidation": false,
+  "verifiedRoutes": [
+    {
+      "href": "/spinon/plan/c11-3-3-named-line-auto-implicit-tracks.html",
+      "route": "plan/c11-3-3-named-line-auto-implicit-tracks.html",
+      "status": 200,
+      "bytes": 73208,
+      "sha256": "49957cf46047e383119896623fd52ffcc2e1deb29df0f5ea2650e72bf76734b4",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "route": "internal/0059-c11-grid-layout.html",
+      "status": 200,
+      "bytes": 440996,
+      "sha256": "32c254f5b8a677697989b9886176ce5c0852b24a5e68d900aaf8f948907b8b57",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/README.html",
+      "route": "spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/README.html",
+      "status": 200,
+      "bytes": 72111,
+      "sha256": "222aaef4b047811a4e5b3f32c5a9f149133b73d4c534e26228a21a6d31e2ecc4",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/README.html",
+      "route": "spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/README.html",
+      "status": 200,
+      "bytes": 74410,
+      "sha256": "5b1561607c37ac753349cfebfdc51e2e7608f80ede5edf78174e37386332abf7",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/android-avd-c1133-android-avd-20261031T143645249Z-50b7de14/android-screen.png",
+      "route": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/android-avd-c1133-android-avd-20261031T143645249Z-50b7de14/android-screen.png",
+      "status": 200,
+      "bytes": 79826,
+      "sha256": "211dfa3473f4ff7b7d7ed3d099c5d0bf31257ccf6f905ed785d6e68fb112776f",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/ios-simulator-c1133-ios-simulator-20261031T143731498Z-ae43a911/ios-screen.png",
+      "route": "spec/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/ios-simulator-c1133-ios-simulator-20261031T143731498Z-ae43a911/ios-screen.png",
+      "status": 200,
+      "bytes": 129202,
+      "sha256": "31aae9487d2f5b2aca3ffd6c2bbc728241c4d273ad5bb454e1c7d9975c4f2376",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "route": "STATUS.html",
+      "status": 200,
+      "bytes": 744090,
+      "sha256": "3699a948e5584888e22b08ebd47d6c4be2d3be96bb474b9236f5c0b3820a77f0",
+      "matchesPublication": true
+    },
+    {
+      "href": "/spinon/spec/internal/evidence/c11-3-3-positive-named-line-roadmap-sync-2026-11-01/README.html",
+      "route": "spec/internal/evidence/c11-3-3-positive-named-line-roadmap-sync-2026-11-01/README.html",
+      "status": 200,
+      "bytes": 70150,
+      "sha256": "95a307c9bca2f2e2ff128f59198ed0372d7db6917a195142dee950c81969b0d1",
+      "matchesPublication": true
+    },
+    {
+      "href": "./roadmap-pr927-desktop.png",
+      "route": "spec/internal/evidence/c11-3-3-positive-named-line-roadmap-sync-2026-11-01/roadmap-pr927-desktop.png",
+      "status": 200,
+      "bytes": 430831,
+      "sha256": "4c38af897739b43c0f976ab2685a846af91a81da95dd31a8c81b2f9545f194c4",
+      "matchesPublication": true
+    },
+    {
+      "href": "./roadmap-pr927-mobile.png",
+      "route": "spec/internal/evidence/c11-3-3-positive-named-line-roadmap-sync-2026-11-01/roadmap-pr927-mobile.png",
+      "status": 200,
+      "bytes": 163336,
+      "sha256": "1801234283f939f7ffb7dc2ba0fc41e8fabb7298b0aa18c150e86d52981e77c2",
+      "matchesPublication": true
+    },
+    {
+      "href": "./roadmap-pr-diff-review-30.html",
+      "route": "spec/internal/evidence/c11-3-3-positive-named-line-roadmap-sync-2026-11-01/roadmap-pr-diff-review-30.html",
+      "status": 200,
+      "bytes": 71847,
+      "sha256": "d27321397aef20a05aa0e6ae1850b07a3acb828563a2b3d5130a260bec3f5317",
+      "matchesPublication": true
+    }
+  ]
+}
