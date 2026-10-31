@@ -1,4 +1,4 @@
-const SCENE_IDS: [&str; 31] = [
+const SCENE_IDS: [&str; 40] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -30,6 +30,15 @@ const SCENE_IDS: [&str; 31] = [
     "anonymous-pre-forced-break",
     "anonymous-normal-fixed-width-control",
     "anonymous-pre-fixed-width-nowrap",
+    "anonymous-pre-tab-max-content",
+    "anonymous-pre-tab-leading",
+    "anonymous-pre-tab-exact-stop",
+    "anonymous-pre-tab-consecutive",
+    "anonymous-pre-tab-forced-break",
+    "anonymous-pre-tab-trailing",
+    "anonymous-pre-tab-min-content",
+    "anonymous-pre-tab-fixed-width-nowrap",
+    "anonymous-pre-tab-size-2-negative",
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -54,7 +63,19 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         }
         "anonymous-pre-min-content-spaces" => (20, "auto", "min-content", "auto", "nowrap"),
         "anonymous-normal-fixed-width-control" => (25, "auto", "25px", "auto", "wrap"),
-        "anonymous-pre-fixed-width-nowrap" => (25, "auto", "25px", "auto", "nowrap"),
+        "anonymous-pre-fixed-width-nowrap" | "anonymous-pre-tab-fixed-width-nowrap" => {
+            (25, "auto", "25px", "auto", "nowrap")
+        }
+        "anonymous-pre-tab-max-content" | "anonymous-pre-tab-forced-break" => {
+            (100, "auto", "max-content", "auto", "nowrap")
+        }
+        "anonymous-pre-tab-leading" => (90, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-exact-stop" | "anonymous-pre-tab-consecutive" => {
+            (170, "auto", "max-content", "auto", "nowrap")
+        }
+        "anonymous-pre-tab-trailing" => (80, "auto", "max-content", "auto", "nowrap"),
+        "anonymous-pre-tab-min-content" => (100, "auto", "min-content", "auto", "nowrap"),
+        "anonymous-pre-tab-size-2-negative" => (60, "auto", "max-content", "auto", "nowrap"),
         "anonymous-pre-wrap-soft-wrap" => (25, "auto", "25px", "auto", "wrap"),
         "anonymous-pre-wrap-whitespace-before-block" => (40, "10px", "20px 20px", "10px", "wrap"),
         "anonymous-break-spaces-max-content"
@@ -101,7 +122,16 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         "anonymous-pre-max-content-spaces"
         | "anonymous-pre-min-content-spaces"
         | "anonymous-pre-forced-break"
-        | "anonymous-pre-fixed-width-nowrap" => "preserve",
+        | "anonymous-pre-fixed-width-nowrap"
+        | "anonymous-pre-tab-max-content"
+        | "anonymous-pre-tab-leading"
+        | "anonymous-pre-tab-exact-stop"
+        | "anonymous-pre-tab-consecutive"
+        | "anonymous-pre-tab-forced-break"
+        | "anonymous-pre-tab-trailing"
+        | "anonymous-pre-tab-min-content"
+        | "anonymous-pre-tab-fixed-width-nowrap"
+        | "anonymous-pre-tab-size-2-negative" => "preserve",
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-comment-split-max-content"
         | "anonymous-break-spaces-min-content"
@@ -114,12 +144,17 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         | "anonymous-break-spaces-whitespace-before-block" => "break-spaces",
         _ => "collapse",
     };
+    let tab_size = if scene_id == "anonymous-pre-tab-size-2-negative" {
+        "2"
+    } else {
+        "8"
+    };
     let mut source = format!(
         r#"(() => {{
 const root = document.createElement('div');
 root.setAttribute('id', {root_id:?});
 root.setAttribute('data-node', '');
-root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height};margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{columns};grid-template-rows:{rows};font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;white-space-collapse:{white_space_collapse};text-wrap-mode:{wrap_mode};word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:{width}px;height:{height};margin:0;padding:0;border:0;gap:0;align-items:start;align-content:start;justify-content:start;grid-template-columns:{columns};grid-template-rows:{rows};font-family:Ahem;font-size:10px;font-weight:400;font-style:normal;line-height:10px;tab-size:{tab_size};white-space-collapse:{white_space_collapse};text-wrap-mode:{wrap_mode};word-break:normal;direction:ltr;line-break:auto;text-align:start;overflow-wrap:normal;text-transform:none;letter-spacing:normal;word-spacing:0px;text-indent:0px;color:#e5484d;background-color:#101820');
 document.appendChild(root);
 const nodeIds = [{root_id:?}];
 "#
@@ -208,6 +243,27 @@ nodeIds.push('c114-anonymous-pre-wrap-whitespace-before-block-item');
         "anonymous-pre-forced-break" => {
             source.push_str("root.appendChild(document.createTextNode('XX\\nXX'));\n")
         }
+        "anonymous-pre-tab-max-content"
+        | "anonymous-pre-tab-min-content"
+        | "anonymous-pre-tab-fixed-width-nowrap"
+        | "anonymous-pre-tab-size-2-negative" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\tXX'));\n")
+        }
+        "anonymous-pre-tab-leading" => {
+            source.push_str("root.appendChild(document.createTextNode('\\tX'));\n")
+        }
+        "anonymous-pre-tab-exact-stop" => {
+            source.push_str("root.appendChild(document.createTextNode('XXXXXXXX\\tX'));\n")
+        }
+        "anonymous-pre-tab-consecutive" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\t\\tX'));\n")
+        }
+        "anonymous-pre-tab-forced-break" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\tXX\\nX\\tX'));\n")
+        }
+        "anonymous-pre-tab-trailing" => {
+            source.push_str("root.appendChild(document.createTextNode('XX\\t'));\n")
+        }
         "anonymous-break-spaces-max-content"
         | "anonymous-break-spaces-min-content"
         | "anonymous-break-spaces-soft-wrap-25" => {
@@ -251,9 +307,9 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn anonymous_grid_text_sources_are_a_fixed_thirty_one_scene_matrix() {
+    fn anonymous_grid_text_sources_are_a_fixed_forty_scene_matrix() {
         let unique_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 31);
+        assert_eq!(SCENE_IDS.len(), 40);
         assert_eq!(unique_ids.len(), SCENE_IDS.len());
         for (scene_id, text_nodes, elements, width, height, wrap_mode, white_space_collapse) in [
             (
@@ -535,6 +591,87 @@ mod tests {
                 "nowrap",
                 "preserve",
             ),
+            (
+                "anonymous-pre-tab-max-content",
+                1,
+                0,
+                100,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-leading",
+                1,
+                0,
+                90,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-exact-stop",
+                1,
+                0,
+                170,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-consecutive",
+                1,
+                0,
+                170,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-forced-break",
+                1,
+                0,
+                100,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-trailing",
+                1,
+                0,
+                80,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-min-content",
+                1,
+                0,
+                100,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-fixed-width-nowrap",
+                1,
+                0,
+                25,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
+            (
+                "anonymous-pre-tab-size-2-negative",
+                1,
+                0,
+                60,
+                "auto",
+                "nowrap",
+                "preserve",
+            ),
         ] {
             let source = runtime_source(scene_id).expect("known C11.4 scene");
             assert!(source.len() < 4 * 1024);
@@ -542,6 +679,12 @@ mod tests {
             assert!(source.contains(&format!("display:grid;width:{width}px;height:{height};")));
             assert!(source.contains(&format!("text-wrap-mode:{wrap_mode}")));
             assert!(source.contains(&format!("white-space-collapse:{white_space_collapse}")));
+            let expected_tab_size = if scene_id == "anonymous-pre-tab-size-2-negative" {
+                "2"
+            } else {
+                "8"
+            };
+            assert!(source.contains(&format!("tab-size:{expected_tab_size};")));
             assert_eq!(
                 source.matches("document.createTextNode(").count(),
                 text_nodes

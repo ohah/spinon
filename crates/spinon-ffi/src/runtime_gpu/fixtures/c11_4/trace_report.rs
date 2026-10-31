@@ -565,6 +565,15 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
         "availableWidth": snapshot.layout.available_width,
         "width": snapshot.layout.width,
         "height": snapshot.layout.height,
+        "normalizedSources": snapshot.layout.sources.iter().map(|source| {
+            serde_json::json!({
+                "node": source.node.get(),
+                "sourceUtf16": [source.source_utf16.start, source.source_utf16.end],
+                "paragraphUtf8": [source.paragraph_utf8.start, source.paragraph_utf8.end],
+                "inlineAncestors": source.inline_ancestors.iter()
+                    .map(|ancestor| ancestor.get()).collect::<Vec<_>>(),
+            })
+        }).collect::<Vec<_>>(),
         "lines": snapshot.layout.lines.iter().map(|line| {
             serde_json::json!({
                 "advance": line.advance,

@@ -1,0 +1,1284 @@
+{
+  "schemaVersion": 1,
+  "target": "ios-simulator",
+  "runPrefix": "c114-anonymous-grid-text-ios-simulator-20261030T234748178Z-8979ca74",
+  "sceneCount": 40,
+  "observations": [
+    {
+      "sceneId": "anonymous-normal-min-content",
+      "summary": "2026-10-31 08:47:49.740339+0900  localhost SpinonBootstrap[47188]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-0 scene_id=anonymous-normal-min-content expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-nowrap-min-content",
+      "summary": "2026-10-31 08:47:52.659319+0900  localhost SpinonBootstrap[47240]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-1 scene_id=anonymous-nowrap-min-content expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 50,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-normal-newline-max-content",
+      "summary": "2026-10-31 08:47:54.111651+0900  localhost SpinonBootstrap[47285]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-2 scene_id=anonymous-normal-newline-max-content expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 50,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-line-max-content",
+      "summary": "2026-10-31 08:47:55.631141+0900  localhost SpinonBootstrap[47334]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-3 scene_id=anonymous-pre-line-max-content expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-min-content-wrap",
+      "summary": "2026-10-31 08:47:57.184837+0900  localhost SpinonBootstrap[47388]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-4 scene_id=anonymous-min-content-wrap expected_root_frame=width=120,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 20
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        },
+        {
+          "baseSize": 100,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 15,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-comment-continuation",
+      "summary": "2026-10-31 08:47:58.671356+0900  localhost SpinonBootstrap[47434]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-5 scene_id=anonymous-comment-continuation expected_root_frame=width=120,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=9 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 40,
+          "collapsed": false
+        },
+        {
+          "baseSize": 80,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 12,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-runs-around-block",
+      "summary": "2026-10-31 08:48:00.195222+0900  localhost SpinonBootstrap[47490]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-6 scene_id=anonymous-runs-around-block expected_root_frame=width=120,height=10 expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=14 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;1:node=3,x=20,y=0,width=30,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "order": 1,
+          "node": 3,
+          "x": 20,
+          "y": 0,
+          "width": 30,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        },
+        {
+          "baseSize": 30,
+          "collapsed": false
+        },
+        {
+          "baseSize": 40,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 16,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-hidden-child-continuation",
+      "summary": "2026-10-31 08:48:01.738087+0900  localhost SpinonBootstrap[47540]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-7 scene_id=anonymous-hidden-child-continuation expected_root_frame=width=120,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=15 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 40,
+          "collapsed": false
+        },
+        {
+          "baseSize": 80,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 12,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "whitespace-does-not-create-item",
+      "summary": "2026-10-31 08:48:03.191493+0900  localhost SpinonBootstrap[47582]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-8 scene_id=whitespace-does-not-create-item expected_root_frame=width=120,height=10 expected_item_frame= status=0 layout=ready boxes=3 generation=1 document_revision=17 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height=10;1:node=2,x=0,y=0,width=10,height=10;2:node=4,x=20,y=0,width=10,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 120,
+          "height": 10
+        },
+        {
+          "order": 1,
+          "node": 2,
+          "x": 0,
+          "y": 0,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "order": 2,
+          "node": 4,
+          "x": 20,
+          "y": 0,
+          "width": 10,
+          "height": 10
+        }
+      ],
+      "tracks": [
+        {
+          "baseSize": 20,
+          "collapsed": false
+        },
+        {
+          "baseSize": 30,
+          "collapsed": false
+        },
+        {
+          "baseSize": 40,
+          "collapsed": false
+        }
+      ],
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-normal-max-content-spaces",
+      "summary": "2026-10-31 08:48:04.708178+0900  localhost SpinonBootstrap[47628]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-9 scene_id=anonymous-normal-max-content-spaces expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 50,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-max-content-spaces",
+      "summary": "2026-10-31 08:48:06.244843+0900  localhost SpinonBootstrap[47678]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-10 scene_id=anonymous-pre-wrap-max-content-spaces expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-comment-split-max-content",
+      "summary": "2026-10-31 08:48:07.776691+0900  localhost SpinonBootstrap[47723]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-11 scene_id=anonymous-pre-wrap-comment-split-max-content expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=9 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-min-content-spaces",
+      "summary": "2026-10-31 08:48:09.286179+0900  localhost SpinonBootstrap[47771]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-12 scene_id=anonymous-pre-wrap-min-content-spaces expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-soft-wrap",
+      "summary": "2026-10-31 08:48:10.912039+0900  localhost SpinonBootstrap[47823]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-13 scene_id=anonymous-pre-wrap-soft-wrap expected_root_frame=width=25,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-forced-break",
+      "summary": "2026-10-31 08:48:12.423217+0900  localhost SpinonBootstrap[47866]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-14 scene_id=anonymous-pre-wrap-forced-break expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-wrap-whitespace-before-block",
+      "summary": "2026-10-31 08:48:13.963749+0900  localhost SpinonBootstrap[47911]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-15 scene_id=anonymous-pre-wrap-whitespace-before-block expected_root_frame=width=40,height=10 expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;1:node=3,x=0,y=0,width=10,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "order": 1,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 10,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-max-content",
+      "summary": "2026-10-31 08:48:15.487635+0900  localhost SpinonBootstrap[47957]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-16 scene_id=anonymous-break-spaces-max-content expected_root_frame=width=60,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-comment-split-max-content",
+      "summary": "2026-10-31 08:48:16.993518+0900  localhost SpinonBootstrap[48011]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-17 scene_id=anonymous-break-spaces-comment-split-max-content expected_root_frame=width=60,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=9 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=60,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 60,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-min-content",
+      "summary": "2026-10-31 08:48:18.502548+0900  localhost SpinonBootstrap[48057]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-18 scene_id=anonymous-break-spaces-min-content expected_root_frame=width=30,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 30,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 30,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-soft-wrap-25",
+      "summary": "2026-10-31 08:48:19.995473+0900  localhost SpinonBootstrap[48098]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-19 scene_id=anonymous-break-spaces-soft-wrap-25 expected_root_frame=width=25,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 11,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-forced-break-max-content",
+      "summary": "2026-10-31 08:48:21.488616+0900  localhost SpinonBootstrap[48157]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-20 scene_id=anonymous-break-spaces-forced-break-max-content expected_root_frame=width=40,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-forced-break-min-content",
+      "summary": "2026-10-31 08:48:23.031586+0900  localhost SpinonBootstrap[48201]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-21 scene_id=anonymous-break-spaces-forced-break-min-content expected_root_frame=width=30,height=30 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=30,height=30]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 30,
+          "height": 30
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 30,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 30,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-trailing-soft-wrap-25",
+      "summary": "2026-10-31 08:48:24.516831+0900  localhost SpinonBootstrap[48245]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-22 scene_id=anonymous-break-spaces-trailing-soft-wrap-25 expected_root_frame=width=25,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-trailing-max-content",
+      "summary": "2026-10-31 08:48:26.013354+0900  localhost SpinonBootstrap[48296]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-23 scene_id=anonymous-break-spaces-trailing-max-content expected_root_frame=width=40,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 40,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-whitespace-only",
+      "summary": "2026-10-31 08:48:27.534980+0900  localhost SpinonBootstrap[48341]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-24 scene_id=anonymous-break-spaces-whitespace-only expected_root_frame=width=0,height=0 expected_item_frame= status=0 layout=ready boxes=0 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=0,height=0]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 0,
+          "height": 0
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 0,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 7,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-break-spaces-whitespace-before-block",
+      "summary": "2026-10-31 08:48:29.054227+0900  localhost SpinonBootstrap[48390]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-25 scene_id=anonymous-break-spaces-whitespace-before-block expected_root_frame=width=40,height=10 expected_item_frame= status=0 layout=ready boxes=2 generation=1 document_revision=12 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=40,height=10;1:node=3,x=0,y=0,width=10,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "order": 1,
+          "node": 3,
+          "x": 0,
+          "y": 0,
+          "width": 10,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          },
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 5,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-max-content-spaces",
+      "summary": "2026-10-31 08:48:30.561890+0900  localhost SpinonBootstrap[48438]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-26 scene_id=anonymous-pre-max-content-spaces expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 60,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-min-content-spaces",
+      "summary": "2026-10-31 08:48:32.060844+0900  localhost SpinonBootstrap[48487]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-27 scene_id=anonymous-pre-min-content-spaces expected_root_frame=width=20,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 50,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-forced-break",
+      "summary": "2026-10-31 08:48:33.577704+0900  localhost SpinonBootstrap[48531]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-28 scene_id=anonymous-pre-forced-break expected_root_frame=width=20,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 20,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-normal-fixed-width-control",
+      "summary": "2026-10-31 08:48:35.082278+0900  localhost SpinonBootstrap[48577]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-29 scene_id=anonymous-normal-fixed-width-control expected_root_frame=width=25,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-fixed-width-nowrap",
+      "summary": "2026-10-31 08:48:36.566631+0900  localhost SpinonBootstrap[48627]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-30 scene_id=anonymous-pre-fixed-width-nowrap expected_root_frame=width=25,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-max-content",
+      "summary": "2026-10-31 08:48:38.089641+0900  localhost SpinonBootstrap[48672]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-31 scene_id=anonymous-pre-tab-max-content expected_root_frame=width=100,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 100,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-leading",
+      "summary": "2026-10-31 08:48:39.599448+0900  localhost SpinonBootstrap[48717]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-32 scene_id=anonymous-pre-tab-leading expected_root_frame=width=90,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=90,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 90,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 90,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-exact-stop",
+      "summary": "2026-10-31 08:48:41.151838+0900  localhost SpinonBootstrap[48771]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-33 scene_id=anonymous-pre-tab-exact-stop expected_root_frame=width=170,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 170,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 170,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-consecutive",
+      "summary": "2026-10-31 08:48:42.723628+0900  localhost SpinonBootstrap[48821]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-34 scene_id=anonymous-pre-tab-consecutive expected_root_frame=width=170,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 170,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 170,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-forced-break",
+      "summary": "2026-10-31 08:48:44.211558+0900  localhost SpinonBootstrap[48864]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-35 scene_id=anonymous-pre-tab-forced-break expected_root_frame=width=100,height=20 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 20
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 100,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 20,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-trailing",
+      "summary": "2026-10-31 08:48:45.702439+0900  localhost SpinonBootstrap[48909]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-36 scene_id=anonymous-pre-tab-trailing expected_root_frame=width=80,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 80,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 80,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 14,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-min-content",
+      "summary": "2026-10-31 08:48:47.228956+0900  localhost SpinonBootstrap[48960]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-37 scene_id=anonymous-pre-tab-min-content expected_root_frame=width=100,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 100,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 13,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "sceneId": "anonymous-pre-tab-fixed-width-nowrap",
+      "summary": "2026-10-31 08:48:48.758463+0900  localhost SpinonBootstrap[49009]: (Foundation) SPINON_C114_GRID_SUMMARY run_id=c114-ios-simulator-20261030T234748178Z-8979ca74-38 scene_id=anonymous-pre-tab-fixed-width-nowrap expected_root_frame=width=25,height=10 expected_item_frame= status=0 layout=ready boxes=1 generation=1 document_revision=7 environment_revision=0",
+      "nodeFrames": "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]",
+      "observedNodeFrames": [
+        {
+          "order": 0,
+          "node": 1,
+          "x": 0,
+          "y": 0,
+          "width": 25,
+          "height": 10
+        }
+      ],
+      "tracks": {
+        "Columns": [
+          {
+            "baseSize": 25,
+            "collapsed": false
+          }
+        ],
+        "Rows": [
+          {
+            "baseSize": 10,
+            "collapsed": false
+          }
+        ]
+      },
+      "trackTraceChunks": 10,
+      "drawPresented": true,
+      "supersededRetries": 0
+    },
+    {
+      "id": "anonymous-pre-tab-size-2-negative",
+      "status": "expected-rejection",
+      "code": "unsupported_c114_anonymous_text_style",
+      "property": "tab-size",
+      "nodeId": 1,
+      "supersededRetries": 0
+    }
+  ]
+}
