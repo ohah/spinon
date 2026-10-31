@@ -1,0 +1,36 @@
+{
+  "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "tool": "Agent Browser",
+  "font": {
+    "family": "Ahem",
+    "sizePx": 10,
+    "loaded": true,
+    "path": "tests/fixtures/resources/c15/Ahem.ttf",
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "text": "XXX X",
+  "gridProbe": {
+    "display": "inline-grid",
+    "gridTemplateColumns": "min-content",
+    "whiteSpace": "normal",
+    "observations": [
+      {"specified": "0px", "computed": "0px", "trackPx": 30, "boxWidthPx": 30},
+      {"specified": "5px", "computed": "5px", "trackPx": 35, "boxWidthPx": 35},
+      {"specified": "10px", "computed": "10px", "trackPx": 40, "boxWidthPx": 40},
+      {"specified": "-5px", "computed": "-5px", "trackPx": 25, "boxWidthPx": 25},
+      {"specified": "5%", "computed": "5%", "trackPx": 30, "boxWidthPx": 30},
+      {"specified": "5px each-line", "computed": "5px each-line", "trackPx": 35, "boxWidthPx": 35},
+      {"specified": "5px hanging", "computed": "5px hanging", "trackPx": 30, "boxWidthPx": 30}
+    ]
+  },
+  "blockIntrinsicProbe": {
+    "observations": [
+      {"indentPx": 0, "minContentPx": 30, "maxContentPx": 50},
+      {"indentPx": 5, "minContentPx": 35, "maxContentPx": 55},
+      {"indentPx": 10, "minContentPx": 40, "maxContentPx": 60},
+      {"indentPx": -5, "minContentPx": 25, "maxContentPx": 45},
+      {"indentPx": -10, "minContentPx": 20, "maxContentPx": 40}
+    ]
+  },
+  "scope": "Chrome observation only; not Spinon runtime conformance or CSS support"
+}
