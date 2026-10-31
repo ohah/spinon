@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.4 anonymous Grid text letter-spacing precomparison</title>
+  <style>
+    @font-face {
+      font-family: Ahem;
+      src: url("../../resources/c15/Ahem.ttf") format("truetype");
+      font-style: normal;
+      font-weight: 100 900;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 16px;
+      color: #f5f5f5;
+      background: #16181d;
+      font: 12px/1.4 system-ui, sans-serif;
+    }
+    main {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(170px, 1fr));
+      gap: 12px;
+    }
+    .case {
+      min-height: 76px;
+      padding: 10px;
+      border: 1px solid #515865;
+      background: #20242c;
+    }
+    h2 { margin: 0 0 8px; font: 600 12px/1.2 system-ui, sans-serif; }
+    .grid {
+      display: grid;
+      width: max-content;
+      height: max-content;
+      grid-template-rows: auto;
+      align-items: start;
+      align-content: start;
+      justify-items: start;
+      justify-content: start;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      font-family: Ahem, sans-serif;
+      font-size: 10px;
+      font-weight: 400;
+      font-style: normal;
+      line-height: 10px;
+      white-space: normal;
+      color: #ff5d6c;
+      background: #101820;
+    }
+    .min { grid-template-columns: min-content; }
+    .max { grid-template-columns: max-content; }
+  </style>
+</head>
+<body>
+  <main id="cases">
+    <section class="case"><h2>normal · min-content</h2><div id="normal-min" class="grid min" style="letter-spacing:normal">XX XX</div></section>
+    <section class="case"><h2>normal · max-content</h2><div id="normal-max" class="grid max" style="letter-spacing:normal">XX XX</div></section>
+    <section class="case"><h2>-1px · min-content</h2><div id="minus-one-min" class="grid min" style="letter-spacing:-1px">XX XX</div></section>
+    <section class="case"><h2>-1px · max-content</h2><div id="minus-one-max" class="grid max" style="letter-spacing:-1px">XX XX</div></section>
+    <section class="case"><h2>0px · min-content</h2><div id="zero-min" class="grid min" style="letter-spacing:0px">XX XX</div></section>
+    <section class="case"><h2>0px · max-content</h2><div id="zero-max" class="grid max" style="letter-spacing:0px">XX XX</div></section>
+    <section class="case"><h2>0.5px · min-content</h2><div id="half-min" class="grid min" style="letter-spacing:0.5px">XX XX</div></section>
+    <section class="case"><h2>0.5px · max-content</h2><div id="half-max" class="grid max" style="letter-spacing:0.5px">XX XX</div></section>
+    <section class="case"><h2>1px · min-content</h2><div id="one-min" class="grid min" style="letter-spacing:1px">XX XX</div></section>
+    <section class="case"><h2>1px · max-content</h2><div id="one-max" class="grid max" style="letter-spacing:1px">XX XX</div></section>
+    <section class="case"><h2>2px · min-content</h2><div id="two-min" class="grid min" style="letter-spacing:2px">XX XX</div></section>
+    <section class="case"><h2>2px · max-content</h2><div id="two-max" class="grid max" style="letter-spacing:2px">XX XX</div></section>
+    <section class="case"><h2>-1px · single word min-content</h2><div id="minus-one-word-min" class="grid min" style="letter-spacing:-1px">XX</div></section>
+    <section class="case"><h2>-1px · single word max-content</h2><div id="minus-one-word-max" class="grid max" style="letter-spacing:-1px">XX</div></section>
+    <section class="case"><h2>1px · single word min-content</h2><div id="one-word-min" class="grid min" style="letter-spacing:1px">XX</div></section>
+    <section class="case"><h2>1px · single word max-content</h2><div id="one-word-max" class="grid max" style="letter-spacing:1px">XX</div></section>
+  </main>
+</body>
+</html>
