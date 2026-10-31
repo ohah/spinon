@@ -769,6 +769,14 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static final String[] C114_GRID_TRACK_SIZING_SCENE_IDS = {
+            "line-height-normal-two-lines", "line-height-zero-number",
+            "line-height-half-number", "line-height-one-number",
+            "line-height-one-point-five-number", "line-height-two-number",
+            "line-height-zero-length", "line-height-five-length",
+            "line-height-twelve-point-five-length", "line-height-one-hundred-twenty-five-percent",
+            "line-height-one-point-two-five-em", "line-height-calc-length",
+            "line-height-normal-single-line", "line-height-half-number-single-line",
+            "line-height-one-point-five-soft-wrap", "line-height-zero-number-soft-wrap",
             "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
             "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
             "cyclic-fit-content-column", "cyclic-fit-content-row",
@@ -4767,6 +4775,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static String c114ExpectedRootFrame(String sceneId) {
+        int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
+        if (lineHeight >= 0) return "width=20,height=" + lineHeight;
         C114FullTabSizeSceneExpectation tabSize = c114FullTabSizeSceneExpectation(sceneId);
         if (tabSize != null) {
             return "width=" + c114GenericFrameNumber(tabSize.rootWidth)
@@ -5616,6 +5626,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114IsComputedLineHeightScene(sceneId)) {
+            return c114ComputedLineHeightTextIntrinsicInputsMatch(sceneId, report);
+        }
         if (sceneId.equals("anonymous-normal-newline-max-content")
                 || sceneId.equals("anonymous-pre-line-max-content")
                 || c114IsAnonymousWhitespaceMatrixScene(sceneId)) {
@@ -9219,6 +9232,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        int lineHeight = c114ComputedLineHeightTrackHeight(sceneId);
+        if (lineHeight >= 0) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height="
+                    + lineHeight + "]";
+        }
         String firstBaselineFrames = c114GridTextBaselineNodeFrames(sceneId);
         if (firstBaselineFrames != null) return firstBaselineFrames;
         String fixedMaximumFrames = c114FixedMaximumNodeFrames(sceneId);
@@ -11932,6 +11950,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114IsComputedLineHeightScene(sceneId)) {
+            return c114ComputedLineHeightTrackHeight(sceneId) == 0 ? 0 : 1;
+        }
         if (c114IsGridTextBaselineScene(sceneId)) return 3;
         if (C114VisibilityCollapseStage.isScene(sceneId)) {
             return C114VisibilityCollapseStage.expectedBoxCount(sceneId);
@@ -12178,7 +12199,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114IsAnonymousTextScene(String sceneId) {
-        return sceneId.equals("anonymous-min-content-wrap")
+        return c114IsComputedLineHeightScene(sceneId)
+                || sceneId.equals("anonymous-min-content-wrap")
                 || sceneId.equals("anonymous-normal-min-content")
                 || sceneId.equals("anonymous-nowrap-min-content")
                 || sceneId.equals("anonymous-normal-newline-max-content")
@@ -12189,6 +12211,89 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 || sceneId.equals("anonymous-runs-around-block")
                 || sceneId.equals("anonymous-hidden-child-continuation")
                 || sceneId.equals("whitespace-does-not-create-item");
+    }
+
+    private static boolean c114IsComputedLineHeightScene(String sceneId) {
+        return c114ComputedLineHeightTrackHeight(sceneId) >= 0;
+    }
+
+    private static int c114ComputedLineHeightTrackHeight(String sceneId) {
+        switch (sceneId) {
+            case "line-height-normal-two-lines":
+            case "line-height-one-number":
+                return 20;
+            case "line-height-zero-number":
+            case "line-height-zero-length":
+            case "line-height-zero-number-soft-wrap":
+                return 0;
+            case "line-height-half-number":
+                return 10;
+            case "line-height-one-point-five-number":
+            case "line-height-one-point-five-soft-wrap":
+                return 30;
+            case "line-height-two-number":
+                return 40;
+            case "line-height-five-length":
+                return 10;
+            case "line-height-twelve-point-five-length":
+            case "line-height-one-hundred-twenty-five-percent":
+            case "line-height-one-point-two-five-em":
+            case "line-height-calc-length":
+                return 25;
+            case "line-height-normal-single-line":
+                return 10;
+            case "line-height-half-number-single-line":
+                return 5;
+            default:
+                return -1;
+        }
+    }
+
+    private static boolean c114ComputedLineHeightTextIntrinsicInputsMatch(
+            String sceneId, String report
+    ) {
+        int marker = report.indexOf("grid_track_sizing_diagnostics=");
+        if (marker < 0) return false;
+        double[] expected = c114ComputedLineHeightIntrinsicSizes(sceneId);
+        if (expected == null) return false;
+        try {
+            Object value = new org.json.JSONTokener(report.substring(
+                    marker + "grid_track_sizing_diagnostics=".length())).nextValue();
+            if (!(value instanceof org.json.JSONObject)) return false;
+            org.json.JSONObject diagnostics = (org.json.JSONObject) value;
+            org.json.JSONObject revision = diagnostics.optJSONObject("layoutInputRevision");
+            org.json.JSONArray inputs = diagnostics.optJSONArray("gridItemIntrinsicInputs");
+            if (revision == null || inputs == null || inputs.length() != 1
+                    || !revision.optString("source", "").startsWith("HostDocument")
+                    || revision.optLong("style", -1) < 0
+                    || revision.optLong("environment", -1) < 0
+                    || revision.optLong("intrinsicSize", -1) < 0) return false;
+            org.json.JSONObject input = inputs.optJSONObject(0);
+            org.json.JSONObject source = input == null ? null : input.optJSONObject("source");
+            return input != null && input.optInt("grid", -1) == 1
+                    && input.optInt("node", -1) == 2
+                    && input.optInt("sourceOrder", -1) == 0
+                    && source != null && "text".equals(source.optString("kind"))
+                    && source.optInt("fontRegistryRevision", -1) == 1
+                    && source.optDouble("minContent", Double.NaN) == expected[0]
+                    && source.optDouble("minContentHeight", Double.NaN) == expected[1]
+                    && source.optDouble("maxContent", Double.NaN) == expected[2]
+                    && source.optDouble("maxContentHeight", Double.NaN) == expected[3];
+        } catch (org.json.JSONException | ClassCastException | NumberFormatException error) {
+            return false;
+        }
+    }
+
+    private static double[] c114ComputedLineHeightIntrinsicSizes(String sceneId) {
+        int height = c114ComputedLineHeightTrackHeight(sceneId);
+        if (height < 0) return null;
+        if ("line-height-one-point-five-soft-wrap".equals(sceneId)) {
+            return new double[] {20, 30, 50, 15};
+        }
+        if ("line-height-zero-number-soft-wrap".equals(sceneId)) {
+            return new double[] {20, 0, 50, 0};
+        }
+        return new double[] {20, height, 20, height};
     }
 
     private static boolean c114IsAnonymousWhitespaceMatrixScene(String sceneId) {

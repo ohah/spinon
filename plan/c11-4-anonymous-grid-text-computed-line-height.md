@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** Chrome 156 Agent Browser 관찰, CSS Inline/Grid 독립 기대값, 구현 전 계획 검토 20개를 기록했다. 구현이나 Spinon runtime 결과는 아직 없다. 이 작업은 기존 opt-in C11.4 anonymous Grid text profile에 computed `line-height`를 연결한다. C11/C11.4 checkbox와 공식 완료 `72/213`은 바꾸지 않는다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/README.md) · [계획 검토 20개](./c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)
+**상태:** Chrome 156 관찰, 독립 기대값과 구현 전 계획 검토 20개를 기록했고 제한 fixture 구현 및 최신 Android/iOS Simulator 16-scene 실행을 마쳤다. 별도 구현/runtime 20관점과 PR diff 30관점 검토도 마쳤으며 PR·병합은 진행 중이다. C11/C11.4 checkbox와 공식 완료 `72/213`은 그대로 둔다. [사전 비교](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-precomparison-2026-10-31/README.md) · [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/README.md) · [구현/runtime 검토 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/implementation-runtime-review-20.md) · [PR diff 검토 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/pr-diff-review-30.md) · [계획 검토 20개](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)
 
 ## 목적과 경계
 
@@ -47,6 +47,14 @@
 - 신규 fixture marker/ABI가 default artifact에 있거나 opt-in positive control에서 사라지면 실패다.
 - 이 slice는 공개 CSS 지원, 일반 HTML cascade, WPT pass, glyph paint/pixels, 실기기/hardware GPU, iOS compositor 이후 화면, 전체 C11.4 또는 C11 완료를 뜻하지 않는다.
 
+## 구현 결과
+
+기존 C11.4 fixture-test 경계 안에서 computed `line-height`를 anonymous direct-text `ParagraphStyle`에 연결했다. `normal`, finite non-negative number와 `px` 값만 runtime adapter가 받으며, Stylo가 percentage·`em`·`calc()`를 computed `px`로 직렬화한 값은 그 결과를 사용한다. 직접 text paragraph의 finite zero line-height는 허용하고 span 전용 `InlineRunStyle` 검증은 유지했다. 미지원·음수·비유한 입력은 frame 생성 전에 거부한다.
+
+고정 16-scene 기대값은 Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 16/16 통과했다. 실행기는 computed text layout, 줄 수, intrinsic min/max block contribution, Rows auto track, item/root geometry 및 revision을 검증하며 설치 APK·Simulator executable hash를 빌드 산출물과 대조한다. 기본 FFI product archive에는 16개 scene marker가 모두 없고 `c04-runtime-gpu-fixture-test` positive control에는 모두 있다. 원본 로그와 범위 한계는 [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/README.md)에 기록한다.
+
+iOS Simulator 캡처는 fixture app route와 `layout=ready` 상태를 보여주며 text glyph paint는 꺼져 있다. Android AVD 대표 캡처는 화면이 검게 나와 사용하지 않는다. 이 작업은 glyph pixel, Android PixelCopy, iOS compositor 이후 화면, 실기기·hardware GPU, WPT 또는 일반 authored CSS admission을 검증하지 않았다. 전체 C11.4/C11은 계속 미완료다.
+
 ## 계획 적대 검토
 
-[20개 독립 실패 관점](./c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)은 구현 전 이 계획에만 적용한다. 기존 white-space 및 tab-size 계획 검토는 재사용하지 않는다.
+[20개 독립 실패 관점](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/plan/c11-4-anonymous-grid-text-computed-line-height-plan-review-20.md)은 구현 전 이 계획에만 적용한다. 기존 white-space 및 tab-size 계획 검토는 재사용하지 않는다.

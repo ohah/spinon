@@ -1,0 +1,10 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.06s
+     Running unittests src/lib.rs (target/debug/deps/spinon_text_layout-150fd4237564ccc2)
+
+running 4 tests
+test engine::tests::paragraph_style::paragraph_style_default_keeps_the_legacy_horizontal_text_profile ... ok
+test engine::tests::paragraph_style::inline_run_style_still_rejects_zero_line_height ... ok
+test engine::tests::paragraph_style::paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics ... ok
+test engine::tests::paragraph_style::paragraph_style_allows_zero_line_height_and_keeps_text_lines_finite ... ok
+
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 68 filtered out; finished in 0.01s

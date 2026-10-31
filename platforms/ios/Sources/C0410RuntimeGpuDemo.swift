@@ -773,6 +773,14 @@ private let c114VisibilityCollapseSceneIDs: Set<String> = [
 ]
 
 private let c114GridTrackSizingSceneIDs: Set<String> = [
+    "line-height-normal-two-lines", "line-height-zero-number",
+    "line-height-half-number", "line-height-one-number",
+    "line-height-one-point-five-number", "line-height-two-number",
+    "line-height-zero-length", "line-height-five-length",
+    "line-height-twelve-point-five-length", "line-height-one-hundred-twenty-five-percent",
+    "line-height-one-point-two-five-em", "line-height-calc-length",
+    "line-height-normal-single-line", "line-height-half-number-single-line",
+    "line-height-one-point-five-soft-wrap", "line-height-zero-number-soft-wrap",
     "cyclic-percent-column", "cyclic-percent-row", "definite-percent-column",
     "cyclic-minmax-column", "cyclic-minmax-row", "definite-minmax-column",
     "cyclic-fit-content-column", "cyclic-fit-content-row", "definite-fit-content-column",
@@ -2180,6 +2188,9 @@ private func c114IntrinsicAutoRepeatNodeFrames(_ sceneID: String) -> String? {
 }
 
 private func c114ExpectedRootFrame(_ sceneID: String) -> String {
+    if let lineHeight = c114ComputedLineHeightTrackHeight(sceneID) {
+        return "width=20,height=\(c114GenericFrameNumber(lineHeight))"
+    }
     if let tabSize = c114FullTabSizeSceneExpectation(sceneID) {
         return "width=\(c114GenericFrameNumber(tabSize.rootWidth)),"
             + "height=\(c114GenericFrameNumber(tabSize.height))"
@@ -3035,6 +3046,9 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114ComputedLineHeightTrackHeight(sceneID) != nil {
+        return c114ComputedLineHeightTextIntrinsicInputsMatch(sceneID, report: report)
+    }
     if sceneID == "anonymous-normal-newline-max-content"
         || sceneID == "anonymous-pre-line-max-content"
         || c114IsAnonymousWhitespaceMatrixScene(sceneID) {
@@ -8402,6 +8416,9 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let lineHeight = c114ComputedLineHeightTrackHeight(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=\(c114GenericFrameNumber(lineHeight))]"
+    }
     if let frames = c114GridTextBaselineNodeFrames(sceneID) { return frames }
     if let frames = c114FixedMaximumNodeFrames(sceneID) { return frames }
     if let frames = C114FitContentImplicitColumnWpt.expectedNodeFrames(sceneID) {
@@ -10127,6 +10144,9 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if let height = c114ComputedLineHeightTrackHeight(sceneID) {
+        return height == 0 ? 0 : 1
+    }
     if c114GridTextBaselineSceneIDs.contains(sceneID) { return 3 }
     if c114VisibilityCollapseSceneIDs.contains(sceneID) {
         if sceneID.hasPrefix("collapse-visible-descendant-") { return 2 }
@@ -10334,13 +10354,74 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
-    ["anonymous-min-content-wrap", "anonymous-normal-min-content",
+    c114ComputedLineHeightTrackHeight(sceneID) != nil
+        || ["anonymous-min-content-wrap", "anonymous-normal-min-content",
      "anonymous-nowrap-min-content", "anonymous-normal-newline-max-content",
      "anonymous-normal-fixed-width-control", "anonymous-pre-line-max-content",
      "anonymous-comment-continuation",
      "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
      "whitespace-does-not-create-item"].contains(sceneID)
         || c114IsAnonymousWhitespaceMatrixScene(sceneID)
+}
+
+private func c114ComputedLineHeightTrackHeight(_ sceneID: String) -> Double? {
+    switch sceneID {
+    case "line-height-normal-two-lines", "line-height-one-number": return 20
+    case "line-height-zero-number", "line-height-zero-length",
+         "line-height-zero-number-soft-wrap": return 0
+    case "line-height-half-number", "line-height-five-length": return 10
+    case "line-height-one-point-five-number", "line-height-one-point-five-soft-wrap": return 30
+    case "line-height-two-number": return 40
+    case "line-height-twelve-point-five-length",
+         "line-height-one-hundred-twenty-five-percent",
+         "line-height-one-point-two-five-em", "line-height-calc-length": return 25
+    case "line-height-normal-single-line": return 10
+    case "line-height-half-number-single-line": return 5
+    default: return nil
+    }
+}
+
+private func c114ComputedLineHeightTextIntrinsicInputsMatch(
+    _ sceneID: String, report: String
+) -> Bool {
+    guard let height = c114ComputedLineHeightTrackHeight(sceneID),
+          let expected = c114ComputedLineHeightIntrinsicSizes(sceneID, height: height),
+          let diagnostics = c114GridTrackSizingDiagnostics(report),
+          let revision = diagnostics["layoutInputRevision"] as? [String: Any],
+          let sourceRevision = revision["source"] as? String,
+          sourceRevision.hasPrefix("HostDocument"),
+          ["style", "environment", "intrinsicSize"].allSatisfy({
+              guard let value = c114GenericJSONFiniteNumber(revision[$0]) else { return false }
+              return value >= 0
+          }),
+          let inputs = diagnostics["gridItemIntrinsicInputs"] as? [[String: Any]],
+          inputs.count == 1,
+          let input = inputs.first,
+          c114GenericJSONFiniteNumber(input["grid"]) == 1,
+          c114GenericJSONFiniteNumber(input["node"]) == 2,
+          c114GenericJSONFiniteNumber(input["sourceOrder"]) == 0,
+          let source = input["source"] as? [String: Any],
+          source["kind"] as? String == "text",
+          c114GenericJSONFiniteNumber(source["fontRegistryRevision"]) == 1 else {
+        return false
+    }
+    return c114GenericJSONNear(source["minContent"], expected: expected.minContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["minContentHeight"], expected: expected.minContentHeight, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["maxContent"], expected: expected.maxContent, tolerance: 1.0 / 64.0)
+        && c114GenericJSONNear(source["maxContentHeight"], expected: expected.maxContentHeight, tolerance: 1.0 / 64.0)
+}
+
+private func c114ComputedLineHeightIntrinsicSizes(
+    _ sceneID: String, height: Double
+) -> (minContent: Double, minContentHeight: Double,
+    maxContent: Double, maxContentHeight: Double)? {
+    if sceneID == "line-height-one-point-five-soft-wrap" {
+        return (20, 30, 50, 15)
+    }
+    if sceneID == "line-height-zero-number-soft-wrap" {
+        return (20, 0, 50, 0)
+    }
+    return (20, height, 20, height)
 }
 
 private func c114IsAnonymousWhitespaceMatrixScene(_ sceneID: String) -> Bool {

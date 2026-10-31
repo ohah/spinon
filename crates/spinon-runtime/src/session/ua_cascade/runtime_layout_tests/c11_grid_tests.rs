@@ -16,6 +16,10 @@ mod mixed;
 mod anonymous_text_image;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/anonymous_text_line_height.rs"]
+mod anonymous_text_line_height;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/anonymous_text_multi_image.rs"]
 mod anonymous_text_multi_image;
 

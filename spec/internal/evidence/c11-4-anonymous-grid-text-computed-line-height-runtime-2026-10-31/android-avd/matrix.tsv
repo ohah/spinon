@@ -1,0 +1,17 @@
+scene	result	line_count	used_line_height_px	grid_row_px	trace_parts
+line-height-normal-two-lines	PASS	2	10	20	5
+line-height-zero-number	PASS	2	0	0	5
+line-height-half-number	PASS	2	5	10	5
+line-height-one-number	PASS	2	10	20	5
+line-height-one-point-five-number	PASS	2	15	30	5
+line-height-two-number	PASS	2	20	40	5
+line-height-zero-length	PASS	2	0	0	5
+line-height-five-length	PASS	2	5	10	5
+line-height-twelve-point-five-length	PASS	2	12.5	25	5
+line-height-one-hundred-twenty-five-percent	PASS	2	12.5	25	5
+line-height-one-point-two-five-em	PASS	2	12.5	25	5
+line-height-calc-length	PASS	2	12.5	25	5
+line-height-normal-single-line	PASS	1	10	10	5
+line-height-half-number-single-line	PASS	1	5	5	5
+line-height-one-point-five-soft-wrap	PASS	2	15	30	5
+line-height-zero-number-soft-wrap	PASS	2	0	0	5
