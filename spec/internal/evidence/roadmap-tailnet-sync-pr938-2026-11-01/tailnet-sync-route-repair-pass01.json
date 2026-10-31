@@ -1,0 +1,92 @@
+{
+  "cause": "preflight recorded first missing parent path instead of full route; create writes collapsed into three parent files",
+  "misplacedParentFileCount": 3,
+  "preservedFiles": [
+    {
+      "formerPath": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01",
+      "backupPath": "misplaced-route-parent-files-pass01/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01",
+      "bytes": 34612,
+      "sha256": "1faf87e09c55c2bfd754769f8b7d3bcf9f9424903b57d65332d773a8a4702618",
+      "verified": true
+    },
+    {
+      "formerPath": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01",
+      "backupPath": "misplaced-route-parent-files-pass01/internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01",
+      "bytes": 36681,
+      "sha256": "d510c013c043520685548e01c8e35e30299a242304fc64ebcbfcd813e86de401",
+      "verified": true
+    },
+    {
+      "formerPath": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01",
+      "backupPath": "misplaced-route-parent-files-pass01/internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01",
+      "bytes": 35618,
+      "sha256": "cff288c6092fe1971cfbd0f5c501ee7e9af0922ae4ee03589baacba56e33fa50",
+      "verified": true
+    }
+  ],
+  "repairedRouteCount": 10,
+  "repaired": [
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/README.html",
+      "bytes": 34612,
+      "sha256": "1faf87e09c55c2bfd754769f8b7d3bcf9f9424903b57d65332d773a8a4702618",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/android-avd-c114-computed-text-indent-negative-android-avd-1793471314021-0e2d635a/representative-screen.png",
+      "bytes": 78202,
+      "sha256": "7f1f9d573339061262a81d7656173c05557aaa27c6f0a558e9f86fee4ab0d2fa",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/binary-boundary-pass01/README.html",
+      "bytes": 28920,
+      "sha256": "b7558790059ff6ace351b0d919d7c5e9035a4f6ed6028daffe308e4fa4bfe46e",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "bytes": 34465,
+      "sha256": "46f0b8f78b8b85ad7f122edda00e96c3aa39005d6ff685d21a6db1f580ecf64d",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/ios-simulator-c114-computed-text-indent-negative-ios-simulator-1793470656069-b87d34b9/representative-screen.png",
+      "bytes": 142783,
+      "sha256": "be623158ae6b1cfaa3ec68807b0323b31b083de3a1ab85cf683f95d844e0dfc4",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/post-merge-status-review-20.html",
+      "bytes": 32763,
+      "sha256": "e194261a485b0dda98b2ed24e09b177624a84399980b1785e3b1d114c9403b76",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/pr-diff-review-30.html",
+      "bytes": 38254,
+      "sha256": "14c64cd5c7be760bc747afd9d43934cad7c91c16aae72b02eab873facfdfaf8a",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-negative-indent-runtime-2026-11-01/README.html",
+      "bytes": 36681,
+      "sha256": "d510c013c043520685548e01c8e35e30299a242304fc64ebcbfcd813e86de401",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-20.html",
+      "bytes": 35679,
+      "sha256": "ba26640fe90c91793740e0193479af47e4ada6d196d7f58caaa970a9d13325e7",
+      "verified": true
+    },
+    {
+      "route": "internal/evidence/roadmap-tailnet-sync-pr938-2026-11-01/roadmap-pr-diff-review-30.html",
+      "bytes": 35618,
+      "sha256": "cff288c6092fe1971cfbd0f5c501ee7e9af0922ae4ee03589baacba56e33fa50",
+      "verified": true
+    }
+  ],
+  "contentPreserved": true,
+  "noDeletes": true
+}
