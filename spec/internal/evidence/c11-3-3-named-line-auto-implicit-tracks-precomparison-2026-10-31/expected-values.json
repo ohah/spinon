@@ -1,0 +1,29 @@
+{
+  "schema": "spinon-css-reference-expectation-v1",
+  "task": "C11.3.3 positive trailing named-line implicit auto tracks",
+  "basis": [
+    "CSS Grid Layout Module Level 1, 2025 CRD §§7.5-7.6: explicit grid 밖에서 implicit track이 생성되고 grid-auto-rows/grid-auto-columns로 크기를 정한다.",
+    "CSS Grid Layout Module Level 1, 2025 CRD §8.3: 정수 occurrence가 없는 named line은 occurrence 1로 다룬다. 이름이 부족하면 implicit grid line을 그 이름이 있는 것으로 간주한다."
+  ],
+  "cases": [
+    {
+      "id": "columns",
+      "expectedTrackSizingCssPx": [40, 40, 0, 30],
+      "expectedItemFrameRelativeToRootCssPx": [80, 0, 30, 10],
+      "reason": "이름이 없는 positive named line은 grid를 끝 방향으로 확장한다. 비어 있는 auto track에는 content contribution이 없고, 다음 auto track에는 폭 30px인 definite item이 놓인다."
+    },
+    {
+      "id": "fixed-columns",
+      "expectedTrackSizingCssPx": [40, 40, 30, 30],
+      "expectedItemFrameRelativeToRootCssPx": [110, 0, 30, 10],
+      "reason": "30px fixed implicit column 대조군으로 auto sizing과 독립적으로 track 개수와 item line 배치를 확인한다."
+    },
+    {
+      "id": "rows",
+      "expectedTrackSizingCssPx": [20, 0, 25],
+      "expectedItemFrameRelativeToRootCssPx": [0, 20, 20, 25],
+      "reason": "이름이 없는 positive named row line은 grid를 끝 방향으로 확장한다. item contribution으로 auto track은 25px가 되며 20px 높이 root를 5px 넘는다."
+    }
+  ],
+  "scope": "지원 중인 named-line 경로로 positive trailing implicit track을 만드는 definite placement에 한정한다. Signed/leading implicit placement, 범위 밖 numeric placement, auto-placement, non-px track list와 일반 CSS author admission은 범위에 포함하지 않는다."
+}

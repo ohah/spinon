@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>C11.3.3 named-line auto implicit tracks</title>
+  <style>
+    html, body { margin: 0; width: 320px; height: 220px; }
+    body { position: relative; background: #ffffff; color-scheme: light; }
+    .scene {
+      position: absolute;
+      display: grid;
+      grid-template-columns: 40px 40px;
+      grid-template-rows: 20px;
+      grid-auto-columns: auto;
+      grid-auto-rows: auto;
+      grid-auto-flow: row;
+      column-gap: 0;
+      row-gap: 0;
+      justify-content: start;
+      align-content: start;
+      justify-items: start;
+      align-items: start;
+      width: 80px;
+      height: 20px;
+      overflow: visible;
+      background: #101820;
+    }
+    .item {
+      display: block;
+      width: 30px;
+      height: 10px;
+      min-width: auto;
+      min-height: auto;
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background: #e5484d;
+    }
+    #columns { left: 8px; top: 8px; }
+    #fixed-columns { left: 120px; top: 8px; grid-auto-columns: 30px; }
+    #rows {
+      left: 8px;
+      top: 80px;
+      width: 40px;
+      grid-template-columns: 40px;
+      grid-auto-columns: auto;
+    }
+    #rows .item { width: 20px; height: 25px; }
+  </style>
+</head>
+<body>
+  <section id="columns" class="scene" aria-label="column auto track">
+    <div id="columns-item" class="item" style="grid-column-start: missing-column; grid-row: 1"></div>
+  </section>
+  <section id="fixed-columns" class="scene" aria-label="fixed column track control">
+    <div id="fixed-columns-item" class="item" style="grid-column-start: missing-column; grid-row: 1"></div>
+  </section>
+  <section id="rows" class="scene" aria-label="row auto track">
+    <div id="rows-item" class="item" style="grid-column: 1; grid-row-start: missing-row"></div>
+  </section>
+</body>
+</html>
