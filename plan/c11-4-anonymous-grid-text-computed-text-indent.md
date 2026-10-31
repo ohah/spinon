@@ -2,7 +2,7 @@
 
 **상위 계획:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [공식 상태 대장](../spec/STATUS.md)
 
-**상태:** [구현 PR #930](https://github.com/ohah/spinon/pull/930)의 제한 opt-in runtime slice를 검토 중이다. 이 계획은 C11.4의 전체 완료나 일반 CSS 지원을 뜻하지 않는다.
+**상태:** 제한 opt-in runtime slice 구현 PR [#930](https://github.com/ohah/spinon/pull/930)이 2026-10-31T16:37:17Z Rebase and merge로 병합됐다(merge SHA `b1b20e30cc8d36e90d87e902668eb95339698c25`). 18개 고정 scene의 구현·Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 실행 및 검토 근거는 아래 계획 범위와 [runtime evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.md)에 연결한다. 이 계획은 C11.4 전체 완료나 일반 CSS 지원을 뜻하지 않는다.
 
 **사전 비교:** [CSS 규범·독립 기대값·Chrome 156 Agent Browser 관측](../spec/internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/README.md) · [계획 실패 관점 검토 20개](./c11-4-anonymous-grid-text-computed-text-indent-plan-review-20.md) · [계획 PR 변경 검토 30개](./c11-4-anonymous-grid-text-computed-text-indent-plan-pr-diff-review-30.md)
 

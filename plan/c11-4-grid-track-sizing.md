@@ -1,5 +1,9 @@
 # C11.4 · CSS Grid track sizing 계획
 
+## 2026-11-01 anonymous Grid text computed `text-indent` · PR #930 병합
+
+고정 Ahem 10px/400·LTR·`white-space:normal` profile에서 computed `text-indent` 0/5/10px를 기존 opt-in anonymous Grid text intrinsic sizing 경로에 연결한 18-scene slice를 [구현 PR #930](https://github.com/ohah/spinon/pull/930)으로 2026-10-31T16:37:17Z Rebase and merge했다(merge SHA `b1b20e30cc8d36e90d87e902668eb95339698c25`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 18/18 scene을 확인했다. 음수·percentage·`hanging`/`each-line`, glyph paint, 일반 CSS admission, WPT와 전체 C11.4/C11은 이 slice에 포함하지 않는다. [계획](./c11-4-anonymous-grid-text-computed-text-indent.md) · [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/README.md). 공식 완료 `72/213` 및 C11.4/C11 미완료 상태를 유지한다.
+
 ## 2026-10-31 anonymous Grid text computed `word-spacing` · PR #924 병합
 
 computed `letter-spacing` 제한 fixture PR [#920](https://github.com/ohah/spinon/pull/920)은 16-scene Chrome/CSS Text 기대값과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 16/16으로 병합됐다. 후속 [computed `word-spacing` 계획](./c11-4-anonymous-grid-text-computed-word-spacing.md)은 고정 Ahem 24-scene을 기존 opt-in anonymous-text fixture에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 24/24를 확인했고 구현 PR [#924](https://github.com/ohah/spinon/pull/924)은 2026-10-31T12:30:41Z Rebase and merge됐다(merge SHA `93aba4eff3998c54c595b661578b339aeda89d87`). [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md)와 남은 한계는 집중 계획에 기록했다. 캡처는 glyph paint를 증명하지 않으며 일반 CSS admission·WPT·전체 C11.4/C11 완료도 아니다. 공식 `72/213`은 유지한다.
