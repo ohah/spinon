@@ -1,0 +1,63 @@
+🔥 Rspress v2.0.22
+
+info    build started...
+info    Rendering pages...
+success Pages rendered in 172 ms.
+ready   built in 1.47s (web)
+ready   built in 1.47s (node)
+
+File (web)                                                                                                      Size        Gzip
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/l.76b60f2b87.js                    0.10 kB     0.09 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/styles.b5d9a69293.js                     0.47 kB     0.23 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/icon.svg                                           0.64 kB     0.42 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-cb8eb8496ff5.d4b9c8897e.js   3.6 kB      1.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-c3a978b9a1ce.c4154ef913.js   3.6 kB      1.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-245e3d5793b0.15a47c4dd5.js   7.1 kB      2.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-419b4286551b.00edf7fa7c.js   7.1 kB      2.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-c5826c9ac08f.1fecd85ca3.js   8.7 kB      3.3 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-fbe37ea081ba.8dbf9de958.js   8.8 kB      2.8 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-46060f4105a6.b99ca8af8d.js   8.8 kB      2.8 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-2aeaf84e6e57.17a1a3a707.js   9.0 kB      3.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-898f7efea2b8.a364ade62d.js   10.1 kB     3.5 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-b527f0416403.98f9cbb83b.js   10.1 kB     3.5 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-59485616fee5.25b8811d30.js   10.2 kB     3.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-6693dc2082c2.d18de3c924.js   10.2 kB     3.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-fa01744cb0ba.d71128f675.js   21.0 kB     6.3 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/lib-router.d3b08da66f.js                 35.4 kB     12.7 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-c2801b21f038.51e4694bdd.js   42.8 kB     12.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/css/styles.8d918fd78e.css                   74.0 kB     14.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/index.a7a0390cc6.js                      127.5 kB    36.0 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/3.d8b550a68d.js                          217.1 kB    72.0 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/lib-react.801d719c4f.js                  218.4 kB    68.8 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-04cbcabea10a.8fa3106080.js   326.8 kB    66.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-c4dae6800800.2e230b1292.js   420.8 kB    93.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-739571cd2ae5.5014f8be4c.js   420.8 kB    93.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-6c33a3943990.f010595a5d.js   760.2 kB    161.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/js/async/route-7ce2535ac56d.53cdfc3c9f.js   760.3 kB    161.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/static/search_index.ko.f66580a4.json               1694.9 kB   495.3 kB
+
+                                                                                                       Total:   5218.6 kB   1328.2 kB
+
+File (node)                                                                                                                                                                         Size        Gzip
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/404.html                                                                                                               8.5 kB      2.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html                       28.9 kB     5.0 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html                  28.9 kB     5.0 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html                             32.0 kB     6.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html                                  32.1 kB     6.2 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html                            32.7 kB     6.5 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html                       32.7 kB     6.5 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html        37.4 kB     6.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html   37.4 kB     6.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/plan/c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.html                                         40.3 kB     7.1 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/plan/c11-4-anonymous-grid-text-computed-line-break-plan-review-20.html                                                 40.3 kB     7.1 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/plan/c11-4-anonymous-grid-text-computed-line-break.html                                                                43.0 kB     9.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html                       44.7 kB     7.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html                  44.8 kB     7.6 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/plan/c11-css-grid.html                                                                                                 64.7 kB     16.1 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/plan/c11-4-grid-track-sizing.html                                                                                      339.0 kB    69.5 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/internal/0059-c11-grid-layout.html                                                                                     416.6 kB    95.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/internal/0059-c11-grid-layout.html                                                                                417.1 kB    95.4 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/STATUS.html                                                                                                            712.2 kB    162.3 kB
+build/spinon/roadmap-c114-line-break-postmerge-20261101/site/spec/STATUS.html                                                                                                       712.9 kB    162.4 kB
+
+                                                                                                                                                                           Total:   3146.1 kB   690.9 kB
