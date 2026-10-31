@@ -452,20 +452,15 @@ private func c114GenericDirectTextExpectation(
         )
     }
     if let textIndent = c114ComputedTextIndentScene(sceneID) {
-        let singleWord = sceneID.contains("-single-word-")
-        let collapsed = sceneID.contains("-collapsed-three-words-")
-        let rawText = singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX")
-        let layoutText = singleWord ? "XX" : (collapsed ? "XX XX XX" : "XX XX")
-        let minContentHeight = singleWord ? 10.0 : (collapsed ? 30.0 : 20.0)
         let item = c114GenericTextItem(
             node: 2, x: 0, width: textIndent.trackWidth, height: textIndent.rowHeight,
             minContent: textIndent.minContent, maxContent: textIndent.maxContent,
-            minContentHeight: minContentHeight, maxContentHeight: 10,
-            rawText: rawText, layoutText: layoutText, whiteSpace: "Normal", wordBreak: "Normal",
+            minContentHeight: textIndent.minContentHeight, maxContentHeight: 10,
+            rawText: textIndent.rawText, layoutText: textIndent.layoutText,
+            whiteSpace: "Normal", wordBreak: "Normal",
             textWidth: textIndent.unindentedLineAdvance,
             textIndent: textIndent.textIndent,
-            lineAdvances: Array(repeating: textIndent.unindentedLineAdvance,
-                                count: textIndent.lineCount)
+            lineAdvances: textIndent.lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
             rootWidth: 120, rootHeight: textIndent.rowHeight,
@@ -10660,7 +10655,9 @@ private func c114ComputedWordSpacingScene(
 private func c114ComputedTextIndentScene(
     _ sceneID: String
 ) -> (textIndent: Double, minContent: Double, maxContent: Double,
-    trackWidth: Double, rowHeight: Double, lineCount: Int, unindentedLineAdvance: Double)? {
+    trackWidth: Double, rowHeight: Double, minContentHeight: Double,
+    lineCount: Int, unindentedLineAdvance: Double, lineAdvances: [Double],
+    rawText: String, layoutText: String)? {
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
     let textIndent: Double
     if sceneID.hasPrefix("text-indent-zero-") {
@@ -10669,27 +10666,45 @@ private func c114ComputedTextIndentScene(
         textIndent = 5
     } else if sceneID.hasPrefix("text-indent-ten-") {
         textIndent = 10
+    } else if sceneID.hasPrefix("text-indent-negative-five-") {
+        textIndent = -5
+    } else if sceneID.hasPrefix("text-indent-negative-ten-") {
+        textIndent = -10
     } else {
         return nil
     }
     let singleWord = sceneID.contains("-single-word-")
     let collapsedThreeWords = sceneID.contains("-collapsed-three-words-")
-    guard singleWord || collapsedThreeWords || sceneID.contains("-two-words-") else { return nil }
+    let firstWordLong = sceneID.contains("-first-word-long-")
+    let firstWordShort = sceneID.contains("-first-word-short-")
+    guard singleWord || collapsedThreeWords || firstWordLong || firstWordShort
+        || sceneID.contains("-two-words-") else { return nil }
     let minContentTrack = sceneID.hasSuffix("-min-content")
     guard minContentTrack || sceneID.hasSuffix("-max-content") else { return nil }
-    let minContent = 20 + textIndent
+    let minContent = firstWordLong ? max(30 + textIndent, 10)
+        : firstWordShort ? max(10 + textIndent, 30) : 20 + textIndent
     let maxContent = singleWord ? 20 + textIndent
         : (collapsedThreeWords ? 80 + textIndent : 50 + textIndent)
     let trackWidth = minContentTrack ? minContent : maxContent
     let minContentHeight = singleWord ? 10.0 : (collapsedThreeWords ? 30.0 : 20.0)
     let rowHeight = minContentTrack ? minContentHeight : 10.0
     let lineCount = rowHeight == 10 ? 1 : Int(rowHeight / 10)
-    let unindentedLineAdvance = minContentTrack ? 20.0
-        : (singleWord ? 20.0 : (collapsedThreeWords ? 80.0 : 50.0))
+    let firstLineAdvance = firstWordLong ? 30.0 : firstWordShort ? 10.0 : 20.0
+    let secondLineAdvance = firstWordLong ? 10.0 : firstWordShort ? 30.0 : firstLineAdvance
+    let lineAdvances = minContentTrack
+        ? (singleWord ? [20.0] : collapsedThreeWords ? [20.0, 20.0, 20.0]
+            : [firstLineAdvance, secondLineAdvance])
+        : [singleWord ? 20.0 : (collapsedThreeWords ? 80.0 : 50.0)]
+    let unindentedLineAdvance = lineAdvances.max() ?? 0
+    let rawText = singleWord ? "XX" : collapsedThreeWords ? "XX   XX XX  "
+        : firstWordLong ? "XXX X" : firstWordShort ? "X XXX" : "XX XX"
+    let layoutText = singleWord ? "XX" : collapsedThreeWords ? "XX XX XX"
+        : firstWordLong ? "XXX X" : firstWordShort ? "X XXX" : "XX XX"
     return (
         textIndent: textIndent, minContent: minContent, maxContent: maxContent,
-        trackWidth: trackWidth, rowHeight: rowHeight, lineCount: lineCount,
-        unindentedLineAdvance: unindentedLineAdvance
+        trackWidth: trackWidth, rowHeight: rowHeight, minContentHeight: minContentHeight,
+        lineCount: lineCount, unindentedLineAdvance: unindentedLineAdvance,
+        lineAdvances: lineAdvances, rawText: rawText, layoutText: layoutText
     )
     #else
     return nil

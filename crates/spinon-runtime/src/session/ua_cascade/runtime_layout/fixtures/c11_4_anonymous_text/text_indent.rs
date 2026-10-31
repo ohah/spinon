@@ -13,7 +13,7 @@ pub(super) struct TextIndentScene {
     pub(super) is_min_content: bool,
 }
 
-pub(super) const TEXT_INDENT_SCENES: [TextIndentScene; 18] = [
+pub(super) const TEXT_INDENT_SCENES: [TextIndentScene; 30] = [
     scene(
         "text-indent-zero-two-words-min-content",
         "XX XX",
@@ -140,6 +140,90 @@ pub(super) const TEXT_INDENT_SCENES: [TextIndentScene; 18] = [
         10.0,
         false,
     ),
+    scene(
+        "text-indent-negative-five-first-word-long-min-content",
+        "XXX X",
+        "-5px",
+        -5.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-five-first-word-long-max-content",
+        "XXX X",
+        "-5px",
+        -5.0,
+        false,
+    ),
+    scene(
+        "text-indent-negative-ten-first-word-long-min-content",
+        "XXX X",
+        "-10px",
+        -10.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-ten-first-word-long-max-content",
+        "XXX X",
+        "-10px",
+        -10.0,
+        false,
+    ),
+    scene(
+        "text-indent-negative-five-first-word-short-min-content",
+        "X XXX",
+        "-5px",
+        -5.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-five-first-word-short-max-content",
+        "X XXX",
+        "-5px",
+        -5.0,
+        false,
+    ),
+    scene(
+        "text-indent-negative-ten-first-word-short-min-content",
+        "X XXX",
+        "-10px",
+        -10.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-ten-first-word-short-max-content",
+        "X XXX",
+        "-10px",
+        -10.0,
+        false,
+    ),
+    scene(
+        "text-indent-negative-five-single-word-min-content",
+        "XX",
+        "-5px",
+        -5.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-five-single-word-max-content",
+        "XX",
+        "-5px",
+        -5.0,
+        false,
+    ),
+    scene(
+        "text-indent-negative-ten-single-word-min-content",
+        "XX",
+        "-10px",
+        -10.0,
+        true,
+    ),
+    scene(
+        "text-indent-negative-ten-single-word-max-content",
+        "XX",
+        "-10px",
+        -10.0,
+        false,
+    ),
 ];
 
 const fn scene(
@@ -161,8 +245,8 @@ const fn scene(
 pub(super) const TEXT_INDENT_SCENE_IDS: [&str; TEXT_INDENT_SCENES.len()] =
     scene_ids(TEXT_INDENT_SCENES);
 
-const fn scene_ids(scenes: [TextIndentScene; TEXT_INDENT_SCENES.len()]) -> [&'static str; 18] {
-    let mut ids = [""; 18];
+const fn scene_ids(scenes: [TextIndentScene; TEXT_INDENT_SCENES.len()]) -> [&'static str; 30] {
+    let mut ids = [""; 30];
     let mut index = 0;
     while index < scenes.len() {
         ids[index] = scenes[index].id;
@@ -213,7 +297,7 @@ fn parse_computed_text_indent(value: &str) -> Option<f32> {
         return None;
     }
     let number = number.parse::<f64>().ok()?;
-    if !number.is_finite() || !(0.0..=10.0).contains(&number) || number == 0.0 && value != "0px" {
+    if !number.is_finite() || !(-10.0..=10.0).contains(&number) || number == 0.0 && value != "0px" {
         return None;
     }
     let value = number as f32;
@@ -230,14 +314,15 @@ mod tests {
     use std::collections::{BTreeMap, BTreeSet};
 
     #[test]
-    fn computed_text_indent_matrix_has_eighteen_unique_scenes() {
+    fn computed_text_indent_matrix_has_thirty_unique_scenes() {
         let unique = TEXT_INDENT_SCENE_IDS
             .iter()
             .copied()
             .collect::<BTreeSet<_>>();
-        assert_eq!(TEXT_INDENT_SCENES.len(), 18);
+        assert_eq!(TEXT_INDENT_SCENES.len(), 30);
         assert_eq!(unique.len(), TEXT_INDENT_SCENES.len());
         assert!(find_scene("text-indent-ten-collapsed-three-words-max-content").is_some());
+        assert!(find_scene("text-indent-negative-ten-first-word-short-min-content").is_some());
         assert!(find_scene("text-indent-unlisted").is_none());
     }
 
@@ -255,7 +340,9 @@ mod tests {
             );
         }
         for value in [
-            "-5px",
+            "-11px",
+            "11px",
+            "-0px",
             "5%",
             "5px hanging",
             "5px each-line",
@@ -268,7 +355,9 @@ mod tests {
             );
         }
         let five = find_scene("text-indent-five-two-words-min-content").unwrap();
-        for value in ["0px", "10px", "5.0px", "+5px", " 5px"] {
+        for value in [
+            "0px", "10px", "5.0px", "+5px", " 5px", "-5px", "-5.0px", "-7px", "-30px",
+        ] {
             let properties = BTreeMap::from([("text-indent".to_owned(), value.to_owned())]);
             assert!(
                 validate_computed_text_indent(node_id, &properties, five.id).is_err(),

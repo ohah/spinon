@@ -23,7 +23,9 @@ test('C11.4 text-indent remains a fixed opt-in anonymous Grid profile', async ()
     capture: 'tools/css-reference/capture-c11-4-computed-text-indent-simulators.mjs',
     expected: 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-runtime-2026-11-01/spec-derived-expectations.json',
     oracle: 'spec/internal/evidence/c11-4-anonymous-grid-text-indent-precomparison-2026-11-01/chrome156-observation.json',
+    negativeExpected: 'spec/internal/evidence/c11-4-anonymous-grid-text-negative-indent-precomparison-2026-11-01/expected.json',
     plan: 'plan/c11-4-anonymous-grid-text-computed-text-indent.md',
+    negativePlan: 'plan/c11-4-anonymous-grid-text-negative-indent.md',
   };
   const values = await Promise.all(Object.entries(paths)
     .map(async ([key, path]) => [key, await source(path)]));
@@ -60,7 +62,11 @@ test('C11.4 text-indent remains a fixed opt-in anonymous Grid profile', async ()
   assert.ok(text.trace.includes('"textIndent": style.text_indent'));
   assert.ok(text.androidHost.includes('c114ComputedTextIndentScene'));
   assert.match(text.androidHost,
-    /double\[\] textIndent = c114ComputedTextIndentScene\(sceneId\)[\s\S]*?textIndent\[3\],\s*textIndent\[7\]/);
+    /double\[\] textIndent = c114ComputedTextIndentScene\(sceneId\)[\s\S]*?textIndent\[3\],\s*textIndent\[9\]/);
+  assert.match(text.androidHost,
+    /advances\[index\] = minContentTrack\s*\?\s*index == 1 \? textIndent\[8\] : textIndent\[7\]\s*:\s*textIndent\[9\]/);
+  assert.match(text.androidHost,
+    /private void applyLatestEnvironment\(\)[\s\S]*?environmentScale = c153GlyphPaintProbeRequested[\s\S]*?\|\| c114GridTrackSizingRequested/);
   assert.ok(text.iosHost.includes('c114ComputedTextIndentScene'));
   assert.match(text.iosHost,
     /private func c114IsGridTrackSizingScene\([\s\S]*?c114ComputedTextIndentScene\(sceneID\)\s*!=\s*nil\s*\{\s*return true\s*\}/);
@@ -77,4 +83,28 @@ test('C11.4 text-indent remains a fixed opt-in anonymous Grid profile', async ()
   assert.equal(JSON.parse(text.oracle).gridProbe.observations.length, 7);
   assert.match(text.plan, /18 scene/);
   assert.match(text.plan, /Chrome 156/);
+  const negative = JSON.parse(text.negativeExpected);
+  assert.equal(negative.candidateScenes.length, 12);
+  assert.equal(new Set(negative.candidateScenes.map(({ sceneId }) => sceneId)).size, 12);
+  for (const item of negative.candidateScenes) {
+    const metric = negative.candidateMetrics.find((candidate) => candidate.text === item.text
+      && candidate.indentPx === item.indentPx);
+    assert.ok(metric, `${item.sceneId}: independent negative-indent metrics`);
+    const words = item.text.split(/\s+/);
+    const minContent = Math.max(...words.map((word, index) => [...word].length * 10
+      + (index === 0 ? item.indentPx : 0)));
+    const maxContent = words.reduce((sum, word) => sum + [...word].length * 10, 0)
+      + (words.length - 1) * 10 + item.indentPx;
+    const expectedTrack = item.trackKind === 'min-content' ? minContent : maxContent;
+    assert.equal(metric.minContentPx, minContent, `${item.sceneId}: min-content formula`);
+    assert.equal(metric.maxContentPx, maxContent, `${item.sceneId}: max-content formula`);
+    assert.equal(item.trackPx, expectedTrack, `${item.sceneId}: selected Grid track`);
+    assert.ok(text.ffiScenes.includes(item.sceneId), `FFI generator is missing ${item.sceneId}`);
+    assert.ok(text.validation.includes(item.sceneId), `runtime allowlist is missing ${item.sceneId}`);
+  }
+  assert.match(text.validation, /-10\.0\.\.=10\.0/);
+  assert.match(text.androidHost, /text-indent-negative-five-[\s\S]*text-indent-negative-ten-/);
+  assert.match(text.iosHost, /text-indent-negative-five-[\s\S]*text-indent-negative-ten-/);
+  assert.match(text.negativePlan, /12개/);
+  assert.match(text.negativePlan, /-30px/);
 });

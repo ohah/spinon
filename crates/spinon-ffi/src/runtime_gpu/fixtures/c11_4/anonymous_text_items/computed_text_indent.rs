@@ -1,4 +1,4 @@
-const SCENES: [(&str, &str, &str, &str); 18] = [
+const SCENES: [(&str, &str, &str, &str); 30] = [
     (
         "text-indent-zero-two-words-min-content",
         "0px",
@@ -107,6 +107,78 @@ const SCENES: [(&str, &str, &str, &str); 18] = [
         "XX",
         "max-content",
     ),
+    (
+        "text-indent-negative-five-first-word-long-min-content",
+        "-5px",
+        "XXX X",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-five-first-word-long-max-content",
+        "-5px",
+        "XXX X",
+        "max-content",
+    ),
+    (
+        "text-indent-negative-ten-first-word-long-min-content",
+        "-10px",
+        "XXX X",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-ten-first-word-long-max-content",
+        "-10px",
+        "XXX X",
+        "max-content",
+    ),
+    (
+        "text-indent-negative-five-first-word-short-min-content",
+        "-5px",
+        "X XXX",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-five-first-word-short-max-content",
+        "-5px",
+        "X XXX",
+        "max-content",
+    ),
+    (
+        "text-indent-negative-ten-first-word-short-min-content",
+        "-10px",
+        "X XXX",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-ten-first-word-short-max-content",
+        "-10px",
+        "X XXX",
+        "max-content",
+    ),
+    (
+        "text-indent-negative-five-single-word-min-content",
+        "-5px",
+        "XX",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-five-single-word-max-content",
+        "-5px",
+        "XX",
+        "max-content",
+    ),
+    (
+        "text-indent-negative-ten-single-word-min-content",
+        "-10px",
+        "XX",
+        "min-content",
+    ),
+    (
+        "text-indent-negative-ten-single-word-max-content",
+        "-10px",
+        "XX",
+        "max-content",
+    ),
 ];
 
 pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
@@ -134,7 +206,7 @@ mod tests {
     use std::collections::BTreeSet;
 
     #[test]
-    fn computed_text_indent_matrix_generates_eighteen_exact_direct_text_scenes() {
+    fn computed_text_indent_matrix_generates_thirty_exact_direct_text_scenes() {
         let mut unique = BTreeSet::new();
         for (scene_id, text_indent, text, column) in SCENES {
             assert!(unique.insert(scene_id), "duplicate {scene_id}");
@@ -146,7 +218,8 @@ mod tests {
             assert!(source.contains("grid-template-rows:auto"));
             assert!(source.contains(&format!("document.createTextNode({text:?})")));
         }
-        assert_eq!(unique.len(), 18);
+        assert_eq!(unique.len(), 30);
+        assert!(runtime_source("text-indent-negative-ten-first-word-short-min-content").is_some());
         assert!(runtime_source("text-indent-unlisted").is_none());
     }
 }

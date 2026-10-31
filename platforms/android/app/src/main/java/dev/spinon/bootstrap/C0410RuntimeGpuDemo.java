@@ -425,16 +425,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             boolean singleWord = sceneId.contains("-single-word-");
             boolean collapsed = sceneId.contains("-collapsed-three-words-");
             boolean minContentTrack = sceneId.endsWith("-min-content");
-            String rawText = singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX");
-            String layoutText = singleWord ? "XX" : (collapsed ? "XX XX XX" : "XX XX");
+            String rawText = sceneId.contains("-first-word-long-") ? "XXX X"
+                    : sceneId.contains("-first-word-short-") ? "X XXX"
+                    : singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX");
+            String layoutText = rawText.trim().replaceAll("\\s+", " ");
             double[] advances = new double[(int) textIndent[5]];
             for (int index = 0; index < advances.length; index++) {
-                advances[index] = textIndent[7];
+                advances[index] = minContentTrack
+                        ? index == 1 ? textIndent[8] : textIndent[7]
+                        : textIndent[9];
             }
             C114GenericDirectTextItemExpectation item =
                     new C114GenericDirectTextItemExpectation(
                             2, 0, textIndent[3], textIndent[4],
-                            textIndent[3], textIndent[7], 0, 0, 0,
+                            textIndent[3], textIndent[9], 0, 0, 0,
                             textIndent[1], textIndent[2], textIndent[6], 10,
                             rawText, layoutText, "Normal", "Normal", 0, 0,
                             textIndent[0], advances);
@@ -12507,7 +12511,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     // [text-indent px, min-content px, max-content px, track width px, row height px,
-    // line count, min-content row height, unindented line advance px]
+    // line count, min-content row height, first line advance, second line advance,
+    // maximum unindented line advance]
     private static double[] c114ComputedTextIndentScene(String sceneId) {
         if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null
                 || !sceneId.startsWith("text-indent-")) return null;
@@ -12518,25 +12523,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             textIndent = 5;
         } else if (sceneId.startsWith("text-indent-ten-")) {
             textIndent = 10;
+        } else if (sceneId.startsWith("text-indent-negative-five-")) {
+            textIndent = -5;
+        } else if (sceneId.startsWith("text-indent-negative-ten-")) {
+            textIndent = -10;
         } else {
             return null;
         }
         boolean singleWord = sceneId.contains("-single-word-");
         boolean collapsedThreeWords = sceneId.contains("-collapsed-three-words-");
-        if (!singleWord && !collapsedThreeWords && !sceneId.contains("-two-words-")) return null;
+        boolean firstWordLong = sceneId.contains("-first-word-long-");
+        boolean firstWordShort = sceneId.contains("-first-word-short-");
+        if (!singleWord && !collapsedThreeWords && !firstWordLong && !firstWordShort
+                && !sceneId.contains("-two-words-")) return null;
         boolean minContentTrack = sceneId.endsWith("-min-content");
         if (!minContentTrack && !sceneId.endsWith("-max-content")) return null;
-        double minContent = 20 + textIndent;
+        double minContent = firstWordLong ? Math.max(30 + textIndent, 10)
+                : firstWordShort ? Math.max(10 + textIndent, 30) : 20 + textIndent;
         double maxContent = singleWord ? 20 + textIndent
                 : collapsedThreeWords ? 80 + textIndent : 50 + textIndent;
         double trackWidth = minContentTrack ? minContent : maxContent;
         double minContentHeight = singleWord ? 10 : collapsedThreeWords ? 30 : 20;
         double rowHeight = minContentTrack ? minContentHeight : 10;
-        double lineAdvance = minContentTrack ? 20
+        double firstLineAdvance = firstWordLong ? 30 : firstWordShort ? 10
+                : singleWord ? 20 : 20;
+        double secondLineAdvance = firstWordLong ? 10 : firstWordShort ? 30
+                : firstLineAdvance;
+        double lineAdvance = minContentTrack ? Math.max(firstLineAdvance, secondLineAdvance)
                 : singleWord ? 20 : collapsedThreeWords ? 80 : 50;
         return new double[] {
                 textIndent, minContent, maxContent, trackWidth, rowHeight,
-                rowHeight == 10 ? 1 : (int) (rowHeight / 10), minContentHeight, lineAdvance,
+                rowHeight == 10 ? 1 : (int) (rowHeight / 10), minContentHeight,
+                firstLineAdvance,
+                secondLineAdvance, lineAdvance,
         };
     }
 
@@ -21569,7 +21588,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             heightCssPx = cssViewportHeightLocked();
             dark = darkMode;
             environmentScale = c153GlyphPaintProbeRequested || c192BoxPaintOpacityProbeRequested
-                    || rootHtmlTextPaintProbeRequested
+                    || rootHtmlTextPaintProbeRequested || c114GridTrackSizingRequested
                     ? 1.0f : density;
         }
         if (!isCurrentPresentation(generation, sequence)) return;

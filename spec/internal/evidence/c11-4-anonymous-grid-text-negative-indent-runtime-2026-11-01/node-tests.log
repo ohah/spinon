@@ -1,0 +1,35 @@
+bun test v1.4.2 (744846f84)
+
+tools/css-reference/fixture-module-boundary.test.mjs:
+(pass) fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 [5.80ms]
+(pass) calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 [82.71ms]
+(pass) 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 [117.35ms]
+(pass) 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 [435.39ms]
+(pass) fit-content() 열 축 limit 네 장면이 opt-in runtime과 두 simulator에 연결된다 [55.61ms]
+(pass) CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 [13.68ms]
+(pass) 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 [0.21ms]
+(pass) C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 [53.03ms]
+(pass) C11.4 zero fixed-maximum auto-repeat 24 scene은 opt-in runtime에만 연결된다 [49.64ms]
+(pass) 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 [2.38ms]
+(pass) 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 [16.49ms]
+(pass) C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 [3.49ms]
+(pass) C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 [53.48ms]
+(pass) C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 [103.00ms]
+(pass) C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 [52.19ms]
+(pass) C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 [52.62ms]
+(pass) fit-content min-height WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 [53.14ms]
+(pass) zoomed fit-content WPT slice는 fixture parser와 양쪽 simulator 화면 판정에 고정된다 [52.80ms]
+(pass) definite-height percentage fit-content WPT slices는 opt-in runtime과 양쪽 simulator 판정에 고정된다 [54.51ms]
+(pass) definite-height calc fit-content WPT slice is isolated in the runtime catalog [50.10ms]
+(pass) fit-content automatic-minimum floor와 zero control이 opt-in runtime에 고정된다 [52.22ms]
+(pass) fit-content span-2 WPT slice가 opt-in runtime과 simulator capture에 연결된다 [51.91ms]
+(pass) fit-content WPT growth-limit 경계 세 건이 opt-in runtime과 두 simulator에 연결된다 [53.66ms]
+(pass) anonymous Grid white-space matrix stays opt-in and reaches both simulators [54.70ms]
+(pass) C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulator route [3.26ms]
+
+tools/css-reference/c11-4-computed-text-indent.test.mjs:
+(pass) C11.4 text-indent remains a fixed opt-in anonymous Grid profile [3.07ms]
+
+ 26 pass
+ 0 fail
+Ran 26 tests across 2 files. [8.92s]
