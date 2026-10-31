@@ -1,0 +1,34 @@
+{
+  "schema": "spinon.c11_4.anonymous_grid_text_computed_font_size.expected.v1",
+  "font": {
+    "family": "Ahem",
+    "weight": 400,
+    "unitsPerEm": 1000,
+    "glyphAdvances": {
+      "X": 1000,
+      "space": 1000
+    },
+    "sha256": "b719ecb31c5b21fc573c03f6421c74ac63c271a5a3ff841e34f9705fb94b8448"
+  },
+  "root": {
+    "widthPx": 20,
+    "height": "auto",
+    "lineHeightPx": 10,
+    "text": "XX XX",
+    "whiteSpaceCollapse": "collapse",
+    "textWrapMode": "wrap",
+    "gridRows": "auto"
+  },
+  "cases": [
+    { "id": "font-size-5-min-content", "fontSizePx": 5, "track": "min-content", "minContentWidthPx": 10, "maxContentWidthPx": 25, "expectedTrackPx": 10, "expectedRowPx": 20 },
+    { "id": "font-size-5-max-content", "fontSizePx": 5, "track": "max-content", "minContentWidthPx": 10, "maxContentWidthPx": 25, "expectedTrackPx": 25, "expectedRowPx": 10 },
+    { "id": "font-size-7-5-min-content", "fontSizePx": 7.5, "track": "min-content", "minContentWidthPx": 15, "maxContentWidthPx": 37.5, "expectedTrackPx": 15, "expectedRowPx": 20 },
+    { "id": "font-size-7-5-max-content", "fontSizePx": 7.5, "track": "max-content", "minContentWidthPx": 15, "maxContentWidthPx": 37.5, "expectedTrackPx": 37.5, "expectedRowPx": 10 },
+    { "id": "font-size-10-min-content", "fontSizePx": 10, "track": "min-content", "minContentWidthPx": 20, "maxContentWidthPx": 50, "expectedTrackPx": 20, "expectedRowPx": 20 },
+    { "id": "font-size-10-max-content", "fontSizePx": 10, "track": "max-content", "minContentWidthPx": 20, "maxContentWidthPx": 50, "expectedTrackPx": 50, "expectedRowPx": 10 },
+    { "id": "font-size-12-5-min-content", "fontSizePx": 12.5, "track": "min-content", "minContentWidthPx": 25, "maxContentWidthPx": 62.5, "expectedTrackPx": 25, "expectedRowPx": 20 },
+    { "id": "font-size-12-5-max-content", "fontSizePx": 12.5, "track": "max-content", "minContentWidthPx": 25, "maxContentWidthPx": 62.5, "expectedTrackPx": 62.5, "expectedRowPx": 10 },
+    { "id": "font-size-20-min-content", "fontSizePx": 20, "track": "min-content", "minContentWidthPx": 40, "maxContentWidthPx": 100, "expectedTrackPx": 40, "expectedRowPx": 20 },
+    { "id": "font-size-20-max-content", "fontSizePx": 20, "track": "max-content", "minContentWidthPx": 40, "maxContentWidthPx": 100, "expectedTrackPx": 100, "expectedRowPx": 10 }
+  ]
+}

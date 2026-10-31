@@ -676,6 +676,10 @@ Ahem direct-text <code>AAAA</code> item의 finite-positive preferred aspect-rati
 
 기존 anonymous Grid text fixture allowlist를 <code>normal | nowrap</code>으로 넓혔다. normal control은 root 20×20px·min-content track 20px·두 줄이며, nowrap은 root 20×10px·track 50px·item 50×10px·한 줄 및 root 밖 30px overflow다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 두 scene의 frame·track·trace·draw/present가 통과했다. 캡처는 draw/present 경로만 보여주며 glyph pixel assertion이 아니다. <code>pre-line</code>, nonzero <code>order</code>, 일반 CSS author admission, 전체 WPT는 계속 거부·미검증 범위다. C11.4/C11 미완료와 공식 집계 <code>72/213</code>을 유지한다. [계획](./c11-4-anonymous-grid-text-nowrap.md) · [Chrome 사전 비교](../spec/internal/evidence/c11-4-anonymous-text-nowrap-precomparison-2026-10-30/README.md) · [실행·검증 한계](../spec/internal/evidence/c11-4-anonymous-text-nowrap-implementation-2026-10-30-2026-10-30/README.md).
 
+## 2026-10-31 anonymous Grid text computed `font-size` 계획
+
+현재 anonymous direct-text fixture는 computed `line-height`를 사용하지만 root `font-size:10px`과 `ParagraphStyle.font_size:10.0`은 고정한다. 다음 고정 slice는 Ahem 400 `XX XX`의 computed `font-size` 5px·7.5px·10px·12.5px·20px와 `min-content`/`max-content` column 열 개를 같은 opt-in fixture에 연결할 계획이다. pinned Ahem TTF `X`와 space의 advance는 각각 1em이며 Chrome 156 Agent Browser와 별도로 계산한 track width/auto row 표본이 일치한다. [집중 계획](./c11-4-anonymous-grid-text-computed-font-size.md) · [사전 비교·화면·hash](../spec/internal/evidence/c11-4-anonymous-grid-text-computed-font-size-precomparison-2026-10-31/README.md). 구현/runtime 결과는 아직 없고 C11.4/C11과 공식 `72/213`은 미완료다.
+
 ## 2026-10-31 anonymous Grid text `white-space:pre-line` 후속 계획
 
 기존 text intrinsic engine과 root HTML style adapter가 `PreLine`을 처리하지만, anonymous Grid text fixture allowlist는 이를 거부한다. [집중 계획](./c11-4-anonymous-grid-text-pre-line.md)은 동일한 Ahem `XX\nXX` source에서 normal의 50×10px max-content text와 pre-line의 20×20px forced-break text를 비교한다. Chrome 156 Agent Browser 관찰과 CSS Text/Grid/Box Sizing 독립 기대값을 분리해 기록했다. [사전 비교·hash·화면](../spec/internal/evidence/c11-4-anonymous-text-pre-line-precomparison-2026-10-31/README.md). 계획 검토와 구현 전 단계이며, 현재 지원·공식 완료 상태는 바꾸지 않는다.

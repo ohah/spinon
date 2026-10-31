@@ -1,0 +1,46 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Spinon C11.4 anonymous Grid text computed font-size precomparison</title>
+<style>
+  @font-face { font-family: Ahem; src: url("../../resources/c15/Ahem.ttf") format("truetype"); font-weight: 400; font-style: normal; }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-width: 640px; background: #fff; }
+  body { padding: 12px; color: #111; font: 13px/1.4 sans-serif; }
+  h1 { margin: 0 0 8px; font-size: 18px; }
+  p { margin: 0 0 12px; }
+  .case { display: flex; align-items: flex-start; gap: 14px; min-height: 38px; padding: 5px 0; border-bottom: 1px solid #ddd; }
+  .label { width: 310px; flex: none; }
+  .grid { flex: none; box-sizing: border-box; display: grid; width: 20px; height: auto; margin: 0; padding: 0; border: 0; gap: 0; align-items: start; align-content: start; justify-content: start; grid-template-rows: auto; font-family: Ahem; font-weight: 400; font-style: normal; line-height: 10px; white-space-collapse: collapse; text-wrap-mode: wrap; word-break: normal; direction: ltr; line-break: auto; text-align: start; overflow-wrap: normal; text-transform: none; letter-spacing: normal; word-spacing: 0; text-indent: 0; color: #e5484d; background: #101820; }
+</style>
+<body>
+  <h1>C11.4 anonymous Grid text: computed font-size</h1>
+  <p>Ahem 400, direct text <code>XX XX</code>, fixed line-height 10px; compare min-content and max-content columns.</p>
+  <main id="cases"></main>
+  <script>
+    window.__C114_FONT_SIZE_CASES__ = [];
+    for (const fontSize of [5, 7.5, 10, 12.5, 20]) {
+      for (const track of ["min-content", "max-content"]) {
+        const id = `font-size-${String(fontSize).replace(".", "-")}-${track}`;
+        const section = document.createElement("section");
+        section.className = "case";
+        section.dataset.case = id;
+        const label = document.createElement("span");
+        label.className = "label";
+        label.textContent = `${fontSize}px · ${track} · XX XX`;
+        const grid = document.createElement("div");
+        grid.className = "grid";
+        grid.id = id;
+        grid.style.gridTemplateColumns = track;
+        grid.style.fontSize = `${fontSize}px`;
+        grid.appendChild(document.createTextNode("XX XX"));
+        section.append(label, grid);
+        document.querySelector("#cases").append(section);
+        window.__C114_FONT_SIZE_CASES__.push({ id, fontSize, track });
+      }
+    }
+    window.__C114_FONT_SIZE_READY__ = document.fonts.load("10px Ahem").then(() => {
+      if (!document.fonts.check("10px Ahem")) throw new Error("Ahem font did not load");
+      return true;
+    });
+  </script>
+</body>
