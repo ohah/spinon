@@ -1,0 +1,10 @@
+{
+  "captureCheckoutHead": "49c8a140d34cdf21f26084a0fcd3223915cc9354",
+  "implementationCommit": "5d129758ad759c278c5ca782201143385963f6a2",
+  "implementationTree": "b23f5579b6a56dfa46b1d4b7620ec1e4dc4875fc",
+  "captureWasBeforeCommit": true,
+  "featureAndSimulatorAdapterSourcesChangedAfterCapture": false,
+  "androidApkSha256": "d6a0a20b2d14c7046163f3687ff5768debab2c436a845f040ac07aab6ffe450d",
+  "iosExecutableSha256": "f5790ec56b5a93cbfcee56ae3060c81cbb317eb3f7b352e36cb17e522e1516f6",
+  "note": "시뮬레이터 앱은 구현 변경이 포함된 working tree에서 빌드했다. 이후 앱/Rust 구현 파일은 수정하지 않고 그 캡처 당시 소스 그대로 implementationCommit에 커밋했다. 문서와 evidence는 캡처 후 추가했다."
+}

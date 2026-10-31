@@ -36,6 +36,8 @@
 - 앱 빌드: `SPINON_ENABLE_C04_RUNTIME_GPU=1 SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST=1 tools/build-ios-sim.sh` 성공.
 - 실행: `node tools/css-reference/capture-c11-4-anonymous-grid-text-overflow-wrap-simulators.mjs ios-simulator 9DCCE836-7659-4914-B6C1-13F54BFFA9DB` — 9/9.
 
+두 앱 캡처는 구현 코드가 커밋되기 전에 만들어졌다. 이후 Rust/app 구현 파일을 변경하지 않고 해당 소스를 [implementation commit](./source-revision.json)에 고정해 커밋했다. Binary hash와 source commit 연결 기록은 해당 JSON을 따른다.
+
 ## 기본/fixture FFI archive 경계
 
 기본 static archive는 신규 9 scene marker 및 C11.4 fixture host export 0개, `c04-runtime-gpu-fixture-test` positive control은 scene marker 9/9 및 host export 2개다. [빌드 로그·hash·검사 방법](./artifact-boundary/README.md). 이 결과는 macOS FFI archive에 한정되며 APK/IPA 전체 제외를 증명하지 않는다.
