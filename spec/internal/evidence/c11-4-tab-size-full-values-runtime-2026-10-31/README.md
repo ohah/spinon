@@ -17,9 +17,9 @@ Both complete matrices used source HEAD `e3ec8a24b2ff463519dc79968f4cbba35d1226e
 
 The captures below come from a separate one-scene run of `anonymous-pre-tab-value-number-three-and-quarter-after-two` on the same source and app binaries. They show the fixture route and its status/present state. The black render surface is not a glyph screenshot and does not establish text-pixel equality.
 
-![Android API 37 AVD representative runtime route](c114-tab-values-20261031024357017-869b04d0/android-avd/representative.png)
+![Android API 37 AVD representative runtime route](./c114-tab-values-20261031024357017-869b04d0/android-avd/representative.png)
 
-![iPhone 17 Pro Simulator representative runtime route](c114-tab-values-20261031024357017-869b04d0/ios-simulator/representative.png)
+![iPhone 17 Pro Simulator representative runtime route](./c114-tab-values-20261031024357017-869b04d0/ios-simulator/representative.png)
 
 The screenshot run is recorded in [Android](c114-tab-values-20261031024357017-869b04d0/android-avd/result.json) and [iOS](c114-tab-values-20261031024357017-869b04d0/ios-simulator/result.json); each ran the representative scene once with no rejection or retry.
 
