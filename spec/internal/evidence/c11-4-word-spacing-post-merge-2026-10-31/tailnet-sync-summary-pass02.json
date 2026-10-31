@@ -1,0 +1,38 @@
+{
+  "sourceHead": "93aba4eff3998c54c595b661578b339aeda89d87",
+  "sourceTree": "b33e805255e4370d84de59a61663276241c8cfd6",
+  "trackedDiffSha256": "c74e1a917e3a9c0853fb6d47f2bdf1795d0baa49608aea05f9be31b734cf8393",
+  "rspressVersion": "2.0.22",
+  "selectedRootFileCount": 167,
+  "routeCount": 235,
+  "bytes": 17129645,
+  "tailscaleBackendState": "Running",
+  "previewProcessVerified": true,
+  "previewListen": "127.0.0.1:8768",
+  "previewServerRestarted": false,
+  "actions": {
+    "created": 31,
+    "replaced": 30,
+    "unchanged": 174,
+    "backups": 30
+  },
+  "openHandleCountAtPreflight": 0,
+  "localTargetsMatch": true,
+  "backupsMatch": true,
+  "httpsAll200": true,
+  "httpsHashesMatch": true,
+  "noDeletes": true,
+  "roadmapSha256": "44b4fae672e485bb593f972ee70cdf0df2affbef2ef336d39ee1866ee3a779de",
+  "statusHtmlSha256": "e69e0536479112848d5f30a13cb482040d6b3a880b329d250afccaab2c1f18c6",
+  "fullDocsLinkValidation": false,
+  "agentBrowserScreenshot": {
+    "path": "tailnet-roadmap-agent-browser.png",
+    "sha256": "c76bdec359202330702ff4de29aca533985a7adab52b0c88515cdbee9d5c1664"
+  },
+  "agentBrowserVerification": "agent-browser-verification-pass02.json",
+  "agentBrowserProcessesAfterClose": 0,
+  "statusCheckboxes": {
+    "C11": false,
+    "C11.4": false
+  }
+}

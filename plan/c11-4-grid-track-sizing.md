@@ -1,8 +1,8 @@
 # C11.4 · CSS Grid track sizing 계획
 
-## 2026-10-31 anonymous Grid text computed `word-spacing` 다음 계획
+## 2026-10-31 anonymous Grid text computed `word-spacing` · PR #924 병합
 
-computed `letter-spacing` 제한 fixture PR [#920](https://github.com/ohah/spinon/pull/920)은 16-scene Chrome/CSS Text 기대값과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 16/16으로 병합됐지만 일반 CSS admission이나 glyph paint를 입증하지 않는다. 다음 독립 text-intrinsic candidate는 [computed `word-spacing` 계획](./c11-4-anonymous-grid-text-computed-word-spacing.md)이다. Chrome 156/Ahem 24-scene 사전 비교는 고정됐고, 이 문서는 계획 단계라 구현/runtime은 시작하지 않았다. C11.4/C11 및 공식 `72/213`은 미완료다.
+computed `letter-spacing` 제한 fixture PR [#920](https://github.com/ohah/spinon/pull/920)은 16-scene Chrome/CSS Text 기대값과 Android API 37 ARM64 AVD·iPhone 17 Pro/iOS 26.2 Simulator 각 16/16으로 병합됐다. 후속 [computed `word-spacing` 계획](./c11-4-anonymous-grid-text-computed-word-spacing.md)은 고정 Ahem 24-scene을 기존 opt-in anonymous-text fixture에 연결했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 24/24를 확인했고 구현 PR [#924](https://github.com/ohah/spinon/pull/924)은 2026-10-31T12:30:41Z Rebase and merge됐다(merge SHA `93aba4eff3998c54c595b661578b339aeda89d87`). [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-word-spacing-runtime-2026-10-31/README.md)와 남은 한계는 집중 계획에 기록했다. 캡처는 glyph paint를 증명하지 않으며 일반 CSS admission·WPT·전체 C11.4/C11 완료도 아니다. 공식 `72/213`은 유지한다.
 
 ## 2026-10-31 anonymous Grid `white-space:pre` author `tab-size` 제한 구현 · PR #889 병합
 
