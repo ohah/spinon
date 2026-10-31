@@ -2,7 +2,7 @@
 
 **Parent:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [inline text 계약 0070](../spec/internal/0070-c15-1-inline-text-layout.md) · [CSS Text Level 3 §5.2](https://www.w3.org/TR/css-text-3/#line-break-property)
 
-**상태:** Chrome 156 사전 비교와 독립 기대값을 고정했다. [계획 실패 관점 20개](./c11-4-anonymous-grid-text-computed-line-break-plan-review-20.md)와 별도 [계획 PR diff 검토 20개](./c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.md)를 마쳤다. PR 생성 뒤 최종 head diff 동일성을 재확인한다. 이것은 구현 계획이며 지원 선언이 아니다.
+**상태:** 제한 opt-in fixture 구현 PR [#945](https://github.com/ohah/spinon/pull/945)이 2026-10-31T21:11:12Z Rebase and merge됐다(merge SHA `9eb8cea570fce5a0eb2da423ef37eac2e4ed3c1d`). Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 5개 scene이 각각 5/5 통과했다. [구현/runtime 실패 관점 20개](../spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md), [PR diff 실패 관점 30개](../spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md), [실행 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md). 제한 fixture 결과이며 C11.4/C11 전체 지원이 아니다. 공식 완료 `72/213`은 유지한다.
 
 ## 문제와 목표
 
@@ -49,9 +49,9 @@ Text intrinsic expectations at 10px line-height are, respectively: Japanese norm
 8. fixture source boundary, default product archive와 fixture-test positive control을 별도로 확인한다. 제품 archive에 새 scene marker/fixture export/font payload가 없어야 하며 fixture-test archive에는 예상 scene과 이미 사용 중인 고정 font만 있어야 한다.
 9. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 5/5 scene을 실행한다. frame/track/trace/draw/present, 설치 APK와 source artifact hash, 실패 scene의 publication 거부를 기록한다. Android software renderer와 iOS compositor 제출 전 Metal drawable 표본은 실제 기기/hardware GPU/compositor 이후 pixel 증거와 구분한다. Simulator 화면이 glyph pixels를 보여주지 않으면 이를 그대로 기록한다.
 10. `cargo fmt --all -- --check`, 해당 `spinon-text-layout`/runtime/FFI tests, feature-scoped Clippy, fixture module-boundary 검사와 Android/iOS simulator builds를 실행한다. 실행하지 않은 범위는 통과로 기록하지 않는다.
-11. 구현 뒤 코드와 실제 동작을 계획 검토와 겹치지 않는 새 실패 관점 20개로 검토한다. 구현 PR diff도 별도 20개 관점으로 검토한다. 결함을 수정하면 영향을 받은 관점을 다시 확인한다.
+11. 구현 뒤 코드와 실제 동작을 계획 검토와 겹치지 않는 새 실패 관점 20개로 검토한다. 구현 PR diff는 저장소 규칙에 따라 별도 30개 관점으로 검토한다. 결함을 수정하면 영향을 받은 관점을 다시 확인한다.
 12. 구현 PR에는 Chrome 사전 비교 이미지와 가능한 Android/iOS 동작 화면을 포함한다. PR body의 이미지 URL이 실제로 열리는지 확인하고, simulator 화면이 glyph paint/compositor 픽셀을 증명하지 않는 경우 그 제한을 적는다. 현재 PR check rollup과 required check 설정을 조회한 뒤 Rebase and merge 상태, merge SHA와 최종 source를 검증한다.
-13. 구현 후 내부 계약 0059에 고정 fixture profile과 failure boundary를 기록하고, 병합 뒤 `spec/STATUS.md`, 이 parent plan 및 공개 roadmap의 실제 상태를 동기화한다. 이 slice로 C11.4/C11 checkbox나 공식 `72/213`을 승격하지 않는다.
+13. 구현 후 내부 계약 0059에 고정 fixture profile과 failure boundary를 기록한다. 구현 PR #945 병합 뒤 `spec/STATUS.md`, 이 parent plan 및 공개 roadmap을 실제 상태에 맞추되 C11.4/C11 checkbox나 공식 `72/213`을 승격하지 않는다.
 
 ## 완료 판정
 

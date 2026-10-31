@@ -1,0 +1,56 @@
+{
+  "agentBrowserVersion": "0.31.1",
+  "publicRoadmapUrl": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html",
+  "title": "스피논 구현 로드맵",
+  "cardMarkers": [
+    "PR #945 Rebase and merge",
+    "9eb8cea570fce5a0eb2da423ef37eac2e4ed3c1d",
+    "72/213",
+    "각각 5/5 scene"
+  ],
+  "desktop": {
+    "viewportCssPx": { "width": 1280, "height": 900 },
+    "documentScrollWidthCssPx": 1280,
+    "targetCardRectCssPx": { "x": 20, "y": 243.42, "width": 908, "height": 122.34 },
+    "screenshot": {
+      "path": "roadmap-desktop-agent-browser.png",
+      "bytes": 441020,
+      "sha256": "5d538f2f621af7d18027f91d3ffea5577671b497a67a1c439c9960589cc237fb"
+    }
+  },
+  "mobile": {
+    "viewportCssPx": { "width": 390, "height": 844 },
+    "documentScrollWidthCssPx": 390,
+    "targetCardRectCssPx": { "x": 14, "width": 362, "right": 376, "height": 305.86 },
+    "screenshot": {
+      "path": "roadmap-mobile-agent-browser.png",
+      "bytes": 172311,
+      "sha256": "a1b7eeab5d563403365464eab96c7e70c461e8ebaf421d424b5cf69b975c2ac8"
+    }
+  },
+  "linkedPages": [
+    {
+      "path": "plan/c11-4-anonymous-grid-text-computed-line-break.html",
+      "title": "C11.4 anonymous Grid text computed line-break 제한 profile - 스피논 문서",
+      "hasPr945": true,
+      "hasOfficialCount": true
+    },
+    {
+      "path": "internal/0059-c11-grid-layout.html",
+      "title": "0059 · C11 Grid 레이아웃 내부 계약 - 스피논 문서",
+      "containsLineBreakCandidate": true,
+      "hasOfficialCount": true
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html",
+      "title": "C11.4 anonymous Grid text computed line-break 사전 비교 - 스피논 문서"
+    },
+    {
+      "path": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html",
+      "title": "C11.4 anonymous Grid text computed line-break runtime evidence - 스피논 문서",
+      "mentionsFiveOfFive": true
+    }
+  ],
+  "agentBrowserSessionClosed": true,
+  "agentBrowserProcessRemaining": false
+}

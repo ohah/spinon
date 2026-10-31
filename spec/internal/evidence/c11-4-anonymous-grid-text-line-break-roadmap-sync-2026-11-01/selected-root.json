@@ -1,0 +1,437 @@
+{
+  "sourceHead": "9eb8cea570fce5a0eb2da423ef37eac2e4ed3c1d",
+  "sourceTree": "3245cc15cb521b40ff07f561971019cd8eab03f2",
+  "trackedDiffSha256": "4a5357232dcc9ed67da65c164a12c43373a463c187eb4fbbd147b01f91918392",
+  "selectedRoot": "build/spinon/roadmap-c114-line-break-postmerge-20261101/root",
+  "fullDocsDeadLinkCheck": false,
+  "noSymlinks": true,
+  "roadmapMarkers": [
+    "PR #945 Rebase and merge",
+    "9eb8cea570fce5a0eb2da423ef37eac2e4ed3c1d",
+    "72/213"
+  ],
+  "stagedFileCount": 70,
+  "stagedBytes": 4464460,
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 462533,
+      "sha256": "30a5c3b6c8b861e22b8be7e9db51fc74abd0264a8bce08b84d368504484c0511"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 462533,
+      "sha256": "30a5c3b6c8b861e22b8be7e9db51fc74abd0264a8bce08b84d368504484c0511"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 462533,
+      "sha256": "30a5c3b6c8b861e22b8be7e9db51fc74abd0264a8bce08b84d368504484c0511"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 574917,
+      "sha256": "2276c2fd5982034bc823ebe3afc7895b9817d34e4b4d02ca31496f9f736bee60"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 574917,
+      "sha256": "2276c2fd5982034bc823ebe3afc7895b9817d34e4b4d02ca31496f9f736bee60"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 289406,
+      "sha256": "c6122dcd0e4dc4901f1a276416a64ba99f4f247aace0dc1950a988d1b65c7738"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 289406,
+      "sha256": "c6122dcd0e4dc4901f1a276416a64ba99f4f247aace0dc1950a988d1b65c7738"
+    },
+    {
+      "source": "plan/c11-css-grid.md",
+      "route": "plan/c11-css-grid.md",
+      "bytes": 29578,
+      "sha256": "1e6a7b9278e0f18c7d54c552d6c55ddef4b7f4ff7bb09081b445c880e5cbc1a5"
+    },
+    {
+      "source": "plan/c11-4-grid-track-sizing.md",
+      "route": "plan/c11-4-grid-track-sizing.md",
+      "bytes": 207704,
+      "sha256": "7d278cb9874297c8cb893971e40783ee8ac25ba088a33b190350435d1b6c0f31"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-line-break.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break.md",
+      "bytes": 11872,
+      "sha256": "feb2a24a2700e7c88ce8201a1016f331658c13159d9ec54fea1c3469ce3b4342"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-review-20.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-review-20.md",
+      "bytes": 4990,
+      "sha256": "ea9b7fbb9a39b8083f3ee4a9f704ea1351c803e5aa95dfe7051a5e95da26650a"
+    },
+    {
+      "source": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.md",
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.md",
+      "bytes": 5023,
+      "sha256": "f0339f7929db63f28731192510aa5984dde481560a25b6c498c1dca4142a5b2c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "bytes": 1964,
+      "sha256": "3a70cd6680485c8831063c88f97c75d73b73fd73eeed895ed3464ec27ea9fed8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "bytes": 43264,
+      "sha256": "5f149f2531340aeda40289700fa470c9277baf473ce8350a2d07cdd6cdf07865"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "bytes": 61055,
+      "sha256": "f52fc2e75238bafce88b215437686f2a1ffd08e52c8eb70e46193226cc9e9ac9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "bytes": 4251,
+      "sha256": "64c659a012ba427f73c1daad51915d8922156f40ac82d393aa9a1233d891ad6c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "bytes": 1964,
+      "sha256": "3a70cd6680485c8831063c88f97c75d73b73fd73eeed895ed3464ec27ea9fed8"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "bytes": 43264,
+      "sha256": "5f149f2531340aeda40289700fa470c9277baf473ce8350a2d07cdd6cdf07865"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "bytes": 61055,
+      "sha256": "f52fc2e75238bafce88b215437686f2a1ffd08e52c8eb70e46193226cc9e9ac9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "bytes": 4251,
+      "sha256": "64c659a012ba427f73c1daad51915d8922156f40ac82d393aa9a1233d891ad6c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "bytes": 23731,
+      "sha256": "eccaae6ebda932d8a68477a49f0f4004df68c403f770e08c9872f2a433a351da"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "bytes": 24058,
+      "sha256": "57a5dad8d5d0e8f9171ed8d271d485d70eda7ec7ee94285a5c73bbb04af6acee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "bytes": 23888,
+      "sha256": "41983de9b7c58f288907cae2340ce56b092dbe24e046827e24497e570dc457b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "bytes": 24151,
+      "sha256": "8fe627637d84a8f851edfc3250076b2ce00fe65f05388e23133b63f88acc4edc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "bytes": 24478,
+      "sha256": "51652c9015cd2b0d2129e1f934bed8645de18aeea7b2d874ff517d3ee02ef816"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 476,
+      "sha256": "2fb62ab730594ab767e6245b06ac7b23cd4050c368d595c8af793394587d8cdd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "bytes": 78405,
+      "sha256": "b155874cce2892c45a170b29033737637d1419464137b6f19a08b90fca411b2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 336,
+      "sha256": "14cab034142a56fe83b2b1fd96a5c3bccad6ff10be537d69e4c5e0b10bc0e8b1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "bytes": 1469,
+      "sha256": "34f0ac7382475b1a6c2d19f54ee5cbde43d2802edf588b21732e36fadf54f811"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "bytes": 2521,
+      "sha256": "5cf3b88d553ea2e90a973a12897534548b62b0ece21e502e08fcb2f6d38f125a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 4120,
+      "sha256": "97192d67705854fa753327a77d6fdfbecc737d5222291aa8aee4fb93ca62da06"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 767,
+      "sha256": "352d47518bcdc3d2bddfb2fe44819b5427b1397c5919cf846a8051092f80554c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "bytes": 13581,
+      "sha256": "21eac90d8343e5ba7da043fa4bbfa83cf9246aa29296aeed3a33cdc008bd42f9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "bytes": 14095,
+      "sha256": "9a5cf7ecc485605f0d42a13fc689647b25b77d4823eec9f3bc7d2ef8519951aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "bytes": 13647,
+      "sha256": "0b1a7f77ba81511155d2ae3093c1cad2c6956da3b666e837f06132a86845532d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "bytes": 14095,
+      "sha256": "4ac8821e666680f902a833481bcf7aa7e1c45dd83300b92bb85e11ff188cef09"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "bytes": 13581,
+      "sha256": "2d246ec3cf830f1eff3a44bedfadd5cec2d76cf4c9080974a825d48d835c642e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 481,
+      "sha256": "e53735e0edd846fb5c717cf72c94dc6cb183d7d0a71def681c5b7971e150373f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "bytes": 142951,
+      "sha256": "ba7a94b224d76119259f4585291007a8f070e0d1e24c9596efc0dd18b71911c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "1f9170e509ae78ad7e92cabf09e25c83d4e581151ad4944114551b7621a6da88"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 6707,
+      "sha256": "a8ec98203447e366d27d230b8eb5f23b113117a11a419ab8bf37f3af52166703"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "bytes": 4229,
+      "sha256": "9ace91ace00cba8b12d364377e672ebcba93f96c0ed69ad9e3521c2b356b4a0e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "bytes": 23731,
+      "sha256": "eccaae6ebda932d8a68477a49f0f4004df68c403f770e08c9872f2a433a351da"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "bytes": 24058,
+      "sha256": "57a5dad8d5d0e8f9171ed8d271d485d70eda7ec7ee94285a5c73bbb04af6acee"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "bytes": 23888,
+      "sha256": "41983de9b7c58f288907cae2340ce56b092dbe24e046827e24497e570dc457b4"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "bytes": 24151,
+      "sha256": "8fe627637d84a8f851edfc3250076b2ce00fe65f05388e23133b63f88acc4edc"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "bytes": 24478,
+      "sha256": "51652c9015cd2b0d2129e1f934bed8645de18aeea7b2d874ff517d3ee02ef816"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "bytes": 476,
+      "sha256": "2fb62ab730594ab767e6245b06ac7b23cd4050c368d595c8af793394587d8cdd"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "bytes": 78405,
+      "sha256": "b155874cce2892c45a170b29033737637d1419464137b6f19a08b90fca411b2d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "bytes": 336,
+      "sha256": "14cab034142a56fe83b2b1fd96a5c3bccad6ff10be537d69e4c5e0b10bc0e8b1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "bytes": 1469,
+      "sha256": "34f0ac7382475b1a6c2d19f54ee5cbde43d2802edf588b21732e36fadf54f811"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "bytes": 2521,
+      "sha256": "5cf3b88d553ea2e90a973a12897534548b62b0ece21e502e08fcb2f6d38f125a"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "bytes": 4120,
+      "sha256": "97192d67705854fa753327a77d6fdfbecc737d5222291aa8aee4fb93ca62da06"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "bytes": 767,
+      "sha256": "352d47518bcdc3d2bddfb2fe44819b5427b1397c5919cf846a8051092f80554c"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "bytes": 13581,
+      "sha256": "21eac90d8343e5ba7da043fa4bbfa83cf9246aa29296aeed3a33cdc008bd42f9"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "bytes": 14095,
+      "sha256": "9a5cf7ecc485605f0d42a13fc689647b25b77d4823eec9f3bc7d2ef8519951aa"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "bytes": 13647,
+      "sha256": "0b1a7f77ba81511155d2ae3093c1cad2c6956da3b666e837f06132a86845532d"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "bytes": 14095,
+      "sha256": "4ac8821e666680f902a833481bcf7aa7e1c45dd83300b92bb85e11ff188cef09"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "bytes": 13581,
+      "sha256": "2d246ec3cf830f1eff3a44bedfadd5cec2d76cf4c9080974a825d48d835c642e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "bytes": 481,
+      "sha256": "e53735e0edd846fb5c717cf72c94dc6cb183d7d0a71def681c5b7971e150373f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "bytes": 142951,
+      "sha256": "ba7a94b224d76119259f4585291007a8f070e0d1e24c9596efc0dd18b71911c5"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "bytes": 414,
+      "sha256": "1f9170e509ae78ad7e92cabf09e25c83d4e581151ad4944114551b7621a6da88"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "bytes": 6707,
+      "sha256": "a8ec98203447e366d27d230b8eb5f23b113117a11a419ab8bf37f3af52166703"
+    },
+    {
+      "source": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "bytes": 4229,
+      "sha256": "9ace91ace00cba8b12d364377e672ebcba93f96c0ed69ad9e3521c2b356b4a0e"
+    }
+  ]
+}

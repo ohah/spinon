@@ -1,0 +1,1269 @@
+{
+  "sourceHead": "9eb8cea570fce5a0eb2da423ef37eac2e4ed3c1d",
+  "sourceTree": "3245cc15cb521b40ff07f561971019cd8eab03f2",
+  "trackedDiffSha256": "4a5357232dcc9ed67da65c164a12c43373a463c187eb4fbbd147b01f91918392",
+  "previewRoot": "/Users/yoonhb/Library/Application Support/SpinonPreview",
+  "backupRoot": "/Users/yoonhb/Library/Application Support/SpinonPreviewBackups/c11-4-anonymous-grid-text-line-break-roadmap-sync-2026-11-01",
+  "server": {
+    "serverPid": 28040,
+    "args": "/Users/yoonhb/.local/share/mise/installs/node/24.19.0/bin/node /Users/yoonhb/Library/Application Support/SpinonPreview/tailnet-preview-server.mjs",
+    "sockets": [
+      "node    28040 yoonhb   12u  IPv4 0xab5c8f5eaaf3f681      0t0  TCP 127.0.0.1:8768 (LISTEN)"
+    ]
+  },
+  "localRoadmap": {
+    "status": 200,
+    "bytes": 460976,
+    "sha256": "34e60eb382bafe0e5fb79e737f61c771dddfd05d8ab7aa9619af4e2b5e3ccc26"
+  },
+  "currentRemoteRoadmap": {
+    "status": 200,
+    "bytes": 460976,
+    "sha256": "34e60eb382bafe0e5fb79e737f61c771dddfd05d8ab7aa9619af4e2b5e3ccc26"
+  },
+  "routeCount": 110,
+  "targetBytes": 11058719,
+  "counts": {
+    "create": 86,
+    "replace": 9,
+    "same": 15
+  },
+  "openHandleCount": 22,
+  "openHandles": [
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "logo.svg",
+      "currentSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "nextSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "command": "node",
+      "path": "static/css/styles.8d918fd78e.css",
+      "currentSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "nextSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "currentSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "nextSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "currentSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "nextSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "currentSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "nextSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "currentSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "nextSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "currentSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "nextSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "static/js/styles.b5d9a69293.js",
+      "currentSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "nextSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "currentSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "nextSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "currentSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "nextSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/css/styles.8d918fd78e.css",
+      "currentSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "nextSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    },
+    {
+      "command": "node",
+      "path": "static/js/3.d8b550a68d.js",
+      "currentSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "nextSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-react.801d719c4f.js",
+      "currentSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "nextSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "currentSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "nextSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "command": "node",
+      "path": "static/js/lib-router.d3b08da66f.js",
+      "currentSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "nextSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255"
+    },
+    {
+      "command": "node",
+      "path": "spec/public/icon.svg",
+      "currentSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "nextSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "command": "node",
+      "path": "static/css/styles.8d918fd78e.css",
+      "currentSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "nextSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3"
+    }
+  ],
+  "noDeletes": true,
+  "targets": [
+    {
+      "route": "icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/icon.svg",
+      "action": "same"
+    },
+    {
+      "route": "internal/0059-c11-grid-layout.html",
+      "sourceBytes": 416556,
+      "sourceSha256": "9b097ff3f11693a4ff92fc1cce4c09a733cc585339366bcca9509ef353f08f34",
+      "targetExists": true,
+      "targetBytes": 411840,
+      "targetSha256": "d1d082fd4e5fcc320d6f12320949bdf7842538dfe874081bb4537862ec0eef47",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/0059-c11-grid-layout.html",
+      "action": "replace"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "sourceBytes": 1964,
+      "sourceSha256": "3a70cd6680485c8831063c88f97c75d73b73fd73eeed895ed3464ec27ea9fed8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "sourceBytes": 43264,
+      "sourceSha256": "5f149f2531340aeda40289700fa470c9277baf473ce8350a2d07cdd6cdf07865",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "sourceBytes": 61055,
+      "sourceSha256": "f52fc2e75238bafce88b215437686f2a1ffd08e52c8eb70e46193226cc9e9ac9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html",
+      "sourceBytes": 32737,
+      "sourceSha256": "446526fa8423209185525009c44a6ea4cf794d6a219d165a1cdbec46abf6d447",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "sourceBytes": 4251,
+      "sourceSha256": "64c659a012ba427f73c1daad51915d8922156f40ac82d393aa9a1233d891ad6c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "sourceBytes": 23731,
+      "sourceSha256": "eccaae6ebda932d8a68477a49f0f4004df68c403f770e08c9872f2a433a351da",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "sourceBytes": 24058,
+      "sourceSha256": "57a5dad8d5d0e8f9171ed8d271d485d70eda7ec7ee94285a5c73bbb04af6acee",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "sourceBytes": 23888,
+      "sourceSha256": "41983de9b7c58f288907cae2340ce56b092dbe24e046827e24497e570dc457b4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "sourceBytes": 24151,
+      "sourceSha256": "8fe627637d84a8f851edfc3250076b2ce00fe65f05388e23133b63f88acc4edc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "sourceBytes": 24478,
+      "sourceSha256": "51652c9015cd2b0d2129e1f934bed8645de18aeea7b2d874ff517d3ee02ef816",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "sourceBytes": 476,
+      "sourceSha256": "2fb62ab730594ab767e6245b06ac7b23cd4050c368d595c8af793394587d8cdd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "sourceBytes": 78405,
+      "sourceSha256": "b155874cce2892c45a170b29033737637d1419464137b6f19a08b90fca411b2d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "sourceBytes": 336,
+      "sourceSha256": "14cab034142a56fe83b2b1fd96a5c3bccad6ff10be537d69e4c5e0b10bc0e8b1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html",
+      "sourceBytes": 28909,
+      "sourceSha256": "6cb9600cb2f9a9adb272dd0ffe2d67e1cb198a1afe6cd6ecf53158b940932e86",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "sourceBytes": 1469,
+      "sourceSha256": "34f0ac7382475b1a6c2d19f54ee5cbde43d2802edf588b21732e36fadf54f811",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "sourceBytes": 2521,
+      "sourceSha256": "5cf3b88d553ea2e90a973a12897534548b62b0ece21e502e08fcb2f6d38f125a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "sourceBytes": 37350,
+      "sourceSha256": "9cadac439551f33e6fc745baa100f1057fe64f06c5136bfe446c3f9303ed1911",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "sourceBytes": 4120,
+      "sourceSha256": "97192d67705854fa753327a77d6fdfbecc737d5222291aa8aee4fb93ca62da06",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "sourceBytes": 767,
+      "sourceSha256": "352d47518bcdc3d2bddfb2fe44819b5427b1397c5919cf846a8051092f80554c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "sourceBytes": 13581,
+      "sourceSha256": "21eac90d8343e5ba7da043fa4bbfa83cf9246aa29296aeed3a33cdc008bd42f9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "sourceBytes": 14095,
+      "sourceSha256": "9a5cf7ecc485605f0d42a13fc689647b25b77d4823eec9f3bc7d2ef8519951aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "sourceBytes": 13647,
+      "sourceSha256": "0b1a7f77ba81511155d2ae3093c1cad2c6956da3b666e837f06132a86845532d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "sourceBytes": 14095,
+      "sourceSha256": "4ac8821e666680f902a833481bcf7aa7e1c45dd83300b92bb85e11ff188cef09",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "sourceBytes": 13581,
+      "sourceSha256": "2d246ec3cf830f1eff3a44bedfadd5cec2d76cf4c9080974a825d48d835c642e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "sourceBytes": 481,
+      "sourceSha256": "e53735e0edd846fb5c717cf72c94dc6cb183d7d0a71def681c5b7971e150373f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "sourceBytes": 142951,
+      "sourceSha256": "ba7a94b224d76119259f4585291007a8f070e0d1e24c9596efc0dd18b71911c5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "sourceBytes": 414,
+      "sourceSha256": "1f9170e509ae78ad7e92cabf09e25c83d4e581151ad4944114551b7621a6da88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html",
+      "sourceBytes": 44742,
+      "sourceSha256": "57bc274a1823c0c06bc0501ce42a2a96828c43417b1a3c6bd1dea49ac6a9e6bb",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "sourceBytes": 6707,
+      "sourceSha256": "a8ec98203447e366d27d230b8eb5f23b113117a11a419ab8bf37f3af52166703",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html",
+      "sourceBytes": 32089,
+      "sourceSha256": "b0ddf7f71970e5e9ef98065a84ae09cd715d99c0e9b916c9e57b02a3562fc595",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html",
+      "action": "create"
+    },
+    {
+      "route": "internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "sourceBytes": 4229,
+      "sourceSha256": "9ace91ace00cba8b12d364377e672ebcba93f96c0ed69ad9e3521c2b356b4a0e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "action": "create"
+    },
+    {
+      "route": "logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/logo.svg",
+      "action": "same"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.html",
+      "sourceBytes": 40288,
+      "sourceSha256": "8fef06e992a7471a6a1b5280e8636c7edb2b96c781f6fd992e4aa12771e01dd2",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-anonymous-grid-text-computed-line-break-plan-pr-diff-review-20.html",
+      "action": "create"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break-plan-review-20.html",
+      "sourceBytes": 40333,
+      "sourceSha256": "15e647bcca13adddd3d0c4972e6f88827d31ba2fb940d95214d7ee6eac8fc613",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-anonymous-grid-text-computed-line-break-plan-review-20.html",
+      "action": "create"
+    },
+    {
+      "route": "plan/c11-4-anonymous-grid-text-computed-line-break.html",
+      "sourceBytes": 42954,
+      "sourceSha256": "a14f240c9238390b7c2d1b95840fcce59d84169db48a84b0b903495ba3ef2968",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-anonymous-grid-text-computed-line-break.html",
+      "action": "create"
+    },
+    {
+      "route": "plan/c11-4-grid-track-sizing.html",
+      "sourceBytes": 338982,
+      "sourceSha256": "eb10bb7e238ae62f906af1acbad2f716a043f2093771aeb225ce09ce023e8a8b",
+      "targetExists": true,
+      "targetBytes": 334870,
+      "targetSha256": "29949a07921dffba3bb0738a7b60eabc64d5fb0600d532131de9a712a2f49270",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-4-grid-track-sizing.html",
+      "action": "replace"
+    },
+    {
+      "route": "plan/c11-css-grid.html",
+      "sourceBytes": 64678,
+      "sourceSha256": "5282b544c30df09cbfaec7ba12d873060ffd842f6f2b1cd1c0b0f4c1b7af2342",
+      "targetExists": true,
+      "targetBytes": 71237,
+      "targetSha256": "a89f3941951a2e8d463915f5bcd3b1988fe08599a0a6c588ffa16d2a8e642958",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/plan/c11-css-grid.html",
+      "action": "replace"
+    },
+    {
+      "route": "public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/public/icon.svg",
+      "action": "same"
+    },
+    {
+      "route": "public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/public/logo.svg",
+      "action": "same"
+    },
+    {
+      "route": "roadmap.html",
+      "sourceBytes": 462533,
+      "sourceSha256": "30a5c3b6c8b861e22b8be7e9db51fc74abd0264a8bce08b84d368504484c0511",
+      "targetExists": true,
+      "targetBytes": 460976,
+      "targetSha256": "34e60eb382bafe0e5fb79e737f61c771dddfd05d8ab7aa9619af4e2b5e3ccc26",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/roadmap.html",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/0059-c11-grid-layout.html",
+      "sourceBytes": 417050,
+      "sourceSha256": "5b1314e7a0ad5d03847bfc2a8d9b1c32cc1ab38a565d0acbc030311c7f01fd22",
+      "targetExists": true,
+      "targetBytes": 411850,
+      "targetSha256": "b7636a1e21ff3164d5134dc22065a46eb1fb0e0605ae65747a8e6ec1a99b5de5",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/0059-c11-grid-layout.html",
+      "action": "replace"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "sourceBytes": 1964,
+      "sourceSha256": "3a70cd6680485c8831063c88f97c75d73b73fd73eeed895ed3464ec27ea9fed8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome-observation.json",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "sourceBytes": 43264,
+      "sourceSha256": "5f149f2531340aeda40289700fa470c9277baf473ce8350a2d07cdd6cdf07865",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-line-break-grid.png",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "sourceBytes": 61055,
+      "sourceSha256": "f52fc2e75238bafce88b215437686f2a1ffd08e52c8eb70e46193226cc9e9ac9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/chrome156-runtime-style-grid.png",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html",
+      "sourceBytes": 32747,
+      "sourceSha256": "b6fb1403e99c24ed55726e78b9737ad8d377bc459d7ee28581a8869d089a3d4d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.html",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "sourceBytes": 4251,
+      "sourceSha256": "64c659a012ba427f73c1daad51915d8922156f40ac82d393aa9a1233d891ad6c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-precomparison-2026-11-01/README.md",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "sourceBytes": 23731,
+      "sourceSha256": "eccaae6ebda932d8a68477a49f0f4004df68c403f770e08c9872f2a433a351da",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-en-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "sourceBytes": 24058,
+      "sourceSha256": "57a5dad8d5d0e8f9171ed8d271d485d70eda7ec7ee94285a5c73bbb04af6acee",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "sourceBytes": 23888,
+      "sourceSha256": "41983de9b7c58f288907cae2340ce56b092dbe24e046827e24497e570dc457b4",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "sourceBytes": 24151,
+      "sourceSha256": "8fe627637d84a8f851edfc3250076b2ce00fe65f05388e23133b63f88acc4edc",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "sourceBytes": 24478,
+      "sourceSha256": "51652c9015cd2b0d2129e1f934bed8645de18aeea7b2d874ff517d3ee02ef816",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/line-break-ja-strict-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "sourceBytes": 476,
+      "sourceSha256": "2fb62ab730594ab767e6245b06ac7b23cd4050c368d595c8af793394587d8cdd",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/matrix.tsv",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "sourceBytes": 78405,
+      "sourceSha256": "b155874cce2892c45a170b29033737637d1419464137b6f19a08b90fca411b2d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/representative-screen.png",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "sourceBytes": 336,
+      "sourceSha256": "14cab034142a56fe83b2b1fd96a5c3bccad6ff10be537d69e4c5e0b10bc0e8b1",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/android-avd/simulator.json",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html",
+      "sourceBytes": 28919,
+      "sourceSha256": "434148d25d0682814655971eef2c8c6093b4a041d031b7cafff325cf85036da9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.html",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "sourceBytes": 1469,
+      "sourceSha256": "34f0ac7382475b1a6c2d19f54ee5cbde43d2802edf588b21732e36fadf54f811",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/artifact-boundary.md",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "sourceBytes": 2521,
+      "sourceSha256": "5cf3b88d553ea2e90a973a12897534548b62b0ece21e502e08fcb2f6d38f125a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/expected-values.json",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "sourceBytes": 37360,
+      "sourceSha256": "27fe4b58a381b8e51cd9e40adace32409b2e8fbc4df1a520593bf30be9e944d5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.html",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "sourceBytes": 4120,
+      "sourceSha256": "97192d67705854fa753327a77d6fdfbecc737d5222291aa8aee4fb93ca62da06",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "sourceBytes": 767,
+      "sourceSha256": "352d47518bcdc3d2bddfb2fe44819b5427b1397c5919cf846a8051092f80554c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/attempts.tsv",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "sourceBytes": 13581,
+      "sourceSha256": "21eac90d8343e5ba7da043fa4bbfa83cf9246aa29296aeed3a33cdc008bd42f9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-en-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "sourceBytes": 14095,
+      "sourceSha256": "9a5cf7ecc485605f0d42a13fc689647b25b77d4823eec9f3bc7d2ef8519951aa",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "sourceBytes": 13647,
+      "sourceSha256": "0b1a7f77ba81511155d2ae3093c1cad2c6956da3b666e837f06132a86845532d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-normal-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "sourceBytes": 14095,
+      "sourceSha256": "4ac8821e666680f902a833481bcf7aa7e1c45dd83300b92bb85e11ff188cef09",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-max-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "sourceBytes": 13581,
+      "sourceSha256": "2d246ec3cf830f1eff3a44bedfadd5cec2d76cf4c9080974a825d48d835c642e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/line-break-ja-strict-min-content.log",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "sourceBytes": 481,
+      "sourceSha256": "e53735e0edd846fb5c717cf72c94dc6cb183d7d0a71def681c5b7971e150373f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/matrix.tsv",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "sourceBytes": 142951,
+      "sourceSha256": "ba7a94b224d76119259f4585291007a8f070e0d1e24c9596efc0dd18b71911c5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/representative-screen.png",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "sourceBytes": 414,
+      "sourceSha256": "1f9170e509ae78ad7e92cabf09e25c83d4e581151ad4944114551b7621a6da88",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/ios-simulator/simulator.json",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html",
+      "sourceBytes": 44752,
+      "sourceSha256": "2e757e47179998db38224550c20249efdb51eae926ff8d59049aefecd95716c8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.html",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "sourceBytes": 6707,
+      "sourceSha256": "a8ec98203447e366d27d230b8eb5f23b113117a11a419ab8bf37f3af52166703",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html",
+      "sourceBytes": 32018,
+      "sourceSha256": "3310300704044f7fa7cb3ab6c6e3a0e98f93fc0906f2304641ef7980518d4b9c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.html",
+      "action": "create"
+    },
+    {
+      "route": "spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "sourceBytes": 4229,
+      "sourceSha256": "9ace91ace00cba8b12d364377e672ebcba93f96c0ed69ad9e3521c2b356b4a0e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/internal/evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/README.md",
+      "action": "create"
+    },
+    {
+      "route": "spec/public/icon.svg",
+      "sourceBytes": 638,
+      "sourceSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetExists": true,
+      "targetBytes": 638,
+      "targetSha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/public/icon.svg",
+      "action": "same"
+    },
+    {
+      "route": "spec/public/logo.svg",
+      "sourceBytes": 568,
+      "sourceSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetExists": true,
+      "targetBytes": 568,
+      "targetSha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/public/logo.svg",
+      "action": "same"
+    },
+    {
+      "route": "spec/STATUS.html",
+      "sourceBytes": 712873,
+      "sourceSha256": "632190ca7894f1786d22ed43c9b38d3b32b053fd397bc9dd7a313870c67f090d",
+      "targetExists": true,
+      "targetBytes": 710340,
+      "targetSha256": "0122bff76be618958bdec0803d607ab6720f5441d62cd361720b9fd888ebcb75",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/STATUS.html",
+      "action": "replace"
+    },
+    {
+      "route": "spec/STATUS.md",
+      "sourceBytes": 574917,
+      "sourceSha256": "2276c2fd5982034bc823ebe3afc7895b9817d34e4b4d02ca31496f9f736bee60",
+      "targetExists": true,
+      "targetBytes": 569923,
+      "targetSha256": "71153d4e16f3473de845ba112be1b3c08dd95dc34f4721ccbab199e411540086",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/spec/STATUS.md",
+      "action": "replace"
+    },
+    {
+      "route": "static/css/styles.8d918fd78e.css",
+      "sourceBytes": 73952,
+      "sourceSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetExists": true,
+      "targetBytes": 73952,
+      "targetSha256": "c9f4490a59d882f143d64ac0902904e6a0489dfb6dadefa5317dc904e82662b3",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/css/styles.8d918fd78e.css",
+      "action": "same"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js",
+      "sourceBytes": 217061,
+      "sourceSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "targetExists": true,
+      "targetBytes": 217061,
+      "targetSha256": "9fb783bceb22c323ac5aa6944bc3093fda5d3024a0a568149a5257797f2fd0b2",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/3.d8b550a68d.js",
+      "action": "same"
+    },
+    {
+      "route": "static/js/3.d8b550a68d.js.LICENSE.txt",
+      "sourceBytes": 384,
+      "sourceSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetExists": true,
+      "targetBytes": 384,
+      "targetSha256": "8d9dbf026ed987f49a794cd5a50f31540b6e7f66db11e76305e8d37e2ca965af",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/3.d8b550a68d.js.LICENSE.txt",
+      "action": "same"
+    },
+    {
+      "route": "static/js/async/l.76b60f2b87.js",
+      "sourceBytes": 98,
+      "sourceSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "targetExists": true,
+      "targetBytes": 98,
+      "targetSha256": "03f4616099953c2e3b94b48ced846acf3b42c365e062520e986e33b0be7b08ee",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/l.76b60f2b87.js",
+      "action": "same"
+    },
+    {
+      "route": "static/js/async/route-04cbcabea10a.8fa3106080.js",
+      "sourceBytes": 326848,
+      "sourceSha256": "713a273141a16c7366ee972c177b8c3bd03f4bd7412f8c164ed8998d072f8b6f",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-04cbcabea10a.8fa3106080.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-245e3d5793b0.15a47c4dd5.js",
+      "sourceBytes": 7097,
+      "sourceSha256": "5ad230d5c513d48a9c125f22dbed9bad3acdfb79dad0308e2ea913fcf14d4a0c",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-245e3d5793b0.15a47c4dd5.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-2aeaf84e6e57.17a1a3a707.js",
+      "sourceBytes": 9020,
+      "sourceSha256": "77d0bedee6381357f4a09e3f77b38de88bcd05a5d7ba21dd59729b86d17391c9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-2aeaf84e6e57.17a1a3a707.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-419b4286551b.00edf7fa7c.js",
+      "sourceBytes": 7102,
+      "sourceSha256": "e02f1c9d80a487e34f58bb12cbe4adb3232f23f4592e412706041bb8fa25cd30",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-419b4286551b.00edf7fa7c.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-46060f4105a6.b99ca8af8d.js",
+      "sourceBytes": 8837,
+      "sourceSha256": "5faba776634c5c061762ee43092b428de152c6e3a1a0c96a8defd47aae1cea64",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-46060f4105a6.b99ca8af8d.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-59485616fee5.25b8811d30.js",
+      "sourceBytes": 10242,
+      "sourceSha256": "2342e9330f3cd9eab2909b95bb1614c2f51a486d8fa21596d89c5105cde9edca",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-59485616fee5.25b8811d30.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-6693dc2082c2.d18de3c924.js",
+      "sourceBytes": 10249,
+      "sourceSha256": "7c686b3c2e48e8957f2e3f6a146cd78fa503990f9e86c5de3be239a4547bf012",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-6693dc2082c2.d18de3c924.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-6c33a3943990.f010595a5d.js",
+      "sourceBytes": 760173,
+      "sourceSha256": "60e397a42a46db005886c4d2f0a2844701ca2fc70e3ea089778c63a79ba1e008",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-6c33a3943990.f010595a5d.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-739571cd2ae5.5014f8be4c.js",
+      "sourceBytes": 420833,
+      "sourceSha256": "2c35a4ea741c4926efbd9cc1ea891aeeb85051dd2f87c845093969b7ea17eb1d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-739571cd2ae5.5014f8be4c.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-7ce2535ac56d.53cdfc3c9f.js",
+      "sourceBytes": 760313,
+      "sourceSha256": "ae6b923585b84bfb1a600f9e7dd584f836d932c9e36aab3dc0350e87c753b698",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-7ce2535ac56d.53cdfc3c9f.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-898f7efea2b8.a364ade62d.js",
+      "sourceBytes": 10131,
+      "sourceSha256": "312998b9aeac9800b756f8cbdb64f6e3e1cb27d29a9e07e27ea8d011f8ba31b5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-898f7efea2b8.a364ade62d.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-b527f0416403.98f9cbb83b.js",
+      "sourceBytes": 10138,
+      "sourceSha256": "fb679ce5286da553805bcb459f0f1adf026b654fdaf4c4ee96eddaca61c92a5a",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-b527f0416403.98f9cbb83b.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c2801b21f038.51e4694bdd.js",
+      "sourceBytes": 42750,
+      "sourceSha256": "54a49a1975c27135fcda83159c638d5ad74f8d0b5023a858e2c8ee1c5e5f7836",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-c2801b21f038.51e4694bdd.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c3a978b9a1ce.c4154ef913.js",
+      "sourceBytes": 3641,
+      "sourceSha256": "7f8d8a9150528a8b00cb80133604fb1fbba6dcfa0bc454200814e4588aaa7c03",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-c3a978b9a1ce.c4154ef913.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c4dae6800800.2e230b1292.js",
+      "sourceBytes": 420788,
+      "sourceSha256": "c1400722c9d344103d6de00b01661032c2bbc660d46c8cb484e6b05733ac37e9",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-c4dae6800800.2e230b1292.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-c5826c9ac08f.1fecd85ca3.js",
+      "sourceBytes": 8659,
+      "sourceSha256": "25fdf1ef7669d436c8bc3d179815246b8c030adc3c1237f8a9e6d35994d5365e",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-c5826c9ac08f.1fecd85ca3.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-cb8eb8496ff5.d4b9c8897e.js",
+      "sourceBytes": 3634,
+      "sourceSha256": "7c9ba6d19a50c8724abf466741abbf2a7be6d4b4a62d726892cb845b31b52fd8",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-cb8eb8496ff5.d4b9c8897e.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-fa01744cb0ba.d71128f675.js",
+      "sourceBytes": 21035,
+      "sourceSha256": "a178cebaf2fd2e6c51e1b280ad40be19f7e58ebed37724200b8bacaaec305b16",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-fa01744cb0ba.d71128f675.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/async/route-fbe37ea081ba.8dbf9de958.js",
+      "sourceBytes": 8809,
+      "sourceSha256": "f0a1a9a95b6bf491263a5d4c9abb2b0d88534d77d159595be8f8d1aab4d30a81",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/async/route-fbe37ea081ba.8dbf9de958.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/index.a7a0390cc6.js",
+      "sourceBytes": 127460,
+      "sourceSha256": "783657b166f6771903a873c933a0517311cf564c324e0b725d5db53923ef6ab5",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/index.a7a0390cc6.js",
+      "action": "create"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js",
+      "sourceBytes": 218366,
+      "sourceSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "targetExists": true,
+      "targetBytes": 218366,
+      "targetSha256": "36f3527d114464d820bbcc9f1c79c934ec803037aa14b240150c1d297b404bcb",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-react.801d719c4f.js",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "sourceBytes": 1209,
+      "sourceSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetExists": true,
+      "targetBytes": 1209,
+      "targetSha256": "e47a413b62a5bf023d2b81a25d0ef4213ff1bb756df7f3c31ba57f88334e1e0f",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-react.801d719c4f.js.LICENSE.txt",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js",
+      "sourceBytes": 35366,
+      "sourceSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "targetExists": true,
+      "targetBytes": 35366,
+      "targetSha256": "310bd2bb558df47b34805463ba4067ca27cc854487314b543b9f7dc29eeca255",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-router.d3b08da66f.js",
+      "action": "same"
+    },
+    {
+      "route": "static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "sourceBytes": 222,
+      "sourceSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetExists": true,
+      "targetBytes": 222,
+      "targetSha256": "506496322dd55b22298947c7177921cc1950731be7ea976ad49f37a83d15972d",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/lib-router.d3b08da66f.js.LICENSE.txt",
+      "action": "same"
+    },
+    {
+      "route": "static/js/styles.b5d9a69293.js",
+      "sourceBytes": 471,
+      "sourceSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "targetExists": true,
+      "targetBytes": 471,
+      "targetSha256": "8d921669e708bb5b030d925d8ccb27e77e76727c98338c4f29e27e8a5aeaa7c6",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/js/styles.b5d9a69293.js",
+      "action": "same"
+    },
+    {
+      "route": "static/search_index.ko.f66580a4.json",
+      "sourceBytes": 1694860,
+      "sourceSha256": "f66580a47f12e485504c550d3ef25e429973befc27ddd8c18dadefbc4d45997d",
+      "targetExists": false,
+      "targetBytes": null,
+      "targetSha256": null,
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/static/search_index.ko.f66580a4.json",
+      "action": "create"
+    },
+    {
+      "route": "STATUS.html",
+      "sourceBytes": 712219,
+      "sourceSha256": "43aad63498e6c4b785b4b1ecf08329dce47242a6efe3e5d8ab1ae9d02ceaa56b",
+      "targetExists": true,
+      "targetBytes": 709805,
+      "targetSha256": "ec68be21a1c3a8f0b9f47e705aaedb84e72e63a650c631d780783b1388b0bba4",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/STATUS.html",
+      "action": "replace"
+    },
+    {
+      "route": "STATUS.md",
+      "sourceBytes": 574917,
+      "sourceSha256": "2276c2fd5982034bc823ebe3afc7895b9817d34e4b4d02ca31496f9f736bee60",
+      "targetExists": true,
+      "targetBytes": 569923,
+      "targetSha256": "71153d4e16f3473de845ba112be1b3c08dd95dc34f4721ccbab199e411540086",
+      "targetPath": "/Users/yoonhb/Library/Application Support/SpinonPreview/STATUS.md",
+      "action": "replace"
+    }
+  ]
+}
