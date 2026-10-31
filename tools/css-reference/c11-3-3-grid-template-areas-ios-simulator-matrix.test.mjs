@@ -46,10 +46,10 @@ function successLog(scene, chromeCase, runID) {
   ].join('\n');
 }
 
-test('iOS Simulator matrix는 Chrome 154의 26개 장면과 Chrome 156의 5개 보충 장면을 묶는다', () => {
+test('iOS Simulator matrix는 Chrome 154의 26개 장면과 Chrome 156의 13개 보충 장면을 묶는다', () => {
   const ids = runtime.cases.map(({ id }) => id);
-  assert.equal(new Set(ids).size, 37);
-  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 118);
+  assert.equal(new Set(ids).size, 39);
+  assert.equal(runtime.cases.reduce((sum, scene) => sum + scene.nodeIds.length, 0), 126);
   assert.equal(observation.cases.length, 26);
   assert.deepEqual(runtime.cases.slice(0, 26).map(({ id }) => id), observation.cases.map(({ id }) => id));
   for (const scene of runtime.cases) {

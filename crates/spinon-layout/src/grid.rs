@@ -265,7 +265,7 @@ pub enum GridPlacementMode {
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
     TemplateGrid,
-    /// C11.3.3 opt-in 경로의 explicit placement와 trailing implicit tracks입니다. Template areas가 있으면 기본 auto track도 사용할 수 있습니다.
+    /// C11.3.3 opt-in 경로의 explicit placement와 trailing implicit tracks입니다. Template areas가 있으면 auto 및 C11.4 typed auto-track sizing을 사용할 수 있습니다.
     TemplateGridImplicitTracks,
     /// C11.3.3 named-line opt-in의 signed leading/trailing fixed implicit tracks입니다.
     TemplateGridSignedImplicitTracks,
@@ -281,7 +281,7 @@ pub enum GridAutoTrackSize {
     Auto,
     /// 모든 implicit track에 반복할 하나의 고정 CSS px track입니다.
     LengthPx(f32),
-    /// C11.4 TrackSizing profile에서 leading tracks는 마지막 값부터, trailing tracks는 첫 값부터 순환합니다.
+    /// C11.4 TrackSizing profile과 area-backed C11.3.3 후보에서 track pattern으로 사용합니다. C11.3.3 후보는 area 뒤의 positive tracks에만 적용되며 signed leading 동작은 기존 계약을 유지합니다.
     TrackList(Vec<GridTrackSize>),
 }
 
@@ -338,6 +338,22 @@ pub(super) fn validate_grid_layout(
 
     for (&id, container) in &input.grid_containers {
         validate_template_areas(id, container)?;
+        let template_area_track_sizing = container.template_areas.is_some()
+            && matches!(
+                container.placement_mode,
+                GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
+            );
+        if template_area_track_sizing && (container.rows.is_empty() || container.columns.is_empty())
+        {
+            return Err(LayoutError::InvalidGridTrackList {
+                node: id,
+                property: if container.columns.is_empty() {
+                    "grid-template-columns"
+                } else {
+                    "grid-template-rows"
+                },
+            });
+        }
         match (container.placement_mode, &container.auto_rows) {
             (GridPlacementMode::TrackSizing, _) => {}
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
@@ -356,15 +372,14 @@ pub(super) fn validate_grid_layout(
                 GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoRows::TrackList(tracks),
-            ) if tracks
-                .iter()
-                .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            ) if !tracks.is_empty()
+                && tracks
+                    .iter()
+                    .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::TrackList(tracks))
+                if container.template_areas.is_some() && !tracks.is_empty() => {}
             (GridPlacementMode::TemplateGrid, GridAutoRows::TrackList(tracks))
-                if container.template_areas.is_some()
-                    && !tracks.is_empty()
-                    && tracks
-                        .iter()
-                        .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+                if container.template_areas.is_some() && !tracks.is_empty() => {}
             (
                 GridPlacementMode::SparseRow
                 | GridPlacementMode::DenseAutoPlacement
@@ -399,15 +414,14 @@ pub(super) fn validate_grid_layout(
                 GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoColumns::TrackList(tracks),
-            ) if tracks
-                .iter()
-                .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            ) if !tracks.is_empty()
+                && tracks
+                    .iter()
+                    .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+            (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::TrackList(tracks))
+                if container.template_areas.is_some() && !tracks.is_empty() => {}
             (GridPlacementMode::TemplateGrid, GridAutoColumns::TrackList(tracks))
-                if container.template_areas.is_some()
-                    && !tracks.is_empty()
-                    && tracks
-                        .iter()
-                        .all(|track| matches!(track, GridTrackSize::LengthPx(_))) => {}
+                if container.template_areas.is_some() && !tracks.is_empty() => {}
             (
                 GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
@@ -450,7 +464,8 @@ pub(super) fn validate_grid_layout(
                 id,
                 "grid-auto-rows",
                 tracks,
-                container.placement_mode == GridPlacementMode::TrackSizing,
+                template_area_track_sizing
+                    || container.placement_mode == GridPlacementMode::TrackSizing,
                 false,
             )?;
         }
@@ -465,7 +480,8 @@ pub(super) fn validate_grid_layout(
                 id,
                 "grid-auto-columns",
                 tracks,
-                container.placement_mode == GridPlacementMode::TrackSizing,
+                template_area_track_sizing
+                    || container.placement_mode == GridPlacementMode::TrackSizing,
                 false,
             )?;
         }
@@ -511,7 +527,13 @@ pub(super) fn validate_grid_layout(
         let Some(container) = input.grid_containers.get(&node.id) else {
             return Err(LayoutError::MissingGridContainer(node.id));
         };
-        let allow_intrinsic_tracks = container.placement_mode == GridPlacementMode::TrackSizing;
+        let template_area_track_sizing = container.template_areas.is_some()
+            && matches!(
+                container.placement_mode,
+                GridPlacementMode::TemplateGrid | GridPlacementMode::TemplateGridImplicitTracks
+            );
+        let allow_intrinsic_tracks = container.placement_mode == GridPlacementMode::TrackSizing
+            || template_area_track_sizing;
         let allow_template_area_auto_track = container.placement_mode
             == GridPlacementMode::TemplateGrid
             && container.template_areas.is_some();

@@ -41,12 +41,24 @@
     "cycleScreenshot": {
       "path": "spec/internal/evidence/c11-3-3-template-area-track-list-cycle-runtime-precomparison-2026-10-30/chrome/fixture.png",
       "sha256": "3df254c19ede58efae3072a10225113e941586d148cc741e7cad3040611261ed"
+    },
+    "typedAutoHtml": {
+      "path": "tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-c1133-runtime.html",
+      "sha256": "28ea4bc93adb53f56148ffd5017982b3b2fc35333902918f8ab1cede811c2f49"
+    },
+    "typedAutoObservation": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/observation.json",
+      "sha256": "ff74e4379a7360282af09492fffd6b5cb5ceb20863c1f49910ae6ba83dc6c630"
+    },
+    "typedAutoScreenshot": {
+      "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/fixture.png",
+      "sha256": "b6f32defbd3f7180138a3074abcfea04726fc67fc10fedacf235302cf934cc3d"
     }
   },
   "summary": {
-    "sceneCount": 37,
-    "nodeCount": 118,
-    "successCount": 32,
+    "sceneCount": 39,
+    "nodeCount": 126,
+    "successCount": 34,
     "cascadeFallbackCount": 5,
     "expectedRejectCount": 0
   },
@@ -2352,6 +2364,148 @@
         ]
       },
       "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"column-cycle-continues-after-area\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;width:100px;height:80px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-rows:30px;grid-template-columns:20px;grid-auto-rows:11px 13px;grid-auto-columns:5px 7px;grid-template-areas:'known area-col'\");\ndocument.appendChild(node_0);\nrefs[\"column-cycle-continues-after-area\"] = node_0;\nnodeIds.push(\"column-cycle-continues-after-area\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"phase-column-known\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#e5484d;grid-area:known\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_1);\nrefs[\"phase-column-known\"] = node_1;\nnodeIds.push(\"phase-column-known\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"phase-column-area\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#30a46c;grid-area:area-col\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_2);\nrefs[\"phase-column-area\"] = node_2;\nnodeIds.push(\"phase-column-area\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"phase-column-late\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;margin:0;padding:0;border:0;min-width:0;min-height:0;background-color:#8e4ec6;grid-row:1;grid-column:area-col-end / span 1 ghost\");\nrefs[\"column-cycle-continues-after-area\"].appendChild(node_3);\nrefs[\"phase-column-late\"] = node_3;\nnodeIds.push(\"phase-column-late\");\nreturn { sceneId:'column-cycle-continues-after-area', rootId:\"column-cycle-continues-after-area\", nodeIds };\n})()"
+    },
+    {
+      "index": 37,
+      "id": "typed-area-minmax-row",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "typed-area-minmax-row",
+      "nodeIds": [
+        "typed-area-minmax-row",
+        "typed-area-minmax-row-first",
+        "typed-area-minmax-row-second",
+        "typed-area-minmax-row-third"
+      ],
+      "parentIds": [
+        null,
+        "typed-area-minmax-row",
+        "typed-area-minmax-row",
+        "typed-area-minmax-row"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/observation.json",
+        "sceneId": "typed-area-minmax-row",
+        "rootId": "typed-area-minmax-row",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 90
+        },
+        "nodes": [
+          {
+            "id": "typed-area-minmax-row",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 90
+            }
+          },
+          {
+            "id": "typed-area-minmax-row-first",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 10
+            }
+          },
+          {
+            "id": "typed-area-minmax-row-second",
+            "rect": {
+              "x": 0,
+              "y": 10,
+              "width": 100,
+              "height": 40
+            }
+          },
+          {
+            "id": "typed-area-minmax-row-third",
+            "rect": {
+              "x": 0,
+              "y": 50,
+              "width": 100,
+              "height": 40
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"typed-area-minmax-row\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;gap:0;margin:0;padding:0;border:0;background-color:#101820;width:100px;height:90px;grid-template-columns:100px;grid-template-rows:10px;grid-template-areas:'first' 'second' 'third';grid-auto-rows:minmax(20px, 1fr)\");\ndocument.appendChild(node_0);\nrefs[\"typed-area-minmax-row\"] = node_0;\nnodeIds.push(\"typed-area-minmax-row\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"typed-area-minmax-row-first\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:first;height:10px\");\nrefs[\"typed-area-minmax-row\"].appendChild(node_1);\nrefs[\"typed-area-minmax-row-first\"] = node_1;\nnodeIds.push(\"typed-area-minmax-row-first\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"typed-area-minmax-row-second\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#30a46c;grid-area:second\");\nrefs[\"typed-area-minmax-row\"].appendChild(node_2);\nrefs[\"typed-area-minmax-row-second\"] = node_2;\nnodeIds.push(\"typed-area-minmax-row-second\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"typed-area-minmax-row-third\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#3e63dd;grid-area:third\");\nrefs[\"typed-area-minmax-row\"].appendChild(node_3);\nrefs[\"typed-area-minmax-row-third\"] = node_3;\nnodeIds.push(\"typed-area-minmax-row-third\");\nreturn { sceneId:'typed-area-minmax-row', rootId:\"typed-area-minmax-row\", nodeIds };\n})()"
+    },
+    {
+      "index": 38,
+      "id": "typed-area-percentage-column",
+      "expected": {
+        "outcome": "success"
+      },
+      "rootId": "typed-area-percentage-column",
+      "nodeIds": [
+        "typed-area-percentage-column",
+        "typed-area-percentage-column-left",
+        "typed-area-percentage-column-middle",
+        "typed-area-percentage-column-right"
+      ],
+      "parentIds": [
+        null,
+        "typed-area-percentage-column",
+        "typed-area-percentage-column",
+        "typed-area-percentage-column"
+      ],
+      "oracle": {
+        "product": "Chrome/156.0.0.0",
+        "path": "spec/internal/evidence/c11-3-3-template-area-auto-track-sizing-precomparison-2026-10-31/chrome/observation.json",
+        "sceneId": "typed-area-percentage-column",
+        "rootId": "typed-area-percentage-column",
+        "rootRect": {
+          "x": 0,
+          "y": 0,
+          "width": 100,
+          "height": 20
+        },
+        "nodes": [
+          {
+            "id": "typed-area-percentage-column",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 100,
+              "height": 20
+            }
+          },
+          {
+            "id": "typed-area-percentage-column-left",
+            "rect": {
+              "x": 0,
+              "y": 0,
+              "width": 10,
+              "height": 20
+            }
+          },
+          {
+            "id": "typed-area-percentage-column-middle",
+            "rect": {
+              "x": 10,
+              "y": 0,
+              "width": 25,
+              "height": 20
+            }
+          },
+          {
+            "id": "typed-area-percentage-column-right",
+            "rect": {
+              "x": 35,
+              "y": 0,
+              "width": 25,
+              "height": 20
+            }
+          }
+        ]
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst node_0 = document.createElement('div');\nnode_0.setAttribute('id', \"typed-area-percentage-column\");\nnode_0.setAttribute('data-node', '');\nnode_0.setAttribute('style', \"box-sizing:border-box;display:grid;gap:0;margin:0;padding:0;border:0;background-color:#101820;width:100px;height:20px;grid-template-columns:10px;grid-template-rows:20px;grid-template-areas:'left middle right';grid-auto-columns:25%\");\ndocument.appendChild(node_0);\nrefs[\"typed-area-percentage-column\"] = node_0;\nnodeIds.push(\"typed-area-percentage-column\");\nconst node_1 = document.createElement('div');\nnode_1.setAttribute('id', \"typed-area-percentage-column-left\");\nnode_1.setAttribute('data-node', '');\nnode_1.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#e5484d;grid-area:left\");\nrefs[\"typed-area-percentage-column\"].appendChild(node_1);\nrefs[\"typed-area-percentage-column-left\"] = node_1;\nnodeIds.push(\"typed-area-percentage-column-left\");\nconst node_2 = document.createElement('div');\nnode_2.setAttribute('id', \"typed-area-percentage-column-middle\");\nnode_2.setAttribute('data-node', '');\nnode_2.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#30a46c;grid-area:middle\");\nrefs[\"typed-area-percentage-column\"].appendChild(node_2);\nrefs[\"typed-area-percentage-column-middle\"] = node_2;\nnodeIds.push(\"typed-area-percentage-column-middle\");\nconst node_3 = document.createElement('div');\nnode_3.setAttribute('id', \"typed-area-percentage-column-right\");\nnode_3.setAttribute('data-node', '');\nnode_3.setAttribute('style', \"box-sizing:border-box;min-width:0;min-height:0;margin:0;padding:0;border:0;background-color:#3e63dd;grid-area:right\");\nrefs[\"typed-area-percentage-column\"].appendChild(node_3);\nrefs[\"typed-area-percentage-column-right\"] = node_3;\nnodeIds.push(\"typed-area-percentage-column-right\");\nreturn { sceneId:'typed-area-percentage-column', rootId:\"typed-area-percentage-column\", nodeIds };\n})()"
     }
   ]
 }

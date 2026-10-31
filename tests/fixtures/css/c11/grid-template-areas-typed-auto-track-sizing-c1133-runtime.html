@@ -1,0 +1,66 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.3.3 template-area typed auto-track sizing</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font: 12px sans-serif; }
+  .grid {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: #101820;
+  }
+  .item { min-width: 0; min-height: 0; margin: 0; padding: 0; border: 0; }
+  .row-grid {
+    width: 100px;
+    height: 90px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: 'first' 'second' 'third';
+    grid-auto-rows: minmax(20px, 1fr);
+  }
+  .column-grid {
+    width: 100px;
+    height: 20px;
+    grid-template-columns: 10px;
+    grid-template-rows: 20px;
+    grid-template-areas: 'left middle right';
+    grid-auto-columns: 25%;
+  }
+  .red { background: #e5484d; }
+  .green { background: #30a46c; }
+  .blue { background: #3e63dd; }
+</style>
+
+<div id="typed-area-minmax-row" data-scene="typed-area-minmax-row" data-node class="grid row-grid">
+  <div id="typed-area-minmax-row-first" data-node class="item red" style="grid-area:first;height:10px"></div>
+  <div id="typed-area-minmax-row-second" data-node class="item green" style="grid-area:second"></div>
+  <div id="typed-area-minmax-row-third" data-node class="item blue" style="grid-area:third"></div>
+</div>
+<div id="typed-area-percentage-column" data-scene="typed-area-percentage-column" data-node class="grid column-grid">
+  <div id="typed-area-percentage-column-left" data-node class="item red" style="grid-area:left"></div>
+  <div id="typed-area-percentage-column-middle" data-node class="item green" style="grid-area:middle"></div>
+  <div id="typed-area-percentage-column-right" data-node class="item blue" style="grid-area:right"></div>
+</div>
+
+<pre id="result"></pre>
+<script>
+  window.gridAreaSizingResult = Array.from(document.querySelectorAll('[data-scene]'), grid => {
+    const root = grid.getBoundingClientRect();
+    return {
+      id: grid.id,
+      rows: getComputedStyle(grid).gridTemplateRows,
+      columns: getComputedStyle(grid).gridTemplateColumns,
+      nodes: [[grid.id, 0, 0, root.width, root.height], ...Array.from(grid.children, element => {
+        const rect = element.getBoundingClientRect();
+        return [element.id, rect.left - root.left, rect.top - root.top, rect.width, rect.height];
+      })],
+    };
+  });
+  document.querySelector('#result').textContent = JSON.stringify(window.gridAreaSizingResult, null, 2);
+</script>

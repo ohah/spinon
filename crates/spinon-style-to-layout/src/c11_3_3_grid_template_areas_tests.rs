@@ -258,6 +258,20 @@ fn area_dimensions_generate_implicit_tracks_and_preserve_authored_tracks() {
             30.0,
             (20.0, 10.0, 30.0, 20.0),
         ),
+        (
+            "typed fr rows size implicit tracks from the definite grid height",
+            format!("{areas}grid-auto-rows:minmax(20px,1fr);grid-auto-columns:9px;"),
+            120.0,
+            80.0,
+            (9.0, 40.0, 30.0, 20.0),
+        ),
+        (
+            "typed percentage columns resolve from the definite grid width",
+            format!("{areas}grid-auto-rows:10px;grid-auto-columns:25%;"),
+            120.0,
+            80.0,
+            (30.0, 10.0, 30.0, 20.0),
+        ),
     ];
 
     for (label, tracks, width, height, expected) in cases {

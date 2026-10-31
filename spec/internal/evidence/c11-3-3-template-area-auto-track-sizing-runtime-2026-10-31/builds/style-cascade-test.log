@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.13s
+     Running unittests src/lib.rs (target/debug/deps/spinon_style-bbe83c0d80453aa3)
+
+running 1 test
+test stylo_dom::cascade::runtime_grid_tests::template_areas::template_profile_preserves_fixed_lists_and_area_backed_typed_auto_tracks ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 250 filtered out; finished in 0.04s

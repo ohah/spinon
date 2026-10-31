@@ -29,6 +29,12 @@ const cyclePixelsPath = 'tests/fixtures/css/c11/grid-template-areas-track-list-c
 const cyclePixels = JSON.parse(await readFile(resolve(repositoryRoot, cyclePixelsPath), 'utf8'));
 const cycleObservationBytes = await readFile(resolve(repositoryRoot, cyclePixels.inputs.chromeObservation.path));
 const cycleScreenshotBytes = await readFile(resolve(repositoryRoot, cyclePixels.oracle.screenshotPath));
+const typedAutoPixelsPath = 'tests/fixtures/css/c11/grid-template-areas-typed-auto-track-sizing-mobile-pixels-v1.json';
+const typedAutoPixelsBytes = await readFile(resolve(repositoryRoot, typedAutoPixelsPath));
+const typedAutoPixels = JSON.parse(typedAutoPixelsBytes.toString('utf8'));
+const typedAutoHtmlBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.inputs.html.path));
+const typedAutoObservationBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.inputs.observation.path));
+const typedAutoScreenshotBytes = await readFile(resolve(repositoryRoot, typedAutoPixels.oracle.screenshotPath));
 assert.equal(mobile.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
 assert.equal(cyclePixels.inputs.runtimeMatrix.sha256, historicalRuntimeSha256);
 if (target === 'android-avd') {
@@ -41,6 +47,13 @@ assert.equal(cyclePixels.oracle.observationSha256, sha256(cycleObservationBytes)
 assert.equal(cyclePixels.oracle.screenshotSha256, sha256(cycleScreenshotBytes));
 assert.equal(cyclePixels.scenes.length, 6);
 const cyclePixelScenes = new Map(cyclePixels.scenes.map((entry) => [entry.sceneId, entry]));
+assert.equal(typedAutoPixels.schema,
+  'spinon-css-c11-3-3-template-area-typed-auto-track-sizing-mobile-pixels/v1');
+assert.equal(typedAutoPixels.inputs.html.sha256, sha256(typedAutoHtmlBytes));
+assert.equal(typedAutoPixels.inputs.observation.sha256, sha256(typedAutoObservationBytes));
+assert.equal(typedAutoPixels.oracle.observationSha256, sha256(typedAutoObservationBytes));
+assert.equal(typedAutoPixels.oracle.screenshotSha256, sha256(typedAutoScreenshotBytes));
+const typedAutoPixelScenes = new Map(typedAutoPixels.scenes.map((entry) => [entry.sceneId, entry]));
 const reference = JSON.parse(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath), 'utf8'));
 const observation = reference.observations.find(({ deviceScaleFactor }) => deviceScaleFactor === 1);
 const unknownAreaPixelsPath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
@@ -434,12 +447,16 @@ async function captureMatrix(adb) {
   const observations = [];
   let pixelComparison;
   const cyclePixelComparisons = [];
+  const typedAutoPixelComparisons = [];
+  const typedAutoScreenCaptures = [];
   let trackListCycleScreenSha256 = null;
   for (const scene of runtime.cases) {
     const sceneRunID = `${runID}-${String(scene.index).padStart(2, '0')}-${scene.id}`;
     const expectedReject = scene.expected.outcome === 'expected-rejection';
     const cyclePixelScene = cyclePixelScenes.get(scene.id);
-    const pixelSamples = scene.id === mobile.sceneId ? mobile.samples : cyclePixelScene?.samples ?? null;
+    const typedAutoPixelScene = typedAutoPixelScenes.get(scene.id);
+    const pixelSamples = scene.id === mobile.sceneId ? mobile.samples
+      : cyclePixelScene?.samples ?? typedAutoPixelScene?.samples ?? null;
     const requiresPixelResult = pixelSamples !== null;
     const launch = launchScene(adb, scene.id, sceneRunID, { samples: pixelSamples });
     await saveLog(`launch-${scene.index.toString().padStart(2, '0')}-${scene.id}.log`, launch);
@@ -449,6 +466,7 @@ async function captureMatrix(adb) {
       (expectedReject
         ? value.includes(`SPINON_C1133_GRID_REJECTION_SUMMARY run_id=${sceneRunID} scene_id=${scene.id} `)
         : value.includes(evalMarker))
+        || value.includes(`SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=${sceneRunID}`)
         || value.includes(`SPINON_C1133_GRID_ARGUMENT_ERROR`),
     `${scene.id}: runtime 결과`);
     const logPath = `runtime-${scene.index.toString().padStart(2, '0')}-${scene.id}.log`;
@@ -485,13 +503,23 @@ async function captureMatrix(adb) {
         `cache/c1133-grid-surface-pixel-matrix/${devicePng.split('/').at(-1)}`], { encoding: null }).stdout;
       pixel = compareC11AndroidPixelCopyScene(log, {
         scene: { id: scene.id, samples: pixelSamples }, runID: sceneRunID, pngBytes,
-        viewportCssPx: cyclePixelScene ? cyclePixels.runtime.viewportCssPx : mobile.oracle.viewportCssPx,
+        viewportCssPx: cyclePixelScene ? cyclePixels.runtime.viewportCssPx
+          : typedAutoPixelScene ? typedAutoPixels.runtime.viewportCssPx : mobile.oracle.viewportCssPx,
         markerPrefix: 'C1133',
         cacheDirectory: 'c1133-grid-surface-pixel-matrix',
       });
       const pixelPath = scene.id === mobile.sceneId ? 'pixelcopy.png' : `pixelcopy-${scene.id}.png`;
       await writeFile(resolve(evidenceDirectory, pixelPath), pngBytes);
       if (scene.id === mobile.sceneId) pixelComparison = pixel;
+      else if (typedAutoPixelScene) {
+        typedAutoPixelComparisons.push({ sceneId: scene.id, pixelPath, ...pixel });
+        if (target === 'android-avd') {
+          const screenPath = `${scene.id}-screen.png`;
+          const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
+          await writeFile(resolve(evidenceDirectory, screenPath), screen);
+          typedAutoScreenCaptures.push({ sceneId: scene.id, path: screenPath, sha256: sha256(screen) });
+        }
+      }
       else cyclePixelComparisons.push({ sceneId: scene.id, pixelPath, ...pixel });
       if (scene.id === 'both-axis-cycle' && target === 'android-avd') {
         const screen = adb(['exec-out', 'screencap', '-p'], { encoding: null }).stdout;
@@ -516,7 +544,8 @@ async function captureMatrix(adb) {
     screenSha256 = sha256(screen);
   }
   return { appSha256, observations, pixelComparison, cyclePixelComparisons,
-    trackListCycleScreenSha256, unknownAreaOverflow, leadingNamedImplicitLines, screenSha256 };
+    typedAutoPixelComparisons, typedAutoScreenCaptures, trackListCycleScreenSha256,
+    unknownAreaOverflow, leadingNamedImplicitLines, screenSha256 };
 }
 
 async function runNegativeControls(adb) {
@@ -562,8 +591,8 @@ async function runNegativeControls(adb) {
 
 await mkdir(evidenceDirectory, { recursive: true });
 try {
-  assert.equal(runtime.summary.sceneCount, 37);
-  assert.equal(runtime.summary.nodeCount, 118);
+  assert.equal(runtime.summary.sceneCount, 39);
+  assert.equal(runtime.summary.nodeCount, 126);
   assert.equal(observation.cases.length, 26);
   assert.equal(historicalRuntimeSha256, mobile.inputs.runtimeMatrix.sha256);
   assert.equal(historicalRuntimeSha256, cyclePixels.inputs.runtimeMatrix.sha256);
@@ -585,6 +614,7 @@ try {
     historicalRuntimeMatrixSha256: historicalRuntimeSha256,
     mobileFixtureSha256: sha256(await readFile(resolve(repositoryRoot, mobilePath))),
     trackListCyclePixelsSha256: sha256(await readFile(resolve(repositoryRoot, cyclePixelsPath))),
+    typedAutoPixelsSha256: sha256(typedAutoPixelsBytes),
     captureScriptSha256: sha256(await readFile(fileURLToPath(import.meta.url))),
     androidRuntimeSourceSha256: sha256(await readFile(resolve(repositoryRoot,
       'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'))),
@@ -600,6 +630,13 @@ try {
       observations: platform.cyclePixelComparisons,
       totalSamples: platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0),
       screenshotSha256: platform.trackListCycleScreenSha256,
+    },
+    typedAutoPixels: {
+      path: typedAutoPixelsPath,
+      sha256: sha256(typedAutoPixelsBytes),
+      observations: platform.typedAutoPixelComparisons,
+      totalSamples: platform.typedAutoPixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0),
+      screenshots: platform.typedAutoScreenCaptures,
     },
     unknownAreaOverflowFixture: {
       path: unknownAreaPixelsPath,
@@ -623,11 +660,13 @@ try {
       referenceSha256: sha256(await readFile(resolve(repositoryRoot, mobile.oracle.referencePath))),
       dpr: 1, viewportCssPx: mobile.oracle.viewportCssPx,
     },
-    matrix: { sceneCount: 37, nodeCount: 118, outcomeCounts, comparedVisibleNodes: totalComparisons,
+    matrix: { sceneCount: 39, nodeCount: 126, outcomeCounts, comparedVisibleNodes: totalComparisons,
       maximumGeometryErrorCssPx: Math.max(0, ...platform.observations
         .map(({ maximumGeometryErrorCssPx = 0 }) => maximumGeometryErrorCssPx)) },
     platform: { appSha256: platform.appSha256, pixelComparison: platform.pixelComparison,
       cyclePixelComparisons: platform.cyclePixelComparisons,
+      typedAutoPixelComparisons: platform.typedAutoPixelComparisons,
+      typedAutoScreenCaptures: platform.typedAutoScreenCaptures,
       trackListCycleScreenSha256: platform.trackListCycleScreenSha256,
       unknownAreaOverflow: platform.unknownAreaOverflow,
       leadingNamedImplicitLines: platform.leadingNamedImplicitLines,
@@ -650,6 +689,7 @@ try {
     `- Chrome DPR 1 geometry: ${totalComparisons} visible node frames compared; maximum error ${result.matrix.maximumGeometryErrorCssPx} CSS px.`,
     `- Basic scene PixelCopy: ${platform.pixelComparison.matchedSamples}/${platform.pixelComparison.expectedSamples} exact; max channel error 0.`,
     `- Track-list cycling PixelCopy: ${platform.cyclePixelComparisons.length} scenes / ${platform.cyclePixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)} RGBA samples exact; max channel error 0.`,
+    `- Typed auto-track PixelCopy: ${platform.typedAutoPixelComparisons.length} scenes / ${platform.typedAutoPixelComparisons.reduce((sum, item) => sum + item.matchedSamples, 0)} RGBA samples exact; max channel error 0.`,
     `- Fixed unknown-area overflow: ${platform.unknownAreaOverflow.comparisons.length} Chrome geometry nodes; ${platform.unknownAreaOverflow.pixel.matchedSamples}/${platform.unknownAreaOverflow.pixel.expectedSamples} exact PixelCopy samples, including the red item outside the grid root.`,
     `- Leading named implicit lines: ${platform.leadingNamedImplicitLines.sceneCount} scenes / ${platform.leadingNamedImplicitLines.comparedVisibleNodes} visible nodes; maximum geometry error ${platform.leadingNamedImplicitLines.maximumGeometryErrorCssPx} CSS px; ${platform.leadingNamedImplicitLines.matchedPixelSamples}/7 PixelCopy samples exact.`,
     `- Negative controls: pixel samples ${negative.pixelSamples.status}; unknown scene ${negative.sceneRoute.status}.`,
@@ -660,6 +700,8 @@ try {
     '- `result.json`: aggregate fixture, geometry and negative-control result',
     '- `pixelcopy.png`: basic scene Android SurfaceView PixelCopy',
     '- `pixelcopy-*.png`: track-list cycling Android SurfaceView PixelCopy samples',
+    '- `pixelcopy-typed-area-*.png`: typed auto-track Android SurfaceView PixelCopy samples',
+    '- `typed-area-*-screen.png`: typed auto-track AVD screen captures',
     '- `unknown-area-overflow-pixelcopy.png`: fixed implicit-track overflow SurfaceView PixelCopy',
     '- `pixelcopy-leading-*.png`: named implicit line SurfaceView PixelCopy samples',
     ...(target === 'android-avd' ? [

@@ -1,0 +1,109 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>CSS Grid template-area implicit track sizing comparison</title>
+<style>
+  html, body { margin: 0; padding: 0; }
+  body { font: 10px/10px sans-serif; }
+  .case {
+    display: grid;
+    align-content: start;
+    justify-content: start;
+    gap: 0;
+    margin: 4px;
+    background: #eee;
+  }
+  .item { min-width: 0; min-height: 0; background: #4aa; }
+  .a { grid-area: a; }
+  .b { grid-area: b; }
+  .c { grid-area: c; }
+  .d { grid-area: d; }
+
+  #fixed-cycle {
+    width: 100px; height: 47px;
+    grid-template-columns: 100px;
+    grid-template-rows: 5px;
+    grid-template-areas: "a" "b" "c" "d";
+    grid-auto-rows: 12px 18px;
+  }
+  #minmax-fr {
+    width: 100px; height: 100px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b" "c";
+    grid-auto-rows: minmax(20px, 1fr);
+  }
+  #percentage-cycle {
+    width: 100px; height: 20px;
+    grid-template-columns: 10px;
+    grid-template-rows: 20px;
+    grid-template-areas: "a b c d";
+    grid-auto-columns: 10% 20%;
+  }
+  #min-content {
+    width: 100px; height: 45px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b";
+    grid-auto-rows: min-content;
+  }
+  #min-content .b { height: 25px; }
+  #max-content {
+    width: 100px; height: 55px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b";
+    grid-auto-rows: max-content;
+  }
+  #max-content .b { height: 35px; }
+  #fit-content {
+    width: 100px; height: 50px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b";
+    grid-auto-rows: fit-content(40px);
+  }
+  #fit-content .b { height: 60px; min-height: 0; }
+  #calc {
+    width: 100px; height: 100px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b";
+    grid-auto-rows: calc(10px + 10%);
+  }
+  #auto {
+    width: 100px; height: 45px;
+    grid-template-columns: 100px;
+    grid-template-rows: 10px;
+    grid-template-areas: "a" "b";
+    grid-auto-rows: auto;
+  }
+  #auto .b { height: 25px; }
+</style>
+
+<div id="fixed-cycle" class="case"><div class="item a"></div><div class="item b"></div><div class="item c"></div><div class="item d"></div></div>
+<div id="minmax-fr" class="case"><div class="item a"></div><div class="item b"></div><div class="item c"></div></div>
+<div id="percentage-cycle" class="case"><div class="item a"></div><div class="item b"></div><div class="item c"></div><div class="item d"></div></div>
+<div id="min-content" class="case"><div class="item a"></div><div class="item b"></div></div>
+<div id="max-content" class="case"><div class="item a"></div><div class="item b"></div></div>
+<div id="fit-content" class="case"><div class="item a"></div><div class="item b"></div></div>
+<div id="calc" class="case"><div class="item a"></div><div class="item b"></div></div>
+<div id="auto" class="case"><div class="item a"></div><div class="item b"></div></div>
+
+<pre id="result"></pre>
+<script>
+  window.gridAreaSizingResult = Array.from(document.querySelectorAll('.case'), grid => {
+    const style = getComputedStyle(grid);
+    const rect = element => {
+      const box = element.getBoundingClientRect();
+      const root = grid.getBoundingClientRect();
+      return [box.left - root.left, box.top - root.top, box.width, box.height];
+    };
+    return {
+      id: grid.id,
+      rows: style.gridTemplateRows,
+      columns: style.gridTemplateColumns,
+      items: Array.from(grid.children, rect),
+    };
+  });
+  document.querySelector('#result').textContent = JSON.stringify(window.gridAreaSizingResult, null, 2);
+</script>

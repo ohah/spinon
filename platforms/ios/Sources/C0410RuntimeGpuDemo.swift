@@ -19,6 +19,7 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "both-axis-cycle", "row-cycle-from-first-implicit", "column-cycle-from-first-implicit",
     "authored-tracks-exceed-area", "row-cycle-continues-after-area",
     "column-cycle-continues-after-area",
+    "typed-area-minmax-row", "typed-area-percentage-column",
     "unknown-area-fixed-implicit-tracks",
     "positive-missing-occurrences", "negative-missing-occurrences", "backward-span-one",
     "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
@@ -10855,6 +10856,27 @@ private struct C111MetalPixelRun {
             return []
         }
     }
+    private static func c1133TypedAutoTrackPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        switch sceneID {
+        case "typed-area-minmax-row":
+            return [
+                ("first-row", "typed-area-minmax-row-first", 50, 5, [229, 72, 77, 255]),
+                ("second-row", "typed-area-minmax-row-second", 50, 20, [48, 164, 108, 255]),
+                ("third-row", "typed-area-minmax-row-third", 50, 60, [62, 99, 221, 255]),
+            ]
+        case "typed-area-percentage-column":
+            return [
+                ("background", sceneID, 80, 10, [16, 24, 32, 255]),
+                ("left-column", "typed-area-percentage-column-left", 5, 10, [229, 72, 77, 255]),
+                ("middle-column", "typed-area-percentage-column-middle", 15, 10, [48, 164, 108, 255]),
+                ("right-column", "typed-area-percentage-column-right", 40, 10, [62, 99, 221, 255]),
+            ]
+        default:
+            return []
+        }
+    }
     private static let c1133UnknownAreaOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("grid-interior", "fixed-implicit-grid", 150, 110, [16, 24, 32, 255]),
         ("known-area", "fixed-known-area", 10, 10, [48, 164, 108, 255]),
@@ -11003,6 +11025,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133UnknownAreaOverflowPixelSamples
         } else if !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty {
             expectedSamples = c1133TrackListCyclePixelSamples(sceneID: sceneID)
+        } else if !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133TypedAutoTrackPixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -12597,6 +12621,7 @@ private struct C111MetalPixelRun {
                   sceneID == "basic-rectangles"
                     || sceneID == "unknown-area-fixed-implicit-tracks"
                     || !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty
+                    || !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   c1133GridTemplateAreasSceneIDs.contains(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,

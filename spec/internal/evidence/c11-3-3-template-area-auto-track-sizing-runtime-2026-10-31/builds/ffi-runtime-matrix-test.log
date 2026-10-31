@@ -1,0 +1,7 @@
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.15s
+     Running unittests src/lib.rs (target/debug/deps/spinon_ffi-e07437e2bc2f8257)
+
+running 1 test
+test runtime_gpu::fixtures::c11_3_3::tests::fixed_runtime_matrix_selects_every_scene_and_rejection_boundary ... ok
+
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 173 filtered out; finished in 0.02s

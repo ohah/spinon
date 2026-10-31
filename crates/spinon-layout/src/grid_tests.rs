@@ -5,9 +5,9 @@ use spinon_core::{EnvironmentRevision, NodeId, Revision, StyleRevision};
 use super::*;
 use crate::grid_placement::{GridItemInput, GridPlacementInput};
 use crate::{
-    FlexDirection, LayoutDimension, LayoutDisplay, LayoutEngine, LayoutGap, LayoutInputRevision,
-    LayoutLengthPercentage, LayoutNode, LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine,
-    Viewport,
+    ContentAlignmentPosition, FlexDirection, LayoutAlignContent, LayoutDimension, LayoutDisplay,
+    LayoutEngine, LayoutGap, LayoutInputRevision, LayoutLengthPercentage, LayoutNode,
+    LayoutSourceRevision, LayoutStyle, TaffyLayoutEngine, Viewport,
 };
 
 fn id(value: u64) -> NodeId {
@@ -382,7 +382,7 @@ fn template_area_columns_continue_fixed_px_pattern_after_area_expansion() {
 }
 
 #[test]
-fn template_grid_auto_track_lists_require_area_while_named_mode_keeps_existing_px_support() {
+fn template_grid_typed_auto_track_lists_require_area_while_named_mode_keeps_px_support() {
     let mut no_area = grid_input(
         vec![GridTrackSize::LengthPx(40.0)],
         vec![GridTrackSize::LengthPx(30.0)],
@@ -398,6 +398,18 @@ fn template_grid_auto_track_lists_require_area_while_named_mode_keeps_existing_p
         GridTrackSize::LengthPx(10.0),
         GridTrackSize::LengthPx(12.0),
     ]);
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&no_area),
+        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
+    ));
+
+    no_area
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    no_area.grid_containers.get_mut(&id(1)).unwrap().auto_rows =
+        GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
     assert!(matches!(
         TaffyLayoutEngine.compute(&no_area),
         Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
@@ -446,10 +458,166 @@ fn template_grid_auto_track_lists_require_area_while_named_mode_keeps_existing_p
         .get_mut(&id(1))
         .unwrap()
         .auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinContent]);
+    assert!(TaffyLayoutEngine.compute(&named_mode).is_ok());
+
+    named_mode
+        .grid_containers
+        .get_mut(&id(1))
+        .unwrap()
+        .placement_mode = GridPlacementMode::TemplateGridSignedImplicitTracks;
     assert!(matches!(
         TaffyLayoutEngine.compute(&named_mode),
         Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
     ));
+}
+
+#[test]
+fn template_area_implicit_rows_use_the_authored_grid_auto_track_list() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(100.0)],
+        vec![GridTrackSize::LengthPx(10.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.viewport = Viewport {
+        width: 100.0,
+        height: 90.0,
+    };
+    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(90.0);
+    input.nodes[0].style.align_content = Some(LayoutAlignContent::Position {
+        position: ContentAlignmentPosition::Start,
+        safety: None,
+    });
+
+    for child in &mut input.nodes[1..] {
+        child.style.width = LayoutDimension::Auto;
+        child.style.height = LayoutDimension::Auto;
+        child.style.min_width = LayoutDimension::Fixed(0.0);
+        child.style.min_height = LayoutDimension::Fixed(0.0);
+    }
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 3,
+        columns: 1,
+        areas: ["first", "second", "third"]
+            .into_iter()
+            .enumerate()
+            .map(|(row, name)| GridTemplateAreaInput {
+                name: name.to_owned(),
+                row_start: row as u16,
+                row_end: row as u16 + 1,
+                column_start: 0,
+                column_end: 1,
+            })
+            .collect(),
+    });
+    container.auto_rows = GridAutoRows::TrackList(vec![GridTrackSize::MinMax {
+        min: GridTrackMinSizingFunction::LengthPx(20.0),
+        max: GridTrackMaxSizingFunction::Fraction(1.0),
+    }]);
+
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    input.grid_items.insert(
+        id(3),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(2),
+            row_end: GridPlacementInput::Line(3),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+    input.grid_items.insert(
+        id(4),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(3),
+            row_end: GridPlacementInput::Line(4),
+            column_start: GridPlacementInput::Line(1),
+            column_end: GridPlacementInput::Line(2),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    assert_eq!(output.frames[&id(2)].y, 0.0);
+    assert_eq!(output.frames[&id(2)].height, 10.0);
+    assert_eq!(output.frames[&id(3)].y, 10.0);
+    assert_eq!(output.frames[&id(3)].height, 40.0);
+    assert_eq!(output.frames[&id(4)].y, 50.0);
+    assert_eq!(output.frames[&id(4)].height, 40.0);
+}
+
+#[test]
+fn template_area_implicit_columns_use_the_authored_percentage_track_list() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(10.0)],
+        vec![GridTrackSize::LengthPx(20.0)],
+        3,
+        LayoutGap::default(),
+    );
+    input.viewport = Viewport {
+        width: 100.0,
+        height: 20.0,
+    };
+    input.nodes[0].style.width = LayoutDimension::Fixed(100.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(20.0);
+    for child in &mut input.nodes[1..] {
+        child.style.width = LayoutDimension::Auto;
+        child.style.height = LayoutDimension::Auto;
+        child.style.min_width = LayoutDimension::Fixed(0.0);
+        child.style.min_height = LayoutDimension::Fixed(0.0);
+    }
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 1,
+        columns: 3,
+        areas: ["first", "second", "third"]
+            .into_iter()
+            .enumerate()
+            .map(|(column, name)| GridTemplateAreaInput {
+                name: name.to_owned(),
+                row_start: 0,
+                row_end: 1,
+                column_start: column as u16,
+                column_end: column as u16 + 1,
+            })
+            .collect(),
+    });
+    container.auto_columns =
+        crate::GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.25)]);
+
+    for (node, column) in [(id(2), 0_i32), (id(3), 1_i32), (id(4), 2_i32)] {
+        input.grid_items.insert(
+            node,
+            GridItemInput {
+                row_start: GridPlacementInput::Line(1),
+                row_end: GridPlacementInput::Line(2),
+                column_start: GridPlacementInput::Line(column + 1),
+                column_end: GridPlacementInput::Line(column + 2),
+            },
+        );
+    }
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+
+    assert_eq!(output.frames[&id(2)].x, 0.0);
+    assert_eq!(output.frames[&id(2)].width, 10.0);
+    assert_eq!(output.frames[&id(3)].x, 10.0);
+    assert_eq!(output.frames[&id(3)].width, 25.0);
+    assert_eq!(output.frames[&id(4)].x, 35.0);
+    assert_eq!(output.frames[&id(4)].width, 25.0);
 }
 
 #[test]
@@ -511,6 +679,70 @@ fn trailing_template_area_named_lines_use_default_auto_tracks() {
             output.frames[&id(2)].height,
         ),
         (80.0, 30.0, 0.0, 0.0)
+    );
+}
+
+#[test]
+fn trailing_template_area_named_lines_use_typed_auto_tracks_after_area_pattern_phase() {
+    let mut input = grid_input(
+        vec![GridTrackSize::LengthPx(40.0)],
+        vec![GridTrackSize::LengthPx(30.0)],
+        1,
+        LayoutGap::default(),
+    );
+    input.viewport = Viewport {
+        width: 80.0,
+        height: 80.0,
+    };
+    input.nodes[0].style.width = LayoutDimension::Fixed(80.0);
+    input.nodes[0].style.height = LayoutDimension::Fixed(80.0);
+    input.nodes[1].style.width = LayoutDimension::Auto;
+    input.nodes[1].style.height = LayoutDimension::Auto;
+    input.nodes[1].style.min_width = LayoutDimension::Fixed(0.0);
+    input.nodes[1].style.min_height = LayoutDimension::Fixed(0.0);
+
+    let container = input.grid_containers.get_mut(&id(1)).unwrap();
+    container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+    container.template_areas = Some(GridTemplateAreasInput {
+        rows: 3,
+        columns: 3,
+        areas: vec![GridTemplateAreaInput {
+            name: "known".to_owned(),
+            row_start: 0,
+            row_end: 1,
+            column_start: 0,
+            column_end: 1,
+        }],
+    });
+    container.auto_rows = GridAutoRows::TrackList(vec![
+        GridTrackSize::LengthPx(10.0),
+        GridTrackSize::Percentage(0.25),
+        GridTrackSize::LengthPx(8.0),
+    ]);
+    container.auto_columns = crate::GridAutoColumns::TrackList(vec![
+        GridTrackSize::LengthPx(10.0),
+        GridTrackSize::Percentage(0.25),
+        GridTrackSize::LengthPx(8.0),
+    ]);
+    input.grid_items.insert(
+        id(2),
+        GridItemInput {
+            row_start: GridPlacementInput::Line(4),
+            row_end: GridPlacementInput::Line(6),
+            column_start: GridPlacementInput::Line(4),
+            column_end: GridPlacementInput::Line(6),
+        },
+    );
+
+    let output = TaffyLayoutEngine.compute(&input).unwrap();
+    assert_eq!(
+        (
+            output.frames[&id(2)].x,
+            output.frames[&id(2)].y,
+            output.frames[&id(2)].width,
+            output.frames[&id(2)].height,
+        ),
+        (70.0, 60.0, 18.0, 18.0)
     );
 }
 

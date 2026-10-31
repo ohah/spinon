@@ -129,6 +129,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "both-axis-cycle", "row-cycle-from-first-implicit", "column-cycle-from-first-implicit",
             "authored-tracks-exceed-area", "row-cycle-continues-after-area",
             "column-cycle-continues-after-area",
+            "typed-area-minmax-row", "typed-area-percentage-column",
             "unknown-area-fixed-implicit-tracks", "positive-missing-occurrences",
             "negative-missing-occurrences", "backward-span-one", "backward-span-two",
             "backward-span-partial-explicit", "forward-span-two",
@@ -15015,6 +15016,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             return true;
         }
+        List<SurfaceViewPixelCapture.Sample> typedAutoTrackSamples =
+                c1133TypedAutoTrackPixelSamples(sceneId);
+        if (typedAutoTrackSamples != null) {
+            if (samples.size() != typedAutoTrackSamples.size()) return false;
+            for (SurfaceViewPixelCapture.Sample expected : typedAutoTrackSamples) {
+                boolean found = false;
+                for (SurfaceViewPixelCapture.Sample sample : samples) {
+                    if (expected.id.equals(sample.id)
+                            && expected.targetNodeId.equals(sample.targetNodeId)
+                            && expected.xCssPx == sample.xCssPx
+                            && expected.yCssPx == sample.yCssPx) {
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) return false;
+            }
+            return true;
+        }
         if (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(sceneId)) {
             if (samples.size() != 2) return false;
             boolean background = false;
@@ -15124,6 +15144,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     new SurfaceViewPixelCapture.Sample("known", "phase-column-known", 10, 10),
                     new SurfaceViewPixelCapture.Sample("area", "phase-column-area", 22, 10),
                     new SurfaceViewPixelCapture.Sample("late", "phase-column-late", 28, 10));
+        }
+        return null;
+    }
+
+    private static List<SurfaceViewPixelCapture.Sample> c1133TypedAutoTrackPixelSamples(
+            String sceneId
+    ) {
+        if ("typed-area-minmax-row".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("first-row", "typed-area-minmax-row-first", 50, 5),
+                    new SurfaceViewPixelCapture.Sample("second-row", "typed-area-minmax-row-second", 50, 20),
+                    new SurfaceViewPixelCapture.Sample("third-row", "typed-area-minmax-row-third", 50, 60));
+        }
+        if ("typed-area-percentage-column".equals(sceneId)) {
+            return List.of(
+                    new SurfaceViewPixelCapture.Sample("background", sceneId, 80, 10),
+                    new SurfaceViewPixelCapture.Sample("left-column", "typed-area-percentage-column-left", 5, 10),
+                    new SurfaceViewPixelCapture.Sample("middle-column", "typed-area-percentage-column-middle", 15, 10),
+                    new SurfaceViewPixelCapture.Sample("right-column", "typed-area-percentage-column-right", 40, 10));
         }
         return null;
     }
@@ -16170,6 +16209,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 ? (C1133_GRID_TEMPLATE_AREAS_DEFAULT_SCENE_ID.equals(pixelMatrixSceneId)
                         || "unknown-area-fixed-implicit-tracks".equals(pixelMatrixSceneId)
                         || c1133TrackListCyclePixelSamples(pixelMatrixSceneId) != null
+                        || c1133TypedAutoTrackPixelSamples(pixelMatrixSceneId) != null
                         || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
@@ -20426,6 +20466,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "side":
                 case "row-b":
                 case "middle":
+                case "second-row":
+                case "middle-column":
                 case "area":
                 case "exceed-bottom":
                 case "known-area":
@@ -20433,6 +20475,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "hero":
                 case "row-a":
                 case "left":
+                case "first-row":
+                case "left-column":
                 case "exceed-top":
                 case "known":
                 case "unknown-area-overflow":
@@ -20449,6 +20493,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "row-e":
                     return new int[] {0, 162, 199};
                 case "spare":
+                case "third-row":
+                case "right-column":
                     return new int[] {62, 99, 221};
                 default:
                     break;

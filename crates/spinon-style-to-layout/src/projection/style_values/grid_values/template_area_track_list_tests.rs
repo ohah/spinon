@@ -4,7 +4,7 @@ use spinon_layout::{GridTrackSize, LayoutError};
 use spinon_style::{
     ComputedCssGridArea, ComputedCssGridAutoColumns, ComputedCssGridAutoFlow,
     ComputedCssGridAutoRows, ComputedCssGridLayout, ComputedCssGridTemplateAreas,
-    ComputedCssGridTrackSize, ComputedStyleProfile,
+    ComputedCssGridTrackBreadth, ComputedCssGridTrackSize, ComputedStyleProfile,
 };
 
 fn px(value: f32) -> ComputedCssGridTrackSize {
@@ -222,7 +222,68 @@ fn template_area_lists_do_not_change_authored_tracks_when_no_extension_is_needed
 }
 
 #[test]
-fn template_area_track_lists_reject_empty_and_non_px_values() {
+fn template_area_typed_track_lists_cycle_and_preserve_later_implicit_phase() {
+    let minmax = ComputedCssGridTrackSize::MinMax {
+        min: ComputedCssGridTrackBreadth::LengthPx(20.0),
+        max: ComputedCssGridTrackBreadth::Fraction(1.0),
+    };
+    let grid = area_grid(
+        vec![px(20.0)],
+        vec![px(30.0), px(31.0)],
+        2,
+        3,
+        vec![minmax.clone(), ComputedCssGridTrackSize::MinContent],
+        vec![
+            ComputedCssGridTrackSize::Percentage(0.25),
+            ComputedCssGridTrackSize::Fraction(1.0),
+        ],
+    );
+
+    let projected = project(&grid).unwrap();
+    assert_eq!(
+        projected.rows,
+        vec![
+            GridTrackSize::LengthPx(20.0),
+            GridTrackSize::MinMax {
+                min: spinon_layout::GridTrackMinSizingFunction::LengthPx(20.0),
+                max: spinon_layout::GridTrackMaxSizingFunction::Fraction(1.0),
+            },
+        ]
+    );
+    assert_eq!(
+        projected.columns,
+        vec![
+            GridTrackSize::LengthPx(30.0),
+            GridTrackSize::LengthPx(31.0),
+            GridTrackSize::Percentage(0.25),
+        ]
+    );
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![
+            GridTrackSize::MinContent,
+            GridTrackSize::MinMax {
+                min: spinon_layout::GridTrackMinSizingFunction::LengthPx(20.0),
+                max: spinon_layout::GridTrackMaxSizingFunction::Fraction(1.0),
+            },
+        ])
+    );
+    assert_eq!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::TrackList(vec![
+            GridTrackSize::Fraction(1.0),
+            GridTrackSize::Percentage(0.25),
+        ])
+    );
+    assert_eq!(projected.rows_line_names.len(), projected.rows.len() + 1);
+    assert_eq!(
+        projected.columns_line_names.len(),
+        projected.columns.len() + 1
+    );
+}
+
+#[test]
+fn template_area_track_lists_reject_empty_but_project_typed_values() {
     let node = NodeId::new(11_242).unwrap();
     let mut empty = area_grid(vec![px(20.0)], vec![px(30.0)], 2, 2, vec![], vec![px(9.0)]);
     assert!(matches!(
@@ -242,6 +303,22 @@ fn template_area_track_lists_reject_empty_and_non_px_values() {
         ComputedCssGridAutoRows::TrackList(vec![ComputedCssGridTrackSize::MinContent]);
     empty.auto_columns =
         ComputedCssGridAutoColumns::TrackList(vec![ComputedCssGridTrackSize::Percentage(0.5)]);
+    let projected = project_grid_layout(
+        node,
+        &empty,
+        ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
+    )
+    .unwrap();
+    assert_eq!(
+        projected.auto_rows,
+        spinon_layout::GridAutoRows::TrackList(vec![GridTrackSize::MinContent])
+    );
+    assert_eq!(
+        projected.auto_columns,
+        spinon_layout::GridAutoColumns::TrackList(vec![GridTrackSize::Percentage(0.5)])
+    );
+
+    empty.template_areas = None;
     assert!(matches!(
         project_grid_layout(
             node,

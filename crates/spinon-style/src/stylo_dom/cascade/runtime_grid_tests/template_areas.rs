@@ -81,7 +81,7 @@ fn all_null_template_areas_keep_dimensions_without_dense_cells() {
 }
 
 #[test]
-fn template_profile_preserves_only_fixed_px_auto_track_lists() {
+fn template_profile_preserves_fixed_lists_and_area_backed_typed_auto_tracks() {
     let fixed_fixture = fixture(
         "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:80px;grid-template-rows:40px;grid-auto-columns:15px 7px;grid-auto-rows:15px 7px;margin:0;padding:0",
     );
@@ -127,6 +127,33 @@ fn template_profile_preserves_only_fixed_px_auto_track_lists() {
             .auto_columns,
         crate::ComputedCssGridAutoColumns::Unsupported(_)
     ));
+
+    let area_typed_fixture = fixture(
+        "display:grid;box-sizing:border-box;width:160px;height:80px;grid-template-columns:80px;grid-template-rows:40px;grid-template-areas:'area';grid-auto-columns:10% 1fr;grid-auto-rows:minmax(20px,1fr);margin:0;padding:0",
+    );
+    let snapshot = compute_runtime_block_flex_grid_template_cascade_with_stylesheets(
+        &area_typed_fixture.view,
+        &[],
+        viewport(),
+        Default::default(),
+    )
+    .unwrap();
+    let grid = snapshot.elements[0].grid_layout.as_ref().unwrap();
+    assert!(grid.template_areas.is_some());
+    assert_eq!(
+        grid.auto_columns,
+        crate::ComputedCssGridAutoColumns::TrackList(vec![
+            crate::ComputedCssGridTrackSize::Percentage(0.1),
+            crate::ComputedCssGridTrackSize::Fraction(1.0),
+        ])
+    );
+    assert_eq!(
+        grid.auto_rows,
+        ComputedCssGridAutoRows::TrackList(vec![crate::ComputedCssGridTrackSize::MinMax {
+            min: crate::ComputedCssGridTrackBreadth::LengthPx(20.0),
+            max: crate::ComputedCssGridTrackBreadth::Fraction(1.0),
+        }])
+    );
 }
 
 #[test]

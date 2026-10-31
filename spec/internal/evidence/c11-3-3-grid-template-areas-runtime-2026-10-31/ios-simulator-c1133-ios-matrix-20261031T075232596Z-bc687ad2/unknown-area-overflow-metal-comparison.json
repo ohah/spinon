@@ -1,0 +1,83 @@
+{
+  "schema": "spinon-c11-3-3-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1133m-20261031T075232598Z-99b44844-39",
+  "processId": 3203,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 15,
+    "renderTree": 3,
+    "environment": 0
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "grid-interior",
+      "css": [
+        150,
+        110
+      ],
+      "drawable": [
+        451,
+        331
+      ],
+      "rgba": [
+        16,
+        24,
+        32,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "known-area",
+      "css": [
+        10,
+        10
+      ],
+      "drawable": [
+        31,
+        31
+      ],
+      "rgba": [
+        48,
+        164,
+        108,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "unknown-area-overflow",
+      "css": [
+        182,
+        127
+      ],
+      "drawable": [
+        547,
+        382
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}
