@@ -138,6 +138,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     private static final String[] C1133_NAMED_LINE_AUTO_SCENE_IDS = {
             "named-line-auto-columns", "named-line-fixed-columns-control", "named-line-auto-rows",
     };
+    private static final String[] C1133_NAMED_LINE_PAIR_SCENE_IDS = {
+            "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
+    };
     private static final String C114_CROSS_AXIS_TEMPLATE_AREA_SCENE_PREFIX =
             "template-area-repeat-cross-axis-";
     private static final String[] C114_GENERIC_DIRECT_TEXT_SCENE_IDS = {
@@ -1521,6 +1524,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         for (String candidate : C1133_NAMED_LINE_AUTO_SCENE_IDS) {
             if (candidate.equals(sceneId)) return true;
         }
+        for (String candidate : C1133_NAMED_LINE_PAIR_SCENE_IDS) {
+            if (candidate.equals(sceneId)) return true;
+        }
         return "revision-reuse".equals(sceneId) || "fit-content-area-cap".equals(sceneId);
     }
 
@@ -1568,6 +1574,23 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static int c1133NamedLineAutoSampleY(String sceneId) {
         return "named-line-auto-rows".equals(sceneId) ? 22 : 5;
+    }
+
+    private static String c1133NamedLinePairItemId(String sceneId) {
+        switch (sceneId) {
+            case "named-line-pair-columns-multi-track": return "named-pair-columns-item";
+            case "named-line-pair-rows-multi-track": return "named-pair-rows-item";
+            default: return null;
+        }
+    }
+
+    private static int c1133NamedLinePairSampleX(String sceneId) {
+        return "named-line-pair-columns-multi-track".equals(sceneId) ? 85
+                : "named-line-pair-rows-multi-track".equals(sceneId) ? 5 : -1;
+    }
+
+    private static int c1133NamedLinePairSampleY(String sceneId) {
+        return "named-line-pair-rows-multi-track".equals(sceneId) ? 45 : 5;
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
         if (c114ComputedTextIndentScene(sceneId) != null) {
@@ -15520,6 +15543,17 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     && sample.xCssPx == c1133NamedLineAutoSampleX(sceneId)
                     && sample.yCssPx == c1133NamedLineAutoSampleY(sceneId);
         }
+        String namedLinePairItemId = c1133NamedLinePairItemId(sceneId);
+        if (namedLinePairItemId != null) {
+            if (samples.size() != 1) return false;
+            SurfaceViewPixelCapture.Sample sample = samples.get(0);
+            String expectedSampleId = "named-line-pair-columns-multi-track".equals(sceneId)
+                    ? "pair-columns-red" : "pair-rows-red";
+            return expectedSampleId.equals(sample.id)
+                    && namedLinePairItemId.equals(sample.targetNodeId)
+                    && sample.xCssPx == c1133NamedLinePairSampleX(sceneId)
+                    && sample.yCssPx == c1133NamedLinePairSampleY(sceneId);
+        }
         if (!"unknown-area-fixed-implicit-tracks".equals(sceneId) || samples.size() != 3) {
             return false;
         }
@@ -16680,7 +16714,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || c1133TypedAutoTrackPixelSamples(pixelMatrixSceneId) != null
                         || c1133FitContentAreaCapPixelSamples(pixelMatrixSceneId) != null
                         || c1133LeadingNamedLineItemId(pixelMatrixSceneId) != null
-                        || c1133NamedLineAutoItemId(pixelMatrixSceneId) != null)
+                        || c1133NamedLineAutoItemId(pixelMatrixSceneId) != null
+                        || c1133NamedLinePairItemId(pixelMatrixSceneId) != null)
                 : c1131GridRepeatRequested
                 ? pixelMatrixSceneId != null
                         && C1131_GRID_REPEAT_SCENE_ID.equals(pixelMatrixSceneId)
@@ -16832,7 +16867,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 : c114GridTrackSizingRequested
                 ? "SPINON · C11.4 Grid track sizing"
                 : c1133GridTemplateAreasRequested
-                ? "SPINON · C11.3.3 Grid template areas"
+                ? c1133NamedLinePairItemId(c1133GridTemplateAreasSceneId) != null
+                        ? "SPINON · C11.3.3 named-line pair"
+                        : "SPINON · C11.3.3 Grid template areas"
                 : c1132GridNamedLinesRequested
                 ? "SPINON · C11.3.2 named Grid lines"
                 : c1131GridRepeatRequested
@@ -16979,7 +17016,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                                         c114GridTrackSizingSceneId) ? "320" : "240")
                         + " CSS px"
                 : c1133GridTemplateAreasRequested
-                ? "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
+                ? c1133NamedLinePairItemId(c1133GridTemplateAreasSceneId) != null
+                        ? "Positive implicit named-line pair → Stylo → Taffy → WGPU · 320×240 CSS px"
+                        : "V8 Grid template area placement → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1132GridNamedLinesRequested
                 ? "V8 named Grid line occurrence → Stylo → Taffy → WGPU · 320×240 CSS px"
                 : c1131GridRepeatRequested
@@ -20952,6 +20991,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 case "known":
                 case "unknown-area-overflow":
                 case "named-auto-item":
+                case "pair-columns-red":
+                case "pair-rows-red":
                 case "fixed-area":
                     return new int[] {229, 72, 77};
                 case "footer":

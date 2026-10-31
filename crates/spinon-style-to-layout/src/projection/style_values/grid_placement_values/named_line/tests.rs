@@ -164,8 +164,66 @@ fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() 
             uses_implicit_tracks: true,
             requires_signed_extent: true,
             allows_positive_auto_track_sizing: false,
+            allows_positive_named_line_pair_auto_track_sizing: false,
         }
     );
+}
+
+#[test]
+fn only_two_resolved_positive_implicit_named_line_endpoints_select_auto_pair_sizing() {
+    let line_names = names(&[&[], &[], &[]]);
+    let (start, end, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(42).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("start-name", 1),
+        &named("end-name", 2),
+        metadata(&line_names, &[], None, GridAxis::Columns, 2),
+        true,
+    )
+    .unwrap();
+
+    assert_eq!(start, GridPlacementInput::Line(4));
+    assert_eq!(end, GridPlacementInput::Line(5));
+    assert!(usage.uses_implicit_tracks);
+    assert!(usage.allows_positive_named_line_pair_auto_track_sizing);
+
+    let explicit_start_name = names(&[&["known"], &[], &[]]);
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(43).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("known", 1),
+        &named("missing", 1),
+        metadata(&explicit_start_name, &[], None, GridAxis::Columns, 2),
+        true,
+    )
+    .unwrap();
+    assert!(!usage.allows_positive_named_line_pair_auto_track_sizing);
+
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(44).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &named("start-name", -1),
+        &named("end-name", -2),
+        metadata(&line_names, &[], None, GridAxis::Columns, 2),
+        true,
+    )
+    .unwrap();
+    assert!(!usage.allows_positive_named_line_pair_auto_track_sizing);
+
+    let (_, _, usage) = project_axis_with_areas_and_implicit_named_lines(
+        NodeId::new(45).unwrap(),
+        "grid-column-start",
+        "grid-column-end",
+        &span_named("start-name", 1),
+        &span_named("end-name", 1),
+        metadata(&line_names, &[], None, GridAxis::Columns, 2),
+        true,
+    )
+    .unwrap();
+    assert!(!usage.allows_positive_named_line_pair_auto_track_sizing);
 }
 
 #[test]

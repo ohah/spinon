@@ -1,0 +1,4 @@
+11-01 02:18:10.868 27471 27471 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error run_id=c1133-android-avd-20261031T171802734Z-2c0d7a87-bad-samples scene=named-line-pair-columns-multi-track reason=invalid-c1133-sample-fixture
+11-01 02:18:10.933 27471 27471 I SpinonBootstrap: SPINON_C0410_SURFACE_CREATED generation=1
+11-01 02:18:10.933 27471 27471 I SpinonBootstrap: SPINON_C0410_SURFACE_CHANGED generation=2 size=840x630 changed=true
+11-01 02:18:10.933 27471 27500 E SpinonBootstrap: SPINON_C1133_GRID_PIXEL_MATRIX status=error reason=invalid-c1133-sample-fixture

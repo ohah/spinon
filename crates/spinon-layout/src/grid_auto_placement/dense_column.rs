@@ -90,6 +90,7 @@ pub(crate) fn normalize_dense_grid_container(
         crate::GridPlacementMode::TrackSizing
             | crate::GridPlacementMode::TemplateGridImplicitTracks
             | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+            | crate::GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
     );
     for child in children {
         let default_placement = crate::GridItemInput::default();
@@ -116,6 +117,7 @@ pub(crate) fn normalize_dense_grid_container(
             container.placement_mode,
             crate::GridPlacementMode::TemplateGridImplicitTracks
                 | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                | crate::GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
         ) && (row.start.is_none() || column.start.is_none())
         {
             return Err(LayoutError::GridImplicitTrackRequired(node));
@@ -137,6 +139,7 @@ pub(crate) fn normalize_dense_grid_container(
         crate::GridPlacementMode::TrackSizing
             | crate::GridPlacementMode::TemplateGridImplicitTracks
             | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+            | crate::GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
     ) {
         for item in &items {
             if let Some(row_start) = item.row.start {
@@ -206,6 +209,7 @@ pub(crate) fn normalize_dense_grid_container(
             crate::GridPlacementMode::TrackSizing
                 | crate::GridPlacementMode::TemplateGridImplicitTracks
                 | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                | crate::GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks
         ) {
             row_count = row_count.max(row_end);
             column_count = column_count.max(column_end);
@@ -441,6 +445,9 @@ pub(crate) fn normalize_dense_grid_container(
         }
         crate::GridPlacementMode::TemplateGridImplicitTracks => AutoTrackExpansionMode::FixedPxList,
         crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {
+            AutoTrackExpansionMode::PositiveNamedLineImplicit
+        }
+        crate::GridPlacementMode::TemplateGridPositiveNamedLinePairAutoImplicitTracks => {
             AutoTrackExpansionMode::PositiveNamedLineImplicit
         }
         crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {

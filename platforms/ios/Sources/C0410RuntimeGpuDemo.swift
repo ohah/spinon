@@ -28,9 +28,14 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
 private let c1133NamedLineAutoSceneIDs: Set<String> = [
     "named-line-auto-columns", "named-line-fixed-columns-control", "named-line-auto-rows",
 ]
+private let c1133NamedLinePairSceneIDs: Set<String> = [
+    "named-line-pair-columns-multi-track", "named-line-pair-rows-multi-track",
+]
 private func isC1133GridTemplateAreaScene(_ sceneID: String) -> Bool {
     c1133GridTemplateAreasSceneIDs.contains(sceneID)
-        || c1133NamedLineAutoSceneIDs.contains(sceneID) || sceneID == "fit-content-area-cap"
+        || c1133NamedLineAutoSceneIDs.contains(sceneID)
+        || c1133NamedLinePairSceneIDs.contains(sceneID)
+        || sceneID == "fit-content-area-cap"
 }
 #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
@@ -11271,6 +11276,20 @@ private struct C111MetalPixelRun {
         }
         return [("named-auto-item", itemID, sampleX, sampleY, [229, 72, 77, 255])]
     }
+    private static func c1133NamedLinePairPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        switch sceneID {
+        case "named-line-pair-columns-multi-track":
+            return [("pair-columns-red", "named-pair-columns-item", 85, 5,
+                     [229, 72, 77, 255])]
+        case "named-line-pair-rows-multi-track":
+            return [("pair-rows-red", "named-pair-rows-item", 5, 45,
+                     [229, 72, 77, 255])]
+        default:
+            return []
+        }
+    }
     private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
@@ -11401,6 +11420,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133FitContentAreaCapPixelSamples(sceneID: sceneID)
         } else if !c1133NamedLineAutoPixelSamples(sceneID: sceneID).isEmpty {
             expectedSamples = c1133NamedLineAutoPixelSamples(sceneID: sceneID)
+        } else if !c1133NamedLinePairPixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133NamedLinePairPixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -12998,6 +13019,7 @@ private struct C111MetalPixelRun {
                     || !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133NamedLineAutoPixelSamples(sceneID: sceneID).isEmpty
+                    || !c1133NamedLinePairPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   isC1133GridTemplateAreaScene(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,
@@ -13966,7 +13988,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c114GridTrackSizingProbeRequested
             ? "SPINON · C11.4 Grid track sizing"
             : c1133GridTemplateAreasProbeRequested
-            ? "SPINON · C11.3.3 Grid template areas"
+            ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
+                ? "SPINON · C11.3.3 named-line pair"
+                : "SPINON · C11.3.3 Grid template areas"
             : c1132GridNamedLinesProbeRequested
             ? "SPINON · C11.3.2 named Grid lines"
             : c1131GridRepeatProbeRequested
@@ -14083,7 +14107,9 @@ final class C0410RuntimeGpuDemoViewController: UIViewController {
             : c114GridTrackSizingProbeRequested
             ? "Intrinsic Grid track sizing → Stylo → Taffy → WGPU Metal · \(Int(c114OverflowPixelReadbackViewportWidth))×\(c114GridTrackSizingSceneID == "fit-content-zoomed-grid-wpt" ? 800 : c114IsFitContentPercentageArgumentScene(c114GridTrackSizingSceneID) ? 400 : C114FitContentImplicitColumnWpt.isScene(c114GridTrackSizingSceneID) ? 320 : 240) CSS px"
             : c1133GridTemplateAreasProbeRequested
-            ? "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+            ? c1133NamedLinePairSceneIDs.contains(c1133GridTemplateAreasSceneID)
+                ? "Positive implicit named-line pair → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
+                : "Grid template area placement → Stylo → Taffy → WGPU Metal · 320×240 CSS px"
             : c1132GridNamedLinesProbeRequested
             ? "named Grid line occurrence·span → Stylo → Taffy → WGPU · 320×240 CSS px"
             : c1131GridRepeatProbeRequested

@@ -671,6 +671,65 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   }
 });
 
+test('양 끝 positive implicit named-line pair fixtures가 Chrome 기준과 Android/iOS route에 고정된다', async () => {
+  const fixturePaths = [
+    'tests/fixtures/css/c11/named-line-pair-columns-mobile-v1.json',
+    'tests/fixtures/css/c11/named-line-pair-rows-mobile-v1.json',
+  ];
+  const referencePath = 'tests/fixtures/css/references/c11-3-3-positive-named-line-pairs-reference-v1.json';
+  const screenshotPath = 'spec/internal/evidence/c11-3-3-both-implicit-named-lines-precomparison-2026-11-01/chrome-156.png';
+  const [fixtureBytes, referenceBytes, screenshotBytes, rustSourceBytes,
+    androidMainBytes, androidDemoBytes, iosDemoBytes, captureBytes] = await Promise.all([
+    Promise.all(fixturePaths.map(read)), read(referencePath), read(screenshotPath),
+    read('crates/spinon-ffi/src/runtime_gpu/fixtures/c11_3_3.rs'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/MainActivity.java'),
+    read('platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java'),
+    read('platforms/ios/Sources/C0410RuntimeGpuDemo.swift'),
+    read('tools/css-reference/capture-c11-3-3-grid-template-areas-runtime.mjs'),
+  ]);
+  const fixtures = fixtureBytes.map((bytes) => JSON.parse(bytes.toString('utf8')));
+  const rust = rustSourceBytes.toString('utf8');
+  const androidMain = androidMainBytes.toString('utf8');
+  const android = androidDemoBytes.toString('utf8');
+  const ios = iosDemoBytes.toString('utf8');
+  const capture = captureBytes.toString('utf8');
+  assert.deepEqual(fixtures.map(({ sceneId }) => sceneId), [
+    'named-line-pair-columns-multi-track', 'named-line-pair-rows-multi-track',
+  ]);
+  const expectedFrames = [
+    [[0, 0, 80, 20], [80, 0, 30, 10]],
+    [[0, 0, 40, 40], [0, 40, 20, 30]],
+  ];
+  for (const [index, fixture] of fixtures.entries()) {
+    assert.equal(fixture.schema,
+      'spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1');
+    assert.deepEqual(fixture.runtime.expectedFrames, expectedFrames[index]);
+    assert.equal(fixture.oracle.referenceSha256, sha256(referenceBytes));
+    assert.equal(fixture.oracle.screenshotSha256, sha256(screenshotBytes));
+    assert.equal(validateC11IOSChromeOracle({
+      fixture, referenceBytes, screenshotBytes,
+    }).sampleCount, 1);
+  }
+  const sceneIds = fixtures.map(({ sceneId }) => sceneId);
+  for (const source of [rust, androidMain, android, ios]) {
+    for (const sceneId of sceneIds) assert.ok(source.includes(sceneId), `${sceneId}: scene route 누락`);
+  }
+  for (const [source, pattern] of [
+    [androidMain, /C1133_NAMED_LINE_PAIR_SCENE_IDS = \{([\s\S]*?)\};/],
+    [android, /C1133_NAMED_LINE_PAIR_SCENE_IDS = \{([\s\S]*?)\};/],
+    [ios, /c1133NamedLinePairSceneIDs: Set<String> = \[([\s\S]*?)\]/],
+  ]) {
+    const allowlist = source.match(pattern)?.[1];
+    assert.ok(allowlist);
+    assert.deepEqual([...allowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), sceneIds);
+  }
+  assert.ok(android.includes('pair-columns-red'));
+  assert.ok(android.includes('pair-rows-red'));
+  assert.ok(ios.includes('c1133NamedLinePairPixelSamples'));
+  assert.ok(capture.includes('spinon-css-c11-3-3-named-line-pair-auto-implicit-tracks-mobile-pixels/v1'));
+  assert.ok(capture.includes('spinon-c11-3-3-named-line-pair-auto-implicit-tracks-runtime-result/v1'));
+});
+
 test('unknown-area fixed implicit tracks root 바깥 paint가 Chrome geometry와 pixel에 고정된다', async () => {
   const fixturePath = 'tests/fixtures/css/c11/unknown-area-fixed-implicit-tracks-mobile-pixels-v1.json';
   const referencePath = 'tests/fixtures/css/references/c11-3-3-unknown-named-area-implicit-lines-precomparison-v1.json';
