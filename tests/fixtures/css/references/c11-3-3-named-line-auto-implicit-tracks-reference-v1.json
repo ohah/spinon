@@ -1,0 +1,24 @@
+{
+  "schema": "spinon-css-reference-observation-v1",
+  "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-named-line-auto-2026-10-31",
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 1280, "height": 633 }
+  },
+  "sourceObservation": {
+    "path": "spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/observation.json",
+    "sha256": "005037ca043d626a971eecddfbd4ad8dc5d6b6ee871fe3d8efd35ee416a0cc7d"
+  },
+  "sourceScreenshot": {
+    "path": "spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/chrome-156-agent-browser.png",
+    "sha256": "aa5d78c005f186e2fc388e7922b442d6546e3d80e3b7f008a52355337b5b8bda"
+  },
+  "environment": {
+    "viewportCssPx": { "width": 1280, "height": 633 }
+  },
+  "observations": [
+    { "deviceScaleFactor": 1 }
+  ]
+}

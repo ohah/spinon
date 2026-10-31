@@ -60,6 +60,7 @@ pub(super) fn normalize_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) {
@@ -157,6 +158,7 @@ pub(super) fn normalize_grid_item_placements(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) {

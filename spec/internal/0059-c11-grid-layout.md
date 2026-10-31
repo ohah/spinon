@@ -118,6 +118,16 @@ Rust 검사는 Grid 19/19, C11.3.3 style-to-layout 19/19, C11.4 auto track-sizin
 
 이 후보는 C11.3.3 완료, WPT 적합성, 전체 CSS Grid 또는 공개 제품 CSS 지원을 선언하지 않는다. C11.3.3 상태와 공식 완료 집계는 미완료로 유지한다.
 
+## C11.3.3 positive no-area named-line `auto` implicit track · 제한 구현 후보 · 2026-10-31
+
+이 후속은 template area가 없는 전용 C11.3.3 named-line fixture에서 container의 모든 in-flow item이 fixed width/height이고, 한 축의 `grid-*-start`에만 빠진 named line이 있으며 그 끝점은 `auto`, 다른 축의 시작점은 definite line인 positive trailing implicit row/column을 만들 때만 기본 `grid-auto-rows/columns:auto`를 Taffy auto track sizing에 연결한다. 양쪽 named endpoint가 모두 implicit인 배치, auto-size item, 또는 부적격 implicit 배치가 함께 있는 container는 계속 거부한다. area-backed sizing은 앞의 typed-auto 계약을 유지하고, signed/leading implicit named-line mode의 `auto`는 계속 거부한다. `grid-auto-*`의 named-line track list는 fixed-px 목록만 허용한다. 지원 CSS admission이나 일반 intrinsic sizing 확장은 아니다.
+
+Chrome 156 DPR 1에서 고정한 세 비교는 두 개의 `40px` explicit columns 뒤에 auto implicit columns가 `[0, 30]px`로 생기며 item frame은 `(80, 0, 30, 10)`인 경우, 같은 item과 `grid-auto-columns:30px` control의 `[30, 30]px` 및 `(110, 0, 30, 10)` frame, 그리고 `20px` explicit row 뒤에 `[0, 25]px` auto implicit rows와 `(0, 20, 20, 25)` item frame인 경우다. Root 밖으로 넘치는 item도 frame/surface 경계 검증에 포함한다. 현재 Rust layout/style projection 단위 테스트는 이 고정-size item 사례를 다루며 text intrinsic contribution, gap, alignment, 임의 track list, signed extent를 포함하지 않는다.
+
+세 scene은 Android API 37 ARM64 AVD/SwiftShader와 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 frame 3/3 및 root 밖 item의 PixelCopy/Metal drawable 표본 3/3 exact를 기록했다. iOS drawable 표본은 compositor 제출 전이다. Android의 잘못된 sample/scene과 iOS의 잘못된 sample 좌표는 각각 readback/runtime draw 전에 거부됐다. Pixel fixture는 columns auto, fixed-px control, rows auto의 개별 JSON으로 고정했다. [구현·runtime 근거](./evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/README.md).
+
+macOS ARM64 Release FFI archive에서 기본 조합은 fixture symbol 0개와 새 scene payload 부재, `c04-runtime-gpu-fixture-test` opt-in은 symbol 2개와 scene source 포함을 확인했다. fixed-only no-area `auto` validation guard 변경 뒤에도 [최종 archive·regression 검사](./evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/post-validator-guard-20261031/README.md)가 같은 경계를 유지한다. 이 archive 근거는 APK/IPA 전체의 fixture 제거를 증명하지 않는다. [archive 근거](./evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/artifact-boundary/README.md). [구현 실패 관점 검토 20개](./evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/implementation-review-20.md)와 별도 [PR diff 적대 검토 30개](./evidence/c11-3-3-named-line-auto-implicit-tracks-implementation-2026-10-31/pr-diff-review-30.md)는 통과했다. GitHub CI rollup과 merge 결과는 PR 이후 판정한다. 따라서 C11.3.3 또는 C11 완료, WPT 적합성, 공개 CSS 지원이나 공식 완료 수 증가를 선언하지 않는다. 기준·예상값과 구현 계획은 [계획](../../plan/c11-3-3-named-line-auto-implicit-tracks.md), Chrome 사전 비교는 [evidence](./evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/README.md)에 연결한다.
+
 ## C11.3.3 leading named implicit lines · 제한 fixture 계약
 
 이 후속 제한 profile은 기존 area/authored-name 우선순위를 보존한 뒤, 부족한 named occurrence 또는 named span을 explicit grid 앞·뒤의 implicit line으로 해석한다. fixed fixture 일곱 장면은 양의·음의 occurrence, 앞쪽 span 부족, explicit authored name 우선순위를 고정한다. `TemplateGridSignedImplicitTracks` layout mode는 이름 배치가 요구한 definite implicit extent만 계산하며, 앞쪽 implicit extent에는 authored grid-auto track pattern을 역순으로 확장한다.

@@ -932,6 +932,12 @@ pub(super) fn project_styles(
                         && snapshot.profile == ComputedStyleProfile::RuntimeBlockFlexGridTemplateV1,
                 )?
             };
+            let fixed_size_item = output.get(&element.node_id).is_some_and(|style| {
+                matches!(style.width, LayoutDimension::Fixed(_))
+                    && matches!(style.height, LayoutDimension::Fixed(_))
+            });
+            let allows_positive_named_line_auto_tracks =
+                implicit_usage.allows_positive_auto_track_sizing && fixed_size_item;
             if implicit_usage.requires_signed_extent {
                 let container = grid_containers
                     .get_mut(&owner)
@@ -942,11 +948,23 @@ pub(super) fn project_styles(
                 let container = grid_containers
                     .get_mut(&owner)
                     .ok_or(crate::StyleLayoutError::MissingComputedElement(owner))?;
-                if container.placement_mode
-                    != spinon_layout::GridPlacementMode::TemplateGridSignedImplicitTracks
-                {
-                    container.placement_mode =
-                        spinon_layout::GridPlacementMode::TemplateGridImplicitTracks;
+                use spinon_layout::GridPlacementMode;
+                match container.placement_mode {
+                    GridPlacementMode::TemplateGridSignedImplicitTracks => {}
+                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                        if !allows_positive_named_line_auto_tracks =>
+                    {
+                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+                    }
+                    GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+                    | GridPlacementMode::TemplateGridImplicitTracks => {}
+                    _ if allows_positive_named_line_auto_tracks => {
+                        container.placement_mode =
+                            GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks;
+                    }
+                    _ => {
+                        container.placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+                    }
                 }
             }
             if let Some(placement) = placement {

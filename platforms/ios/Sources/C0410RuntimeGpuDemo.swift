@@ -25,8 +25,12 @@ private let c1133GridTemplateAreasSceneIDs: Set<String> = [
     "backward-span-two", "backward-span-partial-explicit", "forward-span-two",
     "backward-span-uses-authored-name",
 ]
+private let c1133NamedLineAutoSceneIDs: Set<String> = [
+    "named-line-auto-columns", "named-line-fixed-columns-control", "named-line-auto-rows",
+]
 private func isC1133GridTemplateAreaScene(_ sceneID: String) -> Bool {
-    c1133GridTemplateAreasSceneIDs.contains(sceneID) || sceneID == "fit-content-area-cap"
+    c1133GridTemplateAreasSceneIDs.contains(sceneID)
+        || c1133NamedLineAutoSceneIDs.contains(sceneID) || sceneID == "fit-content-area-cap"
 }
 #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
 private let c114FixedRepeatAutoRepeatSceneIDs: Set<String> = [
@@ -11178,6 +11182,23 @@ private struct C111MetalPixelRun {
         }
         return [("named-implicit-item", itemID, sampleX, 10, [40, 102, 246, 255])]
     }
+    private static func c1133NamedLineAutoPixelSamples(
+        sceneID: String
+    ) -> [(String, String, UInt32, UInt32, [UInt32])] {
+        let itemID: String
+        let sampleX: UInt32
+        let sampleY: UInt32
+        switch sceneID {
+        case "named-line-auto-columns":
+            itemID = "auto-columns-item"; sampleX = 85; sampleY = 5
+        case "named-line-fixed-columns-control":
+            itemID = "auto-columns-item"; sampleX = 115; sampleY = 5
+        case "named-line-auto-rows":
+            itemID = "auto-rows-item"; sampleX = 5; sampleY = 22
+        default: return []
+        }
+        return [("named-auto-item", itemID, sampleX, sampleY, [229, 72, 77, 255])]
+    }
     private static let c114TextOverflowPixelSamples: [(String, String, UInt32, UInt32, [UInt32])] = [
         ("item-inside-root", "c114-break-all-item", 5, 20, [229, 72, 77, 255]),
         ("item-overflow-beyond-root", "c114-break-all-item", 5, 45, [229, 72, 77, 255]),
@@ -11306,6 +11327,8 @@ private struct C111MetalPixelRun {
             expectedSamples = c1133TypedAutoTrackPixelSamples(sceneID: sceneID)
         } else if !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty {
             expectedSamples = c1133FitContentAreaCapPixelSamples(sceneID: sceneID)
+        } else if !c1133NamedLineAutoPixelSamples(sceneID: sceneID).isEmpty {
+            expectedSamples = c1133NamedLineAutoPixelSamples(sceneID: sceneID)
         } else {
             expectedSamples = c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID)
         }
@@ -12902,6 +12925,7 @@ private struct C111MetalPixelRun {
                     || !c1133TrackListCyclePixelSamples(sceneID: sceneID).isEmpty
                     || !c1133TypedAutoTrackPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133FitContentAreaCapPixelSamples(sceneID: sceneID).isEmpty
+                    || !c1133NamedLineAutoPixelSamples(sceneID: sceneID).isEmpty
                     || !c1133LeadingNamedImplicitPixelSamples(sceneID: sceneID).isEmpty,
                   isC1133GridTemplateAreaScene(c1133SceneID), c1133RunID == runID,
                   !isC1131Repeat, !isC1132NamedLine,

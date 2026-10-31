@@ -163,6 +163,7 @@ fn missing_backward_named_span_creates_leading_line_and_selects_signed_extent() 
         ImplicitNamedLineUsage {
             uses_implicit_tracks: true,
             requires_signed_extent: true,
+            allows_positive_auto_track_sizing: false,
         }
     );
 }

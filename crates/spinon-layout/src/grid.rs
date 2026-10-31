@@ -265,8 +265,10 @@ pub enum GridPlacementMode {
     DenseAutoPlacement,
     /// C11.3 template profile은 dense 배치를 유지하고 definite item의 auto 크기를 허용합니다.
     TemplateGrid,
-    /// C11.3.3 opt-in 경로의 explicit placement와 trailing implicit tracks입니다. Template areas가 있으면 auto 및 C11.4 typed auto-track sizing을 사용할 수 있습니다.
+    /// C11.3.3 opt-in 경로의 explicit placement와 positive trailing implicit tracks입니다. Area 경로는 typed sizing을 허용합니다.
     TemplateGridImplicitTracks,
+    /// C11.3.3의 고정 크기 item에서 positive trailing named start + auto end의 auto implicit track sizing을 허용합니다.
+    TemplateGridPositiveNamedLineAutoImplicitTracks,
     /// C11.3.3 named-line opt-in의 signed leading/trailing fixed implicit tracks입니다.
     TemplateGridSignedImplicitTracks,
     /// C11.4 intrinsic track sizing 후보 profile입니다.
@@ -276,7 +278,7 @@ pub enum GridPlacementMode {
 /// 제한 profile에서 허용하는 implicit track sizing 입력입니다.
 #[derive(Clone, Debug, Default, PartialEq)]
 pub enum GridAutoTrackSize {
-    /// 기본 `auto` track입니다. C11.3.3 template-area trailing tracks와 C11.4 TrackSizing에서 sizing합니다.
+    /// 기본 `auto` track입니다. C11.3.3 area-backed/명시 허용 named-line trailing tracks와 C11.4 TrackSizing에서 sizing합니다.
     #[default]
     Auto,
     /// 모든 implicit track에 반복할 하나의 고정 CSS px track입니다.
@@ -362,17 +364,18 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoRows::Auto)
                 if container.template_areas.is_some() => {}
             (
-                GridPlacementMode::TemplateGridImplicitTracks
-                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks,
                 GridAutoRows::Auto,
-            ) => {
+            ) => {}
+            (GridPlacementMode::TemplateGridSignedImplicitTracks, GridAutoRows::Auto) => {
                 return Err(LayoutError::UnsupportedGridAutoRows {
                     node: id,
-                    reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-rows",
+                    reason: "C11.3.3 signed implicit named-line mode requires fixed px grid-auto-rows",
                 });
             }
             (
                 GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoRows::TrackList(tracks),
             ) if !tracks.is_empty()
@@ -388,6 +391,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoRows::Auto | GridAutoRows::LengthPx(_),
             )
@@ -404,17 +408,18 @@ pub(super) fn validate_grid_layout(
             (GridPlacementMode::TemplateGridImplicitTracks, GridAutoColumns::Auto)
                 if container.template_areas.is_some() => {}
             (
-                GridPlacementMode::TemplateGridImplicitTracks
-                | GridPlacementMode::TemplateGridSignedImplicitTracks,
+                GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks,
                 GridAutoColumns::Auto,
-            ) => {
+            ) => {}
+            (GridPlacementMode::TemplateGridSignedImplicitTracks, GridAutoColumns::Auto) => {
                 return Err(LayoutError::UnsupportedGridAutoColumns {
                     node: id,
-                    reason: "C11.3.3 implicit named-line mode requires fixed px grid-auto-columns",
+                    reason: "C11.3.3 signed implicit named-line mode requires fixed px grid-auto-columns",
                 });
             }
             (
                 GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoColumns::TrackList(tracks),
             ) if !tracks.is_empty()
@@ -429,6 +434,7 @@ pub(super) fn validate_grid_layout(
                 GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks,
                 GridAutoColumns::Auto | GridAutoColumns::LengthPx(_),
             )
@@ -746,6 +752,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks
                     if normalized_grid.auto_placed_items.contains(&child_id) =>
                 {
@@ -779,6 +786,9 @@ pub(super) fn validate_grid_layout(
                         crate::LayoutDimension::Auto | crate::LayoutDimension::Fixed(_)
                     ) || (c14_3_replaced_item && valid_c14_3_dimension(size))
                 }
+                GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {
+                    matches!(size, crate::LayoutDimension::Fixed(_))
+                }
                 GridPlacementMode::TemplateGridImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks
                     if !normalized_grid.auto_placed_items.contains(&child_id) =>
@@ -804,6 +814,7 @@ pub(super) fn validate_grid_layout(
                         container.placement_mode,
                         GridPlacementMode::TemplateGrid
                             | GridPlacementMode::TemplateGridImplicitTracks
+                            | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                             | GridPlacementMode::TemplateGridSignedImplicitTracks
                     ) && !normalized_grid.auto_placed_items.contains(&child_id)
                         && matches!(property, "min-width" | "min-height")
@@ -836,6 +847,7 @@ pub(super) fn validate_grid_layout(
                 | GridPlacementMode::DenseAutoPlacement
                 | GridPlacementMode::TemplateGrid
                 | GridPlacementMode::TemplateGridImplicitTracks
+                | GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
                 | GridPlacementMode::TemplateGridSignedImplicitTracks
                 | GridPlacementMode::TrackSizing
         ) && !has_explicit_placement
@@ -2095,6 +2107,10 @@ fn valid_max_track_sizing_function(value: GridTrackMaxSizingFunction) -> bool {
 #[cfg(test)]
 #[path = "grid_tests.rs"]
 mod tests;
+
+#[cfg(test)]
+#[path = "grid_named_line_auto_tests.rs"]
+mod named_line_auto_tests;
 
 #[cfg(test)]
 #[path = "grid_template_areas_tests.rs"]

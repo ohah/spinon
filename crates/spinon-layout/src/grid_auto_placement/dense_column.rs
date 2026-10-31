@@ -18,6 +18,7 @@ enum AutoTrackExpansionMode {
     Unsupported,
     FixedPxList,
     TemplateAreaImplicit,
+    PositiveNamedLineImplicit,
     Intrinsic,
 }
 
@@ -88,6 +89,7 @@ pub(crate) fn normalize_dense_grid_container(
         container.placement_mode,
         crate::GridPlacementMode::TrackSizing
             | crate::GridPlacementMode::TemplateGridImplicitTracks
+            | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
     );
     for child in children {
         let default_placement = crate::GridItemInput::default();
@@ -110,8 +112,11 @@ pub(crate) fn normalize_dense_grid_container(
             container.columns.len(),
             allow_positive_implicit,
         )?;
-        if container.placement_mode == crate::GridPlacementMode::TemplateGridImplicitTracks
-            && (row.start.is_none() || column.start.is_none())
+        if matches!(
+            container.placement_mode,
+            crate::GridPlacementMode::TemplateGridImplicitTracks
+                | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
+        ) && (row.start.is_none() || column.start.is_none())
         {
             return Err(LayoutError::GridImplicitTrackRequired(node));
         }
@@ -131,6 +136,7 @@ pub(crate) fn normalize_dense_grid_container(
         container.placement_mode,
         crate::GridPlacementMode::TrackSizing
             | crate::GridPlacementMode::TemplateGridImplicitTracks
+            | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
     ) {
         for item in &items {
             if let Some(row_start) = item.row.start {
@@ -199,6 +205,7 @@ pub(crate) fn normalize_dense_grid_container(
             container.placement_mode,
             crate::GridPlacementMode::TrackSizing
                 | crate::GridPlacementMode::TemplateGridImplicitTracks
+                | crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks
         ) {
             row_count = row_count.max(row_end);
             column_count = column_count.max(column_end);
@@ -432,8 +439,11 @@ pub(crate) fn normalize_dense_grid_container(
         {
             AutoTrackExpansionMode::TemplateAreaImplicit
         }
-        crate::GridPlacementMode::TemplateGridImplicitTracks
-        | crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
+        crate::GridPlacementMode::TemplateGridImplicitTracks => AutoTrackExpansionMode::FixedPxList,
+        crate::GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks => {
+            AutoTrackExpansionMode::PositiveNamedLineImplicit
+        }
+        crate::GridPlacementMode::TemplateGridSignedImplicitTracks => {
             AutoTrackExpansionMode::FixedPxList
         }
         _ => AutoTrackExpansionMode::Unsupported,
@@ -695,7 +705,9 @@ fn expand_tracks(
         crate::GridAutoTrackSize::Auto => {
             if matches!(
                 mode,
-                AutoTrackExpansionMode::Intrinsic | AutoTrackExpansionMode::TemplateAreaImplicit
+                AutoTrackExpansionMode::Intrinsic
+                    | AutoTrackExpansionMode::TemplateAreaImplicit
+                    | AutoTrackExpansionMode::PositiveNamedLineImplicit
             ) {
                 TrackPattern::Single(GridTrackSize::Auto)
             } else {
@@ -722,7 +734,8 @@ fn expand_tracks(
             if !tracks.is_empty()
                 && match mode {
                     AutoTrackExpansionMode::Unsupported => false,
-                    AutoTrackExpansionMode::FixedPxList => tracks
+                    AutoTrackExpansionMode::FixedPxList
+                    | AutoTrackExpansionMode::PositiveNamedLineImplicit => tracks
                         .iter()
                         .all(|track| matches!(track, GridTrackSize::LengthPx(_))),
                     AutoTrackExpansionMode::TemplateAreaImplicit

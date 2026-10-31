@@ -48,6 +48,56 @@ item.setAttribute('style', 'box-sizing:border-box;width:15px;height:5px;margin:0
 root.appendChild(item);
 return { sceneId:'unknown-area-fixed-implicit-tracks', rootId:'fixed-implicit-grid', nodeIds:['fixed-implicit-grid', 'fixed-known-area', 'fixed-unknown-area'] };
 })()"#;
+const C11_3_3_NAMED_LINE_AUTO_IMPLICIT_TRACKS_SOURCES: [(&str, &str); 3] = [
+    (
+        "named-line-auto-columns",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'auto-columns-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:80px;height:20px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:40px 40px;grid-template-rows:20px;grid-auto-rows:auto;grid-auto-columns:auto;grid-auto-flow:row');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'auto-columns-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:30px;height:10px;margin:0;padding:0;border:0;background-color:#e5484d;grid-column-start:missing-column;grid-row:1');
+root.appendChild(item);
+return { sceneId:'named-line-auto-columns', rootId:'auto-columns-grid', nodeIds:['auto-columns-grid','auto-columns-item'] };
+})()"#,
+    ),
+    (
+        "named-line-fixed-columns-control",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'auto-columns-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:80px;height:20px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:40px 40px;grid-template-rows:20px;grid-auto-rows:auto;grid-auto-columns:30px;grid-auto-flow:row');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'auto-columns-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:30px;height:10px;margin:0;padding:0;border:0;background-color:#e5484d;grid-column-start:missing-column;grid-row:1');
+root.appendChild(item);
+return { sceneId:'named-line-fixed-columns-control', rootId:'auto-columns-grid', nodeIds:['auto-columns-grid','auto-columns-item'] };
+})()"#,
+    ),
+    (
+        "named-line-auto-rows",
+        r#"(() => {
+const root = document.createElement('div');
+root.setAttribute('id', 'auto-rows-grid');
+root.setAttribute('data-node', '');
+root.setAttribute('style', 'box-sizing:border-box;display:grid;width:40px;height:20px;margin:0;padding:0;border:0;gap:0;background-color:#101820;grid-template-columns:40px;grid-template-rows:20px;grid-auto-rows:auto;grid-auto-columns:auto;grid-auto-flow:row');
+document.appendChild(root);
+const item = document.createElement('div');
+item.setAttribute('id', 'auto-rows-item');
+item.setAttribute('data-node', '');
+item.setAttribute('style', 'box-sizing:border-box;width:20px;height:25px;margin:0;padding:0;border:0;background-color:#e5484d;grid-column:1;grid-row-start:missing-row');
+root.appendChild(item);
+return { sceneId:'named-line-auto-rows', rootId:'auto-rows-grid', nodeIds:['auto-rows-grid','auto-rows-item'] };
+})()"#,
+    ),
+];
 const C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES: [(&str, &str); 7] = [
     (
         "positive-missing-occurrences",
@@ -215,6 +265,12 @@ pub(crate) fn c11_3_3_grid_template_areas_runtime_source(
     }
     if scene_id == "unknown-area-fixed-implicit-tracks" {
         return Ok(C11_3_3_UNKNOWN_AREA_FIXED_IMPLICIT_TRACKS_SOURCE);
+    }
+    if let Some((_, source)) = C11_3_3_NAMED_LINE_AUTO_IMPLICIT_TRACKS_SOURCES
+        .iter()
+        .find(|(id, _)| *id == scene_id)
+    {
+        return Ok(source);
     }
     if let Some((_, source)) = C11_3_3_LEADING_NAMED_IMPLICIT_LINE_SOURCES
         .iter()
@@ -427,6 +483,46 @@ mod tests {
         assert!(source.contains("grid-area:not-authored"));
         assert!(source.contains("fixed-known-area"));
         assert!(source.contains("fixed-unknown-area"));
+    }
+
+    #[test]
+    fn positive_named_line_auto_scenes_have_separate_sources_and_fixed_control() {
+        let expected = [
+            (
+                "named-line-auto-columns",
+                "auto-columns-grid",
+                "auto-columns-item",
+                "grid-auto-columns:auto",
+            ),
+            (
+                "named-line-fixed-columns-control",
+                "auto-columns-grid",
+                "auto-columns-item",
+                "grid-auto-columns:30px",
+            ),
+            (
+                "named-line-auto-rows",
+                "auto-rows-grid",
+                "auto-rows-item",
+                "grid-auto-rows:auto",
+            ),
+        ];
+
+        for (scene_id, root_id, item_id, track_style) in expected {
+            let source = c11_3_3_grid_template_areas_runtime_source(scene_id).unwrap();
+            assert!(source.contains(&format!("sceneId:'{scene_id}'")));
+            assert!(source.contains(&format!("rootId:'{root_id}'")));
+            assert!(source.contains(&format!("'{root_id}','{item_id}'")));
+            assert!(source.contains(track_style));
+            assert!(
+                source.contains("grid-column-start:missing-column")
+                    || source.contains("grid-row-start:missing-row")
+            );
+            assert!(source.contains("background-color:#e5484d"));
+        }
+        assert!(
+            c11_3_3_grid_template_areas_runtime_source("named-line-auto-columns;throw 1").is_err()
+        );
     }
 
     #[test]

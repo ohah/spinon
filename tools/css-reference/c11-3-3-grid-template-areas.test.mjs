@@ -619,15 +619,43 @@ test('C11.3.3 앱 runtime matrix와 표면 pixel fixture가 Chrome 기준에 고
   assert.ok(mainActivityAllowlist);
   assert.deepEqual([...mainActivityAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
     runtimeSceneIds);
+  const namedLineAutoSceneIds = [
+    'named-line-auto-columns', 'named-line-fixed-columns-control', 'named-line-auto-rows',
+  ];
+  const mainActivityNamedLineAutoAllowlist = androidMainActivity.match(
+    /C1133_NAMED_LINE_AUTO_SCENE_IDS = \{([\s\S]*?)\};/,
+  )?.[1];
+  assert.ok(mainActivityNamedLineAutoAllowlist);
+  assert.deepEqual(
+    [...mainActivityNamedLineAutoAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
+    namedLineAutoSceneIds,
+  );
   const androidAllowlist = androidDemo.match(/C1133_GRID_TEMPLATE_AREAS_SCENE_IDS = \{([\s\S]*?)\};/)?.[1];
   assert.ok(androidAllowlist);
   assert.deepEqual([...androidAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
+  const androidNamedLineAutoAllowlist = androidDemo.match(
+    /C1133_NAMED_LINE_AUTO_SCENE_IDS = \{([\s\S]*?)\};/,
+  )?.[1];
+  assert.ok(androidNamedLineAutoAllowlist);
+  assert.deepEqual(
+    [...androidNamedLineAutoAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
+    namedLineAutoSceneIds,
+  );
   assert.ok(androidDemo.includes('host, c1133GridTemplateAreasSceneId'));
   assert.ok(androidDemo.includes('scheduleRuntimeInitializationForReadySurface'));
   const iosDemo = iosDemoBytes.toString('utf8');
   const iosAllowlist = iosDemo.match(/c1133GridTemplateAreasSceneIDs: Set<String> = \[([\s\S]*?)\]/)?.[1];
   assert.ok(iosAllowlist);
   assert.deepEqual([...iosAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id), runtimeSceneIds);
+  const iosNamedLineAutoAllowlist = iosDemo.match(
+    /c1133NamedLineAutoSceneIDs: Set<String> = \[([\s\S]*?)\]/,
+  )?.[1];
+  assert.ok(iosNamedLineAutoAllowlist);
+  assert.deepEqual(
+    [...iosNamedLineAutoAllowlist.matchAll(/"([^"]+)"/g)].map(([, id]) => id),
+    namedLineAutoSceneIds,
+  );
+  assert.ok(capture.includes("argument.startsWith('--fixture=')"));
   assert.ok(iosDemo.includes('--spinon-c1133-grid-scene='));
   assert.ok(iosDemo.includes('sceneID: c1133GridTemplateAreasSceneID'));
   assert.ok(iosDemo.includes('c1133TrackListCyclePixelSamples'));

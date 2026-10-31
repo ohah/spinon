@@ -191,6 +191,7 @@ fn usage_for_line(
     ImplicitNamedLineUsage {
         uses_implicit_tracks: true,
         requires_signed_extent,
+        allows_positive_auto_track_sizing: false,
     }
 }
 

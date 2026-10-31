@@ -1,0 +1,27 @@
+{
+  "schema": "spinon-css-c11-3-3-named-line-auto-implicit-tracks-mobile-pixels/v1",
+  "sceneId": "named-line-fixed-columns-control",
+  "runtime": {
+    "viewportCssPx": { "width": 320, "height": 240 },
+    "deviceScaleFactor": 1,
+    "expectedNodeCount": 2,
+    "expectedFrames": [[0, 0, 80, 20], [110, 0, 30, 10]]
+  },
+  "oracle": {
+    "name": "Agent Browser",
+    "product": "HeadlessChrome/156.0.0.0",
+    "referenceId": "agent-browser-headlesschrome-156-dpr1-c11-3-3-named-line-auto-2026-10-31",
+    "referencePath": "tests/fixtures/css/references/c11-3-3-named-line-auto-implicit-tracks-reference-v1.json",
+    "referenceSha256": "d417f3152d25426429dbc5a15615354eca0ee98b0ee320c298e59b2ca0d1851d",
+    "deviceScaleFactor": 1,
+    "viewportCssPx": { "width": 1280, "height": 633 },
+    "screenshotPath": "spec/internal/evidence/c11-3-3-named-line-auto-implicit-tracks-precomparison-2026-10-31/chrome-156-agent-browser.png",
+    "screenshotSha256": "aa5d78c005f186e2fc388e7922b442d6546e3d80e3b7f008a52355337b5b8bda",
+    "samples": [
+      { "id": "named-auto-item", "nodeId": "auto-columns-item", "xCssPx": 235, "yCssPx": 13, "rgba": [229, 72, 77, 255] }
+    ]
+  },
+  "samples": [
+    { "id": "named-auto-item", "nodeId": "auto-columns-item", "xCssPx": 115, "yCssPx": 5, "rgba": [229, 72, 77, 255] }
+  ]
+}

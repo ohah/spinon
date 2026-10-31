@@ -748,7 +748,7 @@ fn trailing_template_area_named_lines_use_typed_auto_tracks_after_area_pattern_p
 }
 
 #[test]
-fn implicit_auto_tracks_still_require_template_areas_and_signed_mode_rejects_them() {
+fn positive_no_area_implicit_auto_tracks_are_allowed_and_signed_mode_rejects_them() {
     let mut no_area = grid_input(
         vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(40.0)],
         vec![GridTrackSize::LengthPx(30.0)],
@@ -759,20 +759,17 @@ fn implicit_auto_tracks_still_require_template_areas_and_signed_mode_rejects_the
         .grid_containers
         .get_mut(&id(1))
         .unwrap()
-        .placement_mode = GridPlacementMode::TemplateGridImplicitTracks;
+        .placement_mode = GridPlacementMode::TemplateGridPositiveNamedLineAutoImplicitTracks;
     no_area.grid_items.insert(
         id(2),
         GridItemInput {
-            row_start: GridPlacementInput::Line(2),
-            row_end: GridPlacementInput::Line(4),
+            row_start: GridPlacementInput::Line(1),
+            row_end: GridPlacementInput::Line(2),
             column_start: GridPlacementInput::Line(3),
             column_end: GridPlacementInput::Line(5),
         },
     );
-    assert!(matches!(
-        TaffyLayoutEngine.compute(&no_area),
-        Err(LayoutError::UnsupportedGridAutoRows { node, .. }) if node == id(1)
-    ));
+    assert!(TaffyLayoutEngine.compute(&no_area).is_ok());
 
     let mut signed = grid_input(
         vec![GridTrackSize::LengthPx(40.0), GridTrackSize::LengthPx(40.0)],

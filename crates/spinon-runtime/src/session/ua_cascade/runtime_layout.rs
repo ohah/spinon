@@ -957,8 +957,7 @@ where
 
         if let Some(output) = c11_3_3_area_cap_output {
             Ok(output)
-        } else
-        if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
+        } else if let Some(input) = &c11_4_auto_minmax_span_overflow_input {
             if let Some(intrinsic_sizes) = &input.intrinsic_sizes {
                 spinon_style_to_layout::compute_runtime_block_flex_grid_track_sizing_style_layout_with_overflow_automatic_minimum_fixture_and_intrinsic_sizes(
                     &request.snapshot,
