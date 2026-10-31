@@ -14,6 +14,7 @@ fn paragraph_style_default_keeps_the_legacy_horizontal_text_profile() {
     assert_eq!(style.writing_mode, spinon_core::WritingMode::HorizontalTb);
     assert_eq!(style.text_orientation, spinon_core::TextOrientation::Mixed);
     assert_eq!(style.word_spacing, 0.0);
+    assert_eq!(style.text_indent, 0.0);
 }
 
 #[test]
@@ -134,6 +135,23 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
                 ..ParagraphStyle::default()
             },
             "word-spacing",
+        ),
+        (
+            ParagraphStyle {
+                writing_mode: spinon_core::WritingMode::HorizontalTb,
+                text_orientation: spinon_core::TextOrientation::Mixed,
+                font_family: "Ahem".to_owned(),
+                font_size: 10.0,
+                line_height: 10.0,
+                text_indent: f32::NAN,
+                white_space: WhiteSpaceMode::Normal,
+                word_break: WordBreakMode::Normal,
+                direction: crate::TextDirection::Auto,
+                line_break: crate::LineBreakMode::Strict,
+                ligatures: crate::LigatureMode::Normal,
+                ..ParagraphStyle::default()
+            },
+            "text-indent",
         ),
     ];
 

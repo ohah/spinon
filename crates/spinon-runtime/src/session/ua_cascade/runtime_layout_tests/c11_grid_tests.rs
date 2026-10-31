@@ -28,6 +28,10 @@ mod anonymous_text_letter_spacing;
 mod anonymous_text_word_spacing;
 
 #[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
+#[path = "c11_grid_tests/anonymous_text_text_indent.rs"]
+mod anonymous_text_text_indent;
+
+#[cfg(feature = "c11-4-grid-track-sizing-fixture-test")]
 #[path = "c11_grid_tests/anonymous_text_multi_image.rs"]
 mod anonymous_text_multi_image;
 

@@ -1,0 +1,90 @@
+   Compiling spinon-text-layout v0.1.0 (/Users/yoonhb/Documents/workspace/spinon/crates/spinon-text-layout)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.97s
+     Running unittests src/lib.rs (target/debug/deps/spinon_text_layout-150fd4237564ccc2)
+
+running 76 tests
+test engine::raster_tests::accumulated_raster_bytes_accepts_the_limit_and_rejects_overflow ... ok
+test engine::raster_tests::empty_swash_image_becomes_a_no_ink_glyph ... ok
+test engine::raster_tests::malformed_or_oversized_swash_images_fail_closed ... ok
+test engine::raster_tests::rgba_swash_image_keeps_color_content_and_y_down_placement ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_tabs_fail_closed ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_segment_break_split_across_sources_keeps_provenance ... ok
+test engine::tests::ahem_normalizes_collapsed_spaces_and_preserves_source_range ... ok
+test engine::tests::ahem_wraps_words_and_keeps_long_unbreakable_words_overflowing ... ok
+test engine::tests::c11_4_pre::pre_keeps_space_boundaries_unbreakable_for_min_content ... ok
+test engine::tests::ahem_vertical_nowrap_intrinsics_have_no_soft_wrap_opportunities ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_preserves_each_space_for_min_and_max_content ... ok
+test engine::tests::ahem_supports_break_all_pre_line_and_no_wrap ... ok
+test engine::tests::ahem_text_indent_changes_first_line_min_and_max_content_advance ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_forced_break_keeps_each_crlf_source_mapping ... ok
+test engine::tests::ahem_text_indent_min_content_uses_only_first_unbreakable_line ... ok
+test engine::tests::adjacent_text_nodes_keep_source_order_and_inline_fragments ... ok
+test engine::tests::c11_4_pre::pre_numeric_tab_sizes_reject_text_outside_the_fixed_profile ... ok
+test engine::tests::c11_4_break_spaces::break_spaces_preserves_leading_and_trailing_spaces_in_max_content ... ok
+test engine::tests::ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles ... ok
+test engine::tests::c11_4_pre::pre_tab_size_rejects_invalid_values_and_layout_overflow ... ok
+test engine::tests::c11_4_pre::pre_tabs_fail_closed_outside_the_fixed_profile ... ok
+test engine::tests::c11_4_pre::pre_preserves_forced_segment_breaks_and_source_provenance ... ok
+test engine::tests::c11_4_pre::pre_numeric_tab_sizes_reset_after_crlf_and_keep_tab_provenance ... ok
+test engine::tests::c11_4_pre::pre_numeric_tabs_keep_min_content_unwrapped_and_joined_source_ownership ... ok
+test engine::tests::c11_4_pre::pre_tabs_keep_source_nodes_when_text_sources_are_joined ... ok
+test engine::tests::c11_4_pre::pre_tabs_reset_after_crlf_and_preserve_source_ranges ... ok
+test engine::tests::c11_4_pre::pre_numeric_tab_sizes_advance_to_the_next_stop ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_expands_default_ahem_tab_stops_and_maps_the_source_tab ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_tab_outside_the_fixed_ahem_profile_fails_closed ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_soft_wraps_and_keeps_the_preserved_separator_in_the_source ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_normalizes_segment_breaks_and_keeps_crlf_source_provenance ... ok
+test engine::tests::ahem_word_spacing_changes_collapsed_separators_but_not_min_content_words ... ok
+test engine::tests::c11_4_pre::pre_preserves_spaces_and_disables_soft_wrapping ... ok
+test engine::tests::c11_4_pre_wrap::pre_wrap_preserves_repeated_leading_and_trailing_spaces ... ok
+test engine::tests::c15_2::invalid_inline_edges_and_overflowing_edge_sums_fail_closed ... ok
+test engine::tests::c11_4_pre::pre_tabs_keep_intrinsic_width_unwrapped_at_a_narrow_available_width ... ok
+test engine::tests::c15_2::ahem_baseline_keeps_the_chrome_10px_10px_geometry ... ok
+test engine::tests::c15_2::decorated_inline_owner_without_visible_text_is_rejected ... ok
+test engine::tests::c15_2::noncontiguous_inline_owner_is_rejected_instead_of_decorating_intervening_text ... ok
+test engine::tests::c15_2::nested_inline_width_overflow_from_separate_valid_styles_fails_closed ... ok
+test engine::tests::c11_4_pre::pre_tab_size_resets_lines_and_applies_small_stop_fallback_once_per_run ... ok
+test engine::tests::ahem_letter_spacing_uses_adjacent_units_and_suppresses_line_edges ... ok
+test engine::tests::c15_3::missing_fixture_glyph_does_not_fall_back_to_a_system_font_or_notdef_glyph ... ok
+test engine::tests::c11_4_pre::pre_tabs_advance_to_the_next_default_eight_space_stop ... ok
+test engine::tests::c11_4_pre::pre_tab_size_keeps_zero_fractional_and_absolute_px_advances ... ok
+test engine::tests::ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances ... ok
+test engine::tests::c15_3_raster::rasterizer_handles_empty_text_and_rejects_oversized_physical_font_size ... ok
+test engine::tests::collapsed_space_and_pre_line_crlf_keep_all_source_code_units ... ok
+test engine::tests::c15_2::roboto_metrics_keep_the_chrome_20px_24px_geometry ... ok
+test engine::tests::engine_boundaries::empty_text_does_not_create_a_line_and_missing_fonts_fail_closed ... ok
+test engine::tests::empty_intrinsic_paragraph_returns_zero_sizes_with_current_font_revision ... ok
+test engine::tests::engine_boundaries::zero_width_is_definite_and_preserves_unbreakable_text_advance ... ok
+test engine::tests::c15_3::combining_sequence_glyphs_retain_one_grapheme_and_the_full_utf16_source ... ok
+test engine::tests::horizontal_logical_intrinsics_preserve_legacy_measurement_axes ... ok
+test engine::tests::c15_3::one_combining_cluster_can_preserve_sources_from_adjacent_dom_text_nodes ... ok
+test engine::tests::c15_3::ligature_mode_changes_shaping_and_keeps_the_full_ligature_source_range ... ok
+test engine::tests::paragraph_style::inline_run_style_still_rejects_zero_line_height ... ok
+test engine::tests::paragraph_style::paragraph_style_allows_zero_line_height_and_keeps_text_lines_finite ... ok
+test engine::tests::paragraph_style::paragraph_style_default_keeps_the_legacy_horizontal_text_profile ... ok
+test engine::tests::paragraph_style::paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics ... ok
+test engine::tests::supplementary_scalar_preserves_utf16_and_utf8_source_ranges ... ok
+test engine::tests::vertical_logical_intrinsics_reject_out_of_profile_text_style_and_topology ... ok
+test engine::tests::c15_3_raster::raster_uses_owned_font_bytes_after_registration_input_is_dropped ... ok
+test engine::tests::c15_3_raster::static_font_raster_applies_parley_synthetic_bold_and_italic ... ok
+test engine::tests::c15_3_raster::ahem_raster_dimensions_scale_in_physical_pixels_but_keep_css_positions ... ok
+test engine::tests::intrinsic_inline_sizes_include_inline_edges_and_pre_line_breaks ... ok
+test engine::tests::roboto_uses_real_shaped_glyph_advances_and_metrics ... ok
+test engine::tests::c15_3::arabic_rtl_run_keeps_european_digits_in_ltr_order ... ok
+test engine::tests::c15_3_raster::variable_font_raster_uses_the_same_normalized_weight_as_parley_shaping ... ok
+test engine::tests::c15_3::auto_rtl_and_ltr_base_directions_place_an_arabic_paragraph_correctly ... ok
+test engine::tests::engine_boundaries::font_registration_is_transactional_and_checks_the_new_font_family ... ok
+test engine::tests::c15_3::emoji_zwj_sequence_is_one_shaped_cluster_with_a_full_utf16_range ... ok
+test engine::tests::c15_3::strict_cjk_break_keeps_closing_punctuation_with_the_previous_cluster ... ok
+test engine::tests::c15_3::hangul_uses_the_registered_korean_font_and_emits_real_glyphs ... ok
+test engine::tests::c15_3_raster::rasterizer_rejects_invalid_scale_stale_registry_and_corrupt_glyph_ids ... ok
+test engine::tests::c15_3_raster::raster_snapshot_preserves_visible_glyphs_and_sources_across_c15_3_scripts ... ok
+
+test result: ok. 76 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+
+   Doc-tests spinon_text_layout
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

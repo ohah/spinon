@@ -133,6 +133,7 @@ pub(super) fn layout_fixture(
             line_break: LineBreakMode::Strict,
             ligatures: LigatureMode::Normal,
             letter_spacing: 0.0,
+            text_indent: 0.0,
         },
     )]);
     let input = LayoutInput::from_host_document_with_text_paragraphs(

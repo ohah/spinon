@@ -167,6 +167,8 @@ pub struct ParagraphStyle {
     pub letter_spacing: f32,
     /// 제한 text profile에서 사용하는 computed CSS `word-spacing` (CSS px)입니다.
     pub word_spacing: f32,
+    /// Paragraph의 first formatted line에 적용하는 computed CSS `text-indent` (CSS px)입니다.
+    pub text_indent: f32,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
     pub direction: TextDirection,
@@ -202,6 +204,9 @@ impl ParagraphStyle {
         if !self.word_spacing.is_finite() {
             return Err("word-spacing");
         }
+        if !self.text_indent.is_finite() {
+            return Err("text-indent");
+        }
         if let WhiteSpaceMode::PreWithTabSize(tab_size) = self.white_space
             && !tab_size.is_valid()
         {
@@ -222,6 +227,7 @@ impl Default for ParagraphStyle {
             font_style: FontStyleMode::Normal,
             letter_spacing: 0.0,
             word_spacing: 0.0,
+            text_indent: 0.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
             direction: TextDirection::Auto,

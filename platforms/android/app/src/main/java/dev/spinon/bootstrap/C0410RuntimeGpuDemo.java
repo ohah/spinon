@@ -195,6 +195,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final String wordBreak;
         final double letterSpacing;
         final double wordSpacing;
+        final double textIndent;
         final double[] lineAdvances;
 
         C114GenericDirectTextItemExpectation(
@@ -248,6 +249,23 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 String rawText, String layoutText, String whiteSpace, String wordBreak,
                 double letterSpacing, double wordSpacing, double[] lineAdvances
         ) {
+            this(node, x, width, height, availableWidth, textWidth,
+                    paddingInline, paddingBlock, borderWidth,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak,
+                    letterSpacing, wordSpacing, 0, lineAdvances);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double letterSpacing, double wordSpacing, double textIndent,
+                double[] lineAdvances
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
@@ -267,6 +285,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.wordBreak = wordBreak;
             this.letterSpacing = letterSpacing;
             this.wordSpacing = wordSpacing;
+            this.textIndent = textIndent;
             this.lineAdvances = lineAdvances;
         }
     }
@@ -397,6 +416,27 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             wordSpacing[0], advances);
             return new C114GenericDirectTextSceneExpectation(
                     120, wordSpacing[4], new double[] {wordSpacing[3]}, item, null);
+        }
+        double[] textIndent = c114ComputedTextIndentScene(sceneId);
+        if (textIndent != null) {
+            boolean singleWord = sceneId.contains("-single-word-");
+            boolean collapsed = sceneId.contains("-collapsed-three-words-");
+            boolean minContentTrack = sceneId.endsWith("-min-content");
+            String rawText = singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX");
+            String layoutText = singleWord ? "XX" : (collapsed ? "XX XX XX" : "XX XX");
+            double[] advances = new double[(int) textIndent[5]];
+            for (int index = 0; index < advances.length; index++) {
+                advances[index] = textIndent[7];
+            }
+            C114GenericDirectTextItemExpectation item =
+                    new C114GenericDirectTextItemExpectation(
+                            2, 0, textIndent[3], textIndent[4],
+                            textIndent[3], textIndent[7], 0, 0, 0,
+                            textIndent[1], textIndent[2], textIndent[6], 10,
+                            rawText, layoutText, "Normal", "Normal", 0, 0,
+                            textIndent[0], advances);
+            return new C114GenericDirectTextSceneExpectation(
+                    120, textIndent[4], new double[] {textIndent[3]}, item, null);
         }
         C114GenericDirectTextSceneExpectation definiteAxisExpectation =
                 c114GenericDirectTextDefiniteAxisExpectation(sceneId);
@@ -1530,6 +1570,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "named-line-auto-rows".equals(sceneId) ? 22 : 5;
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (c114ComputedTextIndentScene(sceneId) != null) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (c114IsComputedWordSpacingScene(sceneId)) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -7669,6 +7712,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && "Ltr".equals(c114GenericJsonString(style, "direction"))
                 && c114GenericJsonNear(style, "letterSpacing", expected.letterSpacing, 0)
                 && c114GenericJsonNear(style, "wordSpacing", expected.wordSpacing, 0)
+                && c114GenericJsonNear(style, "textIndent", expected.textIndent, 0)
                 && "HorizontalTb".equals(c114GenericJsonString(style, "writingMode"))
                 && "Mixed".equals(c114GenericJsonString(style, "textOrientation"))
                 && "Strict".equals(c114GenericJsonString(style, "lineBreak"))
@@ -9412,6 +9456,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        double[] textIndent = c114ComputedTextIndentScene(sceneId);
+        if (textIndent != null) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
+                    + c114GenericFrameNumber(textIndent[4]) + "]";
+        }
         double[] letterSpacing = c114ComputedLetterSpacingScene(sceneId);
         if (letterSpacing != null) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
@@ -12147,6 +12196,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114ComputedTextIndentScene(sceneId) != null) return 1;
         if (c114IsComputedWordSpacingScene(sceneId)) return 1;
         if (c114IsComputedLetterSpacingScene(sceneId)) return 1;
         if (c114IsComputedFontSizeScene(sceneId)) return 1;
@@ -12400,6 +12450,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsAnonymousTextScene(String sceneId) {
         return c114IsComputedWordSpacingScene(sceneId)
+                || c114ComputedTextIndentScene(sceneId) != null
                 || c114IsComputedLetterSpacingScene(sceneId)
                 || c114IsComputedFontSizeScene(sceneId)
                 || c114IsComputedLineHeightScene(sceneId)
@@ -12430,6 +12481,40 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114IsComputedWordSpacingScene(String sceneId) {
         return c114ComputedWordSpacingScene(sceneId) != null;
+    }
+
+    // [text-indent px, min-content px, max-content px, track width px, row height px,
+    // line count, min-content row height, unindented line advance px]
+    private static double[] c114ComputedTextIndentScene(String sceneId) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null
+                || !sceneId.startsWith("text-indent-")) return null;
+        double textIndent;
+        if (sceneId.startsWith("text-indent-zero-")) {
+            textIndent = 0;
+        } else if (sceneId.startsWith("text-indent-five-")) {
+            textIndent = 5;
+        } else if (sceneId.startsWith("text-indent-ten-")) {
+            textIndent = 10;
+        } else {
+            return null;
+        }
+        boolean singleWord = sceneId.contains("-single-word-");
+        boolean collapsedThreeWords = sceneId.contains("-collapsed-three-words-");
+        if (!singleWord && !collapsedThreeWords && !sceneId.contains("-two-words-")) return null;
+        boolean minContentTrack = sceneId.endsWith("-min-content");
+        if (!minContentTrack && !sceneId.endsWith("-max-content")) return null;
+        double minContent = 20 + textIndent;
+        double maxContent = singleWord ? 20 + textIndent
+                : collapsedThreeWords ? 80 + textIndent : 50 + textIndent;
+        double trackWidth = minContentTrack ? minContent : maxContent;
+        double minContentHeight = singleWord ? 10 : collapsedThreeWords ? 30 : 20;
+        double rowHeight = minContentTrack ? minContentHeight : 10;
+        double lineAdvance = minContentTrack ? 20
+                : singleWord ? 20 : collapsedThreeWords ? 80 : 50;
+        return new double[] {
+                textIndent, minContent, maxContent, trackWidth, rowHeight,
+                rowHeight == 10 ? 1 : (int) (rowHeight / 10), minContentHeight, lineAdvance,
+        };
     }
 
     // [word spacing px, min-content px, max-content px, track width px, row height px, line count, min-content row height]

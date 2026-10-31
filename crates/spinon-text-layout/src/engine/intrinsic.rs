@@ -1,7 +1,7 @@
 use std::collections::BTreeMap;
 
 use parley::{
-    BaseDirection,
+    BaseDirection, IndentOptions,
     layout::PositionedLayoutItem,
     style::{
         FontFeatures, FontWeight as ParleyFontWeight, LineHeight, OverflowWrap, StyleProperty,
@@ -80,13 +80,19 @@ impl TextLayoutEngine {
             ));
         }
         let letter_spacing = input.style.letter_spacing;
+        let text_indent = input.style.text_indent;
         if matches!(input.style.white_space, WhiteSpaceMode::PreWithTabSize(_)) {
             layout.break_all_lines(None);
         } else {
             layout.break_all_lines(Some(0.0));
         }
-        let min_content_inline =
-            min_content_inline_advance(&layout, &inline_boundaries, input.node, letter_spacing)?;
+        let min_content_inline = min_content_inline_advance(
+            &layout,
+            &inline_boundaries,
+            input.node,
+            letter_spacing,
+            text_indent,
+        )?;
         let min_content_block = if input.style.white_space == WhiteSpaceMode::BreakSpaces {
             // break-spaces does not hang preserved end-of-line spaces. Reflow at the
             // computed min-content inline size so block size reflects those retained spaces.
@@ -98,7 +104,7 @@ impl TextLayoutEngine {
         let min_content = (min_content_inline, min_content_block);
         layout.break_all_lines(None);
         let max_content = (
-            max_content_inline_advance(&layout, input.node, letter_spacing)?,
+            max_content_inline_advance(&layout, input.node, letter_spacing, text_indent)?,
             layout.height(),
         );
         if !min_content.0.is_finite()
@@ -258,7 +264,8 @@ impl TextLayoutEngine {
         for inline_box in inline_boxes {
             builder.push_inline_box(inline_box);
         }
-        let layout = builder.build(&normalized.text);
+        let mut layout = builder.build(&normalized.text);
+        layout.set_text_indent(input.style.text_indent, IndentOptions::default());
         Ok(BuiltParleyLayout {
             normalized,
             inline_boundaries,
@@ -282,6 +289,7 @@ fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
         && input.inline_run_styles.is_empty()
         && style.font_family == "Ahem"
         && style.font_size == 10.0
+        && style.text_indent == 0.0
         && style.line_height == 10.0
         && !style.line_height_is_normal
         && style.font_weight == 400.0
@@ -301,9 +309,10 @@ fn min_content_inline_advance(
     inline_boundaries: &BTreeMap<u64, inline_boxes::InlineBoundary>,
     paragraph: NodeId,
     letter_spacing: f32,
+    text_indent: f32,
 ) -> Result<f32, TextLayoutError> {
     let mut lines = Vec::with_capacity(layout.len());
-    for line in layout.lines() {
+    for (line_index, line) in layout.lines().enumerate() {
         let metrics = line.metrics();
         let mut inline_width = 0.0;
         for item in line.items() {
@@ -317,9 +326,11 @@ fn min_content_inline_advance(
                 inline_width += positioned.width;
             }
         }
-        let advance =
-            super::letter_spacing::visible_line_advance(metrics, letter_spacing) - inline_width;
-        if !advance.is_finite() || advance < 0.0 {
+        let first_line_indent = if line_index == 0 { text_indent } else { 0.0 };
+        let advance = super::letter_spacing::visible_line_advance(metrics, letter_spacing)
+            - inline_width
+            + first_line_indent;
+        if !advance.is_finite() {
             return Err(TextLayoutError::InvalidGlyphLayout(paragraph));
         }
         lines.push((line.text_range(), advance));
@@ -349,22 +360,28 @@ fn min_content_inline_advance(
             return Err(TextLayoutError::InvalidGlyphLayout(paragraph));
         }
     }
-    Ok(line_advances.into_iter().fold(0.0_f32, f32::max))
+    Ok(line_advances
+        .into_iter()
+        .map(|advance| advance.max(0.0))
+        .fold(0.0_f32, f32::max))
 }
 
 fn max_content_inline_advance(
     layout: &parley::Layout<[u8; 4]>,
     paragraph: NodeId,
     letter_spacing: f32,
+    text_indent: f32,
 ) -> Result<f32, TextLayoutError> {
     let mut max_advance = 0.0_f32;
-    for line in layout.lines() {
+    for (line_index, line) in layout.lines().enumerate() {
         let metrics = line.metrics();
-        let advance = super::letter_spacing::visible_line_advance(metrics, letter_spacing);
-        if !advance.is_finite() || advance < 0.0 {
+        let first_line_indent = if line_index == 0 { text_indent } else { 0.0 };
+        let advance = super::letter_spacing::visible_line_advance(metrics, letter_spacing)
+            + first_line_indent;
+        if !advance.is_finite() {
             return Err(TextLayoutError::InvalidGlyphLayout(paragraph));
         }
-        max_advance = max_advance.max(advance);
+        max_advance = max_advance.max(advance.max(0.0));
     }
     Ok(max_advance)
 }
