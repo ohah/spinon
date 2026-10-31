@@ -37,7 +37,7 @@ iOS 화면은 fixture app route와 layout 상태만 보여준다. Glyph paint는
 | `fixture-module-boundary.test.mjs` | 24/24 pass |
 | `bun run docs:build` | fail: 저장소 전체 1,131개 문서에서 dead link가 보고됐다. 이번 line-height plan/fixture/runtime evidence 링크는 보고되지 않았다. [결과 요약](https://github.com/ohah/spinon/blob/feat/c11-4-anonymous-grid-text-computed-line-height/spec/internal/evidence/c11-4-anonymous-grid-text-computed-line-height-runtime-2026-10-31/builds/docs-build-summary.md)에 기록했다. |
 
-Rust 검사 로그와 최종 Android/iOS 앱 빌드 로그는 `builds/`에 있다. 별도 [구현/runtime 실패 관점 20개](implementation-runtime-review-20.md) 및 [PR diff 실패 관점 30개](pr-diff-review-30.md) 검토는 계획 검토와 분리했다. 구현 검토에서는 scene에 맞지 않는 computed serialization을 받아들이는 validator 결함을 찾아 수정했다. PR diff 검토에서는 trace 중복 조각 거부와 전체 intrinsic/frame 검사 누락을 찾아 capture runner를 보강한 뒤 최신 Android/iOS 행렬을 다시 실행했다.
+Rust 검사 로그와 최종 Android/iOS 앱 빌드 로그는 `builds/`에 있다. 별도 [구현/runtime 실패 관점 20개](implementation-runtime-review-20.md) 및 [PR diff 실패 관점 30개](pr-diff-review-30.md) 검토는 계획 검토와 분리했다. 병합 뒤 plan/contract/status 일치는 별도 [post-merge 상태 검토 30개](post-merge-status-review-30.md)에 기록했다. 구현 검토에서는 scene에 맞지 않는 computed serialization을 받아들이는 validator 결함을 찾아 수정했다. PR diff 검토에서는 trace 중복 조각 거부와 전체 intrinsic/frame 검사 누락을 찾아 capture runner를 보강한 뒤 최신 Android/iOS 행렬을 다시 실행했다.
 
 ## Static archive feature boundary
 
