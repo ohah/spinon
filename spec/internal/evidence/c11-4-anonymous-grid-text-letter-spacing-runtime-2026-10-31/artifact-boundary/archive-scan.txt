@@ -1,0 +1,9 @@
+fixture-test release archive
+  bytes=81269096
+  sha256=33742f09c26f30f8b93b1add351720b9c11d312ad912dbf1aaf34e443a930410
+  opt-in scene payloads present=16/16
+  unlisted negative-control payload present=false
+default release archive
+  bytes=60305776
+  sha256=b6ed5b7baeb82c57c9e43877517ab71430cac8a00ac4881a2344e60a673539c3
+  opt-in scene payloads present=0/16

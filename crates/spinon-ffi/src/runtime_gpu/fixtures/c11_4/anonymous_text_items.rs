@@ -1,5 +1,7 @@
 #[path = "anonymous_text_items/computed_font_size.rs"]
 mod computed_font_size;
+#[path = "anonymous_text_items/computed_letter_spacing.rs"]
+mod computed_letter_spacing;
 #[path = "anonymous_text_items/computed_line_height.rs"]
 mod computed_line_height;
 
@@ -113,6 +115,9 @@ pub(super) fn runtime_source(scene_id: &str) -> Option<String> {
         return Some(source);
     }
     if let Some(source) = computed_line_height::runtime_source(scene_id) {
+        return Some(source);
+    }
+    if let Some(source) = computed_letter_spacing::runtime_source(scene_id) {
         return Some(source);
     }
     if let Some((value_index, case_index)) = full_tab_scene(scene_id) {

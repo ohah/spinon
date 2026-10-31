@@ -163,6 +163,8 @@ pub struct ParagraphStyle {
     pub line_height_is_normal: bool,
     pub font_weight: f32,
     pub font_style: FontStyleMode,
+    /// 제한 text profile에서 사용하는 computed CSS `letter-spacing` (CSS px)입니다.
+    pub letter_spacing: f32,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
     pub direction: TextDirection,
@@ -192,6 +194,9 @@ impl ParagraphStyle {
         if !self.font_style.is_valid() {
             return Err("font-style");
         }
+        if !self.letter_spacing.is_finite() {
+            return Err("letter-spacing");
+        }
         if let WhiteSpaceMode::PreWithTabSize(tab_size) = self.white_space
             && !tab_size.is_valid()
         {
@@ -210,6 +215,7 @@ impl Default for ParagraphStyle {
             line_height_is_normal: false,
             font_weight: 400.0,
             font_style: FontStyleMode::Normal,
+            letter_spacing: 0.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
             direction: TextDirection::Auto,

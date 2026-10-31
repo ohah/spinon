@@ -1,0 +1,17 @@
+scene	result	letter_spacing_px	track	line_count	grid_column_px	grid_row_px	trace_parts
+anonymous-letter-spacing-normal-min-content	PASS	0	min-content	2	20	20	7
+anonymous-letter-spacing-normal-max-content	PASS	0	max-content	1	50	10	7
+anonymous-letter-spacing-minus-one-min-content	PASS	-1	min-content	2	19	20	7
+anonymous-letter-spacing-minus-one-max-content	PASS	-1	max-content	1	46	10	7
+anonymous-letter-spacing-zero-min-content	PASS	0	min-content	2	20	20	7
+anonymous-letter-spacing-zero-max-content	PASS	0	max-content	1	50	10	7
+anonymous-letter-spacing-half-min-content	PASS	0.5	min-content	2	20.5	20	7
+anonymous-letter-spacing-half-max-content	PASS	0.5	max-content	1	52	10	7
+anonymous-letter-spacing-one-min-content	PASS	1	min-content	2	21	20	7
+anonymous-letter-spacing-one-max-content	PASS	1	max-content	1	54	10	7
+anonymous-letter-spacing-two-min-content	PASS	2	min-content	2	22	20	7
+anonymous-letter-spacing-two-max-content	PASS	2	max-content	1	58	10	7
+anonymous-letter-spacing-minus-one-single-min-content	PASS	-1	min-content	1	19	10	7
+anonymous-letter-spacing-minus-one-single-max-content	PASS	-1	max-content	1	19	10	7
+anonymous-letter-spacing-one-single-min-content	PASS	1	min-content	1	21	10	7
+anonymous-letter-spacing-one-single-max-content	PASS	1	max-content	1	21	10	7

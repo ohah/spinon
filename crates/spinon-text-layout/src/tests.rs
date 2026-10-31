@@ -193,6 +193,62 @@ fn ahem_intrinsic_inline_sizes_follow_normal_break_all_and_nowrap_oracles() {
 }
 
 #[test]
+fn ahem_letter_spacing_uses_adjacent_units_and_suppresses_line_edges() {
+    let mut engine = engine();
+    let cases = [
+        ("normal", 0.0, 20.0, 20.0, 50.0),
+        ("negative", -1.0, 19.0, 19.0, 46.0),
+        ("fractional", 0.5, 20.5, 20.5, 52.0),
+        ("positive", 1.0, 21.0, 21.0, 54.0),
+        ("wide", 2.0, 22.0, 22.0, 58.0),
+    ];
+
+    for (name, spacing, word_width, min_content, max_content) in cases {
+        let mut word = paragraph(
+            "XX",
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        word.style.letter_spacing = spacing;
+        let word_sizes = engine.intrinsic_inline_sizes(&word).unwrap();
+        close_to(word_sizes.min_content(), word_width);
+        close_to(word_sizes.max_content(), word_width);
+        let word_layout = engine.layout_paragraph(&word, word_width).unwrap();
+        assert_eq!(word_layout.lines.len(), 1, "{name} single-word line count");
+        close_to(word_layout.lines[0].advance, word_width);
+        close_to(word_layout.width, word_width);
+
+        let mut two_words = paragraph(
+            "XX XX",
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        two_words.style.letter_spacing = spacing;
+        let sizes = engine.intrinsic_inline_sizes(&two_words).unwrap();
+        close_to(sizes.min_content(), min_content);
+        close_to(sizes.max_content(), max_content);
+
+        let min_layout = engine.layout_paragraph(&two_words, min_content).unwrap();
+        assert_eq!(min_layout.lines.len(), 2, "{name} min-content line count");
+        assert!(
+            min_layout
+                .lines
+                .iter()
+                .all(|line| (line.advance - word_width).abs() < 0.02)
+        );
+        let max_layout = engine.layout_paragraph(&two_words, max_content).unwrap();
+        assert_eq!(max_layout.lines.len(), 1, "{name} max-content line count");
+        close_to(max_layout.width, max_content);
+    }
+}
+
+#[test]
 fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
     let mut engine = engine();
     let cases = [

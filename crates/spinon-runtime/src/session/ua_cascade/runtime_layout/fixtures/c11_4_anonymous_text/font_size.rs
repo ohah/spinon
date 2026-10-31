@@ -73,6 +73,7 @@ fn expected_font_size(scene_id: &str) -> Option<f32> {
         "font-size-20-min-content" | "font-size-20-max-content" => Some(20.0),
         _ if super::SCENE_IDS.contains(&scene_id)
             || super::LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
+            || super::LETTER_SPACING_SCENE_IDS.contains(&scene_id)
             || super::full_tab_scene(scene_id).is_some() =>
         {
             Some(10.0)

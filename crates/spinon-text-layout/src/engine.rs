@@ -12,10 +12,12 @@ mod fonts;
 mod glyphs;
 mod inline_boxes;
 mod intrinsic;
+mod letter_spacing;
 mod raster;
 mod run_styles;
 
 use glyphs::positioned_glyphs_with_sources;
+use letter_spacing::visible_line_advance;
 
 use crate::{
     FontMetricsSnapshot, FontRegistryRevision, InlineFragment, ParagraphInput, TextLayoutError,
@@ -117,13 +119,19 @@ impl TextLayoutEngine {
                 inline_fragments: Vec::new(),
             });
         }
-        let line_break_width = if input.style.white_space == crate::WhiteSpaceMode::BreakSpaces {
+        let css_line_break_width = if input.style.white_space == crate::WhiteSpaceMode::BreakSpaces
+        {
             self.intrinsic_inline_sizes(input)?
                 .min_content()
                 .max(available_width)
         } else {
             available_width
         };
+        let line_break_width = css_line_break_width + input.style.letter_spacing;
+        if !line_break_width.is_finite() {
+            return Err(TextLayoutError::InvalidWidth);
+        }
+        let line_break_width = line_break_width.max(0.0);
         if matches!(
             input.style.white_space,
             crate::WhiteSpaceMode::PreWithTabSize(_)
@@ -144,7 +152,7 @@ impl TextLayoutEngine {
         for (line_index, line) in layout.lines().enumerate() {
             let metrics = line.metrics();
             let text_range = line.text_range();
-            let visible_line_advance = metrics.advance - metrics.hanging_advance;
+            let visible_line_advance = visible_line_advance(metrics, input.style.letter_spacing);
             if !valid_text_range(&text_range, &normalized.text)
                 || ![
                     metrics.advance,

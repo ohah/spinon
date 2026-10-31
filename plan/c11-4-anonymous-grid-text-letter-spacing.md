@@ -2,13 +2,13 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 intrinsic track sizing](./c11-4-grid-track-sizing.md) · [CSS 적합성 계약](../spec/0001-conformance.md)
 
-**상태:** Chrome 156 사전 관찰과 CSS Text Level 3 독립 기대값을 고정했다. 구현 전 계획 검토는 [20개 실패 관점](./c11-4-anonymous-grid-text-letter-spacing-plan-review-20.md)에 기록한다. 구현은 이 계획의 승인·병합 이후 시작한다.
+**상태:** 계획 PR #919 병합 뒤 제한 구현 diff를 검토했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator의 16-scene runtime matrix가 각각 통과했고, 기본/fixture release static archive에서 신규 adapter·validator symbol과 16개 scene payload 경계를 확인했다. focused 회귀 검사, 구현/runtime 실패 관점 20개와 PR diff 30개 검토를 마쳤다. 구현 PR 생성·checks·merge는 남아 있으며 C11.4/C11 공식 완료 수는 올리지 않았다. 사전 비교와 구현 전 계획 검토는 각각 [비교 근거](../spec/internal/evidence/c11-4-anonymous-grid-text-letter-spacing-precomparison-2026-10-31/README.md), [20개 실패 관점](./c11-4-anonymous-grid-text-letter-spacing-plan-review-20.md)에 둔다.
 
 ## 목적과 경계
 
 현재 anonymous Grid text runtime fixture는 computed `letter-spacing: normal`만 허용하고 `ParagraphStyle`에는 해당 입력이 없다. 따라서 cascade 결과가 `Parley` text layout에 도달하지 않는다. 이 작업은 제한된 anonymous direct-text Grid profile에 computed px letter spacing을 전달하고 intrinsic min/max-content track 기여에 반영한다.
 
-범위는 기존 opt-in C11.4 anonymous-text runtime profile로 제한한다: direct anonymous Grid text, Ahem 10px, font-weight 400, horizontal-tb, LTR, 기존 `white-space:normal`·`word-break:normal`, ASCII `X`와 collapsed U+0020만 사용한다. 지원값은 computed `normal`과 -2px 이상 2px 이하의 finite absolute px length로 고정한다. `normal`과 `0px`은 같은 0 입력이다.
+범위는 기존 opt-in C11.4 anonymous-text runtime profile로 제한한다: direct anonymous Grid text, Ahem 10px, font-weight 400, horizontal-tb, LTR, 기존 `white-space:normal`·`word-break:normal`, ASCII `X`와 collapsed U+0020만 사용한다. 고정 16-scene runtime allowlist는 computed `normal`, -1px, 0px(Stylo에서는 `normal`로 직렬화), 0.5px, 1px, 2px를 검사한다. 숫자 parser의 안전 범위는 -2px 이상 2px 이하로 두되 -2px scene은 allowlist에 없으므로 runtime 입력으로 허용하지 않는다. `normal`과 `0px`은 같은 0 입력이다.
 
 일반 authored CSS admission, 공개 API/ABI, arbitrary fonts, inline spans, bidi, vertical writing, percentage/relative units, `calc()`, letter-spacing의 다른 formatting context 적용, WPT 적합성 또는 C11/C11.4 완료 승격은 포함하지 않는다. 기존의 다른 runtime profile은 계속 `letter-spacing:normal`만 받는다. 기본 제품 artifact에서 fixture code·symbol·payload가 노출되지 않아야 한다.
 
@@ -28,11 +28,13 @@
 
 Chrome 156은 같은 입력에서 각각 18/18/45, 21/21/52.5, 22/22/55, 24/24/60을 관찰했다. 일반 `width:max-content` block 대조도 동일한 두 글자 폭을 보였다. 이 차이는 Chrome 관측값으로 기록하고 규범 기대값으로 대체하지 않는다. 구현 PR과 사용자 설명에는 Chrome 156과의 이 차이를 명시하며 Chrome parity를 주장하지 않는다.
 
+구현 중 확인한 Stylo 동작: `RuntimeBlockFlexGridTrackSizingV1`의 `ComputedElementStyle.properties["letter-spacing"]` 직렬화는 authored `0px`를 `normal`로 반환한다. runtime은 이를 0 CSS px로 해석하고 normal·0px 두 source scene을 같은 computed 결과와 기대 폭으로 검증한다. fixture source 생성 테스트는 authored serialization을 별도로 확인한다. 이 관찰은 Stylo snapshot 계약에 한정하며 CSSOM의 일반 computed-style 직렬화를 주장하지 않는다.
+
 ## 계획된 변경
 
 1. `ParagraphStyle`에 기본값 0인 letter-spacing px 입력을 추가한다. `validate`는 finite 값을 요구한다. 모든 기존 style initializer를 명시적으로 0으로 유지해 현재 동작을 바꾸지 않는다.
 2. `TextLayoutEngine::build_parley_layout`은 입력값을 고정된 Parley 0.12.0의 `StyleProperty::LetterSpacing`에 전달한다. Parley의 atom spacing만으로 CSS 줄 끝 억제를 충족한다고 가정하지 않는다.
-3. anonymous Grid text adapter는 정확한 root node와 같은 `ComputedStyleSnapshot` revision에서 computed `letter-spacing`을 읽는다. `normal`은 0px로, finite `px` serialization은 지정 범위에서 f32 CSS px로 변환한다. 다른 단위, parse overflow, NaN/Infinity, 범위 초과 및 잘못된 node/revision은 layout publication 전 fail closed한다.
+3. anonymous Grid text adapter는 정확한 root node와 같은 `ComputedStyleSnapshot` revision에서 computed `letter-spacing`을 읽는다. `normal`은 0px로, finite `px` serialization은 지정 범위에서 f32 CSS px로 변환한다. 현재 Stylo snapshot은 authored `0px`도 `normal`로 직렬화하므로 두 입력을 동등한 computed 값으로 검사한다. 다른 단위, parse overflow, NaN/Infinity, 범위 초과 및 잘못된 node/revision은 layout publication 전 fail closed한다.
 4. intrinsic layout에서 각 비어 있지 않은 line의 trailing atom spacing을 한 번 제거해 CSS Text의 줄 끝 flush 규칙을 적용한다. min-content는 줄별 보정 후 가장 넓은 line, max-content는 무제한 폭에서 계산한 각 line의 보정 폭 중 가장 큰 값을 사용한다. inline-box contribution·hanging whitespace를 letter-spacing 보정으로 잘못 빼지 않으며, 빈 line과 forced break의 block-size 계산은 유지한다. 필요하다면 helper를 분리해 line advance와 line-edge 보정을 한 곳에서 검증한다.
 5. Text-layout unit tests는 한 단어 `XX`의 min/max와 두 단어 `XX XX`의 min/max를 위 16-case oracle에 대조한다. 별도 controls는 normal/0px 동일성, 음수 폭이 0 아래로 내려가지 않음, fractional px, 줄바꿈 후 각 line의 끝 억제, 모든 기존 zero-spacing 회귀를 확인한다.
 6. Runtime fixture는 computed style serialization, root identity/revision, 정확한 direct-text shape, min/max-content contribution, Grid track, node frame과 unsupported-input rejection을 확인한다. CSS oracle 16 scenes를 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS Simulator에서 각각 실행하고 캡처한다. simulator surface pixel 검증은 track/frame 증거와 분리하며 실제 기기나 hardware GPU 증거로 표시하지 않는다.

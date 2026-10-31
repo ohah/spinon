@@ -586,6 +586,7 @@ fn rasterize_fixture_text(
             direction: TextDirection::Auto,
             line_break: LineBreakMode::Strict,
             ligatures: LigatureMode::Normal,
+            letter_spacing: 0.0,
         },
         inline_styles: Default::default(),
         inline_run_styles: Default::default(),

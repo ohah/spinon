@@ -446,5 +446,6 @@ fn ahem_paragraph_style(font_size: f32) -> ParagraphStyle {
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
+        letter_spacing: 0.0,
     }
 }

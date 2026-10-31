@@ -141,6 +141,7 @@ pub(super) fn prepare(
                 direction: TextParagraphDirection::Ltr,
                 line_break: LineBreakMode::Strict,
                 ligatures: LigatureMode::Normal,
+                letter_spacing: 0.0,
             },
         )]),
         engine,
