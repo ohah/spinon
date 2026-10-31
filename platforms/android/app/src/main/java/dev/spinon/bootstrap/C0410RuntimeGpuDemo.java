@@ -178,6 +178,39 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "grid-text-aspect-ratio-definite-height-ratio",
             "grid-text-aspect-ratio-definite-height-control",
     };
+    private static final class C114ComputedWordBreakScene {
+        final String text;
+        final String language;
+        final String fontFamily;
+        final String wordBreak;
+        final double minContent;
+        final double maxContent;
+        final double minContentHeight;
+        final double maxContentHeight;
+        final double trackWidth;
+        final double rowHeight;
+        final double[] lineAdvances;
+
+        C114ComputedWordBreakScene(
+                String text, String language, String fontFamily, String wordBreak,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                boolean minContentTrack, double[] lineAdvances
+        ) {
+            this.text = text;
+            this.language = language;
+            this.fontFamily = fontFamily;
+            this.wordBreak = wordBreak;
+            this.minContent = minContent;
+            this.maxContent = maxContent;
+            this.minContentHeight = minContentHeight;
+            this.maxContentHeight = maxContentHeight;
+            this.trackWidth = minContentTrack ? minContent : maxContent;
+            this.rowHeight = minContentTrack ? minContentHeight : maxContentHeight;
+            this.lineAdvances = lineAdvances;
+        }
+    }
+
     private static final class C114GenericDirectTextItemExpectation {
         final int node;
         final double x;
@@ -196,6 +229,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final String layoutText;
         final String whiteSpace;
         final String wordBreak;
+        final String fontFamily;
+        final String locale;
         final double letterSpacing;
         final double wordSpacing;
         final double textIndent;
@@ -269,6 +304,23 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 double letterSpacing, double wordSpacing, double textIndent,
                 double[] lineAdvances
         ) {
+            this(node, x, width, height, availableWidth, textWidth,
+                    paddingInline, paddingBlock, borderWidth,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak,
+                    letterSpacing, wordSpacing, textIndent, "Ahem", null, lineAdvances);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double letterSpacing, double wordSpacing, double textIndent,
+                String fontFamily, String locale, double[] lineAdvances
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
@@ -286,6 +338,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.layoutText = layoutText;
             this.whiteSpace = whiteSpace;
             this.wordBreak = wordBreak;
+            this.fontFamily = fontFamily;
+            this.locale = locale;
             this.letterSpacing = letterSpacing;
             this.wordSpacing = wordSpacing;
             this.textIndent = textIndent;
@@ -419,6 +473,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                             wordSpacing[0], advances);
             return new C114GenericDirectTextSceneExpectation(
                     120, wordSpacing[4], new double[] {wordSpacing[3]}, item, null);
+        }
+        C114ComputedWordBreakScene wordBreak = c114ComputedWordBreakScene(sceneId);
+        if (wordBreak != null) {
+            C114GenericDirectTextItemExpectation item =
+                    new C114GenericDirectTextItemExpectation(
+                            2, 0, wordBreak.trackWidth, wordBreak.rowHeight,
+                            wordBreak.trackWidth, wordBreak.trackWidth,
+                            0, 0, 0, wordBreak.minContent, wordBreak.maxContent,
+                            wordBreak.minContentHeight, wordBreak.maxContentHeight,
+                            wordBreak.text, wordBreak.text, "Normal", wordBreak.wordBreak,
+                            0, 0, 0, wordBreak.fontFamily, wordBreak.language,
+                            wordBreak.lineAdvances);
+            return new C114GenericDirectTextSceneExpectation(
+                    120, wordBreak.rowHeight, new double[] {wordBreak.trackWidth}, item, null);
         }
         double[] textIndent = c114ComputedTextIndentScene(sceneId);
         if (textIndent != null) {
@@ -1597,6 +1665,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return "named-line-pair-rows-multi-track".equals(sceneId) ? 45 : 5;
     }
     static boolean isC114GridTrackSizingScene(String sceneId) {
+        if (c114ComputedWordBreakScene(sceneId) != null) {
+            return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
+        }
         if (c114ComputedTextIndentScene(sceneId) != null) {
             return BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST;
         }
@@ -5825,6 +5896,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
 
     private static boolean c114ExpectedTextIntrinsicInputs(String sceneId, String report) {
         sceneId = c114BaseNestedGridSceneId(sceneId);
+        if (c114ComputedWordBreakScene(sceneId) != null) {
+            return c114GenericDirectTextIntrinsicInputsMatch(sceneId, report);
+        }
         if (c114IsComputedLetterSpacingScene(sceneId)) {
             return c114ComputedLetterSpacingTextIntrinsicInputsMatch(sceneId, report);
         }
@@ -7315,7 +7389,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                         || textSources == null
                         || textSources.length() != (anonymousTextScene ? 1 : 0) || source == null
                         || !"text".equals(c114GenericJsonString(source, "kind"))
-                        || !Integer.valueOf(1).equals(
+                        || !Integer.valueOf(c114GenericExpectedFontRegistryRevision(expected)).equals(
                                 c114GenericJsonInteger(source, "fontRegistryRevision"))
                         || !c114GenericJsonNear(
                                 source, "minContent", expected.minContent, 1.0 / 64.0)
@@ -7372,7 +7446,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 Double measuredHeight = c114GenericJsonFiniteNumber(contentSize, "height");
                 if (expectedIndex < 0 || source == null
                         || !"text".equals(c114GenericJsonString(source, "kind"))
-                        || !Integer.valueOf(1).equals(
+                        || !Integer.valueOf(c114GenericExpectedFontRegistryRevision(
+                                scene.items[expectedIndex])).equals(
                                 c114GenericJsonInteger(source, "fontRegistryRevision"))
                         || availableSpace == null
                         || measuredWidth == null || measuredWidth < 0.0
@@ -7676,7 +7751,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     || !c114GenericTextLayoutRevisionMatches(revision, layoutRevision)
                     || sources == null || sources.length() != 1
                     || !c114GenericJsonNear(
-                            layout, "fontRegistryRevision", 1, 0)
+                            layout, "fontRegistryRevision",
+                            c114GenericExpectedFontRegistryRevision(expected), 0)
                     || !c114GenericJsonNear(
                             layout, "availableWidth", expected.availableWidth, 1.0 / 64.0)
                     || !c114GenericJsonNear(layout, "width", expectedTextWidth, 1.0 / 64.0)
@@ -7728,7 +7804,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             org.json.JSONObject style, C114GenericDirectTextItemExpectation expected
     ) {
         return style != null
-                && "Ahem".equals(c114GenericJsonString(style, "fontFamily"))
+                && expected.fontFamily.equals(c114GenericJsonString(style, "fontFamily"))
+                && Objects.equals(expected.locale, c114GenericJsonString(style, "locale"))
                 && c114GenericJsonNear(style, "fontSize", 10, 0)
                 && c114GenericJsonNear(style, "lineHeight", 10, 0)
                 && Boolean.FALSE.equals(c114GenericJsonBoolean(style, "lineHeightIsNormal"))
@@ -7744,6 +7821,12 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && "Mixed".equals(c114GenericJsonString(style, "textOrientation"))
                 && "Strict".equals(c114GenericJsonString(style, "lineBreak"))
                 && "Normal".equals(c114GenericJsonString(style, "ligatures"));
+    }
+
+    private static int c114GenericExpectedFontRegistryRevision(
+            C114GenericDirectTextItemExpectation expected
+    ) {
+        return "Noto Sans KR".equals(expected.fontFamily) ? 2 : 1;
     }
 
     private static Integer c114GenericJsonInteger(org.json.JSONObject object, String key) {
@@ -9483,6 +9566,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         return false;
     }
     private static String c114ExpectedNodeFrames(String sceneId) {
+        C114ComputedWordBreakScene wordBreak = c114ComputedWordBreakScene(sceneId);
+        if (wordBreak != null) {
+            return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
+                    + c114GenericFrameNumber(wordBreak.rowHeight) + "]";
+        }
         double[] textIndent = c114ComputedTextIndentScene(sceneId);
         if (textIndent != null) {
             return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,height="
@@ -12223,6 +12311,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static int c114ExpectedBoxCount(String sceneId) {
+        if (c114ComputedWordBreakScene(sceneId) != null) return 1;
         if (c114ComputedTextIndentScene(sceneId) != null) return 1;
         if (c114IsComputedWordSpacingScene(sceneId)) return 1;
         if (c114IsComputedLetterSpacingScene(sceneId)) return 1;
@@ -12476,7 +12565,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
     }
 
     private static boolean c114IsAnonymousTextScene(String sceneId) {
-        return c114IsComputedWordSpacingScene(sceneId)
+        return c114ComputedWordBreakScene(sceneId) != null
+                || c114IsComputedWordSpacingScene(sceneId)
                 || c114ComputedTextIndentScene(sceneId) != null
                 || c114IsComputedLetterSpacingScene(sceneId)
                 || c114IsComputedFontSizeScene(sceneId)
@@ -12557,6 +12647,50 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 firstLineAdvance,
                 secondLineAdvance, lineAdvance,
         };
+    }
+
+    private static C114ComputedWordBreakScene c114ComputedWordBreakScene(String sceneId) {
+        if (!BuildConfig.SPINON_C04_RUNTIME_GPU_FIXTURE_TEST || sceneId == null) return null;
+        boolean minContentTrack = sceneId.endsWith("-min-content");
+        switch (sceneId) {
+            case "word-break-normal-unbroken-min-content":
+            case "word-break-normal-unbroken-max-content":
+                return new C114ComputedWordBreakScene("XXXX", "en", "Ahem", "Normal",
+                        40, 40, 10, 10, minContentTrack, new double[] {40});
+            case "word-break-break-all-unbroken-min-content":
+                return new C114ComputedWordBreakScene("XXXX", "en", "Ahem", "BreakAll",
+                        10, 40, 40, 10, true, new double[] {10, 10, 10, 10});
+            case "word-break-break-all-unbroken-max-content":
+                return new C114ComputedWordBreakScene("XXXX", "en", "Ahem", "BreakAll",
+                        10, 40, 40, 10, false, new double[] {40});
+            case "word-break-normal-two-words-min-content":
+                return new C114ComputedWordBreakScene("XX XX", "en", "Ahem", "Normal",
+                        20, 50, 20, 10, true, new double[] {20, 20});
+            case "word-break-normal-two-words-max-content":
+                return new C114ComputedWordBreakScene("XX XX", "en", "Ahem", "Normal",
+                        20, 50, 20, 10, false, new double[] {50});
+            case "word-break-break-all-two-words-min-content":
+                return new C114ComputedWordBreakScene("XX XX", "en", "Ahem", "BreakAll",
+                        10, 50, 40, 10, true, new double[] {10, 10, 10, 10});
+            case "word-break-break-all-two-words-max-content":
+                return new C114ComputedWordBreakScene("XX XX", "en", "Ahem", "BreakAll",
+                        10, 50, 40, 10, false, new double[] {50});
+            case "word-break-normal-hangul-min-content":
+                return new C114ComputedWordBreakScene("가나다라", "ko", "Noto Sans KR", "Normal",
+                        9.2, 36.8, 40, 10, true,
+                        new double[] {9.2, 9.2, 9.2, 9.2});
+            case "word-break-normal-hangul-max-content":
+                return new C114ComputedWordBreakScene("가나다라", "ko", "Noto Sans KR", "Normal",
+                        9.2, 36.8, 40, 10, false, new double[] {36.8});
+            case "word-break-keep-all-hangul-min-content":
+                return new C114ComputedWordBreakScene("가나다라", "ko", "Noto Sans KR", "KeepAll",
+                        36.8, 36.8, 10, 10, true, new double[] {36.8});
+            case "word-break-keep-all-hangul-max-content":
+                return new C114ComputedWordBreakScene("가나다라", "ko", "Noto Sans KR", "KeepAll",
+                        36.8, 36.8, 10, 10, false, new double[] {36.8});
+            default:
+                return null;
+        }
     }
 
     // [word spacing px, min-content px, max-content px, track width px, row height px, line count, min-content row height]

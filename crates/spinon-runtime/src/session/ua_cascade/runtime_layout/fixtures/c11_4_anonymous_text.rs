@@ -22,6 +22,8 @@ mod letter_spacing;
 mod line_height;
 #[path = "c11_4_anonymous_text/text_indent.rs"]
 mod text_indent;
+#[path = "c11_4_anonymous_text/word_break.rs"]
+mod word_break;
 #[path = "c11_4_anonymous_text/word_spacing.rs"]
 mod word_spacing;
 use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
@@ -34,11 +36,14 @@ use line_height::{
 use text_indent::{
     TEXT_INDENT_SCENE_IDS, find_scene as text_indent_scene, validate_computed_text_indent,
 };
+#[cfg(test)]
+use word_break::SCENES as WORD_BREAK_SCENES;
+use word_break::find_scene as word_break_scene;
 use word_spacing::{
     WORD_SPACING_SCENE_IDS, find_scene as word_spacing_scene, validate_computed_word_spacing,
 };
 
-const SCENE_IDS: [&str; 55] = [
+const SCENE_IDS: [&str; 67] = [
     "anonymous-min-content-wrap",
     "anonymous-normal-min-content",
     "anonymous-nowrap-min-content",
@@ -94,6 +99,18 @@ const SCENE_IDS: [&str; 55] = [
     "anonymous-pre-tab-size-0-negative",
     "anonymous-pre-tab-size-fractional-negative",
     "anonymous-pre-tab-size-length-negative",
+    "word-break-normal-unbroken-min-content",
+    "word-break-normal-unbroken-max-content",
+    "word-break-break-all-unbroken-min-content",
+    "word-break-break-all-unbroken-max-content",
+    "word-break-normal-two-words-min-content",
+    "word-break-normal-two-words-max-content",
+    "word-break-break-all-two-words-min-content",
+    "word-break-break-all-two-words-max-content",
+    "word-break-normal-hangul-min-content",
+    "word-break-normal-hangul-max-content",
+    "word-break-keep-all-hangul-min-content",
+    "word-break-keep-all-hangul-max-content",
 ];
 
 const FULL_TAB_VALUE_IDS: [&str; 14] = [
@@ -181,6 +198,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         && full_tab_scene(scene_id).is_none()
     {
         return if scene_id.starts_with("anonymous-")
+            || scene_id.starts_with("word-break-")
             || scene_id == "whitespace-does-not-create-item"
         {
             Err(unsupported(root.id(), "unknown anonymous text scene"))
@@ -192,6 +210,8 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
         return Err(unsupported(root.id(), "runtime profile or root tag"));
     }
 
+    let word_break_scene = word_break_scene(scene_id);
+    let locale = word_break::validate_owner_language(snapshot, root, scene_id)?;
     let grid_style = style_for(styles, root.id())?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
     let (tab_size, line_height, letter_spacing, word_spacing, text_indent) =
@@ -208,19 +228,33 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
                 Some(error.to_string()),
             )
         })?;
+    if word_break_scene.is_some_and(|scene| scene.font_family == "Noto Sans KR") {
+        engine
+            .register_font("Noto Sans KR", word_break::NOTO_SANS_KR)
+            .map_err(|error| {
+                layout_failure(
+                    "c114_anonymous_text_font_registration",
+                    Some(root.id().get()),
+                    Some(error.to_string()),
+                )
+            })?;
+    }
+    let mut paragraph_style = anonymous_paragraph_style(
+        scene_id,
+        tab_size,
+        line_height,
+        font_size,
+        letter_spacing,
+        word_spacing,
+        text_indent,
+    );
+    if let Some(scene) = word_break_scene {
+        paragraph_style.font_family = scene.font_family.to_owned();
+        paragraph_style.word_break = scene.word_break;
+        paragraph_style.locale = locale;
+    }
     Ok(Some(super::C11_4TextInput {
-        paragraph_styles: BTreeMap::from([(
-            root.id(),
-            anonymous_paragraph_style(
-                scene_id,
-                tab_size,
-                line_height,
-                font_size,
-                letter_spacing,
-                word_spacing,
-                text_indent,
-            ),
-        )]),
+        paragraph_styles: BTreeMap::from([(root.id(), paragraph_style)]),
         engine,
         two_axis_nested_grid: false,
         content_box_ratio_node: None,
@@ -312,6 +346,9 @@ fn validate_direct_children(
         )],
         scene_id if TEXT_INDENT_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
             text_indent_scene(scene_id).unwrap().text,
+        )],
+        scene_id if word_break_scene(scene_id).is_some() => &[ExpectedChild::Text(
+            word_break_scene(scene_id).unwrap().text,
         )],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
@@ -529,6 +566,7 @@ fn validate_grid_style(
             scene_id if TEXT_INDENT_SCENE_IDS.contains(&scene_id) => {
                 (120.0, ComputedCssDimension::Auto)
             }
+            scene_id if word_break_scene(scene_id).is_some() => (120.0, ComputedCssDimension::Auto),
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 (20.0, ComputedCssDimension::Auto)
             }
@@ -550,6 +588,7 @@ fn validate_grid_style(
         expected_wrap_mode,
         font_size,
         expected_text_indent,
+        scene_id,
     )?;
     if style.properties.get("display").map(String::as_str) != Some("grid")
         || style.properties.get("box-sizing").map(String::as_str) != Some("border-box")
@@ -557,7 +596,8 @@ fn validate_grid_style(
         || style.properties.get("align-content").map(String::as_str) != Some("start")
         || style.properties.get("justify-content").map(String::as_str) != Some("start")
         || style.layout_position != spinon_style::ComputedCssPosition::Static
-        || style.properties.get("font-family").map(String::as_str) != Some("Ahem")
+        || style.properties.get("font-family").map(String::as_str)
+            != Some(expected_font_family(scene_id))
         || style.properties.get("font-size").map(String::as_str)
             != Some(font_size::font_size_css_value(scene_id))
         || style
@@ -750,6 +790,13 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         }]
     } else {
         match scene_id {
+            scene_id if word_break_scene(scene_id).is_some() => {
+                vec![if word_break_scene(scene_id).unwrap().is_min_content {
+                    ComputedCssGridTrackSize::MinContent
+                } else {
+                    ComputedCssGridTrackSize::MaxContent
+                }]
+            }
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 vec![ComputedCssGridTrackSize::LengthPx(20.0)]
             }
@@ -885,6 +932,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
         || LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         || WORD_SPACING_SCENE_IDS.contains(&scene_id)
         || TEXT_INDENT_SCENE_IDS.contains(&scene_id)
+        || word_break_scene(scene_id).is_some()
         || matches!(
             scene_id,
             "anonymous-min-content-wrap"
@@ -959,13 +1007,16 @@ fn validate_text_profile_properties(
     expected_wrap_mode: &str,
     font_size: f32,
     expected_text_indent: &str,
+    scene_id: &str,
 ) -> Result<(), RuntimeLayoutFailure> {
     let font_size_css = font_size::font_size_css_value_for_px(font_size);
+    let expected_font_family = expected_font_family(scene_id);
+    let expected_word_break = expected_word_break(scene_id);
     for (name, expected) in [
-        ("font-family", "Ahem"),
+        ("font-family", expected_font_family),
         ("font-weight", "400"),
         ("font-style", "normal"),
-        ("word-break", "normal"),
+        ("word-break", expected_word_break),
         ("direction", "ltr"),
         ("line-break", "auto"),
         ("text-align", "start"),
@@ -1014,6 +1065,20 @@ fn validate_text_profile_properties(
         ));
     }
     Ok(())
+}
+
+fn expected_font_family(scene_id: &str) -> &'static str {
+    word_break_scene(scene_id).map_or("Ahem", |scene| {
+        if scene.font_family == "Noto Sans KR" {
+            "\"Noto Sans KR\""
+        } else {
+            scene.font_family
+        }
+    })
+}
+
+fn expected_word_break(scene_id: &str) -> &'static str {
+    word_break_scene(scene_id).map_or("normal", |scene| scene.computed_word_break)
 }
 
 fn style_for(
@@ -1106,6 +1171,7 @@ fn anonymous_paragraph_style(
             _ => WhiteSpaceMode::Normal,
         },
         word_break: WordBreakMode::Normal,
+        locale: None,
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
@@ -1148,9 +1214,9 @@ mod tests {
     use super::{
         ComputedLineHeight, FONT_SIZE_SCENE_IDS, FULL_TAB_CASE_IDS, FULL_TAB_COMPUTED_VALUES,
         FULL_TAB_CRLF_FIRST_LINE_WIDTHS, FULL_TAB_EXPECTED_WIDTHS, FULL_TAB_LF_SECOND_LINE_WIDTHS,
-        FULL_TAB_VALUE_IDS, SCENE_IDS, anonymous_paragraph_style, full_tab_expected_width,
-        full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto, grid_tracks_match,
-        parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
+        FULL_TAB_VALUE_IDS, SCENE_IDS, WORD_BREAK_SCENES, anonymous_paragraph_style,
+        full_tab_expected_width, full_tab_scene, full_tab_scene_id, grid_item_placement_is_auto,
+        grid_tracks_match, parse_computed_tab_size, pre_tab_text, validate_computed_tab_size,
         validate_text_profile_properties,
     };
     use spinon_core::NodeId;
@@ -1170,8 +1236,30 @@ mod tests {
     #[test]
     fn anonymous_text_fixture_cases_are_unique() {
         let scene_ids = SCENE_IDS.iter().copied().collect::<BTreeSet<_>>();
-        assert_eq!(SCENE_IDS.len(), 55);
+        assert_eq!(SCENE_IDS.len(), 67);
         assert_eq!(scene_ids.len(), SCENE_IDS.len());
+    }
+
+    #[test]
+    fn computed_word_break_scenes_require_their_exact_intrinsic_track() {
+        for scene in WORD_BREAK_SCENES {
+            let column = if scene.is_min_content {
+                ComputedCssGridTrackSize::MinContent
+            } else {
+                ComputedCssGridTrackSize::MaxContent
+            };
+            assert!(grid_tracks_match(
+                &grid(vec![column], vec![ComputedCssGridTrackSize::Auto]),
+                scene.id,
+            ));
+            assert!(!grid_tracks_match(
+                &grid(
+                    vec![ComputedCssGridTrackSize::LengthPx(120.0)],
+                    vec![ComputedCssGridTrackSize::Auto]
+                ),
+                scene.id,
+            ));
+        }
     }
 
     #[test]
@@ -1444,6 +1532,7 @@ mod tests {
                     font_style: FontStyleMode::Normal,
                     white_space: WhiteSpaceMode::PreWithTabSize(expected_style),
                     word_break: WordBreakMode::Normal,
+                    locale: None,
                     direction: TextParagraphDirection::Ltr,
                     line_break: LineBreakMode::Strict,
                     ligatures: LigatureMode::Normal,
@@ -1589,6 +1678,7 @@ mod tests {
                 "wrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_ok()
         );
@@ -1603,6 +1693,7 @@ mod tests {
                 "nowrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_ok()
         );
@@ -1616,6 +1707,7 @@ mod tests {
                 "nowrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_ok()
         );
@@ -1632,6 +1724,7 @@ mod tests {
                 "wrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_ok()
         );
@@ -1643,6 +1736,7 @@ mod tests {
                 "wrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_err()
         );
@@ -1656,6 +1750,7 @@ mod tests {
                 "wrap",
                 10.0,
                 "0px",
+                "anonymous-normal-min-content",
             )
             .is_ok()
         );
@@ -1685,6 +1780,7 @@ mod tests {
                     "wrap",
                     10.0,
                     "0px",
+                    "anonymous-normal-min-content",
                 )
                 .is_err(),
                 "the fixture must reject a changed {name}"

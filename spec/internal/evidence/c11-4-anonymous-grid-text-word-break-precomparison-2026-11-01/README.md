@@ -13,6 +13,8 @@
 
 [CSS Text Level 3 §5.1](https://www.w3.org/TR/css-text-3/#word-break-property)은 `word-break`가 상속 속성이고, `break-all`은 문자 단위의 추가 soft-wrap 기회를 허용하며, `keep-all`은 문자 사이의 통상적 줄바꿈을 억제한다고 정의한다. 이 속성 효과는 intrinsic size 계산에도 반영한다. [CSS Sizing Level 3 §5.1](https://www.w3.org/TR/css-sizing-3/#intrinsic-sizes)의 min-/max-content 기준 및 [CSS Grid Level 1 §11](https://www.w3.org/TR/css-grid-1/#algo-track-sizing)에 따라 기대값은 Chrome 관측값이 아니라 font advance와 허용 줄바꿈 지점으로 계산했다.
 
+Parley 0.12.0의 고정 [line segmenter 구현](https://github.com/linebender/parley/blob/v0.12.0/parley_engine/src/analysis.rs)은 언어 태그가 줄 분할에 영향을 주는 경우를 `line-break:normal|loose`의 중국어·일본어로 제한한다. 이 구현 경로에서 `line-break:auto`는 strict 설정이므로 `lang=ko`는 locale metadata로 전달되지만 한국어 `normal` 분할의 원인이 아니다. 한국어 `normal`과 locale 없는 대조의 intrinsic geometry가 같은지 별도 text-layout 검사로 확인하고, `keep-all`의 geometry 차이는 word-break 설정에 귀속한다. 아래 Chrome 관측은 `lang=ko`를 둔 입력 결과이며 이를 Parley 언어 효과의 증거로 해석하지 않는다.
+
 | 입력 | word-break | track | 독립 track 폭 | 독립 row 높이 | Chrome 156 관측 |
 | --- | --- | --- | ---: | ---: | --- |
 | `XXXX` / Ahem | `normal` | min-content | 40px | 10px | 40px / 10px |

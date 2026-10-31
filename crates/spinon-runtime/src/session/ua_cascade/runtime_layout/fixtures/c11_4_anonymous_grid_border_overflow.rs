@@ -477,6 +477,7 @@ fn anonymous_paragraph_style() -> ParagraphStyle {
         font_style: FontStyleMode::Normal,
         white_space: WhiteSpaceMode::Normal,
         word_break: WordBreakMode::Normal,
+        locale: None,
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,

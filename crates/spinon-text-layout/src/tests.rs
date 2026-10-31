@@ -998,3 +998,5 @@ mod c11_4_break_spaces;
 mod c11_4_pre;
 #[path = "tests/c11_4_pre_wrap.rs"]
 mod c11_4_pre_wrap;
+#[path = "tests/c11_4_word_break.rs"]
+mod c11_4_word_break;

@@ -24,6 +24,7 @@ pub(super) fn paragraph_style(
         font_style: font_style(style)?,
         white_space,
         word_break,
+        locale: None,
         direction,
         line_break,
         ligatures: LigatureMode::Normal,

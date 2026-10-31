@@ -558,6 +558,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
             "fontStyle": format!("{:?}", style.font_style),
             "whiteSpace": format!("{:?}", style.white_space),
             "wordBreak": format!("{:?}", style.word_break),
+            "locale": style.locale,
             "direction": format!("{:?}", style.direction),
             "writingMode": format!("{:?}", style.writing_mode),
             "textOrientation": format!("{:?}", style.text_orientation),

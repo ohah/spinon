@@ -263,6 +263,8 @@ private struct C114GenericDirectTextItemExpectation {
     let layoutText: String
     let whiteSpace: String
     let wordBreak: String
+    let fontFamily: String
+    let locale: String?
     let letterSpacing: Double
     let wordSpacing: Double
     let textIndent: Double
@@ -400,6 +402,7 @@ private func c114GenericTextItem(
     availableWidth: Double? = nil, textWidth: Double? = nil,
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
     letterSpacing: Double = 0, wordSpacing: Double = 0, textIndent: Double = 0,
+    fontFamily: String = "Ahem", locale: String? = nil,
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
     C114GenericDirectTextItemExpectation(
@@ -409,7 +412,8 @@ private func c114GenericTextItem(
         minContent: minContent, maxContent: maxContent,
         minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
         rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
-        wordBreak: wordBreak, letterSpacing: letterSpacing,
+        wordBreak: wordBreak, fontFamily: fontFamily, locale: locale,
+        letterSpacing: letterSpacing,
         wordSpacing: wordSpacing, textIndent: textIndent, lineAdvances: lineAdvances
     )
 }
@@ -449,6 +453,22 @@ private func c114GenericDirectTextExpectation(
         return C114GenericDirectTextSceneExpectation(
             rootWidth: 120, rootHeight: wordSpacing.rowHeight,
             columns: [wordSpacing.trackWidth], items: [item]
+        )
+    }
+    if let wordBreak = c114ComputedWordBreakScene(sceneID) {
+        let item = c114GenericTextItem(
+            node: 2, x: 0, width: wordBreak.trackWidth, height: wordBreak.rowHeight,
+            minContent: wordBreak.minContent, maxContent: wordBreak.maxContent,
+            minContentHeight: wordBreak.minContentHeight,
+            maxContentHeight: wordBreak.maxContentHeight,
+            rawText: wordBreak.text, layoutText: wordBreak.text,
+            whiteSpace: "Normal", wordBreak: wordBreak.wordBreak,
+            fontFamily: wordBreak.fontFamily, locale: wordBreak.language,
+            lineAdvances: wordBreak.lineAdvances
+        )
+        return C114GenericDirectTextSceneExpectation(
+            rootWidth: 120, rootHeight: wordBreak.rowHeight,
+            columns: [wordBreak.trackWidth], items: [item]
         )
     }
     if let textIndent = c114ComputedTextIndentScene(sceneID) {
@@ -1310,6 +1330,7 @@ private func c114SingleTrackOverflowAutoMinimumState(
 }
 
 private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
+    if c114ComputedWordBreakScene(sceneID) != nil { return true }
     if c114ComputedWordSpacingScene(sceneID) != nil { return true }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return true }
     if c114IsComputedFontSizeScene(sceneID) { return true }
@@ -3134,6 +3155,9 @@ private func c114OrthogonalRowFramesMatch(
 
 private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) -> Bool {
     let sceneID = c114BaseNestedGridSceneID(sceneID)
+    if c114ComputedWordBreakScene(sceneID) != nil {
+        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
+    }
     if c114ComputedLetterSpacingScene(sceneID) != nil {
         return c114ComputedLetterSpacingTextIntrinsicInputsMatch(sceneID, report: report)
     }
@@ -6716,6 +6740,9 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
         return false
     }
     let expectedNodes = scene.items.map(\.node)
+    let expectedFontRegistryRevision = scene.items.contains {
+        $0.fontFamily == "Noto Sans KR"
+    } ? 2 : 1
     for (index, input) in inputs.enumerated() {
         let expected = scene.items[index]
         guard c114GenericJSONInteger(input["grid"]) == 1,
@@ -6725,7 +6752,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
               textSources.count == (anonymousTextScene ? 1 : 0),
               let source = input["source"] as? [String: Any],
               c114GenericJSONString(source["kind"]) == "text",
-              c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+              c114GenericJSONInteger(source["fontRegistryRevision"]) == expectedFontRegistryRevision,
               c114GenericJSONNear(
                 source["minContent"], expected: expected.minContent, tolerance: 1.0 / 64.0
               ),
@@ -6771,7 +6798,7 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
               expectedNodes.contains(node),
               let source = measurement["source"] as? [String: Any],
               c114GenericJSONString(source["kind"]) == "text",
-              c114GenericJSONInteger(source["fontRegistryRevision"]) == 1,
+              c114GenericJSONInteger(source["fontRegistryRevision"]) == expectedFontRegistryRevision,
               let availableSpace = c114GenericJSONString(measurement["availableSpace"]),
               let contentSize = measurement["contentSize"] as? [String: Any],
               let measuredWidth = c114GenericJSONFiniteNumber(contentSize["width"]),
@@ -7015,6 +7042,9 @@ private func c114GenericDirectTextTextLayoutsMatch(
 ) -> Bool {
     guard let layouts = diagnostics["gridItemTextLayouts"] as? [[String: Any]],
           layouts.count == scene.items.count else { return false }
+    let expectedFontRegistryRevision = scene.items.contains {
+        $0.fontFamily == "Noto Sans KR"
+    } ? 2 : 1
     for (index, expected) in scene.items.enumerated() {
         let layout = layouts[index]
         let expectedTextWidth = expected.textWidth != expected.width
@@ -7036,12 +7066,13 @@ private func c114GenericDirectTextTextLayoutsMatch(
               let inlineAncestors = sources[0]["inlineAncestors"] as? [Any],
               inlineAncestors.isEmpty,
               c114GenericJSONString(layout["text"]) == expected.layoutText,
-              c114GenericJSONInteger(layout["fontRegistryRevision"]) == 1,
+              c114GenericJSONInteger(layout["fontRegistryRevision"]) == expectedFontRegistryRevision,
               c114GenericJSONNear(layout["availableWidth"], expected: expected.availableWidth, tolerance: 1.0 / 64.0),
               c114GenericJSONNear(layout["width"], expected: expectedTextWidth, tolerance: 1.0 / 64.0),
               c114GenericJSONNear(layout["height"], expected: expectedTextHeight, tolerance: 1.0 / 64.0),
               let style = layout["paragraphStyle"] as? [String: Any],
-              c114GenericJSONString(style["fontFamily"]) == "Ahem",
+              c114GenericJSONString(style["fontFamily"]) == expected.fontFamily,
+              c114GenericJSONString(style["locale"]) == expected.locale,
               c114GenericJSONNear(style["fontSize"], expected: 10, tolerance: 0),
               c114GenericJSONNear(style["lineHeight"], expected: 10, tolerance: 0),
               style["lineHeightIsNormal"] as? Bool == false,
@@ -8558,6 +8589,10 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let wordBreak = c114ComputedWordBreakScene(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+            + "height=\(c114GenericFrameNumber(wordBreak.rowHeight))]"
+    }
     if let textIndent = c114ComputedTextIndentScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
             + "height=\(c114GenericFrameNumber(textIndent.rowHeight))]"
@@ -10302,6 +10337,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114ComputedWordBreakScene(sceneID) != nil { return 1 }
     if c114ComputedTextIndentScene(sceneID) != nil { return 1 }
     if c114ComputedWordSpacingScene(sceneID) != nil { return 1 }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return 1 }
@@ -10516,7 +10552,8 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 }
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
-    c114ComputedWordSpacingScene(sceneID) != nil
+    c114ComputedWordBreakScene(sceneID) != nil
+        || c114ComputedWordSpacingScene(sceneID) != nil
         || c114ComputedTextIndentScene(sceneID) != nil
         || c114ComputedLetterSpacingScene(sceneID) != nil
         || c114IsComputedFontSizeScene(sceneID)
@@ -10612,6 +10649,50 @@ private func c114ComputedLetterSpacingScene(
         trackWidth: trackWidth, rowHeight: rowHeight,
         lineCount: rowHeight == 20 ? 2 : 1, singleWord: singleWord
     )
+    #else
+    return nil
+    #endif
+}
+
+private func c114ComputedWordBreakScene(
+    _ sceneID: String
+) -> (text: String, language: String, fontFamily: String, wordBreak: String,
+    minContent: Double, maxContent: Double, minContentHeight: Double,
+    maxContentHeight: Double, trackWidth: Double, rowHeight: Double,
+    lineAdvances: [Double])? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    switch sceneID {
+    case "word-break-normal-unbroken-min-content", "word-break-normal-unbroken-max-content":
+        return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
+    case "word-break-break-all-unbroken-min-content":
+        return ("XXXX", "en", "Ahem", "BreakAll", 10, 40, 40, 10, 10, 40,
+            [10, 10, 10, 10])
+    case "word-break-break-all-unbroken-max-content":
+        return ("XXXX", "en", "Ahem", "BreakAll", 10, 40, 40, 10, 40, 10, [40])
+    case "word-break-normal-two-words-min-content":
+        return ("XX XX", "en", "Ahem", "Normal", 20, 50, 20, 10, 20, 20, [20, 20])
+    case "word-break-normal-two-words-max-content":
+        return ("XX XX", "en", "Ahem", "Normal", 20, 50, 20, 10, 50, 10, [50])
+    case "word-break-break-all-two-words-min-content":
+        return ("XX XX", "en", "Ahem", "BreakAll", 10, 50, 40, 10, 10, 40,
+            [10, 10, 10, 10])
+    case "word-break-break-all-two-words-max-content":
+        return ("XX XX", "en", "Ahem", "BreakAll", 10, 50, 40, 10, 50, 10, [50])
+    case "word-break-normal-hangul-min-content":
+        return ("가나다라", "ko", "Noto Sans KR", "Normal", 9.2, 36.8, 40, 10,
+            9.2, 40, [9.2, 9.2, 9.2, 9.2])
+    case "word-break-normal-hangul-max-content":
+        return ("가나다라", "ko", "Noto Sans KR", "Normal", 9.2, 36.8, 40, 10,
+            36.8, 10, [36.8])
+    case "word-break-keep-all-hangul-min-content":
+        return ("가나다라", "ko", "Noto Sans KR", "KeepAll", 36.8, 36.8, 10, 10,
+            36.8, 10, [36.8])
+    case "word-break-keep-all-hangul-max-content":
+        return ("가나다라", "ko", "Noto Sans KR", "KeepAll", 36.8, 36.8, 10, 10,
+            36.8, 10, [36.8])
+    default:
+        return nil
+    }
     #else
     return nil
     #endif

@@ -1,0 +1,25 @@
+{
+  "reference": {
+    "cssFontSizePx": 10,
+    "ahemUnitsPerEm": 1000,
+    "ahemAdvanceUnits": 1000,
+    "notoSansKrUnitsPerEm": 1000,
+    "notoSansKrHangulAdvanceUnits": 920,
+    "serializationQuantumCssPx": 0.015625,
+    "runtimeToleranceCssPx": 0.05
+  },
+  "cases": [
+    {"id":"word-break-normal-unbroken-min-content","text":"XXXX","language":"en","fontFamily":"Ahem","wordBreak":"normal","runtimeWordBreak":"Normal","track":"min","minContentCssPx":40,"maxContentCssPx":40,"minContentHeightCssPx":10,"maxContentHeightCssPx":10,"columnsPx":40,"rowsPx":10,"lineAdvancesPx":[40]},
+    {"id":"word-break-normal-unbroken-max-content","text":"XXXX","language":"en","fontFamily":"Ahem","wordBreak":"normal","runtimeWordBreak":"Normal","track":"max","minContentCssPx":40,"maxContentCssPx":40,"minContentHeightCssPx":10,"maxContentHeightCssPx":10,"columnsPx":40,"rowsPx":10,"lineAdvancesPx":[40]},
+    {"id":"word-break-break-all-unbroken-min-content","text":"XXXX","language":"en","fontFamily":"Ahem","wordBreak":"break-all","runtimeWordBreak":"BreakAll","track":"min","minContentCssPx":10,"maxContentCssPx":40,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":10,"rowsPx":40,"lineAdvancesPx":[10,10,10,10]},
+    {"id":"word-break-break-all-unbroken-max-content","text":"XXXX","language":"en","fontFamily":"Ahem","wordBreak":"break-all","runtimeWordBreak":"BreakAll","track":"max","minContentCssPx":10,"maxContentCssPx":40,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":40,"rowsPx":10,"lineAdvancesPx":[40]},
+    {"id":"word-break-normal-two-words-min-content","text":"XX XX","language":"en","fontFamily":"Ahem","wordBreak":"normal","runtimeWordBreak":"Normal","track":"min","minContentCssPx":20,"maxContentCssPx":50,"minContentHeightCssPx":20,"maxContentHeightCssPx":10,"columnsPx":20,"rowsPx":20,"lineAdvancesPx":[20,20]},
+    {"id":"word-break-normal-two-words-max-content","text":"XX XX","language":"en","fontFamily":"Ahem","wordBreak":"normal","runtimeWordBreak":"Normal","track":"max","minContentCssPx":20,"maxContentCssPx":50,"minContentHeightCssPx":20,"maxContentHeightCssPx":10,"columnsPx":50,"rowsPx":10,"lineAdvancesPx":[50]},
+    {"id":"word-break-break-all-two-words-min-content","text":"XX XX","language":"en","fontFamily":"Ahem","wordBreak":"break-all","runtimeWordBreak":"BreakAll","track":"min","minContentCssPx":10,"maxContentCssPx":50,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":10,"rowsPx":40,"lineAdvancesPx":[10,10,10,10]},
+    {"id":"word-break-break-all-two-words-max-content","text":"XX XX","language":"en","fontFamily":"Ahem","wordBreak":"break-all","runtimeWordBreak":"BreakAll","track":"max","minContentCssPx":10,"maxContentCssPx":50,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":50,"rowsPx":10,"lineAdvancesPx":[50]},
+    {"id":"word-break-normal-hangul-min-content","text":"가나다라","language":"ko","fontFamily":"Noto Sans KR","wordBreak":"normal","runtimeWordBreak":"Normal","track":"min","minContentCssPx":9.2,"maxContentCssPx":36.8,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":9.2,"chromeObservedColumnsPx":9.203125,"rowsPx":40,"lineAdvancesPx":[9.2,9.2,9.2,9.2]},
+    {"id":"word-break-normal-hangul-max-content","text":"가나다라","language":"ko","fontFamily":"Noto Sans KR","wordBreak":"normal","runtimeWordBreak":"Normal","track":"max","minContentCssPx":9.2,"maxContentCssPx":36.8,"minContentHeightCssPx":40,"maxContentHeightCssPx":10,"columnsPx":36.8,"chromeObservedColumnsPx":36.8125,"rowsPx":10,"lineAdvancesPx":[36.8]},
+    {"id":"word-break-keep-all-hangul-min-content","text":"가나다라","language":"ko","fontFamily":"Noto Sans KR","wordBreak":"keep-all","runtimeWordBreak":"KeepAll","track":"min","minContentCssPx":36.8,"maxContentCssPx":36.8,"minContentHeightCssPx":10,"maxContentHeightCssPx":10,"columnsPx":36.8,"chromeObservedColumnsPx":36.8125,"rowsPx":10,"lineAdvancesPx":[36.8]},
+    {"id":"word-break-keep-all-hangul-max-content","text":"가나다라","language":"ko","fontFamily":"Noto Sans KR","wordBreak":"keep-all","runtimeWordBreak":"KeepAll","track":"max","minContentCssPx":36.8,"maxContentCssPx":36.8,"minContentHeightCssPx":10,"maxContentHeightCssPx":10,"columnsPx":36.8,"chromeObservedColumnsPx":36.8125,"rowsPx":10,"lineAdvancesPx":[36.8]}
+  ]
+}

@@ -15,6 +15,7 @@ fn paragraph_style_default_keeps_the_legacy_horizontal_text_profile() {
     assert_eq!(style.text_orientation, spinon_core::TextOrientation::Mixed);
     assert_eq!(style.word_spacing, 0.0);
     assert_eq!(style.text_indent, 0.0);
+    assert_eq!(style.locale, None);
 }
 
 #[test]
