@@ -1,0 +1,9 @@
+{
+  "c11IncompleteVisible": true,
+  "latestRoadmapEntry": "\n스피논 / 구현 로드맵\n\n스피논을 만드는 순서\n\n2026-10-31 C11.4 anonymous Grid text white-space:pre 기본 tab-size:8 · 제한 opt-in fixture 구현 · PR #885 Rebase and merge (2026-10-31T00:01:56Z, merge SHA 9ca5c04ac6aaeb45d378b33f1bfcfe616d04cfd3): 고정 Ahem profile에 8개 positive와 tab-size:2 negative 장면 하나를 추가했다. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 기존 회귀를 포함해 각각 40/40 scene을 통과했고 positive draw/present는 39/39, 재시도는 0이다. 두 simulator 화면은 fixture surface 제출만 보여주며 glyph ink와 compositor pixel은 검증하지 않았다. PR check rollup은 비어 있고 main 필수 status check도 설정되지 않아 CI 통과로 세지 않는다. 일반 tab-size cascade, authored CSS admission, 전체 WPT 또는 C11.4/C11 완료가 아니며 공식 72/213과 미완료 상태를 유지한다. 계획 · Android/iOS 결과·화면·한계 · PR diff 검토 · 공식 상태\n\n2026-10-31 C11.4 anonymous Grid text white-space:pre · 제한 opt-in fixture 구현 · PR #880 Rebase and merge (2026-10-30T23:06:20Z, merge SHA c592212bbf858cda0f310bb5885e864687960d06): 고정 Ahem direct anonymous text의",
+  "mergeShaVisible": true,
+  "officialCountVisible": true,
+  "pr885Visible": true,
+  "title": "스피논 구현 로드맵",
+  "url": "https://macstudio.tailed42f2.ts.net/spinon/roadmap.html"
+}
