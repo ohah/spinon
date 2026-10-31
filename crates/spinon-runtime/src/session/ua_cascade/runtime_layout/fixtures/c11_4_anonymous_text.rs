@@ -16,9 +16,14 @@ use super::super::{RuntimeLayoutFailure, layout_failure};
 
 #[path = "c11_4_anonymous_text/font_size.rs"]
 mod font_size;
+#[path = "c11_4_anonymous_text/letter_spacing.rs"]
+mod letter_spacing;
 #[path = "c11_4_anonymous_text/line_height.rs"]
 mod line_height;
 use font_size::{FONT_SIZE_SCENE_IDS, validate_computed_font_size};
+use letter_spacing::{
+    LETTER_SPACING_SCENE_IDS, find_scene as letter_spacing_scene, validate_computed_letter_spacing,
+};
 use line_height::{
     ComputedLineHeight, LINE_HEIGHT_SCENE_IDS, line_height_text, validate_computed_line_height,
 };
@@ -160,6 +165,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     if !SCENE_IDS.contains(&scene_id)
         && !LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
         && !FONT_SIZE_SCENE_IDS.contains(&scene_id)
+        && !LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         && full_tab_scene(scene_id).is_none()
     {
         return if scene_id.starts_with("anonymous-")
@@ -176,7 +182,8 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
 
     let grid_style = style_for(styles, root.id())?;
     let font_size = validate_computed_font_size(grid_style, scene_id)?;
-    let (tab_size, line_height) = validate_grid_style(grid_style, scene_id, font_size)?;
+    let (tab_size, line_height, letter_spacing) =
+        validate_grid_style(grid_style, scene_id, font_size)?;
     validate_direct_children(snapshot, root, scene_id, styles)?;
 
     let mut engine = TextLayoutEngine::new_without_system_fonts();
@@ -192,7 +199,7 @@ pub(in crate::session::ua_cascade::runtime_layout) fn prepare(
     Ok(Some(super::C11_4TextInput {
         paragraph_styles: BTreeMap::from([(
             root.id(),
-            anonymous_paragraph_style(scene_id, tab_size, line_height, font_size),
+            anonymous_paragraph_style(scene_id, tab_size, line_height, font_size, letter_spacing),
         )]),
         engine,
         two_axis_nested_grid: false,
@@ -277,6 +284,9 @@ fn validate_direct_children(
             &[ExpectedChild::Text(text)]
         }
         scene_id if FONT_SIZE_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text("XX XX")],
+        scene_id if LETTER_SPACING_SCENE_IDS.contains(&scene_id) => &[ExpectedChild::Text(
+            letter_spacing_scene(scene_id).unwrap().text,
+        )],
         _ => return Err(unsupported(root.id(), "unrecognized anonymous text scene")),
     };
     if children.len() != expected.len() {
@@ -368,7 +378,7 @@ fn validate_grid_style(
     style: &ComputedElementStyle,
     scene_id: &str,
     font_size: f32,
-) -> Result<(TabSize, ComputedLineHeight), RuntimeLayoutFailure> {
+) -> Result<(TabSize, ComputedLineHeight, f32), RuntimeLayoutFailure> {
     let expected_wrap_mode = if is_pre_tab_scene(scene_id)
         || matches!(
             scene_id,
@@ -484,6 +494,9 @@ fn validate_grid_style(
             scene_id if FONT_SIZE_SCENE_IDS.contains(&scene_id) => {
                 (20.0, ComputedCssDimension::Auto)
             }
+            scene_id if LETTER_SPACING_SCENE_IDS.contains(&scene_id) => {
+                (120.0, ComputedCssDimension::Auto)
+            }
             scene_id if LINE_HEIGHT_SCENE_IDS.contains(&scene_id) => {
                 (20.0, ComputedCssDimension::Auto)
             }
@@ -492,6 +505,8 @@ fn validate_grid_style(
     };
     let tab_size = validate_computed_tab_size(style.node_id, &style.properties, scene_id)?;
     let line_height = validate_computed_line_height(style.node_id, &style.properties, scene_id)?;
+    let letter_spacing =
+        validate_computed_letter_spacing(style.node_id, &style.properties, scene_id)?;
     validate_text_profile_properties(
         style.node_id,
         &style.properties,
@@ -541,7 +556,7 @@ fn validate_grid_style(
             "Grid track functions or auto-placement defaults",
         ));
     }
-    Ok((tab_size, line_height))
+    Ok((tab_size, line_height, letter_spacing))
 }
 
 fn validate_computed_tab_size(
@@ -701,6 +716,15 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
                     false => ComputedCssGridTrackSize::MaxContent,
                 }]
             }
+            scene_id if LETTER_SPACING_SCENE_IDS.contains(&scene_id) => {
+                vec![
+                    if letter_spacing_scene(scene_id).is_some_and(|scene| scene.is_min_content) {
+                        ComputedCssGridTrackSize::MinContent
+                    } else {
+                        ComputedCssGridTrackSize::MaxContent
+                    },
+                ]
+            }
             "anonymous-min-content-wrap" => vec![
                 ComputedCssGridTrackSize::MinContent,
                 ComputedCssGridTrackSize::Fraction(1.0),
@@ -797,6 +821,7 @@ fn grid_tracks_match(grid: &ComputedCssGridLayout, scene_id: &str) -> bool {
     let expected_rows = if full_tab_scene(scene_id).is_some()
         || LINE_HEIGHT_SCENE_IDS.contains(&scene_id)
         || FONT_SIZE_SCENE_IDS.contains(&scene_id)
+        || LETTER_SPACING_SCENE_IDS.contains(&scene_id)
         || matches!(
             scene_id,
             "anonymous-min-content-wrap"
@@ -883,7 +908,6 @@ fn validate_text_profile_properties(
         ("overflow-wrap", "normal"),
         ("text-transform", "none"),
         ("writing-mode", "horizontal-tb"),
-        ("letter-spacing", "normal"),
         ("word-spacing", "0px"),
         ("text-indent", "0px"),
     ] {
@@ -966,6 +990,7 @@ fn anonymous_paragraph_style(
     tab_size: TabSize,
     line_height: ComputedLineHeight,
     font_size: f32,
+    letter_spacing: f32,
 ) -> ParagraphStyle {
     let (line_height, line_height_is_normal) = match line_height {
         ComputedLineHeight::Normal => (10.0, true),
@@ -976,6 +1001,7 @@ fn anonymous_paragraph_style(
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
         font_size,
+        letter_spacing,
         line_height,
         line_height_is_normal,
         font_weight: 400.0,
@@ -1168,6 +1194,7 @@ mod tests {
                 TabSize::Number(8.0),
                 ComputedLineHeight::AbsolutePx(10.0),
                 font_size,
+                0.0,
             );
             assert_eq!(
                 style.font_size, font_size,
@@ -1196,6 +1223,7 @@ mod tests {
                     TabSize::Number(8.0),
                     ComputedLineHeight::AbsolutePx(10.0),
                     font_size,
+                    0.0,
                 ),
                 inline_styles: BTreeMap::new(),
                 inline_run_styles: BTreeMap::new(),
@@ -1348,6 +1376,7 @@ mod tests {
                     direction: TextParagraphDirection::Ltr,
                     line_break: LineBreakMode::Strict,
                     ligatures: LigatureMode::Normal,
+                    letter_spacing: 0.0,
                 };
                 let paragraph = ParagraphInput {
                     node: node_id,
@@ -1565,7 +1594,6 @@ mod tests {
             ("overflow-wrap", "anywhere"),
             ("text-transform", "uppercase"),
             ("writing-mode", "vertical-rl"),
-            ("letter-spacing", "1px"),
             ("word-spacing", "1px"),
             ("text-indent", "1px"),
         ] {

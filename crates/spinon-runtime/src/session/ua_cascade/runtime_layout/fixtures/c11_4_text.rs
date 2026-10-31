@@ -837,6 +837,7 @@ fn typed_auto_repeat_paragraph_style() -> ParagraphStyle {
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
+        letter_spacing: 0.0,
     }
 }
 
@@ -1111,6 +1112,7 @@ fn ahem_paragraph_style(case: &TextCase) -> ParagraphStyle {
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
+        letter_spacing: 0.0,
     }
 }
 

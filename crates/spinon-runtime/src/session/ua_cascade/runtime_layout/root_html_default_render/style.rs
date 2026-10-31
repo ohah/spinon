@@ -27,6 +27,7 @@ pub(super) fn paragraph_style(
         direction,
         line_break,
         ligatures: LigatureMode::Normal,
+        letter_spacing: 0.0,
     })
 }
 

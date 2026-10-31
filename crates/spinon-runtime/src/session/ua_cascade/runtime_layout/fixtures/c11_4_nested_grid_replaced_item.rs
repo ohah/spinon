@@ -443,6 +443,7 @@ pub(super) fn ahem_paragraph_style() -> ParagraphStyle {
         direction: TextParagraphDirection::Ltr,
         line_break: LineBreakMode::Strict,
         ligatures: LigatureMode::Normal,
+        letter_spacing: 0.0,
     }
 }
 

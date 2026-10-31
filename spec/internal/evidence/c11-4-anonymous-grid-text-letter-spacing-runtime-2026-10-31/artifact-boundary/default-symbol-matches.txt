@@ -1,0 +1,6 @@
+Tool: Rust 1.96.1 bundled llvm-nm 22.1.2 with --demangle
+Archive: target/release/libspinon_ffi.a, default release build
+Searches:
+  computed_letter_spacing::runtime_source
+  letter_spacing::validate_computed_letter_spacing
+Matches: 0
