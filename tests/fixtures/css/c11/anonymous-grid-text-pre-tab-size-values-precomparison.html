@@ -1,0 +1,140 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>C11.4 anonymous Grid text pre tab-size values precomparison</title>
+<style>
+@font-face {
+  font-family: Ahem;
+  src: url(../../resources/c15/Ahem.ttf) format("truetype");
+  font-display: block;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { color: #111; background: #fff; font: 10px/10px Ahem, sans-serif; }
+header { margin: 0 0 12px; padding: 8px; font: 12px/16px sans-serif; background: #eef3f8; }
+.case { display: block; margin: 0 0 6px; }
+.label { display: block; margin: 0 0 2px; font: 10px/10px monospace; }
+.grid {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-template-rows: auto;
+  width: max-content;
+  align-items: start;
+  justify-items: start;
+  white-space: pre;
+  tab-size: 8;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  gap: 0;
+  font-family: Ahem;
+  font-size: 10px;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 10px;
+  direction: ltr;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+.min-content { grid-template-columns: min-content; }
+.fixed-overflow { width: 25px; grid-template-columns: minmax(0, 1fr); }
+</style>
+<header>
+  <strong>C11.4 tab-size value probe</strong>
+  <span>Chrome observation only · Ahem 10px/10px · horizontal-tb · LTR · zero letter/word spacing</span>
+</header>
+<main id="cases"></main>
+<script>
+(() => {
+  const values = [
+    { id: 'number-zero', value: '0', kind: 'number' },
+    { id: 'number-quarter', value: '0.25', kind: 'number' },
+    { id: 'number-three-tenths', value: '0.3', kind: 'number' },
+    { id: 'number-half', value: '0.5', kind: 'number' },
+    { id: 'number-one-and-half', value: '1.5', kind: 'number' },
+    { id: 'number-two-and-half', value: '2.5', kind: 'number' },
+    { id: 'number-three-and-quarter', value: '3.25', kind: 'number' },
+    { id: 'length-zero', value: '0px', kind: 'length' },
+    { id: 'length-three-tenths', value: '0.3px', kind: 'length' },
+    { id: 'length-two', value: '2px', kind: 'length' },
+    { id: 'length-five', value: '5px', kind: 'length' },
+    { id: 'length-twelve', value: '12px', kind: 'length' },
+    { id: 'length-em', value: '1.5em', kind: 'length' },
+    { id: 'length-calc', value: 'calc(2px + 3px)', kind: 'length' }
+  ];
+  const inputs = [
+    { id: 'tab-only', text: '\t' },
+    { id: 'leading', text: '\tX' },
+    { id: 'after-one', text: 'X\tX' },
+    { id: 'after-two', text: 'XX\tX' },
+    { id: 'exact-stop', text: 'XXXX\tX' },
+    { id: 'consecutive', text: 'X\t\tX' },
+    { id: 'trailing', text: 'XX\t' },
+    { id: 'lf-reset', text: 'XX\tXX\nX\tX' },
+    { id: 'crlf-reset', text: 'X\t\r\nX\tX' },
+    { id: 'min-content', text: 'XX\tXX', className: 'min-content' },
+    { id: 'fixed-overflow', text: 'XX\tXX', className: 'fixed-overflow' }
+  ];
+  const root = document.getElementById('cases');
+  const rows = [];
+  for (const value of values) {
+    for (const input of inputs) {
+      const rowId = `${value.id}-${input.id}`;
+      const row = document.createElement('section');
+      row.className = 'case';
+      const label = document.createElement('span');
+      label.className = 'label';
+      label.textContent = `${value.value} · ${input.id}`;
+      const element = document.createElement('div');
+      element.id = rowId;
+      element.className = `grid ${input.className || ''}`;
+      element.style.tabSize = value.value;
+      element.textContent = input.text;
+      row.append(label, element);
+      root.append(row);
+      rows.push({ rowId, value, input });
+    }
+  }
+  window.__spinonInputs = rows;
+  document.fonts.ready.then(() => {
+    const chMeasure = document.createElement('div');
+    chMeasure.style.cssText = 'position:absolute;visibility:hidden;width:1ch;font:10px/10px Ahem';
+    document.body.append(chMeasure);
+    const chWidth = chMeasure.getBoundingClientRect().width;
+    chMeasure.remove();
+    const spaceMeasure = document.createElement('div');
+    spaceMeasure.style.cssText = 'position:absolute;visibility:hidden;width:max-content;white-space:pre;font:10px/10px Ahem';
+    spaceMeasure.textContent = ' ';
+    document.body.append(spaceMeasure);
+    const spaceAdvance = spaceMeasure.getBoundingClientRect().width;
+    spaceMeasure.remove();
+    window.__spinonOracle = {
+      userAgent: navigator.userAgent,
+      viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio },
+      fontLoaded: document.fonts.check('10px Ahem'),
+      chWidth,
+      spaceAdvance,
+      cases: rows.map(({ rowId, value, input }) => {
+        const element = document.getElementById(rowId);
+        const style = getComputedStyle(element);
+        const box = element.getBoundingClientRect();
+        const range = document.createRange();
+        range.selectNodeContents(element);
+        return {
+          id: rowId,
+          value: value.value,
+          kind: value.kind,
+          text: input.text,
+          supported: CSS.supports('tab-size', value.value),
+          computed: style.tabSize,
+          gridColumns: style.gridTemplateColumns,
+          gridRows: style.gridTemplateRows,
+          frame: { x: box.x, y: box.y, width: box.width, height: box.height },
+          textRects: [...range.getClientRects()].map(rect => ({
+            x: rect.x, y: rect.y, width: rect.width, height: rect.height
+          }))
+        };
+      })
+    };
+  });
+})();
+</script>

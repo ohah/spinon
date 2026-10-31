@@ -1,0 +1,5711 @@
+{
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewport": {
+    "width": 1280,
+    "height": 633,
+    "dpr": 1
+  },
+  "fontLoaded": true,
+  "chWidth": 10,
+  "spaceAdvance": 10,
+  "cases": [
+    {
+      "id": "number-zero-tab-only",
+      "value": "0",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 56,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-zero-leading",
+      "value": "0",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "10px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 74,
+        "width": 10,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 74,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 74,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-after-one",
+      "value": "0",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 102,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 102,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 102,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 102,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-after-two",
+      "value": "0",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 130,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 130,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 130,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 130,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-exact-stop",
+      "value": "0",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "50px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 158,
+        "width": 50,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 158,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 158,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 158,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-consecutive",
+      "value": "0",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 186,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 186,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 186,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 186,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-trailing",
+      "value": "0",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 214,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 214,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 214,
+          "width": 0,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-lf-reset",
+      "value": "0",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "40px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 242,
+        "width": 40,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 242,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 242,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 242,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 242,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 252,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 252,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 252,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-crlf-reset",
+      "value": "0",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "20px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 280,
+        "width": 20,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 280,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 280,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 280,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 290,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 290,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 290,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-min-content",
+      "value": "0",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 318,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 318,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 318,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 318,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-zero-fixed-overflow",
+      "value": "0",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 346,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 346,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 346,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 346,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-tab-only",
+      "value": "0.25",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 374,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-quarter-leading",
+      "value": "0.25",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "15px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 392,
+        "width": 15,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 392,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 5,
+          "y": 392,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-after-one",
+      "value": "0.25",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 420,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 420,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 420,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 420,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-after-two",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 448,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 448,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 448,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 448,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-exact-stop",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 476,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 476,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 476,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 476,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-consecutive",
+      "value": "0.25",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "27.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 504,
+        "width": 27.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 504,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 504,
+          "width": 7.5,
+          "height": 10
+        },
+        {
+          "x": 17.5,
+          "y": 504,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-trailing",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 532,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 532,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 532,
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-lf-reset",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "45px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 560,
+        "width": 45,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 560,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 560,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 560,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 560,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 570,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 570,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 570,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-crlf-reset",
+      "value": "0.25",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 598,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 598,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 598,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 598,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 608,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 608,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 608,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-min-content",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "45px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 636,
+        "width": 45,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 636,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 636,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 636,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-quarter-fixed-overflow",
+      "value": "0.25",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.25",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 664,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 664,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 664,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 664,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-tab-only",
+      "value": "0.3",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 692,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-three-tenths-leading",
+      "value": "0.3",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "16px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 710,
+        "width": 16,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 710,
+          "width": 6,
+          "height": 10
+        },
+        {
+          "x": 6,
+          "y": 710,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-after-one",
+      "value": "0.3",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 738,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 738,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 738,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 738,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-after-two",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "34px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 766,
+        "width": 34,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 766,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 766,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 766,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-exact-stop",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 794,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 794,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 794,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 794,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-consecutive",
+      "value": "0.3",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "28px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 822,
+        "width": 28,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 822,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 822,
+          "width": 8,
+          "height": 10
+        },
+        {
+          "x": 18,
+          "y": 822,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-trailing",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "24px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 850,
+        "width": 24,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 850,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 850,
+          "width": 4,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-lf-reset",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "44px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 878,
+        "width": 44,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 878,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 878,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 878,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 44,
+          "y": 878,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 888,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 888,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 888,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-crlf-reset",
+      "value": "0.3",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 916,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 916,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 916,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 916,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 926,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 926,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 926,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-min-content",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "44px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 954,
+        "width": 44,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 954,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 954,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 954,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-tenths-fixed-overflow",
+      "value": "0.3",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.3",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 982,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 982,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 982,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 982,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-tab-only",
+      "value": "0.5",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 1010,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-half-leading",
+      "value": "0.5",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "15px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1028,
+        "width": 15,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1028,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 5,
+          "y": 1028,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-after-one",
+      "value": "0.5",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1056,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1056,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1056,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1056,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-after-two",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1084,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1084,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1084,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1084,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-exact-stop",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1112,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1112,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 1112,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 1112,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-consecutive",
+      "value": "0.5",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1140,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1140,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1140,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1140,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-trailing",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1168,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1168,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1168,
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-lf-reset",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "45px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1196,
+        "width": 45,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1196,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1196,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1196,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 1196,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1206,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1206,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1206,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-crlf-reset",
+      "value": "0.5",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1234,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1234,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1234,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1234,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1244,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1244,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1244,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-min-content",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "45px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1272,
+        "width": 45,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1272,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1272,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1272,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-half-fixed-overflow",
+      "value": "0.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1300,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1300,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1300,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1300,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-tab-only",
+      "value": "1.5",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 1328,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-one-and-half-leading",
+      "value": "1.5",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1346,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1346,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1346,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-after-one",
+      "value": "1.5",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1374,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1374,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1374,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1374,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-after-two",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1402,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1402,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1402,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 1402,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-exact-stop",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1430,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1430,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 1430,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 1430,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-consecutive",
+      "value": "1.5",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1458,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1458,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1458,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 1458,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-trailing",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1486,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1486,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1486,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-lf-reset",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "50px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1514,
+        "width": 50,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1514,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1514,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 1514,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 50,
+          "y": 1514,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1524,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1524,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1524,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-crlf-reset",
+      "value": "1.5",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1552,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1552,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1552,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1552,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1562,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1562,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 1562,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-min-content",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "50px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1590,
+        "width": 50,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1590,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1590,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 1590,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-one-and-half-fixed-overflow",
+      "value": "1.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "1.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1618,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1618,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1618,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 1618,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-tab-only",
+      "value": "2.5",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 1646,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-two-and-half-leading",
+      "value": "2.5",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1664,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1664,
+          "width": 25,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1664,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-after-one",
+      "value": "2.5",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1692,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1692,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1692,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1692,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-after-two",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1720,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1720,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1720,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1720,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-exact-stop",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "60px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1748,
+        "width": 60,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1748,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 1748,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 50,
+          "y": 1748,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-consecutive",
+      "value": "2.5",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "60px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1776,
+        "width": 60,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1776,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1776,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 50,
+          "y": 1776,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-trailing",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1804,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1804,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1804,
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-lf-reset",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "45px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1832,
+        "width": 45,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1832,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1832,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1832,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 1832,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1842,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1842,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1842,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-crlf-reset",
+      "value": "2.5",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "35px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 1870,
+        "width": 35,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1870,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1870,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1870,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 1880,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 1880,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1880,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-min-content",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "45px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1908,
+        "width": 45,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1908,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1908,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1908,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-two-and-half-fixed-overflow",
+      "value": "2.5",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "2.5",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1936,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1936,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 1936,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 1936,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-tab-only",
+      "value": "3.25",
+      "kind": "number",
+      "text": "\t",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 1964,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "number-three-and-quarter-leading",
+      "value": "3.25",
+      "kind": "number",
+      "text": "\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "42.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 1982,
+        "width": 42.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 1982,
+          "width": 32.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 1982,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-after-one",
+      "value": "3.25",
+      "kind": "number",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "42.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2010,
+        "width": 42.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2010,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2010,
+          "width": 22.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2010,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-after-two",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "42.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2038,
+        "width": 42.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2038,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2038,
+          "width": 12.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2038,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-exact-stop",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "75px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2066,
+        "width": 75,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2066,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 2066,
+          "width": 25,
+          "height": 10
+        },
+        {
+          "x": 65,
+          "y": 2066,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-consecutive",
+      "value": "3.25",
+      "kind": "number",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "75px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2094,
+        "width": 75,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2094,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2094,
+          "width": 55,
+          "height": 10
+        },
+        {
+          "x": 65,
+          "y": 2094,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-trailing",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "32.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2122,
+        "width": 32.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2122,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2122,
+          "width": 12.5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-lf-reset",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "52.5px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2150,
+        "width": 52.5,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2150,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2150,
+          "width": 12.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2150,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 52.5,
+          "y": 2150,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2160,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2160,
+          "width": 22.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2160,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-crlf-reset",
+      "value": "3.25",
+      "kind": "number",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "42.5px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2188,
+        "width": 42.5,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2188,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2188,
+          "width": 22.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2188,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2198,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2198,
+          "width": 22.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2198,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-min-content",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "52.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2226,
+        "width": 52.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2226,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2226,
+          "width": 12.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2226,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "number-three-and-quarter-fixed-overflow",
+      "value": "3.25",
+      "kind": "number",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "3.25",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2254,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2254,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2254,
+          "width": 12.5,
+          "height": 10
+        },
+        {
+          "x": 32.5,
+          "y": 2254,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-tab-only",
+      "value": "0px",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 2282,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-zero-leading",
+      "value": "0px",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "10px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2300,
+        "width": 10,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2300,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2300,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-after-one",
+      "value": "0px",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2328,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2328,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2328,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2328,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-after-two",
+      "value": "0px",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2356,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2356,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2356,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2356,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-exact-stop",
+      "value": "0px",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "50px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2384,
+        "width": 50,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2384,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 2384,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 2384,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-consecutive",
+      "value": "0px",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2412,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2412,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2412,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2412,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-trailing",
+      "value": "0px",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "20px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2440,
+        "width": 20,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2440,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2440,
+          "width": 0,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-lf-reset",
+      "value": "0px",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "40px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2468,
+        "width": 40,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2468,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2468,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2468,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 2468,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2478,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2478,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2478,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-crlf-reset",
+      "value": "0px",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "20px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2506,
+        "width": 20,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2506,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2506,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2506,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2516,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2516,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2516,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-min-content",
+      "value": "0px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2544,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2544,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2544,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2544,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-zero-fixed-overflow",
+      "value": "0px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2572,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2572,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2572,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2572,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-tab-only",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 2600,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-three-tenths-leading",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "10.6094px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2618,
+        "width": 10.609375,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2618,
+          "width": 0.609375,
+          "height": 10
+        },
+        {
+          "x": 0.609375,
+          "y": 2618,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-after-one",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "20.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2646,
+        "width": 20.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2646,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2646,
+          "width": 0.5,
+          "height": 10
+        },
+        {
+          "x": 10.5,
+          "y": 2646,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-after-two",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "30.4062px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2674,
+        "width": 30.40625,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2674,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2674,
+          "width": 0.40625,
+          "height": 10
+        },
+        {
+          "x": 20.40625,
+          "y": 2674,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-exact-stop",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "50.5px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2702,
+        "width": 50.5,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2702,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 2702,
+          "width": 0.5,
+          "height": 10
+        },
+        {
+          "x": 40.5,
+          "y": 2702,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-consecutive",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "20.8125px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2730,
+        "width": 20.8125,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2730,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2730,
+          "width": 0.8125,
+          "height": 10
+        },
+        {
+          "x": 10.8125,
+          "y": 2730,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-trailing",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "20.4062px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2758,
+        "width": 20.40625,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2758,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2758,
+          "width": 0.40625,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-lf-reset",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "40.4062px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2786,
+        "width": 40.40625,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2786,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2786,
+          "width": 0.40625,
+          "height": 10
+        },
+        {
+          "x": 20.40625,
+          "y": 2786,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 40.40625,
+          "y": 2786,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2796,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2796,
+          "width": 0.5,
+          "height": 10
+        },
+        {
+          "x": 10.5,
+          "y": 2796,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-crlf-reset",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "20.5px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 2824,
+        "width": 20.5,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2824,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2824,
+          "width": 0.5,
+          "height": 10
+        },
+        {
+          "x": 10.5,
+          "y": 2824,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 2834,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2834,
+          "width": 0.5,
+          "height": 10
+        },
+        {
+          "x": 10.5,
+          "y": 2834,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-min-content",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "40.4062px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2862,
+        "width": 40.40625,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2862,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2862,
+          "width": 0.40625,
+          "height": 10
+        },
+        {
+          "x": 20.40625,
+          "y": 2862,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-three-tenths-fixed-overflow",
+      "value": "0.3px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "0.3px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2890,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2890,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2890,
+          "width": 0.40625,
+          "height": 10
+        },
+        {
+          "x": 20.40625,
+          "y": 2890,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-tab-only",
+      "value": "2px",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 2918,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-two-leading",
+      "value": "2px",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "14px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2936,
+        "width": 14,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2936,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 4,
+          "y": 2936,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-after-one",
+      "value": "2px",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "24px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2964,
+        "width": 24,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2964,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 2964,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 14,
+          "y": 2964,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-after-two",
+      "value": "2px",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "34px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 2992,
+        "width": 34,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 2992,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 2992,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 2992,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-exact-stop",
+      "value": "2px",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "54px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3020,
+        "width": 54,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3020,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 3020,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 44,
+          "y": 3020,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-consecutive",
+      "value": "2px",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "26px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3048,
+        "width": 26,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3048,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3048,
+          "width": 6,
+          "height": 10
+        },
+        {
+          "x": 16,
+          "y": 3048,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-trailing",
+      "value": "2px",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "24px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3076,
+        "width": 24,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3076,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3076,
+          "width": 4,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-lf-reset",
+      "value": "2px",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "44px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3104,
+        "width": 44,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3104,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3104,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3104,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 44,
+          "y": 3104,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3114,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3114,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 14,
+          "y": 3114,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-crlf-reset",
+      "value": "2px",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "24px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3142,
+        "width": 24,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3142,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3142,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 14,
+          "y": 3142,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3152,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3152,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 14,
+          "y": 3152,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-min-content",
+      "value": "2px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "44px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3180,
+        "width": 44,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3180,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3180,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3180,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-two-fixed-overflow",
+      "value": "2px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "2px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3208,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3208,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3208,
+          "width": 4,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3208,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-tab-only",
+      "value": "5px",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 3236,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-five-leading",
+      "value": "5px",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "15px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3254,
+        "width": 15,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3254,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 5,
+          "y": 3254,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-after-one",
+      "value": "5px",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3282,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3282,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3282,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3282,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-after-two",
+      "value": "5px",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3310,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3310,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3310,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 3310,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-exact-stop",
+      "value": "5px",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3338,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3338,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 3338,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 3338,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-consecutive",
+      "value": "5px",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3366,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3366,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3366,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3366,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-trailing",
+      "value": "5px",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3394,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3394,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3394,
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-lf-reset",
+      "value": "5px",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "45px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3422,
+        "width": 45,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3422,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3422,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 3422,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 3422,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3432,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3432,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3432,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-crlf-reset",
+      "value": "5px",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3460,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3460,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3460,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3460,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3470,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3470,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3470,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-min-content",
+      "value": "5px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "45px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3498,
+        "width": 45,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3498,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3498,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 3498,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-five-fixed-overflow",
+      "value": "5px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3526,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3526,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3526,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 3526,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-tab-only",
+      "value": "12px",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 3554,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-twelve-leading",
+      "value": "12px",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "22px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3572,
+        "width": 22,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3572,
+          "width": 12,
+          "height": 10
+        },
+        {
+          "x": 12,
+          "y": 3572,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-after-one",
+      "value": "12px",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "34px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3600,
+        "width": 34,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3600,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3600,
+          "width": 14,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3600,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-after-two",
+      "value": "12px",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "46px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3628,
+        "width": 46,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3628,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3628,
+          "width": 16,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 3628,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-exact-stop",
+      "value": "12px",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "58px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3656,
+        "width": 58,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3656,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 3656,
+          "width": 8,
+          "height": 10
+        },
+        {
+          "x": 48,
+          "y": 3656,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-consecutive",
+      "value": "12px",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "46px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3684,
+        "width": 46,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3684,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3684,
+          "width": 26,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 3684,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-trailing",
+      "value": "12px",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "36px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3712,
+        "width": 36,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3712,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3712,
+          "width": 16,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-lf-reset",
+      "value": "12px",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "56px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3740,
+        "width": 56,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3740,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3740,
+          "width": 16,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 3740,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 56,
+          "y": 3740,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3750,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3750,
+          "width": 14,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3750,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-crlf-reset",
+      "value": "12px",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "34px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 3778,
+        "width": 34,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3778,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3778,
+          "width": 14,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3778,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 3788,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3788,
+          "width": 14,
+          "height": 10
+        },
+        {
+          "x": 24,
+          "y": 3788,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-min-content",
+      "value": "12px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "56px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3816,
+        "width": 56,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3816,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3816,
+          "width": 16,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 3816,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-twelve-fixed-overflow",
+      "value": "12px",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "12px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3844,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3844,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3844,
+          "width": 16,
+          "height": 10
+        },
+        {
+          "x": 36,
+          "y": 3844,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-tab-only",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 3872,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-em-leading",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3890,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3890,
+          "width": 15,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3890,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-after-one",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3918,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3918,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 3918,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 3918,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-after-two",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3946,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3946,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 3946,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 3946,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-exact-stop",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 3974,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 3974,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 3974,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 3974,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-consecutive",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "40px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4002,
+        "width": 40,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4002,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4002,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 4002,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-trailing",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4030,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4030,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4030,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-lf-reset",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "50px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 4058,
+        "width": 50,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4058,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4058,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 4058,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 50,
+          "y": 4058,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 4068,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4068,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4068,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-crlf-reset",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 4096,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4096,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4096,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4096,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 4106,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4106,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4106,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-min-content",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "50px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4134,
+        "width": 50,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4134,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4134,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 4134,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-em-fixed-overflow",
+      "value": "1.5em",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "15px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4162,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4162,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4162,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 30,
+          "y": 4162,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-tab-only",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "\t",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "0px",
+      "gridRows": "0px",
+      "frame": {
+        "x": 0,
+        "y": 4190,
+        "width": 0,
+        "height": 0
+      },
+      "textRects": []
+    },
+    {
+      "id": "length-calc-leading",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "15px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4208,
+        "width": 15,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4208,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 5,
+          "y": 4208,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-after-one",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "X\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4236,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4236,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4236,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4236,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-after-two",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "35px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4264,
+        "width": 35,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4264,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4264,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 4264,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-exact-stop",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XXXX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "55px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4292,
+        "width": 55,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4292,
+          "width": 40,
+          "height": 10
+        },
+        {
+          "x": 40,
+          "y": 4292,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 4292,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-consecutive",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "X\t\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "30px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4320,
+        "width": 30,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4320,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4320,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4320,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-trailing",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XX\t",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4348,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4348,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4348,
+          "width": 5,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-lf-reset",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XX\tXX\nX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "45px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 4376,
+        "width": 45,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4376,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4376,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 4376,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 45,
+          "y": 4376,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 4386,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4386,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4386,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-crlf-reset",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "X\t\r\nX\tX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "20px",
+      "frame": {
+        "x": 0,
+        "y": 4414,
+        "width": 25,
+        "height": 20
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4414,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4414,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4414,
+          "width": 0,
+          "height": 10
+        },
+        {
+          "x": 0,
+          "y": 4424,
+          "width": 10,
+          "height": 10
+        },
+        {
+          "x": 10,
+          "y": 4424,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 15,
+          "y": 4424,
+          "width": 10,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-min-content",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "45px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4452,
+        "width": 45,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4452,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4452,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 4452,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    },
+    {
+      "id": "length-calc-fixed-overflow",
+      "value": "calc(2px + 3px)",
+      "kind": "length",
+      "text": "XX\tXX",
+      "supported": true,
+      "computed": "5px",
+      "gridColumns": "25px",
+      "gridRows": "10px",
+      "frame": {
+        "x": 0,
+        "y": 4480,
+        "width": 25,
+        "height": 10
+      },
+      "textRects": [
+        {
+          "x": 0,
+          "y": 4480,
+          "width": 20,
+          "height": 10
+        },
+        {
+          "x": 20,
+          "y": 4480,
+          "width": 5,
+          "height": 10
+        },
+        {
+          "x": 25,
+          "y": 4480,
+          "width": 20,
+          "height": 10
+        }
+      ]
+    }
+  ]
+}
