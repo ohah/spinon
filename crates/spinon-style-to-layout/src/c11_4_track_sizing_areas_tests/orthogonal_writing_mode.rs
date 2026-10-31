@@ -319,6 +319,7 @@ fn orthogonal_row_intrinsics_reach_taffy_from_computed_style_and_paragraph_input
         let paragraphs = BTreeMap::from([(
             item.id(),
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: WritingMode::VerticalRl,
                 text_orientation: TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -573,6 +574,7 @@ fn orthogonal_paragraph_must_match_its_computed_writing_style() {
     let paragraphs = BTreeMap::from([(
         item.id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: WritingMode::HorizontalTb,
             text_orientation: TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

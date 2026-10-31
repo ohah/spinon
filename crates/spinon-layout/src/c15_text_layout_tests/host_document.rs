@@ -163,6 +163,7 @@ fn host_document_collects_direct_text_and_inherited_spans_in_source_order() {
     let paragraph_styles = BTreeMap::from([(
         paragraph.id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
@@ -464,6 +465,7 @@ fn host_document_rejects_visible_non_span_element_inside_paragraph() {
     let paragraph_styles = BTreeMap::from([(
         paragraph.id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

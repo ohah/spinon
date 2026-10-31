@@ -99,6 +99,7 @@ fn compute(fixture: &Fixture) -> crate::StyleLayoutOutput {
     let paragraphs = BTreeMap::from([(
         fixture.nodes["text"].id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

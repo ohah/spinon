@@ -169,6 +169,7 @@ fn paragraph(
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

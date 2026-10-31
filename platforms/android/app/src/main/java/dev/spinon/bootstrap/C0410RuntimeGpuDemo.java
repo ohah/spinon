@@ -189,6 +189,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final double maxContentHeight;
         final double trackWidth;
         final double rowHeight;
+        final String overflowWrap;
         final double[] lineAdvances;
 
         C114ComputedWordBreakScene(
@@ -196,6 +197,19 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 double minContent, double maxContent,
                 double minContentHeight, double maxContentHeight,
                 boolean minContentTrack, double[] lineAdvances
+        ) {
+            this(text, language, fontFamily, wordBreak, "Normal",
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    minContentTrack ? minContent : maxContent,
+                    minContentTrack ? minContentHeight : maxContentHeight,
+                    lineAdvances);
+        }
+
+        C114ComputedWordBreakScene(
+                String text, String language, String fontFamily, String wordBreak,
+                String overflowWrap, double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                double trackWidth, double rowHeight, double[] lineAdvances
         ) {
             this.text = text;
             this.language = language;
@@ -205,8 +219,9 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.maxContent = maxContent;
             this.minContentHeight = minContentHeight;
             this.maxContentHeight = maxContentHeight;
-            this.trackWidth = minContentTrack ? minContent : maxContent;
-            this.rowHeight = minContentTrack ? minContentHeight : maxContentHeight;
+            this.trackWidth = trackWidth;
+            this.rowHeight = rowHeight;
+            this.overflowWrap = overflowWrap;
             this.lineAdvances = lineAdvances;
         }
     }
@@ -230,6 +245,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         final String whiteSpace;
         final String wordBreak;
         final String lineBreak;
+        final String overflowWrap;
         final String fontFamily;
         final String locale;
         final double letterSpacing;
@@ -340,6 +356,25 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 double letterSpacing, double wordSpacing, double textIndent,
                 String fontFamily, String locale, String lineBreak, double[] lineAdvances
         ) {
+            this(node, x, width, height, availableWidth, textWidth,
+                    paddingInline, paddingBlock, borderWidth,
+                    minContent, maxContent, minContentHeight, maxContentHeight,
+                    rawText, layoutText, whiteSpace, wordBreak,
+                    letterSpacing, wordSpacing, textIndent,
+                    fontFamily, locale, lineBreak, "Normal", lineAdvances);
+        }
+
+        C114GenericDirectTextItemExpectation(
+                int node, double x, double width, double height,
+                double availableWidth, double textWidth,
+                double paddingInline, double paddingBlock, double borderWidth,
+                double minContent, double maxContent,
+                double minContentHeight, double maxContentHeight,
+                String rawText, String layoutText, String whiteSpace, String wordBreak,
+                double letterSpacing, double wordSpacing, double textIndent,
+                String fontFamily, String locale, String lineBreak, String overflowWrap,
+                double[] lineAdvances
+        ) {
             this.node = node;
             this.x = x;
             this.width = width;
@@ -358,6 +393,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             this.whiteSpace = whiteSpace;
             this.wordBreak = wordBreak;
             this.lineBreak = lineBreak;
+            this.overflowWrap = overflowWrap;
             this.fontFamily = fontFamily;
             this.locale = locale;
             this.letterSpacing = letterSpacing;
@@ -496,15 +532,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         }
         C114ComputedWordBreakScene wordBreak = c114ComputedWordBreakScene(sceneId);
         if (wordBreak != null) {
+            double textWidth = wordBreak.trackWidth;
+            for (double lineAdvance : wordBreak.lineAdvances) {
+                textWidth = Math.max(textWidth, lineAdvance);
+            }
             C114GenericDirectTextItemExpectation item =
                     new C114GenericDirectTextItemExpectation(
                             2, 0, wordBreak.trackWidth, wordBreak.rowHeight,
-                            wordBreak.trackWidth, wordBreak.trackWidth,
+                            wordBreak.trackWidth, textWidth,
                             0, 0, 0, wordBreak.minContent, wordBreak.maxContent,
                             wordBreak.minContentHeight, wordBreak.maxContentHeight,
                             wordBreak.text, wordBreak.text, "Normal", wordBreak.wordBreak,
                             0, 0, 0, wordBreak.fontFamily, wordBreak.language,
-                            c114ComputedLineBreakMode(sceneId), wordBreak.lineAdvances);
+                            c114ComputedLineBreakMode(sceneId), wordBreak.overflowWrap,
+                            wordBreak.lineAdvances);
             return new C114GenericDirectTextSceneExpectation(
                     120, wordBreak.rowHeight, new double[] {wordBreak.trackWidth}, item, null);
         }
@@ -7501,9 +7542,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             }
             if (anonymousTextScene) {
                 boolean minContentTrack = sceneId.endsWith("-min-content");
+                boolean fixedOverflowWrapTrack = sceneId.startsWith("overflow-wrap-")
+                        && sceneId.endsWith("-fixed-10px");
                 for (int index = 0; index < expectedNodes.length; index++) {
-                    if (!measuredNodes[index] || !minContentWidthNodes[index]
-                            || maxContentWidthNodes[index] == minContentTrack
+                    if (!measuredNodes[index]
+                            || minContentWidthNodes[index] != !fixedOverflowWrapTrack
+                            || maxContentWidthNodes[index]
+                                    != (!fixedOverflowWrapTrack && !minContentTrack)
                             || !minContentHeightNodes[index]
                             || !maxContentHeightNodes[index]) return false;
                 }
@@ -7833,6 +7878,7 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 && "Normal".equals(c114GenericJsonString(style, "fontStyle"))
                 && expected.whiteSpace.equals(c114GenericJsonString(style, "whiteSpace"))
                 && expected.wordBreak.equals(c114GenericJsonString(style, "wordBreak"))
+                && expected.overflowWrap.equals(c114GenericJsonString(style, "overflowWrap"))
                 && "Ltr".equals(c114GenericJsonString(style, "direction"))
                 && c114GenericJsonNear(style, "letterSpacing", expected.letterSpacing, 0)
                 && c114GenericJsonNear(style, "wordSpacing", expected.wordSpacing, 0)
@@ -7923,13 +7969,15 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (c114IsAnonymousTextScene(sceneId)) {
             C114GenericDirectTextItemExpectation item = scene.items[0];
             boolean minContentTrack = sceneId.endsWith("-min-content");
+            boolean fixedOverflowWrapTrack = sceneId.startsWith("overflow-wrap-")
+                    && sceneId.endsWith("-fixed-10px");
             double rowHeight = scene.rootHeight;
-            int[] columnItems = minContentTrack
+            int[] columnItems = fixedOverflowWrapTrack ? new int[0] : minContentTrack
                     ? new int[] {item.node, item.node} : new int[] {item.node, item.node};
-            String[] columnKinds = minContentTrack
+            String[] columnKinds = fixedOverflowWrapTrack ? new String[0] : minContentTrack
                     ? new String[] {"MinContent", "MinContent"}
                     : new String[] {"MinContent", "MaxContent"};
-            double[] columnValues = minContentTrack
+            double[] columnValues = fixedOverflowWrapTrack ? new double[0] : minContentTrack
                     ? new double[] {item.minContent, item.minContent}
                     : new double[] {item.minContent, item.maxContent};
             return c114GenericDirectTextContributionsMatch(
@@ -12723,6 +12771,31 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "line-break-en-normal-min-content":
                 return new C114ComputedWordBreakScene("文〜文", "en", "Noto Sans KR", "Normal",
                         20, 30, 20, 10, true, new double[] {20, 10});
+            case "overflow-wrap-normal-min-content":
+            case "overflow-wrap-normal-max-content":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "Normal", 40, 40, 10, 10, 40, 10, new double[] {40});
+            case "overflow-wrap-normal-fixed-10px":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "Normal", 40, 40, 10, 10, 10, 10, new double[] {40});
+            case "overflow-wrap-anywhere-min-content":
+            case "overflow-wrap-anywhere-fixed-10px":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "Anywhere", 10, 40, 40, 10, 10, 40,
+                        new double[] {10, 10, 10, 10});
+            case "overflow-wrap-anywhere-max-content":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "Anywhere", 10, 40, 40, 10, 40, 10, new double[] {40});
+            case "overflow-wrap-break-word-min-content":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "BreakWord", 40, 40, 10, 10, 40, 10, new double[] {40});
+            case "overflow-wrap-break-word-max-content":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "BreakWord", 40, 40, 10, 10, 40, 10, new double[] {40});
+            case "overflow-wrap-break-word-fixed-10px":
+                return new C114ComputedWordBreakScene("XXXX", null, "Ahem", "Normal",
+                        "BreakWord", 40, 40, 10, 10, 10, 40,
+                        new double[] {10, 10, 10, 10});
             default:
                 return null;
         }

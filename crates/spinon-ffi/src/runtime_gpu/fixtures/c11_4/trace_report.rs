@@ -558,6 +558,7 @@ fn item_text_layout_json(snapshot: &LayoutTextSnapshot) -> serde_json::Value {
             "fontStyle": format!("{:?}", style.font_style),
             "whiteSpace": format!("{:?}", style.white_space),
             "wordBreak": format!("{:?}", style.word_break),
+            "overflowWrap": format!("{:?}", style.overflow_wrap),
             "locale": style.locale,
             "direction": format!("{:?}", style.direction),
             "writingMode": format!("{:?}", style.writing_mode),
@@ -938,6 +939,7 @@ mod tests {
                     text: "AB CDE F".to_owned(),
                 }],
                 style: ParagraphStyle {
+                    overflow_wrap: Default::default(),
                     writing_mode: WritingMode::VerticalRl,
                     text_orientation: TextOrientation::Mixed,
                     font_family: "Ahem".to_owned(),

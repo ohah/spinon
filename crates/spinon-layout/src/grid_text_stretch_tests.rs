@@ -104,6 +104,7 @@ fn grid_stretched_auto_height_text_box_may_exceed_paragraph_line_box() {
                 text: "XX XXXXXXX".to_owned(),
             }],
             style: ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -212,6 +213,7 @@ fn orthogonal_grid_row_uses_vertical_text_inline_intrinsic_size() {
                 text: content.to_owned(),
             }],
             style: ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::VerticalRl,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -462,6 +464,7 @@ fn grid_auto_height_with_zero_min_height_may_overflow_text_measure() {
                 text: "XX XXXXX".to_owned(),
             }],
             style: ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),

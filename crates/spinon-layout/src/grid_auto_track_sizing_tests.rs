@@ -458,6 +458,7 @@ fn track_sizing_combines_explicit_auto_and_positive_implicit_tracks_with_text() 
             text: "\u{00a0}".to_owned(),
         }],
         style: crate::ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

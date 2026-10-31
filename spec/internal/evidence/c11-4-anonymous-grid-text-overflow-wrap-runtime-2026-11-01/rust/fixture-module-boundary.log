@@ -1,0 +1,36 @@
+✔ fixture 이동 뒤 이전 경로에 Rust 사본이 남지 않는다 (0.604375ms)
+✔ calc 이웃 13 scene이 독립 oracle과 앱 경로에 고정된다 (113.64825ms)
+✔ 음수 percentage calc 이웃 9 scene이 규범 기대값과 앱 경로에 고정된다 (215.954666ms)
+✔ 41-scene 기준 matrix와 11-scene 교차축 slice가 capture·host 경로에 고정된다 (860.677333ms)
+✔ fit-content() 열 축 limit 네 장면이 opt-in runtime과 두 simulator에 연결된다 (106.121166ms)
+✔ CSS reference 도구가 삭제된 Rust fixture 경로를 참조하지 않는다 (19.488083ms)
+✔ 이동한 fixture 구현은 정해진 fixtures 모듈 경로에 있다 (0.391667ms)
+✔ C11.4 cyclic row auto-repeat 장면과 양 플랫폼 검사가 feature fixture에 고정된다 (110.425583ms)
+✔ C11.4 zero fixed-maximum auto-repeat 24 scene은 opt-in runtime에만 연결된다 (103.074792ms)
+✔ 작업별 FFI fixture 모듈은 runtime 소스 루트에 남지 않는다 (1.660458ms)
+✔ 앱 fixture adapter와 include 데이터는 opt-in Cargo feature에 격리된다 (14.881958ms)
+✔ C15.3 glyph paint 앱 adapter와 고정 글꼴은 opt-in feature 경계에 묶인다 (5.572375ms)
+✔ C11.4 fixed-repeat + auto-repeat 9 scene은 opt-in runtime fixture 경계에 있다 (108.609792ms)
+✔ C11.4 fixed + auto-repeat + template areas 9 scene은 두 simulator fixture에 고정된다 (211.55175ms)
+✔ C11.4 multiple fixed-repeat groups 12 scene은 opt-in runtime fixture 경계에 있다 (107.821292ms)
+✔ C11.4 intrinsic auto-repeat WPT 8 scene은 oracle 및 양 플랫폼 검사에 고정된다 (107.128834ms)
+✔ fit-content min-height WPT slice는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (107.123667ms)
+✔ zoomed fit-content WPT slice는 fixture parser와 양쪽 simulator 화면 판정에 고정된다 (105.891417ms)
+✔ definite-height percentage fit-content WPT slices는 opt-in runtime과 양쪽 simulator 판정에 고정된다 (107.340291ms)
+✔ definite-height calc fit-content WPT slice is isolated in the runtime catalog (94.938584ms)
+✔ fit-content automatic-minimum floor와 zero control이 opt-in runtime에 고정된다 (97.547625ms)
+✔ fit-content span-2 WPT slice가 opt-in runtime과 simulator capture에 연결된다 (106.434083ms)
+✔ fit-content WPT growth-limit 경계 세 건이 opt-in runtime과 두 simulator에 연결된다 (108.509ms)
+✔ anonymous Grid white-space matrix stays opt-in and reaches both simulators (109.147833ms)
+✔ C11.4 anonymous Grid computed font-size matrix stays in the opt-in simulator route (4.819042ms)
+✔ C11.4 anonymous Grid computed word-break matrix stays opt-in and reaches both simulators (4.553459ms)
+✔ C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches both simulators (3.622459ms)
+✔ C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reaches both simulators (4.077958ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2985.486791

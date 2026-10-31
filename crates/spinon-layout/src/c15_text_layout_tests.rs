@@ -82,6 +82,7 @@ fn input(width: f32, text: &str, white_space: WhiteSpaceMode) -> LayoutInput {
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

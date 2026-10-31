@@ -508,6 +508,7 @@ fn style_for(
 
 fn ahem_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),

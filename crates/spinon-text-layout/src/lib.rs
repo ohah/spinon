@@ -11,8 +11,8 @@ pub use engine::TextLayoutEngine;
 pub use error::TextLayoutError;
 pub use model::{
     FontStyleMode, InlineBoxStyle, InlineEdges, InlineRunStyle, LigatureMode, LineBreakMode,
-    ParagraphInput, ParagraphStyle, TabSize, TextDirection, TextSource, WhiteSpaceMode,
-    WordBreakMode,
+    OverflowWrapMode, ParagraphInput, ParagraphStyle, TabSize, TextDirection, TextSource,
+    WhiteSpaceMode, WordBreakMode,
 };
 pub use raster::{GlyphBitmap, GlyphBitmapContent, TextGlyphRaster, TextGlyphRasterSnapshot};
 pub use snapshot::{

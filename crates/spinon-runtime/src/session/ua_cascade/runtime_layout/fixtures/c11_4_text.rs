@@ -824,6 +824,7 @@ fn validate_typed_auto_repeat_text_style(
 
 fn typed_auto_repeat_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),
@@ -1102,6 +1103,7 @@ fn require_property(
 
 fn ahem_paragraph_style(case: &TextCase) -> ParagraphStyle {
     ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),

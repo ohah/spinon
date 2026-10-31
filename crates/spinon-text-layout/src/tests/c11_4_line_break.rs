@@ -15,6 +15,7 @@ fn paragraph(language: &str, line_break: LineBreakMode) -> ParagraphInput {
             text: "文〜文".to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             font_family: "Noto Sans KR".to_owned(),
             font_size: 10.0,
             line_height: 10.0,

@@ -2,7 +2,7 @@
 
 **상위:** [C11 CSS Grid](./c11-css-grid.md) · [C11.4 track sizing](./c11-4-grid-track-sizing.md) · [내부 Grid 계약 0059](../spec/internal/0059-c11-grid-layout.md) · [CSS Text 3 §5.4](https://www.w3.org/TR/2026/CRD-css-text-3-20260814/#overflow-wrap-property)
 
-**상태:** 구현 전 계획 후보. Chrome 156 Agent Browser 관찰과 Ahem font table 기반 독립 기대값을 아홉 장면에 고정했다. C11.4/C11과 공식 완료 `72/213`은 미완료 상태다.
+**상태:** 제한 구현 후보. Chrome 156 Agent Browser 관찰과 Ahem font table 기반 독립 기대값에 맞춰 구현하고 Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 각각 9/9 scene을 통과했다. 기본/fixture archive 경계 및 새 구현/runtime 20관점 검토를 마쳤다. 구현 PR diff 30관점 검토는 PR 생성 후 수행한다. PR은 아직 생성하지 않았으며 C11.4/C11 및 공식 완료 `72/213`은 미완료 상태다.
 
 ## 문제와 목표
 
@@ -28,16 +28,13 @@ CSS Text 3 §5.4에 따라 `anywhere`의 emergency break opportunities는 min-co
 ## 구현 및 검증 순서
 
 1. 계획 자체를 구현과 겹치지 않는 실패 관점 20개로 검토한다. 계획 PR diff는 별도의 독립 검토 30개를 거친다.
-2. 계획 PR을 Rebase and merge한 뒤 같은 checkout에서 최신 `origin/main` 기준 구현 branch를 만든다. worktree와 병렬 구현은 사용하지 않는다.
-3. `spinon-text-layout`에 `OverflowWrapMode::{Normal, Anywhere, BreakWord}`를 추가하고 validate/default/layout snapshot에 보존한다. `BreakWord`의 min-content pass는 CSS Text 3의 예외대로 normal soft-wrap opportunities를 사용하고, max-content/definite-width layout은 computed break-word를 보존한다.
-4. fixed Ahem `XXXX` focused text-layout test에서 세 mode 각각의 intrinsic inline/block sizes와 fixed 10px definite-width line layout을 독립 기대값으로 확인한다. Snapshot이 computed mode와 intrinsic result의 소유 paragraph를 잃지 않는지 검사한다.
-5. anonymous Grid runtime validator와 FFI source generator에 9개의 고유 scene을 추가한다. root property와 paragraph typed value는 동일한 current revision에서 읽고, `break-word` min-content는 `normal`과 같지만 fixed 10px layout은 four-line wrap임을 확인한다.
-6. `overflow-wrap` serialization mismatch, missing property, scene/value mismatch, wrong owner, stale revision, wrong font/text/track, 다른 `word-break`/`white-space`, unknown scene을 각각 negative control로 거부한다. 실패 시 부분 frame/trace/draw가 없어야 한다.
-7. Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 9 scene과 기존 anonymous-text regression을 실행한다. computed styles, text snapshot, intrinsic source, row/column tracks, frames, draw/present 및 installed/source artifact hashes를 기록한다. AVD software renderer와 iOS compositor 제출 전 drawable을 각각 분리해 적는다.
-8. default/product와 `c11-4-grid-track-sizing-fixture-test` release archive를 비교해 새 scene marker/payload와 fixture ABI 경계를 검사한다. archive 결과를 APK/IPA 전체 제외로 확대하지 않는다. fmt, 관련 text-layout/style-to-layout/runtime/FFI focused tests, fixture boundary, scoped Clippy와 두 Simulator app builds를 실행한다.
-9. 구현 뒤 계획 검토와 겹치지 않는 새 실패 관점 20개, 구현 PR diff의 별도 실패 관점 30개를 수행한다. 결함 수정은 영향받은 검토와 실행을 다시 확인한다.
-10. 구현 PR에는 가능한 Chrome, Android, iOS screenshots를 첨부하고 raw image URL을 Agent Browser로 확인한다. required checks와 PR state를 조회해 Rebase and merge한 뒤 최종 source SHA를 확인한다. 실행하지 않은 check은 통과로 보고하지 않는다.
-11. 병합 후 내부 계약 0059, C11.4 plan, `spec/STATUS.md`와 public roadmap에 제한 범위·증거·미완료 상태를 반영한다. C11.4/C11 checkboxes와 `72/213`을 유지한다.
+2. 계획 PR을 병합했고 같은 checkout에서 구현 branch를 진행한다. 이번 구현은 현재 checkout에서 순차적으로 수행하며 병렬 구현/worktree는 사용하지 않는다.
+3–6. `OverflowWrapMode::{Normal, Anywhere, BreakWord}`를 `ParagraphStyle`과 snapshot에 연결하고, BreakWord min-content와 definite-width mapping을 분리했다. text-layout 단위 검사, nine-scene FFI/runtime validator 및 불일치/owner/revision/미등록 값 거부 경로를 구현했다.
+7. Android API 37 ARM64 AVD 및 iPhone 17 Pro/iOS 26.2 Simulator에서 신규 9 scene 각각 9/9를 통과했다. 최종 APK/설치본 및 iOS executable/설치본 hash는 [실행 evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md)에 연결했다. AVD는 software renderer이고 iOS는 Simulator이며 glyph paint나 compositor 이후 pixels의 증거가 아니다.
+8. Android/iOS fixture app build, focused Rust/Node 검사 및 default/fixture FFI release archive 경계를 통과했다. Archive 검사의 hash와 한계는 [artifact evidence](../spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md)에 기록했다. APK/IPA 전체 bundle exclusion으로 확대하지 않는다.
+9. 구현 뒤 새 실패 관점 20개 검토와 구현 PR diff 30관점 검토를 각각 수행하고, 발견 사항은 수정 후 영향을 받은 검증을 반복한다.
+10. PR 생성 후 화면 이미지를 첨부하고 Agent Browser로 PR의 이미지 링크와 내용이 표시되는지 확인한다. required checks와 최종 PR state를 조회해 Rebase and merge한 뒤 source/merge SHA를 기록한다. 실행하지 않은 check은 통과로 보고하지 않는다.
+11. 병합 후 내부 계약 0059, C11.4 plan, `spec/STATUS.md`와 public roadmap을 동기화한다. C11.4/C11 checkboxes와 `72/213`은 계속 유지한다.
 
 ## 계획 실패 판정
 

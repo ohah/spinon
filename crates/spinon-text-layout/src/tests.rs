@@ -35,6 +35,7 @@ fn paragraph(
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: font_family.to_owned(),
@@ -996,6 +997,9 @@ mod paragraph_style;
 mod c11_4_break_spaces;
 #[path = "tests/c11_4_line_break.rs"]
 mod c11_4_line_break;
+
+#[path = "tests/c11_4_overflow_wrap.rs"]
+mod c11_4_overflow_wrap;
 #[path = "tests/c11_4_pre.rs"]
 mod c11_4_pre;
 #[path = "tests/c11_4_pre_wrap.rs"]

@@ -14,6 +14,7 @@ pub(super) fn paragraph_style(
     let (white_space, word_break, direction, line_break) = text_flow_style(style)?;
     let (line_height, line_height_is_normal) = line_height(style)?;
     Ok(ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: property(style, "font-family")?.to_owned(),

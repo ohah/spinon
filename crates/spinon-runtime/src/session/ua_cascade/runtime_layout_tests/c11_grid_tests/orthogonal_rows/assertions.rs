@@ -343,6 +343,7 @@ fn debug_raw_runtime_output(
     let paragraph_styles = BTreeMap::from([(
         text.id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: WritingMode::VerticalRl,
             text_orientation: TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),
