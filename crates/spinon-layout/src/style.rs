@@ -349,7 +349,7 @@ pub struct LayoutStyle {
     pub max_height: LayoutDimension,
     /// 선호 비율 `width / height`; 값은 유한한 양수여야 합니다.
     pub aspect_ratio: Option<f32>,
-    /// Flex item의 order-modified document order 값입니다. CSS 기본값은 0입니다.
+    /// Flex/Grid item의 order-modified document order 값입니다. CSS 기본값은 0입니다.
     pub order: i32,
     pub flex_basis: LayoutDimension,
     pub flex_direction: FlexDirection,

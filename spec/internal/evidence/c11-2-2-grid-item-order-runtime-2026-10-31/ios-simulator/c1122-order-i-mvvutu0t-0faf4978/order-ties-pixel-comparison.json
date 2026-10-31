@@ -1,0 +1,101 @@
+{
+  "schema": "spinon-c11-2-2-ios-metal-surface-pixels/v1",
+  "status": "matched",
+  "runID": "c1122-order-i-mvvutu0t-0faf4978-order-ties",
+  "processId": 51083,
+  "surfaceGeneration": 1,
+  "revisions": {
+    "document": 30,
+    "renderTree": 6,
+    "environment": 1
+  },
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "drawable": [
+    960,
+    720
+  ],
+  "scale": [
+    3,
+    3
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "samples": [
+    {
+      "id": "item-c1122-order-ties-a",
+      "css": [
+        25,
+        25
+      ],
+      "drawable": [
+        76,
+        76
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-order-ties-b",
+      "css": [
+        5,
+        25
+      ],
+      "drawable": [
+        16,
+        76
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-order-ties-c",
+      "css": [
+        15,
+        25
+      ],
+      "drawable": [
+        46,
+        76
+      ],
+      "rgba": [
+        43,
+        154,
+        102,
+        255
+      ],
+      "maximumChannelError": 0
+    },
+    {
+      "id": "item-c1122-order-ties-d",
+      "css": [
+        5,
+        35
+      ],
+      "drawable": [
+        16,
+        106
+      ],
+      "rgba": [
+        240,
+        174,
+        0,
+        255
+      ],
+      "maximumChannelError": 0
+    }
+  ]
+}

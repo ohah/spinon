@@ -1,0 +1,78 @@
+{
+  "status": "matched",
+  "scene": "order-mixed",
+  "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-mixed",
+  "processId": 16720,
+  "markerPrefix": "C1122",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    840,
+    630
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 3,
+  "matchedSamples": 3,
+  "maximumChannelError": 0,
+  "pngSha256": "281c4120c4ec6c29b4c06faf12d3f85e723c01aff91c9a302ede4c88ddfab73e",
+  "samples": [
+    {
+      "id": "item-c1122-order-mixed-a",
+      "css": [
+        25,
+        5
+      ],
+      "pixel": [
+        66,
+        14
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1122-order-mixed-b",
+      "css": [
+        5,
+        5
+      ],
+      "pixel": [
+        14,
+        14
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1122-order-mixed-c",
+      "css": [
+        15,
+        5
+      ],
+      "pixel": [
+        40,
+        14
+      ],
+      "rgba": [
+        43,
+        154,
+        102,
+        255
+      ]
+    }
+  ]
+}

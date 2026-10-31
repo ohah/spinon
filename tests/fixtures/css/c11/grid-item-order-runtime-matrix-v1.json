@@ -1,0 +1,232 @@
+{
+  "schema": "spinon-css-c11-2-2-grid-item-order-runtime-matrix/v1",
+  "profileId": "RuntimeBlockFlexGridAutoPlacementV1",
+  "inputs": {
+    "agentBrowserHtml": {
+      "path": "spec/internal/evidence/c11-2-2-grid-item-order-precomparison-2026-10-31/chrome-order.html",
+      "sha256": "50c0eddfd845a60b69a2ab500c55e5142ca2aed1f2d757f20077819b37275e9b"
+    },
+    "chromeObservation": {
+      "path": "spec/internal/evidence/c11-2-2-grid-item-order-precomparison-2026-10-31/chrome-observation.json",
+      "sha256": "071d792597e0598356b767aad4d6411c76ed18d60a13ec91f83d0e1f44cbb929"
+    },
+    "generator": {
+      "path": "tools/css-reference/build-c11-2-2-grid-item-order-runtime-matrix.mjs",
+      "sha256": "80411b0586358d3ba572543a5ed49f7ee298fb5cd56d86e2f9e0ec59b4e26343"
+    }
+  },
+  "viewportCssPx": {
+    "width": 360,
+    "height": 800
+  },
+  "wrapperStyle": "display:flex;width:360px;height:800px",
+  "cases": [
+    {
+      "index": 0,
+      "id": "order-mixed",
+      "rootId": "c1122-order-mixed-grid",
+      "nodes": [
+        {
+          "id": "c1122-order-mixed-grid",
+          "parentId": null,
+          "authoredStyle": "position:absolute;left:0;top:0px;display:grid;box-sizing:border-box;width:30px;height:10px;grid-template-columns:10px 10px 10px;grid-template-rows:10px;grid-auto-rows:10px;grid-auto-flow:row;column-gap:0;row-gap:0;margin:0;padding:0;border:0;background-color:#edf1f7"
+        },
+        {
+          "id": "c1122-order-mixed-a",
+          "parentId": "c1122-order-mixed-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:2;background-color:#2866f6"
+        },
+        {
+          "id": "c1122-order-mixed-b",
+          "parentId": "c1122-order-mixed-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#e5484d"
+        },
+        {
+          "id": "c1122-order-mixed-c",
+          "parentId": "c1122-order-mixed-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#2b9a66"
+        }
+      ],
+      "nodeIds": [
+        "c1122-order-mixed-grid",
+        "c1122-order-mixed-a",
+        "c1122-order-mixed-b",
+        "c1122-order-mixed-c"
+      ],
+      "parentIds": [
+        null,
+        "c1122-order-mixed-grid",
+        "c1122-order-mixed-grid",
+        "c1122-order-mixed-grid"
+      ],
+      "domItemOrder": [
+        "c1122-order-mixed-a",
+        "c1122-order-mixed-b",
+        "c1122-order-mixed-c"
+      ],
+      "computedOrders": {
+        "c1122-order-mixed-a": "2",
+        "c1122-order-mixed-b": "-1",
+        "c1122-order-mixed-c": "0"
+      },
+      "expectedRects": [
+        {
+          "id": "c1122-order-mixed-grid",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-mixed-a",
+          "rect": {
+            "x": 20,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-mixed-b",
+          "rect": {
+            "x": 0,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-mixed-c",
+          "rect": {
+            "x": 10,
+            "y": 0,
+            "width": 10,
+            "height": 10
+          }
+        }
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-order-mixed-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:0;top:0px;display:grid;box-sizing:border-box;width:30px;height:10px;grid-template-columns:10px 10px 10px;grid-template-rows:10px;grid-auto-rows:10px;grid-auto-flow:row;column-gap:0;row-gap:0;margin:0;padding:0;border:0;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-order-mixed-grid\"] = node_0;\nnodeIds.push(\"c1122-order-mixed-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-order-mixed-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:2;background-color:#2866f6\");\nrefs[\"c1122-order-mixed-grid\"].appendChild(node_1);\nrefs[\"c1122-order-mixed-a\"] = node_1;\nnodeIds.push(\"c1122-order-mixed-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-order-mixed-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#e5484d\");\nrefs[\"c1122-order-mixed-grid\"].appendChild(node_2);\nrefs[\"c1122-order-mixed-b\"] = node_2;\nnodeIds.push(\"c1122-order-mixed-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-order-mixed-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#2b9a66\");\nrefs[\"c1122-order-mixed-grid\"].appendChild(node_3);\nrefs[\"c1122-order-mixed-c\"] = node_3;\nnodeIds.push(\"c1122-order-mixed-c\");\nreturn { sceneId:\"order-mixed\", rootId:\"c1122-order-mixed-grid\", nodeIds };\n})()",
+      "sourceSha256": "a842c3e46c6c825bebb9d691ed86cedf5d56f51eeab6e27cd576f562ccecedef"
+    },
+    {
+      "index": 1,
+      "id": "order-ties",
+      "rootId": "c1122-order-ties-grid",
+      "nodes": [
+        {
+          "id": "c1122-order-ties-grid",
+          "parentId": null,
+          "authoredStyle": "position:absolute;left:0;top:20px;display:grid;box-sizing:border-box;width:30px;height:10px;grid-template-columns:10px 10px 10px;grid-template-rows:10px;grid-auto-rows:10px;grid-auto-flow:row;column-gap:0;row-gap:0;margin:0;padding:0;border:0;background-color:#edf1f7"
+        },
+        {
+          "id": "c1122-order-ties-a",
+          "parentId": "c1122-order-ties-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#2866f6"
+        },
+        {
+          "id": "c1122-order-ties-b",
+          "parentId": "c1122-order-ties-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#e5484d"
+        },
+        {
+          "id": "c1122-order-ties-c",
+          "parentId": "c1122-order-ties-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#2b9a66"
+        },
+        {
+          "id": "c1122-order-ties-d",
+          "parentId": "c1122-order-ties-grid",
+          "authoredStyle": "display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#f0ae00"
+        }
+      ],
+      "nodeIds": [
+        "c1122-order-ties-grid",
+        "c1122-order-ties-a",
+        "c1122-order-ties-b",
+        "c1122-order-ties-c",
+        "c1122-order-ties-d"
+      ],
+      "parentIds": [
+        null,
+        "c1122-order-ties-grid",
+        "c1122-order-ties-grid",
+        "c1122-order-ties-grid",
+        "c1122-order-ties-grid"
+      ],
+      "domItemOrder": [
+        "c1122-order-ties-a",
+        "c1122-order-ties-b",
+        "c1122-order-ties-c",
+        "c1122-order-ties-d"
+      ],
+      "computedOrders": {
+        "c1122-order-ties-a": "0",
+        "c1122-order-ties-b": "-1",
+        "c1122-order-ties-c": "-1",
+        "c1122-order-ties-d": "0"
+      },
+      "expectedRects": [
+        {
+          "id": "c1122-order-ties-grid",
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 30,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-ties-a",
+          "rect": {
+            "x": 20,
+            "y": 20,
+            "width": 10,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-ties-b",
+          "rect": {
+            "x": 0,
+            "y": 20,
+            "width": 10,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-ties-c",
+          "rect": {
+            "x": 10,
+            "y": 20,
+            "width": 10,
+            "height": 10
+          }
+        },
+        {
+          "id": "c1122-order-ties-d",
+          "rect": {
+            "x": 0,
+            "y": 30,
+            "width": 10,
+            "height": 10
+          }
+        }
+      ],
+      "expected": {
+        "outcome": "success"
+      },
+      "source": "(() => {\nconst refs = Object.create(null);\nconst nodeIds = [];\nconst sceneRoot = document.createElement(\"div\");\nsceneRoot.setAttribute(\"id\", \"c1122-runtime-scene-root\");\nsceneRoot.setAttribute(\"style\", \"display:flex;width:360px;height:800px\");\nsceneRoot.setAttribute(\"data-c1122-grid-wrapper\", \"\");\ndocument.appendChild(sceneRoot);\nconst node_0 = document.createElement(\"div\");\nnode_0.setAttribute(\"id\", \"c1122-order-ties-grid\");\nnode_0.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_0.setAttribute(\"style\", \"position:absolute;left:0;top:20px;display:grid;box-sizing:border-box;width:30px;height:10px;grid-template-columns:10px 10px 10px;grid-template-rows:10px;grid-auto-rows:10px;grid-auto-flow:row;column-gap:0;row-gap:0;margin:0;padding:0;border:0;background-color:#edf1f7\");\nsceneRoot.appendChild(node_0);\nrefs[\"c1122-order-ties-grid\"] = node_0;\nnodeIds.push(\"c1122-order-ties-grid\");\nconst node_1 = document.createElement(\"div\");\nnode_1.setAttribute(\"id\", \"c1122-order-ties-a\");\nnode_1.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_1.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#2866f6\");\nrefs[\"c1122-order-ties-grid\"].appendChild(node_1);\nrefs[\"c1122-order-ties-a\"] = node_1;\nnodeIds.push(\"c1122-order-ties-a\");\nconst node_2 = document.createElement(\"div\");\nnode_2.setAttribute(\"id\", \"c1122-order-ties-b\");\nnode_2.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_2.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#e5484d\");\nrefs[\"c1122-order-ties-grid\"].appendChild(node_2);\nrefs[\"c1122-order-ties-b\"] = node_2;\nnodeIds.push(\"c1122-order-ties-b\");\nconst node_3 = document.createElement(\"div\");\nnode_3.setAttribute(\"id\", \"c1122-order-ties-c\");\nnode_3.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_3.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:-1;background-color:#2b9a66\");\nrefs[\"c1122-order-ties-grid\"].appendChild(node_3);\nrefs[\"c1122-order-ties-c\"] = node_3;\nnodeIds.push(\"c1122-order-ties-c\");\nconst node_4 = document.createElement(\"div\");\nnode_4.setAttribute(\"id\", \"c1122-order-ties-d\");\nnode_4.setAttribute(\"data-c1122-grid-node\", \"\");\nnode_4.setAttribute(\"style\", \"display:block;box-sizing:border-box;width:10px;height:10px;margin:0;padding:0;border:0;order:0;background-color:#f0ae00\");\nrefs[\"c1122-order-ties-grid\"].appendChild(node_4);\nrefs[\"c1122-order-ties-d\"] = node_4;\nnodeIds.push(\"c1122-order-ties-d\");\nreturn { sceneId:\"order-ties\", rootId:\"c1122-order-ties-grid\", nodeIds };\n})()",
+      "sourceSha256": "553ffcd68d2fd5875f0cceeb7521ccd5f9cef109ad1b2490b7829e945495cbbb"
+    }
+  ],
+  "summary": {
+    "sceneCount": 2,
+    "nodeCount": 9,
+    "itemCount": 7
+  }
+}

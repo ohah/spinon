@@ -1,0 +1,95 @@
+{
+  "status": "matched",
+  "scene": "order-ties",
+  "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-ties",
+  "processId": 16827,
+  "markerPrefix": "C1122",
+  "surfaceGeneration": 2,
+  "density": 2.625,
+  "surface": [
+    840,
+    630
+  ],
+  "runtimeViewportCssPx": [
+    320,
+    240
+  ],
+  "scale": [
+    2.625,
+    2.625
+  ],
+  "expectedSamples": 4,
+  "matchedSamples": 4,
+  "maximumChannelError": 0,
+  "pngSha256": "5cfbac5af5aac61cbea152957fc9a4ae9af796c657933aa734d3d8a3cd8bcf05",
+  "samples": [
+    {
+      "id": "item-c1122-order-ties-a",
+      "css": [
+        25,
+        25
+      ],
+      "pixel": [
+        66,
+        66
+      ],
+      "rgba": [
+        40,
+        102,
+        246,
+        255
+      ]
+    },
+    {
+      "id": "item-c1122-order-ties-b",
+      "css": [
+        5,
+        25
+      ],
+      "pixel": [
+        14,
+        66
+      ],
+      "rgba": [
+        229,
+        72,
+        77,
+        255
+      ]
+    },
+    {
+      "id": "item-c1122-order-ties-c",
+      "css": [
+        15,
+        25
+      ],
+      "pixel": [
+        40,
+        66
+      ],
+      "rgba": [
+        43,
+        154,
+        102,
+        255
+      ]
+    },
+    {
+      "id": "item-c1122-order-ties-d",
+      "css": [
+        5,
+        35
+      ],
+      "pixel": [
+        14,
+        93
+      ],
+      "rgba": [
+        240,
+        174,
+        0,
+        255
+      ]
+    }
+  ]
+}

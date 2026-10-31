@@ -42,12 +42,15 @@ pub(super) struct SparseGridPlacement {
 
 struct ItemPlacement {
     node: NodeId,
+    order: i32,
+    source_order: usize,
     row: AxisPlacement,
     column: AxisPlacement,
 }
 
 pub(super) fn normalize_sparse_grid_container(
     input: &LayoutInput,
+    index: &BTreeMap<NodeId, usize>,
     hidden: &BTreeMap<NodeId, bool>,
     container_node: &crate::LayoutNode,
     container: &GridContainerInput,
@@ -72,7 +75,7 @@ pub(super) fn normalize_sparse_grid_container(
     )?;
     let mut auto_placed_items = BTreeSet::new();
 
-    for child in visible_children {
+    for (source_order, child) in visible_children.into_iter().enumerate() {
         let default_placement = crate::GridItemInput::default();
         let placement = input.grid_items.get(&child).unwrap_or(&default_placement);
         let row = resolve_axis(
@@ -101,10 +104,15 @@ pub(super) fn normalize_sparse_grid_container(
         }
         items.push(ItemPlacement {
             node: child,
+            order: input.nodes[index[&child]].style.order,
+            source_order,
             row,
             column,
         });
     }
+    // Order-modified document order is stable; the unique source index keeps ties stable
+    // without allocating a second buffer for a stable sort.
+    items.sort_unstable_by_key(|item| (item.order, item.source_order));
 
     let mut output = SparseGridPlacement {
         item_placements: BTreeMap::new(),

@@ -115,6 +115,39 @@ fn mixed_definite_and_auto_items_place_definite_items_first() {
 }
 
 #[test]
+fn sparse_auto_items_follow_order_and_preserve_source_order_for_ties() {
+    let mut input = sparse_grid(3, 2, 4);
+    input.nodes[1].style.order = 2;
+    input.nodes[2].style.order = -1;
+    input.nodes[3].style.order = -1;
+
+    assert_eq!([frame(&input, 3).x, frame(&input, 3).y], [0.0, 0.0]);
+    assert_eq!([frame(&input, 4).x, frame(&input, 4).y], [40.0, 0.0]);
+    assert_eq!([frame(&input, 5).x, frame(&input, 5).y], [80.0, 0.0]);
+    assert_eq!([frame(&input, 2).x, frame(&input, 2).y], [0.0, 20.0]);
+}
+
+#[test]
+fn sparse_order_is_rejected_when_any_visible_item_has_partial_placement() {
+    let mut input = sparse_grid(2, 2, 2);
+    input.nodes[1].style.order = 1;
+    input.grid_items.insert(
+        id(3),
+        placement(
+            GridPlacementInput::Line(1),
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+            GridPlacementInput::Auto,
+        ),
+    );
+
+    assert!(matches!(
+        TaffyLayoutEngine.compute(&input),
+        Err(crate::LayoutError::UnsupportedGridOrder(child)) if child == id(2)
+    ));
+}
+
+#[test]
 fn row_sparse_cursor_does_not_backfill_a_hole_and_respects_spans() {
     let mut input = sparse_grid(3, 1, 4);
     input.grid_items.insert(

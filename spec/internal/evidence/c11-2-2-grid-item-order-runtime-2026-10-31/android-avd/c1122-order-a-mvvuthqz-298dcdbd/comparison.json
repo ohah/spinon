@@ -1,0 +1,440 @@
+{
+  "schema": "spinon-c11-2-2-grid-item-order-mobile-runtime/v1",
+  "status": "matched",
+  "platform": "Android API 37 ARM64 AVD",
+  "runID": "c1122-order-a-mvvuthqz-298dcdbd",
+  "target": "emulator-5554 · Android 17/API 37 · sdk_gphone16k_arm64 · arm64-v8a",
+  "device": {
+    "serial": "emulator-5554",
+    "qemu": "1",
+    "release": "17",
+    "sdk": 37,
+    "model": "sdk_gphone16k_arm64",
+    "abi": "arm64-v8a",
+    "fingerprint": "google/sdk_gphone16k_arm64/emu64a16k:17/CP31.260623.012/16064790:userdebug/dev-keys",
+    "density": "Physical density: 420",
+    "size": "Physical size: 1080x2400",
+    "renderer": "GLES: Google (Google Inc. (Google)), Android Emulator OpenGL ES Translator (ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (LLVM 10.0.0) (0x0000C0DE)), SwiftShader driver-5.0.0)), OpenGL ES 3.1 (OpenGL ES 3.1.0 (ANGLE 2.1.1 git hash: fbf66f49c7cc))"
+  },
+  "appSha256": "26fd11adb7fbe42efcfbb3786a17f30e5f98d45f56b42039a62393c66775346b",
+  "inputs": {
+    "runtimeMatrixSha256": "369781c736eaffcf651f104b78ee28ca4742fa42b6be0c0a002033d55d69aa0c",
+    "pixelMatrixSha256": "8d460ab34abc767acafdfffb49e10d6aed868f83916552478e6da17567e4d3a9"
+  },
+  "summary": {
+    "scenes": 2,
+    "frameComparisons": 11,
+    "surfacePixelSamples": 7,
+    "maximumGeometryErrorCssPx": 0,
+    "maximumChannelError": 0,
+    "freshProcessPerScene": true,
+    "screenshotsArePixelParity": false
+  },
+  "observations": [
+    {
+      "sceneId": "order-mixed",
+      "outcome": "matched",
+      "nodeCount": 4,
+      "frameCount": 5,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "revisions": {
+        "generation": 1,
+        "document": 25,
+        "environment": 0
+      },
+      "screenshot": "order-mixed-android-avd.png",
+      "screenshotSha256": "183a518ac8b79a12685d462c6a8efb63bde0a0044094eafd6c8384a6fbdeab32",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "order-mixed",
+        "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-mixed",
+        "processId": 16720,
+        "markerPrefix": "C1122",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 3,
+        "matchedSamples": 3,
+        "maximumChannelError": 0,
+        "pngSha256": "281c4120c4ec6c29b4c06faf12d3f85e723c01aff91c9a302ede4c88ddfab73e",
+        "samples": [
+          {
+            "id": "item-c1122-order-mixed-a",
+            "css": [
+              25,
+              5
+            ],
+            "pixel": [
+              66,
+              14
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1122-order-mixed-b",
+            "css": [
+              5,
+              5
+            ],
+            "pixel": [
+              14,
+              14
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "item-c1122-order-mixed-c",
+            "css": [
+              15,
+              5
+            ],
+            "pixel": [
+              40,
+              14
+            ],
+            "rgba": [
+              43,
+              154,
+              102,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-mixed",
+      "processId": 16720
+    },
+    {
+      "sceneId": "order-ties",
+      "outcome": "matched",
+      "nodeCount": 5,
+      "frameCount": 6,
+      "maximumAbsoluteErrorCssPx": 0,
+      "toleranceCssPx": 0.5,
+      "positiveDrawCount": 2,
+      "paintOrderNodeIds": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "revisions": {
+        "generation": 1,
+        "document": 30,
+        "environment": 0
+      },
+      "screenshot": "order-ties-android-avd.png",
+      "screenshotSha256": "b4dca3c8bf82252e9abe018b5a2d3be3fca3137e358fabf8ab7002b2a32fd997",
+      "surfacePixelComparison": {
+        "status": "matched",
+        "scene": "order-ties",
+        "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-ties",
+        "processId": 16827,
+        "markerPrefix": "C1122",
+        "surfaceGeneration": 2,
+        "density": 2.625,
+        "surface": [
+          840,
+          630
+        ],
+        "runtimeViewportCssPx": [
+          320,
+          240
+        ],
+        "scale": [
+          2.625,
+          2.625
+        ],
+        "expectedSamples": 4,
+        "matchedSamples": 4,
+        "maximumChannelError": 0,
+        "pngSha256": "5cfbac5af5aac61cbea152957fc9a4ae9af796c657933aa734d3d8a3cd8bcf05",
+        "samples": [
+          {
+            "id": "item-c1122-order-ties-a",
+            "css": [
+              25,
+              25
+            ],
+            "pixel": [
+              66,
+              66
+            ],
+            "rgba": [
+              40,
+              102,
+              246,
+              255
+            ]
+          },
+          {
+            "id": "item-c1122-order-ties-b",
+            "css": [
+              5,
+              25
+            ],
+            "pixel": [
+              14,
+              66
+            ],
+            "rgba": [
+              229,
+              72,
+              77,
+              255
+            ]
+          },
+          {
+            "id": "item-c1122-order-ties-c",
+            "css": [
+              15,
+              25
+            ],
+            "pixel": [
+              40,
+              66
+            ],
+            "rgba": [
+              43,
+              154,
+              102,
+              255
+            ]
+          },
+          {
+            "id": "item-c1122-order-ties-d",
+            "css": [
+              5,
+              35
+            ],
+            "pixel": [
+              14,
+              93
+            ],
+            "rgba": [
+              240,
+              174,
+              0,
+              255
+            ]
+          }
+        ]
+      },
+      "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-ties",
+      "processId": 16827
+    }
+  ],
+  "pixelObservations": [
+    {
+      "status": "matched",
+      "scene": "order-mixed",
+      "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-mixed",
+      "processId": 16720,
+      "markerPrefix": "C1122",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 3,
+      "matchedSamples": 3,
+      "maximumChannelError": 0,
+      "pngSha256": "281c4120c4ec6c29b4c06faf12d3f85e723c01aff91c9a302ede4c88ddfab73e",
+      "samples": [
+        {
+          "id": "item-c1122-order-mixed-a",
+          "css": [
+            25,
+            5
+          ],
+          "pixel": [
+            66,
+            14
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-mixed-b",
+          "css": [
+            5,
+            5
+          ],
+          "pixel": [
+            14,
+            14
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-mixed-c",
+          "css": [
+            15,
+            5
+          ],
+          "pixel": [
+            40,
+            14
+          ],
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ]
+        }
+      ]
+    },
+    {
+      "status": "matched",
+      "scene": "order-ties",
+      "runID": "c1122-order-a-mvvuthqz-298dcdbd-order-ties",
+      "processId": 16827,
+      "markerPrefix": "C1122",
+      "surfaceGeneration": 2,
+      "density": 2.625,
+      "surface": [
+        840,
+        630
+      ],
+      "runtimeViewportCssPx": [
+        320,
+        240
+      ],
+      "scale": [
+        2.625,
+        2.625
+      ],
+      "expectedSamples": 4,
+      "matchedSamples": 4,
+      "maximumChannelError": 0,
+      "pngSha256": "5cfbac5af5aac61cbea152957fc9a4ae9af796c657933aa734d3d8a3cd8bcf05",
+      "samples": [
+        {
+          "id": "item-c1122-order-ties-a",
+          "css": [
+            25,
+            25
+          ],
+          "pixel": [
+            66,
+            66
+          ],
+          "rgba": [
+            40,
+            102,
+            246,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-b",
+          "css": [
+            5,
+            25
+          ],
+          "pixel": [
+            14,
+            66
+          ],
+          "rgba": [
+            229,
+            72,
+            77,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-c",
+          "css": [
+            15,
+            25
+          ],
+          "pixel": [
+            40,
+            66
+          ],
+          "rgba": [
+            43,
+            154,
+            102,
+            255
+          ]
+        },
+        {
+          "id": "item-c1122-order-ties-d",
+          "css": [
+            5,
+            35
+          ],
+          "pixel": [
+            14,
+            93
+          ],
+          "rgba": [
+            240,
+            174,
+            0,
+            255
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "두 fixed row-sparse auto-placement scene만 검증했으며 일반 CSS Grid 또는 C11 완료를 뜻하지 않는다.",
+    "Chrome 156 geometry와 지정 simulator runtime을 비교했다. 두 simulator는 실기기가 아니다.",
+    "표면 픽셀은 Android PixelCopy 또는 iOS Metal drawable 내부 표본이며 OS compositor 출력은 확인하지 않았다.",
+    "비겹침 item만 사용해 painting order, overlap, stacking을 검증하지 않았다."
+  ]
+}

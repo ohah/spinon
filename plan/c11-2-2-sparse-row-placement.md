@@ -99,4 +99,4 @@ C11.2.1의 explicit-only placement 다음으로 한 Grid 안에서 definite item
 
 ## 후속 계획
 
-- [행 우선 sparse Grid auto-placement의 computed `order`](./c11-2-2-sparse-row-order.md)는 이 단계에서 제외한 기능의 별도 제한 후속이다. 계획과 Chrome 사전 비교만 기록했으며 구현·runtime 검증은 아직 끝나지 않았다. C11.2.2/C11 완료 상태에는 영향을 주지 않는다.
+- [행 우선 sparse Grid auto-placement의 computed `order`](./c11-2-2-sparse-row-order.md)는 별도 versioned matrix의 두 고정 scene으로 제한 구현했다. Android 17/API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 geometry와 표면 표본이 통과했다. 이는 C11.2.2 또는 C11 전체 완료 상태를 바꾸지 않으며 겹침 paint/stacking과 일반 CSS 적합성도 증명하지 않는다.

@@ -665,9 +665,6 @@ pub(super) fn validate_grid_layout(
             if hidden[&child_id] {
                 continue;
             }
-            if child.style.order != 0 {
-                return Err(LayoutError::UnsupportedGridOrder(child_id));
-            }
             let positioned = input
                 .positioning
                 .get(&child_id)

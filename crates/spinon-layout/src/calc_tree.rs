@@ -246,12 +246,13 @@ impl CalcLayoutTree {
                         .map(|child| engine_ids[child]),
                 );
             }
-            if source.style.display == crate::LayoutDisplay::Flex
-                && !matches!(
-                    input.text_paragraphs.get(&external_id),
-                    Some(TextParagraphInput::Flow(_))
-                )
-            {
+            if matches!(
+                source.style.display,
+                crate::LayoutDisplay::Flex | crate::LayoutDisplay::Grid
+            ) && !matches!(
+                input.text_paragraphs.get(&external_id),
+                Some(TextParagraphInput::Flow(_))
+            ) {
                 // CSS order 값이 같으면 원본 순서를 유지하도록 안정 정렬합니다.
                 children.sort_by_key(|child| {
                     let child_id = postorder[usize::from(*child)];
