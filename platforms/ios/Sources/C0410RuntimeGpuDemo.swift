@@ -1034,6 +1034,11 @@ private let c114GridTrackSizingSceneIDs: Set<String> = [
     "anonymous-pre-forced-break",
     "anonymous-normal-fixed-width-control",
     "anonymous-pre-fixed-width-nowrap",
+    "anonymous-pre-tab-max-content", "anonymous-pre-tab-leading",
+    "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive",
+    "anonymous-pre-tab-forced-break", "anonymous-pre-tab-trailing",
+    "anonymous-pre-tab-min-content", "anonymous-pre-tab-fixed-width-nowrap",
+    "anonymous-pre-tab-size-2-negative",
     "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
     "whitespace-does-not-create-item", "anonymous-text-image-text",
     "image-before-comment-group", "comment-group-before-image",
@@ -1701,6 +1706,8 @@ private func c114CalcNeighborExpectedRejection(_ sceneID: String)
         return ("unsupported_computed_value", "grid-template-columns", "1")
     case "calc-neighbor-col-max-content":
         return ("invalid_grid_track_list", "grid-template-columns", "1")
+    case "anonymous-pre-tab-size-2-negative":
+        return ("unsupported_c114_anonymous_text_style", "tab-size", "1")
     default:
         return nil
     }
@@ -2373,6 +2380,14 @@ private func c114ExpectedRootFrame(_ sceneID: String) -> String {
     if sceneID == "anonymous-pre-forced-break" { return "width=20,height=20" }
     if sceneID == "anonymous-normal-fixed-width-control" { return "width=25,height=20" }
     if sceneID == "anonymous-pre-fixed-width-nowrap" { return "width=25,height=10" }
+    if sceneID == "anonymous-pre-tab-max-content" { return "width=100,height=10" }
+    if sceneID == "anonymous-pre-tab-leading" { return "width=90,height=10" }
+    if sceneID == "anonymous-pre-tab-exact-stop"
+        || sceneID == "anonymous-pre-tab-consecutive" { return "width=170,height=10" }
+    if sceneID == "anonymous-pre-tab-forced-break" { return "width=100,height=20" }
+    if sceneID == "anonymous-pre-tab-trailing" { return "width=80,height=10" }
+    if sceneID == "anonymous-pre-tab-min-content" { return "width=100,height=10" }
+    if sceneID == "anonymous-pre-tab-fixed-width-nowrap" { return "width=25,height=10" }
     if sceneID == "anonymous-pre-wrap-min-content-spaces"
         || sceneID == "anonymous-pre-wrap-forced-break" { return "width=20,height=20" }
     if sceneID == "anonymous-pre-wrap-soft-wrap" { return "width=25,height=20" }
@@ -3187,6 +3202,22 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
         expected = (50, 10, 25, 20, "Normal", [(2, "XX XX")])
     case "anonymous-pre-fixed-width-nowrap":
         expected = (50, 10, 25, 10, "Pre", [(2, "XX XX")])
+    case "anonymous-pre-tab-max-content":
+        expected = (100, 10, 100, 10, "Pre", [(2, "XX\tXX")])
+    case "anonymous-pre-tab-leading":
+        expected = (90, 10, 90, 10, "Pre", [(2, "\tX")])
+    case "anonymous-pre-tab-exact-stop":
+        expected = (170, 10, 170, 10, "Pre", [(2, "XXXXXXXX\tX")])
+    case "anonymous-pre-tab-consecutive":
+        expected = (170, 10, 170, 10, "Pre", [(2, "XX\t\tX")])
+    case "anonymous-pre-tab-forced-break":
+        expected = (100, 20, 100, 20, "Pre", [(2, "XX\tXX\nX\tX")])
+    case "anonymous-pre-tab-trailing":
+        expected = (80, 10, 80, 10, "Pre", [(2, "XX\t")])
+    case "anonymous-pre-tab-min-content":
+        expected = (100, 10, 100, 10, "Pre", [(2, "XX\tXX")])
+    case "anonymous-pre-tab-fixed-width-nowrap":
+        expected = (100, 10, 25, 10, "Pre", [(2, "XX\tXX")])
     case "anonymous-pre-wrap-max-content-spaces":
         expected = (60, 10, 60, 10, "PreWrap", [(2, "XX  XX")])
     case "anonymous-pre-wrap-comment-split-max-content":
@@ -3216,11 +3247,14 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
     default:
         return false
     }
-    let expectedMinContent = sceneID == "anonymous-pre-max-content-spaces" ? 60.0
+    let expectedMinContent = sceneID.hasPrefix("anonymous-pre-tab-") ? expected.maxContent
+        : sceneID == "anonymous-pre-max-content-spaces" ? 60.0
         : sceneID == "anonymous-pre-min-content-spaces"
             || sceneID == "anonymous-pre-fixed-width-nowrap" ? 50.0
             : sceneID.hasPrefix("anonymous-break-spaces-") ? 30.0 : 20.0
-    let expectedMinContentHeight = sceneID == "anonymous-break-spaces-forced-break-max-content"
+    let expectedMinContentHeight = sceneID.hasPrefix("anonymous-pre-tab-")
+        ? expected.maxContentHeight
+        : sceneID == "anonymous-break-spaces-forced-break-max-content"
         || sceneID == "anonymous-break-spaces-forced-break-min-content" ? 30.0
         : sceneID == "anonymous-pre-max-content-spaces"
             || sceneID == "anonymous-pre-min-content-spaces"
@@ -3257,6 +3291,67 @@ private func c114AnonymousNewlineTextIntrinsicInputsMatch(
         return false
     }
     return (paragraphStyle["whiteSpace"] as? String) == expected.whiteSpace
+        && (!sceneID.hasPrefix("anonymous-pre-tab-")
+            || c114AnonymousTabNormalizationMatches(sceneID, textLayout: textLayouts[0]))
+}
+
+private func c114AnonymousTabNormalizationMatches(
+    _ sceneID: String, textLayout: [String: Any]
+) -> Bool {
+    let source: String
+    let normalized: String
+    let tabAdvances: [Int]
+    switch sceneID {
+    case "anonymous-pre-tab-max-content", "anonymous-pre-tab-min-content",
+         "anonymous-pre-tab-fixed-width-nowrap":
+        source = "XX\tXX"
+        normalized = "XX      XX"
+        tabAdvances = [6]
+    case "anonymous-pre-tab-leading":
+        source = "\tX"
+        normalized = "        X"
+        tabAdvances = [8]
+    case "anonymous-pre-tab-exact-stop":
+        source = "XXXXXXXX\tX"
+        normalized = "XXXXXXXX        X"
+        tabAdvances = [8]
+    case "anonymous-pre-tab-consecutive":
+        source = "XX\t\tX"
+        normalized = "XX              X"
+        tabAdvances = [6, 8]
+    case "anonymous-pre-tab-forced-break":
+        source = "XX\tXX\nX\tX"
+        normalized = "XX      XX\nX       X"
+        tabAdvances = [6, 7]
+    case "anonymous-pre-tab-trailing":
+        source = "XX\t"
+        normalized = "XX      "
+        tabAdvances = [6]
+    default:
+        return false
+    }
+    guard textLayout["text"] as? String == normalized,
+          let ranges = textLayout["normalizedSources"] as? [[String: Any]],
+          ranges.count == source.utf16.count else { return false }
+    var outputOffset = 0
+    var tabIndex = 0
+    for (index, unit) in source.utf16.enumerated() {
+        let outputLength: Int
+        if unit == 0x0009 {
+            guard tabIndex < tabAdvances.count else { return false }
+            outputLength = tabAdvances[tabIndex]
+            tabIndex += 1
+        } else {
+            outputLength = 1
+        }
+        let range = ranges[index]
+        guard (range["node"] as? Int) == 2,
+              (range["sourceUtf16"] as? [Int]) == [index, index + 1],
+              (range["paragraphUtf8"] as? [Int]) == [outputOffset, outputOffset + outputLength],
+              (range["inlineAncestors"] as? [Int])?.isEmpty == true else { return false }
+        outputOffset += outputLength
+    }
+    return tabIndex == tabAdvances.count && outputOffset == normalized.utf8.count
 }
 
 private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String) -> Bool {
@@ -3300,6 +3395,48 @@ private func c114AnonymousNewlineTraceMatches(_ sceneID: String, report: String)
         expectRowContribution = true
         expectedColumnKind = nil
     case "anonymous-pre-fixed-width-nowrap":
+        expectedColumns = [25]
+        expectedRows = [10]
+        expectColumnContribution = false
+        expectRowContribution = true
+        expectedColumnKind = nil
+    case "anonymous-pre-tab-max-content":
+        expectedColumns = [100]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-leading":
+        expectedColumns = [90]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive":
+        expectedColumns = [170]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-forced-break":
+        expectedColumns = [100]
+        expectedRows = [20]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-trailing":
+        expectedColumns = [80]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MaxContent"
+    case "anonymous-pre-tab-min-content":
+        expectedColumns = [100]
+        expectedRows = [10]
+        expectColumnContribution = true
+        expectRowContribution = true
+        expectedColumnKind = "MinContent"
+    case "anonymous-pre-tab-fixed-width-nowrap":
         expectedColumns = [25]
         expectedRows = [10]
         expectColumnContribution = false
@@ -8324,6 +8461,18 @@ private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
     case "anonymous-normal-fixed-width-control":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]"
     case "anonymous-pre-fixed-width-nowrap":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]"
+    case "anonymous-pre-tab-max-content", "anonymous-pre-tab-min-content":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]"
+    case "anonymous-pre-tab-leading":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=90,height=10]"
+    case "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]"
+    case "anonymous-pre-tab-forced-break":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20]"
+    case "anonymous-pre-tab-trailing":
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=10]"
+    case "anonymous-pre-tab-fixed-width-nowrap":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]"
     case "anonymous-pre-wrap-min-content-spaces", "anonymous-pre-wrap-forced-break":
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=20,height=20]"

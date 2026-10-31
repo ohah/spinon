@@ -1,5 +1,5 @@
 use super::{close_to, engine, paragraph};
-use crate::{TextLayoutError, WhiteSpaceMode, WordBreakMode};
+use crate::{TextLayoutError, TextSource, WhiteSpaceMode, WordBreakMode};
 
 fn pre(text: &str) -> crate::ParagraphInput {
     let mut input = paragraph(
@@ -66,16 +66,111 @@ fn pre_preserves_forced_segment_breaks_and_source_provenance() {
 }
 
 #[test]
-fn pre_tabs_fail_closed_for_intrinsic_and_final_layout() {
+fn pre_tabs_advance_to_the_next_default_eight_space_stop() {
+    let mut engine = engine();
+    for (text, normalized, advance) in [
+        ("XX\tXX", "XX      XX", 100.0),
+        ("\tX", "        X", 90.0),
+        ("XXXXXXXX\tX", "XXXXXXXX        X", 170.0),
+        ("XX\t\tX", "XX              X", 170.0),
+        ("XX\t", "XX      ", 80.0),
+    ] {
+        let input = pre(text);
+        let layout = engine.layout_paragraph(&input, 250.0).unwrap();
+
+        assert_eq!(layout.text, normalized, "input {text:?}");
+        assert_eq!(layout.lines.len(), 1, "input {text:?}");
+        close_to(layout.lines[0].advance, advance);
+        close_to(layout.width, advance);
+    }
+}
+
+#[test]
+fn pre_tabs_reset_after_crlf_and_preserve_source_ranges() {
+    let mut engine = engine();
+    let layout = engine.layout_paragraph(&pre("X\t\r\nX\tX"), 200.0).unwrap();
+
+    assert_eq!(layout.text, "X       \nX       X");
+    assert_eq!(layout.lines.len(), 2);
+    close_to(layout.lines[0].advance, 80.0);
+    close_to(layout.lines[1].advance, 90.0);
+    close_to(layout.width, 90.0);
+    assert_eq!(layout.sources[1].source_utf16, 1..2);
+    assert_eq!(layout.sources[1].paragraph_utf8, 1..8);
+    assert_eq!(layout.sources[2].source_utf16, 2..3);
+    assert_eq!(layout.sources[3].source_utf16, 3..4);
+    assert_eq!(layout.sources[2].paragraph_utf8, 8..9);
+    assert_eq!(layout.sources[3].paragraph_utf8, 8..9);
+    assert_eq!(layout.sources[5].source_utf16, 5..6);
+    assert_eq!(layout.sources[5].paragraph_utf8, 10..17);
+}
+
+#[test]
+fn pre_tabs_keep_intrinsic_width_unwrapped_at_a_narrow_available_width() {
     let mut engine = engine();
     let input = pre("XX\tXX");
+    let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
 
-    assert!(matches!(
-        engine.intrinsic_inline_sizes(&input),
-        Err(TextLayoutError::UnsupportedPreTabProfile(node)) if node == input.node
-    ));
-    assert!(matches!(
-        engine.layout_paragraph(&input, 100.0),
-        Err(TextLayoutError::UnsupportedPreTabProfile(node)) if node == input.node
-    ));
+    close_to(sizes.min_content(), 100.0);
+    close_to(sizes.max_content(), 100.0);
+    assert_eq!(sizes.min_content_height(), 10.0);
+    assert_eq!(sizes.max_content_height(), 10.0);
+
+    let layout = engine.layout_paragraph(&input, 25.0).unwrap();
+    assert_eq!(layout.text, "XX      XX");
+    assert_eq!(layout.lines.len(), 1);
+    close_to(layout.lines[0].advance, 100.0);
+    close_to(layout.width, 100.0);
+    assert_eq!(layout.height, 10.0);
+    assert_eq!(layout.sources[2].source_utf16, 2..3);
+    assert_eq!(layout.sources[2].paragraph_utf8, 2..8);
+}
+
+#[test]
+fn pre_tabs_keep_source_nodes_when_text_sources_are_joined() {
+    let mut engine = engine();
+    let mut input = pre("XX\tXX");
+    let first = input.sources[0].clone();
+    input.sources = vec![
+        TextSource {
+            node: first.node,
+            inline_ancestors: Vec::new(),
+            text: "XX".to_owned(),
+        },
+        TextSource {
+            node: spinon_core::NodeId::new(3).unwrap(),
+            inline_ancestors: Vec::new(),
+            text: "\tXX".to_owned(),
+        },
+    ];
+    let layout = engine.layout_paragraph(&input, 200.0).unwrap();
+
+    assert_eq!(layout.text, "XX      XX");
+    assert_eq!(layout.sources[1].node, first.node);
+    assert_eq!(layout.sources[2].node, spinon_core::NodeId::new(3).unwrap());
+    assert_eq!(layout.sources[2].source_utf16, 0..1);
+    assert_eq!(layout.sources[2].paragraph_utf8, 2..8);
+}
+
+#[test]
+fn pre_tabs_fail_closed_outside_the_fixed_profile() {
+    let mut engine = engine();
+    let mut non_ahem = pre("XX\tXX");
+    non_ahem.style.font_family = "Roboto".to_owned();
+    let unsupported_character = pre("YX\tX");
+    let mut inline_ancestor = pre("XX\tXX");
+    inline_ancestor.sources[0]
+        .inline_ancestors
+        .push(spinon_core::NodeId::new(9).unwrap());
+
+    for input in [non_ahem, unsupported_character, inline_ancestor] {
+        assert!(matches!(
+            engine.intrinsic_inline_sizes(&input),
+            Err(TextLayoutError::UnsupportedPreTabProfile(node)) if node == input.node
+        ));
+        assert!(matches!(
+            engine.layout_paragraph(&input, 100.0),
+            Err(TextLayoutError::UnsupportedPreTabProfile(node)) if node == input.node
+        ));
+    }
 }

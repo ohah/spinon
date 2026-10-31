@@ -162,6 +162,11 @@ const anonymousTextSceneIDs = new Set([
   'anonymous-pre-max-content-spaces', 'anonymous-pre-min-content-spaces',
   'anonymous-pre-forced-break', 'anonymous-normal-fixed-width-control',
   'anonymous-pre-fixed-width-nowrap',
+  'anonymous-pre-tab-max-content', 'anonymous-pre-tab-leading',
+  'anonymous-pre-tab-exact-stop', 'anonymous-pre-tab-consecutive',
+  'anonymous-pre-tab-forced-break', 'anonymous-pre-tab-trailing',
+  'anonymous-pre-tab-min-content', 'anonymous-pre-tab-fixed-width-nowrap',
+  'anonymous-pre-tab-size-2-negative',
 ]);
 const anonymousTextImageSceneIDs = new Set([
   'anonymous-text-image-text', 'image-before-comment-group',
@@ -1540,8 +1545,154 @@ scenes.push(
       frame: { node: 2, x: 0, y: 0, width: 25, height: 10 },
     }],
   },
+  {
+    id: 'anonymous-pre-tab-max-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=100,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 100, minContentHeight: 10, maxContent: 100, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\tXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 100, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-leading', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=90,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=90,height=10]',
+    tracks: [90], collapsed: [false],
+    axes: {
+      Columns: { tracks: [90], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 90, minContentHeight: 10, maxContent: 90, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: '\tX' }],
+      frame: { node: 2, x: 0, y: 0, width: 90, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-exact-stop', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=170,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]',
+    tracks: [170], collapsed: [false],
+    axes: {
+      Columns: { tracks: [170], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 170, minContentHeight: 10, maxContent: 170, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XXXXXXXX\tX' }],
+      frame: { node: 2, x: 0, y: 0, width: 170, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-consecutive', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=170,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]',
+    tracks: [170], collapsed: [false],
+    axes: {
+      Columns: { tracks: [170], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 170, minContentHeight: 10, maxContent: 170, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\t\tX' }],
+      frame: { node: 2, x: 0, y: 0, width: 170, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-forced-break', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=100,height=20', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [20], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 100, minContentHeight: 20, maxContent: 100, maxContentHeight: 20 },
+      textSources: [{ node: 2, text: 'XX\tXX\nX\tX' }],
+      frame: { node: 2, x: 0, y: 0, width: 100, height: 20 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-trailing', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=80,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=10]',
+    tracks: [80], collapsed: [false],
+    axes: {
+      Columns: { tracks: [80], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 80, minContentHeight: 10, maxContent: 80, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\t' }],
+      frame: { node: 2, x: 0, y: 0, width: 80, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-min-content', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=100,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]',
+    tracks: [100], collapsed: [false],
+    axes: {
+      Columns: { tracks: [100], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 100, minContentHeight: 10, maxContent: 100, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\tXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 100, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-fixed-width-nowrap', axis: 'Columns', boxCount: 1,
+    rootFrame: 'width=25,height=10', itemFrame: null,
+    nodeFrames: 'node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]',
+    tracks: [25], collapsed: [false],
+    axes: {
+      Columns: { tracks: [25], collapsed: [false] },
+      Rows: { tracks: [10], collapsed: [false] },
+    },
+    gaps: { Columns: 0, Rows: 0 },
+    anonymousTextItems: [{
+      grid: 1, node: 2, sourceOrder: 0,
+      source: { minContent: 100, minContentHeight: 10, maxContent: 100, maxContentHeight: 10 },
+      textSources: [{ node: 2, text: 'XX\tXX' }],
+      frame: { node: 2, x: 0, y: 0, width: 25, height: 10 },
+    }],
+  },
+  {
+    id: 'anonymous-pre-tab-size-2-negative', axis: 'Columns',
+    expectedRejection: {
+      status: -11,
+      code: 'unsupported_c114_anonymous_text_style',
+      property: 'tab-size',
+      nodeId: 1,
+    },
+    boxCount: null, rootFrame: null, itemFrame: null, nodeFrames: null,
+  },
 );
-assert.equal(scenes.length, 186, 'C11.4 anonymous Grid text slice includes thirty-one scenes.');
+assert.equal(scenes.length, 195, 'C11.4 anonymous Grid text slice includes forty scenes.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 anonymous Grid text scene ID는 중복되지 않아야 합니다.');
 scenes.push(
@@ -6355,7 +6506,7 @@ assert.equal(scenes.filter(({ intrinsicAutoRepeatRecompute }) => intrinsicAutoRe
   8, 'C11.4 intrinsic auto-repeat matrix must add eight scenes.');
 assert.equal(scenes.filter(({ gridAutoRepeatIntrinsicWpt }) => gridAutoRepeatIntrinsicWpt).length,
   8, 'grid-auto-repeat-intrinsic WPT matrix must add eight scenes.');
-assert.equal(scenes.length, 648, 'C11.4 fixture scene count differs.');
+assert.equal(scenes.length, 657, 'C11.4 fixture scene count differs.');
 assert.equal(new Set(scenes.map(({ id }) => id)).size, scenes.length,
   'C11.4 fixture scene IDs must be unique.');
 const requestedSceneIDSet = requestedSceneIDs ? new Set(requestedSceneIDs) : null;
@@ -7467,6 +7618,13 @@ function verifyRuntimeLog(log, scene, runID) {
       `${scene.id}: rejected scene unexpectedly reached a layout summary.`);
     assert.ok(!log.includes(`SPINON_C114_GRID_NODE_FRAME run_id=${runID}`),
       `${scene.id}: rejected scene emitted node frames.`);
+    assert.ok(!log.includes(`SPINON_C114_GRID_TRACE_CHUNK run_id=${runID} `),
+      `${scene.id}: rejected scene emitted a track-sizing trace.`);
+    assert.ok(!log.includes(`SPINON_C114_GRID_PRESENTATION_MATCH run_id=${runID} matched=true`),
+      `${scene.id}: rejected scene reached successful presentation.`);
+    assert.ok(!log.includes(`SPINON_C114_GRID_PIXEL_MATRIX_SUMMARY status=matched run_id=${runID}`)
+      && !log.includes(`SPINON_C114_METAL_PIXEL_SUMMARY status=matched run_id=${runID}`),
+    `${scene.id}: rejected scene emitted a successful pixel readback.`);
     return { id: scene.id, status: 'expected-rejection', code, property, nodeId };
   }
   const summary = `SPINON_C114_GRID_SUMMARY run_id=${runID} scene_id=${scene.id} `;
@@ -8579,6 +8737,47 @@ function verifyRuntimeLog(log, scene, runID) {
           `${scene.id}: text layout node differs`);
         assert.equal(textLayouts[0].paragraphStyle?.whiteSpace, expectedWhiteSpace,
           `${scene.id}: white-space profile differs`);
+        if (scene.id.startsWith('anonymous-pre-tab-')) {
+          const { source, normalized, tabAdvances } = (() => {
+            switch (scene.id) {
+              case 'anonymous-pre-tab-max-content':
+              case 'anonymous-pre-tab-min-content':
+              case 'anonymous-pre-tab-fixed-width-nowrap':
+                return { source: 'XX\tXX', normalized: 'XX      XX', tabAdvances: [6] };
+              case 'anonymous-pre-tab-leading':
+                return { source: '\tX', normalized: '        X', tabAdvances: [8] };
+              case 'anonymous-pre-tab-exact-stop':
+                return { source: 'XXXXXXXX\tX', normalized: 'XXXXXXXX        X', tabAdvances: [8] };
+              case 'anonymous-pre-tab-consecutive':
+                return { source: 'XX\t\tX', normalized: 'XX              X', tabAdvances: [6, 8] };
+              case 'anonymous-pre-tab-forced-break':
+                return { source: 'XX\tXX\nX\tX', normalized: 'XX      XX\nX       X', tabAdvances: [6, 7] };
+              case 'anonymous-pre-tab-trailing':
+                return { source: 'XX\t', normalized: 'XX      ', tabAdvances: [6] };
+              default:
+                assert.fail(`${scene.id}: missing tab normalization oracle`);
+            }
+          })();
+          assert.equal(textLayouts[0].text, normalized,
+            `${scene.id}: normalized tab text differs`);
+          let paragraphOffset = 0;
+          let tabIndex = 0;
+          const expectedRanges = [...source].map((character, index) => {
+            const outputLength = character === '\t' ? tabAdvances[tabIndex++] : 1;
+            const range = {
+              node: 2,
+              sourceUtf16: [index, index + 1],
+              paragraphUtf8: [paragraphOffset, paragraphOffset + outputLength],
+              inlineAncestors: [],
+            };
+            paragraphOffset += outputLength;
+            return range;
+          });
+          assert.equal(tabIndex, tabAdvances.length,
+            `${scene.id}: expected tab provenance entries are incomplete`);
+          assert.deepEqual(textLayouts[0].normalizedSources, expectedRanges,
+            `${scene.id}: normalized tab source ranges differ`);
+        }
       }
       const traces = diagnostics.trackSizingTraces ?? [];
       assert.equal(traces.length, 1, `${scene.id}: expected exactly one Grid trace`);
@@ -8602,6 +8801,7 @@ function verifyRuntimeLog(log, scene, runID) {
             'anonymous-break-spaces-trailing-soft-wrap-25',
             'anonymous-normal-fixed-width-control',
             'anonymous-pre-fixed-width-nowrap',
+            'anonymous-pre-tab-fixed-width-nowrap',
           ].includes(scene.id));
         if (!expectsContribution) {
           assert.equal(pass.contributions.length, 0,
@@ -8613,6 +8813,7 @@ function verifyRuntimeLog(log, scene, runID) {
         const expectedKind = [
           'anonymous-pre-wrap-min-content-spaces',
           'anonymous-pre-min-content-spaces',
+          'anonymous-pre-tab-min-content',
           'anonymous-break-spaces-min-content',
           'anonymous-break-spaces-forced-break-min-content',
         ].includes(scene.id)

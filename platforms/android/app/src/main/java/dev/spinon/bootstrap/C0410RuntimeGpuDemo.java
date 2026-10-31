@@ -993,6 +993,11 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             "anonymous-pre-forced-break",
             "anonymous-normal-fixed-width-control",
             "anonymous-pre-fixed-width-nowrap",
+            "anonymous-pre-tab-max-content", "anonymous-pre-tab-leading",
+            "anonymous-pre-tab-exact-stop", "anonymous-pre-tab-consecutive",
+            "anonymous-pre-tab-forced-break", "anonymous-pre-tab-trailing",
+            "anonymous-pre-tab-min-content", "anonymous-pre-tab-fixed-width-nowrap",
+            "anonymous-pre-tab-size-2-negative",
             "anonymous-runs-around-block", "anonymous-hidden-child-continuation",
             "whitespace-does-not-create-item",
             "anonymous-text-image-text", "image-before-comment-group",
@@ -4564,6 +4569,8 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 return new String[] {"unsupported_computed_value", "grid-template-columns", "1"};
             case "calc-neighbor-col-max-content":
                 return new String[] {"invalid_grid_track_list", "grid-template-columns", "1"};
+            case "anonymous-pre-tab-size-2-negative":
+                return new String[] {"unsupported_c114_anonymous_text_style", "tab-size", "1"};
             default:
                 return null;
         }
@@ -5026,6 +5033,18 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
         if (sceneId.equals("anonymous-pre-forced-break")) return "width=20,height=20";
         if (sceneId.equals("anonymous-normal-fixed-width-control")) return "width=25,height=20";
         if (sceneId.equals("anonymous-pre-fixed-width-nowrap")) return "width=25,height=10";
+        if (sceneId.equals("anonymous-pre-tab-max-content")) return "width=100,height=10";
+        if (sceneId.equals("anonymous-pre-tab-leading")) return "width=90,height=10";
+        if (sceneId.equals("anonymous-pre-tab-exact-stop")
+                || sceneId.equals("anonymous-pre-tab-consecutive")) {
+            return "width=170,height=10";
+        }
+        if (sceneId.equals("anonymous-pre-tab-forced-break")) return "width=100,height=20";
+        if (sceneId.equals("anonymous-pre-tab-trailing")) return "width=80,height=10";
+        if (sceneId.equals("anonymous-pre-tab-min-content")) return "width=100,height=10";
+        if (sceneId.equals("anonymous-pre-tab-fixed-width-nowrap")) {
+            return "width=25,height=10";
+        }
         if (sceneId.equals("anonymous-pre-wrap-whitespace-before-block")) {
             return "width=40,height=10";
         }
@@ -5832,6 +5851,78 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     expectedSourceText = new String[] { "XX XX" };
                     expectedSourceNodes = new int[] { 2 };
                     break;
+                case "anonymous-pre-tab-max-content":
+                    maxContent = 100.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 100.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-leading":
+                    maxContent = 90.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 90.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-exact-stop":
+                    maxContent = 170.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 170.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XXXXXXXX\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-consecutive":
+                    maxContent = 170.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 170.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\t\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-forced-break":
+                    maxContent = 100.0;
+                    maxContentHeight = 20.0;
+                    itemWidth = 100.0;
+                    itemHeight = 20.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\tXX\nX\tX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-trailing":
+                    maxContent = 80.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 80.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\t" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-min-content":
+                    maxContent = 100.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 100.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
+                case "anonymous-pre-tab-fixed-width-nowrap":
+                    maxContent = 100.0;
+                    maxContentHeight = 10.0;
+                    itemWidth = 25.0;
+                    itemHeight = 10.0;
+                    expectedWhiteSpace = "Pre";
+                    expectedSourceText = new String[] { "XX\tXX" };
+                    expectedSourceNodes = new int[] { 2 };
+                    break;
                 case "anonymous-pre-line-max-content":
                     maxContent = 20.0;
                     maxContentHeight = 20.0;
@@ -5957,11 +6048,13 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 default:
                     return false;
             }
-            double expectedMinContent = sceneId.equals("anonymous-pre-max-content-spaces")
+            double expectedMinContent = sceneId.startsWith("anonymous-pre-tab-") ? maxContent
+                    : sceneId.equals("anonymous-pre-max-content-spaces")
                     ? 60.0 : sceneId.equals("anonymous-pre-min-content-spaces")
                             || sceneId.equals("anonymous-pre-fixed-width-nowrap") ? 50.0
                                     : sceneId.startsWith("anonymous-break-spaces-") ? 30.0 : 20.0;
-            double expectedMinContentHeight = sceneId.equals(
+            double expectedMinContentHeight = sceneId.startsWith("anonymous-pre-tab-")
+                    ? maxContentHeight : sceneId.equals(
                     "anonymous-break-spaces-forced-break-max-content")
                     || sceneId.equals("anonymous-break-spaces-forced-break-min-content")
                     ? 30.0 : sceneId.equals("anonymous-pre-max-content-spaces")
@@ -6002,10 +6095,83 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                     ? null : textLayout.optJSONObject("paragraphStyle");
             return textLayout != null && textLayout.optInt("node", -1) == 2
                     && expectedWhiteSpace.equals(
-                            paragraphStyle == null ? "" : paragraphStyle.optString("whiteSpace"));
+                            paragraphStyle == null ? "" : paragraphStyle.optString("whiteSpace"))
+                    && (!sceneId.startsWith("anonymous-pre-tab-")
+                            || c114AnonymousTabNormalizationMatches(sceneId, textLayout));
         } catch (org.json.JSONException | ClassCastException error) {
             return false;
         }
+    }
+
+    private static boolean c114AnonymousTabNormalizationMatches(
+            String sceneId, org.json.JSONObject textLayout
+    ) throws org.json.JSONException {
+        String source;
+        String normalized;
+        int[] tabAdvances;
+        switch (sceneId) {
+            case "anonymous-pre-tab-max-content":
+            case "anonymous-pre-tab-min-content":
+            case "anonymous-pre-tab-fixed-width-nowrap":
+                source = "XX\tXX";
+                normalized = "XX      XX";
+                tabAdvances = new int[] { 6 };
+                break;
+            case "anonymous-pre-tab-leading":
+                source = "\tX";
+                normalized = "        X";
+                tabAdvances = new int[] { 8 };
+                break;
+            case "anonymous-pre-tab-exact-stop":
+                source = "XXXXXXXX\tX";
+                normalized = "XXXXXXXX        X";
+                tabAdvances = new int[] { 8 };
+                break;
+            case "anonymous-pre-tab-consecutive":
+                source = "XX\t\tX";
+                normalized = "XX              X";
+                tabAdvances = new int[] { 6, 8 };
+                break;
+            case "anonymous-pre-tab-forced-break":
+                source = "XX\tXX\nX\tX";
+                normalized = "XX      XX\nX       X";
+                tabAdvances = new int[] { 6, 7 };
+                break;
+            case "anonymous-pre-tab-trailing":
+                source = "XX\t";
+                normalized = "XX      ";
+                tabAdvances = new int[] { 6 };
+                break;
+            default:
+                return false;
+        }
+        if (!normalized.equals(textLayout.optString("text"))) return false;
+        org.json.JSONArray ranges = textLayout.optJSONArray("normalizedSources");
+        if (ranges == null || ranges.length() != source.length()) return false;
+        int outputOffset = 0;
+        int tabIndex = 0;
+        for (int index = 0; index < source.length(); index++) {
+            int outputLength = source.charAt(index) == '\t' ? tabAdvances[tabIndex++] : 1;
+            org.json.JSONObject range = ranges.optJSONObject(index);
+            org.json.JSONArray sourceUtf16 = range == null
+                    ? null : range.optJSONArray("sourceUtf16");
+            org.json.JSONArray paragraphUtf8 = range == null
+                    ? null : range.optJSONArray("paragraphUtf8");
+            org.json.JSONArray inlineAncestors = range == null
+                    ? null : range.optJSONArray("inlineAncestors");
+            if (range == null || range.optInt("node", -1) != 2
+                    || sourceUtf16 == null || sourceUtf16.length() != 2
+                    || sourceUtf16.optInt(0, -1) != index
+                    || sourceUtf16.optInt(1, -1) != index + 1
+                    || paragraphUtf8 == null || paragraphUtf8.length() != 2
+                    || paragraphUtf8.optInt(0, -1) != outputOffset
+                    || paragraphUtf8.optInt(1, -1) != outputOffset + outputLength
+                    || inlineAncestors == null || inlineAncestors.length() != 0) {
+                return false;
+            }
+            outputOffset += outputLength;
+        }
+        return tabIndex == tabAdvances.length && outputOffset == normalized.length();
     }
 
     private static boolean c114AnonymousTextNumberNear(
@@ -6063,6 +6229,55 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
                 expectRowContribution = true;
                 break;
             case "anonymous-pre-fixed-width-nowrap":
+                expectedColumns = new double[] { 25.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = false;
+                expectRowContribution = true;
+                break;
+            case "anonymous-pre-tab-max-content":
+                expectedColumns = new double[] { 100.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-leading":
+                expectedColumns = new double[] { 90.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-exact-stop":
+            case "anonymous-pre-tab-consecutive":
+                expectedColumns = new double[] { 170.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-forced-break":
+                expectedColumns = new double[] { 100.0 };
+                expectedRows = new double[] { 20.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-trailing":
+                expectedColumns = new double[] { 80.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MaxContent";
+                break;
+            case "anonymous-pre-tab-min-content":
+                expectedColumns = new double[] { 100.0 };
+                expectedRows = new double[] { 10.0 };
+                expectColumnContribution = true;
+                expectRowContribution = true;
+                expectedColumnKind = "MinContent";
+                break;
+            case "anonymous-pre-tab-fixed-width-nowrap":
                 expectedColumns = new double[] { 25.0 };
                 expectedRows = new double[] { 10.0 };
                 expectColumnContribution = false;
@@ -8895,6 +9110,20 @@ final class C0410RuntimeGpuDemo extends LinearLayout implements SurfaceHolder.Ca
             case "anonymous-normal-fixed-width-control":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=20]";
             case "anonymous-pre-fixed-width-nowrap":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]";
+            case "anonymous-pre-tab-max-content":
+            case "anonymous-pre-tab-min-content":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=10]";
+            case "anonymous-pre-tab-leading":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=90,height=10]";
+            case "anonymous-pre-tab-exact-stop":
+            case "anonymous-pre-tab-consecutive":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=170,height=10]";
+            case "anonymous-pre-tab-forced-break":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=100,height=20]";
+            case "anonymous-pre-tab-trailing":
+                return "node_frames_css_px=[0:node=1,x=0,y=0,width=80,height=10]";
+            case "anonymous-pre-tab-fixed-width-nowrap":
                 return "node_frames_css_px=[0:node=1,x=0,y=0,width=25,height=10]";
             case "anonymous-pre-wrap-min-content-spaces":
             case "anonymous-pre-wrap-forced-break":

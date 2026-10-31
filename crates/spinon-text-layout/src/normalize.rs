@@ -34,14 +34,14 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
         }
     }
 
-    let preserve_tabs = input.style.white_space == WhiteSpaceMode::PreWrap
-        && characters.iter().any(|source| source.character == '\t');
-    if input.style.white_space == WhiteSpaceMode::Pre
-        && characters.iter().any(|source| source.character == '\t')
-    {
+    let has_tabs = characters.iter().any(|source| source.character == '\t');
+    let preserve_pre_tabs = input.style.white_space == WhiteSpaceMode::Pre && has_tabs;
+    let preserve_pre_wrap_tabs = input.style.white_space == WhiteSpaceMode::PreWrap && has_tabs;
+    if preserve_pre_tabs && !supports_pre_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreTabProfile(input.node));
     }
-    if preserve_tabs && !supports_pre_wrap_tab_profile(input, &characters) {
+    let preserve_tabs = preserve_pre_tabs || preserve_pre_wrap_tabs;
+    if preserve_pre_wrap_tabs && !supports_pre_wrap_tab_profile(input, &characters) {
         return Err(TextLayoutError::UnsupportedPreWrapTabProfile(input.node));
     }
     if input.style.white_space == WhiteSpaceMode::BreakSpaces
@@ -76,13 +76,13 @@ pub(crate) fn normalize(input: &ParagraphInput) -> Result<NormalizedText, TextLa
             }
             push_character_sources(&mut result, &line_break_sources, '\n');
             pre_wrap_column = 0;
-        } else if input.style.white_space == WhiteSpaceMode::PreWrap && source.character == '\t' {
+        } else if preserve_tabs && source.character == '\t' {
             let spaces = 8 - pre_wrap_column % 8;
             push_expanded_tab(&mut result, source, spaces);
             pre_wrap_column += spaces;
         } else if preserves_spaces_and_breaks(input.style.white_space) {
             push_character(&mut result, source, source.character);
-            if input.style.white_space == WhiteSpaceMode::PreWrap {
+            if preserve_tabs {
                 pre_wrap_column += 1;
             }
         } else if input.style.white_space == WhiteSpaceMode::PreLine
@@ -156,6 +156,34 @@ fn supports_pre_wrap_tab_profile(input: &ParagraphInput, characters: &[SourceCha
         && characters[2].character == '\t'
         && characters[3].character == 'X'
         && characters[4].character == 'X'
+}
+
+fn supports_pre_tab_profile(input: &ParagraphInput, characters: &[SourceCharacter]) -> bool {
+    let style = &input.style;
+    style.font_family == "Ahem"
+        && style.font_size == 10.0
+        && style.line_height == 10.0
+        && !style.line_height_is_normal
+        && style.font_weight == 400.0
+        && style.font_style == crate::FontStyleMode::Normal
+        && style.writing_mode == spinon_core::WritingMode::HorizontalTb
+        && style.text_orientation == spinon_core::TextOrientation::Mixed
+        && style.direction == crate::TextDirection::Ltr
+        && style.word_break == crate::WordBreakMode::Normal
+        && matches!(
+            style.line_break,
+            crate::LineBreakMode::Normal | crate::LineBreakMode::Strict
+        )
+        && style.ligatures == crate::LigatureMode::Normal
+        && input.inline_styles.is_empty()
+        && input.inline_run_styles.is_empty()
+        && characters.iter().all(|source| {
+            source.inline_ancestors.is_empty()
+                && matches!(
+                    source.character,
+                    'X' | ' ' | '\t' | '\n' | '\r' | '\u{000c}'
+                )
+        })
 }
 
 fn push_expanded_tab(result: &mut NormalizedText, source: &SourceCharacter, spaces: usize) {

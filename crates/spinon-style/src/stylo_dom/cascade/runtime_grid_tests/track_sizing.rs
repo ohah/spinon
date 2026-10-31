@@ -1,6 +1,32 @@
 use super::*;
 
 #[test]
+fn track_sizing_profile_exposes_computed_tab_size() {
+    for (declaration, expected) in [("", "8"), ("tab-size:8;", "8"), ("tab-size:2;", "2")] {
+        let fixture = fixture(&format!(
+            "display:grid;box-sizing:border-box;width:40px;height:20px;grid-template-columns:1fr;{declaration}"
+        ));
+        let snapshot = compute_runtime_block_flex_grid_track_sizing_cascade_with_stylesheets(
+            &fixture.view,
+            &[],
+            viewport(),
+            Default::default(),
+        )
+        .unwrap();
+        let style = snapshot
+            .elements
+            .iter()
+            .find(|style| style.node_id == fixture.root)
+            .unwrap();
+
+        assert_eq!(
+            style.properties.get("tab-size").map(String::as_str),
+            Some(expected)
+        );
+    }
+}
+
+#[test]
 fn track_sizing_profile_preserves_intrinsic_track_functions_and_calc_values() {
     let fixture = fixture(
         "display:grid;box-sizing:border-box;width:300px;height:200px;grid-template-columns:auto min-content max-content minmax(20px,max-content) minmax(min-content,2fr) fit-content(80px) calc(30px + 5%);grid-template-rows:fit-content(50%);margin:0;padding:0",
