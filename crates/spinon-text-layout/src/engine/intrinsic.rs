@@ -11,9 +11,9 @@ use parley::{
 use spinon_core::{NodeId, TextOrientation, WritingMode};
 
 use crate::{
-    LigatureMode, LineBreakMode, ParagraphInput, TextDirection, TextIntrinsicInlineSizes,
-    TextIntrinsicLogicalSizes, TextLayoutError, WhiteSpaceMode, WordBreakMode,
-    normalize::normalize,
+    LigatureMode, LineBreakMode, OverflowWrapMode, ParagraphInput, TextDirection,
+    TextIntrinsicInlineSizes, TextIntrinsicLogicalSizes, TextLayoutError, WhiteSpaceMode,
+    WordBreakMode, normalize::normalize,
 };
 
 use super::{TextLayoutEngine, inline_boxes};
@@ -81,13 +81,39 @@ impl TextLayoutEngine {
         }
         let letter_spacing = input.style.letter_spacing;
         let text_indent = input.style.text_indent;
+        layout.break_all_lines(None);
+        let max_content = (
+            max_content_inline_advance(&layout, input.node, letter_spacing, text_indent)?,
+            layout.height(),
+        );
+        let (inline_boundaries, mut min_layout) =
+            if input.style.overflow_wrap == OverflowWrapMode::BreakWord {
+                // CSS Text excludes break-word emergency opportunities from min-content sizing.
+                // Parley uses BreakWord for definite-width emergency wrapping, so measure this
+                // one intrinsic pass with Normal while retaining the computed mode elsewhere.
+                let BuiltParleyLayout {
+                    normalized: min_normalized,
+                    inline_boundaries,
+                    layout,
+                } = self.build_parley_layout_with_overflow_wrap(
+                    input,
+                    Vec::new(),
+                    OverflowWrapMode::Normal,
+                )?;
+                if min_normalized.text != normalized.text {
+                    return Err(TextLayoutError::InvalidGlyphLayout(input.node));
+                }
+                (inline_boundaries, layout)
+            } else {
+                (inline_boundaries, layout)
+            };
         if matches!(input.style.white_space, WhiteSpaceMode::PreWithTabSize(_)) {
-            layout.break_all_lines(None);
+            min_layout.break_all_lines(None);
         } else {
-            layout.break_all_lines(Some(0.0));
+            min_layout.break_all_lines(Some(0.0));
         }
         let min_content_inline = min_content_inline_advance(
-            &layout,
+            &min_layout,
             &inline_boundaries,
             input.node,
             letter_spacing,
@@ -96,17 +122,12 @@ impl TextLayoutEngine {
         let min_content_block = if input.style.white_space == WhiteSpaceMode::BreakSpaces {
             // break-spaces does not hang preserved end-of-line spaces. Reflow at the
             // computed min-content inline size so block size reflects those retained spaces.
-            layout.break_all_lines(Some(min_content_inline));
-            min_content_block_size(&layout, input.node)?
+            min_layout.break_all_lines(Some(min_content_inline));
+            min_content_block_size(&min_layout, input.node)?
         } else {
-            min_content_block_size(&layout, input.node)?
+            min_content_block_size(&min_layout, input.node)?
         };
         let min_content = (min_content_inline, min_content_block);
-        layout.break_all_lines(None);
-        let max_content = (
-            max_content_inline_advance(&layout, input.node, letter_spacing, text_indent)?,
-            layout.height(),
-        );
         if !min_content.0.is_finite()
             || !max_content.0.is_finite()
             || !min_content.1.is_finite()
@@ -133,6 +154,19 @@ impl TextLayoutEngine {
         &mut self,
         input: &ParagraphInput,
         additional_inline_items: Vec<(parley::InlineBox, inline_boxes::InlineBoundary)>,
+    ) -> Result<BuiltParleyLayout, TextLayoutError> {
+        self.build_parley_layout_with_overflow_wrap(
+            input,
+            additional_inline_items,
+            input.style.overflow_wrap,
+        )
+    }
+
+    pub(super) fn build_parley_layout_with_overflow_wrap(
+        &mut self,
+        input: &ParagraphInput,
+        additional_inline_items: Vec<(parley::InlineBox, inline_boxes::InlineBoundary)>,
+        overflow_wrap: OverflowWrapMode,
     ) -> Result<BuiltParleyLayout, TextLayoutError> {
         input
             .style
@@ -220,7 +254,11 @@ impl TextLayoutEngine {
                 "\"liga\" off, \"clig\" off, \"dlig\" off, \"hlig\" off, \"calt\" off",
             )));
         }
-        builder.push_default(StyleProperty::OverflowWrap(OverflowWrap::Normal));
+        builder.push_default(StyleProperty::OverflowWrap(match overflow_wrap {
+            OverflowWrapMode::Normal => OverflowWrap::Normal,
+            OverflowWrapMode::Anywhere => OverflowWrap::Anywhere,
+            OverflowWrapMode::BreakWord => OverflowWrap::BreakWord,
+        }));
         builder.push_default(StyleProperty::TextWrapMode(match input.style.white_space {
             WhiteSpaceMode::NoWrap | WhiteSpaceMode::Pre | WhiteSpaceMode::PreWithTabSize(_) => {
                 TextWrapMode::NoWrap
@@ -306,6 +344,7 @@ fn supports_vertical_intrinsic_profile(input: &ParagraphInput) -> bool {
             WhiteSpaceMode::Normal | WhiteSpaceMode::NoWrap
         )
         && style.word_break == WordBreakMode::Normal
+        && style.overflow_wrap == OverflowWrapMode::Normal
         && style.direction == TextDirection::Ltr
         && style.line_break == LineBreakMode::Normal
         && style.ligatures == LigatureMode::Normal

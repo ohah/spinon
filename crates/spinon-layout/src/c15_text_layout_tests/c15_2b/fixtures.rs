@@ -208,6 +208,7 @@ pub(super) fn paragraph_style(
     line_height: f32,
 ) -> ParagraphStyle {
     ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: spinon_core::WritingMode::HorizontalTb,
         text_orientation: spinon_core::TextOrientation::Mixed,
         font_family: font_family.to_owned(),

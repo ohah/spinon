@@ -170,6 +170,7 @@ fn run(case: &Case, owner: u64) {
     let paragraphs = BTreeMap::from([(
         fixture.text_item.id(),
         ParagraphStyle {
+            overflow_wrap: Default::default(),
             writing_mode: spinon_core::WritingMode::HorizontalTb,
             text_orientation: spinon_core::TextOrientation::Mixed,
             font_family: "Ahem".to_owned(),

@@ -2363,3 +2363,59 @@ test('C11.4 anonymous Grid computed line-break matrix stays opt-in and reaches b
   assert.ok(evidence.includes('5/5'));
   assert.ok(evidence.includes('renderer'));
 });
+
+test('C11.4 anonymous Grid computed overflow-wrap matrix stays opt-in and reaches both simulators', async () => {
+  const sceneIDs = [
+    'overflow-wrap-normal-min-content', 'overflow-wrap-normal-max-content',
+    'overflow-wrap-normal-fixed-10px', 'overflow-wrap-anywhere-min-content',
+    'overflow-wrap-anywhere-max-content', 'overflow-wrap-anywhere-fixed-10px',
+    'overflow-wrap-break-word-min-content', 'overflow-wrap-break-word-max-content',
+    'overflow-wrap-break-word-fixed-10px',
+  ];
+  const paths = [
+    'crates/spinon-ffi/src/runtime_gpu.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/anonymous_text_items/computed_overflow_wrap.rs',
+    'crates/spinon-ffi/src/runtime_gpu/fixtures/c11_4/trace_report.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout/fixtures/c11_4_anonymous_text/overflow_wrap.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests.rs',
+    'crates/spinon-runtime/src/session/ua_cascade/runtime_layout_tests/c11_grid_tests/anonymous_text_overflow_wrap.rs',
+    'platforms/android/app/src/main/java/dev/spinon/bootstrap/C0410RuntimeGpuDemo.java',
+    'platforms/ios/Sources/C0410RuntimeGpuDemo.swift',
+    'tools/css-reference/capture-c11-4-anonymous-grid-text-overflow-wrap-simulators.mjs',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/expected.json',
+    'spec/internal/evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md',
+  ];
+  const contents = await Promise.all(paths.map((path) =>
+    readFile(resolve(repositoryRoot, path), 'utf8')));
+  const [runtimeGpu, ffiRoute, ffiSource, traceReport, runtimeRoute, runtimeSource,
+    runtimeTests, runtimeTestSource, android, ios, capture, expected, evidence] = contents;
+  assert.match(runtimeGpu,
+    /#\[cfg\(feature = "c04-runtime-gpu-fixture-test"\)\]\s*mod fixtures;/);
+  assert.match(ffiRoute,
+    /#\[path = "anonymous_text_items\/computed_overflow_wrap\.rs"\]\s*mod computed_overflow_wrap;/);
+  assert.match(runtimeTests,
+    /#\[cfg\(feature = "c11-4-grid-track-sizing-fixture-test"\)\][\s\S]*anonymous_text_overflow_wrap;/);
+  assert.ok(runtimeSource.includes('validate_computed_overflow_wrap'));
+  assert.ok(runtimeRoute.includes('expected_overflow_wrap(scene_id)'));
+  assert.ok(traceReport.includes('"overflowWrap"'));
+  for (const sceneID of sceneIDs) {
+    assert.ok(ffiSource.includes(sceneID), `FFI source catalog is missing ${sceneID}`);
+    assert.ok(runtimeRoute.includes(sceneID), `runtime scene catalog is missing ${sceneID}`);
+    assert.ok(runtimeTestSource.includes(sceneID), `runtime verifier is missing ${sceneID}`);
+    assert.ok(android.includes(sceneID), `Android scene validator is missing ${sceneID}`);
+    assert.ok(ios.includes(sceneID), `iOS scene validator is missing ${sceneID}`);
+    assert.ok(expected.includes(sceneID), `independent expected values are missing ${sceneID}`);
+  }
+  assert.ok(capture.includes('expectedValues.candidateScenes'));
+  assert.ok(capture.includes('layout.paragraphStyle.overflowWrap'));
+  assert.ok(capture.includes('installedApkSha256'));
+  assert.ok(capture.includes('installedExecutableSha256'));
+  assert.ok(capture.includes("finalTrackSizes('Columns')"));
+  assert.ok(capture.includes("finalTrackSizes('Rows')"));
+  assert.ok(runtimeTestSource.includes('anonymous_grid_overflow_wrap_reaches_style_paragraph_intrinsics_and_tracks'));
+  assert.ok(runtimeTestSource.includes('anonymous_grid_overflow_wrap_rejects_scene_value_mismatch'));
+  assert.ok(evidence.includes('9/9'));
+  assert.ok(evidence.includes('overflow'));
+});

@@ -264,6 +264,7 @@ private struct C114GenericDirectTextItemExpectation {
     let whiteSpace: String
     let wordBreak: String
     let lineBreak: String
+    let overflowWrap: String
     let fontFamily: String
     let locale: String?
     let letterSpacing: Double
@@ -404,6 +405,7 @@ private func c114GenericTextItem(
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
     letterSpacing: Double = 0, wordSpacing: Double = 0, textIndent: Double = 0,
     fontFamily: String = "Ahem", locale: String? = nil, lineBreak: String = "Strict",
+    overflowWrap: String = "Normal",
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
     C114GenericDirectTextItemExpectation(
@@ -413,7 +415,8 @@ private func c114GenericTextItem(
         minContent: minContent, maxContent: maxContent,
         minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
         rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
-        wordBreak: wordBreak, lineBreak: lineBreak, fontFamily: fontFamily, locale: locale,
+        wordBreak: wordBreak, lineBreak: lineBreak, overflowWrap: overflowWrap,
+        fontFamily: fontFamily, locale: locale,
         letterSpacing: letterSpacing,
         wordSpacing: wordSpacing, textIndent: textIndent, lineAdvances: lineAdvances
     )
@@ -457,6 +460,7 @@ private func c114GenericDirectTextExpectation(
         )
     }
     if let wordBreak = c114ComputedWordBreakScene(sceneID) {
+        let textWidth = max(wordBreak.trackWidth, wordBreak.lineAdvances.max() ?? 0)
         let item = c114GenericTextItem(
             node: 2, x: 0, width: wordBreak.trackWidth, height: wordBreak.rowHeight,
             minContent: wordBreak.minContent, maxContent: wordBreak.maxContent,
@@ -464,8 +468,11 @@ private func c114GenericDirectTextExpectation(
             maxContentHeight: wordBreak.maxContentHeight,
             rawText: wordBreak.text, layoutText: wordBreak.text,
             whiteSpace: "Normal", wordBreak: wordBreak.wordBreak,
-            fontFamily: wordBreak.fontFamily, locale: wordBreak.language,
+            availableWidth: wordBreak.trackWidth, textWidth: textWidth,
+            fontFamily: wordBreak.fontFamily,
+            locale: c114ComputedOverflowWrapMode(sceneID) == nil ? wordBreak.language : nil,
             lineBreak: c114ComputedLineBreakMode(sceneID) ?? "Strict",
+            overflowWrap: c114ComputedOverflowWrapMode(sceneID) ?? "Normal",
             lineAdvances: wordBreak.lineAdvances
         )
         return C114GenericDirectTextSceneExpectation(
@@ -6835,9 +6842,13 @@ private func c114GenericDirectTextIntrinsicInputsMatch(
     }
     if anonymousTextScene {
         let minContentTrack = sceneID.hasSuffix("-min-content")
-        let expectedMaxContentWidthNodes = minContentTrack ? Set<Int>() : Set(expectedNodes)
+        let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
+            && sceneID.hasSuffix("-fixed-10px")
+        let expectedMinContentWidthNodes = fixedOverflowWrapTrack ? Set<Int>() : Set(expectedNodes)
+        let expectedMaxContentWidthNodes = fixedOverflowWrapTrack || minContentTrack
+            ? Set<Int>() : Set(expectedNodes)
         guard measuredNodes == Set(expectedNodes),
-              minContentWidthNodes == Set(expectedNodes),
+              minContentWidthNodes == expectedMinContentWidthNodes,
               maxContentWidthNodes == expectedMaxContentWidthNodes,
               minContentHeightNodes == Set(expectedNodes),
               maxContentHeightNodes == Set(expectedNodes) else { return false }
@@ -7082,6 +7093,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONString(style["fontStyle"]) == "Normal",
               c114GenericJSONString(style["whiteSpace"]) == expected.whiteSpace,
               c114GenericJSONString(style["wordBreak"]) == expected.wordBreak,
+              c114GenericJSONString(style["overflowWrap"]) == expected.overflowWrap,
               c114GenericJSONString(style["direction"]) == "Ltr",
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
               c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
@@ -7338,6 +7350,14 @@ private func c114GenericDirectTextTraceMatches(
         return false
     }
     let anonymousTextScene = c114IsAnonymousTextScene(sceneID)
+    let fixedOverflowWrapTrack = c114ComputedOverflowWrapMode(sceneID) != nil
+        && sceneID.hasSuffix("-fixed-10px")
+    let columnTracksMatch = fixedOverflowWrapTrack
+        ? c114GenericFixedTrackSizesMatch(passes[0], expected: scene.columns)
+        : c114GenericTrackSizesMatch(
+            passes[0], expected: scene.columns,
+            gap: c114IsGridTextAspectRatioScene(sceneID) || anonymousTextScene ? 0 : 10
+        )
     let rowTracksMatch = c114IsGridTextAspectRatioColumnScene(sceneID)
         ? c114GenericFixedTrackSizesMatch(passes[1], expected: [scene.rootHeight])
         : c114GenericTrackSizesMatch(
@@ -7348,10 +7368,7 @@ private func c114GenericDirectTextTraceMatches(
             gap: 0
         )
     guard
-          c114GenericTrackSizesMatch(
-            passes[0], expected: scene.columns,
-            gap: c114IsGridTextAspectRatioScene(sceneID) || anonymousTextScene ? 0 : 10
-          ),
+          columnTracksMatch,
           rowTracksMatch else {
         return false
     }
@@ -7389,9 +7406,8 @@ private func c114GenericDirectTextTraceMatches(
     if anonymousTextScene {
         let item = scene.items[0]
         let minContentTrack = sceneID.hasSuffix("-min-content")
-        let expectedColumns: [(item: Int, kind: String, value: Double)] = minContentTrack
-            ? [(item.node, "MinContent", item.minContent)]
-            : [
+        let expectedColumns: [(item: Int, kind: String, value: Double)] = fixedOverflowWrapTrack
+            ? [] : minContentTrack ? [(item.node, "MinContent", item.minContent)] : [
                 (item.node, "MinContent", item.minContent),
                 (item.node, "MaxContent", item.maxContent),
             ]
@@ -10707,6 +10723,20 @@ private func c114ComputedWordBreakScene(
     case "line-break-en-normal-min-content":
         return ("文〜文", "en", "Noto Sans KR", "Normal", 20, 30, 20, 10,
             20, 20, [20, 10])
+    case "overflow-wrap-normal-min-content", "overflow-wrap-normal-max-content":
+        return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
+    case "overflow-wrap-normal-fixed-10px":
+        return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 10, 10, [40])
+    case "overflow-wrap-anywhere-min-content", "overflow-wrap-anywhere-fixed-10px":
+        return ("XXXX", "en", "Ahem", "Normal", 10, 40, 40, 10, 10, 40,
+            [10, 10, 10, 10])
+    case "overflow-wrap-anywhere-max-content":
+        return ("XXXX", "en", "Ahem", "Normal", 10, 40, 40, 10, 40, 10, [40])
+    case "overflow-wrap-break-word-min-content", "overflow-wrap-break-word-max-content":
+        return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 40, 10, [40])
+    case "overflow-wrap-break-word-fixed-10px":
+        return ("XXXX", "en", "Ahem", "Normal", 40, 40, 10, 10, 10, 40,
+            [10, 10, 10, 10])
     default:
         return nil
     }
@@ -10718,6 +10748,14 @@ private func c114ComputedWordBreakScene(
 private func c114ComputedLineBreakMode(_ sceneID: String) -> String? {
     guard sceneID.hasPrefix("line-break-") else { return nil }
     return sceneID.contains("-normal-") ? "Normal" : "Strict"
+}
+
+private func c114ComputedOverflowWrapMode(_ sceneID: String) -> String? {
+    guard sceneID.hasPrefix("overflow-wrap-") else { return nil }
+    if sceneID.hasPrefix("overflow-wrap-anywhere-") { return "Anywhere" }
+    if sceneID.hasPrefix("overflow-wrap-break-word-") { return "BreakWord" }
+    if sceneID.hasPrefix("overflow-wrap-normal-") { return "Normal" }
+    return nil
 }
 
 private func c114ComputedWordSpacingScene(

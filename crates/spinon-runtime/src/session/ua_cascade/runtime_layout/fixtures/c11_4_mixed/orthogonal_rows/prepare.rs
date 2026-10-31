@@ -157,6 +157,7 @@ pub(in crate::session::ua_cascade::runtime_layout::fixtures::c11_4_mixed) fn pre
 
 fn orthogonal_paragraph_style() -> ParagraphStyle {
     ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode: WritingMode::VerticalRl,
         text_orientation: TextOrientation::Mixed,
         font_family: "Ahem".to_owned(),

@@ -869,6 +869,7 @@ fn paragraph_style_for_with_baseline_alias(
     }
 
     Ok(ParagraphStyle {
+        overflow_wrap: Default::default(),
         writing_mode,
         text_orientation,
         font_family: "Ahem".to_owned(),

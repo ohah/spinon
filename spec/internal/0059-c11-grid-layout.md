@@ -987,3 +987,13 @@ Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 고정 5개 s
 기본 static FFI archive에는 신규 scene marker, C11.4 fixture host export 및 Noto Sans KR bytes가 없고 `c04-runtime-gpu-fixture-test` archive에는 있다. 이는 archive 범위만 증명하며 완성된 APK/IPA 전체 bundle 제외를 뜻하지 않는다. 두 Simulator screenshot은 route/status만 보여주며 glyph paint, hardware GPU, drawable pixel equality 또는 compositor 이후 화면을 증명하지 않는다. 이 slice는 일반 CSS author admission, 언어 inheritance, WPT나 전체 C11.4/C11 지원을 추가하지 않는다. C11.4/C11 checkbox와 공식 집계 `72/213`은 미완료로 유지한다.
 
 [구현/runtime 실패 관점 20개 검토](evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/implementation-runtime-review-20.md) · [PR diff 실패 관점 30개 검토](evidence/c11-4-anonymous-grid-text-line-break-runtime-2026-11-01/pr-diff-review-30.md)
+
+## C11.4 anonymous Grid text computed `overflow-wrap` · 제한 opt-in 구현 후보
+
+현재 구현 후보는 기존 `c11-4-grid-track-sizing-fixture-test` 경로에서만 computed `overflow-wrap:normal|anywhere|break-word`를 고정 Ahem `XXXX` anonymous direct-text paragraph에 전달한다. 입력 profile은 Ahem 10px/400, `white-space:normal`, `word-break:normal`, `line-height:10px`, LTR/horizontal writing 및 zero gap/edge다. 각 값에 `min-content`, `max-content`, fixed `10px` column을 적용한 정확히 9개 scene을 둔다. Chrome 156 관찰과 독립 font-table 기대값은 [사전 비교 evidence](evidence/c11-4-anonymous-grid-text-overflow-wrap-precomparison-2026-11-01/README.md)에 고정되어 있다.
+
+`anywhere` emergency break opportunity는 min-content에 반영되지만 `break-word`의 기회는 반영하지 않는다. 따라서 min-content column/auto row의 `(inline, block)` 크기는 normal `(40,10px)`, anywhere `(10,40px)`, break-word `(40,10px)`이며, max-content 세 값은 모두 `(40,10px)`다. fixed `10px` column에서는 normal이 40px line advance를 한 줄로 overflow하고 anywhere/break-word는 4줄·40px auto row로 wrapping한다. Scene validator는 computed serialization과 typed value, paragraph/root owner, HostDocument/style revision, intrinsic metrics, final Columns/Rows tracks 및 item frame을 확인한다.
+
+Android API 37 ARM64 AVD와 iPhone 17 Pro/iOS 26.2 Simulator에서 각 9/9 scene이 통과했다. [실행 logs·matrix·screenshots·hashes](evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/README.md) · [기본/fixture archive 경계](evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/artifact-boundary/README.md) · [구현/runtime 실패 관점 20개](evidence/c11-4-anonymous-grid-text-overflow-wrap-runtime-2026-11-01/implementation-runtime-review-20.md).
+
+이 후보는 일반 author CSS admission, 임의 font/script, 모든 `overflow-wrap` 상호작용, WPT, glyph rasterization, 실기기/hardware GPU 또는 전체 C11.4/C11 지원을 선언하지 않는다. Screenshots는 Grid frame의 크기를 보일 뿐 글자 픽셀을 검증하지 않는다. 구현 PR과 PR diff 리뷰는 아직 완료되지 않았다. C11.4/C11 checkbox 및 공식 집계 `72/213`은 미완료로 유지한다.

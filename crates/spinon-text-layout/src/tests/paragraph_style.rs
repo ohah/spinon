@@ -25,6 +25,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
     let cases = [
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "  ".to_owned(),
@@ -41,6 +42,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -57,6 +59,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -73,6 +76,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -89,6 +93,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -105,6 +110,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -122,6 +128,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -139,6 +146,7 @@ fn paragraph_style_rejects_invalid_family_and_negative_or_non_finite_metrics() {
         ),
         (
             ParagraphStyle {
+                overflow_wrap: Default::default(),
                 writing_mode: spinon_core::WritingMode::HorizontalTb,
                 text_orientation: spinon_core::TextOrientation::Mixed,
                 font_family: "Ahem".to_owned(),
@@ -188,6 +196,7 @@ fn paragraph_style_allows_zero_line_height_and_keeps_text_lines_finite() {
             text: "X\nX".to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             font_family: "Ahem".to_owned(),
             font_size: 10.0,
             line_height: 0.0,

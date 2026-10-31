@@ -32,6 +32,7 @@ fn paragraph_with_locale(
             text: text.to_owned(),
         }],
         style: ParagraphStyle {
+            overflow_wrap: Default::default(),
             font_family: font_family.to_owned(),
             font_size: 10.0,
             line_height: 10.0,

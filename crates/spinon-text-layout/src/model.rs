@@ -112,6 +112,15 @@ pub enum WordBreakMode {
     KeepAll,
 }
 
+/// C11.4 anonymous Grid text profile의 computed CSS `overflow-wrap` 값입니다.
+#[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
+pub enum OverflowWrapMode {
+    #[default]
+    Normal,
+    Anywhere,
+    BreakWord,
+}
+
 /// C15.3의 고정 paragraph base direction입니다.
 #[derive(Clone, Copy, Debug, Default, Eq, PartialEq)]
 pub enum TextDirection {
@@ -172,6 +181,7 @@ pub struct ParagraphStyle {
     pub text_indent: f32,
     pub white_space: WhiteSpaceMode,
     pub word_break: WordBreakMode,
+    pub overflow_wrap: OverflowWrapMode,
     /// Parley에 줄바꿈 언어를 전달할 제한된 BCP 47 태그입니다.
     pub locale: Option<String>,
     pub direction: TextDirection,
@@ -238,6 +248,7 @@ impl Default for ParagraphStyle {
             text_indent: 0.0,
             white_space: WhiteSpaceMode::Normal,
             word_break: WordBreakMode::Normal,
+            overflow_wrap: OverflowWrapMode::Normal,
             locale: None,
             direction: TextDirection::Auto,
             writing_mode: WritingMode::HorizontalTb,
