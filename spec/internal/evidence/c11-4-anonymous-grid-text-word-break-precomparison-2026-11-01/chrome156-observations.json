@@ -1,0 +1,275 @@
+{
+  "dpr": 1,
+  "fontsLoaded": {
+    "ahem": true,
+    "notoSansKr": true
+  },
+  "observations": [
+    {
+      "authoredWordBreak": "normal",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-unbroken-min-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 87.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "normal",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-unbroken-max-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 119.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "track": "max-content"
+    },
+    {
+      "authoredWordBreak": "normal",
+      "columns": "20px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-two-words-min-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 20,
+        "width": 120,
+        "x": 348,
+        "y": 151.59375
+      },
+      "rows": "20px",
+      "text": "XX XX",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "normal",
+      "columns": "50px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-two-words-max-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 183.59375
+      },
+      "rows": "10px",
+      "text": "XX XX",
+      "track": "max-content"
+    },
+    {
+      "authoredWordBreak": "break-all",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "break-all",
+      "id": "word-break-break-all-unbroken-min-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 348,
+        "y": 215.59375
+      },
+      "rows": "40px",
+      "text": "XXXX",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "break-all",
+      "columns": "40px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "break-all",
+      "id": "word-break-break-all-unbroken-max-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 259.59375
+      },
+      "rows": "10px",
+      "text": "XXXX",
+      "track": "max-content"
+    },
+    {
+      "authoredWordBreak": "break-all",
+      "columns": "10px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "break-all",
+      "id": "word-break-break-all-two-words-min-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 348,
+        "y": 291.59375
+      },
+      "rows": "40px",
+      "text": "XX XX",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "break-all",
+      "columns": "50px",
+      "computedFontFamily": "Ahem",
+      "computedFontWeight": "400",
+      "computedLanguage": "en",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "break-all",
+      "id": "word-break-break-all-two-words-max-content",
+      "language": "en",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 335.59375
+      },
+      "rows": "10px",
+      "text": "XX XX",
+      "track": "max-content"
+    },
+    {
+      "authoredWordBreak": "normal",
+      "columns": "9.20312px",
+      "computedFontFamily": "\"Noto Sans KR\"",
+      "computedFontWeight": "400",
+      "computedLanguage": "ko",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-hangul-min-content",
+      "language": "ko",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 40,
+        "width": 120,
+        "x": 348,
+        "y": 367.59375
+      },
+      "rows": "40px",
+      "text": "가나다라",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "normal",
+      "columns": "36.8125px",
+      "computedFontFamily": "\"Noto Sans KR\"",
+      "computedFontWeight": "400",
+      "computedLanguage": "ko",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "normal",
+      "id": "word-break-normal-hangul-max-content",
+      "language": "ko",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 411.59375
+      },
+      "rows": "10px",
+      "text": "가나다라",
+      "track": "max-content"
+    },
+    {
+      "authoredWordBreak": "keep-all",
+      "columns": "36.8125px",
+      "computedFontFamily": "\"Noto Sans KR\"",
+      "computedFontWeight": "400",
+      "computedLanguage": "ko",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "keep-all",
+      "id": "word-break-keep-all-hangul-min-content",
+      "language": "ko",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 443.59375
+      },
+      "rows": "10px",
+      "text": "가나다라",
+      "track": "min-content"
+    },
+    {
+      "authoredWordBreak": "keep-all",
+      "columns": "36.8125px",
+      "computedFontFamily": "\"Noto Sans KR\"",
+      "computedFontWeight": "400",
+      "computedLanguage": "ko",
+      "computedLineBreak": "auto",
+      "computedWordBreak": "keep-all",
+      "id": "word-break-keep-all-hangul-max-content",
+      "language": "ko",
+      "lineHeight": "10px",
+      "overflowWrap": "normal",
+      "rootBox": {
+        "height": 10,
+        "width": 120,
+        "x": 348,
+        "y": 475.59375
+      },
+      "rows": "10px",
+      "text": "가나다라",
+      "track": "max-content"
+    }
+  ],
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "wordBreakSupported": true
+}
