@@ -42,7 +42,7 @@ Earlier capture directories are retained and excluded from the passing matrix:
 
 The macOS debug `spinon-ffi` archive built with `c04-runtime-gpu` contains zero of the six new scene ID markers and zero of the two C11.4 fixture export-name markers. Rebuilding with `c04-runtime-gpu-fixture-test` contains all six scene ID markers and both export-name markers. Archive hashes and raw marker counts are in [source-revision.json](./source-revision.json). The archive check does not prove whole APK/IPA exclusion. Xcode `nm` could not read these Rust 1.96 / LLVM 22.1.2 objects, so the record describes raw archive marker scans and does not claim symbol-table inspection.
 
-The Android compile SDK and Xcode/V8 debug-map diagnostics were warnings; both builds completed. The separate implementation/runtime failure review and PR diff failure review remain outstanding, so this is not the slice completion record.
+The Android compile SDK and Xcode/V8 debug-map diagnostics were warnings; both builds completed. The separate implementation/runtime review and PR diff review are recorded in [implementation/runtime review 20](./implementation-runtime-review-20.md) and [PR diff review 30](./pr-diff-review-30.md). [PR #952](https://github.com/ohah/spinon/pull/952) reports no checks, so CI success is not claimed. This remains a limited candidate, not a slice completion record.
 
 ## Scope boundary
 
