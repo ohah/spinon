@@ -312,6 +312,65 @@ fn ahem_word_spacing_changes_collapsed_separators_but_not_min_content_words() {
 }
 
 #[test]
+fn ahem_text_indent_changes_first_line_min_and_max_content_advance() {
+    let mut engine = engine();
+    let mut input = paragraph(
+        "XX XX",
+        "Ahem",
+        10.0,
+        10.0,
+        WhiteSpaceMode::Normal,
+        WordBreakMode::Normal,
+    );
+    input.style.text_indent = 5.0;
+
+    let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+    close_to(sizes.min_content(), 25.0);
+    close_to(sizes.max_content(), 55.0);
+    close_to(sizes.min_content_height(), 20.0);
+    close_to(sizes.max_content_height(), 10.0);
+
+    let min_layout = engine.layout_paragraph(&input, 25.0).unwrap();
+    assert_eq!(min_layout.lines.len(), 2);
+    close_to(min_layout.lines[0].advance, 20.0);
+    close_to(min_layout.lines[1].advance, 20.0);
+    close_to(min_layout.runs[0].glyphs[0].x, 5.0);
+
+    let max_layout = engine.layout_paragraph(&input, 55.0).unwrap();
+    assert_eq!(max_layout.lines.len(), 1);
+    close_to(max_layout.width, 50.0);
+    close_to(max_layout.lines[0].advance, 50.0);
+    close_to(max_layout.runs[0].glyphs[0].x, 5.0);
+}
+
+#[test]
+fn ahem_text_indent_min_content_uses_only_first_unbreakable_line() {
+    let mut engine = engine();
+    for (text, expected_min, expected_first_line_advance) in
+        [("X XXXXX", 50.0, 10.0), ("XXXXX X", 55.0, 50.0)]
+    {
+        let mut input = paragraph(
+            text,
+            "Ahem",
+            10.0,
+            10.0,
+            WhiteSpaceMode::Normal,
+            WordBreakMode::Normal,
+        );
+        input.style.text_indent = 5.0;
+
+        let sizes = engine.intrinsic_inline_sizes(&input).unwrap();
+        close_to(sizes.min_content(), expected_min);
+        close_to(sizes.max_content(), 75.0);
+
+        let min_layout = engine.layout_paragraph(&input, expected_min).unwrap();
+        assert_eq!(min_layout.lines.len(), 2);
+        close_to(min_layout.lines[0].advance, expected_first_line_advance);
+        close_to(min_layout.runs[0].glyphs[0].x, 5.0);
+    }
+}
+
+#[test]
 fn ahem_vertical_mixed_logical_intrinsics_preserve_shaped_inline_advances() {
     let mut engine = engine();
     let cases = [
@@ -462,6 +521,10 @@ fn vertical_logical_intrinsics_reject_out_of_profile_text_style_and_topology() {
     let mut wrong_line_height = vertical_paragraph("ABC");
     wrong_line_height.style.line_height = 11.0;
     assert_vertical_intrinsic_rejected(&mut engine, &wrong_line_height);
+
+    let mut indented = vertical_paragraph("ABC");
+    indented.style.text_indent = 1.0;
+    assert_vertical_intrinsic_rejected(&mut engine, &indented);
 
     let mut normal_line_height = vertical_paragraph("ABC");
     normal_line_height.style.line_height_is_normal = true;

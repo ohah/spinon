@@ -260,6 +260,7 @@ private struct C114GenericDirectTextItemExpectation {
     let wordBreak: String
     let letterSpacing: Double
     let wordSpacing: Double
+    let textIndent: Double
     let lineAdvances: [Double]
 }
 
@@ -393,7 +394,7 @@ private func c114GenericTextItem(
     rawText: String, layoutText: String, whiteSpace: String, wordBreak: String,
     availableWidth: Double? = nil, textWidth: Double? = nil,
     paddingInline: Double = 0, paddingBlock: Double = 0, borderWidth: Double = 0,
-    letterSpacing: Double = 0, wordSpacing: Double = 0,
+    letterSpacing: Double = 0, wordSpacing: Double = 0, textIndent: Double = 0,
     lineAdvances: [Double]
 ) -> C114GenericDirectTextItemExpectation {
     C114GenericDirectTextItemExpectation(
@@ -404,7 +405,7 @@ private func c114GenericTextItem(
         minContentHeight: minContentHeight, maxContentHeight: maxContentHeight,
         rawText: rawText, layoutText: layoutText, whiteSpace: whiteSpace,
         wordBreak: wordBreak, letterSpacing: letterSpacing,
-        wordSpacing: wordSpacing, lineAdvances: lineAdvances
+        wordSpacing: wordSpacing, textIndent: textIndent, lineAdvances: lineAdvances
     )
 }
 
@@ -443,6 +444,27 @@ private func c114GenericDirectTextExpectation(
         return C114GenericDirectTextSceneExpectation(
             rootWidth: 120, rootHeight: wordSpacing.rowHeight,
             columns: [wordSpacing.trackWidth], items: [item]
+        )
+    }
+    if let textIndent = c114ComputedTextIndentScene(sceneID) {
+        let singleWord = sceneID.contains("-single-word-")
+        let collapsed = sceneID.contains("-collapsed-three-words-")
+        let rawText = singleWord ? "XX" : (collapsed ? "XX   XX XX  " : "XX XX")
+        let layoutText = singleWord ? "XX" : (collapsed ? "XX XX XX" : "XX XX")
+        let minContentHeight = singleWord ? 10.0 : (collapsed ? 30.0 : 20.0)
+        let item = c114GenericTextItem(
+            node: 2, x: 0, width: textIndent.trackWidth, height: textIndent.rowHeight,
+            minContent: textIndent.minContent, maxContent: textIndent.maxContent,
+            minContentHeight: minContentHeight, maxContentHeight: 10,
+            rawText: rawText, layoutText: layoutText, whiteSpace: "Normal", wordBreak: "Normal",
+            textWidth: textIndent.unindentedLineAdvance,
+            textIndent: textIndent.textIndent,
+            lineAdvances: Array(repeating: textIndent.unindentedLineAdvance,
+                                count: textIndent.lineCount)
+        )
+        return C114GenericDirectTextSceneExpectation(
+            rootWidth: 120, rootHeight: textIndent.rowHeight,
+            columns: [textIndent.trackWidth], items: [item]
         )
     }
     if let definiteAxis = c114GenericDirectTextDefiniteAxisExpectation(sceneID) {
@@ -1292,6 +1314,7 @@ private func c114IsGridTrackSizingScene(_ sceneID: String) -> Bool {
     if c114ComputedLetterSpacingScene(sceneID) != nil { return true }
     if c114IsComputedFontSizeScene(sceneID) { return true }
     #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    if c114ComputedTextIndentScene(sceneID) != nil { return true }
     if C114GridAutoFitColumnsWpt.isScene(sceneID) { return true }
     if c114AspectRatioMinmaxSceneExpectation(sceneID) != nil { return true }
     if c114DirectTextMultispanSceneExpectation(sceneID) != nil { return true }
@@ -3115,6 +3138,9 @@ private func c114ExpectedTextIntrinsicInputs(_ sceneID: String, report: String) 
         return c114ComputedLetterSpacingTextIntrinsicInputsMatch(sceneID, report: report)
     }
     if c114ComputedWordSpacingScene(sceneID) != nil {
+        return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
+    }
+    if c114ComputedTextIndentScene(sceneID) != nil {
         return c114GenericDirectTextIntrinsicInputsMatch(sceneID: sceneID, report: report)
     }
     if c114IsComputedFontSizeScene(sceneID) {
@@ -7026,6 +7052,7 @@ private func c114GenericDirectTextTextLayoutsMatch(
               c114GenericJSONString(style["direction"]) == "Ltr",
               c114GenericJSONNear(style["letterSpacing"], expected: expected.letterSpacing, tolerance: 0),
               c114GenericJSONNear(style["wordSpacing"], expected: expected.wordSpacing, tolerance: 0),
+              c114GenericJSONNear(style["textIndent"], expected: expected.textIndent, tolerance: 0),
               c114GenericJSONString(style["writingMode"]) == "HorizontalTb",
               c114GenericJSONString(style["textOrientation"]) == "Mixed",
               c114GenericJSONString(style["lineBreak"]) == "Strict",
@@ -8531,6 +8558,10 @@ private func c114GenericFrameNumber(_ value: Double) -> String {
 }
 
 private func c114ExpectedNodeFrames(_ sceneID: String) -> String? {
+    if let textIndent = c114ComputedTextIndentScene(sceneID) {
+        return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
+            + "height=\(c114GenericFrameNumber(textIndent.rowHeight))]"
+    }
     if let letterSpacing = c114ComputedLetterSpacingScene(sceneID) {
         return "node_frames_css_px=[0:node=1,x=0,y=0,width=120,"
             + "height=\(c114GenericFrameNumber(letterSpacing.rowHeight))]"
@@ -10271,6 +10302,7 @@ private func c114GapNodeFrames(
 }
 
 private func c114ExpectedBoxCount(_ sceneID: String) -> Int {
+    if c114ComputedTextIndentScene(sceneID) != nil { return 1 }
     if c114ComputedWordSpacingScene(sceneID) != nil { return 1 }
     if c114ComputedLetterSpacingScene(sceneID) != nil { return 1 }
     if c114IsComputedFontSizeScene(sceneID) { return 1 }
@@ -10485,6 +10517,7 @@ private func c114IsImplicitTextScene(_ sceneID: String) -> Bool {
 
 private func c114IsAnonymousTextScene(_ sceneID: String) -> Bool {
     c114ComputedWordSpacingScene(sceneID) != nil
+        || c114ComputedTextIndentScene(sceneID) != nil
         || c114ComputedLetterSpacingScene(sceneID) != nil
         || c114IsComputedFontSizeScene(sceneID)
         || c114ComputedLineHeightTrackHeight(sceneID) != nil
@@ -10613,6 +10646,45 @@ private func c114ComputedWordSpacingScene(
         wordSpacing: wordSpacing, minContent: minContent, maxContent: maxContent,
         trackWidth: trackWidth, rowHeight: rowHeight,
         lineCount: rowHeight == 10 ? 1 : Int(rowHeight / 10)
+    )
+    #else
+    return nil
+    #endif
+}
+
+private func c114ComputedTextIndentScene(
+    _ sceneID: String
+) -> (textIndent: Double, minContent: Double, maxContent: Double,
+    trackWidth: Double, rowHeight: Double, lineCount: Int, unindentedLineAdvance: Double)? {
+    #if SPINON_ENABLE_C04_RUNTIME_GPU_FIXTURE_TEST_1
+    let textIndent: Double
+    if sceneID.hasPrefix("text-indent-zero-") {
+        textIndent = 0
+    } else if sceneID.hasPrefix("text-indent-five-") {
+        textIndent = 5
+    } else if sceneID.hasPrefix("text-indent-ten-") {
+        textIndent = 10
+    } else {
+        return nil
+    }
+    let singleWord = sceneID.contains("-single-word-")
+    let collapsedThreeWords = sceneID.contains("-collapsed-three-words-")
+    guard singleWord || collapsedThreeWords || sceneID.contains("-two-words-") else { return nil }
+    let minContentTrack = sceneID.hasSuffix("-min-content")
+    guard minContentTrack || sceneID.hasSuffix("-max-content") else { return nil }
+    let minContent = 20 + textIndent
+    let maxContent = singleWord ? 20 + textIndent
+        : (collapsedThreeWords ? 80 + textIndent : 50 + textIndent)
+    let trackWidth = minContentTrack ? minContent : maxContent
+    let minContentHeight = singleWord ? 10.0 : (collapsedThreeWords ? 30.0 : 20.0)
+    let rowHeight = minContentTrack ? minContentHeight : 10.0
+    let lineCount = rowHeight == 10 ? 1 : Int(rowHeight / 10)
+    let unindentedLineAdvance = minContentTrack ? 20.0
+        : (singleWord ? 20.0 : (collapsedThreeWords ? 80.0 : 50.0))
+    return (
+        textIndent: textIndent, minContent: minContent, maxContent: maxContent,
+        trackWidth: trackWidth, rowHeight: rowHeight, lineCount: lineCount,
+        unindentedLineAdvance: unindentedLineAdvance
     )
     #else
     return nil
