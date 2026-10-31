@@ -1,0 +1,61 @@
+{
+  "cardBounds": {
+    "bottom": 519.3125,
+    "height": 387.421875,
+    "left": 14,
+    "right": 376,
+    "top": 131.890625,
+    "width": 362,
+    "x": 14,
+    "y": 131.890625
+  },
+  "documentScrollWidth": 390,
+  "horizontalOverflow": false,
+  "links": [
+    {
+      "href": "https://github.com/ohah/spinon/pull/911",
+      "label": "구현 PR #911 Rebase and merge"
+    },
+    {
+      "href": "/spinon/plan/c11-3-3-template-area-auto-track-sizing.html",
+      "label": "계획"
+    },
+    {
+      "href": "/spinon/internal/0059-c11-grid-layout.html",
+      "label": "내부 계약 0059"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-template-area-auto-track-sizing-runtime-2026-10-31/README.html",
+      "label": "실행 근거·한계"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/android-avd-c1133-matrix-20261031T075025965Z-f6357ddc/typed-area-minmax-row-screen.png",
+      "label": "Android AVD 화면"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-grid-template-areas-runtime-2026-10-31/ios-simulator-c1133-ios-matrix-20261031T075232596Z-bc687ad2/typed-area-minmax-row-screen.png",
+      "label": "iOS Simulator 화면"
+    },
+    {
+      "href": "/spinon/internal/evidence/roadmap-tailnet-sync-pr911-2026-10-31/roadmap-pr-diff-review-30.html",
+      "label": "로드맵 diff 검토 30개"
+    },
+    {
+      "href": "/spinon/plan/c11-3-3-template-area-fit-content-cap.html",
+      "label": "fit-content cap 후속 계획"
+    },
+    {
+      "href": "/spinon/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/README.html",
+      "label": "Chrome 156 사전 비교"
+    },
+    {
+      "href": "/spinon/STATUS.html#css-구현-체크리스트",
+      "label": "공식 상태"
+    }
+  ],
+  "scrollY": 4733,
+  "url": "http://127.0.0.1:8770/spinon/roadmap.html",
+  "userAgent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "viewportHeight": 844,
+  "viewportWidth": 390
+}

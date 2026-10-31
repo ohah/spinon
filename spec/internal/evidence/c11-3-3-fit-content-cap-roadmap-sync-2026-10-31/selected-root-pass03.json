@@ -1,0 +1,200 @@
+{
+  "sourceHead": "1e9ddc9ec3e12b671499e4152aa6ed1b04449f6f",
+  "sourceTree": "089aa8b45814fafc78528d5ac3b7586c22dd9235",
+  "worktreeHead": "1e9ddc9ec3e12b671499e4152aa6ed1b04449f6f",
+  "trackedDiffSha256": "59d1f31f7c9a650a2992eb6ebdd609a08ac38f4d8d81b69ac05d5fc6935cf0b4",
+  "selectedRoot": "build/spinon/roadmap-tailnet-sync-fit-content-cap-20261031/pass05/root",
+  "stagedFileCount": 31,
+  "stagedBytes": 3118715,
+  "fullDocsLinkValidation": false,
+  "noSymlinks": true,
+  "skippedPageSources": [],
+  "staged": [
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "roadmap.html",
+      "bytes": 445239,
+      "sha256": "e568729f4f0056d50e1339dbb8ecce556f7cc9cfafe98b81c69ce68f4370dc46"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "public/roadmap.html",
+      "bytes": 445239,
+      "sha256": "e568729f4f0056d50e1339dbb8ecce556f7cc9cfafe98b81c69ce68f4370dc46"
+    },
+    {
+      "source": "spec/public/roadmap.html",
+      "route": "spec/public/roadmap.html",
+      "bytes": 445239,
+      "sha256": "e568729f4f0056d50e1339dbb8ecce556f7cc9cfafe98b81c69ce68f4370dc46"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/icon.svg",
+      "route": "spec/public/icon.svg",
+      "bytes": 638,
+      "sha256": "157bca1c0f7737285f850a5879932513679bfd4d615c44f38367c895b2da99d9"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "spec/public/logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/public/logo.svg",
+      "route": "logo.svg",
+      "bytes": 568,
+      "sha256": "9b9c051c9b800b929b97c46f03516b442da02a4e5d678aac0a13dab5094e4927"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "STATUS.md",
+      "bytes": 560400,
+      "sha256": "1a04c2a83897a1a150fee007e362f8e9798bbc19cdd505df0600b192ce396407"
+    },
+    {
+      "source": "spec/STATUS.md",
+      "route": "spec/STATUS.md",
+      "bytes": 560400,
+      "sha256": "1a04c2a83897a1a150fee007e362f8e9798bbc19cdd505df0600b192ce396407"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "internal/0059-c11-grid-layout.md",
+      "bytes": 266590,
+      "sha256": "b2a5c10513b44a9f166e8dda014ad4fdcd4e25d8f450c06a24619a9254a342dc"
+    },
+    {
+      "source": "spec/internal/0059-c11-grid-layout.md",
+      "route": "spec/internal/0059-c11-grid-layout.md",
+      "bytes": 266590,
+      "sha256": "b2a5c10513b44a9f166e8dda014ad4fdcd4e25d8f450c06a24619a9254a342dc"
+    },
+    {
+      "source": "plan/c11-3-3-template-area-fit-content-cap.md",
+      "route": "plan/c11-3-3-template-area-fit-content-cap.md",
+      "bytes": 6902,
+      "sha256": "5990f982901f3a90a86ba5b6aa3c9f9c4e14fe393e34296837f980d2aeb7c225"
+    },
+    {
+      "source": "plan/c11-3-3-template-area-fit-content-cap.md",
+      "route": "spec/plan/c11-3-3-template-area-fit-content-cap.md",
+      "bytes": 6902,
+      "sha256": "5990f982901f3a90a86ba5b6aa3c9f9c4e14fe393e34296837f980d2aeb7c225"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/README.md",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/README.md",
+      "bytes": 1187,
+      "sha256": "4123a10a17c16b02c1893e4f87e0a38f88793c0e434fce1e770c892de194d2a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/README.md",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/README.md",
+      "bytes": 1950,
+      "sha256": "6092e6607c9fb65bf6da4e2e847b5c1e839505d1a4cdd5ac4c8494bc196ca36f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png",
+      "bytes": 38058,
+      "sha256": "dfe52f261926d2961693e3822d9bf50fcad0be89711721ad807c4a0046dd8d52"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+      "bytes": 2230,
+      "sha256": "3c00e09996e7be28e8dd4e02d544086fe5a3d8cb3ab07dd260a9407a4792a500"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/expected-values.json",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/expected-values.json",
+      "bytes": 1174,
+      "sha256": "0294063b773a670c38332fc17b06c9f39542e17abaa2c94454938d84b77d959b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/grid-template-area-fit-content-cap.html",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/grid-template-area-fit-content-cap.html",
+      "bytes": 2927,
+      "sha256": "fc66b357e260db090124a3999006479352f59816331b2696b999427f36aafc6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-pr-diff-review-30.md",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-pr-diff-review-30.md",
+      "bytes": 4442,
+      "sha256": "f430aa5d72a4a25e5f469e1a6d0da96ef14c2031854ea04b72d38d4789e8cfce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-review-20.md",
+      "route": "internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-review-20.md",
+      "bytes": 4090,
+      "sha256": "55775a776410fa0612c14bd00a9539cb8d390b226efea8b4b398bc4683919357"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/README.md",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/README.md",
+      "bytes": 1187,
+      "sha256": "4123a10a17c16b02c1893e4f87e0a38f88793c0e434fce1e770c892de194d2a1"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/README.md",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/README.md",
+      "bytes": 1950,
+      "sha256": "6092e6607c9fb65bf6da4e2e847b5c1e839505d1a4cdd5ac4c8494bc196ca36f"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/chrome-156-agent-browser.png",
+      "bytes": 38058,
+      "sha256": "dfe52f261926d2961693e3822d9bf50fcad0be89711721ad807c4a0046dd8d52"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/chrome/observation.json",
+      "bytes": 2230,
+      "sha256": "3c00e09996e7be28e8dd4e02d544086fe5a3d8cb3ab07dd260a9407a4792a500"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/expected-values.json",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/expected-values.json",
+      "bytes": 1174,
+      "sha256": "0294063b773a670c38332fc17b06c9f39542e17abaa2c94454938d84b77d959b"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/grid-template-area-fit-content-cap.html",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/grid-template-area-fit-content-cap.html",
+      "bytes": 2927,
+      "sha256": "fc66b357e260db090124a3999006479352f59816331b2696b999427f36aafc6e"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-pr-diff-review-30.md",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-pr-diff-review-30.md",
+      "bytes": 4442,
+      "sha256": "f430aa5d72a4a25e5f469e1a6d0da96ef14c2031854ea04b72d38d4789e8cfce"
+    },
+    {
+      "source": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-review-20.md",
+      "route": "spec/internal/evidence/c11-3-3-template-area-fit-content-cap-precomparison-2026-10-31/plan-review-20.md",
+      "bytes": 4090,
+      "sha256": "55775a776410fa0612c14bd00a9539cb8d390b226efea8b4b398bc4683919357"
+    },
+    {
+      "source": "generated:index.md",
+      "route": "index.md",
+      "bytes": 118,
+      "sha256": "98f5f66ca57749850760e883691514f38cc55eb9698f6fd36369e0c5c4dd6ac4"
+    }
+  ]
+}
